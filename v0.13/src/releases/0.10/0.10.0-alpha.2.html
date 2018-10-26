@@ -1,0 +1,224 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Lazy loading the content of dropdown menu</h6>
+        <p>You can now use a Clarity directive <code class="clr-code">*clrIfOpen</code> to lazy load the content of a
+            dropdown menu. When you use the directive, the content will only render in the DOM when the dropdown is open
+            and destroy it when the dropdown is closed.</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dropdown&gt;
+    ...
+    &lt;clr-dropdown-menu *clrIfOpen&gt;
+        (content here will lazy load)
+    &lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+    </li>
+
+    <li breaking-change>
+        <h2>Alerts Refactor</h2>
+        <p>
+            0.10.0-alpha.2 introduces a breaking change for static HTML alerts in Clarity.
+            Note that there is <em>no breaking change</em> for users who were implementing their
+            alerts with the <code class="clr-code">clr-alert</code> Angular component in
+            Clarity.
+        </p>
+        <div>
+            This change:
+            <ul class="list">
+                <li>Decreases the minified CSS of Clarity by 5%</li>
+                <li>Removes relative and absolute positioning inside alerts</li>
+                <li>Removes several <code class="clr-code">.clr-icon-*</code> utility classes that were deprecated prior
+                    to 0.6
+                </li>
+                <li>Enables users to define any icon in their Clarity Icons library to show up in alerts</li>
+                <li>Deprecates the component selector <code class="clr-code">.alert-item</code> in favor of the <code
+                        class="clr-code">clr-alert-item</code></li>
+                <li>Deprecates the BS4 alert types of <code class="clr-code">alert-danger</code>,
+                    <code class="clr-code">alert-info</code>, <code class="clr-code">alert-warning</code>, and
+                    <code class="clr-code">alert-success</code> for the terser types of
+                    <code class="clr-code">danger</code>, <code class="clr-code">info</code>,
+                    <code class="clr-code">warning</code>, and <code class="clr-code">success</code>.
+                    These types are passed to the <code class="clr-code">&#91;clrAlertType&#93;</code> input of the
+                    <code class="clr-code">clr-alert</code> Angular component. This change does not impact
+                    static HTML alerts. The default is now <code class="clr-code">info</code> and not
+                    <code class="clr-code">alert-info</code>
+                </li>
+            </ul>
+        </div>
+
+        <h3>Migrating static alerts to the new DOM structure</h3>
+
+        <p>
+            The HTML structure of alerts in 0.10.0-alpha adds a new wrapper around
+            <code class="clr-code">.alert-item</code> elements and uses a
+            <code class="clr-code">.alert-icon-wrapper</code> element inside an
+            <code class="clr-code">.alert-item</code>. This icon wrapper should also contain
+            a <code class="clr-code">clr-icon.alert-icon</code> inside of it.
+        </p>
+
+        <div>
+            <h6>0.9 alert static HTML (before)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            ...
+        &lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;div class=&quot;alert-action dropdown bottom-right&quot;&gt;
+            &lt;button class=&quot;dropdown-toggle&quot;&gt;
+                Actions
+                &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+                &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Shutdown&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Suspend&lt;/a&gt;
+                    &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Reboot&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <h6>0.10.0-alpha alert static HTML (after)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;div class=&quot;alert alert-danger&quot;&gt;
+    &lt;div class=&quot;alert-items&quot;&gt;
+        &lt;div class=&quot;alert-item static&quot;&gt;
+            &lt;div class=&quot;alert-icon-wrapper&quot;&gt;
+                &lt;clr-icon class=&quot;alert-icon&quot; shape=&quot;exclamation-circle&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class=&quot;alert-text&quot;&gt;
+                ...
+            &lt;/span&gt;
+            &lt;div class=&quot;alert-actions&quot;&gt;
+                &lt;div class=&quot;alert-action dropdown bottom-right&quot;&gt;
+                    &lt;button class=&quot;dropdown-toggle&quot;&gt;
+                        Actions
+                        &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;div class=&quot;dropdown-menu&quot;&gt;
+                        &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Shutdown&lt;/a&gt;
+                        &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Suspend&lt;/a&gt;
+                        &lt;a class=&quot;dropdown-item&quot; href=&quot;...&quot;&gt;Reboot&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <p>
+            The 0.10.0-alpha alert introduces no breaking changes for the Clarity Angular alert
+            component. The use of the <code class="clr-code">.alert-item</code> classname as a
+            component selector is deprecated, however, and will be removed before Clarity releases
+            1.0. The intent is to replace <code class="clr-code">div.alert-item</code> in the
+            Clarity <code class="clr-code">clr-alert</code> with a <code class="clr-code">clr-alert-item</code>
+            subcomponent. Updating your <code class="clr-code">clr-alert</code>s will avoid a
+            potential future breaking change.
+        </p>
+
+        <div>
+            <h6>0.9 alert Angular component (deprecated, but working)</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-alert &#91;clrAlertClosable&#93;=&quot;false&quot; &#91;clrAlertType&#93;=&quot;'alert-danger'&quot;&gt;
+    &lt;div class=&quot;alert-item&quot;&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            This alert cannot be dismissed.
+        &lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;clr-dropdown &#91;clrMenuPosition&#93;=&quot;&apos;bottom-right&apos;&quot;&gt;
+                &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
+                    Actions
+                    &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+                &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Shutdown&lt;/a&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Delete&lt;/a&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Reboot&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/clr-dropdown&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;</code></pre>
+            </div>
+        </div>
+
+        <div>
+            <h6>0.10.0-alpha alert component</h6>
+            <div>
+                <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-alert &#91;clrAlertClosable&#93;=&quot;false&quot; clrAlertType=&quot;danger&quot;&gt;
+    &lt;clr-alert-item&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            This alert cannot be dismissed.
+        &lt;/span&gt;
+        &lt;div class=&quot;alert-actions&quot;&gt;
+            &lt;clr-dropdown &#91;clrMenuPosition&#93;=&quot;&apos;bottom-right&apos;&quot;&gt;
+                &lt;button class=&quot;dropdown-toggle&quot; clrDropdownToggle&gt;
+                    Actions
+                    &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+                &lt;div class=&quot;dropdown-menu&quot;&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Shutdown&lt;/a&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Delete&lt;/a&gt;
+                    &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot; clrDropdownItem&gt;Reboot&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/clr-dropdown&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert-item&gt;
+&lt;/clr-alert&gt;</code></pre>
+            </div>
+        </div>
+
+        <h3>Using custom Clarity Icon in alerts</h3>
+
+        <p>
+            Because the 0.10 alert now utilizes the Clarity Icons framework, you can use any icon that
+            exists in your application's Clarity Icons library or any custom icon you have added via
+            the <code class="clr-code">ClarityIcons.add()</code> functionality of the Clarity Icons API.
+        </p>
+
+        <p>
+            Clarity alerts now have a <code class="clr-code">&#91;clrAlertIcon&#93;</code> input that accepts
+            a string which represents the name of the icon in the Clarity Icons library. By default,
+            Clarity will give your alert an icon based on the type of alert it is but this default
+            can be easily overridden by assigning an icon name to <code class="clr-code">&#91;clrAlertIcon&#93;</code>.
+        </p>
+
+        <div>
+            <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-alert &#91;clrAlertIcon&#93;=&quot;'notification'&quot; clrAlertType=&quot;info&quot; &#91;clrAlertClosable&#93;=&quot;false&quot;&gt;
+    &lt;clr-alert-item&gt;
+        &lt;span class=&quot;alert-text&quot;&gt;
+            This alert will have a bell instead of an &quot;i&quot; inside of a circle.
+        &lt;/span&gt;
+    &lt;/clr-alert-item&gt;
+&lt;/clr-alert&gt;</code></pre>
+        </div>
+
+    </li>
+
+    <li breaking-change>
+        <h2>Deprecated Wizard is officially removed from Clarity.</h2>
+        For more details on migrating to the new Wizard please refer to
+        the <a target="_blank" href="https://vmware.github.io/clarity/news/0.9.0">0.9.0 release notes</a>.
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Renamed the self-executing bundles from <code class="clr-code">XXX.umd.js</code> to <code class="clr-code">XXX.min.js</code>,
+        to make room for future UMD bundles that are not self-executing.
+    </li>
+</ul>
+

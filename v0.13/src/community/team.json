@@ -1,0 +1,66 @@
+{
+    "members": [{
+        "name": "Jehad Affoneh",
+        "role": "Clarity Lead",
+        "blurb": "Jehad started and continues to lead the Clarity project. He is involved in all stages of Clarity development. He loves engaging with designers and developers to understand their use cases and help them build solutions.",
+        "twitter": "jaffoneh",
+        "img": "affonehj.png",
+        "workstreams": ["UX", "UI"]
+    }, {
+        "name": "Scott Mathis",
+        "role": "Manager/Developer",
+        "blurb": "Scott has been with Clarity from the beginning and leads planning and direction of the project. He continues to contribute to research, documentation, user experience, and development.",
+        "twitter": "mathis_scott",
+        "img": "scott.png",
+        "workstreams": ["UX", "UI", "NG"]
+    }, {
+        "name": "Eudes Petonnet-Vincent",
+        "role": "Technical   Lead",
+        "blurb": "Eudes has been the technical lead for Clarity since its inception and continues to drive development and innovation. He created the architecture of the Clarity project as well as many of its most complex Angular components like the datagrid.",
+        "twitter": "EudesPV",
+        "img": "eudes.png",
+        "workstreams": ["UI", "CR", "NG"]
+    }, {
+        "name": "Jeeyun Lim",
+        "role": "Developer",
+        "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular components and making sure that the components are beautiful as well as sensible and functional.",
+        "img": "jeeyun.png",
+        "twitter": "jeeyunit",
+        "workstreams": ["CR", "NG"]
+    }, {
+        "name": "Red Dolan",
+        "role": "Designer",
+        "blurb": "Red works on strategy and design interactions for Clarity. He also researches user-driven needs and tests those solutions. Contact him for any Sketch template or UX-related questions or feedback.",
+        "twitter": "reddolan",
+        "img": "red.png",
+        "workstreams": ["UX", "CR"]
+    }, {
+        "name": "Lilia Kim",
+        "role": "Visual Designer",
+        "blurb": "Lilia researches what's needed for Clarity and delivers the visual designs.  She works on layout design, component design, and icons.",
+        "img": "lilia.png",
+        "twitter": "lilkim439",
+        "workstreams": ["UX"]
+    }, {
+        "name": "Shijir Tsogoo",
+        "role": "Developer",
+        "blurb": "Shijir joined the Clarity team shortly after graduating from the University of Washington. He has built a number of Clarity Angular components and served as the primary developer on the Clarity Icons project.",
+        "img": "shijir.png",
+        "twitter": "ts_shijir",
+        "workstreams": ["UI", "NG"]
+    }, {
+        "name": "Matt Hippely",
+        "role": "Developer",
+        "blurb": "As a UI Engineer, Matt's primary focus is collecting feedback and improving components. He also works to improve the tooling and continuous integration of the Clarity project.",
+        "twitter": "hippeelee",
+        "img": "matt.png",
+        "workstreams": ["CR", "NG"]
+    }, {
+        "name": "Jeremy Wilken",
+        "role": "Developer",
+        "blurb": "Jeremy is a developer with a passion for all things web and education. He is a Google Developer Expert for Angular, author of the books Angular in Action and Ionic in Action, and regularly speaks at events.",
+        "twitter": "gnomeontherun",
+        "img": "jeremy.png",
+        "workstreams": ["UI", "NG"]
+    }]
+}

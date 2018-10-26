@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="39px" height="42px" viewBox="0 0 39 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_reliable</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Landing-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="landing-page" transform="translate(-770.000000, -1515.000000)">
+            <g id="reliable" transform="translate(765.000000, 1512.000000)">
+                <g id="ic_reliable" transform="translate(7.000000, 5.000000)">
+                    <polygon id="Star" fill="#E64120" points="17.5105652 24 11.6327126 27.0901699 12.7552826 20.545085 8 15.9098301 14.5716389 14.954915 17.5105652 9 20.4494914 14.954915 27.0211303 15.9098301 22.2658477 20.545085 23.3884177 27.0901699"></polygon>
+                    <path d="M17.5,0 C17.5,0 10.0112947,5.62687565 0,10.1562908 C2.41127349,24.6970006 8.73173278,32.223382 17.5,38.0688935 C29.0814196,30.9812109 35,10.1562908 35,10.1562908 C28.7160752,8.54906054 17.5,0 17.5,0 Z" id="Path-7" stroke="#E64120" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

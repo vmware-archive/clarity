@@ -1,0 +1,5 @@
+<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>target-solid</title>
+    <circle cx="18" cy="18" r="4.09" class="clr-i-solid clr-i-solid-path-1"></circle><path d="M18,7.83A10.17,10.17,0,1,0,28.17,18,10.18,10.18,0,0,0,18,7.83Zm0,16A5.88,5.88,0,1,1,23.88,18,5.88,5.88,0,0,1,18,23.88Z" class="clr-i-solid clr-i-solid-path-2"></path><path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm0,27.83A11.83,11.83,0,1,1,29.83,18,11.85,11.85,0,0,1,18,29.83Z" class="clr-i-solid clr-i-solid-path-3"></path>
+    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+</svg>

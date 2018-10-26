@@ -5,9 +5,10 @@ node_js:
 script: 
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo "Not building website PRs"; exit 0; fi'
   - cd latest && npm install && npm run deploy:ci
+  - cd ../v0.13 && npm install && npm run deploy:ci
   - cd ../v0.12 && npm install && npm run deploy:ci
-  - cd ../v0.11 && npm install && npm run deploy:ci
   - cd ../
+  - cp -a v0.11-cache deploy/documentation/v0.11
   - cp -a v0.10-cache deploy/documentation/v0.10
 deploy:
   provider: pages

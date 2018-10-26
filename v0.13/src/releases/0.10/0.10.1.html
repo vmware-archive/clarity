@@ -1,0 +1,40 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Tab Overflow</h6>
+        <p>Now Clarity supports cases where tabs don't fit on one page by providing a way to place some tabs in the overflow.</p>
+    </li>
+    <li new-component>
+        <h4>New Component: Vertical Nav</h4>
+        <p>
+            Clarity now provides a Vertical Nav Component. Vertical Nav supports features
+            like Collapsible Nav, Nav Groups, Icon Links & Lazy Loading Nav Links.
+            For more details, refer to the <a routerLink="/documentation/vertical-nav">Vertical Nav</a> Documentation
+        </p>
+        <p>
+            For basic use, declare the <code class="clr-code">clr-vertical-nav</code> component like this:</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-vertical-nav&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./charmander&quot; routerLinkActive=&quot;active&quot;&gt;Charmander&lt;/a&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./jigglypuff&quot; routerLinkActive=&quot;active&quot;&gt;Jigglypuff&lt;/a&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./pikachu&quot; routerLinkActive=&quot;active&quot;&gt;Pikachu&lt;/a&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./raichu&quot; routerLinkActive=&quot;active&quot;&gt;Raichu&lt;/a&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./snorlax&quot; routerLinkActive=&quot;active&quot;&gt;Snorlax&lt;/a&gt;
+    &lt;a clrVerticalNavLink routerLink=&quot;./pokedex&quot; routerLinkActive=&quot;active&quot;&gt;Credit&lt;/a&gt;
+&lt;/clr-vertical-nav&gt;</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed a scrolling bug in the collapsible navigation menu</li>
+    <li bug-fix>Fix Clarity Icons for Safari's HTMLElement.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Tab inputs <code class="clr-code">clrTabLinkId</code> and <code class="clr-code">clrTabContenId</code> have been changed to id so that the id attribute can be utilized</li>
+    <li>Improved word wrapping for the Stack View component</li>
+    <li>Adjusts the whitespace for dropdown menu's to make them more compact and balance the horizontal and vertical whitespace</li>
+    <li>Added the <code class="clr-code">AllShapes</code> shortcut for importing all icon sets in Clarity Icons</li>
+</ul>

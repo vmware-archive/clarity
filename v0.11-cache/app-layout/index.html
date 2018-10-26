@@ -1,0 +1,862 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Application Layout</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c146]   .example-aside-section[_ngcontent-c146]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c146]   .example-aside-section[_ngcontent-c146]{display:none}}.clr-example[_ngcontent-c146]   .example-footer[_ngcontent-c146]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-app-layout"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-app-layout-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Application Layout</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/app-layout#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/app-layout#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-properly-structured-layout-enforces-an-optimal-consistent-experience-across-applications">A properly structured layout enforces an optimal, consistent experience across applications.</h5>
+
+        <div id="design-guidelines">
+            <h3 id="layout">Layout</h3>
+
+            <p><strong>.main-container:</strong></p>
+            <div>
+                The <code class="clr-code">.main-container</code> is a vertical flexbox which wraps the following components:
+                <ul class="list">
+                    <li><a routerlink="./alerts" href="/app-layout/alerts">App-Level Alert</a></li>
+                    <li><a routerlink="./header" href="/app-layout/header">Header</a></li>
+                    <li><a routerlink="./header" href="/app-layout/header">Subnav</a></li>
+                    <li>Content Container</li>
+                </ul>
+            </div>
+
+            <p><strong>Note:</strong> Although Clarity does not have a footer component, a custom footer can be added in the main-container.</p>
+
+            <p><strong>.content-container:</strong></p>
+            <div>
+                The <code class="clr-code">.content-container</code> is a horizontal flexbox which wraps the following components:
+                <ul class="list">
+                    <li>Content Area</li>
+                    <li><a routerlink="./sidenav" href="/app-layout/sidenav">Sidenav</a></li>
+                </ul>
+            </div>
+
+            <clr-layout-all-demo _nghost-c146="">
+
+<div _ngcontent-c146="" class="clr-example">
+    <div _ngcontent-c146="" class="main-container">
+        <div _ngcontent-c146="" class="alert alert-app-level alert-info">
+            <div _ngcontent-c146="" class="alert-items">
+                <div _ngcontent-c146="" class="alert-item static">
+                    <div _ngcontent-c146="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c146="" class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div _ngcontent-c146="" class="alert-text">
+                        App Level Alert
+                    </div>
+                    <div _ngcontent-c146="" class="alert-actions">
+                        <button _ngcontent-c146="" class="btn btn-sm alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c146="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c146="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <header _ngcontent-c146="" class="header header-6">
+            <div _ngcontent-c146="" class="branding">
+                <a _ngcontent-c146="" href="#">
+                    <clr-icon _ngcontent-c146="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c146="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c146="" class="header-nav">
+                <a _ngcontent-c146="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c146="" shape="cloud"></clr-icon>
+                </a>
+                <a _ngcontent-c146="" class="active nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c146="" shape="folder"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <nav _ngcontent-c146="" class="subnav">
+            <ul _ngcontent-c146="" class="nav">
+                <li _ngcontent-c146="" class="nav-item">
+                    <a _ngcontent-c146="" class="nav-link active" href="javascript://">Subnav Link 1</a>
+                </li>
+                <li _ngcontent-c146="" class="nav-item">
+                    <a _ngcontent-c146="" class="nav-link" href="javascript://">Subnav Link 2</a>
+                </li>
+                <li _ngcontent-c146="" class="nav-item">
+                    <a _ngcontent-c146="" class="nav-link" href="javascript://">Subnav Link 3</a>
+                </li>
+                <li _ngcontent-c146="" class="nav-item">
+                    <a _ngcontent-c146="" class="nav-link" href="javascript://">Subnav Link 4</a>
+                </li>
+                <li _ngcontent-c146="" class="nav-item">
+                    <a _ngcontent-c146="" class="nav-link" href="javascript://">Subnav Link 5</a>
+                </li>
+            </ul>
+        </nav>
+        <div _ngcontent-c146="" class="content-container">
+            <div _ngcontent-c146="" class="content-area">
+                <p _ngcontent-c146="">
+                    Content Area
+                </p>
+                <p _ngcontent-c146="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+            <nav _ngcontent-c146="" class="sidenav">
+                <section _ngcontent-c146="" class="sidenav-content">
+                    <section _ngcontent-c146="" class="nav-group">
+                        <input _ngcontent-c146="" id="tabexample2" type="checkbox">
+                        <label _ngcontent-c146="" for="tabexample2">Sidenav</label>
+                        <ul _ngcontent-c146="" class="nav-list">
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link">Link 1</a></li>
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link">Link 2</a></li>
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link active">Link 3</a></li>
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link">Link 4</a></li>
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link">Link 5</a></li>
+                            <li _ngcontent-c146=""><a _ngcontent-c146="" class="nav-link">Link 6</a></li>
+                        </ul>
+                    </section>
+                </section>
+            </nav>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c146="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="main-container"&gt;
+    &lt;div class="alert alert-app-level"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;nav class="subnav"&gt;
+        ...
+    &lt;/nav&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;nav class="sidenav"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-layout-all-demo>
+
+            <h3 id="guidelines">Basic Structure</h3>
+
+            <p>Two constants of an app built in Clarity are the header and content area. These are the blocks upon which you build your app model.</p>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Header and Content Area" src="assets/images/documentation/app-layout/header_contentarea.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <h5 style="margin-top:0">Header</h5>
+                    The <a routerlink="./header" href="/app-layout/header">header</a> is for branding and app-level elements such as navigation, search, and account settings.
+
+                    <h5>Content Area</h5>
+                    The content area is where users focus their attention most of the time, gathering information and performing tasks–it is the canvas for your application. As the largest portion of your app, the content area is always visible.
+                </div>
+            </div>
+
+            <h3 id="layout-1">Layout</h3>
+            <p>Your layout should reflect the information or workflow of the selected <a routerlink="./navigation" href="/app-layout/navigation">navigation</a>. When laying out the content, keep the following in mind:</p>
+
+            <ul class="list">
+                <li>The flow of content–how to create a hierarchy and layout that draws attention to the areas of importance</li>
+                <li>The importance of designing to the <a routerlink="./grid" href="/app-layout/grid">grid</a></li>
+                <li>How to aid users in completing their tasks</li>
+                <li>How to handle large amounts of data</li>
+                <li>Responsive design (if that is part of your product’s goals)</li>
+            </ul>
+
+            <h5 id="common-layout-patterns">Common Layout Patterns</h5>
+
+            <p>Content can consist of any of the <a routerlink="./" href="/app-layout">Clarity components</a>, or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav,
+                and sidenav, see <a routerlink="./navigation" href="/app-layout/navigation">Navigation</a>.</p>
+
+            <h6 id="cards">Cards</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Cards" src="assets/images/documentation/app-layout/cards.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerlink="./cards" href="/app-layout/cards">Cards</a> are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
+                    </div>
+                    <p>
+                        Benefits of using cards include:
+                    </p>
+                    <ul class="list">
+                        <li>Ability to see data in a collection</li>
+                        <li>Facilitates scanning of information</li>
+                        <li>Works well across platforms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h6 id="tables-and-datagrids">Tables and Datagrids</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Tables and Datagrids" src="assets/images/documentation/app-layout/tables.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerlink="./tables" href="/app-layout/tables">Tables</a> and datagrids are for good for managing large amounts of data. These layouts work well when users need to compare data and perform batch operations.
+                    </div>
+                    <p>
+                        A table is a static view. A datagrid provides users flexibility in viewing the data, including filtering and sorting.
+                    </p>
+                    <p>
+                        Complex tables and datagrids work best on larger screens.
+                    </p>
+                </div>
+            </div>
+
+            <h6 id="forms">Forms</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Forms" src="assets/images/documentation/app-layout/forms.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerlink="./forms" href="/app-layout/forms">Forms</a> are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
+                    </div>
+                    <p>
+                        A benefit of a form is that users can see what information they must provide. Conversely, too many fields can discourage the user.
+                    </p>
+                    <p>Inline forms are better than modals in cases where you don't want to block users from performing other actions.</p>
+                </div>
+            </div>
+
+            <h6 id="tabs">Tabs</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Tabs" src="assets/images/documentation/app-layout/tabs.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <a routerlink="./tabs" href="/app-layout/tabs">Tabs</a> appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
+                    </div>
+                    <p>
+                        Tabs are not appropriate if users need to compare data across views.
+                    </p>
+                </div>
+            </div>
+
+            <h6 id="white-space-and-typography">White Space and Typography</h6>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="White Space and Typography" src="assets/images/documentation/app-layout/typography.png?1481674789140619000">
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        White space and <a routerlink="./typography" href="/app-layout/typography">typography</a> are important elements in conveying hierarchy. These elements direct users to what they should view next and make the content and data easier to parse. They also
+                        helps bring consistency to an app.
+                    </div>
+                </div>
+            </div>
+
+            <h6 id="button-placement">Button Placement</h6>
+
+            <p>In the content area, buttons are left-aligned, with the primary button in the leftmost position. This placement supports the F-pattern layout.</p>
+
+            <div class="row cozy-sm">
+                <div class="col-xs-12 col-md-5">
+                    <img alt="Buttons align left in content area" src="assets/images/documentation/app-layout/do_button_alignment.png?1481674789140619000">
+                    <p><b><font color="#318700">Do.</font> </b> Left-alignment puts buttons closest to the content.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-7">
+                    <div>
+                        <img alt="Buttons do not align right in content area" src="assets/images/documentation/app-layout/dont_button_alignment.png?1481674789140619000">
+                        <p><b><font color="#e12200">Don't.</font> </b>On the right, buttons might appear separate from content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="using-vertical-rhythm-for-layout">Using Vertical Rhythm for Layout</h4>
+
+            <p>Vertical rhythm is the repetition of spatial relationships in a design. A consistent rhythm gives elements a uniform and balanced placement in a design. The more consistent the design, the easier it is for users to read and understand.</p>
+
+            <h6 id="the-clarity-baseline-is-24px">The Clarity Baseline is 24px</h6>
+
+            <p>All elements in Clarity are built in terms of 24px:</p>
+
+            <ul class="list">
+                <li>The height of all components and text elements is in multiples of 24px.</li>
+                <li>The vertical white space between elements is also in multiples of 24px.</li>
+            </ul>
+
+            <p><img alt="24px Baseline" src="assets/images/documentation/app-layout/24_baseline.png?1481674789140619000"></p>
+
+            <h6 id="repeat-24px-in-your-layout">Repeat 24px in Your Layout</h6>
+            <p>
+                Calculate the vertical margins and padding between elements using the Clarity baseline.
+                A multiple of 24px can be a whole or half-ratio. Common numbers include: 6px, 12px, 18px,
+                24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px.
+            </p>
+
+
+            <h6 id="rem-units">Changing vertical rhythm with rem</h6>
+            <p>
+                Clarity uses <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units" target="_blank">rem units</a> for its whitespace and sizing. If the 24px vertical baseline
+                is too large or too small for your needs, you can edit this globally across a Clarity application
+                by changing the <code class="clr-code">font-size</code> style of the <code class="clr-code">html</code>
+                element, as in the example below.
+            </p>
+
+            <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">html {
+    /* the following line of CSS would change Clarity to a 20px vertical rhythm with a 5px grid */
+    font-size: 20px;
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+            <p>
+                Note that the declaration on the <code class="clr-code">html</code> selector needs to happen
+                <em>after</em> the Clarity CSS has been loaded. Also note that the "grid" for Clarity layouts and
+                components is equal to one-fourth of the baseline. So instead of a 6px grid, the example above will
+                put your application on a 5px grid.
+            </p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-app-layout-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

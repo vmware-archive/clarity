@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6 breaking-change>Removal of the undocumented ghost pages feature from the wizard.</h6>
+        <p>
+            The wizard has had an undocumented ghost pages feature, which was removed. If you happened upon this feature and are using it, you'll need to remove it from your wizards.
+        </p>
+
+        <h6 breaking-change>Removal of the code highlight component.</h6>
+        <p>
+            The code highlight component was removed as it was deprecated and planned to be removed. If you use it, you have a few options.
+        </p>
+        <ol>
+            <li>Use another code highlighting module, several can be found on NPM.</li>
+            <li>Implement your own version of the code highlight functionality, and you can <a href="https://github.com/vmware/clarity/blob/website/latest/src/app/utils/code-snippet.ts">reference our implementation for this website</a>.</li>
+        </ol>
+
+        <h6 breaking-change>Removal of old grid push and pull features.</h6>
+        <p>
+            The old grid push/pull functionality was deprecated and causes a number of issues with popovers and clipping overflow content. The solution is to migrate to the new grid formatting.
+        </p>
+        
+        <h6 breaking-change>Removal of non-prefixed Clarity API.</h6>
+        <p>
+            In 0.11, all non-prefixed Clarity classes were deprecated, such as <code class="clr-code">Wizard</code>. The correct implementation is always to use the prefixed version now like <code class="clr-code">ClrWizard</code>.
+        </p>
+        
+        <h6 breaking-change>Removal of the OK button in datagrid column selector.</h6>
+        <p>
+            This is a visual breaking change, where we removed the OK button from the datagrid column toggle popover. If you have been using the <code class="clr-code">clr-dg-column-toggle-button</code> button to localize the button text, you can safely remove the OK button as well. This component will now only be used for the Select All text localization. The <code class="clr-code">clrType</code> binding has also been deprecated since it will now not be needed.
+        </p>
+
+        <h6>Automatically upgrading using <code class="clr-code">ng update</code></h6>
+        <p>
+            Some of the changes above can be automatically migrated in an Angular CLI project by running <code class="clr-code">ng update @clr/angular@0.13.0-beta.2</code>. You may need to run <code class="clr-code">ng update @angular/core</code> first, and if you run into issues the best solution is to do a git reset, reinstall node modules, and try again.
+        </p>
+
+        <p>This release also includes all bugfixes from the 0.12 releases.</p>
+    </li>
+</ul>

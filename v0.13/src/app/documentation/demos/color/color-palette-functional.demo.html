@@ -1,0 +1,78 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-tabs>
+    <clr-tab>
+        <button clrTabLink>Light Theme Colors</button>
+        <clr-tab-content *clrIfActive>
+            <div class="row">
+                <clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
+                <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of lightThemePalettes">
+                    <h6 class="legend dark-text">{{palette.legend}}</h6>
+                    <ul class="card card-block card-swatch-block">
+                        <li class="card-swatch" *ngFor="let color of palette.colors"
+                            [style.background-color]="color.value"
+                            [class.dark-text]="color.text === 'dark'"
+                            [class.primary]="color.primary"
+                            [class.copied]="color.copied"
+                            (click)="copyNotificationOnClick(color); copyContent=color.value" >
+                            <div class="card-swatch-content">
+                                <div *ngIf="color.primary">
+                                    {{palette.type}}
+                                </div>
+                                <div *ngIf="!color.primary">
+                                    <span *ngIf="color.bulleted" class="bullet">&#8226;</span>
+                                    <span>A</span>
+                                    <span class="hex-contrast" *ngIf="color.text === 'mid'">A</span>
+                                </div>
+                                <div class="rgb-value">
+                                    <span class="copied-indication">Copied!</span>
+                                    <clr-icon shape="copy"></clr-icon>
+                                    {{color.value | uppercase}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+        <button clrTabLink>Dark Theme Colors</button>
+        <clr-tab-content *clrIfActive>
+            <div class="row dark">
+                <clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
+                <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of darkThemePalettes">
+                    <h6 class="legend">{{palette.legend}}</h6>
+                    <ul class="card card-block card-swatch-block">
+                        <li class="card-swatch" *ngFor="let color of palette.colors"
+                            [style.background-color]="color.value"
+                            [class.dark-text]="color.text === 'dark'"
+                            [class.primary]="color.primary"
+                            [class.copied]="color.copied"
+                            (click)="copyNotificationOnClick(color); copyContent=color.value" >
+                            <div class="card-swatch-content">
+                                <div *ngIf="color.primary">
+                                    {{palette.type}}
+                                </div>
+                                <div *ngIf="!color.primary">
+                                    <span *ngIf="color.bulleted" class="bullet">&#8226;</span>
+                                    <span>A</span>
+                                    <span class="hex-contrast" *ngIf="color.text === 'mid'">A</span>
+                                </div>
+                                <div class="rgb-value">
+                                    <span class="copied-indication">Copied!</span>
+                                    <clr-icon shape="copy"></clr-icon>
+                                    {{color.value | uppercase}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </clr-tab-content>
+    </clr-tab>
+</clr-tabs>

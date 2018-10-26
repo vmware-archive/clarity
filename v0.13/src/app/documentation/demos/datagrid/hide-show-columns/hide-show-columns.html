@@ -1,0 +1,72 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Hide/Show Columns</h2>
+
+<p>
+    Datagrid columns are hideable with the <code class="clr-code">*clrDgHideableColumn</code> directive. Because this is
+    a structural directive it cannot be used on the <code class="clr-code">clr-dg-column</code> component directly.
+    Instead, you use <code class="clr-code">*clrDgHideableColumn</code> on an ng-container inside your
+    <code class="clr-code">clr-dg-column</code>. It defaults to showing the column but you can use the hidden property
+    to pre-configure it.
+</p>
+
+<h4>Custom Toggle Strings</h4>
+<p>If you need to customize the hide/show toggle component you can override the defaults by adding a <code class="clr-doce">clr-dg-column-toggle</code> component at the beginning of the <code class="clr-code">clr-dg-footer</code> component:
+</p>
+<clr-code-snippet [clrCode]="customToggle"  clrLanguage="html"></clr-code-snippet>
+
+
+<clr-datagrid>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            User ID
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            Name
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: false}">
+            Creation date
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn="{hidden: true}">
+            Pokemon
+        </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn>
+            Favorite color
+        </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        <clr-dg-column-toggle>
+            <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
+            <clr-dg-column-toggle-button>Alle auswählen!</clr-dg-column-toggle-button>
+        </clr-dg-column-toggle>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} users
+        <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="example"  clrLanguage="html"></clr-code-snippet>
+

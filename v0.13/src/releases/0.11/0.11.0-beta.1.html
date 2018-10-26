@@ -1,0 +1,127 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Scoped Clarity Packages</h6>
+        <p>
+            Clarity has changed to scoped packages starting at v0.11.0. There were several reasons for changing to
+            scoped packages. One important factor in this decision was the need to remove the word `clarity`
+            from file-paths and filenames so that Clarity would not get blocked by Easylist (commonly used in ad
+            blockers).
+        </p>
+        <p>All Clarity packages have moved locations in the <code class="clr-code">npm</code> repository.</p>
+        <p>All Clarity packages have moved locations in the <code class="clr-code">npm</code> repository.</p>
+        <ul>
+            <li breaking-change>
+                Clarity Angular is located here: <a href="https://www.npmjs.com/package/@clr/angular">@clr/angular</a>
+            </li>
+            <li breaking-change>
+                Clarity Icons is located here: <a href="https://www.npmjs.com/package/@clr/icons">@clr/icons</a>
+            </li>
+            <li breaking-change>
+                Clarity UI is located here: <a href="https://www.npmjs.com/package/@clr/ui">@clr/ui</a>
+            </li>
+            <li breaking-change>Clarity <code class="clr-code">v0.11.0</code> requires a minimum version of Angular 5</li>
+        </ul>
+    </li>
+</ul>
+<h2>Upgrade Guide</h2>
+<p>
+    Because Clarity packages have moved on npm, you will need to make changes to the build
+    configuration and relative import paths that will enable your application to consume the scoped Clarity packages.
+    Here, we use a typical Angular Cli (angular-cli generated app or the clarity-seed) application and describe the
+    changes needed to upgrade an application to Clarity v0.11.0. We will assume that the application is set up
+    similar to the <a href="https://github.com/vmware/clarity-seed" target="_blank">clarity-seed</a> application.
+</p>
+<h3>(Re) Install Clarity</h3>
+<p>Clarity packages (angular, icons and ui) are now published under the <code class="clr-code">@clr</code> scope. This
+    means you will need to uninstall the old clarity packages and re-install clarity@0.11.0 from the <code
+            class="clr-code">@clr</code> packages.
+</p>
+<div>
+    <h6>Un-install the old Clarity source files:</h6>
+    <clr-code-snippet
+            [clrCode]="'$ npm uninstall clarity-angular clarity-icons clarity-ui --save'"
+            [clrDisablePrism]="true"></clr-code-snippet>
+    <h6>Install the <code class="clr-code">@clr</code> packages</h6>
+    <clr-code-snippet
+            [clrCode]="'$ npm install @clr/angular @clr/icons @clr/ui --save'"
+            [clrDisablePrism]="true"></clr-code-snippet>
+</div>
+<h3>Update <code class="clr-code">.angular-cli.json</code> Configuration</h3>
+<p>
+    If your app is using <code class="clr-code">ClarityIcons</code> and <code class="clr-code">ClarityUI</code>, like
+    clarity-seed, you will need to change the filepaths in the styles and scripts array's.
+</p>
+<p><strong>NOTE:</strong> both the filepath and the filename change.</p>
+<div>
+    <h6>Change the v0.10.x <code class="clr-code">.angular-cli.json</code></h6>
+    <div>
+        <pre><code>
+...
+"styles": [
+    "../node_modules/clarity-icons/clarity-icons.min.css",
+    "../node_modules/clarity-ui/clarity-ui.min.css",
+    ...
+  ],
+  "scripts": [
+    ...
+    "../node_modules/clarity-icons/clarity-icons.min.js"
+  ],
+...</code></pre>
+    </div>
+    <h6>into the v0.11.x <code class="clr-code">.angular-cli.json</code></h6>
+    <div>
+        <pre><code>
+...
+"styles": [
+                "../node_modules/@clr/icons/clr-icons.min.css",
+                "../node_modules/@clr/ui/clr-ui.min.css",
+                "styles.css"
+            ],
+            "scripts": [
+                ...
+                "../node_modules/@clr/icons/clr-icons.min.js",
+                ...
+            ],
+...</code></pre>
+    </div>
+</div>
+<h3>Update Import Statements</h3>
+<p>
+    Clarity is now following the <a target="_blank"
+                                    href="https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview">Angular
+    Package
+    Format</a> in order to support consumption in a variety of ways that use common build and bundling tools in use
+    today.
+
+    This means Clarity applications upgrading to v0.11.0 will need to update the <a
+        href="https://www.typescriptlang.org/docs/handbook/module-resolution.html" target="_blank">non-relative</a>
+    module
+    paths in
+    their application sources.
+</p>
+<div>
+    <h6>Change the v0.10.x <code class="clr-code">import</code> statement.</h6>
+    <div>
+        <pre><code ngNonBindable>
+import &#123; ClrComponent &#125; from "clarity-angular";</code></pre>
+    </div>
+    <h6>into the v0.11.x <code class="clr-code">import</code> statement.</h6>
+    <div>
+        <pre><code ngNonBindable>
+import &#123; ClrComponent &#125; from "@clr/angular";</code></pre>
+    </div>
+</div>
+<p>
+    Once the <code class="clr-code">.angular-cli.json</code> and <code class="clr-code">import</code> statements are
+    updated, your application should build and run just as it did before. If you have any questions or issues
+    upgrading please reach out on StackOverflow with the tag
+    <a href="https://stackoverflow.com/questions/tagged/vmware-clarity" target="_blank">vmware-clarity</a> or on twitter
+    <a href="https://twitter.com/vmwareclarity" target="_blank">@VMwareClarity</a>.
+</p>

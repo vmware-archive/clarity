@@ -1,0 +1,1135 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tabs</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tables"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-tabs-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Tabs</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/tabs#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/tabs#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="tabs-divide-content-into-separate-views-which-users-navigate-between">Tabs
+            divide content into separate views which users navigate between.</h5>
+
+        <div id="code-examples">
+            <h4 id="static">Static</h4>
+
+            <p>
+                The following is a static example of tabs with their associated sections.
+                You cannot switch between tabs in this static demo because it does not
+                contain the JavaScript to handle this behavior.
+            </p>
+            <p>
+                The active tab should have the additional class <code class="clr-code">active</code>.
+                The stylesheet will hide all the section elements where attribute <code class="clr-code">aria-hidden</code>
+                is set to <code class="clr-code">true</code>.
+            </p>
+
+            <clr-tabs-demo-static>
+
+<div class="clr-example">
+    <ul class="nav" id="demoTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button aria-controls="panelDashboard" aria-selected="true" class="btn btn-link nav-link active" id="tabDashboard" type="button">Dashboard</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button aria-controls="panelManagement" aria-selected="false" class="btn btn-link nav-link" id="tabManagement" type="button">Management</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button aria-controls="panelCloud" aria-selected="false" class="btn btn-link nav-link" id="tabCloud" type="button">Cloud</button>
+        </li>
+    </ul>
+    <section aria-labelledby="tabDashboard" id="panelDashboard" role="tabpanel">
+        <p>You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior. The demo is here to show the look of tabs and the DOM structure.</p>
+    </section>
+    <section aria-hidden="true" aria-labelledby="tabManagement" id="panelManagement" role="tabpanel">
+        <p>Content 2</p>
+    </section>
+    <section aria-hidden="true" aria-labelledby="tabCloud" id="panelCloud" role="tabpanel">
+        <p>Content 3</p>
+    </section>
+</div>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ul id="demoTabs" class="nav" role="tablist"&gt;
+    &lt;li role="presentation" class="nav-item"&gt;
+        &lt;button id="tab1" class="btn btn-link nav-link active" aria-controls="panel1"
+                aria-selected="true" type="button"&gt;Dashboard&lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li role="presentation" class="nav-item"&gt;
+        &lt;button id="tab2" class="btn btn-link nav-link" aria-controls="panel2"
+                aria-selected="false" type="button"&gt;Management&lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li role="presentation" class="nav-item"&gt;
+        &lt;button id="tab3" class="btn btn-link nav-link" aria-controls="panel3"
+                aria-selected="false" type="button"&gt;Cloud&lt;/button&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;section id="panel1" role="tabpanel" aria-labelledby="tab1"&gt;
+    ...
+&lt;/section&gt;
+&lt;section id="panel2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true"&gt;
+    ...
+&lt;/section&gt;
+&lt;section id="panel3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true"&gt;
+    ...
+&lt;/section&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tabs-demo-static>
+
+            <h6 id="accessibility">Accessibility</h6>
+
+            <p>The active tab should have the attribute <code class="clr-code">aria-selected</code>
+                set to <code class="clr-code">true</code>, and the others to false.</p>
+
+            <p>The active panel associated with the active tab should have the attribute <code class="clr-code">aria-hidden</code> set to <code class="clr-code">true</code>,
+                and the others <code class="clr-code">to false</code>.</p>
+
+            <p>In addition, each tab should have an aria-controls attribute set to the id of the
+                matching panel and each panel should have an <code class="clr-code">aria-labelledby</code>
+                attribute set to the id of the tab associated with the panel.</p>
+
+            <h4 id="angular-component">Angular Component</h4>
+
+            <h5>Simple Tabs</h5>
+            <p>
+                The tabs component uses the <code class="clr-code">*clrIfActive</code> structural
+                directive to lazy load the content of an active tab. For simple cases, using the
+                microsyntax as shown below would suffice.
+            </p>
+            <clr-modal-tabs-angular-simple>
+
+<div class="clr-example">
+    <clr-tabs>
+        <ul class="nav" role="tablist">
+            
+            <!----><!---->
+                <!----><!---->
+        <button clrtablink="" id="link1" aria-selected="true" aria-controls="content1" class="btn btn-link nav-link nav-item active" role="presentation" type="button">Dashboard</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-1" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Management</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-2" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Cloud</button>
+      
+                
+            
+            <!---->
+        </ul>
+        
+        
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!----><clr-tab-content id="content1" role="tabpanel" aria-labelledby="link1" aria-hidden="false" data-hidden="false">
+        
+                <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via
+                    clicking or through keyboard via tabbing.</p>
+            
+    </clr-tab-content>
+        
+    </clr-tab>
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+    
+    </clr-tabs>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tabs&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink id="link1"&gt;Tab1&lt;/button&gt;
+        &lt;clr-tab-content id="content1" *clrIfActive&gt;
+        ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Tab2&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive="true"&gt;
+        ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+&lt;/clr-tabs&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-tabs-angular-simple>
+
+            <h5>Tabs with two-way binding</h5>
+            <p>
+                If you'd like to use two-way binding on the active state of the tabs, we recommend that
+                you use the de-sugared syntax of the structural directive by wrapping it in <code class="clr-code">ng-template</code> as shown below.
+            </p>
+
+            <clr-modal-tabs-angular>
+
+<div class="clr-example">
+    <clr-tabs>
+        <ul class="nav" role="tablist">
+            
+            <!----><!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-3" aria-selected="true" aria-controls="clr-tab-content-1" class="btn btn-link nav-link nav-item active" role="presentation" type="button">Dashboard</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-4" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Management</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-5" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Cloud</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-6" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Infrastructure</button>
+      
+                
+            
+            <!---->
+        </ul>
+        
+        
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+                <clr-tab-content role="tabpanel" id="clr-tab-content-1" aria-labelledby="clr-tab-link-3" aria-hidden="false" data-hidden="false">
+        
+                    <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+                
+    </clr-tab-content>
+            
+        
+    </clr-tab>
+
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+    
+    </clr-tabs>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tabs&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Dashboard&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="dashboardActive"&gt;
+            &lt;clr-tab-content&gt;
+                ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Management&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="managementActive"&gt;
+            &lt;clr-tab-content&gt;
+                ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Cloud&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="cloudActive"&gt;
+            &lt;clr-tab-content&gt;
+                ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Infrastructure&lt;/button&gt;
+        &lt;ng-template [(clrIfActive)]="infrastructureActive"&gt;
+            &lt;clr-tab-content&gt;
+                ...
+            &lt;/clr-tab-content&gt;
+        &lt;/ng-template&gt;
+    &lt;/clr-tab&gt;
+&lt;/clr-tabs&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-tabs-angular>
+
+            <h5>Tab Overflow</h5>
+
+            <p>
+                Tab overflow is used when the tab group is larger than its containing space, or used to
+                preserve space. The overflow is configurable so you can assign tabs to the dropdown menu.
+            </p>
+
+            <p>
+                Tab overflow is shown below as an ellipsis button in the tab group and is the last
+                position to the right. Clicking on the ellipsis will show the overflow dropdown menu.
+            </p>
+
+            <p>
+                We recommend that a overflow dropdown have at least two options in it. We also recommend
+                that you test out scenarios with tab labels that may vary in length or when translated to
+                another language to make sure there is enough room for them.
+            </p>
+
+            <clr-modal-tabs-angular-overflow>
+
+<div class="clr-example">
+    <clr-tabs>
+        <ul class="nav" role="tablist">
+            
+            <!----><!---->
+                <!----><!---->
+        <button clrtablink="" id="link1" aria-selected="true" aria-controls="content1" class="btn btn-link nav-link nav-item active" role="presentation" type="button">Dashboard</button>
+      
+                
+            <!---->
+                <!----><!---->
+        <button clrtablink="" id="clr-tab-link-8" aria-selected="false" class="btn btn-link nav-link nav-item" role="presentation" type="button">Management</button>
+      
+                
+            <!---->
+                <!---->
+            <!---->
+                <!---->
+            
+            <!----><!---->
+                <div class="tabs-overflow bottom-right">
+                    <li class="nav-item" role="presentation">
+                        <button class="btn btn-link nav-link dropdown-toggle" type="button">
+                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                        </button>
+                    </li>
+                    
+                    <clr-tab-overflow-content style="position: absolute; top: 0; bottom: auto; left: 0; right: auto;" class="dropdown-menu is-off-screen">
+        
+                        <!----><!---->
+                            <!---->
+                        <!---->
+                            <!---->
+                        <!---->
+                            <!----><!---->
+        <button clrtablink="" id="clr-tab-link-9" aria-selected="false" class="btn" role="presentation" type="button">Cloud</button>
+      
+                            
+                        <!---->
+                            <!----><!---->
+        <button clrtablink="" id="clr-tab-link-10" aria-selected="false" class="btn" role="presentation" type="button">Settings</button>
+      
+                            
+                        
+                    
+    </clr-tab-overflow-content>
+                </div>
+            
+        </ul>
+        
+        
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!----><clr-tab-content id="content1" role="tabpanel" aria-labelledby="link1" aria-hidden="false" data-hidden="false">
+        
+                <p>Content for Dashboard tab. Here is a <a href="javascript://">link</a> that can be accessed via
+                    clicking or through keyboard via tabbing.</p>
+            
+    </clr-tab-content>
+        
+    </clr-tab>
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+        <clr-tab>
+        
+            <ng-component>
+      <!---->
+    </ng-component>
+            <!---->
+        
+    </clr-tab>
+    
+    </clr-tabs>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tabs&gt;
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Dashboard&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive&gt;
+            ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Management&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive&gt;
+            ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink&gt;Cloud&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive&gt;
+            ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink [clrTabLinkInOverflow]="inOverflow"&gt;Settings&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive&gt;
+            ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+    
+    &lt;clr-tab&gt;
+        &lt;button clrTabLink [clrTabLinkInOverflow]="inOverflow"&gt;Alerts&lt;/button&gt;
+        &lt;clr-tab-content *clrIfActive&gt;
+            ...
+        &lt;/clr-tab-content&gt;
+    &lt;/clr-tab&gt;
+&lt;/clr-tabs&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-tabs-angular-overflow>
+
+            <h6 id="accessibility-1">Accessibility</h6>
+
+            <p>
+                All attributes associated with accessibility (<code class="clr-code">aria-controls</code>,
+                <code class="clr-code">aria-selected</code>, <code class="clr-code">aria-hidden</code>,
+                <code class="clr-code">aria-labelledby</code>, <code class="clr-code">role</code>)
+                are automatically created and managed by the angular component.
+            </p>
+
+            <h4 id="summary-of-options">Summary of Options</h4>
+
+            <h5>Tab Link Directive (clrTabLink)</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[id]</b>
+                        <div class="hidden-sm-up">Values:<br>&lt;any valid id for html element&gt;</div>
+                        <div class="hidden-sm-up">Default: auto-generated</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+                    <td class="hidden-xs-down">auto-generated</td>
+                    <td class="left">
+                        If explicitly set, will assign the set id as the id for the element.
+                        If not set, the component will auto-generate the id.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Tab Content (clr-tab-content)</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrTabLinkInOverflow]</b>
+                        <div class="hidden-sm-up">Values:<br>true, false</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;true, false&gt;</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        If true, then this tab link will go into the overflow section of the tabs.
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[id]</b>
+                        <div class="hidden-sm-up">Values:<br>&lt;any valid id for html element&gt;</div>
+                        <div class="hidden-sm-up">Default: auto-generated</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;any valid id for html element&gt;</td>
+                    <td class="hidden-xs-down">auto-generated</td>
+                    <td class="left">
+                        Used on &lt;clr-tab-content&gt;. If explicitly set, will assign the set id as the id for the
+                        element. If not set, the component will auto-generate the id.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5>Directives used along with clr-tab-content</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrIfActive)]</b>
+                        <div class="hidden-sm-up">Values:<br>true, false</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;true, false&gt;</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the tab content. The content of the active
+                        tab will lazily load when set to true, and destroy it when set to false.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use tabs for alternate views within the <a routerlink="./sidenav" href="/tabs/sidenav">sidenav</a>
+                or main content area.</p>
+
+            <p>Don’t use tabs to break user interactions into a series of steps. Serial workflows are
+                best presented in a <a routerlink="./wizards" href="/tabs/wizards">wizard</a>.</p>
+
+            <p>Avoid using tabs in cards and modals.</p>
+
+            <h3 id="presentation">Presentation</h3>
+
+            <p>Tabs appear in a single, non-scrollable row, above their content. The width of each tab
+                is dependent on its label.</p>
+
+            <p>To ensure that all tabs appear in the container, avoid using more than seven tabs and
+                limit labels to one or two words.</p>
+
+            <h3 id="content">Content</h3>
+
+            <p>While the content within tabs is flexible, follow these guidelines for organization and
+                presentation:</p>
+
+            <ul class="list">
+                <li>Ensure that the content in each view is independent of the content in other views.</li>
+                <li>Don’t force users to navigate back and forth to compare data–keep such content
+                    in the same view.</li>
+                <li>Avoid cross-linking between tabs.</li>
+                <li>If the content within a view is broad, divide it into subsections.</li>
+            </ul>
+
+            <h3 id="labels">Labels</h3>
+
+            <ul class="list">
+                <li>Ensure that the labels show a clear relationship between views.</li>
+                <li>Favor nouns over verbs, for example, Settings, Permissions, and Performance.</li>
+                <li>Avoid generic labels such as General or Advanced.</li>
+                <li>Use title-style caps.</li>
+                <li>Avoid using icons in labels.</li>
+            </ul>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-tabs-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

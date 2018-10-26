@@ -1,0 +1,268 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+    <div class="main-container">
+        <header class="header-6 space-below">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-nav">
+                <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
+                <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
+            </div>
+            <div class="header-actions">
+                <a href="javascript://" class="nav-link nav-icon">
+                    <clr-icon shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+
+        <header class="header-6 space-below">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <form class="search">
+                <label for="search_input">
+                    <input id="search_input" type="text" placeholder="Search for keywords...">
+                </label>
+            </form>
+            <div class="header-actions">
+                <a href="javascript://" class="nav-link nav-icon">
+                    <clr-icon shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+
+        <header class="header-6 space-below">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <clr-dropdown>
+                    <button class="nav-icon" clrDropdownTrigger>
+                        <clr-icon shape="cog"></clr-icon>
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                    <clr-dropdown-menu clrPosition="bottom-right">
+                        <a href="javascript://" clrDropdownItem>About</a>
+                        <a href="javascript://" clrDropdownItem>Preferences</a>
+                        <a href="javascript://" clrDropdownItem>Log out</a>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
+            </div>
+        </header>
+
+        <header class="header-6 space-below">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-nav">
+                <a href="javascript://" class="nav-link nav-icon">
+                    <clr-icon shape="cloud"></clr-icon>
+                </a>
+                <a href="javascript://" class="active nav-link nav-icon">
+                    <clr-icon shape="folder"></clr-icon>
+                </a>
+            </div>
+            <form class="search">
+                <label for="search_input1">
+                    <input id="search_input1" type="text" placeholder="Search for keywords...">
+                </label>
+            </form>
+            <div class="header-actions">
+                <clr-dropdown>
+                    <button class="nav-icon" clrDropdownTrigger>
+                        <clr-icon shape="user"></clr-icon>
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                    <clr-dropdown-menu clrPosition="bottom-right">
+                        <a href="javascript://" clrDropdownItem>About</a>
+                        <a href="javascript://" clrDropdownItem>Preferences</a>
+                        <a href="javascript://" clrDropdownItem>Log out</a>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
+            </div>
+        </header>
+
+        <header class="header-6 space-below">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="javascript://" class="nav-link nav-text">
+                    Log Out
+                </a>
+            </div>
+        </header>
+
+        <header class="header-6">
+            <div class="branding">
+                <a href="javascript://" class="nav-link">
+                    <clr-icon shape="vm-bug"></clr-icon>
+                    <span class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div class="header-actions header-actions--overflow">
+                <clr-dropdown>
+                    <button class="nav-text" clrDropdownTrigger>
+                        john.doe@vmware.com
+                        <clr-icon shape="caret down"></clr-icon>
+                    </button>
+                    <clr-dropdown-menu clrPosition="bottom-right">
+                        <a href="javascript://" clrDropdownItem>Preferences</a>
+                        <a href="javascript://" clrDropdownItem>Log out</a>
+                    </clr-dropdown-menu>
+                </clr-dropdown>
+            </div>
+        </header>
+    </div>
+</div>
+<pre><code clr-code-highlight="language-html">
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-nav&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;active nav-link&quot;&gt;&lt;span class=&quot;nav-text&quot;&gt;Dashboard&lt;/span&gt;&lt;/a&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;&lt;span class=&quot;nav-text&quot;&gt;Interactive Analytics&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class=&quot;search&quot;&gt;
+        &lt;label for=&quot;search_input&quot;&gt;
+            &lt;input id=&quot;search_input&quot; type=&quot;text&quot; placeholder=&quot;Search for keywords...&quot;&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class=&quot;nav-icon&quot; clrDropdownTrigger&gt;
+                &lt;clr-icon shape=&quot;cog&quot;&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu clrPosition=&quot;bottom-right&quot;&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-nav&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;cloud&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;...&quot; class=&quot;active nav-link nav-icon&quot;&gt;
+            &lt;clr-icon shape=&quot;folder&quot;&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class=&quot;search&quot;&gt;
+        &lt;label for=&quot;search_input&quot;&gt;
+            &lt;input id=&quot;search_input&quot; type=&quot;text&quot; placeholder=&quot;Search for keywords...&quot;&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class=&quot;nav-icon&quot; clrDropdownTrigger&gt;
+                &lt;clr-icon shape=&quot;user&quot;&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu clrPosition=&quot;bottom-right&quot;&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link nav-text&quot;&gt;
+            Log Out
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class=&quot;header-6&quot;&gt;
+    &lt;div class=&quot;branding&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;nav-link&quot;&gt;
+            &lt;clr-icon shape=&quot;vm-bug&quot;&gt;&lt;/clr-icon&gt;
+            &lt;span class=&quot;title&quot;&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class=&quot;nav-text&quot; clrDropdownTrigger&gt;
+                john.doe@vmware.com
+                &lt;clr-icon shape=&quot;caret down&quot;&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu clrPosition=&quot;bottom-right&quot;&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href=&quot;...&quot; clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>

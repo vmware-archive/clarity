@@ -1,0 +1,997 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tooltips</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c31]{position:relative}.clr-example.squeeze[_ngcontent-c31]{padding:24px}.clr-example.example-center[_ngcontent-c31]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c31]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c31]   .example-icon[_ngcontent-c31]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]{background-image:generateAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-add-icon[_ngcontent-c31]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]{background-image:generateEditIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-edit-icon[_ngcontent-c31]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-folder-add-icon[_ngcontent-c31]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c31]   .example-icon.example-more-icon[_ngcontent-c31]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c32]{position:relative}.clr-example.squeeze[_ngcontent-c32]{padding:24px}.clr-example.example-center[_ngcontent-c32]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c32]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c32]   .example-icon[_ngcontent-c32]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]{background-image:generateAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-add-icon[_ngcontent-c32]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]{background-image:generateEditIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-edit-icon[_ngcontent-c32]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-folder-add-icon[_ngcontent-c32]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c32]   .example-icon.example-more-icon[_ngcontent-c32]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">.clr-example[_ngcontent-c33]{position:relative}.clr-example.squeeze[_ngcontent-c33]{padding:24px}.clr-example.example-center[_ngcontent-c33]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.clr-example.example-center.example-column[_ngcontent-c33]{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.clr-example[_ngcontent-c33]   .example-icon[_ngcontent-c33]{display:inline-block;height:14px;width:14px;padding:0;background-repeat:no-repeat;background-size:contain;cursor:pointer;vertical-align:middle}.clr-example[_ngcontent-c33]   .example-icon.example-add-icon[_ngcontent-c33]{background-image:generateAddIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-add-icon[_ngcontent-c33]:hover{background-image:generateAddIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-edit-icon[_ngcontent-c33]{background-image:generateEditIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-edit-icon[_ngcontent-c33]:hover{background-image:generateEditIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-folder-add-icon[_ngcontent-c33]{background-image:generateFolderAddIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-folder-add-icon[_ngcontent-c33]:hover{background-image:generateFolderAddIcon(#007cbb)}.clr-example[_ngcontent-c33]   .example-icon.example-more-icon[_ngcontent-c33]{background-image:generateMoreIcon()}.clr-example[_ngcontent-c33]   .example-icon.example-more-icon[_ngcontent-c33]:hover{background-image:generateMoreIcon(#007cbb)}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tooltips"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-tooltips-demo class="content-area dox-content-panel">
+<clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Tooltips</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/tooltips#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/tooltips#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-tooltip-provides-a-short-description-of-a-ui-element">A tooltip 
+            provides a short description of a UI element.</h5>
+
+        <div id="code-examples">
+            <h6 id="tooltip">.tooltip</h6>
+            <p>This class wraps an actionable icon followed by the <code class="clr-code">.tooltip-content</code> 
+                to be shown on the icon. The content appears when the user hovers over the icon.</p>
+
+            <h6 id="tooltip-content">.tooltip-content</h6>
+            <p>This class contains the text that will be shown when the tooltip is visible.</p>
+
+            <h3 id="sizes">Sizes</h3>
+
+            <p>Tooltips support four sizes, defined by using one of the following classes with the
+                <code class="clr-code">.tooltip</code> class:</p>
+
+            <ul class="list">
+                <li>.tooltip-xs</li>
+                <li>.tooltip-sm</li>
+                <li>.tooltip-md</li>
+                <li>.tooltip-lg</li>
+            </ul>
+
+            <clr-tooltips-sizes-demo class="tooltip-demo" _nghost-c31="">
+
+<h6 _ngcontent-c31="">Extra Small</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-xs" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-xs"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c31="">Small</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-sm" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum sit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c31="">Medium</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-md" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">
+            Lorem ipsum dolor sit amet, ipsum
+        </span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c31="">Large</h6>
+<div _ngcontent-c31="" class="clr-example squeeze example-center">
+    <a _ngcontent-c31="" aria-haspopup="true" class="tooltip tooltip-lg" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c31="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c31="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c31="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tooltips-sizes-demo>
+
+            <h3 id="directions">Directions</h3>
+
+            <p>Tooltips support six directions, defined by using one of the following classes with the
+                <code class="clr-code">.tooltip</code> class:</p>
+
+            <ul class="list">
+                <li>.tooltip-top-right</li>
+                <li>.tooltip-top-left</li>
+                <li>.tooltip-bottom-right</li>
+                <li>.tooltip-bottom-left</li>
+                <li>.tooltip-right</li>
+                <li>.tooltip-left</li>
+            </ul>
+
+            <clr-tooltips-directions-demo class="tooltip-demo" _nghost-c32="">
+
+<h6 _ngcontent-c32="">Top-Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-right"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c32="">Top-Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-top-left"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c32="">Bottom-Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-md tooltip-bottom-right"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, ipsum&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c32="">Bottom-Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-lg tooltip-bottom-left"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c32="">Right</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-right" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum dolor sit amet, ipsum</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-right"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum dolor sit amet, ipsum&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c32="">Left</h6>
+<div _ngcontent-c32="" class="clr-example squeeze example-center">
+    <a _ngcontent-c32="" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left" href="javascript://" role="tooltip">
+        <clr-icon _ngcontent-c32="" shape="info-circle" size="24"></clr-icon>
+        <span _ngcontent-c32="" class="tooltip-content">Lorem ipsum sit</span>
+    </a>
+</div>
+<clr-code-snippet _ngcontent-c32="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;a href="..." role="tooltip" aria-haspopup="true" class="tooltip tooltip-sm tooltip-left"&gt;
+    &lt;clr-icon shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;span class="tooltip-content"&gt;Lorem ipsum sit&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tooltips-directions-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use tooltips for actionable icons that do not have text labels, such as the icons in a 
+                toolbar. A tooltip is visible on hover.</p>
+
+            <p>Don’t use a tooltip on:</p>
+
+            <ul class="list">
+                <li><strong>Components.</strong> Provide a descriptive label and use inline or signpost
+                    help for more information.
+                </li>
+                <li><strong>Static images.</strong> Use the HTML alt tag to provide information about the image.</li>
+                <li><strong>Textual links.</strong> Ensure that the link describes its destination and is not truncated.
+                </li>
+            </ul>
+
+            <p>Don’t rely on tooltips to meet accessibility requirements. Rather, ensure that your underlying 
+                content is well-structured for accessibility, for example, by using ARIA roles.</p>
+
+            <h4 id="placement">Placement</h4>
+
+            <p>Choose a tooltip position that ensures the entire tooltip is visible on the screen and that 
+                the tooltip does not cover an important UI element. By default, the positioning for tooltips 
+                is to the top-right of the icon, pointing to its center.</p>
+
+            <p>Other positions are:</p>
+
+            <ul class="list">
+                <li>Top left</li>
+                <li>Bottom right</li>
+                <li>Bottom left</li>
+                <li>Side left</li>
+                <li>Side right</li>
+            </ul>
+
+            <h4 id="size">Size</h4>
+
+            <p>Set a width that accommodates the text string. The default is 240 px. Other choices are
+                72 px, 120 px, and 360 px.</p>
+
+            <h4 id="text">Text</h4>
+
+            <ul class="list">
+                <li>Use a verb phrase to describe the action on the icon, for example, “Edit settings.”</li>
+                <li>Use only plain text and be concise. Tooltips can be a sentence fragment.</li>
+                <li>If more detailed information is required, use another form of help.</li>
+                <li>Use sentence-style caps and no ending punctuation.</li>
+            </ul>
+        </div>
+
+        <div id="ng-code-examples">
+            <h2 id="angular-component">Angular Component</h2>
+
+            <p>
+                The tooltip component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the tooltip content
+                to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the tooltip.
+            </p>
+            <p>
+                If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+                read the tooltip inline as opposed to when the user moves focus to the trigger,
+                we also support the tooltip content without a
+                <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the tooltip
+                itself initializes, and will not be destroyed or recreated until the tooltip itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <h6><code class="clr-code">&lt;clr-tooltip-content&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrPosition]</b>
+                        <div class="hidden-sm-up">Values:<br>Direction classnames</div>
+                        <div class="hidden-sm-up">Default: "right"</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        top-right, top-left, bottom-right, bottom-left, right, left
+                    </td>
+                    <td class="left hidden-xs-down">right</td>
+                    <td class="left">Sets the direction in which the tooltip will open.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSize]</b>
+                        <div class="hidden-sm-up">Values: xs, sm, md, lg</div>
+                        <div class="hidden-sm-up">Default: md</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        xs, sm, md, lg
+                    </td>
+                    <td class="left hidden-xs-down">md</td>
+                    <td class="left">Sets the size of the tooltip.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 id="example">Example</h4>
+            <p>Below are tooltip examples using various directions and sizes.</p>
+            <clr-tooltips-angular-demo _nghost-c33="">
+
+<h6 _ngcontent-c33="">Top-Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="top-right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition="top-right" clrSize="xs" *clrIfOpen&gt;
+        &lt;span&gt;Lorem&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c33="">Top-Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="top-left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition="top-left" clrSize="sm" *clrIfOpen&gt;
+        &lt;span&gt;Lorem ipsum&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c33="">Bottom-Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="bottom-right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition="bottom-right" clrSize="md" *clrIfOpen&gt;
+        &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c33="">Bottom-Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="bottom-left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition="bottom-left" clrSize="lg" *clrIfOpen&gt;
+        &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c33="">Right</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="right">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content *clrIfOpen&gt;
+        &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c33="">Left</h6>
+<div _ngcontent-c33="" class="clr-example squeeze example-center" id="left">
+    <clr-tooltip _ngcontent-c33="" class="tooltip">
+        
+        <clr-icon _ngcontent-c33="" clrtooltiptrigger="" shape="info-circle" size="24" tabindex="0"></clr-icon>
+        <!---->
+    
+    </clr-tooltip>
+</div>
+<clr-code-snippet _ngcontent-c33="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-tooltip&gt;
+    &lt;clr-icon clrTooltipTrigger shape="info-circle" size="24"&gt;&lt;/clr-icon&gt;
+    &lt;clr-tooltip-content clrPosition="left" clrSize="sm" *clrIfOpen&gt;
+        &lt;span&gt;Lorem ipsum sit&lt;/span&gt;
+    &lt;/clr-tooltip-content&gt;
+&lt;/clr-tooltip&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tooltips-angular-demo>
+        </div>
+
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-tooltips-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

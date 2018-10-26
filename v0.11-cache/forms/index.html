@@ -1,0 +1,1338 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Forms</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-forms"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-forms-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Forms (Layout)</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/forms#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/forms#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">A form is a
+            structured layout of related input components.</h5>
+
+        <div id="code-examples">
+            <p>A container, often a <code class="clr-code">div</code> with a <code class="clr-code">.form-group</code>
+                classname on it, wraps one or more <code class="clr-code">label</code> and <code class="clr-code">input</code> pairs.</p>
+
+            <h6 id="form-block">.form-block</h6>
+
+            <p class="squish">This is an optional wrapper around one or more .form-group elements (see below). The
+                .form-block element can hold a label element that serves as a title or header for the form-groups within
+                it.</p>
+
+            <h6 id="form-group">.form-group</h6>
+
+            <p class="squish">This is a wrapper intended to contain a label and one or more input, .select, .checkbox,
+                .radio, or other form fields.</p>
+
+            <h6 id="select">.select</h6>
+
+            <p class="squish">This is a required wrapper intended to contain a select element and
+                its options. The wrapper is necessary to apply the custom Clarity styles for select boxes.</p>
+
+            <h6 id="radio-checkbox">.radio, .checkbox</h6>
+
+            <p class="squish">This is a required wrapper intended to contain a radio button or a checkbox
+                input followed by a label element. The wrapper is necessary to handle the alignment and
+                spacing of the elements within it.</p>
+
+            <h3 id="wrapper-elements">Wrapper Elements</h3>
+
+            <p><code class="clr-code">.form-block</code>, <code class="clr-code">.form-group</code>,
+                <code class="clr-code">.select</code>, <code class="clr-code">.radio</code>, and <code class="clr-code">.checkbox</code> wrappers can be placed on any block HTML element. The
+                recommendation is for <code class="clr-code">.form-block</code> classnames to be placed on
+                <code class="clr-code">section</code> or <code class="clr-code">fieldset</code> elements and for <code class="clr-code">.form-group</code> classnames to be placed on <code class="clr-code">div</code>
+                elements.</p>
+
+            <clr-forms-demo-fields>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <label>A Form</label>
+        <div class="form-group">
+            <label for="aForm_1">This is a form field</label>
+            <input id="aForm_1" placeholder="Enter value here" size="45" type="text">
+        </div>
+        <div class="form-group">
+            <label for="aForm_2">Another form field</label>
+            <input id="aForm_2" placeholder="Enter another value here" size="35" type="password">
+        </div>
+        <div class="form-group">
+            <label for="aForm_3">A select box</label>
+            <div class="select">
+                <select id="aForm_3">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                    <option>Option 4</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="aForm_4">A textarea</label>
+            <textarea id="aForm_4" rows="5"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Button</button>
+    </section>
+</form>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+    &lt;section class="form-block"&gt;
+        &lt;label&gt;A Form&lt;/label&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="aForm_1"&gt;This is a form field&lt;/label&gt;
+            &lt;input type="text" id="aForm_1" placeholder="Enter value here" size="45"&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="aForm_2"&gt;Another form field&lt;/label&gt;
+            &lt;input type="password" id="aForm_2" placeholder="Enter another value here" size="35"&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="aForm_3"&gt;A select box&lt;/label&gt;
+            &lt;div class="select"&gt;
+                &lt;select id="aForm_3"&gt;
+                    &lt;option&gt;Option 1&lt;/option&gt;
+                    &lt;option&gt;Option 2&lt;/option&gt;
+                    &lt;option&gt;Option 3&lt;/option&gt;
+                    &lt;option&gt;Option 4&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="aForm_4"&gt;Textarea&lt;/label&gt;
+            &lt;textarea id="aForm_4" rows="5"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;button type="submit" class="btn btn-primary"&gt;Button&lt;/button&gt;
+    &lt;/section&gt;
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-forms-demo-fields>
+
+            <h3 id="compact-forms">Compact Forms</h3>
+
+            <p>For forms inside of smaller containers like modals or wizards, the whitespace around form groups and form
+                blocks can be minimized by using the <code>.compact</code> classname.</p>
+
+            <clr-forms-compact-demo>
+
+<div>
+    <form class="compact ng-untouched ng-pristine ng-valid" novalidate="">
+        <section class="form-block">
+            <label>CPU</label>
+            <div class="form-group">
+                <label>Cores per socket</label>
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <span>Sockets: 1</span>
+            </div>
+
+            <div class="form-group">
+                <label>CPU hot plug</label>
+                <div class="toggle-switch">
+                    <input id="togglecpu" type="checkbox">
+                    <label for="togglecpu">Toggle CPU</label>
+                </div>
+                <div class="checkbox-inline">
+                    <input checked="" id="enablecpu" type="checkbox">
+                    <label for="enablecpu">Enable CPU</label>
+                </div>
+                <div class="checkbox-inline">
+                    <input id="option2" type="checkbox">
+                    <label for="option2">
+                        Option 2
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Reservation</label>
+                <input placeholder="0" type="text">
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>MHz</option>
+                        <option>KHz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="required">Validated input</label>
+                <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-top-left invalid" for="compactValid1" role="tooltip">
+                    <input id="compactValid1" type="text">
+                    <span class="tooltip-content">
+                        This field is invalid.
+                    </span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>Shares</label>
+                <span>1000 (normal)</span>
+            </div>
+
+            <div class="form-group">
+                <label>CPUID mask</label>
+                <span>Expose the NX/XD flag to guest</span>
+            </div>
+
+            <div class="form-group">
+                <label>Limit</label>
+                <input placeholder="Unlimited" type="text">
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>MHz</option>
+                        <option>KHz</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Hardware virtualization</label>
+                <span>Disabled</span>
+            </div>
+
+            <div class="form-group">
+                <label>Performance counters</label>
+                <div class="radio-inline">
+                    <input id="lorem" name="gridRadios" type="radio">
+                    <label for="lorem">
+                        Option lorem
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <input checked="" id="ipsum" name="gridRadios" type="radio">
+                    <label for="ipsum">
+                        Option ipsum
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-block">
+            <label>Memory</label>
+            <div class="form-group">
+                <label>Space</label>
+                <input type="text">
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>MB</option>
+                        <option>GB</option>
+                        <option>TB</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-block">
+            <label>Hard disk</label>
+            <div class="form-group">
+                <label>Space</label>
+                <input type="text">
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>MB</option>
+                        <option>GB</option>
+                        <option>TB</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-block">
+            <label>Network</label>
+            <div class="form-group">
+                <label>Network adapter</label>
+                <div class="select">
+                    <select id="exampleSelect1">
+                        <option>VM Network</option>
+                        <option>VM Network 1</option>
+                        <option>VM Network 2</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <button class="btn btn-primary" type="submit">Ok</button>
+        <button class="btn btn-secondary" type="submit">Cancel</button>
+    </form>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form class="compact"&gt;
+    ...
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-forms-compact-demo>
+
+            <h3 id="forms-in-grid">Forms in Grid</h3>
+
+            <p>Forms can be used in a grid. Extend the <code class="clr-code">.row</code> class on a <code class="clr-code">.form-group</code> and place the form fields in the grid column classes.
+                To occupy 100% of the column width, extend the <code class="clr-code">.form-control</code>
+                class on the form field. Resize your browser to see how forms in grids work.</p>
+
+            <clr-forms-demo-grid>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <label>Form Inside a Grid</label>
+        <div class="form-group row">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <label for="gForm_1">Input field</label>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <input class="form-control" id="gForm_1" placeholder="Enter value here" size="45" type="text">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <input class="form-control" id="gForm_2" placeholder="Enter another value here" size="35" type="password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <label for="gForm_3">Select box</label>
+            </div>
+            <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                <div class="select form-control">
+                    <select id="gForm_3">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <label for="gForm_4">Text area</label>
+            </div>
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                <textarea class="form-control" id="gForm_4" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <label>Another select box</label>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                <div class="select form-control">
+                    <select id="exampleSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-12 col-xs-12">
+                <span>Sockets: 1</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <label for="gForm_3">Other form fields</label>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                <div class="toggle-switch">
+                    <input id="othertoggle" type="checkbox">
+                    <label for="othertoggle">Toggle</label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="checkbox-inline">
+                    <input checked="" id="othercheckbox" type="checkbox">
+                    <label for="othercheckbox">Inline Checkbox</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Button</button>
+    </section>
+</form>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+    &lt;section class="form-block"&gt;
+        &lt;label&gt;Form Inside a Grid&lt;/label&gt;
+        &lt;div class="form-group row"&gt;
+            &lt;div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;label for="gForm_1"&gt;Input field&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"&gt;
+                &lt;input class="form-control" type="text" id="gForm_1" placeholder="Enter value here" size="45"&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"&gt;
+                &lt;input class="form-control" type="password" id="gForm_2" placeholder="Enter another value here" size="35"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group row"&gt;
+            &lt;div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;label for="gForm_3"&gt;Select box&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-4 col-md-8 col-sm-12 col-xs-12"&gt;
+                &lt;div class="select form-control"&gt;
+                    &lt;select id="gForm_3"&gt;
+                        &lt;option&gt;Option 1&lt;/option&gt;
+                        &lt;option&gt;Option 2&lt;/option&gt;
+                        &lt;option&gt;Option 3&lt;/option&gt;
+                        &lt;option&gt;Option 4&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group row"&gt;
+            &lt;div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;label for="gForm_4"&gt;Text area&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-10 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;textarea id="gForm_4" rows="5" class="form-control"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group row"&gt;
+            &lt;div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;label&gt;Another select box&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-4 col-md-5 col-sm-12 col-xs-12"&gt;
+                &lt;div class="select form-control"&gt;
+                    &lt;select id="exampleSelect1"&gt;
+                        &lt;option&gt;1&lt;/option&gt;
+                        &lt;option&gt;2&lt;/option&gt;
+                        &lt;option&gt;3&lt;/option&gt;
+                        &lt;option&gt;4&lt;/option&gt;
+                        &lt;option&gt;5&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-3 col-md-5 col-sm-12 col-xs-12"&gt;
+                &lt;span&gt;Sockets: 1&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group row"&gt;
+            &lt;div class="col-lg-2 col-md-12 col-sm-12 col-xs-12"&gt;
+                &lt;label for="gForm_3"&gt;Other form fields&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-2 col-md-3 col-sm-12 col-xs-12"&gt;
+                &lt;div class="toggle-switch"&gt;
+                    &lt;input type="checkbox" id="othertoggle"&gt;
+                    &lt;label for="othertoggle"&gt;Toggle&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"&gt;
+                &lt;div class="checkbox-inline"&gt;
+                    &lt;input type="checkbox" id="othercheckbox" checked&gt;
+                    &lt;label for="othercheckbox"&gt;Inline Checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="submit" class="btn btn-primary"&gt;Button&lt;/button&gt;
+    &lt;/section&gt;
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-forms-demo-grid>
+
+            <h2 id="forms-using-angular-2">Forms Using Angular</h2>
+
+            <p>Following are examples of using Clarity forms with the Template-Driven and
+                Model-Driven/Reactive approaches in Angular.</p>
+            <p>
+                <b>Note:</b> For more information see the Angular documentation on
+                <a href="https://angular.io/docs/ts/latest/guide/forms.html">Template-Driven Forms</a> and
+                <a href="https://angular.io/docs/ts/latest/cookbook/dynamic-form.html">Model-Driven/Reactive Forms</a>
+            </p>
+
+            <h3 id="example-1-template-driven-forms">Example 1. Template-Driven Forms</h3>
+
+            <clr-template-driven-forms-demo>
+<form novalidate="" class="ng-untouched ng-pristine ng-invalid">
+    <section class="form-block">
+        <label>Add Employee Information</label>
+        <div class="form-group">
+            <label for="empFirstName">First name</label>
+            <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-md" for="empFirstName" role="tooltip">
+                <input id="empFirstName" name="firstName" placeholder="Enter first name" required="" type="text" class="ng-untouched ng-pristine ng-invalid" value="">
+                <span class="tooltip-content">
+                    First Name is Required.
+                </span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="empLastName">Last name</label>
+            <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-md" for="empLastName" role="tooltip">
+                <input id="empLastName" name="lastName" placeholder="Enter last name" required="" type="text" class="ng-untouched ng-pristine ng-invalid" value="">
+                <span class="tooltip-content">
+                    Last Name is Required.
+                </span>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="empType">Employee type</label>
+            <div class="select">
+                <select id="empType" name="employeeType" selectedindex="-1" value="" class="ng-untouched ng-pristine ng-valid">
+                    <option value="Default">Select Employee Type...</option>
+                    <!----><option value="Full Time">Full Time</option><option value="Part Time">Part Time</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" disabled="">Add</button>
+    </section>
+</form>
+
+<div hidden="">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="left" colspan="2">
+                            Employee Information
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="left">ID</td>
+                        <td class="left">1</td>
+                    </tr>
+                    <tr>
+                        <td class="left">First name</td>
+                        <td class="left"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Last name</td>
+                        <td class="left"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Employee type</td>
+                        <td class="left"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary">New Employee</button>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form #employeeForm="ngForm" (ngSubmit)="onSubmit()" [hidden]="submitted"&gt;
+    &lt;section class="form-block"&gt;
+        &lt;label&gt;Add Employee Information&lt;/label&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="empFirstName"&gt;First name&lt;/label&gt;
+            &lt;label for="empFirstName"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="firstNameInput.invalid &amp;&amp; (firstNameInput.dirty || firstNameInput.touched)"&gt;
+                &lt;input type="text" id="empFirstName" placeholder="Enter first name"
+                    required
+                    name="firstName"
+                    [(ngModel)]="model.firstName"
+                    #firstNameInput="ngModel"&gt;
+                &lt;span class="tooltip-content"&gt;
+                    First Name is Required.
+                &lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="empLastName"&gt;Last name&lt;/label&gt;
+            &lt;label for="empLastName"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="lastNameInput.invalid &amp;&amp; (lastNameInput.dirty || lastNameInput.touched)"&gt;
+                &lt;input type="text" id="empLastName" placeholder="Enter last name"
+                    required
+                    name="lastName"
+                    [(ngModel)]="model.lastName"
+                    #lastNameInput="ngModel"&gt;
+                &lt;span class="tooltip-content"&gt;
+                    Last Name is Required.
+                &lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="empType"&gt;Employee type&lt;/label&gt;
+            &lt;div class="select"&gt;
+                &lt;select id="empType"
+                    name="employeeType"
+                    [(ngModel)]="model.employeeType"&gt;
+                    &lt;option value="Default"&gt;Select Employee Type...&lt;/option&gt;
+                    &lt;option *ngFor="let type of employeeType" [value]="type"&gt;{{type}}&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="btn btn-primary" type="submit"
+            [disabled]="employeeForm.form.invalid"&gt;Add&lt;/button&gt;
+    &lt;/section&gt;
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-template-driven-forms-demo>
+
+            <h3 id="example-2-model-driven-reactive-forms">Example 2. Model-Driven/Reactive Forms</h3>
+
+            <clr-reactive-forms-demo>
+
+<form class="form ng-untouched ng-pristine ng-invalid" novalidate="">
+    <section class="form-block">
+        <label>Add Employee Address</label>
+        <div class="form-group">
+            <label for="empFullName">Full name</label>
+            <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-sm" for="empFullName" role="tooltip">
+                <input formcontrolname="fullName" id="empFullName" type="text" value="" class="ng-untouched ng-pristine ng-invalid">
+                <span class="tooltip-content">
+                    Name is required.
+                </span>
+            </label>
+        </div>
+        <div formgroupname="address" class="ng-untouched ng-pristine ng-invalid">
+            <div class="form-group">
+                <label for="empPostalCode">Postal code</label>
+                <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-sm" for="empPostalCode" role="tooltip">
+                    <input formcontrolname="postalCode" id="empPostalCode" type="text" value="" class="ng-untouched ng-pristine ng-invalid">
+                    <span class="tooltip-content">
+                        Postal code is required.
+                    </span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="empCountry">Country</label>
+                <label aria-haspopup="true" class="tooltip tooltip-validation tooltip-sm" for="empCountry" role="tooltip">
+                    <input formcontrolname="country" id="empCountry" type="text" value="" class="ng-untouched ng-pristine ng-invalid">
+                    <span class="tooltip-content">
+                        Country is required.
+                    </span>
+                </label>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" disabled="">Add</button>
+    </section>
+</form>
+
+<div hidden="">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="left" colspan="2">
+                            Employee Address Information
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="left">Full name</td>
+                        <td class="left"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Postal code</td>
+                        <td class="left"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Country</td>
+                        <td class="left"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary">New Employee Address</button>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet clrlanguage="typescript" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">import {Component} from "@angular/core";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+@Component({
+    ...
+})
+export class ReactiveFormsDemo {
+    employeeAddressForm = new FormGroup({
+        fullName: new FormControl('', Validators.required),
+        address: new FormGroup({
+            postalCode: new FormControl('', Validators.required),
+            country: new FormControl('', Validators.required)
+        })
+    });
+    submitted = false;
+    onSubmit() {
+        ...
+    }
+    addNewEmployeeAddress() {
+        this.employeeAddressForm.reset();
+        this.submitted = false;
+    }
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form class="form" [formGroup]="employeeAddressForm" (ngSubmit)="onSubmit()" [hidden]="submitted"&gt;
+    &lt;section class="form-block"&gt;
+        &lt;label&gt;Add Employee Address&lt;/label&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="empFullName"&gt;Full name&lt;/label&gt;
+            &lt;label for="empFullName"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-sm"
+                [class.invalid]="employeeAddressForm.get('fullName').invalid
+                    &amp;&amp; (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)"&gt;
+                &lt;input id="empFullName" type="text"
+                    formControlName="fullName"&gt;
+                &lt;span class="tooltip-content"&gt;
+                    Name is required.
+                &lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div formGroupName="address"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="empPostalCode"&gt;Postal code&lt;/label&gt;
+                &lt;label for="empPostalCode"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-sm"
+                    [class.invalid]="employeeAddressForm.get('address').get('postalCode').invalid
+                        &amp;&amp; (employeeAddressForm.get('address').get('postalCode').dirty ||
+                        employeeAddressForm.get('address').get('postalCode').touched)"&gt;
+                    &lt;input id="empPostalCode" type="text"
+                        formControlName="postalCode"&gt;
+                    &lt;span class="tooltip-content"&gt;
+                        Postal code is required.
+                    &lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="empCountry"&gt;Country&lt;/label&gt;
+                &lt;label for="empCountry"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-sm"
+                    [class.invalid]="employeeAddressForm.get('address').get('country').invalid
+                        &amp;&amp; (employeeAddressForm.get('address').get('country').dirty ||
+                        employeeAddressForm.get('address').get('country').touched)"&gt;
+                    &lt;input id="empCountry" type="text"
+                        formControlName="country"&gt;
+                    &lt;span class="tooltip-content"&gt;
+                        Country is required.
+                    &lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="btn btn-primary"
+            type="submit"
+            [disabled]="employeeAddressForm.invalid"&gt;Add&lt;/button&gt;
+    &lt;/section&gt;
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-reactive-forms-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Forms guide users through input in a structured, specific order. Forms are comprised of <a routerlink="./typography" href="/forms/typography">text</a> and input components such as <a routerlink="./checkboxes" href="/forms/checkboxes">checkboxes</a>, <a routerlink="./dropdowns" href="/forms/dropdowns">dropdowns</a>,
+                <a routerlink="./input-fields" href="/forms/input-fields">input fields</a>, <a routerlink="./radios" href="/forms/radios">radio buttons</a>, and <a routerlink="./toggle-switches" href="/forms/toggle-switches">toggle switches</a>.</p>
+
+            <h4 id="minimize-scrolling">Minimize Scrolling</h4>
+
+            <p>For a form that scrolls several pages, consider organizing the content by:</p>
+
+            <ul class="list">
+                <li>Grouping related fields in a form block with a descriptive label.</li>
+                <li>Progressively revealing more complex or less frequently used data.</li>
+                <li>Dividing content into separate pages in a <a routerlink="./wizards" href="/forms/wizards">wizard</a>.</li>
+            </ul>
+
+            <h4 id="labels">Labels</h4>
+
+            <p>Labels appear to the left of a component, moving above the component when the user resizes the window to
+                smaller dimensions.</p>
+
+            <p>Labels use sentence case, and label headers use title case, with no ending punctuation.</p>
+
+            <h4 id="placeholder-text">Placeholder Text</h4>
+
+            <p>Located inside a field, placeholder text can help clarify expected input. Placeholder
+                text disappears when the user types in the field.</p>
+
+            <p>Tip: Use the label to show what information goes in the field and placeholder text
+                as a hint, description, or example format:</p>
+
+            <p>Label: Airport
+                <br> Placeholder text: SFO, SJO</p>
+
+            <p>Placeholder text can replace labels only in simple forms with a few easily-understood fields, see the <a routerlink="./login" href="/forms/login">login page</a>.</p>
+
+            <h4 id="disabled-fields">Disabled Fields</h4>
+
+            <p>Show a disabled field only if the user can take a reasonable action to enable the
+                component. When disabling a component, also disable all associated elements, such
+                as the component label and explanatory text.</p>
+
+            <h4 id="button-placement">Button Placement</h4>
+
+            <p>Button placement depends on form type and where it appears in the UI. See <a routerlink="./buttons" href="/forms/buttons">buttons</a> for guidelines.</p>
+
+            <h4 id="validation">Validation</h4>
+
+            <p>For information on validation, see <a routerlink="./input-fields" href="/forms/input-fields">input fields</a>.</p>
+
+            <h4 id="focus-and-navigation">Focus and Navigation</h4>
+
+            <p>Provide auto focus in the first field by default. Users can then navigate through the form in a logical
+                sequence.</p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-forms-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

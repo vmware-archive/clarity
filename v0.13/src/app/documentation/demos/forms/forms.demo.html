@@ -1,0 +1,271 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">
+            Forms are a grouping of input controls that allow a user to submit information to your application.    
+        </h5>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms documentation here describes the new forms introduced in version 0.12. The old forms are still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="forms-using-angular">Forms Using Angular</h2>
+        
+        <p>Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added regularly.</p>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The forms features described here are not part of the main <code class="clr-code">ClarityModule</code> in this release. You have to opt into them by including the additional <code class="clr-code">ClrFormsNextModule</code> in your module imports.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <h4>Include <code class="clr-code">ClrFormsNextModule</code></h4>
+        
+        <p>The new forms are opt-in right now, since they are not fully ready for use yet. In order to use it, begin by importing the <code class="clr-code">ClrFormsNextModule</code> and adding it to your module imports.</p>
+        
+        <clr-code-snippet [clrCode]="ngModule" clrLanguage="typescript"></clr-code-snippet>
+
+        <h4>Basic form</h4>
+
+        <p>Then declare a form start by adding the <code class="clr-code">clrForm</code> directive to the form element. This will wire up some internals to manage the form itself.</p>
+        
+        <clr-code-snippet [clrCode]="ngForm"></clr-code-snippet>
+        
+        <h4>Layout options</h4>
+
+        <p>If you wish to have a different layout, then you can use the <code class="clr-code">clrLayout</code> directive to set the desired layout. The appropriate grid classes will be applied to enable automatic layout switching for mobile viewports.</p>
+        
+        <clr-code-snippet [clrCode]="ngLayouts"></clr-code-snippet>
+        
+        <h4>Basic structure</h4>
+
+        <p>When you start to fill in your form controls, each will should be wrapped in a container like you see here in this text input example.</p>
+        
+        <clr-code-snippet [clrCode]="ngStructure"></clr-code-snippet>
+        
+        <h4>Helper and validation messages</h4>
+
+        <p>These Angular components also support built in helper text and validation with error messages. </p>
+        
+        <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
+        
+        <h4>Multiple error messages</h4>
+
+        <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validatior you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
+        
+        <clr-code-snippet [clrCode]="ngErrors"></clr-code-snippet>
+        
+        <h4>Overriding column widths</h4>
+
+        <p>For horizontal layouts, you can override the default widths for labels (2 columns) and controls (10 columns). Even on horizontal layouts, the default behavior should still use a vertical layout for narrow mobile sizes. That means you should always include the class <code class="clr-code">clr-col-xs-12</code> on both the input and label. Ensure your override columns add up to 12 to use the full space.</p>
+        
+        <clr-code-snippet [clrCode]="ngOverride"></clr-code-snippet>
+
+        <h4>Reactive Forms</h4>
+
+        <p>Forms also work with reactive forms with the same support for validations.</p>
+        
+        <clr-code-snippet [clrCode]="ngReactiveTs" clrLanguage="typescript"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="ngReactiveHtml"></clr-code-snippet>
+
+
+        <h2 id="forms-code-samples">Forms with CSS</h2>
+
+        <p>If you want to use just the HTML/CSS for building your own form controls, this section describes how to use them. If you are interested in how to use it with Angular, please jump to the Angular section.</p>
+
+        <h4>Basic form</h4>
+
+        <p>A Clarity form first must include the <code class="clr-code">.clr-form</code> class, typically on the form element itself.</p>
+
+        <clr-code-snippet [clrCode]="uiForm"></clr-code-snippet>
+        
+        <h4>Layout options</h4>
+
+        <p>Forms support three layout options, vertical (default), horizontal, and compact. You can change the layout by simply applying an additional class to the form.</p>
+        
+        <clr-code-snippet [clrCode]="uiLayouts"></clr-code-snippet>
+        
+        <h4>Basic structure</h4>
+
+        <p>Each control that you add inside has a similar structure, and they are each covered in their own documentation. However, the general structure is like this for a normal text input.</p>
+        
+        <clr-code-snippet [clrCode]="uiStructure"></clr-code-snippet>
+        
+        <h4>Layouts with grid</h4>
+
+        <p>If you choose to use a layout other than vertical, you should also provide the corresponding grid classes to allow the form layout to dynamically switch to vertical for narrow width devices. Excluding this may cause experience issues with mobile or narrow widths.</p>
+        
+        <clr-code-snippet [clrCode]="uiGrid"></clr-code-snippet>
+        
+        <h4>Error state</h4>
+
+        <p>For error states, you simply need to add the <code class="clr-code">clr-error</code> class to the <code class="clr-code">clr-control-container</code> element. This will automatically display the error icon, turn the input outline to red, and change the color of the subtext to red. It is recommend that you change the content of the subtext for error messages, but that is up to the application to manage.</p>
+        
+        <clr-code-snippet [clrCode]="uiGrid"></clr-code-snippet>
+        
+        <p>View documentation for each form control to get specifics on their HTML structure.</p>
+
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Design Guidelines</h3>
+            <p>Forms are comprised of text and input components such as checkboxes, dropdowns, input fields, radio buttons, and toggle switches. The easier users can complete forms, the better your response rates will typically be. Forms should be clear, concise, and relevant to its context.</p>
+
+            <h4 id="form-layouts">Form Layouts </h4>
+            <p>Clarity offers three types of forms: horizontal (our default), vertical and compact.</p>
+
+            <div class="clrweb-DoxMedia clr-row">
+                <div class="clrweb-DoxMedia-block clr-col-md-6" style="padding-top: 0">
+                    <clr-forms-example-block layout="horizontal"></clr-forms-example-block>
+                </div>
+                <div class="clrweb-DoxMedia-text clr-col-md-6">
+                    <h6>Horizontal - Default</h6>
+                    <p>Horizontal formats are good for the quick scanning of labels, and can be used in cases of limited vertical space. The space between label and input however can slow users down.</p>
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia clr-row">
+                <div class="clrweb-DoxMedia-block clr-col-md-6" style="padding-top: 0">
+                    <clr-forms-example-block layout="vertical"></clr-forms-example-block>
+                </div>
+                <div class="clrweb-DoxMedia-text clr-col-md-6">
+                    <h6>Vertical</h6>
+                    <p>This option is better for scanning, mobile experiences, accessibility, and localization. While it offers better completion rates, it is less ideal for longer forms.</p>
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia clr-row">
+                <div class="clrweb-DoxMedia-block clr-col-md-6" style="padding-top: 0">
+                    <clr-forms-example-block layout="compact"></clr-forms-example-block>
+                </div>
+                <div class="clrweb-DoxMedia-text clr-col-md-6">
+                    <h6>Compact</h6>
+                    <p>For cases with highly limited space, we provide a compact form layout.</p>
+                </div>
+            </div>
+
+            <h4 id="form-architecture">Form Architecture</h4>
+            <h6>Columns</h6>
+            <p>Forms should help users complete their goal as quickly as possible. Column structure can help make it easier for users to complete your form.</p>
+
+            <div class="clr-row">
+                <div class="clrweb-DoxMedia is-do-block clr-col-6">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/architecture-do.svg" alt="use a single column for forms layout" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                        <p>Put forms in one column. Multiple columns disrupt users’ vertical rhythm and completion.</p>
+                    </div>
+                </div>
+                <div class="clrweb-DoxMedia is-dont-block clr-col-6">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/architecture-dont.svg" alt="don't use multiple columns for forms" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                        <p>Create multiple columns of input fields per page, except for small, related inputs like name “first” and “last.”</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 id="input-grouping">Input Grouping</h4>
+            <p>Grouping will make scanning easier. A form with more than 6 inputs will likely have inputs that can be grouped together, like “address”: street, city, zip, county, country, etc.</p>
+            <p>For the grouping of labels and their input fields, we recommend grouping labels closely with their respective input fields.</p>
+
+            <div class="clr-row">
+                <div class="clrweb-DoxMedia is-do-block clr-col-4">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/input-grouping-do.svg" alt="align inputs and labels" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                    </div>
+                </div>
+                <div class="clrweb-DoxMedia is-do-block clr-col-4">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/input-grouping-do2.svg" alt="don't have inputs misaligned" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                    </div>
+                </div>
+                <div class="clrweb-DoxMedia is-dont-block clr-col-4">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/input-grouping-dont.svg" alt="don't right align inputs" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Form Length</h4>
+            <p>Forms should only be as long as absolutely necessary. We recommend reviewing each form input and asking whether you could obtain the information in another way, or at a later, more convenient time.</p>
+
+            <h4 id="form-elements">Form Elements</h4>
+            <h6>Radios, Checkboxes, and Select Box</h6>
+            <p>For inputs with 3 or more options, you may use radios, checkboxes or select boxes. We recommend placing your options vertically in one column to make it easier to scan.</p>
+            <p>Radios and checkboxes are used when it is helpful to compare options within the context of the form, as all selections will be visible at all times. Select boxes typically have more than 7 options that do not need to be compared with each other.</p>
+
+            <h4 id="validation-error-messages">Validation and Error Messaging</h4>
+            <p>You also want to let users know when something is wrong with the information provided.</p>
+            <h6>Error Message Styling</h6>
+            <p>When showing error inputs, highlight the input field with red in some way, but also pair the red with another visual indicator, like an icon. This will help with accessibility.</p>
+            <div class=" clr-row">
+                <div class="clrweb-DoxMedia is-do-block clr-col-6">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/error-do.svg" alt="put icons beside inputs" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                        <p>Place icons outside the input field. This will also help avoid browser and third-party app collision conflicts.</p>
+                    </div>
+                </div>
+                <div class="clrweb-DoxMedia is-dont-block clr-col-6">
+                    <div class="clrweb-DoxMedia-img">
+                        <img src="assets/images/documentation/forms/error-dont.svg" alt="don't put icons inside of inputs" />
+                    </div>
+                    <div class="clrweb-DoxMedia-text">
+                        <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                        <p>Put icons inside the input field. If inside, account for changing form value space (increase characters).</p>
+                    </div>
+                </div>
+            </div>
+            <h6>Error Message Content</h6>
+            <p>Humanize the error messaging as much as possible. The content should provide clear guidance on how to fix the error. Avoid unrecognizable system error messages like "code 500 error".</p>
+            <p>You may also consider using more than one error message when helpful. For example, if an email address input field has an error, consider either showing “please enter an email address” for a blank field, or “email address needs an ’@’ symbol followed by a domain” for an invalid symbol.</p>
+            <h6>Error Message Location</h6>
+            <p>We recommend displaying error messages within the same area where the error occurs.</p>
+            <h6>Error Message Behavior</h6>
+            <p>For most cases, validate when the user leaves the field (onblur). Invalidating fields while users are still typing can be frustrating.</p>
+            <p>There are some cases where real-time validation can be helpful, such as inputs with sensitive field value lengths (like tweets), or when users return to an error field and successfully edit the error field, or for password fields with visible password strength criteria.</p>
+
+            <div class="alert alert-info">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            The UX design guidelines documentation is currently a work in progress, and will be updated when they are ready.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+</clr-doc-wrapper>

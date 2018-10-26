@@ -1,0 +1,50 @@
+<h4>Accessing the Date</h4>
+
+<div>
+    <p>
+        You can access the Date in two ways:
+    </p>
+    <div>
+        <h6>1. As a Javascript Date Object</h6>
+        <p>
+            You can add a two way binding on <code class="clr-code">clrDate</code> to access the date value.
+            The benefit of using this approach is that you can interact with the Date picker
+            directly using Javascript Date objects which would avoid converting values from
+            string to date and vice versa on the application side.
+        </p>
+        <div class="datepicker-demo">
+            <clr-datepicker-date-io-demo></clr-datepicker-date-io-demo>
+        </div>
+    </div>
+    <div>
+        <h6>2. As a date string (in current locale format)</h6>
+        <div>
+            <a href="https://angular.io/guide/forms#template-driven-forms" target="_blank">
+                a. Template Driven Forms
+            </a>
+            <p>
+                Template Driven Forms use the <code class="clr-code">ngModel</code> directive to
+                create a binding between the model and the input field.
+            </p>
+            <clr-datepicker-template-driven-forms-demo></clr-datepicker-template-driven-forms-demo>
+        </div>
+        <p></p>
+        <div>
+            <a href="https://angular.io/guide/reactive-forms" target="_blank">b. Reactive Forms</a>
+            <p>
+                Reactive Forms use <code class="clr-code">FormControl</code>s to create the binding between
+                the model and the input field.
+            </p>
+            <clr-datepicker-reactive-forms-demo></clr-datepicker-reactive-forms-demo>
+        </div>
+    </div>
+    <p></p>
+    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'">
+        <div class="alert-item">
+        <span class="alert-text">
+            We recommend that you either access the date as a string or as a javascript date object from the date picker.
+            Using both at the same time might cause unexpected behavior.
+        </span>
+        </div>
+    </clr-alert>
+</div>

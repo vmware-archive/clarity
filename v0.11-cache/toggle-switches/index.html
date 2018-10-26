@@ -1,0 +1,671 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Toggle Switches</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-toggle-switches"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-toggles-demo class="content-area dox-content-panel">
+<clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Toggle Switches</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/toggle-switches#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/toggle-switches#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+
+    <article>
+        <h5 class="component-summary" id="a-toggle-switch-changes-on-and-off-states-of-a-single-setting">A
+            toggle switch changes on and off states of a single setting.</h5>
+
+        <div id="code-examples">
+            <p>To create a toggle switch, wrap an <code class="clr-code">input[type="checkbox"]</code>
+                element and a <code class="clr-code">label</code> element in a block-level wrapper
+                (like a <code class="clr-code">div</code>) with the <code class="clr-code">.toggle-switch</code>
+                classname. To use a toggle without any label, keep the <code class="clr-code">label</code>
+                tag empty. The default toggle is gray in its “off” state and green in
+                its “on” state. The user can change states by clicking on either the toggle or its
+                accompanying label.</p>
+
+            <h3 id="disabled-toggles">Disabled Toggles</h3>
+
+            <p>To disable a toggle switch, add the <code class="clr-code">disabled</code> attribute to the
+                toggle’s <code class="clr-code">checkbox</code> input. When disabled, the toggle appears
+                gray. The user cannot change the state of the toggle. And the present state is reflected
+                in both the location of the toggle switch and by the “on” state being a slightly darker
+                gray.</p>
+
+            <clr-toggles-example-demo>
+
+<form>
+    <section class="form-block">
+        <div class="form-group">
+            <label>Toggles</label>
+            <div class="toggle-switch">
+                <input id="toggle_1" type="checkbox">
+                <label for="toggle_1">Toggles turn on and off</label>
+            </div>
+            <div class="toggle-switch">
+                <input disabled="" id="toggle_2" type="checkbox">
+                <label for="toggle_2">Toggle off and disabled</label>
+            </div>
+            <div class="toggle-switch">
+                <input checked="" disabled="" id="toggle_3" type="checkbox">
+                <label for="toggle_3">Toggle on and disabled</label>
+            </div>
+        </div>
+    </section>
+    <section class="form-block">
+        <div class="form-group">
+            <label>Toggles without any label</label>
+            <div class="toggle-switch">
+                <input id="toggle_4" type="checkbox">
+                <label for="toggle_4"></label>
+            </div>
+            <div class="toggle-switch">
+                <input checked="" id="toggle_5" type="checkbox">
+                <label for="toggle_5"></label>
+            </div>
+            <div class="toggle-switch">
+                <input checked="" disabled="" id="toggle_6" type="checkbox">
+                <label for="toggle_6"></label>
+            </div>
+            <div class="toggle-switch">
+                <input disabled="" id="toggle_7" type="checkbox">
+                <label for="toggle_7"></label>
+            </div>
+        </div>
+    </section>
+</form>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+    &lt;section class="form-block"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label&gt;Toggles&lt;/label&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_1"&gt;
+                &lt;label for="toggle_1"&gt;Toggles turn on and off&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_2" disabled&gt;
+                &lt;label for="toggle_2"&gt;Toggle off and disabled&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_3" checked disabled&gt;
+                &lt;label for="toggle_3"&gt;Toggle on and disabled&lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;section class="form-block"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label&gt;Toggles without any label&lt;/label&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_4"&gt;
+                &lt;label for="toggle_4"&gt;&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;label for="formGroupExampleInput"&gt;Toggles without any label&lt;/label&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_5" checked&gt;
+                &lt;label for="toggle_5"&gt;&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;label for="formGroupExampleInput"&gt;Toggles without any label&lt;/label&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_6" checked disabled&gt;
+                &lt;label for="toggle_6"&gt;&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;label for="formGroupExampleInput"&gt;Toggles without any label&lt;/label&gt;
+            &lt;div class="toggle-switch"&gt;
+                &lt;input type="checkbox" id="toggle_7" disabled&gt;
+                &lt;label for="toggle_7"&gt;&lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-toggles-example-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use a toggle switch when you need the sole options of “on” and “off.”</p>
+
+            <p>Toggle switches take up less space than an “on/off” <a routerlink="./radios" href="/toggle-switches/radios">radio button group</a> and communicate their intended
+                purpose better than a <a routerlink="./checkboxes" href="/toggle-switches/checkboxes">checkbox</a>
+                that toggles functionality.</p>
+
+            <h4 id="toggle-states">Toggle States</h4>
+
+            <p>Toggle switches do not include “ON” and “OFF” text because these states are clearly implied.</p>
+
+            <h4 id="label">Label</h4>
+
+            <p>The label should clearly describe the setting. Although Clarity supports a toggle
+                switch without a label, use this approach only if the purpose of the control is made
+                clear elsewhere, for example, in a group label or section header.</p>
+        </div>
+    </article>
+
+
+    </div>
+</section></clr-doc-wrapper></clr-toggles-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

@@ -1,0 +1,4380 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Vertical Nav</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.demo-title[_ngcontent-c7]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c7]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c7]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c8]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c8]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c8]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c9]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c9]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c9]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c10]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c10]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c10]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c11]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c11]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c11]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c12]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c12]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c12]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c13]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c13]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c13]{margin-left:auto}</style><style ng-transition="clarity">.demo-title[_ngcontent-c18]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c18]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c18]{margin-left:auto}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style><style ng-transition="clarity">.demo-title[_ngcontent-c19]{margin-top:12px}.datagrid-demo-pagination[_ngcontent-c19]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c19]{margin-left:auto}</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-vertical-nav"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-vertical-nav-demo _nghost-c7="" class="content-area dox-content-panel">
+<clr-doc-wrapper _ngcontent-c7="" class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Vertical Nav</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/vertical-nav#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/vertical-nav#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article _ngcontent-c7="">
+        <h5 _ngcontent-c7="" class="component-summary" id="badges-header">
+            This is a vertically-aligned navigational component.
+        </h5>
+
+        <div _ngcontent-c7="" id="design-guidelines">
+            <h3 _ngcontent-c7="">Design Guidelines</h3>
+            <p _ngcontent-c7="">
+                Vertical navigation is a familiar navigation pattern for users. It can fit as many navigation links as
+                needed, scrolling when the content exceeds the viewport.
+            </p>
+
+            <clr-basic-vertical-nav-demo _ngcontent-c7="" _nghost-c8="">
+
+<div _ngcontent-c8="" class="clr-example">
+    <div _ngcontent-c8="" class="main-container">
+        <header _ngcontent-c8="" class="header">
+            <div _ngcontent-c8="" class="branding">
+                <a _ngcontent-c8="" href="javascript://">
+                    <clr-icon _ngcontent-c8="" class="is-inverse" shape="bolt"></clr-icon>
+                    <span _ngcontent-c8="" class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div _ngcontent-c8="" class="content-container">
+            <div _ngcontent-c8="" class="content-area">
+                <h2 _ngcontent-c8="">Jiggypuff</h2>
+                <p _ngcontent-c8="">
+                    Jigglypuff is a round, pink ball with pointed ears and large, blue eyes. It has rubbery,
+                    balloon-like skin and small, stubby arms and somewhat long feet. On top of its head is a curled tuft
+                    of fur. As seen in Pokémon Stadium, it is filled with air, as a defeated Jigglypuff, deflates until
+                    it is flat. By drawing extra air into its body, it is able to float as demonstrated in Super Smash
+                    Bros.
+                </p>
+            </div>
+            <clr-vertical-nav _ngcontent-c8="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+                <a _ngcontent-c8="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-basic-vertical-nav-demo>
+
+            <h4 _ngcontent-c7="">Usage</h4>
+            <p _ngcontent-c7="">Use the vertical navigation when you need:</p>
+            <ul _ngcontent-c7="" class="list">
+                <li _ngcontent-c7="">to collapse and expand the navigation to free up space for the content area</li>
+                <li _ngcontent-c7="">a hierarchical navigation or nested navigation</li>
+                <li _ngcontent-c7="">many links in the navigation across a top level of navigation</li>
+                <li _ngcontent-c7="">icons to describe navigation items which is helpful when the navigation is collapsed</li>
+            </ul>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia is-do-block">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-basic-vertical-nav-usage-demo _ngcontent-c7="" _nghost-c9="">
+
+<div _ngcontent-c9="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c9="" class="main-container" style="height: 468px">
+        <header _ngcontent-c9="" class="header">
+            <div _ngcontent-c9="" class="branding">
+                <a _ngcontent-c9="" href="javascript://">
+                    <clr-icon _ngcontent-c9="" class="is-inverse" shape="bolt"></clr-icon>
+                    <span _ngcontent-c9="" class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <!---->
+        <div _ngcontent-c9="" class="content-container">
+            <div _ngcontent-c9="" class="content-area">
+            </div>
+            <clr-vertical-nav _ngcontent-c9="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-basic-vertical-nav-usage-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="" class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p _ngcontent-c7="">
+                                Use vertical navigation with a header.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia is-dont-block">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-basic-vertical-nav-usage-demo _ngcontent-c7="" _nghost-c9="">
+
+<div _ngcontent-c9="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c9="" class="main-container" style="height: 468px">
+        <header _ngcontent-c9="" class="header">
+            <div _ngcontent-c9="" class="branding">
+                <a _ngcontent-c9="" href="javascript://">
+                    <clr-icon _ngcontent-c9="" class="is-inverse" shape="bolt"></clr-icon>
+                    <span _ngcontent-c9="" class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <!----><nav _ngcontent-c9="" class="subnav">
+            <ul _ngcontent-c9="" class="nav">
+                <li _ngcontent-c9="" class="nav-item">
+                    <a _ngcontent-c9="" class="nav-link active" href="javascript://">Pokédex</a>
+                </li>
+                <li _ngcontent-c9="" class="nav-item">
+                    <a _ngcontent-c9="" class="nav-link" href="javascript://">Movies</a>
+                </li>
+                <li _ngcontent-c9="" class="nav-item">
+                    <a _ngcontent-c9="" class="nav-link" href="javascript://">Games</a>
+                </li>
+                <li _ngcontent-c9="" class="nav-item">
+                    <a _ngcontent-c9="" class="nav-link" href="javascript://">Events</a>
+                </li>
+            </ul>
+        </nav>
+        <div _ngcontent-c9="" class="content-container">
+            <div _ngcontent-c9="" class="content-area">
+            </div>
+            <clr-vertical-nav _ngcontent-c9="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+                <a _ngcontent-c9="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-basic-vertical-nav-usage-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="" class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p _ngcontent-c7="">
+                                Use vertical navigation with a header and subnav. Having too many places 
+                                for navigation is confusing for users.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c7="">Layout</h3>
+
+            <p _ngcontent-c7="">
+                Vertical navigation has a few layout options including dividers and section headers. Active 
+                links are displayed with a white background. Touch targets are larger for easier interaction 
+                and span the entire width of the navigation, similar to the space of the active link indicator.
+            </p>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-12">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo _ngcontent-c7="" _nghost-c10="">
+
+<div _ngcontent-c10="" class="clr-example" style="margin-top: 0;">
+    <div _ngcontent-c10="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c10="" class="content-container">
+            <!----><clr-vertical-nav _ngcontent-c10="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+                <!----><a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <!---->
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+            <!---->
+            <!---->
+        </div>
+    </div>
+</div></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Basic</h6>
+                            <div _ngcontent-c7="">
+                                No dividers or section headers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo _ngcontent-c7="" _nghost-c10="">
+
+<div _ngcontent-c10="" class="clr-example" style="margin-top: 0;">
+    <div _ngcontent-c10="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c10="" class="content-container">
+            <!---->
+            <!----><clr-vertical-nav _ngcontent-c10="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+
+                <div _ngcontent-c10="" class="nav-divider"></div>
+
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+
+                <div _ngcontent-c10="" class="nav-divider"></div>
+
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+            <!---->
+        </div>
+    </div>
+</div></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Dividers</h6>
+                            <div _ngcontent-c7="">
+                                Used to separate logical clusters of navigation items. Best used when you 
+                                have two or more links in a cluster.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo _ngcontent-c7="" _nghost-c10="">
+
+<div _ngcontent-c10="" class="clr-example" style="margin-top: 0;">
+    <div _ngcontent-c10="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c10="" class="content-container">
+            <!---->
+            <!---->
+            <!----><clr-vertical-nav _ngcontent-c10="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <label _ngcontent-c10="" class="nav-header">
+                    Normal
+                </label>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+
+                <div _ngcontent-c10="" class="nav-divider"></div>
+
+                <label _ngcontent-c10="" class="nav-header">
+                    Fire
+                </label>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Charizard    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-just-navs-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Dividers &amp; Headers</h6>
+                            <div _ngcontent-c7="">
+                                Used to separate logical clusters of navigation items. Best used when you 
+                                have two or more links in a cluster.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c7="">Icons</h3>
+
+            <p _ngcontent-c7="">
+                Icons should be placed to the left of the link label. Active links will display a blue icon. 
+                Make sure your icons are distinctive and easily recognizable. Touch targets include the 
+                entire width of the navigation including the icon.
+            </p>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia is-do-block">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo _ngcontent-c7="" _nghost-c11="">
+
+<div _ngcontent-c11="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c11="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c11="" class="content-container">
+            <clr-vertical-nav _ngcontent-c11="" class="clr-vertical-nav has-icons">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Normal
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fire
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Water
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Electric
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Grass
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <!----><a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="shield"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fighting
+                    
+        </span>
+    </a>
+                <!---->
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="sad-face"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="image"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ground
+                    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="" class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p _ngcontent-c7="">
+                                Use icons across all links if you choose to use them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia is-dont-block">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo _ngcontent-c7="" _nghost-c11="">
+
+<div _ngcontent-c11="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c11="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c11="" class="content-container">
+            <clr-vertical-nav _ngcontent-c11="" class="clr-vertical-nav has-icons">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Normal
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fire
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Water
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Electric
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Grass
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <!----><a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Fighting
+                    
+        </span>
+    </a>
+                <!---->
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="sad-face"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="image"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ground
+                    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="" class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p _ngcontent-c7="">
+                                Add icons to some links and not to other links. This becomes difficult to scan and read.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c7="">Hierarchy</h3>
+
+            <p _ngcontent-c7="">
+                Hierarchy is used to show parent-child relationship between links. If a child link is active 
+                and the parent item is collapsed, the parent will display as active. When expanded, the active 
+                indicator will display on the child link. Clicking on text, carets or icons will expand and 
+                collapse the parent item.
+            </p>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-12">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups">
+
+<!---->
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-0">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-1">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-2">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-3">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-35">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-4">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Basic</h6>
+                            <div _ngcontent-c7="">
+                                Top level hierarchy items are semibold font weight and have a caret to the 
+                                right. Child links are normal font weight.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups has-icons">
+
+<!---->
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-5">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-6 is-expanded">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="down">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-7">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-8">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-36">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-9">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Icons</h6>
+                            <div _ngcontent-c7="">
+                                Icons are only applied to the top level navigation items. They are not applied 
+                                to child links.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups">
+
+<!---->
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-10">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-11">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                    Ice
+                    
+        </span>
+    </a>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-12">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-13">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                    Poison
+                    
+        </span>
+    </a>
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-37">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-14">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Mixed</h6>
+                            <div _ngcontent-c7="">
+                                Top level hierarchy items without child links are semibold. Clicking on one 
+                                will navigate a user to a page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <clr-alert _ngcontent-c7="" clralerttype="info">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                <clr-alert-item _ngcontent-c7="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c7="" class="alert-text">
+                            If you need a summary or overview-type landing page for a link group, we recommend 
+                            you make it as your first child link.
+                        </span>
+                
+    </clr-alert-item>
+            
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+            <h3 _ngcontent-c7="">Collapse &amp; Expand Navigation</h3>
+
+            <p _ngcontent-c7="">
+                Collapsing and expanding navigation is used to create more space in content areas or to bring 
+                greater focus to content. The double caret in the upper right corner will collapse and 
+                expand the navigation.
+            </p>
+
+            <h5 _ngcontent-c7="">Basic</h5>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-collapsible-vertical-nav-demo _ngcontent-c7="" _nghost-c13="">
+
+<div _ngcontent-c13="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c13="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c13="" class="content-container">
+            <clr-vertical-nav _ngcontent-c13="" class="clr-vertical-nav">
+
+<!----><button class="nav-trigger" type="button">
+    <clr-icon class="nav-trigger-icon" shape="angle-double" dir="left"></clr-icon>
+</button>
+
+<div class="nav-content">
+    
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Normal
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Fire
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Water
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Electric
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Grass
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Fighting
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!---->
+        <span class="nav-text">
+            
+                    
+                    Ground
+                    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-collapsible-vertical-nav-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">No Icons</h6>
+                            <div _ngcontent-c7="">
+                                When no icons are present, collapsing the navigation will show a basic bar. The 
+                                entire bar is a click target that can expand the navigation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-collapsible-vertical-nav-demo _ngcontent-c7="" _nghost-c13="">
+
+<div _ngcontent-c13="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c13="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c13="" class="content-container">
+            <clr-vertical-nav _ngcontent-c13="" class="clr-vertical-nav is-collapsed has-icons">
+
+<!----><button class="nav-trigger on-collapse" type="button">
+    <clr-icon class="nav-trigger-icon" shape="angle-double" dir="right"></clr-icon>
+</button>
+
+<div class="nav-content">
+    
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Normal
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fire
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Water
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Electric
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Grass
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="shield"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fighting
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="sad-face"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <a _ngcontent-c13="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c13="" class="nav-icon" clrverticalnavicon="" shape="image"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ground
+                    
+        </span>
+    </a>
+            
+    <!----><button class="nav-btn"></button>
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-collapsible-vertical-nav-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Icons</h6>
+                            <div _ngcontent-c7="">
+                                When collapsed, text will disappear and only icons will show. Clicking on an icon will
+                                navigate the user. An active link will also show as an active icon when collapsed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 _ngcontent-c7="">Hierarchy</h5>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-12">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups">
+
+<!----><button class="nav-trigger" type="button">
+    <clr-icon class="nav-trigger-icon" shape="angle-double" dir="left"></clr-icon>
+</button>
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-15">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-16">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-17">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-18">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-38">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-19">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!---->
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">No Icons</h6>
+                            <div _ngcontent-c7="">
+                                When no icons are present, collapsing the navigation will show a basic bar. The 
+                                entire bar is a click target that can expand the navigation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups has-icons">
+
+<!----><button class="nav-trigger" type="button">
+    <clr-icon class="nav-trigger-icon" shape="angle-double" dir="left"></clr-icon>
+</button>
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-20">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-21">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-22">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-23">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-39">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-24">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Icons</h6>
+                            <div _ngcontent-c7="">
+                                Top level hierarchy items will show a caret next to its icon when the navigation is
+                                collapsed. Clicking one will expand the navigation its top level item.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups has-icons">
+
+<!----><button class="nav-trigger" type="button">
+    <clr-icon class="nav-trigger-icon" shape="angle-double" dir="left"></clr-icon>
+</button>
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-25">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-26">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charizard
+                            
+        </span>
+    </a>
+                        <!---->
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-27">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-28">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="sad-face"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-40">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Grass
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-29">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c7="">Mixed</h6>
+                            <div _ngcontent-c7="">
+                                Top level items without children will show no caret next to the icon. Clicking on 
+                                an icon with no caret will navigate the user to a page.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c7="">Long Labels</h3>
+
+            <p _ngcontent-c7="">
+                When labels get too long they will be trimmed and followed by an ellipsis (…). We recommend 
+                that navigation labels remain short and concise to prevent an ellipsis from showing.
+            </p>
+
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-12">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-just-navs-demo _ngcontent-c7="" _nghost-c10="">
+
+<div _ngcontent-c10="" class="clr-example" style="margin-top: 0;">
+    <div _ngcontent-c10="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c10="" class="content-container">
+            <!----><clr-vertical-nav _ngcontent-c10="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ditto    
+        </span>
+    </a>
+                <!---->
+                <!----><a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Ultra Rare Mega Charizard EX (Secret
+                    Rare)    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Arcanine    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Blastoise    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Gyrados    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Jolteon    
+        </span>
+    </a>
+                <a _ngcontent-c10="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+            <!---->
+            <!---->
+        </div>
+    </div>
+</div></clr-just-navs-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-icons-demo _ngcontent-c7="" _nghost-c11="">
+
+<div _ngcontent-c11="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c11="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c11="" class="content-container">
+            <clr-vertical-nav _ngcontent-c11="" class="clr-vertical-nav has-icons">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Normal
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fire
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Water
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Electric
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Grass
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ice
+                    
+        </span>
+    </a>
+                <!---->
+                <!----><a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <!----><clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="shield"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Fighting, Psychic, Dragon, Fairy, Rock, Dark
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="sad-face"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Poison
+                    
+        </span>
+    </a>
+                <a _ngcontent-c11="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        <clr-icon _ngcontent-c11="" class="nav-icon" clrverticalnavicon="" shape="image"></clr-icon>
+        <span class="nav-text">
+            
+                    
+                    Ground
+                    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-icons-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c7="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-vertical-nav-groups-demo _ngcontent-c7="" _nghost-c12="">
+
+<div _ngcontent-c12="" class="clr-example" style="margin-top: 0">
+    <div _ngcontent-c12="" class="main-container" style="width: 240px; margin: 12px auto; height: 408px">
+        <div _ngcontent-c12="" class="content-container">
+            <clr-vertical-nav _ngcontent-c12="" class="clr-vertical-nav has-nav-groups has-icons">
+
+<!---->
+
+<div class="nav-content">
+    
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-30">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="user"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Normal
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pidgey
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Rattata
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Spearow
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="active nav-group ng-tns-c14-31 is-expanded">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="flame"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Fire
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="down">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="active nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmander
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Charmeleon
+                            
+        </span>
+    </a>
+                        <!---->
+                        <!----><a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ultra Rare Mega Charizard (Secret Rare)
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-32">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="download-cloud"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Water
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Blastoise
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Squirtle
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Wartortle
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-33">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bolt"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Electric
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Magnemite
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Pikachu
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Raichu
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <!---->
+                <!---->
+                <!---->
+                <!----><clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-41">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="bug"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Grass, Fighting, Dragon, Steel, Psychic
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Bulbasaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Ivysaur
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Venusaur
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+                <clr-vertical-nav-group _ngcontent-c12="" class="nav-group ng-tns-c14-34">
+
+<div class="nav-group-content">
+    
+    <button class="nav-group-trigger" type="button">
+        <!----><clr-icon _ngcontent-c12="" class="nav-icon" clrverticalnavicon="" shape="block"></clr-icon>
+        <div class="nav-group-text">
+            
+                    
+                    Ice
+                    
+                
+        </div>
+        <clr-icon class="nav-group-trigger-icon" shape="caret" dir="right">
+        </clr-icon>
+    </button>
+</div>
+
+<div class="nav-group-children ng-trigger ng-trigger-clrExpand">
+    <clr-vertical-nav-group-children _ngcontent-c12="">
+        
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Articuno
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Dewgong
+                            
+        </span>
+    </a>
+                        <a _ngcontent-c12="" class="nav-link" clrverticalnavlink="" href="javascript://">
+        
+        <span class="nav-text">
+            
+                            Jynx
+                            
+        </span>
+    </a>
+                    
+    </clr-vertical-nav-group-children>
+</div>
+</clr-vertical-nav-group>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div></clr-vertical-nav-groups-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c7="">Smaller Screens - Responsive</h3>
+
+            <p _ngcontent-c7="">
+                When screens drop below 768px wide, the navigation will hide completely and can be shown by 
+                clicking on one of the header icons. All normal vertical navigation designs and behaviors 
+                are the same in the responsive state. Read the Responsive section in Navigation for more 
+                information on how this works.
+            </p>
+
+            <div _ngcontent-c7="" class="row">
+                <div _ngcontent-c7="" class="col-sm-12 col-md-12">
+                    <div _ngcontent-c7="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c7="" class="clrweb-DoxMedia-block other-color" style="padding: 0">
+                            <div _ngcontent-c7="" class="row">
+                                <div _ngcontent-c7="" class="col-md-6 col-sm-12">
+                                    <div _ngcontent-c7="" class="clrweb-DoxMedia-img">
+                                        <img _ngcontent-c7="" alt="Responsive Vertical Nav" class="img-fluid" src="assets/images/documentation/vertical-nav/responsive-left.png">
+                                    </div>
+                                </div>
+                                <div _ngcontent-c7="" class="col-md-6 col-sm-12">
+                                    <div _ngcontent-c7="" class="clrweb-DoxMedia-img">
+                                        <img _ngcontent-c7="" alt="Responsive Vertical Nav" class="img-fluid" src="assets/images/documentation/vertical-nav/responsive-right.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div _ngcontent-c7="" id="code-examples">
+            <h3 _ngcontent-c7="" id="examples">Code &amp; Examples</h3>
+
+            <p _ngcontent-c7="">
+                We have 5 Vertical Nav demos. Starting with the basics, each demo shows
+                you one or more of the advanced Vertical Nav features.
+            </p>
+
+            <p _ngcontent-c7=""></p>
+
+            <div _ngcontent-c7="" class="row">
+
+                <div _ngcontent-c7="" class="col-xs-12 col-sm-12 col-md-4">
+                    <ul _ngcontent-c7="" class="list">
+                        <li _ngcontent-c7=""><a _ngcontent-c7="" routerlink="./basic-structure" href="/vertical-nav/basic-structure">Basic Structure</a></li>
+                        <li _ngcontent-c7=""><a _ngcontent-c7="" routerlink="./icon-links" href="/vertical-nav/icon-links">Icon Links</a></li>
+                        <li _ngcontent-c7=""><a _ngcontent-c7="" routerlink="./collapsible-nav" href="/vertical-nav/collapsible-nav">Collapsible Navigation</a></li>
+                        <li _ngcontent-c7=""><a _ngcontent-c7="" routerlink="./nav-groups" href="/vertical-nav/nav-groups">Vertical Nav Groups</a></li>
+                        <li _ngcontent-c7=""><a _ngcontent-c7="" routerlink="./lazy-loading-nav-links" href="/vertical-nav/lazy-loading-nav-links">Lazy Loading Nav Links in Nav Groups</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div _ngcontent-c7=""></div>
+
+            <router-outlet _ngcontent-c7=""></router-outlet><clr-basic-structure-vertical-nav-demo _nghost-c18="">
+
+<h4 _ngcontent-c18="">Basic Structure</h4>
+
+<p _ngcontent-c18="">
+    Use the <code _ngcontent-c18="" class="clr-code">clr-vertical-nav</code> component to create the Vertical Nav.
+    Add the <code _ngcontent-c18="" class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.
+</p>
+
+<div _ngcontent-c18="" class="clr-example">
+    <div _ngcontent-c18="" class="main-container" style="height: 400px">
+        <header _ngcontent-c18="" class="header">
+            <div _ngcontent-c18="" class="branding">
+                <a _ngcontent-c18="" href="javascript://">
+                    <clr-icon _ngcontent-c18="" class="is-inverse" shape="bolt"></clr-icon>
+                    <span _ngcontent-c18="" class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div _ngcontent-c18="" class="content-container">
+            <div _ngcontent-c18="" class="content-area">
+                <router-outlet _ngcontent-c18=""></router-outlet><clr-charmander-demo _nghost-c19="">
+        <h4 _ngcontent-c19="" class="demo-title">Charmander</h4>
+        <p _ngcontent-c19="">
+            The flame that burns at the tip of its tail is an indication of its emotions.
+            The flame wavers when Charmander is enjoying itself.
+            If the Pokémon becomes enraged, the flame burns fiercely.
+        </p>
+    </clr-charmander-demo>
+            </div>
+            <clr-vertical-nav _ngcontent-c18="" class="clr-vertical-nav">
+
+<!---->
+
+<div class="nav-content">
+    
+                <a _ngcontent-c18="" class="nav-link active" clrverticalnavlink="" routerlink="./charmander" routerlinkactive="active" href="/vertical-nav/basic-structure/charmander">
+        
+        <span class="nav-text">
+            Charmander    
+        </span>
+    </a>
+                <a _ngcontent-c18="" class="nav-link" clrverticalnavlink="" routerlink="./jigglypuff" routerlinkactive="active" href="/vertical-nav/basic-structure/jigglypuff">
+        
+        <span class="nav-text">
+            Jigglypuff    
+        </span>
+    </a>
+                <a _ngcontent-c18="" class="nav-link" clrverticalnavlink="" routerlink="./pikachu" routerlinkactive="active" href="/vertical-nav/basic-structure/pikachu">
+        
+        <span class="nav-text">
+            Pikachu    
+        </span>
+    </a>
+                <a _ngcontent-c18="" class="nav-link" clrverticalnavlink="" routerlink="./raichu" routerlinkactive="active" href="/vertical-nav/basic-structure/raichu">
+        
+        <span class="nav-text">
+            Raichu    
+        </span>
+    </a>
+                <a _ngcontent-c18="" class="nav-link" clrverticalnavlink="" routerlink="./snorlax" routerlinkactive="active" href="/vertical-nav/basic-structure/snorlax">
+        
+        <span class="nav-text">
+            Snorlax    
+        </span>
+    </a>
+                <a _ngcontent-c18="" class="nav-link" clrverticalnavlink="" routerlink="./credit" routerlinkactive="active" href="/vertical-nav/basic-structure/credit">
+        
+        <span class="nav-text">
+            Credit    
+        </span>
+    </a>
+            
+    <!---->
+</div>
+</clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _ngcontent-c18="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="main-container"&gt;
+    &lt;header class="header"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
+        &lt;clr-vertical-nav&gt;
+            &lt;a clrVerticalNavLink routerLink="./charmander" routerLinkActive="active"&gt;Charmander&lt;/a&gt;
+            &lt;a clrVerticalNavLink routerLink="./jigglypuff" routerLinkActive="active"&gt;Jigglypuff&lt;/a&gt;
+            &lt;a clrVerticalNavLink routerLink="./pikachu" routerLinkActive="active"&gt;Pikachu&lt;/a&gt;
+            &lt;a clrVerticalNavLink routerLink="./raichu" routerLinkActive="active"&gt;Raichu&lt;/a&gt;
+            &lt;a clrVerticalNavLink routerLink="./snorlax" routerLinkActive="active"&gt;Snorlax&lt;/a&gt;
+            &lt;a clrVerticalNavLink routerLink="./credit" routerLinkActive="active"&gt;Credit&lt;/a&gt;
+        &lt;/clr-vertical-nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet></clr-basic-structure-vertical-nav-demo>
+
+            <div _ngcontent-c7="" class="datagrid-demo-pagination">
+                <!---->
+                <!---->
+            </div>
+        </div>
+
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-vertical-nav-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

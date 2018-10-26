@@ -1,0 +1,10 @@
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
+
+@NgModule({
+    imports: [
+        ClarityModule,
+        ClrFormsNextModule,
+        // ... other imports
+    ],
+})
+export class AppModule { }

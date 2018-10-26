@@ -1,0 +1,1318 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Navigation</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c135]   .example-aside-section[_ngcontent-c135]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c135]   .example-aside-section[_ngcontent-c135]{display:none}}.clr-example[_ngcontent-c135]   .example-footer[_ngcontent-c135]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">.clr-example[_ngcontent-c136]   .example-aside-section[_ngcontent-c136]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c136]   .example-aside-section[_ngcontent-c136]{display:none}}.clr-example[_ngcontent-c136]   .example-footer[_ngcontent-c136]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">.clr-example[_ngcontent-c137]   .example-aside-section[_ngcontent-c137]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c137]   .example-aside-section[_ngcontent-c137]{display:none}}.clr-example[_ngcontent-c137]   .example-footer[_ngcontent-c137]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">.clr-example[_ngcontent-c138]   .example-aside-section[_ngcontent-c138]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c138]   .example-aside-section[_ngcontent-c138]{display:none}}.clr-example[_ngcontent-c138]   .example-footer[_ngcontent-c138]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">.clr-example[_ngcontent-c139]   .example-aside-section[_ngcontent-c139]{width:20%;padding:24px;border:1px solid}@media screen and (max-width:576px){.clr-example[_ngcontent-c139]   .example-aside-section[_ngcontent-c139]{display:none}}.clr-example[_ngcontent-c139]   .example-footer[_ngcontent-c139]{height:60px;line-height:60px;padding:0 24px;border:1px solid}</style><style ng-transition="clarity">.clr-example[_ngcontent-c140]   header.space-below[_ngcontent-c140]{margin-bottom:24px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c141]   header.space-below[_ngcontent-c141]{margin-bottom:24px}</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-navigation"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-navigation-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Navigation</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/navigation#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/navigation#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-sound-navigation-layout-offers-a-high-degree-of-discoverability-and-feedback-letting-users-know-where-they-are-at-all-times-and-ensuring-they-can-easily-get-to-where-they-want-to-go">
+            A sound navigation layout offers a high degree of discoverability and feedback, letting users know where
+            they are at all times and ensuring they can easily get to where they want to go.</h5>
+
+        <div id="code-examples">
+            <p>Clarity has three navigation components: header, subnav, and sidenav. Following are
+                the possible combinations of navigation.</p>
+
+            <h6 id="header-as-primary-navigation-and-subnav-as-secondary-navigation">1. Header as primary
+                navigation and subnav as secondary navigation</h6>
+
+            <clr-layout-no-sidenav-demo _nghost-c135="">
+
+<div _ngcontent-c135="" class="clr-example">
+    <div _ngcontent-c135="" class="main-container">
+        <header _ngcontent-c135="" class="header header-6">
+            <div _ngcontent-c135="" class="branding">
+                <a _ngcontent-c135="" href="#">
+                    <clr-icon _ngcontent-c135="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c135="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c135="" class="header-nav">
+                <a _ngcontent-c135="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c135="" shape="cloud"></clr-icon>
+                </a>
+                <a _ngcontent-c135="" class="active nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c135="" shape="folder"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <nav _ngcontent-c135="" class="subnav">
+            <ul _ngcontent-c135="" class="nav">
+                <li _ngcontent-c135="" class="nav-item">
+                    <a _ngcontent-c135="" class="nav-link active" href="javascript://">Subnav Link 1</a>
+                </li>
+                <li _ngcontent-c135="" class="nav-item">
+                    <a _ngcontent-c135="" class="nav-link" href="javascript://">Subnav Link 2</a>
+                </li>
+                <li _ngcontent-c135="" class="nav-item">
+                    <a _ngcontent-c135="" class="nav-link" href="javascript://">Subnav Link 3</a>
+                </li>
+                <li _ngcontent-c135="" class="nav-item">
+                    <a _ngcontent-c135="" class="nav-link" href="javascript://">Subnav Link 4</a>
+                </li>
+                <li _ngcontent-c135="" class="nav-item">
+                    <a _ngcontent-c135="" class="nav-link" href="javascript://">Subnav Link 5</a>
+                </li>
+            </ul>
+        </nav>
+        <div _ngcontent-c135="" class="content-container">
+            <div _ngcontent-c135="" class="content-area">
+                <p _ngcontent-c135="">
+                    Content Area
+                </p>
+                <p _ngcontent-c135="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-nav-code-info-alert _ngcontent-c135=""><clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+    <div class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            For code examples on the specific navigation components (header, subnav, sidenav)
+            see <a routerlink="./header" href="/navigation/header">header</a> documentation.
+        </span>
+    
+    </div>
+
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert></clr-nav-code-info-alert>
+<pre _ngcontent-c135=""><code _ngcontent-c135="" clr-code-highlight="language-html" class="language-html">
+&lt;div class="main-container"&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;nav class="subnav"&gt;
+        ...
+    &lt;/nav&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</clr-layout-no-sidenav-demo>
+
+            <h6 id="header-as-primary-navigation-and-sidenav-as-secondary-navigation">2. Header as primary
+                navigation and sidenav as secondary navigation</h6>
+            <clr-layout-no-subnav-demo _nghost-c136="">
+
+<div _ngcontent-c136="" class="clr-example">
+    <div _ngcontent-c136="" class="main-container">
+        <header _ngcontent-c136="" class="header header-6">
+            <div _ngcontent-c136="" class="branding">
+                <a _ngcontent-c136="" href="#">
+                    <clr-icon _ngcontent-c136="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c136="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c136="" class="header-nav">
+                <a _ngcontent-c136="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c136="" shape="cloud"></clr-icon>
+                </a>
+                <a _ngcontent-c136="" class="active nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c136="" shape="folder"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <div _ngcontent-c136="" class="content-container">
+            <div _ngcontent-c136="" class="content-area">
+                <p _ngcontent-c136="">
+                    Content Area
+                </p>
+                <p _ngcontent-c136="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+            <nav _ngcontent-c136="" class="sidenav">
+                <section _ngcontent-c136="" class="sidenav-content">
+                    <section _ngcontent-c136="" class="nav-group">
+                        <input _ngcontent-c136="" id="tabexample2" type="checkbox">
+                        <label _ngcontent-c136="" for="tabexample2">Sidenav</label>
+                        <ul _ngcontent-c136="" class="nav-list">
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link">Link 1</a></li>
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link">Link 2</a></li>
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link active">Link 3</a></li>
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link">Link 4</a></li>
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link">Link 5</a></li>
+                            <li _ngcontent-c136=""><a _ngcontent-c136="" class="nav-link">Link 6</a></li>
+                        </ul>
+                    </section>
+                </section>
+            </nav>
+        </div>
+    </div>
+</div>
+<clr-nav-code-info-alert _ngcontent-c136=""><clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+    <div class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            For code examples on the specific navigation components (header, subnav, sidenav)
+            see <a routerlink="./header" href="/navigation/header">header</a> documentation.
+        </span>
+    
+    </div>
+
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert></clr-nav-code-info-alert>
+<pre _ngcontent-c136=""><code _ngcontent-c136="" clr-code-highlight="language-html" class="language-html">
+&lt;div class="main-container"&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;nav class="sidenav"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</clr-layout-no-subnav-demo>
+
+            <h6 id="header-as-primary-navigation">3. Header as primary navigation</h6>
+            <clr-layout-only-header-demo _nghost-c137="">
+
+<div _ngcontent-c137="" class="clr-example">
+    <div _ngcontent-c137="" class="main-container">
+        <header _ngcontent-c137="" class="header header-6">
+            <div _ngcontent-c137="" class="branding">
+                <a _ngcontent-c137="" href="#">
+                    <clr-icon _ngcontent-c137="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c137="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c137="" class="header-nav">
+                <a _ngcontent-c137="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c137="" shape="cloud"></clr-icon>
+                </a>
+                <a _ngcontent-c137="" class="active nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c137="" shape="folder"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <div _ngcontent-c137="" class="content-container">
+            <div _ngcontent-c137="" class="content-area">
+                <p _ngcontent-c137="">
+                    Content Area
+                </p>
+                <p _ngcontent-c137="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-nav-code-info-alert _ngcontent-c137=""><clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+    <div class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            For code examples on the specific navigation components (header, subnav, sidenav)
+            see <a routerlink="./header" href="/navigation/header">header</a> documentation.
+        </span>
+    
+    </div>
+
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert></clr-nav-code-info-alert>
+<pre _ngcontent-c137=""><code _ngcontent-c137="" clr-code-highlight="language-html" class="language-html">
+&lt;div class="main-container"&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</clr-layout-only-header-demo>
+
+            <h6 id="sidenav-as-primary-navigation">4. Sidenav as primary navigation</h6>
+            <clr-layout-only-sidenav-primary _nghost-c138="">
+
+<div _ngcontent-c138="" class="clr-example">
+    <div _ngcontent-c138="" class="main-container">
+        <header _ngcontent-c138="" class="header header-6">
+            <div _ngcontent-c138="" class="branding">
+                <a _ngcontent-c138="" href="#">
+                    <clr-icon _ngcontent-c138="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c138="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <form _ngcontent-c138="" class="search">
+                <label _ngcontent-c138="" for="search_input">
+                    <input _ngcontent-c138="" id="search_input" placeholder="Search for keywords..." type="text">
+                </label>
+            </form>
+            <div _ngcontent-c138="" class="settings">
+                <a _ngcontent-c138="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c138="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <div _ngcontent-c138="" class="content-container">
+            <div _ngcontent-c138="" class="content-area">
+                <p _ngcontent-c138="">
+                    Content Area
+                </p>
+                <p _ngcontent-c138="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+            <nav _ngcontent-c138="" class="sidenav">
+                <section _ngcontent-c138="" class="sidenav-content">
+                    <section _ngcontent-c138="" class="nav-group">
+                        <input _ngcontent-c138="" id="tabexample2" type="checkbox">
+                        <label _ngcontent-c138="" for="tabexample2">Sidenav</label>
+                        <ul _ngcontent-c138="" class="nav-list">
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link">Link 1</a></li>
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link">Link 2</a></li>
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link active">Link 3</a></li>
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link">Link 4</a></li>
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link">Link 5</a></li>
+                            <li _ngcontent-c138=""><a _ngcontent-c138="" class="nav-link">Link 6</a></li>
+                        </ul>
+                    </section>
+                </section>
+            </nav>
+        </div>
+    </div>
+</div>
+<clr-nav-code-info-alert _ngcontent-c138=""><clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+    <div class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            For code examples on the specific navigation components (header, subnav, sidenav)
+            see <a routerlink="./header" href="/navigation/header">header</a> documentation.
+        </span>
+    
+    </div>
+
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert></clr-nav-code-info-alert>
+<pre _ngcontent-c138=""><code _ngcontent-c138="" clr-code-highlight="language-html" class="language-html">
+&lt;div class="main-container"&gt;
+    &lt;div class="alert alert-app-level"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;nav class="sidenav"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</clr-layout-only-sidenav-primary>
+
+            <h6 id="subnav-as-primary-navigation-and-sidenav-as-secondary-navigation">5. Subnav as primary
+                navigation and sidenav as secondary navigation</h6>
+            <clr-layout-only-subnav-primary _nghost-c139="">
+
+<div _ngcontent-c139="" class="clr-example">
+    <div _ngcontent-c139="" class="main-container">
+        <header _ngcontent-c139="" class="header header-6">
+            <div _ngcontent-c139="" class="branding">
+                <a _ngcontent-c139="" href="#">
+                    <clr-icon _ngcontent-c139="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c139="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <form _ngcontent-c139="" class="search">
+                <label _ngcontent-c139="" for="search_input">
+                    <input _ngcontent-c139="" id="search_input" placeholder="Search for keywords..." type="text">
+                </label>
+            </form>
+            <div _ngcontent-c139="" class="settings">
+                <a _ngcontent-c139="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c139="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <nav _ngcontent-c139="" class="subnav">
+            <ul _ngcontent-c139="" class="nav">
+                <li _ngcontent-c139="" class="nav-item">
+                    <a _ngcontent-c139="" class="nav-link active" href="javascript://">Subnav Link 1</a>
+                </li>
+                <li _ngcontent-c139="" class="nav-item">
+                    <a _ngcontent-c139="" class="nav-link" href="javascript://">Subnav Link 2</a>
+                </li>
+                <li _ngcontent-c139="" class="nav-item">
+                    <a _ngcontent-c139="" class="nav-link" href="javascript://">Subnav Link 3</a>
+                </li>
+                <li _ngcontent-c139="" class="nav-item">
+                    <a _ngcontent-c139="" class="nav-link" href="javascript://">Subnav Link 4</a>
+                </li>
+                <li _ngcontent-c139="" class="nav-item">
+                    <a _ngcontent-c139="" class="nav-link" href="javascript://">Subnav Link 5</a>
+                </li>
+            </ul>
+        </nav>
+        <div _ngcontent-c139="" class="content-container">
+            <div _ngcontent-c139="" class="content-area">
+                <p _ngcontent-c139="">
+                    Content Area
+                </p>
+                <p _ngcontent-c139="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna. Phasellus tristique
+                    posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                    purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+                </p>
+            </div>
+            <nav _ngcontent-c139="" class="sidenav">
+                <section _ngcontent-c139="" class="sidenav-content">
+                    <section _ngcontent-c139="" class="nav-group">
+                        <input _ngcontent-c139="" id="tabexample2" type="checkbox">
+                        <label _ngcontent-c139="" for="tabexample2">Sidenav</label>
+                        <ul _ngcontent-c139="" class="nav-list">
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link">Link 1</a></li>
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link">Link 2</a></li>
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link active">Link 3</a></li>
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link">Link 4</a></li>
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link">Link 5</a></li>
+                            <li _ngcontent-c139=""><a _ngcontent-c139="" class="nav-link">Link 6</a></li>
+                        </ul>
+                    </section>
+                </section>
+            </nav>
+        </div>
+    </div>
+</div>
+<clr-nav-code-info-alert _ngcontent-c139=""><clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+    <div class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            For code examples on the specific navigation components (header, subnav, sidenav)
+            see <a routerlink="./header" href="/navigation/header">header</a> documentation.
+        </span>
+    
+    </div>
+
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert></clr-nav-code-info-alert>
+<pre _ngcontent-c139=""><code _ngcontent-c139="" clr-code-highlight="language-html" class="language-html">
+&lt;div class="main-container"&gt;
+    &lt;div class="alert alert-app-level"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;header class="header header-6"&gt;
+        ...
+    &lt;/header&gt;
+    &lt;nav class="subnav"&gt;
+        ...
+    &lt;/nav&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            ...
+        &lt;/div&gt;
+        &lt;nav class="sidenav"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</clr-layout-only-subnav-primary>
+
+            <p>
+                <a id="responsive_navigation"></a>
+            </p>
+
+            <h3 id="responsive-navigation">Responsive Navigation</h3>
+
+            <p>Clarity provides three levels of navigation represented by the following classnames:</p>
+
+            <ul class="list cozy-sm">
+                <li><code class="clr-code">.header-nav</code> in the application <a routerlink="./header" href="/navigation/header">header</a>.
+                </li>
+                <li><code class="clr-code">.subnav</code> immediately below the header.</li>
+                <li><code class="clr-code">.sidenav</code> inside the content container. See <a routerlink="./sidenav" href="/navigation/sidenav">sidenav</a>.
+                </li>
+            </ul>
+
+            <p>
+                Clarity supports responsive navigation as follows:
+            </p>
+            <ul class="list cozy-sm">
+                <li>
+                    Up to two levels of navigation can be made responsive.
+                </li>
+                <li>
+                    Responsiveness is triggered below the <code class="clr-code">768px</code> breakpoint by
+                    adding the <code class="clr-code">clr-nav-level</code> input to the navigation level.
+                </li>
+                <li>
+                    A <code class="clr-code">clr-nav-level</code> value of <code class="clr-code">1</code>
+                    is for primary navigation and <code class="clr-code">2</code> is for secondary navigation.
+                </li>
+                <li>
+                    On small screens:
+                    <ul class="list cozy-sm">
+                        <li>
+                            The hamburger icon appears on the left of the header and triggers the primary navigation
+                        </li>
+                        <li>
+                            The overflow icon appears on the right and triggers the secondary navigation
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="alert alert-info cozy">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Although three levels of navigation make sense on large screens, this number of levels
+                            becomes hard to navigate on smaller screens. Clarity recommends that applications for
+                            tablets and phones are not exact replicas of the desktop versions, but rather a different,
+                            simplified experience.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <p><strong>Note:</strong> Responsive navigation requires you to use the following Angular
+                components to build the layout of your application:</p>
+
+            <ul class="list">
+                <li><code class="clr-code">clr-main-container</code></li>
+                <li><code class="clr-code">clr-header</code></li>
+            </ul>
+
+            <h4 id="examples">Examples</h4>
+
+            <h6>1. Header navigation as primary and sidenav as secondary</h6>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h6>Large screens</h6>
+                    <img class="img-fluid cozy-sm" src="assets/images/documentation/navigation/header_sidenav_large.png?1481774401150832000">
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <h6>Header navigation on small screens</h6>
+                    <img class="img-fluid cozy-sm" src="assets/images/documentation/navigation/navLevel1.gif?1481774401150832000">
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-6">
+                    <h6>Sidenav on small screens</h6>
+                    <img class="img-fluid cozy-sm" src="assets/images/documentation/navigation/navLevel2.gif?1481774401150832000">
+                </div>
+            </div>
+
+            <clr-responsive-nav-header-sidenav-demo _nghost-c140="">
+    <pre _ngcontent-c140=""><code _ngcontent-c140="" clr-code-highlight="language-html" ngnonbindable="" class="language-html">
+&lt;clr-main-container&gt;
+    &lt;clr-header&gt;
+        ...
+        &lt;div class="header-nav" [clr-nav-level]="1"&gt;
+            ...
+        &lt;/div&gt;
+        ...
+    &lt;/clr-header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;main class="content-area"&gt;
+            ...
+        &lt;/main&gt;
+        &lt;nav class="sidenav" [clr-nav-level]="2"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/clr-main-container&gt;
+</code></pre>
+    </clr-responsive-nav-header-sidenav-demo>
+
+            <h6>2. Subnav as primary and sidenav as secondary</h6>
+
+            <clr-responsive-nav-subnav-sidenav-demo _nghost-c141="">
+    <pre _ngcontent-c141=""><code _ngcontent-c141="" clr-code-highlight="language-html" ngnonbindable="" class="language-html">
+&lt;clr-main-container&gt;
+    &lt;clr-header&gt;
+        ...
+    &lt;/clr-header&gt;
+    &lt;nav class="subnav" [clr-nav-level]="1"&gt;
+        ...
+    &lt;/nav&gt;
+    &lt;div class="content-container"&gt;
+        &lt;main class="content-area"&gt;
+            ...
+        &lt;/main&gt;
+        &lt;nav class="sidenav" [clr-nav-level]="2"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/clr-main-container&gt;
+</code></pre>
+    </clr-responsive-nav-subnav-sidenav-demo>
+        </div>
+
+        <div id="design-guidelines">
+        <h3 id="guidelines">Designing Navigation</h3>
+
+        <p>When establishing your navigation model, consider:</p>
+
+        <ul class="list">
+            <li>The key use cases of your app</li>
+            <li>The proper hierarchy and what belongs in the primary navigation versus what goes in the secondary or
+                lower levels of navigation
+            </li>
+            <li>Whether to orient the navigation horizontally, vertically, or both</li>
+            <li>Whether responsiveness needs to be part of your platform strategy</li>
+        </ul>
+
+        
+
+        <h3 id="using-the-navigation-patterns">Using the Navigation Patterns</h3>
+
+        <h4 id="header">Header</h4>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Header" src="assets/images/documentation/app-layout/Header.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>The <a routerlink="./header" href="/navigation/header">header</a> is for primary navigation. Benefits of this
+                    navigation pattern are:
+                </div>
+                <ul class="list">
+                    <li>Users often look for navigation in the header.</li>
+                    <li>Top-level navigation is kept simple–the recommended number of links is 2 to 4.</li>
+                    <li>Navigation does not take real estate away from the content area.</li>
+                </ul>
+                <p>
+                    Conversely, the header supports other items (search and setting) and the navigation links might
+                    become crowded.
+                </p>
+            </div>
+        </div>
+
+        <h4 id="subnav">Subnav</h4>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Subnav" src="assets/images/documentation/app-layout/subnav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    Use the <a routerlink="./header" href="/navigation/header">subnav</a> for primary navigation when you need the
+                    sidebar for secondary navigation and any of the following apply:
+                </div>
+                <ul class="list">
+                    <li>You have more links than can fit in the header.</li>
+                    <li>The text of your links is too long for the header.</li>
+                    <li>You want to limit the header to search and settings.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4 id="sidenav">Sidenav</h4>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Sidenav" src="assets/images/documentation/app-layout/sidenav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    Benefits of the <a routerlink="./sidenav" href="/navigation/sidenav">sidenav</a> are that it:
+                </div>
+                <ul class="list">
+                    <li>Is a familiar navigation pattern for users.</li>
+                    <li>Accommodates a large number of links, becoming vertically scrollable when content exceeds the
+                        view port.
+                    </li>
+                    <li>Supports progressive disclosure of a hierarchy.</li>
+                    <li>Supports categorization of links.</li>
+                </ul>
+                <p>
+                    Conversely, the sidenav takes real estate away from the content area. Also, on mobile, the hierarchy
+                    within the sidenav should be kept to a minimum.
+                </p>
+            </div>
+        </div>
+
+        <h3 id="combining-navigation-patterns">Combining Navigation Patterns</h3>
+
+        <h4>Header and sidenav</h4>
+        <div class="row cozy-sm">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Header &amp; Sidenav" src="assets/images/documentation/app-layout/header_sidenav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    A common pattern for two levels of navigation. The primary navigation is in the header, secondary in
+                    the sidenav.
+                </div>
+            </div>
+        </div>
+
+        <h4>Header and subnav</h4>
+        <div class="row cozy-sm">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Header &amp; Subnav" src="assets/images/documentation/app-layout/header_subnav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    Because both patterns are horizontal, use this combination only when the secondary navigation does
+                    not warrant the space taken up by the sidenav.
+                </div>
+            </div>
+        </div>
+
+        <h4>Subnav and sidenav</h4>
+        <div class="row cozy-sm">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Subnav &amp; Sidenav" src="assets/images/documentation/app-layout/subnav_sidenav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    Use the subnav for primary navigation when the links do not fit in the header.
+                </div>
+            </div>
+        </div>
+
+        <h4>Header, subnav and sidenav</h4>
+        <div class="row cozy-sm">
+            <div class="col-xs-12 col-md-5">
+                <img alt="Header, Subnav &amp; Sidenav" src="assets/images/documentation/app-layout/header_subnav_sidenav.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-md-7">
+                <div>
+                    This schema will not result in a clear visual hierarchy because of the adjacent horizontal patterns.
+                    An alternative is to use the header and sidenav and then provide further navigation in the content
+                    area by using tabs.
+                </div>
+            </div>
+        </div>
+
+        <h3 class="cozy" id="navigation_layouts">Responsive Navigation Layouts</h3>
+
+        <p>Responsiveness is supported for the primary and secondary levels of navigation. If your app has more than two
+            levels of navigation, you’ll need to build a custom solution. At three levels, the navigation becomes
+            increasingly nested and too complex
+            for Clarity to provide a single responsive solution.</p>
+
+        <p>For layouts 768px or under:</p>
+
+        <ul class="list">
+            <li>Primary navigation targets move to a hamburger menu on the left.</li>
+            <li>Secondary navigation targets move to an overflow menu on the right.</li>
+        </ul>
+
+        <div class="row cozy-sm">
+            <div class="col-xs-12">
+                <img alt="Header on Small Screens" class="img-fluid" src="assets/images/documentation/app-layout/header_small.png?1481774401150832000">
+            </div>
+        </div>
+
+        <p>When the user clicks the menu icon, a temporary side panel opens with the navigation targets. Content is not
+            accessible while the panel is open.</p>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 cozy-sm">
+                <img alt="Header Triggers Pressed" class="img-fluid" src="assets/images/documentation/app-layout/header_nav_level_2.png?1481774401150832000">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 cozy-sm">
+                <img alt="Header Triggers Pressed" class="img-fluid" src="assets/images/documentation/app-layout/header_nav_level_1.png?1481774401150832000">
+            </div>
+        </div>
+        </div>
+    </article>
+
+
+    </div>
+</section></clr-doc-wrapper></clr-navigation-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

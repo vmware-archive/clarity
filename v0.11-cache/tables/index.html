@@ -1,0 +1,1395 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tables</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tables"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-tables-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Tables</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/tables#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/tables#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="use-the-table-styles-wherever-you-need-to-present-static-data-in-a-tabular-format">Use the table styles
+            wherever you need to present static data in a tabular format.</h5>
+
+        <div class="alert">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div class="alert-text">
+                        For advanced features like sorting, filtering, pagination etc. see
+                        <a routerlink="./datagrid" target="_blank" href="/tables/datagrid">Datagrid.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="basic-tables">Basic Tables</h3>
+
+            <p>Tables take up the full width of their container. Values in table cells are
+                center-aligned by default.</p>
+
+            <clr-tables-basic-demo>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Decimal</th>
+            <th>Hexadecimal</th>
+            <th>Binary</th>
+            <th class="hidden-xs-down">Roman Numeral</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td class="hidden-xs-down">I</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>101</td>
+            <td class="hidden-xs-down">V</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>A</td>
+            <td>1010</td>
+            <td class="hidden-xs-down">X</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>F</td>
+            <td>1111</td>
+            <td class="hidden-xs-down">XV</td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Decimal&lt;/th&gt;
+            &lt;th&gt;Hexadecimal&lt;/th&gt;
+            &lt;th&gt;Binary&lt;/th&gt;
+            &lt;th&gt;Roman Numeral&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;I&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;5&lt;/td&gt;
+            &lt;td&gt;5&lt;/td&gt;
+            &lt;td&gt;101&lt;/td&gt;
+            &lt;td&gt;V&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;10&lt;/td&gt;
+            &lt;td&gt;A&lt;/td&gt;
+            &lt;td&gt;1010&lt;/td&gt;
+            &lt;td&gt;X&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;15&lt;/td&gt;
+            &lt;td&gt;F&lt;/td&gt;
+            &lt;td&gt;1111&lt;/td&gt;
+            &lt;td&gt;XV&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-basic-demo>
+
+            <h3 id="left-aligned-table-cells">Left-Aligned Table Cells</h3>
+
+            <p>Values within cells can be left-aligned by adding the
+                <code class="clr-code">.left</code> classname to the table cell.</p>
+
+            <clr-tables-leftcell-demo>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="left">Wizard</th>
+            <th>Allegiance</th>
+            <th class="hidden-xs-down">Triwizard Champion?</th>
+            <th>Can Cast Fireball</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">Harry</td>
+            <td>Gryffindor</td>
+            <td class="hidden-xs-down">Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td class="left">Gandalf</td>
+            <td>Hobbits</td>
+            <td class="hidden-xs-down">Maybe?</td>
+            <td>I don't think so...</td>
+        </tr>
+        <tr>
+            <td class="left">Obi-Wan Kenobi</td>
+            <td>Republic/Rebellion</td>
+            <td class="hidden-xs-down">No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td class="left">Merlin</td>
+            <td>King Arthur</td>
+            <td class="hidden-xs-down">Probably invented the tournament</td>
+            <td>Solid maybe</td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;Wizard&lt;/th&gt;
+            &lt;th&gt;Allegiance&lt;/th&gt;
+            &lt;th&gt;Triwizard Champion?&lt;/th&gt;
+            &lt;th&gt;Can Cast Fireball&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Harry&lt;/td&gt;
+            &lt;td&gt;Gryffindor&lt;/td&gt;
+            &lt;td&gt;Yes&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Gandalf&lt;/td&gt;
+            &lt;td&gt;Hobbits&lt;/td&gt;
+            &lt;td&gt;Maybe?&lt;/td&gt;
+            &lt;td&gt;I don&amp;apos;t think so...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Obi-Wan Kenobi&lt;/td&gt;
+            &lt;td&gt;Republic/Rebellion&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Merlin&lt;/td&gt;
+            &lt;td&gt;King Arthur&lt;/td&gt;
+            &lt;td&gt;Probably invented the tournament&lt;/td&gt;
+            &lt;td&gt;Solid maybe&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-leftcell-demo>
+
+            <h3 id="multiline-table-cells">Multiline Table Cells</h3>
+
+            <p>Table cells automatically wrap text.</p>
+
+            <clr-tables-multiline-demo>
+
+<div class="row">
+    <div class="col-xs-12 col-lg-10 col-xl-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Name</th>
+                    <th class="hidden-xs-down">A/B</th>
+                    <th class="left">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Beetlejuice</td>
+                    <td class="hidden-xs-down">B</td>
+                    <td class="left">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                </tr>
+                <tr>
+                    <td class="left">Mytzlplk</td>
+                    <td class="hidden-xs-down">A</td>
+                    <td class="left">Excepteur sint occaecat cupidatat non proident.</td>
+                </tr>
+                <tr>
+                    <td class="left">Q</td>
+                    <td class="hidden-xs-down">A</td>
+                    <td class="left">Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;Name&lt;/th&gt;
+            &lt;th&gt;A/B&lt;/th&gt;
+            &lt;th class="left"&gt;Comment&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Beetlejuice&lt;/td&gt;
+            &lt;td&gt;B&lt;/td&gt;
+            &lt;td class="left"&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Mytzlplk&lt;/td&gt;
+            &lt;td&gt;A&lt;/td&gt;
+            &lt;td class="left"&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Q&lt;/td&gt;
+            &lt;td&gt;A&lt;/td&gt;
+            &lt;td class="left"&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-multiline-demo>
+
+            <h3 id="non-bordered-tables">Non-Bordered Tables</h3>
+
+            <p>Tables can be displayed without borders by using the
+                <code class="clr-code">.table-noborder</code> classname.</p>
+
+            <clr-tables-noborder-demo>
+
+<table class="table table-noborder">
+    <thead>
+        <tr>
+            <th class="left">Monster</th>
+            <th class="hidden-xs-down">Home</th>
+            <th>Likes Cookies</th>
+            <th class="left hidden-xs-down">Fun to Play With</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">Wolfman</td>
+            <td class="hidden-xs-down">Nondisclosed countryside</td>
+            <td>Sometimes</td>
+            <td class="left hidden-xs-down">Not really</td>
+        </tr>
+        <tr>
+            <td class="left">Mothra</td>
+            <td class="hidden-xs-down">Tropical island</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">Only if you have a flashlight</td>
+        </tr>
+        <tr>
+            <td class="left">Oscar the Grouch</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">No</td>
+        </tr>
+        <tr>
+            <td class="left">Cookie Monster</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>Definitely yes</td>
+            <td class="left hidden-xs-down">Only if you have no cookies</td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table table-noborder"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;Monster&lt;/th&gt;
+            &lt;th&gt;Home&lt;/th&gt;
+            &lt;th&gt;Likes Cookies&lt;/th&gt;
+            &lt;th class="left"&gt;Fun to Play With&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Wolfman&lt;/td&gt;
+            &lt;td&gt;Nondisclosed countryside&lt;/td&gt;
+            &lt;td&gt;Sometimes&lt;/td&gt;
+            &lt;td class="left"&gt;Not really&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Mothra&lt;/td&gt;
+            &lt;td&gt;Tropical island&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have a flashlight&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Oscar the Grouch&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;No&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Cookie Monster&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;Definitely yes&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have no cookies&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-noborder-demo>
+
+            <h3 id="compact-tables">Compact Tables</h3>
+
+            <p>Table row heights can be reduced with the <code class="clr-code">.table-compact</code>
+                classname.</p>
+
+            <clr-tables-compact-demo>
+
+<table class="table table-compact">
+    <thead>
+        <tr>
+            <th class="left">Monster</th>
+            <th class="hidden-xs-down">Home</th>
+            <th>Likes Cookies</th>
+            <th class="left hidden-xs-down">Fun to Play With</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">Wolfman</td>
+            <td class="hidden-xs-down">Nondisclosed countryside</td>
+            <td>Sometimes</td>
+            <td class="left hidden-xs-down">Not really</td>
+        </tr>
+        <tr>
+            <td class="left">Mothra</td>
+            <td class="hidden-xs-down">Tropical island</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">Only if you have a flashlight</td>
+        </tr>
+        <tr>
+            <td class="left">Oscar the Grouch</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">No</td>
+        </tr>
+        <tr>
+            <td class="left">Cookie Monster</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>Definitely yes</td>
+            <td class="left hidden-xs-down">Only if you have no cookies</td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table table-compact"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;Monster&lt;/th&gt;
+            &lt;th&gt;Home&lt;/th&gt;
+            &lt;th&gt;Likes Cookies&lt;/th&gt;
+            &lt;th class="left"&gt;Fun to Play With&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Wolfman&lt;/td&gt;
+            &lt;td&gt;Nondisclosed countryside&lt;/td&gt;
+            &lt;td&gt;Sometimes&lt;/td&gt;
+            &lt;td class="left"&gt;Not really&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Mothra&lt;/td&gt;
+            &lt;td&gt;Tropical island&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have a flashlight&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Oscar the Grouch&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;No&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Cookie Monster&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;Definitely yes&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have no cookies&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-compact-demo>
+
+            <h3 id="compact-non-bordered-tables">Compact, Non-Bordered Tables</h3>
+
+            <p>The <code class="clr-code">.table-compact</code> and
+                <code class="clr-code">.table-noborder</code> classnames can be combined.</p>
+
+            <clr-tables-compact-noborder-demo>
+
+<table class="table table-compact table-noborder">
+    <thead>
+        <tr>
+            <th class="left">Monster</th>
+            <th class="hidden-xs-down">Home</th>
+            <th>Likes Cookies</th>
+            <th class="left hidden-xs-down">Fun to Play With</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">Wolfman</td>
+            <td class="hidden-xs-down">Nondisclosed countryside</td>
+            <td>Sometimes</td>
+            <td class="left hidden-xs-down">Not really</td>
+        </tr>
+        <tr>
+            <td class="left">Mothra</td>
+            <td class="hidden-xs-down">Tropical island</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">Only if you have a flashlight</td>
+        </tr>
+        <tr>
+            <td class="left">Oscar the Grouch</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>No</td>
+            <td class="left hidden-xs-down">No</td>
+        </tr>
+        <tr>
+            <td class="left">Cookie Monster</td>
+            <td class="hidden-xs-down">Sesame Street</td>
+            <td>Definitely yes</td>
+            <td class="left hidden-xs-down">Only if you have no cookies</td>
+        </tr>
+    </tbody>
+</table>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table table-compact table-noborder"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th class="left"&gt;Monster&lt;/th&gt;
+            &lt;th&gt;Home&lt;/th&gt;
+            &lt;th&gt;Likes Cookies&lt;/th&gt;
+            &lt;th class="left"&gt;Fun to Play With&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Wolfman&lt;/td&gt;
+            &lt;td&gt;Nondisclosed countryside&lt;/td&gt;
+            &lt;td&gt;Sometimes&lt;/td&gt;
+            &lt;td class="left"&gt;Not really&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Mothra&lt;/td&gt;
+            &lt;td&gt;Tropical island&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have a flashlight&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Oscar the Grouch&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;No&lt;/td&gt;
+            &lt;td class="left"&gt;No&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td class="left"&gt;Cookie Monster&lt;/td&gt;
+            &lt;td&gt;Sesame Street&lt;/td&gt;
+            &lt;td&gt;Definitely yes&lt;/td&gt;
+            &lt;td class="left"&gt;Only if you have no cookies&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-compact-noborder-demo>
+
+            <h3 id="vertical-tables">Vertical Tables</h3>
+
+            <p>Using the <code class="clr-code">.table-vertical</code> classname orients the table
+                vertically. The left-most column serves as the table header. The left-most cell
+                can be either a <code class="clr-code">td</code> or
+                <code class="clr-code">th</code> element.</p>
+
+            <p>Cells in a vertical table default to left alignment. We have no use cases for
+                center alignment at this time.</p>
+
+            <clr-tables-vertical-demo>
+
+<table class="table table-vertical">
+    <tbody>
+        <tr>
+            <th>Basic table</th>
+            <td>.table</td>
+            <td>The classname used to apply general styling of Clarity tables to an HTML table.</td>
+        </tr>
+        <tr>
+            <th>Left-aligned table cells</th>
+            <td>.left</td>
+            <td>Use this classname on a <code class="clr-code">td</code> to align its contents to the left edge of the table data cell.<br>This is not necessary for vertical tables.</td>
+        </tr>
+        <tr>
+            <th>Tables without borders</th>
+            <td>.table-noborder</td>
+            <td>This classname will remove borders between table rows as well as the border around the edge of the table.<br>Also removes the background so that the table will be transparent over the background its container has.</td>
+        </tr>
+        <tr>
+            <th>Compact tables</th>
+            <td>.table-compact</td>
+            <td>This classname changes is the height of the table rows from 36px to 24px.</td>
+        </tr>
+        <tr>
+            <th>Vertical tables</th>
+            <td>.table-vertical</td>
+            <td>This classname removes the table header and applies table header styles to the left-most column.</td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table table-vertical"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Basic table&lt;/th&gt;
+            &lt;td&gt;.table&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Left-aligned table cells&lt;/th&gt;
+            &lt;td&gt;.left&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Tables without borders&lt;/th&gt;
+            &lt;td&gt;.table-noborder&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Compact tables&lt;/th&gt;
+            &lt;td&gt;.table-compact&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Vertical tables&lt;/th&gt;
+            &lt;td&gt;.table-vertical&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-vertical-demo>
+
+            <h3 id="vertical-compact-non-bordered-tables">Vertical, Compact, Non-bordered Tables</h3>
+            <clr-tables-vertical-noborder-compact-demo>
+
+<table class="table table-vertical table-noborder table-compact">
+    <tbody>
+        <tr>
+            <th>Basic table</th>
+            <td>.table</td>
+            <td>The classname for applying general styling of Clarity tables to an HTML table.</td>
+        </tr>
+        <tr>
+            <th>Left-aligned table cells</th>
+            <td>.left</td>
+            <td>This classname on a <code class="clr-code">td</code> aligns content to the left edge of the table cell.<br>This is not necessary for vertical tables.</td>
+        </tr>
+        <tr>
+            <th>Tables without borders</th>
+            <td>.table-noborder</td>
+            <td>This classname removes borders between table rows and the border around the table.<br>It also removes the background so that the table is transparent over its container background.</td>
+        </tr>
+        <tr>
+            <th>Compact tables</th>
+            <td>.table-compact</td>
+            <td>This classname changes the height of the table rows from 36px to 24px.</td>
+        </tr>
+        <tr>
+            <th>Vertical tables</th>
+            <td>.table-vertical</td>
+            <td>This classname removes the table header and applies table header styles to the left-most column.</td>
+        </tr>
+    </tbody>
+</table>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;table class="table table-vertical table-noborder table-compact"&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Basic table&lt;/th&gt;
+            &lt;td&gt;.table&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Left-aligned table cells&lt;/th&gt;
+            &lt;td&gt;.left&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Tables without borders&lt;/th&gt;
+            &lt;td&gt;.table-noborder&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Compact tables&lt;/th&gt;
+            &lt;td&gt;.table-compact&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Vertical tables&lt;/th&gt;
+            &lt;td&gt;.table-vertical&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet></clr-tables-vertical-noborder-compact-demo>
+
+            <h3 id="table-container-widths">Table Container Widths</h3>
+
+            <p>Tables can exist inside grid columns.</p>
+
+            <clr-tables-width-demo>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Language</th>
+                    <th>Foo</th>
+                    <th>Bar</th>
+                    <th>Baz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Pig Latin</td>
+                    <td>Oofay</td>
+                    <td>Arbay</td>
+                    <td>Azbay</td>
+                </tr>
+                <tr>
+                    <td class="left">Bizarro</td>
+                    <td>Bar</td>
+                    <td>Foo</td>
+                    <td>Bang</td>
+                </tr>
+                <tr>
+                    <td class="left">Hodor</td>
+                    <td>Hodor</td>
+                    <td>Hodor</td>
+                    <td>Hodor</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Color</th>
+                    <th>R</th>
+                    <th>G</th>
+                    <th>B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Black</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td class="left">New Black</td>
+                    <td>255</td>
+                    <td>165</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td class="left">Pantone 292</td>
+                    <td>98</td>
+                    <td>168</td>
+                    <td>229</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Name</th>
+                    <th class="left">Weakness</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left">Frankenstein</td>
+                    <td class="left">Fire</td>
+                </tr>
+                <tr>
+                    <td class="left">Dracula</td>
+                    <td class="left">Garlic</td>
+                </tr>
+                <tr>
+                    <td class="left">Wolfman</td>
+                    <td class="left">Squirrels</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-md-12 col-lg-6 col-xl-4"&gt;
+        &lt;table class="table"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th class="left"&gt;Language&lt;/th&gt;
+                    &lt;th&gt;Foo&lt;/th&gt;
+                    &lt;th&gt;Bar&lt;/th&gt;
+                    &lt;th&gt;Baz&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Pig Latin&lt;/td&gt;
+                    &lt;td&gt;Oofay&lt;/td&gt;
+                    &lt;td&gt;Arbay&lt;/td&gt;
+                    &lt;td&gt;Azbay&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Bizarro&lt;/td&gt;
+                    &lt;td&gt;Bar&lt;/td&gt;
+                    &lt;td&gt;Foo&lt;/td&gt;
+                    &lt;td&gt;Bang&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Hodor&lt;/td&gt;
+                    &lt;td&gt;Hodor&lt;/td&gt;
+                    &lt;td&gt;Hodor&lt;/td&gt;
+                    &lt;td&gt;Hodor&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-12 col-md-12 col-lg-6 col-xl-4"&gt;
+        &lt;table class="table"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th class="left"&gt;Color&lt;/th&gt;
+                    &lt;th&gt;R&lt;/th&gt;
+                    &lt;th&gt;G&lt;/th&gt;
+                    &lt;th&gt;B&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Black&lt;/td&gt;
+                    &lt;td&gt;0&lt;/td&gt;
+                    &lt;td&gt;0&lt;/td&gt;
+                    &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;New Black&lt;/td&gt;
+                    &lt;td&gt;255&lt;/td&gt;
+                    &lt;td&gt;165&lt;/td&gt;
+                    &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Pantone 292&lt;/td&gt;
+                    &lt;td&gt;98&lt;/td&gt;
+                    &lt;td&gt;168&lt;/td&gt;
+                    &lt;td&gt;229&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-12 col-md-12 col-lg-6 col-xl-4"&gt;
+        &lt;table class="table"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th class="left"&gt;Name&lt;/th&gt;
+                    &lt;th class="left"&gt;Weakness&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Frankenstein&lt;/td&gt;
+                    &lt;td class="left"&gt;Fire&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Dracula&lt;/td&gt;
+                    &lt;td class="left"&gt;Garlic&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td class="left"&gt;Wolfman&lt;/td&gt;
+                    &lt;td class="left"&gt;Squirrels&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-tables-width-demo>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper>
+</clr-tables-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

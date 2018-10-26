@@ -1,0 +1,2687 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Alerts</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c118]   .card[_ngcontent-c118]{max-width:600px}.app-alert-box[_ngcontent-c118]   clr-alert[_ngcontent-c118]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c118] > *[_ngcontent-c118]{display:block;margin-top:-6px}</style><style ng-transition="clarity">[_nghost-c6] { display: none; }
+        .open[_nghost-c6] { display: inline; }</style><style ng-transition="clarity">.clr-example[_ngcontent-c119]   .card[_ngcontent-c119]{max-width:600px}.app-alert-box[_ngcontent-c119]   clr-alert[_ngcontent-c119]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c119] > *[_ngcontent-c119]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c120]   .card[_ngcontent-c120]{max-width:600px}.app-alert-box[_ngcontent-c120]   clr-alert[_ngcontent-c120]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c120] > *[_ngcontent-c120]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c121]   .card[_ngcontent-c121]{max-width:600px}.app-alert-box[_ngcontent-c121]   clr-alert[_ngcontent-c121]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c121] > *[_ngcontent-c121]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c122]   .card[_ngcontent-c122]{max-width:600px}.app-alert-box[_ngcontent-c122]   clr-alert[_ngcontent-c122]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c122] > *[_ngcontent-c122]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c123]   .card[_ngcontent-c123]{max-width:600px}.app-alert-box[_ngcontent-c123]   clr-alert[_ngcontent-c123]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c123] > *[_ngcontent-c123]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c124]   .card[_ngcontent-c124]{max-width:600px}.app-alert-box[_ngcontent-c124]   clr-alert[_ngcontent-c124]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c124] > *[_ngcontent-c124]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c125]   .card[_ngcontent-c125]{max-width:600px}.app-alert-box[_ngcontent-c125]   clr-alert[_ngcontent-c125]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c125] > *[_ngcontent-c125]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c126]   .card[_ngcontent-c126]{max-width:600px}.app-alert-box[_ngcontent-c126]   clr-alert[_ngcontent-c126]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c126] > *[_ngcontent-c126]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c127]   .card[_ngcontent-c127]{max-width:600px}.app-alert-box[_ngcontent-c127]   clr-alert[_ngcontent-c127]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c127] > *[_ngcontent-c127]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c128]   .card[_ngcontent-c128]{max-width:600px}.app-alert-box[_ngcontent-c128]   clr-alert[_ngcontent-c128]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c128] > *[_ngcontent-c128]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c129]   .card[_ngcontent-c129]{max-width:600px}.app-alert-box[_ngcontent-c129]   clr-alert[_ngcontent-c129]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c129] > *[_ngcontent-c129]{display:block;margin-top:-6px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c130]   .card[_ngcontent-c130]{max-width:600px}.app-alert-box[_ngcontent-c130]   clr-alert[_ngcontent-c130]{display:block;padding-top:6px}.type-alert-box[_ngcontent-c130] > *[_ngcontent-c130]{display:block;margin-top:-6px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style><style ng-transition="clarity">[_nghost-c131] { display: block }</style></head><body id="body" class="no-scrolling"><root ng-version="5.0.0" class="layout-documentation page-alerts"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-alerts-demo _nghost-c118="" class="content-area dox-content-panel"><clr-doc-wrapper _ngcontent-c118="" class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Alerts</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/alerts#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/alerts#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article _ngcontent-c118="">
+        <h5 _ngcontent-c118="" class="component-summary" id="alerts_header">Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to provide critical information needed in context.</h5>
+
+        <div _ngcontent-c118="" id="design-guidelines">
+            <h3 _ngcontent-c118="" id="two_types">Two Main Types</h3>
+
+            <div _ngcontent-c118="" class="row">
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img">
+                                <div _ngcontent-c118="" class="wrapper-thing">
+                                    <clr-alert _ngcontent-c118="" clralerttype="success">
+
+<!----><div class="alert alert-success">
+    <div class="alert-items">
+        
+                                        <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        
+                                            <span _ngcontent-c118="" class="alert-text">
+                                                Your container has been created.
+                                            </span>
+                                        
+    </clr-alert-item>
+                                    
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                    <clr-alert _ngcontent-c118="" clralerttype="info">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                                        <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                                            <span _ngcontent-c118="" class="alert-text">
+                                                You can customize your VM in the Settings Panel.
+                                            </span>
+                                        
+    </clr-alert-item>
+                                    
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                    <clr-alert _ngcontent-c118="" clralerttype="warning">
+
+<!----><div class="alert alert-warning">
+    <div class="alert-items">
+        
+                                        <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                                            <span _ngcontent-c118="" class="alert-text">
+                                                This feature is still under development.
+                                            </span>
+                                        
+    </clr-alert-item>
+                                    
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                    <clr-alert _ngcontent-c118="" clralerttype="danger">
+
+<!----><div class="alert alert-danger">
+    <div class="alert-items">
+        
+                                        <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                                            <span _ngcontent-c118="" class="alert-text">
+                                                Your license is about to expire.
+                                            </span>
+                                        
+    </clr-alert-item>
+                                    
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                                </div>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">Standard Alerts</h6>
+                            <p _ngcontent-c118="">
+                                Standard alerts are used in the context of an application <b _ngcontent-c118="">either in the content area itself or within components</b>.
+                            </p>
+                            <br _ngcontent-c118="">
+                            <p _ngcontent-c118="">
+                                There are <b _ngcontent-c118="">four different sub-types of standard alerts</b> success, info, warning, and error.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img app-alert-box">
+                                <clr-alert _ngcontent-c118="" clralerttype="success">
+
+<!----><div class="alert alert-success alert-app-level">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Your container has been created.
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                <clr-alert _ngcontent-c118="" clralerttype="info">
+
+<!----><div class="alert alert-info alert-app-level">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            You can customize your VM in the Settings Panel.
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                <clr-alert _ngcontent-c118="" clralerttype="warning">
+
+<!----><div class="alert alert-warning alert-app-level">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            This feature is still under development.
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+                                <clr-alert _ngcontent-c118="" clralerttype="danger">
+
+<!----><div class="alert alert-danger alert-app-level">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Your license is about to expire.
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">App-Level Alerts</h6>
+                            <p _ngcontent-c118="">
+                                App-level alerts are used in the <b _ngcontent-c118="">global context of an application</b>. They are placed at the very top of all content and navigation.
+                            </p>
+                            <p _ngcontent-c118="">
+                                There are <b _ngcontent-c118="">three different sub-types of app-level alerts</b> info, warning, and error.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c118="" id="standard-alerts">Standard Alerts</h3>
+
+            <h5 _ngcontent-c118="">Four different sub-types</h5>
+
+            <p _ngcontent-c118="">There are four different sub-types of standard alerts: error, warning, info, and success.</p>
+
+            <div _ngcontent-c118="" class="row">
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert _ngcontent-c118="" clralerttype="danger">
+
+<!----><div class="alert alert-danger">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Error
+                                        </span>
+                                        <div _ngcontent-c118="" class="alert-actions">
+                                            <a _ngcontent-c118="" class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">Error</h6>
+                            <p _ngcontent-c118="">
+                                Reserved for errors, malfunctions, as well as critical issues like license expiration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert _ngcontent-c118="" clralerttype="warning">
+
+<!----><div class="alert alert-warning">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Warning
+                                        </span>
+                                        <div _ngcontent-c118="" class="alert-actions">
+                                            <a _ngcontent-c118="" class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">Warning</h6>
+                            <p _ngcontent-c118="">
+                                Reserved for warnings: a message that needs the user attention and aknowledgment but might not cause errors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert _ngcontent-c118="" clralerttype="info">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Info
+                                        </span>
+                                        <div _ngcontent-c118="" class="alert-actions">
+                                            <a _ngcontent-c118="" class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">Info</h6>
+                            <p _ngcontent-c118="">
+                                Provides info to users in context. Shouldn’t be overused to replace regular content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img type-alert-box">
+                                <clr-alert _ngcontent-c118="" clralerttype="success">
+
+<!----><div class="alert alert-success">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Success
+                                        </span>
+                                        <div _ngcontent-c118="" class="alert-actions">
+                                            <a _ngcontent-c118="" class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-text">
+                            <h6 _ngcontent-c118="">Success</h6>
+                            <p _ngcontent-c118="">
+                                Reserved to provide to a static persistent success message.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 _ngcontent-c118="" id="order-in-context">Order in context</h4>
+
+            <p _ngcontent-c118="">
+                Standard alerts convey different levels of severity and urgency. They’re ordered by the urgency in which the user needs to pay attention to: error, warning, info, then success.
+            </p>
+            <p _ngcontent-c118="">
+                In the case there are multiple of each sub-type, all of them are shown before another sub-type is reached. For example, multiple errors are shown before the first warning is.
+            </p>
+
+            <h4 _ngcontent-c118="" id="style">Style</h4>
+
+            <p _ngcontent-c118="">The consistency in the style of the standard alerts allows users to quickly identify them, pay attention to them, and acknowledge them.</p>
+
+            <div _ngcontent-c118="" class="row">
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <h6 _ngcontent-c118="">Typography</h6>
+                    <p _ngcontent-c118="">
+                        Depending on the sub-type of a standard alert, make sure to communicate a clear, concise, and actionable message.
+                    </p>
+                </div>
+            </div>
+
+            <div _ngcontent-c118="" class="row">
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <h6 _ngcontent-c118="">Size</h6>
+                    <p _ngcontent-c118="">
+                        There are two sizes of standard alerts: default and compact. Use the compact alert only in places where vertical space is scarce and information density is needed. Cards provide a good example here.
+                    </p>
+                </div>
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img">
+                                <clr-alert _ngcontent-c118="" clralerttype="info">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Info
+                                        </span>
+                                        <div _ngcontent-c118="" class="alert-actions">
+                                            <a _ngcontent-c118="" class="alert-action" href="javascript://">Acknowledge</a>
+                                        </div>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                                <clr-alert _ngcontent-c118="" clralerttype="info">
+
+<!----><div class="alert alert-info alert-sm">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            Compact Info
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 _ngcontent-c118="" id="placement">Placement</h4>
+
+            <p _ngcontent-c118="">Standard alerts could be placed in multiple different contexts including inside of components.</p>
+
+            <h6 _ngcontent-c118="">Modals</h6>
+
+            <div _ngcontent-c118="" class="in-place-takeover">
+                <div _ngcontent-c118="" class="clr-example">
+                    <div _ngcontent-c118="" class="backdrop-example-container">
+                        <!---->
+                        <clr-modal _ngcontent-c118="" _nghost-c6="" class="ng-tns-c6-0 open">
+
+
+<!----><div _ngcontent-c6="" class="modal ng-tns-c6-0" clrfocustrap="">
+    
+    <div _ngcontent-c6="" class="modal-dialog ng-trigger ng-trigger-fadeDown" role="dialog" aria-hidden="false">
+
+        <div _ngcontent-c6="" class="modal-outer-wrapper">
+            <div _ngcontent-c6="" class="modal-content-wrapper">
+                
+                
+
+                <div _ngcontent-c6="" class="modal-content">
+                    <div _ngcontent-c6="" class="modal-header">
+                        <!----><button _ngcontent-c6="" aria-label="Close" class="close ng-tns-c6-0" type="button">
+                            <clr-icon _ngcontent-c6="" class="ng-tns-c6-0" aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 _ngcontent-c118="" class="modal-title">Deleting File</h3>
+                    </div>
+                    <div _ngcontent-c118="" class="modal-body">
+                                <clr-alert _ngcontent-c118="" clralerttype="danger">
+
+<!----><div class="alert alert-danger">
+    <div class="alert-items">
+        
+                                    <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                                        <span _ngcontent-c118="" class="alert-text">
+                                            The file “mockups.sketch” is currently open and cannot be deleted.
+                                        </span>
+                                    
+    </clr-alert-item>
+                                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                                <p _ngcontent-c118="">Are you sure you want to delete the file <b _ngcontent-c118="">“mockups.sketch”</b>?</p>
+                            </div>
+                    <div _ngcontent-c118="" class="modal-footer">
+                                <button _ngcontent-c118="" class="btn btn-outline" type="button">Keep File</button>
+                                <button _ngcontent-c118="" class="btn btn-danger disabled" type="button">Delete</button>
+                            </div>
+                </div>
+            </div>
+            <div _ngcontent-c6="" class="modal-ghost-wrapper">
+                <div _ngcontent-c6="" class="modal-ghost modal-ghost-1 ng-trigger ng-trigger-ghostPageOneState"></div>
+                <div _ngcontent-c6="" class="modal-ghost modal-ghost-2 ng-trigger ng-trigger-ghostPageTwoState"></div>
+            </div>
+        </div>
+    </div>
+
+    <div _ngcontent-c6="" class="modal-backdrop ng-trigger ng-trigger-fade" aria-hidden="true"></div>
+</div>
+
+</clr-modal>
+                    </div>
+                </div>
+            </div>
+
+            <p _ngcontent-c118="">
+                Alerts could appear within modals. It is recommended that no more than one alert appear within modal. Their function should not be to validate, validation should be done inline and closer to the error itself.
+            </p>
+
+            <p _ngcontent-c118="">&nbsp;</p>
+
+            <h6 _ngcontent-c118="">Cards</h6>
+            <div _ngcontent-c118="" class="row">
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <p _ngcontent-c118="">
+                        It is recommended to use concise language as you share an alert within a card. It is also recommended to use a compact-size alert. The focus of the alert should be on its content not on the alert appearing in it.
+                    </p>
+                    <p _ngcontent-c118="">
+                        It is also recommended to have an alert at the very top of a card, on top of its title. An alert is meant to attract the attention of the user.
+                    </p>
+                    <p _ngcontent-c118="">
+                        Using more than one alert within a card distracts the user and dilutes the importance of the alerts displayed.
+                    </p>
+                </div>
+                <div _ngcontent-c118="" class="col-sm-12 col-md-6">
+                    <div _ngcontent-c118="" class="clrweb-DoxMedia">
+                        <div _ngcontent-c118="" class="clrweb-DoxMedia-block">
+                            <div _ngcontent-c118="" class="clrweb-DoxMedia-img">
+
+                                <div _ngcontent-c118="" class="card">
+                                    <div _ngcontent-c118="" class="card-block">
+                                        <clr-alert _ngcontent-c118="" clralerttype="warning">
+
+<!----><div class="alert alert-warning alert-sm">
+    <div class="alert-items">
+        
+                                            <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                                                <span _ngcontent-c118="" class="alert-text">
+                                                    Data might be outdated. Last update: 16 hours ago.
+                                                </span>
+                                            
+    </clr-alert-item>
+                                        
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                                        <div _ngcontent-c118="" class="card-title" style="text-align: left;padding-top:4px">
+                                            Memory
+                                        </div>
+                                        <div _ngcontent-c118="" style="width: 100%; padding-left: 10%; text-align: center">
+                                            <div _ngcontent-c118="" style="margin-bottom:6px">
+                                                <span _ngcontent-c118="" style="font-size: 28px;line-height: 28px;padding-right: 5px">
+                                                    10.05
+                                                </span>
+                                                <span _ngcontent-c118="">GB free</span>
+                                            </div>
+                                            <div _ngcontent-c118="" class="progress success" style="position: static;margin: 0;text-align: left;left: auto;">
+                                                <progress _ngcontent-c118="" data-displayval="23%" max="100" style="position: static;display: block" value="23"></progress>
+                                            </div>
+                                            <div _ngcontent-c118="" style="margin:8px 0 24px">
+                                                <span _ngcontent-c118="">
+                                                    1.94 GB used | 11.99 GB total
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div _ngcontent-c118="" class="card-footer" style="text-align: left">
+                                        <button _ngcontent-c118="" class="btn btn-sm btn-link">See All Statistics</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 _ngcontent-c118="" id="app-level-alerts">App-Level Alerts</h3>
+
+            <h4 _ngcontent-c118="">Three different subtypes</h4>
+
+            <p _ngcontent-c118="">There are three sub-types of app-level alerts: error, warning, and info.</p>
+
+            <div _ngcontent-c118="" class="clrweb-DoxVersusBox">
+                <div _ngcontent-c118="" class="clrweb-DoxVersusBox-pin">
+                    <clr-icon _ngcontent-c118="" shape="pin"></clr-icon>
+                </div>
+                <div _ngcontent-c118="" class="clrweb-DoxVersusBox-items">
+                    <div _ngcontent-c118="" class="clrweb-DoxVersusBox-itemWrapper">
+                        <div _ngcontent-c118="" class="clrweb-DoxVersusBox-item">
+                            <p _ngcontent-c118=""><b _ngcontent-c118="">Why no success app-level alert?</b></p>
+                            <p _ngcontent-c118="">App-level alerts are global in nature. Reporting a success of an operation should either be communicated within context or as a notification message.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 _ngcontent-c118="" id="order-in-context">Order in context</h4>
+
+            <p _ngcontent-c118="">App-level alerts follow the <b _ngcontent-c118="">same urgency order</b> as standard alerts: error, warning, and info.</p>
+
+            <h4 _ngcontent-c118="" id="app-level-placement">Placement</h4>
+
+            <p _ngcontent-c118="">App-level alerts are placed at the very top of the global context. They should not be placed in any other configuration. Their purpose is to provide global alerts available and relating to the full context of the overall application.</p>
+
+            <div _ngcontent-c118="" class="row" style="margin-top: 24px">
+                <div _ngcontent-c118="" class="col-xs-12">
+                    <img _ngcontent-c118="" alt="App-level alerts appear at the very top of your application" class="clrweb-Img" src="assets/images/documentation/alerts/app_level_placement.png">
+                </div>
+            </div>
+        </div>
+
+        <div _ngcontent-c118="" id="code-examples">
+            <h3 _ngcontent-c118="" id="examples">Code &amp; Examples</h3>
+
+            <p _ngcontent-c118="" id="alert-classes">Several classes and elements are required to implement the Clarity alert layout. A table of these classes and elements with a brief description of each follows:</p>
+
+            <clr-alert _ngcontent-c118="" clralerttype="danger">
+
+<!----><div class="alert alert-danger">
+    <div class="alert-items">
+        
+                <clr-alert-item _ngcontent-c118="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                    <div _ngcontent-c118="" class="alert-text">
+                        <div _ngcontent-c118="" style="margin-bottom: 8px">The use of <code _ngcontent-c118="" class="clr-code">.alert-item</code> in the <code _ngcontent-c118="" class="clr-code">clr-alert</code> Angular component is deprecated. Try to use <code _ngcontent-c118="" class="clr-code">clr-alert-item</code> instead.</div>
+                        <div _ngcontent-c118="" style="margin-bottom: 8px">If your application uses a combination of <code _ngcontent-c118="" class="clr-code">clr-alert</code> Angular components and hand-coded DOM alerts, you should put the <code _ngcontent-c118="" class="clr-code">.static</code> class on your <code _ngcontent-c118="" class="clr-code">.alert-item</code>  elements.</div>
+                        <div _ngcontent-c118="">Once <code _ngcontent-c118="" class="clr-code">clr-alert</code> no longer recognizes <code _ngcontent-c118="" class="clr-code">.alert-item</code> classnames as a subcomponent, it will no longer be an issue.</div>
+                    </div>
+                
+    </clr-alert-item>
+            
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+            <table _ngcontent-c118="" class="table table-vertical">
+                <tbody _ngcontent-c118="">
+                    <tr _ngcontent-c118="">
+                        <th _ngcontent-c118="" style="width: 100px">.alert</th>
+                        <td _ngcontent-c118="">This class is a wrapper around <code _ngcontent-c118="" class="clr-code">.alert-items</code> and the
+                <code _ngcontent-c118="" class="clr-code">.close</code> button. Place the <code _ngcontent-c118="" class="clr-code">.close</code> button before the alert items.</td>
+                    </tr>
+                    <tr _ngcontent-c118="">
+                        <th _ngcontent-c118="">.alert-items</th>
+                        <td _ngcontent-c118="">This class is a wrapper around one or more <code _ngcontent-c118="" class="clr-code">.alert-item</code> elements.</td>
+                    </tr>
+                    <tr _ngcontent-c118="">
+                        <th _ngcontent-c118="">.alert-item</th>
+                        <td _ngcontent-c118="">This class is a wrapper around <code _ngcontent-c118="" class="clr-code">.alert-text</code>, <code _ngcontent-c118="" class="clr-code">.alert-icon-wrapper</code>, and <code _ngcontent-c118="" class="clr-code">.alert-actions</code>.</td>
+                    </tr>
+                    <tr _ngcontent-c118="">
+                        <th _ngcontent-c118="">.alert-icon-wrapper</th>
+                        <td _ngcontent-c118=""><code _ngcontent-c118="" class="clr-code">.alert-icon-wrapper</code> contains a <code _ngcontent-c118="" class="clr-code">clr-icon</code> with the classname <code _ngcontent-c118="" class="clr-code">.alert-icon</code> applied to it. The icons used for the different alert types of success, danger, warning, and info are, respectively: <code _ngcontent-c118="" class="clr-code">check-circle</code>, <code _ngcontent-c118="" class="clr-code">exclamation-circle</code>, <code _ngcontent-c118="" class="clr-code">exclamation-triangle</code>, and  <code _ngcontent-c118="" class="clr-code">info-circle</code>.</td>
+                    </tr>
+                    <tr _ngcontent-c118="">
+                        <th _ngcontent-c118="">.alert-actions</th>
+                        <td _ngcontent-c118=""><code _ngcontent-c118="" class="clr-code">.alert-actions</code> can consist of dropdowns or links. Each action should extend the <code _ngcontent-c118="" class="clr-code">.alert-action</code> class.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 _ngcontent-c118="" id="types">Types</h3>
+
+            <p _ngcontent-c118="">Clarity has error, warning, information, and success alerts denoted by the following classes:</p>
+
+            <ul _ngcontent-c118="" class="list">
+                <li _ngcontent-c118="">.alert-danger</li>
+                <li _ngcontent-c118="">.alert-warning</li>
+                <li _ngcontent-c118="">.alert-info</li>
+                <li _ngcontent-c118="">.alert-success</li>
+            </ul>
+
+            <clr-alert-demo-styles _ngcontent-c118="" _nghost-c119="">
+
+<div _ngcontent-c119="" class="clr-example" ngnonbindable="">
+    <div _ngcontent-c119="" class="main-container">
+        <header _ngcontent-c119="" class="header header-6">
+            <div _ngcontent-c119="" class="branding">
+                <span _ngcontent-c119="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c119="" class="content-container">
+            <div _ngcontent-c119="" class="content-area">
+                <div _ngcontent-c119="" class="alert alert-danger">
+                    <div _ngcontent-c119="" class="alert-items">
+                        <div _ngcontent-c119="" class="alert-item static">
+                            <div _ngcontent-c119="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c119="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c119="" class="alert-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </span>
+                            <div _ngcontent-c119="" class="alert-actions">
+                                <div _ngcontent-c119="" class="alert-action dropdown bottom-right">
+                                    <button _ngcontent-c119="" class="dropdown-toggle">
+                                        Actions
+                                        <clr-icon _ngcontent-c119="" shape="caret down"></clr-icon>
+                                    </button>
+                                    <div _ngcontent-c119="" class="dropdown-menu">
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Shutdown</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Suspend</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Reboot</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div _ngcontent-c119="" class="alert-item static">
+                            <div _ngcontent-c119="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c119="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c119="" class="alert-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </span>
+                            <div _ngcontent-c119="" class="alert-actions">
+                                <div _ngcontent-c119="" class="alert-action dropdown bottom-right">
+                                    <button _ngcontent-c119="" class="dropdown-toggle">
+                                        Actions
+                                        <clr-icon _ngcontent-c119="" shape="caret down"></clr-icon>
+                                    </button>
+                                    <div _ngcontent-c119="" class="dropdown-menu">
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Shutdown</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Suspend</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Reboot</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c119="" class="alert alert-warning">
+                    <div _ngcontent-c119="" class="alert-items">
+                        <div _ngcontent-c119="" class="alert-item static">
+                            <div _ngcontent-c119="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c119="" class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c119="" class="alert-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </span>
+                            <div _ngcontent-c119="" class="alert-actions">
+                                <div _ngcontent-c119="" class="alert-action dropdown bottom-right open">
+                                    <button _ngcontent-c119="" class="dropdown-toggle">
+                                        Actions
+                                        <clr-icon _ngcontent-c119="" shape="caret down"></clr-icon>
+                                    </button>
+                                    <div _ngcontent-c119="" class="dropdown-menu">
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Shutdown</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Suspend</a>
+                                        <a _ngcontent-c119="" class="dropdown-item" href="javascript://">Reboot</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button _ngcontent-c119="" aria-label="Close" class="close" type="button">
+                        <clr-icon _ngcontent-c119="" aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                </div>
+                <div _ngcontent-c119="" class="alert alert-info">
+                    <div _ngcontent-c119="" class="alert-items">
+                        <div _ngcontent-c119="" class="alert-item static">
+                            <div _ngcontent-c119="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c119="" class="alert-icon" shape="info-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c119="" class="alert-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </span>
+                            <div _ngcontent-c119="" class="alert-actions">
+                                <a _ngcontent-c119="" class="alert-action" href="javascript://">Acknowledge</a>
+                                <a _ngcontent-c119="" class="alert-action" href="javascript://">Reset to green</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button _ngcontent-c119="" aria-label="Close" class="close" type="button">
+                        <clr-icon _ngcontent-c119="" aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                </div>
+                <div _ngcontent-c119="" class="alert alert-success">
+                    <div _ngcontent-c119="" class="alert-items">
+                        <div _ngcontent-c119="" class="alert-item static">
+                            <div _ngcontent-c119="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c119="" class="alert-icon" shape="check-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c119="" class="alert-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c119="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="alert alert-danger"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;...&lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;div class="alert-action dropdown bottom-right"&gt;
+                    &lt;button class="dropdown-toggle"&gt;
+                        Actions
+                        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;div class="dropdown-menu"&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Shutdown&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Suspend&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Reboot&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;...&lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;div class="alert-action dropdown bottom-right"&gt;
+                    &lt;button class="dropdown-toggle"&gt;
+                        Actions
+                        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;div class="dropdown-menu"&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Shutdown&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Suspend&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Reboot&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-warning"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-triangle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;...&lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;div class="alert-action dropdown bottom-right open"&gt;
+                    &lt;button class="dropdown-toggle"&gt;
+                        Actions
+                        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;div class="dropdown-menu"&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Shutdown&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Suspend&lt;/a&gt;
+                        &lt;a class="dropdown-item" href="..."&gt;Reboot&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-info"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="info-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;...&lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;a href="..." class="alert-action"&gt;Acknowledge&lt;/a&gt;
+                &lt;a href="..." class="alert-action"&gt;Reset to green&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-success"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="check-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;...&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-styles>
+
+            <h3 _ngcontent-c118="" id="placement">Placement</h3>
+
+            <h5 _ngcontent-c118="" id="alerts-in-the-content-area">Alerts in the Content Area</h5>
+            <clr-alert-demo-content-area _ngcontent-c118="" _nghost-c120="">
+
+<div _ngcontent-c120="" class="clr-example">
+    <div _ngcontent-c120="" class="main-container">
+        <header _ngcontent-c120="" class="header header-6">
+            <div _ngcontent-c120="" class="branding">
+                <span _ngcontent-c120="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c120="" class="content-container">
+            <div _ngcontent-c120="" class="content-area">
+                <div _ngcontent-c120="" class="alert alert-danger">
+                    <div _ngcontent-c120="" class="alert-items">
+                        <div _ngcontent-c120="" class="alert-item static">
+                            <div _ngcontent-c120="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c120="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c120="" class="alert-text">
+                                This alert is at the top of the page.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p _ngcontent-c120="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div _ngcontent-c120="" class="alert alert-success">
+                    <div _ngcontent-c120="" class="alert-items">
+                        <div _ngcontent-c120="" class="alert-item static">
+                            <div _ngcontent-c120="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c120="" class="alert-icon" shape="check-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c120="" class="alert-text">
+                                This alert is in the middle of the page.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p _ngcontent-c120="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c120="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="content-area"&gt;
+    &lt;div class="alert alert-danger"&gt;
+        &lt;div class="alert-items"&gt;
+            &lt;div class="alert-item static"&gt;
+                &lt;div class="alert-icon-wrapper"&gt;
+                    &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
+                &lt;span class="alert-text"&gt;
+                    This alert is at the top of the page.
+                &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;...&lt;/p&gt;
+    &lt;div class="alert alert-success"&gt;
+        &lt;div class="alert-items"&gt;
+            &lt;div class="alert-item static"&gt;
+                &lt;div class="alert-icon-wrapper"&gt;
+                    &lt;clr-icon class="alert-icon" shape="check-circle"&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
+                &lt;span class="alert-text"&gt;
+                    This alert is in the middle of the page.
+                &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-content-area>
+
+            <h5 _ngcontent-c118="" id="alerts-in-cards">Alerts in Cards</h5>
+            <clr-alert-demo-cards _ngcontent-c118="" _nghost-c121="">
+
+<div _ngcontent-c121="" class="clr-example">
+    <div _ngcontent-c121="" class="card">
+        <div _ngcontent-c121="" class="card-block">
+            <div _ngcontent-c121="" class="alert alert-warning alert-sm">
+                <div _ngcontent-c121="" class="alert-items">
+                    <div _ngcontent-c121="" class="alert-item static">
+                        <div _ngcontent-c121="" class="alert-icon-wrapper">
+                            <clr-icon _ngcontent-c121="" class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <div _ngcontent-c121="" class="alert-text">
+                            Use small alerts in a card.
+                        </div>
+                    </div>
+                </div>
+                <button _ngcontent-c121="" aria-label="Close" class="close" type="button">
+                    <clr-icon _ngcontent-c121="" aria-hidden="true" shape="close"></clr-icon>
+                </button>
+            </div>
+            <div _ngcontent-c121="" class="card-media-block wrap">
+                <img _ngcontent-c121="" class="card-media-image" src="//placehold.it/60x60">
+                <div _ngcontent-c121="" class="card-media-description">
+                    <span _ngcontent-c121="" class="card-media-title">Project B</span>
+                    <span _ngcontent-c121="" class="card-media-text">Owner: Jane Doe</span>
+                </div>
+            </div>
+            <p _ngcontent-c121="" class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+        </div>
+        <div _ngcontent-c121="" class="card-footer">
+            <a _ngcontent-c121="" class="card-link">Button One</a>
+            <a _ngcontent-c121="" class="card-link">Button Two</a>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c121="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-block"&gt;
+        &lt;div class="alert alert-warning alert-sm"&gt;
+            &lt;div class="alert-items"&gt;
+                &lt;div class="alert-item static"&gt;
+                    &lt;div class="alert-icon-wrapper"&gt;
+                        &lt;clr-icon class="alert-icon" shape="exclamation-triangle"&gt;&lt;/clr-icon&gt;
+                    &lt;/div&gt;
+                    &lt;div class="alert-text"&gt;
+                        Use small alerts in a card.
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;button type="button" class="close" aria-label="Close"&gt;
+                &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="card-media-block wrap"&gt;
+            &lt;img class="card-media-image" src="//placehold.it/60x60" /&gt;
+            &lt;div class="card-media-description"&gt;
+                &lt;span class="card-media-title"&gt;Project B&lt;/span&gt;
+                &lt;span class="card-media-text"&gt;Owner: Jane Doe&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class="card-text"&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;a class="card-link"&gt;Button One&lt;/a&gt;
+        &lt;a class="card-link"&gt;Button Two&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-cards>
+
+            <h5 _ngcontent-c118="" id="alerts-in-modals">Alerts in Modals</h5>
+            <clr-alert-demo-modals _ngcontent-c118="" _nghost-c122="">
+
+<div _ngcontent-c122="" class="clr-example">
+    <div _ngcontent-c122="" class="backdrop-example-container">
+        <div _ngcontent-c122="" class="modal static bump-down">
+            <div _ngcontent-c122="" aria-hidden="true" class="modal-dialog" role="dialog">
+                <div _ngcontent-c122="" class="modal-content">
+                    <div _ngcontent-c122="" class="modal-header">
+                        <button _ngcontent-c122="" aria-label="Close" class="close" type="button">
+                            <clr-icon _ngcontent-c122="" aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 _ngcontent-c122="" class="modal-title">I have a nice title</h3>
+                    </div>
+                    <div _ngcontent-c122="" class="modal-body">
+                        <div _ngcontent-c122="" class="alert alert-danger">
+                            <div _ngcontent-c122="" class="alert-items">
+                                <div _ngcontent-c122="" class="alert-item static">
+                                    <div _ngcontent-c122="" class="alert-icon-wrapper">
+                                        <clr-icon _ngcontent-c122="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                                    </div>
+                                    <span _ngcontent-c122="" class="alert-text">
+                                        Alert in a modal.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p _ngcontent-c122="">But not much to say...</p>
+                    </div>
+                    <div _ngcontent-c122="" class="modal-footer">
+                        <button _ngcontent-c122="" class="btn btn-outline" type="button">Cancel</button>
+                        <button _ngcontent-c122="" class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c122="" aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c122="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal static bump-down"&gt;
+    &lt;div class="modal-dialog" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;div class="alert alert-danger"&gt;
+                &lt;div class="alert-items"&gt;
+                    &lt;div class="alert-item static"&gt;
+                        &lt;div class="alert-icon-wrapper"&gt;
+                            &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+                        &lt;/div&gt;
+                        &lt;span class="alert-text"&gt;
+                            Alert in a modal.
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-header"&gt;
+                &lt;button aria-label="Close" class="close" type="button"&gt;
+                    &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+                &lt;h3 class="modal-title"&gt;I have a nice title&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-body"&gt;
+                &lt;p&gt;But not much to say...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-footer"&gt;
+                &lt;button class="btn btn-outline" type="button"&gt;Cancel&lt;/button&gt;
+                &lt;button class="btn btn-primary" type="button"&gt;Ok&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-modals>
+
+            <h3 _ngcontent-c118="" id="size">Size</h3>
+
+            <p _ngcontent-c118="">Use the <code _ngcontent-c118="" class="clr-code">.alert-sm</code> class with <code _ngcontent-c118="" class="clr-code">.alert</code> for an alert 24 pixels in height. The default is 36 pixels.</p>
+
+            <clr-alert-demo-sizes _ngcontent-c118="" _nghost-c123="">
+
+<div _ngcontent-c123="" class="clr-example">
+    <div _ngcontent-c123="" class="main-container">
+        <header _ngcontent-c123="" class="header header-6">
+            <div _ngcontent-c123="" class="branding">
+                <span _ngcontent-c123="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c123="" class="content-container">
+            <div _ngcontent-c123="" class="content-area">
+                <div _ngcontent-c123="" class="alert alert-danger">
+                    <div _ngcontent-c123="" class="alert-items">
+                        <div _ngcontent-c123="" class="alert-item static">
+                            <div _ngcontent-c123="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c123="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c123="" class="alert-text">
+                                This is an alert with 36px height.
+                            </span>
+                        </div>
+                    </div>
+                    <button _ngcontent-c123="" aria-label="Close" class="close" type="button">
+                        <clr-icon _ngcontent-c123="" aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                </div>
+                <div _ngcontent-c123="" class="alert alert-success alert-sm">
+                    <div _ngcontent-c123="" class="alert-items">
+                        <div _ngcontent-c123="" class="alert-item static">
+                            <div _ngcontent-c123="" class="alert-icon-wrapper">
+                                <clr-icon _ngcontent-c123="" class="alert-icon" shape="check-circle"></clr-icon>
+                            </div>
+                            <span _ngcontent-c123="" class="alert-text">
+                                This is an alert with 24px height.
+                            </span>
+                        </div>
+                    </div>
+                    <button _ngcontent-c123="" aria-label="Close" class="close" type="button">
+                        <clr-icon _ngcontent-c123="" aria-hidden="true" shape="close"></clr-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c123="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="alert alert-danger"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;
+                This is an alert with 36px height.
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-success alert-sm"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="check-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;span class="alert-text"&gt;
+                This is an alert with 24px height.
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-sizes>
+
+            <h3 _ngcontent-c118="" id="app-level-alerts">App-Level Alerts</h3>
+
+            <h6 _ngcontent-c118="" id="alert-app-level">.alert-app-level</h6>
+
+            <p _ngcontent-c118="">This class must be applied with <code _ngcontent-c118="" class="clr-code">.alert</code> to render an app-level alert.</p>
+
+            <clr-alert-demo-app-level _ngcontent-c118="" _nghost-c124="">
+
+<div _ngcontent-c124="" class="clr-example">
+    <div _ngcontent-c124="" class="main-container">
+        <div _ngcontent-c124="" class="alert alert-app-level alert-danger" style="margin-bottom:24px">
+            <div _ngcontent-c124="" class="alert-items">
+                <div _ngcontent-c124="" class="alert-item static">
+                    <div _ngcontent-c124="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c124="" class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <div _ngcontent-c124="" class="alert-text">
+                        Alert Type: Danger
+                    </div>
+                    <div _ngcontent-c124="" class="alert-actions">
+                        <button _ngcontent-c124="" class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c124="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c124="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <div _ngcontent-c124="" class="alert alert-app-level alert-warning" style="margin-bottom:24px">
+            <div _ngcontent-c124="" class="alert-items">
+                <div _ngcontent-c124="" class="alert-item static">
+                    <div _ngcontent-c124="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c124="" class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                    </div>
+                    <div _ngcontent-c124="" class="alert-text">
+                        Alert Type: Warning
+                    </div>
+                    <div _ngcontent-c124="" class="alert-actions">
+                        <button _ngcontent-c124="" class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c124="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c124="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <div _ngcontent-c124="" class="alert alert-app-level alert-info">
+            <div _ngcontent-c124="" class="alert-items">
+                <div _ngcontent-c124="" class="alert-item static">
+                    <div _ngcontent-c124="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c124="" class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div _ngcontent-c124="" class="alert-text">
+                        Alert Type: Info
+                    </div>
+                    <div _ngcontent-c124="" class="alert-actions">
+                        <button _ngcontent-c124="" class="btn alert-action">Action</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c124="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c124="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c124="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="alert alert-app-level alert-danger" style="margin-bottom:24px"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="alert-text"&gt;
+                Alert Type: Danger
+            &lt;/div&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;button class="btn alert-action"&gt;Action&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-app-level alert-warning" style="margin-bottom:24px"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="exclamation-triangle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="alert-text"&gt;
+                Alert Type: Warning
+            &lt;/div&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;button class="btn alert-action"&gt;Action&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="alert alert-app-level alert-info"&gt;
+    &lt;div class="alert-items"&gt;
+        &lt;div class="alert-item static"&gt;
+            &lt;div class="alert-icon-wrapper"&gt;
+                &lt;clr-icon class="alert-icon" shape="info-circle"&gt;&lt;/clr-icon&gt;
+            &lt;/div&gt;
+            &lt;div class="alert-text"&gt;
+                Alert Type: Info
+            &lt;/div&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;button class="btn alert-action"&gt;Action&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button type="button" class="close" aria-label="Close"&gt;
+        &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h3 _ngcontent-c124="">Examples</h3>
+<h6 _ngcontent-c124="">1. App-Level Alert in the main-container</h6>
+<div _ngcontent-c124="" class="clr-example">
+    <div _ngcontent-c124="" class="main-container">
+        <div _ngcontent-c124="" class="alert alert-app-level alert-info">
+            <div _ngcontent-c124="" class="alert-items">
+                <div _ngcontent-c124="" class="alert-item static">
+                    <div _ngcontent-c124="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c124="" class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <div _ngcontent-c124="" class="alert-text">
+                        A new update is now available. Upgrade to v.1234.
+                    </div>
+                    <div _ngcontent-c124="" class="alert-actions">
+                        <button _ngcontent-c124="" class="btn alert-action">Install Update</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c124="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c124="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <header _ngcontent-c124="" class="header header-6">
+            <div _ngcontent-c124="" class="branding">
+                <span _ngcontent-c124="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c124="" class="content-container">
+            <div _ngcontent-c124="" class="content-area">
+                <p _ngcontent-c124="">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view
+                    of disruptive innovation via workplace diversity and empowerment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c124="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="main-container"&gt;
+    &lt;div class="alert alert-app-level alert-info"&gt;
+        &lt;div class="alert-items"&gt;
+            &lt;div class="alert-item static"&gt;
+                &lt;div class="alert-icon-wrapper"&gt;
+                    &lt;clr-icon class="alert-icon" shape="info-circle"&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
+                &lt;div class="alert-text"&gt;
+                    A new update is now available. Upgrade to v.1234.
+                &lt;/div&gt;
+                &lt;div class="alert-actions"&gt;
+                    &lt;button class="btn alert-action"&gt;Install Update&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="button" class="close" aria-label="Close"&gt;
+            &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;header class="header header-6"&gt;
+        &lt;div class="branding"&gt;
+            &lt;span class="title"&gt;Header&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            &lt;p&gt;...&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6 _ngcontent-c124="">2. Custom Icon in an App-Level Alert</h6>
+<div _ngcontent-c124="" class="clr-example">
+    <div _ngcontent-c124="" class="main-container">
+        <div _ngcontent-c124="" class="alert alert-app-level alert-warning">
+            <div _ngcontent-c124="" class="alert-items">
+                <div _ngcontent-c124="" class="alert-item static">
+                    <div _ngcontent-c124="" class="alert-icon-wrapper">
+                        <clr-icon _ngcontent-c124="" class="alert-icon" shape="download"></clr-icon>
+                    </div>
+                    <div _ngcontent-c124="" class="alert-text">
+                        A new update is now available. Upgrade to v.1234.
+                    </div>
+                    <div _ngcontent-c124="" class="alert-actions">
+                        <button _ngcontent-c124="" class="btn alert-action">Install Update</button>
+                    </div>
+                </div>
+            </div>
+            <button _ngcontent-c124="" aria-label="Close" class="close" type="button">
+                <clr-icon _ngcontent-c124="" aria-hidden="true" shape="close"></clr-icon>
+            </button>
+        </div>
+        <header _ngcontent-c124="" class="header header-6">
+            <div _ngcontent-c124="" class="branding">
+                <span _ngcontent-c124="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c124="" class="content-container">
+            <div _ngcontent-c124="" class="content-area">
+                <p _ngcontent-c124="">Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view
+                    of disruptive innovation via workplace diversity and empowerment.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c124="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="main-container"&gt;
+    &lt;div class="alert alert-app-level alert-warning"&gt;
+        &lt;div class="alert-items"&gt;
+            &lt;div class="alert-item static"&gt;
+                &lt;div class="alert-icon-wrapper"&gt;
+                    &lt;clr-icon class="alert-icon" shape="download"&gt;&lt;/clr-icon&gt;
+                &lt;/div&gt;
+                &lt;div class="alert-text"&gt;
+                    A new update is now available. Upgrade to v.1234.
+                &lt;/div&gt;
+                &lt;div class="alert-actions"&gt;
+                    &lt;button class="btn alert-action"&gt;Install Update&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="button" class="close" aria-label="Close"&gt;
+            &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;header class="header header-6"&gt;
+        &lt;div class="branding"&gt;
+            &lt;span class="title"&gt;Header&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="content-container"&gt;
+        &lt;div class="content-area"&gt;
+            &lt;p&gt;...&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-demo-app-level>
+
+            <h2 _ngcontent-c118="" id="angular-component">Angular Component</h2>
+
+            <h3 _ngcontent-c118="" id="summary-of-options">Summary of Options</h3>
+
+            <table _ngcontent-c118="" class="table">
+                <thead _ngcontent-c118="">
+                <tr _ngcontent-c118="">
+                    <th _ngcontent-c118="" class="left">Input</th>
+                    <th _ngcontent-c118="" class="left hidden-xs-down">Values</th>
+                    <th _ngcontent-c118="" class="hidden-xs-down">Default</th>
+                    <th _ngcontent-c118="" class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody _ngcontent-c118="">
+                <tr _ngcontent-c118="">
+                    <td _ngcontent-c118="" class="left">
+                        <b _ngcontent-c118="">[clrAlertClosable]</b>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Type: Boolean</div>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Default: true</div>
+                    </td>
+                    <td _ngcontent-c118="" class="left hidden-xs-down">true, false</td>
+                    <td _ngcontent-c118="" class="hidden-xs-down">true</td>
+                    <td _ngcontent-c118="" class="left">If false, the alert will not be closable by clicking on the top-right "x".</td>
+                </tr>
+                <tr _ngcontent-c118="">
+                    <td _ngcontent-c118="" class="left">
+                        <b _ngcontent-c118="">[(clrAlertClosed)]</b>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Type: Boolean</div>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td _ngcontent-c118="" class="left hidden-xs-down">true, false</td>
+                    <td _ngcontent-c118="" class="hidden-xs-down">false</td>
+                    <td _ngcontent-c118="" class="left">
+                        Two-way binding on the state of the alert: opened or closed.
+                    </td>
+                </tr>
+                <tr _ngcontent-c118="">
+                    <td _ngcontent-c118="" class="left">
+                        <b _ngcontent-c118="">[clrAlertType]</b>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Type: String</div>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Default:<br _ngcontent-c118="">"info"</div>
+                    </td>
+                    <td _ngcontent-c118="" class="left hidden-xs-down">"info", "warning", "success" and "danger"</td>
+                    <td _ngcontent-c118="" class="hidden-xs-down">"info"</td>
+                    <td _ngcontent-c118="" class="left">Sets the type of the alert.</td>
+                </tr>
+                <tr _ngcontent-c118="">
+                    <td _ngcontent-c118="" class="left">
+                        <b _ngcontent-c118="">[clrAlertSizeSmall]</b>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Type: Boolean</div>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td _ngcontent-c118="" class="left hidden-xs-down">true, false</td>
+                    <td _ngcontent-c118="" class="hidden-xs-down">false</td>
+                    <td _ngcontent-c118="" class="left">If true, renders a small alert.</td>
+                </tr>
+                <tr _ngcontent-c118="">
+                    <td _ngcontent-c118="" class="left">
+                        <b _ngcontent-c118="">[clrAlertAppLevel]</b>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Type: Boolean</div>
+                        <div _ngcontent-c118="" class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td _ngcontent-c118="" class="left hidden-xs-down">true, false</td>
+                    <td _ngcontent-c118="" class="hidden-xs-down">false</td>
+                    <td _ngcontent-c118="" class="left">If true, renders an app-level alert.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h5 _ngcontent-c118="" id="examples">Examples</h5>
+
+            <h6 _ngcontent-c118="" id="clralertclosable-set-to-false-default-value-is-true">1. clrAlertClosable set to false. Default value is true.</h6>
+
+            <clr-alert-not-closable-demo-angular _ngcontent-c118="" _nghost-c125="">
+
+<div _ngcontent-c125="" class="clr-example">
+    <div _ngcontent-c125="" class="main-container">
+        <header _ngcontent-c125="" class="header header-6">
+            <div _ngcontent-c125="" class="branding">
+                <span _ngcontent-c125="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c125="" class="content-container">
+            <div _ngcontent-c125="" class="content-area">
+                <clr-alert _ngcontent-c125="">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c125="" class="alert-item alert-item" clr-alert-item="">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c125="" class="alert-text">
+                            This alert cannot be dismissed.
+                        </span>
+                        <div _ngcontent-c125="" class="alert-actions">
+                            <clr-dropdown _ngcontent-c125="" class="dropdown">
+                                <button _ngcontent-c125="" class="dropdown-toggle" clrdropdowntrigger="">
+                                    Actions
+                                    <clr-icon _ngcontent-c125="" shape="caret down"></clr-icon>
+                                </button>
+                                <clr-dropdown-menu _ngcontent-c125="" clrposition="bottom-right" style="position: absolute; top: 0; bottom: auto; left: 0; right: auto;" class="dropdown-menu is-off-screen">
+        
+                                    <a _ngcontent-c125="" class="dropdown-item" clrdropdownitem="" href="javascript://">Shutdown</a>
+                                    <a _ngcontent-c125="" class="dropdown-item" clrdropdownitem="" href="javascript://">Delete</a>
+                                    <a _ngcontent-c125="" class="dropdown-item" clrdropdownitem="" href="javascript://">Reboot</a>
+                                
+    </clr-dropdown-menu>
+                            </clr-dropdown>
+                        </div>
+                    
+    </div>
+                
+    </div>
+    <!---->
+</div>
+</clr-alert>
+                <clr-alert _ngcontent-c125="">
+
+<!----><div class="alert alert-warning">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c125="" class="alert-item alert-item" clr-alert-item="">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c125="" class="alert-text">
+                            Try closing this alert.
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <p _ngcontent-c125="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c125="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-alert [clrAlertClosable]="false"&gt;
+    &lt;div clr-alert-item class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This alert cannot be dismissed.
+        &lt;/span&gt;
+        &lt;div class="alert-actions"&gt;
+            &lt;clr-dropdown&gt;
+                &lt;button class="dropdown-toggle" clrDropdownTrigger&gt;
+                    Actions
+                    &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+                &lt;clr-dropdown-menu clrPosition="bottom-right"&gt;
+                    &lt;a href="..." class="dropdown-item" clrDropdownItem&gt;Shutdown&lt;/a&gt;
+                    &lt;a href="..." class="dropdown-item" clrDropdownItem&gt;Delete&lt;/a&gt;
+                    &lt;a href="..." class="dropdown-item" clrDropdownItem&gt;Reboot&lt;/a&gt;
+                &lt;/clr-dropdown-menu&gt;
+            &lt;/clr-dropdown&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+&lt;clr-alert [clrAlertType]="'alert-warning'"&gt;
+    &lt;div clr-alert-item class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            Try closing this alert.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-not-closable-demo-angular>
+
+            <h6 _ngcontent-c118="" id="clralerttype-set-to-alert-success">2. clrAlertType set to alert-success. Default value is alert-info. Accepts values same as the static alert type classes.</h6>
+
+            <clr-alert-success-demo-angular _ngcontent-c118="" _nghost-c126="">
+
+<div _ngcontent-c126="" class="clr-example">
+    <div _ngcontent-c126="" class="main-container">
+        <header _ngcontent-c126="" class="header header-6">
+            <div _ngcontent-c126="" class="branding">
+                <span _ngcontent-c126="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c126="" class="content-container">
+            <div _ngcontent-c126="" class="content-area">
+                <clr-alert _ngcontent-c126="">
+
+<!----><div class="alert alert-success">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c126="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c126="" class="alert-text">
+                            This alert indicates success.
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <clr-alert _ngcontent-c126="">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c126="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c126="" class="alert-text">
+                            This is a default info alert.
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <p _ngcontent-c126="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _ngcontent-c126="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-alert [clrAlertType]="'alert-success'"&gt;
+    &lt;div class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This alert indicates success.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+&lt;clr-alert&gt;
+    &lt;div class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This is a default info alert.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-success-demo-angular>
+
+            <h6 _ngcontent-c118="" id="clralertsizesmall-set-to-true">3. clrAlertSizeSmall set to true. Default value is false.</h6>
+
+            <clr-alert-small-demo-angular _ngcontent-c118="" _nghost-c127="">
+
+<div _ngcontent-c127="" class="clr-example">
+    <div _ngcontent-c127="" class="main-container">
+        <header _ngcontent-c127="" class="header header-6">
+            <div _ngcontent-c127="" class="branding">
+                <span _ngcontent-c127="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c127="" class="content-container">
+            <div _ngcontent-c127="" class="content-area">
+                <clr-alert _ngcontent-c127="">
+
+<!----><div class="alert alert-info alert-sm">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c127="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c127="" class="alert-text">
+                            This is a small alert.
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <clr-alert _ngcontent-c127="">
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c127="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c127="" class="alert-text">
+                            This is a regular alert.
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <p _ngcontent-c127="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _ngcontent-c127="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-alert [clrAlertSizeSmall]="true"&gt;
+    &lt;div class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This is a small alert.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+&lt;clr-alert&gt;
+    &lt;div class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This is a regular alert.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-small-demo-angular>
+
+            <h6 _ngcontent-c118="" id="binding-to-closedchange-event">4. Binding to the clrAlertClosedChange event.</h6>
+
+            <clr-alert-close-event-demo-angular _ngcontent-c118="" _nghost-c128="">
+
+<div _ngcontent-c128="" class="clr-example">
+    <div _ngcontent-c128="" class="main-container">
+        <header _ngcontent-c128="" class="header header-6">
+            <div _ngcontent-c128="" class="branding">
+                <span _ngcontent-c128="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c128="" class="content-container">
+            <div _ngcontent-c128="" class="content-area">
+                <clr-alert _ngcontent-c128="">
+
+<!----><div class="alert alert-success">
+    <div class="alert-items">
+        
+                    <div _ngcontent-c128="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+        </div>
+        
+                        <span _ngcontent-c128="" class="alert-text">
+                            This alert indicates a success!
+                        </span>
+                    
+    </div>
+                
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+                <div _ngcontent-c128=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _ngcontent-c128="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-alert [clrAlertType]="'alert-success'" (clrAlertClosedChange)="onClose()"&gt;
+    &lt;div class="alert-item"&gt;
+        &lt;span class="alert-text"&gt;
+            This alert indicates a success!
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/clr-alert&gt;
+&lt;div&gt;{{closeMessage}}&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<clr-code-snippet _ngcontent-c128="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">export class AlertAngularDemo  {
+    closeMessage: string = "";
+
+    onClose() {
+        this.closeMessage = "The alert has been closed";
+        }
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-close-event-demo-angular>
+
+            <h6 _ngcontent-c118="" id="applevelalert-set-to-true">5. clrAlertAppLevel set to true. Default is false.</h6>
+
+            <clr-alert-app-level-demo-angular _ngcontent-c118="" _nghost-c129="">
+
+<div _ngcontent-c129="" class="clr-example">
+    <div _ngcontent-c129="" class="main-container">
+        <clr-alert _ngcontent-c129="">
+
+<!----><div class="alert alert-danger alert-app-level">
+    <div class="alert-items">
+        
+            <clr-alert-item _ngcontent-c129="" class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                <span _ngcontent-c129="" class="alert-text">
+                    This is an app level alert.
+                </span>
+                <div _ngcontent-c129="" class="alert-actions">
+                    <button _ngcontent-c129="" class="btn alert-action">Fix</button>
+                </div>
+            
+    </clr-alert-item>
+        
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+        <header _ngcontent-c129="" class="header header-6">
+            <div _ngcontent-c129="" class="branding">
+                <span _ngcontent-c129="" class="title">Header</span>
+            </div>
+        </header>
+        <div _ngcontent-c129="" class="content-container">
+            <div _ngcontent-c129="" class="content-area">
+                <p _ngcontent-c129="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non beatae omnis esse quibusdam dolorum voluptatem reiciendis quaerat assumenda optio, porro expedita similique dolore quidem aliquam. Ullam, eaque enim nobis.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c129="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true"&gt;
+    &lt;clr-alert-item&gt;
+        &lt;span class="alert-text"&gt;
+            This is an app level alert.
+        &lt;/span&gt;
+        &lt;div class="alert-actions"&gt;
+            &lt;button class="btn alert-action"&gt;Fix&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert-item&gt;
+&lt;/clr-alert&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-alert-app-level-demo-angular>
+
+            <h6 _ngcontent-c118="" id="applevelalert-pager">6. Multiple app level alerts can be displayed with previous and next buttons.</h6>
+
+            <clr-alert-app-level-alerts-demo-angular _ngcontent-c118="" _nghost-c130="">
+
+  <div _ngcontent-c130="" class="clr-example">
+      <div _ngcontent-c130="" class="main-container">
+          <clr-alerts _ngcontent-c130="" _nghost-c131="" class="alerts alert-info">
+
+<!----><clr-alerts-pager _ngcontent-c131="" class="alerts-pager">
+
+<div class="alerts-pager-control">
+    <div class="alerts-page-down">
+        <button class="alerts-pager-button">
+            <clr-icon shape="caret left"></clr-icon>
+        </button>
+    </div>
+    <div class="alerts-pager-text">
+        1 / 3
+    </div>
+    <div class="alerts-page-up">
+        <button class="alerts-pager-button">
+            <clr-icon shape="caret right"></clr-icon>
+        </button>
+    </div>
+</div>
+</clr-alerts-pager>
+<clr-alert _ngcontent-c130="">
+
+<!----><div class="alert alert-info alert-app-level">
+    <div class="alert-items">
+        
+                  <div _ngcontent-c130="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                      <span _ngcontent-c130="" class="alert-text">
+                          View additional alerts using the pager
+                      </span>
+                      <div _ngcontent-c130="" class="alert-actions">
+                          <button _ngcontent-c130="" class="btn alert-action">Fix</button>
+                      </div>
+                  
+    </div>
+              
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert><clr-alert _ngcontent-c130="">
+
+<!----><div class="alert alert-warning alert-hidden alert-app-level">
+    <div class="alert-items">
+        
+                  <div _ngcontent-c130="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+                      <span _ngcontent-c130="" class="alert-text">
+                          Application level alerts should only be used for important messages.
+                      </span>
+                      <div _ngcontent-c130="" class="alert-actions">
+                          <button _ngcontent-c130="" class="btn alert-action">Fix</button>
+                      </div>
+                  
+    </div>
+              
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert><clr-alert _ngcontent-c130="">
+
+<!----><div class="alert alert-danger alert-hidden alert-app-level">
+    <div class="alert-items">
+        
+                  <div _ngcontent-c130="" class="alert-item alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        
+                      <span _ngcontent-c130="" class="alert-text">
+                          Don't add too many of these alerts!
+                      </span>
+                      <div _ngcontent-c130="" class="alert-actions">
+                          <button _ngcontent-c130="" class="btn alert-action">Fix</button>
+                      </div>
+                  
+    </div>
+              
+    </div>
+    <!----><button aria-label="Close" class="close" type="button">
+        <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+</div>
+</clr-alert>
+</clr-alerts>
+          <header _ngcontent-c130="" class="header header-6">
+              <div _ngcontent-c130="" class="branding">
+                  <span _ngcontent-c130="" class="title">Header</span>
+              </div>
+          </header>
+          <div _ngcontent-c130="" class="content-container">
+              <div _ngcontent-c130="" class="content-area">
+                  <p _ngcontent-c130="">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Delectus non beatae omnis esse quibusdam dolorum voluptatem
+                      reiciendis quaerat assumenda optio, porro expedita similique
+                      dolore quidem aliquam. Ullam, eaque enim nobis.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+<pre _ngcontent-c130=""><code _ngcontent-c130="" clr-code-highlight="language-html" class="language-html">
+&lt;clr-alerts&gt;
+    &lt;clr-alert [clrAlertType]="'info'" [clrAlertAppLevel]="true"&gt;
+        &lt;div class="alert-item"&gt;
+            &lt;span class="alert-text"&gt;
+                This is the first app level alert.
+            &lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;button class="btn alert-action"&gt;Fix&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert&gt;
+    &lt;clr-alert [clrAlertType]="'danger'" [clrAlertAppLevel]="true"&gt;
+        &lt;div class="alert-item"&gt;
+            &lt;span class="alert-text"&gt;
+                This is a second app level alert.
+            &lt;/span&gt;
+            &lt;div class="alert-actions"&gt;
+                &lt;button class="btn alert-action"&gt;Fix&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/clr-alert&gt;
+&lt;/clr-alerts&gt;
+</code>
+</pre>
+  </clr-alert-app-level-alerts-demo-angular>
+
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper>
+</clr-alerts-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Checkboxes</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-checkboxes"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-checkboxes-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Checkboxes</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/checkboxes#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/checkboxes#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="with-checkboxes-users-can-select-multiple-options-in-a-list-of-options">With
+            checkboxes, users can select multiple options in a list of options.</h5>
+
+        <div id="code-examples">
+            <clr-checkboxes-types-demo>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <label>Static Checkboxes</label>
+        <div class="form-group">
+            <label>Default/Stacked checkbox group</label>
+            <div class="checkbox">
+                <input id="checkrads_1" type="checkbox">
+                <label for="checkrads_1">Checkbox 1</label>
+            </div>
+            <div class="checkbox">
+                <input checked="" id="checkrads_2" type="checkbox">
+                <label for="checkrads_2">Checkbox 2</label>
+            </div>
+            <div class="checkbox disabled">
+                <input disabled="" id="checkrads_3" type="checkbox">
+                <label for="checkrads_3">A disabled and unchecked checkbox</label>
+            </div>
+            <div class="checkbox disabled">
+                <input checked="" disabled="" id="checkrads_4" type="checkbox">
+                <label for="checkrads_4">A disabled and checked checkbox</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Inline checkbox group</label>
+            <div class="checkbox-inline">
+                <input id="checkrads_5" type="checkbox">
+                <label for="checkrads_5">Checkbox 1</label>
+            </div>
+            <div class="checkbox-inline">
+                <input checked="" id="checkrads_6" type="checkbox">
+                <label for="checkrads_6">Checkbox 2</label>
+            </div>
+            <div class="checkbox-inline disabled">
+                <input disabled="" id="checkrads_7" type="checkbox">
+                <label for="checkrads_7">A disabled and unchecked checkbox</label>
+            </div>
+            <div class="checkbox-inline disabled">
+                <input checked="" disabled="" id="checkrads_8" type="checkbox">
+                <label for="checkrads_8">A disabled and checked checkbox</label>
+            </div>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;label&gt;Static Checkboxes&lt;/label&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Default/Stacked checkbox group&lt;/label&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;input type="checkbox" id="checkrads_1"&gt;
+                    &lt;label for="checkrads_1"&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;input type="checkbox" id="checkrads_2" checked&gt;
+                    &lt;label for="checkrads_2"&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox disabled"&gt;
+                    &lt;input type="checkbox" id="checkrads_3" disabled&gt;
+                    &lt;label for="checkrads_3"&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox disabled"&gt;
+                    &lt;input type="checkbox" id="checkrads_4" disabled checked&gt;
+                    &lt;label for="checkrads_4"&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Inline checkbox group&lt;/label&gt;
+                &lt;div class="checkbox-inline"&gt;
+                    &lt;input type="checkbox" id="checkrads_5"&gt;
+                    &lt;label for="checkrads_5"&gt;Checkbox 1&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox-inline"&gt;
+                    &lt;input type="checkbox" id="checkrads_6" checked&gt;
+                    &lt;label for="checkrads_6"&gt;Checkbox 2&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox-inline disabled"&gt;
+                    &lt;input type="checkbox" id="checkrads_7" disabled&gt;
+                    &lt;label for="checkrads_7"&gt;A disabled and unchecked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class="checkbox-inline disabled"&gt;
+                    &lt;input type="checkbox" id="checkrads_8" disabled checked&gt;
+                    &lt;label for="checkrads_8"&gt;A disabled and checked checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h3>Angular Component</h3>
+
+<p>
+    Clarity supports an Angular checkbox component. It can be used as shown below.
+    It supports both <code>ngModel</code> and <code>clrChecked</code> inputs
+    to set the checked state of the checkbox.
+</p>
+
+<h6>With ngModel</h6>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>With ngForm &amp; ngModel</label>
+            <clr-checkbox id="checkrads_11" name="termsCheckbox" class="checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" id="clr-checkbox-checkrads_11" name="termsCheckbox" checked="">
+        <label for="clr-checkbox-checkrads_11">
+            
+                I agree to the terms and conditions.
+            
+        </label>
+    </clr-checkbox>
+            <div>
+                Value of termsAgreement: true
+            </div>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form #form="ngForm" novalidate&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;With ngForm &amp; ngModel&lt;/label&gt;
+                &lt;clr-checkbox
+                        name="termsCheckbox"
+                        id="checkrads_11"
+                        [(ngModel)]="termsAgreement"&gt;
+                    I agree to the terms and conditions.
+                &lt;/clr-checkbox&gt;
+                &lt;div&gt;
+                    Value of termsAgreement: {{termsAgreement}}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6>With clrChecked</h6>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>Angular Checkbox</label>
+            <clr-checkbox class="checkbox">
+        
+        <input type="checkbox" id="clr-checkbox-93" name="null" checked="">
+        <label for="clr-checkbox-93">
+            
+                Clarity checkbox
+            
+        </label>
+    </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Angular Checkbox&lt;/label&gt;
+                &lt;clr-checkbox [clrChecked]="true"&gt;
+                    Clarity checkbox
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4>Indeterminate State</h4>
+<p>
+    The indeterminate state on the checkbox can be set
+    using the <code>clrIndeterminate</code> input.
+</p>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>Indeterminate Checkbox</label>
+            <clr-checkbox class="checkbox">
+        
+        <input type="checkbox" id="clr-checkbox-94" name="null">
+        <label for="clr-checkbox-94">
+            
+                Clarity indeterminate checkbox
+            
+        </label>
+    </clr-checkbox>
+            <div>
+                <button class="btn btn-sm" type="button">
+                    Toggle Indeterminate State
+                </button>
+            </div>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Indeterminate Checkbox&lt;/label&gt;
+                &lt;clr-checkbox [(clrIndeterminate)]="indeterminateState"&gt;
+                    Clarity indeterminate checkbox
+                &lt;/clr-checkbox&gt;
+                &lt;div&gt;
+                    &lt;button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button"&gt;
+                        Toggle Indeterminate State
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4>Setting Indeterminate State Natively</h4>
+<p>
+    If you are using Static checkboxes, you can set the indeterminate state using
+    Javascript by setting the <code>indeterminate</code> property of the checkbox.
+</p>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>Native Indeterminate Checkbox</label>
+            <div class="checkbox">
+                <input id="checkrads_10" type="checkbox">
+                <label for="checkrads_10">Native indeterminate checkbox</label>
+            </div>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Native Indeterminate Checkbox&lt;/label&gt;
+                &lt;div class="checkbox"&gt;
+                    &lt;input type="checkbox"
+                           id="checkrads_10"
+                           [indeterminate]="nativeIndeterminateState"&gt;
+                    &lt;label for="checkrads_10"&gt;Native indeterminate checkbox&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4>Inline Checkboxes</h4>
+<p>
+    Checkboxes can be made inline using the <code>clrInline</code> input.
+</p>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>Inline Checkboxes</label>
+            <clr-checkbox class="checkbox-inline">
+        
+        <input type="checkbox" id="clr-checkbox-95" name="null" checked="">
+        <label for="clr-checkbox-95">
+            
+                Inline checkbox 1
+            
+        </label>
+    </clr-checkbox>
+            <clr-checkbox class="checkbox-inline">
+        
+        <input type="checkbox" id="clr-checkbox-96" name="null" checked="">
+        <label for="clr-checkbox-96">
+            
+                Inline checkbox 2
+            
+        </label>
+    </clr-checkbox>
+            <clr-checkbox class="checkbox-inline">
+        
+        <input type="checkbox" id="clr-checkbox-97" name="null" checked="">
+        <label for="clr-checkbox-97">
+            
+                Inline checkbox 3
+            
+        </label>
+    </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;Inline Checkboxes&lt;/label&gt;
+                &lt;clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true"&gt;
+                    Inline checkbox 1
+                &lt;/clr-checkbox&gt;
+                &lt;clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true"&gt;
+                    Inline checkbox 2
+                &lt;/clr-checkbox&gt;
+                &lt;clr-checkbox
+                        [clrChecked]="true"
+                        [clrInline]="true"&gt;
+                    Inline checkbox 3
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4>Checkbox Demo</h4>
+
+<form novalidate="" class="ng-untouched ng-pristine ng-valid">
+    <section class="form-block">
+        <div class="form-group">
+            <label>With a list of objects</label>
+            <!----><clr-checkbox class="checkbox disabled">
+        
+        <input type="checkbox" id="clr-checkbox-98" name="null" disabled="">
+        <label for="clr-checkbox-98">
+            
+                Crystal View @ 192.168.1.42  is disabled.
+            
+        </label>
+    </clr-checkbox><clr-checkbox class="checkbox">
+        
+        <input type="checkbox" id="clr-checkbox-99" name="null" checked="">
+        <label for="clr-checkbox-99">
+            
+                Turbulent Foam @ 192.268.1.19  is running.
+            
+        </label>
+    </clr-checkbox><clr-checkbox class="checkbox">
+        
+        <input type="checkbox" id="clr-checkbox-100" name="null">
+        <label for="clr-checkbox-100">
+            
+                Bright Sunshine @ 192.268.1.11 is off.
+            
+        </label>
+    </clr-checkbox><clr-checkbox class="checkbox disabled">
+        
+        <input type="checkbox" id="clr-checkbox-101" name="null" checked="" disabled="">
+        <label for="clr-checkbox-101">
+            
+                Scary Numbers @ 192.268.1.3  is disabled.
+            
+        </label>
+    </clr-checkbox><clr-checkbox class="checkbox">
+        
+        <input type="checkbox" id="clr-checkbox-102" name="null">
+        <label for="clr-checkbox-102">
+            
+                Loud Silence @ 192.268.1.180 is off.
+            
+        </label>
+    </clr-checkbox>
+        </div>
+    </section>
+</form>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;form&gt;
+        &lt;section class="form-block"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label&gt;With a list of objects&lt;/label&gt;
+                &lt;clr-checkbox *ngFor="let item of list"
+                    [(clrChecked)]="item.running"
+                    [clrDisabled]="item.disabled"&gt;
+                    {{ item.name }} @ {{item.ip}} {{ item.disabled ? ' is disabled.' : (item.running ? ' is running.' : 'is off.') }}
+                &lt;/clr-checkbox&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/form&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4>aria-labelledby</h4>
+<p>You can add the attribute for <code class="clr-code">aria-labelledby</code> to the input element of your
+    clr-checkbox. Just add the optional <code class="clr-code">@Input</code> for <code class="clr-code">
+        clrAriaLabeledBy</code> and set the string value for that checkbox.</p>
+
+<clr-code-snippet clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-checkbox [clrAriaLabeledBy]="'Your aria-labelledby string here'"&gt;&lt;/clr-checkbox&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h2>Summary of Options</h2>
+
+<h4>Checkboxes (clr-checkbox)</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="left">Input/Output</th>
+        <th class="hidden-xs-down">Values</th>
+        <th class="hidden-xs-down">Default</th>
+        <th class="left">Effect</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">
+                <b>[id]</b>
+                <div class="hidden-sm-up">Type: string</div>
+                <div class="hidden-sm-up">Default: Automatically Generated</div>
+            </td>
+            <td class="hidden-xs-down">string</td>
+            <td class="hidden-xs-down">Automatically Generated</td>
+            <td class="left">
+                Sets the id of the checkbox.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[name]</b>
+                <div class="hidden-sm-up">Type: string</div>
+                <div class="hidden-sm-up">Default: NA</div>
+            </td>
+            <td class="hidden-xs-down">string</td>
+            <td class="hidden-xs-down">NA</td>
+            <td class="left">
+                Sets the name attribute on the checkbox.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[(clrChecked)]</b>
+                <div class="hidden-sm-up">Type: boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">boolean</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Sets the checked state of the checkbox. Default is false.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[(clrIndeterminate)]</b>
+                <div class="hidden-sm-up">Type: boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">boolean</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Sets the indeterminate state of the checkbox. Default is false.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrDisabled]</b>
+                <div class="hidden-sm-up">Type: boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">boolean</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Sets the disabled state of the checkbox. Default is false.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrInline]</b>
+                <div class="hidden-sm-up">Type: boolean</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">boolean</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Styles the checkbox as an inline element.
+            </td>
+        </tr>
+        <tr>
+            <td class="left">
+                <b>[clrAriaLabeledBy]</b>
+                <div class="hidden-sm-up">Type: string</div>
+                <div class="hidden-sm-up">Default: false</div>
+            </td>
+            <td class="hidden-xs-down">string</td>
+            <td class="hidden-xs-down">false</td>
+            <td class="left">
+                Sets the attribute for <code class="clr-code">aria-labelledby</code> on the checkbox input.
+            </td>
+        </tr>
+    </tbody>
+</table>
+</clr-checkboxes-types-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>
+                Use a checkbox for yes or no choices, for example “Remember me” on the <a routerlink="./login" href="/checkboxes/login">login page</a>. For on and off options, use a <a routerlink="./toggle-switches" href="/checkboxes/toggle-switches">toggle switch</a>.
+            </p>
+
+            <ul class="list">
+                <li>Checkboxes are best for seven or fewer options.</li>
+                <li>For readability, keep the checkbox label to a single line.</li>
+            </ul>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-checkboxes-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

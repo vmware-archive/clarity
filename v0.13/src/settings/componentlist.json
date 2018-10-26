@@ -1,0 +1,476 @@
+{
+    "status": {
+        "done": 20,
+        "started": 10,
+        "notStarted": 5,
+        "notDoing": -1
+    },
+    "list": [
+        {
+            "url": "app-layout",
+            "text": "Application Layout",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "alerts",
+            "text": "Alerts",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "badges",
+            "text": "Badges",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "newLayout": true
+        },
+        {
+            "url": "buttons",
+            "newLayout": true,
+            "text": "Buttons",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "button-group",
+            "newLayout": true,
+            "text": "Button Group",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "cards",
+            "text": "Cards",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "checkboxes",
+            "text": "Checkboxes",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "/get-started#howToUse",
+            "text": "Clarity Build",
+            "ux": -1,
+            "ui": -1,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "noDemo": true
+        },
+        {
+            "url": "/get-started#seedProjectClarity",
+            "text": "Clarity Seed",
+            "ux": -1,
+            "ui": -1,
+            "core": 20,
+            "ng": -1,
+            "dox": 20,
+            "noDemo": true
+        },
+        {
+            "url": "color",
+            "text": "Color Palette",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "datepicker",
+            "newLayout": true,
+            "text": "Date Picker",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "datagrid",
+            "text": "Datagrid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "dropdowns",
+            "text": "Dropdowns",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "forms",
+            "text": "Forms",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "grid",
+            "text": "Grid",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "header",
+            "text": "Header",
+            "type": "component",
+            "newLayout": true,
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": ""
+        },
+        {
+            "url": "input",
+            "text": "Inputs",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "newLayout": true
+        },
+        {
+            "url": "labels",
+            "text": "Labels",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20,
+            "newLayout": true
+        },
+        {
+            "url": "lists",
+            "text": "Lists",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "login",
+            "text": "Login Page",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": null,
+            "text": "Masked Inputs",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": "modals",
+            "text": "Modals",
+            "type": "component",
+            "newLayout": true,
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "navigation",
+            "text": "Navigation",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": null,
+            "text": "Nested Menus",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": null,
+            "text": "Notifications/Toasts",
+            "type": "component",
+            "ux": 5,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": "password",
+            "text": "Password",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "newLayout": true
+        },
+        {
+            "url": "progress",
+            "text": "Progress Bars",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": "radio",
+            "text": "Radio Buttons",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": null,
+            "text": "Search",
+            "type": "component",
+            "ux": 20,
+            "ui": 5,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": "select",
+            "text": "Select",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": "sidenav",
+            "text": "Sidenav",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "signposts",
+            "text": "Signposts",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": "",
+            "newLayout": true
+        },
+        {
+            "url": "spinners",
+            "text": "Spinners",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "stack-view",
+            "text": "Stack View",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20,
+            "comments": ""
+        },
+        {
+            "url": "tables",
+            "text": "Tables",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "tabs",
+            "text": "Tabs",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "textarea",
+            "text": "Textareas",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "newLayout": true,
+            "url": "themes",
+            "text": "Themes",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "toggle-switches",
+            "text": "Toggle Switches",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 5,
+            "dox": 20
+        },
+        {
+            "url": "tooltips",
+            "text": "Tooltips",
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "tree-view",
+            "text": "Tree View",
+            "type": "component",
+            "newLayout": true,
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": "typography",
+            "text": "Typography",
+            "type": "pattern",
+            "ux": 20,
+            "ui": 20,
+            "core": 20,
+            "ng": -1,
+            "dox": 20
+        },
+        {
+            "url": "vertical-nav",
+            "text": "Vertical Nav",
+            "newLayout": true,
+            "type": "component",
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20,
+            "dox": 20
+        },
+        {
+            "url": null,
+            "text": "Vertical Tabs",
+            "type": "component",
+            "ux": 20,
+            "ui": 10,
+            "core": -1,
+            "ng": 5,
+            "dox": 5
+        },
+        {
+            "url": "wizards",
+            "text": "Wizards",
+            "type": "component",
+            "newLayout": true,
+            "ux": 20,
+            "ui": 20,
+            "core": -1,
+            "ng": 20
+        }
+    ]
+}

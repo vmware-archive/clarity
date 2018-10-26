@@ -1,0 +1,965 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Signposts</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.signpost-default[_ngcontent-c43], .signpost-positions[_ngcontent-c43]{display:-webkit-box;display:-ms-flexbox;display:flex;padding:24px}.signpost-positions[_ngcontent-c43]   .demo[_ngcontent-c43], .signpost-positions[_ngcontent-c43]   .description[_ngcontent-c43]{-webkit-box-flex:1;-ms-flex:1 1;flex:1 1}.signpost-positions[_ngcontent-c43]   .demo[_ngcontent-c43]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.signpost-triggers-wrapper[_ngcontent-c43]{width:100%}.signpost-trigger-demo[_ngcontent-c43]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:24px;width:100%;border:1px darkred}.signpost-trigger-demo[_ngcontent-c43]   .signpost-item[_ngcontent-c43]{-webkit-box-flex:1;-ms-flex:1 0 200px;flex:1 0 200px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:24px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style><style ng-transition="clarity">.signpost-default[_ngcontent-c44], .signpost-positions[_ngcontent-c44]{display:-webkit-box;display:-ms-flexbox;display:flex;padding:24px}.signpost-positions[_ngcontent-c44]   .demo[_ngcontent-c44], .signpost-positions[_ngcontent-c44]   .description[_ngcontent-c44]{-webkit-box-flex:1;-ms-flex:1 1;flex:1 1}.signpost-positions[_ngcontent-c44]   .demo[_ngcontent-c44]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.signpost-triggers-wrapper[_ngcontent-c44]{width:100%}.signpost-trigger-demo[_ngcontent-c44]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:24px;width:100%;border:1px darkred}.signpost-trigger-demo[_ngcontent-c44]   .signpost-item[_ngcontent-c44]{-webkit-box-flex:1;-ms-flex:1 0 200px;flex:1 0 200px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:24px}</style><style ng-transition="clarity">.signpost-default[_ngcontent-c45], .signpost-positions[_ngcontent-c45]{display:-webkit-box;display:-ms-flexbox;display:flex;padding:24px}.signpost-positions[_ngcontent-c45]   .demo[_ngcontent-c45], .signpost-positions[_ngcontent-c45]   .description[_ngcontent-c45]{-webkit-box-flex:1;-ms-flex:1 1;flex:1 1}.signpost-positions[_ngcontent-c45]   .demo[_ngcontent-c45]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.signpost-triggers-wrapper[_ngcontent-c45]{width:100%}.signpost-trigger-demo[_ngcontent-c45]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:24px;width:100%;border:1px darkred}.signpost-trigger-demo[_ngcontent-c45]   .signpost-item[_ngcontent-c45]{-webkit-box-flex:1;-ms-flex:1 0 200px;flex:1 0 200px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:24px}</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-signposts"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-tooltips-demo _nghost-c43="" class="content-area dox-content-panel"><clr-doc-wrapper _ngcontent-c43="" class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Signposts</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/signposts#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/signposts#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article _ngcontent-c43="">
+        <h5 _ngcontent-c43="" class="component-summary" id="a-signpost-description">The signpost is a convenient, lightweight way to show
+            contextual help of information without taking the user out of the current context.</h5>
+
+        <div _ngcontent-c43="" id="design-guidelines">
+            <h3 _ngcontent-c43="">Examples</h3>
+            <div _ngcontent-c43="" class="clrweb-DoxMedia">
+                <div _ngcontent-c43="" class="clrweb-DoxMedia-block">
+                    <div _ngcontent-c43="" class="clrweb-DoxMedia-img">
+                        <img _ngcontent-c43="" alt="basic and pie chart" src="assets/images/documentation/signposts/basic-and-pie-chart.svg">
+                    </div>
+                </div>
+            </div>
+            <h3 _ngcontent-c43="">Description</h3>
+            <p _ngcontent-c43="">A signpost displays contextual help or information in a popover dialog. Like a tooltip, it has an
+                arrow/pointer that extends out to the trigger element, but the dialog is larger to fit more content.
+                Signposts are designed to show a relatively small amount of content which may include: a title, images,
+                text links of image links. A vertical scrollbar (browser default) may be used if the content exceeds the
+                maximum height of the dialog.</p>
+            <h5 _ngcontent-c43="" style="margin: 24px 0 12px;">Size</h5>
+            <ul _ngcontent-c43="" class="list">
+                <li _ngcontent-c43="">Min-width 216px; Min-height 84px</li>
+                <li _ngcontent-c43="">Max-width 360px; Max-height 504px</li>
+            </ul>
+            <h3 _ngcontent-c43="">Usage</h3>
+            <p _ngcontent-c43="" style="margin-bottom: 12px;">Signposts should be used when you want to show a small 
+                amount of contextual help of information without taking the user out of the current 
+                context. Use sparingly as a supplemental element and not as a primary method of adding detail.</p>
+            <ul _ngcontent-c43="" class="list">
+                <li _ngcontent-c43="">When the amount of content won't fit in a tooltip</li>
+                <li _ngcontent-c43="">When you want to include a header, image or text/image links in the content</li>
+                <li _ngcontent-c43="">When the information presented needs to stay in view at length (Unlike tooltips, signposts stay in
+                    view until the user interacts with another element)
+                </li>
+            </ul>
+            <h3 _ngcontent-c43="">Interaction</h3>
+            <p _ngcontent-c43="">Clicking the icon triggers the signpost. It remains visible until the user clicks the close 
+                icon or clicks anywhere outside of the dialog to dismiss it. To keep the interface uncluttered, 
+                only one signpost is displayed at a time. When a dialog is visible, clicking an icon to open 
+                another one automatically dismisses the previous dialog.</p>
+            <div _ngcontent-c43="" class="clrweb-DoxMedia">
+                <div _ngcontent-c43="" class="clrweb-DoxMedia-block">
+                    <div _ngcontent-c43="" class="clrweb-DoxMedia-img">
+                        <img _ngcontent-c43="" alt="" src="assets/images/documentation/signposts/states.svg">
+                    </div>
+                </div>
+            </div>
+            <h3 _ngcontent-c43="">Trigger icon and dialog positioning</h3>
+            <div _ngcontent-c43="" class="clrweb-DoxMedia">
+                <div _ngcontent-c43="" class="clrweb-DoxMedia-block">
+                    <div _ngcontent-c43="" class="clrweb-DoxMedia-img">
+                        <img _ngcontent-c43="" alt="" src="assets/images/documentation/signposts/positioning.svg">
+                    </div>
+                </div>
+                <div _ngcontent-c43="" class="clrweb-DoxMedia-text">
+                    <p _ngcontent-c43="" style="margin-top: 12px;">Default postion for the dialog is 6px to the right of the 
+                        trigger icon.</p>
+                </div>
+            </div>
+            <div _ngcontent-c43="" class="row">
+                <div _ngcontent-c43="" class="col-xs-12 col-sm-6">
+                    <div _ngcontent-c43="" class="clrweb-DoxMedia">
+                        
+                        <img _ngcontent-c43="" alt="Signposts inline alignment" class="clrweb-Img" src="assets/images/documentation/signposts/inline-alignment.svg">
+                        <div _ngcontent-c43="" class="clrweb-DoxMedia-text">
+                            <p _ngcontent-c43="" style="margin-top: 12px;">
+                                Default position for the dialog is 6px from the end of the text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c43="" class="col-xs-12 col-sm-6">
+                    <div _ngcontent-c43="" class="clrweb-DoxMedia">
+                        
+                        <img _ngcontent-c43="" alt="Signpost in column alignment" class="clrweb-Img" src="assets/images/documentation/signposts/column-alignment.svg">
+                        <div _ngcontent-c43="" class="clrweb-DoxMedia-text">
+                            <p _ngcontent-c43="" style="margin-top: 12px;">
+                                In tables, the icons may be aligned in a column
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 _ngcontent-c43="" style="margin-bottom: 12px;">Recommendations</h4>
+            <ul _ngcontent-c43="" class="list">
+                <li _ngcontent-c43="">The popover should not be so large that it dominates the screen</li>
+                <li _ngcontent-c43="">Make sure that the popover doesn't obstruct other important information on the screen</li>
+                <li _ngcontent-c43="">With the exception of text/image links, don't insert any actionable components, such as 
+                    buttons, in the dialog
+                </li>
+                <li _ngcontent-c43="">Don't rely on signposts as a primary method of displaying additional information - i.e. 
+                    as a way to save space on a page
+                </li>
+                <li _ngcontent-c43="">
+                    Use sparingly as a device to add immediate, relevant information
+                </li>
+            </ul>
+        </div>
+
+        <div _ngcontent-c43="" id="code-examples">
+            <h3 _ngcontent-c43="" id="examples">Code &amp; Examples</h3>
+
+            <p _ngcontent-c43="">
+                The signpost component uses the <code _ngcontent-c43="" class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the signpost content
+                to indicate clearly that said content is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the signpost.
+            </p>
+            <p _ngcontent-c43="">
+                If for some reason this behavior was not the one you wanted, for instance if you want screenreaders to
+                read the signpost inline as opposed to when the user activates the trigger,
+                we also support the signpost content without a
+                <code _ngcontent-c43="" class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the signpost
+                itself initializes, and will not be destroyed or recreated until the signpost itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <p _ngcontent-c43="">The default signpost is shown to the right of the trigger icon with the content centered 
+                vertically in the middle of the trigger. It opens with a click action. Once open its 
+                contents can be interacted with. The Signpost is closed when clicking on the
+                <clr-icon _ngcontent-c43="" shape="close"></clr-icon>
+                icon or by clicking anywhere outside the <code _ngcontent-c43="" class="clr-code">clr-signpost-content</code> element.
+            </p>
+            <div _ngcontent-c43="" class="signpost-default">
+                <clr-signpost _ngcontent-c43="" class="signpost">
+        <!----><!---->
+            <button class="signpost-action btn btn-small btn-link signpost-trigger" clrsignposttrigger="" type="button">
+                <clr-icon shape="info"></clr-icon>
+            </button>
+        
+        
+        
+                    <!---->
+                
+    </clr-signpost>
+            </div>
+
+            <clr-code-snippet _ngcontent-c43="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-signpost&gt;
+    &lt;clr-signpost-content *clrIfOpen&gt;
+        &lt;h3&gt;Default Signpost&lt;/h3&gt;
+        &lt;p&gt;Position: &lt;code class="clr-code"&gt;right-middle&lt;/code&gt;&lt;/p&gt;
+    &lt;/clr-signpost-content&gt;
+&lt;/clr-signpost&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+            <clr-signpost-paragraph-demo _ngcontent-c43="" class="content-area dox-content-panel"><div>
+    <p>Signposts should be used when you want to show a small amount of contextual help
+        of information without taking the user out of the current context. Use sparingly as a supplemental element and
+        not as a primary method of adding detail.
+        <clr-signpost class="signpost">
+        <!----><!---->
+            <button class="signpost-action btn btn-small btn-link signpost-trigger" clrsignposttrigger="" type="button">
+                <clr-icon shape="info"></clr-icon>
+            </button>
+        
+        
+        
+            <!---->
+        
+    </clr-signpost>
+    </p>
+
+    <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;p&gt;Signposts should be used when you want to show a small amount of contextual help
+    of information without taking the user out of the current context.
+     Use sparingly as a supplemental element and not as a primary method of adding detail.
+    &lt;clr-signpost&gt;
+        &lt;clr-signpost-content *clrIfOpen="openState"&gt;
+            &lt;h3 style="margin-top: 0"&gt;Inline signpost&lt;/h3&gt;
+            &lt;p&gt;Position: &lt;code class="clr-code"&gt;right-middle&lt;/code&gt;&lt;/p&gt;
+        &lt;/clr-signpost-content&gt;
+    &lt;/clr-signpost&gt;
+&lt;/p&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+    <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">import {Component} from "@angular/core";
+
+@Component({
+    ...
+})
+
+export class MyClass {
+    // Use *clrIfOpen directive to manage hide/show with the openState property.
+    public openState: boolean = false;
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</div>
+</clr-signpost-paragraph-demo>
+
+            
+            
+            
+
+            <h3 _ngcontent-c43="" id="signposts-positions">Signpost positions</h3>
+            <p _ngcontent-c43="">
+                There are twelve signpost positions to help place the popover in an appropriate position 
+                when shown. You control the position and direction by declaring a position that orients 
+                your that Signpost content as you see fit. On a <code _ngcontent-c43="" class="clr-code">clr-signpost-content</code> 
+                component add the input <code _ngcontent-c43="" class="clr-code">[clrPosition]="'position'"</code> where 
+                position is one of the following:
+            </p>
+            <ul _ngcontent-c43="" class="list">
+                <li _ngcontent-c43=""><code _ngcontent-c43="" class="clr-code">top-X: </code> the arrow will point down and the popover
+                    will be above the trigger in the X position where X = left, middle or right
+                </li>
+                <li _ngcontent-c43=""><code _ngcontent-c43="" class="clr-code">bottom-X: </code> the arrow will point up and the
+                    popover will be below the trigger in the X position where X = left, middle or right
+                </li>
+                <li _ngcontent-c43=""><code _ngcontent-c43="" class="clr-code">left-X: </code> the arrow will point right and the
+                    popover will be left of the trigger in the X position where X = top, middle or bottom
+                </li>
+                <li _ngcontent-c43=""><code _ngcontent-c43="" class="clr-code">right-X: </code> the arrow will point left and the
+                    popover will be right of the trigger in the X position where X = top, middle or bottom
+                </li>
+            </ul>
+            <clr-signpost-positions-demo _ngcontent-c43="" _nghost-c44="" class="content-area dox-content-panel"><div _ngcontent-c44="">
+    <div _ngcontent-c44="" class="signpost-positions">
+        <div _ngcontent-c44="" class="description">
+            <section _ngcontent-c44="" class="form-block">
+                <div _ngcontent-c44="" class="form-group">
+                    <label _ngcontent-c44="" for="position">Select a position: </label>
+                    <div _ngcontent-c44="" class="select">
+                        <select _ngcontent-c44="" id="position" name="position" selectedindex="-1" value="4: right-middle" class="ng-untouched ng-pristine ng-valid">
+                            <!----><option _ngcontent-c44="" value="0: top-left">top-left</option><option _ngcontent-c44="" value="1: top-middle">top-middle</option><option _ngcontent-c44="" value="2: top-right">top-right</option><option _ngcontent-c44="" value="3: right-top">right-top</option><option _ngcontent-c44="" value="4: right-middle">right-middle</option><option _ngcontent-c44="" value="5: right-bottom">right-bottom</option><option _ngcontent-c44="" value="6: bottom-left">bottom-left</option><option _ngcontent-c44="" value="7: bottom-middle">bottom-middle</option><option _ngcontent-c44="" value="8: bottom-right">bottom-right</option><option _ngcontent-c44="" value="9: left-top">left-top</option><option _ngcontent-c44="" value="10: left-middle">left-middle</option><option _ngcontent-c44="" value="11: left-bottom">left-bottom</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div _ngcontent-c44="" class="demo">
+            <clr-signpost _ngcontent-c44="" class="signpost">
+        <!----><!---->
+            <button class="signpost-action btn btn-small btn-link signpost-trigger" clrsignposttrigger="" type="button">
+                <clr-icon shape="info"></clr-icon>
+            </button>
+        
+        
+        
+                <!---->
+            
+    </clr-signpost>
+        </div>
+    </div>
+    <clr-code-snippet _ngcontent-c44="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;select id="position_selector" [(ngModel)]="position" name="position" id="position"&gt;
+    &lt;option *ngFor="let position of positions" [ngValue]="position"&gt;{{ position }}&lt;/option&gt;
+&lt;/select&gt;
+&lt;clr-signpost&gt;
+    &lt;clr-signpost-content [clrPosition]="position" *clrIfOpen&gt;
+        &lt;h3 style="margin-top: 0"&gt;Position&lt;/h3&gt;
+        &lt;p&gt;&lt;code class="clr-code"&gt;{{ position }}&lt;/code&gt;&lt;/p&gt;
+    &lt;/clr-signpost-content&gt;
+&lt;/clr-signpost&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+    <clr-code-snippet _ngcontent-c44="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">@Component({
+    ...
+})
+export class MyClass {
+    positions: string[] = [ "top-left", "top-middle", "top-right",
+                            "right-top", "right-middle", "right-bottom",
+                            "bottom-left", "bottom-middle", "bottom-right",
+                            "left-top", "left-middle", "left-bottom" ];
+    position: string = "right-middle";
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</div>
+
+</clr-signpost-positions-demo>
+
+            <h3 _ngcontent-c43="" id="custom-triggers">Custom Triggers</h3>
+            <p _ngcontent-c43="">We provide a default trigger but you can add one yourself. The signpost component 
+                provides the <code _ngcontent-c43="" class="clr-code">clrSignpostTrigger</code> attribute directive that 
+                can be added to the <code _ngcontent-c43="" class="clr-code">clr-signpost-content</code> child. To control the 
+                position of your signpost, add <code _ngcontent-c43="" class="clr-code">[clrPosition]="position"</code> so that 
+                it knows how the Signpost should point.</p>
+
+            <clr-signpost-triggers-demo _ngcontent-c43="" _nghost-c45="" class="content-area dox-content-panel"><div _ngcontent-c45="" class="signpost-triggers-wrapper">
+    <div _ngcontent-c45="" class="signpost-trigger-demo">
+        <div _ngcontent-c45="" class="signpost-item">
+            <h6 _ngcontent-c45="">Clarity Icon</h6>
+            <clr-signpost _ngcontent-c45="" class="signpost">
+        <!---->
+        
+        
+                <clr-icon _ngcontent-c45="" class="is-solid has-badge-info signpost-trigger" clrsignposttrigger="" shape="avatar">
+                </clr-icon>
+                <!---->
+            
+    </clr-signpost>
+        </div>
+        <div _ngcontent-c45="" class="signpost-item">
+            <h6 _ngcontent-c45="">Button Link</h6>
+            <div _ngcontent-c45="" class="trigger-item">
+                <clr-signpost _ngcontent-c45="" class="signpost">
+        <!---->
+        
+        
+                    <button _ngcontent-c45="" class="btn btn-link signpost-trigger" clrsignposttrigger="">
+                        Button Link Trigger
+                    </button>
+                    <!---->
+                
+    </clr-signpost>
+            </div>
+        </div>
+        <div _ngcontent-c45="" class="signpost-item">
+            <h6 _ngcontent-c45="">Button Link w/ Clarity Icon</h6>
+            <div _ngcontent-c45="" class="trigger-item">
+                <clr-signpost _ngcontent-c45="" class="signpost">
+        <!---->
+        
+        
+                    <button _ngcontent-c45="" class="btn btn-link signpost-trigger" clrsignposttrigger="">
+                        Button Link
+                        <clr-icon _ngcontent-c45="" shape="help-info"></clr-icon>
+                    </button>
+                    <!---->
+                
+    </clr-signpost>
+            </div>
+        </div>
+    </div>
+    <clr-code-snippet _ngcontent-c45="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="signpost-triggers-wrapper"&gt;
+    &lt;div class="signpost-trigger-demo"&gt;
+        &lt;div class="signpost-item"&gt;
+            &lt;h6&gt;Clarity Icon&lt;/h6&gt;
+            &lt;clr-signpost&gt;
+                &lt;clr-icon shape="avatar" 
+                          class="is-solid has-badge-info" 
+                          clrSignpostTrigger&gt;
+                &lt;/clr-icon&gt;
+                &lt;clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen&gt;
+                    Lorem ipsum...
+                &lt;/clr-signpost-content&gt;
+            &lt;/clr-signpost&gt;
+        &lt;/div&gt;
+        &lt;div class="signpost-item"&gt;
+            &lt;h6&gt;Button Link&lt;/h6&gt;
+            &lt;div class="trigger-item"&gt;
+                &lt;clr-signpost&gt;
+                    &lt;button class="btn btn-link" 
+                            clrSignpostTrigger&gt;
+                                Button Link Trigger
+                    &lt;/button&gt;
+                    &lt;clr-signpost-content [clrPosition]="'top-middle'" *clrIfOpen&gt;
+                        Lorem ipsum...
+                    &lt;/clr-signpost-content&gt;
+                &lt;/clr-signpost&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="signpost-item"&gt;
+            &lt;h6&gt;Button Link w/ Clarity Icon&lt;/h6&gt;
+            &lt;div class="trigger-item"&gt;
+                &lt;clr-signpost&gt;
+                    &lt;button class="btn btn-link" 
+                            clrSignpostTrigger&gt;
+                                Button Link 
+                                &lt;clr-icon shape="help-info"&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen&gt;
+                        Lorem ipsum...
+                    &lt;/clr-signpost-content&gt;
+                &lt;/clr-signpost&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</div>
+</clr-signpost-triggers-demo>
+
+            <h2 _ngcontent-c43="">Summary of Options</h2>
+
+            <table _ngcontent-c43="" class="table">
+                <thead _ngcontent-c43="">
+                <tr _ngcontent-c43="">
+                    <th _ngcontent-c43="" class="left">Input/Output</th>
+                    <th _ngcontent-c43="" class="hidden-xs-down">Values</th>
+                    <th _ngcontent-c43="" class="hidden-xs-down">Default</th>
+                    <th _ngcontent-c43="" class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody _ngcontent-c43="">
+                <tr _ngcontent-c43="">
+
+                    <td _ngcontent-c43="" class="left">
+                        <b _ngcontent-c43="">[clrPosition]</b>
+                        <div _ngcontent-c43="" class="hidden-sm-up">Type: string</div>
+                        <div _ngcontent-c43="" class="hidden-sm-up">Default: right-middle</div>
+                    </td>
+                    <td _ngcontent-c43="" class="hidden-xs-down">string</td>
+                    <td _ngcontent-c43="" class="hidden-xs-down">right-middle</td>
+                    <td _ngcontent-c43="" class="left">
+                        Set the position of the <code _ngcontent-c43="" class="clr-code">clr-signpost-content</code> popover: 
+                        anchorPoint &amp; popoverPosition. For example: "right-middle" (ANCHOR-POSITION) will anchor 
+                        the clr-signpost-content popover and point to the icons middle on the right side. And, 
+                        the popover itself will be positioned to the right of the trigger icon
+                        with the icon in the vertical middle of the popover.
+                    </td>
+                </tr>
+                <tr _ngcontent-c43="">
+                    <td _ngcontent-c43="" class="left">
+                        <b _ngcontent-c43="">clrSignpostTrigger</b>
+                        <div _ngcontent-c43="" class="hidden-sm-up">Type: SignpostTriggerDirective</div>
+                        <div _ngcontent-c43="" class="hidden-sm-up">Default: n/a</div>
+                    </td>
+                    <td _ngcontent-c43="" class="hidden-xs-down">SignpostTriggerDirective</td>
+                    <td _ngcontent-c43="" class="hidden-xs-down">n/a</td>
+                    <td _ngcontent-c43="" class="left">
+                        The SignpostTriggerDirective is placed on the outer-most container element 
+                        for a custom trigger. It overrides the default Signpost trigger with custom content.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-tooltips-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

@@ -1,0 +1,43 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+:host {
+    display: block;
+    position: relative;
+    width: 100%;
+    &:before {
+        content: "";
+        display: block;
+        padding-top: 100%; /* initial ratio of 1:1*/
+    }
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    path.clickable-segment {
+        cursor: pointer;
+    }
+    path.bg-segment {
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        &.active {
+            opacity: 1;
+        }
+    }
+    text.hex-color {
+        font-weight: 500;
+    }
+    text.copy-text {
+        opacity: 0;
+        fill: #555;
+        transition: all 0.2s ease-in-out;
+        &.notify {
+            opacity: 1;
+        }
+    }
+}

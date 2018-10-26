@@ -1,0 +1,1409 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Modals</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">[_nghost-c6] { display: none; }
+        .open[_nghost-c6] { display: inline; }</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body" class=""><root ng-version="5.0.0" class="layout-documentation page-modals"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-modal-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Modals</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/modals#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/modals#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+
+        <h5 class="component-summary" id="modalsComponentSummary">
+            Modals provide information or help a user complete a task. They require the user to take an action to
+            dismiss them.
+        </h5>
+
+        <div id="design-guidelines">
+            <h3 id="style">Style</h3>
+
+            <clr-modal-style-design-demo class="in-place-takeover">
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <!---->
+        <clr-modal _nghost-c6="" class="ng-tns-c6-0 open">
+
+
+<!----><div _ngcontent-c6="" class="modal ng-tns-c6-0" clrfocustrap="">
+    
+    <div _ngcontent-c6="" class="modal-dialog ng-trigger ng-trigger-fadeDown" role="dialog" aria-hidden="false">
+
+        <div _ngcontent-c6="" class="modal-outer-wrapper">
+            <div _ngcontent-c6="" class="modal-content-wrapper">
+                
+                
+
+                <div _ngcontent-c6="" class="modal-content">
+                    <div _ngcontent-c6="" class="modal-header">
+                        <!----><button _ngcontent-c6="" aria-label="Close" class="close ng-tns-c6-0" type="button">
+                            <clr-icon _ngcontent-c6="" class="ng-tns-c6-0" aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Add datastore to host</h3>
+                    </div>
+                    <div class="modal-body">
+                <p>Select a host where you want your datastore to be added.</p>
+
+                <form>
+                    <section class="form-block">
+                        <div class="form-group">
+                            <label for="selects_1">Host</label>
+                            <div class="select">
+                                <select id="selects_1">
+                                    <option>10.11.12.13</option>
+                                    <option>14.15.16.17</option>
+                                    <option>18.19.20.21</option>
+                                    <option>22.23.24.25</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+                    <div class="modal-footer">
+                <button class="btn btn-outline" type="button">Cancel</button>
+                <button class="btn btn-primary" type="button">Add</button>
+            </div>
+                </div>
+            </div>
+            <div _ngcontent-c6="" class="modal-ghost-wrapper">
+                <div _ngcontent-c6="" class="modal-ghost modal-ghost-1 ng-trigger ng-trigger-ghostPageOneState"></div>
+                <div _ngcontent-c6="" class="modal-ghost modal-ghost-2 ng-trigger ng-trigger-ghostPageTwoState"></div>
+            </div>
+        </div>
+    </div>
+
+    <div _ngcontent-c6="" class="modal-backdrop ng-trigger ng-trigger-fade" aria-hidden="true"></div>
+</div>
+
+</clr-modal>
+    </div>
+</div>
+</clr-modal-style-design-demo>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Title</h6>
+                            <p>
+                                The title <b>summarizes the purpose</b> of the modal. In a confirmation modal, use a
+                                question in your title and make sure the action is clearly called out in the buttons.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Content</h6>
+                            <p>
+                                The content may differ between different types of modals. <b>Be concise and
+                                provide a clear explanation</b> of the task or information a user should focus on.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Buttons</h6>
+                            <p>
+                                Buttons should include clear and direct action for the user to take. Buttons are
+                                right-aligned based on the <b>Z Pattern</b>. Read more about it in <a routerlink="./buttons" href="/modals/buttons">Button Placement</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="sizes">Sizes</h3>
+
+            <p>
+                There are multiple sizes for modals. The Clarity modal defaults to medium but different
+                sizes could be used based on the content and screen sizes you are planning to support.
+                Always remember to test responsiveness as you design and use modals.
+            </p>
+
+            <clr-modal-size-design-demo class="modal-size-design-demo">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    S
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Small Modal</h6>
+                <div>Width: 288px</div>
+                <button class="btn btn-sm btn-link no-margin" type="button">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    M
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Medium Modal</h6>
+                <div>Width: 576px</div>
+                <button class="btn btn-sm btn-link no-margin" type="button">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    L
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>Large Modal</h6>
+                <div>Width: 864px</div>
+                <button class="btn btn-sm btn-link no-margin" type="button">Launch</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+        <div class="clrweb-DoxMedia is-horizontal">
+            <div class="clrweb-DoxMedia-block is-colorblock">
+                <div class="clrweb-DoxMedia-img">
+                    XL
+                </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+                <h6>X-Large Modal</h6>
+                <div>Width: 1152px</div>
+                <button class="btn btn-sm btn-link no-margin" type="button">Launch</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-1">
+
+
+<!---->
+
+</clr-modal>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-2">
+
+
+<!---->
+
+</clr-modal>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-3">
+
+
+<!---->
+
+</clr-modal>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-4">
+
+
+<!---->
+
+</clr-modal>
+</clr-modal-size-design-demo>
+
+            <h3 id="overlay">Overlay</h3>
+
+            <p>
+                The background overlay is dark with opacity to provide the feeling of a third dimensional
+                layer. This also eliminates distraction and helps the user focus on the modal content.
+            </p>
+
+            <h3>Animation</h3>
+
+            <p>
+                The background overlay animates once a modal is launched to grab a user’s attention and
+                retain their focus.
+            </p>
+
+            <clr-modal-animation-design-demo>
+
+<div class="clr-example" style="background: #eee">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog fadeDown" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Delete datastore</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete <b>datastore743</b>? This action is permenant and cannot be recovered.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-warning" type="button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div aria-hidden="true" class="modal-backdrop fade static"></div>
+    </div>
+</div>
+</clr-modal-animation-design-demo>
+
+
+            <h3>Behavior</h3>
+
+            <p>
+                Modals are used in different scenarios. Most notably: alerting the user, confirmation dialogs, and
+                task-oriented workflows.
+            </p>
+
+            <h6>Focus</h6>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p>
+                        Modals are disruptive. Only use modals when you need the user’s <b>full attention</b>
+                        for the period of time the modal is displayed.
+                    </p>
+                    <h6>Dismissing modals</h6>
+                    <p>
+                        A user needs to <b>actively</b> dismiss a modal. A modal should <b>not</b> disappear on its own.
+                        Taking any of the actions to either cancel or proceed should eventually dismiss the modal.
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-figure">
+                        <div class="clrweb-DoxMedia-block" style="height: 297px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Different ways modals can be dismissed" class="clrweb-Img" src="assets/images/documentation/modals/dismissing.png">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                There are multiple ways to dismiss a modal but a user needs to <b>intentionally</b> make
+                                that choice.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Clarity Modals are not dismissed when clicking on the background overlay. This prevents losing information or data. An option to override this is available.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <h6>Stacking modals</h6>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p>
+                        Modals shouldn’t launch other modals. Stacking modals makes it hard to dismiss them
+                        and confuses the user on their levels of importance.
+                    </p>
+                    <p>If you see a need to stack modals, you should:</p>
+                    <ul class="list">
+                        <li>Seek alternatives to the second modal such as inline expansion within the first one.</li>
+                        <li>Seek alternatives to the use of modals in that scenario and explore alternatives
+                            such as inline task completion.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block" style="height: 297px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Don't stack modals on top of each other" class="clrweb-Img" src="assets/images/documentation/modals/stacking.png">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Stack multiple modals on top of each other.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h6>Scrolling</h6>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p>
+                        Scrolling makes it hard for a user to go through the content of your modal or complete the task
+                        assigned. Use scrolling only when absolutely needed.
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <p>If your modals scroll, make sure:</p>
+                    <ul class="list">
+                        <li>You’re using the right modal size based on your content and supported screen sizes.</li>
+                        <li>Consider alternative components to using modal if the content is too long or
+                            too complex within a modal.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>A static example of a modal with header, body and footer:</p>
+
+            <div class="alert alert-warning bump-down">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                            <span class="alert-text">
+                                IE fix: When the modal dialog is open, extend the
+                                <code class="clr-code">.no-scrolling</code> class on the
+                                <code class="clr-code">body</code> tag so that the content behind the
+                                backdrop does not scroll.
+                                Remove the class when the modal dialog is closed.
+                            </span>
+                    </div>
+                </div>
+            </div>
+
+            <clr-modal-static-demo>
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">I have a nice title</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>But not much to say...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal"&gt;
+    &lt;div class="modal-dialog" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;div class="modal-header"&gt;
+                &lt;button aria-label="Close" class="close" type="button"&gt;
+                    &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+                &lt;/button&gt;
+                &lt;h3 class="modal-title"&gt;I have a nice title&lt;/h3&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-body"&gt;
+                &lt;p&gt;But not much to say...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-footer"&gt;
+                &lt;button class="btn btn-outline" type="button"&gt;Cancel&lt;/button&gt;
+                &lt;button class="btn btn-primary" type="button"&gt;Ok&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-static-demo>
+
+            <h3>Sizes</h3>
+
+            <p>
+                In addition to the default, medium size, Clarity modals come in two optional sizes:
+                large and small. To use an optional size, add <code class="clr-code">modal-sm</code>
+                or <code class="clr-code">modal-lg</code> class to your modal-dialog.
+            </p>
+
+            <clr-modal-sizes-demo>
+
+<h6>1. .modal-sm</h6>
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog modal-sm" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Small modal</h3>
+                    </div>
+                    <div class="modal-body">
+                        I am a small modal.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal"&gt;
+    &lt;div class="modal-dialog modal-sm" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+
+<h6>2. .modal-lg</h6>
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog modal-lg" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Large modal</h3>
+                    </div>
+                    <div class="modal-body">
+                        I am a large modal.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal"&gt;
+    &lt;div class="modal-dialog modal-lg" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h6>3. .modal-xl</h6>
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog modal-xl" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">Extra large modal</h3>
+                    </div>
+                    <div class="modal-body">
+                        I am an extra large modal.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal"&gt;
+    &lt;div class="modal-dialog modal-xl" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-sizes-demo>
+
+            <h3 id="modal-backdrop">Modal Backdrop</h3>
+
+            <p>Here is an example of a backdrop to use behind your modal, when you display it over a page:</p>
+
+            <clr-modal-backdrop-demo>
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ullamcorper nec ex in volutpat. Maecenas consectetur, dui quis accumsan pellentesque, dui sem ultricies nulla, sed auctor magna diam vel neque. Nullam id est vel purus volutpat accumsan
+        non quis enim. Curabitur non turpis eu nunc faucibus venenatis quis ut neque. Integer in mattis tortor, eu sollicitudin sapien. Vestibulum convallis et quam vitae auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus. Nam sagittis facilisis sapien, a malesuada purus. Donec vel dui sit amet orci semper accumsan sit amet non enim. Nulla sit amet commodo justo, ut pellentesque mauris. Pellentesque sollicitudin vestibulum ante eleifend pharetra. Nullam dignissim
+        risus eget feugiat scelerisque. Nullam vehicula porta ex ac hendrerit. Phasellus laoreet felis et lacinia tincidunt. Nullam mattis sit amet est a maximus.
+        <br>
+        <button class="btn btn-primary">Ut dolor ipsum</button>
+
+        <div aria-hidden="true" class="modal-backdrop static"></div>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal-backdrop" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-backdrop-demo>
+
+            <h3 id="animation">Animation</h3>
+
+            <p>Modals and backdrops support fading animations. Clarity recommends using <code class="clr-code">fadeDown</code> on the <code class="clr-code">modal-dialog</code>
+                and <code class="clr-code">fade</code> on the <code class="clr-code">modal-backdrop</code>.
+                These animations hide the modal and backdrop by default. Adding or removing the <code class="clr-code">in</code> class animates the modal or backdrop in or out,
+                respectively.</p>
+
+            <clr-modal-animation-demo>
+
+<div class="clr-example">
+    <div class="backdrop-example-container">
+        <div class="modal static">
+            <div aria-hidden="true" class="modal-dialog fadeDown" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" type="button">
+                            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                        </button>
+                        <h3 class="modal-title">I have a nice title</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>But not much to say...</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div aria-hidden="true" class="modal-backdrop fade static"></div>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="modal"&gt;
+    &lt;div class="modal-dialog fadeDown in" role="dialog" aria-hidden="true"&gt;
+        &lt;div class="modal-content"&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-backdrop fade in" aria-hidden="true"&gt;&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-animation-demo>
+
+            <h2 id="angular-component">Angular Component</h2>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrModalOpen)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the modal: opened or closed.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrModalSize]</b>
+                        <div class="hidden-sm-up">Values:<br>"sm", &lt;none&gt;, "lg"</div>
+                        <div class="hidden-sm-up">Default: &lt;none&gt;</div>
+                    </td>
+                    <td class="hidden-xs-down">"sm", &lt;none&gt;, "lg"</td>
+                    <td class="hidden-xs-down">&lt;none&gt;</td>
+                    <td class="left">Sets the size of the modal. &lt;none&gt; is for medium size.</td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrModalClosable]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: true</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">true</td>
+                    <td class="left">
+                        If false, the modal will not be closable by clicking on the mask or on the top-right "x".
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrModalStaticBackdrop]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">If true, the modal will not close when the user clicks outside of the modal.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 id="examples">Examples</h4>
+
+            <clr-modal-angular-show-demo>
+
+<p>
+    Try it live:
+    <button class="btn btn-primary">Show modal</button>
+</p>
+<clr-modal _nghost-c6="" class="ng-tns-c6-5">
+
+
+<!---->
+
+</clr-modal>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-modal [(clrModalOpen)]="basic"&gt;
+    &lt;h3 class="modal-title"&gt;I have a nice title&lt;/h3&gt;
+    &lt;div class="modal-body"&gt;
+        &lt;p&gt;But not much to say...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-outline" (click)="basic = false"&gt;Cancel&lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary" (click)="basic = false"&gt;Ok&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/clr-modal&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-angular-show-demo>
+
+            <h6 id="clrmodalsize">1. clrModalSize</h6>
+
+            <p>The Angular component offers the same optional sizes as the static styles through the
+                <code class="clr-code">clrModalSize</code> input. The default, empty size is medium.</p>
+
+            <clr-modal-angular-size-demo>
+
+<p>
+    <button class="btn btn-primary">Small modal</button>
+    <button class="btn btn-primary">Large modal</button>
+    <button class="btn btn-primary">Extra large modal</button>
+</p>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-6">
+
+
+<!---->
+
+</clr-modal>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-7">
+
+
+<!---->
+
+</clr-modal>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-8">
+
+
+<!---->
+
+</clr-modal>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-modal [(clrModalOpen)]="opened" [clrModalSize]="'sm'"&gt;
+...
+&lt;/clr-modal&gt;
+
+&lt;clr-modal [(clrModalOpen)]="opened" [clrModalSize]="'lg'"&gt;
+...
+&lt;/clr-modal&gt;
+
+&lt;clr-modal [(clrModalOpen)]="opened" [clrModalSize]="'xl'"&gt;
+...
+&lt;/clr-modal&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-angular-size-demo>
+
+            <h6 id="clrmodalclosable">2. clrModalClosable</h6>
+
+            <p>If you don’t want your modal to be closable by clicking on the top-right “x” or on the mask,
+                you can do so
+                with the <code class="clr-code">clrModalClosable</code> input. The default value is
+                <code class="clr-code">true</code>. You can still close the modal if one of <em>your</em>
+                components modifies the value bound to <code class="clr-code">clrModalOpen</code>.</p>
+
+            <clr-modal-angular-not-closable-demo>
+
+<p>
+    <button class="btn btn-primary">Show modal</button>
+</p>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-9">
+
+
+<!---->
+
+</clr-modal>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false"&gt;
+    &lt;h3 class="modal-title"&gt;No "x" in the top-right corner&lt;/h3&gt;
+    &lt;div class="modal-body"&gt;
+        &lt;p&gt;Clicking on the backdrop doesn't do anything.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-primary" (click)="opened = false"&gt;
+            I'm the only way to close the modal!
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/clr-modal&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-angular-not-closable-demo>
+
+            <h6 id="clrmodalstaticbackdrop">3. clrModalStaticBackdrop</h6>
+
+            <p>If you want the modal to be closable with a top-right “x” button, but don’t want a click
+                on the backdrop to close it, use the <code class="clr-code">clrModalStaticBackdrop</code>.
+                If <code class="clr-code">true</code>, clicks on the background are
+                ignored. The default value is <code class="clr-code">false</code>.</p>
+
+            <clr-modal-angular-static-backdrop-demo>
+
+<p>
+    <button class="btn btn-primary">Show modal</button>
+</p>
+
+<clr-modal _nghost-c6="" class="ng-tns-c6-10">
+
+
+<!---->
+
+</clr-modal>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-modal [(clrModalOpen)]="opened" [clrModalStaticBackdrop]="true"&gt;
+    ...
+&lt;/clr-modal&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-modal-angular-static-backdrop-demo>
+
+            <h3 id="api-reference">API Reference</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Method</th>
+                    <th class="hidden-xs-down">Arguments</th>
+                    <th class="hidden-xs-down">Return Value</th>
+                    <th class="left">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">open()</td>
+                    <td class="hidden-xs-down">N/A</td>
+                    <td class="hidden-xs-down">N/A</td>
+                    <td class="left">Manually opens the modal.</td>
+                </tr>
+                <tr>
+                    <td class="left">close()</td>
+                    <td class="hidden-xs-down">N/A</td>
+                    <td class="hidden-xs-down">N/A</td>
+                    <td class="left">
+                        Manually closes the modal if <code class="clr-code">clrModalClosable</code> is not set to <code class="clr-code">false</code>.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-modal-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

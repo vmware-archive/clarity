@@ -1,0 +1,751 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Get Started</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><get-started class="content-area"><section class="dox-content">
+    <h1 id="introduction">Clarity Design System</h1>
+    <p>Project Clarity is an open source design system that brings together UX guidelines, an HTML/CSS framework, and
+        Angular components. Clarity is for both designers and developers.
+    </p>
+    <p>Clarity’s designs stem from continuous exploration and research. These designs are built into our HTML/CSS
+        components, which can be used any web UI, regardless of the underlying JavaScript framework. Clarity also offers
+        a set of well-designed and implemented
+        data-bound components built on top of Angular, one of the most popular JavaScript frameworks in the
+        industry.
+    </p>
+    <h2 id="howToUse">How to Use Clarity</h2>
+    <p>We offer three approaches for utilizing Clarity: UX, UX and UI, and Angular.</p>
+    <h3 id="designResources">Using Clarity Design Resources</h3>
+    <p>Jumpstart your project with one of our Sketch-based design resources. Start by downloading the
+        <a href="https://github.com/chrismsimpson/Metropolis" target="_blank">
+            Metropolis fonts
+        </a>. Then download your resource of choice.
+    </p>
+    <div>
+        <a class="btn btn-primary" href="assets/images/sketchLibraries/Clarity-UI-Library-0.11.6.sketch" target="_blank">
+            <clr-icon shape="download"></clr-icon>
+            UI Library (0.11.6)
+        </a>
+        <a class="btn btn-primary" href="assets/images/sketchLibraries/Clarity-UI-Library-dark-0.11.6.sketch" target="_blank">
+            <clr-icon shape="download"></clr-icon>
+            Dark UI Library (0.11.6)
+        </a>
+        <a class="btn btn-primary" href="assets/images/sketchLibraries/Clarity-Icons-Library-0.11.6.sketch" target="_blank">
+            <clr-icon shape="download"></clr-icon>
+            ICONS Library (0.11.6)
+        </a>
+        <a class="btn btn-link" href="assets/images/sketchTemplates/Clarity-Template-0.10.11.sketch" target="_blank">
+            <clr-icon shape="download"></clr-icon>
+            UI Template (0.10.11)
+        </a>
+    </div>
+
+    <h3 id="seedProjectClarity">Starting With a Clarity Seed Project (Recommended)</h3>
+    <p>For a new project, the best approach is to clone the Clarity seed project and modify it to fit your needs. The
+        seed project is integrated with @clr/ui and @clr/angular, so you don’t need to install Clarity
+        separately.
+    </p>
+    <p></p>
+    <ol class="list">
+        <li>Clone the seed app:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">git clone https://github.com/vmware/clarity-seed.git</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>Install the dependencies:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm install</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>Run the seed app:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm start</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+    </ol>
+    <h3 id="seedProjectAngular">Using an Angular Seed Project</h3>
+    <p>You can build an Angular app, then install Clarity onto your project.</p>
+    <h4 id="step-1-build-an-angular-2-app">Step 1: Build an Angular App</h4>
+    <p></p>
+    <ol class="list">
+        <li>Look at the Angular documentation, starting with <a href="https://angular.io/docs/ts/latest/quickstart.html">the 5 Min Quickstart</a>.
+        </li>
+        <li>
+            Save and modify the example structure and build, or use one of the Angular seeds:
+            <ul class="list">
+                <li><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></li>
+                <li><a href="https://github.com/mgechev/angular2-seed">https://github.com/mgechev/angular2-seed</a></li>
+                <li><a href="https://github.com/angular/angular2-seed">https://github.com/angular/angular2-seed</a></li>
+                <li><a href="https://github.com/AngularClass/angular2-webpack-starter">https://github.com/AngularClass/angular2-webpack-starter</a>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <h4 id="installing">Step 2: Install Clarity</h4>
+    <p>Clarity is published as three separate packages on NPM:</p>
+    <p>
+        <a id="clarity_icons"></a>
+    </p>
+    <ul class="list">
+        <li><b>@clr/icons.</b> The library that provides the custom element icons.</li>
+        <li><b>@clr/ui.</b> Contains the static styles for building HTML components.</li>
+        <li><b>@clr/angular.</b> Contains the Angular components. This package depends on @clr/ui for styles.
+        </li>
+    </ul>
+    <h5 id="step-2a-install-clarity-icons">Step 2a: Install Clarity Icons</h5>
+    <p></p>
+    <ol class="list">
+        <li>Install the Clarity Icons library through npm:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm install @clr/icons --save</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>Install the polyfill for Custom Elements:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm install @webcomponents/custom-elements@1.0.0 --save</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>
+            Load the library in your app by including <code class="clr-code">clr-icons.min.css</code> and <code class="clr-code">clr-icons.min.js</code>.
+            Also, make sure to include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements
+            polyfill before <code class="clr-code">clr-icons.min.js</code>:
+            <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css"&gt;
+&lt;script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/node_modules/@clr/icons/clr-icons.min.js"&gt;&lt;/script&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+            <p>
+                Visit the <a routerlink="/icons" href="/icons">Clarity Icons</a> section for more installation information.
+            </p>
+        </li>
+    </ol>
+    <h5 id="step-2b-install-clarity-ui">Step 2b: Install Clarity UI</h5>
+    <p></p>
+    <ol class="list">
+        <li>Install Clarity UI package through npm:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm install @clr/ui --save</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>
+            Include clr-ui.min.css in your HTML file:
+            <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css"&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+            If your site is built with <a href="https://github.com/angular/angular-cli">angular-cli</a> you can achieve
+            the above by adding the file to the styles array in <code class="clr-code">angular-cli.json</code>:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">"styles": [
+      ...
+      "../node_modules/@clr/ui/clr-ui.min.css",
+      ...
+  ]</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>Write your HTML with the Clarity CSS class names and markup.</li>
+    </ol>
+    <h5 id="step-2c-install-clarity-angular">Step 2c: Install Clarity Angular</h5>
+    <p></p>
+    <ol class="list">
+        <li>If you haven't already, complete steps 1 and 2 for installing Clarity UI in the preceding section.
+        </li>
+        <li>Install the @clr/angular package through npm:
+            <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm install @clr/angular --save</code></pre>
+        
+    </clr-code-snippet>
+        </li>
+        <li>Import the ClarityModule into your Angular application's module. Your application's main module might look
+            like this:
+            <clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { ClarityModule } from "@clr/angular";
+import { AppComponent } from "./app.component";
+
+@NgModule({
+    imports: [
+        BrowserModule,
+        ClarityModule,
+        ...
+     ],
+     declarations: [ AppComponent ],
+     bootstrap: [ AppComponent ]
+})
+export class AppModule {    }</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+        </li>
+    </ol>
+    <h4 id="step-3-run-your-app">Step 3: Run Your App</h4>
+    <clr-code-snippet _nghost-c5="">
+        <!---->
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="clr-code">npm start</code></pre>
+        
+    </clr-code-snippet>
+    <h2 id="browserSupport">Device and Browser Support</h2>
+    <p class="bump-down"><img alt="Device and Browser Support" class="hidden-sm-down img-fluid" src="assets/images/get-started/device_support.png"></p>
+    <ul class="hidden-md-up">
+        <li>Internet Explorer 10 &amp; 11</li>
+        <li>MS Edge</li>
+        <li>Latest versions of Chrome, Safari, and Firefox</li>
+    </ul>
+    <p>
+        <em>* - Note that Clarity only supports the latest two versions of the listed browsers, with the exception of
+            Internet Explorer.</em>
+    </p>
+    <h2 id="contribute_guidelines">Contributing to Clarity</h2>
+    <p>The Clarity team welcomes contributions from the community. See our <a href="https://github.com/vmware/clarity//blob/master/CONTRIBUTING.md" target="_blank">contribution
+        guidelines</a> on GitHub.
+    </p>
+    <h2 id="reportingBugs">Reporting an Issue</h2>
+    <p>Ongoing work and feature requests are tracked using <a href="https://github.com/vmware/clarity/issues" target="_blank">GitHub Issues</a>. Please feel free to
+        file an issue.
+    </p>
+    <p>When submitting issues please provide a minimal app that demonstrates the issue by forking one of the Clarity
+    Stackblitz projects. Since it depends on your issue starting with the correct Clarity version and
+    theme will help us deliver support:
+    </p><ul class="list-unstyled">
+        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v11" target="_blank">Clarity v11: Dark Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v11" target="_blank">Clarity v11: Light Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v10" target="_blank">Clarity v10: Dark Theme</a></li>
+        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v10" target="_blank">Clarity v10: Light Theme</a></li>
+    </ul>
+
+    <h2 id="stackoverflow">StackOverflow</h2>
+    <p>
+        Ask questions on StackOverflow with the
+        <a href="https://stackoverflow.com/questions/tagged/vmware-clarity" target="_blank">vmware-clarity</a> tag
+        to get the community's attention faster. You can also view FAQs by
+        filtering on the <a href="https://stackoverflow.com/questions/tagged/vmware-clarity" target="_blank">vmware-clarity</a>
+        tag on StackOverflow.
+    </p>
+
+    <h2 id="attributions">Attributions</h2>
+    <p>See the <a href="https://github.com/vmware/clarity/blob/master/ATTRIBUTION.md" target="_blank">legal
+        attributions</a> for third party software included in Clarity.
+    </p>
+    <div style="visibility: hidden; height: 80vh;">This is a spacer to force sidenav highlighting on scroll</div>
+</section></get-started>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link active" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

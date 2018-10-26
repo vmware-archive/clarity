@@ -1,0 +1,1226 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Stack View</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c34]   .stack-header[_ngcontent-c34]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c35]   .stack-header[_ngcontent-c35]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c36]   .stack-header[_ngcontent-c36]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c37]   .stack-header[_ngcontent-c37]{margin-top:0}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style><style ng-transition="clarity">[_nghost-c38] { display: block; }</style><style ng-transition="clarity">[_nghost-c39] { display: block; }</style><style ng-transition="clarity">[_nghost-c40] { display: block; }</style><style ng-transition="clarity">[_nghost-c6] { display: none; }
+        .open[_nghost-c6] { display: inline; }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-stack-view"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-stack-view-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Stack View</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/stack-view#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/stack-view#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-stack-view-displays-keyvalue-pairs-which-users-can-expand-to-show-more-detail">A stack view displays
+            key/value pairs, which users can expand to show more detail.</h5>
+
+        <div id="code-examples">
+            <h3 id="html-and-styles">HTML and Styles</h3>
+
+            <div class="alert alert-warning">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            We do not recommend using Stack View as a static component since the DOM structure
+                            is architected to enable the Stack View's Javascript behavior and animation handling.
+                            If you cannot use the Angular component, these are the elements and
+                            classes you will need to use to benefit from Clarity's styles, without the animations.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <clr-stack-view-static-demo class="clrweb-stackview-demo" _nghost-c34="">
+
+<div _ngcontent-c34="" class="clr-example">
+    <h4 _ngcontent-c34="" class="stack-header">
+        <span _ngcontent-c34="" class="stack-title">Static stack view</span>
+        <span _ngcontent-c34="" class="stack-actions">
+            <button _ngcontent-c34="" class="stack-action btn btn-sm btn-link" type="button">Edit</button>
+        </span>
+    </h4>
+    <dl _ngcontent-c34="" class="stack-view">
+        <div _ngcontent-c34="" class="stack-block">
+            <dt _ngcontent-c34="" class="stack-block-label">Label 1</dt>
+            <dd _ngcontent-c34="" class="stack-block-content">Content 1</dd>
+        </div>
+        <div _ngcontent-c34="" class="stack-block stack-block-expandable stack-block-expanded">
+            <dt _ngcontent-c34="" class="stack-block-label">Label 2</dt>
+            <dd _ngcontent-c34="" class="stack-block-content">Content 2</dd>
+            <div _ngcontent-c34="" class="stack-children">
+                <div _ngcontent-c34="" class="stack-block">
+                    <dt _ngcontent-c34="" class="stack-block-label">Sub-label 1</dt>
+                    <dd _ngcontent-c34="" class="stack-block-content">Sub-content 1</dd>
+                </div>
+                <div _ngcontent-c34="" class="stack-block">
+                    <dt _ngcontent-c34="" class="stack-block-label">Sub-label 2</dt>
+                    <dd _ngcontent-c34="" class="stack-block-content">Sub-content 2</dd>
+                </div>
+                <div _ngcontent-c34="" class="stack-block">
+                    <dt _ngcontent-c34="" class="stack-block-label">Sub-label 3</dt>
+                    <dd _ngcontent-c34="" class="stack-block-content">Sub-content 3</dd>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c34="" class="stack-block stack-block-expandable">
+            <dt _ngcontent-c34="" class="stack-block-label">Label 3</dt>
+            <dd _ngcontent-c34="" class="stack-block-content">Content 3</dd>
+            <div _ngcontent-c34="" class="stack-children"></div>
+        </div>
+    </dl>
+</div>
+
+
+<clr-code-snippet _ngcontent-c34="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;h4 class="stack-header"&gt;
+    &lt;span class="stack-title"&gt;Static stack view&lt;/span&gt;
+    &lt;span class="stack-actions"&gt;
+        &lt;button class="stack-action btn btn-sm btn-link" type="button"&gt;Edit&lt;/button&gt;
+    &lt;/span&gt;
+&lt;/h4&gt;
+&lt;dl class="stack-view"&gt;
+    &lt;div class="stack-block"&gt;
+        &lt;dt class="stack-block-label"&gt;Label 1&lt;/dt&gt;
+        &lt;dd class="stack-block-content"&gt;Content 1&lt;/dd&gt;
+    &lt;/div&gt;
+    &lt;div class="stack-block stack-block-expandable stack-block-expanded"&gt;
+        &lt;dt class="stack-block-label"&gt;Label 2&lt;/dt&gt;
+        &lt;dd class="stack-block-content"&gt;Content 2&lt;/dd&gt;
+        &lt;div class="stack-children"&gt;
+            &lt;div class="stack-block"&gt;
+                &lt;dt class="stack-block-label"&gt;Sub-label 1&lt;/dt&gt;
+                &lt;dd class="stack-block-content"&gt;Sub-content 1&lt;/dd&gt;
+            &lt;/div&gt;
+            &lt;div class="stack-block"&gt;
+                &lt;dt class="stack-block-label"&gt;Sub-label 2&lt;/dt&gt;
+                &lt;dd class="stack-block-content"&gt;Sub-content 2&lt;/dd&gt;
+            &lt;/div&gt;
+            &lt;div class="stack-block"&gt;
+                &lt;dt class="stack-block-label"&gt;Sub-label 3&lt;/dt&gt;
+                &lt;dd class="stack-block-content"&gt;Sub-content 3&lt;/dd&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="stack-block stack-block-expandable"&gt;
+        &lt;dt class="stack-block-label"&gt;Label 3&lt;/dt&gt;
+        &lt;dd class="stack-block-content"&gt;Content 3&lt;/dd&gt;
+        &lt;div class="stack-children"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/dl&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-stack-view-static-demo>
+
+            <h3 id="basic-stack-view-component">Basic Stack View Component</h3>
+
+            <clr-stack-view-angular-basic-demo class="clrweb-stackview-demo" _nghost-c35="">
+
+<div _ngcontent-c35="" class="clr-example">
+    <clr-stack-view _ngcontent-c35="" _nghost-c38="">
+        <clr-stack-header _ngcontent-c35="" _nghost-c39="">
+        <h4 _ngcontent-c39="" class="stack-header">
+            <span _ngcontent-c39="" class="stack-title">Angular stack view</span>
+            
+            <span _ngcontent-c39="" class="stack-actions">
+                
+                
+                <!---->
+                
+            </span>
+        </h4>
+    </clr-stack-header>
+        <dl _ngcontent-c38="" class="stack-view">
+        
+
+        <clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-0 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Label 1</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c35="">Content 1</clr-stack-content>
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block>
+
+        <clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-1 stack-block stack-block-expandable">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Label 2</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c35="">Content 2</clr-stack-content>
+            
+            
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-2 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Sub-label 1</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c35="">Sub-content 1</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-3 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Sub-label 2</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c35="">Sub-content 2</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-4 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Sub-label 3</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c35="">Sub-content 3</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block>
+        </div>
+    </clr-stack-block>
+
+        <clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-5 stack-block stack-block-expandable">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Label 3</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c35="">Content 3</clr-stack-content>
+            
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-6 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Sub-label 4</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c35="">Sub-content 4</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c35="" _nghost-c40="" class="ng-tns-c40-7 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c35="">Sub-label 5</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c35="">Sub-content 5</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block>
+        </div>
+    </clr-stack-block>
+    </dl>
+    </clr-stack-view>
+</div>
+<clr-code-snippet _ngcontent-c35="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-stack-view&gt;
+    &lt;clr-stack-header&gt;Angular stack view&lt;/clr-stack-header&gt;
+
+    &lt;clr-stack-block&gt;
+        &lt;clr-stack-label&gt;Label 1&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;Content 1&lt;/clr-stack-content&gt;
+    &lt;/clr-stack-block&gt;
+
+    &lt;clr-stack-block [clrSbExpanded]="true"&gt;
+        &lt;clr-stack-label&gt;Label 2&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;Content 2&lt;/clr-stack-content&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Sub-label 1&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Sub-content 1&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Sub-label 2&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Sub-content 2&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Sub-label 3&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Sub-content 3&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-block&gt;
+
+    &lt;clr-stack-block&gt;
+        &lt;clr-stack-label&gt;Label 3&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;Content 3&lt;/clr-stack-content&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Sub-label 4&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Sub-content 4&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+        &lt;clr-stack-block&gt;
+            &lt;clr-stack-label&gt;Sub-label 5&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;Sub-content 5&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-block&gt;
+&lt;/clr-stack-view&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-stack-view-angular-basic-demo>
+
+            <h3 id="stack-view-with-editing-in-a-modal">Stack View With Editing in a Modal</h3>
+
+            <clr-stack-view-angular-modal-edit-demo class="clrweb-stackview-demo" _nghost-c36="">
+
+<div _ngcontent-c36="" class="clr-example">
+    <clr-stack-view _ngcontent-c36="" _nghost-c38="">
+        <clr-stack-header _ngcontent-c36="" _nghost-c39="">
+        <h4 _ngcontent-c39="" class="stack-header">
+            <span _ngcontent-c39="" class="stack-title">
+            Modal editor
+            
+        </span>
+            
+            <span _ngcontent-c39="" class="stack-actions">
+                <button _ngcontent-c36="" class="stack-action btn btn-sm btn-link" type="button">Edit</button>
+                
+                <!---->
+                
+            </span>
+        </h4>
+    </clr-stack-header>
+        <dl _ngcontent-c38="" class="stack-view">
+        
+
+        <!----><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-11 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Label 1</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c36="">Content 1</clr-stack-content>
+
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <!---->
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-12 stack-block stack-block-expandable">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Label 2</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c36="">Content 2</clr-stack-content>
+
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <!----><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-17 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Sub-label 1</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c36="">Sub-content 1</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-18 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Sub-label 2</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c36="">Sub-content 2</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-19 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Sub-label 3</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                
+                <clr-stack-content _ngcontent-c36="">Sub-content 3</clr-stack-content>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block>
+        </div>
+    </clr-stack-block><clr-stack-block _ngcontent-c36="" _nghost-c40="" class="ng-tns-c40-13 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c36="">Label 3</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c36="">Content 3</clr-stack-content>
+
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <!---->
+        </div>
+    </clr-stack-block>
+    </dl>
+    </clr-stack-view>
+
+    <clr-modal _ngcontent-c36="" _nghost-c6="" class="ng-tns-c6-8">
+
+
+<!---->
+
+</clr-modal>
+</div>
+
+<clr-code-snippet _ngcontent-c36="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-stack-view&gt;
+    &lt;clr-stack-header&gt;
+        Modal editor
+        &lt;button 
+            class="stack-action btn btn-sm btn-link" 
+            (click)="editModal = true" 
+            type="button"&gt;Edit&lt;/button&gt;
+    &lt;/clr-stack-header&gt;
+
+    &lt;clr-stack-block *ngFor="let block of blocks"&gt;
+        &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;{{block.content}}&lt;/clr-stack-content&gt;
+
+        &lt;clr-stack-block *ngFor="let child of block.children"&gt;
+            &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-block&gt;
+&lt;/clr-stack-view&gt;
+
+&lt;clr-modal [(clrModalOpen)]="editModal"&gt;
+    &lt;h3 class="modal-title"&gt;Edit mode&lt;/h3&gt;
+    &lt;div class="modal-body"&gt;
+        &lt;clr-stack-view&gt;
+            &lt;clr-stack-block 
+                *ngFor="let block of blocks; let blockIndex = index" 
+                [clrSbNotifyChange]="block.content!=='Content '+ (blockIndex+1)"&gt;
+                &lt;clr-stack-label&gt;{{block.title}}&lt;/clr-stack-label&gt;
+                &lt;clr-stack-content&gt;
+                    &lt;input type="text" [(ngModel)]="block.content" /&gt;
+                &lt;/clr-stack-content&gt;
+
+                &lt;clr-stack-block 
+                    *ngFor="let child of block.children; let blockChildIndex = index" 
+                    [clrSbNotifyChange]="child.content!=='Sub-content '+ (blockChildIndex+1)"&gt;
+                    &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+                    &lt;clr-stack-content&gt;
+                        &lt;input type="text" [(ngModel)]="child.content" /&gt;
+                    &lt;/clr-stack-content&gt;
+                &lt;/clr-stack-block&gt;
+            &lt;/clr-stack-block&gt;
+        &lt;/clr-stack-view&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-primary" (click)="editModal = false"&gt;Done&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/clr-modal&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-stack-view-angular-modal-edit-demo>
+
+            <h3 id="lazy-loading-of-children">Lazy Loading of Children</h3>
+
+            <p>This example shows how to leverage the various inputs and outputs provided by
+                <code class="clr-code">&lt;clr-stack-block&gt;</code> to make blocks expandable even 
+                though their children are loaded on demand from the server.</p>
+
+            <clr-stack-view-angular-lazyload-demo class="clrweb-stackview-demo" _nghost-c37="">
+
+<div _ngcontent-c37="" class="clr-example">
+    <clr-stack-view _ngcontent-c37="" _nghost-c38="">
+        <clr-stack-header _ngcontent-c37="" _nghost-c39="">
+        <h4 _ngcontent-c39="" class="stack-header">
+            <span _ngcontent-c39="" class="stack-title">
+            Lazily loaded children
+            
+        </span>
+            
+            <span _ngcontent-c39="" class="stack-actions">
+                <button _ngcontent-c37="" class="stack-action btn btn-sm btn-link" type="button">Reset</button>
+                
+                <!---->
+                
+            </span>
+        </h4>
+    </clr-stack-header>
+        <dl _ngcontent-c38="" class="stack-view">
+        
+
+        <clr-stack-block _ngcontent-c37="" _nghost-c40="" class="ng-tns-c40-9 stack-block stack-block-expandable">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c37="">Label 1</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c37="">Content 1</clr-stack-content>
+
+            
+
+            
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            <!----><clr-stack-block _ngcontent-c37="" _nghost-c40="" class="ng-tns-c40-23 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+                <div _ngcontent-c37="">Loading...</div>
+            
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block><!---->
+        </div>
+    </clr-stack-block>
+
+        <clr-stack-block _ngcontent-c37="" _nghost-c40="" class="ng-tns-c40-10 stack-block">
+        <dt _ngcontent-c40="" class="stack-block-label">
+            <clr-stack-label _ngcontent-c37="">Label 2</clr-stack-label>
+        </dt>
+        <dd _ngcontent-c40="" class="stack-block-content">
+            
+            
+            <clr-stack-content _ngcontent-c37="">Content 2</clr-stack-content>
+        
+        </dd>
+        
+        <div _ngcontent-c40="" class="stack-children ng-trigger ng-trigger-collapse">
+            
+        </div>
+    </clr-stack-block>
+    </dl>
+    </clr-stack-view>
+</div>
+<clr-code-snippet _ngcontent-c37="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-stack-view&gt;
+    &lt;clr-stack-header&gt;
+        Lazily loaded children
+        &lt;button class="stack-action btn btn-sm btn-link" (click)="resetChildren()" type="button"&gt;Reset&lt;/button&gt;
+    &lt;/clr-stack-header&gt;
+
+    &lt;clr-stack-block #lazyBlock [clrSbExpandable]="true" (clrSbExpandedChange)="fetchChildren()"&gt;
+        &lt;clr-stack-label&gt;Label 1&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;Content 1&lt;/clr-stack-content&gt;
+
+        &lt;clr-stack-block *ngIf="children.length == 0"&gt;
+            &lt;div&gt;Loading...&lt;/div&gt;
+        &lt;/clr-stack-block&gt;
+
+        &lt;clr-stack-block *ngFor="let child of children"&gt;
+            &lt;clr-stack-label&gt;{{child.title}}&lt;/clr-stack-label&gt;
+            &lt;clr-stack-content&gt;{{child.content}}&lt;/clr-stack-content&gt;
+        &lt;/clr-stack-block&gt;
+    &lt;/clr-stack-block&gt;
+
+    &lt;clr-stack-block&gt;
+        &lt;clr-stack-label&gt;Label 2&lt;/clr-stack-label&gt;
+        &lt;clr-stack-content&gt;Content 2&lt;/clr-stack-content&gt;
+    &lt;/clr-stack-block&gt;
+&lt;/clr-stack-view&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-stack-view-angular-lazyload-demo>
+
+            <h6 id="options-for-ltclr-stack-blockgt">Options for &lt;clr-stack-block&gt;</h6>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbExpandable]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">
+                            Default:<br> true if <code class="clr-code">&lt;clr-stack-block&gt;</code> 
+                            children are detected
+                        </div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">
+                        true if and only if
+                        <code class="clr-code">&lt;clr-stack-block&gt;</code> children are detected
+                    </td>
+                    <td class="left">
+                        Makes the stack block expandable, even if it doesn’t contain any nested
+                        <code class="clr-code">&lt;clr-stack-block&gt;</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbExpanded]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the block: expanded or collapsed. Has no effect 
+                        if the block is not expandable.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrSbNotifyChange]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="left hidden-xs-down">false</td>
+                    <td class="left">
+                        Shows an updated indicator on the stack block, when set to true.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Stack views are designed for use in the main content area and modals. Use a stack view 
+                when you want to:</p>
+
+            <ul class="list">
+                <li>Display related key/value pairs, for example, an object’s settings.</li>
+                <li>Progressively disclose data. This is useful when the set of key/value pairs is large 
+                    or you want to enable users to reveal more complex or less frequently used data 
+                    as necessary.
+                </li>
+            </ul>
+
+            <h4 id="enabling-value-editing">Enabling Value Editing</h4>
+
+            <p>In this pattern, the component includes an Edit button on the top right, which on click opens 
+                an editable stack view in a modal. This design prevents users from accidentally altering a 
+                value in the main content area. Common editing controls include input fields, select boxes, 
+                checkboxes, and radio buttons.</p>
+
+            <h4 id="labels">Labels</h4>
+
+            <ul class="list">
+                <li>Provide terse labels that let users know what is under the label. Try to keep the 
+                    label to one line.
+                </li>
+                <li>Use noun phrases, sentence-style capitalization, and no ending punctuation.</li>
+                <li>Avoid using icons.</li>
+            </ul>
+
+            <h4 id="highlights-and-horizontal-lines">Highlights and Horizontal lines</h4>
+
+            <p>The stack view highlight color (#DDDDDD) differs from the usual Clarity highlight color
+                to make it more distinct. Expanded sections have a lighter background color to make it 
+                easier to understand the hierarchy.</p>
+
+            <p>Horizontal lines in the stack editor are for readability–they help users quickly discern 
+                the relationship between columns.</p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-stack-view-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

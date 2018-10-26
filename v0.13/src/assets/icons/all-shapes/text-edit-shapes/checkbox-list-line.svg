@@ -1,0 +1,5 @@
+<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>checkbox-list-line</title>
+    <path d="M31.43,16H10v2H31.43a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-1"></path><path d="M31.43,24H10v2H31.43a1,1,0,0,0,0-2Z" class="clr-i-outline clr-i-outline-path-2"></path><path d="M15.45,10h16a1,1,0,0,0,0-2h-14Z" class="clr-i-outline clr-i-outline-path-3"></path><path d="M17.5,3.42a1.09,1.09,0,0,0-1.55,0L7.89,11.48,4.51,7.84A1.1,1.1,0,1,0,2.9,9.34l4.94,5.3L17.5,5A1.1,1.1,0,0,0,17.5,3.42Z" class="clr-i-outline clr-i-outline-path-4"></path>
+    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+</svg>

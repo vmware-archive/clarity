@@ -1,0 +1,316 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary"
+            id="a-grid-provides-a-structure-of-rows-and-columns-for-aligning-content-grids-are-useful-because-they-help-create-a-familiar-and-easily-navigable-structure-for-content">
+            A grid provides a structure of rows and columns for aligning content. Grids are useful because they help
+            create a familiar and easily navigable structure for content.</h5>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        The grid documentation here describes the new grid introduced in version 0.12. The old grid is still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/grid/">0.11 grid documentation</a>.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <p>
+                Clarity imports the 12-column
+                <a href="http://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">
+                    Bootstrap 4 Flex Grid
+                </a>
+                and prefixes the grid classes.
+                Prefixing allows us to avoid conflicting with other grid systems.
+                However, it also means if you are familiar with the grid classes
+                in Bootstrap 4, the Clarity grid will be familiar.
+            </p>
+
+            <p>
+                Important features about the grid are listed below:
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table hidden-xs-down">
+                        <thead>
+                        <tr>
+                            <th class="left"></th>
+                            <th class="left">Extra Small</th>
+                            <th class="left">Small</th>
+                            <th class="left">Medium</th>
+                            <th class="left">Large</th>
+                            <th class="left">Extra Large</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="left">Grid behavior</td>
+                            <td class="left">Horizontal</td>
+                            <td class="left" colspan="4">Collapsed to start, horizontal above breakpoints</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Container width</td>
+                            <td class="left">&lt;576px</td>
+                            <td class="left">≥576px</td>
+                            <td class="left">≥768px</td>
+                            <td class="left">≥992px</td>
+                            <td class="left">≥1200px</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Class prefix</td>
+                            <td class="left"><code class="clr-code">.clr-col-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-sm-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-md-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-lg-</code></td>
+                            <td class="left"><code class="clr-code">.clr-col-xl-</code></td>
+                        </tr>
+                        <tr>
+                            <td class="left">Number of columns</td>
+                            <td class="left" colspan="5">12</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Gutter width</td>
+                            <td class="left" colspan="5">24px (12px on the left and right of column)</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Nestable</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Offsets</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Column order</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="hidden-sm-up">
+                        <p>
+                            <b>Grid Behavior</b><br/> Horizontal for extra-small. All other breakpoints
+                            are collapsed to start, then horizontal above the breakpoint.
+                        </p>
+
+                        <p>
+                            <b>Common Properties</b>
+                        </p>
+
+                        <ul class="list">
+                            <li>Number of columns: 12</li>
+                            <li>Gutter width: 24px (12px on the left and right of column)</li>
+                            <li>All columns support nesting, offsets, and column order</li>
+                        </ul>
+
+                        <table class="table-vertical table">
+                            <tr>
+                                <th>
+                                    Extra small<br/> &lt; 576px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.clr-col-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Small<br/> &ge; 576px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.clr-col-sm-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Medium<br/> &ge; 768px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.clr-col-md-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Large<br/> &ge; 992px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.clr-col-lg-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Extra large<br/> &ge; 1200px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.clr-col-xl-</code>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            <h3 id="rows">Rows</h3>
+
+            <p>A <code class="clr-code">.clr-row</code> is a horizontal group of 12 columns.</p>
+
+            <h3 id="columns">Columns</h3>
+
+            <p>The column classes specify the number of columns per row. The value appended to the class prefix must be
+                between 1 and 12.</p>
+
+            <clr-grid-demo-columns></clr-grid-demo-columns>
+
+            <h3 id="column-stacking">Column Stacking</h3>
+
+            <p>Grid columns can occupy different widths on different device sizes.</p>
+
+            <p>
+                In the example below, if the device size is ≥ 768px (medium or above), the grid has two columns of equal
+                width and a third column that occupies the entire width of the row.  For device sizes &lt; 768px, each
+                column occupies the entire width of the
+                row and the columns are stacked. Resize your browser to see how this works.
+            </p>
+
+            <clr-grid-demo-column-stacking></clr-grid-demo-column-stacking>
+
+            <h3 id="column-wrapping">Column Wrapping</h3>
+
+            <p>
+                Placing more than 12 columns in a single row will wrap the columns exceeding the row,
+                as one unit, onto a new line.
+            </p>
+
+            <clr-grid-demo-column-wrapping></clr-grid-demo-column-wrapping>
+
+            <h3 id="flexbox-grid-auto-layout">Flexbox Grid Auto Layout</h3>
+
+            <h6>Equal Width</h6>
+
+            <p>Using the <code class="clr-code">.clr-col-*</code> class divides the row into
+                equal width columns.</p>
+
+            <clr-grid-demo-auto-layout-1></clr-grid-demo-auto-layout-1>
+
+            <h6>Setting One Column Width</h6>
+
+            <p>
+                A specific width can be assigned to a column. All the siblings of that columns will
+                automatically resize around it.
+            </p>
+
+            <clr-grid-demo-auto-layout-2></clr-grid-demo-auto-layout-2>
+
+            <h6>Variable Width Content</h6>
+
+            <p>
+                Using the <code class="clr-code">.clr-col-*-auto</code> class on a column sizes it based on
+                the width of its content.
+            </p>
+
+            <clr-grid-demo-auto-layout-3></clr-grid-demo-auto-layout-3>
+
+            <h6>Multi Row</h6>
+
+            <p>
+                Using the <code class="clr-code">.clr-break-row</code> class after a column, breaks the following
+                columns to a new line.
+            </p>
+
+            <clr-grid-demo-auto-layout-4></clr-grid-demo-auto-layout-4>
+
+            <h3 id="column-offsets">Column Offsets</h3>
+
+            <p>The responsive <code class="clr-code">clr-offset-*</code> classes increase a column’s
+                left margin by <code class="clr-code">*</code> number of columns.</p>
+            <clr-grid-demo-column-offsetting></clr-grid-demo-column-offsetting>
+
+            <h3 id="column-ordering">Column Ordering</h3>
+
+            <p>The responsive <code class="clr-code">clr-order-*</code> class modifiers
+                change the order of columns where <code class="clr-code">*</code> represents the order.</p>
+
+            <clr-grid-demo-column-ordering></clr-grid-demo-column-ordering>
+
+            <h3 id="vertical-alignment-in-rows">Vertical Alignment in Rows</h3>
+
+            <p>Columns within a row can be vertically aligned using the following responsive classes:</p>
+
+            <ul>
+                <li><code class="clr-code">clr-align-items-*-start</code></li>
+                <li><code class="clr-code">clr-align-items-*-center</code></li>
+                <li><code class="clr-code">clr-align-items-*-end</code></li>
+            </ul>
+
+            <clr-grid-demo-vertical-alignment></clr-grid-demo-vertical-alignment>
+
+            <p>A column can individually be vertically aligned in a row using the following responsive classes:</p>
+
+            <ul>
+                <li><code class="clr-code">clr-align-self-*-start</code></li>
+                <li><code class="clr-code">clr-align-self-*-center</code></li>
+                <li><code class="clr-code">clr-align-self-*-end</code></li>
+            </ul>
+
+            <clr-grid-demo-individual-vertical-alignment></clr-grid-demo-individual-vertical-alignment>
+
+            <h3 id="horizontal-alignment-in-rows">Horizontal Alignment in Rows</h3>
+
+            <p>To align columns horizontally within a row, extend the row with one of the following responsive classes:</p>
+
+            <ul>
+                <li><code class="clr-code">clr-justify-content-*-start</code></li>
+                <li><code class="clr-code">clr-justify-content-*-center</code></li>
+                <li><code class="clr-code">clr-justify-content-*-end</code></li>
+                <li><code class="clr-code">clr-justify-content-*-around</code></li>
+                <li><code class="clr-code">clr-justify-content-*-between</code></li>
+            </ul>
+
+            <clr-grid-demo-horizontal-alignment></clr-grid-demo-horizontal-alignment>
+
+            <h3 id="grid-nesting">Grid Nesting</h3>
+
+            <clr-grid-demo-nesting></clr-grid-demo-nesting>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Clarity recommends that your application layout stay on the grid. A grid-based approach:</p>
+
+            <ul class="list">
+                <li>Aligns content consistently</li>
+                <li>Establishes a foundation that can be easily built upon for future designs</li>
+                <li>Simplifies layout decisions required of a designer</li>
+                <li>Coordinates the efforts of multiple designers</li>
+            </ul>
+
+            <h4 id="applying-the-grid">Applying the Grid</h4>
+
+            <p>Apply the grid with consideration of content. Some pages might benefit from a three-column
+                layout, where other pages might work best with a two-column layout.</p>
+
+            <p>You can vary the column layout within the same page. This strategy works well for presenting
+                content that scrolls vertically.</p>
+
+            <p>Don’t lock your design into a layout optimized for a large window.</p>
+
+            <h4 id="grids-and-card-layouts">Grids and Card Layouts</h4>
+
+            <p>Designing to a grid is especially important for <a routerLink="./cards">card</a>
+                layouts. Cards contains blocks of content and their height and width can vary. The grid
+                aligns the cards in a way that is easy for users to navigate.</p>
+
+            <h4 id="if-you-decide-not-to-conform-to-the-grid">If You Decide Not to Conform to the Grid</h4>
+
+            <p>Do so with intent. Find a balance between aesthetics and conformity. Keep in mind that elements
+                that are not aligned to the grid draw attention in the same way as color, contrast, and
+                iconography and require more cognitive effort on the part of the user.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

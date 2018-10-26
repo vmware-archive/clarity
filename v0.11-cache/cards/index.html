@@ -1,0 +1,1883 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Cards</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c98] > .card[_ngcontent-c98]{max-width:480px}.clr-example.nomargin[_ngcontent-c98]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c99] > .card[_ngcontent-c99]{max-width:480px}.clr-example.nomargin[_ngcontent-c99]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c100] > .card[_ngcontent-c100]{max-width:480px}.clr-example.nomargin[_ngcontent-c100]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c101] > .card[_ngcontent-c101]{max-width:480px}.clr-example.nomargin[_ngcontent-c101]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c102] > .card[_ngcontent-c102]{max-width:480px}.clr-example.nomargin[_ngcontent-c102]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c103] > .card[_ngcontent-c103]{max-width:480px}.clr-example.nomargin[_ngcontent-c103]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c104] > .card[_ngcontent-c104]{max-width:480px}.clr-example.nomargin[_ngcontent-c104]{margin-top:0}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c105]   .nav-item[_ngcontent-c105]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c105]   .progbar-examples[_ngcontent-c105]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c105]   .progress-block[_ngcontent-c105]{margin-top:1rem}</style><style ng-transition="clarity">.progress-bars-demo[_ngcontent-c106]   .nav-item[_ngcontent-c106]{padding:.4rem 0 .6rem}.progress-bars-demo[_ngcontent-c106]   .progbar-examples[_ngcontent-c106]{margin-bottom:1.5rem}.progbar-examples[_ngcontent-c106]   .progress-block[_ngcontent-c106]{margin-top:1rem}</style><style ng-transition="clarity">.clr-example[_ngcontent-c107] > .card[_ngcontent-c107]{max-width:480px}.clr-example.nomargin[_ngcontent-c107]{margin-top:0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c108] > .card[_ngcontent-c108]{max-width:480px}.clr-example.nomargin[_ngcontent-c108]{margin-top:0}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-cards"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-cards-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Cards</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/cards#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/cards#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-card-presents-high-level-information-and-can-guide-the-user-toward-related-actions-and-details">A card
+            presents high-level information and can guide the user toward related actions and details.</h5>
+
+        <div id="code-examples">
+            <h4 id="basic-card">Basic Card</h4>
+
+            <p>A <code class="clr-code">.card</code> can contain a <code class="clr-code">.card-header</code>,
+                <code class="clr-code">.card-footer</code>, and one or more <code class="clr-code">.card-block</code>s.</p>
+
+            <clr-card-layout-demo _nghost-c98="">
+
+<div _ngcontent-c98="" class="clr-example nomargin">
+    <div _ngcontent-c98="" class="row">
+        <div _ngcontent-c98="" class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+            <div _ngcontent-c98="" class="card">
+                <div _ngcontent-c98="" class="card-header">
+                    Header
+                </div>
+                <div _ngcontent-c98="" class="card-block">
+                    <div _ngcontent-c98="" class="card-title">
+                        Block
+                    </div>
+                    <div _ngcontent-c98="" class="card-text">
+                        Card content can contain text, links, images, data visualizations, lists and more.
+                    </div>
+                </div>
+                <div _ngcontent-c98="" class="card-footer">
+                    <button _ngcontent-c98="" class="btn btn-sm btn-link">Footer Action 1</button>
+                    <button _ngcontent-c98="" class="btn btn-sm btn-link">Footer Action 2</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c98="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-5 col-md-8 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Header
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;div class="card-title"&gt;
+                    Block
+                &lt;/div&gt;
+                &lt;div class="card-text"&gt;
+                    ...
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;Footer Action 1&lt;/button&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;Footer Action 2&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-layout-demo>
+
+            <h4 id="clickable-cards">Clickable Cards</h4>
+
+            <p>Adding the <code class="clr-code">.clickable</code> class makes the entire card clickable, initiating a
+                single action.</p>
+
+            <clr-card-clickable-demo _nghost-c99="">
+
+<div _ngcontent-c99="" class="clr-example nomargin">
+    <div _ngcontent-c99="" class="row">
+        <div _ngcontent-c99="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c99="" class="card clickable" href="javascript://">
+                <div _ngcontent-c99="" class="card-img">
+                    <img _ngcontent-c99="" src="assets/images/documentation/cards/placeholder_350x150.png">
+                </div>
+                <div _ngcontent-c99="" class="card-block">
+                    <p _ngcontent-c99="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consectetur magnam eos amet sit rem. Ipsam maiores incidunt eum quasi enim! Corporis sunt nisi totam molestias quam commodi maxime mollitia.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c99="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable"&gt;
+            &lt;div class="card-img"&gt;
+                &lt;img src="..."&gt;
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-clickable-demo>
+
+            <h4 id="images-in-cards">Images in Cards</h4>
+
+            <p>A <code class="clr-code">.card-img</code> can be placed anywhere in the card, or it can occupy the entire
+                card.</p>
+
+            <clr-card-images-demo _nghost-c100="">
+
+<div _ngcontent-c100="" class="clr-example nomargin">
+    <div _ngcontent-c100="" class="row">
+        <div _ngcontent-c100="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c100="" class="card clickable" href="javascript://">
+                <div _ngcontent-c100="" class="card-img">
+                    <img _ngcontent-c100="" alt="Example of Image in a Card" src="assets/images/documentation/cards/placeholder_350x150.png">
+                </div>
+                <div _ngcontent-c100="" class="card-block">
+                    <p _ngcontent-c100="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consectetur magnam eos amet sit rem. Ipsam maiores incidunt eum quasi enim! Corporis sunt nisi totam molestias quam commodi maxime mollitia.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div _ngcontent-c100="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c100="" class="card clickable" href="javascript://">
+                <div _ngcontent-c100="" class="card-block">
+                    <p _ngcontent-c100="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consectetur magnam eos amet sit rem. Ipsam maiores incidunt eum quasi enim! Corporis sunt nisi totam molestias quam commodi maxime mollitia.
+                    </p>
+                </div>
+                <div _ngcontent-c100="" class="card-img">
+                    <img _ngcontent-c100="" alt="Example of Image in a Card" src="assets/images/documentation/cards/placeholder_350x150.png">
+                </div>
+            </a>
+        </div>
+        <div _ngcontent-c100="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c100="" class="card clickable" href="javascript://">
+                <div _ngcontent-c100="" class="card-block">
+                    <p _ngcontent-c100="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </div>
+                <div _ngcontent-c100="" class="card-img">
+                    <img _ngcontent-c100="" alt="Example of Image in a Card" src="assets/images/documentation/cards/placeholder_350x150.png">
+                </div>
+                <div _ngcontent-c100="" class="card-block">
+                    <p _ngcontent-c100="" class="card-text">
+                        Ipsam maiores incidunt eum quasi enim!
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div _ngcontent-c100="" class="row">
+        <div _ngcontent-c100="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c100="" class="card clickable card-img" href="javascript://">
+                <img _ngcontent-c100="" alt="Example of Image in a Card" src="assets/images/documentation/cards/placeholder_350x150.png">
+            </a>
+        </div>
+        <div _ngcontent-c100="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <a _ngcontent-c100="" class="card clickable" href="javascript://">
+                <div _ngcontent-c100="" class="card-img">
+                    <img _ngcontent-c100="" alt="Example of Image in a Card" src="assets/images/documentation/cards/placeholder_350x150.png">
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c100="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable"&gt;
+            &lt;div class="card-img"&gt;
+                &lt;img src="..." alt="..." /&gt;
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-img"&gt;
+                &lt;img src="..." alt="..." /&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-img"&gt;
+                &lt;img src="..." alt="..." /&gt;
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable card-img"&gt;
+            &lt;img src="..." alt="..." /&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;a href="..." class="card clickable"&gt;
+            &lt;div class="card-img"&gt;
+                &lt;img src="..." alt="..." /&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-images-demo>
+
+            <h4 id="dropdowns-in-cards">Dropdowns in Cards</h4>
+
+            <p>The footer can contain two actions. For more actions, use a
+                <a routerlink="./dropdowns" href="/cards/dropdowns">dropdown</a>.</p>
+
+            <clr-card-dropdown-demo _nghost-c101="">
+
+<div _ngcontent-c101="" class="clr-example nomargin" ngnonbindable="">
+    <div _ngcontent-c101="" class="row">
+        <div _ngcontent-c101="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c101="" class="card">
+                <div _ngcontent-c101="" class="card-header">
+                    Header
+                </div>
+                <div _ngcontent-c101="" class="card-block">
+                    <div _ngcontent-c101="" class="card-title">
+                        Block
+                    </div>
+                    <div _ngcontent-c101="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias officiis temporibus quod inventore, minus commodi similique corrupti repellat saepe facere aliquam minima deserunt esse nemo, vel illum optio necessitatibus deleniti.
+                    </div>
+                </div>
+                <div _ngcontent-c101="" class="card-footer">
+                    <button _ngcontent-c101="" class="btn btn-sm btn-link">
+                        Action 1
+                    </button>
+                    <button _ngcontent-c101="" class="btn btn-sm btn-link">
+                        Action 2
+                    </button>
+                    <div _ngcontent-c101="" class="dropdown top-left open">
+                        <button _ngcontent-c101="" class="dropdown-toggle btn btn-sm btn-link">
+                            Dropdown 1
+                            <clr-icon _ngcontent-c101="" shape="caret down"></clr-icon>
+                        </button>
+                        <div _ngcontent-c101="" class="dropdown-menu">
+                            <a _ngcontent-c101="" class="dropdown-item" href="javascript://">Item 1</a>
+                            <a _ngcontent-c101="" class="dropdown-item" href="javascript://">Item 2</a>
+                            <a _ngcontent-c101="" class="dropdown-item" href="javascript://">Item 3</a>
+                            <a _ngcontent-c101="" class="dropdown-item" href="javascript://">Item 4</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c101="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Header
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;div class="card-title"&gt;
+                    Block
+                &lt;/div&gt;
+                &lt;div class="card-text"&gt;
+                    ...
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;
+                    Action 1
+                &lt;/button&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;
+                    Action 2
+                &lt;/button&gt;
+                &lt;div class="dropdown top-left open"&gt;
+                    &lt;button class="dropdown-toggle btn btn-sm btn-link"&gt;
+                        Dropdown 1
+                        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+                    &lt;/button&gt;
+                    &lt;div class="dropdown-menu"&gt;
+                        &lt;a href="..." class="dropdown-item"&gt;Item 1&lt;/a&gt;
+                        &lt;a href="..." class="dropdown-item"&gt;Item 2&lt;/a&gt;
+                        &lt;a href="..." class="dropdown-item"&gt;Item 3&lt;/a&gt;
+                        &lt;a href="..." class="dropdown-item"&gt;Item 4&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-dropdown-demo>
+
+            <h4 id="card-media-block">Card Media Block</h4>
+
+            <p>A <code class="clr-code">.card-media-block</code> combines a <code class="clr-code">.card-media-image</code>
+                and <code class="clr-code">.card-media-description</code>. The description can contain a <code class="clr-code">.card-media-title</code> and a <code class="clr-code">.card-media-text</code>.</p>
+
+            <clr-card-media-block-demo _nghost-c102="">
+
+<div _ngcontent-c102="" class="clr-example nomargin">
+    <div _ngcontent-c102="" class="row">
+        <div _ngcontent-c102="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c102="" class="card">
+                <div _ngcontent-c102="" class="card-header">
+                    Header
+                </div>
+                <div _ngcontent-c102="" class="card-block">
+                    <div _ngcontent-c102="" class="card-media-block">
+                        <img _ngcontent-c102="" class="card-media-image" src="assets/images/documentation/cards/placeholder_60x60.png">
+                        <div _ngcontent-c102="" class="card-media-description">
+                            <span _ngcontent-c102="" class="card-media-title">
+                                Project A
+                            </span>
+                            <span _ngcontent-c102="" class="card-media-text">
+                                Owner: John Doe
+                            </span>
+                        </div>
+                    </div>
+                    <div _ngcontent-c102="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt excepturi labore explicabo temporibus, enim voluptate saepe corrupti illum earum eveniet ab veniam vel nisi fugit accusantium perferendis quas facilis quod.
+                    </div>
+                </div>
+                <div _ngcontent-c102="" class="card-footer">
+                    <button _ngcontent-c102="" class="btn btn-sm btn-link">Action</button>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c102="" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c102="" class="card">
+                <div _ngcontent-c102="" class="card-header">
+                    Header
+                </div>
+                <div _ngcontent-c102="" class="card-block">
+                    <div _ngcontent-c102="" class="card-media-block wrap">
+                        <img _ngcontent-c102="" class="card-media-image" src="assets/images/documentation/cards/placeholder_60x60.png">
+                        <div _ngcontent-c102="" class="card-media-description">
+                            <span _ngcontent-c102="" class="card-media-title">
+                                Project B
+                            </span>
+                            <span _ngcontent-c102="" class="card-media-text">
+                                Owner: Jane Doe
+                            </span>
+                        </div>
+                    </div>
+                    <div _ngcontent-c102="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, ipsum?
+                    </div>
+                </div>
+                <div _ngcontent-c102="" class="card-footer">
+                    <button _ngcontent-c102="" class="btn btn-sm btn-link">Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c102="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Header
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;div class="card-media-block"&gt;
+                    &lt;img src="..." class="card-media-image"&gt;
+                    &lt;div class="card-media-description"&gt;
+                        &lt;span class="card-media-title"&gt;
+                            Project A
+                        &lt;/span&gt;
+                        &lt;span class="card-media-text"&gt;
+                            Owner: John Doe
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="card-text"&gt;
+                    ...
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;Action&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Header
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;div class="card-media-block wrap"&gt;
+                    &lt;img src="..." class="card-media-image"&gt;
+                    &lt;div class="card-media-description"&gt;
+                        &lt;span class="card-media-title"&gt;
+                            Project B
+                        &lt;/span&gt;
+                        &lt;span class="card-media-text"&gt;
+                            Owner: Jane Doe
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="card-text"&gt;
+                    ...
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;button class="btn btn-sm btn-link"&gt;Action&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-media-block-demo>
+
+            <h4 id="alerts-in-cards">Alerts in Cards</h4>
+
+            <p>Cards can contain <a routerlink="./alerts" href="/cards/alerts">alerts</a>.</p>
+
+            <clr-card-alert-demo _nghost-c103="">
+
+<div _ngcontent-c103="" class="clr-example">
+    <div _ngcontent-c103="" class="card">
+        <div _ngcontent-c103="" class="card-block">
+            <div _ngcontent-c103="" class="alert alert-warning alert-sm">
+                <div _ngcontent-c103="" class="alert-items">
+                    <div _ngcontent-c103="" class="alert-item static">
+                        <div _ngcontent-c103="" class="alert-icon-wrapper">
+                            <clr-icon _ngcontent-c103="" class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span _ngcontent-c103="" class="alert-text">
+                            Use small alerts in a card.
+                        </span>
+                    </div>
+                </div>
+                <button _ngcontent-c103="" aria-label="Close" class="close" type="button">
+                    <clr-icon _ngcontent-c103="" aria-hidden="true" shape="close"></clr-icon>
+                </button>
+            </div>
+            <div _ngcontent-c103="" class="card-media-block wrap">
+                <img _ngcontent-c103="" class="card-media-image" src="http://placehold.it/60x60">
+                <div _ngcontent-c103="" class="card-media-description">
+                    <span _ngcontent-c103="" class="card-media-title">Project B</span>
+                    <span _ngcontent-c103="" class="card-media-text">Owner: Jane Doe</span>
+                </div>
+            </div>
+            <p _ngcontent-c103="" class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore
+                eu fugiat nulla pariatur.
+            </p>
+        </div>
+        <div _ngcontent-c103="" class="card-footer">
+            <a _ngcontent-c103="" class="card-link">Button One</a>
+            <a _ngcontent-c103="" class="card-link">Button Two</a>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c103="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-block"&gt;
+        &lt;div class="alert alert-warning alert-sm"&gt;
+            &lt;button type="button" class="close" aria-label="Close"&gt;
+                &lt;clr-icon aria-hidden="true" shape="close"&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;div class="alert-item static"&gt;
+                &lt;span class="alert-text"&gt;
+                    Use small alerts in a card.
+                &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card-media-block wrap"&gt;
+            &lt;img class="card-media-image" src="http://placehold.it/60x60" /&gt;
+            &lt;div class="card-media-description"&gt;
+                &lt;span class="card-media-title"&gt;Project B&lt;/span&gt;
+                &lt;span class="card-media-text"&gt;Owner: Jane Doe&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class="card-text"&gt;
+            ...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;a class="card-link"&gt;Button One&lt;/a&gt;
+        &lt;a class="card-link"&gt;Button Two&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-alert-demo>
+
+            <h4 id="lists-in-cards">Lists in Cards</h4>
+
+            <p>Cards can contain <a routerlink="./lists" href="/cards/lists">lists</a>.</p>
+
+            <clr-lists-in-cards-demo>
+
+<div class="clr-example nomargin">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Unordered Lists
+                </div>
+                <div class="card-block">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="card-block">
+                    <ul class="list">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ul class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ul class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Ordered Lists
+                </div>
+                <div class="card-block">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="card-block">
+                    <ol class="list">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ol class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ol>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ol class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Unstyled Lists
+                </div>
+                <div class="card-block">
+                    <p class="card-text">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="card-block">
+                    <ul class="list-unstyled">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ul class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ul class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Unordered Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                ...
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ul class="list"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ul class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ul class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Ordered Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                ...
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ol class="list"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ol class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ol class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Unstyled Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ul class="list-unstyled"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ul class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ul class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-in-cards-demo>
+
+            <h4 id="list-groups-in-cards">List Groups in Cards</h4>
+
+            <p>Cards can contain <a href="http://v4-alpha.getbootstrap.com/components/list-group/" target="_blank">Bootstrap 4 List Groups</a>.</p>
+
+            <clr-list-group-demo _nghost-c104="">
+
+<div _ngcontent-c104="" class="clr-example nomargin">
+    <div _ngcontent-c104="" class="card">
+        <div _ngcontent-c104="" class="card-img">
+            <img _ngcontent-c104="" src="assets/images/documentation/cards/placeholder_350x150.png">
+        </div>
+        <div _ngcontent-c104="" class="card-block">
+            <h4 _ngcontent-c104="" class="card-title">Title</h4>
+            <p _ngcontent-c104="" class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, aut. Nihil nemo, necessitatibus earum.
+            </p>
+        </div>
+        <ul _ngcontent-c104="" class="list-group list-group-flush">
+            <li _ngcontent-c104="" class="list-group-item">Lorem ipsum dolor.</li>
+            <li _ngcontent-c104="" class="list-group-item">Lorem ipsum dolor sit.</li>
+            <li _ngcontent-c104="" class="list-group-item">Lorem ipsum.</li>
+        </ul>
+        <div _ngcontent-c104="" class="card-footer">
+            <a _ngcontent-c104="" class="btn btn-sm btn-link" href="javascript://">Action 1</a>
+            <a _ngcontent-c104="" class="btn btn-sm btn-link" href="javascript://">Action 2</a>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c104="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="card"&gt;
+    &lt;div class="card-img"&gt;
+        &lt;img src="..."&gt;
+    &lt;/div&gt;
+    &lt;div class="card-block"&gt;
+        &lt;h4 class="card-title"&gt;Title&lt;/h4&gt;
+        &lt;p class="card-text"&gt;
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, aut.
+        Nihil nemo, necessitatibus earum.
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;ul class="list-group list-group-flush"&gt;
+        &lt;li class="list-group-item"&gt;Lorem ipsum dolor.&lt;/li&gt;
+        &lt;li class="list-group-item"&gt;Lorem ipsum dolor sit.&lt;/li&gt;
+        &lt;li class="list-group-item"&gt;Lorem ipsum.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="card-footer"&gt;
+        &lt;a href="..." class="btn btn-sm btn-link"&gt;Action 1&lt;/a&gt;
+        &lt;a href="..." class="btn btn-sm btn-link"&gt;Action 2&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-list-group-demo>
+
+            <h4 id="progress-bars-in-cards">Progress Bars in Cards</h4>
+
+            <p>Cards can contain <a routerlink="./progress" href="/cards/progress">progress bars</a>.</p>
+
+            <clr-progress-bar-cards-demo _nghost-c105="">
+
+<div _ngcontent-c105="" class="clr-example">
+    <div _ngcontent-c105="" class="row">
+        <div _ngcontent-c105="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c105="" class="card">
+                <div _ngcontent-c105="" class="card-block">
+                    <div _ngcontent-c105="" class="progress top">
+                        <progress _ngcontent-c105="" max="100" value="33"></progress>
+                    </div>
+                    <h4 _ngcontent-c105="" class="card-title">Card title</h4>
+                    <p _ngcontent-c105="" class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
+                </div>
+                <div _ngcontent-c105="" class="card-footer">
+                    <a _ngcontent-c105="" class="card-link" href="javascript://">Click</a>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c105="" class="col-xs-12 col-sm-4">
+            <div _ngcontent-c105="" class="card">
+                <div _ngcontent-c105="" class="card-block">
+                    <h4 _ngcontent-c105="" class="card-title">Card title</h4>
+                    <p _ngcontent-c105="" class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
+                </div>
+                <div _ngcontent-c105="" class="card-footer">
+                    <div _ngcontent-c105="" class="progress">
+                        <progress _ngcontent-c105="" max="100" value="77"></progress>
+                    </div>
+                    <a _ngcontent-c105="" class="card-link" href="javascript://">Click</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c105="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-sm-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;div class="progress top"&gt;
+                    &lt;progress value="..." max="100"&gt;&lt;/progress&gt;
+                &lt;/div&gt;
+                &lt;h4 class="card-title"&gt;Card title&lt;/h4&gt;
+                &lt;p class="card-text"&gt;...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a href="..." class="card-link"&gt;Click&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-12 col-sm-4"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;h4 class="card-title"&gt;Card title&lt;/h4&gt;
+                &lt;p class="card-text"&gt;...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;div class="progress"&gt;
+                    &lt;progress value="..." max="100"&gt;&lt;/progress&gt;
+                &lt;/div&gt;
+                &lt;a href="..." class="card-link"&gt;Click&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-progress-bar-cards-demo>
+
+            <clr-progress-bar-inline-cards-demo _nghost-c106="">
+
+<div _ngcontent-c106="" class="clr-example">
+    <div _ngcontent-c106="" class="row">
+        <div _ngcontent-c106="" class="col-xs-12 col-sm-6">
+            <div _ngcontent-c106="" class="card">
+                <div _ngcontent-c106="" class="card-block">
+                    <h4 _ngcontent-c106="" class="card-title">Card title</h4>
+                    <p _ngcontent-c106="" class="card-text">Here is a progress bar at the very top of a card.</p>
+                    <div _ngcontent-c106="" class="progress-block">
+                        <label _ngcontent-c106="">Label</label>
+                        <div _ngcontent-c106="" class="progress-static">
+                            <div _ngcontent-c106="" class="progress-meter" data-value="42"></div>
+                        </div>
+                    </div>
+                    <div _ngcontent-c106="" class="progress-block">
+                        <label _ngcontent-c106="">Longer Label</label>
+                        <div _ngcontent-c106="" class="progress-static">
+                            <div _ngcontent-c106="" class="progress-meter" data-value="98"></div>
+                        </div>
+                    </div>
+                    <div _ngcontent-c106="" class="progress-block">
+                        <label _ngcontent-c106="">Really, Really, Really Long Label</label>
+                        <div _ngcontent-c106="" class="progress success">
+                            <progress _ngcontent-c106="" max="100" value="69" data-displayval="69%"></progress>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-c106="" class="card-footer">
+                    <div _ngcontent-c106="" class="progress-static top">
+                        <div _ngcontent-c106="" class="progress-meter" data-value="33"></div>
+                    </div>
+                    <a _ngcontent-c106="" class="card-link" href="javascript://">Click</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _ngcontent-c106="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-sm-6"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;h4 class="card-title"&gt;Card title&lt;/h4&gt;
+                &lt;p class="card-text"&gt;Here is a progress bar at the very top of a card.&lt;/p&gt;
+                &lt;div class="progress-block"&gt;
+                    &lt;label&gt;Label&lt;/label&gt;
+                    &lt;div class="progress-static"&gt;
+                        &lt;div class="progress-meter" data-value="..."&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="progress-block"&gt;
+                    &lt;label&gt;Longer Label&lt;/label&gt;
+                    &lt;div class="progress-static"&gt;
+                        &lt;div class="progress-meter" data-value="..."&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="progress-block"&gt;
+                    &lt;label&gt;Really, Really, Really Long Label&lt;/label&gt;
+                    &lt;div class="progress success"&gt;
+                        &lt;progress value="..." max="100" data-displayval="...%"&gt;&lt;/progress&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;div class="progress-static top"&gt;
+                    &lt;div class="progress-meter" data-value="..."&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;a href="..." class="card-link"&gt;Click&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-progress-bar-inline-cards-demo>
+
+            <h4 id="card-layout">Card Layout</h4>
+
+            <p>Clarity recommends using cards in a <a routerlink="./grid" href="/cards/grid">grid</a> or a CSS column
+                layout.</p>
+
+            <h5 id="cards-in-a-grid">Cards in a Grid</h5>
+
+            <clr-card-grid-demo _nghost-c107="">
+
+<div _ngcontent-c107="" class="clr-example nomargin">
+    <div _ngcontent-c107="" class="row">
+        <div _ngcontent-c107="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c107="" class="card">
+                <div _ngcontent-c107="" class="card-block">
+                    <h3 _ngcontent-c107="" class="card-title">Card 1</h3>
+                    <p _ngcontent-c107="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div _ngcontent-c107="" class="card-footer">
+                    <a _ngcontent-c107="" class="btn btn-sm btn-link" href="javascript://">Action 1</a>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c107="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c107="" class="card">
+                <div _ngcontent-c107="" class="card-block">
+                    <h3 _ngcontent-c107="" class="card-title">Card 2</h3>
+                    <p _ngcontent-c107="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div _ngcontent-c107="" class="card-footer">
+                    <a _ngcontent-c107="" class="btn btn-sm btn-link" href="javascript://">Action 2</a>
+                </div>
+            </div>
+        </div>
+        <div _ngcontent-c107="" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <div _ngcontent-c107="" class="card">
+                <div _ngcontent-c107="" class="card-block">
+                    <h3 _ngcontent-c107="" class="card-title">Card 3</h3>
+                    <p _ngcontent-c107="" class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div _ngcontent-c107="" class="card-footer">
+                    <a _ngcontent-c107="" class="btn btn-sm btn-link" href="javascript://">Action 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c107="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;h3 class="card-title"&gt;Card 1&lt;/h3&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a href="..." class="btn btn-sm btn-link"&gt;Action 1&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;h3 class="card-title"&gt;Card 2&lt;/h3&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a href="..." class="btn btn-sm btn-link"&gt;Action 2&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-block"&gt;
+                &lt;h3 class="card-title"&gt;Card 3&lt;/h3&gt;
+                &lt;p class="card-text"&gt;
+                    ...
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a href="..." class="btn btn-sm btn-link"&gt;Action 3&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-grid-demo>
+
+            <h5 id="cards-in-css-columns">Cards in CSS Columns</h5>
+
+            <p>Cards can be placed in <code class="clr-code">.card-columns</code>. The default number of columns is
+                three, but can be changed to two or four by adding <code class="clr-code">.card-columns-2</code> or
+                <code class="clr-code">.card-columns-4</code>.</p>
+
+            <clr-card-masonry-demo _nghost-c108="">
+
+<div _ngcontent-c108="" class="clr-example nomargin">
+    <div _ngcontent-c108="" class="card-columns">
+        <div _ngcontent-c108="" class="card">
+            <div _ngcontent-c108="" class="card-img">
+                <img _ngcontent-c108="" src="assets/images/documentation/cards/placeholder_350x150.png">
+            </div>
+            <div _ngcontent-c108="" class="card-block">
+                <p _ngcontent-c108="" class="card-text">
+                    Ipsam maiores incidunt eum quasi enim!
+                </p>
+            </div>
+        </div>
+        <div _ngcontent-c108="" class="card card-block">
+            <h3 _ngcontent-c108="" class="card-title">Title</h3>
+            <p _ngcontent-c108="" class="card-text">
+                laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        <div _ngcontent-c108="" class="card">
+            <div _ngcontent-c108="" class="card-block">
+                <p _ngcontent-c108="" class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+            </div>
+            <div _ngcontent-c108="" class="card-img">
+                <img _ngcontent-c108="" src="assets/images/documentation/cards/placeholder_350x150.png">
+            </div>
+            <div _ngcontent-c108="" class="card-block">
+                <p _ngcontent-c108="" class="card-text">
+                    Ipsam maiores incidunt eum quasi enim!
+                </p>
+            </div>
+        </div>
+        <div _ngcontent-c108="" class="card card-block">
+            <h3 _ngcontent-c108="" class="card-title">Title</h3>
+            <p _ngcontent-c108="" class="card-text">
+                laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        <div _ngcontent-c108="" class="card" href="javascript://">
+            <div _ngcontent-c108="" class="card-block">
+                <p _ngcontent-c108="" class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consectetur magnam eos amet sit rem. Ipsam maiores incidunt eum quasi enim! Corporis sunt nisi totam molestias quam commodi maxime mollitia.
+                </p>
+            </div>
+            <div _ngcontent-c108="" class="card-img">
+                <img _ngcontent-c108="" src="assets/images/documentation/cards/placeholder_350x150.png">
+            </div>
+        </div>
+        <div _ngcontent-c108="" class="card card-block">
+            <h3 _ngcontent-c108="" class="card-title">Title</h3>
+            <p _ngcontent-c108="" class="card-text">
+                laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+        <div _ngcontent-c108="" class="card">
+            <div _ngcontent-c108="" class="card-block">
+                <h3 _ngcontent-c108="" class="card-title">Title</h3>
+                <p _ngcontent-c108="" class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            <div _ngcontent-c108="" class="card-footer">
+                <a _ngcontent-c108="" class="btn btn-primary" href="javascript://">Action</a>
+            </div>
+        </div>
+        <a _ngcontent-c108="" class="card clickable" href="javascript://">
+            <div _ngcontent-c108="" class="card-block">
+                <p _ngcontent-c108="" class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consectetur magnam eos amet sit rem. Ipsam maiores incidunt eum quasi enim! Corporis sunt nisi totam molestias quam commodi maxime mollitia.
+                </p>
+            </div>
+            <div _ngcontent-c108="" class="card-img">
+                <img _ngcontent-c108="" src="assets/images/documentation/cards/placeholder_350x150.png">
+            </div>
+        </a>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c108="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="card-columns"&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-img"&gt;
+            &lt;img src="..."&gt;
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card card-block"&gt;
+        &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+        &lt;p class="card-text"&gt;
+            ...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-block"&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card-img"&gt;
+            &lt;img src="..."&gt;
+        &lt;/div&gt;
+        &lt;div class="card-block"&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card card-block"&gt;
+        &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+        &lt;p class="card-text"&gt;
+            ...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div href="..." class="card"&gt;
+        &lt;div class="card-block"&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card-img"&gt;
+            &lt;img src="..."&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card card-block"&gt;
+        &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+        &lt;p class="card-text"&gt;
+            ...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-block"&gt;
+            &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card-footer"&gt;
+            &lt;a href="..." class="btn btn-primary"&gt;Action&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;a href="..." class="card clickable"&gt;
+        &lt;div class="card-block"&gt;
+            &lt;p class="card-text"&gt;
+                ...
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="card-img"&gt;
+            &lt;img src="..."&gt;
+        &lt;/div&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-card-masonry-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Example use cases for cards include:</p>
+
+            <ul class="list">
+                <li>Presenting objects, services, or content summaries while providing entry points to more detail</li>
+                <li>Representing applications and initiating actions, such as download</li>
+                <li>Displaying metrics</li>
+            </ul>
+
+            <h3 id="content----keep-it-simple">Content – keep it simple</h3>
+
+            <p>Cards can contain text, images, data visualizations, or multimedia. Ensure that the content serves your
+                use case. Keep it simple and legible. Avoid using too much content, overloading the card with too many
+                actions, and placing links within the content.</p>
+
+            <h3 id="calls-to-action">Calls to action</h3>
+
+            <p>Place the primary action and a single additional action, if required, in the card footer, left-aligned.
+                This placement supports the F-pattern layout.</p>
+
+            <p>For more than two actions, use a <a routerlink="./dropdowns" href="/cards/dropdowns">dropdown</a>. Do not place more
+                than eight items in the dropdown menu.</p>
+
+            <div class="row buttons-modal-gfx">
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        <img alt="Buttons align left in cards" src="assets/images/documentation/buttons/buttons_in_cards_2.png?1481751307980894000">
+                        <p><b><font color="#318700">Do.</font> </b>This card correctly aligns actions on the left.</p>
+                    </span>
+                </div>
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        <img alt="Buttons do not align right in cards" src="assets/images/documentation/buttons/buttons_in_cards_1.png?1481751307980894000">
+                        <p><b><font color="#e12200">Don't.</font> </b> Users might not scan to the bottom right of wide
+                            cards.</p>
+                    </span>
+                </div>
+            </div>
+
+            <h3 id="clickable-cards----be-predictable">Clickable cards – be predictable</h3>
+
+            <p>When the entire card is clickable, the resulting action must be an expected outcome. A common action is
+                to navigate to more details. Not every card need be clickable.
+                
+            </p>
+
+            <h3 id="progress-bars----be-consistent">Progress bars – be consistent</h3>
+
+            <div class="row buttons-modal-gfx">
+                <div class="col-xs-12 col-sm">
+                    <span>
+                        Progress bars belong at the card top or above the footer,   closest to the triggering action.
+                        Be consistent with progress bar placement within a card group.
+                    </span>
+                </div>
+                <div class="hidden-xs-down col-sm">
+                    <span>
+                        <img src="assets/images/documentation/cards/card_progress.png?1481751307980894000">
+                    </span>
+                </div>
+            </div>
+
+            <h3 id="group-cards-by-theme-or-element">Group cards by theme or element</h3>
+
+            
+
+            <ul class="list">
+                <li>Homogeneous content facilitates scanning – users quickly find and compare information of interest.
+                    
+                </li>
+                <li>Content of varying type often shows “the bigger picture.”
+                    
+                </li>
+            </ul>
+
+            <h3 id="use-a-grid-for-card-layout">Use a grid for card layout</h3>
+
+            <p>A grid places cards in fixed rows and columns: more content in less vertical space means less scrolling.
+                It’s easy for users to scan content in this layout. If in doubt, use the grid.</p>
+
+            <h3 id="switching-views-cards-and-datagrids">Switching views: cards and datagrids</h3>
+
+            <p>In homogeneous card groups, consider enabling users to switch between card view and datagrid view. While
+                cards show richer content than a datagrid, a datagrid lists more items at once.</p>
+
+            <p>Toggles for switching between views go in the upper right of the card group. The card group should be the
+                default view.</p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-cards-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

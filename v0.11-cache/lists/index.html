@@ -1,0 +1,1010 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Lists</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-lists"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-lists-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Lists</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/lists#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/lists#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="clarity-has-three-types-of-lists--unordered-ordered-and-unstyled">Clarity has
+            three types of lists: unordered, ordered, and unstyled.</h5>
+
+        <div id="code-examples">
+            <h3 id="unordered-lists">Unordered Lists</h3>
+
+            <clr-lists-ul-demo>
+
+<ul class="list list-spacer">
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>Mollit anim id</li>
+</ul>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ul class="list"&gt;
+    &lt;li&gt;...&lt;/li&gt;
+    &lt;li&gt;
+        Ullamco laboris nisi ut aliquip
+        &lt;ul class="list"&gt;
+            &lt;li&gt;Consequat&lt;/li&gt;
+            &lt;li&gt;Adipisicing&lt;/li&gt;
+            &lt;li&gt;Exercitation&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Reprehenderit in voluptate&lt;/li&gt;
+    &lt;li&gt;Mollit anim id&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-ul-demo>
+
+            <h3 id="ordered-lists">Ordered Lists</h3>
+
+            <clr-lists-ol-demo>
+
+<ol class="list list-spacer">
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>
+        Mollit anim id
+        <ol class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ol>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+</ol>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ol class="list"&gt;
+    &lt;li&gt;...&lt;/li&gt;
+    &lt;li&gt;
+        Ullamco laboris nisi ut aliquip
+        &lt;ul class="list"&gt;
+            &lt;li&gt;Consequat&lt;/li&gt;
+            &lt;li&gt;Adipisicing&lt;/li&gt;
+            &lt;li&gt;Exercitation&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Reprehenderit in voluptate&lt;/li&gt;
+    &lt;li&gt;
+        Mollit anim id
+        &lt;ol class="list"&gt;
+            &lt;li&gt;Consequat&lt;/li&gt;
+            &lt;li&gt;Adipisicing&lt;/li&gt;
+            &lt;li&gt;Exercitation&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Reprehenderit in voluptate&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-ol-demo>
+
+            <h3 id="unstyled-lists">Unstyled Lists</h3>
+
+            <clr-lists-unstyled-demo>
+
+<ul class="list-unstyled list-spacer">
+    <li>Id est laborum</li>
+    <li>Dolore eu fugiat</li>
+    <li>Occaecat cupidatat</li>
+    <li>Deserunt mollit anim</li>
+</ul>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ul class="list-unstyled"&gt;
+    &lt;li&gt;Id est laborum&lt;/li&gt;
+    &lt;li&gt;Dolore eu fugiat&lt;/li&gt;
+    &lt;li&gt;Occaecat cupidatat&lt;/li&gt;
+    &lt;li&gt;Deserunt mollit anim&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-unstyled-demo>
+
+            <h3 id="compact-lists">Compact Lists</h3>
+
+            <clr-lists-compact-demo>
+
+<ul class="list list-spacer compact">
+    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+    <li>
+        Ullamco laboris nisi ut aliquip
+        <ul class="list">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+        </ul>
+    </li>
+    <li>Reprehenderit in voluptate</li>
+    <li>Mollit anim id</li>
+</ul>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ul class="list compact"&gt;
+    &lt;li&gt;...&lt;/li&gt;
+    &lt;li&gt;
+        Ullamco laboris nisi ut aliquip
+        &lt;ul class="list"&gt;
+            &lt;li&gt;Consequat&lt;/li&gt;
+            &lt;li&gt;Adipisicing&lt;/li&gt;
+            &lt;li&gt;Exercitation&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Reprehenderit in voluptate&lt;/li&gt;
+    &lt;li&gt;Mollit anim id&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-compact-demo>
+
+            <h3 id="mixed-styled-and-unstyled-lists">Mixed Styled and Unstyled Lists</h3>
+
+            <clr-lists-mixed-demo>
+
+<ul class="list-unstyled list-spacer">
+    <li>Consectetur adipisicing elit</li>
+    <li>
+        Sed do eiusmod tempor
+        <ul class="list">
+            <li>Dolore magna</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+            <li>
+                Incididunt ut labore
+                <ul class="list-unstyled">
+                    <li>Ad minim veniam</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                    <li>Exercitation ullamco</li>
+                    <li>
+                        Laboris nisi ut
+                        <ul class="list">
+                            <li>Aliquip ex ea commodo</li>
+                            <li>Consequat duis</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                        </ul>
+                    </li>
+                    <li>In reprehenderit</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>In voluptate velit esse cillum dolore</li>
+    <li>Eu fugiat nulla pariatur</li>
+</ul>
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;ul class="list-unstyled"&gt;
+    &lt;li&gt;Consectetur adipisicing elit&lt;/li&gt;
+    &lt;li&gt;
+        Sed do eiusmod tempor
+        &lt;ul class="list"&gt;
+            &lt;li&gt;Dolore magna&lt;/li&gt;
+            &lt;li&gt;...&lt;/li&gt;
+            &lt;li&gt;
+                Incididunt ut labore
+                &lt;ul class="list-unstyled"&gt;
+                    &lt;li&gt;Ad minim veniam&lt;/li&gt;
+                    &lt;li&gt;...&lt;/li&gt;
+                    &lt;li&gt;Exercitation ullamco&lt;/li&gt;
+                    &lt;li&gt;
+                        Laboris nisi ut
+                        &lt;ul class="list"&gt;
+                            &lt;li&gt;Aliquip ex ea commodo&lt;/li&gt;
+                            &lt;li&gt;Consequat duis&lt;/li&gt;
+                            &lt;li&gt;..&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;In reprehenderit&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;In voluptate velit esse cillum dolore&lt;/li&gt;
+    &lt;li&gt;Eu fugiat nulla pariatur&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-mixed-demo>
+
+            <h3 id="lists-in-cards">Lists in Cards</h3>
+
+            <clr-lists-in-cards-demo>
+
+<div class="clr-example nomargin">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Unordered Lists
+                </div>
+                <div class="card-block">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="card-block">
+                    <ul class="list">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ul class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ul class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Ordered Lists
+                </div>
+                <div class="card-block">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="card-block">
+                    <ol class="list">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ol class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ol>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ol class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    Unstyled Lists
+                </div>
+                <div class="card-block">
+                    <p class="card-text">
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+                <div class="card-block">
+                    <ul class="list-unstyled">
+                        <li>Ullamco Laboris</li>
+                        <li>
+                            Nisi Ut Aliquip
+                            <ul class="list">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                        <li>Consequat</li>
+                        <li>Excepteur sint occaecat cupidatat non proident</li>
+                        <li>Enim ad Minim</li>
+                        <li>
+                            Occeaecat
+                            <ul class="list-unstyled">
+                                <li>Exercitation</li>
+                                <li>Laboris</li>
+                                <li>Commodo</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary">Action</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Unordered Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                ...
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ul class="list"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ul class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ul class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Ordered Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                ...
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ol class="list"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ol class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ol class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"&gt;
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;
+                Unstyled Lists
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;p class="card-text"&gt;
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="card-block"&gt;
+                &lt;ul class="list-unstyled"&gt;
+                    &lt;li&gt;Ullamco Laboris&lt;/li&gt;
+                    &lt;li&gt;
+                        Nisi Ut Aliquip
+                        &lt;ul class="list"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Consequat&lt;/li&gt;
+                    &lt;li&gt;Excepteur sint occaecat cupidatat non proident&lt;/li&gt;
+                    &lt;li&gt;Enim ad Minim&lt;/li&gt;
+                    &lt;li&gt;
+                        Occeaecat
+                        &lt;ul class="list-unstyled"&gt;
+                            &lt;li&gt;Exercitation&lt;/li&gt;
+                            &lt;li&gt;Laboris&lt;/li&gt;
+                            &lt;li&gt;Commodo&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class="card-footer"&gt;
+                &lt;a class="btn btn-primary"&gt;Action&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-lists-in-cards-demo>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-lists-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

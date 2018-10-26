@@ -1,0 +1,481 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Cards</h2>
+<div>
+    Clarity cards are an extension of Bootstrap 4 cards and support the following classes:
+</div>
+
+<h6>.card</h6>
+<div>
+    This is a required wrapper to contain all the card elements.
+</div>
+
+<h6>.card-block</h6>
+<div>
+    This is a wrapper to group <code class="clr-code">.card-title</code>, <code class="clr-code">.card-text</code> and <code class="clr-code">.card-link</code> elements.
+    <code class="clr-code">.card-block</code> can also contain Clarity Buttons if needed. You can extend the <code class="clr-code">.card-block</code> with
+    <code class="clr-code">.card</code> if your card does not have any content outside of the <code class="clr-code">.card-block</code>
+</div>
+
+<h6>.card-header</h6>
+Use the <code class="clr-code">.card-header</code> class to add an optional header to the card.
+<div>
+
+    <h6>.card-title, .card-text, and .card-link</h6>
+    <div>
+        You can organize your content within cards using these helper classes. Extend the <code class="clr-code">.card-link</code> class on all links or use a Clarity button instead.
+    </div>
+
+    <h6>.card-divider:</h6>
+    <div>
+        <code class="clr-code">.card-divider</code> assigned to any block element creates a simple divider to separate to sections inside the card
+    </div>
+
+    <h6>.card-overflow-menu:</h6>
+    <div>
+        <code class="clr-code">.card-overflow-menu</code> is a wrapper for the overflow menu. It contains a <code class="clr-code">.card-link</code> followed by the <code class="clr-code">.menu</code>. The <code class="clr-code">.card-link</code> acts
+        as a toggle to open and close the menu. The menu can be activated by attaching the <code class="clr-code">.active</code> class to the <code class="clr-code">.card-overflow-menu</code> class
+    </div>
+
+    <h6>.menu and .menu-item:</h6>
+    <div>
+        <code class="clr-code">.menu</code> should be followed by a <code class="clr-code">.card-link</code> inside a <code class="clr-code">.card-overflow-menu</code>. All items in a menu should be assigned a <code class="clr-code">.menu-item</code>        class
+    </div>
+
+    <h6>.clickable:</h6>
+    <div>
+        Extending the <code class="clr-code">.clickable</code> class along with the <code class="clr-code">.card</code> will change the cursor to a pointer and give a raised effect to the card making it appear clickable on hover.
+    </div>
+
+    <h6>.group, .icon, .title and .description:</h6>
+    <div>
+        <code class="clr-code">.group</code> is a wrapper around an image icon, title and description. The icon, title and description should be assigned the <code class="clr-code">.icon</code>,
+        <code class="clr-code">.title</code> and <code class="clr-code">.description</code> respectively
+    </div>
+
+    <h6>.wrap:</h6>
+    <div>
+        The <code class="clr-code">.wrap</code> class renders the group vertically instead of horizontally
+    </div>
+
+    <h6>.list-group</h6>
+    <div>
+        You can use a bootstrap <code class="clr-code">.list-group</code> inside the card. Each list element should extend the
+        <code class="clr-code">.list-group-item</code> class. Extend the <code class="clr-code">.list-group-flush</code> class with the <code class="clr-code">.list-group</code> to remove the border-radius on the list-group items.
+    </div>
+
+
+    <h4>Examples</h4>
+    <h6>1. Card with a horizontal group and a overflow menu</h6>
+    <div ngNonBindable class="clr-example">
+        <div class="card card-block">
+            <div class="group">
+                <img src="assets/images/documentation/cards/placeholder_60x60.png">
+                <div class="description">
+                    <span class="title">Project A</span>
+                    <span>Owner: John Doe</span>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="dropdown top-left active">
+                <a class="card-link dropdown-toggle">Actions</a>
+                <div class="dropdown-menu">
+                    <a href="javascript://" class="dropdown-item">Change Lease</a>
+                    <a href="javascript://" class="dropdown-item">Destroy</a>
+                    <a href="javascript://" class="dropdown-item">Power Off</a>
+                    <a href="javascript://" class="dropdown-item">Reboot</a>
+                    <a href="javascript://" class="dropdown-item">Reconfigure</a>
+                    <a href="javascript://" class="dropdown-item">Reprovision</a>
+                    <a href="javascript://" class="dropdown-item">Shutdown</a>
+                    <a href="javascript://" class="dropdown-item">Suspend</a>
+                </div>
+            </div>
+            <a href="javascript://" class="card-link">Link One</a>
+            <a href="javascript://" class="card-link">Link Two</a>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;card card-block&quot;&gt;
+    &lt;div class=&quot;group&quot;&gt;
+        &lt;img class=&quot;icon&quot; src=&quot;http://placehold.it/60x60&quot; /&gt;
+        &lt;div class=&quot;description&quot;&gt;
+            &lt;span class=&quot;title&quot;&gt;Project A&lt;/span&gt;
+            &lt;span&gt;Owner: John Doe&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-divider&quot;&gt;&lt;/div&gt;
+    &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
+    &lt;div class=&quot;dropdown top-left&quot;&gt;
+        &lt;a class=&quot;card-link dropdown-toggle&quot;&gt;Actions&lt;/a&gt;
+        &lt;div class=&quot;dropdown-menu&quot;&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Change Lease&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Destroy&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Power Off&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reboot&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reconfigure&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reprovision&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Shutdown&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Suspend&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;a href=&quot;...&quot; class=&quot;card-link&quot;&gt;Link One&lt;/a&gt;
+    &lt;a href=&quot;...&quot; class=&quot;card-link&quot;&gt;Link Two&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+
+
+    <h6>2. Card with a vertical group and an active overflow menu</h6>
+    <div ngNonBindable class="clr-example">
+        <div class="card card-block">
+            <div class="group wrap">
+                <img src="assets/images/documentation/cards/placeholder_60x60.png">
+                <div class="description">
+                    <span class="title">Project B</span>
+                    <span>Owner: Jane Doe</span>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <a class="card-link">Link One</a>
+            <a class="card-link">Link Two</a>
+            <div class="dropdown open top-left">
+                <a class="card-link dropdown-toggle">Actions</a>
+                <div class="dropdown-menu">
+                    <a href="javascript://" class="dropdown-item">Change Lease</a>
+                    <a href="javascript://" class="dropdown-item">Destroy</a>
+                    <a href="javascript://" class="dropdown-item">Power Off</a>
+                    <a href="javascript://" class="dropdown-item">Reboot</a>
+                    <a href="javascript://" class="dropdown-item">Reconfigure</a>
+                    <a href="javascript://" class="dropdown-item">Reprovision</a>
+                    <a href="javascript://" class="dropdown-item">Shutdown</a>
+                    <a href="javascript://" class="dropdown-item">Suspend</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;card card-block&quot;&gt;
+    &lt;div class=&quot;group wrap&quot;&gt;
+        &lt;img class=&quot;icon&quot; src=&quot;http://placehold.it/60x60&quot; /&gt;
+        &lt;div class=&quot;description&quot;&gt;
+            &lt;span class=&quot;title&quot;&gt;Project B&lt;/span&gt;
+            &lt;span&gt;Owner: Jane Doe&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-divider&quot;&gt;&lt;/div&gt;
+    &lt;p class=&quot;card-text&quot;&gt;
+        ...
+    &lt;/p&gt;
+    &lt;a class=&quot;card-link&quot;&gt;Link One&lt;/a&gt;
+    &lt;a class=&quot;card-link&quot;&gt;Link Two&lt;/a&gt;
+    &lt;div class=&quot;dropdown open top-left&quot;&gt;
+        &lt;a class=&quot;card-link dropdown-toggle&quot;&gt;Actions&lt;/a&gt;
+        &lt;div class=&quot;dropdown-menu&quot;&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Change Lease&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Destroy&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Power Off&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reboot&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reconfigure&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Reprovision&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Shutdown&lt;/a&gt;
+            &lt;a href=&quot;...&quot; class=&quot;dropdown-item&quot;&gt;Suspend&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+    <h6>3. Cards inside a grid</h6>
+    <div class="clr-example nomargin">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card card-block">
+                    <h3 class="card-title">Title</h3>
+                    <div class="card-divider"></div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <a href="javascript://" class="btn btn-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card card-block">
+                    <h3 class="card-title">Title</h3>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <a href="javascript://" class="btn btn-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card card-block">
+                    <h3 class="card-title">Title</h3>
+                    <div class="card-divider"></div>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <a href="javascript://" class="btn btn-primary">Go!</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="card card-block">
+                    <h3 class="card-title">Title</h3>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <a href="javascript://" class="btn btn-primary">Go!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-6 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+            &lt;div class=&quot;card card-block&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Title&lt;/h3&gt;
+                &lt;div class=&quot;card-divider&quot;&gt;&lt;/div&gt;
+                &lt;p class=&quot;card-text&quot;&gt;
+                    ...
+                &lt;/p&gt;
+                &lt;a href=&quot;...&quot; class=&quot;btn btn-primary&quot;&gt;Go!&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-6 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+            &lt;div class=&quot;card card-block&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Title&lt;/h3&gt;
+                &lt;p class=&quot;card-text&quot;&gt;
+                    ...
+                &lt;/p&gt;
+                &lt;a href=&quot;...&quot; class=&quot;btn btn-primary&quot;&gt;Go!&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-6 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+            &lt;div class=&quot;card card-block&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Title&lt;/h3&gt;
+                &lt;div class=&quot;card-divider&quot;&gt;&lt;/div&gt;
+                &lt;p class=&quot;card-text&quot;&gt;
+                    ...
+                &lt;/p&gt;
+                &lt;a href=&quot;...&quot; class=&quot;btn btn-primary&quot;&gt;Go!&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col-lg-6 col-md-12 col-sm-12 col-xs-12&quot;&gt;
+            &lt;div class=&quot;card card-block&quot;&gt;
+                &lt;h3 class=&quot;card-title&quot;&gt;Title&lt;/h3&gt;
+                &lt;p class=&quot;card-text&quot;&gt;
+                    ...
+                &lt;/p&gt;
+                &lt;a href=&quot;...&quot; class=&quot;btn btn-primary&quot;&gt;Go!&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+    <h6>4. Clickable cards</h6>
+    <div class="clr-example">
+        <a href="javascript://" class="card clickable">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </a>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;a href=&quot;...&quot; class=&quot;card clickable&quot;&gt;
+    &lt;div class=&quot;card-header&quot;&gt;
+        Featured
+    &lt;/div&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;h4 class=&quot;card-title&quot;&gt;Title&lt;/h4&gt;
+        &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+</code></pre>
+
+    <h6>5. Other card variations</h6>
+    <div class="clr-example">
+        <div class="card">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">Special title treatment</h4>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="javascript://" class="btn">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;card-header&quot;&gt;
+        Featured
+    &lt;/div&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;h4 class=&quot;card-title&quot;&gt;Special title treatment&lt;/h4&gt;
+        &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
+        &lt;a href=&quot;...&quot; class=&quot;btn btn-primary&quot;&gt;Go somewhere&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+    <div class="clr-example">
+        <div class="card">
+            <img src="assets/images/documentation/cards/placeholder_480x200.png" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <a href="javascript://" class="btn btn-link">Button</a>
+            </div>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;card&quot;&gt;
+    &lt;img class=&quot;card-img-top&quot; src=&quot;http://placehold.it/480x200&quot; alt=&quot;Card image cap&quot;&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;h4 class=&quot;card-title&quot;&gt;Card title&lt;/h4&gt;
+        &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
+        &lt;a href=&quot;...&quot; class=&quot;btn btn-link&quot;&gt;Button&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+    <div class="clr-example">
+        <div class="card">
+            <img src="assets/images/documentation/cards/placeholder_480x200.png" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <div class="card-block">
+                <a href="javascript://" target="_blank" class="card-link">Card link</a>
+                <a href="javascript://" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+    <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;card&quot;&gt;
+    &lt;img class=&quot;card-img-top&quot; src=&quot;http://placehold.it/480x200&quot; alt=&quot;Card image cap&quot;&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;h4 class=&quot;card-title&quot;&gt;Card title&lt;/h4&gt;
+        &lt;p class=&quot;card-text&quot;&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;ul class=&quot;list-group list-group-flush&quot;&gt;
+        &lt;li class=&quot;list-group-item&quot;&gt;Cras justo odio&lt;/li&gt;
+        &lt;li class=&quot;list-group-item&quot;&gt;Dapibus ac facilisis in&lt;/li&gt;
+        &lt;li class=&quot;list-group-item&quot;&gt;Vestibulum at eros&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class=&quot;card-block&quot;&gt;
+        &lt;a href=&quot;...&quot; class=&quot;card-link&quot;&gt;Card link&lt;/a&gt;
+        &lt;a href=&quot;...&quot; class=&quot;card-link&quot;&gt;Another link&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+
+    <div ngNonBindable class="clr-example">
+        <div class="card card-block">
+            <div class="group wrap">
+                <img src="assets/images/documentation/cards/placeholder_60x60.png">
+                <div class="description">
+                    <span class="title">Project B</span>
+                    <span>Owner: Jane Doe</span>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <a href="javascript://" class="btn btn-sm btn-primary">Link One</a>
+            <div class="dropdown open top-left">
+                <a class="card-link dropdown-toggle">Actions</a>
+                <div class="dropdown-menu">
+                    <a href="javascript://" class="dropdown-item">Change Lease</a>
+                    <a href="javascript://" class="dropdown-item">Destroy</a>
+                    <a href="javascript://" class="dropdown-item">Power Off</a>
+                    <a href="javascript://" class="dropdown-item">Reboot</a>
+                    <a href="javascript://" class="dropdown-item">Reconfigure</a>
+                    <a href="javascript://" class="dropdown-item">Reprovision</a>
+                    <a href="javascript://" class="dropdown-item">Shutdown</a>
+                    <a href="javascript://" class="dropdown-item">Suspend</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div ngNonBindable class="clr-example">
+        <div class="card card-block">
+            <div class="group wrap">
+                <img src="assets/images/documentation/cards/placeholder_60x60.png">
+                <div class="description">
+                    <span class="title">Project B</span>
+                    <span>Owner: Jane Doe</span>
+                </div>
+            </div>
+            <div class="card-divider"></div>
+            <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <div class="dropdown open top-left">
+                <a class="btn btn-sm btn-primary dropdown-toggle">Actions</a>
+                <div class="dropdown-menu">
+                    <a href="javascript://" class="dropdown-item">Change Lease</a>
+                    <a href="javascript://" class="dropdown-item">Destroy</a>
+                    <a href="javascript://" class="dropdown-item">Power Off</a>
+                    <a href="javascript://" class="dropdown-item">Reboot</a>
+                    <a href="javascript://" class="dropdown-item">Reconfigure</a>
+                    <a href="javascript://" class="dropdown-item">Reprovision</a>
+                    <a href="javascript://" class="dropdown-item">Shutdown</a>
+                    <a href="javascript://" class="dropdown-item">Suspend</a>
+                </div>
+            </div>
+            <a href="javascript://" class="card-link">Link One</a>
+        </div>
+    </div>
+
+    <div class="clr-example">
+        <div class="card">
+            <img src="assets/images/documentation/cards/placeholder_480x200.png" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <div class="card-divider"></div>
+                <a href="javascript://" class="btn btn-sm btn-link">Button</a>
+                <div class="card-overflow-menu active">
+                    <a href="javascript://" class="card-link">Hello</a>
+                    <div class="menu">
+                        <a href="javascript://" class="menu-item">Item 1</a>
+                        <a href="javascript://" class="menu-item">Item 2</a>
+                        <a href="javascript://" class="menu-item">Item 3</a>
+                        <a href="javascript://" class="menu-item">Item 4</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

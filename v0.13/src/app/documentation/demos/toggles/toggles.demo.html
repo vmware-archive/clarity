@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+
+    <article>
+        <h5 class="component-summary" id="a-toggle-switch-changes-on-and-off-states-of-a-single-setting">A
+            toggle switch changes on and off states of a single setting.</h5>
+
+        <div id="code-examples">
+            <p>To create a toggle switch, wrap an <code class="clr-code">input[type="checkbox"]</code>
+                element and a <code class="clr-code">label</code> element in a block-level wrapper
+                (like a <code class="clr-code">div</code>) with the <code class="clr-code">.toggle-switch</code>
+                classname. To use a toggle without any label, keep the <code class="clr-code">label</code>
+                tag empty. The default toggle is gray in its “off” state and green in
+                its “on” state. The user can change states by clicking on either the toggle or its
+                accompanying label.  You can move the label to the right side by adding the <code class="clr-code">right-label</code> class.</p>
+
+            <h3 id="disabled-toggles">Disabled Toggles</h3>
+
+            <p>To disable a toggle switch, add the <code class="clr-code">disabled</code> attribute to the
+                toggle’s <code class="clr-code">checkbox</code> input. When disabled, the toggle appears
+                gray. The user cannot change the state of the toggle. And the present state is reflected
+                in both the location of the toggle switch and by the “on” state being a slightly darker
+                gray.</p>
+
+            <clr-toggles-example-demo></clr-toggles-example-demo>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Use a toggle switch when you need the sole options of “on” and “off.”</p>
+
+            <p>Toggle switches take up less space than an “on/off” <a
+                routerLink="./radios">radio button group</a> and communicate their intended
+                purpose better than a <a routerLink="./checkboxes">checkbox</a>
+                that toggles functionality.</p>
+
+            <h4 id="toggle-states">Toggle States</h4>
+
+            <p>Toggle switches do not include “ON” and “OFF” text because these states are clearly implied.</p>
+
+            <h4 id="label">Label</h4>
+
+            <p>The label should clearly describe the setting. Although Clarity supports a toggle
+                switch without a label, use this approach only if the purpose of the control is made
+                clear elsewhere, for example, in a group label or section header.</p>
+        </div>
+    </article>
+
+</clr-doc-wrapper>

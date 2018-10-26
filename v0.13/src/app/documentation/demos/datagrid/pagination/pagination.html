@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Pagination</h2>
+
+<p>
+    So far, our examples' data only contained a few entries. The point of a datagrid is to display large amounts of data, and we can't reasonably display it all at the same time on the page. To solve this, our datagrid supports pagination.
+</p>
+<p>
+    To activate pagination on your datagrid, you simply need to add a
+    <code class="clr-code">&lt;clr-dg-pagination&gt;</code> component in your datagrid's footer. This component exposes many of properties, most of them bindable, to help you interact with it:
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="left">Input/Output</th>
+            <th class="left">Component property</th>
+            <th class="left">Effect</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="left">[(clrDgPage)]</td>
+            <td class="left">currentPage</td>
+            <td class="left">Index of the currently displayed page, starting from 1.</td>
+        </tr>
+        <tr>
+            <td class="left">[clrDgPageSize]</td>
+            <td class="left">pageSize</td>
+            <td class="left">Number of items displayed per page. Defaults to 10.</td>
+        </tr>
+        <tr>
+            <td class="left">[clrDgTotalItems]</td>
+            <td class="left">totalItems</td>
+            <td class="left">Total number of items present in the datagrid, after the filters have been applied.</td>
+        </tr>
+        <tr>
+            <td class="left">[clrDgLastPage]</td>
+            <td class="left">lastPage</td>
+            <td class="left">Index of the last page for the current data.</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="left">firstItem</td>
+            <td class="left">Index of the first item displayed on the current page, starting from 0.</td>
+        </tr>
+        <tr>
+            <td class="left">&nbsp;</td>
+            <td class="left">lastItem</td>
+            <td class="left">Index of the last item displayed on the current page, starting from 0.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Here is an example of how to use pagination, and attach a template reference variable to it to display information on the current page.
+</p>
+
+<clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+        </clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>
+
+<clr-code-snippet [clrCode]="example" clrLanguage="html"></clr-code-snippet>

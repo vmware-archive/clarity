@@ -1,0 +1,55 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="the-sidenav-is-a-left-aligned-navigational-component">The sidenav is a
+            left-aligned navigational component.</h5>
+
+        <div id="code-examples">
+            <p>Clarity’s sidenav is placed inside the <code class="clr-code">.main-container</code> class 
+                and appears after the <code class="clr-code">.content-area</code>.</p>
+
+            <h6 id="sidenav-content">.sidenav-content</h6>
+
+            <p>This is a wrapper intended to contain one or more <code class="clr-code">.nav-group</code> groups.</p>
+
+            <h6 id="nav-group">.nav-group</h6>
+
+            <p>A <code class="clr-code">.nav-group</code> consists of a checkbox and label followed by a <code
+                class="clr-code">.nav-list</code>. The order of the markup is important to achieve the collpasible
+                effect on the nav-groups.</p>
+
+            <h6 id="collapsible">.collapsible</h6>
+
+            <p>A <code class="clr-code">.nav-group</code> inside a sidenav becomes collapsible by adding a <code
+                class="clr-code">.collapsible</code> class.</p>
+
+            <h6 id="nav-list">.nav-list</h6>
+
+            <p>A <code class="clr-code">.nav-list</code> is a list of navigation links. Each navigation link 
+                extends the <code class="clr-code">.nav-link</code> class. An active <code 
+                class="clr-code">.nav-link</code> is assigned
+                the <code class="clr-code">.active</code> class.</p>
+
+            <clr-nav-demo-sidenav></clr-nav-demo-sidenav>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+            <p>The sidenav is a familiar navigation pattern for users. The sidenav can fit as many navigation links as
+                needed, scrolling when the content exceeds the viewport. Use the sidenav:</p>
+
+            <ul class="list">
+                <li>For links secondary to the links in the header or subnav</li>
+                <li>For a navigation schema with a deep hierarchy</li>
+                <li>When the header and subnav cannot accommodate the required links</li>
+            </ul>
+
+            <p>The sidenav works best in desktop applications.</p>
+
+            <h4 id="grouping-links">Grouping Links</h4>
+            <p>If you group link names under a heading, don’t make the heading a link.</p>
+
+            <h4 id="using-icons">Using Icons</h4>
+            <p>Include icons when you want to provide a more appealing visual look than just text.</p>
+        </div>
+    </article>
+</clr-doc-wrapper>

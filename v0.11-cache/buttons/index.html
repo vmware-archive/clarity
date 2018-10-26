@@ -1,0 +1,1258 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Buttons</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.btn-example[_ngcontent-c109]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c110]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c111]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c112]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c113]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c114]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c115]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c116]{background:#313131;padding:24px}</style><style ng-transition="clarity">.btn-example[_ngcontent-c117]{background:#313131;padding:24px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-buttons"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-buttons-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Buttons</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/buttons#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/buttons#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+
+        <h5 class="component-summary" id="buttons-header">Buttons allow an application to communicate action and direct
+            user intent.</h5>
+
+        <div id="design-guidelines">
+            <h3>Three different types</h3>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-primary">Solid Button</button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Solid buttons look heavy on purpose. They direct the user’s attention to the <b>primary
+                                action</b> the application is suggesting that the user take.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn">Outline Button</button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Outline buttons provide a lighter weight button style. They are used to indicate a <b>secondary
+                                action</b> that compliments a primary action or to reduce visual noise when there are many
+                                action of <b>equal</b> importance on the
+                                page.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-link">Flat Button</button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <p>
+                                Flat buttons are used in multiple scenarios. They are used as <b>tertiary buttons</b>. They
+                                can also be used inline because they are different from content in style and recognizable as
+                                buttons alongside content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clrweb-DoxVersusBox">
+                <div class="clrweb-DoxVersusBox-pin">
+                    <clr-icon shape="pin"></clr-icon>
+                </div>
+                <div class="clrweb-DoxVersusBox-items">
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <p>
+                                <button class="btn btn-link btn-sm" style="padding-left: 0; margin: 0;">FLAT BUTTON</button>
+                            </p>
+                            <p>Use flat buttons when a user is expected to <b>take an action</b>.</p>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-vsWrapper">
+                        <div class="clrweb-DoxVersusBox-vs">vs</div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <p><a href="javascript://">Link</a></p>
+                            <p>Use a link when a user is expected to be <b>taken to a different page</b>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="placement">Placement</h3>
+            <p>There are two distinct patterns when it comes to the placement of a button.</p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="height: 297px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Z pattern" src="assets/images/documentation/buttons/z_pattern.svg">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Z Pattern</h6>
+                            <p>
+                                The Z-pattern is a natural way for the user to go through content within a <b>constrained
+                                container</b> and when tasks are oriented from the top-left and ending with a <b>primary
+                                call to action on the right bottom side</b> of the
+                                container. This pattern is reversed for right to left languages.
+                            </p>
+                            <div class="clrweb-DoxBookmark hidden-md-up">
+                                <div class="clrweb-DoxBookmark-bookmark">
+                                    <clr-icon shape="bookmark"></clr-icon>
+                                </div>
+                                <p>
+                                    Modals and Wizards follow the Z Pattern
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="height: 297px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="F pattern" src="assets/images/documentation/buttons/f_pattern.svg">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>F Pattern</h6>
+                            <p>
+                                The F-pattern is a natural way to go through content in an <b>unconstrained container</b>,
+                                such as a form on the page itself. The user will go through the content line-by-line,
+                                arriving at a call to action at the end.
+                            </p>
+                            <div class="clrweb-DoxBookmark hidden-md-up">
+                                <div class="clrweb-DoxBookmark-bookmark">
+                                    <clr-icon shape="bookmark"></clr-icon>
+                                </div>
+                                <p>Forms and Cards follow the F Pattern</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 hidden-sm-down">
+                    <div class="clrweb-DoxBookmark hidden-sm-down">
+                        <div class="clrweb-DoxBookmark-bookmark">
+                            <clr-icon shape="bookmark"></clr-icon>
+                        </div>
+                        <p>Modals and Wizards follow the Z Pattern</p>
+                    </div>
+                </div>
+                <div class="col-md-6 hidden-sm-down">
+                    <div class="clrweb-DoxBookmark">
+                        <div class="clrweb-DoxBookmark-bookmark">
+                            <clr-icon shape="bookmark"></clr-icon>
+                        </div>
+                        <p>Forms and Cards follow the F Pattern</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="style">Style</h3>
+
+            <p>Consistent button styles make it easier for a user to recognize areas to take action across an
+                application.</p>
+
+            <h5 id="typography">Typography</h5>
+
+            <p>The text inside of buttons is always <b>uppercase</b>. This indicates action by differentiating button text
+                from links and other content on the page. Use descriptive language on buttons relating to the user’s intent.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block" style="height: 276px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Don't use generic language not related to the action'" src="assets/images/documentation/buttons/typography_dont.svg">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use generic language not related to the action and not relating to the intent of the user.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-block" style="height: 276px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Use a call to action on buttons" src="assets/images/documentation/buttons/typography_do.svg">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use a call to action on buttons.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 id="visual-style">Visual Style</h5>
+
+            <h6 id="border-radius">Border Radius</h6>
+
+            <p>Clarity buttons have a border radius of 3px.</p>
+
+            <h6 id="size">Size</h6>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p>Clarity offers two button sizes:</p>
+                    <ul class="list">
+                        <li>Default height of 36px</li>
+                        <li>Compact height of 24px</li>
+                    </ul>
+
+                    <p>Compact is used in content areas where smaller buttons are needed to de-emphasize calls to action.
+                        This is especially true when multiple actions of equal importance are available.</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img alt="Use compact buttons in content areas" class="clrweb-Img clrweb-Img--popout" src="assets/images/documentation/buttons/button_sizes.png">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h6 id="primary-color">Primary Color</h6>
+                    <p>A primary color provides consistency across an application. It trains the user to look for that color
+                        when trying to find an action. Clarity defaults to blue. This “action blue” can be found across all
+                        types of buttons, tabs, and other action-related
+                        components.
+                    </p>
+                </div>
+                <div class="col-md-6 hidden-sm-down">&nbsp;</div>
+                <div class="col-md-6 col-sm-12">
+                    <h6 class="action-based-color">Action-based Color</h6>
+                    <p>Different colors may be used based on the severity of an action’s result. For example, using a red
+                        button when “deleting” files indicates high severity.</p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img alt="Action colors can indicate severity" class="clrweb-Img" src="assets/images/documentation/buttons/action_colors.png">
+                </div>
+            </div>
+
+            <h5>Icons</h5>
+
+            <p>
+                Icon buttons are useful where interface space may be limited. If an icon represents the action well, users
+                can sometimes recognize them quicker than reading text. Lastly, using icon buttons can help in the situation
+                where the use of long labels may be challenging.
+            </p>
+            <p>
+                We recommend you <b>choose an icon that best describes the action</b> that the user will be doing. Users may
+                avoid unknown or abstract icon buttons.
+            </p>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-primary btn-icon" style="margin-right: 12px">
+                                    <clr-icon shape="plus"></clr-icon>
+                                </button>
+                                <button class="btn btn-icon" style="margin-right: 12px">
+                                    <clr-icon shape="star"></clr-icon>
+                                </button>
+                                <button class="btn btn-link btn-icon">
+                                    <clr-icon shape="download"></clr-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">
+                                Types &amp; Sizes
+                            </h6>
+                            <p>
+                                Icon buttons are available in the solid, outline, and flat types. It’s also best to use the
+                                normal (36px) sized ones. This makes them easier to recognize and to click.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-primary btn-sm btn-icon" style="margin-right: 12px">
+                                    <clr-icon shape="plus"></clr-icon>
+                                </button>
+                                <button class="btn btn-sm btn-icon" style="margin-right: 12px">
+                                    <clr-icon shape="star"></clr-icon>
+                                </button>
+                                <button class="btn btn-sm btn-link btn-icon">
+                                    <clr-icon shape="download"></clr-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use small icon buttons in most cases. They are difficult to see and distinguish what the
+                                icon is or represents. They also create smaller click targets, making them harder to click.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-primary btn-icon" style="margin-right: 12px">
+                                    <clr-icon shape="plus"></clr-icon>
+                                    Create
+                                </button>
+                                <button class="btn btn-danger btn-icon">
+                                    <clr-icon shape="trash"></clr-icon>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">
+                                With Text
+                            </h6>
+                            <p>
+                                If you have the space, adding text helps users understand the action. Start icon buttons
+                                with icons and follow with text.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <button class="btn btn-primary btn-icon" style="margin-right: 12px">
+                                    Create
+                                    <clr-icon shape="plus"></clr-icon>
+                                </button>
+                                <button class="btn btn-danger btn-icon">
+                                    Delete
+                                    <clr-icon shape="trash"></clr-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Start icon buttons with text and follow with icon. This makes them more difficult to scan
+                                quickly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>Title Attribute</h6>
+                    <p>
+                        If your icon button is has no text, we recommend adding the <code class="clr-code">title=“”</code>
+                        attribute to your icon buttons. This adds some additional context for users unfamiliar with what
+                        action your icon button might produce. Hovering over the icon button for a moment will show a
+                        tooltip that has the <code class="clr-code">title</code> text. The text should reflect the action
+                        being completed.
+                    </p>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Icon Button Title Attribute" class="clrweb-Img" src="assets/images/documentation/buttons/icon-button-title-attribute.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>Clarity defines three button styles:</p>
+
+            <ul class="list">
+                <li><strong>Solid.</strong> A solid background with light text. These buttons are prominent on the page.
+                </li>
+                <li><strong>Outline.</strong> A transparent background with colored border and text. On hover, the button
+                    fills with color.
+                </li>
+                <li><strong>Flat.</strong> Text in Action Blue, used to indicate an action.</li>
+            </ul>
+
+            <clr-buttons-demo-real-button class="clrweb-button-demo" _nghost-c109="">
+
+<h4 _ngcontent-c109="">Solid Buttons</h4>
+<button _ngcontent-c109="" class="btn btn-primary">Primary</button>
+<button _ngcontent-c109="" class="btn btn-success">Success</button>
+<button _ngcontent-c109="" class="btn btn-warning">Warning</button>
+<button _ngcontent-c109="" class="btn btn-danger">Danger</button>
+<button _ngcontent-c109="" class="btn btn-danger" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c109="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-danger" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c109="">Outline Buttons</h4>
+<button _ngcontent-c109="" class="btn btn-outline">Regular</button>
+<button _ngcontent-c109="" class="btn btn-success-outline">Success-Outline</button>
+<button _ngcontent-c109="" class="btn btn-info-outline">Info</button>
+<button _ngcontent-c109="" class="btn btn-warning-outline">Warning</button>
+<button _ngcontent-c109="" class="btn btn-danger-outline">Danger</button>
+<button _ngcontent-c109="" class="btn btn-outline" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c109="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-outline"&gt;Regular&lt;/button&gt;
+&lt;button class="btn btn-success-outline"&gt;Success-Outline&lt;/button&gt;
+&lt;button class="btn btn-info-outline"&gt;Info&lt;/button&gt;
+&lt;button class="btn btn-warning-outline"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-danger-outline"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-outline" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c109="">Flat Buttons</h4>
+<button _ngcontent-c109="" class="btn btn-link">Regular</button>
+<button _ngcontent-c109="" class="btn btn-link" disabled="">Disabled</button>
+<button _ngcontent-c109="" class="btn btn-sm btn-link">Regular</button>
+<button _ngcontent-c109="" class="btn btn-sm btn-link" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c109="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-link"&gt;Regular&lt;/button&gt;
+&lt;button class="btn btn-link" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="btn btn-sm btn-link"&gt;Regular&lt;/button&gt;
+&lt;button class="btn btn-sm btn-link" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-real-button>
+
+            <h3 id="types">Types</h3>
+
+            <clr-buttons-demo-primary-button class="clrweb-button-demo" _nghost-c110="">
+
+<h4 _ngcontent-c110="">Primary Button</h4>
+<button _ngcontent-c110="" class="btn btn-primary">Primary</button>
+<clr-code-snippet _ngcontent-c110="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-primary-button>
+
+            <clr-buttons-demo-secondary-button class="clrweb-button-demo indent" _nghost-c111="">
+
+<h4 _ngcontent-c111="">Secondary Button</h4>
+<button _ngcontent-c111="" class="btn">Secondary</button>
+<clr-code-snippet _ngcontent-c111="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn"&gt;Secondary&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-secondary-button>
+
+            <clr-buttons-demo-tertiary-button class="clrweb-button-demo indent" _nghost-c112="">
+
+<h4 _ngcontent-c112="">Tertiary Button</h4>
+<button _ngcontent-c112="" class="btn btn-link">Tertiary</button>
+<button _ngcontent-c112="" class="btn btn-link" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c112="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-link"&gt;Tertiary&lt;/button&gt;
+&lt;button class="btn btn-link" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-tertiary-button>
+
+            <h3 id="states">States</h3>
+
+            <clr-buttons-demo-button-states class="clrweb-button-demo" _nghost-c113="">
+
+<h4 _ngcontent-c113="">Info, Success and Danger Outline Buttons</h4>
+<button _ngcontent-c113="" class="btn btn-info-outline">Info</button>
+<button _ngcontent-c113="" class="btn btn-success-outline">Success</button>
+<button _ngcontent-c113="" class="btn btn-danger-outline">Danger</button>
+
+<h4 _ngcontent-c113="">Success and Danger Solid Buttons</h4>
+<button _ngcontent-c113="" class="btn btn-success">Success</button>
+<button _ngcontent-c113="" class="btn btn-danger">Danger</button>
+<clr-code-snippet _ngcontent-c113="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-info-outline"&gt;Info&lt;/button&gt;
+&lt;button class="btn btn-success-outline"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-danger-outline"&gt;Danger&lt;/button&gt;
+
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-button-states>
+
+            <h3 id="sizes">Sizes</h3>
+
+            <clr-buttons-demo-button-sizes class="clrweb-button-demo" _nghost-c114="">
+
+<h4 _ngcontent-c114="">Normal</h4>
+<button _ngcontent-c114="" class="btn">Regular</button>
+<button _ngcontent-c114="" class="btn btn-primary">Primary</button>
+<button _ngcontent-c114="" class="btn btn-success">Success</button>
+<button _ngcontent-c114="" class="btn btn-info">Info</button>
+<button _ngcontent-c114="" class="btn btn-warning">Warning</button>
+<button _ngcontent-c114="" class="btn btn-danger">Danger</button>
+<button _ngcontent-c114="" class="btn" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c114="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn"&gt;Regular&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c114="">Small</h4>
+<button _ngcontent-c114="" class="btn btn-sm">Regular</button>
+<button _ngcontent-c114="" class="btn btn-primary btn-sm">Primary</button>
+<button _ngcontent-c114="" class="btn btn-success btn-sm">Success</button>
+<button _ngcontent-c114="" class="btn btn-info btn-sm">Info</button>
+<button _ngcontent-c114="" class="btn btn-warning btn-sm">Warning</button>
+<button _ngcontent-c114="" class="btn btn-danger btn-sm">Danger</button>
+<button _ngcontent-c114="" class="btn btn-sm" disabled="">Disabled</button>
+<button _ngcontent-c114="" class="btn btn-sm btn-link">Regular</button>
+<button _ngcontent-c114="" class="btn btn-sm btn-link" disabled="">Disabled</button>
+<clr-code-snippet _ngcontent-c114="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-sm"&gt;Regular&lt;/button&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success btn-sm"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-info btn-sm"&gt;Info&lt;/button&gt;
+&lt;button class="btn btn-warning btn-sm"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-danger btn-sm"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-sm" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c114="">Normal Flat Buttons</h4>
+<button _ngcontent-c114="" class="btn btn-link">Flat Regular</button>
+<button _ngcontent-c114="" class="btn btn-link" disabled="">Flat Disabled</button>
+<clr-code-snippet _ngcontent-c114="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-link"&gt;Flat Regular&lt;/button&gt;
+&lt;button class="btn btn-link" disabled&gt;Flat Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c114="">Small Flat Buttons</h4>
+<button _ngcontent-c114="" class="btn btn-link btn-sm">Flat Regular</button>
+<button _ngcontent-c114="" class="btn btn-link btn-sm" disabled="">Flat Disabled</button>
+<clr-code-snippet _ngcontent-c114="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-link btn-sm"&gt;Flat Regular&lt;/button&gt;
+&lt;button class="btn btn-link btn-sm" disabled&gt;Flat Disabled&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<h4 _ngcontent-c114="">Block</h4>
+<button _ngcontent-c114="" class="btn btn-primary btn-block">Primary</button>
+<button _ngcontent-c114="" class="btn btn-success btn-block">Success</button>
+<clr-code-snippet _ngcontent-c114="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-primary btn-block"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success btn-block"&gt;Success&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+</clr-buttons-demo-button-sizes>
+
+            <h3 id="inverse">Inverse</h3>
+
+            <clr-buttons-demo-inverse-button class="clrweb-button-demo" _nghost-c115="">
+
+<h4 _ngcontent-c115="">Inverse Button</h4>
+<div _ngcontent-c115="" class="btn-example">
+    <button _ngcontent-c115="" class="btn btn-inverse" type="submit">Inverse</button>
+    <button _ngcontent-c115="" class="btn btn-inverse" disabled="" type="submit">Disabled Inverse</button>
+</div>
+<clr-code-snippet _ngcontent-c115="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button class="btn btn-inverse"&gt;Inverse&lt;/button&gt;
+&lt;button class="btn btn-inverse" disabled&gt;Disabled Inverse&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-buttons-demo-inverse-button>
+
+            <h3>Icon Buttons</h3>
+
+            <p>
+                Use the <code class="clr-code">.btn-icon</code> class to create Icon Buttons
+            </p>
+
+            <clr-icon-buttons-demo class="clrweb-button-demo" _nghost-c116="">
+
+<div _ngcontent-c116="">
+    <button _ngcontent-c116="" class="btn btn-icon" type="button">
+        <clr-icon _ngcontent-c116="" shape="home"></clr-icon>
+    </button>
+    <button _ngcontent-c116="" class="btn btn-icon btn-primary" type="button">
+        <clr-icon _ngcontent-c116="" shape="cog"></clr-icon>
+    </button>
+    <button _ngcontent-c116="" class="btn btn-icon btn-warning" type="button">
+        <clr-icon _ngcontent-c116="" shape="warning-standard"></clr-icon>
+    </button>
+    <button _ngcontent-c116="" class="btn btn-icon btn-danger" type="button">
+        <clr-icon _ngcontent-c116="" shape="error-standard"></clr-icon>
+    </button>
+    <button _ngcontent-c116="" class="btn btn-icon btn-success" type="button">
+        <clr-icon _ngcontent-c116="" shape="check"></clr-icon>
+    </button>
+    <button _ngcontent-c116="" class="btn btn-icon" disabled="" type="button">
+        <clr-icon _ngcontent-c116="" shape="home"></clr-icon>
+    </button>
+</div>
+<clr-code-snippet _ngcontent-c116="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button type="button" class="btn btn-icon"&gt;
+    &lt;clr-icon shape="home"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-icon btn-primary"&gt;
+    &lt;clr-icon shape="cog"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-icon btn-warning"&gt;
+    &lt;clr-icon shape="warning-standard"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-icon btn-danger"&gt;
+    &lt;clr-icon shape="error-standard"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-icon btn-success"&gt;
+    &lt;clr-icon shape="check"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-icon" disabled&gt;
+    &lt;clr-icon shape="home"&gt;&lt;/clr-icon&gt;
+&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-icon-buttons-demo>
+
+            <h3>Loading Buttons</h3>
+
+            <clr-buttons-demo-button-loading _nghost-c117="">
+
+
+<div _ngcontent-c117="" class="clr-example">
+    <p _ngcontent-c117="">Use the <code _ngcontent-c117="" class="clr-code">clrLoading</code> directive to toggle the spinner in a button</p>
+    <button _ngcontent-c117="" class="btn btn-info-outline">
+        <!---->
+        Validate
+    </button>
+    <button _ngcontent-c117="" class="btn btn-success-outline" type="submit">
+        <!---->
+        Submit
+    </button>
+
+    <clr-code-snippet _ngcontent-c117="" clrlanguage="html" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;button [clrLoading]="validateLoading" class="btn btn-info-outline" (click)="validateDemo()"&gt;Validate&lt;/button&gt;
+&lt;button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submitDemo()"&gt;Submit&lt;/button&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+    <clr-code-snippet _ngcontent-c117="" clrlanguage="typescript" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">export class ButtonLoadingDemo {
+  validateLoading: boolean = false;
+  submitLoading: boolean = false;
+
+  validateDemo() {
+    this.validateLoading = true;
+    //Validating Logic
+    this.validateLoading = false;
+  }
+
+  submitDemo() {
+    this.submitLoading = true;
+    //Submit Logic
+    this.submitLoading = false;
+  }
+}</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</div>
+</clr-buttons-demo-button-loading>
+        </div>
+
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-buttons-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

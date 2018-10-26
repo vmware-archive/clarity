@@ -1,0 +1,111 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Unstructured Routes (Nav Groups with parent links)</h4>
+
+<p>
+    If your application routing isn't hierarchical as shown
+    <a target="_blank" href="documentation/vertical-nav/nav-groups">here</a>,
+    we recommend that you use the Nav Groups
+    without lazily loading the Nav Links.
+</p>
+
+<div class="clr-example">
+    <div class="main-container" style="height: 432px">
+        <header class="header">
+            <div class="branding">
+                <a href="javascript://">
+                    <clr-icon shape="bolt" class="is-inverse"></clr-icon>
+                    <span class="title">Project Pokémon</span>
+                </a>
+            </div>
+        </header>
+        <div class="content-container">
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+            <clr-vertical-nav [clrVerticalNavCollapsible]="demoCollapsible">
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./normal"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+                        Normal
+                    </a>
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./pidgey"
+                           routerLinkActive="active">
+                            Pidgey
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./snorlax"
+                           routerLinkActive="active">
+                            Snorlax
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./fire"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
+                        Fire
+                    </a>
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./charmander"
+                           routerLinkActive="active">
+                            Charmander
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./charizard"
+                           routerLinkActive="active">
+                            Charizard
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <clr-vertical-nav-group
+                        routerLinkActive="active">
+                    <a clrVerticalNavLink
+                       routerLink="./electric"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact:true}">
+                        <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
+                        Electric
+                    </a>
+                    <clr-vertical-nav-group-children>
+                        <a clrVerticalNavLink
+                           routerLink="./pikachu"
+                           routerLinkActive="active">
+                            Pikachu
+                        </a>
+                        <a clrVerticalNavLink
+                           routerLink="./raichu"
+                           routerLinkActive="active">
+                            Raichu
+                        </a>
+                    </clr-vertical-nav-group-children>
+                </clr-vertical-nav-group>
+                <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">
+                    <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+                    Credit
+                </a>
+            </clr-vertical-nav>
+        </div>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="htmlExample" clrLanguage="html"></clr-code-snippet>
+
+<clr-code-snippet [clrCode]="routesExample" clrLanguage="typescript"></clr-code-snippet>
+
+
+

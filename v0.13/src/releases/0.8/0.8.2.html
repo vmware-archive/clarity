@@ -1,0 +1,30 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Use ClarityIcons API in Angular components</h6>
+        <p>
+            You can now import and use ClarityIcons API in your Angular components:
+        </p>
+<pre><code clr-code-highlight="language-typescript">
+import 	&#123; ClarityIcons &#125; from "clarity-icons"
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li>Fixed the issue with input width inside of <code class="clr-code">.tooltip-validation</code> in login forms.</li>
+    <li>Fixed an issue with grids showing horizontal scrolling inside of modals.</li>
+    <li>Fixed the EventEmitter for the checked and indeterminate state in the internal angular checkbox component used in Datagrids and Trees.</li>
+    <li>Update the plunker link to work with 0.8.x clarity and created a plunker tempalte for the previous version of Clarity (0.7.6).</li>
+    <li>Added public inputs/outputs for dropdowns and checkboxes (Fixes error when compiling for AOT).</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Styles for wizards were updated to more closely match visual design specs.</li>
+    <li>Changed modal documentation to use new layout on website.</li>
+    <li>Added a simple app within the Clarity project to test AoT compilation with npm package candidates.</li>
+    <li>The close buttons on modals, alerts, wizards, and the datagrid have been changed to use ClarityIcons. The old method of using the <code class="clr-code">&lt;span&gt;&amp;times;&lt;/span&gt;</code> element has been deprecated and will be removed in 0.9. It is still supported in 0.8, however.</li>
+    <li>The warning color for icons changed to <code class="clr-code">#FAC400</code>.</li>
+</ul>

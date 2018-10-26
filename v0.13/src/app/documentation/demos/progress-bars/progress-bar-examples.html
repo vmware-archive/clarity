@@ -1,0 +1,32 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div *ngFor="let example of examples" class="progbar-examples">
+    <h4>{{example.title}}</h4>
+    <div [ngClass]="example.cssClassnames()">
+        <progress value="{{example.value}}" max="100" [attr.data-displayval]="example.value + '%'"></progress>
+        <span *ngIf="example.isLabeled">{{example.value}}%</span>
+    </div>
+    <p><button class="btn btn-outline" (click)="example.start()">Show</button></p>
+</div>
+
+<pre><code clr-code-highlight="language-html">
+&lt;h4&gt;Progress Bar&lt;/h4&gt;
+&lt;div class=&quot;progress demo&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Labeled&lt;/h4&gt;
+&lt;div class=&quot;progress labeled&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+    &lt;span&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;h4&gt;Fade Out&lt;/h4&gt;
+&lt;div class=&quot;progress progress-fade&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+</code></pre>

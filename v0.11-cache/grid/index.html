@@ -1,0 +1,1366 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Grid</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c62]   .clr-example-col-value[_ngcontent-c62]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c62]   .clr-example-row[_ngcontent-c62]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c63]   .clr-example-col-value[_ngcontent-c63]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c63]   .clr-example-row[_ngcontent-c63]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c64]   .clr-example-col-value[_ngcontent-c64]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c64]   .clr-example-row[_ngcontent-c64]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c65]   .clr-example-col-value[_ngcontent-c65]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c65]   .clr-example-row[_ngcontent-c65]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c66]   .clr-example-col-value[_ngcontent-c66]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c66]   .clr-example-row[_ngcontent-c66]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c67]   .clr-example-col-value[_ngcontent-c67]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c67]   .clr-example-row[_ngcontent-c67]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c68]   .clr-example-col-value[_ngcontent-c68]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c68]   .clr-example-row[_ngcontent-c68]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c69]   .clr-example-col-value[_ngcontent-c69]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c69]   .clr-example-row[_ngcontent-c69]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c70]   .clr-example-col-value[_ngcontent-c70]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c70]   .clr-example-row[_ngcontent-c70]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">.clr-example[_ngcontent-c71]   .clr-example-col-value[_ngcontent-c71]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:36px;border-radius:3px;background:#dde3e5;margin:6px 0}.clr-example[_ngcontent-c71]   .clr-example-row[_ngcontent-c71]{background:#414957;height:108px;margin:6px 0}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-grid"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-grid-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Grid</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/grid#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/grid#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-grid-provides-a-structure-of-rows-and-columns-for-aligning-content-grids-are-useful-because-they-help-create-a-familiar-and-easily-navigable-structure-for-content">
+            A grid provides a structure of rows and columns for aligning content. Grids are useful because they help
+            create a familiar and easily navigable structure for content.</h5>
+
+        <div id="code-examples">
+            <p>Clarity uses the <a href="http://v4-alpha.getbootstrap.com/layout/grid/" target="_blank">Bootstrap
+                4 Flex Grid</a>. This is a 12-column, responsive grid, per the Bootstrap documentation shown below:</p>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table hidden-xs-down">
+                        <thead>
+                        <tr>
+                            <th class="left"></th>
+                            <th class="left">Extra Small</th>
+                            <th class="left">Small</th>
+                            <th class="left">Medium</th>
+                            <th class="left">Large</th>
+                            <th class="left">Extra Large</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="left">Grid behavior</td>
+                            <td class="left">Horizontal</td>
+                            <td class="left" colspan="4">Collapsed to start, horizontal above breakpoints</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Container width</td>
+                            <td class="left">&lt;544px</td>
+                            <td class="left">≥544px</td>
+                            <td class="left">≥768px</td>
+                            <td class="left">≥992px</td>
+                            <td class="left">≥1200px</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Class prefix</td>
+                            <td class="left"><code class="clr-code">.col-xs-</code></td>
+                            <td class="left"><code class="clr-code">.col-sm-</code></td>
+                            <td class="left"><code class="clr-code">.col-md-</code></td>
+                            <td class="left"><code class="clr-code">.col-lg-</code></td>
+                            <td class="left"><code class="clr-code">.col-xl-</code></td>
+                        </tr>
+                        <tr>
+                            <td class="left">Number of columns</td>
+                            <td class="left" colspan="5">12</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Gutter width</td>
+                            <td class="left" colspan="5">24px (12px on the left and right of column)</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Nestable</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Offsets</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Column order</td>
+                            <td class="left" colspan="5">Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="hidden-sm-up">
+                        <p>
+                            <b>Grid Behavior</b><br> Horizontal for extra-small (xs). All other breakpoints
+                            are collapsed to start, then horizontal above the breakpoint.
+                        </p>
+
+                        <p>
+                            <b>Common Properties</b>
+                        </p>
+
+                        <ul class="list">
+                            <li>Number of columns: 12</li>
+                            <li>Gutter width: 24px (12px on the left and right of column)</li>
+                            <li>All columns support nesting, offsets, and column order</li>
+                        </ul>
+
+                        <table class="table-vertical table">
+                            <tbody><tr>
+                                <th>
+                                    Extra small<br> &lt; 544px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.col-xs-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Small<br> ≥ 544px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.col-sm-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Medium<br> ≥ 768px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.col-md-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Large<br> ≥ 992px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.col-lg-</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Extra large<br> ≥ 1200px
+                                </th>
+                                <td>
+                                    <code class="clr-code">.col-xl-</code>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+
+                </div>
+            </div>
+
+            <h3 id="rows">Rows</h3>
+
+            <p>A <code class="clr-code">.row</code> is a horizontal group of 12 columns. When the number
+                of columns exceeds 12, the extra columns wrap to the next line.</p>
+
+            <h3 id="columns">Columns</h3>
+
+            <p>The column classes specify the number of columns per row. &nbsp;The value appended to the class prefix must be
+                between 1 and 12.</p>
+
+            <clr-grid-demo-columns _nghost-c62="">
+
+<div _ngcontent-c62="" class="clr-example">
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-4">
+            <span _ngcontent-c62="" class="clr-example-col-value">4</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-6">
+            <span _ngcontent-c62="" class="clr-example-col-value">6</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-2">
+            <span _ngcontent-c62="" class="clr-example-col-value">2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c62="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span&gt;4&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-6"&gt;
+        &lt;span&gt;6&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-2"&gt;
+        &lt;span&gt;2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c62="" class="clr-example clr-example-column">
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-1">
+            <span _ngcontent-c62="" class="clr-example-col-value">1</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-11">
+            <span _ngcontent-c62="" class="clr-example-col-value">11</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-2">
+            <span _ngcontent-c62="" class="clr-example-col-value">2</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-10">
+            <span _ngcontent-c62="" class="clr-example-col-value">10</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-3">
+            <span _ngcontent-c62="" class="clr-example-col-value">3</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-9">
+            <span _ngcontent-c62="" class="clr-example-col-value">9</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-4">
+            <span _ngcontent-c62="" class="clr-example-col-value">4</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-8">
+            <span _ngcontent-c62="" class="clr-example-col-value">8</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-5">
+            <span _ngcontent-c62="" class="clr-example-col-value">5</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-7">
+            <span _ngcontent-c62="" class="clr-example-col-value">7</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-6">
+            <span _ngcontent-c62="" class="clr-example-col-value">6</span>
+        </div>
+        <div _ngcontent-c62="" class="col-xs-6">
+            <span _ngcontent-c62="" class="clr-example-col-value">6</span>
+        </div>
+    </div>
+    <div _ngcontent-c62="" class="row">
+        <div _ngcontent-c62="" class="col-xs-12">
+            <span _ngcontent-c62="" class="clr-example-col-value">12</span>
+        </div>
+    </div>
+</div>
+</clr-grid-demo-columns>
+
+            <h3 id="column-stacking">Column Stacking</h3>
+
+            <p>Grid columns can occupy different widths on different device sizes.</p>
+
+            <p>In the example below, if the device size is ≥ 768px (medium or above), the grid has two columns of equal
+                width and a third column that occupies the entire width of the row. &nbsp;For device sizes &lt; 768px, each
+                column occupies the entire width of the
+                row and the columns are stacked. Resize your browser to see how this works.</p>
+
+            <clr-grid-demo-column-stacking _nghost-c63="">
+
+<div _ngcontent-c63="" class="clr-example">
+    <div _ngcontent-c63="" class="row">
+        <div _ngcontent-c63="" class="col-sm-12 col-md-6">
+            <span _ngcontent-c63="" class="clr-example-col-value">.col-sm-12 .col-md-6</span>
+        </div>
+        <div _ngcontent-c63="" class="col-sm-12 col-md-6">
+            <span _ngcontent-c63="" class="clr-example-col-value">.col-sm-12 .col-md-6</span>
+        </div>
+        <div _ngcontent-c63="" class="col-sm-12 col-md-12">
+            <span _ngcontent-c63="" class="clr-example-col-value">.col-sm-12 .col-md-12</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c63="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-sm-12 col-md-6"&gt;
+        &lt;span&gt;.col-sm-12 .col-md-6&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-sm-12 col-md-6"&gt;
+        &lt;span&gt;.col-sm-12 .col-md-6&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-sm-12 col-md-12"&gt;
+        &lt;span&gt;.col-sm-12 .col-md-12&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-column-stacking>
+
+            <h3 id="column-offsets">Column Offsets</h3>
+
+            <p>The <code class="clr-code">&lt;class-prefix&gt;-offset-*</code> classes increase a column’s
+                left margin by the width occupied by <code>*</code> number of columns.</p>
+            <clr-grid-demo-column-offsetting _nghost-c64="">
+
+<div _ngcontent-c64="" class="clr-example clr-example-column-demo">
+    <div _ngcontent-c64="" class="row">
+        <div _ngcontent-c64="" class="col-sm-4">
+            <span _ngcontent-c64="" class="clr-example-col-value">.col-sm-4</span>
+        </div>
+        <div _ngcontent-c64="" class="col-sm-6 offset-sm-2">
+            <span _ngcontent-c64="" class="clr-example-col-value">.col-sm-6.offset-sm-2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c64="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-sm-4"&gt;
+        &lt;span&gt;.col-sm-4&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-sm-6 offset-sm-2"&gt;
+        &lt;span&gt;.col-sm-6.offset-sm-2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-column-offsetting>
+
+            <h3 id="column-ordering">Column Ordering</h3>
+
+            <p>The <code class="clr-code">push</code> and <code class="clr-code">pull</code> modifiers
+                change the order of columns.</p>
+
+            <h4 id="push">Push</h4>
+
+            <clr-grid-demo-column-push _nghost-c65="">
+
+<div _ngcontent-c65="" class="clr-example">
+    <div _ngcontent-c65="" class="row">
+        <div _ngcontent-c65="" class="col-md-4 push-md-8">
+            <span _ngcontent-c65="" class="clr-example-col-value">.col-md-4.push-md-8</span>
+        </div>
+        <div _ngcontent-c65="" class="col-md-2">
+            <span _ngcontent-c65="" class="clr-example-col-value">.col-md-2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c65="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-md-4 push-md-8"&gt;
+        &lt;span&gt;.col-md-4.push-md-8&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-2"&gt;
+        &lt;span&gt;.col-md-2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-column-push>
+
+            <h4 id="pull">Pull</h4>
+
+            <clr-grid-demo-column-pull _nghost-c66="">
+
+<div _ngcontent-c66="" class="clr-example">
+    <div _ngcontent-c66="" class="row">
+        <div _ngcontent-c66="" class="col-xs-4 offset-xs-5">
+            <span _ngcontent-c66="" class="clr-example-col-value">.col-xs-4 .offset-xs-5</span>
+        </div>
+        <div _ngcontent-c66="" class="col-xs-3 pull-xs-9">
+            <span _ngcontent-c66="" class="clr-example-col-value">.col-xs-3.pull-xs-9</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c66="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-4 offset-xs-5"&gt;
+        &lt;span&gt;.col-xs-4.offset-xs-5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-3 pull-xs-9"&gt;
+        &lt;span&gt;.col-xs-3.pull-xs-9&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-column-pull>
+
+            <h3 id="flexbox-grid-auto-layout">Flexbox Grid Auto Layout</h3>
+
+            <p>Using the <code class="clr-code">.col-&lt;breakpoint&gt;</code> class divides the row into
+                equal width columns.</p>
+
+            <clr-grid-demo-auto-layout-1 _nghost-c67="">
+
+<div _ngcontent-c67="" class="clr-example">
+    <div _ngcontent-c67="" class="row">
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/5</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/5</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/5</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/5</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/5</span>
+        </div>
+    </div>
+    <div _ngcontent-c67="" class="row">
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/3</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/3</span>
+        </div>
+        <div _ngcontent-c67="" class="col-xs">
+            <span _ngcontent-c67="" class="clr-example-col-value">1/3</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c67="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/5&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/5&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-auto-layout-1>
+
+            <clr-grid-demo-auto-layout-2 _nghost-c68="">
+
+<div _ngcontent-c68="" class="clr-example">
+    <div _ngcontent-c68="" class="row">
+        <div _ngcontent-c68="" class="col-xs-4">
+            <span _ngcontent-c68="" class="clr-example-col-value">4</span>
+        </div>
+        <div _ngcontent-c68="" class="col-xs">
+            <span _ngcontent-c68="" class="clr-example-col-value">Remaining</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c68="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span&gt;4&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;Remaining&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+
+<div _ngcontent-c68="" class="clr-example">
+    <div _ngcontent-c68="" class="row">
+        <div _ngcontent-c68="" class="col-xs">
+            <span _ngcontent-c68="" class="clr-example-col-value">1/4</span>
+        </div>
+        <div _ngcontent-c68="" class="col-xs-6">
+            <span _ngcontent-c68="" class="clr-example-col-value">1/2</span>
+        </div>
+        <div _ngcontent-c68="" class="col-xs">
+            <span _ngcontent-c68="" class="clr-example-col-value">1/4</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c68="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/4&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-6"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/4&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-auto-layout-2>
+
+            <h3 id="vertical-alignment-in-rows">Vertical Alignment in Rows</h3>
+
+            <p>Columns within a row can be vertically aligned using the following classes:</p>
+
+            <ul>
+                <li><code class="clr-code">flex-items-xs-top</code></li>
+                <li><code class="clr-code">flex-items-xs-middle</code></li>
+                <li><code class="clr-code">flex-items-xs-bottom</code></li>
+            </ul>
+
+            <clr-grid-demo-vertical-alignment _nghost-c69="">
+
+<div _ngcontent-c69="" class="clr-example">
+    <h6 _ngcontent-c69="">Top</h6>
+    <div _ngcontent-c69="" class="row clr-example-row flex-items-xs-top">
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c69="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-top"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c69="" class="clr-example">
+    <h6 _ngcontent-c69="">Middle</h6>
+    <div _ngcontent-c69="" class="row clr-example-row flex-items-xs-middle">
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c69="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-middle"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c69="" class="clr-example">
+    <h6 _ngcontent-c69="">Bottom</h6>
+    <div _ngcontent-c69="" class="row clr-example-row flex-items-xs-bottom">
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+        <div _ngcontent-c69="" class="col-xs">
+            <span _ngcontent-c69="" class="clr-example-col-value">1/2</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c69="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-bottom"&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs"&gt;
+        &lt;span&gt;1/2&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-vertical-alignment>
+
+            <p>A column can individually be vertically aligned in a row using the following classes:</p>
+
+            <ul>
+                <li><code class="clr-code">flex-xs-top</code></li>
+                <li><code class="clr-code">flex-xs-middle</code></li>
+                <li><code class="clr-code">flex-xs-bottom</code></li>
+            </ul>
+
+            <clr-grid-demo-individual-vertical-alignment _nghost-c70="">
+
+<div _ngcontent-c70="" class="clr-example">
+    <div _ngcontent-c70="" class="row clr-example-row">
+        <div _ngcontent-c70="" class="col-xs flex-xs-top">
+            <span _ngcontent-c70="" class="clr-example-col-value">1/3</span>
+        </div>
+        <div _ngcontent-c70="" class="col-xs flex-xs-middle">
+            <span _ngcontent-c70="" class="clr-example-col-value">1/3</span>
+        </div>
+        <div _ngcontent-c70="" class="col-xs flex-xs-bottom">
+            <span _ngcontent-c70="" class="clr-example-col-value">1/3</span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c70="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row"&gt;
+    &lt;div class="col-xs flex-xs-top"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs flex-xs-middle"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs flex-xs-bottom"&gt;
+        &lt;span&gt;1/3&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-individual-vertical-alignment>
+
+            <h3 id="horizontal-alignment-in-rows">Horizontal Alignment in Rows</h3>
+
+            <p>To align columns horizontally within a row, extend the row with one of the following classes:</p>
+
+            <ul>
+                <li><code class="clr-code">flex-items-xs-left</code></li>
+                <li><code class="clr-code">flex-items-xs-center</code></li>
+                <li><code class="clr-code">flex-items-xs-right</code></li>
+                <li><code class="clr-code">flex-items-xs-around</code></li>
+                <li><code class="clr-code">flex-items-xs-between</code></li>
+            </ul>
+
+            <clr-grid-demo-horizontal-alignment _nghost-c71="">
+
+<div _ngcontent-c71="" class="clr-example">
+    <h6 _ngcontent-c71="">Left</h6>
+    <div _ngcontent-c71="" class="row flex-items-xs-left">
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c71="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-left"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c71="" class="clr-example">
+    <h6 _ngcontent-c71="">Center</h6>
+    <div _ngcontent-c71="" class="row flex-items-xs-center">
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c71="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-center"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c71="" class="clr-example">
+    <h6 _ngcontent-c71="">Right</h6>
+    <div _ngcontent-c71="" class="row flex-items-xs-right">
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c71="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-right"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c71="" class="clr-example">
+    <h6 _ngcontent-c71="">Space Around</h6>
+    <div _ngcontent-c71="" class="row flex-items-xs-around">
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c71="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-around"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+<div _ngcontent-c71="" class="clr-example">
+    <h6 _ngcontent-c71="">Space Between</h6>
+    <div _ngcontent-c71="" class="row flex-items-xs-between">
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+        <div _ngcontent-c71="" class="col-xs-4">
+            <span _ngcontent-c71="" class="clr-example-col-value">
+                .col-xs-4
+            </span>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c71="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="row flex-items-xs-between"&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-4"&gt;
+        &lt;span class="clr-example-col-value"&gt;
+            .col-xs-4
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-grid-demo-horizontal-alignment>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">Usage</h3>
+
+            <p>Clarity recommends that your application layout stay on the grid. A grid-based approach:</p>
+
+            <ul class="list">
+                <li>Aligns content consistently</li>
+                <li>Establishes a foundation that can be easily built upon for future designs</li>
+                <li>Simplifies layout decisions required of a designer</li>
+                <li>Coordinates the efforts of multiple designers</li>
+            </ul>
+
+            <h4 id="applying-the-grid">Applying the Grid</h4>
+
+            <p>Apply the grid with consideration of content. Some pages might benefit from a three-column
+                layout, where other pages might work best with a two-column layout.</p>
+
+            <p>You can vary the column layout within the same page. This strategy works well for presenting
+                content that scrolls vertically.</p>
+
+            <p>Don’t lock your design into a layout optimized for a large window.</p>
+
+            <h4 id="grids-and-card-layouts">Grids and Card Layouts</h4>
+
+            <p>Designing to a grid is especially important for <a routerlink="./cards" href="/grid/cards">card</a>
+                layouts. Cards contains blocks of content and their height and width can vary. The grid
+                aligns the cards in a way that is easy for users to navigate.</p>
+
+            <h4 id="if-you-decide-not-to-conform-to-the-grid">If You Decide Not to Conform to the Grid</h4>
+
+            <p>Do so with intent. Find a balance between aesthetics and conformity. Keep in mind that elements
+                that are not aligned to the grid draw attention in the same way as color, contrast, and
+                iconography and require more cognitive effort on the part of the user.</p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-grid-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

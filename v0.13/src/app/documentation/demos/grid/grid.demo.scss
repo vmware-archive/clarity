@@ -1,0 +1,32 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+.clr-example{
+
+    .clr-example-col-value{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        border-radius: 3px;
+        background: #D9E4EA;
+        margin: 6px 0;
+    }
+
+    .clr-example-row,
+    .clr-example-nesting-row {
+        background: #314351;
+        margin: 6px 0;
+    }
+
+    .clr-example-row {
+        height: 108px;
+    }
+
+    .clr-example-nesting-row {
+        .clr-example-nesting-row {
+            background: #61717D;
+        }
+    }
+}

@@ -1,0 +1,1346 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Header</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c58]   header.space-below[_ngcontent-c58]{margin-bottom:24px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c59]   header.space-below[_ngcontent-c59]{margin-bottom:24px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c60]   header.space-below[_ngcontent-c60]{margin-bottom:24px}</style><style ng-transition="clarity">.main-container[_ngcontent-c61]{padding-top:0;height:480px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-header"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-header-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Header</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/header#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/header#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article class="header-dox">
+
+        <h5 class="component-summary no-left-padding" id="buttons-header">
+            Headers provide branding, navigation, search, and access to global
+            application actions such as settings and notifications.
+        </h5>
+
+        <div id="design-guidelines">
+            <div class="row">
+                <div class="col-xs-12 col-no-padding">
+                    <div class="clrweb-DocMedia-block">
+                        <div class="header-demo">
+                            <header class="header-6">
+                                <div class="branding">
+                                    <a class="logo-and-title">
+                                        <clr-icon shape="file"></clr-icon>
+                                        <span class="title">Note App</span>
+                                    </a>
+                                </div>
+                                <div class="header-nav">
+                                    <a class="nav-link" href="javascript://">
+                                        <span class="nav-text">Notes</span>
+                                    </a>
+                                    <a class="active nav-link" href="javascript://">
+                                        <span class="nav-text">Shared Notes</span>
+                                    </a>
+                                </div>
+                                <div class="header-actions">
+                                    <div class="dropdown">
+                                        <button class="nav-icon dropdown-toggle">
+                                            <clr-icon shape="cog"></clr-icon>
+                                            <clr-icon shape="caret down"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a href="javascript://">About</a>
+                                            <a href="javascript://">Preferences</a>
+                                            <a href="javascript://">Log out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3>Style</h3>
+            <p>The header is consistent across all pages of an application. This offers a recognizable
+                unifying element to the application.</p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <h5>Branding</h5>
+                    <p>Include both your application’s name and logo if available. Clicking on the app’s name or logo
+                        should take you to the homepage of the application.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6 header-dox__media-container">
+                    <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_01.svg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <h5>Top Level Navigation</h5>
+                    <p>Include top level navigation items. These items should be persistent throughout your experience.</p>
+                    <p>Have a maximum of four items in top-level navigation. For more info, take a look at <a routerlink="./navigation" href="/header/navigation">Navigation</a>.</p>
+                    <h5>Typography</h5>
+                    <p>Use clear language for top level navigation items. Do not combine icons and text.</p>
+                    <p>If you’re using icons on their own in the header, using tooltips will help users
+                        understand what an icon means.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6 header-dox__media-container">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_04.svg">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+                            <p>
+                                Use Text for navigational items.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia is-warn-block">
+                        <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_02.svg">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-warn">Not Recommended</h6>
+                            <p>
+                                Use icons alone for top level navigation items.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_03.svg">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+                            <p>
+                                Use a combination of text and icons for top level navigation items.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Responsive Navigation</h3>
+            <p>
+                Clarity includes functionality for displaying the navigation on smaller devices like
+                tablets and phones with the <em>responsive navigation component</em> in clarity-angular. Details
+                on how to use <a fragment="responsive_navigation" routerlink="./navigation" href="/header/navigation#responsive_navigation">Clarity's responsive header can be found in our documentation
+                on app navigation</a>.
+            </p>
+
+            <h3>Search</h3>
+            <p>There are many different ways to include search in the header. Which way you choose depends on search's
+                prominance and its utility within the application.</p>
+            <div class="row">
+                <div class=""></div>
+                <div class="col-xs-12 col-no-padding">
+                    <div class="clrweb-DocMedia-block">
+                        <div class="header-demo">
+                            <header class="header-6">
+                                <div class="branding">
+                                    <a class="logo-and-title">
+                                        <clr-icon shape="file"></clr-icon>
+                                        <span class="title">Note App</span>
+                                    </a>
+                                </div>
+                                <form class="search">
+                                    <label for="search_input">
+                                        <input id="search_input-a" placeholder="Search all notes..." type="text">
+                                    </label>
+                                </form>
+                                <div class="header-actions">
+                                    <div class="dropdown">
+                                        <button class="nav-icon dropdown-toggle">
+                                            <clr-icon shape="cog"></clr-icon>
+                                            <clr-icon shape="caret down"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a href="javascript://">About</a>
+                                            <a href="javascript://">Preferences</a>
+                                            <a href="javascript://">Log out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Use search as a prominent navigation item in the header if you are building a search-based user
+                experience.</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-no-padding">
+                    <div class="clrweb-DocMedia-block">
+                        <div class="header-demo">
+                            <header class="header-6">
+                                <div class="branding">
+                                    <a class="logo-and-title">
+                                        <clr-icon shape="file"></clr-icon>
+                                        <span class="title">Note App</span>
+                                    </a>
+                                </div>
+                                <div class="header-nav">
+                                    <a class="nav-link" href="javascript://">
+                                        <span class="nav-text">Notes</span>
+                                    </a>
+                                    <a class="active nav-link" href="javascript://">
+                                        <span class="nav-text">Shared Notes</span>
+                                    </a>
+                                </div>
+                                <form class="search">
+                                    <label for="search_input">
+                                        <input id="search_input" placeholder="Search all notes..." type="text">
+                                    </label>
+                                </form>
+                                <div class="header-actions">
+                                    <div class="dropdown">
+                                        <button class="nav-icon dropdown-toggle">
+                                            <clr-icon shape="cog"></clr-icon>
+                                            <clr-icon shape="caret down"></clr-icon>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a href="javascript://">About</a>
+                                            <a href="javascript://">Preferences</a>
+                                            <a href="javascript://">Log out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Use search in addition to navigation items when you have 2 or 3 top-level navigational items and search
+                continues to be core to your navigation experience.
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-no-padding">
+                    <div class="clrweb-DocMedia-block">
+                        <div class="header-demo">
+                            <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_05.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Use search as a secondary item to the right of the header if search is not core to your navigation
+                experience or if you need to emphasize 3 or more top level navigation items.
+            </p>
+
+            <div style="margin: 48px 0;">
+                <div class="clrweb-DoxBookmark hidden-sm-down">
+                    <div class="clrweb-DoxBookmark-bookmark">
+                        <clr-icon shape="bookmark"></clr-icon>
+                    </div>
+                    <p>
+                        You can read more in about <a href="https://github.com/vmware/clarity/issues/186" target="_blank">search</a> in the
+                        design spec. The search component itself is a work in progress.
+                    </p>
+                </div>
+            </div>
+
+            <h3>Right Side Action Area</h3>
+            <p>The area to the right of the header serves as a location for global actions and
+                top-level navigational items that are important yet visited less frequently.</p>
+            <div class="row">
+                <div class="col-xs-12 col-no-padding">
+                    <div class="clrweb-DocMedia-block">
+                        <div class="header-demo">
+                            <img alt="" class="clrweb-Img" src="assets/images/documentation/header/header_06.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                For example, this action area on the right side of the header could include
+                application settings, user settings, help, about, and other similar items.
+            </p>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>The header and subnav support app-level information and navigation links.</p>
+
+            <h6 id="header-1">
+                .header
+            </h6>
+
+            <p>
+                <code class="clr-code">.header</code> is a wrapper around the following four sections:
+            </p>
+
+            <ul class="list">
+                <li>Branding</li>
+                <li>Navigation</li>
+                <li>Search</li>
+                <li>Settings</li>
+            </ul>
+
+            <h6 id="branding">
+                .branding
+            </h6>
+
+            <p>
+                <code class="clr-code">.branding</code> contains the product logo and the product
+                title. The logo extends the <code class="clr-code">.clr-icon</code> class and the
+                title extends the <code class="clr-code">.title</code> class.
+            </p>
+
+            <h6 id="header-nav">.header-nav</h6>
+
+            <p>
+                <code class="clr-code">.header-nav</code> contains the navigation links.
+                Each navigation link extends the <code class="clr-code">.nav-link</code> class along with the
+                <code class="clr-code">.nav-text</code> class for text links and the <code class="clr-code">.nav-icon</code> class icon links.
+            </p>
+
+            <clr-header-demo-links _nghost-c58=""><div _ngcontent-c58="" class="clr-example">
+    <div _ngcontent-c58="" class="main-container">
+        <header _ngcontent-c58="" class="header-6 space-below">
+            <div _ngcontent-c58="" class="branding">
+                <a _ngcontent-c58="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c58="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c58="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c58="" class="header-nav">
+                <a _ngcontent-c58="" class="active nav-link nav-text" href="javascript://">Dashboard</a>
+                <a _ngcontent-c58="" class="nav-link nav-text" href="javascript://">Interactive Analytics</a>
+            </div>
+            <div _ngcontent-c58="" class="header-actions">
+                <a _ngcontent-c58="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c58="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c58="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        ...
+    &lt;/div&gt;
+    &lt;div class="header-nav"&gt;
+        &lt;a href="javascript://" class="active nav-link nav-text"&gt;Dashboard&lt;/a&gt;
+        &lt;a href="javascript://" class="nav-link nav-text"&gt;Interactive Analytics&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;a href="javascript://" class="nav-link nav-icon"&gt;
+            &lt;clr-icon shape="cog"&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet></clr-header-demo-links>
+
+            <h6 id="search">
+                .search
+            </h6>
+
+            <p>
+                <code class="clr-code">.search</code> is a form containing the search icon and the search input field.
+            </p>
+
+            <h6 id="header-actions">
+                .header-actions
+            </h6>
+
+            <p style="margin-bottom: 48px">
+                <code class="clr-code">.header-actions</code> is a wrapper that contains secondary
+                navigation links. Each navigation link extends the <code class="clr-code">.nav-link</code>
+                class. Navigation links can be text or icons.
+            </p>
+
+            <clr-alert>
+
+<!----><div class="alert alert-info">
+    <div class="alert-items">
+        
+                <clr-alert-item class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        
+                    <span class="alert-text">
+                        For information about headers with responsive navigation, see
+                        <a fragment="responsive_navigation" routerlink="./navigation" href="/header/navigation#responsive_navigation">Responsive Navigation</a>.
+                    </span>
+                
+    </clr-alert-item>
+            
+    </div>
+    <!---->
+</div>
+</clr-alert>
+
+            <h4 id="types">
+                Types
+            </h4>
+            <clr-header-demo-types _nghost-c59="">
+
+<div _ngcontent-c59="" class="clr-example">
+    <div _ngcontent-c59="" class="main-container">
+        <header _ngcontent-c59="" class="header-6 space-below">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c59="" class="header-nav">
+                <a _ngcontent-c59="" class="active nav-link nav-text" href="javascript://">Dashboard</a>
+                <a _ngcontent-c59="" class="nav-link nav-text" href="javascript://">Interactive Analytics</a>
+            </div>
+            <div _ngcontent-c59="" class="header-actions">
+                <a _ngcontent-c59="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c59="" class="header-6 space-below">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <form _ngcontent-c59="" class="search">
+                <label _ngcontent-c59="" for="search_input">
+                    <input _ngcontent-c59="" id="search_input" placeholder="Search for keywords..." type="text">
+                </label>
+            </form>
+            <div _ngcontent-c59="" class="header-actions">
+                <a _ngcontent-c59="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c59="" class="header-6 space-below">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c59="" class="header-actions">
+                <clr-dropdown _ngcontent-c59="" class="dropdown">
+                    <button _ngcontent-c59="" class="nav-icon dropdown-toggle" clrdropdowntrigger="">
+                        <clr-icon _ngcontent-c59="" shape="cog"></clr-icon>
+                        <clr-icon _ngcontent-c59="" shape="caret down"></clr-icon>
+                    </button>
+                    <!---->
+                </clr-dropdown>
+            </div>
+        </header>
+
+        <header _ngcontent-c59="" class="header-6 space-below">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c59="" class="header-nav">
+                <a _ngcontent-c59="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="cloud"></clr-icon>
+                </a>
+                <a _ngcontent-c59="" class="active nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="folder"></clr-icon>
+                </a>
+            </div>
+            <form _ngcontent-c59="" class="search">
+                <label _ngcontent-c59="" for="search_input1">
+                    <input _ngcontent-c59="" id="search_input1" placeholder="Search for keywords..." type="text">
+                </label>
+            </form>
+            <div _ngcontent-c59="" class="header-actions">
+                <clr-dropdown _ngcontent-c59="" class="dropdown">
+                    <button _ngcontent-c59="" class="nav-icon dropdown-toggle" clrdropdowntrigger="">
+                        <clr-icon _ngcontent-c59="" shape="user"></clr-icon>
+                        <clr-icon _ngcontent-c59="" shape="caret down"></clr-icon>
+                    </button>
+                    <!---->
+                </clr-dropdown>
+            </div>
+        </header>
+
+        <header _ngcontent-c59="" class="header-6 space-below">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c59="" class="header-actions">
+                <a _ngcontent-c59="" class="nav-link nav-text" href="javascript://">
+                    Log Out
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c59="" class="header-6">
+            <div _ngcontent-c59="" class="branding">
+                <a _ngcontent-c59="" class="nav-link" href="javascript://">
+                    <clr-icon _ngcontent-c59="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c59="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c59="" class="header-actions header-actions--overflow">
+                <clr-dropdown _ngcontent-c59="" class="dropdown">
+                    <button _ngcontent-c59="" class="nav-text dropdown-toggle" clrdropdowntrigger="">
+                        john.doe@vmware.com
+                        <clr-icon _ngcontent-c59="" shape="caret down"></clr-icon>
+                    </button>
+                    <!---->
+                </clr-dropdown>
+            </div>
+        </header>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c59="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-nav"&gt;
+        &lt;a href="..." class="active nav-link"&gt;&lt;span class="nav-text"&gt;Dashboard&lt;/span&gt;&lt;/a&gt;
+        &lt;a href="..." class="nav-link"&gt;&lt;span class="nav-text"&gt;Interactive Analytics&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;a href="..." class="nav-link nav-icon"&gt;
+            &lt;clr-icon shape="cog"&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class="search"&gt;
+        &lt;label for="search_input"&gt;
+            &lt;input id="search_input" type="text" placeholder="Search for keywords..."&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;a href="..." class="nav-link nav-icon"&gt;
+            &lt;clr-icon shape="cog"&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class="nav-icon" clrDropdownTrigger&gt;
+                &lt;clr-icon shape="cog"&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu *clrIfOpen clrPosition="bottom-right"&gt;
+                &lt;a href="..." clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href="..." clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href="..." clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-nav"&gt;
+        &lt;a href="..." class="nav-link nav-icon"&gt;
+            &lt;clr-icon shape="cloud"&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+        &lt;a href="..." class="active nav-link nav-icon"&gt;
+            &lt;clr-icon shape="folder"&gt;&lt;/clr-icon&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;form class="search"&gt;
+        &lt;label for="search_input"&gt;
+            &lt;input id="search_input" type="text" placeholder="Search for keywords..."&gt;
+        &lt;/label&gt;
+    &lt;/form&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class="nav-icon" clrDropdownTrigger&gt;
+                &lt;clr-icon shape="user"&gt;&lt;/clr-icon&gt;
+                &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu *clrIfOpen clrPosition="bottom-right"&gt;
+                &lt;a href="..." clrDropdownItem&gt;About&lt;/a&gt;
+                &lt;a href="..." clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href="..." clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;a href="..." class="nav-link nav-text"&gt;
+            Log Out
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;header class="header-6"&gt;
+    &lt;div class="branding"&gt;
+        &lt;a href="..." class="nav-link"&gt;
+            &lt;clr-icon shape="vm-bug"&gt;&lt;/clr-icon&gt;
+            &lt;span class="title"&gt;Project Clarity&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="header-actions"&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button class="nav-text" clrDropdownTrigger&gt;
+                john.doe@vmware.com
+                &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+            &lt;/button&gt;
+            &lt;clr-dropdown-menu *clrIfOpen clrPosition="bottom-right"&gt;
+                &lt;a href="..." clrDropdownItem&gt;Preferences&lt;/a&gt;
+                &lt;a href="..." clrDropdownItem&gt;Log out&lt;/a&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-header-demo-types>
+
+            <h4 id="color-options">
+                Color Options
+            </h4>
+            <clr-header-demo-colors _nghost-c60="">
+
+<div _ngcontent-c60="" class="clr-example">
+    <div _ngcontent-c60="" class="main-container">
+        <header _ngcontent-c60="" class="header header-1 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-2 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-3 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-4 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-5 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-6 space-below">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+
+        <header _ngcontent-c60="" class="header header-7">
+            <div _ngcontent-c60="" class="branding">
+                <a _ngcontent-c60="" href="javascript://">
+                    <clr-icon _ngcontent-c60="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c60="" class="title">Project Clarity</span>
+                </a>
+            </div>
+        </header>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c60="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;header class="header header-1"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-2"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-3"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-4"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-5"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-6"&gt;
+    ...
+&lt;/header&gt;
+
+&lt;header class="header header-7"&gt;
+    ...
+&lt;/header&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-header-demo-colors>
+
+            <h3 id="subnav">
+                Subnav
+            </h3>
+
+            <p>
+                <code class="clr-code">.subnav</code> immediately follows the <code class="clr-code">.header</code>. It
+                wraps a <a routerlink="./tabs" href="/header/tabs">tab</a> and an <code class="clr-code">aside</code> section.
+            </p>
+
+            <clr-nav-demo-subnav _nghost-c61="">
+
+<div _ngcontent-c61="" class="clr-example">
+    <div _ngcontent-c61="" class="main-container">
+        <header _ngcontent-c61="" class="header-6">
+            <div _ngcontent-c61="" class="branding">
+                <a _ngcontent-c61="" href="javascript://">
+                    <clr-icon _ngcontent-c61="" shape="vm-bug"></clr-icon>
+                    <span _ngcontent-c61="" class="title">Project Clarity</span>
+                </a>
+            </div>
+            <div _ngcontent-c61="" class="settings">
+                <a _ngcontent-c61="" class="nav-link nav-icon" href="javascript://">
+                    <clr-icon _ngcontent-c61="" shape="cog"></clr-icon>
+                </a>
+            </div>
+        </header>
+        <nav _ngcontent-c61="" class="subnav">
+            <ul _ngcontent-c61="" class="nav">
+                <li _ngcontent-c61="" class="nav-item">
+                    <a _ngcontent-c61="" class="nav-link active" href="javascript://">Dashboard</a>
+                </li>
+                <li _ngcontent-c61="" class="nav-item">
+                    <a _ngcontent-c61="" class="nav-link" href="javascript://">Management</a>
+                </li>
+                <li _ngcontent-c61="" class="nav-item">
+                    <a _ngcontent-c61="" class="nav-link" href="javascript://">Cloud</a>
+                </li>
+                <li _ngcontent-c61="" class="nav-item">
+                    <a _ngcontent-c61="" class="nav-link" href="javascript://">Tenants</a>
+                </li>
+            </ul>
+        </nav>
+        <div _ngcontent-c61="" class="content-container">
+            <div _ngcontent-c61="" class="content-area">
+                <p _ngcontent-c61="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Non enim praesent elementum facilisis leo vel fringilla.
+                    Euismod elementum nisi quis eleifend quam adipiscing vitae proin. Volutpat consequat
+                    mauris nunc congue nisi vitae suscipit tellus mauris. Dolor magna eget est lorem ipsum
+                    dolor sit amet consectetur. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus.
+                    Volutpat commodo sed egestas egestas. Pharetra sit amet aliquam id diam maecenas ultricies
+                    mi. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Viverra nibh cras
+                    pulvinar mattis nunc sed blandit libero volutpat. Enim nunc faucibus a pellentesque sit
+                    amet porttitor eget dolor. Quis viverra nibh cras pulvinar mattis nunc. Donec ac odio tempor orci.
+                    Tortor consequat id porta nibh. Risus ultricies tristique nulla aliquet enim tortor. A scelerisque
+                    purus semper eget duis at tellus at. Arcu non sodales neque sodales ut. Egestas integer eget aliquet
+                    nibh praesent tristique.
+                </p>
+                <p _ngcontent-c61="">
+                    Leo integer malesuada nunc vel risus commodo viverra. Lectus sit amet est placerat in
+                    egestas. Tincidunt vitae semper quis lectus nulla at volutpat diam. Blandit aliquam
+                    etiam erat velit scelerisque in dictum non consectetur.
+                    Purus sit amet volutpat consequat mauris. Enim blandit volutpat maecenas volutpat
+                    blandit aliquam etiam erat velit.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c61="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;header&gt;
+    ...
+&lt;/header&gt;
+&lt;nav class="subnav"&gt;
+    &lt;ul class="nav"&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link active" href="#"&gt;Dashboard&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link" href="#"&gt;Management&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link" href="#"&gt;Cloud&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+            &lt;a class="nav-link" href="#"&gt;Tenants&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-nav-demo-subnav>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-header-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

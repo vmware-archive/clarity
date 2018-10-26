@@ -1,0 +1,3530 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Tree View</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c20]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c20]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c20]:last-child:after{content:"."}.example-display-json[_ngcontent-c20]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c21]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c21]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c21]:last-child:after{content:"."}.example-display-json[_ngcontent-c21]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c22]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c22]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c22]:last-child:after{content:"."}.example-display-json[_ngcontent-c22]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c23]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c23]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c23]:last-child:after{content:"."}.example-display-json[_ngcontent-c23]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c24]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c24]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c24]:last-child:after{content:"."}.example-display-json[_ngcontent-c24]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c25]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c25]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c25]:last-child:after{content:"."}.example-display-json[_ngcontent-c25]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c26]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c26]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c26]:last-child:after{content:"."}.example-display-json[_ngcontent-c26]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c27]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c27]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c27]:last-child:after{content:"."}.example-display-json[_ngcontent-c27]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">.example-margin-bottom[_ngcontent-c28]{margin-bottom:24px}.example-selected-nodes[_ngcontent-c28]:not(:last-child):after{content:", "}.example-selected-nodes[_ngcontent-c28]:last-child:after{content:"."}.example-display-json[_ngcontent-c28]{padding:12px;margin:0;max-height:480px;height:480px;overflow-y:auto;overflow-x:hidden}</style><style ng-transition="clarity">pre[_ngcontent-c30] { 
+            background: transparent; 
+            padding: 12px;
+            margin: 24px 0 0 0;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-tree-view"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-tree-view-demo class="content-area dox-content-panel">
+<clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header new-component-layout">
+    <section>
+        <h1>Tree View</h1>
+        <!---->
+
+        <!---->
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!---->
+                <!---->
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/tree-view#top">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="examples" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/tree-view#examples">
+                        Code &amp; Examples
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+
+        <h5 class="component-summary" id="tree-view-header">
+            A tree is a hierarchical component that shows the visual representation
+            of the parent-child relationship between nodes.
+        </h5>
+
+        <div id="design-guidelines">
+            <h3>Three Main Variations</h3>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Basic Tree</h4>
+                    <p>
+                        A basic tree provides a tree structure with named nodes and an
+                        arrow to expand and collapse child nodes.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-node-basic-structure-demo _nghost-c20="">
+<clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-0">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-0" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-0">
+        
+    Office Locations
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-9">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-9" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-9">
+        
+            USA
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-12">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-12">
+        Palo Alto, CA (Headquarters)
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-13">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-13">
+        Seattle, WA
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-14">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-14">
+        Austin, TX
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+        <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-10">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-10" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-10">
+        
+            UK
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+        <clr-tree-node _ngcontent-c20="" class="clr-tree-node ng-tns-c29-11">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-11" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-11">
+        
+            India
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+</clr-tree-node-basic-structure-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Basic Tree With Icons</h4>
+                    <p>
+                        A tree can include icons to represent the type of nodes within that group.
+                        Icons appear between the collapse/expand arrow and the parent node title.
+                    </p>
+                    <p>
+                        When using icons in a tree, make sure to use them on all nodes.
+                        Do not alternate between using and not using icons within the same tree.
+                    </p>
+                    <p>
+                        If using a tree in the context of other components, make sure those icons
+                        are distinctive and easily recognizable. Use neutral colors to avoid
+                        overloading the tree and related components with colors and shapes.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-view-dynamic-demo _nghost-c21="">
+<div _ngcontent-c21="" class="row">
+    <div _ngcontent-c21="" class="col-xs-12">
+        <!----><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-15">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-15" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-15">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Applications
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-18">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-18">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link active">
+                        <clr-icon _ngcontent-c21="" shape="calendar"></clr-icon>
+                        Calendar
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-19">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-19">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="line-chart"></clr-icon>
+                        Charts
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-20">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-20">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="dashboard"></clr-icon>
+                        Dashboard
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-21">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-21">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="map"></clr-icon>
+                        Maps
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-22">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-22">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="email"></clr-icon>
+                        Mail
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-23">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-23">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="bar-chart"></clr-icon>
+                        Numbers
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-24">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-24">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="tasks"></clr-icon>
+                        Tasks
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-25">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-25">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="flag"></clr-icon>
+                        Reminders
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-16">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-16" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-16">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Files
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-17">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-17" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-17">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Images
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+    </div>
+</div>
+
+<!---->
+</clr-tree-view-dynamic-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Checkbox Tree</h4>
+                    <p>
+                        A checkbox tree features checkboxes between the collapse/expand
+                        arrow and the name to indicate whether a node is selected. A
+                        parent node with children that are both selected and not selected
+                        is shown with an “indeterminate” state.
+                    </p>
+                    <p>
+                        Checkbox trees should not be used together with icons for the nodes.
+                        As with icon trees, make sure to put checkboxes on all nodes of a
+                        checkbox tree. Do not alternate between types of trees in a checkbox
+                        tree.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-view-prepopulate-demo _nghost-c22="">
+
+<clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-1">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-1" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-1 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-1" id="clr-checkbox-9" name="null">
+        <label for="clr-checkbox-9">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-1">
+        
+    Permissions
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-26">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-26" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-26 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-26" id="clr-checkbox-2" name="null">
+        <label for="clr-checkbox-2">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-26">
+        
+            Authenticated Users
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-29">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-29 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-29" id="clr-checkbox-0" name="null" checked="">
+        <label for="clr-checkbox-0">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-29">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-30">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-30 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-30" id="clr-checkbox-1" name="null">
+        <label for="clr-checkbox-1">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-30">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-27">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-27" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-27 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-27" id="clr-checkbox-5" name="null" checked="">
+        <label for="clr-checkbox-5">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-27">
+        
+            Owners
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-31">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-31 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-31" id="clr-checkbox-3" name="null" checked="">
+        <label for="clr-checkbox-3">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-31">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-32">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-32 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-32" id="clr-checkbox-4" name="null" checked="">
+        <label for="clr-checkbox-4">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-32">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-28">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-28" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-28 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-28" id="clr-checkbox-8" name="null">
+        <label for="clr-checkbox-8">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-28">
+        
+            Public
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-33">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-33 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-33" id="clr-checkbox-6" name="null">
+        <label for="clr-checkbox-6">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-33">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-34">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-34 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-34" id="clr-checkbox-7" name="null" checked="">
+        <label for="clr-checkbox-7">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-34">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+
+<!---->
+</clr-tree-view-prepopulate-demo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Style</h3>
+
+            <p>
+                The styling of each piece of a tree node is consistent across the different types of trees.
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Touch Targets</h4>
+                    <p>
+                        The dimensions of the expand/collapse arrow and the node title allow
+                        for a comfortable touch target allowing use with a mouse or a touch screen.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Touch Targets" src="assets/images/documentation/tree-view/example_tree_touch.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info has-margin-top-b2">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                        </div>
+                        <div class="alert-text">
+                            Touch Targets are relevant even outside of a mobile form factor.
+                            Many new desktop environments, especially those running Windows,
+                            allow for the use of a touch screen and should be considered
+                            when designing your applications.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Behavior</h3>
+            <p>
+                To explain the behavior of the tree, here is the terminology we’ll be using in this section:
+            </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <h6>Highlight</h6>
+                    <p>Click on a node in the tree to either “highlight” it or navigate to its relative content.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <h6>Select</h6>
+                    <p>Choose items to apply an action. For example, selecting a checkbox in the tree.</p>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <h6>Expand / Collapse</h6>
+                    <p>Use the arrow to the left of a node to expand or collapse a node in the tree.</p>
+                </div>
+            </div>
+
+            <h3>Interacting With Nodes</h3>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Expanding / Collapsing Nodes</h4>
+                    <p>
+                        To expand or collapse a parent node, the user clicks on the expand/collapse arrow.
+                        Clicking on the node item itself does not expand or collapse a node.
+                        It serves as a highlighting mechanism.
+                    </p>
+                    <p>
+                        In read-only trees where highlighting is not an option,
+                        this pattern remains true for consistency.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img alt="Interacting With Nodes" src="assets/images/documentation/tree-view/example_tree_interacting.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Highlighting Tree Nodes</h4>
+                    <p>
+                        To navigate to a content area based on a tree node or to highlight
+                        a tree node in order to take a subsequent action based on
+                        the selection, a user clicks on the node title itself.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img alt="Highlighting Tree Nodes" src="assets/images/documentation/tree-view/example_tree_highlighting.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Interacting With Checkbox Trees</h4>
+                    <p>
+                        With a checkbox tree, a user is able to perform one or a
+                        combination of three actions by clicking on one of three
+                        distinct targets:
+                    </p>
+                    <ol class="list">
+                        <li style="margin-top:24px">
+                            Expanding and Collapsing: a user is able to perform this
+                            action by clicking on the expand / collapse arrow.
+                        </li>
+                        <li style="margin-top:24px">
+                            Checking a Checkbox: this would require clicking on the
+                            checkbox itself to check or uncheck a treenode. This
+                            will also affect the status of the parent node’s checkbox.
+                        </li>
+                        <li style="margin-top:24px">
+                            Highlighting Tree Node: a user can highlight a tree node by
+                            clicking on the name (label) of the tree node. This allows
+                            for the possibility of loading content based on selection
+                            to provide more information on a tree node.
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img alt="Interacting with Checkbox Trees" src="assets/images/documentation/tree-view/example_tree_checkbox_interacting.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Loading Data</h3>
+            <p>The way to load data within the tree is based on the scenario in which the tree is being used.</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h6>Load Parent Nodes First</h6>
+                    <p>
+                        With a dynamic tree, make sure to load the parent
+                        nodes first and then lazy load child nodes when requested.
+                    </p>
+                    <p>
+                        A general goal to keep in mind is that you want to minimize
+                        the time a user needs to spend before their first
+                        interaction with the tree as well as every
+                        subsequent interaction afterwards.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h6-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <img alt="Loading Data" src="assets/images/documentation/tree-view/example_tree_lazyloading.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <h3>Basic Tree Node</h3>
+
+            <p>
+                A basic tree can be created by simply nesting
+                <code class="clr-code">clr-tree-node</code> tags along with the
+                <code class="clr-code">clrIfExpanded</code> directive.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-basic-structure-dm-demo _nghost-c23="">
+<clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-2">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-2" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-2">
+        
+    David Wallace (CFO)
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-35">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-35" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-35">
+        
+            Michael Scott (Regional Manager)
+
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-36">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-36">
+        Dwight K. Schrute (Assistant to the Regional Manager)
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-37">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-37" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-37">
+        
+                    Jim Halpert (Head of Sales)
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-38">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-38" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-38">
+        
+                    Angela Martin (Head of Accounting)
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-39">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-39" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-39">
+        
+                    Kelly Kapoor (Head of Customer Service)
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-40">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-40">
+        
+                    Creed Bratton (Quality Assurance)
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-41">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-41">
+        
+                    Meredith Palmer (Supplier Relations)
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-42">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-42">
+        
+                    Toby Flenderson (Human Resources)
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-43">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-43">
+        
+                    Pam Beesly (Reception)
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c23="" class="clr-tree-node ng-tns-c29-44">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-44">
+        
+                    Darryl Philbin (Warehouse)
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+
+<clr-example _ngcontent-c23="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node&gt;
+    David Wallace (CFO)
+    &lt;ng-template [clrIfExpanded]="true"&gt;
+        &lt;clr-tree-node&gt;
+            Michael Scott (Regional Manager)
+
+            &lt;ng-template [clrIfExpanded]="true"&gt;
+                &lt;clr-tree-node&gt;Dwight K. Schrute (Assistant to the Regional Manager)&lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Jim Halpert (Head of Sales)
+                    &lt;ng-template clrIfExpanded&gt;
+                        &lt;clr-tree-node&gt;Andy Bernard&lt;/clr-tree-node&gt;
+                        &lt;clr-tree-node&gt;Stanley Hudson&lt;/clr-tree-node&gt;
+                        &lt;clr-tree-node&gt;Phyllis Vance&lt;/clr-tree-node&gt;
+                        &lt;clr-tree-node&gt;Todd Packer&lt;/clr-tree-node&gt;
+                    &lt;/ng-template&gt;
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Angela Martin (Head of Accounting)
+                    &lt;ng-template clrIfExpanded&gt;
+                        &lt;clr-tree-node&gt;Kevin Malone&lt;/clr-tree-node&gt;
+                        &lt;clr-tree-node&gt;Oscar Martinez&lt;/clr-tree-node&gt;
+                    &lt;/ng-template&gt;
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Kelly Kapoor (Head of Customer Service)
+                    &lt;ng-template clrIfExpanded&gt;
+                        &lt;clr-tree-node&gt;Ryan Howard (Temp)&lt;/clr-tree-node&gt;
+                    &lt;/ng-template&gt;
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Creed Bratton (Quality Assurance)
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Meredith Palmer (Supplier Relations)
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Toby Flenderson (Human Resources)
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Pam Beesly (Reception)
+                &lt;/clr-tree-node&gt;
+
+                &lt;clr-tree-node&gt;
+                    Darryl Philbin (Warehouse)
+                &lt;/clr-tree-node&gt;
+            &lt;/ng-template&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+</clr-tree-node-basic-structure-dm-demo>
+            </section>
+
+            <p>
+                The <code class="clr-code">clrIfExpanded</code> directive supports two-way binding
+                which can be used to expand/collapse a tree node.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-label-change-expand-demo _nghost-c24="">
+<clr-tree-node _ngcontent-c24="" class="clr-tree-node ng-tns-c29-3">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-3" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-3">
+        
+    I am expanded
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <clr-tree-node _ngcontent-c24="" class="clr-tree-node ng-tns-c29-45">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-45">
+        
+            Child Tree Node
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+
+<clr-example _ngcontent-c24="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node&gt;
+    {{expanded ? "I am expanded" : "I am collapsed"}}
+    &lt;ng-template [(clrIfExpanded)]="expanded"&gt;
+        &lt;clr-tree-node&gt;
+            Child Tree Node
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+<clr-example _ngcontent-c24="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">export class TreeNodeLabelChangeOnExpandDemo {
+    expanded: boolean = true;
+}</code></pre>
+    </clr-example>
+</clr-tree-node-label-change-expand-demo>
+            </section>
+
+            <h3>Routing using a Tree</h3>
+
+            <p>
+                Use the <code class="clr-code">.clr-treenode-link</code> class to style content inside of a Tree Node
+                as clickable. To indicate an active Tree Node use the <code class="clr-code">.active</code> class
+                along with <code class="clr-code">.clr-treenode-link</code>.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-routing-demo _nghost-c25="">
+<div _ngcontent-c25="" class="row">
+    <div _ngcontent-c25="" class="col-xs-12 col-md-4">
+        <clr-tree-node _ngcontent-c25="" class="clr-tree-node ng-tns-c29-4">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-4" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-4">
+        
+            The Beatles
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <clr-tree-node _ngcontent-c25="" class="clr-tree-node ng-tns-c29-46">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-46">
+        
+                    <button _ngcontent-c25="" class="clr-treenode-link active">Abbey Road
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c25="" class="clr-tree-node ng-tns-c29-47">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-47">
+        
+                    <button _ngcontent-c25="" class="clr-treenode-link">Revolver
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+
+                <clr-tree-node _ngcontent-c25="" class="clr-tree-node ng-tns-c29-48">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-48">
+        
+                    <button _ngcontent-c25="" class="clr-treenode-link">Rubber Soul
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    </div>
+    <div _ngcontent-c25="" class="col-xs-12 col-md-8 example-outlet">
+        <h4 _ngcontent-c25="" style="margin-top: 0">Abbey Road (1969)</h4>
+        <p _ngcontent-c25="">
+                Abbey Road is the eleventh studio album by the English rock band 
+                the Beatles, released on 26 September 1969 by Apple Records. 
+                The recording sessions for the album were the last in which all 
+                four Beatles participated. Although Let It Be was the final album 
+                that the Beatles completed before the band's dissolution in April 1970, 
+                most of the album had been recorded before the Abbey Road sessions began.
+                A double A-side single from the album, "Something"/"Come Together", 
+                released in October, topped the Billboard chart in the US.
+            </p>
+    </div>
+</div>
+
+<clr-example _ngcontent-c25="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node&gt;
+    The Beatles
+    &lt;ng-template [clrIfExpanded]="true"&gt;
+        &lt;clr-tree-node&gt;
+            &lt;a
+                [routerLink]="['./album1']"
+                class="clr-treenode-link"
+                routerLinkActive="active"&gt;Abbey Road&lt;/a&gt;
+        &lt;/clr-tree-node&gt;
+
+        &lt;clr-tree-node&gt;
+            &lt;a
+                [routerLink]="['./album2']"
+                class="clr-treenode-link"
+                routerLinkActive="active"&gt;Revolver&lt;/a&gt;
+        &lt;/clr-tree-node&gt;
+
+        &lt;clr-tree-node&gt;
+            &lt;a
+                [routerLink]="['./album3']"
+                class="clr-treenode-link"
+                routerLinkActive="active"&gt;Rubber Soul&lt;/a&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+    </clr-example>
+</clr-tree-node-routing-demo>
+            </section>
+
+            <h3>Generating A Tree Dynamically</h3>
+
+            <section class="clr-demo">
+                <clr-tree-view-dynamic-demo _nghost-c21="">
+<div _ngcontent-c21="" class="row">
+    <div _ngcontent-c21="" class="col-xs-12 col-md-5">
+        <!----><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-49">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-49" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-49">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Applications
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-52">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-52">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link active">
+                        <clr-icon _ngcontent-c21="" shape="calendar"></clr-icon>
+                        Calendar
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-53">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-53">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="line-chart"></clr-icon>
+                        Charts
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-54">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-54">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="dashboard"></clr-icon>
+                        Dashboard
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-55">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-55">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="map"></clr-icon>
+                        Maps
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-56">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-56">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="email"></clr-icon>
+                        Mail
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-57">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-57">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="bar-chart"></clr-icon>
+                        Numbers
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-58">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-58">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="tasks"></clr-icon>
+                        Tasks
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-59">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-59">
+        
+                    <button _ngcontent-c21="" class="clr-treenode-link">
+                        <clr-icon _ngcontent-c21="" shape="flag"></clr-icon>
+                        Reminders
+                    </button>
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-50">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-50" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-50">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Files
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c21="" class="clr-tree-node ng-tns-c29-51">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-51" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-51">
+        
+            <clr-icon _ngcontent-c21="" shape="folder"></clr-icon>
+            Images
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+    </div>
+</div>
+
+<!----><div _ngcontent-c21="">
+    <clr-example _ngcontent-c21="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node *ngFor="let directory of rootDirectory"&gt;
+    &lt;clr-icon [attr.shape]="directory.icon"&gt;&lt;/clr-icon&gt;
+    {{directory.name}}
+    &lt;ng-template [(clrIfExpanded)]="directory.expanded"&gt;
+        &lt;clr-tree-node *ngFor="let file of directory.files"&gt;
+            &lt;button
+                    (click)="openFile(directory.name, file.name)"
+                    class="clr-treenode-link"
+                    [class.active]="file.active"&gt;
+                &lt;clr-icon [attr.shape]="file.icon"&gt;&lt;/clr-icon&gt;
+                {{file.name}}
+            &lt;/button&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+    <clr-example _ngcontent-c21="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">rootDirectory: any[] = [
+        {
+            name: "Applications",
+            icon: "folder",
+            expanded: true,
+            files: [
+                {
+                    icon: "calendar",
+                    name: "Calendar",
+                    active: true
+                },
+                {
+                    icon: "line-chart",
+                    name: "Charts",
+                    active: false
+                },
+                {
+                    icon: "dashboard",
+                    name: "Dashboard",
+                    active: false
+                },
+                {
+                    icon: "map",
+                    name: "Maps",
+                    active: false
+                },
+                ...
+            ]
+        },
+        {
+            name: "Files",
+            icon: "folder",
+            expanded: false,
+            files: [
+                {
+                    icon: "file",
+                    name: "Cover Letter.doc",
+                    active: false
+                },
+                ...
+            ]
+        },
+        {
+            name: "Images",
+            icon: "folder",
+            expanded: false,
+            files: [
+                {
+                    icon: "image",
+                    name: "Screenshot.png",
+                    active: false
+                },
+                ...
+            ]
+        }
+    ];
+    
+    openFile(directoryName: string, fileName: string) {
+        ...
+        ...
+    }</code></pre>
+    </clr-example>
+</div>
+</clr-tree-view-dynamic-demo>
+            </section>
+
+            <h3>Lazy Loading A Tree Node</h3>
+
+            <p>
+                A node can be lazily loaded by leveraging the <code class="clr-code">clrLoading</code>
+                directive.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-node-lazy-loading-demo _nghost-c26="">
+<clr-tree-node _ngcontent-c26="" class="clr-tree-node ng-tns-c29-5">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-5" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="right"></clr-icon>
+    </button>
+    <!---->
+    <!---->
+    <div class="clr-treenode-content" id="clr-id-5">
+        
+    <clr-icon _ngcontent-c26="" shape="building"></clr-icon>
+    Office Locations
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+</div>
+</clr-tree-node>
+
+<clr-example _ngcontent-c26="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node&gt;
+    &lt;clr-icon shape="building"&gt;&lt;/clr-icon&gt;
+    Office Locations
+    &lt;ng-template clrIfExpanded&gt;
+        &lt;lazy-loaded-locations&gt;&lt;/lazy-loaded-locations&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+<clr-example _ngcontent-c26="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">import {Component, Input, OnInit} from "@angular/core";
+
+@Component({
+    selector: "lazy-loaded-locations",
+    template: `
+        &lt;ng-container [clrLoading]="loading"&gt;
+            &lt;clr-tree-node *ngFor="let location of locations"&gt;
+                {{location}}
+            &lt;/clr-tree-node&gt;
+        &lt;/ng-container&gt;
+    `
+})
+export class LazyLoadedLocationsComponent implements OnInit {
+    @Input() node: string;
+    locations: string[];
+    loading: boolean;
+
+    ngOnInit() {
+        this.loading = true;
+        // This would be a call to your service that communicates with the server
+        this.locations = fetchLocations();
+    }
+}</code></pre>
+    </clr-example>
+</clr-tree-node-lazy-loading-demo>
+            </section>
+
+            <h3>Checkbox Tree</h3>
+
+            <p>
+                Selection can be enable on all tree nodes by using the
+                <code class="clr-code">[(clrSelected)]</code> input on the root node.
+            </p>
+
+            <section class="clr-demo">
+                <clr-tree-view-basic-structure-demo _nghost-c27="">
+
+<div _ngcontent-c27="" class="row">
+    <div _ngcontent-c27="" class="col-xs-12 col-sm-12 col-md-4">
+        <clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-6">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-6" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-6 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-6" id="clr-checkbox-25" name="null">
+        <label for="clr-checkbox-25">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-6">
+        
+            Permissions
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-60">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-60" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-60 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-60" id="clr-checkbox-14" name="null">
+        <label for="clr-checkbox-14">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-60">
+        
+                    Authenticated Users
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                        <!----><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-63">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-63 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-63" id="clr-checkbox-10" name="null" checked="">
+        <label for="clr-checkbox-10">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-63">
+        
+                            Read
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-64">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-64 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-64" id="clr-checkbox-11" name="null" checked="">
+        <label for="clr-checkbox-11">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-64">
+        
+                            Modify
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-65">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-65 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-65" id="clr-checkbox-12" name="null">
+        <label for="clr-checkbox-12">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-65">
+        
+                            Create
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-66">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-66 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-66" id="clr-checkbox-13" name="null">
+        <label for="clr-checkbox-13">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-66">
+        
+                            Delete
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-61">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-61" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-61 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-61" id="clr-checkbox-19" name="null" checked="">
+        <label for="clr-checkbox-19">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-61">
+        
+                    Owners
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                        <!----><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-67">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-67 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-67" id="clr-checkbox-15" name="null" checked="">
+        <label for="clr-checkbox-15">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-67">
+        
+                            Read
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-68">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-68 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-68" id="clr-checkbox-16" name="null" checked="">
+        <label for="clr-checkbox-16">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-68">
+        
+                            Modify
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-69">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-69 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-69" id="clr-checkbox-17" name="null" checked="">
+        <label for="clr-checkbox-17">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-69">
+        
+                            Create
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-70">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-70 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-70" id="clr-checkbox-18" name="null" checked="">
+        <label for="clr-checkbox-18">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-70">
+        
+                            Delete
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-62">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-62" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-62 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-62" id="clr-checkbox-24" name="null">
+        <label for="clr-checkbox-24">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-62">
+        
+                    Public
+                    
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                        <!----><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-71">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-71 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-71" id="clr-checkbox-20" name="null" checked="">
+        <label for="clr-checkbox-20">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-71">
+        
+                            Read
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-72">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-72 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-72" id="clr-checkbox-21" name="null">
+        <label for="clr-checkbox-21">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-72">
+        
+                            Modify
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-73">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-73 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-73" id="clr-checkbox-22" name="null">
+        <label for="clr-checkbox-22">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-73">
+        
+                            Create
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c27="" class="clr-tree-node ng-tns-c29-74">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-74 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-74" id="clr-checkbox-23" name="null">
+        <label for="clr-checkbox-23">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-74">
+        
+                            Delete
+                        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    </div>
+    <div _ngcontent-c27="" class="col-xs-12 col-sm-12 col-md-8">
+        <pre _ngcontent-c27="" class="example-display-json">[
+  {
+    "type": "Authenticated Users",
+    "selected": false,
+    "expanded": true,
+    "rights": [
+      {
+        "name": "Read",
+        "enable": true
+      },
+      {
+        "name": "Modify",
+        "enable": true
+      },
+      {
+        "name": "Create",
+        "enable": false
+      },
+      {
+        "name": "Delete",
+        "enable": false
+      }
+    ]
+  },
+  {
+    "type": "Owners",
+    "selected": true,
+    "expanded": true,
+    "rights": [
+      {
+        "name": "Read",
+        "enable": true
+      },
+      {
+        "name": "Modify",
+        "enable": true
+      },
+      {
+        "name": "Create",
+        "enable": true
+      },
+      {
+        "name": "Delete",
+        "enable": true
+      }
+    ]
+  },
+  {
+    "type": "Public",
+    "selected": false,
+    "expanded": true,
+    "rights": [
+      {
+        "name": "Read",
+        "enable": true
+      },
+      {
+        "name": "Modify",
+        "enable": false
+      },
+      {
+        "name": "Create",
+        "enable": false
+      },
+      {
+        "name": "Delete",
+        "enable": false
+      }
+    ]
+  }
+]
+        </pre>
+    </div>
+</div>
+
+<clr-example _ngcontent-c27="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node [(clrSelected)]="selected"&gt;
+    Permissions
+    &lt;ng-template [clrIfExpanded]="true"&gt;
+        &lt;clr-tree-node
+                *ngFor="let permission of permissions"
+                [(clrSelected)]="permission.selected"&gt;
+            {{permission.type}}
+            &lt;ng-template [(clrIfExpanded)]="permission.expanded"&gt;
+                &lt;clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable"&gt;
+                    {{right.name}}
+                &lt;/clr-tree-node&gt;
+            &lt;/ng-template&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+<clr-example _ngcontent-c27="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">@Component({
+    selector: "...",
+    templateUrl: "..."
+})
+export class Permissions {
+    selected: boolean = false;
+
+    permissions: any = [
+        {
+            type: "Authenticated Users",
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: false
+                },
+                {
+                    name: "Delete",
+                    enable: false
+                }
+            ]
+        },
+        {
+            type: "Owners",
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                },
+                {
+                    name: "Create",
+                    enable: true
+                },
+                {
+                    name: "Delete",
+                    enable: true
+                }
+            ]
+        }
+    ];
+}</code></pre>
+    </clr-example>
+</clr-tree-view-basic-structure-demo>
+            </section>
+
+            <h3>Toggling The Checked State Of A Tree Node</h3>
+
+            <section class="clr-demo">
+                <clr-tree-node-selection-demo _nghost-c28="">
+
+<clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-7">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-7" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-7 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-7" id="clr-checkbox-34" name="null">
+        <label for="clr-checkbox-34">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-7">
+        
+    Home
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-75">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-75" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-75 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-75" id="clr-checkbox-32" name="null">
+        <label for="clr-checkbox-32">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-75">
+        
+            Documents
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-77">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-77 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-77" id="clr-checkbox-26" name="null">
+        <label for="clr-checkbox-26">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-77">
+        Document1.txt
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-78">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-78 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-78" id="clr-checkbox-27" name="null">
+        <label for="clr-checkbox-27">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-78">
+        Document2.txt
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-79">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-79 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-79" id="clr-checkbox-28" name="null">
+        <label for="clr-checkbox-28">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-79">
+        Document3.txt
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+
+        <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-76">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-76" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-76 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-76" id="clr-checkbox-33" name="null">
+        <label for="clr-checkbox-33">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-76">
+        
+            Pictures
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-80">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-80 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-80" id="clr-checkbox-29" name="null">
+        <label for="clr-checkbox-29">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-80">
+        pic1.png
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-81">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-81 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-81" id="clr-checkbox-30" name="null">
+        <label for="clr-checkbox-30">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-81">
+        pic2.png
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+                <clr-tree-node _ngcontent-c28="" class="clr-tree-node ng-tns-c29-82">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-82 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-82" id="clr-checkbox-31" name="null">
+        <label for="clr-checkbox-31">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-82">
+        pic3.png
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+
+<button _ngcontent-c28="" class="btn btn-sm" type="button">Toggle Pictures</button>
+
+<clr-example _ngcontent-c28="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node [(clrSelected)]="selected"&gt;
+    Home
+    &lt;ng-template [clrIfExpanded]="true"&gt;
+        &lt;clr-tree-node&gt;
+            Documents
+            &lt;ng-template [clrIfExpanded]="true"&gt;
+                &lt;clr-tree-node&gt;Document1.txt&lt;/clr-tree-node&gt;
+                &lt;clr-tree-node&gt;Document2.txt&lt;/clr-tree-node&gt;
+                &lt;clr-tree-node&gt;Document3.txt&lt;/clr-tree-node&gt;
+            &lt;/ng-template&gt;
+        &lt;/clr-tree-node&gt;
+
+        &lt;clr-tree-node [(clrSelected)]="picturesNodeSelection"&gt;
+            Pictures
+            &lt;ng-template [clrIfExpanded]="true"&gt;
+                &lt;clr-tree-node&gt;pic1.png&lt;/clr-tree-node&gt;
+                &lt;clr-tree-node&gt;pic2.png&lt;/clr-tree-node&gt;
+                &lt;clr-tree-node&gt;pic3.png&lt;/clr-tree-node&gt;
+            &lt;/ng-template&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;
+
+&lt;button class="btn btn-sm" type="button" (click)="togglePicturesSelection()"&gt;Toggle Pictures&lt;/button&gt;</code></pre>
+    </clr-example>
+<clr-example _ngcontent-c28="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">export class TreeNodeSelectionDemo {
+    selected: boolean = false;
+    picturesNodeSelection: boolean = false;
+
+    togglePicturesSelection() {
+        this.picturesNodeSelection = !this.picturesNodeSelection;
+    }
+}</code></pre>
+    </clr-example>
+</clr-tree-node-selection-demo>
+            </section>
+
+            <h3>Prepopulating a Checkbox Tree</h3>
+
+            <section class="clr-demo">
+                <clr-tree-view-prepopulate-demo _nghost-c22="">
+
+<clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-8">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-8" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-8 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-8" id="clr-checkbox-44" name="null">
+        <label for="clr-checkbox-44">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-8">
+        
+    Permissions
+    
+
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+        <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-83">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-83" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-83 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-83" id="clr-checkbox-37" name="null">
+        <label for="clr-checkbox-37">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-83">
+        
+            Authenticated Users
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-86">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-86 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-86" id="clr-checkbox-35" name="null" checked="">
+        <label for="clr-checkbox-35">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-86">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-87">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-87 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-87" id="clr-checkbox-36" name="null">
+        <label for="clr-checkbox-36">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-87">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-84">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-84" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-84 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-84" id="clr-checkbox-40" name="null" checked="">
+        <label for="clr-checkbox-40">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-84">
+        
+            Owners
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-88">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-88 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-88" id="clr-checkbox-38" name="null" checked="">
+        <label for="clr-checkbox-38">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-88">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-89">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-89 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-89" id="clr-checkbox-39" name="null" checked="">
+        <label for="clr-checkbox-39">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-89">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-85">
+
+<div class="clr-tree-node-content-container">
+    <!----><button class="clr-treenode-caret ng-tns-c29-85" type="button">
+        <clr-icon class="clr-treenode-caret-icon" shape="caret" dir="down"></clr-icon>
+    </button>
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-85 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-85" id="clr-checkbox-43" name="null">
+        <label for="clr-checkbox-43">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-85">
+        
+            Public
+            
+        
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    <!---->
+                <!----><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-90">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-90 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-90" id="clr-checkbox-41" name="null">
+        <label for="clr-checkbox-41">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-90">
+        
+                    Read
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node><clr-tree-node _ngcontent-c22="" class="clr-tree-node ng-tns-c29-91">
+
+<div class="clr-tree-node-content-container">
+    <!---->
+    <!---->
+    <!----><clr-checkbox class="clr-treenode-checkbox ng-tns-c29-91 checkbox ng-untouched ng-pristine ng-valid">
+        
+        <input type="checkbox" aria-labelledby="clr-id-91" id="clr-checkbox-42" name="null" checked="">
+        <label for="clr-checkbox-42">
+            
+        </label>
+    </clr-checkbox>
+    <div class="clr-treenode-content" id="clr-id-91">
+        
+                    Modify
+                
+    </div>
+</div>
+
+<div class="clr-treenode-children ng-trigger ng-trigger-childNodesState">
+    
+    
+</div>
+</clr-tree-node>
+            
+</div>
+</clr-tree-node>
+    
+</div>
+</clr-tree-node>
+
+<!----><div _ngcontent-c22="">
+    <clr-example _ngcontent-c22="" clrlanguage="typescript" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-typescript">export class TreeViewPrepopulateDemo {
+    selected: boolean = false;
+
+    permissions: any = [
+        {
+            type: "Authenticated Users",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: false
+                }
+            ]
+        },
+        {
+            type: "Owners",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: true
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                }
+            ]
+        },
+        {
+            type: "Public",
+            selected: false,
+            expanded: true,
+            rights: [
+                {
+                    name: "Read",
+                    enable: false
+                },
+                {
+                    name: "Modify",
+                    enable: true
+                }
+            ]
+        }
+    ];
+}</code></pre>
+    </clr-example>
+    <clr-example _ngcontent-c22="" clrlanguage="html" _nghost-c30="">
+        <pre _ngcontent-c30=""><code _ngcontent-c30="" class="language-html">&lt;clr-tree-node [(clrSelected)]="selected"&gt;
+    Permissions
+    &lt;ng-template [clrIfExpanded]="true"&gt;
+        &lt;clr-tree-node
+                *ngFor="let permission of permissions"
+                [(clrSelected)]="permission.selected"&gt;
+            {{permission.type}}
+            &lt;ng-template [(clrIfExpanded)]="permission.expanded"&gt;
+                &lt;clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable"&gt;
+                    {{right.name}}
+                &lt;/clr-tree-node&gt;
+            &lt;/ng-template&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;/ng-template&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </clr-example>
+</div>
+</clr-tree-view-prepopulate-demo>
+            </section>
+
+            <h2>Summary of Options</h2>
+
+            <h4>Tree Node (clr-tree-node)</h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrSelected)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of a Tree Node: Checked or Unchecked
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrIndeterminate]</b>
+                        <div class="hidden-sm-up">Type: any</div>
+                        <div class="hidden-sm-up">Default: NA</div>
+                    </td>
+                    <td class="hidden-xs-down">any</td>
+                    <td class="hidden-xs-down">NA</td>
+                    <td class="left">
+                        Sets the indeterminate state of a tree node.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4>Directives used along with clr-tree-node</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrIfExpanded)]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Two-way binding on the state of the Tree-Node: expanded / collapsed
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrLoading]</b>
+                        <div class="hidden-sm-up">Type: boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">any</td>
+                    <td class="hidden-xs-down">NA</td>
+                    <td class="left">
+                        Activates a spinner to indicate that the node children are loading.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-tree-view-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

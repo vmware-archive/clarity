@@ -1,0 +1,1113 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Dropdowns</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.clr-example[_ngcontent-c72]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c72]{height:336px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c73]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c73]{height:336px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c74]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c74]{height:336px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c75]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c75]{height:336px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c76]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c76]{height:336px}</style><style ng-transition="clarity">.clr-example[_ngcontent-c77]{text-align:center}.clr-example.demo-menu-height[_ngcontent-c77]{height:336px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-dropdowns"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-dropdowns-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Dropdowns</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!----><span class="bug bug-ng">
+            <img src="assets/images/bugs/badge_ng.svg" alt="Angular" title="Angular">
+            </span>
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/dropdowns#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/dropdowns#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="a-dropdown-menu-lists-actions-that-users-can-perform-within-an-application-or-on-a-selected-object">A
+            dropdown menu allows the user to choose an option or action from a contextual list. The source of the
+            dropdown is usually a button.</h5>
+
+        <div id="design-guidelines">
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img alt="Dropdown menu styles" src="assets/images/documentation/dropdowns/img_dropdown menu styles.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <h3 id="description">Description</h3>
+            <p></p>
+            <ul class="list">
+                <li>Default line height is 30 px; 36 px for x-small breakpoint (&lt;544px) touch targets</li>
+                <li>Headers and or dividers may be used to organize a longer list of items</li>
+                <li>Menu width: Minimum 168 px; Maximum 336 px</li>
+                <li>Items in the list have hover and click states</li>
+            </ul>
+
+            <div class="clrweb-DoxVersusBox">
+                <div class="clrweb-DoxVersusBox-pin">
+                    <clr-icon shape="pin"></clr-icon>
+                </div>
+                <div class="clrweb-DoxVersusBox-items">
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <clr-dropdown class="dropdown">
+                                <button class="btn btn-link dropdown-toggle" clrdropdowntrigger="" type="button">
+                                    Departments
+                                    <clr-icon shape="caret down"></clr-icon>
+                                </button>
+                                <clr-dropdown-menu clrposition="bottom-left" style="position: absolute; top: 0; bottom: auto; left: 0; right: auto;" class="dropdown-menu is-off-screen">
+        
+                                    <button clrdropdownitem="" type="button" class="dropdown-item">Art</button>
+                                    <button clrdropdownitem="" type="button" class="dropdown-item">Business</button>
+                                    <button clrdropdownitem="" type="button" class="dropdown-item">Science</button>
+                                    <button clrdropdownitem="" type="button" class="dropdown-item">Mathematics</button>
+                                
+    </clr-dropdown-menu>
+                            </clr-dropdown>
+                            <p><b>Dropdown menus</b> present a list of options that take an immediate
+                                action or navigate the user outside of the current context.</p>
+                        </div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-vsWrapper">
+                        <div class="clrweb-DoxVersusBox-vs">vs</div>
+                    </div>
+                    <div class="clrweb-DoxVersusBox-itemWrapper">
+                        <div class="clrweb-DoxVersusBox-item">
+                            <div class="select">
+                                <select id="selects_3">
+                                    <option>New York</option>
+                                    <option>San Francisco</option>
+                                    <option>Austin</option>
+                                    <option>Paris</option>
+                                    <option>Seattle</option>
+                                </select>
+                            </div>
+                            <p><b>Select boxes</b> present a list of options that the user can choose from and
+                                apply to an input field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="behavior">Behavior</h3>
+            <p></p>
+            <ul class="list">
+                <li>Clicking on the toggle opens the dropdown</li>
+                <li>By default, selecting a menu item or clicking outside the menu dismisses the menu. You can change
+                    this behavior to keep the menu open on item selection</li>
+            </ul>
+
+            <h3 id="placement">Placement</h3>
+            <p>
+                By default, a dropdown opens from the bottom of the toggle, along the left side. You can change
+                the placement by using one of the eight direction classes.
+            </p>
+
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img alt="Dropdown menu placement" src="assets/images/documentation/dropdowns/img_menu_placement.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <h3 id="recommendations">Recommendations</h3>
+            <p></p>
+            <ul class="list">
+                <li>Use a button for the toggle. The button can contain either text or an icon</li>
+                <li>Order menu items by usage, except for destructive actions, which belong at the bottom</li>
+                <li>Keep the text short and concise. Long menu items are truncated from the end and an ellipsis added</li>
+                <li>Nested menus may be used to organize long lists of items into categories</li>
+                <li>Limit menus to three levels: Root menu plus up to two levels of nested menus</li>
+                <li>Disable a menu item if:</li>
+                <ul class="list">
+                    <li>It can apply in a different context</li>
+                    <li>The user doesn’t have permissions for the action</li>
+                    <li>An applicable object is not currently selected</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div id="code-examples">
+            <h2 id="nested-menu">Nested Menu</h2>
+
+            <p>Nested menus are an extension of dropdown menus. They save screen space by organizing a long list of
+                items into categories that the user can click to reveal deeper levels.</p>
+
+            <h3>Description</h3>
+            <p></p>
+            <ul class="list">
+                <li>Same visual style as standard dropdown menu with the exception of a darker border (#9A9A9A)</li>
+                <li>Slight overlap (4px) over root menu to emphasize stack order</li>
+                <li>Width: Minimum 168 px; Maximum 336 px</li>
+                <li>Default line height is 30 px; 36 px for x-small breakpoint (&lt;544px)</li>
+            </ul>
+
+            <h3>Interaction</h3>
+            <p></p>
+            <ul class="list">
+                <li>With mouse: Click group name to reveal nested menus. Group name stays in selected state to
+                    serve as a breadcrumb</li>
+                <li>Clicking outside of the menu dismisses all menus</li>
+            </ul>
+
+            <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                    <div class="clrweb-DoxMedia-img">
+                        <img alt="Dropdown nested menu" src="assets/images/documentation/dropdowns/img_nested_levels.png">
+                    </div>
+                </div>
+            </div>
+
+            <h3>Placement</h3>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Dropdown nested menu" src="assets/images/documentation/dropdowns/img_placement_default.png">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Default placement and stack order</h6>
+                            <p>
+                                By default a nested menu pops up on the right side of its root menu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                                <img alt="Dropdown nested menu" src="assets/images/documentation/dropdowns/img_placement_resp.png">
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Small screen / responsive placement and stack order (&lt;544px)</h6>
+                            <p>
+                                If screen space isn’t available to the right of the root menu, the nested menu
+                                appears on the left side. If there is a second nested menu, it appears to the
+                                right of the first nested menu, creating a zig-zag pattern.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="examples">Examples</h3>
+
+            <h6 id="default-dropdown-bottom-left">1. Default dropdown (bottom-left):</h6>
+
+            <clr-dropdown-static-default-demo _nghost-c72="">
+
+<div _ngcontent-c72="" class="clr-example squeeze demo-menu-height" ngnonbindable="">
+    <div _ngcontent-c72="" class="dropdown open">
+        <button _ngcontent-c72="" class="dropdown-toggle btn btn-primary" type="button">
+            Dropdown
+            <clr-icon _ngcontent-c72="" shape="caret down"></clr-icon>
+        </button>
+        <div _ngcontent-c72="" class="dropdown-menu">
+            <h4 _ngcontent-c72="" class="dropdown-header">Dropdown header</h4>
+            <button _ngcontent-c72="" class="dropdown-item active" type="button">Action</button>
+            <button _ngcontent-c72="" class="dropdown-item disabled" type="button">Disabled Link</button>
+            <div _ngcontent-c72="" class="dropdown-divider"></div>
+            <button _ngcontent-c72="" class="dropdown-item" type="button">Lorem.</button>
+            <div _ngcontent-c72="" class="dropdown open right-bottom">
+                <button _ngcontent-c72="" class="dropdown-item active expandable">Lorem ipsum.</button>
+                <div _ngcontent-c72="" class="dropdown-menu">
+                    <button _ngcontent-c72="" class="dropdown-item" type="button">Foo.</button>
+                    <div _ngcontent-c72="" class="dropdown open right-top">
+                        <button _ngcontent-c72="" class="dropdown-item active expandable">Bar.</button>
+                        <div _ngcontent-c72="" class="dropdown-menu">
+                            <button _ngcontent-c72="" class="dropdown-item" type="button">Baz.</button>
+                        </div>
+                    </div>
+                    <button _ngcontent-c72="" class="dropdown-item" type="button">Foo 2.</button>
+                </div>
+            </div>
+            <button _ngcontent-c72="" class="dropdown-item" type="button">Ipsum.</button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c72="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="dropdown open"&gt;
+    &lt;button class="dropdown-toggle btn btn-primary" type="button"&gt;
+        Dropdown
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu"&gt;
+        &lt;h4 class="dropdown-header"&gt;Dropdown header&lt;/h4&gt;
+        &lt;button type="button" class="dropdown-item active"&gt;Action&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item disabled"&gt;Disabled Link&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem.&lt;/button&gt;
+        &lt;div class="dropdown open right-bottom"&gt;
+            &lt;button class="dropdown-item active expandable"&gt;Lorem ipsum.&lt;/button&gt;
+            &lt;div class="dropdown-menu"&gt;
+                &lt;button type="button" class="dropdown-item"&gt;Foo.&lt;/button&gt;
+                &lt;div class="dropdown open right-top"&gt;
+                    &lt;button class="dropdown-item active expandable"&gt;Bar.&lt;/button&gt;
+                    &lt;div class="dropdown-menu"&gt;
+                        &lt;button type="button" class="dropdown-item"&gt;Baz.&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button type="button" class="dropdown-item"&gt;Foo 2.&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Ipsum.&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-static-default-demo>
+
+            <h6 id="bottom-right">2. Bottom-right</h6>
+
+            <clr-dropdown-static-positioning-demo _nghost-c73="">
+
+<div _ngcontent-c73="" class="clr-example squeeze demo-menu-height" ngnonbindable="">
+    <div _ngcontent-c73="" class="dropdown bottom-right open">
+        <button _ngcontent-c73="" class="dropdown-toggle btn btn-primary" type="button">
+            Dropdown
+            <clr-icon _ngcontent-c73="" shape="caret down"></clr-icon>
+        </button>
+        <div _ngcontent-c73="" class="dropdown-menu">
+            <h4 _ngcontent-c73="" class="dropdown-header">Dropdown header</h4>
+            <button _ngcontent-c73="" class="dropdown-item active" type="button">First Action</button>
+            <button _ngcontent-c73="" class="dropdown-item disabled" type="button">Disabled Action</button>
+            <div _ngcontent-c73="" class="dropdown-divider"></div>
+            <button _ngcontent-c73="" class="dropdown-item" type="button">Link 1</button>
+            <button _ngcontent-c73="" class="dropdown-item" type="button">Link 2</button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c73="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="dropdown bottom-right open"&gt;
+    &lt;button type="button" class="dropdown-toggle btn btn-primary"&gt;
+        Dropdown
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu"&gt;
+        &lt;h4 class="dropdown-header"&gt;Dropdown header&lt;/h4&gt;
+        &lt;button type="button" class="dropdown-item active"&gt;First Action&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item disabled"&gt;Disabled Action&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Link 1&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Link 2&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-static-positioning-demo>
+
+            <h6 id="clarity-icon-as-the-dropdown-toggle">3. Clarity icon as the dropdown toggle</h6>
+
+            <clr-dropdown-static-icon-toggle-demo _nghost-c74="">
+
+<div _ngcontent-c74="" class="clr-example squeeze demo-menu-height">
+    <div _ngcontent-c74="" class="dropdown bottom-left open">
+        <button _ngcontent-c74="" class="dropdown-toggle" type="button">
+            <clr-icon _ngcontent-c74="" class="is-error" shape="error" size="24"></clr-icon>
+            <clr-icon _ngcontent-c74="" shape="caret down"></clr-icon>
+        </button>
+        <div _ngcontent-c74="" class="dropdown-menu">
+            <h4 _ngcontent-c74="" class="dropdown-header">Dropdown header</h4>
+            <button _ngcontent-c74="" class="dropdown-item" type="button">Lorem.</button>
+            <button _ngcontent-c74="" class="dropdown-item" type="button">Lorem ipsum.</button>
+            <button _ngcontent-c74="" class="dropdown-item" type="button">Lorem ipsum dolor.</button>
+            <div _ngcontent-c74="" class="dropdown-divider"></div>
+            <button _ngcontent-c74="" class="dropdown-item" type="button">Action 1</button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c74="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="dropdown bottom-left open"&gt;
+    &lt;button type="button" class="dropdown-toggle"&gt;
+        &lt;clr-icon shape="error" class="is-error" size="24"&gt;&lt;/clr-icon&gt;
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu"&gt;
+        &lt;h4 class="dropdown-header"&gt;Dropdown header&lt;/h4&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem.&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem ipsum.&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem ipsum dolor.&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Action 1&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-static-icon-toggle-demo>
+
+            <h6 id="link-button-as-the-dropdown-toggle">4. Link Button as the dropdown toggle</h6>
+
+            <clr-dropdown-static-buttonlink-toggle-demo _nghost-c75="">
+
+<div _ngcontent-c75="" class="clr-example squeeze demo-menu-height" ngnonbindable="">
+    <div _ngcontent-c75="" class="dropdown open">
+        <button _ngcontent-c75="" class="dropdown-toggle btn btn-link" type="button">
+            Dropdown Toggle
+            <clr-icon _ngcontent-c75="" shape="caret down"></clr-icon>
+        </button>
+        <div _ngcontent-c75="" class="dropdown-menu">
+            <h4 _ngcontent-c75="" class="dropdown-header">Dropdown header</h4>
+            <button _ngcontent-c75="" class="dropdown-item" type="button">Lorem.</button>
+            <button _ngcontent-c75="" class="dropdown-item" type="button">Lorem ipsum.</button>
+            <button _ngcontent-c75="" class="dropdown-item" type="button">Lorem ipsum dolor.</button>
+            <div _ngcontent-c75="" class="dropdown-divider"></div>
+            <button _ngcontent-c75="" class="dropdown-item" type="button">Link</button>
+        </div>
+    </div>
+</div>
+<clr-code-snippet _ngcontent-c75="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;div class="dropdown open"&gt;
+    &lt;button type="button" class="dropdown-toggle btn btn-link"&gt;
+        Dropdown Toggle
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;div class="dropdown-menu"&gt;
+        &lt;h4 class="dropdown-header"&gt;Dropdown header&lt;/h4&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem.&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem ipsum.&lt;/button&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Lorem ipsum dolor.&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button type="button" class="dropdown-item"&gt;Link&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-static-buttonlink-toggle-demo>
+
+            <h3>CSS classes</h3>
+
+            <h6 id="dropdown">.dropdown:</h6>
+
+            <p>This class is a wrapper class around the <code class="clr-code">.dropdown-toggle</code> and th
+                <code class="clr-code">.dropdown-menu</code>
+            </p>
+
+            <h6 id="dropdown-toggle">.dropdown-toggle:</h6>
+
+            <p>Extend this class on a button, icon or text link clicking on which the dropdown menu
+                will be activated</p>
+
+            <h6 id="dropdown-menu">.dropdown-menu:</h6>
+
+            <p>A required wrapper intended to contain the dropdown menu. Items in the menu should extend the <code class="clr-code">.dropdown-header</code>
+                or <code class="clr-code">.dropdown-item</code> class. <code class="clr-code">.dropdown-divider</code> 
+                can be on a block element used to seperate item groups.
+                <code class="clr-code">.active</code> class with <code class="clr-code">.dropdown-item</code> adds a
+                different styling for selected elements.
+                Add the <code class="clr-code">.disabled</code> class to dropdown items to style them as disabled.</p>
+
+            <h6 id="open">.open:</h6>
+
+            <p>A class to open the dropdown menu. Must be applied with <code class="clr-code">.dropdown</code></p>
+
+            <p>The following classes when extended along with <code class="clr-code">.dropdown</code> will
+                open the menu in the respective directions:</p>
+
+            <ul class="list">
+                <li>.bottom-left</li>
+                <li>.bottom-right</li>
+                <li>.top-left</li>
+                <li>.top-right</li>
+                <li>.left-bottom</li>
+                <li>.left-top</li>
+                <li>.right-top</li>
+                <li>.right-bottom</li>
+            </ul>
+
+            <p>If used in one of the nested menus (that is, not the root level <code class="clr-code">.dropdown</code>),
+                only the following classes are valid:</p>
+
+            <ul class="list">
+                <li>.bottom-left</li>
+                <li>.bottom-right</li>
+                <li>.top-left</li>
+                <li>.top-right</li>
+            </ul>
+
+
+            <h2 id="angular-component">Angular Component</h2>
+
+            <p>
+                The dropdown component uses the <code class="clr-code">*clrIfOpen</code> structural directive
+                (detailed documentation coming soon) on the
+                menu to indicate clearly that the menu is only present in the DOM when open. We heavily recommend using
+                it for many reasons: better performance, making the intent clear in your own templates,
+                and following a more natural lifecycle for any directives or components inside of the menu.
+            </p>
+            <p>
+                If for some reason this behavior was not the one you wanted, we also support the dropdown menu without a
+                <code class="clr-code">*clrIfOpen</code> directive on it. It will be created eagerly when the dropdown
+                itself initializes, and will not be destroyed or recreated until the dropdown itself is. Please make
+                sure you know exactly why you are omitting this directive if you end up doing so.
+            </p>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <h6><code class="clr-code">&lt;clr-dropdown&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrCloseMenuOnItemClick]</b>
+                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Default: true</div>
+                    </td>
+                    <td class="left hidden-xs-down">Boolean</td>
+                    <td class="left hidden-xs-down">true</td>
+                    <td class="left">If true, the menu will close when a dropdown item is clicked</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h6><code class="clr-code">&lt;clr-dropdown-menu&gt;</code> component</h6>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input / Output</th>
+                    <th class="left hidden-xs-down">Values</th>
+                    <th class="left hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrPosition]</b>
+                        <div class="hidden-sm-up">Values:<br>Direction classnames</div>
+                        <div class="hidden-sm-up">Default: "bottom-left"</div>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        CSS dropdown menu direction classnames.
+                    </td>
+                    <td class="left hidden-xs-down">bottom-left</td>
+                    <td class="left">Sets the direction in which the menu will open. If used in one of the nested menus,
+                        only four classes are valid: bottom-left, bottom-right, top-left, and top-right.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4 id="example">Example</h4>
+
+            <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. <code class="clr-code">clrPosition</code>
+                is set to top-left.
+                Default is bottom-left. For nested <code class="clr-code">&lt;clr-dropdown&gt;</code>,
+                only the following positions are valid:
+                bottom-left, bottom-right, top-left, top-right.</h6>
+
+            <clr-dropdown-angular-positioning-demo _nghost-c76="">
+
+<div _ngcontent-c76="" class="clr-example squeeze">
+    <clr-dropdown _ngcontent-c76="" class="dropdown">
+        <button _ngcontent-c76="" class="btn btn-outline-primary dropdown-toggle" clrdropdowntrigger="" type="button">
+            Dropdown
+            <clr-icon _ngcontent-c76="" shape="caret down"></clr-icon>
+        </button>
+        <!---->
+    </clr-dropdown>
+</div>
+<clr-code-snippet _ngcontent-c76="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-dropdown&gt;
+    &lt;button type="button" class="btn btn-outline-primary" clrDropdownTrigger&gt;
+        Dropdown
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;clr-dropdown-menu clrPosition="top-left" *clrIfOpen&gt;
+        &lt;label class="dropdown-header"&gt;Dropdown header&lt;/label&gt;
+        &lt;button type="button" clrDropdownItem&gt;Action 1&lt;/button&gt;
+        &lt;button type="button" disabled clrDropdownItem&gt;Disabled Action&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;clr-dropdown&gt;
+            &lt;button type="button" clrDropdownTrigger&gt;Link 1&lt;/button&gt;
+            &lt;clr-dropdown-menu&gt;
+                &lt;button type="button" clrDropdownItem&gt;Foo&lt;/button&gt;
+                &lt;clr-dropdown&gt;
+                    &lt;button type="button" clrDropdownTrigger&gt;Bar&lt;/button&gt;
+                    &lt;clr-dropdown-menu clrPosition="left-top"&gt;
+                        &lt;button type="button" clrDropdownItem&gt;Baz&lt;/button&gt;
+                    &lt;/clr-dropdown-menu&gt;
+                &lt;/clr-dropdown&gt;
+            &lt;/clr-dropdown-menu&gt;
+        &lt;/clr-dropdown&gt;
+        &lt;button type="button" clrDropdownItem&gt;Link 2&lt;/button&gt;
+    &lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-angular-positioning-demo>
+
+            <h6 id="clrclosemenuonitemclick-is-set-to-false-default-is-true">2. clrCloseMenuOnItemClick is set to false.
+                Default is true.</h6>
+
+            <clr-dropdown-angular-close-item-false-demo _nghost-c77="">
+
+<div _ngcontent-c77="" class="clr-example squeeze">
+    <clr-dropdown _ngcontent-c77="" class="dropdown">
+        <button _ngcontent-c77="" clrdropdowntrigger="" type="button" class="dropdown-toggle">
+            <clr-icon _ngcontent-c77="" class="is-error" shape="error" size="24"></clr-icon>
+            <clr-icon _ngcontent-c77="" shape="caret down"></clr-icon>
+        </button>
+        <!---->
+    </clr-dropdown>
+</div>
+<clr-code-snippet _ngcontent-c77="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-dropdown [clrCloseMenuOnItemClick]="false"&gt;
+    &lt;button type="button" clrDropdownTrigger&gt;
+        &lt;clr-icon shape="error" class="is-error" size="24"&gt;&lt;/clr-icon&gt;
+        &lt;clr-icon shape="caret down"&gt;&lt;/clr-icon&gt;
+    &lt;/button&gt;
+    &lt;clr-dropdown-menu *clrIfOpen&gt;
+        &lt;label class="dropdown-header"&gt;Dropdown header&lt;/label&gt;
+        &lt;button type="button" clrDropdownItem&gt;Action 1&lt;/button&gt;
+        &lt;button type="button" clrDropdownItem&gt;Action 2&lt;/button&gt;
+        &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button type="button" clrDropdownItem&gt;Link 1&lt;/button&gt;
+        &lt;button type="button" clrDropdownItem&gt;Link 2&lt;/button&gt;
+    &lt;/clr-dropdown-menu&gt;
+&lt;/clr-dropdown&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-dropdown-angular-close-item-false-demo>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-dropdowns-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

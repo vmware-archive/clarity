@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <clr-tree-node>
+            The Beatles
+            <ng-template [clrIfExpanded]="true">
+                <clr-tree-node>
+                    <button
+                            (click)="showPane(0)"
+                            class="clr-treenode-link"
+                            [class.active]="pane === 0">Abbey Road
+                    </button>
+                </clr-tree-node>
+
+                <clr-tree-node>
+                    <button
+                            (click)="showPane(1)"
+                            class="clr-treenode-link"
+                            [class.active]="pane === 1">Revolver
+                    </button>
+                </clr-tree-node>
+
+                <clr-tree-node>
+                    <button
+                            (click)="showPane(2)"
+                            class="clr-treenode-link"
+                            [class.active]="pane === 2">Rubber Soul
+                    </button>
+                </clr-tree-node>
+            </ng-template>
+        </clr-tree-node>
+    </div>
+    <div class="col-xs-12 col-md-8 example-outlet">
+        <h4 style="margin-top: 0">{{content[pane].title}}</h4>
+        <p>{{content[pane].content}}</p>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="example_html" clrLanguage="html"></clr-code-snippet>

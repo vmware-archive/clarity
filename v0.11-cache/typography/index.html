@@ -1,0 +1,1277 @@
+<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Typography</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        },
+                        i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document,
+                    'script',
+                    'https://www.google-analytics.com/analytics.js',
+                    'ga');
+            ga('create', 'UA-86120402-1', 'auto');
+
+            window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
+                ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.link-normal[_ngcontent-c132]{color:#007cbb;text-decoration:none}.link-hovered[_ngcontent-c132]{color:#007cbb;text-decoration:underline}.link-clicked[_ngcontent-c132]{color:#9460b8;text-decoration:underline}.link-visited[_ngcontent-c132]{color:#9460b8;text-decoration:none}.typography-demo-table[_ngcontent-c132]   td[_ngcontent-c132] > *[_ngcontent-c132]{margin-top:0}.typography-demo-table[_ngcontent-c132]   td[_ngcontent-c132] > ul.list-unstyled[_ngcontent-c132]{margin-left:0;list-style-position:0}</style><style ng-transition="clarity">.link-normal[_ngcontent-c133]{color:#007cbb;text-decoration:none}.link-hovered[_ngcontent-c133]{color:#007cbb;text-decoration:underline}.link-clicked[_ngcontent-c133]{color:#9460b8;text-decoration:underline}.link-visited[_ngcontent-c133]{color:#9460b8;text-decoration:none}.typography-demo-table[_ngcontent-c133]   td[_ngcontent-c133] > *[_ngcontent-c133]{margin-top:0}.typography-demo-table[_ngcontent-c133]   td[_ngcontent-c133] > ul.list-unstyled[_ngcontent-c133]{margin-left:0;list-style-position:0}</style><style ng-transition="clarity">.link-normal[_ngcontent-c134]{color:#007cbb;text-decoration:none}.link-hovered[_ngcontent-c134]{color:#007cbb;text-decoration:underline}.link-clicked[_ngcontent-c134]{color:#9460b8;text-decoration:underline}.link-visited[_ngcontent-c134]{color:#9460b8;text-decoration:none}.typography-demo-table[_ngcontent-c134]   td[_ngcontent-c134] > *[_ngcontent-c134]{margin-top:0}.typography-demo-table[_ngcontent-c134]   td[_ngcontent-c134] > ul.list-unstyled[_ngcontent-c134]{margin-left:0;list-style-position:0}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+            background: transparent;
+            padding: 12px;
+            max-height: none;
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-typography"><clr-main-container class="main-container">
+    <clr-header class="header-6 header">
+        <!----><button class="header-hamburger-trigger" type="button">
+            <span></span>
+        </button>
+        
+        <div class="branding">
+            <a class="logo-and-title" href="/clarity/">
+                <span class="clr-icon clarity-logo"></span>
+                <span class="title">Project Clarity</span>
+            </a>
+        </div>
+        <div class="divider"></div>
+        <div class="header-nav clr-nav-level-1">
+            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
+            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
+            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
+            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
+            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
+        </div>
+        <div class="settings">
+            
+            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
+        </div>
+    
+        <!----><button class="header-overflow-trigger" type="button">
+            <span></span>
+        </button>
+        <div class="header-backdrop"></div>
+    </clr-header>
+
+    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-typography-demo class="content-area dox-content-panel">
+<clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
+    <section>
+        <h1>Typography</h1>
+        <!---->
+
+        <!----><div class="component-workstream-bugs">
+            <span class="bug bug-html">
+            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
+            </span>
+            <span class="bug bug-css">
+            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
+            </span>
+            <!---->
+        </div>
+
+        <div class="dox-tabs">
+            <ul class="list-unstyled">
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/typography#top">
+                        Examples &amp; Code
+                    </a>
+                </li>
+                <!----><li>
+                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/typography#guidelines">
+                        Design Guidelines
+                    </a>
+                </li>
+                <!---->
+                <!---->
+            </ul>
+        </div>
+    </section>
+</div>
+
+<section class="dox-content" hash-listener="" style="position:relative;">
+    <div class="dox-content-wrapper">
+        <a id="top"></a>
+        
+    <article>
+        <h5 class="component-summary" id="clarity-uses-the-geometric-sans-serif-font-metropolis">Clarity uses the
+            geometric sans-serif font, Metropolis.</h5>
+
+        <div id="code-examples">
+            <h3 id="text-styles">Text Styles</h3>
+
+            <clr-typography-text _nghost-c132="">
+
+<table _ngcontent-c132="" class="table typography-demo-table">
+    <thead _ngcontent-c132="">
+        <tr _ngcontent-c132="">
+            <th _ngcontent-c132="" class="left">Style Name</th>
+            <th _ngcontent-c132="" class="left">Attributes</th>
+            <th _ngcontent-c132="" class="left">Selectors</th>
+            <th _ngcontent-c132="" class="left">Used For</th>
+        </tr>
+    </thead>
+    <tbody _ngcontent-c132="">
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p1">Body text</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Regular</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 14px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">p, .p1</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Default text styling <em _ngcontent-c132="">(page_bodyText)</em></li>
+                    <li _ngcontent-c132="">Sidenav text <em _ngcontent-c132="">(sidenav_text)</em></li>
+                    <li _ngcontent-c132="">Body text in cards <em _ngcontent-c132="">(card_text)</em></li>
+                    <li _ngcontent-c132="">Text and dropdowns <em _ngcontent-c132="">(dropdown_text)</em></li>
+                    <li _ngcontent-c132="">Tab navigation links <em _ngcontent-c132="">(tab_text)</em></li>
+                    <li _ngcontent-c132="">Wizard steps and table of contents</li>
+                    <li _ngcontent-c132="">General paragraphs, sentences, lists</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p2">Section header</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Medium</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 13px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+                </td><td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p2</code></td>
+                <td _ngcontent-c132="" class="left">
+                    <ul _ngcontent-c132="" class="list compact list-unstyled">
+                        <li _ngcontent-c132="">Stack view header <em _ngcontent-c132="">(stackview_header)</em></li>
+                        <li _ngcontent-c132="">Form headers</li>
+                        <li _ngcontent-c132="">Tree view headers</li>
+                    </ul>
+                </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p3">Table, grid, and form text</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Regular</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 13px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p3</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Text in alerts <em _ngcontent-c132="">(alert_text)</em></li>
+                    <li _ngcontent-c132="">Stack view text <em _ngcontent-c132="">(stackview_text)</em></li>
+                    <li _ngcontent-c132="">Datagrid text <em _ngcontent-c132="">(table_text)</em></li>
+                    <li _ngcontent-c132="">Text in HTML tables <em _ngcontent-c132="">(table_text)</em></li>
+                    <li _ngcontent-c132="">Text in tooltips and validations <em _ngcontent-c132="">(tooltip_text)</em></li>
+                    <li _ngcontent-c132="">Form text</li>
+                    <li _ngcontent-c132="">Treeview text</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p4">Form labels and column headers</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Semibold</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 12px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p4</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Button text (Normal)</li>
+                    <li _ngcontent-c132="">Table and datagrid headers <em _ngcontent-c132="">(table_header)</em></li>
+                    <li _ngcontent-c132="">Dropdown headers <em _ngcontent-c132="">(dropdown_header)</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p5">Table footers and chart data</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Regular</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 12px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p5</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Table and datagrid footers</li>
+                    <li _ngcontent-c132="">Chart and data visualization info</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p6">Small headers</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Semibold</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 11px</li>
+                    <li _ngcontent-c132="">letter-spacing: 0.03em</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p6</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Button text (Small)</li>
+                    <li _ngcontent-c132="">Usually used in all caps</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p7">Tags and labels</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Regular</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 11px</li>
+                    <li _ngcontent-c132="">letter-spacing: 0.03em</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p7</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Text inside tags and labels <em _ngcontent-c132="">(label_text)</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132="" class="p8">Badges</p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Metropolis Regular</li>
+                    <li _ngcontent-c132="">color: #565656</li>
+                    <li _ngcontent-c132="">font-size: 10px</li>
+                    <li _ngcontent-c132="">letter-spacing: 0.03em</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">.p8</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Text inside badges</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c132="">
+            <td _ngcontent-c132="" class="left">
+                <p _ngcontent-c132=""><code _ngcontent-c132="">Monospaced</code></p>
+            </td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Consolas Regular</li>
+                    <li _ngcontent-c132="">font-size: 14px</li>
+                    <li _ngcontent-c132="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c132="" class="left"><code _ngcontent-c132="" class="clr-code">pre.<br _ngcontent-c132="">language-*<br _ngcontent-c132="">or code.<br _ngcontent-c132="">language-*</code></td>
+            <td _ngcontent-c132="" class="left">
+                <ul _ngcontent-c132="" class="list compact list-unstyled">
+                    <li _ngcontent-c132="">Code or system-type messages like in a terminal or console</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _ngcontent-c132="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;p class="p1"&gt;Body text&lt;/p&gt;
+&lt;p class="p2"&gt;Section header&lt;/p&gt;
+&lt;p class="p3"&gt;Table, grid, and form text&lt;/p&gt;
+&lt;p class="p4"&gt;Form labels and column headers&lt;/p&gt;
+&lt;p class="p5"&gt;Table footers and chart data&lt;/p&gt;
+&lt;p class="p6"&gt;Mostly buttons&lt;/p&gt;
+&lt;p class="p7"&gt;Tags and labels&lt;/p&gt;
+&lt;p class="p8"&gt;Badges&lt;/p&gt;
+&lt;pre class="language-html"&gt;Monospaced&lt;/pre&gt; or &lt;code class="language-html"&gt;Monospaced&lt;/code&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-typography-text>
+
+            <h3 id="header-styles">Header Styles</h3>
+
+            <clr-typography-headers _nghost-c133="">
+
+<table _ngcontent-c133="" class="table typography-demo-table">
+    <thead _ngcontent-c133="">
+        <tr _ngcontent-c133="">
+            <th _ngcontent-c133="" class="left">Style Name</th>
+            <th _ngcontent-c133="" class="left">Attributes</th>
+            <th _ngcontent-c133="" class="left">Selectors</th>
+            <th _ngcontent-c133="" class="left">Used For</th>
+        </tr>
+    </thead>
+    <tbody _ngcontent-c133="">
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h1 _ngcontent-c133="">Heading 1</h1>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Light</li>
+                    <li _ngcontent-c133="">color: #000000</li>
+                    <li _ngcontent-c133="">font-size: 32px</li>
+                    <li _ngcontent-c133="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h1</code></td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Login screen product name <em _ngcontent-c133="">(login_productName)</em></li>
+                    <li _ngcontent-c133="">Large display numbers (charts/data visualization)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h2 _ngcontent-c133="">Heading 2</h2>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Light</li>
+                    <li _ngcontent-c133="">color: #000000</li>
+                    <li _ngcontent-c133="">font-size: 28px</li>
+                    <li _ngcontent-c133="">letter-spacing: normal</li>
+                </ul>
+                </td><td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h2</code></td>
+                <td _ngcontent-c133="" class="left">
+                    <ul _ngcontent-c133="" class="list compact list-unstyled">
+                        <li _ngcontent-c133="">Main content header <em _ngcontent-c133="">(page_mainHeading)</em></li>
+                    </ul>
+                </td>
+        </tr>
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h3 _ngcontent-c133="">Heading 3</h3>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Light</li>
+                    <li _ngcontent-c133="">color: #000000</li>
+                    <li _ngcontent-c133="">font-size: 22px</li>
+                    <li _ngcontent-c133="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h3</code></td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Secondary content header <em _ngcontent-c133="">(page_secondaryHeading)</em></li>
+                    <li _ngcontent-c133="">Modal/Wizard/Dialog header <em _ngcontent-c133="">(modal_header)</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h4 _ngcontent-c133="">Heading 4</h4>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Light</li>
+                    <li _ngcontent-c133="">color: #000000</li>
+                    <li _ngcontent-c133="">font-size: 18px</li>
+                    <li _ngcontent-c133="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h4</code></td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Tertiary content header <em _ngcontent-c133="">(page_tertiaryHeading)</em></li>
+                    <li _ngcontent-c133="">Card header/title <em _ngcontent-c133="">(card_title)</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h5 _ngcontent-c133="">Heading 5</h5>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Regular</li>
+                    <li _ngcontent-c133="">color: #565656</li>
+                    <li _ngcontent-c133="">font-size: 16px</li>
+                    <li _ngcontent-c133="">letter-spacing: 0.01em</li>
+                </ul>
+            </td>
+            <td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h5</code></td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Section header 1 <em _ngcontent-c133="">(page_sectionHeader)</em></li>
+                    <li _ngcontent-c133="">Introductory paragraph <em _ngcontent-c133="">(page_introParagraph)</em></li>
+                </ul>
+            </td>
+        </tr>
+        <tr _ngcontent-c133="">
+            <td _ngcontent-c133="" class="left">
+                <h6 _ngcontent-c133="">Heading 6</h6>
+            </td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Metropolis Medium</li>
+                    <li _ngcontent-c133="">color: #313131</li>
+                    <li _ngcontent-c133="">font-size: 14px</li>
+                    <li _ngcontent-c133="">letter-spacing: normal</li>
+                </ul>
+            </td>
+            <td _ngcontent-c133="" class="left"><code _ngcontent-c133="" class="clr-code">h6</code></td>
+            <td _ngcontent-c133="" class="left">
+                <ul _ngcontent-c133="" class="list compact list-unstyled">
+                    <li _ngcontent-c133="">Section header 2</li>
+                    <li _ngcontent-c133="">Sidenav section header <em _ngcontent-c133="">(sidenav_sectionHeader)</em></li>
+                    <li _ngcontent-c133="">TOC header <em _ngcontent-c133="">(toc_header)</em></li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<clr-code-snippet _ngcontent-c133="" _nghost-c5="">
+        <!----><!---->
+            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;h1&gt;Header 1 (Display)&lt;/h1&gt;
+&lt;h2&gt;Header 2 (Headline)&lt;/h2&gt;
+&lt;h3&gt;Header 3 (Sub Heading)&lt;/h3&gt;
+&lt;h4&gt;Header 4 (Section Heading Level 1)&lt;/h4&gt;
+&lt;h5&gt;Header 5 (Category / group label, TOC)&lt;/h5&gt;
+&lt;h6&gt;Header 6 (Section Heading Level 2 group label)&lt;/h6&gt;</code></pre>
+        
+        <!---->
+    </clr-code-snippet>
+</clr-typography-headers>
+
+            <h3 id="using-typography">Using Typography</h3>
+
+            <p>Clarity includes several SASS variables, collections, mixing, and functions for working
+                with typography. These are described below:</p>
+
+            <h6 id="clr-font">$clr-font</h6>
+
+            <p>This SASS variable points to our default text font, Metropolis.</p>
+
+            <h6 id="clr-altfont">$clr-altFont</h6>
+
+            <p>This SASS variable is only used for our headers (H1..H6). Currently, it also points to Metropolis.</p>
+
+            <h6 id="clr-font-size">$clr-font-size</h6>
+
+            <p>This SASS variable sets our default font size to 14px.</p>
+
+            <h6 id="clr-font-weights">$clr-font-weights</h6>
+
+            <p>This SASS variable contains a collection for the font weights used in Clarity — light, regular,
+                semibold, and bold. The actual weights assigned to these values are 200, 400, 500, and 600
+                respectively. The default font weight in Clarity is regular/400. The bold font-weight is actually
+                Metropolis semi-bold (600).</p>
+
+            <h6 id="clr-elements">$clr-elements</h6>
+
+            <p>This SASS variable contains a collection that can access all of the font properties for H1
+                through H6 and P1 through P8 as defined in our typography specs. These properties are returned
+                as a collection which contains nested collections of both common
+                font properties across all screen sizes, as well as breakpoint overrides.</p>
+
+            <pre><code clr-code-highlight="language-scss" class="language-scss">
+// passing element label to map-get
+map-get($clr-elements, h3);
+
+// returns nested map of common properties and breakpoint overrides
+//  (
+//      clr-common: (
+//          font-weight: …,
+//          letter-spacing: …,
+//          font-family: …,
+//          line-height: …,
+//      ),
+//      small: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      medium: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      large: (
+//          letter-spacing: [breakpoint override]
+//      ),
+//      xlarge: (
+//          letter-spacing: [breakpoint override]
+//      )
+//  );
+</code></pre>
+
+            <h6 id="clr-typography-dom-to-type-element">$clr-typography-dom-to-type-element</h6>
+
+            <p>This collection maps Clarity components and DOM containers to their expected type
+                properties in <code>$clr-elements</code>.
+                Use the labels listed in the <em>Use For</em> column of the typography tables above.</p>
+
+            <h4 id="mixins">Mixins</h4>
+
+            <p>Clarity uses SASS mixins to make it easier to access the type properties in the variables and
+                collections listed above. The typography mixins return full CSS style definitions. They are
+                intended to be used inside SASS/SCSS style declarations, placeholders,
+                or other mixins.</p>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertieselement-whichtypeproperties">clr-getTypeProperties
+                ($element, $whichTypeProperties)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypeproperties">clr-getTypeProperties</h6>
+
+            <p>Returns specified styles (from <code>$whichTypeProperties</code> list parameter) for all styles
+                from the designated typographic element (h1..h6 or p1..p8).</p>
+
+            <h6 id="parameters">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                        <th class="left hidden-xs-down">Default</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key for the typographic properties in the <code class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code class="clr-code">p1..p8</code></td>
+                        <td class="left hidden-xs-down">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            $whichTypeProperties
+                            <div class="hidden-sm-up">(Optional)</div>
+                        </td>
+                        <td class="left hidden-xs-down">Yes</td>
+                        <td class="left">A list of font style properties like <code class="clr-code">(font-weight,
+                            line-height)</code>. If empty, all properties will be returned.
+                        </td>
+                        <td class="left hidden-xs-down">An empty list</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss" class="language-scss">
+// passing type property list
+.my-styles {
+    @include clr-getTypeProperties(p1, (font-weight, font-size));
+};
+
+//  renders as...
+//  .my-styles {
+//      font-weight: 400;
+//      font-size: 14px;
+//  };
+
+// passing no type property list
+.all-my-styles {
+    @include clr-getTypeProperties(p8);
+};
+
+//  renders as...
+//  .all-my-styles {
+//      font-weight: 400;
+//      font-size: 10px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  };
+</code></pre>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertiesfordomelementelement-label-typepropertiestoget">
+                clr-getTypePropertiesForDomElement($element-label, $typePropertiesToGet)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypepropertiesfordomelement">clr-getTypePropertiesForDomElement</h6>
+
+            <p>An include that abstracts the clr-getTypeProperties mixin so that users can look up
+                typography based on how it is used in Clarity.</p>
+
+            <h6 id="parameters-1">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                        <th class="left hidden-xs-down">Default</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code>
+                            map. Existing labels can be found in the <em>Use For</em> column of the header and
+                            body text tables above.
+                        </td>
+                        <td class="left hidden-xs-down">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="left">
+                            $typePropertiesToGet
+                            <div class="hidden-sm-up">(Optional)</div>
+                        </td>
+                        <td class="left hidden-xs-down">Yes</td>
+                        <td class="left">A list of font style properties like <code class="clr-code">(font-weight,
+                            line-height)</code>. If empty, all properties will be returned.
+                        </td>
+                        <td class="left hidden-xs-down">An empty list</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-1">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss" class="language-scss">
+// passing type property list
+.sidenav-styles {
+    @include clr-getTypePropertiesForDomElement(p1, (font-weight, font-size));
+};
+
+//  renders as...
+//  .sidenav-styles {
+//      font-weight: 400;
+//      font-size: 14px;
+//      letter-spacing: 0.01em;
+//  };
+
+// passing no type property list
+.small-text-styles {
+    @include clr-getTypeProperties(label_text);
+};
+
+//  renders as...
+//  .small-text-styles {
+//      font-weight: 400;
+//      font-size: 11px;
+//      letter-spacing: 0.03em;
+//      line-height: 12px;
+//      margin-top: 24px;
+//      margin-bottom: 0;
+//  };
+</code></pre>
+
+            <h4 id="functions">Functions</h4>
+
+            <p>Clarity also includes functions that allow you to access typographic properties to assign
+                them to your own style properties or SASS variables.</p>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertyvalueelement-label-valtoget">
+                clr-getTypePropertyValue($element-label, $valToGet)</h6>
+
+            <h6 id="clr-gettypepropertyvalue">clr-getTypePropertyValue</h6>
+
+            <p>Returns specified style value (from <code>$valToGet</code>) from styles for the designated
+                typographic element (h1..h6 or p1..p8). Returns an empty string <code>""</code> if the
+                typographic element does not have the style for which it was asked or
+                if it is passed invalid values.</p>
+
+            <h6 id="parameters-2">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key for the typographic properties in the <code class="clr-code">$clr-elements</code> map. <code class="clr-code">h1..h6</code> or <code class="clr-code">p1..p8</code></td>
+                    </tr>
+                    <tr>
+                        <td class="left">$valToGet</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">A CSS style property from the list of font style properties like <code class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-2">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss" class="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValue(p1, font-size);
+.my-style {
+    font-size: $myCustomVar;
+};
+
+//  renders as...
+//  .my-style {
+//      font-size: 14px;
+//  };
+</code></pre>
+
+            <h6 class="hidden-xs-down" id="clr-gettypepropertyvaluefordomelementelement-label-valtoget">
+                clr-getTypePropertyValueForDomElement($element-label, $valToGet)</h6>
+
+            <h6 class="hidden-sm-up" id="clr-gettypepropertyvaluefordomelement">clr-getTypePropertyValueForDomElement</h6>
+
+            <p>This SASS function serves as an abstraction of the <code>clr-getTypePropertyValue</code> above.
+                It performs a lookup against the <code>$clr-typography-dom-to-type-element</code> map so that
+                users can use more familiar component/DOM element labels (as listed in the tables above) to access
+                style property values.</p>
+
+            <p>The function returns a specified style value (from <code>$valToGet</code>) from styles for the
+                designated DOM element label (like page_mainHeading). Returns an empty string <code>""</code>
+                if the DOM element or the style is not found.</p>
+
+            <h6 id="parameters-3">Parameters</h6>
+
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="left">Parameter</th>
+                        <th class="left hidden-xs-down">Optional</th>
+                        <th class="left">Purpose</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="left">$element-label</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">Key/label for the element as found in the <code class="clr-code">$clr-typography-dom-to-type-element</code>
+                            map. Existing labels can be found in the <em>Use For</em> column of the header
+                            and body text tables above.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="left">$valToGet</td>
+                        <td class="left hidden-xs-down">No</td>
+                        <td class="left">A CSS style property from the list of font style properties like <code class="clr-code">font-size</code>, <code class="clr-code">font-weight</code>, etc.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h6 id="example-3">Example</h6>
+
+            <pre><code clr-code-highlight="language-scss" class="language-scss">
+// passing type property list
+$myCustomVar: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+.my-style {
+    font-weight: $myCustomVar;
+};
+
+//  renders as...
+//  .my-style {
+//      font-weight: 600;
+//  };
+</code></pre>
+        </div>
+
+        <div id="design-guidelines">
+            <h3 id="guidelines">The Metropolis Font</h3>
+
+            <p>Metropolis has clear, simple letters with rounded forms. <br> This gives the font a
+                friendly and modern appearance.</p>
+
+            <p><img alt="Metropolis light, regular, medium, and semibold" src="assets/images/documentation/typography/Typography-A-Z.png?1481774870417534000"></p>
+
+            <h3 id="font-weights-in-clarity">Font Weights in Clarity</h3>
+
+            <p>To maintain a light, clean look, Clarity does not use a weight stronger than semibold.</p>
+
+            <p><img alt="Metropolis light, regular, medium, and semibold" src="assets/images/documentation/typography/Typography-Metropolis.png?1481774870417534000"></p>
+
+            <h3 id="use-the-built-in-styles">Use the Built-in Styles</h3>
+
+            <p>The Clarity team determined the optimal height and weight of the text for each component. Some
+                components also have line wrapping built-in. If not, text should be kept to a single line.</p>
+
+            <h3 id="use-text-links-for-navigation">Use Text Links for Navigation</h3>
+
+            <clr-typography-links _nghost-c134="">
+
+<h4 _ngcontent-c134="">Text Links</h4>
+<div _ngcontent-c134=""><a _ngcontent-c134="" class="link-normal" href="javascript:void(0)">Normal</a></div>
+<div _ngcontent-c134=""><a _ngcontent-c134="" class="link-hovered" href="javascript:void(0)">Hovered</a></div>
+<div _ngcontent-c134=""><a _ngcontent-c134="" class="link-clicked" href="javascript:void(0)">Clicked</a></div>
+<div _ngcontent-c134=""><a _ngcontent-c134="" class="link-visited" href="javascript:void(0)">Visited</a></div>
+</clr-typography-links>
+
+            <p>Don’t use text links for a call to action. <a routerlink="./buttons" href="/typography/buttons">Buttons</a>
+                are better.</p>
+        </div>
+    </article>
+
+    </div>
+</section></clr-doc-wrapper></clr-typography-demo>
+<nav class="sidenav clr-nav-level-2">
+    <section class="sidenav-content">
+        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
+  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
+    Version v0.11
+    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
+  </button>
+  <!---->
+</clr-dropdown>
+</version-switcher>
+
+        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
+
+        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
+
+        <section class="nav-group collapsible">
+            <input id="tab2" type="checkbox">
+            <label for="tab2">Patterns</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="pattern">
+        <!----><!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/app-layout">
+                    Application Layout
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/color">
+                    Color Palette
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/navigation">
+                    Navigation
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/themes">
+                    Themes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link active" routerlinkactive="active" href="/typography">
+                    Typography
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+        <section class="nav-group collapsible">
+            <input id="tab1" type="checkbox">
+            <label for="tab1">Components</label>
+            <ul class="nav-list">
+                <documentation-nav-links type="component">
+        <!----><!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/alerts">
+                    Alerts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/badges">
+                    Badges
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/buttons">
+                    Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/button-group">
+                    Button Group
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/cards">
+                    Cards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
+                    Checkboxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/code-highlight">
+                    Code Highlight
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datepicker">
+                    Date Picker
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/datagrid">
+                    Datagrid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
+                    Dropdowns
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/forms">
+                    Forms (Layout)
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/grid">
+                    Grid
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/header">
+                    Header
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/input-fields">
+                    Input Fields
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/labels">
+                    Labels
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/lists">
+                    Lists
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/login">
+                    Login Page
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/modals">
+                    Modals
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/progress">
+                    Progress Bars
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/radios">
+                    Radio Buttons
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
+                    Select Boxes
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/sidenav">
+                    Sidenav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/signposts">
+                    Signposts
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/spinners">
+                    Spinners
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/stack-view">
+                    Stack View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tables">
+                    Tables
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tabs">
+                    Tabs
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
+                    Toggle Switches
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tooltips">
+                    Tooltips
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/tree-view">
+                    Tree View
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
+                    Vertical Nav
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        <!---->
+            <!---->
+        <!---->
+            <!----><li>
+                <a class="nav-link" routerlinkactive="active" href="/wizards">
+                    Wizards
+                    <!---->
+                    <!---->
+                </a>
+            </li>
+        
+    </documentation-nav-links>
+            </ul>
+        </section>
+    </section>
+</nav></documentation>
+
+</clr-main-container>
+</root><script type="text/javascript" src="inline.3632470f3dde39dd6a09.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.bf85461849c680d0cf03.bundle.js"></script></body></html>

@@ -1,0 +1,84 @@
+// Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+@import '../../../../styles/clarity-imports';
+
+.card-block {
+    padding-bottom: 0;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+li.card-swatch {
+    background: #ccc;
+    color: #000;
+    margin: 0;
+    padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+    font-size: 16px;
+    list-style: none;
+    &.upsize {
+        padding-bottom: $clr_baselineRem_2;
+    }
+    &.primary {
+        padding-bottom: $clr_baselineRem_2;
+        margin-bottom: $clr_baselineRem_0_125;
+    }
+    .card-swatch-content {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-start;
+        align-items: center;
+        .bullet {
+            color: currentColor;
+            padding: 0;
+            font-size: 1.2em;
+        }
+        .hex-contrast {
+            color: black;
+        }
+        .rgb-value {
+            margin-left: auto;
+            font-size: 0.9em;
+            clr-icon {
+                margin: 0 3px;
+                opacity: 0;
+                transition: all 0.2s ease-in-out;
+            }
+            .copied-indication {
+                display: inline-block;
+                transform: translateX(-24px);
+                opacity: 0;
+                transition: all 0.2s ease-in-out;
+            }
+        }
+    }
+    &:not(.dark-text) {
+        color: #fff;
+    }
+    &:not(:first-child) {
+        cursor: pointer;
+        &:hover {
+            .card-swatch-content .rgb-value clr-icon {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.copied {
+        .card-swatch-content .rgb-value .copied-indication {
+            transform: translateX(0px);
+            opacity: 1;
+        }
+    }
+}
+
+.card-swatch-block {
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.card-swatch-divider {
+    height: $clr_baselineRem_0_5;
+}

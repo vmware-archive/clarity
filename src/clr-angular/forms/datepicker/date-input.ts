@@ -25,6 +25,10 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { IfErrorService } from '../common/if-error/if-error.service';
+import { ControlClassService } from '../common/providers/control-class.service';
+import { FocusService } from '../common/providers/focus.service';
+import { NgControlService } from '../common/providers/ng-control.service';
 
 import { WrappedFormControl } from '../common/wrapped-control';
 
@@ -34,8 +38,15 @@ import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
+import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
 
-@Directive({ selector: '[clrDate]', host: { '[class.date-input]': 'true' } })
+@Directive({
+  selector: '[clrDate]',
+  host: {
+    '[class.date-input]': '!newFormsLayout',
+    '[class.clr-input]': 'newFormsLayout',
+  },
+})
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Subscriptions to all the services and queries changes
@@ -58,6 +69,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
+  @Input() clrNewLayout: boolean;
+
   constructor(
     @Optional() private container: ClrDateContainer,
     vcr: ViewContainerRef,
@@ -70,9 +83,21 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private _dateNavigationService: DateNavigationService,
     @Optional() private _datepickerEnabledService: DatepickerEnabledService,
     @Optional() private dateFormControlService: DateFormControlService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Optional() private ngControlService: NgControlService,
+    @Optional() controlClassService: ControlClassService,
+    @Optional() private focusService: FocusService,
+    @Optional() private ifErrorService: IfErrorService,
+    @Optional() private control: NgControl,
+    @Optional()
+    @Inject(IS_NEW_FORMS_LAYOUT)
+    public newFormsLayout: boolean
   ) {
-    super(ClrDateContainer, vcr);
+    super(ClrDateContainer, vcr, 4);
+
+    if (controlClassService) {
+      controlClassService.className = this.elRef.nativeElement.className;
+    }
   }
 
   /**
@@ -82,11 +107,17 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
    */
   ngOnInit() {
     super.ngOnInit();
+    if (this.ngControlService && this.control) {
+      this.ngControlService.setControl(this.control);
+    }
     if (!this.container) {
       this.populateContainerServices();
     }
     this.initializeSubscriptions();
     this.processInitialInputs();
+    if (this.clrNewLayout !== undefined) {
+      this.newFormsLayout = !!this.clrNewLayout;
+    }
   }
 
   /**
@@ -233,6 +264,23 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     } else if (!dayModel && this.previousOutput) {
       this._dateUpdated.emit(null);
       this.previousOutput = null;
+    }
+  }
+
+  @HostListener('focus')
+  setFocusStates() {
+    if (this.focusService) {
+      this.focusService.focused = true;
+    }
+  }
+
+  @HostListener('blur')
+  setBlurStates() {
+    if (this.ifErrorService) {
+      this.ifErrorService.triggerStatusChange();
+    }
+    if (this.focusService) {
+      this.focusService.focused = false;
     }
   }
 

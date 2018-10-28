@@ -1,0 +1,31 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Template Driven Forms</h2>
+<form class="form" #simpleForm="ngForm">
+    <div class="form-group">
+        <label for="name">Enter Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="name">
+    </div>
+    <div class="form-group">
+        <label for="date1">Enter Date1</label>
+        <input type="date" id="date1" name="date1" [(ngModel)]="date1" clrDate (clrDateChange)="date1Changed($event)">
+    </div>
+    <div class="form-group">
+        <label for="date2">Enter Date2</label>
+        <input type="date" id="date2" name="date2" [(ngModel)]="date2" clrDate (clrDateChange)="date2Changed($event)">
+    </div>
+</form>
+
+<p>
+    {{simpleForm.value | json}}
+</p>
+<div>
+    Touched: {{simpleForm.touched}}
+</div>
+<div>
+    Dirty: {{simpleForm.dirty}}
+</div>

@@ -15,8 +15,3 @@ export class MockDatepickerEnabledService extends DatepickerEnabledService {
     return this.fakeIsEnabled;
   }
 }
-
-export const MOCK_DATEPICKER_ENABLED_PROVIDER = {
-  provide: DatepickerEnabledService,
-  useClass: MockDatepickerEnabledService,
-};

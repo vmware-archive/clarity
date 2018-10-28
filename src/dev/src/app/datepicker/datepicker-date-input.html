@@ -4,7 +4,7 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div>
+<div clrForm>
     <h6>[(clrDate)]</h6>
     <p></p>
     <input type="date" [(clrDate)]="date">
@@ -29,7 +29,7 @@
     <button class="btn" (click)="updateDate()">Update Date</button>
 </div>
 
-<div>
+<div clrForm>
     <h6>clrDateChange</h6>
     <p></p>
     <input type="date" clrDate (clrDateChange)="dateChanged($event)">

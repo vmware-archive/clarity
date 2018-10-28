@@ -42,7 +42,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                     <clr-checkbox-container>
                         <input clrCheckbox type="checkbox"
                           [disabled]="column.lastVisibleColumn"
-                          [ngModel]="!column.hidden" 
+                          [ngModel]="!column.hidden"
                           (ngModelChange)="toggleColumn($event, column)">
                         <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
                     </clr-checkbox-container>
@@ -130,6 +130,7 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   selectAll() {
     this.hideableColumnService.showHiddenColumns();
     this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
+    this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
   }
 
   toggleColumn(event: boolean, column: DatagridHideableColumnModel) {

@@ -6,7 +6,7 @@ import {
     TemplateRef,
     ViewChildren
 } from "@angular/core";
-import {compareReleases, MINORS, PATCHES} from "./release-page/release-organizer";
+import {compareReleases, MAJORS, MINORS, PATCHES} from "./release-page/release-organizer";
 import {Release} from "./release/release.directive";
 import {NavigationEnd, Router} from "@angular/router";
 import {BreakingChange} from "./counters/breaking-change.directive";
@@ -65,8 +65,9 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     currentTemplate: TemplateRef<any>;
 
     current = RELEASES.current;
-    minors = MINORS["0"];
+    minors = MINORS;
     patches = PATCHES;
+    versions = Object.keys(MINORS).sort((a: string, b: string) => (Number(b) - Number(a)));
 
     get releaseArr(): Release[] {
         if (this.releaseTemplates) {
@@ -91,6 +92,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
                 }, 0);
             }
         }));
+        console.log(MINORS, PATCHES, this.versions);
     }
 
     resetCounts(): void {

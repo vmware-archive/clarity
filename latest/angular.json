@@ -28,6 +28,7 @@
             ],
             "styles": [
               "node_modules/@clr/ui/clr-ui.min.css",
+              "node_modules/@clr/ui/clr-grid-deprecated.css",
               "node_modules/prismjs/themes/prism-solarizedlight.css",
               "node_modules/@clr/icons/clr-icons.min.css",
               "src/styles/main.scss"

@@ -300,23 +300,6 @@
                             angular-cli application <code class="clr-code">src</code> folder.</p>
                         <clr-code-snippet [clrCode]="uiCustomClarityLightScssFile"
                                           [clrDisablePrism]="true"></clr-code-snippet>
-                        <h6>Setup to include Bootstrap</h6>
-                        <p>
-                            Clarity requires some Bootstrap files to build, so you'll need to ensure you have it installed. 
-                            We're locked into Bootstrap 4.0.0-alpha.5, and to avoid breaking changes that occurred in 4.0 we
-                            are keeping it until we can support proper migration.
-                        </p>
-                        <clr-code-snippet [clrCode]="'npm install --save bootstrap@4.0.0-alpha.5'"
-                                        [clrDisablePrism]="true"></clr-code-snippet>
-                        <p>
-                            Then you'll need to update your build tooling to also look at the <code class="clr-code">node_modules</code>
-                            when building, so it can find the Bootstrap assets. If you are using the Angular CLI then you should add this 
-                            configuration to your <code class="clr-code">angular.json</code> file. If you are using a different build tool,
-                            setup your Sass configuration to add the <code class="clr-code">--include-path=node_modules</code> (see 
-                            <a href="https://github.com/sass/node-sass#usage-1">Sass docs</a>).
-                        </p>
-                        <clr-code-snippet [clrCode]="uiAngularSass"
-                                        [clrDisablePrism]="true"></clr-code-snippet>
                         <h6>Add a custom theme file</h6>
                         <p>Finally, sandwich your custom theme file between the Clarity dependency SCSS and the Clarity
                             component SCSS. It will hold the values you choose to overwrite as you customize your theme.

@@ -7,13 +7,6 @@
 import {Component} from "@angular/core";
 import {ClarityDocComponent} from "../clarity-doc";
 
-const ANGULAR_CLI_SASS = `
-"styles": [...],
-"stylePreprocessorOptions": {
-  "includePaths": ["node_modules"]
-},
-`;
-
 const UI_NO_NODE_IMPORTS = `
 "styles": [
       ...
@@ -102,7 +95,6 @@ export class ThemesDemo extends ClarityDocComponent {
     public uiCustomClarityLightScssFile = UI_CUSTOM_CLARITY_LIGHT_SCSS_FILE;
     public uiCustomClarityDarkScssFile = UI_CUSTOM_CLARITY_DARK_SCSS_FILE;
     public uiNoNodeImports = UI_NO_NODE_IMPORTS;
-    public uiAngularSass = ANGULAR_CLI_SASS
 
     constructor() {
         super("themes");

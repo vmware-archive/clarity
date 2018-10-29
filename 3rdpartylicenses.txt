@@ -1,8 +1,8 @@
-@clr/icons@0.13.7
+@clr/icons@1.0.0-beta.1
 MIT
 MIT
 
-@angular/common@6.1.6
+@angular/common@7.0.1
 MIT
 MIT
 
@@ -30,7 +30,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-@clr/ui@0.13.7
+@clr/ui@1.0.0-beta.1
 MIT
 MIT
 
@@ -165,7 +165,7 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-rxjs@6.3.2
+rxjs@6.3.3
 Apache-2.0
 Apache License
                          Version 2.0, January 2004
@@ -369,7 +369,7 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-@angular/platform-browser@6.1.6
+@angular/platform-browser@7.0.1
 MIT
 MIT
 
@@ -431,22 +431,22 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@clr/angular@0.13.7
+@clr/angular@1.0.0-beta.1
 MIT
 MIT
 
-@angular/router@6.1.6
+@angular/router@7.0.1
 MIT
 MIT
 
-@angular/animations@6.1.6
+@angular/animations@7.0.1
 MIT
 MIT
 
-@angular/core@6.1.6
+@angular/core@7.0.1
 MIT
 MIT
 
-@angular/forms@6.1.6
+@angular/forms@7.0.1
 MIT
 MIT

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="420px" height="286px" viewBox="0 0 420 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="207" height="208" rx="4"></rect>
+        <filter x="-3.4%" y="-2.4%" width="106.8%" height="106.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.8   0 0 0 0 0.8   0 0 0 0 0.8  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Forms-Recommended" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forms-Documentation---v2" transform="translate(-731.000000, -2736.000000)">
+            <g id="Group-16" transform="translate(731.000000, 2736.000000)">
+                <rect id="Rectangle-3" fill="#EEEEEE" x="0" y="0" width="420" height="286"></rect>
+                <g id="Group" transform="translate(107.000000, 36.000000)">
+                    <g id="Rectangle-3">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <rect id="Rectangle-7" fill="#0079B8" x="30" y="168" width="66" height="18" rx="2"></rect>
+                </g>
+                <rect id="Rectangle-6" fill="#EEEEEE" x="137" y="62" width="46" height="6"></rect>
+                <path d="M139.324675,87 L238.728362,87" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                <rect id="Rectangle-6" fill="#EEEEEE" x="137" y="162" width="52" height="6"></rect>
+                <path d="M139.285714,187 L226.760959,187" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                <rect id="Rectangle-6" fill="#EEEEEE" x="137" y="112" width="46" height="6"></rect>
+                <path d="M139.11039,137 L172.907643,137" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                <path d="M185.11039,137 L218.907643,137" id="Line-5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="square"></path>
+                <g id="exclamation-circle-line" transform="translate(139.000000, 74.000000)" fill="#C92100" fill-rule="nonzero">
+                    <path d="M6,6.69 C5.76067661,6.69 5.56666667,6.49599006 5.56666667,6.25666667 L5.56666667,4.25666667 C5.56666667,4.01734328 5.76067661,3.82333333 6,3.82333333 C6.23932339,3.82333333 6.43333333,4.01734328 6.43333333,4.25666667 L6.43333333,6.25666667 C6.43333333,6.49599006 6.23932339,6.69 6,6.69 Z M6,2 C3.790861,2 2,3.790861 2,6 C2,8.209139 3.790861,10 6,10 C8.209139,10 10,8.209139 10,6 C10,4.93913404 9.57857264,3.92171839 8.82842712,3.17157288 C8.07828161,2.42142736 7.06086596,2 6,2 Z M6,9.33333333 C4.15905083,9.33333333 2.66666667,7.84094917 2.66666667,6 C2.66666667,4.15905083 4.15905083,2.66666667 6,2.66666667 C7.84094917,2.66666667 9.33333333,4.15905083 9.33333333,6 C9.33333333,6.88405497 8.98214387,7.73190134 8.3570226,8.3570226 C7.73190134,8.98214387 6.88405497,9.33333333 6,9.33333333 Z M5.98333333,8.17333333 C6.25947571,8.17333333 6.48333333,7.94947571 6.48333333,7.67333333 C6.48333333,7.39719096 6.25947571,7.17333333 5.98333333,7.17333333 C5.70719096,7.17333333 5.48333333,7.39719096 5.48333333,7.67333333 C5.48333333,7.94947571 5.70719096,8.17333333 5.98333333,8.17333333 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

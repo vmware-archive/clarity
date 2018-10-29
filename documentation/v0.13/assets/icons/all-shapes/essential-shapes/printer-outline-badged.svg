@@ -1,0 +1,5 @@
+<svg version="1.1" width="36" height="36"  viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>printer-outline-badged</title>
+    <path d="M28,18H8a1,1,0,0,0,0,2H9V32H27V20h1a1,1,0,0,0,0-2ZM25,30H11V20H25Z" class="clr-i-outline--badged clr-i-outline-path-1--badged"></path><rect x="27" y="13.04" width="2" height="2" class="clr-i-outline--badged clr-i-outline-path-2--badged"></rect><path d="M33,12.88a7.45,7.45,0,0,1-2,.55v8.66H29.08V24H33V13C33,13,33,12.93,33,12.88Z" class="clr-i-outline--badged clr-i-outline-path-3--badged"></path><path d="M5,13a2,2,0,0,1,2-2H24.42a7.5,7.5,0,0,1-1.27-2H11V7H22.57a7.52,7.52,0,0,1-.07-1,7.54,7.54,0,0,1,.07-1H9V9H7a4,4,0,0,0-4,4V24H6.92V22.09H5Z" class="clr-i-outline--badged clr-i-outline-path-4--badged"></path><circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-5--badged clr-i-badge"></circle>
+    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+</svg>

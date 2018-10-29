@@ -21,7 +21,7 @@ Selected user: <span class="username" *ngIf="selectedUser">{{selectedUser.name}}
 `;
 
 const ROW_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSingleSelected)]="selectedUser" [clrDgRowSelection]="true">
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
         <-- ... -->

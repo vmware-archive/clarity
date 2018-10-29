@@ -6,7 +6,7 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {ClarityModule} from "@clr/angular";
+import {ClarityModule, ClrFormsDeprecatedModule} from "@clr/angular";
 
 import {CheckboxesDemo} from "./checkboxes.demo";
 
@@ -21,6 +21,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         CommonModule,
         FormsModule,
         ClarityModule,
+        ClrFormsDeprecatedModule,
         DocWrapperModule,
         RouterModule.forChild([{path: "", component: CheckboxesDemo}]),
         UtilsModule

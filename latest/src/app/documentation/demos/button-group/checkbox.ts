@@ -26,28 +26,10 @@ const HTML_EXAMPLE_1 = `
 </div>
 `;
 
-const HTML_EXAMPLE_2 = `
-<div class="btn-group">
-    <clr-checkbox type="checkbox" class="btn" [clrChecked]="true">
-        Apples
-    </clr-checkbox>
-    <clr-checkbox type="checkbox" class="btn">
-        Oranges
-    </clr-checkbox>
-    <clr-checkbox type="checkbox" class="btn">
-        Kiwis
-    </clr-checkbox>
-    <clr-checkbox type="checkbox" class="btn">
-        Pears
-    </clr-checkbox>
-</div>
-`;
-
 @Component({
     selector: "clr-button-group-checkbox-demo",
     templateUrl: "./checkbox.html"
 })
 export class ButtonGroupCheckboxDemo {
     htmlExample1 = HTML_EXAMPLE_1;
-    htmlExample2 = HTML_EXAMPLE_2;
 }

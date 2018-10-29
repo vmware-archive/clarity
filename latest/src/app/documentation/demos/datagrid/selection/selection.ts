@@ -27,7 +27,7 @@ const SINGLE_ROW_EXAMPLE = `
 `;
 
 const ROW_SELECTION_EXAMPLE = `
-<clr-datagrid [(clrDgSelected)]="rowSelected" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSelected)]="rowSelected" [clrDgRowSelection]="true">
     <clr-dg-column>User ID</clr-dg-column>
     <-- ... -->
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">

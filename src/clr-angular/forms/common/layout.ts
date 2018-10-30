@@ -9,9 +9,6 @@ import { Layouts, LayoutService } from './providers/layout.service';
 
 @Directive({
   selector: '[clrLayout]',
-  host: {
-    '[class]': 'layoutService.layoutClass',
-  },
 })
 export class ClrLayout implements OnInit {
   @Input('clrLayout') layout: Layouts;

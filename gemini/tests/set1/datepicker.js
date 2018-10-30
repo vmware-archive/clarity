@@ -47,7 +47,7 @@ gemini.suite('datepicker', child => {
         actions.wait(WAIT_LOAD_TIME);
         this.trigger = find('.clr-example-2 .datepicker-trigger');
       })
-      .setCaptureElements('.clr-example-input')
+      .setCaptureElements('.clr-example-2')
       .capture('default')
       .capture('trigger-hovered', (actions, find) => {
         actions.mouseMove(this.trigger);

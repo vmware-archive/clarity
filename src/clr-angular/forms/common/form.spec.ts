@@ -18,20 +18,40 @@ class SimpleTest {
 
 export default function(): void {
   describe('ClrForm', () => {
-    let fixture, directive;
+    let fixture, directive, layoutService;
 
     beforeEach(function() {
-      TestBed.configureTestingModule({ declarations: [ClrForm, SimpleTest] });
+      TestBed.configureTestingModule({ declarations: [ClrForm, SimpleTest], providers: [LayoutService] });
       fixture = TestBed.createComponent(SimpleTest);
-      fixture.detectChanges();
       directive = fixture.debugElement.query(By.directive(ClrForm));
+      layoutService = directive.injector.get(LayoutService);
     });
 
     it('adds the .clr-form class to host', function() {
-      expect(directive.nativeElement.classList.contains('clr-form')).toBeTrue();
+      fixture.detectChanges();
+      expect(directive.nativeElement.className).toContain('clr-form');
+    });
+
+    it('adds the horizontal layout class to host', function() {
+      fixture.detectChanges();
+      expect(directive.nativeElement.className).toContain('clr-form-horizontal');
+    });
+
+    it('adds the vertical layout class to host', function() {
+      layoutService.layout = 'vertical';
+      fixture.detectChanges();
+      // There is no need to put `clr-form-vertical` because its the default behavior in CSS
+      expect(directive.nativeElement.className).toEqual('clr-form');
+    });
+
+    it('adds the compact layout class to host', function() {
+      layoutService.layout = 'compact';
+      fixture.detectChanges();
+      expect(directive.nativeElement.className).toContain('clr-form-compact');
     });
 
     it('provides the LayoutService', function() {
+      fixture.detectChanges();
       expect(directive.injector.get(LayoutService)).toBeTruthy();
     });
 

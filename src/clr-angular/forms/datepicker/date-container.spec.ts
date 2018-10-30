@@ -187,14 +187,17 @@ export default function() {
       });
 
       it('returns the classes to apply to the control', () => {
-        expect(context.clarityDirective.controlClass()).toEqual('');
+        expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
+        expect(context.clarityDirective.controlClass()).toContain('clr-col-xs-12');
+        expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
         context.clarityDirective.invalid = true;
-        expect(context.clarityDirective.controlClass()).toEqual('clr-error');
+        expect(context.clarityDirective.controlClass()).toContain('clr-error');
         const controlClassService = context.getClarityProvider(ControlClassService);
         const layoutService = context.getClarityProvider(LayoutService);
-        layoutService.layout = Layouts.HORIZONTAL;
-        expect(context.clarityDirective.controlClass()).toContain('clr-error');
-        expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
+        layoutService.layout = Layouts.VERTICAL;
+        context.clarityDirective.invalid = false;
+        expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
+        expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
         controlClassService.className = 'clr-col-2';
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
       });

@@ -72,6 +72,32 @@ describe('Loading directive', function() {
   });
 });
 
+describe('Loading directive without listener', function() {
+  beforeEach(function() {
+    TestBed.configureTestingModule({
+      declarations: [ClrLoading, FullTest],
+    });
+    this.fixture = TestBed.createComponent(FullTest);
+    this.fixture.detectChanges();
+    this.testComponent = this.fixture.componentInstance;
+    this.clarityDirective = this.fixture.componentInstance.loadingDirective;
+  });
+
+  afterEach(function() {
+    this.fixture.destroy();
+  });
+
+  it('keeps loading state without exceptions', function() {
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.DEFAULT);
+    this.testComponent.loading = true;
+    this.fixture.detectChanges();
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.LOADING);
+    this.testComponent.loading = false;
+    this.fixture.detectChanges();
+    expect(this.clarityDirective.loadingState).toEqual(ClrLoadingState.DEFAULT);
+  });
+});
+
 @Component({ template: `<div *ngIf="displayed" [clrLoading]="loading"></div>` })
 class FullTest {
   @ViewChild(ClrLoading) loadingDirective: ClrLoading;

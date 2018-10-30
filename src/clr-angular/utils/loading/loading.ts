@@ -38,7 +38,9 @@ export class ClrLoading implements OnDestroy {
     }
 
     this._loadingState = value;
-    this.listener.loadingStateChange(value);
+    if (this.listener) {
+      this.listener.loadingStateChange(value);
+    }
   }
 
   ngOnDestroy() {

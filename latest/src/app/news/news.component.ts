@@ -92,7 +92,6 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
                 }, 0);
             }
         }));
-        console.log(MINORS, PATCHES, this.versions);
     }
 
     resetCounts(): void {

@@ -26,6 +26,7 @@ import { ROUTING } from './datepicker.demo.routing';
 import { NgModelAutoWrappedDatepickerDemo } from './ngmodel-auto-wrapped';
 import { NgModelExplicitWrapperDemo } from './ngmodel-wrapper-explicit-wrapper';
 import { DisabledDemo } from './disabled';
+import { DatepickerLayoutDemo } from './layout';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING, FormsModule, ReactiveFormsModule],
@@ -46,6 +47,7 @@ import { DisabledDemo } from './disabled';
     DatepickerHRDemo,
     DatepickerLocaleData,
     DisabledDemo,
+    DatepickerLayoutDemo,
   ],
   exports: [
     DatepickerDemo,
@@ -64,6 +66,7 @@ import { DisabledDemo } from './disabled';
     DatepickerHRDemo,
     DatepickerLocaleData,
     DisabledDemo,
+    DatepickerLayoutDemo,
   ],
 })
 export class DatepickerDemoModule {}

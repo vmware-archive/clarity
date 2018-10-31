@@ -96,7 +96,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     super(ClrDateContainer, vcr, 4);
 
     if (controlClassService) {
-      controlClassService.className = this.elRef.nativeElement.className;
+      controlClassService.initControlClass(this.renderer, this.elRef.nativeElement);
     }
   }
 
@@ -332,6 +332,9 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
               const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
               this._dateNavigationService.selectedDay = dayModel;
               this.initializePreviousOutput(dayModel);
+            } else if (value === '' || value === null) {
+              this._dateNavigationService.selectedDay = null;
+              this.initializePreviousOutput(null);
             } else {
               this.initializePreviousOutput(null);
             }

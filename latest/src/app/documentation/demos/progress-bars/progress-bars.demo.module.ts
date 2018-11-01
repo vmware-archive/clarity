@@ -20,6 +20,7 @@ import {OldProgressBarCardsDemo} from "./old-progress-bar-cards";
 import {ProgressBarsDemo} from "./progress-bars.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
         ClarityModule,
         DocWrapperModule,
         RouterModule.forChild([{path: "", component: ProgressBarsDemo}]),
+        UtilsModule,
     ],
     declarations: [
         ProgressBarExamplesDemo,

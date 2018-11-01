@@ -6,17 +6,19 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ClrIconModule } from '../../icon/icon.module';
 
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
 import { ClrCommonFormsModule } from '../common/common.module';
 
-import { ClrCheckboxNext } from './checkbox';
+import { ClrCheckbox } from './checkbox';
 import { ClrCheckboxContainer } from './checkbox-container';
+import { ClrCheckboxWrapper } from './checkbox-wrapper';
 
 @NgModule({
-  imports: [CommonModule, ClrCommonFormsModule, ClrHostWrappingModule],
-  declarations: [ClrCheckboxNext, ClrCheckboxContainer],
-  exports: [ClrCommonFormsModule, ClrCheckboxNext, ClrCheckboxContainer],
-  entryComponents: [ClrCheckboxContainer],
+  imports: [CommonModule, ClrIconModule, ClrCommonFormsModule, ClrHostWrappingModule],
+  declarations: [ClrCheckbox, ClrCheckboxContainer, ClrCheckboxWrapper],
+  exports: [ClrCommonFormsModule, ClrCheckbox, ClrCheckboxContainer, ClrCheckboxWrapper],
+  entryComponents: [ClrCheckboxWrapper],
 })
-export class ClrCheckboxNextModule {}
+export class ClrCheckboxModule {}

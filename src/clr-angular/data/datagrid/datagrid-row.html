@@ -26,21 +26,18 @@
       <div class="datagrid-scrolling-cells">
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
              class="datagrid-select datagrid-fixed-column datagrid-cell">
-          <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)"
+          <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)" [id]="checkboxId"
                  [attr.aria-label]="commonStrings.select">
         </div>
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
              class="datagrid-select datagrid-fixed-column datagrid-cell">
-          <div class="radio">
             <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
             to label the radio by the first cell in the row (typically an id or name).
             It's pretty easy to label it with the whole row since we already have an id for it, but in most
             cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
-            <input type="radio" [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
+            <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
                    [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
                    [attr.aria-label]="commonStrings.select">
-            <label for="{{radioId}}"></label>
-          </div>
         </div>
         <div *ngIf="rowActionService.hasActionableRow"
              class="datagrid-row-actions datagrid-fixed-column datagrid-cell">

@@ -152,8 +152,22 @@ export declare class ClrCalendar implements OnDestroy {
     onKeyDown(event: KeyboardEvent): void;
 }
 
-export declare class ClrCheckboxContainer implements DynamicWrapper {
-    _dynamic: boolean;
+export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> implements OnInit {
+    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
+    ngOnInit(): void;
+    onBlur(): void;
+}
+
+export declare class ClrCheckboxContainer implements OnDestroy {
+    clrInline: boolean | string;
+    control: NgControl;
+    invalid: boolean;
+    label: ClrLabel;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
 }
 
 /** @deprecated */
@@ -176,14 +190,15 @@ export declare class ClrCheckboxDeprecated implements ControlValueAccessor {
     writeValue(value: any): void;
 }
 
+export declare class ClrCheckboxDeprecatedModule {
+}
+
 export declare class ClrCheckboxModule {
 }
 
-export declare class ClrCheckboxNext extends WrappedFormControl<ClrCheckboxContainer> {
-    constructor(vcr: ViewContainerRef);
-}
-
-export declare class ClrCheckboxNextModule {
+export declare class ClrCheckboxWrapper implements DynamicWrapper {
+    _dynamic: boolean;
+    label: ClrLabel;
 }
 
 export declare class ClrCommonFormsModule {
@@ -408,6 +423,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _scrollableCells: ViewContainerRef;
     _stickyCells: ViewContainerRef;
     readonly _view: any;
+    checkboxId: string;
     commonStrings: ClrCommonStrings;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
@@ -727,7 +743,7 @@ export declare class ClrInputModule {
 
 export declare class ClrLabel implements OnInit, OnDestroy {
     forAttr: string;
-    constructor(controlIdService: ControlIdService, layoutService: LayoutService, renderer: Renderer2, el: ElementRef);
+    constructor(controlIdService: ControlIdService, layoutService: LayoutService, ngControlService: NgControlService, renderer: Renderer2, el: ElementRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -889,10 +905,7 @@ export declare class ClrRadioModule {
 
 export declare class ClrRadioWrapper implements DynamicWrapper {
     _dynamic: boolean;
-    controlClassService: ControlClassService;
-    hasContainer: boolean;
     label: ClrLabel;
-    constructor(controlClassService: ControlClassService);
 }
 
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {

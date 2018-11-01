@@ -39,13 +39,13 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
             </div>
             <ul class="switch-content list-unstyled">
                 <li *ngFor="let column of columns">
-                    <clr-checkbox-container>
+                    <clr-checkbox-wrapper>
                         <input clrCheckbox type="checkbox"
                           [disabled]="column.lastVisibleColumn"
                           [ngModel]="!column.hidden"
                           (ngModelChange)="toggleColumn($event, column)">
                         <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
-                    </clr-checkbox-container>
+                    </clr-checkbox-wrapper>
                 </li>
             </ul>
             <div class="switch-footer" *ngIf="buttons.length > 0">

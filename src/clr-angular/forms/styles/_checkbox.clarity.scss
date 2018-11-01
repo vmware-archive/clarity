@@ -78,6 +78,10 @@
     }
   }
 
+  .clr-error .clr-checkbox-wrapper input[type='checkbox'] + label::before {
+    border-color: $clr-forms-invalid-color;
+  }
+
   .clr-form-control-disabled .clr-checkbox-wrapper {
     input[type='checkbox'] + label::before,
     input[type='checkbox']:checked + label::before {

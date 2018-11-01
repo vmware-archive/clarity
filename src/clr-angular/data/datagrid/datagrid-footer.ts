@@ -15,10 +15,12 @@ import { Selection, SelectionType } from './providers/selection';
   template: `
         <ng-container
             *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
-            <clr-checkbox-container class="datagrid-footer-select disabled">
+          <div class="clr-form-control-disabled">
+              <clr-checkbox-wrapper class="datagrid-footer-select">
                 <input clrCheckbox type="checkbox" checked="checked" disabled>
                 <label>{{selection.current.length}}</label>
-            </clr-checkbox-container>
+            </clr-checkbox-wrapper>
+          </div>
         </ng-container>
         <ng-content select="clr-dg-column-toggle"></ng-content>
         <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>

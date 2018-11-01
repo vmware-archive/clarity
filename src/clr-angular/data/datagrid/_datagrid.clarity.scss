@@ -201,18 +201,6 @@
 
     .datagrid-select {
       min-width: calc(0.375rem - #{$clr-table-borderwidth}); // This fixed an issue that made the cell to wide.
-      .radio label,
-      .checkbox label {
-        display: block;
-        // Override default checkbox styles for width/height
-        min-height: $clr-table-lineheight - $clr-rem-1px;
-        padding-left: $clr-table-lineheight;
-
-        &::before,
-        &::after {
-          top: 0;
-        }
-      }
     }
 
     .datagrid-signpost-trigger .signpost {
@@ -755,29 +743,19 @@
     }
   }
 
-  .datagrid-footer-select.checkbox {
-    display: block;
-    line-height: inherit;
-    flex: 0 0 (1.5rem - (2 * $clr-rem-1px)); // can't use calc() in flex. #thanksIE!
-    margin-right: 0.083333rem; // Space for the instance when a hideable column toggle is next to it.
-    align-self: flex-start;
-    label {
-      color: unset;
-      cursor: default;
-      opacity: 1;
-      line-height: inherit;
+  .clr-form-control-disabled .datagrid-footer-select.clr-checkbox-wrapper input[type='checkbox']:checked + label {
+    top: calc(1rem / 6);
+    cursor: default;
+
+    margin-right: 0.375rem;
+
+    &::before {
+      background-color: $clr-gray;
     }
 
-    input[type='checkbox'] + label {
-      &::before,
-      &::after {
-        top: 0.333333rem;
-      }
-
-      &::after {
-        border-left-color: $clr-white;
-        border-bottom-color: $clr-white;
-      }
+    &::after {
+      border-left-color: $clr-white;
+      border-bottom-color: $clr-white;
     }
   }
 
@@ -794,9 +772,10 @@
   }
 
   .datagrid-select {
-    .radio,
-    .checkbox {
-      margin-top: -1 * $clr-rem-1px;
+    .clr-control-label {
+      min-height: 0.5rem;
+      margin-top: -0.2rem;
+      padding-left: 0.583333rem;
     }
   }
 
@@ -849,21 +828,6 @@
       clr-icon:not([shape='info-circle'], [shape='exclamation-triangle'], [shape='exclamation-circle'], [shape='check-circle'], [shape='info'], [shape='error']) {
         width: 0.875rem; //21px
         height: 0.875rem; //21px
-      }
-    }
-
-    .datagrid-footer-select.checkbox {
-      input[type='checkbox'] + label {
-        &::before,
-        &::after {
-          top: 0.11111rem;
-        }
-
-        // Need a better way to prevent the border-color from getting clobbered.
-        &::after {
-          border-left-color: $clr-white;
-          border-bottom-color: $clr-white;
-        }
       }
     }
 

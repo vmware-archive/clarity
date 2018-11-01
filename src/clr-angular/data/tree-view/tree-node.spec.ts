@@ -331,7 +331,7 @@ export default function(): void {
       });
 
       it('displays a checkbox when selectable is true', () => {
-        const checkbox: HTMLElement = compiled.querySelector('clr-checkbox');
+        const checkbox: HTMLElement = compiled.querySelector('[clrCheckbox]');
         expect(checkbox).not.toBeNull();
       });
 

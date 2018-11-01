@@ -14,8 +14,8 @@
 
     <div class="form-group">
         <label for="page-size">Rows per page</label>
-        <div class="select">
-            <select id="page-size" name="page-size" [(ngModel)]="options.pageSize">
+        <div class="clr-select-wrapper">
+            <select id="page-size" class="clr-select" name="page-size" [(ngModel)]="options.pageSize">
                 <option value="0">No pagination</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
@@ -24,18 +24,24 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <clr-checkbox [(ngModel)]="options.selectable" [clrInline]="true">Selectable</clr-checkbox>
-        <clr-checkbox [(ngModel)]="options.loremIpsum" [clrInline]="true">Multi-line text</clr-checkbox>
-    </div>
-
-    <div class="form-group">
-        <clr-checkbox [(ngModel)]="options.server">Server-driven</clr-checkbox>
-    </div>
+    <clr-checkbox-container clrInline>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable">
+          <label>Selectable</label>
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum">
+          <label>Multi-line text</label>
+        </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox [(ngModel)]="options.server">
+          <label>Server-driven</label>
+        </clr-checkbox-wrapper>
+    </clr-checkbox-container>
 
     <div class="form-group" *ngIf="options.server">
         <label for="latency">Latency</label>
-        <div class="select">
+        <div class="clr-select-wrapper">
             <select id="latency" name="latency" [(ngModel)]="options.latency">
                 <option value="0">0 ms</option>
                 <option value="100">100ms</option>

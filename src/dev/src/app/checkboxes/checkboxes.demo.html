@@ -4,143 +4,480 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<form #testForm="ngForm">
-    <section class="form-block">
-        <label>Checkboxes</label>
-        <div class="form-group">
-            <label>Default/Stacked checkbox group</label>
-            <div class="checkbox">
-                <input type="checkbox" id="checkrads_1">
-                <label for="checkrads_1">Checkbox 1</label>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" id="checkrads_2" checked>
-                <label for="checkrads_2">Checkbox 2</label>
-            </div>
-            <div class="checkbox disabled">
-                <input type="checkbox" id="checkrads_3" disabled>
-                <label for="checkrads_3">A disabled and unchecked checkbox</label>
-            </div>
-            <div class="checkbox disabled">
-                <input type="checkbox" id="checkrads_4" disabled checked>
-                <label for="checkrads_4">A disabled and checked checkbox</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Inline checkbox group</label>
-            <div class="checkbox-inline">
-                <input type="checkbox" id="checkrads_5">
-                <label for="checkrads_5">Checkbox 1</label>
-            </div>
-            <div class="checkbox-inline">
-                <input type="checkbox" id="checkrads_6" checked>
-                <label for="checkrads_6">Checkbox 2</label>
-            </div>
-            <div class="checkbox-inline disabled">
-                <input type="checkbox" id="checkrads_7" disabled>
-                <label for="checkrads_7">A disabled and unchecked checkbox</label>
-            </div>
-            <div class="checkbox-inline disabled">
-                <input type="checkbox" id="checkrads_8" disabled checked>
-                <label for="checkrads_8">A disabled and checked checkbox</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Indeterminate Checkbox</label>
-            <div>
-                <clr-checkbox type="checkbox" id="checkbox_9" [(clrIndeterminate)]="indeterminateState">
-                    Clarity indeterminate checkbox
-                </clr-checkbox>
-                <div>
-                    <button class="btn btn-sm" (click)="onToggleIndeterminateState($event)" type="button">
-                        Toggle Indeterminate State
-                    </button>
-                </div>
-                <input type="checkbox"
-                       id="checkrads_10"
-                       [indeterminate]="nativeIndeterminateState">
-                <label for="checkrads_10">Native indeterminate checkbox</label>
-                <div>
-                    <b>NOTE:</b> Native checkbox elements must set indeterminate state with JavaScript.
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Clarity Checkbox</label>
-            <clr-checkbox
-                type="checkbox" id="formCheckbox"
-                name="active"
-                [(ngModel)]="active">
-                Clarity Checkbox
-            </clr-checkbox>
-            <label>
-                State: {{active}}
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Disabled Clarity Checkbox</label>
-            <clr-checkbox
-                type="checkbox" id="formCheckboxDisabled"
-                [clrDisabled]="true">
-                Clarity Checkbox
-            </clr-checkbox>
-        </div>
-    </section>
+
+
+<h2>Angular Checkbox <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Standalone</h4>
+
+<input type="checkbox" clrCheckbox />
+
+<input type="checkbox" clrCheckbox id="testing456" />
+
+<clr-checkbox-wrapper>
+  <input type="checkbox" clrCheckbox />
+  <label>Test</label>
+</clr-checkbox-wrapper>
+
+<clr-checkbox-wrapper>
+  <input type="checkbox" clrCheckbox id="testing123" />
+  <label for="testing123">Test</label>
+</clr-checkbox-wrapper>
+
+
+<h4>Vertical</h4>
+
+<form clrForm>
+
+  <clr-checkbox-container>
+    <label>First</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.one.one" value="one" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.one.two" value="two" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.one.three" value="three" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{vertical.one}}</p>
+
+  <clr-checkbox-container clrInline>
+    <label>Second</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.two.one" value="one" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.two.two" value="two" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.two.three" value="three" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{vertical.two}}</p>
+
+  <clr-checkbox-container clrInline>
+    <label>Disabled</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.three.one" value="one" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.three.two" value="two" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="vertical.three.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
 </form>
 
-<form #form="ngForm" novalidate>
-    <section class="form-block">
-        <div class="form-group">
-            <label>With ngForm & ngModel</label>
-            <clr-checkbox
-                    name="termsCheckbox"
-                    id="checkrads_11"
-                    [clrInline]="true"
-                    [(ngModel)]="termsAgreement">
-                I agree to the terms and conditions. {{ form.value | json }}
-            </clr-checkbox>
-        </div>
-    </section>
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-checkbox-container>
+    <label>First</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.one.one" value="one" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.one.two" value="two" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.one.three" value="three" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{horizontal.one}}</p>
+
+  <clr-checkbox-container clrInline>
+    <label>Second</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.two.one" value="one" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.two.two" value="two" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.two.three" value="three" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{horizontal.two}}</p>
+
+  <clr-checkbox-container clrInline>
+    <label>Second</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.three.one" value="one" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.three.two" value="two" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="horizontal.three.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
 </form>
 
-<form>
-    <section class="form-block">
-        <div class="form-group">
-            <label>With a list of objects</label>
-            <clr-checkbox *ngFor="let item of list"
-                          [(clrChecked)]="item.running"
-                          [clrDisabled]="item.disabled">
-                {{ item.disabled ? ' is disabled.' : (item.running ? ' is running.' : 'is off.') }}
-            </clr-checkbox>
-        </div>
-    </section>
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <clr-checkbox-container>
+    <label>First</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.one.one" value="one" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.one.two" value="two" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.one.three" value="three" name="one" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{compact.one}}</p>
+
+  <clr-checkbox-container clrInline="false">
+    <label>Second</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.two.one" value="one" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.two.two" value="two" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.two.three" value="three" name="two" required />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
+
+  <p>Selected: {{compact.two}}</p>
+
+  <clr-checkbox-container clrInline>
+    <label>Second</label>
+    <clr-checkbox-wrapper>
+      <label>One</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.three.one" value="one" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Two</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.three.two" value="two" name="three" required />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Three</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="compact.three.three" value="three" name="three" required [disabled]="disabled" />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-checkbox-container>
 </form>
 
-<h2>New Angular checkbox</h2>
 
-<!-- Full user control -->
-<clr-checkbox-container>
-    <input clrCheckbox type="checkbox" id="first">
-    <label for="first">With id</label>
-</clr-checkbox-container>
+<h2>CSS Checkbox</h2>
 
-<!-- User can't be bothered to give an ID -->
-<clr-checkbox-container>
-    <input clrCheckbox type="checkbox">
-    <label>No id</label>
-</clr-checkbox-container>
+<h4>Vertical</h4>
 
-<!-- Checkbox with no label -->
-<input clrCheckbox type="checkbox">
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic checkbox</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="vertical-checkbox1" name="checkbox-basic" class="clr-checkbox">
+        <label for="vertical-checkbox1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="vertical-checkbox2" name="checkbox-basic" class="clr-checkbox">
+        <label for="vertical-checkbox2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="vertical-checkbox3" name="checkbox-basic" class="clr-checkbox">
+        <label for="vertical-checkbox3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
 
-<!-- Checkbox with no label, but the user still wants a specific ID -->
-<input clrCheckbox type="checkbox" id="last">
+  <div class="clr-form-control">
+    <label class="clr-control-label">
+      Basic checkbox, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="vertical-checkbox4" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="vertical-checkbox5" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="vertical-checkbox6" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
 
-<!-- Indeterminate with label -->
-<clr-checkbox-container>
-    <input clrCheckbox type="checkbox" [indeterminate]="true">
-    <label>Indeterminate with label</label>
-</clr-checkbox-container>
+  <div class="clr-form-control">
+    <label class="clr-control-label">
+      Inline checkbox</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="vertical-checkbox7" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="vertical-checkbox8" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="vertical-checkbox9" placeholder="Enter value here" class="clr-checkbox">
+        <label for="vertical-checkbox9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>
 
-<!-- Indeterminate without label -->
-<input clrCheckbox type="checkbox" [indeterminate]="true">
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic checkbox</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="horizontal-checkbox1" name="checkbox-basic" class="clr-checkbox">
+        <label for="horizontal-checkbox1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="horizontal-checkbox2" name="checkbox-basic" class="clr-checkbox">
+        <label for="horizontal-checkbox2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="horizontal-checkbox3" name="checkbox-basic" class="clr-checkbox">
+        <label for="horizontal-checkbox3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">
+      Basic checkbox, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="horizontal-checkbox4" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="horizontal-checkbox5" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="horizontal-checkbox6" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">
+      Inline checkbox</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="horizontal-checkbox7" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="horizontal-checkbox8" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="horizontal-checkbox9" placeholder="Enter value here" class="clr-checkbox">
+        <label for="horizontal-checkbox9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic checkbox</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="compact-checkbox1" name="checkbox-basic" class="clr-checkbox">
+        <label for="compact-checkbox1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="compact-checkbox2" name="checkbox-basic" class="clr-checkbox">
+        <label for="compact-checkbox2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="compact-checkbox3" name="checkbox-basic" class="clr-checkbox">
+        <label for="compact-checkbox3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic checkbox, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="compact-checkbox4" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="compact-checkbox5" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox2" id="compact-checkbox6" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Inline checkbox</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="compact-checkbox7" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="compact-checkbox8" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" name="checkbox3" id="compact-checkbox9" placeholder="Enter value here" class="clr-checkbox">
+        <label for="compact-checkbox9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<h2>Validation in Groups (WIP)</h2>
+
+<form clrForm [formGroup]="reactiveForm">
+  <!--<clr-checkbox-container [clrFormGroup]="reactiveForm.controls.vmsSelection">-->
+  <clr-checkbox-container>
+    <label>Reactive Forms</label>
+    <clr-checkbox-wrapper formArrayName="vmsSelection" *ngFor="let vm of reactiveForm.controls.vmsSelection.controls; let i = index">
+      <label>{{vms[i]}}</label>
+      <input clrCheckbox type="checkbox" [formControl]="vm" />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Select a VM.</clr-control-helper>
+    <clr-control-error>You must select at least one.</clr-control-error>
+  </clr-checkbox-container>
+  <clr-input-container>
+    <label>Your name</label>
+    <input clrInput formControlName="name" />
+    <clr-control-helper>This field is required</clr-control-helper>
+    <clr-control-error>Cannot be blank!</clr-control-error>
+  </clr-input-container>
+
+  <p>Array valid: {{reactiveForm.get('vmsSelection').valid}} | Form valid: {{reactiveForm.valid}}</p>
+</form>
+
+<form clrForm #form="ngForm">
+  <!--<clr-checkbox-container ngModelGroup="selected" minSelected #selected="ngModelGroup" [clrFormGroup]="selected">-->
+  <clr-checkbox-container ngModelGroup="selected" minSelected #selected="ngModelGroup">
+    <label>Select at least one</label>
+    <clr-checkbox-wrapper>
+      <label>{{vms[0]}}</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[0].selected" name="checkbox0" #one="ngModel" />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>{{vms[1]}}</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[1].selected" name="checkbox1" #two="ngModel" />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>{{vms[2]}}</label>
+      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[2].selected" name="checkbox2" #three="ngModel" />
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Select a VM.</clr-control-helper>
+    <clr-control-error>You must select at least two.</clr-control-error>
+  </clr-checkbox-container>
+  <clr-input-container>
+    <label>Your name</label>
+    <input clrInput [(ngModel)]="templateForm.name" name="name" required />
+    <clr-control-helper>This field is required</clr-control-helper>
+    <clr-control-error>Cannot be blank!</clr-control-error>
+  </clr-input-container>
+
+  <p>Group valid: {{selected.valid}} | Form valid: {{form.valid}} | One valid: {{one.valid}}</p>
+</form>

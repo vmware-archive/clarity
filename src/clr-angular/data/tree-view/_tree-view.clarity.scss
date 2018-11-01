@@ -148,17 +148,16 @@
     }
   }
 
-  .clr-treenode-checkbox {
+  .clr-tree-node-content-container > .clr-checkbox-wrapper {
     //Dimensions
     height: $clr-tree-node-touch-target;
     width: $clr-tree-node-touch-target;
     padding-top: $clr-tree-checkbox-padding-top;
     padding-left: $clr-tree-checkbox-padding-left;
+  }
 
-    //States
-    &:first-child {
-      margin-left: $clr-tree-node-touch-target;
-    }
+  .clr-tree-node-content-container > .clr-checkbox-wrapper:first-child {
+    margin-left: $clr-tree-node-touch-target;
   }
 
   .clr-treenode-content .label {

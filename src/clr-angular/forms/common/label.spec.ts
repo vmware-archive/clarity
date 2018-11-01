@@ -22,10 +22,16 @@ class NoForTest {}
 class ExplicitForTest {}
 
 @Component({
-  template: `<clr-input-container><label for="hello"></label></clr-input-container>`,
-  providers: [LayoutService],
+  template: `<div><label for="hello"></label></div>`,
+  providers: [ControlIdService],
 })
 class ContainerizedTest {}
+
+@Component({
+  template: `<div><label for="hello"></label></div>`,
+  providers: [NgControlService],
+})
+class WrapperTest {}
 
 @Component({
   template: `<label for="hello" class="clr-col-xs-12 clr-col-md-3"></label>`,
@@ -43,7 +49,7 @@ export default function(): void {
     });
 
     it("doesn't set the the class unless its inside of a container", function() {
-      TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest], providers: [NgControlService] });
+      TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest] });
       const fixture = TestBed.createComponent(NoForTest);
       fixture.detectChanges();
       expect(
@@ -54,9 +60,21 @@ export default function(): void {
     it('does set the the class when its inside of a container', function() {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
-        declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
+        declarations: [ClrLabel, ContainerizedTest],
       });
       const fixture = TestBed.createComponent(ContainerizedTest);
+      fixture.detectChanges();
+      expect(
+        fixture.debugElement.query(By.css('label')).nativeElement.classList.contains('clr-control-label')
+      ).toBeTrue();
+    });
+
+    it('does set the class when its inside of a wrapper', function() {
+      TestBed.configureTestingModule({
+        imports: [ClrIconModule],
+        declarations: [ClrLabel, WrapperTest],
+      });
+      const fixture = TestBed.createComponent(WrapperTest);
       fixture.detectChanges();
       expect(
         fixture.debugElement.query(By.css('label')).nativeElement.classList.contains('clr-control-label')

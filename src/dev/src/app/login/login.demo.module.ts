@@ -5,11 +5,18 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { ClarityModule } from '@clr/angular';
 
 import { LoginDemo } from './login.demo';
 import { ROUTING } from './login.demo.routing';
+import { LoginDeprecatedDemo } from './login-deprecated.demo';
+import { LoginLayoutDemo } from './login-layout.demo';
 
-@NgModule({ imports: [CommonModule, ClarityModule, ROUTING], declarations: [LoginDemo], exports: [LoginDemo] })
+@NgModule({
+  imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
+  declarations: [LoginDemo, LoginLayoutDemo, LoginDeprecatedDemo],
+  exports: [LoginDemo, LoginLayoutDemo, LoginDeprecatedDemo],
+})
 export class LoginDemoModule {}

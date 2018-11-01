@@ -23,7 +23,7 @@
     "generate-release-notes": "node generate-template.js",
     "generate-404": "cat dist/index.html > dist/404.html",
     "deploy": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:deploy",
-		"deploy:ci": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:deploy -- --directory=../../deploy/documentation/v0.13"
+    "deploy:ci": "npm run build:client-and-server-bundles && npm run webpack:server && npm run generate:deploy -- --directory=../../deploy/documentation/v0.13"
   },
   "private": true,
   "dependencies": {
@@ -37,9 +37,9 @@
     "@angular/platform-browser-dynamic": "^6.1.6",
     "@angular/platform-server": "^6.1.6",
     "@angular/router": "^6.1.6",
-    "@clr/angular": "^0.13.7",
-    "@clr/icons": "^0.13.7",
-    "@clr/ui": "^0.13.7",
+    "@clr/angular": "^0.13.8",
+    "@clr/icons": "^0.13.8",
+    "@clr/ui": "^0.13.8",
     "@webcomponents/custom-elements": "^1.0.4",
     "bootstrap": "^4.0.0-alpha.5",
     "classlist.js": "^1.1.20150312",

@@ -7,39 +7,47 @@ import { Directive, Input, Optional, TemplateRef, ViewContainerRef } from '@angu
 import { Subscription } from 'rxjs';
 
 import { IfErrorService } from './if-error.service';
+import { NgControlService } from '../providers/ng-control.service';
+import { NgControl } from '@angular/forms';
 
 @Directive({ selector: '[clrIfError]' })
 export class ClrIfError {
   constructor(
-    @Optional() private service: IfErrorService,
+    @Optional() private ifErrorService: IfErrorService,
+    @Optional() private ngControlService: NgControlService,
     private template: TemplateRef<any>,
     private container: ViewContainerRef
   ) {
-    if (!this.service) {
+    if (!this.ifErrorService) {
       throw new Error('clrIfError can only be used within a form control container element like clr-input-container');
     } else {
       this.displayError(false);
     }
+    this.subscriptions.push(
+      this.ngControlService.controlChanges.subscribe(control => {
+        this.control = control;
+      })
+    );
+    this.subscriptions.push(
+      this.ifErrorService.statusChanges.subscribe(invalid => {
+        // If there is a specific error to track, check it, otherwise check overall validity
+        if (this.error && this.control) {
+          this.displayError(this.control.hasError(this.error));
+        } else {
+          this.displayError(invalid);
+        }
+      })
+    );
   }
 
   @Input('clrIfError') error: string;
 
-  private subscription: Subscription;
+  private subscriptions: Subscription[] = [];
   private displayed: boolean = false;
-
-  ngOnInit() {
-    this.subscription = this.service.statusChanges.subscribe(control => {
-      // If there is a specific error to track, check it, otherwise check overall validity
-      if (this.error) {
-        this.displayError(control.hasError(this.error));
-      } else {
-        this.displayError(control.invalid);
-      }
-    });
-  }
+  private control: NgControl;
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   private displayError(invalid: boolean) {

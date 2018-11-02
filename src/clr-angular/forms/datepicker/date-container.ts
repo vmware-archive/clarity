@@ -134,8 +134,8 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(invalid => {
+        this.invalid = invalid;
       })
     );
   }

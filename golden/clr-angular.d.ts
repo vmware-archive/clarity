@@ -152,10 +152,8 @@ export declare class ClrCalendar implements OnDestroy {
     onKeyDown(event: KeyboardEvent): void;
 }
 
-export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
-    ngOnInit(): void;
-    onBlur(): void;
+export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> {
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrCheckboxContainer implements OnDestroy {
@@ -514,18 +512,21 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
     _dateUpdated: EventEmitter<Date>;
     clrNewLayout: boolean;
+    protected control: NgControl;
     date: Date;
+    protected el: ElementRef;
+    protected index: number;
     readonly inputType: string;
     newFormsLayout: boolean;
     placeholder: string;
     readonly placeholderText: string;
-    constructor(container: ClrDateContainer, vcr: ViewContainerRef, elRef: ElementRef, renderer: Renderer2, _ngControl: NgControl, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, ngControlService: NgControlService, controlClassService: ControlClassService, focusService: FocusService, ifErrorService: IfErrorService, control: NgControl, newFormsLayout: boolean);
+    protected renderer: Renderer2;
+    constructor(vcr: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, focusService: FocusService, newFormsLayout: boolean);
     ngAfterViewInit(): void;
-    ngOnDestroy(): void;
     ngOnInit(): void;
     onValueChange(target: HTMLInputElement): void;
-    setBlurStates(): void;
     setFocusStates(): void;
+    triggerValidation(): void;
 }
 
 export declare class ClrDatepickerModule {
@@ -659,6 +660,8 @@ export declare class ClrEmphasisModule {
 }
 
 export declare class ClrForm {
+    constructor(markControlService: MarkControlService);
+    markAsDirty(): void;
 }
 
 export declare class ClrFormsDeprecatedModule {
@@ -700,9 +703,8 @@ export declare class ClrIfDragged<T> implements OnDestroy {
 
 export declare class ClrIfError {
     error: string;
-    constructor(service: IfErrorService, template: TemplateRef<any>, container: ViewContainerRef);
+    constructor(ifErrorService: IfErrorService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
-    ngOnInit(): void;
 }
 
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
@@ -721,10 +723,9 @@ export declare class ClrIfOpen implements OnDestroy {
     updateView(value: boolean): void;
 }
 
-export declare class ClrInput extends WrappedFormControl<ClrInputContainer> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, renderer: Renderer2, el: ElementRef);
-    ngOnInit(): void;
-    onBlur(): void;
+export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {
+    protected index: number;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrInputContainer implements DynamicWrapper, OnDestroy {
@@ -852,12 +853,10 @@ export declare class ClrNavLevel implements OnInit {
 }
 
 export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
-    subscription: Subscription;
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, focusService: FocusService, controlClassService: ControlClassService, renderer: Renderer2, el: ElementRef, toggleService: BehaviorSubject<boolean>);
-    ngOnDestroy(): void;
-    ngOnInit(): void;
-    onBlur(): void;
-    onFocus(): void;
+    protected index: number;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, focusService: FocusService, toggleService: BehaviorSubject<boolean>);
+    triggerFocus(): void;
+    triggerValidation(): void;
 }
 
 export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
@@ -883,10 +882,8 @@ export declare class ClrPasswordModule {
 export declare class ClrPopoverModule {
 }
 
-export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
-    ngOnInit(): void;
-    onBlur(): void;
+export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> {
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrRadioContainer implements OnDestroy {
@@ -908,10 +905,9 @@ export declare class ClrRadioWrapper implements DynamicWrapper {
     label: ClrLabel;
 }
 
-export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, el: ElementRef, renderer: Renderer2);
-    ngOnInit(): void;
-    onBlur(): void;
+export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
+    protected index: number;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
@@ -1055,10 +1051,9 @@ export declare class ClrTabs implements AfterContentInit {
 export declare class ClrTabsModule {
 }
 
-export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> implements OnInit {
-    constructor(vcr: ViewContainerRef, ngControlService: NgControlService, ifErrorService: IfErrorService, control: NgControl, controlClassService: ControlClassService, renderer: Renderer2, el: ElementRef);
-    ngOnInit(): void;
-    onBlur(): void;
+export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
+    protected index: number;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrTextareaContainer implements DynamicWrapper, OnDestroy {

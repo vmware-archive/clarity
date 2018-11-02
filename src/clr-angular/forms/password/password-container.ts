@@ -96,8 +96,8 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     public commonStrings: ClrCommonStrings
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(invalid => {
+        this.invalid = invalid;
       })
     );
     this.subscriptions.push(

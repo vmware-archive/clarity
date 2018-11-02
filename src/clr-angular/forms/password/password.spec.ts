@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrPassword } from './password';
 import { ClrPasswordContainer } from './password-container';
-import { ControlInvalidSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
+import { ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
 import { TestBed } from '@angular/core/testing';
 import { LayoutService } from '../common/providers/layout.service';
 import { ClrIconModule } from '../../icon/icon.module';
@@ -19,7 +19,7 @@ import { NgControlService } from '../common/providers/ng-control.service';
 
 @Component({
   template: `
-    <input clrPassword />
+    <input type="password" clrPassword />
   `,
 })
 class InvalidUseTest {}
@@ -50,7 +50,18 @@ class ReactiveTest {
 
 export default function(): void {
   describe('ClrPassword', () => {
-    ControlInvalidSpec(ClrPassword, InvalidUseTest);
+    describe('invalid use', () => {
+      it('should throw an error when used without a password container', () => {
+        TestBed.configureTestingModule({
+          imports: [ClrPassword],
+          declarations: [InvalidUseTest],
+        });
+        expect(() => {
+          const fixture = TestBed.createComponent(InvalidUseTest);
+          fixture.detectChanges();
+        }).toThrow();
+      });
+    });
     TemplateDrivenSpec(ClrPasswordContainer, ClrPassword, TemplateDrivenTest, 'clr-input');
     ReactiveSpec(ClrPasswordContainer, ClrPassword, ReactiveTest, 'clr-input');
 

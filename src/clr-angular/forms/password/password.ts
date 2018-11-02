@@ -6,80 +6,64 @@
 
 import {
   Directive,
-  OnInit,
-  HostListener,
-  Optional,
-  ViewContainerRef,
-  Renderer2,
-  Inject,
   ElementRef,
+  HostListener,
+  Inject,
+  Injector,
   OnDestroy,
+  OnInit,
+  Optional,
+  Renderer2,
+  Self,
+  ViewContainerRef,
 } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
-import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrPasswordContainer, ToggleService } from './password-container';
 import { WrappedFormControl } from '../common/wrapped-control';
 import { FocusService } from '../common/providers/focus.service';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrPassword]', host: { '[class.clr-input]': 'true' } })
 export class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
-  subscription: Subscription;
+  protected index = 1;
 
   constructor(
     vcr: ViewContainerRef,
-    @Optional() private ngControlService: NgControlService,
-    @Optional() private ifErrorService: IfErrorService,
-    @Optional() private control: NgControl,
-    @Optional() private focusService: FocusService,
-    controlClassService: ControlClassService,
+    injector: Injector,
+    @Self()
+    @Optional()
+    control: NgControl,
     renderer: Renderer2,
     el: ElementRef,
-    @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>
+    @Optional() private focusService: FocusService,
+    @Optional()
+    @Inject(ToggleService)
+    private toggleService: BehaviorSubject<boolean>
   ) {
-    super(ClrPasswordContainer, vcr, 1);
-    if (!this.control) {
-      throw new Error(
-        'clrPassword can only be used within an Angular form control, add ngModel or formControl to the input'
-      );
-    }
+    super(vcr, ClrPasswordContainer, injector, control, renderer, el);
+
     if (!this.focusService) {
       throw new Error('clrPassword requires being wrapped in <clr-password-container>');
     }
-    if (controlClassService) {
-      controlClassService.initControlClass(renderer, el.nativeElement);
-    }
-    this.subscription = this.toggleService.subscribe(toggle => {
-      renderer.setProperty(el.nativeElement, 'type', toggle ? 'text' : 'password');
-    });
-  }
 
-  ngOnInit() {
-    super.ngOnInit();
-    if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
-    }
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.push(
+      this.toggleService.subscribe(toggle => {
+        renderer.setProperty(el.nativeElement, 'type', toggle ? 'text' : 'password');
+      })
+    );
   }
 
   @HostListener('focus')
-  onFocus() {
+  triggerFocus() {
     if (this.focusService) {
       this.focusService.focused = true;
     }
   }
 
   @HostListener('blur')
-  onBlur() {
-    if (this.ifErrorService) {
-      this.ifErrorService.triggerStatusChange();
-    }
+  triggerValidation() {
+    super.triggerValidation();
     if (this.focusService) {
       this.focusService.focused = false;
     }

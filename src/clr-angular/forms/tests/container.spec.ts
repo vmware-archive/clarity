@@ -13,6 +13,7 @@ import { IfErrorService } from '../common/if-error/if-error.service';
 
 import { NgControlService } from '../common/providers/ng-control.service';
 import { Layouts, LayoutService } from '../common/providers/layout.service';
+import { MarkControlService } from '../common/providers/mark-control.service';
 
 export function ContainerNoLabelSpec(testContainer, testControl, testComponent): void {
   describe('no label', () => {
@@ -21,7 +22,7 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+        providers: [NgControl, NgControlService, IfErrorService, LayoutService, MarkControlService],
       });
       fixture = TestBed.createComponent(testComponent);
 
@@ -55,7 +56,7 @@ export function ReactiveSpec(testContainer, testControl, testComponent, wrapperC
 
 function fullSpec(description, testContainer, directives: any | any[], testComponent, wrapperClass) {
   describe(description, () => {
-    let fixture, containerDE, container, containerEl, ifErrorService, layoutService;
+    let fixture, containerDE, container, containerEl, ifErrorService, layoutService, markControlService;
     if (!Array.isArray(directives)) {
       directives = [directives];
     }
@@ -63,7 +64,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule, ReactiveFormsModule],
         declarations: [testContainer, ...directives, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+        providers: [NgControl, NgControlService, IfErrorService, LayoutService, MarkControlService],
       });
       fixture = TestBed.createComponent(testComponent);
 
@@ -71,6 +72,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       container = containerDE.componentInstance;
       containerEl = containerDE.nativeElement;
       ifErrorService = containerDE.injector.get(IfErrorService);
+      markControlService = containerDE.injector.get(MarkControlService);
       layoutService = containerDE.injector.get(LayoutService);
       fixture.detectChanges();
     });
@@ -150,7 +152,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it('tracks the validity of the form control', () => {
       expect(container.invalid).toBeFalse();
-      ifErrorService.triggerStatusChange();
+      markControlService.markAsDirty();
       fixture.detectChanges();
       expect(container.invalid).toBeTrue();
     });

@@ -4,48 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, HostListener, Optional, ViewContainerRef, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Directive, Optional, ViewContainerRef, Renderer2, ElementRef, Injector, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
-import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrInputContainer } from './input-container';
 import { WrappedFormControl } from '../common/wrapped-control';
-import { ControlClassService } from '../common/providers/control-class.service';
 
 @Directive({ selector: '[clrInput]', host: { '[class.clr-input]': 'true' } })
-export class ClrInput extends WrappedFormControl<ClrInputContainer> implements OnInit {
+export class ClrInput extends WrappedFormControl<ClrInputContainer> {
+  protected index = 1;
+
   constructor(
     vcr: ViewContainerRef,
-    @Optional() private ngControlService: NgControlService,
-    @Optional() private ifErrorService: IfErrorService,
-    @Optional() private control: NgControl,
-    @Optional() controlClassService: ControlClassService,
+    injector: Injector,
+    @Self()
+    @Optional()
+    control: NgControl,
     renderer: Renderer2,
     el: ElementRef
   ) {
-    super(ClrInputContainer, vcr, 1);
-    if (!control) {
-      throw new Error(
-        'clrInput can only be used within an Angular form control, add ngModel or formControl to the input'
-      );
-    }
-    if (controlClassService) {
-      controlClassService.initControlClass(renderer, el.nativeElement);
-    }
-  }
-
-  ngOnInit() {
-    super.ngOnInit();
-    if (this.ngControlService) {
-      this.ngControlService.setControl(this.control);
-    }
-  }
-
-  @HostListener('blur')
-  onBlur() {
-    if (this.ifErrorService) {
-      this.ifErrorService.triggerStatusChange();
-    }
+    super(vcr, ClrInputContainer, injector, control, renderer, el);
   }
 }

@@ -7,10 +7,17 @@
 import { Directive } from '@angular/core';
 import { LayoutService } from './providers/layout.service';
 import { IS_NEW_FORMS_LAYOUT_TRUE_PROVIDER } from './providers/new-forms.service';
+import { MarkControlService } from './providers/mark-control.service';
 
 @Directive({
   selector: '[clrForm]',
-  providers: [LayoutService, IS_NEW_FORMS_LAYOUT_TRUE_PROVIDER],
+  providers: [LayoutService, MarkControlService, IS_NEW_FORMS_LAYOUT_TRUE_PROVIDER],
   host: { '[class.clr-form]': 'true' },
 })
-export class ClrForm {}
+export class ClrForm {
+  constructor(private markControlService: MarkControlService) {}
+
+  markAsDirty() {
+    this.markControlService.markAsDirty();
+  }
+}

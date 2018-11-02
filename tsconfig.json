@@ -16,5 +16,6 @@
       "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"]
     },
     "lib": ["es2017", "dom"]
-  }
+  },
+  "exclude": ["node_modules/**", "dist/**"]
 }

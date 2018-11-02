@@ -90,8 +90,8 @@ export class ClrCheckboxContainer implements OnDestroy {
     // @TODO put a solution in for form group validation
     // if (!this.formGroup) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(control => {
-        this.invalid = control.invalid;
+      this.ifErrorService.statusChanges.subscribe(invalid => {
+        this.invalid = invalid;
       })
     );
     // } else {

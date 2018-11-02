@@ -25,7 +25,7 @@ export default function(): void {
       expect(testControl.statusChanges.subscribe).toHaveBeenCalled();
     });
 
-    it('provides observable for statusChanges, passing the control', () => {
+    it('provides observable for statusChanges, passing the invalid state', () => {
       const cb = jasmine.createSpy('cb');
       const sub = service.statusChanges.subscribe(control => cb(control));
       ngControlService.setControl(testControl);
@@ -33,7 +33,7 @@ export default function(): void {
       testControl.markAsTouched();
       testControl.updateValueAndValidity();
       expect(cb).toHaveBeenCalled();
-      expect(cb).toHaveBeenCalledWith(testControl);
+      expect(cb).toHaveBeenCalledWith(false);
       sub.unsubscribe();
     });
 
@@ -44,18 +44,25 @@ export default function(): void {
       // Manually trigger status check
       service.triggerStatusChange();
       expect(cb).toHaveBeenCalled();
-      expect(cb).toHaveBeenCalledWith(testControl);
+      expect(cb).toHaveBeenCalledWith(false);
       sub.unsubscribe();
     });
 
-    it('should not fire status changes if control is untouched', () => {
+    it('should return invalid state', () => {
       const cb = jasmine.createSpy('cb');
       const sub = service.statusChanges.subscribe(control => cb(control));
-      ngControlService.setControl(testControl);
-      // Change state of the input, should only fire when touched
-      testControl.markAsDirty();
-      testControl.updateValueAndValidity();
-      expect(cb).not.toHaveBeenCalled();
+      const fakeControl = {
+        statusChanges: {
+          subscribe: () => {
+            return function unsubscribe() {};
+          },
+        },
+        dirty: true,
+        invalid: true,
+      };
+      ngControlService.setControl(fakeControl);
+      service.triggerStatusChange();
+      expect(cb).toHaveBeenCalledWith(true);
       sub.unsubscribe();
     });
   });

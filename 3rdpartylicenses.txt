@@ -1,4 +1,4 @@
-@clr/icons@1.0.0-beta.1
+@clr/icons@1.0.0-beta.2
 MIT
 MIT
 
@@ -6,7 +6,7 @@ MIT
 MIT
 MIT
 
-@clr/ui@1.0.0-beta.1
+@clr/ui@1.0.0-beta.2
 MIT
 MIT
 
@@ -431,7 +431,7 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@clr/angular@1.0.0-beta.1
+@clr/angular@1.0.0-beta.2
 MIT
 MIT
 

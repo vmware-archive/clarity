@@ -1,17 +1,248 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
-        <h5 class="component-summary" id="with-checkboxes-users-can-select-multiple-options-in-a-list-of-options">With
-            checkboxes, users can select multiple options in a list of options.</h5>
+        <h5 class="component-summary" id="summary">
+            With checkboxes, users can select multiple options in a list of options.
+        </h5>
 
-        <div id="code-examples">
-            <clr-checkboxes-types-demo></clr-checkboxes-types-demo>
+        <h2 id="forms-code-samples">Angular Checkbox Component</h2>
+
+        <p>If you are using Angular, the recommended approach is to always use the <code class="clr-code">ClrCheckbox</code>
+            directive on your checkbox buttons to help manage the form control. By using <code class="clr-code">ClrCheckbox</code>,
+            you'll automatically be able to leverage built in validation, helper text, and layout features in forms.</p>
+
+        <h4>Basic checkbox button</h4>
+
+        <p>While it is possible to create a checkbox button without a label, the cases are rare. However, it is possible
+            by just adding <code class="clr-code">clrCheckbox</code> to your checkbox button to wire up the
+            directive. Notice, it is necessary to add <code class="clr-code">type="checkbox"</code>.</p>
+
+        <p></p>
+
+        <input type="checkbox" clrCheckbox />
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngBasic"></clr-code-snippet>
+
+        <h4>Labels</h4>
+
+        <p>For anything beyond a standalone checkbox button, you'll need to wrap your checkboxs with the <code class="clr-code">ClrCheckboxWrapper</code>
+            component when you include a label. This manages the label and display of the checkbox button for you.
+        </p>
+
+        <p></p>
+
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="test2" value="option1" />
+            <label>Option 1</label>
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="test2" value="option2" />
+            <label>Option 2</label>
+        </clr-checkbox-wrapper>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngLabel"></clr-code-snippet>
+
+        <h4>Helper and error messages</h4>
+
+        <p>To leverage helper and validation messages, you'll need to wrap all of the checkboxs inside of a <code class="clr-code">ClrCheckboxContainer</code>
+            component. The checkbox button container tracks the the validations placed on a checkbox button, such as <code
+                class="clr-code">required</code>
+            or even custom built validators in Angular. Under the hood, it looks at the <code class="clr-code">NgControl</code>
+            values to determine the control validitity, and display the helper text or error message accordingly.</p>
+
+        <p>Note: the validation in this example only displays an error after you focus and leave focus without
+            selecting a value. The easiest way to do this is to highlight the text in this paragraph, and hit tab a few
+            times to change the focus.</p>
+
+        <p></p>
+
+        <clr-checkbox-container>
+            <label>Full checkbox example</label>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox name="test3" required value="option1" [(ngModel)]="exampleOne" />
+                <label>Option 1</label>
+            </clr-checkbox-wrapper>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox name="test3" required value="option2" [(ngModel)]="exampleOne" />
+                <label>Option 2</label>
+            </clr-checkbox-wrapper>
+            <clr-control-helper>Helper text</clr-control-helper>
+            <clr-control-error>This field is required!</clr-control-error>
+        </clr-checkbox-container>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
+
+        <h4>Inline checkboxs</h4>
+
+        <p>Checkbox buttons can be placed inline by default by adding the <code class="clr-code">clrInline</code> directive
+            to your checkbox container elements. The checkbox buttons will wrap if there is not enough space.</p>
+
+        <p></p>
+
+        <clr-checkbox-container clrInline>
+            <label>Inline checkbox example</label>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox name="test4" required value="option1" [(ngModel)]="exampleTwo" />
+                <label>Option 1</label>
+            </clr-checkbox-wrapper>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox name="test4" required value="option2" [(ngModel)]="exampleTwo" />
+                <label>Option 2</label>
+            </clr-checkbox-wrapper>
+            <clr-control-helper>Helper text</clr-control-helper>
+            <clr-control-error>This field is required!</clr-control-error>
+        </clr-checkbox-container>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="ngInline"></clr-code-snippet>
+
+
+
+
+        <h2 id="css-component">CSS Checkbox Component</h2>
+
+        <p>Checkbox buttons can be used without Angular, but without some of the automatic interactivity. If you intend to
+            create
+            your own components, here are the basic features you'll need to build out.</p>
+
+        <h4>Basic checkbox button</h4>
+
+        <p>This is the minimal markup needed to style the checkbox button control by wrapping it with the an element with
+            the
+            <code class="clr-code">clr-checkbox-wrapper</code> class. You must then put the input first, then the label
+            like you see below (the CSS selectors are specific about this ordering). You'll want to tie the input and
+            label together by providing an id for the label to connect. Ensure you add the <code class="clr-code">clr-checkbox</code>
+            class to the checkbox button as well.</p>
+
+        <p></p>
+
+        <div class="clr-checkbox-wrapper">
+            <input type="checkbox" id="checkbox0" name="checkbox-basic" value="option1" class="clr-checkbox">
+            <label for="checkbox0">My choice</label>
         </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiBasic"></clr-code-snippet>
+
+        <h4>Full input display</h4>
+
+        <p>Each form control has a <code class="clr-code">.clr-form-control</code> wrapper, as well as a specific DOM
+            structure necessary to layout the form control as desired. This works with all layout options as well
+            without needing to change the DOM structure in any way.</p>
+
+        <p></p>
+
+        <div class="clr-form-control">
+            <label class="clr-control-label">Full checkbox example</label>
+            <div class="clr-control-container">
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox1" name="checkbox-full" value="option1" class="clr-checkbox">
+                    <label for="checkbox1" class="clr-control-label">option 1</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox2" name="checkbox-full" value="option2" class="clr-checkbox">
+                    <label for="checkbox2" class="clr-control-label">option 2</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox3" name="checkbox-full" value="option3" class="clr-checkbox">
+                    <label for="checkbox3" class="clr-control-label">option 3</label>
+                </div>
+                <div class="clr-subtext-wrapper">
+                    <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    <span class="clr-subtext">Helper Text</span>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiFull"></clr-code-snippet>
+
+        <h4>Error state</h4>
+
+        <p>To signify an error state, you need to add the <code class="clr-code">.clr-error</code> class to the <code
+                class="clr-code">.clr-control-container</code> element. This will show the <code class="clr-code">.clr-validate-icon</code>
+            and turn the <code class="clr-code">.clr-subtext</code> message to red. If you have helper text that needs
+            to change to error content, you'll have to handle the hiding and showing of that content inside of the
+            <code class="clr-code">.clr-subtext</code> element.</p>
+
+        <p></p>
+
+        <div class="clr-form-control">
+            <label class="clr-control-label">Error checkbox</label>
+            <div class="clr-control-container clr-error">
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox4" name="checkbox-error" value="option1" class="clr-checkbox">
+                    <label for="checkbox4" class="clr-control-label">option 1</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox5" name="checkbox-error" value="option2" class="clr-checkbox">
+                    <label for="checkbox5" class="clr-control-label">option 2</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox6" name="checkbox-error" value="option3" class="clr-checkbox">
+                    <label for="checkbox6" class="clr-control-label">option 3</label>
+                </div>
+                <div class="clr-subtext-wrapper">
+                    <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    <span class="clr-subtext">Error message</span>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiError"></clr-code-snippet>
+
+        <h4>Inline checkbox</h4>
+
+        <p>Checkbox buttons can be placed inline by default by adding the <code class="clr-code">clr-control-inline</code> directive
+            to your checkbox container. The checkbox buttons will wrap if there is not enough space.</p>
+
+        <p>The subtext content, the icon and subtext messages, also must be wrapped in a <code class="clr-code">clr-subtext-wrapper</code>
+        element so it can properly layout in all layout variations. If you omit this, the validation icon and text may appear in the wrong place.</p>
+
+        <p></p>
+
+        <div class="clr-form-control">
+            <label class="clr-control-label">Inline checkbox example</label>
+            <div class="clr-control-container clr-control-inline">
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox7" name="checkbox-error" value="option1" class="clr-checkbox">
+                    <label for="checkbox4" class="clr-control-label">option 1</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox8" name="checkbox-error" value="option2" class="clr-checkbox">
+                    <label for="checkbox5" class="clr-control-label">option 2</label>
+                </div>
+                <div class="clr-checkbox-wrapper">
+                    <input type="checkbox" id="checkbox9" name="checkbox-error" value="option3" class="clr-checkbox">
+                    <label for="checkbox6" class="clr-control-label">option 3</label>
+                </div>
+                <div class="clr-subtext-wrapper">
+                    <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+                    <span class="clr-subtext">Helper text</span>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <clr-code-snippet [clrCode]="uiInline"></clr-code-snippet>
+
 
         <div id="design-guidelines">
             <h3 id="guidelines">Usage</h3>
 
             <p>
-                Use a checkbox for yes or no choices, for example “Remember me” on the <a
+                Use a checkbox for yes or no choices, for example "Remember me" on the <a
                 routerLink="../../../login">login page</a>. For on and off options, use a <a
                 routerLink="../../../toggle-switches">toggle switch</a>.
             </p>
@@ -21,5 +252,7 @@
                 <li>For readability, keep the checkbox label to a single line.</li>
             </ul>
         </div>
+
+
     </article>
 </clr-doc-wrapper>

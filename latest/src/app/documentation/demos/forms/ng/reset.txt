@@ -1,0 +1,25 @@
+import {Component} from "@angular/core";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+
+@Component({
+    template: `
+    <form clrForm [formGroup]="exampleForm">
+        <input clrInput formControlName="sample" />
+        <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+        <button class="btn" type="button" (click)="resetForm()">Reset</button>
+    </form>
+    `
+})
+export class ReactiveFormsDemo {
+    exampleForm = new FormGroup({
+        sample: new FormControl('', Validators.required),
+    });
+
+    resetForm() {
+        this.exampleForm.reset();
+    }
+
+    submit() {
+        // ...
+    }
+}

@@ -11,7 +11,7 @@
 </p>
 <p>
     To activate pagination on your datagrid, you simply need to add a
-    <code class="clr-code">&lt;clr-dg-pagination&gt;</code> component in your datagrid's footer. This component exposes many of properties, most of them bindable, to help you interact with it:
+    <code class="clr-code">&lt;clr-dg-pagination&gt;</code> component in your datagrid's footer. This component exposes many of properties, most of them bindable, to help you interact with it. You can optionally include a <code class="clr-code">clr-dg-page-size</code> component to bind a list of options to display for toggling the number of items per page.
 </p>
 <table class="table">
     <thead>
@@ -76,6 +76,7 @@
 
     <clr-dg-footer>
         <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
             {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
         </clr-dg-pagination>
     </clr-dg-footer>

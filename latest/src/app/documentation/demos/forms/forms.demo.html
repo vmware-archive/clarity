@@ -48,8 +48,16 @@
         <h4>Multiple error messages</h4>
 
         <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validatior you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
+
+        <h4>Reset and force validation</h4>
+
+        <p>All Clarity form controls support resetting the validation state simply by calling the <code class="clr-code">reset()</code> method on the <code class="clr-code">FormControl</code> or <code class="clr-code">FormGroup</code>.</p>
         
-        <clr-code-snippet [clrCode]="ngErrors"></clr-code-snippet>
+        <clr-code-snippet [clrCode]="ngReset" clrLanguage="typescript"></clr-code-snippet>
+
+        <p>Normally, validation errors only appear after the control has been focused on by the user. In cases where you want to force validation errors to show (such as when the user tried to submit a form), you simply need to mark every control as dirty with Angular. To make this easier, we have provided an API <code class="clr-code">ClrForm.markAsDirty()</code> that will force all form controls inside of a form to be dirty, which will display the validation errors.</p>
+        
+        <clr-code-snippet [clrCode]="ngValidate" clrLanguage="typescript"></clr-code-snippet>
         
         <h4>Overriding column widths</h4>
 
@@ -77,7 +85,7 @@
         
         <h4>Layout options</h4>
 
-        <p>Forms support three layout options, vertical (default), horizontal, and compact. You can change the layout by simply applying an additional class to the form.</p>
+        <p>Forms support three layout options, horizontal, vertical (used if no classes are provided), and compact. You can change the layout by simply applying an additional class to the form.</p>
         
         <clr-code-snippet [clrCode]="uiLayouts"></clr-code-snippet>
         
@@ -107,7 +115,7 @@
             <p>Forms are comprised of text and input components such as checkboxes, dropdowns, input fields, radio buttons, and toggle switches. The easier users can complete forms, the better your response rates will typically be. Forms should be clear, concise, and relevant to its context.</p>
 
             <h4 id="form-layouts">Form Layouts </h4>
-            <p>Clarity offers three types of forms: horizontal (our default), vertical and compact.</p>
+            <p>Clarity offers three types of forms: horizontal (our recommended default), vertical and compact.</p>
 
             <div class="clrweb-DoxMedia clr-row">
                 <div class="clrweb-DoxMedia-block clr-col-md-6" style="padding-top: 0">

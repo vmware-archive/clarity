@@ -12,6 +12,7 @@ const EXAMPLE = `
 <-- Inside the full datagrid declaration -->
 <clr-dg-footer>
     <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
         of {{pagination.totalItems}} users
     </clr-dg-pagination>

@@ -14,20 +14,21 @@ const EXAMPLE = `
             <h5 class="hint">Use your Company ID to sign in or create one now</h5>
         </section>
         <div class="login-group">
-            <div class="auth-source select">
-                <select id="login-auth-source-1">
-                    <option>Local Users</option>
-                    <option>Administrator</option>
-                </select>
-            </div>
-            <input class="username" type="text" id="login_username" placeholder="Username">
-            <input class="password" type="password" id="login_password" placeholder="Password">
-            <div class="checkbox">
-                <input type="checkbox" id="rememberme">
-                <label for="rememberme">
-                    Remember me
-                </label>
-            </div>
+            <clr-select-container>
+                <select clrSelect name="type" [(ngModel)]="form.type">
+                <option value="local">Local Users</option>
+                <option value="admin">Administrator</option>
+            </clr-select-container>
+            <clr-input-container>
+                <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username"/>
+            </clr-input-container>
+            <clr-password-container>
+                <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="form.password"/>
+            </clr-password-container>
+            <clr-checkbox-wrapper>
+                <label>Remember me</label>
+                <input type="checkbox" name="rememberMe" clrCheckbox [(ngModel)]="form.rememberMe"/>
+            </clr-checkbox-wrapper>
             <div class="error active">
                 Invalid user name or password
             </div>
@@ -44,4 +45,10 @@ const EXAMPLE = `
 })
 export class LoginExampleDemo {
     example = EXAMPLE;
+    form = {
+        type: 'local',
+        username: '',
+        password: '',
+        rememberMe: false,
+      };
 }

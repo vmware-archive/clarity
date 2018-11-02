@@ -20,6 +20,8 @@ import * as NgReactiveTs from "!raw-loader!./ng/reactive.txt";
 import * as NgReactiveHtml from "./ng/reactive.html";
 import * as NgStructure from "./ng/structure.html";
 import * as NgOverride from "./ng/override.html";
+import * as NgReset from "!raw-loader!./ng/reset.txt";
+import * as NgValidate from "!raw-loader!./ng/validate.txt";
 
 @Component({
     selector: "clr-forms-demo",
@@ -48,4 +50,6 @@ export class FormsDemo extends ClarityDocComponent {
     ngReactiveHtml: any = NgReactiveHtml;
     ngStructure: any = NgStructure;
     ngOverride: any = NgOverride;
+    ngReset: any = NgReset;
+    ngValidate: any = NgValidate;
 }

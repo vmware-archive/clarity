@@ -5,33 +5,25 @@
  */
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
+import {ClarityModule} from "@clr/angular";
 import {FormsModule} from "@angular/forms";
-import {ClarityModule, ClrFormsDeprecatedModule} from "@clr/angular";
 
 import {CheckboxesDemo} from "./checkboxes.demo";
-
-import {Status} from "./data/status";
-import {CheckboxesTypesDemo} from "./checkboxes-types.demo";
-import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
+import {RouterModule} from "@angular/router";
 import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
         ClarityModule,
-        ClrFormsDeprecatedModule,
-        DocWrapperModule,
+        FormsModule,
         RouterModule.forChild([{path: "", component: CheckboxesDemo}]),
+        DocWrapperModule,
         UtilsModule
     ],
     declarations: [
-        CheckboxesTypesDemo,
         CheckboxesDemo
-    ],
-    providers: [
-        Status
     ],
     exports: [
         CheckboxesDemo

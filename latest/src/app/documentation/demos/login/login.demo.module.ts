@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {NgModule} from "@angular/core";
+import {FormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common";
 import {ClarityModule} from "@clr/angular";
 
@@ -18,6 +19,7 @@ import {UtilsModule} from "../../../utils/utils.module";
         CommonModule,
         ClarityModule,
         DocWrapperModule,
+        FormsModule,
         RouterModule.forChild([{path: "", component: LoginDemo}]),
         UtilsModule
     ],

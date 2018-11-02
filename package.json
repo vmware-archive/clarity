@@ -1,6 +1,6 @@
 {
   "name": "@clr/clarity",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "build:icons:web": "webpack --config webpack.icons.config.js",

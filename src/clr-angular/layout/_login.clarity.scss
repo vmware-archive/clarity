@@ -39,6 +39,7 @@
         }
       }
 
+      // @TODO Is this used?
       .trademark {
         @include clr-getTypePropertiesForDomElement(
           login_trademark,
@@ -46,6 +47,7 @@
         );
       }
 
+      // @TODO Is this used?
       .subtitle {
         @include clr-getTypePropertiesForDomElement(
           login_subtitle,
@@ -62,14 +64,49 @@
         .auth-source,
         .username,
         .password,
-        .checkbox {
+        .checkbox,
+        .clr-form-control,
+        .clr-checkbox-wrapper {
           margin: 0.25rem 0 0.75rem 0;
         }
 
+        // Overrides for new forms layouts to match original login layout
+        .clr-control-container {
+          display: block;
+          width: 100%;
+
+          // Override to make select full width
+          .clr-select-wrapper,
+          .clr-select {
+            width: 100%;
+          }
+
+          // Override to make input full width
+          .clr-input-wrapper > .clr-input {
+            width: 100%;
+          }
+
+          // Override to make password full width
+          .clr-input-wrapper {
+            width: 100%;
+
+            & > .clr-input-group {
+              max-width: 100%;
+              width: 100%;
+
+              & > .clr-input {
+                width: calc(100% - 1rem);
+              }
+            }
+          }
+        }
+
+        // @TODO Is this used?
         .tooltip-validation {
           margin-top: 0.25rem;
         }
 
+        // @TODO Is this used?
         .tooltip-validation .username,
         .tooltip-validation .password {
           width: 100%;

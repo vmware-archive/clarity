@@ -5,5 +5,5 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ templateUrl: './login.demo.html' })
-export class LoginDemo {}
+@Component({ templateUrl: './login-deprecated.demo.html' })
+export class LoginDeprecatedDemo {}

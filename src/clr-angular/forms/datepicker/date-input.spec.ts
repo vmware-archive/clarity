@@ -38,6 +38,7 @@ export default function() {
     let dateFormControlService: DateFormControlService;
     let ifErrorService: IfErrorService;
     let focusService: FocusService;
+    let controlClassService: ControlClassService;
     const setControlSpy = jasmine.createSpy();
 
     @Injectable()
@@ -77,6 +78,7 @@ export default function() {
           .injector.get(DateNavigationService);
         ifErrorService = context.fixture.debugElement.injector.get(IfErrorService);
         focusService = context.fixture.debugElement.injector.get(FocusService);
+        controlClassService = context.fixture.debugElement.injector.get(ControlClassService);
         spyOn(ifErrorService, 'triggerStatusChange');
       });
 
@@ -92,8 +94,8 @@ export default function() {
         });
 
         it('should capture any classes set on the control', () => {
-          const controlClassService = context.getClarityProvider(ControlClassService);
-          expect(controlClassService.className).toEqual('test-class');
+          expect(controlClassService).toBeTruthy();
+          expect(controlClassService.className).toContain('test-class');
         });
 
         it('should set the control on NgControlService', () => {
@@ -114,6 +116,11 @@ export default function() {
           expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
           expect(focusState).toEqual(false);
           sub.unsubscribe();
+        });
+
+        it('should set override classes and remove them from the control', () => {
+          expect(controlClassService.className).toContain('clr-col-xs-12');
+          expect(context.clarityElement.className).not.toContain('clr-col-xs-12');
         });
       });
 
@@ -279,6 +286,32 @@ export default function() {
         expect(dateInputDebugElement.nativeElement.value).toBe('02/01/2015');
         expect(fixture.componentInstance.dateValue).toBe('02/01/2015');
       });
+
+      it(
+        'allows you to reset the model',
+        fakeAsync(() => {
+          fixture.componentInstance.dateValue = '01/02/2015';
+          fixture.detectChanges();
+          tick();
+
+          expect(dateInputDebugElement.nativeElement.value).toBe('01/02/2015');
+          expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
+
+          fixture.nativeElement.querySelector('#reset').click();
+          fixture.detectChanges();
+          tick();
+
+          expect(dateInputDebugElement.nativeElement.value).toBe('');
+          expect(dateNavigationService.selectedDay).toEqual(null);
+
+          fixture.componentInstance.dateValue = '01/02/2015';
+          fixture.detectChanges();
+          tick();
+
+          expect(dateInputDebugElement.nativeElement.value).toBe('01/02/2015');
+          expect(dateNavigationService.selectedDay).toEqual(new DayModel(2015, 0, 2));
+        })
+      );
 
       // IE doesn't handle Event constructor
       itIgnore(
@@ -521,7 +554,7 @@ export default function() {
 
 @Component({
   template: `
-        <input type="date" clrDate (clrDateChange)="dateChanged($event)" class="test-class">
+        <input type="date" clrDate (clrDateChange)="dateChanged($event)" class="test-class clr-col-xs-12 clr-col-md-8">
     `,
 })
 class TestComponent {
@@ -534,7 +567,8 @@ class TestComponent {
 
 @Component({
   template: `
-        <input type="date" clrDate [(ngModel)]="dateValue">
+        <input type="date" clrDate [(ngModel)]="dateValue" #picker="ngModel">
+        <button id="reset" (click)="picker.reset()">Reset</button>
     `,
 })
 class TestComponentWithNgModel {

@@ -85,7 +85,7 @@
     }
 
     &.datagrid-selected {
-      color: $clr-black;
+      color: $clr-datagrid-row-selected;
 
       .datagrid-row-sticky,
       .datagrid-row-scrollable,

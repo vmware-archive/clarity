@@ -32,13 +32,13 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
     });
 
     it('adds an empty label when instantiated without vertical layout', () => {
-      layoutService.layout = Layouts.HORIZONTAL;
       fixture.detectChanges();
       const labels = containerEl.querySelectorAll('label');
       expect(Array.prototype.filter.call(labels, label => label.textContent === '').length).toBe(1);
     });
 
-    it('does not add an empty label when instantiated without vertical layout', () => {
+    it('does not add an empty label when instantiated with vertical layout', () => {
+      layoutService.layout = Layouts.VERTICAL;
       fixture.detectChanges();
       const labels = containerEl.querySelectorAll('label');
       expect(Array.prototype.filter.call(labels, label => label.textContent === '').length).toBe(0);
@@ -79,7 +79,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it('injects the layoutService', () => {
       expect(layoutService).toBeTruthy();
-      expect(layoutService.layout).toEqual(Layouts.VERTICAL);
+      expect(layoutService.layout).toEqual(Layouts.HORIZONTAL);
     });
 
     it('injects the ifErrorService and subscribes', () => {
@@ -129,25 +129,25 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
     });
 
     it('adds the .clr-row class to the host on non-vertical layouts', () => {
-      expect(containerEl.classList).not.toContain('clr-row');
-      layoutService.layout = Layouts.HORIZONTAL;
-      fixture.detectChanges();
       expect(containerEl.classList).toContain('clr-row');
+      layoutService.layout = Layouts.VERTICAL;
+      fixture.detectChanges();
+      expect(containerEl.classList).not.toContain('clr-row');
       layoutService.layout = Layouts.COMPACT;
       fixture.detectChanges();
       expect(containerEl.classList).toContain('clr-row');
     });
 
-    it('computes the error class for the control container', () => {
-      expect(container.controlClass()).toEqual('');
+    it('adds the error class for the control container', () => {
+      expect(container.controlClass()).not.toContain('clr-error');
       container.invalid = true;
-      expect(container.controlClass()).toEqual('clr-error');
+      expect(container.controlClass()).toContain('clr-error');
     });
 
-    it('computes the grid class for the control container when not vertical', () => {
-      expect(container.controlClass()).toEqual('');
-      layoutService.layout = Layouts.HORIZONTAL;
+    it('adds the grid class for the control container when not vertical', () => {
       expect(container.controlClass()).toContain('clr-col-xs-12');
+      layoutService.layout = Layouts.VERTICAL;
+      expect(container.controlClass()).not.toContain('clr-col-xs-12');
     });
 
     it('tracks the validity of the form control', () => {

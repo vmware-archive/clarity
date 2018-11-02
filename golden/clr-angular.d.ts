@@ -660,7 +660,8 @@ export declare class ClrEmphasisModule {
 }
 
 export declare class ClrForm {
-    constructor(markControlService: MarkControlService);
+    layoutService: LayoutService;
+    constructor(layoutService: LayoutService, markControlService: MarkControlService);
     markAsDirty(): void;
 }
 

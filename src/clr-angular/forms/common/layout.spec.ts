@@ -10,43 +10,31 @@ import { By } from '@angular/platform-browser';
 import { ClrLayout } from './layout';
 import { LayoutService, Layouts } from './providers/layout.service';
 
-@Component({ template: `<div clrLayout></div>`, providers: [LayoutService] })
-class DefaultTest {}
-
-@Component({ template: `<div clrLayout="horizontal"></div>`, providers: [LayoutService] })
-class HorizontalTest {}
+@Component({ template: `<div clrLayout="vertical"></div>`, providers: [LayoutService] })
+class VerticalTest {}
 
 @Component({ template: `<div clrLayout="invalid"></div>`, providers: [LayoutService] })
 class InvalidTest {}
 
 export default function(): void {
   describe('ClrLayout', () => {
-    it('adds the layout class to host', function() {
-      TestBed.configureTestingModule({ declarations: [ClrLayout, DefaultTest] });
-      const fixture = TestBed.createComponent(DefaultTest);
-      fixture.detectChanges();
-      const component = fixture.debugElement.query(By.directive(ClrLayout));
-      expect(component.nativeElement.classList.contains('clr-form-vertical')).toBeTrue();
-    });
-
     it('sets the layout selection in LayoutService on init if provided', function() {
-      TestBed.configureTestingModule({ declarations: [ClrLayout, HorizontalTest] });
-      const fixture = TestBed.createComponent(HorizontalTest);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, VerticalTest] });
+      const fixture = TestBed.createComponent(VerticalTest);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(Layouts.VERTICAL);
     });
 
     it('accepts layout option through layout input binding', function() {
-      TestBed.configureTestingModule({ declarations: [ClrLayout, HorizontalTest] });
-      const fixture = TestBed.createComponent(HorizontalTest);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, VerticalTest] });
+      const fixture = TestBed.createComponent(VerticalTest);
       const component = fixture.debugElement.query(By.directive(ClrLayout));
       const directive = component.injector.get(ClrLayout);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
-      expect(directive.layout).toEqual('horizontal');
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
-      expect(component.nativeElement.classList.contains('clr-form-horizontal')).toBeTruthy();
+      expect(directive.layout).toEqual('vertical');
+      expect(service.layout).toEqual(Layouts.VERTICAL);
     });
 
     it('ignores invalid layout types', function() {
@@ -54,7 +42,7 @@ export default function(): void {
       const fixture = TestBed.createComponent(InvalidTest);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
-      expect(service.layout).toEqual(Layouts.VERTICAL);
+      expect(service.layout).toEqual(Layouts.HORIZONTAL);
     });
   });
 }

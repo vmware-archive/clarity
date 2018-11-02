@@ -14,7 +14,7 @@ export enum Layouts {
 
 @Injectable()
 export class LayoutService {
-  layout: Layouts = Layouts.VERTICAL;
+  layout: Layouts = Layouts.HORIZONTAL;
   // This is basically a replacement for Object.values(), which IE11 and Node <9 don't support :(
   // String enums cannot be reverse-mapped, meaning Layouts['COMPACT'] does not return 'compact' so
   // this exists to deal with this little caveat to get the list of the values as an array.
@@ -22,6 +22,15 @@ export class LayoutService {
 
   isVertical(): boolean {
     return this.layout === Layouts.VERTICAL;
+  }
+
+  isHorizontal(): boolean {
+    console.log(this.layout);
+    return this.layout === Layouts.HORIZONTAL;
+  }
+
+  isCompact(): boolean {
+    return this.layout === Layouts.COMPACT;
   }
 
   get layoutClass(): string {

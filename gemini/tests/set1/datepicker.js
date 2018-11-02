@@ -8,6 +8,15 @@ var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
 gemini.suite('datepicker', child => {
+  gemini.suite('layout', child => {
+    child
+      .setUrl('/datepicker/layout')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-input-wrapper');
+      })
+      .setCaptureElements('.content-area')
+      .capture('default');
+  });
   gemini.suite('no-input', child => {
     child
       .setUrl('/datepicker/css-regression')

@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Angular Datepicker
+  <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button>
+</h2>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <input clrDate placeholder="No label, no wrapper" name="one" [(ngModel)]="vertical.one"/>
+
+  <clr-date-container>
+    <input clrDate placeholder="No label, wrapper" name="two" [(ngModel)]="vertical.two"/>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="vertical.three" name="three" required/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="vertical.four" name="four" required
+           [disabled]="disabled"/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <input clrDate placeholder="No label, no wrapper" name="one" [(ngModel)]="horizontal.one"/>
+
+  <clr-date-container>
+    <input clrDate placeholder="No label, wrapper" name="two" [(ngModel)]="horizontal.two"/>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="horizontal.three" name="three" required/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="horizontal.four" name="four" required
+           [disabled]="disabled"/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <input clrDate placeholder="No label, no wrapper" name="one" [(ngModel)]="compact.one"/>
+
+  <clr-date-container>
+    <input clrDate placeholder="No label, wrapper" name="two" [(ngModel)]="compact.two"/>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="compact.three" name="three" required/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+  <clr-date-container>
+    <label>Disabled</label>
+    <input type="text" placeholder="Full example" clrDate [(ngModel)]="compact.four" name="four" required
+           [disabled]="disabled"/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+
+</form>
+
+<h4>Override grid</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-date-container>
+    <label class="clr-col-xs-12 clr-col-md-4">Full example</label>
+    <input class="clr-col-xs-12 clr-col-md-8" type="text" placeholder="Name" clrDate [(ngModel)]="override"
+           name="three"
+           required/>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-date-container>
+</form>

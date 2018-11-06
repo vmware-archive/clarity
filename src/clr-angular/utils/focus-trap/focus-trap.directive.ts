@@ -49,7 +49,9 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
   }
 
   private createFocusableOffScreenEl(): any {
-    const offScreenSpan = this.renderer.createElement('span');
+    // Not using Renderer2's createElement method because that leads to DOM leakage.
+    // https://github.com/angular/angular/issues/26954
+    const offScreenSpan = this.document.createElement('span');
     this.renderer.setAttribute(offScreenSpan, 'tabindex', '0');
     this.renderer.addClass(offScreenSpan, 'offscreen-focus-rebounder');
 
@@ -81,6 +83,11 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     ) {
       this.renderer.removeChild(this.document.body, this.topReboundEl);
       this.renderer.removeChild(this.document.body, this.bottomReboundEl);
+
+      // These are here to to make sure that
+      // we completely delete all traces of the removed DOM objects.
+      delete this.topReboundEl;
+      delete this.bottomReboundEl;
     }
   }
 

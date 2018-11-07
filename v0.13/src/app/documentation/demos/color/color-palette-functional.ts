@@ -27,6 +27,8 @@ export class ColorFunctional {
             colors: [
                 {value: "#FFFFFF", text: "dark"},
                 {value: "#FAFAFA", text: "dark"},
+                {value: "#EEEEEE", text: "dark"},
+                {value: "#DDDDDD", text: "dark"},
                 {value: "#CCCCCC", text: "dark"},
                 {value: "#9A9A9A", text: "dark"}
             ]
@@ -54,8 +56,8 @@ export class ColorFunctional {
                 {value: "#e12200", text: "light"},
                 {value: "#C92100", text: "light"},
                 {value: "#C25400", text: "light"},
-                {value: "#318700", text: "light"},
-                {value: "#CCCCCC", text: "light"}
+                {value: "#2F8400", text: "light"},
+                {value: "#CCCCCC", text: "dark"}
             ]
         },
         {
@@ -79,7 +81,7 @@ export class ColorFunctional {
                 {value: "#004A70", text: "light"},
                 {value: "#FF8400", text: "dark"},
                 {value: "#89CBDF", text: "dark"},
-                {value: "#318700", text: "light"},
+                {value: "#2F8400", text: "light"},
                 {value: "#FFDC0B", text: "dark"},
                 {value: "#C92100", text: "light"}
             ]
@@ -105,7 +107,9 @@ export class ColorFunctional {
                 {value: "#17242B", text: "light"},
                 {value: "#1B2A32", text: "light"},
                 {value: "#22343C", text: "light"},
-                {value: "#566572", text: "light"}
+                {value: "#485764", text: "light"},
+                {value: "#566572", text: "light"},
+                {value: "#6D7884", text: "mid"}
             ]
         },
         {

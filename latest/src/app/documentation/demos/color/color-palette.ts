@@ -142,7 +142,7 @@ export class ColorPalette {
                 {value: "#48960C", text: "dark", primary: true},
                 {value: "#1D5100", text: "light"},
                 {value: "#266900", text: "light"},
-                {value: "#318700", text: "mid", bulleted: true},
+                {value: "#2F8400", text: "light", bulleted: true},
                 {value: "#48960C", text: "dark"},
                 {value: "#62A420", text: "dark"},
                 {value: "#60B515", text: "dark"},

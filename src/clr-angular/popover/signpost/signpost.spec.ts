@@ -6,30 +6,30 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { addHelpers, TestContext } from '../../utils/testing/helpers.spec';
+import { spec, TestContext } from '../../utils/testing/helpers.spec';
 
 import { ClrSignpost } from './signpost';
 import { ClrSignpostModule } from './signpost.module';
 
+interface Context extends TestContext<ClrSignpost, TestDefaultSignpost | TestCustomTriggerSignpost> {
+  ifOpenService: IfOpenService;
+}
+
 export default function(): void {
   describe('Signpost', function() {
-    addHelpers([ClrSignpostModule]);
-
     describe('default trigger', function() {
-      let context: TestContext<ClrSignpost, TestDefaultSignpost>;
-      let ifOpenService: IfOpenService;
+      spec(ClrSignpost, TestDefaultSignpost, ClrSignpostModule);
 
-      beforeEach(function() {
-        context = this.create(ClrSignpost, TestDefaultSignpost);
-        ifOpenService = context.getClarityProvider(IfOpenService);
+      beforeEach(function(this: Context) {
+        this.ifOpenService = this.getClarityProvider(IfOpenService);
       });
 
-      it('adds the .signpost class to clr-signpost', function() {
-        expect(context.clarityElement.classList).toContain('signpost');
+      it('adds the .signpost class to clr-signpost', function(this: Context) {
+        expect(this.clarityElement.classList).toContain('signpost');
       });
 
-      it('has a default trigger that can hide/show content', function() {
-        const signpostToggle: HTMLElement = context.testElement.querySelector('.signpost-action');
+      it('has a default trigger that can hide/show content', function(this: Context) {
+        const signpostToggle: HTMLElement = this.hostElement.querySelector('.signpost-action');
         let signpostContent: HTMLElement;
 
         // Test we have a trigger
@@ -37,34 +37,32 @@ export default function(): void {
 
         // // Test that content shows
         signpostToggle.click();
-        context.detectChanges();
-        signpostContent = context.testElement.querySelector('.signpost-content');
+        this.detectChanges();
+        signpostContent = this.hostElement.querySelector('.signpost-content');
         expect(signpostContent).not.toBeNull();
-        expect(ifOpenService.open).toBe(true);
+        expect(this.ifOpenService.open).toBe(true);
 
         // Test that content hides again
         signpostToggle.click();
-        context.detectChanges();
-        signpostContent = context.testElement.querySelector('.signpost-content');
+        this.detectChanges();
+        signpostContent = this.hostElement.querySelector('.signpost-content');
         expect(signpostContent).toBeNull();
-        expect(ifOpenService.open).toBe(false);
+        expect(this.ifOpenService.open).toBe(false);
       });
     });
 
     describe('custom trigger', function() {
-      let context: TestContext<ClrSignpost, TestCustomTriggerSignpost>;
-      let ifOpenService: IfOpenService;
+      spec(ClrSignpost, TestCustomTriggerSignpost, ClrSignpostModule);
 
-      beforeEach(function() {
-        context = this.create(ClrSignpost, TestCustomTriggerSignpost);
-        ifOpenService = context.getClarityProvider(IfOpenService);
+      beforeEach(function(this: Context) {
+        this.ifOpenService = this.getClarityProvider(IfOpenService);
       });
 
       /********
        * This test assumes that if
        */
-      it('does not display the default trigger', function() {
-        const triggerIcon: HTMLElement = context.testElement.querySelector('clr-icon');
+      it('does not display the default trigger', function(this: Context) {
+        const triggerIcon: HTMLElement = this.hostElement.querySelector('clr-icon');
 
         /**********
          * If there is a clr-icon we are testing that it is not the same shape
@@ -75,8 +73,8 @@ export default function(): void {
         }
       });
 
-      it('projects a custom trigger element to hide/show content', function() {
-        const signpostTrigger: HTMLElement = context.testElement.querySelector('.signpost-action');
+      it('projects a custom trigger element to hide/show content', function(this: Context) {
+        const signpostTrigger: HTMLElement = this.hostElement.querySelector('.signpost-action');
         let signpostContent: HTMLElement;
 
         expect(signpostTrigger.textContent.trim()).toBe('Custom trigger');
@@ -86,17 +84,17 @@ export default function(): void {
 
         // Test it shows after changes
         signpostTrigger.click();
-        context.detectChanges();
-        signpostContent = context.testElement.querySelector('.signpost-content');
+        this.detectChanges();
+        signpostContent = this.hostElement.querySelector('.signpost-content');
         expect(signpostContent).not.toBeNull();
-        expect(ifOpenService.open).toBe(true);
+        expect(this.ifOpenService.open).toBe(true);
 
         // Test it hide when clicked again
         signpostTrigger.click();
-        context.detectChanges();
-        signpostContent = context.testElement.querySelector('.signpost-content');
+        this.detectChanges();
+        signpostContent = this.hostElement.querySelector('.signpost-content');
         expect(signpostContent).toBeNull();
-        expect(ifOpenService.open).toBe(false);
+        expect(this.ifOpenService.open).toBe(false);
       });
     });
   });

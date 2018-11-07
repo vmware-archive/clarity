@@ -11,10 +11,24 @@ import { UtilsDemoModule } from '../_utils/utils.module';
 
 import { TreeViewDemo } from './tree-view.demo';
 import { ROUTING } from './tree-view.demo.routing';
+import { EagerDeclarativeTreeDemo } from './eager-declarative-tree/eager-declarative-tree';
+import { NodesWithIconsDemo } from './nodes-with-icons/nodes-with-icons';
+import { TreeNodeRoutingDemo } from './tree-node-routing/tree-node-routing';
+import { TreeNodeRoutingAbbeyRoadDemo } from './tree-node-routing/tree-node-routing-abbey-road';
+import { TreeNodeRoutingRevolverDemo } from './tree-node-routing/tree-node-routing-revolver';
+import { TreeNodeRoutingRubberSoulDemo } from './tree-node-routing/tree-node-routing-rubber-soul';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING, UtilsDemoModule],
-  declarations: [],
-  exports: [TreeViewDemo],
+  declarations: [
+    TreeViewDemo,
+    EagerDeclarativeTreeDemo,
+    NodesWithIconsDemo,
+    TreeNodeRoutingDemo,
+    TreeNodeRoutingAbbeyRoadDemo,
+    TreeNodeRoutingRevolverDemo,
+    TreeNodeRoutingRubberSoulDemo,
+  ],
+  exports: [TreeViewDemo]
 })
 export class TreeViewDemoModule {}

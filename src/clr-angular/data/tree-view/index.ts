@@ -5,4 +5,5 @@
  */
 
 export * from './models/selected-state';
+export * from './tree-node';
 export * from './tree-view.module';

@@ -9,4 +9,25 @@ var WAIT_LOAD_TIME = 1000;
 
 gemini.suite('tree-view', child => {
   // I will add gemini test for each demo we progressively commit.
+  gemini.suite('Eager declarative tree', child => {
+    child
+      .setUrl('/tree-view/eager-declarative')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('.clr-example')
+      .capture('default');
+  });
+
+  gemini.suite('Tree with icons', child => {
+    child
+      .setUrl('/tree-view/nodes-with-icons')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('.clr-example')
+      .capture('default');
+  });
 });

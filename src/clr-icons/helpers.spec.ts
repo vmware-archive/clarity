@@ -5,8 +5,7 @@
  */
 
 import { ClarityIcons } from './index';
-import { CoreShapes } from './shapes/core-shapes';
-import { changeHandlerCallbacks } from './utils/shape-template-observer';
+import { ShapeTemplateObserverModule } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
 // TODO: open question... should we make whitespace removal part of the icon parsing???
@@ -61,22 +60,19 @@ export function testAllShapesRequiredAttributes(shapes: any): void {
 }
 
 export function resetShapes(): void {
-  // Removes all shapes from Clarity Icons, but adds the icons from CoreShapes back at the end
-  // because the CoreShapes icons are added by default by ClarityIcons.
+  // Removes all shapes from Clarity Icons
 
   for (const shapeName in ClarityIcons.get()) {
     if (ClarityIcons.get().hasOwnProperty(shapeName)) {
       delete ClarityIcons.get()[shapeName];
     }
   }
-
-  ClarityIcons.add(CoreShapes);
 }
 
 export function resetCallbacks(): void {
-  for (const callback in changeHandlerCallbacks) {
-    if (changeHandlerCallbacks.hasOwnProperty(callback)) {
-      delete changeHandlerCallbacks[callback];
+  for (const callback in ShapeTemplateObserverModule.changeHandlerCallbacks) {
+    if (ShapeTemplateObserverModule.changeHandlerCallbacks.hasOwnProperty(callback)) {
+      delete ShapeTemplateObserverModule.changeHandlerCallbacks[callback];
     }
   }
 }

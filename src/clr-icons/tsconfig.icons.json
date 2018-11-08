@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "../../dist/clr-icons",
+    "baseUrl": "./",
     "target": "es5",
-    "declaration": true,
+    "declaration": false,
     "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,

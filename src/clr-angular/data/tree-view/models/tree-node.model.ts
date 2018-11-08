@@ -10,11 +10,21 @@ import { BehaviorSubject } from 'rxjs';
 export abstract class TreeNodeModel<T> {
   selected = new BehaviorSubject<ClrSelectedState>(ClrSelectedState.UNSELECTED);
   model: T | null;
-  // For some reason the polymorphic this doesn't work for either of my use cases. Dammit, Typescript.
-  // So I'm resorting to forcing override with more precise types by marking these abstract.
+  /*
+   * Ideally, I would like to use a polymorphic this type here to ensure homogeneity of the tree, something like:
+   * abstract parent: this<T> | null;
+   * abstract children: this<T>[];
+   * But I'm hitting limitations on typescript not allowing that type in constructors or static methods.
+   * So I'm resorting to forcing override with more precise types by marking these abstract.
+   */
   abstract parent: TreeNodeModel<T> | null;
   abstract children: TreeNodeModel<T>[];
 
+  /*
+   * Being able to push this down to the RecursiveTreeNodeModel would require too much work on the angular components
+   * right now for them to know which kind of model they are using. So I'm lifting the public properties to this
+   * abstract parent class for now and we can revisit it later, when we're not facing such a close deadline.
+   */
   loading = false;
 
   destroy() {
@@ -37,20 +47,12 @@ export abstract class TreeNodeModel<T> {
   }
 
   toggleSelection(propagate: boolean) {
+    // Both unselected and indeterminate toggle to selected
+    const newState =
+      this.selected.value === ClrSelectedState.SELECTED ? ClrSelectedState.UNSELECTED : ClrSelectedState.SELECTED;
     // NOTE: we always propagate selection up in this method because it is only called when the user takes an action.
     // It should never be called from lifecycle hooks or app-provided inputs.
-    switch (this.selected.value) {
-      case ClrSelectedState.SELECTED:
-        this.setSelected(ClrSelectedState.UNSELECTED, true, propagate);
-        break;
-      // Both unselected and indeterminate toggle to selected
-      case ClrSelectedState.UNSELECTED:
-      case ClrSelectedState.INDETERMINATE:
-      default:
-        // Default is the same as unselected, in case an undefined somehow made it all the way here.
-        this.setSelected(ClrSelectedState.SELECTED, true, propagate);
-        break;
-    }
+    this.setSelected(newState, true, propagate);
   }
 
   private computeSelectionStateFromChildren() {

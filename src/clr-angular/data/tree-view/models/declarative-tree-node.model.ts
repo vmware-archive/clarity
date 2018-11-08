@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { TreeNodeModel } from './tree-node-model';
+import { TreeNodeModel } from './tree-node.model';
 
 /*
  * A declarative model is built by traversing the Angular component tree.

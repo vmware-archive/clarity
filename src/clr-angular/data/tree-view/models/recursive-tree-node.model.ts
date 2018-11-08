@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { TreeNodeModel } from './tree-node-model';
-import { AsyncArray, isPromise } from './async-array';
 import { isObservable, Subscription } from 'rxjs';
+
+import { TreeNodeModel } from './tree-node.model';
+import { AsyncArray, isPromise } from './async-array';
 
 /*
  * A recursive model is built received from the app and traversed to create the corresponding components.

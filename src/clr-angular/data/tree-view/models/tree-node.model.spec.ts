@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { TreeNodeModel } from './tree-node-model';
 import { BehaviorSubject } from 'rxjs';
-import { ClrSelectedState } from '@clr/angular';
+
+import { TreeNodeModel } from './tree-node.model';
+import { ClrSelectedState } from './selected-state';
 
 class TestModel extends TreeNodeModel<string> {
   constructor(name: string, parent: TestModel) {
@@ -106,10 +107,10 @@ export default function(): void {
     });
 
     it('toggles from selected to unselected', function() {
-      child.setSelected(ClrSelectedState.SELECTED, false, false);
-      const spy = spyOn(child, 'setSelected');
-      child.toggleSelection(true);
-      expect(spy).toHaveBeenCalledWith(ClrSelectedState.UNSELECTED, true, true);
+      let complete = false;
+      root.selected.subscribe({ complete: () => (complete = true) });
+      root.destroy();
+      expect(complete).toBeTrue();
     });
 
     it('toggles from indeterminate to selected', function() {
@@ -120,6 +121,12 @@ export default function(): void {
     });
 
     it('can toggle without propagating down', function() {
+      const spy = spyOn(child, 'setSelected');
+      child.toggleSelection(false);
+      expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, true, false);
+    });
+
+    it('completes the selected Observable on destroy', function() {
       const spy = spyOn(child, 'setSelected');
       child.toggleSelection(false);
       expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, true, false);

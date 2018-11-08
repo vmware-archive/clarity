@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { DeclarativeTreeNodeModel } from './declarative-tree-node-model';
-import { TreeNodeModel } from './tree-node-model';
+import { DeclarativeTreeNodeModel } from './declarative-tree-node.model';
+import { TreeNodeModel } from './tree-node.model';
 
 export default function(): void {
   describe('DeclarativeTreeNodeModel', () => {
@@ -23,10 +23,12 @@ export default function(): void {
       expect(parent instanceof TreeNodeModel).toBeTrue();
     });
 
-    it('registers to its parent on creation', function() {
+    it('registers to its parent on creation and the parent keeps track of the children', function() {
       const child1 = new DeclarativeTreeNodeModel<void>(parent);
       const child2 = new DeclarativeTreeNodeModel<void>(parent);
       expect(parent.children).toEqual([child1, child2]);
+      child1.destroy();
+      child2.destroy();
     });
 
     it('unregisters from its parent when destroyed', function() {

@@ -4,9 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-var WAIT_TIME = 5000;
-var WAIT_LOAD_TIME = 1000;
-
-gemini.suite('tree-view', child => {
-  // I will add gemini test for each demo we progressively commit.
-});
+export * from './models/selected-state';
+export * from './tree-view.module';

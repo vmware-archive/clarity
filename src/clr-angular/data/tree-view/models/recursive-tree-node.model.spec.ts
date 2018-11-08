@@ -5,9 +5,9 @@
  */
 
 import { Observable, of } from 'rxjs';
-import { RecursiveTreeNodeModel } from './recursive-tree-node-model';
+import { RecursiveTreeNodeModel } from './recursive-tree-node.model';
 import { fakeAsync, tick } from '@angular/core/testing';
-import { delay, map } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 
 function synchronousChildren(node: string): string[] {
   return [node + 'A', node + 'B'];

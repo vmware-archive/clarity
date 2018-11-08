@@ -9,7 +9,7 @@ export enum ClrSelectedState {
   // WARNING! Unselected has the value 0,
   // so it's actually the only one that will evaluate to false if cast to a boolean.
   // Don't mess with the order!
-  UNSELECTED,
+  UNSELECTED = 0,
   SELECTED,
   INDETERMINATE,
 }

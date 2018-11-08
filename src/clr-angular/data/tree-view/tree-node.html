@@ -21,7 +21,7 @@
     <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
            [checked]="_model.selected.value === STATES.SELECTED"
            [indeterminate]="_model.selected.value === STATES.INDETERMINATE"
-           (change)="_model.toggleSelection(true)">
+           (change)="_model.toggleSelection(featuresService.smart)">
     <label for="{{nodeId}}-check" class="clr-control-label"></label>
   </div>
   <div class="clr-treenode-content" [id]="nodeId">

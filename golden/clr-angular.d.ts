@@ -1095,6 +1095,12 @@ export declare class ClrTooltipTrigger {
     showTooltip(): void;
 }
 
+export declare class ClrTree<T> {
+    featuresService: TreeFeaturesService<T>;
+    lazy: boolean;
+    constructor(featuresService: TreeFeaturesService<T>);
+}
+
 export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     STATES: typeof ClrSelectedState;
     _model: TreeNodeModel<T>;

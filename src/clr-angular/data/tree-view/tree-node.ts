@@ -78,8 +78,8 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     if (typeof value === 'boolean') {
       value = value ? ClrSelectedState.SELECTED : ClrSelectedState.UNSELECTED;
     }
-    // When we know all the nodes (this only is the eager case so far), we always propagate selection
-    this._model.setSelected(value, true, true);
+    // We propagate only if the tree is in smart mode
+    this._model.setSelected(value, this.featuresService.smart, this.featuresService.smart);
   }
 
   // We need an async EventEmitter or we will trigger chocolate errors like it's 2016.

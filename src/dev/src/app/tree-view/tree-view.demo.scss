@@ -24,3 +24,31 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.christmas ::ng-deep {
+  & > .clr-tree-node,
+  .clr-treenode-children > .clr-tree-node {
+    &:nth-child(even) {
+      input[type='checkbox']:checked + label::before {
+        background-color: #3c8d0d;
+      }
+      input[type='checkbox']:indeterminate + label {
+        &::before,
+        &::after {
+          border-color: #3c8d0d;
+        }
+      }
+    }
+    &:nth-child(odd) {
+      input[type='checkbox']:checked + label::before {
+        background-color: #d42426;
+      }
+      input[type='checkbox']:indeterminate + label {
+        &::before,
+        &::after {
+          border-color: #d42426;
+        }
+      }
+    }
+  }
+}

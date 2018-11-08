@@ -8,6 +8,7 @@ import { Injectable, Optional, SkipSelf } from '@angular/core';
 @Injectable()
 export class TreeFeaturesService<T> {
   selectable = false;
+  smart = true;
   // More properties will appear as we address more use cases
 }
 

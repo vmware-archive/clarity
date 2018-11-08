@@ -3,11 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-/**
- * These helpers are local to Datagrid at the moment, but I wrote them generic enough to move them globally
- * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
- * just to avoid leaks since destroying fixtures is automatic with this.
- */
 import { DebugElement, InjectionToken, ModuleWithProviders, Type } from '@angular/core';
 import { ComponentFixture, TestBed, TestBedStatic, TestModuleMetadata } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';

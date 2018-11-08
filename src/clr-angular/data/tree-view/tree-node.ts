@@ -10,6 +10,7 @@ import {
   EventEmitter,
   HostBinding,
   Inject,
+  Injector,
   Input,
   OnDestroy,
   OnInit,
@@ -51,10 +52,18 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     parent: ClrTreeNode<T>,
     public featuresService: TreeFeaturesService<T>,
     public expandService: Expand,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    injector: Injector
   ) {
-    // Force cast for now, not sure how to tie the correct type here to featuresService.recursion
-    this._model = new DeclarativeTreeNodeModel(parent ? <DeclarativeTreeNodeModel<T>>parent._model : null);
+    if (this.featuresService.recursion) {
+      // I'm completely stuck, we have to hack into private properties until either
+      // https://github.com/angular/angular/issues/14935 or https://github.com/angular/angular/issues/15998
+      // are fixed
+      this._model = (<any>injector).view.context.clrModel;
+    } else {
+      // Force cast for now, not sure how to tie the correct type here to featuresService.recursion
+      this._model = new DeclarativeTreeNodeModel(parent ? <DeclarativeTreeNodeModel<T>>parent._model : null);
+    }
   }
 
   _model: TreeNodeModel<T>;

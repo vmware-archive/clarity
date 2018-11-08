@@ -2,6 +2,7 @@
     "1.0.0-beta.2": "src/releases/1.0/1.0.0-beta.2.html",
     "1.0.0-beta.1": "src/releases/1.0/1.0.0-beta.1.html",
 
+    "0.13.9": "src/releases/0.13/0.13.9.html",
     "0.13.8": "src/releases/0.13/0.13.8.html",
     "0.13.7": "src/releases/0.13/0.13.7.html",
     "0.13.6": "src/releases/0.13/0.13.6.html",
@@ -16,6 +17,7 @@
     "0.13.0-beta.2": "src/releases/0.13/0.13.0-beta.2.html",
     "0.13.0-beta.1": "src/releases/0.13/0.13.0-beta.1.html",
 
+    "0.12.16": "src/releases/0.12/0.12.16.html",
     "0.12.15": "src/releases/0.12/0.12.15.html",
     "0.12.14": "src/releases/0.12/0.12.14.html",
     "0.12.13": "src/releases/0.12/0.12.13.html",
@@ -37,6 +39,7 @@
     "0.12.0-rc.1": "src/releases/0.12/0.12.0-rc.1.html",
     "0.12.0-beta.4": "src/releases/0.12/0.12.0-beta.4.html",
 
+    "0.11.34": "src/releases/0.11/0.11.34.html",
     "0.11.33": "src/releases/0.11/0.11.33.html",
     "0.11.32": "src/releases/0.11/0.11.32.html",
     "0.11.30": "src/releases/0.11/0.11.30.html",

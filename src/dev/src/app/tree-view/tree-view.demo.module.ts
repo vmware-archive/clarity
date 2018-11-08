@@ -12,7 +12,9 @@ import { UtilsDemoModule } from '../_utils/utils.module';
 import { TreeViewDemo } from './tree-view.demo';
 import { ROUTING } from './tree-view.demo.routing';
 import { EagerDeclarativeTreeDemo } from './eager-declarative-tree/eager-declarative-tree';
+import { EagerRecursiveTreeDemo } from './eager-recursive-tree/eager-recursive-tree';
 import { LazyDeclarativeTreeDemo } from './lazy-declarative-tree/lazy-declarative-tree';
+import { LazyRecursiveTreeDemo } from './lazy-recursive-tree/lazy-recursive-tree';
 import { NodesWithIconsDemo } from './nodes-with-icons/nodes-with-icons';
 import { TreeNodeRoutingDemo } from './tree-node-routing/tree-node-routing';
 import { TreeNodeRoutingAbbeyRoadDemo } from './tree-node-routing/tree-node-routing-abbey-road';
@@ -25,7 +27,9 @@ import { PreSelectionDemo } from './pre-selection/pre-selection';
   declarations: [
     TreeViewDemo,
     EagerDeclarativeTreeDemo,
+    EagerRecursiveTreeDemo,
     LazyDeclarativeTreeDemo,
+    LazyRecursiveTreeDemo,
     NodesWithIconsDemo,
     TreeNodeRoutingDemo,
     TreeNodeRoutingAbbeyRoadDemo,

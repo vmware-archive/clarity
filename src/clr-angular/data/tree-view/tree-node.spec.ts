@@ -8,6 +8,7 @@ import { Component, ViewChild } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ClrTreeViewModule } from './tree-view.module';
 import { ClrIconModule } from '../../icon/icon.module';
 import { Expand } from '../../utils/expand/providers/expand';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
@@ -44,7 +45,7 @@ export default function(): void {
     type Context = TestContext<ClrTreeNode<void>, TestComponent>;
 
     describe('Providers', function() {
-      spec(ClrTreeNode, TestComponent, undefined, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
 
       it('declares a unique id provider', function(this: Context) {
         expect(this.getClarityProvider(UNIQUE_ID, null)).not.toBeNull();
@@ -60,8 +61,15 @@ export default function(): void {
         this.featureService = new TreeFeaturesService<void>();
         this.expandService = new Expand();
         const stringsService = new ClrCommonStringsService();
-        this.parent = new ClrTreeNode('parent', undefined, this.featureService, this.expandService, stringsService);
-        this.node = new ClrTreeNode('node', this.parent, this.featureService, this.expandService, stringsService);
+        this.parent = new ClrTreeNode(
+          'parent',
+          undefined,
+          this.featureService,
+          this.expandService,
+          stringsService,
+          null
+        );
+        this.node = new ClrTreeNode('node', this.parent, this.featureService, this.expandService, stringsService, null);
       });
 
       it('instantiates a DeclarativeTreeNodeModel', function(this: TsApiContext) {
@@ -133,7 +141,7 @@ export default function(): void {
     });
 
     describe('Template API', function() {
-      spec(ClrTreeNode, TestComponent, undefined, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
 
       it(
         'offers a [(clrSelected)] two-way binding',
@@ -159,7 +167,7 @@ export default function(): void {
     });
 
     describe('View', function() {
-      spec(ClrTreeNode, TestComponent, undefined, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
 
       it('projects content', function(this: Context) {
         expect(this.clarityElement.textContent).toContain('Hello world');

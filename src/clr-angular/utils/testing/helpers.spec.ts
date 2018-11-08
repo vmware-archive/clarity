@@ -44,6 +44,10 @@ export class TestContext<C, H> {
     this.clarityElement = this.clarityDebugElement.nativeElement;
   }
 
+  getProvider<T>(token: Type<T> | InjectionToken<T>, notFoundValue?: T): T {
+    return TestBed.get(token, notFoundValue);
+  }
+
   getClarityProvider<T>(token: Type<T> | InjectionToken<T>, notFoundValue?: T): T {
     return this.clarityDebugElement.injector.get(token, notFoundValue);
   }

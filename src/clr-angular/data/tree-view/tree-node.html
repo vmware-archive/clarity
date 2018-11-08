@@ -33,4 +33,5 @@
      [attr.role]="isExpandable() ? 'group' : null">
   <ng-content select="clr-tree-node"></ng-content>
   <ng-content select="[clrIfExpanded]"></ng-content>
+  <clr-recursive-children [parent]="_model"></clr-recursive-children>
 </div>

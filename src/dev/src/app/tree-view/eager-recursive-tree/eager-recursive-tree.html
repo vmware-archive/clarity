@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Single root, no selection</h4>
+<div class="clr-example">
+  <clr-tree>
+    <clr-tree-node *clrRecursiveFor="let node of singleRoot; getChildren: synchronousChildren">
+      {{node.name}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Single root, pre-expanded node</h4>
+<div id="expanded-node" class="clr-example">
+  <clr-tree>
+    <clr-tree-node *clrRecursiveFor="let node of singleRoot; getChildren: synchronousChildren"
+                   [clrExpanded]="node === singleRoot">
+      {{node.name}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Single root, selection</h4>
+<p>
+  Selected: {{selectedString(singleRootSelected)}}
+</p>
+<div class="clr-example">
+  <clr-tree>
+    <clr-tree-node *clrRecursiveFor="let node of singleRoot; getChildren: synchronousChildren"
+                   [(clrSelected)]="singleRootSelected[node.name]">
+      {{node.name}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Multi root, selection</h4>
+<p>
+  Selected: {{selectedString(multiRootSelected)}}
+</p>
+<div class="clr-example">
+  <clr-tree>
+    <clr-tree-node *clrRecursiveFor="let node of multiRoot; getChildren: synchronousChildren"
+                   [(clrSelected)]="multiRootSelected[node.name]">
+      {{node.name}}
+    </clr-tree-node>
+  </clr-tree>
+</div>

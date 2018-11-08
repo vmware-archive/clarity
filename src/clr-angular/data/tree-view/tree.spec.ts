@@ -5,10 +5,12 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { ClrTree } from './tree';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { ClrTreeViewModule } from './tree-view.module';
 import { TreeFeaturesService } from './tree-features.service';
+import { RecursiveChildren } from './recursive-children';
 
 @Component({
   template: `<clr-tree [clrLazy]="lazy">Hello world</clr-tree>`,
@@ -38,6 +40,20 @@ export default function(): void {
 
     it('projects content', function(this: Context) {
       expect(this.clarityElement.textContent).toContain('Hello world');
+    });
+
+    it('creates a clr-recursive-children component if the tree is recursive', function(this: Context) {
+      expect(this.fixture.debugElement.query(By.directive(RecursiveChildren))).toBeFalsy();
+      // Using an empty tree and checking reference equality because I don't want to create full models for this.
+      const emptyTree = [];
+      this.getClarityProvider(TreeFeaturesService).recursion = {
+        template: null,
+        root: emptyTree,
+      };
+      this.detectChanges();
+      const recursiveChildrenDE = this.fixture.debugElement.query(By.directive(RecursiveChildren));
+      expect(recursiveChildrenDE).toBeTruthy();
+      expect((<RecursiveChildren<void>>recursiveChildrenDE.componentInstance).children).toBe(emptyTree);
     });
   });
 }

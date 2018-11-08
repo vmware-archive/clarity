@@ -52,3 +52,33 @@
     </clr-tree-node>
   </clr-tree>
 </div>
+
+<h4>Asynchronous</h4>
+<p>
+  Selected: {{asyncTree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *ngFor="let node of asyncTree.root"
+                   [clrLoading]="loading[node]"
+                   [clrSelected]="asyncTree.isSelected(node)"
+                   (clrSelectedChange)="asyncTree.select(node, $event)">
+      {{node}}
+      <ng-template clrIfExpanded (clrIfExpandedChange)="fetchChildren(node, $event)">
+        <clr-tree-node *ngFor="let child of children[node] | async"
+                       [clrLoading]="loading[child]"
+                       [clrSelected]="asyncTree.isSelected(child)"
+                       (clrSelectedChange)="asyncTree.select(child, $event)">
+          {{child}}
+          <ng-template clrIfExpanded (clrIfExpandedChange)="fetchChildren(child, $event)">
+            <clr-tree-node *ngFor="let child of children[child] | async"
+                           [clrSelected]="asyncTree.isSelected(child)"
+                           (clrSelectedChange)="asyncTree.select(child, $event)">
+              {{child}}
+            </clr-tree-node>
+          </ng-template>
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>

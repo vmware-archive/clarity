@@ -16,3 +16,31 @@
     </clr-tree-node>
   </clr-tree>
 </div>
+
+
+<h4>Asynchronous, pre-loading 1 level ahead</h4>
+<p>
+  Selected: {{asyncTree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *clrRecursiveFor="let node of asyncTree.root; getChildren: asynchronousChildren"
+                   [clrSelected]="asyncTree.isSelected(node)" (clrSelectedChange)="asyncTree.select(node, $event)">
+      {{node}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Asynchronous, loading exactly what's visible</h4>
+<p>
+  Selected: {{lazierTree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *clrRecursiveFor="let node of lazierTree.root; getChildren: lazierChildren"
+                   [clrExpandable]="true"
+                   [clrSelected]="lazierTree.isSelected(node)" (clrSelectedChange)="lazierTree.select(node, $event)">
+      {{node}}
+    </clr-tree-node>
+  </clr-tree>
+</div>

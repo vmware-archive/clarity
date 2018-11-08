@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 
 import { InfiniteTree } from '../utils/infinite-tree';
+import { AsyncInfiniteTree } from '../utils/async-infinite-tree';
 
 @Component({
   selector: 'clr-lazy-recursive-tree-demo',
@@ -16,4 +17,12 @@ export class LazyRecursiveTreeDemo {
   tree = new InfiniteTree(3);
 
   synchronousChildren = (node: string) => this.tree.getChildren(node);
+
+  asyncTree = new AsyncInfiniteTree(3, 500);
+
+  asynchronousChildren = (node: string) => this.asyncTree.fetchChildren(node);
+
+  lazierTree = new AsyncInfiniteTree(3, 500);
+
+  lazierChildren = (node: string) => this.lazierTree.fetchChildren(node);
 }

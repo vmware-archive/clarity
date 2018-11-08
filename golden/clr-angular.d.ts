@@ -1119,6 +1119,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     readonly ariaSelected: boolean;
     commonStrings: ClrCommonStrings;
     expandService: Expand;
+    expandable: boolean | undefined;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     featuresService: TreeFeaturesService<T>;

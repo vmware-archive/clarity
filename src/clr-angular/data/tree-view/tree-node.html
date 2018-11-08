@@ -6,7 +6,7 @@
 
 <div class="clr-tree-node-content-container">
   <button
-    *ngIf="isExpandable()"
+    *ngIf="isExpandable() && !_model.loading && !expandService.loading"
     type="button"
     class="clr-treenode-caret"
     (click)="expandService.toggle()"
@@ -17,6 +17,9 @@
       [attr.dir]="expandService.expanded ? 'down' : 'right'"
       [attr.title]="expandService.expanded ? commonStrings.collapse : commonStrings.expand"></clr-icon>
   </button>
+  <div class="clr-treenode-spinner-container" *ngIf="expandService.loading || _model.loading">
+        <span class="clr-treenode-spinner spinner"></span>
+  </div>
   <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable">
     <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
            [checked]="_model.selected.value === STATES.SELECTED"

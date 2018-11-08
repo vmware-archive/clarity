@@ -3,9 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/icons/shapes/media-shapes';
-import '@clr/icons/shapes/social-shapes';
-
 import { Component } from '@angular/core';
 
 import { VerticalNavCases } from '../vertical-nav-cases';

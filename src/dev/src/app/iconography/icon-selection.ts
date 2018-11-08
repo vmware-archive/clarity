@@ -4,16 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-
-import { ChartShapes } from '@clr/icons/shapes/chart-shapes';
-import { CommerceShapes } from '@clr/icons/shapes/commerce-shapes';
-import { CoreShapes } from '@clr/icons/shapes/core-shapes';
-import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
-import { MediaShapes } from '@clr/icons/shapes/media-shapes';
-import { SocialShapes } from '@clr/icons/shapes/social-shapes';
-import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
-import { TextEditShapes } from '@clr/icons/shapes/text-edit-shapes';
-import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
+import { ChartShapes } from '@clr/icons/shapes/chart';
+import { CommerceShapes } from '@clr/icons/shapes/commerce';
+import { CoreShapes } from '@clr/icons/shapes/core';
+import { EssentialShapes } from '@clr/icons/shapes/essential';
+import { MediaShapes } from '@clr/icons/shapes/media';
+import { SocialShapes } from '@clr/icons/shapes/social';
+import { TechnologyShapes } from '@clr/icons/shapes/technology';
+import { TextEditShapes } from '@clr/icons/shapes/text-edit';
+import { TravelShapes } from '@clr/icons/shapes/travel';
 
 @Component({
   selector: 'clr-icon-selection-demo',
@@ -22,7 +21,7 @@ import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
 })
 export class IconSelectionDemo {
   commonPath = '@clr/icons/shapes/svg-source/';
-  allSetsLink = this.commonPath + 'all-shapes.zip';
+  allSetsLink = this.commonPath + 'all.zip';
 
   previewClasses: any = { 'is-solid': false, 'has-alert': false, 'has-badge': false };
 

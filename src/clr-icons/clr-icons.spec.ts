@@ -15,17 +15,17 @@ import {
   testAllShapesRequiredAttributes,
 } from './helpers.spec';
 import { ClarityIcons } from './index';
-import { AllShapes } from './shapes/all-shapes';
-import { ChartShapes } from './shapes/chart-shapes';
-import { CommerceShapes } from './shapes/commerce-shapes';
-import { CoreShapes } from './shapes/core-shapes';
-import { EssentialShapes } from './shapes/essential-shapes';
-import { MediaShapes } from './shapes/media-shapes';
-import { SocialShapes } from './shapes/social-shapes';
-import { TechnologyShapes } from './shapes/technology-shapes';
-import { TextEditShapes } from './shapes/text-edit-shapes';
-import { TravelShapes } from './shapes/travel-shapes';
-import { changeHandlerCallbacks } from './utils/shape-template-observer';
+import { AllShapes } from './shapes/all';
+import { ChartShapes, ClrShapeBarChart } from './shapes/chart';
+import { ClrShapeECheck, CommerceShapes } from './shapes/commerce';
+import { CoreShapes, ClrShapeCheck } from './shapes/core';
+import { ClrShapePencil, EssentialShapes } from './shapes/essential';
+import { ClrShapePlay, MediaShapes } from './shapes/media';
+import { ClrShapeStar, SocialShapes } from './shapes/social';
+import { ClrShapeCPU, TechnologyShapes } from './shapes/technology';
+import { ClrShapeBold, TextEditShapes } from './shapes/text-edit';
+import { ClrShapeCar, TravelShapes } from './shapes/travel';
+import { ShapeTemplateObserverModule } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
 // All tests failing here in IE stem from IE rearranging attributes and normalizing the elements, so simple
@@ -35,35 +35,50 @@ import { clrIconSVG } from './utils/svg-tag-generator';
 // This is a base test object for all sets
 /* tslint:disable:no-string-literal */
 const ALL_SETS = [
-  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: { 'e-check': CommerceShapes['e-check'] } },
-  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: { pencil: EssentialShapes['pencil'] } },
-  { name: 'Social shapes', shapes: SocialShapes, randomShape: { star: SocialShapes['star'] } },
-  { name: 'Media shapes', shapes: MediaShapes, randomShape: { play: MediaShapes['play'] } },
-  { name: 'Travel shapes', shapes: TravelShapes, randomShape: { car: TravelShapes['car'] } },
-  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: { cpu: TechnologyShapes['cpu'] } },
-  { name: 'Chart shapes', shapes: ChartShapes, randomShape: { 'bar-chart': ChartShapes['bar-chart'] } },
-  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: { bold: TextEditShapes['bold'] } },
+  { name: 'Core shapes', shapes: CoreShapes, randomShape: ClrShapeCheck },
+  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: ClrShapeECheck },
+  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: ClrShapePencil },
+  { name: 'Social shapes', shapes: SocialShapes, randomShape: ClrShapeStar },
+  { name: 'Media shapes', shapes: MediaShapes, randomShape: ClrShapePlay },
+  { name: 'Travel shapes', shapes: TravelShapes, randomShape: ClrShapeCar },
+  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: ClrShapeCPU },
+  { name: 'Chart shapes', shapes: ChartShapes, randomShape: ClrShapeBarChart },
+  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: ClrShapeBold },
 ];
 /* tslint:enable:no-string-literal */
 
 describe('ClarityIcons', () => {
-  afterEach(() => {
-    resetShapes();
-  });
-
   describe('Global object for the API', () => {
-    it('should set a global object', () => {
-      expect(window.ClarityIcons).not.toBeUndefined();
+    it('should not set a global object if init method is not called', () => {
+      expect(window.ClarityIcons).toBeUndefined();
+    });
+
+    it('should set a global object after init call', () => {
+      ClarityIcons.init();
+      expect(window.ClarityIcons).toBeDefined();
+    });
+
+    it('should not add any icons by default', () => {
+      ClarityIcons.init();
+      expect(Object.keys(ClarityIcons.get()).length).toBe(0);
     });
   });
 
   describe('ClarityIconsApi.get()', () => {
+    beforeEach(() => {
+      ClarityIcons.init();
+    });
+
+    afterEach(() => {
+      resetShapes();
+    });
+
     it('should return all icons when no argument is passed in', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.shapes);
       }
 
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
@@ -71,24 +86,22 @@ describe('ClarityIcons', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.randomShape);
       }
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.randomShape));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.randomShape));
 
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
     for (const shapeSet of ALL_SETS) {
-      it(`should return shapes from ${shapeSet.name} and Core shapes if ${
-        shapeSet.name
-      } set is individually added in.`, () => {
+      it(`should return shapes from ${shapeSet.name} if ${shapeSet.name} set is individually added in.`, () => {
         ClarityIcons.add(shapeSet.shapes);
-        const currentAllShapes = Object.assign({}, CoreShapes, shapeSet.shapes);
+        const currentAllShapes = Object.assign({}, shapeSet.shapes);
         testAllShapes(ClarityIcons, currentAllShapes);
       });
     }
 
     it('should return all icons from all sets if the AllShapes set is added in', () => {
       ClarityIcons.add(AllShapes);
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
@@ -105,9 +118,17 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.add()', () => {
+    beforeEach(() => {
+      ClarityIcons.init();
+    });
+
+    afterEach(() => {
+      resetShapes();
+    });
+
     it('should throw an error if the argument is not a valid object literal', () => {
       const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
-                { "shape-name": "shape-template" }`;
+                  { "shape-name": "shape-template" }`;
 
       expect(() => {
         ClarityIcons.add();
@@ -249,9 +270,17 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.alias()', () => {
+    beforeEach(() => {
+      ClarityIcons.init();
+    });
+
+    afterEach(() => {
+      resetShapes();
+    });
+
     it('should throw an error if the argument is not a valid object literal', () => {
       const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
-                { "shape-name": ["alias-name", ...] }`;
+                  { "shape-name": ["alias-name", ...] }`;
 
       expect(() => {
         ClarityIcons.alias();
@@ -309,6 +338,11 @@ describe('ClarityIcons', () => {
   describe('ClarityIcon Custom Element', () => {
     beforeEach(() => {
       resetCallbacks();
+      ClarityIcons.init(CoreShapes);
+    });
+
+    afterEach(() => {
+      resetShapes();
     });
 
     it('should insert the SVG markup', () => {
@@ -391,7 +425,6 @@ describe('ClarityIcons', () => {
 
       const clrIconUniqId = clarityIcon.clrIconUniqId;
       const testShape = giveAngleShapeTitle(clrIconUniqId, customTitle);
-
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
     });
 
@@ -564,8 +597,8 @@ describe('ClarityIcons', () => {
       document.body.appendChild(userIcon2);
       document.body.appendChild(homeIcon);
 
-      expect(changeHandlerCallbacks[userAttrName].length).toBe(2);
-      expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(2);
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName].length).toBe(1);
     });
 
     it('should transfer change handler callback to updated shape name key', () => {
@@ -575,12 +608,12 @@ describe('ClarityIcons', () => {
       const testIcon = document.createElement('clr-icon') as ClarityIconElement;
       testIcon.setAttribute('shape', userAttrName);
       document.body.appendChild(testIcon);
-      expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(1);
       testIcon.setAttribute('shape', homeAttrName);
-      expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
-      expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName]).toBeUndefined();
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName].length).toBe(1);
       document.body.removeChild(testIcon);
-      expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName]).toBeUndefined();
     });
 
     it('should remove template change handler callbacks when icon removed from the DOM', () => {
@@ -599,10 +632,10 @@ describe('ClarityIcons', () => {
       document.body.removeChild(userIcon1);
       document.body.removeChild(homeIcon);
 
-      expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
-      expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(1);
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName]).toBeUndefined();
       document.body.removeChild(userIcon2);
-      expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
+      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName]).toBeUndefined();
     });
 
     itIgnore(['ie'], 'should persist title when shape template gets updated', () => {
@@ -658,7 +691,7 @@ describe('ClarityIcons', () => {
     }
 
     it('No two shapes should have the same name unless their templates are identical', () => {
-      const allShapeSets: any = [CoreShapes].concat(ALL_SETS.map(set => set.shapes));
+      const allShapeSets: any = [].concat(ALL_SETS.map(set => set.shapes));
       const shapesTested: any = {};
       const duplicatesFound: string[] = [];
 
@@ -681,7 +714,7 @@ describe('ClarityIcons', () => {
     });
 
     it('each icons should have the required attributes only once in their templates', () => {
-      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapesRequiredAttributes(currentAllShapes);
     });
   });

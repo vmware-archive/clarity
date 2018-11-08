@@ -906,6 +906,18 @@ export declare class ClrRadioWrapper implements DynamicWrapper {
     label: ClrLabel;
 }
 
+export declare class ClrRecursiveForOf<T> implements OnChanges {
+    getChildren: (node: T) => AsyncArray<T>;
+    nodes: T | T[];
+    constructor(template: TemplateRef<ClrRecursiveForOfContext<T>>, featuresService: TreeFeaturesService<T>);
+    ngOnChanges(): void;
+}
+
+export interface ClrRecursiveForOfContext<T> {
+    $implicit: T;
+    clrModel: TreeNodeModel<T>;
+}
+
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
@@ -1115,7 +1127,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     selected: ClrSelectedState | boolean;
     selectedChange: EventEmitter<ClrSelectedState>;
     readonly treeNodeRole: string;
-    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings);
+    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings, injector: Injector);
     isExpandable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;

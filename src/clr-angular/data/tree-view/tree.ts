@@ -11,6 +11,8 @@ import { TREE_FEATURES_PROVIDER, TreeFeaturesService } from './tree-features.ser
   selector: 'clr-tree',
   template: `
     <ng-content></ng-content>
+    <clr-recursive-children *ngIf="featuresService.recursion"
+                            [children]="featuresService.recursion.root"></clr-recursive-children>
   `,
   providers: [TREE_FEATURES_PROVIDER],
 })

@@ -13,7 +13,9 @@ import { Component } from '@angular/core';
 
         <ul>
             <li><a [routerLink]="['./eager-declarative']">Eager declarative tree</a></li>
+            <li><a [routerLink]="['./eager-recursive']">Eager recursive tree</a></li>
             <li><a [routerLink]="['./lazy-declarative']">Lazy declarative tree</a></li>
+            <li><a [routerLink]="['./lazy-recursive']">Lazy recursive tree</a></li>
             <li><a [routerLink]="['./nodes-with-icons']">Nodes with icons</a></li>
             <li><a [routerLink]="['./routing']">Routing tree</a></li>
             <li><a [routerLink]="['./pre-selection']">Pre-selection cases dump</a></li>

@@ -8,7 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TreeViewDemo } from './tree-view.demo';
 import { EagerDeclarativeTreeDemo } from './eager-declarative-tree/eager-declarative-tree';
+import { EagerRecursiveTreeDemo } from './eager-recursive-tree/eager-recursive-tree';
 import { LazyDeclarativeTreeDemo } from './lazy-declarative-tree/lazy-declarative-tree';
+import { LazyRecursiveTreeDemo } from './lazy-recursive-tree/lazy-recursive-tree';
 import { NodesWithIconsDemo } from './nodes-with-icons/nodes-with-icons';
 import { TreeNodeRoutingDemo } from './tree-node-routing/tree-node-routing';
 import { TreeNodeRoutingAbbeyRoadDemo } from './tree-node-routing/tree-node-routing-abbey-road';
@@ -23,7 +25,9 @@ const ROUTES: Routes = [
     children: [
       { path: '', redirectTo: 'eager-declarative', pathMatch: 'full' },
       { path: 'eager-declarative', component: EagerDeclarativeTreeDemo },
+      { path: 'eager-recursive', component: EagerRecursiveTreeDemo },
       { path: 'lazy-declarative', component: LazyDeclarativeTreeDemo },
+      { path: 'lazy-recursive', component: LazyRecursiveTreeDemo },
       { path: 'nodes-with-icons', component: NodesWithIconsDemo },
       {
         path: 'routing',

@@ -9,6 +9,8 @@ import DeclarativeTreeNodeModelSpecs from './models/declarative-tree-node.model.
 import RecursiveTreeNodeModelSpecs from './models/recursive-tree-node.model.spec';
 import TreeNodeSpec from './tree-node.spec';
 import TreeSpecs from './tree.spec';
+import RecursiveForOfSpecs from './recursive-for-of.spec';
+import RecursiveChildrenSpecs from './recursive-children.spec';
 
 describe('Tree View', () => {
   describe('Models', () => {
@@ -20,5 +22,7 @@ describe('Tree View', () => {
   describe('Components', () => {
     TreeNodeSpec();
     TreeSpecs();
+    RecursiveForOfSpecs();
+    RecursiveChildrenSpecs();
   });
 });

@@ -8,6 +8,7 @@ import { Injectable, Optional, SkipSelf } from '@angular/core';
 @Injectable()
 export class TreeFeaturesService<T> {
   selectable = false;
+  eager = true;
   // More properties will appear as we address more use cases
 }
 
@@ -18,5 +19,13 @@ export function treeFeaturesFactory<T>(existing: TreeFeaturesService<T>) {
 export const TREE_FEATURES_PROVIDER = {
   provide: TreeFeaturesService,
   useFactory: treeFeaturesFactory,
+  /*
+   * The Optional + SkipSelf pattern ensures that in case of nested components, only the root one will
+   * instantiate a new service and all its children will reuse the root's instance.
+   * If there are several roots (in this case, several independent trees on a page), each root will instantiate
+   * its own service so they won't interfere with one another.
+   *
+   * TL;DR - Optional + SkipSelf = 1 instance of TreeFeaturesService per tree.
+   */
   deps: [[new Optional(), new SkipSelf(), TreeFeaturesService]],
 };

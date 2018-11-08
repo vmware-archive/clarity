@@ -32,7 +32,7 @@ export abstract class TreeNodeModel<T> {
     this.selected.complete();
   }
 
-  // Propagate by default when smart, don't propagate in the lazy-loaded tree.
+  // Propagate by default when eager, don't propagate in the lazy-loaded tree.
   setSelected(state: ClrSelectedState, propagateUp: boolean, propagateDown: boolean) {
     if (state === this.selected.value) {
       return;

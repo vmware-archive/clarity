@@ -8,11 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TreeViewDemo } from './tree-view.demo';
 import { EagerDeclarativeTreeDemo } from './eager-declarative-tree/eager-declarative-tree';
+import { LazyDeclarativeTreeDemo } from './lazy-declarative-tree/lazy-declarative-tree';
 import { NodesWithIconsDemo } from './nodes-with-icons/nodes-with-icons';
 import { TreeNodeRoutingDemo } from './tree-node-routing/tree-node-routing';
 import { TreeNodeRoutingAbbeyRoadDemo } from './tree-node-routing/tree-node-routing-abbey-road';
 import { TreeNodeRoutingRevolverDemo } from './tree-node-routing/tree-node-routing-revolver';
 import { TreeNodeRoutingRubberSoulDemo } from './tree-node-routing/tree-node-routing-rubber-soul';
+import { PreSelectionDemo } from './pre-selection/pre-selection';
 
 const ROUTES: Routes = [
   {
@@ -21,6 +23,7 @@ const ROUTES: Routes = [
     children: [
       { path: '', redirectTo: 'eager-declarative', pathMatch: 'full' },
       { path: 'eager-declarative', component: EagerDeclarativeTreeDemo },
+      { path: 'lazy-declarative', component: LazyDeclarativeTreeDemo },
       { path: 'nodes-with-icons', component: NodesWithIconsDemo },
       {
         path: 'routing',
@@ -31,6 +34,7 @@ const ROUTES: Routes = [
           { path: 'album3', component: TreeNodeRoutingRubberSoulDemo },
         ],
       },
+      { path: 'pre-selection', component: PreSelectionDemo },
     ],
   },
 ];

@@ -5,5 +5,6 @@
  */
 
 export * from './models/selected-state.enum';
+export * from './tree';
 export * from './tree-node';
 export * from './tree-view.module';

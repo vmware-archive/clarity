@@ -75,11 +75,22 @@ export default function(): void {
         expect(this.node.selected).toBe(ClrSelectedState.SELECTED);
       });
 
-      it('selects the model if selected', function(this: TsApiContext) {
+      it('selects the model when selected and propagates selection if the tree is eager', function(this: TsApiContext) {
+        this.featureService.eager = true;
+        const spy = spyOn(this.node._model, 'setSelected');
         this.node.selected = ClrSelectedState.SELECTED;
-        expect(this.node._model.selected.value).toBe(ClrSelectedState.SELECTED);
+        expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, true, true);
         this.node.selected = ClrSelectedState.INDETERMINATE;
-        expect(this.node._model.selected.value).toBe(ClrSelectedState.INDETERMINATE);
+        expect(spy).toHaveBeenCalledWith(ClrSelectedState.INDETERMINATE, true, true);
+      });
+
+      it('selects the model when selected and does not propagate selection if the tree is lazy', function(this: TsApiContext) {
+        this.featureService.eager = false;
+        const spy = spyOn(this.node._model, 'setSelected');
+        this.node.selected = ClrSelectedState.SELECTED;
+        expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, false, false);
+        this.node.selected = ClrSelectedState.INDETERMINATE;
+        expect(spy).toHaveBeenCalledWith(ClrSelectedState.INDETERMINATE, false, false);
       });
 
       it('gracefully handles boolean selection', function(this: TsApiContext) {
@@ -225,11 +236,15 @@ export default function(): void {
       });
 
       it('toggles selection when the checkbox is clicked', function(this: Context) {
+        const spy = spyOn(this.clarityDirective._model, 'toggleSelection').and.callThrough();
         const checkbox: HTMLElement = this.clarityElement.querySelector('input[type=checkbox]');
         checkbox.click();
-        expect(this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        // Smart tree propagates selection
+        expect(spy).toHaveBeenCalledWith(true);
+        this.getClarityProvider(TreeFeaturesService).eager = false;
         checkbox.click();
-        expect(this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        // Non-smart tree does not propagate selection
+        expect(spy).toHaveBeenCalledWith(false);
       });
 
       it('marks the checkbox as unchecked when unselected', function(this: Context) {

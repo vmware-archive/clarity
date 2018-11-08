@@ -20,6 +20,17 @@ gemini.suite('tree-view', child => {
       .capture('default');
   });
 
+  gemini.suite('Lazy declarative tree', child => {
+    child
+      .setUrl('/tree-view/lazy-declarative')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('.clr-example')
+      .capture('default');
+  });
+
   gemini.suite('Tree with icons', child => {
     child
       .setUrl('/tree-view/nodes-with-icons')
@@ -28,6 +39,28 @@ gemini.suite('tree-view', child => {
         actions.wait(WAIT_TIME);
       })
       .setCaptureElements('.clr-example')
+      .capture('default');
+  });
+
+  gemini.suite('Pre-selection', child => {
+    child
+      .setUrl('/tree-view/pre-selection')
+      .before((actions, find) => {
+        actions.waitForElementToShow('#consistent-pre-selection', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('#consistent-pre-selection')
+      .capture('default');
+  });
+
+  gemini.suite('Children pre-selection', child => {
+    child
+      .setUrl('/tree-view/pre-selection')
+      .before((actions, find) => {
+        actions.waitForElementToShow('#children-pre-selection', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('#children-pre-selection')
       .capture('default');
   });
 });

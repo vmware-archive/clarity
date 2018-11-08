@@ -8,6 +8,7 @@ import TreeNodeModelSpecs from './models/tree-node.model.spec';
 import DeclarativeTreeNodeModelSpecs from './models/declarative-tree-node.model.spec';
 import RecursiveTreeNodeModelSpecs from './models/recursive-tree-node.model.spec';
 import TreeNodeSpec from './tree-node.spec';
+import TreeSpecs from './tree.spec';
 
 describe('Tree View', () => {
   describe('Models', () => {
@@ -18,5 +19,6 @@ describe('Tree View', () => {
 
   describe('Components', () => {
     TreeNodeSpec();
+    TreeSpecs();
   });
 });

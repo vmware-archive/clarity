@@ -10,8 +10,9 @@ import { NgModule, Type } from '@angular/core';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrTreeNode } from './tree-node';
+import { ClrTree } from './tree';
 
-export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
+export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode];
 
 @NgModule({
   imports: [CommonModule, ClrIconModule],

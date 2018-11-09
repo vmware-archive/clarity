@@ -107,10 +107,10 @@ export default function(): void {
     });
 
     it('toggles from selected to unselected', function() {
-      let complete = false;
-      root.selected.subscribe({ complete: () => (complete = true) });
-      root.destroy();
-      expect(complete).toBeTrue();
+      child.setSelected(ClrSelectedState.SELECTED, false, false);
+      const spy = spyOn(child, 'setSelected');
+      child.toggleSelection(true);
+      expect(spy).toHaveBeenCalledWith(ClrSelectedState.UNSELECTED, true, true);
     });
 
     it('toggles from indeterminate to selected', function() {
@@ -127,9 +127,10 @@ export default function(): void {
     });
 
     it('completes the selected Observable on destroy', function() {
-      const spy = spyOn(child, 'setSelected');
-      child.toggleSelection(false);
-      expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, true, false);
+      let complete = false;
+      root.selected.subscribe({ complete: () => (complete = true) });
+      root.destroy();
+      expect(complete).toBeTrue();
     });
   });
 }

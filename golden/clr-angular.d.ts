@@ -924,6 +924,12 @@ export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
 }
 
+export declare enum ClrSelectedState {
+    UNSELECTED = 0,
+    SELECTED = 1,
+    INDETERMINATE = 2
+}
+
 export declare class ClrSelectModule {
 }
 
@@ -1087,37 +1093,6 @@ export declare class ClrTooltipTrigger {
     constructor(ifOpenService: IfOpenService);
     hideTooltip(): void;
     showTooltip(): void;
-}
-
-export declare class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
-    readonly ariaSelected: boolean;
-    readonly ariaTreeNodeChildrenRole: string;
-    readonly caretDirection: string;
-    readonly caretTitle: string;
-    readonly children: ClrTreeNode[];
-    commonStrings: ClrCommonStrings;
-    expanded: boolean;
-    nodeExpand: Expand;
-    nodeId: string;
-    nodeIndeterminate: boolean;
-    nodeIndeterminateChanged: EventEmitter<boolean>;
-    nodeSelected: boolean;
-    nodeSelectedChange: EventEmitter<boolean>;
-    parent: ClrTreeNode;
-    readonly rootAriaMultiSelectable: boolean;
-    readonly selectable: boolean;
-    readonly state: string;
-    readonly treeNodeRole: string;
-    treeSelectionService: TreeSelectionService;
-    constructor(nodeExpand: Expand, parent: ClrTreeNode, treeSelectionService: TreeSelectionService, nodeId: string, commonStrings: ClrCommonStrings);
-    activateSelection(): void;
-    checkIfChildNodeRegistered(node: ClrTreeNode): boolean;
-    indeterminateChanged(): void;
-    ngOnDestroy(): void;
-    register(node: ClrTreeNode): void;
-    selectedChanged(): void;
-    toggleExpand(): void;
-    unregister(node: ClrTreeNode): void;
 }
 
 export declare class ClrTreeViewModule {

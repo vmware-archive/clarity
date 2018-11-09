@@ -12,7 +12,6 @@ import { KSCards } from './containers/cards/cards.component';
 import { KSColors } from './containers/colors/colors.component';
 import { KSDatagrid } from './containers/data/datagrid.component';
 import { KSStackView } from './containers/data/stackview.component';
-import { KSTreeView } from './containers/data/tree-view.component';
 import { KSDragAndDrop } from './containers/drag-and-drop/dnd.component';
 import { KSAlerts } from './containers/emphasis/alerts.component';
 import { KSBadges } from './containers/emphasis/badges.component';
@@ -58,7 +57,6 @@ export const routes: Routes = [
   { path: 'datagrids', component: KSDatagrid, data: { state: 'datagrids' } },
   { path: 'drag-and-drop', component: KSDragAndDrop, data: { state: 'drag-and-drop' } },
   { path: 'stackviews', component: KSStackView, data: { state: 'stackviews' } },
-  { path: 'treeviews', component: KSTreeView, data: { state: 'treeviews' } },
   { path: 'labels', component: KSLabels, data: { state: 'labels' } },
   { path: 'lists', component: KSLists, data: { state: 'lists' } },
   { path: 'login', component: KSLogin, data: { state: 'login' } },

@@ -14,7 +14,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { DeclarativeTreeNodeModel } from './models/declarative-tree-node.model';
-import { ClrSelectedState } from './models/selected-state';
+import { ClrSelectedState } from './models/selected-state.enum';
 import { TreeFeaturesService } from './tree-features.service';
 import { ClrTreeNode } from './tree-node';
 

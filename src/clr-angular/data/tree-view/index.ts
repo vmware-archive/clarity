@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './models/selected-state';
+export * from './models/selected-state.enum';
 export * from './tree-node';
 export * from './tree-view.module';

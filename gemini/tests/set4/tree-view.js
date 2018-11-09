@@ -13,10 +13,10 @@ gemini.suite('tree-view', child => {
     child
       .setUrl('/tree-view/eager-declarative')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.waitForElementToShow('#expanded-node', WAIT_TIME);
         actions.wait(WAIT_TIME);
       })
-      .setCaptureElements('.clr-example')
+      .setCaptureElements('#expanded-node')
       .capture('default');
   });
 

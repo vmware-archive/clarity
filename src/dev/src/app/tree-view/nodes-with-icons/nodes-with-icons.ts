@@ -5,13 +5,6 @@
  */
 import { Component } from '@angular/core';
 
-// Import icon sets for this demo
-import '@clr/icons/shapes/chart-shapes';
-import '@clr/icons/shapes/essential-shapes';
-import '@clr/icons/shapes/technology-shapes';
-import '@clr/icons/shapes/travel-shapes';
-import '@clr/icons/shapes/social-shapes';
-
 @Component({
   selector: 'clr-nodes-with-icons-demo',
   styleUrls: ['../tree-view.demo.scss'],
@@ -20,39 +13,27 @@ import '@clr/icons/shapes/social-shapes';
 export class NodesWithIconsDemo {
   rootDirectory: any[] = [
     {
-      name: 'Applications',
+      name: 'Some icons',
       icon: 'folder',
       expanded: true,
       files: [
+        { icon: 'home', name: 'Home', active: true },
         { icon: 'calendar', name: 'Calendar', active: true },
-        { icon: 'line-chart', name: 'Charts', active: false },
-        { icon: 'dashboard', name: 'Dashboard', active: false },
-        { icon: 'map', name: 'Maps', active: false },
-        { icon: 'email', name: 'Mail', active: false },
-        { icon: 'bar-chart', name: 'Numbers', active: false },
-        { icon: 'tasks', name: 'Tasks', active: false },
-        { icon: 'flag', name: 'Reminders', active: false },
+        { icon: 'user', name: 'User', active: true },
+        { icon: 'bell', name: 'Bell', active: false },
+        { icon: 'image', name: 'Image', active: false },
+        { icon: 'cloud', name: 'Cloud', active: false },
       ],
     },
     {
-      name: 'Files',
+      name: 'Some more icons',
       icon: 'folder',
       expanded: false,
       files: [
-        { icon: 'file', name: 'Cover Letter.doc', active: false },
-        { icon: 'file', name: 'Flyer.doc', active: false },
-        { icon: 'file', name: 'Resume.doc', active: false },
-        { icon: 'file', name: 'Notes.txt', active: false },
-      ],
-    },
-    {
-      name: 'Images',
-      icon: 'folder',
-      expanded: false,
-      files: [
-        { icon: 'image', name: 'Screenshot.png', active: false },
-        { icon: 'image', name: 'Pic.png', active: false },
-        { icon: 'image', name: 'Portfolio.jpg', active: false },
+        { icon: 'search', name: 'Search', active: false },
+        { icon: 'event', name: 'Event', active: false },
+        { icon: 'eye', name: 'Eye', active: false },
+        { icon: 'success-standard', name: 'Success', active: false },
       ],
     },
   ];

@@ -29,6 +29,6 @@ import { TreeNodeRoutingRubberSoulDemo } from './tree-node-routing/tree-node-rou
     TreeNodeRoutingRevolverDemo,
     TreeNodeRoutingRubberSoulDemo,
   ],
-  exports: [TreeViewDemo]
+  exports: [TreeViewDemo],
 })
 export class TreeViewDemoModule {}

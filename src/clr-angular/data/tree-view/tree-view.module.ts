@@ -16,6 +16,6 @@ export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
 @NgModule({
   imports: [CommonModule, ClrIconModule],
   declarations: [CLR_TREE_VIEW_DIRECTIVES],
-  exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule]
+  exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule],
 })
 export class ClrTreeViewModule {}

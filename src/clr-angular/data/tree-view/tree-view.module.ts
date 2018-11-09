@@ -6,18 +6,14 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
-import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
-import { ClrTreeNode } from './tree-node';
 
-export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
+export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [];
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule, FormsModule, ClrFormsModule],
+  imports: [CommonModule, ClrIconModule],
   declarations: [CLR_TREE_VIEW_DIRECTIVES],
-  exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule],
+  exports: [CLR_TREE_VIEW_DIRECTIVES],
 })
 export class ClrTreeViewModule {}

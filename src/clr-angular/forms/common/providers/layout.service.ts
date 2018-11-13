@@ -25,7 +25,6 @@ export class LayoutService {
   }
 
   isHorizontal(): boolean {
-    console.log(this.layout);
     return this.layout === Layouts.HORIZONTAL;
   }
 

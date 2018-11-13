@@ -37,7 +37,8 @@ export default function(): void {
         it('displays a select with a default pageSize if no input is given', function() {
           const select = context.clarityElement.querySelector('select');
           expect(select).not.toBeNull();
-          expect(select.innerText).toMatch('0');
+          expect(select.options.length).toBe(1);
+          expect(select.options[0].innerText).toMatch('0');
         });
       });
 
@@ -55,11 +56,15 @@ export default function(): void {
         });
 
         it('displays a select with pageSizeOptions as choices', function() {
-          context.testComponent.pageSizeOptions = [10, 20, 50, 100];
+          let pageSizeOptions = [10, 20, 50, 100];
+          context.testComponent.pageSizeOptions = pageSizeOptions;
           context.detectChanges();
           const select = context.clarityElement.querySelector('select');
           expect(select).not.toBeNull();
-          expect(select.innerText).toMatch('10\n20\n50\n100');
+          expect(select.options.length).toBe(pageSizeOptions.length);
+          for (let i = 0; i < pageSizeOptions.length; i++) {
+            expect(select.options[i].innerText).toMatch(pageSizeOptions[i].toString());
+          }
         });
 
         it('updates the page size upon pageSizeOption selection', function() {

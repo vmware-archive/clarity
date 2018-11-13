@@ -1,0 +1,103 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>No selection</h4>
+<div class="clr-example">
+  <clr-tree-node>
+    A
+    <clr-tree-node>
+      A-1
+    </clr-tree-node>
+    <clr-tree-node>
+      A-2
+      <clr-tree-node>
+        A-2.1
+      </clr-tree-node>
+      <clr-tree-node>
+        A-2.2
+      </clr-tree-node>
+      <clr-tree-node>
+        A-2.3
+      </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node>
+      A-3
+    </clr-tree-node>
+  </clr-tree-node>
+</div>
+
+<h4>Selection</h4>
+<div class="clr-example">
+  <clr-tree-node [clrSelected]="false">
+    A
+    <clr-tree-node>
+      A-1
+    </clr-tree-node>
+    <clr-tree-node>
+      A-2
+      <clr-tree-node>
+        A-2.1
+      </clr-tree-node>
+      <clr-tree-node>
+        A-2.2
+      </clr-tree-node>
+      <clr-tree-node>
+        A-2.3
+      </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node>
+      A-3
+    </clr-tree-node>
+  </clr-tree-node>
+</div>
+
+<h4>Pre-expanded node, <code class="clr-code">ng-container</code> syntax</h4>
+<div id="expanded-node" class="clr-example">
+  <clr-tree-node [clrSelected]="false">
+    A is {{expanded1 ? "expanded" : "collapsed"}}.
+    <ng-container [(clrIfExpanded)]="expanded1">
+      <clr-tree-node>
+        B
+        <clr-tree-node>
+          B.1
+        </clr-tree-node>
+
+        <clr-tree-node>
+          B.2
+        </clr-tree-node>
+      </clr-tree-node>
+      <clr-tree-node>
+        C
+      </clr-tree-node>
+      <clr-tree-node>
+        D
+      </clr-tree-node>
+    </ng-container>
+  </clr-tree-node>
+</div>
+
+<h4>Pre-expanded node, <code class="clr-code">[(clrExpanded)]</code> syntax</h4>
+<div class="clr-example">
+  <clr-tree-node [(clrExpanded)]="expanded2" [clrSelected]="false">
+    A is {{expanded2 ? "expanded" : "collapsed"}}.
+    <clr-tree-node>
+      B
+      <clr-tree-node>
+        B.1
+      </clr-tree-node>
+
+      <clr-tree-node>
+        B.2
+      </clr-tree-node>
+    </clr-tree-node>
+    <clr-tree-node>
+      C
+    </clr-tree-node>
+    <clr-tree-node>
+      D
+    </clr-tree-node>
+  </clr-tree-node>
+</div>

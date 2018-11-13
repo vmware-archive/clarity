@@ -7,7 +7,7 @@
 import { BehaviorSubject } from 'rxjs';
 
 import { TreeNodeModel } from './tree-node.model';
-import { ClrSelectedState } from './selected-state';
+import { ClrSelectedState } from './selected-state.enum';
 
 class TestModel extends TreeNodeModel<string> {
   constructor(name: string, parent: TestModel) {

@@ -5,11 +5,14 @@
  */
 import {
   Directive,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
+  Optional,
   Output,
+  Renderer2,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
@@ -38,7 +41,13 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
 
   @Output('clrIfExpandedChange') expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
-  constructor(private template: TemplateRef<any>, private container: ViewContainerRef, private expand: Expand) {
+  constructor(
+    @Optional() private template: TemplateRef<any>,
+    private container: ViewContainerRef,
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private expand: Expand
+  ) {
     expand.expandable++;
     this._subscriptions.push(
       expand.expandChange.subscribe(() => {
@@ -57,16 +66,29 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
     if (this.expand.expanded && this.container.length !== 0) {
       return;
     }
-    if (this.expand.expanded) {
-      // Should we pass a context? I don't see anything useful to pass right now,
-      // but we can come back to it in the future as a solution for additional features.
-      this.container.createEmbeddedView(this.template);
+    if (this.template) {
+      if (this.expand.expanded) {
+        // Should we pass a context? I don't see anything useful to pass right now,
+        // but we can come back to it in the future as a solution for additional features.
+        this.container.createEmbeddedView(this.template);
+      } else {
+        // TODO: Move when we move the animation logic to Datagrid Row Expand
+        // We clear before the animation is over. Not ideal, but doing better would involve a much heavier
+        // process for very little gain. Once Angular animations are dynamic enough, we should be able to
+        // get the optimal behavior.
+        this.container.clear();
+      }
     } else {
-      // TODO: Move when we move the animation logic to Datagrid Row Expand
-      // We clear before the animation is over. Not ideal, but doing better would involve a much heavier
-      // process for very little gain. Once Angular animations are dynamic enough, we should be able to
-      // get the optimal behavior.
-      this.container.clear();
+      try {
+        // If we don't have a template ref, we fallback to a crude display: none for now.
+        if (this.expand.expanded) {
+          this.renderer.setStyle(this.el.nativeElement, 'display', null);
+        } else {
+          this.renderer.setStyle(this.el.nativeElement, 'display', 'none');
+        }
+      } catch (e) {
+        // We catch the case where clrIfExpanded was put on a non-DOM element, and we just do nothing
+      }
     }
   }
 

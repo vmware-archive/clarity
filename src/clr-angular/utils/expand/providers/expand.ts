@@ -48,6 +48,10 @@ export class Expand implements LoadingListener {
     }
   }
 
+  public toggle() {
+    this.expanded = !this._expanded;
+  }
+
   // TODO: Move this to the datagrid RowExpand.
   // I spent some time doing this but ran into a couple of issues
   // Will take care of this later.

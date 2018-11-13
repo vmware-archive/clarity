@@ -711,7 +711,7 @@ export declare class ClrIfError {
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
-    constructor(template: TemplateRef<any>, container: ViewContainerRef, expand: Expand);
+    constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: Expand);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -1093,6 +1093,26 @@ export declare class ClrTooltipTrigger {
     constructor(ifOpenService: IfOpenService);
     hideTooltip(): void;
     showTooltip(): void;
+}
+
+export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
+    STATES: typeof ClrSelectedState;
+    _model: TreeNodeModel<T>;
+    readonly ariaSelected: boolean;
+    commonStrings: ClrCommonStrings;
+    expandService: Expand;
+    expanded: boolean;
+    expandedChange: EventEmitter<boolean>;
+    featuresService: TreeFeaturesService<T>;
+    nodeId: string;
+    readonly rootAriaMultiSelectable: boolean;
+    selected: ClrSelectedState | boolean;
+    selectedChange: EventEmitter<ClrSelectedState>;
+    readonly treeNodeRole: string;
+    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings);
+    isExpandable(): boolean;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
 }
 
 export declare class ClrTreeViewModule {

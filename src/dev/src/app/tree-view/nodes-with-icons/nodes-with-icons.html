@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <clr-tree-node *ngFor="let directory of rootDirectory">
+    <clr-icon [attr.shape]="directory.icon"></clr-icon>
+    {{directory.name}}
+    <ng-template [(clrIfExpanded)]="directory.expanded">
+      <clr-tree-node *ngFor="let file of directory.files">
+        <button (click)="openFile(directory.name, file.name)" class="clr-treenode-link" [class.active]="file.active">
+          <clr-icon [attr.shape]="file.icon"></clr-icon>
+          {{file.name}}
+        </button>
+      </clr-tree-node>
+    </ng-template>
+  </clr-tree-node>
+</div>

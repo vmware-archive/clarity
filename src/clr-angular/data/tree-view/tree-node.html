@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-tree-node-content-container">
+  <button
+    *ngIf="isExpandable()"
+    type="button"
+    class="clr-treenode-caret"
+    (click)="expandService.toggle()"
+    [attr.aria-expanded]="expandService.expanded">
+    <clr-icon
+      class="clr-treenode-caret-icon"
+      shape="caret"
+      [attr.dir]="expandService.expanded ? 'down' : 'right'"
+      [attr.title]="expandService.expanded ? commonStrings.collapse : commonStrings.expand"></clr-icon>
+  </button>
+  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable">
+    <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
+           [checked]="_model.selected.value === STATES.SELECTED"
+           [indeterminate]="_model.selected.value === STATES.INDETERMINATE"
+           (change)="_model.toggleSelection(true)">
+    <label for="{{nodeId}}-check" class="clr-control-label"></label>
+  </div>
+  <div class="clr-treenode-content" [id]="nodeId">
+    <ng-content></ng-content>
+  </div>
+</div>
+<div class="clr-treenode-children"
+     [@childNodesState]="expandService.expanded ? 'expanded' : 'collapsed'"
+     [attr.role]="isExpandable() ? 'group' : null">
+  <ng-content select="clr-tree-node"></ng-content>
+  <ng-content select="[clrIfExpanded]"></ng-content>
+</div>

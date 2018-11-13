@@ -12,6 +12,9 @@ import { Component } from '@angular/core';
         <h2>New Tree View</h2>
 
         <ul>
+            <li><a [routerLink]="['./eager-declarative']">Eager declarative tree</a></li>
+            <li><a [routerLink]="['./nodes-with-icons']">Nodes with icons</a></li>
+            <li><a [routerLink]="['./routing']">Routing tree</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

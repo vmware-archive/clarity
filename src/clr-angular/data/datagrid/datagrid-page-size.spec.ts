@@ -56,7 +56,7 @@ export default function(): void {
         });
 
         it('displays a select with pageSizeOptions as choices', function() {
-          let pageSizeOptions = [10, 20, 50, 100];
+          const pageSizeOptions = [10, 20, 50, 100];
           context.testComponent.pageSizeOptions = pageSizeOptions;
           context.detectChanges();
           const select = context.clarityElement.querySelector('select');

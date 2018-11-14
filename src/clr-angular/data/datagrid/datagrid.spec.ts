@@ -434,6 +434,19 @@ export default function(): void {
           expect(context.testComponent.nbRefreshed).toBe(1);
         });
 
+        it('emits once when the page size changes', function() {
+          context.testComponent.nbRefreshed = 0;
+          const page: Page = context.getClarityProvider(Page);
+          page.size = 2;
+          context.detectChanges();
+          expect(context.testComponent.nbRefreshed).toBe(1);
+          page.size = 5;
+          context.detectChanges();
+          expect(context.testComponent.nbRefreshed).toBe(2);
+          page.resetPageSize();
+          expect(context.testComponent.nbRefreshed).toBe(3);
+        });
+
         it('emits the complete state of the datagrid', function() {
           context.testComponent.items = [1, 2, 3, 4, 5, 6];
           context.detectChanges();

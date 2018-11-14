@@ -22,6 +22,7 @@ export class Page {
   public set size(size: number) {
     const oldSize = this._size;
     if (size !== oldSize) {
+      this.stateDebouncer.changeStart();
       this._size = size;
       if (size === 0) {
         this._current = 1;
@@ -34,6 +35,7 @@ export class Page {
       // the size changing means the items inside the page are different
       this._change.next(this._current);
       this._sizeChange.next(this._size);
+      this.stateDebouncer.changeDone();
     }
   }
 

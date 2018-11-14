@@ -30,10 +30,10 @@ export default function(): void {
 
     it('accepts a [clrLazy] input and forwards it to the TreeFeaturesService', function(this: Context) {
       const featuresService = this.getClarityProvider(TreeFeaturesService);
-      expect(featuresService.smart).toBe(true);
+      expect(featuresService.eager).toBe(true);
       this.hostComponent.lazy = true;
       this.detectChanges();
-      expect(featuresService.smart).toBe(false);
+      expect(featuresService.eager).toBe(false);
     });
 
     it('projects content', function(this: Context) {

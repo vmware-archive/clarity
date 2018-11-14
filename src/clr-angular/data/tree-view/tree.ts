@@ -21,6 +21,6 @@ export class ClrTree<T> {
 
   @Input('clrLazy')
   set lazy(value: boolean) {
-    this.featuresService.smart = !value;
+    this.featuresService.eager = !value;
   }
 }

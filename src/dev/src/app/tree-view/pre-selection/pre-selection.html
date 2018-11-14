@@ -67,6 +67,13 @@
 </div>
 
 <h4>Eager tree, inconsistent pre-selection (Christmas Edition)</h4>
+
+<p>
+  If different nodes receive inconsistent selection states as their input,
+  for instance an unselected parent with selected children,
+  we cannot know which one is correct.
+  This means we cannot support this behavior, so the following demo is expected to bebroken in various ways.
+</p>
 <div class="clr-example christmas">
   <clr-tree-node [(clrSelected)]="eager.inconsistent.unselected.parent">
     🤷
@@ -137,6 +144,13 @@
 </div>
 
 <h4>Lazy tree, inconsistent pre-selection</h4>
+<p>
+  If different nodes receive inconsistent selection states as their input,
+  for instance an unselected parent with selected children,
+  we cannot know which one is correct.
+  For this lazy case, it means we simply keep the inconsistent state for each node, and rely on the app to fix it
+  at one point. This can be seen in the following demo by expanding nodes to cpompare parent and children state.
+</p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
     <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.parent">

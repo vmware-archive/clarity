@@ -75,8 +75,8 @@ export default function(): void {
         expect(this.node.selected).toBe(ClrSelectedState.SELECTED);
       });
 
-      it('selects the model when selected and propagates selection if the tree is smart', function(this: TsApiContext) {
-        this.featureService.smart = true;
+      it('selects the model when selected and propagates selection if the tree is eager', function(this: TsApiContext) {
+        this.featureService.eager = true;
         const spy = spyOn(this.node._model, 'setSelected');
         this.node.selected = ClrSelectedState.SELECTED;
         expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, true, true);
@@ -84,8 +84,8 @@ export default function(): void {
         expect(spy).toHaveBeenCalledWith(ClrSelectedState.INDETERMINATE, true, true);
       });
 
-      it('selects the model when selected and does not propagate selection if the tree is not smart', function(this: TsApiContext) {
-        this.featureService.smart = false;
+      it('selects the model when selected and does not propagate selection if the tree is lazy', function(this: TsApiContext) {
+        this.featureService.eager = false;
         const spy = spyOn(this.node._model, 'setSelected');
         this.node.selected = ClrSelectedState.SELECTED;
         expect(spy).toHaveBeenCalledWith(ClrSelectedState.SELECTED, false, false);
@@ -241,7 +241,7 @@ export default function(): void {
         checkbox.click();
         // Smart tree propagates selection
         expect(spy).toHaveBeenCalledWith(true);
-        this.getClarityProvider(TreeFeaturesService).smart = false;
+        this.getClarityProvider(TreeFeaturesService).eager = false;
         checkbox.click();
         // Non-smart tree does not propagate selection
         expect(spy).toHaveBeenCalledWith(false);

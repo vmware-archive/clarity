@@ -1,5 +1,5 @@
 {
-    "current": "0.13.9",
+    "current": "0.13.10",
     "all": {
         "1.0.0-beta.2": {
             "date": "Nov 2, 2018",
@@ -10,6 +10,11 @@
             "date": "Oct 26, 2018",
             "sketch": "0.13.7",
             "commit": "ae9be86ef557bf13d6cea9250b0c322e1c6211d5"
+        },
+        "0.13.10": {
+            "date": "Nov 15, 2018",
+            "sketch": "0.13.7",
+            "commit": "fc2861dc5c0d2d6a1ccd981c63af1e6840350fb1"
         },
         "0.13.9": {
             "date": "Nov 8, 2018",

@@ -1276,6 +1276,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/news/0.13.10</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/news/0.13.9</loc>
         <changefreq>daily</changefreq>
     </url>

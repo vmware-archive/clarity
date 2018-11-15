@@ -85,6 +85,11 @@ import { DisableFocusTrap } from "../../utils/disable-focus-trap";
             .wizdemo-color-block.active {
                 border-color: #565656;
             }
+        `,
+        `
+            :host ::ng-deep .clr-wizard.wizard-xl .modal-dialog {
+                max-height: 100%;
+            }
         `
     ]
 })

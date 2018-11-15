@@ -16,8 +16,9 @@ const EXAMPLE = `
         <div class="login-group">
             <clr-select-container>
                 <select clrSelect name="type" [(ngModel)]="form.type">
-                <option value="local">Local Users</option>
-                <option value="admin">Administrator</option>
+                    <option value="local">Local Users</option>
+                    <option value="admin">Administrator</option>
+                </select>
             </clr-select-container>
             <clr-input-container>
                 <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username"/>

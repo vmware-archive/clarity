@@ -41,15 +41,15 @@ const EXAMPLE = `
 `;
 
 @Component({
-    selector: "clr-login-example-demo",
-    templateUrl: "./login-example.demo.html"
+	selector: "clr-login-example-demo",
+	templateUrl: "./login-example.demo.html"
 })
 export class LoginExampleDemo {
-    example = EXAMPLE;
-    form = {
-        type: 'local',
-        username: '',
-        password: '',
-        rememberMe: false,
-      };
+	example = EXAMPLE;
+	form = {
+		type: "local",
+		username: "",
+		password: "",
+		rememberMe: false
+	};
 }

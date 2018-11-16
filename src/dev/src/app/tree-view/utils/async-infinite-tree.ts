@@ -11,7 +11,7 @@ import { Observable, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export class AsyncInfiniteTree {
-  constructor(width: number, latency = 0) {
+  constructor(width: number, latency = 100) {
     this.tree = new InfiniteTree(width);
     this.delay = timer(latency);
   }

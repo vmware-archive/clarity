@@ -7,6 +7,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 
 import { ClrTreeViewModule } from './tree-view.module';
 import { ClrIconModule } from '../../icon/icon.module';
@@ -20,7 +21,7 @@ import { TreeFeaturesService } from './tree-features.service';
 import { ClrTreeNode } from './tree-node';
 
 @Component({
-  template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded">
+  template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded" [clrExpandable]="expandable">
     Hello world
     <clr-tree-node *ngIf="withChild">Child</clr-tree-node>
   </clr-tree-node>`,
@@ -31,6 +32,7 @@ class TestComponent {
   selected = ClrSelectedState.UNSELECTED;
   expanded = false;
   withChild = true;
+  expandable: boolean | undefined;
 }
 
 interface TsApiContext {
@@ -134,6 +136,24 @@ export default function(): void {
         expect(this.node.expanded).toBeTrue();
       });
 
+      it('is expandable and does not fetch children if overriden to be expandable', function(this: TsApiContext) {
+        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined);
+        const spy = spyOnProperty(recursiveModel, 'children', 'get');
+        this.node._model = recursiveModel;
+        this.node.expandable = true;
+        expect(this.node.isExpandable()).toBeTrue();
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      it('is not expandable and does not fetch children if overriden not to be expandable', function(this: TsApiContext) {
+        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined);
+        const spy = spyOnProperty(recursiveModel, 'children', 'get');
+        this.node._model = recursiveModel;
+        this.node.expandable = false;
+        expect(this.node.isExpandable()).toBeFalse();
+        expect(spy).not.toHaveBeenCalled();
+      });
+
       it('tells the expand service to expand', function(this: TsApiContext) {
         this.node.expanded = true;
         expect(this.expandService.expanded).toBeTrue();
@@ -218,6 +238,20 @@ export default function(): void {
         this.hostComponent.withChild = false;
         this.detectChanges();
         expect(this.clarityElement.querySelector('.clr-treenode-caret')).toBeNull();
+      });
+
+      it('replaces the caret with a spinner when the expand service is loading', function(this: Context) {
+        this.getClarityProvider(Expand).loading = true;
+        this.detectChanges();
+        expect(this.clarityElement.querySelector('.clr-treenode-caret')).toBeNull();
+        expect(this.clarityElement.querySelector('.clr-treenode-spinner')).not.toBeNull();
+      });
+
+      it('replaces the caret with a spinner when the model is loading', function(this: Context) {
+        this.clarityDirective._model.loading = true;
+        this.detectChanges();
+        expect(this.clarityElement.querySelector('.clr-treenode-caret')).toBeNull();
+        expect(this.clarityElement.querySelector('.clr-treenode-spinner')).not.toBeNull();
       });
 
       it('expands and collapses when the caret is clicked', function(this: Context) {

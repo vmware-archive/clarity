@@ -69,6 +69,9 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   _model: TreeNodeModel<T>;
 
   isExpandable() {
+    if (typeof this.expandable !== 'undefined') {
+      return this.expandable;
+    }
     return !!this.expandService.expandable || this._model.children.length > 0;
   }
 
@@ -112,6 +115,10 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   get ariaSelected(): boolean {
     return this.featuresService.selectable ? this._model.selected.value === ClrSelectedState.SELECTED : null;
   }
+
+  // Allows the consumer to override our logic deciding if a node is expandable.
+  // Useful for recursive trees that don't want to pre-load one level ahead just to know which nodes are expandable.
+  @Input('clrExpandable') expandable: boolean | undefined;
 
   // I'm caving on this, for tree nodes I think we can tolerate having a two-way binding on the component
   // rather than enforce the clrIfExpanded structural directive for dynamic cases. Mostly because for the smart

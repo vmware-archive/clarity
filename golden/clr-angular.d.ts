@@ -711,7 +711,7 @@ export declare class ClrIfError {
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
-    constructor(template: TemplateRef<any>, container: ViewContainerRef, expand: Expand);
+    constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: Expand);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -906,6 +906,18 @@ export declare class ClrRadioWrapper implements DynamicWrapper {
     label: ClrLabel;
 }
 
+export declare class ClrRecursiveForOf<T> implements OnChanges {
+    getChildren: (node: T) => AsyncArray<T>;
+    nodes: T | T[];
+    constructor(template: TemplateRef<ClrRecursiveForOfContext<T>>, featuresService: TreeFeaturesService<T>);
+    ngOnChanges(): void;
+}
+
+export interface ClrRecursiveForOfContext<T> {
+    $implicit: T;
+    clrModel: TreeNodeModel<T>;
+}
+
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
@@ -922,6 +934,12 @@ export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
     controlClass(): string;
     ngOnDestroy(): void;
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
+}
+
+export declare enum ClrSelectedState {
+    UNSELECTED = 0,
+    SELECTED = 1,
+    INDETERMINATE = 2
 }
 
 export declare class ClrSelectModule {
@@ -1089,35 +1107,31 @@ export declare class ClrTooltipTrigger {
     showTooltip(): void;
 }
 
-export declare class ClrTreeNode extends AbstractTreeSelection implements OnDestroy {
+export declare class ClrTree<T> {
+    featuresService: TreeFeaturesService<T>;
+    lazy: boolean;
+    constructor(featuresService: TreeFeaturesService<T>);
+}
+
+export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
+    STATES: typeof ClrSelectedState;
+    _model: TreeNodeModel<T>;
     readonly ariaSelected: boolean;
-    readonly ariaTreeNodeChildrenRole: string;
-    readonly caretDirection: string;
-    readonly caretTitle: string;
-    readonly children: ClrTreeNode[];
     commonStrings: ClrCommonStrings;
+    expandService: Expand;
+    expandable: boolean | undefined;
     expanded: boolean;
-    nodeExpand: Expand;
+    expandedChange: EventEmitter<boolean>;
+    featuresService: TreeFeaturesService<T>;
     nodeId: string;
-    nodeIndeterminate: boolean;
-    nodeIndeterminateChanged: EventEmitter<boolean>;
-    nodeSelected: boolean;
-    nodeSelectedChange: EventEmitter<boolean>;
-    parent: ClrTreeNode;
     readonly rootAriaMultiSelectable: boolean;
-    readonly selectable: boolean;
-    readonly state: string;
+    selected: ClrSelectedState | boolean;
+    selectedChange: EventEmitter<ClrSelectedState>;
     readonly treeNodeRole: string;
-    treeSelectionService: TreeSelectionService;
-    constructor(nodeExpand: Expand, parent: ClrTreeNode, treeSelectionService: TreeSelectionService, nodeId: string, commonStrings: ClrCommonStrings);
-    activateSelection(): void;
-    checkIfChildNodeRegistered(node: ClrTreeNode): boolean;
-    indeterminateChanged(): void;
+    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings, injector: Injector);
+    isExpandable(): boolean;
     ngOnDestroy(): void;
-    register(node: ClrTreeNode): void;
-    selectedChanged(): void;
-    toggleExpand(): void;
-    unregister(node: ClrTreeNode): void;
+    ngOnInit(): void;
 }
 
 export declare class ClrTreeViewModule {

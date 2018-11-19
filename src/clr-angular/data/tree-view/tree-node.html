@@ -5,33 +5,36 @@
   -->
 
 <div class="clr-tree-node-content-container">
-    <button
-        type="button"
-        class="clr-treenode-caret"
-        (click)="toggleExpand()"
-        *ngIf="nodeExpand.expandable && !nodeExpand.loading"
-        [attr.aria-expanded]="nodeExpand.expanded">
-        <clr-icon
-            class="clr-treenode-caret-icon"
-            shape="caret"
-            [attr.dir]="caretDirection"
-            [attr.title]="caretTitle"></clr-icon>
-    </button>
-    <div class="clr-treenode-spinner-container" *ngIf="nodeExpand.expandable && nodeExpand.loading">
-        <span class="clr-treenode-spinner spinner">
-            Loading...
-        </span>
-    </div>
-    <input type="checkbox" clrCheckbox *ngIf="selectable" [class.clr-indeterminate]="indeterminate" [(ngModel)]="selected" [attr.aria-labeledby]="nodeId" />
-    <div class="clr-treenode-content" [id]="nodeId">
-        <ng-content></ng-content>
-    </div>
+  <button
+    *ngIf="isExpandable() && !_model.loading && !expandService.loading"
+    type="button"
+    class="clr-treenode-caret"
+    (click)="expandService.toggle()"
+    [attr.aria-expanded]="expandService.expanded">
+    <clr-icon
+      class="clr-treenode-caret-icon"
+      shape="caret"
+      [attr.dir]="expandService.expanded ? 'down' : 'right'"
+      [attr.title]="expandService.expanded ? commonStrings.collapse : commonStrings.expand"></clr-icon>
+  </button>
+  <div class="clr-treenode-spinner-container" *ngIf="expandService.loading || _model.loading">
+        <span class="clr-treenode-spinner spinner"></span>
+  </div>
+  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable">
+    <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
+           [checked]="_model.selected.value === STATES.SELECTED"
+           [indeterminate]="_model.selected.value === STATES.INDETERMINATE"
+           (change)="_model.toggleSelection(featuresService.eager)">
+    <label for="{{nodeId}}-check" class="clr-control-label"></label>
+  </div>
+  <div class="clr-treenode-content" [id]="nodeId">
+    <ng-content></ng-content>
+  </div>
 </div>
-<!-- FIXME: remove this string concatenation when boolean states are supported -->
-<div
-    class="clr-treenode-children"
-    [@childNodesState]="state"
-    [attr.role]="ariaTreeNodeChildrenRole">
-    <ng-content select="clr-tree-node"></ng-content>
-    <ng-content select="[clrIfExpanded]"></ng-content>
+<div class="clr-treenode-children"
+     [@childNodesState]="expandService.expanded ? 'expanded' : 'collapsed'"
+     [attr.role]="isExpandable() ? 'group' : null">
+  <ng-content select="clr-tree-node"></ng-content>
+  <ng-content select="[clrIfExpanded]"></ng-content>
+  <clr-recursive-children [parent]="_model"></clr-recursive-children>
 </div>

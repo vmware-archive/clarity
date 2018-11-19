@@ -9,23 +9,16 @@ import { Component } from '@angular/core';
   selector: 'clr-tree-view-demo',
   styleUrls: ['./tree-view.demo.scss'],
   template: `
-        <h2>New Tree View</h2>
+        <h2>Tree View</h2>
 
         <ul>
-            <li><a [routerLink]="['./basic-tree-node']">New Tree View</a></li>
-            <li><a [routerLink]="['./basic-tree-node-expanded']">New Tree View Expanded</a></li>
-            <li><a [routerLink]="['./label-change-on-expand']">Label Change on Expand</a></li>
-            <li><a [routerLink]="['./basic-selection-tree']">Basic Selection Tree</a></li>
-            <li><a [routerLink]="['./child-node-selected']">Child Node Selected</a></li>
-            <li><a [routerLink]="['./indeterminate-node']">Indeterminate Node</a></li>
-            <li><a [routerLink]="['./tree-node-dynamic']">Dynamically generated Tree</a></li>
-            <li><a [routerLink]="['./tree-node-dynamic-test']">Dynamically generated Tree - Test</a></li>
-            <li><a [routerLink]="['./tree-10k']">10k Tree Nodes Test</a></li>
-            <li><a [routerLink]="['./lazy-load']">Lazy Load Tree Nodes</a></li>
-            <li><a [routerLink]="['./recursive-tree']">Recursive Tree</a></li>
-            <li><a [routerLink]="['./recursive-selectable-tree']">Recursive Selectable Tree</a></li>
-            <li><a [routerLink]="['./recursive-lazy-tree']">Recursive Lazy Tree</a></li>
-            <li><a [routerLink]="['./tree-node-routing']">Tree Node Routing</a></li>
+            <li><a [routerLink]="['./eager-declarative']">Eager declarative tree</a></li>
+            <li><a [routerLink]="['./eager-recursive']">Eager recursive tree</a></li>
+            <li><a [routerLink]="['./lazy-declarative']">Lazy declarative tree</a></li>
+            <li><a [routerLink]="['./lazy-recursive']">Lazy recursive tree</a></li>
+            <li><a [routerLink]="['./nodes-with-icons']">Nodes with icons</a></li>
+            <li><a [routerLink]="['./routing']">Routing tree</a></li>
+            <li><a [routerLink]="['./pre-selection']">Pre-selection cases dump</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

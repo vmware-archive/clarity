@@ -8,9 +8,31 @@ var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
 gemini.suite('tree-view', child => {
-  gemini.suite('Tree Node', child => {
+  gemini.suite('Eager declarative tree', child => {
     child
-      .setUrl('/tree-view/basic-tree-node')
+      .setUrl('/tree-view/eager-declarative')
+      .before((actions, find) => {
+        actions.waitForElementToShow('#expanded-node', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('#expanded-node')
+      .capture('default');
+  });
+
+  gemini.suite('Eager recursive tree', child => {
+    child
+      .setUrl('/tree-view/eager-recursive')
+      .before((actions, find) => {
+        actions.waitForElementToShow('#expanded-node', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('#expanded-node')
+      .capture('default');
+  });
+
+  gemini.suite('Lazy declarative tree', child => {
+    child
+      .setUrl('/tree-view/lazy-declarative')
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example', WAIT_TIME);
         actions.wait(WAIT_TIME);
@@ -19,9 +41,9 @@ gemini.suite('tree-view', child => {
       .capture('default');
   });
 
-  gemini.suite('Tree Node - Expanded', child => {
+  gemini.suite('Lazy recursive tree', child => {
     child
-      .setUrl('/tree-view/basic-tree-node-expanded')
+      .setUrl('/tree-view/lazy-recursive')
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example', WAIT_TIME);
         actions.wait(WAIT_TIME);
@@ -30,9 +52,9 @@ gemini.suite('tree-view', child => {
       .capture('default');
   });
 
-  gemini.suite('Tree View - Basic Selection', child => {
+  gemini.suite('Tree with icons', child => {
     child
-      .setUrl('/tree-view/basic-selection-tree')
+      .setUrl('/tree-view/nodes-with-icons')
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example', WAIT_TIME);
         actions.wait(WAIT_TIME);
@@ -41,37 +63,25 @@ gemini.suite('tree-view', child => {
       .capture('default');
   });
 
-  gemini.suite('Tree View - Child Selection', child => {
+  gemini.suite('Pre-selection', child => {
     child
-      .setUrl('/tree-view/child-node-selected')
+      .setUrl('/tree-view/pre-selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+        actions.waitForElementToShow('#consistent-pre-selection', WAIT_TIME);
         actions.wait(WAIT_TIME);
       })
-      .setCaptureElements('.clr-example')
+      .setCaptureElements('#consistent-pre-selection')
       .capture('default');
   });
 
-  gemini.suite('Tree View Dynamically Generated', child => {
+  gemini.suite('Children pre-selection', child => {
     child
-      .setUrl('/tree-view/tree-node-dynamic')
+      .setUrl('/tree-view/pre-selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.row', WAIT_TIME);
+        actions.waitForElementToShow('#children-pre-selection', WAIT_TIME);
         actions.wait(WAIT_TIME);
       })
-      .setCaptureElements('.row')
-      .capture('default');
-  });
-
-  gemini.suite('Recursive Selectable Tree', child => {
-    child
-      .setUrl('/tree-view/recursive-selectable-tree')
-      .before((actions, find) => {
-        actions.wait(WAIT_TIME);
-        actions.waitForElementToShow('.clr-example', WAIT_TIME);
-        actions.wait(WAIT_TIME);
-      })
-      .setCaptureElements('.clr-example')
+      .setCaptureElements('#children-pre-selection')
       .capture('default');
   });
 });

@@ -4,25 +4,23 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <clr-tree-node class="example-beatles-tree">
+  <div class="clr-col-12 clr-col-md-4">
+    <clr-tree-node class="example-beatles-tree" [clrExpanded]="true">
       The Beatles
-      <ng-template [clrIfExpanded]="true">
-        <clr-tree-node>
-          <a [routerLink]="['./album1']" class="clr-treenode-link" routerLinkActive="active">Abbey Road</a>
-        </clr-tree-node>
+      <clr-tree-node>
+        <a [routerLink]="['./album1']" class="clr-treenode-link" routerLinkActive="active">Abbey Road</a>
+      </clr-tree-node>
 
-        <clr-tree-node>
-          <a [routerLink]="['./album2']" class="clr-treenode-link" routerLinkActive="active">Revolver</a>
-        </clr-tree-node>
+      <clr-tree-node>
+        <a [routerLink]="['./album2']" class="clr-treenode-link" routerLinkActive="active">Revolver</a>
+      </clr-tree-node>
 
-        <clr-tree-node>
-          <a [routerLink]="['./album3']" class="clr-treenode-link" routerLinkActive="active">Rubber Soul</a>
-        </clr-tree-node>
-      </ng-template>
+      <clr-tree-node>
+        <a [routerLink]="['./album3']" class="clr-treenode-link" routerLinkActive="active">Rubber Soul</a>
+      </clr-tree-node>
     </clr-tree-node>
   </div>
-  <div class="col-xs-12 col-md-8 example-outlet">
+  <div class="clr-col-12 clr-col-md-8 example-outlet">
     <router-outlet></router-outlet>
   </div>
 </div>

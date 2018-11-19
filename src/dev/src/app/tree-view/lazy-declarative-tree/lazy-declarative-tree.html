@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>500k nodes, synchronous</h4>
+<p>
+  Selected: {{tree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *ngFor="let node of tree.root"
+                   [clrSelected]="tree.isSelected(node)"
+                   (clrSelectedChange)="tree.select(node, $event)">
+      {{node}}
+      <ng-template clrIfExpanded>
+        <clr-tree-node *ngFor="let child of tree.getChildren(node)"
+                       [clrSelected]="tree.isSelected(child)"
+                       (clrSelectedChange)="tree.select(child, $event)">
+          {{child}}
+          <ng-template clrIfExpanded>
+            <clr-tree-node *ngFor="let child of tree.getChildren(child)"
+                           [clrSelected]="tree.isSelected(child)"
+                           (clrSelectedChange)="tree.select(child, $event)">
+              {{child}}
+              <ng-template clrIfExpanded>
+                <clr-tree-node *ngFor="let child of tree.getChildren(child)"
+                               [clrSelected]="tree.isSelected(child)"
+                               (clrSelectedChange)="tree.select(child, $event)">
+                  {{child}}
+                  <ng-template clrIfExpanded>
+                    <clr-tree-node *ngFor="let child of tree.getChildren(child)"
+                                   [clrSelected]="tree.isSelected(child)"
+                                   (clrSelectedChange)="tree.select(child, $event)">
+                      {{child}}
+                      <ng-template clrIfExpanded>
+                        <clr-tree-node *ngFor="let child of tree.getChildren(child)"
+                                       [clrSelected]="tree.isSelected(child)"
+                                       (clrSelectedChange)="tree.select(child, $event)">
+                          {{child}}
+                        </clr-tree-node>
+                      </ng-template>
+                    </clr-tree-node>
+                  </ng-template>
+                </clr-tree-node>
+              </ng-template>
+            </clr-tree-node>
+          </ng-template>
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Asynchronous</h4>
+<p>
+  Selected: {{asyncTree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *ngFor="let node of asyncTree.root"
+                   [clrLoading]="loading[node]"
+                   [clrSelected]="asyncTree.isSelected(node)"
+                   (clrSelectedChange)="asyncTree.select(node, $event)">
+      {{node}}
+      <ng-template clrIfExpanded (clrIfExpandedChange)="fetchChildren(node, $event)">
+        <clr-tree-node *ngFor="let child of children[node] | async"
+                       [clrLoading]="loading[child]"
+                       [clrSelected]="asyncTree.isSelected(child)"
+                       (clrSelectedChange)="asyncTree.select(child, $event)">
+          {{child}}
+          <ng-template clrIfExpanded (clrIfExpandedChange)="fetchChildren(child, $event)">
+            <clr-tree-node *ngFor="let child of children[child] | async"
+                           [clrSelected]="asyncTree.isSelected(child)"
+                           (clrSelectedChange)="asyncTree.select(child, $event)">
+              {{child}}
+            </clr-tree-node>
+          </ng-template>
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>

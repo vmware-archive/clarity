@@ -1,0 +1,190 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Eager tree, consistent pre-selection</h4>
+<div id="consistent-pre-selection" class="clr-example">
+  <clr-tree-node [(clrSelected)]="eager.consistent.unselected.parent">
+    Not selected
+    <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child1">
+      Not selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node [(clrSelected)]="eager.consistent.selected.parent">
+    Selected
+    <clr-tree-node [(clrSelected)]="eager.consistent.selected.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.consistent.selected.child2">
+      Selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.parent">
+    Indeterminate
+    <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+</div>
+
+<h4>Eager tree, children pre-selection only</h4>
+<div id="children-pre-selection" class="clr-example">
+  <clr-tree-node>
+    Not selected
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child1">
+      Not selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node>
+    Selected
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child2">
+      Selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node>
+    Indeterminate
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+</div>
+
+<h4>Eager tree, inconsistent pre-selection (Christmas Edition)</h4>
+
+<p>
+  If different nodes receive inconsistent selection states as their input,
+  for instance an unselected parent with selected children,
+  we cannot know which one is correct.
+  This means we cannot support this behavior, so the following demo is expected to bebroken in various ways.
+</p>
+<div class="clr-example christmas">
+  <clr-tree-node [(clrSelected)]="eager.inconsistent.unselected.parent">
+    🤷
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.unselected.child1">
+      Not selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.unselected.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node [(clrSelected)]="eager.inconsistent.selected.parent">
+    🤷
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.selected.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.selected.child2">
+      Selected
+    </clr-tree-node>
+  </clr-tree-node>
+  <clr-tree-node [(clrSelected)]="eager.inconsistent.indeterminate.parent">
+    🤷
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.indeterminate.child1">
+      Selected
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="eager.inconsistent.indeterminate.child2">
+      Not selected
+    </clr-tree-node>
+  </clr-tree-node>
+</div>
+
+<h4>Lazy tree, consistent pre-selection</h4>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.parent">
+      Not selected
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child1">
+          Not selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child2">
+          Not selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="lazy.consistent.selected.parent">
+      Selected
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child1">
+          Selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child2">
+          Selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.parent">
+      Indeterminate
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child1">
+          Selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child2">
+          Not selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Lazy tree, inconsistent pre-selection</h4>
+<p>
+  If different nodes receive inconsistent selection states as their input,
+  for instance an unselected parent with selected children,
+  we cannot know which one is correct.
+  For this lazy case, it means we simply keep the inconsistent state for each node, and rely on the app to fix it
+  at one point. This can be seen in the following demo by expanding nodes to cpompare parent and children state.
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.parent">
+      Indeterminate, I'm lazy and I take things literally
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child1">
+          Not selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child2">
+          Not selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.parent">
+      Unselected, I'm lazy and I take things literally
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child1">
+          Selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child2">
+          Selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+    <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.parent">
+      Selected, I'm lazy and I take things literally
+      <ng-template clrIfExpanded>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child1">
+          Selected
+        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child2">
+          Not selected
+        </clr-tree-node>
+      </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>

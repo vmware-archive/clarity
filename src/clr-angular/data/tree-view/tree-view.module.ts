@@ -6,18 +6,20 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
+import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrTreeNode } from './tree-node';
+import { ClrTree } from './tree';
+import { ClrRecursiveForOf } from './recursive-for-of';
+import { RecursiveChildren } from './recursive-children';
 
-export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTreeNode];
+export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode, ClrRecursiveForOf];
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule, FormsModule, ClrFormsModule],
-  declarations: [CLR_TREE_VIEW_DIRECTIVES],
+  imports: [CommonModule, ClrIconModule, ClrLoadingModule],
+  declarations: [CLR_TREE_VIEW_DIRECTIVES, RecursiveChildren],
   exports: [CLR_TREE_VIEW_DIRECTIVES, ClrIfExpandModule],
 })
 export class ClrTreeViewModule {}

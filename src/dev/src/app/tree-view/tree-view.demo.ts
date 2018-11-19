@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-tree-view-demo',
   styleUrls: ['./tree-view.demo.scss'],
   template: `
-        <h2>New Tree View</h2>
+        <h2>Tree View</h2>
 
         <ul>
             <li><a [routerLink]="['./eager-declarative']">Eager declarative tree</a></li>

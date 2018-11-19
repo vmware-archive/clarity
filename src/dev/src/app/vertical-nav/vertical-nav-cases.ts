@@ -84,4 +84,18 @@ export class VerticalNavCases {
     this.allNestedIconMenu,
     this.partiallyNestedIconMenu,
   ];
+
+  highlights = {
+    title: 'Highlights',
+    items: [
+      {
+        label: 'Selected',
+        active: true,
+        icon: 'lightbulb',
+        children: this.basicMenu.items,
+      },
+      { label: 'Hovered', icon: 'cog' },
+      { label: 'Normal', icon: 'hourglass' },
+    ],
+  };
 }

@@ -47,6 +47,7 @@ import { SamsTown1Demo } from './without-expanded-directive/the-killers/sams-tow
 import { Killers1Demo } from './without-expanded-directive/the-killers/the-killers';
 import { Wikipedia1Demo } from './without-expanded-directive/wikipedia';
 import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/without-expanded-directive';
+import { VerticalNavHighlightsDemo } from './highlights/vertical-nav-highlights.demo';
 
 const ROUTES: Routes = [
   {
@@ -63,6 +64,7 @@ const ROUTES: Routes = [
       { path: 'nested-icon-menus', component: VerticalNavNestedIconMenusDemo },
       { path: 'partial-nested-menus', component: VerticalNavPartiallyNestedMenusDemo },
       { path: 'partial-nested-icon-menus', component: VerticalNavPartiallyNestedIconMenusDemo },
+      { path: 'highlights', component: VerticalNavHighlightsDemo },
       {
         path: 'routing',
         component: VerticalNavRoutingDemo,

@@ -52,6 +52,7 @@ import { SamsTown1Demo } from './without-expanded-directive/the-killers/sams-tow
 import { Killers1Demo } from './without-expanded-directive/the-killers/the-killers';
 import { Wikipedia1Demo } from './without-expanded-directive/wikipedia';
 import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/without-expanded-directive';
+import { VerticalNavHighlightsDemo } from './highlights/vertical-nav-highlights.demo';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
@@ -66,6 +67,7 @@ import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/witho
     VerticalNavPartiallyNestedMenusDemo,
     VerticalNavPartiallyNestedIconMenusDemo,
     VerticalNavRoutingDemo,
+    VerticalNavHighlightsDemo,
     VerticalNavAllCases,
     BeatlesDemo,
     AbbeyRoadDemo,
@@ -109,6 +111,7 @@ import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/witho
     VerticalNavPartiallyNestedMenusDemo,
     VerticalNavPartiallyNestedIconMenusDemo,
     VerticalNavRoutingDemo,
+    VerticalNavHighlightsDemo,
     VerticalNavAllCases,
     BeatlesDemo,
     AbbeyRoadDemo,

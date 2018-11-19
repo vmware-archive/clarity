@@ -21,6 +21,7 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./routing']">Routing</a></li>
             <li><a [routerLink]="['./without-expanded-directive']">Without Expanded Directive</a></li>
             <li><a [routerLink]="['./unstructured-routes']">Unstructured Routes</a></li>
+            <li><a [routerLink]="['./highlights']">Highlights</a></li>
             <li><a [routerLink]="['./all']">All Cases</a></li>
         </ul>
         <router-outlet></router-outlet>

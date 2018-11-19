@@ -154,4 +154,27 @@ gemini.suite('vertical-nav', child => {
       .setCaptureElements('.clr-example')
       .capture('default');
   });
+
+  //Highlights
+  gemini.suite('highlights', child => {
+    child
+      .setUrl('/vertical-nav/highlights')
+      .before(actions => {
+        actions.waitForElementToShow('.clr-example', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-example')
+      .capture('hover-over-normal', (actions, find) => {
+        actions.mouseMove(find('.hovered'));
+        actions.wait(WAIT_TIME);
+      })
+      .capture('hover-over-active', (actions, find) => {
+        // Hide irrelevant "Hovered" option
+        actions.executeJS(function(window) {
+          document.querySelector('.hovered').style.display = 'none';
+          document.querySelector('.selected .nav-text').innerText += '/hovered';
+        });
+        actions.mouseMove(find('.selected'));
+        actions.wait(WAIT_TIME);
+      });
+  });
 });

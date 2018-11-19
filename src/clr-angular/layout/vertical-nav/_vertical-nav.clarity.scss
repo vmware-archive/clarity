@@ -2,10 +2,9 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin vertical-nav-link-colors($color: $clr-vertical-nav-hover-bg-color) {
+@mixin vertical-nav-link-colors($color: $clr-vertical-nav-active-bg-color) {
   color: $clr-vertical-nav-item-color;
 
-  &:hover,
   &.active {
     color: $clr-vertical-nav-item-active-color;
     background-color: $color;
@@ -16,6 +15,8 @@
   }
 
   &:hover {
+    color: $clr-vertical-nav-item-active-color;
+    background-color: $clr-vertical-nav-hover-bg-color;
     text-decoration: none;
   }
 }
@@ -293,7 +294,7 @@
 
     .nav-group.active:not(.is-expanded) {
       .nav-group-content {
-        background-color: $clr-vertical-nav-hover-bg-color;
+        background-color: $clr-vertical-nav-active-bg-color;
 
         //Horrible Nesting but nothing I can do.
         .nav-icon {
@@ -304,6 +305,9 @@
 
     .nav-group-content {
       .nav-link.active ~ .nav-group-trigger {
+        background-color: $clr-vertical-nav-active-bg-color;
+      }
+      .nav-link:hover ~ .nav-group-trigger {
         background-color: $clr-vertical-nav-hover-bg-color;
       }
     }

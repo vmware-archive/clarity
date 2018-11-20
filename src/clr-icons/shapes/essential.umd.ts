@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { EssentialShapes } from './essential';
+import { ClrEssentialSet } from './essential';
 
 export * from './essential';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(EssentialShapes);
+  window.ClarityIcons.add(ClrEssentialSet);
 }

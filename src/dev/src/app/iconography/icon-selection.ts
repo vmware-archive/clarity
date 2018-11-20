@@ -4,15 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { ChartShapes } from '@clr/icons/shapes/chart';
-import { CommerceShapes } from '@clr/icons/shapes/commerce';
-import { CoreShapes } from '@clr/icons/shapes/core';
-import { EssentialShapes } from '@clr/icons/shapes/essential';
-import { MediaShapes } from '@clr/icons/shapes/media';
-import { SocialShapes } from '@clr/icons/shapes/social';
-import { TechnologyShapes } from '@clr/icons/shapes/technology';
-import { TextEditShapes } from '@clr/icons/shapes/text-edit';
-import { TravelShapes } from '@clr/icons/shapes/travel';
+import {
+  ClrChartSet,
+  ClrCommerceSet,
+  ClrCoreSet,
+  ClrEssentialSet,
+  ClrMediaSet,
+  ClrSocialSet,
+  ClrTechnologySet,
+  ClrTextEditSet,
+  ClrTravelSet,
+} from '@clr/icons';
 
 @Component({
   selector: 'clr-icon-selection-demo',
@@ -45,14 +47,14 @@ export class IconSelectionDemo {
   }
 
   allShapeSets = [
-    { name: 'Core Shapes', shapes: Object.keys(CoreShapes) },
-    { name: 'Commerce Shapes', shapes: Object.keys(CommerceShapes) },
-    { name: 'Essential Shapes', shapes: Object.keys(EssentialShapes) },
-    { name: 'Media Shapes', shapes: Object.keys(MediaShapes) },
-    { name: 'Social Shapes', shapes: Object.keys(SocialShapes) },
-    { name: 'Travel Shapes', shapes: Object.keys(TravelShapes) },
-    { name: 'Technology Shapes', shapes: Object.keys(TechnologyShapes) },
-    { name: 'Chart Shapes', shapes: Object.keys(ChartShapes) },
-    { name: 'Text Edit Shapes', shapes: Object.keys(TextEditShapes) },
+    { name: 'Core Shapes', shapes: Object.keys(ClrCoreSet) },
+    { name: 'Commerce Shapes', shapes: Object.keys(ClrCommerceSet) },
+    { name: 'Essential Shapes', shapes: Object.keys(ClrEssentialSet) },
+    { name: 'Media Shapes', shapes: Object.keys(ClrMediaSet) },
+    { name: 'Social Shapes', shapes: Object.keys(ClrSocialSet) },
+    { name: 'Travel Shapes', shapes: Object.keys(ClrTravelSet) },
+    { name: 'Technology Shapes', shapes: Object.keys(ClrTechnologySet) },
+    { name: 'Chart Shapes', shapes: Object.keys(ClrChartSet) },
+    { name: 'Text Edit Shapes', shapes: Object.keys(ClrTextEditSet) },
   ];
 }

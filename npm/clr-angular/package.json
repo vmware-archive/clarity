@@ -23,6 +23,7 @@
     "@angular/forms": "^7.0.0",
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
+    "@clr/icons": "@VERSION",
     "@clr/ui": "@VERSION"
   },
   "author": "clarity",

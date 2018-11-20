@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { SocialShapes } from './social';
+import { ClrSocialSet } from './social';
 
 export * from './social';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(SocialShapes);
+  window.ClarityIcons.add(ClrSocialSet);
 }

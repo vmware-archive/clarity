@@ -17,6 +17,7 @@ import { IconVariantsDemo } from './icon-variants';
 import { IconsDemo } from './iconography.demo';
 import { ROUTING } from './iconography.demo.routing';
 import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
+import { IconsAngularBindingDemo } from './icon-angular-binding';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING],
@@ -29,6 +30,7 @@ import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
     IconInverseColorDemo,
     IconVariantsDemo,
     IconsViewBoxTestDemo,
+    IconsAngularBindingDemo,
   ],
   exports: [
     IconsDemo,
@@ -38,6 +40,7 @@ import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
     IconSizeDemo,
     IconInverseColorDemo,
     IconVariantsDemo,
+    IconsAngularBindingDemo,
   ],
 })
 export class IconographyDemoModule {}

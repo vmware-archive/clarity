@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClarityIcons, AllShapes } from '@clr/icons';
+import { ClarityIcons, ClrAllSet } from '@clr/icons';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -23,7 +23,8 @@ if (environment.dark) {
   require('style-loader!./../../clr-angular/main.scss');
 }
 
-ClarityIcons.init(AllShapes);
+// @TODO Remove this and import only shapes as needed for gemini testing
+ClarityIcons.init(ClrAllSet);
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

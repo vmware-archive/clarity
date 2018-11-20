@@ -5,8 +5,8 @@
  */
 
 import { ApiModule } from './api';
-import { AllShapes } from './shapes/all';
+import { ClrAllSet } from './shapes/all';
 
 /* tslint:disable:variable-name */
 const ClarityIcons = ApiModule.instance;
-ClarityIcons.init(AllShapes);
+ClarityIcons.init(ClrAllSet);

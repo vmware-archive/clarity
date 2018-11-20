@@ -10,8 +10,8 @@ const shell = require('shelljs');
 const SHAPE_SETS = ['core', 'commerce', 'essential', 'media', 'social', 'technology', 'travel', 'chart', 'text-edit'];
 
 writeSVGIcons(SHAPE_SETS, () => {
-  shell.exec('cd dist/clr-icons/shapes; zip -r all.zip ./**/*');
+  shell.exec('cd dist/clr-icons-sets; zip -r all.zip ./**/*');
   SHAPE_SETS.forEach(setName => {
-    shell.exec(`cd dist/clr-icons/shapes; zip -r ${setName}.zip ./${setName}/*; rm -r ./${setName}`);
+    shell.exec(`cd dist/clr-icons-sets; zip -r ${setName}.zip ./${setName}/*; rm -r ./${setName}`);
   });
 });

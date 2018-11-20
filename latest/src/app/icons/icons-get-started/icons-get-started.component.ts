@@ -9,7 +9,7 @@ const ICONS_IMPORTS_ALL = `
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 
 <!--CLARITY ICONS API & ALL ICON SETS-->
-<script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/clr-icons-all.min.js"></script>
 `;
 
 const ICONS_IMPORTS_SOME = `
@@ -19,27 +19,37 @@ const ICONS_IMPORTS_SOME = `
 <!--CLARITY ICONS DEPENDENCY: CUSTOM ELEMENTS POLYFILL-->
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 
-<!--CLARITY ICONS API & CORE SHAPES SET-->
-<script src="path/to/node_modules/@clr/icons/clr-icons-lite.min.js"></script>
+<!--CLARITY ICONS API-->
+<script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 
 <!--ICON SETS-->
-<script src="path/to/node_modules/@clr/icons/shapes/social-shapes.min.js"></script>
-<script src="path/to/node_modules/@clr/icons/shapes/travel-shapes.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/shapes/social.min.js"></script>
+<script src="path/to/node_modules/@clr/icons/shapes/travel.min.js"></script>
 `;
 
 const ICONS_IMPORTS_TS_CORE = `
-import '@clr/icons';
+import { ClarityIcons } '@clr/icons';
+
+// To initialize without adding any icons
+ClarityIcons.init();
+
 `;
 
 const ICONS_IMPORTS_TS_SOME = `
-import '@clr/icons';
-import '@clr/icons/shapes/essential-shapes';
-import '@clr/icons/shapes/technology-shapes';
+import { ClarityIcons, EssentialShapes, TechnologyShapes } '@clr/icons';
+
+// To initialize with an icon set
+ClarityIcons.init(EssentialShapes);
+
+// To add more shapes
+ClarityIcons.add(TechnologyShapes);
 `;
 
 const ICONS_IMPORTS_TS_ALL = `
-import '@clr/icons';
-import '@clr/icons/shapes/all-shapes';
+import { ClarityIcons, AllShapes } '@clr/icons';
+
+// To initialize with all icons
+ClarityIcons.init(AllShapes);
 `;
 
 const ICONS_NODE_IMPORTS = `
@@ -51,26 +61,23 @@ const ICONS_NODE_IMPORTS = `
 "scripts": [
     ...
     "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-    "../node_modules/@clr/icons/clr-icons.min.js"
+    "../node_modules/@clr/icons/clr-icons-all.min.js"
     ...
 ]`;
 
 const ICONS_TS_IMPORTS = `
     import '@clr/icons';
-import '@clr/icons/shapes/essential-shapes';
+import '@clr/icons/shapes/essential';
 `;
 
 const ICONS_OPTIMIZATION = `
-import { ClarityIcons } from "@clr/icons";
-import { ClrShapePin } from "@clr/icons/shapes/essential-shapes";
-import { ClrShapeStar } from "@clr/icons/shapes/social-shapes";
-import { ClrShapeCar } from "@clr/icons/shapes/travel-shapes";
+import { ClarityIcons, ClrShapePin, ClrShapeStar, ClrShapeCar } from "@clr/icons";
 
-ClarityIcons.add({
-  pin: ClrShapePin,
-  star: ClrShapeStar,
-  car: ClrShapeCar
-});`
+// Assuming ClarityIcons.init() has been called before
+ClarityIcons.add(ClrShapePin);
+ClarityIcons.add(ClrShapeStar);
+ClarityIcons.add(ClrShapeCar);
+`
 
 @Component({
     selector: 'icons-get-started',

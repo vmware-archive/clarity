@@ -6,20 +6,15 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree-node [(clrSelected)]="selected">
+<clr-tree-node [clrExpanded]="true">
     Permissions
-    <ng-template [clrIfExpanded]="true">
-        <clr-tree-node
-                *ngFor="let permission of permissions"
-                [(clrSelected)]="permission.selected">
-            {{permission.type}}
-            <ng-template [(clrIfExpanded)]="permission.expanded">
-                <clr-tree-node *ngFor="let right of permission.rights" [(clrSelected)]="right.enable">
-                    {{right.name}}
-                </clr-tree-node>
-            </ng-template>
+    <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
+        {{permission.type}}
+        <clr-tree-node *ngFor="let right of permission.rights" 
+                       [clrSelected]="right.enable" (clrSelectedChange)="right.enable = !!$event">
+            {{right.name}}
         </clr-tree-node>
-    </ng-template>
+    </clr-tree-node>
 </clr-tree-node>
 `;
 
@@ -29,12 +24,9 @@ const EXAMPLE_TS = `
     templateUrl: "..."
 })
 export class Permissions {
-    selected: boolean = false;
-
     permissions: any = [
         {
             type: "Authenticated Users",
-            expanded: true,
             rights: [
                 {
                     name: "Read",
@@ -56,7 +48,6 @@ export class Permissions {
         },
         {
             type: "Owners",
-            expanded: true,
             rights: [
                 {
                     name: "Read",
@@ -81,21 +72,18 @@ export class Permissions {
 `;
 
 @Component({
-    selector: "clr-tree-view-basic-structure-demo",
+    selector: "clr-boolean-selection-tree-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./tree-view-basic.html"
+    templateUrl: "./boolean-selection-tree.html"
 })
-export class TreeViewBasicStructureDemo {
+export class BooleanSelectionTreeDemo {
     example_html = EXAMPLE_HTML;
     example_ts = EXAMPLE_TS;
 
-    selected: boolean = false;
     permissions: any = [
         {
             type: "Authenticated Users",
-            selected: false,
-            expanded: true,
             rights: [
                 {
                     name: "Read",
@@ -117,8 +105,6 @@ export class TreeViewBasicStructureDemo {
         },
         {
             type: "Owners",
-            selected: false,
-            expanded: true,
             rights: [
                 {
                     name: "Read",
@@ -140,8 +126,6 @@ export class TreeViewBasicStructureDemo {
         },
         {
             type: "Public",
-            selected: false,
-            expanded: true,
             rights: [
                 {
                     name: "Read",

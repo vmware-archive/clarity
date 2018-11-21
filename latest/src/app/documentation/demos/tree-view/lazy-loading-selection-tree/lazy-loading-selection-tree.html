@@ -3,12 +3,15 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<clr-tree-node [(clrExpanded)]="expanded">
-    {{expanded ? "I am expanded" : "I am collapsed"}}
-    <clr-tree-node>
-        Child Tree Node
+<clr-tree [clrLazy]="true">
+    <clr-tree-node *ngFor="let group of groceries$ | async" [(clrSelected)]="group.selected">
+        {{group.name}}
+        <ng-template clrIfExpanded>
+            <my-grocery-items [group]="group"></my-grocery-items>
+        </ng-template>
     </clr-tree-node>
-</clr-tree-node>
+</clr-tree>
+
 
 <clr-code-snippet [clrCode]="example_html" clrLanguage="html"></clr-code-snippet>
 <clr-code-snippet [clrCode]="example_ts" clrLanguage="typescript"></clr-code-snippet>

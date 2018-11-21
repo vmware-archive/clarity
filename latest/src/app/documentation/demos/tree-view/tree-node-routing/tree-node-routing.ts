@@ -6,30 +6,23 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree-node>
+<clr-tree-node [clrExpanded]="true">
     The Beatles
-    <ng-template [clrIfExpanded]="true">
-        <clr-tree-node>
-            <a
-                [routerLink]="['./album1']"
-                class="clr-treenode-link"
-                routerLinkActive="active">Abbey Road</a>
-        </clr-tree-node>
-
-        <clr-tree-node>
-            <a
-                [routerLink]="['./album2']"
-                class="clr-treenode-link"
-                routerLinkActive="active">Revolver</a>
-        </clr-tree-node>
-
-        <clr-tree-node>
-            <a
-                [routerLink]="['./album3']"
-                class="clr-treenode-link"
-                routerLinkActive="active">Rubber Soul</a>
-        </clr-tree-node>
-    </ng-template>
+    <clr-tree-node>
+        <a [routerLink]="['./album1']"
+           class="clr-treenode-link"
+           routerLinkActive="active">Abbey Road</a>
+    </clr-tree-node>
+    <clr-tree-node>
+        <a [routerLink]="['./album2']"
+           class="clr-treenode-link"
+           routerLinkActive="active">Revolver</a>
+    </clr-tree-node>
+    <clr-tree-node>
+        <a [routerLink]="['./album3']"
+           class="clr-treenode-link"
+           routerLinkActive="active">Rubber Soul</a>
+    </clr-tree-node>
 </clr-tree-node>
 <router-outlet></router-outlet>
 `;

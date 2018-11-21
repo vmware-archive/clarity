@@ -12,7 +12,13 @@ import {ClarityDocComponent} from "../clarity-doc";
     host: {
         "[class.content-area]": "true",
         "[class.dox-content-panel]": "true"
-    }
+    },
+    styles: [`
+        .demo-list {
+            column-count: 2;
+            list-style-position: inside;
+        }
+    `]
 })
 export class TreeViewDemo extends ClarityDocComponent {
     constructor() {

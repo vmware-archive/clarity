@@ -5,20 +5,18 @@
   -->
 <div class="row">
     <div class="col-xs-12" [class.col-md-5]="showHalf">
-        <clr-tree-node *ngFor="let directory of rootDirectory">
+        <clr-tree-node *ngFor="let directory of rootDirectory" [(clrExpanded)]="directory.expanded">
             <clr-icon [attr.shape]="directory.icon"></clr-icon>
             {{directory.name}}
-            <ng-template [(clrIfExpanded)]="directory.expanded">
-                <clr-tree-node *ngFor="let file of directory.files">
-                    <button
-                            (click)="openFile(directory.name, file.name)"
-                            class="clr-treenode-link"
-                            [class.active]="file.active">
-                        <clr-icon [attr.shape]="file.icon"></clr-icon>
-                        {{file.name}}
-                    </button>
-                </clr-tree-node>
-            </ng-template>
+            <clr-tree-node *ngFor="let file of directory.files">
+                <button
+                        (click)="openFile(directory.name, file.name)"
+                        class="clr-treenode-link"
+                        [class.active]="file.active">
+                    <clr-icon [attr.shape]="file.icon"></clr-icon>
+                    {{file.name}}
+                </button>
+            </clr-tree-node>
         </clr-tree-node>
     </div>
 </div>

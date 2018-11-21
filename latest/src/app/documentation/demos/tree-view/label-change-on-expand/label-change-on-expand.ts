@@ -6,13 +6,11 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE_HTML = `
-<clr-tree-node>
+<clr-tree-node [(clrExpanded)]="expanded">
     {{expanded ? "I am expanded" : "I am collapsed"}}
-    <ng-template [(clrIfExpanded)]="expanded">
-        <clr-tree-node>
-            Child Tree Node
-        </clr-tree-node>
-    </ng-template>
+    <clr-tree-node>
+        Child Tree Node
+    </clr-tree-node>
 </clr-tree-node>
 `;
 

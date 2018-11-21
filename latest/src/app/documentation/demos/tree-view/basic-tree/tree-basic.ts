@@ -6,11 +6,11 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: "clr-tree-node-basic-structure-demo",
+    selector: "clr-tree-basic-demo",
     // Note the .css extension here, not .scss. That's the best we can have at the moment.
     styleUrls: ["../tree-view.demo.scss"],
-    templateUrl: "./tree-node-basic.html"
+    templateUrl: "./tree-basic.html"
 })
-export class TreeNodeBasicStructureDemo {
+export class TreeBasicDemo {
 
 }

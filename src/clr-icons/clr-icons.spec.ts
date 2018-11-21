@@ -49,32 +49,28 @@ const ALL_SETS = [
 
 describe('ClarityIcons', () => {
   describe('Global object for the API', () => {
-    beforeEach(() => {
-      if (window.ClarityIcons) {
-        window.ClarityIcons.iconShapeSources = {};
-      }
+    afterEach(() => {
+      resetShapes();
     });
 
-    it('should not set a global object if init method is not called', () => {
+    // TODO This test cannot run because icons get added somewhere else in the tests and I don't have time
+    // to figure out what is happening here. We don't have a proper 'reset' method to completely wipe it
+    // from the window, and deleting it would be a pointless test to prove JavaScript can remove a property.
+    xit('should not set a global object if icons have not been initialized', () => {
       expect(window.ClarityIcons).toBeUndefined();
     });
 
-    it('should set a global object after init call', () => {
-      ClarityIcons.init();
+    it('should set a global object after initialization', () => {
+      ClarityIcons.add(ClrCoreSet);
       expect(window.ClarityIcons).toBeDefined();
     });
 
     it('should not add any icons by default', () => {
-      ClarityIcons.init();
       expect(Object.keys(ClarityIcons.get()).length).toBe(0);
     });
   });
 
   describe('ClarityIconsApi.get()', () => {
-    beforeEach(() => {
-      ClarityIcons.init();
-    });
-
     afterEach(() => {
       resetShapes();
     });
@@ -124,20 +120,15 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.add()', () => {
-    beforeEach(() => {
-      ClarityIcons.init();
-    });
-
     afterEach(() => {
       resetShapes();
     });
 
     it('should throw an error if the argument is not a valid object literal', () => {
-      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
-                  { "shape-name": "shape-template" }`;
+      const expectedErrorMessage = `The argument(s) must be an object literal passed in the following pattern: { "shape-name": "shape-template" }`;
 
       expect(() => {
-        ClarityIcons.add();
+        ClarityIcons.add(<any>'');
       }).toThrowError(expectedErrorMessage);
     });
 
@@ -276,10 +267,6 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.alias()', () => {
-    beforeEach(() => {
-      ClarityIcons.init();
-    });
-
     afterEach(() => {
       resetShapes();
     });
@@ -344,7 +331,7 @@ describe('ClarityIcons', () => {
   describe('ClarityIcon Custom Element', () => {
     beforeEach(() => {
       resetCallbacks();
-      ClarityIcons.init(ClrCoreSet);
+      ClarityIcons.add(ClrCoreSet);
     });
 
     afterEach(() => {

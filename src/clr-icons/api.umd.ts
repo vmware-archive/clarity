@@ -8,4 +8,4 @@ import { ApiModule } from './api';
 
 /* tslint:disable:variable-name */
 const ClarityIcons = ApiModule.instance;
-ClarityIcons.init();
+ClarityIcons.add();

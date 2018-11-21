@@ -3,10 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrAllSet } from './all';
 
-export * from './all';
+import { ClrAllSet } from './shapes/all';
+import { ApiModule } from './api';
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ClrAllSet);
-}
+ApiModule.instance.add(ClrAllSet);

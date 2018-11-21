@@ -54,8 +54,8 @@ export namespace ApiModule {
       }
     }
 
-    init(icons?: IconShapeSources) {
-      // check if there is a global object called "ClarityIcons"
+    private init() {
+      // If we haven't already initialized ClarityIcons, do so now
       if (typeof window !== 'undefined') {
         if (window && !window.hasOwnProperty('ClarityIcons')) {
           // Setting a global object called "ClarityIcons" to expose the ClarityIconsApi.
@@ -66,22 +66,23 @@ export namespace ApiModule {
           customElements.define('clr-icon', ElementModule.ClarityIconElement);
         }
       }
-      if (icons) {
-        instance.add(icons);
-      }
     }
 
-    add(icons?: IconShapeSources): void {
-      if (typeof icons !== 'object') {
-        throw new Error(`The argument must be an object literal passed in the following pattern: 
-                  { "shape-name": "shape-template" }`);
-      }
+    add(...icons: IconShapeSources[]): void {
+      this.init();
 
-      for (const shapeName in icons) {
-        if (icons.hasOwnProperty(shapeName)) {
-          this.setIconTemplate(shapeName, icons[shapeName]);
+      icons.forEach(iconInstance => {
+        if (typeof iconInstance !== 'object') {
+          throw new Error(
+            `The argument(s) must be an object literal passed in the following pattern: { "shape-name": "shape-template" }`
+          );
         }
-      }
+        for (const shapeName in iconInstance) {
+          if (iconInstance.hasOwnProperty(shapeName)) {
+            this.setIconTemplate(shapeName, iconInstance[shapeName]);
+          }
+        }
+      });
     }
 
     has(shapeName: string): boolean {

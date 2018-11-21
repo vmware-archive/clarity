@@ -24,7 +24,7 @@ if (environment.dark) {
 }
 
 // @TODO Remove this and import only shapes as needed for gemini testing
-ClarityIcons.init(ClrAllSet);
+ClarityIcons.add(ClrAllSet);
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

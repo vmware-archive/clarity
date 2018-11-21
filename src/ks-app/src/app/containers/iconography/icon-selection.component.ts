@@ -21,15 +21,17 @@ import {
 @Component({ templateUrl: './icon-selection.component.html', styleUrls: ['./icon-selection.component.scss'] })
 export class KSIconSelection {
   constructor() {
-    ClarityIcons.add(ClrCoreSet);
-    ClarityIcons.add(ClrCommerceSet);
-    ClarityIcons.add(ClrEssentialSet);
-    ClarityIcons.add(ClrMediaSet);
-    ClarityIcons.add(ClrSocialSet);
-    ClarityIcons.add(ClrTechnologySet);
-    ClarityIcons.add(ClrTravelSet);
-    ClarityIcons.add(ClrChartSet);
-    ClarityIcons.add(ClrTextEditSet);
+    ClarityIcons.add(
+      ClrCoreSet,
+      ClrCommerceSet,
+      ClrEssentialSet,
+      ClrMediaSet,
+      ClrSocialSet,
+      ClrTechnologySet,
+      ClrTravelSet,
+      ClrChartSet,
+      ClrTextEditSet
+    );
   }
   previewClasses: any = { 'is-solid': false, 'has-alert': false, 'has-badge': false };
 

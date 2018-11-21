@@ -61,12 +61,6 @@ export class AppComponent {
   ];
 
   constructor() {
-    ClarityIcons.init();
-    ClarityIcons.add(ClrShapeStore);
-    ClarityIcons.add(ClrShapePin);
-    ClarityIcons.add(ClrShapeHeadphones);
-    ClarityIcons.add(ClrShapeStar);
-    ClarityIcons.add(ClrShapeCar);
-    ClarityIcons.add(ClrShapeHelix);
+    ClarityIcons.add(ClrShapeStore, ClrShapePin, ClrShapeHeadphones, ClrShapeStar, ClrShapeCar, ClrShapeHelix);
   }
 }

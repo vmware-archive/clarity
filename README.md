@@ -65,10 +65,8 @@ If you already have an Angular application, you can follow the installation step
     ```typescript
     import { ClarityIcons, ClrEssentialSet, ClrShapeEllipsisHorizontal } from '@clr/icons';
 
-    // Adding just a single shape
-    ClarityIcons.add(ClrShapeEllipsisHorizontal);
-    9;
-    ClarityIcons.add(ClrEssentialSet);
+    // Adding single shape and a whole set
+    ClarityIcons.add(ClrShapeEllipsisHorizontal, ClrEssentialSet);
     ```
 
 ### Installing Clarity UI
@@ -127,7 +125,7 @@ If you already have an Angular application, you can follow the installation step
     export class AppModule {    }
     ```
 
-    If your application uses [systemjs](https://github.com/systemjs/systemjs), add the clarity-angular configuration
+    If your application uses [systemjs](https://github.com/systemjs/systemjs), add the configuration
     as in the example below.
 
     ```
@@ -136,6 +134,7 @@ If you already have an Angular application, you can follow the installation step
     	map: {
     	   ...
     	   '@clr/angular': 'node_modules/@clr/angular/bundles/clr-angular.umd.js',
+    	   '@clr/icons': 'node_modules/@clr/icons/bundles/clr-icons.umd.js',
     	},
     	...
     });
@@ -158,4 +157,4 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 
-* Include a link to the reproduction scenario you created by forking one of the Clarity [StackBlitz Templates](https://stackblitz.com/@clr/team).
+* Include a link to the reproduction scenario you created by forking one of the Clarity [StackBlitz Templates](https://stackblitz.com/@clr-team).

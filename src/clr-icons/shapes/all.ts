@@ -4,25 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ChartShapes } from './chart';
-import { CommerceShapes } from './commerce';
-import { CoreShapes } from './core';
-import { EssentialShapes } from './essential';
-import { MediaShapes } from './media';
-import { SocialShapes } from './social';
-import { TechnologyShapes } from './technology';
-import { TextEditShapes } from './text-edit';
-import { TravelShapes } from './travel';
+import { ClrChartSet } from './chart';
+import { ClrCommerceSet } from './commerce';
+import { ClrCoreSet } from './core';
+import { ClrEssentialSet } from './essential';
+import { ClrMediaSet } from './media';
+import { ClrSocialSet } from './social';
+import { ClrTechnologySet } from './technology';
+import { ClrTextEditSet } from './text-edit';
+import { ClrTravelSet } from './travel';
 
 /* tslint:disable:variable-name */
-export const AllShapes = {
-  ...CoreShapes,
-  ...CommerceShapes,
-  ...EssentialShapes,
-  ...MediaShapes,
-  ...SocialShapes,
-  ...TechnologyShapes,
-  ...TravelShapes,
-  ...ChartShapes,
-  ...TextEditShapes,
+export const ClrAllSet = {
+  ...ClrChartSet,
+  ...ClrCommerceSet,
+  ...ClrCoreSet,
+  ...ClrEssentialSet,
+  ...ClrMediaSet,
+  ...ClrSocialSet,
+  ...ClrTechnologySet,
+  ...ClrTextEditSet,
+  ...ClrTravelSet,
 };

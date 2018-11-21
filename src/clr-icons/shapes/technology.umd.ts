@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TechnologyShapes } from './technology';
+import { ClrTechnologySet } from './technology';
 
 export * from './technology';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TechnologyShapes);
+  window.ClarityIcons.add(ClrTechnologySet);
 }

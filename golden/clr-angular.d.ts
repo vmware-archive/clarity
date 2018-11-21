@@ -684,6 +684,9 @@ export declare class ClrHeader implements OnDestroy {
 }
 
 export declare class ClrIconCustomTag {
+    shape: string;
+    constructor(el: ElementRef, renderer: Renderer2);
+    ngOnInit(): void;
 }
 
 export declare class ClrIconModule {

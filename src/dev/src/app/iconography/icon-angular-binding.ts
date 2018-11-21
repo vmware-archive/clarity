@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrCommerceSet } from './commerce';
+import { Component } from '@angular/core';
 
-export * from './commerce';
-
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ClrCommerceSet);
-}
+@Component({
+  styleUrls: ['./iconography.demo.scss'],
+  templateUrl: './icon-angular-binding.demo.html',
+})
+export class IconsAngularBindingDemo {}

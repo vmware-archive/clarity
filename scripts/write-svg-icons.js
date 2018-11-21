@@ -178,17 +178,20 @@ ${closingTag}`;
 };
 
 let convertToExportedName = setName => {
-  // will convert core into CoreShapes
+  // will convert core into ClrCoreSet
   return (
+    'Clr' +
     setName
       .split('-')
       .map(splitPart => splitPart.charAt(0).toUpperCase() + splitPart.slice(1))
-      .join('') + 'Shapes'
+      .join('') +
+    'Set'
   );
 };
 
 //use shapes from this directory
 const SOURCE_PATH = path.join(__dirname, '../dist/clr-icons/shapes');
+const OUTPUT_PATH = path.join(__dirname, '../dist', 'clr-icons-sets');
 
 let makeSVGset = (setName, callback) => {
   let importSet = require(SOURCE_PATH + '/' + setName + '.js');
@@ -197,7 +200,7 @@ let makeSVGset = (setName, callback) => {
 
   let setShapes = importSet[exportedName];
 
-  let setShapesContainerDir = path.join(SOURCE_PATH, setName);
+  let setShapesContainerDir = path.join(OUTPUT_PATH, setName);
 
   createContainerDir(setShapesContainerDir)
     .then(containerDirPath => {

@@ -15,16 +15,16 @@ import {
   testAllShapesRequiredAttributes,
 } from './helpers.spec';
 import { ClarityIcons } from './index';
-import { AllShapes } from './shapes/all';
-import { ChartShapes, ClrShapeBarChart } from './shapes/chart';
-import { ClrShapeECheck, CommerceShapes } from './shapes/commerce';
-import { CoreShapes, ClrShapeCheck } from './shapes/core';
-import { ClrShapePencil, EssentialShapes } from './shapes/essential';
-import { ClrShapePlay, MediaShapes } from './shapes/media';
-import { ClrShapeStar, SocialShapes } from './shapes/social';
-import { ClrShapeCPU, TechnologyShapes } from './shapes/technology';
-import { ClrShapeBold, TextEditShapes } from './shapes/text-edit';
-import { ClrShapeCar, TravelShapes } from './shapes/travel';
+import { ClrAllSet } from './shapes/all';
+import { ClrChartSet, ClrShapeBarChart } from './shapes/chart';
+import { ClrShapeECheck, ClrCommerceSet } from './shapes/commerce';
+import { ClrCoreSet, ClrShapeCheck } from './shapes/core';
+import { ClrShapePencil, ClrEssentialSet } from './shapes/essential';
+import { ClrShapePlay, ClrMediaSet } from './shapes/media';
+import { ClrShapeStar, ClrSocialSet } from './shapes/social';
+import { ClrShapeCPU, ClrTechnologySet } from './shapes/technology';
+import { ClrShapeBold, ClrTextEditSet } from './shapes/text-edit';
+import { ClrShapeCar, ClrTravelSet } from './shapes/travel';
 import { ShapeTemplateObserverModule } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
@@ -35,20 +35,26 @@ import { clrIconSVG } from './utils/svg-tag-generator';
 // This is a base test object for all sets
 /* tslint:disable:no-string-literal */
 const ALL_SETS = [
-  { name: 'Core shapes', shapes: CoreShapes, randomShape: ClrShapeCheck },
-  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: ClrShapeECheck },
-  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: ClrShapePencil },
-  { name: 'Social shapes', shapes: SocialShapes, randomShape: ClrShapeStar },
-  { name: 'Media shapes', shapes: MediaShapes, randomShape: ClrShapePlay },
-  { name: 'Travel shapes', shapes: TravelShapes, randomShape: ClrShapeCar },
-  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: ClrShapeCPU },
-  { name: 'Chart shapes', shapes: ChartShapes, randomShape: ClrShapeBarChart },
-  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: ClrShapeBold },
+  { name: 'Core shapes', shapes: ClrCoreSet, randomShape: ClrShapeCheck },
+  { name: 'Commerce shapes', shapes: ClrCommerceSet, randomShape: ClrShapeECheck },
+  { name: 'Essential shapes', shapes: ClrEssentialSet, randomShape: ClrShapePencil },
+  { name: 'Social shapes', shapes: ClrSocialSet, randomShape: ClrShapeStar },
+  { name: 'Media shapes', shapes: ClrMediaSet, randomShape: ClrShapePlay },
+  { name: 'Travel shapes', shapes: ClrTravelSet, randomShape: ClrShapeCar },
+  { name: 'Technology shapes', shapes: ClrTechnologySet, randomShape: ClrShapeCPU },
+  { name: 'Chart shapes', shapes: ClrChartSet, randomShape: ClrShapeBarChart },
+  { name: 'Text Edit shapes', shapes: ClrTextEditSet, randomShape: ClrShapeBold },
 ];
 /* tslint:enable:no-string-literal */
 
 describe('ClarityIcons', () => {
   describe('Global object for the API', () => {
+    beforeEach(() => {
+      if (window.ClarityIcons) {
+        window.ClarityIcons.iconShapeSources = {};
+      }
+    });
+
     it('should not set a global object if init method is not called', () => {
       expect(window.ClarityIcons).toBeUndefined();
     });
@@ -82,7 +88,7 @@ describe('ClarityIcons', () => {
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
-    it('should return all shapes from CoreShapes and few selected shapes from other sets if shapes are individually added in.', () => {
+    it('should return all shapes from ClrCoreSet and few selected shapes from other sets if shapes are individually added in.', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.randomShape);
       }
@@ -99,14 +105,14 @@ describe('ClarityIcons', () => {
       });
     }
 
-    it('should return all icons from all sets if the AllShapes set is added in', () => {
-      ClarityIcons.add(AllShapes);
+    it('should return all icons from all sets if the ClrAllSet set is added in', () => {
+      ClarityIcons.add(ClrAllSet);
       const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
-    it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
-      ClarityIcons.add(EssentialShapes);
+    it("should return ClrEssentialSet['pencil'] when 'pencil' is passed in after including ClrEssentialSet", () => {
+      ClarityIcons.add(ClrEssentialSet);
 
       const expected = clrIconSVG(
         `<path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
@@ -296,7 +302,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow aliases if the shape name exists', () => {
-      ClarityIcons.add(CoreShapes);
+      ClarityIcons.add(ClrCoreSet);
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
       ClarityIcons.alias({ check: ['check-mark', 'success-mark'] });
@@ -307,7 +313,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow to create an alias from another alias name', () => {
-      ClarityIcons.add(CoreShapes);
+      ClarityIcons.add(ClrCoreSet);
       ClarityIcons.alias({ check: ['success-mark'] });
 
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
@@ -320,7 +326,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow to create a new shape by overriding existing alias name', () => {
-      ClarityIcons.add(CoreShapes);
+      ClarityIcons.add(ClrCoreSet);
       ClarityIcons.alias({ check: ['success-mark'] });
 
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
@@ -338,7 +344,7 @@ describe('ClarityIcons', () => {
   describe('ClarityIcon Custom Element', () => {
     beforeEach(() => {
       resetCallbacks();
-      ClarityIcons.init(CoreShapes);
+      ClarityIcons.init(ClrCoreSet);
     });
 
     afterEach(() => {
@@ -680,8 +686,8 @@ describe('ClarityIcons', () => {
       }
     };
 
-    it('CoreShapes should not include fill attribute', () => {
-      testIconStyles(CoreShapes, ['vm-bug']);
+    it('ClrCoreSet should not include fill attribute', () => {
+      testIconStyles(ClrCoreSet, ['vm-bug']);
     });
 
     for (const shapeSet of ALL_SETS) {

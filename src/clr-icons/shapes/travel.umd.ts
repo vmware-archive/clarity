@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TravelShapes } from './travel';
+import { ClrTravelSet } from './travel';
 
 export * from './travel';
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TravelShapes);
+  window.ClarityIcons.add(ClrTravelSet);
 }

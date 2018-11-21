@@ -158,4 +158,4 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 
-* Include a link to the reproduction scenario you created by forking one of the Clarity [StackBlitz Templates](https://stackblitz.com/@clr/team).
+* Include a link to the reproduction scenario you created by forking one of the Clarity [StackBlitz Templates](https://stackblitz.com/@clr-team).

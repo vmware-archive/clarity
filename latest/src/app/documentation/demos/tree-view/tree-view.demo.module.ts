@@ -7,20 +7,23 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ClarityModule} from "@clr/angular";
 
-import {TreeNodeBasicStructureDemo} from "./basic-tree-node/tree-node-basic";
-import {TreeViewBasicStructureDemo} from "./basic-tree-view/tree-view-basic";
+import {TreeBasicDemo} from "./basic-tree/tree-basic";
+import {BooleanSelectionTreeDemo} from "./boolean-selection-tree/boolean-selection-tree";
 import {TreeViewDynamicDemo} from "./tree-view-dynamic/tree-view-dynamic";
-import {TreeNodeLazyLoadingDemo} from "./lazy-loading/lazy-loading";
+import {LazyLoadingTreeDemo} from "./lazy-loading-tree/lazy-loading-tree";
 import {TreeNodeLabelChangeOnExpandDemo} from "./label-change-on-expand/label-change-on-expand";
-import {TreeNodeSelectionDemo} from "./tree-node-selection/tree-node-selection";
+import {SelectionTreeDemo} from "./selection-tree/selection-tree";
 import {TreeNodeRoutingDemo} from "./tree-node-routing/tree-node-routing";
-import {TreeViewPrepopulateDemo} from "./tree-view-prepopulate/tree-view-prepopulate";
-import {TreeNodeBasicStructureDMDemo} from "./basic-tree-node-DM/tree-node-basic-DM";
+import {SmallSelectionTreeDemo} from "./small-selection-tree/small-selection-tree";
+import {TreeBasicDMDemo} from "./basic-tree-DM/tree-basic-DM";
+import {RecursiveTreeDemo} from "./recursive-tree/recursive-tree";
+import {LazyLoadingSelectionTreeDemo} from "./lazy-loading-selection-tree/lazy-loading-selection-tree";
+import {GroceryItemsComponent} from "./lazy-loading-selection-tree/grocery-items";
+import {LazyLoadingRecursiveTreeDemo} from "./lazy-loading-recursive-tree/lazy-loading-recursive-tree";
 
 import {TreeViewDemo} from "./tree-view.demo";
 import {RouterModule} from "@angular/router";
 import {DocWrapperModule} from "../_doc-wrapper/doc-wrapper.module";
-import {LazyLoadedLocationsComponent} from "./lazy-loading/lazy-loaded-locations";
 import {UtilsModule} from "../../../utils/utils.module";
 
 @NgModule({
@@ -32,17 +35,20 @@ import {UtilsModule} from "../../../utils/utils.module";
         UtilsModule
     ],
     declarations: [
-        TreeNodeBasicStructureDemo,
-        TreeNodeBasicStructureDMDemo,
-        TreeViewBasicStructureDemo,
+        TreeBasicDemo,
+        TreeBasicDMDemo,
+        BooleanSelectionTreeDemo,
         TreeViewDynamicDemo,
-        LazyLoadedLocationsComponent,
-        TreeNodeLazyLoadingDemo,
+        LazyLoadingTreeDemo,
         TreeNodeLabelChangeOnExpandDemo,
-        TreeNodeSelectionDemo,
+        SelectionTreeDemo,
         TreeNodeRoutingDemo,
-        TreeViewPrepopulateDemo,
-        TreeViewDemo
+        SmallSelectionTreeDemo,
+        TreeViewDemo,
+        RecursiveTreeDemo,
+        LazyLoadingSelectionTreeDemo,
+        GroceryItemsComponent,
+        LazyLoadingRecursiveTreeDemo
     ],
     exports: [
         TreeViewDemo

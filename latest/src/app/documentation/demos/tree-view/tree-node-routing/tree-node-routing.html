@@ -5,33 +5,31 @@
   -->
 <div class="row">
     <div class="col-xs-12 col-md-4">
-        <clr-tree-node>
+        <clr-tree-node [clrExpanded]="true">
             The Beatles
-            <ng-template [clrIfExpanded]="true">
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(0)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 0">Abbey Road
-                    </button>
-                </clr-tree-node>
+            <clr-tree-node>
+                <button
+                        (click)="showPane(0)"
+                        class="clr-treenode-link"
+                        [class.active]="pane === 0">Abbey Road
+                </button>
+            </clr-tree-node>
 
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(1)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 1">Revolver
-                    </button>
-                </clr-tree-node>
+            <clr-tree-node>
+                <button
+                        (click)="showPane(1)"
+                        class="clr-treenode-link"
+                        [class.active]="pane === 1">Revolver
+                </button>
+            </clr-tree-node>
 
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(2)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 2">Rubber Soul
-                    </button>
-                </clr-tree-node>
-            </ng-template>
+            <clr-tree-node>
+                <button
+                        (click)="showPane(2)"
+                        class="clr-treenode-link"
+                        [class.active]="pane === 2">Rubber Soul
+                </button>
+            </clr-tree-node>
         </clr-tree-node>
     </div>
     <div class="col-xs-12 col-md-8 example-outlet">

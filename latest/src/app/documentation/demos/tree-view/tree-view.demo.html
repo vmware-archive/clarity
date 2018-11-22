@@ -26,7 +26,7 @@
                     <div class="clrweb-DoxMedia has-h4-margin">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img is-left-aligned">
-                                <clr-tree-node-basic-structure-demo></clr-tree-node-basic-structure-demo>
+                                <clr-tree-basic-demo></clr-tree-basic-demo>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="clrweb-DoxMedia has-h4-margin">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img is-left-aligned">
-                                <clr-tree-view-prepopulate-demo></clr-tree-view-prepopulate-demo>
+                                <clr-small-selection-tree-demo></clr-small-selection-tree-demo>
                             </div>
                         </div>
                     </div>
@@ -274,28 +274,55 @@
         <div id="code-examples">
             <h3 id="examples">Code &amp; Examples</h3>
 
-            <h3>Basic Tree Node</h3>
+            <div class="row" style="margin-top: 24px">
+                <div class="col-xs-12">
+                    <ul class="list demo-list">
+                        <li><a routerLink="." fragment="basic-tree">Basic tree</a></li>
+                        <li><a routerLink="." fragment="expanded-nodes">Keeping track of expanded nodes</a></li>
+                        <li><a routerLink="." fragment="routing-tree">Routing using a tree</a></li>
+                        <li><a routerLink="." fragment="dynamically-generated">Generating A tree dynamically</a></li>
+                        <li><a routerLink="." fragment="checkbox-tree">Checkbox tree</a></li>
+                        <li><a routerLink="." fragment="boolean-selection">Binding selection to a boolean</a></li>
+                        <li><a routerLink="." fragment="lazy-loading">Lazy loading children</a></li>
+                        <li><a routerLink="." fragment="lazy-loading-selection">Lazy loading and selection</a></li>
+                        <li><a routerLink="." fragment="lazy-loading-recursive">Lazy-loading recursive trees</a></li>
+                        <li><a routerLink="." fragment="api-tables">Summary of options</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 id="basic-tree">Basic Tree</h3>
 
             <p>
                 A basic tree can be created by simply nesting
-                <code class="clr-code">clr-tree-node</code> tags along with the
-                <code class="clr-code">clrIfExpanded</code> directive.
+                <code class="clr-code">clr-tree-node</code> components at will.
+                To pre-expand a node, you can use the <code class="clr-code">[clrExpanded]</code> input.
             </p>
 
             <section class="clr-demo">
-                <clr-tree-node-basic-structure-dm-demo></clr-tree-node-basic-structure-dm-demo>
+                <clr-tree-basic-dm-demo></clr-tree-basic-dm-demo>
             </section>
 
             <p>
-                The <code class="clr-code">clrIfExpanded</code> directive supports two-way binding
-                which can be used to expand/collapse a tree node.
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="expanded-nodes">Keeping track of expanded nodes</h3>
+
+            <p>
+                If you need to keep track of whether certain nodes are expanded or collapsed,
+                each tree node offers a <code class="clr-code">[(clrExpanded)]</code> boolean two-way binding.
             </p>
 
             <section class="clr-demo">
                 <clr-tree-node-label-change-expand-demo></clr-tree-node-label-change-expand-demo>
             </section>
 
-            <h3>Routing using a Tree</h3>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="routing-tree">Routing using a Tree</h3>
 
             <p>
                 Use the <code class="clr-code">.clr-treenode-link</code> class to style content inside of a Tree Node
@@ -307,7 +334,11 @@
                 <clr-tree-node-routing-demo></clr-tree-node-routing-demo>
             </section>
 
-            <h3>Generating A Tree Dynamically</h3>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="dynamically-generated">Generating A Tree Dynamically</h3>
 
             <section class="clr-demo">
                 <clr-tree-view-dynamic-demo
@@ -315,44 +346,179 @@
                         [clrDemoShowHalf]="true"></clr-tree-view-dynamic-demo>
             </section>
 
-            <h3>Lazy Loading A Tree Node</h3>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="checkbox-tree">Checkbox Tree</h3>
 
             <p>
-                A node can be lazily loaded by leveraging the <code class="clr-code">clrLoading</code>
-                directive.
+                Selection on the whole tree is enabled as soon as one of the nodes uses the
+                <code class="clr-code">[(clrSelected)]</code> two-way binding. This two-way binding can receive
+                either booleans or <code class="clr-code">ClrSelectedState</code> enum values, which can be
+                <code class="clr-code">UNSELECTED</code>, <code class="clr-code">SELECTED</code> or
+                <code class="clr-code">INDETERMINATE</code>. It will however always output
+                <code class="clr-code">ClrSelectedState</code> enum values because the node could become indeterminate,
+                so true two-way binding should be used on a <code class="clr-code">ClrSelectedState</code> property.
+            </p>
+            <p>
+                As with any two-way binding, the input can be used to pre-select nodes or dynamically select them
+                due to external actions.
             </p>
 
             <section class="clr-demo">
-                <clr-tree-node-lazy-loading-demo></clr-tree-node-lazy-loading-demo>
+                <clr-selection-tree-demo></clr-selection-tree-demo>
             </section>
 
-            <h3>Checkbox Tree</h3>
+
+            <h3 id="boolean-selection">Binding selection to a boolean</h3>
 
             <p>
-                Selection can be enable on all tree nodes by using the
-                <code class="clr-code">[(clrSelected)]</code> input on the root node.
+                If you know a specific node can never become indeterminate, you probably want to use a boolean
+                property on your node. As mentioned previously, <code class="clr-code">[(clrSelected)]</code>
+                always outputs <code class="clr-code">ClrSelectedState</code> enum values, making two-way binding
+                with a boolean problematic. The most straightforward solution is to use
+                <a href="https://angular.io/guide/template-syntax#two-way-binding---">
+                    the de-sugarized syntax of the two-way binding
+                </a>, transforming the output to a boolean directly.
             </p>
 
             <section class="clr-demo">
-                <clr-tree-view-basic-structure-demo></clr-tree-view-basic-structure-demo>
+                <clr-boolean-selection-tree-demo></clr-boolean-selection-tree-demo>
             </section>
 
-            <h3>Toggling The Checked State Of A Tree Node</h3>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="recursive-tree">Recursive tree</h3>
+
+            <p>
+                If the data you are displaying is recursive or has an unknown depth, you can use our
+                <code class="clr-code">*clrRecursiveFor</code> structural directive to recursively iterate over
+                your data. It has the same syntax as <code class="clr-code">*ngFor</code>, and accepts an additional
+                <code class="clr-code">getChildren</code> parameter that receives a node and should return its
+                children. Please note that it needs to be used inside of a
+                <code class="clr-code">&lt;clr-tree&gt;</code> to function properly.
+            </p>
 
             <section class="clr-demo">
-                <clr-tree-node-selection-demo></clr-tree-node-selection-demo>
+                <clr-recursive-tree-demo></clr-recursive-tree-demo>
             </section>
 
-            <h3>Prepopulating a Checkbox Tree</h3>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="lazy-loading">Lazy-loading children</h3>
+
+            <p>
+                If your tree is too large to be fully build on initialization or getting the children of a node is
+                an expensive operation like an HTTP request, you might want to lazy-load tree nodes, only loading
+                the ones that are currently displayed. To lazy-load children for a simple tree component,
+                you need to combine several features as follows:
+            </p>
+            <ul>
+                <li>
+                    use our <code class="clr-code">&lt;clr-tree&gt;</code> root component, giving it a
+                    <code class="clr-code">[clrLazy]="true"</code> input,
+                </li>
+                <li>
+                    leverage our <code class="clr-code">*clrIfExpanded</code> structural directive to only
+                    instantiate children when they are displayed,
+                </li>
+                <li>
+                    listen to the <code class="clr-code">(clrIfExpandedChange)</code> output
+                    to fetch the children's data,
+                </li>
+                <li>
+                    add a <code class="clr-code">[clrLoading]</code> boolean input to the node if fetching children
+                    is asynchronous, to display a spinner while waiting for the data to be loaded.
+                </li>
+            </ul>
 
             <section class="clr-demo">
-                <clr-tree-view-prepopulate-demo [clrDemoShowCode]="true">
-                </clr-tree-view-prepopulate-demo>
+                <clr-lazy-loading-tree-demo></clr-lazy-loading-tree-demo>
             </section>
 
-            <h2>Summary of Options</h2>
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
 
-            <h4>Tree Node (clr-tree-node)</h4>
+            <h3 id="lazy-loading-selection">Lazy-loading and selection</h3>
+
+            <p>
+                When lazy-loading nodes in a tree, Clarity only has partial information on the overall data
+                and cannot link parent and children state as it does in the previous cases. For instance,
+                in a lazy-loaded file system tree, our tree component does not know the contents of a folder until
+                it is expanded. This means that if the user selects the folder without expanding it first we cannot
+                output the selection change for the files, only for the folder itself. It is up to the application
+                or up to the server to preserve consistency, ensuring files in the folder are selected if the folder
+                itself is.
+            </p>
+
+            <section class="clr-demo">
+                <clr-lazy-loading-selection-tree-demo></clr-lazy-loading-selection-tree-demo>
+            </section>
+
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h3 id="lazy-loading-recursive">Lazy-loading recursive trees</h3>
+
+            <p>
+                Lazy-loading data for recursive trees is actually the simplest case: as soon as you set
+                <code class="clr-code">[clrLazy]="true"</code> on the parent
+                <code class="clr-code">&lt;clr-tree&gt;</code>, the <code class="clr-code">getChildren</code>
+                function will only be lazily called when a node becomes expanded,
+                and supports both <code class="clr-code">Promise</code> and <code class="clr-code">Observable</code>
+                return types if you need to fetch children asynchronously.
+            </p>
+            <p>
+                By default, recursive trees will pre-load on level ahead to know if the currently displayed nodes are
+                expandable of not. If you do not want this behavior and have a way of knowing if a node is
+                expandable without fetching its children, you can prevent the extra loading by using the
+                <code class="clr-code">[clrExpandable]</code> boolean input on nodes based on your own condition.
+            </p>
+
+            <section class="clr-demo">
+                <clr-lazy-loading-recursive-tree-demo></clr-lazy-loading-recursive-tree-demo>
+            </section>
+
+            <p>
+                <a routerLink="." fragment="examples">Back to navigation</a>
+            </p>
+
+            <h2 id="api-tables">Summary of Options</h2>
+
+            <h4>Tree <code class="clr-code">&lt;clr-tree&gt;</code></h4>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrLazy)]</b>
+                        <div class="hidden-sm-up">Type: boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
+                    </td>
+                    <td class="hidden-xs-down">boolean</td>
+                    <td class="hidden-xs-down">false</td>
+                    <td class="left">
+                        Indicates to the tree that children nodes should be lazy-loaded
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4>Tree Node <code class="clr-code">&lt;clr-tree-node&gt;</code></h4>
             <table class="table">
                 <thead>
                 <tr>
@@ -366,31 +532,85 @@
                 <tr>
                     <td class="left">
                         <b>[(clrSelected)]</b>
-                        <div class="hidden-sm-up">Type: Boolean</div>
-                        <div class="hidden-sm-up">Default: false</div>
+                        <div class="hidden-sm-up">Type: ClrSelectedState</div>
+                        <div class="hidden-sm-up">Default: UNSELECTED</div>
                     </td>
-                    <td class="hidden-xs-down">true, false</td>
-                    <td class="hidden-xs-down">false</td>
+                    <td class="hidden-xs-down">ClrSelectedState</td>
+                    <td class="hidden-xs-down">UNSELECTED</td>
                     <td class="left">
-                        Two-way binding on the state of a Tree Node: Checked or Unchecked
+                        Two-way binding on the state of a Tree Node: UNSELECTED, SELECTED or INDETERMINATE.
                     </td>
                 </tr>
                 <tr>
                     <td class="left">
-                        <b>[clrIndeterminate]</b>
-                        <div class="hidden-sm-up">Type: any</div>
-                        <div class="hidden-sm-up">Default: NA</div>
+                        <b>[(clrExpanded)]</b>
+                        <div class="hidden-sm-up">Type: boolean</div>
+                        <div class="hidden-sm-up">Default: false</div>
                     </td>
-                    <td class="hidden-xs-down">any</td>
-                    <td class="hidden-xs-down">NA</td>
+                    <td class="hidden-xs-down">boolean</td>
+                    <td class="hidden-xs-down">false</td>
                     <td class="left">
-                        Sets the indeterminate state of a tree node.
+                        Two-way binding on the expanded/collapsed state of the node.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrExpandable]</b>
+                        <div class="hidden-sm-up">Type: boolean | undefined</div>
+                        <div class="hidden-sm-up">Default: undefined</div>
+                    </td>
+                    <td class="hidden-xs-down">boolean | undefined</td>
+                    <td class="hidden-xs-down">undefined</td>
+                    <td class="left">
+                        Forces a node to be expandable or node, regardless of its children.
                     </td>
                 </tr>
                 </tbody>
             </table>
 
-            <h4>Directives used along with clr-tree-node</h4>
+            <h4>Recursive iterator <code class="clr-code">*clrRecursiveFor</code></h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrRecursiveForOf]</b>
+                        <div class="hidden-sm-up">Type: T | T[]</div>
+                        <div class="hidden-sm-up">Default: none</div>
+                    </td>
+                    <td class="hidden-xs-down">T | T[]</td>
+                    <td class="hidden-xs-down">none</td>
+                    <td class="left">
+                        Root node(s) of the recursive tree, to begin the iteration.
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left">
+                        <b>[clrRecursiveForGetChildren]</b>
+                        <!-- TODO: Use ClrGetChildrenFunction<T> as soon as we have it -->
+                        <div class="hidden-sm-up">Type: T => T[] | Promise&lt;T[]&gt; | Observable&lt;T[]&gt;</div>
+                        <div class="hidden-sm-up">Default: none</div>
+                    </td>
+                    <!-- TODO: Use ClrGetChildrenFunction<T> as soon as we have it -->
+                    <td class="hidden-xs-down">T => T[] | Promise&lt;T[]&gt; | Observable&lt;T[]&gt;</td>
+                    <td class="hidden-xs-down">none</td>
+                    <td class="left">
+                        The function to call in order to iterate over the children of a node. Can return an
+                        asynchronous result in the form of a Promise or an Observable.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><code class="clr-code">*clrIfExpanded</code> directive</h4>
 
             <table class="table">
                 <thead>
@@ -405,25 +625,40 @@
                 <tr>
                     <td class="left">
                         <b>[(clrIfExpanded)]</b>
-                        <div class="hidden-sm-up">Type: Boolean</div>
+                        <div class="hidden-sm-up">Type: boolean</div>
                         <div class="hidden-sm-up">Default: false</div>
                     </td>
-                    <td class="hidden-xs-down">true, false</td>
+                    <td class="hidden-xs-down">boolean</td>
                     <td class="hidden-xs-down">false</td>
                     <td class="left">
-                        Two-way binding on the state of the Tree-Node: expanded / collapsed
+                        Two-way binding on the expanded/collapsed state of the node.
                     </td>
                 </tr>
+                </tbody>
+            </table>
+
+            <h4>Loading directive <code class="clr-code">[clrLoading]</code></h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr>
                     <td class="left">
                         <b>[clrLoading]</b>
                         <div class="hidden-sm-up">Type: boolean</div>
                         <div class="hidden-sm-up">Default: false</div>
                     </td>
-                    <td class="hidden-xs-down">any</td>
-                    <td class="hidden-xs-down">NA</td>
+                    <td class="hidden-xs-down">boolean</td>
+                    <td class="hidden-xs-down">false</td>
                     <td class="left">
-                        Activates a spinner to indicate that the node children are loading.
+                        Activates a spinner to indicate that children nodes are loading.
                     </td>
                 </tr>
                 </tbody>

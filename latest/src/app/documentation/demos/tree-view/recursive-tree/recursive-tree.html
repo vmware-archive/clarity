@@ -3,13 +3,14 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<clr-tree-node>
-    <clr-icon shape="building"></clr-icon>
-    Office Locations
-    <ng-template clrIfExpanded>
-        <lazy-loaded-locations></lazy-loaded-locations>
-    </ng-template>
-</clr-tree-node>
+
+<clr-tree>
+    <clr-tree-node *clrRecursiveFor="let file of root; getChildren: getChildren"
+                   [(clrSelected)]="file.selected"
+                   [clrExpanded]="true">
+        {{file.name}}
+    </clr-tree-node>
+</clr-tree>
 
 <clr-code-snippet [clrCode]="example_html" clrLanguage="html"></clr-code-snippet>
 <clr-code-snippet [clrCode]="example_ts" clrLanguage="typescript"></clr-code-snippet>

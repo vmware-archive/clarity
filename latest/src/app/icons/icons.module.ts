@@ -13,7 +13,6 @@ import { FragmentLinkDirective } from './utils/fragment-link.directive';
 import { FragmentContentComponent } from './utils/fragment-content.component';
 import { IconDetailCardComponent } from './icons-sets/icon-detail-card/icon-detail-card.component';
 
-
 @NgModule({
     imports: [
         IconsRouting,

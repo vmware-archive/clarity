@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <clr-tree>
+            <clr-tree-node *ngFor="let group of groceries"
+                           [(clrSelected)]="group.selected"
+                           [clrExpanded]="true">
+                {{group.name}}
+                <clr-tree-node *ngFor="let item of group.items" [(clrSelected)]="item.selected">
+                    {{item.name}}
+                </clr-tree-node>
+            </clr-tree-node>
+        </clr-tree>
+
+        <button class="btn btn-sm" type="button" (click)="selectVegetables()">Select all vegetables</button>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8">
+        <pre class="example-display-json">{{displayGroceries}}</pre>
+    </div>
+</div>
+
+
+<clr-code-snippet [clrCode]="example_html" clrLanguage="html"></clr-code-snippet>
+<clr-code-snippet [clrCode]="example_ts" clrLanguage="typescript"></clr-code-snippet>

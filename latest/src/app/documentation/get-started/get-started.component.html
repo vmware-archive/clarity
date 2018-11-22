@@ -80,22 +80,7 @@
     <h3 id="seedProjectAngular">Angular Option 2: Manually adding Clarity to an Angular project</h3>
     <p>You can build an Angular app, then install Clarity onto your project.</p>
     <h4 id="step-1-build-an-angular-2-app">Step 1: Build an Angular App</h4>
-    <p></p>
-    <ol class="list">
-        <li>Look at the Angular documentation, starting with <a
-                href="https://angular.io/docs/ts/latest/quickstart.html">the 5 Min Quickstart</a>.
-        </li>
-        <li>
-            Save and modify the example structure and build, or use one of the Angular seeds:
-            <ul class="list">
-                <li><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></li>
-                <li><a href="https://github.com/mgechev/angular2-seed">https://github.com/mgechev/angular2-seed</a></li>
-                <li><a href="https://github.com/angular/angular2-seed">https://github.com/angular/angular2-seed</a></li>
-                <li><a href="https://github.com/AngularClass/angular2-webpack-starter">https://github.com/AngularClass/angular2-webpack-starter</a>
-                </li>
-            </ul>
-        </li>
-    </ol>
+    <p>Create a new Angular application, if you need a quickstart use <a href="https://angular.io/docs/ts/latest/quickstart.html">the 5 Min Quickstart</a>.
     <h4 id="installing">Step 2: Install Clarity packages</h4>
     <p>Clarity is published as three separate packages on NPM, as well as one dependency.</p>
     <p>
@@ -142,8 +127,14 @@
     <p>In order to keep up with Clarity, you can use ng update to automatically update Clarity to the latest version in your Angular project. This will also run any migration schematics, which can update code for you or warn you about changes in Clarity that affect your application. It usually helps to update Angular first, then Clarity.</p>
     <clr-code-snippet
             clrLanguage="bash"
-            [clrCode]="'ng update @angular/core
+            [clrCode]="'ng update @angular/core @angular/cli
 ng update @clr/angular'"
+            [clrDisablePrism]="true"></clr-code-snippet>
+    <p>If you want to update to a prerelease version, you can do so by running:</p>
+    <clr-code-snippet
+            clrLanguage="bash"
+            [clrCode]="'ng update @angular/core@next @angular/cli@next
+ng update @clr/angular@next'"
             [clrDisablePrism]="true"></clr-code-snippet>
     <h2 id="browserSupport">Device and Browser Support</h2>
     <p class="bump-down"><img src="assets/images/get-started/device_support.png" alt="Device and Browser Support"
@@ -169,15 +160,7 @@ ng update @clr/angular'"
     </p>
     <p>When submitting issues please provide a minimal app that demonstrates the issue by forking one of the Clarity
     Stackblitz projects. Since it depends on your issue starting with the correct Clarity version and
-    theme will help us deliver support:
-    <ul class="list-unstyled">
-        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v013" target="_blank">Clarity v0.13: Light Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v013" target="_blank">Clarity v0.13: Dark Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v012" target="_blank">Clarity v0.12: Light Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v012" target="_blank">Clarity v0.12: Dark Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-light-theme-v11" target="_blank">Clarity v0.11: Light Theme</a></li>
-        <li><a href="https://stackblitz.com/edit/clarity-dark-theme-v11" target="_blank">Clarity v0.11: Dark Theme</a></li>
-    </ul>
+    theme will help us deliver support. You can find all of the <a href="https://stackblitz.com/@clr-team" target="_blank">StackBlitz templates here</a>.
 
     <h2 id="stackoverflow">StackOverflow</h2>
     <p>

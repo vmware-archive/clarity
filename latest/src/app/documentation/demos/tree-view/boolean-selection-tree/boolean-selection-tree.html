@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright (c) 2016 - 2017 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <clr-tree-node [clrExpanded]="true">
+            Permissions
+            <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
+                {{permission.type}}
+                <clr-tree-node *ngFor="let right of permission.rights"
+                               [clrSelected]="right.enable" (clrSelectedChange)="right.enable = !!$event">
+                    {{right.name}}
+                </clr-tree-node>
+            </clr-tree-node>
+        </clr-tree-node>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8">
+        <pre class="example-display-json">{{displayPermissions}}</pre>
+    </div>
+</div>
+
+<clr-code-snippet [clrCode]="example_html" clrLanguage="html"></clr-code-snippet>
+<clr-code-snippet [clrCode]="example_ts" clrLanguage="typescript"></clr-code-snippet>

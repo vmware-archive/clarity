@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled">
+    <li>
+        <p>This release does not include schematics to help migration steps for 1.0 yet, so you'll have to manually
+            apply the fixes listed here. These are the last breaking changes before we reach 1.0.</p>
+        <p>To get this update, run <code class="clr-code">npm i @clr/angular@next @clr/ui@next @clr/icons@next</code>.
+            The
+            <code class="clr-code">@next</code> tag is necessary only while Clarity 1.0 is in prerelease, afterwards
+            it won't be necessary. You can use this
+            with any Angular CLI project, even if you've already started to work on it. You may need to run <code class="clr-code">ng update @angular/core @angular/cli</code>
+            first to update to Angular 7.</p>
+        <h6 breaking-change>Refactored Tree View component (<a href="https://github.com/vmware/clarity/pull/2859"
+                target="_blank">#2859</a>)</h6>
+        <p>The Tree View component had some internal design issues that prevented fixing some important bugs. This refactoring
+            is important to address those problems and the old tree view has been replaced. If you use Tree View in your application,
+            review the new documentation and update your uses of it.
+        </p>
+    </li>
+</ul>
+
+<h2>Bugfixes</h2>
+<ul class="list-unstyled">
+    <li>
+        <h6 bug-fix>Fixed Vertical Nav hover and active colors (<a href="https://github.com/vmware/clarity/pull/2862" target="_blank">#2862</a>)</h6>
+        <p>The color of the active and hovered item in vertical nav are now different.</p>
+
+        <h6 bug-fix>Page size changes now trigger state changes (<a href="https://github.com/vmware/clarity/pull/2841" target="_blank">#2841</a>)</h6>
+        <p>Fixed a bug that didn't correctly set the correct grid class overrides when specified.</p>
+    </li>
+</ul>

@@ -6,12 +6,12 @@
 import { Component } from '@angular/core';
 import { ClrIconCustomTag, ClrLoading, ClrMainContainer } from '@clr/angular';
 import { ClarityIcons } from '@clr/icons';
-import { ClrShapeStore } from '@clr/icons/shapes/commerce';
-import { ClrShapePin } from '@clr/icons/shapes/essential';
-import { ClrShapeHeadphones } from '@clr/icons/shapes/media';
-import { ClrShapeStar } from '@clr/icons/shapes/social';
-import { ClrShapeHelix } from '@clr/icons/shapes/technology';
-import { ClrShapeCar } from '@clr/icons/shapes/travel';
+import { ClrShapeStore } from '@clr/icons/shapes/commerce-shapes';
+import { ClrShapePin } from '@clr/icons/shapes/essential-shapes';
+import { ClrShapeHeadphones } from '@clr/icons/shapes/media-shapes';
+import { ClrShapeStar } from '@clr/icons/shapes/social-shapes';
+import { ClrShapeHelix } from '@clr/icons/shapes/technology-shapes';
+import { ClrShapeCar } from '@clr/icons/shapes/travel-shapes';
 
 @Component({ selector: 'KS-root', templateUrl: './app.component.html', styleUrls: ['./app.component.scss'] })
 export class AppComponent {
@@ -61,6 +61,13 @@ export class AppComponent {
   ];
 
   constructor() {
-    ClarityIcons.add(ClrShapeStore, ClrShapePin, ClrShapeHeadphones, ClrShapeStar, ClrShapeCar, ClrShapeHelix);
+    ClarityIcons.add({
+      store: ClrShapeStore,
+      pin: ClrShapePin,
+      headphones: ClrShapeHeadphones,
+      star: ClrShapeStar,
+      car: ClrShapeCar,
+      helix: ClrShapeHelix,
+    });
   }
 }

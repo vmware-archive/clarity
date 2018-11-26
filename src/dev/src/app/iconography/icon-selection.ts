@@ -4,17 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import {
-  ClrChartSet,
-  ClrCommerceSet,
-  ClrCoreSet,
-  ClrEssentialSet,
-  ClrMediaSet,
-  ClrSocialSet,
-  ClrTechnologySet,
-  ClrTextEditSet,
-  ClrTravelSet,
-} from '@clr/icons';
+
+import { ChartShapes } from '@clr/icons/shapes/chart-shapes';
+import { CommerceShapes } from '@clr/icons/shapes/commerce-shapes';
+import { CoreShapes } from '@clr/icons/shapes/core-shapes';
+import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
+import { MediaShapes } from '@clr/icons/shapes/media-shapes';
+import { SocialShapes } from '@clr/icons/shapes/social-shapes';
+import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
+import { TextEditShapes } from '@clr/icons/shapes/text-edit-shapes';
+import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
 
 @Component({
   selector: 'clr-icon-selection-demo',
@@ -23,7 +22,7 @@ import {
 })
 export class IconSelectionDemo {
   commonPath = '@clr/icons/shapes/svg-source/';
-  allSetsLink = this.commonPath + 'all.zip';
+  allSetsLink = this.commonPath + 'all-shapes.zip';
 
   previewClasses: any = { 'is-solid': false, 'has-alert': false, 'has-badge': false };
 
@@ -47,14 +46,14 @@ export class IconSelectionDemo {
   }
 
   allShapeSets = [
-    { name: 'Core Shapes', shapes: Object.keys(ClrCoreSet) },
-    { name: 'Commerce Shapes', shapes: Object.keys(ClrCommerceSet) },
-    { name: 'Essential Shapes', shapes: Object.keys(ClrEssentialSet) },
-    { name: 'Media Shapes', shapes: Object.keys(ClrMediaSet) },
-    { name: 'Social Shapes', shapes: Object.keys(ClrSocialSet) },
-    { name: 'Travel Shapes', shapes: Object.keys(ClrTravelSet) },
-    { name: 'Technology Shapes', shapes: Object.keys(ClrTechnologySet) },
-    { name: 'Chart Shapes', shapes: Object.keys(ClrChartSet) },
-    { name: 'Text Edit Shapes', shapes: Object.keys(ClrTextEditSet) },
+    { name: 'Core Shapes', shapes: Object.keys(CoreShapes) },
+    { name: 'Commerce Shapes', shapes: Object.keys(CommerceShapes) },
+    { name: 'Essential Shapes', shapes: Object.keys(EssentialShapes) },
+    { name: 'Media Shapes', shapes: Object.keys(MediaShapes) },
+    { name: 'Social Shapes', shapes: Object.keys(SocialShapes) },
+    { name: 'Travel Shapes', shapes: Object.keys(TravelShapes) },
+    { name: 'Technology Shapes', shapes: Object.keys(TechnologyShapes) },
+    { name: 'Chart Shapes', shapes: Object.keys(ChartShapes) },
+    { name: 'Text Edit Shapes', shapes: Object.keys(TextEditShapes) },
   ];
 }

@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrCommerceSet } from './commerce';
 
-export * from './commerce';
+import { ClarityIcons } from './index';
+import { AllShapes } from './shapes/all-shapes';
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(ClrCommerceSet);
-}
+ClarityIcons.add(AllShapes);
+
+export { ClarityIcons };

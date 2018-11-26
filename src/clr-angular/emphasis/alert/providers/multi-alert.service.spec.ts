@@ -63,5 +63,20 @@ export default function() {
       expect(multiAlertService.count).toBe(0);
       expect(multiAlertService.current).toBe(0);
     });
+
+    it('stays within bounds if alerts change dynamically', function() {
+      multiAlertService.current = 1;
+      queryList.reset([alert.componentInstance]);
+      queryList.notifyOnChanges();
+      expect(multiAlertService.count).toBe(1);
+      expect(multiAlertService.current).toBe(0);
+    });
+
+    it('keeps the current index to 0 if all alerts disappear', function() {
+      queryList.reset([]);
+      queryList.notifyOnChanges();
+      expect(multiAlertService.count).toBe(0);
+      expect(multiAlertService.current).toBe(0);
+    });
   });
 }

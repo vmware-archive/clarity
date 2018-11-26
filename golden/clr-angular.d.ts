@@ -70,7 +70,7 @@ export declare class ClrAlertItem {
 export declare class ClrAlertModule {
 }
 
-export declare class ClrAlerts implements AfterContentInit {
+export declare class ClrAlerts implements AfterContentInit, OnDestroy {
     _inputCurrentIndex: number;
     readonly alerts: ClrAlert[];
     allAlerts: QueryList<ClrAlert>;
@@ -82,6 +82,7 @@ export declare class ClrAlerts implements AfterContentInit {
     multiAlertService: MultiAlertService;
     constructor(multiAlertService: MultiAlertService);
     ngAfterContentInit(): void;
+    ngOnDestroy(): void;
 }
 
 export declare class ClrAlertsPager implements OnInit, OnDestroy {

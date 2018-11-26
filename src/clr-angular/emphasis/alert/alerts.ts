@@ -3,7 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  QueryList,
+} from '@angular/core';
 import { ClrAlert } from './alert';
 import { MultiAlertService } from './providers/multi-alert.service';
 
@@ -20,7 +29,7 @@ import { MultiAlertService } from './providers/multi-alert.service';
   },
   styles: [':host { display: block }'],
 })
-export class ClrAlerts implements AfterContentInit {
+export class ClrAlerts implements AfterContentInit, OnDestroy {
   @ContentChildren(ClrAlert) allAlerts: QueryList<ClrAlert>;
 
   /**
@@ -80,5 +89,9 @@ export class ClrAlerts implements AfterContentInit {
       this.currentAlertIndexChange.next(index);
       this.currentAlertChange.next(this.multiAlertService.currentAlert);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.multiAlertService.destroy();
   }
 }

@@ -15,17 +15,17 @@ import {
   testAllShapesRequiredAttributes,
 } from './helpers.spec';
 import { ClarityIcons } from './index';
-import { ClrAllSet } from './shapes/all';
-import { ClrChartSet, ClrShapeBarChart } from './shapes/chart';
-import { ClrShapeECheck, ClrCommerceSet } from './shapes/commerce';
-import { ClrCoreSet, ClrShapeCheck } from './shapes/core';
-import { ClrShapePencil, ClrEssentialSet } from './shapes/essential';
-import { ClrShapePlay, ClrMediaSet } from './shapes/media';
-import { ClrShapeStar, ClrSocialSet } from './shapes/social';
-import { ClrShapeCPU, ClrTechnologySet } from './shapes/technology';
-import { ClrShapeBold, ClrTextEditSet } from './shapes/text-edit';
-import { ClrShapeCar, ClrTravelSet } from './shapes/travel';
-import { ShapeTemplateObserverModule } from './utils/shape-template-observer';
+import { AllShapes } from './shapes/all-shapes';
+import { ChartShapes } from './shapes/chart-shapes';
+import { CommerceShapes } from './shapes/commerce-shapes';
+import { CoreShapes } from './shapes/core-shapes';
+import { EssentialShapes } from './shapes/essential-shapes';
+import { MediaShapes } from './shapes/media-shapes';
+import { SocialShapes } from './shapes/social-shapes';
+import { TechnologyShapes } from './shapes/technology-shapes';
+import { TextEditShapes } from './shapes/text-edit-shapes';
+import { TravelShapes } from './shapes/travel-shapes';
+import { changeHandlerCallbacks } from './utils/shape-template-observer';
 import { clrIconSVG } from './utils/svg-tag-generator';
 
 // All tests failing here in IE stem from IE rearranging attributes and normalizing the elements, so simple
@@ -35,80 +35,65 @@ import { clrIconSVG } from './utils/svg-tag-generator';
 // This is a base test object for all sets
 /* tslint:disable:no-string-literal */
 const ALL_SETS = [
-  { name: 'Core shapes', shapes: ClrCoreSet, randomShape: ClrShapeCheck },
-  { name: 'Commerce shapes', shapes: ClrCommerceSet, randomShape: ClrShapeECheck },
-  { name: 'Essential shapes', shapes: ClrEssentialSet, randomShape: ClrShapePencil },
-  { name: 'Social shapes', shapes: ClrSocialSet, randomShape: ClrShapeStar },
-  { name: 'Media shapes', shapes: ClrMediaSet, randomShape: ClrShapePlay },
-  { name: 'Travel shapes', shapes: ClrTravelSet, randomShape: ClrShapeCar },
-  { name: 'Technology shapes', shapes: ClrTechnologySet, randomShape: ClrShapeCPU },
-  { name: 'Chart shapes', shapes: ClrChartSet, randomShape: ClrShapeBarChart },
-  { name: 'Text Edit shapes', shapes: ClrTextEditSet, randomShape: ClrShapeBold },
+  { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: { 'e-check': CommerceShapes['e-check'] } },
+  { name: 'Essential shapes', shapes: EssentialShapes, randomShape: { pencil: EssentialShapes['pencil'] } },
+  { name: 'Social shapes', shapes: SocialShapes, randomShape: { star: SocialShapes['star'] } },
+  { name: 'Media shapes', shapes: MediaShapes, randomShape: { play: MediaShapes['play'] } },
+  { name: 'Travel shapes', shapes: TravelShapes, randomShape: { car: TravelShapes['car'] } },
+  { name: 'Technology shapes', shapes: TechnologyShapes, randomShape: { cpu: TechnologyShapes['cpu'] } },
+  { name: 'Chart shapes', shapes: ChartShapes, randomShape: { 'bar-chart': ChartShapes['bar-chart'] } },
+  { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: { bold: TextEditShapes['bold'] } },
 ];
 /* tslint:enable:no-string-literal */
 
 describe('ClarityIcons', () => {
+  afterEach(() => {
+    resetShapes();
+  });
+
   describe('Global object for the API', () => {
-    afterEach(() => {
-      resetShapes();
-    });
-
-    // TODO This test cannot run because icons get added somewhere else in the tests and I don't have time
-    // to figure out what is happening here. We don't have a proper 'reset' method to completely wipe it
-    // from the window, and deleting it would be a pointless test to prove JavaScript can remove a property.
-    xit('should not set a global object if icons have not been initialized', () => {
-      expect(window.ClarityIcons).toBeUndefined();
-    });
-
-    it('should set a global object after initialization', () => {
-      ClarityIcons.add(ClrCoreSet);
-      expect(window.ClarityIcons).toBeDefined();
-    });
-
-    it('should not add any icons by default', () => {
-      expect(Object.keys(ClarityIcons.get()).length).toBe(0);
+    it('should set a global object', () => {
+      expect(window.ClarityIcons).not.toBeUndefined();
     });
   });
 
   describe('ClarityIconsApi.get()', () => {
-    afterEach(() => {
-      resetShapes();
-    });
-
     it('should return all icons when no argument is passed in', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.shapes);
       }
 
-      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
-    it('should return all shapes from ClrCoreSet and few selected shapes from other sets if shapes are individually added in.', () => {
+    it('should return all shapes from CoreShapes and few selected shapes from other sets if shapes are individually added in.', () => {
       for (const shapeSet of ALL_SETS) {
         ClarityIcons.add(shapeSet.randomShape);
       }
-      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.randomShape));
+      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.randomShape));
 
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
     for (const shapeSet of ALL_SETS) {
-      it(`should return shapes from ${shapeSet.name} if ${shapeSet.name} set is individually added in.`, () => {
+      it(`should return shapes from ${shapeSet.name} and Core shapes if ${
+        shapeSet.name
+      } set is individually added in.`, () => {
         ClarityIcons.add(shapeSet.shapes);
-        const currentAllShapes = Object.assign({}, shapeSet.shapes);
+        const currentAllShapes = Object.assign({}, CoreShapes, shapeSet.shapes);
         testAllShapes(ClarityIcons, currentAllShapes);
       });
     }
 
-    it('should return all icons from all sets if the ClrAllSet set is added in', () => {
-      ClarityIcons.add(ClrAllSet);
-      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
+    it('should return all icons from all sets if the AllShapes set is added in', () => {
+      ClarityIcons.add(AllShapes);
+      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
       testAllShapes(ClarityIcons, currentAllShapes);
     });
 
-    it("should return ClrEssentialSet['pencil'] when 'pencil' is passed in after including ClrEssentialSet", () => {
-      ClarityIcons.add(ClrEssentialSet);
+    it("should return EssentialShapes['pencil'] when 'pencil' is passed in after including EssentialShapes", () => {
+      ClarityIcons.add(EssentialShapes);
 
       const expected = clrIconSVG(
         `<path class="clr-i-outline clr-i-outline-path-1" d="M33.87,8.32,28,2.42a2.07,2.07,0,0,0-2.92,0L4.27,23.2l-1.9,8.2a2.06,2.06,0,0,0,2,2.5,2.14,2.14,0,0,0,.43,0L13.09,32,33.87,11.24A2.07,2.07,0,0,0,33.87,8.32ZM12.09,30.2,4.32,31.83l1.77-7.62L21.66,8.7l6,6ZM29,13.25l-6-6,3.48-3.46,5.9,6Z"/>
@@ -120,12 +105,9 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.add()', () => {
-    afterEach(() => {
-      resetShapes();
-    });
-
     it('should throw an error if the argument is not a valid object literal', () => {
-      const expectedErrorMessage = `The argument(s) must be an object literal passed in the following pattern: { "shape-name": "shape-template" }`;
+      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
+                { "shape-name": "shape-template" }`;
 
       expect(() => {
         ClarityIcons.add(<any>'');
@@ -267,13 +249,9 @@ describe('ClarityIcons', () => {
   });
 
   describe('ClarityIconsApi.alias()', () => {
-    afterEach(() => {
-      resetShapes();
-    });
-
     it('should throw an error if the argument is not a valid object literal', () => {
       const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
-                  { "shape-name": ["alias-name", ...] }`;
+                { "shape-name": ["alias-name", ...] }`;
 
       expect(() => {
         ClarityIcons.alias();
@@ -289,7 +267,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow aliases if the shape name exists', () => {
-      ClarityIcons.add(ClrCoreSet);
+      ClarityIcons.add(CoreShapes);
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
 
       ClarityIcons.alias({ check: ['check-mark', 'success-mark'] });
@@ -300,7 +278,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow to create an alias from another alias name', () => {
-      ClarityIcons.add(ClrCoreSet);
+      ClarityIcons.add(CoreShapes);
       ClarityIcons.alias({ check: ['success-mark'] });
 
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
@@ -313,7 +291,7 @@ describe('ClarityIcons', () => {
     });
 
     it('should allow to create a new shape by overriding existing alias name', () => {
-      ClarityIcons.add(ClrCoreSet);
+      ClarityIcons.add(CoreShapes);
       ClarityIcons.alias({ check: ['success-mark'] });
 
       const currentShapeNumber = Object.keys(ClarityIcons.get()).length;
@@ -331,11 +309,6 @@ describe('ClarityIcons', () => {
   describe('ClarityIcon Custom Element', () => {
     beforeEach(() => {
       resetCallbacks();
-      ClarityIcons.add(ClrCoreSet);
-    });
-
-    afterEach(() => {
-      resetShapes();
     });
 
     it('should insert the SVG markup', () => {
@@ -418,6 +391,7 @@ describe('ClarityIcons', () => {
 
       const clrIconUniqId = clarityIcon.clrIconUniqId;
       const testShape = giveAngleShapeTitle(clrIconUniqId, customTitle);
+
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
     });
 
@@ -590,8 +564,8 @@ describe('ClarityIcons', () => {
       document.body.appendChild(userIcon2);
       document.body.appendChild(homeIcon);
 
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(2);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName].length).toBe(1);
+      expect(changeHandlerCallbacks[userAttrName].length).toBe(2);
+      expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
     });
 
     it('should transfer change handler callback to updated shape name key', () => {
@@ -601,12 +575,12 @@ describe('ClarityIcons', () => {
       const testIcon = document.createElement('clr-icon') as ClarityIconElement;
       testIcon.setAttribute('shape', userAttrName);
       document.body.appendChild(testIcon);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(1);
+      expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
       testIcon.setAttribute('shape', homeAttrName);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName]).toBeUndefined();
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName].length).toBe(1);
+      expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
+      expect(changeHandlerCallbacks[homeAttrName].length).toBe(1);
       document.body.removeChild(testIcon);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName]).toBeUndefined();
+      expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
     });
 
     it('should remove template change handler callbacks when icon removed from the DOM', () => {
@@ -625,10 +599,10 @@ describe('ClarityIcons', () => {
       document.body.removeChild(userIcon1);
       document.body.removeChild(homeIcon);
 
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName].length).toBe(1);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[homeAttrName]).toBeUndefined();
+      expect(changeHandlerCallbacks[userAttrName].length).toBe(1);
+      expect(changeHandlerCallbacks[homeAttrName]).toBeUndefined();
       document.body.removeChild(userIcon2);
-      expect(ShapeTemplateObserverModule.changeHandlerCallbacks[userAttrName]).toBeUndefined();
+      expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
     });
 
     itIgnore(['ie'], 'should persist title when shape template gets updated', () => {
@@ -673,8 +647,8 @@ describe('ClarityIcons', () => {
       }
     };
 
-    it('ClrCoreSet should not include fill attribute', () => {
-      testIconStyles(ClrCoreSet, ['vm-bug']);
+    it('CoreShapes should not include fill attribute', () => {
+      testIconStyles(CoreShapes, ['vm-bug']);
     });
 
     for (const shapeSet of ALL_SETS) {
@@ -684,7 +658,7 @@ describe('ClarityIcons', () => {
     }
 
     it('No two shapes should have the same name unless their templates are identical', () => {
-      const allShapeSets: any = [].concat(ALL_SETS.map(set => set.shapes));
+      const allShapeSets: any = [CoreShapes].concat(ALL_SETS.map(set => set.shapes));
       const shapesTested: any = {};
       const duplicatesFound: string[] = [];
 
@@ -707,7 +681,7 @@ describe('ClarityIcons', () => {
     });
 
     it('each icons should have the required attributes only once in their templates', () => {
-      const currentAllShapes = Object.assign({}, ...ALL_SETS.map(set => set.shapes));
+      const currentAllShapes = Object.assign({}, CoreShapes, ...ALL_SETS.map(set => set.shapes));
       testAllShapesRequiredAttributes(currentAllShapes);
     });
   });

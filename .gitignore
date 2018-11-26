@@ -4,9 +4,11 @@
 /dist
 /tmp
 /out-tsc
-.ng_build
-.ng_pkg_build
+/.ng_build
+src/clr-angular/.ng_build
+src/clr-angular/.ng_pkg_build
 /tests/tslint/dist
+src/clr-angular/package.json
 
 /reports
 
@@ -41,8 +43,6 @@ testem.log
 /typings
 /src/clr-angular/package.json
 /src/clr-angular/README.md
-/src/clr-icons/package.json
-/src/clr-icons/README.md
 sauceconnect.log
 
 # e2e

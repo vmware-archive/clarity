@@ -5,44 +5,51 @@
  */
 import { ShapeTemplateObservables } from '../interfaces/icon-interfaces';
 
-/* tslint:disable:no-namespace */
-export namespace ShapeTemplateObserverModule {
-  export const changeHandlerCallbacks: ShapeTemplateObservables = {};
+export const changeHandlerCallbacks: ShapeTemplateObservables = {};
 
-  class ShapeTemplateObserver {
-    private callbacks: ShapeTemplateObservables = changeHandlerCallbacks;
+export class ShapeTemplateObserver {
+  private static singleInstance: ShapeTemplateObserver;
 
-    public subscribeTo(shapeName: string, changeHandlerCallback: Function) {
-      if (!this.callbacks[shapeName]) {
-        this.callbacks[shapeName] = [changeHandlerCallback];
-      } else {
-        if (this.callbacks[shapeName].indexOf(changeHandlerCallback) === -1) {
-          this.callbacks[shapeName].push(changeHandlerCallback);
-        }
-      }
+  private callbacks: ShapeTemplateObservables = changeHandlerCallbacks;
 
-      // this returned function give users an ability to remove the subscription
-      return () => {
-        const removeAt = this.callbacks[shapeName].indexOf(changeHandlerCallback);
-        this.callbacks[shapeName].splice(removeAt, 1);
+  private constructor() {}
 
-        // if the array is empty, remove the property from the callbacks
-        if (this.callbacks[shapeName].length === 0) {
-          delete this.callbacks[shapeName];
-        }
-      };
+  public static get instance(): ShapeTemplateObserver {
+    if (!ShapeTemplateObserver.singleInstance) {
+      ShapeTemplateObserver.singleInstance = new ShapeTemplateObserver();
     }
 
-    public emitChanges(shapeName: string, template: string) {
-      if (this.callbacks[shapeName]) {
-        // this will emit changes to all observers
-        // by calling their callback functions on template changes
-        this.callbacks[shapeName].map((changeHandlerCallback: Function) => {
-          changeHandlerCallback(template);
-        });
-      }
-    }
+    return ShapeTemplateObserver.singleInstance;
   }
 
-  export const instance = new ShapeTemplateObserver();
+  public subscribeTo(shapeName: string, changeHandlerCallback: Function) {
+    if (!this.callbacks[shapeName]) {
+      this.callbacks[shapeName] = [changeHandlerCallback];
+    } else {
+      if (this.callbacks[shapeName].indexOf(changeHandlerCallback) === -1) {
+        this.callbacks[shapeName].push(changeHandlerCallback);
+      }
+    }
+
+    // this returned function give users an ability to remove the subscription
+    return () => {
+      const removeAt = this.callbacks[shapeName].indexOf(changeHandlerCallback);
+      this.callbacks[shapeName].splice(removeAt, 1);
+
+      // if the array is empty, remove the property from the callbacks
+      if (this.callbacks[shapeName].length === 0) {
+        delete this.callbacks[shapeName];
+      }
+    };
+  }
+
+  public emitChanges(shapeName: string, template: string) {
+    if (this.callbacks[shapeName]) {
+      // this will emit changes to all observers
+      // by calling their callback functions on template changes
+      this.callbacks[shapeName].map((changeHandlerCallback: Function) => {
+        changeHandlerCallback(template);
+      });
+    }
+  }
 }

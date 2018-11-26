@@ -6,12 +6,9 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { ClarityIcons, ClrCoreSet } from '@clr/icons';
 import { ClrIconCustomTag } from './icon';
 
 export const CLR_ICON_DIRECTIVES: Type<any>[] = [ClrIconCustomTag];
-
-ClarityIcons.add(ClrCoreSet);
 
 @NgModule({ imports: [CommonModule], declarations: [CLR_ICON_DIRECTIVES], exports: [CLR_ICON_DIRECTIVES] })
 export class ClrIconModule {}

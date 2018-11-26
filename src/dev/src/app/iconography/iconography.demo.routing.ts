@@ -14,7 +14,6 @@ import { IconSizeDemo } from './icon-size';
 import { IconVariantsDemo } from './icon-variants';
 import { IconsDemo } from './iconography.demo';
 import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
-import { IconsAngularBindingDemo } from './icon-angular-binding';
 
 const ROUTES: Routes = [
   {
@@ -29,7 +28,6 @@ const ROUTES: Routes = [
       { path: 'orientation', component: IconOrientationDemo },
       { path: 'variants', component: IconVariantsDemo },
       { path: 'view-box-test', component: IconsViewBoxTestDemo },
-      { path: 'angular-binding', component: IconsAngularBindingDemo },
     ],
   },
 ];

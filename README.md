@@ -16,7 +16,7 @@ Clarity is published as three npm packages:
 * **@clr/ui.** Contains the static styles for building HTML components.
 * **@clr/angular.** Contains the Angular components. This package depends on @clr/ui for styles.
 
-The easiest way to run a sample Angular application with Clarity is to use the [Clarity Schematic](https://vmware.github.io/clarity/documentation/v0.13/get-started#angularCLI).
+The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed).
 
 If you already have an Angular application, you can follow the installation steps below to include and use Clarity in your application.
 
@@ -34,17 +34,17 @@ If you already have an Angular application, you can follow the installation step
     npm install @webcomponents/custom-elements --save
     ```
 
-3.  Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js. Finally, include the shape sets you wish to include. (There is a short cut to include the `clr-icons-all.min.js` file which will load everything.)
+3.  Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js:
 
     ```html
     <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
 
     <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
     <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
-    <script src="path/to/node_modules/clr-icons/shapes/core.min.js"></script>
     ```
 
-    If your site is built with [angular-cli](https://angular.io/cli) you can achieve the above by adding the files to the styles array and scripts array in `angular.json`. However, Clarity automatically sets up the minimum number of icons by default so you don't need to actually include the scripts unless you wish to have more icons, like adding the travel icons here.
+    If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and
+    scripts array in `angular-cli.json`:
 
     ```js
     "styles": [
@@ -54,19 +54,10 @@ If you already have an Angular application, you can follow the installation step
     ],
     "scripts": [
         ...
-        "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-        "node_modules/@clr/icons/shapes/travel.min.js"
+        "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+        "../node_modules/@clr/icons/clr-icons.min.js"
         ...
     ]
-    ```
-
-    Also for Angular you can use the ClarityIcons API to add just the icons you need (preferred approach for focusing on what you need). To do this, in your `main.ts` file you do the following.
-
-    ```typescript
-    import { ClarityIcons, ClrEssentialSet, ClrShapeEllipsisHorizontal } from '@clr/icons';
-
-    // Adding single shape and a whole set
-    ClarityIcons.add(ClrShapeEllipsisHorizontal, ClrEssentialSet);
     ```
 
 ### Installing Clarity UI
@@ -84,14 +75,14 @@ If you already have an Angular application, you can follow the installation step
     ```
 
     If your site is built with [angular-cli](https://github.com/angular/angular-cli), you can achieve the above by adding the file to the styles array in
-    `angular.json`:
+    `angular-cli.json`:
 
     ```js
     "styles": [
         ...
-        "node_modules/@clr/ui/clr-ui.min.css"
+        "../node_modules/@clr/ui/clr-ui.min.css"
         ...
-    ],
+    ]
     ```
 
 3.  Write your HTML with the Clarity CSS class names and markup.
@@ -157,4 +148,10 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 
-* Include a link to the reproduction scenario you created by forking one of the Clarity [StackBlitz Templates](https://stackblitz.com/@clr-team).
+* Include a link to the reproduction scenario you created by forking one of the Clarity Stackblitz Templates:
+  * [Light Theme v0.13](https://stackblitz.com/edit/clarity-light-theme-v013)
+  * [Dark Theme v0.13](https://stackblitz.com/edit/clarity-dark-theme-v013)
+  * [Light Theme v0.12](https://stackblitz.com/edit/clarity-light-theme-v012)
+  * [Dark Theme v0.12](https://stackblitz.com/edit/clarity-dark-theme-v012)
+  * [Light Theme v0.11](https://stackblitz.com/edit/clarity-light-theme-v11)
+  * [Dark Theme v0.11](https://stackblitz.com/edit/clarity-dark-theme-v11)

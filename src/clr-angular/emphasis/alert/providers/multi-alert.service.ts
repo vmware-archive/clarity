@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable, QueryList } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Subject } from 'rxjs';
 
 import { ClrAlert } from '../alert';
@@ -12,6 +12,7 @@ import { ClrAlert } from '../alert';
 @Injectable()
 export class MultiAlertService {
   private allAlerts: QueryList<ClrAlert> = new QueryList<ClrAlert>();
+  private subscription: Subscription;
   private _current = 0;
 
   /**
@@ -49,7 +50,15 @@ export class MultiAlertService {
   }
 
   manage(alerts: QueryList<ClrAlert>) {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     this.allAlerts = alerts;
+    this.subscription = this.allAlerts.changes.subscribe(() => {
+      if (this.current >= this.allAlerts.length) {
+        this.current = Math.max(0, this.allAlerts.length - 1);
+      }
+    });
   }
 
   next() {
@@ -65,5 +74,11 @@ export class MultiAlertService {
 
   close() {
     this.previous();
+  }
+
+  destroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

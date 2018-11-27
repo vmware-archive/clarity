@@ -1,0 +1,71 @@
+<h4>Internationalization</h4>
+<p>
+    Clarity uses the
+    <a href="https://github.com/angular/angular/tree/master/packages/common/locales" target="_blank">locale identifiers</a>
+    supported by Angular for getting the date format,
+    first day of the week, month and day names. These values are used to generate the
+    input field placeholder and the calendar.
+</p>
+
+<div>
+    <h5>Placeholder</h5>
+    <p>
+        Using the date format retrieved from Angular,
+        the placeholder is generated in one of the following formats:
+    </p>
+    <ol class="list">
+        <li>big-endian (YYYY/MM/DD)</li>
+        <li>little-endian (DD/MM/YYYY)</li>
+        <li>middle-endian (MM/DD/YYYY)</li>
+    </ol>
+    <clr-alert [clrAlertClosable]="false">
+        <div class="alert-item">
+        <span class="alert-text">
+            We recommend against overriding the automatically generated placeholder.
+            Adding an incorrect placeholder will create confusion while entering the
+            date in the input.
+        </span>
+        </div>
+    </clr-alert>
+</div>
+
+<p>
+    The following demo shows two date pickers. The first date picker uses the
+    <code class="clr-code">en-US</code> locale idenitifier whereas the
+    second one uses <code class="clr-code">fr</code>.
+    Both the date pickers have different first day of the week and the calendar is
+    generated based on the first day of the week.
+</p>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <clr-datepicker-en-us-demo></clr-datepicker-en-us-demo>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <clr-datepicker-fr-demo></clr-datepicker-fr-demo>
+    </div>
+</div>
+
+<p>
+    By default, Angular uses the <code class="clr-code">en-US</code> locale but you
+    can set your application's locale to a different value
+    using the <code class="clr-code">--locale</code> parameter while
+    building your Angular CLI application.
+</p>
+<p>
+    For more information on setting the locale
+    parameter and loading the locale data, please read the Angular
+    <a href="https://angular.io/guide/i18n" target="_blank">internationalization</a>
+    documentation.
+</p>
+
+<clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'">
+    <div class="alert-item">
+        <span class="alert-text">
+            The date picker uses the locale set for the application to ensure consistency of
+            date inputs and outputs across the application.
+            It is not recommended to override the locale identifier to use different locales
+            for different date picker instances in the same application.
+        </span>
+    </div>
+</clr-alert>

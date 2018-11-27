@@ -1,0 +1,52 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Clarity Icons and non-SVG elements</h6>
+        <p>Clarity Icons can now accept non-SVG elements. This allows users to create shortcut references for PNGs,
+            JPGs, or even <code class="clr-code">span</code> tags that reference icon font glyphs.</p>
+        <p>More documentation on this feature will be coming soon but for now you can add HTML elements to Clarity Icons
+            using the <code class="clr-code">add</code> method.</p>
+        <pre><code clr-code-highlight="language-typescript" ngNonBindable>
+ClarityIcons.add("your-custom-icon", "<img src=\"/assets/yourImage.png\">");</code></pre>
+    </li>
+    <li>
+        <h6>Stopping navigation and disabling the stepnav in the Clarity wizard</h6>
+        <p>The new Clarity wizard has had two new inputs added to the <code class="clr-code">clr-wizard</code>
+            component.</p>
+        <p>When set to true, the <code class="clr-code">[clrWizardPreventNavigation]</code> input freezes navigation to
+            the current page. This means that a user can no longer click buttons, the close "X", or the stepnav links on
+            the left to go to a different page in the wizard.</p>
+        <p>0.9.7 also introduces the <code class="clr-code">[clrWizardDisableStepnav]</code> input on the <code
+                class="clr-code">clr-wizard</code> component. When set to true, this input only disables the links in
+            the stepnav.</p>
+        <p>More documentation and the working example can be found in the
+            <a routerLink="/documentation/wizards">wizard documentation
+            </a>.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed a Datagrid issuewhere datagrid footer throws <code class="clr-code">Expression has changed after
+        it was checked</code> error when using <code class="clr-code">*ngIf</code> to hide/show the datagrid.
+    </li>
+    <li bug-fix>
+        Fixed an issue with the datagrid width when the page scroll is toggled.
+    </li>
+    <li bug-fix>
+        Fixed the outline clipping issue for form fields in modals and wizards
+    </li>
+    <li bug-fix>
+        Fixed an issue with the RxJS rollup config.
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Added styles for <code class="clr-code">input[type="datetime-local"]</code></li>
+    <li>Added styles for <code class="clr-code">readonly</code> input fields</li>
+    <li>Removed the Mutation Observer dependency as Clarity has dropped support for IE10 starting June 1st 2017</li>
+    <li>Updated the login page.</li>
+</ul>

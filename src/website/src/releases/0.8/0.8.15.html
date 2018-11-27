@@ -1,0 +1,53 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Updates to the Datagrid Selection Behavior</h6>
+        <p>Datagrid selection is now preserved when:</p>
+        <ul class="list">
+            <li>The user navigates to a different page in the datagrid</li>
+            <li>The data is updated, provided the smart iterator is used in the datagrid</li>
+        </ul>
+    </li>
+    <li>
+        <h6>Expandable rows for Datagrid</h6>
+        <p>
+            This feature can be used when a Datagrid row has additional data or details
+            that can be shown when interacting with the row. It supports many options, including:
+        </p>
+        <ul class="list">
+            <li>Overall details for the row</li>
+            <li>Per-cell details</li>
+            <li>Replacing the original row rather than expand under it</li>
+            <li>Lazy-loading of details</li>
+        </ul>
+        <p>Here is an example of how to make a row expandable:</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-dg-row *clrDgItems=&quot;let user of users&quot;&gt;
+    &lt;clr-dg-cell&gt;{{user.id}}&lt;/clr-dg-cell&gt;
+    &lt;clr-dg-cell&gt;{{user.name}}&lt;/clr-dg-cell&gt;
+
+    &lt;clr-dg-row-detail *clrIfExpanded&gt;
+        This user likes ducks.
+    &lt;/clr-dg-row-detail&gt;
+&lt;/clr-dg-row&gt;</code></pre>
+
+        <p>
+        If you include the same amount of <code class="clr-code">&lt;clr-dg-cell&gt;</code>
+        elements in the row details as anywhere else in the datagrid, they will properly align
+        as a way to display details for each cell individually.
+        Details are only instantiated when the row becomes expanded, so they are naturally lazy loaded: just make any AJAX
+        call you need in the constructor or <code class="clr-code">ngOnInit()</code> of the component you put inside the
+        <code class="clr-code">*clrIfExpanded</code> structural directive.
+        To notify us that you want a spinner to be displayed while lazy loading, just include a
+        <code class="clr-code">[clrLoading]="myLoadingBoolean"</code> anywhere inside the details or even the row itself.
+        As long as <code class="clr-code">myLoadingBoolean</code> is true, a spinner will be displayed.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed the click event listener for buttons inside of a button group.</li>
+    <li bug-fix>Fixed animation to value 0 in progress bars in webkit.</li>
+    <li bug-fix>Separators for clr-dg-column components have been correctly positioned.</li>
+</ul>

@@ -7,7 +7,7 @@
 import { IRuleMetadata } from 'tslint';
 import * as ts from 'typescript';
 import * as Lint from 'tslint';
-import { resolve } from 'path';
+import { resolve, extname } from 'path';
 import { statSync } from 'fs';
 
 export class Rule extends Lint.Rules.AbstractRule {
@@ -36,7 +36,10 @@ class NoBarrelImportsWalker extends Lint.RuleWalker {
     // Here we chop off the filename to get just the host directory
     const importDir = importFile.substring(0, importFile.lastIndexOf('/'));
     // Here we get the path of the file being imported, and add `.ts` for full path
-    const path = node.moduleSpecifier.getText().replace(/'|"/gi, '') + '.ts';
+    let path = node.moduleSpecifier.getText();
+    if (extname(path) !== '') {
+      path.replace(/'|"/gi, '') + '.ts';
+    }
 
     // We only care if this is a relative path, otherwise its fine
     if (path.startsWith('.')) {

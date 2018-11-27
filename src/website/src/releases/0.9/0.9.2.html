@@ -1,0 +1,62 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Expanded color palette</h6>
+        <p>
+            The Clarity color palette has been updated and expanded! The new color palette contains a broader range of
+            colors for use in applications, charts, and more. Recommendations and design guidelines about the new color
+            palette will be coming soon from the Clarity UX team.
+        </p>
+    </li>
+
+    <li>
+        <h6>Alt Next in Wizard</h6>
+        <p>
+            The <code class="clr-code">clrWizardPreventDefaultNext</code> and
+            <code class="clr-code">clrWizardPagePreventDefaultNext</code> boolean inputs have been added to Clarity’s
+            <code class="clr-code">Wizard</code> and <code class="clr-code">WizardPage</code> components.
+        </p>
+
+        <p>
+            The new inputs function similarly to how Clarity’s alt-cancel functionality works, only the alt-next
+            functionality overrides primary button actions (finish, next, and danger button clicks) at the page and
+            wizard levels.
+        </p>
+
+        <p>
+            For more information, check out our documentation for the Clarity wizard.
+        </p>
+    </li>
+
+    <li>
+        <h6>New icons for Clarity Icons</h6>
+        <p>
+            With 0.9.2, Clarity has introduced new icons such as
+            <code class="clr-code">asterisk</code>,
+            <code class="clr-code">bug</code>,
+            <code class="clr-code">devices</code>,
+            <code class="clr-code">layers</code>,
+            <code class="clr-code">bundle</code> etc.
+        </p>
+    </li>
+
+    <li>
+        <h6>Spinners inside of Buttons</h6>
+        <p>
+            With 0.9.2, you can add Spinners inside of a Button to indicate loading by using the
+            <code class="clr-code">clrLoading</code> directive on a Button.
+        </p>
+        <pre><code clr-code-highlight="language-html">
+            &lt;button [clrLoading]=&quot;loading&quot; class=&quot;btn&quot; (click)=&quot;activateLoading()&quot;&gt;Activate Loading&lt;/button&gt;</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed <code class="clr-code">clrWizardPageOnLoad</code> so that it emits whenever a page is made current.</li>
+    <li bug-fix>Updated unit tests for new wizard providers and increased test coverage.</li>
+    <li bug-fix>Updated padding in the wizard's header.</li>
+    <li bug-fix>Fixed the styling of <code class="clr-code">select</code> elements with <code class="clr-code">size</code> attribute.</li>
+    <li bug-fix>Updated the alert components' style to match with the latest visual spec.</li>
+    <li bug-fix>Fixed an issue with the datagrid placeholders and filters</li>
+</ul>

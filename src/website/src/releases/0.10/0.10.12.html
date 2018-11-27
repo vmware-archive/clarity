@@ -1,0 +1,29 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Improved accessibility and internationalization support for Clarity Icons</h6>
+        <p></p>
+        <div>
+            With 0.10.12, users can add a custom title to their icons through the title attribute, which improves the
+            accessibility of the icon by making it perceptible to screen readers. For example:
+<pre><code clr-code-highlight="language-html">
+    &#x3C;clr-icon shape=&#x22;home&#x22; title=&#x22;homepage icon&#x22;&#x3E;&#x3C;/clr-icon&#x3E;
+</code></pre>
+        In the example above, when the icon gets a focus, screen readers will catch the title attribute value and say
+        "homepage icon" <a href="https://github.com/vmware/clarity/pull/1408" target="_blank">(#1408)</a>
+        </div>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed the horizontal scrolling issue with popovers used without the
+        <code class="clr-code">*clrIfOpen</code> directive
+        <a href="https://github.com/vmware/clarity/pull/1646" target="_blank">(#1646)</a>
+    </li>
+    <li bug-fix>
+        Fixed an issue with disabling the Wizard buttons
+        <a href="https://github.com/vmware/clarity/pull/1621" target="_blank">(#1621)</a>
+    </li>
+</ul>

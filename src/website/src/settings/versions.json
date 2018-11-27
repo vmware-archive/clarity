@@ -1,0 +1,7 @@
+[
+  { "version": "v1.0", "url": "https://clarity.website/documentation" },
+  { "version": "v0.13", "url": "https://vmware.github.io/clarity/documentation/v0.13" },
+  { "version": "v0.12", "url": "https://vmware.github.io/clarity/documentation/v0.12" },
+  { "version": "v0.11", "url": "https://vmware.github.io/clarity/documentation/v0.11" },
+  { "version": "v0.10", "url": "https://vmware.github.io/clarity/documentation/v0.10" }
+]

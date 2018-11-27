@@ -1,0 +1,16 @@
+<clr-alert [clrAlertClosable]="false">
+    <div class="alert-item">
+        <span class="alert-text">
+            Date picker emits <code class="clr-code">null</code> when an invalid date is entered
+            after a valid date was set.
+        </span>
+    </div>
+</clr-alert>
+<div class="datepicker-demo">
+     <input type="date" [(clrDate)]="date">
+    <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+</div>
+<h6>Output: </h6>
+<pre class="datepicker-output">
+{{date | json}}
+</pre>

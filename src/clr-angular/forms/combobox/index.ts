@@ -4,6 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './select';
+export * from './combobox';
 export * from './options';
 export * from './option';

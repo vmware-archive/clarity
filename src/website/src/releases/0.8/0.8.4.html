@@ -1,0 +1,70 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li new-component>
+        <h6>New Component: Tree View</h6>
+        <p>
+            Clarity now provides an Angular Tree View component.
+            There are three main types of trees: Basic Tree, Basic Tree
+            with Icons, and Checkbox Tree. Tree supports features like
+            dynamic tree generation, lazy loading of tree nodes, selectable
+            tree nodes, pre-populating a tree etc. For more details, refer to the
+            <a routerLink="/documentation/tree-view">
+                Tree Documentation
+            </a>.
+        </p>
+        <p>
+            <b>Basic Tree Example</b>
+        </p>
+<pre><code clr-code-highlight="language-html">
+&lt;clr-tree-node&gt;
+    &lt;b&gt;Office Locations&lt;/b&gt;
+        &lt;clr-tree-node&gt;
+            USA
+            &lt;clr-tree-node&gt;Palo Alto, CA (Headquarters)&lt;/clr-tree-node&gt;
+            &lt;clr-tree-node&gt;Seattle, WA&lt;/clr-tree-node&gt;
+            &lt;clr-tree-node&gt;Austin, TX&lt;/clr-tree-node&gt;
+        &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        UK
+        &lt;clr-tree-node&gt;
+            London
+        &lt;/clr-tree-node&gt;
+    &lt;/clr-tree-node&gt;
+    &lt;clr-tree-node&gt;
+        India
+        &lt;clr-tree-node&gt;Bangalore, KA&lt;/clr-tree-node&gt;
+        &lt;clr-tree-node&gt;Pune, MH&lt;/clr-tree-node&gt;
+    &lt;/clr-tree-node&gt;
+&lt;/clr-tree-node&gt;</code></pre>
+    </li>
+    <li>
+        <h6>New icons for Clarity Icons</h6>
+        <p>
+            With 0.8.4, Clarity has introduced many new icons including icons
+            that are requested by our users such as
+            <code class="clr-code">tag</code>, <code class="clr-code">help</code>, <code class="clr-code">plus-circle</code>, etc
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed an issue with the Header Overflow Trigger alignment.</li>
+    <li bug-fix>Removed active style for focused anchor tag.</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Support manual selection of Datagrid row.
+    </li>
+    <li>
+        Updated the documentation for Clarity checkboxes.
+    </li>
+    <li>
+        Added Unit Tests for Clarity Icons.
+    </li>
+    <li>
+        Optimized RxJS imports.
+    </li>
+</ul>

@@ -1,0 +1,56 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Import All Shapes in Clarity Icons</h6>
+        Before Clarity v0.9.15, if you wanted to load all shapes, you had to import all sets one by one after loading
+        ClarityIcons:
+
+        <pre><code clr-code-highlight="language-ts" ngNonBindable>
+import &#x22;clarity-icons&#x22;;
+import &#x22;clarity-icons/shapes/essential-shapes&#x22;;
+import &#x22;clarity-icons/shapes/social-shapes&#x22;;
+import &#x22;clarity-icons/shapes/technology-shapes&#x22;;</code></pre>
+
+
+        Now, with Clarity v0.9.15 release, you can load all shapes by importing a single set,
+        <code class="clr-code">all-shapes</code>:
+
+
+        <pre><code clr-code-highlight="language-ts" ngNonBindable>
+import &#x22;clarity-icons&#x22;;
+import &#x22;clarity-icons/shapes/all-shapes&#x22;;</code></pre>
+    </li>
+</ul>
+
+<h2>Breaking Changes</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li breaking-change>
+        <h6>New category sets for Clarity Icons</h6>
+        <p>With Clarity Icons v0.10.0-alpha.6, we have introduced new category sets such as Commerce, Media, and Travel
+            for Clarity Icons. Also, starting with v0.10.0-alpha.6, we will try to avoid shipping the same icon shapes
+            in different categories so if they were duplicated in mulitiple sets, those duplicates have been removed. To
+            see the new categories and the change of duplicated icons' removal, please refer to our updated
+            <a href="https://vmware.github.io/clarity/documentation/iconography">Iconography page.</a>
+        </p>
+    </li>
+
+    <li bug-fix breaking-change>
+        <h6>Fixed an issue with datagrid action bar click target.</h6>
+        This fix is a breaking change as
+        the space reserved for datagrid action bar is removed. Hiding the datagrid action bar
+        will now cause the datagrid to move on the page. Our UX team recommends to disable the
+        datagrid action bar instead of hiding it completely as it avoids progressive discovery.
+    </li>
+</ul>
+
+<h2>Additional Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed hide/show issue for datagrid rows using cells in the row detail.</li>
+    <li bug-fix>Fixed Dropdown to emit clrDropdownOpenChange state on all changes</li>
+    <li bug-fix>Fixed a positioning issue with inline spinners in wizards</li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Added styles to use momentum-based scrolling in webkit based browsers.</li>
+</ul>

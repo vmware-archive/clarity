@@ -1,0 +1,138 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6 breaking-change>Internationalized titles for accessibility</h6>
+        <div class="alert alert-info">
+          <div class="alert-items">
+              <div class="alert-item static">
+                  <div class="alert-icon-wrapper">
+                      <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                  </div>
+                  <span class="alert-text">
+                      Note: version 0.13.1 has been unpublished from npm. Use v0.13.1-patch.1 to avoid a breaking change with this feature. 
+                  </span>
+              </div>
+          </div>
+      </div>
+<p>
+  In order to improve accessibility of its components, Clarity added a default English title to all icons
+  or non-text interactive elements internal to its components. In order to internationalize them we rely on a
+  <code class="clr-code">ClrCommonStrings</code> service that you can declare for your entire app, which will override
+  our default titles with the ones you provide:
+</p>
+<pre><code clr-code-highlight="language-ts" ngNonBindable>
+@Injectable()
+export class MyCommonStringsService implements ClrCommonStrings &#123;
+  constructor(@Inject(LOCALE_ID) locale: string, server: MyServer) &#123;
+    server.fetchTexts(locale).subscribe(texts =&gt; &#123;
+      // Assign the strings to the correct properties to implement ClrCommonStrings
+      this.open = texts.genericOpenText;
+      ...
+    &#125;);
+  &#125;
+&#125;
+</code></pre>
+<pre><code clr-code-highlight="language-ts" ngNonBindable>
+@NgModule(&#123;
+  imports: [...],
+  declarations: [...],
+  providers: [&#123; provide: ClrCommonStrings, useClass: MyCommonStringsService &#125;]
+&#125;)
+export class AppModule &#123;&#125;
+</code></pre>
+<p>
+  The list of strings available to configure can be found by simply looking at the declaration of the
+  <code class="clr-code">ClrCommonStrings</code> interface, which includes a description for each of them. Here is
+  the current list as of this release:
+</p>
+<pre><code clr-code-highlight="language-ts" ngNonBindable>
+abstract class ClrCommonStrings &#123;
+  /**
+   * Open button
+   */
+  open?: string;
+  /**
+   * Close button
+   */
+  close?: string;
+  /**
+   * Show button
+   */
+  show?: string;
+  /**
+   * Hide button
+   */
+  hide?: string;
+  /**
+   * Expandable components: expand caret
+   */
+  expand?: string;
+  /**
+   * Expandable components: collapse caret
+   */
+  collapse?: string;
+  /**
+   * Overflow menus: ellipsis button
+   */
+  more?: string;
+  /**
+   * Selectable components: checkbox or radio
+   */
+  select?: string;
+  /**
+   * Selectable components: checkbox to select all
+   */
+  selectAll?: string;
+  /**
+   * Pagination: previous button
+   */
+  previous?: string;
+  /**
+   * Pagination: next button
+   */
+  next?: string;
+  /**
+   * Pagination: go to current
+   */
+  current?: string;
+  /**
+   * Alert levels: info
+   */
+  info?: string;
+  /**
+   * Alert levels: success
+   */
+  success?: string;
+  /**
+   * Alert levels: warning
+   */
+  warning?: string;
+  /**
+   * Alert levels: danger
+   */
+  danger?: string;
+  /**
+   * Datagrid: row actions
+   */
+  rowActions?: string;
+  /**
+   * Datagrid: pick columns
+   */
+  pickColumns?: string;
+&#125;
+</code></pre>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Reduced the number of outputs emitted by <code class="clr-code">[(clrDgSelected)]</code> to avoid redundant outputs. (<a href="https://github.com/vmware/clarity/pull/2632" target="_blank">#2632</a>).
+    </li>
+    <li bug-fix>
+        Handled a change in Angular CLI v6.2 and above when using ng add @clr/angular. (<a href="https://github.com/vmware/clarity/pull/2650" target="_blank">#2650</a>).
+    </li>
+    <li bug-fix>
+        Fixed radio indexes in a datagrid to not double increment. (<a href="https://github.com/vmware/clarity/pull/2645" target="_blank">#2645</a>).
+    </li>
+</ul>

@@ -1,0 +1,138 @@
+<main class="content-area">
+    <section class="community-top-section">
+        <h1 id="community">Community</h1>
+
+        <p>We’re passionate about making Clarity the best it can be.&nbsp;Although each team member has a specific role and area of responsibility, we’re all actively engaged in every aspect of the framework.</p>
+
+    </section>
+
+    <section class="join-us">
+        <h3>Come Join Us!</h3>
+        <p>Join the team building the future of VMware’s customer and user experience.</p>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <img src="assets/images/caterpillar.svg" width="100%" alt="Join Us"/>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="left">Role</th>
+                    <th class="left">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left"><a href="https://careers.vmware.com/job/sofia/clarity-senior-ui-engineer/1567/8466716" (click)="onReqClick('https://careers.vmware.com/job/sofia/clarity-senior-ui-engineer/1567/8466716')" target="_blank">Clarity Senior UI Engineer</a></td>
+                    <td class="left">Sofia, Bulgaria</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="community-social-cards">
+        <h3>Engaging with the Clarity Team</h3>
+
+        <div class="hidden-sm-up">
+            <ul class="list-unstyled indent bump-down">
+
+                <li><a target="_blank" href="https://twitter.com/VMwareClarity">Talk with us on Twitter</a></li>
+
+                <li><a target="_blank" href="https://github.com/vmware/clarity/issues">Report an issue</a></li>
+
+                <li><a target="_blank" href="https://medium.com/claritydesignsystem">Read our blog</a></li>
+
+            </ul>
+        </div>
+        <div class="hidden-xs-down row">
+
+            <div class="col-lg-3 so-icon.pngcol-md-6 col-sm-6">
+                <a target="_blank" href="https://github.com/vmware/clarity/issues" class="social-card social-card-github">
+                    <div class="card clickable">
+                        <div class="card-block">
+                            <div class="community-social-icon">
+                                <img src="assets/images/team/social/github.png" alt="github">
+                            </div>
+                            <p class="card-text">File a request/bug</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a target="_blank" href="https://stackoverflow.com/tags/vmware-clarity" class="social-card social-card-stackoverflow">
+                    <div class="card clickable">
+                        <div class="card-block">
+                            <div class="community-social-icon">
+                                <img src="assets/images/team/social/stackoverflow.png" alt="twitter">
+                            </div>
+                            <p class="card-text">Ask a question</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a target="_blank" href="https://twitter.com/VMwareClarity" class="social-card social-card-twitter">
+                    <div class="card clickable">
+                        <div class="card-block">
+                            <div class="community-social-icon">
+                                <img src="assets/images/team/social/twitter.png" alt="twitter">
+                            </div>
+                            <p class="card-text">Chat with us</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a target="_blank" href="https://medium.com/claritydesignsystem" class="social-card social-card-medium">
+                    <div class="card clickable">
+                        <div class="card-block">
+                            <div class="community-social-icon">
+                                <img src="assets/images/team/social/medium.png" alt="medium">
+                            </div>
+                            <p class="card-text">Read our blog</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="community-team-cards">
+        <h3>Clarity Team</h3>
+
+        <div class="row">
+            <div *ngFor="let member of team" class="card col-xs-12 col-sm-12 col-md-4">
+                <div class="card-block">
+
+                    <img src="{{teamImgUrl}}{{member.img}}" alt="Picture of {{member.name}}">
+
+                    <div class="card-text">
+                        <p class="community-team-name" [ngSwitch]="member.twitter">
+                            <span *ngSwitchCase="undefined">{{member.name}}</span>
+                            <a href="https://twitter.com/{{member.twitter}}" target="_blank" *ngSwitchDefault>{{member.name}}</a>
+                        </p>
+                        <p class="community-team-role">{{member.role}}</p>
+                        <p class="community-team-blurb">{{member.blurb}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-contributors">
+        <h3>Contributors</h3>
+        <ul class="list-unstyled contributor-list">
+            <li *ngFor="let name of contributors">{{name}}</li>
+        </ul>
+    </section>
+
+</main>

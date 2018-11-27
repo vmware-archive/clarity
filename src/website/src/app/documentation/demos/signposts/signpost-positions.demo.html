@@ -1,0 +1,29 @@
+<div>
+    <div class="signpost-positions">
+        <div class="description">
+            <section class="form-block">
+                <div class="form-group">
+                    <label for="position">Select a position: </label>
+                    <div class="select">
+                        <select id="position_selector" [(ngModel)]="position" name="position" id="position">
+                            <option *ngFor="let position of positions" [ngValue]="position">{{ position }}</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="demo">
+            <clr-signpost>
+                <clr-signpost-content *clrIfOpen [clrPosition]="position">
+                    <h3 style="margin-top: 0">Position</h3>
+                    <p>
+                        <code class="clr-code">{{ position }}</code>
+                    </p>
+                </clr-signpost-content>
+            </clr-signpost>
+        </div>
+    </div>
+    <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
+    <clr-code-snippet [clrLanguage]="'typescript'" [clrCode]="code"></clr-code-snippet>
+</div>
+

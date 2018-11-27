@@ -1,0 +1,130 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+
+        <h5 class="component-summary" id="badges-header">Badges provide a method to highlight a count of an element
+            either next to it or inside the element itself.</h5>
+
+        <div id="design-guidelines">
+            <h3>Style</h3>
+            <p>Badges have a colorful, bold, and filled style that makes them stand out when appearing within or next to
+                another
+                component.</p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Overall Style</h4>
+                    <p>
+                        Badges have a more rounded border radius, similar to labels, to distinguish them from primary
+                        buttons.
+                    </p>
+                    <p>
+                        Badges are also small enough to fit next to or within another element.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img is-left-aligned">
+                                <clr-tree-node>
+                                    <div class="margin-right-0_25">Inbox</div> <span class="badge badge-info">1
+                                </span>
+                                    <ng-template [(clrIfExpanded)]="expanded">
+                                        <clr-tree-node>
+                                            New Email 1
+                                        </clr-tree-node>
+                                    </ng-template>
+                                </clr-tree-node>
+                                <clr-tree-node>
+                                    Folders
+                                    <ng-template clrIfExpanded>
+                                        <clr-tree-node>Sent Items</clr-tree-node>
+                                        <clr-tree-node>Junk Mail</clr-tree-node>
+                                        <clr-tree-node>To Me Directly</clr-tree-node>
+                                    </ng-template>
+                                </clr-tree-node>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Color</h4>
+                    <p>
+                        You can use different colors in badges.
+                    </p>
+                    <p>
+                        Stoplight colors are reserved to display a sense of urgency or indicate state.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clr-demo-container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <b>Notifications</b> <span class="badge badge-info">12</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <b>Alerts</b> <span class="badge badge-danger">12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Typography</h4>
+                    <p>
+                        Use integers within badges. If you’re attempting to use text, consider using a label instead.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-5">
+                    <h4>Over 99</h4>
+                    <p>
+                        If a badge needs to display a number above 99, use “99+” instead of the number unless the number is
+                        important to the user’s objectives and you are certain there is room in the design to accommodate
+                        it.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 offset-md-1">
+                    <div class="clrweb-DoxMedia has-h4-margin">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="clrweb-DoxMedia-img">
+                            <span class="label label-orange">
+                                London (Location)
+                                <span class="badge badge-orange">14</span>
+                            </span>
+                                <span class="label label-orange">
+                                Austin (Location)
+                                <span class="badge badge-orange">99+</span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+            <p>
+                A badge overlays a count of items on another component, such as a menu or label.
+            </p>
+
+            <h6 id="badges-color-options">1. Badges (Color Options)</h6>
+
+            <clr-badge-colors-demo></clr-badge-colors-demo>
+
+            <h6 id="status-badges">2. Status Badges</h6>
+
+            <clr-badge-statuses-demo></clr-badge-statuses-demo>
+        </div>
+    </article>
+</clr-doc-wrapper>

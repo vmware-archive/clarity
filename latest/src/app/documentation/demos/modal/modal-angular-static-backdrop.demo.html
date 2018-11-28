@@ -8,10 +8,10 @@
     <button class="btn btn-primary" (click)="static = true">Show modal</button>
 </p>
 
-<clr-modal [(clrModalOpen)]="static" [clrModalStaticBackdrop]="true">
+<clr-modal [(clrModalOpen)]="static" [clrModalStaticBackdrop]="false">
     <h3 class="modal-title">Static backdrop</h3>
     <div class="modal-body">
-        <p>Clicking on the backdrop doesn't do anything.</p>
+        <p>Clicking on the backdrop closes the modal.</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="static = false">Ok</button>

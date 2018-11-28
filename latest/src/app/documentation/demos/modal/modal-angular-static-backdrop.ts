@@ -6,7 +6,7 @@
 import {Component} from "@angular/core";
 
 const EXAMPLE = `
-<clr-modal [(clrModalOpen)]="opened" [clrModalStaticBackdrop]="true">
+<clr-modal [(clrModalOpen)]="opened" [clrModalStaticBackdrop]="false">
     ...
 </clr-modal>
 `;

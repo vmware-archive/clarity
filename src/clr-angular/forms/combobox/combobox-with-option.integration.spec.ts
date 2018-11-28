@@ -15,12 +15,14 @@ import { ClrOption } from './option';
 @Component({
   template: `
         <clr-combobox>
+          <clr-options>
             <clr-option [clrValue]="'Option 1'">
                 Option 1
             </clr-option>
             <clr-option [clrValue]="'Option 2'">
                 Option 2
             </clr-option>
+          </clr-options>
         </clr-combobox>
     `,
 })
@@ -38,21 +40,11 @@ export default function(): void {
       const options = context.clarityElement.querySelectorAll('.clr-option');
       const input: HTMLElement = context.clarityElement.querySelector('.clr-combobox-input');
 
-      expect(input.children.length).toBe(0);
+      expect(input.textContent).toBe('');
 
       options[0].click();
 
       expect(input.textContent).toMatch(/Option 1/);
-    });
-
-    it('sets the contenteditable attribute to false on the rendered option', () => {
-      const options = context.clarityElement.querySelectorAll('.clr-option');
-      options[0].click();
-
-      const selectedOption: HTMLElement = context.clarityElement.querySelector('.clr-combobox-input .clr-option');
-      const contentEditableAttribute = selectedOption.getAttribute('contenteditable');
-
-      expect(contentEditableAttribute).toBe('false');
     });
 
     it('clears the previous selection and renders the new selection in the input', () => {
@@ -61,12 +53,10 @@ export default function(): void {
 
       options[0].click();
 
-      expect(input.children.length).toBe(1);
       expect(input.textContent).toMatch(/Option 1/);
 
       options[1].click();
 
-      expect(input.children.length).toBe(1);
       expect(input.textContent).toMatch(/Option 2/);
     });
   });

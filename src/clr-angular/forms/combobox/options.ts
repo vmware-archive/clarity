@@ -4,16 +4,28 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ElementRef, Inject, Injector, OnDestroy, Optional } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  Injector,
+  OnDestroy,
+  Optional,
+  AfterViewInit,
+  ContentChildren,
+  QueryList,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AbstractPopover } from '../../popover/common/abstract-popover';
 import { Point } from '../../popover/common/popover';
 import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
+import { ClrOption } from './option';
 
 @Component({ selector: 'clr-options', templateUrl: './options.html', host: { '[class.clr-options]': 'true' } })
-export class ClrOptions extends AbstractPopover implements OnDestroy {
+export class ClrOptions<T> extends AbstractPopover implements OnDestroy, AfterViewInit {
   private sub: Subscription;
+  @ContentChildren(ClrOption) options: QueryList<ClrOption<T>>;
 
   constructor(
     injector: Injector,
@@ -50,6 +62,11 @@ export class ClrOptions extends AbstractPopover implements OnDestroy {
   }
 
   // Lifecycle hooks
+  ngAfterViewInit() {
+    // set anchor element for dropdown to the input
+    this.anchorElem = this.parentHost.nativeElement.getElementsByClassName('clr-combobox-input')[0] || this.anchorElem;
+  }
+
   ngOnDestroy() {
     if (!this.sub.closed) {
       this.sub.unsubscribe();

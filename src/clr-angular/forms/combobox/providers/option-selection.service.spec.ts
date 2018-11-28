@@ -22,84 +22,103 @@ export default function() {
       optionSelectionService = new OptionSelectionService();
       fakeOption1 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
       fakeOption2 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
+      fakeOption1.elRef = { nativeElement: { textContent: 'Fake1' } };
+      fakeOption1.elRef = { nativeElement: { textContent: 'Fake2' } };
     });
 
-    it('provides an observable to subscribe to change in value', () => {
-      expect(optionSelectionService.valueChanged).toBeDefined();
-    });
-
-    it('provides an observable to notify to render the option', () => {
-      expect(optionSelectionService.renderSelectionChanged).toBeDefined();
-    });
-
-    it('notifies that the value has changed', () => {
-      let selectedValue: string;
-      const subscription: Subscription = optionSelectionService.valueChanged.subscribe((value: string) => {
-        selectedValue = value;
-      });
-
-      optionSelectionService.updateSelection('Option 1');
-
-      expect(selectedValue).toBe('Option 1');
-
-      optionSelectionService.updateSelection('Option 2');
-
-      expect(selectedValue).toBe('Option 2');
-
-      subscription.unsubscribe();
+    it('provides an observable to notify that selected option has been changed', () => {
+      expect(optionSelectionService.selectionChanged).toBeDefined();
     });
 
     it('notifies that the option has changed', () => {
       let selectedOption: ClrOption<string>;
-      const subscription: Subscription = optionSelectionService.renderSelectionChanged.subscribe(
+      const subscription: Subscription = optionSelectionService.selectionChanged.subscribe(
         (option: ClrOption<string>) => {
           selectedOption = option;
         }
       );
 
-      optionSelectionService.renderSelection(fakeOption1);
-
+      optionSelectionService.setSelection(fakeOption1);
       expect(selectedOption).toBe(fakeOption1);
 
-      optionSelectionService.renderSelection(fakeOption2);
-
+      optionSelectionService.setSelection(fakeOption2);
       expect(selectedOption).toBe(fakeOption2);
 
       subscription.unsubscribe();
     });
 
-    it('does not notify when the value remains the same', () => {
-      let count: number = 0;
-      const sub: Subscription = optionSelectionService.valueChanged.subscribe(() => {
+    it('does not notify when the selected option remains the same', () => {
+      let count: number = -1; // as it's a BehaviorSubject ignore the first call
+      const sub: Subscription = optionSelectionService.selectionChanged.subscribe(() => {
         count++;
       });
 
-      optionSelectionService.updateSelection('Option 1');
-
+      optionSelectionService.setSelection(fakeOption1);
       expect(count).toBe(1);
 
-      optionSelectionService.updateSelection('Option 1');
-
+      optionSelectionService.setSelection(fakeOption1);
       expect(count).toBe(1);
 
       sub.unsubscribe();
     });
 
-    it('does not notify when the selected option remains the same', () => {
-      let count: number = 0;
-      const sub: Subscription = optionSelectionService.renderSelectionChanged.subscribe(() => {
+    it('provides an observable to notify that user given search value has changed', () => {
+      expect(optionSelectionService.searchValueChanged).toBeDefined();
+    });
+
+    it('notifies that the user search value has changed', () => {
+      let searchValue: string;
+      const subscription: Subscription = optionSelectionService.searchValueChanged.subscribe((value: string) => {
+        searchValue = value;
+      });
+
+      optionSelectionService.setSearchValue('fakeSearch1');
+      expect(searchValue).toBe('fakeSearch1');
+
+      optionSelectionService.setSearchValue('fakeSearch2');
+      expect(searchValue).toBe('fakeSearch2');
+
+      subscription.unsubscribe();
+    });
+
+    it('does not notify when the user search value remains the same', () => {
+      let count: number = -1; // as it's a BehaviorSubject ignore the first call
+      const sub: Subscription = optionSelectionService.searchValueChanged.subscribe(() => {
         count++;
       });
 
-      optionSelectionService.renderSelection(fakeOption1);
-
+      optionSelectionService.setSearchValue('fakeSearch1');
       expect(count).toBe(1);
 
-      optionSelectionService.renderSelection(fakeOption1);
-
+      optionSelectionService.setSearchValue('fakeSearch1');
       expect(count).toBe(1);
 
       sub.unsubscribe();
+    });
+
+    it('notifies that the option has reset, when user enters a search value', () => {
+      let selectedOption: ClrOption<string>;
+      const selectionSub: Subscription = optionSelectionService.selectionChanged.subscribe(
+        (option: ClrOption<string>) => {
+          selectedOption = option;
+        }
+      );
+
+      let searchValue: string;
+      const searchSub: Subscription = optionSelectionService.searchValueChanged.subscribe((value: string) => {
+        searchValue = value;
+      });
+
+      optionSelectionService.setSelection(fakeOption1);
+      expect(selectedOption).toBe(fakeOption1);
+      expect(searchValue).toBeNull();
+
+      optionSelectionService.setSearchValue('fakeSearch2');
+      expect(selectedOption).toBe(undefined);
+      expect(searchValue).toBe('fakeSearch2');
+
+      selectionSub.unsubscribe();
+      searchSub.unsubscribe();
     });
   });
 }

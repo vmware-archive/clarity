@@ -11,7 +11,7 @@ import { BasicNgComboboxDemo } from './basic-ng-combobox';
 import { OptionalMenuDemo } from './optional-menu';
 import { ComboboxDemo } from './combobox.demo';
 import { ROUTING } from './combobox.demo.routing';
-import { ClrComboboxModule } from '../../../../clr-angular/forms/combobox/combobox.module';
+import { ClrComboboxModule } from '@clr/angular';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING, ClrComboboxModule],

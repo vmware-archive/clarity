@@ -81,19 +81,11 @@ export default function(): void {
       });
 
       it('calls to render the option when an option is clicked', () => {
-        spyOn(optionSelectionService, 'renderSelection');
+        spyOn(optionSelectionService, 'setSelection');
 
         context.clarityDirective.updateSelectionAndCloseMenu();
 
-        expect(optionSelectionService.renderSelection).toHaveBeenCalled();
-      });
-
-      it('calls to update the selection when an option is clicked', () => {
-        spyOn(optionSelectionService, 'updateSelection');
-
-        context.clarityDirective.updateSelectionAndCloseMenu();
-
-        expect(optionSelectionService.updateSelection).toHaveBeenCalled();
+        expect(optionSelectionService.setSelection).toHaveBeenCalled();
       });
 
       it('closes the menu when an option is clicked', () => {
@@ -111,16 +103,16 @@ export default function(): void {
       it('updates the selection when a new value is received', () => {
         expect(context.testComponent.option.selected).toBe(false);
 
-        optionSelectionService.updateSelection('Test');
+        optionSelectionService.setSelection(context.testComponent.option);
 
         expect(context.testComponent.option.selected).toBe(true);
 
         // Even if the option is clicked multiple times
-        optionSelectionService.updateSelection('Test');
+        optionSelectionService.setSelection(context.testComponent.option);
 
         expect(context.testComponent.option.selected).toBe(true);
 
-        optionSelectionService.updateSelection('Fake Test');
+        optionSelectionService.setSelection(undefined);
 
         expect(context.testComponent.option.selected).toBe(false);
       });

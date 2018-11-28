@@ -17,9 +17,11 @@ import { ClrOptions } from './options';
 @Component({
   template: `
         <clr-combobox>
-            <div class="menu">
+            <clr-options>
+              <clr-option [clrValue]="'Test'">
                 Test
-            </div>
+              </clr-option>
+            </clr-options>
         </clr-combobox>
     `,
 })

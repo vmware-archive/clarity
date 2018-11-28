@@ -9,10 +9,30 @@
   Select 2.0 implementation is still incomplete. DO NOT USE.
   All issues related to clr-select will be closed until the implementation is completed.
 -->
-<clr-combobox>
+<form clrForm>
+<clr-combobox class="clr-col-12" (clrSelectedOption)="selectedOption = $event" (clrEnteredValue)="enteredValue = $event" [clrAllowUserEntry]="false">
+    <label>Force selection</label>
     <clr-options>
         <clr-option [clrValue]="'Option 1'">Option 1</clr-option>
         <clr-option [clrValue]="'Option 2'">Option 2</clr-option>
         <clr-option [clrValue]="'Option 3'">Option 3</clr-option>
+        <div class="clr-no-results">No search results found</div>
+    </clr-options>
+    <clr-control-error>Select a value</clr-control-error>
+</clr-combobox>
+<br><br>Selected option: {{selectedOption?.value}}
+<br>Manually entered value (will not be emitted): {{enteredValue}}
+<br>
+<clr-combobox class="clr-col-12" (clrSelectedOption)="selectedOptionUser = $event" (clrEnteredValue)="enteredValueUser = $event" [clrAllowUserEntry]="true">
+    <label>Allow user entry</label>
+    <clr-options>
+        <clr-option [clrValue]="'Option 1'">Option 1</clr-option>
+        <clr-option [clrValue]="'Option 2'">Option 2</clr-option>
+        <clr-option [clrValue]="'Option 3'">Option 3</clr-option>
+        <div class="clr-no-results">No search results found</div>
     </clr-options>
 </clr-combobox>
+<br><br>Selected option: {{selectedOptionUser?.value}}
+<br>Manually entered value: {{enteredValueUser}}
+<br>
+</form>

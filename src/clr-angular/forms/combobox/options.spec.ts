@@ -34,7 +34,7 @@ class TestComponentWithError {}
 
 export default function(): void {
   describe('Select Options Menu Component', function() {
-    let context: TestContext<ClrOptions, TestComponent>;
+    let context: TestContext<ClrOptions<string>, TestComponent>;
     let ifOpenService: IfOpenService;
 
     describe('View Basics', function() {

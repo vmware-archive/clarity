@@ -9,11 +9,6 @@
     display: inline-block;
   }
 
-  .clr-combobox-input-container {
-    display: flex;
-    align-items: center;
-  }
-
   .clr-combobox-input {
     //Dimensions
     padding: 0 $clr-ng-select-trigger-right-padding 0 $clr-ng-select-trigger-left-padding;
@@ -49,10 +44,44 @@
     @include generate-dropdown-menu();
 
     visibility: visible;
+    overflow-y: auto;
+    white-space: nowrap;
+    max-height: 10rem;
+
+    .clr-no-results {
+      display: none;
+    }
+  }
+
+  .clr-combobox.clr-empty {
+    .clr-no-results {
+      display: block;
+      @include generate-dropdown-item-height();
+    }
   }
 
   .clr-option {
     @include generate-dropdown-item();
+
+    &.highlighted {
+      background-color: $clr-dropdown-bg-hover-color;
+      color: $clr-dropdown-item-text-color;
+      text-decoration: none;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    em {
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+
+  .clr-error .clr-combobox-input {
+    border-bottom-color: $clr-forms-invalid-color;
+    @include input-border-bottom-animation($clr-forms-invalid-color);
   }
 
   //NOTE: Adjust the height of the option only when its in the options menu

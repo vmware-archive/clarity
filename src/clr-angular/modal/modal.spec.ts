@@ -39,6 +39,23 @@ class TestComponent {
   staticBackdrop: boolean = false;
 }
 
+@Component({
+  template: `
+        <clr-modal [(clrModalOpen)]="opened">
+            <h4 class="modal-title">Title</h4>
+            <div class="modal-body">
+                <p>Body</p>
+            </div>
+            <div class="modal-footer">
+                <button (click)="opened = false">Footer</button>
+            </div>
+        </clr-modal>
+   `,
+})
+class TestDefaultsComponent {
+  opened: boolean = true;
+}
+
 describe('Modal', () => {
   let fixture: ComponentFixture<any>;
   let compiled: any;
@@ -46,7 +63,7 @@ describe('Modal', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ClrModalModule, NoopAnimationsModule, ClrFocusTrapModule],
-      declarations: [TestComponent],
+      declarations: [TestComponent, TestDefaultsComponent],
     });
 
     return TestBed.compileComponents().then(() => {
@@ -203,6 +220,21 @@ describe('Modal', () => {
       fixture.detectChanges();
 
       flushAndExpectOpen(fixture, false);
+    })
+  );
+
+  it(
+    'should not be closed on backdrop click by default',
+    fakeAsync(() => {
+      const defaultsFixture = TestBed.createComponent(TestDefaultsComponent);
+      defaultsFixture.detectChanges();
+      compiled = defaultsFixture.nativeElement;
+
+      const backdrop: HTMLElement = compiled.querySelector('.modal-backdrop');
+
+      backdrop.click();
+      flushAndExpectOpen(defaultsFixture, true);
+      defaultsFixture.destroy();
     })
   );
 

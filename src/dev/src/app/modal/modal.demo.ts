@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./animation']">Animation</a></li>
             <li><a [routerLink]="['./dynamic-show']">Hide and Show Dynamically</a></li>
             <li><a [routerLink]="['./dynamic-sizing']">Dynamically Change Sizes</a></li>
-            <li><a [routerLink]="['./static-backdrop']">Keep Open When Clicking Backdrop</a></li>
+            <li><a [routerLink]="['./static-backdrop']">Close When Clicking Backdrop</a></li>
             <li><a [routerLink]="['./not-closable']">Force User Action</a></li>
             <li><a [routerLink]="['./focus-trap']">Trap User Focus</a></li>
             <li><a [routerLink]="['./modal-form']">Modal Form</a></li>

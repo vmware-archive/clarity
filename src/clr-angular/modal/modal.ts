@@ -55,7 +55,7 @@ export class ClrModal implements OnChanges, OnDestroy {
 
   @Input('clrModalClosable') closable: boolean = true;
   @Input('clrModalSize') size: string;
-  @Input('clrModalStaticBackdrop') staticBackdrop: boolean = false;
+  @Input('clrModalStaticBackdrop') staticBackdrop: boolean = true;
   @Input('clrModalSkipAnimation') skipAnimation: string = 'false';
 
   // presently this is only used by wizards

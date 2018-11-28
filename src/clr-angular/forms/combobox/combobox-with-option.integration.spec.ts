@@ -9,8 +9,6 @@ import { Component } from '@angular/core';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 
 import { ClrCombobox } from './combobox';
-import { ClrOptions } from './options';
-import { ClrOption } from './option';
 
 @Component({
   template: `
@@ -33,7 +31,7 @@ export default function(): void {
     let context: TestContext<ClrCombobox<string>, TestOptionSelection>;
 
     beforeEach(function() {
-      context = this.create(ClrCombobox, TestOptionSelection, [], [ClrCombobox, ClrOptions, ClrOption]);
+      context = this.create(ClrCombobox, TestOptionSelection, [], []);
     });
 
     it('renders the selected option in the input when it is clicked', () => {

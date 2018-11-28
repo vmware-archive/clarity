@@ -14,7 +14,7 @@ More info here: https://stackoverflow.com/a/34445203/3538394
     <label *ngIf="!label && addGrid()"></label>
     <div class="clr-control-container" [ngClass]="controlClass()">
         <div class="clr-input-wrapper">
-          <div class="clr-combobox-input" contenteditable="true" #input (keydown)="keydown($event)" (keyup)="search($event)" (blur)="blur()">
+          <div class="clr-combobox-input" contenteditable="true" #input (keydown)="keydown($event)" (keyup)="search()" (blur)="blur()">
               <br>
               <!-- Highlighted options will be rendererd here later.-->
           </div>

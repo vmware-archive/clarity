@@ -22,8 +22,6 @@ export default function() {
       optionSelectionService = new OptionSelectionService();
       fakeOption1 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
       fakeOption2 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
-      fakeOption1.elRef = { nativeElement: { textContent: 'Fake1' } };
-      fakeOption1.elRef = { nativeElement: { textContent: 'Fake2' } };
     });
 
     it('provides an observable to notify that selected option has been changed', () => {

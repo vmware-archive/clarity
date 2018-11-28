@@ -3,17 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-  Component,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  Inject,
-  Input,
-  OnDestroy,
-  Optional,
-  Host,
-} from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnDestroy, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
@@ -31,7 +21,7 @@ export class ClrOption<T> implements OnDestroy {
 
   @HostBinding('class.active') selected: boolean = false;
   @HostBinding('class.highlighted') highlighted: boolean = false;
-  @HostBinding('class.hidden') private _hidden: boolean = false;
+  @HostBinding('class.hidden') _hidden: boolean = false;
 
   @Input('clrValue') value: T;
 
@@ -87,7 +77,7 @@ export class ClrOption<T> implements OnDestroy {
   }
 
   highlightSearchValue(value: string): boolean {
-    let elHtml: string = this.elRef.nativeElement.innerHTML;
+    let elHtml: string = this.elRef && this.elRef.nativeElement ? this.elRef.nativeElement.innerHTML : '';
     if (elHtml) {
       elHtml = elHtml.replace('<em>', '');
       elHtml = elHtml.replace('</em>', '');
@@ -95,13 +85,13 @@ export class ClrOption<T> implements OnDestroy {
       if (value && value.length > 0) {
         elHtml = elHtml.replace(new RegExp(value, 'i'), '<em>$&</em>');
       }
+      this.elRef.nativeElement.innerHTML = elHtml;
     }
-    this.elRef.nativeElement.innerHTML = elHtml;
-    return elHtml.indexOf('<em>') > -1;
+    return elHtml ? elHtml.indexOf('<em>') > -1 : true;
   }
 
   getDisplayedText(): string {
-    return this.elRef.nativeElement.textContent;
+    return this.elRef && this.elRef.nativeElement ? this.elRef.nativeElement.textContent : '';
   }
 
   /**

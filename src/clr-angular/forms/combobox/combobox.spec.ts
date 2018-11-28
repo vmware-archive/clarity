@@ -11,8 +11,6 @@ import { TAB, UP_ARROW } from '../../utils/key-codes/key-codes';
 import { createKeyboardEvent } from '../datepicker/utils/test-utils';
 
 import { ClrCombobox } from './combobox';
-import { ClrOption } from './option';
-import { ClrOptions } from './options';
 
 @Component({
   template: `
@@ -34,7 +32,7 @@ export default function(): void {
 
     describe('Typescript API', function() {
       beforeEach(function() {
-        context = this.create(ClrCombobox, TestComponent, [], [ClrCombobox, ClrOptions, ClrOption]);
+        context = this.create(ClrCombobox, TestComponent, [], []);
         ifOpenService = context.getClarityProvider(IfOpenService);
       });
 
@@ -77,7 +75,7 @@ export default function(): void {
 
     describe('View Basics', () => {
       beforeEach(function() {
-        context = this.create(ClrCombobox, TestComponent, [], [ClrCombobox, ClrOptions, ClrOption]);
+        context = this.create(ClrCombobox, TestComponent, [], []);
         ifOpenService = context.getClarityProvider(IfOpenService);
       });
 

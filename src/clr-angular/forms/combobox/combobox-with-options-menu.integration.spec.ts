@@ -9,8 +9,6 @@ import { Component } from '@angular/core';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 
 import { ClrCombobox } from './combobox';
-import { ClrOptions } from './options';
-import { ClrOption } from './option';
 
 @Component({
   template: `
@@ -28,7 +26,7 @@ export default function(): void {
     let context: TestContext<ClrCombobox<string>, TestSelectWithMenu>;
 
     beforeEach(function() {
-      context = this.create(ClrCombobox, TestSelectWithMenu, [], [ClrCombobox, ClrOptions, ClrOption]);
+      context = this.create(ClrCombobox, TestSelectWithMenu, [], []);
     });
 
     it('renders the menu projected by the consumer', () => {

@@ -234,6 +234,7 @@ describe('Modal', () => {
 
       backdrop.click();
       flushAndExpectOpen(defaultsFixture, true);
+      defaultsFixture.destroy();
     })
   );
 

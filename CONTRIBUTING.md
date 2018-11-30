@@ -25,16 +25,48 @@ and finally you can add the corresponding documentation to the website
 
 ## Contributing to Design
 
-[TODO with Red]
+### Discover
 
-* Explain the use case
-* Provide designs for the usual case
-* Provide error states
-* Edge cases
-* i18n/long text visuals
-* Example with scrollbars for Windows devices
-* Accessibility recommendation (tab order, keyboard navigation, ...)
-* Describe motion if needed or provide a GIF for it
+Answer the following questions:
+
+* What problem is being solved?
+* How will a user interact with it?
+* Are there features that will be enabled based on use cases?
+
+Conduct market and VMware-product research to see what solutions may already exist.
+Compare how other solutions may or may not solve the problem.
+Document references with names, links and screenshots.
+
+### Align & Define
+
+Share documentation from “Discover” with Clairty team to understand the problem and its potential solutions.
+Discuss why it makes sense for the solution to be incorporated into Clarity.
+Clarity will give feedback on whether more information is needed, or if Clarity has decided for or against the solution.
+
+### Ideate
+
+Product Design & Engineering team members meet to collaborate on potential solutions.
+Discuss implementation constraints, and raise issues that might affect the solution’s design.
+Considerations
+
+* internationalization
+* long/short values
+* error/zero/empty states
+* accessibility recommendation
+* responsive
+* touch
+* edge cases
+* motion
+
+### Iterate
+
+Share solution progress with Clarity team to make sure it aligns.
+Clarity will give feedback on whether more information or design is needed. May need to return to the “Ideate” phase.
+
+### Lock
+
+Solution design can be handed off to Clarity when all needed information is provided, or if the team is finished working on the solution.
+Designs accepted by Clarity are not guaranteed immediate development.
 
 ## Contributing to Development
 
@@ -54,12 +86,10 @@ Please note that for larger contributions to the website, you will need to follo
 
 You can submit an issue or a bug to our [GitHub repository](https://github.com/vmware/clarity/issues). You must provide:
 
-* The link to the reproduction scenario you created using one of the Clarity Plunker Templates
-* If possible please provide a minimal demo illustrating the issue by forking one of the Clarity Plunker Templates
-  * [Light Theme v11](https://stackblitz.com/edit/clarity-light-theme-v11)
-  * [Dark Theme v11](https://stackblitz.com/edit/clarity-dark-theme-v11)
-  * [Light Theme v10](https://stackblitz.com/edit/clarity-light-theme-v10)
-  * [Dark Theme v10](https://stackblitz.com/edit/clarity-dark-theme-v10)
+* The link to the reproduction scenario you created using one of the
+  [Clarity StackBlitz Templates](https://stackblitz.com/@clr-team)
+* If possible please provide a minimal demo illustrating the issue by forking one of the
+  [Clarity StackBlitz Templates](https://stackblitz.com/@clr-team)
 * The version number of Angular
 * The version number of Clarity
 * The browser name and version number

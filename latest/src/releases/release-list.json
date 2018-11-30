@@ -1,10 +1,15 @@
 {
-    "current": "0.13.10",
+    "current": "1.0.0",
     "all": {
+        "1.0.0": {
+            "date": "Nov 30, 2018",
+            "sketch": "1.0.0",
+            "commit": "6bc78a4b3ad93ac8c1161245b37eda689eeb04e5"
+        },
         "1.0.0-rc.1": {
             "date": "Nov 20, 2018",
             "sketch": "0.13.7",
-            "commit": "4a948b9f130afb59e5c43f26fb38b3d12bb10719"
+            "commit": "19a2f46c0ec7f8c6921eb348aa167edecbe64f97"
         },
         "1.0.0-beta.2": {
             "date": "Nov 2, 2018",

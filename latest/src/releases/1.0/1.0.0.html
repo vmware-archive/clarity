@@ -1,0 +1,315 @@
+<!--
+  ~ Copyright (c) 2016-2017 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled">
+  <li>
+    <p>
+      Welcome to Clarity 1.0.0! We've worked hard to get to this major milestone, and are excited about the future of Clarity! All features and changes are listed below from the beta and rc stages for an easy summary of all that changed between 0.13 and 1.0.
+    </p>
+    <p>This is the first release to follow our new support policy, which is to follow the Angular 7 LTS support policy as we outlined in our blog about <a href="https://medium.com/claritydesignsystem/updating-the-clarity-release-and-support-strategy-c1e37f7d5a0">our release and support strategy</a>.</p>
+    <p>
+      To get this update, run
+      <code class="clr-code">ng update @clr/angular</code>. The <code class="clr-code">@next</code> tag is necessary only while
+      You can use this with any Angular CLI project, even if you've already started to work on it. You may need to run
+      <code class="clr-code">ng update @angular/core @angular/cli</code> first to update to Angular 7.
+    </p>
+    <h6 breaking-change>
+      Refactored Tree View component (<a
+        href="https://github.com/vmware/clarity/pull/2859"
+        target="_blank"
+        >#2859</a
+      >)
+    </h6>
+    <p>
+      The Tree View component had some internal design issues that prevented
+      fixing some important bugs. This refactoring is important to address those
+      problems and the old tree view has been replaced. If you use Tree View in
+      your application, review the new documentation and update your uses of it.
+    </p>
+    <h6 breaking-change>
+      Support for new checkboxes (<a
+        href="https://github.com/vmware/clarity/pull/2782"
+        target="_blank"
+        >#2782</a
+      >)
+    </h6>
+    <p>
+      The checkboxes have been overhauled to work with the new forms, and the
+      old <code class="clr-code">clr-checkbox</code> component has been removed.
+    </p>
+
+    <h6 breaking-change>
+      Support new forms in login form (<a
+        href="https://github.com/vmware/clarity/pull/2804"
+        target="_blank"
+        >#2804</a
+      >)
+    </h6>
+    <p>
+      The login page template has been updated to support the new form controls,
+      with only a slight visual difference. If you do not update to the new
+      forms, you'll need to be sure to include the deprecated forms module in
+      your Angular module.
+    </p>
+
+    <h6 breaking-change>
+      New pagination in Datagrid (<a
+        href="https://github.com/vmware/clarity/pull/2754"
+        target="_blank"
+        >#2754</a
+      >)
+    </h6>
+    <p>
+      The new datagrid pagination is a visual improvement to the original
+      pagination that also includes a new text field for users to manually input
+      the page they'd like to view by entering the number directly. It also was
+      a requirement for future work in the datagrid. You can also add a new
+      component <code class="clr-code">clr-dg-page-size</code> which will
+      display a select box for items per page.
+    </p>
+
+    <h6>
+      Support for form resets and forced validation (<a
+        href="https://github.com/vmware/clarity/pull/2735"
+        target="_blank"
+        >#2735</a
+      >)
+    </h6>
+    <p>
+      Forms have been improved to support NgControl reset methods, and can be
+      forced to display validation by marking them as dirty. This helps in cases
+      where you want to force validation (such as when the user submits a form
+      without filling in all the fields), and when you need to clear the values
+      and reset validation.
+    </p>
+
+    <h6 breaking-change>
+      Set default form layout to horizontal (<a
+        href="https://github.com/vmware/clarity/pull/2797"
+        target="_blank"
+        >#2797</a
+      >)
+    </h6>
+    <p>
+      Previously, Angular forms would default to the vertical layout, which is
+      against the desired UX default. Therefore, unless you specify a different
+      layout it will adopt horizontal by default with Angular forms.
+    </p>
+
+    <h6>
+      Support for Angular 7 (<a
+        href="https://github.com/vmware/clarity/pull/2729"
+        target="_blank"
+        >#2729</a
+      >)
+    </h6>
+    <p>
+      This release brings Angular 7 support for Clarity, and this Clarity branch
+      will be supported to work with Angular 7 while Angular is supported.
+    </p>
+
+    <h6 breaking-change>
+      Removal of Bootstrap as a dependency (<a
+        href="https://github.com/vmware/clarity/pull/2729"
+        target="_blank"
+        >#2729</a
+      >)
+    </h6>
+    <p>
+      To help Clarity not depend on Bootstrap, and to avoid having dependencies
+      with known vulnerabilities (though we did not use the vulnerable code
+      anywhere), we moved the Bootstrap sass files into our project. This only
+      matters to projects that have custom themes that incorporate Bootstrap,
+      you'll now want to now import the Bootstrap files from
+      <code class="clr-code">@clr/ui/utils/bootstrap/</code>.
+    </p>
+
+    <h6 breaking-change>
+      Removal of deprecated Wizard API (<a
+        href="https://github.com/vmware/clarity/pull/2758"
+        target="_blank"
+        >#2758</a
+      >)
+    </h6>
+    <p>
+      We removed two deprecated Wizard APIs. The removed
+      <code class="clr-code">ClrWizard.prev()</code> should be replaced with
+      <code class="clr-code">ClrWizard.previous()</code>. The removed
+      <code class="clr-code">ClrWizard.navService.setCurrentPage(1)</code>
+      should be replaced with
+      <code class="clr-code">ClrWizard.navService.currentPage = 1;</code>.
+    </p>
+
+    <h6 breaking-change>
+      Removal of deprecated Datagrid features (<a
+        href="https://github.com/vmware/clarity/pull/2756"
+        target="_blank"
+        >#2756</a
+      >)
+    </h6>
+    <p>
+      We removed two deprecated Datagrid APIs. The ClrDgColumnToggleButton no
+      longer has the <code class="clr-code">clrType</code> binding, since the OK
+      button was removed, so you should just remove the attribute and remove any
+      OK toggle button implementations you have. Also, the mistyped
+      <code class="clr-code">clDgRowSelection</code> should be replaced with
+      <code class="clr-code">clrDgRowSelection</code>.
+    </p>
+
+    <h6 breaking-change>
+      Removal of deprecated Alert features (<a
+        href="https://github.com/vmware/clarity/pull/2751"
+        target="_blank"
+        >#2751</a
+      >)
+    </h6>
+    <p>
+      We removed two deprecated Alert APIs for the Angular component only. The
+      alert types no longer support any variations that start with
+      <code class="clr-code">alert-</code>, just remove the prefix like
+      <code class="clr-code">info</code>. The first child of an ClrAlert should
+      be <code class="clr-code">clr-alert-item</code>, to ensure the icons
+      properly display.
+    </p>
+
+    <h6 breaking-change>
+      Removal of deprecated icon shapes (<a
+        href="https://github.com/vmware/clarity/pull/2750"
+        target="_blank"
+        >#2750</a
+      >)
+    </h6>
+    <p>
+      The eye and eye-hide shapes were moved from the essentials set to the core
+      set. If you import them directly, you will need to update the import path.
+    </p>
+
+    <h6 breaking-change>
+      Deprecation of old grid (<a
+        href="https://github.com/vmware/clarity/pull/2757"
+        target="_blank"
+        >#2757</a
+      >)
+    </h6>
+    <p>
+      Clarity has had deprecated the old grid already, but has actually removed
+      it from the main @clr/ui bundles. If you are still using the old grid
+      (which includes the old unprefixed <code class="clr-code">.row</code> and
+      <code class="clr-code">.col</code> classes), we have provided a temporary
+      file you can include until you fully migrate to the new grid classes. To
+      do this, add
+      <code class="clr-code">@clr/ui/clr-grid-deprecated.css</code> to your
+      project.
+    </p>
+
+    <h6 breaking-change>
+      Deprecation of old forms (<a
+        href="https://github.com/vmware/clarity/pull/2730"
+        target="_blank"
+        >#2730</a
+      >)
+    </h6>
+    <p>
+      Clarity has had deprecated the old forms already, but has kept them in
+      this release to provide more time to migrate. Previously to use the new
+      forms you had to include the
+      <code class="clr-code">ClrFormsNextModule</code> with the old forms as the
+      default, but now it has been reversed. The new forms no longer need to
+      include the next module, but if you wish to use the old forms still you
+      must include the <code class="clr-code">ClrFormsDeprecatedModule</code>.
+    </p>
+
+    <h6>
+      Two way support for ClrDatagridHideableColumn (<a
+        href="https://github.com/vmware/clarity/pull/2738"
+        target="_blank"
+        >#2738</a
+      >)
+    </h6>
+    <p>
+      Clarity now supports two way binding on
+      <code class="clr-code">[(clrDgHidden)]</code> so you can keep track of the
+      state more easily.
+    </p>
+  </li>
+</ul>
+
+<h2>Bugfixes</h2>
+<ul class="list-unstyled">
+  <li>
+    <h6 bug-fix>
+      Fixed removing a global alerts when multiple alerts were present (<a
+        href="https://github.com/vmware/clarity/pull/2884"
+        target="_blank"
+        >#2884</a
+      >)
+    </h6>
+    <p>
+      Fixed case where having multiple alerts open and then dynamically removing
+      one would remove all alerts instead of just the one.
+    </p>
+
+    <h6 bug-fix>
+      Fixed modal close on backdrop click default (<a
+        href="https://github.com/vmware/clarity/pull/2889"
+        target="_blank"
+        >#2889</a
+      >)
+    </h6>
+    <p>
+      Fixed the default behavior to not close by default per our UX guidelines.
+    </p>
+
+    <h6 bug-fix>
+      Fixed Vertical Nav hover and active colors (<a
+        href="https://github.com/vmware/clarity/pull/2862"
+        target="_blank"
+        >#2862</a
+      >)
+    </h6>
+    <p>
+      The color of the active and hovered item in vertical nav are now
+      different.
+    </p>
+
+    <h6 bug-fix>
+      Page size changes now trigger state changes (<a
+        href="https://github.com/vmware/clarity/pull/2841"
+        target="_blank"
+        >#2841</a
+      >)
+    </h6>
+    <p>
+      Fixed a bug that didn't correctly set the correct grid class overrides
+      when specified.
+    </p>
+
+    <h6 bug-fix>
+      Date picker reset bugfix (<a
+        href="https://github.com/vmware/clarity/pull/2803"
+        target="_blank"
+        >#2803</a
+      >)
+    </h6>
+    <p>
+      Fixed a bug that if you reset the date picker, you were unable to reselect
+      the same date again.
+    </p>
+
+    <h6 bug-fix>
+      Date picker grid override bugfix (<a
+        href="https://github.com/vmware/clarity/pull/2803"
+        target="_blank"
+        >#2803</a
+      >)
+    </h6>
+    <p>
+      Fixed a bug that didn't correctly set the correct grid class overrides
+      when specified.
+    </p>
+  </li>
+</ul>

@@ -7,5 +7,10 @@
   "private": true,
   "devDependencies": {
     "http-server": "latest"
+  },
+  "dependencies": {
+    "@clr/angular": "^1.0.0",
+    "@clr/icons": "^1.0.0",
+    "@clr/ui": "^1.0.0"
   }
 }

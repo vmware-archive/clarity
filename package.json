@@ -26,6 +26,7 @@
     "build": "npm-run-all clean build:ui build:icons build:angular build:schematics build:golden",
     "ng": "ng",
     "start": "ng serve dev",
+    "start:ks-app": "ng serve ks-app",
     "start:dark": "ng serve dev -c dark",
     "clean": "del ./dist",
     "golden:fix": "npm run build:angular && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern 'FocusTrapTracker' dist/clr-angular/index.d.ts",

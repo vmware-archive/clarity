@@ -15,8 +15,8 @@ export enum DragEventType {
 export interface DragPointPosition {
   pageX: number;
   pageY: number;
-  moveX?: number;
-  moveY?: number;
+  moveX: number;
+  moveY: number;
 }
 
 export interface DragEventInterface<T> {

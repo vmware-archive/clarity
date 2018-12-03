@@ -18,6 +18,7 @@ import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.s
 import { DraggableSnapshotService } from '../providers/draggable-snapshot.service';
 import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 import { ClrDraggable } from './draggable';
+import { generateDragPosition } from '../helpers.spec';
 
 export default function(): void {
   describe('Basic Draggable', function() {
@@ -30,9 +31,9 @@ export default function(): void {
     let mockDragEndEventExt: ClrDragEvent<any>;
 
     beforeEach(function() {
-      mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: { pageX: 11, pageY: 22 } };
-      mockDragMoveEventInt = { type: DragEventType.DRAG_MOVE, dragPosition: { pageX: 33, pageY: 44 } };
-      mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: { pageX: 77, pageY: 88 } };
+      mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [11, 22]) };
+      mockDragMoveEventInt = { type: DragEventType.DRAG_MOVE, dragPosition: generateDragPosition([5, 10], [33, 44]) };
+      mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
       mockDragStartEventExt = new ClrDragEvent(mockDragStartEventInt);
       mockDragMoveEventExt = new ClrDragEvent(mockDragMoveEventInt);

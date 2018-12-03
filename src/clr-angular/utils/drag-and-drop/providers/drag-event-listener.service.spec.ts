@@ -7,30 +7,13 @@ import { Component, ElementRef, NgZone, OnDestroy, OnInit, Renderer2, ViewChild 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
-import { emulateDragEvent } from '../helpers.spec';
+import { emulateDragEvent, generateDragPosition } from '../helpers.spec';
 import { DragEventInterface, DragPointPosition } from '../interfaces/drag-event.interface';
 import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 import { DragEventListenerService } from './drag-event-listener.service';
 
 type DragTransfer = {
   data: any;
-};
-
-const generateDragPosition = (startPosition: [number, number], movePosition?: [number, number]): DragPointPosition => {
-  if (!movePosition) {
-    return {
-      pageX: startPosition[0],
-      pageY: startPosition[1],
-      moveX: startPosition[0],
-      moveY: startPosition[1],
-    };
-  }
-  return {
-    pageX: movePosition[0],
-    pageY: movePosition[1],
-    moveX: movePosition[0] - startPosition[0],
-    moveY: movePosition[1] - startPosition[1],
-  };
 };
 
 const expectEventPropValues = <T>(event: DragEventInterface<T>) => {
@@ -70,7 +53,7 @@ export default function(): void {
 
     // the position when the mouseup/touchend event gets registered
     // right after the mousedown/touchstart event with no prior registered mousemove/touchmove events
-    const preMatureEndPosition: [number, number] = startPosition;
+    const prematureEndPosition: [number, number] = startPosition;
 
     // the position for the mousemove/touchmove event after the dragstart event gets registered
     const movePosition: [number, number] = [44, 55];
@@ -165,7 +148,7 @@ export default function(): void {
 
         // mousedown+mouseup means it just ended prematurely
         emulateDragEvent(startEvent, ...startPosition, draggableButton);
-        emulateDragEvent(endEvent, ...preMatureEndPosition);
+        emulateDragEvent(endEvent, ...prematureEndPosition);
 
         // mousedown+mousemove should fire dragstart
         emulateDragEvent(startEvent, ...startPosition, draggableButton);

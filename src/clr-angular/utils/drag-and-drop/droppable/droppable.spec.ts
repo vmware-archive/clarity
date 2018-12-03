@@ -8,6 +8,7 @@ import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrDragEvent } from '../drag-event';
+import { generateDragPosition } from '../helpers.spec';
 import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
 import { ClrDropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
@@ -24,9 +25,9 @@ export default function(): void {
   let mockDragEndEventExt: ClrDragEvent<any>;
 
   beforeEach(function() {
-    mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: { pageX: 11, pageY: 22 } };
-    mockDragMoveEventInt = { type: DragEventType.DRAG_MOVE, dragPosition: { pageX: 33, pageY: 44 } };
-    mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: { pageX: 77, pageY: 88 } };
+    mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [11, 22]) };
+    mockDragMoveEventInt = { type: DragEventType.DRAG_MOVE, dragPosition: generateDragPosition([5, 10], [33, 44]) };
+    mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
     mockDragStartEventExt = new ClrDragEvent(mockDragStartEventInt);
     mockDragMoveEventExt = new ClrDragEvent(mockDragMoveEventInt);

@@ -563,10 +563,7 @@ export declare class ClrDragAndDropModule {
 
 export declare class ClrDragEvent<T> {
     dragDataTransfer: T;
-    dragPosition: {
-        pageX: number;
-        pageY: number;
-    };
+    dragPosition: DragPointPosition;
     dropPointPosition: {
         pageX: number;
         pageY: number;

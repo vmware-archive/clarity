@@ -56,7 +56,7 @@ export default function(): void {
         emulateDragEvent('mousedown', 0, 0, draggable.nativeElement);
         emulateDragEvent('mousemove', 10, 20);
         checkStaticProps(testComponent.dragStartEvent);
-        expect(testComponent.dragStartEvent.dragPosition).toEqual({ pageX: 10, pageY: 20 });
+        expect(testComponent.dragStartEvent.dragPosition).toEqual({ pageX: 10, pageY: 20, moveX: 10, moveY: 20 });
         expect(testComponent.dragStartEvent.dropPointPosition).toBeUndefined();
       });
 
@@ -65,7 +65,7 @@ export default function(): void {
         emulateDragEvent('mousemove', 10, 20);
         emulateDragEvent('mousemove', 100, 200);
         checkStaticProps(testComponent.dragMoveEvent);
-        expect(testComponent.dragMoveEvent.dragPosition).toEqual({ pageX: 100, pageY: 200 });
+        expect(testComponent.dragMoveEvent.dragPosition).toEqual({ pageX: 100, pageY: 200, moveX: 100, moveY: 200 });
 
         // offsetX = dragStart.pageX - draggable.pageX
         // offsetY = dragStart.pageY - draggable.pageY
@@ -79,7 +79,7 @@ export default function(): void {
         emulateDragEvent('mousemove', 10, 20);
         emulateDragEvent('mousemove', 500, 300);
         checkStaticProps(testComponent.dragEnterEvent);
-        expect(testComponent.dragEnterEvent.dragPosition).toEqual({ pageX: 500, pageY: 300 });
+        expect(testComponent.dragEnterEvent.dragPosition).toEqual({ pageX: 500, pageY: 300, moveX: 500, moveY: 300 });
         expect(testComponent.dragEnterEvent.dropPointPosition).toEqual({ pageX: 540, pageY: 305 });
       });
 
@@ -89,7 +89,7 @@ export default function(): void {
         emulateDragEvent('mousemove', 500, 300);
         emulateDragEvent('mousemove', 100, 200);
         checkStaticProps(testComponent.dragLeaveEvent);
-        expect(testComponent.dragLeaveEvent.dragPosition).toEqual({ pageX: 100, pageY: 200 });
+        expect(testComponent.dragLeaveEvent.dragPosition).toEqual({ pageX: 100, pageY: 200, moveX: 100, moveY: 200 });
         expect(testComponent.dragLeaveEvent.dropPointPosition).toEqual({ pageX: 140, pageY: 205 });
       });
 
@@ -100,7 +100,7 @@ export default function(): void {
         emulateDragEvent('mousemove', 100, 200);
         emulateDragEvent('mouseup', 100, 200);
         checkStaticProps(testComponent.dragEndEvent);
-        expect(testComponent.dragEndEvent.dragPosition).toEqual({ pageX: 100, pageY: 200 });
+        expect(testComponent.dragEndEvent.dragPosition).toEqual({ pageX: 100, pageY: 200, moveX: 100, moveY: 200 });
         expect(testComponent.dragEndEvent.dropPointPosition).toEqual({ pageX: 140, pageY: 205 });
       });
 
@@ -110,7 +110,7 @@ export default function(): void {
         emulateDragEvent('mousemove', 500, 300);
         emulateDragEvent('mouseup', 500, 300);
         checkStaticProps(testComponent.dropEvent);
-        expect(testComponent.dropEvent.dragPosition).toEqual({ pageX: 500, pageY: 300 });
+        expect(testComponent.dropEvent.dragPosition).toEqual({ pageX: 500, pageY: 300, moveX: 500, moveY: 300 });
         expect(testComponent.dropEvent.dropPointPosition).toEqual({ pageX: 540, pageY: 305 });
       });
     });

@@ -19,6 +19,7 @@ import { DraggableSnapshotService } from '../providers/draggable-snapshot.servic
 import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 
 import { ClrDraggable } from './draggable';
+import { generateDragPosition } from '../helpers.spec';
 
 export default function(): void {
   describe('With Custom Draggable Ghost', function() {
@@ -26,8 +27,8 @@ export default function(): void {
     let mockDragEndEventInt: DragEventInterface<any>;
 
     beforeEach(function() {
-      mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: { pageX: 11, pageY: 22 } };
-      mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: { pageX: 77, pageY: 88 } };
+      mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [6, 11]) };
+      mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
       TestBed.configureTestingModule({
         imports: [ClrDragAndDropModule, ClrIconModule, NoopAnimationsModule],

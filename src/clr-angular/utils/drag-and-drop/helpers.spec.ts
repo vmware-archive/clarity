@@ -4,6 +4,28 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { DragPointPosition } from './interfaces/drag-event.interface';
+
+export const generateDragPosition = (
+  startPosition: [number, number],
+  movePosition?: [number, number]
+): DragPointPosition => {
+  if (!movePosition) {
+    return {
+      pageX: startPosition[0],
+      pageY: startPosition[1],
+      moveX: startPosition[0],
+      moveY: startPosition[1],
+    };
+  }
+  return {
+    pageX: movePosition[0],
+    pageY: movePosition[1],
+    moveX: movePosition[0] - startPosition[0],
+    moveY: movePosition[1] - startPosition[1],
+  };
+};
+
 export const emulateDragEvent = (
   eventName: string,
   pageX: number = 0,

@@ -12,11 +12,18 @@ export enum DragEventType {
   DROP,
 }
 
+export interface DragPointPosition {
+  pageX: number;
+  pageY: number;
+  moveX: number;
+  moveY: number;
+}
+
 export interface DragEventInterface<T> {
   type: DragEventType;
   group?: string | string[];
   ghostElement?: any;
-  dragPosition: { pageX: number; pageY: number };
+  dragPosition: DragPointPosition;
   dragDataTransfer?: T;
   // For default ghosts, this dropPointPosition denotes the center point of the ghost element.
   // This center point is used to determine whether the ghost is over droppable elements or not.

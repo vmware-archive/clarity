@@ -39,6 +39,8 @@ export class DragEventListenerService<T> {
 
   constructor(private ngZone: NgZone, private renderer: Renderer2, private eventBus: DragAndDropEventBusService<T>) {}
 
+  private initialPosition: { pageX: number; pageY: number };
+
   // Draggable component sets these properties:
   public dragDataTransfer?: T;
   public group?: string | string[];
@@ -70,8 +72,23 @@ export class DragEventListenerService<T> {
     }
   }
 
+  private getNativeEventObject(event: MouseEvent | TouchEvent): any {
+    if ((<TouchEvent>event).hasOwnProperty('changedTouches')) {
+      return (<TouchEvent>event).changedTouches[0];
+    } else {
+      return event;
+    }
+  }
+
   private customDragEvent(element: Node, startOnEvent: string, moveOnEvent: string, endOnEvent: string): () => void {
-    return this.renderer.listen(element, startOnEvent, () => {
+    return this.renderer.listen(element, startOnEvent, (startEvent: MouseEvent | TouchEvent) => {
+      // save the initial point to initialPosition
+      // this will be used to calculate how far the draggable has been dragged from its initial position
+      this.initialPosition = {
+        pageX: this.getNativeEventObject(startEvent).pageX,
+        pageY: this.getNativeEventObject(startEvent).pageY,
+      };
+
       // Initialize nested listeners' property with a new empty array;
       this.nestedListeners = [];
 
@@ -153,17 +170,16 @@ export class DragEventListenerService<T> {
   }
 
   private generateDragEvent(event: MouseEvent | TouchEvent, eventType: DragEventType): DragEventInterface<T> {
-    let nativeEvent: any;
-
-    if ((<TouchEvent>event).hasOwnProperty('changedTouches')) {
-      nativeEvent = (<TouchEvent>event).changedTouches[0];
-    } else {
-      nativeEvent = event;
-    }
+    const nativeEvent: any = this.getNativeEventObject(event);
 
     return {
       type: eventType,
-      dragPosition: { pageX: nativeEvent.pageX, pageY: nativeEvent.pageY },
+      dragPosition: {
+        pageX: nativeEvent.pageX,
+        pageY: nativeEvent.pageY,
+        moveX: nativeEvent.pageX - this.initialPosition.pageX,
+        moveY: nativeEvent.pageY - this.initialPosition.pageY,
+      },
       group: this.group,
       dragDataTransfer: this.dragDataTransfer,
       ghostElement: this.ghostElement,

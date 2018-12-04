@@ -7,8 +7,8 @@ import { Component, ElementRef, NgZone, OnDestroy, OnInit, Renderer2, ViewChild 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 
-import { emulateDragEvent } from '../helpers.spec';
-import { DragEventInterface } from '../interfaces/drag-event.interface';
+import { emulateDragEvent, generateDragPosition } from '../helpers.spec';
+import { DragEventInterface, DragPointPosition } from '../interfaces/drag-event.interface';
 import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
 import { DragEventListenerService } from './drag-event-listener.service';
 
@@ -18,9 +18,8 @@ type DragTransfer = {
 
 const expectEventPropValues = <T>(event: DragEventInterface<T>) => {
   return {
-    toBe: (element: Node, pageX: number, pageY: number, dragTransfer?: T, group?: string | string[]) => {
-      expect(event.dragPosition.pageX).toBe(pageX);
-      expect(event.dragPosition.pageY).toBe(pageY);
+    toBe: (element: Node, dragPosition: DragPointPosition, dragTransfer?: T, group?: string | string[]) => {
+      expect(event.dragPosition).toEqual(dragPosition);
 
       if (group) {
         expect(event.group).toEqual(group);
@@ -46,6 +45,25 @@ export default function(): void {
 
     let draggableButton: any;
 
+    // the position for the mousedown/touchstart event
+    const startPosition: [number, number] = [5, 10];
+
+    // the first move event that creates a dragstart event
+    const firstMovePosition: [number, number] = [6, 11];
+
+    // the position when the mouseup/touchend event gets registered
+    // right after the mousedown/touchstart event with no prior registered mousemove/touchmove events
+    const prematureEndPosition: [number, number] = startPosition;
+
+    // the position for the mousemove/touchmove event after the dragstart event gets registered
+    const movePosition: [number, number] = [44, 55];
+
+    // the positions for the consecutive mousemove/touchmove events that consequently create dragmove events
+    const movePositions: [number, number][] = [[11, 22], [33, 44], [55, 66], [77, 88], [99, 0]];
+
+    // the position for the mouseup/touchend event that creates dragend event
+    const endPosition: [number, number] = [22, 33];
+
     beforeEach(function() {
       TestBed.configureTestingModule({ declarations: [TestComponent], providers: [DragAndDropEventBusService] });
 
@@ -64,44 +82,49 @@ export default function(): void {
     afterEach(() => {
       fixture.destroy();
       draggableButton = null;
-      // emulateDragEvent("mouseup", 0, 0, draggableButton);
-      // emulateDragEvent("touchend", 0, 0, draggableButton);
     });
 
     function testCases(startEvent: string, moveEvent: string, endEvent: string) {
       it(`shouldn't broadcast any drag events on single ${startEvent}`, function() {
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
         expect(testComponent.dragStartFired).toBeFalsy();
         expect(testComponent.dragMoveFired).toBeFalsy();
         expect(testComponent.dragEndFired).toBeFalsy();
       });
 
       it(`should broadcast dragstart on ${startEvent} and first ${moveEvent}`, function() {
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 22, 33);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         expect(testComponent.dragStartFired).toBeTruthy();
-        expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, 22, 33, null);
+        expectEventPropValues(testComponent.dragEvent).toBe(
+          draggableButton,
+          generateDragPosition(startPosition, firstMovePosition),
+          null
+        );
 
         expect(testComponent.dragMoveFired).toBeFalsy();
         expect(testComponent.dragEndFired).toBeFalsy();
       });
 
       it(`should broadcast consecutive dragmove events on ${moveEvent} after dragstart`, function() {
-        const testPositions = [[11, 22], [33, 44], [55, 66], [77, 88], [99, 0]];
-        const nbDragMoveFired = testPositions.length;
+        const nbDragMoveFired = movePositions.length;
 
         // dragstart
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         expect(testComponent.dragStartFired).toBeTruthy();
 
         // consecutive dragmove events
-        while (testPositions.length > 0) {
-          const testPosition = testPositions.pop();
-          emulateDragEvent(moveEvent, testPosition[0], testPosition[1]);
-          expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, testPosition[0], testPosition[1], null);
+        while (movePositions.length > 0) {
+          const testPosition: [number, number] = movePositions.pop();
+          emulateDragEvent(moveEvent, ...testPosition);
+          expectEventPropValues(testComponent.dragEvent).toBe(
+            draggableButton,
+            generateDragPosition(startPosition, testPosition),
+            null
+          );
         }
 
         expect(testComponent.nbDragMoveFired).toBe(nbDragMoveFired);
@@ -110,10 +133,10 @@ export default function(): void {
 
       it(`shouldn't broadcast any dragmove events on ${moveEvent} after ${startEvent} and ${endEvent}`, function() {
         // mousedown+mouseup means it just ended prematurely before firing dragstart
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(endEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(endEvent, ...firstMovePosition);
 
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(moveEvent, ...startPosition);
 
         expect(testComponent.dragStartFired).toBeFalsy();
         expect(testComponent.dragMoveFired).toBeFalsy();
@@ -121,39 +144,42 @@ export default function(): void {
       });
 
       it(`can broadcast proper dragstart and dragmove events after ${startEvent} and ${endEvent}`, function() {
-        const testPositions = [[11, 22], [33, 44], [55, 66], [77, 88], [99, 0]];
-        const nbDragMoveFired = testPositions.length;
+        const nbDragMoveFired = movePositions.length;
 
         // mousedown+mouseup means it just ended prematurely
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(endEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(endEvent, ...prematureEndPosition);
 
         // mousedown+mousemove should fire dragstart
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         expect(testComponent.nbDragMoveFired).toBe(0);
 
         expect(testComponent.dragStartFired).toBeTruthy();
 
-        while (testPositions.length > 0) {
-          const testPosition = testPositions.pop();
+        while (movePositions.length > 0) {
+          const testPosition: [number, number] = movePositions.pop();
           emulateDragEvent(moveEvent, testPosition[0], testPosition[1]);
-          expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, testPosition[0], testPosition[1], null);
+          expectEventPropValues(testComponent.dragEvent).toBe(
+            draggableButton,
+            generateDragPosition(startPosition, testPosition),
+            null
+          );
         }
         expect(testComponent.nbDragMoveFired).toBe(nbDragMoveFired);
 
-        emulateDragEvent(endEvent, 22, 33);
+        emulateDragEvent(endEvent, ...endPosition);
         expect(testComponent.dragEndFired).toBeTruthy();
       });
 
       it('can broadcast dragend event on ' + endEvent + ' after dragstart registered', function() {
         // dragstart
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         // dragend
-        emulateDragEvent(endEvent, 22, 33);
+        emulateDragEvent(endEvent, ...endPosition);
 
         expect(testComponent.dragStartFired).toBeTruthy();
         expect(testComponent.dragMoveFired).toBeFalsy();
@@ -162,14 +188,14 @@ export default function(): void {
 
       it('can broadcast dragend event on ' + endEvent + ' after dragstart and dragmove registered', function() {
         // dragstart
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         // dragmove
-        emulateDragEvent(moveEvent, 44, 55);
+        emulateDragEvent(moveEvent, ...movePosition);
 
         // dragend
-        emulateDragEvent(endEvent, 22, 33);
+        emulateDragEvent(endEvent, ...endPosition);
 
         expect(testComponent.dragStartFired).toBeTruthy();
         expect(testComponent.dragMoveFired).toBeTruthy();
@@ -187,28 +213,43 @@ export default function(): void {
 
         dragEventListenerService.dragDataTransfer = dataOnDragStart;
         dragEventListenerService.group = groupOnDragStart;
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 11, 22);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
-        expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, 11, 22, dataOnDragStart, groupOnDragStart);
+        expectEventPropValues(testComponent.dragEvent).toBe(
+          draggableButton,
+          generateDragPosition(startPosition, firstMovePosition),
+          dataOnDragStart,
+          groupOnDragStart
+        );
 
         dragEventListenerService.dragDataTransfer = dataOnDragMove;
         dragEventListenerService.group = groupOnDragMove;
-        emulateDragEvent(moveEvent, 33, 44);
+        emulateDragEvent(moveEvent, ...movePosition);
 
-        expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, 33, 44, dataOnDragMove, groupOnDragMove);
+        expectEventPropValues(testComponent.dragEvent).toBe(
+          draggableButton,
+          generateDragPosition(startPosition, movePosition),
+          dataOnDragMove,
+          groupOnDragMove
+        );
 
         dragEventListenerService.dragDataTransfer = dataOnDragEnd;
         dragEventListenerService.group = groupOnDragEnd;
-        emulateDragEvent(endEvent, 55, 66);
-        expectEventPropValues(testComponent.dragEvent).toBe(draggableButton, 55, 66, dataOnDragEnd, groupOnDragEnd);
+        emulateDragEvent(endEvent, ...endPosition);
+        expectEventPropValues(testComponent.dragEvent).toBe(
+          draggableButton,
+          generateDragPosition(startPosition, endPosition),
+          dataOnDragEnd,
+          groupOnDragEnd
+        );
       });
 
       it('should dispatch to Event Bus on each drag events', function() {
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
-        emulateDragEvent(moveEvent, 0, 0);
-        emulateDragEvent(endEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
+        emulateDragEvent(moveEvent, ...movePosition);
+        emulateDragEvent(endEvent, ...endPosition);
 
         expect(testComponent.dragStartDispatched).toBeTruthy();
         expect(testComponent.dragMoveDispatched).toBeTruthy();
@@ -219,14 +260,14 @@ export default function(): void {
         dragEventListenerService.detachDragListeners();
 
         // dragstart shouldn't fire
-        emulateDragEvent(startEvent, 0, 0, draggableButton);
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(startEvent, ...startPosition, draggableButton);
+        emulateDragEvent(moveEvent, ...firstMovePosition);
 
         // dragmove shouldn't fire
-        emulateDragEvent(moveEvent, 0, 0);
+        emulateDragEvent(moveEvent, ...movePosition);
 
         // dragend shouldn't fire
-        emulateDragEvent(endEvent, 0, 0);
+        emulateDragEvent(endEvent, ...endPosition);
 
         expect(testComponent.dragStartFired).toBeFalsy();
         expect(testComponent.dragMoveFired).toBeFalsy();

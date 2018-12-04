@@ -5,6 +5,7 @@
  */
 import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
 import { DragAndDropEventBusService } from './drag-and-drop-event-bus.service';
+import { generateDragPosition } from '../helpers.spec';
 
 type DragTransfer = {
   data: any;
@@ -17,7 +18,11 @@ export default function(): void {
       dragEventType: DragEventType,
       dragDataTransfer?: DragTransfer
     ): DragEventInterface<DragTransfer> => {
-      return { type: dragEventType, dragPosition: { pageX: 0, pageY: 0 }, dragDataTransfer: dragDataTransfer };
+      return {
+        type: dragEventType,
+        dragPosition: generateDragPosition([5, 10], [11, 22]),
+        dragDataTransfer: dragDataTransfer,
+      };
     };
     let isEmitted: boolean;
 

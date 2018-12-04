@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ClrIconCustomTag, ClrLoading, ClrMainContainer } from '@clr/angular';
 import { ClarityIcons } from '@clr/icons';
 import { ClrShapeStore } from '@clr/icons/shapes/commerce-shapes';
@@ -69,5 +69,11 @@ export class AppComponent {
       car: ClrShapeCar,
       helix: ClrShapeHelix,
     });
+  }
+
+  @ViewChild('main') main: ElementRef;
+
+  skipToContent() {
+    this.main.nativeElement.focus();
   }
 }

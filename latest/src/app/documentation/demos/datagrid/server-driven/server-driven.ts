@@ -29,6 +29,10 @@ export class DatagridServerDrivenDemo {
     }
 
     refresh(state: ClrDatagridStateInterface) {
+        // Prevent console errors related to "clrDgRefresh call on component destroyed" issue
+        if (!(state.page || state.filters)) {
+            return;
+        }
         this.loading = true;
         let filters: {[prop: string]: any[]} = {};
         if (state.filters) {

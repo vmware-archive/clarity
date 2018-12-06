@@ -17,6 +17,7 @@ gemini.suite('datepicker', child => {
       .setCaptureElements('.content-area')
       .capture('default');
   });
+
   gemini.suite('no-input', child => {
     child
       .setUrl('/datepicker/css-regression')
@@ -104,6 +105,20 @@ gemini.suite('datepicker', child => {
         actions.wait(WAIT_LOAD_TIME);
       })
       .setCaptureElements('.clr-example-2')
+      .capture('default');
+  });
+
+  gemini.suite('datepicker nested in table', child => {
+    child
+      .setUrl('/datepicker/css-regression')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-example-3', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+        this.trigger = find('.clr-example-3 .datepicker-trigger');
+        actions.click(this.trigger);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.clr-example-3')
       .capture('default');
   });
 });

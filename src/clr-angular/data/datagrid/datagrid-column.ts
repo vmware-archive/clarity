@@ -6,7 +6,6 @@
 import {
   Component,
   ContentChild,
-  ElementRef,
   EventEmitter,
   HostBinding,
   Injector,
@@ -14,13 +13,11 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
-
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
@@ -28,7 +25,6 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { CustomFilter } from './providers/custom-filter';
-import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
@@ -60,10 +56,7 @@ let nbCount: number = 0;
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
 
-            <div class="datagrid-column-separator">
-                <button #columnHandle class="datagrid-column-handle" tabindex="-1" type="button"></button>
-                <div #columnHandleTracker class="datagrid-column-handle-tracker"></div>
-            </div>
+            <clr-dg-column-separator></clr-dg-column-separator>
         </div>
     `,
   host: {
@@ -75,12 +68,7 @@ let nbCount: number = 0;
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
-  constructor(
-    private _sort: Sort<T>,
-    filters: FiltersProvider<T>,
-    private _dragDispatcher: DragDispatcher,
-    private vcr: ViewContainerRef
-  ) {
+  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private vcr: ViewContainerRef) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -123,16 +111,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    */
   public get hidden(): boolean {
     return !!this.hideable && this.hideable.hidden;
-  }
-
-  @ViewChild('columnHandle')
-  set handleElRef(value: ElementRef) {
-    this._dragDispatcher.handleRef = value;
-  }
-
-  @ViewChild('columnHandleTracker')
-  set handleTrackerElRef(value: ElementRef) {
-    this._dragDispatcher.handleTrackerRef = value;
   }
 
   /**

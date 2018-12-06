@@ -45,7 +45,6 @@ import SelectionProviderSpecs from './providers/selection.spec';
 import SortProviderSpecs from './providers/sort.spec';
 import TableSizeServiceSpec from './providers/table-size.service.spec';
 import DatagridCellRendererSpecs from './render/cell-renderer.spec';
-import DatagridColumnResizerSpecs from './render/column-resizer.spec';
 import DomAdapterSpecs from '../../utils/dom-adapter/dom-adapter.spec';
 import DatagridHeaderRendererSpecs from './render/header-renderer.spec';
 import DatagridMainRendererSpecs from './render/main-renderer.spec';
@@ -100,7 +99,6 @@ describe('Datagrid', function() {
     DatagridCellRendererSpecs();
     DatagridRowRendererSpecs();
     DatagridHeaderRendererSpecs();
-    DatagridColumnResizerSpecs();
     DatagridMainRendererSpecs();
     DatagridRowExpandAnimationSpecs();
   });

@@ -297,8 +297,6 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     field: string;
     filterValue: string;
     filterValueChange: EventEmitter<{}>;
-    handleElRef: ElementRef;
-    handleTrackerElRef: ElementRef;
     readonly hidden: boolean;
     hideable: DatagridHideableColumnModel;
     projectedFilter: any;
@@ -309,7 +307,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     /** @deprecated */ sorted: boolean;
     /** @deprecated */ sortedChange: EventEmitter<boolean>;
     updateFilterValue: string;
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, _dragDispatcher: DragDispatcher, vcr: ViewContainerRef);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;

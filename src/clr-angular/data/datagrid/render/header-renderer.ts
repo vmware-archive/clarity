@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, OnDestroy, Output, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
@@ -30,6 +30,8 @@ export class DatagridHeaderRenderer implements OnDestroy {
         .subscribe(() => this.detectStrictWidth())
     );
   }
+
+  @Output('clrDgColumnResize') resizeEmitter: EventEmitter<number> = new EventEmitter();
 
   /**
    * Indicates if the column has a strict width, so it doesn't shrink or expand based on the content.
@@ -68,6 +70,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
   public setWidth(width: number) {
     if (this.strictWidth) {
       if (this.columnResizerService.resizedBy) {
+        this.resizeEmitter.emit(width);
         this.renderer.setStyle(this.el.nativeElement, 'width', width + 'px');
         this.widthSet = false;
       }

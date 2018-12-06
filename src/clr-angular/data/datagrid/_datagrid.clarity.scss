@@ -696,6 +696,7 @@
         width: 10.416667rem;
         display: flex;
         flex-direction: column;
+        z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
 
         .switch-header {
           display: flex;

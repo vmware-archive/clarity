@@ -33,7 +33,7 @@ const POSITIONS: string[] = [
         <div class="signpost-flex-wrap">
             <div class="popover-pointer"></div>
             <div class="signpost-content-header">
-                <button type="button" class="signpost-action close" (click)="close()">
+                <button type="button" class="signpost-action close" (click)="close($event)">
                     <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
                 </button>
             </div>
@@ -67,10 +67,12 @@ export class ClrSignpostContent extends AbstractPopover {
   /**********
    *
    * @description
-   * Close function that uses the signpost instance to toggle the state of the content popover.
+   * Close function that uses the IfOpenService instance to toggle the state of the content popover.
    *
    */
-  close() {
+  close(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
     this.ifOpenService.open = false;
   }
 

@@ -954,7 +954,7 @@ export declare class ClrSignpostContent extends AbstractPopover {
     commonStrings: ClrCommonStrings;
     position: string;
     constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStrings);
-    close(): void;
+    close(event: MouseEvent): void;
 }
 
 export declare class ClrSignpostModule {

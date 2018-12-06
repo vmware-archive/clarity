@@ -39,6 +39,15 @@ export default function(): void {
       expect(testValue).not.toEqual(service.open);
     });
 
+    it('should not trigger click event on parent label elements when close button is clicked', function() {
+      // Safari and Chrome trigger click events on child button elements of label elements when the label element is clicked.
+      const closer: HTMLElement = context.clarityElement.querySelector('.signpost-action');
+      spyOn(context.testComponent, 'labelClickHandler');
+      closer.click();
+      context.detectChanges();
+      expect(context.testComponent.labelClickHandler).not.toHaveBeenCalled();
+    });
+
     it('does not allow multiple open popovers', function() {
       expect((<any>context.clarityDirective).popoverOptions.allowMultipleOpen).toBeFalsy();
     });
@@ -98,12 +107,15 @@ export default function(): void {
         <button class="outside-click-test" (click)="bodyClickHandler()">
             Button to test clicks outside of the dropdown component
         </button>
-        <clr-signpost-content [clrPosition]="position">
+        <label (click)="labelClickHandler()">
+          <clr-signpost-content [clrPosition]="position">
             Signpost content
-        </clr-signpost-content>
+          </clr-signpost-content>
+        </label>
     `,
   providers: [{ provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class SimpleTest {
   position: string = 'right-middle';
+  labelClickHandler() {}
 }

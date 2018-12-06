@@ -47,19 +47,27 @@
 <h2>Angular component</h2>
 
 <!-- Full user control -->
+<h4>Full user control</h4>
 <clr-radio-container>
-  <input clrRadio type="radio" name="angular-radio" id="first" value="0">
-  <label for="first">With id</label>
+    <clr-radio-wrapper>
+        <input clrRadio type="radio" name="angular-radio" id="first" value="0">
+        <label for="first">With id</label>
+    </clr-radio-wrapper>
 </clr-radio-container>
 
 <!-- User can't be bothered to give an ID -->
+<h4>User control without ID</h4>
 <clr-radio-container>
-  <input clrRadio type="radio" name="angular-radio" value="1">
-  <label>No id</label>
+    <clr-radio-wrapper>
+        <input clrRadio type="radio" name="angular-radio" value="1">
+        <label>No id</label>
+    </clr-radio-wrapper>
 </clr-radio-container>
 
 <!-- Radio with no label -->
+<h4>No user control, no label and no ID</h4>
 <input clrRadio type="radio" name="angular-radio" value="2">
 
 <!-- Radio with no label, but the user still wants a specific ID -->
+<h4>No user control, no label but with ID</h4>
 <input clrRadio type="radio" name="angular-radio" id="last" value="3">

@@ -15,6 +15,27 @@
     .btn {
       margin: 0;
       vertical-align: top;
+      overflow: visible;
+
+      label {
+        height: 100%;
+      }
+
+      input[type='radio']:focus,
+      input[type='checkbox']:focus {
+        appearance: none;
+        opacity: 1;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        padding: 3px 0px 3px 3px;
+        border: 1px solid rgba(81, 203, 238, 1);
+
+        &::-ms-check {
+          display: none;
+        }
+      }
     }
 
     .btn {

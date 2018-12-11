@@ -107,7 +107,8 @@
     width: 100%;
   }
 
-  .calendar-cell {
+  .calendar-cell,
+  .calendar-table .calendar-cell {
     //Dimensions
     height: $clr-calendar-click-target;
     width: $clr-calendar-click-target;

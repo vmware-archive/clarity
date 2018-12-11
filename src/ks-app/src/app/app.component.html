@@ -39,16 +39,17 @@
     </div>
   </clr-header>
   <div class="content-container">
-    <main class="content-area">
-      <router-outlet></router-outlet>
-    </main>
     <clr-vertical-nav [clr-nav-level]="2">
+      <a clrVerticalNavLink href="javascript://" (click)="skipToContent()" class="skip-handler">Skip to content</a>
       <a *ngFor="let nav of links"
          clrVerticalNavLink
          [routerLink]="nav.path"
          routerLinkActive="active">{{nav.title}}
       </a>
     </clr-vertical-nav>
+    <main class="content-area" #main tabindex="-1">
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </clr-main-container>
 

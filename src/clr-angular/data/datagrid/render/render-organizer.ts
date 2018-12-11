@@ -36,6 +36,5 @@ export class DatagridRenderOrganizer {
     this._renderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
     this.alreadySized = true;
     this._renderStep.next(DatagridRenderStep.CALCULATE_MODE_OFF);
-    this._renderStep.next(DatagridRenderStep.UPDATE_ROW_WIDTH);
   }
 }

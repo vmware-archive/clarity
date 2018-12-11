@@ -4,20 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { isPlatformBrowser } from '@angular/common';
-import { ElementRef, Inject, Injectable, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { DatagridRenderStep } from './../enums/render-step.enum';
-import { DatagridRenderOrganizer } from './../render/render-organizer';
+import { ElementRef, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 /**
  * @description
  * Internal datagrid service that holds a reference to the clr-dg-table element and exposes a method to get height.
  */
 @Injectable()
-export class TableSizeService implements OnDestroy {
+export class TableSizeService {
   private _tableRef: HTMLElement;
-  private columns: Element[];
 
   public get tableRef(): HTMLElement {
     return this._tableRef;
@@ -27,19 +22,7 @@ export class TableSizeService implements OnDestroy {
     this._tableRef = element;
   }
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    renderOrganizer: DatagridRenderOrganizer,
-    private renderer: Renderer2
-  ) {
-    this.subscriptions.push(
-      renderOrganizer.renderStep.subscribe(step => {
-        if (step === DatagridRenderStep.UPDATE_ROW_WIDTH) {
-          this.updateRowWidth();
-        }
-      })
-    );
-  }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   public set table(table: ElementRef) {
     if (isPlatformBrowser(this.platformId) && table.nativeElement) {
       this.tableRef = table.nativeElement.querySelector('.datagrid-table');
@@ -52,24 +35,5 @@ export class TableSizeService implements OnDestroy {
       return;
     }
     return `${this.tableRef.clientHeight}px`;
-  }
-
-  private subscriptions: Subscription[] = [];
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
-  }
-
-  updateRowWidth(): void {
-    if (!this.tableRef) {
-      return;
-    }
-    let newWidth: number = 0;
-    this.renderer.removeStyle(this.tableRef, 'width');
-    this.columns = Array.from(this.tableRef.querySelectorAll('.datagrid-column'));
-    this.columns.forEach(item => {
-      newWidth += item.clientWidth;
-    });
-    this.renderer.setStyle(this.tableRef, 'width', newWidth + 'px');
   }
 }

@@ -48,7 +48,6 @@ export default function(): void {
         DatagridRenderStep.COMPUTE_COLUMN_WIDTHS,
         DatagridRenderStep.ALIGN_COLUMNS,
         DatagridRenderStep.CALCULATE_MODE_OFF,
-        DatagridRenderStep.UPDATE_ROW_WIDTH,
       ]);
     });
 

@@ -8,7 +8,6 @@ import { Component, Renderer2, ViewChild } from '@angular/core';
 import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridHideableColumn } from './datagrid-hideable-column';
 import { TestContext } from './helpers.spec';
-import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
@@ -22,7 +21,6 @@ const PROVIDERS_NEEDED = [
   FiltersProvider,
   DatagridRenderOrganizer,
   DomAdapter,
-  DragDispatcher,
   Page,
   StateDebouncer,
   TableSizeService,

@@ -10,7 +10,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 
-import { DragDispatcher } from './drag-dispatcher';
 import { FiltersProvider } from './filters';
 import { Page } from './page';
 import { Sort } from './sort';
@@ -41,15 +40,7 @@ interface TestContext {
   table: HTMLElement;
 }
 
-const PROVIDERS_NEEDED = [
-  Sort,
-  FiltersProvider,
-  DatagridRenderOrganizer,
-  DomAdapter,
-  DragDispatcher,
-  Page,
-  StateDebouncer,
-];
+const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, Page, StateDebouncer];
 
 export default function(): void {
   describe('TableSizeService', function() {

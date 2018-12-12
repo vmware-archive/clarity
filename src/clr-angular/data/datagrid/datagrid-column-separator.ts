@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Renderer2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, Renderer2 } from '@angular/core';
 
 import { ColumnResizerService } from './providers/column-resizer.service';
 import { TableSizeService } from './providers/table-size.service';
@@ -33,7 +34,8 @@ export class ClrDatagridColumnSeparator {
   constructor(
     public columnResizerService: ColumnResizerService,
     private renderer: Renderer2,
-    private tableSizeService: TableSizeService
+    private tableSizeService: TableSizeService,
+    @Inject(DOCUMENT) private document: any
   ) {
     this.columnSeparatorId = 'dg-col-separator-' + nbCount++;
   }
@@ -46,14 +48,14 @@ export class ClrDatagridColumnSeparator {
 
   public moveTracker(resizeTrackerEl: HTMLElement) {
     this.renderer.setStyle(resizeTrackerEl, 'transform', `translateX(${this.columnResizerService.resizedBy}px)`);
-    this.renderer.setStyle(document.body, 'cursor', 'col-resize');
+    this.renderer.setStyle(this.document.body, 'cursor', 'col-resize');
     this.redFlagTracker(resizeTrackerEl);
   }
 
   public hideTracker(resizeTrackerEl: HTMLElement) {
     this.renderer.setStyle(resizeTrackerEl, 'display', 'none');
     this.renderer.setStyle(resizeTrackerEl, 'transform', `translateX(0px)`);
-    this.renderer.setStyle(document.body, 'cursor', 'auto');
+    this.renderer.setStyle(this.document.body, 'cursor', 'auto');
   }
 
   private redFlagTracker(resizeTrackerEl: HTMLElement) {

@@ -14,6 +14,7 @@ import { ClrCommonPopoverModule } from '../../popover/common/popover.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
+import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
 
 import { DatagridRowExpandAnimation } from './animation-hack/row-expand-animation';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
@@ -25,6 +26,7 @@ import { ClrDatagridActionBar } from './datagrid-action-bar';
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { ClrDatagridCell } from './datagrid-cell';
 import { ClrDatagridColumn } from './datagrid-column';
+import { ClrDatagridColumnSeparator } from './datagrid-column-separator';
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
@@ -40,7 +42,6 @@ import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DatagridCellRenderer } from './render/cell-renderer';
-import { DatagridColumnResizer } from './render/column-resizer';
 import { DatagridHeaderRenderer } from './render/header-renderer';
 import { DatagridMainRenderer } from './render/main-renderer';
 import { DatagridRowRenderer } from './render/row-renderer';
@@ -54,6 +55,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridActionBar,
   ClrDatagridActionOverflow,
   ClrDatagridColumn,
+  ClrDatagridColumnSeparator,
   ClrDatagridColumnToggle,
   ClrDatagridHideableColumn,
   ClrDatagridFilter,
@@ -76,7 +78,6 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Renderers
   DatagridMainRenderer,
   DatagridHeaderRenderer,
-  DatagridColumnResizer,
   DatagridRowRenderer,
   DatagridCellRenderer,
 
@@ -101,6 +102,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrCommonPopoverModule,
     ClrLoadingModule,
     ClrOutsideClickModule,
+    ClrDragAndDropModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
   exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],

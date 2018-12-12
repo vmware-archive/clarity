@@ -22,6 +22,7 @@ import DatagridCellSpecs from './datagrid-cell.spec';
 import DatagridColumnToggleButtonSpecs from './datagrid-column-toggle-button.spec';
 import DatagridColumnToggleSpecs from './datagrid-column-toggle.spec';
 import DatagridColumnSpecs from './datagrid-column.spec';
+import DatagridColumnSeparatorSpecs from './datagrid-column-separator.spec';
 import DatagridFilterSpecs from './datagrid-filter.spec';
 import DatagridFooterSpecs from './datagrid-footer.spec';
 import DatagridHideableColumnSpec from './datagrid-hideable-column.model.spec';
@@ -45,7 +46,6 @@ import SelectionProviderSpecs from './providers/selection.spec';
 import SortProviderSpecs from './providers/sort.spec';
 import TableSizeServiceSpec from './providers/table-size.service.spec';
 import DatagridCellRendererSpecs from './render/cell-renderer.spec';
-import DatagridColumnResizerSpecs from './render/column-resizer.spec';
 import DomAdapterSpecs from '../../utils/dom-adapter/dom-adapter.spec';
 import DatagridHeaderRendererSpecs from './render/header-renderer.spec';
 import DatagridMainRendererSpecs from './render/main-renderer.spec';
@@ -55,6 +55,7 @@ import DatagridRowRendererSpecs from './render/row-renderer.spec';
 import WrappedCellSpec from './wrapped-cell.spec';
 import WrappedColumnSpec from './wrapped-column.spec';
 import WrappedRowSpec from './wrapped-row.spec';
+import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 
 describe('Datagrid', function() {
   addHelpers();
@@ -69,6 +70,7 @@ describe('Datagrid', function() {
     ColumnToggleButtonsServiceSpecs();
     DisplayModeServiceSpecs();
     TableSizeServiceSpec();
+    ColumnResizerServiceSpecs();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();
@@ -76,6 +78,7 @@ describe('Datagrid', function() {
     DatagridCellSpecs();
     DatagridFilterSpecs();
     DatagridColumnSpecs();
+    DatagridColumnSeparatorSpecs();
     DatagridItemsSpecs();
     DatagridItemsTrackBySpecs();
     DatagridRowSpecs();
@@ -100,7 +103,6 @@ describe('Datagrid', function() {
     DatagridCellRendererSpecs();
     DatagridRowRendererSpecs();
     DatagridHeaderRendererSpecs();
-    DatagridColumnResizerSpecs();
     DatagridMainRendererSpecs();
     DatagridRowExpandAnimationSpecs();
   });

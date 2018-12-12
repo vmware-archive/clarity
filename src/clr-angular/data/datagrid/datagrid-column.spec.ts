@@ -18,7 +18,6 @@ import { TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
-import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
@@ -32,7 +31,6 @@ const PROVIDERS_NEEDED = [
   FiltersProvider,
   DatagridRenderOrganizer,
   DomAdapter,
-  DragDispatcher,
   Page,
   StateDebouncer,
   TableSizeService,
@@ -44,7 +42,6 @@ export default function(): void {
     describe('Typescript API', function() {
       let sortService: Sort<number>;
       let filtersService: FiltersProvider<number>;
-      let dragDispatcherService: DragDispatcher;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
 
@@ -53,8 +50,7 @@ export default function(): void {
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        dragDispatcherService = undefined;
-        component = new ClrDatagridColumn(sortService, filtersService, dragDispatcherService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null);
       });
 
       it('has an id for identification', function() {

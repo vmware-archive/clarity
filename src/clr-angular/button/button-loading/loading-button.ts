@@ -73,12 +73,14 @@ export class ClrLoadingButton implements LoadingListener {
     switch (state) {
       case ClrLoadingState.DEFAULT:
         this.renderer.removeStyle(this.el.nativeElement, 'width');
+        this.renderer.removeStyle(this.el.nativeElement, 'transform'); // for chromium render bug see issue https://github.com/vmware/clarity/issues/2700
         if (!this.disabled) {
           this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
         }
         break;
       case ClrLoadingState.LOADING:
         this.setExplicitButtonWidth();
+        this.renderer.setStyle(this.el.nativeElement, 'transform', 'translatez(0)'); // for chromium render bug see issue https://github.com/vmware/clarity/issues/2700
         this.renderer.setAttribute(this.el.nativeElement, 'disabled', '');
         break;
       case ClrLoadingState.SUCCESS:

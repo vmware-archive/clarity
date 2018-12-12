@@ -53,6 +53,11 @@ export class DatagridRowExpandAnimation {
     }
 
     this.oldHeight = this.domAdapter.computedHeight(this.el.nativeElement);
+    // In case height has not yet been set. When starting expanded, for example.
+    // See https://github.com/vmware/clarity/issues/2904
+    if (isNaN(this.oldHeight)) {
+      this.oldHeight = 0;
+    }
     // We set the height of the element immediately to avoid a flicker before the animation starts.
     this.renderer.setStyle(this.el.nativeElement, 'height', this.oldHeight + 'px');
     this.renderer.setStyle(this.el.nativeElement, 'overflow-y', 'hidden');

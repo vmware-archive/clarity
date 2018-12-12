@@ -5,6 +5,7 @@
  */
 import { ChangeDetectionStrategy, Component, Input, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
+import { async } from '@angular/core/testing';
 
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
@@ -189,6 +190,25 @@ class ActionableRowTest {
 })
 class ExpandableRowTest {
   items = [1, 2, 3];
+  expandable = true;
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column>Second</clr-dg-column>
+
+        <clr-dg-row>
+          <clr-dg-cell>First item</clr-dg-cell>
+          <clr-dg-cell>Second item</clr-dg-cell>
+          <clr-dg-row-detail *clrIfExpanded="true">Detail</clr-dg-row-detail>
+        </clr-dg-row>
+        <clr-dg-footer></clr-dg-footer>
+    </clr-datagrid>
+`,
+})
+class ExpandedOnInitTest {
   expandable = true;
 }
 
@@ -603,6 +623,15 @@ export default function(): void {
         expect(globalExpandableRows.hasExpandableRow).toBe(false);
         expect(context.clarityElement.querySelector('.datagrid-column.datagrid-expandable-caret')).toBeNull();
       });
+
+      it('can expand rows on initialization', async(function() {
+        const context = this.create(ClrDatagrid, ExpandedOnInitTest, [HideableColumnService]);
+        const caretIcon = context.clarityElement.querySelector('.datagrid-expandable-caret-icon');
+        expect(caretIcon).not.toBeNull();
+        expect(caretIcon.getAttribute('dir')).toBe('down');
+        const rowDetail = context.clarityElement.querySelector('.datagrid-row-detail');
+        expect(rowDetail).not.toBeNull();
+      }));
     });
 
     describe('Single selection', function() {

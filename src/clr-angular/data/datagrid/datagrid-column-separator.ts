@@ -15,12 +15,12 @@ let nbCount: number = 0;
 @Component({
   selector: 'clr-dg-column-separator',
   template: `
-    <button class="datagrid-column-handle" tabindex="-1" type="button"
+    <div class="datagrid-column-handle" aria-hidden="true"
       clrDraggable 
       [clrGroup]="columnSeparatorId" 
       (clrDragStart)="showTracker(resizeTrackerEl)" 
       (clrDragMove)="moveTracker($event, resizeTrackerEl)" 
-      (clrDragEnd)="hideTracker(resizeTrackerEl)"></button>
+      (clrDragEnd)="hideTracker(resizeTrackerEl)"></div>
     <div class="datagrid-column-resize-tracker" #resizeTrackerEl></div>
     `,
   host: {

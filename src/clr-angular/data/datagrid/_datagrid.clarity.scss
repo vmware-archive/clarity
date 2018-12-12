@@ -464,8 +464,6 @@
         }
 
         .datagrid-column-handle {
-          @include clr-no-styles-button();
-          display: block;
           position: absolute;
           width: calc(0.5rem + #{$clr-rem-1px});
           right: -0.25rem;

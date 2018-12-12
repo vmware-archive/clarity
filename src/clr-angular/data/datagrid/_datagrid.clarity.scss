@@ -477,24 +477,25 @@
         }
 
         .datagrid-column-handle {
-          @include clr-no-styles-button();
-          display: block;
           position: absolute;
           width: calc(0.5rem + #{$clr-rem-1px});
-          right: -0.5rem;
+          right: -0.25rem;
           top: -0.25rem;
           cursor: col-resize;
           height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);
         }
-        .datagrid-column-handle-tracker {
+        .datagrid-column-resize-tracker {
           position: absolute;
-          right: 0;
-          top: $clr-datagrid-column-handle-tracker-top;
+          top: -0.5rem;
           display: none;
-          width: 0;
+          width: 1px;
+          height: 0;
           border-right: $clr-default-borderwidth dotted $clr-action-blue-lighter;
+          transform: translateX(0px);
+          cursor: col-resize;
         }
+
         .exceeded-max {
           border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
         }
@@ -800,9 +801,6 @@
       &::after {
         height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
         top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
-      }
-      .datagrid-column-handle-tracker {
-        top: 0.5 * $clr-datagrid-column-handle-tracker-top;
       }
     }
     .datagrid-cell {

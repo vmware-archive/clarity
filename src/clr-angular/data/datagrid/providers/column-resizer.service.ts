@@ -37,13 +37,13 @@ export class ColumnResizerService {
     return this.widthBeforeResize - this.minColumnWidth;
   }
 
-  public startResize() {
+  public startResize(): void {
     this._resizedBy = 0;
     this.isWithinMaxResizeRange = true;
     this.widthBeforeResize = this.domAdapter.clientRect(this.el.nativeElement).width;
   }
 
-  public endResize() {
+  public endResize(): void {
     this.organizer.resize();
   }
 
@@ -51,7 +51,7 @@ export class ColumnResizerService {
     return this.widthBeforeResize + this._resizedBy;
   }
 
-  public calculateResize(event: ClrDragEvent<any>) {
+  public calculateResize(event: ClrDragEvent<any>): void {
     const moveX = event.dragPosition.moveX;
     // returns the resize amount within the allowed range
     if (moveX < -this.maxResizeRange) {
@@ -61,6 +61,5 @@ export class ColumnResizerService {
       this._resizedBy = moveX;
       this.isWithinMaxResizeRange = true;
     }
-    return this._resizedBy;
   }
 }

@@ -6,6 +6,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Renderer2 } from '@angular/core';
 
+import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { ColumnResizerService } from './providers/column-resizer.service';
 import { TableSizeService } from './providers/table-size.service';
 
@@ -17,9 +18,9 @@ let nbCount: number = 0;
     <button class="datagrid-column-handle" tabindex="-1" type="button"
       clrDraggable 
       [clrGroup]="columnSeparatorId" 
-      (clrDragStart)="columnResizerService.startResize(); showTracker(resizeTrackerEl)" 
-      (clrDragMove)="columnResizerService.calculateResize($event); moveTracker(resizeTrackerEl)" 
-      (clrDragEnd)="columnResizerService.endResize(); hideTracker(resizeTrackerEl)"></button>
+      (clrDragStart)="showTracker(resizeTrackerEl)" 
+      (clrDragMove)="moveTracker($event, resizeTrackerEl)" 
+      (clrDragEnd)="hideTracker(resizeTrackerEl)"></button>
     <div class="datagrid-column-resize-tracker" #resizeTrackerEl></div>
     `,
   host: {
@@ -32,7 +33,7 @@ export class ClrDatagridColumnSeparator {
   public columnSeparatorId: string;
 
   constructor(
-    public columnResizerService: ColumnResizerService,
+    private columnResizerService: ColumnResizerService,
     private renderer: Renderer2,
     private tableSizeService: TableSizeService,
     @Inject(DOCUMENT) private document: any
@@ -41,18 +42,21 @@ export class ClrDatagridColumnSeparator {
   }
 
   public showTracker(resizeTrackerEl: HTMLElement) {
+    this.columnResizerService.startResize();
     const tableHeight = this.tableSizeService.getColumnDragHeight();
     this.renderer.setStyle(resizeTrackerEl, 'height', tableHeight);
     this.renderer.setStyle(resizeTrackerEl, 'display', 'block');
   }
 
-  public moveTracker(resizeTrackerEl: HTMLElement) {
+  public moveTracker(event: ClrDragEvent<any>, resizeTrackerEl: HTMLElement) {
+    this.columnResizerService.calculateResize(event);
     this.renderer.setStyle(resizeTrackerEl, 'transform', `translateX(${this.columnResizerService.resizedBy}px)`);
     this.renderer.setStyle(this.document.body, 'cursor', 'col-resize');
     this.redFlagTracker(resizeTrackerEl);
   }
 
   public hideTracker(resizeTrackerEl: HTMLElement) {
+    this.columnResizerService.endResize();
     this.renderer.setStyle(resizeTrackerEl, 'display', 'none');
     this.renderer.setStyle(resizeTrackerEl, 'transform', `translateX(0px)`);
     this.renderer.setStyle(this.document.body, 'cursor', 'auto');

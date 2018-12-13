@@ -1268,6 +1268,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://vmware.github.io/clarity/news/1.0.1</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://vmware.github.io/clarity/news/1.0.0</loc>
         <changefreq>daily</changefreq>
     </url>

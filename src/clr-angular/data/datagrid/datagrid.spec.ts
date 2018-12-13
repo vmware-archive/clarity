@@ -372,7 +372,7 @@ export default function(): void {
         });
         expect(resizeSteps).toBe(0);
         context.clarityDirective.resize();
-        expect(resizeSteps).toBe(7);
+        expect(resizeSteps).toBe(6);
       });
     });
 

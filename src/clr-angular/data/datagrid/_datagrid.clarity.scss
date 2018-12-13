@@ -24,7 +24,7 @@
     border-bottom-right-radius: 0;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     overflow: auto;
-    height: 100%;
+    flex: 1 1 auto;
     margin-top: 0.5rem;
   }
 
@@ -73,13 +73,11 @@
   }
 
   .datagrid-row {
-    display: block;
-    width: auto;
-
     &:hover {
       .datagrid-row-sticky,
       .datagrid-row-scrollable,
-      .datagrid-row-detail {
+      .datagrid-row-detail,
+      .datagrid-cell {
         background-color: $clr-datagrid-row-hover;
       }
     }
@@ -299,13 +297,18 @@
     }
   }
 
+  .datagrid-table-wrapper {
+    display: flex;
+  }
+
   .datagrid-table {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
     align-content: flex-start;
-    width: auto;
     min-height: 3rem; // Includes header and space for a single (non existing) row
     position: relative;
+    height: 100%;
 
     .datagrid-body {
       width: auto;
@@ -843,6 +846,10 @@
         margin: 0;
         outline-offset: $clr-datagrid-compact-outline-offset;
       }
+
+      .clr-form-control-disabled .datagrid-footer-select.clr-checkbox-wrapper input[type='checkbox']:checked + label {
+        top: 0;
+      }
     }
   }
 
@@ -954,7 +961,8 @@
     // Hide parts of the display table not used for calculation.
     .datagrid,
     .datagrid-footer,
-    .datagrid-row-master {
+    .datagrid-row-master,
+    .datagrid-row-clickable {
       display: none;
     }
 

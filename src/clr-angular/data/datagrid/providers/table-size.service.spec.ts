@@ -71,12 +71,6 @@ export default function(): void {
       expect(this.sizeService.tableRef).toBeDefined();
     });
 
-    it('updates row width with the correct size', function(this: TestContext) {
-      expect(this.table.style.width).toBeFalsy();
-      this.sizeService.updateRowWidth();
-      expect(this.table.style.width).toBe('668px');
-    });
-
     it('calculates the correct column drag height', function(this: TestContext) {
       expect(this.sizeService.getColumnDragHeight()).toEqual('300px');
       this.fixture.componentInstance.height = 422;

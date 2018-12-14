@@ -129,9 +129,7 @@ export default function(): void {
     let columnHeader4DraggableDebugElement: DebugElement;
 
     let columnHeader1DraggableDirective: ClrDraggable<any>;
-    let columnHeader2DraggableDirective: ClrDraggable<any>;
     let columnHeader3DraggableDirective: ClrDraggable<any>;
-    let columnHeader4DraggableDirective: ClrDraggable<any>;
 
     const widthOf = (el: HTMLElement): number => {
       return Math.round(el.getBoundingClientRect().width);

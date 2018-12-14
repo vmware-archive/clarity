@@ -8,17 +8,21 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ClrWizard } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-custom-buttons', templateUrl: './wizard-custom-buttons.demo.html' })
+@Component({
+  selector: 'clr-wizard-custom-buttons',
+  templateUrl: './wizard-custom-buttons.demo.html',
+})
 export class WizardCustomButtonsDemo {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  public handleDangerClick(): void {
+  open = false;
+  showWarning = false;
+
+  handleDangerClick() {
     this.wizard.finish(false);
   }
 
-  public showWarning = false;
-
-  public doCustomClick(buttonType: string): void {
+  doCustomClick(buttonType: string) {
     if ('custom-next' === buttonType) {
       this.wizard.next(false);
     }

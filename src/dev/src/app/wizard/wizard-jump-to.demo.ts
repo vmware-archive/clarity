@@ -9,13 +9,18 @@ import { Component, ViewChild } from '@angular/core';
 import { ClrWizard } from '@clr/angular';
 import { ClrWizardPage } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-jump-to', templateUrl: './wizard-jump-to.demo.html' })
+@Component({
+  selector: 'clr-wizard-jump-to',
+  templateUrl: './wizard-jump-to.demo.html',
+})
 export class WizardJumpToDemo {
   @ViewChild('wizard') wizard: ClrWizard;
   @ViewChild('pageThree') pageThree: ClrWizardPage;
   @ViewChild('pageFive') pageFive: ClrWizardPage;
 
-  public jumpTo(page: ClrWizardPage) {
+  open = false;
+
+  jumpTo(page: ClrWizardPage) {
     if (page && page.completed) {
       this.wizard.navService.currentPage = page;
     } else {
@@ -24,11 +29,11 @@ export class WizardJumpToDemo {
     this.wizard.open();
   }
 
-  public jumpToThree(): void {
+  jumpToThree() {
     this.jumpTo(this.pageThree);
   }
 
-  public jumpToFive(): void {
+  jumpToFive() {
     this.jumpTo(this.pageFive);
   }
 }

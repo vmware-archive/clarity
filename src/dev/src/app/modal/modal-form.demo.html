@@ -5,8 +5,8 @@
   -->
 
 <p>
-    <button class="btn btn-primary" (click)="basic = true;">Show modal</button>
-    <span>Model Info: {{diagnostic}}</span>
+  <button class="btn btn-primary" (click)="basic = true">Show modal</button>
+  <span>Model Info: {{model | json}}</span>
 </p>
 <clr-modal [(clrModalOpen)]="basic">
     <h3 class="modal-title">I have a nice title</h3>
@@ -19,7 +19,7 @@
                     <input type="text" id="contactInfo"
                            [(ngModel)]="model.contactInfo"
                            name="contactInfo">
-                    <label for="contactInfo">Model Info: {{diagnostic}}</label>
+                    <label for="contactInfo">Model Info: {{model | json}}</label>
                 </div>
                 <button type="submit">Submit</button>
             </section>

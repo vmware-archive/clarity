@@ -5,12 +5,17 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
+
 import { ClrWizard } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-form-validation', templateUrl: './wizard-form-validation.demo.html' })
+@Component({
+  selector: 'clr-wizard-form-validation',
+  templateUrl: './wizard-form-validation.demo.html',
+})
 export class WizardFormValidation {
   @ViewChild('wizard') wizard: ClrWizard;
   @ViewChild('number') numberField: any;
 
+  open = false;
   model = { name: '', favorite: '', number: '' };
 }

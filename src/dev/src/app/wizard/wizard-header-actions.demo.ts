@@ -7,13 +7,17 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ClrWizard } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-header-actions', templateUrl: './wizard-header-actions.demo.html' })
+@Component({
+  selector: 'clr-wizard-header-actions',
+  templateUrl: './wizard-header-actions.demo.html',
+})
 export class WizardHeaderActionsDemo {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  userActive: boolean = true;
+  open = false;
+  userActive = true;
 
-  public headerActionClicked(actionId: string): void {
+  headerActionClicked(actionId: string) {
     if ('clr-wizard-header-action-search' === actionId) {
       window.open('https://www.google.com/#q=what+is+the+meaning+of+life&*', '_blank');
     } else if ('clr-wizard-header-action-info' === actionId) {

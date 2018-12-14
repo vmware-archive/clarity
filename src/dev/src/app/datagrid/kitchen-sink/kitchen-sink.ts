@@ -3,15 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import '@clr/icons/shapes/essential-shapes';
-
 import { Component } from '@angular/core';
-
 import { ClrDatagridSortOrder } from '@clr/angular';
+
 import { User } from '../inventory/user';
 import { PokemonComparator } from '../utils/pokemon-comparator';
 import { PokemonFilter } from '../utils/pokemon-filter';
-
 import { DatagridKitchenSinkData } from './kitchen-sink-data';
 
 @Component({
@@ -20,6 +19,9 @@ import { DatagridKitchenSinkData } from './kitchen-sink-data';
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridKitchenSinkDemo {
+  nameFilter = '';
+  currentPageSize = 1;
+  selectedUser: User;
   nonPaginatedUsers: User[];
   users: User[];
   variableLengthUsers: User[];
@@ -51,6 +53,7 @@ export class DatagridKitchenSinkDemo {
   get selectable() {
     return !!this.selected2;
   }
+
   set selectable(value: boolean) {
     if (value) {
       this.selected2 = [];
@@ -74,7 +77,7 @@ export class DatagridKitchenSinkDemo {
     this.cleanUp();
   }
 
-  cleanUp(): void {
+  cleanUp() {
     this.toAdd = [];
     this.toDelete = [];
     this.toEdit = null;

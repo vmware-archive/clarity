@@ -155,14 +155,14 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   }
 
   /**
-   * Index of the first item displayed on the current page, starting at 0
+   * Index of the first item displayed on the current page, starting at 0, -1 if none displayed
    */
   public get firstItem(): number {
     return this.page.firstItem;
   }
 
   /**
-   * Index of the last item displayed on the current page, starting at 0
+   * Index of the last item displayed on the current page, starting at 0, -1 if none displayed
    */
   public get lastItem(): number {
     return this.page.lastItem;

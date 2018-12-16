@@ -68,6 +68,9 @@ export default function(): void {
         pageService.current = 42;
         expect(component.firstItem).toBe(pageService.firstItem);
         expect(component.lastItem).toBe(pageService.lastItem);
+        pageService.totalItems = 0;
+        expect(component.firstItem).toBe(-1);
+        expect(component.lastItem).toBe(-1);
       });
 
       it('resets the page size to 0 when pagination is destroyed', () => {

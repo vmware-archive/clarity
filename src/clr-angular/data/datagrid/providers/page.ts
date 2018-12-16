@@ -44,9 +44,9 @@ export class Page {
   /**
    * Total items (needed to guess the last page)
    */
-  private _totalItems = 0;
+  private _totalItems?: number;
   public get totalItems(): number {
-    return this._totalItems;
+    return this._totalItems || 0; // remains 0 if not set to avoid breaking change
   }
   public set totalItems(total: number) {
     this._totalItems = total;
@@ -124,9 +124,13 @@ export class Page {
   }
 
   /**
-   * Index of the first item displayed on the current page, starting at 0
+   * Index of the first item displayed on the current page, starting at 0, -1 if none displayed
    */
   public get firstItem(): number {
+    if (this._totalItems === 0) {
+      return -1;
+    }
+
     if (this.size === 0) {
       return 0;
     }
@@ -134,9 +138,13 @@ export class Page {
   }
 
   /**
-   * Index of the last item displayed on the current page, starting at 0
+   * Index of the last item displayed on the current page, starting at 0, -1 if none displayed
    */
   public get lastItem(): number {
+    if (this._totalItems === 0) {
+      return -1;
+    }
+
     if (this.size === 0) {
       return this.totalItems - 1;
     }

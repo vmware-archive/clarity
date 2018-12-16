@@ -43,6 +43,9 @@ export default function(): void {
     it('starts uninitialized', function() {
       expect(this.itemsInstance.smart).toBe(false);
       expect(this.itemsInstance.displayed.length).toBe(0);
+      expect(this.pageInstance.totalItems).toBe(0);
+      expect(this.pageInstance.firstItem).toBe(0);
+      expect(this.pageInstance.lastItem).toBe(-1);
     });
 
     it("doesn't process the items at all if not smart", function() {
@@ -58,6 +61,7 @@ export default function(): void {
     it("doesn't process the items if no filter, sort or pagination has been set", function() {
       setSmartItems(this.itemsInstance);
       expect(this.itemsInstance.displayed).toEqual(ALL_ITEMS);
+      expect(this.pageInstance.totalItems).toBe(10); // totalItems is explicitly set
     });
 
     it('filters according to the Filter provider', function() {
@@ -117,6 +121,17 @@ export default function(): void {
       expect(this.pageInstance.totalItems).toBe(10);
       this.evenFilter.toggle();
       expect(this.pageInstance.totalItems).toBe(5);
+    });
+
+    it('gets -1 of firstItem and lastItem if gets 0 item after filtering', function() {
+      const filter = new NegativeFilter();
+      this.filtersInstance.add(filter);
+      setSmartItems(this.itemsInstance);
+      expect(this.pageInstance.totalItems).toBe(10);
+      filter.toggle();
+      expect(this.pageInstance.totalItems).toBe(0);
+      expect(this.pageInstance.firstItem).toBe(-1);
+      expect(this.pageInstance.lastItem).toBe(-1);
     });
 
     it('exposes an Observable to follow items changes', function() {
@@ -206,6 +221,25 @@ class EvenFilter implements ClrDatagridFilterInterface<number> {
 
   accepts(n: number): boolean {
     return n % 2 === 0;
+  }
+}
+
+class NegativeFilter implements ClrDatagridFilterInterface<number> {
+  private active = false;
+
+  toggle() {
+    this.active = !this.active;
+    this.changes.next(this.active);
+  }
+
+  isActive(): boolean {
+    return this.active;
+  }
+
+  changes = new Subject<boolean>();
+
+  accepts(n: number): boolean {
+    return n < 0;
   }
 }
 

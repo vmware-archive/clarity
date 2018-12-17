@@ -5,12 +5,17 @@
  */
 
 export const ICONS_TAGS = {
+  cog: ['gear'],
+  check: ['status', 'ok', 'normal', 'enable'],
+  'check-circle': ['status', 'ok', 'normal', 'success'],
+  'success-standard': ['check', 'status', 'normal', 'ok'],
   'unknown-status': ['help', 'question'],
+  'plus-circle': ['add'],
   help: ['question'],
   floppy: ['disk', 'save'],
   image: ['graphic'],
   envelope: ['letter'],
-  times: ['multiply'],
+  times: ['multiply', 'x', 'delete'],
   'times-circle': ['delete'],
   power: ['on'],
   heart: ['love'],
@@ -19,11 +24,12 @@ export const ICONS_TAGS = {
   'happy-face': ['emoji'],
   'neutral-face': ['emoji'],
   'sad-face': ['emoji'],
-  angle: ['arrow'],
+  angle: ['arrow', 'collapse', 'expand', 'chevron'],
   'angle-double': ['arrow'],
   flame: ['fire'],
   'talk-bubbles': ['chat'],
   truck: ['shipping'],
   trash: ['delete', 'remove'],
   'step-forward-2': ['first', 'last', 'start', 'end'],
+  sync: ['update'],
 };

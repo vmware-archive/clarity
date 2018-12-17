@@ -4,8 +4,8 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4">
+<div class="clr-row">
+    <div class="clr-col-12 col-md-4">
         <clr-tree-node [clrExpanded]="true">
             Permissions
             <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
@@ -17,7 +17,7 @@
             </clr-tree-node>
         </clr-tree-node>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-8">
+    <div class="clr-col-12 clr-col-md-8">
         <pre class="example-display-json">{{displayPermissions}}</pre>
     </div>
 </div>

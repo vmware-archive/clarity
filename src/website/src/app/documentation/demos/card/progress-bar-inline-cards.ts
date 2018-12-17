@@ -6,8 +6,8 @@
 import { Component, OnInit } from '@angular/core';
 
 const HTML_EXAMLPE = `
-<div class="row">
-    <div class="col-xs-12 col-sm-6">
+<div class="clr-row">
+    <div class="clr-col-12 clr-col-sm-6">
         <div class="card">
             <div class="card-block">
                 <h4 class="card-title">Card title</h4>

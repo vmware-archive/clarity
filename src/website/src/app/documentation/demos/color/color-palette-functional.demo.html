@@ -8,9 +8,9 @@
     <clr-tab>
         <button clrTabLink>Light Theme Colors</button>
         <clr-tab-content *clrIfActive>
-            <div class="row">
+            <div class="clr-row">
                 <clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
-                <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of lightThemePalettes">
+                <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of lightThemePalettes">
                     <h6 class="legend dark-text">{{palette.legend}}</h6>
                     <ul class="card card-block card-swatch-block">
                         <li class="card-swatch" *ngFor="let color of palette.colors"
@@ -43,9 +43,9 @@
     <clr-tab>
         <button clrTabLink>Dark Theme Colors</button>
         <clr-tab-content *clrIfActive>
-            <div class="row dark">
+            <div class="clr-row dark">
                 <clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
-                <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of darkThemePalettes">
+                <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of darkThemePalettes">
                     <h6 class="legend">{{palette.legend}}</h6>
                     <ul class="card card-block card-swatch-block">
                         <li class="card-swatch" *ngFor="let color of palette.colors"

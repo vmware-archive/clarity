@@ -99,9 +99,9 @@
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
                         <label>Your pok&egrave;mon will be {{ colorLabel }}.</label>
-                        <div class="row wizdemo-color-block-row">
+                        <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let color of colorList"
-                                class="wizdemo-color-block-wrapper col-xs-3">
+                                class="wizdemo-color-block-wrapper clr-col-3">
                                     <div class="wizdemo-color-block"
                                          [style.backgroundColor]="color"
                                          [class.active]="color === model.color"
@@ -129,9 +129,9 @@
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
                         <label>Your pok&egrave;mon {{ textsplanationOfPower }}.</label>
-                        <div class="row wizdemo-color-block-row">
+                        <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let icon of powerSources"
-                                class="wizdemo-color-block-wrapper col-xs-3">
+                                class="wizdemo-color-block-wrapper clr-col-3">
                                     <div class="wizdemo-color-block is-icon"
                                          [class.active]="icon === model.power"
                                          [class.disabled]="icon === model.weakness"
@@ -159,9 +159,9 @@
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
                         <label>Your pok&egrave;mon {{ textsplanationOfWeakness }}.</label>
-                        <div class="row wizdemo-color-block-row">
+                        <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let icon of powerSources"
-                                class="wizdemo-color-block-wrapper col-xs-3">
+                                class="wizdemo-color-block-wrapper clr-col-3">
                                     <div class="wizdemo-color-block is-icon"
                                          [class.active]="icon === model.weakness"
                                          [class.disabled]="icon === model.power"

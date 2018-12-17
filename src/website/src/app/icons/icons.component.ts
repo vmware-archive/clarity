@@ -47,7 +47,7 @@ export const COMMON_PATH = 'assets/icons/';
 export class IconsComponent implements AfterViewInit, OnDestroy {
   allSetsLink = environment.icons_url;
 
-  // Check whether the current route is on ./icons/icon-sets
+  // Check whether the current route is on ./icons
   isOnIconSetsRoute = false;
 
   // Scroll this much distance to make the searchbar sticky.
@@ -78,7 +78,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
   ) {
     this._subscriptions.push(
       this._router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
-        this.isOnIconSetsRoute = _router.isActive('/icons/icon-sets', false);
+        this.isOnIconSetsRoute = _router.isActive('/icons', true);
 
         // reset search input value when route changes to another pages
         if (!this.isOnIconSetsRoute) {

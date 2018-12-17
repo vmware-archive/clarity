@@ -1,0 +1,82 @@
+<h2>
+    Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Static progress bar</h6>
+        <p>Static progress bars are progress bars that do not animate when they are drawn in the DOM. This allows them to be used inside of Kendo UI data grids and other components that redraw themselves at set intervals.</p>
+        <p>Because IE/Edge offered no way to override the default animation of HTML5 progress elements, a new component had to be created. This component consists of a <code class="clr-code">.progress-static</code> container with a <code class="clr-code">.progress-meter</code>            element inside of it.</p>
+        <p>The <code class="clr-code">.progress-meter</code> component has to use a <code class="clr-code">data-value</code> attribute instead of a <code class="clr-code">value</code> attribute. Other than that it works exactly the same as the existing progress
+            bar component.</p>
+
+        <p>Existing progress bar HTML...</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;progress-static&quot;&gt;
+    &lt;div class=&quot;progress-meter&quot; data-value=&quot;16&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        <p>Static progress bar HTML...</p>
+        <pre><code clr-code-highlight="language-html">
+&lt;div class=&quot;progress demo&quot;&gt;
+    &lt;progress max=&quot;100&quot; value=&quot;16&quot; data-displayval=&quot;16%&quot;&gt;&lt;/progress&gt;
+&lt;/div&gt;
+</code></pre>
+    </li>
+    <li>
+        <h6>Inline progress bars (Progress Blocks and Groups)</h6>
+        <ul class="list">
+            <li>A <code class="clr-code">.progress-block</code> component was added to the progress-bar which allows the use of <code class="clr-code">label</code>s and <code class="clr-code">span</code>s to share horizontal space with the progress bar.</li>
+            <li>A <code class="clr-code">.progress-group</code> component was added to the progress-bar to enable content above and below a progress bar as well as allowing for stacked progress bars.</li>
+            <li><code class="clr-code">.progress-block</code> and <code class="clr-code">.progress-group</code> can be combined and both work inside of cards.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Links in header nav are getting underlines on them
+    </li>
+    <li bug-fix>
+        Clarity header logo jumps up when there is no title next to it
+    </li>
+    <li bug-fix>
+        Clarity website 404s no longer directing to the error page
+    </li>
+    <li bug-fix>
+        Re-add support for css animation
+    </li>
+    <li bug-fix>
+        Implement the new changes to tabs based on the new design spec
+    </li>
+    <li bug-fix>
+        Fix Checkbox jitter issue in Safari
+    </li>
+    <li bug-fix>
+        Fix margins of components used in a grid
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>
+        Clean up tests to not use the deprecated jasmine functions inside @angular/core/testing
+    </li>
+    <li>
+        Precompile components for router
+    </li>
+    <li>
+        Add note to login doc about background color/image
+    </li>
+    <li>
+        Add content to the web site to support the new table style
+    </li>
+    <li>
+        Create documentation for lists
+    </li>
+    <li>
+        Improve the documentation of input fields to include documenting input validation
+    </li>
+    <li>
+        Add code coverage (Istanbul) to seed
+    </li>
+</ul>

@@ -1,0 +1,95 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Progress Bar in Cards</h4>
+<div class="row force-fit">
+    <div class="card col-xs-12 col-sm-4" style="margin-right:1.25rem">
+        <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
+        </div>
+        <div class="card-block">
+            <div class="progress top">
+                <progress value="33" max="100"></progress>
+            </div>
+            <a href="javascript://" class="card-link">Click</a>
+        </div>
+    </div>
+    <div class="card col-xs-12 col-sm-4">
+        <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Here is a progress bar at the top of a card's footer.</p>
+        </div>
+        <div class="card-block">
+            <div class="progress">
+                <progress value="77" max="100"></progress>
+            </div>
+            <a href="javascript://" class="card-link">Click</a>
+        </div>
+    </div>
+</div>
+
+<h4>Static Progress Bars in Cards</h4>
+<div class="row force-fit">
+    <div class="card col-xs-12 col-sm-4" style="margin-right:1.25rem">
+        <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Here is a progress bar at the very top of a card, above the header.</p>
+        </div>
+        <div class="card-block">
+            <div class="progress-static top">
+                <div class="progress-meter" data-value="33"></div>
+            </div>
+            <a href="javascript://" class="card-link">Click</a>
+        </div>
+    </div>
+    <div class="card col-xs-12 col-sm-4">
+        <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Here is a progress bar at the top of a card's footer, above the buttons.</p>
+        </div>
+        <div class="card-block">
+            <div class="progress-static">
+                <div class="progress-meter" data-value="77"></div>
+            </div>
+            <a href="javascript://" class="card-link">Click</a>
+        </div>
+    </div>
+</div>
+
+<h4>Inline Progress Bars</h4>
+<div class="row force-fit">
+    <div class="card col-xs-12 col-sm-6">
+        <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Here is a progress bar at the very top of a card.</p>
+            <div class="progress-block">
+                <label>Label</label>
+                <div class="progress-static">
+                    <div class="progress-meter" data-value="25"></div>
+                </div>
+            </div>
+            <div class="progress-block">
+                <label>Longer Label</label>
+                <div class="progress-static">
+                    <div class="progress-meter" data-value="44"></div>
+                </div>
+            </div>
+            <div class="progress-block">
+                <label>Really, Really, Really Long Label</label>
+                <div class="progress-static">
+                    <div class="progress-meter" data-value="65"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="progress-static top">
+                <div class="progress-meter" data-value="33"></div>
+            </div>
+            <a href="javascript://" class="card-link">Click</a>
+        </div>
+    </div>
+</div>

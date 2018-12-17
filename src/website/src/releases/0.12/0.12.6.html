@@ -1,0 +1,36 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>clrPassword Component</h6>
+        <p>
+            Clarity forms added the <code class="clr-code">clrPassword</code> input for use in new Clarity forms.
+        </p>
+        <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+                <clr-alert-item>
+                    <span class="alert-text">
+                        Please note: full documentation for the new Clarity forms module will be published once all of the new forms components are ready.
+                    </span>
+                </clr-alert-item>
+            </clr-alert>
+        <p>
+            If you are already using them and want to use a <code class="clr-code">clrPassword</code>, one way to use it looks like this:
+        </p>
+<pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-password-container&gt;
+    &lt;input clrPassword [(ngModel)]=&quot;model&quot; /&gt;
+&lt;/clr-password-container&gt;
+</code></pre>
+    </li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Added ARIA attributes to the TreeView component (<a href="https://github.com/vmware/clarity/pull/2471" target="_blank">#2471</a>).
+    </li>
+    <li bug-fix>
+        Fixed a bug with progress bar color variable (<a href="https://github.com/vmware/clarity/pull/2489" target="_blank">#2489</a>).
+    </li>
+    <li bug-fix>
+        Adjusted font size and line-height for required form inputs (<a href="https://github.com/vmware/clarity/pull/2476" target="_blank">#2476</a>).
+    </li>
+</ul>

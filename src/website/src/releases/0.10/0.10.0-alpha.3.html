@@ -1,0 +1,28 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Custom Triggers for Signpost</h6>
+        <p>You can now declare custom triggers for a <code class="clr-code">Signpost</code>. To use it, all you have to do is put the <code class="clr-code">clrSignpostTrigger</code> in the top-most container for your custom trigger.</p>
+        <pre><code clr-code-highlight="language-html" ngNonBindable>
+&lt;clr-signpost [clrSignpostPosition]=&quot;'top-middle'&quot;&gt;
+    &lt;clr-icon shape=&quot;avatar&quot; clrSignpostTrigger&gt;&lt;/clr-icon&gt;
+    &lt;clr-signpost-content *clrIfOpen&gt;
+        The pokemon is strong.
+    &lt;/clr-signpost-content&gt;
+&lt;/clr-signpost&gt;
+</code></pre>
+    </li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Fixed a performance issue for single-row actions in Datagrid.
+    </li>
+    <li bug-fix>Fixed a height/style issue when Signpost is used in a DatagridCell</li>
+
+</ul>
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Removed the ClarityIcons <code class="clr-code">BasicShapes</code> . It can be replaced with <code class="clr-code">EssentialShapes</code></li>
+    <li>Removed deprecated style class from the header for font awesome icons in a <code class="clr-code">.searchbox</code> element</li>
+</ul>

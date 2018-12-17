@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "paths": {
+      "@clr/angular": ["../clr-angular"],
+      "@clr/icons": ["../clr-icons"],
+      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
+    }
+  },
+  "exclude": ["prerender.ts", "server.ts"]
+}

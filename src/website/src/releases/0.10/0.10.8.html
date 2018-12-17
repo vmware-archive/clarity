@@ -1,0 +1,48 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>New icons added to Clarity Icons</h6>
+        <p>Several new icons were added to the Clarity Icons library including: shrink/minimize, magic wand, DNA helix,
+            groups of files, a paperclip icons, and more
+            <a href="https://github.com/vmware/clarity/issues/1330" target="_blank">
+                (#1330)
+            </a>
+        </p>
+    </li>
+
+    <li>
+        <h6>Clarity build is using webpack</h6>
+        <p>We re-wrote all our scripts to rely on webpack and npm scripts. Read the updated
+            <a href="https://github.com/vmware/clarity/blob/master/BUILD.md">BUILD.md</a>
+            file for more info on how to build and run Clarity locally.
+            <a href="https://github.com/vmware/clarity/issues/1509" target="_blank">
+                (#1509)
+            </a>
+        </p>
+        <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false">
+            <div class="alert-item">
+                <div class="alert-text">
+                    To follow a common webpack convention, the clarity-angular umd file will be moved into the bundles
+                    folder after 0.11.0 is released. If you are using SystemJS, you will need to update the main file
+                    for clarity-angular when upgrading to 0.11 because the present location has been deprecated.
+                </div>
+            </div>
+        </clr-alert>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>Fixed invalid markup for several icons in the technology stack
+        <a href="https://github.com/vmware/clarity/pull/1529" target="_blank">(#1501)</a>
+    </li>
+    <li bug-fix>Fixed issue for wizard buttons that had NgIf
+        <a href="https://github.com/vmware/clarity/pull/1511" target="_blank">(#1439)</a>
+    </li>
+    <li bug-fix>
+        Fixed a popover clipping issue in Trees.
+        <a href="https://github.com/vmware/clarity/issues/1523" target="_blank">
+            (#1523)
+        </a>
+    </li>
+</ul>

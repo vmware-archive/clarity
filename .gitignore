@@ -52,3 +52,9 @@ sauceconnect.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# website
+auto-generated-news.component.html
+auto-generated-routes.ts
+*.sketch
+*.zip

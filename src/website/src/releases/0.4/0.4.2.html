@@ -1,0 +1,47 @@
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+    <li>
+        <h6>Implement alternative for outline:none</h6>
+        <div class="alert alert-warning">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        While this is not a breaking change, product teams that do not
+                        want accessible outlines in their applications should review
+                        any impact this change had to determine if they want to override
+                        the outline style on their own.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 12px">
+            The Clarity team implemented accessible outline highlighting for keyboard navigation. Previously, Clarity UI had overridden the default. There may be an impact for applications that had relied on the default override. In those cases, developers should
+            implement their own override. The Clarity team removed the override because it hindered accessibility.
+        </p>
+    </li>
+    <li>
+        <h6>Update visited links color</h6>
+        <p>
+            The visited link text color has been changed. Just a heads up that there's a slightly different shade of purple in use. Those who were already overriding the visited link text color should not be impacted.
+        </p>
+    </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+    <li bug-fix>
+        Text color on clickable cards changes when wrapped in anchor tag
+    </li>
+    <li bug-fix>
+        Fix Inline Spinners Alignment
+    </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+    <li>Revisit Clarity Color Usage</li>
+    <li>Refactor buttons code</li>
+</ul>

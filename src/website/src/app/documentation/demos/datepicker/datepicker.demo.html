@@ -1,0 +1,188 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="datepicker-header">
+            Date Picker is a popover control for picking a date value for a date input. It's also sometimes referred to as
+            Datepicker.
+        </h5>
+
+        <div id="design-guidelines">
+            <h2>Design Guidelines</h2>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
+                    <p>
+                        Date Picker is a calendar-view popover. It is paired with a text input
+                        so that it can send a formatted date value to the input.
+                    </p>
+
+                    <p>
+                        Date Picker is shown by clicking, or gaining focus and hitting enter,
+                        on the calendar icon next to the input field.
+                    </p>
+
+                    <p>
+                        Today’s date is displayed in bold. Unless preloaded with another date,
+                        today’s date will be selected in the Date Picker.
+                    </p>
+
+                    <p>
+                        Clicking on the check-calendar icon inside the Date Picker
+                        returns the focus to today’s date.
+                    </p>
+
+                    <p>
+                        Focus is indicated by a grey background. Focus can be moved around inside the
+                        Date Picker using arrow and tab keys. Clicking the enter key will select a value.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="padding: 48px">
+                            <div class="clrweb-DoxMedia-img">
+                                <img
+                                        class="clrweb-Img"
+                                        src="assets/images/documentation/datepicker/datepicker.png"
+                                        alt="Date Picker">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="usage">
+                <h3>Usage</h3>
+                <p>
+                    A Date Picker is used to select a date when a user needs to understand the date in context with
+                    other possible dates. Date choices are influenced by day of the week, or week within a month. A Date
+                    Picker is also helpful when the formatting of the date is important.
+                </p>
+                <p>
+                    Date Pickers aren’t helpful when the date is a known value like a birthdate. A user will likely want
+                    to type that value in versus hunting for it in a Date Picker. In cases where space is limited, it
+                    may be a good idea to omit the Date Picker.
+                </p>
+            </div>
+            <div id="views">
+                <h3>Views</h3>
+                <p>
+                    The Month and Year views are shown when a user clicks on the month or year titles in the date view.
+                </p>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="clrweb-DoxMedia">
+                            <div class="clrweb-DoxMedia-block" style="padding: 48px">
+                                <div class="clrweb-DoxMedia-img">
+                                    <img
+                                            class="clrweb-Img"
+                                            src="assets/images/documentation/datepicker/monthpicker.png"
+                                            alt="Month Picker">
+                                </div>
+                            </div>
+                            <div class="clrweb-DoxMedia-text">
+                                <h6>Month</h6>
+                                <p>
+                                    12 month values can be selected from. Arrow keys can be used to navigate through the
+                                    values. Selecting a month value will return the user back to the date view.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="clrweb-DoxMedia">
+                            <div class="clrweb-DoxMedia-block" style="padding: 48px">
+                                <div class="clrweb-DoxMedia-img">
+                                    <img
+                                            class="clrweb-Img"
+                                            src="assets/images/documentation/datepicker/yearpicker.png"
+                                            alt="Year Picker">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Year</h6>
+                            <p>
+                                10 year values are displayed at one time. Arrow keys can be used to navigate through the
+                                values, future years, and past years. Selecting a year value will return the user back
+                                to the date view.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Small Screens</h3>
+                <p>
+                    We automatically disable the Clarity Date Picker on small mobile phones.
+                    This is done because unlike desktop browsers, most mobile browsers have a
+                    built-in date picker. These built-in date pickers are optimized to
+                    work on mobile devices and provide an experience which the user is already
+                    familiar with.
+                </p>
+                <clr-alert [clrAlertClosable]="false">
+                    <div class="alert-item">
+                        <span class="alert-text">
+                            Clarity Date Picker is shown at screen width <code class="clr-code">768px</code>
+                            and above.
+                        </span>
+                    </div>
+                </clr-alert>
+            </div>
+
+            <div>
+                <h3>Important Notes about User Input</h3>
+
+                <p></p>
+                <ul class="list">
+                    <li>
+                        Every time the user changes the value in the input field,
+                        the value is validated against the placeholder to check if a valid date is entered or not.
+                        If a valid date is entered, the date picker opens with the entered date
+                        selected. If an invalid date is entered, the date picker opens with the focus on
+                        today's date.
+                    </li>
+                    <li>
+                        Selecting a date from the date picker overrides the value in the input field.
+                    </li>
+                    <li>
+                        Date picker ideally requires a 4 digit year but can convert a 2 digit year input
+                        by the user to a 4 digit year. For eg: a 2 digit year 20 will convert to 2020.
+                        If the 4 digit conversion is 20 more than the current year, we subtract 100 from it.
+                        If the current year is 2018 and the year input is 99, then the converted year is 1999.
+                        Anything other than a 4 digit or 2 digit year is considered invalid.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="code-examples">
+            <h2 id="examples">Code & Examples</h2>
+            <clr-datepicker-api-demo></clr-datepicker-api-demo>
+            <clr-datepicker-internationalization-demo></clr-datepicker-internationalization-demo>
+            <clr-datepicker-io-demo></clr-datepicker-io-demo>
+
+            <h3 id="summary-of-options">Summary of Options</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[(clrDate)]</b>
+                        <div class="hidden-sm-up">Type: Date</div>
+                        <div class="hidden-sm-up">NA</div>
+                    </td>
+                    <td class="hidden-xs-down">Javascript Date Objects</td>
+                    <td class="hidden-xs-down">NA</td>
+                    <td class="left">
+                        Two-way binding on the date value.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</clr-doc-wrapper>

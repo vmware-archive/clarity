@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="55px" height="71px" viewBox="0 0 55 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_html</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,5.59789528 C0,2.50626309 2.50498415,0 5.59362961,0 L43.125,0 L54.4444444,9.72227486 L54.4444444,64.4392436 C54.4444444,67.5279648 51.9276679,70.0318681 48.8484182,70.0318681 L5.59602623,70.0318681 C2.50542628,70.0318681 0,67.518749 0,64.4339729 L0,5.59789528 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="54.4444444" height="70.0318681" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Landing-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="landing-page" transform="translate(-845.000000, -720.000000)">
+            <g id="02-panel" transform="translate(96.000000, 528.000000)">
+                <g id="HTML/CSS" transform="translate(632.000000, 168.000000)">
+                    <g id="ic_html" transform="translate(117.000000, 24.000000)">
+                        <polyline id="Path-2" stroke="#853FB3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" points="19 31 9 37.7384615 18.3936052 44.4769231"></polyline>
+                        <polyline id="Path-2-Copy" stroke="#853FB3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" transform="translate(41.000000, 37.738462) scale(-1, 1) translate(-41.000000, -37.738462) " points="46 31 36 37.7384615 45.3936052 44.4769231"></polyline>
+                        <use id="Rectangle-9" stroke="#853FB3" mask="url(#mask-2)" stroke-width="6.4" xlink:href="#path-1"></use>
+                        <polygon id="Path-3" fill="#853FB3" points="43 0 54.8923611 11.6541166 43 11.6541166"></polygon>
+                        <path d="M30.4046859,27 L24,48.5084273" id="Path-4" stroke="#853FB3" stroke-width="3.2" stroke-linecap="round"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

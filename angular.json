@@ -225,11 +225,110 @@
           }
         }
       }
+    },
+    "website": {
+      "root": "src/website/",
+      "sourceRoot": "src/website/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/website/browser",
+            "index": "src/website/src/index.html",
+            "main": "src/website/src/main.ts",
+            "polyfills": "src/website/src/polyfills.ts",
+            "tsConfig": "src/website/tsconfig.app.json",
+            "assets": [
+              "src/website/src/favicon.ico",
+              {
+                "glob": "versions.json",
+                "input": "src/website/src/settings/",
+                "output": "/"
+              },
+              "src/website/src/assets"
+            ],
+            "styles": [
+              "node_modules/prismjs/themes/prism-solarizedlight.css",
+              "src/clr-angular/layout/grid-deprecated.clarity.scss",
+              "src/clr-angular/main.scss",
+              "src/clr-icons/clr-icons.scss",
+              "src/website/src/styles/main.scss"
+            ],
+            "scripts": [
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-typescript.min.js",
+              "node_modules/@webcomponents/custom-elements/custom-elements.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/website/src/environments/environment.ts",
+                  "with": "src/website/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "website:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "website:build:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/website/server",
+            "main": "src/website/src/main.server.ts",
+            "tsConfig": "src/website/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/website/src/environments/environment.ts",
+                  "with": "src/website/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "css"
+      "styleext": "scss"
     }
   },
   "defaultProject": "dev"

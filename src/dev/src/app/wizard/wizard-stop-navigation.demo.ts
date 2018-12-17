@@ -8,30 +8,32 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ClrWizard } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-stop-navigation', templateUrl: './wizard-stop-navigation.demo.html' })
+@Component({
+  selector: 'clr-wizard-stop-navigation',
+  templateUrl: './wizard-stop-navigation.demo.html',
+})
 export class WizardStopNavigation {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  untouched: boolean = true;
-  loading: boolean = false;
-  errorFlag: boolean = false;
-  progress: number = 0;
+  open = false;
+  untouched = true;
+  loading = false;
+  progress = 0;
+  model = { won: '', too: '', tree: '' };
 
-  get readyToFinish(): boolean {
+  get readyToFinish() {
     return !this.untouched && !this.loading;
   }
-
-  model = { won: '', too: '', tree: '' };
 
   // have to define doCancel because page will prevent doCancel from working
   // if the page had a previous button, you would need to call
   // this.wizard.previous() manually as well...
-  doCancel(): void {
+  doCancel() {
     this.wizard.close();
     this.resetWizard();
   }
 
-  resetWizard(): void {
+  resetWizard() {
     this.wizard.reset();
     this.model.won = '';
     this.model.too = '';
@@ -39,7 +41,7 @@ export class WizardStopNavigation {
     this.progress = 0;
   }
 
-  onCommit(): void {
+  onCommit() {
     if (this.untouched) {
       this.untouched = false;
       this.loading = true;

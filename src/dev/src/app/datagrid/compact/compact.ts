@@ -3,11 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import '@clr/icons/shapes/essential-shapes';
-
 import { Component } from '@angular/core';
-
 import { ClrDatagridSortOrder } from '@clr/angular';
+
 import { User } from '../inventory/user';
 import { DatagridKitchenSinkData } from '../kitchen-sink/kitchen-sink-data';
 import { PokemonComparator } from '../utils/pokemon-comparator';
@@ -36,6 +36,8 @@ export class DatagridCompactDemo {
   slowLoad = false;
   showDate = true;
   showId = true;
+  nameFilter = '';
+  currentPageSize = 1;
 
   get selectable() {
     return !!this.selected2;

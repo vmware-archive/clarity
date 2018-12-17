@@ -16,22 +16,23 @@ import { ClrWizard } from '@clr/angular';
 export class WizardAltNextDemo implements OnInit {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  public model: any;
-  public stressText: boolean = false;
-  public errorFlag: boolean = false;
+  model: any;
+  stressText = false;
+  errorFlag = false;
+  open = false;
 
-  public ngOnInit() {
+  ngOnInit() {
     this.model = { allowNext: false, sequenceOne: '', sequenceTwo: '', sequenceThree: '' };
   }
 
-  public pageCustomNext(): void {
+  pageCustomNext() {
     if (confirm('Are you sure you got it right?')) {
       this.errorFlag = false;
       this.wizard.forceNext();
     }
   }
 
-  public doFinish() {
+  doFinish() {
     const sequenceOneIsCorrect = this.model.sequenceOne === 3;
     const sequenceTwoIsCorrect = this.model.sequenceTwo === 5;
     const sequenceThreeIsCorrect = this.model.sequenceThree === 8;
@@ -51,7 +52,7 @@ export class WizardAltNextDemo implements OnInit {
     }
   }
 
-  public doNext() {
+  doNext() {
     if (this.model.allowNext) {
       this.wizard.forceNext();
       this.stressText = false;

@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { Component, Input, Directive } from '@angular/core';
 import {
   ValidatorFn,
@@ -119,6 +120,7 @@ export class CheckboxesDemo {
     name: new FormControl('', [Validators.required]),
     vmsSelection: new FormArray((() => this.vms.map(() => new FormControl(false)))(), [minimumSelection(1)]),
   });
+  vmsSelection: AbstractControl[] = (this.reactiveForm.controls.vmsSelection as FormArray).controls;
   templateForm = {
     name: '',
     vmsSelection: this.vms.map(vm => {

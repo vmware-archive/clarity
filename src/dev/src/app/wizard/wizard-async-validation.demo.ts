@@ -8,22 +8,27 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ClrWizard } from '@clr/angular';
 
-@Component({ selector: 'clr-wizard-async-validation', templateUrl: './wizard-async-validation.demo.html' })
+@Component({
+  selector: 'clr-wizard-async-validation',
+  templateUrl: './wizard-async-validation.demo.html',
+})
 export class WizardAsyncValidation {
   @ViewChild('wizard') wizard: ClrWizard;
   @ViewChild('myForm') formData: any;
 
-  loadingFlag: boolean = false;
-  errorFlag: boolean = false;
+  open = false;
+  answer = '';
+  loadingFlag = false;
+  errorFlag = false;
 
   // have to define doCancel because page will prevent doCancel from working
   // if the page had a previous button, you would need to call
   // this.wizard.previous() manually as well...
-  doCancel(): void {
+  doCancel() {
     this.wizard.close();
   }
 
-  onCommit(): void {
+  onCommit() {
     const value: any = this.formData.value;
     this.loadingFlag = true;
     this.errorFlag = false;

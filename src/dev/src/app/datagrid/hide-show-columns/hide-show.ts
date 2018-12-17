@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { Component } from '@angular/core';
 
 import { Inventory } from '../inventory/inventory';
@@ -18,7 +19,8 @@ export class DatagridHideShowDemo {
   users: User[];
   showId = true;
   showDate = true;
-  conditionalSignpost: boolean = true;
+  conditionalSignpost = true;
+  currentPageSize = 1;
 
   constructor(inventory: Inventory) {
     inventory.size = 10;

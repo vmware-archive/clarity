@@ -436,7 +436,7 @@
   <!--<clr-checkbox-container [clrFormGroup]="reactiveForm.controls.vmsSelection">-->
   <clr-checkbox-container>
     <label>Reactive Forms</label>
-    <clr-checkbox-wrapper formArrayName="vmsSelection" *ngFor="let vm of reactiveForm.controls.vmsSelection.controls; let i = index">
+    <clr-checkbox-wrapper formArrayName="vmsSelection" *ngFor="let vm of vmsSelection; let i = index">
       <label>{{vms[i]}}</label>
       <input clrCheckbox type="checkbox" [formControl]="vm" />
     </clr-checkbox-wrapper>

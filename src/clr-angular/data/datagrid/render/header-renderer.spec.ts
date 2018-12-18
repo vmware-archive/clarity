@@ -124,9 +124,7 @@ export default function(): void {
     let columnHeader4ResizerService: ColumnResizerService;
 
     let columnHeader1DraggableDebugElement: DebugElement;
-    let columnHeader2DraggableDebugElement: DebugElement;
     let columnHeader3DraggableDebugElement: DebugElement;
-    let columnHeader4DraggableDebugElement: DebugElement;
 
     let columnHeader1DraggableDirective: ClrDraggable<any>;
     let columnHeader3DraggableDirective: ClrDraggable<any>;
@@ -169,14 +167,10 @@ export default function(): void {
       column4InitialWidth = widthOf(columnHeader4Element);
 
       columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[0];
-      columnHeader2DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[1];
       columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[2];
-      columnHeader4DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[3];
 
       columnHeader1DraggableDirective = columnHeader1DraggableDebugElement.injector.get(ClrDraggable);
-      columnHeader2DraggableDirective = columnHeader2DraggableDebugElement.injector.get(ClrDraggable);
       columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);
-      columnHeader4DraggableDirective = columnHeader4DraggableDebugElement.injector.get(ClrDraggable);
     });
 
     it('each header should have min-width', function() {

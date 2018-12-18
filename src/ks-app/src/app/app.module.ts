@@ -54,6 +54,8 @@ import { KSTables } from './containers/tables/tables.component';
 import { KSTypography } from './containers/typography/typography.component';
 import { KSWizards } from './containers/wizard/wizards.component';
 import { KSToggle } from './containers/forms/toggle.component';
+import { KSPasswords } from './containers/forms/password.component';
+import { KSTextareas } from './containers/forms/textarea.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +102,8 @@ import { KSToggle } from './containers/forms/toggle.component';
     KSTooltips,
     KSDatepicker,
     KSDragAndDrop,
+    KSPasswords,
+    KSTextareas,
   ],
   imports: [
     BrowserModule,

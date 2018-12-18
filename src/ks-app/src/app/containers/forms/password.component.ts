@@ -6,10 +6,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './inputs.component.html',
+  templateUrl: './password.component.html',
 })
-export class KSInputs {
+export class KSPasswords {
   disabled = true;
+  verticalToggle = false;
   vertical = {
     one: '',
     two: '',
@@ -28,6 +29,4 @@ export class KSInputs {
     three: '',
     four: '',
   };
-  override = '';
-  noform = '';
 }

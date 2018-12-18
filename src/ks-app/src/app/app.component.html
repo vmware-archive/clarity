@@ -4,7 +4,7 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 <clr-main-container>
-  <clr-header class="header-1">
+  <clr-header class="header-1" role="banner">
     <div class="branding">
       <a routerLink="/" class="nav-link">
                 <span class="clr-icon">
@@ -26,7 +26,7 @@
     </div>
     <div class="header-actions">
       <clr-dropdown>
-        <button class="nav-icon" clrDropdownTrigger>
+        <button class="nav-icon" title="Navigation Menu" clrDropdownTrigger>
           <clr-icon shape="cog"></clr-icon>
           <clr-icon shape="caret down"></clr-icon>
         </button>
@@ -39,7 +39,7 @@
     </div>
   </clr-header>
   <div class="content-container">
-    <clr-vertical-nav [clr-nav-level]="2">
+    <clr-vertical-nav [clr-nav-level]="2" role="navigation">
       <a clrVerticalNavLink href="javascript://" (click)="skipToContent()" class="skip-handler">Skip to content</a>
       <a *ngFor="let nav of links"
          clrVerticalNavLink
@@ -47,7 +47,7 @@
          routerLinkActive="active">{{nav.title}}
       </a>
     </clr-vertical-nav>
-    <main class="content-area" #main tabindex="-1">
+    <main class="content-area" #main tabindex="-1" role="main">
       <router-outlet></router-outlet>
     </main>
   </div>

@@ -11,7 +11,7 @@
   Toggle Compact All
 </button>
 
-<h3>Basic with Custom Cell Rendering</h3>
+<h2>Basic with Custom Cell Rendering</h2>
 <clr-datagrid [class.datagrid-compact]="isCompact" id="basic-custom-cell">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
@@ -30,7 +30,7 @@
   <clr-dg-footer>{{variableLengthUsers.length}} users</clr-dg-footer>
 </clr-datagrid>
 
-<h3>Sort and Filter</h3>
+<h2>Sort and Filter</h2>
 <div id="sort-and-filter">
   <div class="card card-block">
     <p class="card-text username-list">
@@ -60,7 +60,7 @@
   <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
 </clr-datagrid>
 
-<h3>Cells with signposts, icons, and badges</h3>
+<h2>Cells with signposts, icons, and badges</h2>
 <clr-datagrid id="datagrid-compact-with-signpost" [class.datagrid-compact]="isCompact">
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
@@ -98,7 +98,7 @@
 </clr-datagrid>
 
 
-<h3>Paginate and hide columns with a placeholder</h3>
+<h2>Paginate and hide columns with a placeholder</h2>
 <button class="btn btn-outline-primary" id="toggle-id" (click)="showId = !showId">
   Toggle ID
 </button>
@@ -163,7 +163,7 @@
   </clr-dg-footer>
 </clr-datagrid>
 
-<h3>Scroll vertically and horizontally on overflow</h3>
+<h2>Scroll vertically and horizontally on overflow</h2>
 <div class="card" [style.width.px]="400" id="horizontal-scrolling">
   <div class="card-block">
     <clr-datagrid [class.datagrid-compact]="isCompact" [style.height.px]="250">
@@ -188,7 +188,7 @@
   </div>
 </div>
 
-<h3>Single selection and exapndable options</h3>
+<h2>Single selection and exapndable options</h2>
 <form>
   <div class="form-group">
     <label>Type of detail</label>
@@ -260,7 +260,7 @@
   <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
 
-<h3>Multi-select with batch actions and single row actions</h3>
+<h2>Multi-select with batch actions and single row actions</h2>
 <div id="multl-selection">
   <div class="card card-block">
     <p class="card-text username-list">

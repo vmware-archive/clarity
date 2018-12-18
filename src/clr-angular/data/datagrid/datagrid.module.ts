@@ -27,6 +27,7 @@ import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { ClrDatagridCell } from './datagrid-cell';
 import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridColumnSeparator } from './datagrid-column-separator';
+import { ClrDatagridColumnReorderDroppable } from './datagrid-column-reorder-droppable';
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
@@ -56,6 +57,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridActionOverflow,
   ClrDatagridColumn,
   ClrDatagridColumnSeparator,
+  ClrDatagridColumnReorderDroppable,
   ClrDatagridColumnToggle,
   ClrDatagridHideableColumn,
   ClrDatagridFilter,

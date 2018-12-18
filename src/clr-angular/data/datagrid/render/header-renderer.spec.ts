@@ -32,7 +32,6 @@ class SimpleTest {}
   template: `
     <div class="container" style="width: 1100px;">
         <clr-datagrid>
-            
             <clr-dg-column>First</clr-dg-column>
             <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
             <clr-dg-column [style.width.px]="column3WidthStrict" 
@@ -197,8 +196,8 @@ export default function(): void {
       column3InitialWidth = widthOf(columnHeader3Element);
       column4InitialWidth = widthOf(columnHeader4Element);
 
-      columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[0];
-      columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[2];
+      columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[1];
+      columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[5];
 
       columnHeader1DraggableDirective = columnHeader1DraggableDebugElement.injector.get(ClrDraggable);
       columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);

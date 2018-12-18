@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-config-recommended",
+  "defaultSeverity": "warning",
+  "ignoreFiles": [
+    "src/clr-angular/utils/bootstrap/**"
+  ]
+}

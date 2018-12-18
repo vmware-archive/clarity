@@ -1,6 +1,6 @@
+---
 name: Icon request
 about: Proposal for a new icon
-
 ---
 
 ## Summary

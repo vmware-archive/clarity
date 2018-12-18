@@ -649,20 +649,16 @@
         white-space: nowrap;
       }
 
-      &-description,
-      &-size {
-        &::after {
+      &-list {
+        &::before {
           content: '';
           display: inline-block;
           height: 1rem;
           width: $clr-rem-1px;
           background-color: $clr-table-border-color;
-          margin: 0 0.5rem;
+          margin-right: 0.5rem;
           vertical-align: middle;
         }
-      }
-
-      &-list {
         margin: 0 0.5rem;
         height: calc(1.5rem - #{2 * $clr-default-borderwidth});
         display: flex;

@@ -11,6 +11,7 @@ import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
+import { ClrCommonFormsModule } from '../common';
 
 import { ClrCalendar } from './calendar';
 import { ClrDateContainer } from './date-container';
@@ -33,7 +34,14 @@ export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ClrHostWrappingModule, ClrConditionalModule, ClrIconModule, ClrFocusTrapModule],
+  imports: [
+    CommonModule,
+    ClrHostWrappingModule,
+    ClrConditionalModule,
+    ClrIconModule,
+    ClrFocusTrapModule,
+    ClrCommonFormsModule,
+  ],
   declarations: [CLR_DATEPICKER_DIRECTIVES],
   exports: [CLR_DATEPICKER_DIRECTIVES],
   entryComponents: [ClrDateContainer],

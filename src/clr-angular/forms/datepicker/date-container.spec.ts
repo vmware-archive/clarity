@@ -26,6 +26,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
+import { ClrCommonFormsModule } from '../common';
 
 export default function() {
   describe('Date Container Component', () => {
@@ -36,7 +37,7 @@ export default function() {
 
     beforeEach(function() {
       TestBed.configureTestingModule({
-        imports: [FormsModule],
+        imports: [FormsModule, ClrCommonFormsModule],
       });
       TestBed.overrideComponent(ClrDateContainer, {
         set: {

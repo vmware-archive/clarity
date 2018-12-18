@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, OnDestroy, Optional } from '@angular/core';
+import { Component, Inject, OnDestroy, Optional, ContentChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
@@ -15,6 +15,7 @@ import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
+import { ClrLabel } from '../common/label';
 
 import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
@@ -49,6 +50,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     
     <ng-template #newLayout>
       <ng-content select="label"></ng-content>
+      <label *ngIf="!label && addGrid()"></label>
       <div class="clr-control-container" [ngClass]="controlClass()">
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
@@ -95,6 +97,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   invalid = false;
   focus = false;
   control: NgControl;
+  @ContentChild(ClrLabel) label: ClrLabel;
 
   private subscriptions: Subscription[] = [];
 

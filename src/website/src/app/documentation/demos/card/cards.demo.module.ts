@@ -7,7 +7,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 
-import { CardOldDemo } from './card-old';
 import { CardGridDemo } from './card-grid';
 import { CardClickableDemo } from './card-clickable';
 import { CardImagesDemo } from './card-images';
@@ -34,7 +33,6 @@ import { UtilsModule } from '../../../utils/utils.module';
     UtilsModule,
   ],
   declarations: [
-    CardOldDemo,
     CardAlertDemo,
     CardGridDemo,
     CardClickableDemo,

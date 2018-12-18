@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 const EXAMPLE = `
 <div class="row">
-    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+    <div class="clr-col-12 clr-col-lg-6 clr-col-xl-4">
         <table class="table">
             <thead>
                 <tr>
@@ -39,7 +39,7 @@ const EXAMPLE = `
             </tbody>
         </table>
     </div>
-    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+    <div class="clr-col-12 clr-col-lg-6 clr-col-xl-4">
         <table class="table">
             <thead>
                 <tr>
@@ -71,7 +71,7 @@ const EXAMPLE = `
             </tbody>
         </table>
     </div>
-    <div class="col-xs-12 col-md-12 col-lg-6 col-xl-4">
+    <div class="clr-col-12 clr-col-lg-6 clr-col-xl-4">
         <table class="table">
             <thead>
                 <tr>

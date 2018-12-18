@@ -4,8 +4,8 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4">
+<div class="clr-row">
+    <div class="clr-col-12 clr-col-md-4">
         <clr-tree>
             <clr-tree-node *ngFor="let group of groceries"
                            [(clrSelected)]="group.selected"
@@ -19,7 +19,7 @@
 
         <button class="btn btn-sm" type="button" (click)="selectVegetables()">Select all vegetables</button>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-8">
+    <div class="clr-col-12 clr-col-md-8">
         <pre class="example-display-json">{{displayGroceries}}</pre>
     </div>
 </div>

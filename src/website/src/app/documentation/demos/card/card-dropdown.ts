@@ -6,8 +6,8 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-<div class="row">
-    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+<div class="clr-row">
+    <div class="clr-col-lg-6 clr-col-12">
         <div class="card">
             <div class="card-header">
                 Header

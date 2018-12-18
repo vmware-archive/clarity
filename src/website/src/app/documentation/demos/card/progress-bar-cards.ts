@@ -6,8 +6,8 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-<div class="row">
-    <div class="col-xs-12 col-sm-4">
+<div class="clr-row">
+    <div class="clr-col-12 clr-col-sm-4">
         <div class="card">
             <div class="card-block">
                 <div class="progress top">
@@ -21,7 +21,7 @@ const HTML_EXAMPLE = `
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <div class="clr-col-12 clr-col-sm-4">
         <div class="card">
             <div class="card-block">
                 <h4 class="card-title">Card title</h4>

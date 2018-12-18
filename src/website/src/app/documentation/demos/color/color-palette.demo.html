@@ -4,9 +4,9 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="row">
+<div class="clr-row">
     <clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
-    <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of palettes">
+    <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of palettes">
         <ul class="card card-block card-swatch-block">
             <li class="card-swatch" *ngFor="let color of palette.colors"
                 [style.background-color]="color.value"

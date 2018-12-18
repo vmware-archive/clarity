@@ -3,8 +3,8 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<div class="row">
-    <div class="col-xs-12" [class.col-md-5]="showHalf">
+<div class="clr-row">
+    <div class="clr-col-12" [class.clr-col-md-5]="showHalf">
         <clr-tree-node *ngFor="let directory of rootDirectory" [(clrExpanded)]="directory.expanded">
             <clr-icon [attr.shape]="directory.icon"></clr-icon>
             {{directory.name}}

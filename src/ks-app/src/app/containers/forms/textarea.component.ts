@@ -6,9 +6,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './inputs.component.html',
+  templateUrl: './textarea.component.html',
 })
-export class KSInputs {
+export class KSTextareas {
   disabled = true;
   vertical = {
     one: '',
@@ -28,6 +28,4 @@ export class KSInputs {
     three: '',
     four: '',
   };
-  override = '';
-  noform = '';
 }

@@ -2,80 +2,264 @@
   ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
+-->
 
-<h1>Inputs</h1>
-<form>
-    <section class="form-block">
-        <label>Input Fields</label>
-        <div class="form-group">
-            <label for="formFields_1">Textbox [type="text"]</label>
-            <input type="text" id="formFields_1" placeholder="Email" size="35" disabled>
-            <input type="text" id="formFields_2" placeholder="Email 2" size="45">
-            <input type="text" id="formFields_3" placeholder="Email" size="25">
-            <input type="text" id="formFields_4" placeholder="Email 2">
-            <input type="text" id="formFields_5" placeholder="Email">
-            <input type="text" id="formFields_6" placeholder="Email 2">
-        </div>
-        <div class="form-group">
-            <label for="formFields_7">Textbox [type="password"]</label>
-            <input type="password" id="formFields_7" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="formFields_8">Textarea</label>
-            <textarea id="formFields_8" rows="5"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="formFields_9">Textbox [type="url"]</label>
-            <input type="url" id="formFields_9" placeholder="https://vmware.github.io/clarity/" size="35">
-        </div>
-        <div class="form-group">
-            <label for="formfields_10">Texbox [type="tel"]</label>
-            <input type="tel" id="formfields_10" placeholder="(123) 456-7890">
-        </div>
-        <div class="form-group">
-            <label for="formfields_11">Texbox [type="date"]</label>
-            <input type="date" id="formfields_11">
-        </div>
-        <div class="form-group">
-            <label for="formfields_12">Texbox [type="time"]</label>
-            <input type="time" id="formfields_12">
-        </div>
-        <div class="form-group">
-            <label for="datetime-local">Texbox [type="datetime-local"]</label>
-            <input type="datetime-local" id="datetime-local">
-        </div>
-        <div class="form-group">
-            <label for="formfields_13">Readonly Textbox</label>
-            <input type="text" id="formfields_13" readonly size="25" value="This is a read only textbox" />
-        </div>
-        <div class="form-group">
-            <label for="formfields_14">Readonly Textbox [type="number"]</label>
-            <input type="number" id="formfields_14" readonly value="24" />
-        </div>
-        <div class="form-group">
-            <label for="formfields_15">Readonly Textbox [type="url"]</label>
-            <input type="url" id="formfields_15" readonly value="http://www.vmware.com" size="25"/>
-        </div>
-        <div class="form-group">
-            <label for="formfields_16">Readonly Textbox [type="tel"]</label>
-            <input type="tel" id="formfields_16" readonly value="123-456-7890" />
-        </div>
-        <div class="form-group">
-            <label for="formfields_17">Readonly Textbox [type="password"]</label>
-            <input type="password" id="formfields_17" readonly value="strongpassword" />
-        </div>
-        <div class="form-group">
-            <label for="formfields_18">Readonly Textbox [type="time"]</label>
-            <input type="time" id="formfields_18" readonly value="13:01" />
-        </div>
-        <div class="form-group">
-            <label for="formfields_19">Readonly Textbox [type="date"]</label>
-            <input type="date" id="formfields_19" readonly value="2017-12-25" />
-        </div>
-        <div class="form-group">
-            <label for="datetime-local-readonly">Texbox [type="datetime-local"]</label>
-            <input type="datetime-local" id="datetime-local-readonly" readonly>
-        </div>
-    </section>
+<h2>Angular Input <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="vertical.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="vertical.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="vertical.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="vertical.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
 </form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="horizontal.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="horizontal.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="horizontal.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="horizontal.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="compact.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="compact.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="compact.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="compact.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h2>CSS Input</h2>
+
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label for="vertical-basic" class="clr-control-label"> Basic input </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="vertical-basic" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="vertical-disabled" class="clr-control-label"> Basic input, disabled </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="vertical-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="vertical-error" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label for="horizontal-basic" class="clr-control-label"> Basic input </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="horizontal-basic" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="horizontal-disabled" class="clr-control-label"> Basic input, disabled </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="horizontal-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="horizontal-error" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label for="compact-basic" class="clr-control-label"> Basic input </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="compact-basic" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="compact-disabled" class="clr-control-label"> Basic input, disabled </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="compact-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="compact-error" placeholder="Enter value here" class="clr-input" />
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Override grid</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-input-container>
+    <label class="clr-col-xs-12 clr-col-md-4">Full example</label>
+    <input
+      class="clr-col-xs-12 clr-col-md-8"
+      type="text"
+      placeholder="Name"
+      clrInput
+      [(ngModel)]="override"
+      name="three"
+      required
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h4>No form wrapper</h4>
+
+<clr-input-container>
+  <label>No form</label>
+  <input type="text" placeholder="Last Name" clrInput [(ngModel)]="noform" name="three" required />
+  <clr-control-helper>Helper text</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-input-container>

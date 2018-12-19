@@ -2,72 +2,424 @@
   ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
+-->
 
-<h1>Radios</h1>
-<form>
-    <section class="form-block">
-        <label>Radio Buttons</label>
-        <div class="form-group" role="radiogroup" aria-labelledby="label_1">
-            <label id="label_1">Default/Stacked radio button group</label>
-            <div class="radio">
-                <input type="radio" name="gridRadios" id="checkrads_9">
-                <label for="checkrads_9">Radio option 1</label>
-            </div>
-            <div class="radio">
-                <input type="radio" name="gridRadios" id="checkrads_10" checked>
-                <label for="checkrads_10">Radio option 2 (checked)</label>
-            </div>
-        </div>
-        <div class="form-group" role="radiogroup" aria-labelledby="label_2">
-            <label id="label_2">Inline radio button group</label>
-            <div class="radio-inline">
-                <input type="radio" name="gridRadios1" id="checkrads_11">
-                <label for="checkrads_11">Radio option 1</label>
-            </div>
-            <div class="radio-inline">
-                <input type="radio" name="gridRadios1" id="checkrads_12" checked>
-                <label for="checkrads_12">Radio option 2 (checked)</label>
-            </div>
-        </div>
-        <div class="form-group" role="radiogroup" aria-labelledby="label_3">
-            <label id="label_3">These are disabled radio buttons</label>
-            <div class="radio disabled">
-                <input type="radio" name="gridRadios2" id="checkrads_13" disabled>
-                <label for="checkrads_13">Radio option disabled and unchecked</label>
-            </div>
-            <div class="radio disabled">
-                <input type="radio" name="gridRadios2" id="checkrads_14" disabled checked>
-                <label for="checkrads_14">Radio option disabled and checked</label>
-            </div>
-        </div>
-    </section>
+<h2>Angular Radio <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Standalone</h4>
+
+<!-- No wrapper -->
+<input type="radio" clrRadio />
+
+<!-- No wrapper with id -->
+<input type="radio" clrRadio id="testing456" />
+
+<!-- Standalone with wrapper -->
+<clr-radio-wrapper> <input type="radio" clrRadio /> <label>Test</label> </clr-radio-wrapper>
+
+<!-- Wrapper with id -->
+<clr-radio-wrapper>
+  <input type="radio" clrRadio id="testing123" /> <label for="testing123">Test</label>
+</clr-radio-wrapper>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <clr-radio-container>
+    <label>First</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="vertical.one" value="one" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="vertical.one" value="two" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label> <input clrRadio type="radio" [(ngModel)]="vertical.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{ vertical.one }}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="vertical.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="vertical.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label> <input clrRadio type="radio" [(ngModel)]="vertical.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{ vertical.two }}</p>
+
+  <clr-radio-container clrInline>
+    <label>Disabled</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="vertical.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="vertical.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="vertical.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
 </form>
 
-<h2>Angular component</h2>
+<h4>Horizontal</h4>
 
-<!-- Full user control -->
-<h4>Full user control</h4>
-<clr-radio-container>
+<form clrForm clrLayout="horizontal">
+  <clr-radio-container>
+    <label>First</label>
     <clr-radio-wrapper>
-        <input clrRadio type="radio" name="angular-radio" id="first" value="0">
-        <label for="first">With id</label>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="one" name="one" required />
     </clr-radio-wrapper>
-</clr-radio-container>
-
-<!-- User can't be bothered to give an ID -->
-<h4>User control without ID</h4>
-<clr-radio-container>
     <clr-radio-wrapper>
-        <input clrRadio type="radio" name="angular-radio" value="1">
-        <label>No id</label>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="two" name="one" required />
     </clr-radio-wrapper>
-</clr-radio-container>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
 
-<!-- Radio with no label -->
-<h4>No user control, no label and no ID</h4>
-<input clrRadio type="radio" name="angular-radio" value="2">
+  <p>Selected: {{ horizontal.one }}</p>
 
-<!-- Radio with no label, but the user still wants a specific ID -->
-<h4>No user control, no label but with ID</h4>
-<input clrRadio type="radio" name="angular-radio" id="last" value="3">
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{ horizontal.two }}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label>
+      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="horizontal.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <clr-radio-container>
+    <label>First</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="compact.one" value="one" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="compact.one" value="two" name="one" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label> <input clrRadio type="radio" [(ngModel)]="compact.one" value="three" name="one" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{ compact.one }}</p>
+
+  <clr-radio-container clrInline="false">
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="compact.two" value="one" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="compact.two" value="two" name="two" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label> <input clrRadio type="radio" [(ngModel)]="compact.two" value="three" name="two" required />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+
+  <p>Selected: {{ compact.two }}</p>
+
+  <clr-radio-container clrInline>
+    <label>Second</label>
+    <clr-radio-wrapper>
+      <label>One</label> <input clrRadio type="radio" [(ngModel)]="compact.three" value="one" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Two</label> <input clrRadio type="radio" [(ngModel)]="compact.three" value="two" name="three" required />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Three</label>
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="compact.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-radio-container>
+</form>
+
+<h2>CSS Radio</h2>
+
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic radio</label>
+    <div class="clr-control-container">
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="vertical-radio1" name="radio-basic" class="clr-radio" />
+        <label for="vertical-radio1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="vertical-radio2" name="radio-basic" class="clr-radio" />
+        <label for="vertical-radio2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="vertical-radio3" name="radio-basic" class="clr-radio" />
+        <label for="vertical-radio3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label"> Basic radio, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="vertical-radio4" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="vertical-radio5" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="vertical-radio6" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label"> Inline radio</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="vertical-radio7" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="vertical-radio8" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="vertical-radio9" placeholder="Enter value here" class="clr-radio" />
+        <label for="vertical-radio9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic radio</label>
+    <div class="clr-control-container">
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="horizontal-radio1" name="radio-basic" class="clr-radio" />
+        <label for="horizontal-radio1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="horizontal-radio2" name="radio-basic" class="clr-radio" />
+        <label for="horizontal-radio2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="horizontal-radio3" name="radio-basic" class="clr-radio" />
+        <label for="horizontal-radio3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label"> Basic radio, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="horizontal-radio4" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="horizontal-radio5" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="horizontal-radio6" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label"> Inline radio</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="horizontal-radio7" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="horizontal-radio8" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="horizontal-radio9" placeholder="Enter value here" class="clr-radio" />
+        <label for="horizontal-radio9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic radio</label>
+    <div class="clr-control-container">
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="compact-radio1" name="radio-basic" class="clr-radio" />
+        <label for="compact-radio1" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="compact-radio2" name="radio-basic" class="clr-radio" />
+        <label for="compact-radio2" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" id="compact-radio3" name="radio-basic" class="clr-radio" />
+        <label for="compact-radio3" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic radio, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="compact-radio4" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio4" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="compact-radio5" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio5" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio2" id="compact-radio6" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio6" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Inline radio</label>
+    <div class="clr-control-container clr-control-inline">
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="compact-radio7" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio7" class="clr-control-label">option 1</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="compact-radio8" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio8" class="clr-control-label">option 2</label>
+      </div>
+      <div class="clr-radio-wrapper">
+        <input type="radio" name="radio3" id="compact-radio9" placeholder="Enter value here" class="clr-radio" />
+        <label for="compact-radio9" class="clr-control-label">option 3</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>

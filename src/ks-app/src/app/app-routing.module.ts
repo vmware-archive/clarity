@@ -46,6 +46,8 @@ import { KSTables } from './containers/tables/tables.component';
 import { KSTypography } from './containers/typography/typography.component';
 import { KSWizards } from './containers/wizard/wizards.component';
 import { KSToggle } from './containers/forms/toggle.component';
+import { KSPasswords } from './containers/forms/password.component';
+import { KSTextareas } from './containers/forms/textarea.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'alerts', pathMatch: 'full' },
@@ -67,6 +69,8 @@ export const routes: Routes = [
   { path: 'inputs', component: KSInputs, data: { state: 'inputs' } },
   { path: 'radios', component: KSRadios, data: { state: 'radios' } },
   { path: 'selects', component: KSSelects, data: { state: 'selects' } },
+  { path: 'passwords', component: KSPasswords, data: { state: 'passwords' } },
+  { path: 'textareas', component: KSTextareas, data: { state: 'textareas' } },
   { path: 'modals', component: KSModals, data: { state: 'modals' } },
   { path: 'tabs', component: KSTabs, data: { state: 'tabs' } },
   { path: 'toggle', component: KSToggle, data: { state: 'toggle' } },

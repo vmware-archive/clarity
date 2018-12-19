@@ -26,6 +26,7 @@ import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-proper
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
+import { ClrDatagridColumnType } from './enums/column-type.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { DragDispatcher } from './providers/drag-dispatcher';
@@ -44,7 +45,7 @@ let nbCount: number = 0;
             <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
             <clr-dg-string-filter
-                    *ngIf="field && !customFilter"
+                    *ngIf="field && !customFilter && (colType==ClrDatagridColumnType.STRING)"
                     [clrDgStringFilter]="registered"
                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
@@ -142,6 +143,25 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   ngOnDestroy() {
     this._sortSubscription.unsubscribe();
+  }
+
+  /*
+     * What type is this column?  This defaults to STRING, but can also be
+     * set to NUMBER.  Unsupported types default to STRING.
+     */
+
+  private _colType: ClrDatagridColumnType = ClrDatagridColumnType.STRING;
+  public get colType() {
+    return this._colType;
+  }
+
+  @Input('clrDgColType')
+  public set colType(type: string) {
+    if (lowercase(type) == 'number') {
+      this._colType = ClrDatagridColumnType.NUMBER;
+    } else {
+      this._colType = ClrDatagridColumnType.STRING;
+    }
   }
 
   /*

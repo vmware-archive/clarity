@@ -25,6 +25,37 @@ import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 
+@Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
+class SimpleTest {}
+
+@Component({
+  template: `
+    <div class="container" style="width: 1100px;">
+        <clr-datagrid>
+            
+            <clr-dg-column>First</clr-dg-column>
+            <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
+            <clr-dg-column [style.width.px]="column3WidthStrict" 
+            (clrDgColumnResize)="newWidth = $event">Three</clr-dg-column>
+            <clr-dg-column>Four</clr-dg-column>
+
+            <clr-dg-row *clrDgItems="let item of items">
+                <clr-dg-cell>{{item}}</clr-dg-cell>
+                <clr-dg-cell [style.min-width.px]="120">{{item * 2}}</clr-dg-cell>
+                <clr-dg-cell>{{item * 3}}</clr-dg-cell>
+                <clr-dg-cell>{{item * 4}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
+        </clr-datagrid>
+    </div>
+`,
+})
+class HeaderResizeTestComponent {
+  items = [1, 2, 3];
+  column3WidthStrict: number = 200;
+  newWidth: number;
+}
+
 export default function(): void {
   describe('DatagridHeaderRenderer directive', function() {
     let context: TestContext<DatagridHeaderRenderer, SimpleTest>;
@@ -254,35 +285,4 @@ export default function(): void {
       expect(context.testComponent.newWidth).toBe(column3InitialWidth + resizeBy);
     });
   });
-}
-
-@Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
-class SimpleTest {}
-
-@Component({
-  template: `
-    <div class="container" style="width: 1100px;">
-        <clr-datagrid>
-            
-            <clr-dg-column>First</clr-dg-column>
-            <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
-            <clr-dg-column [style.width.px]="column3WidthStrict" 
-            (clrDgColumnResize)="newWidth = $event">Three</clr-dg-column>
-            <clr-dg-column>Four</clr-dg-column>
-
-            <clr-dg-row *clrDgItems="let item of items">
-                <clr-dg-cell>{{item}}</clr-dg-cell>
-                <clr-dg-cell [style.min-width.px]="120">{{item * 2}}</clr-dg-cell>
-                <clr-dg-cell>{{item * 3}}</clr-dg-cell>
-                <clr-dg-cell>{{item * 4}}</clr-dg-cell>
-            </clr-dg-row>
-            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-        </clr-datagrid>
-    </div>
-`,
-})
-class HeaderResizeTestComponent {
-  items = [1, 2, 3];
-  column3WidthStrict: number = 200;
-  newWidth: number;
 }

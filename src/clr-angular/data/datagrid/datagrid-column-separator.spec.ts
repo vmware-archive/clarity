@@ -19,6 +19,13 @@ import { MOCK_TABLE_SIZE_PROVIDER } from './providers/table-size.service.mock';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { generateDragPosition } from '../../utils/drag-and-drop/helpers.spec';
 
+@Component({
+  template: `<clr-dg-column-separator></clr-dg-column-separator>`,
+  styles: [':host { position: position; width: 200px; height: 400px;}'],
+  providers: [ColumnResizerService, MOCK_TABLE_SIZE_PROVIDER],
+})
+class TestComponent {}
+
 export default function(): void {
   describe('ClrDatagridColumnSeparator component', function() {
     let fixture: ComponentFixture<any>;
@@ -136,9 +143,3 @@ export default function(): void {
     });
   });
 }
-@Component({
-  template: `<clr-dg-column-separator></clr-dg-column-separator>`,
-  styles: [':host { position: position; width: 200px; height: 400px;}'],
-  providers: [ColumnResizerService, MOCK_TABLE_SIZE_PROVIDER],
-})
-class TestComponent {}

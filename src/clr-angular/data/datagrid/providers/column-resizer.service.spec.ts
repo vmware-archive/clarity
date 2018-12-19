@@ -13,6 +13,15 @@ import { DragEventType } from '../../../utils/drag-and-drop/interfaces/drag-even
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 import { ColumnResizerService } from './column-resizer.service';
 
+@Component({
+  providers: [ColumnResizerService, DomAdapter, DatagridRenderOrganizer], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
+  template: `<div></div>`,
+  styles: [':host { position: position; width: 200px; height: 400px;}'],
+})
+class TestComponent {
+  constructor(el: ElementRef, renderer: Renderer2, domAdapter: DomAdapter, organizer: DatagridRenderOrganizer) {}
+}
+
 export default function(): void {
   describe('Column Resizer Service', function() {
     let columnResizerService: ColumnResizerService;
@@ -92,13 +101,4 @@ export default function(): void {
       expect(datagridRenderOrganizer.resize).toHaveBeenCalled();
     });
   });
-}
-
-@Component({
-  providers: [ColumnResizerService, DomAdapter, DatagridRenderOrganizer], // Should be declared here in a component level, not in the TestBed because Renderer2 wouldn't be present
-  template: `<div></div>`,
-  styles: [':host { position: position; width: 200px; height: 400px;}'],
-})
-class TestComponent {
-  constructor(el: ElementRef, renderer: Renderer2, domAdapter: DomAdapter, organizer: DatagridRenderOrganizer) {}
 }

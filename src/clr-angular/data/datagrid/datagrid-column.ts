@@ -24,6 +24,7 @@ import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
+import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridColumnType } from './enums/column-type.enum';
@@ -45,9 +46,11 @@ let nbCount: number = 0;
             <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
             <clr-dg-string-filter
-                    *ngIf="field && !customFilter && (colType==ClrDatagridColumnType.STRING)"
+                    *ngIf="field && !customFilter && (colType=='string')"
                     [clrDgStringFilter]="registered"
                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+
+            <!-- Need to add a instance of clr-dg-numeric-filter here -->
 
             <ng-template #columnTitle>
                 <ng-content></ng-content>
@@ -147,17 +150,22 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   /*
      * What type is this column?  This defaults to STRING, but can also be
-     * set to NUMBER.  Unsupported types default to STRING.
+     * set to NUMBER.  Unsupported types default to STRING. Users can set it
+     * via the [clrDgColType] input by setting it to 'string' or 'number'.
      */
 
   private _colType: ClrDatagridColumnType = ClrDatagridColumnType.STRING;
   public get colType() {
-    return this._colType;
+    if (this._colType == ClrDatagridColumnType.NUMBER) {
+      return 'number';
+    } else {
+      return 'string';
+    }
   }
 
   @Input('clrDgColType')
-  public set colType(type: string) {
-    if (lowercase(type) == 'number') {
+  public set colType(raw_type: string) {
+    if (raw_type.toLowerCase() == 'number') {
       this._colType = ClrDatagridColumnType.NUMBER;
     } else {
       this._colType = ClrDatagridColumnType.STRING;

@@ -24,9 +24,11 @@ export * from './enums/sort-order.enum';
 export * from './enums/column-type.enum';
 export * from './interfaces/filter.interface';
 export * from './interfaces/string-filter.interface';
+export * from './interfaces/numeric-filter.interface';
 export * from './interfaces/comparator.interface';
 
 export * from './built-in/filters/datagrid-string-filter';
+export * from './built-in/filters/datagrid-numeric-filter';
 export * from './built-in/filters/datagrid-property-string-filter';
 export * from './built-in/comparators/datagrid-property-comparator';
 

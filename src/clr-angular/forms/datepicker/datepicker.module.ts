@@ -11,7 +11,7 @@ import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
-import { ClrCommonFormsModule } from '../common';
+import { ClrCommonFormsModule } from '../common/common.module';
 
 import { ClrCalendar } from './calendar';
 import { ClrDateContainer } from './date-container';

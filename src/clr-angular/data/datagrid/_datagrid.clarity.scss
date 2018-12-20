@@ -2,6 +2,16 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@mixin pagination-separator() {
+  content: '';
+  display: inline-block;
+  height: 1rem;
+  width: $clr-rem-1px;
+  background-color: $clr-table-border-color;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+
 @include exports('datagrid.clarity') {
   @include basic-table(
     '.datagrid',
@@ -643,23 +653,26 @@
           line-height: 1rem;
           vertical-align: middle;
         }
+
+        & + .pagination-description {
+          &:before {
+            @include pagination-separator();
+          }
+        }
       }
 
       &-description {
         white-space: nowrap;
+
+        & + .pagination-list {
+          &:before {
+            @include pagination-separator();
+          }
+        }
       }
 
       &-list {
-        &::before {
-          content: '';
-          display: inline-block;
-          height: 1rem;
-          width: $clr-rem-1px;
-          background-color: $clr-table-border-color;
-          margin-right: 0.5rem;
-          vertical-align: middle;
-        }
-        margin: 0 0.5rem;
+        margin-right: 0.5rem;
         height: calc(1.5rem - #{2 * $clr-default-borderwidth});
         display: flex;
         align-items: center;

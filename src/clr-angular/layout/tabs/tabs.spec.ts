@@ -138,6 +138,7 @@ describe('Tabs', () => {
 
     it('projects all the links and just the active content', () => {
       expect(compiled.querySelectorAll('button.nav-link').length).toEqual(4);
+      expect(compiled.querySelectorAll('section').length).toEqual(1);
       expect(compiled.querySelectorAll('p').length).toEqual(1);
 
       const content: HTMLElement = compiled.querySelector('p');

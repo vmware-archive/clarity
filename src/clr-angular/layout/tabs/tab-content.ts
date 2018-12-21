@@ -15,20 +15,13 @@ let nbTabContentComponents: number = 0;
     <ng-template #tabContentProjectedRef>
       <section [id]="tabContentId" role="tabpanel" [class.active]="active"
                [attr.aria-labelledby]="ariaLabelledBy"
+               [attr.aria-expanded]="active"
                [attr.aria-hidden]="!active" [attr.data-hidden]="!active">
         <ng-content></ng-content>
       </section>
     </ng-template>
     <ng-container [ngTemplateOutlet]="tabContentProjectedRef"></ng-container>
     `,
-  host: {
-    '[id]': 'tabContentId',
-    '[attr.aria-labelledby]': 'ariaLabelledBy',
-    '[attr.aria-hidden]': '!active',
-    '[attr.aria-expanded]': 'active',
-    '[attr.data-hidden]': '!active',
-    role: 'tabpanel',
-  },
 })
 export class ClrTabContent {
   @ViewChild('tabContentProjectedRef') templateRef: TemplateRef<ClrTabContent>;

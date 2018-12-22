@@ -1058,7 +1058,7 @@ export declare class ClrTabs implements AfterContentInit {
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
-    tabContent: QueryList<ClrTabContent>;
+    tabContents: QueryList<ClrTabContent>;
     readonly tabIds: string;
     tabLinkDirectives: QueryList<ClrTabLink>;
     tabsId: number;

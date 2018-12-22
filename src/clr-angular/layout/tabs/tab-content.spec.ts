@@ -14,6 +14,7 @@ import { ClrTabContent } from './tab-content';
 @Component({
   template: `
         <clr-tab-content>Content1</clr-tab-content>
+        <ng-container [ngTemplateOutlet]="tabContent.templateRef"></ng-container>
    `,
 })
 class TestComponent {
@@ -34,7 +35,7 @@ describe('TabContent', () => {
     compiled = fixture.nativeElement;
   });
 
-  it('projects content', () => {
+  it('projects template content', () => {
     expect(compiled.textContent.trim()).toMatch('Content1');
   });
 });

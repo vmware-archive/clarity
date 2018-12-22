@@ -46,7 +46,9 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
             </ng-container>
         </ul>
         <!--tab content-->
-        <ng-container [ngTemplateOutlet]="tabContent.first?.templateRef" ]></ng-container>
+        <ng-container *ngFor="let content of tabContents">
+            <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
+        </ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
@@ -55,7 +57,7 @@ export class ClrTabs implements AfterContentInit {
   tabLinkDirectives: QueryList<ClrTabLink>;
 
   @ContentChildren(ClrTabContent, { descendants: true })
-  tabContent: QueryList<ClrTabContent>;
+  tabContents: QueryList<ClrTabContent>;
 
   constructor(
     public ifActiveService: IfActiveService,

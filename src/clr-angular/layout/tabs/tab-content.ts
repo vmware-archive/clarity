@@ -20,7 +20,6 @@ let nbTabContentComponents: number = 0;
         <ng-content></ng-content>
       </section>
     </ng-template>
-    <ng-container [ngTemplateOutlet]="tabContentProjectedRef"></ng-container>
     `,
 })
 export class ClrTabContent {

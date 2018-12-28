@@ -1,0 +1,23 @@
+<!--
+  ~  Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  ~
+  -->
+
+<h4>ClrDatagrid with hide/show columns (uses the smart open structural directive)</h4>
+<clr-datagrid>
+    <clr-dg-column>Column</clr-dg-column>
+    <clr-dg-column>
+        <ng-container *clrDgHideableColumn>
+            Column
+        </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of [1,2,3,4,5]">
+        <clr-dg-cell>Cell</clr-dg-cell>
+        <clr-dg-cell>Cell</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer></clr-dg-footer>
+</clr-datagrid>

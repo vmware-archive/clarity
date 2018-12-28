@@ -14,6 +14,8 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrSmartPopover } from '../../smart-popover/smart-popover';
+import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 @Component({
   selector: 'clr-dg-column-toggle',
@@ -25,15 +27,14 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                 type="button">
             <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
         </button>
-        <div class="column-switch"
-             *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
+        
+        <div class="column-switch" *clrSmartOpen>
             <div class="switch-header">
                 <ng-container *ngIf="!title">Show Columns</ng-container>
                 <ng-content select="clr-dg-column-toggle-title"></ng-content>
-                <button
-                    class="btn btn-sm btn-link"
-                    (click)="toggleUI()"
-                    type="button">
+                <button class="btn btn-sm btn-link"
+                        (click)="toggleUI()"
+                        type="button">
                     <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
                 </button>
             </div>
@@ -41,9 +42,9 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                 <li *ngFor="let column of columns">
                     <clr-checkbox-wrapper>
                         <input clrCheckbox type="checkbox"
-                          [disabled]="column.lastVisibleColumn"
-                          [ngModel]="!column.hidden"
-                          (ngModelChange)="toggleColumn($event, column)">
+                               [disabled]="column.lastVisibleColumn"
+                               [ngModel]="!column.hidden"
+                               (ngModelChange)="toggleColumn($event, column)">
                         <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
                     </clr-checkbox-wrapper>
                 </li>
@@ -62,18 +63,14 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                 </div>
             </div>
         </div>
+        
     `,
+  providers: [IfOpenService],
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'open' },
 })
-export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
+export class ClrDatagridColumnToggle extends ClrSmartPopover implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private _allColumnsVisible: boolean;
-
-  /***
-   * Popover init
-   */
-  public anchorPoint: Point = Point.TOP_LEFT;
-  public popoverPoint: Point = Point.LEFT_BOTTOM;
   public open: boolean = false;
 
   /****
@@ -95,8 +92,14 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   constructor(
     public hideableColumnService: HideableColumnService,
     private columnToggleButtons: ColumnToggleButtonsService,
-    public commonStrings: ClrCommonStrings
-  ) {}
+    public commonStrings: ClrCommonStrings,
+    private ifOpenService: IfOpenService
+  ) {
+    super('hide/show toggle');
+    ifOpenService.openChange.subscribe(openChange => {
+      this.open = openChange;
+    });
+  }
 
   ngOnInit() {
     this.subscriptions.push(
@@ -141,6 +144,6 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   }
 
   toggleUI() {
-    this.open = !this.open;
+    this.ifOpenService.open = !this.ifOpenService.open;
   }
 }

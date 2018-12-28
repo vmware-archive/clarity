@@ -702,61 +702,6 @@
           color: $clr-action-blue;
         }
       }
-
-      .column-switch {
-        border-radius: $clr-global-borderradius;
-        padding: 0.75rem;
-        background-color: $clr-datagrid-popover-bg-color;
-        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
-        width: 10.416667rem;
-        display: flex;
-        flex-direction: column;
-        z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
-
-        .switch-header {
-          display: flex;
-          justify-content: space-between;
-          font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
-          font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
-          padding-bottom: 0.5rem;
-          line-height: 1rem;
-
-          button {
-            min-width: 0.75rem;
-            margin: 0;
-            padding: 0;
-            color: $clr-dark-midtone-gray;
-
-            &:hover {
-              color: $clr-action-blue;
-            }
-          }
-        }
-
-        .switch-content {
-          max-height: 12.5rem;
-          overflow-y: auto;
-          min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
-
-          li {
-            line-height: 1rem;
-            padding-left: 2 * $clr-rem-1px;
-          }
-        }
-
-        .switch-footer {
-          .btn {
-            margin: 0;
-            padding: 0;
-          }
-
-          .action-right {
-            display: flex;
-            justify-content: flex-end;
-          }
-        }
-      }
     }
   }
 
@@ -1032,4 +977,63 @@
     }
   }
   // END Calculation classes.
+
+  // Moving column-switch-content up in DOM hierarchy
+  .column-switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: $clr-global-borderradius;
+    padding: 0.75rem;
+    background-color: $clr-datagrid-popover-bg-color;
+    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
+    width: 10.416667rem;
+    display: flex;
+    flex-direction: column;
+    //z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
+
+    .switch-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
+      font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
+      padding-bottom: 0.5rem;
+      line-height: 1rem;
+
+      button {
+        min-width: 0.75rem;
+        margin: 0;
+        padding: 0;
+        color: $clr-dark-midtone-gray;
+
+        &:hover {
+          color: $clr-action-blue;
+        }
+      }
+    }
+
+    .switch-content {
+      max-height: 12.5rem;
+      overflow-y: auto;
+      min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+
+      li {
+        line-height: 1rem;
+        padding-left: 2 * $clr-rem-1px;
+      }
+    }
+
+    .switch-footer {
+      .btn {
+        margin: 0;
+        padding: 0;
+      }
+
+      .action-right {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
 }

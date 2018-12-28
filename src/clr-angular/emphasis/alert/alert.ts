@@ -60,7 +60,9 @@ export class ClrAlert {
 
   get isHidden() {
     if (this.multiAlertService) {
-      if (this.multiAlertService.currentAlert === this) {
+      // change detection issue in production mode causes currentAlert to be undefined when only the first alert exists
+      // https://github.com/vmware/clarity/issues/2430
+      if (this.multiAlertService.currentAlert === this || this.multiAlertService.count === 0) {
         if (this.hidden === true) {
           this.previouslyHidden = true;
           this.hidden = false;

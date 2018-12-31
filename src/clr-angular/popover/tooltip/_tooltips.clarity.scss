@@ -31,7 +31,7 @@
 
   &::before {
     position: absolute;
-    #{$oppA}: -0.375rem;
+    #{$oppA}: -0.35rem;
     #{$oppB}: 0;
     #{$dirA}: auto;
     #{$dirB}: auto;
@@ -87,12 +87,6 @@
       transition: opacity 0.3s linear;
       white-space: normal;
       z-index: map-get($clr-layers, tooltips);
-    }
-
-    //Needed for IE10. Cannot add styles directly to &:hover::after,&:hover::before before adding styles to &:hover.
-    // TODO: is this still needed? we no longer support IE10...
-    &:hover {
-      background: url('data:image/svg+xml;charset=UTF-8,%3Csvg+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22+width%3D%221%22+height%3D%221%22+viewBox%3D%220+0+1+1%22%3E%3Ctitle%3Etransparent+bcg%3C%2Ftitle%3E%3C%2Fsvg%3E');
     }
 
     &:hover > .tooltip-content,

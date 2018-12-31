@@ -28,7 +28,7 @@ $clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !def
 $clr-table-font-color: clr-getTextColor($clr-table-bgcolor, text);
 // Table dims and sizing
 $clr-table-fontsize: 0.541667rem;
-$clr-table-lineheight: 0.583333rem !default;
+$clr-table-lineheight: 0.5833334rem !default;
 $clr-table-cellpadding: 0.5rem !default;
 $clr-table-topcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
 $clr-table-bottomcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;

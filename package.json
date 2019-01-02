@@ -35,7 +35,7 @@
     "pretest:lint": "tsc -p tests/tslint/tsconfig.json",
     "test:lint:ts": "tslint -p . -c tslint.json \"src/**/*.ts\" -e \"src/ks-app/**\" -e \"src/schematics/**\"",
     "test:lint:styles": "stylelint \"src/**/*.scss\" \"src/**/*.css\"",
-    "test:lint": "npm-run-all test:lint:ts test:lint:styles",
+    "test:lint": "npm-run-all website:news test:lint:ts test:lint:styles",
     "test:visual": "npm-run-all 'test:visual:light -- {*}' 'test:visual:dark -- {*}' --",
     "test:visual:light": "./scripts/docker-cdc.js -t",
     "test:visual:dark": "./scripts/docker-cdc.js -t -c dark",

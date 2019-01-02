@@ -26,7 +26,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
-import { ClrCommonFormsModule } from '../common';
+import { ClrCommonFormsModule } from '../common/common.module';
 
 export default function() {
   describe('Date Container Component', () => {

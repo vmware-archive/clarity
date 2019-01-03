@@ -35,14 +35,15 @@ class NoBarrelImportsWalker extends Lint.RuleWalker {
     const importFile = node.parent.getSourceFile().fileName;
     // Here we chop off the filename to get just the host directory
     const importDir = importFile.substring(0, importFile.lastIndexOf('/'));
-    // Here we get the path of the file being imported, and add `.ts` for full path
-    let path = node.moduleSpecifier.getText();
-    if (extname(path) !== '') {
-      path.replace(/'|"/gi, '') + '.ts';
-    }
+    // Here we get the path of the file being imported
+    let path = node.moduleSpecifier.getText().replace(/'|"/gi, '');
 
     // We only care if this is a relative path, otherwise its fine
     if (path.startsWith('.')) {
+      // We need to add add `.ts` for full path, unless it has one of our supported file types already
+      if (['.html', '.txt', '.ts', '.json', '.js'].indexOf(extname(path)) === -1) {
+        path = path + '.ts';
+      }
       // Try to get file stats, or else its not a file and we throw fail
       try {
         // Using resolve we get the full path of what is being imported to check if

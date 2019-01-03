@@ -26,6 +26,9 @@ import { FormsLayoutHorizontalGridDemo } from './layout/layout-horizontal-grid';
 import { FormsLayoutModalDemo } from './layout/layout-modal';
 import { FormsLayoutVerticalDemo } from './layout/layout-vertical';
 import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
+import { FormsLayoutCompactAngularDemo } from './layout-angular/layout-compact-angular';
+import { FormsLayoutHorizontalAngularDemo } from './layout-angular/layout-horizontal-grid';
+import { FormsLayoutVerticalAngularDemo } from './layout-angular/layout-vertical-grid';
 import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 import { FormsResetDemo } from './reset/reset';
@@ -42,6 +45,9 @@ import { FormsResetDemo } from './reset/reset';
     FormsLayoutHorizontalGridDemo,
     FormsLayoutCompactGridDemo,
     FormsLayoutModalDemo,
+    FormsLayoutCompactAngularDemo,
+    FormsLayoutHorizontalAngularDemo,
+    FormsLayoutVerticalAngularDemo,
     FormsTextDemo,
     FormsCheckboxDemo,
     FormsFileDemo,
@@ -62,6 +68,9 @@ import { FormsResetDemo } from './reset/reset';
     FormsLayoutHorizontalGridDemo,
     FormsLayoutCompactGridDemo,
     FormsLayoutModalDemo,
+    FormsLayoutCompactAngularDemo,
+    FormsLayoutHorizontalAngularDemo,
+    FormsLayoutVerticalAngularDemo,
     FormsTextDemo,
     FormsCheckboxDemo,
     FormsFileDemo,

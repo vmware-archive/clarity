@@ -90,6 +90,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     '[class.date-container]': '!newFormsLayout',
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-form-control]': 'newFormsLayout',
+    '[class.clr-row]': 'addGrid()',
   },
 })
 export class ClrDateContainer implements DynamicWrapper, OnDestroy {

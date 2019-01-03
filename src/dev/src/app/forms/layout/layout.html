@@ -9,10 +9,10 @@
 
 <form class="clr-form clr-form-{{layout}}">
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic input
         </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-basic" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -22,10 +22,10 @@
     </div>
 
     <div class="clr-form-control clr-form-control-disabled" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-disabled" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-disabled" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic input, disabled
         </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-disabled" placeholder="Enter value here" class="clr-input" value="test value"
                     disabled>
@@ -36,9 +36,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-basic-error" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-basic-error" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic input, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-basic-error" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-long" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-long" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic input, This is the song that doesn't end. It goes on and on my friend. Some people started singing it
             not knowing what it was, and they'll continue singing it forever just because..This is the song that
             doesn't end. It goes on and on my friend. Some people started singing it not knowing what it was, and
@@ -56,7 +56,7 @@
             friend. Some people started singing it not knowing what it was, and they'll continue singing it forever
             just because..This is the song that doesn't end. It goes on and on my friend. Some people started singing
             it not knowing what it was, and they'll continue singing it forever just because..</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-long" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -71,9 +71,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox1" class="clr-control-label">option 1</label>
@@ -94,9 +94,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}" [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic checkbox, individual containers</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox7" class="clr-control-label">option 1</label>
@@ -106,7 +106,7 @@
                 <span class="clr-subtext">Helper Text</span>
             </div>
         </div>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox8" class="clr-control-label">option 2</label>
@@ -116,7 +116,7 @@
                 <span class="clr-subtext">Helper Text</span>
             </div>
         </div>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox9" class="clr-control-label">option 3</label>
@@ -129,9 +129,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic checbox, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox4" id="{{layout}}-checkbox10" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox10" class="clr-control-label">option 1</label>
@@ -152,9 +152,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline checkbox</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox13" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox13" class="clr-control-label">option 1</label>
@@ -175,9 +175,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic radio</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" id="{{layout}}-radio1" name="radio-basic" class="clr-radio">
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
@@ -198,9 +198,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic radio, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
@@ -221,9 +221,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline radio</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio3" id="{{layout}}-radio7" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio7" class="clr-control-label">option 1</label>
@@ -244,9 +244,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic select</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
                 <select>
                     <option>Option 1</option>
@@ -260,10 +260,10 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Select error
         </label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
                 <select>
                     <option>Option 1</option>
@@ -277,9 +277,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic multiple select</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
                 <select multiple>
                     <option>Option 1</option>
@@ -293,10 +293,10 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Select multiple error
         </label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
                 <select multiple>
                     <option>Option 1</option>
@@ -310,9 +310,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic file</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <label for="{{layout}}-file" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
                 <input #fileInput type="file" id="{{layout}}-file" placeholder="Enter value here" class="clr-file">
@@ -325,9 +325,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-file2" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file2" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic file, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <label for="{{layout}}-file2" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
                 <input type="file" id="{{layout}}-file2" placeholder="Enter value here" class="clr-file">
@@ -339,9 +339,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             No styling for file upload</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <input type="file" id="{{layout}}-file" placeholder="Enter value here">
             </div>
@@ -352,9 +352,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-file4" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file4" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             No styling for file upload, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <input type="file" id="{{layout}}-file2" placeholder="Enter value here">
             </div>
@@ -365,10 +365,10 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Tooltips
         </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-basic" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -388,8 +388,8 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}"></label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}"></label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-nolabel" placeholder="No label" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -399,9 +399,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             No helper text</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-nosubtext" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -410,8 +410,8 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}"></label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-nosubtext" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}"></label>
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-onlyinput" placeholder="No label or subtext" class="clr-input">
             </div>
@@ -420,23 +420,23 @@
 
     <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}"
         [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
-        <label for="{{layout}}-multiple" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-multiple" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Multiple inputs in same row, different sizes</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple" placeholder="Enter value here" class="clr-input" size="100">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
         </div>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
         </div>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -447,23 +447,23 @@
 
     <div class="clr-form-control clr-form-control-multi" [ngClass]="{'clr-row': grid && layout !== 'vertical'}"
         [style.display]="(!grid && layout !== 'vertical') ? 'none' : ''">
-        <label for="{{layout}}-multiple-error" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-multiple-error" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Multiple inputs in same row, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple-error" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
         </div>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple-error" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>
             <span class="clr-subtext">Helper Text</span>
         </div>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-3': grid}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-3': grid}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-multiple-error" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -473,9 +473,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic textarea</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-textarea-wrapper">
                 <textarea id="{{layout}}-textarea-basic" rows="5" placeholder="Enter value here" class="clr-textarea"></textarea>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -485,9 +485,9 @@
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid && layout !== 'vertical'}">
-        <label for="{{layout}}-textarea-basic-error" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-textarea-basic-error" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Basic textarea, error</label>
-        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-error" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-textarea-wrapper">
                 <textarea id="{{layout}}-textarea-basic-error" rows="5" placeholder="Enter value here" class="clr-textarea"></textarea>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>

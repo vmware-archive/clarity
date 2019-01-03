@@ -21,6 +21,9 @@ import { FormsLayoutHorizontalGridDemo } from './layout/layout-horizontal-grid';
 import { FormsLayoutModalDemo } from './layout/layout-modal';
 import { FormsLayoutVerticalDemo } from './layout/layout-vertical';
 import { FormsLayoutVerticalGridDemo } from './layout/layout-vertical-grid';
+import { FormsLayoutCompactAngularDemo } from './layout-angular/layout-compact-angular';
+import { FormsLayoutHorizontalAngularDemo } from './layout-angular/layout-horizontal-grid';
+import { FormsLayoutVerticalAngularDemo } from './layout-angular/layout-vertical-grid';
 import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 import { FormsResetDemo } from './reset/reset';
@@ -37,6 +40,9 @@ const ROUTES: Routes = [
       { path: 'layout-horizontal-grid', component: FormsLayoutHorizontalGridDemo },
       { path: 'layout-vertical', component: FormsLayoutVerticalDemo },
       { path: 'layout-vertical-grid', component: FormsLayoutVerticalGridDemo },
+      { path: 'layout-compact-angular', component: FormsLayoutCompactAngularDemo },
+      { path: 'layout-horizontal-angular', component: FormsLayoutHorizontalAngularDemo },
+      { path: 'layout-vertical-angular', component: FormsLayoutVerticalAngularDemo },
       { path: 'input-group', component: FormsInputGroupDemo },
       { path: 'layout-modal', component: FormsLayoutModalDemo },
       { path: 'checkbox', component: FormsCheckboxDemo },

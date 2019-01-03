@@ -17,6 +17,9 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./layout-vertical-grid']">Layout Vertical Grid</a></li>
             <li><a [routerLink]="['./layout-horizontal-grid']">Layout Horizontal Grid</a></li>
             <li><a [routerLink]="['./layout-compact-grid']">Layout Compact Grid</a></li>
+            <li><a [routerLink]="['./layout-vertical-angular']">Layout Vertical Angular</a></li>
+            <li><a [routerLink]="['./layout-horizontal-angular']">Layout Horizontal Angular</a></li>
+            <li><a [routerLink]="['./layout-compact-angular']">Layout Compact Angular</a></li>
             <li><a [routerLink]="['./input-group']">Input Group</a></li>
             <li><a [routerLink]="['./layout-modal']">Layout in Modal</a></li>
             <li><a [routerLink]="['./text']">Text</a></li>

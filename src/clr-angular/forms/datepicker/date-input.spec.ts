@@ -119,8 +119,8 @@ export default function() {
         });
 
         it('should set override classes and remove them from the control', () => {
-          expect(controlClassService.className).toContain('clr-col-xs-12');
-          expect(context.clarityElement.className).not.toContain('clr-col-xs-12');
+          expect(controlClassService.className).toContain('clr-col-12');
+          expect(context.clarityElement.className).not.toContain('clr-col-12');
         });
       });
 
@@ -554,7 +554,7 @@ export default function() {
 
 @Component({
   template: `
-        <input type="date" clrDate (clrDateChange)="dateChanged($event)" class="test-class clr-col-xs-12 clr-col-md-8">
+        <input type="date" clrDate (clrDateChange)="dateChanged($event)" class="test-class clr-col-12 clr-col-md-8">
     `,
 })
 class TestComponent {

@@ -28,6 +28,11 @@ console.log('Clarity Docker Control for Gemini CSS Regression Testing');
 console.log('--------------------------------------------------------');
 console.log();
 
+// Hacky fix for running light and dark tests through npm-run-all
+if (program.args[0]) {
+  program.args = program.args[0].split(' ');
+}
+
 /**********
  * Run gemini tests based on the args given:
  * - If we are testing but no component list is specified, run all tests

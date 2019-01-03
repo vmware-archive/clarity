@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -25,7 +25,9 @@ class ExplicitForTest {}
   template: `<div><label for="hello"></label></div>`,
   providers: [ControlIdService],
 })
-class ContainerizedTest {}
+class ContainerizedTest {
+  @ViewChild(ClrLabel) label;
+}
 
 @Component({
   template: `<div><label for="hello"></label></div>`,
@@ -34,7 +36,7 @@ class ContainerizedTest {}
 class WrapperTest {}
 
 @Component({
-  template: `<label for="hello" class="clr-col-xs-12 clr-col-md-3"></label>`,
+  template: `<label for="hello" class="clr-col-12 clr-col-md-3"></label>`,
 })
 class ExistingGridTest {}
 
@@ -105,7 +107,23 @@ export default function(): void {
       fixture.detectChanges();
       const label = fixture.nativeElement.querySelector('label');
       expect(label.classList.contains('clr-col-md-2')).toBeTrue();
-      expect(label.classList.contains('clr-col-xs-12')).toBeTrue();
+      expect(label.classList.contains('clr-col-12')).toBeTrue();
+    });
+
+    it('disables adding the grid classes when manually disabled', function() {
+      TestBed.configureTestingModule({
+        imports: [ClrIconModule],
+        declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
+        providers: [LayoutService],
+      });
+      const fixture = TestBed.createComponent(ContainerizedTest);
+      const layoutService = fixture.debugElement.injector.get(LayoutService);
+      layoutService.layout = Layouts.HORIZONTAL;
+      fixture.componentInstance.label.disableGrid();
+      fixture.detectChanges();
+      const label = fixture.nativeElement.querySelector('label');
+      expect(label.classList.contains('clr-col-md-2')).toBeFalse();
+      expect(label.classList.contains('clr-col-12')).toBeFalse();
     });
 
     it('leaves the grid classes untouched if they exist', function() {

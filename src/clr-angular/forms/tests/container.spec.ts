@@ -145,9 +145,9 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
     });
 
     it('adds the grid class for the control container when not vertical', () => {
-      expect(container.controlClass()).toContain('clr-col-xs-12');
+      expect(container.controlClass()).toContain('clr-col-12');
       layoutService.layout = Layouts.VERTICAL;
-      expect(container.controlClass()).not.toContain('clr-col-xs-12');
+      expect(container.controlClass()).not.toContain('clr-col-12');
     });
 
     it('tracks the validity of the form control', () => {

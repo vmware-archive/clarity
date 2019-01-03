@@ -13,10 +13,10 @@ import { ClrIconModule } from '../../icon/icon.module';
   template: `
 <form class="clr-form clr-form-{{layout}}">
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="text">
-        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Input
         </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-input-wrapper">
                 <input type="text" id="{{layout}}-basic" placeholder="Enter value here" class="clr-input">
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -26,9 +26,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox1" class="clr-control-label">
@@ -55,9 +55,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox-inline">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline checkbox</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-checkbox-wrapper">
                 <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
                 <label for="{{layout}}-checkbox7" class="clr-control-label">
@@ -84,9 +84,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Radio</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
@@ -107,9 +107,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio-inline">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Inline radio</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-radio-wrapper">
                 <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
                 <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
@@ -130,9 +130,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file">
-        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             File</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <label for="{{layout}}-file" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
                 <input #fileInput type="file" id="{{layout}}-file" placeholder="Enter value here" class="clr-file">
@@ -144,9 +144,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file-plain">
-        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Plain file</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-file-wrapper">
                 <input type="file" id="{{layout}}-file" placeholder="Enter value here">
             </div>
@@ -157,9 +157,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="textarea">
-        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Textarea</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-textarea-wrapper">
                 <textarea id="{{layout}}-textarea-basic" rows="5" placeholder="Enter value here" class="clr-textarea"></textarea>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
@@ -169,9 +169,9 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="select">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Select</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-select-wrapper">
                 <select>
                     <option>Option 1</option>
@@ -185,10 +185,10 @@ import { ClrIconModule } from '../../icon/icon.module';
     </div>
 
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="multiselect">
-        <label class="clr-control-label" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Mmultiselect
         </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-xs-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
             <div class="clr-multiselect-wrapper">
                 <select multiple>
                     <option>Option 1</option>

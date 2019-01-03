@@ -189,7 +189,7 @@ export default function() {
 
       it('returns the classes to apply to the control', () => {
         expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
-        expect(context.clarityDirective.controlClass()).toContain('clr-col-xs-12');
+        expect(context.clarityDirective.controlClass()).toContain('clr-col-12');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
         context.clarityDirective.invalid = true;
         expect(context.clarityDirective.controlClass()).toContain('clr-error');

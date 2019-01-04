@@ -195,9 +195,10 @@ export declare class ClrCheckboxDeprecatedModule {
 export declare class ClrCheckboxModule {
 }
 
-export declare class ClrCheckboxWrapper implements DynamicWrapper {
+export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit {
     _dynamic: boolean;
     label: ClrLabel;
+    ngOnInit(): void;
 }
 
 export declare class ClrCommonFormsModule {
@@ -743,6 +744,7 @@ export declare class ClrInputModule {
 export declare class ClrLabel implements OnInit, OnDestroy {
     forAttr: string;
     constructor(controlIdService: ControlIdService, layoutService: LayoutService, ngControlService: NgControlService, renderer: Renderer2, el: ElementRef);
+    disableGrid(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -898,9 +900,10 @@ export declare class ClrRadioContainer implements OnDestroy {
 export declare class ClrRadioModule {
 }
 
-export declare class ClrRadioWrapper implements DynamicWrapper {
+export declare class ClrRadioWrapper implements DynamicWrapper, OnInit {
     _dynamic: boolean;
     label: ClrLabel;
+    ngOnInit(): void;
 }
 
 export declare class ClrRecursiveForOf<T> implements OnChanges {

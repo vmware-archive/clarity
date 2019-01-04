@@ -153,11 +153,11 @@ export default function(): void {
     let columnHeader3ResizerService: ColumnResizerService;
     let columnHeader4ResizerService: ColumnResizerService;
 
-    let columnHeader1DraggableDebugElement: DebugElement;
-    let columnHeader3DraggableDebugElement: DebugElement;
+    let columnHeader1ResizerDebugElement: DebugElement;
+    let columnHeader3ResizerDebugElement: DebugElement;
 
-    let columnHeader1DraggableDirective: ClrDraggable<any>;
-    let columnHeader3DraggableDirective: ClrDraggable<any>;
+    let columnHeader1ResizerDirective: ClrDraggable<any>;
+    let columnHeader3ResizerDirective: ClrDraggable<any>;
 
     const widthOf = (el: HTMLElement): number => {
       return Math.round(el.getBoundingClientRect().width);
@@ -196,11 +196,11 @@ export default function(): void {
       column3InitialWidth = widthOf(columnHeader3Element);
       column4InitialWidth = widthOf(columnHeader4Element);
 
-      columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[1];
-      columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[5];
+      columnHeader1ResizerDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[1];
+      columnHeader3ResizerDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[5];
 
-      columnHeader1DraggableDirective = columnHeader1DraggableDebugElement.injector.get(ClrDraggable);
-      columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);
+      columnHeader1ResizerDirective = columnHeader1ResizerDebugElement.injector.get(ClrDraggable);
+      columnHeader3ResizerDirective = columnHeader3ResizerDebugElement.injector.get(ClrDraggable);
     });
 
     it('each header should have min-width', function() {
@@ -227,7 +227,7 @@ export default function(): void {
     it('expands other flexible headers if header width shrinks', function() {
       const resizeBy = -20;
 
-      emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader1ResizerDirective);
 
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
       expect(widthOf(columnHeader2Element)).toBeGreaterThan(column2InitialWidth);
@@ -241,14 +241,14 @@ export default function(): void {
     it('resized header should have fixed width class', function() {
       expect(columnHeader1Element.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
       const resizeBy = -20;
-      emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader1ResizerDirective);
       expect(columnHeader1Element.classList.contains(STRICT_WIDTH_CLASS)).toBeTrue();
     });
 
     it('shrinks other flexible headers if header width expands', function() {
       const resizeBy = 20;
 
-      emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader1ResizerDirective);
 
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
       expect(widthOf(columnHeader2Element)).toBeLessThan(column2InitialWidth);
@@ -261,7 +261,7 @@ export default function(): void {
 
     it("shouldn't shrink flexible headers below their min-width if header width expands by large amount", function() {
       const resizeBy = 1000;
-      emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader1ResizerDirective);
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
       expect(widthOf(columnHeader2Element)).toBe(120);
       expect(widthOf(columnHeader3Element)).toBe(
@@ -273,14 +273,14 @@ export default function(): void {
 
     it('gives header its min-width if a user tried to drag too much to left', function() {
       const resizeBy = -1000;
-      emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader1ResizerDirective);
       expect(widthOf(columnHeader1Element)).toBe(96);
     });
 
     it('emits new header width once resizing ends', function() {
       expect(context.testComponent.newWidth).toBeUndefined();
       const resizeBy = 20;
-      emulateResizeOnColumn(resizeBy, columnHeader3DraggableDirective);
+      emulateResizeOnColumn(resizeBy, columnHeader3ResizerDirective);
       expect(context.testComponent.newWidth).toBe(column3InitialWidth + resizeBy);
     });
   });

@@ -20,7 +20,7 @@
     },
     {
       "name": "Eudes Petonnet-Vincent",
-      "role": "Technical   Lead",
+      "role": "Technical Lead",
       "blurb":
         "Eudes has been the technical lead for Clarity since its inception and continues to drive development and innovation. He created the architecture of the Clarity project as well as many of its most complex Angular components like the datagrid.",
       "twitter": "EudesPV",
@@ -79,6 +79,39 @@
         "Jeremy is a developer with a passion for all things web and education. He is a Google Developer Expert for Angular, author of the books Angular in Action and Ionic in Action, and regularly speaks at events.",
       "twitter": "gnomeontherun",
       "img": "jeremy.png",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Stela Stamenkova",
+      "role": "Visual Designer",
+      "blurb":
+        "Stela’s passion is illustration in a vast majority of styles. She delivers illustrations, icons and small animations.",
+      "img": "stela.png",
+      "workstreams": ["UX"]
+    },
+    {
+      "name": "Ivan Donchev",
+      "role": "Developer",
+      "blurb":
+        "Ivan was part of the community, a user and fan of Clarity. Now he is part of Clarity and a great fan of its community. He likes to find problems and build solutions. Prefers simple solutions even for the complex problems.",
+      "img": "ivan.png",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Colin Miller",
+      "role": "Design Lead",
+      "blurb":
+        "Colin is responsible for leading the evolution and innovation in Clarity, and for the visual and interaction design of the library.",
+      "img": "colin.png",
+      "workstreams": ["UX"]
+    },
+    {
+      "name": "Cory Rylan",
+      "role": "Developer",
+      "blurb":
+        "Cory is a front-end developer and Google Developer Expert for Angular and Web. When not building components he is busy teaching Angular and other web technologies at workshops and conferences.",
+      "twitter": "coryrylan",
+      "img": "cory.png",
       "workstreams": ["UI", "NG"]
     }
   ]

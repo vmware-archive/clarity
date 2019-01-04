@@ -73,7 +73,7 @@
     }
   }
 
-  .datagrid-head,
+  .datagrid-header,
   .datagrid-body,
   .datagrid-row,
   .datagrid-column,
@@ -83,23 +83,19 @@
   }
 
   .datagrid-row {
+    border-top: $clr-table-borderwidth solid $clr-table-bordercolor;
+
+    &:first-of-type {
+      border-top: none;
+    }
+
     &:hover {
-      .datagrid-row-sticky,
-      .datagrid-row-scrollable,
-      .datagrid-row-detail,
-      .datagrid-cell {
-        background-color: $clr-datagrid-row-hover;
-      }
+      background-color: $clr-datagrid-row-hover;
     }
 
     &.datagrid-selected {
       color: $clr-datagrid-row-selected;
-
-      .datagrid-row-sticky,
-      .datagrid-row-scrollable,
-      .datagrid-row-detail {
-        background-color: $clr-global-selection-color;
-      }
+      background-color: $clr-global-selection-color;
     }
 
     .datagrid-action-overflow {
@@ -288,7 +284,15 @@
     min-height: 1.5rem;
     width: auto;
 
+    .datagrid-column {
+      border-bottom: none;
+    }
+
     .datagrid-row {
+      background-color: $clr-thead-bgcolor;
+      border-top: none;
+      border-bottom: 2px solid $clr-table-border-color;
+
       .datagrid-row-sticky {
         background-color: $clr-thead-bgcolor;
         z-index: map-get($clr-layers, datagrid-sticky-header);
@@ -325,12 +329,12 @@
     }
 
     .datagrid-column {
-      background-color: $clr-thead-bgcolor;
       text-align: left;
       min-width: 4rem;
       display: flex;
       flex: 1 1 auto;
       vertical-align: top;
+      border: none;
 
       &:last-child {
         .datagrid-column-separator {
@@ -515,7 +519,7 @@
       flex: 1 1 auto;
       text-align: left;
       min-width: 4rem;
-      border-color: $clr-table-border-color;
+      border: none;
 
       &.datagrid-fixed-column {
         flex: 0 0 $clr-datagrid-fixed-column-size;
@@ -601,7 +605,6 @@
       .datagrid-cell {
         display: block;
         padding-top: 11px;
-        border-top: $clr-default-borderwidth solid $clr-table-border-color;
       }
       .datagrid-expandable-caret {
         padding-top: 2px;

@@ -18,7 +18,7 @@
     '.datagrid-header',
     '.datagrid-body',
     '.datagrid-row',
-    '.datagrid-column',
+    '.datagrid-column-wrapper',
     '.datagrid-cell'
   );
 
@@ -69,7 +69,7 @@
     }
 
     &.datagrid-column {
-      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+      padding: 0;
     }
   }
 
@@ -332,6 +332,36 @@
       flex: 1 1 auto;
       vertical-align: top;
 
+      .datagrid-column-wrapper {
+        flex: 1 1 auto;
+
+        &.being-dragged {
+          opacity: 0.4;
+        }
+      }
+
+      .draggable-ghost .datagrid-column-wrapper {
+        position: relative;
+        background-color: $clr-thead-bgcolor;
+        box-shadow: 0 3px 4px rgba(116, 116, 116, 0.3);
+
+        .datagrid-column-separator {
+          display: none;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border: solid 1px #bbb;
+          border-left: solid 2px $clr-action-purple-light;
+        }
+      }
+
       &:last-child {
         .datagrid-column-separator {
           display: none;
@@ -457,21 +487,20 @@
       }
 
       .datagrid-column-separator {
-        $dg-padding-less-border: 0.5rem - $clr-rem-1px;
         position: relative;
-        left: 0.5rem;
+        left: 0;
         flex: 0 0 auto;
         width: $clr-default-borderwidth;
         order: 100;
-        margin-left: auto;
         height: 100%;
+        margin-left: -1px;
 
         &::after {
           content: '';
           position: absolute;
-          height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+          height: calc(100% - 0.5rem);
           width: $clr-rem-1px;
-          top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + #{$clr-rem-1px});
+          top: 0.25rem;
           left: 0;
           background-color: $clr-table-border-color;
         }
@@ -480,9 +509,9 @@
           position: absolute;
           width: calc(0.5rem + #{$clr-rem-1px});
           right: -0.25rem;
-          top: -0.25rem;
+          top: 0;
           cursor: col-resize;
-          height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
+          height: 100%;
           z-index: map-get($clr-layers, datagrid-header);
         }
         .datagrid-column-resize-tracker {
@@ -797,12 +826,6 @@
     .datagrid-header {
       min-height: 1rem;
     }
-    .datagrid-column .datagrid-column-separator {
-      &::after {
-        height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
-        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
-      }
-    }
     .datagrid-cell {
       clr-icon {
         margin-top: calc(-0.125rem - 1px);
@@ -829,10 +852,6 @@
       }
       &.datagrid-cell {
         padding: 0;
-      }
-      &.datagrid-column {
-        padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-        padding-bottom: calc(#{$clr-table--compact-verticalPadding});
       }
     }
     .datagrid-signpost-trigger .signpost .signpost-trigger {

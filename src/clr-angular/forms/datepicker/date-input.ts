@@ -195,6 +195,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     if (date) {
       const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
       if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
+        this.previousOutput = dayModel;
         this._dateNavigationService.selectedDay = dayModel;
         this.writeDateStrToInputField(dateStr);
       }

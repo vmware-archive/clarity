@@ -23,6 +23,7 @@ import {
   ClrDatagridRowDetail,
   ClrDatagridStateInterface,
   ClrDatagridStringFilterInterface,
+  ClrDatagridNumericFilterInterface,
   ClrDatagridSortOrder,
 } from '@clr/angular';
 

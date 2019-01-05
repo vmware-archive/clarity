@@ -26,7 +26,7 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
   private _low: number = Number.NEGATIVE_INFINITY;
   private _high: number = Number.POSITIVE_INFINITY;
 
-  public get limits(): [number, number] {
+  public get values(): [number, number] {
     return [this._low, this._high];
   }
 
@@ -44,6 +44,14 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
       this._high = high;
       this._changes.next([this._low, this._high]);
     }
+  }
+
+  public get low() {
+    return this._low;
+  }
+
+  public get high() {
+    return this._high;
   }
 
   /**

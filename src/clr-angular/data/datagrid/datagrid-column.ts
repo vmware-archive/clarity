@@ -50,7 +50,10 @@ let nbCount: number = 0;
                     [clrDgStringFilter]="registered"
                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <!-- Need to add a instance of clr-dg-numeric-filter here -->
+            <clr-dg-numeric-filter
+                    *ngIf="field && !customFilter && (colType=='number')"
+                    [clrDgNumericFilter]="registered"
+                    [(clrFilterValue)]="filterValue"></clr-dg-numeric-filter>
 
             <ng-template #columnTitle>
                 <ng-content></ng-content>
@@ -165,7 +168,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   @Input('clrDgColType')
   public set colType(raw_type: string) {
-    if (raw_type.toLowerCase() == 'number') {
+    if (typeof raw_type === 'string' && raw_type.toLowerCase() == 'number') {
       this._colType = ClrDatagridColumnType.NUMBER;
     } else {
       this._colType = ClrDatagridColumnType.STRING;

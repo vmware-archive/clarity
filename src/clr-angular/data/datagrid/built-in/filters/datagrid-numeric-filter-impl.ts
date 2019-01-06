@@ -23,8 +23,8 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
   /**
    * Internal values and accessor
    */
-  private _low: number = Number.NEGATIVE_INFINITY;
-  private _high: number = Number.POSITIVE_INFINITY;
+  private _low: number = null;
+  private _high: number = null;
 
   public get values(): [number, number] {
     return [this._low, this._high];
@@ -58,7 +58,7 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
    * Indicates if the filter is currently active, (at least one input is set)
    */
   public isActive(): boolean {
-    return isFinite(this._low) || isFinite(this._high);
+    return this._low !== null || this.high !== null;
   }
 
   /**

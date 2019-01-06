@@ -8,6 +8,12 @@ import { ClrDatagridNumericFilterInterface } from '@clr/angular';
 
 export class IDFilter implements ClrDatagridNumericFilterInterface<any> {
   accepts(row: any, low: number, high: number): boolean {
-    return row.id >= low && row.id <= high;
+    if (low !== null && row.id < low) {
+      return false;
+    }
+    if (high !== null && row.id > high) {
+      return false;
+    }
+    return true;
   }
 }

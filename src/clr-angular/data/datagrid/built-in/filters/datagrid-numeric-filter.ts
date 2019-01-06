@@ -26,10 +26,10 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
                 mid-change detection when the input is destroyed.
             -->
             <!-- TODO: Make this look better -->
-            <input #input type="number" name="low" [(ngModel)]="low" *ngIf="open"
+            <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()" style="width: 30px"/>
                 -
-                <input #input type="number" name="high" [(ngModel)]="high" *ngIf="open"
+                <input #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
                     (keyup.enter)="close()" (keyup.escape)="close()" style="width: 30px"/>
         </clr-dg-filter>
     `,
@@ -63,7 +63,7 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   /**
    * We need the actual input element to automatically focus on it
    */
-  @ViewChild('input') public input: ElementRef;
+  @ViewChild('input_low') public input: ElementRef;
 
   /**
    * We grab the ClrDatagridFilter we wrap to register this StringFilter to it.
@@ -105,7 +105,7 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
       return this.filter.low;
     } else {
       // There's not a low limit
-      return '';
+      return null;
     }
   }
 
@@ -114,20 +114,26 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
       return this.filter.high;
     } else {
       // There's not a high limit
-      return '';
+      return null;
     }
   }
 
-  public set low(low: number) {
-    if (low !== this.filter.low) {
+  public set low(low: number | string) {
+    if (typeof low === 'number' && low !== this.filter.low) {
       this.filter.low = low;
+      this.filterValueChange.emit([this.filter.low, this.filter.high]);
+    } else if (typeof low !== 'number') {
+      this.filter.low = null;
       this.filterValueChange.emit([this.filter.low, this.filter.high]);
     }
   }
 
-  public set high(high: number) {
-    if (high !== this.filter.high) {
+  public set high(high: number | string) {
+    if (typeof high === 'number' && high !== this.filter.high) {
       this.filter.high = high;
+      this.filterValueChange.emit([this.filter.low, this.filter.high]);
+    } else if (typeof high !== 'number') {
+      this.filter.high = null;
       this.filterValueChange.emit([this.filter.low, this.filter.high]);
     }
   }

@@ -16,7 +16,6 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
 @Component({
   selector: 'clr-dg-numeric-filter',
   providers: [{ provide: CustomFilter, useExisting: DatagridNumericFilter }],
-  // TODO: Fancy up this template
   template: `
         <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
             <!--
@@ -25,7 +24,6 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->
-            <!-- TODO: Make this look better -->
             <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()" style="width: 30px"/>
                 -
@@ -48,7 +46,6 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     value: ClrDatagridNumericFilterInterface<T> | RegisteredFilter<T, DatagridNumericFilterImpl<T>>
   ) {
     if (value instanceof RegisteredFilter) {
-      // TODO: What is this?
       this.setFilter(value);
     } else {
       this.setFilter(new DatagridNumericFilterImpl(value));
@@ -87,15 +84,23 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   public get values() {
     return [this.filter.low, this.filter.high];
   }
-  // TODO: Does this work with multiple values?
+
   @Input('clrFilterValue')
   public set values(values: [number, number]) {
     if (!this.filter) {
       return;
     }
-    if (values[0] !== this.filter.low || values[1] !== this.filter.high) {
-      this.filter.low = values[0];
-      this.filter.high = values[1];
+    if (values && (values[0] !== this.filter.low || values[1] !== this.filter.high)) {
+      if (typeof values[0] === 'number') {
+        this.filter.low = values[0];
+      } else {
+        this.filter.low = null;
+      }
+      if (typeof values[1] === 'number') {
+        this.filter.high = values[1];
+      } else {
+        this.filter.high = null;
+      }
       this.filterValueChange.emit(values);
     }
   }

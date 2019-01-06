@@ -23,6 +23,7 @@ import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
+import { DatagridPropertyNumericFilter } from './built-in/filters/datagrid-property-numeric-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
@@ -189,7 +190,11 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     if (typeof field === 'string') {
       this._field = field;
       if (!this.customFilter) {
-        this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+        if (this._colType == ClrDatagridColumnType.NUMBER) {
+          this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
+        } else {
+          this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+        }
       }
       if (!this._sortBy) {
         this._sortBy = new DatagridPropertyComparator(field);

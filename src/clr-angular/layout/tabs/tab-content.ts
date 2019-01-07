@@ -14,9 +14,11 @@ let nbTabContentComponents: number = 0;
   template: `
     <ng-template #tabContentProjectedRef>
       <section [id]="tabContentId" role="tabpanel" [class.active]="active"
+               [hidden]="!active"
                [attr.aria-labelledby]="ariaLabelledBy"
                [attr.aria-expanded]="active"
-               [attr.aria-hidden]="!active" [attr.data-hidden]="!active">
+               [attr.aria-hidden]="!active" 
+               [attr.data-hidden]="!active">
         <ng-content></ng-content>
       </section>
     </ng-template>

@@ -31,6 +31,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 @Component({
   template: `
@@ -344,6 +345,7 @@ const PROVIDERS = [
   StateProvider,
   ColumnToggleButtonsService,
   TableSizeService,
+  ColumnOrdersCoordinatorService,
 ];
 
 export default function(): void {

@@ -29,14 +29,16 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
+import { ColumnOrderModelService } from './providers/column-order-model.service';
+import { ColumnHeaderSides } from './datagrid-column-reorder-droppable';
 
 let nbCount: number = 0;
 
 @Component({
   selector: 'clr-dg-column',
   template: `
-    <clr-dg-column-reorder-droppable></clr-dg-column-reorder-droppable>
-    <div class="datagrid-column-wrapper" clrDraggable>
+    <clr-dg-column-reorder-droppable [side]="leftReorderDroppable"></clr-dg-column-reorder-droppable>
+    <div class="datagrid-column-wrapper" [clrDraggable]="columnDropData" [clrGroup]="columnOrderDropKey">
         <div class="datagrid-column-flex">
             <!-- I'm really not happy with that select since it's not very scalable -->
             <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
@@ -60,7 +62,7 @@ let nbCount: number = 0;
         </div>
     </div>
     <clr-dg-column-separator></clr-dg-column-separator>
-    <clr-dg-column-reorder-droppable></clr-dg-column-reorder-droppable>
+    <clr-dg-column-reorder-droppable [side]="rightReorderDroppable"></clr-dg-column-reorder-droppable>
     `,
   host: {
     '[class.datagrid-column]': 'true',
@@ -68,10 +70,16 @@ let nbCount: number = 0;
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
+  providers: [ColumnOrderModelService],
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
-  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private vcr: ViewContainerRef) {
+  constructor(
+    private _sort: Sort<T>,
+    filters: FiltersProvider<T>,
+    private vcr: ViewContainerRef,
+    private columnOrderModel: ColumnOrderModelService
+  ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -89,6 +97,22 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
     this.columnId = 'dg-col-' + nbCount.toString(); // Approximate a GUID
     nbCount++;
+  }
+
+  public get leftReorderDroppable() {
+    return ColumnHeaderSides.Left;
+  }
+
+  public get rightReorderDroppable() {
+    return ColumnHeaderSides.Right;
+  }
+
+  public get columnDropData() {
+    return this.columnOrderModel;
+  }
+
+  public get columnOrderDropKey() {
+    return this.columnOrderModel.columnGroupId;
   }
 
   /**
@@ -113,7 +137,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    *
    */
   public get hidden(): boolean {
-    return !!this.hideable && this.hideable.hidden;
+    return !!this._hideable && this._hideable.hidden;
   }
 
   /**
@@ -354,7 +378,17 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    * When its not hideable should be undefined.
    *
    */
-  public hideable: DatagridHideableColumnModel;
+
+  private _hideable: DatagridHideableColumnModel;
+
+  get hideable(): DatagridHideableColumnModel {
+    return this._hideable;
+  }
+
+  set hideable(value: DatagridHideableColumnModel) {
+    this.columnOrderModel.hideableColumnModel = value;
+    this._hideable = value;
+  }
 
   private wrappedInjector: Injector;
 

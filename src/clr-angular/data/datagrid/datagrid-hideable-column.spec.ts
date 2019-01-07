@@ -15,6 +15,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -25,6 +26,7 @@ const PROVIDERS_NEEDED = [
   StateDebouncer,
   TableSizeService,
   Renderer2,
+  ColumnOrdersCoordinatorService,
 ];
 
 export default function(): void {

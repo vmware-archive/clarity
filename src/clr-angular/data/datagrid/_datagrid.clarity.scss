@@ -340,6 +340,41 @@
         }
       }
 
+      .datagrid-column-reorder-droppable {
+        //Display
+        flex: 0 0 auto;
+
+        //Position
+        position: relative;
+        top: 0;
+        right: 0;
+
+        //Dims
+        // This droppable area shouldn't be visible.
+        // Although it has no width (we will use dropTolerance on the width), having the full spanning height of
+        // the column is important to have an ample space of droppable area.
+        width: 0px;
+        height: 100%;
+
+        //Other
+        border: none;
+        transform: translateZ(0);
+
+        .datagrid-column-drop-line {
+          //Position
+          position: absolute;
+          top: 0;
+          left: -1px;
+
+          //Dims
+          width: 2px;
+          height: 0px;
+
+          //Others
+          background: $clr-action-purple-dark;
+        }
+      }
+
       .draggable-ghost .datagrid-column-wrapper {
         position: relative;
         background-color: $clr-thead-bgcolor;

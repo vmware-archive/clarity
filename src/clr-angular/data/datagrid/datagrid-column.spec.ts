@@ -25,6 +25,8 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrderModelService } from './providers/column-order-model.service';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -35,6 +37,7 @@ const PROVIDERS_NEEDED = [
   StateDebouncer,
   TableSizeService,
   Renderer2,
+  ColumnOrdersCoordinatorService,
 ];
 
 export default function(): void {
@@ -44,13 +47,15 @@ export default function(): void {
       let filtersService: FiltersProvider<number>;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
+      let columnOrderModelService: ColumnOrderModelService;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
+        columnOrderModelService = new ColumnOrderModelService(new ColumnOrdersCoordinatorService());
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null, columnOrderModelService);
       });
 
       it('has an id for identification', function() {

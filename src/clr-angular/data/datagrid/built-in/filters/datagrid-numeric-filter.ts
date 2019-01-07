@@ -25,10 +25,10 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
                 mid-change detection when the input is destroyed.
             -->
             <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 30px"/>
+                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 70px"/>
                 -
                 <input #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
-                    (keyup.enter)="close()" (keyup.escape)="close()" style="width: 30px"/>
+                    (keyup.enter)="close()" (keyup.escape)="close()" style="width: 70px"/>
         </clr-dg-filter>
     `,
 })

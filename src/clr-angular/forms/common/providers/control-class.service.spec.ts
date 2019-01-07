@@ -21,16 +21,16 @@ export default function(): void {
     });
 
     it('should return grid classes when using grid', function() {
-      expect(service.controlClass(false, true)).toBe('clr-col-md-10 clr-col-xs-12');
+      expect(service.controlClass(false, true)).toBe('clr-col-md-10 clr-col-12');
     });
 
     it('should return error and grid classes when invalid and using grid', function() {
-      expect(service.controlClass(true, true)).toBe('clr-error clr-col-md-10 clr-col-xs-12');
+      expect(service.controlClass(true, true)).toBe('clr-error clr-col-md-10 clr-col-12');
     });
 
     it('should not add grid classes if already present ', function() {
-      service.className = 'clr-col-md-3 clr-col-xs-12';
-      expect(service.controlClass(false, true)).toBe('clr-col-md-3 clr-col-xs-12');
+      service.className = 'clr-col-md-3 clr-col-12';
+      expect(service.controlClass(false, true)).toBe('clr-col-md-3 clr-col-12');
     });
 
     it('should init the control class', function() {

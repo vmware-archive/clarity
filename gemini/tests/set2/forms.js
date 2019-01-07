@@ -39,36 +39,70 @@ gemini.suite('forms', child => {
       .setCaptureElements('.clr-form')
       .capture('default');
   });
+  gemini.suite('form-vertical-angular', child => {
+    child
+      .setUrl('/forms/layout-vertical-angular')
+      .before((actions, find) => {
+        actions.setWindowSize(1200, 4000);
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
+
+  gemini.suite('form-horizontal-angular', child => {
+    child
+      .setUrl('/forms/layout-horizontal-angular')
+      .before((actions, find) => {
+        actions.setWindowSize(1200, 4000);
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
+
+  gemini.suite('form-compact-angular', child => {
+    child
+      .setUrl('/forms/layout-compact-angular')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
 
   // @TODO Add grid back
-  // gemini.suite('form-vertical-grid', (child) => {
-  //     child.setUrl('/forms/layout-vertical-grid')
-  //         .before((actions, find) => {
-  //             actions.setWindowSize(1200, 4000)
-  //             actions.waitForElementToShow('.clr-form', WAIT_TIME);
-  //         })
-  //         .setCaptureElements('.clr-form')
-  //         .capture('default');
-  // });
+  gemini.suite('form-vertical-grid', child => {
+    child
+      .setUrl('/forms/layout-vertical-grid')
+      .before((actions, find) => {
+        actions.setWindowSize(1200, 4000);
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
 
-  // gemini.suite('form-horizontal-grid', (child) => {
-  //     child.setUrl('/forms/layout-horizontal-grid')
-  //         .before((actions, find) => {
-  //             actions.setWindowSize(1200, 4000)
-  //             actions.waitForElementToShow('.clr-form', WAIT_TIME);
-  //         })
-  //         .setCaptureElements('.clr-form')
-  //         .capture('default');
-  // });
+  gemini.suite('form-horizontal-grid', child => {
+    child
+      .setUrl('/forms/layout-horizontal-grid')
+      .before((actions, find) => {
+        actions.setWindowSize(1200, 4000);
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
 
-  // gemini.suite('form-compact-grid', (child) => {
-  //     child.setUrl('/forms/layout-compact-grid')
-  //         .before((actions, find) => {
-  //             actions.waitForElementToShow('.clr-form', WAIT_TIME);
-  //         })
-  //         .setCaptureElements('.clr-form')
-  //         .capture('default');
-  // });
+  gemini.suite('form-compact-grid', child => {
+    child
+      .setUrl('/forms/layout-compact-grid')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+      })
+      .setCaptureElements('.clr-form')
+      .capture('default');
+  });
 
   gemini.suite('form-input-group', child => {
     child

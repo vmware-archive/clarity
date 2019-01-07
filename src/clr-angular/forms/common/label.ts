@@ -25,6 +25,7 @@ export class ClrLabel implements OnInit, OnDestroy {
   forAttr: string;
 
   private subscriptions: Subscription[] = [];
+  private enableGrid = true;
 
   ngOnInit() {
     // Only add the clr-control-label if it is inside a control container
@@ -33,17 +34,22 @@ export class ClrLabel implements OnInit, OnDestroy {
     }
     // Only set the grid column classes if we are in the right context and if they aren't already set
     if (
+      this.enableGrid &&
       this.layoutService &&
       !this.layoutService.isVertical() &&
       this.el.nativeElement &&
       this.el.nativeElement.className.indexOf('clr-col') < 0
     ) {
-      this.renderer.addClass(this.el.nativeElement, 'clr-col-xs-12');
+      this.renderer.addClass(this.el.nativeElement, 'clr-col-12');
       this.renderer.addClass(this.el.nativeElement, 'clr-col-md-2');
     }
     if (this.controlIdService && !this.forAttr) {
       this.subscriptions.push(this.controlIdService.idChange.subscribe(id => (this.forAttr = id)));
     }
+  }
+
+  disableGrid() {
+    this.enableGrid = false;
   }
 
   ngOnDestroy() {

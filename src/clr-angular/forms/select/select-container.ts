@@ -60,8 +60,10 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
     );
     this.subscriptions.push(
       this.ngControlService.controlChanges.subscribe(control => {
-        this.multi = control.valueAccessor instanceof SelectMultipleControlValueAccessor;
-        this.control = control;
+        if (control) {
+          this.multi = control.valueAccessor instanceof SelectMultipleControlValueAccessor;
+          this.control = control;
+        }
       })
     );
   }

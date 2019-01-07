@@ -16,7 +16,7 @@ export class ControlClassService {
       controlClasses.push('clr-error');
     }
     if (grid && this.className.indexOf('clr-col') === -1) {
-      controlClasses.push('clr-col-md-10 clr-col-xs-12');
+      controlClasses.push('clr-col-md-10 clr-col-12');
     }
     return controlClasses.join(' ').trim();
   }

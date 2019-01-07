@@ -160,7 +160,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   private _colType: ClrDatagridColumnType = ClrDatagridColumnType.STRING;
   public get colType() {
-    if (this._colType == ClrDatagridColumnType.NUMBER) {
+    if (this._colType === ClrDatagridColumnType.NUMBER) {
       return 'number';
     } else {
       return 'string';
@@ -168,8 +168,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   @Input('clrDgColType')
-  public set colType(raw_type: string) {
-    if (typeof raw_type === 'string' && raw_type.toLowerCase() == 'number') {
+  public set colType(rawType: string) {
+    if (typeof rawType === 'string' && rawType.toLowerCase() == 'number') {
       this._colType = ClrDatagridColumnType.NUMBER;
     } else {
       this._colType = ClrDatagridColumnType.STRING;
@@ -190,7 +190,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     if (typeof field === 'string') {
       this._field = field;
       if (!this.customFilter) {
-        if (this._colType == ClrDatagridColumnType.NUMBER) {
+        if (this._colType === ClrDatagridColumnType.NUMBER) {
           this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
         } else {
           this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));

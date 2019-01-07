@@ -26,19 +26,33 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
   private _low: number = null;
   private _high: number = null;
 
-  public get values(): [number, number] {
+  /**
+   * Common setters for the input values, including individual limits and
+   * both at the same time.  Value is singular to make the interface similar
+   * to the built-in string filter.
+   */
+
+  public get value(): [number, number] {
     return [this._low, this._high];
   }
 
-  /**
-   * Common setters for the input values
-   */
+  public set value(vals: [number, number]) {
+    const low = vals[0];
+    const high = vals[1];
+    if (low !== this._low || high !== this._high) {
+      this._low = low;
+      this._high = high;
+      this._changes.next([this._low, this._high]);
+    }
+  }
+
   public set low(low: number) {
     if (low !== this._low) {
       this._low = low;
       this._changes.next([this._low, this._high]);
     }
   }
+
   public set high(high: number) {
     if (high !== this._high) {
       this._high = high;

@@ -35,6 +35,7 @@ import { DragDispatcher } from './providers/drag-dispatcher';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
+import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
 
 let nbCount: number = 0;
@@ -81,7 +82,7 @@ let nbCount: number = 0;
     role: 'columnheader',
   },
 })
-export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
+export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements OnDestroy, OnInit {
   constructor(
     private _sort: Sort<T>,
@@ -169,7 +170,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   @Input('clrDgColType')
   public set colType(rawType: string) {
-    if (typeof rawType === 'string' && rawType.toLowerCase() == 'number') {
+    if (typeof rawType === 'string' && rawType.toLowerCase() === 'number') {
       this._colType = ClrDatagridColumnType.NUMBER;
     } else {
       this._colType = ClrDatagridColumnType.STRING;
@@ -377,25 +378,38 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   public get filterValue() {
-    return this.filter.value;
+    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
+      return this.filter.value;
+    }
   }
 
   @Input('clrFilterValue')
-  public set updateFilterValue(newValue: string) {
+  public set updateFilterValue(newValue: string | [number, number]) {
     if (!this.filter) {
       return;
     }
-    if (!newValue) {
-      newValue = '';
-    }
-    if (newValue !== this.filter.value) {
-      this.filter.value = newValue;
+    if (this.filter instanceof DatagridStringFilterImpl) {
+      if (!newValue || typeof newValue !== 'string') {
+        newValue = '';
+      }
+      if (newValue !== this.filter.value) {
+        this.filter.value = newValue;
+      }
+    } else if (this.filter instanceof DatagridNumericFilterImpl) {
+      if (!newValue || !(newValue instanceof Array)) {
+        newValue = [null, null];
+      }
+      if (newValue.length === 2 && (newValue[0] !== this.filter.value[0] || newValue[1] !== this.filter.value[1])) {
+        this.filter.value = newValue;
+      }
     }
   }
 
-  public set filterValue(newValue: string) {
-    this.updateFilterValue = newValue;
-    this.filterValueChange.emit(this.filter.value);
+  public set filterValue(newValue: string | [number, number]) {
+    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
+      this.updateFilterValue = newValue;
+      this.filterValueChange.emit(this.filter.value);
+    }
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();

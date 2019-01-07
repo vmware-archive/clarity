@@ -81,12 +81,12 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   /**
    * Common setter for the input values
    */
-  public get values() {
+  public get value() {
     return [this.filter.low, this.filter.high];
   }
 
   @Input('clrFilterValue')
-  public set values(values: [number, number]) {
+  public set value(values: [number, number]) {
     if (!this.filter) {
       return;
     }

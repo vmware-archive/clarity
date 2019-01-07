@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 
 import { DatagridPropertyComparator } from '../built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from '../built-in/filters/datagrid-property-string-filter';
+import { DatagridPropertyNumericFilter } from '../built-in/filters/datagrid-property-numeric-filter';
 import { DatagridStringFilterImpl } from '../built-in/filters/datagrid-string-filter-impl';
 import { DatagridNumericFilterImpl } from '../built-in/filters/datagrid-numeric-filter-impl';
 import { ClrDatagridStateInterface } from '../interfaces/state.interface';
@@ -72,6 +73,14 @@ export class StateProvider<T> {
               value: filter.value,
             });
             continue;
+          }
+        } else if (filter instanceof DatagridNumericFilterImpl) {
+          const numFilter = filter.filterFn;
+          if (numFilter instanceof DatagridPropertyNumericFilter) {
+            state.filters.push({
+              property: numFilter.prop,
+              value: filter.value,
+            });
           }
         }
         state.filters.push(filter);

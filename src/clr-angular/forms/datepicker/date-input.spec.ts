@@ -28,6 +28,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
+import { DatepickerFocusService } from './providers/datepicker-focus.service';
 
 export default function() {
   describe('Date Input Component', () => {
@@ -39,6 +40,7 @@ export default function() {
     let ifErrorService: IfErrorService;
     let focusService: FocusService;
     let controlClassService: ControlClassService;
+    let datepickerFocusService: DatepickerFocusService;
     const setControlSpy = jasmine.createSpy();
 
     @Injectable()
@@ -62,6 +64,7 @@ export default function() {
           IfErrorService,
           IfOpenService,
           FocusService,
+          DatepickerFocusService,
           DateNavigationService,
           LocaleHelperService,
           DateIOService,
@@ -79,7 +82,10 @@ export default function() {
         ifErrorService = context.fixture.debugElement.injector.get(IfErrorService);
         focusService = context.fixture.debugElement.injector.get(FocusService);
         controlClassService = context.fixture.debugElement.injector.get(ControlClassService);
+        datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
+
         spyOn(ifErrorService, 'triggerStatusChange');
+        spyOn(datepickerFocusService, 'focusInput');
       });
 
       // @TODO Figure out how to make these tests conform to the rest of the forms tests, which test these already
@@ -116,6 +122,16 @@ export default function() {
           expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
           expect(focusState).toEqual(false);
           sub.unsubscribe();
+        });
+
+        it('should refocus input after selecting a date for a11y', () => {
+          const input: HTMLInputElement = context.testElement.querySelector('input');
+          expect(document.activeElement).not.toBe(input);
+
+          dateNavigationService.notifySelectedDayChanged(new DayModel(2019, 1, 1));
+          context.detectChanges();
+
+          expect(document.activeElement).toBe(input);
         });
 
         it('should set override classes and remove them from the control', () => {
@@ -176,7 +192,7 @@ export default function() {
           expect(context.testComponent.date.getDate()).toBe(1);
         });
 
-        it('outputs the date when the user changes the date manually in th input', () => {
+        it('outputs the date when the user changes the date manually in the input', () => {
           expect(context.testComponent.date).toBeUndefined();
 
           const input: HTMLInputElement = context.testElement.querySelector('input');
@@ -528,6 +544,22 @@ export default function() {
         expect(fixture.componentInstance.date.getFullYear()).toBe(date.getFullYear());
         expect(fixture.componentInstance.date.getMonth()).toBe(date.getMonth());
         expect(fixture.componentInstance.date.getDate()).toBe(date.getDate());
+      });
+
+      it('outputs the date appropriately when switching between user updates and programmatic updates', () => {
+        expect(fixture.componentInstance.date).toBeUndefined();
+
+        dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+        fixture.detectChanges();
+        expect(fixture.componentInstance.date.getFullYear()).toBe(2015);
+
+        fixture.componentInstance.date = new Date(2019, 1, 1);
+        fixture.detectChanges();
+        expect(fixture.componentInstance.date.getFullYear()).toBe(2019);
+
+        dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
+        fixture.detectChanges();
+        expect(fixture.componentInstance.date.getFullYear()).toBe(2015);
       });
 
       // IE doesn't like event constructors

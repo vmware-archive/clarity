@@ -522,7 +522,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     placeholder: string;
     readonly placeholderText: string;
     protected renderer: Renderer2;
-    constructor(vcr: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, focusService: FocusService, newFormsLayout: boolean);
+    constructor(vcr: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, focusService: FocusService, newFormsLayout: boolean, datepickerFocusService: DatepickerFocusService);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     onValueChange(target: HTMLInputElement): void;

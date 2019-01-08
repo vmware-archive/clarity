@@ -25,10 +25,10 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import { filter } from 'rxjs/operators';
+
 import { FocusService } from '../common/providers/focus.service';
-
 import { WrappedFormControl } from '../common/wrapped-control';
-
 import { ClrDateContainer } from './date-container';
 import { DayModel } from './model/day.model';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -36,6 +36,7 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
+import { DatepickerFocusService } from './providers/datepicker-focus.service';
 
 @Directive({
   selector: '[clrDate]',
@@ -43,6 +44,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     '[class.date-input]': '!newFormsLayout',
     '[class.clr-input]': 'newFormsLayout',
   },
+  providers: [DatepickerFocusService],
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
   protected index = 4;
@@ -82,36 +84,39 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private focusService: FocusService,
     @Optional()
     @Inject(IS_NEW_FORMS_LAYOUT)
-    public newFormsLayout: boolean
+    public newFormsLayout: boolean,
+    private datepickerFocusService: DatepickerFocusService
   ) {
     super(vcr, ClrDateContainer, injector, control, renderer, el);
   }
 
-  /**
-   * 1. Populate services if the date container is not present.
-   * 2. Initialize Subscriptions.
-   * 3. Process User Input.
-   */
   ngOnInit() {
     super.ngOnInit();
-    if (!this.container) {
-      this.populateContainerServices();
-    }
+    this.populateServicesFromContainerComponent();
     this.initializeSubscriptions();
     this.processInitialInputs();
-    if (this.clrNewLayout !== undefined) {
-      this.newFormsLayout = !!this.clrNewLayout;
+    this.setFormLayout();
+  }
+
+  ngAfterViewInit() {
+    this.writeInitialInputFromUserInputField();
+  }
+
+  private populateServicesFromContainerComponent(): void {
+    if (!this.container) {
+      this._dateIOService = this.getProviderFromContainer(DateIOService);
+      this._dateNavigationService = this.getProviderFromContainer(DateNavigationService);
+      this._datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
+      this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
     }
   }
 
-  /**
-   * Process the inputs initialized by the user which were missed
-   * because of late subscriptions or lifecycle method calls.
-   */
   private processInitialInputs(): void {
+    // Process the inputs initialized by the user which were missed
+    // because of late subscriptions or lifecycle method calls.
     this.processUserDateObject(this.dateValueOnInitialLoad);
 
-    // Handle Inital Value from Reactive Forms
+    // Handle Initial Value from Reactive Forms
     // TODO: We are repeating this logic at multiple places. This makes me think
     // if this class should have implemented the ControlValueAccessor interface.
     // Will explore that later and see if its a cleaner solution.
@@ -121,10 +126,13 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
-  /**
-   * Write the initial input set by the user on to the input field.
-   */
-  ngAfterViewInit() {
+  private setFormLayout() {
+    if (this.clrNewLayout !== undefined) {
+      this.newFormsLayout = !!this.clrNewLayout;
+    }
+  }
+
+  private writeInitialInputFromUserInputField() {
     // I don't know why I have to do this but after using the new HostWrapping Module I have to delay the processing
     // of the initial Input set by the user to here.  If I do not 2 issues occur:
     // 1. the Input setter is called before ngOnInit. ngOnInit initializes the services without which the setter
@@ -144,19 +152,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     this.initialLoad = false;
   }
 
-  /**
-   * Populates the services from the container component.
-   */
-  private populateContainerServices(): void {
-    this._dateIOService = this.getProviderFromContainer(DateIOService);
-    this._dateNavigationService = this.getProviderFromContainer(DateNavigationService);
-    this._datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
-    this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
-  }
-
-  /**
-   * Writes the date string value to the input field
-   */
   private writeDateStrToInputField(value: string): void {
     this.renderer.setProperty(this.el.nativeElement, 'value', value);
   }
@@ -196,6 +191,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     if (date) {
       const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
       if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
+        this.previousOutput = dayModel;
         this._dateNavigationService.selectedDay = dayModel;
         this.writeDateStrToInputField(dateStr);
       }
@@ -223,40 +219,25 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     return isPlatformBrowser(this.platformId) && this._datepickerEnabledService.isEnabled ? 'text' : 'date';
   }
 
-  //
-  // Output Management
-  // Note: For now we will not emit both clrDateChange and ngControl outputs
-  // at the same time. This requires us to listen to keydown and blur events to figure out
-  // exactly when the Output should be emitted.
-  // Our recommendation right now is to either use clrDate or use ngModel/FormControl.
-  // Do not use both of them together.
-  //
-
+  /**
+   * Output Management
+   * Note: For now we will not emit both clrDateChange and ngControl outputs
+   * at the same time. This requires us to listen to keydown and blur events to figure out
+   * exactly when the Output should be emitted.
+   * Our recommendation right now is to either use clrDate or use ngModel/FormControl.
+   * Do not use both of them together.
+   */
   @Output('clrDateChange') _dateUpdated: EventEmitter<Date> = new EventEmitter<Date>(false);
-
-  private emitDateOutput(dayModel: DayModel): void {
-    if (dayModel && !dayModel.isEqual(this.previousOutput)) {
-      this._dateUpdated.emit(dayModel.toDate());
-      this.previousOutput = dayModel;
-    } else if (!dayModel && this.previousOutput) {
-      this._dateUpdated.emit(null);
-      this.previousOutput = null;
-    }
-  }
 
   @HostListener('focus')
   setFocusStates() {
-    if (this.focusService) {
-      this.focusService.focused = true;
-    }
+    this.setFocus(true);
   }
 
   @HostListener('blur')
   triggerValidation() {
     super.triggerValidation();
-    if (this.focusService) {
-      this.focusService.focused = false;
-    }
+    this.setFocus(false);
   }
 
   /**
@@ -276,12 +257,32 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
-  /**
-   * Initialize DateIO Subscriptions
-   */
+  private emitDateOutput(dayModel: DayModel): void {
+    if (dayModel && !dayModel.isEqual(this.previousOutput)) {
+      this._dateUpdated.emit(dayModel.toDate());
+      this.previousOutput = dayModel;
+    } else if (!dayModel && this.previousOutput) {
+      this._dateUpdated.emit(null);
+      this.previousOutput = null;
+    }
+  }
+
+  private setFocus(focus: boolean) {
+    if (this.focusService) {
+      this.focusService.focused = focus;
+    }
+  }
+
   private initializeSubscriptions(): void {
+    this.listenForUserSelectedDayChanges();
+    this.listenForValueChanges();
+    this.listenForTouchChanges();
+    this.listenForDirtyChanges();
+    this.listenForInputRefocus();
+  }
+
+  private listenForUserSelectedDayChanges() {
     if (this._dateNavigationService && this._dateIOService) {
-      // This subscription is fired when the user selects a date from the popover.
       this.subscriptions.push(
         this._dateNavigationService.selectedDayChange.subscribe((dayModel: DayModel) => {
           const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(dayModel.toDate());
@@ -296,28 +297,32 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
           this.emitDateOutput(dayModel);
         })
       );
-
-      // We do not emit an Output from this subscription because
-      // we only emit the Output when the user has focused out of the input.
-      if (this.control) {
-        this.subscriptions.push(
-          this.control.valueChanges.subscribe((value: string) => {
-            const date: Date = this._dateIOService.isValidInput(value);
-            if (date) {
-              const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-              this._dateNavigationService.selectedDay = dayModel;
-              this.initializePreviousOutput(dayModel);
-            } else if (value === '' || value === null) {
-              this._dateNavigationService.selectedDay = null;
-              this.initializePreviousOutput(null);
-            } else {
-              this.initializePreviousOutput(null);
-            }
-          })
-        );
-      }
     }
+  }
 
+  private listenForValueChanges() {
+    // We do not emit an Output from this subscription because
+    // we only emit the Output when the user has focused out of the input.
+    if (this._dateNavigationService && this._dateIOService && this.control) {
+      this.subscriptions.push(
+        this.control.valueChanges.subscribe((value: string) => {
+          const date: Date = this._dateIOService.isValidInput(value);
+          if (date) {
+            const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
+            this._dateNavigationService.selectedDay = dayModel;
+            this.initializePreviousOutput(dayModel);
+          } else if (value === '' || value === null) {
+            this._dateNavigationService.selectedDay = null;
+            this.initializePreviousOutput(null);
+          } else {
+            this.initializePreviousOutput(null);
+          }
+        })
+      );
+    }
+  }
+
+  private listenForTouchChanges() {
     if (this.dateFormControlService) {
       this.subscriptions.push(
         this.dateFormControlService.touchedChange.subscribe(() => {
@@ -326,14 +331,24 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
           }
         })
       );
-
-      this.subscriptions.push(
-        this.dateFormControlService.dirtyChange.subscribe(() => {
-          if (this.control) {
-            this.control.control.markAsDirty();
-          }
-        })
-      );
     }
+  }
+
+  private listenForDirtyChanges() {
+    this.subscriptions.push(
+      this.dateFormControlService.dirtyChange.subscribe(() => {
+        if (this.control) {
+          this.control.control.markAsDirty();
+        }
+      })
+    );
+  }
+
+  private listenForInputRefocus() {
+    this.subscriptions.push(
+      this._dateNavigationService.selectedDayChange
+        .pipe(filter(date => !!date))
+        .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement))
+    );
   }
 }

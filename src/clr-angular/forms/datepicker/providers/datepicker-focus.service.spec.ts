@@ -38,18 +38,33 @@ export default function() {
     it(
       'Does not focus on the button if the button does not have a tab index of 0',
       inject([PLATFORM_ID], platformId => {
-        const datepickerViewService: DatepickerFocusService = new DatepickerFocusService(mockNgZone, platformId);
+        const datepickerFocusService: DatepickerFocusService = new DatepickerFocusService(mockNgZone, platformId);
         const compInstance = fixture.debugElement.componentInstance;
         compInstance.tabIndex = '-1';
 
         fixture.detectChanges();
 
-        datepickerViewService.focusCell(compInstance.elementRef);
+        datepickerFocusService.focusCell(compInstance.elementRef);
 
         mockNgZone.stabilizeZone();
 
         expect(document.activeElement.innerHTML).not.toBe('Test Button');
         expect(document.activeElement.id).not.toBe('1');
+      })
+    );
+
+    it(
+      'should focus given input element',
+      inject([PLATFORM_ID], platformId => {
+        const datepickerFocusService: DatepickerFocusService = new DatepickerFocusService(mockNgZone, platformId);
+        const input: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('input');
+
+        mockNgZone.stabilizeZone();
+        expect(document.activeElement).not.toBe(input);
+
+        datepickerFocusService.focusInput(input);
+        mockNgZone.stabilizeZone();
+        expect(document.activeElement).toBe(input);
       })
     );
   });
@@ -74,6 +89,7 @@ class MockNgZone extends NgZone {
 @Component({
   template: `
         <button id="1" [attr.tabindex]="tabIndex">Test Button</button>
+        <input type="date" />
     `,
 })
 class TestComponent {

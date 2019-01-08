@@ -41,7 +41,6 @@ export default function() {
     let focusService: FocusService;
     let controlClassService: ControlClassService;
     let datepickerFocusService: DatepickerFocusService;
-    let ifOpenService: IfOpenService;
     const setControlSpy = jasmine.createSpy();
 
     @Injectable()
@@ -84,7 +83,6 @@ export default function() {
         focusService = context.fixture.debugElement.injector.get(FocusService);
         controlClassService = context.fixture.debugElement.injector.get(ControlClassService);
         datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
-        ifOpenService = context.fixture.debugElement.injector.get(IfOpenService);
 
         spyOn(ifErrorService, 'triggerStatusChange');
         spyOn(datepickerFocusService, 'focusInput');

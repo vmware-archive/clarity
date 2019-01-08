@@ -25,11 +25,10 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { skip, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+
 import { FocusService } from '../common/providers/focus.service';
-
 import { WrappedFormControl } from '../common/wrapped-control';
-
 import { ClrDateContainer } from './date-container';
 import { DayModel } from './model/day.model';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -37,7 +36,6 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
-import { IfOpenService } from './../../utils/conditional/if-open.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 
 @Directive({
@@ -84,7 +82,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private dateFormControlService: DateFormControlService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() private focusService: FocusService,
-    @Optional() private ifOpenService: IfOpenService,
     @Optional()
     @Inject(IS_NEW_FORMS_LAYOUT)
     public newFormsLayout: boolean,
@@ -111,7 +108,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       this._dateNavigationService = this.getProviderFromContainer(DateNavigationService);
       this._datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
       this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
-      this.ifOpenService = this.getProviderFromContainer(IfOpenService);
     }
   }
 
@@ -350,8 +346,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
   private listenForInputRefocus() {
     this.subscriptions.push(
-      this.ifOpenService.openChange
-        .pipe(skip(1), filter(open => !open))
+      this._dateNavigationService.selectedDayChange
+        .pipe(filter(date => !!date))
         .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement))
     );
   }

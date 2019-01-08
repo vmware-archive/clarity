@@ -130,9 +130,7 @@ export default function() {
           const input: HTMLInputElement = context.testElement.querySelector('input');
           expect(document.activeElement).not.toBe(input);
 
-          ifOpenService.open = true;
-          context.detectChanges();
-          ifOpenService.open = false;
+          dateNavigationService.notifySelectedDayChanged(new DayModel(2019, 1, 1));
           context.detectChanges();
 
           expect(document.activeElement).toBe(input);

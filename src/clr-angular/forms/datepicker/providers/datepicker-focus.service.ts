@@ -6,7 +6,7 @@
 
 import { isPlatformBrowser } from '@angular/common';
 import { ElementRef, Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
-import { first, map } from 'rxjs/operators';
+import { first, filter } from 'rxjs/operators';
 
 /**
  * This service focuses the day that is focusable in the calendar.
@@ -32,6 +32,6 @@ export class DatepickerFocusService {
 
   private ngZoneIsStableInBrowser() {
     // Credit: Material: https://github.com/angular/material2/blob/master/src/lib/datepicker/calendar.ts
-    return this._ngZone.onStable.asObservable().pipe(first(), map(() => isPlatformBrowser(this.platformId)));
+    return this._ngZone.onStable.asObservable().pipe(first(), filter(() => isPlatformBrowser(this.platformId)));
   }
 }

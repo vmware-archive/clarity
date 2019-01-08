@@ -41,6 +41,43 @@ export declare const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[];
 
 export declare const CLR_WIZARD_DIRECTIVES: any[];
 
+export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+    multiPanel: boolean;
+    panels: QueryList<ClrAccordionPanel>;
+    subscriptions: Subscription[];
+    constructor(accordionService: AccordionService);
+    ngAfterViewInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+}
+
+export declare class ClrAccordionContent {
+}
+
+export declare class ClrAccordionDescription {
+}
+
+export declare class ClrAccordionPanel implements OnInit, OnChanges {
+    readonly AccordionStatus: typeof AccordionStatus;
+    commonStrings: ClrCommonStrings;
+    disabled: boolean;
+    focusHeader: boolean;
+    id: string;
+    panel: Observable<AccordionPanelModel>;
+    panelOpen: boolean;
+    panelOpenChange: EventEmitter<boolean>;
+    constructor(commonStrings: ClrCommonStrings, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
+    collapsePanelOnAnimationDone(panel: AccordionPanelModel): void;
+    getPanelStateClasses(panel: AccordionPanelModel): string;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    togglePanel(): void;
+}
+
+export declare class ClrAccordionTitle {
+}
+
 export declare class ClrAlert {
     _closed: boolean;
     _closedChanged: EventEmitter<boolean>;
@@ -985,6 +1022,39 @@ export declare class ClrStackViewCustomTags {
 }
 
 export declare class ClrStackViewModule {
+}
+
+export declare class ClrStepButton implements OnInit {
+    submitButton: boolean;
+    type: ClrStepButtonType | string;
+    constructor(clrStep: ClrStepperPanel, stepperService: StepperService);
+    navigateToNextPanel(): void;
+    ngOnInit(): void;
+}
+
+export declare enum ClrStepButtonType {
+    Next = "next",
+    Submit = "submit"
+}
+
+export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+    form: FormGroupDirective | NgForm;
+    initialPanel: string;
+    panels: QueryList<ClrStepperPanel>;
+    subscriptions: Subscription[];
+    constructor(formGroup: FormGroupDirective, ngForm: NgForm, stepperService: StepperService);
+    ngAfterViewInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+}
+
+export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
+    commonStrings: ClrCommonStrings;
+    readonly formGroup: import("@angular/forms").FormGroup;
+    id: string;
+    constructor(commonStrings: ClrCommonStrings, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    ngOnInit(): void;
 }
 
 export declare class ClrTab {

@@ -1,0 +1,48 @@
+<ng-container *ngIf="panel | async; let panel">
+  <div *ngIf="panel.status !== AccordionStatus.Inactive" aria-live="assertive" class="clr-screen-reader-only">
+    <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.danger}}</ng-container>
+    <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.success}}</ng-container>
+  </div>
+
+  <div role="group" [ngClass]="getPanelStateClasses(panel)">
+    <div class="clr-accordion-header" [class.focus-within]="focusHeader">
+      <button
+        type="button"
+        class="clr-accordion-header-button"
+        (click)="togglePanel()"
+        (focus)="focusHeader = true"
+        (blur)="focusHeader = false"
+        [id]="'clr-accordion-header-' + panel.templateId"
+        [attr.aria-controls]="'clr-accordion-content-' + panel.templateId"
+        [attr.aria-expanded]="panel.open"
+        [disabled]="panel.disabled"
+      >
+        <span class="clr-accordion-status">
+          <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>
+          <span class="clr-accordion-number"></span>
+          <clr-icon shape="exclamation-circle" class="clr-accordion-error-icon"></clr-icon>
+          <clr-icon shape="check-circle" class="clr-accordion-complete-icon"></clr-icon>
+        </span>
+        <ng-content select="clr-accordion-title, clr-step-title"></ng-content>
+      </button>
+      <ng-content select="clr-accordion-description, clr-step-description"></ng-content>
+    </div>
+    <div
+      @skipInitialRender
+      role="region"
+      [id]="'clr-accordion-content-' + panel.templateId"
+      [attr.aria-hidden]="!panel.open"
+      [attr.aria-labelledby]="'clr-accordion-header-' + panel.templateId"
+    >
+      <div
+        *ngIf="panel.open"
+        @toggle
+        (@toggle.done)="collapsePanelOnAnimationDone(panel)"
+        class="clr-accordion-content">
+        <div class="clr-accordion-inner-content">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -5,11 +5,13 @@
  */
 import { animate, AnimationMetadata, state, style, transition } from '@angular/animations';
 
+import { defaultAnimationTiming } from './../constants';
+
 export function collapse(): AnimationMetadata[] {
   'use strict';
   return [
     state('true', style({ height: 0, 'overflow-y': 'hidden' })),
-    transition('true => false', [animate('0.2s ease-in-out', style({ height: '*', 'overflow-y': 'hidden' }))]),
-    transition('false => true', [style({ height: '*', 'overflow-y': 'hidden' }), animate('0.2s ease-in-out')]),
+    transition('true => false', [animate(defaultAnimationTiming, style({ height: '*', 'overflow-y': 'hidden' }))]),
+    transition('false => true', [style({ height: '*', 'overflow-y': 'hidden' }), animate(defaultAnimationTiming)]),
   ];
 }

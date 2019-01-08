@@ -123,6 +123,8 @@ export class IconDetailCardComponent {
       'has-badge is-solid': '-solid-badged',
     };
 
-    return `${this.commonPath}${this.clrIconSet}/${this.clrIcon}${variant[this.activeVariantClasses]}.svg`;
+    return `${this.commonPath}${this.clrIconSet.replace('-shapes', '')}/${this.clrIcon}${
+      variant[this.activeVariantClasses]
+    }.svg`;
   }
 }

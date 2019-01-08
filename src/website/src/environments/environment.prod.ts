@@ -7,8 +7,9 @@ export const environment = {
   production: true,
   version: 'v1.0',
   versions_url: '/versions.json',
+  icons_base_url: 'https://raw.githubusercontent.com/vmware/clarity-assets/master/icons',
   icons_url: 'https://github.com/vmware/clarity-assets/archive/master.zip',
   sketch_base_url: 'https://github.com/vmware/clarity-assets/raw/master/sketch',
   sketch_icons_url:
-    'https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-0.13.5.sketch',
+    'https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-1.0.0.sketch',
 };

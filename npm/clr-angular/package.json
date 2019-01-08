@@ -3,7 +3,7 @@
   "version": "@VERSION",
   "description": "Angular components for Clarity",
   "es2015": "esm2015/clr-angular.js",
-  "homepage": "https://vmware.github.io/clarity/",
+  "homepage": "https://clarity.design",
   "main": "bundles/clr-angular.umd.js",
   "module": "esm5/clr-angular.js",
   "keywords": [

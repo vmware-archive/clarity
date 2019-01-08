@@ -2,7 +2,7 @@
     "name": "@clr/schematics",
     "version": "0.1.0",
     "description": "Schematics for Clarity",
-    "homepage": "https://vmware.github.io/clarity/",
+    "homepage": "https://clarity.design",
     "bugs": {
         "url": "https://github.com/vmware/clarity/issues"
     },

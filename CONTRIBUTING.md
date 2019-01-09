@@ -75,7 +75,7 @@ Barring exceptionally small contributions like one-line bug fixes, please follow
 
 ## Contributing to Documentation
 
-The [Clarity documentation website](https://vmware.github.io/clarity) is also in this repository in the `website`
+The [Clarity documentation website](https://clarity.design) is also in this repository in the `website`
 branch. You can contribute to the documentation by submitting pull requests against that branch. Details about how to
 setup and run the website locally can be found on the wiki at
 https://github.com/vmware/clarity/wiki/Building-the-Website.

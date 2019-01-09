@@ -17,7 +17,7 @@ import { environment } from '../../environments/environment';
 const essentialShapesNames = Object.keys(EssentialShapes);
 const blinkEssentialShapes = essentialShapesNames;
 
-export const COMMON_PATH = 'assets/icons/';
+export const COMMON_PATH = `${environment.icons_base_url}/`;
 
 @Component({
   selector: 'icons',

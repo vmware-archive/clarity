@@ -42,6 +42,7 @@ import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { ColumnsService } from './providers/columns.service';
+import { DetailService } from './providers/detail.service';
 
 @Component({
   selector: 'clr-datagrid',
@@ -57,6 +58,7 @@ import { ColumnsService } from './providers/columns.service';
     ExpandableRowsCount,
     StateDebouncer,
     StateProvider,
+    DetailService,
     TableSizeService,
     ColumnsService,
     DisplayModeService,
@@ -70,6 +72,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     public expandableRows: ExpandableRowsCount,
     public selection: Selection<T>,
     public rowActionService: RowActionService,
+    public detailService: DetailService,
     private stateProvider: StateProvider<T>,
     private displayMode: DisplayModeService,
     private renderer: Renderer2,

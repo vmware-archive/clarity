@@ -31,6 +31,7 @@ import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { DetailService } from './providers/detail.service';
 
 // Reusable list of providers used in a number of tests
 export const DATAGRID_SPEC_PROVIDERS = [
@@ -43,6 +44,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   IfExpandService,
   DatagridIfExpandService,
   Page,
+  DetailService,
   ColumnsService,
   Items,
   DatagridRenderOrganizer,

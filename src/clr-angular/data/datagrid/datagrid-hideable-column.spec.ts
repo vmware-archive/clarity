@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,6 +17,7 @@ import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClrDatagridModule } from './datagrid.module';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
+import { DetailService } from './providers/detail.service';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -25,6 +26,7 @@ const PROVIDERS_NEEDED = [
   DomAdapter,
   Page,
   StateDebouncer,
+  DetailService,
   TableSizeService,
   Renderer2,
   ColumnsService,

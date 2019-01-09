@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -33,6 +33,7 @@ import { DatagridResponsiveFooterDemo } from './responsive-footer/responsive-foo
 import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
+import { DatagridDetailDemo } from './detail/detail';
 
 const ROUTES: Routes = [
   {
@@ -60,6 +61,7 @@ const ROUTES: Routes = [
       { path: 'scrolling', component: DatagridScrollingDemo },
       { path: 'column-sizing', component: DatagridColumnSizingDemo },
       { path: 'compact', component: DatagridCompactDemo },
+      { path: 'detail', component: DatagridDetailDemo },
       { path: 'expandable-rows', component: DatagridExpandableRowsDemo },
       { path: 'full', component: DatagridFullDemo },
       { path: 'test-cases', component: DatagridTestCasesDemo },

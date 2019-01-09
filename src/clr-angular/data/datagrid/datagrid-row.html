@@ -17,7 +17,7 @@
 </ng-template>
 
 <ng-template #rowContent>
-  <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex">
+  <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex" [class.datagrid-row-detail-open]="detailService.isRowOpen(item)">
     <div class="datagrid-row-sticky">
       <!-- Sticky elements here -->
       <ng-container #stickyCells></ng-container> <!-- placeholder for projecting other sticky cells as pinned-->
@@ -54,6 +54,15 @@
             </button>
             <div class="spinner spinner-sm" *ngIf="expand.loading"></div>
           </ng-container>
+        </div>
+        <div *ngIf="detailService.isEnabled"
+             class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
+          <button (click)="detailService.toggle(item)" type="button" class="datagrid-detail-caret-button" [class.is-open]="detailService.isRowOpen(item)">
+            <clr-icon shape="angle-double"
+                      [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
+                      class="datagrid-detail-caret-icon"
+                      [attr.title]="detailService.isOpen ? commonStrings.open: commonStrings.close"></clr-icon>
+          </button>
         </div>
         <ng-container #scrollableCells></ng-container>
       </div>

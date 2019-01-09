@@ -35,6 +35,7 @@ import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { DetailService } from './providers/detail.service';
 
 let nbRow: number = 0;
 
@@ -74,6 +75,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     public globalExpandable: ExpandableRowsCount,
     public expand: DatagridIfExpandService,
     private displayMode: DisplayModeService,
+    public detailService: DetailService,
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
     private el: ElementRef,

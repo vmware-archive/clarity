@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,6 +40,7 @@ import { DatagridResponsiveFooterDemo } from './responsive-footer/responsive-foo
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
 import { ColorFilter } from './utils/color-filter';
+import { DatagridDetailDemo } from './detail/detail';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ClarityModule, ROUTING, UtilsDemoModule],
@@ -73,6 +74,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridKitchenSinkDemo,
     ColorFilter,
     DetailWrapper,
+    DatagridDetailDemo,
   ],
   exports: [
     DatagridDemo,
@@ -100,6 +102,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridTestCasesDemo,
     DatagridTestCasesAsyncDemo,
     DatagridKitchenSinkDemo,
+    DatagridDetailDemo,
   ],
 })
 export class DatagridDemoModule {}

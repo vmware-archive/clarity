@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,6 +9,7 @@ import { ClrDatagridPagination } from './datagrid-pagination';
 import { TestContext } from './helpers.spec';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { DetailService } from './providers/detail.service';
 
 export default function(): void {
   describe('ClrDatagridPagination component', function() {
@@ -18,7 +19,7 @@ export default function(): void {
 
       beforeEach(function() {
         pageService = new Page(new StateDebouncer());
-        component = new ClrDatagridPagination(pageService);
+        component = new ClrDatagridPagination(pageService, null);
         component.ngOnInit(); // For the subscription that will get destroyed.
       });
 
@@ -85,7 +86,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
       it('receives an input for page size', function() {
@@ -121,7 +122,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
       it("doesn't display anything if there is only one page", function() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -34,7 +34,7 @@ export default function(): void {
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null, null);
       });
 
       it('receives a comparator to sort the column', function() {

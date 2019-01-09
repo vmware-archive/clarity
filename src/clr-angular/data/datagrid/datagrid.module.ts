@@ -47,6 +47,10 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
+import { ClrDatagridDetail, ClrDatagridDetailDirective } from './datagrid-detail';
+import { ClrDatagridDetailHeader } from './datagrid-detail-header';
+import { ClrDatagridDetailBody } from './datagrid-detail-body';
+import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -70,6 +74,10 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridPlaceholder,
   ClrDatagridColumnToggleButton,
   ClrDatagridColumnToggleTitle,
+  ClrDatagridDetail,
+  ClrDatagridDetailDirective,
+  ClrDatagridDetailHeader,
+  ClrDatagridDetailBody,
   WrappedCell,
   WrappedColumn,
   WrappedRow,
@@ -100,6 +108,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     FormsModule,
     ClrCommonPopoverModule,
     ClrLoadingModule,
+    ClrFocusTrapModule,
     ClrOutsideClickModule,
     ClrDragAndDropModule,
   ],

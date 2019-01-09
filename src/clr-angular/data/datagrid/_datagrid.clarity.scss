@@ -915,9 +915,146 @@
   }
 
   /*
-        The following classes are used by the renderer when performing internal operations.
-        Using the browser calculations improves rendering performance.
-    */
+   * The following are styles for Detail Pane
+   */
+  .datagrid-outer-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .datagrid-detail-open {
+    flex: 1 0 0;
+
+    .datagrid {
+      border-top-right-radius: 0;
+    }
+    .datagrid-footer {
+      border-bottom-right-radius: 0;
+    }
+    .pagination {
+      width: 100%;
+    }
+    .pagination-description-compact {
+      text-align: left;
+      flex: 1;
+    }
+    .datagrid-footer .pagination-list {
+      margin-right: 0;
+    }
+  }
+
+  .datagrid-wrapper {
+    width: 100%;
+
+    &.datagrid-detail-open {
+      width: auto;
+    }
+  }
+
+  .datagrid-row-detail-open {
+    position: relative;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      border: 10px solid $clr-table-border-color;
+      border-color: transparent $clr-table-border-color transparent transparent;
+      top: calc(0.5rem - 1px);
+      right: 0;
+    }
+
+    &:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      border: 9px solid $clr-white;
+      border-color: transparent $clr-white transparent transparent;
+      top: 0.5rem;
+      right: -1px;
+    }
+  }
+
+  .datagrid-detail-pane-wrapper {
+    flex: 2 0 0;
+    margin-top: 0.5rem;
+    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    border-left: none;
+    border-top-right-radius: $clr-global-borderradius;
+    border-bottom-right-radius: $clr-global-borderradius;
+    background: $clr-white;
+    overflow: scroll;
+  }
+
+  .datagrid-detail-pane {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .datagrid-detail-header {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 3rem;
+    margin-top: 0;
+
+    .datagrid-detail-pane-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0rem;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  .datagrid-detail-body-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .datagrid-detail-caret {
+    padding: 0;
+    text-align: center;
+
+    &.datagrid-cell {
+      padding: 0.25rem 0.375rem;
+    }
+
+    .datagrid-detail-caret-button {
+      @include clr-no-styles-button();
+      cursor: pointer;
+      padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
+
+      &.is-open {
+        background-color: $clr-action-blue;
+        border-radius: $clr-default-borderradius;
+
+        .datagrid-detail-caret-icon {
+          color: $clr-white;
+        }
+      }
+    }
+
+    .datagrid-detail-caret-icon {
+      color: $clr-color-neutral-600;
+      // nudge down for vertical alignment...
+      margin-top: (0.125rem - $clr-rem-1px);
+    }
+
+    .spinner {
+      margin-top: 0.25rem;
+    }
+
+    &.datagrid-column {
+      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+    }
+  }
+
+  /**
+   * The following classes are used by the renderer when performing internal operations.
+   * Using the browser calculations improves rendering performance.
+   */
   // This class is used by the dom-renderer.ts when testing cell for a user defined width.
   .datagrid-cell-width-zero {
     // Much zero. Such !important. Wow.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -27,6 +27,7 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
+import { DetailService } from './providers/detail.service';
 
 @Component({
   selector: 'clr-dg-column',
@@ -56,7 +57,7 @@ import { WrappedColumn } from './wrapped-column';
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
 
-          <clr-dg-column-separator></clr-dg-column-separator>
+          <clr-dg-column-separator *ngIf="!detailService.isOpen"></clr-dg-column-separator>
       </div>
   `,
   host: {
@@ -67,7 +68,12 @@ import { WrappedColumn } from './wrapped-column';
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
-  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private vcr: ViewContainerRef) {
+  constructor(
+    private _sort: Sort<T>,
+    filters: FiltersProvider<T>,
+    private vcr: ViewContainerRef,
+    public detailService: DetailService
+  ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted

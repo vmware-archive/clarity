@@ -285,6 +285,22 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://clarity.website/news/1.0.4</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.website/news/1.0.3-patch</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.website/news/1.0.3</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.website/news/1.0.2</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://clarity.website/news/1.0.1</loc>
         <changefreq>daily</changefreq>
     </url>

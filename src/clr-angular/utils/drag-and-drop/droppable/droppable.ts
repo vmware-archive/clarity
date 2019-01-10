@@ -34,7 +34,12 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this.droppableEl = this.el.nativeElement;
   }
 
-  private isDraggableMatch: boolean = false;
+  private _isDraggableMatch: boolean = false;
+
+  get isDraggableMatch(): boolean {
+    return this._isDraggableMatch;
+  }
+
   private _isDraggableOver: boolean = false;
 
   set isDraggableOver(value: boolean) {
@@ -154,10 +159,10 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
 
   private onDragStart(dragStartEvent: DragEventInterface<T>): void {
     // Check draggable and droppable have a matching group key.
-    this.isDraggableMatch = this.checkGroupMatch(dragStartEvent.group);
+    this._isDraggableMatch = this.checkGroupMatch(dragStartEvent.group);
 
     // Subscribe to dragMoved and dragEnded only if draggable and droppable have a matching group key.
-    if (this.isDraggableMatch) {
+    if (this._isDraggableMatch) {
       this.dragStartEmitter.emit(new ClrDragEvent(dragStartEvent));
       this.dragMoveSubscription = this.eventBus.dragMoved.subscribe((dragMoveEvent: DragEventInterface<T>) => {
         this.onDragMove(dragMoveEvent);
@@ -206,7 +211,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this.dragEndEmitter.emit(new ClrDragEvent(dragEndEvent));
     this.unsubscribeFrom(this.dragMoveSubscription);
     this.unsubscribeFrom(this.dragEndSubscription);
-    this.isDraggableMatch = false;
+    this._isDraggableMatch = false;
     delete this.clientRect;
   }
 

@@ -291,7 +291,9 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
     readonly asc: boolean;
+    readonly columnDropData: ColumnOrderModelService;
     columnId: string;
+    readonly columnOrderDropKey: string;
     customFilter: boolean;
     readonly desc: boolean;
     field: string;
@@ -299,7 +301,9 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     filterValueChange: EventEmitter<{}>;
     readonly hidden: boolean;
     hideable: DatagridHideableColumnModel;
+    readonly leftReorderDroppable: ColumnHeaderSides;
     projectedFilter: any;
+    readonly rightReorderDroppable: ColumnHeaderSides;
     sortBy: ClrDatagridComparatorInterface<T> | string;
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
@@ -307,7 +311,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     /** @deprecated */ sorted: boolean;
     /** @deprecated */ sortedChange: EventEmitter<boolean>;
     updateFilterValue: string;
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, columnOrderModel: ColumnOrderModelService);
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;
@@ -640,6 +644,7 @@ export declare class ClrDroppable<T> implements OnInit, OnDestroy {
     dropEmitter: EventEmitter<ClrDragEvent<T>>;
     dropTolerance: number | string | ClrDropToleranceInterface;
     group: string | string[];
+    readonly isDraggableMatch: boolean;
     isDraggableOver: boolean;
     constructor(el: ElementRef, eventBus: DragAndDropEventBusService<T>, domAdapter: DomAdapter, renderer: Renderer2);
     ngOnDestroy(): void;

@@ -14,6 +14,7 @@ import { ClrTabContent } from './tab-content';
 @Component({
   template: `
         <clr-tab-content>Content1</clr-tab-content>
+        <!-- Project the content manually, so we can test without a clr-tabs container parent -->
         <ng-container [ngTemplateOutlet]="tabContent.templateRef"></ng-container>
    `,
 })

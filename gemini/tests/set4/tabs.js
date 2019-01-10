@@ -31,9 +31,6 @@ gemini.suite('tabs', child => {
       .capture('overflowing', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('toggleOverflow').click();
-        });
-        actions.wait(WAIT_LOAD_TIME);
-        actions.executeJS(function(window) {
           document.querySelector('.tabs-overflow button').click();
         });
         actions.wait(WAIT_LOAD_TIME);

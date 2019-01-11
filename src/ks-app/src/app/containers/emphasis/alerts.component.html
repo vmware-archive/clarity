@@ -13,105 +13,115 @@
 <div class="row">
   <div class="col-xs-6">
     <h3>Standard Alerts</h3>
-    <clr-alert>
-      <div class="alert-item">
+      <clr-alert clrAlertType="success" [clrAlertClosable]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is a default info alert.
+                Your container has been created.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertType]="'alert-success'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+          <clr-alert-item>
             <span class="alert-text">
-                This alert indicates success.
+                You can customize your VM in the Settings Panel.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertType]="'alert-warning'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="warning" [clrAlertClosable]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This alert indicates a warning.
+                This feature is still under development.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertType]="'alert-danger'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
+          <clr-alert-item>
             <span class="alert-text">
-                This alert indicates danger.
+                Your license is about to expire.
             </span>
-      </div>
-    </clr-alert>
+          </clr-alert-item>
+      </clr-alert>
   </div>
   <div class="col-xs-6">
     <h3>Small Alerts</h3>
-    <clr-alert [clrAlertSizeSmall]="true">
-      <div class="alert-item">
+      <clr-alert clrAlertType="success" [clrAlertClosable]="true" [clrAlertSizeSmall]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is a small alert.
+                Your container has been created.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-success'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="info" [clrAlertClosable]="false" [clrAlertSizeSmall]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is a small alert.
+                You can customize your VM in the Settings Panel.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-warning'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="warning" [clrAlertClosable]="true" [clrAlertSizeSmall]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is a small alert.
+                This feature is still under development.
             </span>
-      </div>
-    </clr-alert>
-    <clr-alert [clrAlertSizeSmall]="true" [clrAlertType]="'alert-danger'">
-      <div class="alert-item">
+          </clr-alert-item>
+      </clr-alert>
+
+      <clr-alert clrAlertType="danger" [clrAlertClosable]="false" [clrAlertSizeSmall]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is a small alert.
+                Your license is about to expire.
             </span>
-      </div>
-    </clr-alert>
+          </clr-alert-item>
+      </clr-alert>
   </div>
 </div>
 <h2>App-level Alerts</h2>
 <p>App-level alerts are used in the global context of an application. They are placed at the very top of all content and navigation.</p>
-<p>There are three different sub-types of app-level alerts info, warning, and error.</p>
+<p>There are four different sub-types of app-level alerts: success, info, warning, and error.</p>
 <div class="row">
   <div class="col-xs-12" style="margin-bottom: 24px">
-    <clr-alert [clrAlertAppLevel]="true">
-      <div class="alert-item">
+      <clr-alert clrAlertType="success" [clrAlertAppLevel]="true"
+                 [clrAlertClosable]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is an app level alert.
+                Your container has been created.
             </span>
-        <div class="alert-actions">
-          <button class="btn alert-action">Fix</button>
-        </div>
-      </div>
-    </clr-alert>
+          </clr-alert-item>
+      </clr-alert>
   </div>
   <div class="col-xs-12" style="margin-bottom: 24px">
-    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertAppLevel]="true">
-      <div class="alert-item">
+      <clr-alert clrAlertType="info" [clrAlertAppLevel]="true"
+                 [clrAlertClosable]="false">
+          <clr-alert-item>
             <span class="alert-text">
-                This is an app level alert.
+                You can customize your VM in the Settings Panel.
             </span>
-        <div class="alert-actions">
-          <button class="btn alert-action">Fix</button>
-        </div>
-      </div>
-    </clr-alert>
+          </clr-alert-item>
+      </clr-alert>
   </div>
-  <div class="col-xs-12">
-    <clr-alert [clrAlertType]="'alert-danger'" [clrAlertAppLevel]="true">
-      <div class="alert-item">
+    <div class="col-xs-12" style="margin-bottom: 24px">
+      <clr-alert clrAlertType="warning" [clrAlertAppLevel]="true"
+                 [clrAlertClosable]="true">
+          <clr-alert-item>
             <span class="alert-text">
-                This is an app level alert.
+                This feature is still under development.
             </span>
-        <div class="alert-actions">
-          <button class="btn alert-action">Fix</button>
-        </div>
-      </div>
-    </clr-alert>
-  </div>
+          </clr-alert-item>
+      </clr-alert>
+    </div>
+    <div class="col-xs-12">
+        <clr-alert clrAlertType="danger" [clrAlertAppLevel]="true"
+                   [clrAlertClosable]="false">
+            <clr-alert-item>
+                <span class="alert-text">
+                    Your license is about to expire.
+                </span>
+            </clr-alert-item>
+        </clr-alert>
+    </div>
 </div>

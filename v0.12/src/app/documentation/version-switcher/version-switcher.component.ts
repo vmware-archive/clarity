@@ -4,6 +4,7 @@ import { Location, isPlatformBrowser } from "@angular/common";
 import { ActivatedRoute, Router, NavigationEnd, UrlSegment } from "@angular/router";
 import { Subscription } from "rxjs";
 import {environment} from "../../../environments/environment";
+import { version } from "punycode";
 
 interface Version {
   version: string;
@@ -35,6 +36,14 @@ export class VersionSwitcherComponent {
         }
       }
     });
+  }
+
+  getVersion(version) {
+    if (version.version.indexOf('v0.') === 0) {
+      return `${environment.base}/documentation/${version.version}/${this.child}`;
+    } else {
+      return `${environment.newBase}/documentation/${this.child}`;
+    }
   }
 
   ngOnInit() {

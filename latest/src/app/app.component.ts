@@ -1,5 +1,6 @@
-import {Component, ElementRef, OnInit, Renderer,InjectionToken} from '@angular/core';
-import {Router, NavigationEnd} from "@angular/router";
+import {Component, Inject, ElementRef, OnInit, Renderer,InjectionToken, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {Router, NavigationEnd, NavigationStart} from "@angular/router";
 import {Title} from '@angular/platform-browser';
 import {environment} from "../environments/environment";
 
@@ -17,11 +18,20 @@ export class AppComponent implements OnInit {
     
     environment = environment;
 
-    constructor(private renderer: Renderer, private el: ElementRef, public router: Router, private titleService: Title) {
-    }
+    constructor(private renderer: Renderer, private el: ElementRef, public router: Router, private titleService: Title, @Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit() {
         this.router.events.subscribe((change: any) => {
+            // This block redirects all pages to the new website! There are a few url changes to handle here.
+            if (change instanceof NavigationStart) {
+                let url = `https://clarity.design${change.url}`;
+                url = url.replace('/v1.0', '');
+                url = url.replace('/icons/icon-sets', '/icons');
+                url = url.replace('/icons/clarity-icons', '/icons/get-started');
+                if (isPlatformBrowser(this.platformId)) {
+                    window.location.href = url;
+                }
+            }
             if (change instanceof NavigationEnd) {
                 this.bodyClasses.forEach(className => this.renderer.setElementClass(this.el.nativeElement, className, false));
                 this.updateBodyClasses();

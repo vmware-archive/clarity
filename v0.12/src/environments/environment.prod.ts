@@ -3,5 +3,6 @@ export const environment = {
   version: 'v0.12',
   default: 'v0.12',
   versions_url: '/clarity/versions.json',
-  base: '/clarity'
+  base: '/clarity',
+  newBase: 'https://clarity.design'
 };

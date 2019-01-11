@@ -37,6 +37,14 @@ export class VersionSwitcherComponent {
     });
   }
 
+  getVersion(version) {
+    if (version.version.indexOf('v0.') === 0) {
+      return `${environment.base}/documentation/${version.version}/${this.child}`;
+    } else {
+      return `${environment.newBase}/documentation/${this.child}`;
+    }
+  }
+
   ngOnInit() {
     this.current = environment.version;
     if (isPlatformBrowser(this.platformId)) {

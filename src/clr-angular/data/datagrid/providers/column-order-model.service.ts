@@ -9,9 +9,9 @@ import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 
 /**
  * This is a model service that's responsible for:
- * 1. Accessing and providing common id for its reorder draggable and droppables
- * 2. Sharing the flex order data between datagrid-column and reorderabble-droppable
- * 3. Updating the flex order data and tells ColumnOrderCoordinatorService when it should broadcast
+ * 1. Sharing the flex order data between datagrid-column and reorderabble-droppable
+ * 2. Updating the flex order data and tells ColumnOrderCoordinatorService when it should broadcast
+ * 3. Returning models at the previous and next flex orders
  */
 
 @Injectable()

@@ -10,9 +10,8 @@ let nbColumnGroup = 0;
 
 /**
  * This service is responsible for:
- * 1. Providing the common group id for all headers' draggables and droppables
- * 2. Sharing order model data across headers and cells
- * 3. Broadcasting order model update
+ * 1. Sharing order model data across headers and cells
+ * 2. Broadcasting order model update
  */
 
 @Injectable()

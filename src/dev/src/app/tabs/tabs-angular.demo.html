@@ -5,7 +5,8 @@
   -->
 
 <div class="clr-example">
-  <button class="btn btn-primary" (click)="inOverflow = !inOverflow">Toggle</button>
+  <h3>With *clrIfActive</h3>
+  <button class="btn btn-primary" id="toggleOverflow" (click)="inOverflow = !inOverflow">Toggle</button>
   <clr-tabs>
     <clr-tab>
       <button clrTabLink>Dashboard</button>
@@ -33,6 +34,24 @@
       <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Infrastructure</button>
       <clr-tab-content *clrIfActive>
         <p>Content for Infrastructure tab.</p>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+
+  <h3>Without *clrIfActive</h3>
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink>Dashboard</button>
+      <clr-tab-content>
+        <p>Content for Dashboard tab. Here is a
+          <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+      </clr-tab-content>
+    </clr-tab>
+
+    <clr-tab>
+      <button clrTabLink>Management</button>
+      <clr-tab-content>
+        <p>Content for Management tab.</p>
       </clr-tab-content>
     </clr-tab>
   </clr-tabs>

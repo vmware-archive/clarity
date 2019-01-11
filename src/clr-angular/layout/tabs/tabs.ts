@@ -10,6 +10,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
+import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
@@ -45,13 +46,18 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
             </ng-container>
         </ul>
         <!--tab content-->
-        <ng-content></ng-content>
+        <ng-container *ngFor="let content of tabContents">
+            <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
+        </ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
 export class ClrTabs implements AfterContentInit {
   @ContentChildren(ClrTabLink, { descendants: true })
   tabLinkDirectives: QueryList<ClrTabLink>;
+
+  @ContentChildren(ClrTabContent, { descendants: true })
+  tabContents: QueryList<ClrTabContent>;
 
   constructor(
     public ifActiveService: IfActiveService,

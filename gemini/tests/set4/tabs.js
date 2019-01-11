@@ -27,6 +27,13 @@ gemini.suite('tabs', child => {
         actions.wait(WAIT_LOAD_TIME);
       })
       .setCaptureElements('.clr-example')
-      .capture('default');
+      .capture('default')
+      .capture('overflowing', (actions, find) => {
+        actions.executeJS(function(window) {
+          document.getElementById('toggleOverflow').click();
+          document.querySelector('.tabs-overflow button').click();
+        });
+        actions.wait(WAIT_LOAD_TIME);
+      });
   });
 });

@@ -115,6 +115,24 @@ class NestedTabsTest {
   @ViewChild(ClrTabs) tabsInstance: ClrTabs;
 }
 
+@Component({
+  template: `
+    <clr-tabs>
+        <clr-tab>
+            <button clrTabLink>Tab1</button>
+            <clr-tab-content>Content1</clr-tab-content>
+        </clr-tab>
+        <clr-tab>
+            <button clrTabLink>Tab2</button>
+            <clr-tab-content>Content2</clr-tab-content>
+        </clr-tab>
+    </clr-tabs>
+   `,
+})
+class NoClrIfActiveTest {
+  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+}
+
 describe('Tabs', () => {
   addHelpers();
 
@@ -138,6 +156,7 @@ describe('Tabs', () => {
 
     it('projects all the links and just the active content', () => {
       expect(compiled.querySelectorAll('button.nav-link').length).toEqual(4);
+      expect(compiled.querySelectorAll('section').length).toEqual(1);
       expect(compiled.querySelectorAll('p').length).toEqual(1);
 
       const content: HTMLElement = compiled.querySelector('p');
@@ -206,6 +225,37 @@ describe('Tabs', () => {
 
     it("doesn't prioritize tabs with *ngIf", function() {
       expectFirstTabActive.call(this, NgIfSecondTest);
+    });
+  });
+
+  describe('Without *clrIfActive', () => {
+    let context: TestContext<ClrTabs, NoClrIfActiveTest>;
+    let compiled: any;
+    let contents: HTMLElement;
+
+    beforeEach(function() {
+      context = this.create(ClrTabs, NoClrIfActiveTest);
+      context.fixture.componentInstance.tabsInstance.ngAfterContentInit();
+      context.fixture.detectChanges();
+      compiled = context.fixture.nativeElement;
+      contents = compiled.querySelectorAll('section');
+    });
+
+    afterEach(() => {
+      context.fixture.destroy();
+    });
+
+    it('projects all the links and all the contents', () => {
+      expect(compiled.querySelectorAll('button.nav-link').length).toEqual(2);
+      expect(compiled.querySelectorAll('section').length).toEqual(2);
+
+      expect(contents[0].textContent.trim()).toMatch('Content1');
+      expect(contents[1].textContent.trim()).toMatch('Content2');
+    });
+
+    it('has only one of the elements visible', () => {
+      expect(window.getComputedStyle(contents[0]).display).toBe('block');
+      expect(window.getComputedStyle(contents[1]).display).toBe('none');
     });
   });
 });

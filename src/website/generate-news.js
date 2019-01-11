@@ -113,7 +113,7 @@ function generateRoutes() {
 }
 
 function generateSitemapNewsUrls() {
-  const baseUrl = 'https://clarity.website/news/';
+  const baseUrl = 'https://clarity.design/news/';
   const sitemapPath = path.join(process.cwd(), 'src/website/src/sitemap.xml');
   const sitemapFile = fs.readFileSync(sitemapPath, { encoding: 'utf8' });
   const sitemap = converter.xml2js(sitemapFile, { compact: true });

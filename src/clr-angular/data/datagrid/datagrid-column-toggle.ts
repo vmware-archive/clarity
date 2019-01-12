@@ -6,8 +6,6 @@
 import { Component, ContentChild, ContentChildren, OnDestroy, OnInit, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Point } from '../../popover/common/popover';
-
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';

@@ -48,6 +48,7 @@ import { KSWizards } from './containers/wizard/wizards.component';
 import { KSToggle } from './containers/forms/toggle.component';
 import { KSPasswords } from './containers/forms/password.component';
 import { KSTextareas } from './containers/forms/textarea.component';
+import { KSTreeview } from './containers/tree-view/tree-view.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'alerts', pathMatch: 'full' },
@@ -99,6 +100,7 @@ export const routes: Routes = [
   { path: 'progress-bars', component: KSProgressBars, data: { state: 'progress-bars' } },
   { path: 'spinners', component: KSSpinners, data: { state: 'spinners' } },
   { path: 'tables', component: KSTables, data: { state: 'tables' } },
+  { path: 'treeview', component: KSTreeview, data: { state: 'treeview' } },
 ];
 
 @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })

@@ -55,7 +55,7 @@ export class AppComponent {
     { path: 'textareas', title: 'Textareas' },
     { path: 'tooltips', title: 'Tooltips' },
     { path: 'toggle', title: 'Toggle' },
-    { path: 'treeviews', title: 'Tree Views' },
+    { path: 'treeview', title: 'Tree View' },
     { path: 'typography', title: 'Typography' },
     { path: 'vertical-nav', title: 'Vertical Nav' },
     { path: 'wizards', title: 'Wizards' },

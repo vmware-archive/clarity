@@ -7,5 +7,5 @@
 
 import { Component } from '@angular/core';
 
-@Component({ templateUrl: './treeview.component.html' })
+@Component({ templateUrl: './tree-view.component.html' })
 export class KSTreeview {}

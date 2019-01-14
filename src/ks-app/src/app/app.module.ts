@@ -56,7 +56,7 @@ import { KSWizards } from './containers/wizard/wizards.component';
 import { KSToggle } from './containers/forms/toggle.component';
 import { KSPasswords } from './containers/forms/password.component';
 import { KSTextareas } from './containers/forms/textarea.component';
-import { KSTreeview } from './containers/treeview/treeview.component';
+import { KSTreeview } from './containers/tree-view/tree-view.component';
 
 @NgModule({
   declarations: [

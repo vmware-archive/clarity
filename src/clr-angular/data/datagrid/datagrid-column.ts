@@ -30,7 +30,7 @@ import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
 import { ColumnOrderModelService } from './providers/column-order-model.service';
-import { ColumnHeaderSides } from './datagrid-column-reorder-droppable';
+import { ColumnHeaderSides } from './enums/header-sides.enum';
 
 let nbCount: number = 0;
 
@@ -100,11 +100,11 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   public get leftReorderDroppable() {
-    return ColumnHeaderSides.Left;
+    return ColumnHeaderSides.LEFT;
   }
 
   public get rightReorderDroppable() {
-    return ColumnHeaderSides.Right;
+    return ColumnHeaderSides.RIGHT;
   }
 
   public get columnDropData() {

@@ -8,23 +8,19 @@ import { Component, Input, Renderer2 } from '@angular/core';
 import { TableSizeService } from './providers/table-size.service';
 import { ColumnOrderModelService } from './providers/column-order-model.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
-
-export const enum ColumnHeaderSides {
-  Left,
-  Right,
-}
+import { ColumnHeaderSides } from './enums/header-sides.enum';
 
 @Component({
   selector: 'clr-dg-column-reorder-droppable',
-  template: `
-    <div class="datagrid-column-reorder-droppable" clrDroppable [clrGroup]="columnOrderDropKey"
-         (clrDragStart)="setDropTolerance($event)"
-         (clrDragEnter)="showHighlight(dropLine)"
-         (clrDragLeave)="hideHighlight(dropLine)"
-         (clrDrop)="updateOrder($event, dropLine)" [clrDropTolerance]="dropTolerance">
-      <div class="datagrid-column-drop-line" #dropLine></div>
-    </div>
-  `,
+  template: `<div class="datagrid-column-reorder-droppable" clrDroppable 
+                  [clrGroup]="columnOrderDropKey"
+                  [clrDropTolerance]="dropTolerance" 
+                  (clrDragStart)="setDropTolerance($event)" 
+                  (clrDragEnter)="showHighlight(dropLine)" 
+                  (clrDragLeave)="hideHighlight(dropLine)"
+                  (clrDrop)="updateOrder($event, dropLine)">
+    <div class="datagrid-column-drop-line" #dropLine></div>
+  </div>`,
 })
 export class ClrDatagridColumnReorderDroppable {
   constructor(
@@ -75,18 +71,18 @@ export class ClrDatagridColumnReorderDroppable {
       // if the dragged header is from the left side, the droppable at the right side in the current header
       // would get a proper dropTolerance value and the left side one would be disabled with value of -1.
 
-      if (this.side === ColumnHeaderSides.Right) {
+      if (this.side === ColumnHeaderSides.RIGHT) {
         this.dropTolerance = { left: this.headerWidth / 2, right: this.nextVisibleHeaderWidth / 2 };
-      } else if (this.side === ColumnHeaderSides.Left) {
+      } else if (this.side === ColumnHeaderSides.LEFT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area
       }
     } else if (draggedFrom > this.columnOrderModel.flexOrder) {
       // if the dragged header is from the right side, the droppable at the left side in the current header
       // would get a proper dropTolerance value and the right side one would be disabled with value of -1.
 
-      if (this.side === ColumnHeaderSides.Left) {
+      if (this.side === ColumnHeaderSides.LEFT) {
         this.dropTolerance = { right: this.headerWidth / 2, left: this.previousVisibleHeaderWidth / 2 };
-      } else if (this.side === ColumnHeaderSides.Right) {
+      } else if (this.side === ColumnHeaderSides.RIGHT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area
       }
     } else {
@@ -98,7 +94,7 @@ export class ClrDatagridColumnReorderDroppable {
 
   get headerWidth(): number {
     const headerEl = this.columnOrderModel.headerEl;
-    return this.domAdapter.clientRect(headerEl).width || 0;
+    return this.domAdapter.clientRect(headerEl).width;
   }
 
   get nextVisibleHeaderWidth(): number {

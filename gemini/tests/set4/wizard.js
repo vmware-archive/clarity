@@ -11,6 +11,7 @@ gemini.suite('wizard', child => {
     child
       .setUrl('/wizard/basic')
       .before((actions, find) => {
+        actions.setWindowSize(1152, 700);
         actions.waitForElementToShow('.btn', WAIT_TIME);
         actions.click(find('.btn'));
         actions.wait(WAIT_TIME); // wait for modal to fully load

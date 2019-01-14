@@ -219,6 +219,13 @@
       flex: 1 1 100%;
       width: 100%;
       height: 100%;
+      // firefox fix
+      max-height: 100%;
+
+      // edge fix, related to the firefox fix above
+      .modal-nav {
+        height: auto;
+      }
     }
 
     .clr-wizard-footer-buttons {

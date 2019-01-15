@@ -81,7 +81,7 @@ export class KSColors {
       type: 'yellowsAndOranges',
       colors: [
         { value: '#fac400', text: 'dark' },
-        { value: '#ffdc0b', text: 'dark' },
+        { value: '#fdcf08', text: 'dark' },
         { value: '#ffe967', text: 'dark' },
         { value: '#fff899', text: 'dark' },
         { value: '#fffadc', text: 'dark' },

@@ -605,6 +605,9 @@
       .datagrid-cell {
         display: block;
         padding-top: 11px;
+        &--hidden {
+          display: none;
+        }
       }
       .datagrid-expandable-caret {
         padding-top: 2px;

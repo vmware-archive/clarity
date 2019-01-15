@@ -329,6 +329,31 @@ class ProjectionTest {
   items = [1, 2, 3];
 }
 
+@Component({
+  template: `
+  <clr-datagrid>
+      <clr-dg-column>
+          <ng-container *clrDgHideableColumn="{hidden: true}">
+              First
+          </ng-container>
+      </clr-dg-column>
+      <clr-dg-column>Second</clr-dg-column>
+
+      <clr-dg-row *ngFor="let item of items;">
+          <clr-dg-cell>{{item}}</clr-dg-cell>
+          <clr-dg-cell>{{item * item}}</clr-dg-cell>    
+          <clr-dg-row-detail *clrIfExpanded="true" [clrDgReplace]="true">
+              <clr-dg-cell class="hidden-cell">{{item}} (col 1 detail)</clr-dg-cell>
+              <clr-dg-cell>{{item * item}} detail (col 2 detail)</clr-dg-cell>
+          </clr-dg-row-detail>
+      </clr-dg-row>
+  </clr-datagrid>    
+  `,
+})
+class ExpandedReplacedCellsTest {
+  items = [1, 2, 3];
+}
+
 const PROVIDERS = [
   { provide: DisplayModeService, useClass: MockDisplayModeService },
   Selection,
@@ -632,6 +657,13 @@ export default function(): void {
         const rowDetail = context.clarityElement.querySelector('.datagrid-row-detail');
         expect(rowDetail).not.toBeNull();
       }));
+
+      it('hides cells in dg-row-detail when columns are hidden and rows are replaced', function() {
+        const context = this.create(ClrDatagrid, ExpandedReplacedCellsTest, [HideableColumnService]);
+        const hiddenCell: HTMLElement = context.clarityElement.querySelector('.hidden-cell');
+        expect(hiddenCell.classList).toContain('datagrid-cell--hidden');
+        expect(window.getComputedStyle(hiddenCell).display).toBe('none');
+      });
     });
 
     describe('Single selection', function() {

@@ -27,9 +27,8 @@ describe('date utility functions', () => {
   it('should determine if two dates are equal', () => {
     const date1 = new Date(2000, 1, 1);
     const date2 = new Date(2000, 1, 1);
-    const date3 = new Date(2000, 1, 2);
 
     expect(datesAreEqual(date1, date2)).toBe(true);
-    expect(datesAreEqual(date2, date3)).toBe(false);
+    expect(datesAreEqual(date2, null)).toBe(false);
   });
 });

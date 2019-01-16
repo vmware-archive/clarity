@@ -589,6 +589,20 @@ export default function() {
         expect(fixture.componentInstance.date).toBe(null);
         expect(dateInputDebugElement.nativeElement.value).toBe('01/02/201');
       });
+
+      it('updates the HTML input with value from clrDate input', () => {
+        expect(fixture.componentInstance.date).toBeUndefined();
+        fixture.detectChanges();
+        expect(dateInputDebugElement.nativeElement.value).toBe('');
+
+        fixture.componentInstance.date = new Date(2019, 2, 1);
+        fixture.detectChanges();
+        expect(dateInputDebugElement.nativeElement.value).toBe('03/01/2019');
+
+        fixture.componentInstance.date = null;
+        fixture.detectChanges();
+        expect(dateInputDebugElement.nativeElement.value).toBe('');
+      });
     });
   });
 }

@@ -26,6 +26,7 @@ import {
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { filter, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import { FocusService } from '../common/providers/focus.service';
 import { WrappedFormControl } from '../common/wrapped-control';
@@ -38,7 +39,6 @@ import { DatepickerEnabledService } from './providers/datepicker-enabled.service
 import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { datesAreEqual } from './utils/date-utils';
-import { of } from 'rxjs';
 
 // There are four ways the datepicker value is set
 // 1. Value set by user typing into text input as a string ex: '01/28/2015'
@@ -209,6 +209,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       } else {
         this.renderer.setProperty(this.el.nativeElement, 'value', dateString);
       }
+    } else {
+      this.renderer.setProperty(this.el.nativeElement, 'value', '');
     }
   }
 

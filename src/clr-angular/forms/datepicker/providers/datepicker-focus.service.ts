@@ -30,6 +30,10 @@ export class DatepickerFocusService {
     this._ngZone.runOutsideAngular(() => this.ngZoneIsStableInBrowser().subscribe(() => element.focus()));
   }
 
+  elementIsFocused(element: HTMLInputElement) {
+    return isPlatformBrowser(this.platformId) && document.activeElement === element;
+  }
+
   private ngZoneIsStableInBrowser() {
     // Credit: Material: https://github.com/angular/material2/blob/master/src/lib/datepicker/calendar.ts
     return this._ngZone.onStable.asObservable().pipe(first(), filter(() => isPlatformBrowser(this.platformId)));

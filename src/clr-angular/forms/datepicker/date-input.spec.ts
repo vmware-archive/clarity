@@ -580,6 +580,15 @@ export default function() {
 
         expect(fixture.componentInstance.date).toBeNull();
       });
+
+      it('preserves input value from user when date is invalid', () => {
+        dateInputDebugElement.nativeElement.value = '01/02/201';
+        dateInputDebugElement.nativeElement.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        expect(fixture.componentInstance.date).toBe(null);
+        expect(dateInputDebugElement.nativeElement.value).toBe('01/02/201');
+      });
     });
   });
 }

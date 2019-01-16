@@ -43,6 +43,10 @@ const appRoutes: Routes = [
     redirectTo: `documentation/get-started`,
   },
   {
+    path: 'icons/clarity-icons',
+    redirectTo: `icons/get-started`,
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
     data: {

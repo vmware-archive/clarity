@@ -63,6 +63,7 @@
     "website:build": "ng build website --prod && ng run website:server:production && npm run website:compile",
     "website:start": "npm run website:news && ng serve website",
     "website:render": "node dist/website/prerender",
+    "website:functions": "netlify-lambda build scripts/netlify",
     "website:news": "node src/website/generate-news",
     "website:prerender": "npm-run-all website:news website:build website:render",
     "website:preview": "lite-server --baseDir=dist/website/browser"
@@ -133,6 +134,7 @@
     "karma-sauce-launcher": "1.2.0",
     "karma-scss-preprocessor": "3.0.0",
     "lite-server": "2.3.0",
+    "netlify-lambda": "1.2.0",
     "ng-packagr": "4.3.0",
     "node-sass": "4.9.3",
     "node-sass-tilde-importer": "1.0.2",

@@ -6,6 +6,7 @@
 import { Injectable } from '@angular/core';
 import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.service';
 import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 
 /**
  * This is a model service that's responsible for:
@@ -16,7 +17,7 @@ import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 
 @Injectable()
 export class ColumnOrderModelService {
-  constructor(private columnOrderCoordinatorService: ColumnOrdersCoordinatorService) {}
+  constructor(private columnOrderCoordinatorService: ColumnOrdersCoordinatorService, private domAdapter: DomAdapter) {}
 
   public flexOrder: number;
 
@@ -24,7 +25,7 @@ export class ColumnOrderModelService {
 
   public hideableColumnModel: DatagridHideableColumnModel;
 
-  public get columnGroupId() {
+  get columnGroupId() {
     return this.columnOrderCoordinatorService.columnGroupId;
   }
 
@@ -40,7 +41,7 @@ export class ColumnOrderModelService {
     return this.hideableColumnModel && this.hideableColumnModel.hidden;
   }
 
-  dropReceived(dropData: any) {
+  public dropReceived(dropData: any) {
     // updates column orders
     // broadcasts updated order changes
     console.log(dropData);
@@ -88,6 +89,18 @@ export class ColumnOrderModelService {
       }
       return largestFlexOrderModel;
     });
+  }
+
+  get headerWidth(): number {
+    return this.headerEl ? this.domAdapter.clientRect(this.headerEl).width : 0;
+  }
+
+  get nextVisibleHeaderWidth(): number {
+    return this.nextVisibleColumnModel ? this.nextVisibleColumnModel.headerWidth : 0;
+  }
+
+  get previousVisibleHeaderWidth(): number {
+    return this.previousVisibleColumnModel ? this.previousVisibleColumnModel.headerWidth : 0;
   }
 
   // TODO: This service will be expanded in the next PR

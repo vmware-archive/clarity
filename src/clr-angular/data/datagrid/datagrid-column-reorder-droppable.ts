@@ -26,8 +26,7 @@ export class ClrDatagridColumnReorderDroppable {
   constructor(
     private tableSizeService: TableSizeService,
     private columnOrderModel: ColumnOrderModelService,
-    private renderer: Renderer2,
-    private domAdapter: DomAdapter
+    private renderer: Renderer2
   ) {}
 
   public get columnOrderDropKey(): string {
@@ -72,7 +71,10 @@ export class ClrDatagridColumnReorderDroppable {
       // would get a proper dropTolerance value and the left side one would be disabled with value of -1.
 
       if (this.side === ColumnHeaderSides.RIGHT) {
-        this.dropTolerance = { left: this.headerWidth / 2, right: this.nextVisibleHeaderWidth / 2 };
+        this.dropTolerance = {
+          left: this.columnOrderModel.headerWidth / 2,
+          right: this.columnOrderModel.nextVisibleHeaderWidth / 2,
+        };
       } else if (this.side === ColumnHeaderSides.LEFT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area
       }
@@ -81,7 +83,10 @@ export class ClrDatagridColumnReorderDroppable {
       // would get a proper dropTolerance value and the right side one would be disabled with value of -1.
 
       if (this.side === ColumnHeaderSides.LEFT) {
-        this.dropTolerance = { right: this.headerWidth / 2, left: this.previousVisibleHeaderWidth / 2 };
+        this.dropTolerance = {
+          right: this.columnOrderModel.headerWidth / 2,
+          left: this.columnOrderModel.previousVisibleHeaderWidth / 2,
+        };
       } else if (this.side === ColumnHeaderSides.RIGHT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area
       }
@@ -89,29 +94,6 @@ export class ClrDatagridColumnReorderDroppable {
       // A reorder droppable shouldn't have a droppable area for the draggable header from the same column.
       // So if the draggable is from the same header, disable the dropTolerance
       this.dropTolerance = -1; // a negative drop tolerance means no drop area
-    }
-  }
-
-  get headerWidth(): number {
-    const headerEl = this.columnOrderModel.headerEl;
-    return this.domAdapter.clientRect(headerEl).width;
-  }
-
-  get nextVisibleHeaderWidth(): number {
-    if (this.columnOrderModel.nextVisibleColumnModel) {
-      const headerEl = this.columnOrderModel.nextVisibleColumnModel.headerEl;
-      return this.domAdapter.clientRect(headerEl).width;
-    } else {
-      return 0;
-    }
-  }
-
-  get previousVisibleHeaderWidth(): number {
-    if (this.columnOrderModel.previousVisibleColumnModel) {
-      const headerEl = this.columnOrderModel.previousVisibleColumnModel.headerEl;
-      return this.domAdapter.clientRect(headerEl).width;
-    } else {
-      return 0;
     }
   }
 }

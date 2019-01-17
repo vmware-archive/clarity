@@ -7,93 +7,120 @@
 import { ColumnOrderModelService } from './column-order-model.service';
 import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.service';
 import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
+import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
+import { mockHeaderEl } from './column-order-model.service.mock';
 
 export default function(): void {
-  describe('ColumnOrderCoordinatorService', function() {
+  fdescribe('ColumnOrderCoordinatorService', function() {
     let columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
-    let columnOrderModelService1: ColumnOrderModelService;
-    let columnOrderModelService2: ColumnOrderModelService;
-    let columnOrderModelService3: ColumnOrderModelService;
+    let columnOrderModelService: ColumnOrderModelService;
+    let columnOrderModelServicePrev: ColumnOrderModelService;
+    let columnOrderModelServiceNext: ColumnOrderModelService;
 
     beforeEach(function() {
       columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
 
-      columnOrderModelService1 = new ColumnOrderModelService(columnOrdersCoordinatorService);
-      columnOrderModelService2 = new ColumnOrderModelService(columnOrdersCoordinatorService);
-      columnOrderModelService3 = new ColumnOrderModelService(columnOrdersCoordinatorService);
+      columnOrderModelService = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
+      columnOrderModelServicePrev = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
+      columnOrderModelServiceNext = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
 
       // Here visually their columns would appear in the following order:
-      // columnOrderModelService2, columnOrderModelService1, columnOrderModelService3;
-      columnOrderModelService1.flexOrder = 1;
-      columnOrderModelService2.flexOrder = 0;
-      columnOrderModelService3.flexOrder = 2;
+      // columnOrderModelServicePrev, columnOrderModelService, columnOrderModelServiceNext;
+      columnOrderModelService.flexOrder = 1;
+      columnOrderModelService.headerEl = mockHeaderEl(200, 40);
 
-      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService1);
-      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService2);
-      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService3);
+      columnOrderModelServicePrev.flexOrder = 0;
+      columnOrderModelServicePrev.headerEl = mockHeaderEl(400, 40);
+
+      columnOrderModelServiceNext.flexOrder = 2;
+      columnOrderModelServiceNext.headerEl = mockHeaderEl(300, 40);
+
+      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService);
+      columnOrdersCoordinatorService.orderModels.push(columnOrderModelServicePrev);
+      columnOrdersCoordinatorService.orderModels.push(columnOrderModelServiceNext);
     });
 
     it('should have column group id from column order coordinator service', function() {
-      expect(columnOrderModelService1.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
-      expect(columnOrderModelService2.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
-      expect(columnOrderModelService3.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
+      expect(columnOrderModelService.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
+      expect(columnOrderModelServicePrev.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
+      expect(columnOrderModelServiceNext.columnGroupId).toBe(columnOrdersCoordinatorService.columnGroupId);
     });
 
     it('returns correct boolean value if column appears at first', function() {
-      expect(columnOrderModelService1.isAtFirst).toBeFalsy();
-      expect(columnOrderModelService2.isAtFirst).toBeTruthy();
-      expect(columnOrderModelService3.isAtFirst).toBeFalsy();
+      expect(columnOrderModelService.isAtFirst).toBeFalsy();
+      expect(columnOrderModelServicePrev.isAtFirst).toBeTruthy();
+      expect(columnOrderModelServiceNext.isAtFirst).toBeFalsy();
     });
 
     it('returns correct boolean value if column appears at end', function() {
-      expect(columnOrderModelService1.isAtEnd).toBeFalsy();
-      expect(columnOrderModelService2.isAtEnd).toBeFalsy();
-      expect(columnOrderModelService3.isAtEnd).toBeTruthy();
+      expect(columnOrderModelService.isAtEnd).toBeFalsy();
+      expect(columnOrderModelServicePrev.isAtEnd).toBeFalsy();
+      expect(columnOrderModelServiceNext.isAtEnd).toBeTruthy();
+    });
+
+    it('returns width of its own column', function() {
+      expect(columnOrderModelService.headerWidth).toBe(200);
+    });
+
+    it('returns width of previous column', function() {
+      expect(columnOrderModelService.previousVisibleHeaderWidth).toBe(400);
+    });
+
+    it('returns width of next column', function() {
+      expect(columnOrderModelService.nextVisibleHeaderWidth).toBe(300);
+    });
+
+    it('returns 0 for the previousVisibleHeaderWidth of the very first visible column', function() {
+      expect(columnOrderModelServicePrev.previousVisibleHeaderWidth).toBe(0);
+    });
+
+    it('returns 0 for the nextVisibleHeaderWidth of the very last visible column', function() {
+      expect(columnOrderModelServiceNext.nextVisibleHeaderWidth).toBe(0);
     });
 
     it('returns correct boolean value if column is hidden', function() {
-      columnOrderModelService1.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      columnOrderModelService2.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
-      columnOrderModelService3.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      expect(columnOrderModelService1.isHidden).toBeTruthy();
-      expect(columnOrderModelService2.isHidden).toBeFalsy();
-      expect(columnOrderModelService3.isHidden).toBeTruthy();
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      expect(columnOrderModelService.isHidden).toBeTruthy();
+      expect(columnOrderModelServicePrev.isHidden).toBeFalsy();
+      expect(columnOrderModelServiceNext.isHidden).toBeTruthy();
     });
 
     it('returns correct next visible model', function() {
       // visually the middle one and hidden
-      columnOrderModelService1.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
 
       // visually the first one
-      columnOrderModelService2.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
 
       // visually the last one
-      columnOrderModelService3.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
 
-      expect(columnOrderModelService2.nextVisibleColumnModel).toBe(columnOrderModelService3);
-      expect(columnOrderModelService3.nextVisibleColumnModel).toBeUndefined();
+      expect(columnOrderModelServicePrev.nextVisibleColumnModel).toBe(columnOrderModelServiceNext);
+      expect(columnOrderModelServiceNext.nextVisibleColumnModel).toBeUndefined();
     });
 
     it('returns undefined if it has no next visible column', function() {
-      columnOrderModelService1.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      columnOrderModelService2.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
-      columnOrderModelService3.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      expect(columnOrderModelService2.nextVisibleColumnModel).toBeUndefined();
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      expect(columnOrderModelServicePrev.nextVisibleColumnModel).toBeUndefined();
     });
 
     it('returns correct previous visible model', function() {
-      columnOrderModelService1.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      columnOrderModelService2.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
-      columnOrderModelService3.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
-      expect(columnOrderModelService3.previousVisibleColumnModel).toBe(columnOrderModelService2);
-      expect(columnOrderModelService2.previousVisibleColumnModel).toBeUndefined();
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      expect(columnOrderModelServiceNext.previousVisibleColumnModel).toBe(columnOrderModelServicePrev);
+      expect(columnOrderModelServicePrev.previousVisibleColumnModel).toBeUndefined();
     });
 
     it('returns undefined if it has no previous visible column', function() {
-      columnOrderModelService1.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      columnOrderModelService2.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-      columnOrderModelService3.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
-      expect(columnOrderModelService3.previousVisibleColumnModel).toBeUndefined();
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      expect(columnOrderModelServiceNext.previousVisibleColumnModel).toBeUndefined();
     });
   });
 }

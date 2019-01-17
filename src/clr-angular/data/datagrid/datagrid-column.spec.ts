@@ -53,7 +53,7 @@ export default function(): void {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
-        columnOrderModelService = new ColumnOrderModelService(new ColumnOrdersCoordinatorService());
+        columnOrderModelService = new ColumnOrderModelService(new ColumnOrdersCoordinatorService(), new DomAdapter());
         comparator = new TestComparator();
         component = new ClrDatagridColumn(sortService, filtersService, null, columnOrderModelService);
       });

@@ -61,18 +61,6 @@ export default function(): void {
       expect(context.clarityDirective.columnOrderDropKey).toBe('dg-mock-group-id');
     });
 
-    it('can return width of its own column', function() {
-      expect(context.clarityDirective.headerWidth).toBe(200);
-    });
-
-    it('can return width of previous column', function() {
-      expect(context.clarityDirective.previousVisibleHeaderWidth).toBe(400);
-    });
-
-    it('can return width of next column', function() {
-      expect(context.clarityDirective.nextVisibleHeaderWidth).toBe(300);
-    });
-
     it('both droppables should have no drop area for draggable from same column', function() {
       const dragEvent = { dragDataTransfer: columnOrderModelService };
 

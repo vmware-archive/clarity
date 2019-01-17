@@ -17,6 +17,15 @@ export class MockColumnOrderModelService {
   public dropReceived(event) {}
 }
 
+export function mockHeaderEl(width: number, height: number) {
+  const headerEl = document.createElement('div');
+  document.body.appendChild(headerEl);
+  headerEl.style.position = 'absolute';
+  headerEl.style.width = width + 'px';
+  headerEl.style.height = height + 'px';
+  return headerEl;
+}
+
 export function populateMockProps(
   mockService: MockColumnOrderModelService,
   id: string,
@@ -25,11 +34,7 @@ export function populateMockProps(
 ) {
   mockService.columnGroupId = id;
   mockService.flexOrder = flexOrder;
-  mockService.headerEl = document.createElement('div');
-  document.body.appendChild(mockService.headerEl);
-  mockService.headerEl.style.position = 'absolute';
-  mockService.headerEl.style.width = width + 'px';
-  mockService.headerEl.style.height = '40px';
+  mockService.headerEl = mockHeaderEl(width, 40);
 }
 
 export const MOCK_COLUMN_ORDER_MODEL_PROVIDER = {

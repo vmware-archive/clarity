@@ -19,7 +19,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { IfOpenService } from '../utils/conditional/if-open.service';
+import { IfOpenService } from '../conditional/if-open.service';
 
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
@@ -30,8 +30,7 @@ import { IfOpenService } from '../utils/conditional/if-open.service';
  *
  * @description
  * A structural directive that controls whether or not the associated TemplateRef is instantiated or not.
- * It makes use of a Component instance level service: IfOpenService to maintain state between itself and the component
- * using it in the component template.
+ * It instantiates the TemplateRef on the body element and handles removal and cleanup.
  *
  */
 export class ClrSmartOpen implements OnDestroy {
@@ -57,7 +56,7 @@ export class ClrSmartOpen implements OnDestroy {
    * An event emitter that emits when the open property is set to allow for 2way binding when the directive is
    * used with de-structured / de-sugared syntax.
    */
-  @Output('clrSmartOpenChange') openChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+  @Output('clrSmartOpenChange') openChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /********
    *
@@ -82,28 +81,32 @@ export class ClrSmartOpen implements OnDestroy {
     });
   }
 
-  /*********
-   *
-   * @description
-   * Function that takes a boolean value and either created an embedded view for the associated ViewContainerRef or,
-   * Clears all views from the ViewContainerRef
-   * @param value
-   */
-  public updateView(value) {
-    if (value) {
-      this.view = this.container.createEmbeddedView(this.template);
-      this.view.rootNodes.forEach(node => {
-        this.renderer.appendChild(this.document.body, node);
-      });
-    } else {
+  ngOnDestroy() {
+    this.removeView();
+    this.subscription.unsubscribe();
+  }
+
+  private removeView(): void {
+    if (this.view) {
+      this.view.rootNodes.forEach(node => this.renderer.removeChild(this.document.body, node));
       this.container.clear();
       delete this.view;
     }
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.container.clear();
-    delete this.view;
+  /**
+   * TODO: investigate why DebugElement retains a reference to the nodes and causes a memory leak.
+   * A note about the use of appendChild/removeChild
+   * The DebugElement is keeping a reference to the detached node and its unclear why.
+   * This does warrant further investigation. But, since it doesn't happen in production mode
+   * it is a low priority issue for now.
+   */
+  public updateView(value): void {
+    if (value) {
+      this.view = this.container.createEmbeddedView(this.template);
+      this.view.rootNodes.forEach(node => this.renderer.appendChild(this.document.body, node));
+    } else {
+      this.removeView();
+    }
   }
 }

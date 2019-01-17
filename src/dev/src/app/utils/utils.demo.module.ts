@@ -6,19 +6,19 @@
 /* angular stuff */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
 /* app dependencies */
 import { ClarityModule } from '@clr/angular';
-
+import { FormsModule } from '@angular/forms';
 /* app components */
 import { ROUTING } from './utils.demo.routing';
-import { IfOpenDemo } from './if-open/if-open.demo';
 import { UtilsDemo } from './utils.demo';
 import { SmartOpenDemo } from './smart-open/smart-open.demo';
+import { MultiNodeDemo } from './smart-open/multi-node.demo';
+import { SimpleDivDemo } from './smart-open/simple-div.demo';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
-  declarations: [IfOpenDemo, SmartOpenDemo, UtilsDemo],
-  exports: [IfOpenDemo, UtilsDemo, SmartOpenDemo],
+  imports: [CommonModule, ClarityModule, FormsModule, ROUTING],
+  declarations: [MultiNodeDemo, SimpleDivDemo, SmartOpenDemo, UtilsDemo],
+  exports: [UtilsDemo, SmartOpenDemo],
 })
 export class UtilsDemoModule {}

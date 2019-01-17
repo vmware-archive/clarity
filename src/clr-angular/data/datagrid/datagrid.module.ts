@@ -48,7 +48,7 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
-import { ClrSmartPopoverModule } from '../../smart-popover/smart-popover.module';
+import { ClrSmartPopoverModule } from '../../utils/smart-popover/smart-popover.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core

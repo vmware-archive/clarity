@@ -6,8 +6,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'clr-utils-demo',
-  styleUrls: ['./utils.demo.scss'],
   templateUrl: './utils.demo.html',
 })
 export class UtilsDemo {}

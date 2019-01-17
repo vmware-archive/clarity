@@ -314,15 +314,17 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sort(reverse?: boolean): void;
 }
 
-export declare class ClrDatagridColumnToggle extends ClrSmartPopover implements OnInit, OnDestroy {
+export declare class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     allColumnsVisible: boolean;
+    anchorPoint: Point;
     buttons: QueryList<ClrDatagridColumnToggleButton>;
     columns: DatagridHideableColumnModel[];
     commonStrings: ClrCommonStrings;
     hideableColumnService: HideableColumnService;
     open: boolean;
+    popoverPoint: Point;
     title: ClrDatagridColumnToggleTitle;
-    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings, ifOpenService: IfOpenService);
+    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
     ngOnInit(): void;
     selectAll(): void;

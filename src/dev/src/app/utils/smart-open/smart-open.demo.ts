@@ -5,9 +5,13 @@
  *
  */
 import { Component } from '@angular/core';
+import { IfOpenService } from '../../../../../clr-angular/utils/conditional/if-open.service';
 
 @Component({
-  selector: 'clr-smart-open-demo',
   templateUrl: './smart-open.demo.html',
+  host: { '[class.active]': 'open' },
+  providers: [IfOpenService],
 })
-export class SmartOpenDemo {}
+export class SmartOpenDemo {
+  public simpleDiv = true;
+}

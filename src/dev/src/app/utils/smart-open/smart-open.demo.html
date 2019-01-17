@@ -5,19 +5,22 @@
   ~
   -->
 
-<h4>ClrDatagrid with hide/show columns (uses the smart open structural directive)</h4>
-<clr-datagrid>
-    <clr-dg-column>Column</clr-dg-column>
-    <clr-dg-column>
-        <ng-container *clrDgHideableColumn>
-            Column
-        </ng-container>
-    </clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let item of [1,2,3,4,5]">
-        <clr-dg-cell>Cell</clr-dg-cell>
-        <clr-dg-cell>Cell</clr-dg-cell>
-    </clr-dg-row>
+<h4>ClrSmartOpen</h4>
+<p>This is a structural directive that renders and removes its view on the document.body instead of in the natural
+    ViewContainerRef.</p>
 
-    <clr-dg-footer></clr-dg-footer>
-</clr-datagrid>
+<form clrForm clrLayout="horizontal">
+    <section class="form-block">
+        <div class="form-group">
+            <label for="">Toggle between simple div and ng-template demos</label>
+            <div class="toggle-switch right-label clr-col-md-10">
+                <input type="checkbox" id="simple_toggle" [(ngModel)]="simpleDiv" name="simpleDiv">
+                <label for="simple_toggle">{{simpleDiv ? 'Show Simple Div Demo' : 'Show Multiple Nodes Demo'}}</label>
+            </div>
+        </div>
+    </section>
+</form>
+
+<simple-div-demo *ngIf="simpleDiv"></simple-div-demo>
+<multi-node-demo *ngIf="!simpleDiv"></multi-node-demo>

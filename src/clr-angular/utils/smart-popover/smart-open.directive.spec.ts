@@ -9,7 +9,7 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { ClrSmartOpen } from './smart-open.directive';
-import { IfOpenService } from '../utils/conditional/if-open.service';
+import { IfOpenService } from '../conditional/if-open.service';
 
 export default function(): void {
   describe('SmartOpen Directive', function() {

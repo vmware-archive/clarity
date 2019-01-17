@@ -11,12 +11,10 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { TestContext } from './helpers.spec';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
     describe('Typescript API', function() {
-      let ifOpenService: IfOpenService;
       let hideableColumnService: HideableColumnService;
       let columnToggleButtons: ColumnToggleButtonsService;
       let component: ClrDatagridColumnToggle;
@@ -45,10 +43,9 @@ export default function(): void {
       }
 
       beforeEach(function() {
-        ifOpenService = new IfOpenService();
         hideableColumnService = new HideableColumnService();
         columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {}, ifOpenService);
+        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {});
       });
 
       it('gets a list of hideable columns from the HideableColumnService', function() {
@@ -123,7 +120,7 @@ export default function(): void {
       });
 
       it('opens and closes the toggleUI', function() {
-        const iconBtn: HTMLButtonElement = document.body.querySelector('.column-switch-wrapper > button');
+        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
         expect(context.clarityDirective.open).toBe(false);
         iconBtn.click();
         context.detectChanges();
@@ -136,19 +133,19 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges(); // open it
         // Find the x and click it
-        const closeX: HTMLButtonElement = document.body.querySelector('.switch-header > button');
+        const closeX = context.clarityElement.querySelector('.switch-header > button');
         closeX.click();
         context.detectChanges();
         expect(context.clarityDirective.open).toBe(false);
         // make sure the x is not stil in the dom
-        const toggleUI: HTMLElement = document.body.querySelector('.column-switch');
+        const toggleUI = context.clarityElement.querySelector('.column-switch');
         expect(toggleUI).toBeNull();
       });
 
       it('projects DatagridHideableContent TemplateRefs', function() {
         const hideableColumns: DatagridHideableColumnModel[] = [];
         let nbCol: number = 0;
-        const iconBtn: HTMLButtonElement = document.body.querySelector('.column-switch-wrapper > button');
+        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
 
         context.testComponent.templates.forEach(col => {
           hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, false));
@@ -159,14 +156,13 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const renderedTemplates = document.body.querySelectorAll('.switch-content label');
+        const renderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
 
         // Test the init properly
         expect(hideableColumns.length).toBe(renderedTemplates.length);
 
         for (let i = 0; i < renderedTemplates.length; i++) {
-          const labelElement: HTMLLabelElement = <HTMLLabelElement>renderedTemplates[i];
-          expect(hideableColumns[i].id).toEqual(labelElement.innerText.trim());
+          expect(hideableColumns[i].id).toEqual(renderedTemplates[i].innerText.trim());
         }
 
         // Now test when columns are updated
@@ -174,13 +170,12 @@ export default function(): void {
         hideableColumnService.updateColumnList(updatedColumns);
         context.detectChanges();
 
-        const updatedRenderedTemplates: NodeList = document.body.querySelectorAll('.switch-content label');
+        const updatedRenderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
 
         expect(updatedColumns.length).toBe(updatedRenderedTemplates.length);
 
         for (let i = 0; i < updatedRenderedTemplates.length; i++) {
-          const labelElement: HTMLLabelElement = <HTMLLabelElement>updatedRenderedTemplates[i];
-          expect(updatedColumns[i].id).toEqual(labelElement.innerText.trim());
+          expect(updatedColumns[i].id).toEqual(updatedRenderedTemplates[i].innerText.trim());
         }
       });
 
@@ -205,7 +200,7 @@ export default function(): void {
           const testColumn: DatagridHideableColumnModel = hideableColumns[0];
           expect(testColumn.hidden).toBe(false);
 
-          const col0Clicker: HTMLButtonElement = document.body.querySelector('.switch-content input[type="checkbox"]');
+          const col0Clicker = context.clarityElement.querySelector('.switch-content input[type="checkbox"]');
           col0Clicker.click();
           expect(testColumn.hidden).toBe(true);
           col0Clicker.click();
@@ -227,10 +222,10 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const columnCheckboxes = document.body.querySelectorAll('.switch-content input[type="checkbox"]');
-        const selectAll: HTMLButtonElement = document.body.querySelector('.switch-footer > div > button');
+        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
+        const selectAll = context.clarityElement.querySelector('.switch-footer > div > button');
         for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[i];
+          const checkbox = columnCheckboxes[i];
           expect(checkbox.checked).toBe(false);
         }
 
@@ -238,7 +233,7 @@ export default function(): void {
         context.detectChanges();
 
         for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[i];
+          const checkbox = columnCheckboxes[i];
           expect(checkbox.checked).toBe(true);
         }
 
@@ -266,18 +261,13 @@ export default function(): void {
           // Thank you asynchronous [ngModel]...
           tick();
 
-          const columnCheckboxes = document.body.querySelectorAll('.switch-content input[type="checkbox"]');
-          const firstCheckbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[0];
-          const lastCheckbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[columnCheckboxes.length - 1];
-
-          expect(lastCheckbox.disabled).toBe(true);
-
-          firstCheckbox.click();
+          const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
+          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(true);
+          columnCheckboxes[0].click();
           context.detectChanges();
-          // Thank you asynchraonous [ngModel]...
+          // Thank you asynchronous [ngModel]...
           tick();
-
-          expect(lastCheckbox.disabled).toBe(false);
+          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
         })
       );
 
@@ -288,10 +278,9 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityDirective.open).toBe(true);
 
-        const buttons = document.body.querySelectorAll('.switch-footer button');
-        const footerButton: HTMLInputElement = <HTMLInputElement>buttons[0];
-        expect(footerButton.innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
-        const title = document.body.querySelector('.switch-header');
+        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
+        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
+        const title = context.clarityElement.querySelector('.switch-header');
         expect(title.innerHTML).toContain('Show Columns');
       });
     });
@@ -314,14 +303,10 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityDirective.open).toBe(true);
 
-        const buttons = document.body.querySelectorAll('.switch-footer button');
-        const firstButton: HTMLButtonElement = <HTMLButtonElement>buttons[0];
-        const secondButton: HTMLButtonElement = <HTMLButtonElement>buttons[1];
-
-        expect(firstButton.innerText.trim().toUpperCase()).toEqual('Select All!'.toUpperCase());
-        expect(secondButton.innerText.trim().toUpperCase()).toEqual('OK!'.toUpperCase());
-
-        const title = document.body.querySelector('.switch-header');
+        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
+        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All!'.toUpperCase());
+        expect(buttons[1].innerText.trim().toUpperCase()).toEqual('OK!'.toUpperCase());
+        const title = context.clarityElement.querySelector('.switch-header');
         expect(title.innerHTML).toContain('Custom Title');
       });
 
@@ -332,15 +317,11 @@ export default function(): void {
         iconBtn.click();
         service.selectAllDisabled = false;
         context.detectChanges();
-
-        const buttons = document.body.querySelectorAll('.switch-footer button');
-        const firstButton: HTMLButtonElement = <HTMLButtonElement>buttons[0];
-        const secondButton: HTMLButtonElement = <HTMLButtonElement>buttons[1];
-        firstButton.click();
+        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
+        buttons[0].click();
         context.detectChanges();
         expect(service.buttonClicked).toHaveBeenCalledTimes(1);
-
-        secondButton.click();
+        buttons[1].click();
         context.detectChanges();
         expect(service.buttonClicked).toHaveBeenCalledTimes(2);
       });

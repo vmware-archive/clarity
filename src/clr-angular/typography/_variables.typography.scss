@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,13 +8,13 @@ $clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !defau
 
 // Usage: ../data/datagrid/_datagrid.clarity.scss
 // Usage: ../typography/_typography.clarity.scss
-$clr-app-font-color-primary: clr-getTextColor();
+$clr-app-font-color-primary: $clr-global-font-color !default; // deprecated
 
 // Usage: ../utils/_maps.clarity.scss
 $clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
 
 // Usage: ../code/syntax-highlight/_code.clarity.scss
-$clr-monoFont: Consolas, Monaco, Courier, monospace !default;
+$clr-monoFont: Consolas, Monaco, Courier, monospace !default; // deprecated
 
 // Usage: ../typography/_typography.clarity.scss
 // Usage: ../utils/_helpers.clarity.scss
@@ -46,22 +46,22 @@ $clr-typography-xxsmalltext: 0.458333rem !default; // 11px
 $clr-typography-tinytext: 0.416667rem !default; // 10px
 
 // Header colors
-$clr-h1-color: $clr-black;
-$clr-h2-color: $clr-black;
-$clr-h3-color: $clr-black;
-$clr-h4-color: $clr-black;
-$clr-h5-color: $clr-dark-gray;
-$clr-h6-color: $clr-near-black;
+$clr-h1-color: $clr-global-content-header-font-color !default;
+$clr-h2-color: $clr-global-content-header-font-color !default;
+$clr-h3-color: $clr-global-content-header-font-color !default;
+$clr-h4-color: $clr-global-content-header-font-color !default;
+$clr-h5-color: $clr-global-font-color !default;
+$clr-h6-color: $clr-color-neutral-900 !default;
 
 // Paragraph colors
-$clr-p1-color: $clr-app-font-color-primary;
-$clr-p2-color: $clr-app-font-color-primary;
-$clr-p3-color: $clr-app-font-color-primary;
-$clr-p4-color: $clr-dark-gray;
-$clr-p5-color: $clr-dark-gray;
-$clr-p6-color: $clr-dark-gray;
-$clr-p7-color: $clr-dark-gray;
-$clr-p8-color: $clr-dark-gray;
+$clr-p1-color: $clr-app-font-color-primary !default;
+$clr-p2-color: $clr-app-font-color-primary !default;
+$clr-p3-color: $clr-app-font-color-primary !default;
+$clr-p4-color: $clr-global-font-color !default;
+$clr-p5-color: $clr-global-font-color !default;
+$clr-p6-color: $clr-global-font-color !default;
+$clr-p7-color: $clr-global-font-color !default;
+$clr-p8-color: $clr-global-font-color !default;
 
 // Usage: ../typography/_typography.clarity.scss
 $clr-typography-commonmap-key: 'clr-common';

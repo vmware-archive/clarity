@@ -18,26 +18,4 @@ gemini.suite('color', child => {
       .setCaptureElements('.row')
       .capture('default');
   });
-
-  gemini.suite('color-luminance', child => {
-    child
-      .setUrl('/color/color-luminance')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.colordemo-luminance', WAIT_TIME);
-        actions.wait(WAIT_LOAD_TIME);
-      })
-      .setCaptureElements('.colordemo-luminance')
-      .capture('default');
-  });
-
-  gemini.suite('color-contrast', child => {
-    child
-      .setUrl('/color/color-contrast')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.colordemo-textcolor', WAIT_TIME);
-        actions.wait(WAIT_LOAD_TIME);
-      })
-      .setCaptureElements('.colordemo-textcolor')
-      .capture('default');
-  });
 });

@@ -5,22 +5,22 @@
 @import '../../../../styles/clarity-imports';
 
 .link-normal {
-  color: $action-blues-dark-midtone;
+  color: $clr-color-action-600;
   text-decoration: none;
 }
 
 .link-hovered {
-  color: $action-blues-dark-midtone;
+  color: $clr-color-action-600;
   text-decoration: underline;
 }
 
 .link-clicked {
-  color: $action-purples-light-midtone;
+  color: $clr-color-secondary-action-500;
   text-decoration: underline;
 }
 
 .link-visited {
-  color: $action-purples-light-midtone;
+  color: $clr-color-secondary-action-500;
   text-decoration: none;
 }
 

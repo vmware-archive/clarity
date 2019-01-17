@@ -7,21 +7,21 @@
 
 $svg_data: 'data:image/svg+xml;charset=utf8';
 
-@function generateErrorIcon($fillColor: $reds-dark) {
+@function generateErrorIcon($fillColor: $clr-color-danger-900) {
   $error-icon: '%3Csvg%20version%3D%221.1%22%20viewBox%3D%225%205%2026%2026%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cstyle%3E.clr-i-outline%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3Eexclamation-circle-line%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20d%3D%22M18%2C6A12%2C12%2C0%2C1%2C0%2C30%2C18%2C12%2C12%2C0%2C0%2C0%2C18%2C6Zm0%2C22A10%2C10%2C0%2C1%2C1%2C28%2C18%2C10%2C10%2C0%2C0%2C1%2C18%2C28Z%22%3E%3C%2Fpath%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-2%22%20d%3D%22M18%2C20.07a1.3%2C1.3%2C0%2C0%2C1-1.3-1.3v-6a1.3%2C1.3%2C0%2C1%2C1%2C2.6%2C0v6A1.3%2C1.3%2C0%2C0%2C1%2C18%2C20.07Z%22%3E%3C%2Fpath%3E%3Ccircle%20class%3D%22clr-i-outline%20clr-i-outline-path-3%22%20cx%3D%2217.95%22%20cy%3D%2223.02%22%20r%3D%221.5%22%3E%3C%2Fcircle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$error-icon}');
 }
 
-@function generateWarningIcon($fillColor: $gray-dark) {
+@function generateWarningIcon($fillColor: $clr-color-neutral-600) {
   $warning-icon: '%3Csvg%20version%3D%221.1%22%20viewBox%3D%225%205%2026%2026%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.clr-i-outline%7Bfill-rule%3Aevenodd%3Bclip-rule%3Aevenodd%3Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3Eexclamation-triangle-line%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20d%3D%22M18%2C21.32a1.3%2C1.3%2C0%2C0%2C0%2C1.3-1.3V14a1.3%2C1.3%2C0%2C1%2C0-2.6%2C0v6A1.3%2C1.3%2C0%2C0%2C0%2C18%2C21.32Z%22%3E%3C%2Fpath%3E%3Ccircle%20class%3D%22clr-i-outline%20clr-i-outline-path-2%22%20cx%3D%2217.95%22%20cy%3D%2224.27%22%20r%3D%221.5%22%3E%3C%2Fcircle%3E%3Cpath%20class%3D%22clr-i-outline%20clr-i-outline-path-3%22%20d%3D%22M30.33%2C25.54%2C20.59%2C7.6a3%2C3%2C0%2C0%2C0-5.27%2C0L5.57%2C25.54A3%2C3%2C0%2C0%2C0%2C8.21%2C30H27.69a3%2C3%2C0%2C0%2C0%2C2.64-4.43Zm-1.78%2C1.94a1%2C1%2C0%2C0%2C1-.86.49H8.21a1%2C1%2C0%2C0%2C1-.88-1.48L17.07%2C8.55a1%2C1%2C0%2C0%2C1%2C1.76%2C0l9.74%2C17.94A1%2C1%2C0%2C0%2C1%2C28.55%2C27.48Z%22%3E%3C%2Fpath%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$warning-icon}');
 }
 
-@function generateCheckIcon($fillColor: $gray-dark) {
+@function generateCheckIcon($fillColor: $clr-color-neutral-600) {
   $check-icon: '%3Csvg%20version%3D%221.1%22%20viewBox%3D%220%200%2036%2036%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20focusable%3D%22false%22%20aria-hidden%3D%22true%22%20role%3D%22img%22%3E%3Cpath%20fill%3D%22%23' +
     str-slice($fillColor + '', 2) +
     '%22%20class%3D%22clr-i-outline%20clr-i-outline-path-1%22%20d%3D%22M13.72%2C27.69%2C3.29%2C17.27a1%2C1%2C0%2C0%2C1%2C1.41-1.41l9%2C9L31.29%2C7.29a1%2C1%2C0%2C0%2C1%2C1.41%2C1.41Z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E';
@@ -29,7 +29,7 @@ $svg_data: 'data:image/svg+xml;charset=utf8';
   @return url('#{$svg_data},#{$check-icon}');
 }
 
-@function generateSpinnerIcon($fillBgColor: #000000, $fillSnakeColor: $action-blues-dark-midtone, $opacityBg: 0.15) {
+@function generateSpinnerIcon($fillBgColor: #000000, $fillSnakeColor: $clr-color-action-600, $opacityBg: 0.15) {
   $spinner-icon: '%3Csvg%20id%3D%22Layer_2%22%20data-name%3D%22Layer%202%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2072%2072%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20.cls-1%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20.cls-2%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fill%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20stroke-miterlimit%3A%2010%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20stroke-width%3A%205px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20.cls-1%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20stroke%3A%20%23' +
     str-slice($fillBgColor + '', 2) + '%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20stroke-opacity%3A%20' +
     $opacityBg +
@@ -48,7 +48,7 @@ $svg_data: 'data:image/svg+xml;charset=utf8';
   @return url('#{$svg_data},#{$logo}');
 }
 
-@function generateSearchIcon($fillBgColor: $clr-white) {
+@function generateSearchIcon($fillBgColor: $clr-color-neutral-0) {
   $search-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2036%2036%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23' +
     str-slice($fillBgColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3ESearch%3C%2Ftitle%3E%3Cg%20id%3D%22icons%22%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M15%2C4.05A10.95%2C10.95%2C0%2C1%2C1%2C4.05%2C15%2C11%2C11%2C0%2C0%2C1%2C15%2C4.05M15%2C2A13%2C13%2C0%2C1%2C0%2C28%2C15%2C13%2C13%2C0%2C0%2C0%2C15%2C2Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20%20d%3D%22M33.71%2C32.29l-7.37-7.42-1.42%2C1.41%2C7.37%2C7.42a1%2C1%2C0%2C1%2C0%2C1.42-1.41Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
@@ -62,42 +62,42 @@ $svg_data: 'data:image/svg+xml;charset=utf8';
   @return url('#{$svg_data},#{$caret-icon}');
 }
 
-@function generateDownArrowIcon($fillColor: $action-blues-dark-midtone) {
+@function generateDownArrowIcon($fillColor: $clr-color-action-600) {
   $down-arrow-icon: '%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09.st0%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%0A%3C%2Fstyle%3E%0A%3Ctitle%3Eicon%20artboards%20patch%202%20strokecenter%3C%2Ftitle%3E%0A%3Cpath%20class%3D%22st0%22%20d%3D%22M8.5%2C13c-0.1%2C0.1-0.3%2C0-0.4-0.1L4.6%2C9.4c-0.2-0.2-0.2-0.5%2C0-0.7s0.5-0.2%2C0.7%2C0l3.1%2C3.1l3.1-3.2%0A%09c0.2-0.2%2C0.5-0.2%2C0.7%2C0s0.2%2C0.5%2C0%2C0.7C12.2%2C9.3%2C8.6%2C12.9%2C8.5%2C13z%22%2F%3E%0A%3Crect%20x%3D%228%22%20y%3D%223%22%20class%3D%22st0%22%20width%3D%221%22%20height%3D%229.3%22%2F%3E%0A%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$down-arrow-icon}');
 }
 
-@function generateUpArrowIcon($fillColor: $action-blues-dark-midtone) {
+@function generateUpArrowIcon($fillColor: $clr-color-action-600) {
   $up-arrow-icon: '%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Eicon%20artboards%20patch%202%20strokecenter%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M8.5%2C3a0.5%2C0.5%2C0%2C0%2C0-.35.15l-3.5%2C3.5a0.5%2C0.5%2C0%2C0%2C0%2C.71.71L8.5%2C4.21l3.15%2C3.15a0.5%2C0.5%2C0%2C0%2C0%2C.71-0.71l-3.5-3.5A0.5%2C0.5%2C0%2C0%2C0%2C8.5%2C3Z%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%228%22%20y%3D%224%22%20width%3D%221%22%20height%3D%2210%22%2F%3E%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$up-arrow-icon}');
 }
 
-@function generateLeftCaretIcon($fillColor: $gray-dark) {
+@function generateLeftCaretIcon($fillColor: $clr-color-neutral-600) {
   $left-caret-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-3%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%3E%3Cpolygon%20class%3D%22cls-3%22%20points%3D%2210.15%2014.72%203.44%208%2010.15%201.28%2011%202.13%205.14%208%2011%2013.87%2010.15%2014.72%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$left-caret-icon}');
 }
 
-@function generateRightCaretIcon($fillColor: $gray-dark) {
+@function generateRightCaretIcon($fillColor: $clr-color-neutral-600) {
   $right-caret-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%225.85%2014.72%2012.56%208%205.85%201.28%205%202.13%2010.86%208%205%2013.87%205.85%2014.72%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$right-caret-icon}');
 }
 
-@function generateFilterIcon($fillColor: $action-blues-dark-midtone) {
+@function generateFilterIcon($fillColor: $clr-color-action-600) {
   $filter-off-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%227%209.32%203%205.38%203%205%2013%205%2013%205.38%209%209.32%209%2012.21%207%2013.29%207%209.32%22%2F%3E%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$filter-off-icon}');
 }
 
-@function generateCircleIcon($fillColor: $action-blues-dark-midtone) {
+@function generateCircleIcon($fillColor: $clr-color-action-600) {
   $filter-off-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3Anone%3Bstroke%3A%23' +
     str-slice($fillColor + '', 2) +
     '%3Bstroke-miterlimit%3A10%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ccircle%20class%3D%22cls-1%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%227.5%22%2F%3E%3C%2Fsvg%3E';

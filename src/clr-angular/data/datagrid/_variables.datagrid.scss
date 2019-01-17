@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,19 +6,21 @@
 $clr-datagrid-icon-size: 0.583333rem;
 $clr-datagrid-action-arrow-size: 0.25rem;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-$clr-datagrid-font-color: #adbbc4;
-$clr-datagrid-row-hover: $clr-light-gray;
-$clr-datagrid-action-toggle: $clr-dark-gray;
-$clr-datagrid-pagination-btn-color: $clr-dark-gray;
-$clr-datagrid-pagination-btn-disabled-color: $clr-gray;
+$clr-datagrid-font-color: #adbbc4 !default;
+$clr-datagrid-default-border-color: $clr-color-neutral-400 !default;
+
+$clr-datagrid-row-hover: $clr-color-neutral-200 !default;
+$clr-datagrid-action-toggle: $clr-color-neutral-700 !default;
+$clr-datagrid-pagination-btn-color: $clr-color-neutral-700 !default;
+$clr-datagrid-pagination-btn-disabled-color: $clr-color-neutral-600 !default;
 $clr-datagrid-pagination-btn-disabled-opacity: 0.56;
-$clr-datagrid-pagination-input-border-color: $clr-light-midtone-gray;
-$clr-datagrid-pagination-input-border-focus-color: $clr-action-blue-light;
-$clr-datagrid-popover-bg-color: $clr-white;
-$clr-datagrid-popover-border-color: $clr-light-midtone-gray;
-$clr-datagrid-action-popover-hover-color: $gray-light;
-$clr-datagrid-loading-background: rgba($clr-white, 0.6);
-$clr-datagrid-row-selected: $clr-black;
+$clr-datagrid-pagination-input-border-color: $clr-datagrid-default-border-color !default;
+$clr-datagrid-pagination-input-border-focus-color: $clr-color-action-400 !default;
+$clr-datagrid-popover-bg-color: $clr-color-neutral-0 !default;
+$clr-datagrid-popover-border-color: $clr-datagrid-default-border-color !default;
+$clr-datagrid-action-popover-hover-color: $clr-color-neutral-200 !default;
+$clr-datagrid-loading-background: rgba($clr-color-neutral-0, 0.6) !default;
+$clr-datagrid-row-selected: $clr-color-neutral-1000 !default;
 $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
 
 $clr-datagrid-icon-size: 0.583333rem;

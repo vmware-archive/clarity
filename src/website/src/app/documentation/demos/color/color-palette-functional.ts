@@ -78,7 +78,7 @@ export class ColorFunctional {
         { value: '#FF8400', text: 'dark' },
         { value: '#89CBDF', text: 'dark' },
         { value: '#2F8400', text: 'light' },
-        { value: '#fdcf08', text: 'dark' },
+        { value: '#ffdc0B', text: 'dark' },
         { value: '#C92100', text: 'light' },
       ],
     },

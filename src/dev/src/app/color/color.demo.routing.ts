@@ -6,8 +6,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ColorContrastDemo } from './color-contrast';
-import { ColorLuminanceDemo } from './color-luminance';
 import { ColorPalette } from './color-palette';
 import { ColorsDemo } from './color.demo';
 
@@ -18,8 +16,6 @@ const ROUTES: Routes = [
     children: [
       { path: '', redirectTo: 'color-palette', pathMatch: 'full' },
       { path: 'color-palette', component: ColorPalette },
-      { path: 'color-luminance', component: ColorLuminanceDemo },
-      { path: 'color-contrast', component: ColorContrastDemo },
     ],
   },
 ];

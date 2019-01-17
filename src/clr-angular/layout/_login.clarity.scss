@@ -118,7 +118,7 @@
           margin: 0.25rem 0 0 0;
           padding: 0.375rem 0.5rem;
           // TODO: use contrast checker vs. known background?
-          background: clr-getColor(dark-midtone, reds);
+          background: $clr-color-danger-800;
           color: $clr-login-background-color;
           border-radius: $clr-global-borderradius;
           line-height: 0.75rem;
@@ -163,7 +163,7 @@
         display: block;
         width: 1px;
         height: 100%;
-        background: rgba($clr-black, 0.1);
+        background: rgba($clr-color-neutral-1000, 0.1);
         top: 0;
         right: -2px;
       }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,23 +6,20 @@
 // Usage: ../forms/_select.clarity.scss
 // Usage: ../layout/nav/_sidenav.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
-$clr-dropdown-caret-icon-dimension: 0.416667rem;
+$clr-dropdown-caret-icon-dimension: 0.416667rem !default;
 
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
-$clr-dropdown-active-text-color: $clr-black;
-$clr-dropdown-caret-left-margin: 0.083333rem;
-$clr-dropdown-bg-color: $clr-white;
-$clr-dropdown-text-color: $clr-dark-gray;
-$clr-dropdown-item-text-color: clr-getTextColor();
-$clr-dropdown-border-color: $clr-light-midtone-gray;
-$clr-dropdown-divider-color: $clr-light-gray;
-$clr-dropdown-child-border-color: $clr-dark-midtone-gray;
-$clr-dropdown-bg-hover-color: $clr-global-hover-color;
-$clr-dropdown-selection-color: $clr-global-selection-color;
-$clr-dropdown-box-shadow: $clr-popover-box-shadow-color;
-$clr-dropdown-header-color: clr-getColor(darkest);
-
-// TODO - Remove? No usages found
-$clr-dropdown-bg-active-color: $clr-global-selection-color;
-$clr-dropdown-item-height: 1.25rem;
-$clr-dropdown-item-height-sm: 1.5rem;
+$clr-dropdown-active-text-color: $clr-color-neutral-1000 !default;
+$clr-dropdown-caret-left-margin: 0.083333rem !default;
+$clr-dropdown-bg-color: $clr-color-neutral-0 !default;
+$clr-dropdown-text-color: $clr-color-neutral-700 !default;
+$clr-dropdown-item-text-color: $clr-color-neutral-700 !default;
+$clr-dropdown-border-color: $clr-color-neutral-400 !default;
+$clr-dropdown-divider-color: $clr-color-neutral-200 !default;
+$clr-dropdown-child-border-color: $clr-color-neutral-500 !default;
+$clr-dropdown-bg-hover-color: $clr-global-hover-color !default;
+$clr-dropdown-selection-color: $clr-global-selection-color !default;
+$clr-dropdown-box-shadow: $clr-popover-box-shadow-color !default;
+$clr-dropdown-header-color: $clr-color-neutral-900 !default;
+$clr-dropdown-item-height: 1.25rem !default;
+$clr-dropdown-item-height-sm: 1.5rem !default;

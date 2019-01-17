@@ -1,9 +1,23 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../layout/nav/_sidenav.clarity.scss
 // Sidenav
-$clr-sidenav-border-color: $clr-light-midtone-gray !default;
-$clr-sidenav-link-hover-color: $gray-light;
+// Sidenav border
+$clr-sidenav-border-color: $clr-color-neutral-400 !default;
+$clr-sidenav-border-width: $clr-default-borderwidth !default;
+
+// Hover
+$clr-sidenav-link-hover-color: $clr-color-neutral-200 !default;
+
+// Active Item
+$clr-sidenav-link-active-color: $clr-color-neutral-1000 !default;
+$clr-sidenav-link-active-bg-color: $clr-global-selection-color !default;
+$clr-sidenav-link-active-border-radius: $clr-global-borderradius !default;
+
+// Collapse trigger
+$clr-sidenav-collapse-toggle-icon-size: $clr-dropdown-caret-icon-dimension !default;
+
+// Misc
 $clr-sidenav-width: 18% !default;

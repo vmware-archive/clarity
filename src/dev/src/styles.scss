@@ -1,5 +1,5 @@
+@import '../../clr-angular/color/variables.color';
 @import '../../clr-angular/utils/layers.clarity';
-@import '../../clr-angular/color/utils/colors.clarity';
 
 .clr-example {
   margin-top: 1rem;
@@ -35,7 +35,7 @@
 
 .modal-icon {
   float: left;
-  color: $clr-green;
+  color: $clr-color-success-400;
   font-size: 3rem;
   margin-right: 0.5rem;
 }

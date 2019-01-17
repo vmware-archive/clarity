@@ -1,59 +1,65 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Structure
 $clr-forms-baseline: 0.25rem;
 $clr-forms-icon-size: 1rem;
-$clr-form-disabled-background-color: $clr-light-midtone-gray !default;
+$clr-form-disabled-background-color: $clr-color-neutral-400 !default;
 
 // Generic
-$clr-forms-label-color: #444444;
-$clr-forms-text-color: $clr-black;
-$clr-forms-invalid-color: clr-getColor(dark-midtone, reds);
-$clr-forms-subtext-color: $clr-gray;
-$clr-forms-border-color: $clr-dark-midtone-gray !default;
-$clr-forms-focused-color: clr-getColor(light-midtone, action-blues);
+$clr-forms-label-color: $clr-color-neutral-800 !default;
+$clr-forms-text-color: $clr-color-neutral-1000 !default;
+$clr-forms-invalid-color: $clr-color-danger-800 !default;
+$clr-forms-subtext-color: $clr-color-neutral-600 !default;
+$clr-forms-border-color: $clr-color-neutral-500 !default;
+$clr-forms-focused-color: $clr-color-action-500 !default;
 $clr-forms-disabled-opacity: 0.54 !default;
 
 // Textarea
-$clr-forms-textarea-background-color: $clr-white;
+$clr-forms-textarea-background-color: $clr-color-neutral-0 !default;
 
 // Select
-$clr-forms-select-hover-background: rgba(221, 221, 221, 0.5); // CAN WE KEY THIS FROM A KNOWN COLOR
-$clr-forms-select-caret-hover-color: $gray-dark;
-$clr-forms-select-caret-color: $gray-dark-midtone;
+$clr-forms-select-hover-background: rgba(
+  red($clr-color-neutral-300),
+  green($clr-color-neutral-300),
+  blue($clr-color-neutral-300),
+  0.5
+) !default;
+$clr-forms-select-caret-hover-color: $clr-color-neutral-600 !default;
+$clr-forms-select-caret-color: $clr-color-neutral-500 !default;
 $clr-forms-select-caret-size: $clr-dropdown-caret-icon-dimension;
-$clr-forms-select-option-color: $clr-forms-text-color;
-$clr-forms-select-multiple-background-color: $clr-white;
-$clr-forms-select-multiple-border-color: $gray-light-midtone;
-$clr-forms-select-multiple-option-color: $clr-forms-text-color;
+$clr-forms-select-option-color: $clr-forms-text-color !default;
+$clr-forms-select-multiple-background-color: $clr-forms-textarea-background-color !default;
+$clr-forms-select-multiple-border-color: $clr-color-neutral-400 !default;
+$clr-forms-select-multiple-option-color: $clr-forms-text-color !default;
 
 // Checkbox
 $clr-forms-checkbox-size: 0.66667rem;
 $clr-forms-checkbox-label-height: $clr-forms-baseline * 4;
-$clr-forms-checkbox-label-color: $clr-black;
+$clr-forms-checkbox-label-color: $clr-forms-text-color !default;
 $clr-forms-checkbox-height: $clr-icon-dimension-sm !default;
 $clr-forms-checkbox-padding-left: $clr-forms-checkbox-height + 0.25rem;
 $clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) / 2 !default;
-$clr-forms-checkbox-background-color: $clr-action-blue !default; // Use color here
+$clr-forms-checkbox-background-color: $clr-color-action-600 !default;
 $clr-forms-checkbox-checked-shadow: inset 0 0 0 0.25rem $clr-forms-checkbox-background-color;
-$clr-forms-checkbox-indeterminate-border-color: $clr-action-blue !default;
+$clr-forms-checkbox-indeterminate-border-color: $clr-color-action-600 !default;
 $clr-forms-checkbox-mark-size: $clr-forms-checkbox-height / 2;
-$clr-forms-checkbox-border-style: ($clr-forms-checkbox-height / 8) solid $clr-white;
-$clr-forms-checkbox-mark-color: $clr-white;
-$clr-forms-checkbox-disabled-background-color: $clr-light-midtone-gray !default;
-$clr-forms-checkbox-disabled-mark-color: $clr-black !default;
+$clr-forms-checkbox-mark-color: $clr-color-neutral-0 !default;
+$clr-forms-checkbox-border-style: ($clr-forms-checkbox-height / 8) solid $clr-forms-checkbox-mark-color;
+$clr-forms-checkbox-disabled-background-color: $clr-form-disabled-background-color !default;
+$clr-forms-checkbox-disabled-mark-color: $clr-color-neutral-1000 !default;
+$clr-forms-checkbox-border-radius: $clr-global-borderradius !default;
 
 // Radio
 $clr-forms-radio-size: $clr-forms-checkbox-size;
 $clr-forms-radio-label-height: $clr-forms-checkbox-label-height;
-$clr-forms-radio-label-color: $clr-forms-checkbox-label-color;
+$clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;
 $clr-forms-radio-height: $clr-forms-checkbox-height;
 $clr-forms-radio-padding-left: $clr-forms-checkbox-padding-left;
 $clr-forms-radio-top: $clr-forms-checkbox-top;
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
 $clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
-$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color;
-$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
+$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color !default;
+$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color !default;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;

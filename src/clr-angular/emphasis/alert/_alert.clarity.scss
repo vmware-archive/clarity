@@ -1,21 +1,58 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @mixin generateAlertType($alertType: 'info') {
-  $propMap: map-get($clr-alert-colors, $alertType);
-  background: map-get($propMap, background);
-  color: map-get($propMap, font);
-  $border-prop: map-get($propMap, border);
+  background: getAlertColor($alertType, bg-color);
+  color: getAlertColor($alertType, color);
+  $border-prop: getAlertColor($alertType, border-color);
 
   @if $border-prop != 'none' {
-    border: $clr-default-borderwidth solid $border-prop;
+    border: $clr-alert-borderwidth solid $border-prop;
   } @else {
     border: none;
   }
 
   .alert-icon {
-    color: map-get($propMap, icon-color);
+    color: getAlertColor($alertType, icon);
+  }
+
+  .alert-actions .dropdown .dropdown-toggle {
+    color: getAlertColor($alertType, action);
+    border-color: getAlertColor($alertType, action);
+  }
+
+  .alert-action,
+  .dropdown-toggle {
+    color: getAlertColor($alertType, action);
+    border-color: getAlertColor($alertType, action);
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: getAlertColor($alertType, action-active);
+      border-color: getAlertColor($alertType, action-active);
+    }
+
+    &:active {
+      box-shadow: 0 1px 0 0 getAlertColor($alertType, action-active) inset;
+    }
+  }
+
+  .close {
+    color: getAlertColor($alertType, close-icon);
+    opacity: getAlertColor($alertType, close-icon-opacity);
+
+    clr-icon {
+      fill: getAlertColor($alertType, close-icon);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: getAlertColor($alertType, close-icon-hover);
+      opacity: getAlertColor($alertType, close-icon-hover-opacity);
+    }
   }
 }
 
@@ -51,7 +88,7 @@
 
   .alert-items {
     $vertPadding: 0.333333rem;
-    $horizPadding: calc(0.5rem - #{$clr-default-borderwidth});
+    $horizPadding: calc(0.5rem - #{$clr-alert-borderwidth});
     flex: 1 1 auto;
     flex-flow: column nowrap;
     padding: $vertPadding $horizPadding;
@@ -80,7 +117,7 @@
     display: flex;
     flex-direction: row;
     width: auto;
-    border-radius: $clr-global-borderradius;
+    border-radius: $clr-alert-borderradius;
     margin-top: $clr-alert-top-margin;
 
     @include generateAlertType(info);
@@ -129,12 +166,6 @@
       .dropdown-item {
         @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, line-height, letter-spacing));
       }
-
-      .dropdown {
-        .dropdown-toggle {
-          color: $clr-alert-action-color;
-        }
-      }
     }
 
     .alert-action:not(:last-child) {
@@ -143,12 +174,7 @@
 
     .alert-action,
     .dropdown-toggle {
-      color: $clr-alert-action-color;
       text-decoration: underline;
-
-      &:active {
-        color: $clr-alert-action-active-color;
-      }
     }
 
     .alert-action {
@@ -174,7 +200,7 @@
       padding-right: $closeBtnNudge;
 
       clr-icon {
-        $alert-close-icon-dims: calc(1rem - #{$clr-default-borderwidth});
+        $alert-close-icon-dims: calc(1rem - #{$clr-alert-borderwidth});
         margin-top: -0.125rem;
         height: $alert-close-icon-dims;
         width: $alert-close-icon-dims;
@@ -244,20 +270,11 @@
     }
 
     .close {
-      color: $clr-app-alert-close-icon-color;
-      opacity: 0.8;
       height: 1.5rem;
       overflow: hidden;
 
       clr-icon {
-        fill: $clr-app-alert-close-icon-color;
         margin-top: -0.208333rem;
-      }
-
-      &:focus,
-      &:hover,
-      &:active {
-        opacity: 1;
       }
     }
 
@@ -281,7 +298,7 @@
     line-height: $alertSmallLineHeight;
 
     .alert-items {
-      padding: calc(#{$alertSmallNudge} - #{$clr-default-borderwidth}) calc(0.25rem - #{$clr-default-borderwidth});
+      padding: calc(#{$alertSmallNudge} - #{$clr-alert-borderwidth}) calc(0.25rem - #{$clr-alert-borderwidth});
     }
 
     .alert-item {
@@ -384,19 +401,19 @@
   //3. Multiple app level alerts
   .alerts {
     &.alert-info {
-      background: $clr-action-blue-dark;
+      background: $clr-color-action-800;
     }
 
     &.alert-danger {
-      background: $clr-red-dark;
+      background: $clr-color-danger-900;
     }
 
     &.alert-warning {
-      background: $clr-yellow-darker;
+      background: $clr-color-warning-900;
     }
 
     &.alert-success {
-      background: $clr-green-darker;
+      background: $clr-color-success-900;
     }
   }
 
@@ -412,7 +429,7 @@
 
   .alerts-pager-button {
     @include clr-no-styles-button();
-    color: $clr-white;
+    color: $clr-color-neutral-0;
     cursor: pointer;
   }
 

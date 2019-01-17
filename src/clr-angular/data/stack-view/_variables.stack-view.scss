@@ -1,21 +1,27 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../stack-view/_stack-view.clarity.scss
-$clr-stack-view-border-color: $gray-light-midtone; // Border for stack view container
+$clr-stack-view-border-width: $clr-default-borderwidth !default;
+$clr-stack-view-border-radius: $clr-global-borderradius !default;
+$clr-stack-view-border-color: $clr-color-neutral-400 !default; // Border for stack view container
 $clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, font-weight);
-$clr-stack-view-bg-color: $gray-lighter;
-$clr-stack-view-stack-block-border-bottom: $clr-lighter-midtone-gray; //border-bottom for stack-view rows (not last)
-$clr-stack-view-border-box-color: $clr-lighter-midtone-gray;
-$clr-stack-block-changed-border-top-color: $clr-blue;
-$clr-stack-view-stack-block-label-and-content-bg-color: $gray-lighter; // stkvw row bg color when not expanded
-$clr-stack-view-stack-children-stack-block-border-bottom-color: $gray-light; // children of an expanded row
-$clr-stack-view-stack-children-stack-block-label-and-content-bg-color: $clr-white; // children of an expanded row
-$clr-stack-view-stack-block-label-text-color: $gray-darkest;
-$clr-stack-view-stack-block-expanded-bg-color: $clr-global-selection-color;
-$clr-stack-view-stack-block-expandable-hover: $gray-light;
-$clr-stack-view-stack-block-content-text-color: inherit;
-$clr-stack-view-stack-block-expanded-text-color: $clr-black;
-$clr-stack-view-stack-block-caret-color: $gray-dark-midtone;
+$clr-stack-view-bg-color: $clr-color-neutral-50 !default;
+$clr-stack-view-stack-block-border-bottom: $clr-color-neutral-300 !default;
+//border-bottom for stack-view rows (not last)
+$clr-stack-view-border-box-color: $clr-color-neutral-300 !default;
+$clr-stack-block-changed-border-top-color: $clr-color-action-700 !default;
+$clr-stack-view-stack-block-label-and-content-bg-color: $clr-color-neutral-50 !default;
+// stkvw row bg color when not expanded
+$clr-stack-view-stack-children-stack-block-border-bottom-color: $clr-color-neutral-200 !default;
+// children of an expanded row
+$clr-stack-view-stack-children-stack-block-label-and-content-bg-color: $clr-color-neutral-0 !default;
+// children of an expanded row
+$clr-stack-view-stack-block-label-text-color: $clr-color-neutral-900 !default;
+$clr-stack-view-stack-block-expanded-bg-color: $clr-global-selection-color !default;
+$clr-stack-view-stack-block-expandable-hover: $clr-color-neutral-200 !default;
+$clr-stack-view-stack-block-content-text-color: inherit !default;
+$clr-stack-view-stack-block-expanded-text-color: $clr-color-neutral-1000 !default;
+$clr-stack-view-stack-block-caret-color: $clr-color-neutral-500 !default;
 $styledInputs: inputs('text', 'password', 'number', 'email', 'url', 'tel', 'date', 'time', 'datetime-local');

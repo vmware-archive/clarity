@@ -57,7 +57,7 @@ h2 {
   background-color: transparent;
   border: 1px solid rgba(215, 215, 215, 0);
   transform: translateZ(0);
-  color: $clr-dark-gray;
+  color: $clr-color-neutral-700;
   cursor: pointer;
   z-index: 1;
 
@@ -74,7 +74,7 @@ h2 {
   }
 
   &:hover {
-    color: $clr-action-blue;
+    color: $clr-color-action-600;
   }
 
   .icon-shape {

@@ -3,9 +3,9 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../forms/_select.clarity.scss
-$clr-select-hover-background: rgba(221, 221, 221, 0.5);
-$clr-select-after-color: $gray-dark-midtone;
-$clr-select-after-hover-color: $gray-dark;
+$clr-select-hover-background: rgba($clr-color-neutral-300, 0.5);
+$clr-select-after-color: $clr-color-neutral-500;
+$clr-select-after-hover-color: $clr-color-neutral-600;
 // Multiselect
-$clr-multiple-select-background: $clr-white;
-$clr-multiple-select-border-color: $gray-light-midtone;
+$clr-multiple-select-background: $clr-color-neutral-0;
+$clr-multiple-select-border-color: $clr-color-neutral-400;

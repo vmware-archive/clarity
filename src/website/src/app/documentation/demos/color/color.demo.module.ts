@@ -7,8 +7,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 
-import { ColorLuminanceDemo } from './color-luminance';
-import { ColorContrastDemo } from './color-contrast';
 import { ColorPalette } from './color-palette';
 import { ColorFunctional } from './color-palette-functional';
 import { ColorScheme } from './color-scheme';
@@ -19,15 +17,7 @@ import { ClipboardInput } from './clipboard-input';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, RouterModule.forChild([{ path: '', component: ColorDemo }]), DocWrapperModule],
-  declarations: [
-    ColorPalette,
-    ColorFunctional,
-    ColorScheme,
-    ClipboardInput,
-    ColorLuminanceDemo,
-    ColorContrastDemo,
-    ColorDemo,
-  ],
+  declarations: [ColorPalette, ColorFunctional, ColorScheme, ClipboardInput, ColorDemo],
   exports: [ColorDemo],
 })
 export class ColorDemoModule {}

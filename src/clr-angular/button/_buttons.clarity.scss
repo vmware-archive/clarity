@@ -1,54 +1,122 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin populateButtonProperties($button-type: default, $button-global-map: $clr-global-button-properties-map) {
-  $button-property-map: map-get($button-global-map, $button-type);
-  border-color: map-get($button-property-map, border-color);
-  background-color: map-get($button-property-map, background-color);
-  color: map-get($button-property-map, color);
+@function getActiveWidthBoxShadowTop($type: default) {
+  @if type == primary {
+    @return 1px;
+  }
+
+  @if type == outline-success {
+    @return 1px;
+  }
+
+  @if type == outline-danger {
+    @return 1px;
+  }
+
+  @if type == link {
+    @return 0;
+  }
+
+  @if type == inverse {
+    @return 1px;
+  }
+
+  @return 2px;
+}
+
+@function getSassButtonColor($type: default, $property: null) {
+  @if $property == null {
+    @return null;
+  }
+
+  @if $type == default {
+    @return lookupFromDefaultButtonColors($property);
+  }
+
+  @if $type == default-outline {
+    @return lookupFromDefaultOutlineButtonColors($property);
+  }
+
+  @if $type == primary {
+    @return lookupFromPrimaryButtonColors($property);
+  }
+
+  @if $type == success {
+    @return lookupFromSuccessButtonColors($property);
+  }
+
+  @if $type == success-outline {
+    @return lookupFromSuccessOutlineButtonColors($property);
+  }
+
+  @if $type == danger {
+    @return lookupFromDangerButtonColors($property);
+  }
+
+  @if $type == danger-outline {
+    @return lookupFromDangerOutlineButtonColors($property);
+  }
+
+  @if $type == link {
+    @return lookupFromLinkButtonColors($property);
+  }
+
+  @if $type == inverse {
+    @return lookupFromInverseButtonColors($property);
+  }
+
+  @if $type == icon {
+    @return lookupFromIconButtonColors($property);
+  }
+
+  @return null;
+}
+
+@mixin populateButtonProperties($button-type: default) {
+  border-color: getSassButtonColor($button-type, border-color);
+  background-color: getSassButtonColor($button-type, bg-color);
+  color: getSassButtonColor($button-type, color);
 
   //To override the visited state of anchor links styled as buttons
   &:visited {
-    color: map-get($button-property-map, color);
+    color: getSassButtonColor($button-type, color);
   }
 
   &:hover {
-    background-color: map-get($button-property-map, hover-background-color);
-    color: map-get($button-property-map, hover-color);
+    background-color: getSassButtonColor($button-type, hover-bg-color);
+    color: getSassButtonColor($button-type, hover-color);
   }
 
   &:active {
-    box-shadow: 0 map-get($button-property-map, active-box-shadow-width-top) 0 0
-      map-get($button-property-map, active-box-shadow-color) inset;
+    @if $button-type == link {
+      box-shadow: none;
+    } @else {
+      box-shadow: 0
+        getActiveWidthBoxShadowTop($button-type)
+        0
+        0
+        getSassButtonColor($button-type, box-shadow-color)
+        inset;
+    }
   }
 
   &.disabled,
   &:disabled {
-    color: map-get($button-property-map, disabled-color);
+    color: getSassButtonColor($button-type, disabled-color);
     cursor: not-allowed;
-    background-color: map-get($button-property-map, disabled-background-color);
-    border-color: map-get($button-property-map, disabled-border-color);
     opacity: 0.4;
+    background-color: getSassButtonColor($button-type, disabled-bg-color);
+    border-color: getSassButtonColor($button-type, disabled-border-color);
   }
 }
 
-@mixin btn-checked-styles(
-  $button-type: default,
-  $type: checkbox,
-  $button-global-map: $clr-global-button-properties-map
-) {
-  $button-property-map: map-get($button-global-map, $button-type);
-
-  $background-color: map-get(
-    $button-property-map,
-    checked-background-color
-  ); // add semantic prop: group-checked-font-color
-  $color: map-get($button-property-map, checked-color);
-
+@mixin btn-checked-styles($button-type: default, $type: checkbox) {
+  // add semantic prop: group-checked-font-color
   input[type='#{$type}']:checked + label {
-    background-color: $background-color;
-    color: $color;
+    background-color: getSassButtonColor($button-type, checked-bg-color);
+    color: getSassButtonColor($button-type, checked-color);
   }
 }
 
@@ -75,8 +143,8 @@
 }
 
 @mixin btn-default-border-styles() {
-  border-radius: $clr-global-borderradius;
-  border: $clr-default-borderwidth solid;
+  border-radius: $clr-btn-border-radius;
+  border: $clr-btn-border-width solid;
 }
 
 @mixin btn-appearance() {
@@ -159,14 +227,14 @@
   .btn-info-outline .btn,
   .btn.btn-outline-info,
   .btn-outline .btn {
-    @include populateButtonProperties(outline-info);
+    @include populateButtonProperties(default-outline);
   }
 
   .btn.btn-success-outline,
   .btn.btn-outline-success,
   .btn-success-outline .btn,
   .btn-outline-success .btn {
-    @include populateButtonProperties(outline-success);
+    @include populateButtonProperties(success-outline);
   }
 
   .btn.btn-danger-outline,
@@ -177,7 +245,7 @@
   .btn-outline-danger .btn,
   .btn-warning-outline .btn,
   .btn-outline-warning .btn {
-    @include populateButtonProperties(outline-danger);
+    @include populateButtonProperties(danger-outline);
   }
 
   .btn.btn-link,
@@ -207,6 +275,10 @@
     &.btn-link {
       margin: $clr-button-vertical-margin 0;
     }
+
+    &.btn-link.btn-inverse {
+      border-color: transparent;
+    }
   }
 
   //Small Icon Button
@@ -221,14 +293,9 @@
   .btn-icon {
     min-width: 0;
 
-    // Make the disabled btn-icon color theme-able
-    // TODO fix button types by refactoring the maps that hold attr values for all button types.
-    $icon-props: map_get($clr-global-button-properties-map, icon);
-    $disabled-icon-color: map_get($icon-props, disabled-color);
-
     &.disabled,
     &:disabled {
-      color: $disabled-icon-color;
+      color: getSassButtonColor(icon, disabled-color);
     }
   }
 
@@ -376,14 +443,14 @@
 
     &.btn-success-outline,
     &.btn-outline-success {
-      @include btn-checked-styles(outline-success, radio);
+      @include btn-checked-styles(success-outline, radio);
     }
 
     &.btn-danger-outline,
     &.btn-outline-danger,
     &.btn-warning-outline,
     &.btn-outline-warning {
-      @include btn-checked-styles(outline-danger, radio);
+      @include btn-checked-styles(danger-outline, radio);
     }
 
     &.btn-link {

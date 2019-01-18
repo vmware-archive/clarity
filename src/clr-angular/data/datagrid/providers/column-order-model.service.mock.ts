@@ -14,6 +14,18 @@ export class MockColumnOrderModelService {
   public previousVisibleColumnModel: any;
   public isAtFirst: boolean = false;
   public isAtEnd: boolean = false;
+
+  get headerWidth(): number {
+    return this.headerEl.getBoundingClientRect().width;
+  }
+
+  get nextVisibleHeaderWidth(): number {
+    return this.nextVisibleColumnModel ? this.nextVisibleColumnModel.headerWidth : 0;
+  }
+
+  get previousVisibleHeaderWidth(): number {
+    return this.previousVisibleColumnModel ? this.previousVisibleColumnModel.headerWidth : 0;
+  }
   public dropReceived(event) {}
 }
 

@@ -11,7 +11,7 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { mockHeaderEl } from './column-order-model.service.mock';
 
 export default function(): void {
-  fdescribe('ColumnOrderCoordinatorService', function() {
+  describe('ColumnOrderCoordinatorService', function() {
     let columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
     let columnOrderModelService: ColumnOrderModelService;
     let columnOrderModelServicePrev: ColumnOrderModelService;

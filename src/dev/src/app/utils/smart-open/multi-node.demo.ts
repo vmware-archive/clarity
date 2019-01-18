@@ -14,7 +14,6 @@ import { IfOpenService } from '../../../../../clr-angular/utils/conditional/if-o
       <section>
           <h6>ng-template with multiple nodes</h6>
           <button
-                  #anchor
                   (click)="toggleUI()"
                   class="btn btn-sm btn-link" type="button">
               <clr-icon shape="view-columns"></clr-icon>

@@ -13,10 +13,10 @@
 <form clrForm clrLayout="horizontal">
     <section class="form-block">
         <div class="form-group">
-            <label for="">Toggle between simple div and ng-template demos</label>
-            <div class="toggle-switch right-label clr-col-md-10">
+            <label>{{simpleDiv ? 'Show Multiple Nodes Demo' : 'Show Simple Div Demo'}}</label>
+            <div class="toggle-switch right-label">
                 <input type="checkbox" id="simple_toggle" [(ngModel)]="simpleDiv" name="simpleDiv">
-                <label for="simple_toggle">{{simpleDiv ? 'Show Simple Div Demo' : 'Show Multiple Nodes Demo'}}</label>
+                <label for="simple_toggle"></label>
             </div>
         </div>
     </section>

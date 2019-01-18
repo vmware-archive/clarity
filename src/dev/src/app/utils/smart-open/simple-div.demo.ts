@@ -19,9 +19,7 @@ import { IfOpenService } from '../../../../../clr-angular/utils/conditional/if-o
   template: `
       <section>
           <h6>Simple Div</h6>
-          <button
-                  #anchor
-                  (click)="toggleUI()"
+          <button (click)="toggleUI()"
                   class="btn btn-sm btn-link" type="button">
               <clr-icon shape="view-columns"></clr-icon>
               Toggle Div

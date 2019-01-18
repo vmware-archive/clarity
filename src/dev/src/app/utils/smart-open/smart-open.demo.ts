@@ -5,6 +5,7 @@
  *
  */
 import { Component } from '@angular/core';
+// Consumer uses a service from Clarity to demo a simple popover instance for dev purposes.
 import { IfOpenService } from '../../../../../clr-angular/utils/conditional/if-open.service';
 
 @Component({

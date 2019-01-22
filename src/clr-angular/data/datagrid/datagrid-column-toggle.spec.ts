@@ -4,13 +4,41 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { TestContext } from './helpers.spec';
 import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
 import { ColumnsService } from './providers/columns.service';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+
+@Component({
+  template: `
+      <ng-template>Template Content</ng-template>
+      <!--The above ng-template is required/used as a hideable column template-->
+      <clr-dg-column-toggle>
+          <clr-dg-column-toggle-title *ngIf="hasCustomToggleTitle">Custom Toggle Title</clr-dg-column-toggle-title>
+          <clr-dg-column-toggle-button *ngIf="hasCustomToggleButton">Custom Toggle Button</clr-dg-column-toggle-button>
+      </clr-dg-column-toggle>
+  `,
+})
+class ColumnToggleTest {
+  private mockColumnsService: MockColumnsService;
+
+  @ViewChild(TemplateRef, { static: false })
+  set templateRef(value: TemplateRef<any>) {
+    this.mockColumnsService.templateRef = value;
+  }
+
+  constructor(columnsService: ColumnsService) {
+    this.mockColumnsService = <MockColumnsService>columnsService;
+  }
+
+  hasCustomToggleTitle: boolean = false;
+  hasCustomToggleButton: boolean = false;
+}
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
@@ -20,24 +48,38 @@ export default function(): void {
     let testComponent: ColumnToggleTest;
 
     beforeEach(function() {
-      context = this.create(ClrDatagridColumnToggle, ColumnToggleTest, [MOCK_COLUMN_SERVICE_PROVIDER]);
+      context = this.create(ClrDatagridColumnToggle, ColumnToggleTest, [
+        MOCK_COLUMN_SERVICE_PROVIDER,
+        ClrPopoverToggleService,
+        ClrPopoverPositionService,
+        ClrPopoverEventsService,
+      ]);
       columnsService = <MockColumnsService>context.getClarityProvider(ColumnsService);
       testComponent = context.testComponent;
       columnToggle = context.clarityDirective;
       columnsService.mockColumns(3);
     });
 
+    afterEach(function() {
+      context.fixture.destroy();
+      // TODO(matt): figure out why its not getting removed from the dom when fixture is destroyed
+      document.querySelectorAll('.clr-popover-content').forEach(function(item) {
+        item.remove();
+      });
+    });
+
     describe('Typescript API', function() {
       it(
         'toggles switch panel',
         fakeAsync(function() {
-          expect(columnToggle.open).toBeFalsy();
+          // TODO(matt): update for the new ClrPopover toggle service here
+          expect(columnToggle.openState).toBeFalsy();
           columnToggle.toggleSwitchPanel();
           tick();
-          expect(columnToggle.open).toBeTruthy();
+          expect(columnToggle.openState).toBeTruthy();
           columnToggle.toggleSwitchPanel();
           tick();
-          expect(columnToggle.open).toBeFalsy();
+          expect(columnToggle.openState).toBeFalsy();
         })
       );
 
@@ -71,30 +113,31 @@ export default function(): void {
         'toggles switch panel',
         fakeAsync(function() {
           context.detectChanges();
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          expect(document.querySelectorAll('.column-switch').length).toBe(0);
           columnToggle.toggleSwitchPanel();
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
+          expect(document.querySelectorAll('.column-switch').length).toBe(1);
           columnToggle.toggleSwitchPanel();
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          expect(document.querySelectorAll('.column-switch').length).toBe(0);
         })
       );
 
       it(
         'closes switch panel when close button is clicked',
         fakeAsync(function() {
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          expect(document.querySelectorAll('.column-switch').length).toBe(0);
           columnToggle.toggleSwitchPanel();
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
-          context.clarityElement.querySelector('.toggle-switch-close-button').click();
+          expect(document.querySelectorAll('.column-switch').length).toBe(1);
+          const closeBtn: HTMLButtonElement = document.querySelector('.toggle-switch-close-button');
+          closeBtn.click();
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          expect(document.querySelectorAll('.column-switch').length).toBe(0);
         })
       );
 
@@ -104,9 +147,9 @@ export default function(): void {
           columnToggle.toggleSwitchPanel();
           context.detectChanges();
           tick();
-          expect(
-            context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
-          ).toBe(context.clarityElement.querySelector('div.column-switch').attributes.id.value);
+          expect(document.querySelector('button.column-toggle--action').attributes['aria-controls'].value).toBe(
+            document.querySelector('div.column-switch').getAttribute('id')
+          );
         })
       );
 
@@ -117,24 +160,24 @@ export default function(): void {
           columnToggle.toggleSwitchPanel();
           context.detectChanges();
           tick();
-          expect(
-            context.clarityElement.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value
-          ).toBe(commonStringsDefault.close);
+          expect(document.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value).toBe(
+            commonStringsDefault.close
+          );
         })
       );
 
       it('projects template as switch content', function() {
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.detectChanges();
-        expect(context.clarityElement.querySelector('.switch-content li').textContent).toMatch(/Template Content/);
+        expect(document.querySelector('.switch-content li').textContent).toMatch(/Template Content/);
       });
 
       it('shows the same number of switches for hideable columns', function() {
         columnsService.mockPartialHideable(0, 1);
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(2);
+        expect(document.querySelectorAll('.switch-content input').length).toBe(2);
       });
 
       it(
@@ -142,11 +185,11 @@ export default function(): void {
         fakeAsync(function() {
           columnsService.mockAllHideable();
           columnsService.mockHideableAt(1, true);
-          columnToggle.open = true;
+          columnToggle.openState = true;
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(3);
-          expect(context.clarityElement.querySelectorAll('.switch-content input:checked').length).toBe(2);
+          expect(document.querySelectorAll('.switch-content input').length).toBe(3);
+          expect(document.querySelectorAll('.switch-content input:checked').length).toBe(2);
         })
       );
 
@@ -155,15 +198,17 @@ export default function(): void {
         fakeAsync(function() {
           const spyToggleColumnState = spyOn(columnToggle, 'toggleColumnState');
           columnsService.mockHideableAt(1, true);
-          columnToggle.open = true;
+          columnToggle.openState = true;
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(1);
-          expect(context.clarityElement.querySelector('.switch-content input').checked).toBeFalsy();
-          context.clarityElement.querySelector('.switch-content input').click();
+          const inputList = document.querySelectorAll('.switch-content input');
+          expect(inputList.length).toBe(1);
+          const testInput: HTMLInputElement = document.querySelector('.switch-content input');
+          expect(testInput.checked).toBeFalsy();
+          testInput.click();
           context.detectChanges();
           expect(spyToggleColumnState).toHaveBeenCalledWith(columnsService.columns[1].value, false);
-          expect(context.clarityElement.querySelector('.switch-content input').checked).toBeTruthy();
+          expect(testInput.checked).toBeTruthy();
         })
       );
 
@@ -174,14 +219,18 @@ export default function(): void {
           columnsService.mockAllHideable();
           columnsService.mockHideableAt(0, true);
           columnsService.mockHideableAt(1, true);
-          columnToggle.open = true;
+          columnToggle.openState = true;
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[2].disabled).toBeTruthy();
-          context.clarityElement.querySelectorAll('.switch-content input')[2].click();
+          const testInputs: NodeList = document.querySelectorAll('.switch-content input');
+          const secondInput: HTMLInputElement = <HTMLInputElement>testInputs[2];
+          expect(secondInput.disabled).toBeTruthy();
+          secondInput.click();
           context.detectChanges();
           expect(spyToggleColumnState).not.toHaveBeenCalled();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[2].checked).toBeTruthy();
+          const changedInputs: NodeList = document.querySelectorAll('.switch-content input');
+          const changedSecondInput: HTMLInputElement = <HTMLInputElement>changedInputs[2];
+          expect(changedSecondInput.checked).toBeTruthy();
         })
       );
 
@@ -189,90 +238,67 @@ export default function(): void {
         'should be able to toggle switch as long as there are non-hideable columns',
         fakeAsync(function() {
           columnsService.mockPartialHideable(0, 1);
-          columnToggle.open = true;
+          columnToggle.openState = true;
           context.detectChanges();
           tick();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[0].disabled).toBeFalsy();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[1].disabled).toBeFalsy();
+          const testInputs: NodeList = document.querySelectorAll('.switch-content input');
+          const inputZero: HTMLInputElement = <HTMLInputElement>testInputs[0];
+          const inputOne: HTMLInputElement = <HTMLInputElement>testInputs[1];
+          expect(inputZero.disabled).toBeFalsy();
+          expect(inputOne.disabled).toBeFalsy();
           columnsService.mockPartialHideable(0, 1, true);
           context.detectChanges();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[0].disabled).toBeFalsy();
-          expect(context.clarityElement.querySelectorAll('.switch-content input')[1].disabled).toBeFalsy();
+          expect(inputZero.disabled).toBeFalsy();
+          expect(inputOne.disabled).toBeFalsy();
         })
       );
 
       it('shows default title in switch panel', function() {
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('.switch-header').textContent).toMatch(/Show Columns/);
+        expect(document.querySelector('.switch-header').textContent).toMatch(/Show Columns/);
       });
 
       it('can show custom title in switch panel', function() {
         testComponent.hasCustomToggleTitle = true;
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('.switch-header').textContent).toMatch(/Custom Toggle Title/);
+        expect(document.querySelector('.switch-header').textContent).toMatch(/Custom Toggle Title/);
       });
 
       it('shows toggle button in switch panel', function() {
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('button.switch-button').textContent).toMatch(/Select All/);
+        expect(document.querySelector('button.switch-button').textContent).toMatch(/Select All/);
       });
 
       it('disables toggle button when all columns are hideable and all of them are visible', function() {
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('button.switch-button').disabled).toBeTruthy();
+        const disabledButton: HTMLButtonElement = document.querySelector('button.switch-button');
+        expect(disabledButton.disabled).toBeTruthy();
       });
 
       it('enables toggle button when all columns are hideable and at least one of them is hidden', function() {
         columnsService.mockAllHideable();
         columnsService.mockHideableAt(1, true);
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('button.switch-button').disabled).toBeFalsy();
+        const toggleButton: HTMLButtonElement = document.querySelector('button.switch-button');
+        expect(toggleButton.disabled).toBeFalsy();
       });
 
       it('can show custom toggle button in switch panel', function() {
         testComponent.hasCustomToggleButton = true;
         columnsService.mockAllHideable();
-        columnToggle.open = true;
+        columnToggle.openState = true;
         context.fixture.detectChanges();
-        expect(context.clarityElement.querySelector('button.switch-button').textContent).toMatch(
-          /Custom Toggle Button/
-        );
+        expect(document.querySelector('button.switch-button').textContent).toMatch(/Custom Toggle Button/);
       });
     });
   });
-}
-
-@Component({
-  template: `
-    <ng-template>Template Content</ng-template>
-    <!--The above ng-template is required/used as a hideable column template-->
-    <clr-dg-column-toggle>
-      <clr-dg-column-toggle-title *ngIf="hasCustomToggleTitle">Custom Toggle Title</clr-dg-column-toggle-title>
-      <clr-dg-column-toggle-button *ngIf="hasCustomToggleButton">Custom Toggle Button</clr-dg-column-toggle-button>
-    </clr-dg-column-toggle>
-  `,
-})
-class ColumnToggleTest {
-  private mockColumnsService: MockColumnsService;
-
-  @ViewChild(TemplateRef, { static: false })
-  set templateRef(value: TemplateRef<any>) {
-    this.mockColumnsService.templateRef = value;
-  }
-
-  constructor(columnsService: ColumnsService) {
-    this.mockColumnsService = <MockColumnsService>columnsService;
-  }
-
-  hasCustomToggleTitle: boolean = false;
-  hasCustomToggleButton: boolean = false;
 }

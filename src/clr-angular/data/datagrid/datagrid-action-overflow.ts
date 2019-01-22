@@ -3,116 +3,110 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-  ElementRef,
-  NgZone,
-  Inject,
-  PLATFORM_ID,
-} from '@angular/core';
-
-import { Point } from '../../popover/common/popover';
+import { Component, EventEmitter, Inject, Input, OnDestroy, Output, NgZone, PLATFORM_ID } from '@angular/core';
 
 import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { Subscription } from 'rxjs';
 
 let clrDgActionId = 0;
 
 @Component({
   selector: 'clr-dg-action-overflow',
+  providers: [UNIQUE_ID_PROVIDER, ClrPopoverToggleService, ClrPopoverEventsService, ClrPopoverPositionService],
   template: `
-        <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor role="button" 
-                    aria-haspopup="true" [attr.aria-controls]="popoverId" [attr.aria-expanded]="open">
-            <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
-        </button>
-        <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
-                     [clrPopoverOldPopoverPoint]="popoverPoint">
-            <div class="datagrid-action-overflow" (clrOutsideClick)="close($event)" [clrStrict]="true" 
-                    role="menu" [attr.id]="popoverId" [attr.aria-hidden]="!open">
-                <ng-content></ng-content>
-            </div>
-        </ng-template>
-    `,
+      <button class="datagrid-action-toggle"
+              type="button"
+              role="button"
+              aria-haspopup="true"
+              #anchor
+              [attr.aria-controls]="popoverId"
+              [attr.aria-expanded]="open"
+              [attr.aria-label]="commonStrings.keys.rowActions"
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton>
+          <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
+      </button>
+
+      <div class="datagrid-action-overflow"
+           role="menu" 
+           [id]="popoverId"
+           [attr.aria-hidden]="!open"
+           [attr.id]="popoverId" 
+           clrFocusTrap
+           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
+          <ng-content></ng-content>
+      </div>
+  `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
-  public anchorPoint: Point = Point.RIGHT_CENTER;
-  public popoverPoint: Point = Point.LEFT_CENTER;
+  private subscriptions: Subscription[] = [];
+  public smartPosition: ClrPopoverPosition = {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  };
 
   constructor(
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStringsService,
-    private elementRef: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private zone: NgZone
+    private zone: NgZone,
+    private smartToggleService: ClrPopoverToggleService,
+    @Inject(UNIQUE_ID) public popoverId: string
   ) {
     this.rowActionService.register();
+    this.subscriptions.push(
+      this.smartToggleService.openChange.subscribe(openState => {
+        this.open = openState;
+        if (openState) {
+          this.focusFirstButton();
+        }
+      })
+    );
     this.popoverId = 'clr-action-menu' + clrDgActionId++;
   }
 
-  popoverId: string;
-
   ngOnDestroy() {
     this.rowActionService.unregister();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  /**
-   * Tracks whether the action overflow menu is open or not
-   */
-  private _open = false;
   public get open() {
-    return this._open;
+    return this.smartToggleService.open;
+  }
+
+  private focusFirstButton(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.zone.runOutsideAngular(() => {
+        setTimeout(() => {
+          const firstButton: HTMLButtonElement = document.querySelector('button.action-item');
+          if (firstButton) {
+            firstButton.focus();
+          }
+        });
+      });
+    }
   }
 
   @Input('clrDgActionOverflowOpen')
   public set open(open: boolean) {
-    const boolOpen = !!open;
-    if (boolOpen !== this._open) {
-      this._open = boolOpen;
-      this.openChanged.emit(boolOpen);
-      if (boolOpen && isPlatformBrowser(this.platformId)) {
-        this.zone.runOutsideAngular(() => {
-          setTimeout(() => {
-            const firstButton = this.elementRef.nativeElement.querySelector('button.action-item');
-            if (firstButton) {
-              firstButton.focus();
-            }
-          });
-        });
-      }
+    if (!!open !== this.smartToggleService.open) {
+      // prevents chocolate mess
+      this.smartToggleService.open = !!open;
+      this.openChange.emit(!!open);
     }
   }
 
-  @Output('clrDgActionOverflowOpenChange') public openChanged = new EventEmitter<boolean>(false);
-
-  /*
-     * We need to remember the click that opens the menu, to make sure it doesn't close the menu instantly
-     * when the event bubbles up the DOM all the way to the document, which we also listen to.
-     */
-  private openingEvent: any;
-
-  /**
-   * Shows/hides the action overflow menu
-   */
-  public toggle(event: any) {
-    this.openingEvent = event;
-    this.open = !this.open;
-  }
-
-  public close(event: MouseEvent) {
-    /*
-         * Because this listener is added synchronously, before the event finishes bubbling up the DOM,
-         * we end up firing on the very click that just opened the menu,
-         * potentially closing it immediately every time. So we just ignore it.
-         */
-    if (event === this.openingEvent) {
-      delete this.openingEvent;
-      return;
-    }
-    this.open = false;
-  }
+  @Output('clrDgActionOverflowOpenChange') public openChange = new EventEmitter<boolean>(false);
 }

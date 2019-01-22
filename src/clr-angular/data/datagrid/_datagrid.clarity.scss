@@ -88,98 +88,6 @@
       background-color: $clr-global-selection-color;
     }
 
-    .datagrid-action-overflow {
-      position: absolute;
-      background: $clr-datagrid-popover-bg-color;
-      padding: 0.25rem 0.25rem;
-      margin-left: 0.25rem;
-      border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-      box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
-      border-radius: $clr-global-borderradius;
-      font-weight: normal;
-      white-space: nowrap;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: 100%;
-        width: 0;
-        height: 0;
-        margin-top: -1 * $clr-datagrid-action-arrow-size;
-        border-right: $clr-datagrid-action-arrow-size solid $clr-datagrid-popover-border-color;
-        border-top: $clr-datagrid-action-arrow-size solid transparent;
-        border-bottom: $clr-datagrid-action-arrow-size solid transparent;
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: 100%;
-        width: 0;
-        height: 0;
-        // not all browsers support calc() in psuedoelements
-        margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
-        border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
-        border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
-        border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
-      }
-
-      .action-item {
-        color: $clr-dropdown-text-color;
-        font-size: $clr-dropdown-font-size;
-        letter-spacing: $clr-dropdown-letter-spacing;
-
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-        display: block;
-        line-height: calc(#{$clr-dropdown-line-height} - #{$clr-rem-1px});
-        margin: 0;
-        padding: 1px 1rem 0;
-        text-align: left;
-        width: 100%;
-
-        &:hover,
-        &:focus {
-          text-decoration: none;
-          background-color: $clr-datagrid-action-popover-hover-color;
-        }
-
-        &.active {
-          background: $clr-datagrid-row-hover;
-          color: $clr-color-neutral-1000;
-        }
-
-        &:focus {
-          outline: 0;
-        }
-
-        &.disabled,
-        &:disabled {
-          cursor: not-allowed;
-          opacity: 0.4;
-          user-select: none;
-
-          &:hover {
-            background: none;
-          }
-
-          &:active,
-          &:focus {
-            background: none;
-            box-shadow: none;
-          }
-        }
-
-        clr-icon {
-          vertical-align: middle;
-          transform: translate3d(0px, -1px, 0);
-        }
-      }
-    }
-
     .datagrid-row-detail-wrapper {
       flex: 1 1 auto;
       display: flex;
@@ -372,31 +280,6 @@
 
         &.datagrid-filtered {
           color: $clr-color-action-600;
-        }
-      }
-
-      .datagrid-filter {
-        top: 100%;
-        right: 0;
-        margin-top: 0.2rem;
-        background: $clr-datagrid-popover-bg-color;
-        padding: 0.75rem;
-        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
-        border-radius: $clr-global-borderradius;
-        font-weight: normal;
-
-        .datagrid-filter-close-wrapper {
-          text-align: right;
-
-          .close {
-            float: none;
-          }
-        }
-
-        // FIXME: remove
-        .datagrid-filter-apply {
-          margin-bottom: 0;
         }
       }
 
@@ -686,61 +569,6 @@
           color: $clr-color-action-600;
         }
       }
-
-      .column-switch {
-        border-radius: $clr-global-borderradius;
-        padding: 0.75rem;
-        background-color: $clr-datagrid-popover-bg-color;
-        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
-        width: 10.416667rem;
-        display: flex;
-        flex-direction: column;
-        z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
-
-        .switch-header {
-          display: flex;
-          justify-content: space-between;
-          font-weight: 400;
-          font-size: 0.666667rem;
-          padding-bottom: 0.5rem;
-          line-height: 1rem;
-
-          button {
-            min-width: 0.75rem;
-            margin: 0;
-            padding: 0;
-            color: $clr-color-neutral-500;
-
-            &:hover {
-              color: $clr-color-action-600;
-            }
-          }
-        }
-
-        .switch-content {
-          max-height: 12.5rem;
-          overflow-y: auto;
-          min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
-
-          li {
-            line-height: 1rem;
-            padding-left: 2 * $clr-rem-1px;
-          }
-        }
-
-        .switch-footer {
-          .btn {
-            margin: 0;
-            padding: 0;
-          }
-
-          .action-right {
-            display: flex;
-            justify-content: flex-end;
-          }
-        }
-      }
     }
   }
 
@@ -940,9 +768,184 @@
   }
 
   /**
-        These classes are used in table-renderer.ts when it puts the datagrid into in tableMode and computes column
-        widths. NOTE: they are only applied during calculation and then removed.
-     */
+   * Smart popover contents
+   */
+  .column-switch {
+    border-radius: $clr-global-borderradius;
+    padding: 0.75rem;
+    background-color: $clr-datagrid-popover-bg-color;
+    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
+    width: 10.416667rem;
+    display: flex;
+    flex-direction: column;
+    z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
+
+    .switch-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 400;
+      font-size: 0.666667rem;
+      padding-bottom: 0.5rem;
+      line-height: 1rem;
+
+      button {
+        min-width: 0.75rem;
+        margin: 0;
+        padding: 0;
+        color: $clr-color-neutral-500;
+
+        &:hover {
+          color: $clr-color-action-600;
+        }
+      }
+    }
+
+    .switch-content {
+      max-height: 12.5rem;
+      overflow-y: auto;
+      min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+
+      li {
+        line-height: 1rem;
+        padding-left: 2 * $clr-rem-1px;
+      }
+    }
+
+    .switch-footer {
+      .btn {
+        margin: 0;
+        padding: 0;
+      }
+
+      .action-right {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .datagrid-filter {
+    margin-top: 0.2rem;
+    background: $clr-datagrid-popover-bg-color;
+    padding: 0.75rem;
+    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
+    border-radius: $clr-global-borderradius;
+    font-weight: normal;
+
+    .datagrid-filter-close-wrapper {
+      text-align: right;
+
+      .close {
+        float: none;
+      }
+    }
+
+    // FIXME: remove
+    .datagrid-filter-apply {
+      margin-bottom: 0;
+    }
+  }
+
+  .datagrid-action-overflow {
+    position: absolute;
+    background: $clr-datagrid-popover-bg-color;
+    padding: 0.25rem 0.25rem;
+    margin-left: 0.25rem;
+    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
+    border-radius: $clr-global-borderradius;
+    font-weight: normal;
+    white-space: nowrap;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: 0;
+      height: 0;
+      margin-top: -1 * $clr-datagrid-action-arrow-size;
+      border-right: $clr-datagrid-action-arrow-size solid $clr-datagrid-popover-border-color;
+      border-top: $clr-datagrid-action-arrow-size solid transparent;
+      border-bottom: $clr-datagrid-action-arrow-size solid transparent;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      width: 0;
+      height: 0;
+      // not all browsers support calc() in psuedoelements
+      margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
+      border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
+      border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
+      border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
+    }
+
+    .action-item {
+      color: $clr-dropdown-text-color;
+      font-size: $clr-dropdown-font-size;
+      letter-spacing: $clr-dropdown-letter-spacing;
+
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      line-height: calc(#{$clr-dropdown-line-height} - #{$clr-rem-1px});
+      margin: 0;
+      padding: 1px 1rem 0;
+      text-align: left;
+      width: 100%;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: $clr-datagrid-action-popover-hover-color;
+      }
+
+      &.active {
+        background: $clr-datagrid-row-hover;
+        color: $clr-color-neutral-1000;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &.disabled,
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.4;
+        user-select: none;
+
+        &:hover {
+          background: none;
+        }
+
+        &:active,
+        &:focus {
+          background: none;
+          box-shadow: none;
+        }
+      }
+
+      clr-icon {
+        vertical-align: middle;
+        transform: translate3d(0px, -1px, 0);
+      }
+    }
+  }
+
+  /* END Datagrid Smart Popover Content Styles
+
+  /**
+   * These classes are used in table-renderer.ts when it puts the datagrid into in tableMode and computes column
+   * widths. NOTE: they are only applied during calculation and then removed.
+   */
 
   /**
    * When in calculate mode

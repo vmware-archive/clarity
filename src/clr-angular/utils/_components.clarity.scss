@@ -35,6 +35,9 @@
 //Popover
 @import '../popover/common/popover.clarity';
 
+// Smart Popover
+@import 'popover/popover-popover.clarity';
+
 //Icons & Images
 @import '../image/icons.clarity'; // depends on variables.clarity
 @import '../image/images.clarity'; // depends on variables.clarity, mixins.clarity, icons.clarity

@@ -62,15 +62,31 @@
     </div>
 
     <clr-datagrid *ngIf="!isServerDriven" [(clrDgSelected)]="selected">
-        <clr-dg-column>User ID</clr-dg-column>
-        <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
-        <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+        <clr-dg-column>
+            <ng-container *clrDgHideableColumn>
+                User ID
+            </ng-container>
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">
+            <ng-container *clrDgHideableColumn>
+                Name
+            </ng-container>
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'creation'">
+            <ng-container *clrDgHideableColumn>
+                Creation date
+            </ng-container>
+        </clr-dg-column>
         <clr-dg-column [clrDgSortBy]="pokemonComparator">
-            Pokemon
+            <ng-container *clrDgHideableColumn>
+                Pokemon
+            </ng-container>
             <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
         </clr-dg-column>
         <clr-dg-column [clrDgField]="'color'">
-            Favorite color
+            <ng-container *clrDgHideableColumn>
+                Favorite color
+            </ng-container>
             <clr-dg-filter [clrDgFilter]="colorFilter">
                 <clr-datagrid-color-filter-demo #colorFilter class="color-filter">
                 </clr-datagrid-color-filter-demo>
@@ -80,6 +96,17 @@
 
         <clr-dg-placeholder>No users found</clr-dg-placeholder>
         <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+            <clr-dg-action-overflow>
+                <button class="action-item">
+                    <clr-icon shape="note"></clr-icon>
+                    Edit
+                </button>
+                <button class="action-item">
+                    <clr-icon shape="trash"></clr-icon>
+                    Delete
+                </button>
+            </clr-dg-action-overflow>
+
             <clr-dg-cell>{{user.id}}</clr-dg-cell>
             <clr-dg-cell>{{user.name}}</clr-dg-cell>
             <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

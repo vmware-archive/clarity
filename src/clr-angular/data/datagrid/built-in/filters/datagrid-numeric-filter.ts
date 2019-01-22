@@ -14,25 +14,18 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
 import { ClrCommonStringsService } from '../../../../utils/i18n/common-strings.service';
+import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-numeric-filter',
   providers: [{ provide: CustomFilter, useExisting: DatagridNumericFilter }],
   template: `
         <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-            <!--
-                Even though this *ngIf looks useless because the filter container already has one,
-                it prevents NgControlStatus and other directives automatically added by Angular
-                on inputs with NgModel from freaking out because of their host binding changing
-                mid-change detection when the input is destroyed.
-            -->
-            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.keys.minValue" 
-                [attr.aria-label]="commonStrings.keys.minValue" />
+            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low" 
+                   [placeholder]="commonStrings.keys.minValue" [attr.aria-label]="commonStrings.keys.minValue" />
                 <span class="datagrid-filter-input-spacer"></span>
-            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.keys.maxValue"
-                [attr.aria-label]="commonStrings.keys.maxValue" />
+            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high" 
+                   [placeholder]="commonStrings.keys.maxValue" [attr.aria-label]="commonStrings.keys.maxValue" />
         </clr-dg-filter>
     `,
 })
@@ -41,7 +34,8 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   constructor(
     filters: FiltersProvider<T>,
     private domAdapter: DomAdapter,
-    public commonStrings: ClrCommonStringsService
+    public commonStrings: ClrCommonStringsService,
+    private popoverToggleService: ClrPopoverToggleService
   ) {
     super(filters);
   }
@@ -86,14 +80,12 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
     this.subscriptions.push(
-      this.filterContainer.openChanged.subscribe((open: boolean) => {
-        if (open) {
-          // We need the timeout because at the time this executes, the input isn't
-          // displayed yet.
-          setTimeout(() => {
-            this.domAdapter.focus(this.input.nativeElement);
-          });
-        }
+      this.popoverToggleService.openChange.subscribe(openChange => {
+        this.open = openChange;
+        // The timeout in used because when this executes, the input isn't displayed.
+        setTimeout(() => {
+          this.domAdapter.focus(this.input.nativeElement);
+        });
       })
     );
   }
@@ -164,8 +156,4 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();
-
-  public close() {
-    this.open = false;
-  }
 }

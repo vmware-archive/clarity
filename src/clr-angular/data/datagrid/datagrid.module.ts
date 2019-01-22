@@ -49,6 +49,8 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
+import { ClrPopoverModuleNext } from '../../utils/popover/popover.module';
+import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -98,12 +100,14 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrIconModule,
     ClrFormsModule,
     FormsModule,
-    ClrCommonPopoverModule,
     ClrLoadingModule,
     ClrOutsideClickModule,
     ClrExpandableAnimationModule,
     ClrDragAndDropModule,
     ClrSpinnerModule,
+    ClrCommonPopoverModule,
+    ClrPopoverModuleNext,
+    ClrFocusTrapModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
   exports: [CLR_DATAGRID_DIRECTIVES],

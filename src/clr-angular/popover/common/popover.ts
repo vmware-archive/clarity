@@ -252,8 +252,8 @@ export class Popover {
   }
 
   /*
-     * Containers up to the first positioned one will have an event on scroll
-     */
+   * Containers up to the first positioned one will have an event on scroll
+   */
 
   private scrollableElements: HTMLElement[] = [];
 

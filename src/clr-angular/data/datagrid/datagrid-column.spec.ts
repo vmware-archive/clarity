@@ -40,6 +40,12 @@ export default function(): void {
         component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings);
       });
 
+      afterEach(() => {
+        component.ngOnDestroy();
+        const popoverContent = document.querySelectorAll('.clr-popover-content');
+        popoverContent.forEach(content => document.body.removeChild(content));
+      });
+
       it('receives a comparator to sort the column', function() {
         expect(component.sortable).toBe(false);
         component.sortBy = comparator;

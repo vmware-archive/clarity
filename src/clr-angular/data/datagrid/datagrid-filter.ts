@@ -3,15 +3,30 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, EventEmitter, Inject, Input, Output, PLATFORM_ID, ViewChild } from '@angular/core';
-
-import { Point } from '../../popover/common/popover';
-import { PopoverOptions } from '../../popover/common/popover-options.interface';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Inject,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  PLATFORM_ID,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { Subscription } from 'rxjs';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -23,70 +38,79 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'clr-dg-filter',
   // We register this component as a CustomFilter, for the parent column to detect it.
-  providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }],
+  providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }, UNIQUE_ID_PROVIDER],
   template: `
-        <button #anchor 
-                (click)="toggle()"
-                class="datagrid-filter-toggle"
-                [class.datagrid-filter-open]="open" 
-                [class.datagrid-filtered]="active"
-                type="button">
-            <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
-        </button>
+      <button class="datagrid-filter-toggle"
+              type="button"
+              #anchor
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton
+              [class.datagrid-filter-open]="open" 
+              [class.datagrid-filtered]="active">
+          <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
+      </button>
 
-        <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
-             [clrPopoverOldPopoverPoint]="popoverPoint" [clrPopoverOldOptions]="popoverOptions">
-            <div class="datagrid-filter">
-                <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
-                <div class="datagrid-filter-close-wrapper">
-                    <button type="button" class="close" (click)="open = false">
-                        <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
-                    </button>
-                </div>
-    
-                <ng-content></ng-content>
-            </div>
-        </ng-template>
-    `,
+      <div class="datagrid-filter"
+           [id]="popoverId"
+           clrFocusTrap
+           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
+          <div class="datagrid-filter-close-wrapper">
+              <button type="button" class="close" clrPopoverCloseButton>
+                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+              </button>
+          </div>
+
+          <ng-content></ng-content>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
-  implements CustomFilter {
+  implements CustomFilter, OnDestroy {
+  private subs: Subscription[] = [];
   constructor(
     _filters: FiltersProvider<T>,
     public commonStrings: ClrCommonStringsService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private smartToggleService: ClrPopoverToggleService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(UNIQUE_ID) public popoverId: string
   ) {
     super(_filters);
+    this.subs.push(
+      smartToggleService.openChange.subscribe(change => {
+        this.open = change;
+      })
+    );
   }
-
-  public anchorPoint: Point = Point.RIGHT_BOTTOM;
-  public popoverPoint: Point = Point.RIGHT_TOP;
-  public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
 
   @ViewChild('anchor', { static: false, read: ElementRef })
   anchor: ElementRef;
 
-  /**
-   * Tracks whether the filter dropdown is open or not
-   */
-  private _open = false;
+  // Smart Popover
+  public smartPosition: ClrPopoverPosition = {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.END,
+    content: ClrAlignment.END,
+  };
+
   public get open() {
-    return this._open;
+    return this.smartToggleService.open;
   }
 
   @Input('clrDgFilterOpen')
   public set open(open: boolean) {
     const boolOpen = !!open;
-    if (boolOpen !== this._open) {
-      this._open = boolOpen;
-      this.openChanged.emit(boolOpen);
+    if (boolOpen !== this.open) {
+      this.smartToggleService.open = !!open;
+      this.openChange.emit(!!open);
       if (!boolOpen && isPlatformBrowser(this.platformId)) {
         this.anchor.nativeElement.focus();
       }
     }
   }
 
-  @Output('clrDgFilterOpenChange') public openChanged = new EventEmitter<boolean>(false);
+  @Output('clrDgFilterOpenChange') public openChange = new EventEmitter<boolean>(false);
 
   @Input('clrDgFilter')
   public set customFilter(filter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>) {
@@ -100,10 +124,8 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     return !!this.filter && this.filter.isActive();
   }
 
-  /**
-   * Shows/hides the filter dropdown
-   */
-  public toggle() {
-    this.open = !this.open;
+  ngOnDestroy(): void {
+    super.ngOnDestroy();
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 }

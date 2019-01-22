@@ -13,6 +13,7 @@ import {
   OnInit,
   Output,
   ViewContainerRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -31,6 +32,9 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-column',
@@ -70,14 +74,16 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
           </span>
 
-          <clr-dg-column-separator></clr-dg-column-separator>
-      </div>
-  `,
+            <clr-dg-column-separator></clr-dg-column-separator>
+        </div>
+    `,
+  providers: [ClrPopoverPositionService, ClrPopoverEventsService, ClrPopoverToggleService],
   host: {
     '[class.datagrid-column]': 'true',
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements OnDestroy, OnInit {

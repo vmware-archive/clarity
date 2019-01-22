@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,12 @@ export default function(): void {
 
       beforeEach(function() {
         context = this.create(ClrDatagridFooter, SimpleTest, DATAGRID_SPEC_PROVIDERS);
+      });
+
+      afterEach(function() {
+        context.fixture.destroy();
+        const popoverContent = document.querySelectorAll('.clr-popover-content');
+        popoverContent.forEach(content => document.body.removeChild(content));
       });
 
       it('projects content', function() {
@@ -78,10 +84,10 @@ export default function(): void {
       it('projects custom column toggler', function() {
         context.clarityElement.querySelector('.column-toggle--action').click();
         context.detectChanges();
-        expect(context.clarityElement.querySelector('clr-dg-column-toggle-title').innerText).toMatch('Custom Title');
-        expect(context.clarityElement.querySelector('.switch-footer clr-dg-column-toggle-button').innerText).toMatch(
-          'OK!!!'
-        );
+        const titleText: HTMLElement = document.body.querySelector('clr-dg-column-toggle-title');
+        const footerSwitch: HTMLElement = document.body.querySelector('.switch-footer clr-dg-column-toggle-button');
+        expect(titleText.innerText).toMatch('Custom Title');
+        expect(footerSwitch.innerText).toMatch('OK!!!');
       });
     });
   });

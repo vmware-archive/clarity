@@ -4,12 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { TestContext } from './helpers.spec';
 import { RowActionService } from './providers/row-action-service';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { ClrPopoverEventsService } from 'src/clr-angular/utils/popover/providers/popover-events.service';
+import { ClrPopoverToggleService } from 'src/clr-angular/utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from 'src/clr-angular/utils/popover/providers/popover-position.service';
+import { TestBed } from '@angular/core/testing';
 
 export default function(): void {
   describe('DatagridActionOverflow component', function() {
@@ -17,8 +20,19 @@ export default function(): void {
     let toggle: HTMLElement;
 
     beforeEach(function() {
-      context = this.create(ClrDatagridActionOverflow, SimpleTest, [RowActionService]);
-      toggle = context.clarityElement.querySelector('clr-icon');
+      context = this.create(ClrDatagridActionOverflow, SimpleTest, [
+        RowActionService,
+        ClrPopoverEventsService,
+        ClrPopoverToggleService,
+        ClrPopoverPositionService,
+      ]);
+      toggle = context.clarityElement.querySelector('.clr-smart-open-close');
+    });
+
+    afterEach(function() {
+      context.fixture.destroy();
+      const popoverContent = document.querySelectorAll('.clr-popover-content');
+      popoverContent.forEach(content => document.body.removeChild(content));
     });
 
     it('offers two-way binding on clrDgActionOverflowOpen', function() {
@@ -28,12 +42,6 @@ export default function(): void {
       context.testComponent.open = false;
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
-    });
-
-    it('projects menu content when open', function() {
-      context.clarityDirective.open = true;
-      context.detectChanges();
-      expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
     });
 
     it('opens and closes the menu when the toggle is clicked', function() {
@@ -46,7 +54,7 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('closes the menu when clicked outside of the host', () => {
+    it('closes the menu when clicked outside of the host', function() {
       const outsideDiv: HTMLElement = context.testElement.querySelector('.outside-click-test');
 
       // should be closed initially
@@ -63,67 +71,47 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it("doesn't close the menu when an action menu item container is clicked", () => {
-      // should open when the ellipses icon is clicked
+    it("doesn't close the menu when an action menu item container is clicked", function() {
       toggle.click();
       context.detectChanges();
 
-      const actionOverflowMenu: HTMLElement = context.clarityElement.querySelector('.datagrid-action-overflow');
+      const actionOverflowMenu: HTMLElement = document.querySelector('.clr-popover-content');
       actionOverflowMenu.click();
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(true);
     });
 
-    it('closes the menu when an action menu item is clicked', () => {
-      // should open when the ellipses icon is clicked
+    it('projects menu content when open', function() {
+      toggle.click();
+      context.detectChanges();
+      const popoverContent = document.querySelector('.clr-popover-content');
+      expect(popoverContent.textContent.trim()).toMatch('Hello world');
+    });
+
+    it('closes the menu when an action menu item is clicked', function() {
       toggle.click();
       context.detectChanges();
 
-      const actionItem: HTMLElement = context.clarityElement.querySelector('.action-item');
+      const actionItem: HTMLElement = document.querySelector('.clr-popover-content > .action-item');
       actionItem.click();
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it(
-      'first item is focused when opened',
-      fakeAsync(function() {
-        toggle.click();
-        context.detectChanges();
-        tick();
-        const firstButton = context.clarityElement.querySelector('.action-item');
-        expect(document.activeElement).toBe(firstButton);
-        // Verify focus has moved on close
-        toggle.click();
-        context.detectChanges();
-        tick();
-        expect(document.activeElement).not.toBe(firstButton);
-      })
-    );
-
-    it(
-      'focus is applied only once per click',
-      fakeAsync(function() {
-        // Open
-        toggle.click();
-        context.detectChanges();
-        const firstButton = context.clarityElement.querySelector('.action-item');
-        expect(firstButton).toBeTruthy();
-        const focusSpy = spyOn(firstButton, 'focus');
-        tick();
-        expect(focusSpy.calls.count()).toBe(1);
-        // Close
-        toggle.click();
-        context.detectChanges();
-        tick();
-        expect(focusSpy.calls.count()).toBe(1);
-        // Reopen
-        toggle.click();
-        context.detectChanges();
-        tick();
-        expect(focusSpy.calls.count()).toBe(2);
-      })
-    );
+    it('focuses on the first projected button', function() {
+      const ngZone = TestBed.get(NgZone);
+      spyOn(ngZone, 'runOutsideAngular').and.callFake(
+        (fn: Function) =>
+          function() {
+            context.fixture.whenStable().then(() => {
+              const firstButton: HTMLButtonElement = context.testComponent.actionItem.nativeElement;
+              expect(document.activeElement).toEqual(firstButton);
+            });
+          }
+      );
+      toggle.click();
+      context.detectChanges();
+    });
   });
 }
 
@@ -134,10 +122,12 @@ export default function(): void {
                 This is an area outside of the action overflow
             </div>
             <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
-                <button class="action-item">Hello world</button>
+                <button #actionItem class="action-item" clrPopoverCloseButton>Hello world</button>
             </clr-dg-action-overflow>
         </div>`,
 })
 class SimpleTest {
   open: boolean;
+  @ViewChild('actionItem', { read: ElementRef, static: true })
+  actionItem: ElementRef;
 }

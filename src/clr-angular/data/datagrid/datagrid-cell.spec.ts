@@ -17,6 +17,12 @@ export default function(): void {
       context = this.create(ClrDatagridCell, SimpleTest, [DatagridRenderOrganizer]);
     });
 
+    afterEach(() => {
+      context.fixture.destroy();
+      const popoverContent = document.querySelectorAll('.clr-popover-content');
+      popoverContent.forEach(content => document.body.removeChild(content));
+    });
+
     it('provides a wrapped view for the content', function() {
       this.directive = context.clarityDirective;
       expect(this.directive._view).toBeDefined();

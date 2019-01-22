@@ -21,6 +21,7 @@ import { ClrWizardModule } from './wizard/wizard.module';
 import { ClrStepperModule } from './accordion/stepper/stepper.module';
 import { ClrSpinnerModule } from './progress/spinner/spinner.module';
 import { ClrProgressBarModule } from './progress/progress-bars/progress-bar.module';
+import { ClrPopoverModuleNext } from './utils/popover/popover.module';
 
 @NgModule({
   exports: [
@@ -40,6 +41,7 @@ import { ClrProgressBarModule } from './progress/progress-bars/progress-bar.modu
     ClrStepperModule,
     ClrSpinnerModule,
     ClrProgressBarModule,
+    ClrPopoverModuleNext,
   ],
 })
 export class ClarityModule {}

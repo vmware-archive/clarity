@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { ClrDatagridFilter } from './datagrid-filter';
@@ -14,6 +14,13 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+
+class MockRenderer {
+  listen() {}
+}
 
 export default function(): void {
   describe('ClrDatagridFilter component', function() {
@@ -21,22 +28,26 @@ export default function(): void {
       let filterService: FiltersProvider<number>;
       let filter: TestFilter;
       let component: ClrDatagridFilter<number>;
+      let toggleService: ClrPopoverToggleService;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
+        toggleService = new ClrPopoverToggleService();
         filter = new TestFilter();
-        component = new ClrDatagridFilter(filterService, new ClrCommonStringsService(), null);
+        component = new ClrDatagridFilter(
+          filterService,
+          new ClrCommonStringsService(),
+          toggleService,
+          'browser',
+          'clr-id-1'
+        );
       });
 
       afterEach(function() {
+        const popoverContent = document.querySelectorAll('.clr-popover-content');
+        popoverContent.forEach(content => document.body.removeChild(content));
         component.ngOnDestroy();
-      });
-
-      it('can open and close the dropdown toggle', function() {
-        expect(component.open).toBe(false);
-        component.toggle();
-        expect(component.open).toBe(true);
       });
 
       it('registers to the FiltersProvider provider', function() {
@@ -65,10 +76,20 @@ export default function(): void {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridFilter<number>, FullTest>;
       let filter: TestFilter;
+      let toggleService: ClrPopoverToggleService;
 
       beforeEach(function() {
         filter = new TestFilter();
-        context = this.create(ClrDatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
+        context = this.create(ClrDatagridFilter, FullTest, [
+          FiltersProvider,
+          Page,
+          StateDebouncer,
+          ClrPopoverEventsService,
+          ClrPopoverPositionService,
+          ClrPopoverToggleService,
+          Renderer2,
+        ]);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
       it('receives an input for the filter logic', function() {
@@ -81,10 +102,10 @@ export default function(): void {
         context.testComponent.filter = filter;
         context.testComponent.open = true;
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
+        expect(toggleService.open).toBe(true);
         context.clarityDirective.open = false;
         context.detectChanges();
-        expect(context.testComponent.open).toBe(false);
+        expect(toggleService.open).toBe(false);
       });
 
       it('registers itself as a CustomFilter provider', function() {
@@ -94,16 +115,33 @@ export default function(): void {
 
     describe('View', function() {
       let context: TestContext<ClrDatagridFilter<number>, FullTest>;
+      let filter: TestFilter;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridFilter, FullTest, [FiltersProvider, Page, StateDebouncer]);
+        filter = new TestFilter();
+        context = this.create(ClrDatagridFilter, FullTest, [
+          FiltersProvider,
+          Page,
+          StateDebouncer,
+          ClrPopoverEventsService,
+          ClrPopoverPositionService,
+          ClrPopoverToggleService,
+          {
+            provide: Renderer2,
+            useClass: MockRenderer,
+          },
+        ]);
+        context.testComponent.filter = filter;
       });
 
       it('projects content into the dropdown', function() {
-        expect(context.clarityElement.textContent.trim()).toBe('');
-        context.clarityDirective.open = true;
+        const openBtn: HTMLButtonElement = context.clarityElement.querySelector('.clr-smart-open-close');
+        const prePopoverContent = document.querySelector('.clr-popover-content');
+        expect(prePopoverContent).toBeNull();
+        openBtn.click();
         context.detectChanges();
-        expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
+        const popoverContent = document.querySelector('.clr-popover-content');
+        expect(popoverContent.textContent.trim()).toMatch('Hello world');
       });
 
       it('opens and closes the dropdown when the toggle is clicked', function() {
@@ -134,11 +172,11 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   changes = new Subject<boolean>();
 }
 
-@Component({ template: `<clr-dg-filter [clrDgFilter]="filter" [(clrDgFilterOpen)]="open">Hello world</clr-dg-filter>` })
+@Component({ template: `<clr-dg-filter [clrDgFilter]="filter" [clrDgFilterOpen]="open">Hello world</clr-dg-filter>` })
 class FullTest {
   @ViewChild(CustomFilter, { static: false })
   customFilter: CustomFilter;
 
   filter: ClrDatagridFilterInterface<number>;
-  open: boolean;
+  open: boolean = false;
 }

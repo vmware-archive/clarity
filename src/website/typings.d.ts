@@ -17,6 +17,6 @@ declare var window: Window;
 
 interface Window {
   ClarityIcons: any;
-  trackHiringAlert(string, boolean?);
-  trackIconSearch(string, number);
+  trackHiringAlert(eventLabel: string, externalLink?: boolean);
+  trackIconSearch(searchedIcon: string, numberOfMatches: number);
 }

@@ -104,9 +104,6 @@ export class ClarityIconsApi {
         if (iconShapeSources.hasOwnProperty(shapeName)) {
           // set an alias to the icon if it exists in iconShapeSources.
           this.setIconAliases(iconShapeSources, shapeName, aliases[shapeName]);
-        } else if (iconShapeSources.hasOwnProperty(shapeName)) {
-          // set an alias to the icon if it exists in iconShapeSources.
-          this.setIconAliases(iconShapeSources, shapeName, aliases[shapeName]);
         } else {
           throw new Error(
             `An icon "${shapeName}" you are trying to set aliases to doesn't exist in the Clarity Icons sets!`

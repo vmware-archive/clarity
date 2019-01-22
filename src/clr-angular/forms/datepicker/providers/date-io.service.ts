@@ -133,10 +133,7 @@ export class DateIOService {
     return result !== -1 ? new Date(result, m, d) : null;
   }
 
-  /**
-   * Checks if the input provided by the user is valid.
-   */
-  isValidInput(date: string): Date {
+  getDateValueFromDateString(date: string): Date {
     if (!date) {
       return null;
     }

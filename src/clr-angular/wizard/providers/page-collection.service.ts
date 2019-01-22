@@ -192,11 +192,11 @@ export class PageCollectionService {
       return [];
     }
 
-    if (start === null || typeof start === undefined || isNaN(start)) {
+    if (start === null || typeof start === 'undefined' || isNaN(start)) {
       return [];
     }
 
-    if (end === null || typeof end === undefined || isNaN(end)) {
+    if (end === null || typeof end === 'undefined' || isNaN(end)) {
       return [];
     }
 

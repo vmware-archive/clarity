@@ -78,10 +78,10 @@ export default function(): void {
       it('projects custom column toggler', function() {
         context.clarityElement.querySelector('.column-toggle--action').click();
         context.detectChanges();
-        expect(context.clarityElement.querySelector('clr-dg-column-toggle-title').innerText).toMatch('Custom Title');
-        expect(context.clarityElement.querySelector('.switch-footer clr-dg-column-toggle-button').innerText).toMatch(
-          'OK!!!'
-        );
+        const titleText: HTMLElement = document.body.querySelector('clr-dg-column-toggle-title');
+        const footerSwitch: HTMLElement = document.body.querySelector('.switch-footer clr-dg-column-toggle-button');
+        expect(titleText.innerText).toMatch('Custom Title');
+        expect(footerSwitch.innerText).toMatch('OK!!!');
       });
     });
   });

@@ -16,7 +16,7 @@ Clarity is published as three npm packages:
 * **@clr/ui.** Contains the static styles for building HTML components.
 * **@clr/angular.** Contains the Angular components. This package depends on @clr/ui for styles.
 
-The easiest way to run a sample Angular application with Clarity is to use the [Clarity Seed](https://github.com/vmware/clarity-seed).
+The easiest way to run a sample Angular application with Clarity is to use the Angular CLI and run `ng add @clr/angular`.
 
 If you already have an Angular application, you can follow the installation steps below to include and use Clarity in your application.
 
@@ -148,10 +148,5 @@ The Clarity project team welcomes contributions from the community. For more det
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
 
-* Include a link to the reproduction scenario you created by forking one of the Clarity Stackblitz Templates:
-  * [Light Theme v0.13](https://stackblitz.com/edit/clarity-light-theme-v013)
-  * [Dark Theme v0.13](https://stackblitz.com/edit/clarity-dark-theme-v013)
-  * [Light Theme v0.12](https://stackblitz.com/edit/clarity-light-theme-v012)
-  * [Dark Theme v0.12](https://stackblitz.com/edit/clarity-dark-theme-v012)
-  * [Light Theme v0.11](https://stackblitz.com/edit/clarity-light-theme-v11)
-  * [Dark Theme v0.11](https://stackblitz.com/edit/clarity-dark-theme-v11)
+Include a link to the reproduction scenario you created by forking one of the Clarity Stackblitz Templates for the version you are using at
+[Clarity StackBlitz templates](https://stackblitz.com/@clr-team/).

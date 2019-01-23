@@ -18,12 +18,11 @@ import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
-/* tslint:disable-next-line:variable-name */
-export const ToggleService = new InjectionToken<any>(undefined);
-/* tslint:disable-next-line:variable-name */
-export function ToggleServiceProvider() {
+export const TOGGLE_SERVICE = new InjectionToken<BehaviorSubject<boolean>>(undefined);
+export function ToggleServiceFactory() {
   return new BehaviorSubject<boolean>(false);
 }
+export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: ToggleServiceFactory };
 
 @Component({
   selector: 'clr-password-container',
@@ -62,7 +61,7 @@ export function ToggleServiceProvider() {
     ControlIdService,
     ControlClassService,
     FocusService,
-    { provide: ToggleService, useFactory: ToggleServiceProvider },
+    TOGGLE_SERVICE_PROVIDER,
   ],
 })
 export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
@@ -92,7 +91,7 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     private controlClassService: ControlClassService,
     public focusService: FocusService,
     private ngControlService: NgControlService,
-    @Inject(ToggleService) private toggleService: BehaviorSubject<boolean>,
+    @Inject(TOGGLE_SERVICE) private toggleService: BehaviorSubject<boolean>,
     public commonStrings: ClrCommonStrings
   ) {
     this.subscriptions.push(

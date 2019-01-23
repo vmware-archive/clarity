@@ -10,11 +10,6 @@ import { ClarityModule } from '@clr/angular';
 
 import { TogglesDemo } from './toggles.demo';
 import { ROUTING } from './toggles.demo.routing';
-import { FormsModule } from '@angular/forms';
 
-@NgModule({
-  imports: [CommonModule, ClarityModule, FormsModule, ROUTING],
-  declarations: [TogglesDemo],
-  exports: [TogglesDemo],
-})
-export class TogglesDemoModule {}
+@NgModule({ imports: [CommonModule, ClarityModule, ROUTING], declarations: [TogglesDemo], exports: [TogglesDemo] })
+export class DeprecatedTogglesDemoModule {}

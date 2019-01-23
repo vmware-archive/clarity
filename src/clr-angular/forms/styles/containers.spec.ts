@@ -83,6 +83,64 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
     </div>
 
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="toggle">
+      <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        Checkbox</label>
+      <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox1" id="{{layout}}-toggle1" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle1" class="clr-control-label">
+            option 1
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox2" id="{{layout}}-toggle2" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle2" class="clr-control-label">
+            option 2
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox3" id="{{layout}}-toggle3" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle3" class="clr-control-label">
+            option 3
+          </label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="toggle-inline">
+      <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
+        Inline checkbox</label>
+      <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox7" id="{{layout}}-toggle7" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle7" class="clr-control-label">
+            option 1
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox8" id="{{layout}}-toggle8" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle8" class="clr-control-label">
+            option 2
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" name="checkbox9" id="{{layout}}-toggle9" placeholder="Enter value here" class="clr-checkbox">
+          <label for="{{layout}}-toggle9" class="clr-control-label">
+            option 3
+          </label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
+    </div>
+
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio">
         <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
             Radio</label>
@@ -470,6 +528,25 @@ describe('Form layouts', () => {
       it('checkbox label height', () =>
         verifyHeight('#checkbox-inline .clr-checkbox-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#checkbox-inline .clr-subtext-wrapper', base * 4));
+    });
+
+    describe('toggle', () => {
+      it('control height', () => verifyHeight('#toggle', base * 4));
+      it('label height', () => verifyHeight('#toggle .clr-control-label', base * 3));
+      it('wrapper height', () => verifyHeight('#toggle .clr-toggle-wrapper', base * 4));
+      it('checkbox height', () => verifyHeight('#toggle .clr-checkbox', 16, false));
+      it('checkbox label height', () => verifyHeight('#toggle .clr-toggle-wrapper .clr-control-label', base * 4));
+      it('subtext height', () => verifyHeight('#toggle .clr-subtext-wrapper', base * 4));
+    });
+
+    describe('toggle inline', () => {
+      it('control height', () => verifyHeight('#toggle-inline', base * 4));
+      it('label height', () => verifyHeight('#toggle-inline .clr-control-label', base * 3));
+      it('wrapper height', () => verifyHeight('#toggle-inline .clr-toggle-wrapper', base * 4));
+      it('checkbox height', () => verifyHeight('#toggle-inline .clr-checkbox', 16, false));
+      it('checkbox label height', () =>
+        verifyHeight('#toggle-inline .clr-toggle-wrapper .clr-control-label', base * 4));
+      it('subtext height', () => verifyHeight('#toggle-inline .clr-subtext-wrapper', base * 4));
     });
 
     describe('radio', () => {

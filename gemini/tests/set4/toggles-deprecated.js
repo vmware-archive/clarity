@@ -7,13 +7,13 @@
 var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
-gemini.suite('toggles', child => {
+gemini.suite('toggles-deprecated', child => {
   child
-    .setUrl('/toggles')
+    .setUrl('/toggles-deprecated')
     .before((actions, find) => {
-      actions.waitForElementToShow('.content-area', WAIT_TIME);
+      actions.waitForElementToShow('clr-toggles-demo form', WAIT_TIME);
       actions.wait(WAIT_LOAD_TIME);
     })
-    .setCaptureElements('.content-area')
+    .setCaptureElements('clr-toggles-demo form')
     .capture('default');
 });

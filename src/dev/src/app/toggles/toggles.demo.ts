@@ -5,5 +5,68 @@
  */
 import { Component } from '@angular/core';
 
-@Component({ selector: 'clr-toggles-demo', templateUrl: './toggles.demo.html' })
-export class TogglesDemo {}
+@Component({ templateUrl: './toggles.demo.html' })
+export class TogglesDemo {
+  disabled = true;
+  vertical = {
+    one: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    two: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    three: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    four: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    five: {
+      one: '',
+      two: '',
+      three: '',
+    },
+  };
+  horizontal = {
+    one: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    two: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    three: {
+      one: '',
+      two: '',
+      three: '',
+    },
+  };
+  compact = {
+    one: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    two: {
+      one: '',
+      two: '',
+      three: '',
+    },
+    three: {
+      one: '',
+      two: '',
+      three: '',
+    },
+  };
+}

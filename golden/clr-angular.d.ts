@@ -154,7 +154,8 @@ export declare class ClrCalendar implements OnDestroy {
 }
 
 export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> {
-    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, toggle: string);
+    ngOnInit(): void;
 }
 
 export declare class ClrCheckboxContainer implements OnDestroy {
@@ -195,9 +196,12 @@ export declare class ClrCheckboxDeprecatedModule {
 export declare class ClrCheckboxModule {
 }
 
-export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit {
+export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDestroy {
     _dynamic: boolean;
     label: ClrLabel;
+    toggle: boolean;
+    constructor(toggleService: BehaviorSubject<boolean>);
+    ngOnDestroy(): void;
     ngOnInit(): void;
 }
 
@@ -1399,6 +1403,15 @@ export declare function fade(opacity?: number): AnimationMetadata[];
 
 export declare function fadeSlide(direction: string): AnimationMetadata[];
 
+export declare const IS_TOGGLE: InjectionToken<BehaviorSubject<boolean>>;
+
+export declare const IS_TOGGLE_PROVIDER: {
+    provide: InjectionToken<BehaviorSubject<boolean>>;
+    useFactory: typeof isToggleFactory;
+};
+
+export declare function isToggleFactory(): BehaviorSubject<boolean>;
+
 export declare abstract class LoadingListener {
     abstract loadingStateChange(state: ClrLoadingState): void;
 }
@@ -1413,6 +1426,11 @@ export declare class NavDetectionOompaLoompa extends OompaLoompa {
 
 export declare function slide(direction: string): AnimationMetadata[];
 
-export declare const ToggleService: InjectionToken<any>;
+export declare const TOGGLE_SERVICE: InjectionToken<BehaviorSubject<boolean>>;
 
-export declare function ToggleServiceProvider(): BehaviorSubject<boolean>;
+export declare const TOGGLE_SERVICE_PROVIDER: {
+    provide: InjectionToken<BehaviorSubject<boolean>>;
+    useFactory: typeof ToggleServiceFactory;
+};
+
+export declare function ToggleServiceFactory(): BehaviorSubject<boolean>;

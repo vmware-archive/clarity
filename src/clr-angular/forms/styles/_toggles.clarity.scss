@@ -8,6 +8,7 @@
     @include clr-appearance-normal();
   }
 
+  .clr-toggle-wrapper,
   .toggle-switch {
     display: inline-block;
     height: $clr-toggle-height;
@@ -153,6 +154,85 @@
         left: -1 * $clr-toggle-switch-left-spacing;
         transition-property: left;
       }
+    }
+  }
+
+  // Additions and overrides for only new togglers, backwards compatibility required here. Can refactor and simplify when
+  // old toggles are removed.
+  .clr-toggle-wrapper {
+    display: block;
+    margin-right: 0.5rem;
+
+    .clr-control-label {
+      display: block;
+      font-weight: 400;
+      line-height: (4 * $clr-forms-baseline);
+    }
+
+    // These sets the default labels to the right vs originally to left
+    label {
+      margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+      margin-right: 0;
+    }
+    // This sets the default toggle to the left vs originally to right
+    input[type='checkbox'] + label::before {
+      right: 0;
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+      top: ($clr-forms-baseline / 2);
+    }
+    input[type='checkbox'] + label::after {
+      right: 0;
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      transition-property: left;
+      top: (2 * $clr-rem-1px + $clr-forms-baseline / 2);
+    }
+    input[type='checkbox']:checked + label::after {
+      left: -1 * $clr-toggle-switch-left-spacing;
+      transition-property: left;
+    }
+    input[type='checkbox']:disabled + label::after {
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+    }
+    input[type='checkbox']:checked:disabled + label::after {
+      left: -1 * $clr-toggle-switch-left-spacing;
+    }
+  }
+  // These are the inline styles overrides
+  .clr-control-inline .clr-toggle-wrapper .clr-control-label {
+    display: inline-block;
+    margin-right: (2 * $clr-forms-baseline);
+  }
+  // This sets the option to move the toggles to the right of the label
+  .clr-toggle-right {
+    label {
+      display: inline-block;
+      margin-right: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+      margin-left: 0;
+    }
+    input[type='checkbox'] + label::before {
+      left: unset;
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+    }
+    input[type='checkbox'] + label::after {
+      left: unset;
+      right: -1 * $clr-toggle-switch-left-spacing;
+      transition-property: right;
+    }
+    input[type='checkbox']:checked + label::after {
+      left: unset;
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      transition-property: right;
+    }
+    input[type='checkbox']:disabled + label::after {
+      left: unset;
+      right: -1 * ($clr-toggle-switch-left-spacing + $clr-rem-1px);
+    }
+    input[type='checkbox']:checked:disabled + label::after {
+      left: unset;
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+    }
+    .clr-control-inline .clr-toggle-wrapper .clr-control-label {
+      margin-right: (9 * $clr-forms-baseline);
     }
   }
 }

@@ -59,13 +59,16 @@ export class StateProvider<T> {
     if (activeFilters.length > 0) {
       state.filters = [];
       for (const filter of activeFilters) {
-        if (filter instanceof DatagridStringFilterImpl) {
+        if (filter.state) {
+          state.filters.push(filter.state);
+          continue;
+        } else if (filter instanceof DatagridStringFilterImpl) {
           const stringFilter = filter.filterFn;
           if (stringFilter instanceof DatagridPropertyStringFilter) {
             /*
-                         * Special case again for the default object property filter,
-                         * we give the property name instead of the full filter object.
-                         */
+             * Special case again for the default object property filter,
+             * we give the property name instead of the full filter object.
+             */
             state.filters.push({
               property: stringFilter.prop,
               value: filter.value,

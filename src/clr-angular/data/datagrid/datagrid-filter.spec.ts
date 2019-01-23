@@ -58,6 +58,15 @@ export default function(): void {
         filter.active = false;
         expect(component.active).toEqual(false);
       });
+
+      it('compares filters', function() {
+        const testFilter = new TestCustomStateFilter('test');
+        const anotherTestFilter = new TestCustomStateFilter('test');
+        const nonTestFilter = new TestCustomStateFilter('nonTest');
+        expect(testFilter.equals(anotherTestFilter)).toBeTruthy();
+        expect(testFilter.equals(nonTestFilter)).toBeFalsy();
+        expect(testFilter.equals(filter)).toBeFalsy();
+      });
     });
 
     describe('Template API', function() {
@@ -131,6 +140,22 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   }
 
   changes = new Subject<boolean>();
+}
+
+class TestCustomStateFilter extends TestFilter {
+  private innerState: any;
+  constructor(stateCode: string) {
+    super();
+    this.innerState = { stateCode: stateCode };
+  }
+
+  get state() {
+    return this.innerState;
+  }
+
+  equals(other: ClrDatagridFilterInterface<any, any>): boolean {
+    return other.state && other.state.stateCode === this.state.stateCode;
+  }
 }
 
 @Component({ template: `<clr-dg-filter [clrDgFilter]="filter" [(clrDgFilterOpen)]="open">Hello world</clr-dg-filter>` })

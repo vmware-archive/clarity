@@ -36,7 +36,6 @@
 //Buttons
 @import '../button/buttons.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity
 @import '../button/button-group/button-group.clarity'; // depends on variables.clarity, mixins.clarity
-@import '../button/toggles.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import '../utils/close.clarity'; //depends on variables.clarity, mixins.clarity
 
 //Alerts
@@ -110,6 +109,7 @@
 @import '../forms/styles/radio.clarity';
 @import '../forms/styles/select.clarity';
 @import '../forms/styles/textarea.clarity';
+@import '../forms/styles/toggles.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 
 //Forms Deprecated
 @import '../forms-deprecated/utils/form-variables.clarity';

@@ -7,8 +7,8 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { TableSizeService } from './providers/table-size.service';
 import { ColumnOrderModelService } from './providers/column-order-model.service';
-import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { ColumnHeaderSides } from './enums/header-sides.enum';
+import { ClrDropToleranceInterface } from '@clr/angular';
 
 @Component({
   selector: 'clr-dg-column-reorder-droppable',
@@ -33,7 +33,7 @@ export class ClrDatagridColumnReorderDroppable {
     return this.columnOrderModel.columnGroupId;
   }
 
-  public dropTolerance: any;
+  public dropTolerance: -1 | ClrDropToleranceInterface;
 
   // Each column headers will have this clr-dg-column-reorder-droppable component on each of its sides.
   // We need a way to distinguish which side of the header that this droppable is on.
@@ -72,8 +72,8 @@ export class ClrDatagridColumnReorderDroppable {
 
       if (this.side === ColumnHeaderSides.RIGHT) {
         this.dropTolerance = {
-          left: this.columnOrderModel.headerWidth / 2,
-          right: this.columnOrderModel.nextVisibleHeaderWidth / 2,
+          left: this.columnOrderModel.headerWidth,
+          right: 0,
         };
       } else if (this.side === ColumnHeaderSides.LEFT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area
@@ -84,8 +84,8 @@ export class ClrDatagridColumnReorderDroppable {
 
       if (this.side === ColumnHeaderSides.LEFT) {
         this.dropTolerance = {
-          right: this.columnOrderModel.headerWidth / 2,
-          left: this.columnOrderModel.previousVisibleHeaderWidth / 2,
+          right: this.columnOrderModel.headerWidth,
+          left: 0,
         };
       } else if (this.side === ColumnHeaderSides.RIGHT) {
         this.dropTolerance = -1; // a negative drop tolerance means no drop area

@@ -83,12 +83,28 @@ export default function(): void {
       expect(context.clarityDirective.dropTolerance).toBe(-1);
     });
 
+    it('right droppable should have no drop area for draggable from next column', function() {
+      const dragEvent = { dragDataTransfer: columnOrderModelService.nextVisibleColumnModel };
+      componentInstance.side = ColumnHeaderSides.RIGHT;
+      context.detectChanges();
+      reorderDroppable.setDropTolerance(dragEvent);
+      expect(context.clarityDirective.dropTolerance).toBe(-1);
+    });
+
     it('left droppable should have proper drop area for draggable from next column', function() {
       const dragEvent = { dragDataTransfer: columnOrderModelService.nextVisibleColumnModel };
       componentInstance.side = ColumnHeaderSides.LEFT;
       context.detectChanges();
       reorderDroppable.setDropTolerance(dragEvent);
-      expect(context.clarityDirective.dropTolerance).toEqual({ left: 200, right: 100 });
+      expect(context.clarityDirective.dropTolerance).toEqual({ left: 0, right: 200 });
+    });
+
+    it('right droppable should have proper drop area for draggable from previous column', function() {
+      const dragEvent = { dragDataTransfer: columnOrderModelService.previousVisibleColumnModel };
+      componentInstance.side = ColumnHeaderSides.RIGHT;
+      context.detectChanges();
+      reorderDroppable.setDropTolerance(dragEvent);
+      expect(context.clarityDirective.dropTolerance).toEqual({ left: 200, right: 0 });
     });
 
     it('far left droppable should have proper drop area for draggable from next column', function() {
@@ -98,23 +114,7 @@ export default function(): void {
       componentInstance.side = ColumnHeaderSides.LEFT;
       context.detectChanges();
       reorderDroppable.setDropTolerance(dragEvent);
-      expect(context.clarityDirective.dropTolerance).toEqual({ left: 0, right: 100 });
-    });
-
-    it('right droppable should have no drop area for draggable from next column', function() {
-      const dragEvent = { dragDataTransfer: columnOrderModelService.nextVisibleColumnModel };
-      componentInstance.side = ColumnHeaderSides.RIGHT;
-      context.detectChanges();
-      reorderDroppable.setDropTolerance(dragEvent);
-      expect(context.clarityDirective.dropTolerance).toBe(-1);
-    });
-
-    it('right droppable should have proper drop area for draggable from previous column', function() {
-      const dragEvent = { dragDataTransfer: columnOrderModelService.previousVisibleColumnModel };
-      componentInstance.side = ColumnHeaderSides.RIGHT;
-      context.detectChanges();
-      reorderDroppable.setDropTolerance(dragEvent);
-      expect(context.clarityDirective.dropTolerance).toEqual({ left: 100, right: 150 });
+      expect(context.clarityDirective.dropTolerance).toEqual({ left: 0, right: 200 });
     });
 
     it('far right droppable should have proper drop area for draggable from previous column', function() {
@@ -124,7 +124,7 @@ export default function(): void {
       componentInstance.side = ColumnHeaderSides.RIGHT;
       context.detectChanges();
       reorderDroppable.setDropTolerance(dragEvent);
-      expect(context.clarityDirective.dropTolerance).toEqual({ left: 100, right: 0 });
+      expect(context.clarityDirective.dropTolerance).toEqual({ left: 200, right: 0 });
     });
 
     it('gives dropLine height of datagrid table if showHighlight is called', function() {

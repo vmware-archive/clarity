@@ -91,38 +91,8 @@ export default function(): void {
         expect(context.clarityElement.querySelector('.datagrid-footer-select')).toBeNull();
       });
     });
-
-    describe('View with Custom Toggle Buttons', function() {
-      let context: TestContext<ClrDatagridFooter<void>, ColumnTogglerTest>;
-
-      beforeEach(function() {
-        context = this.create(ClrDatagridFooter, ColumnTogglerTest, PROVIDERS_NEEDED);
-      });
-
-      it('projects custom column toggler', function() {
-        context.clarityElement.querySelector('.column-toggle--action').click();
-        context.detectChanges();
-        const titleText: HTMLElement = document.body.querySelector('clr-dg-column-toggle-title');
-        const footerSwitch: HTMLElement = document.body.querySelector('.switch-footer clr-dg-column-toggle-button');
-        expect(titleText.innerText).toMatch('Custom Title');
-        expect(footerSwitch.innerText).toMatch('OK!!!');
-      });
-    });
   });
 }
 
 @Component({ template: `<clr-dg-footer>Hello world</clr-dg-footer>` })
 class SimpleTest {}
-
-@Component({
-  template: `        
-    <clr-dg-footer>
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
-            <clr-dg-column-toggle-button type="ok">OK!!!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-button type="selectAll">Select All!!!</clr-dg-column-toggle-button>
-        </clr-dg-column-toggle>
-        Hello world
-    </clr-dg-footer>`,
-})
-class ColumnTogglerTest {}

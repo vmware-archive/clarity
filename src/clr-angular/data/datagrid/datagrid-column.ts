@@ -14,6 +14,7 @@ import {
   OnInit,
   Output,
   ViewContainerRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -29,6 +30,9 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
+import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
 
 let nbCount: number = 0;
 
@@ -59,12 +63,14 @@ let nbCount: number = 0;
             <clr-dg-column-separator></clr-dg-column-separator>
         </div>
     `,
+  providers: [ClrSmartPopoverPositionService, ClrSmartPopoverEventsService, ClrSmartPopoverToggleService],
   host: {
     '[class.datagrid-column]': 'true',
     '[class.datagrid-column--hidden]': 'hidden',
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {

@@ -9,7 +9,6 @@ $clr-layers: (
   select-box: 2,
   datagrid-header: 500,
   datagrid-host: 590,
-  datagrid-popover: 595,
   column-switch: 600,
   dropdown-menu: 1000,
   alert: 1033,
@@ -18,5 +17,6 @@ $clr-layers: (
   modal-bg: 1040,
   modal: 1050,
   tooltips: 1070,
+  smart-popover: 5000,
   draggable-ghost: 2147483647// maximum possible value for z-index across all browsers
 ) !default;

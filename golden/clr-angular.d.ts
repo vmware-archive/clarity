@@ -99,6 +99,17 @@ export declare class ClrAlertsPager implements OnInit, OnDestroy {
     pageUp(): void;
 }
 
+export declare enum ClrAlignment {
+    START = 0,
+    CENTER = 0.5,
+    END = 1
+}
+
+export declare enum ClrAxis {
+    VERTICAL = 0,
+    HORIZONTAL = 1
+}
+
 export declare class ClrButton implements LoadingListener {
     _click: EventEmitter<boolean>;
     buttonInGroupService: ButtonInGroupService;
@@ -267,15 +278,13 @@ export declare class ClrDatagridActionBar {
 }
 
 export declare class ClrDatagridActionOverflow implements OnDestroy {
-    anchorPoint: Point;
     commonStrings: ClrCommonStrings;
     open: boolean;
-    openChanged: EventEmitter<boolean>;
-    popoverPoint: Point;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings);
-    close(event: MouseEvent): void;
+    openChange: EventEmitter<boolean>;
+    popoverId: string;
+    smartPosition: ClrSmartPosition;
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, smartToggleService: ClrSmartPopoverToggleService, popoverId: string);
     ngOnDestroy(): void;
-    toggle(event: any): void;
 }
 
 export declare class ClrDatagridCell implements OnInit, OnDestroy {
@@ -316,37 +325,33 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 
 export declare class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     allColumnsVisible: boolean;
-    anchorPoint: Point;
-    buttons: QueryList<ClrDatagridColumnToggleButton>;
     columns: DatagridHideableColumnModel[];
     commonStrings: ClrCommonStrings;
     hideableColumnService: HideableColumnService;
-    open: boolean;
-    popoverPoint: Point;
-    title: ClrDatagridColumnToggleTitle;
-    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings);
+    openState: any;
+    popoverId: string;
+    smartPosition: ClrSmartPosition;
+    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings, popoverId: string);
     ngOnDestroy(): void;
     ngOnInit(): void;
     selectAll(): void;
     toggleColumn(event: boolean, column: DatagridHideableColumnModel): void;
-    toggleUI(): void;
 }
 
 export interface ClrDatagridComparatorInterface<T> {
     compare(a: T, b: T): number;
 }
 
-export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter {
+export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter, OnDestroy {
     readonly active: boolean;
-    anchorPoint: Point;
     commonStrings: ClrCommonStrings;
     customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
     open: boolean;
-    openChanged: EventEmitter<boolean>;
-    popoverOptions: PopoverOptions;
-    popoverPoint: Point;
-    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings);
-    toggle(): void;
+    openChange: EventEmitter<boolean>;
+    popoverId: string;
+    smartPosition: ClrSmartPosition;
+    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings, smartToggleService: ClrSmartPopoverToggleService, popoverId: string);
+    ngOnDestroy(): void;
 }
 
 export interface ClrDatagridFilterInterface<T> {
@@ -945,6 +950,11 @@ export declare enum ClrSelectedState {
 export declare class ClrSelectModule {
 }
 
+export declare enum ClrSide {
+    BEFORE = -1,
+    AFTER = 1
+}
+
 export declare class ClrSignpost {
     commonStrings: ClrCommonStrings;
     customTrigger: ClrSignpostTrigger;
@@ -966,6 +976,62 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef);
     ngOnDestroy(): void;
     onSignpostTriggerClick(event: Event): void;
+}
+
+export declare class ClrSmartPopoverAnchor {
+    constructor(smartEventService: ClrSmartPopoverEventsService, element: ElementRef);
+}
+
+export declare class ClrSmartPopoverContent implements AfterContentChecked, OnDestroy {
+    clrSmartOpenContentAt: ClrSmartPosition;
+    open: boolean;
+    outsideClickClose: any;
+    scrollToClose: any;
+    constructor(document: HTMLDocument, container: ViewContainerRef, template: TemplateRef<any>, renderer: Renderer2, smartPositionService: ClrSmartPopoverPositionService, smartEventsService: ClrSmartPopoverEventsService, smartOpenService: ClrSmartPopoverToggleService);
+    ngAfterContentChecked(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+}
+
+export declare class ClrSmartPopoverEventsService implements OnDestroy {
+    anchorButtonRef: ElementRef;
+    closeButtonRef: ElementRef;
+    contentRef: ElementRef;
+    ignoredEvent: any;
+    outsideClickClose: boolean;
+    scrollToClose: boolean;
+    constructor(renderer: Renderer2, smartOpenService: ClrSmartPopoverToggleService, document: HTMLDocument);
+    addClickListener(): void;
+    addEscapeListener(): void;
+    addScrollListener(): void;
+    ngOnDestroy(): void;
+    removeClickListener(): void;
+    removeEscapeListener(): void;
+    removeScrollListener(): void;
+    setAnchorFocus(): void;
+    setCloseFocus(): void;
+}
+
+export declare class ClrSmartPopoverPositionService {
+    platformId: Object;
+    position: ClrSmartPosition;
+    constructor(eventService: ClrSmartPopoverEventsService, platformId: Object);
+    alignContent(content: HTMLElement): ClrPopoverContentOffset;
+}
+
+export declare class ClrSmartPopoverToggleService {
+    open: boolean;
+    readonly openChange: Observable<boolean>;
+    openEvent: Event;
+    getEventChange(): Observable<Event>;
+    toggleWithEvent(event: any): void;
+}
+
+export interface ClrSmartPosition {
+    anchor: ClrAlignment;
+    axis: ClrAxis;
+    content: ClrAlignment;
+    side: ClrSide;
 }
 
 export declare class ClrStackBlock implements OnInit {
@@ -1380,16 +1446,17 @@ export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagri
     accepts(item: T, search: string): boolean;
 }
 
-export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements CustomFilter, AfterViewInit {
+export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements CustomFilter, AfterViewInit, OnDestroy {
     customStringFilter: ClrDatagridStringFilterInterface<T> | RegisteredFilter<T, DatagridStringFilterImpl<T>>;
     filterContainer: ClrDatagridFilter<T>;
     filterValueChange: EventEmitter<{}>;
     input: ElementRef;
     open: boolean;
     value: string;
-    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter);
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, smartToggleService: ClrSmartPopoverToggleService);
     close(): void;
     ngAfterViewInit(): void;
+    ngOnDestroy(): void;
 }
 
 export declare const DEFAULT_BUTTON_TYPES: any;

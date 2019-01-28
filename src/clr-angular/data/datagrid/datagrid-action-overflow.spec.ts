@@ -32,7 +32,8 @@ export default function(): void {
     it('projects menu content when open', function() {
       context.clarityDirective.open = true;
       context.detectChanges();
-      expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
+      const popoverContent = document.querySelector('.clr-popover-content');
+      expect(popoverContent.textContent.trim()).toMatch('Hello world');
     });
 
     it('opens and closes the menu when the toggle is clicked', function() {
@@ -67,18 +68,17 @@ export default function(): void {
       toggle.click();
       context.detectChanges();
 
-      const actionOverflowMenu: HTMLElement = context.clarityElement.querySelector('.datagrid-action-overflow');
+      const actionOverflowMenu: HTMLElement = document.querySelector('.datagrid-action-overflow');
       actionOverflowMenu.click();
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(true);
     });
 
     it('closes the menu when an action menu item is clicked', () => {
-      // should open when the ellipses icon is clicked
       toggle.click();
       context.detectChanges();
 
-      const actionItem: HTMLElement = context.clarityElement.querySelector('.action-item');
+      const actionItem: HTMLElement = document.querySelector('.clr-popover-content > .action-item');
       actionItem.click();
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
@@ -93,7 +93,11 @@ export default function(): void {
                 This is an area outside of the action overflow
             </div>
             <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
-                <button class="action-item">Hello world</button>
+                <!-- TODO(matt): dicsuss this close approach in the PR w/ team -->
+                <!-- Preserves old behavior w/o complicated listener event code -->
+                <!-- Exposes the popover directives to consumers and asks them to tell us when/if content -->
+                <!-- clicks should be closed -->
+                <button class="action-item" clrSmartCloseButton>Hello world</button>
             </clr-dg-action-overflow>
         </div>`,
 })

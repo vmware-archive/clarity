@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ClrDatagridFilter } from '../../datagrid-filter';
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
 import { CustomFilter } from '../../providers/custom-filter';
@@ -13,6 +13,7 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
+import { ClrSmartPopoverToggleService } from '../../../../utils/smart-popover/providers/smart-popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-string-filter',
@@ -31,9 +32,15 @@ import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
     `,
 })
 export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
-  implements CustomFilter, AfterViewInit {
-  constructor(filters: FiltersProvider<T>, private domAdapter: DomAdapter) {
+  implements CustomFilter, AfterViewInit, OnDestroy {
+  private subs: Subscription[] = [];
+  constructor(
+    filters: FiltersProvider<T>,
+    private domAdapter: DomAdapter,
+    private smartToggleService: ClrSmartPopoverToggleService
+  ) {
     super(filters);
+    this.subs.push(this.smartToggleService.openChange.subscribe(openChange => (this.open = openChange)));
   }
 
   /**
@@ -65,15 +72,22 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
    */
   @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
-    this.filterContainer.openChanged.subscribe((open: boolean) => {
-      if (open) {
-        // We need the timeout because at the time this executes, the input isn't
-        // displayed yet.
-        setTimeout(() => {
-          this.domAdapter.focus(this.input.nativeElement);
-        });
-      }
-    });
+    this.subs.push(
+      this.filterContainer.openChange.subscribe((open: boolean) => {
+        if (open) {
+          // We need the timeout because at the time this executes, the input isn't
+          // displayed yet.
+          setTimeout(() => {
+            this.domAdapter.focus(this.input.nativeElement);
+          });
+        }
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    super.ngOnDestroy();
+    this.subs.forEach(sub => sub.unsubscribe());
   }
 
   /**

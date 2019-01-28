@@ -3,82 +3,81 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-
-import { Point } from '../../popover/common/popover';
+import { Component, EventEmitter, Inject, Input, OnDestroy, Output } from '@angular/core';
 
 import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
+import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
+import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
+import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-dg-action-overflow',
+  providers: [
+    UNIQUE_ID_PROVIDER,
+    ClrSmartPopoverToggleService,
+    ClrSmartPopoverEventsService,
+    ClrSmartPopoverPositionService,
+  ],
   template: `
-        <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor>
-            <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.rowActions"></clr-icon>
-        </button>
-        <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
-                     [clrPopoverOldPopoverPoint]="popoverPoint">
-            <div #menu class="datagrid-action-overflow" (clrOutsideClick)="close($event)" [clrStrict]="true">
-                <ng-content></ng-content>
-            </div>
-        </ng-template>
-    `,
+      <button class="datagrid-action-toggle"
+              clrSmartAnchor
+              clrSmartOpenCloseButton
+              [attr.aria-label]="commonStrings.rowActions">
+          <clr-icon shape="ellipsis-vertical"></clr-icon>
+      </button>
+
+      <div class="datagrid-action-overflow"
+           [id]="popoverId"
+           clrFocusTrap
+           *clrSmartPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
+          <ng-content></ng-content>
+      </div>
+  `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
-  public anchorPoint: Point = Point.RIGHT_CENTER;
-  public popoverPoint: Point = Point.LEFT_CENTER;
+  private subscriptions: Subscription[] = [];
+  public smartPosition: ClrSmartPosition = {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  };
 
-  constructor(private rowActionService: RowActionService, public commonStrings: ClrCommonStrings) {
+  constructor(
+    private rowActionService: RowActionService,
+    public commonStrings: ClrCommonStrings,
+    private smartToggleService: ClrSmartPopoverToggleService,
+    @Inject(UNIQUE_ID) public popoverId: string
+  ) {
     this.rowActionService.register();
+    this.subscriptions.push(
+      this.smartToggleService.openChange.subscribe(change => {
+        this.open = change;
+      })
+    );
   }
 
   ngOnDestroy() {
     this.rowActionService.unregister();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  /**
-   * Tracks whether the action overflow menu is open or not
-   */
-  private _open = false;
   public get open() {
-    return this._open;
+    return this.smartToggleService.open;
   }
 
   @Input('clrDgActionOverflowOpen')
   public set open(open: boolean) {
-    const boolOpen = !!open;
-    if (boolOpen !== this._open) {
-      this._open = boolOpen;
-      this.openChanged.emit(boolOpen);
-    }
+    this.smartToggleService.open = !!open;
+    this.openChange.emit(open);
   }
 
-  @Output('clrDgActionOverflowOpenChange') public openChanged = new EventEmitter<boolean>(false);
-
-  /*
-     * We need to remember the click that opens the menu, to make sure it doesn't close the menu instantly
-     * when the event bubbles up the DOM all the way to the document, which we also listen to.
-     */
-  private openingEvent: any;
-
-  /**
-   * Shows/hides the action overflow menu
-   */
-  public toggle(event: any) {
-    this.openingEvent = event;
-    this.open = !this.open;
-  }
-
-  public close(event: MouseEvent) {
-    /*
-         * Because this listener is added synchonously, before the event finishes bubbling up the DOM,
-         * we end up firing on the very click that just opened the menu, p
-         * otentially closing it immediately every time. So we just ignore it.
-         */
-    if (event === this.openingEvent) {
-      delete this.openingEvent;
-      return;
-    }
-    this.open = false;
-  }
+  @Output('clrDgActionOverflowOpenChange') public openChange = new EventEmitter<boolean>(false);
 }

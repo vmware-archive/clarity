@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { Component, QueryList, TemplateRef, ViewChildren, Renderer2 } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
@@ -11,6 +11,24 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { TestContext } from './helpers.spec';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
+import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+
+@Component({
+  template: `
+        <clr-dg-column-toggle></clr-dg-column-toggle>
+        <ng-template #col0>dg-col-0</ng-template>
+        <ng-template #col1>dg-col-1</ng-template>
+        <ng-template #col2>dg-col-2</ng-template>
+        <ng-template #col3>dg-col-3</ng-template>
+        <ng-template #col4>dg-col-4</ng-template>
+    `,
+})
+class SimpleTest {
+  columnIds: string[] = ['dg-col-0', 'dg-col-1', 'dg-col-2', 'dg-col-3', 'dg-col-4'];
+  @ViewChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
+}
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
@@ -23,29 +41,29 @@ export default function(): void {
         // Mixed columns: 1/2 hidden (true) & 1/2 showing (false)
         return [
           new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
+          new DatagridHideableColumnModel(null, 'dg-col-1'),
+          new DatagridHideableColumnModel(null, 'dg-col-2'),
+          new DatagridHideableColumnModel(null, 'dg-col-3', false),
+          new DatagridHideableColumnModel(null, 'dg-col-4', false),
+          new DatagridHideableColumnModel(null, 'dg-col-5', false),
         ];
       }
 
       function getHiddenTestColumns(): DatagridHideableColumnModel[] {
         return [
           new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
+          new DatagridHideableColumnModel(null, 'dg-col-1', true),
+          new DatagridHideableColumnModel(null, 'dg-col-2', true),
+          new DatagridHideableColumnModel(null, 'dg-col-3', true),
+          new DatagridHideableColumnModel(null, 'dg-col-4', true),
+          new DatagridHideableColumnModel(null, 'dg-col-5', true),
         ];
       }
 
       beforeEach(function() {
         hideableColumnService = new HideableColumnService();
         columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {});
+        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {}, null);
       });
 
       it('gets a list of hideable columns from the HideableColumnService', function() {
@@ -97,21 +115,24 @@ export default function(): void {
         component.toggleColumn(!testEvent, testColumn);
         expect(testColumn.hidden).toBe(false); // showing
       });
-      it('toggles the open state of the UI', function() {
-        expect(component.open).toEqual(false);
-        component.toggleUI();
-        expect(component.open).toEqual(true);
-      });
     });
 
     describe('View', function() {
-      // Until we can properly type "this"
       let context: TestContext<ClrDatagridColumnToggle, SimpleTest>;
       let hideableColumnService: HideableColumnService;
+      let toggleService: ClrSmartPopoverToggleService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridColumnToggle, SimpleTest, [HideableColumnService, ColumnToggleButtonsService]);
+        context = this.create(ClrDatagridColumnToggle, SimpleTest, [
+          HideableColumnService,
+          ColumnToggleButtonsService,
+          ClrSmartPopoverEventsService,
+          ClrSmartPopoverPositionService,
+          ClrSmartPopoverToggleService,
+          Renderer2,
+        ]);
         hideableColumnService = context.getClarityProvider(HideableColumnService);
+        toggleService = context.getClarityProvider(ClrSmartPopoverToggleService);
       });
 
       it('has a toggle icon', function() {
@@ -120,25 +141,28 @@ export default function(): void {
       });
 
       it('opens and closes the toggleUI', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
+        const iconBtn = context.clarityElement.querySelector('.clr-smart-open-close');
+        expect(toggleService.open).toBe(false);
         iconBtn.click();
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
+        expect(toggleService.open).toBe(true);
+
         iconBtn.click();
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(false);
+        expect(toggleService.open).toBe(false);
 
         // Open it to test 'x' closes popover pathway
         iconBtn.click();
         context.detectChanges(); // open it
+
         // Find the x and click it
-        const closeX = context.clarityElement.querySelector('.switch-header > button');
+        const closeX: HTMLButtonElement = document.querySelector('.clr-smart-close-button');
         closeX.click();
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(false);
+        expect(toggleService.open).toBe(false);
+
         // make sure the x is not stil in the dom
-        const toggleUI = context.clarityElement.querySelector('.column-switch');
+        const toggleUI = document.querySelector('.clr-smart-close-button');
         expect(toggleUI).toBeNull();
       });
 
@@ -156,13 +180,14 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const renderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
+        const renderedTemplates = document.querySelectorAll('.switch-content label');
 
         // Test the init properly
         expect(hideableColumns.length).toBe(renderedTemplates.length);
 
         for (let i = 0; i < renderedTemplates.length; i++) {
-          expect(hideableColumns[i].id).toEqual(renderedTemplates[i].innerText.trim());
+          const template: HTMLElement = <HTMLElement>renderedTemplates[i];
+          expect(hideableColumns[i].id).toEqual(template.innerText.trim());
         }
 
         // Now test when columns are updated
@@ -170,12 +195,13 @@ export default function(): void {
         hideableColumnService.updateColumnList(updatedColumns);
         context.detectChanges();
 
-        const updatedRenderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
+        const updatedRenderedTemplates = document.querySelectorAll('.switch-content label');
 
         expect(updatedColumns.length).toBe(updatedRenderedTemplates.length);
 
         for (let i = 0; i < updatedRenderedTemplates.length; i++) {
-          expect(updatedColumns[i].id).toEqual(updatedRenderedTemplates[i].innerText.trim());
+          const template: HTMLElement = <HTMLElement>updatedRenderedTemplates[i];
+          expect(updatedColumns[i].id).toEqual(template.innerText.trim());
         }
       });
 
@@ -200,7 +226,7 @@ export default function(): void {
           const testColumn: DatagridHideableColumnModel = hideableColumns[0];
           expect(testColumn.hidden).toBe(false);
 
-          const col0Clicker = context.clarityElement.querySelector('.switch-content input[type="checkbox"]');
+          const col0Clicker: HTMLInputElement = document.querySelector('.switch-content input[type="checkbox"]');
           col0Clicker.click();
           expect(testColumn.hidden).toBe(true);
           col0Clicker.click();
@@ -222,10 +248,12 @@ export default function(): void {
         iconBtn.click();
         context.detectChanges();
 
-        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
-        const selectAll = context.clarityElement.querySelector('.switch-footer > div > button');
+        const columnCheckboxes = document.querySelectorAll('.switch-content input[type="checkbox"]');
+        const selectAll: HTMLButtonElement = document.querySelector(
+          '.clr-popover-content > .switch-footer > div > button'
+        );
         for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox = columnCheckboxes[i];
+          const checkbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[i];
           expect(checkbox.checked).toBe(false);
         }
 
@@ -233,7 +261,7 @@ export default function(): void {
         context.detectChanges();
 
         for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox = columnCheckboxes[i];
+          const checkbox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[i];
           expect(checkbox.checked).toBe(true);
         }
 
@@ -248,110 +276,45 @@ export default function(): void {
           const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
 
           context.testComponent.templates.forEach(col => {
-            hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, true));
+            const colId = 'dg-col-' + nbCol.toString();
+            hideableColumns.push(new DatagridHideableColumnModel(col, colId, true));
             nbCol++;
           });
 
-          const showing: TemplateRef<any> = context.testComponent.templates.first;
-          hideableColumns.push(new DatagridHideableColumnModel(showing, `dg-col-${nbCol}`, false));
-
+          hideableColumns[0].hidden = false;
           hideableColumnService.updateColumnList(hideableColumns);
           iconBtn.click();
           context.detectChanges();
-          // Thank you asynchronous [ngModel]...
           tick();
 
-          const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
-          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(true);
-          columnCheckboxes[0].click();
+          const columnCheckboxes = document.querySelectorAll('.switch-content input[type="checkbox"]');
+          const firstBox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[0];
+          expect(firstBox.disabled).toBe(true);
+
+          const secondBox: HTMLInputElement = <HTMLInputElement>columnCheckboxes[1];
+          secondBox.click();
+          hideableColumnService.updateColumnList(hideableColumns);
           context.detectChanges();
-          // Thank you asynchronous [ngModel]...
           tick();
-          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
+
+          expect(firstBox.disabled).toBe(false);
         })
       );
 
       it('shows the default buttons', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
+        const iconBtn = context.clarityElement.querySelector('.clr-smart-open-close');
+        expect(toggleService.open).toBe(false);
         iconBtn.click();
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
+        expect(toggleService.open).toBe(true);
 
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
-        const title = context.clarityElement.querySelector('.switch-header');
+        const selectAllBtn: HTMLButtonElement = document.querySelector(
+          '.clr-popover-content > .switch-footer > div > button'
+        );
+        expect(selectAllBtn.innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
+        const title = document.querySelector('.clr-popover-content > .switch-header');
         expect(title.innerHTML).toContain('Show Columns');
-      });
-    });
-
-    describe('Custom buttons', function() {
-      // Until we can properly type "this"
-      let context: TestContext<ClrDatagridColumnToggle, CustomButtonsTest>;
-
-      beforeEach(function() {
-        context = this.create(ClrDatagridColumnToggle, CustomButtonsTest, [
-          HideableColumnService,
-          ColumnToggleButtonsService,
-        ]);
-      });
-
-      it('projects custom buttons and title', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
-        iconBtn.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
-
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All!'.toUpperCase());
-        expect(buttons[1].innerText.trim().toUpperCase()).toEqual('OK!'.toUpperCase());
-        const title = context.clarityElement.querySelector('.switch-header');
-        expect(title.innerHTML).toContain('Custom Title');
-      });
-
-      it('handles the click events', function() {
-        const service = context.getClarityProvider(ColumnToggleButtonsService);
-        spyOn(service, 'buttonClicked');
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        iconBtn.click();
-        service.selectAllDisabled = false;
-        context.detectChanges();
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        buttons[0].click();
-        context.detectChanges();
-        expect(service.buttonClicked).toHaveBeenCalledTimes(1);
-        buttons[1].click();
-        context.detectChanges();
-        expect(service.buttonClicked).toHaveBeenCalledTimes(2);
       });
     });
   });
 }
-
-@Component({
-  template: `
-        <clr-dg-column-toggle></clr-dg-column-toggle>
-        <ng-template #col0>dg-col-0</ng-template>
-        <ng-template #col1>dg-col-1</ng-template>
-        <ng-template #col2>dg-col-2</ng-template>
-        <ng-template #col3>dg-col-3</ng-template>
-        <ng-template #col4>dg-col-4</ng-template>
-    `,
-})
-class SimpleTest {
-  columnIds: string[] = ['dg-col-0', 'dg-col-1', 'dg-col-2', 'dg-col-3', 'dg-col-4'];
-  @ViewChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
-  shown: boolean = true;
-}
-
-@Component({
-  template: `
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-button clrType="selectAll">Select All!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-button clrType="ok">OK!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
-        </clr-dg-column-toggle>
-    `,
-})
-class CustomButtonsTest {}

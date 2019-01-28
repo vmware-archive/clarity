@@ -4,13 +4,41 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { TestContext } from './helpers.spec';
 import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
 import { ColumnsService } from './providers/columns.service';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
+import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+
+@Component({
+  template: `
+      <ng-template>Template Content</ng-template>
+      <!--The above ng-template is required/used as a hideable column template-->
+      <clr-dg-column-toggle>
+          <clr-dg-column-toggle-title *ngIf="hasCustomToggleTitle">Custom Toggle Title</clr-dg-column-toggle-title>
+          <clr-dg-column-toggle-button *ngIf="hasCustomToggleButton">Custom Toggle Button</clr-dg-column-toggle-button>
+      </clr-dg-column-toggle>
+  `,
+})
+class ColumnToggleTest {
+  private mockColumnsService: MockColumnsService;
+
+  @ViewChild(TemplateRef, { static: false })
+  set templateRef(value: TemplateRef<any>) {
+    this.mockColumnsService.templateRef = value;
+  }
+
+  constructor(columnsService: ColumnsService) {
+    this.mockColumnsService = <MockColumnsService>columnsService;
+  }
+
+  hasCustomToggleTitle: boolean = false;
+  hasCustomToggleButton: boolean = false;
+}
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
@@ -31,6 +59,7 @@ export default function(): void {
       it(
         'toggles switch panel',
         fakeAsync(function() {
+          // TODO(matt): update for the new ClrPopover toggle service here
           expect(columnToggle.open).toBeFalsy();
           columnToggle.toggleSwitchPanel();
           tick();
@@ -249,30 +278,4 @@ export default function(): void {
       });
     });
   });
-}
-
-@Component({
-  template: `
-    <ng-template>Template Content</ng-template>
-    <!--The above ng-template is required/used as a hideable column template-->
-    <clr-dg-column-toggle>
-      <clr-dg-column-toggle-title *ngIf="hasCustomToggleTitle">Custom Toggle Title</clr-dg-column-toggle-title>
-      <clr-dg-column-toggle-button *ngIf="hasCustomToggleButton">Custom Toggle Button</clr-dg-column-toggle-button>
-    </clr-dg-column-toggle>
-  `,
-})
-class ColumnToggleTest {
-  private mockColumnsService: MockColumnsService;
-
-  @ViewChild(TemplateRef, { static: false })
-  set templateRef(value: TemplateRef<any>) {
-    this.mockColumnsService.templateRef = value;
-  }
-
-  constructor(columnsService: ColumnsService) {
-    this.mockColumnsService = <MockColumnsService>columnsService;
-  }
-
-  hasCustomToggleTitle: boolean = false;
-  hasCustomToggleButton: boolean = false;
 }

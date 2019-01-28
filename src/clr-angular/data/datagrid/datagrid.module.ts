@@ -49,6 +49,8 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
+import { ClrSmartPopoverModule } from '../../utils/smart-popover/smart-popover.module';
+import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -83,9 +85,11 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   DatagridCellRenderer,
 
   // Chocolate
+  // ColumnWillyWonka,
   DatagridWillyWonka,
   ActionableOompaLoompa,
   ExpandableOompaLoompa,
+  // FilterOompaLoompa,
 
   // Built-in shortcuts
   DatagridStringFilter,
@@ -104,6 +108,8 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrExpandableAnimationModule,
     ClrDragAndDropModule,
     ClrSpinnerModule,
+    ClrSmartPopoverModule,
+    ClrFocusTrapModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
   exports: [CLR_DATAGRID_DIRECTIVES],

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { TestContext } from '../../helpers.spec';
@@ -17,12 +17,32 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 
 import { DatagridStringFilter } from './datagrid-string-filter';
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
+import { ColumnToggleButtonsService } from '../../providers/column-toggle-buttons.service';
+import { ClrSmartPopoverToggleService } from '../../../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrSmartPopoverPositionService } from '../../../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrSmartPopoverEventsService } from '../../../../utils/smart-popover/providers/smart-popover-events.service';
 
-const PROVIDERS = [FiltersProvider, DomAdapter, Page, StateDebouncer];
+class MockRenderer {
+  listen() {}
+}
+
+const PROVIDERS = [
+  FiltersProvider,
+  DomAdapter,
+  Page,
+  StateDebouncer,
+  ColumnToggleButtonsService,
+  ClrSmartPopoverEventsService,
+  ClrSmartPopoverPositionService,
+  ClrSmartPopoverToggleService,
+  {
+    provide: Renderer2,
+    useClass: MockRenderer,
+  },
+];
 
 export default function(): void {
   describe('DatagridStringFilter component', function() {
-    // Until we can properly type "this"
     let context: TestContext<DatagridStringFilter<string>, FullTest>;
     let filter: TestFilter;
     let filtersInstance: FiltersProvider<string>;
@@ -68,16 +88,16 @@ export default function(): void {
     });
 
     it('displays a text input when open', function() {
-      expect(context.clarityElement.querySelector("input[type='text']")).toBeNull();
+      expect(document.querySelector("input[type='text']")).toBeNull();
       openFilter();
-      expect(context.clarityElement.querySelector("input[type='text']")).not.toBeNull();
+      expect(document.querySelector("input[type='text']")).not.toBeNull();
     });
 
     it(
       'focuses on the input when the filter opens',
       fakeAsync(function() {
         openFilter();
-        const input = context.clarityElement.querySelector("input[type='text']");
+        const input: HTMLInputElement = document.querySelector("input[type='text']");
         spyOn(input, 'focus');
         expect(input.focus).not.toHaveBeenCalled();
         tick();

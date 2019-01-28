@@ -12,4 +12,8 @@ import { Component } from '@angular/core';
 export class ModalAngularShowDemo {
   // Booleans to open each example modal
   public basic: boolean = false;
+
+  onModalClose(event) {
+    console.log('modal change event');
+  }
 }

@@ -3,78 +3,94 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChild, ContentChildren, OnDestroy, OnInit, QueryList } from '@angular/core';
+import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Point } from '../../popover/common/popover';
-
-import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
-import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
+import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
+import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
+import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-column-toggle',
-  template: `
-        <button
-                #anchor
-                (click)="toggleUI()"
-                class="btn btn-sm btn-link column-toggle--action"
-                type="button">
-            <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
-        </button>
-        <div class="column-switch"
-             *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
-            <div class="switch-header">
-                <ng-container *ngIf="!title">Show Columns</ng-container>
-                <ng-content select="clr-dg-column-toggle-title"></ng-content>
-                <button
-                    class="btn btn-sm btn-link"
-                    (click)="toggleUI()"
-                    type="button">
-                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
-                </button>
-            </div>
-            <ul class="switch-content list-unstyled">
-                <li *ngFor="let column of columns">
-                    <clr-checkbox-wrapper>
-                        <input clrCheckbox type="checkbox"
-                          [disabled]="column.lastVisibleColumn"
-                          [ngModel]="!column.hidden"
-                          (ngModelChange)="toggleColumn($event, column)">
-                        <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
-                    </clr-checkbox-wrapper>
-                </li>
-            </ul>
-            <div class="switch-footer" *ngIf="buttons.length > 0">
-                <ng-content select="clr-dg-column-toggle-button"></ng-content>
-            </div>
-            <div class="switch-footer" *ngIf="buttons.length === 0">
-                <div>
-                    <button
-                            class="btn btn-sm btn-link p6 text-uppercase"
-                            [disabled]="allColumnsVisible"
-                            (click)="selectAll()"
-                            type="button">Select All
-                    </button>
-                </div>
-            </div>
-        </div>
-    `,
-  host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'open' },
+  template: `    
+      <button
+              role="button"
+              type="button"
+              class="btn btn-sm btn-link column-toggle--action"
+              clrSmartAnchor
+              clrSmartOpenCloseButton
+              [attr.aria-owns]="popoverId">
+          <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
+      </button>
+      <div class="column-switch"
+           role="dialog"
+           [id]="popoverId"
+           clrFocusTrap
+           *clrSmartPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
+          <div class="switch-header">
+              <!-- TODO(matt): Use common strings here --> 
+              <span>Show Columns</span>
+              <button
+                      class="btn btn-sm btn-link"
+                      clrSmartCloseButton
+                      type="button">
+                  <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+              </button>
+          </div>
+          <ul class="switch-content list-unstyled">
+              <li *ngFor="let column of columns">
+                  <clr-checkbox-wrapper>
+                      <input clrCheckbox type="checkbox"
+                             [disabled]="column.lastVisibleColumn"
+                             [ngModel]="!column.hidden"
+                             (ngModelChange)="toggleColumn($event, column)">
+                      <label>
+                          <ng-template [ngTemplateOutlet]="column.template"></ng-template>
+                      </label>
+                  </clr-checkbox-wrapper>
+              </li>
+          </ul>
+          <div class="switch-footer">
+              <div>
+                  <button
+                          class="btn btn-sm btn-link p6 text-uppercase"
+                          [disabled]="allColumnsVisible"
+                          (click)="selectAll()"
+                          type="button">Select All
+                  </button>
+              </div>
+          </div>
+      </div>
+  `,
+  host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'openState' },
+  providers: [
+    UNIQUE_ID_PROVIDER,
+    ClrSmartPopoverEventsService,
+    ClrSmartPopoverPositionService,
+    ClrSmartPopoverToggleService,
+  ],
 })
 export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private _allColumnsVisible: boolean;
 
-  /***
-   * Popover init
-   */
-  public anchorPoint: Point = Point.TOP_LEFT;
-  public popoverPoint: Point = Point.LEFT_BOTTOM;
-  public open: boolean = false;
+  // Smart Popover
+  public smartPosition: ClrSmartPosition = {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.START,
+    content: ClrAlignment.START,
+  };
+  public openState;
 
   /****
    * DatagridHideableColumnModel init
@@ -89,13 +105,11 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     this._allColumnsVisible = value;
   }
 
-  @ContentChild(ClrDatagridColumnToggleTitle) title: ClrDatagridColumnToggleTitle;
-  @ContentChildren(ClrDatagridColumnToggleButton) buttons: QueryList<ClrDatagridColumnToggleButton>;
-
   constructor(
     public hideableColumnService: HideableColumnService,
     private columnToggleButtons: ColumnToggleButtonsService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    @Inject(UNIQUE_ID) public popoverId: string
   ) {}
 
   ngOnInit() {
@@ -137,10 +151,5 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     column.hidden = !event;
     this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
     this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
-    this.hideableColumnService.updateForLastVisibleColumn();
-  }
-
-  toggleUI() {
-    this.open = !this.open;
   }
 }

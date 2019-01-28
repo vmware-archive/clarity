@@ -56,7 +56,6 @@ export const APP_ROUTES: Routes = [
   { path: 'toggles', loadChildren: 'src/app/toggles/toggles.demo.module#TogglesDemoModule' },
   { path: 'tooltips', loadChildren: 'src/app/tooltips/tooltips.demo.module#TooltipsDemoModule' },
   { path: 'typography', loadChildren: 'src/app/typography/typography.demo.module#TypographyDemoModule' },
-  { path: 'utils', loadChildren: 'src/app/utils/utils.demo.module#UtilsDemoModule' },
   { path: 'vertical-nav', loadChildren: 'src/app/vertical-nav/vertical-nav.demo.module#VerticalNavDemoModule' },
   { path: 'virtual-scroll', loadChildren: 'src/app/virtual-scroll/virtual-scroll.demo.module#VirtualScrollDemoModule' },
   { path: 'wizard', loadChildren: 'src/app/wizard/wizard.demo.module#WizardDemoModule' },

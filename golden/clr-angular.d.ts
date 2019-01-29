@@ -351,9 +351,9 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
 
 export interface ClrDatagridFilterInterface<T, S = any> {
     changes: Observable<any>;
-    state?: S;
+    readonly state?: S;
     accepts(item: T): boolean;
-    equals?(other: ClrDatagridFilterInterface<any, any>): boolean;
+    equals?(other: ClrDatagridFilterInterface<T, any>): boolean;
     isActive(): boolean;
 }
 

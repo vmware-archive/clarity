@@ -12,7 +12,7 @@ export interface ClrDatagridFilterInterface<T, S = any> {
 
   changes: Observable<any>;
 
-  state?: S;
+  readonly state?: S;
 
-  equals?(other: ClrDatagridFilterInterface<any, any>): boolean;
+  equals?(other: ClrDatagridFilterInterface<T, any>): boolean;
 }

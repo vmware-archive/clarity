@@ -15,7 +15,7 @@ interface ClrDatagridStateInterface<T = any> {
         by: string | ClrDatagridComparatorInterface<T>;
         reverse: boolean;
     };
-    filters?: ({property: string, value: string} | ClrDatagridFilterInterface<T>)[];
+    filters?: any[];
 }
 `,
 

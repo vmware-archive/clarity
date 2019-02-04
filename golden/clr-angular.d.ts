@@ -349,9 +349,11 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     toggle(): void;
 }
 
-export interface ClrDatagridFilterInterface<T> {
+export interface ClrDatagridFilterInterface<T, S = any> {
     changes: Observable<any>;
+    readonly state?: S;
     accepts(item: T): boolean;
+    equals?(other: ClrDatagridFilterInterface<T, any>): boolean;
     isActive(): boolean;
 }
 
@@ -471,10 +473,7 @@ export declare enum ClrDatagridSortOrder {
 }
 
 export interface ClrDatagridStateInterface<T = any> {
-    filters?: ({
-        property: string;
-        value: string;
-    } | ClrDatagridFilterInterface<T>)[];
+    filters?: any[];
     page?: {
         from?: number;
         to?: number;

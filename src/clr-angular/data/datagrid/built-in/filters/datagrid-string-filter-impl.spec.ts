@@ -6,6 +6,9 @@
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
 
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
+import { DatagridPropertyStringFilter } from './datagrid-property-string-filter';
+import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
+import { Observable } from 'rxjs';
 
 export default function(): void {
   describe('DatagridStringFilterImpl', function() {
@@ -48,11 +51,61 @@ export default function(): void {
       fullFilter.value = 'test';
       expect(fullFilter.accepts('TEST')).toBe(true);
     });
+
+    it('exposes state', function() {
+      expect(fullFilter.state).toBe(fullFilter);
+    });
+
+    it('compares filters', function() {
+      let otherFilter = fullFilter;
+      expect(fullFilter.equals(otherFilter)).toBe(true);
+      // Reference only comparison should be enough for the common case
+      otherFilter = new DatagridStringFilterImpl(new TestFilter());
+      expect(fullFilter.equals(otherFilter)).toBe(false);
+    });
+
+    describe('with DatagridPropertyStringFilter', function() {
+      beforeEach(function() {
+        const propFilter = new DatagridPropertyStringFilter('a.b.c');
+        fullFilter = new DatagridStringFilterImpl(propFilter);
+      });
+
+      it('exposes state', function() {
+        fullFilter.value = 'test';
+        expect(fullFilter.state).toEqual({ property: 'a.b.c', value: 'test' });
+      });
+
+      it('compares filters', function() {
+        let otherFilter: ClrDatagridFilterInterface<any> = fullFilter;
+        expect(fullFilter.equals(otherFilter)).toBe(true);
+        // In the specific case we can compare different filter instances
+        otherFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter('a.b.c'));
+        expect(fullFilter.equals(otherFilter)).toBe(true);
+        // Incompatible inner function type
+        otherFilter = new DatagridStringFilterImpl(new TestFilter());
+        expect(fullFilter.equals(otherFilter)).toBe(false);
+        // Incompatible filter object
+        otherFilter = new IncompatibleFilter();
+        expect(fullFilter.equals(otherFilter)).toBe(false);
+      });
+    });
   });
 }
 
 class TestFilter implements ClrDatagridStringFilterInterface<string> {
   accepts(item: string, search: string) {
     return item.toLowerCase() === search;
+  }
+}
+
+class IncompatibleFilter implements ClrDatagridFilterInterface<string> {
+  accepts(item: string): boolean {
+    return true;
+  }
+
+  changes: Observable<any>;
+
+  isActive(): boolean {
+    return true;
   }
 }

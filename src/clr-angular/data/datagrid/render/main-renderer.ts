@@ -202,7 +202,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     });
 
     // set orders array with headers ColumnOrder
-    this.columnOrderCoordinatorService.orderModels = this.headers.map((header, index) => {
+    this.columnOrderCoordinatorService.orderModels = this.headers.map(header => {
       return header.orderModel;
     });
   }

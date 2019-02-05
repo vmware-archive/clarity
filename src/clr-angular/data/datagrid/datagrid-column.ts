@@ -38,32 +38,32 @@ let nbCount: number = 0;
   selector: 'clr-dg-column',
   template: `
     <clr-dg-column-reorder-droppable [side]="leftReorderDroppable"></clr-dg-column-reorder-droppable>
-    <div class="datagrid-column-wrapper" [clrDraggable]="columnDropData" [clrGroup]="columnOrderDropKey">
-        <div class="datagrid-column-flex">
-            <!-- I'm really not happy with that select since it's not very scalable -->
-            <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+    <div class="datagrid-column-wrapper" [clrDraggable]="columnDropData" [clrGroup]="columnGroupId">
+      <div class="datagrid-column-flex">
+        <!-- I'm really not happy with that select since it's not very scalable -->
+        <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
-            <clr-dg-string-filter
-                    *ngIf="field && !customFilter"
-                    [clrDgStringFilter]="registered"
-                    [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+        <clr-dg-string-filter
+          *ngIf="field && !customFilter"
+          [clrDgStringFilter]="registered"
+          [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <ng-template #columnTitle>
-                <ng-content></ng-content>
-            </ng-template>
+        <ng-template #columnTitle>
+          <ng-content></ng-content>
+        </ng-template>
 
-            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
-                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-            </button>
+        <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
+          <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+        </button>
 
-            <span class="datagrid-column-title" *ngIf="!sortable">
+        <span class="datagrid-column-title" *ngIf="!sortable">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
-        </div>
+      </div>
     </div>
     <clr-dg-column-separator></clr-dg-column-separator>
     <clr-dg-column-reorder-droppable [side]="rightReorderDroppable"></clr-dg-column-reorder-droppable>
-    `,
+  `,
   host: {
     '[class.datagrid-column]': 'true',
     '[class.datagrid-column--hidden]': 'hidden',
@@ -111,7 +111,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     return this.columnOrderModel;
   }
 
-  public get columnOrderDropKey() {
+  public get columnGroupId() {
     return this.columnOrderModel.columnGroupId;
   }
 

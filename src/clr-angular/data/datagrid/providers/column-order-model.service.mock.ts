@@ -26,16 +26,22 @@ export class MockColumnOrderModelService {
   get previousVisibleHeaderWidth(): number {
     return this.previousVisibleColumnModel ? this.previousVisibleColumnModel.headerWidth : 0;
   }
+
   public dropReceived(event) {}
 }
 
-export function mockHeaderEl(width: number, height: number) {
+export function createMockHeaderEl(width: number, height: number): Node {
   const headerEl = document.createElement('div');
   document.body.appendChild(headerEl);
-  headerEl.style.position = 'absolute';
   headerEl.style.width = width + 'px';
   headerEl.style.height = height + 'px';
   return headerEl;
+}
+
+export function destroyMockHeaderEl(el: Node): void {
+  if (document.body.contains(el)) {
+    document.body.removeChild(el);
+  }
 }
 
 export function populateMockProps(
@@ -46,7 +52,7 @@ export function populateMockProps(
 ) {
   mockService.columnGroupId = id;
   mockService.flexOrder = flexOrder;
-  mockService.headerEl = mockHeaderEl(width, 40);
+  mockService.headerEl = createMockHeaderEl(width, 40);
 }
 
 export const MOCK_COLUMN_ORDER_MODEL_PROVIDER = {

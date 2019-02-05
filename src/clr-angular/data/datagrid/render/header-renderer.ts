@@ -31,8 +31,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
         .filterRenderSteps(DatagridRenderStep.DETECT_STRICT_WIDTHS)
         .subscribe(() => this.detectStrictWidth())
     );
-
-    columnOrderModel.headerEl = el.nativeElement;
+    this.columnOrderModel.headerEl = el.nativeElement;
   }
 
   @Output('clrDgColumnResize') resizeEmitter: EventEmitter<number> = new EventEmitter();
@@ -53,6 +52,8 @@ export class DatagridHeaderRenderer implements OnDestroy {
     if (this.widthSet && !this.columnResizerService.resizedBy) {
       this.renderer.setStyle(this.el.nativeElement, 'width', null);
     }
+
+    this.columnOrderModel.headerWidth = 0;
   }
 
   private detectStrictWidth() {
@@ -80,10 +81,15 @@ export class DatagridHeaderRenderer implements OnDestroy {
       }
       // Don't set width if there is a user-defined one. Just add the strict width class.
       this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
+
+      // Here, the actual should be equal to the strictWidth.
+      this.columnOrderModel.headerWidth = width;
+
       return;
     }
     this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
     this.renderer.setStyle(this.el.nativeElement, 'width', width + 'px');
+
     this.widthSet = true;
   }
 

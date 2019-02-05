@@ -47,52 +47,50 @@ export class ColumnOrderModelService {
     console.log(dropData);
   }
 
-  get nextVisibleColumnModel(): ColumnOrderModelService {
-    // collect all columns that appears after this column
-    // that means collect all models with greater flex order value
-    const nextVisibleColumnModels = this.columnOrderCoordinatorService.orderModels.filter(
-      model => model.flexOrder > this.flexOrder && !model.isHidden
+  private findVisibleColumnModelHasMet(
+    filterCondition: (_model: ColumnOrderModelService) => boolean,
+    reduceCondition: (_reducedModel: ColumnOrderModelService, _currentModel: ColumnOrderModelService) => boolean
+  ): ColumnOrderModelService {
+    const filteredVisibleColumnModels = this.columnOrderCoordinatorService.orderModels.filter(
+      model => !model.isHidden && filterCondition(model)
     );
 
-    // current column could be the one that visually appears at the end;
-    if (nextVisibleColumnModels.length === 0) {
+    if (filteredVisibleColumnModels.length === 0) {
       return;
     }
 
-    // to find the next immediate visible columns model
-    // find the model with the smallest flexorder value from nextVisibleColumnModels
-    return nextVisibleColumnModels.reduce((smallestFlexOrderModel, currentModel) => {
-      if (smallestFlexOrderModel.flexOrder > currentModel.flexOrder) {
+    return filteredVisibleColumnModels.reduce((reducedModel, currentModel) => {
+      if (reduceCondition(reducedModel, currentModel)) {
         return currentModel;
       }
-      return smallestFlexOrderModel;
+      return reducedModel;
     });
+  }
+
+  get nextVisibleColumnModel(): ColumnOrderModelService {
+    return this.findVisibleColumnModelHasMet(
+      (model: ColumnOrderModelService) => model.flexOrder > this.flexOrder,
+      (smallestFlexOrderModel: ColumnOrderModelService, currentModel: ColumnOrderModelService) =>
+        smallestFlexOrderModel.flexOrder > currentModel.flexOrder
+    );
   }
 
   get previousVisibleColumnModel(): ColumnOrderModelService {
-    // collect all columns that appears before this column
-    // that means collect all models with smaller flex order value
-    const previousVisibleColumnModels = this.columnOrderCoordinatorService.orderModels.filter(
-      model => model.flexOrder < this.flexOrder && !model.isHidden
+    return this.findVisibleColumnModelHasMet(
+      (model: ColumnOrderModelService) => model.flexOrder < this.flexOrder,
+      (largestFlexOrderModel: ColumnOrderModelService, currentModel: ColumnOrderModelService) =>
+        largestFlexOrderModel.flexOrder < currentModel.flexOrder
     );
-
-    // current column could be the one that visually appears at the first;
-    if (previousVisibleColumnModels.length === 0) {
-      return;
-    }
-
-    // to find the previous immediate visible columns model
-    // find the model with the largest flexorder value from previousVisibleColumnModels
-    return previousVisibleColumnModels.reduce((largestFlexOrderModel, currentModel) => {
-      if (largestFlexOrderModel.flexOrder < currentModel.flexOrder) {
-        return currentModel;
-      }
-      return largestFlexOrderModel;
-    });
   }
 
-  get headerWidth(): number {
-    return this.headerEl ? this.domAdapter.clientRect(this.headerEl).width : 0;
+  private _headerWidth: number;
+
+  set headerWidth(value: number) {
+    this._headerWidth = value;
+  }
+
+  get headerWidth() {
+    return this._headerWidth ? this._headerWidth : this.domAdapter.clientRect(this.headerEl).width;
   }
 
   get nextVisibleHeaderWidth(): number {

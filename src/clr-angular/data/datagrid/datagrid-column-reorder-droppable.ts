@@ -12,15 +12,16 @@ import { ClrDropToleranceInterface } from '@clr/angular';
 
 @Component({
   selector: 'clr-dg-column-reorder-droppable',
-  template: `<div class="datagrid-column-reorder-droppable" clrDroppable 
-                  [clrGroup]="columnOrderDropKey"
-                  [clrDropTolerance]="dropTolerance" 
-                  (clrDragStart)="setDropTolerance($event)" 
-                  (clrDragEnter)="showHighlight(dropLine)" 
-                  (clrDragLeave)="hideHighlight(dropLine)"
-                  (clrDrop)="updateOrder($event, dropLine)">
-    <div class="datagrid-column-drop-line" #dropLine></div>
-  </div>`,
+  template: `
+    <div class="datagrid-column-reorder-droppable" clrDroppable
+         [clrGroup]="columnGroupId"
+         [clrDropTolerance]="dropTolerance"
+         (clrDragStart)="setDropTolerance($event)"
+         (clrDragEnter)="showHighlight(dropLine)"
+         (clrDragLeave)="hideHighlight(dropLine)"
+         (clrDrop)="updateOrder($event, dropLine)">
+      <div class="datagrid-column-drop-line" #dropLine></div>
+    </div>`,
 })
 export class ClrDatagridColumnReorderDroppable {
   constructor(
@@ -29,7 +30,7 @@ export class ClrDatagridColumnReorderDroppable {
     private renderer: Renderer2
   ) {}
 
-  public get columnOrderDropKey(): string {
+  public get columnGroupId(): string {
     return this.columnOrderModel.columnGroupId;
   }
 

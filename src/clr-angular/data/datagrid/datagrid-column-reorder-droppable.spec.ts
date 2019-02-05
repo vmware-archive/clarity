@@ -13,6 +13,7 @@ import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { MOCK_TABLE_SIZE_PROVIDER, MockTableSizeService } from './providers/table-size.service.mock';
 
 import {
+  destroyMockHeaderEl,
   MOCK_COLUMN_ORDER_MODEL_PROVIDER,
   MockColumnOrderModelService,
   populateMockProps,
@@ -55,10 +56,21 @@ export default function(): void {
 
     afterEach(function() {
       context.fixture.destroy();
+
+      destroyMockHeaderEl(columnOrderModelService.headerEl);
+
+      // the last column model service wouldn't have the next column model so we have to check.
+      if (columnOrderModelService.nextVisibleColumnModel) {
+        destroyMockHeaderEl(columnOrderModelService.nextVisibleColumnModel.headerEl);
+      }
+      // the first column model service wouldn't have the previous column model so we have to check.
+      if (columnOrderModelService.previousVisibleColumnModel) {
+        destroyMockHeaderEl(columnOrderModelService.previousVisibleColumnModel.headerEl);
+      }
     });
 
     it('has column group id', function() {
-      expect(context.clarityDirective.columnOrderDropKey).toBe('dg-mock-group-id');
+      expect(context.clarityDirective.columnGroupId).toBe('dg-mock-group-id');
     });
 
     it('both droppables should have no drop area for draggable from same column', function() {

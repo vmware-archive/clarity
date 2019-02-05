@@ -8,10 +8,10 @@ import { ColumnOrderModelService } from './column-order-model.service';
 import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.service';
 import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
-import { mockHeaderEl } from './column-order-model.service.mock';
+import { createMockHeaderEl, destroyMockHeaderEl } from './column-order-model.service.mock';
 
 export default function(): void {
-  describe('ColumnOrderCoordinatorService', function() {
+  describe('ColumnOrderModelService', function() {
     let columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
     let columnOrderModelService: ColumnOrderModelService;
     let columnOrderModelServicePrev: ColumnOrderModelService;
@@ -27,17 +27,23 @@ export default function(): void {
       // Here visually their columns would appear in the following order:
       // columnOrderModelServicePrev, columnOrderModelService, columnOrderModelServiceNext;
       columnOrderModelService.flexOrder = 1;
-      columnOrderModelService.headerEl = mockHeaderEl(200, 40);
+      columnOrderModelService.headerEl = createMockHeaderEl(200, 40);
 
       columnOrderModelServicePrev.flexOrder = 0;
-      columnOrderModelServicePrev.headerEl = mockHeaderEl(400, 40);
+      columnOrderModelServicePrev.headerEl = createMockHeaderEl(400, 40);
 
       columnOrderModelServiceNext.flexOrder = 2;
-      columnOrderModelServiceNext.headerEl = mockHeaderEl(300, 40);
+      columnOrderModelServiceNext.headerEl = createMockHeaderEl(300, 40);
 
       columnOrdersCoordinatorService.orderModels.push(columnOrderModelService);
       columnOrdersCoordinatorService.orderModels.push(columnOrderModelServicePrev);
       columnOrdersCoordinatorService.orderModels.push(columnOrderModelServiceNext);
+    });
+
+    afterEach(function() {
+      destroyMockHeaderEl(columnOrderModelService.headerEl);
+      destroyMockHeaderEl(columnOrderModelServicePrev.headerEl);
+      destroyMockHeaderEl(columnOrderModelServiceNext.headerEl);
     });
 
     it('should have column group id from column order coordinator service', function() {

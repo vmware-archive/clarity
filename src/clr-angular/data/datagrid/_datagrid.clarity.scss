@@ -343,7 +343,8 @@
       }
 
       clr-dg-filter,
-      clr-dg-string-filter {
+      clr-dg-string-filter,
+      clr-dg-numeric-filter {
         display: flex;
         order: 99;
         margin-left: auto;

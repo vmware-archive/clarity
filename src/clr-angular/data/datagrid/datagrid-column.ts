@@ -40,7 +40,7 @@ let nbCount: number = 0;
   template: `
         <div class="datagrid-column-flex">
             <!-- I'm really not happy with that select since it's not very scalable -->
-            <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+            <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
 
             <clr-dg-string-filter
                     *ngIf="field && !customFilter && (colType=='string')"

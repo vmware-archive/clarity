@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { PokemonFilter } from '../utils/pokemon-filter';
+import { IDFilter } from '../utils/id-filter';
 
 @Component({
   selector: 'clr-datagrid-string-filtering-demo',
@@ -19,6 +20,7 @@ export class DatagridStringFilteringDemo {
   users: User[];
 
   pokemonFilter = new PokemonFilter();
+  idFilter = new IDFilter();
   myFilterValue1 = 'A';
   myFilterValue2 = 'E';
   displayFilter = true;

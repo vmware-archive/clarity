@@ -136,19 +136,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
      * via the [clrDgColType] input by setting it to 'string' or 'number'.
      */
 
-  private _colType: string = 'string';
-  public get colType() {
-    return this._colType;
-  }
-
-  @Input('clrDgColType')
-  public set colType(rawType: string) {
-    if (typeof rawType === 'string' && rawType.toLowerCase() === 'number') {
-      this._colType = 'number';
-    } else {
-      this._colType = 'string';
-    }
-  }
+  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
 
   /*
      * Simple object property shortcut, activates both sorting and filtering

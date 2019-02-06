@@ -23,14 +23,14 @@
 <p>
   By default, bound columns are assumed to contain string-like contents and the user is presented with the normal string filter.
   If you know that the contents of the column will be numeric, you can instead use the built-in numeric range filter by adding
-  <code class="clr-code">[clrDgColType]=&quot;'number'&quot;</code>.  You can see an example of this in the ID column.
+  <code class="clr-code">clrDgColType=&quot;number&quot;</code>.  You can see an example of this in the ID column.
 </p>
 
 <clr-datagrid>
-  <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
-  <clr-dg-column [clrDgField]="'id'" [clrDgColType]="'number'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
-  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column clrDgField="creation">Creation date</clr-dg-column>
+  <clr-dg-column clrDgField="id" clrDgColType="number">User ID</clr-dg-column>
+  <clr-dg-column clrDgField="name" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
+  <clr-dg-column clrDgField="pokemon.name">Pokemon</clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users">

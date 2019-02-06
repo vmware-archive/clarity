@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 import { ClrDatagridNumericFilterInterface } from '../../interfaces/numeric-filter.interface';
+import { DatagridPropertyNumericFilter } from './datagrid-property-numeric-filter';
 
 export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInterface<T> {
   constructor(public filterFn: ClrDatagridNumericFilterInterface<T>) {}
@@ -82,5 +83,29 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
     // We have a filter function in case someone wants to implement a numeric
     // filter that always passes nulls or similar
     return this.filterFn.accepts(item, this._low, this._high);
+  }
+
+  public get state() {
+    if (this.filterFn instanceof DatagridPropertyNumericFilter) {
+      return {
+        property: this.filterFn.prop,
+        // TODO: Should this return value: [this._low, this._high] instead?
+        low: this._low,
+        high: this._high,
+      };
+    }
+  }
+
+  public equals(other: ClrDatagridFilterInterface<T, any>): boolean {
+    if (other instanceof DatagridNumericFilterImpl) {
+      if (other.filterFn instanceof DatagridPropertyNumericFilter) {
+        return (
+          this.filterFn instanceof DatagridPropertyNumericFilter &&
+          other.filterFn.prop === this.filterFn.prop &&
+          other.low === this._low &&
+          other.high === this._high
+        );
+      }
+    }
   }
 }

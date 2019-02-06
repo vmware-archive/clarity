@@ -138,7 +138,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   private _colType: string = 'string';
   public get colType() {
-    return _colType;
+    return this._colType;
   }
 
   @Input('clrDgColType')

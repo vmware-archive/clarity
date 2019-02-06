@@ -5,15 +5,18 @@
  */
 
 import { ColumnOrderModelService } from './column-order-model.service';
+import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 
-export class MockColumnOrderModelService {
+export class MockColumnOrderModelService implements Pick<ColumnOrderModelService, keyof ColumnOrderModelService> {
   public flexOrder: number;
   public columnGroupId: string;
   public headerEl: any;
+  public hideableColumnModel: DatagridHideableColumnModel;
   public nextVisibleColumnModel: any;
   public previousVisibleColumnModel: any;
   public isAtFirst: boolean = false;
   public isAtEnd: boolean = false;
+  public isHidden: boolean;
 
   get headerWidth(): number {
     return this.headerEl.getBoundingClientRect().width;

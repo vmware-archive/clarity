@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
 import { Component, Input, Renderer2 } from '@angular/core';
-import { TableSizeService } from './providers/table-size.service';
-import { ColumnOrderModelService } from './providers/column-order-model.service';
+
+import { ClrDropToleranceInterface } from '../../utils/drag-and-drop/interfaces/drop-tolerance.interface';
 import { ColumnHeaderSides } from './enums/header-sides.enum';
-import { ClrDropToleranceInterface } from '@clr/angular';
+import { ColumnOrderModelService } from './providers/column-order-model.service';
+import { TableSizeService } from './providers/table-size.service';
 
 @Component({
   selector: 'clr-dg-column-reorder-droppable',

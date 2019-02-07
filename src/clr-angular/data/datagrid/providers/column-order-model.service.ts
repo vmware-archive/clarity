@@ -47,40 +47,20 @@ export class ColumnOrderModelService {
     console.log(dropData);
   }
 
-  private findVisibleColumnModelHasMet(
-    filterCondition: (_model: ColumnOrderModelService) => boolean,
-    reduceCondition: (_reducedModel: ColumnOrderModelService, _currentModel: ColumnOrderModelService) => boolean
-  ): ColumnOrderModelService {
-    const filteredVisibleColumnModels = this.columnOrderCoordinatorService.orderModels.filter(
-      model => !model.isHidden && filterCondition(model)
-    );
+  private findAdjacentVisibleModel(prev = false): ColumnOrderModelService {
+    const filteredVisibleColumnModels = this.columnOrderCoordinatorService.orderModels
+      .filter(model => (!model.isHidden && prev ? model.flexOrder < this.flexOrder : model.flexOrder > this.flexOrder))
+      .sort(model => model.flexOrder);
 
-    if (filteredVisibleColumnModels.length === 0) {
-      return;
-    }
-
-    return filteredVisibleColumnModels.reduce((reducedModel, currentModel) => {
-      if (reduceCondition(reducedModel, currentModel)) {
-        return currentModel;
-      }
-      return reducedModel;
-    });
+    return prev ? filteredVisibleColumnModels[filteredVisibleColumnModels.length - 1] : filteredVisibleColumnModels[0];
   }
 
   get nextVisibleColumnModel(): ColumnOrderModelService {
-    return this.findVisibleColumnModelHasMet(
-      (model: ColumnOrderModelService) => model.flexOrder > this.flexOrder,
-      (smallestFlexOrderModel: ColumnOrderModelService, currentModel: ColumnOrderModelService) =>
-        smallestFlexOrderModel.flexOrder > currentModel.flexOrder
-    );
+    return this.findAdjacentVisibleModel(false);
   }
 
   get previousVisibleColumnModel(): ColumnOrderModelService {
-    return this.findVisibleColumnModelHasMet(
-      (model: ColumnOrderModelService) => model.flexOrder < this.flexOrder,
-      (largestFlexOrderModel: ColumnOrderModelService, currentModel: ColumnOrderModelService) =>
-        largestFlexOrderModel.flexOrder < currentModel.flexOrder
-    );
+    return this.findAdjacentVisibleModel(true);
   }
 
   private _headerWidth: number;

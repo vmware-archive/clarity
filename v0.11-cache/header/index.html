@@ -24,7 +24,30 @@
             background: transparent;
             padding: 12px;
             max-height: none;
-        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-header"><clr-main-container class="main-container">
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-header"><clr-alert>
+
+<!----><div class="alert alert-warning alert-sm alert-app-level">
+    <div class="alert-items">
+        
+    <clr-alert-item class="alert-item">
+        <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        
+        <span class="alert-text">
+            This version of Clarity is no longer supported. We recommend that you update to the latest version of Clarity.
+        </span>
+        <div class="alert-actions">
+            <a class="btn alert-action" href="/clarity/news">Update</a>
+        </div>
+    
+    </clr-alert-item>
+
+    </div>
+    <!---->
+</div>
+</clr-alert>
+<clr-main-container class="main-container">
     <clr-header class="header-6 header">
         <!----><button class="header-hamburger-trigger" type="button">
             <span></span>
@@ -147,7 +170,7 @@
                 <div class="col-xs-12 col-sm-6">
                     <h5>Top Level Navigation</h5>
                     <p>Include top level navigation items. These items should be persistent throughout your experience.</p>
-                    <p>Have a maximum of four items in top-level navigation. For more info, take a look at <a routerlink="./navigation" href="/header/navigation">Navigation</a>.</p>
+                    <p>Have a maximum of four items in top-level navigation. For more info, take a look at <a routerlink="../navigation" href="/navigation">Navigation</a>.</p>
                     <h5>Typography</h5>
                     <p>Use clear language for top level navigation items. Do not combine icons and text.</p>
                     <p>If you’re using icons on their own in the header, using tooltips will help users
@@ -188,7 +211,7 @@
             <p>
                 Clarity includes functionality for displaying the navigation on smaller devices like
                 tablets and phones with the <em>responsive navigation component</em> in clarity-angular. Details
-                on how to use <a fragment="responsive_navigation" routerlink="./navigation" href="/header/navigation#responsive_navigation">Clarity's responsive header can be found in our documentation
+                on how to use <a fragment="responsive_navigation" routerlink="../navigation" href="/navigation#responsive_navigation">Clarity's responsive header can be found in our documentation
                 on app navigation</a>.
             </p>
 
@@ -433,7 +456,7 @@
         
                     <span class="alert-text">
                         For information about headers with responsive navigation, see
-                        <a fragment="responsive_navigation" routerlink="./navigation" href="/header/navigation#responsive_navigation">Responsive Navigation</a>.
+                        <a fragment="responsive_navigation" routerlink="../navigation" href="/navigation#responsive_navigation">Responsive Navigation</a>.
                     </span>
                 
     </clr-alert-item>
@@ -815,7 +838,7 @@
 
             <p>
                 <code class="clr-code">.subnav</code> immediately follows the <code class="clr-code">.header</code>. It
-                wraps a <a routerlink="./tabs" href="/header/tabs">tab</a> and an <code class="clr-code">aside</code> section.
+                wraps a <a routerlink="../tabs" href="/tabs">tab</a> and an <code class="clr-code">aside</code> section.
             </p>
 
             <clr-nav-demo-subnav _nghost-c61="">
@@ -1343,4 +1366,4 @@
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.87be3543c0bc2dce6311.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.8028d66e00402a3c01e4.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.a5b0b2167e209636d4de.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.8fa68ecd9e858c8b9727.bundle.js"></script></body></html>

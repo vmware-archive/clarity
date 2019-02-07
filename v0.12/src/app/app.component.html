@@ -1,3 +1,13 @@
+<clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false" [clrAlertSizeSmall]="true" [clrAlertAppLevel]="true">
+    <clr-alert-item>
+        <span class="alert-text">
+            This version of Clarity is no longer supported. We recommend that you update to the latest version of Clarity.
+        </span>
+        <div class="alert-actions">
+            <a href="{{environment.base}}/news" class="btn alert-action">Update</a>
+        </div>
+    </clr-alert-item>
+</clr-alert>
 <clr-main-container>
     <clr-header class="header-6">
         <div class="branding">

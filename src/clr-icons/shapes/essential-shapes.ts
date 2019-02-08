@@ -878,6 +878,30 @@ export const ClrShapeTree = clrIconSVG(`<path d="M30.6,11.7C29.2,5.8,24,1.7,18,1
 	c0-6.1,4.9-11,11-11s11,4.9,11,11c0,4.9-3.3,9.2-8,10.6v2.1C28,25.7,32.3,18.7,30.6,11.7z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,2C10.8,1.7,4.8,7.3,4.5,14.5C4.2,21.7,9.8,27.7,17,28v-5.2l-5.2-5.2c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0
 	c0,0,0,0,0,0l3.8,3.8v-6.2l-2.7-2.7c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0c0,0,0,0,0,0l3.3,3.3v3l3.3-3.3c0.4-0.4,1-0.4,1.4,0
 	c0,0,0,0,0,0c0.4,0.4,0.4,1,0,1.4L19,18.8V28c7.2-0.3,12.8-6.3,12.5-13.5S25.2,1.7,18,2z" class="clr-i-solid clr-i-solid-path-1" /><path d="M18,28c-0.3,0-0.6,0-1,0v5c0,0.6,0.4,1,1,1s1-0.4,1-1v-5C18.7,28,18.3,28,18,28z" class="clr-i-solid clr-i-solid-path-2" />`);
+export const ClrShapeFish = clrIconSVG(
+  `<circle cx="11.49" cy="17.5" r="1.5" class="clr-i-outline clr-i-outline-path-1" /><path d="M33.48,9.29a1,1,0,0,0-1,0c-3.37,2-5.91,5.81-6.9,7.45L24.85,18s-1,1.62-1,1.62c-1.76,2.49-5.1,6.36-8.79,6.36-4.65,0-8.75-6.15-9.84-7.94,1.09-1.79,5.18-7.94,9.84-7.94,3.54,0,6.77,3.58,8.58,6.07l.28-.48s.36-.51.93-1.25C22.72,11.64,19.18,8.06,15,8.06c-6.59,0-11.67,9.07-11.88,9.46L2.89,18l.27.48c.21.39,5.29,9.46,11.88,9.46,5.06,0,9.22-5.34,11-8C26,20,27.18,18,27.18,18h0l.07-.11a18.06,18.06,0,0,1,1.88-2.75s0,0,0,0a20.31,20.31,0,0,1,2.86-3V23.88a20.93,20.93,0,0,1-3.61-4l-.16.26h0l-1,1.59a18.74,18.74,0,0,0,5.21,4.95,1,1,0,0,0,.5.14,1.13,1.13,0,0,0,.5-.13,1,1,0,0,0,.5-.87V10.16A1,1,0,0,0,33.48,9.29Z" class="clr-i-outline clr-i-outline-path-2" />`
+);
+export const ClrShapeForm = clrIconSVG(
+  `<path d="M21,12H7a1,1,0,0,1-1-1V7A1,1,0,0,1,7,6H21a1,1,0,0,1,1,1v4A1,1,0,0,1,21,12ZM8,10H20V7.94H8Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M21,14.08H7a1,1,0,0,0-1,1V19a1,1,0,0,0,1,1H18.36L22,16.3V15.08A1,1,0,0,0,21,14.08ZM20,18H8V16H20Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M11.06,31.51v-.06l.32-1.39H4V4h20V14.25L26,12.36V3a1,1,0,0,0-1-1H3A1,1,0,0,0,2,3V31a1,1,0,0,0,1,1h8A3.44,3.44,0,0,1,11.06,31.51Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M22,19.17l-.78.79A1,1,0,0,0,22,19.17Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M6,26.94a1,1,0,0,0,1,1h4.84l.3-1.3.13-.55,0-.05H8V24h6.34l2-2H7a1,1,0,0,0-1,1Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M33.49,16.67,30.12,13.3a1.61,1.61,0,0,0-2.28,0h0L14.13,27.09,13,31.9a1.61,1.61,0,0,0,1.26,1.9,1.55,1.55,0,0,0,.31,0,1.15,1.15,0,0,0,.37,0l4.85-1.07L33.49,19a1.6,1.6,0,0,0,0-2.27ZM18.77,30.91l-3.66.81L16,28.09,26.28,17.7l2.82,2.82ZM30.23,19.39l-2.82-2.82L29,15l2.84,2.84Z" class="clr-i-outline clr-i-outline-path-6" />`
+);
+export const ClrShapeFuel = clrIconSVG(
+  `<path d="M20.12,34H5.9A2.81,2.81,0,0,1,3,31.19V4.86A2.9,2.9,0,0,1,6,2.07H20.22A2.72,2.72,0,0,1,23,4.86V31.19A2.82,2.82,0,0,1,20.12,34ZM5.9,4A.87.87,0,0,0,5,4.86V31.19a.87.87,0,0,0,.87.87H20.12a.94.94,0,0,0,.95-.87V4.86A.94.94,0,0,0,20.12,4Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M29.53,34A3.5,3.5,0,0,1,26,30.5V23a2,2,0,0,0-2-2H22.57a1,1,0,0,1,0-2H24a4,4,0,0,1,4,4V30.5a1.5,1.5,0,0,0,3,0V17.3l-3.13-7A2.29,2.29,0,0,0,25.8,9h-.73a1,1,0,1,1,0-2h.73a4.3,4.3,0,0,1,3.93,2.55l3.21,7.16a1,1,0,0,1,.09.41V30.5A3.5,3.5,0,0,1,29.53,34Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M18,9H8A1,1,0,1,1,8,7H18a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M18,13H8A1,1,0,1,1,8,11H18A1,1,0,1,1,18,13Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M25,12.08a1,1,0,0,1-1-1v-6a1,1,0,0,1,2,0v6A1,1,0,0,1,25,12.08Z" class="clr-i-outline clr-i-outline-path-5" />`
+);
+export const ClrShapeSnowflake = clrIconSVG(
+  `<path d="M18.05,33.61a1,1,0,0,1-1-1V3.37a1,1,0,1,1,1.95,0V32.63A1,1,0,0,1,18.05,33.61Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18.06,10.07,14.52,6.54a1,1,0,0,1,0-1.41,1,1,0,0,1,1.41,0l2.13,2.12,2.12-2.12a1,1,0,0,1,1.41,0,1,1,0,0,1,0,1.41Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M20.85,31.17a1,1,0,0,1-.7-.29L18,28.76,15.9,30.88a1,1,0,0,1-1.41,0,1,1,0,0,1,0-1.42L18,25.93l3.54,3.53a1,1,0,0,1,0,1.42A1,1,0,0,1,20.85,31.17Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M30.92,26.5a1,1,0,0,1-.5-.13l-26-15A1,1,0,0,1,4.07,10a1,1,0,0,1,1.37-.36l26,15a1,1,0,0,1-.5,1.87Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M6,15.37a1,1,0,0,1-.26-2l2.9-.78L7.84,9.73a1,1,0,1,1,1.93-.52L11.07,14,6.24,15.33A.82.82,0,0,1,6,15.37Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M27.05,27.54a1,1,0,0,1-1-.75L24.8,22l4.82-1.3a1,1,0,1,1,.52,1.93l-2.9.78.78,2.9a1,1,0,0,1-.71,1.22A.75.75,0,0,1,27.05,27.54Z" class="clr-i-outline clr-i-outline-path-6" /><path d="M4.94,26.5a1,1,0,0,1-.5-1.87l26-15a1,1,0,0,1,1.36.36,1,1,0,0,1-.36,1.37l-26,15A1,1,0,0,1,4.94,26.5Z" class="clr-i-outline clr-i-outline-path-7" /><path d="M8.81,27.54a.75.75,0,0,1-.26,0,1,1,0,0,1-.71-1.22l.78-2.9-2.9-.78A1,1,0,0,1,5,21.38a1,1,0,0,1,1.23-.71L11.07,22l-1.3,4.82A1,1,0,0,1,8.81,27.54Z" class="clr-i-outline clr-i-outline-path-8" /><path d="M29.88,15.37a.82.82,0,0,1-.26,0L24.8,14l1.29-4.83A1,1,0,1,1,28,9.73l-.78,2.89,2.9.78a1,1,0,0,1-.26,2Z" class="clr-i-outline clr-i-outline-path-9" />`
+);
+export const ClrShapeTable = clrIconSVG(
+  `<path d="M8,34a1,1,0,0,1-1-1V2.92a1,1,0,0,1,2,0V33A1,1,0,0,1,8,34Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M17,33.92a1,1,0,0,1-1-1V9.1a1,1,0,1,1,2,0V32.92A1,1,0,0,1,17,33.92Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M26,34a1,1,0,0,1-1-1V9a1,1,0,0,1,2,0V33A1,1,0,0,1,26,34Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M33.11,18h-25a1,1,0,1,1,0-2h25a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M33.1,26.94H8.1A1,1,0,1,1,8.1,25h25a1,1,0,1,1,0,1.92Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M33,8.92H3A1,1,0,1,1,3,7H33a1,1,0,1,1,0,1.94Z" class="clr-i-outline clr-i-outline-path-6" />`
+);
+export const ClrShapeDotCircle = clrIconSVG(
+  `<path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Zm0,26A12,12,0,1,1,30,18,12,12,0,0,1,18,30Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,25a7,7,0,1,1,7-7A7,7,0,0,1,18,25Z" class="clr-i-outline clr-i-outline-path-2" />`
+);
+export const ClrShapeVolume = clrIconSVG(
+  `<path d="M25.88,32H12a4,4,0,0,1-4-4V11.46L2.31,5.77a1,1,0,0,1-.22-1.09A1,1,0,0,1,3,4.06H28.86a1,1,0,0,1,1,1V28A4,4,0,0,1,25.88,32ZM5.43,6l4.28,4.34a.75.75,0,0,1,.21.63v17A2.13,2.13,0,0,0,12,30H25.88A2.1,2.1,0,0,0,28,28V6Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M33,16a1,1,0,0,1-1-1V6H28.86a.92.92,0,0,1-1-.9,1,1,0,0,1,1-1H33a1,1,0,0,1,1,1V15A1,1,0,0,1,33,16Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M24,11H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M24,15H21a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M24,19H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M24,27H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-6" /><path d="M24,23H21A1,1,0,1,1,21,21H24A1,1,0,1,1,24,23Z" class="clr-i-outline clr-i-outline-path-7" />`
+);
+export const ClrShapeCrosshairs = clrIconSVG(
+  `<path d="M18,29A11,11,0,1,1,29,18,11,11,0,0,1,18,29ZM18,9a9,9,0,1,0,9,9A9,9,0,0,0,18,9Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,23a5,5,0,1,1,5-5A5,5,0,0,1,18,23Zm0-8a3,3,0,1,0,3,3A3,3,0,0,0,18,15Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M18,9a1,1,0,0,1-1-1V2.8a1,1,0,0,1,2,0V8A1,1,0,0,1,18,9Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M18,34a1,1,0,0,1-1-1V28a1,1,0,0,1,2,0v5A1,1,0,0,1,18,34Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M8,19H3.17a1,1,0,0,1,0-2H8a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M33.1,19H28a1,1,0,0,1,0-2h5.1a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-6" />`
+);
 
 export const EssentialShapes: any = {
   'add-text': ClrShapeAddText,
@@ -995,6 +1019,14 @@ export const EssentialShapes: any = {
   'filter-off': ClrShapeFilterOff,
   recycle: ClrShapeRecycle,
   tree: ClrShapeTree,
+  fish: ClrShapeFish,
+  form: ClrShapeForm,
+  fuel: ClrShapeFuel,
+  snowflake: ClrShapeSnowflake,
+  table: ClrShapeTable,
+  'dot-circle': ClrShapeDotCircle,
+  volume: ClrShapeVolume,
+  crosshairs: ClrShapeCrosshairs,
 };
 
 Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(EssentialShapes.pencil));

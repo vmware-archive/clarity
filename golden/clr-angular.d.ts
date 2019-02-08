@@ -1044,8 +1044,9 @@ export declare class ClrTabLink {
     inOverflow: boolean;
     tabLinkId: string;
     tabsId: number;
+    tabsService: TabsService;
     templateRefContainer: TemplateRefContainer;
-    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsId: number);
+    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
     activate(): void;
 }
 
@@ -1058,6 +1059,7 @@ export declare class ClrTabs implements AfterContentInit {
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
+    orientation: 'horizontal' | 'vertical';
     tabContents: QueryList<ClrTabContent>;
     readonly tabIds: string;
     tabLinkDirectives: QueryList<ClrTabLink>;

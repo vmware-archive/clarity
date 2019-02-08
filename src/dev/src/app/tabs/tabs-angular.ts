@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'clr-modal-tabs-angular',
   styleUrls: ['./tabs.demo.scss'],
-  templateUrl: './tabs-angular.demo.html',
+  templateUrl: './tabs-angular.demo.html'
 })
 export class TabsAngularDemo {
+  orientation: string = 'vertical';
   inOverflow: boolean = false;
 }

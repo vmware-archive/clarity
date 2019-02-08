@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Inject, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Inject, QueryList, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -20,7 +20,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow"
+                <ng-container *ngIf="link.tabsId === tabsId && !(orientation !== 'vertical' && link.inOverflow)"
                               [ngTemplateOutlet]="link.templateRefContainer.template">
                 </ng-container>
             </ng-container>
@@ -51,8 +51,19 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         </ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
+  host: {
+    '[class.tabs-vertical]': 'tabsService.orientation === "vertical"'
+  }
 })
 export class ClrTabs implements AfterContentInit {
+
+  @Input('orientation') set orientation(orientation: 'horizontal' | 'vertical') {
+    this.tabsService.orientation = orientation;
+  }
+  get orientation(): 'horizontal' | 'vertical' {
+    return this.tabsService.orientation;
+  }
+
   @ContentChildren(ClrTabLink, { descendants: true })
   tabLinkDirectives: QueryList<ClrTabLink>;
 

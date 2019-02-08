@@ -10,6 +10,8 @@ import { ClrTab } from '../tab';
 export class TabsService {
   private _children: ClrTab[] = [];
 
+  orientation: 'horizontal' | 'vertical';
+
   register(tab: ClrTab) {
     this._children.push(tab);
   }
@@ -26,7 +28,7 @@ export class TabsService {
 
   get overflowTabs() {
     return this.children.filter((tab: ClrTab) => {
-      return tab.tabLink.inOverflow === true;
+      return this.orientation !== 'vertical' && tab.tabLink.inOverflow;
     });
   }
 

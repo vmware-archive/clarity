@@ -15,6 +15,7 @@ import {
 
 import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
 import { TemplateRefContainer } from '../../utils/template-ref/template-ref-container';
+import { TabsService } from './providers/tabs.service';
 
 import { AriaService } from './providers/aria.service';
 import { TABS_ID } from './tabs-id.provider';
@@ -29,13 +30,13 @@ let nbTabLinkComponents: number = 0;
     '[attr.aria-hidden]': 'false',
     '[attr.aria-controls]': 'ariaControls',
     '[class.btn]': 'true',
-    '[class.btn-link]': '!inOverflow',
-    '[class.nav-link]': '!inOverflow',
-    '[class.nav-item]': '!inOverflow',
+    '[class.btn-link]': 'tabsService.orientation === "vertical" || !inOverflow',
+    '[class.nav-link]': 'tabsService.orientation === "vertical" || !inOverflow',
+    '[class.nav-item]': 'tabsService.orientation === "vertical" || !inOverflow',
     '[class.active]': 'active',
     role: 'tab',
     type: 'button',
-  },
+  }
 })
 export class ClrTabLink {
   @Input('clrTabLinkInOverflow') inOverflow: boolean;
@@ -48,6 +49,7 @@ export class ClrTabLink {
     private el: ElementRef,
     private cfr: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
+    public tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number
   ) {
     if (!this.tabLinkId) {

@@ -292,8 +292,8 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     readonly ariaSort: "none" | "ascending" | "descending";
     readonly asc: boolean;
     readonly columnDropData: ColumnOrderModelService;
+    readonly columnGroupId: string;
     columnId: string;
-    readonly columnOrderDropKey: string;
     customFilter: boolean;
     readonly desc: boolean;
     field: string;

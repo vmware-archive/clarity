@@ -152,7 +152,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     if (typeof field === 'string') {
       this._field = field;
       if (!this.customFilter) {
-        if (this._colType === 'number') {
+        if (this.colType === 'number') {
           this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
         } else {
           this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));

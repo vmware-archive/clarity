@@ -12,6 +12,7 @@ import { FiltersProvider, RegisteredFilter } from '../../providers/filters';
 import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
+import { ClrCommonStrings } from '../../../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-dg-numeric-filter',
@@ -26,17 +27,17 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
             -->
             <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()" style="width: 90px"
-                placeholder="Lower limit"/>
+                [placeholder]="commonStrings.lowerLimit"/>
             -
             <input #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
                 (keyup.enter)="close()" (keyup.escape)="close()" style="width: 90px"
-                placeholder="Upper limit"/>
+                [placeholder]="commonStrings.upperLimit"/>
         </clr-dg-filter>
     `,
 })
 export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>>
   implements CustomFilter, AfterViewInit {
-  constructor(filters: FiltersProvider<T>, private domAdapter: DomAdapter) {
+  constructor(filters: FiltersProvider<T>, private domAdapter: DomAdapter, public commonStrings: ClrCommonStrings) {
     super(filters);
   }
 

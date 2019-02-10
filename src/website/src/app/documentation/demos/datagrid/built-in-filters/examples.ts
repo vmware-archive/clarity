@@ -40,8 +40,24 @@ class MyComponent {
     <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
 </clr-dg-column>
 `,
-  stringFilterPresetHTML: `
+  filterPresetHTML: `
 <-- Using clrFilterValue declaration -->
-    <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter" [(clrFilterValue)]="myFilterValue"></clr-dg-string-filter>
+<clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"
+                      [(clrFilterValue)]="myFilterValue">
+</clr-dg-string-filter>
+<clr-dg-numeric-filter [clrDgNumericFilter]="winsFilter"
+                      [clrFilterValue]="[10, null]">
+</clr-dg-numeric-filter>
+`,
+  numericFilterInterface: `
+interface ClrDatagridNumericFilterInterface<T> {
+    accepts(item: T, low: number, high: number): boolean;
+}
+`,
+  numericFilterInput: `
+<clr-dg-column>
+  Wins
+  <clr-dg-numeric-filter [clrDgNumericFilter]="winsFilter"></clr-dg-numeric-filter>
+</clr-dg-column>
 `,
 };

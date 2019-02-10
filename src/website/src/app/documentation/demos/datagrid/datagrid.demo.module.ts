@@ -23,7 +23,7 @@ import { DatagridServerDrivenDemo } from './server-driven/server-driven';
 import { DatagridSingleActionDemo } from './single-action/single-action';
 import { DatagridSmartIteratorDemo } from './smart-iterator/smart-iterator';
 import { DatagridSortingDemo } from './sorting/sorting';
-import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
+import { DatagridBuiltInFiltersDemo } from './built-in-filters/built-in-filters';
 import { DatagridPlaceholderDemo } from './placeholder/placeholder';
 import { DatagridExpandableRowsDemo } from './expandable-rows/expandable-rows';
 import { DatagridHideShowColumnsDemo } from './hide-show-columns/hide-show-columns';
@@ -88,10 +88,10 @@ const routes: Routes = [
         },
       },
       {
-        path: 'string-filtering',
-        component: DatagridStringFilteringDemo,
+        path: 'built-in-filters',
+        component: DatagridBuiltInFiltersDemo,
         data: {
-          demoName: 'String Filtering',
+          demoName: 'Built-in filters',
         },
       },
       {
@@ -200,7 +200,7 @@ const routes: Routes = [
     DatagridSingleActionDemo,
     DatagridSmartIteratorDemo,
     DatagridSortingDemo,
-    DatagridStringFilteringDemo,
+    DatagridBuiltInFiltersDemo,
     DatagridPlaceholderDemo,
     DatagridExpandableRowsDemo,
     DatagridHideShowColumnsDemo,

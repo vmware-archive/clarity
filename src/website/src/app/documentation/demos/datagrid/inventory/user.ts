@@ -11,6 +11,7 @@ export interface User {
   creation: Date;
   color: string;
   pokemon: Pokemon;
+  wins: number;
 
   // Type for dynamic access to specific properties
   [key: string]: any;

@@ -8,19 +8,21 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { PokemonFilter } from '../utils/pokemon-filter';
+import { WinsFilter } from '../utils/wins-filter';
 import { EXAMPLES } from './examples';
 
 @Component({
-  selector: 'clr-datagrid-string-filtering-demo',
+  selector: 'clr-datagrid-built-in-filters-demo',
   providers: [Inventory],
-  templateUrl: 'string-filtering.html',
+  templateUrl: 'built-in-filters.html',
   styleUrls: ['../datagrid.demo.scss'],
 })
-export class DatagridStringFilteringDemo {
+export class DatagridBuiltInFiltersDemo {
   examples = EXAMPLES;
   users: User[];
 
   pokemonFilter = new PokemonFilter();
+  winsFilter = new WinsFilter();
   myFilterValue = 'A';
 
   constructor(inventory: Inventory) {

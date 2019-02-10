@@ -26,6 +26,7 @@ export class Inventory {
         creation: new Date(BEGINNING + randomInt(NOW - BEGINNING)),
         color: COLORS[randomInt(COLORS.length)],
         pokemon: POKEMON[randomInt(POKEMON.length)],
+        wins: randomInt(100),
       });
     }
   }

@@ -23,6 +23,7 @@ import DatagridColumnToggleButtonSpecs from './datagrid-column-toggle-button.spe
 import DatagridColumnToggleSpecs from './datagrid-column-toggle.spec';
 import DatagridColumnSpecs from './datagrid-column.spec';
 import DatagridColumnSeparatorSpecs from './datagrid-column-separator.spec';
+import DatagridColumnReorderDroppableSpecs from './datagrid-column-reorder-droppable.spec';
 import DatagridFilterSpecs from './datagrid-filter.spec';
 import DatagridFooterSpecs from './datagrid-footer.spec';
 import DatagridHideableColumnSpec from './datagrid-hideable-column.model.spec';
@@ -45,6 +46,10 @@ import PageProviderSpecs from './providers/page.spec';
 import SelectionProviderSpecs from './providers/selection.spec';
 import SortProviderSpecs from './providers/sort.spec';
 import TableSizeServiceSpec from './providers/table-size.service.spec';
+import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
+import ColumnOrdersCoordinatorServiceSpecs from './providers/column-orders-coordinator.service.spec';
+import ColumnOrderModelServiceSpecs from './providers/column-order-model.service.spec';
+
 import DatagridCellRendererSpecs from './render/cell-renderer.spec';
 import DomAdapterSpecs from '../../utils/dom-adapter/dom-adapter.spec';
 import DatagridHeaderRendererSpecs from './render/header-renderer.spec';
@@ -55,7 +60,6 @@ import DatagridRowRendererSpecs from './render/row-renderer.spec';
 import WrappedCellSpec from './wrapped-cell.spec';
 import WrappedColumnSpec from './wrapped-column.spec';
 import WrappedRowSpec from './wrapped-row.spec';
-import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 
 describe('Datagrid', function() {
   addHelpers();
@@ -71,6 +75,8 @@ describe('Datagrid', function() {
     DisplayModeServiceSpecs();
     TableSizeServiceSpec();
     ColumnResizerServiceSpecs();
+    ColumnOrdersCoordinatorServiceSpecs();
+    ColumnOrderModelServiceSpecs();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();
@@ -79,6 +85,7 @@ describe('Datagrid', function() {
     DatagridFilterSpecs();
     DatagridColumnSpecs();
     DatagridColumnSeparatorSpecs();
+    DatagridColumnReorderDroppableSpecs();
     DatagridItemsSpecs();
     DatagridItemsTrackBySpecs();
     DatagridRowSpecs();

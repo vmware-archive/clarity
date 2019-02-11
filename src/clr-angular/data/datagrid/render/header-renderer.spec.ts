@@ -24,6 +24,7 @@ import { STRICT_WIDTH_CLASS } from './constants';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
+import { ColumnOrdersCoordinatorService } from '../providers/column-orders-coordinator.service';
 
 @Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
 class SimpleTest {}
@@ -71,6 +72,7 @@ export default function(): void {
         StateDebouncer,
         TableSizeService,
         Renderer2,
+        ColumnOrdersCoordinatorService,
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);

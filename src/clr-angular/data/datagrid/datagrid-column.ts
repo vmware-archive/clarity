@@ -29,49 +29,57 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
+import { ColumnOrderModelService } from './providers/column-order-model.service';
+import { ColumnHeaderSides } from './enums/header-sides.enum';
 
 let nbCount: number = 0;
 
 @Component({
   selector: 'clr-dg-column',
   template: `
-    <clr-dg-column-reorder-droppable></clr-dg-column-reorder-droppable>
-    <div class="datagrid-column-wrapper" clrDraggable>
-        <div class="datagrid-column-flex">
-            <!-- I'm really not happy with that select since it's not very scalable -->
-            <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+    <clr-dg-column-reorder-droppable [side]="leftReorderDroppable"></clr-dg-column-reorder-droppable>
+    <div class="datagrid-column-wrapper" [clrDraggable]="columnDropData" [clrGroup]="columnGroupId">
+      <div class="datagrid-column-flex">
+        <!-- I'm really not happy with that select since it's not very scalable -->
+        <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
-            <clr-dg-string-filter
-                    *ngIf="field && !customFilter"
-                    [clrDgStringFilter]="registered"
-                    [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+        <clr-dg-string-filter
+          *ngIf="field && !customFilter"
+          [clrDgStringFilter]="registered"
+          [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <ng-template #columnTitle>
-                <ng-content></ng-content>
-            </ng-template>
+        <ng-template #columnTitle>
+          <ng-content></ng-content>
+        </ng-template>
 
-            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
-                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-            </button>
+        <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
+          <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+        </button>
 
-            <span class="datagrid-column-title" *ngIf="!sortable">
+        <span class="datagrid-column-title" *ngIf="!sortable">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
-        </div>
+      </div>
     </div>
     <clr-dg-column-separator></clr-dg-column-separator>
-    <clr-dg-column-reorder-droppable></clr-dg-column-reorder-droppable>
-    `,
+    <clr-dg-column-reorder-droppable [side]="rightReorderDroppable"></clr-dg-column-reorder-droppable>
+  `,
   host: {
     '[class.datagrid-column]': 'true',
     '[class.datagrid-column--hidden]': 'hidden',
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
+  providers: [ColumnOrderModelService],
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
-  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private vcr: ViewContainerRef) {
+  constructor(
+    private _sort: Sort<T>,
+    filters: FiltersProvider<T>,
+    private vcr: ViewContainerRef,
+    private columnOrderModel: ColumnOrderModelService
+  ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
@@ -89,6 +97,22 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
     this.columnId = 'dg-col-' + nbCount.toString(); // Approximate a GUID
     nbCount++;
+  }
+
+  public get leftReorderDroppable() {
+    return ColumnHeaderSides.LEFT;
+  }
+
+  public get rightReorderDroppable() {
+    return ColumnHeaderSides.RIGHT;
+  }
+
+  public get columnDropData() {
+    return this.columnOrderModel;
+  }
+
+  public get columnGroupId() {
+    return this.columnOrderModel.columnGroupId;
   }
 
   /**
@@ -113,7 +137,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    *
    */
   public get hidden(): boolean {
-    return !!this.hideable && this.hideable.hidden;
+    return !!this._hideable && this._hideable.hidden;
   }
 
   /**
@@ -354,7 +378,17 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    * When its not hideable should be undefined.
    *
    */
-  public hideable: DatagridHideableColumnModel;
+
+  private _hideable: DatagridHideableColumnModel;
+
+  get hideable(): DatagridHideableColumnModel {
+    return this._hideable;
+  }
+
+  set hideable(value: DatagridHideableColumnModel) {
+    this.columnOrderModel.hideableColumnModel = value;
+    this._hideable = value;
+  }
 
   private wrappedInjector: Injector;
 

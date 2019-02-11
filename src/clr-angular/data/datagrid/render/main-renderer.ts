@@ -28,6 +28,7 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { NoopDomAdapter } from './noop-dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
+import { ColumnOrdersCoordinatorService } from '../providers/column-orders-coordinator.service';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
@@ -53,7 +54,8 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     private domAdapter: DomAdapter,
     private el: ElementRef,
     private renderer: Renderer2,
-    private tableSizeService: TableSizeService
+    private tableSizeService: TableSizeService,
+    private columnOrderCoordinatorService: ColumnOrdersCoordinatorService
   ) {
     this.subscriptions.push(
       this.organizer
@@ -82,6 +84,9 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         this.stabilizeColumns();
       })
     );
+
+    // set initial order of the header
+    this.setHeaderOrders();
   }
 
   // Initialize and set Table width for horizontal scrolling here.
@@ -188,5 +193,17 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       this.organizer.resize();
       this.columnsSizesStable = true;
     }
+  }
+
+  private setHeaderOrders(): void {
+    this.headers.forEach((header, index) => {
+      // set initial flex order
+      header.setFlexOrder(index);
+    });
+
+    // set orders array with headers ColumnOrder
+    this.columnOrderCoordinatorService.orderModels = this.headers.map(header => {
+      return header.orderModel;
+    });
   }
 }

@@ -15,6 +15,8 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
+import { ColumnOrderModelService } from './providers/column-order-model.service';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -25,6 +27,7 @@ const PROVIDERS_NEEDED = [
   StateDebouncer,
   TableSizeService,
   Renderer2,
+  ColumnOrdersCoordinatorService,
 ];
 
 export default function(): void {
@@ -55,6 +58,12 @@ export default function(): void {
 
       it('correctly populates the DatagridHideableColumn instance with an id', function() {
         expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
+      });
+
+      it('assigns DatagridHideableColumn model to ColumnOrderModelService', function() {
+        expect(context.getClarityProvider(ColumnOrderModelService).hideableColumnModel).toBe(
+          context.clarityDirective.hideable
+        );
       });
     });
 

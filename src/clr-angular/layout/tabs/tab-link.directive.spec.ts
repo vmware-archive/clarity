@@ -47,7 +47,6 @@ describe('TabLink Directive', () => {
   });
 
   it('has the correct css classes', () => {
-    expect(compiled.querySelector('.nav-item')).not.toBeNull();
     expect(compiled.querySelector('.nav-link')).not.toBeNull();
   });
 

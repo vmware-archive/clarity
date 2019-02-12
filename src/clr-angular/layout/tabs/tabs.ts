@@ -3,17 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  Inject,
-  QueryList,
-  Input,
-  Output,
-  EventEmitter,
-  HostBinding,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Inject, QueryList, Input } from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -32,11 +22,11 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
                 <ng-container *ngIf="link.tabsId === tabsId && !(orientation !== 'vertical' && link.inOverflow)">
-                  <li role="presentation" class="nav-item">
-                    <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
-                  </li>
+                    <li role="presentation" class="nav-item">
+                        <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
+                    </li>
                 </ng-container>
-              </ng-container>
+            </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
                 <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open"
                      (click)="toggleOverflow($event)">

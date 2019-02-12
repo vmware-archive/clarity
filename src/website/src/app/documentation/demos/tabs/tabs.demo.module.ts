@@ -33,7 +33,7 @@ import { TabsAngularOverflowDemo } from './tabs-angular-overflow';
     TabsAngularSimpleDemo,
     TabsAngularVerticalDemo,
     TabsAngularOverflowDemo,
-    TabsDemo
+    TabsDemo,
   ],
   exports: [TabsDemo],
 })

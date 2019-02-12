@@ -28,13 +28,11 @@ button.nav-link {
   }
 }
 
-
-// vertical-tabs
 .tabs-vertical {
   display: flex;
 
-  // nav
-  .nav {
+  // Must be direct child, so horizontal tabs can be nested in vertical tabs
+  & > .nav {
     width: auto;
     height: auto;
     box-shadow: none;
@@ -49,12 +47,13 @@ button.nav-link {
 
     .nav-link {
       text-align: left;
-      padding: 0 .5rem;
+      padding: 0 0.5rem;
       border: none;
       margin-bottom: 1px;
       flex-shrink: 0;
       margin-top: 0;
       margin-left: 0;
+      width: 100%;
 
       &.nav-item {
         margin-right: 0;
@@ -72,4 +71,4 @@ button.nav-link {
       }
     }
   }
-} // vertical-tabs
+}

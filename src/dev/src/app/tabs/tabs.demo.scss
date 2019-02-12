@@ -4,8 +4,12 @@
 
 .clr-example {
   height: 590px;
+
+  .demo {
+    min-height: 120px;
+  }
 }
 
 .tabs-vertical {
-  height: 210px;
+  height: 150px;
 }

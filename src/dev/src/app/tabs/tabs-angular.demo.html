@@ -5,7 +5,32 @@
   -->
 
 <div class="clr-example">
-  <button class="btn btn-primary" id="toggleOverflow" (click)="inOverflow = !inOverflow">Toggle Overflow</button>
+  <h3>Without *clrIfActive</h3>
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink>Dashboard</button>
+      <clr-tab-content>
+        <p>Content for Dashboard tab. Here is a
+          <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+      </clr-tab-content>
+    </clr-tab>
+
+    <clr-tab>
+      <button clrTabLink>Management</button>
+      <clr-tab-content>
+        <p>Content for Management tab.</p>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+
+  <p>
+    <button class="btn btn-primary" id="toggleOverflow" (click)="inOverflow = !inOverflow">Toggle Overflow</button>
+  </p>
+
+  <div>
+    Toggles overflow on the next sections. Should have no effect on the vertical tabs as they are using scroll instead
+    of dropdown.
+  </div>
 
   <h3>With *clrIfActive</h3>
   <clr-tabs>
@@ -39,24 +64,6 @@
     </clr-tab>
   </clr-tabs>
 
-  <h3>Without *clrIfActive</h3>
-  <clr-tabs>
-    <clr-tab>
-      <button clrTabLink>Dashboard</button>
-      <clr-tab-content>
-        <p>Content for Dashboard tab. Here is a
-          <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
-      </clr-tab-content>
-    </clr-tab>
-
-    <clr-tab>
-      <button clrTabLink>Management</button>
-      <clr-tab-content>
-        <p>Content for Management tab.</p>
-      </clr-tab-content>
-    </clr-tab>
-  </clr-tabs>
-
   <h3>Vertical tabs</h3>
   <clr-tabs [orientation]="orientation">
     <clr-tab>
@@ -70,7 +77,30 @@
     <clr-tab>
       <button clrTabLink>Management</button>
       <clr-tab-content *clrIfActive="true">
-        Content for Management tab.
+        <clr-tabs>
+          <clr-tab>
+            <button clrTabLink>Nested</button>
+            <clr-tab-content clrTabContentId="content1" *clrIfActive>
+              <p>Content for Nested tab. Here is a
+                <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.</p>
+            </clr-tab-content>
+          </clr-tab>
+
+          <clr-tab>
+            <button clrTabLink>Tabs</button>
+            <clr-tab-content *clrIfActive>
+              <p>Content for Tabs tab.</p>
+            </clr-tab-content>
+          </clr-tab>
+
+          <clr-tab>
+            <button clrTabLink>Example</button>
+            <clr-tab-content *clrIfActive>
+              <p>Content for Example tab.</p>
+            </clr-tab-content>
+          </clr-tab>
+        </clr-tabs>
+
       </clr-tab-content>
     </clr-tab>
 

@@ -32,11 +32,10 @@ let nbTabLinkComponents: number = 0;
     '[class.btn]': 'true',
     '[class.btn-link]': 'tabsService.orientation === "vertical" || !inOverflow',
     '[class.nav-link]': 'tabsService.orientation === "vertical" || !inOverflow',
-    '[class.nav-item]': 'tabsService.orientation === "vertical" || !inOverflow',
     '[class.active]': 'active',
     role: 'tab',
     type: 'button',
-  }
+  },
 })
 export class ClrTabLink {
   @Input('clrTabLinkInOverflow') inOverflow: boolean;

@@ -3,12 +3,23 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Inject, QueryList, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Inject,
+  QueryList,
+  Input,
+  Output,
+  EventEmitter,
+  HostBinding,
+} from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 import { TabsService } from './providers/tabs.service';
+import { ClrTab } from './tab';
 import { ClrTabLink } from './tab-link.directive';
 import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
@@ -20,10 +31,12 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !(orientation !== 'vertical' && link.inOverflow)"
-                              [ngTemplateOutlet]="link.templateRefContainer.template">
+                <ng-container *ngIf="link.tabsId === tabsId && !(orientation !== 'vertical' && link.inOverflow)">
+                  <li role="presentation" class="nav-item">
+                    <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
+                  </li>
                 </ng-container>
-            </ng-container>
+              </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
                 <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open"
                      (click)="toggleOverflow($event)">
@@ -52,23 +65,27 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
   host: {
-    '[class.tabs-vertical]': 'tabsService.orientation === "vertical"'
-  }
+    '[class.tabs-vertical]': 'tabsService.orientation === "vertical"',
+  },
 })
 export class ClrTabs implements AfterContentInit {
-
-  @Input('orientation') set orientation(orientation: 'horizontal' | 'vertical') {
+  @Input('orientation')
+  set orientation(orientation: 'horizontal' | 'vertical') {
     this.tabsService.orientation = orientation;
   }
   get orientation(): 'horizontal' | 'vertical' {
     return this.tabsService.orientation;
   }
 
-  @ContentChildren(ClrTabLink, { descendants: true })
-  tabLinkDirectives: QueryList<ClrTabLink>;
+  @ContentChildren(ClrTab) private tabs: QueryList<ClrTab>;
 
-  @ContentChildren(ClrTabContent, { descendants: true })
-  tabContents: QueryList<ClrTabContent>;
+  get tabLinkDirectives(): ClrTabLink[] {
+    return this.tabs.map(tab => tab.tabLink);
+  }
+
+  get tabContents(): ClrTabContent[] {
+    return this.tabs.filter(tab => !!tab.tabContent).map(tab => tab.tabContent);
+  }
 
   constructor(
     public ifActiveService: IfActiveService,
@@ -87,8 +104,8 @@ export class ClrTabs implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    if (typeof this.ifActiveService.current === 'undefined') {
-      this.tabLinkDirectives.first.activate();
+    if (typeof this.ifActiveService.current === 'undefined' && this.tabLinkDirectives[0]) {
+      this.tabLinkDirectives[0].activate();
     }
   }
 

@@ -36,7 +36,7 @@ gemini.suite('tabs', child => {
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('vertical-hover', (actions, find) => {
-        actions.mouseMove(find('.vertical .nav-item.active + .nav-item'));
+        actions.mouseMove(find('.tabs-vertical .nav-item'));
         actions.wait(WAIT_LOAD_TIME);
       });
   });

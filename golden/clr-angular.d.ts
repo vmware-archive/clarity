@@ -1060,9 +1060,9 @@ export declare class ClrTabs implements AfterContentInit {
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
     orientation: 'horizontal' | 'vertical';
-    tabContents: QueryList<ClrTabContent>;
+    readonly tabContents: ClrTabContent[];
     readonly tabIds: string;
-    tabLinkDirectives: QueryList<ClrTabLink>;
+    readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;
     tabsService: TabsService;
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);

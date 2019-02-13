@@ -209,15 +209,19 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+      <loc>https://clarity.design/documentation/password</loc>
+      <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://clarity.design/documentation/progress</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://clarity.design/documentation/radios</loc>
+        <loc>https://clarity.design/documentation/radio</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://clarity.design/documentation/select-boxes</loc>
+        <loc>https://clarity.design/documentation/select</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

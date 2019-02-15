@@ -209,8 +209,8 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
-      <loc>https://clarity.design/documentation/password</loc>
-      <changefreq>daily</changefreq>
+        <loc>https://clarity.design/documentation/password</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://clarity.design/documentation/progress</loc>
@@ -290,6 +290,10 @@
     </url>
     <url>
         <loc>https://clarity.design/news</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/1.1.0</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

@@ -35,13 +35,15 @@ import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
 import { Page } from './providers/page';
 import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { SelectionType } from './enums/selection-type';
+import { ColumnsService } from './providers/columns.service';
 
 @Component({
   selector: 'clr-datagrid',
@@ -60,6 +62,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     StateProvider,
     ColumnToggleButtonsService,
     TableSizeService,
+    ColumnsService,
     DisplayModeService,
   ],
   host: { '[class.datagrid-host]': 'true' },

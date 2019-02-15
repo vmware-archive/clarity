@@ -9,36 +9,19 @@ import { Expand } from '../../utils/expand/providers/expand';
 
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
-import { TestContext } from './helpers.spec';
-import { FiltersProvider } from './providers/filters';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
-import { Items } from './providers/items';
-import { Page } from './providers/page';
 import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
-import { Sort } from './providers/sort';
-import { StateDebouncer } from './providers/state-debouncer.provider';
-import { DatagridRenderOrganizer } from './render/render-organizer';
+import { Selection } from './providers/selection';
+import { SelectionType } from './enums/selection-type';
 
 export default function(): void {
   describe('ClrDatagridRowDetail component', function() {
     let context: TestContext<ClrDatagridRowDetail<void>, FullTest>;
 
     beforeEach(function() {
-      context = this.create(ClrDatagridRowDetail, FullTest, [
-        Selection,
-        Items,
-        FiltersProvider,
-        Sort,
-        Page,
-        RowActionService,
-        Expand,
-        DatagridRenderOrganizer,
-        HideableColumnService,
-        StateDebouncer,
-        ExpandableRowsCount,
-      ]);
+      context = this.create(ClrDatagridRowDetail, FullTest, DATAGRID_SPEC_PROVIDERS);
     });
 
     it('projects content', function() {
@@ -108,19 +91,7 @@ export default function(): void {
     let hideableColumnService: HideableColumnService;
 
     beforeEach(function() {
-      context = this.create(ClrDatagridRowDetail, HiddenTest, [
-        Selection,
-        Items,
-        FiltersProvider,
-        Sort,
-        Page,
-        RowActionService,
-        Expand,
-        DatagridRenderOrganizer,
-        HideableColumnService,
-        StateDebouncer,
-        ExpandableRowsCount,
-      ]);
+      context = this.create(ClrDatagridRowDetail, HiddenTest, DATAGRID_SPEC_PROVIDERS);
       hideableColumnService = context.getClarityProvider(HideableColumnService);
     });
 

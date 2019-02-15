@@ -12,9 +12,10 @@ import { ClrDatagridFilterInterface } from '../interfaces/filter.interface';
 import { FiltersProvider } from './filters';
 import { Items } from './items';
 import { Page } from './page';
-import { Selection, SelectionType } from './selection';
+import { Selection } from './selection';
 import { Sort } from './sort';
 import { StateDebouncer } from './state-debouncer.provider';
+import { SelectionType } from '../enums/selection-type';
 
 const numberSort = (a: number, b: number) => a - b;
 

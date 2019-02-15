@@ -61,6 +61,7 @@ export class ClrDatagridColumnSeparator {
 
   private redFlagTracker(resizeTrackerEl: HTMLElement) {
     let isWithinMaxResizeRange: boolean;
+    // @TODO(JEREMY) Review this, it will always be true because above is always null
     if (isWithinMaxResizeRange !== this.columnResizerService.isWithinMaxResizeRange) {
       isWithinMaxResizeRange = this.columnResizerService.isWithinMaxResizeRange;
       if (!isWithinMaxResizeRange) {

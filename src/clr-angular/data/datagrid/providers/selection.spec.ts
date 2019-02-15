@@ -235,6 +235,59 @@ export default function(): void {
         expect(nbChanges).toBe(2);
       });
 
+      it('clears selection when a filter is added (selectionType single)', function() {
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.currentSingle = 2;
+
+        const evenFilter: EvenFilter = new EvenFilter();
+
+        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+
+        evenFilter.toggle();
+
+        expect(selectionInstance.currentSingle).toBe(null);
+      });
+
+      it(
+        'keeps only the remaining selection when the items are updated (selectionType single)',
+        fakeAsync(function() {
+          selectionInstance.selectionType = SelectionType.Single;
+          selectionInstance.currentSingle = 3;
+
+          itemsInstance.all = [1, 2, 3, 5];
+
+          tick();
+
+          expect(selectionInstance.currentSingle).toBe(3);
+        })
+      );
+
+      it(
+        'clears the selections when the items are updated and ' +
+          'they do not contain the previous selection (selectionType single)',
+        fakeAsync(function() {
+          selectionInstance.selectionType = SelectionType.Single;
+          selectionInstance.currentSingle = 4;
+
+          itemsInstance.all = [1, 3, 5];
+
+          tick();
+
+          expect(selectionInstance.currentSingle).toBeUndefined();
+        })
+      );
+
+      it('maintains the selection when the page is changed (selectionType single)', function() {
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.currentSingle = 4;
+
+        pageInstance.size = 3;
+
+        pageInstance.current = 2;
+
+        expect(selectionInstance.currentSingle).toBe(4);
+      });
+
       it('clears selection when a filter is added', function() {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [4, 2];

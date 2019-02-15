@@ -149,6 +149,8 @@ export class Selection<T = any> {
   public clearSelection(): void {
     this.current.length = 0;
     this.prevSelectionRefs = [];
+    this._currentSingle = null;
+    this.prevSingleSelectionRef = null;
     this.emitChange();
   }
 

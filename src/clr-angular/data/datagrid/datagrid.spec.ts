@@ -11,12 +11,11 @@ import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-proper
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { ClrDatagrid } from './datagrid';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
-import { TestContext } from './helpers.spec';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStateInterface } from './interfaces/state.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { MockDisplayModeService } from './providers/display-mode.mock';
 import { DisplayModeService } from './providers/display-mode.service';
 import { FiltersProvider } from './providers/filters';
@@ -25,12 +24,10 @@ import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
 import { Page } from './providers/page';
 import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
 import { Sort } from './providers/sort';
-import { StateDebouncer } from './providers/state-debouncer.provider';
-import { StateProvider } from './providers/state.provider';
-import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { SelectionType } from './enums/selection-type';
 
 @Component({
   template: `
@@ -365,23 +362,6 @@ class ProjectionTest {
 class ExpandedReplacedCellsTest {
   items = [1, 2, 3];
 }
-
-const PROVIDERS = [
-  { provide: DisplayModeService, useClass: MockDisplayModeService },
-  Selection,
-  Sort,
-  FiltersProvider,
-  Page,
-  Items,
-  DatagridRenderOrganizer,
-  RowActionService,
-  ExpandableRowsCount,
-  HideableColumnService,
-  StateDebouncer,
-  StateProvider,
-  ColumnToggleButtonsService,
-  TableSizeService,
-];
 
 export default function(): void {
   describe('ClrDatagrid component', function() {
@@ -847,7 +827,7 @@ export default function(): void {
       let displayModeService: MockDisplayModeService;
 
       beforeEach(function() {
-        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], PROVIDERS);
+        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], DATAGRID_SPEC_PROVIDERS);
         displayModeService = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
       });
 

@@ -13,6 +13,47 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClarityModule } from '../../clr-angular.module';
+import { DisplayModeService } from './providers/display-mode.service';
+import { MockDisplayModeService } from './providers/display-mode.mock';
+import { Selection } from './providers/selection';
+import { Sort } from './providers/sort';
+import { FiltersProvider } from './providers/filters';
+import { Page } from './providers/page';
+import { ColumnsService } from './providers/columns.service';
+import { Items } from './providers/items';
+import { DatagridRenderOrganizer } from './render/render-organizer';
+import { RowActionService } from './providers/row-action-service';
+import { ExpandableRowsCount } from './providers/global-expandable-rows';
+import { HideableColumnService } from './providers/hideable-column.service';
+import { StateDebouncer } from './providers/state-debouncer.provider';
+import { StateProvider } from './providers/state.provider';
+import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
+import { TableSizeService } from './providers/table-size.service';
+import { Expand } from '../../utils/expand/providers/expand';
+import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
+import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
+
+// Reusable list of providers used in a number of tests
+export const DATAGRID_SPEC_PROVIDERS = [
+  { provide: DisplayModeService, useClass: MockDisplayModeService },
+  Selection,
+  Sort,
+  FiltersProvider,
+  DatagridWillyWonka,
+  DomAdapter,
+  Expand,
+  Page,
+  ColumnsService,
+  Items,
+  DatagridRenderOrganizer,
+  RowActionService,
+  ExpandableRowsCount,
+  HideableColumnService,
+  StateDebouncer,
+  StateProvider,
+  ColumnToggleButtonsService,
+  TableSizeService,
+];
 
 export class TestContext<D, C> {
   fixture: ComponentFixture<C>;

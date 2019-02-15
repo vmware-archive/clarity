@@ -13,7 +13,8 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
+import { SelectionType } from './enums/selection-type';
 
 /**
  * Generic bland container serving various purposes for Datagrid.

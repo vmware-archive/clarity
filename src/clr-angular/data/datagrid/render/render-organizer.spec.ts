@@ -51,12 +51,6 @@ export default function(): void {
       ]);
     });
 
-    it('clears the widths when when resizing', function(this: UserContext) {
-      this.organizer.widths = [{ px: 1, strict: false }, { px: 2, strict: true }];
-      this.organizer.resize();
-      expect(this.organizer.widths).toEqual([]);
-    });
-
     it('provides a filtering utility that targets one step', function(this: UserContext) {
       let currentStep: DatagridRenderStep = null;
       this.organizer.filterRenderSteps(DatagridRenderStep.ALIGN_COLUMNS).subscribe(step => (currentStep = step));

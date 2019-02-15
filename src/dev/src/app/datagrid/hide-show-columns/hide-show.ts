@@ -18,7 +18,7 @@ import { User } from '../inventory/user';
 export class DatagridHideShowDemo {
   users: User[];
   showId = true;
-  showDate = true;
+  shortFormat = true;
   conditionalSignpost = true;
   currentPageSize = 1;
 
@@ -30,9 +30,5 @@ export class DatagridHideShowDemo {
 
   toggleId() {
     this.showId = !this.showId;
-  }
-
-  toggleDate() {
-    this.showDate = !this.showDate;
   }
 }

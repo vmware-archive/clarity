@@ -8,7 +8,8 @@ import { Subscription } from 'rxjs';
 
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { HideableColumnService } from './providers/hideable-column.service';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
+import { SelectionType } from './enums/selection-type';
 
 @Component({
   selector: 'clr-dg-footer',

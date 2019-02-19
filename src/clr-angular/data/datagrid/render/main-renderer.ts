@@ -28,7 +28,8 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { NoopDomAdapter } from './noop-dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
-import { ColumnOrdersCoordinatorService } from '../providers/column-orders-coordinator.service';
+import { ColumnOrdersCoordinatorService, OrderChangeData } from '../providers/column-orders-coordinator.service';
+import { DatagridRowRenderer } from './row-renderer';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
@@ -55,7 +56,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     private el: ElementRef,
     private renderer: Renderer2,
     private tableSizeService: TableSizeService,
-    private columnOrderCoordinatorService: ColumnOrdersCoordinatorService
+    private columnOrdersCoordinatorService: ColumnOrdersCoordinatorService
   ) {
     this.subscriptions.push(
       this.organizer
@@ -75,18 +76,21 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
 
   @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
   @ContentChildren(ClrDatagridColumn) public columns: QueryList<ClrDatagridColumn>;
+  @ContentChildren(DatagridRowRenderer) private rows: QueryList<DatagridRowRenderer>;
 
   ngAfterContentInit() {
     this.subscriptions.push(
       this.headers.changes.subscribe(() => {
+        this.updateHeaderOrders();
+
         // TODO: only re-stabilize if a column was added or removed. Reordering is fine.
         this.columnsSizesStable = false;
         this.stabilizeColumns();
       })
     );
-
     // set initial order of the header
     this.setHeaderOrders();
+    this.setRowCellOrders();
   }
 
   // Initialize and set Table width for horizontal scrolling here.
@@ -147,23 +151,27 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
   /**
    * Makes each header compute its width.
    */
-  private computeHeadersWidth() {
-    const nbColumns: number = this.headers.length;
-    let allStrict = true;
+
+  private keepLastVisibleFlexible(): void {
+    // It would be nice to have it as a property(ColumnService.hasFlexibleWidths) in the centralized column service.
+    // Also, this whole method would much simpler.
+    const hasFlexibleWidths =
+      this.headers.filter(header => !header.orderModel.isHidden && !header.strictWidth).length > 0;
+
     this.headers.forEach((header, index) => {
-      // On the last header column check whether all columns have strict widths.
-      // If all columns have strict widths, remove the strict width from the last column and make it the column's
-      // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty
-      // gap in the Datagrid.
-
-      if (!header.strictWidth) {
-        allStrict = false;
+      // if there is no header with a flexible width, make the last visible header's width flexible.
+      if (!hasFlexibleWidths && header.orderModel.isLastVisible) {
+        header.strictWidth = 0;
+        this.organizer.widths[index] = { px: header.computeWidth(), strict: !!header.strictWidth };
+        header.setWidth(this.organizer.widths[index].px);
       }
+    });
+  }
 
-      if (nbColumns === index + 1 && allStrict) {
-        delete header.strictWidth;
-      }
+  private computeHeadersWidth() {
+    this.keepLastVisibleFlexible();
 
+    this.headers.forEach((header, index) => {
       this.organizer.widths[index] = { px: header.computeWidth(), strict: !!header.strictWidth };
     });
 
@@ -195,6 +203,43 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     }
   }
 
+  private nbHeaders: number = 0;
+
+  private updateHeaderOrders(): void {
+    if (this.headers.length < this.nbHeaders) {
+      // columns are removed
+      const sortedFlexOrders = this.headers.map(header => header.orderModel.flexOrder).sort();
+
+      this.columnOrdersCoordinatorService.orderModels = this.headers.map(header => {
+        header.orderModel.flexOrder = sortedFlexOrders.indexOf(header.orderModel.flexOrder);
+        return header.orderModel;
+      });
+
+      //this.columnOrdersCoordinatorService.broadcastOrderChanges();
+    } else if (this.headers.length > this.nbHeaders) {
+      // columns are added
+
+      this.headers.forEach((header, index) => {
+        if (typeof header.orderModel.flexOrder === 'undefined') {
+          this.headers
+            .filter(withOrder => withOrder.orderModel.flexOrder >= index)
+            .forEach(withOrderGreaterThanIndex => withOrderGreaterThanIndex.orderModel.flexOrder++);
+          header.orderModel.flexOrder = index;
+        }
+      });
+
+      // set orders array with headers ColumnOrder
+      this.columnOrdersCoordinatorService.orderModels = this.headers.map(header => {
+        return header.orderModel;
+      });
+
+      this.setRowCellOrders();
+      this.columnOrdersCoordinatorService.broadcastOrderChanges();
+    }
+
+    this.nbHeaders = this.headers.length;
+  }
+
   private setHeaderOrders(): void {
     this.headers.forEach((header, index) => {
       // set initial flex order
@@ -202,8 +247,18 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     });
 
     // set orders array with headers ColumnOrder
-    this.columnOrderCoordinatorService.orderModels = this.headers.map(header => {
+    this.columnOrdersCoordinatorService.orderModels = this.headers.map(header => {
       return header.orderModel;
+    });
+
+    this.columnOrdersCoordinatorService.findModelOfLastVisible().broadcastOrderChange();
+
+    this.nbHeaders = this.headers.length;
+  }
+
+  private setRowCellOrders(): void {
+    this.rows.forEach(row => {
+      row.setCellOrders();
     });
   }
 }

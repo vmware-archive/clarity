@@ -10,9 +10,12 @@ import { DatagridRenderStep } from '../enums/render-step.enum';
 
 import { STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
+import { ColumnOrderModelService } from '../providers/column-order-model.service';
 
 @Directive({ selector: 'clr-dg-cell' })
 export class DatagridCellRenderer implements OnDestroy {
+  columnOrderModel: ColumnOrderModelService;
+
   constructor(private el: ElementRef, private renderer: Renderer2, organizer: DatagridRenderOrganizer) {
     this.subscriptions.push(
       organizer.filterRenderSteps(DatagridRenderStep.CLEAR_WIDTHS).subscribe(() => this.clearWidth())
@@ -20,6 +23,7 @@ export class DatagridCellRenderer implements OnDestroy {
   }
 
   private subscriptions: Subscription[] = [];
+
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
@@ -36,5 +40,23 @@ export class DatagridCellRenderer implements OnDestroy {
       this.renderer.removeClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
     }
     this.renderer.setStyle(this.el.nativeElement, 'width', value + 'px');
+  }
+
+  private _columnModelRef: ColumnOrderModelService;
+
+  public setColumnModel(columnModel: ColumnOrderModelService) {
+    if (this._columnModelRef !== columnModel) {
+      this._columnModelRef = columnModel;
+      this.renderOrder(this._columnModelRef.flexOrder);
+      this.subscriptions.push(
+        this._columnModelRef.orderChange.subscribe(() => {
+          this.renderOrder(this._columnModelRef.flexOrder);
+        })
+      );
+    }
+  }
+
+  public renderOrder(flexOrder: number) {
+    this.renderer.setStyle(this.el.nativeElement, 'order', flexOrder);
   }
 }

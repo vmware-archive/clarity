@@ -353,12 +353,11 @@
         // This droppable area shouldn't be visible.
         // Although it has no width (we will use dropTolerance on the width), having the full spanning height of
         // the column is important to have an ample space of droppable area.
-        width: 0px;
+        width: 0;
         height: 100%;
 
         //Other
         border: none;
-        transform: translateZ(0);
 
         .datagrid-column-drop-line {
           //Position
@@ -372,6 +371,7 @@
 
           //Others
           background: $clr-action-purple-dark;
+          z-index: map-get($clr-layers, column-switch);
         }
       }
 
@@ -394,12 +394,6 @@
           background: transparent;
           border: solid 1px #bbb;
           border-left: solid 2px $clr-action-purple-light;
-        }
-      }
-
-      &:last-child {
-        .datagrid-column-separator {
-          display: none;
         }
       }
 
@@ -563,6 +557,10 @@
         .exceeded-max {
           border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
         }
+      }
+
+      &.datagrid-column-last-visible .datagrid-column-separator {
+        display: none;
       }
 
       .datagrid-signpost-trigger .signpost {
@@ -799,6 +797,8 @@
           max-height: 12.5rem;
           overflow-y: auto;
           min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+          display: flex;
+          flex-direction: column;
 
           li {
             line-height: 1rem;

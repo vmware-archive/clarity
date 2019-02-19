@@ -30,12 +30,12 @@ export class DatagridTestCasesAsyncDemo {
 
     setTimeout(() => {
       this.users = inventory.all;
-    }, 1000);
+    }, 3000);
 
     this.users1 = inventory.all.slice(0, 5);
 
     setTimeout(() => {
       this.users1 = this.users1.concat(inventory.all.slice(5));
-    }, 3000);
+    }, 5000);
   }
 }

@@ -9,19 +9,30 @@ import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.serv
 import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { createMockHeaderEl, destroyMockHeaderEl } from './column-order-model.service.mock';
+import { DragEventInterface, DragEventType } from '../../../utils/drag-and-drop/interfaces/drag-event.interface';
 
 export default function(): void {
   describe('ColumnOrderModelService', function() {
-    let columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
+    let columnOrdersCoordinatorService: ColumnOrdersCoordinatorService;
     let columnOrderModelService: ColumnOrderModelService;
     let columnOrderModelServicePrev: ColumnOrderModelService;
     let columnOrderModelServiceNext: ColumnOrderModelService;
 
+    const generateMockDropHeaderEvent = (
+      columnModelService: ColumnOrderModelService
+    ): DragEventInterface<ColumnOrderModelService> => {
+      return {
+        type: DragEventType.DROP,
+        dragPosition: { pageX: 0, pageY: 0, moveX: 0, moveY: 0 },
+        dragDataTransfer: columnModelService,
+      };
+    };
+
     beforeEach(function() {
       columnOrdersCoordinatorService = new ColumnOrdersCoordinatorService();
 
-      columnOrderModelService = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
       columnOrderModelServicePrev = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
+      columnOrderModelService = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
       columnOrderModelServiceNext = new ColumnOrderModelService(columnOrdersCoordinatorService, new DomAdapter());
 
       // Here visually their columns would appear in the following order:
@@ -35,8 +46,8 @@ export default function(): void {
       columnOrderModelServiceNext.flexOrder = 2;
       columnOrderModelServiceNext.headerEl = createMockHeaderEl(300, 40);
 
-      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService);
       columnOrdersCoordinatorService.orderModels.push(columnOrderModelServicePrev);
+      columnOrdersCoordinatorService.orderModels.push(columnOrderModelService);
       columnOrdersCoordinatorService.orderModels.push(columnOrderModelServiceNext);
     });
 
@@ -53,15 +64,15 @@ export default function(): void {
     });
 
     it('returns correct boolean value if column appears at first', function() {
-      expect(columnOrderModelService.isAtFirst).toBeFalsy();
-      expect(columnOrderModelServicePrev.isAtFirst).toBeTruthy();
-      expect(columnOrderModelServiceNext.isAtFirst).toBeFalsy();
+      expect(columnOrderModelService.isFirst).toBeFalsy();
+      expect(columnOrderModelServicePrev.isFirst).toBeTruthy();
+      expect(columnOrderModelServiceNext.isFirst).toBeFalsy();
     });
 
     it('returns correct boolean value if column appears at end', function() {
-      expect(columnOrderModelService.isAtEnd).toBeFalsy();
-      expect(columnOrderModelServicePrev.isAtEnd).toBeFalsy();
-      expect(columnOrderModelServiceNext.isAtEnd).toBeTruthy();
+      expect(columnOrderModelService.isLast).toBeFalsy();
+      expect(columnOrderModelServicePrev.isLast).toBeFalsy();
+      expect(columnOrderModelServiceNext.isLast).toBeTruthy();
     });
 
     it('returns width of its own column', function() {
@@ -91,6 +102,41 @@ export default function(): void {
       expect(columnOrderModelService.isHidden).toBeTruthy();
       expect(columnOrderModelServicePrev.isHidden).toBeFalsy();
       expect(columnOrderModelServiceNext.isHidden).toBeTruthy();
+    });
+
+    it('returns correct boolean value if column is hidden and appears last', function() {
+      columnOrderModelService.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
+      columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
+      expect(columnOrderModelService.isLastVisible).toBeTruthy();
+      expect(columnOrderModelServicePrev.isLastVisible).toBeFalsy();
+      expect(columnOrderModelServiceNext.isLastVisible).toBeFalsy();
+    });
+
+    it('returns correct next visible model initially', function() {
+      expect(columnOrderModelServicePrev.nextVisibleColumnModel).toBe(columnOrderModelService);
+      expect(columnOrderModelService.nextVisibleColumnModel).toBe(columnOrderModelServiceNext);
+    });
+
+    it('returns correct previous visible model initially', function() {
+      expect(columnOrderModelService.previousVisibleColumnModel).toBe(columnOrderModelServicePrev);
+      expect(columnOrderModelServiceNext.previousVisibleColumnModel).toBe(columnOrderModelService);
+    });
+
+    it('returns correct next visible model even after reordering', function() {
+      // [0, 1, 2] -> [2, 0, 1]
+      columnOrdersCoordinatorService.reorder(0, 2);
+      expect(columnOrderModelServicePrev.nextVisibleColumnModel).toBeUndefined();
+      expect(columnOrderModelService.nextVisibleColumnModel).toBe(columnOrderModelServiceNext);
+      expect(columnOrderModelServiceNext.nextVisibleColumnModel).toBe(columnOrderModelServicePrev);
+    });
+
+    it('returns correct previous visible model even after reordering', function() {
+      // [0, 1, 2] -> [2, 0, 1]
+      columnOrdersCoordinatorService.reorder(0, 2);
+      expect(columnOrderModelServicePrev.previousVisibleColumnModel).toBe(columnOrderModelServiceNext);
+      expect(columnOrderModelService.previousVisibleColumnModel).toBeUndefined();
+      expect(columnOrderModelServiceNext.previousVisibleColumnModel).toBe(columnOrderModelService);
     });
 
     it('returns correct next visible model', function() {
@@ -127,6 +173,12 @@ export default function(): void {
       columnOrderModelServicePrev.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', true);
       columnOrderModelServiceNext.hideableColumnModel = new DatagridHideableColumnModel(null, 'dg-col-0', false);
       expect(columnOrderModelServiceNext.previousVisibleColumnModel).toBeUndefined();
+    });
+
+    it('calls reorder method of order coordinator services', function() {
+      spyOn(columnOrdersCoordinatorService, 'reorder');
+      columnOrderModelService.dropReceived(generateMockDropHeaderEvent(columnOrderModelServicePrev));
+      expect(columnOrdersCoordinatorService.reorder).toHaveBeenCalledWith(0, 1);
     });
   });
 }

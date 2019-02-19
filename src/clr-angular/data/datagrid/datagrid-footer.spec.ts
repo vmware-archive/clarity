@@ -16,6 +16,7 @@ import { Selection, SelectionType } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 const PROVIDERS_NEEDED = [
   Selection,
@@ -27,6 +28,7 @@ const PROVIDERS_NEEDED = [
   StateDebouncer,
   ColumnToggleButtonsService,
   TableSizeService,
+  ColumnOrdersCoordinatorService,
 ];
 
 export default function(): void {

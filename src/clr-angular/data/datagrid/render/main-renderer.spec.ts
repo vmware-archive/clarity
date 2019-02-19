@@ -5,7 +5,7 @@
  */
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Needed to recreate issue #1084
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations'; // Needed to recreate issue #1084
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { ClrDatagridModule } from '../datagrid.module';
 import { TestContext } from '../helpers.spec';
@@ -28,6 +28,7 @@ import { TableSizeService } from '../providers/table-size.service';
 import { ColumnToggleButtonsService } from '../providers/column-toggle-buttons.service';
 import { StateProvider } from '../providers/state.provider';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
+import { ColumnOrdersCoordinatorService } from '../providers/column-orders-coordinator.service';
 
 const PROVIDERS = [
   DisplayModeService,
@@ -60,7 +61,7 @@ export default function(): void {
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
-        context = this.createWithOverride(DatagridMainRenderer, StaticTest, [], [], PROVIDERS);
+        context = this.createWithOverride(DatagridMainRenderer, StaticTest, [], [], PROVIDERS, [NoopAnimationsModule]);
         organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
         computeWidthSpy = spyOn(DatagridHeaderRenderer.prototype, 'computeWidth');
       });
@@ -112,7 +113,7 @@ export default function(): void {
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
-        context = this.create(DatagridMainRenderer, DynamicTest);
+        context = this.create(DatagridMainRenderer, DynamicTest, [], [], [NoopAnimationsModule]);
       });
 
       it('does not trigger the render process until the rows are loaded', function() {
@@ -142,12 +143,41 @@ export default function(): void {
       });
     });
 
+    describe('reordering columns', function() {
+      let context: TestContext<DatagridMainRenderer<number>, ColumnOrderTest>;
+      let columnOrdersCoordinator: ColumnOrdersCoordinatorService;
+
+      beforeEach(function() {
+        context = this.create(DatagridMainRenderer, ColumnOrderTest, [], [], [NoopAnimationsModule]);
+        columnOrdersCoordinator = context.getClarityProvider(ColumnOrdersCoordinatorService);
+      });
+
+      it('assigns flex order to each order model', function() {
+        expect(columnOrdersCoordinator.orderModels[0].flexOrder).toBe(0);
+        expect(columnOrdersCoordinator.orderModels[1].flexOrder).toBe(1);
+        expect(columnOrdersCoordinator.orderModels[2].flexOrder).toBe(2);
+      });
+
+      it('should not set flex order style to headers initially', function() {
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[0].style.order).toBe('');
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[1].style.order).toBe('');
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[2].style.order).toBe('');
+      });
+
+      it('should set appropriate flex order style to headers when coordinator reorders', function() {
+        columnOrdersCoordinator.reorder(0, 2);
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[0].style.order).toBe('2');
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[1].style.order).toBe('0');
+        expect(context.clarityElement.querySelectorAll('.datagrid-column')[2].style.order).toBe('1');
+      });
+    });
+
     describe('smart datagrid width', () => {
       let context: ComponentFixture<RenderWidthTest>;
       let containerWidth: number;
       beforeEach(() => {
         TestBed.configureTestingModule({
-          imports: [BrowserAnimationsModule, ClrDatagridModule],
+          imports: [BrowserAnimationsModule, ClrDatagridModule, NoopAnimationsModule],
           declarations: [RenderWidthTest],
           providers: PROVIDERS,
         });
@@ -199,7 +229,7 @@ export default function(): void {
 
       beforeEach(function() {
         TestBed.configureTestingModule({
-          imports: [BrowserAnimationsModule, ClrDatagridModule],
+          imports: [BrowserAnimationsModule, ClrDatagridModule, NoopAnimationsModule],
           declarations: [DatagridHeightTest],
         });
         context = TestBed.createComponent(DatagridHeightTest);
@@ -230,7 +260,7 @@ export default function(): void {
       let organizer: DatagridRenderOrganizer;
 
       beforeEach(function() {
-        context = this.create(DatagridMainRenderer, ColumnsWidthTest);
+        context = this.create(DatagridMainRenderer, ColumnsWidthTest, [], [], [NoopAnimationsModule]);
         organizer = context.getClarityProvider(DatagridRenderOrganizer);
       });
 
@@ -369,6 +399,29 @@ class RenderWidthTest {
 class StaticTest {
   secondColumn = true;
   firstRow = true;
+}
+
+@Component({
+  template: `
+        <clr-datagrid>
+            <clr-dg-column>AAA</clr-dg-column>
+            <clr-dg-column *ngIf="secondColumn">BBB</clr-dg-column>
+            <clr-dg-column>CCC</clr-dg-column>
+            <clr-dg-row>
+                <clr-dg-cell>XXX</clr-dg-cell>
+                <clr-dg-cell>YYY</clr-dg-cell>
+                <clr-dg-cell>ZZZ</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-row>
+                <clr-dg-cell>XXX</clr-dg-cell>
+                <clr-dg-cell>YYY</clr-dg-cell>
+                <clr-dg-cell>ZZZ</clr-dg-cell>
+            </clr-dg-row>
+        </clr-datagrid>
+    `,
+})
+class ColumnOrderTest {
+  secondColumn = true;
 }
 
 @Component({

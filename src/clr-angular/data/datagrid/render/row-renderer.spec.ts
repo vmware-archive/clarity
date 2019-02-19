@@ -24,6 +24,9 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 import { DatagridRowRenderer } from './row-renderer';
+import { ColumnOrdersCoordinatorService } from '../providers/column-orders-coordinator.service';
+import { ColumnOrderModelService } from '../providers/column-order-model.service';
+import { MockColumnOrderModelService } from '../providers/column-order-model.service.mock';
 
 const PROVIDERS = [
   Selection,
@@ -39,11 +42,13 @@ const PROVIDERS = [
   DatagridWillyWonka,
   StateDebouncer,
   DisplayModeService,
+  ColumnOrdersCoordinatorService,
 ];
 export default function(): void {
   describe('DatagridRowRenderer directive', function() {
     let context: TestContext<DatagridRowRenderer, SimpleTest>;
     let organizer: MockDatagridRenderOrganizer;
+    let columnOrdersCoordinator: ColumnOrdersCoordinatorService;
     let cellWidthSpy: jasmine.Spy;
 
     beforeEach(function() {
@@ -51,6 +56,12 @@ export default function(): void {
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
       organizer.widths = [{ px: 42, strict: false }, { px: 24, strict: true }];
       cellWidthSpy = spyOn(DatagridCellRenderer.prototype, 'setWidth');
+      columnOrdersCoordinator = context.getClarityProvider(ColumnOrdersCoordinatorService);
+      for (let i = 0; i < 2; i++) {
+        const orderModel = new MockColumnOrderModelService();
+        orderModel.flexOrder = i;
+        columnOrdersCoordinator.orderModels.push(<ColumnOrderModelService>orderModel);
+      }
     });
 
     it('sets the widths of the cells when notified', function() {
@@ -77,6 +88,20 @@ export default function(): void {
       context.testComponent.world = false;
       context.detectChanges();
       expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
+    });
+
+    it('should not set flex order style to cells initially', function() {
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[0].style.order).toBe('');
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[1].style.order).toBe('');
+    });
+
+    it('should set appropriate flex order style to cells when coordinator reorders', function() {
+      columnOrdersCoordinator.reorder(0, 1);
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[0].style.order).toBe('1');
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[1].style.order).toBe('0');
+      columnOrdersCoordinator.reorder(1, 0);
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[0].style.order).toBe('0');
+      expect(context.clarityElement.querySelectorAll('.datagrid-cell')[1].style.order).toBe('1');
     });
   });
 }

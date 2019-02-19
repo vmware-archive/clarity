@@ -61,10 +61,11 @@ export function addHelpers(): void {
       clarityDirective: Type<D>,
       testComponent: Type<C>,
       providers: any[] = [],
-      extraDirectives: Type<any>[] = []
+      extraDirectives: Type<any>[] = [],
+      modules: any[] = []
     ) => {
       TestBed.configureTestingModule({
-        imports: [ClarityModule],
+        imports: [ClarityModule, ...modules],
         declarations: [testComponent, ...extraDirectives],
         providers: providers,
       });
@@ -89,10 +90,11 @@ export function addHelpers(): void {
       testComponent: Type<C>,
       providers: any[] = [],
       extraDirectives: Type<any>[] = [],
-      serviceOverrides: any[]
+      serviceOverrides: any[],
+      modules: any[] = []
     ) => {
       TestBed.configureTestingModule({
-        imports: [ClarityModule],
+        imports: [ClarityModule, ...modules],
         declarations: [testComponent, ...extraDirectives],
         providers: providers,
       }).overrideComponent(clarityDirective, {

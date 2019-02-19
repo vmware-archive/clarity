@@ -27,6 +27,12 @@ import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ColumnOrderModelService } from './providers/column-order-model.service';
 import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
+import {
+  MOCK_COLUMN_ORDER_MODEL_PROVIDER,
+  MockColumnOrderModelService,
+} from './providers/column-order-model.service.mock';
+import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -38,6 +44,7 @@ const PROVIDERS_NEEDED = [
   TableSizeService,
   Renderer2,
   ColumnOrdersCoordinatorService,
+  DatagridWillyWonka,
 ];
 
 export default function(): void {
@@ -167,12 +174,12 @@ export default function(): void {
 
     describe('Template API', function() {
       it('provides a wrapped view for the content', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.directive = this.context.clarityDirective;
         expect(this.directive._view).toBeDefined();
       });
       it('receives an input for the comparator', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.detectChanges();
@@ -180,7 +187,7 @@ export default function(): void {
       });
 
       it('receives a string input for the property shortcut comparator', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.comparator = new DatagridPropertyComparator('test');
         this.context.testComponent.comparator = 'test';
         this.context.detectChanges();
@@ -188,14 +195,14 @@ export default function(): void {
       });
 
       it('receives an input for the property name', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityDirective.field).toBe('test');
       });
 
       it('receives an input for the property filter value', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
         this.context.detectChanges();
@@ -203,7 +210,13 @@ export default function(): void {
       });
 
       it('offers two-way binding on the sorted state', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleDeprecatedTest, PROVIDERS_NEEDED);
+        this.context = this.create(
+          ClrDatagridColumn,
+          SimpleDeprecatedTest,
+          PROVIDERS_NEEDED,
+          [],
+          [NoopAnimationsModule]
+        );
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.testComponent.sorted = true;
@@ -215,7 +228,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the sortOrder state', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.testComponent.sortOrder = ClrDatagridSortOrder.DESC;
@@ -230,7 +243,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the filtered state', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
         this.context.detectChanges();
@@ -242,7 +255,7 @@ export default function(): void {
       });
 
       it('should emit on string filter value changes', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
 
         this.context.detectChanges();
@@ -261,12 +274,12 @@ export default function(): void {
       });
 
       it('accepts a custom filter in the projected content', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
       });
 
       it('accepts a custom string filter in the projected content', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.stringFilter = this.context.testComponent.stringFilter.filter;
         // We make the filter active to see if the FiltersProvider provider knows about it
         this.stringFilter.value = 'hello';
@@ -275,7 +288,7 @@ export default function(): void {
       });
 
       it('prioritizes custom comparators over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.detectChanges();
@@ -285,7 +298,7 @@ export default function(): void {
       });
 
       it('prioritizes custom filters over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelectorAll('clr-dg-filter').length).toBe(1);
@@ -293,7 +306,7 @@ export default function(): void {
       });
 
       it('prioritizes custom string filters over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         this.stringFilter = this.context.testComponent.stringFilter.filter;
@@ -307,9 +320,17 @@ export default function(): void {
 
     describe('View basics', function() {
       let context: TestContext<ClrDatagridColumn<number | string>, SimpleTest>;
+      let columnOrderModelService: MockColumnOrderModelService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        context = this.createWithOverride(
+          ClrDatagridColumn,
+          SimpleTest,
+          PROVIDERS_NEEDED,
+          [],
+          [MOCK_COLUMN_ORDER_MODEL_PROVIDER],
+          [NoopAnimationsModule]
+        );
       });
 
       it('projects content', function() {
@@ -378,33 +399,33 @@ export default function(): void {
 
     describe('View filters', function() {
       it("doesn't display any filter by default", function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(this.context.clarityElement.querySelector('clr-dg-filter')).toBeNull();
       });
 
       it('displays a string filter when using a property name', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelector('clr-dg-string-filter')).not.toBeNull();
       });
 
       it('projects custom filters outside of the title', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(this.context.clarityElement.querySelector('.my-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-filter')).toBeNull();
       });
 
       it('projects custom string filters outside of the title', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(this.context.clarityElement.querySelector('.my-string-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-string-filter')).toBeNull();
       });
 
       it('un-registers the correct filter', function() {
-        this.context = this.create(ClrDatagridColumn, UnregisterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, UnregisterTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         this.context.testComponent.show = true;
         this.context.clarityDirective.filters.add(new TestFilter());
         this.context.clarityDirective.filters.add(new TestFilter());
@@ -420,11 +441,11 @@ export default function(): void {
 
     describe('View hideability', function() {
       it('is hideable when there is a HideableColumnDirective', function() {
-        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(this.context.clarityDirective.hideable).toBeTruthy();
       });
       it('takes an input for the dgHideableColumnDirective', function() {
-        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED, [], [NoopAnimationsModule]);
         expect(this.context.clarityDirective.hidden).toEqual(false);
       });
     });

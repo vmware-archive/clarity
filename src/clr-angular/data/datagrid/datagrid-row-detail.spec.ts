@@ -20,6 +20,7 @@ import { Selection, SelectionType } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 export default function(): void {
   describe('ClrDatagridRowDetail component', function() {
@@ -38,6 +39,7 @@ export default function(): void {
         HideableColumnService,
         StateDebouncer,
         ExpandableRowsCount,
+        ColumnOrdersCoordinatorService,
       ]);
     });
 
@@ -120,6 +122,7 @@ export default function(): void {
         HideableColumnService,
         StateDebouncer,
         ExpandableRowsCount,
+        ColumnOrdersCoordinatorService,
       ]);
       hideableColumnService = context.getClarityProvider(HideableColumnService);
     });

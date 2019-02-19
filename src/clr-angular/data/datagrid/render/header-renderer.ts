@@ -9,9 +9,11 @@ import { Subscription } from 'rxjs';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { ColumnResizerService } from '../providers/column-resizer.service';
-import { STRICT_WIDTH_CLASS } from './constants';
+import { LAST_VISIBLE_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { ColumnOrderModelService } from '../providers/column-order-model.service';
+import Order = jasmine.Order;
+import { OrderChangeData } from '../providers/column-orders-coordinator.service';
 
 @Directive({ selector: 'clr-dg-column', providers: [ColumnResizerService] })
 export class DatagridHeaderRenderer implements OnDestroy {
@@ -32,6 +34,17 @@ export class DatagridHeaderRenderer implements OnDestroy {
         .subscribe(() => this.detectStrictWidth())
     );
     this.columnOrderModel.headerEl = el.nativeElement;
+    this.subscriptions.push(
+      columnOrderModel.orderChange.subscribe((orderChangeData: OrderChangeData) => {
+        // TODO: find a way to broadcast distinguishable changes from columnOrderModel. For example:
+        // (a) Dynamic header change which
+        // (b) Last visible header change
+        // (c) Reordering header change which triggers animation as well
+
+        this.renderOrder(this.columnOrderModel.flexOrder);
+        this.toggleClassIfLastVisible();
+      })
+    );
   }
 
   @Output('clrDgColumnResize') resizeEmitter: EventEmitter<number> = new EventEmitter();
@@ -78,6 +91,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
         this.resizeEmitter.emit(width);
         this.renderer.setStyle(this.el.nativeElement, 'width', width + 'px');
         this.widthSet = false;
+        this.columnResizerService.clear();
       }
       // Don't set width if there is a user-defined one. Just add the strict width class.
       this.renderer.addClass(this.el.nativeElement, STRICT_WIDTH_CLASS);
@@ -99,5 +113,16 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
   public setFlexOrder(flexOrder: number) {
     this.columnOrderModel.flexOrder = flexOrder;
+  }
+
+  public renderOrder(flexOrder: number) {
+    this.renderer.setStyle(this.el.nativeElement, 'order', flexOrder);
+  }
+  public toggleClassIfLastVisible() {
+    if (this.columnOrderModel.isLastVisible) {
+      this.renderer.addClass(this.el.nativeElement, LAST_VISIBLE_COLUMN_CLASS);
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, LAST_VISIBLE_COLUMN_CLASS);
+    }
   }
 }

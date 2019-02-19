@@ -4,9 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable } from '@angular/core';
-import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.service';
+import { ColumnOrdersCoordinatorService, OrderChangeData } from './column-orders-coordinator.service';
 import { DatagridHideableColumnModel } from '../datagrid-hideable-column.model';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
+import { DragEventInterface } from '../../../utils/drag-and-drop/interfaces/drag-event.interface';
+import { Observable, Subject } from 'rxjs/index';
 
 /**
  * This is a model service that's responsible for:
@@ -19,6 +21,16 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 export class ColumnOrderModelService {
   constructor(private columnOrderCoordinatorService: ColumnOrdersCoordinatorService, private domAdapter: DomAdapter) {}
 
+  private _orderChange = new Subject<OrderChangeData>();
+
+  public get orderChange(): Observable<OrderChangeData> {
+    return this._orderChange.asObservable();
+  }
+
+  public broadcastOrderChange(orderChangeData?: OrderChangeData) {
+    this._orderChange.next(orderChangeData);
+  }
+
   public flexOrder: number;
 
   public headerEl: any;
@@ -29,11 +41,11 @@ export class ColumnOrderModelService {
     return this.columnOrderCoordinatorService.columnGroupId;
   }
 
-  get isAtFirst(): boolean {
+  get isFirst(): boolean {
     return this.flexOrder === 0;
   }
 
-  get isAtEnd(): boolean {
+  get isLast(): boolean {
     return this.flexOrder === this.columnOrderCoordinatorService.orderModels.length - 1;
   }
 
@@ -41,22 +53,29 @@ export class ColumnOrderModelService {
     return this.hideableColumnModel && this.hideableColumnModel.hidden;
   }
 
-  public dropReceived(dropData: any) {
-    // updates column orders
-    // broadcasts updated order changes
-    console.log(dropData);
+  get isLastVisible(): boolean {
+    // the last visible header wouldn't have next visible column, and it should be visible itself.
+    return !this.nextVisibleColumnModel && !this.isHidden;
+  }
+
+  public dropReceived(dropEvent: DragEventInterface<ColumnOrderModelService>) {
+    this.columnOrderCoordinatorService.reorder(dropEvent.dragDataTransfer.flexOrder, this.flexOrder);
   }
 
   private findAdjacentVisibleModel(prev = false): ColumnOrderModelService {
     const filteredVisibleColumnModels = this.columnOrderCoordinatorService.orderModels
       .filter(model => !model.isHidden && (prev ? model.flexOrder < this.flexOrder : model.flexOrder > this.flexOrder))
-      .sort(model => model.flexOrder);
+      .sort((modelA, modelB) => (modelA.flexOrder > modelB.flexOrder ? 1 : -1));
 
     return prev ? filteredVisibleColumnModels[filteredVisibleColumnModels.length - 1] : filteredVisibleColumnModels[0];
   }
 
   get nextVisibleColumnModel(): ColumnOrderModelService {
     return this.findAdjacentVisibleModel(false);
+  }
+
+  get lastVisibleColumnModel(): ColumnOrderModelService {
+    return this.columnOrderCoordinatorService.findModelOfLastVisible();
   }
 
   get previousVisibleColumnModel(): ColumnOrderModelService {
@@ -66,6 +85,7 @@ export class ColumnOrderModelService {
   private _headerWidth: number;
 
   set headerWidth(value: number) {
+    // when a column gets a strict width, we will assign that width to the following property
     this._headerWidth = value;
   }
 

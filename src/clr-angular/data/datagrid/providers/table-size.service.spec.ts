@@ -17,6 +17,8 @@ import { StateDebouncer } from './state-debouncer.provider';
 import { TableSizeService } from './table-size.service';
 import { ClrDatagridModule } from '../datagrid.module';
 import { ColumnOrdersCoordinatorService } from './column-orders-coordinator.service';
+import { DatagridWillyWonka } from '../chocolate/datagrid-willy-wonka';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   template: `
@@ -49,13 +51,14 @@ const PROVIDERS_NEEDED = [
   Page,
   StateDebouncer,
   ColumnOrdersCoordinatorService,
+  DatagridWillyWonka,
 ];
 
 export default function(): void {
   describe('TableSizeService', function() {
     beforeEach(function(this: TestContext) {
       TestBed.configureTestingModule({
-        imports: [ClrDatagridModule],
+        imports: [ClrDatagridModule, NoopAnimationsModule],
         declarations: [TestComponent],
         providers: [PROVIDERS_NEEDED],
       });

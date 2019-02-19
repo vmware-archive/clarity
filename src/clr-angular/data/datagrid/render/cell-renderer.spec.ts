@@ -46,6 +46,11 @@ export default function(): void {
       expect(context.clarityElement.style.width).toBeFalsy();
       expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
     });
+
+    it('renders flex order', function() {
+      context.clarityDirective.renderOrder(123);
+      expect(context.clarityElement.style.order).toBe('123');
+    });
   });
 }
 

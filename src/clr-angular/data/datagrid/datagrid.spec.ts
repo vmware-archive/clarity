@@ -32,6 +32,7 @@ import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   template: `
@@ -354,7 +355,7 @@ export default function(): void {
       let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
+        context = this.create(ClrDatagrid, FullTest, [HideableColumnService], [], [NoopAnimationsModule]);
       });
 
       it('allows to manually force a refresh of displayed items when data mutates', function() {
@@ -382,7 +383,7 @@ export default function(): void {
       let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
+        context = this.create(ClrDatagrid, FullTest, [HideableColumnService], [], [NoopAnimationsModule]);
       });
 
       it('receives an input for the loading state', function() {
@@ -537,7 +538,7 @@ export default function(): void {
       let context: TestContext<ClrDatagrid<number>, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
+        context = this.create(ClrDatagrid, FullTest, [HideableColumnService], [], [NoopAnimationsModule]);
       });
 
       it('projects columns in the header', function() {
@@ -566,13 +567,13 @@ export default function(): void {
 
     describe('Iterators', function() {
       it('projects rows when using ngFor', function() {
-        this.context = this.create(ClrDatagrid, NgForTest, [HideableColumnService]);
+        this.context = this.create(ClrDatagrid, NgForTest, [HideableColumnService], [], [NoopAnimationsModule]);
         const body = this.context.clarityElement.querySelector('.datagrid-table');
         expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
       });
 
       it('uses the rows template when using clrDgItems', function() {
-        this.context = this.create(ClrDatagrid, FullTest, [HideableColumnService]);
+        this.context = this.create(ClrDatagrid, FullTest, [HideableColumnService], [], [NoopAnimationsModule]);
         const body = this.context.clarityElement.querySelector('.datagrid-table');
         expect(body.textContent).toMatch(/1\s*1\s*2\s*4\s*3\s*9/);
       });
@@ -586,7 +587,7 @@ export default function(): void {
       let actionOverflow: HTMLElement[];
 
       it('it has cells for action overflows if there is at least one of them.', function() {
-        context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService]);
+        context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService], [], [NoopAnimationsModule]);
         rowActionService = context.getClarityProvider(RowActionService);
         expect(rowActionService.hasActionableRow).toBe(true);
         const datagridHead = context.clarityElement.querySelector('.datagrid-header');
@@ -599,7 +600,7 @@ export default function(): void {
       });
 
       it('it has no cells for action overflows if there is none of them.', function() {
-        context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService]);
+        context = this.create(ClrDatagrid, ActionableRowTest, [HideableColumnService], [], [NoopAnimationsModule]);
         rowActionService = context.getClarityProvider(RowActionService);
         context.testComponent.showIfGreaterThan = 10;
         context.detectChanges();
@@ -616,7 +617,13 @@ export default function(): void {
 
     describe('Expandable rows', function() {
       it('detects if there is at least one expandable row', function() {
-        const context = this.create(ClrDatagrid, ExpandableRowTest, [HideableColumnService]);
+        const context = this.create(
+          ClrDatagrid,
+          ExpandableRowTest,
+          [HideableColumnService],
+          [],
+          [NoopAnimationsModule]
+        );
         const globalExpandableRows: ExpandableRowsCount = context.getClarityProvider(ExpandableRowsCount);
         expect(globalExpandableRows.hasExpandableRow).toBe(true);
         expect(context.clarityElement.querySelector('.datagrid-column.datagrid-expandable-caret')).not.toBeNull();
@@ -627,7 +634,13 @@ export default function(): void {
       });
 
       it('can expand rows on initialization', async(function() {
-        const context = this.create(ClrDatagrid, ExpandedOnInitTest, [HideableColumnService]);
+        const context = this.create(
+          ClrDatagrid,
+          ExpandedOnInitTest,
+          [HideableColumnService],
+          [],
+          [NoopAnimationsModule]
+        );
         const caretIcon = context.clarityElement.querySelector('.datagrid-expandable-caret-icon');
         expect(caretIcon).not.toBeNull();
         expect(caretIcon.getAttribute('dir')).toBe('down');
@@ -641,7 +654,7 @@ export default function(): void {
       let selection: Selection<number>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagrid, SingleSelectionTest, [Selection]);
+        context = this.create(ClrDatagrid, SingleSelectionTest, [Selection], [], [NoopAnimationsModule]);
         selection = <Selection<number>>context.getClarityProvider(Selection);
       });
 
@@ -742,7 +755,7 @@ export default function(): void {
       let selection: Selection<number>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagrid, OnPushTest, [Selection], [MultiSelectionTest]);
+        context = this.create(ClrDatagrid, OnPushTest, [Selection], [MultiSelectionTest], [NoopAnimationsModule]);
         selection = <Selection<number>>context.getClarityProvider(Selection);
       });
 
@@ -763,13 +776,13 @@ export default function(): void {
     describe('Chocolate', function() {
       describe('clrDgItems', function() {
         it("doesn't taunt with chocolate on actionable rows", function() {
-          const context = this.create(ClrDatagrid, ChocolateClrDgItemsTest);
+          const context = this.create(ClrDatagrid, ChocolateClrDgItemsTest, [], [], [NoopAnimationsModule]);
           context.testComponent.action = true;
           expect(() => context.detectChanges()).not.toThrow();
         });
 
         it("doesn't taunt with chocolate on expandable rows", function() {
-          const context = this.create(ClrDatagrid, ChocolateClrDgItemsTest);
+          const context = this.create(ClrDatagrid, ChocolateClrDgItemsTest, [], [], [NoopAnimationsModule]);
           context.testComponent.expandable = true;
           expect(() => context.detectChanges()).not.toThrow();
         });
@@ -777,13 +790,13 @@ export default function(): void {
 
       describe('ngFor', function() {
         it("doesn't taunt with chocolate on actionable rows", function() {
-          const context = this.create(ClrDatagrid, ChocolateNgForTest);
+          const context = this.create(ClrDatagrid, ChocolateNgForTest, [], [], [NoopAnimationsModule]);
           context.testComponent.action = true;
           expect(() => context.detectChanges()).not.toThrow();
         });
 
         it("doesn't taunt with chocolate on expandable rows", function() {
-          const context = this.create(ClrDatagrid, ChocolateNgForTest);
+          const context = this.create(ClrDatagrid, ChocolateNgForTest, [], [], [NoopAnimationsModule]);
           context.testComponent.expandable = true;
           expect(() => context.detectChanges()).not.toThrow();
         });
@@ -791,7 +804,7 @@ export default function(): void {
 
       describe('column hidden by default', function() {
         it("doesn't taunt with chocolate on columns hidden by default", function() {
-          const context = this.create(ClrDatagrid, HiddenColumnTest);
+          const context = this.create(ClrDatagrid, HiddenColumnTest, [], [], [NoopAnimationsModule]);
           expect(() => context.detectChanges()).not.toThrow();
         });
       });
@@ -802,7 +815,7 @@ export default function(): void {
       let displayModeService: MockDisplayModeService;
 
       beforeEach(function() {
-        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], PROVIDERS);
+        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], PROVIDERS, [NoopAnimationsModule]);
         displayModeService = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
       });
 

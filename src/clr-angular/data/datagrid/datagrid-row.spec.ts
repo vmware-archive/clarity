@@ -28,6 +28,7 @@ import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 const PROVIDERS = [
   Selection,
@@ -44,6 +45,7 @@ const PROVIDERS = [
   StateDebouncer,
   { provide: DisplayModeService, useClass: MockDisplayModeService },
   Expand,
+  ColumnOrdersCoordinatorService,
 ];
 
 type Item = { id: number };

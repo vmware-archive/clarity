@@ -4,10 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import {
+  ChangeDetectorRef,
   Component,
   ContentChild,
   EventEmitter,
   HostBinding,
+  HostListener,
   Injector,
   Input,
   OnDestroy,
@@ -31,6 +33,8 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
 import { ColumnOrderModelService } from './providers/column-order-model.service';
 import { ColumnHeaderSides } from './enums/header-sides.enum';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { OrderChangeData } from './providers/column-orders-coordinator.service';
 
 let nbCount: number = 0;
 
@@ -71,6 +75,14 @@ let nbCount: number = 0;
     role: 'columnheader',
   },
   providers: [ColumnOrderModelService],
+  animations: [
+    trigger('reorderShiftAnimation', [
+      transition('* => active', [
+        style({ transform: 'translate3d({{translateX}}, 0, 0)' }),
+        animate('0.2s ease-in-out', style({ transform: 'translate3d(0, 0, 0)' })),
+      ]),
+    ]),
+  ],
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
@@ -81,22 +93,42 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     private columnOrderModel: ColumnOrderModelService
   ) {
     super(filters);
-    this._sortSubscription = _sort.change.subscribe(sort => {
-      // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
-      if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
-        this._sortOrder = ClrDatagridSortOrder.UNSORTED;
-        this.sortOrderChange.emit(this._sortOrder);
-      }
-      // deprecated: to be removed - START
-      if (this.sorted && sort.comparator !== this._sortBy) {
-        this._sorted = false;
-        this.sortedChange.emit(false);
-      }
-      // deprecated: to be removed - END
-    });
+    this.subscriptions.push(
+      _sort.change.subscribe(sort => {
+        // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
+        if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
+          this._sortOrder = ClrDatagridSortOrder.UNSORTED;
+          this.sortOrderChange.emit(this._sortOrder);
+        }
+        // deprecated: to be removed - START
+        if (this.sorted && sort.comparator !== this._sortBy) {
+          this._sorted = false;
+          this.sortedChange.emit(false);
+        }
+        // deprecated: to be removed - END
+      })
+    );
+
+    this.subscriptions.push(
+      this.columnOrderModel.orderChange.subscribe((orderChangeData: OrderChangeData) => {
+        if (orderChangeData) {
+          this.setupShiftAnimation(
+            orderChangeData.draggedModelRef.headerWidth,
+            orderChangeData.draggedFrom,
+            orderChangeData.draggedTo
+          );
+        }
+      })
+    );
 
     this.columnId = 'dg-col-' + nbCount.toString(); // Approximate a GUID
     nbCount++;
+  }
+
+  private subscriptions: Subscription[] = [];
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   public get leftReorderDroppable() {
@@ -113,6 +145,28 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
   public get columnGroupId() {
     return this.columnOrderModel.columnGroupId;
+  }
+
+  @HostBinding('@reorderShiftAnimation') reorderShiftAnimation;
+
+  @HostListener('@reorderShiftAnimation.done')
+  resetReorderShiftAnimation() {
+    delete this.reorderShiftAnimation;
+  }
+
+  private activateShiftAnimation(shiftBy: number) {
+    this.reorderShiftAnimation = {
+      value: 'active',
+      params: { translateX: `${shiftBy}px` },
+    };
+  }
+
+  public setupShiftAnimation(shiftBy: number, from: number, to: number) {
+    if (this.columnOrderModel.flexOrder >= from && this.columnOrderModel.flexOrder < to) {
+      this.activateShiftAnimation(shiftBy);
+    } else if (this.columnOrderModel.flexOrder <= from && this.columnOrderModel.flexOrder > to) {
+      this.activateShiftAnimation(-shiftBy);
+    }
   }
 
   /**
@@ -138,15 +192,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    */
   public get hidden(): boolean {
     return !!this._hideable && this._hideable.hidden;
-  }
-
-  /**
-   * Subscription to the sort service changes
-   */
-  private _sortSubscription: Subscription;
-
-  ngOnDestroy() {
-    this._sortSubscription.unsubscribe();
   }
 
   /*

@@ -14,6 +14,7 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ColumnOrdersCoordinatorService } from './providers/column-orders-coordinator.service';
 
 @Component({
   selector: 'clr-dg-column-toggle',
@@ -38,7 +39,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                 </button>
             </div>
             <ul class="switch-content list-unstyled">
-                <li *ngFor="let column of columns">
+                <li *ngFor="let column of columns; let i = index;" [style.order]="columnOrders[i]">
                     <clr-checkbox-wrapper>
                         <input clrCheckbox type="checkbox"
                           [disabled]="column.lastVisibleColumn"
@@ -95,8 +96,13 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   constructor(
     public hideableColumnService: HideableColumnService,
     private columnToggleButtons: ColumnToggleButtonsService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    private columnOrdersCoordinatorService: ColumnOrdersCoordinatorService
   ) {}
+
+  get columnOrders(): number[] {
+    return this.columnOrdersCoordinatorService.orderModels.map(orderModel => orderModel.flexOrder);
+  }
 
   ngOnInit() {
     this.subscriptions.push(

@@ -26,6 +26,11 @@ export class ColumnResizerService {
     return this._resizedBy;
   }
 
+  public clear(): void {
+    this.widthBeforeResize = 0;
+    this._resizedBy = 0;
+  }
+
   // is it within the maximum resize range to the left
   public isWithinMaxResizeRange: boolean;
 
@@ -38,7 +43,7 @@ export class ColumnResizerService {
   }
 
   public startResize(): void {
-    this._resizedBy = 0;
+    this.clear();
     this.isWithinMaxResizeRange = true;
     this.widthBeforeResize = this.domAdapter.clientRect(this.el.nativeElement).width;
   }

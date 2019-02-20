@@ -756,31 +756,31 @@ export class WizardJumpToDemo &#123;
                     <code class="clr-code">xl</code> is default.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardClosable</code>> (boolean) hides or reveals the
+                    <code class="clr-code">clrWizardClosable</code (boolean) hides or reveals the
                     close “X” in the top right. If false, the close “X” will not be present. The property
                     defaults to true.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardOpen</code>> (boolean) hides or shows the wizard, in
+                    <code class="clr-code">clrWizardOpen</code> (boolean) hides or shows the wizard, in
                     the same way that <code class="clr-code">clrModalOpen</code> hides or shows a modal.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardPreventDefaultCancel</code>> (boolean) prevents a
+                    <code class="clr-code">clrWizardPreventDefaultCancel</code> (boolean) prevents a
                     user’s cancel action from closing the wizard. Defaults to false.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardForceForwardNavigation</code>> (boolean)
+                    <code class="clr-code">clrWizardForceForwardNavigation</code> (boolean)
                     sets pages to incomplete when they are skipped over because a user navigates
                     backwards using the stepnav. Most useful when validation is occurring on a page-by-page
                     basis when the next button is clicked.
                 </li>
                 <li>
-                    When set to true, <code class="clr-code">clrWizardPreventNavigation</code>> (boolean)
+                    When set to true, <code class="clr-code">clrWizardPreventNavigation</code> (boolean)
                     disables the buttons in the footer, the links in the stepnav to the left, and the close
                     "X" in the top right of the wizard if present.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardDisableStepnav</code>> (boolean) disables the links in
+                    <code class="clr-code">clrWizardDisableStepnav</code> (boolean) disables the links in
                     the stepnav when set to true.
                 </li>
             </ul>
@@ -788,27 +788,27 @@ export class WizardJumpToDemo &#123;
             <h6>Outputs of note</h6>
             <ul class="list">
                 <li>
-                    <code class="clr-code">clrWizardOpenChange</code>> is an output that fires an event
+                    <code class="clr-code">clrWizardOpenChange</code is an output that fires an event
                     after the wizard has opened.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardOnCancel</code>> fires an event after the wizard has
+                    <code class="clr-code">clrWizardOnCancel</code> fires an event after the wizard has
                     been canceled and, in most cases, closed. This output can be used with the
                     <code class="clr-code">clrWizardPreventDefaultCancel</code> input to
                     implement custom functionality when a user wants to close or cancel a wizard.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardOnFinish</code>> emits an event after a wizard has
+                    <code class="clr-code">clrWizardOnFinish</code> emits an event after a wizard has
                     been completed &mdash; once the finish button on the last page has been clicked. If
                     you wanted to reset the wizard after it was finished, this would be a good output to consider.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardOnReset</code>> emits an event after the wizard has
+                    <code class="clr-code">clrWizardOnReset</code> emits an event after the wizard has
                     reset all of its pages to incomplete and also reset its navigation to make the first
                     page in the step nav current.
                 </li>
                 <li>
-                    <code class="clr-code">clrWizardCurrentPageChanged</code>> is fired after the current
+                    <code class="clr-code">clrWizardCurrentPageChanged</code> is fired after the current
                     page of the wizard has been changed.
                 </li>
             </ul>

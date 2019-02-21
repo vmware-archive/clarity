@@ -39,7 +39,7 @@ Then when the schematics are parsed, there is a special schematic by the name of
 No matter what you do, you'll need to have a new Angular CLI project for testing. Create a new project with `ng new ngaddtest`. Then `cd ngaddtest` and create a new file called `.npmrc` and put in this line.
 
 ```bash
-registry=http://localhost:4873
+echo "registry=http://localhost:4873" >> .npmrc
 ```
 
 This will ensure that this project runs through your local registry before going to public NPM. I suggest committing this file so later you can always run `git reset --hard` but not lose this file.

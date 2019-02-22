@@ -6,16 +6,14 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-<form class="form" #simpleForm="ngForm">
-    <div class="form-block">
-        <label>Template Driven Form Demo</label>
-        <div class="form-group">
-            <label for="date">Enter Date</label>
-            <input type="date" id="date" name="date" [(ngModel)]="date" clrDate>
-        </div>
-    </div>
+<form clrForm #simpleForm="ngForm">
+    <h4>Template Driven Form Demo</h4>
+    <clr-date-container>
+        <label>Enter Date</label>
+        <input type="date" name="date" [(ngModel)]="date" clrDate>
+    </clr-date-container>
 </form>
-<pre>
+<pre class="datepicker-output">
 {{simpleForm.value | json}}
 </pre>
 `;

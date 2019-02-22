@@ -3,9 +3,9 @@
     To use the date picker, add the <code class="clr-code">clrDate</code> directive on an
     <code class="clr-code">input</code> field.
 </p>
-<div class="datepicker-demo">
-    <input type="date" clrDate>
-</div>
+<form class="datepicker-demo" clrForm clrLayout="vertical">
+    <input type="date" clrDate name="demo" [(ngModel)]="demo">
+</form>
 <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
 
 <clr-alert [clrAlertClosable]="false">

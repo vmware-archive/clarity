@@ -7,17 +7,15 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 const HTML_EXAMPLE = `
-<form class="form" [formGroup]="dateForm" novalidate>
-    <section class="form-block">
-        <label>Reactive Form Demo</label>
-        <div class="form-group">
-            <label for="dateControl">Date</label>
-            <input id="dateControl" type="date" clrDate formControlName="date"/>
-        </div>
-    </section>
+<form clrForm [formGroup]="dateForm" novalidate>
+    <h4>Reactive Form Demo</h4>
+    <clr-date-container>
+        <label for="dateControl">Date</label>
+        <input id="dateControl" type="date" clrDate formControlName="date"/>
+    </clr-date-container>
 </form>
-<pre>
-{{dateForm.value | json}}
+<pre class="datepicker-output">
+    {{dateForm.value | json}}
 </pre>
 `;
 

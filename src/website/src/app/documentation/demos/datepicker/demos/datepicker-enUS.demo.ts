@@ -9,7 +9,9 @@ import { Component } from '@angular/core';
   selector: 'clr-datepicker-en-us-demo',
   template: `
         <h6 style="margin-top: 24px">Locale Identifier: en-US</h6>
-        <input type="date" clrDate>
+        <form clrForm clrLayout="vertical">
+            <input type="date" clrDate newFormLayout="true">
+        </form>
         <table class="table">
             <thead>
                 <tr>

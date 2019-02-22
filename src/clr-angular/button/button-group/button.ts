@@ -19,7 +19,8 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
                 (click)="emitClick()"
                 [attr.type]="type"
                 [attr.name]="name"
-                [attr.disabled]="disabled">
+                [attr.disabled]="disabled"
+                [attr.title]="title">
                 <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>
@@ -97,6 +98,19 @@ export class ClrButton implements LoadingListener {
   set type(value: string) {
     if (typeof value === 'string') {
       this._type = value;
+    }
+  }
+
+  private _title: string = null;
+
+  get title(): string {
+    return this._title;
+  }
+
+  @Input('title')
+  set title(value: string) {
+    if (typeof value === 'string') {
+      this._title = value;
     }
   }
 

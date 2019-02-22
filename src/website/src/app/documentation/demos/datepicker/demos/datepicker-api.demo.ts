@@ -6,7 +6,9 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-    <input type="date" clrDate>
+<form clrForm clrLayout="vertical">
+  <input type="date" clrDate name="demo" [(ngModel)]="demo">
+</form>
 `;
 
 @Component({
@@ -16,4 +18,5 @@ const HTML_EXAMPLE = `
 })
 export class DatepickerAPIDemo {
   htmlExample = HTML_EXAMPLE;
+  demo;
 }

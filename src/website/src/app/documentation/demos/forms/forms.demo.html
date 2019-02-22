@@ -4,19 +4,6 @@
             Forms are a grouping of input controls that allow a user to submit information to your application.    
         </h5>
 
-        <div class="alert alert-info">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-icon-wrapper">
-                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
-                    </div>
-                    <span class="alert-text">
-                        The forms documentation here describes the new forms introduced in version 0.12. The old forms are still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/forms/">0.11 forms documentation</a>. You will need to include the <code class="clr-code">ClrFormsDeprecatedModule</code> in your Angular module imports for the old checkbox and datepicker to work.
-                    </span>
-                </div>
-            </div>
-        </div>
-
         <h2 id="forms-using-angular">Forms Using Angular</h2>
         
         <p>Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added regularly.</p>
@@ -45,6 +32,23 @@
         
         <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
         
+        <p>All fields should be assumed to be required. Clarity does not support a required input treatment for labels (which often comes in the form of an * by the label). The recommendation is to focus your forms to include only required fields, and if a field is optional then you can describe it as such in the label like (Optional).</p>
+        
+        <clr-code-snippet [clrCode]="ngOptional"></clr-code-snippet>
+
+        <div class="alert alert-info">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                        This pattern is more accesible and clear by writing the word explicitly for users (and screenreaders) to read, with research to back this up compared with the use of a red required asterisk (<span style="color: red">*</span>). See <a href="https://www.fusionbox.com/blog/detail/rethinking-the-red-required-asterisk-for-better-form-ux/599/">this article from fusionbox</a> provides some evidence for this rationale.
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <h4>Multiple error messages</h4>
 
         <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validatior you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>

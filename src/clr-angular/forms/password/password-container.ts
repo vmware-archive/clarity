@@ -33,16 +33,22 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
       <div class="clr-input-wrapper">
         <div class="clr-input-group" [class.clr-focus]="focus">
           <ng-content select="[clrPassword]"></ng-content>
-          <clr-icon *ngIf="!show && clrToggle"
-            shape="eye" 
-            class="clr-input-group-icon-action"
+          <button
+            *ngIf="!show && clrToggle"
+            (click)="toggle()"
             [attr.title]="commonStrings.show"
-            (click)="toggle()"></clr-icon>
-          <clr-icon *ngIf="show && clrToggle" 
-            shape="eye-hide"
             class="clr-input-group-icon-action"
+            type="button">
+            <clr-icon shape="eye"></clr-icon>
+          </button>
+          <button
+            *ngIf="show && clrToggle"
+            (click)="toggle()"
             [attr.title]="commonStrings.hide"
-            (click)="toggle()"></clr-icon>
+            class="clr-input-group-icon-action"
+            type="button">
+            <clr-icon shape="eye-hide"></clr-icon>
+          </button>
         </div>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
       </div>

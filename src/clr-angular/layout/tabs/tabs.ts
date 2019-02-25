@@ -14,6 +14,7 @@ import { ClrTabLink } from './tab-link.directive';
 import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { TabsLayout } from './enums/tabsLayout';
 
 @Component({
   selector: 'clr-tabs',
@@ -21,7 +22,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !(orientation !== 'vertical' && link.inOverflow)">
+                <ng-container *ngIf="link.tabsId === tabsId && !(!isVertical() && link.inOverflow)">
                     <li role="presentation" class="nav-item">
                         <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
                     </li>
@@ -55,16 +56,20 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
   host: {
-    '[class.tabs-vertical]': 'tabsService.orientation === "vertical"',
+    '[class.tabs-vertical]': 'isVertical()',
   },
 })
 export class ClrTabs implements AfterContentInit {
-  @Input('orientation')
-  set orientation(orientation: 'horizontal' | 'vertical') {
-    this.tabsService.orientation = orientation;
+  @Input('clrTabsLayout')
+  set layout(layout: TabsLayout) {
+    if (!Object.values(TabsLayout).includes(layout)) {
+      throw `Unsupported layout ${layout}`;
+    } else {
+      this.tabsService.layout = layout;
+    }
   }
-  get orientation(): 'horizontal' | 'vertical' {
-    return this.tabsService.orientation;
+  get layout(): TabsLayout {
+    return this.tabsService.layout;
   }
 
   @ContentChildren(ClrTab) private tabs: QueryList<ClrTab>;
@@ -101,5 +106,9 @@ export class ClrTabs implements AfterContentInit {
 
   toggleOverflow(event: any) {
     this.ifOpenService.toggleWithEvent(event);
+  }
+
+  isVertical() {
+    return this.layout === TabsLayout.VERTICAL;
   }
 }

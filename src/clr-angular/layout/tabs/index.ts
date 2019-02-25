@@ -10,3 +10,4 @@ export * from './tab-content';
 export * from './tab-overflow-content';
 export * from './tab-link.directive';
 export * from './tabs.module';
+export * from './enums/tabsLayout';

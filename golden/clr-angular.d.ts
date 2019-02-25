@@ -1044,10 +1044,10 @@ export declare class ClrTabLink {
     inOverflow: boolean;
     tabLinkId: string;
     tabsId: number;
-    tabsService: TabsService;
     templateRefContainer: TemplateRefContainer;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
     activate(): void;
+    isVertical(): boolean;
 }
 
 export declare class ClrTabOverflowContent extends AbstractPopover {
@@ -1059,13 +1059,14 @@ export declare class ClrTabs implements AfterContentInit {
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
-    orientation: 'horizontal' | 'vertical';
+    layout: TabsLayout;
     readonly tabContents: ClrTabContent[];
     readonly tabIds: string;
     readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;
     tabsService: TabsService;
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);
+    isVertical(): boolean;
     ngAfterContentInit(): void;
     toggleOverflow(event: any): void;
 }
@@ -1415,6 +1416,11 @@ export declare class NavDetectionOompaLoompa extends OompaLoompa {
 }
 
 export declare function slide(direction: string): AnimationMetadata[];
+
+export declare enum TabsLayout {
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical"
+}
 
 export declare const ToggleService: InjectionToken<any>;
 

@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { TabsLayout } from '@clr/angular';
 
 @Component({
   selector: 'clr-modal-tabs-angular',
@@ -11,6 +12,6 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-angular.demo.html',
 })
 export class TabsAngularDemo {
-  orientation: string = 'vertical';
+  layout: TabsLayout = TabsLayout.VERTICAL;
   inOverflow: boolean = false;
 }

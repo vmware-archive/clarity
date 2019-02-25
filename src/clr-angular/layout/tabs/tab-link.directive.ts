@@ -19,6 +19,7 @@ import { TabsService } from './providers/tabs.service';
 
 import { AriaService } from './providers/aria.service';
 import { TABS_ID } from './tabs-id.provider';
+import { TabsLayout } from './enums/tabsLayout';
 
 let nbTabLinkComponents: number = 0;
 
@@ -30,8 +31,8 @@ let nbTabLinkComponents: number = 0;
     '[attr.aria-hidden]': 'false',
     '[attr.aria-controls]': 'ariaControls',
     '[class.btn]': 'true',
-    '[class.btn-link]': 'tabsService.orientation === "vertical" || !inOverflow',
-    '[class.nav-link]': 'tabsService.orientation === "vertical" || !inOverflow',
+    '[class.btn-link]': 'isVertical()',
+    '[class.nav-link]': 'isVertical()',
     '[class.active]': 'active',
     role: 'tab',
     type: 'button',
@@ -48,7 +49,7 @@ export class ClrTabLink {
     private el: ElementRef,
     private cfr: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
-    public tabsService: TabsService,
+    private tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number
   ) {
     if (!this.tabLinkId) {
@@ -84,5 +85,9 @@ export class ClrTabLink {
 
   get active() {
     return this.ifActiveService.current === this.id;
+  }
+
+  isVertical() {
+    return this.tabsService.layout === TabsLayout.VERTICAL || !this.inOverflow;
   }
 }

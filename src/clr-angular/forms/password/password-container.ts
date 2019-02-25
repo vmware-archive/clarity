@@ -34,20 +34,14 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
         <div class="clr-input-group" [class.clr-focus]="focus">
           <ng-content select="[clrPassword]"></ng-content>
           <button
-            *ngIf="!show && clrToggle"
+            *ngIf="clrToggle"
             (click)="toggle()"
-            [attr.title]="commonStrings.show"
+            [disabled]="control?.disabled"
             class="clr-input-group-icon-action"
             type="button">
-            <clr-icon shape="eye"></clr-icon>
-          </button>
-          <button
-            *ngIf="show && clrToggle"
-            (click)="toggle()"
-            [attr.title]="commonStrings.hide"
-            class="clr-input-group-icon-action"
-            type="button">
-            <clr-icon shape="eye-hide"></clr-icon>
+            <clr-icon
+            [attr.shape]="show ? 'eye-hide' : 'eye'"
+            [attr.title]="show ? commonStrings.hide : commonStrings.show"></clr-icon>
           </button>
         </div>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>

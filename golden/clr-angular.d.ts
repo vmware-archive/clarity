@@ -1435,8 +1435,6 @@ export declare enum TabsLayout {
     VERTICAL = "vertical"
 }
 
-export declare const ToggleService: InjectionToken<any>;
-
 export declare const TOGGLE_SERVICE: InjectionToken<BehaviorSubject<boolean>>;
 
 export declare const TOGGLE_SERVICE_PROVIDER: {

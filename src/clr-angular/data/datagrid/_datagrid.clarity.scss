@@ -2,16 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin pagination-separator() {
-  content: '';
-  display: inline-block;
-  height: 1rem;
-  width: $clr-rem-1px;
-  background-color: $clr-table-border-color;
-  margin: 0 0.5rem;
-  vertical-align: middle;
-}
-
 @include exports('datagrid.clarity') {
   @include basic-table(
     '.datagrid',
@@ -291,7 +281,7 @@
     .datagrid-row {
       background-color: $clr-thead-bgcolor;
       border-top: none;
-      border-bottom: 2px solid $clr-table-border-color;
+      border-bottom: 1px solid $clr-table-border-color;
 
       .datagrid-row-sticky {
         background-color: $clr-thead-bgcolor;
@@ -607,20 +597,23 @@
     flex: 0 0 auto;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: stretch;
-    height: 1.5rem;
     padding: 0 $clr-table-cellpadding;
     // Account for borders
     line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
     font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
     background-color: $clr-thead-bgcolor;
     border: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
+    border-top: none;
     border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
 
     .pagination {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      line-height: 1.5rem;
 
       &-size {
         display: block;
@@ -643,25 +636,16 @@
         }
 
         & + .pagination-description {
-          &:before {
-            @include pagination-separator();
-          }
+          margin-left: 1rem;
         }
       }
 
       &-description {
         white-space: nowrap;
-
-        & + .pagination-list {
-          &:before {
-            @include pagination-separator();
-          }
-        }
       }
 
       &-list {
-        margin-right: 0.5rem;
-        height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+        margin-left: 1rem;
         display: flex;
         align-items: center;
       }
@@ -830,11 +814,10 @@
     }
 
     .datagrid-footer {
-      height: 1rem;
       padding: 0 $clr-table-cellpadding;
       line-height: calc(1rem - #{$clr-rem-1px});
-      .pagination-list {
-        height: calc(1rem - #{2 * $clr-default-borderwidth});
+      .pagination {
+        line-height: 1rem;
       }
       .column-switch-wrapper .column-toggle--action {
         margin: 0;

@@ -13,9 +13,15 @@
 import CheckboxContainerSpecs from './checkbox-container.spec';
 import CheckboxWrapperSpecs from './checkbox-wrapper.spec';
 import CheckboxSpecs from './checkbox.spec';
+import ToggleContainerSpecs from './toggle-container.spec';
+import ToggleWrapperSpecs from './toggle-wrapper.spec';
+import ToggleSpecs from './toggle.spec';
 
 describe('Checkbox component', function() {
   CheckboxContainerSpecs();
   CheckboxWrapperSpecs();
   CheckboxSpecs();
+  ToggleContainerSpecs();
+  ToggleWrapperSpecs();
+  ToggleSpecs();
 });

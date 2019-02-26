@@ -5,26 +5,13 @@
             A grid provides a structure of rows and columns for aligning content. Grids are useful because they help
             create a familiar and easily navigable structure for content.</h5>
 
-        <div class="alert alert-info">
-            <div class="alert-items">
-                <div class="alert-item static">
-                    <div class="alert-icon-wrapper">
-                        <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
-                    </div>
-                    <span class="alert-text">
-                        The grid documentation here describes the new grid introduced in version 0.12. The old grid is still available, but deprecated for removal in version 2.0. To see the old grid documentation, go to <a href="/clarity/documentation/v0.11/grid/">0.11 grid documentation</a>.
-                    </span>
-                </div>
-            </div>
-        </div>
-
         <div id="code-examples">
             <p>
-                Clarity imports the 12-column
+                Clarity extends the 12-column
                 <a href="https://getbootstrap.com/docs/4.1/layout/grid/" target="_blank">
                     Bootstrap 4 Flex Grid
                 </a>
-                and prefixes the grid classes.
+                and prefixes the grid classes with <code class="clr-code">clr-</code>.
                 Prefixing allows us to avoid conflicting with other grid systems.
                 However, it also means if you are familiar with the grid classes
                 in Bootstrap 4, the Clarity grid will be familiar.
@@ -34,8 +21,8 @@
                 Important features about the grid are listed below:
             </p>
 
-            <div class="row">
-                <div class="col-xs-12">
+            <div class="clr-row">
+                <div class="clr-col-12">
                     <table class="table hidden-xs-down">
                         <thead>
                         <tr>

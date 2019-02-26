@@ -584,7 +584,7 @@ export class WizardNavigationService implements OnDestroy {
     let currentPage: ClrWizardPage;
     let myPages: PageCollectionService;
     let pagesToCheck: ClrWizardPage[];
-    let okayToMove: boolean = true;
+    let okayToMove: boolean;
     let goingForward: boolean;
     let currentPageIndex: number;
     let goToPageIndex: number;

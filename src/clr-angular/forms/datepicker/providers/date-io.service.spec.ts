@@ -80,112 +80,112 @@ export default function() {
 
       it('ignores just text', () => {
         const inputDate: string = 'abc';
-        const date: Date = dateIOService.isValidInput(inputDate);
+        const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
       });
 
       it('ignores invalid dates', () => {
         let inputDate: string = '10/21/test';
-        const date1: Date = dateIOService.isValidInput(inputDate);
+        const date1: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date1).toBeNull();
 
         inputDate = 'test/1/1';
-        const date2: Date = dateIOService.isValidInput(inputDate);
+        const date2: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date2).toBeNull();
 
         inputDate = 'test test test';
-        const date3: Date = dateIOService.isValidInput(inputDate);
+        const date3: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date3).toBeNull();
       });
 
       it('ignores empty strings', () => {
         const inputDate: string = '';
-        const date: Date = dateIOService.isValidInput(inputDate);
+        const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
       });
 
       it('parse a two digit year', () => {
         let inputDate: string = '01/02/20';
-        let date: Date = dateIOService.isValidInput(inputDate);
+        let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2020, 0, 2))).toBe(true);
 
         // Invalid date with 2 digit year
         inputDate = '51/02/20';
-        date = dateIOService.isValidInput(inputDate);
+        date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
       });
 
       it('should not parse a five digit year', () => {
         const inputDate: string = '01/02/10000';
-        expect(dateIOService.isValidInput(inputDate)).toBeNull();
+        expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('should not parse a three digit year', () => {
         const inputDate: string = '01/02/201';
-        expect(dateIOService.isValidInput(inputDate)).toBeNull();
+        expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('should not parse a 1 digit year', () => {
         const inputDate: string = '01/02/2';
-        expect(dateIOService.isValidInput(inputDate)).toBeNull();
+        expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('parse a 1 digit date', () => {
         const inputDate: string = '01/2/2015';
-        const date: Date = dateIOService.isValidInput(inputDate);
+        const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2015, 0, 2))).toBe(true);
       });
 
       it('ignores invalid dates', () => {
         let inputDate: string = '01/55/2015';
-        const date: Date = dateIOService.isValidInput(inputDate);
+        const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
 
         inputDate = '02/29/2015';
-        const date1: Date = dateIOService.isValidInput(inputDate);
+        const date1: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date1).toBeNull();
 
         // Leap Year
         inputDate = '02/29/2016';
-        const date2: Date = dateIOService.isValidInput(inputDate);
+        const date2: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date2, new Date(2016, 1, 29))).toBe(true);
       });
 
       it('parses a 1 digit month', () => {
         const inputDate: string = '1/02/2015';
-        const date: Date = dateIOService.isValidInput(inputDate);
+        const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2015, 0, 2))).toBe(true);
       });
 
       it('ignores invalid months', () => {
         const inputDate: string = '13/02/2015';
-        expect(dateIOService.isValidInput(inputDate)).toBeNull();
+        expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('ignores the minus sign and considers it as a delimiter', () => {
         let inputDate: string = '1/-2/2015';
-        let date: Date = dateIOService.isValidInput(inputDate);
+        let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 0, 2)));
 
         inputDate = '-2/5/2015';
-        date = dateIOService.isValidInput(inputDate);
+        date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 1, 5)));
 
         inputDate = '1/2/-2015';
-        date = dateIOService.isValidInput(inputDate);
+        date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 0, 2)));
       });
 
       it('processes dates with different delimiters', () => {
         let inputDate: string = '1/ 2/2015';
-        let date: Date = dateIOService.isValidInput(inputDate);
+        let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 0, 2)));
 
         inputDate = '1.3 .2016';
-        date = dateIOService.isValidInput(inputDate);
+        date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2016, 0, 3)));
       });
     });

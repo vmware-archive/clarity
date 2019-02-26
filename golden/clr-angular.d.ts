@@ -154,7 +154,8 @@ export declare class ClrCalendar implements OnDestroy {
 }
 
 export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> {
-    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, toggle: string);
+    ngOnInit(): void;
 }
 
 export declare class ClrCheckboxContainer implements OnDestroy {
@@ -195,9 +196,12 @@ export declare class ClrCheckboxDeprecatedModule {
 export declare class ClrCheckboxModule {
 }
 
-export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit {
+export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDestroy {
     _dynamic: boolean;
     label: ClrLabel;
+    toggle: boolean;
+    constructor(toggleService: BehaviorSubject<boolean>);
+    ngOnDestroy(): void;
     ngOnInit(): void;
 }
 
@@ -349,9 +353,11 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     toggle(): void;
 }
 
-export interface ClrDatagridFilterInterface<T> {
+export interface ClrDatagridFilterInterface<T, S = any> {
     changes: Observable<any>;
+    readonly state?: S;
     accepts(item: T): boolean;
+    equals?(other: ClrDatagridFilterInterface<T, any>): boolean;
     isActive(): boolean;
 }
 
@@ -471,10 +477,7 @@ export declare enum ClrDatagridSortOrder {
 }
 
 export interface ClrDatagridStateInterface<T = any> {
-    filters?: ({
-        property: string;
-        value: string;
-    } | ClrDatagridFilterInterface<T>)[];
+    filters?: any[];
     page?: {
         from?: number;
         to?: number;
@@ -511,10 +514,10 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
 }
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
-    _dateUpdated: EventEmitter<Date>;
     clrNewLayout: boolean;
     protected control: NgControl;
     date: Date;
+    dateChange: EventEmitter<Date>;
     protected el: ElementRef;
     protected index: number;
     readonly inputType: string;
@@ -522,7 +525,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     placeholder: string;
     readonly placeholderText: string;
     protected renderer: Renderer2;
-    constructor(vcr: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, _dateIOService: DateIOService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, focusService: FocusService, newFormsLayout: boolean, datepickerFocusService: DatepickerFocusService);
+    constructor(viewContainerRef: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, dateIOService: DateIOService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Object, focusService: FocusService, newFormsLayout: boolean, datepickerFocusService: DatepickerFocusService);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     onValueChange(target: HTMLInputElement): void;
@@ -1404,6 +1407,15 @@ export declare function fade(opacity?: number): AnimationMetadata[];
 
 export declare function fadeSlide(direction: string): AnimationMetadata[];
 
+export declare const IS_TOGGLE: InjectionToken<BehaviorSubject<boolean>>;
+
+export declare const IS_TOGGLE_PROVIDER: {
+    provide: InjectionToken<BehaviorSubject<boolean>>;
+    useFactory: typeof isToggleFactory;
+};
+
+export declare function isToggleFactory(): BehaviorSubject<boolean>;
+
 export declare abstract class LoadingListener {
     abstract loadingStateChange(state: ClrLoadingState): void;
 }
@@ -1425,4 +1437,11 @@ export declare enum TabsLayout {
 
 export declare const ToggleService: InjectionToken<any>;
 
-export declare function ToggleServiceProvider(): BehaviorSubject<boolean>;
+export declare const TOGGLE_SERVICE: InjectionToken<BehaviorSubject<boolean>>;
+
+export declare const TOGGLE_SERVICE_PROVIDER: {
+    provide: InjectionToken<BehaviorSubject<boolean>>;
+    useFactory: typeof ToggleServiceFactory;
+};
+
+export declare function ToggleServiceFactory(): BehaviorSubject<boolean>;

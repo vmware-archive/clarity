@@ -54,6 +54,10 @@ export const APP_ROUTES: Routes = [
   { path: 'textarea', loadChildren: 'src/app/textarea/textarea.demo.module#TextareaDemoModule' },
   { path: 'tree-view', loadChildren: 'src/app/tree-view/tree-view.demo.module#TreeViewDemoModule' },
   { path: 'toggles', loadChildren: 'src/app/toggles/toggles.demo.module#TogglesDemoModule' },
+  {
+    path: 'toggles-deprecated',
+    loadChildren: 'src/app/toggles-deprecated/toggles.demo.module#DeprecatedTogglesDemoModule',
+  },
   { path: 'tooltips', loadChildren: 'src/app/tooltips/tooltips.demo.module#TooltipsDemoModule' },
   { path: 'typography', loadChildren: 'src/app/typography/typography.demo.module#TypographyDemoModule' },
   { path: 'vertical-nav', loadChildren: 'src/app/vertical-nav/vertical-nav.demo.module#VerticalNavDemoModule' },

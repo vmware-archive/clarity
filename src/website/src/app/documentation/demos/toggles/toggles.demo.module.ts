@@ -8,20 +8,21 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 
 import { TogglesDemo } from './toggles.demo';
-import { TogglesExampleDemo } from './toggles-example.demo';
 import { DocWrapperModule } from '../_doc-wrapper/doc-wrapper.module';
 import { RouterModule } from '@angular/router';
 import { UtilsModule } from '../../../utils/utils.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
     DocWrapperModule,
+    FormsModule,
     RouterModule.forChild([{ path: '', component: TogglesDemo }]),
     UtilsModule,
   ],
-  declarations: [TogglesExampleDemo, TogglesDemo],
+  declarations: [TogglesDemo],
   exports: [TogglesDemo],
 })
 export class TogglesDemoModule {}

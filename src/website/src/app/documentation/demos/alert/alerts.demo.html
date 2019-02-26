@@ -62,15 +62,6 @@
                     <div class="clrweb-DoxMedia">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img app-alert-box">
-                                <clr-alert clrAlertType="success" [clrAlertAppLevel]="true"
-                                    [clrAlertClosable]="false">
-                                    <clr-alert-item>
-                                        <span class="alert-text">
-                                            Your container has been created.
-                                        </span>
-                                    </clr-alert-item>
-                                </clr-alert>
-
                                 <clr-alert clrAlertType="info" [clrAlertAppLevel]="true"
                                     [clrAlertClosable]="false">
                                     <clr-alert-item>
@@ -94,6 +85,17 @@
                                     <clr-alert-item>
                                         <span class="alert-text">
                                             Your license is about to expire.
+                                        </span>
+                                    </clr-alert-item>
+                                </clr-alert>
+
+                                <!-- This is a silly hack to keep the height of the boxes nearly equal in most cases but 
+                                we don't really support success app level so this must go. -->
+                                <clr-alert clrAlertType="success" [clrAlertAppLevel]="true"
+                                    [clrAlertClosable]="false" style="visibility: hidden">
+                                    <clr-alert-item>
+                                        <span class="alert-text">
+                                            Your container has been created.
                                         </span>
                                     </clr-alert-item>
                                 </clr-alert>
@@ -412,16 +414,6 @@
             <h3 id="examples">Code &amp; Examples</h3>
 
             <p id="alert-classes">Several classes and elements are required to implement the Clarity alert layout. A table of these classes and elements with a brief description of each follows:</p>
-
-            <clr-alert clrAlertType="danger" [clrAlertClosable]="false">
-                <clr-alert-item>
-                    <div class="alert-text">
-                        <div style="margin-bottom: 8px">The use of <code class="clr-code">.alert-item</code> in the <code class="clr-code">clr-alert</code> Angular component is deprecated. Try to use <code class="clr-code">clr-alert-item</code> instead.</div>
-                        <div style="margin-bottom: 8px">If your application uses a combination of <code class="clr-code">clr-alert</code> Angular components and hand-coded DOM alerts, you should put the <code class="clr-code">.static</code> class on your non-Angular <code class="clr-code">.alert-item</code>  elements.</div>
-                        <div>Once <code class="clr-code">clr-alert</code> no longer recognizes <code class="clr-code">.alert-item</code> classnames as a subcomponent, it will no longer be an issue.</div>
-                    </div>
-                </clr-alert-item>
-            </clr-alert>
 
             <table class="table table-vertical">
                 <tbody>

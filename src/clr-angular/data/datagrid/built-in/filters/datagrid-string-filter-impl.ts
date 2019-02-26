@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from '../../interfaces/string-filter.interface';
+import { DatagridPropertyStringFilter } from './datagrid-property-string-filter';
 
 export class DatagridStringFilterImpl<T = any> implements ClrDatagridFilterInterface<T> {
   constructor(public filterFn: ClrDatagridStringFilterInterface<T>) {}
@@ -61,5 +62,29 @@ export class DatagridStringFilterImpl<T = any> implements ClrDatagridFilterInter
   public accepts(item: T): boolean {
     // We always test with the lowercase value of the input, to stay case insensitive
     return this.filterFn.accepts(item, this.lowerCaseValue);
+  }
+
+  public get state() {
+    if (this.filterFn instanceof DatagridPropertyStringFilter) {
+      return {
+        property: this.filterFn.prop,
+        value: this.value,
+      };
+    }
+    return this;
+  }
+
+  public equals(other: ClrDatagridFilterInterface<T, any>): boolean {
+    if (other instanceof DatagridStringFilterImpl) {
+      if (other.filterFn instanceof DatagridPropertyStringFilter) {
+        return (
+          this.filterFn instanceof DatagridPropertyStringFilter &&
+          other.filterFn.prop === this.filterFn.prop &&
+          other.value === this.value
+        );
+      }
+      return other === this;
+    }
+    return false;
   }
 }

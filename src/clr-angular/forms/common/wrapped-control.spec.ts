@@ -132,6 +132,18 @@ export default function(): void {
       } catch (error) {}
     }
 
+    describe('getProviderFromContainer', function() {
+      it('gets a provider from the container', function(this: TestContext) {
+        setupTest(this, WithWrapperNoId, TestControl);
+        expect(this.control.getProviderFromContainer(ControlIdService)).toEqual(this.controlIdService);
+      });
+
+      it('returns not found if provider is missing', function(this: TestContext) {
+        setupTest(this, WithWrapperNoId, TestControl);
+        expect(this.control.getProviderFromContainer(MarkControlService, false)).toBeFalse();
+      });
+    });
+
     describe('with an explicit wrapper', function() {
       it('uses HostWrapper to inject the ControlIdService', function(this: TestContext) {
         spyOn(HostWrapper.prototype, 'get').and.callThrough();

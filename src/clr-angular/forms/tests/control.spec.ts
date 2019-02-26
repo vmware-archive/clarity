@@ -61,7 +61,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       fixture.detectChanges();
     });
 
-    it('should apply the clr-textarea class', () => {
+    it(`should apply the ${controlClass} class`, () => {
       expect(control.nativeElement.classList.contains(controlClass));
     });
 

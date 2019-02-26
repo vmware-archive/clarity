@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, Input } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 declare const ClarityIcons: any;
 
@@ -123,8 +124,8 @@ export class IconDetailCardComponent {
       'has-badge is-solid': '-solid-badged',
     };
 
-    return `${this.commonPath}${this.clrIconSet.replace('-shapes', '')}/${this.clrIcon}${
+    return `${environment.icons_base_url}?set=${this.clrIconSet.replace('-shapes', '')}&shape=${this.clrIcon}${
       variant[this.activeVariantClasses]
-    }.svg`;
+    }`;
   }
 }

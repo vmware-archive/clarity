@@ -284,6 +284,18 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   changes = new Subject<boolean>();
 }
 
+class TestCustomStateFilter extends TestFilter {
+  private innerState: any;
+  constructor(stateCode: string) {
+    super();
+    this.innerState = { stateCode: stateCode };
+  }
+
+  get state() {
+    return this.innerState;
+  }
+}
+
 class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
   accepts(item: number, search: string) {
     return true;
@@ -525,15 +537,18 @@ export default function(): void {
           const testStringFilter = new DatagridStringFilterImpl(new TestStringFilter());
           testStringFilter.value = 'whatever';
           const builtinStringFilter = new DatagridStringFilterImpl(new DatagridPropertyStringFilter('test'));
+          const filterWithState = new TestCustomStateFilter('test');
           builtinStringFilter.value = '1234';
           filters.add(customFilter); // custom filter
           filters.add(testStringFilter); // custom ClrDatagridStringFilterInterface ??
           filters.add(builtinStringFilter);
+          filters.add(filterWithState);
           context.detectChanges();
           expect(context.testComponent.latestState.filters).toEqual([
             customFilter,
             testStringFilter,
             { property: 'test', value: '1234' },
+            { stateCode: 'test' },
           ]);
         });
 

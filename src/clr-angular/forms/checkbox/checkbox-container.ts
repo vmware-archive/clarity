@@ -15,12 +15,12 @@ import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 
 @Component({
-  selector: 'clr-checkbox-container',
+  selector: 'clr-checkbox-container,clr-toggle-container',
   template: `
     <ng-content select="label"></ng-content>
     <label *ngIf="!label && addGrid()"></label>
     <div class="clr-control-container" [class.clr-control-inline]="clrInline" [ngClass]="controlClass()">
-      <ng-content select="clr-checkbox-wrapper"></ng-content>
+      <ng-content select="clr-checkbox-wrapper,clr-toggle-wrapper"></ng-content>
       <div class="clr-subtext-wrapper">
         <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>

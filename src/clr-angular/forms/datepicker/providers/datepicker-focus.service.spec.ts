@@ -60,11 +60,11 @@ export default function() {
         const input: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('input');
 
         mockNgZone.stabilizeZone();
-        expect(document.activeElement).not.toBe(input);
+        expect(datepickerFocusService.elementIsFocused(input)).toBe(false);
 
         datepickerFocusService.focusInput(input);
         mockNgZone.stabilizeZone();
-        expect(document.activeElement).toBe(input);
+        expect(datepickerFocusService.elementIsFocused(input)).toBe(true);
       })
     );
   });

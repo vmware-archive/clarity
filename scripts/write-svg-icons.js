@@ -51,7 +51,7 @@ let writeToFile = (fiePath, content) => {
 let breakUpShapeTemplate = (shapeName, shapeTemplate) => {
   let expandedShape = {};
 
-  $ = cheerio.load(shapeTemplate);
+  const $ = cheerio.load(shapeTemplate);
 
   let childWrapper = $('<div class="svg-child-element"></div>');
 

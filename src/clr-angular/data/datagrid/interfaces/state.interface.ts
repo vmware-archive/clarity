@@ -4,10 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { ClrDatagridComparatorInterface } from './comparator.interface';
-import { ClrDatagridFilterInterface } from './filter.interface';
 
 export interface ClrDatagridStateInterface<T = any> {
   page?: { from?: number; to?: number; size?: number };
   sort?: { by: string | ClrDatagridComparatorInterface<T>; reverse: boolean };
-  filters?: ({ property: string; value: string } | ClrDatagridFilterInterface<T>)[];
+  filters?: any[];
 }

@@ -25,7 +25,8 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { filter } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import { FocusService } from '../common/providers/focus.service';
 import { WrappedFormControl } from '../common/wrapped-control';
@@ -37,6 +38,13 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
+import { datesAreEqual } from './utils/date-utils';
+
+// There are four ways the datepicker value is set
+// 1. Value set by user typing into text input as a string ex: '01/28/2015'
+// 2. Value set explicitly by Angular Forms APIs as a string ex: '01/28/2015'
+// 3. Value set by user via datepicker UI as a Date Object
+// 4. Value set via `clrDate` input as a Date Object
 
 @Directive({
   selector: '[clrDate]',
@@ -47,28 +55,26 @@ import { DatepickerFocusService } from './providers/datepicker-focus.service';
   providers: [DatepickerFocusService],
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
-  protected index = 4;
+  @Input() placeholder: string;
+  @Input() clrNewLayout: boolean;
+  @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
+  @Input('clrDate')
+  set date(date: Date) {
+    if (this.previousDateChange !== date) {
+      this.updateDate(this.getValidDateValueFromDate(date));
+    }
 
-  //We need this variable because if the date input has a value initialized
-  //we do not output it. This variable is false during initial load. We make sure that
-  //during initial load dayModelOutputted is equal to the value entered by the user so that initialized
-  //value isn't emitted back to the user. After initial load,
-  //we set this to true and the dayModelOutputted is set only
-  //when the Output is emitted to the user.
-  private previousOutputInitializedFlag: boolean = false;
-  private previousOutput: DayModel;
-
-  private initializePreviousOutput(dayModel: DayModel) {
-    if (!this.previousOutputInitializedFlag) {
-      this.previousOutput = dayModel;
-      this.previousOutputInitializedFlag = true;
+    if (!this.initialClrDateInputValue) {
+      this.initialClrDateInputValue = date;
     }
   }
 
-  @Input() clrNewLayout: boolean;
+  protected index = 4;
+  private initialClrDateInputValue: Date;
+  private previousDateChange: Date;
 
   constructor(
-    vcr: ViewContainerRef,
+    viewContainerRef: ViewContainerRef,
     injector: Injector,
     protected el: ElementRef,
     protected renderer: Renderer2,
@@ -76,9 +82,9 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional()
     protected control: NgControl,
     @Optional() private container: ClrDateContainer,
-    @Optional() private _dateIOService: DateIOService,
-    @Optional() private _dateNavigationService: DateNavigationService,
-    @Optional() private _datepickerEnabledService: DatepickerEnabledService,
+    @Optional() private dateIOService: DateIOService,
+    @Optional() private dateNavigationService: DateNavigationService,
+    @Optional() private datepickerEnabledService: DatepickerEnabledService,
     @Optional() private dateFormControlService: DateFormControlService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() private focusService: FocusService,
@@ -87,147 +93,33 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     public newFormsLayout: boolean,
     private datepickerFocusService: DatepickerFocusService
   ) {
-    super(vcr, ClrDateContainer, injector, control, renderer, el);
+    super(viewContainerRef, ClrDateContainer, injector, control, renderer, el);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.populateServicesFromContainerComponent();
-    this.initializeSubscriptions();
-    this.processInitialInputs();
     this.setFormLayout();
+    this.populateServicesFromContainerComponent();
+
+    this.subscriptions.push(
+      this.listenForUserSelectedDayChanges(),
+      this.listenForControlValueChanges(),
+      this.listenForTouchChanges(),
+      this.listenForDirtyChanges(),
+      this.listenForInputRefocus()
+    );
   }
 
   ngAfterViewInit() {
-    this.writeInitialInputFromUserInputField();
-  }
-
-  private populateServicesFromContainerComponent(): void {
-    if (!this.container) {
-      this._dateIOService = this.getProviderFromContainer(DateIOService);
-      this._dateNavigationService = this.getProviderFromContainer(DateNavigationService);
-      this._datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
-      this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
-    }
-  }
-
-  private processInitialInputs(): void {
-    // Process the inputs initialized by the user which were missed
-    // because of late subscriptions or lifecycle method calls.
-    this.processUserDateObject(this.dateValueOnInitialLoad);
-
-    // Handle Initial Value from Reactive Forms
-    // TODO: We are repeating this logic at multiple places. This makes me think
-    // if this class should have implemented the ControlValueAccessor interface.
-    // Will explore that later and see if its a cleaner solution.
-    if (this.control && this.control.value) {
-      this.updateInputValue(this.control.value);
-      this.initializePreviousOutput(this._dateNavigationService.selectedDay);
-    }
-  }
-
-  private setFormLayout() {
-    if (this.clrNewLayout !== undefined) {
-      this.newFormsLayout = !!this.clrNewLayout;
-    }
-  }
-
-  private writeInitialInputFromUserInputField() {
     // I don't know why I have to do this but after using the new HostWrapping Module I have to delay the processing
-    // of the initial Input set by the user to here.  If I do not 2 issues occur:
-    // 1. the Input setter is called before ngOnInit. ngOnInit initializes the services without which the setter
-    // fails
-    // 2. The Renderer doesn't work before ngAfterViewInit
-    //(It used to before the new HostWrapping Module for some reason).
+    // of the initial Input set by the user to here. If I do not 2 issues occur:
+    // 1. The Input setter is called before ngOnInit. ngOnInit initializes the services without which the setter fails.
+    // 2. The Renderer doesn't work before ngAfterViewInit (It used to before the new HostWrapping Module for some reason).
     // I need the renderer to set the value property on the input to make sure that if the user has supplied a Date
-    // input object,  we reflect it with the right date on the input field using the IO service.  I am not sure if
+    // input object, we reflect it with the right date on the input field using the IO service. I am not sure if
     // these are major issues or not but just noting them down here.
-    if (this._dateNavigationService) {
-      const selDay: DayModel = this._dateNavigationService.selectedDay;
-      if (selDay) {
-        const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(selDay.toDate());
-        this.writeDateStrToInputField(dateStr);
-      }
-    }
-    this.initialLoad = false;
+    this.processInitialInputs();
   }
-
-  private writeDateStrToInputField(value: string): void {
-    this.renderer.setProperty(this.el.nativeElement, 'value', value);
-  }
-
-  private initialLoad: boolean = true;
-  private dateValueOnInitialLoad: Date;
-
-  /**
-   * Javascript Date object input set by the user.
-   */
-  @Input('clrDate')
-  set date(value: Date) {
-    if (this.initialLoad) {
-      // Store date value passed by the user to process after the services have been initialized by
-      // the ngOnInit hook.
-      this.dateValueOnInitialLoad = value;
-    } else {
-      this.processUserDateObject(value);
-    }
-  }
-
-  /**
-   * Processes a date object to check if its valid or not.
-   */
-  private processUserDateObject(value: Date) {
-    if (this._dateIOService) {
-      // The date object is converted back to string because in Javascript you can create a date object
-      // like this: new Date("Test"). This is a date object but it is invalid. Converting the date object
-      // that the user passed helps us to verify the validity of the date object.
-      const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(value);
-      this.updateInputValue(dateStr);
-    }
-  }
-
-  private updateInputValue(dateStr: string): void {
-    const date: Date = this._dateIOService.isValidInput(dateStr);
-    if (date) {
-      const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-      if (!dayModel.isEqual(this._dateNavigationService.selectedDay)) {
-        this.previousOutput = dayModel;
-        this._dateNavigationService.selectedDay = dayModel;
-        this.writeDateStrToInputField(dateStr);
-      }
-    } else {
-      this._dateNavigationService.selectedDay = null;
-    }
-  }
-
-  @Input() placeholder: string;
-
-  /**
-   * Returns the date format for the placeholder according to which the input should be entered by the user.
-   */
-  @HostBinding('attr.placeholder')
-  get placeholderText(): string {
-    return this.placeholder ? this.placeholder : this._dateIOService.placeholderText;
-  }
-
-  /**
-   * Sets the input type to text when the datepicker is enabled. Reverts back to the native date input
-   * when the datepicker is disabled. Datepicker is disabled on mobiles.
-   */
-  @HostBinding('attr.type')
-  get inputType(): string {
-    return isPlatformBrowser(this.platformId) && this._datepickerEnabledService.isEnabled ? 'text' : 'date';
-  }
-
-  /**
-   * Output Management
-   * Note: For now we will not emit both clrDateChange and ngControl outputs
-   * at the same time. This requires us to listen to keydown and blur events to figure out
-   * exactly when the Output should be emitted.
-   * Our recommendation right now is to either use clrDate or use ngModel/FormControl.
-   * Do not use both of them together.
-   */
-  @Output('clrDateChange') _dateUpdated: EventEmitter<Date> = new EventEmitter<Date>(false);
 
   @HostListener('focus')
   setFocusStates() {
@@ -240,30 +132,24 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     this.setFocus(false);
   }
 
-  /**
-   * Fires this method when the user changes the input focuses out of the input field.
-   */
-  @HostListener('change', ['$event.target'])
-  onValueChange(target: HTMLInputElement) {
-    const value: string = target.value;
-    const date: Date = this._dateIOService.isValidInput(value);
-    if (date) {
-      const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-      this._dateNavigationService.selectedDay = dayModel;
-      this.emitDateOutput(dayModel);
-    } else {
-      this._dateNavigationService.selectedDay = null;
-      this.emitDateOutput(null);
-    }
+  @HostBinding('attr.placeholder')
+  get placeholderText(): string {
+    return this.placeholder ? this.placeholder : this.dateIOService.placeholderText;
   }
 
-  private emitDateOutput(dayModel: DayModel): void {
-    if (dayModel && !dayModel.isEqual(this.previousOutput)) {
-      this._dateUpdated.emit(dayModel.toDate());
-      this.previousOutput = dayModel;
-    } else if (!dayModel && this.previousOutput) {
-      this._dateUpdated.emit(null);
-      this.previousOutput = null;
+  @HostBinding('attr.type')
+  get inputType(): string {
+    return isPlatformBrowser(this.platformId) && this.datepickerEnabledService.isEnabled ? 'text' : 'date';
+  }
+
+  @HostListener('change', ['$event.target'])
+  onValueChange(target: HTMLInputElement) {
+    const validDateValue = this.dateIOService.getDateValueFromDateString(target.value);
+
+    if (validDateValue) {
+      this.updateDate(validDateValue, true);
+    } else {
+      this.emitDateOutput(null);
     }
   }
 
@@ -273,82 +159,114 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
-  private initializeSubscriptions(): void {
-    this.listenForUserSelectedDayChanges();
-    this.listenForValueChanges();
-    this.listenForTouchChanges();
-    this.listenForDirtyChanges();
-    this.listenForInputRefocus();
+  private populateServicesFromContainerComponent() {
+    if (!this.container) {
+      this.dateIOService = this.getProviderFromContainer(DateIOService);
+      this.dateNavigationService = this.getProviderFromContainer(DateNavigationService);
+      this.datepickerEnabledService = this.getProviderFromContainer(DatepickerEnabledService);
+      this.dateFormControlService = this.getProviderFromContainer(DateFormControlService);
+    }
+  }
+
+  private processInitialInputs() {
+    if (this.datepickerHasFormControl()) {
+      this.updateDate(this.dateIOService.getDateValueFromDateString(this.control.value));
+    } else {
+      this.updateDate(this.initialClrDateInputValue);
+    }
+  }
+
+  private setFormLayout() {
+    if (this.clrNewLayout !== undefined) {
+      this.newFormsLayout = !!this.clrNewLayout;
+    }
+  }
+
+  private updateDate(value: Date, setByUserInteraction = false) {
+    const date = this.getValidDateValueFromDate(value);
+
+    if (setByUserInteraction) {
+      this.emitDateOutput(date);
+    } else {
+      this.previousDateChange = date;
+    }
+
+    if (this.dateNavigationService) {
+      this.dateNavigationService.selectedDay = date
+        ? new DayModel(date.getFullYear(), date.getMonth(), date.getDate())
+        : null;
+    }
+
+    this.updateInput(date);
+  }
+
+  private updateInput(date: Date) {
+    if (date) {
+      const dateString = this.dateIOService.toLocaleDisplayFormatString(date);
+
+      if (this.datepickerHasFormControl() && dateString !== this.control.value) {
+        this.control.control.setValue(dateString);
+      } else {
+        this.renderer.setProperty(this.el.nativeElement, 'value', dateString);
+      }
+    } else {
+      this.renderer.setProperty(this.el.nativeElement, 'value', '');
+    }
+  }
+
+  private getValidDateValueFromDate(date: Date) {
+    if (this.dateIOService) {
+      const dateString = this.dateIOService.toLocaleDisplayFormatString(date);
+      return this.dateIOService.getDateValueFromDateString(dateString);
+    } else {
+      return null;
+    }
+  }
+
+  private emitDateOutput(date: Date) {
+    if (!datesAreEqual(date, this.previousDateChange)) {
+      this.dateChange.emit(date);
+      this.previousDateChange = date;
+    } else if (!date && this.previousDateChange) {
+      this.dateChange.emit(null);
+      this.previousDateChange = null;
+    }
+  }
+
+  private datepickerHasFormControl() {
+    return !!this.control;
+  }
+
+  private listenForControlValueChanges() {
+    return of(this.datepickerHasFormControl())
+      .pipe(
+        filter(hasControl => hasControl),
+        switchMap(() => this.control.valueChanges),
+        // only update date value if not being set by user
+        filter(() => !this.datepickerFocusService.elementIsFocused(this.el.nativeElement))
+      )
+      .subscribe((value: string) => this.updateDate(this.dateIOService.getDateValueFromDateString(value)));
   }
 
   private listenForUserSelectedDayChanges() {
-    if (this._dateNavigationService && this._dateIOService) {
-      this.subscriptions.push(
-        this._dateNavigationService.selectedDayChange.subscribe((dayModel: DayModel) => {
-          const dateStr: string = this._dateIOService.toLocaleDisplayFormatString(dayModel.toDate());
-          this.writeDateStrToInputField(dateStr);
-          // This makes sure that ngModelChange is fired
-          // TODO: Check if there is a better way to do this.
-          // NOTE: Its important to use NgControl and not NgModel because
-          // NgModel only works with template driven forms
-          if (this.control) {
-            this.control.control.setValue(dateStr);
-          }
-          this.emitDateOutput(dayModel);
-        })
-      );
-    }
-  }
-
-  private listenForValueChanges() {
-    // We do not emit an Output from this subscription because
-    // we only emit the Output when the user has focused out of the input.
-    if (this._dateNavigationService && this._dateIOService && this.control) {
-      this.subscriptions.push(
-        this.control.valueChanges.subscribe((value: string) => {
-          const date: Date = this._dateIOService.isValidInput(value);
-          if (date) {
-            const dayModel: DayModel = new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
-            this._dateNavigationService.selectedDay = dayModel;
-            this.initializePreviousOutput(dayModel);
-          } else if (value === '' || value === null) {
-            this._dateNavigationService.selectedDay = null;
-            this.initializePreviousOutput(null);
-          } else {
-            this.initializePreviousOutput(null);
-          }
-        })
-      );
-    }
+    return this.dateNavigationService.selectedDayChange.subscribe(dayModel => this.updateDate(dayModel.toDate(), true));
   }
 
   private listenForTouchChanges() {
-    if (this.dateFormControlService) {
-      this.subscriptions.push(
-        this.dateFormControlService.touchedChange.subscribe(() => {
-          if (this.control) {
-            this.control.control.markAsTouched();
-          }
-        })
-      );
-    }
+    return this.dateFormControlService.touchedChange
+      .pipe(filter(() => this.datepickerHasFormControl()))
+      .subscribe(() => this.control.control.markAsTouched());
   }
 
   private listenForDirtyChanges() {
-    this.subscriptions.push(
-      this.dateFormControlService.dirtyChange.subscribe(() => {
-        if (this.control) {
-          this.control.control.markAsDirty();
-        }
-      })
-    );
+    return this.dateFormControlService.dirtyChange
+      .pipe(filter(() => this.datepickerHasFormControl()))
+      .subscribe(() => this.control.control.markAsDirty());
   }
 
   private listenForInputRefocus() {
-    this.subscriptions.push(
-      this._dateNavigationService.selectedDayChange
-        .pipe(filter(date => !!date))
-        .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement))
-    );
+    return this.dateNavigationService.selectedDayChange
+      .pipe(filter(date => !!date))
+      .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement));
   }
 }

@@ -1054,7 +1054,7 @@ export declare class ClrTabOverflowContent extends AbstractPopover {
     constructor(injector: Injector, parentHost: ElementRef);
 }
 
-export declare class ClrTabs implements AfterContentInit {
+export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly activeTabInOverflow: boolean;
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
@@ -1068,6 +1068,7 @@ export declare class ClrTabs implements AfterContentInit {
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);
     isVertical(): boolean;
     ngAfterContentInit(): void;
+    ngOnDestroy(): void;
     toggleOverflow(event: any): void;
 }
 

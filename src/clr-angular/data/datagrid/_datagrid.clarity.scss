@@ -56,7 +56,7 @@
     }
 
     .datagrid-expandable-caret-icon {
-      color: $gray-dark;
+      color: $clr-color-neutral-600;
       // nudge down for vertical alignment...
       margin-top: 0.125rem;
       svg {
@@ -104,7 +104,7 @@
       padding: 0.25rem 0.25rem;
       margin-left: 0.25rem;
       border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-      box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+      box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
       font-weight: normal;
       white-space: nowrap;
@@ -158,7 +158,7 @@
 
         &.active {
           background: $clr-datagrid-row-hover;
-          color: $clr-black;
+          color: $clr-color-neutral-1000;
         }
 
         &:focus {
@@ -368,12 +368,12 @@
 
       &.asc {
         .datagrid-column-flex::after {
-          background-image: generateUpArrowIcon($action-blues-dark-midtone);
+          background-image: generateUpArrowIcon($clr-color-action-600);
         }
       }
       &.desc {
         .datagrid-column-flex::after {
-          background-image: generateDownArrowIcon($action-blues-dark-midtone);
+          background-image: generateDownArrowIcon($clr-color-action-600);
         }
       }
 
@@ -387,19 +387,18 @@
         margin: 0 0.25rem;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: generateFilterIcon($gray-dark-midtone);
+        background-image: generateFilterIcon($clr-color-neutral-500);
 
         &:hover {
-          background-image: generateFilterIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600);
         }
 
         &.datagrid-filter-open {
-          background-image: generateFilterIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600);
         }
 
         &.datagrid-filtered {
-          background-image: generateFilterIcon($action-blues-dark-midtone),
-            generateCircleIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600), generateCircleIcon($clr-color-action-600);
         }
       }
 
@@ -410,7 +409,7 @@
         background: $clr-datagrid-popover-bg-color;
         padding: 0.75rem;
         border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+        box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
         font-weight: normal;
 
@@ -495,13 +494,13 @@
           display: none;
           width: 1px;
           height: 0;
-          border-right: $clr-default-borderwidth dotted $clr-action-blue-lighter;
+          border-right: $clr-default-borderwidth dotted $clr-color-action-300;
           transform: translateX(0px);
           cursor: col-resize;
         }
 
         .exceeded-max {
-          border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
+          border-right: $clr-default-borderwidth dotted rgba($clr-color-danger-700, 0.3);
         }
       }
 
@@ -576,7 +575,7 @@
         justify-content: center;
         justify-content: center;
         font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
-        color: $clr-dark-midtone-gray;
+        color: $clr-color-neutral-500;
       }
 
       .datagrid-placeholder-image {
@@ -691,7 +690,7 @@
 
       &.active {
         .column-toggle--action {
-          color: $clr-action-blue;
+          color: $clr-color-action-600;
         }
       }
       .column-toggle--action {
@@ -700,9 +699,9 @@
         padding-left: 0;
         padding-right: 0;
 
-        color: $clr-dark-midtone-gray;
+        color: $clr-color-neutral-500;
         &:hover {
-          color: $clr-action-blue;
+          color: $clr-color-action-600;
         }
       }
 
@@ -729,10 +728,10 @@
             min-width: 0.75rem;
             margin: 0;
             padding: 0;
-            color: $clr-dark-midtone-gray;
+            color: $clr-color-neutral-500;
 
             &:hover {
-              color: $clr-action-blue;
+              color: $clr-color-action-600;
             }
           }
         }
@@ -770,12 +769,12 @@
     margin-right: 0.375rem;
 
     &::before {
-      background-color: $clr-gray;
+      background-color: $clr-color-neutral-600;
     }
 
     &::after {
-      border-left-color: $clr-white;
-      border-bottom-color: $clr-white;
+      border-left-color: $clr-color-neutral-0;
+      border-bottom-color: $clr-color-neutral-0;
     }
   }
 

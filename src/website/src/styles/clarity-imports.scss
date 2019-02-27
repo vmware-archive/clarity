@@ -1,25 +1,15 @@
-/* Vendor */
-
-@import '../../../clr-angular/utils/vendor/decimalRounding.clarity';
-@import '../../../clr-angular/utils/vendor/mathPow.clarity';
-
-/* End Vendor */
-
 /* Clarity - Begin Part 1 */
 
 @import '../../../clr-angular/utils/mixins.clarity';
 @import '../../../clr-angular/utils/helpers.clarity';
 
 //Color
-@import '../../../clr-angular/color/utils/colors.clarity';
-@import '../../../clr-angular/color/utils/contrast-cache.clarity';
-@import '../../../clr-angular/color/utils/helpers.clarity';
-@import '../../../clr-angular/color/color.clarity'; // depends on colors.clarity, helper.clarity, contrast-cache.clarity
+@import '../../../clr-angular/color/variables.color';
 
 //Layer - z-indices
 @import '../../../clr-angular/utils/layers.clarity';
 
 //Variables
 @import '../../../clr-angular/utils/bs4-grid-breakpoint-overrides.clarity';
-@import '../../../clr-angular/utils/variables.clarity'; // depends on helpers.clarity, color.clarity
+@import '../../../clr-angular/utils/variables.clarity'; // depends on helpers.clarity, colors.clarity
 @import '../../../clr-angular/utils/_maps.clarity';

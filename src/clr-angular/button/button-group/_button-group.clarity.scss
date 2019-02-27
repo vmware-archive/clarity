@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -64,7 +64,7 @@
     &.btn-warning {
       .tooltip:not(:last-child) .btn,
       .btn:not(:last-child) {
-        margin: 0 $clr-default-borderwidth 0 0;
+        margin: 0 $clr-btn-border-width 0 0;
       }
     }
 
@@ -82,11 +82,11 @@
     }
 
     > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
-      border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
+      border-radius: 0 $clr-btn-border-radius $clr-btn-border-radius 0;
     }
 
     > .btn-group-overflow:last-child:first-child > .btn:first-child {
-      border-radius: $clr-global-borderradius;
+      border-radius: $clr-btn-border-radius;
     }
 
     //To avoid double borders

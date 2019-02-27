@@ -8,21 +8,21 @@
 $clr-header-height: 2.5rem !default;
 
 // Usage: ../layout/nav/_header.clarity.scss
-$clr-header-bgColor: $gray-darkest !default;
-$clr-header-textColor: clr-getTextColor($clr-header-bgColor, lightest);
-$clr-logo-width: 1.5rem;
-$clr-nav-icon-size: 0.916667rem;
-$clr-header-section-divider-height: 1.666667rem;
-$clr-search-icon-width: 0.833333rem;
-$clr-header-divider-opacity: 0.15;
-$clr-header-nav-opactiy: 0.65;
-$clr-header-nav-hover-opacity: 1;
-$clr-header-outline-offset: -0.208333rem;
-$clr-header-clarity-icons-size: 1rem;
+$clr-header-bgColor: $clr-color-neutral-900 !default;
+$clr-header-textColor: $clr-color-neutral-50 !default;
+$clr-logo-width: 1.5rem !default;
+$clr-nav-icon-size: 0.916667rem !default;
+$clr-header-section-divider-height: 1.666667rem !default;
+$clr-search-icon-width: 0.833333rem !default;
+$clr-header-divider-opacity: 0.15 !default;
+$clr-header-nav-opactiy: 0.65 !default;
+$clr-header-nav-hover-opacity: 1 !default;
+$clr-header-outline-offset: -0.208333rem !default;
+$clr-header-clarity-icons-size: 1rem !default;
 $clr-header-nav-text-horizontal-padding: 1rem !default;
-$clr-header-2-bg-color: #485969;
-$clr-header-3-bg-color: $action-purples-darkest;
-$clr-header-4-bg-color: $clr-blue;
-$clr-header-5-bg-color: $action-blues-dark;
-$clr-header-6-bg-color: $action-blues-darkest;
-$clr-header-7-bg-color: #314351;
+$clr-header-2-bg-color: #485969 !default;
+$clr-header-3-bg-color: $clr-color-secondary-action-1000 !default;
+$clr-header-4-bg-color: $clr-color-action-700 !default;
+$clr-header-5-bg-color: $clr-color-action-800 !default;
+$clr-header-6-bg-color: $clr-color-action-1000 !default;
+$clr-header-7-bg-color: #314351 !default;

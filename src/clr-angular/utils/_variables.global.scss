@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -39,12 +39,16 @@ $clr_baselineRem_6: 6rem;
 //13. Outline Offset
 $clr-outline-offset: -5px;
 // App bg color
-$clr-global-app-background: $gray-lighter;
+$clr-global-app-background: $clr-color-neutral-50 !default;
 // App selection color
-$clr-global-selection-color: #d9e4ea;
-$clr-selection-color: $clr-global-selection-color; // $clr-selection-color is deprecated and will be removed.
+$clr-global-selection-color: #d9e4ea !default;
+$clr-selection-color: $clr-global-selection-color !default; // $clr-selection-color is deprecated and will be removed.
+$clr-global-on-selection-color: $clr-color-neutral-1000 !default;
+
 // App hover color
-$clr-global-hover-color: $gray-light;
+$clr-global-hover-color: $clr-color-neutral-200 !default;
+$clr-global-content-header-font-color: $clr-color-neutral-1000 !default;
+$clr-global-font-color: $clr-color-neutral-700 !default;
 
 // TODO: Can any of this be grouped in a 'Layout' section?
 //5.Content Area Paddings
@@ -77,8 +81,12 @@ $grid-gutter-widths: (
 
 // Close button colors
 // Usage: ../emphasis/alert/_alert.clarity.scss
-$close-color--normal: $gray-dark;
-$close-color--hover: $clr-black;
+$close-color--normal: $clr-color-neutral-600 !default; //deprecated
+$clr-close-color--normal: $close-color--normal !default;
+$clr-close-color--normal-opacity: 0.2 !default;
+$close-color--hover: $clr-color-neutral-1000 !default; //deprecated
+$clr-close-color--hover: $close-color--hover !default;
+$clr-close-color--hover-opacity: 0.5 !default;
 
 // Box Shadow
-$clr-popover-box-shadow-color: rgba(clr-getColor(dark), 0.25);
+$clr-popover-box-shadow-color: rgba($clr-color-neutral-600, 0.25) !default;

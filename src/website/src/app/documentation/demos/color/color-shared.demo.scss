@@ -53,26 +53,16 @@
   th {
     font-weight: normal;
     text-align: center;
-    color: clr-getColor(light-midtone);
+    color: $clr-color-neutral-400;
   }
 
   td {
-    border: 1px solid clr-getColor(white);
+    border: 1px solid $clr-color-neutral-0;
     vertical-align: middle;
     width: 8%;
     text-align: center;
     font-weight: 100;
     color: #000;
     position: relative;
-  }
-}
-
-@mixin clr-colordemo-luminanceAndContrastTableStyles {
-  th {
-    font-size: 11px; // TODO: convert to rem() function
-    color: clr-getColor(darker);
-    text-transform: uppercase;
-    background-color: clr-getColor(lighter);
-    padding: 8px;
   }
 }

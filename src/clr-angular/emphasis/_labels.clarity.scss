@@ -1,16 +1,13 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // TODO: Split badges and labels into separate files.
 
 @mixin generateLabelStyles($color: gray, $alias: 1) {
-  $label-color-map: map-get($clr-label-colors, $color);
-  $badge-color-map: map-get($clr-badge-colors, $color);
-
   &.label-#{$color},
   &.label-#{$alias} {
-    border: $clr-default-borderwidth solid map-get($label-color-map, background);
+    border: $clr-label-borderwidth solid getLabelColor($color, bg-color);
   }
 
   &.clickable.label-#{$color} {
@@ -21,40 +18,37 @@
     }
 
     &:active {
-      box-shadow: 0 $clr-default-borderwidth 0 0 map-get($label-color-map, background) inset;
+      box-shadow: 0 $clr-label-borderwidth 0 0 getLabelColor($color, bg-color) inset;
       transform: translateY(0.5px);
     }
   }
 
   &.label-#{$color} > .badge {
-    background: map-get($badge-color-map, background);
-    color: map-get($badge-color-map, font);
+    background: getBadgeColor($color, bg-color);
+    color: getBadgeColor($color, color);
   }
 }
 
 @mixin generateBadgeStyles($color: gray, $alias: 1) {
-  $color-map: map-get($clr-badge-colors, $color);
   &.badge-#{$color},
   &.badge-#{$alias} {
-    background: map-get($color-map, background);
-    color: map-get($color-map, font);
+    background: getBadgeColor($color, bg-color);
+    color: getBadgeColor($color, color);
   }
 }
 
 @mixin generateStatusLabelStyles($status: info) {
-  $status-map: map-get($clr-label-status, $status);
   &.label-#{$status} {
-    background: map-get($status-map, background);
-    color: map-get($status-map, font);
-    border: $clr-default-borderwidth solid map-get($status-map, border);
+    background: getLabelColor($status, bg-color);
+    color: getLabelColor($status, color);
+    border: $clr-label-borderwidth solid getLabelColor($status, border-color);
   }
 }
 
 @mixin generateStatusBadgeStyles($status: info) {
-  $status-map: map-get($clr-badge-status, $status);
   &.badge-#{$status} {
-    background: map-get($status-map, background);
-    color: map-get($status-map, font);
+    background: getBadgeColor($status, bg-color);
+    color: getBadgeColor($status, color);
   }
 }
 
@@ -72,21 +66,17 @@
 
     // line-height needed to be adjusted to force center alignment
     line-height: 0.458333rem;
-
-    $color-map: map-get($clr-label-colors, gray);
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
     border-radius: 0.5rem;
-    border: $clr-default-borderwidth solid $gray-dark;
+    border: $clr-label-borderwidth solid $clr-label-default-border-color;
     height: 0.875rem;
     margin: 0 0.25rem 0 0;
     white-space: nowrap;
-    // TODO: use contrast color generators instead of hard-coded color vars
     color: $clr-label-font-color;
 
-    // TODO: use contrast color generators instead of hard-coded color vars
     &:visited {
       color: $clr-label-font-color;
     }
@@ -97,7 +87,6 @@
       text-decoration: none;
     }
 
-    // TODO: use contrast color generators instead of hard-coded color vars
     &.clickable {
       &:hover,
       &:active {
@@ -105,7 +94,7 @@
       }
 
       &:active {
-        box-shadow: 0 1px 0 0 map-get($color-map, background) inset;
+        box-shadow: 0 1px 0 0 getLabelColor(gray, bg-color) inset;
         transform: translateY(0.5px);
       }
     }
@@ -133,7 +122,6 @@
   //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
   //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
   .badge {
-    $color-map: map-get($clr-label-colors, gray);
     $equiDimensions: 0.625rem;
     $rem_10px: 0.416667rem;
 
@@ -142,7 +130,7 @@
     align-items: center;
     justify-content: center;
     min-width: $equiDimensions;
-    background: map-get($color-map, background);
+    background: getLabelColor(gray, bg-color);
     height: $equiDimensions;
     line-height: normal;
     border-radius: $rem_10px;

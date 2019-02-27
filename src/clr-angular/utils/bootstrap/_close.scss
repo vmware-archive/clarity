@@ -3,15 +3,15 @@
   font-size: ($font-size-base * 1.5);
   font-weight: $close-font-weight;
   line-height: 1;
-  color: $close-color;
+  color: $clr-close-color--normal;
   text-shadow: $close-text-shadow;
-  opacity: 0.2;
+  opacity: $clr-close-color--normal-opacity;
 
   @include hover-focus {
-    color: $close-color;
+    color: $clr-close-color--hover;
     text-decoration: none;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: $clr-close-color--hover-opacity;
   }
 }
 

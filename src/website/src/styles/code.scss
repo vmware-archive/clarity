@@ -4,7 +4,7 @@
   .main-container {
     height: auto;
     padding-top: 0;
-    background: $gray-lighter;
+    background: $clr-color-neutral-50;
     .content-area {
       overflow-y: hidden;
     }
@@ -29,7 +29,7 @@
 
 .modal-icon {
   float: left;
-  color: $clr-green;
+  color: $clr-color-success-400;
   font-size: rem(3);
   margin-right: $clr_baselineRem_0_5;
 }

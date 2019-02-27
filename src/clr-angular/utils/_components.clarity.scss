@@ -1,9 +1,37 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// TODO: The BS4 imports were actually in dependencies.clarity.scss
-// We will get rid of BS4 so this should go away soon.
+// Bootstrap 4 Grid Overrides
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Remove before 2.0.
+@import '../utils/bs4-grid-breakpoint-overrides.clarity';
+
+// @deprecated Bootstrap dependencies are deprecated since 1.0. Remove before 2.0.
+// Bootstrap 4 Dependencies - Begin Part 1
+@import '../utils/bootstrap/variables';
+@import '../utils/bootstrap/mixins';
+@import '../utils/bootstrap/normalize';
+//Bootstrap 4 Dependencies - End Part 1
+
+// Clarity Internal Dependencies- Begin Part 1
+@import '../utils/mixins.clarity';
+@import '../utils/helpers.clarity';
+
+// Grid Dependencies
+@import '../layout/grid/variables/variables.clarity';
+@import '../layout/grid/mixins/breakpoint.clarity';
+@import '../layout/grid/mixins/grid.clarity';
+@import '../layout/grid/mixins/grid-framework.clarity';
+@import '../layout/grid/utilities/flex.clarity';
+
+//Color
+@import '../color/variables.color';
+
+//Layer - z-indices
+@import '../utils/layers.clarity';
+
+// Component variables
+@import '../utils/variables.clarity'; // depends on helpers.clarity, color/variables.clarity
 
 // Bootstrap 4 Dependencies - Begin Part 2
 // NOTE: These are here b/c they need to be overwritable for the $grid-breakpoints map in a theme.

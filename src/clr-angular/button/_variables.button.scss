@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -21,107 +21,573 @@ $clr-button-height: 1.5rem !default;
 $clr-button-height-sm: 1rem !default;
 $clr-button-padding: 0 $clr-button-horizontal-padding !default;
 
+$clr-btn-border-radius: $clr-global-borderradius !default;
+$clr-btn-border-width: $clr-default-borderwidth !default;
+
 // Default button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-default-color: $action-blues-dark-midtone; // border-color, color, checked-background-color
-$clr-btn-default-bg-color: transparent; // background-color, disabled-background-color
-$clr-btn-default-hover-bg-color: $action-blues-lightest; // hover-background-color
-$clr-btn-default-hover-color: $action-blues-dark; // hover-color
-$clr-btn-default-box-shadow-color: $action-blues-light-midtone; // active-box-shadow-color
-$clr-btn-default-disabled-color: $gray-darker; // disabled-color
-$clr-btn-default-disabled-border-color: $gray-dark; // disabled-border-color
-$clr-btn-default-checked-color: $clr-white; // checked-color
+$clr-btn-default-color: $clr-color-action-600 !default;
+$clr-btn-default-border-color: $clr-btn-default-color !default;
+$clr-btn-default-bg-color: transparent !default;
+$clr-btn-default-hover-bg-color: $clr-color-action-50 !default;
+$clr-btn-default-hover-color: $clr-color-action-800 !default;
+$clr-btn-default-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-default-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-default-disabled-bg-color: $clr-btn-default-bg-color !default;
+$clr-btn-default-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-default-checked-bg-color: $clr-color-action-600 !default;
+$clr-btn-default-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromDefaultButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-default-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-default-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-default-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-default-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-default-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-default-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-default-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-default-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-default-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-default-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-default-checked-color;
+  }
+
+  @return null;
+}
 
 // Default outline button
-$clr-btn-default-outline-color: $action-blues-accessible; // border-color, color, checked-background-color
-$clr-btn-default-outline-bg-color: transparent; // background-color, disabled-background-color
-$clr-btn-default-outline-hover-bg-color: $action-blues-lightest; // hover-background-color
-$clr-btn-default-outline-hover-color: $action-blues-dark; // hover-color
-$clr-btn-default-outline-box-shadow-color: $action-blues-light-midtone; // active-box-shadow-color
-//$clr-btn-default-outline-checked-color: $clr-white; // checked-color
-$clr-btn-default-outline-disabled-color: $gray-darker; // disabled-color
-$clr-btn-default-outline-disabled-border-color: $gray-dark; // disabled-border-color
-$clr-btn-default-outline-checked-color: $clr-white;
+$clr-btn-default-outline-color: $clr-color-action-600 !default;
+$clr-btn-default-outline-border-color: $clr-btn-default-outline-color !default;
+$clr-btn-default-outline-bg-color: transparent !default;
+$clr-btn-default-outline-hover-bg-color: $clr-color-action-50 !default;
+$clr-btn-default-outline-hover-color: $clr-color-action-800 !default;
+$clr-btn-default-outline-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-default-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-default-outline-disabled-bg-color: $clr-btn-default-outline-bg-color !default;
+$clr-btn-default-outline-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-default-outline-checked-color: $clr-color-neutral-0 !default;
+$clr-btn-default-outline-checked-bg-color: $clr-btn-default-outline-color !default;
+
+@function lookupFromDefaultOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-default-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-default-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-default-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-default-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-default-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-default-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-default-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-default-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-default-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-default-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-default-outline-checked-color;
+  }
+
+  @return null;
+}
 
 // Primary button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-primary-color: $clr-white; // color, checked-background-color
-$clr-btn-primary-bg-color: $action-blues-dark-midtone; // background-color, disabled-background-color
-$clr-btn-primary-border-color: $action-blues-dark-midtone; // border-color
-$clr-btn-primary-hover-bg-color: $action-blues-dark; // hover-background-color
-$clr-btn-primary-hover-color: $action-blues-lightest; // hover-color
-$clr-btn-primary-box-shadow-color: $action-blues-light-midtone; // active-box-shadow-color
-$clr-btn-primary-disabled-color: $gray-darker; // disabled-color
-$clr-btn-primary-disabled-bg-color: $gray-light-midtone; // disabled-bg-color
-$clr-btn-primary-disabled-border-color: $gray-light-midtone; // disabled-border-color
-$clr-btn-primary-checked-color: $clr-white; // checked-color
+$clr-btn-primary-color: $clr-color-neutral-0 !default;
+$clr-btn-primary-bg-color: $clr-color-action-600 !default;
+$clr-btn-primary-border-color: $clr-color-action-600 !default;
+$clr-btn-primary-hover-bg-color: $clr-color-action-800 !default;
+$clr-btn-primary-hover-color: $clr-color-action-50 !default;
+$clr-btn-primary-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-primary-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-primary-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-primary-disabled-border-color: $clr-color-neutral-400 !default;
+$clr-btn-primary-checked-bg-color: $clr-color-action-600 !default;
+$clr-btn-primary-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromPrimaryButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-primary-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-primary-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-primary-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-primary-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-primary-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-primary-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-primary-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-primary-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-primary-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-primary-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-primary-checked-color;
+  }
+
+  @return null;
+}
 
 // Success button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-success-color: $clr-white; // color, checked-color,
-$clr-btn-success-bg-color: $greens-dark-midtone; // background-color, border-color
-$clr-btn-success-hover-bg-color: $greens-dark; // hover-background-color
-$clr-btn-success-hover-color: $clr-btn-success-color; // hover-color
-$clr-btn-success-box-shadow-color: $greens-darker; // active-box-shadow-color
-$clr-btn-success-disabled-color: $gray-darker; // disabled-color
-$clr-btn-success-disabled-bg-color: $gray-light-midtone; // disabled-background-color
-$clr-btn-success-disabled-border-color: $gray-light-midtone; // disabled-border-color
-$clr-btn-success-checked-bg-color: $clr-btn-success-hover-bg-color; // checked-background-color
+$clr-btn-success-color: $clr-color-neutral-0 !default;
+$clr-btn-success-bg-color: $clr-color-success-700 !default;
+$clr-btn-success-border-color: $clr-btn-success-bg-color !default;
+$clr-btn-success-hover-bg-color: $clr-color-success-800 !default;
+$clr-btn-success-hover-color: $clr-btn-success-color !default;
+$clr-btn-success-box-shadow-color: $clr-color-success-900 !default;
+$clr-btn-success-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-success-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-success-disabled-border-color: $clr-color-neutral-400 !default;
+$clr-btn-success-checked-bg-color: $clr-btn-success-hover-bg-color !default;
+$clr-btn-success-checked-color: $clr-btn-success-color !default;
+
+@function lookupFromSuccessButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-success-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-success-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-success-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-success-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-success-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-success-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-success-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-success-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-success-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-success-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-success-checked-color;
+  }
+
+  @return null;
+}
 
 // Success outline button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-success-outline-color: $greens-accessible; // color
-$clr-btn-success-outline-border-color: $greens-accessible; // border-color, checked-background-color
-$clr-btn-success-outline-hover-bg-color: $greens-lightest; // hover-background-color
-$clr-btn-success-outline-hover-color: $greens-darker; // hover-color
-$clr-btn-success-outline-box-shadow-color: $clr-green; // active-box-shadow-color
-$clr-btn-success-outline-disabled-color: $gray-darker; // disabled-color
-$clr-btn-success-outline-disabled-bg-color: transparent; // disabled-background-color
-$clr-btn-success-outline-disabled-border-color: $gray-dark; // disabled-border-color
-$clr-btn-success-outline-checked-color: $clr-white; // checked-color
+$clr-btn-success-outline-color: $clr-color-success-700 !default;
+$clr-btn-success-outline-bg-color: transparent !default;
+$clr-btn-success-outline-border-color: $clr-color-success-700 !default;
+$clr-btn-success-outline-hover-bg-color: $clr-color-success-50 !default;
+$clr-btn-success-outline-hover-color: $clr-color-success-900 !default;
+$clr-btn-success-outline-box-shadow-color: $clr-color-success-400 !default;
+$clr-btn-success-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-success-outline-disabled-bg-color: $clr-btn-success-outline-bg-color !default;
+$clr-btn-success-outline-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-success-outline-checked-bg-color: $clr-btn-success-outline-border-color !default;
+$clr-btn-success-outline-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromSuccessOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-success-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-success-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-success-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-success-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-success-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-success-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-success-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-success-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-success-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-success-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-success-outline-checked-color;
+  }
+
+  @return null;
+}
 
 // Danger button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-danger-color: $clr-white; // color, checked-color,
-$clr-btn-danger-bg-color: $reds-light-midtone; // background-color, border-color
-$clr-btn-danger-hover-bg-color: $reds-dark-midtone; // hover-background-color
-$clr-btn-danger-hover-color: $clr-btn-danger-color; // hover-color
-$clr-btn-danger-box-shadow-color: $reds-dark; // active-box-shadow-color
-$clr-btn-danger-disabled-color: $gray-darker; // disabled-color,
-$clr-btn-danger-disabled-bg-color: $gray-light-midtone; // disabled-background-color
-$clr-btn-danger-disabled-border-color: $clr-btn-danger-disabled-color; // disabled-border-color
-$clr-btn-danger-checked-bg-color: $reds-dark-midtone; // checked-background-color
+$clr-btn-danger-color: $clr-color-neutral-0 !default;
+$clr-btn-danger-bg-color: $clr-color-danger-700 !default;
+$clr-btn-danger-border-color: $clr-btn-danger-bg-color !default;
+$clr-btn-danger-hover-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-hover-color: $clr-btn-danger-color !default;
+$clr-btn-danger-box-shadow-color: $clr-color-danger-900 !default;
+$clr-btn-danger-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-danger-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-danger-disabled-border-color: $clr-btn-danger-disabled-color !default;
+$clr-btn-danger-checked-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-checked-color: $clr-btn-danger-color !default;
+
+@function lookupFromDangerButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-danger-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-danger-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-danger-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-danger-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-danger-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-danger-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-danger-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-danger-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-danger-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-danger-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-danger-checked-color;
+  }
+
+  @return null;
+}
 
 // Danger outline button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-danger-outline-border-color: $reds-dark-midtone; // border-color
-$clr-btn-danger-outline-color: $reds-light-midtone; // color
-$clr-btn-danger-outline-hover-bg-color: $reds-lighter; // hover-background-color
-$clr-btn-danger-outline-hover-color: $reds-dark; // hover-color
-$clr-btn-danger-outline-box-shadow-color: $reds-light; // active-box-shadow-color
-$clr-btn-danger-outline-disabled-color: $gray-darker; // disabled-color
-$clr-btn-danger-outline-checked-bg-color: $reds-dark-midtone; // checked-background-color
-$clr-btn-danger-outline-checked-color: $clr-white; // checked-color
+$clr-btn-danger-outline-color: $clr-color-danger-700 !default;
+$clr-btn-danger-outline-bg-color: transparent !default;
+$clr-btn-danger-outline-border-color: $clr-color-danger-800 !default;
+$clr-btn-danger-outline-hover-bg-color: $clr-color-danger-100 !default;
+$clr-btn-danger-outline-hover-color: $clr-color-danger-900 !default;
+$clr-btn-danger-outline-box-shadow-color: $clr-color-danger-200 !default;
+$clr-btn-danger-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-danger-outline-disabled-bg-color: $clr-btn-danger-outline-bg-color !default;
+$clr-btn-danger-outline-disabled-border-color: $clr-btn-danger-outline-disabled-color !default;
+$clr-btn-danger-outline-checked-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-outline-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromDangerOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-danger-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-danger-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-danger-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-danger-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-danger-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-danger-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-danger-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-danger-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-danger-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-danger-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-danger-outline-checked-color;
+  }
+
+  @return null;
+}
 
 // Link button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-link-color: $action-blues-accessible; // color
-$clr-btn-link-hover-color: $action-blues-dark; // hover-color
-$clr-btn-link-disabled-color: $gray-darker; // disabled-color
-$clr-btn-link-checked-color: $action-blues-dark; // checked-color
+$clr-btn-link-color: $clr-color-action-600 !default;
+$clr-btn-link-bg-color: transparent !default;
+$clr-btn-link-border-color: transparent !default;
+$clr-btn-link-hover-bg-color: transparent !default;
+$clr-btn-link-hover-color: $clr-color-action-800 !default;
+$clr-btn-link-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-link-disabled-bg-color: transparent !default;
+$clr-btn-link-disabled-border-color: transparent !default;
+$clr-btn-link-checked-bg-color: transparent !default;
+$clr-btn-link-checked-color: $clr-color-action-800 !default;
+
+@function lookupFromLinkButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-link-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-link-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-link-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-link-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-link-hover-color;
+  }
+
+  // @if $property == box-shadow-color {
+  //     @return $clr-btn-link-box-shadow-color;
+  // }
+
+  @if $property == disabled-color {
+    @return $clr-btn-link-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-link-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-link-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-link-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-link-checked-color;
+  }
+
+  @return null;
+}
 
 // Inverse button colors
 // Usage: ../utils/_maps.clarity.scss
-$clr-btn-inverse-border-color: $clr-white; // border-color
-$clr-btn-inverse-bg-color: transparent; // background-color
-$clr-btn-inverse-color: $clr-white; // color
-$clr-btn-inverse-hover-bg-color: rgba($clr-white, 0.15); // hover-background-color
-$clr-btn-inverse-hover-color: $clr-white; // hover-color
-$clr-btn-inverse-box-shadow-color: rgba($clr-black, 0.25); // active-box-shadow-color
-$clr-btn-inverse-disabled-color: $clr-white; // disabled-color
-$clr-btn-inverse-disabled-border-color: $clr-white; // disabled-border-color
-$clr-btn-inverse-checked-bg-color: rgba($clr-white, 0.15); // checked-background-color
-$clr-btn-inverse-checked-color: $clr-white;
+$clr-btn-inverse-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-border-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-bg-color: transparent !default;
+$clr-btn-inverse-hover-bg-color: rgba($clr-color-neutral-0, 0.15) !default;
+$clr-btn-inverse-hover-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-box-shadow-color: rgba($clr-color-neutral-1000, 0.25) !default;
+$clr-btn-inverse-disabled-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-disabled-bg-color: $clr-btn-inverse-bg-color !default;
+$clr-btn-inverse-disabled-border-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-checked-bg-color: rgba($clr-color-neutral-0, 0.15) !default;
+$clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromInverseButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-inverse-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-inverse-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-inverse-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-inverse-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-inverse-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-inverse-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-inverse-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-inverse-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-inverse-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-inverse-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-inverse-checked-color;
+  }
+
+  @return null;
+}
 
 // For theme-able icon button color
-$clr-button-icon-disabled-color: $clr-btn-default-disabled-color;
+$clr-btn-icon-disabled-color: $clr-btn-default-disabled-color !default;
+$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default; // DEPRECATED, see preferred naming convention above!
+
+@function lookupFromIconButtonColors($property: null) {
+  @if $property == disabled-color {
+    @return $clr-btn-icon-disabled-color;
+  }
+
+  @return null;
+}

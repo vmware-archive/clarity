@@ -29,7 +29,7 @@ export class KSColors {
         { value: '#003666', text: 'light' },
         { value: '#004981', text: 'light' },
         { value: '#005c9b', text: 'light' },
-        { value: '#0079B8', text: 'mid', corePalette: true },
+        { value: '#0079B8', text: 'light', corePalette: true },
         { value: '#0094d2', text: 'dark' },
         { value: '#49afd9', text: 'dark' },
         { value: '#89cbdf', text: 'dark' },
@@ -81,7 +81,7 @@ export class KSColors {
       type: 'yellowsAndOranges',
       colors: [
         { value: '#fac400', text: 'dark' },
-        { value: '#fdcf08', text: 'dark' },
+        { value: '#ffdc0B', text: 'dark' },
         { value: '#ffe967', text: 'dark' },
         { value: '#fff899', text: 'dark' },
         { value: '#fffadc', text: 'dark' },
@@ -107,8 +107,8 @@ export class KSColors {
       type: 'reds',
       colors: [
         { value: '#a32100', text: 'light' },
-        { value: '#c92100', text: 'light' },
-        { value: '#e12200', text: 'light', corePalette: true },
+        { value: '#c92100', text: 'light', corePalette: true },
+        { value: '#e12200', text: 'light' },
         { value: '#ebafa6', text: 'dark' },
         { value: '#f5dbd9', text: 'dark' },
       ],

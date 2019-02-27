@@ -27,7 +27,7 @@
     }
 
     &.clr-icon-warning-white {
-      background-image: generateWarningIcon($gray-lightest);
+      background-image: generateWarningIcon($clr-color-neutral-0);
     }
 
     &.clr-vmw-logo {

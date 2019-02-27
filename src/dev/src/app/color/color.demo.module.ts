@@ -6,15 +6,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ColorContrastDemo } from './color-contrast';
-import { ColorLuminanceDemo } from './color-luminance';
 import { ColorPalette } from './color-palette';
 import { ColorsDemo } from './color.demo';
 import { ROUTING } from './color.demo.routing';
 
 @NgModule({
   imports: [CommonModule, ROUTING],
-  declarations: [ColorsDemo, ColorPalette, ColorLuminanceDemo, ColorContrastDemo],
-  exports: [ColorsDemo, ColorPalette, ColorLuminanceDemo, ColorContrastDemo],
+  declarations: [ColorsDemo, ColorPalette],
+  exports: [ColorsDemo, ColorPalette],
 })
 export class ColorDemoModule {}

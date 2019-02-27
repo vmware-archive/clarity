@@ -35,7 +35,10 @@
     }
 
     #{$th} {
-      @include clr-getTypePropertiesForDomElement(table_header, (color, font-size, font-weight, letter-spacing));
+      color: $clr-thead-color;
+      font-size: $clr-thead-font-size;
+      font-weight: $clr-thead-font-weight;
+      letter-spacing: $clr-thead-letter-spacing;
 
       background-color: $clr-thead-bgcolor;
       vertical-align: bottom;
@@ -111,7 +114,7 @@
       &:first-child {
         border-right: $clr-table-borderstyle;
         background-color: $clr-thead-bgcolor;
-        font-weight: clr-getTypePropertyValueForDomElement(table_header, font-weight);
+        font-weight: $clr-thead-font-weight;
       }
     }
 

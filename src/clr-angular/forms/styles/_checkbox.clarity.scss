@@ -46,12 +46,11 @@
       display: none;
       height: $mark-half-size + $clr-rem-1px;
       width: $clr-forms-checkbox-mark-size;
-      border-left: $clr-forms-checkbox-border-style;
-      border-bottom: $clr-forms-checkbox-border-style;
+      border-left: $clr-forms-checkbox-mark-border-size solid $clr-forms-checkbox-mark-color;
+      border-bottom: $clr-forms-checkbox-mark-border-size solid $clr-forms-checkbox-mark-color;
       top: ($clr-forms-baseline * 4 - $clr-checkbox-radio-height) / 2;
       left: $mark-half-size;
       transform: translate(0, $mark-half-size) rotate(-45deg);
-      border-color: $clr-forms-checkbox-mark-color;
     }
 
     input[type='checkbox']:checked + label::before {

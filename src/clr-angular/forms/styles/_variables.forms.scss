@@ -16,6 +16,19 @@ $clr-forms-border-color: $clr-color-neutral-500 !default;
 $clr-forms-focused-color: $clr-color-action-500 !default;
 $clr-forms-disabled-opacity: 0.54 !default;
 
+// Typographic
+$clr-forms-label-font-size: $clr-p2-font-size !default;
+$clr-forms-label-font-weight: $clr-font-weight-bold !default;
+$clr-forms-block-label-font-size: $clr-h5-font-size !default;
+$clr-forms-block-label-font-weight: $clr-h5-font-weight !default;
+$clr-forms-block-label-letter-spacing: $clr-h5-letter-spacing !default;
+$clr-forms-text-font-size: $clr-p3-font-size !default;
+$clr-forms-text-font-weight: $clr-p3-font-weight !default;
+$clr-forms-text-letter-spacing: $clr-p3-letter-spacing !default;
+$clr-forms-subtext-font-size: $clr-p6-font-size !default;
+$clr-forms-subtext-line-height: $clr-p6-line-height !default;
+$clr-forms-field-font-size: $clr-forms-label-font-size !default;
+
 // Textarea
 $clr-forms-textarea-background-color: $clr-color-neutral-0 !default;
 
@@ -35,31 +48,34 @@ $clr-forms-select-multiple-border-color: $clr-color-neutral-400 !default;
 $clr-forms-select-multiple-option-color: $clr-forms-text-color !default;
 
 // Checkbox
-$clr-forms-checkbox-size: 0.66667rem;
-$clr-forms-checkbox-label-height: $clr-forms-baseline * 4;
 $clr-forms-checkbox-label-color: $clr-forms-text-color !default;
 $clr-forms-checkbox-height: $clr-icon-dimension-sm !default;
-$clr-forms-checkbox-padding-left: $clr-forms-checkbox-height + 0.25rem;
-$clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) / 2 !default;
 $clr-forms-checkbox-background-color: $clr-color-action-600 !default;
-$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.25rem $clr-forms-checkbox-background-color;
 $clr-forms-checkbox-indeterminate-border-color: $clr-color-action-600 !default;
-$clr-forms-checkbox-mark-size: $clr-forms-checkbox-height / 2;
 $clr-forms-checkbox-mark-color: $clr-color-neutral-0 !default;
-$clr-forms-checkbox-border-style: ($clr-forms-checkbox-height / 8) solid $clr-forms-checkbox-mark-color;
 $clr-forms-checkbox-disabled-background-color: $clr-form-disabled-background-color !default;
 $clr-forms-checkbox-disabled-mark-color: $clr-color-neutral-1000 !default;
 $clr-forms-checkbox-border-radius: $clr-global-borderradius !default;
 
+$clr-forms-checkbox-label-height: $clr-forms-baseline * 4;
+$clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) / 2 !default;
+
+$clr-forms-checkbox-size: 0.66667rem;
+$clr-forms-checkbox-padding-left: $clr-forms-checkbox-height + 0.25rem;
+$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.25rem $clr-forms-checkbox-background-color;
+$clr-forms-checkbox-mark-size: $clr-forms-checkbox-height / 2;
+$clr-forms-checkbox-mark-border-size: ($clr-forms-checkbox-height / 8);
+
 // Radio
+$clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;
+$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color !default;
+$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color !default;
+
 $clr-forms-radio-size: $clr-forms-checkbox-size;
 $clr-forms-radio-label-height: $clr-forms-checkbox-label-height;
-$clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;
 $clr-forms-radio-height: $clr-forms-checkbox-height;
 $clr-forms-radio-padding-left: $clr-forms-checkbox-padding-left;
 $clr-forms-radio-top: $clr-forms-checkbox-top;
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
 $clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
-$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color !default;
-$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color !default;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;

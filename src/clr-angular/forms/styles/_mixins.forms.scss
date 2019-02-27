@@ -69,7 +69,9 @@
 }
 
 @mixin form-fields-appearance($border-bottom-color) {
-  color: $clr-forms-text-color;
+  // @TODO: this !important is here because we have deprecated styles that are overriding our themeable color styles.
+  // Remove when deprecated forms are removed.
+  color: $clr-forms-text-color !important;
   display: inline-block;
   border-bottom: $clr-default-borderwidth solid $border-bottom-color;
 }

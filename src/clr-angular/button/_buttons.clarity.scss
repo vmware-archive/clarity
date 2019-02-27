@@ -168,8 +168,13 @@
 @include exports('buttons.clarity') {
   .btn {
     @include generateButton();
-    @include clr-getStylesFromMap($clr-button-appearance-map, form);
     @include populateButtonProperties(default);
+    line-height: $clr-btn-appearance-form-line-height;
+    letter-spacing: $clr-btn-appearance-form-letter-spacing;
+    font-size: $clr-btn-appearance-form-font-size;
+    font-weight: $clr-btn-appearance-form-font-weight;
+    height: $clr-btn-appearance-form-height;
+    padding: $clr-btn-appearance-form-padding;
   }
 
   //Clarity Buttons
@@ -260,7 +265,12 @@
 
   .btn.btn-sm,
   .btn-sm .btn {
-    @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+    line-height: $clr-btn-appearance-standard-line-height;
+    letter-spacing: $clr-btn-appearance-standard-letter-spacing;
+    font-size: $clr-btn-appearance-standard-font-size;
+    font-weight: $clr-btn-appearance-standard-font-weight;
+    height: $clr-btn-appearance-standard-height;
+    padding: $clr-btn-appearance-standard-padding;
   }
 
   .btn-block {
@@ -270,10 +280,10 @@
   }
 
   .btn {
-    margin: $clr-button-vertical-margin $clr-button-horizontal-margin $clr-button-vertical-margin 0;
+    margin: $clr-btn-vertical-margin $clr-btn-horizontal-margin $clr-btn-vertical-margin 0;
 
     &.btn-link {
-      margin: $clr-button-vertical-margin 0;
+      margin: $clr-btn-vertical-margin 0;
     }
 
     &.btn-link.btn-inverse {
@@ -313,7 +323,12 @@
     }
 
     &.btn-sm .btn-group-overflow > .dropdown-toggle {
-      @include clr-getStylesFromMap($clr-button-appearance-map, standard);
+      line-height: $clr-btn-appearance-standard-line-height;
+      letter-spacing: $clr-btn-appearance-standard-letter-spacing;
+      font-size: $clr-btn-appearance-standard-font-size;
+      font-weight: $clr-btn-appearance-standard-font-weight;
+      height: $clr-btn-appearance-standard-height;
+      padding: $clr-btn-appearance-standard-padding;
     }
   }
 

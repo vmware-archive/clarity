@@ -4,7 +4,7 @@
 
 @mixin header-section-divider() {
   display: inline-block;
-  background: $clr-header-textColor;
+  background: $clr-header-font-color;
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
   width: $clr-default-borderwidth;
@@ -19,7 +19,7 @@
 }
 
 @mixin header-nav-appearance() {
-  color: $clr-header-textColor;
+  color: $clr-header-font-color;
   opacity: $clr-header-nav-opactiy;
 
   &:enabled:hover {
@@ -144,7 +144,7 @@
   header,
   .header {
     display: flex;
-    color: $clr-header-textColor;
+    color: $clr-header-font-color;
     height: $clr-header-height;
     white-space: nowrap;
 
@@ -188,8 +188,12 @@
 
       //product title
       .title {
-        @include clr-getTypePropertiesForDomElement(nav_title, (font-size, font-weight, font-family, letter-spacing));
-        color: $clr-header-textColor;
+        color: $clr-header-font-color;
+        font-size: $clr-header-title-font-size;
+        font-weight: $clr-header-title-font-weight;
+        font-family: $clr-header-title-font-family;
+        letter-spacing: $clr-header-title-letter-spacing;
+
         line-height: $clr-header-height;
         text-decoration: none;
       }
@@ -272,7 +276,7 @@
       input[type='text'] {
         border: none;
         background: none;
-        color: $clr-header-textColor;
+        color: $clr-header-font-color;
         padding: 0;
         vertical-align: middle;
 

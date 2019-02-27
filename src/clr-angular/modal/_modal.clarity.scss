@@ -55,10 +55,13 @@
   padding: 0 0 1rem 0;
 
   .modal-title {
-    @include clr-getTypePropertiesForDomElement(
-      modal_header,
-      (color, font-size, font-family, font-weight, line-height, letter-spacing)
-    );
+    color: $clr-modal-title-color;
+    font-size: $clr-modal-title-font-size;
+    font-family: $clr-modal-title-font-family;
+    font-weight: $clr-modal-title-font-weight;
+    line-height: $clr-modal-title-line-height;
+    letter-spacing: $clr-modal-title-letter-spacing;
+
     margin: 0;
     padding: 0 0.125rem;
   }

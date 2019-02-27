@@ -41,3 +41,9 @@ $clr-table-bottomcellpadding-cmp: $clr-table-cellpadding/2 - $clr-rem-1px !defau
 
 $clr-table--compact-rowHeight: 1rem !default;
 $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table-lineheight)/2 !default;
+
+// Table header styles
+$clr-thead-color: $clr-p6-color !default;
+$clr-thead-font-size: $clr-p6-font-size !default;
+$clr-thead-font-weight: $clr-p6-font-weight !default;
+$clr-thead-letter-spacing: $clr-p6-letter-spacing !default;

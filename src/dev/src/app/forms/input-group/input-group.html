@@ -45,11 +45,18 @@
         <div class="clr-control-container">
             <div class="clr-input-wrapper">
                 <div class="clr-input-group" [ngClass]="{'clr-focus': focusPasswordGroup }">
-                    <input type="password" name="password" *ngIf="!showPassword" id="password-group" [(ngModel)]="password" placeholder="Enter value here" class="clr-input" (focus)="focusPasswordGroup = true" (blur)="focusPasswordGroup = false">
-                    <clr-icon shape="eye" *ngIf="!showPassword" class="clr-input-group-icon-action" (click)="showPassword = true"></clr-icon>
-                    
-                    <input type="text" name="password" *ngIf="showPassword" id="password-group" [(ngModel)]="password" placeholder="Enter value here" class="clr-input" (focus)="focusPasswordGroup = true" (blur)="focusPasswordGroup = false">
-                    <clr-icon shape="eye-hide" *ngIf="showPassword" class="clr-input-group-icon-action" (click)="showPassword = false"></clr-icon>
+                    <input
+                        name="password"
+                        id="password-group"
+                        class="clr-input"
+                        placeholder="Enter value here"
+                        [(ngModel)]="password"
+                        [type]="showPassword ? 'text' : 'password'"
+                        (focus)="focusPasswordGroup = true"
+                        (blur)="focusPasswordGroup = false">
+                    <button (click)="showPassword = !showPassword" class="clr-input-group-icon-action" type="button">
+                        <clr-icon [attr.shape]="showPassword ? 'eye-hide' : 'eye'" [attr.title]="showPassword ? commonStrings.hide : commonStrings.show"></clr-icon>
+                    </button>
                 </div>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>

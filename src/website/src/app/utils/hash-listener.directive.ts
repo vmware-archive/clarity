@@ -36,7 +36,7 @@ export class HashListener implements OnDestroy, OnInit {
       const element = document.querySelector('#' + hash);
       if (element) {
         element.scrollIntoView({
-          behavior: smooth ? 'smooth' : 'instant',
+          behavior: smooth ? 'smooth' : 'auto',
           block: 'start',
         });
       }

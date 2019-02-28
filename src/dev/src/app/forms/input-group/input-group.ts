@@ -7,6 +7,7 @@
 import '@clr/icons/shapes/social-shapes';
 import '@clr/icons/shapes/essential-shapes';
 import { Component } from '@angular/core';
+import { ClrCommonStrings } from '@clr/angular';
 
 @Component({
   templateUrl: './input-group.html',
@@ -20,4 +21,6 @@ export class FormsInputGroupDemo {
   focusPasswordGroup = false;
   focusPrefixSuffixGroup = false;
   focusSearchGroup = false;
+
+  constructor(public commonStrings: ClrCommonStrings) {}
 }

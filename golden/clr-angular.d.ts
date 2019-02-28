@@ -104,11 +104,11 @@ export declare class ClrButton implements LoadingListener {
     buttonInGroupService: ButtonInGroupService;
     classNames: string;
     disabled: any;
+    id: string;
     inMenu: boolean;
     loading: boolean;
     name: string;
     templateRef: TemplateRef<ClrButton>;
-    title: string;
     type: string;
     constructor(buttonInGroupService: ButtonInGroupService);
     emitClick(): void;

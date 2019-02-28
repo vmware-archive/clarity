@@ -20,7 +20,7 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled"
-                [attr.title]="title">
+                [attr.id]="id">
                 <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>
@@ -101,16 +101,16 @@ export class ClrButton implements LoadingListener {
     }
   }
 
-  private _title: string = null;
+  private _id: string = null;
 
-  get title(): string {
-    return this._title;
+  get id(): string {
+    return this._id;
   }
 
-  @Input('title')
-  set title(value: string) {
+  @Input('id')
+  set id(value: string) {
     if (typeof value === 'string') {
-      this._title = value;
+      this._id = value;
     }
   }
 

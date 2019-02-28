@@ -21,7 +21,7 @@ import { ClrButtonGroupModule } from './button-group.module';
             id="button1"
             type="button"
             name="button1"
-            title="button1"
+            id="button1"
             (click)="toggleClick()">Button 1
         </clr-button>
         <clr-button
@@ -66,7 +66,7 @@ class TestButtonComponent {
             class="test"
             type="button"
             name="button3"
-            title="button3"
+            id="button3"
             #button3
         >Test Button 3
         </clr-button>
@@ -134,10 +134,10 @@ export default function(): void {
         expect(componentInstance.button3.name).toBeNull();
       });
 
-      it('supports a title input', () => {
-        expect(componentInstance.button1.title).toBe('button1');
-        expect(componentInstance.button2.title).toBeNull();
-        expect(componentInstance.button3.title).toBeNull();
+      it('supports a id input', () => {
+        expect(componentInstance.button1.id).toBe('button1');
+        expect(componentInstance.button2.id).toBeNull();
+        expect(componentInstance.button3.id).toBeNull();
       });
 
       it('supports a disabled input which is set to an empty string when the user passes a value', () => {
@@ -254,10 +254,10 @@ export default function(): void {
         expect(buttons[2].name).toBe('button3');
       });
 
-      it('sets the title correctly', () => {
-        expect(buttons[0].title).toBe('');
-        expect(buttons[1].title).toBe('');
-        expect(buttons[2].title).toBe('button3');
+      it('sets the id correctly', () => {
+        expect(buttons[0].id).toBe('');
+        expect(buttons[1].id).toBe('');
+        expect(buttons[2].id).toBe('button3');
       });
 
       it('sets the type correctly', () => {

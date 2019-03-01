@@ -110,22 +110,27 @@ export default function(): void {
         expect(component.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('knows if the column is currently sorted in ascending order', function() {
+      it('knows when the column has an ascending sortIcon', function() {
         component.sortBy = comparator;
-        expect(component.asc).toBe(false);
+        expect(component.sortIcon).toBeUndefined();
         component.sort();
-        expect(component.asc).toBe(true);
-        component.sort();
-        expect(component.asc).toBe(false);
+        expect(component.sortIcon).toBe('arrow');
       });
 
-      it('knows if the column is currently sorted in descending order', function() {
+      it('knows when the column has a descending sortIcon', function() {
         component.sortBy = comparator;
-        expect(component.desc).toBe(false);
+        expect(component.sortIcon).toBeUndefined();
         component.sort();
-        expect(component.desc).toBe(false);
         component.sort();
-        expect(component.desc).toBe(true);
+        expect(component.sortIcon).toBe('arrow down');
+      });
+
+      it('sets the column sortIcon to null when sort is cleared', function() {
+        component.sortBy = comparator;
+        expect(component.sortIcon).toBe(undefined);
+        component.sort();
+        sortService.clear();
+        expect(component.sortIcon).toBeNull();
       });
 
       it('offers a shortcut to sort based on a property name', function() {
@@ -333,21 +338,15 @@ export default function(): void {
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('adds the .asc class to the host when sorted in ascending order', function() {
+      it('adds and removes an icon for sorting', function() {
         context.clarityDirective.sortBy = new TestComparator();
         context.clarityDirective.sort();
         context.detectChanges();
-        expect(context.clarityElement.classList.contains('asc')).toBeTruthy();
-        expect(context.clarityElement.classList.contains('desc')).toBeFalsy();
-      });
-
-      it('adds the .desc class to the host when sorted in descending order', function() {
-        context.clarityDirective.sortBy = new TestComparator();
-        context.clarityDirective.sort();
-        context.clarityDirective.sort();
+        expect(context.clarityElement.querySelector('.sort-icon')).not.toBeNull();
+        const sortService = context.fixture.debugElement.query(By.directive(ClrDatagridColumn)).injector.get(Sort);
+        sortService.clear();
         context.detectChanges();
-        expect(context.clarityElement.classList.contains('asc')).toBeFalsy();
-        expect(context.clarityElement.classList.contains('desc')).toBeTruthy();
+        expect(context.clarityElement.querySelector('.sort-icon')).toBeNull();
       });
 
       it('adds a11y roles to the column', function() {

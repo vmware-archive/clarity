@@ -82,7 +82,7 @@ export default function(): void {
       });
 
       it('toggles the visibility of the password', () => {
-        const button = containerEl.querySelector('clr-icon');
+        const button = containerEl.querySelector('button');
         expect(containerEl.querySelector('input').type).toEqual('password');
         button.click();
         fixture.detectChanges();
@@ -90,10 +90,10 @@ export default function(): void {
       });
 
       it('should disable toggling', () => {
-        expect(containerEl.querySelector('clr-icon')).toBeTruthy();
+        expect(containerEl.querySelector('button')).toBeTruthy();
         fixture.componentInstance.toggler = false;
         fixture.detectChanges();
-        expect(containerEl.querySelector('clr-icon')).toBeFalsy();
+        expect(containerEl.querySelector('button')).toBeFalsy();
       });
     });
   });

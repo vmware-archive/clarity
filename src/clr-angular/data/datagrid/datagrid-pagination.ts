@@ -52,13 +52,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
 
   private defaultSize = true;
 
-  constructor(public page: Page) {}
-
-  /**********
-   * Subscription to the Page service for page changes.
-   * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
-   */
-  ngOnInit() {
+  constructor(public page: Page) {
     /*
      * Default page size is 10.
      * The reason we set it in this constructor and not in the provider itself is because
@@ -67,6 +61,13 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
     if (this.defaultSize) {
       this.page.size = 10;
     }
+  }
+
+  /**********
+   * Subscription to the Page service for page changes.
+   * Note: this only emits after the datagrid is initialized/stabalized and the page changes.
+   */
+  ngOnInit() {
     this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
   }
 

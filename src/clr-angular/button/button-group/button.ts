@@ -20,7 +20,7 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled"
-                [attr.id]="id">
+                [id]="id">
                 <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>

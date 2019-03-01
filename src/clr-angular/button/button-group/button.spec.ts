@@ -255,8 +255,8 @@ export default function(): void {
       });
 
       it('sets the id correctly', () => {
-        expect(buttons[0].id).toBe('');
-        expect(buttons[1].id).toBe('');
+        expect(buttons[0].id).toBe('null');
+        expect(buttons[1].id).toBe('null');
         expect(buttons[2].id).toBe('button3');
       });
 

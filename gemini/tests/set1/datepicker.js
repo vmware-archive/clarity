@@ -46,7 +46,7 @@ gemini.suite('datepicker', child => {
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
-        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        this.trigger = find('.clr-example-2 .clr-input-group-icon-action');
       })
       .setCaptureElements('.clr-example-2')
       .capture('default')
@@ -62,7 +62,7 @@ gemini.suite('datepicker', child => {
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
-        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        this.trigger = find('.clr-example-2 .clr-input-group-icon-action');
         actions.click(this.trigger);
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -76,7 +76,7 @@ gemini.suite('datepicker', child => {
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
-        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        this.trigger = find('.clr-example-2 .clr-input-group-icon-action');
         actions.click(this.trigger);
         actions.wait(WAIT_LOAD_TIME);
         this.monthpickerTrigger = find('.monthpicker-trigger');
@@ -95,7 +95,7 @@ gemini.suite('datepicker', child => {
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example-2', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
-        this.trigger = find('.clr-example-2 .datepicker-trigger');
+        this.trigger = find('.clr-example-2 .clr-input-group-icon-action');
         actions.click(this.trigger);
         actions.wait(WAIT_LOAD_TIME);
         this.yearpickerTrigger = find('.yearpicker-trigger');

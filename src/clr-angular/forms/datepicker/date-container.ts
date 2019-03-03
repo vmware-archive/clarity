@@ -55,8 +55,8 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-container *ngTemplateOutlet="clrDate"></ng-container>
-            <button type="button" class="datepicker-trigger" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
-              <clr-icon shape="calendar" class="clr-input-group-icon-action"></clr-icon>
+            <button type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
+              <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
           </div>

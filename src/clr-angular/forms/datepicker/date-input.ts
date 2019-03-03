@@ -139,18 +139,28 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
   @HostBinding('attr.type')
   get inputType(): string {
-    return isPlatformBrowser(this.platformId) && this.datepickerEnabledService.isEnabled ? 'text' : 'date';
+    return isPlatformBrowser(this.platformId) && this.usingNativeDatepicker() ? 'date' : 'text';
   }
 
   @HostListener('change', ['$event.target'])
   onValueChange(target: HTMLInputElement) {
     const validDateValue = this.dateIOService.getDateValueFromDateString(target.value);
-
-    if (validDateValue) {
+    if (this.usingClarityDatepicker() && validDateValue) {
       this.updateDate(validDateValue, true);
+    } else if (this.usingNativeDatepicker()) {
+      const [year, month, day] = target.value.split('-');
+      this.updateDate(new Date(+year, +month - 1, +day), true);
     } else {
       this.emitDateOutput(null);
     }
+  }
+
+  private usingClarityDatepicker() {
+    return this.datepickerEnabledService.isEnabled;
+  }
+
+  private usingNativeDatepicker() {
+    return !this.datepickerEnabledService.isEnabled;
   }
 
   private setFocus(focus: boolean) {
@@ -206,6 +216,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
       if (this.datepickerHasFormControl() && dateString !== this.control.value) {
         this.control.control.setValue(dateString);
+      } else if (this.usingNativeDatepicker()) {
+        this.renderer.setProperty(this.el.nativeElement, 'valueAsDate', date);
       } else {
         this.renderer.setProperty(this.el.nativeElement, 'value', dateString);
       }

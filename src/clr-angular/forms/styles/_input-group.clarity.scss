@@ -6,7 +6,7 @@
   .clr-input-group {
     @include form-fields-appearance($clr-forms-border-color);
     @include input-border-bottom-animation($clr-forms-focused-color);
-    margin-right: $clr-forms-baseline * 4;
+    padding-right: $clr-forms-baseline * 4;
     max-width: calc(100% - 1rem);
     height: 24px;
 
@@ -29,7 +29,7 @@
     .clr-input-group-icon-action {
       @include clr-no-styles-button();
       color: $clr-forms-focused-color;
-      margin: 0 $clr-forms-baseline * 1.5;
+      padding: 0 $clr-forms-baseline * 1.5;
     }
   }
 
@@ -40,6 +40,10 @@
   .clr-error .clr-input-group {
     border-bottom-color: $clr-forms-invalid-color;
     @include input-border-bottom-animation($clr-forms-invalid-color);
-    margin-right: $clr-forms-baseline;
+    padding-right: $clr-forms-baseline;
+  }
+
+  .clr-form-horizontal .clr-input-group {
+    padding-right: 0;
   }
 }

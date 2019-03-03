@@ -67,6 +67,11 @@ export default function() {
 
     // @deprecated these tests refer to the old forms layout only and can be removed when its removed
     describe('Deprecated View', () => {
+      beforeEach(() => {
+        context.clarityDirective.newFormsLayout = false;
+        context.detectChanges();
+      });
+
       it('applies the date-container class');
 
       it('renders the datepicker toggle button based on the enabled service', () => {
@@ -116,17 +121,17 @@ export default function() {
 
       it('renders the datepicker toggle button based on the enabled service', () => {
         expect(enabledService.isEnabled).toBe(true);
-        expect(context.clarityElement.querySelector('.datepicker-trigger')).not.toBeNull();
+        expect(context.clarityElement.querySelector('.clr-input-group-icon-action')).not.toBeNull();
 
         enabledService.fakeIsEnabled = false;
         context.detectChanges();
 
-        expect(context.clarityElement.querySelector('.datepicker-trigger')).toBeNull();
+        expect(context.clarityElement.querySelector('.clr-input-group-icon-action')).toBeNull();
       });
 
       it('clicking on the button toggles the datepicker popover', () => {
         spyOn(context.clarityDirective, 'toggleDatepicker');
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
 
         button.click();
         context.detectChanges();
@@ -139,10 +144,10 @@ export default function() {
         expect(context.clarityElement.querySelector('input')).not.toBeNull();
       });
 
-      it('shows the datepicker view manager when .datepicker-trigger is clicked', () => {
+      it('shows the datepicker view manager when icon button is clicked', () => {
         expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
 
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         button.click();
         context.detectChanges();
 

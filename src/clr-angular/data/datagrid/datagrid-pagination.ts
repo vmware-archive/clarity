@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -50,9 +50,9 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   @ContentChild(ClrDatagridPageSize) _pageSizeComponent: ClrDatagridPageSize;
   @ViewChild('currentPageInput') currentPageInputRef: ElementRef;
 
-  private defaultSize = true;
-
-  constructor(public page: Page) {}
+  constructor(public page: Page) {
+    this.page.activated = true;
+  }
 
   /**********
    * Subscription to the Page service for page changes.
@@ -61,10 +61,10 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   ngOnInit() {
     /*
      * Default page size is 10.
-     * The reason we set it in this constructor and not in the provider itself is because
-     * we don't want pagination (page size 0) if this component isn't present in the datagrid.
+     * The reason we set it here and not in the provider itself is because
+     * we don't want pagination if this component isn't present in the datagrid.
      */
-    if (this.defaultSize) {
+    if (!this.page.size) {
       this.page.size = 10;
     }
     this._pageSubscription = this.page.change.subscribe(current => this.currentChanged.emit(current));
@@ -92,7 +92,6 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   @Input('clrDgPageSize')
   public set pageSize(size: number) {
     if (typeof size === 'number') {
-      this.defaultSize = false;
       this.page.size = size;
     }
   }

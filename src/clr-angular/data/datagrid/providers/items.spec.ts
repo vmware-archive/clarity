@@ -143,6 +143,19 @@ export default function(): void {
       expect(nbChanges).toBe(6);
     });
 
+    it('does not emit items changes until the page size is available', function() {
+      let nbChanges = 0;
+      this.itemsInstance.change.subscribe((items: number[]) => {
+        nbChanges++;
+      });
+      this.pageInstance.activated = true;
+      expect(nbChanges).toEqual(0);
+      setSmartItems(this.itemsInstance);
+      expect(nbChanges).toEqual(0);
+      this.pageInstance.size = 3;
+      expect(nbChanges).toEqual(1);
+    });
+
     describe('manual refresh', function() {
       beforeEach(function() {
         this.users = [{ name: 'hello' }, { name: 'world' }];

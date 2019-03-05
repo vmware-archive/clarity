@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,6 +31,7 @@ import DatagridItemsTrackBySpecs from './datagrid-items-trackby.spec';
 import DatagridItemsSpecs from './datagrid-items.spec';
 import DatagridPageSizeSpecs from './datagrid-page-size.spec';
 import DatagridPaginationSpecs from './datagrid-pagination.spec';
+import DatagridPaginationIntegrationSpecs from './datagrid-pagination.integration.spec';
 import DatagridPlaceholderSpecs from './datagrid-placeholder.spec';
 import DatagridRowDetailSpecs from './datagrid-row-detail.spec';
 import DatagridRowSpecs from './datagrid-row.spec';
@@ -85,6 +86,7 @@ describe('Datagrid', function() {
     DatagridRowDetailSpecs();
     DatagridPageSizeSpecs();
     DatagridPaginationSpecs();
+    DatagridPaginationIntegrationSpecs();
     DatagridFooterSpecs();
     DatagridPlaceholderSpecs();
     DatagridSpecs();

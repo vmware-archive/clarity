@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,6 +11,8 @@ import { StateDebouncer } from './state-debouncer.provider';
 @Injectable()
 export class Page {
   constructor(private stateDebouncer: StateDebouncer) {}
+
+  public activated = false;
 
   /**
    * Page size, a value of 0 means no pagination

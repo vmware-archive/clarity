@@ -338,11 +338,18 @@ export default function(): void {
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('adds and removes an icon for sorting', function() {
+      it('adds and removes the correct icon when sorting', function() {
         context.clarityDirective.sortBy = new TestComparator();
         context.clarityDirective.sort();
         context.detectChanges();
-        expect(context.clarityElement.querySelector('.sort-icon')).not.toBeNull();
+
+        const arrowIcon = context.clarityElement.querySelector('.sort-icon');
+        expect(arrowIcon.getAttribute('shape')).toEqual('arrow');
+
+        context.clarityDirective.sort();
+        context.detectChanges();
+        expect(arrowIcon.getAttribute('shape')).toEqual('arrow down');
+
         const sortService = context.fixture.debugElement.query(By.directive(ClrDatagridColumn)).injector.get(Sort);
         sortService.clear();
         context.detectChanges();

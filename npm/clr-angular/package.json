@@ -17,12 +17,12 @@
     "url": "git@github.com:vmware/clarity.git"
   },
   "peerDependencies": {
-    "@angular/common": "^7.0.0",
-    "@angular/compiler": "^7.0.0",
-    "@angular/core": "^7.0.0",
-    "@angular/forms": "^7.0.0",
-    "@angular/platform-browser": "^7.0.0",
-    "@angular/platform-browser-dynamic": "^7.0.0",
+    "@angular/common": "^8.0.0-beta.0",
+    "@angular/compiler": "^8.0.0-beta.0",
+    "@angular/core": "^8.0.0-beta.0",
+    "@angular/forms": "^8.0.0-beta.0",
+    "@angular/platform-browser": "^8.0.0-beta.0",
+    "@angular/platform-browser-dynamic": "^8.0.0-beta.0",
     "@clr/ui": "@VERSION"
   },
   "author": "clarity",

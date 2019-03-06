@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { AfterViewInit, Component, OnDestroy, QueryList, TemplateRef, ViewChildren } from '@angular/core';
-import { compareReleases, MINORS, PATCHES } from './release-page/release-organizer';
+import { compareReleases, VERSIONS } from './release-page/release-organizer';
 import { Release } from './release/release.directive';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakingChange } from './counters/breaking-change.directive';
@@ -63,9 +63,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
   currentTemplate: TemplateRef<any>;
 
   current = RELEASES.current;
-  minors = MINORS;
-  patches = PATCHES;
-  versions = Object.keys(MINORS).sort((a: string, b: string) => Number(b) - Number(a));
+  versions = VERSIONS;
 
   get releaseArr(): Release[] {
     if (this.releaseTemplates) {
@@ -92,6 +90,10 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
         }
       })
     );
+  }
+
+  orderVersions(a, b) {
+    return a.key > b.key;
   }
 
   resetCounts(): void {

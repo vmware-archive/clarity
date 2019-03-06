@@ -5,28 +5,30 @@
  */
 import * as RELEASES from '../../../releases/release-list.json';
 
-export const MAJORS: string[] = [];
-export const MINORS: { [major: string]: string[] } = {};
-export const PATCHES: { [minor: string]: string[] } = {};
+export const VERSIONS = {};
 
 organize();
 
 function organize() {
-  // tslint:disable:forin
-  for (const releaseNumber in RELEASES.all) {
-    const parts = releaseNumber.split('.');
-    const major = parts[0];
-    const minor = parts[0] + '.' + parts[1];
-    if (!MINORS[major]) {
-      MAJORS.push(major);
-      MINORS[major] = [];
+  Object.keys(RELEASES.all).forEach(version => {
+    const [major, minor] = version.split('.');
+
+    if (major !== '0') {
+      if (!VERSIONS[`v${major}`]) {
+        VERSIONS[`v${major}`] = [];
+      }
+      VERSIONS[`v${major}`].push(version);
+    } else {
+      if (!VERSIONS[`v0.${minor}`]) {
+        VERSIONS[`v0.${minor}`] = [];
+      }
+      VERSIONS[`v0.${minor}`].push(version);
     }
-    if (!PATCHES[minor]) {
-      MINORS[major].push(minor);
-      PATCHES[minor] = [];
-    }
-    PATCHES[minor].push(releaseNumber);
-  }
+  });
+
+  Object.keys(VERSIONS).forEach(major => {
+    VERSIONS[major].sort((a, b) => compareReleases(a, b));
+  });
 }
 
 export function compareReleases(rA, rB) {

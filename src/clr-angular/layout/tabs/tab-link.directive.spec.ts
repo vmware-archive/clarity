@@ -13,7 +13,7 @@ import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
 import { TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrTabsModule } from './tabs.module';
-import { TabsLayout } from '@clr/angular';
+import { TabsLayout } from './enums/tabs-layout.enum';
 
 @Component({
   template: `

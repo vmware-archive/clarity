@@ -7,6 +7,7 @@ import {
   ComponentFactoryResolver,
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Inject,
   Input,
@@ -19,27 +20,37 @@ import { TabsService } from './providers/tabs.service';
 
 import { AriaService } from './providers/aria.service';
 import { TABS_ID } from './tabs-id.provider';
-import { TabsLayout } from './enums/tabsLayout';
+import { TabsLayout } from './enums/tabs-layout.enum';
 
 let nbTabLinkComponents: number = 0;
 
 @Directive({
   selector: '[clrTabLink]',
   host: {
-    '[id]': 'tabLinkId',
-    '[attr.aria-selected]': 'active',
     '[attr.aria-hidden]': 'false',
-    '[attr.aria-controls]': 'ariaControls',
     '[class.btn]': 'true',
-    '[class.btn-link]': 'isVertical()',
-    '[class.nav-link]': 'isVertical()',
-    '[class.active]': 'active',
     role: 'tab',
     type: 'button',
   },
 })
 export class ClrTabLink {
-  @Input('clrTabLinkInOverflow') inOverflow: boolean;
+  private _inOverflow: boolean;
+
+  @Input('clrTabLinkInOverflow')
+  set inOverflow(inOverflow) {
+    this._inOverflow = inOverflow;
+  }
+
+  get inOverflow(): boolean {
+    return this._inOverflow && this.tabsService.layout !== TabsLayout.VERTICAL;
+  }
+
+  @HostBinding('class.btn-link')
+  @HostBinding('class.nav-link')
+  get addLinkClasses() {
+    return !this.inOverflow;
+  }
+
   templateRefContainer: TemplateRefContainer;
 
   constructor(
@@ -65,6 +76,7 @@ export class ClrTabLink {
     ]).instance;
   }
 
+  @HostBinding('attr.aria-controls')
   get ariaControls(): string {
     return this.ariaService.ariaControls;
   }
@@ -73,6 +85,7 @@ export class ClrTabLink {
     return this.ariaService.ariaLabelledBy;
   }
 
+  @HostBinding('id')
   @Input('id')
   set tabLinkId(id: string) {
     this.ariaService.ariaLabelledBy = id;
@@ -83,11 +96,9 @@ export class ClrTabLink {
     this.ifActiveService.current = this.id;
   }
 
+  @HostBinding('class.active')
+  @HostBinding('attr.aria-selected')
   get active() {
     return this.ifActiveService.current === this.id;
-  }
-
-  isVertical() {
-    return this.tabsService.layout === TabsLayout.VERTICAL || !this.inOverflow;
   }
 }

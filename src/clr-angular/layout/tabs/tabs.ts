@@ -3,7 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Inject, QueryList, Input, OnDestroy } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Inject,
+  QueryList,
+  Input,
+  OnDestroy,
+  HostBinding,
+} from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -14,7 +23,7 @@ import { ClrTabLink } from './tab-link.directive';
 import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
-import { TabsLayout } from './enums/tabsLayout';
+import { TabsLayout } from './enums/tabs-layout.enum';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,7 +32,7 @@ import { Subscription } from 'rxjs';
         <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !(!isVertical() && link.inOverflow)">
+                <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow">
                     <li role="presentation" class="nav-item">
                         <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
                     </li>
@@ -56,12 +65,9 @@ import { Subscription } from 'rxjs';
         </ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
-  host: {
-    '[class.tabs-vertical]': 'isVertical()',
-  },
 })
 export class ClrTabs implements AfterContentInit, OnDestroy {
-  private subscription: Subscription;
+  private subscriptions: Subscription[] = [];
 
   @Input('clrTabsLayout')
   set layout(layout: TabsLayout) {
@@ -104,9 +110,11 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit() {
     this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
-    this.subscription = this.tabs.changes.subscribe(() => {
-      this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
-    });
+    this.subscriptions.push(
+      this.tabs.changes.subscribe(() => {
+        this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
+      })
+    );
 
     if (typeof this.ifActiveService.current === 'undefined' && this.tabLinkDirectives[0]) {
       this.tabLinkDirectives[0].activate();
@@ -117,13 +125,14 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
     this.ifOpenService.toggleWithEvent(event);
   }
 
-  isVertical() {
+  @HostBinding('class.tabs-vertical')
+  get isVertical() {
     return this.layout === TabsLayout.VERTICAL;
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 }

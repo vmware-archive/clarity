@@ -1042,6 +1042,7 @@ export declare class ClrTabContent {
 
 export declare class ClrTabLink {
     readonly active: boolean;
+    readonly addLinkClasses: boolean;
     readonly ariaControls: string;
     ifActiveService: IfActiveService;
     inOverflow: boolean;
@@ -1050,7 +1051,6 @@ export declare class ClrTabLink {
     templateRefContainer: TemplateRefContainer;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
     activate(): void;
-    isVertical(): boolean;
 }
 
 export declare class ClrTabOverflowContent extends AbstractPopover {
@@ -1062,6 +1062,7 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
+    readonly isVertical: boolean;
     layout: TabsLayout;
     readonly tabContents: ClrTabContent[];
     readonly tabIds: string;
@@ -1069,7 +1070,6 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     tabsId: number;
     tabsService: TabsService;
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);
-    isVertical(): boolean;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleOverflow(event: any): void;
@@ -1429,11 +1429,6 @@ export declare class NavDetectionOompaLoompa extends OompaLoompa {
 }
 
 export declare function slide(direction: string): AnimationMetadata[];
-
-export declare enum TabsLayout {
-    HORIZONTAL = "horizontal",
-    VERTICAL = "vertical"
-}
 
 export declare const TOGGLE_SERVICE: InjectionToken<BehaviorSubject<boolean>>;
 

@@ -5,7 +5,7 @@
  */
 import { Injectable } from '@angular/core';
 import { ClrTab } from '../tab';
-import { TabsLayout } from '../enums/tabsLayout';
+import { TabsLayout } from '../enums/tabs-layout.enum';
 
 @Injectable()
 export class TabsService {
@@ -28,9 +28,11 @@ export class TabsService {
   }
 
   get overflowTabs() {
-    return this.children.filter((tab: ClrTab) => {
-      return this.layout !== TabsLayout.VERTICAL && tab.tabLink.inOverflow;
-    });
+    if (this.layout === TabsLayout.VERTICAL) {
+      return [];
+    } else {
+      return this.children.filter((tab: ClrTab) => tab.tabLink.inOverflow === true);
+    }
   }
 
   unregister(tab: ClrTab) {

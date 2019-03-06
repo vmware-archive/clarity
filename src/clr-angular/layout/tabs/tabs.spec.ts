@@ -8,7 +8,7 @@ import { Component, Type, ViewChild } from '@angular/core';
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 
 import { TabsService } from './providers/tabs.service';
-import { TabsLayout } from './enums/tabsLayout';
+import { TabsLayout } from './enums/tabs-layout.enum';
 import { ClrTab } from './tab';
 import { ClrTabs } from './tabs';
 
@@ -243,26 +243,29 @@ describe('Tabs', () => {
   });
 
   describe('Tabs layout', function() {
-    let context: TestContext<ClrTabs, TestComponent>;
+    let context: TestContext<ClrTabs, any>;
     let compiled: any;
     let tabsService: TabsService;
 
-    beforeEach(function() {
-      context = this.create(ClrTabs, TestComponent);
+    function initialize<T extends TestComponent | NoClrIfActiveTest>(testType: Type<T>) {
+      context = this.create(ClrTabs, testType);
       tabsService = context.fixture.componentInstance.tabsInstance.tabsService;
       compiled = context.fixture.nativeElement;
-    });
+    }
 
     it('service defaults to horizontal', function() {
-      expect(tabsService.layout).toEqual(TabsLayout.HORIZONTAL);
+      initialize.call(this, NoClrIfActiveTest);
+      expect(context.fixture.componentInstance.tabsInstance.tabsService.layout).toEqual(TabsLayout.HORIZONTAL);
     });
 
     it('does not contain class for vertical', function() {
+      initialize.call(this, TestComponent);
       compiled = context.fixture.nativeElement;
       expect(compiled.querySelector('.tabs-vertical')).toBeNull();
     });
 
     it('can be switched to vertical', function() {
+      initialize.call(this, TestComponent);
       context.fixture.componentInstance.layout = TabsLayout.VERTICAL;
       context.detectChanges();
       expect(tabsService.layout).toBe(TabsLayout.VERTICAL);

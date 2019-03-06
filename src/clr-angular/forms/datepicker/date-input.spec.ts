@@ -532,10 +532,10 @@ export default function() {
         expect(dateNavigationService.selectedDay.date).toBe(1);
       });
 
-      it('emits the output date correctly', () => {
+      it('emits the output date correctly if using clarity datepicker', () => {
         expect(fixture.componentInstance.date).toBeUndefined();
 
-        const date: Date = new Date();
+        const date = new Date();
         dateNavigationService.notifySelectedDayChanged(
           new DayModel(date.getFullYear(), date.getMonth(), date.getDate())
         );
@@ -544,6 +544,17 @@ export default function() {
         expect(fixture.componentInstance.date.getFullYear()).toBe(date.getFullYear());
         expect(fixture.componentInstance.date.getMonth()).toBe(date.getMonth());
         expect(fixture.componentInstance.date.getDate()).toBe(date.getDate());
+      });
+
+      it('emits the output date correctly if using native datepicker', () => {
+        expect(fixture.componentInstance.date).toBeUndefined();
+
+        dateInputDebugElement.nativeElement.value = '02/19/2015';
+        dateInputDebugElement.nativeElement.dispatchEvent(new Event('change'));
+
+        expect(fixture.componentInstance.date.getFullYear()).toBe(2015);
+        expect(fixture.componentInstance.date.getMonth()).toBe(1);
+        expect(fixture.componentInstance.date.getDate()).toBe(19);
       });
 
       it('outputs the date appropriately when switching between user updates and programmatic updates', () => {

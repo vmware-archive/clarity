@@ -58,3 +58,7 @@ auto-generated-news.component.html
 auto-generated-routes.ts
 *.sketch
 *.zip
+
+# cypress
+cypress/screenshots
+cypress/videos

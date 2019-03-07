@@ -1,6 +1,7 @@
 {
   "2.0.0-beta.1": "src/website/src/releases/2.x/2.0.0-beta.1.html",
 
+  "1.1.1": "src/website/src/releases/1.x/1.1.1.html",
   "1.1.0": "src/website/src/releases/1.x/1.1.0.html",
   "1.0.5": "src/website/src/releases/1.x/1.0.5.html",
   "1.0.4": "src/website/src/releases/1.x/1.0.4.html",
@@ -13,6 +14,7 @@
   "1.0.0-beta.2": "src/website/src/releases/1.x/1.0.0-beta.2.html",
   "1.0.0-beta.1": "src/website/src/releases/1.x/1.0.0-beta.1.html",
 
+  "0.13.11": "src/website/src/releases/0.13/0.13.11.html",
   "0.13.10": "src/website/src/releases/0.13/0.13.10.html",
   "0.13.9": "src/website/src/releases/0.13/0.13.9.html",
   "0.13.8": "src/website/src/releases/0.13/0.13.8.html",

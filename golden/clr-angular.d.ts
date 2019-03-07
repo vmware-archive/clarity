@@ -296,10 +296,8 @@ export declare class ClrDatagridCell implements OnInit, OnDestroy {
 export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
-    readonly asc: boolean;
     columnId: string;
     customFilter: boolean;
-    readonly desc: boolean;
     field: string;
     filterValue: string;
     filterValueChange: EventEmitter<{}>;
@@ -307,6 +305,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     hideable: DatagridHideableColumnModel;
     projectedFilter: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
+    sortIcon: any;
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;

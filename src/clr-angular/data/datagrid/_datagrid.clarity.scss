@@ -349,34 +349,6 @@
         margin-left: auto;
       }
 
-      &.asc,
-      &.desc {
-        font-weight: 600;
-
-        .datagrid-column-flex::after {
-          content: '';
-          display: flex;
-          flex: 0 0 auto;
-          vertical-align: middle;
-          width: $clr-datagrid-icon-size;
-          height: $clr-datagrid-icon-size;
-          margin-left: 0.25rem;
-          background-repeat: no-repeat;
-          background-size: contain;
-        }
-      }
-
-      &.asc {
-        .datagrid-column-flex::after {
-          background-image: generateUpArrowIcon($clr-color-action-600);
-        }
-      }
-      &.desc {
-        .datagrid-column-flex::after {
-          background-image: generateDownArrowIcon($clr-color-action-600);
-        }
-      }
-
       .datagrid-filter-toggle {
         @include clr-no-styles-button();
         cursor: pointer;
@@ -452,11 +424,21 @@
         text-align: left;
         flex: 1 1 auto;
         align-self: flex-start;
+        display: flex;
       }
 
-      button.datagrid-column-title:hover {
-        text-decoration: underline;
-        cursor: pointer;
+      button.datagrid-column-title {
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .sort-icon {
+          color: $clr-color-action-600;
+          margin-left: auto; // pushes icon to rhs b/c of parents display: flex
+          width: $clr-datagrid-icon-size;
+          height: $clr-datagrid-icon-size;
+          vertical-align: middle;
+        }
       }
 
       .datagrid-column-separator {

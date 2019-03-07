@@ -289,10 +289,6 @@ export const ClrShapeTrash = clrIconSVG(
                 <path class="clr-i-solid clr-i-solid-path-1" d="M6,9V31a2.93,2.93,0,0,0,2.86,3H27.09A2.93,2.93,0,0,0,30,31V9Zm9,20H13V14h2Zm8,0H21V14h2Z"/>
                 <path class="clr-i-solid clr-i-solid-path-2" d="M30.73,5H23V4A2,2,0,0,0,21,2h-6.2A2,2,0,0,0,13,4V5H5A1,1,0,1,0,5,7H30.73a1,1,0,0,0,0-2Z"/>`
 );
-export const ClrShapeCircle = clrIconSVG(
-  `<path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Zm0,26A12,12,0,1,1,30,18,12,12,0,0,1,18,30Z" class="clr-i-outline clr-i-outline-path-1"/>
-            <path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z" class="clr-i-solid clr-i-solid-path-1"/>`
-);
 export const ClrShapeTag = clrIconSVG(`<circle cx="10.52" cy="10.52" r="1.43" class="clr-i-outline clr-i-outline-path-1"/>
             <path d="M31.93,19.2,17.33,4.6A2,2,0,0,0,15.92,4L6,4A2,2,0,0,0,4,6l0,9.92a2,2,0,0,0,.59,1.41l14.6,14.6a2,2,0,0,0,2.83,0l9.9-9.9A2,2,0,0,0,31.93,19.2ZM20.62,30.52,6,15.91V6h9.92l14.6,14.62Z" class="clr-i-outline clr-i-outline-path-2"/>
             <circle cx="10.52" cy="10.52" r="1.43" class="clr-i-outline--alerted clr-i-outline-path-1--alerted"/>
@@ -893,14 +889,17 @@ export const ClrShapeSnowflake = clrIconSVG(
 export const ClrShapeTable = clrIconSVG(
   `<path d="M8,34a1,1,0,0,1-1-1V2.92a1,1,0,0,1,2,0V33A1,1,0,0,1,8,34Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M17,33.92a1,1,0,0,1-1-1V9.1a1,1,0,1,1,2,0V32.92A1,1,0,0,1,17,33.92Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M26,34a1,1,0,0,1-1-1V9a1,1,0,0,1,2,0V33A1,1,0,0,1,26,34Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M33.11,18h-25a1,1,0,1,1,0-2h25a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M33.1,26.94H8.1A1,1,0,1,1,8.1,25h25a1,1,0,1,1,0,1.92Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M33,8.92H3A1,1,0,1,1,3,7H33a1,1,0,1,1,0,1.94Z" class="clr-i-outline clr-i-outline-path-6" />`
 );
-export const ClrShapeDotCircle = clrIconSVG(
-  `<path d="M18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Zm0,26A12,12,0,1,1,30,18,12,12,0,0,1,18,30Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,25a7,7,0,1,1,7-7A7,7,0,0,1,18,25Z" class="clr-i-outline clr-i-outline-path-2" />`
-);
 export const ClrShapeVolume = clrIconSVG(
   `<path d="M25.88,32H12a4,4,0,0,1-4-4V11.46L2.31,5.77a1,1,0,0,1-.22-1.09A1,1,0,0,1,3,4.06H28.86a1,1,0,0,1,1,1V28A4,4,0,0,1,25.88,32ZM5.43,6l4.28,4.34a.75.75,0,0,1,.21.63v17A2.13,2.13,0,0,0,12,30H25.88A2.1,2.1,0,0,0,28,28V6Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M33,16a1,1,0,0,1-1-1V6H28.86a.92.92,0,0,1-1-.9,1,1,0,0,1,1-1H33a1,1,0,0,1,1,1V15A1,1,0,0,1,33,16Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M24,11H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M24,15H21a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M24,19H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M24,27H18a1,1,0,1,1,0-2H24a1,1,0,1,1,0,2Z" class="clr-i-outline clr-i-outline-path-6" /><path d="M24,23H21A1,1,0,1,1,21,21H24A1,1,0,1,1,24,23Z" class="clr-i-outline clr-i-outline-path-7" />`
 );
 export const ClrShapeCrosshairs = clrIconSVG(
   `<path d="M18,29A11,11,0,1,1,29,18,11,11,0,0,1,18,29ZM18,9a9,9,0,1,0,9,9A9,9,0,0,0,18,9Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,23a5,5,0,1,1,5-5A5,5,0,0,1,18,23Zm0-8a3,3,0,1,0,3,3A3,3,0,0,0,18,15Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M18,9a1,1,0,0,1-1-1V2.8a1,1,0,0,1,2,0V8A1,1,0,0,1,18,9Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M18,34a1,1,0,0,1-1-1V28a1,1,0,0,1,2,0v5A1,1,0,0,1,18,34Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M8,19H3.17a1,1,0,0,1,0-2H8a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M33.1,19H28a1,1,0,0,1,0-2h5.1a1,1,0,0,1,0,2Z" class="clr-i-outline clr-i-outline-path-6" />`
+);
+export const ClrShapeCircle = clrIconSVG(
+  `<path d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34ZM18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z" class="clr-i-outline clr-i-outline-path-1" />`
+);
+export const ClrShapeDotCircle = clrIconSVG(
+  `<path d="M18,11a7,7,0,1,1-7,7,7,7,0,0,1,7-7" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34ZM18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z" class="clr-i-outline clr-i-outline-path-2" />`
 );
 
 export const EssentialShapes: any = {

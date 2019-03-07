@@ -28,18 +28,18 @@ import { ClrDatagridPageSize } from './datagrid-page-size';
       <ng-content></ng-content>
     </div>
     <div class="pagination-list" *ngIf="page.last > 1">
-      <button class="pagination-first" [disabled]="page.current <= 1" (click)="page.current = 1">
+      <button type="button" class="pagination-first" [disabled]="page.current <= 1" (click)="page.current = 1">
         <clr-icon shape="step-forward-2 down"></clr-icon>
       </button>
-      <button class="pagination-previous" [disabled]="page.current <= 1" (click)="page.current = page.current - 1">
+      <button type="button" class="pagination-previous" [disabled]="page.current <= 1" (click)="page.current = page.current - 1">
         <clr-icon shape="angle left"></clr-icon>
       </button>
       <input #currentPageInput type="text" class="pagination-current" [size]="page.last.toString().length" [value]="page.current"
              (keydown.enter)="updateCurrentPage($event)" (blur)="updateCurrentPage($event)"/>&nbsp;/&nbsp;<span>{{page.last}}</span>
-      <button class="pagination-next" [disabled]="page.current >= page.last" (click)="page.current = page.current + 1">
+      <button type="button" class="pagination-next" [disabled]="page.current >= page.last" (click)="page.current = page.current + 1">
         <clr-icon shape="angle right"></clr-icon>
       </button>
-      <button class="pagination-last" [disabled]="page.current >= page.last" (click)="page.current = page.last">
+      <button type="button" class="pagination-last" [disabled]="page.current >= page.last" (click)="page.current = page.last">
         <clr-icon shape="step-forward-2 up"></clr-icon>
       </button>
     </div>

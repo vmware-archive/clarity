@@ -6,21 +6,21 @@
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-import * as UiErrors from './ui/errors.html';
-import * as UiForm from './ui/form.html';
-import * as UiGrid from './ui/grid.html';
-import * as UiLayouts from './ui/layouts.html';
-import * as UiStructure from './ui/structure.html';
+import * as UiErrors from 'raw-loader!./ui/errors.html';
+import * as UiForm from 'raw-loader!./ui/form.html';
+import * as UiGrid from 'raw-loader!./ui/grid.html';
+import * as UiLayouts from 'raw-loader!./ui/layouts.html';
+import * as UiStructure from 'raw-loader!./ui/structure.html';
 
-import * as NgErrors from './ng/errors.html';
-import * as NgForm from './ng/form.html';
-import * as NgHelpers from './ng/helpers.html';
-import * as NgLayouts from './ng/layouts.html';
+import * as NgErrors from 'raw-loader!./ng/errors.html';
+import * as NgForm from 'raw-loader!./ng/form.html';
+import * as NgHelpers from 'raw-loader!./ng/helpers.html';
+import * as NgLayouts from 'raw-loader!./ng/layouts.html';
 import * as NgReactiveTs from '!raw-loader!./ng/reactive.txt';
-import * as NgReactiveHtml from './ng/reactive.html';
-import * as NgStructure from './ng/structure.html';
-import * as NgOverride from './ng/override.html';
-import * as NgOptional from './ng/optional.html';
+import * as NgReactiveHtml from 'raw-loader!./ng/reactive.html';
+import * as NgStructure from 'raw-loader!./ng/structure.html';
+import * as NgOverride from 'raw-loader!./ng/override.html';
+import * as NgOptional from 'raw-loader!./ng/optional.html';
 import * as NgReset from '!raw-loader!./ng/reset.txt';
 import * as NgValidate from '!raw-loader!./ng/validate.txt';
 

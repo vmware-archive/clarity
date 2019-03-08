@@ -63,4 +63,9 @@ describe('Header', () => {
   it('shows the overflow trigger when the level2 directive is registered', () => {
     expect(compiled.querySelector('.header-overflow-trigger')).not.toBeNull();
   });
+
+  it('should have aria labels for menu buttons', () => {
+    expect(compiled.querySelector('.header-hamburger-trigger').getAttribute('aria-label')).toBe('Open');
+    expect(compiled.querySelector('.header-overflow-trigger').getAttribute('aria-label')).toBe('Open');
+  });
 });

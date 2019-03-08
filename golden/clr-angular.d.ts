@@ -673,10 +673,12 @@ export declare class ClrFormsModule {
 }
 
 export declare class ClrHeader implements OnDestroy {
+    commonStrings: ClrCommonStrings;
     isNavLevel1OnPage: boolean;
     isNavLevel2OnPage: boolean;
+    openNavLevel: number;
     responsiveNavCodes: typeof ResponsiveNavCodes;
-    constructor(responsiveNavService: ResponsiveNavigationService);
+    constructor(responsiveNavService: ResponsiveNavigationService, commonStrings: ClrCommonStrings);
     closeOpenNav(): void;
     initializeNavTriggers(navList: number[]): void;
     ngOnDestroy(): void;

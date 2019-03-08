@@ -10,6 +10,7 @@ import * as COMPONENTS from '../../settings/componentlist.json';
 @Component({
   selector: 'documentation-nav-links',
   template: `
+    <ul class="nav-list">
         <ng-container *ngFor="let component of components">
             <li *ngIf="component.url && !component.noDemo && component.type == type">
                 <a class="nav-link" [routerLink]="component.url" routerLinkActive="active">
@@ -19,6 +20,7 @@ import * as COMPONENTS from '../../settings/componentlist.json';
                 </a>
             </li>
         </ng-container>
+    </ul>
     `,
 })
 export class DocumentationNavLinksComponent {

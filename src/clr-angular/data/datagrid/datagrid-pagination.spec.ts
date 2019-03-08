@@ -292,6 +292,19 @@ export default function(): void {
         // but we decided to opt for type='text' for now due to limited cross-browser support
         expect(context.testComponent.current.toString()).toBe('10');
       });
+
+      it('should have type button on all button elements', function() {
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 1;
+        context.detectChanges();
+
+        const invalidButton = Array.from(context.clarityElement.querySelectorAll('button')).find(
+          (btn: HTMLElement) => btn.getAttribute('type') !== 'button'
+        );
+
+        expect(invalidButton).toBeUndefined();
+      });
     });
   });
 }

@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { DocumentationModule } from './documentation/documentation.module';
 import { ClrCommonStringsService } from '../../../../src/clr-angular/utils/i18n/common-strings.service';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
@@ -23,6 +24,7 @@ import { ClrCommonStringsService } from '../../../../src/clr-angular/utils/i18n/
     BrowserAnimationsModule,
     ClarityModule,
     DocumentationModule,
+    UtilsModule,
     AppRoutingModule,
   ],
   providers: [Title, { provide: ClrCommonStrings, useClass: ClrCommonStringsService }],

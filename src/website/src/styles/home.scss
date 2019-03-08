@@ -1,5 +1,5 @@
 .layout-home {
-  background-color: #fafafa;
+  background-color: $clr-color-neutral-50;
 
   .main-container {
     height: auto;
@@ -92,7 +92,7 @@
       &:hover,
       &:active,
       &:focus {
-        color: #313131;
+        color: $clr-color-neutral-900;
         text-decoration: underline;
       }
     }
@@ -118,7 +118,7 @@
   position: relative;
 
   .home-cards-container {
-    background-color: #fff;
+    background-color: $clr-color-neutral-0;
     width: 100%;
     padding: $bl-2_0 0 $bl-1_0;
     border-radius: 3px;
@@ -243,21 +243,35 @@
 
 .home-contact {
   width: 100%;
-  background-color: #313131;
-
-  background: -moz-linear-gradient(left, #0094d2 0%, #eaf700 50%, #313131 50%);
+  background-color: $clr-color-neutral-900;
+  background: -moz-linear-gradient(left, $clr-color-action-600 0%, #eaf700 50%, $clr-color-neutral-900 50%);
   background: -webkit-gradient(
     linear,
     left top,
     right top,
-    color-stop(0%, #0094d2),
-    color-stop(50%, #0094d2),
-    color-stop(50%, #313131)
+    color-stop(0%, $clr-color-action-600),
+    color-stop(50%, $clr-color-action-600),
+    color-stop(50%, $clr-color-neutral-900)
   );
-  background: -webkit-linear-gradient(left, #0094d2 0%, #0094d2 50%, #313131 50%);
-  background: -o-linear-gradient(left, #0094d2 0%, #0094d2 50%, #313131 50%);
-  background: -ms-linear-gradient(left, #0094d2 0%, #0094d2 50%, #313131 50%);
-  background: linear-gradient(to right, #0094d2 0%, #0094d2 50%, #313131 50%);
+  background: -webkit-linear-gradient(
+    left,
+    $clr-color-action-600 0%,
+    $clr-color-action-600 50%,
+    $clr-color-neutral-900 50%
+  );
+  background: -o-linear-gradient(left, $clr-color-action-600 0%, $clr-color-action-600 50%, $clr-color-neutral-900 50%);
+  background: -ms-linear-gradient(
+    left,
+    $clr-color-action-600 0%,
+    $clr-color-action-600 50%,
+    $clr-color-neutral-900 50%
+  );
+  background: linear-gradient(
+    to right,
+    $clr-color-action-600 0%,
+    $clr-color-action-600 50%,
+    $clr-color-neutral-900 50%
+  );
 }
 
 .home-contact-container,
@@ -525,13 +539,13 @@ a.home-contact_link {
   }
 
   .home-contact-block {
-    background-color: #0094d2;
+    background-color: $clr-color-action-600;
     width: 100%;
     max-width: 100%;
     padding-left: $bl-1_5;
 
     & + .home-contact-block {
-      background-color: #313131;
+      background-color: $clr-color-neutral-900;
     }
   }
 

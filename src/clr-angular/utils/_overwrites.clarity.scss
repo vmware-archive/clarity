@@ -46,7 +46,8 @@ $clr-font-weight-semibold: null; // 500
 $clr-font-weight-bold: null; // 600
 $clr-font-weight-extrabold: null; // 600
 
-// DEPRECATED IN 2.0
+// @deprecated in 2.0 $clr-font-weights could not be removed because it is public
+// in the overwrites file. it had to be deprecated first
 $clr-font-weights: null; // (light: 200, regular: 400, bold: 600);
 
 $clr-baseline: null; // 24px;

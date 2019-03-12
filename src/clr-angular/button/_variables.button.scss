@@ -5,30 +5,37 @@
 // General
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
-$clr-button-vertical-margin: 0.25rem !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-vertical-margin: 0.25rem !default;
 $clr-btn-vertical-margin: $clr-button-vertical-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // Usage: ../layout/_card.clarity.scss
-$clr-button-horizontal-margin: 0.5rem !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-horizontal-margin: 0.5rem !default;
 $clr-btn-horizontal-margin: $clr-button-horizontal-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
-$clr-button-horizontal-padding: 0.5rem !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-horizontal-padding: 0.5rem !default;
 $clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
 
-$clr-button-height: 1.5rem !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-height: 1.5rem !default;
 $clr-btn-height: $clr-button-height !default;
 
-$clr-button-height-sm: 1rem !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-height-sm: 1rem !default;
 $clr-btn-height-sm: $clr-button-height-sm !default;
 
-$clr-button-font-weight: $clr-font-weight-semibold !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-font-weight: $clr-font-weight-semibold !default;
 $clr-btn-font-weight: $clr-button-font-weight !default;
 
-$clr-button-padding: 0 $clr-btn-horizontal-padding !default; // DEPRECATED
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-padding: 0 $clr-btn-horizontal-padding !default;
 $clr-btn-padding: $clr-button-padding !default;
 
 $clr-btn-border-radius: $clr-global-borderradius !default;
@@ -600,7 +607,8 @@ $clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
 
 // For theme-able icon button color
 $clr-btn-icon-disabled-color: $clr-btn-default-disabled-color !default;
-$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default; // DEPRECATED, see preferred naming convention above!
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default;
 
 @function lookupFromIconButtonColors($property: null) {
   @if $property == disabled-color {

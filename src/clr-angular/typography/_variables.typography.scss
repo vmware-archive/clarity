@@ -8,12 +8,14 @@ $clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !defau
 
 // Usage: ../data/datagrid/_datagrid.clarity.scss
 // Usage: ../typography/_typography.clarity.scss
-$clr-app-font-color-primary: $clr-global-font-color !default; // deprecated
+// @deprecated in 2.0 $clr-app-font-color-primary to be replaced by $clr-global-font-color
+$clr-app-font-color-primary: $clr-global-font-color !default;
 
 $clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
 
 // Usage: ../code/syntax-highlight/_code.clarity.scss
-$clr-monoFont: Consolas, Monaco, Courier, monospace !default; // deprecated
+// @deprecated in 1.0 $clr-monoFont only used in removed code component
+$clr-monoFont: Consolas, Monaco, Courier, monospace !default;
 
 // Usage: ../typography/_typography.clarity.scss
 // Usage: ../utils/_helpers.clarity.scss
@@ -25,8 +27,8 @@ $clr-font-weight-semibold: 500 !default;
 $clr-font-weight-bold: 600 !default;
 $clr-font-weight-extrabold: 600 !default;
 
-// DEPRECATED in 2.0; could not be removed because it is public in the overwrites file
-// Had to be deprecated first
+// @deprecated in 2.0 $clr-font-weights could not be removed because it is public
+// in the overwrites file. it had to be deprecated first
 $clr-font-weights: (
   light: $clr-font-weight-light,
   regular: $clr-font-weight-regular,

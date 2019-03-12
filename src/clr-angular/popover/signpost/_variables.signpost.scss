@@ -4,10 +4,12 @@
 
 // Usage: ../signpost/_signpost.clarity.scss
 $clr-signpost-content-bg-color: $clr-color-neutral-0 !default;
-$clr-signpost-innerBlock: $clr-signpost-content-bg-color !default; // DEPRECATED IN 2.0
+// @deprecated in 2.0 $clr-signpost-innerBlock to be replaced by $clr-signpost-content-bg-color
+$clr-signpost-innerBlock: $clr-signpost-content-bg-color !default;
 
 $clr-signpost-content-border-color: $clr-color-neutral-500 !default;
-$clr-signpost-outerBorder: $clr-signpost-content-border-color !default; // DEPRECATED IN 2.0
+// @deprecated in 2.0 $clr-signpost-outerBorder to be replaced by $clr-signpost-content-border-color
+$clr-signpost-outerBorder: $clr-signpost-content-border-color !default;
 
 $clr-signpost-action-color: $clr-color-neutral-600 !default;
 $clr-signpost-action-hover-color: $clr-color-action-700 !default;

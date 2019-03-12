@@ -27,7 +27,8 @@ $clr-header-6-bg-color: $clr-color-action-1000 !default;
 $clr-header-7-bg-color: #314351 !default;
 
 $clr-header-font-color: $clr-color-neutral-50 !default;
-$clr-header-textColor: $clr-header-font-color !default; // DEPRECATED IN 2.0
+// @deprecated in 2.0 $clr-header-textColor to be replaced by $clr-header-font-color
+$clr-header-textColor: $clr-header-font-color !default;
 
 $clr-header-title-color: $clr-header-font-color !default;
 $clr-header-title-font-size: $clr-h5-font-size !default;

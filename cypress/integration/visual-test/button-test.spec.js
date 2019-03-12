@@ -17,31 +17,31 @@ describe('Visual Regression Testing', () => {
       const button = cy.wrap(btn);
       button.click();
     });
-    checkEyes();
+    checkEyes('real-button');
   });
 
   it('check primary-button', () => {
     cy.visit(baseURL + 'buttons/primary-button');
     cy.get('button.btn:enabled').click();
-    checkEyes();
+    checkEyes('primary-button');
   });
 
   it('check secondary-button', () => {
     cy.visit(baseURL + 'buttons/secondary-button');
     cy.get('button.btn:enabled').click();
-    checkEyes();
+    checkEyes('secondary-button');
   });
 
   it('check tertiary-button', () => {
     cy.visit(baseURL + 'buttons/tertiary-button');
     cy.get('button.btn:enabled').click();
-    checkEyes();
+    checkEyes('tertiary-button');
   });
 
   it('check inverse-button', () => {
     cy.visit(baseURL + 'buttons/inverse-button');
     cy.get('button.btn:enabled').click();
-    checkEyes();
+    checkEyes('inverse-button');
   });
 
   it('check button-states', () => {
@@ -50,12 +50,12 @@ describe('Visual Regression Testing', () => {
       const button = cy.wrap(btn);
       button.click();
     });
-    checkEyes();
+    checkEyes('button-states');
   });
 
   it('check button-loading', () => {
     cy.visit(baseURL + 'buttons/button-loading');
-    checkEyes();
+    checkEyes('button-loading');
   });
 
   it('check button-sizes', () => {
@@ -64,6 +64,6 @@ describe('Visual Regression Testing', () => {
       const button = cy.wrap(btn);
       button.click();
     });
-    checkEyes();
+    checkEyes('button-sizes');
   });
 });

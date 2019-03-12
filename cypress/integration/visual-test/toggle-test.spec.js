@@ -12,10 +12,10 @@ describe('Visual Regression Testing', () => {
   });
   it('check toggle-button', () => {
     cy.visit(baseURL + 'toggles');
-    checkEyes();
+    checkEyes('toggle off');
     cy
       .get('[clrlayout=vertical] .clr-form-control:first-child .clr-toggle-wrapper:first-child .clr-control-label')
       .click();
-    checkEyes();
+    checkEyes('toggle on');
   });
 });

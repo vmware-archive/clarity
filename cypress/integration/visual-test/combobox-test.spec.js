@@ -13,18 +13,18 @@ describe('Visual Regression Testing', () => {
   it('check basic combobox', () => {
     cy.visit(baseURL + 'combobox/basic');
     cy.get('.clr-combobox .clr-combobox-trigger').click();
-    checkEyes();
+    checkEyes('basic combobox');
   });
 
   it('check optional-menu combobox', () => {
     cy.visit(baseURL + 'combobox/optional-menu');
     cy.get('.clr-combobox:nth-child(2) .clr-combobox-trigger').click();
-    checkEyes();
+    checkEyes('menu provided combobox');
   });
 
   it('check optional-menu combobox', () => {
     cy.visit(baseURL + 'combobox/optional-menu');
     cy.get('.clr-combobox:nth-child(4) .clr-combobox-trigger').click();
-    checkEyes();
+    checkEyes('menu not provided combobox');
   });
 });

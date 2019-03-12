@@ -14,12 +14,12 @@ describe('Visual Regression Testing', () => {
   it('check popovers on focus', () => {
     cy.visit(baseURL + 'popovers');
     cy.get('clr-dummy-anchor input:first-child').click();
-    checkEyes();
+    checkEyes('popovers on focus');
   });
 
   it('check popovers on click', () => {
     cy.visit(baseURL + 'popovers');
     cy.get('clr-dummy-anchor button.btn').click();
-    checkEyes();
+    checkEyes('popovers on click');
   });
 });

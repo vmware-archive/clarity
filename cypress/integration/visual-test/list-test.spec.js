@@ -1,51 +1,47 @@
-import { baseURL, openEyesCheck, openEyes } from '../../util';
+import { baseURL, checkEyes } from '../../util';
 describe('Visual Regression Testing', () => {
+  before(() => {
+    cy.eyesOpen({
+      appName: 'Clarity',
+      testName: 'list',
+      browser: { width: 1024, height: 768, name: 'chrome' },
+    });
+  });
+  after(() => {
+    cy.eyesClose();
+  });
   it('check lists-ul', () => {
     cy.visit(baseURL + 'lists/lists-ul');
-    openEyes('lists-ul');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check lists-unstyled', () => {
     cy.visit(baseURL + 'lists/lists-unstyled');
-    openEyes('lists-unstyled');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check lists-ol', () => {
     cy.visit(baseURL + 'lists/lists-ol');
-    openEyes('lists-ol');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check lists-mixed', () => {
     cy.visit(baseURL + 'lists/lists-mixed');
-    openEyes('lists-mixed');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check lists-compact', () => {
     cy.visit(baseURL + 'lists/lists-compact');
-    openEyes('lists-compact');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check lists-in-cards', () => {
     cy.visit(baseURL + 'lists/lists-in-cards');
-    openEyes('lists-in-cards');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check old-lists-in-cards', () => {
     cy.visit(baseURL + 'lists/old-lists-in-cards');
-    openEyes('old-lists-in-cards');
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 });

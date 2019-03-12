@@ -1,20 +1,25 @@
-import { baseURL, openEyesCheck,openEyes } from '../../util';
+import { baseURL, checkEyes } from '../../util';
 describe('Visual Regression Testing', () => {
-  beforeEach(function() {
-    cy.visit(baseURL + 'popovers');
+  before(() => {
+    cy.eyesOpen({
+      appName: 'Clarity',
+      testName: 'popovers',
+      browser: { width: 1024, height: 768, name: 'chrome' },
+    });
+  });
+  after(() => {
+    cy.eyesClose();
   });
 
   it('check popovers on focus', () => {
-  openEyes('popover on focus');
+    cy.visit(baseURL + 'popovers');
     cy.get('clr-dummy-anchor input:first-child').click();
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 
   it('check popovers on click', () => {
-    openEyes('popover on click');
+    cy.visit(baseURL + 'popovers');
     cy.get('clr-dummy-anchor button.btn').click();
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 });

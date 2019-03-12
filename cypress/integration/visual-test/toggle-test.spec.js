@@ -1,13 +1,21 @@
-import { baseURL, openEyesCheck, openEyes } from '../../util';
+import { baseURL, checkEyes } from '../../util';
 describe('Visual Regression Testing', () => {
+  before(() => {
+    cy.eyesOpen({
+      appName: 'Clarity',
+      testName: 'toggles',
+      browser: { width: 1024, height: 768, name: 'chrome' },
+    });
+  });
+  after(() => {
+    cy.eyesClose();
+  });
   it('check toggle-button', () => {
     cy.visit(baseURL + 'toggles');
-    openEyes('toggles');
-    openEyesCheck();
+    checkEyes();
     cy
       .get('[clrlayout=vertical] .clr-form-control:first-child .clr-toggle-wrapper:first-child .clr-control-label')
       .click();
-    openEyesCheck();
-    cy.eyesClose();
+    checkEyes();
   });
 });

@@ -71,9 +71,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   @Input('clrTabsLayout')
   set layout(layout: TabsLayout) {
-    if (!Object.values(TabsLayout).includes(layout)) {
-      throw `Unsupported layout ${layout}`;
-    } else {
+    if (Object.values(TabsLayout).includes(layout)) {
       this.tabsService.layout = layout;
     }
   }

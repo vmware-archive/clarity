@@ -28,6 +28,12 @@ export class RecursiveTreeNodeModel<T> extends TreeNodeModel<T> {
 
   private childrenFetched = false;
 
+  clearChildren() {
+    this._children.forEach(child => child.destroy());
+    delete this._children;
+    this.childrenFetched = false;
+  }
+
   fetchChildren() {
     if (this.childrenFetched) {
       return;

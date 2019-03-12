@@ -29,13 +29,13 @@ import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
  */
 export class RecursiveChildren<T> {
   constructor(public featuresService: TreeFeaturesService<T>, @Optional() private expandService: Expand) {
-    if (expandService && featuresService.recursion) {
+    if (expandService) {
       this.subscription = this.expandService.expandChange.subscribe(value => {
-        if (value && this.parent) {
-          // Once again, I'm sure we can find a way to avoid this casting by typing every component in a way that
-          // lets us use the more specific model classes depending on the use of *clrRecursiveForOf or not.
-          // But it would take time, which we don't have right now.
-          (<RecursiveTreeNodeModel<T>>this.parent).fetchChildren();
+        if (!value && this.parent && !this.featuresService.eager && this.featuresService.recursion) {
+          // In the case of lazy-loading recursive trees, we clear the children on collapse.
+          // This is better in case they change between two user interaction, and that way
+          // the app itself can decide whether to cache them or not.
+          (<RecursiveTreeNodeModel<T>>this.parent).clearChildren();
         }
       });
     }

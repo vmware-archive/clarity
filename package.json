@@ -68,7 +68,9 @@
     "website:functions": "netlify-lambda build scripts/netlify",
     "website:news": "node src/website/generate-news",
     "website:prerender": "npm-run-all website:news website:build website:render website:functions",
-    "website:preview": "lite-server --baseDir=dist/website/browser"
+    "website:preview": "lite-server --baseDir=dist/website/browser",
+    "cypress:run": "cypress run",
+    "visual-test": "server-test start http-get://localhost:4200/ cypress:run"
   },
   "dependencies": {
     "@angular/animations": "8.0.0-beta.5",
@@ -150,6 +152,7 @@
     "replace": "1.0.0",
     "shelljs": "0.8.1",
     "source-map": "0.7.2",
+    "start-server-and-test": "1.7.11",
     "stylelint": "9.9.0",
     "stylelint-config-recommended": "2.1.0",
     "ts-api-guardian": "0.4.1",

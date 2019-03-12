@@ -82,22 +82,3 @@
 <div class="example-btn-wrapper">
     <a href="https://embed.plnkr.co/PlgTCx/" target="_blank" class="btn btn-primary btn-sm">View example</a>
 </div>
-
-
-<h3 class="paragraph-header">Optimize Clarity Icons in your application</h3>
-<p>
-    Before
-    <code class="clr-code">v0.11.8</code>, users had to import the whole icons sets even if they needed to use only a few icons from those sets. Now with
-    <code class="clr-code">v0.11.8</code>, users can import each icon shapes as individual modules and add them to the Clarity Icons API. Leveraging this new
-    method of importing icons with Tree-shaking process, you can make a significant optimization to the size of Clarity Icons
-    in your application. For example, if you need to use
-    <code class="clr-code">car</code>,
-    <code class="clr-code">pin</code>, and
-    <code class="clr-code">star</code> icons in an application, you can import and add them in the following way:
-
-    <clr-code-snippet [clrCode]="iconsOptimizationExample" clrLanguage="typescript"></clr-code-snippet>
-
-    You can see that each shape modules have "ClrShape" prefix in the example above. An important thing to note here is that,
-    to take advantage of this new method, you should only load Clarity Icons by importing it from
-    <code class="clr-code">"@clr/icons"</code> and make sure that you are not loading it via a script tag or in some other manner.
-</p>

@@ -41,6 +41,19 @@ export default function(): void {
       expect(nbFetch).toBe(1);
     });
 
+    it('offers a clearChildren() method that forces the children to be fetched again next time', function() {
+      let nbFetch = 0;
+      const root = new RecursiveTreeNodeModel('A', null, node => {
+        nbFetch++;
+        return synchronousChildren(node);
+      });
+      root.fetchChildren();
+      expect(nbFetch).toBe(1);
+      root.clearChildren();
+      root.fetchChildren();
+      expect(nbFetch).toBe(2);
+    });
+
     it('declares itself as parent for created children', function() {
       const root = new RecursiveTreeNodeModel('A', null, synchronousChildren);
       expect(root.children.map(c => c.parent)).toEqual([root, root]);

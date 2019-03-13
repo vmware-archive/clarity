@@ -37,11 +37,11 @@
       }
 
       &.btn {
-        padding-right: $clr-button-horizontal-padding + $clr-dropdown-caret-icon-dimension +
+        padding-right: $clr-btn-horizontal-padding + $clr-dropdown-caret-icon-dimension +
           $clr-dropdown-caret-left-margin;
 
         clr-icon[shape^='caret'] {
-          right: $clr-button-horizontal-padding;
+          right: $clr-btn-horizontal-padding;
         }
       }
 
@@ -72,12 +72,14 @@
     @include generate-dropdown-menu();
 
     .dropdown-header {
-      @include clr-getTypePropertiesForDomElement(dropdown_header, (font-size, font-weight, letter-spacing));
+      color: $clr-dropdown-header-color;
+      font-size: $clr-dropdown-header-font-size;
+      font-weight: $clr-dropdown-header-font-weight;
+      letter-spacing: $clr-dropdown-header-letter-spacing;
 
       padding: 0 0.5rem;
       line-height: 0.75rem;
       margin: 0;
-      color: $clr-dropdown-header-color;
 
       @extend %dropdown-content;
     }
@@ -102,7 +104,7 @@
       @extend %dropdown-content;
 
       &.expandable {
-        $clr-dropdown-caret-margin-top: 0.375rem;
+        $clr-dropdown-caret-margin-top: 0.25rem;
 
         margin-right: 1rem;
         padding-right: 0.5rem;
@@ -123,17 +125,6 @@
     .btn,
     .dropdown-item {
       @include generate-dropdown-item-height();
-    }
-
-    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
-      .btn,
-      .dropdown-item {
-        $clr-dropdown-caret-margin-top: 0.5rem;
-
-        &.expandable::before {
-          margin-top: $clr-dropdown-caret-margin-top;
-        }
-      }
     }
 
     .dropdown-divider {

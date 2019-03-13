@@ -5,5 +5,12 @@
 // Usage: ../layout/nav/_nav.clarity.scss
 $clr-nav-box-shadow-color: $clr-color-neutral-400 !default;
 $clr-nav-active-box-shadow-color: $clr-color-action-600 !default;
-$clr-nav-link-active-color: $clr-color-neutral-1000 !default;
+
 $clr-nav-link-color: $clr-color-neutral-600 !default;
+$clr-nav-link-active-color: $clr-color-neutral-1000 !default;
+
+$clr-nav-link-font-size: $clr-p1-font-size !default;
+$clr-nav-link-font-weight: $clr-p1-font-weight !default;
+$clr-nav-link-letter-spacing: $clr-p1-letter-spacing !default;
+
+$clr-nav-link-active-font-weight: $clr-nav-link-font-weight !default;

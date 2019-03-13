@@ -9,42 +9,18 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { Expand } from '../../utils/expand/providers/expand';
 import { LoadingListener } from '../../utils/loading/loading-listener';
-
-import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridRow } from './datagrid-row';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
-import { TestContext } from './helpers.spec';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { MockDisplayModeService } from './providers/display-mode.mock';
 import { DisplayModeService } from './providers/display-mode.service';
-import { FiltersProvider } from './providers/filters';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
-import { Page } from './providers/page';
-import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
-import { Sort } from './providers/sort';
-import { StateDebouncer } from './providers/state-debouncer.provider';
-import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
+import { Selection } from './providers/selection';
 import { DatagridRenderOrganizer } from './render/render-organizer';
-
-const PROVIDERS = [
-  Selection,
-  Items,
-  FiltersProvider,
-  Sort,
-  Page,
-  RowActionService,
-  ExpandableRowsCount,
-  DatagridRenderOrganizer,
-  DomAdapter,
-  HideableColumnService,
-  DatagridWillyWonka,
-  StateDebouncer,
-  { provide: DisplayModeService, useClass: MockDisplayModeService },
-  Expand,
-];
+import { SelectionType } from './enums/selection-type';
 
 type Item = { id: number };
 
@@ -56,7 +32,7 @@ export default function(): void {
       let renderer: DatagridRenderOrganizer;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
+        context = this.create(ClrDatagridRow, FullTest, DATAGRID_SPEC_PROVIDERS);
         renderer = context.getClarityProvider(DatagridRenderOrganizer);
         context.detectChanges();
         renderer.resize();
@@ -97,7 +73,7 @@ export default function(): void {
       let displayMode: MockDisplayModeService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridRow, ProjectionTest, PROVIDERS);
+        context = this.create(ClrDatagridRow, ProjectionTest, DATAGRID_SPEC_PROVIDERS);
         displayMode = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
       });
 
@@ -119,7 +95,7 @@ export default function(): void {
       let selectionProvider: Selection;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridRow, FullTest, PROVIDERS);
+        context = this.create(ClrDatagridRow, FullTest, DATAGRID_SPEC_PROVIDERS);
         selectionProvider = TestBed.get(Selection);
         TestBed.get(Items).all = [{ id: 1 }, { id: 2 }];
       });
@@ -288,7 +264,7 @@ export default function(): void {
       let expand: Expand;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridRow, ExpandTest, PROVIDERS);
+        context = this.create(ClrDatagridRow, ExpandTest, DATAGRID_SPEC_PROVIDERS);
         context.detectChanges();
         expand = context.getClarityProvider(Expand);
       });
@@ -439,7 +415,7 @@ export default function(): void {
       let hideableColumnService: HideableColumnService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridRow, HideShowTest, PROVIDERS);
+        context = this.create(ClrDatagridRow, HideShowTest, DATAGRID_SPEC_PROVIDERS);
         hideableColumnService = context.getClarityProvider(HideableColumnService);
       });
 

@@ -61,8 +61,9 @@
   a.label {
     //default
     $label-nudge-for-vertical-alignment: 1px;
-
-    @include clr-getTypePropertiesForDomElement(label_text, (font-size, font-weight, letter-spacing));
+    font-size: $clr-label-font-size;
+    font-weight: $clr-label-font-weight;
+    letter-spacing: $clr-label-letter-spacing;
 
     // line-height needed to be adjusted to force center alignment
     line-height: 0.458333rem;

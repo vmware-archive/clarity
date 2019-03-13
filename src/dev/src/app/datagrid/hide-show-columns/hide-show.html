@@ -12,11 +12,11 @@
 <button class="btn btn-outline-primary" (click)="conditionalSignpost = !conditionalSignpost">
     Toggle Signposts
 </button>
-<button class="btn btn-outline-primary" (click)="toggleDate()">
-    Toggle Date
+<button class="btn btn-outline-primary" (click)="shortFormat = !shortFormat">
+    Toggle Date Type
 </button>
 <clr-datagrid>
-    <clr-dg-column *ngIf="showId">
+    <clr-dg-column *ngIf="showId" [style.width.px]="100">
         <ng-container *clrDgHideableColumn>
             User ID
         </ng-container>
@@ -27,7 +27,7 @@
             Name
         </ng-container>
     </clr-dg-column>
-    <clr-dg-column *ngIf="showDate">
+    <clr-dg-column [style.width.px]="150">
         <ng-container *clrDgHideableColumn>
             Creation date
         </ng-container>
@@ -55,7 +55,8 @@
             </clr-signpost>
         </clr-dg-cell>
         <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell *ngIf="shortFormat">{{user.creation | date:'shortDate'}}</clr-dg-cell>
+        <clr-dg-cell *ngIf="!shortFormat">{{user.creation | date:'fullDate'}}</clr-dg-cell>
         <clr-dg-cell>
             {{user.pokemon.name}}
             <clr-signpost>

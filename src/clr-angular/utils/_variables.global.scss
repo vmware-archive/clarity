@@ -3,10 +3,12 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // App border radus
-$clr-default-borderradius: 0.125rem !default; // deprecated and will be removed.
+// @deprecated in 2.0 $clr-default prefix is being replaced by $clr-global prefix
+$clr-default-borderradius: 0.125rem !default;
 $clr-global-borderradius: $clr-default-borderradius !default;
 // App border width
-$clr-default-borderwidth: 1px !default; // deprecated and will be removed.
+// @deprecated in 2.0 $clr-default prefix is being replaced by $clr-global prefix
+$clr-default-borderwidth: 1px !default;
 $clr-global-borderwidth: $clr-default-borderwidth !default;
 
 $clr-baseline: 24px !default;

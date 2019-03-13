@@ -5,6 +5,27 @@
  */
 
 // Usage: ../layout/_login.clarity.scss
+$clr-login-title-color: $clr-h1-color !default;
+$clr-login-title-font-weight: $clr-h1-font-weight !default;
+$clr-login-title-font-family: $clr-h1-font-family !default;
+$clr-login-title-font-size: $clr-h1-font-size !default;
+$clr-login-title-letter-spacing: $clr-h1-letter-spacing !default;
+$clr-login-title-line-height: 1.5rem !default;
+
+$clr-login-trademark-color: $clr-h2-color !default;
+$clr-login-trademark-font-weight: $clr-h2-font-weight !default;
+$clr-login-trademark-font-family: $clr-h2-font-family !default;
+$clr-login-trademark-font-size: $clr-h2-font-size !default;
+$clr-login-trademark-letter-spacing: $clr-h2-letter-spacing !default;
+
+$clr-login-subtitle-color: $clr-h3-color !default;
+$clr-login-subtitle-font-weight: $clr-h3-font-weight !default;
+$clr-login-subtitle-font-family: $clr-h3-font-family !default;
+$clr-login-subtitle-font-size: $clr-h3-font-size !default;
+$clr-login-subtitle-letter-spacing: $clr-h3-letter-spacing !default;
+$clr-login-subtitle-line-height: 1.5rem !default;
+
+// Usage: ../layout/_login.clarity.scss
 $clr-login-background-color: $clr-global-app-background !default;
 $clr-login-width: 21rem !default;
 $clr-login-icon-size: $clr-icon-dimension-sm !default;

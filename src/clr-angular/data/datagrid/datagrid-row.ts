@@ -32,9 +32,10 @@ import { DisplayModeService } from './providers/display-mode.service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
 import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { SelectionType } from './enums/selection-type';
 
 let nbRow: number = 0;
 
@@ -166,6 +167,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
       const columnList = this.hideableColumnService.getColumns();
       if (cellList.length === columnList.length) {
         this.updateCellsForColumns(columnList);
+        this.dgCells.forEach(cell => {
+          this._scrollableCells.insert(cell._view);
+        });
       }
     });
 

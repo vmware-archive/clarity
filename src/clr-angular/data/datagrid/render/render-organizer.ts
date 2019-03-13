@@ -23,10 +23,7 @@ export class DatagridRenderOrganizer {
 
   private alreadySized = false;
 
-  public widths: { px: number; strict: boolean }[] = [];
-
   public resize() {
-    this.widths.length = 0;
     this._renderStep.next(DatagridRenderStep.CALCULATE_MODE_ON);
     if (this.alreadySized) {
       this._renderStep.next(DatagridRenderStep.CLEAR_WIDTHS);

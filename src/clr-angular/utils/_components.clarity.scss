@@ -43,9 +43,6 @@
 @import '../utils/bootstrap/close';
 @import '../utils/bootstrap/responsive-embed';
 
-// Clarity scss maps w/ overridable variables per component
-@import 'maps.clarity';
-
 //Reboot
 @import '../utils/reboot.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 

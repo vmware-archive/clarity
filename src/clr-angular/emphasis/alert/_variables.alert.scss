@@ -19,6 +19,11 @@ $clr-app-alert-close-icon-color: $clr-app-level-alert-color !default; // Color f
 $clr-app-alert-close-icon-opacity: 0.8 !default;
 $clr-app-alert-close-icon-hover-opacity: 1 !default;
 
+// TYPOGRAPHIC STYLES
+// Usage: ./_alert.clarity.scss
+$clr-alert-font-size: $clr-p3-font-size !default;
+$clr-alert-letter-spacing: $clr-p3-letter-spacing !default;
+
 // Dimensions & Layout
 // Usage: ./_alert.clarity.scss
 $clr-icon-margin-right: 0.25rem !default;

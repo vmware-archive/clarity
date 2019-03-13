@@ -3,13 +3,21 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../signpost/_signpost.clarity.scss
+$clr-signpost-content-bg-color: $clr-color-neutral-0 !default;
+// @deprecated in 2.0 $clr-signpost-innerBlock to be replaced by $clr-signpost-content-bg-color
+$clr-signpost-innerBlock: $clr-signpost-content-bg-color !default;
+
+$clr-signpost-content-border-color: $clr-color-neutral-500 !default;
+// @deprecated in 2.0 $clr-signpost-outerBorder to be replaced by $clr-signpost-content-border-color
+$clr-signpost-outerBorder: $clr-signpost-content-border-color !default;
+
 $clr-signpost-action-color: $clr-color-neutral-600 !default;
-$clr-signpost-outerBorder: $clr-color-neutral-500 !default;
-$clr-signpost-innerBlock: $clr-color-neutral-0 !default;
+$clr-signpost-action-hover-color: $clr-color-action-700 !default;
+
 $clr-signpost-border-size: 0.5rem;
+$clr-signpost-border-radius: $clr-default-borderradius !default;
+
 // TODO: should be able to theme the colors in these pointers...
 $clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-outerBorder;
 $clr-signpost-pointer-invisible-border: $clr-signpost-border-size solid transparent;
 $clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpost-innerBlock;
-$clr-signpost-action-hover-color: $clr-color-action-700 !default;
-$clr-signpost-border-radius: $clr-default-borderradius !default;

@@ -7,7 +7,6 @@ import {
   Component,
   ContentChild,
   EventEmitter,
-  HostBinding,
   Injector,
   Input,
   OnDestroy,
@@ -35,30 +34,34 @@ let nbCount: number = 0;
 @Component({
   selector: 'clr-dg-column',
   template: `
-        <div class="datagrid-column-flex">
-            <!-- I'm really not happy with that select since it's not very scalable -->
-            <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+      <div class="datagrid-column-flex">
+          <!-- I'm really not happy with that select since it's not very scalable -->
+          <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
 
-            <clr-dg-string-filter
-                    *ngIf="field && !customFilter"
-                    [clrDgStringFilter]="registered"
-                    [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+          <clr-dg-string-filter
+                  *ngIf="field && !customFilter"
+                  [clrDgStringFilter]="registered"
+                  [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
 
-            <ng-template #columnTitle>
-                <ng-content></ng-content>
-            </ng-template>
+          <ng-template #columnTitle>
+              <ng-content></ng-content>
+          </ng-template>
 
-            <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
-                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-            </button>
+          <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
+              <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+              <clr-icon
+                      *ngIf="sortIcon"
+                      [attr.shape]="sortIcon"
+                      class="sort-icon"></clr-icon>
+          </button>
 
-            <span class="datagrid-column-title" *ngIf="!sortable">
+          <span class="datagrid-column-title" *ngIf="!sortable">
                <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </span>
 
-            <clr-dg-column-separator></clr-dg-column-separator>
-        </div>
-    `,
+          <clr-dg-column-separator></clr-dg-column-separator>
+      </div>
+  `,
   host: {
     '[class.datagrid-column]': 'true',
     '[class.datagrid-column--hidden]': 'hidden',
@@ -75,6 +78,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
       if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
         this._sortOrder = ClrDatagridSortOrder.UNSORTED;
         this.sortOrderChange.emit(this._sortOrder);
+        // removes the sortIcon when column becomes unsorted
+        this.sortIcon = null;
       }
       // deprecated: to be removed - START
       if (this.sorted && sort.comparator !== this._sortBy) {
@@ -269,6 +274,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
 
     // setting the private variable to not retrigger the setter logic
     this._sortOrder = this._sort.reverse ? ClrDatagridSortOrder.DESC : ClrDatagridSortOrder.ASC;
+    // Sets the correct icon for current sort order
+    this.sortIcon = this._sortOrder === ClrDatagridSortOrder.DESC ? 'arrow down' : 'arrow';
     this.sortOrderChange.emit(this._sortOrder);
 
     // deprecated: to be removed - START
@@ -277,33 +284,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     // deprecated: to be removed - END
   }
 
-  /**
-   * Indicates if the column is currently sorted in ascending order
-   */
-  @HostBinding('class.asc')
-  public get asc() {
-    // deprecated: if condition to be removed - START
-    if (typeof this.sortOrder === 'undefined') {
-      return this.sorted && !this._sort.reverse;
-    } else {
-      return this.sortOrder === ClrDatagridSortOrder.ASC;
-    }
-    // deprecated: if condition to be removed - END
-  }
-
-  /**
-   * Indicates if the column is currently sorted in descending order
-   */
-  @HostBinding('class.desc')
-  public get desc() {
-    // deprecated: if condition to be removed - START
-    if (typeof this.sortOrder === 'undefined') {
-      return this.sorted && this._sort.reverse;
-    } else {
-      return this.sortOrder === ClrDatagridSortOrder.DESC;
-    }
-    // deprecated: if condition to be removed - END
-  }
+  public sortIcon;
 
   /**
    * A custom filter for this column that can be provided in the projected content

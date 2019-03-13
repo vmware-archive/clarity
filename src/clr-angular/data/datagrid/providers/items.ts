@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -178,7 +178,8 @@ export class Items<T = any> {
    * Extracts the current page from the sorted list
    */
   private _changePage() {
-    if (this.uninitialized) {
+    // If we know we have pagination but the page size hasn't been set yet, we wait for it.
+    if (this.uninitialized || (this._page.activated && this._page.size === 0)) {
       return;
     }
     if (this._page.size > 0) {

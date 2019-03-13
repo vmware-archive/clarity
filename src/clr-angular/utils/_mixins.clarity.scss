@@ -1,17 +1,6 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-
-//Generates styles for elements with different styles in different cases from its corresponding map
-@mixin clr-getStylesFromMap($element-map, $element) {
-  //Check if the element exists in the map
-  @if map-has-key($element-map, $element) {
-    $el-map: map-get($element-map, $element); //get the element style map
-    @each $key, $val in $el-map {
-      #{$key}: $val;
-    }
-  }
-}
 
 //Credit: Zurb Foundation for Apps https://github.com/zurb/foundation-apps/blob/master/scss/helpers/_functions.scss
 //Keep track of modules that have been imported, so we don't import more than once

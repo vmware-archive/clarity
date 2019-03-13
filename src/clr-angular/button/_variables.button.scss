@@ -5,27 +5,59 @@
 // General
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
 $clr-button-vertical-margin: 0.25rem !default;
+$clr-btn-vertical-margin: $clr-button-vertical-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // Usage: ../layout/_card.clarity.scss
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
 $clr-button-horizontal-margin: 0.5rem !default;
+$clr-btn-horizontal-margin: $clr-button-horizontal-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
 $clr-button-horizontal-padding: 0.5rem !default;
+$clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
 
-// Usage: ../utils/_maps.clarity.scss
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
 $clr-button-height: 1.5rem !default;
+$clr-btn-height: $clr-button-height !default;
+
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
 $clr-button-height-sm: 1rem !default;
-$clr-button-padding: 0 $clr-button-horizontal-padding !default;
+$clr-btn-height-sm: $clr-button-height-sm !default;
+
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-font-weight: $clr-font-weight-semibold !default;
+$clr-btn-font-weight: $clr-button-font-weight !default;
+
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-padding: 0 $clr-btn-horizontal-padding !default;
+$clr-btn-padding: $clr-button-padding !default;
 
 $clr-btn-border-radius: $clr-global-borderradius !default;
 $clr-btn-border-width: $clr-default-borderwidth !default;
 
+// standard appearance styles - overrideable but not advertised!
+$clr-btn-appearance-standard-line-height: calc(#{$clr-btn-height-sm} - 1px) !default;
+$clr-btn-appearance-standard-letter-spacing: 0.073em !default;
+$clr-btn-appearance-standard-font-size: 0.458333rem !default;
+$clr-btn-appearance-standard-font-weight: $clr-btn-font-weight !default;
+$clr-btn-appearance-standard-height: $clr-btn-height-sm !default;
+$clr-btn-appearance-standard-padding: $clr-btn-padding !default;
+
+// form-style button appearance styles - overrideable but not advertised!
+$clr-btn-appearance-form-line-height: $clr-btn-height !default;
+$clr-btn-appearance-form-letter-spacing: 0.12em !default;
+$clr-btn-appearance-form-font-size: 0.5rem !default;
+$clr-btn-appearance-form-font-weight: $clr-btn-font-weight !default;
+$clr-btn-appearance-form-height: $clr-btn-height !default;
+$clr-btn-appearance-form-padding: $clr-btn-padding !default;
+
 // Default button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-default-color: $clr-color-action-600 !default;
 $clr-btn-default-border-color: $clr-btn-default-color !default;
 $clr-btn-default-bg-color: transparent !default;
@@ -148,7 +180,6 @@ $clr-btn-default-outline-checked-bg-color: $clr-btn-default-outline-color !defau
 }
 
 // Primary button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-primary-color: $clr-color-neutral-0 !default;
 $clr-btn-primary-bg-color: $clr-color-action-600 !default;
 $clr-btn-primary-border-color: $clr-color-action-600 !default;
@@ -210,7 +241,6 @@ $clr-btn-primary-checked-color: $clr-color-neutral-0 !default;
 }
 
 // Success button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-success-color: $clr-color-neutral-0 !default;
 $clr-btn-success-bg-color: $clr-color-success-700 !default;
 $clr-btn-success-border-color: $clr-btn-success-bg-color !default;
@@ -272,7 +302,6 @@ $clr-btn-success-checked-color: $clr-btn-success-color !default;
 }
 
 // Success outline button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-success-outline-color: $clr-color-success-700 !default;
 $clr-btn-success-outline-bg-color: transparent !default;
 $clr-btn-success-outline-border-color: $clr-color-success-700 !default;
@@ -334,7 +363,6 @@ $clr-btn-success-outline-checked-color: $clr-color-neutral-0 !default;
 }
 
 // Danger button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-danger-color: $clr-color-neutral-0 !default;
 $clr-btn-danger-bg-color: $clr-color-danger-700 !default;
 $clr-btn-danger-border-color: $clr-btn-danger-bg-color !default;
@@ -396,7 +424,6 @@ $clr-btn-danger-checked-color: $clr-btn-danger-color !default;
 }
 
 // Danger outline button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-danger-outline-color: $clr-color-danger-700 !default;
 $clr-btn-danger-outline-bg-color: transparent !default;
 $clr-btn-danger-outline-border-color: $clr-color-danger-800 !default;
@@ -458,7 +485,6 @@ $clr-btn-danger-outline-checked-color: $clr-color-neutral-0 !default;
 }
 
 // Link button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-link-color: $clr-color-action-600 !default;
 $clr-btn-link-bg-color: transparent !default;
 $clr-btn-link-border-color: transparent !default;
@@ -519,7 +545,6 @@ $clr-btn-link-checked-color: $clr-color-action-800 !default;
 }
 
 // Inverse button colors
-// Usage: ../utils/_maps.clarity.scss
 $clr-btn-inverse-color: $clr-color-neutral-0 !default;
 $clr-btn-inverse-border-color: $clr-color-neutral-0 !default;
 $clr-btn-inverse-bg-color: transparent !default;
@@ -582,7 +607,8 @@ $clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
 
 // For theme-able icon button color
 $clr-btn-icon-disabled-color: $clr-btn-default-disabled-color !default;
-$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default; // DEPRECATED, see preferred naming convention above!
+// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
+$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default;
 
 @function lookupFromIconButtonColors($property: null) {
   @if $property == disabled-color {

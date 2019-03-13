@@ -16,9 +16,8 @@ import {
   QueryList,
   Renderer2,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { ClrDatagridColumn } from '../datagrid-column';
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { Items } from '../providers/items';
 import { Page } from '../providers/page';
@@ -28,6 +27,10 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { NoopDomAdapter } from './noop-dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
+import { ColumnsService } from '../providers/columns.service';
+import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { DatagridRowRenderer } from './row-renderer';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
@@ -53,7 +56,8 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     private domAdapter: DomAdapter,
     private el: ElementRef,
     private renderer: Renderer2,
-    private tableSizeService: TableSizeService
+    private tableSizeService: TableSizeService,
+    private columnsService: ColumnsService
   ) {
     this.subscriptions.push(
       this.organizer
@@ -71,15 +75,25 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     this.subscriptions.push(this.items.change.subscribe(() => (this.shouldStabilizeColumns = true)));
   }
 
-  @ContentChildren(DatagridHeaderRenderer) public headers: QueryList<DatagridHeaderRenderer>;
-  @ContentChildren(ClrDatagridColumn) public columns: QueryList<ClrDatagridColumn>;
+  @ContentChildren(DatagridHeaderRenderer) private headers: QueryList<DatagridHeaderRenderer>;
+  @ContentChildren(DatagridRowRenderer) private rows: QueryList<DatagridRowRenderer>;
 
   ngAfterContentInit() {
+    this.setupColumns();
+
     this.subscriptions.push(
       this.headers.changes.subscribe(() => {
         // TODO: only re-stabilize if a column was added or removed. Reordering is fine.
+        // Need to setup columns before stabalizing them
+        this.setupColumns();
         this.columnsSizesStable = false;
         this.stabilizeColumns();
+      })
+    );
+
+    this.subscriptions.push(
+      this.rows.changes.subscribe(() => {
+        this.rows.forEach(row => row.setupColumns());
       })
     );
   }
@@ -98,6 +112,16 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         this.computeDatagridHeight();
       });
     }
+  }
+
+  private setupColumns() {
+    this.headers.forEach((header, index) => {
+      // We want to get the initial state
+      this.columnsService.columns[index] = new BehaviorSubject<DatagridColumnState>(header.getColumnWidthState());
+      header.columnState = this.columnsService.columns[index];
+    });
+    this.columnsService.columns.splice(this.headers.length); // Trim any old columns
+    this.rows.forEach(row => row.setupColumns());
   }
 
   private _heightSet: boolean = false;
@@ -150,19 +174,21 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       // If all columns have strict widths, remove the strict width from the last column and make it the column's
       // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty
       // gap in the Datagrid.
+      const state: Partial<DatagridColumnState> = {
+        changes: [DatagridColumnChanges.WIDTH],
+        ...header.getColumnWidthState(),
+      };
 
-      if (!header.strictWidth) {
+      if (!state.strictWidth) {
         allStrict = false;
       }
 
       if (nbColumns === index + 1 && allStrict) {
-        delete header.strictWidth;
+        state.strictWidth = 0;
       }
 
-      this.organizer.widths[index] = { px: header.computeWidth(), strict: !!header.strictWidth };
+      this.columnsService.emitStateChange(index, state);
     });
-
-    this.headers.forEach((header, index) => header.setWidth(this.organizer.widths[index].px));
   }
 
   /**

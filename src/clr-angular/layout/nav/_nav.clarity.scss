@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -24,13 +24,16 @@
     }
 
     .nav-link {
-      @include clr-getTypePropertiesForDomElement(tab_text, (font-size, font-weight, letter-spacing));
+      color: $clr-nav-link-color;
+      font-size: $clr-nav-link-font-size;
+      font-weight: $clr-nav-link-font-weight;
+      letter-spacing: $clr-nav-link-letter-spacing;
+
+      line-height: $clr-subnav-height;
 
       display: inline-block;
-      color: $clr-nav-link-color;
       padding: 0 0.125rem;
       box-shadow: none;
-      line-height: $clr-subnav-height;
 
       //Clarity Buttons as .nav-links in .nav
       &.btn {
@@ -61,6 +64,7 @@
 
       &.active {
         color: $clr-nav-link-active-color;
+        font-weight: $clr-nav-link-active-font-weight;
       }
 
       // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem

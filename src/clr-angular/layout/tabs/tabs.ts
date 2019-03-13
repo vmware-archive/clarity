@@ -69,7 +69,7 @@ import { Subscription } from 'rxjs';
 export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
-  @Input('clrTabsLayout')
+  @Input('clrLayout')
   set layout(layout: TabsLayout) {
     if (Object.values(TabsLayout).includes(layout)) {
       this.tabsService.layout = layout;

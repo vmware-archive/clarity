@@ -6,7 +6,7 @@
 import { Component } from '@angular/core';
 
 const EXAMPLE = `
-<clr-tabs clrTabsLayout="vertical">
+<clr-tabs clrLayout="vertical">
     <clr-tab>
         <button clrTabLink id="link1">Tab1</button>
         <clr-tab-content id="content1" *clrIfActive>

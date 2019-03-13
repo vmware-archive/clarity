@@ -14,7 +14,7 @@ import { ClrTabs } from './tabs';
 
 @Component({
   template: `
-    <clr-tabs [clrTabsLayout]="layout">
+    <clr-tabs [clrLayout]="layout">
         <clr-tab #first>
             <button clrTabLink>Tab1</button>
             <clr-tab-content *clrIfActive>

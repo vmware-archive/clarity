@@ -10,10 +10,10 @@ import { By } from '@angular/platform-browser';
 import { ClrLayout } from './layout';
 import { LayoutService, Layouts } from './providers/layout.service';
 
-@Component({ template: `<div clrLayout="vertical"></div>`, providers: [LayoutService] })
+@Component({ template: `<div clrForm clrLayout="vertical"></div>`, providers: [LayoutService] })
 class VerticalTest {}
 
-@Component({ template: `<div clrLayout="invalid"></div>`, providers: [LayoutService] })
+@Component({ template: `<div clrForm clrLayout="invalid"></div>`, providers: [LayoutService] })
 class InvalidTest {}
 
 export default function(): void {

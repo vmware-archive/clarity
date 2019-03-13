@@ -3,11 +3,13 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @mixin common-tooltip-styles {
-  @include clr-getTypePropertiesForDomElement(tooltip_text, (font-size, font-weight, letter-spacing));
+  color: $clr-tooltip-color;
+  font-size: $clr-tooltip-font-size;
+  font-weight: $clr-tooltip-font-weight;
+  letter-spacing: $clr-tooltip-letter-spacing;
 
   background: $clr-tooltip-background-color;
-  border-radius: 0.125rem;
-  color: $clr-tooltip-font-color;
+  border-radius: $clr-tooltip-border-radius;
   line-height: 0.75rem;
   margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
   padding: 0.375rem 0.5rem;
@@ -175,16 +177,16 @@
     & > .btn + .tooltip-content,
     &.tooltip-top-right > .btn + .tooltip-content,
     &.tooltip-top-left > .btn + .tooltip-content {
-      margin-bottom: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
+      margin-bottom: $clr-tooltip-adjusted-margin - $clr-btn-vertical-margin;
     }
 
     &.tooltip-bottom-right > .btn + .tooltip-content,
     &.tooltip-bottom-left > .btn + .tooltip-content {
-      margin-top: $clr-tooltip-adjusted-margin - $clr-button-vertical-margin;
+      margin-top: $clr-tooltip-adjusted-margin - $clr-btn-vertical-margin;
     }
 
     &.tooltip-right > .btn + .tooltip-content {
-      margin-left: $clr-tooltip-adjusted-margin - $clr-button-horizontal-margin;
+      margin-left: $clr-tooltip-adjusted-margin - $clr-btn-horizontal-margin;
     }
   }
 

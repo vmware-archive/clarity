@@ -40,6 +40,14 @@ $clr-kerning-smalltext: null; // normal; // 14px-12px
 $clr-kerning-bigtext: null; // 0.01em; // some types of 16px over dark background
 $clr-kerning-tinytext: null; // 0.03em; // 11px and lower
 
+$clr-font-weight-light: null; // 200
+$clr-font-weight-regular: null; // 400
+$clr-font-weight-semibold: null; // 500
+$clr-font-weight-bold: null; // 600
+$clr-font-weight-extrabold: null; // 600
+
+// @deprecated in 2.0 $clr-font-weights could not be removed because it is public
+// in the overwrites file. it had to be deprecated first
 $clr-font-weights: null; // (light: 200, regular: 400, bold: 600);
 
 $clr-baseline: null; // 24px;
@@ -62,8 +70,15 @@ $clr-content-area-padding-bottom: null; // $clr-baseline*1;
 $clr-content-area-padding-left: null; // $clr-baseline*1;
 
 // Cards
-$clr-card-outer-margin: null; // $clr-baseline*0.75;
-$clr-card-inner-margin: null; // $clr-baseline*0.5;
+$clr-card-bg-color: null; // $clr-color-neutral-0
+$clr-card-border-color: null; // $clr-color-neutral-200
+$clr-card-box-shadow: null; // 0 0.125rem 0 0 rgba(215, 215, 215, 1)
+$clr-card-border: null; // $clr-default-borderwidth solid rgba(215, 215, 215, 1)
+$clr-card-divider-color: null; // $clr-color-neutral-200
+$clr-card-text-font-size: null; // $clr-p1-font-size
+$clr-card-title-color: null; // $clr-h4-color
+$clr-card-title-font-size: null; // $clr-h4-font-size
+$clr-card-title-font-weight: null; // $clr-h4-font-weight
 
 // Modal
 $clr-modal-content-padding-top: null; // $clr-baseline*1;
@@ -82,8 +97,8 @@ $clr-default-borderradius: null; // $clr-baseline*0.125;
 $clr-default-borderwidth: null; // 1px
 
 // Buttons
-$clr-button-vertical-margin: null; // $clr-baseline*0.25;
-$clr-button-horizontal-margin: null; // $clr-baseline*0.5;
+$clr-btn-vertical-margin: null; // $clr-baseline*0.25;
+$clr-btn-horizontal-margin: null; // $clr-baseline*0.5;
 
 // Icons
 $clr-icon-dimension-sm: null; // 16/$clr-rem-denominator*$clr-font-size;
@@ -481,10 +496,11 @@ $clr-forms-radio-disabled-mark-color: null; // $clr-forms-checkbox-disabled-mark
 /* Overwrite the default variable assignments in _buttons.clarity.scss here:      */
 /*================================================================================*/
 
-$clr-button-horizontal-padding: null; // $clr-baseline*0.5;
-$clr-button-height: null; // $clr-baseline*1.5;
-$clr-button-height-sm: null; // $clr-baseline;
-$clr-button-padding: null; // 0 $clr-button-horizontal-padding;
+$clr-btn-font-weight: null; // $clr-font-weight-semibold
+$clr-btn-horizontal-padding: null; // $clr-baseline*0.5;
+$clr-btn-height: null; // $clr-baseline*1.5;
+$clr-btn-height-sm: null; // $clr-baseline;
+$clr-btn-padding: null; // 0 $clr-btn-horizontal-padding;
 $clr-btn-border-radius: null; // $clr-global-borderradius
 $clr-btn-border-width: null; // $clr-default-borderwidth
 
@@ -742,7 +758,7 @@ $clr-dropdown-caret-icon-dimension: null; // 0.416667rem
 $clr-dropdown-active-text-color: null; // $clr-color-neutral-1000
 $clr-dropdown-bg-color: null; // $clr-color-neutral-0
 $clr-dropdown-text-color: null; // $clr-color-neutral-700
-$clr-dropdown-item-text-color: null; // $clr-color-neutral-700
+$clr-dropdown-item-color: null; // $clr-color-neutral-700
 $clr-dropdown-border-color: null; // $clr-color-neutral-400
 $clr-dropdown-divider-color: null; // $clr-color-neutral-200
 $clr-dropdown-child-border-color: null; // $clr-color-neutral-500
@@ -755,9 +771,9 @@ $clr-dropdown-header-color: null; // $clr-color-neutral-900
 /* Overwrite the default variable assignments in _signposts.clarity.scss here:        */
 /*================================================================================*/
 
+$clr-signpost-content-bg-color: null; // $clr-color-neutral-0
+$clr-signpost-content-border-color: null; // $clr-color-neutral-500
 $clr-signpost-action-color: null; // $clr-color-neutral-600
-$clr-signpost-outerBorder: null; // $clr-color-neutral-500
-$clr-signpost-innerBlock: null; // $clr-color-neutral-0
 $clr-signpost-action-hover-color: null; // $clr-color-action-700
 $clr-signpost-border-radius: null; // $clr-default-borderradius
 

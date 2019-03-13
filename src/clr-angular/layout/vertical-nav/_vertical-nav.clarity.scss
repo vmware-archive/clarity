@@ -209,7 +209,9 @@
       padding: 0 $clr-vertical-nav-link-padding-right 0 $clr-vertical-nav-link-padding-left;
 
       //Others
-      @include clr-getTypePropertiesForDomElement(vertical_nav_header, (font-size, font-weight, letter-spacing));
+      font-size: $clr-vertical-nav-header-font-size;
+      font-weight: $clr-vertical-nav-header-font-weight;
+      letter-spacing: $clr-vertical-nav-header-letter-spacing;
       line-height: $clr-vertical-nav-item-height;
     }
 

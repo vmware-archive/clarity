@@ -7,15 +7,22 @@ $clr-label-padding-top-bottom: 0.125rem !default;
 $clr-label-padding-left-right: 0.5rem !default;
 $clr-label-borderwidth: $clr-default-borderwidth !default;
 
+// COLOR
 // Usage:
 // - ./_labels.clarity.scss
-// - ../utils/_maps.clarity.scss
 $clr-label-font-color-light: $clr-color-neutral-700 !default;
 $clr-label-font-color-dark: $clr-color-neutral-1000 !default;
 // TWO DEPRECATED VARS BELOW
 $clr-label-font-color: $clr-label-font-color-light !default;
 $clr-label-font-color-contrast: $clr-label-font-color-dark !default;
 $clr-label-default-border-color: $clr-color-neutral-600 !default;
+
+// TYPOGRAPHIC STYLES
+// Usage:
+// - ./_labels.clarity.scss
+$clr-label-font-size: $clr-p7-font-size !default;
+$clr-label-font-weight: $clr-p7-font-weight !default;
+$clr-label-letter-spacing: $clr-p7-letter-spacing !default;
 
 // Usage: ./_labels.clarity.scss
 $clr-label-bg-hover-color: $clr-color-neutral-200 !default;

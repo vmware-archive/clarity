@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -23,17 +23,19 @@
       width: $clr-login-width;
 
       .title {
-        @include clr-getTypePropertiesForDomElement(
-          login_productName,
-          (color, font-weight, font-family, font-size, letter-spacing)
-        );
-        line-height: 1.5rem;
+        color: $clr-login-title-color;
+        font-weight: $clr-login-title-font-weight;
+        font-family: $clr-login-title-font-family;
+        font-size: $clr-login-title-font-size;
+        letter-spacing: $clr-login-title-letter-spacing;
+        line-height: $clr-login-title-line-height;
 
         .welcome {
-          line-height: 1.5rem;
+          line-height: $clr-login-title-line-height;
         }
+
         .hint {
-          @include clr-getTypePropertiesForDomElement(login_productName, (color));
+          color: $clr-login-title-color;
           margin-top: 1.25rem;
           font-size: 0.5833rem;
         }
@@ -41,19 +43,21 @@
 
       // @TODO Is this used?
       .trademark {
-        @include clr-getTypePropertiesForDomElement(
-          login_trademark,
-          (color, font-weight, font-family, font-size, letter-spacing)
-        );
+        color: $clr-login-trademark-color;
+        font-weight: $clr-login-trademark-font-weight;
+        font-family: $clr-login-trademark-font-family;
+        font-size: $clr-login-trademark-font-size;
+        letter-spacing: $clr-login-trademark-letter-spacing;
       }
 
       // @TODO Is this used?
       .subtitle {
-        @include clr-getTypePropertiesForDomElement(
-          login_subtitle,
-          (color, font-weight, font-family, font-size, letter-spacing)
-        );
-        line-height: 1.5rem;
+        color: $clr-login-subtitle-color;
+        font-weight: $clr-login-subtitle-font-weight;
+        font-family: $clr-login-subtitle-font-family;
+        font-size: $clr-login-subtitle-font-size;
+        letter-spacing: $clr-login-subtitle-letter-spacing;
+        line-height: $clr-login-subtitle-line-height;
       }
 
       .login-group {

@@ -2,9 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// Usages: ./layout/_card.clarity.scss
-$card-text-fontsize: clr-getTypePropertyValueForDomElement(card_text, font-size);
-
 // Usages: ../layout/_card.clarity.scss
 // Usages: ../progress/progress-bars/_progress-bars.scss
 $card-children-padding-vertical: 0.5rem !default;
@@ -17,3 +14,14 @@ $clr-card-border-color: $clr-color-neutral-200 !default;
 $clr-card-box-shadow: 0 0.125rem 0 0 rgba(215, 215, 215, 1) !default;
 $clr-card-border: $clr-default-borderwidth solid rgba(215, 215, 215, 1) !default;
 $clr-card-divider-color: $clr-color-neutral-200 !default;
+
+// TYPOGRAPHY
+// Usage: ../layout/_card.clarity.scss
+// @deprecated in 2.0 $card-text-fontsize to be replaced by $clr-card-text-font-size
+$card-text-fontsize: $clr-p1-font-size !default;
+$clr-card-text-font-size: $card-text-fontsize !default;
+
+$clr-card-title-color: $clr-h4-color !default;
+$clr-card-title-font-size: $clr-h4-font-size !default;
+$clr-card-title-font-weight: $clr-h4-font-weight !default;
+$clr-card-title-letter-spacing: $clr-h4-letter-spacing !default;

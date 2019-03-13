@@ -6,7 +6,6 @@
 $clr-stack-view-border-width: $clr-default-borderwidth !default;
 $clr-stack-view-border-radius: $clr-global-borderradius !default;
 $clr-stack-view-border-color: $clr-color-neutral-400 !default; // Border for stack view container
-$clr-stack-font-weight: clr-getTypePropertyValueForDomElement(stackview_text, font-weight);
 $clr-stack-view-bg-color: $clr-color-neutral-50 !default;
 $clr-stack-view-stack-block-border-bottom: $clr-color-neutral-300 !default;
 //border-bottom for stack-view rows (not last)
@@ -18,10 +17,25 @@ $clr-stack-view-stack-children-stack-block-border-bottom-color: $clr-color-neutr
 // children of an expanded row
 $clr-stack-view-stack-children-stack-block-label-and-content-bg-color: $clr-color-neutral-0 !default;
 // children of an expanded row
-$clr-stack-view-stack-block-label-text-color: $clr-color-neutral-900 !default;
 $clr-stack-view-stack-block-expanded-bg-color: $clr-global-selection-color !default;
 $clr-stack-view-stack-block-expandable-hover: $clr-color-neutral-200 !default;
 $clr-stack-view-stack-block-content-text-color: inherit !default;
 $clr-stack-view-stack-block-expanded-text-color: $clr-color-neutral-1000 !default;
 $clr-stack-view-stack-block-caret-color: $clr-color-neutral-500 !default;
 $styledInputs: inputs('text', 'password', 'number', 'email', 'url', 'tel', 'date', 'time', 'datetime-local');
+
+$clr-stack-view-font-weight: $clr-p3-font-weight !default;
+// @deprecated in 2.0 $clr-stack prefix to be replaced by $clr-stack-view
+$clr-stack-font-weight: $clr-stack-view-font-weight;
+
+$clr-stack-view-color: $clr-p3-color !default;
+$clr-stack-view-font-size: $clr-p3-font-size !default;
+$clr-stack-view-font-weight: $clr-p3-font-weight !default;
+$clr-stack-view-line-height: $clr-p3-line-height !default;
+$clr-stack-view-letter-spacing: $clr-p3-letter-spacing !default;
+
+$clr-stack-view-stack-block-label-text-color: $clr-color-neutral-900 !default;
+$clr-stack-view-stack-block-label-font-size: $clr-p2-font-size !default;
+$clr-stack-view-stack-block-label-font-weight: $clr-p2-font-weight !default;
+$clr-stack-view-stack-block-label-line-height: $clr-p2-line-height !default;
+$clr-stack-view-stack-block-label-letter-spacing: $clr-p2-letter-spacing !default;

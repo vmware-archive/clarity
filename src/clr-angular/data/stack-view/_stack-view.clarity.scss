@@ -36,10 +36,12 @@
   }
 
   .stack-view {
-    @include clr-getTypePropertiesForDomElement(
-      stackview_text,
-      (color, font-size, font-weight, line-height, letter-spacing)
-    );
+    color: $clr-stack-view-color;
+    font-size: $clr-stack-view-font-size;
+    font-weight: $clr-stack-view-font-weight;
+    line-height: $clr-stack-view-line-height;
+    letter-spacing: $clr-stack-view-letter-spacing;
+
     margin-top: 0;
     border: $clr-stack-view-border-width solid $clr-stack-view-border-color;
     border-radius: $clr-stack-view-border-radius;
@@ -101,11 +103,11 @@
     }
 
     .stack-block-label {
-      @include clr-getTypePropertiesForDomElement(
-        stackview_header,
-        (font-size, font-weight, line-height, letter-spacing)
-      );
       color: $clr-stack-view-stack-block-label-text-color;
+      font-size: $clr-stack-view-stack-block-label-font-size;
+      font-weight: $clr-stack-view-stack-block-label-font-weight;
+      line-height: $clr-stack-view-stack-block-label-line-height;
+      letter-spacing: $clr-stack-view-stack-block-label-letter-spacing;
 
       // We're doing a non-flexible item.
       // It's just easier to align and stretch everything vertically this way than with

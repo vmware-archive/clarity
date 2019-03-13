@@ -31,6 +31,7 @@
 //Global
 @import '../color/variables.color';
 @import '../utils/variables.global';
+@import '../typography/variables.typography';
 // END Global
 
 // Alert
@@ -142,6 +143,4 @@
 // Tooltip
 @import '../popover/tooltip/variables.tooltip';
 
-// Typography
-@import '../typography/variables.typography';
 // End Typography

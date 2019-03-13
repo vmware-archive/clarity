@@ -109,10 +109,8 @@ $clr-link-visited-color: #9aa8e2;
   * of the alert types.
   *
   * There are seven types of alert and we set the background-color and font color for each here.
-  * Usage: ./_maps.clarity.scss
   */
 
-$clr-alert-app-disabled-color: #6d7884;
 $clr-theme-alert-font-color: #e9ecef;
 $clr-theme-app-alert-font-color: #000;
 
@@ -179,7 +177,6 @@ $clr-app-alert-close-icon-color: #000;
   * Here you can set the background-color and font color(s) for the various badge types.
   * There are five color options and four status types a Clarity label may have.
   *
-  * Usage: ./_maps.clarity.scss
   */
 $clr-badge-font-color-light: #000;
 $clr-badge-font-color-dark: #000;
@@ -215,7 +212,6 @@ $clr-badge-light-blue-bg-color: #89cbdf;
   *
   *  NOTE: these variables also affect button groups.
   *
-  * Usage: ./_maps.clarity.scss
   */
 
 // Use these to control the disabled appearance for all buttons.
@@ -225,7 +221,7 @@ $clr-btn-disabled-bg-color: #fff;
 $clr-btn-disabled-border-color: #fff;
 
 // Disabled icon color
-$clr-button-icon-disabled-color: $clr-btn-outline-disabled-font-color;
+$clr-btn-icon-disabled-color: $clr-btn-outline-disabled-font-color;
 
 // Default button
 $clr-btn-default-color: #49afd9; // border-color, color, checked-background-color
@@ -334,7 +330,6 @@ $clr-btn-inverse-disabled-border-color: $clr-btn-disabled-border-color; // disab
   * Usage: ../layout/_card.clarity.scss
   */
 $clr-card-bg-color: #22343c;
-$clr-card-block-color: #adbbc4;
 $clr-card-border-color: #0f171c;
 $clr-card-title-color: #e9ecef;
 $clr-card-box-shadow: 0 3px 0 0 $clr-card-border-color;
@@ -377,7 +372,6 @@ $clr-dropdown-border-color: #000;
 $clr-dropdown-child-border-color: #000;
 $clr-dropdown-bg-active-color: $clr-global-selection-color;
 $clr-dropdown-bg-hover-color: $clr-global-hover-bg-color;
-$clr-dropdown-font-color: #adbbc4;
 $clr-dropdown-selection-color: #324f61;
 $clr-dropdown-box-shadow: $clr-popover-box-shadow-color;
 $clr-dropdown-divider-color: $clr-dropdown-border-color;
@@ -433,6 +427,7 @@ $clr-radio-disabled-checked-box-shadow: inset 0 0 0 0.25rem #8f9ba3; //backgroun
 $clr-form-text-color: #fff;
 $clr-form-field-border-color: #adbbc4;
 $clr-forms-input-invalid-color: #f54f47;
+$clr-forms-input-on-invalid-color: $clr-theme-app-alert-font-color;
 $clr-forms-input-invalid-icon-color: $clr-forms-input-invalid-color;
 $clr-form-disabled-background-color: #000;
 
@@ -554,7 +549,6 @@ $clr-header-6-bg-color: #0f171c;
   *
   * There are five color options and four status types a Clarity label may have.
  
-  * Usage: ./_maps.clarity.scss
   */
 $clr-label-font-color: #fff;
 $clr-label-font-color-contrast: #000;
@@ -660,16 +654,12 @@ $clr-progress-bgColor: #324650;
   */
 $clr-signpost-action-color: #e9ecef;
 $clr-signpost-action-hover-color: #49afd9;
-$clr-signpost-outerBorder: #000;
-$clr-signpost-innerBlock: #22343c;
 $clr-signpost-content-bg-color: #22343c;
 $clr-signpost-content-border-color: #000;
-$clr-signpost-outerBorder: #000;
-$clr-signpost-innerBlock: #22343c;
 $clr-signpost-border-size: 0.5rem;
-$clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-outerBorder;
+$clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-content-border-color;
 $clr-signpost-pointer-invisible-border: $clr-signpost-border-size solid transparent;
-$clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpost-innerBlock;
+$clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpost-content-bg-color;
 
 // END Signpost overrides
 
@@ -771,24 +761,24 @@ $clr-tree-node-caret-color: #adbbc4;
   * - ../typography/_typography.clarity.scss
   * - ../data/datagrid/_datagrid.clarity.scss
   */
-$clr-app-font-color-primary: #e9ecef;
-$clr-app-font-color-secondary: #adbbc4;
+$clr-global-font-color: #e9ecef;
+$clr-global-font-color-secondary: #adbbc4;
 
-$clr-h1-color: $clr-app-font-color-primary;
-$clr-h2-color: $clr-app-font-color-primary;
-$clr-h3-color: $clr-app-font-color-primary;
-$clr-h4-color: $clr-app-font-color-primary;
-$clr-h5-color: $clr-app-font-color-primary;
-$clr-h6-color: $clr-app-font-color-secondary;
+$clr-h1-color: $clr-global-font-color;
+$clr-h2-color: $clr-global-font-color;
+$clr-h3-color: $clr-global-font-color;
+$clr-h4-color: $clr-global-font-color;
+$clr-h5-color: $clr-global-font-color;
+$clr-h6-color: $clr-global-font-color-secondary;
 
-$clr-p1-color: $clr-app-font-color-secondary;
-$clr-p2-color: $clr-app-font-color-secondary;
-$clr-p3-color: $clr-app-font-color-secondary;
-$clr-p4-color: $clr-app-font-color-primary;
-$clr-p5-color: $clr-app-font-color-primary;
-$clr-p6-color: $clr-app-font-color-primary;
-$clr-p7-color: $clr-app-font-color-primary;
-$clr-p8-color: $clr-app-font-color-primary;
+$clr-p1-color: $clr-global-font-color-secondary;
+$clr-p2-color: $clr-global-font-color-secondary;
+$clr-p3-color: $clr-global-font-color-secondary;
+$clr-p4-color: $clr-global-font-color;
+$clr-p5-color: $clr-global-font-color;
+$clr-p6-color: $clr-global-font-color;
+$clr-p7-color: $clr-global-font-color;
+$clr-p8-color: $clr-global-font-color;
 
 /**********
   * Vertical Nav

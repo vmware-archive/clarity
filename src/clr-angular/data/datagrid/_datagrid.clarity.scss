@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -127,14 +127,15 @@
       }
 
       .action-item {
-        @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+        color: $clr-dropdown-text-color;
+        font-size: $clr-dropdown-font-size;
+        letter-spacing: $clr-dropdown-letter-spacing;
 
         background: transparent;
         border: 0;
-        color: $clr-app-font-color-primary;
         cursor: pointer;
         display: block;
-        line-height: calc(#{clr-getTypePropertyValueForDomElement(dropdown_text, line-height)} - #{$clr-rem-1px});
+        line-height: calc(#{$clr-dropdown-line-height} - #{$clr-rem-1px});
         margin: 0;
         padding: 1px 1rem 0;
         text-align: left;
@@ -545,9 +546,8 @@
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
-        justify-content: center;
-        font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
-        color: $clr-color-neutral-500;
+        font-size: $clr-datagrid-placeholder-font-size;
+        color: $clr-datagrid-placeholder-color;
       }
 
       .datagrid-placeholder-image {
@@ -602,7 +602,7 @@
     padding: 0 $clr-table-cellpadding;
     // Account for borders
     line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
-    font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
+    font-size: $clr-thead-font-size;
     background-color: $clr-thead-bgcolor;
     border: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
     border-top: none;
@@ -685,8 +685,8 @@
         .switch-header {
           display: flex;
           justify-content: space-between;
-          font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
-          font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
+          font-weight: 400;
+          font-size: 0.666667rem;
           padding-bottom: 0.5rem;
           line-height: 1rem;
 

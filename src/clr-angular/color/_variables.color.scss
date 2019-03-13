@@ -160,9 +160,9 @@ $clr-color-on-success-800: $clr-color-neutral-0 !default;
 $clr-color-on-success-900: $clr-color-neutral-0 !default;
 $clr-color-on-success-1000: $clr-color-neutral-0 !default;
 
-// DEPRECATED COLOR VARIABLES
-// Old naming style that was coupled with the color
-
+// @deprecated in 2.0
+// Old naming convention that was tied to specific colors  is being replaced by
+// a utility based naming convention.
 $clr-white: $clr-color-neutral-0 !default;
 $clr-near-white: $clr-color-neutral-50 !default;
 $clr-light-gray: $clr-color-neutral-200 !default;

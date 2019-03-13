@@ -12,14 +12,34 @@ $clr-dropdown-caret-icon-dimension: 0.416667rem !default;
 $clr-dropdown-active-text-color: $clr-color-neutral-1000 !default;
 $clr-dropdown-caret-left-margin: 0.083333rem !default;
 $clr-dropdown-bg-color: $clr-color-neutral-0 !default;
-$clr-dropdown-text-color: $clr-color-neutral-700 !default;
-$clr-dropdown-item-text-color: $clr-color-neutral-700 !default;
 $clr-dropdown-border-color: $clr-color-neutral-400 !default;
 $clr-dropdown-divider-color: $clr-color-neutral-200 !default;
 $clr-dropdown-child-border-color: $clr-color-neutral-500 !default;
 $clr-dropdown-bg-hover-color: $clr-global-hover-color !default;
 $clr-dropdown-selection-color: $clr-global-selection-color !default;
 $clr-dropdown-box-shadow: $clr-popover-box-shadow-color !default;
+
+// Usage:  ../data/datagrid/_datagrid.clarity.scss
+// Usage:  ../emphasis/alert/_alert.clarity.scss
+$clr-dropdown-text-color: $clr-p1-color !default;
+$clr-dropdown-font-size: $clr-p1-font-size !default;
+$clr-dropdown-letter-spacing: $clr-p1-letter-spacing !default;
+$clr-dropdown-line-height: $clr-p1-line-height !default;
+
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+// Dropdown Header
 $clr-dropdown-header-color: $clr-color-neutral-900 !default;
+$clr-dropdown-header-font-size: $clr-p4-font-size !default;
+$clr-dropdown-header-font-weight: $clr-p4-font-weight !default;
+$clr-dropdown-header-letter-spacing: $clr-p4-letter-spacing !default;
+
+// Usage: ../popover/dropdown/_menu-mixins.clarity.scss
+// Dropdown Item
+$clr-dropdown-item-color: $clr-color-neutral-700 !default;
+// @deprecated in 2.0 $clr-dropdown-item-text-color to be replaced by $clr-dropdown-item-color
+$clr-dropdown-item-text-color: $clr-dropdown-item-color !default;
+$clr-dropdown-item-font-size: $clr-p1-font-size !default;
+$clr-dropdown-item-font-weight: $clr-p1-font-weight !default;
+$clr-dropdown-item-letter-spacing: $clr-p1-letter-spacing !default;
 $clr-dropdown-item-height: 1.25rem !default;
 $clr-dropdown-item-height-sm: 1.5rem !default;

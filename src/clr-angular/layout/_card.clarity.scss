@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -79,7 +79,7 @@
     //Bootstrap 4 List Groups
     // @deprecated Bootstrap dependencies are deprecated since 1.0. Review and edit if necessary before 2.0.
     .list-group-item {
-      font-size: $card-text-fontsize;
+      font-size: $clr-card-text-font-size;
       background-color: $clr-card-bg-color;
       border-left-width: 0;
       border-right-width: 0;
@@ -111,11 +111,14 @@
 
   .card-header,
   .card-title {
-    @include clr-getTypePropertiesForDomElement(card_title, (color, font-size, font-weight, letter-spacing));
+    color: $clr-card-title-color;
+    font-size: $clr-card-title-font-size;
+    font-weight: $clr-card-title-font-weight;
+    letter-spacing: $clr-card-title-letter-spacing;
   }
 
   .card-text {
-    font-size: $card-text-fontsize;
+    font-size: $clr-card-text-font-size;
   }
 
   //Images
@@ -147,7 +150,7 @@
     .btn,
     .btn.btn-link,
     .card-link {
-      margin: 0 $clr-button-horizontal-margin 0 0;
+      margin: 0 $clr-btn-horizontal-margin 0 0;
     }
 
     //Need this level of nesting for now.
@@ -196,13 +199,13 @@
     display: flex;
 
     .card-media-image {
-      $card-media-image-size: 2.5rem;
+      $clr-card-media-image-size: 2.5rem;
       display: inline-block; //to make sure IE10 respects the max-height and max-width
       flex: 0 0 auto;
-      height: $card-media-image-size;
-      width: $card-media-image-size;
-      max-height: $card-media-image-size;
-      max-width: $card-media-image-size;
+      height: $clr-card-media-image-size;
+      width: $clr-card-media-image-size;
+      max-height: $clr-card-media-image-size;
+      max-width: $clr-card-media-image-size;
     }
 
     .card-media-description {

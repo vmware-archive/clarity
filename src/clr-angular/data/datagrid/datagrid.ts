@@ -27,11 +27,9 @@ import { ClrDatagridPlaceholder } from './datagrid-placeholder';
 import { ClrDatagridRow } from './datagrid-row';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { ClrDatagridStateInterface } from './interfaces/state.interface';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { DisplayModeService } from './providers/display-mode.service';
 import { FiltersProvider } from './providers/filters';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
 import { Page } from './providers/page';
 import { RowActionService } from './providers/row-action-service';
@@ -57,10 +55,8 @@ import { ColumnsService } from './providers/columns.service';
     DatagridRenderOrganizer,
     RowActionService,
     ExpandableRowsCount,
-    HideableColumnService,
     StateDebouncer,
     StateProvider,
-    ColumnToggleButtonsService,
     TableSizeService,
     ColumnsService,
     DisplayModeService,
@@ -69,7 +65,6 @@ import { ColumnsService } from './providers/columns.service';
 })
 export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
   constructor(
-    private columnService: HideableColumnService,
     private organizer: DatagridRenderOrganizer,
     public items: Items<T>,
     public expandableRows: ExpandableRowsCount,
@@ -210,15 +205,6 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         });
       })
     );
-
-    this._subscriptions.push(
-      this.columns.changes.subscribe((columns: ClrDatagridColumn<T>[]) => {
-        this.columnService.updateColumnList(this.columns.map(col => col.hideable));
-      })
-    );
-
-    // Get ColumnService ready for HideableColumns.
-    this.columnService.updateColumnList(this.columns.map(col => col.hideable));
   }
 
   /**

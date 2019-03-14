@@ -44,7 +44,6 @@ export default function(): void {
       expect(stepsRecieved).toEqual([
         DatagridRenderStep.CALCULATE_MODE_ON,
         DatagridRenderStep.CLEAR_WIDTHS,
-        DatagridRenderStep.DETECT_STRICT_WIDTHS,
         DatagridRenderStep.COMPUTE_COLUMN_WIDTHS,
         DatagridRenderStep.ALIGN_COLUMNS,
         DatagridRenderStep.CALCULATE_MODE_OFF,

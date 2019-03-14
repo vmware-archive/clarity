@@ -16,6 +16,7 @@ import { Sort } from './sort';
 import { StateDebouncer } from './state-debouncer.provider';
 import { TableSizeService } from './table-size.service';
 import { ClrDatagridModule } from '../datagrid.module';
+import { ColumnsService } from './columns.service';
 
 @Component({
   template: `
@@ -40,7 +41,15 @@ interface TestContext {
   table: HTMLElement;
 }
 
-const PROVIDERS_NEEDED = [Sort, FiltersProvider, DatagridRenderOrganizer, DomAdapter, Page, StateDebouncer];
+const PROVIDERS_NEEDED = [
+  Sort,
+  FiltersProvider,
+  DatagridRenderOrganizer,
+  DomAdapter,
+  Page,
+  StateDebouncer,
+  ColumnsService,
+];
 
 export default function(): void {
   describe('TableSizeService', function() {

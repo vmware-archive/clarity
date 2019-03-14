@@ -9,3 +9,4 @@
 export const NO_LAYOUT_CLASS = 'datagrid-no-layout';
 export const COMPUTE_WIDTH_CLASS = 'datagrid-computing-columns-width';
 export const STRICT_WIDTH_CLASS = 'datagrid-fixed-width';
+export const HIDDEN_COLUMN_CLASS = 'datagrid-hidden-column';

@@ -18,14 +18,12 @@ import { DisplayModeService } from '../providers/display-mode.service';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
 import { Page } from '../providers/page';
 import { ExpandableRowsCount } from '../providers/global-expandable-rows';
-import { HideableColumnService } from '../providers/hideable-column.service';
 import { Selection } from '../providers/selection';
 import { RowActionService } from '../providers/row-action-service';
 import { FiltersProvider } from '../providers/filters';
 import { Sort } from '../providers/sort';
 import { Items } from '../providers/items';
 import { TableSizeService } from '../providers/table-size.service';
-import { ColumnToggleButtonsService } from '../providers/column-toggle-buttons.service';
 import { StateProvider } from '../providers/state.provider';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { ClrDatagridColumn } from '../datagrid-column';
@@ -45,10 +43,8 @@ const PROVIDERS = [
   },
   RowActionService,
   ExpandableRowsCount,
-  HideableColumnService,
   StateDebouncer,
   StateProvider,
-  ColumnToggleButtonsService,
   TableSizeService,
   DomAdapter,
 ];
@@ -59,14 +55,14 @@ export default function(): void {
       let context: TestContext<DatagridMainRenderer<number>, StaticTest>;
       let organizer: MockDatagridRenderOrganizer;
       let resizeSpy: jasmine.Spy;
-      let computeWidthSpy: jasmine.Spy;
+      let computeStateSpy: jasmine.Spy;
       let columnsService: ColumnsService;
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
         context = this.createWithOverride(DatagridMainRenderer, StaticTest, [], [], PROVIDERS);
         organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-        computeWidthSpy = spyOn(DatagridHeaderRenderer.prototype, 'getColumnWidthState');
+        computeStateSpy = spyOn(DatagridHeaderRenderer.prototype, 'getColumnWidthState');
         columnsService = context.getClarityProvider(ColumnsService);
       });
 
@@ -107,10 +103,10 @@ export default function(): void {
       });
 
       it('computes the widths of the columns when notified', function() {
-        expect(computeWidthSpy.calls.count()).toBe(0);
+        expect(computeStateSpy.calls.count()).toBe(0);
         // Too lazy to do something other than casting right now.
         organizer.updateRenderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
-        expect(computeWidthSpy.calls.count()).toBe(
+        expect(computeStateSpy.calls.count()).toBe(
           context.fixture.debugElement.queryAll(By.directive(ClrDatagridColumn)).length
         );
       });
@@ -128,7 +124,7 @@ export default function(): void {
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
-        rowsSpy = spyOn(DatagridRowRenderer.prototype, 'setColumnStates');
+        rowsSpy = spyOn(DatagridRowRenderer.prototype, 'setColumnState');
         context = this.create(DatagridMainRenderer, DynamicTest);
       });
 

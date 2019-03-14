@@ -10,5 +10,4 @@ export enum DatagridRenderStep {
   CALCULATE_MODE_OFF,
   CLEAR_WIDTHS, // Note this is listened to by both cells and columns
   COMPUTE_COLUMN_WIDTHS,
-  DETECT_STRICT_WIDTHS,
 }

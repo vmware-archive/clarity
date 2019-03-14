@@ -239,7 +239,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(columnService: HideableColumnService, organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -262,26 +262,20 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     toggle(event: any): void;
 }
 
-export declare class ClrDatagridCell implements OnInit, OnDestroy {
+export declare class ClrDatagridCell implements OnInit {
     readonly _view: any;
-    hideableColumnService: HideableColumnService;
-    id: string;
     signpost: QueryList<ClrSignpost>;
-    constructor(hideableColumnService: HideableColumnService, _el: ElementRef, _renderer: Renderer2, vcr: ViewContainerRef);
-    ngOnDestroy(): void;
+    constructor(vcr: ViewContainerRef);
     ngOnInit(): void;
 }
 
 export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
-    columnId: string;
     customFilter: boolean;
     field: string;
     filterValue: string;
     filterValueChange: EventEmitter<{}>;
-    readonly hidden: boolean;
-    hideable: DatagridHideableColumnModel;
     projectedFilter: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
     sortIcon: any;
@@ -297,22 +291,18 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sort(reverse?: boolean): void;
 }
 
-export declare class ClrDatagridColumnToggle implements OnInit, OnDestroy {
-    allColumnsVisible: boolean;
+export declare class ClrDatagridColumnToggle {
     anchorPoint: Point;
-    buttons: QueryList<ClrDatagridColumnToggleButton>;
-    columns: DatagridHideableColumnModel[];
     commonStrings: ClrCommonStrings;
-    hideableColumnService: HideableColumnService;
+    customToggleButton: ClrDatagridColumnToggleButton;
+    customToggleTitle: ClrDatagridColumnToggleTitle;
+    readonly hasOnlyOneVisibleColumn: boolean;
+    readonly hideableColumnStates: ColumnState[];
     open: boolean;
     popoverPoint: Point;
-    title: ClrDatagridColumnToggleTitle;
-    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings);
-    ngOnDestroy(): void;
-    ngOnInit(): void;
-    selectAll(): void;
-    toggleColumn(event: boolean, column: DatagridHideableColumnModel): void;
-    toggleUI(): void;
+    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService);
+    toggleColumnState(columnState: ColumnState, event: boolean): void;
+    toggleSwitchPanel(): void;
 }
 
 export interface ClrDatagridComparatorInterface<T> {
@@ -340,27 +330,23 @@ export interface ClrDatagridFilterInterface<T, S = any> {
     isActive(): boolean;
 }
 
-export declare class ClrDatagridFooter<T = any> implements OnInit {
+export declare class ClrDatagridFooter<T = any> {
     SELECTION_TYPE: typeof SelectionType;
-    activeToggler: boolean;
-    cdr: ChangeDetectorRef;
-    hideableColumnService: HideableColumnService;
+    readonly hasHideableColumns: boolean;
     selection: Selection<T>;
     toggle: ClrDatagridColumnToggle;
-    constructor(selection: Selection<T>, hideableColumnService: HideableColumnService, cdr: ChangeDetectorRef);
-    ngOnDestroy(): void;
-    ngOnInit(): void;
+    constructor(selection: Selection<T>, columnsService: ColumnsService);
 }
 
-export declare class ClrDatagridHideableColumn {
+export declare class ClrDatagridHideableColumn implements OnDestroy {
     clrDgHidden: boolean;
     clrDgHideableColumn: {
         hidden: boolean;
     };
-    column: DatagridHideableColumnModel;
-    columnId: string;
     hiddenChange: EventEmitter<boolean>;
-    constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, dgColumn: ClrDatagridColumn<any>);
+    constructor(titleTemplateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, columnsService: ColumnsService, columnState: BehaviorSubject<ColumnState>);
+    ngOnDestroy(): void;
+    ngOnInit(): void;
 }
 
 export declare class ClrDatagridItems<T> implements DoCheck, OnDestroy {
@@ -414,7 +400,6 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
-    hideableColumnService: HideableColumnService;
     id: string;
     item: T;
     radioId: string;
@@ -423,14 +408,13 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
-    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, hideableColumnService: HideableColumnService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     toggle(selected?: boolean): void;
     toggleExpand(): void;
-    updateCellsForColumns(columnList: DatagridHideableColumnModel[]): void;
 }
 
 export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
@@ -438,15 +422,13 @@ export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, 
     cells: QueryList<ClrDatagridCell>;
     expand: Expand;
     expandableRows: ExpandableRowsCount;
-    hideableColumnService: HideableColumnService;
     replace: boolean;
     replacedRow: boolean;
     rowActionService: RowActionService;
     selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, expand: Expand, hideableColumnService: HideableColumnService, expandableRows: ExpandableRowsCount);
+    constructor(selection: Selection, rowActionService: RowActionService, expand: Expand, expandableRows: ExpandableRowsCount);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
-    updateCellsForColumns(columnList: DatagridHideableColumnModel[]): void;
 }
 
 export declare enum ClrDatagridSortOrder {

@@ -6,16 +6,14 @@
 
 import { InjectionToken } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { ColumnState } from '../interfaces/column-state.interface';
 
-export const COLUMN_STATE = new InjectionToken<DatagridColumnState>('COLUMN_STATE');
-
-const initialColumnState: DatagridColumnState = {
-  changes: [],
-};
+export const COLUMN_STATE = new InjectionToken<ColumnState>('COLUMN_STATE');
 
 export function columnStateFactory() {
-  return new BehaviorSubject<DatagridColumnState>(initialColumnState);
+  return new BehaviorSubject<ColumnState>({
+    changes: [],
+  });
 }
 
 export const COLUMN_STATE_PROVIDER = {

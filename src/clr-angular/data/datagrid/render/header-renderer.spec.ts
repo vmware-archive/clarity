@@ -21,12 +21,13 @@ import { Page } from '../providers/page';
 import { Sort } from '../providers/sort';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
 import { TableSizeService } from '../providers/table-size.service';
-import { STRICT_WIDTH_CLASS } from './constants';
+import { HIDDEN_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { ColumnsService } from '../providers/columns.service';
 
 @Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
 class SimpleTest {}
@@ -64,7 +65,8 @@ export default function(): void {
     let context: TestContext<DatagridHeaderRenderer, SimpleTest>;
     let domAdapter: MockDomAdapter;
     let organizer: MockDatagridRenderOrganizer;
-    let stateSub: BehaviorSubject<DatagridColumnState>;
+    let columnsService: ColumnsService;
+    let stateSub: BehaviorSubject<ColumnState>;
 
     beforeEach(function() {
       context = this.create(DatagridHeaderRenderer, SimpleTest, [
@@ -76,15 +78,24 @@ export default function(): void {
         StateDebouncer,
         TableSizeService,
         Renderer2,
+        ColumnsService,
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      stateSub = context.clarityDirective.columnState;
+      columnsService = context.getClarityProvider(ColumnsService);
+      context.clarityDirective.setColumnState(0);
+      stateSub = columnsService.columns[0];
+    });
+
+    it('sets its state in columns service at given index', function() {
+      expect(columnsService.columns.length).toBe(1);
+      expect(stateSub).not.toBeUndefined();
     });
 
     it('computes the width of header based on its scrollWidth', function() {
       domAdapter._scrollWidth = 123;
-      expect(context.clarityDirective.getColumnWidthState()).toEqual({ width: 123, strictWidth: 0 });
+      expect(context.clarityDirective.getColumnWidthState().width).toBe(123);
+      expect(context.clarityDirective.getColumnWidthState().strictWidth).toBe(0);
     });
 
     it('can set the width of a column', function() {
@@ -101,10 +112,8 @@ export default function(): void {
 
     it('uses the width declared by the user if there is one', function() {
       domAdapter._userDefinedWidth = 123;
-      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityDirective.getColumnWidthState().strictWidth).toEqual(123);
       domAdapter._userDefinedWidth = 0;
-      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityDirective.getColumnWidthState().strictWidth).toEqual(0);
     });
 
@@ -112,19 +121,25 @@ export default function(): void {
       context.clarityElement.style.width = '123px';
       domAdapter._userDefinedWidth = 123;
       organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
-      organizer.updateRenderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
       expect(context.clarityElement.style.width).toBe('123px');
     });
 
     it('does not set the width when the user declared a strict one', function() {
       domAdapter._scrollWidth = 123;
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 123, strictWidth: 24 });
-      expect(context.clarityElement.classList).toContain('datagrid-fixed-width');
+      expect(context.clarityElement.classList).toContain(STRICT_WIDTH_CLASS);
       expect(context.clarityElement.style.width).toBeFalsy();
 
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 123, strictWidth: 0 });
       expect(context.clarityElement.style.width).toBe('123px');
-      expect(context.clarityElement.classList).not.toContain('datagrid-fixed-width');
+      expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
+    });
+
+    it('sets proper hidden class for hidden cell', function() {
+      stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: true });
+      expect(context.clarityElement.classList).toContain(HIDDEN_COLUMN_CLASS);
+      stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: false });
+      expect(context.clarityElement.classList).not.toContain(HIDDEN_COLUMN_CLASS);
     });
   });
 

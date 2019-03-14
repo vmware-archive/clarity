@@ -7,7 +7,7 @@ import { Component, DebugElement } from '@angular/core';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from '../helpers.spec';
 import { DatagridRowRenderer } from './row-renderer';
 import { ColumnsService } from '../providers/columns.service';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { ColumnState } from '../interfaces/column-state.interface';
 import { By } from '@angular/platform-browser';
 import { DatagridCellRenderer } from './cell-renderer';
 import { BehaviorSubject } from 'rxjs';
@@ -19,7 +19,7 @@ export default function(): void {
 
   function initService(cols = 2) {
     for (let i = 0; i < cols; i++) {
-      columnsService.columns[i] = new BehaviorSubject<DatagridColumnState>({ width: i });
+      columnsService.columns[i] = new BehaviorSubject<ColumnState>({ width: i });
     }
   }
 
@@ -33,7 +33,12 @@ export default function(): void {
       columnsService = context.getClarityProvider(ColumnsService);
       initService();
       columnStateSpy = spyOnProperty(DatagridCellRenderer.prototype, 'columnState', 'set').and.callThrough();
-      context.clarityDirective.setColumnStates();
+      context.clarityDirective.setColumnState();
+      context.detectChanges();
+    });
+
+    afterEach(function() {
+      context.fixture.destroy();
     });
 
     it('sets the columnState', function() {
@@ -52,20 +57,6 @@ export default function(): void {
       expect(cells[0].nativeElement.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
       expect(cells[1].nativeElement.style.width).toEqual('24px');
       expect(cells[1].nativeElement.classList.contains(STRICT_WIDTH_CLASS)).toBeTrue();
-    });
-
-    it('sets the widths of cells after they have been reattached to the view', function() {
-      context.testComponent.showCell = false;
-      columnsService.columns[0].next({ width: 42, strictWidth: 0, changes: [DatagridColumnChanges.WIDTH] });
-      columnsService.columns[1].next({ width: 24, strictWidth: 24, changes: [DatagridColumnChanges.WIDTH] });
-      context.detectChanges();
-      context.testComponent.showCell = true;
-      context.detectChanges();
-      cells = context.fixture.debugElement.queryAll(By.directive(DatagridCellRenderer));
-      expect(context.testElement.querySelectorAll('clr-dg-cell')[0].style.width).toBe('42px');
-      expect(context.testElement.querySelectorAll('clr-dg-cell')[0].classList.contains(STRICT_WIDTH_CLASS)).toBe(false);
-      expect(context.testElement.querySelectorAll('clr-dg-cell')[1].style.width).toBe('24px');
-      expect(context.testElement.querySelectorAll('clr-dg-cell')[1].classList.contains(STRICT_WIDTH_CLASS)).toBe(true);
     });
   });
 }

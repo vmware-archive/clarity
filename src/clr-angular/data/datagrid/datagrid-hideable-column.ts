@@ -3,10 +3,23 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, Input, TemplateRef, ViewContainerRef, Output, EventEmitter } from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  Optional,
+  Output,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 
-import { ClrDatagridColumn } from './datagrid-column';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { ColumnsService } from './providers/columns.service';
+import { ColumnState } from './interfaces/column-state.interface';
+import { DatagridColumnChanges } from './enums/column-changes.enum';
+import { COLUMN_STATE } from './providers/column-state.provider';
 
 @Directive({ selector: '[clrDgHideableColumn]' })
 
@@ -25,7 +38,7 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
  * datagrid toggle component.
  *
  */
-export class ClrDatagridHideableColumn {
+export class ClrDatagridHideableColumn implements OnDestroy {
   /**
    *
    * @description
@@ -56,49 +69,45 @@ export class ClrDatagridHideableColumn {
   @Input('clrDgHidden')
   set clrDgHidden(hidden: boolean) {
     this._hidden = hidden ? hidden : false;
-    if (this.dgColumn.hideable) {
-      this.dgColumn.hideable.hidden = this._hidden;
-    }
   }
 
   @Output('clrDgHiddenChange') public hiddenChange = new EventEmitter<boolean>();
 
-  /**
-   *
-   * @description
-   * A unique identifier passed into the directive from the parent (A DatagridColumn).
-   *
-   */
-  public columnId: string;
-
-  /**
-   *
-   * @description
-   * An instance of the DatagridHideableColumn Utility class that is used to:
-   * 1. Create an instance of HideableColumn that will manage the TemplateRef, state and communication
-   * 2. Manage the hidden/shown state for the column to which this directive is applied
-   * 3. track the id of the hidden column so it can be used in cells as well as on the column
-   */
-  public column: DatagridHideableColumnModel;
-
-  /**
-   * @description
-   * Used the DatagridColumn to get and set an id for this HiddenColumn
-   *
-   */
   constructor(
-    private templateRef: TemplateRef<any>,
+    private titleTemplateRef: TemplateRef<any>,
     private viewContainerRef: ViewContainerRef,
-    private dgColumn: ClrDatagridColumn<any>
+    private columnsService: ColumnsService,
+    @Optional()
+    @Inject(COLUMN_STATE)
+    private columnState: BehaviorSubject<ColumnState>
   ) {
-    this.columnId = dgColumn.columnId;
+    this.viewContainerRef.createEmbeddedView(this.titleTemplateRef);
 
-    // Use the templateRef to create this view
-    this.viewContainerRef.createEmbeddedView(this.templateRef);
+    if (!this.columnState) {
+      throw new Error('The *clrDgHideableColumn directive can only be used inside of a clr-dg-column component.');
+    }
+  }
 
-    // Create instance of the utility class DatagridHideableColumn.
-    // Note this is on the parent instance of DatagridColumn.
-    this.dgColumn.hideable = new DatagridHideableColumnModel(this.templateRef, this.columnId, this._hidden);
-    this.dgColumn.hideable.hiddenChangeState.subscribe(state => this.hiddenChange.emit(state));
+  private subscriptions: Subscription[] = [];
+
+  ngOnInit() {
+    this.columnsService.emitStateChange(this.columnState, {
+      hideable: true,
+      titleTemplateRef: this.titleTemplateRef,
+      hidden: this._hidden,
+      changes: [DatagridColumnChanges.HIDDEN],
+    });
+
+    this.subscriptions.push(
+      this.columnState.subscribe((state: ColumnState) => {
+        if (state.changes && state.changes.indexOf(DatagridColumnChanges.HIDDEN) > -1) {
+          this.hiddenChange.emit(state.hidden); // Can emit through @Output when desugared syntax is used
+        }
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

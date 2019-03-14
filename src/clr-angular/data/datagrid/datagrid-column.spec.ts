@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Renderer2, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
@@ -11,10 +11,8 @@ import { Subject } from 'rxjs';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
 import { ClrDatagridColumn } from './datagrid-column';
-import { ClrDatagridHideableColumn } from './datagrid-hideable-column';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
-import { TestContext } from './helpers.spec';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
@@ -22,20 +20,6 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
-import { TableSizeService } from './providers/table-size.service';
-import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
-import { DatagridRenderOrganizer } from './render/render-organizer';
-
-const PROVIDERS_NEEDED = [
-  Sort,
-  FiltersProvider,
-  DatagridRenderOrganizer,
-  DomAdapter,
-  Page,
-  StateDebouncer,
-  TableSizeService,
-  Renderer2,
-];
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -51,11 +35,6 @@ export default function(): void {
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
         component = new ClrDatagridColumn(sortService, filtersService, null);
-      });
-
-      it('has an id for identification', function() {
-        expect(component.columnId).toBeDefined();
-        expect(component.columnId).toEqual(jasmine.any(String));
       });
 
       it('receives a comparator to sort the column', function() {
@@ -167,12 +146,12 @@ export default function(): void {
 
     describe('Template API', function() {
       it('provides a wrapped view for the content', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.directive = this.context.clarityDirective;
         expect(this.directive._view).toBeDefined();
       });
       it('receives an input for the comparator', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.detectChanges();
@@ -180,7 +159,7 @@ export default function(): void {
       });
 
       it('receives a string input for the property shortcut comparator', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new DatagridPropertyComparator('test');
         this.context.testComponent.comparator = 'test';
         this.context.detectChanges();
@@ -188,14 +167,14 @@ export default function(): void {
       });
 
       it('receives an input for the property name', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityDirective.field).toBe('test');
       });
 
       it('receives an input for the property filter value', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
         this.context.detectChanges();
@@ -203,7 +182,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the sorted state', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleDeprecatedTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleDeprecatedTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.testComponent.sorted = true;
@@ -215,7 +194,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the sortOrder state', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.testComponent.sortOrder = ClrDatagridSortOrder.DESC;
@@ -230,7 +209,7 @@ export default function(): void {
       });
 
       it('offers two-way binding on the filtered state', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
         this.context.detectChanges();
@@ -242,7 +221,7 @@ export default function(): void {
       });
 
       it('should emit on string filter value changes', function() {
-        this.context = this.create(ClrDatagridColumn, PreFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
 
         this.context.detectChanges();
@@ -261,12 +240,12 @@ export default function(): void {
       });
 
       it('accepts a custom filter in the projected content', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
       });
 
       it('accepts a custom string filter in the projected content', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.stringFilter = this.context.testComponent.stringFilter.filter;
         // We make the filter active to see if the FiltersProvider provider knows about it
         this.stringFilter.value = 'hello';
@@ -275,7 +254,7 @@ export default function(): void {
       });
 
       it('prioritizes custom comparators over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
         this.context.detectChanges();
@@ -285,7 +264,7 @@ export default function(): void {
       });
 
       it('prioritizes custom filters over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelectorAll('clr-dg-filter').length).toBe(1);
@@ -293,7 +272,7 @@ export default function(): void {
       });
 
       it('prioritizes custom string filters over the default property name one', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         this.stringFilter = this.context.testComponent.stringFilter.filter;
@@ -309,7 +288,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridColumn<number | string>, SimpleTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
       });
 
       it('projects content', function() {
@@ -369,43 +348,37 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityElement.attributes['aria-sort'].value).toBe('descending');
       });
-
-      it('adds the .datagrid-column--hidden when not visible', function() {
-        context.clarityDirective.hideable = new DatagridHideableColumnModel(null, 'dg-col-0', true);
-        context.detectChanges();
-        expect(context.clarityElement.classList.contains('datagrid-column--hidden')).toBeTruthy();
-      });
     });
 
     describe('View filters', function() {
       it("doesn't display any filter by default", function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('clr-dg-filter')).toBeNull();
       });
 
       it('displays a string filter when using a property name', function() {
-        this.context = this.create(ClrDatagridColumn, SimpleTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelector('clr-dg-string-filter')).not.toBeNull();
       });
 
       it('projects custom filters outside of the title', function() {
-        this.context = this.create(ClrDatagridColumn, FilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('.my-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-filter')).toBeNull();
       });
 
       it('projects custom string filters outside of the title', function() {
-        this.context = this.create(ClrDatagridColumn, StringFilterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('.my-string-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-string-filter')).toBeNull();
       });
 
       it('un-registers the correct filter', function() {
-        this.context = this.create(ClrDatagridColumn, UnregisterTest, PROVIDERS_NEEDED);
+        this.context = this.create(ClrDatagridColumn, UnregisterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.show = true;
         this.context.clarityDirective.filters.add(new TestFilter());
         this.context.clarityDirective.filters.add(new TestFilter());
@@ -416,17 +389,6 @@ export default function(): void {
         this.context.detectChanges();
         const activeFiltersTest = this.context.clarityDirective.filters.getActiveFilters();
         expect(activeFiltersTest.length).toBe(2);
-      });
-    });
-
-    describe('View hideability', function() {
-      it('is hideable when there is a HideableColumnDirective', function() {
-        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
-        expect(this.context.clarityDirective.hideable).toBeTruthy();
-      });
-      it('takes an input for the dgHideableColumnDirective', function() {
-        this.context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
-        expect(this.context.clarityDirective.hidden).toEqual(false);
       });
     });
   });
@@ -543,16 +505,4 @@ class UnregisterTest {
   show: boolean;
   filter = new TestStringFilter();
   filterValue = 'M';
-}
-
-@Component({
-  template: `
-        <clr-dg-column>
-            <ng-container *clrDgHideableColumn="{hidden: false}">
-                Name
-            </ng-container>
-        </clr-dg-column>`,
-})
-class HideableTest {
-  @ViewChild(ClrDatagridHideableColumn) dgHideable: ClrDatagridHideableColumn;
 }

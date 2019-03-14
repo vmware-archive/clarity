@@ -7,11 +7,9 @@ import { Component } from '@angular/core';
 
 import { Expand } from '../../utils/expand/providers/expand';
 
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
@@ -85,28 +83,6 @@ export default function(): void {
       expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(2);
     });
   });
-
-  describe('ClrDatagridRowDetail hide/show cell behavior', function() {
-    let context: TestContext<ClrDatagridRowDetail<void>, HiddenTest>;
-    let hideableColumnService: HideableColumnService;
-
-    beforeEach(function() {
-      context = this.create(ClrDatagridRowDetail, HiddenTest, DATAGRID_SPEC_PROVIDERS);
-      hideableColumnService = context.getClarityProvider(HideableColumnService);
-    });
-
-    it('should update cells for columns', function() {
-      spyOn(context.clarityDirective, 'updateCellsForColumns');
-
-      const hiddenColumns: DatagridHideableColumnModel[] = [
-        new DatagridHideableColumnModel(undefined, 'dg-col-0', false),
-        new DatagridHideableColumnModel(undefined, 'dg-col-1', true),
-      ];
-
-      hideableColumnService.updateColumnList(hiddenColumns);
-      expect(context.clarityDirective.updateCellsForColumns).toHaveBeenCalled();
-    });
-  });
 }
 
 @Component({
@@ -121,13 +97,3 @@ class FullTest {
   public replace = false;
   public cell = false;
 }
-
-@Component({
-  template: `
-        <clr-dg-row-detail [clrDgReplace]="replace">
-            <clr-dg-cell>This is a cell</clr-dg-cell>
-            <clr-dg-cell>This is a cell</clr-dg-cell>
-        </clr-dg-row-detail>
-    `,
-})
-class HiddenTest {}

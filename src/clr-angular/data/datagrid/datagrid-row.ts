@@ -26,11 +26,9 @@ import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 
 import { ClrDatagridCell } from './datagrid-cell';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { DisplayModeService } from './providers/display-mode.service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { WrappedRow } from './wrapped-row';
@@ -70,7 +68,6 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     public rowActionService: RowActionService,
     public globalExpandable: ExpandableRowsCount,
     public expand: Expand,
-    public hideableColumnService: HideableColumnService,
     private displayMode: DisplayModeService,
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
@@ -158,30 +155,11 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
 
   ngAfterContentInit() {
-    // Make sure things get started
-    const columnsList = this.hideableColumnService.getColumns();
-    this.updateCellsForColumns(columnsList);
-
-    // Triggered when the Cells list changes per row-renderer
-    this.dgCells.changes.subscribe(cellList => {
-      const columnList = this.hideableColumnService.getColumns();
-      if (cellList.length === columnList.length) {
-        this.updateCellsForColumns(columnList);
-        this.dgCells.forEach(cell => {
-          this._scrollableCells.insert(cell._view);
-        });
-      }
+    this.dgCells.changes.subscribe(() => {
+      this.dgCells.forEach(cell => {
+        this._scrollableCells.insert(cell._view);
+      });
     });
-
-    // Used to set things up the first time but only after all the columns are ready.
-    this.subscriptions.push(
-      this.hideableColumnService.columnListChange.subscribe(columnList => {
-        // Prevents cell updates when cols and cells array are not aligned - only seems to run on init / first time.
-        if (columnList.length === this.dgCells.length) {
-          this.updateCellsForColumns(columnList);
-        }
-      })
-    );
   }
 
   ngAfterViewInit() {
@@ -209,24 +187,6 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
         }
       })
     );
-  }
-
-  /**********
-   *
-   * @description
-   * 1. Maps the new columnListChange to the dgCells list by index
-   * 2. Sets the hidden state on the cell
-   * Take a Column list and use index to access the columns for hideable properties.
-   *
-   */
-  public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
-    // Map cells to columns with Array.index
-    this.dgCells.forEach((cell, index) => {
-      const currentColumn = columnList[index]; // Accounts for null space.
-      if (currentColumn) {
-        cell.id = currentColumn.id;
-      }
-    });
   }
 
   private subscriptions: Subscription[] = [];

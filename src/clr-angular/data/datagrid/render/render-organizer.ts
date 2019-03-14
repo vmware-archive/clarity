@@ -28,7 +28,6 @@ export class DatagridRenderOrganizer {
     if (this.alreadySized) {
       this._renderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
     }
-    this._renderStep.next(DatagridRenderStep.DETECT_STRICT_WIDTHS);
     this._renderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
     this._renderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
     this.alreadySized = true;

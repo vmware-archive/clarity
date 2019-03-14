@@ -9,9 +9,7 @@ import { Subscription } from 'rxjs';
 import { Expand } from '../../utils/expand/providers/expand';
 
 import { ClrDatagridCell } from './datagrid-cell';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
@@ -57,7 +55,6 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     public selection: Selection,
     public rowActionService: RowActionService,
     public expand: Expand,
-    public hideableColumnService: HideableColumnService,
     public expandableRows: ExpandableRowsCount
   ) {}
 
@@ -67,48 +64,15 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   set replace(value: boolean) {
     this.expand.setReplace(!!value);
   }
-
   private subscriptions: Subscription[] = [];
   public replacedRow = false;
 
   ngAfterContentInit() {
-    const columnsList = this.hideableColumnService.getColumns();
-    this.updateCellsForColumns(columnsList);
-
-    // Triggered when the Cells list changes per row-renderer
-    this.subscriptions.push(
-      this.cells.changes.subscribe(cellList => {
-        const columnList = this.hideableColumnService.getColumns();
-        if (cellList.length === columnList.length) {
-          this.updateCellsForColumns(columnList);
-        }
-      })
-    );
-
-    // Used to set things up the first time but only after all the columns are ready.
-    this.subscriptions.push(
-      this.hideableColumnService.columnListChange.subscribe(columnList => {
-        // Prevents cell updates when cols and cells array are not aligned
-        if (columnList.length === this.cells.length) {
-          this.updateCellsForColumns(columnList);
-        }
-      })
-    );
-
     this.subscriptions.push(
       this.expand.replace.subscribe(replaceChange => {
         this.replacedRow = replaceChange;
       })
     );
-  }
-
-  public updateCellsForColumns(columnList: DatagridHideableColumnModel[]) {
-    this.cells.forEach((cell, index) => {
-      const currentColumn = columnList[index]; // Accounts for null space.
-      if (currentColumn) {
-        cell.id = currentColumn.id;
-      }
-    });
   }
 
   ngOnDestroy() {

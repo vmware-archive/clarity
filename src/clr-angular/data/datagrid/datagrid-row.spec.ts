@@ -9,14 +9,12 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { Expand } from '../../utils/expand/providers/expand';
 import { LoadingListener } from '../../utils/loading/loading-listener';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridRow } from './datagrid-row';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { MockDisplayModeService } from './providers/display-mode.mock';
 import { DisplayModeService } from './providers/display-mode.service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
 import { Selection } from './providers/selection';
 import { DatagridRenderOrganizer } from './render/render-organizer';
@@ -409,30 +407,6 @@ export default function(): void {
         context.detectChanges();
       }
     });
-
-    describe('Hide/Show', function() {
-      let context: TestContext<ClrDatagridRow<Item>, ExpandTest>;
-      let hideableColumnService: HideableColumnService;
-
-      beforeEach(function() {
-        context = this.create(ClrDatagridRow, HideShowTest, DATAGRID_SPEC_PROVIDERS);
-        hideableColumnService = context.getClarityProvider(HideableColumnService);
-      });
-
-      it('should update cells for columns', function() {
-        // TODO: figure out how to test for cell changes and make sure updateCellsForColumns is called
-        spyOn(context.clarityDirective, 'updateCellsForColumns');
-        hideableColumnService = context.getClarityProvider(HideableColumnService);
-
-        const hiddenColumns: DatagridHideableColumnModel[] = [
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-          new DatagridHideableColumnModel(null, 'dg-col-1', true),
-        ];
-
-        hideableColumnService.updateColumnList(hiddenColumns);
-        expect(context.clarityDirective.updateCellsForColumns).toHaveBeenCalled();
-      });
-    });
   });
 }
 
@@ -463,12 +437,3 @@ class FullTest {
 class ExpandTest {
   expanded = false;
 }
-
-@Component({
-  template: `
-        <clr-dg-row>
-            <clr-dg-cell>ID</clr-dg-cell>
-            <clr-dg-cell>Name</clr-dg-cell>
-        </clr-dg-row>`,
-})
-class HideShowTest {}

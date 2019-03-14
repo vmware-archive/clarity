@@ -24,10 +24,8 @@ import { Items } from './providers/items';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { RowActionService } from './providers/row-action-service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { TableSizeService } from './providers/table-size.service';
 import { Expand } from '../../utils/expand/providers/expand';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
@@ -48,10 +46,8 @@ export const DATAGRID_SPEC_PROVIDERS = [
   DatagridRenderOrganizer,
   RowActionService,
   ExpandableRowsCount,
-  HideableColumnService,
   StateDebouncer,
   StateProvider,
-  ColumnToggleButtonsService,
   TableSizeService,
 ];
 

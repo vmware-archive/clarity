@@ -3,13 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChangeDetectorRef, Component, ContentChild, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ContentChild } from '@angular/core';
 
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
+import { ColumnsService } from './providers/columns.service';
 
 @Component({
   selector: 'clr-dg-footer',
@@ -24,7 +23,7 @@ import { SelectionType } from './enums/selection-type';
           </div>
         </ng-container>
         <ng-content select="clr-dg-column-toggle"></ng-content>
-        <clr-dg-column-toggle *ngIf="!toggle && activeToggler"></clr-dg-column-toggle>
+        <clr-dg-column-toggle *ngIf="hasHideableColumns && !toggle"></clr-dg-column-toggle>
         <div class="datagrid-footer-description">
             <ng-content></ng-content>
         </div>
@@ -34,41 +33,15 @@ import { SelectionType } from './enums/selection-type';
     '[class.datagrid-footer]': 'true',
   },
 })
-export class ClrDatagridFooter<T = any> implements OnInit {
-  constructor(
-    public selection: Selection<T>,
-    public hideableColumnService: HideableColumnService,
-    public cdr: ChangeDetectorRef
-  ) {}
-
-  public activeToggler: boolean;
-  private subscriptions: Subscription[] = [];
+export class ClrDatagridFooter<T = any> {
+  constructor(public selection: Selection<T>, private columnsService: ColumnsService) {}
 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
   @ContentChild(ClrDatagridColumnToggle) toggle: ClrDatagridColumnToggle;
 
-  ngOnInit() {
-    this.subscriptions.push(
-      this.hideableColumnService.columnListChange.subscribe(change => {
-        const hiddenColumnsInSub = change.filter(col => col);
-        if (hiddenColumnsInSub.length > 0) {
-          this.activeToggler = true;
-        }
-      })
-    );
-
-    const hiddenColumns = this.hideableColumnService.getColumns().filter(col => col);
-
-    if (hiddenColumns.length > 0) {
-      this.activeToggler = true;
-    }
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => {
-      sub.unsubscribe();
-    });
+  get hasHideableColumns(): boolean {
+    return this.columnsService.hasHideableColumns;
   }
 }

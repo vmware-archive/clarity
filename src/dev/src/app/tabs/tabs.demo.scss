@@ -3,5 +3,13 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 .clr-example {
-  height: 360px;
+  height: 590px;
+
+  .demo {
+    min-height: 120px;
+  }
+}
+
+.tabs-vertical {
+  height: 150px;
 }

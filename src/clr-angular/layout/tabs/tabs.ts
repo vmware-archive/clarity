@@ -3,16 +3,28 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Inject, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Inject,
+  QueryList,
+  Input,
+  OnDestroy,
+  HostBinding,
+} from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 import { TabsService } from './providers/tabs.service';
+import { ClrTab } from './tab';
 import { ClrTabLink } from './tab-link.directive';
 import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { TabsLayout } from './enums/tabs-layout.enum';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-tabs',
@@ -20,8 +32,10 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow"
-                              [ngTemplateOutlet]="link.templateRefContainer.template">
+                <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow">
+                    <li role="presentation" class="nav-item">
+                        <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
+                    </li>
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
@@ -52,12 +66,29 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
-export class ClrTabs implements AfterContentInit {
-  @ContentChildren(ClrTabLink, { descendants: true })
-  tabLinkDirectives: QueryList<ClrTabLink>;
+export class ClrTabs implements AfterContentInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
 
-  @ContentChildren(ClrTabContent, { descendants: true })
-  tabContents: QueryList<ClrTabContent>;
+  @Input('clrLayout')
+  set layout(layout: TabsLayout) {
+    if (Object.values(TabsLayout).includes(layout)) {
+      this.tabsService.layout = layout;
+    }
+  }
+  get layout(): TabsLayout {
+    return this.tabsService.layout;
+  }
+
+  @ContentChildren(ClrTab) private tabs: QueryList<ClrTab>;
+
+  private _tabLinkDirectives: ClrTabLink[] = [];
+  get tabLinkDirectives(): ClrTabLink[] {
+    return this._tabLinkDirectives;
+  }
+
+  get tabContents(): ClrTabContent[] {
+    return this.tabs.filter(tab => !!tab.tabContent).map(tab => tab.tabContent);
+  }
 
   constructor(
     public ifActiveService: IfActiveService,
@@ -76,12 +107,30 @@ export class ClrTabs implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    if (typeof this.ifActiveService.current === 'undefined') {
-      this.tabLinkDirectives.first.activate();
+    this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
+    this.subscriptions.push(
+      this.tabs.changes.subscribe(() => {
+        this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
+      })
+    );
+
+    if (typeof this.ifActiveService.current === 'undefined' && this.tabLinkDirectives[0]) {
+      this.tabLinkDirectives[0].activate();
     }
   }
 
   toggleOverflow(event: any) {
     this.ifOpenService.toggleWithEvent(event);
+  }
+
+  @HostBinding('class.tabs-vertical')
+  get isVertical() {
+    return this.layout === TabsLayout.VERTICAL;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 }

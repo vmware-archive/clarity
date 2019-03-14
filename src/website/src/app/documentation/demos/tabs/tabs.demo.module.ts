@@ -8,8 +8,10 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
 
 import { TabsStaticDemo } from './tabs-static';
+import { TabsStaticVerticalDemo } from './tabs-static-vertical';
 import { TabsAngularDemo } from './tabs-angular';
 import { TabsAngularSimpleDemo } from './tabs-angular-simple';
+import { TabsAngularVerticalDemo } from './tabs-angular-vertical';
 import { TabsDemo } from './tabs.demo';
 import { RouterModule } from '@angular/router';
 import { DocWrapperModule } from '../_doc-wrapper/doc-wrapper.module';
@@ -24,7 +26,15 @@ import { TabsAngularOverflowDemo } from './tabs-angular-overflow';
     DocWrapperModule,
     UtilsModule,
   ],
-  declarations: [TabsStaticDemo, TabsAngularDemo, TabsAngularSimpleDemo, TabsAngularOverflowDemo, TabsDemo],
+  declarations: [
+    TabsStaticDemo,
+    TabsStaticVerticalDemo,
+    TabsAngularDemo,
+    TabsAngularSimpleDemo,
+    TabsAngularVerticalDemo,
+    TabsAngularOverflowDemo,
+    TabsDemo,
+  ],
   exports: [TabsDemo],
 })
 export class TabsDemoModule {}

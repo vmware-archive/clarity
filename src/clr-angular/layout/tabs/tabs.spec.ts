@@ -8,12 +8,13 @@ import { Component, Type, ViewChild } from '@angular/core';
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 
 import { TabsService } from './providers/tabs.service';
+import { TabsLayout } from './enums/tabs-layout.enum';
 import { ClrTab } from './tab';
 import { ClrTabs } from './tabs';
 
 @Component({
   template: `
-    <clr-tabs>
+    <clr-tabs [clrLayout]="layout">
         <clr-tab #first>
             <button clrTabLink>Tab1</button>
             <clr-tab-content *clrIfActive>
@@ -48,6 +49,7 @@ class TestComponent {
   @ViewChild(ClrTabs) tabsInstance: ClrTabs;
   @ViewChild('first') firstTab: ClrTab;
   inOverflow: boolean = false;
+  layout: TabsLayout = TabsLayout.HORIZONTAL;
 }
 
 @Component({
@@ -178,6 +180,18 @@ describe('Tabs', () => {
       expect(compiled.querySelector('.tabs-overflow .tab4')).toBeDefined();
     });
 
+    it('does not activate overflow in vertical mode', () => {
+      expect(compiled.querySelector('.tabs-overflow')).toBeNull();
+
+      context.fixture.componentInstance.inOverflow = true;
+      context.fixture.detectChanges();
+      expect(compiled.querySelector('.tabs-overflow')).toBeDefined();
+
+      context.fixture.componentInstance.layout = TabsLayout.VERTICAL;
+      context.fixture.detectChanges();
+      expect(compiled.querySelector('.tabs-overflow')).toBeNull();
+    });
+
     it('sets the role on the overflow button li to presentation', () => {
       context.fixture.componentInstance.inOverflow = true;
       context.fixture.detectChanges();
@@ -225,6 +239,37 @@ describe('Tabs', () => {
 
     it("doesn't prioritize tabs with *ngIf", function() {
       expectFirstTabActive.call(this, NgIfSecondTest);
+    });
+  });
+
+  describe('Tabs layout', function() {
+    let context: TestContext<ClrTabs, any>;
+    let compiled: any;
+    let tabsService: TabsService;
+
+    function initialize<T extends TestComponent | NoClrIfActiveTest>(testType: Type<T>) {
+      context = this.create(ClrTabs, testType);
+      tabsService = context.fixture.componentInstance.tabsInstance.tabsService;
+      compiled = context.fixture.nativeElement;
+    }
+
+    it('service defaults to horizontal', function() {
+      initialize.call(this, NoClrIfActiveTest);
+      expect(context.fixture.componentInstance.tabsInstance.tabsService.layout).toEqual(TabsLayout.HORIZONTAL);
+    });
+
+    it('does not contain class for vertical', function() {
+      initialize.call(this, TestComponent);
+      compiled = context.fixture.nativeElement;
+      expect(compiled.querySelector('.tabs-vertical')).toBeNull();
+    });
+
+    it('can be switched to vertical', function() {
+      initialize.call(this, TestComponent);
+      context.fixture.componentInstance.layout = TabsLayout.VERTICAL;
+      context.detectChanges();
+      expect(tabsService.layout).toBe(TabsLayout.VERTICAL);
+      expect(compiled.querySelector('.tabs-vertical')).toBeDefined();
     });
   });
 

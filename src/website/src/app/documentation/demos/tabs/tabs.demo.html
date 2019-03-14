@@ -20,6 +20,13 @@
 
             <clr-tabs-demo-static></clr-tabs-demo-static>
 
+            <h6 id="vertical">Vertical Tabs</h6>
+
+            <p>If you'd like to use vertical tabs add
+                <code class="clr-code">tabs-vertical</code> class to the container.</p>
+
+            <clr-tabs-vertical-demo-static></clr-tabs-vertical-demo-static>
+
             <h6 id="accessibility">Accessibility</h6>
 
             <p>The active tab should have the attribute <code class="clr-code">aria-selected</code>
@@ -72,6 +79,12 @@
 
             <clr-modal-tabs-angular-overflow></clr-modal-tabs-angular-overflow>
 
+            <h5>Vertical Tabs</h5>
+            <p>If you'd like to use vertical tabs add
+                    <code class="clr-code">clrLayout="vertical"</code> parameter to the
+                    <code class="clr-code">clr-tabs</code> component.</p>
+            <clr-tabs-angular-vertical></clr-tabs-angular-vertical>
+
             <h6 id="accessibility-1">Accessibility</h6>
 
             <p>
@@ -82,6 +95,32 @@
             </p>
 
             <h4 id="summary-of-options">Summary of Options</h4>
+
+            <h5>Tabs Component (clrTabs)</h5>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="left">Input/Output</th>
+                    <th class="hidden-xs-down">Values</th>
+                    <th class="hidden-xs-down">Default</th>
+                    <th class="left">Effect</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="left">
+                        <b>[clrLayout]</b>
+                        <div class="hidden-sm-up">Values:<br/>&lt;'horizontal', 'vertical'&gt;</div>
+                        <div class="hidden-sm-up">Default: 'horizontal'</div>
+                    </td>
+                    <td class="hidden-xs-down">&lt;'horizontal', 'vertical'&gt;</td>
+                    <td class="hidden-xs-down">'horizontal'</td>
+                    <td class="left">
+                        If set to 'vertical', will change tabs layout to vertical.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
             <h5>Tab Link Directive (clrTabLink)</h5>
             <table class="table">

@@ -34,6 +34,10 @@ gemini.suite('tabs', child => {
           document.querySelector('.tabs-overflow button').click();
         });
         actions.wait(WAIT_LOAD_TIME);
+      })
+      .capture('vertical-hover', (actions, find) => {
+        actions.mouseMove(find('.tabs-vertical .nav-item'));
+        actions.wait(WAIT_LOAD_TIME);
       });
   });
 });

@@ -7,6 +7,7 @@ import {
   ComponentFactoryResolver,
   Directive,
   ElementRef,
+  HostBinding,
   HostListener,
   Inject,
   Input,
@@ -15,30 +16,41 @@ import {
 
 import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
 import { TemplateRefContainer } from '../../utils/template-ref/template-ref-container';
+import { TabsService } from './providers/tabs.service';
 
 import { AriaService } from './providers/aria.service';
 import { TABS_ID } from './tabs-id.provider';
+import { TabsLayout } from './enums/tabs-layout.enum';
 
 let nbTabLinkComponents: number = 0;
 
 @Directive({
   selector: '[clrTabLink]',
   host: {
-    '[id]': 'tabLinkId',
-    '[attr.aria-selected]': 'active',
     '[attr.aria-hidden]': 'false',
-    '[attr.aria-controls]': 'ariaControls',
     '[class.btn]': 'true',
-    '[class.btn-link]': '!inOverflow',
-    '[class.nav-link]': '!inOverflow',
-    '[class.nav-item]': '!inOverflow',
-    '[class.active]': 'active',
     role: 'tab',
     type: 'button',
   },
 })
 export class ClrTabLink {
-  @Input('clrTabLinkInOverflow') inOverflow: boolean;
+  private _inOverflow: boolean;
+
+  @Input('clrTabLinkInOverflow')
+  set inOverflow(inOverflow) {
+    this._inOverflow = inOverflow;
+  }
+
+  get inOverflow(): boolean {
+    return this._inOverflow && this.tabsService.layout !== TabsLayout.VERTICAL;
+  }
+
+  @HostBinding('class.btn-link')
+  @HostBinding('class.nav-link')
+  get addLinkClasses() {
+    return !this.inOverflow;
+  }
+
   templateRefContainer: TemplateRefContainer;
 
   constructor(
@@ -48,6 +60,7 @@ export class ClrTabLink {
     private el: ElementRef,
     private cfr: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
+    private tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number
   ) {
     if (!this.tabLinkId) {
@@ -63,6 +76,7 @@ export class ClrTabLink {
     ]).instance;
   }
 
+  @HostBinding('attr.aria-controls')
   get ariaControls(): string {
     return this.ariaService.ariaControls;
   }
@@ -71,6 +85,7 @@ export class ClrTabLink {
     return this.ariaService.ariaLabelledBy;
   }
 
+  @HostBinding('id')
   @Input('id')
   set tabLinkId(id: string) {
     this.ariaService.ariaLabelledBy = id;
@@ -81,6 +96,8 @@ export class ClrTabLink {
     this.ifActiveService.current = this.id;
   }
 
+  @HostBinding('class.active')
+  @HostBinding('attr.aria-selected')
   get active() {
     return this.ifActiveService.current === this.id;
   }

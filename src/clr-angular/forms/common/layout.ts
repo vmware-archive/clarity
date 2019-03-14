@@ -8,7 +8,7 @@ import { Directive, Input, OnInit } from '@angular/core';
 import { Layouts, LayoutService } from './providers/layout.service';
 
 @Directive({
-  selector: '[clrLayout]',
+  selector: '[clrForm][clrLayout]',
 })
 export class ClrLayout implements OnInit {
   @Input('clrLayout') layout: Layouts;

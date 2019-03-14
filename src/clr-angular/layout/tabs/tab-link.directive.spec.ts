@@ -13,19 +13,21 @@ import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
 import { TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrTabsModule } from './tabs.module';
+import { TabsLayout } from './enums/tabs-layout.enum';
 
 @Component({
   template: `
         <clr-tab>
-            <button clrTabLink>Tab1</button>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab1</button>
         </clr-tab>
         <clr-tab>
-            <button clrTabLink>Tab2</button>
+            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab2</button>
         </clr-tab>
     `,
 })
 class TestComponent {
   @ViewChildren(ClrTabLink) tabLinkChildren: QueryList<ClrTabLink>;
+  inOverflow: boolean = false;
 }
 
 describe('TabLink Directive', () => {
@@ -47,8 +49,32 @@ describe('TabLink Directive', () => {
   });
 
   it('has the correct css classes', () => {
-    expect(compiled.querySelector('.nav-item')).not.toBeNull();
-    expect(compiled.querySelector('.nav-link')).not.toBeNull();
+    expect(compiled.querySelector('.btn-link')).toBeDefined();
+    expect(compiled.querySelector('.nav-link')).toBeDefined();
+  });
+
+  it('has the correct css classes in overflow', () => {
+    fixture.componentInstance.inOverflow = true;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.btn-link')).toBeNull();
+    expect(compiled.querySelector('.nav-link')).toBeNull();
+  });
+
+  it('has the correct css classes when vertical', () => {
+    const tabsService = TestBed.get(TabsService) as TabsService;
+    tabsService.layout = TabsLayout.VERTICAL;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.btn-link')).toBeDefined();
+    expect(compiled.querySelector('.nav-link')).toBeDefined();
+  });
+
+  it('has the correct css classes when vertical with overflow', () => {
+    fixture.componentInstance.inOverflow = true;
+    const tabsService = TestBed.get(TabsService) as TabsService;
+    tabsService.layout = TabsLayout.VERTICAL;
+    fixture.detectChanges();
+    expect(compiled.querySelector('.btn-link')).toBeDefined();
+    expect(compiled.querySelector('.nav-link')).toBeDefined();
   });
 
   it('sets the role to tab', () => {

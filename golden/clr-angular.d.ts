@@ -1042,13 +1042,14 @@ export declare class ClrTabContent {
 
 export declare class ClrTabLink {
     readonly active: boolean;
+    readonly addLinkClasses: boolean;
     readonly ariaControls: string;
     ifActiveService: IfActiveService;
     inOverflow: boolean;
     tabLinkId: string;
     tabsId: number;
     templateRefContainer: TemplateRefContainer;
-    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsId: number);
+    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
     activate(): void;
 }
 
@@ -1056,18 +1057,21 @@ export declare class ClrTabOverflowContent extends AbstractPopover {
     constructor(injector: Injector, parentHost: ElementRef);
 }
 
-export declare class ClrTabs implements AfterContentInit {
+export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly activeTabInOverflow: boolean;
     commonStrings: ClrCommonStrings;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
-    tabContents: QueryList<ClrTabContent>;
+    readonly isVertical: boolean;
+    layout: TabsLayout;
+    readonly tabContents: ClrTabContent[];
     readonly tabIds: string;
-    tabLinkDirectives: QueryList<ClrTabLink>;
+    readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;
     tabsService: TabsService;
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);
     ngAfterContentInit(): void;
+    ngOnDestroy(): void;
     toggleOverflow(event: any): void;
 }
 

@@ -27,3 +27,48 @@ button.nav-link {
     margin-right: 0;
   }
 }
+
+.tabs-vertical {
+  display: flex;
+
+  // Must be direct child, so horizontal tabs can be nested in vertical tabs
+  & > .nav {
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin-right: 1rem;
+    overflow: auto;
+    flex-shrink: 0;
+    padding: 4px;
+    width: 10rem;
+    min-width: 2rem;
+
+    .nav-link {
+      text-align: left;
+      padding: 0 0.5rem;
+      border: none;
+      margin-bottom: 1px;
+      flex-shrink: 0;
+      margin-top: 0;
+      margin-left: 0;
+      width: 100%;
+
+      &.nav-item {
+        margin-right: 0;
+      }
+
+      &.active,
+      &:hover {
+        box-shadow: inset 3px 0 0 $clr-nav-active-box-shadow-color;
+      }
+      &.active {
+        background-color: $clr-global-selection-color;
+      }
+      &:not(.active):hover {
+        background-color: $clr-sidenav-link-hover-color;
+      }
+    }
+  }
+}

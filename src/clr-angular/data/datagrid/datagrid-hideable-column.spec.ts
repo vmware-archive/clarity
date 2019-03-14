@@ -3,11 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Renderer2, ViewChild } from '@angular/core';
-
-import { ClrDatagridColumn } from './datagrid-column';
-import { ClrDatagridHideableColumn } from './datagrid-hideable-column';
-import { TestContext } from './helpers.spec';
+import { Component, DebugElement, Renderer2 } from '@angular/core';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
@@ -15,6 +11,12 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ColumnsService } from './providers/columns.service';
+import { DatagridHeaderRenderer } from './render/header-renderer';
+import { By } from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ClrDatagridModule } from './datagrid.module';
+import { DatagridColumnChanges } from './enums/column-changes.enum';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -25,67 +27,117 @@ const PROVIDERS_NEEDED = [
   StateDebouncer,
   TableSizeService,
   Renderer2,
+  ColumnsService,
 ];
 
 export default function(): void {
   describe('DatagridHideableColumn directive', function() {
-    describe('TypeScript API', function() {
-      let context: TestContext<ClrDatagridColumn<void>, HideableTest>;
+    let fixture: ComponentFixture<any>;
+    let columnsService: ColumnsService;
+    let testSugaredComponent: HideableSugaredTest;
+    let testDesugaredComponent: HideableDesugeredTest;
 
-      beforeEach(function() {
-        context = this.create(ClrDatagridColumn, HideableTest, PROVIDERS_NEEDED);
-      });
+    let column1HeaderRendererDE: DebugElement;
+    let column2HeaderRendererDE: DebugElement;
+    let column3HeaderRendererDE: DebugElement;
 
-      it('creates a DatagridHideableColumn instance on the DatagridColumn', function() {
-        expect(context.clarityDirective.hideable).toBeDefined();
-      });
+    let column1HeaderRenderer: DatagridHeaderRenderer;
+    let column2HeaderRenderer: DatagridHeaderRenderer;
+    let column3HeaderRenderer: DatagridHeaderRenderer;
 
-      it('defaults the HideableColumn.hidden property to false', function() {
-        expect(context.clarityDirective.hideable.hidden).toBe(false);
-      });
-
-      // it("takes an input for {hidden: false}", function () {
-      //    // not sure how to test this yet because I can't grab instances with #templateRefs
-      // });
-
-      // it("takes an input for {hidden:true}", function () {
-      //    // not sure how to test this yet because I can't grab instances with #templateRefs
-      //    // AND -> results in EHCAIWC error
-      // });
-
-      it('correctly populates the DatagridHideableColumn instance with an id', function() {
-        expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
+    describe('Without Column', function() {
+      it('should throw an error with a message', function() {
+        expect(function() {
+          TestBed.configureTestingModule({
+            imports: [ClrDatagridModule],
+            declarations: [HideableNotInsideColumnTest],
+            providers: PROVIDERS_NEEDED,
+          });
+          TestBed.createComponent(HideableNotInsideColumnTest);
+        }).toThrowError('The *clrDgHideableColumn directive can only be used inside of a clr-dg-column component.');
       });
     });
 
-    describe('TypeScript Output API', function() {
-      let context: TestContext<ClrDatagridColumn<void>, HideableOutputTest>;
-
+    describe('Sugered', function() {
       beforeEach(function() {
-        context = this.create(ClrDatagridColumn, HideableOutputTest, PROVIDERS_NEEDED);
+        TestBed.configureTestingModule({
+          imports: [ClrDatagridModule],
+          declarations: [HideableSugaredTest],
+          providers: PROVIDERS_NEEDED,
+        });
+        fixture = TestBed.createComponent(HideableSugaredTest);
+        columnsService = fixture.debugElement.injector.get(ColumnsService);
+        testSugaredComponent = <HideableSugaredTest>fixture.componentInstance;
+
+        column1HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[0];
+        column2HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[1];
+        column3HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[2];
+
+        column1HeaderRenderer = column1HeaderRendererDE.injector.get(DatagridHeaderRenderer);
+        column2HeaderRenderer = column2HeaderRendererDE.injector.get(DatagridHeaderRenderer);
+        column3HeaderRenderer = column3HeaderRendererDE.injector.get(DatagridHeaderRenderer);
+
+        column1HeaderRenderer.setColumnState(0);
+        column2HeaderRenderer.setColumnState(1);
+        column3HeaderRenderer.setColumnState(2);
       });
 
-      it('creates a DatagridHideableColumn instance on the DatagridColumn', function() {
-        expect(context.clarityDirective.hideable).toBeDefined();
+      it('sets its template and hidden state to column state', function() {
+        testSugaredComponent.hideFirst = true;
+
+        fixture.detectChanges();
+        expect(columnsService.columns[0].value.titleTemplateRef).not.toBeUndefined();
+        expect(columnsService.columns[0].value.hidden).toBeTruthy();
+        expect(columnsService.columns[1].value.titleTemplateRef).not.toBeUndefined();
+        expect(columnsService.columns[1].value.hidden).toBeFalsy();
+        expect(columnsService.columns[2].value.titleTemplateRef).toBeUndefined();
+      });
+    });
+
+    describe('De-sugered', function() {
+      beforeEach(function() {
+        TestBed.configureTestingModule({
+          imports: [ClrDatagridModule],
+          declarations: [HideableDesugeredTest],
+          providers: PROVIDERS_NEEDED,
+        });
+        fixture = TestBed.createComponent(HideableDesugeredTest);
+        columnsService = fixture.debugElement.injector.get(ColumnsService);
+        testDesugaredComponent = <HideableDesugeredTest>fixture.componentInstance;
+
+        column1HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[0];
+        column2HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[1];
+
+        column1HeaderRenderer = column1HeaderRendererDE.injector.get(DatagridHeaderRenderer);
+        column2HeaderRenderer = column2HeaderRendererDE.injector.get(DatagridHeaderRenderer);
+
+        // The following part is handled By MainRenderer. So since we don't have MainRenderer in this test,
+        // we handle them on our own.
+        column1HeaderRenderer.setColumnState(0);
+        column2HeaderRenderer.setColumnState(1);
       });
 
-      it('defaults the HideableColumn.hidden property to false', function() {
-        expect(context.clarityDirective.hideable.hidden).toBe(false);
+      it('sets its template and hidden state to column state', function() {
+        testDesugaredComponent.hideSecond = true;
+
+        fixture.detectChanges();
+        expect(columnsService.columns[0].value.titleTemplateRef).not.toBeUndefined();
+        expect(columnsService.columns[0].value.hidden).toBeFalsy('Defaults to false if given no input value.');
+        expect(columnsService.columns[1].value.titleTemplateRef).not.toBeUndefined();
+        expect(columnsService.columns[1].value.hidden).toBeTruthy();
       });
 
-      it('correctly populates the DatagridHideableColumn instance with an id', function() {
-        expect(context.clarityDirective.columnId).toEqual(context.clarityDirective.hideable.id);
-      });
-
-      it('input works correctly', function() {
-        context.testComponent.hidden = true;
-        context.detectChanges();
-        expect(context.clarityDirective.hideable.hidden).toBeTrue();
-      });
-
-      it('emits column state change', function() {
-        context.clarityDirective.hideable.hidden = true;
-        expect(context.testComponent.hidden).toBeTrue();
+      it('can emit its state from desuraged template', function() {
+        testDesugaredComponent.hideSecond = true;
+        fixture.detectChanges();
+        expect(columnsService.columns[1].value.titleTemplateRef).not.toBeUndefined();
+        expect(columnsService.columns[1].value.hidden).toBeTruthy();
+        columnsService.emitStateChangeAt(1, { hidden: false, changes: [DatagridColumnChanges.HIDDEN] });
+        fixture.detectChanges();
+        expect(testDesugaredComponent.hideSecond).toBeFalsy();
+        columnsService.emitStateChangeAt(1, { hidden: true, changes: [DatagridColumnChanges.HIDDEN] });
+        fixture.detectChanges();
+        expect(testDesugaredComponent.hideSecond).toBeTruthy();
       });
     });
   });
@@ -93,28 +145,47 @@ export default function(): void {
 
 @Component({
   template: `
-        <clr-dg-column>
-            <ng-container *clrDgHideableColumn>
-                Name
-            </ng-container>
-        </clr-dg-column>
-    `,
+    <ng-container *clrDgHideableColumn>
+      Why am I not inside a datagrid column?
+    </ng-container>
+  `,
 })
-class HideableTest {
-  @ViewChild(ClrDatagridHideableColumn) directive: ClrDatagridHideableColumn;
+class HideableNotInsideColumnTest {}
+
+@Component({
+  template: `
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{hidden: hideFirst}">
+        Date
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Name
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column></clr-dg-column>
+  `,
+})
+class HideableSugaredTest {
+  hideFirst: boolean;
 }
 
 @Component({
   template: `
-        <clr-dg-column>
-            <!-- sugar syntax does not support @Output on structural directives, see https://github.com/angular/angular/issues/12121 -->
-            <ng-template clrDgHideableColumn [(clrDgHidden)]="hidden">
-                Name
-            </ng-template>
-        </clr-dg-column>
-    `,
+    <clr-dg-column>
+      <ng-template clrDgHideableColumn>
+        Date
+      </ng-template>
+    </clr-dg-column>
+    <clr-dg-column>
+      <!-- sugar syntax does not support @Output on structural directives, see https://github.com/angular/angular/issues/12121 -->
+      <ng-template clrDgHideableColumn [(clrDgHidden)]="hideSecond">
+        Name
+      </ng-template>
+    </clr-dg-column>
+  `,
 })
-class HideableOutputTest {
-  @ViewChild(ClrDatagridHideableColumn) directive: ClrDatagridHideableColumn;
-  hidden = false;
+class HideableDesugeredTest {
+  hideSecond: boolean;
 }

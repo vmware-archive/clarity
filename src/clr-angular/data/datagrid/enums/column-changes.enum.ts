@@ -6,4 +6,9 @@
 
 export enum DatagridColumnChanges {
   WIDTH,
+  HIDDEN,
 }
+
+export const ALL_COLUMN_CHANGES: DatagridColumnChanges[] = Object.keys(DatagridColumnChanges)
+  .map(key => DatagridColumnChanges[key])
+  .filter(key => key === parseInt(key, 10)); // extracts only integer keys

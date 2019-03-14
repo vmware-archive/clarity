@@ -7,14 +7,13 @@ import { Component } from '@angular/core';
 
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { TestContext } from '../helpers.spec';
-import { HideableColumnService } from '../providers/hideable-column.service';
 
 import { DatagridCellRenderer } from './cell-renderer';
-import { STRICT_WIDTH_CLASS } from './constants';
+import { HIDDEN_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 import { BehaviorSubject } from 'rxjs';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 
 @Component({ template: `<clr-dg-cell>Hello world</clr-dg-cell>` })
@@ -24,12 +23,12 @@ export default function(): void {
   describe('DatagridCellRenderer directive', function() {
     let context: TestContext<DatagridCellRenderer, SimpleTest>;
     let organizer: MockDatagridRenderOrganizer;
-    let stateSub: BehaviorSubject<DatagridColumnState>;
+    let stateSub: BehaviorSubject<ColumnState>;
 
     beforeEach(function() {
-      context = this.create(DatagridCellRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER, HideableColumnService]);
+      context = this.create(DatagridCellRenderer, SimpleTest, [MOCK_ORGANIZER_PROVIDER]);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      stateSub = new BehaviorSubject<DatagridColumnState>({});
+      stateSub = new BehaviorSubject<ColumnState>({});
       context.clarityDirective.columnState = stateSub;
     });
 
@@ -37,6 +36,13 @@ export default function(): void {
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 42, strictWidth: 42 });
       expect(context.clarityElement.style.width).toBe('42px');
       expect(context.clarityElement.classList).toContain(STRICT_WIDTH_CLASS);
+    });
+
+    it('sets proper hidden class for hidden cell', function() {
+      stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: true });
+      expect(context.clarityElement.classList).toContain(HIDDEN_COLUMN_CLASS);
+      stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: false });
+      expect(context.clarityElement.classList).not.toContain(HIDDEN_COLUMN_CLASS);
     });
 
     it('makes the cell non-flexible if and only if the width is strict', function() {
@@ -54,6 +60,32 @@ export default function(): void {
       organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
       expect(context.clarityElement.style.width).toBeFalsy();
       expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
+    });
+
+    it('should run all changes when columnState is set', function() {
+      expect(context.clarityElement.style.width).toBe('');
+      expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
+      expect(context.clarityElement.classList).not.toContain(HIDDEN_COLUMN_CLASS);
+      stateSub.next({
+        changes: [DatagridColumnChanges.WIDTH, DatagridColumnChanges.HIDDEN],
+        width: 84,
+        strictWidth: 0,
+        hidden: true,
+      });
+      context.clarityDirective.columnState = stateSub;
+      expect(context.clarityElement.style.width).toBe('84px');
+      expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
+      expect(context.clarityElement.classList).toContain(HIDDEN_COLUMN_CLASS);
+      stateSub.next({
+        changes: [DatagridColumnChanges.HIDDEN, DatagridColumnChanges.WIDTH],
+        width: 42,
+        strictWidth: 42,
+        hidden: false,
+      });
+      context.clarityDirective.columnState = stateSub;
+      expect(context.clarityElement.style.width).toBe('42px');
+      expect(context.clarityElement.classList).toContain(STRICT_WIDTH_CLASS);
+      expect(context.clarityElement.classList).not.toContain(HIDDEN_COLUMN_CLASS);
     });
   });
 }

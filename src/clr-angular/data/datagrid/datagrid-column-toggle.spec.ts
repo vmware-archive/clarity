@@ -3,355 +3,235 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, QueryList, TemplateRef, ViewChildren } from '@angular/core';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { TestContext } from './helpers.spec';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
-import { HideableColumnService } from './providers/hideable-column.service';
+import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
+import { ColumnsService } from './providers/columns.service';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
+    let context: TestContext<ClrDatagridColumnToggle, ColumnToggleTest>;
+    let columnsService: MockColumnsService;
+    let columnToggle: ClrDatagridColumnToggle;
+    let testComponent: ColumnToggleTest;
+
+    beforeEach(function() {
+      context = this.create(ClrDatagridColumnToggle, ColumnToggleTest, [MOCK_COLUMN_SERVICE_PROVIDER]);
+      columnsService = <MockColumnsService>context.getClarityProvider(ColumnsService);
+      testComponent = context.testComponent;
+      columnToggle = context.clarityDirective;
+      columnsService.mockColumns(3);
+    });
+
     describe('Typescript API', function() {
-      let hideableColumnService: HideableColumnService;
-      let columnToggleButtons: ColumnToggleButtonsService;
-      let component: ClrDatagridColumnToggle;
-
-      function getTestColumns(): DatagridHideableColumnModel[] {
-        // Mixed columns: 1/2 hidden (true) & 1/2 showing (false)
-        return [
-          new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0'),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-          new DatagridHideableColumnModel(null, 'dg-col-0', false),
-        ];
-      }
-
-      function getHiddenTestColumns(): DatagridHideableColumnModel[] {
-        return [
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-          new DatagridHideableColumnModel(null, 'dg-col-0', true),
-        ];
-      }
-
-      beforeEach(function() {
-        hideableColumnService = new HideableColumnService();
-        columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {});
+      it('toggles switch panel', function() {
+        expect(columnToggle.open).toBeFalsy();
+        columnToggle.toggleSwitchPanel();
+        expect(columnToggle.open).toBeTruthy();
+        columnToggle.toggleSwitchPanel();
+        expect(columnToggle.open).toBeFalsy();
       });
 
-      it('gets a list of hideable columns from the HideableColumnService', function() {
-        // inits to empty array.
-        expect(component.columns).toEqual([]);
-
-        // add columns to the service
-        const testColumns = getTestColumns();
-        hideableColumnService.updateColumnList(testColumns);
-        component.ngOnInit();
-        expect(component.columns).toEqual(hideableColumnService.getColumns());
+      it('returns states of hideable columns hideable columns', function() {
+        columnsService.mockPartialHideable(0, 1);
+        expect(columnToggle.hideableColumnStates.length).toBe(2);
       });
 
-      it('updates the hideable column list when the list changes', function() {
-        const testColumns = getTestColumns();
-        hideableColumnService.updateColumnList(testColumns);
-        component.ngOnInit();
-        expect(component.columns).toEqual(testColumns);
-
-        const slicedColumn = testColumns.slice(3);
-        hideableColumnService.updateColumnList(slicedColumn);
-        expect(component.columns).toEqual(slicedColumn);
+      it('hasOnlyOneVisibleColumn must be false as long as there are non-hideable columns', function() {
+        columnsService.mockPartialHideable(0, 1, true);
+        expect(columnToggle.hasOnlyOneVisibleColumn).toBeFalsy();
       });
 
-      it('can select all the columns at once', function() {
-        const testColumns = getHiddenTestColumns();
-
-        hideableColumnService.updateColumnList(testColumns);
-        component.ngOnInit();
-        component.selectAll();
-        component.columns.forEach(col => {
-          expect(col.hidden).toBe(false);
-        });
+      it('hasOnlyOneVisibleColumn must be true only if all columns are hideable and one of them is visible', function() {
+        columnsService.mockAllHideable();
+        columnsService.mockHideableAt(0, true);
+        columnsService.mockHideableAt(1, true);
+        expect(columnToggle.hasOnlyOneVisibleColumn).toBeTruthy();
       });
 
-      it('toggles the hidden state of a column', function() {
-        const testColumns = getTestColumns();
-
-        hideableColumnService.updateColumnList(testColumns);
-        component.ngOnInit();
-
-        // It inits to true (aka - hidden)
-        const testColumn: DatagridHideableColumnModel = component.columns[0];
-        const testEvent = false;
-
-        expect(testColumn.hidden).toBe(false); // showing
-        component.toggleColumn(testEvent, testColumn);
-        expect(testColumn.hidden).toBe(true); // hidden
-        component.toggleColumn(!testEvent, testColumn);
-        expect(testColumn.hidden).toBe(false); // showing
-      });
-      it('toggles the open state of the UI', function() {
-        expect(component.open).toEqual(false);
-        component.toggleUI();
-        expect(component.open).toEqual(true);
+      it('toggles hidden state in hideable column', function() {
+        columnToggle.toggleColumnState(columnsService.columns[1].value, true);
+        expect(columnsService.columns[1].value.hidden).toBeTruthy();
+        columnToggle.toggleColumnState(columnsService.columns[1].value, false);
+        expect(columnsService.columns[1].value.hidden).toBeFalsy();
       });
     });
 
     describe('View', function() {
-      // Until we can properly type "this"
-      let context: TestContext<ClrDatagridColumnToggle, SimpleTest>;
-      let hideableColumnService: HideableColumnService;
-
-      beforeEach(function() {
-        context = this.create(ClrDatagridColumnToggle, SimpleTest, [HideableColumnService, ColumnToggleButtonsService]);
-        hideableColumnService = context.getClarityProvider(HideableColumnService);
+      it('toggles switch panel', function() {
+        context.detectChanges();
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
       });
 
-      it('has a toggle icon', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(iconBtn).toBeDefined();
+      it('closes switch panel when close button is clicked', function() {
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
+        context.clarityElement.querySelector('.toggle-switch-close-button').click();
+        context.detectChanges();
+        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
       });
 
-      it('opens and closes the toggleUI', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
-        iconBtn.click();
+      it('projects template as switch content', function() {
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
         context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
-        iconBtn.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(false);
-
-        // Open it to test 'x' closes popover pathway
-        iconBtn.click();
-        context.detectChanges(); // open it
-        // Find the x and click it
-        const closeX = context.clarityElement.querySelector('.switch-header > button');
-        closeX.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(false);
-        // make sure the x is not stil in the dom
-        const toggleUI = context.clarityElement.querySelector('.column-switch');
-        expect(toggleUI).toBeNull();
+        expect(context.clarityElement.querySelector('.switch-content li').textContent).toMatch(/Template Content/);
       });
 
-      it('projects DatagridHideableContent TemplateRefs', function() {
-        const hideableColumns: DatagridHideableColumnModel[] = [];
-        let nbCol: number = 0;
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-
-        context.testComponent.templates.forEach(col => {
-          hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, false));
-          nbCol++;
-        });
-
-        hideableColumnService.updateColumnList(hideableColumns);
-        iconBtn.click();
+      it('shows the same number of switches for hideable columns', function() {
+        columnsService.mockPartialHideable(0, 1);
+        columnToggle.open = true;
         context.detectChanges();
-
-        const renderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
-
-        // Test the init properly
-        expect(hideableColumns.length).toBe(renderedTemplates.length);
-
-        for (let i = 0; i < renderedTemplates.length; i++) {
-          expect(hideableColumns[i].id).toEqual(renderedTemplates[i].innerText.trim());
-        }
-
-        // Now test when columns are updated
-        const updatedColumns = hideableColumns.slice(3);
-        hideableColumnService.updateColumnList(updatedColumns);
-        context.detectChanges();
-
-        const updatedRenderedTemplates = context.clarityElement.querySelectorAll('.switch-content label');
-
-        expect(updatedColumns.length).toBe(updatedRenderedTemplates.length);
-
-        for (let i = 0; i < updatedRenderedTemplates.length; i++) {
-          expect(updatedColumns[i].id).toEqual(updatedRenderedTemplates[i].innerText.trim());
-        }
+        expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(2);
       });
 
       it(
-        'toggles any hideable column when clicked',
+        'shows the same number of checked checkboxes as visible columns',
         fakeAsync(function() {
-          const hideableColumns: DatagridHideableColumnModel[] = [];
-          let nbCol: number = 0;
-          const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-
-          context.testComponent.templates.forEach(col => {
-            hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, false));
-            nbCol++;
-          });
-
-          hideableColumnService.updateColumnList(hideableColumns);
-          iconBtn.click();
+          columnsService.mockAllHideable();
+          columnsService.mockHideableAt(1, true);
+          columnToggle.open = true;
           context.detectChanges();
-          // Thank you asynchronous [ngModel]...
           tick();
-
-          const testColumn: DatagridHideableColumnModel = hideableColumns[0];
-          expect(testColumn.hidden).toBe(false);
-
-          const col0Clicker = context.clarityElement.querySelector('.switch-content input[type="checkbox"]');
-          col0Clicker.click();
-          expect(testColumn.hidden).toBe(true);
-          col0Clicker.click();
-          expect(testColumn.hidden).toBe(false);
+          expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(3);
+          expect(context.clarityElement.querySelectorAll('.switch-content input:checked').length).toBe(2);
         })
       );
-
-      it('shows all of the hidden columns', function() {
-        const hideableColumns: DatagridHideableColumnModel[] = [];
-        let nbCol: number = 0;
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-
-        context.testComponent.templates.forEach(col => {
-          hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, true));
-          nbCol++;
-        });
-
-        hideableColumnService.updateColumnList(hideableColumns);
-        iconBtn.click();
-        context.detectChanges();
-
-        const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
-        const selectAll = context.clarityElement.querySelector('.switch-footer > div > button');
-        for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox = columnCheckboxes[i];
-          expect(checkbox.checked).toBe(false);
-        }
-
-        selectAll.click();
-        context.detectChanges();
-
-        for (let i = 0; i > columnCheckboxes.length; i++) {
-          const checkbox = columnCheckboxes[i];
-          expect(checkbox.checked).toBe(true);
-        }
-
-        expect(selectAll.disabled).toBe(true);
-      });
 
       it(
-        'knows when there is only one column showing',
+        'toggle column hidden state if its checkbox is clicked',
         fakeAsync(function() {
-          const hideableColumns: DatagridHideableColumnModel[] = [];
-          let nbCol: number = 0;
-          const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-
-          context.testComponent.templates.forEach(col => {
-            hideableColumns.push(new DatagridHideableColumnModel(col, `dg-col-${nbCol}`, true));
-            nbCol++;
-          });
-
-          const showing: TemplateRef<any> = context.testComponent.templates.first;
-          hideableColumns.push(new DatagridHideableColumnModel(showing, `dg-col-${nbCol}`, false));
-
-          hideableColumnService.updateColumnList(hideableColumns);
-          iconBtn.click();
+          const spyToggleColumnState = spyOn(columnToggle, 'toggleColumnState');
+          columnsService.mockHideableAt(1, true);
+          columnToggle.open = true;
           context.detectChanges();
-          // Thank you asynchronous [ngModel]...
           tick();
-
-          const columnCheckboxes = context.clarityElement.querySelectorAll('.switch-content input[type="checkbox"]');
-          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(true);
-          columnCheckboxes[0].click();
+          expect(context.clarityElement.querySelectorAll('.switch-content input').length).toBe(1);
+          expect(context.clarityElement.querySelector('.switch-content input').checked).toBeFalsy();
+          context.clarityElement.querySelector('.switch-content input').click();
           context.detectChanges();
-          // Thank you asynchronous [ngModel]...
-          tick();
-          expect(columnCheckboxes[columnCheckboxes.length - 1].disabled).toBe(false);
+          expect(spyToggleColumnState).toHaveBeenCalledWith(columnsService.columns[1].value, false);
+          expect(context.clarityElement.querySelector('.switch-content input').checked).toBeTruthy();
         })
       );
 
-      it('shows the default buttons', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
-        iconBtn.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
+      it(
+        'should not be able to toggle switch if there is only visible column',
+        fakeAsync(function() {
+          const spyToggleColumnState = spyOn(columnToggle, 'toggleColumnState');
+          columnsService.mockAllHideable();
+          columnsService.mockHideableAt(0, true);
+          columnsService.mockHideableAt(1, true);
+          columnToggle.open = true;
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[2].disabled).toBeTruthy();
+          context.clarityElement.querySelectorAll('.switch-content input')[2].click();
+          context.detectChanges();
+          expect(spyToggleColumnState).not.toHaveBeenCalled();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[2].checked).toBeTruthy();
+        })
+      );
 
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All'.toUpperCase());
-        const title = context.clarityElement.querySelector('.switch-header');
-        expect(title.innerHTML).toContain('Show Columns');
+      it(
+        'should be able to toggle switch as long as there are non-hideable columns',
+        fakeAsync(function() {
+          columnsService.mockPartialHideable(0, 1);
+          columnToggle.open = true;
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[0].disabled).toBeFalsy();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[1].disabled).toBeFalsy();
+          columnsService.mockPartialHideable(0, 1, true);
+          context.detectChanges();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[0].disabled).toBeFalsy();
+          expect(context.clarityElement.querySelectorAll('.switch-content input')[1].disabled).toBeFalsy();
+        })
+      );
+
+      it('shows default title in switch panel', function() {
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('.switch-header').textContent).toMatch(/Show Columns/);
       });
-    });
 
-    describe('Custom buttons', function() {
-      // Until we can properly type "this"
-      let context: TestContext<ClrDatagridColumnToggle, CustomButtonsTest>;
-
-      beforeEach(function() {
-        context = this.create(ClrDatagridColumnToggle, CustomButtonsTest, [
-          HideableColumnService,
-          ColumnToggleButtonsService,
-        ]);
+      it('can show custom title in switch panel', function() {
+        testComponent.hasCustomToggleTitle = true;
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('.switch-header').textContent).toMatch(/Custom Toggle Title/);
       });
 
-      it('projects custom buttons and title', function() {
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        expect(context.clarityDirective.open).toBe(false);
-        iconBtn.click();
-        context.detectChanges();
-        expect(context.clarityDirective.open).toBe(true);
-
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        expect(buttons[0].innerText.trim().toUpperCase()).toEqual('Select All!'.toUpperCase());
-        expect(buttons[1].innerText.trim().toUpperCase()).toEqual('OK!'.toUpperCase());
-        const title = context.clarityElement.querySelector('.switch-header');
-        expect(title.innerHTML).toContain('Custom Title');
+      it('shows toggle button in switch panel', function() {
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('button.switch-button').textContent).toMatch(/Select All/);
       });
 
-      it('handles the click events', function() {
-        const service = context.getClarityProvider(ColumnToggleButtonsService);
-        spyOn(service, 'buttonClicked');
-        const iconBtn = context.clarityElement.querySelector('.column-switch-wrapper > button');
-        iconBtn.click();
-        service.selectAllDisabled = false;
-        context.detectChanges();
-        const buttons = context.clarityElement.querySelectorAll('.switch-footer button');
-        buttons[0].click();
-        context.detectChanges();
-        expect(service.buttonClicked).toHaveBeenCalledTimes(1);
-        buttons[1].click();
-        context.detectChanges();
-        expect(service.buttonClicked).toHaveBeenCalledTimes(2);
+      it('disables toggle button when all columns are hideable and all of them are visible', function() {
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('button.switch-button').disabled).toBeTruthy();
+      });
+
+      it('enables toggle button when all columns are hideable and at least one of them is hidden', function() {
+        columnsService.mockAllHideable();
+        columnsService.mockHideableAt(1, true);
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('button.switch-button').disabled).toBeFalsy();
+      });
+
+      it('can show custom toggle button in switch panel', function() {
+        testComponent.hasCustomToggleButton = true;
+        columnsService.mockAllHideable();
+        columnToggle.open = true;
+        context.fixture.detectChanges();
+        expect(context.clarityElement.querySelector('button.switch-button').textContent).toMatch(
+          /Custom Toggle Button/
+        );
       });
     });
   });
 }
 
 @Component({
-  template: `
-        <clr-dg-column-toggle></clr-dg-column-toggle>
-        <ng-template #col0>dg-col-0</ng-template>
-        <ng-template #col1>dg-col-1</ng-template>
-        <ng-template #col2>dg-col-2</ng-template>
-        <ng-template #col3>dg-col-3</ng-template>
-        <ng-template #col4>dg-col-4</ng-template>
-    `,
+  template: `    
+    <ng-template>Template Content</ng-template>
+    <!--The above ng-template is required/used as a hideable column template-->
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title *ngIf="hasCustomToggleTitle">Custom Toggle Title</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button *ngIf="hasCustomToggleButton">Custom Toggle Button</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+  `,
 })
-class SimpleTest {
-  columnIds: string[] = ['dg-col-0', 'dg-col-1', 'dg-col-2', 'dg-col-3', 'dg-col-4'];
-  @ViewChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
-  shown: boolean = true;
-}
+class ColumnToggleTest {
+  private mockColumnsService: MockColumnsService;
 
-@Component({
-  template: `
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-button clrType="selectAll">Select All!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-button clrType="ok">OK!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
-        </clr-dg-column-toggle>
-    `,
-})
-class CustomButtonsTest {}
+  @ViewChild(TemplateRef)
+  set templateRef(value: TemplateRef<any>) {
+    this.mockColumnsService.templateRef = value;
+  }
+
+  constructor(columnsService: ColumnsService) {
+    this.mockColumnsService = <MockColumnsService>columnsService;
+  }
+
+  hasCustomToggleTitle: boolean = false;
+  hasCustomToggleButton: boolean = false;
+}

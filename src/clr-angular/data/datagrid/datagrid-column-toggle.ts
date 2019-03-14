@@ -3,72 +3,62 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChild, ContentChildren, OnDestroy, OnInit, QueryList } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, ContentChild } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
-import { HideableColumnService } from './providers/hideable-column.service';
+
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ColumnsService } from './providers/columns.service';
+import { ColumnState } from './interfaces/column-state.interface';
+import { DatagridColumnChanges } from './enums/column-changes.enum';
 
 @Component({
   selector: 'clr-dg-column-toggle',
   template: `
+    <button
+      #anchor
+      (click)="toggleSwitchPanel()"
+      class="btn btn-sm btn-link column-toggle--action"
+      type="button">
+      <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
+    </button>
+    <div class="column-switch"
+         *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
+      <div class="switch-header">
+        <ng-container *ngIf="!customToggleTitle">Show Columns</ng-container>
+        <ng-content select="clr-dg-column-toggle-title"></ng-content>
         <button
-                #anchor
-                (click)="toggleUI()"
-                class="btn btn-sm btn-link column-toggle--action"
-                type="button">
-            <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
+          class="btn btn-sm btn-link toggle-switch-close-button"
+          (click)="toggleSwitchPanel()"
+          type="button">
+          <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
         </button>
-        <div class="column-switch"
-             *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
-            <div class="switch-header">
-                <ng-container *ngIf="!title">Show Columns</ng-container>
-                <ng-content select="clr-dg-column-toggle-title"></ng-content>
-                <button
-                    class="btn btn-sm btn-link"
-                    (click)="toggleUI()"
-                    type="button">
-                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
-                </button>
-            </div>
-            <ul class="switch-content list-unstyled">
-                <li *ngFor="let column of columns">
-                    <clr-checkbox-wrapper>
-                        <input clrCheckbox type="checkbox"
-                          [disabled]="column.lastVisibleColumn"
-                          [ngModel]="!column.hidden"
-                          (ngModelChange)="toggleColumn($event, column)">
-                        <label><ng-template [ngTemplateOutlet]="column.template"></ng-template></label>
-                    </clr-checkbox-wrapper>
-                </li>
-            </ul>
-            <div class="switch-footer" *ngIf="buttons.length > 0">
-                <ng-content select="clr-dg-column-toggle-button"></ng-content>
-            </div>
-            <div class="switch-footer" *ngIf="buttons.length === 0">
-                <div>
-                    <button
-                            class="btn btn-sm btn-link p6 text-uppercase"
-                            [disabled]="allColumnsVisible"
-                            (click)="selectAll()"
-                            type="button">Select All
-                    </button>
-                </div>
-            </div>
-        </div>
-    `,
+      </div>
+      <ul class="switch-content list-unstyled">
+        <li *ngFor="let columnState of hideableColumnStates;">
+          <clr-checkbox-wrapper>
+            <input clrCheckbox type="checkbox"
+                   [disabled]="hasOnlyOneVisibleColumn && !columnState.hidden"
+                   [ngModel]="!columnState.hidden"
+                   (ngModelChange)="toggleColumnState(columnState, !$event)">
+            <label>
+              <ng-template [ngTemplateOutlet]="columnState.titleTemplateRef"></ng-template>
+            </label>
+          </clr-checkbox-wrapper>
+        </li>
+      </ul>
+      <div class="switch-footer">
+        <ng-content select="clr-dg-column-toggle-button"></ng-content>
+        <clr-dg-column-toggle-button *ngIf="!customToggleButton">Select All</clr-dg-column-toggle-button>
+      </div>
+    </div>
+  `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'open' },
 })
-export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
-  private _allColumnsVisible: boolean;
-
+export class ClrDatagridColumnToggle {
   /***
    * Popover init
    */
@@ -76,71 +66,33 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   public popoverPoint: Point = Point.LEFT_BOTTOM;
   public open: boolean = false;
 
-  /****
-   * DatagridHideableColumnModel init
-   */
-  public columns: DatagridHideableColumnModel[] = [];
+  @ContentChild(ClrDatagridColumnToggleTitle) customToggleTitle: ClrDatagridColumnToggleTitle;
+  @ContentChild(ClrDatagridColumnToggleButton) customToggleButton: ClrDatagridColumnToggleButton;
 
-  public get allColumnsVisible(): boolean {
-    return this._allColumnsVisible;
+  constructor(public commonStrings: ClrCommonStrings, private columnsService: ColumnsService) {}
+
+  get hideableColumnStates(): ColumnState[] {
+    const hideables = this.columnsService.columns.filter(column => column.value.hideable);
+    return hideables.map(column => column.value);
   }
 
-  public set allColumnsVisible(value: boolean) {
-    this._allColumnsVisible = value;
-  }
-
-  @ContentChild(ClrDatagridColumnToggleTitle) title: ClrDatagridColumnToggleTitle;
-  @ContentChildren(ClrDatagridColumnToggleButton) buttons: QueryList<ClrDatagridColumnToggleButton>;
-
-  constructor(
-    public hideableColumnService: HideableColumnService,
-    private columnToggleButtons: ColumnToggleButtonsService,
-    public commonStrings: ClrCommonStrings
-  ) {}
-
-  ngOnInit() {
-    this.subscriptions.push(
-      this.hideableColumnService.columnListChange.subscribe(columnList => {
-        // Reset the list of columns
-        this.columns.length = 0;
-        this.hideableColumnService.updateForLastVisibleColumn();
-        this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
-        this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
-
-        // Add only the hidden columns to the toggler.
-        columnList.forEach(col => {
-          if (col) {
-            this.columns.push(col);
-          }
-        });
-      })
-    );
-
-    this.subscriptions.push(
-      this.columnToggleButtons.selectAllButtonClicked.subscribe(() => {
-        this.selectAll();
-      })
+  get hasOnlyOneVisibleColumn(): boolean {
+    const nbNonHideableColumns = this.columnsService.columns.length - this.hideableColumnStates.length;
+    // this should only return true when there is no non-hideable columns.
+    return (
+      nbNonHideableColumns === 0 && this.hideableColumnStates.filter(columnState => !columnState.hidden).length === 1
     );
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
+  toggleColumnState(columnState: ColumnState, event: boolean) {
+    const columnToToggle = this.columnsService.columns.filter(column => column.value === columnState)[0];
+    this.columnsService.emitStateChange(columnToToggle, {
+      hidden: event,
+      changes: [DatagridColumnChanges.HIDDEN],
+    });
   }
 
-  selectAll() {
-    this.hideableColumnService.showHiddenColumns();
-    this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
-    this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
-  }
-
-  toggleColumn(event: boolean, column: DatagridHideableColumnModel) {
-    column.hidden = !event;
-    this.allColumnsVisible = this.hideableColumnService.checkForAllColumnsVisible;
-    this.columnToggleButtons.selectAllDisabled = this.allColumnsVisible;
-    this.hideableColumnService.updateForLastVisibleColumn();
-  }
-
-  toggleUI() {
+  toggleSwitchPanel() {
     this.open = !this.open;
   }
 }

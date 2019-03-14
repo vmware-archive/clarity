@@ -394,10 +394,6 @@
         flex: 0 0 auto;
       }
 
-      &--hidden {
-        display: none;
-      }
-
       &.datagrid-fixed-column {
         flex: 0 0 $clr-datagrid-fixed-column-size;
         max-width: $clr-datagrid-fixed-column-size;
@@ -501,10 +497,6 @@
         flex: 0 0 auto;
       }
 
-      &--hidden {
-        display: none;
-      }
-
       &.datagrid-fixed-column {
         flex: 0 0 $clr-datagrid-fixed-column-size;
         max-width: $clr-datagrid-fixed-column-size;
@@ -566,6 +558,13 @@
         background-image: generateEmptyDatagridPlaceholder();
       }
     }
+
+    .datagrid-hidden-column {
+      &.datagrid-column,
+      &.datagrid-cell {
+        display: none;
+      }
+    }
   }
 
   .datagrid-row-replaced {
@@ -582,7 +581,7 @@
       .datagrid-cell {
         display: block;
         padding-top: 11px;
-        &--hidden {
+        &.datagrid-hidden-column {
           display: none;
         }
       }
@@ -658,6 +657,7 @@
     }
 
     .column-switch-wrapper {
+      position: relative;
       flex: 0 0 auto;
 
       &.active {

@@ -3,43 +3,32 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
-import { DatagridRenderStep } from '../enums/render-step.enum';
-import { DatagridRenderOrganizer } from '../render/render-organizer';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ColumnStateDiff, ColumnState } from '../interfaces/column-state.interface';
 
 @Injectable()
-export class ColumnsService implements OnDestroy {
-  subscriptions: Subscription[] = [];
-  columns: BehaviorSubject<DatagridColumnState>[] = [];
+export class ColumnsService {
+  columns: BehaviorSubject<ColumnState>[] = [];
 
-  constructor(private organizer: DatagridRenderOrganizer) {
-    this.subscriptions.push(
-      this.organizer.filterRenderSteps(DatagridRenderStep.CLEAR_WIDTHS).subscribe(() => this.reset())
-    );
+  get columnStates(): ColumnState[] {
+    return this.columns.map(column => column.value);
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
-  }
-
-  private reset() {
-    this.columns.forEach((column, index) => {
-      this.emitStateChange(index, { width: 0 });
-    });
+  get hasHideableColumns(): boolean {
+    return this.columnStates.filter(state => state.hideable).length > 0;
   }
 
   // Helper method to emit a change to a column only when there is an actual diff to process for that column
-  emitStateChange(columnIndex: number, diff: Partial<DatagridColumnState>) {
+  emitStateChangeAt(columnIndex: number, diff: ColumnStateDiff) {
     if (!this.columns[columnIndex]) {
       return;
     }
-    const current = this.columns[columnIndex].value;
-    const hasChange = Object.keys(diff).filter(key => diff[key] !== current[key]);
+    this.emitStateChange(this.columns[columnIndex], diff);
+  }
 
-    if (hasChange) {
-      this.columns[columnIndex].next({ ...current, ...diff });
-    }
+  emitStateChange(column: BehaviorSubject<ColumnState>, diff: ColumnStateDiff) {
+    const current = column.value;
+    column.next({ ...current, ...diff });
   }
 }

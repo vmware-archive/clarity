@@ -28,9 +28,9 @@ import { DatagridHeaderRenderer } from './header-renderer';
 import { NoopDomAdapter } from './noop-dom-adapter';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { ColumnsService } from '../providers/columns.service';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 import { DatagridRowRenderer } from './row-renderer';
+import { ColumnStateDiff } from '../interfaces/column-state.interface';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
@@ -76,7 +76,8 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
   }
 
   @ContentChildren(DatagridHeaderRenderer) private headers: QueryList<DatagridHeaderRenderer>;
-  @ContentChildren(DatagridRowRenderer) private rows: QueryList<DatagridRowRenderer>;
+  @ContentChildren(DatagridRowRenderer, { descendants: true })
+  private rows: QueryList<DatagridRowRenderer>; // if expandable row is expanded initially, query its cells too.
 
   ngAfterContentInit() {
     this.setupColumns();
@@ -109,11 +110,9 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
   }
 
   private setupColumns() {
-    this.headers.forEach((header, index) => {
-      this.columnsService.columns[index] = header.columnState;
-    });
+    this.headers.forEach((header, index) => header.setColumnState(index));
     this.columnsService.columns.splice(this.headers.length); // Trim any old columns
-    this.rows.forEach(row => row.setColumnStates());
+    this.rows.forEach(row => row.setColumnState());
   }
 
   private _heightSet: boolean = false;
@@ -166,7 +165,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       // If all columns have strict widths, remove the strict width from the last column and make it the column's
       // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty
       // gap in the Datagrid.
-      const state: Partial<DatagridColumnState> = {
+      const state: ColumnStateDiff = {
         changes: [DatagridColumnChanges.WIDTH],
         ...header.getColumnWidthState(),
       };
@@ -179,7 +178,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         state.strictWidth = 0;
       }
 
-      this.columnsService.emitStateChange(index, state);
+      this.columnsService.emitStateChangeAt(index, state);
     });
   }
 

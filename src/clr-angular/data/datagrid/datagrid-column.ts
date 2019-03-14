@@ -20,7 +20,6 @@ import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { CustomFilter } from './providers/custom-filter';
@@ -28,8 +27,6 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
-
-let nbCount: number = 0;
 
 @Component({
   selector: 'clr-dg-column',
@@ -64,7 +61,6 @@ let nbCount: number = 0;
   `,
   host: {
     '[class.datagrid-column]': 'true',
-    '[class.datagrid-column--hidden]': 'hidden',
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
@@ -88,34 +84,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
       }
       // deprecated: to be removed - END
     });
-
-    this.columnId = 'dg-col-' + nbCount.toString(); // Approximate a GUID
-    nbCount++;
-  }
-
-  /**
-   * @property columnId
-   *
-   * @description
-   * A ClrDatagridColumn class variable that holds the number of ClrDatagridColumn instances for a Datagrid.
-   * It is used to generate a unique id for the ClrDatagridColumn instance.
-   *
-   */
-  public columnId: string;
-
-  /**
-   * @property hidden
-   *
-   * @description
-   * A property that allows the column to be hidden / shown with css
-   * Note the default allows the ClrDatagridColumn to have an *ngIf on it. (EHCAIWC - will occur if its not
-   * initialized)
-   *
-   * @default false
-   *
-   */
-  public get hidden(): boolean {
-    return !!this.hideable && this.hideable.hidden;
   }
 
   /**
@@ -322,17 +290,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();
-
-  /***********
-   *
-   * @property hideable
-   *
-   * @description
-   * When a column is hideable this is defined with an instance of DatagridHideableColumnModel.
-   * When its not hideable should be undefined.
-   *
-   */
-  public hideable: DatagridHideableColumnModel;
 
   private wrappedInjector: Injector;
 

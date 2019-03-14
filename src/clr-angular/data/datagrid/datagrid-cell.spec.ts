@@ -6,18 +6,15 @@
 import { Component } from '@angular/core';
 
 import { ClrDatagridCell } from './datagrid-cell';
-import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { TestContext } from './helpers.spec';
-import { HideableColumnService } from './providers/hideable-column.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 
 export default function(): void {
   describe('ClrDatagridCell component', function() {
     let context: TestContext<ClrDatagridCell, SimpleTest>;
-    let hideableColumnService: HideableColumnService;
 
     beforeEach(function() {
-      context = this.create(ClrDatagridCell, SimpleTest, [DatagridRenderOrganizer, HideableColumnService]);
+      context = this.create(ClrDatagridCell, SimpleTest, [DatagridRenderOrganizer]);
     });
 
     it('provides a wrapped view for the content', function() {
@@ -31,15 +28,6 @@ export default function(): void {
 
     it('adds the .datagrid-cell class to the host', function() {
       expect(context.clarityElement.classList.contains('datagrid-cell')).toBeTruthy();
-    });
-
-    it('adds the .datagrid-cell--hidden class to the host', function() {
-      const testColumn: DatagridHideableColumnModel[] = [new DatagridHideableColumnModel(null, 'dg-col-0', true)];
-      hideableColumnService = context.getClarityProvider(HideableColumnService);
-      hideableColumnService.updateColumnList(testColumn);
-      context.clarityDirective.id = 'dg-col-0';
-      context.detectChanges();
-      expect(context.clarityElement.classList.contains('datagrid-cell--hidden')).toBeTruthy();
     });
 
     it('does only adds .datagrid-signpost-trigger class when there is a signpost', function() {

@@ -9,11 +9,12 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { ColumnResizerService } from '../providers/column-resizer.service';
-import { STRICT_WIDTH_CLASS } from './constants';
+import { HIDDEN_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
-import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 import { COLUMN_STATE, COLUMN_STATE_PROVIDER } from '../providers/column-state.provider';
+import { ColumnsService } from '../providers/columns.service';
 
 @Directive({ selector: 'clr-dg-column', providers: [ColumnResizerService, COLUMN_STATE_PROVIDER] })
 export class DatagridHeaderRenderer implements OnDestroy {
@@ -23,15 +24,11 @@ export class DatagridHeaderRenderer implements OnDestroy {
     private organizer: DatagridRenderOrganizer,
     private domAdapter: DomAdapter,
     private columnResizerService: ColumnResizerService,
-    @Inject(COLUMN_STATE) public columnState: BehaviorSubject<DatagridColumnState>
+    private columnsService: ColumnsService,
+    @Inject(COLUMN_STATE) private columnState: BehaviorSubject<ColumnState>
   ) {
     this.subscriptions.push(
       this.organizer.filterRenderSteps(DatagridRenderStep.CLEAR_WIDTHS).subscribe(() => this.clearWidth())
-    );
-    this.subscriptions.push(
-      this.organizer
-        .filterRenderSteps(DatagridRenderStep.DETECT_STRICT_WIDTHS)
-        .subscribe(() => this.detectStrictWidth())
     );
 
     this.subscriptions.push(columnState.subscribe(state => this.stateChanges(state)));
@@ -51,12 +48,15 @@ export class DatagridHeaderRenderer implements OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  private stateChanges(state: DatagridColumnState) {
+  private stateChanges(state: ColumnState) {
     if (state.changes && state.changes.length) {
       state.changes.forEach(change => {
         switch (change) {
           case DatagridColumnChanges.WIDTH:
             this.setWidth(state);
+            break;
+          case DatagridColumnChanges.HIDDEN:
+            this.setHidden(state);
             break;
           default:
             break;
@@ -93,7 +93,7 @@ export class DatagridHeaderRenderer implements OnDestroy {
     return width;
   }
 
-  public getColumnWidthState(): Partial<DatagridColumnState> {
+  public getColumnWidthState(): Partial<ColumnState> {
     const strictWidth = this.detectStrictWidth();
     return {
       width: this.computeWidth(strictWidth),
@@ -101,7 +101,11 @@ export class DatagridHeaderRenderer implements OnDestroy {
     };
   }
 
-  private setWidth(state: DatagridColumnState) {
+  public setColumnState(index: number) {
+    this.columnsService.columns[index] = this.columnState;
+  }
+
+  private setWidth(state: ColumnState) {
     if (state.strictWidth) {
       if (this.columnResizerService.resizedBy) {
         this.resizeEmitter.emit(state.width);
@@ -116,6 +120,14 @@ export class DatagridHeaderRenderer implements OnDestroy {
       this.renderer.setStyle(this.el.nativeElement, 'width', state.width + 'px');
       this.widthSet = true;
       this.autoSet = true;
+    }
+  }
+
+  private setHidden(state: ColumnState) {
+    if (state.hidden) {
+      this.renderer.addClass(this.el.nativeElement, HIDDEN_COLUMN_CLASS);
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, HIDDEN_COLUMN_CLASS);
     }
   }
 }

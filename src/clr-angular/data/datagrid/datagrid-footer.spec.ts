@@ -6,29 +6,8 @@
 import { Component } from '@angular/core';
 
 import { ClrDatagridFooter } from './datagrid-footer';
-import { TestContext } from './helpers.spec';
-import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
-import { FiltersProvider } from './providers/filters';
-import { HideableColumnService } from './providers/hideable-column.service';
-import { Items } from './providers/items';
-import { Page } from './providers/page';
-import { Selection } from './providers/selection';
-import { Sort } from './providers/sort';
-import { StateDebouncer } from './providers/state-debouncer.provider';
-import { TableSizeService } from './providers/table-size.service';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { SelectionType } from './enums/selection-type';
-
-const PROVIDERS_NEEDED = [
-  Selection,
-  Items,
-  FiltersProvider,
-  Sort,
-  Page,
-  HideableColumnService,
-  StateDebouncer,
-  ColumnToggleButtonsService,
-  TableSizeService,
-];
 
 export default function(): void {
   describe('ClrDatagridFooter component', function() {
@@ -36,7 +15,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridFooter<number>, SimpleTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridFooter, SimpleTest, PROVIDERS_NEEDED);
+        context = this.create(ClrDatagridFooter, SimpleTest, DATAGRID_SPEC_PROVIDERS);
       });
 
       it('projects content', function() {
@@ -71,22 +50,18 @@ export default function(): void {
         clarityDirectiveSelection.selectionType = SelectionType.Multi;
         clarityDirectiveSelection.current.push(1);
 
-        context.clarityDirective.cdr.markForCheck();
         context.detectChanges();
 
         expect(context.clarityElement.querySelector('.datagrid-footer-select')).not.toBeNull();
         expect(context.clarityElement.querySelector('.datagrid-footer-select').textContent).toMatch('1');
 
         clarityDirectiveSelection.current.push(1);
-        context.clarityDirective.cdr.markForCheck();
         context.detectChanges();
 
         expect(context.clarityElement.querySelector('.datagrid-footer-select')).not.toBeNull();
         expect(context.clarityElement.querySelector('.datagrid-footer-select').textContent).toMatch('2');
 
         clarityDirectiveSelection.current = [];
-
-        context.clarityDirective.cdr.markForCheck();
         context.detectChanges();
 
         expect(context.clarityElement.querySelector('.datagrid-footer-select')).toBeNull();
@@ -97,7 +72,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridFooter<void>, ColumnTogglerTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridFooter, ColumnTogglerTest, PROVIDERS_NEEDED);
+        context = this.create(ClrDatagridFooter, ColumnTogglerTest, DATAGRID_SPEC_PROVIDERS);
       });
 
       it('projects custom column toggler', function() {
@@ -112,18 +87,21 @@ export default function(): void {
   });
 }
 
-@Component({ template: `<clr-dg-footer>Hello world</clr-dg-footer>` })
+@Component({
+  template: `
+    <clr-dg-footer>Hello world</clr-dg-footer>`,
+})
 class SimpleTest {}
 
 @Component({
-  template: `        
+  template: `
     <clr-dg-footer>
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
-            <clr-dg-column-toggle-button type="ok">OK!!!</clr-dg-column-toggle-button>
-            <clr-dg-column-toggle-button type="selectAll">Select All!!!</clr-dg-column-toggle-button>
-        </clr-dg-column-toggle>
-        Hello world
+      <clr-dg-column-toggle>
+        <clr-dg-column-toggle-title>Custom Title</clr-dg-column-toggle-title>
+        <clr-dg-column-toggle-button type="ok">OK!!!</clr-dg-column-toggle-button>
+        <clr-dg-column-toggle-button type="selectAll">Select All!!!</clr-dg-column-toggle-button>
+      </clr-dg-column-toggle>
+      Hello world
     </clr-dg-footer>`,
 })
 class ColumnTogglerTest {}

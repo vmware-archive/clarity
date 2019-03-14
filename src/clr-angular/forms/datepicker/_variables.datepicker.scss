@@ -1,12 +1,12 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 $clr-calendar-click-target: 1.5rem;
-$clr-calendar-background-color: $clr-white;
-$clr-calendar-border-color: $clr-light-midtone-gray;
-$clr-datepicker-trigger-color: $clr-action-blue;
-$clr-datepicker-trigger-hover-color: $clr-action-blue-dark;
+$clr-calendar-background-color: $clr-color-neutral-0 !default;
+$clr-calendar-border-color: $clr-color-neutral-400 !default;
+$clr-datepicker-trigger-color: $clr-color-action-600 !default;
+$clr-datepicker-trigger-hover-color: $clr-color-action-800 !default;
 $clr-calendar-margin-top: 0.25rem;
 $clr-calendar-padding: 0.5rem;
 
@@ -16,8 +16,8 @@ $clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-paddi
 $clr-calendar-height: (8 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
 //(8 = 6 date rows + 1 row for day heading + 1 row for calendar switches and month/year pickers)
 
-$clr-calendar-btn-color: $action-blues-light-midtone;
-$clr-calendar-btn-hover-focus-color: $clr-global-hover-color;
+$clr-calendar-btn-color: $clr-color-action-500 !default;
+$clr-calendar-btn-hover-focus-color: $clr-global-hover-color !default;
 $clr-calendar-btn-padding: 0;
 
 $clr-calendar-month-cell-height: 2rem;
@@ -26,12 +26,12 @@ $clr-calendar-month-cell-padding: 0.5rem;
 $clr-calendar-picker-btn-font-size: 0.75rem;
 $clr-calendar-picker-btn-font-weight: 200;
 
-$clr-calendar-today-date-cell-color: $clr-black;
+$clr-calendar-today-date-cell-color: $clr-color-neutral-1000 !default;
 $clr-calendar-today-date-cell-font-weight: 600;
 
-$clr-calendar-active-cell-background-color: $clr-global-selection-color;
-$clr-calendar-active-focus-cell-background-color: $clr-global-selection-color;
-$clr-calendar-active-cell-color: $clr-black;
+$clr-calendar-active-cell-background-color: $clr-global-selection-color !default;
+$clr-calendar-active-focus-cell-background-color: $clr-global-selection-color !default;
+$clr-calendar-active-cell-color: $clr-color-neutral-1000 !default;
 
 $clr-day-font-size: 0.5rem;
 $clr-switcher-width: $clr-calendar-click-target * 3;

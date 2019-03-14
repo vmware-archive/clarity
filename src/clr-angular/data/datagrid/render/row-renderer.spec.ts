@@ -3,94 +3,81 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
-
-import { DatagridWillyWonka } from '../chocolate/datagrid-willy-wonka';
-import { DatagridRenderStep } from '../enums/render-step.enum';
-import { TestContext } from '../helpers.spec';
-import { DisplayModeService } from '../providers/display-mode.service';
-import { FiltersProvider } from '../providers/filters';
-import { ExpandableRowsCount } from '../providers/global-expandable-rows';
-import { HideableColumnService } from '../providers/hideable-column.service';
-import { Items } from '../providers/items';
-import { Page } from '../providers/page';
-import { RowActionService } from '../providers/row-action-service';
-import { Selection } from '../providers/selection';
-import { Sort } from '../providers/sort';
-import { StateDebouncer } from '../providers/state-debouncer.provider';
-
-import { DatagridCellRenderer } from './cell-renderer';
-import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
-import { DatagridRenderOrganizer } from './render-organizer';
-import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
+import { Component, DebugElement } from '@angular/core';
+import { DATAGRID_SPEC_PROVIDERS, TestContext } from '../helpers.spec';
 import { DatagridRowRenderer } from './row-renderer';
+import { ColumnsService } from '../providers/columns.service';
+import { DatagridColumnState } from '../interfaces/column-state.interface';
+import { By } from '@angular/platform-browser';
+import { DatagridCellRenderer } from './cell-renderer';
+import { BehaviorSubject } from 'rxjs';
+import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { STRICT_WIDTH_CLASS } from './constants';
 
-const PROVIDERS = [
-  Selection,
-  Items,
-  FiltersProvider,
-  Sort,
-  Page,
-  RowActionService,
-  ExpandableRowsCount,
-  MOCK_ORGANIZER_PROVIDER,
-  DomAdapter,
-  HideableColumnService,
-  DatagridWillyWonka,
-  StateDebouncer,
-  DisplayModeService,
-];
 export default function(): void {
+  let columnsService: ColumnsService;
+
+  function initService(cols = 2) {
+    for (let i = 0; i < cols; i++) {
+      columnsService.columns[i] = new BehaviorSubject<DatagridColumnState>({ width: i });
+    }
+  }
+
   describe('DatagridRowRenderer directive', function() {
     let context: TestContext<DatagridRowRenderer, SimpleTest>;
-    let organizer: MockDatagridRenderOrganizer;
-    let cellWidthSpy: jasmine.Spy;
+    let cells: DebugElement[];
+    let columnStateSpy: jasmine.Spy;
 
     beforeEach(function() {
-      context = this.create(DatagridRowRenderer, SimpleTest, PROVIDERS);
-      organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      organizer.widths = [{ px: 42, strict: false }, { px: 24, strict: true }];
-      cellWidthSpy = spyOn(DatagridCellRenderer.prototype, 'setWidth');
+      context = this.create(DatagridRowRenderer, SimpleTest, DATAGRID_SPEC_PROVIDERS);
+      columnsService = context.getClarityProvider(ColumnsService);
+      initService();
+      columnStateSpy = spyOnProperty(DatagridCellRenderer.prototype, 'columnState', 'set').and.callThrough();
+      context.clarityDirective.setupColumns();
     });
 
-    it('sets the widths of the cells when notified', function() {
-      organizer.updateRenderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
-      expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
-    });
-
-    it("doesn't set the width when the organizer doesn't have them yet", function() {
-      organizer.widths = [];
-      organizer.updateRenderStep.next(DatagridRenderStep.ALIGN_COLUMNS);
-      expect(cellWidthSpy).not.toHaveBeenCalled();
+    it('sets the columnState', function() {
+      cells = context.fixture.debugElement.queryAll(By.directive(DatagridCellRenderer));
+      expect(cells.length).toEqual(2);
+      expect(columnStateSpy.calls.count()).toEqual(2);
     });
 
     it('sets the widths of the cells when created after the widths have been computed', function() {
-      context.testComponent.show = false;
+      columnsService.columns[0].next({ width: 42, strictWidth: 0, changes: [DatagridColumnChanges.WIDTH] });
+      columnsService.columns[1].next({ width: 24, strictWidth: 24, changes: [DatagridColumnChanges.WIDTH] });
       context.detectChanges();
-      expect(cellWidthSpy).not.toHaveBeenCalled();
-      context.testComponent.show = true;
-      context.detectChanges();
-      expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
+      cells = context.fixture.debugElement.queryAll(By.directive(DatagridCellRenderer));
+      expect(cells.length).toBe(2);
+      expect(cells[0].nativeElement.style.width).toEqual('42px');
+      expect(cells[0].nativeElement.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
+      expect(cells[1].nativeElement.style.width).toEqual('24px');
+      expect(cells[1].nativeElement.classList.contains(STRICT_WIDTH_CLASS)).toBeTrue();
     });
 
-    it('sets the size of cells when they change dynamically', function() {
-      context.testComponent.world = false;
+    it('sets the widths of cells after they have been reattached to the view', function() {
+      context.testComponent.showCell = false;
+      columnsService.columns[0].next({ width: 42, strictWidth: 0, changes: [DatagridColumnChanges.WIDTH] });
+      columnsService.columns[1].next({ width: 24, strictWidth: 24, changes: [DatagridColumnChanges.WIDTH] });
       context.detectChanges();
-      expect(cellWidthSpy.calls.allArgs()).toEqual([[false, 42], [true, 24]]);
+      context.testComponent.showCell = true;
+      context.detectChanges();
+      cells = context.fixture.debugElement.queryAll(By.directive(DatagridCellRenderer));
+      expect(context.testElement.querySelectorAll('clr-dg-cell')[0].style.width).toBe('42px');
+      expect(context.testElement.querySelectorAll('clr-dg-cell')[0].classList.contains(STRICT_WIDTH_CLASS)).toBe(false);
+      expect(context.testElement.querySelectorAll('clr-dg-cell')[1].style.width).toBe('24px');
+      expect(context.testElement.querySelectorAll('clr-dg-cell')[1].classList.contains(STRICT_WIDTH_CLASS)).toBe(true);
     });
   });
 }
 
 @Component({
   template: `
-        <clr-dg-row *ngIf="show">
+        <clr-dg-row>
             <clr-dg-cell>Hello</clr-dg-cell>
-            <clr-dg-cell *ngIf="world">World</clr-dg-cell>
-            <clr-dg-cell *ngIf="!world">Clarity</clr-dg-cell>
+            <clr-dg-cell *ngIf="showCell">World</clr-dg-cell>
         </clr-dg-row>
     `,
 })
 class SimpleTest {
-  show = true;
-  world = true;
+  showCell = true;
 }

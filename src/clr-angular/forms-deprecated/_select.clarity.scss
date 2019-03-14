@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -83,16 +83,16 @@
   select[multiple],
   select[size] {
     padding: 0;
-    background: $clr-multiple-select-background;
-    border: $clr-default-borderwidth solid $clr-multiple-select-border-color;
+    background: $clr-forms-select-multiple-background-color;
+    border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
     border-radius: $clr-global-borderradius;
     height: auto;
     min-width: 5rem;
 
     &:hover,
     &:active {
-      background: $clr-multiple-select-background;
-      border-color: $clr-multiple-select-border-color;
+      background: $clr-forms-select-multiple-background-color;
+      border-color: $clr-forms-select-multiple-border-color;
     }
     option {
       padding: 0.125rem 0.25rem;

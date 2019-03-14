@@ -36,7 +36,7 @@
       background-image: generateAddIcon();
 
       &:hover {
-        background-image: generateAddIcon($action-blues-dark-midtone);
+        background-image: generateAddIcon($clr-color-action-600);
       }
     }
 
@@ -44,7 +44,7 @@
       background-image: generateEditIcon();
 
       &:hover {
-        background-image: generateEditIcon($action-blues-dark-midtone);
+        background-image: generateEditIcon($clr-color-action-600);
       }
     }
 
@@ -52,7 +52,7 @@
       background-image: generateFolderAddIcon();
 
       &:hover {
-        background-image: generateFolderAddIcon($action-blues-dark-midtone);
+        background-image: generateFolderAddIcon($clr-color-action-600);
       }
     }
 
@@ -60,7 +60,7 @@
       background-image: generateMoreIcon();
 
       &:hover {
-        background-image: generateMoreIcon($action-blues-dark-midtone);
+        background-image: generateMoreIcon($clr-color-action-600);
       }
     }
   }

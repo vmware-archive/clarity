@@ -39,6 +39,7 @@
     white-space: nowrap;
   }
 
+  // legacy can be removed when old layout is removed
   .datepicker-trigger {
     @include generate-calendar-button();
 

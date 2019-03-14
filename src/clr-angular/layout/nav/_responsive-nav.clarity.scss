@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -88,7 +88,7 @@
       display: inline-block;
       height: 0.0833333rem;
       width: 1rem;
-      background: $clr-white;
+      background: $clr-color-neutral-0;
       border-radius: 0.125rem;
     }
 
@@ -126,7 +126,7 @@
       display: inline-block;
       height: 0.166667rem;
       width: 0.166667rem;
-      background: $clr-white;
+      background: $clr-color-neutral-0;
       border-radius: 0.166667rem;
     }
 
@@ -309,7 +309,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba($clr-black, 0.85);
+            background: rgba($clr-color-neutral-1000, 0.85);
             cursor: pointer;
             z-index: $clr-sliding-panel-backdrop-z-index;
           }
@@ -380,7 +380,7 @@
 
             clr-icon[shape='vm-bug'],
             .clr-vmw-logo {
-              background-color: $gray-dark;
+              background-color: $clr-color-neutral-600;
               border-radius: $clr-global-borderradius;
             }
 

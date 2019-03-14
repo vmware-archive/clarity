@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -26,8 +26,8 @@
   .clr-control-label {
     display: block;
     color: $clr-forms-label-color;
-    @include clr-getTypePropertiesForDomElement(form_label, (font-size));
-    font-weight: 600;
+    font-size: $clr-forms-label-font-size;
+    font-weight: $clr-forms-label-font-weight;
     line-height: $clr-forms-baseline * 3;
   }
 
@@ -41,7 +41,8 @@
 
   .clr-subtext {
     display: block;
-    @include clr-getTypePropertiesForDomElement(form_subtext, (font-size, line-height));
+    font-size: $clr-forms-subtext-font-size;
+    line-height: $clr-forms-subtext-line-height;
     color: $clr-forms-subtext-color;
     margin-top: $clr-forms-baseline;
   }

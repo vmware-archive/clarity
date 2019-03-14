@@ -3,46 +3,32 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, ContentChildren, Directive, OnDestroy, QueryList } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { DatagridRenderStep } from '../enums/render-step.enum';
+import { AfterViewInit, ContentChildren, Directive, QueryList } from '@angular/core';
 
 import { DatagridCellRenderer } from './cell-renderer';
-import { DatagridRenderOrganizer } from './render-organizer';
+import { ColumnsService } from '../providers/columns.service';
 
 @Directive({ selector: 'clr-dg-row, clr-dg-row-detail' })
-export class DatagridRowRenderer implements AfterContentInit, OnDestroy {
-  constructor(private organizer: DatagridRenderOrganizer) {
-    this.subscriptions.push(
-      organizer.filterRenderSteps(DatagridRenderStep.ALIGN_COLUMNS).subscribe(() => this.setWidths())
-    );
-  }
+export class DatagridRowRenderer implements AfterViewInit {
+  @ContentChildren(DatagridCellRenderer) private cells: QueryList<DatagridCellRenderer>;
 
-  private subscriptions: Subscription[] = [];
-  ngOnDestroy() {
-    this.subscriptions.forEach(sub => sub.unsubscribe());
-  }
-
-  @ContentChildren(DatagridCellRenderer) cells: QueryList<DatagridCellRenderer>;
-
-  private setWidths() {
-    if (this.organizer.widths.length !== this.cells.length) {
-      return;
-    }
-    this.cells.forEach((cell, index) => {
-      const width = this.organizer.widths[index];
-      cell.setWidth(width.strict, width.px);
-    });
-  }
-
-  ngAfterContentInit() {
-    this.cells.changes.subscribe(() => {
-      this.setWidths();
-    });
-  }
+  constructor(private columnsService: ColumnsService) {}
 
   ngAfterViewInit() {
-    this.setWidths();
+    this.cells.changes.subscribe(() => {
+      this.setColumnStates();
+    });
+  }
+
+  setupColumns() {
+    this.setColumnStates();
+  }
+
+  private setColumnStates() {
+    this.cells.forEach((cell, index) => {
+      if (this.columnsService.columns[index]) {
+        cell.columnState = this.columnsService.columns[index];
+      }
+    });
   }
 }

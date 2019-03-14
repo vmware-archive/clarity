@@ -74,7 +74,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
   position: absolute;
   top: $clr-icons-content-top;
   left: 0;
-  background-color: $clr-near-white;
+  background-color: $clr-color-neutral-50;
   min-height: calc(100vh - #{$clr-icons-content-top});
   width: 100%;
   text-align: center;
@@ -124,7 +124,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
       position: absolute;
       left: $clr_baselineRem_0_5;
       top: $clr_baselineRem_0_5;
-      color: $clr-action-blue;
+      color: $clr-color-action-600;
     }
     button.close {
       position: absolute;

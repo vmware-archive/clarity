@@ -25,7 +25,7 @@
 
 pre,
 clr-code-snippet /deep/ pre {
-  background-color: $clr-near-white;
+  background-color: $clr-color-neutral-50;
   padding: 12px;
 }
 
@@ -36,7 +36,7 @@ clr-code-snippet /deep/ pre {
 
 .icon-highlight-code {
   margin-top: $clr_baselineRem_0_5;
-  color: $clr-red-light-midtone;
+  color: $clr-color-danger-700;
 }
 
 .icon-variants {
@@ -51,11 +51,11 @@ clr-code-snippet /deep/ pre {
     justify-content: space-around;
     text-align: center;
 
-    border: 1px dashed rgba($clr-dark-gray, 0);
+    border: 1px dashed rgba($clr-color-neutral-700, 0);
     background-color: transparent;
     outline: none;
 
-    color: $clr-dark-gray;
+    color: $clr-color-neutral-700;
     cursor: pointer;
 
     padding: 0;
@@ -64,12 +64,12 @@ clr-code-snippet /deep/ pre {
     transition: all 0.2s ease-out;
 
     &.active {
-      border: 1px dashed rgba($clr-dark-gray, 1);
+      border: 1px dashed rgba($clr-color-neutral-700, 1);
       border-radius: $clr-default-borderradius;
     }
 
     &:hover {
-      border: 1px dashed rgba($clr-dark-gray, 1);
+      border: 1px dashed rgba($clr-color-neutral-700, 1);
       border-radius: $clr-default-borderradius;
     }
 

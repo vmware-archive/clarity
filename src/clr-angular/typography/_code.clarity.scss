@@ -8,7 +8,7 @@
     margin: 0.5rem 0;
   }
   pre {
-    border: $clr-default-borderwidth solid $gray-light-midtone;
+    border: $clr-default-borderwidth solid $clr-color-neutral-400;
     max-height: 15rem;
     border-radius: $clr-default-borderradius;
     overflow: auto;
@@ -20,7 +20,7 @@
   // @deprecated Bootstrap dependencies are deprecated since 1.0. Review and edit before 2.0 if needed.
   code {
     &.clr-code {
-      color: $reds-dark-midtone;
+      color: $clr-color-danger-800;
       padding: 0;
       background: transparent;
     }

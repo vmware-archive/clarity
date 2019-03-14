@@ -78,9 +78,10 @@
                 <div class="description">
                     <p class="title">Git Change</p>
                     <p>
-                        <a href="https://github.com/vmware/clarity/commit/{{commit}}" target="_blank">
+                        <a href="https://github.com/vmware/clarity/commit/{{commit}}" target="_blank" *ngIf="commit">
                             Direct link to the git change
                         </a>
+                        <a href="https://github.com/vmware/clarity/tree/{{releaseNumber}}" target="_blank" *ngIf="!commit">Direct link to GitHub</a>
                     </p>
                 </div>
             </div>
@@ -96,17 +97,15 @@
         <a class="nav-link" routerLink="/news" routerLinkActive="active"
            [routerLinkActiveOptions]="{exact:true}">Current Release ({{current}})</a>
 
-        <ng-container *ngFor="let major of versions; let i = index">
-            <section *ngFor="let minor of minors[major]; let j = index;" class="nav-group collapsible">
-                <input id="tab{{i}}{{j}}" type="checkbox" checked>
-                <label for="tab{{i}}{{j}}">{{minor}} Changelogs</label>
-                <ul class="nav-list">
-                    <li *ngFor="let patch of patches[minor]">
-                        <a class="nav-link" [routerLink]="patch" routerLinkActive="active">{{patch}}</a>
-                    </li>
-                </ul>
-            </section>
-        </ng-container>
+        <section *ngFor="let version of versions | keyvalue:orderVersions" class="nav-group collapsible">
+            <input id="tab{{version.key}}" type="checkbox" checked>
+            <label for="tab{{version.key}}">{{version.key}} Changelogs</label>
+            <ul class="nav-list">
+                <li *ngFor="let release of version.value">
+                    <a class="nav-link" [routerLink]="release" routerLinkActive="active">{{release}}</a>
+                </li>
+            </ul>
+        </section>
 
     </section>
 </nav>

@@ -6,7 +6,9 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-    <input type="date" [(clrDate)]="date">
+<form clrForm clrLayout="vertical">
+  <input type="date" [(clrDate)]="date" newFormLayout="true">
+</form>
 `;
 
 @Component({

@@ -12,10 +12,11 @@ import { FiltersProvider } from './providers/filters';
 import { HideableColumnService } from './providers/hideable-column.service';
 import { Items } from './providers/items';
 import { Page } from './providers/page';
-import { Selection, SelectionType } from './providers/selection';
+import { Selection } from './providers/selection';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
+import { SelectionType } from './enums/selection-type';
 
 const PROVIDERS_NEEDED = [
   Selection,

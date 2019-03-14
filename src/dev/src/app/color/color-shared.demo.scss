@@ -2,14 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../../../clr-angular/utils/vendor/decimalRounding.clarity';
-@import '../../../../clr-angular/utils/vendor/mathPow.clarity';
 @import '../../../../clr-angular/utils/mixins.clarity';
 @import '../../../../clr-angular/color/variables.color';
-@import '../../../../clr-angular/color/utils/colors.clarity';
-@import '../../../../clr-angular/color/utils/contrast-cache.clarity';
-@import '../../../../clr-angular/color/utils/helpers.clarity';
-@import '../../../../clr-angular/color/color.clarity';
 @import '../../../../clr-angular/utils/variables.global';
 
 @mixin clrdemo-colorPaletteLabels {
@@ -60,26 +54,16 @@
   th {
     font-weight: normal;
     text-align: center;
-    color: clr-getColor(light-midtone);
+    color: $clr-color-neutral-400;
   }
 
   td {
-    border: $clr-default-borderwidth solid clr-getColor(white);
+    border: $clr-default-borderwidth solid $clr-color-neutral-0;
     vertical-align: middle;
     width: 8%;
     text-align: center;
     font-weight: 100;
-    color: #000;
+    color: $clr-color-neutral-0;
     position: relative;
-  }
-}
-
-@mixin clr-colordemo-luminanceAndContrastTableStyles {
-  th {
-    font-size: 0.458333rem;
-    color: clr-getColor(darker);
-    text-transform: uppercase;
-    background-color: clr-getColor(lighter);
-    padding: 0.333333rem;
   }
 }

@@ -1,16 +1,6 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
-
-@mixin pagination-separator() {
-  content: '';
-  display: inline-block;
-  height: 1rem;
-  width: $clr-rem-1px;
-  background-color: $clr-table-border-color;
-  margin: 0 0.5rem;
-  vertical-align: middle;
-}
 
 @include exports('datagrid.clarity') {
   @include basic-table(
@@ -56,7 +46,7 @@
     }
 
     .datagrid-expandable-caret-icon {
-      color: $gray-dark;
+      color: $clr-color-neutral-600;
       // nudge down for vertical alignment...
       margin-top: 0.125rem;
       svg {
@@ -104,7 +94,7 @@
       padding: 0.25rem 0.25rem;
       margin-left: 0.25rem;
       border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-      box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+      box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
       font-weight: normal;
       white-space: nowrap;
@@ -137,14 +127,15 @@
       }
 
       .action-item {
-        @include clr-getTypePropertiesForDomElement(dropdown_text, (color, font-size, letter-spacing));
+        color: $clr-dropdown-text-color;
+        font-size: $clr-dropdown-font-size;
+        letter-spacing: $clr-dropdown-letter-spacing;
 
         background: transparent;
         border: 0;
-        color: $clr-app-font-color-primary;
         cursor: pointer;
         display: block;
-        line-height: calc(#{clr-getTypePropertyValueForDomElement(dropdown_text, line-height)} - #{$clr-rem-1px});
+        line-height: calc(#{$clr-dropdown-line-height} - #{$clr-rem-1px});
         margin: 0;
         padding: 1px 1rem 0;
         text-align: left;
@@ -158,7 +149,7 @@
 
         &.active {
           background: $clr-datagrid-row-hover;
-          color: $clr-black;
+          color: $clr-color-neutral-1000;
         }
 
         &:focus {
@@ -291,7 +282,7 @@
     .datagrid-row {
       background-color: $clr-thead-bgcolor;
       border-top: none;
-      border-bottom: 2px solid $clr-table-border-color;
+      border-bottom: 1px solid $clr-table-border-color;
 
       .datagrid-row-sticky {
         background-color: $clr-thead-bgcolor;
@@ -349,34 +340,6 @@
         margin-left: auto;
       }
 
-      &.asc,
-      &.desc {
-        font-weight: 600;
-
-        .datagrid-column-flex::after {
-          content: '';
-          display: flex;
-          flex: 0 0 auto;
-          vertical-align: middle;
-          width: $clr-datagrid-icon-size;
-          height: $clr-datagrid-icon-size;
-          margin-left: 0.25rem;
-          background-repeat: no-repeat;
-          background-size: contain;
-        }
-      }
-
-      &.asc {
-        .datagrid-column-flex::after {
-          background-image: generateUpArrowIcon($action-blues-dark-midtone);
-        }
-      }
-      &.desc {
-        .datagrid-column-flex::after {
-          background-image: generateDownArrowIcon($action-blues-dark-midtone);
-        }
-      }
-
       .datagrid-filter-toggle {
         @include clr-no-styles-button();
         cursor: pointer;
@@ -387,19 +350,18 @@
         margin: 0 0.25rem;
         background-repeat: no-repeat;
         background-size: contain;
-        background-image: generateFilterIcon($gray-dark-midtone);
+        background-image: generateFilterIcon($clr-color-neutral-500);
 
         &:hover {
-          background-image: generateFilterIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600);
         }
 
         &.datagrid-filter-open {
-          background-image: generateFilterIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600);
         }
 
         &.datagrid-filtered {
-          background-image: generateFilterIcon($action-blues-dark-midtone),
-            generateCircleIcon($action-blues-dark-midtone);
+          background-image: generateFilterIcon($clr-color-action-600), generateCircleIcon($clr-color-action-600);
         }
       }
 
@@ -410,7 +372,7 @@
         background: $clr-datagrid-popover-bg-color;
         padding: 0.75rem;
         border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba($gray-dark, 0.25);
+        box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
         font-weight: normal;
 
@@ -453,11 +415,21 @@
         text-align: left;
         flex: 1 1 auto;
         align-self: flex-start;
+        display: flex;
       }
 
-      button.datagrid-column-title:hover {
-        text-decoration: underline;
-        cursor: pointer;
+      button.datagrid-column-title {
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .sort-icon {
+          color: $clr-color-action-600;
+          margin-left: auto; // pushes icon to rhs b/c of parents display: flex
+          width: $clr-datagrid-icon-size;
+          height: $clr-datagrid-icon-size;
+          vertical-align: middle;
+        }
       }
 
       .datagrid-column-separator {
@@ -495,13 +467,13 @@
           display: none;
           width: 1px;
           height: 0;
-          border-right: $clr-default-borderwidth dotted $clr-action-blue-lighter;
+          border-right: $clr-default-borderwidth dotted $clr-color-action-300;
           transform: translateX(0px);
           cursor: col-resize;
         }
 
         .exceeded-max {
-          border-right: $clr-default-borderwidth dotted rgba($clr-red-light-midtone, 0.3);
+          border-right: $clr-default-borderwidth dotted rgba($clr-color-danger-700, 0.3);
         }
       }
 
@@ -574,9 +546,8 @@
         flex-flow: column nowrap;
         align-items: center;
         justify-content: center;
-        justify-content: center;
-        font-size: clr-getTypePropertyValueForDomElement(datagrid_placeholder, font-size);
-        color: $clr-dark-midtone-gray;
+        font-size: $clr-datagrid-placeholder-font-size;
+        color: $clr-datagrid-placeholder-color;
       }
 
       .datagrid-placeholder-image {
@@ -626,20 +597,23 @@
     flex: 0 0 auto;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: stretch;
-    height: 1.5rem;
     padding: 0 $clr-table-cellpadding;
     // Account for borders
     line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
-    font-size: clr-getTypePropertyValueForDomElement(table_header, font-size);
+    font-size: $clr-thead-font-size;
     background-color: $clr-thead-bgcolor;
     border: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
+    border-top: none;
     border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
 
     .pagination {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      line-height: 1.5rem;
 
       &-size {
         display: block;
@@ -662,25 +636,16 @@
         }
 
         & + .pagination-description {
-          &:before {
-            @include pagination-separator();
-          }
+          margin-left: 1rem;
         }
       }
 
       &-description {
         white-space: nowrap;
-
-        & + .pagination-list {
-          &:before {
-            @include pagination-separator();
-          }
-        }
       }
 
       &-list {
-        margin-right: 0.5rem;
-        height: calc(1.5rem - #{2 * $clr-default-borderwidth});
+        margin-left: 1rem;
         display: flex;
         align-items: center;
       }
@@ -691,7 +656,7 @@
 
       &.active {
         .column-toggle--action {
-          color: $clr-action-blue;
+          color: $clr-color-action-600;
         }
       }
       .column-toggle--action {
@@ -700,9 +665,9 @@
         padding-left: 0;
         padding-right: 0;
 
-        color: $clr-dark-midtone-gray;
+        color: $clr-color-neutral-500;
         &:hover {
-          color: $clr-action-blue;
+          color: $clr-color-action-600;
         }
       }
 
@@ -720,8 +685,8 @@
         .switch-header {
           display: flex;
           justify-content: space-between;
-          font-weight: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-weight);
-          font-size: clr-getTypePropertyValueForDomElement(datagrid_column_toggle_title, font-size);
+          font-weight: 400;
+          font-size: 0.666667rem;
           padding-bottom: 0.5rem;
           line-height: 1rem;
 
@@ -729,10 +694,10 @@
             min-width: 0.75rem;
             margin: 0;
             padding: 0;
-            color: $clr-dark-midtone-gray;
+            color: $clr-color-neutral-500;
 
             &:hover {
-              color: $clr-action-blue;
+              color: $clr-color-action-600;
             }
           }
         }
@@ -770,12 +735,12 @@
     margin-right: 0.375rem;
 
     &::before {
-      background-color: $clr-gray;
+      background-color: $clr-color-neutral-600;
     }
 
     &::after {
-      border-left-color: $clr-white;
-      border-bottom-color: $clr-white;
+      border-left-color: $clr-color-neutral-0;
+      border-bottom-color: $clr-color-neutral-0;
     }
   }
 
@@ -849,11 +814,10 @@
     }
 
     .datagrid-footer {
-      height: 1rem;
       padding: 0 $clr-table-cellpadding;
       line-height: calc(1rem - #{$clr-rem-1px});
-      .pagination-list {
-        height: calc(1rem - #{2 * $clr-default-borderwidth});
+      .pagination {
+        line-height: 1rem;
       }
       .column-switch-wrapper .column-toggle--action {
         margin: 0;

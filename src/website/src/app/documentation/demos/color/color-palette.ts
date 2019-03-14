@@ -153,14 +153,14 @@ export class ColorPalette {
     {
       type: 'Yellow',
       colors: [
-        { value: '#fdcf08', text: 'dark', primary: true },
+        { value: '#ffdc0B', text: 'dark', primary: true },
         { value: '#C47D00', text: 'dark' },
         { value: '#D28F00', text: 'dark' },
         { value: '#DFA100', text: 'dark' },
         { value: '#EDB200', text: 'dark' },
         { value: '#FAC400', text: 'dark' },
         { value: '#FDD006', text: 'dark' },
-        { value: '#fdcf08', text: 'dark' },
+        { value: '#ffdc0B', text: 'dark' },
         { value: '#FFE860', text: 'dark' },
         { value: '#FEF3B5', text: 'dark' },
         { value: '#FFFCE8', text: 'dark' },

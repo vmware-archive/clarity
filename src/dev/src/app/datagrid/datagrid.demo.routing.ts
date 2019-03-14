@@ -29,6 +29,7 @@ import { DatagridSelectionDemo } from './selection/selection';
 import { DatagridServerDrivenDemo } from './server-driven/server-driven';
 import { DatagridSmartIteratorDemo } from './smart-iterator/smart-iterator';
 import { DatagridSortingDemo } from './sorting/sorting';
+import { DatagridResponsiveFooterDemo } from './responsive-footer/responsive-footer';
 import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
@@ -64,6 +65,7 @@ const ROUTES: Routes = [
       { path: 'test-cases', component: DatagridTestCasesDemo },
       { path: 'test-cases-async', component: DatagridTestCasesAsyncDemo },
       { path: 'hide-show', component: DatagridHideShowDemo },
+      { path: 'responsive-footer', component: DatagridResponsiveFooterDemo },
     ],
   },
 ];

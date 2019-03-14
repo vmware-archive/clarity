@@ -20,7 +20,7 @@
     }
 
     .modal-content {
-      border-radius: 0 $clr-global-borderradius $clr-global-borderradius 0;
+      border-radius: 0 $clr-wizard-border-radius $clr-wizard-border-radius 0;
       box-shadow: none;
       padding: 0;
       flex: 2 2 auto;
@@ -127,7 +127,7 @@
       border-right: $clr-default-borderwidth solid $clr-wizard-step-nav-border-color;
       height: 100%;
       background-color: $clr-wizard-sidenav-bgcolor;
-      border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+      border-radius: $clr-wizard-border-radius 0 0 $clr-wizard-border-radius;
     }
 
     .clr-wizard-stepnav {
@@ -165,7 +165,7 @@
 
         .clr-wizard-stepnav-link {
           background-color: $clr-wizard-stepnav-active-bgcolor;
-          border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+          border-radius: $clr-wizard-stepnav-active-border-radius 0 0 $clr-wizard-stepnav-active-border-radius;
         }
       }
 

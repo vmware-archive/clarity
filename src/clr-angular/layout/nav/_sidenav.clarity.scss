@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,19 +8,27 @@
   }
 
   &.active {
-    background: $clr-global-selection-color;
-    color: $clr-black;
+    background: $clr-sidenav-link-active-bg-color;
+    color: $clr-sidenav-link-active-color;
   }
+}
+
+@mixin sidenav-header-styles {
+  color: $clr-sidenav-header-color;
+  font-size: $clr-sidenav-header-font-size;
+  font-weight: $clr-sidenav-header-font-weight;
+  line-height: $clr-sidenav-header-line-height;
+  font-family: $clr-sidenav-header-font-family;
+  letter-spacing: $clr-sidenav-header-letter-spacing;
 }
 
 @include exports('sidenav.clarity') {
   .sidenav {
-    @include clr-getTypePropertiesForDomElement(sidenav_text, (line-height));
-
+    line-height: 1rem;
     max-width: 13rem;
     min-width: 9rem;
     width: $clr-sidenav-width;
-    border-right: $clr-default-borderwidth solid $clr-sidenav-border-color;
+    border-right: $clr-sidenav-border-width solid $clr-sidenav-border-color;
     display: flex;
     flex-direction: column;
 
@@ -32,7 +40,7 @@
       //nav link common styles
       .nav-link {
         display: inline-block;
-        border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+        border-radius: $clr-sidenav-link-active-border-radius 0 0 $clr-sidenav-link-active-border-radius;
         color: inherit;
         cursor: pointer;
         text-decoration: none;
@@ -40,21 +48,19 @@
       }
 
       & > .nav-link {
-        @include clr-getTypePropertiesForDomElement(
-          sidenav_sectionHeader,
-          (color, font-size, font-weight, line-height, font-family, letter-spacing)
-        );
         margin: 1rem 0 0 1.25rem;
         padding-left: 0.5rem;
 
         @include nav-link-colors();
+        @include sidenav-header-styles();
       }
     }
 
     .nav-group {
-      $clr-sidenav-fontsize: clr-getTypePropertyValueForDomElement(sidenav_text, font-size);
-
-      @include clr-getTypePropertiesForDomElement(sidenav_text, (color, font-size, font-weight, letter-spacing));
+      color: $clr-sidenav-color;
+      font-size: $clr-sidenav-font-size;
+      font-weight: $clr-sidenav-font-weight;
+      letter-spacing: $clr-sidenav-letter-spacing;
 
       margin-top: 1rem;
       width: 100%;
@@ -80,10 +86,7 @@
       }
 
       label {
-        @include clr-getTypePropertiesForDomElement(
-          sidenav_sectionHeader,
-          (color, font-size, font-weight, line-height, font-family, letter-spacing)
-        );
+        @include sidenav-header-styles();
       }
 
       input[type='checkbox'] {
@@ -105,8 +108,8 @@
         &:after {
           content: '';
           float: left;
-          height: $clr-dropdown-caret-icon-dimension;
-          width: $clr-dropdown-caret-icon-dimension;
+          height: $clr-sidenav-collapse-toggle-icon-size;
+          width: $clr-sidenav-collapse-toggle-icon-size;
           transform: translateX(-1 * $clr-sidenav-caret-xOffset) translateY($clr-sidenav-caret-yOffset);
           background-image: generateCaretIcon();
           @include icon-background-styles();

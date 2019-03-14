@@ -4,20 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable, TrackByFunction } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
-import { Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 import { FiltersProvider } from './filters';
 import { Items } from './items';
+import { SelectionType } from '../enums/selection-type';
 
 let nbSelection: number = 0;
-
-export enum SelectionType {
-  None,
-  Single,
-  Multi,
-}
 
 @Injectable()
 export class Selection<T = any> {
@@ -149,6 +142,8 @@ export class Selection<T = any> {
   public clearSelection(): void {
     this.current.length = 0;
     this.prevSelectionRefs = [];
+    this._currentSingle = null;
+    this.prevSingleSelectionRef = null;
     this.emitChange();
   }
 

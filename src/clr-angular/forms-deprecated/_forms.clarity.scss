@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -52,8 +52,10 @@
     .form-block {
       margin: 0.5rem 0 1.5rem 0;
       & > label {
-        @include clr-getTypePropertiesForDomElement(form_block_label, (font-size, letter-spacing, font-weight));
         color: $clr-form-text-color;
+        font-size: $clr-forms-block-label-font-size;
+        font-weight: $clr-forms-block-label-font-weight;
+        letter-spacing: $clr-forms-block-label-letter-spacing;
         margin-bottom: 0.25rem;
       }
     }
@@ -66,7 +68,9 @@
       padding-left: 9.5rem;
       //Everything else except for the first label starts after this padding on large screens
       margin-bottom: 0.5rem;
-      @include clr-getTypePropertiesForDomElement(form_group_fields, (font-size, letter-spacing, line-height));
+      font-size: $clr-forms-text-font-size;
+      font-weight: $clr-forms-text-font-weight;
+      letter-spacing: $clr-forms-text-letter-spacing;
 
       &.row {
         padding-left: 0;
@@ -256,6 +260,7 @@
       //Show on input focus
       & > input:focus + .tooltip-content {
         background: $clr-forms-input-invalid-color;
+        color: $clr-forms-input-on-invalid-color;
         visibility: visible;
         opacity: 1;
       }

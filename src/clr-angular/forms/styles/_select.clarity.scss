@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -15,7 +15,8 @@
       position: relative;
       padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
       cursor: pointer;
-      @include clr-getTypePropertiesForDomElement(form_label, (font-size));
+      font-size: $clr-forms-field-font-size;
+
       //Moves the :after pseudo element (arrow) to the back so that clicking over it activates
       //the dropdown.
       z-index: map-get($clr-layers, select-box);

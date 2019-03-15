@@ -61,3 +61,10 @@ $clr-outline-spread: 2px;
   padding: 0 !important;
   margin: 0 0 -1px 0 !important;
 }
+
+@mixin remove-text-decoration() {
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}

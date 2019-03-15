@@ -121,9 +121,10 @@ export default function(): void {
       expect(myAlert.getAttribute('role')).toBe('alert');
     });
 
-    it('Has an ARIA-live value of assertive', () => {
+    it('should not have an aria-live when using role alert', () => {
+      // https://www.w3.org/TR/wai-aria-1.1/#alert
       const myAlert: HTMLElement = compiled.querySelector('.alert');
-      expect(myAlert.getAttribute('aria-live')).toBe('assertive');
+      expect(myAlert.getAttribute('aria-live')).toBe(null);
     });
 
     it('shows and hides the alert based on the clrAlertClosed input', () => {

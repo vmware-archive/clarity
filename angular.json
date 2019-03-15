@@ -247,6 +247,7 @@
             "tsConfig": "src/website/tsconfig.app.json",
             "assets": [
               "src/website/src/favicon.ico",
+              "src/website/src/manifest.json",
               {
                 "glob": "versions.json",
                 "input": "src/website/src/settings/",

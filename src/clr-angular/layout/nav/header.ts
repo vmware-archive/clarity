@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { ResponsiveNavigationService } from './providers/responsive-navigation.service';
 import { ResponsiveNavCodes } from './responsive-nav-codes';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-header',
@@ -16,6 +17,7 @@ import { ResponsiveNavCodes } from './responsive-nav-codes';
             type="button"
             *ngIf="isNavLevel1OnPage"
             class="header-hamburger-trigger"
+            [attr.aria-label]="(openNavLevel !== responsiveNavCodes.NAV_LEVEL_1) ? commonStrings.open : commonStrings.close"
             (click)="toggleNav(responsiveNavCodes.NAV_LEVEL_1)">
             <span></span>
         </button>
@@ -24,6 +26,7 @@ import { ResponsiveNavCodes } from './responsive-nav-codes';
             type="button"
             *ngIf="isNavLevel2OnPage"
             class="header-overflow-trigger"
+            [attr.aria-label]="(openNavLevel !== responsiveNavCodes.NAV_LEVEL_2) ? commonStrings.open : commonStrings.close"
             (click)="toggleNav(responsiveNavCodes.NAV_LEVEL_2)">
             <span></span>
         </button>
@@ -32,12 +35,13 @@ import { ResponsiveNavCodes } from './responsive-nav-codes';
   host: { '[class.header]': 'true' },
 })
 export class ClrHeader implements OnDestroy {
+  isNavLevel1OnPage = false;
+  isNavLevel2OnPage = false;
+  openNavLevel: number = null;
+  responsiveNavCodes = ResponsiveNavCodes;
   private _subscription: Subscription;
-  public isNavLevel1OnPage: boolean = false;
-  public isNavLevel2OnPage: boolean = false;
-  public responsiveNavCodes = ResponsiveNavCodes;
 
-  constructor(private responsiveNavService: ResponsiveNavigationService) {
+  constructor(private responsiveNavService: ResponsiveNavigationService, public commonStrings: ClrCommonStrings) {
     this._subscription = this.responsiveNavService.registeredNavs.subscribe({
       next: (navLevelList: number[]) => {
         this.initializeNavTriggers(navLevelList);
@@ -74,6 +78,7 @@ export class ClrHeader implements OnDestroy {
 
   // toggles the nav that is open
   toggleNav(navLevel: number) {
+    this.openNavLevel = this.openNavLevel === navLevel ? null : navLevel;
     this.responsiveNavService.sendControlMessage(ResponsiveNavCodes.NAV_TOGGLE, navLevel);
   }
 

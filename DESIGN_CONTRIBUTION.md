@@ -4,8 +4,8 @@ If you are designing a new component for Clarity or enhancing an existing compon
 process in order to streamline the design, documentation and review phases of this process.
 We will work together with you on during each of these phases to guide you through our process.
 
-Using markdown the UX and Visual Design can be documented directly in a github issue. Please create one if there is not
-an existing issue for the proposal. There are three phases a design goes through as it's refined and made ready for development.
+Using markdown the UX and Visual Design can be documented directly in a github issue. Please create a [Contribution Proposal](https://github.com/vmware/clarity/issues/new?template=contribution-proposal.md),
+if there is not already an existing issue for the proposal. There are three phases a design goes through as it's refined and made ready for development.
 
 ## UX Research
 
@@ -34,14 +34,14 @@ Again finding the answers to questions is usually the best way to get started.
 * What are the existing solutions used in other applications/component libraries/mediums (native mobile/ video/ television etc)?
 * How has this problem already been solved:
   * In the past with older, less digital technologies?
-  * TOday, with modern digital tools?
+  * Today, with modern digital tools?
 * Are there variations or features that may not be a good fit for Clarity?
 
-Obviously, we are looking for a representational cross-section here and not a doctoral theseis :) Answers to questions like these
+Obviously, we are looking for a representational cross-section here and not a doctoral thesis. :) Answers to questions like these
 (please feel free to add your own) will form the foundation of the documentation that will be recoded on github. Please
 use the github issue and markdown to organize and document this research (links, names of products, design systems and screen shots and use cases)
-as part of the UX research. If [markdow](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)n is strange
-to you, please reach out so we can help guide the organization of your research.
+as part of the UX research. If you are unfamiliar with [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links),
+please reach out so we can help guide the organization of your research.
 
 ## Visual Design
 

@@ -4,8 +4,8 @@ If you are designing a new component for Clarity or enhancing an existing compon
 process in order to streamline the design, documentation and review phases of this process.
 We will work together with you on during each of these phases to guide you through our process.
 
-Using markdown the UX and Visual Design can be documented directly in a github issue. Please create a [Contribution Proposal](https://github.com/vmware/clarity/issues/new?template=contribution-proposal.md),
-if there is not already an existing issue for the proposal. There are three phases a design goes through as it's refined and made ready for development.
+Using markdown the UX and Visual Design can be documented directly in a github issue. Please create a [Contribution proposal](https://github.com/vmware/clarity/issues/new?template=contribution-proposal.md),
+if there is not an existing issue related to the proposal. There are three phases a design goes through as it's refined and made ready for development.
 
 ## UX Research
 

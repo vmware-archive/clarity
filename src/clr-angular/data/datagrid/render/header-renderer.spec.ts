@@ -27,6 +27,7 @@ import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
 import { DatagridColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { COLUMN_STATE, COLUMN_STATE_PROVIDER } from '../providers/column-state.provider';
 
 @Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
 class SimpleTest {}
@@ -79,8 +80,7 @@ export default function(): void {
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      stateSub = new BehaviorSubject<DatagridColumnState>({});
-      context.clarityDirective.columnState = stateSub;
+      stateSub = context.clarityDirective.columnState;
     });
 
     it('computes the width of header based on its scrollWidth', function() {

@@ -114,12 +114,11 @@ export default function(): void {
 
     describe('dynamic loading', function() {
       let context: TestContext<DatagridMainRenderer<number>, DynamicTest>;
-      let resizeSpy, headersSpy, rowsSpy: jasmine.Spy;
+      let resizeSpy, rowsSpy: jasmine.Spy;
 
       beforeEach(function() {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
-        headersSpy = spyOnProperty(DatagridHeaderRenderer.prototype, 'columnState', 'set');
-        rowsSpy = spyOn(DatagridRowRenderer.prototype, 'setupColumns');
+        rowsSpy = spyOn(DatagridRowRenderer.prototype, 'setColumnStates');
         context = this.create(DatagridMainRenderer, DynamicTest);
       });
 
@@ -147,14 +146,6 @@ export default function(): void {
         context.testComponent.clrDgItems = [1];
         context.detectChanges();
         expect(resizeSpy.calls.count()).toBe(1);
-      });
-
-      it('tracks changes of headers', function() {
-        expect(headersSpy.calls.count()).toBe(2); // Number of columns
-        headersSpy.calls.reset();
-        context.testComponent.secondColumn = false;
-        context.detectChanges();
-        expect(headersSpy.calls.count()).toBe(1);
       });
 
       it('tracks changes of cells', function() {

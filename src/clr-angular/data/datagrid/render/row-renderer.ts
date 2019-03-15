@@ -15,16 +15,13 @@ export class DatagridRowRenderer implements AfterViewInit {
   constructor(private columnsService: ColumnsService) {}
 
   ngAfterViewInit() {
+    this.setColumnStates();
     this.cells.changes.subscribe(() => {
       this.setColumnStates();
     });
   }
 
-  setupColumns() {
-    this.setColumnStates();
-  }
-
-  private setColumnStates() {
+  public setColumnStates() {
     this.cells.forEach((cell, index) => {
       if (this.columnsService.columns[index]) {
         cell.columnState = this.columnsService.columns[index];

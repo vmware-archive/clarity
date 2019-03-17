@@ -74,6 +74,16 @@ export default function(): void {
         expect(resizeSpy.calls.count()).toBe(1);
       });
 
+      it('pushes its header states to the column service', function() {
+        expect(columnsService.columns.length).toBe(2);
+        context.testComponent.secondColumn = false;
+        context.detectChanges();
+        expect(columnsService.columns.length).toBe(1);
+        context.testComponent.secondColumn = true;
+        context.detectChanges();
+        expect(columnsService.columns.length).toBe(2);
+      });
+
       it('re-triggers the render process whenever the columns change', function() {
         resizeSpy.calls.reset();
         expect(resizeSpy.calls.count()).toBe(0);

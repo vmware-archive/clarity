@@ -16,7 +16,7 @@ import {
   QueryList,
   Renderer2,
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { Items } from '../providers/items';

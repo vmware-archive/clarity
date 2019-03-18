@@ -98,15 +98,15 @@ describe('Datagrid', function() {
     WrappedColumnSpec();
     WrappedRowSpec();
   });
-  fdescribe('Render', function() {
-    // DomAdapterSpecs();
-    // NoopDomAdapterSpecs();
-    // DatagridRenderOrganizerSpecs();
-    // DatagridCellRendererSpecs();
-    // DatagridRowRendererSpecs();
-    // DatagridHeaderRendererSpecs();
+  describe('Render', function() {
+    DomAdapterSpecs();
+    NoopDomAdapterSpecs();
+    DatagridRenderOrganizerSpecs();
+    DatagridCellRendererSpecs();
+    DatagridRowRendererSpecs();
+    DatagridHeaderRendererSpecs();
     DatagridMainRendererSpecs();
-    // DatagridRowExpandAnimationSpecs();
+    DatagridRowExpandAnimationSpecs();
   });
   describe('Built-in', function() {
     NestedPropertySpecs();

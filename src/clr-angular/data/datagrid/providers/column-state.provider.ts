@@ -5,7 +5,7 @@
  */
 
 import { InjectionToken } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/index';
+import { BehaviorSubject } from 'rxjs';
 import { DatagridColumnState } from '../interfaces/column-state.interface';
 
 export const COLUMN_STATE = new InjectionToken<DatagridColumnState>('COLUMN_STATE');

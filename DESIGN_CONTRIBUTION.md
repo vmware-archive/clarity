@@ -65,11 +65,11 @@ A good place to get started is with the Clarity Design Resources:
     .sketch)
 2.  [Clarity Dark Theme](https://github.com/vmware/clarity-assets/raw/master/sketch/dark/clarity-library-dark-1.0.0
     .sketch)
-3.  [Clarity ICons](https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-1.0.0.sketch)
+3.  [Clarity Icons](https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-1.0.0.sketch)
 
 Download those files and familiarize yourself with how the existing components are organized. Reach out to us if you
 have questions about the natural place for a new component. Much of the visual aspects for the new component has
-already been built into the sketch files (typogrophy, colors, padding, font-size etc). What you have to do is find an
+already been built into the sketch files (typography, colors, padding, font-size etc). What you have to do is find an
 appropriate place to create the visual representation of the proposed component. This asset will be used to generate
 mockup images that will be useful when:
 
@@ -85,9 +85,9 @@ that multiple visual representations be created for documentating the various us
 
 ### Considerations
 
-These resources serve two purposes. First, they establish the visual languange that a Clarity component should have
+These resources serve two purposes. First, they establish the visual language that a Clarity component should have
 (color vertical rhythm, typography etc). And second, they provide a natural place for the component design to be
-integrated into. This second purpose is important. It is from these files that the implentation details of the
+integrated into. This second purpose is important. It is from these files that the implementation details of the
 component will be documented as well as made available to other designers building Clarity applications once the
 component is released for production use.
 
@@ -115,7 +115,7 @@ for each of the use cases. Through this discussion the desired features can be d
 for future. Most of the time this conversation can happen on the github issue itself but for more advanced components
 we can set up a private slack channel and or video conferences for regular, live design review sessions.
 
-Share solution progress with Clarity team to make sure it aligns. We will engange on github and set up more
+Share solution progress with Clarity team to make sure it aligns. We will engage on github and set up more
 collaborative review sessions as needed for the length of the process. Usual feedback that can be expected will
 include things like:
 

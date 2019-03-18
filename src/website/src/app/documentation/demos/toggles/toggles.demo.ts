@@ -6,17 +6,17 @@
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-import * as UiBasic from './ui/basic.html';
-import * as UiFull from './ui/full.html';
-import * as UiError from './ui/error.html';
-import * as UiInline from './ui/inline.html';
-import * as UiDisabled from './ui/disabled.html';
+import * as UiBasic from 'raw-loader!./ui/basic.html';
+import * as UiFull from 'raw-loader!./ui/full.html';
+import * as UiError from 'raw-loader!./ui/error.html';
+import * as UiInline from 'raw-loader!./ui/inline.html';
+import * as UiDisabled from 'raw-loader!./ui/disabled.html';
 
-import * as NgBasic from './ng/basic.html';
-import * as NgLabel from './ng/label.html';
-import * as NgHelpers from './ng/helpers.html';
-import * as NgInline from './ng/inline.html';
-import * as NgDisabled from './ng/disabled.html';
+import * as NgBasic from 'raw-loader!./ng/basic.html';
+import * as NgLabel from 'raw-loader!./ng/label.html';
+import * as NgHelpers from 'raw-loader!./ng/helpers.html';
+import * as NgInline from 'raw-loader!./ng/inline.html';
+import * as NgDisabled from 'raw-loader!./ng/disabled.html';
 
 @Component({
   templateUrl: './toggles.demo.html',

@@ -6,13 +6,13 @@
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-import * as UiBasic from './ui/basic.html';
-import * as UiFull from './ui/full.html';
-import * as UiError from './ui/error.html';
+import * as UiBasic from 'raw-loader!./ui/basic.html';
+import * as UiFull from 'raw-loader!./ui/full.html';
+import * as UiError from 'raw-loader!./ui/error.html';
 
-import * as NgBasic from './ng/basic.html';
-import * as NgLabel from './ng/label.html';
-import * as NgHelpers from './ng/helpers.html';
+import * as NgBasic from 'raw-loader!./ng/basic.html';
+import * as NgLabel from 'raw-loader!./ng/label.html';
+import * as NgHelpers from 'raw-loader!./ng/helpers.html';
 
 @Component({
   templateUrl: './password.demo.html',

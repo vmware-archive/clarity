@@ -33,7 +33,7 @@ export default function(): void {
       columnsService = context.getClarityProvider(ColumnsService);
       initService();
       columnStateSpy = spyOnProperty(DatagridCellRenderer.prototype, 'columnState', 'set').and.callThrough();
-      context.clarityDirective.setupColumns();
+      context.clarityDirective.setColumnStates();
     });
 
     it('sets the columnState', function() {

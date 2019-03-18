@@ -16,7 +16,7 @@ import {
   QueryList,
   Renderer2,
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { Items } from '../providers/items';
@@ -90,12 +90,6 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         this.stabilizeColumns();
       })
     );
-
-    this.subscriptions.push(
-      this.rows.changes.subscribe(() => {
-        this.rows.forEach(row => row.setupColumns());
-      })
-    );
   }
 
   // Initialize and set Table width for horizontal scrolling here.
@@ -116,12 +110,10 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
 
   private setupColumns() {
     this.headers.forEach((header, index) => {
-      // We want to get the initial state
-      this.columnsService.columns[index] = new BehaviorSubject<DatagridColumnState>(header.getColumnWidthState());
-      header.columnState = this.columnsService.columns[index];
+      this.columnsService.columns[index] = header.columnState;
     });
     this.columnsService.columns.splice(this.headers.length); // Trim any old columns
-    this.rows.forEach(row => row.setupColumns());
+    this.rows.forEach(row => row.setColumnStates());
   }
 
   private _heightSet: boolean = false;

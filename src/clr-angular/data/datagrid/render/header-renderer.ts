@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, ElementRef, EventEmitter, OnDestroy, Output, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Inject, OnDestroy, Output, Renderer2 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
@@ -13,24 +13,17 @@ import { STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { DatagridColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { COLUMN_STATE, COLUMN_STATE_PROVIDER } from '../providers/column-state.provider';
 
-@Directive({ selector: 'clr-dg-column', providers: [ColumnResizerService] })
+@Directive({ selector: 'clr-dg-column', providers: [ColumnResizerService, COLUMN_STATE_PROVIDER] })
 export class DatagridHeaderRenderer implements OnDestroy {
-  private stateSubscription: Subscription;
-
-  set columnState(columnState: BehaviorSubject<DatagridColumnState>) {
-    if (this.stateSubscription) {
-      this.stateSubscription.unsubscribe();
-    }
-    this.stateSubscription = columnState.subscribe(state => this.stateChanges(state));
-  }
-
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
     private organizer: DatagridRenderOrganizer,
     private domAdapter: DomAdapter,
-    private columnResizerService: ColumnResizerService
+    private columnResizerService: ColumnResizerService,
+    @Inject(COLUMN_STATE) public columnState: BehaviorSubject<DatagridColumnState>
   ) {
     this.subscriptions.push(
       this.organizer.filterRenderSteps(DatagridRenderStep.CLEAR_WIDTHS).subscribe(() => this.clearWidth())
@@ -40,6 +33,8 @@ export class DatagridHeaderRenderer implements OnDestroy {
         .filterRenderSteps(DatagridRenderStep.DETECT_STRICT_WIDTHS)
         .subscribe(() => this.detectStrictWidth())
     );
+
+    this.subscriptions.push(columnState.subscribe(state => this.stateChanges(state)));
   }
 
   @Output('clrDgColumnResize') resizeEmitter: EventEmitter<number> = new EventEmitter();
@@ -54,9 +49,6 @@ export class DatagridHeaderRenderer implements OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
-    if (this.stateSubscription) {
-      this.stateSubscription.unsubscribe();
-    }
   }
 
   private stateChanges(state: DatagridColumnState) {

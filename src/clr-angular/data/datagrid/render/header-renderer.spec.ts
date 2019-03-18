@@ -79,8 +79,7 @@ export default function(): void {
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      stateSub = new BehaviorSubject<DatagridColumnState>({});
-      context.clarityDirective.columnState = stateSub;
+      stateSub = context.clarityDirective.columnState;
     });
 
     it('computes the width of header based on its scrollWidth', function() {

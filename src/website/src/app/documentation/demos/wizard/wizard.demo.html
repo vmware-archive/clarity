@@ -97,7 +97,7 @@
                     <div class="clrweb-DoxMedia is-figure">
                         <div class="clrweb-DoxMedia-block" style="height: 235px">
                             <div class="clrweb-DoxMedia-img">
-                                <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Steps.png"
+                                <img class="clrweb-Img" src="assets/images/documentation/wizards/wizard-steps.png"
                                     alt="Completed steps are highlighted with a green bar to the left"/>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                     <div class="clrweb-DoxMedia is-figure">
                         <div class="clrweb-DoxMedia-block" style="height: 235px">
                             <div class="clrweb-DoxMedia-img">
-                                <img class="clrweb-Img" src="assets/images/documentation/wizards/Wizard-Dismissing.png"
+                                <img class="clrweb-Img" src="assets/images/documentation/wizards/wizard-dismissing.png"
                                     alt="There are three ways of closing the wizard"/>
                             </div>
                         </div>
@@ -177,54 +177,41 @@
                     </div>
                 </div>
             </div>
-    <!-- hiding while UX crew debates what should go here
-            <h3 id="validation">Validation</h3>
-
+            
+            <h3 id="error-validation">Error Validation</h3>
             <p>
-                Wizard validation is done either in page or asynchronously (after submission).
+                Enhancement to the wizard component to add an error state to the wizard step states.
             </p>
 
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="clrweb-DoxMedia is-figure">
-                        <div class="clrweb-DoxMedia-block" style="height: 235px">
-                            <div class="clrweb-DoxMedia-img">
-                                <img class="clrweb-Img"
-                                    src="assets/images/documentation/wizards/Wizard-Validation-Inpage.png"
-                                    alt="The next button is often disabled with in-page validation"/>
-                            </div>
-                        </div>
-                        <div class="clrweb-DoxMedia-text">
-                            <h6>In Page</h6>
-                            <p>
-                                Use for <b>client-side validation</b>. For example, the format of a value like an
-                                email address. Fields with errors are indicated and have related tooltip error
-                                messages. The “Next” button can be disabled until the form is valid.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="clrweb-DoxMedia is-figure">
-                        <div class="clrweb-DoxMedia-block" style="height: 235px">
-                            <div class="clrweb-DoxMedia-img">
-                                <img class="clrweb-Img"
-                                    src="assets/images/documentation/wizards/Wizard-Validation-Async.png"
-                                    alt="Asynchronous validation is often communicated through the alert messages"/>
-                            </div>
-                        </div>
-                        <div class="clrweb-DoxMedia-text">
-                            <h6>Asynchronous</h6>
-                            <p>
-                                Use for <b>server-side validation</b>, when you need to validate against data from
-                                a database. The “Next” button is enabled. Validation errors show in an alert
-                                within the content area.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    -->
+            <h6>Wizard step states:</h6>
+            <ul>
+                <li>Inactive</li>
+                <li>Active</li>
+                <li>Complete</li>
+                <li>Error</li>
+            </ul>
+
+            <h6>Use Cases Under Consideration</h6>
+            <ul>
+                <li>When selections in a later step in the wizard invalidate entries in earlier steps</li>
+                <li>When the user resolves an error/errors in the current step</li>
+            </ul>
+
+            <h6>Error Reported</h6>
+            <p>
+                When an error occurs, replace the step number with the error icon. This design is consistent
+                with the stepper design. Change the progress indicator to red and add a one pixel gap above and
+                below the red bar for accessibility.
+            </p>
+            <img class="clrweb-Img" src="assets/images/documentation/wizards/wizard-error-reported.png" alt="An error reported to the user via error steps."/>
+
+            <h6>Error State Active</h6>
+            <p>Indicate clearly why the error occurs on the error step.</p>
+            <img class="clrweb-Img" src="assets/images/documentation/wizards/wizard-error-active.png" alt="An error active reported to the user."/>
+
+            <h6>Error Resolved</h6>
+            <p>The progress indicator changed back to green once all errors are resolved.</p>
+            <img class="clrweb-Img" src="assets/images/documentation/wizards/wizard-error-resolved.png" alt="An error resolved in wizard."/>
         </div>
 
         <div id="code-examples">

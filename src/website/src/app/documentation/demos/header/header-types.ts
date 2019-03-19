@@ -134,6 +134,21 @@ const EXAMPLE = `
         </clr-dropdown>
     </div>
 </header>
+
+<header class="header-6">
+    <div class="branding">
+        <a href="javascript://" class="nav-link">
+            <clr-icon shape="vm-bug"></clr-icon>
+            <span class="title">Project Clarity</span>
+        </a>
+    </div>
+    <div class="header-actions">
+        <a href="javascript://" class="nav-link nav-icon-text">
+            <clr-icon shape="user"></clr-icon>
+            <span class="nav-text">username</span>
+        </a>
+    </div>
+</header>
 `;
 
 @Component({

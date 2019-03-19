@@ -4,18 +4,14 @@
 
 @mixin header-section-divider() {
   display: inline-block;
+  position: absolute;
+  content: '';
   background: $clr-header-font-color;
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
   width: $clr-default-borderwidth;
   top: ($clr-header-height - $clr-header-section-divider-height) / 2;
-}
-
-@mixin remove-text-decoration() {
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
+  left: 0;
 }
 
 @mixin header-nav-appearance() {
@@ -31,410 +27,411 @@
   }
 }
 
-@mixin generate-nav-link-styles() {
-  .nav-text {
-    padding: 0 $clr-header-nav-text-horizontal-padding;
-    font-weight: 500;
+@mixin header-backgrounds() {
+  &.header-1 {
+    background-color: $clr-header-bgColor;
   }
 
-  .nav-icon {
+  &.header-2 {
+    background-color: $clr-header-2-bg-color;
+  }
+
+  &.header-3 {
+    background-color: $clr-header-3-bg-color;
+  }
+
+  &.header-4 {
+    background-color: $clr-header-4-bg-color;
+  }
+
+  &.header-5 {
+    background-color: $clr-header-5-bg-color;
+  }
+
+  &.header-6 {
+    background-color: $clr-header-6-bg-color;
+  }
+
+  &.header-7 {
+    background-color: $clr-header-7-bg-color;
+  }
+}
+
+@mixin header-branding() {
+  .branding {
+    display: flex;
+    flex: 0 0 auto;
+    min-width: 8.5rem;
+    padding: 0 1rem;
     height: $clr-header-height;
-    width: $clr-header-height;
-  }
 
-  .nav-link {
-    position: relative;
-    display: inline-block;
-    @include remove-text-decoration();
+    & > a,
+    & > .nav-link {
+      display: inline-flex;
+      align-items: center;
+      height: $clr-header-height;
+      @include remove-text-decoration();
+
+      &:focus {
+        outline-offset: $clr-header-outline-offset; // So that the outline styles aren't hidden because of the browser
+      }
+    }
+
+    .clr-icon,
+    clr-icon {
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: $clr-logo-width;
+      width: $clr-logo-width;
+      margin-right: 0.375rem;
+    }
+
+    .title {
+      color: $clr-header-font-color;
+      font-size: $clr-header-title-font-size;
+      font-weight: $clr-header-title-font-weight;
+      font-family: $clr-header-title-font-family;
+      letter-spacing: $clr-header-title-letter-spacing;
+      line-height: $clr-header-height;
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin header-links {
+  .settings, /* TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
+  .header-nav,
+  .header-actions {
+    height: $clr-header-height;
+
+    .nav-text {
+      padding: 0 $clr-header-nav-text-horizontal-padding;
+      font-weight: 500;
+    }
+
+    .nav-icon {
+      height: $clr-header-height;
+      width: $clr-header-height;
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      @include remove-text-decoration();
+      @include header-nav-appearance();
+
+      .fa, /* TODO: deprecated. Remove support for font awesome*/
+      .nav-icon,
+      .nav-text,
+      &.nav-icon,
+      &.nav-text {
+        line-height: $clr-header-height;
+      }
+
+      .fa, /* TODO: deprecated. Remove support for font awesome*/
+      .nav-icon {
+        font-size: $clr-nav-icon-size;
+        text-align: center;
+      }
+
+      clr-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: $clr-header-clarity-icons-size;
+        width: $clr-header-clarity-icons-size;
+      }
+
+      &.nav-icon-text {
+        clr-icon {
+          position: relative;
+          top: initial;
+          left: initial;
+          transform: none;
+          margin-left: 1rem;
+        }
+
+        .nav-text {
+          margin-left: 0;
+          padding-left: 0.25rem;
+        }
+      }
+
+      // .nav-text acts like the alt attribute for screens where responsiveness kicks in.
+      // on smaller screens icons are hidden and only nav-text is shown
+      .nav-icon + .nav-text {
+        display: none;
+      }
+
+      &.active {
+        background: rgba($clr-color-neutral-0, 0.15);
+        opacity: 1;
+      }
+
+      &.active.nav-icon,
+      &.active.nav-text,
+      &.active .nav-icon,
+      &.active .nav-text {
+        opacity: 1;
+      }
+
+      &:focus {
+        outline-offset: $clr-header-outline-offset; // So that the outline styles aren't hidden because of the browser
+      }
+    }
+  }
+}
+
+@mixin header-nav {
+  .header-nav {
+    display: flex;
+    flex: 0 0 auto;
+
+    &:last-child {
+      & > .nav-link:last-child::after {
+        content: none;
+      }
+    }
+
+    .nav-link {
+      &:first-of-type,
+      &:last-of-type {
+        position: relative;
+      }
+
+      &:first-of-type::before,
+      &:last-of-type::after {
+        @include header-section-divider();
+        left: auto;
+      }
+
+      &:first-of-type::before {
+        left: 0;
+      }
+
+      &:last-of-type::after {
+        right: 0;
+      }
+
+      &.active:first-of-type::before,
+      &.active:last-of-type::after {
+        content: none;
+      }
+    }
+  }
+}
+
+@mixin header-actions {
+  .settings,
+  .header-actions {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+
+    // Reduce nesting from 5 to 3 at the most
+    & > .dropdown {
+      $clr-header-action-caret-icon-right-position: 0.5rem;
+
+      & > .dropdown-toggle {
+        position: relative;
+        line-height: $clr-header-height;
+        height: $clr-header-height;
+        outline-offset: $clr-header-outline-offset;
+        @include header-nav-appearance();
+      }
+
+      .dropdown-toggle.nav-icon clr-icon:not([shape^='caret']) {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        // Dropdown icons are 2px smaller
+        height: 0.916667rem;
+        width: 0.916667rem;
+        right: 1rem;
+      }
+
+      .dropdown-toggle.nav-icon clr-icon[shape^='caret'] {
+        right: $clr-header-action-caret-icon-right-position;
+      }
+
+      $dropdown-nav-text-dist: 1.5rem;
+      .dropdown-toggle.nav-text {
+        padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
+
+        clr-icon[shape^='caret'] {
+          right: $clr-header-nav-text-horizontal-padding;
+        }
+      }
+
+      .dropdown-toggle.nav-icon {
+        width: $clr-header-height;
+        padding-right: 0;
+      }
+
+      // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
+      &.bottom-right > .dropdown-menu,
+      &.bottom-left > .dropdown-menu {
+        top: 85%;
+      }
+
+      // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
+      &:last-child.bottom-right > .dropdown-menu {
+        right: 0.125rem;
+      }
+
+      // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
+      .dropdown-menu {
+        margin-top: -0.166667rem;
+        // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
+        // will create empty space beyond the .main-container if the right isn't set to zero.
+        // Re-evaluate later if we can come up with a better solution.
+        left: auto;
+        right: 0;
+      }
+
+      // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
+      :last-child.dropdown-menu {
+        margin-right: 0.333333rem;
+      }
+    }
+  }
+}
+
+@mixin header-search() {
+  .search-box, /* TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
+  .search {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    max-width: 12rem;
+    padding: 0;
+    height: $clr-header-height;
     @include header-nav-appearance();
 
-    //TODO: Remove support for FA
-    .fa,
-    .nav-icon,
-    .nav-text,
-    &.nav-icon,
-    &.nav-text {
+    & > .nav-icon {
+      margin: 0 0.25rem 0.125rem 1rem;
+    }
+
+    label {
+      display: inline-block;
+      height: $clr-header-height;
       line-height: $clr-header-height;
-    }
-
-    //Icon fonts support
-    .fa,
-    .nav-icon {
-      font-size: $clr-nav-icon-size;
+      padding-left: 1rem;
       text-align: center;
+
+      &::before {
+        display: inline-block;
+        content: '';
+        background-image: generateSearchIcon();
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        height: $clr-search-icon-width;
+        width: $clr-search-icon-width;
+        margin: 0.83335rem 0 0;
+        vertical-align: top;
+      }
+
+      input {
+        line-height: 1rem;
+      }
     }
 
-    clr-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: $clr-header-clarity-icons-size;
-      width: $clr-header-clarity-icons-size;
-    }
+    input[type='text'] {
+      border: none;
+      background: none;
+      color: $clr-header-font-color;
+      padding: 0;
+      vertical-align: middle;
 
-    //.nav-text acts like the alt attribute for screens where responsiveness kicks in.
-    //on smaller screens icons are hidden and only nav-text is shown
-    .nav-icon + .nav-text {
-      display: none;
+      &:focus,
+      &:active {
+        background: none;
+      }
     }
+  }
 
-    &.active {
-      background: rgba($clr-color-neutral-0, 0.15);
-      opacity: 1;
+  .branding + .search,
+  .branding + .search-box {
+    position: relative;
+
+    &::after {
+      @include header-section-divider();
     }
+  }
+}
 
-    &.active.nav-icon,
-    &.active.nav-text,
-    &.active .nav-icon,
-    &.active .nav-text {
-      opacity: 1;
+@mixin header-search-md {
+  .search-box,
+  .search {
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    max-width: none;
+
+    label {
+      padding: 0;
+      width: $clr-header-height;
+
+      &::before {
+        left: ($clr-header-height - $clr-search-icon-width) / 2;
+      }
+
+      input {
+        display: none; // TODO: Waiting for UX to finish the search designs.
+      }
     }
+  }
+}
 
-    &:focus {
-      outline-offset: $clr-header-outline-offset; //So that the outline styles aren't hidden becasue of the browser
+@mixin header-branding-md {
+  .branding + .search,
+  .branding + .search-box {
+    &::after {
+      content: none;
+    }
+  }
+}
+
+@mixin header-actions-md {
+  // If actions directly follow search
+  .search-box + .settings,
+  .search-box + .header-actions,
+  .search + .settings,
+  .search + .header-actions {
+    position: relative;
+    flex: 0 0 auto;
+
+    &::after {
+      @include header-section-divider();
     }
   }
 }
 
 @include exports('header.clarity') {
-  %center-fields {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-
-  //Background Colors
-  header,
-  .header {
-    background-color: $clr-header-bgColor;
-
-    &.header-1 {
-      background-color: $clr-header-bgColor;
-    }
-
-    &.header-2 {
-      //Hardcoded because this color is not in the color palette. Its reserved for headers only
-      background-color: $clr-header-2-bg-color;
-    }
-
-    &.header-3 {
-      background-color: $clr-header-3-bg-color;
-    }
-
-    &.header-4 {
-      background-color: $clr-header-4-bg-color;
-    }
-
-    &.header-5 {
-      background-color: $clr-header-5-bg-color;
-    }
-
-    &.header-6 {
-      background-color: $clr-header-6-bg-color;
-    }
-
-    &.header-7 {
-      //Hardcoded because this color is not in the color palette. Its reserved for headers only
-      background-color: $clr-header-7-bg-color;
-    }
-  }
-
-  //Header
+  // TODO: rename to follow clr naming convention
   header,
   .header {
     display: flex;
     color: $clr-header-font-color;
     height: $clr-header-height;
     white-space: nowrap;
+    background-color: $clr-header-bgColor;
 
-    .branding,
-        .header-nav,
-        .search-box, /*TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
-        .search,
-        .settings, /*TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
-        .header-actions,
-        .divider {
-      height: $clr-header-height;
-    }
-
-    //logo and product title
-    .branding {
-      display: flex;
-      flex: 0 0 auto;
-      min-width: 8.5rem;
-      padding: 0 1rem;
-
-      & > a,
-      & > .nav-link {
-        display: inline-flex;
-        align-items: center;
-        height: $clr-header-height;
-        @include remove-text-decoration();
-
-        &:focus {
-          outline-offset: $clr-header-outline-offset; //So that the outline styles aren't hidden becasue of the browser
-        }
-      }
-
-      .clr-icon,
-      clr-icon {
-        flex-grow: 0;
-        flex-shrink: 0;
-        height: $clr-logo-width;
-        width: $clr-logo-width;
-        margin-right: 0.375rem;
-      }
-
-      //product title
-      .title {
-        color: $clr-header-font-color;
-        font-size: $clr-header-title-font-size;
-        font-weight: $clr-header-title-font-weight;
-        font-family: $clr-header-title-font-family;
-        letter-spacing: $clr-header-title-letter-spacing;
-
-        line-height: $clr-header-height;
-        text-decoration: none;
-      }
-    }
-
-    .header-nav {
-      //To remove space between nav links because the browser interprets
-      //newline or space between inline elements as content
-      display: flex;
-      flex: 0 0 auto;
-
-      @include generate-nav-link-styles();
-
-      .nav-link:first-of-type,
-      .nav-link:last-of-type {
-        position: relative;
-      }
-
-      .nav-link:first-of-type::before,
-      .nav-link:last-of-type::after {
-        position: absolute;
-        content: '';
-        @include header-section-divider();
-      }
-
-      .nav-link:first-of-type::before {
-        left: 0;
-      }
-
-      .nav-link:last-of-type::after {
-        right: 0;
-      }
-
-      //Hide Divider if nav-link is active
-      .nav-link.active:first-of-type::before,
-      .nav-link.active:last-of-type::after {
-        content: none;
-      }
-    }
-
-    //search box
-    .search-box,
-    .search {
-      display: flex;
-      align-items: center;
-      flex: 0 0 auto;
-      max-width: 12rem;
-      padding: 0;
-      @include header-nav-appearance();
-
-      & > .nav-icon {
-        margin: 0 0.25rem 0.125rem 1rem;
-      }
-
-      label {
-        display: inline-block;
-        height: $clr-header-height;
-        line-height: $clr-header-height;
-        padding-left: 1rem;
-        text-align: center;
-
-        &::before {
-          display: inline-block;
-          content: '';
-          background-image: generateSearchIcon();
-          background-repeat: no-repeat;
-          background-size: contain;
-          cursor: pointer;
-          height: $clr-search-icon-width;
-          width: $clr-search-icon-width;
-          margin: 0.83335rem 0 0 0;
-          vertical-align: top;
-        }
-
-        input {
-          line-height: 1rem;
-        }
-      }
-
-      input[type='text'] {
-        border: none;
-        background: none;
-        color: $clr-header-font-color;
-        padding: 0;
-        vertical-align: middle;
-
-        &:focus,
-        &:active {
-          background: none;
-        }
-      }
-    }
-
-    //settings area
-    .settings,
-    .header-actions {
-      flex: 1 0 auto;
-      display: flex;
-      justify-content: flex-end;
-
-      @include generate-nav-link-styles();
-
-      //Reduce nesting from 5 to 3 at the most
-      & > .dropdown {
-        $clr-header-action-caret-icon-right-position: 0.5rem;
-
-        & > .dropdown-toggle {
-          position: relative;
-          line-height: $clr-header-height;
-          height: $clr-header-height;
-          outline-offset: $clr-header-outline-offset;
-
-          @include header-nav-appearance();
-        }
-
-        .dropdown-toggle.nav-icon clr-icon:not([shape^='caret']) {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-
-          //Dropdown icons are 2px smaller
-          height: 0.916667rem;
-          width: 0.916667rem;
-          right: 1rem;
-        }
-
-        .dropdown-toggle.nav-icon clr-icon[shape^='caret'] {
-          right: $clr-header-action-caret-icon-right-position;
-        }
-
-        $dropdown-nav-text-dist: 1.5rem;
-        .dropdown-toggle.nav-text {
-          padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
-
-          clr-icon[shape^='caret'] {
-            right: $clr-header-nav-text-horizontal-padding;
-          }
-        }
-
-        .dropdown-toggle.nav-icon {
-          width: $clr-header-height;
-          padding-right: 0;
-        }
-
-        //Pull the dropdown menus of all dropdowns up to compensate
-        //for the height of the header.
-        &.bottom-right > .dropdown-menu,
-        &.bottom-left > .dropdown-menu {
-          top: 85%;
-        }
-
-        //Last Dropdown Menu adjustments so that the menu has some space
-        //between itself and the right end of the browser window
-        &:last-child.bottom-right > .dropdown-menu {
-          right: 0.125rem;
-        }
-
-        //Pull the dropdown menus of all dropdowns up to compensate
-        //for the height of the header.
-        .dropdown-menu {
-          margin-top: -0.166667rem;
-          // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
-          // will create empty space beyond the .main-container if the right isn't set to zero.
-          // Re-evaluate later if we can come up with a better solution.
-          left: auto;
-          right: 0;
-        }
-
-        //Last Dropdown Menu adjustments so that the menu has some space
-        //between itself and the right end of the browser window
-        :last-child.dropdown-menu {
-          margin-right: 0.333333rem;
-        }
-      }
-    }
-
-    .branding + .search,
-    .branding + .search-box {
-      position: relative;
-
-      &::after {
-        position: absolute;
-        left: 0;
-        content: '';
-        @include header-section-divider();
-      }
-    }
-
-    .header-nav:last-child {
-      & > .nav-link:last-child::after {
-        content: none;
-      }
-    }
+    @include header-backgrounds();
+    @include header-branding();
+    @include header-links();
+    @include header-nav();
+    @include header-actions();
+    @include header-search();
   }
 
   @media screen and (max-width: map-get($grid-breakpoints, md)) {
     header,
     .header {
-      .search-box,
-      .search {
-        flex: 1 0 auto;
-        justify-content: flex-end;
-        max-width: none;
-
-        label {
-          padding: 0;
-          width: $clr-header-height;
-
-          &::before {
-            left: ($clr-header-height - $clr-search-icon-width) / 2;
-          }
-
-          input {
-            display: none; //TODO: Waiting for UX to finish the search designs.
-          }
-        }
-      }
-
-      .branding + .search,
-      .branding + .search-box {
-        &::after {
-          content: none;
-        }
-      }
-
-      //If actions directly follow search
-      .search-box + .settings,
-      .search-box + .header-actions,
-      .search + .settings,
-      .search + .header-actions {
-        position: relative;
-        flex: 0 0 auto;
-
-        //Divider
-        &::after {
-          position: absolute;
-          content: '';
-          @include header-section-divider();
-          left: 0;
-        }
-      }
+      @include header-search-md();
+      @include header-branding-md();
+      @include header-actions-md();
     }
   }
 }

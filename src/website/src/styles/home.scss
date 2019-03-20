@@ -104,9 +104,17 @@
     position: absolute;
     bottom: 0;
     left: 612px;
-    background-image: url('../assets/images/clarity_logo.svg');
+    background-image: url('../assets/images/clarity-logo.svg');
     background-size: cover;
     background-position: center center;
+
+    &-spring {
+      background-image: url('../assets/images/clarity-logo-spring.svg');
+    }
+
+    &-winter {
+      background-image: url('../assets/images/clarity-logo-winter.svg');
+    }
   }
 }
 
@@ -118,7 +126,7 @@
   position: relative;
 
   .home-cards-container {
-    background-color: $clr-color-neutral-0;
+    background-color: rgba($clr-color-neutral-0, 0.9);
     width: 100%;
     padding: $bl-2_0 0 $bl-1_0;
     border-radius: 3px;

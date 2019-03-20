@@ -104,9 +104,17 @@
     position: absolute;
     bottom: 0;
     left: 612px;
-    background-image: url('../assets/images/clarity-logo-spring.svg');
+    background-image: url('../assets/images/clarity-logo.svg');
     background-size: cover;
     background-position: center center;
+
+    &--spring {
+      background-image: url('../assets/images/clarity-logo-spring.svg');
+    }
+
+    &--winter {
+      background-image: url('../assets/images/clarity-logo-winter.svg');
+    }
   }
 }
 

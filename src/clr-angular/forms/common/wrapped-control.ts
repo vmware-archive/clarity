@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -62,8 +62,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
     }
     if (this.markControlService) {
       this.subscriptions.push(
-        this.markControlService.dirtyChange.subscribe(() => {
-          this.ngControl.control.markAsDirty();
+        this.markControlService.touchedChange.subscribe(() => {
+          this.ngControl.control.markAsTouched();
           this.ngControl.control.updateValueAndValidity();
         })
       );

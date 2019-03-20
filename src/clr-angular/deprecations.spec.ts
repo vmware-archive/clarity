@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { ClrForm } from './forms/common/form';
+
 describe('Deprecations', () => {
   // When we deprecate some code, we should write a test to verify it is still in the bundle
   // and keep track of when it was deprecated, and when we plan to remove it.
@@ -13,6 +15,11 @@ describe('Deprecations', () => {
   });
 
   describe('2.0', () => {
+    it('should handle ClrForm.markAsDirty as ClrForm.markAsTouched', () => {
+      spyOn(ClrForm.prototype, 'markAsTouched');
+      ClrForm.prototype.markAsDirty();
+      expect(ClrForm.prototype.markAsTouched).toHaveBeenCalled();
+    });
     it('should replace $clr-default prefixed SASS variables with $clr-global prefixed variables');
     it('should no longer have the $clr-font-weights typography SASS map');
     it('should replace $clr-app-font-color-primary SASS variable with $clr-global-font-color');

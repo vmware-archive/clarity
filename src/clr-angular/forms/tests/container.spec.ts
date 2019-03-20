@@ -152,7 +152,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it('tracks the validity of the form control', () => {
       expect(container.invalid).toBeFalse();
-      markControlService.markAsDirty();
+      markControlService.markAsTouched();
       fixture.detectChanges();
       expect(container.invalid).toBeTrue();
     });

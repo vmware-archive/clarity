@@ -18,9 +18,9 @@ export class ReactiveFormsDemo {
 
     submit() {
         if (this.exampleForm.invalid) {
-            this.clrForm.markAsDirty();
+            this.clrForm.markAsTouched();
         } else {
-            // ...
+            // Do submit logic
         }
     }
 }

@@ -59,7 +59,7 @@
         
         <clr-code-snippet [clrCode]="ngReset" clrLanguage="typescript"></clr-code-snippet>
 
-        <p>Normally, validation errors only appear after the control has been focused on by the user. In cases where you want to force validation errors to show (such as when the user tried to submit a form), you simply need to mark every control as dirty with Angular. To make this easier, we have provided an API <code class="clr-code">ClrForm.markAsDirty()</code> that will force all form controls inside of a form to be dirty, which will display the validation errors.</p>
+        <p>Normally, validation errors only appear after the control has been focused on by the user. In cases where you want to force validation errors to show (such as when the user tried to submit a form), you simply need to mark every control as touched with Angular. You can use the form API to accomplish this, <code class="clr-code">ClrForm.markAsTouched()</code>, which will force all form controls inside of a form to be touched, which will display the validation errors.</p>
         
         <clr-code-snippet [clrCode]="ngValidate" clrLanguage="typescript"></clr-code-snippet>
         

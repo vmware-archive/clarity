@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -199,12 +199,12 @@ export default function(): void {
         expect(ControlClassService.prototype.initControlClass).toHaveBeenCalled();
       });
 
-      it('subscribes to requests to mark as dirty', function(this: TestContext) {
+      it('subscribes to requests to mark as touched', function(this: TestContext) {
         setupTest(this, WithControl, TestControl3);
-        expect(this.input.className).not.toContain('ng-dirty');
-        this.markControlService.markAsDirty();
+        expect(this.input.className).not.toContain('ng-touched');
+        this.markControlService.markAsTouched();
         this.fixture.detectChanges();
-        expect(this.input.className).toContain('ng-dirty');
+        expect(this.input.className).toContain('ng-touched');
       });
 
       it('sets the control on ngControlService', function(this: TestContext) {

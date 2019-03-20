@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -44,7 +44,7 @@ export class IfErrorService implements OnDestroy {
   }
 
   private sendValidity() {
-    if ((this.control.touched || this.control.dirty) && this.control.invalid) {
+    if (this.control.touched && this.control.invalid) {
       this._statusChanges.next(true);
     } else {
       this._statusChanges.next(false);

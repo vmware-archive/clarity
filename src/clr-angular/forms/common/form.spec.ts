@@ -59,11 +59,11 @@ export default function(): void {
       expect(directive.injector.get(MarkControlService)).toBeTruthy();
     });
 
-    it('calls markAsDirty', function() {
+    it('calls markAsTouched', function() {
       const service = directive.injector.get(MarkControlService);
-      spyOn(service, 'markAsDirty');
-      directive.componentInstance.form.markAsDirty();
-      expect(service.markAsDirty).toHaveBeenCalled();
+      spyOn(service, 'markAsTouched');
+      directive.componentInstance.form.markAsTouched();
+      expect(service.markAsTouched).toHaveBeenCalled();
     });
   });
 }

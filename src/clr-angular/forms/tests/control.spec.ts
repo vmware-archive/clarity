@@ -70,7 +70,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
     });
 
     it('should have the MarkControlService', () => {
-      expect(markControlService.markAsDirty).toBeTruthy();
+      expect(markControlService.markAsTouched).toBeTruthy();
     });
 
     it('correctly extends WrappedFormControl', () => {

@@ -84,6 +84,10 @@
   }
 
   .clr-form-control-disabled .clr-checkbox-wrapper {
+    label {
+      cursor: not-allowed;
+    }
+
     input[type='checkbox'] + label::before,
     input[type='checkbox']:checked + label::before {
       background-color: $clr-forms-checkbox-disabled-background-color;

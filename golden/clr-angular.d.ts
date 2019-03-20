@@ -663,7 +663,8 @@ export declare class ClrEmphasisModule {
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    markAsDirty(): void;
+    /** @deprecated */ markAsDirty(): void;
+    markAsTouched(): void;
 }
 
 export declare class ClrFormsDeprecatedModule {

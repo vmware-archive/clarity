@@ -25,48 +25,8 @@ and finally you can add the corresponding documentation to the website
 
 ## Contributing to Design
 
-### Discover
-
-Answer the following questions:
-
-* What problem is being solved?
-* How will a user interact with it?
-* Are there features that will be enabled based on use cases?
-
-Conduct market and VMware-product research to see what solutions may already exist.
-Compare how other solutions may or may not solve the problem.
-Document references with names, links and screenshots.
-
-### Align & Define
-
-Share documentation from “Discover” with Clairty team to understand the problem and its potential solutions.
-Discuss why it makes sense for the solution to be incorporated into Clarity.
-Clarity will give feedback on whether more information is needed, or if Clarity has decided for or against the solution.
-
-### Ideate
-
-Product Design & Engineering team members meet to collaborate on potential solutions.
-Discuss implementation constraints, and raise issues that might affect the solution’s design.
-Considerations
-
-* internationalization
-* long/short values
-* error/zero/empty states
-* accessibility recommendation
-* responsive
-* touch
-* edge cases
-* motion
-
-### Iterate
-
-Share solution progress with Clarity team to make sure it aligns.
-Clarity will give feedback on whether more information or design is needed. May need to return to the “Ideate” phase.
-
-### Lock
-
-Solution design can be handed off to Clarity when all needed information is provided, or if the team is finished working on the solution.
-Designs accepted by Clarity are not guaranteed immediate development.
+There are three parts to the design contribution process. When beginning the design of a new component, please follow the guidelines outlined in
+[DESIGN_CONSTRIBUTION.md](/DESIGN_CONTRIBUTION.md).
 
 ## Contributing to Development
 

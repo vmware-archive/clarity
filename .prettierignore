@@ -6,3 +6,4 @@ golden/
 .vscode
 .ng_build
 src/website/src/releases/final-template/auto-generated-routes.ts
+src/website/src/sitemap.xml

@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
   },
 })
 export class HomeComponent {
-  currentSeason = `bg-img--${this.getCurrentSeason()}`;
+  currentSeason = `bg-img-${this.getCurrentSeason()}`;
 
   private getCurrentSeason() {
     const now = new Date();

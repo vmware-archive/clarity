@@ -19,6 +19,7 @@ import {
   SkipSelf,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { Expand } from '../../utils/expand/providers/expand';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
@@ -44,6 +45,7 @@ import { TREE_FEATURES_PROVIDER, TreeFeaturesService } from './tree-features.ser
 })
 export class ClrTreeNode<T> implements OnInit, OnDestroy {
   STATES = ClrSelectedState;
+  private skipEmitChange = false;
 
   constructor(
     @Inject(UNIQUE_ID) public nodeId: string,
@@ -90,12 +92,14 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     if (typeof value === 'boolean') {
       value = value ? ClrSelectedState.SELECTED : ClrSelectedState.UNSELECTED;
     }
-    // We propagate only if the tree is in smart mode
+    // We propagate only if the tree is in smart mode, and skip emitting the output when we set the input
+    // See https://github.com/vmware/clarity/issues/3073
+    this.skipEmitChange = true;
     this._model.setSelected(value, this.featuresService.eager, this.featuresService.eager);
+    this.skipEmitChange = false;
   }
 
-  // We need an async EventEmitter or we will trigger chocolate errors like it's 2016.
-  @Output('clrSelectedChange') selectedChange = new EventEmitter<ClrSelectedState>(true);
+  @Output('clrSelectedChange') selectedChange = new EventEmitter<ClrSelectedState>(false);
 
   @HostBinding('attr.role')
   get treeNodeRole(): string {
@@ -136,7 +140,9 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   ngOnInit() {
-    this.subscriptions.push(this._model.selected.subscribe(value => this.selectedChange.emit(value)));
+    this.subscriptions.push(
+      this._model.selected.pipe(filter(() => !this.skipEmitChange)).subscribe(value => this.selectedChange.emit(value))
+    );
     this.subscriptions.push(this.expandService.expandChange.subscribe(value => this.expandedChange.emit(value)));
   }
 

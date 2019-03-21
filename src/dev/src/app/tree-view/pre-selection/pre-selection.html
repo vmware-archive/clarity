@@ -66,7 +66,9 @@
   </clr-tree-node>
 </div>
 
-<h4>Eager tree, inconsistent pre-selection (Christmas Edition)</h4>
+<!-- THIS IS AN UNSUPPORTED CASE, AND WILL THROW CHOCOLATE ERRORS. RETAINING ONLY FOR TEST CASES. -->
+
+<!-- <h4>Eager tree, inconsistent pre-selection (Christmas Edition)</h4>
 
 <p>
   If different nodes receive inconsistent selection states as their input,
@@ -102,7 +104,7 @@
       Not selected
     </clr-tree-node>
   </clr-tree-node>
-</div>
+</div> -->
 
 <h4>Lazy tree, consistent pre-selection</h4>
 <div class="clr-example">
@@ -185,6 +187,18 @@
           Not selected
         </clr-tree-node>
       </ng-template>
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Larger declarative tree</h4>
+<div class="clr-example">
+  <clr-tree>
+    <clr-tree-node *ngFor="let node of larger">
+      {{node.name}}
+        <clr-tree-node *ngFor="let child of node.children" [(clrSelected)]="child.selected">
+          {{child.name}}
+        </clr-tree-node>
     </clr-tree-node>
   </clr-tree>
 </div>

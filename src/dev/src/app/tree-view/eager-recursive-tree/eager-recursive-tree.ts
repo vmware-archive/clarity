@@ -7,13 +7,22 @@ import { Component } from '@angular/core';
 
 import { ClrSelectedState } from '@clr/angular';
 
+interface SelectedMap {
+  [key: string]: ClrSelectedState;
+}
+
+interface TreeNode {
+  name: string;
+  selected?: ClrSelectedState;
+  children?: TreeNode[];
+}
 @Component({
   selector: 'clr-eager-recursive-tree-demo',
   styleUrls: ['../tree-view.demo.scss'],
   templateUrl: './eager-recursive-tree.html',
 })
 export class EagerRecursiveTreeDemo {
-  singleRoot = {
+  singleRoot: TreeNode = {
     name: 'A',
     children: [
       { name: 'AA', children: [{ name: 'AAA' }, { name: 'AAB' }, { name: 'AAC' }] },
@@ -22,7 +31,7 @@ export class EagerRecursiveTreeDemo {
     ],
   };
 
-  multiRoot = [
+  multiRoot: TreeNode[] = [
     {
       name: 'A',
       children: [
@@ -41,12 +50,25 @@ export class EagerRecursiveTreeDemo {
     },
   ];
 
-  singleRootSelected: { [key: string]: ClrSelectedState } = {};
-  multiRootSelected: { [key: string]: ClrSelectedState } = {};
+  private buildDefaultSelected(rootMap: TreeNode | TreeNode[], selectedMap: SelectedMap = {}) {
+    if (!Array.isArray(rootMap)) {
+      rootMap = [rootMap];
+    }
+    rootMap.forEach(node => {
+      selectedMap[node.name] = ClrSelectedState.UNSELECTED;
+      if (node.children) {
+        this.buildDefaultSelected(node.children, selectedMap);
+      }
+    });
+    return selectedMap;
+  }
+
+  singleRootSelected: SelectedMap = this.buildDefaultSelected(this.singleRoot);
+  multiRootSelected: SelectedMap = this.buildDefaultSelected(this.multiRoot);
 
   synchronousChildren = node => node.children;
 
-  selectedString(selectedMap: { [key: string]: ClrSelectedState }) {
+  selectedString(selectedMap: SelectedMap) {
     return Object.keys(selectedMap)
       .filter(key => selectedMap[key] === ClrSelectedState.SELECTED)
       .join(', ');

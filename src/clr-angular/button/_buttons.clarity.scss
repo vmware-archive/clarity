@@ -109,6 +109,7 @@
     opacity: 0.4;
     background-color: getSassButtonColor($button-type, disabled-bg-color);
     border-color: getSassButtonColor($button-type, disabled-border-color);
+    box-shadow: none;
   }
 }
 

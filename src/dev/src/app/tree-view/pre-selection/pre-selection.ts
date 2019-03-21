@@ -102,4 +102,29 @@ export class PreSelectionDemo {
       },
     },
   };
+
+  larger = [
+    {
+      name: 'Item A',
+      selected: ClrSelectedState.UNSELECTED,
+      children: this.addChildren('A'),
+    },
+    {
+      name: 'Item B',
+      selected: ClrSelectedState.UNSELECTED,
+      children: this.addChildren('B'),
+    },
+    {
+      name: 'Item C',
+      selected: ClrSelectedState.UNSELECTED,
+      children: this.addChildren('C'),
+    },
+  ];
+
+  private addChildren(letter) {
+    return Array.from(Array(50).keys()).map(key => ({
+      name: `Item ${letter}.${key}`,
+      selected: ClrSelectedState.UNSELECTED,
+    }));
+  }
 }

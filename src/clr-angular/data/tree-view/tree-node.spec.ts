@@ -5,7 +5,6 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
-import { fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 
@@ -163,19 +162,22 @@ export default function(): void {
     describe('Template API', function() {
       spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
 
-      it(
-        'offers a [(clrSelected)] two-way binding',
-        fakeAsync(function(this: Context) {
-          this.hostComponent.selected = ClrSelectedState.SELECTED;
-          this.detectChanges();
-          expect(this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
-          this.clarityDirective.selected = ClrSelectedState.INDETERMINATE;
-          // We need fakeAsync and tick because the EventEmitter is asynchronous
-          tick();
-          // I don't know why Typescript forces me to cast this
-          expect<ClrSelectedState>(this.hostComponent.selected).toBe(ClrSelectedState.INDETERMINATE);
-        })
-      );
+      it('offers a [(clrSelected)] two-way binding, but skips emitting output when setting input', function(this: Context) {
+        this.hostComponent.selected = ClrSelectedState.SELECTED;
+        this.detectChanges();
+        expect(this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        this.clarityDirective.selected = ClrSelectedState.UNSELECTED;
+        this.detectChanges();
+        // This may seem unintuitive, but actually is due to the tree flickering issues.
+        // We don't want to emit the change in this case, or it can get confused.
+        // Here we are expecting that the output has not emitted.
+        // See https://github.com/vmware/clarity/issues/3073
+        expect<ClrSelectedState>(this.hostComponent.selected).toBe(ClrSelectedState.SELECTED);
+        // By setting the model here, we will emit the binding since it's not through the input
+        this.clarityDirective._model.setSelected(ClrSelectedState.INDETERMINATE, true, true);
+        this.detectChanges();
+        expect<ClrSelectedState>(this.hostComponent.selected).toBe(ClrSelectedState.INDETERMINATE);
+      });
 
       it('offers a [(clrExpanded)] two-way binding', function(this: Context) {
         this.hostComponent.expanded = true;

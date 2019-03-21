@@ -1153,6 +1153,15 @@ export const ClrShapeCapacitor = clrIconSVG(
 export const ClrShapeSquid = clrIconSVG(
   `<path d="M18,7a1,1,0,0,1-1-1V3.19a1,1,0,0,1,2,0V6A1,1,0,0,1,18,7Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,34a1,1,0,0,1-1-1V30a1,1,0,0,1,2,0v3A1,1,0,0,1,18,34Z" class="clr-i-outline clr-i-outline-path-2" /><path d="M7.41,18l1.78-1.77a1,1,0,1,0-1.42-1.42L6,16.59,4.23,14.81a1,1,0,1,0-1.42,1.42L4.59,18,2.81,19.77a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29L6,19.41l1.77,1.78a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z" class="clr-i-outline clr-i-outline-path-3" /><path d="M6,13.76l.36-.36a3,3,0,0,1,2.11-.88,11,11,0,0,1,19,0,3,3,0,0,1,2.12.88l.36.36.2-.2a13,13,0,0,0-24.4,0Z" class="clr-i-outline clr-i-outline-path-4" /><path d="M30,22.24l-.36.36a3,3,0,0,1-2.12.88,11,11,0,0,1-19,0,3,3,0,0,1-2.12-.88L6,22.24l-.2.2a13,13,0,0,0,24.4,0Z" class="clr-i-outline clr-i-outline-path-5" /><path d="M31.41,18l1.78-1.77a1,1,0,0,0-1.42-1.42L30,16.59l-1.77-1.78a1,1,0,1,0-1.42,1.42L28.59,18l-1.78,1.77a1,1,0,0,0,0,1.42,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29L30,19.41l1.77,1.78a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z" class="clr-i-outline clr-i-outline-path-6" />`
 );
+export const ClrShapeHostGroup = clrIconSVG(
+  `<path d="M21.08,34h-14A1.08,1.08,0,0,1,6,33V12a1.08,1.08,0,0,1,1.08-1.08h14A1.08,1.08,0,0,1,22.16,12V33A1.08,1.08,0,0,1,21.08,34ZM8.16,31.88H20V13H8.16Z" class="clr-i-outline clr-i-outline-path-1" />
+<rect x="10.08" y="14.96" width="8" height="2" class="clr-i-outline clr-i-outline-path-2" /><path d="M26.1,27.81h-2V9h-12V7h13a1,1,0,0,1,1,1Z" class="clr-i-outline clr-i-outline-path-3" />
+<path d="M30.08,23h-2V5h-11V3h12a1,1,0,0,1,1,1Z" class="clr-i-outline clr-i-outline-path-4" /><rect x="13.08" y="27.88" width="2" height="2.16" class="clr-i-outline clr-i-outline-path-5" />
+
+<path class="clr-i-solid clr-i-solid-path-1" d="M15.08,31 L1.08,31 C0.513427197,31.0015564 0.0419663765,30.5650186 0,30 L0,9 C0,8.40353247 0.48353247,7.92 1.08,7.92 L15.08,7.92 C15.6764675,7.92 16.16,8.40353247 16.16,9 L16.16,30 C16.1180336,30.5650186 15.6465728,31.0015564 15.08,31 Z M4.08,11.96 L4.08,13.96 L12.08,13.96 L12.08,11.96 L4.08,11.96 Z M7.08,24.88 L7.08,27.04 L9.08,27.04 L9.08,24.88 L7.08,24.88 Z" />
+<path class="clr-i-solid clr-i-solid-path-2" d="M20.1,24.81 L18.1,24.81 L18.1,6 L6.1,6 L6.1,4 L19.1,4 C19.6522847,4 20.1,4.44771525 20.1,5 L20.1,24.81 Z" />
+<path class="clr-i-solid clr-i-solid-path-3" d="M24.08,20 L22.08,20 L22.08,2 L11.08,2 L11.08,0 L23.08,0 C23.6322847,0 24.08,0.44771525 24.08,1 L24.08,20 Z" />`
+);
 
 export const TechnologyShapes: any = {
   'ruler-pencil': ClrShapeRulerPencil,
@@ -1240,6 +1249,7 @@ export const TechnologyShapes: any = {
   squid: ClrShapeSquid,
   inductor: ClrShapeInductor,
   resistor: ClrShapeResistor,
+  'host-group': ClrShapeHostGroup,
 };
 
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));

@@ -13,7 +13,6 @@ import * as converter from 'xml-js';
 import { parse } from 'url';
 import * as makeDir from 'make-dir';
 import * as Promise from 'bluebird';
-import * as ora from 'ora';
 import * as del from 'del';
 import * as minimist from 'minimist';
 import { environment } from './src/environments/environment';
@@ -89,7 +88,7 @@ const deploy = () => {
 
 // Writes rendered HTML to index.html, replacing the file if it already exists.
 const renderer = url => {
-  const spinner = ora('Route: ' + url.route).start();
+  console.log('Route: ' + url.route);
   return renderModuleFactory(AppServerModuleNgFactory, {
     document: index,
     url: url.route,
@@ -97,12 +96,10 @@ const renderer = url => {
   }).then(
     html => {
       writeFileSync(join(url.fullPath, 'index.html'), html);
-      spinner.succeed();
       return url;
     },
     error => {
-      spinner.fail('Unable to render ' + url);
-      console.log(error);
+      console.log('Unable to render: ' + url.route, error);
     }
   );
 };

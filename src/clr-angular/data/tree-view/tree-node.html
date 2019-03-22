@@ -9,7 +9,7 @@
     *ngIf="isExpandable() && !_model.loading && !expandService.loading"
     type="button"
     class="clr-treenode-caret"
-    (click)="expandService.toggle()"
+    (click)="expandToggle()"
     [attr.aria-expanded]="expandService.expanded">
     <clr-icon
       class="clr-treenode-caret-icon"
@@ -32,7 +32,8 @@
   </div>
 </div>
 <div class="clr-treenode-children"
-     [@childNodesState]="expandService.expanded ? 'expanded' : 'collapsed'"
+     [@childNodesState]="expandedState"
+     (@childNodesState.done)="animationFinished()"
      [attr.role]="isExpandable() ? 'group' : null">
   <ng-content select="clr-tree-node"></ng-content>
   <ng-content select="[clrIfExpanded]"></ng-content>

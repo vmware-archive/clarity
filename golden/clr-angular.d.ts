@@ -1132,6 +1132,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     expandable: boolean | undefined;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
+    expandedState: ClrExpandedState;
     featuresService: TreeFeaturesService<T>;
     nodeId: string;
     readonly rootAriaMultiSelectable: boolean;
@@ -1139,6 +1140,8 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     selectedChange: EventEmitter<ClrSelectedState>;
     readonly treeNodeRole: string;
     constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings, injector: Injector);
+    animationFinished(): void;
+    expandToggle(): void;
     isExpandable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;

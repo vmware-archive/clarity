@@ -29,6 +29,7 @@ import { DeclarativeTreeNodeModel } from './models/declarative-tree-node.model';
 import { ClrSelectedState } from './models/selected-state.enum';
 import { TreeNodeModel } from './models/tree-node.model';
 import { TREE_FEATURES_PROVIDER, TreeFeaturesService } from './tree-features.service';
+import { ClrExpandedState } from './models/expanded-state.enum';
 
 @Component({
   selector: 'clr-tree-node',
@@ -69,6 +70,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   }
 
   _model: TreeNodeModel<T>;
+  expandedState: ClrExpandedState;
 
   isExpandable() {
     if (typeof this.expandable !== 'undefined') {
@@ -140,14 +142,40 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   ngOnInit() {
+    this.expandedState = this.getExpandedState(this.expanded);
     this.subscriptions.push(
       this._model.selected.pipe(filter(() => !this.skipEmitChange)).subscribe(value => this.selectedChange.emit(value))
     );
-    this.subscriptions.push(this.expandService.expandChange.subscribe(value => this.expandedChange.emit(value)));
+    this.subscriptions.push(
+      this.expandService.expandChange.subscribe(value => {
+        this.expandedChange.emit(value);
+        this.expandedState = this.getExpandedState(value);
+      })
+    );
   }
 
   ngOnDestroy() {
     this._model.destroy();
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  expandToggle() {
+    // Checking for collapsed instead of expanded delivers a toggled result.
+    this.expandedState = this.getExpandedState(this.expandedState === ClrExpandedState.COLLAPSED);
+    // For the expanding animation ClrIfExpanded needs to get updated immediately.
+    if (this.expandedState === ClrExpandedState.EXPANDED) {
+      this.expandService.expanded = true;
+    }
+  }
+
+  animationFinished() {
+    // For the collapsing animation ClrIfExpanded has to destroy content only after the animation is finished.
+    if (this.expandedState === ClrExpandedState.COLLAPSED) {
+      this.expandService.expanded = false;
+    }
+  }
+
+  private getExpandedState(expanded: boolean) {
+    return expanded ? ClrExpandedState.EXPANDED : ClrExpandedState.COLLAPSED;
   }
 }

@@ -256,13 +256,25 @@ export default function(): void {
         expect(this.clarityElement.querySelector('.clr-treenode-spinner')).not.toBeNull();
       });
 
-      it('expands and collapses when the caret is clicked', function(this: Context) {
-        const caret: HTMLElement = this.clarityElement.querySelector('.clr-treenode-caret');
-        caret.click();
-        expect(this.clarityDirective.expanded).toBeTrue();
-        caret.click();
-        expect(this.clarityDirective.expanded).toBeFalse();
-      });
+      it(
+        'expands and collapses when the caret is clicked',
+        fakeAsync(function(this: Context) {
+          const caret: HTMLElement = this.clarityElement.querySelector('.clr-treenode-caret');
+          caret.click();
+          this.detectChanges();
+          expect(this.clarityDirective.expanded).toBeTrue();
+
+          caret.click();
+          this.detectChanges();
+          // before collapse animation
+          expect(this.clarityDirective.expanded).toBeTrue();
+          expect(this.clarityDirective.expandedState).toBe('collapsed');
+          tick();
+          // after collapse animation is complete
+          expect(this.clarityDirective.expanded).toBeFalse();
+          expect(this.clarityDirective.expandedState).toBe('collapsed');
+        })
+      );
 
       it('adds the aria-expanded attribute on the caret', function(this: Context) {
         const caret = this.clarityElement.querySelector('.clr-treenode-caret');

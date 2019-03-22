@@ -5,6 +5,7 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 

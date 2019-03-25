@@ -5,9 +5,6 @@
   publish = "dist/website/browser"
   environment = { CYPRESS_SKIP_BINARY_INSTALL = "true" }
 
-[build.environment]
-  NPM_FLAG = "--progress=false --quiet"
-
 # Override for PRs to deploy the dev app
 [context.deploy-preview]
   command = "npm run build:preview && npm run website:news && npm run website:deploy-preview && cp -R dist/dev dist/website/browser/dev"

@@ -93,7 +93,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
   }
 
   orderVersions(a, b) {
-    return a.key > b.key;
+    return parseFloat(b.key.substring(1)) - parseFloat(a.key.substring(1));
   }
 
   resetCounts(): void {

@@ -3,7 +3,7 @@
   command = "npm run website:prerender"
   functions = "dist/netlify"
   publish = "dist/website/browser"
-  environment = { CYPRESS_SKIP_BINARY_INSTALL = "true" }
+  environment = { CYPRESS_INSTALL_BINARY = 0 }
 
 # Override for PRs to deploy the dev app
 [context.deploy-preview]

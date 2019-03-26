@@ -4,38 +4,38 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-const browsers = {
-  chrome_latest_win_10: {
-    base: 'SauceLabs',
-    browserName: 'chrome',
-    version: 'latest',
-    platform: 'Windows 10',
-  },
-  firefox_latest_win_10: {
-    base: 'SauceLabs',
-    browserName: 'firefox',
-    version: 'latest',
-    platform: 'Windows 10',
-  },
-  safari_latest_osx_11: {
-    base: 'SauceLabs',
-    browserName: 'safari',
-    version: 'latest',
-    platform: 'macOS 10.13',
-  },
-  ie_11_win_8_1: {
-    base: 'SauceLabs',
-    browserName: 'internet explorer',
-    version: 'latest',
-    platform: 'Windows 8.1',
-  },
-  edge_latest_win_10: {
-    base: 'SauceLabs',
-    browserName: 'MicrosoftEdge',
-    version: 'latest',
-    platform: 'Windows 10',
-  },
-};
+// const browsers = {
+//   chrome_latest_win_10: {
+//     base: 'SauceLabs',
+//     browserName: 'chrome',
+//     version: 'latest',
+//     platform: 'Windows 10',
+//   },
+//   firefox_latest_win_10: {
+//     base: 'SauceLabs',
+//     browserName: 'firefox',
+//     version: 'latest',
+//     platform: 'Windows 10',
+//   },
+//   safari_latest_osx_11: {
+//     base: 'SauceLabs',
+//     browserName: 'safari',
+//     version: 'latest',
+//     platform: 'macOS 10.13',
+//   },
+//   ie_11_win_8_1: {
+//     base: 'SauceLabs',
+//     browserName: 'internet explorer',
+//     version: 'latest',
+//     platform: 'Windows 8.1',
+//   },
+//   edge_latest_win_10: {
+//     base: 'SauceLabs',
+//     browserName: 'MicrosoftEdge',
+//     version: 'latest',
+//     platform: 'Windows 10',
+//   },
+// };
 
 module.exports = function(karma) {
   'use strict';
@@ -132,29 +132,30 @@ module.exports = function(karma) {
     },
   };
 
+  // @TODO Consider moving from SL to BrowserStack, or give up on this. SL fails so often we can't rely on it.
   // We'll use saucelabs for testing if and only if the access key is set in ENV, and CI flag is set.
   // We'll modify the config as necessary.
-  if (process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS === 'true') {
-    config.reporters.push('saucelabs');
-    config.browsers = [
-      'chrome_latest_win_10',
-      'firefox_latest_win_10',
-      // "safari_latest_osx_11",
-      // "ie_11_win_8_1",
-      // "edge_latest_win_10",
-    ];
-    config.customLaunchers = browsers;
-    config.sauceLabs = {
-      testName: 'Unit Tests',
-      startConnect: true,
-      extendedDebugging: true,
-      // If you need to debug, here are some options
-      // connectOptions: {
-      //     verbose: true,
-      //     logfile: './sauceconnect.log'
-      // }
-    };
-  }
+  // if (process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS === 'true') {
+  //   config.reporters.push('saucelabs');
+  //   config.browsers = [
+  //     'chrome_latest_win_10',
+  //     'firefox_latest_win_10',
+  //     // "safari_latest_osx_11",
+  //     // "ie_11_win_8_1",
+  //     // "edge_latest_win_10",
+  //   ];
+  //   config.customLaunchers = browsers;
+  //   config.sauceLabs = {
+  //     testName: 'Unit Tests',
+  //     startConnect: true,
+  //     extendedDebugging: true,
+  //     // If you need to debug, here are some options
+  //     // connectOptions: {
+  //     //     verbose: true,
+  //     //     logfile: './sauceconnect.log'
+  //     // }
+  //   };
+  // }
 
   karma.set(config);
 };

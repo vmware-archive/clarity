@@ -526,6 +526,12 @@
           color: $clr-datagrid-action-toggle; // Fixed active state on this button for Safari.
         }
       }
+
+      // align toggle input to row hight
+      .clr-toggle-wrapper {
+        margin-top: -0.55rem;
+        padding-top: 0.35rem;
+      }
     }
 
     .datagrid-placeholder-container {

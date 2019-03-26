@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -14,11 +14,11 @@
         <form>
             <section class="form-block">
                 <label>Form Inside a Grid</label>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label for="gForm_1">Input field</label>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-4 clr-col-md-4 clr-col-12">
                         <input class="form-control" type="text" id="gForm_1" placeholder="Enter value here" size="45">
                     </div>
                     <clr-tooltip>
@@ -30,11 +30,11 @@
                         </clr-tooltip-content>
                     </clr-tooltip>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label for="gForm_3">Select box</label>
                     </div>
-                    <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
                         <div class="select form-control">
                             <select id="gForm_3">
                                 <option>Option 1</option>
@@ -45,19 +45,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label for="gForm_4">Text area</label>
                     </div>
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-10 clr-col-12">
                         <textarea id="gForm_4" rows="5" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label>This label has a lot of content in it. This tests that labels in forms wrap correctly.</label>
                     </div>
-                    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-4 clr-col-md-5 clr-col-12">
                         <div class="select form-control">
                             <select id="exampleSelect1">
                                 <option>1</option>
@@ -68,15 +68,15 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-5 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-3 clr-col-md-5 clr-col-12">
                         <span>Sockets: 1</span>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label>Multiple select box</label>
                     </div>
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-10 clr-col-12">
                         <div class="select multiple form-control">
                             <select multiple id="exampleSelect2">
                                 <option>1</option>
@@ -88,11 +88,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label>Select box with a size of 5 rows</label>
                     </div>
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-10 clr-col-12">
                         <div class="select multiple form-control">
                             <select id="exampleSelect3" size="5">
                                 <option>1</option>
@@ -107,31 +107,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-lg-2 clr-col-12">
                         <label for="gForm_3">Other form fields</label>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-2 clr-col-md-3 clr-col-12">
                         <div class="toggle-switch">
                             <input type="checkbox" id="othertoggle">
                             <label for="othertoggle">Toggle</label>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <div class="clr-col-lg-3 clr-col-md-3 clr-col-12">
                         <div class="checkbox-inline">
                             <input type="checkbox" id="othercheckbox" checked>
                             <label for="othercheckbox">Inline Checkbox</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-lg-12 col-md-12">
+                <div class="form-group clr-row">
+                    <div class="clr-col-12">
                         <div class="checkbox">
                             <input type="checkbox" id="checkrads_1">
                             <label for="checkrads_1">Checkbox 1</label>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="clr-col-12">
                         <div class="checkbox">
                             <input type="checkbox" id="checkrads_2">
                             <label for="checkrads_2">Checkbox 1</label>

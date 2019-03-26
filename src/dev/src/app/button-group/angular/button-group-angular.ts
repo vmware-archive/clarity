@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
   styleUrls: ['../button-group.demo.scss'],
   template: `
         <h4>Angular Styles</h4>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="clr-row">
+            <div class="clr-col-12 clr-col-md-4">
                 <ul>
                     <li><a [routerLink]="['./basic-structure']">Basic Structure</a></li>
                     <li><a [routerLink]="['./directions']">Menu Directions</a></li>
@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
                     <li><a [routerLink]="['./hide-overflow']">Hide/Show Overflow Toggle</a></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="clr-col-12 clr-col-md-4">
                 <ul>
                     <li><a [routerLink]="['./mixed-buttons']">Mixed Buttons</a></li>
                     <li><a [routerLink]="['./move-button-in-menu']">Move Button In Menu</a></li>
@@ -29,7 +29,7 @@ import { Component } from '@angular/core';
                     <li><a [routerLink]="['./projection-update-test-1']">Projection Update Test 1</a></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="clr-col-12 clr-col-md-4">
                 <ul>
                     <li><a [routerLink]="['./projection-update-test-2']">Projection Update Test 2</a></li>
                     <li><a [routerLink]="['./projection-update-test-3']">Projection Update Test 3</a></li>

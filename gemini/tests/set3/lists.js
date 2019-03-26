@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -70,17 +70,7 @@ gemini.suite('lists', child => {
         actions.waitForElementToShow('.card', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.row')
+      .setCaptureElements('.clr-row')
       .capture('default');
   });
-
-  // gemini.suite('old-lists-in-cards', (child) => {
-  //     child.setUrl('/lists/old-lists-in-cards')
-  //         .before((actions, find) => {
-  //             actions.waitForElementToShow('.card', WAIT_TIME);
-  //             actions.wait(WAIT_LOAD_TIME);
-  //         })
-  //         .setCaptureElements('.row')
-  //         .capture('default');
-  // });
 });

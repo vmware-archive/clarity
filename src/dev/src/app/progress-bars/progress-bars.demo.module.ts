@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 
 import { ClarityModule } from '@clr/angular';
 
-import { OldProgressBarCardsDemo } from './old-progress-bar-cards';
 import { ProgressBarAnimationsDemo } from './progress-bar-animations';
 import { ProgressBarCardsDemo } from './progress-bar-cards';
 import { ProgressBarColorsDemo } from './progress-bar-colors';
@@ -36,7 +35,6 @@ import { ROUTING } from './progress-bars.demo.routing';
     ProgressBarStaticCardsDemo,
     ProgressBarInlineDemo,
     ProgressBarInlineCardsDemo,
-    OldProgressBarCardsDemo,
   ],
   exports: [
     ProgressBarExamplesDemo,

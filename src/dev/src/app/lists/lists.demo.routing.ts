@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,7 +13,6 @@ import { ListsOlDemo } from './lists-ol';
 import { ListsUlDemo } from './lists-ul';
 import { ListsUnstyledDemo } from './lists-unstyled';
 import { ListsDemo } from './lists.demo';
-import { OldListsInCardsDemo } from './old-lists-in-cards';
 
 const ROUTES: Routes = [
   {
@@ -27,7 +26,6 @@ const ROUTES: Routes = [
       { path: 'lists-unstyled', component: ListsUnstyledDemo },
       { path: 'lists-mixed', component: ListsMixedDemo },
       { path: 'lists-compact', component: ListsCompactDemo },
-      { path: 'old-lists-in-cards', component: OldListsInCardsDemo },
     ],
   },
 ];

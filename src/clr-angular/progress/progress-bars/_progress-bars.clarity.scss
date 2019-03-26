@@ -586,11 +586,11 @@
       display: flex;
       width: 100%;
 
-      .row {
+      .clr-row {
         margin-left: 0;
         margin-right: 0;
 
-        & > [class*='col-'] {
+        & > [class*='clr-col-'] {
           padding-left: 0;
           padding-right: 0;
         }

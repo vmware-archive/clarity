@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,7 +8,7 @@
 
     <section>
         <h5>Preview Settings</h5>
-        <div class="row clr-icon-preview-settings">
+        <div class="clr-icon-preview-settings">
 
             <div class="form-group clr-solid-checkbox">
                 <div class="toggle-switch">
@@ -38,30 +38,12 @@
 
     <section *ngFor="let set of allShapeSets">
         <h5>{{set.name}}</h5>
-        <div class="row clr-icon-collection">
-            <div *ngFor="let shape of set.shapes" class="clr-icon-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="clr-row clr-icon-collection">
+            <div *ngFor="let shape of set.shapes" class="clr-icon-item clr-col-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
                 <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
                 <span class="icon-shape-name">{{shape}}</span>
             </div>
         </div>
     </section>
 
-</div>
-
-<div class="clr-icon-download">
-    <section>
-        <h5>Designing with Clarity Icons</h5>
-        <p>Download all icons as SVG files in one directory to use in designs. Make sure to check back often as we're
-            constantly adding new icons to our library.</p>
-        <div class="row">
-            <div class="col-xs-12 btn-all-sets-container">
-                <form method="get" [action]="allSetsLink">
-                    <button class="btn btn-lg btn-primary btn-all-sets">
-                        <clr-icon shape="download"></clr-icon>
-                        download all svg sets
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
 </div>

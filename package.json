@@ -10,12 +10,11 @@
     "build:icons:svg": "node ./scripts/clr-icons-svg.js",
     "build:icons": "npm-run-all build:icons:css build:icons:optimize build:icons:web build:icons:package build:icons:svg",
     "build:ui:css": "node-sass --include-path=node_modules --source-map=true --precision=8 --indentedSyntax=true ./src/clr-angular/main.scss ./dist/clr-ui/clr-ui.css; node-sass --include-path=node_modules --source-map=true --precision=8 --indentedSyntax=true ./src/clr-angular/dark-theme.scss ./dist/clr-ui/clr-ui-dark.css",
-    "build:ui:deprecated": "node-sass --include-path=node_modules --source-map=true --precision=8 --indentedSyntax=true ./src/clr-angular/layout/grid-deprecated.clarity.scss ./dist/clr-ui/clr-grid-deprecated.css",
-    "build:ui:prefix": "postcss ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.css; postcss ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.css; postcss --use autoprefixer -o ./dist/clr-ui/clr-grid-deprecated.css ./dist/clr-ui/clr-grid-deprecated.css",
+    "build:ui:prefix": "postcss ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.css; postcss ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.css",
     "build:ui:src": "cpy --parents --cwd='src/clr-angular/' '**/*.scss' ../../dist/clr-ui/src/",
-    "build:ui:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file; csso -i ./dist/clr-ui/clr-grid-deprecated.css -o ./dist/clr-ui/clr-grid-deprecated.css -s file",
+    "build:ui:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file",
     "build:ui:package": "cpy ./npm/clr-ui/package.json ./npm/clr-ui/README.md ./dist/clr-ui/; replace '@VERSION' $npm_package_version ./dist/clr-ui/package.json",
-    "build:ui": "npm-run-all build:ui:css build:ui:deprecated build:ui:prefix build:ui:src build:ui:optimize build:ui:package",
+    "build:ui": "npm-run-all build:ui:css build:ui:prefix build:ui:src build:ui:optimize build:ui:package",
     "build:angular:package": "cpy ./npm/clr-angular/package.json ./npm/clr-angular/README.md ./src/clr-angular/; replace '@VERSION' $npm_package_version ./src/clr-angular/package.json",
     "build:angular:ngpackagr": "ng build clr-angular",
     "build:angular": "npm-run-all build:angular:package build:angular:ngpackagr",
@@ -45,6 +44,7 @@
     "test:watch": "ng test clr-angular --watch",
     "test:travis": "npm-run-all test:format test:lint test build test:aot test:golden",
     "format:fix": "pretty-quick --staged",
+    "license:fix": "node scripts/update-license",
     "visual:fix": "npm-run-all 'visual:fix:light -- {*}' 'visual:fix:dark -- {*}' --",
     "visual:fix:light": "./scripts/docker-cdc.js -u",
     "visual:fix:dark": "./scripts/docker-cdc.js -u -c dark",
@@ -169,7 +169,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix"
+      "pre-commit": "npm run format:fix && npm run license:fix"
     }
   }
 }

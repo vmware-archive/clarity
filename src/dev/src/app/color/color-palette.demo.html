@@ -1,13 +1,13 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <p>Colors that are twice as tall are part of the base color palette.</p>
 
-<div class="row">
-    <div class="col-sm-6 col-md-4 col-xs-12" *ngFor="let palette of palettes">
+<div class="clr-row">
+    <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of palettes">
         <div class="card card-block card-swatch-block">
             <ng-container *ngFor="let color of palette.colors">
                 <div class="card-swatch-divider" *ngIf="color.value === 'divider'"></div>

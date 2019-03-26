@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,6 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./progress-bar-static-cards']">Static Progress Bar in Cards</a></li>
             <li><a [routerLink]="['./progress-bar-inline']">Inline Progress Bar</a></li>
             <li><a [routerLink]="['./progress-bar-inline-cards']">Inline Progress Bar in Cards</a></li>
-            <li><a [routerLink]="['./old-progress-bar-cards']">Old Progress Bar in Cards</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

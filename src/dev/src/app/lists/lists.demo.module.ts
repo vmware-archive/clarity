@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,6 @@ import { ListsUlDemo } from './lists-ul';
 import { ListsUnstyledDemo } from './lists-unstyled';
 import { ListsDemo } from './lists.demo';
 import { ROUTING } from './lists.demo.routing';
-import { OldListsInCardsDemo } from './old-lists-in-cards';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING],
@@ -28,7 +27,6 @@ import { OldListsInCardsDemo } from './old-lists-in-cards';
     ListsCompactDemo,
     ListsMixedDemo,
     ListsInCardsDemo,
-    OldListsInCardsDemo,
   ],
   exports: [ListsDemo, ListsUlDemo, ListsOlDemo, ListsUnstyledDemo, ListsCompactDemo, ListsMixedDemo, ListsInCardsDemo],
 })

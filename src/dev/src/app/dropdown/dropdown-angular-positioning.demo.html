@@ -9,7 +9,7 @@
     <p>
         Static menu, no <code class="clr-code">*clrIfOpen</code> (deprecated):
         <clr-dropdown>
-            <button class="btn btn-outline-primary" clrDropdownTrigger id="deprecated">
+            <button class="btn btn-outline-primary" clrDropdownTrigger [id]="'deprecated'">
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -42,7 +42,7 @@
     <p>
         Menu component, no <code class="clr-code">*clrIfOpen</code> (not recommended):
         <clr-dropdown>
-            <button class="btn btn-outline-primary" clrDropdownTrigger id="no-if-open">
+            <button class="btn btn-outline-primary" clrDropdownTrigger [id]="'no-if-open'">
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -50,8 +50,8 @@
                 <label class="dropdown-header">Dropdown header</label>
                 <a href="javascript://" clrDropdownItem>Action 1</a>
                 <a href="javascript://" clrDropdownItem>Action 2</a>
-                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-                <div class="dropdown-divider"></div>
+                <a href="javascript://" class="disabled" clrDropdownItem disabled>Disabled Action</a>
+                <div class="dropdown-divider" role="separator"></div>
                 <a href="javascript://" clrDropdownItem>Link 1</a>
                 <a href="javascript://" clrDropdownItem>Link 2</a>
             </clr-dropdown-menu>
@@ -65,8 +65,8 @@
                 <label class="dropdown-header">Dropdown header</label>
                 <a href="javascript://" clrDropdownItem>Action 1</a>
                 <a href="javascript://" clrDropdownItem>Action 2</a>
-                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-                <div class="dropdown-divider"></div>
+                <a href="javascript://" class="disabled" clrDropdownItem disabled>Disabled Action</a>
+                <div class="dropdown-divider" role="separator"></div>
                 <a href="javascript://" clrDropdownItem>Link 1</a>
                 <a href="javascript://" clrDropdownItem>Link 2</a>
             </clr-dropdown-menu>
@@ -75,7 +75,7 @@
     <p>
         Menu component, with <code class="clr-code">*clrIfOpen</code> (recommended):
         <clr-dropdown>
-            <button class="btn btn-outline-primary" clrDropdownTrigger id="if-open">
+            <button class="btn btn-outline-primary" clrDropdownTrigger [id]="'if-open'">
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -83,8 +83,8 @@
                 <label class="dropdown-header">Dropdown header</label>
                 <a href="javascript://" clrDropdownItem>Action 1</a>
                 <a href="javascript://" clrDropdownItem>Action 2</a>
-                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-                <div class="dropdown-divider"></div>
+                <a href="javascript://" class="disabled" clrDropdownItem disabled>Disabled Action</a>
+                <div class="dropdown-divider" role="separator"></div>
                 <a href="javascript://" clrDropdownItem>Link 1</a>
                 <a href="javascript://" clrDropdownItem>Link 2</a>
             </clr-dropdown-menu>
@@ -98,8 +98,8 @@
                 <label class="dropdown-header">Dropdown header</label>
                 <a href="javascript://" clrDropdownItem>Action 1</a>
                 <a href="javascript://" clrDropdownItem>Action 2</a>
-                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
-                <div class="dropdown-divider"></div>
+                <a href="javascript://" class="disabled" clrDropdownItem disabled>Disabled Action</a>
+                <div class="dropdown-divider" role="separator"></div>
                 <a href="javascript://" clrDropdownItem>Link 1</a>
                 <a href="javascript://" clrDropdownItem>Link 2</a>
             </clr-dropdown-menu>

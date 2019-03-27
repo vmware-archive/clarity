@@ -19,13 +19,19 @@
   </button>
   <div class="clr-treenode-spinner-container" *ngIf="expandService.loading || _model.loading">
         <span class="clr-treenode-spinner spinner"></span>
-  </div>
-  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable">
+  </div>{{ _model.selected.value }}
+  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable"
+    [ngClass]="{'disabled': _model.disabled.value}">
     <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
            [checked]="_model.selected.value === STATES.SELECTED"
-           [indeterminate]="_model.selected.value === STATES.INDETERMINATE"
-           (change)="_model.toggleSelection(featuresService.eager)">
-    <label for="{{nodeId}}-check" class="clr-control-label"></label>
+           [indeterminate]="_model.selected.value === STATES.INDETERMINATE">
+    <!-- NOTE: The toggle selection handler is here instead of change on input above because, input change event happening
+      on the DOM makes it hard for persisting the Indeterminate state on input by setting the 'checked' state 
+      of the input to true even when it's false on the '_model.selected.value'. The DOM property bindings of the
+      input element are messed up for programmatically persisting the indeterminate state -->
+    <label for="{{nodeId}}-check" class="clr-control-label" 
+      (click)="_model.toggleClickHandler(featuresService.eager, $event)">
+    </label>
   </div>
   <div class="clr-treenode-content" [id]="nodeId">
     <ng-content></ng-content>

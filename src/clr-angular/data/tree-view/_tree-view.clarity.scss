@@ -174,4 +174,9 @@
       margin-left: 0.125rem;
     }
   }
+
+  .clr-treenode-checkbox.disabled {
+    pointer-events: none;
+    opacity: $clr-forms-disabled-opacity;
+  }
 }

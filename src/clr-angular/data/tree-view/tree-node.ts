@@ -77,6 +77,20 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     return !!this.expandService.expandable || this._model.children.length > 0;
   }
 
+  @Input('clrDisabled')
+  get disabled(): boolean {
+    return this._model.disabled.value;
+  }
+  set disabled(value: boolean) {
+    if (value === null || typeof value === 'undefined') {
+      value = true;
+    }
+    if (typeof value === 'boolean') {
+      this._model.isDisabledInputSetToTrue = value;
+      this._model.setDisabled(value, this.featuresService.eager, this.featuresService.eager);
+    }
+  }
+
   @Input('clrSelected')
   get selected(): ClrSelectedState | boolean {
     return this._model.selected.value;
@@ -100,6 +114,8 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   }
 
   @Output('clrSelectedChange') selectedChange = new EventEmitter<ClrSelectedState>(false);
+
+  @Output('clrDisabledChange') disabledChange = new EventEmitter<boolean>(false);
 
   @HostBinding('attr.role')
   get treeNodeRole(): string {
@@ -144,6 +160,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
       this._model.selected.pipe(filter(() => !this.skipEmitChange)).subscribe(value => this.selectedChange.emit(value))
     );
     this.subscriptions.push(this.expandService.expandChange.subscribe(value => this.expandedChange.emit(value)));
+    this.subscriptions.push(this._model.disabled.subscribe(value => this.disabledChange.emit(value)));
   }
 
   ngOnDestroy() {

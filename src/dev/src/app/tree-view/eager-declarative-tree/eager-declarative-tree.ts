@@ -13,4 +13,25 @@ import { Component } from '@angular/core';
 export class EagerDeclarativeTreeDemo {
   expanded1 = true;
   expanded2 = true;
+  isNodeAdisabled: boolean = true;
+
+  isNodeA1disabled: boolean = false;
+  isNodeA2disabled: boolean = false;
+  isNodeA3disabled: boolean = false;
+
+  isNodeA23disabled: boolean = false;
+
+  toggleNode(name) {
+    if (name === 'A-1') {
+      this.isNodeA1disabled = !this.isNodeA1disabled;
+    } else if (name === 'A-2') {
+      this.isNodeA2disabled = !this.isNodeA2disabled;
+    } else if (name === 'A-3') {
+      this.isNodeA3disabled = !this.isNodeA3disabled;
+    } else if (name === 'A-2.3') {
+      this.isNodeA23disabled = !this.isNodeA23disabled;
+    } else if (name === 'A') {
+      this.isNodeAdisabled = !this.isNodeAdisabled;
+    }
+  }
 }

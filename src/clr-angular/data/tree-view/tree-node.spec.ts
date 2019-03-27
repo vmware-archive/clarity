@@ -5,6 +5,7 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 
@@ -20,7 +21,8 @@ import { TreeFeaturesService } from './tree-features.service';
 import { ClrTreeNode } from './tree-node';
 
 @Component({
-  template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded" [clrExpandable]="expandable">
+  template: `<clr-tree-node #node [(clrDisabled)]="disabled" [(clrSelected)]="selected" 
+    [(clrExpanded)]="expanded" [clrExpandable]="expandable">
     Hello world
     <clr-tree-node *ngIf="withChild">Child</clr-tree-node>
   </clr-tree-node>`,
@@ -29,6 +31,7 @@ class TestComponent {
   @ViewChild('node') tree: ClrTreeNode<void>;
 
   selected = ClrSelectedState.UNSELECTED;
+  disabled = false;
   expanded = false;
   withChild = true;
   expandable: boolean | undefined;
@@ -157,6 +160,26 @@ export default function(): void {
         this.node.expanded = true;
         expect(this.expandService.expanded).toBeTrue();
       });
+
+      describe('disabling nodes', function() {
+        it('disables the model when disabled and propagates disabled state if the tree is eager', function() {
+          this.featureService.eager = true;
+          const spy = spyOn(this.node._model, 'setDisabled');
+          this.node.disabled = true;
+          expect(spy).toHaveBeenCalledWith(true, true, true);
+          this.node.disabled = false;
+          expect(spy).toHaveBeenCalledWith(false, true, true);
+        });
+
+        it('disabled the model when disabled and does not propagate disabled state if the tree is lazy', function() {
+          this.featureService.eager = false;
+          const spy = spyOn(this.node._model, 'setDisabled');
+          this.node.disabled = true;
+          expect(spy).toHaveBeenCalledWith(true, false, false);
+          this.node.disabled = false;
+          expect(spy).toHaveBeenCalledWith(false, false, false);
+        });
+      });
     });
 
     describe('Template API', function() {
@@ -186,6 +209,20 @@ export default function(): void {
         this.clarityDirective.expanded = false;
         expect(this.hostComponent.expanded).toBeFalse();
       });
+
+      it(
+        'offers a [(clrDisabled)] two-way binding',
+        fakeAsync(function(this: Context) {
+          this.hostComponent.disabled = true;
+          this.detectChanges();
+          expect(this.clarityDirective.disabled).toBe(true);
+          this.clarityDirective.disabled = false;
+          // We need fakeAsync and tick because the EventEmitter is asynchronous
+          tick();
+          // I don't know why Typescript forces me to cast this
+          expect<boolean>(this.hostComponent.disabled).toBe(false);
+        })
+      );
     });
 
     describe('View', function() {
@@ -281,7 +318,7 @@ export default function(): void {
 
       it('toggles selection when the checkbox is clicked', function(this: Context) {
         const spy = spyOn(this.clarityDirective._model, 'toggleSelection').and.callThrough();
-        const checkbox: HTMLElement = this.clarityElement.querySelector('input[type=checkbox]');
+        const checkbox: HTMLElement = this.clarityElement.querySelector('input[type=checkbox]+label');
         checkbox.click();
         // Smart tree propagates selection
         expect(spy).toHaveBeenCalledWith(true);
@@ -321,6 +358,14 @@ export default function(): void {
         this.hostComponent.withChild = false;
         this.detectChanges();
         expect(childrenContainer.getAttribute('role')).toBeNull();
+      });
+
+      it('adds the .disabled class to div.clr-treenode-checkbox when node is disabled', function() {
+        const checkbox = this.clarityElement.querySelector('div.clr-treenode-checkbox');
+        expect(checkbox.classList).not.toContain('disabled');
+        this.hostComponent.disabled = true;
+        this.detectChanges();
+        expect(checkbox.classList).toContain('disabled');
       });
     });
   });

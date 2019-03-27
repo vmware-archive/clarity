@@ -9,7 +9,7 @@
     <p>
         Menu component, no <code class="clr-code">*clrIfOpen</code> (not recommended):
         <clr-dropdown>
-            <button class="btn btn-outline-primary" clrDropdownTrigger id="no-if-open">
+            <button class="btn btn-outline-primary" clrDropdownTrigger [id]="'no-if-open'">
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -42,7 +42,7 @@
     <p>
         Menu component, with <code class="clr-code">*clrIfOpen</code> (recommended):
         <clr-dropdown>
-            <button class="btn btn-outline-primary" clrDropdownTrigger id="if-open">
+            <button class="btn btn-outline-primary" clrDropdownTrigger [id]="'if-open'">
                 Dropdown
                 <clr-icon shape="caret down"></clr-icon>
             </button>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ const EXAMPLE = `
         <h4 class="dropdown-header">Dropdown header</h4>
         <button type="button" class="dropdown-item active">First Action</button>
         <button type="button" class="dropdown-item disabled">Disabled Action</button>
-        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider" role="separator"></div>
         <button type="button" class="dropdown-item">Link 1</button>
         <button type="button" class="dropdown-item">Link 2</button>
     </div>

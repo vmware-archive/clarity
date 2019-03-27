@@ -175,4 +175,20 @@
       margin-left: 0.125rem;
     }
   }
+
+  .clr-treenode-checkbox.disabled {
+    pointer-events: none;
+    opacity: $clr-forms-disabled-opacity;
+  }
+
+  // NOTE: The pointer-events are disabled here to disable click event on the input element lying under
+  // the label element. This is because, input click/change event happening on the DOM,
+  // makes it hard for persisting the indeterminate state on the input by setting 'checked' state
+  // of input to true and it clashes with the '_model.selected.value'. The DOM property bindings of the
+  // input element are messed up for programmatically persisting the indeterminate state
+  .clr-treenode-checkbox {
+    input[type='checkbox'] {
+      pointer-events: none;
+    }
+  }
 }

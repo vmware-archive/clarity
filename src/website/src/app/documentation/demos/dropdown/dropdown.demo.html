@@ -1,8 +1,8 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
         <h5 class="component-summary"
-            id="a-dropdown-menu-lists-actions-that-users-can-perform-within-an-application-or-on-a-selected-object">A
-            dropdown menu allows the user to choose an option or action from a contextual list. The source of the
+            id="a-dropdown-menu-lists-actions-that-users-can-perform-within-an-application-or-on-a-selected-object">
+            A dropdown menu allows the user to choose an option or action from a contextual list. The source of the
             dropdown is usually a button.</h5>
 
         <div id="design-guidelines">
@@ -106,78 +106,114 @@
                     <li>An applicable object is not currently selected</li>
                 </ul>
             </ul>
+
+          <h2 id="nested-menu">Nested Menu</h2>
+
+          <p>Nested menus are an extension of dropdown menus. They save screen space by organizing a long list of
+            items into categories that the user can click to reveal deeper levels.</p>
+
+          <h3>Description</h3>
+          <p></p>
+          <ul class="list">
+            <li>Same visual style as standard dropdown menu with the exception of a darker border (#9A9A9A)</li>
+            <li>Slight overlap (4px) over root menu to emphasize stack order</li>
+            <li>Width: Minimum 168 px; Maximum 336 px</li>
+            <li>Default line height is 30 px; 36 px for x-small breakpoint (<544px)</li>
+          </ul>
+
+          <h3>Interaction</h3>
+          <p></p>
+          <ul class="list">
+            <li>With mouse: Click group name to reveal nested menus. Group name stays in selected state to
+              serve as a breadcrumb</li>
+            <li>Clicking outside of the menu dismisses all menus</li>
+          </ul>
+
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/dropdowns/img_nested_levels.png"
+                     alt="Dropdown nested menu"/>
+              </div>
+            </div>
+          </div>
+x
+          <h3>Placement</h3>
+          <div class="clr-row">
+            <div class="clr-col-12 clr-col-lg-6">
+              <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                  <div class="clrweb-DoxMedia-img">
+                    <img src="assets/images/documentation/dropdowns/img_placement_default.png"
+                         alt="Dropdown nested menu"/>
+                  </div>
+                </div>
+                <div class="clrweb-DoxMedia-text">
+                  <h6>Default placement and stack order</h6>
+                  <p>
+                    By default a nested menu pops up on the right side of its root menu.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="clr-col-12 clr-col-lg-6">
+              <div class="clrweb-DoxMedia">
+                <div class="clrweb-DoxMedia-block">
+                  <div class="clrweb-DoxMedia-img">
+                    <img src="assets/images/documentation/dropdowns/img_placement_resp.png"
+                         alt="Dropdown nested menu"/>
+                  </div>
+                </div>
+                <div class="clrweb-DoxMedia-text">
+                  <h6>Small screen / responsive placement and stack order (<544px)</h6>
+                  <p>
+                    If screen space isn’t available to the right of the root menu, the nested menu
+                    appears on the left side. If there is a second nested menu, it appears to the
+                    right of the first nested menu, creating a zig-zag pattern.
+                  </p>
+                </div>
+              </div>f
+            </div>
+          </div>
+        </div>
+
+        <div id="accessibility">
+          <h2>Accessibility</h2>
+          <p>Clarity Angular component conforms to the following guidelines:</p>
+          <ul class="list">
+            <li>A dropdown menu should have an element with the role <code class="clr-code">button</code> that opens the menu</li>
+            <li>The element with the <code class="clr-code">button</code> role should also have an <code class="clr-code">aria-expanded</code>
+              attribute which is set to true when the dropdown menu is open
+            </li>
+            <li>The items should have the role <code class="clr-code">menuitem</code></li>
+          </ul>
+
+          <h4>Keyboard Interaction</h4>
+
+          <table class="table table-vertical">
+            <tbody>
+              <tr>
+                <th>Enter, Space, Down Arrow on the menu trigger</th>
+                <td>Opens the menu and focuses on the first item</td>
+              </tr>
+              <tr>
+                <th>Up Arrow on menu</th>
+                <td>Focus on the previous item, or the last item if currently on the first one</td>
+              </tr>
+              <tr>
+                <th>Down Arrow on menu</th>
+                <td>Focus on the next item, or the first item if currently on the first one</td>
+              </tr>
+              <tr>
+                <th>Esc</th>
+                <td>Closes the menu and focuses on the trigger</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div id="code-examples">
-            <h2 id="nested-menu">Nested Menu</h2>
-
-            <p>Nested menus are an extension of dropdown menus. They save screen space by organizing a long list of
-                items into categories that the user can click to reveal deeper levels.</p>
-
-            <h3>Description</h3>
-            <p></p>
-            <ul class="list">
-                <li>Same visual style as standard dropdown menu with the exception of a darker border (#9A9A9A)</li>
-                <li>Slight overlap (4px) over root menu to emphasize stack order</li>
-                <li>Width: Minimum 168 px; Maximum 336 px</li>
-                <li>Default line height is 30 px; 36 px for x-small breakpoint (<544px)</li>
-            </ul>
-
-            <h3>Interaction</h3>
-            <p></p>
-            <ul class="list">
-                <li>With mouse: Click group name to reveal nested menus. Group name stays in selected state to
-                    serve as a breadcrumb</li>
-                <li>Clicking outside of the menu dismisses all menus</li>
-            </ul>
-
-            <div class="clrweb-DoxMedia">
-                <div class="clrweb-DoxMedia-block">
-                    <div class="clrweb-DoxMedia-img">
-                        <img src="assets/images/documentation/dropdowns/img_nested_levels.png"
-                            alt="Dropdown nested menu"/>
-                    </div>
-                </div>
-            </div>
-
-            <h3>Placement</h3>
-            <div class="clr-row">
-                <div class="clr-col-12 clr-col-lg-6">
-                    <div class="clrweb-DoxMedia">
-                        <div class="clrweb-DoxMedia-block">
-                            <div class="clrweb-DoxMedia-img">
-                                <img src="assets/images/documentation/dropdowns/img_placement_default.png"
-                                    alt="Dropdown nested menu"/>
-                            </div>
-                        </div>
-                        <div class="clrweb-DoxMedia-text">
-                            <h6>Default placement and stack order</h6>
-                            <p>
-                                By default a nested menu pops up on the right side of its root menu.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clr-col-12 clr-col-lg-6">
-                    <div class="clrweb-DoxMedia">
-                        <div class="clrweb-DoxMedia-block">
-                            <div class="clrweb-DoxMedia-img">
-                                <img src="assets/images/documentation/dropdowns/img_placement_resp.png"
-                                    alt="Dropdown nested menu"/>
-                            </div>
-                        </div>
-                        <div class="clrweb-DoxMedia-text">
-                            <h6>Small screen / responsive placement and stack order (<544px)</h6>
-                            <p>
-                                If screen space isn’t available to the right of the root menu, the nested menu
-                                appears on the left side. If there is a second nested menu, it appears to the
-                                right of the first nested menu, creating a zig-zag pattern.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <h3 id="examples">Examples</h3>
 
@@ -214,7 +250,7 @@
 
             <p>A required wrapper intended to contain the dropdown menu. Items in the menu should extend the <code
                 class="clr-code">.dropdown-header</code>
-                or <code class="clr-code">.dropdown-item</code> class. <code class="clr-code">.dropdown-divider</code> 
+                or <code class="clr-code">.dropdown-item</code> class. <code class="clr-code">.dropdown-divider</code>
                 can be on a block element used to seperate item groups.
                 <code class="clr-code">.active</code> class with <code class="clr-code">.dropdown-item</code> adds a
                 different styling for selected elements.

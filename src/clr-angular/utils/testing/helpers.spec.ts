@@ -48,7 +48,8 @@ export class TestContext<C, H> {
     return TestBed.get(token, notFoundValue);
   }
 
-  getClarityProvider<T>(token: Type<T> | InjectionToken<T>, notFoundValue?: T): T {
+  // The Function type here is just to tell Typescript to be nice with abstract classes. Weird.
+  getClarityProvider<T>(token: Type<T> | InjectionToken<T> | Function, notFoundValue?: T): T {
     return this.clarityDebugElement.injector.get(token, notFoundValue);
   }
 

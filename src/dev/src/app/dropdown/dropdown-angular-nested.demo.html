@@ -17,11 +17,11 @@
             <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
             <div class="dropdown-divider"></div>
             <clr-dropdown>
-                <button clrDropdownTrigger id="sub-menu-1">Link 1</button>
+                <button clrDropdownTrigger [id]="'sub-menu-1'">Link 1</button>
                 <clr-dropdown-menu>
                     <a href="javascript://" clrDropdownItem>Foo</a>
                     <clr-dropdown>
-                        <button clrDropdownTrigger id="sub-menu-2">Bar</button>
+                        <button clrDropdownTrigger [id]="'sub-menu-2'">Bar</button>
                         <clr-dropdown-menu clrPosition="left-bottom">
                             <a href="javascript://" clrDropdownItem>Baz</a>
                         </clr-dropdown-menu>
@@ -45,11 +45,11 @@
             <a href="javascript://" class="disabled" clrDropdownItem>Disabled Action</a>
             <div class="dropdown-divider"></div>
             <clr-dropdown>
-                <button clrDropdownTrigger id="sub-menu-3">Link 1</button>
+                <button clrDropdownTrigger [id]="'sub-menu-3'">Link 1</button>
                 <clr-dropdown-menu *clrIfOpen>
                     <a href="javascript://" clrDropdownItem>Foo</a>
                     <clr-dropdown>
-                        <button clrDropdownTrigger id="sub-menu-4">Bar</button>
+                        <button clrDropdownTrigger [id]="'sub-menu-4'">Bar</button>
                         <clr-dropdown-menu clrPosition="left-bottom" *clrIfOpen>
                             <a href="javascript://" clrDropdownItem>Baz</a>
                         </clr-dropdown-menu>

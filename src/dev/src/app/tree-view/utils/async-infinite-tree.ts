@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,8 +11,8 @@ import { Observable, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export class AsyncInfiniteTree {
-  constructor(width: number, latency = 100) {
-    this.tree = new InfiniteTree(width);
+  constructor(width: number, latency = 100, disabledNode?: string) {
+    this.tree = new InfiniteTree(width, disabledNode);
     this.delay = timer(latency);
   }
 
@@ -32,6 +32,10 @@ export class AsyncInfiniteTree {
 
   isSelected(node: string): ClrSelectedState {
     return this.tree.isSelected(node);
+  }
+
+  isDisabled(node): boolean {
+    return this.tree.isDisabled(node);
   }
 
   select(node: string, state: ClrSelectedState): void {

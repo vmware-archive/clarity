@@ -20,7 +20,8 @@ import { TreeFeaturesService } from './tree-features.service';
 import { ClrTreeNode } from './tree-node';
 
 @Component({
-  template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded" [clrExpandable]="expandable">
+  template: `<clr-tree-node #node [(clrDisabled)]="disabled" [(clrSelected)]="selected" 
+    [(clrExpanded)]="expanded" [clrExpandable]="expandable">
     Hello world
     <clr-tree-node *ngIf="withChild">Child</clr-tree-node>
   </clr-tree-node>`,
@@ -30,6 +31,7 @@ class TestComponent {
   tree: ClrTreeNode<void>;
 
   selected = ClrSelectedState.UNSELECTED;
+  disabled = false;
   expanded = false;
   withChild = true;
   expandable: boolean | undefined;
@@ -165,6 +167,26 @@ export default function(): void {
         this.node.expanded = true;
         expect(this.expandService.expanded).toBeTrue();
       });
+
+      describe('disabling nodes', function() {
+        it('disables the model when disabled and propagates disabled state if the tree is eager', function() {
+          this.featureService.eager = true;
+          const spy = spyOn(this.node._model, 'setDisabled');
+          this.node.disabled = true;
+          expect(spy).toHaveBeenCalledWith(true, true, true);
+          this.node.disabled = false;
+          expect(spy).toHaveBeenCalledWith(false, true, true);
+        });
+
+        it('disabled the model when disabled and does not propagate disabled state if the tree is lazy', function() {
+          this.featureService.eager = false;
+          const spy = spyOn(this.node._model, 'setDisabled');
+          this.node.disabled = true;
+          expect(spy).toHaveBeenCalledWith(true, false, false);
+          this.node.disabled = false;
+          expect(spy).toHaveBeenCalledWith(false, false, false);
+        });
+      });
     });
 
     describe('Template API', function() {
@@ -193,6 +215,26 @@ export default function(): void {
         expect(this.clarityDirective.expanded).toBeTrue();
         this.clarityDirective.expanded = false;
         expect(this.hostComponent.expanded).toBeFalse();
+      });
+
+      it('offers a [(clrDisabled)] two-way binding, but skips emitting output when setting input', function(this: Context) {
+        this.hostComponent.disabled = true;
+        this.detectChanges();
+        expect(this.clarityDirective.disabled).toBe(true);
+        this.clarityDirective.disabled = false;
+        this.detectChanges();
+        // This may seem unintuitive, but actually is due to the tree flickering issues.
+        // We don't want to emit the change in this case, or it can get confused.
+        // Here we are expecting that the output has not emitted.
+        // See https://github.com/vmware/clarity/issues/3073
+        expect(this.hostComponent.disabled).toBe(true);
+        // The following 2 lines are to by-pass the 'if (this.disabled.value === value) return;' check in tree-node.model
+        this.clarityDirective.disabled = true;
+        this.detectChanges();
+        // By setting the model here, we will emit the binding since it's not through the input
+        this.clarityDirective._model.setDisabled(false, true, true);
+        this.detectChanges();
+        expect(this.hostComponent.disabled).toBe(false);
       });
     });
 
@@ -292,11 +334,11 @@ export default function(): void {
         const checkbox: HTMLElement = this.clarityElement.querySelector('input[type=checkbox]');
         checkbox.click();
         // Smart tree propagates selection
-        expect(spy).toHaveBeenCalledWith(true);
+        expect(spy.calls.mostRecent().args[0]).toBe(true);
         this.getClarityProvider(TreeFeaturesService).eager = false;
         checkbox.click();
         // Non-smart tree does not propagate selection
-        expect(spy).toHaveBeenCalledWith(false);
+        expect(spy.calls.mostRecent().args[0]).toBe(false);
       });
 
       it('marks the checkbox as unchecked when unselected', function(this: Context) {
@@ -329,6 +371,14 @@ export default function(): void {
         this.hostComponent.withChild = false;
         this.detectChanges();
         expect(childrenContainer.getAttribute('role')).toBeNull();
+      });
+
+      it('adds the .clr-form-control-disabled class to div.clr-treenode-checkbox when node is disabled', function() {
+        const checkbox = this.clarityElement.querySelector('div.clr-treenode-checkbox');
+        expect(checkbox.classList).not.toContain('clr-form-control-disabled');
+        this.hostComponent.disabled = true;
+        this.detectChanges();
+        expect(checkbox.classList).toContain('clr-form-control-disabled');
       });
     });
   });

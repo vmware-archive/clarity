@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
 import { ClrSelectedState } from '@clr/angular';
 
 export class InfiniteTree {
-  constructor(width: number) {
+  constructor(width: number, private disabledNode?: string) {
     this.possibleValues = new Array(width).fill(0).map((_, i) => '' + (i + 1));
     this.root = this.possibleValues;
   }
@@ -31,13 +31,19 @@ export class InfiniteTree {
     return ClrSelectedState.UNSELECTED;
   }
 
+  // disabledNode: string = "1.1";
+
+  isDisabled(node: string) {
+    return this.disabledNode && node.startsWith(this.disabledNode);
+  }
+
   // This is demo code to keep it short, without server, and consistent with an infinite tree.
   // I apologize if it's hard to read, but I figured maintenance is not critical since this is neither public
   // nor written to be build upon.
   select(node: string, state: ClrSelectedState) {
     switch (state) {
       case ClrSelectedState.SELECTED:
-        if (this.isSelected(node) !== ClrSelectedState.SELECTED) {
+        if (this.isSelected(node) !== ClrSelectedState.SELECTED && !this.isDisabled(node)) {
           this.selected = this.selected.filter(s => !s.startsWith(node));
           this.selected.push(node);
         }
@@ -50,7 +56,12 @@ export class InfiniteTree {
             const relativePath = node.substring(prefix.length + 1).split('.');
             let soFar = prefix + '.';
             for (const step of relativePath) {
-              this.selected.push(...this.possibleValues.filter(n => n !== step).map(n => soFar + n));
+              this.selected.push(
+                ...this.possibleValues
+                  .filter(n => n !== step)
+                  .map(n => soFar + n)
+                  .filter(n => !this.isDisabled(n))
+              );
               soFar += step + '.';
             }
           }

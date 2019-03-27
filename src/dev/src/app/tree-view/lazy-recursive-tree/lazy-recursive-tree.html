@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -17,6 +17,20 @@
   </clr-tree>
 </div>
 
+<h4>Synchronous infinite tree with disabled nodes</h4>
+<p>
+  Selected: {{treeWithDisabledNodes.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *clrRecursiveFor="let node of treeWithDisabledNodes.root; getChildren: synchronousChildren"
+      [clrDisabled]="treeWithDisabledNodes.isDisabled(node)"
+      [clrSelected]="treeWithDisabledNodes.isSelected(node)" (clrSelectedChange)="treeWithDisabledNodes.select(node, $event)">
+      {{node}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
 
 <h4>Asynchronous, pre-loading 1 level ahead</h4>
 <p>
@@ -26,6 +40,19 @@
   <clr-tree [clrLazy]="true">
     <clr-tree-node *clrRecursiveFor="let node of asyncTree.root; getChildren: asynchronousChildren"
                    [clrSelected]="asyncTree.isSelected(node)" (clrSelectedChange)="asyncTree.select(node, $event)">
+      {{node}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+
+<h4>Asynchronous, pre-loading 1 level ahead with disabled nodes</h4>
+<p>
+  Selected: {{asyncTree.selected.join(', ')}}
+</p>
+<div class="clr-example">
+  <clr-tree [clrLazy]="true">
+    <clr-tree-node *clrRecursiveFor="let node of asyncTree.root; getChildren: asynchronousChildren"
+      [clrSelected]="asyncTree.isSelected(node)" (clrSelectedChange)="asyncTree.select(node, $event)">
       {{node}}
     </clr-tree-node>
   </clr-tree>

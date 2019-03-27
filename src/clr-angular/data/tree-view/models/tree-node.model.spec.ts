@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -131,6 +131,134 @@ export default function(): void {
       root.selected.subscribe({ complete: () => (complete = true) });
       root.destroy();
       expect(complete).toBeTrue();
+    });
+
+    describe('with disabled nodes', function() {
+      it('offers a disabled BehaviorSubject', function() {
+        expect(root.disabled instanceof BehaviorSubject).toBeTrue();
+      });
+
+      it('allows to set the disabled state of a node without propagating', function() {
+        child.setDisabled(true, false, false);
+        expect(child.disabled.value).toBe(true);
+        [root, ...child.children].forEach(n => expect(n.disabled.value).toBe(false));
+      });
+
+      it('emits disabled changes only when it actually changes', function() {
+        let numberOfChanges = 0;
+        child.disabled.subscribe(_ => numberOfChanges++);
+        // BehaviorSubject sends us the first state on subscription
+        expect(numberOfChanges).toBe(1);
+        child.setDisabled(false, false, false);
+        expect(numberOfChanges).toBe(1);
+        child.setDisabled(true, false, false);
+        expect(numberOfChanges).toBe(2);
+      });
+
+      it('can propagate the disabled state to parents', function() {
+        // Disabling all children of a node will make it disabled
+        child.children.forEach(c => c.setDisabled(true, true, false));
+        expect(child.disabled.value).toBe(true);
+        // Once the parent is disabled, a child cannot be enabled
+        child.children[0].setDisabled(false, false, false);
+        expect(child.children[1].disabled.value).toBe(true);
+      });
+
+      it('can propagate the disabled state to children', function() {
+        const totalNodeCount = [...root.children, ...child.children].length;
+        // Disabling a parent disables all the children down the tree
+        root.setDisabled(true, false, true);
+        const disabledNodeCount = [...root.children, ...child.children].reduce((a, n) => {
+          if (n.disabled.value) {
+            a += 1;
+          }
+          return a;
+        }, 0);
+        expect(disabledNodeCount).toEqual(totalNodeCount);
+        // Enabling a parent enables all the children down the tree
+        root.setDisabled(false, false, true);
+        const enabledNodeCount = [...root.children, ...child.children].reduce((a, n) => {
+          if (!n.disabled.value) {
+            a += 1;
+          }
+          return a;
+        }, 0);
+        expect(enabledNodeCount).toEqual(totalNodeCount);
+        // In the case of dynamically changing parent/children, the local condition should be given
+        // higher priority than the parent policy.
+        child.setDisabled(true, false, true);
+        expect(child.children[0].disabled.value).toBe(true);
+        expect(child.children[1].disabled.value).toBe(true);
+        // local condition
+        child.children[1].isDisabledInputSetToTrue = true;
+        child.setDisabled(false, false, true);
+        expect(child.children[0].disabled.value).toBe(false);
+        expect(child.children[1].disabled.value).toBe(true);
+      });
+
+      it('completes the disabled Observable on destroy', function() {
+        let complete = false;
+        root.disabled.subscribe({ complete: () => (complete = true) });
+        root.destroy();
+        expect(complete).toBeTrue();
+      });
+
+      describe('Selection', function() {
+        it('does not toggle the selection of disabled nodes and only toggles the enabled nodes', function() {
+          root.children[1].setDisabled(true, false, false);
+          expect(root.children[0].selected.value).toBe(ClrSelectedState.UNSELECTED);
+          expect(root.children[1].selected.value).toBe(ClrSelectedState.UNSELECTED);
+          root.toggleSelection(true);
+          expect(root.children[0].selected.value).toBe(ClrSelectedState.SELECTED);
+          expect(root.children[1].selected.value).toBe(ClrSelectedState.UNSELECTED);
+        });
+
+        describe('Indeterminate parent', function() {
+          beforeEach(function() {
+            // Unselected and disabeld child
+            root.children[1].setDisabled(true, false, false);
+            root.toggleSelection(true);
+          });
+
+          it('selecting a parent with some nodes that are unselected and also disabled, results in indeterminate state of the parent', function() {
+            expect(root.children[0].selected.value).toBe(ClrSelectedState.SELECTED);
+            expect(root.children[1].selected.value).toBe(ClrSelectedState.UNSELECTED);
+            expect(root.selected.value).toBe(ClrSelectedState.INDETERMINATE);
+          });
+
+          it('selects only the nodes that are unselected and also enabled when indeterminate parent is clicked', function() {
+            root.children[0].setSelected(ClrSelectedState.UNSELECTED, false, false);
+            root.toggleSelection(true);
+            expect(root.children[0].selected.value).toBe(ClrSelectedState.SELECTED);
+            expect(root.children[1].selected.value).toBe(ClrSelectedState.UNSELECTED);
+          });
+
+          it('toggling persists the indeterminate state when some of the nodes are disabled and also unselected', function() {
+            root.toggleSelection(true);
+            expect(root.selected.value).toBe(ClrSelectedState.INDETERMINATE);
+          });
+
+          it('toggling the indeterminate state of a parent with enabled children that are already selected, does not unselect them', function() {
+            root.toggleSelection(true);
+            // remains same
+            expect(root.children[0].selected.value).toBe(ClrSelectedState.SELECTED);
+            expect(root.children[1].selected.value).toBe(ClrSelectedState.UNSELECTED);
+          });
+
+          it('toggling indeterminate state with child nodes that are disabled and selected results in selected state', function() {
+            // Enable the node that is disabled in before each above
+            root.children[1].setDisabled(false, false, false);
+            // Selected and disabled child
+            root.children[1].setSelected(ClrSelectedState.SELECTED, false, false);
+            root.children[1].setDisabled(true, false, false);
+
+            expect(root.selected.value).toBe(ClrSelectedState.INDETERMINATE);
+            root.toggleSelection(true);
+
+            expect(root.selected.value).toBe(ClrSelectedState.SELECTED);
+          });
+        });
+      });
     });
   });
 }

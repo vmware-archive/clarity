@@ -83,7 +83,8 @@
     border-color: $clr-forms-invalid-color;
   }
 
-  .clr-form-control-disabled .clr-checkbox-wrapper {
+  .clr-form-control-disabled .clr-checkbox-wrapper,
+  .clr-treenode-checkbox.clr-form-control-disabled {
     label {
       cursor: not-allowed;
     }

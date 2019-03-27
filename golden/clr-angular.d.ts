@@ -1396,6 +1396,8 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     _model: TreeNodeModel<T>;
     readonly ariaSelected: boolean;
     commonStrings: ClrCommonStringsService;
+    disabled: boolean;
+    disabledChange: EventEmitter<boolean>;
     expandService: IfExpandService;
     expandable: boolean | undefined;
     expanded: boolean;

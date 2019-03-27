@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -65,6 +65,7 @@ export class EagerRecursiveTreeDemo {
 
   singleRootSelected: SelectedMap = this.buildDefaultSelected(this.singleRoot);
   multiRootSelected: SelectedMap = this.buildDefaultSelected(this.multiRoot);
+  selectedWithDisabledNodes: SelectedMap = this.buildDefaultSelected(this.singleRoot);
 
   synchronousChildren = node => node.children;
 
@@ -72,5 +73,9 @@ export class EagerRecursiveTreeDemo {
     return Object.keys(selectedMap)
       .filter(key => selectedMap[key] === ClrSelectedState.SELECTED)
       .join(', ');
+  }
+
+  isNodeDisabled(nodeName: string) {
+    return nodeName === 'AA' || nodeName === 'AB';
   }
 }

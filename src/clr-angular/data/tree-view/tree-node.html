@@ -20,11 +20,12 @@
   <div class="clr-treenode-spinner-container" *ngIf="expandService.loading || _model.loading">
         <span class="clr-treenode-spinner spinner"></span>
   </div>
-  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable">
+  <div class="clr-checkbox-wrapper clr-treenode-checkbox" *ngIf="featuresService.selectable"
+    [class.clr-form-control-disabled]="_model.disabled.value">
     <input type="checkbox" id="{{nodeId}}-check" class="clr-checkbox" [attr.aria-labelledby]="nodeId"
            [checked]="_model.selected.value === STATES.SELECTED"
            [indeterminate]="_model.selected.value === STATES.INDETERMINATE"
-           (change)="_model.toggleSelection(featuresService.eager)">
+           (change)="_model.toggleSelection(featuresService.eager, $event)">
     <label for="{{nodeId}}-check" class="clr-control-label"></label>
   </div>
   <div class="clr-treenode-content" [id]="nodeId">

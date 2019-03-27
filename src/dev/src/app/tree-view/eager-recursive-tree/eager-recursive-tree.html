@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -35,8 +35,19 @@
     </clr-tree-node>
   </clr-tree>
 </div>
-
 <pre><code>{{singleRootSelected | json}}</code></pre>
+
+<h5>Selection with disabled nodes</h5>
+<p>Selected: {{selectedString(selectedWithDisabledNodes)}}</p>
+<div class="clr-example">
+  <clr-tree>
+    <clr-tree-node *clrRecursiveFor="let node of singleRoot; getChildren: synchronousChildren"
+      [(clrSelected)]="selectedWithDisabledNodes[node.name]" [clrDisabled]="isNodeDisabled(node.name)">
+      {{node.name}}
+    </clr-tree-node>
+  </clr-tree>
+</div>
+<pre><code>{{selectedWithDisabledNodes | json}}</code></pre>
 
 <h4>Multi root, selection</h4>
 <p>

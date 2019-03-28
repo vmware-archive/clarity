@@ -10,13 +10,12 @@ import { ClarityModule } from '@clr/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { DocumentationModule } from './documentation/documentation.module';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'clarity' }),
     BrowserAnimationsModule,

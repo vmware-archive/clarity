@@ -12,4 +12,5 @@ export const environment = {
   sketch_base_url: 'https://github.com/vmware/clarity-assets/raw/master/sketch',
   sketch_icons_url:
     'https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-1.0.0.sketch',
+  sketch_version: '1.0.0',
 };

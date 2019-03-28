@@ -32,7 +32,7 @@ export class RadioDemo extends ClarityDocComponent {
 
   exampleOne = '';
   exampleTwo = '';
-  exampleThree = '';
+  exampleThree = 'option2';
 
   uiBasic: any = UiBasic;
   uiFull: any = UiFull;

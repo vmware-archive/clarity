@@ -12,7 +12,7 @@ import * as COMPONENTS from '../../settings/componentlist.json';
   template: `
         <ng-container *ngFor="let component of components">
             <li *ngIf="component.url && !component.noDemo && component.type == type">
-                <a class="nav-link" [routerLink]="component.url" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/', component.url]" routerLinkActive="active">
                     {{component.text}}
                     <span *ngIf="component.isNew" class="new nav-link-tag">New!</span>
                     <span *ngIf="component.isUpdated" class="updated nav-link-tag">Updated</span>

@@ -5,6 +5,7 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'none',
+  stats: 'errors-only',
   entry: {
     // This is our prerenderer script
     prerender: './src/website/prerender.ts',

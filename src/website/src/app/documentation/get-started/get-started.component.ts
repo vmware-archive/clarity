@@ -5,7 +5,7 @@
  */
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import * as RELEASES from '../../../releases/release-list.json';
+// import * as RELEASES from '../../../releases/release-list.json';
 
 const NG_MODULE_EXAMPLE = `
 import { NgModule } from "@angular/core";
@@ -64,7 +64,7 @@ const UI_CDN = `
 export class GetStartedComponent {
   sketchBaseUrl = environment.sketch_base_url;
   sketchIconsUrl = environment.sketch_icons_url;
-  sketchVersion = RELEASES.all[RELEASES.current].sketch;
+  sketchVersion = environment.sketch_version;
   public uiCdn = UI_CDN;
   public ngModuleExample = NG_MODULE_EXAMPLE;
   public htmlImports = HTML_IMPORTS;

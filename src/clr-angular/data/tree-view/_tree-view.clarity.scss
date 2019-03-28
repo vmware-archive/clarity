@@ -116,8 +116,7 @@
 
     //Others
     background: transparent;
-    border-radius: $clr-tree-border-radius 0 0 $clr-tree-border-radius;
-    border-color: transparent;
+    border: 0;
     color: $clr-tree-link-text-color;
     cursor: pointer;
     line-height: inherit;

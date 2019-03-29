@@ -5,7 +5,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 import { ResponsiveNavCodes } from '../responsive-nav-codes';
 import { ResponsiveNavControlMessage } from '../responsive-nav-control-message';
@@ -13,8 +13,8 @@ import { ResponsiveNavControlMessage } from '../responsive-nav-control-message';
 @Injectable({ providedIn: 'root' })
 export class ResponsiveNavigationService {
   public responsiveNavList: number[] = [];
-  private registerNavSubject: Subject<number[]> = new Subject<number[]>();
-  private controlNavSubject: Subject<ResponsiveNavControlMessage> = new Subject<ResponsiveNavControlMessage>();
+  private registerNavSubject = new ReplaySubject<number[]>();
+  private controlNavSubject = new Subject<ResponsiveNavControlMessage>();
 
   get registeredNavs(): Observable<number[]> {
     return this.registerNavSubject.asObservable();

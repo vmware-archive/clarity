@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
+import { DROPDOWN_FOCUS_HANDLER_PROVIDER } from './providers/dropdown-focus-handler.service';
+import { FOCUS_SERVICE_PROVIDER } from '../../utils/focus/focus.service';
 
 import { ROOT_DROPDOWN_PROVIDER, RootDropdownService } from './providers/dropdown.service';
 
@@ -19,7 +21,13 @@ import { ROOT_DROPDOWN_PROVIDER, RootDropdownService } from './providers/dropdow
     // FIXME: remove this as soon as we stop supporting this old <div class="dropdown-menu"> syntax
     '[class.open]': 'ifOpenService.open',
   },
-  providers: [IfOpenService, ROOT_DROPDOWN_PROVIDER, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+  providers: [
+    IfOpenService,
+    ROOT_DROPDOWN_PROVIDER,
+    { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef },
+    FOCUS_SERVICE_PROVIDER,
+    DROPDOWN_FOCUS_HANDLER_PROVIDER,
+  ],
 })
 export class ClrDropdown implements OnDestroy {
   private subscriptions: Subscription[] = [];

@@ -21,7 +21,7 @@ export class BasicFocusableItem implements FocusableItem {
     renderer.setAttribute(el.nativeElement, 'tabindex', '-1');
   }
 
-  disabled: boolean;
+  disabled = false;
 
   focus() {
     this.renderer.addClass(this.el.nativeElement, 'focus');

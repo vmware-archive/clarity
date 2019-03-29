@@ -7,10 +7,11 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Direction } from './direction.enum';
 import { FOCUS_SERVICE_PROVIDER, FocusService } from './focus.service';
 import { FocusableItem } from './focusable-item/focusable-item';
+import { MockFocusableItem } from './focusable-item/focusable-item.mock';
 
 @Component({
   selector: 'simple-host',
@@ -27,21 +28,6 @@ class NestedHost {}
 
 interface TestContext {
   focusService: FocusService;
-}
-
-class MockFocusableItem implements FocusableItem {
-  constructor(public id: string) {}
-
-  disabled = false;
-
-  focus() {}
-  blur() {}
-  activate() {}
-
-  up?: FocusableItem | Observable<FocusableItem>;
-  down?: FocusableItem | Observable<FocusableItem>;
-  left?: FocusableItem | Observable<FocusableItem>;
-  right?: FocusableItem | Observable<FocusableItem>;
 }
 
 export default function(): void {

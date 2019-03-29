@@ -8,9 +8,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { FocusService } from '../../utils/focus/focus.service';
+import { FocusableItem } from '../../utils/focus/focusable-item/focusable-item';
 
 import { ClrDropdown } from './dropdown';
 import { ClrDropdownModule } from './dropdown.module';
+import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
 
 export default function(): void {
   describe('Dropdown', () => {
@@ -197,6 +200,18 @@ export default function(): void {
 
       // Make sure the dropdown correctly closed, otherwise our expect() in the subscription might not have run.
       expect(ifOpenService.open).toBe(false);
+    });
+
+    it('declares a FocusService provider', () => {
+      const focusService = fixture.debugElement.query(By.directive(ClrDropdown)).injector.get(FocusService, null);
+      expect(focusService).not.toBeNull();
+    });
+
+    it('declares a DropdownFocusHandler provider', () => {
+      const injector = fixture.debugElement.query(By.directive(ClrDropdown)).injector;
+      const focusHandler = injector.get(DropdownFocusHandler, null);
+      expect(focusHandler).not.toBeNull();
+      expect(injector.get(FocusableItem, null)).toBe(focusHandler);
     });
   });
 }

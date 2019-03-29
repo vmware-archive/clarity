@@ -6,14 +6,8 @@
 
 import { Direction } from '../direction.enum';
 import { FocusableItem } from './focusable-item';
+import { MockFocusableItem } from './focusable-item.mock';
 import { linkParent, linkVertical } from './linkers';
-
-class MockFocusableItem implements FocusableItem {
-  constructor(public id: string) {}
-
-  focus() {}
-  blur() {}
-}
 
 export default function(): void {
   describe('linkParent()', function() {

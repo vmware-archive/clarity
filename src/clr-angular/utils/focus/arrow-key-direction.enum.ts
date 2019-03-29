@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export enum Direction {
+export enum ArrowKeyDirection {
   UP = 'up',
   DOWN = 'down',
   LEFT = 'left',

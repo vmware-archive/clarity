@@ -5,7 +5,7 @@
  */
 
 import { Observable } from 'rxjs';
-import { Direction } from '../direction.enum';
+import { ArrowKeyDirection } from '../arrow-key-direction.enum';
 import { FocusableItem } from './focusable-item';
 
 /**
@@ -14,7 +14,7 @@ import { FocusableItem } from './focusable-item';
 export function linkParent(
   items: FocusableItem[],
   parent: FocusableItem | Observable<FocusableItem>,
-  direction: Direction
+  direction: ArrowKeyDirection
 ) {
   items.forEach(item => (item[direction] = parent));
 }

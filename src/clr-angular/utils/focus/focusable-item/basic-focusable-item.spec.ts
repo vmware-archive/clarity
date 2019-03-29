@@ -50,15 +50,15 @@ export default function(): void {
       expect(this.el.getAttribute('tabindex')).toBe('-1');
     });
 
-    it('adds the .focus class to the host when focused', function(this: TestContext) {
+    it('adds the .clr-focus class to the host when focused', function(this: TestContext) {
       this.item.focus();
-      expect(this.el.classList).toContain('focus');
+      expect(this.el.classList).toContain('clr-focus');
     });
 
-    it('removes the .focus class from the host when not focused', function(this: TestContext) {
+    it('removes the .clr-focus class from the host when not focused', function(this: TestContext) {
       this.item.focus();
       this.item.blur();
-      expect(this.el.classList).not.toContain('focus');
+      expect(this.el.classList).not.toContain('clr-focus');
     });
 
     it('triggers a click on the host when activated', function(this: TestContext) {

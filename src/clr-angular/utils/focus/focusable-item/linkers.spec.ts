@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Direction } from '../direction.enum';
+import { ArrowKeyDirection } from '../arrow-key-direction.enum';
 import { FocusableItem } from './focusable-item';
 import { MockFocusableItem } from './focusable-item.mock';
 import { linkParent, linkVertical } from './linkers';
@@ -14,7 +14,7 @@ export default function(): void {
     it('links the list of items to the parent according to the given direction', function() {
       const parent = new MockFocusableItem('parent');
       const children: FocusableItem[] = new Array(5).fill(0).map((_, i) => new MockFocusableItem(`${i}`));
-      linkParent(children, parent, Direction.RIGHT);
+      linkParent(children, parent, ArrowKeyDirection.RIGHT);
       for (const child of children) {
         expect(child.right).toBe(parent);
       }

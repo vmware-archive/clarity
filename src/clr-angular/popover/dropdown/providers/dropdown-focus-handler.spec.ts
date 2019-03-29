@@ -9,7 +9,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { By } from '@angular/platform-browser';
 import { isObservable, Observable } from 'rxjs';
 import { IfOpenService } from '../../../utils/conditional/if-open.service';
-import { Direction } from '../../../utils/focus/direction.enum';
+import { ArrowKeyDirection } from '../../../utils/focus/arrow-key-direction.enum';
 import { FOCUS_SERVICE_PROVIDER, FocusService } from '../../../utils/focus/focus.service';
 import { FocusableItem } from '../../../utils/focus/focusable-item/focusable-item';
 import { MockFocusableItem } from '../../../utils/focus/focusable-item/focusable-item.mock';
@@ -219,7 +219,7 @@ export default function(): void {
         // First we move to the clicked item, which is the trigger,
         expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
         // then we move down to the first item,
-        expect(move).toHaveBeenCalledWith(Direction.DOWN);
+        expect(move).toHaveBeenCalledWith(ArrowKeyDirection.DOWN);
         // but maybe that's too detailed for this unit test? It's just the easiest way to test it right now.
       });
     });
@@ -249,13 +249,13 @@ export default function(): void {
         expect(this.trigger.getAttribute('tabindex')).toBe('-1');
       });
 
-      it('toggles the .focus class on the trigger when focused an blurred', function(this: TestContext) {
+      it('toggles the .clr-focus class on the trigger when focused an blurred', function(this: TestContext) {
         this.focusHandler.trigger = this.trigger;
-        expect(this.trigger.classList).not.toContain('focus');
+        expect(this.trigger.classList).not.toContain('clr-focus');
         this.focusHandler.focus();
-        expect(this.trigger.classList).toContain('focus');
+        expect(this.trigger.classList).toContain('clr-focus');
         this.focusHandler.blur();
-        expect(this.trigger.classList).not.toContain('focus');
+        expect(this.trigger.classList).not.toContain('clr-focus');
       });
 
       it('does not register the container to the FocusService', function(this: TestContext) {
@@ -300,7 +300,7 @@ export default function(): void {
       it('links received children back to the trigger', function(this: TestContext) {
         const spy = spyOn(linkers, 'linkParent');
         this.focusHandler.addChildren(this.children);
-        expect(spy).toHaveBeenCalledWith(this.children, any(Observable), Direction.LEFT);
+        expect(spy).toHaveBeenCalledWith(this.children, any(Observable), ArrowKeyDirection.LEFT);
       });
 
       it('closes the dropdown when trying to go back to the trigger', function(this: TestContext) {
@@ -318,7 +318,7 @@ export default function(): void {
         const move = spyOn(this.focusService, 'move');
         this.ifOpenService.toggleWithEvent({});
         expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
-        expect(move).toHaveBeenCalledWith(Direction.RIGHT);
+        expect(move).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT);
       });
     });
   });

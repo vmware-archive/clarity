@@ -7,7 +7,7 @@
 import { Injectable, Optional, Renderer2, SkipSelf } from '@angular/core';
 import { isObservable, of } from 'rxjs';
 
-import { Direction } from './direction.enum';
+import { ArrowKeyDirection } from './arrow-key-direction.enum';
 import { FocusableItem } from './focusable-item/focusable-item';
 
 @Injectable()
@@ -28,10 +28,10 @@ export class FocusService {
   listenToArrowKeys(el: HTMLElement) {
     // The following listeners return false when there was an action to take for the key pressed,
     // in order to prevent the default behavior of that key.
-    this.renderer.listen(el, 'keydown.arrowup', () => !this.move(Direction.UP));
-    this.renderer.listen(el, 'keydown.arrowdown', () => !this.move(Direction.DOWN));
-    this.renderer.listen(el, 'keydown.arrowleft', () => !this.move(Direction.LEFT));
-    this.renderer.listen(el, 'keydown.arrowright', () => !this.move(Direction.RIGHT));
+    this.renderer.listen(el, 'keydown.arrowup', () => !this.move(ArrowKeyDirection.UP));
+    this.renderer.listen(el, 'keydown.arrowdown', () => !this.move(ArrowKeyDirection.DOWN));
+    this.renderer.listen(el, 'keydown.arrowleft', () => !this.move(ArrowKeyDirection.LEFT));
+    this.renderer.listen(el, 'keydown.arrowright', () => !this.move(ArrowKeyDirection.RIGHT));
   }
 
   registerContainer(el: HTMLElement) {
@@ -56,7 +56,7 @@ export class FocusService {
   /**
    * The second parameter, optional, is here to allow recursion to skip disabled items.
    */
-  move(direction: Direction, current = this.current) {
+  move(direction: ArrowKeyDirection, current = this.current) {
     const next = current[direction];
     if (next) {
       // Turning the value into an Observable isn't great, but it's the fastest way to avoid code duplication.

@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 import { IfOpenService } from '../../../utils/conditional/if-open.service';
 import { customFocusableItemProvider } from '../../../utils/focus/focusable-item/custom-focusable-item-provider';
 import { UNIQUE_ID } from '../../../utils/id-generator/id-generator.service';
-import { Direction } from '../../../utils/focus/direction.enum';
+import { ArrowKeyDirection } from '../../../utils/focus/arrow-key-direction.enum';
 import { FocusService } from '../../../utils/focus/focus.service';
 import { FocusableItem } from '../../../utils/focus/focusable-item/focusable-item';
 import { linkParent, linkVertical } from '../../../utils/focus/focusable-item/linkers';
@@ -44,9 +44,9 @@ export class DropdownFocusHandler implements FocusableItem {
       if (open && this.ifOpenService.originalEvent) {
         this.focusService.moveTo(this);
         if (this.parent) {
-          this.focusService.move(Direction.RIGHT);
+          this.focusService.move(ArrowKeyDirection.RIGHT);
         } else {
-          this.focusService.move(Direction.DOWN);
+          this.focusService.move(ArrowKeyDirection.DOWN);
         }
       }
     });
@@ -126,7 +126,7 @@ export class DropdownFocusHandler implements FocusableItem {
   focus() {
     if (this.trigger) {
       if (this.parent) {
-        this.renderer.addClass(this.trigger, 'focus');
+        this.renderer.addClass(this.trigger, 'clr-focus');
       } else if (isPlatformBrowser(this.platformId)) {
         this.trigger.focus();
       }
@@ -135,7 +135,7 @@ export class DropdownFocusHandler implements FocusableItem {
   blur() {
     if (this.trigger) {
       if (this.parent) {
-        this.renderer.removeClass(this.trigger, 'focus');
+        this.renderer.removeClass(this.trigger, 'clr-focus');
       } else if (isPlatformBrowser(this.platformId)) {
         this.trigger.blur();
       }
@@ -173,7 +173,7 @@ export class DropdownFocusHandler implements FocusableItem {
   addChildren(children: FocusableItem[]) {
     linkVertical(children);
     if (this.parent) {
-      linkParent(children, this.closeAndGetThis(), Direction.LEFT);
+      linkParent(children, this.closeAndGetThis(), ArrowKeyDirection.LEFT);
     }
     this.children.next(children);
   }

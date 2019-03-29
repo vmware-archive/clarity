@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
-import { Direction } from './direction.enum';
+import { ArrowKeyDirection } from './arrow-key-direction.enum';
 import { FOCUS_SERVICE_PROVIDER, FocusService } from './focus.service';
 import { FocusableItem } from './focusable-item/focusable-item';
 import { MockFocusableItem } from './focusable-item/focusable-item.mock';
@@ -105,7 +105,7 @@ export default function(): void {
       it('can move in all directions', function(this: TestContext) {
         const spy = spyOn(this.focusService, 'moveTo');
         const current = new MockFocusableItem('center');
-        for (const direction of Object.values(Direction)) {
+        for (const direction of Object.values(ArrowKeyDirection)) {
           const target = new MockFocusableItem(direction);
           current[direction] = target;
           this.focusService.reset(current);
@@ -126,7 +126,7 @@ export default function(): void {
         nopeAgain.down = target;
         const spy = spyOn(this.focusService, 'moveTo');
         this.focusService.reset(current);
-        this.focusService.move(Direction.DOWN);
+        this.focusService.move(ArrowKeyDirection.DOWN);
         expect(spy).toHaveBeenCalledWith(target);
       });
 
@@ -137,7 +137,7 @@ export default function(): void {
         first.down = delayed;
         const spy = spyOn(this.focusService, 'moveTo');
         this.focusService.reset(first);
-        this.focusService.move(Direction.DOWN);
+        this.focusService.move(ArrowKeyDirection.DOWN);
         expect(spy).not.toHaveBeenCalled();
         delayed.next(second);
         expect(spy).toHaveBeenCalledWith(second);
@@ -148,13 +148,13 @@ export default function(): void {
         const el = document.createElement('div');
         this.focusService.listenToArrowKeys(el);
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
-        expect(spy).toHaveBeenCalledWith(Direction.UP);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.UP);
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
-        expect(spy).toHaveBeenCalledWith(Direction.DOWN);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.DOWN);
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
-        expect(spy).toHaveBeenCalledWith(Direction.LEFT);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.LEFT);
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
-        expect(spy).toHaveBeenCalledWith(Direction.RIGHT);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT);
       });
 
       it('makes a given container focusable', function(this: TestContext) {

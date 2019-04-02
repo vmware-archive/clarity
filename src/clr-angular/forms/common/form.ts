@@ -6,12 +6,11 @@
 
 import { Directive } from '@angular/core';
 import { LayoutService } from './providers/layout.service';
-import { IS_NEW_FORMS_LAYOUT_TRUE_PROVIDER } from './providers/new-forms.service';
 import { MarkControlService } from './providers/mark-control.service';
 
 @Directive({
   selector: '[clrForm]',
-  providers: [LayoutService, MarkControlService, IS_NEW_FORMS_LAYOUT_TRUE_PROVIDER],
+  providers: [LayoutService, MarkControlService],
   host: {
     '[class.clr-form]': 'true',
     '[class.clr-form-horizontal]': 'layoutService.isHorizontal()',

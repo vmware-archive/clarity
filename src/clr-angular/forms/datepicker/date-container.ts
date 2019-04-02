@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, OnDestroy, Optional, ContentChild } from '@angular/core';
+import { Component, OnDestroy, Optional, ContentChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
@@ -23,38 +23,16 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
-import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
-
-/**
- * This component contains two template for the old and new forms layouts.
- * When it is time to remove the old forms layouts support, remove the ng-templates
- * and ng-container, and just keep the inner content of the #newLayout as the template
- * and move the ng-content for clrDate.
- */
 
 @Component({
   selector: 'clr-date-container',
   template: `
-    <ng-template #oldLayout>
-        <ng-content></ng-content>
-        <ng-container *ngTemplateOutlet="clrDate"></ng-container>
-        <button
-            type="button"
-            class="datepicker-trigger"
-            (click)="toggleDatepicker($event)"
-            *ngIf="isEnabled">
-            <clr-icon shape="calendar" class="datepicker-trigger-icon" [attr.title]="commonStrings.open"></clr-icon>
-        </button>
-        <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
-    </ng-template>
-    
-    <ng-template #newLayout>
       <ng-content select="label"></ng-content>
       <label *ngIf="!label && addGrid()"></label>
       <div class="clr-control-container" [ngClass]="controlClass()">
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
-            <ng-container *ngTemplateOutlet="clrDate"></ng-container>
+            <ng-content select="[clrDate]"></ng-content>
             <button type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
@@ -65,13 +43,6 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
         <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
         <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
       </div>
-    </ng-template>
-    
-    <ng-template #clrDate>
-      <ng-content select="[clrDate]"></ng-content>
-    </ng-template>
-    
-    <ng-container *ngIf="newFormsLayout; then newLayout else oldLayout"></ng-container>
     `,
   providers: [
     ControlIdService,
@@ -87,9 +58,8 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     DateFormControlService,
   ],
   host: {
-    '[class.date-container]': '!newFormsLayout',
     '[class.clr-form-control-disabled]': 'control?.disabled',
-    '[class.clr-form-control]': 'newFormsLayout',
+    '[class.clr-form-control]': 'true',
     '[class.clr-row]': 'addGrid()',
   },
 })
@@ -112,9 +82,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private focusService: FocusService,
     private controlClassService: ControlClassService,
     @Optional() private layoutService: LayoutService,
-    @Optional()
-    @Inject(IS_NEW_FORMS_LAYOUT)
-    public newFormsLayout: boolean,
     private ngControlService: NgControlService
   ) {
     this.subscriptions.push(

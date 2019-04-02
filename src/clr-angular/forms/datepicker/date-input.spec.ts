@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -91,7 +91,6 @@ export default function() {
       // @TODO Figure out how to make these tests conform to the rest of the forms tests, which test these already
       describe('View', () => {
         beforeEach(() => {
-          context.clarityDirective.newFormsLayout = true;
           context.detectChanges();
         });
 

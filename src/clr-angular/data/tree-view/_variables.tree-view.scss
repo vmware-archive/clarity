@@ -16,6 +16,6 @@ $clr-tree-node-caret-link-hover-color: $clr-color-neutral-1000 !default;
 $clr-tree-link-hover-color: $clr-custom-links-hover-color !default;
 $clr-tree-link-selection-color: $clr-global-selection-color !default;
 $clr-tree-link-text-color: $clr-color-neutral-700 !default;
-$clr-tree-checkbox-padding-top: ($clr-tree-node-touch-target - $clr-checkbox-radio-label-height) / 2 !default;
-$clr-tree-checkbox-padding-left: ($clr-tree-node-touch-target - $clr-checkbox-radio-height) / 2 !default;
+$clr-tree-checkbox-padding-top: ($clr-tree-node-touch-target - 1rem) / 2 !default;
+$clr-tree-checkbox-padding-left: ($clr-tree-node-touch-target - $clr-icon-dimension-sm) / 2 !default;
 $clr-tree-node-caret-color: $clr-color-neutral-500 !default;

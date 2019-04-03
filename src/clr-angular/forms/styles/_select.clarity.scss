@@ -84,6 +84,7 @@
     border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
     border-radius: $clr-global-borderradius;
     height: auto;
+    min-width: 5rem;
 
     &:hover,
     &:active {

@@ -32,13 +32,11 @@
         Your answer is incorrect.
       </clr-alert-item>
     </clr-alert>
-    <form #myForm="ngForm" [class.hide]="loadingFlag">
-      <section class="form-block">
-        <div class="form-group">
-          <label for="fourtyTwoInput">The answer to life, the universe and everything</label>
-          <input type="text" id="fourtyTwoInput" [(ngModel)]="answer" name="answer">
-        </div>
-      </section>
+    <form clrForm clrLayout="vertical" #myForm="ngForm" [class.hide]="loadingFlag">
+      <clr-input-container>
+        <label>The answer to life, the universe and everything</label>
+        <input clrInput [(ngModel)]="answer" name="answer">
+      </clr-input-container>
     </form>
   </clr-wizard-page>
   <clr-wizard-page>

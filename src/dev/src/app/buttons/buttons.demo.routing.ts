@@ -18,7 +18,6 @@ import { PrimaryButtonDemo } from './primary-button';
 import { RealButtonDemo } from './real-button';
 import { SecondaryButtonDemo } from './secondary-button';
 import { TertiaryButtonDemo } from './tertiary-button';
-import { ToggleDemo } from './toggles';
 
 const ROUTES: Routes = [
   {
@@ -34,7 +33,6 @@ const ROUTES: Routes = [
       { path: 'button-states', component: ButtonStatesDemo },
       { path: 'button-loading', component: ButtonLoadingDemo },
       { path: 'button-sizes', component: ButtonSizesDemo },
-      { path: 'toggles', component: ToggleDemo },
       { path: 'buttons-test', component: ButtonsTestDemo },
       { path: 'icons', component: ButtonsIconsDemo },
       { path: 'icon-buttons', component: IconButtonsDemo },

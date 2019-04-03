@@ -6,4 +6,11 @@
 import { Component } from '@angular/core';
 
 @Component({ templateUrl: './login.demo.html' })
-export class LoginDemo {}
+export class LoginDemo {
+  form = {
+    type: 'local',
+    username: '',
+    password: '',
+    rememberMe: false,
+  };
+}

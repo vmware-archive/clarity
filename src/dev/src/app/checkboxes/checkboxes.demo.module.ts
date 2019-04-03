@@ -7,13 +7,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ClarityModule, ClrFormsDeprecatedModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { CheckboxesDemo, MinimumSelectionValidatorDirective } from './checkboxes.demo';
 import { ROUTING } from './checkboxes.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ClrFormsDeprecatedModule, ROUTING],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
   declarations: [CheckboxesDemo, MinimumSelectionValidatorDirective],
   exports: [CheckboxesDemo],
 })

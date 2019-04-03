@@ -44,15 +44,12 @@ gemini.suite('wizard', child => {
         actions.waitForElementToShow('.btn', WAIT_TIME);
         actions.click(find('.btn'));
         actions.wait(WAIT_TIME); // wait for modal to fully load
-        actions.waitForElementToShow('#nameInput', WAIT_TIME);
-        actions.click(find('#nameInput'));
-        actions.click(find('#favInput'));
-        actions.waitForElementToShow('label.invalid', WAIT_TIME);
-        actions.click(find('#nameInput'));
-        actions.waitForElementToShow('.tooltip-content', WAIT_TIME);
+        actions.waitForElementToShow('#name', WAIT_TIME);
+        actions.click(find('#name'));
+        actions.click(find('#favorite'));
+        actions.waitForElementToShow('clr-control-error', WAIT_TIME);
         actions.wait(WAIT_TIME); // wait for animations to complete
       })
-      .ignoreElements('#nameInput')
       .setCaptureElements('.modal-content-wrapper')
       .capture('default');
   });

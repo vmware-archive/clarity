@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,10 +12,10 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(1)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-preview-settings', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(1)')
+      .setCaptureElements('.selection-preview-settings')
       .capture('default');
   });
 
@@ -23,10 +23,10 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(2)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(2)')
+      .setCaptureElements('.selection-shapes')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
@@ -65,25 +65,25 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(3)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(3)')
+      .setCaptureElements('.selection-shapes:nth-child(4)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('line-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -91,21 +91,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(3)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(4)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });
@@ -115,25 +115,25 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(4)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes:nth-child(5)', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(4)')
+      .setCaptureElements('.selection-shapes:nth-child(5)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('line-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -141,21 +141,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(4)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(5)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });
@@ -165,19 +165,19 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(5)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes:nth-child(6)', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(5)')
+      .setCaptureElements('.selection-shapes:nth-child(6)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -185,7 +185,7 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -193,21 +193,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(5)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(6)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });
@@ -217,19 +217,19 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(6)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes:nth-child(7)', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(6)')
+      .setCaptureElements('.selection-shapes:nth-child(7)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -237,7 +237,7 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -245,21 +245,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(6)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(7)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });
@@ -269,19 +269,19 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(7)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes:nth-child(8)', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(7)')
+      .setCaptureElements('.selection-shapes:nth-child(8)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -289,7 +289,7 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -297,21 +297,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(7)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(8)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });
@@ -321,19 +321,19 @@ gemini.suite('iconography', child => {
     child
       .setUrl('/iconography/selection')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-icon-selection > section:nth-child(8)', WAIT_TIME);
+        actions.waitForElementToShow('.selection-shapes:nth-child(9)', WAIT_TIME);
         actions.executeJS(function(window) {
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
-      .setCaptureElements('.clr-icon-selection > section:nth-child(8)')
+      .setCaptureElements('.selection-shapes:nth-child(9)')
       .capture('line')
       .capture('line-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -341,7 +341,7 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
 
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
@@ -349,21 +349,21 @@ gemini.suite('iconography', child => {
         actions.executeJS(function(window) {
           document.getElementById('noneRadio').click();
           document.getElementById('solidCheckBox').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-badged', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('badgeRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       })
       .capture('solid-alerted', (actions, find) => {
         actions.executeJS(function(window) {
           document.getElementById('alertRadio').click();
-          document.querySelector('.clr-icon-selection > section:nth-child(8)').scrollIntoView();
+          document.querySelector('.selection-shapes:nth-child(9)').scrollIntoView();
         });
         actions.wait(WAIT_LOAD_TIME);
       });

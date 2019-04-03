@@ -11,12 +11,10 @@ import { ClarityModule } from '@clr/angular';
 
 import { LoginDemo } from './login.demo';
 import { ROUTING } from './login.demo.routing';
-import { LoginDeprecatedDemo } from './login-deprecated.demo';
-import { LoginLayoutDemo } from './login-layout.demo';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
-  declarations: [LoginDemo, LoginLayoutDemo, LoginDeprecatedDemo],
-  exports: [LoginDemo, LoginLayoutDemo, LoginDeprecatedDemo],
+  declarations: [LoginDemo],
+  exports: [LoginDemo],
 })
 export class LoginDemoModule {}

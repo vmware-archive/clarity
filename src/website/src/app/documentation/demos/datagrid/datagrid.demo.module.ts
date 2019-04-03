@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ClarityModule, ClrFormsDeprecatedModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { DatagridBasicStructureDemo } from './basic-structure/basic-structure';
 import { DatagridBatchActionDemo } from './batch-action/batch-action';
@@ -176,15 +176,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ClarityModule,
-    ClrFormsDeprecatedModule,
-    DocWrapperModule,
-    RouterModule.forChild(routes),
-    UtilsModule,
-  ],
+  imports: [CommonModule, FormsModule, ClarityModule, DocWrapperModule, RouterModule.forChild(routes), UtilsModule],
   declarations: [
     DatagridBasicStructureDemo,
     DatagridBatchActionDemo,

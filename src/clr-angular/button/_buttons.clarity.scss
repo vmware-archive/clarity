@@ -340,11 +340,12 @@
   .radio.btn,
   .radio-inline.btn {
     padding: 0;
+
     label {
       display: block;
-
       line-height: inherit;
       padding: 0 0.5rem;
+      cursor: pointer;
     }
   }
 

@@ -21,7 +21,6 @@ import { PrimaryButtonDemo } from './primary-button';
 import { RealButtonDemo } from './real-button';
 import { SecondaryButtonDemo } from './secondary-button';
 import { TertiaryButtonDemo } from './tertiary-button';
-import { ToggleDemo } from './toggles';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING],
@@ -35,7 +34,6 @@ import { ToggleDemo } from './toggles';
     ButtonStatesDemo,
     ButtonLoadingDemo,
     ButtonSizesDemo,
-    ToggleDemo,
     ButtonsTestDemo,
     ButtonsIconsDemo,
     IconButtonsDemo,
@@ -51,7 +49,6 @@ import { ToggleDemo } from './toggles';
     ButtonStatesDemo,
     ButtonLoadingDemo,
     ButtonSizesDemo,
-    ToggleDemo,
     ButtonsTestDemo,
     ButtonsIconsDemo,
     IconButtonsDemo,

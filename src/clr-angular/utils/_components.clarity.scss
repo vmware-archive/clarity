@@ -135,16 +135,7 @@
 @import '../forms/styles/select.clarity';
 @import '../forms/styles/textarea.clarity';
 @import '../forms/styles/toggles.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-
-//Forms Deprecated
-@import '../forms-deprecated/utils/form-variables.clarity';
-@import '../forms-deprecated/utils/mixins.clarity';
-@import '../forms-deprecated/inputs.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import '../forms-deprecated/checkbox/checkbox.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import '../forms-deprecated/radio.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
-@import '../forms-deprecated/select.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity, icons.clarity, images.clarity
 @import '../forms/datepicker/datepicker.clarity';
-@import '../forms-deprecated/forms.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 @import '../forms/combobox/combobox.clarity';
 
 //Stack View

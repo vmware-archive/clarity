@@ -6,47 +6,38 @@
 
 <h1>Iconography</h1>
 
-<div class="clr-icon-selection">
-  <section>
-    <h5>Preview Settings</h5>
-    <div class="clr-icon-preview-settings">
+<form clrForm clrLayout="vertical">
+  <clr-toggle-wrapper>
+    <input type="checkbox" clrToggle name="solid" [(ngModel)]="solid" />
+    <label>Solid</label>
+  </clr-toggle-wrapper>
 
-      <div class="form-group clr-solid-checkbox">
-        <div class="toggle-switch">
-          <input type="checkbox" id="solidCheckBox" (change)="onChangeSolid($event)">
-          <label for="solidCheckBox">Solid:</label>
-        </div>
-      </div>
-      <div class="form-group clr-variant-radios" (change)="onChangeStatus($event)">
-        <label>Decoration:</label>
-        <div class="radio-inline">
-          <input type="radio" id="noneRadio" name="notificationType" checked>
-          <label for="noneRadio">none</label>
-        </div>
-        <div class="radio-inline">
-          <input type="radio" id="badgeRadio" name="notificationType">
-          <label for="badgeRadio">badge</label>
+  <clr-radio-container>
+    <label>Decoration</label>
+    <clr-radio-wrapper>
+      <input type="radio" id="noneRadio" clrRadio name="options" value="none" [(ngModel)]="options" />
+      <label>none</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" id="badgeRadio" clrRadio name="options" value="badge" [(ngModel)]="options" />
+      <label>badge</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" id="alertRadio" clrRadio name="options" value="alert" [(ngModel)]="options" />
+      <label>alert</label>
+    </clr-radio-wrapper>
+  </clr-radio-container>
+</form>
 
-        </div>
-        <div class="radio-inline">
-          <input type="radio" id="alertRadio" name="notificationType">
-          <label for="alertRadio">alert</label>
-        </div>
-      </div>
-
+<section *ngFor="let set of allShapeSets">
+  <h5>{{ set.name }}</h5>
+  <div class="clr-row clr-icon-collection">
+    <div *ngFor="let shape of set.shapes" class="clr-icon-item clr-col-xs-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
+      <clr-icon
+        [attr.shape]="shape"
+        [ngClass]="{ 'is-solid': solid, 'has-alert': options == 'alert', 'has-badge': options == 'badge' }"
+      ></clr-icon>
+      <span class="icon-shape-name">{{ shape }}</span>
     </div>
-  </section>
-
-  <section *ngFor="let set of allShapeSets">
-    <h5>{{set.name}}</h5>
-    <div class="clr-row clr-icon-collection">
-      <div *ngFor="let shape of set.shapes" class="clr-icon-item clr-col-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
-        <clr-icon [attr.shape]="shape" [ngClass]="previewClasses"></clr-icon>
-        <span class="icon-shape-name">{{shape}}</span>
-      </div>
-    </div>
-  </section>
-</div>
-
-
-
+  </div>
+</section>

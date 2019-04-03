@@ -8,8 +8,7 @@
     @include clr-appearance-normal();
   }
 
-  .clr-toggle-wrapper,
-  .toggle-switch {
+  .clr-toggle-wrapper {
     display: inline-block;
     height: $clr-toggle-height;
     margin-right: 1rem;

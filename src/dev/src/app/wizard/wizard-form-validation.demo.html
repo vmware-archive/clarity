@@ -16,22 +16,17 @@
 
   <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
     <ng-template clrPageTitle>Form with validation</ng-template>
-    <!-- mandatory -->
-    <form #formPageOne="ngForm">
-      <section class="form-block">
-        <label>Enter a name and favorite food</label>
-        <div class="form-group">
-          <label>Name</label>
-          <label for="nameInput" aria-haspopup="true" role="tooltip" [class.invalid]="name.touched && !name.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-            <input type="text" id="nameInput" required [(ngModel)]="model.name" name="name" #name="ngModel">
-            <span class="tooltip-content">This field cannot be empty!</span>
-          </label>
-        </div>
-        <div class="form-group">
-          <label for="favInput">Favorite food</label>
-          <input type="text" id="favInput" [(ngModel)]="model.favorite" name="favorite">
-        </div>
-      </section>
+    <form clrForm #formPageOne="ngForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput required [(ngModel)]="model.name" name="name" #name="ngModel" id="name">
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Favorite food</label>
+        <input clrInput [(ngModel)]="model.favorite" name="favorite" id="favorite">
+      </clr-input-container>
     </form>
   </clr-wizard-page>
 
@@ -42,19 +37,12 @@
       Enter a number
     </ng-template>
     <!-- optional -->
-    <form #formPageTwo="ngForm">
-      <section class="form-block">
+    <form clrForm #formPageTwo="ngForm">
+      <clr-input-container>
         <label>Please your lucky number!</label>
-        <div class="form-group">
-          <label>Your number</label>
-          <label for="numberInput" aria-haspopup="true" role="tooltip" [class.invalid]="number.touched && !number.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-            <input type="number" id="numberInput" required [(ngModel)]="model.number" name="number" #number="ngModel">
-            <span class="tooltip-content">
-              This field cannot be empty!
-            </span>
-          </label>
-        </div>
-      </section>
+        <input clrInput type="number" required [(ngModel)]="model.number" name="number" #number="ngModel">
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
     </form>
   </clr-wizard-page>
 

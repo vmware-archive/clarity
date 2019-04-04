@@ -30,7 +30,7 @@ const argv = minimist(process.argv.slice(2), {
   default: {
     deploy: false,
     directory: 'dist/website/deploy',
-    base: '/clarity/',
+    base: '/',
   },
 });
 
@@ -125,261 +125,261 @@ const notFound = () => {
 const redirects = () => {
   [
     {
-      from: join(BROWSER_FOLDER, 'documentation', environment.version, 'datagrid'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/structure`,
+      from: join(BROWSER_FOLDER, 'datagrid'),
+      to: `${argv.base}/datagrid/structure`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', environment.version, 'vertical-nav'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/basic-structure`,
+      from: join(BROWSER_FOLDER, 'vertical-nav'),
+      to: `${argv.base}/vertical-nav/basic-structure`,
     },
     // Global redirects from old paths before versioned urls
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'get-started'),
-      to: `${argv.base}/documentation/${environment.version}/get-started`,
+      from: join(BROWSER_FOLDER, 'get-started'),
+      to: `${argv.base}/get-started`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'app-layout'),
-      to: `${argv.base}/documentation/${environment.version}/app-layout`,
+      from: join(BROWSER_FOLDER, 'app-layout'),
+      to: `${argv.base}/app-layout`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'color'),
-      to: `${argv.base}/documentation/${environment.version}/color`,
+      from: join(BROWSER_FOLDER, 'color'),
+      to: `${argv.base}/color`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'themes'),
-      to: `${argv.base}/documentation/${environment.version}/themes`,
+      from: join(BROWSER_FOLDER, 'themes'),
+      to: `${argv.base}/themes`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'navigation'),
-      to: `${argv.base}/documentation/${environment.version}/navigation`,
+      from: join(BROWSER_FOLDER, 'navigation'),
+      to: `${argv.base}/navigation`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'typography'),
-      to: `${argv.base}/documentation/${environment.version}/typography`,
+      from: join(BROWSER_FOLDER, 'typography'),
+      to: `${argv.base}/typography`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'alerts'),
-      to: `${argv.base}/documentation/${environment.version}/alerts`,
+      from: join(BROWSER_FOLDER, 'alerts'),
+      to: `${argv.base}/alerts`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'badges'),
-      to: `${argv.base}/documentation/${environment.version}/badges`,
+      from: join(BROWSER_FOLDER, 'badges'),
+      to: `${argv.base}/badges`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'buttons'),
-      to: `${argv.base}/documentation/${environment.version}/buttons`,
+      from: join(BROWSER_FOLDER, 'buttons'),
+      to: `${argv.base}/buttons`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'button-group'),
-      to: `${argv.base}/documentation/${environment.version}/button-group`,
+      from: join(BROWSER_FOLDER, 'button-group'),
+      to: `${argv.base}/button-group`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'cards'),
-      to: `${argv.base}/documentation/${environment.version}/cards`,
+      from: join(BROWSER_FOLDER, 'cards'),
+      to: `${argv.base}/cards`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'checkboxes'),
-      to: `${argv.base}/documentation/${environment.version}/checkboxes`,
+      from: join(BROWSER_FOLDER, 'checkboxes'),
+      to: `${argv.base}/checkboxes`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/structure`,
+      from: join(BROWSER_FOLDER, 'datagrid'),
+      to: `${argv.base}/datagrid/structure`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/structure'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/structure`,
+      from: join(BROWSER_FOLDER, 'datagrid/structure'),
+      to: `${argv.base}/datagrid/structure`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/custom-rendering'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/custom-rendering`,
+      from: join(BROWSER_FOLDER, 'datagrid/custom-rendering'),
+      to: `${argv.base}/datagrid/custom-rendering`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/smart-iterator'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/smart-iterator`,
+      from: join(BROWSER_FOLDER, 'datagrid/smart-iterator'),
+      to: `${argv.base}/datagrid/smart-iterator`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/binding-properties'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/binding-properties`,
+      from: join(BROWSER_FOLDER, 'datagrid/binding-properties'),
+      to: `${argv.base}/datagrid/binding-properties`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/custom-sorting'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/custom-sorting`,
+      from: join(BROWSER_FOLDER, 'datagrid/custom-sorting'),
+      to: `${argv.base}/datagrid/custom-sorting`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/custom-filtering'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/custom-filtering`,
+      from: join(BROWSER_FOLDER, 'datagrid/custom-filtering'),
+      to: `${argv.base}/datagrid/custom-filtering`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/custom-filtering'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/custom-filtering`,
+      from: join(BROWSER_FOLDER, 'datagrid/custom-filtering'),
+      to: `${argv.base}/datagrid/custom-filtering`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/string-filtering'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/string-filtering`,
+      from: join(BROWSER_FOLDER, 'datagrid/string-filtering'),
+      to: `${argv.base}/datagrid/string-filtering`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/pagination'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/pagination`,
+      from: join(BROWSER_FOLDER, 'datagrid/pagination'),
+      to: `${argv.base}/datagrid/pagination`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/selection'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/selection`,
+      from: join(BROWSER_FOLDER, 'datagrid/selection'),
+      to: `${argv.base}/datagrid/selection`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/selection-single'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/selection-single`,
+      from: join(BROWSER_FOLDER, 'datagrid/selection-single'),
+      to: `${argv.base}/datagrid/selection-single`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/batch-action'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/batch-action`,
+      from: join(BROWSER_FOLDER, 'datagrid/batch-action'),
+      to: `${argv.base}/datagrid/batch-action`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/single-action'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/single-action`,
+      from: join(BROWSER_FOLDER, 'datagrid/single-action'),
+      to: `${argv.base}/datagrid/single-action`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/server-driven'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/server-driven`,
+      from: join(BROWSER_FOLDER, 'datagrid/server-driven'),
+      to: `${argv.base}/datagrid/server-driven`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/placeholder'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/placeholder`,
+      from: join(BROWSER_FOLDER, 'datagrid/placeholder'),
+      to: `${argv.base}/datagrid/placeholder`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/expandable-rows'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/expandable-rows`,
+      from: join(BROWSER_FOLDER, 'datagrid/expandable-rows'),
+      to: `${argv.base}/datagrid/expandable-rows`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/hide-show'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/hide-show`,
+      from: join(BROWSER_FOLDER, 'datagrid/hide-show'),
+      to: `${argv.base}/datagrid/hide-show`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/compact'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/compact`,
+      from: join(BROWSER_FOLDER, 'datagrid/compact'),
+      to: `${argv.base}/datagrid/compact`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'datagrid/full'),
-      to: `${argv.base}/documentation/${environment.version}/datagrid/full`,
+      from: join(BROWSER_FOLDER, 'datagrid/full'),
+      to: `${argv.base}/datagrid/full`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'dropdowns'),
-      to: `${argv.base}/documentation/${environment.version}/dropdowns`,
+      from: join(BROWSER_FOLDER, 'dropdowns'),
+      to: `${argv.base}/dropdowns`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'forms'),
-      to: `${argv.base}/documentation/${environment.version}/forms`,
+      from: join(BROWSER_FOLDER, 'forms'),
+      to: `${argv.base}/forms`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'grid'),
-      to: `${argv.base}/documentation/${environment.version}/grid`,
+      from: join(BROWSER_FOLDER, 'grid'),
+      to: `${argv.base}/grid`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'header'),
-      to: `${argv.base}/documentation/${environment.version}/header`,
+      from: join(BROWSER_FOLDER, 'header'),
+      to: `${argv.base}/header`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'input'),
-      to: `${argv.base}/documentation/${environment.version}/input`,
+      from: join(BROWSER_FOLDER, 'input'),
+      to: `${argv.base}/input`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'labels'),
-      to: `${argv.base}/documentation/${environment.version}/labels`,
+      from: join(BROWSER_FOLDER, 'labels'),
+      to: `${argv.base}/labels`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'lists'),
-      to: `${argv.base}/documentation/${environment.version}/lists`,
+      from: join(BROWSER_FOLDER, 'lists'),
+      to: `${argv.base}/lists`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'login'),
-      to: `${argv.base}/documentation/${environment.version}/login`,
+      from: join(BROWSER_FOLDER, 'login'),
+      to: `${argv.base}/login`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'modals'),
-      to: `${argv.base}/documentation/${environment.version}/modals`,
+      from: join(BROWSER_FOLDER, 'modals'),
+      to: `${argv.base}/modals`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'password'),
-      to: `${argv.base}/documentation/${environment.version}/password`,
+      from: join(BROWSER_FOLDER, 'password'),
+      to: `${argv.base}/password`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'progress'),
-      to: `${argv.base}/documentation/${environment.version}/progress`,
+      from: join(BROWSER_FOLDER, 'progress'),
+      to: `${argv.base}/progress`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'radios'),
-      to: `${argv.base}/documentation/${environment.version}/radios`,
+      from: join(BROWSER_FOLDER, 'radios'),
+      to: `${argv.base}/radios`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'select-boxes'),
-      to: `${argv.base}/documentation/${environment.version}/select-boxes`,
+      from: join(BROWSER_FOLDER, 'select-boxes'),
+      to: `${argv.base}/select-boxes`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'sidenav'),
-      to: `${argv.base}/documentation/${environment.version}/sidenav`,
+      from: join(BROWSER_FOLDER, 'sidenav'),
+      to: `${argv.base}/sidenav`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'signposts'),
-      to: `${argv.base}/documentation/${environment.version}/signposts`,
+      from: join(BROWSER_FOLDER, 'signposts'),
+      to: `${argv.base}/signposts`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'spinners'),
-      to: `${argv.base}/documentation/${environment.version}/spinners`,
+      from: join(BROWSER_FOLDER, 'spinners'),
+      to: `${argv.base}/spinners`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'stack-view'),
-      to: `${argv.base}/documentation/${environment.version}/stack-view`,
+      from: join(BROWSER_FOLDER, 'stack-view'),
+      to: `${argv.base}/stack-view`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'tables'),
-      to: `${argv.base}/documentation/${environment.version}/tables`,
+      from: join(BROWSER_FOLDER, 'tables'),
+      to: `${argv.base}/tables`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'tabs'),
-      to: `${argv.base}/documentation/${environment.version}/tabs`,
+      from: join(BROWSER_FOLDER, 'tabs'),
+      to: `${argv.base}/tabs`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'textarea'),
-      to: `${argv.base}/documentation/${environment.version}/textarea`,
+      from: join(BROWSER_FOLDER, 'textarea'),
+      to: `${argv.base}/textarea`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'toggle-switches'),
-      to: `${argv.base}/documentation/${environment.version}/toggle-switches`,
+      from: join(BROWSER_FOLDER, 'toggle-switches'),
+      to: `${argv.base}/toggle-switches`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'tooltips'),
-      to: `${argv.base}/documentation/${environment.version}/tooltips`,
+      from: join(BROWSER_FOLDER, 'tooltips'),
+      to: `${argv.base}/tooltips`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'tree-view'),
-      to: `${argv.base}/documentation/${environment.version}/tree-view`,
+      from: join(BROWSER_FOLDER, 'tree-view'),
+      to: `${argv.base}/tree-view`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/basic-structure`,
+      from: join(BROWSER_FOLDER, 'vertical-nav'),
+      to: `${argv.base}/vertical-nav/basic-structure`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav/basic-structure/charmander'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/basic-structure/charmander`,
+      from: join(BROWSER_FOLDER, 'vertical-nav/basic-structure/charmander'),
+      to: `${argv.base}/vertical-nav/basic-structure/charmander`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav/icon-links/normal'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/icon-links/normal`,
+      from: join(BROWSER_FOLDER, 'vertical-nav/icon-links/normal'),
+      to: `${argv.base}/vertical-nav/icon-links/normal`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav/collapsible-nav/normal'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/collapsible-nav/normal`,
+      from: join(BROWSER_FOLDER, 'vertical-nav/collapsible-nav/normal'),
+      to: `${argv.base}/vertical-nav/collapsible-nav/normal`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav/nav-groups/normal'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/nav-groups/normal`,
+      from: join(BROWSER_FOLDER, 'vertical-nav/nav-groups/normal'),
+      to: `${argv.base}/vertical-nav/nav-groups/normal`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'vertical-nav/no-lazy-loading/normal'),
-      to: `${argv.base}/documentation/${environment.version}/vertical-nav/no-lazy-loading/normal`,
+      from: join(BROWSER_FOLDER, 'vertical-nav/no-lazy-loading/normal'),
+      to: `${argv.base}/vertical-nav/no-lazy-loading/normal`,
     },
     {
-      from: join(BROWSER_FOLDER, 'documentation', 'wizards'),
-      to: `${argv.base}/documentation/${environment.version}/wizards`,
+      from: join(BROWSER_FOLDER, 'wizards'),
+      to: `${argv.base}/wizards`,
     },
   ].forEach(file => {
     const content = `<html><head><meta http-equiv="refresh" content="0; URL='${
@@ -394,7 +394,7 @@ const redirects = () => {
 
 // Run through each route individually and report on completion
 Promise.map(urls, renderer, { concurrency: 1 }).then(
-  result => {
+  () => {
     console.log('Pages rendered!');
     if (argv.deploy) {
       deploy();

@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'home',
@@ -14,6 +15,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   currentSeason = `bg-img-${this.getCurrentSeason()}`;
+  environment = environment;
 
   private getCurrentSeason() {
     const now = new Date();

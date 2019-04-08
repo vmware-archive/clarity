@@ -7,16 +7,9 @@
     </div>
 </clr-alert>
 <form clrForm class="datepicker-demo" clrLayout="vertical">
-    <input type="date" [(clrDate)]="date" newFormLayout="true">
+    <input type="date" [(clrDate)]="date">
 </form>
 <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
-<clr-alert [clrAlertClosable]="false">
-    <div class="alert-item">
-        <span class="alert-text">
-            Date picker has <code class="clr-code">newFormLayout</code> input to force the layout to new forms layout when you don't use template-driven or reactive forms on the control.
-        </span>
-    </div>
-</clr-alert>
 <h6>Output: </h6>
 <pre class="datepicker-output">
 {{date | json}}

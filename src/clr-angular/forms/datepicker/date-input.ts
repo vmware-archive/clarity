@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,7 +36,6 @@ import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
-import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { datesAreEqual } from './utils/date-utils';
 
@@ -49,14 +48,12 @@ import { datesAreEqual } from './utils/date-utils';
 @Directive({
   selector: '[clrDate]',
   host: {
-    '[class.date-input]': '!newFormsLayout',
-    '[class.clr-input]': 'newFormsLayout',
+    '[class.clr-input]': 'true',
   },
   providers: [DatepickerFocusService],
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
   @Input() placeholder: string;
-  @Input() clrNewLayout: boolean;
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
   @Input('clrDate')
   set date(date: Date) {
@@ -69,7 +66,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
-  protected index = 4;
+  protected index = 1;
   private initialClrDateInputValue: Date;
   private previousDateChange: Date;
 
@@ -88,9 +85,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private dateFormControlService: DateFormControlService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() private focusService: FocusService,
-    @Optional()
-    @Inject(IS_NEW_FORMS_LAYOUT)
-    public newFormsLayout: boolean,
     private datepickerFocusService: DatepickerFocusService
   ) {
     super(viewContainerRef, ClrDateContainer, injector, control, renderer, el);
@@ -98,7 +92,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
   ngOnInit() {
     super.ngOnInit();
-    this.setFormLayout();
     this.populateServicesFromContainerComponent();
 
     this.subscriptions.push(
@@ -183,12 +176,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       this.updateDate(this.dateIOService.getDateValueFromDateString(this.control.value));
     } else {
       this.updateDate(this.initialClrDateInputValue);
-    }
-  }
-
-  private setFormLayout() {
-    if (this.clrNewLayout !== undefined) {
-      this.newFormsLayout = !!this.clrNewLayout;
     }
   }
 

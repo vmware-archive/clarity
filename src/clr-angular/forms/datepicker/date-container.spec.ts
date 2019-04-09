@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -66,52 +66,9 @@ export default function() {
     });
 
     // @deprecated these tests refer to the old forms layout only and can be removed when its removed
-    describe('Deprecated View', () => {
-      beforeEach(() => {
-        context.clarityDirective.newFormsLayout = false;
-        context.detectChanges();
-      });
-
-      it('applies the date-container class');
-
-      it('renders the datepicker toggle button based on the enabled service', () => {
-        expect(enabledService.isEnabled).toBe(true);
-        expect(context.clarityElement.querySelector('.datepicker-trigger')).not.toBeNull();
-
-        enabledService.fakeIsEnabled = false;
-        context.detectChanges();
-
-        expect(context.clarityElement.querySelector('.datepicker-trigger')).toBeNull();
-      });
-
-      it('clicking on the button toggles the datepicker popover', () => {
-        spyOn(context.clarityDirective, 'toggleDatepicker');
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
-
-        button.click();
-        context.detectChanges();
-
-        expect(context.clarityDirective.toggleDatepicker).toHaveBeenCalled();
-      });
-
-      it('projects the date input', () => {
-        expect(context.clarityElement.querySelector('input')).not.toBeNull();
-      });
-
-      it('shows the datepicker view manager when .datepicker-trigger is clicked', () => {
-        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
-
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.datepicker-trigger');
-        button.click();
-        context.detectChanges();
-
-        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).not.toBeNull();
-      });
-    });
 
     describe('View Basics', () => {
       beforeEach(() => {
-        context.clarityDirective.newFormsLayout = true;
         context.detectChanges();
       });
 

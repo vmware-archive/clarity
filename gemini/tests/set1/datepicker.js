@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -114,7 +114,7 @@ gemini.suite('datepicker', child => {
       .before((actions, find) => {
         actions.waitForElementToShow('.clr-example-3', WAIT_TIME);
         actions.wait(WAIT_LOAD_TIME);
-        this.trigger = find('.clr-example-3 .datepicker-trigger');
+        this.trigger = find('.clr-example-3 .clr-input-group-icon-action');
         actions.click(this.trigger);
         actions.wait(WAIT_LOAD_TIME);
       })

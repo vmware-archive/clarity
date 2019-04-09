@@ -26,6 +26,10 @@ export class ExternalLinkDirective {
 
   private isLinkExternal() {
     const link = this.hostElement.nativeElement;
+    // Don't match other subdomains.
+    if (link.hostname.indexOf('clarity.design')) {
+      return false;
+    }
     return location.hostname !== link.hostname || link.hostname.length;
   }
 }

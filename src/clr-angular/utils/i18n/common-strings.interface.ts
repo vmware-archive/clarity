@@ -86,11 +86,11 @@ export abstract class ClrCommonStrings {
    */
   pickColumns?: string;
   /**
-   * Datagrid numeric filter: lower limit
+   * Datagrid numeric filter: from
    */
-  lowerLimit?: string;
+  from?: string;
   /**
-   * Datagrid numeric filter: upper limit
+   * Datagrid numeric filter: to
    */
-  upperLimit?: string;
+  to?: string;
 }

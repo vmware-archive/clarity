@@ -14,5 +14,5 @@
 @import '../../../clr-angular/utils/layers.clarity';
 
 //Variables
-@import '../../../clr-angular/utils/bs4-grid-breakpoint-overrides.clarity';
 @import '../../../clr-angular/utils/variables.clarity'; // depends on helpers.clarity, colors.clarity
+@import '../../../clr-angular/layout/grid/variables/variables.clarity';

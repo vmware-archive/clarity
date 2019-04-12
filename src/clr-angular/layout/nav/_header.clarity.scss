@@ -426,7 +426,7 @@
     @include header-search();
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
     header,
     .header {
       @include header-search-md();

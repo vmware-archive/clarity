@@ -1,28 +1,39 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('close.clarity') {
+  // scss-lint:disable QualifyingElement
+  button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
+  // scss-lint:enable QualifyingElement
+
   .close {
+    float: right;
+    font-size: ($clr-baseline * 1.5);
     transition: color linear 0.2s;
     font-weight: 200;
     text-shadow: none;
     line-height: inherit;
-    color: $close-color--normal;
-    opacity: 1;
+    color: $clr-close-color--normal;
 
     clr-icon {
-      fill: $close-color--normal;
+      fill: $clr-close-color--normal;
     }
 
     &:focus,
     &:hover,
     &:active {
       opacity: 1;
-      color: $close-color--hover;
+      color: $clr-close-color--hover;
 
       clr-icon {
-        fill: $close-color--hover;
+        fill: $clr-close-color--hover;
       }
     }
 

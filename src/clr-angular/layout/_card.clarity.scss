@@ -76,19 +76,17 @@
       padding: $card-children-padding-vertical $card-children-padding-horizontal;
     }
 
-    //Bootstrap 4 List Groups
-    // @deprecated Bootstrap dependencies are deprecated since 1.0. Review and edit if necessary before 2.0.
-    .list-group-item {
-      font-size: $clr-card-text-font-size;
-      background-color: $clr-card-bg-color;
-      border-left-width: 0;
-      border-right-width: 0;
-      border-color: $clr-card-border-color;
-      padding: 0.5rem 0.75rem;
+    .list-group {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
     }
 
-    .list-group-item:first-child {
-      border-top-color: transparent;
+    .list-group-item {
+      padding: 0.5rem 0.75rem;
+      font-size: $clr-card-text-font-size;
+      background-color: $clr-card-bg-color;
+      border-bottom: 1px solid $clr-card-border-color;
     }
 
     //Dropdowns
@@ -242,7 +240,7 @@
   //Credit: Bootstrap 4 Card Masonry
   //Added some fixes to avoid flickering in Clickable cards
   //Added extra column classes to control the number of CSS columns
-  @media screen and (min-width: map-get($grid-breakpoints, sm)) {
+  @media screen and (min-width: map-get($clr-grid-breakpoints, sm)) {
     .card-columns {
       column-count: 3;
       column-gap: 0.5rem;

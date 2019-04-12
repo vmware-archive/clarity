@@ -155,7 +155,7 @@
     }
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
     .main-container {
       .header-hamburger-trigger,
       .header-overflow-trigger {
@@ -458,7 +458,7 @@
     }
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     .main-container {
       .header {
         .branding {

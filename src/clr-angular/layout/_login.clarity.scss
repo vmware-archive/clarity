@@ -175,7 +175,7 @@
     }
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, md)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
     .login-wrapper {
       justify-content: center;
       background: $clr-login-background-color;
@@ -192,7 +192,7 @@
     }
   }
 
-  @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     .login-wrapper {
       .login {
         padding: 1rem 15%;

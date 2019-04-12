@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,7 +17,7 @@ const HTML_EXAMPLE = `
         Nihil nemo, necessitatibus earum.
         </p>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group">
         <li class="list-group-item">Lorem ipsum dolor.</li>
         <li class="list-group-item">Lorem ipsum dolor sit.</li>
         <li class="list-group-item">Lorem ipsum.</li>

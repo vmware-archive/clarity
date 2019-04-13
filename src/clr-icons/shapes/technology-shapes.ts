@@ -1,16 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
-
-interface Window {
-  ClarityIcons: any;
-}
-
-declare var window: Window;
+import safeWindowAdd from '../utils/safe-window-add';
 
 /* tslint:disable:variable-name */
 export const ClrShapeRulerPencil = clrIconSVG(
@@ -74,7 +68,7 @@ export const ClrShapeBlock = clrIconSVG(
             <path d="M26.87,1.26l-5.72,9.91a1.28,1.28,0,0,0,1.1,1.92H33.7a1.28,1.28,0,0,0,1.1-1.92L29.08,1.26A1.28,1.28,0,0,0,26.87,1.26Z" class="clr-i-outline--alerted clr-i-outline-path-2--alerted clr-i-alert" />
             <path d="M30,13.5V26.36L19,31.44V16.64l8.08-3.73a7.57,7.57,0,0,1-2-1.27L18,14.9,7.39,10,18,5.1l4.61,2.13A7.12,7.12,0,0,1,22.5,6a8,8,0,0,1,.07-1L18.42,3.09a1,1,0,0,0-.84,0l-13,6A1,1,0,0,0,4,10V27a1,1,0,0,0,.58.91l13,6a1,1,0,0,0,.84,0l13-6A1,1,0,0,0,32,27V13.22A7.37,7.37,0,0,1,30,13.5ZM17,31.44,6,26.36V11.56l11,5.08Z" class="clr-i-outline--badged clr-i-outline-path-1--badged" />
             <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-2--badged clr-i-badge" />
-            
+
             <path d="M31.42,9.09l-13-6a1,1,0,0,0-.84,0l-13,6A1,1,0,0,0,4,10V27a1,1,0,0,0,.58.91l13,6a1,1,0,0,0,.84,0l13-6A1,1,0,0,0,32,27V10A1,1,0,0,0,31.42,9.09ZM18,14.9,7.39,10,18,5.1,28.61,10ZM30,26.36,19,31.44V16.64l11-5.08Z" class="clr-i-solid clr-i-solid-path-1" />
             <path d="M30,15.38v11L19,31.44V16.64l2.79-1.29a3.68,3.68,0,0,1-2.25-1.16L18,14.9,7.39,10,18,5.1l3,1.39,1-1.75L18.42,3.09a1,1,0,0,0-.84,0l-13,6A1,1,0,0,0,4,10V27a1,1,0,0,0,.58.91l13,6a1,1,0,0,0,.84,0l13-6A1,1,0,0,0,32,27V15.38Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted" />
             <path d="M26.85,1.12,21.13,11a1.27,1.27,0,0,0,1.1,1.91H33.68A1.27,1.27,0,0,0,34.78,11L29.06,1.12A1.28,1.28,0,0,0,26.85,1.12Z" class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert" />
@@ -1163,104 +1157,122 @@ export const ClrShapeHostGroup = clrIconSVG(
 <path class="clr-i-solid clr-i-solid-path-3" d="M24.08,20 L22.08,20 L22.08,2 L11.08,2 L11.08,0 L23.08,0 C23.6322847,0 24.08,0.44771525 24.08,1 L24.08,20 Z" />`
 );
 
-export const TechnologyShapes: any = {
-  'ruler-pencil': ClrShapeRulerPencil,
-  'phone-handset': ClrShapePhoneHandset,
-  'no-wifi': ClrShapeNoWifi,
-  install: ClrShapeInstall,
-  uninstall: ClrShapeUninstall,
-  layers: ClrShapeLayers,
-  block: ClrShapeBlock,
-  'blocks-group': ClrShapeBlocksGroup,
-  bundle: ClrShapeBundle,
-  wifi: ClrShapeWifi,
-  'rack-server': ClrShapeRackServer,
-  'hard-disk': ClrShapeHardDisk,
+export const TechnologyShapes = {
+  administrator: ClrShapeAdministrator,
+  application: ClrShapeApplication,
+  applications: ClrShapeApplications,
+  archive: ClrShapeArchive,
+  'assign-user': ClrShapeAssignUser,
+  atom: ClrShapeAtom,
   'backup-restore': ClrShapeBackupRestore,
   backup: ClrShapeBackup,
-  devices: ClrShapeDevices,
-  keyboard: ClrShapeKeyboard,
-  mouse: ClrShapeMouse,
-  dashboard: ClrShapeDashboard,
-  host: ClrShapeHost,
-  storage: ClrShapeStorage,
-  cluster: ClrShapeCluster,
-  applications: ClrShapeApplications,
-  building: ClrShapeBuilding,
-  cpu: ClrShapeCPU,
-  memory: ClrShapeMemory,
-  'data-cluster': ClrShapeDataCluster,
-  'resource-pool': ClrShapeResourcePool,
-  shield: ClrShapeShield,
-  'shield-check': ClrShapeShieldCheck,
-  'shield-x': ClrShapeShieldX,
-  import: ClrShapeImport,
-  export: ClrShapeExport,
-  'upload-cloud': ClrShapeUploadCloud,
-  'download-cloud': ClrShapeDownloadCloud,
-  plugin: ClrShapePlugin,
-  floppy: ClrShapeFloppy,
-  computer: ClrShapeComputer,
-  display: ClrShapeDisplay,
-  terminal: ClrShapeTerminal,
-  code: ClrShapeCode,
-  application: ClrShapeApplication,
+  'bar-code': ClrShapeBarCode,
   battery: ClrShapeBattery,
-  mobile: ClrShapeMobile,
-  tablet: ClrShapeTablet,
-  'network-globe': ClrShapeNetworkGlobe,
-  'network-settings': ClrShapeNetworkSettings,
-  'network-switch': ClrShapeNetworkSwitch,
-  router: ClrShapeRouter,
-  vm: ClrShapeVM,
-  'vmw-app': ClrShapeVMWApp,
+  block: ClrShapeBlock,
+  'blocks-group': ClrShapeBlocksGroup,
+  'bluetooth-off': ClrShapeBluetoothOff,
+  bluetooth: ClrShapeBluetooth,
+  building: ClrShapeBuilding,
+  bundle: ClrShapeBundle,
+  capacitor: ClrShapeCapacitor,
+  'cd-dvd': ClrShapeCdDvd,
   certificate: ClrShapeCertificate,
-  archive: ClrShapeArchive,
-  unarchive: ClrShapeUnarchive,
-  connect: ClrShapeConnect,
-  disconnect: ClrShapeDisconnect,
-  link: ClrShapeLink,
-  unlink: ClrShapeUnlink,
   'cloud-network': ClrShapeCloudNetwork,
   'cloud-scale': ClrShapeCloudScale,
   'cloud-traffic': ClrShapeCloudTraffic,
-  deploy: ClrShapeDeploy,
-  helix: ClrShapeHelix,
-  flask: ClrShapeFlask,
-  administrator: ClrShapeAdministrator,
-  'hard-drive': ClrShapeHardDrive,
-  'hard-drive-disks': ClrShapeHardDriveDisks,
-  nvme: ClrShapeNVMe,
-  ssd: ClrShapeSSD,
-  bluetooth: ClrShapeBluetooth,
-  'bluetooth-off': ClrShapeBluetoothOff,
-  'process-on-vm': ClrShapeProcessOnVM,
-  'assign-user': ClrShapeAssignUser,
-  atom: ClrShapeAtom,
-  'bar-code': ClrShapeBarCode,
-  'cd-dvd': ClrShapeCdDvd,
-  container: ClrShapeContainer,
+  cluster: ClrShapeCluster,
+  code: ClrShapeCode,
+  computer: ClrShapeComputer,
+  connect: ClrShapeConnect,
   'container-volume': ClrShapeContainerVolume,
+  container: ClrShapeContainer,
+  cpu: ClrShapeCPU,
+  dashboard: ClrShapeDashboard,
+  'data-cluster': ClrShapeDataCluster,
+  deploy: ClrShapeDeploy,
+  devices: ClrShapeDevices,
+  disconnect: ClrShapeDisconnect,
+  display: ClrShapeDisplay,
+  'download-cloud': ClrShapeDownloadCloud,
+  export: ClrShapeExport,
   'file-share': ClrShapeFileShare,
-  'qr-code': ClrShapeQrCode,
-  usb: ClrShapeUsb,
-  radar: ClrShapeRadar,
-  capacitor: ClrShapeCapacitor,
-  squid: ClrShapeSquid,
-  inductor: ClrShapeInductor,
-  resistor: ClrShapeResistor,
+  flask: ClrShapeFlask,
+  floppy: ClrShapeFloppy,
+  'hard-disk': ClrShapeHardDisk,
+  'hard-drive-disks': ClrShapeHardDriveDisks,
+  'hard-drive': ClrShapeHardDrive,
+  helix: ClrShapeHelix,
   'host-group': ClrShapeHostGroup,
+  host: ClrShapeHost,
+  import: ClrShapeImport,
+  inductor: ClrShapeInductor,
+  install: ClrShapeInstall,
+  keyboard: ClrShapeKeyboard,
+  layers: ClrShapeLayers,
+  link: ClrShapeLink,
+  memory: ClrShapeMemory,
+  mobile: ClrShapeMobile,
+  mouse: ClrShapeMouse,
+  'network-globe': ClrShapeNetworkGlobe,
+  'network-settings': ClrShapeNetworkSettings,
+  'network-switch': ClrShapeNetworkSwitch,
+  'no-wifi': ClrShapeNoWifi,
+  nvme: ClrShapeNVMe,
+  'phone-handset': ClrShapePhoneHandset,
+  plugin: ClrShapePlugin,
+  'process-on-vm': ClrShapeProcessOnVM,
+  'qr-code': ClrShapeQrCode,
+  'rack-server': ClrShapeRackServer,
+  radar: ClrShapeRadar,
+  resistor: ClrShapeResistor,
+  'resource-pool': ClrShapeResourcePool,
+  router: ClrShapeRouter,
+  'ruler-pencil': ClrShapeRulerPencil,
+  'shield-check': ClrShapeShieldCheck,
+  'shield-x': ClrShapeShieldX,
+  shield: ClrShapeShield,
+  squid: ClrShapeSquid,
+  ssd: ClrShapeSSD,
+  storage: ClrShapeStorage,
+  tablet: ClrShapeTablet,
+  terminal: ClrShapeTerminal,
+  unarchive: ClrShapeUnarchive,
+  uninstall: ClrShapeUninstall,
+  unlink: ClrShapeUnlink,
+  'upload-cloud': ClrShapeUploadCloud,
+  usb: ClrShapeUsb,
+  vm: ClrShapeVM,
+  'vmw-app': ClrShapeVMWApp,
+  wifi: ClrShapeWifi,
+  /** Alias for: certificate */ get license(): string {
+    return this['certificate'];
+  },
+  /** Alias for: helix */ get dna(): string {
+    return this['helix'];
+  },
+  /** Alias for: host */ get server(): string {
+    return this['host'];
+  },
+  /** Alias for: mobile */ get 'mobile-phone'(): string {
+    return this['mobile'];
+  },
+  /** Alias for: no-wifi */ get disconnected(): string {
+    return this['no-wifi'];
+  },
+  /** Alias for: phone-handset */ get receiver(): string {
+    return this['phone-handset'];
+  },
+  /** Alias for: ruler-pencil */ get design(): string {
+    return this['ruler-pencil'];
+  },
+  /** Alias for: terminal */ get command(): string {
+    return this['terminal'];
+  },
 };
 
-Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));
-Object.defineProperty(TechnologyShapes, 'command', descriptorConfig(TechnologyShapes.terminal));
-Object.defineProperty(TechnologyShapes, 'mobile-phone', descriptorConfig(TechnologyShapes.mobile));
-Object.defineProperty(TechnologyShapes, 'license', descriptorConfig(TechnologyShapes.certificate));
-Object.defineProperty(TechnologyShapes, 'disconnected', descriptorConfig(TechnologyShapes['no-wifi']));
-Object.defineProperty(TechnologyShapes, 'receiver', descriptorConfig(TechnologyShapes['phone-handset']));
-Object.defineProperty(TechnologyShapes, 'design', descriptorConfig(TechnologyShapes['ruler-pencil']));
-Object.defineProperty(TechnologyShapes, 'dna', descriptorConfig(TechnologyShapes.helix));
+/**
+ * Valid shapes.
+ */
+export type TechnologyShape = keyof typeof TechnologyShapes;
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TechnologyShapes);
-}
+safeWindowAdd(TechnologyShapes);

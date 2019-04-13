@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
+import safeWindowAdd from '../utils/safe-window-add';
 
 /* tslint:disable:variable-name */
 export const ClrShapeTruck = clrIconSVG(
@@ -97,24 +97,30 @@ export const ClrShapeTrailer = clrIconSVG(`<path d="M15,19.2c-3.2,0-5.8,2.6-5.8,
 		c0,0,0,0,0,0c2.1,0,3.8-1.7,3.8-3.9V11h5c0.6,0,1-0.4,1-1S33.6,9,33,9z M26,13H4v-2h22V13z" class="clr-i-outline clr-i-outline-path-3" /><path d="M33,9H2v13.1c0,0,0,0,0,0C2,24.3,3.7,26,5.9,26H7v-2H5.9c-1,0-1.8-0.8-1.9-1.9V15h22v7.1c0,1-0.8,1.8-1.9,1.9H23v2h1.1
 	c0,0,0,0,0,0c2.1,0,3.8-1.7,3.8-3.9V11h5c0.6,0,1-0.4,1-1S33.6,9,33,9z" class="clr-i-solid clr-i-solid-path-1" /><path d="M15,19.2c-3.2,0-5.8,2.6-5.8,5.8s2.6,5.8,5.8,5.8s5.8-2.6,5.8-5.8l0,0C20.8,21.8,18.2,19.2,15,19.2z M16,26h-2v-2h2V26z" class="clr-i-solid clr-i-solid-path-2" />`);
 
-export const TravelShapes: any = {
-  truck: ClrShapeTruck,
+export const TravelShapes = {
   airplane: ClrShapeAirplane,
-  car: ClrShapeCar,
-  map: ClrShapeMap,
-  compass: ClrShapeCompass,
-  'map-marker': ClrShapeMapMarker,
   bicycle: ClrShapeBicycle,
   boat: ClrShapeBoat,
   campervan: ClrShapeCampervan,
+  car: ClrShapeCar,
   caravan: ClrShapeCaravan,
+  compass: ClrShapeCompass,
   ferry: ClrShapeFerry,
+  'map-marker': ClrShapeMapMarker,
+  map: ClrShapeMap,
   trailer: ClrShapeTrailer,
+  truck: ClrShapeTruck,
+  /** Alias for: airplane */ get plane(): string {
+    return this['airplane'];
+  },
+  /** Alias for: car */ get auto(): string {
+    return this['car'];
+  },
 };
 
-Object.defineProperty(TravelShapes, 'plane', descriptorConfig(TravelShapes.airplane));
-Object.defineProperty(TravelShapes, 'auto', descriptorConfig(TravelShapes.car));
+/**
+ * Valid shapes.
+ */
+export type TravelShape = keyof typeof TravelShapes;
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TravelShapes);
-}
+safeWindowAdd(TravelShapes);

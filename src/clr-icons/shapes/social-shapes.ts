@@ -1,17 +1,13 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
+import safeWindowAdd from '../utils/safe-window-add';
 
 // TODO: deprecate these imported shapes in 0.12
 // TODO: remove these imported shapes in 0.13
-interface Window {
-  ClarityIcons: any;
-}
-declare var window: Window;
 
 import { ClrShapeCalendar, ClrShapeEvent } from './core-shapes';
 
@@ -156,33 +152,41 @@ export const ClrShapeThumbsDown = clrIconSVG(
             <path d="M9,23a1,1,0,0,0,1-1V6A1,1,0,0,0,9,5H2V23Z" class="clr-i-solid clr-i-solid-path-2" />`
 );
 
-export const SocialShapes: any = {
+export const SocialShapes = {
+  bookmark: ClrShapeBookmark,
+  calendar: ClrShapeCalendar,
+  'chat-bubble': ClrShapeChatBubble,
+  envelope: ClrShapeEnvelope,
+  event: ClrShapeEvent,
+  flag: ClrShapeFlag,
+  'half-star': ClrShapeHalfStar,
+  'happy-face': ClrShapeHappyFace,
+  'heart-broken': ClrShapeHeartBroken,
+  heart: ClrShapeHeart,
+  inbox: ClrShapeInbox,
+  'neutral-face': ClrShapeNeutralFace,
+  picture: ClrShapePicture,
+  'sad-face': ClrShapeSadFace,
   share: ClrShapeShare,
   star: ClrShapeStar,
-  'half-star': ClrShapeHalfStar,
-  bookmark: ClrShapeBookmark,
-  envelope: ClrShapeEnvelope,
-  calendar: ClrShapeCalendar,
-  event: ClrShapeEvent,
-  tasks: ClrShapeTasks,
-  flag: ClrShapeFlag,
-  inbox: ClrShapeInbox,
-  heart: ClrShapeHeart,
-  'heart-broken': ClrShapeHeartBroken,
   'talk-bubbles': ClrShapeTalkBubbles,
-  'chat-bubble': ClrShapeChatBubble,
-  picture: ClrShapePicture,
-  'happy-face': ClrShapeHappyFace,
-  'neutral-face': ClrShapeNeutralFace,
-  'sad-face': ClrShapeSadFace,
-  'thumbs-up': ClrShapeThumbsUp,
+  tasks: ClrShapeTasks,
   'thumbs-down': ClrShapeThumbsDown,
+  'thumbs-up': ClrShapeThumbsUp,
+  /** Alias for: calendar */ get date(): string {
+    return this['calendar'];
+  },
+  /** Alias for: envelope */ get email(): string {
+    return this['envelope'];
+  },
+  /** Alias for: star */ get favorite(): string {
+    return this['star'];
+  },
 };
 
-Object.defineProperty(SocialShapes, 'favorite', descriptorConfig(SocialShapes.star));
-Object.defineProperty(SocialShapes, 'email', descriptorConfig(SocialShapes.envelope));
-Object.defineProperty(SocialShapes, 'date', descriptorConfig(SocialShapes.calendar));
+/**
+ * Valid shapes.
+ */
+export type SocialShape = keyof typeof SocialShapes;
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(SocialShapes);
-}
+safeWindowAdd(SocialShapes);

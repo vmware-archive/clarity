@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
 
 /* tslint:disable:variable-name */
@@ -304,54 +303,84 @@ export const ClrShapeStepForward2 = clrIconSVG(
   `<path d="M7.08,6.52a1.68,1.68,0,0,0,0,2.4L16.51,18,7.12,27.08a1.7,1.7,0,0,0,2.36,2.44h0L21.4,18,9.48,6.47A1.69,1.69,0,0,0,7.08,6.52Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M26.49,5a1.7,1.7,0,0,0-1.7,1.7V29.3a1.7,1.7,0,0,0,3.4,0V6.7A1.7,1.7,0,0,0,26.49,5Z" class="clr-i-outline clr-i-outline-path-2" />`
 );
 
-export const CoreShapes: any = {
-  'unknown-status': ClrShapeUnknownStatus,
-  home: ClrShapeHome,
-  cog: ClrShapeCog,
-  check: ClrShapeCheck,
-  times: ClrShapeTimes,
-  'exclamation-triangle': ClrShapeExclamationTriangle,
-  'exclamation-circle': ClrShapeExclamationCircle,
-  'check-circle': ClrShapeCheckCircle,
-  'info-circle': ClrShapeInfoCircle,
-  'info-standard': ClrShapeInfoStandard,
-  'success-standard': ClrShapeSuccessStandard,
-  'error-standard': ClrShapeErrorStandard,
-  'warning-standard': ClrShapeWarningStandard,
-  'help-info': ClrShapeHelpInfo,
-  bars: ClrShapeBars,
-  user: ClrShapeUser,
+export const CoreShapes = {
+  'angle-double': ClrShapeAngleDouble,
   angle: ClrShapeAngle,
-  folder: ClrShapeFolder,
-  'folder-open': ClrShapeFolderOpen,
+  bars: ClrShapeBars,
   bell: ClrShapeBell,
-  image: ClrShapeImage,
+  calendar: ClrShapeCalendar,
+  'check-circle': ClrShapeCheckCircle,
+  check: ClrShapeCheck,
   cloud: ClrShapeCloud,
+  cog: ClrShapeCog,
   'ellipsis-horizontal': ClrShapeEllipsisHorizontal,
   'ellipsis-vertical': ClrShapeEllipsisVertical,
-  'filter-grid': ClrShapeFilterGrid,
-  'filter-grid-circle': ClrShapeFilterGridCircle,
-  'vm-bug': ClrShapeVmBug,
-  search: ClrShapeSearch,
-  'view-columns': ClrShapeViewColumns,
-  'angle-double': ClrShapeAngleDouble,
-  calendar: ClrShapeCalendar,
+  'error-standard': ClrShapeErrorStandard,
   event: ClrShapeEvent,
-  eye: ClrShapeEye,
+  'exclamation-circle': ClrShapeExclamationCircle,
+  'exclamation-triangle': ClrShapeExclamationTriangle,
   'eye-hide': ClrShapeEyeHide,
+  eye: ClrShapeEye,
+  'filter-grid-circle': ClrShapeFilterGridCircle,
+  'filter-grid': ClrShapeFilterGrid,
+  'folder-open': ClrShapeFolderOpen,
+  folder: ClrShapeFolder,
+  'help-info': ClrShapeHelpInfo,
+  home: ClrShapeHome,
+  image: ClrShapeImage,
+  'info-circle': ClrShapeInfoCircle,
+  'info-standard': ClrShapeInfoStandard,
+  search: ClrShapeSearch,
   'step-forward-2': ClrShapeStepForward2,
+  'success-standard': ClrShapeSuccessStandard,
+  times: ClrShapeTimes,
+  'unknown-status': ClrShapeUnknownStatus,
+  user: ClrShapeUser,
+  'view-columns': ClrShapeViewColumns,
+  'vm-bug': ClrShapeVmBug,
+  'warning-standard': ClrShapeWarningStandard,
+  /** Alias for: angle */ get caret(): string {
+    return this['angle'];
+  },
+  /** Alias for: angle-double */ get collapse(): string {
+    return this['angle-double'];
+  },
+  /** Alias for: bars */ get menu(): string {
+    return this['bars'];
+  },
+  /** Alias for: bell */ get notification(): string {
+    return this['bell'];
+  },
+  /** Alias for: check */ get success(): string {
+    return this['check'];
+  },
+  /** Alias for: cog */ get settings(): string {
+    return this['cog'];
+  },
+  /** Alias for: exclamation-circle */ get error(): string {
+    return this['exclamation-circle'];
+  },
+  /** Alias for: exclamation-triangle */ get warning(): string {
+    return this['exclamation-triangle'];
+  },
+  /** Alias for: folder */ get directory(): string {
+    return this['folder'];
+  },
+  /** Alias for: home */ get house(): string {
+    return this['home'];
+  },
+  /** Alias for: info-circle */ get info(): string {
+    return this['info-circle'];
+  },
+  /** Alias for: times */ get close(): string {
+    return this['times'];
+  },
+  /** Alias for: user */ get avatar(): string {
+    return this['user'];
+  },
 };
 
-Object.defineProperty(CoreShapes, 'house', descriptorConfig(CoreShapes.home));
-Object.defineProperty(CoreShapes, 'settings', descriptorConfig(CoreShapes.cog));
-Object.defineProperty(CoreShapes, 'success', descriptorConfig(CoreShapes.check));
-Object.defineProperty(CoreShapes, 'close', descriptorConfig(CoreShapes.times));
-Object.defineProperty(CoreShapes, 'warning', descriptorConfig(CoreShapes['exclamation-triangle']));
-Object.defineProperty(CoreShapes, 'error', descriptorConfig(CoreShapes['exclamation-circle']));
-Object.defineProperty(CoreShapes, 'info', descriptorConfig(CoreShapes['info-circle']));
-Object.defineProperty(CoreShapes, 'menu', descriptorConfig(CoreShapes.bars));
-Object.defineProperty(CoreShapes, 'avatar', descriptorConfig(CoreShapes.user));
-Object.defineProperty(CoreShapes, 'caret', descriptorConfig(CoreShapes.angle));
-Object.defineProperty(CoreShapes, 'directory', descriptorConfig(CoreShapes.folder));
-Object.defineProperty(CoreShapes, 'notification', descriptorConfig(CoreShapes.bell));
-Object.defineProperty(CoreShapes, 'collapse', descriptorConfig(CoreShapes['angle-double']));
+/**
+ * Valid shapes.
+ */
+export type CoreShape = keyof typeof CoreShapes;

@@ -1,16 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
-
-interface Window {
-  ClarityIcons: any;
-}
-
-declare var window: Window;
+import safeWindowAdd from '../utils/safe-window-add';
 
 /* tslint:disable:variable-name */
 export const ClrShapeAddText = clrIconSVG(`<path class="clr-i-outline clr-i-outline-path-1" d="M31,21H13a1,1,0,0,0,0,2H31a1,1,0,0,0,0-2Z"/>
@@ -902,150 +896,183 @@ export const ClrShapeDotCircle = clrIconSVG(
   `<path d="M18,11a7,7,0,1,1-7,7,7,7,0,0,1,7-7" class="clr-i-outline clr-i-outline-path-1" /><path d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34ZM18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z" class="clr-i-outline clr-i-outline-path-2" />`
 );
 
-export const EssentialShapes: any = {
+export const EssentialShapes = {
+  'accessibility-1': ClrShapeAccessibility1,
+  'accessibility-2': ClrShapeAccessibility2,
   'add-text': ClrShapeAddText,
+  'alarm-clock': ClrShapeAlarmClock,
   'alarm-off': ClrShapeAlarmOff,
-  pinboard: ClrShapePinboard,
-  new: ClrShapeNew,
+  arrow: ClrShapeArrow,
+  asterisk: ClrShapeAsterisk,
+  balance: ClrShapeBalance,
+  ban: ClrShapeBan,
+  bolt: ClrShapeBolt,
+  book: ClrShapeBook,
+  briefcase: ClrShapeBriefcase,
   'bubble-exclamation': ClrShapeBubbleExclamation,
-  'grid-view': ClrShapeGridView,
+  bug: ClrShapeBug,
+  bullseye: ClrShapeBullseye,
+  'child-arrow': ClrShapeChildArrow,
+  'circle-arrow': ClrShapeCircleArrow,
+  circle: ClrShapeCircle,
+  clipboard: ClrShapeClipboard,
+  clock: ClrShapeClock,
+  clone: ClrShapeClone,
+  'collapse-card': ClrShapeCollapseCard,
+  'color-picker': ClrShapeColorPicker,
+  'copy-to-clipboard': ClrShapeCopyToClipboard,
+  copy: ClrShapeCopy,
+  crosshairs: ClrShapeCrosshairs,
   'cursor-arrow': ClrShapeCursorArrow,
-  'cursor-hand': ClrShapeCursorHand,
   'cursor-hand-click': ClrShapeCursorHandClick,
   'cursor-hand-grab': ClrShapeCursorHandGrab,
   'cursor-hand-open': ClrShapeCursorHandOpen,
+  'cursor-hand': ClrShapeCursorHand,
   'cursor-move': ClrShapeCursorMove,
-  resize: ClrShapeResize,
-  objects: ClrShapeObjects,
-  book: ClrShapeBook,
-  asterisk: ClrShapeAsterisk,
-  bug: ClrShapeBug,
-  scissors: ClrShapeScissors,
-  thermometer: ClrShapeThermometer,
-  pencil: ClrShapePencil,
-  note: ClrShapeNote,
-  refresh: ClrShapeRefresh,
-  sync: ClrShapeSync,
-  'view-list': ClrShapeViewList,
-  'view-cards': ClrShapeViewCards,
-  'tree-view': ClrShapeTreeView,
-  lightbulb: ClrShapeLightbulb,
+  details: ClrShapeDetails,
+  'dot-circle': ClrShapeDotCircle,
   download: ClrShapeDownload,
-  upload: ClrShapeUpload,
-  lock: ClrShapeLock,
-  unlock: ClrShapeUnlock,
-  users: ClrShapeUsers,
-  'pop-out': ClrShapePopOut,
-  filter: ClrShapeFilter,
-  pin: ClrShapePin,
+  'drag-handle-corner': ClrShapeDragHandleCorner,
+  'drag-handle': ClrShapeDragHandle,
+  eraser: ClrShapeEraser,
+  'expand-card': ClrShapeExpandCard,
+  'file-group': ClrShapeFileGroup,
+  'file-settings': ClrShapeFileSettings,
+  'file-zip': ClrShapeFileZip,
   file: ClrShapeFile,
-  plus: ClrShapePlus,
-  minus: ClrShapeMinus,
-  'minus-circle': ClrShapeMinusCircle,
-  'plus-circle': ClrShapePlusCircle,
-  ban: ClrShapeBan,
-  'times-circle': ClrShapeTimesCircle,
-  trash: ClrShapeTrash,
-  circle: ClrShapeCircle,
-  tag: ClrShapeTag,
-  tags: ClrShapeTags,
-  history: ClrShapeHistory,
-  clock: ClrShapeClock,
-  'alarm-clock': ClrShapeAlarmClock,
-  arrow: ClrShapeArrow,
-  'circle-arrow': ClrShapeCircleArrow,
-  'child-arrow': ClrShapeChildArrow,
-  copy: ClrShapeCopy,
+  'filter-2': ClrShapeFilter2,
+  'filter-off': ClrShapeFilterOff,
+  filter: ClrShapeFilter,
+  firewall: ClrShapeFirewall,
+  fish: ClrShapeFish,
+  flame: ClrShapeFlame,
+  form: ClrShapeForm,
+  fuel: ClrShapeFuel,
+  'grid-view': ClrShapeGridView,
   help: ClrShapeHelp,
+  history: ClrShapeHistory,
+  hourglass: ClrShapeHourglass,
+  'id-badge': ClrShapeIdBadge,
+  key: ClrShapeKey,
+  landscape: ClrShapeLandscape,
+  library: ClrShapeLibrary,
+  lightbulb: ClrShapeLightbulb,
+  list: ClrShapeList,
+  lock: ClrShapeLock,
   login: ClrShapeLogin,
   logout: ClrShapeLogout,
+  'minus-circle': ClrShapeMinusCircle,
+  minus: ClrShapeMinus,
+  moon: ClrShapeMoon,
+  new: ClrShapeNew,
+  'no-access': ClrShapeNoAccess,
+  note: ClrShapeNote,
+  objects: ClrShapeObjects,
+  organization: ClrShapeOrganization,
+  paperclip: ClrShapePaperclip,
+  paste: ClrShapePaste,
+  pencil: ClrShapePencil,
+  pin: ClrShapePin,
+  pinboard: ClrShapePinboard,
+  'plus-circle': ClrShapePlusCircle,
+  plus: ClrShapePlus,
+  'pop-out': ClrShapePopOut,
+  portrait: ClrShapePortrait,
   printer: ClrShapePrinter,
-  world: ClrShapeWorld,
-  slider: ClrShapeSlider,
-  clipboard: ClrShapeClipboard,
-  firewall: ClrShapeFirewall,
-  list: ClrShapeList,
+  recycle: ClrShapeRecycle,
   redo: ClrShapeRedo,
-  undo: ClrShapeUndo,
+  refresh: ClrShapeRefresh,
+  repeat: ClrShapeRepeat,
+  resize: ClrShapeResize,
+  scissors: ClrShapeScissors,
   scroll: ClrShapeScroll,
-  'file-settings': ClrShapeFileSettings,
-  'two-way-arrows': ClrShapeTwoWayArrows,
+  shrink: ClrShapeShrink,
+  slider: ClrShapeSlider,
+  snowflake: ClrShapeSnowflake,
+  'sort-by': ClrShapeSortBy,
+  sun: ClrShapeSun,
   switch: ClrShapeSwitch,
+  sync: ClrShapeSync,
+  table: ClrShapeTable,
+  tag: ClrShapeTag,
+  tags: ClrShapeTags,
+  target: ClrShapeTarget,
+  thermometer: ClrShapeThermometer,
+  'times-circle': ClrShapeTimesCircle,
   tools: ClrShapeTools,
+  trash: ClrShapeTrash,
+  'tree-view': ClrShapeTreeView,
+  tree: ClrShapeTree,
+  'two-way-arrows': ClrShapeTwoWayArrows,
+  undo: ClrShapeUndo,
+  unlock: ClrShapeUnlock,
+  upload: ClrShapeUpload,
+  users: ClrShapeUsers,
+  'view-cards': ClrShapeViewCards,
+  'view-list': ClrShapeViewList,
+  volume: ClrShapeVolume,
+  wand: ClrShapeWand,
   'window-close': ClrShapeWindowClose,
   'window-max': ClrShapeWindowMax,
   'window-min': ClrShapeWindowMin,
   'window-restore': ClrShapeWindowRestore,
+  world: ClrShapeWorld,
+  wrench: ClrShapeWrench,
   'zoom-in': ClrShapeZoomIn,
   'zoom-out': ClrShapeZoomOut,
-  key: ClrShapeKey,
-  library: ClrShapeLibrary,
-  bolt: ClrShapeBolt,
-  wrench: ClrShapeWrench,
-  bullseye: ClrShapeBullseye,
-  target: ClrShapeTarget,
-  flame: ClrShapeFlame,
-  hourglass: ClrShapeHourglass,
-  'no-access': ClrShapeNoAccess,
-  organization: ClrShapeOrganization,
-  balance: ClrShapeBalance,
-  'id-badge': ClrShapeIdBadge,
-  repeat: ClrShapeRepeat,
-  'file-group': ClrShapeFileGroup,
-  paperclip: ClrShapePaperclip,
-  shrink: ClrShapeShrink,
-  'accessibility-1': ClrShapeAccessibility1,
-  'accessibility-2': ClrShapeAccessibility2,
-  'sort-by': ClrShapeSortBy,
-  'collapse-card': ClrShapeCollapseCard,
-  'expand-card': ClrShapeExpandCard,
-  briefcase: ClrShapeBriefcase,
-  'color-picker': ClrShapeColorPicker,
-  'copy-to-clipboard': ClrShapeCopyToClipboard,
-  'filter-2': ClrShapeFilter2,
-  'drag-handle': ClrShapeDragHandle,
-  moon: ClrShapeMoon,
-  sun: ClrShapeSun,
-  wand: ClrShapeWand,
-  clone: ClrShapeClone,
-  details: ClrShapeDetails,
-  'drag-handle-corner': ClrShapeDragHandleCorner,
-  eraser: ClrShapeEraser,
-  landscape: ClrShapeLandscape,
-  paste: ClrShapePaste,
-  portrait: ClrShapePortrait,
-  'file-zip': ClrShapeFileZip,
-  'filter-off': ClrShapeFilterOff,
-  recycle: ClrShapeRecycle,
-  tree: ClrShapeTree,
-  fish: ClrShapeFish,
-  form: ClrShapeForm,
-  fuel: ClrShapeFuel,
-  snowflake: ClrShapeSnowflake,
-  table: ClrShapeTable,
-  'dot-circle': ClrShapeDotCircle,
-  volume: ClrShapeVolume,
-  crosshairs: ClrShapeCrosshairs,
+  /** Alias for: ban */ get cancel(): string {
+    return this['ban'];
+  },
+  /** Alias for: bolt */ get lightning(): string {
+    return this['bolt'];
+  },
+  /** Alias for: bubble-exclamation */ get alert(): string {
+    return this['bubble-exclamation'];
+  },
+  /** Alias for: file */ get document(): string {
+    return this['file'];
+  },
+  /** Alias for: login */ get 'sign-in'(): string {
+    return this['login'];
+  },
+  /** Alias for: logout */ get 'sign-out'(): string {
+    return this['logout'];
+  },
+  /** Alias for: note */ get 'note-edit'(): string {
+    return this['note'];
+  },
+  /** Alias for: organization */ get 'flow-chart'(): string {
+    return this['organization'];
+  },
+  /** Alias for: paperclip */ get attachment(): string {
+    return this['paperclip'];
+  },
+  /** Alias for: pencil */ get edit(): string {
+    return this['pencil'];
+  },
+  /** Alias for: pinboard */ get pinned(): string {
+    return this['pinboard'];
+  },
+  /** Alias for: plus */ get add(): string {
+    return this['plus'];
+  },
+  /** Alias for: resize */ get 'resize-up'(): string {
+    return this['resize'];
+  },
+  /** Alias for: shrink */ get 'resize-down'(): string {
+    return this['shrink'];
+  },
+  /** Alias for: times-circle */ get remove(): string {
+    return this['times-circle'];
+  },
+  /** Alias for: users */ get group(): string {
+    return this['users'];
+  },
 };
 
-Object.defineProperty(EssentialShapes, 'edit', descriptorConfig(EssentialShapes.pencil));
-Object.defineProperty(EssentialShapes, 'note-edit', descriptorConfig(EssentialShapes.note));
-Object.defineProperty(EssentialShapes, 'group', descriptorConfig(EssentialShapes.users));
-Object.defineProperty(EssentialShapes, 'document', descriptorConfig(EssentialShapes.file));
-Object.defineProperty(EssentialShapes, 'add', descriptorConfig(EssentialShapes.plus));
-Object.defineProperty(EssentialShapes, 'cancel', descriptorConfig(EssentialShapes.ban));
-Object.defineProperty(EssentialShapes, 'remove', descriptorConfig(EssentialShapes['times-circle']));
-Object.defineProperty(EssentialShapes, 'sign-in', descriptorConfig(EssentialShapes.login));
-Object.defineProperty(EssentialShapes, 'sign-out', descriptorConfig(EssentialShapes.logout));
-Object.defineProperty(EssentialShapes, 'lightning', descriptorConfig(EssentialShapes.bolt));
-Object.defineProperty(EssentialShapes, 'flow-chart', descriptorConfig(EssentialShapes.organization));
-Object.defineProperty(EssentialShapes, 'alert', descriptorConfig(EssentialShapes['bubble-exclamation']));
-Object.defineProperty(EssentialShapes, 'pinned', descriptorConfig(EssentialShapes.pinboard));
-Object.defineProperty(EssentialShapes, 'attachment', descriptorConfig(EssentialShapes.paperclip));
-Object.defineProperty(EssentialShapes, 'attachment', descriptorConfig(EssentialShapes.paperclip));
-Object.defineProperty(EssentialShapes, 'resize-down', descriptorConfig(EssentialShapes.shrink));
-Object.defineProperty(EssentialShapes, 'resize-up', descriptorConfig(EssentialShapes.resize));
+/**
+ * Valid shapes.
+ */
+export type EssentialShape = keyof typeof EssentialShapes;
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(EssentialShapes);
-}
+safeWindowAdd(EssentialShapes);

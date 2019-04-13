@@ -4,11 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { clrIconSVG } from '../utils/svg-tag-generator';
-
-interface Window {
-  ClarityIcons: any;
-}
-declare var window: Window;
+import safeWindowAdd from '../utils/safe-window-add';
 
 /* tslint:disable:variable-name */
 export const ClrShapePlay = clrIconSVG(
@@ -139,31 +135,34 @@ export const ClrShapeMicrophoneMute = clrIconSVG(`<path d="M30,17h-2c0,1.8-0.5,3
 		c-5.4,0.2-9.8-4.1-10-9.4c0-0.2,0-0.4,0-0.6H6c0.1,6.2,4.8,11.4,11,12v3h-3c-0.6,0-1,0.4-1,1s0.4,1,1,1h8c0.6,0,1-0.4,1-1
 		s-0.4-1-1-1h-3v-3C21.2,28.8,23.4,28,25.2,26.6z" class="clr-i-solid clr-i-solid-path-3" />`);
 
-export const MediaShapes: any = {
-  play: ClrShapePlay,
-  pause: ClrShapePause,
-  'step-forward': ClrShapeStepForward,
-  stop: ClrShapeStop,
-  power: ClrShapePower,
-  rewind: ClrShapeRewind,
+export const MediaShapes = {
+  'camera': ClrShapeCamera,
   'fast-forward': ClrShapeFastForward,
-  camera: ClrShapeCamera,
-  'video-camera': ClrShapeVideoCamera,
-  shuffle: ClrShapeShuffle,
-  'volume-up': ClrShapeVolumeUp,
-  'volume-down': ClrShapeVolumeDown,
-  'volume-mute': ClrShapeVolumeMute,
-  headphones: ClrShapeHeadphones,
   'film-strip': ClrShapeFilmStrip,
-  'music-note': ClrShapeMusicNote,
+  'headphones': ClrShapeHeadphones,
   'image-gallery': ClrShapeImageGallery,
+  'microphone-mute': ClrShapeMicrophoneMute,
+  'microphone': ClrShapeMicrophone,
+  'music-note': ClrShapeMusicNote,
+  'pause': ClrShapePause,
+  'play': ClrShapePlay,
+  'power': ClrShapePower,
   'replay-all': ClrShapeReplayAll,
   'replay-one': ClrShapeReplayOne,
+  'rewind': ClrShapeRewind,
+  'shuffle': ClrShapeShuffle,
+  'step-forward': ClrShapeStepForward,
+  'stop': ClrShapeStop,
+  'video-camera': ClrShapeVideoCamera,
   'video-gallery': ClrShapeVideoGallery,
-  microphone: ClrShapeMicrophone,
-  'microphone-mute': ClrShapeMicrophoneMute,
+  'volume-down': ClrShapeVolumeDown,
+  'volume-mute': ClrShapeVolumeMute,
+  'volume-up': ClrShapeVolumeUp,
 };
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(MediaShapes);
-}
+/**
+ * Valid shapes.
+ */
+export type MediaShape = keyof typeof MediaShapes;
+
+safeWindowAdd(MediaShapes);

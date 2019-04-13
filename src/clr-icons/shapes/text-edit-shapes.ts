@@ -5,6 +5,7 @@
  */
 
 import { clrIconSVG } from '../utils/svg-tag-generator';
+import safeWindowAdd from '../utils/safe-window-add';
 
 /* tslint:disable:variable-name */
 export const ClrShapeBold = clrIconSVG(
@@ -74,30 +75,33 @@ export const ClrShapeLanguage = clrIconSVG(`<path d="M30,3H14v5h2V5h14c0.6,0,1,0
 		c-1.2,0.6-2.6,0.9-4,1l-0.1-2c0.7,0,1.4-0.1,2.1-0.3c-0.9-0.9-1.5-2-1.8-3.2h2.1c0.3,0.9,0.9,1.6,1.6,2.2c1.1-0.9,1.8-2.2,1.9-3.7
 		h-6V8h3V6h2v2h3.3l0.1,1c0.1,2.1-0.7,4.2-2.2,5.7C27.1,14.9,27.7,15,28.3,15z" class="clr-i-solid clr-i-solid-path-2" />`);
 
-export const TextEditShapes: any = {
-  bold: ClrShapeBold,
-  'bullet-list': ClrShapeBulletList,
-  'checkbox-list': ClrShapeCheckboxList,
-  'number-list': ClrShapeNumberList,
-  'font-size': ClrShapeFontSize,
-  italic: ClrShapeItalic,
-  'justify-text': ClrShapeJustifyText,
-  'center-text': ClrShapeCenterText,
-  'align-left-text': ClrShapeAlignLeftText,
-  'align-right-text': ClrShapeAlignRightText,
-  'paint-roller': ClrShapePaintRoller,
-  'block-quote': ClrShapeBlockQuote,
-  text: ClrShapeText,
-  underline: ClrShapeUnderline,
-  'align-center': ClrShapeAlignCenter,
-  'align-left': ClrShapeAlignLeft,
-  'align-right': ClrShapeAlignRight,
+export const TextEditShapes = {
   'align-bottom': ClrShapeAlignBottom,
+  'align-center': ClrShapeAlignCenter,
+  'align-left-text': ClrShapeAlignLeftText,
+  'align-left': ClrShapeAlignLeft,
   'align-middle': ClrShapeAlignMiddle,
+  'align-right-text': ClrShapeAlignRightText,
+  'align-right': ClrShapeAlignRight,
   'align-top': ClrShapeAlignTop,
-  language: ClrShapeLanguage,
+  'block-quote': ClrShapeBlockQuote,
+  'bold': ClrShapeBold,
+  'bullet-list': ClrShapeBulletList,
+  'center-text': ClrShapeCenterText,
+  'checkbox-list': ClrShapeCheckboxList,
+  'font-size': ClrShapeFontSize,
+  'italic': ClrShapeItalic,
+  'justify-text': ClrShapeJustifyText,
+  'language': ClrShapeLanguage,
+  'number-list': ClrShapeNumberList,
+  'paint-roller': ClrShapePaintRoller,
+  'text': ClrShapeText,
+  'underline': ClrShapeUnderline,
 };
 
-if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
-  window.ClarityIcons.add(TextEditShapes);
-}
+/**
+ * Valid shapes.
+ */
+export type TextEditShape = keyof typeof TextEditShapes;
+
+safeWindowAdd(TextEditShapes);

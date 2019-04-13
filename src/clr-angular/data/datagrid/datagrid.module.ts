@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonPopoverModule } from '../../popover/common/popover.module';
-import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
 import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
@@ -105,7 +104,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrDragAndDropModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
-  exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],
+  exports: [CLR_DATAGRID_DIRECTIVES],
   entryComponents: [WrappedCell, WrappedColumn, WrappedRow],
 })
 export class ClrDatagridModule {}

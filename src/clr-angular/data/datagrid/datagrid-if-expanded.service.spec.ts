@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrLoadingState } from '../../loading/loading';
 
-import { Expand } from './expand';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ClrLoadingState } from '../../utils/loading/loading';
 
 export default function(): void {
   describe('Expand provider', function() {
     beforeEach(function() {
-      this.expand = new Expand();
+      this.expand = new DatagridIfExpandService();
     });
 
     it('starts with the correct default settings', function() {

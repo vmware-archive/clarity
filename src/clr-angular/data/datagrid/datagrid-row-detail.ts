@@ -1,18 +1,17 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { AfterContentInit, Component, ContentChildren, Input, OnDestroy, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Expand } from '../../utils/expand/providers/expand';
-
 import { ClrDatagridCell } from './datagrid-cell';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -54,7 +53,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   constructor(
     public selection: Selection,
     public rowActionService: RowActionService,
-    public expand: Expand,
+    public expand: DatagridIfExpandService,
     public expandableRows: ExpandableRowsCount
   ) {}
 

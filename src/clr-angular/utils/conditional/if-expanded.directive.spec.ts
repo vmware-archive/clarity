@@ -1,13 +1,13 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, Inject, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { ClrIfExpanded } from './if-expanded';
-import { Expand } from './providers/expand';
+import { ClrIfExpanded } from './if-expanded.directive';
+import { IfExpandService } from './if-expanded.service';
 
 export default function(): void {
   describe('IfExpanded directive', function() {
@@ -18,13 +18,16 @@ export default function(): void {
                  * we can't use our usual shortcut, we need to rely on @ViewChild.
                  * A quick investigation didn't reveal a better solution yet, we might want to look into it more.
                  */
-        TestBed.configureTestingModule({ declarations: [ClrIfExpanded, SimpleTest, TestCounter], providers: [Expand] });
+        TestBed.configureTestingModule({
+          declarations: [ClrIfExpanded, SimpleTest, TestCounter],
+          providers: [IfExpandService],
+        });
         this.fixture = TestBed.createComponent(SimpleTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
         this.testElement = this.fixture.nativeElement;
         this.clarityDirective = this.fixture.componentInstance.ifExpanded;
-        this.expand = TestBed.get(Expand);
+        this.expand = TestBed.get(IfExpandService);
       });
 
       afterEach(function() {
@@ -72,11 +75,11 @@ export default function(): void {
                  * we can't use our usual shortcut, we need to rely on @ViewChild.
                  * A quick investigation didn't reveal a better solution yet, we might want to look into it more.
                  */
-        TestBed.configureTestingModule({ declarations: [ClrIfExpanded, NgIfTest], providers: [Expand] });
+        TestBed.configureTestingModule({ declarations: [ClrIfExpanded, NgIfTest], providers: [IfExpandService] });
         this.fixture = TestBed.createComponent(NgIfTest);
         this.fixture.detectChanges();
         this.testComponent = this.fixture.componentInstance;
-        this.expand = TestBed.get(Expand);
+        this.expand = TestBed.get(IfExpandService);
       });
 
       afterEach(function() {

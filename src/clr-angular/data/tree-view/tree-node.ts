@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,7 @@ import {
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { LoadingListener } from '../../utils/loading/loading-listener';
@@ -33,7 +33,12 @@ import { TREE_FEATURES_PROVIDER, TreeFeaturesService } from './tree-features.ser
 @Component({
   selector: 'clr-tree-node',
   templateUrl: './tree-node.html',
-  providers: [UNIQUE_ID_PROVIDER, TREE_FEATURES_PROVIDER, Expand, { provide: LoadingListener, useExisting: Expand }],
+  providers: [
+    UNIQUE_ID_PROVIDER,
+    TREE_FEATURES_PROVIDER,
+    IfExpandService,
+    { provide: LoadingListener, useExisting: IfExpandService },
+  ],
   animations: [
     trigger('childNodesState', [
       state('expanded', style({ height: '*', 'overflow-y': 'hidden' })),
@@ -53,7 +58,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     @SkipSelf()
     parent: ClrTreeNode<T>,
     public featuresService: TreeFeaturesService<T>,
-    public expandService: Expand,
+    public expandService: IfExpandService,
     public commonStrings: ClrCommonStrings,
     injector: Injector
   ) {

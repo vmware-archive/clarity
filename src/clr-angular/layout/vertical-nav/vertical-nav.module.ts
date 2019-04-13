@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 
 import { ClrIconModule } from '../../icon/icon.module';
-import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
+import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
 
 import { ClrVerticalNav } from './vertical-nav';
 import { ClrVerticalNavGroup } from './vertical-nav-group';
@@ -25,8 +25,8 @@ export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule, ClrIfExpandModule],
+  imports: [CommonModule, ClrIconModule, ClrConditionalModule],
   declarations: [CLR_VERTICAL_NAV_DIRECTIVES],
-  exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrIfExpandModule, ClrIconModule],
+  exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrConditionalModule, ClrIconModule],
 })
 export class ClrVerticalNavModule {}

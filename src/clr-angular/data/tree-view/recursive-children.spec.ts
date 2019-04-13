@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 import { RecursiveChildren } from './recursive-children';
@@ -55,13 +55,13 @@ export default function(): void {
   describe('RecursiveChildren Component', function() {
     type Context = TestContext<RecursiveChildren<TestNode>, TestComponent> & {
       featuresService: TreeFeaturesService<TestNode>;
-      expandService: Expand;
+      expandService: IfExpandService;
     };
-    spec(RecursiveChildren, TestComponent, undefined, { providers: [TreeFeaturesService, Expand] });
+    spec(RecursiveChildren, TestComponent, undefined, { providers: [TreeFeaturesService, IfExpandService] });
 
     beforeEach(function(this: Context) {
       this.featuresService = this.getProvider<TreeFeaturesService<TestNode>>(TreeFeaturesService);
-      this.expandService = this.getProvider(Expand);
+      this.expandService = this.getProvider(IfExpandService);
       this.featuresService.recursion = {
         template: this.hostComponent.template,
         root: [TEST_ROOT],

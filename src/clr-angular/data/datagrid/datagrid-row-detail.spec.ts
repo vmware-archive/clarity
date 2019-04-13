@@ -1,11 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-
-import { Expand } from '../../utils/expand/providers/expand';
 
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
@@ -13,6 +11,7 @@ import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
 export default function(): void {
   describe('ClrDatagridRowDetail component', function() {
@@ -42,7 +41,7 @@ export default function(): void {
     });
 
     it('updates the Expand provider with the [clrDgReplace] input', function() {
-      const expand: Expand = context.getClarityProvider(Expand);
+      const expand: DatagridIfExpandService = context.getClarityProvider(DatagridIfExpandService);
       let expandState = false;
       expand.replace.subscribe(state => {
         expandState = state;

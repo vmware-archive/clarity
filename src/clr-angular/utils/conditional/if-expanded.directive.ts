@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,11 +18,8 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Expand } from './providers/expand';
+import { IfExpandService } from './if-expanded.service';
 
-/**
- * TODO: make this a reusable directive outside of Datagrid, like [clrLoading].
- */
 @Directive({ selector: '[clrIfExpanded]' })
 export class ClrIfExpanded implements OnInit, OnDestroy {
   private _expanded: boolean = false;
@@ -46,7 +43,7 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private el: ElementRef,
     private renderer: Renderer2,
-    private expand: Expand
+    private expand: IfExpandService
   ) {
     expand.expandable++;
     this._subscriptions.push(

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -27,9 +27,10 @@ import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
 // Reusable list of providers used in a number of tests
 export const DATAGRID_SPEC_PROVIDERS = [
@@ -39,7 +40,8 @@ export const DATAGRID_SPEC_PROVIDERS = [
   FiltersProvider,
   DatagridWillyWonka,
   DomAdapter,
-  Expand,
+  IfExpandService,
+  DatagridIfExpandService,
   Page,
   ColumnsService,
   Items,

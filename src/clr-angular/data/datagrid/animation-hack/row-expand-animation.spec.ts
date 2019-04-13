@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { Expand } from '../../../utils/expand/providers/expand';
+import { IfExpandService } from '../../../utils/conditional/if-expanded.service';
 import { MOCK_DOM_ADAPTER_PROVIDER } from '../../../utils/dom-adapter/dom-adapter.mock';
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 
@@ -27,13 +27,13 @@ export default function(): void {
       // TODO: improve the TestContext to allow this.
       TestBed.configureTestingModule({
         declarations: [DatagridRowExpandAnimation, SimpleTest],
-        providers: [Expand, DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER],
+        providers: [IfExpandService, DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER],
       });
       this.fixture = TestBed.createComponent(SimpleTest);
       this.fixture.detectChanges();
       this.testComponent = this.fixture.componentInstance;
       this.clarityElement = this.fixture.debugElement.query(By.directive(DatagridRowExpandAnimation)).nativeElement;
-      this.expand = TestBed.get(Expand);
+      this.expand = TestBed.get(IfExpandService);
     });
 
     afterEach(function() {

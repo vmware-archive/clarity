@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,7 @@ import {
 } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
 
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 
@@ -34,6 +34,7 @@ import { Selection } from './providers/selection';
 import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
 let nbRow: number = 0;
 
@@ -46,7 +47,11 @@ let nbRow: number = 0;
     '[attr.aria-owns]': 'id',
     role: 'rowgroup',
   },
-  providers: [Expand, { provide: LoadingListener, useExisting: Expand }],
+  providers: [
+    DatagridIfExpandService,
+    { provide: IfExpandService, useExisting: DatagridIfExpandService },
+    { provide: LoadingListener, useExisting: DatagridIfExpandService },
+  ],
 })
 export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
   public id: string;
@@ -67,7 +72,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     public selection: Selection<T>,
     public rowActionService: RowActionService,
     public globalExpandable: ExpandableRowsCount,
-    public expand: Expand,
+    public expand: DatagridIfExpandService,
     private displayMode: DisplayModeService,
     private vcr: ViewContainerRef,
     private renderer: Renderer2,

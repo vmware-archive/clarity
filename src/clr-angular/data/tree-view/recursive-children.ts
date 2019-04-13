@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
 import { Component, Input, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { TreeFeaturesService } from './tree-features.service';
 import { TreeNodeModel } from './models/tree-node.model';
 import { ClrRecursiveForOfContext } from './recursive-for-of';
@@ -28,7 +28,7 @@ import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
  * This is part of the hack to get around https://github.com/angular/angular/issues/15998
  */
 export class RecursiveChildren<T> {
-  constructor(public featuresService: TreeFeaturesService<T>, @Optional() private expandService: Expand) {
+  constructor(public featuresService: TreeFeaturesService<T>, @Optional() private expandService: IfExpandService) {
     if (expandService) {
       this.subscription = this.expandService.expandChange.subscribe(value => {
         if (!value && this.parent && !this.featuresService.eager && this.featuresService.recursion) {

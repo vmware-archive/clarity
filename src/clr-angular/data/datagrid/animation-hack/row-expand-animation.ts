@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,8 +11,8 @@
 
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
-import { Expand } from '../../../utils/expand/providers/expand';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
+import { DatagridIfExpandService } from '../datagrid-if-expanded.service';
 
 @Directive({ selector: 'clr-dg-row' })
 export class DatagridRowExpandAnimation {
@@ -20,7 +20,7 @@ export class DatagridRowExpandAnimation {
     private el: ElementRef,
     private domAdapter: DomAdapter,
     private renderer: Renderer2,
-    private expand: Expand
+    private expand: DatagridIfExpandService
   ) {
     if (expand && expand.animate) {
       expand.animate.subscribe(() => {

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Type, ViewChild } from '@angular/core';
+import { Component, ElementRef, Type, ViewChild } from '@angular/core';
 
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 
@@ -133,6 +133,24 @@ class NestedTabsTest {
 })
 class NoClrIfActiveTest {
   @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+}
+
+@Component({
+  template: `
+    <div style="height: 456px">
+        <clr-tabs>
+            <clr-tab>
+                <button clrTabLink>Tab1</button>
+                <clr-tab-content *clrIfActive>
+                    <p #content style="height: 100%">Content1</p>
+                </clr-tab-content>
+            </clr-tab>
+        </clr-tabs>
+    </div>
+   `,
+})
+class ScalingTestComponent {
+  @ViewChild('content') content: ElementRef;
 }
 
 describe('Tabs', () => {
@@ -299,8 +317,27 @@ describe('Tabs', () => {
     });
 
     it('has only one of the elements visible', () => {
-      expect(window.getComputedStyle(contents[0]).display).toBe('block');
+      expect(window.getComputedStyle(contents[0]).display).not.toBe('none');
       expect(window.getComputedStyle(contents[1]).display).toBe('none');
+    });
+  });
+
+  describe('Content scale', () => {
+    let context: TestContext<ClrTabs, ScalingTestComponent>;
+    let component: ScalingTestComponent;
+
+    beforeEach(function() {
+      context = this.create(ClrTabs, ScalingTestComponent);
+      component = context.testComponent;
+      context.fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      context.fixture.destroy();
+    });
+
+    it('should scale to tabs parent height', () => {
+      expect(component.content.nativeElement.offsetHeight).toBe(456);
     });
   });
 });

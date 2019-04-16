@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -71,7 +71,7 @@ export class DatagridRowExpandAnimation {
 
   private run() {
     // defense against race condition when rapid, successive toggling occurs and `oldHeight` property is removed
-    if (!this.hasOwnProperty("oldHeight")) {
+    if (!this.hasOwnProperty('oldHeight')) {
       return;
     }
     this.renderer.setStyle(this.el.nativeElement, 'height', null);

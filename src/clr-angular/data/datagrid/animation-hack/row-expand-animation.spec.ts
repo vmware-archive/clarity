@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { Expand } from '../../../utils/expand/providers/expand';
@@ -20,7 +20,7 @@ export default function(): void {
   // Commenting this out because PhantomJS is being uncooperative.
   // I lost too much time trying to get it to pass, but this should just go away anyway once the
   // new cool features of Angular 4.1 animations come in.
-  xdescribe('DatagridRowExpandAnimation directive', function() {
+  describe('DatagridRowExpandAnimation directive', function() {
     beforeEach(function() {
       // We do not use the TestContext on purpose, because we want to test this directive in isolation,
       // without all other components and directives on the same selector.
@@ -45,6 +45,20 @@ export default function(): void {
       this.expand.expanded = true;
       expect(this.clarityElement.style.height).toBeTruthy();
     });
+
+    it('successive triggering of expand and collapse should not throw error during `animate()`', fakeAsync(function (this: any) {
+      expect(() => {
+        this.expand.expanded = false;
+        this.expand.expanded = true;
+        this.expand.expanded = false;
+        tick();
+      }).not.toThrow();
+
+      expect(parseInt(this.clarityElement.style.height, 10)).toBeFalsy();
+      tick();
+
+    }));
+
   });
 }
 

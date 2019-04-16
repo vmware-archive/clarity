@@ -3,87 +3,63 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
-/*
- * This is a hack that we have to write for now because of bugs and limitations in Angular,
- * please do not use this as an example.
- */
-
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { Expand } from '../../../utils/expand/providers/expand';
-import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
+import { MOCK_DOM_ADAPTER_PROVIDER } from '../../../utils/dom-adapter/dom-adapter.mock';
+import { DatagridRenderOrganizer } from '../render/render-organizer';
 
-@Directive({ selector: 'clr-dg-row' })
-export class DatagridRowExpandAnimation {
-  constructor(
-    private el: ElementRef,
-    private domAdapter: DomAdapter,
-    private renderer: Renderer2,
-    private expand: Expand
-  ) {
-    if (expand && expand.animate) {
-      expand.animate.subscribe(() => {
-        // We already had an animation waiting, so we just have to run in, not prepare again
-        if (this.oldHeight) {
-          setTimeout(() => this.run());
-        } else {
-          this.animate();
-        }
+import { DatagridRowExpandAnimation } from './row-expand-animation';
+
+/*
+ * TODO: web animations testing doesn't play nicely with PhantomJS. Pushing this to later.
+ */
+export default function(): void {
+  // Commenting this out because PhantomJS is being uncooperative.
+  // I lost too much time trying to get it to pass, but this should just go away anyway once the
+  // new cool features of Angular 4.1 animations come in.
+  describe('DatagridRowExpandAnimation directive', function() {
+    beforeEach(function() {
+      // We do not use the TestContext on purpose, because we want to test this directive in isolation,
+      // without all other components and directives on the same selector.
+      // TODO: improve the TestContext to allow this.
+      TestBed.configureTestingModule({
+        declarations: [DatagridRowExpandAnimation, SimpleTest],
+        providers: [Expand, DatagridRenderOrganizer, MOCK_DOM_ADAPTER_PROVIDER],
       });
-    }
-  }
-
-  private running: any;
-  private oldHeight: number;
-
-  /*
-     * Dirty manual animation handling, but we have no way to use dynamic heights in Angular's current API.
-     * They're working on it, but have no ETA.
-     */
-  private animate() {
-    // Check if we do have web-animations available. If not, just skip the animation.
-    if (!this.el.nativeElement.animate) {
-      return;
-    }
-
-    // We had an animation running, we skip to the end
-    if (this.running) {
-      this.running.finish();
-    }
-
-    this.oldHeight = this.domAdapter.computedHeight(this.el.nativeElement);
-    // In case height has not yet been set. When starting expanded, for example.
-    // See https://github.com/vmware/clarity/issues/2904
-    if (isNaN(this.oldHeight)) {
-      this.oldHeight = 0;
-    }
-    // We set the height of the element immediately to avoid a flicker before the animation starts.
-    this.renderer.setStyle(this.el.nativeElement, 'height', this.oldHeight + 'px');
-    this.renderer.setStyle(this.el.nativeElement, 'overflow-y', 'hidden');
-    setTimeout(() => {
-      if (this.expand.loading) {
-        return;
-      }
-      this.run();
+      this.fixture = TestBed.createComponent(SimpleTest);
+      this.fixture.detectChanges();
+      this.testComponent = this.fixture.componentInstance;
+      this.clarityElement = this.fixture.debugElement.query(By.directive(DatagridRowExpandAnimation)).nativeElement;
+      this.expand = TestBed.get(Expand);
     });
-  }
 
-  private run() {
-    // defense against race condition when rapid, successive toggling occurs and `oldHeight` property is removed
-    if (!this.hasOwnProperty('oldHeight')) {
-      return;
-    }
-    this.renderer.setStyle(this.el.nativeElement, 'height', null);
-    const newHeight = this.domAdapter.computedHeight(this.el.nativeElement);
-    this.running = this.el.nativeElement.animate(
-      { height: [this.oldHeight + 'px', newHeight + 'px'], easing: 'ease-in-out' },
-      { duration: 200 }
+    afterEach(function() {
+      this.fixture.destroy();
+    });
+
+    it('immediately sets the height of the row before animating', function() {
+      expect(this.clarityElement.style.height).toBeFalsy();
+      this.expand.expanded = true;
+      expect(this.clarityElement.style.height).toBeTruthy();
+    });
+    it(
+      'successive triggering of expand and collapse should not throw an error during `animate()`',
+      fakeAsync(() => {
+        expect(() => {
+          this.expand.expanded = false;
+          this.expand.expanded = true;
+          this.expand.expanded = false;
+          tick();
+        }).not.toThrow();
+        expect(parseInt(this.clarityElement.style.height, 10)).toBeFalsy();
+        tick();
+      })
     );
-    this.running.onfinish = () => {
-      this.renderer.setStyle(this.el.nativeElement, 'overflow-y', null);
-      delete this.running;
-    };
-    delete this.oldHeight;
-  }
+  });
 }
+
+@Component({ template: `<clr-dg-row>Hello world</clr-dg-row>` })
+class SimpleTest {}

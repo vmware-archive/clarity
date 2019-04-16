@@ -70,8 +70,10 @@ export class DatagridRowExpandAnimation {
   }
 
   private run() {
-    // defense against race condition when rapid, successive toggling occurs
-    if ( !this.hasOwnProperty("oldHeight") ) { return; }
+    // defense against race condition when rapid, successive toggling occurs and `oldHeight` property is removed
+    if (!this.hasOwnProperty("oldHeight")) {
+      return;
+    }
     this.renderer.setStyle(this.el.nativeElement, 'height', null);
     const newHeight = this.domAdapter.computedHeight(this.el.nativeElement);
     this.running = this.el.nativeElement.animate(

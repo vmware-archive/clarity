@@ -133,6 +133,20 @@ export default function() {
           expect(document.activeElement).toBe(input);
         });
 
+        it('should allow a date be re-selected if date was previously selected and the erased from the input by the user', () => {
+          const input: HTMLInputElement = context.testElement.querySelector('input');
+          input.value = '04/12/2019';
+          input.dispatchEvent(new Event('change'));
+
+          input.value = '';
+          input.dispatchEvent(new Event('change'));
+
+          dateNavigationService.notifySelectedDayChanged(new DayModel(2019, 3, 12));
+          context.detectChanges();
+
+          expect(input.value).toBe('04/12/2019');
+        });
+
         it('should set override classes and remove them from the control', () => {
           expect(controlClassService.className).toContain('clr-col-12');
           expect(context.clarityElement.className).not.toContain('clr-col-12');

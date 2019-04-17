@@ -231,6 +231,10 @@ export declare abstract class ClrCommonStrings {
 }
 
 export declare class ClrControlError {
+    describedByAttr: string;
+    constructor(controlIdService: ControlIdService);
+    ngOnDestroy(): void;
+    ngOnInit(): void;
 }
 
 export declare class ClrControlHelper {

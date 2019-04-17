@@ -71,7 +71,13 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   @Input('clrLayout')
   set layout(layout: TabsLayout) {
-    if (Object.values(TabsLayout).includes(layout)) {
+    if (
+      Object.keys(TabsLayout)
+        .map(key => {
+          return TabsLayout[key];
+        })
+        .indexOf(layout) >= 0
+    ) {
       this.tabsService.layout = layout;
     }
   }

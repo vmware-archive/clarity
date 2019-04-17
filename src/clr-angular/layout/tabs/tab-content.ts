@@ -13,7 +13,7 @@ let nbTabContentComponents: number = 0;
   selector: 'clr-tab-content',
   template: `
     <ng-template #tabContentProjectedRef>
-      <section [id]="tabContentId" role="tabpanel" [class.active]="active"
+      <section [id]="tabContentId" role="tabpanel" class="tab-content" [class.active]="active"
                [hidden]="!active"
                [attr.aria-labelledby]="ariaLabelledBy"
                [attr.aria-expanded]="active"

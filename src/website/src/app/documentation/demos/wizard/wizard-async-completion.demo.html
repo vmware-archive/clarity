@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -26,13 +26,11 @@
                     target="_blank">wiki article</a>&nbsp;might help you answer the question.
             </clr-alert-item>
         </clr-alert>
-        <form #myForm="ngForm">
-            <section class="form-block">
-                <div class="form-group">
-                    <label for="fourtyTwoInput">The answer to life, the universe and everything</label>
-                    <input type="text" id="fourtyTwoInput" [(ngModel)]="answer" name="answer">
-                </div>
-            </section>
+        <form clrForm #myForm="ngForm">
+          <clr-input-container>
+            <label>The answer to life, the universe and everything</label>
+            <input clrInput [(ngModel)]="answer" name="answer" />
+          </clr-input-container>
         </form>
     </clr-wizard-page>
     <clr-wizard-page #myFinishPage

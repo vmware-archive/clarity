@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -79,28 +79,27 @@
     Here is an example showcasing all these different combinations in action:
 </p>
 
-<form>
-    <div class="form-group">
-        <label>Type of detail</label>
-        <div class="radio-inline">
-            <input type="radio" name="detail" id="detail-default" value="default" [(ngModel)]="detail">
-            <label for="detail-default">Overall</label>
-        </div>
-        <div class="radio-inline">
-            <input type="radio" name="detail" id="detail-columns" value="columns" [(ngModel)]="detail">
-            <label for="detail-columns">Per column</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="checkbox-inline">
-            <input type="checkbox" name="replace" id="replace" [(ngModel)]="replace">
-            <label for="replace">Replace row</label>
-        </div>
-        <div class="checkbox-inline">
-            <input type="checkbox" name="slow-load" id="slow-load" [(ngModel)]="slowLoad">
-            <label for="slow-load">Lazy loading</label>
-        </div>
-    </div>
+<form clrForm>
+  <clr-radio-container>
+    <label>Type of detail</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="detail" required value="default" [(ngModel)]="detail" />
+      <label>Overall</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="detail" required value="columns" [(ngModel)]="detail" />
+      <label>Per Column</label>
+    </clr-radio-wrapper>
+  </clr-radio-container>
+
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox name="replace" [(ngModel)]="replace" />
+    <label>Replace row</label>
+  </clr-checkbox-wrapper>
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox name="slow-load" [(ngModel)]="slowLoad" />
+    <label>Lazy loading</label>
+  </clr-checkbox-wrapper>
 </form>
 
 <clr-datagrid>

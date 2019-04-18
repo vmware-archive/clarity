@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,14 +36,17 @@ export class SignpostPositionsDemo extends ClarityDocComponent {
   ];
   position: string = 'right-middle';
   html: string = `
-<select id="position_selector" [(ngModel)]="position" name="position" id="position">
+<clr-select-container>
+  <label>Select a position:</label>
+  <select clrSelect name="position" [(ngModel)]="position">
     <option *ngFor="let position of positions" [ngValue]="position">{{ position }}</option>
-</select>
+  </select>
+</clr-select-container>
 <clr-signpost>
-    <clr-signpost-content [clrPosition]="position" *clrIfOpen>
-        <h3 style="margin-top: 0">Position</h3>
-        <p><code class="clr-code">{{ position }}</code></p>
-    </clr-signpost-content>
+  <clr-signpost-content [clrPosition]="position" *clrIfOpen>
+    <h3 style="margin-top: 0">Position</h3>
+    <p><code class="clr-code">{{ position }}</code></p>
+  </clr-signpost-content>
 </clr-signpost>
     `;
   code: string = `

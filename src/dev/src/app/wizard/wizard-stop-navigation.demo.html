@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -23,32 +23,26 @@
     <ng-template clrPageTitle>Form to submit</ng-template>
     <!-- mandatory -->
 
-    <form #formPage="ngForm">
-      <section class="form-block">
+    <form clrForm #formPage="ngForm">
         <label>To proceed, you must answer these three questions...</label>
-        <div class="form-group">
+        <clr-input-container>
           <label>What is your name?</label>
-          <label for="nameInput" aria-haspopup="true" role="tooltip" [class.invalid]="name.touched && !name.valid" class="tooltip tooltip-validation tooltip-md tooltip-top-left">
-            <input type="text" id="nameInput" required [(ngModel)]="model.won" name="name" #name="ngModel">
-            <span class="tooltip-content">This field cannot be empty!</span>
-          </label>
-        </div>
-        <div class="form-group">
+          <input clrInput name="name" required [(ngModel)]="model.won" #name="ngModel" />
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-input-container>
+
+        <clr-input-container>
           <label>What is your quest?</label>
-          <label for="questInput" aria-haspopup="true" role="tooltip" [class.invalid]="quest.touched && !quest.valid" class="tooltip tooltip-validation tooltip-md tooltip-top-left">
-            <input type="text" id="questInput" required [(ngModel)]="model.too" name="quest" #quest="ngModel">
-            <span class="tooltip-content">This field cannot be empty!</span>
-          </label>
-        </div>
-        <div class="form-group">
+          <input clrInput name="quest" required [(ngModel)]="model.too" #quest="ngModel" />
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-input-container>
+
+        <clr-input-container>
           <label>What is the air-speed velocity of an unladen swallow?</label>
-          <label for="velocityInput" aria-haspopup="true" role="tooltip" [class.invalid]="velocity.touched && !velocity.valid" class="tooltip tooltip-validation tooltip-md tooltip-top-left">
-            <input type="text" id="velocityInput" required [(ngModel)]="model.tree" name="velocity" #velocity="ngModel">
-            <span class="tooltip-content">This field cannot be empty!</span>
-          </label>
-        </div>
-      </section>
-    </form>
+          <input clrInput name="velocity" required [(ngModel)]="model.tree" #velocity="ngModel" />
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-input-container>
+      </form>
   </clr-wizard-page>
   <clr-wizard-page [clrWizardPagePreventDefaultNext]="true" (clrWizardPageOnCommit)="onCommit()">
     <ng-template clrPageTitle>

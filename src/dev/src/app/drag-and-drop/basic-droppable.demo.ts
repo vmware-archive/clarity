@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,7 +13,7 @@ import { ClrDragEvent } from '@clr/angular';
 })
 export class BasicDroppableDemo {
   files: any[] = [{ name: 'img_001.jpg' }, { name: 'img_002.jpg' }, { name: 'img_003.jpg' }];
-
+  activeDemoVariant = 'basic-draggable';
   droppedFiles: any[] = [];
 
   private moveItem(item: any, from: any[], to: any[]) {
@@ -34,11 +34,5 @@ export class BasicDroppableDemo {
   onDropBack(dragEvent: ClrDragEvent<any>) {
     console.log('dropped back');
     this.moveItem(dragEvent.dragDataTransfer, this.droppedFiles, this.files);
-  }
-
-  activeDemoVariant = 'basic-draggable';
-
-  activateDemoVariant(event: any): void {
-    this.activeDemoVariant = event.target.getAttribute('id');
   }
 }

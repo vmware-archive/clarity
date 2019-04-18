@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -81,46 +81,45 @@ export class WizardAsyncValidation {
 
   html: string = `
 <clr-wizard #wizard [(clrWizardOpen)]="open">
-    <clr-wizard-title>Async validation</clr-wizard-title>
+  <clr-wizard-title>Async validation</clr-wizard-title>
 
-    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-    <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
 
-    <clr-wizard-page
-        clrWizardPagePreventDefault="true"
-        (clrWizardPageOnCommit)="onCommit()"
-        (clrWizardPageOnCancel)="doCancel()">
-        <ng-template clrPageTitle>Form with async validation</ng-template>
+  <clr-wizard-page
+      clrWizardPagePreventDefault="true"
+      (clrWizardPageOnCommit)="onCommit()"
+      (clrWizardPageOnCancel)="doCancel()">
+      <ng-template clrPageTitle>Form with async validation</ng-template> <!-- mandatory -->
 
-        <div class="spinner" *ngIf="loadingFlag">
-            Loading...
-        </div>
-        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
-            <div class="alert-item">
-                This&nbsp;<a
-                    href="https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy"
-                    target="_blank">wiki article</a>&nbsp;might help you answer the question.
-            </div>
-        </clr-alert>
-        <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
-            <div class="alert-item">
-                Your answer is incorrect.
-            </div>
-        </clr-alert>
-        <form #myForm="ngForm" [class.hide]="loadingFlag">
-            <section class="form-block">
-                <div class="form-group">
-                    <label for="fourtyTwoInput">The answer to life, the universe and everything</label>
-                    <input type="text" id="fourtyTwoInput" [(ngModel)]="answer" name="answer">
-                </div>
-            </section>
-        </form>
-    </clr-wizard-page>
-    <clr-wizard-page>
-        ...
-    </clr-wizard-page>
+      <div class="spinner" *ngIf="loadingFlag">
+          Loading...
+      </div>
+      <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
+          <clr-alert-item>
+              This&nbsp;<a
+                  href="https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy"
+                  target="_blank">wiki article</a>&nbsp;might help you answer the question.
+          </clr-alert-item>
+      </clr-alert>
+      <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
+          <clr-alert-item>
+              Your answer is incorrect.
+          </clr-alert-item>
+      </clr-alert>
+
+      <form clrForm #myForm="ngForm" [class.hide]="loadingFlag">
+        <clr-input-container>
+          <label>The answer to life, the universe and everything</label>
+          <input clrInput [(ngModel)]="answer" name="answer" />
+        </clr-input-container>
+      </form>
+  </clr-wizard-page>
+  <clr-wizard-page>
+    ...
+  </clr-wizard-page>
 </clr-wizard>
 `;
 }

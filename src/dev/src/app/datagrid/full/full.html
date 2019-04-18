@@ -1,59 +1,55 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <h2>Full Datagrid demo</h2>
 
-<form (submit)="$event.preventDefault(); reset()" ngNoForm>
-    <div class="form-group">
-        <label for="total">Number of users</label>
-        <input type="number" class="inline-control" id="total" name="total" [(ngModel)]="options.totalUsers">
-    </div>
+<form clrForm (submit)="$event.preventDefault(); reset()">
+  <clr-input-container>
+    <label>Number of users</label>
+    <input clrInput type="number" name="total" [(ngModel)]="options.totalUsers" />
+  </clr-input-container>
 
-    <div class="form-group">
-        <label for="page-size">Rows per page</label>
-        <div class="clr-select-wrapper">
-            <select id="page-size" class="clr-select" name="page-size" [(ngModel)]="options.pageSize">
-                <option value="0">No pagination</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-    </div>
+  <clr-select-container>
+    <label>Rows per page</label>
+    <select clrSelect name="page-size" [(ngModel)]="options.pageSize">
+      <option value="0">No pagination</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="100">100</option>
+    </select>
+  </clr-select-container>
 
-    <clr-checkbox-container clrInline>
-        <clr-checkbox-wrapper>
-          <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable">
-          <label>Selectable</label>
-        </clr-checkbox-wrapper>
-        <clr-checkbox-wrapper>
-          <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum">
-          <label>Multi-line text</label>
-        </clr-checkbox-wrapper>
-      <clr-checkbox-wrapper>
-          <input type="checkbox" clrCheckbox [(ngModel)]="options.server">
-          <label>Server-driven</label>
-        </clr-checkbox-wrapper>
-    </clr-checkbox-container>
+  <clr-checkbox-container clrInline>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable">
+      <label>Selectable</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum">
+      <label>Multi-line text</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.server">
+      <label>Server-driven</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
 
-    <div class="form-group" *ngIf="options.server">
-        <label for="latency">Latency</label>
-        <div class="clr-select-wrapper">
-            <select id="latency" name="latency" [(ngModel)]="options.latency">
-                <option value="0">0 ms</option>
-                <option value="100">100ms</option>
-                <option value="200">200ms</option>
-                <option value="500">500ms</option>
-                <option value="1000">1s</option>
-                <option value="2000">2s</option>
-            </select>
-        </div>
-    </div>
+  <clr-select-container>
+    <label>Latency</label>
+    <select clrSelect name="latency" [(ngModel)]="options.latency">
+      <option value="0">0 ms</option>
+      <option value="100">100ms</option>
+      <option value="200">200ms</option>
+      <option value="500">500ms</option>
+      <option value="1000">1s</option>
+      <option value="2000">2s</option>
+    </select>
+  </clr-select-container>
 
-    <button type="submit" class="btn btn-primary">Apply</button>
+  <button class="btn btn-primary">Apply</button>
 </form>
 
 <div *ngIf="!resetting">

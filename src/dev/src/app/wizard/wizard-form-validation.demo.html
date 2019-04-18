@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -61,24 +61,22 @@
 
     <div *ngIf="formPageOne.valid && formPageTwo.valid">
       <p>Congratulations! You are done with this wizard.</p>
-      <form class="compact">
-        <label>Your information</label>
-        <section class="form-block">
-          <div class="form-group">
-            <label>Your name:</label>
-            <span>{{ this.model.name }}</span>
-          </div>
-          <div class="form-group">
-            <label>Your favorite food:</label>
-            <span>{{ this.model.favorite }}</span>
-          </div>
-          <div class="form-group">
-            <label>Your lucky number:</label>
-            <span>{{ this.model.number }}</span>
-          </div>
-        </section>
-      </form>
-    </div>
+      <label>Your information</label>
+      <section>
+        <p>
+          <label>Your name:</label>
+          <span>{{ this.model.name }}</span>
+        </p>
+        <p>
+          <label>Your favorite food:</label>
+          <span>{{ this.model.favorite }}</span>
+        </p>
+        <p>
+          <label>Your lucky number:</label>
+          <span>{{ this.model.number }}</span>
+        </p>
+      </section>
+  </div>
 
     <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
       <p>Not quite there yet.</p>

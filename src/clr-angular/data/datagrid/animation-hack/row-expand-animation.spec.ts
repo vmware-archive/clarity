@@ -20,7 +20,7 @@ export default function(): void {
   // Commenting this out because PhantomJS is being uncooperative.
   // I lost too much time trying to get it to pass, but this should just go away anyway once the
   // new cool features of Angular 4.1 animations come in.
-  describe('DatagridRowExpandAnimation directive', function() {
+  xdescribe('DatagridRowExpandAnimation directive', function() {
     beforeEach(function() {
       // We do not use the TestContext on purpose, because we want to test this directive in isolation,
       // without all other components and directives on the same selector.

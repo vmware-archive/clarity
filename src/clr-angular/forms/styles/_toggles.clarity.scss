@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,20 +8,20 @@
     @include clr-appearance-normal();
   }
 
-  .clr-toggle-wrapper,
-  .toggle-switch {
-    display: inline-block;
+  .clr-toggle-wrapper {
     height: $clr-toggle-height;
-    margin-right: 1rem;
     vertical-align: middle;
     position: relative;
+    display: block;
+    margin-right: 0.5rem;
 
     label {
       display: inline-block;
       position: relative;
       cursor: pointer;
       height: $clr-toggle-height;
-      margin-right: 2rem;
+      margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
+      margin-right: 0;
     }
 
     input[type='checkbox'] {
@@ -45,8 +45,9 @@
       border-radius: 0.375rem;
       border-color: $clr-toggle-bg-color-off;
       background-color: $clr-toggle-bg-color-off;
-      top: ($clr-toggle-height - $clr-toggle-switch-base-height) / 2;
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
+      top: ($clr-forms-baseline / 2);
+      right: 0;
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
       transition: $clr-toggle-transition-time $clr-toggle-transition-animation;
       transition-property: border-color, background-color;
     }
@@ -73,14 +74,18 @@
       border-radius: 50%;
       background-color: $clr-toggle-handle-bg-color;
       // TOCHECK: COMPUTATION...
-      top: ($clr-toggle-height - $clr-toggle-switch-height) / 2;
-      right: -1 * $clr-toggle-switch-left-spacing;
+      top: (2 * $clr-rem-1px + $clr-forms-baseline / 2);
+      right: 0;
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
+      transition-property: left;
     }
 
     input[type='checkbox']:checked + label::after {
       right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
+      left: -1 * $clr-toggle-switch-left-spacing;
+      transition-property: left;
     }
 
     &.disabled {
@@ -130,6 +135,11 @@
       width: $clr-toggle-switch-height;
       height: $clr-toggle-switch-height;
       top: 5px;
+      left: -1 * $clr-toggle-switch-left-spacing;
+    }
+
+    input[type='checkbox']:disabled + label::after {
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
     }
 
     // Allow for label to be on the right of the toggle switch.
@@ -155,48 +165,14 @@
         transition-property: left;
       }
     }
-  }
-
-  // Additions and overrides for only new togglers, backwards compatibility required here. Can refactor and simplify when
-  // old toggles are removed.
-  .clr-toggle-wrapper {
-    display: block;
-    margin-right: 0.5rem;
 
     .clr-control-label {
       display: block;
       font-weight: 400;
       line-height: (4 * $clr-forms-baseline);
     }
-
-    // These sets the default labels to the right vs originally to left
-    label {
-      margin-left: $clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing;
-      margin-right: 0;
-    }
-    // This sets the default toggle to the left vs originally to right
-    input[type='checkbox'] + label::before {
-      right: 0;
-      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
-      top: ($clr-forms-baseline / 2);
-    }
-    input[type='checkbox'] + label::after {
-      right: 0;
-      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
-      transition-property: left;
-      top: (2 * $clr-rem-1px + $clr-forms-baseline / 2);
-    }
-    input[type='checkbox']:checked + label::after {
-      left: -1 * $clr-toggle-switch-left-spacing;
-      transition-property: left;
-    }
-    input[type='checkbox']:disabled + label::after {
-      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
-    }
-    input[type='checkbox']:checked:disabled + label::after {
-      left: -1 * $clr-toggle-switch-left-spacing;
-    }
   }
+
   // These are the inline styles overrides
   .clr-control-inline .clr-toggle-wrapper .clr-control-label {
     display: inline-block;

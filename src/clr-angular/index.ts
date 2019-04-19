@@ -10,7 +10,6 @@ export * from './button/index';
 export * from './data/index';
 export * from './emphasis/index';
 export * from './forms/index';
-export * from './forms-deprecated/index';
 export * from './icon/index';
 export * from './layout/index';
 export * from './modal/index';

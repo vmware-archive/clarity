@@ -22,6 +22,10 @@
     &:not([readonly]) {
       @include input-border-bottom-animation($clr-forms-focused-color);
     }
+
+    &:disabled {
+      @include disabled-form-fields();
+    }
   }
 
   .clr-error .clr-input:not([readonly]) {

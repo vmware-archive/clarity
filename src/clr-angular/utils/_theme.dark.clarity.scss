@@ -378,77 +378,7 @@ $clr-dropdown-divider-color: $clr-dropdown-border-color;
 $clr-dropdown-header-color: #adbbc4;
 // END: Dropdown overrides
 
-/**********
-  * Forms (Deprecated)
-  * A form is a structured layout of related input components.
-  * There are a variety of variables used to change form elements, including:
-  * - Input
-  * - Select
-  * - Checkbox
-  * - Radio
-  * - Toggle
-  *
-  * Usage:
-  * - ../forms-deprecated/_forms.clarity.scss
-  * - ../forms-deprecated/_select.clarity.scss
-  * - ../forms-deprecated/_radio.clarity.scss
-  * - ../forms-deprecated/_checkboxes.clarity.scss
-  * - ../button/_toggles.clarity.scss
-  */
-$clr-input-text-color: #e9ecef;
-$clr-select-option-font-color: #000;
-$clr-multiselect-option-font-color: $clr-input-text-color;
-
-$clr-textarea-border-color: #000000;
-$clr-textarea-bg-color: #17242b;
-$clr-textarea-font-color: #c3ced4;
-$clr-textarea-bg-color: #17242b;
-$clr-textarea-border-color: #000;
-$clr-textarea-text-color: #c3ced4;
-
-$clr-checkbox-color: #49afd9; // Changes radio and checkbox bg color
-$clr-checkbox-checkmark-color: #000;
-$clr-checkbox-disabled-color: #fff;
-$clr-indeterminate-checkbox-border-color: $clr-checkbox-color; // Sets border and dash color for checkboxes.
-$clr-checkbox-disabled-background-color: #8f9ba3;
-$clr-checkbox-disabled-font-color: #8f9ba3;
-$clr-checkbox-disabled-checkmark-color: #22343c;
-
-$clr-outline-color: #49afd9;
-$clr-form-field-disabled-background-color: #8f9ba3;
-$clr-form-field-background-color: $clr-checkbox-color;
-$clr-radio-checked-box-shadow: inset 0 0 0 0.25rem $clr-form-field-background-color;
-$clr-radio-focused-box-shadow: 0 0 2px 2px $clr-outline-color;
-
-$clr-radio-disabled-font-color: #8f9ba3; // font color
-$clr-radio-disabled-bg-color: #22343c; // 'dot' color
-$clr-radio-disabled-checked-box-shadow: inset 0 0 0 0.25rem #8f9ba3; //background-color around the dot
-
-$clr-form-text-color: #fff;
-$clr-form-field-border-color: #adbbc4;
-$clr-forms-input-invalid-color: #f54f47;
-$clr-forms-input-on-invalid-color: $clr-theme-app-alert-font-color;
-$clr-forms-input-invalid-icon-color: $clr-forms-input-invalid-color;
-$clr-form-disabled-background-color: #000;
-
-$clr-multiple-select-background: #22343c;
-$clr-multiple-select-border-color: #000;
-
-$clr-toggle-bg-color-off: #e9ecef;
-$clr-toggle-bg-color-on: #60b515;
-$clr-toggle-handle-bg-color: #1b2a32;
-$clr-toggle-handle-color: #1b2a32;
-$clr-toggle-disabled-off-bg-color: $clr-toggle-handle-color;
-$clr-toggle-disabled-off-border-color: #8f9ba3;
-$clr-toggle-disabled-off-bg-color: $clr-toggle-handle-color; // Also sets disabled/on inner part of handle circle.
-$clr-toggle-disabled-off-handle-border-color: #8f9ba3;
-$clr-toggle-disabled-on-border-color: #8f9ba3;
-$clr-toggle-disabled-on-bg-color: #8f9ba3;
-$clr-toggle-disabled-on-handle-border-color: $clr-toggle-handle-color;
-$clr-toggle-bg-color-off: #fff;
-$clr-toggle-bg-color-on: #60b515;
-$clr-toggle-handle-bg-color: $clr-toggle-handle-color; // main-container bg color (replaced fafafa in light theme)
-
+// Datepicker
 $clr-calendar-background-color: #22343c;
 $clr-calendar-border-color: #000;
 $clr-datepicker-trigger-color: #49afd9;
@@ -459,7 +389,6 @@ $clr-calendar-active-cell-background-color: #324f61;
 $clr-calendar-active-focus-cell-background-color: #324f61;
 $clr-calendar-today-date-cell-color: #fff;
 $clr-calendar-active-cell-color: #fff;
-// END: form
 
 /******
   * Forms: TODO: track down component usages and names
@@ -519,8 +448,8 @@ $clr-forms-checkbox-disabled-mark-color: #000;
 // Radio
 $clr-forms-radio-label-color: #adbbc4;
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
-$clr-forms-radio-focused-shadow: 0 0 2px 2px $clr-outline-color;
-$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color;
+$clr-forms-radio-focused-shadow: 0 0 2px 2px $clr-link-active-color;
+$clr-forms-radio-disabled-background-color: #000;
 $clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
 

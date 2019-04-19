@@ -4,7 +4,7 @@ $bl-3_0: baselineRem(3);
   margin-top: $bl-1_0 - 4;
 }
 
-@media screen and (max-width: map-get($grid-breakpoints, md)) {
+@media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
   .github-btn {
     display: none;
   }
@@ -46,7 +46,7 @@ $bl-3_0: baselineRem(3);
   }
 }
 
-@media screen and (max-width: map-get($grid-breakpoints, md)) {
+@media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
   // Override for the comp demos
   .header-demo {
     padding: 12px 24px;

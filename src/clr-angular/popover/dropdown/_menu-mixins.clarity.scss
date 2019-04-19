@@ -83,7 +83,7 @@
 @mixin generate-dropdown-item-height() {
   padding: 0.125rem 1rem;
 
-  @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     padding: 0.25rem 1rem;
   }
 }

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -16,22 +16,17 @@
 
   <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
     <ng-template clrPageTitle>Form with validation</ng-template>
-    <!-- mandatory -->
-    <form #formPageOne="ngForm">
-      <section class="form-block">
-        <label>Enter a name and favorite food</label>
-        <div class="form-group">
-          <label>Name</label>
-          <label for="nameInput" aria-haspopup="true" role="tooltip" [class.invalid]="name.touched && !name.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-            <input type="text" id="nameInput" required [(ngModel)]="model.name" name="name" #name="ngModel">
-            <span class="tooltip-content">This field cannot be empty!</span>
-          </label>
-        </div>
-        <div class="form-group">
-          <label for="favInput">Favorite food</label>
-          <input type="text" id="favInput" [(ngModel)]="model.favorite" name="favorite">
-        </div>
-      </section>
+    <form clrForm #formPageOne="ngForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput required [(ngModel)]="model.name" name="name" #name="ngModel" id="name">
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Favorite food</label>
+        <input clrInput [(ngModel)]="model.favorite" name="favorite" id="favorite">
+      </clr-input-container>
     </form>
   </clr-wizard-page>
 
@@ -42,19 +37,12 @@
       Enter a number
     </ng-template>
     <!-- optional -->
-    <form #formPageTwo="ngForm">
-      <section class="form-block">
+    <form clrForm #formPageTwo="ngForm">
+      <clr-input-container>
         <label>Please your lucky number!</label>
-        <div class="form-group">
-          <label>Your number</label>
-          <label for="numberInput" aria-haspopup="true" role="tooltip" [class.invalid]="number.touched && !number.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-            <input type="number" id="numberInput" required [(ngModel)]="model.number" name="number" #number="ngModel">
-            <span class="tooltip-content">
-              This field cannot be empty!
-            </span>
-          </label>
-        </div>
-      </section>
+        <input clrInput type="number" required [(ngModel)]="model.number" name="number" #number="ngModel">
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
     </form>
   </clr-wizard-page>
 
@@ -73,24 +61,22 @@
 
     <div *ngIf="formPageOne.valid && formPageTwo.valid">
       <p>Congratulations! You are done with this wizard.</p>
-      <form class="compact">
-        <label>Your information</label>
-        <section class="form-block">
-          <div class="form-group">
-            <label>Your name:</label>
-            <span>{{ this.model.name }}</span>
-          </div>
-          <div class="form-group">
-            <label>Your favorite food:</label>
-            <span>{{ this.model.favorite }}</span>
-          </div>
-          <div class="form-group">
-            <label>Your lucky number:</label>
-            <span>{{ this.model.number }}</span>
-          </div>
-        </section>
-      </form>
-    </div>
+      <label>Your information</label>
+      <section>
+        <p>
+          <label>Your name:</label>
+          <span>{{ this.model.name }}</span>
+        </p>
+        <p>
+          <label>Your favorite food:</label>
+          <span>{{ this.model.favorite }}</span>
+        </p>
+        <p>
+          <label>Your lucky number:</label>
+          <span>{{ this.model.number }}</span>
+        </p>
+      </section>
+  </div>
 
     <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
       <p>Not quite there yet.</p>

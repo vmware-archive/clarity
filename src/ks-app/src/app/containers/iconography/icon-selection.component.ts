@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,6 +18,9 @@ import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
 
 @Component({ templateUrl: './icon-selection.component.html', styleUrls: ['./icon-selection.component.scss'] })
 export class KSIconSelection {
+  options = 'none';
+  solid = false;
+
   constructor() {
     ClarityIcons.add(CoreShapes);
     ClarityIcons.add(CommerceShapes);
@@ -28,26 +31,6 @@ export class KSIconSelection {
     ClarityIcons.add(TravelShapes);
     ClarityIcons.add(ChartShapes);
     ClarityIcons.add(TextEditShapes);
-  }
-  previewClasses: any = { 'is-solid': false, 'has-alert': false, 'has-badge': false };
-
-  onChangeSolid(event: any): void {
-    this.previewClasses['is-solid'] = event.target.checked;
-  }
-
-  onChangeStatus(event: any): void {
-    const radioId = event.target.getAttribute('id');
-
-    if (radioId === 'alertRadio') {
-      this.previewClasses['has-badge'] = false;
-      this.previewClasses['has-alert'] = true;
-    } else if (radioId === 'badgeRadio') {
-      this.previewClasses['has-alert'] = false;
-      this.previewClasses['has-badge'] = true;
-    } else {
-      this.previewClasses['has-alert'] = false;
-      this.previewClasses['has-badge'] = false;
-    }
   }
 
   allShapeSets = [

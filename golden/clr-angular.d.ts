@@ -5,8 +5,6 @@ export declare const CLR_ALERT_DIRECTIVES: Type<any>[];
 
 export declare const CLR_BUTTON_GROUP_DIRECTIVES: Type<any>[];
 
-export declare const CLR_CHECKBOX_DIRECTIVES: Type<any>[];
-
 export declare const CLR_DATAGRID_DIRECTIVES: Type<any>[];
 
 export declare const CLR_DATEPICKER_DIRECTIVES: Type<any>[];
@@ -169,29 +167,6 @@ export declare class ClrCheckboxContainer implements OnDestroy {
     controlClass(): string;
     ngOnDestroy(): void;
     ngOnInit(): void;
-}
-
-/** @deprecated */
-export declare class ClrCheckboxDeprecated implements ControlValueAccessor {
-    _id: string;
-    change: EventEmitter<boolean>;
-    checked: boolean;
-    clrAriaLabeledBy: string;
-    disabled: boolean;
-    readonly id: string;
-    indeterminate: boolean;
-    indeterminateChange: EventEmitter<boolean>;
-    inline: boolean;
-    name: string;
-    checkIndeterminateState(): void;
-    registerOnChange(onChange: any): void;
-    registerOnTouched(onTouched: any): void;
-    toggle(): void;
-    touch(): void;
-    writeValue(value: any): void;
-}
-
-export declare class ClrCheckboxDeprecatedModule {
 }
 
 export declare class ClrCheckboxModule {
@@ -666,9 +641,6 @@ export declare class ClrForm {
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
     /** @deprecated */ markAsDirty(): void;
     markAsTouched(): void;
-}
-
-export declare class ClrFormsDeprecatedModule {
 }
 
 export declare class ClrFormsModule {

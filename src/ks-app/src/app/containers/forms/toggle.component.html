@@ -1,44 +1,30 @@
-<form>
-    <section class="form-block">
-        <label>Toggles</label>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_1">
-                <label for="toggle_1">Toggles turn on and off</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_2" disabled>
-                <label for="toggle_2">Toggle off and disabled</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_3" checked disabled>
-                <label for="toggle_3">Toggle on and disabled</label>
-            </div>
-        </div>
-    </section>
-    <section class="form-block">
-        <label>Toggles without any label</label>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_4">
-                <label for="toggle_4"></label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_6" checked disabled>
-                <label for="toggle_6"></label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="toggle-switch">
-                <input type="checkbox" id="toggle_7" disabled>
-                <label for="toggle_7"></label>
-            </div>
-        </div>
-    </section>
+
+<!--
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Toggles</h1>
+
+<form clrForm clrLayout="vertical">
+  <clr-toggle-wrapper>
+    <input type="checkbox" clrToggle name="option1" />
+    <label>Toggles turn on and off</label>
+  </clr-toggle-wrapper>
+
+  <clr-toggle-wrapper>
+    <input type="checkbox" clrToggle name="option2" disabled />
+    <label>Toggle off and disabled</label>
+  </clr-toggle-wrapper>
+
+  <clr-toggle-wrapper>
+    <input type="checkbox" clrToggle name="option3" checked disabled  />
+    <label>Toggle on and disabled</label>
+  </clr-toggle-wrapper>
+
+  <h2>Toggle without labels</h2>
+  <input type="checkbox" clrToggle name="option4" />
+  <input type="checkbox" clrToggle name="option5" disabled checked />
+  <input type="checkbox" clrToggle name="option6" disabled />
 </form>

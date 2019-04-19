@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -317,37 +317,44 @@
 
 <h3>Expandable rows</h3>
 <div id="expandable-rows">
-    <form>
-        <div class="form-group">
-            <label>Type of detail</label>
-            <div class="radio-inline">
-                <input type="radio" name="detail" id="detail-default" value="default" [(ngModel)]="detail">
-                <label for="detail-default">Default</label>
-            </div>
-            <div class="radio-inline">
-                <input type="radio" name="detail" id="detail-columns" value="columns" [(ngModel)]="detail">
-                <label for="detail-columns">Columns</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="checkbox-inline">
-                <input type="checkbox" name="replace" id="replace" [(ngModel)]="replace">
-                <label for="replace">Replace row</label>
-            </div>
-            <div class="checkbox-inline">
-                <input type="checkbox" name="fixed-height" id="fixed-height" [(ngModel)]="fixedHeight">
-                <label for="fixed-height">Fixed height</label>
-            </div>
-            <div class="checkbox-inline">
-                <input type="checkbox" name="selectable" id="selectable" [(ngModel)]="selectable">
-                <label for="selectable">Selectable</label>
-            </div>
-            <div class="checkbox-inline">
-                <input type="checkbox" name="slow-load" id="slow-load" [(ngModel)]="slowLoad">
-                <label for="slow-load">Slow load</label>
-            </div>
-        </div>
-    </form>
+  <form clrForm>
+    <clr-radio-container>
+      <label>Type of detail</label>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="detail" value="default" [(ngModel)]="detail" />
+        <label>Default</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="detail" value="columns" [(ngModel)]="detail" />
+        <label>Columns</label>
+      </clr-radio-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>This field is required!</clr-control-error>
+    </clr-radio-container>
+  
+    <clr-checkbox-container>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="replace" [(ngModel)]="replace" />
+        <label>Replace row</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="fixed-height" [(ngModel)]="fixedHeight" />
+        <label>Fixed height</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="selectable" [(ngModel)]="selectable" />
+        <label>Selectable</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="slow-load" [(ngModel)]="slowLoad" />
+        <label>Slow load</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="date" [(ngModel)]="date" />
+        <label>Hidden Date Column</label>
+      </clr-checkbox-wrapper>
+    </clr-checkbox-container>
+  </form>
     <clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected2">
         <clr-dg-column>User ID</clr-dg-column>
         <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>

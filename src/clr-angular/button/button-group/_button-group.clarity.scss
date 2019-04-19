@@ -144,11 +144,26 @@
     }
   }
 
+  // @deprecated last of deprecated forms CSS to keep btn groups working
+  // should be removed when btn is revamped with clr- naming conventions
+  .checkbox,
+  .radio {
+    position: relative;
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 0;
+      width: 0;
+      opacity: 0;
+    }
+  }
+
   .card-footer {
     .checkbox,
-    .checkbox-inline,
-    .radio,
-    .radio-inline {
+    .radio {
       &.btn label {
         line-height: calc(1rem - 1px);
       }

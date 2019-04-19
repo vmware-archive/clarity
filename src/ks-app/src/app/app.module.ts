@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ClarityModule, ClrFormsDeprecatedModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -107,15 +107,7 @@ import { KSTreeview } from './containers/tree-view/tree-view.component';
     KSTextareas,
     KSTreeview,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ClarityModule,
-    ClrFormsDeprecatedModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, ClarityModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

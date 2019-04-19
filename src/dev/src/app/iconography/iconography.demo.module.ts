@@ -5,7 +5,7 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 
 import { IconColorsDemo } from './icon-colors';
@@ -19,7 +19,7 @@ import { ROUTING } from './iconography.demo.routing';
 import { IconsViewBoxTestDemo } from './icons-view-box-test.demo';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING],
+  imports: [CommonModule, ClarityModule, FormsModule, ROUTING],
   declarations: [
     IconsDemo,
     IconColorsDemo,

@@ -1,29 +1,28 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <h4>Basic Droppable</h4>
 
-<div class="form-group droppable-demo droppable-feature-variant" (change)="activateDemoVariant($event)">
-    <label>with: </label>
-
-    <div class="radio-inline">
-        <input type="radio" id="basic-draggable" name="droppable-variant" checked>
-        <label for="basic-draggable">Basic Draggable</label>
-    </div>
-    <div class="radio-inline">
-        <input type="radio" id="custom-ghost" name="droppable-variant">
-        <label for="custom-ghost">Custom Ghost</label>
-
-    </div>
-    <div class="radio-inline">
-        <input type="radio" id="drag-handle" name="droppable-variant">
-        <label for="drag-handle">Drag Handle</label>
-    </div>
-
-</div>
+<form clrForm>
+  <clr-radio-container>
+    <label>with:</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="basic-draggable" [(ngModel)]="activeDemoVariant" />
+      <label>Basic Draggable</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="custom-ghost" [(ngModel)]="activeDemoVariant" />
+      <label>Custom Ghost</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="drag-handle" [(ngModel)]="activeDemoVariant" />
+      <label>Drag Handle</label>
+    </clr-radio-wrapper>
+  </clr-radio-container>
+</form>
 
 <div class="clr-example" *ngIf="activeDemoVariant==='basic-draggable'">
 

@@ -1,59 +1,58 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <button class="btn btn-primary" (click)="wizard.open()">Reset Wizard</button>
 
-<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'md'" (clrWizardOnFinish)="doFinish()" (clrWizardOnCancel)="doFinish()">
+<clr-wizard #wizard 
+    [(clrWizardOpen)]="open"
+    [clrWizardSize]="'md'"
+    (clrWizardOnFinish)="doFinish()"
+    (clrWizardOnCancel)="doFinish()">
 
-  <clr-wizard-title>Wizard that resets</clr-wizard-title>
+    <clr-wizard-title>
+        {{ model.forceReset ? "Wizard resets" : "Wizard doesn't reset" }}
+    </clr-wizard-title>
 
-  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-  <clr-wizard-button [type]="'finish'">OK</clr-wizard-button>
+    <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+    <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+    <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+    <clr-wizard-button [type]="'finish'">OK</clr-wizard-button>
 
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Page 1</ng-template>
-    <!-- mandatory -->
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 1</ng-template> <!-- mandatory -->
 
-    <p>Check below if you want the wizard to reset when it finishes or closes.</p>
-    <p>
-      <label>
-        <input #forceReset type="checkbox" name="forceReset" [(ngModel)]="model.forceReset"> Force reset on close
-      </label>
-    </p>
-  </clr-wizard-page>
+        <p>Check below if you want the wizard to reset when it finishes or closes.</p>
 
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Page 2</ng-template>
-    <!-- mandatory -->
+        <clr-checkbox-wrapper>
+          <input #forceReset type="checkbox" clrCheckbox name="forceReset" [(ngModel)]="model.forceReset" />
+          <label>Force reset on close</label>
+        </clr-checkbox-wrapper>
+    </clr-wizard-page>
 
-    <div class="form-group">
-      <label for="formFields_1">What is your favorite color?</label>
-      <input #stepTwoInput type="text" id="formFields_1" placeholder="Color?" [(ngModel)]="model.favoriteColor">
-    </div>
-  </clr-wizard-page>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 2</ng-template> <!-- mandatory -->
+        <clr-input-container>
+          <label>What is your favorite color?</label>
+          <input clrInput placeholder="Color?" #stepTwoInput [(ngModel)]="model.favoriteColor" />
+        </clr-input-container>
+    </clr-wizard-page>
 
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Page 3</ng-template>
-    <!-- mandatory -->
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 3</ng-template> <!-- mandatory -->
+        <clr-input-container>
+          <label>What is your favorite ice cream?</label>
+          <input clrInput placeholder="Flavor?" #stepThreeInput [(ngModel)]="model.flavorOfIceCream" />
+        </clr-input-container>
+    </clr-wizard-page>
 
-    <div class="form-group">
-      <label for="formFields_2">What is your favorite ice cream?</label>
-      <input #stepThreeInput type="text" id="formFields_2" placeholder="Flavor?" [(ngModel)]="model.flavorOfIceCream">
-    </div>
-  </clr-wizard-page>
-
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Page 4</ng-template>
-    <!-- mandatory -->
-
-    <div class="form-group">
-      <label for="formFields_3">What is your lucky number?</label>
-      <input #stepFourInput type="number" id="formFields_3" placeholder="Lucky number?" [(ngModel)]="model.luckyNumber">
-    </div>
-  </clr-wizard-page>
+    <clr-wizard-page>
+        <ng-template clrPageTitle>Page 4</ng-template> <!-- mandatory -->
+        <clr-input-container>
+          <label>What is your lucky number?</label>
+          <input clrInput placeholder="Lucky number?" #stepFourInput type="number" [(ngModel)]="model.luckyNumber" />
+        </clr-input-container>
+    </clr-wizard-page>
 </clr-wizard>

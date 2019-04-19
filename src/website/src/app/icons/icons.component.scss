@@ -14,7 +14,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
   left: 0;
   width: 100%;
   height: $clr-icons-hero-height;
-  background: #660092;
+  background: $clr-color-secondary-action-800;
 
   .icons-background {
     position: absolute;
@@ -25,22 +25,26 @@ $clr-searchbar-container-height-sm: 4.5rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+
     .icon-bg-wrapper {
       width: 80px;
       height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(#fff, 0.2);
+      color: rgba($clr-color-neutral-0, 0.2);
       transition: all 0.3s ease-out;
+
       clr-icon {
         transform: translate3d(0, 0, 0) rotate(-30deg);
       }
+
       &.glow {
-        color: rgba(#fff, 0.6);
+        color: rgba($clr-color-neutral-0, 0.6);
       }
     }
   }
+
   .icons-header-wrapper {
     position: relative;
     width: 100%;
@@ -51,21 +55,19 @@ $clr-searchbar-container-height-sm: 4.5rem;
     justify-content: center;
     padding: 0 $clr_baselineRem_1_5;
 
-    p.icons-header-message {
-      font-size: 16px;
-      color: #fff;
-      text-align: center;
-      font-weight: 100;
-      margin: 12px 0 0 0;
-    }
     h1 {
-      color: #fff;
+      color: $clr-color-neutral-0;
       text-align: center;
-      margin: 0;
+      margin: 0 0 $clr-baseline / 2 0;
       font-weight: 400;
     }
-    .header-buttons {
-      margin-top: 24px;
+
+    .icons-header-message {
+      font-size: 16px;
+      color: $clr-color-neutral-0;
+      text-align: center;
+      font-weight: 100;
+      margin: $clr-baseline / 2 0 $clr-baseline 0;
     }
   }
 }
@@ -84,9 +86,6 @@ $clr-searchbar-container-height-sm: 4.5rem;
     margin: 0 auto;
     text-align: left;
   }
-  .searchbar-leverage {
-    margin-top: 96px;
-  }
 }
 
 .searchbar-container {
@@ -95,9 +94,10 @@ $clr-searchbar-container-height-sm: 4.5rem;
   margin: $clr-searchbar-nonsticky-margintop auto 0;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 5px 0 rgba(#000, 0);
+  box-shadow: 0 0 5px 0 rgba($clr-color-neutral-1000, 0);
   display: flex;
   transform: translate3d(0, 0, 0);
+
   &.sticky {
     position: fixed;
     top: $clr-header-height;
@@ -120,42 +120,38 @@ $clr-searchbar-container-height-sm: 4.5rem;
     display: block;
     width: 100%;
     height: 100%;
+
     clr-icon[shape='search'] {
       position: absolute;
       left: $clr_baselineRem_0_5;
       top: $clr_baselineRem_0_5;
       color: $clr-color-action-600;
     }
+
     button.close {
       position: absolute;
       right: $clr_baselineRem_0_5;
       top: $clr_baselineRem_0_5;
       display: none;
+
       &.active {
         display: block;
       }
     }
+
     input.searchbar-input {
       width: 100%;
-      padding: 0 0 0 $clr_baselineRem_2;
+      padding: $clr-baseline $clr_baselineRem_2;
       height: $clr_baselineRem_2;
+      margin-bottom: $clr_baselineRem_0_75;
     }
   }
 
   .icon-preview-settings {
-    height: $clr-baseline;
-    margin-top: $clr_baselineRem_0_75;
-    .radio-group {
+    clr-toggle-wrapper,
+    clr-radio-container {
       display: inline-block;
-    }
-    .radio-group .radio-inline {
-      padding-left: $clr_baselineRem_0_5;
-    }
-    .toggle-switch {
-      margin-right: $clr_baselineRem_1_5;
-    }
-    .toggle-switch .solid-preview-label {
-      padding-right: $clr_baselineRem_0_5;
+      margin-top: 0;
     }
   }
 }
@@ -165,6 +161,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
   padding: 0;
   text-align: left;
   width: $clr-sidenav-width;
+
   .nav-group {
     label {
       text-transform: uppercase;
@@ -172,11 +169,10 @@ $clr-searchbar-container-height-sm: 4.5rem;
       font-size: 12px;
       padding: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_25;
     }
-    ul.nav-list {
+
+    .nav-list {
       padding: 0;
-      li {
-        padding: 0;
-      }
+
       .nav-link {
         padding: $clr_baselineRem_0_125 $clr_baselineRem_0_25;
         border-radius: 3px;
@@ -186,12 +182,14 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
   .sidenav-content {
     padding: $clr_baselineRem_1_5 0 0 $clr-baseline;
+
     &.sticky {
       position: fixed;
       top: $clr-header-height + $clr-searchbar-container-height;
       max-height: calc(100vh - 60px);
       width: inherit;
     }
+
     &.on-icon-sets {
       padding: $clr_baselineRem_0_5 0 0 $clr-baseline;
     }
@@ -201,10 +199,12 @@ $clr-searchbar-container-height-sm: 4.5rem;
 @media screen and (max-width: 768px) {
   .searchbar-container {
     height: $clr-searchbar-container-height-sm;
+
     .icons-search-wrapper {
       width: 100%;
       margin-left: 0;
     }
+
     .icon-preview-settings {
       display: none;
     }

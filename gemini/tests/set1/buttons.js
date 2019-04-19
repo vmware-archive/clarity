@@ -149,15 +149,4 @@ gemini.suite('buttons', child => {
       captureButton(btnClass);
     });
   });
-
-  gemini.suite('toggles', child => {
-    child
-      .setUrl('/buttons/toggles')
-      .before((actions, find) => {
-        actions.waitForElementToShow('.toggle-switch', WAIT_TIME);
-        actions.wait(WAIT_LOAD_TIME);
-      })
-      .setCaptureElements('.toggle-switch')
-      .capture('default');
-  });
 });

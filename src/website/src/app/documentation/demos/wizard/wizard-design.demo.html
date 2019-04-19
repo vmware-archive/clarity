@@ -21,75 +21,49 @@
             <clr-wizard-page #pageOne [clrWizardPageNextDisabled]="name.pristine || !formPageOneValid">
                 <ng-template clrPageTitle>Basic Information</ng-template>
                 <ng-template clrPageNavTitle>{{ pageOneTitle }}</ng-template>
-                <form #formPageOne="ngForm">
-                    <section class="form-block">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <label for="nameInput" aria-haspopup="true" role="tooltip"
-                                [class.invalid]="name.touched && !name.valid"
-                                class="tooltip tooltip-validation tooltip-md tooltip-bottom-left">
-                                <input type="text" id="nameInput" required [(ngModel)]="model.name" name="name" #name="ngModel">
-                                <span class="tooltip-content">This field cannot be empty!</span>
-                            </label>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="ht_feet">Height</label>
-                            <div class="select">
-                                <select id="ht_feet"
-                                    name="ht_feet"
-                                    [(ngModel)]="model.ht_feet">
-                                    <option
-                                        *ngFor="let measure of [ '0 ft.', '1 ft.', '2 ft.', '3 ft.', '4 ft.' ]"
-                                        [value]="measure">
-                                        {{measure}}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="select">
-                                <select id="ht_inches"
-                                    name="ht_inches"
-                                    [(ngModel)]="model.ht_inches">
-                                    <option
-                                        *ngFor="let inch of [ '0 in.', '1 in.', '2 in.', '3 in.', '4 in.', '5 in.', '6 in.', '7 in.', '8 in.', '9 in.', '10 in.', '11 in.' ]"
-                                        [value]="inch">
-                                        {{inch}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                <form clrForm clrLayout="horizontal" #formPageOne="ngForm">
+                  <clr-input-container>
+                    <label>Name</label>
+                    <input clrInput name="name" required [(ngModel)]="model.name" #name="ngModel" />
+                    <clr-control-error>This field cannot be empty!</clr-control-error>
+                  </clr-input-container>
 
-                        <div class="form-group">
-                            <label>Weight</label>
-                            <label for="weightInput" aria-haspopup="true" role="tooltip"
-                                [class.invalid]="name.touched && !weight.valid"
-                                class="tooltip tooltip-validation tooltip-md tooltip-bottom-left">
-                                <input type="text"
-                                    id="weightInput"
-                                    required
-                                    [(ngModel)]="model.weight"
-                                    name="weight"
-                                    #weight="ngModel"
-                                    placeholder="lbs."
-                                    class="clr-col-sm-5 clr-col-12">
-                                <span class="tooltip-content">This field cannot be empty!</span>
-                            </label>
-                        </div>
+                  <clr-select-container>
+                    <label>Height (Feet)</label>
+                    <select clrSelect name="ht_feet" [(ngModel)]="model.ht_feet">
+                      <option *ngFor="let measure of [ '0 ft.', '1 ft.', '2 ft.', '3 ft.', '4 ft.' ]" [value]="measure">
+                        {{measure}}
+                      </option>
+                    </select>
+                  </clr-select-container>
 
-                        <div class="form-group">
-                            <label for="gender">Gender</label>
-                            <div class="select">
-                                <select id="gender"
-                                    name="gender"
-                                    [(ngModel)]="model.gender">
-                                    <option *ngFor="let g of [ 'Male', 'Female' ]"
-                                        [value]="g">
-                                        {{g}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </section>
+                  <clr-select-container>
+                    <label>Height (Inches)</label>
+                    <select clrSelect name="ht_inches" [(ngModel)]="model.ht_inches">
+                      <option
+                        *ngFor="let inch of [ '0 in.', '1 in.', '2 in.', '3 in.', '4 in.', '5 in.', '6 in.', '7 in.', '8 in.', '9 in.', '10 in.', '11 in.' ]"
+                        [value]="inch">
+                        {{inch}}
+                      </option>
+                    </select>
+                  </clr-select-container>
+
+                  <clr-input-container>
+                    <label>Weight</label>
+                    <input clrInput placeholder="lbs." name="weight" [(ngModel)]="model.weight" />
+                    <clr-control-error>This field cannot be empty!</clr-control-error>
+                  </clr-input-container>
+
+                  <clr-select-container>
+                    <label>Gender</label>
+                    <select clrSelect name="gender" [(ngModel)]="model.gender">
+                      <option *ngFor="let g of [ 'Male', 'Female' ]"
+                        [value]="g">
+                        {{g}}
+                      </option>
+                    </select>
+                  </clr-select-container>
                 </form>
             </clr-wizard-page>
 

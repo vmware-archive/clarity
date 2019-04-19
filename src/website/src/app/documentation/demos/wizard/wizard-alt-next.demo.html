@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -23,11 +23,11 @@
     <clr-wizard-page>
         <ng-template clrPageTitle>Wizard level alt-next</ng-template>
         <p [class.stress]="stressText">Alt-Next means you manually move users to the next page.</p>
-        <p></p>
-        <label>
-            <input #allowNext type="checkbox" name="allowNext" [(ngModel)]="model.allowNext">
-            Check the box if you want to go to the next page
-        </label>
+
+        <clr-checkbox-wrapper>
+          <input #allowNext type="checkbox" clrCheckbox name="allowNext" [(ngModel)]="model.allowNext" />
+          <label>Check the box if you want to go to the next page</label>
+        </clr-checkbox-wrapper>
     </clr-wizard-page>
 
     <clr-wizard-page (clrWizardPageNext)="pageCustomNext()"
@@ -37,27 +37,22 @@
 
         <p>1, 2...</p>
 
-        <div class="form-group">
-            <label for="formFields_1">What comes after 2?</label>
-            <input type="number" id="formFields_1" placeholder="Enter a number"
-                [(ngModel)]="model.sequenceOne">
-        </div>
+        <form clrForm>
+          <clr-input-container>
+            <label>What comes after 2?</label>
+            <input clrInput type="number" name="number" placeholder="Enter a number" [(ngModel)]="model.sequenceOne" />
+          </clr-input-container>
 
-        <p></p>
+          <clr-input-container>
+            <label>What is the next number in the sequence?</label>
+            <input clrInput type="number" name="number2" placeholder="Enter a number" [(ngModel)]="model.sequenceTwo" />
+          </clr-input-container>
 
-        <div class="form-group">
-            <label for="formFields_2">What is the next number in the sequence?</label>
-            <input type="number" id="formFields_2" placeholder="Enter a number"
-                [(ngModel)]="model.sequenceTwo">
-        </div>
-
-        <p></p>
-
-        <div class="form-group">
-            <label for="formFields_3">What is the next number in the sequence?</label>
-            <input type="number" id="formFields_3" placeholder="Enter a number"
-                [(ngModel)]="model.sequenceThree">
-        </div>
+          <clr-input-container>
+            <label>What is the next number in the sequence?</label>
+            <input clrInput type="number" name="number3" placeholder="Enter a number" [(ngModel)]="model.sequenceThree" />
+          </clr-input-container>
+        </form>
     </clr-wizard-page>
 
     <clr-wizard-page>

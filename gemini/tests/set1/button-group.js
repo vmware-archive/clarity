@@ -50,7 +50,7 @@ gemini.suite('button-group', child => {
       .capture('default');
   });
 
-  gemini.suite('angular-checkboxes', child => {
+  gemini.suite('checkboxes-checked-1', child => {
     child
       .setUrl('/button-group/static/checkboxes')
       .before((actions, find) => {
@@ -60,23 +60,13 @@ gemini.suite('button-group', child => {
       .capture('default');
   });
 
-  gemini.suite('checkboxes-checked-1', child => {
+  gemini.suite('checkboxes-checked-2', child => {
     child
       .setUrl('/button-group/static/checkboxes')
       .before((actions, find) => {
         actions.waitForElementToShow('#btn-group-test-3', WAIT_TIME);
       })
       .setCaptureElements('#btn-group-test-3')
-      .capture('default');
-  });
-
-  gemini.suite('checkboxes-checked-2', child => {
-    child
-      .setUrl('/button-group/static/checkboxes')
-      .before((actions, find) => {
-        actions.waitForElementToShow('#btn-group-test-4', WAIT_TIME);
-      })
-      .setCaptureElements('#btn-group-test-4')
       .capture('default');
   });
 

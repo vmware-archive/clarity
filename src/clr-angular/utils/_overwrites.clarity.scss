@@ -25,7 +25,7 @@ $clr-layers: null;
 /*================================================================================*/
 
 // Breakpoints
-$grid-breakpoints: null; // (small: 544px, medium: 768px, large : 992px, xlarge: 1200px);
+$clr-grid-breakpoints: null; // (small: 544px, medium: 768px, large : 992px, xlarge: 1200px);
 
 // Fonts Options
 $clr-font: null; // Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; //Default font stack for Clarity
@@ -445,13 +445,6 @@ $clr-login-icon-size: null; // $clr-icon-dimension-sm;
 /*================================================================================*/
 /* Overwrite the default variable assignments in _forms.clarity.scss here:        */
 /*================================================================================*/
-
-$clr-checkbox-radio-label-height: null; //$clr-baselineRem_1;
-$clr-checkbox-radio-height: null; // $clr-icon-dimension-sm;
-$clr-form-icon-dim: null; // $clr-icon-dimension-sm;
-
-$clr-custom-checkbox-radio-top: null; // ($clr-baseline - $clr-checkbox-radio-height) / 2;
-
 // All
 $clr-form-field-border-color: null; // $clr-color-neutral-500;
 $clr-form-field-background-color: null; // $clr-color-action-500;

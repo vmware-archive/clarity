@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,8 +10,8 @@ import { User } from '../inventory/user';
 
 const CUSTOM_TOGGLE = `
 <clr-dg-column-toggle>
-    <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
-    <clr-dg-column-toggle-button>Alle auswählen!</clr-dg-column-toggle-button>
+    <clr-dg-column-toggle-title>Column Toggle Title</clr-dg-column-toggle-title>
+    <clr-dg-column-toggle-button>Select All Button</clr-dg-column-toggle-button>
 </clr-dg-column-toggle>
 `;
 
@@ -36,11 +36,6 @@ const EXAMPLE = `
     </clr-dg-row>
 
     <clr-dg-footer>
-        <!-- Optional customization of hide/show columns toggle -->
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
-            <clr-dg-column-toggle-button>Alle auswählen!</clr-dg-column-toggle-button>
-        </clr-dg-column-toggle>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
         of {{pagination.totalItems}} users
         <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>

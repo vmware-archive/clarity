@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,7 +28,7 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
     <div class="column-switch"
          *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
       <div class="switch-header">
-        <ng-container *ngIf="!customToggleTitle">Show Columns</ng-container>
+        <ng-container *ngIf="!customToggleTitle">{{commonStrings.showColumns}}</ng-container>
         <ng-content select="clr-dg-column-toggle-title"></ng-content>
         <button
           class="btn btn-sm btn-link toggle-switch-close-button"
@@ -52,12 +52,13 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
       </ul>
       <div class="switch-footer">
         <ng-content select="clr-dg-column-toggle-button"></ng-content>
-        <clr-dg-column-toggle-button *ngIf="!customToggleButton">Select All</clr-dg-column-toggle-button>
+        <clr-dg-column-toggle-button *ngIf="!customToggleButton">{{commonStrings.selectAll}}</clr-dg-column-toggle-button>
       </div>
     </div>
   `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'open' },
 })
+/** @deprecated since 2.0, remove in 3.0 */
 export class ClrDatagridColumnToggle {
   /***
    * Popover init

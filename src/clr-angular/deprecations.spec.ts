@@ -5,16 +5,26 @@
  */
 
 import { ClrForm } from './forms/common/form';
+import { ClrDatagrid } from './data/datagrid/datagrid';
+import { Selection } from './data/datagrid/providers/selection';
+import { ClrDatagridColumnToggle } from './data/datagrid/datagrid-column-toggle';
+import { ClrDatagridColumnToggleTitle } from './data/datagrid/datagrid-column-toggle-title';
+import { ClrDatagridColumnToggleButton } from './data/datagrid/datagrid-column-toggle-button';
 
 describe('Deprecations', () => {
   // When we deprecate some code, we should write a test to verify it is still in the bundle
   // and keep track of when it was deprecated, and when we plan to remove it.
 
-  describe('1.0', () => {
-    it('should no longer support clr-checkbox in button-groups');
-  });
-
   describe('2.0', () => {
+    it('should deprecate the column toggle title and button components', () => {
+      expect(ClrDatagridColumnToggle).toBeTruthy();
+      expect(ClrDatagridColumnToggleTitle).toBeTruthy();
+      expect(ClrDatagridColumnToggleButton).toBeTruthy();
+    });
+    it('should deprecate but still support clrDgRowSelection', () => {
+      // Can't grab it since its just a setter
+      expect(Object.keys(ClrDatagrid.prototype)).toContain('rowSelectionMode');
+    });
     it('should handle ClrForm.markAsDirty as ClrForm.markAsTouched', () => {
       spyOn(ClrForm.prototype, 'markAsTouched');
       ClrForm.prototype.markAsDirty();

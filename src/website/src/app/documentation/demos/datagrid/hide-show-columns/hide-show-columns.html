@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -13,12 +13,6 @@
     <code class="clr-code">clr-dg-column</code>. It defaults to showing the column but you can use the hidden property
     to pre-configure it.
 </p>
-
-<h4>Custom Toggle Strings</h4>
-<p>If you need to customize the hide/show toggle component you can override the defaults by adding a <code class="clr-doce">clr-dg-column-toggle</code> component at the beginning of the <code class="clr-code">clr-dg-footer</code> component:
-</p>
-<clr-code-snippet [clrCode]="customToggle"  clrLanguage="html"></clr-code-snippet>
-
 
 <clr-datagrid>
     <clr-dg-column>
@@ -58,10 +52,6 @@
     </clr-dg-row>
 
     <clr-dg-footer>
-        <clr-dg-column-toggle>
-            <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
-            <clr-dg-column-toggle-button>Alle auswählen!</clr-dg-column-toggle-button>
-        </clr-dg-column-toggle>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
         of {{pagination.totalItems}} users
         <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
@@ -69,4 +59,19 @@
 </clr-datagrid>
 
 <clr-code-snippet [clrCode]="example"  clrLanguage="html"></clr-code-snippet>
+
+<h4>Custom Toggle Strings</h4>
+
+<clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false">
+  <div clr-alert-item class="alert-item">
+        <span class="alert-text">
+          Overriding the column toggle text as described below is deprecated as of 2.0 and will be removed in a future major release.
+          Instead, you should use the <a routerLink="../../internationalization">internationalization documentation</a> to change the language strings.
+        </span>
+  </div>
+</clr-alert>
+
+<p>If you need to customize the hide/show toggle component you can override the defaults by adding a <code class="clr-doce">clr-dg-column-toggle</code> component at the beginning of the <code class="clr-code">clr-dg-footer</code> component:
+</p>
+<clr-code-snippet [clrCode]="customToggle"  clrLanguage="html"></clr-code-snippet>
 

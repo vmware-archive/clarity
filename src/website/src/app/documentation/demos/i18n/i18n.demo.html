@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+    <article>
+        <h5 class="component-summary" id="summary">Easily translate internal Clarity text into multiple languages.</h5>
+
+        <div id="design-guidelines">
+            <h3 id="layout">Internal language strings</h3>
+
+            <p>Clarity has a short list of text strings that it uses internally for things such as icon alt text or button text. When possible, Clarity avoids
+              using text strings that have to be translated, and rarely changes this list. Any Angular application that needs to support multiple languages
+              can create a different translation and use it for each language.</p>
+
+          <p>
+            In order to improve accessibility of its components, Clarity added a default English title to all icons
+            or non-text interactive elements internal to its components. In order to internationalize them we rely on a
+            <code class="clr-code">ClrCommonStrings</code> service that you can declare for your entire app, which will override
+            our default titles with the ones you provide. Then you just need to include it as a provider in your application.
+          </p>
+
+          <pre><code clr-code-highlight="language-ts" ngNonBindable>
+@Injectable()
+export class MyCommonStringsService implements ClrCommonStrings &#123;
+  open = 'abra';
+&#125;
+</code></pre>
+          <pre><code clr-code-highlight="language-ts" ngNonBindable>
+@NgModule(&#123;
+  imports: [...],
+  declarations: [...],
+  providers: [&#123; provide: ClrCommonStrings, useClass: MyCommonStringsService &#125;]
+&#125;)
+export class AppModule &#123;&#125;
+</code></pre>
+          <p>
+            The list of strings available to configure can be found by simply looking at the declaration of the
+            <code class="clr-code">ClrCommonStrings</code> interface, which is found below.
+          </p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="left">Property name</th>
+                <th class="left">Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let string of strings">
+                <td class="left">{{string.key}}</td>
+                <td class="left">{{string.role}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>You might also load your strings from an external service, which you would do something like the following service implementation.
+            This would fetch the strings and replace them in the service at runtime, just substitute the server service with your own.</p>
+
+<pre><code clr-code-highlight="language-ts" ngNonBindable>
+@Injectable()
+export class MyCommonStringsService implements ClrCommonStrings &#123;
+  constructor(@Inject(LOCALE_ID) locale: string, server: MyServer) &#123;
+    server.fetchTexts(locale).subscribe(texts =&gt; &#123;
+      // Assign the strings to the correct properties to implement ClrCommonStrings
+      this.open = texts.genericOpenText;
+      ...
+    &#125;);
+  &#125;
+&#125;
+</code></pre>
+        </div>
+    </article>
+</clr-doc-wrapper>

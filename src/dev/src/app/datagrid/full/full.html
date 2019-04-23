@@ -24,15 +24,15 @@
 
   <clr-checkbox-container clrInline>
     <clr-checkbox-wrapper>
-      <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable">
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable" name="selectable">
       <label>Selectable</label>
     </clr-checkbox-wrapper>
     <clr-checkbox-wrapper>
-      <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum">
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum" name="lorem-ipsum">
       <label>Multi-line text</label>
     </clr-checkbox-wrapper>
     <clr-checkbox-wrapper>
-      <input type="checkbox" clrCheckbox [(ngModel)]="options.server">
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.server" name="server">
       <label>Server-driven</label>
     </clr-checkbox-wrapper>
   </clr-checkbox-container>

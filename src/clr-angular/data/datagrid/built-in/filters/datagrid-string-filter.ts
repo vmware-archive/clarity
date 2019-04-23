@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,7 +26,7 @@ import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
                 mid-change detection when the input is destroyed.
             -->
             <input #input type="text" name="search" [(ngModel)]="value" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()"/>
+                (keyup.enter)="close()" (keyup.escape)="close()" class="clr-input" />
         </clr-dg-filter>
     `,
 })

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,7 @@ import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 
 import { ClrTreeViewModule } from './tree-view.module';
 import { ClrIconModule } from '../../icon/icon.module';
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
@@ -38,7 +38,7 @@ interface TsApiContext {
   node: ClrTreeNode<void>;
   parent: ClrTreeNode<void>;
   featureService: TreeFeaturesService<void>;
-  expandService: Expand;
+  expandService: IfExpandService;
 }
 
 export default function(): void {
@@ -60,7 +60,7 @@ export default function(): void {
     describe('Typescript API', function() {
       beforeEach(function(this: TsApiContext) {
         this.featureService = new TreeFeaturesService<void>();
-        this.expandService = new Expand();
+        this.expandService = new IfExpandService();
         const stringsService = new ClrCommonStringsService();
         this.parent = new ClrTreeNode(
           'parent',
@@ -243,7 +243,7 @@ export default function(): void {
       });
 
       it('replaces the caret with a spinner when the expand service is loading', function(this: Context) {
-        this.getClarityProvider(Expand).loading = true;
+        this.getClarityProvider(IfExpandService).loading = true;
         this.detectChanges();
         expect(this.clarityElement.querySelector('.clr-treenode-caret')).toBeNull();
         expect(this.clarityElement.querySelector('.clr-treenode-spinner')).not.toBeNull();

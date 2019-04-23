@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ClrIconModule } from '../../icon/icon.module';
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 
 import { VerticalNavGroupRegistrationService } from './providers/vertical-nav-group-registration.service';
 import { VerticalNavService } from './providers/vertical-nav.service';
@@ -32,7 +32,7 @@ export default function(): void {
 
     describe('Nav Group Internals', () => {
       let navGroup: ClrVerticalNavGroup;
-      let expandService: Expand;
+      let expandService: IfExpandService;
       let vertNavService: VerticalNavService;
 
       beforeEach(() => {
@@ -40,7 +40,7 @@ export default function(): void {
         fixture.detectChanges();
         compiled = fixture.nativeElement;
         navGroup = fixture.componentInstance.navGroup;
-        expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
+        expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(IfExpandService);
         vertNavService = TestBed.get(VerticalNavService);
       });
 
@@ -153,14 +153,14 @@ export default function(): void {
 
     describe('Template API', () => {
       let navGroup: ClrVerticalNavGroup;
-      let expandService: Expand;
+      let expandService: IfExpandService;
 
       beforeEach(() => {
         fixture = TestBed.createComponent(TemplateAPITestComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
         navGroup = fixture.componentInstance.navGroup;
-        expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(Expand);
+        expandService = fixture.debugElement.query(By.directive(ClrVerticalNavGroup)).injector.get(IfExpandService);
       });
 
       afterEach(() => {

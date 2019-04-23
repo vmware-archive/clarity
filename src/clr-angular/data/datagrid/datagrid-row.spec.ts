@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
-import { Expand } from '../../utils/expand/providers/expand';
+import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 import { ClrDatagridRow } from './datagrid-row';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
@@ -259,12 +259,12 @@ export default function(): void {
     describe('Expand/Collapse', function() {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridRow<Item>, ExpandTest>;
-      let expand: Expand;
+      let expand: DatagridIfExpandService;
 
       beforeEach(function() {
         context = this.create(ClrDatagridRow, ExpandTest, DATAGRID_SPEC_PROVIDERS);
         context.detectChanges();
-        expand = context.getClarityProvider(Expand);
+        expand = context.getClarityProvider(DatagridIfExpandService);
       });
 
       it('registers a LoadingListener', function() {

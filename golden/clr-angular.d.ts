@@ -396,7 +396,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     commonStrings: ClrCommonStrings;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
-    expand: Expand;
+    expand: DatagridIfExpandService;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
@@ -408,7 +408,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
-    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: Expand, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
@@ -420,13 +420,13 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
 export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
     SELECTION_TYPE: typeof SelectionType;
     cells: QueryList<ClrDatagridCell>;
-    expand: Expand;
+    expand: DatagridIfExpandService;
     expandableRows: ExpandableRowsCount;
     replace: boolean;
     replacedRow: boolean;
     rowActionService: RowActionService;
     selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, expand: Expand, expandableRows: ExpandableRowsCount);
+    constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
 }
@@ -670,7 +670,7 @@ export declare class ClrIfError {
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
-    constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: Expand);
+    constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: IfExpandService);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -1084,7 +1084,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     _model: TreeNodeModel<T>;
     readonly ariaSelected: boolean;
     commonStrings: ClrCommonStrings;
-    expandService: Expand;
+    expandService: IfExpandService;
     expandable: boolean | undefined;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
@@ -1094,7 +1094,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     selected: ClrSelectedState | boolean;
     selectedChange: EventEmitter<ClrSelectedState>;
     readonly treeNodeRole: string;
-    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: Expand, commonStrings: ClrCommonStrings, injector: Injector);
+    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStrings, injector: Injector);
     isExpandable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -1120,7 +1120,7 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     userExpandedInput: boolean;
-    constructor(_itemExpand: Expand, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStrings);
+    constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStrings);
     collapseGroup(): void;
     expandAnimationDone($event: AnimationEvent): void;
     expandGroup(): void;
@@ -1358,8 +1358,6 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
 }
 
 export declare const DEFAULT_BUTTON_TYPES: any;
-
-export declare const EXPAND_DIRECTIVES: Type<any>[];
 
 export declare function fade(opacity?: number): AnimationMetadata[];
 

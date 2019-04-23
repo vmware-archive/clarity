@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { animate, AnimationEvent, state, style, transition, trigger } from '@ang
 import { AfterContentInit, Component, EventEmitter, HostBinding, Input, OnDestroy, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Expand } from '../../utils/expand/providers/expand';
+import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 
 import { VerticalNavGroupRegistrationService } from './providers/vertical-nav-group-registration.service';
 import { VerticalNavGroupService } from './providers/vertical-nav-group.service';
@@ -21,7 +21,7 @@ const COLLAPSED_STATE: string = 'collapsed';
 @Component({
   selector: 'clr-vertical-nav-group',
   templateUrl: './vertical-nav-group.html',
-  providers: [Expand, VerticalNavGroupService],
+  providers: [IfExpandService, VerticalNavGroupService],
   animations: [
     trigger('clrExpand', [
       state(EXPANDED_STATE, style({ height: '*' })),
@@ -33,7 +33,7 @@ const COLLAPSED_STATE: string = 'collapsed';
 })
 export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
   constructor(
-    private _itemExpand: Expand,
+    private _itemExpand: IfExpandService,
     private _navGroupRegistrationService: VerticalNavGroupRegistrationService,
     private _navGroupService: VerticalNavGroupService,
     private _navService: VerticalNavService,

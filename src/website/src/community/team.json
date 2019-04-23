@@ -19,15 +19,6 @@
       "workstreams": ["UX", "UI", "NG"]
     },
     {
-      "name": "Eudes Petonnet-Vincent",
-      "role": "Technical Lead",
-      "blurb":
-        "Eudes has been the technical lead for Clarity since its inception and continues to drive development and innovation. He created the architecture of the Clarity project as well as many of its most complex Angular components like the datagrid.",
-      "twitter": "EudesPV",
-      "img": "eudes.png",
-      "workstreams": ["UI", "CR", "NG"]
-    },
-    {
       "name": "Jeeyun Lim",
       "role": "Developer",
       "blurb":
@@ -35,15 +26,6 @@
       "img": "jeeyun.png",
       "twitter": "jeeyunit",
       "workstreams": ["CR", "NG"]
-    },
-    {
-      "name": "Red Dolan",
-      "role": "Designer",
-      "blurb":
-        "Red works on strategy and design interactions for Clarity. He also researches user-driven needs and tests those solutions. Contact him for any Sketch template or UX-related questions or feedback.",
-      "twitter": "reddolan",
-      "img": "red.png",
-      "workstreams": ["UX", "CR"]
     },
     {
       "name": "Lilia Kim",

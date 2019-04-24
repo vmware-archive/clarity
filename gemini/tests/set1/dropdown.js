@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -50,14 +50,7 @@ gemini.suite('dropdown', child => {
       })
       .setCaptureElements('.clr-example')
       .capture('default')
-      .capture('deprecated-clicked', function(actions, find) {
-        this.deprecated = find('#deprecated');
-        actions.click(this.deprecated);
-        actions.wait(WAIT_TIME);
-      })
       .capture('no-if-open-clicked', function(actions, find) {
-        // Close the previous dropdown
-        actions.click(this.deprecated);
         this.noIfOpen = find('#no-if-open');
         actions.click(this.noIfOpen);
         actions.wait(WAIT_TIME);

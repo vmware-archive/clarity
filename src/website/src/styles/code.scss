@@ -52,3 +52,10 @@ pre {
   background: transparent;
   padding: 0 0 $clr_baselineRem_1 $clr_baselineRem_1;
 }
+
+// Fixes specific prism issue only for labels with badges (#1700: https://github.com/vmware/clarity/issues/1700)
+.prism-fix {
+  pre {
+    margin-top: 7px;
+  }
+}

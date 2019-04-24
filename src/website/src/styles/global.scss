@@ -1,26 +1,3 @@
-$bl-0_25: baselineRem(0.25);
-$bl-0_5: baselineRem(0.5);
-$bl-0_75: baselineRem(0.75);
-$bl-1_5: baselineRem(1.5);
-$bl-0_833: baselineRem(0.83333);
-$bl-1_0: baselineRem(1);
-$bl-1_5: baselineRem(1.5);
-$bl-2_0: baselineRem(2);
-$bl-2_5: baselineRem(2.5);
-$bl-3_0: baselineRem(3);
-$bl-4_0: baselineRem(4);
-$clrweb-content-maxwidth: 900px;
-@mixin clarityWebBoxShadow {
-  box-shadow: 0 3px 0 0 #d7d7d7;
-}
-
-@mixin clarityHeaderBackground {
-  background-color: #002538;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-}
-
 .spacious {
   margin-top: $bl-2_0;
 }
@@ -152,7 +129,6 @@ code[class*='language-'] {
 }
 
 @media (max-width: 991px) {
-  .layout-get-started,
   .layout-components {
     .content-area > section {
       width: 100%;
@@ -220,7 +196,6 @@ a.btn-primary {
 }
 
 .layout-documentation,
-.layout-get-started,
 .layout-news {
   .main-container .content-container .content-area {
     padding-left: $bl-1_5;
@@ -230,7 +205,6 @@ a.btn-primary {
 
 // custom whitespace changes for website
 .layout-documentation,
-.layout-get-started,
 .layout-news {
   h2,
   h3 {
@@ -281,4 +255,46 @@ a.btn-primary {
 .margin-right-0_25 {
   // Fix for badges demo in tree-view
   margin-right: 0.25rem;
+}
+
+// Global Pages
+.layout-home {
+  .main-container {
+    height: auto;
+
+    .content-area {
+      overflow-x: hidden;
+      padding: 0;
+    }
+  }
+}
+
+.layout-icons {
+  .main-container {
+    display: unset;
+    transform: none;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    /*  translate3d is here for better performance.
+            However, it affects the .headerbackdrop layer order
+            so it should be set to none when the screen is small.   */
+
+    transform: translate3d(0, 0, 0);
+    z-index: map-get($clr-layers, sidepanel);
+  }
+
+  .main-container {
+    &.open-hamburger-menu,
+    &.open-overflow-menu {
+      .header {
+        transform: none;
+      }
+    }
+  }
 }

@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'home',
   templateUrl: 'home.component.html',
+  styleUrls: ['./home.component.scss'],
   host: {
     '[class.content-container]': 'true',
   },

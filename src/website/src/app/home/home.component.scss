@@ -1,3 +1,7 @@
+@import '../../../../clr-angular/color/variables.color';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .layout-home {
   background-color: $clr-color-neutral-50;
 
@@ -104,16 +108,16 @@
     position: absolute;
     bottom: 0;
     left: 612px;
-    background-image: url('../assets/images/clarity-logo.svg');
+    background-image: url('../../assets/images/clarity-logo.svg');
     background-size: cover;
     background-position: center center;
 
     &-spring {
-      background-image: url('../assets/images/clarity-logo-spring.svg');
+      background-image: url('../../assets/images/clarity-logo-spring.svg');
     }
 
     &-winter {
-      background-image: url('../assets/images/clarity-logo-winter.svg');
+      background-image: url('../../assets/images/clarity-logo-winter.svg');
     }
   }
 }
@@ -209,19 +213,19 @@
       background-repeat: no-repeat;
 
       &.bulb {
-        background-image: url('../assets/images/home/ic-bulb.svg');
+        background-image: url('../../assets/images/home/ic-bulb.svg');
       }
 
       &.evolving {
-        background-image: url('../assets/images/home/ic_evolving.svg');
+        background-image: url('../../assets/images/home/ic_evolving.svg');
       }
 
       &.rapid {
-        background-image: url('../assets/images/home/ic_rapid.svg');
+        background-image: url('../../assets/images/home/ic_rapid.svg');
       }
 
       &.reliable {
-        background-image: url('../assets/images/home/ic_reliable.svg');
+        background-image: url('../../assets/images/home/ic_reliable.svg');
       }
     }
 
@@ -325,13 +329,13 @@ a.home-contact_link {
   }
 
   &.mit-link > .img {
-    background-image: url('../assets/images/home/MIT.png');
+    background-image: url('../../assets/images/home/MIT.png');
     background-position: center center;
     background-repeat: no-repeat;
   }
 
   &.twr-link > .img {
-    background-image: url('../assets/images/home/twitter.svg');
+    background-image: url('../../assets/images/home/twitter.svg');
     background-position: center center;
     background-repeat: no-repeat;
   }

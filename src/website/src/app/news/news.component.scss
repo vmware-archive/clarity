@@ -1,33 +1,42 @@
-.layout-news {
-  .content-area > section {
-    max-width: $clrweb-content-maxwidth;
-    &:first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-    h2:first-of-type {
-      margin-top: 24px;
-    }
+@import './../../styles/variables';
+@import './../../styles/mixins';
+
+.content-area > section {
+  max-width: $clrweb-content-maxwidth;
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
   }
-  ul.list {
-    margin-top: 4px;
-    margin-left: 1.3em;
+
+  h2:first-of-type {
+    margin-top: 24px;
   }
+}
+
+ul.list {
+  margin-top: 4px;
+  margin-left: 1.3em;
 }
 
 ul.whats-new-highlights {
   margin-top: $bl-0_5;
+
   h6 + p {
     margin-top: 0;
   }
+
   & > li {
     margin-top: $bl-1_0;
+
     &:first-child {
       margin-top: 0;
+
       & > h6 {
         margin-top: 0;
       }
     }
+
     & > h6 {
       font-weight: normal;
       font-size: 18px;
@@ -42,9 +51,11 @@ ul.whats-new-highlights {
   h2 {
     margin-top: $bl-1_5;
   }
+
   h4 {
     margin-top: $bl-1_0;
   }
+
   h2 + h4 {
     margin-top: $bl-0_25;
   }
@@ -69,6 +80,7 @@ ul.whats-new-highlights {
   padding-bottom: $bl-0_25;
   padding-top: $bl-0_5;
   position: static;
+
   .summary-blocks {
     &::before,
     &::after {
@@ -77,33 +89,41 @@ ul.whats-new-highlights {
       content: '';
     }
   }
+
   .summary-block {
     float: left;
     margin-right: $bl-0_75;
   }
+
   .summary-block-title {
     @extend %block-title-styles;
   }
+
   .summary-block-details {
     @extend %block-content-styles;
     & > .count {
       font-weight: 600;
     }
   }
+
   .whats-new-mediablock {
     width: baselineRem(8);
     margin-bottom: 0;
     display: inline-flex;
+
     .icon {
       height: $bl-2_0;
       width: $bl-2_0;
     }
+
     .description {
       margin-top: 0;
       margin-left: $bl-0_25;
+
       & > .title {
         @extend %block-title-styles;
       }
+
       & > p.title + p {
         @extend %block-content-styles;
         font-size: $bl-0_5;
@@ -121,7 +141,7 @@ ul.whats-new-highlights {
   white-space: nowrap;
 }
 
-.layout-news hr {
+hr {
   color: #ddd;
   border: 0 none;
   border-bottom: 1px solid #ddd;
@@ -151,7 +171,7 @@ ul.whats-new-highlights {
     .summary-block {
       float: none;
       padding: $bl-0_25 0;
-      margin: 0 (-1 * $bl-0_25);
+      margin: 0 $bl-0_25;
     }
   }
 }

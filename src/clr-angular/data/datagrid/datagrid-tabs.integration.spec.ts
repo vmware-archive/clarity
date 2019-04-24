@@ -36,7 +36,7 @@ class IntegrationTest {
 
 // Verifies issue #3273: https://github.com/vmware/clarity/issues/3273
 export default function(): void {
-  fdescribe('ClrDatagrid and ClrTabs integration', function() {
+  describe('ClrDatagrid and ClrTabs integration', function() {
     let context: TestContext<ClrDatagrid, IntegrationTest>;
 
     beforeEach(function() {

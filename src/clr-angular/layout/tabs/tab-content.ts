@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
 import { AriaService } from './providers/aria.service';
 
@@ -12,7 +12,6 @@ let nbTabContentComponents: number = 0;
 @Component({
   selector: 'clr-tab-content',
   template: `
-    <ng-template #tabContentProjectedRef>
       <section [id]="tabContentId" role="tabpanel" class="tab-content" [class.active]="active"
                [hidden]="!active"
                [attr.aria-labelledby]="ariaLabelledBy"
@@ -20,12 +19,9 @@ let nbTabContentComponents: number = 0;
                [attr.aria-hidden]="!active">
         <ng-content></ng-content>
       </section>
-    </ng-template>
     `,
 })
 export class ClrTabContent {
-  @ViewChild('tabContentProjectedRef') templateRef: TemplateRef<ClrTabContent>;
-
   constructor(
     public ifActiveService: IfActiveService,
     @Inject(IF_ACTIVE_ID) public id: number,

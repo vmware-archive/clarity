@@ -35,6 +35,7 @@ import DatagridPlaceholderSpecs from './datagrid-placeholder.spec';
 import DatagridRowDetailSpecs from './datagrid-row-detail.spec';
 import DatagridRowSpecs from './datagrid-row.spec';
 import DatagridSpecs from './datagrid.spec';
+import DatagridTabsIntegrationSpecs from './datagrid-tabs.integration.spec';
 import { addHelpers } from './helpers.spec';
 import DisplayModeServiceSpecs from './providers/display-mode.service.spec';
 import FiltersProviderSpecs from './providers/filters.spec';
@@ -84,6 +85,7 @@ describe('Datagrid', function() {
     DatagridPaginationIntegrationSpecs();
     DatagridFooterSpecs();
     DatagridPlaceholderSpecs();
+    DatagridTabsIntegrationSpecs();
     DatagridSpecs();
     DatagridColumnToggleSpecs();
     DatagridColumnToggleButtonSpecs();

@@ -29,8 +29,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   danger = 'Error';
   rowActions = 'Available actions';
   pickColumns = 'Show or hide columns';
-  from = 'From';
-  to = 'To';
+  min = 'Min';
+  max = 'Max';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

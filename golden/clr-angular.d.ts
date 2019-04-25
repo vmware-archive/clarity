@@ -210,9 +210,10 @@ export declare abstract class ClrCommonStrings {
     current?: string;
     danger?: string;
     expand?: string;
-    from?: string;
     hide?: string;
     info?: string;
+    max?: string;
+    min?: string;
     more?: string;
     next?: string;
     open?: string;
@@ -223,7 +224,6 @@ export declare abstract class ClrCommonStrings {
     selectAll?: string;
     show?: string;
     success?: string;
-    to?: string;
     warning?: string;
 }
 

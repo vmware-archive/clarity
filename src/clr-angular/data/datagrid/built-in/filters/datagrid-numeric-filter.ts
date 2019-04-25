@@ -26,12 +26,12 @@ import { ClrCommonStrings } from '../../../../utils/i18n/common-strings.interfac
                 mid-change detection when the input is destroyed.
             -->
             <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 120px"
-                [placeholder]="commonStrings.from"/>
-                &nbsp;
+                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 78px"
+                [placeholder]="commonStrings.min"/>
+                <span class="datagrid-filter-input-spacer"></span>
             <input #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 120px"
-                [placeholder]="commonStrings.to"/>
+                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 78px"
+                [placeholder]="commonStrings.max"/>
         </clr-dg-filter>
     `,
 })

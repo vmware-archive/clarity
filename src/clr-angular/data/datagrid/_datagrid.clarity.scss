@@ -350,6 +350,11 @@
         margin-left: auto;
       }
 
+      .datagrid-filter-input-spacer {
+        width: 0.5rem;
+        display: inline-block;
+      }
+
       &.asc,
       &.desc {
         font-weight: 600;

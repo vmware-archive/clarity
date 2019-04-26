@@ -81,7 +81,7 @@
     }
   }
 
-  &#{$table}-compact {
+  #{$table}-compact {
     #{$th},
     #{$td} {
       padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);

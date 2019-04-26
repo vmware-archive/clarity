@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -11,15 +11,6 @@
 @function rem($remSize) {
   @warn 'rem() is deprecated. Please change units to rem.';
   @return $remSize * $clr-font-base-size * 1px;
-}
-
-//Get a selector for all the input types specified
-@function inputs($types...) {
-  $inputs: ();
-  @each $type in $types {
-    $inputs: $inputs, unquote('input[type=' + $type + ']');
-  }
-  @return quote($inputs);
 }
 
 @mixin clr-appearance-normal() {

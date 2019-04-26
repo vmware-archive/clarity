@@ -5,12 +5,12 @@
 // TODO: Split badges and labels into separate files.
 
 @mixin generateLabelStyles($color: gray, $alias: 1) {
-  &.label-#{$color},
+  &.label-#{'' + $color},
   &.label-#{$alias} {
     border: $clr-label-borderwidth solid getLabelColor($color, bg-color);
   }
 
-  &.clickable.label-#{$color} {
+  &.clickable.label-#{'' + $color} {
     &:hover,
     &:active {
       text-decoration: none;
@@ -23,14 +23,14 @@
     }
   }
 
-  &.label-#{$color} > .badge {
+  &.label-#{'' + $color} > .badge {
     background: getBadgeColor($color, bg-color);
     color: getBadgeColor($color, color);
   }
 }
 
 @mixin generateBadgeStyles($color: gray, $alias: 1) {
-  &.badge-#{$color},
+  &.badge-#{'' + $color},
   &.badge-#{$alias} {
     background: getBadgeColor($color, bg-color);
     color: getBadgeColor($color, color);

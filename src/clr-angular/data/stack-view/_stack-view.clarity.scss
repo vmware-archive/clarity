@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+$styledInputs: 'input[type=text], input[type=password], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=date], input[type=time], input[type=datetime-local]';
+
 @include exports('stack-view.clarity') {
   .stack-header {
     font-weight: $clr-stack-font-weight;

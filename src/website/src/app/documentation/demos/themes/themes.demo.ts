@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,9 +15,6 @@ const UI_NO_NODE_IMPORTS = `
 `;
 
 const UI_CUSTOM_CLARITY_DARK_SCSS_FILE = `
-// Clarity Dependency SCSS
-@import "../node_modules/@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
-
 @import "../node_modules/@clr/ui/src/utils/theme.dark.clarity"; // Overwrites with dark theme
 
 // Clarity Component SCSS
@@ -25,10 +22,7 @@ const UI_CUSTOM_CLARITY_DARK_SCSS_FILE = `
 `;
 
 const UI_CUSTOM_CLARITY_DARK_THEME_SCSS_FILE = `
-// Clarity Dependency SCSS
-@import "../node_modules/@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
-
-@import "../node_modules/@clr/ui/src/utils/theme.dark.clarity"; // Overwrites with dark theme
+@import "../node_modules/@clr/ui/src/utils/theme.dark.clarity"; // Dark theme variables
 
 // Your Application Theme File
 @import "./theme.scss";
@@ -38,17 +32,11 @@ const UI_CUSTOM_CLARITY_DARK_THEME_SCSS_FILE = `
 `;
 
 const UI_CUSTOM_CLARITY_LIGHT_SCSS_FILE = `
-// Clarity Dependency SCSS
-@import "../node_modules/@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
-
 // Clarity Component SCSS
 @import "../node_modules/@clr/ui/src/utils/components.clarity";
 `;
 
 const UI_CUSTOM_CLARITY_LIGHT_THEME_SCSS_FILE = `
-// Clarity Dependency SCSS
-@import "../node_modules/@clr/ui/src/utils/dependencies.clarity"; // Includes light theme
-
 // Your Application Theme File
 @import "./theme.scss";
 

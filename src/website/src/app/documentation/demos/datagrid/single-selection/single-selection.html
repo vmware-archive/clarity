@@ -54,13 +54,13 @@
 <clr-code-snippet [clrCode]="example" clrLanguage="html"></clr-code-snippet>
 
 <clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false">
-  <div clr-alert-item class="alert-item">
+  <clr-alert-item>
         <span class="alert-text">
           <code class="clr-code">clrDgRowSelection</code> has been deprecated in 2.0 and will be removed in a future major release.
           It is impossible to support this functionality properly and also comply with accessibility standards for Clarity, and
           we no longer can recommend using this pattern. The workaround is to simply use single selection without row selection.
         </span>
-  </div>
+  </clr-alert-item>
 </clr-alert>
 
 <p>
@@ -72,14 +72,14 @@
 </p>
 
 <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false">
-    <div clr-alert-item class="alert-item">
+    <clr-alert-item>
         <span class="alert-text">
             Do not use <code class="clr-code">[clrDgRowSelection]</code> if your row contains any type of clickable
             elements (buttons, links, inputs, expand caret, single-row actions, etc.).
             Doing so would produce invalid HTML in the form of nested buttons,
             which will break in various unpredictable ways depending on the browser.
         </span>
-    </div>
+    </clr-alert-item>
 </clr-alert>
 
 <div class="card card-block">

@@ -63,12 +63,12 @@
 <h4>Custom Toggle Strings</h4>
 
 <clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false">
-  <div clr-alert-item class="alert-item">
+  <clr-alert-item>
         <span class="alert-text">
           Overriding the column toggle text as described below is deprecated as of 2.0 and will be removed in a future major release.
           Instead, you should use the <a routerLink="../../internationalization">internationalization documentation</a> to change the language strings.
         </span>
-  </div>
+  </clr-alert-item>
 </clr-alert>
 
 <p>If you need to customize the hide/show toggle component you can override the defaults by adding a <code class="clr-doce">clr-dg-column-toggle</code> component at the beginning of the <code class="clr-code">clr-dg-footer</code> component:

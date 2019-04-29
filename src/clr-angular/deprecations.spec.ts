@@ -6,7 +6,6 @@
 
 import { ClrForm } from './forms/common/form';
 import { ClrDatagrid } from './data/datagrid/datagrid';
-import { Selection } from './data/datagrid/providers/selection';
 import { ClrDatagridColumnToggle } from './data/datagrid/datagrid-column-toggle';
 import { ClrDatagridColumnToggleTitle } from './data/datagrid/datagrid-column-toggle-title';
 import { ClrDatagridColumnToggleButton } from './data/datagrid/datagrid-column-toggle-button';

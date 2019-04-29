@@ -201,6 +201,7 @@ export declare abstract class ClrCommonStrings {
     select?: string;
     selectAll?: string;
     show?: string;
+    showColumns?: string;
     success?: string;
     warning?: string;
 }
@@ -231,7 +232,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     placeholder: ClrDatagridPlaceholder<T>;
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
-    rowSelectionMode: boolean;
+    /** @deprecated */ rowSelectionMode: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];

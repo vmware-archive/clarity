@@ -3,15 +3,17 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, TemplateRef, ViewChild } from '@angular/core';
 import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
 import { AriaService } from './providers/aria.service';
+import { TabsService } from './providers/tabs.service';
 
 let nbTabContentComponents: number = 0;
 
 @Component({
   selector: 'clr-tab-content',
   template: `
+    <ng-template #tabContentProjectedRef>
       <section [id]="tabContentId" role="tabpanel" class="tab-content" [class.active]="active"
                [hidden]="!active"
                [attr.aria-labelledby]="ariaLabelledBy"
@@ -19,17 +21,24 @@ let nbTabContentComponents: number = 0;
                [attr.aria-hidden]="!active">
         <ng-content></ng-content>
       </section>
+    </ng-template>
     `,
 })
 export class ClrTabContent {
   constructor(
     public ifActiveService: IfActiveService,
     @Inject(IF_ACTIVE_ID) public id: number,
-    private ariaService: AriaService
+    private ariaService: AriaService,
+    private tabsService: TabsService
   ) {
     if (!this.tabContentId) {
       this.tabContentId = 'clr-tab-content-' + nbTabContentComponents++;
     }
+  }
+
+  @ViewChild('tabContentProjectedRef')
+  private set templateRef(value: TemplateRef<ClrTabContent>) {
+    this.tabsService.tabContentViewContainer.createEmbeddedView(value);
   }
 
   get ariaLabelledBy(): string {

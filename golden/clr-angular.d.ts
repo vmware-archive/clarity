@@ -995,7 +995,7 @@ export declare class ClrTabContent {
     id: number;
     ifActiveService: IfActiveService;
     tabContentId: string;
-    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService);
+    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, tabsService: TabsService);
 }
 
 export declare class ClrTabLink {

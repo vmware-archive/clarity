@@ -1,6 +1,6 @@
 {
   "name": "@clr/clarity",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-rc.1",
   "private": true,
   "scripts": {
     "build:icons:web": "webpack --config webpack.icons.config.js",
@@ -65,9 +65,10 @@
     "website:build": "ng build website --prod --progress=false && ng run website:server:production && npm run website:compile",
     "website:start": "npm run website:news && ng serve website",
     "website:render": "node dist/website/prerender",
+    "website:404": "cpy --rename 404.html dist/website/browser/index.html dist/website/browser",
     "website:functions": "netlify-lambda build scripts/netlify",
     "website:news": "node src/website/generate-news",
-    "website:prerender": "npm-run-all website:news website:build website:render website:functions",
+    "website:prerender": "npm-run-all website:news website:build website:render website:functions website:404",
     "website:preview": "lite-server --baseDir=dist/website/browser"
   },
   "dependencies": {

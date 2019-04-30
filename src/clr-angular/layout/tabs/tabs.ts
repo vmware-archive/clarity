@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,7 +20,6 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { TabsService } from './providers/tabs.service';
 import { ClrTab } from './tab';
 import { ClrTabLink } from './tab-link.directive';
-import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { TabsLayout } from './enums/tabs-layout.enum';
@@ -59,10 +58,7 @@ import { Subscription } from 'rxjs';
                 </div>
             </ng-container>
         </ul>
-        <!--tab content-->
-        <ng-container *ngFor="let content of tabContents">
-            <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
-        </ng-container>
+        <ng-content></ng-content>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
@@ -90,10 +86,6 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   private _tabLinkDirectives: ClrTabLink[] = [];
   get tabLinkDirectives(): ClrTabLink[] {
     return this._tabLinkDirectives;
-  }
-
-  get tabContents(): ClrTabContent[] {
-    return this.tabs.filter(tab => !!tab.tabContent).map(tab => tab.tabContent);
   }
 
   constructor(

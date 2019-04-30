@@ -995,7 +995,6 @@ export declare class ClrTabContent {
     id: number;
     ifActiveService: IfActiveService;
     tabContentId: string;
-    templateRef: TemplateRef<ClrTabContent>;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService);
 }
 
@@ -1023,7 +1022,6 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     ifOpenService: IfOpenService;
     readonly isVertical: boolean;
     layout: TabsLayout;
-    readonly tabContents: ClrTabContent[];
     readonly tabIds: string;
     readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;

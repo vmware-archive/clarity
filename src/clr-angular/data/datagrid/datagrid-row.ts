@@ -85,11 +85,13 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   private expandedState;
 
   @HostBinding('@expandAnim')
+  /* tslint:disable:no-unused-variable */
   private get expandAnim() {
     return { value: this.expandedState, params: { oldHeight: this.oldHeight } };
   }
 
   @HostBinding('style.height') private activeHeight: string = 'auto';
+  /* tslint:disable:no-unused-variable */
 
   constructor(
     public selection: Selection<T>,

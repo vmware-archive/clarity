@@ -229,6 +229,7 @@ describe('Tabs', () => {
       ifActiveService.current = originalId;
       context.detectChanges();
       expect(tabsService.tabContentViewContainer.indexOf(initialView)).toBe(-1);
+      expect(compiled.querySelectorAll('section').length).toEqual(1);
     });
   });
 

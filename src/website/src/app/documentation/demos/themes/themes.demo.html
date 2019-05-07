@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMWare, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMWare, Inc. All Rights Reserved.
   ~ This software is released under MIT License.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -275,7 +275,9 @@
             <clr-code-snippet [clrCode]="uiWebpackImports" [clrDisablePrism]="true"></clr-code-snippet>
             <h4 style="margin-bottom: 12px;">Custom Themes</h4>
             <p>If you need to customize components for you application we suggest starting with either the
-                light theme or the dark theme and override variables from there to suite your customizations.</p>
+                light theme or the dark theme and override variables from there to suite your customizations. For
+                now, the best place to find a comprehensive list of component variables is in the
+                <a href="//github.com/vmware/clarity/blob/master/src/clr-angular/utils/_variables.clarity.scss">_variables.clarity.scss</a> file.</p>
             <clr-tabs>
                 <clr-tab>
                     <button clrTabLink="">Light Theme Base</button>
@@ -287,24 +289,15 @@
                         </p>
                         <h6>Remove Clarity CSS from your build configuration</h6>
                         <p>First, since we are going to be creating custom component styles the first step is to remove 
-                            all
-                            of the Clarity css from your build process.</p>
+                            all of the Clarity css from your build process.</p>
                         <clr-code-snippet [clrCode]="uiNoNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
                         <h6>Add (or modify) your applications main.scss file</h6>
-                        <p>Next, we need to include the Clarity dependencies and component styles. This example shows 
-                            one
-                            way of adding the Clarity dependencies and component styles based on standard
-                            <code class="clr-code">npm</code> installation into a
-                            <code class="clr-code">node_modules</code> directory of the project. In this
-                            example the <code class="clr-code">styles.scss</code> file lives at the top of a standard
+                        <p>Next, we need to include the the application scss variable overrides and the
+                            Clarity component styles. This example shows one way of adding the Clarity dependencies
+                            and component styles based on standard <code class="clr-code">npm</code> installation into a
+                            <code class="clr-code">node_modules</code> directory of the project. In this example the
+                            <code class="clr-code">styles.scss</code> file lives at the top of a standard
                             angular-cli application <code class="clr-code">src</code> folder.</p>
-                        <clr-code-snippet [clrCode]="uiCustomClarityLightScssFile"
-                                          [clrDisablePrism]="true"></clr-code-snippet>
-                        <h6>Add a custom theme file</h6>
-                        <p>Finally, sandwich your custom theme file between the Clarity dependency SCSS and the Clarity
-                            component SCSS. It will hold the values you choose to overwrite as you customize your theme.
-                            In this example the <code class="clr-code">styles.scss</code> file lives at the top of a
-                            standard angular-cli application <code class="clr-code">src</code> folder.</p>
                         <clr-code-snippet [clrCode]="uiCustomClarityLightThemeScssFile"
                                           [clrDisablePrism]="true"></clr-code-snippet>
                     </clr-tab-content>
@@ -323,21 +316,11 @@
                         <clr-code-snippet [clrCode]="uiNoNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
                         <h6>Add or modify your application's main.scss file</h6>
                         <p>Next, we need to include the Clarity dependencies and component styles. This example shows 
-                            one
-                            way of
-                            adding the Clarity dependencies and component styles based on standard <code 
-                            class="clr-code">npm</code>
-                            installation into a <code class="clr-code">node_modules</code> directory of the project. In 
-                            this
-                            example, the <code class="clr-code">styles.scss</code> file lives at the top of a standard
-                            angular-cli application src folder.</p>
-                        <clr-code-snippet [clrCode]="uiCustomClarityDarkScssFile"
-                                          [clrDisablePrism]="true"></clr-code-snippet>
-                        <h6>Add a custom theme file</h6>
-                        <p>Finally, sandwich your custom theme file between the Clarity dependency SCSS and the Clarity
-                            component SCSS. It will hold the values you choose to overwrite as you customize your theme.
-                            In this example the <code class="clr-code">styles.scss</code> file lives at the top of a
-                            standard angular-cli application src folder.</p>
+                            one way of adding the Clarity dependencies and component styles based on standard <code
+                            class="clr-code">npm</code> installation into a <code class="clr-code">node_modules
+                            </code> directory of the project. In this example, the
+                            <code class="clr-code">styles.scss</code> file lives at the top of a standard angular-cli
+                            application src folder.</p>
                         <clr-code-snippet [clrCode]="uiCustomClarityDarkThemeScssFile"
                                           [clrDisablePrism]="true"></clr-code-snippet>
                     </clr-tab-content>

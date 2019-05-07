@@ -3,8 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 import { ClrDatagridNumericFilterInterface } from '../../interfaces/numeric-filter.interface';
 import { DatagridPropertyNumericFilter } from './datagrid-property-numeric-filter';

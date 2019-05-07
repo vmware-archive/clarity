@@ -35,7 +35,7 @@ import { DatagridSelectionDemo } from './selection/selection';
 import { DatagridServerDrivenDemo } from './server-driven/server-driven';
 import { DatagridSmartIteratorDemo } from './smart-iterator/smart-iterator';
 import { DatagridSortingDemo } from './sorting/sorting';
-import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
+import { DatagridBuiltInFiltersDemo } from './built-in-filters/built-in-filters';
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
 import { ColorFilter } from './utils/color-filter';
@@ -61,7 +61,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridServerDrivenDemo,
     DatagridSmartIteratorDemo,
     DatagridSortingDemo,
-    DatagridStringFilteringDemo,
+    DatagridBuiltInFiltersDemo,
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
     DatagridColumnSizingDemo,
@@ -90,7 +90,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridServerDrivenDemo,
     DatagridSmartIteratorDemo,
     DatagridSortingDemo,
-    DatagridStringFilteringDemo,
+    DatagridBuiltInFiltersDemo,
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
     DatagridColumnSizingDemo,

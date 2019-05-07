@@ -25,13 +25,13 @@ import { ClrCommonStrings } from '../../../../utils/i18n/common-strings.interfac
                 on inputs with NgModel from freaking out because of their host binding changing
                 mid-change detection when the input is destroyed.
             -->
-            <input #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 78px"
-                [placeholder]="commonStrings.min"/>
+            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
+                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.minValue" 
+                [attr.aria-label]="commonStrings.minValue" />
                 <span class="datagrid-filter-input-spacer"></span>
-            <input #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" style="width: 78px"
-                [placeholder]="commonStrings.max"/>
+            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
+                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.maxValue"
+                [attr.aria-label]="commonStrings.maxValue" />
         </clr-dg-filter>
     `,
 })

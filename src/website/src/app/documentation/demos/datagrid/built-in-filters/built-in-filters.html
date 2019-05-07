@@ -39,14 +39,15 @@
 <h4>Numeric filter</h4>
 
 <p>
-    The "Wins" column demonstrates a built-in numeric filter.  You provide the function logic and
-    the user can optionally enter high and low limits for elements in the column.  In this case,
-    use a <code class="clr-code">&lt;clr-dg-numeric-filter&gt;</code> component and pass the filter
-    to the <code class="clr-code">[clrDgNumericFilter]</code> property.
+    Another built-in filter is the numeric filter, which allows you to filter a column by a minimum
+    and/or maximum numeric value. The "Wins" column demonstrates the numeric filter. You provide the
+    function logic and the user can optionally enter high and low limits for elements in the column.
+    In this case, use a <code class="clr-code">&lt;clr-dg-numeric-filter&gt;</code> component and
+    pass the filter to the <code class="clr-code">[clrDgNumericFilter]</code> property.
 </p>
 <clr-code-snippet [clrCode]="examples.numericFilterInterface" clrLanguage="typescript"></clr-code-snippet>
-<!-- TODO: Is this next example really needed? -->
-<!-- <clr-code-snippet [clrCode]="examples.numericFilterInput" clrLanguage="html"></clr-code-snippet> -->
+
+<clr-code-snippet [clrCode]="examples.numericFilterInput" clrLanguage="html"></clr-code-snippet>
 
 <clr-datagrid>
     <clr-dg-column>User ID</clr-dg-column>

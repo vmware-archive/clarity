@@ -136,6 +136,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
      * via the [clrDgColType] input by setting it to 'string' or 'number'.
      */
 
+  // TODO: We might want to make this an enum in the future
   @Input('clrDgColType') colType: 'string' | 'number' = 'string';
 
   /*

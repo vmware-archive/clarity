@@ -11,12 +11,12 @@ import { PokemonFilter } from '../utils/pokemon-filter';
 import { IDFilter } from '../utils/id-filter';
 
 @Component({
-  selector: 'clr-datagrid-string-filtering-demo',
+  selector: 'clr-built-in-filters-demo',
   providers: [Inventory],
-  templateUrl: 'string-filtering.html',
+  templateUrl: 'built-in-filters.html',
   styleUrls: ['../datagrid.demo.scss'],
 })
-export class DatagridStringFilteringDemo {
+export class DatagridBuiltInFiltersDemo {
   users: User[];
 
   pokemonFilter = new PokemonFilter();

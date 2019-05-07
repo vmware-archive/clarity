@@ -88,9 +88,9 @@ export abstract class ClrCommonStrings {
   /**
    * Datagrid numeric filter: min
    */
-  min?: string;
+  minValue?: string;
   /**
    * Datagrid numeric filter: max
    */
-  max?: string;
+  maxValue?: string;
 }

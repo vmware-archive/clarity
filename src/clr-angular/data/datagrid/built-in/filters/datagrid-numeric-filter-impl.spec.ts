@@ -49,6 +49,14 @@ export default function(): void {
       expect(fullFilter.accepts(0)).toBe(true);
     });
 
+    it('only allows values within the range when both filters are set', function() {
+      fullFilter.low = 1;
+      fullFilter.high = 10;
+      expect(fullFilter.accepts(0)).toBe(false);
+      expect(fullFilter.accepts(5)).toBe(true);
+      expect(fullFilter.accepts(12)).toBe(false);
+    });
+
     // TODO: why does this throw an error on build?
     // it('exposes state', function() {
     //   expect(fullFilter.state).toBe(fullFilter);

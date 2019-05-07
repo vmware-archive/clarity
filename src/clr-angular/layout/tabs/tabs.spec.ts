@@ -10,6 +10,7 @@ import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 import { TabsService } from './providers/tabs.service';
 import { ClrTab } from './tab';
 import { ClrTabs } from './tabs';
+import { IfActiveService } from '../../utils/conditional/if-active.service';
 
 @Component({
   template: `
@@ -200,6 +201,21 @@ describe('Tabs', () => {
       context.fixture.componentInstance.inOverflow = true;
       context.fixture.detectChanges();
       expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('presentation');
+    });
+
+    it('does not reuse views with *clrIfActive', () => {
+      const tabsService = context.getClarityProvider(TabsService);
+      const ifActiveService = context.getClarityProvider(IfActiveService);
+      const originalId = ifActiveService.current;
+      const initialView = tabsService.tabContentViewContainer.get(0);
+      // leave current tab
+      ifActiveService.current = -1;
+      context.detectChanges();
+      // get back to initial tab
+      ifActiveService.current = originalId;
+      context.detectChanges();
+      expect(tabsService.tabContentViewContainer.indexOf(initialView)).toBe(-1);
+      expect(compiled.querySelectorAll('section').length).toEqual(1);
     });
   });
 

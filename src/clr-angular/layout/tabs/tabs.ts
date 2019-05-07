@@ -1,9 +1,17 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Inject, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Inject,
+  QueryList,
+  ViewContainerRef,
+  ViewChild,
+} from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
@@ -45,10 +53,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                 </div>
             </ng-container>
         </ul>
-        <!--tab content-->
-        <ng-container *ngFor="let content of tabContents">
-            <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
-        </ng-container>
+        <ng-container #tabContentViewContainer></ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
@@ -58,6 +63,13 @@ export class ClrTabs implements AfterContentInit {
 
   @ContentChildren(ClrTabContent, { descendants: true })
   tabContents: QueryList<ClrTabContent>;
+
+  /* tslint:disable:no-unused-variable */
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
+  private set tabContentViewContainer(value: ViewContainerRef) {
+    this.tabsService.tabContentViewContainer = value;
+  }
+  /* tslint:enable:no-unused-variable */
 
   constructor(
     public ifActiveService: IfActiveService,

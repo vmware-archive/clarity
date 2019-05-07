@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EmbeddedViewRef, Inject, Input, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active.service';
 import { AriaService } from './providers/aria.service';
 import { TabsService } from './providers/tabs.service';
@@ -24,7 +24,7 @@ let nbTabContentComponents: number = 0;
     </ng-template>
     `,
 })
-export class ClrTabContent {
+export class ClrTabContent implements OnDestroy {
   constructor(
     public ifActiveService: IfActiveService,
     @Inject(IF_ACTIVE_ID) public id: number,
@@ -36,9 +36,14 @@ export class ClrTabContent {
     }
   }
 
+  private viewRef: EmbeddedViewRef<ClrTabContent>;
+
+  // The template must be applied on the top-down phase of view-child initialization to prevent
+  // components in the content from initializing before a content container exists.
+  // Some child components need their container for sizing calculations.
   @ViewChild('tabContentProjectedRef')
   private set templateRef(value: TemplateRef<ClrTabContent>) {
-    this.tabsService.tabContentViewContainer.createEmbeddedView(value);
+    this.viewRef = this.tabsService.tabContentViewContainer.createEmbeddedView(value);
   }
 
   get ariaLabelledBy(): string {
@@ -56,5 +61,12 @@ export class ClrTabContent {
 
   get active() {
     return this.ifActiveService.current === this.id;
+  }
+
+  ngOnDestroy(): void {
+    const index = this.tabsService.tabContentViewContainer.indexOf(this.viewRef);
+    if (index > -1) {
+      this.tabsService.tabContentViewContainer.remove(index);
+    }
   }
 }

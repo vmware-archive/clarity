@@ -989,13 +989,14 @@ export declare class ClrTab {
     ngOnDestroy(): void;
 }
 
-export declare class ClrTabContent {
+export declare class ClrTabContent implements OnDestroy {
     readonly active: boolean;
     readonly ariaLabelledBy: string;
     id: number;
     ifActiveService: IfActiveService;
     tabContentId: string;
-    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService);
+    constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, tabsService: TabsService);
+    ngOnDestroy(): void;
 }
 
 export declare class ClrTabLink {

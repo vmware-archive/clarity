@@ -41,10 +41,12 @@ export class ClrTabContent implements OnDestroy {
   // The template must be applied on the top-down phase of view-child initialization to prevent
   // components in the content from initializing before a content container exists.
   // Some child components need their container for sizing calculations.
+  /* tslint:disable:no-unused-variable */
   @ViewChild('tabContentProjectedRef')
   private set templateRef(value: TemplateRef<ClrTabContent>) {
     this.viewRef = this.tabsService.tabContentViewContainer.createEmbeddedView(value);
   }
+  /* tslint:enable:no-unused-variable */
 
   get ariaLabelledBy(): string {
     return this.ariaService.ariaLabelledBy;

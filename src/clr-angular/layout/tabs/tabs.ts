@@ -67,10 +67,12 @@ import { Subscription } from 'rxjs';
 export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
+  /* tslint:disable:no-unused-variable */
   @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
   private set tabContentViewContainer(value: ViewContainerRef) {
     this.tabsService.tabContentViewContainer = value;
   }
+  /* tslint:enable:no-unused-variable */
 
   @Input('clrLayout')
   set layout(layout: TabsLayout) {

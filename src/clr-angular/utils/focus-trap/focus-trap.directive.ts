@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -81,8 +81,10 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
       this.topReboundEl &&
       this.bottomReboundEl
     ) {
-      this.renderer.removeChild(this.document.body, this.topReboundEl);
-      this.renderer.removeChild(this.document.body, this.bottomReboundEl);
+      // The renderer does not immediately remove the child nodes,
+      // which may lead to synchronicity issues.
+      this.document.body.removeChild(this.topReboundEl);
+      this.document.body.removeChild(this.bottomReboundEl);
 
       // These are here to to make sure that
       // we completely delete all traces of the removed DOM objects.

@@ -15,7 +15,6 @@ import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
 import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
 
-import { DatagridRowExpandAnimation } from './animation-hack/row-expand-animation';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
 import { ActionableOompaLoompa } from './chocolate/actionable-oompa-loompa';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
@@ -84,9 +83,6 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   DatagridWillyWonka,
   ActionableOompaLoompa,
   ExpandableOompaLoompa,
-
-  // Animation hack
-  DatagridRowExpandAnimation,
 
   // Built-in shortcuts
   DatagridStringFilter,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,8 +25,9 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }],
   template: `
         <button #anchor class="datagrid-filter-toggle" (click)="toggle()"
-            [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"
-            type="button"></button>
+                [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active">
+            <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
+        </button>
 
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
              [clrPopoverOldPopoverPoint]="popoverPoint" [clrPopoverOldOptions]="popoverOptions">

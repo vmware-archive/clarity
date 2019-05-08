@@ -182,6 +182,17 @@ a.btn-primary {
   width: 36px;
 }
 
+.layout-documentation .sidenav {
+  max-width: 11.33rem;
+}
+
+@media (min-width: 769px) {
+  .layout-documentation .header .branding {
+    width: 18%;
+    max-width: 11.33rem;
+  }
+}
+
 @media (max-width: 769px) {
   html {
     -webkit-overflow-scrolling: touch;

@@ -24,8 +24,12 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   // We register this component as a CustomFilter, for the parent column to detect it.
   providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }],
   template: `
-        <button #anchor class="datagrid-filter-toggle" (click)="toggle()"
-                [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active">
+        <button #anchor 
+                (click)="toggle()"
+                class="datagrid-filter-toggle"
+                [class.datagrid-filter-open]="open" 
+                [class.datagrid-filtered]="active"
+                type="button">
             <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
         </button>
 

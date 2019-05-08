@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable, Optional, SkipSelf, TemplateRef } from '@angular/core';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 import { ClrRecursiveForOfContext } from './recursive-for-of';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class TreeFeaturesService<T> {
@@ -15,6 +16,7 @@ export class TreeFeaturesService<T> {
     template: TemplateRef<ClrRecursiveForOfContext<T>>;
     root: RecursiveTreeNodeModel<T>[];
   };
+  childrenFetched: Subject<void> = new Subject();
 }
 
 export function treeFeaturesFactory<T>(existing: TreeFeaturesService<T>) {

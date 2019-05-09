@@ -67,7 +67,6 @@ export default function(): void {
       expect(context.testComponent.customFilter).toBe(context.clarityDirective);
     });
 
-    // TODO: Should this count the inputs?
     it('displays numeric inputs when open', function() {
       expect(context.clarityElement.querySelectorAll("input[type='number']")).toBeNull();
       openFilter();

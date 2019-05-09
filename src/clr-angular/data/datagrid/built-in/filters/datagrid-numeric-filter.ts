@@ -80,6 +80,9 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
       }
     });
   }
+  ngOnDestroy() {
+    this.filterContainer.openChanged.unsubscribe();
+  }
 
   /**
    * Common setter for the input values

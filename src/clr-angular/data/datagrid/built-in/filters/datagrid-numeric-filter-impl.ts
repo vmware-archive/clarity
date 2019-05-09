@@ -88,11 +88,11 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
     if (this.filterFn instanceof DatagridPropertyNumericFilter) {
       return {
         property: this.filterFn.prop,
-        // TODO: Should this return value: [this._low, this._high] instead?
         low: this._low,
         high: this._high,
       };
     }
+    return this;
   }
 
   public equals(other: ClrDatagridFilterInterface<T, any>): boolean {

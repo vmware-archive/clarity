@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ClrDatagridFilter } from '../../datagrid-filter';
 import { ClrDatagridNumericFilterInterface } from '../../interfaces/numeric-filter.interface';
@@ -41,6 +42,14 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     super(filters);
   }
 
+  private subscriptions: Subscription[] = [];
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
+  }
+
   /**
    * Customizable filter logic based on high and low values
    */
@@ -70,18 +79,17 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
    */
   @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
-    this.filterContainer.openChanged.subscribe((open: boolean) => {
-      if (open) {
-        // We need the timeout because at the time this executes, the input isn't
-        // displayed yet.
-        setTimeout(() => {
-          this.domAdapter.focus(this.input.nativeElement);
-        });
-      }
-    });
-  }
-  ngOnDestroy() {
-    this.filterContainer.openChanged.unsubscribe();
+    this.subscriptions.push(
+      this.filterContainer.openChanged.subscribe((open: boolean) => {
+        if (open) {
+          // We need the timeout because at the time this executes, the input isn't
+          // displayed yet.
+          setTimeout(() => {
+            this.domAdapter.focus(this.input.nativeElement);
+          });
+        }
+      })
+    );
   }
 
   /**

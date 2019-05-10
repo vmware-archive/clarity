@@ -1386,6 +1386,7 @@ export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegist
     constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStrings);
     close(): void;
     ngAfterViewInit(): void;
+    ngOnDestroy(): void;
 }
 
 export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {

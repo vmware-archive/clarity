@@ -26,6 +26,7 @@ import { DatagridSortingDemo } from './sorting/sorting';
 import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
 import { DatagridPlaceholderDemo } from './placeholder/placeholder';
 import { DatagridExpandableRowsDemo } from './expandable-rows/expandable-rows';
+import { DatagridFixedHeightDemo } from './fixed-height/fixed-height';
 import { DatagridHideShowColumnsDemo } from './hide-show-columns/hide-show-columns';
 import { DatagridCompactDemo } from './compact/compact';
 
@@ -165,6 +166,13 @@ const routes: Routes = [
         },
       },
       {
+        path: 'fixed-height',
+        component: DatagridFixedHeightDemo,
+        data: {
+          demoName: 'Fixed Height',
+        },
+      },
+      {
         path: 'full',
         component: DatagridFullDemo,
         data: {
@@ -195,6 +203,7 @@ const routes: Routes = [
     DatagridStringFilteringDemo,
     DatagridPlaceholderDemo,
     DatagridExpandableRowsDemo,
+    DatagridFixedHeightDemo,
     DatagridHideShowColumnsDemo,
     ColorFilter,
     FakeLoader,

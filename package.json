@@ -59,6 +59,8 @@
     "publish:local": "npm publish dist/clr-ui --registry http://localhost:4873; npm publish dist/clr-angular --registry http://localhost:4873; npm publish dist/clr-icons --registry http://localhost:4873",
     "ks:publish": "ng build --prod ks-app; cat ./dist/ks-app/index.html > ./dist/ks-app/404.html; surge -p ./dist/ks-app",
     "build:preview": "ng build --baseHref=/dev/",
+    "api:build": "compodoc -p tsconfig.api-docs.json",
+    "api:serve": "compodoc -p tsconfig.api-docs.json -s",
     "website:compile": "webpack --config src/website/webpack.server.config.js",
     "website:server": "node dist/website/server",
     "website:deploy-preview": "ng build website --progress=false",
@@ -68,7 +70,7 @@
     "website:404": "cpy --rename 404.html dist/website/browser/index.html dist/website/browser",
     "website:functions": "netlify-lambda build scripts/netlify",
     "website:news": "node src/website/generate-news",
-    "website:prerender": "npm-run-all website:news website:build website:render website:functions website:404",
+    "website:prerender": "npm-run-all website:news website:build website:render website:functions website:404 api:build",
     "website:preview": "lite-server --baseDir=dist/website/browser"
   },
   "dependencies": {
@@ -100,6 +102,7 @@
     "@angular/cli": "8.0.0-rc.3",
     "@angular/compiler-cli": "8.0.0-rc.3",
     "@angular/language-service": "8.0.0-rc.3",
+    "@compodoc/compodoc": "1.1.9",
     "@types/jasmine": "2.8.16",
     "@types/jasmine-expect": "3.8.1",
     "@types/jasmine-matchers": "0.2.32",

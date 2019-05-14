@@ -15,10 +15,14 @@ export class ColumnsService {
 
   cache() {
     this._cache = this.columns.map(subject => {
-      const value = subject.value;
+      const value = { ...subject.value };
       delete value.changes;
       return value;
     });
+  }
+
+  hasCache() {
+    return !!this._cache;
   }
 
   resetToLastCache(clear = true) {
@@ -26,7 +30,8 @@ export class ColumnsService {
       return;
     }
     this._cache.forEach((state, index) => {
-      this.emitStateChangeAt(index, { ...state, changes: ALL_COLUMN_CHANGES });
+      // Just emit the exact value from the cache
+      this.columns[index].next({ ...state, changes: ALL_COLUMN_CHANGES });
     });
 
     if (clear) {

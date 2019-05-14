@@ -12,6 +12,7 @@ export * from './datagrid-column-toggle';
 export * from './datagrid-hideable-column';
 export * from './datagrid-filter';
 export * from './datagrid-items';
+export * from './datagrid-if-detail';
 export * from './datagrid-row';
 export * from './datagrid-detail';
 export * from './datagrid-row-detail';

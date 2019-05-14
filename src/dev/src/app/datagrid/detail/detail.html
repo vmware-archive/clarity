@@ -10,6 +10,8 @@
 clr-datagrid ::ng-deep .datagrid-detail-body {
   padding: 0 1rem;
 }
+::ng-deep .datagrid-nav { display: none; }
+::ng-deep h2 { display: none; }
 </style>
 
 <clr-datagrid [(clrDgSelected)]="selection">
@@ -36,7 +38,19 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
     </clr-dg-row-detail>
   </clr-dg-row>
 
-  <clr-dg-detail>
+  <!-- Simple API for most cases -->
+  <!--clr-dg-detail *clrIfDetail="let detail">
+    <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+    <clr-dg-detail-body>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+    </clr-dg-detail-body>
+  </clr-dg-detail-->
+
+  <!--  Desugared option for change event -->
+  <!--clr-dg-detail>
     <ng-template clrIfDetail let-detail (clrIfDetailChange)="state = $event">
       <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
       <clr-dg-detail-body>
@@ -46,7 +60,20 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
         <pre>{{detail | json}}</pre>
       </clr-dg-detail-body>
     </ng-template>
-  </clr-dg-detail>
+  </clr-dg-detail-->
+
+  <!--  Desugared option for two way binding, currently causing chocolate errors -->
+  <ng-template [(clrIfDetail)]="state" let-detail>
+    <clr-dg-detail>
+      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+      <clr-dg-detail-body>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+  </ng-template>
 
   <clr-dg-footer>
     <clr-dg-pagination #pagination [clrDgPageSize]="10">
@@ -56,5 +83,4 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
   </clr-dg-footer>
 </clr-datagrid>
 
-<pre>{{state | json}}</pre>
-
+<code class="clr-code">{{state | json}}</code>

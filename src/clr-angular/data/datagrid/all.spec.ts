@@ -36,6 +36,8 @@ import DatagridRowDetailSpecs from './datagrid-row-detail.spec';
 import DatagridRowSpecs from './datagrid-row.spec';
 import DatagridSpecs from './datagrid.spec';
 import { addHelpers } from './helpers.spec';
+import ColumnsServiceSpecs from './providers/columns.service.spec';
+import DetailServiceSpecs from './providers/detail.service.spec';
 import DisplayModeServiceSpecs from './providers/display-mode.service.spec';
 import FiltersProviderSpecs from './providers/filters.spec';
 import ItemsProviderSpecs from './providers/items.spec';
@@ -54,8 +56,12 @@ import WrappedCellSpec from './wrapped-cell.spec';
 import WrappedColumnSpec from './wrapped-column.spec';
 import WrappedRowSpec from './wrapped-row.spec';
 import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
+import DatagridDetailSpecs from './datagrid-detail.spec';
+import DatagridDetailBodySpecs from './datagrid-detail-body.spec';
+import DatagridDetailHeaderSpecs from './datagrid-detail-header.spec';
+import DatagridIfDetailSpecs from './datagrid-if-detail.spec';
 
-describe('Datagrid', function() {
+fdescribe('Datagrid', function() {
   addHelpers();
 
   describe('Providers', function() {
@@ -67,6 +73,8 @@ describe('Datagrid', function() {
     DisplayModeServiceSpecs();
     TableSizeServiceSpec();
     ColumnResizerServiceSpecs();
+    DetailServiceSpecs();
+    ColumnsServiceSpecs();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();
@@ -88,6 +96,10 @@ describe('Datagrid', function() {
     DatagridColumnToggleSpecs();
     DatagridColumnToggleButtonSpecs();
     DatagridHideableColumnDirectiveSpec();
+    DatagridDetailSpecs();
+    DatagridDetailBodySpecs();
+    DatagridDetailHeaderSpecs();
+    DatagridIfDetailSpecs();
     WrappedCellSpec();
     WrappedColumnSpec();
     WrappedRowSpec();

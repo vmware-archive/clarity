@@ -63,7 +63,10 @@ import { DetailService } from './providers/detail.service';
     ColumnsService,
     DisplayModeService,
   ],
-  host: { '[class.datagrid-host]': 'true' },
+  host: {
+    '[class.datagrid-host]': 'true',
+    '[class.datagrid-detail-open]': 'detailService.isOpen',
+  },
 })
 export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
   constructor(

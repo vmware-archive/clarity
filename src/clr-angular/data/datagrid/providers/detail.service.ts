@@ -9,9 +9,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class DetailService {
-  private toggleState = null;
-  protected _state: BehaviorSubject<boolean | null> = new BehaviorSubject<boolean | null>(this.toggleState);
+  private toggleState = false;
+  private _state: BehaviorSubject<boolean | null> = new BehaviorSubject<boolean>(this.toggleState);
   private cache: any;
+  private _enabled = false;
+
+  get enabled(): boolean {
+    return this._enabled;
+  }
+
+  set enabled(state: boolean) {
+    this._enabled = state;
+  }
 
   public get stateChange(): Observable<boolean | null> {
     return this._state.asObservable();
@@ -31,7 +40,7 @@ export class DetailService {
   toggle(item: any) {
     if (this.toggleState && this.cache !== item) {
       this.open(item);
-    } else if (this.toggleState && this.cache === item) {
+    } else if ((this.toggleState && this.cache === item) || !item) {
       this.close();
     } else {
       this.open(item);
@@ -43,14 +52,10 @@ export class DetailService {
   }
 
   isRowOpen(item) {
-    return this.toggleState && this.cache === item;
+    return !!(this.toggleState && this.cache === item);
   }
 
   get isOpen() {
-    return this.toggleState === true;
-  }
-
-  get isEnabled() {
-    return this.toggleState !== null;
+    return !!(this.toggleState === true);
   }
 }

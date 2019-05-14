@@ -131,9 +131,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
 
   public toggleDetailPane(state: boolean) {
     if (this.headers) {
-      if (!state) {
-        this.columnsService.resetToLastCache();
-      } else {
+      if (state && !this.columnsService.hasCache()) {
         this.columnsService.cache();
         this.headers.forEach((header, index) => {
           if (index > 0) {
@@ -143,6 +141,8 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
             });
           }
         });
+      } else if (!state) {
+        this.columnsService.resetToLastCache();
       }
     }
   }

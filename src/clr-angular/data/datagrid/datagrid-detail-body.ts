@@ -10,12 +10,10 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'clr-dg-detail-body',
   template: `
-    <div class="datagrid-detail-body">
-      <ng-content></ng-content>
-    </div>
+    <ng-content></ng-content>
   `,
   host: {
-    '[class.datagrid-detail-body-wrapper]': 'true',
+    '[class.datagrid-detail-body]': 'true',
   },
 })
 export class ClrDatagridDetailBody {}

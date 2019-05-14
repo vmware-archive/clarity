@@ -15,7 +15,10 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   template: `
     <ng-content></ng-content>
     <div class="datagrid-detail-pane-close">
-      <button type="button" class="btn btn-link" (click)="detailService.close()" [attr.aria-label]="commonStrings.close">
+      <button type="button" 
+              class="btn btn-link" 
+              (click)="detailService.close()" 
+              [attr.aria-label]="commonStrings.close">
         <clr-icon size="24" shape="times"></clr-icon>
       </button>
     </div>

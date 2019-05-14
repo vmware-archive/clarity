@@ -917,17 +917,97 @@
   /*
    * The following are styles for Detail Pane
    */
-  .datagrid-outer-wrapper {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
+  .datagrid-host {
+    display: grid;
+    grid-template-areas:
+      'datagrid-actions'
+      'datagrid'
+      'datagrid-footer';
+  }
+  .datagrid-host.datagrid-detail-open {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto 1.5rem;
+    grid-template-areas:
+      'datagrid-actions datagrid-actions'
+      'datagrid datagrid-detail'
+      'datagrid-footer datagrid-detail';
+  }
+  .datagrid {
+    grid-area: datagrid;
+    width: auto;
+  }
+  .datagrid-action-bar {
+    grid-area: datagrid-actions;
+  }
+  .datagrid-footer {
+    grid-area: datagrid-footer;
+  }
+  .datagrid-detail-pane {
+    grid-area: datagrid-detail;
   }
 
-  .datagrid-detail-open {
-    flex: 1 0 0;
+  // This is the autoprefixer css grid version
+  //.datagrid-host {
+  //  display: -ms-grid;
+  //  display: grid;
+  //  grid-template-areas:
+  //    'datagrid-actions'
+  //    'datagrid'
+  //    'datagrid-footer';
+  //}
+  //.datagrid-host.datagrid-detail-open {
+  //  -ms-grid-columns: 1fr 2fr;
+  //  grid-template-columns: 1fr 2fr;
+  //  -ms-grid-rows: auto auto 1.5rem;
+  //  grid-template-rows: auto auto 1.5rem;
+  //  grid-template-areas:
+  //    'datagrid-actions datagrid-actions'
+  //    'datagrid datagrid-detail'
+  //    'datagrid-footer datagrid-detail';
+  //}
+  //.datagrid {
+  //  -ms-grid-row: 2;
+  //  -ms-grid-column: 1;
+  //  grid-area: datagrid;
+  //  width: auto;
+  //}
+  //.datagrid-host.datagrid-detail-open > .datagrid {
+  //  -ms-grid-row: 2;
+  //  -ms-grid-column: 1;
+  //}
+  //.datagrid-action-bar {
+  //  -ms-grid-row: 1;
+  //  -ms-grid-column: 1;
+  //  grid-area: datagrid-actions;
+  //}
+  //.datagrid-host.datagrid-detail-open > .datagrid-action-bar {
+  //  -ms-grid-row: 1;
+  //  -ms-grid-column: 1;
+  //  -ms-grid-column-span: 2;
+  //}
+  //.datagrid-footer {
+  //  -ms-grid-row: 3;
+  //  -ms-grid-column: 1;
+  //  grid-area: datagrid-footer;
+  //}
+  //.datagrid-host.datagrid-detail-open > .datagrid-footer {
+  //  -ms-grid-row: 3;
+  //  -ms-grid-column: 1;
+  //}
+  //.datagrid-detail-pane {
+  //  -ms-grid-row: 2;
+  //  -ms-grid-row-span: 2;
+  //  -ms-grid-column: 2;
+  //  grid-area: datagrid-detail;
+  //}
 
+  .datagrid-detail-open {
     .datagrid {
       border-top-right-radius: 0;
+      border-right: none;
+    }
+    .datagrid-row {
+      border-right: 1px solid $clr-table-border-color;
     }
     .datagrid-footer {
       border-bottom-right-radius: 0;
@@ -944,14 +1024,6 @@
     }
   }
 
-  .datagrid-wrapper {
-    width: 100%;
-
-    &.datagrid-detail-open {
-      width: auto;
-    }
-  }
-
   .datagrid-row-detail-open {
     position: relative;
 
@@ -961,7 +1033,7 @@
       position: absolute;
       border: 10px solid $clr-table-border-color;
       border-color: transparent $clr-table-border-color transparent transparent;
-      top: calc(0.5rem - 1px);
+      top: calc(0.5rem - 2px);
       right: 0;
     }
 
@@ -971,28 +1043,34 @@
       position: absolute;
       border: 9px solid $clr-white;
       border-color: transparent $clr-white transparent transparent;
-      top: 0.5rem;
+      top: calc(0.5rem - 1px);
       right: -1px;
     }
   }
 
-  .datagrid-detail-pane-wrapper {
-    flex: 2 0 0;
+  .datagrid-detail-pane {
     margin-top: 0.5rem;
     border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
     border-left: none;
     border-top-right-radius: $clr-global-borderradius;
     border-bottom-right-radius: $clr-global-borderradius;
     background: $clr-white;
-    overflow: scroll;
+    overflow: hidden;
   }
 
-  .datagrid-detail-pane {
+  .datagrid-detail-pane-content {
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    height: 100%;
+  }
+
+  .datagrid-detail-body {
+    flex: 1 1 auto;
   }
 
   .datagrid-detail-header {
+    flex: 0 0 auto;
     font-size: 0.75rem;
     line-height: 1.5rem;
     padding-left: 1rem;
@@ -1005,12 +1083,11 @@
       right: 0rem;
       padding: 0;
       cursor: pointer;
-    }
-  }
 
-  .datagrid-detail-body-wrapper {
-    display: flex;
-    flex-direction: column;
+      .btn.btn-link {
+        color: $clr-dark-gray;
+      }
+    }
   }
 
   .datagrid-detail-caret {

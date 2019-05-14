@@ -55,7 +55,7 @@
             <div class="spinner spinner-sm" *ngIf="expand.loading"></div>
           </ng-container>
         </div>
-        <div *ngIf="detailService.isEnabled"
+        <div *ngIf="detailService.enabled"
              class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
           <button (click)="detailService.toggle(item)" type="button" class="datagrid-detail-caret-button" [class.is-open]="detailService.isRowOpen(item)">
             <clr-icon shape="angle-double"

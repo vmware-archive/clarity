@@ -25,6 +25,6 @@ export class ExpandableRowsCount {
    * check if details are on, and disable rows entirely
    */
   public get hasExpandableRow(): boolean {
-    return !this.detailService.isEnabled && this.expandableCount > 0;
+    return !this.detailService.enabled && this.expandableCount > 0;
   }
 }

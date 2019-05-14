@@ -47,7 +47,8 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
-import { ClrDatagridDetail, ClrDatagridDetailDirective } from './datagrid-detail';
+import { ClrDatagridDetail } from './datagrid-detail';
+import { ClrIfDetail } from './datagrid-if-detail';
 import { ClrDatagridDetailHeader } from './datagrid-detail-header';
 import { ClrDatagridDetailBody } from './datagrid-detail-body';
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
@@ -75,7 +76,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrDatagridColumnToggleButton,
   ClrDatagridColumnToggleTitle,
   ClrDatagridDetail,
-  ClrDatagridDetailDirective,
+  ClrIfDetail,
   ClrDatagridDetailHeader,
   ClrDatagridDetailBody,
   WrappedCell,

@@ -129,6 +129,13 @@ export default function(): void {
         expect(this.node.isExpandable()).toBeTrue();
       });
 
+      it('is expandable handles no children', function(this: TsApiContext) {
+        this.node._model.children = undefined;
+        expect(() => {
+          this.node.isExpandable();
+        }).not.toThrow();
+      });
+
       it('is expanded if the expand service is', function(this: TsApiContext) {
         expect(this.node.expanded).toBeFalse();
         this.expandService.toggle();

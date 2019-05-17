@@ -20,11 +20,11 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.9a97f76827b73e08cc2d.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.datagrid-demo-pagination[_ngcontent-c78]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c78]{margin-left:auto}.demo-list[_ngcontent-c78]{-webkit-column-count:3;column-count:3;list-style-position:inside}</style><style ng-transition="clarity">.color-square[_ngcontent-c86]{display:inline-block;vertical-align:text-bottom;height:14px;width:14px;border:1px solid #000;border-radius:4px}.color-filter[_ngcontent-c86]{display:block;width:100px}.color-selectable[_ngcontent-c86]{cursor:pointer;margin:2px;opacity:.2}.color-selectable.color-selected[_ngcontent-c86], .color-selectable[_ngcontent-c86]:hover{opacity:1}.lorem-ipsum[_ngcontent-c86]{max-width:300px}.username-list[_ngcontent-c86]{margin-bottom:0}.username-list[_ngcontent-c86]   .username[_ngcontent-c86]:not(:last-child):after{content:", "}.username-list[_ngcontent-c86]   .username[_ngcontent-c86]:last-child:after{content:"."}h2[_ngcontent-c86]:first-child{margin-top:24px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
+        }</script><link href="styles.a95fd0205c20e8cab872.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">.datagrid-demo-pagination[_ngcontent-c78]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.demo-pagination-next[_ngcontent-c78]{margin-left:auto}.demo-list[_ngcontent-c78]{-webkit-column-count:3;column-count:3;list-style-position:inside}</style><style ng-transition="clarity">.color-square[_ngcontent-c85]{display:inline-block;vertical-align:text-bottom;height:14px;width:14px;border:1px solid #000;border-radius:4px}.color-filter[_ngcontent-c85]{display:block;width:100px}.color-selectable[_ngcontent-c85]{cursor:pointer;margin:2px;opacity:.2}.color-selectable.color-selected[_ngcontent-c85], .color-selectable[_ngcontent-c85]:hover{opacity:1}.lorem-ipsum[_ngcontent-c85]{max-width:300px}.username-list[_ngcontent-c85]{margin-bottom:0}.username-list[_ngcontent-c85]   .username[_ngcontent-c85]:not(:last-child):after{content:", "}.username-list[_ngcontent-c85]   .username[_ngcontent-c85]:last-child:after{content:"."}h2[_ngcontent-c85]:first-child{margin-top:24px}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
             background: transparent;
             padding: 12px;
             max-height: none;
-        }</style><style ng-transition="clarity">[_nghost-c81] { display: block; }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-datagrid"><clr-alert>
+        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-datagrid"><clr-alert>
 
 <!----><div class="alert alert-warning alert-sm alert-app-level">
     <div class="alert-items">
@@ -140,25 +140,25 @@
 
             <div _ngcontent-c78=""></div>
 
-            <router-outlet _ngcontent-c78=""></router-outlet><clr-datagrid-server-driven-demo _nghost-c86="">
+            <router-outlet _ngcontent-c78=""></router-outlet><clr-datagrid-server-driven-demo _nghost-c85="">
 
-<h2 _ngcontent-c86="">Server-Driven datagrid</h2>
+<h2 _ngcontent-c85="">Server-Driven datagrid</h2>
 
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     When dealing with large amounts of data or heavy processing, a datagrid often has access the
     currently displayed data only, requesting only the necessary pieces from the server. This is a
     very common case that we fully support.
 </p>
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     We expose events and hooks on all parts of the datagrid to make sure you can trigger any
     requests you need based on precise user actions. But an important thing to note is that when
     the server does handle pagination, it needs to also deal with sorting and filtering,
     because all three are tightly coupled. In light of this, we decided to expose a single global
-    output <code _ngcontent-c86="" class="clr-code">(clrDgRefresh)</code> that emits the current "state" of the
+    output <code _ngcontent-c85="" class="clr-code">(clrDgRefresh)</code> that emits the current "state" of the
     datagrid whenever it changes due to a user action or an external one. This state has the
     following format:
 </p>
-<clr-code-snippet _ngcontent-c86="" clrlanguage="typescript" _nghost-c5="">
+<clr-code-snippet _ngcontent-c85="" clrlanguage="typescript" _nghost-c5="">
         <!----><!---->
             <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">interface State {
     page?: {
@@ -175,33 +175,33 @@
         
         <!---->
     </clr-code-snippet>
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     It contains all the information you need to send to the server in order to get the slice of
     data currently displayed. It even contains redundant information (
-    <code _ngcontent-c86="" class="clr-code">page.to</code> and <code _ngcontent-c86="" class="clr-code">page.size</code> for instance),
+    <code _ngcontent-c85="" class="clr-code">page.to</code> and <code _ngcontent-c85="" class="clr-code">page.size</code> for instance),
     to make sure you have access to the most practical for you without extra processing.
 </p>
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     One important thing to note is that since you don't have all the data available at once, you
     cannot use the smart iterator
-    <code _ngcontent-c86="" class="clr-code">*clrDgItems</code>: it would sort, filter and paginate a subset of the
+    <code _ngcontent-c85="" class="clr-code">*clrDgItems</code>: it would sort, filter and paginate a subset of the
     data that has already gone through all that. So all you need to do is to go back to a simple
-    <code _ngcontent-c86="" class="clr-code">*ngFor</code>, which we support.
+    <code _ngcontent-c85="" class="clr-code">*ngFor</code>, which we support.
 </p>
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     Finally, since server calls are involved, we need some way of notifying the user that his
     action has been acknowledged and that we are currently working on it. To this effect, we
-    provide an input <code _ngcontent-c86="" class="clr-code">[clrDgLoading]</code> that you can use to display the
+    provide an input <code _ngcontent-c85="" class="clr-code">[clrDgLoading]</code> that you can use to display the
     datagrid in a loading state, while fetching data.
 </p>
 
-<p _ngcontent-c86="">
+<p _ngcontent-c85="">
     Here is an example showcasing all this with a fake server latency of 500ms. It also
     demonstrates how to adapt the state we emit when it does not match exactly your server's API:
     in this example, the filters are re-formatted from an array to a map.
 </p>
 
-<clr-datagrid _ngcontent-c86="" class="datagrid-host" style="height:0px;">
+<clr-datagrid _ngcontent-c85="" class="datagrid-host" style="height:0px;">
 
 
 <div class="datagrid-overlay-wrapper">
@@ -219,7 +219,7 @@
                         <!---->
                         
                         <!---->
-                        <clr-dg-column _ngcontent-c86="" class="datagrid-column" style="width:0px;">
+                        <clr-dg-column _ngcontent-c85="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -239,7 +239,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c86="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c85="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -265,7 +265,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c86="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c85="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -291,7 +291,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c86="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c85="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -317,7 +317,7 @@
                 <div class="datagrid-column-handle-tracker"></div>
             </div>
         </div>
-    </clr-dg-column><clr-dg-column _ngcontent-c86="" class="datagrid-column" style="width:0px;">
+    </clr-dg-column><clr-dg-column _ngcontent-c85="" class="datagrid-column" style="width:0px;">
         <div class="datagrid-column-flex">
             
             
@@ -359,28 +359,28 @@
     
     
 
-    <!----><clr-dg-row _ngcontent-c86="" class="datagrid-row">
+    <!----><clr-dg-row _ngcontent-c85="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!---->
             <!---->
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        18941
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        26163
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Brad
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Lenny
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Feb 18, 2019
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Feb 2, 2016
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Fearow
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Arbok
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Purple;"></span>
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Orange;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -392,160 +392,28 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!---->
             <!---->
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        9596
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        54401
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Luna
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        May 28, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Haunter
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:White;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        43437
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Darla
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Mar 4, 2016
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Raichu
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Red;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        55141
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Luna
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Jun 22, 2015
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Pidgeotto
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Purple;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        14226
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Sheridan
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Jan 11, 2017
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Aerodactyl
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Yellow;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        26655
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         Georgia
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Jun 11, 2016
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Feb 28, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Squirtle
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Aerodactyl
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Indigo;"></span>
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Brown;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -557,61 +425,28 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!---->
             <!---->
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        88715
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        59957
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Alica
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Beverly
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Aug 10, 2015
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Jan 13, 2018
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         Omanyte
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Indigo;"></span>
-        
-    </clr-dg-cell>
-    <!---->
-
-            <!---->
-        </div>
-
-        <!---->
-
-        
-        <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
-        <div class="datagrid-row-master datagrid-row-flex">
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-            <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        89093
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Shenika
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Sep 20, 2017
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Sandshrew
-    </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Indigo;"></span>
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Purple;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -623,28 +458,28 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!---->
             <!---->
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        15075
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        24234
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Johnson
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Lenny
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Mar 3, 2016
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Nov 23, 2014
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Growlithe
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Gloom
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Purple;"></span>
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Yellow;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -656,28 +491,193 @@
 
         
         <!---->
-    </clr-dg-row><clr-dg-row _ngcontent-c86="" class="datagrid-row">
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
         <div class="datagrid-row-master datagrid-row-flex">
             <!---->
             <!---->
             <!---->
             <!---->
             <!---->
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        69530
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        7251
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Debby
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Roslyn
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Aug 14, 2018
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Mar 30, 2015
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
-        Kabutops
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Ponyta
     </clr-dg-cell>
-        <clr-dg-cell _ngcontent-c86="" class="datagrid-cell" style="width:0px;">
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
         
-            <span _ngcontent-c86="" class="color-square" style="backgroundColor:Blue;"></span>
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Pink;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        91657
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Rhona
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Sep 18, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Tauros
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Green;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        52338
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Graham
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Oct 29, 2016
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Alakazam
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Violet;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        53233
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Nidia
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Apr 24, 2015
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Articuno
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Green;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        37190
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Keenan
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Dec 4, 2018
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Venomoth
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Green;"></span>
+        
+    </clr-dg-cell>
+    <!---->
+
+            <!---->
+        </div>
+
+        <!---->
+
+        
+        <!---->
+    </clr-dg-row><clr-dg-row _ngcontent-c85="" class="datagrid-row">
+        <div class="datagrid-row-master datagrid-row-flex">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        85821
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Georgia
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Jun 30, 2014
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        Articuno
+    </clr-dg-cell>
+        <clr-dg-cell _ngcontent-c85="" class="datagrid-cell" style="width:0px;">
+        
+            <span _ngcontent-c85="" class="color-square" style="backgroundColor:Violet;"></span>
         
     </clr-dg-cell>
     <!---->
@@ -707,8 +707,9 @@
     </clr-dg-table-wrapper>
 
             
-            <clr-dg-footer _ngcontent-c86="" class="datagrid-foot">
+            <clr-dg-footer _ngcontent-c85="" class="datagrid-foot">
         <!---->
+        
         <!---->
         <div class="datagrid-foot-description">
             
@@ -717,24 +718,27 @@
         
     
         </div>
-        <clr-dg-pagination _ngcontent-c86="" _nghost-c81="">
-        <!----><ul _ngcontent-c81="" class="pagination">
+        <clr-dg-pagination _ngcontent-c85="" class="pagination">
+        <div class="pagination-description">
+            
+        </div>
+        <!----><ul class="pagination-list">
             <!---->
             <!---->
             <!---->
-            <!----><li _ngcontent-c81="" class="pagination-current">
+            <!----><li class="pagination-current">
                 <!---->1
                 <!---->
-            </li><li _ngcontent-c81="">
-                <!----><button _ngcontent-c81="" type="button">2</button>
+            </li><li>
+                <!----><button type="button">2</button>
                 <!---->
             </li>
-            <!----><li _ngcontent-c81="">...</li>
-            <!----><li _ngcontent-c81="">
-                <button _ngcontent-c81="" type="button">11</button>
+            <!----><li>...</li>
+            <!----><li>
+                <button type="button">11</button>
             </li>
-            <!----><li _ngcontent-c81="">
-                <button _ngcontent-c81="" class="pagination-next" type="button"></button>
+            <!----><li>
+                <button class="pagination-next" type="button"></button>
             </li>
         </ul>
     </clr-dg-pagination>
@@ -745,7 +749,7 @@
 </div>
 </clr-datagrid>
 
-<clr-code-snippet _ngcontent-c86="" clrlanguage="typescript" _nghost-c5="">
+<clr-code-snippet _ngcontent-c85="" clrlanguage="typescript" _nghost-c5="">
         <!----><!---->
             <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-typescript">import {State} from "clarity-angular";
 
@@ -778,7 +782,7 @@ class MyComponent {
         
         <!---->
     </clr-code-snippet>
-<clr-code-snippet _ngcontent-c86="" clrlanguage="html" _nghost-c5="">
+<clr-code-snippet _ngcontent-c85="" clrlanguage="html" _nghost-c5="">
         <!----><!---->
             <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading"&gt;
     &lt;clr-dg-column&gt;User ID&lt;/clr-dg-column&gt;
@@ -1283,4 +1287,4 @@ class MyComponent {
 </nav></documentation>
 
 </clr-main-container>
-</root><script type="text/javascript" src="inline.89599e7a3d101a28f07f.bundle.js"></script><script type="text/javascript" src="polyfills.f3c6ace262d4a533eafa.bundle.js"></script><script type="text/javascript" src="main.563f319a748d74f2b87d.bundle.js"></script></body></html>
+</root><script type="text/javascript" src="inline.a06a8fbf4c3a29e31b2e.bundle.js"></script><script type="text/javascript" src="polyfills.f3c6ace262d4a533eafa.bundle.js"></script><script type="text/javascript" src="main.850747a2fd5d72cf13fb.bundle.js"></script></body></html>

@@ -30,7 +30,7 @@ export class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
   // TODO: accept NgIterable<T> return type
   @Input('clrRecursiveForGetChildren') getChildren: (node: T) => AsyncArray<T>;
 
-  private subscriptions: Subscription[] = [];
+  private childrenFetchSubscription: Subscription;
 
   // I'm using OnChanges instead of OnInit to easily keep up to date with dynamic trees. Maybe optimizable later.
   ngOnChanges() {
@@ -40,11 +40,12 @@ export class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
     } else {
       wrapped = [new RecursiveTreeNodeModel(this.nodes, null, this.getChildren, this.featuresService)];
     }
-    this.subscriptions.push(
-      this.featuresService.childrenFetched.subscribe(() => {
+    if (!this.childrenFetchSubscription) {
+      this.childrenFetchSubscription = this.featuresService.childrenFetched.subscribe(() => {
         this.cdr.detectChanges();
-      })
-    );
+      });
+    }
+
     this.featuresService.recursion = {
       template: this.template,
       root: wrapped,
@@ -52,8 +53,8 @@ export class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sub => {
-      sub.unsubscribe();
-    });
+    if (this.childrenFetchSubscription) {
+      this.childrenFetchSubscription.unsubscribe();
+    }
   }
 }

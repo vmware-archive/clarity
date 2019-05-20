@@ -1,26 +1,39 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IF_ACTIVE_ID_PROVIDER, IfActiveService } from '../../utils/conditional/if-active.service';
 
 import { AriaService } from './providers/aria.service';
 import { ClrTabContent } from './tab-content';
+import { TabsService } from './providers/tabs.service';
+
+@Component({
+  selector: 'test-wrapper',
+  template: `
+        <ng-container #tabContentViewContainer></ng-container>
+   `,
+})
+class TestWrapper {
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
+  set tabContentViewContainer(value: ViewContainerRef) {
+    this.tabsService.tabContentViewContainer = value;
+  }
+  constructor(private tabsService: TabsService) {}
+}
 
 @Component({
   template: `
-        <clr-tab-content>Content1</clr-tab-content>
-        <!-- Project the content manually, so we can test without a clr-tabs container parent -->
-        <ng-container [ngTemplateOutlet]="tabContent.templateRef"></ng-container>
+        <test-wrapper>
+          <clr-tab-content>Content1</clr-tab-content>
+        </test-wrapper>
    `,
 })
-class TestComponent {
-  @ViewChild(ClrTabContent) tabContent: ClrTabContent;
-}
+class TestComponent {}
 
 describe('TabContent', () => {
   let fixture: ComponentFixture<any>;
@@ -28,8 +41,8 @@ describe('TabContent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, ClrTabContent],
-      providers: [AriaService, IfActiveService, IF_ACTIVE_ID_PROVIDER],
+      declarations: [TestComponent, TestWrapper, ClrTabContent],
+      providers: [AriaService, IfActiveService, IF_ACTIVE_ID_PROVIDER, TabsService],
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();

@@ -10,6 +10,7 @@ import * as CONTRIBUTORS from '../../community/contributors.json';
 @Component({
   selector: 'community',
   templateUrl: 'community.component.html',
+  styleUrls: ['./community.component.scss'],
   host: {
     '[class.content-container]': 'true',
   },

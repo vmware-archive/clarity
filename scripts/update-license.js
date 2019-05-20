@@ -30,3 +30,5 @@ files.forEach(file => {
 });
 
 console.log('Updated license headers');
+
+exec(`git add ${files.map(file => path.join(__dirname, '../', file)).join(' ')}`);

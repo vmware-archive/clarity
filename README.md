@@ -2,7 +2,7 @@
 
 # Clarity Design System
 
-[![Build Status](https://travis-ci.org/vmware/clarity.svg?branch=master)](https://travis-ci.org/vmware/clarity)
+[![Build Status](https://travis-ci.com/vmware/clarity.svg?branch=master)](https://travis-ci.com/vmware/clarity)
 
 [![Build Status](https://saucelabs.com/browser-matrix/claritydesignsystem.svg)](https://saucelabs.com/beta/builds/b16110e384ce459ab68f10da6e38a285)
 

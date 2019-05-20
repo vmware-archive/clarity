@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,9 +16,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DocumentationModule } from './documentation/documentation.module';
 import { ClrCommonStringsService } from '../../../../src/clr-angular/utils/i18n/common-strings.service';
 import { UtilsModule } from './utils/utils.module';
+import { SkipLinkComponent } from './utils/skip-link.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
+  declarations: [AppComponent, HomeComponent, PageNotFoundComponent, SkipLinkComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'clarity' }),
     BrowserAnimationsModule,

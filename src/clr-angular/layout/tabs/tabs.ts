@@ -12,6 +12,8 @@ import {
   Input,
   OnDestroy,
   HostBinding,
+  ViewContainerRef,
+  ViewChild,
 } from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
@@ -58,12 +60,19 @@ import { Subscription } from 'rxjs';
                 </div>
             </ng-container>
         </ul>
-        <ng-content></ng-content>
+        <ng-container #tabContentViewContainer></ng-container>
     `,
   providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
 })
 export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
+
+  /* tslint:disable:no-unused-variable */
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
+  private set tabContentViewContainer(value: ViewContainerRef) {
+    this.tabsService.tabContentViewContainer = value;
+  }
+  /* tslint:enable:no-unused-variable */
 
   @Input('clrLayout')
   set layout(layout: TabsLayout) {

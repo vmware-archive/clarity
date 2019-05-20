@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -74,20 +74,6 @@ $svg_data: 'data:image/svg+xml;charset=utf8';
     str-slice($fillColor + '', 2) +
     '%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%225.85%2014.72%2012.56%208%205.85%201.28%205%202.13%2010.86%208%205%2013.87%205.85%2014.72%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E';
   @return url('#{$svg_data},#{$right-caret-icon}');
-}
-
-@function generateFilterIcon($fillColor: $clr-color-action-600) {
-  $filter-off-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23' +
-    str-slice($fillColor + '', 2) +
-    '%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpolygon%20class%3D%22cls-1%22%20points%3D%227%209.32%203%205.38%203%205%2013%205%2013%205.38%209%209.32%209%2012.21%207%2013.29%207%209.32%22%2F%3E%3C%2Fsvg%3E';
-  @return url('#{$svg_data},#{$filter-off-icon}');
-}
-
-@function generateCircleIcon($fillColor: $clr-color-action-600) {
-  $filter-off-icon: '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3Anone%3Bstroke%3A%23' +
-    str-slice($fillColor + '', 2) +
-    '%3Bstroke-miterlimit%3A10%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ccircle%20class%3D%22cls-1%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%227.5%22%2F%3E%3C%2Fsvg%3E';
-  @return url('#{$svg_data},#{$filter-off-icon}');
 }
 
 // FIXME: This is NOT a clean SVG. We'll fix that when everyone's back next week.

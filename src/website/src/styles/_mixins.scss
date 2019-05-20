@@ -1,0 +1,10 @@
+@mixin clarityWebBoxShadow {
+  box-shadow: 0 3px 0 0 #d7d7d7;
+}
+
+@mixin clarityHeaderBackground {
+  background-color: #002538;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}

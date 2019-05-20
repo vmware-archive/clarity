@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, OnInit, Renderer, InjectionToken } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer, InjectionToken, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
@@ -19,6 +19,7 @@ import * as GLOBAL from '../settings/global.json';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
+  @ViewChild('content') contentRef: ElementRef;
   environment = environment;
 
   constructor(private renderer: Renderer, private el: ElementRef, public router: Router, private titleService: Title) {}

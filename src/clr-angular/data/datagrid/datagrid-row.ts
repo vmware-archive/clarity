@@ -70,7 +70,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   public id: string;
   public radioId: string;
   public checkboxId: string;
-  private oldHeight: string;
+  private oldHeight: number;
 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
@@ -86,7 +86,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   @HostBinding('@expandAnim')
   get expandAnim() {
-    return { value: this.expandedState, params: { oldHeight: this.oldHeight } };
+    return { value: this.expandedState, params: { oldHeight: this.oldHeight + 'px' } };
   }
 
   @HostBinding('style.height') activeHeight: string = 'auto';
@@ -170,7 +170,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   public toggleExpand() {
     if (this.expand.expandable) {
       this.oldHeight = this.getCurrentHeight();
-      this.activeHeight = this.oldHeight;
+      this.activeHeight = this.oldHeight + 'px';
       this.expanded = !this.expanded;
       this.expandedChange.emit(this.expanded);
     }
@@ -196,8 +196,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   ngAfterViewInit() {
     this.subscriptions.push(
       this.expand.animate.subscribe(() => {
-        this.activeHeight = 'auto';
         setTimeout(() => {
+          this.activeHeight = 'auto';
           this.expandedState = this.expandedState === 'collapsed' ? 'expanded' : 'collapsed';
         });
       })
@@ -255,8 +255,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     return this.wrappedInjector.get(WrappedRow, this.vcr).rowView;
   }
 
-  private getCurrentHeight() {
+  private getCurrentHeight(): number {
     const height = this.domAdapter.computedHeight(this.el.nativeElement) || 0;
-    return height + 'px';
+    return height;
   }
 }

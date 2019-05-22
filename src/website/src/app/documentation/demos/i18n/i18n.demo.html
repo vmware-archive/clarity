@@ -7,9 +7,8 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
         <h5 class="component-summary" id="summary">Easily translate internal Clarity text into multiple languages.</h5>
-
-        <div id="design-guidelines">
-            <h3 id="layout">Internal language strings</h3>
+        <div >
+            <h3 id="design-guidelines">Internal language strings</h3>
 
             <p>Clarity has a short list of text strings that it uses internally for things such as icon alt text or button text. When possible, Clarity avoids
               using text strings that have to be translated, and rarely changes this list. Any Angular application that needs to support multiple languages
@@ -21,6 +20,7 @@
             <code class="clr-code">ClrCommonStrings</code> service that you can declare for your entire app, which will override
             our default titles with the ones you provide. Then you just need to include it as a provider in your application.
           </p>
+        <h3 id="examples">Examples</h3>
 
           <pre><code clr-code-highlight="language-ts" ngNonBindable>
 @Injectable()

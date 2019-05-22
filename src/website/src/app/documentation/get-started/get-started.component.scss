@@ -1,0 +1,12 @@
+.design-assets {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+
+  h4 {
+    margin-top: 1rem;
+  }
+}

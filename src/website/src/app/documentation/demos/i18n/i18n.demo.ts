@@ -14,6 +14,7 @@ import { ClarityDocComponent } from '../clarity-doc';
   },
 })
 export class I18nDemo extends ClarityDocComponent {
+  newLayout = true;
   constructor() {
     super('internationalization');
   }

@@ -25,12 +25,12 @@
     <div class="datagrid-row-scrollable" [ngClass]="{'is-replaced': replaced && expanded}">
       <div class="datagrid-scrolling-cells">
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
-             class="datagrid-select datagrid-fixed-column datagrid-cell">
+             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
           <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)" [id]="checkboxId"
                  [attr.aria-label]="commonStrings.select">
         </div>
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
-             class="datagrid-select datagrid-fixed-column datagrid-cell">
+             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
             <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
             to label the radio by the first cell in the row (typically an id or name).
             It's pretty easy to label it with the whole row since we already have an id for it, but in most
@@ -40,11 +40,11 @@
                    [attr.aria-label]="commonStrings.select">
         </div>
         <div *ngIf="rowActionService.hasActionableRow"
-             class="datagrid-row-actions datagrid-fixed-column datagrid-cell">
+             class="datagrid-row-actions datagrid-fixed-column datagrid-cell" role="gridcell">
           <ng-content select="clr-dg-action-overflow"></ng-content>
         </div>
         <div *ngIf="globalExpandable.hasExpandableRow"
-             class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell">
+             class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell" role="gridcell">
           <ng-container *ngIf="expand.expandable">
             <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button">
               <clr-icon shape="caret"

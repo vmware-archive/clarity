@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { Type } from '@angular/core';
 
-export * from './collapse/index';
-export * from './expandable/index';
-export * from './fade/index';
-export * from './fade-slide/index';
-export * from './slide/index';
+import { ClrExpandable } from './expandable';
+
+export * from './expandable';
+
+export const EXPANDABLE_DIRECTIVES: Type<any>[] = [ClrExpandable];

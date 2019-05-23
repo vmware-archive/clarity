@@ -11,7 +11,6 @@ import {
   ContentChildren,
   ElementRef,
   EventEmitter,
-  HostBinding,
   Injector,
   Input,
   Output,
@@ -23,7 +22,6 @@ import {
 import { combineLatest, Subscription } from 'rxjs';
 
 import { IfExpandService } from '../../utils/conditional/if-expanded.service';
-import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 
@@ -37,7 +35,7 @@ import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { ClrExpandable } from '../../utils/animations/expandable/expandable';
 
 let nbRow: number = 0;
 
@@ -56,24 +54,16 @@ let nbRow: number = 0;
     { provide: IfExpandService, useExisting: DatagridIfExpandService },
     { provide: LoadingListener, useExisting: DatagridIfExpandService },
   ],
-  animations: [
-    trigger('expandAnim', [
-      transition('void => *', []),
-      transition('expanded <=> collapsed', [
-        style({ height: '{{oldHeight}}' }),
-        animate('0.2s ease-in-out', style({ height: '*' })),
-      ]),
-    ]),
-  ],
 })
 export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
   public id: string;
   public radioId: string;
   public checkboxId: string;
-  private oldHeight: number;
 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
+
+  @ViewChild(ClrExpandable) expandAnimation: ClrExpandable;
 
   /**
    * Model of the row, to use for selection
@@ -81,15 +71,6 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   @Input('clrDgItem') item: T;
 
   public replaced;
-
-  private expandedState;
-
-  @HostBinding('@expandAnim')
-  get expandAnim() {
-    return { value: this.expandedState, params: { oldHeight: this.oldHeight + 'px' } };
-  }
-
-  @HostBinding('style.height') activeHeight: string = 'auto';
 
   constructor(
     public selection: Selection<T>,
@@ -100,7 +81,6 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
     private el: ElementRef,
-    private domAdapter: DomAdapter,
     public commonStrings: ClrCommonStrings
   ) {
     nbRow++;
@@ -169,8 +149,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public toggleExpand() {
     if (this.expand.expandable) {
-      this.oldHeight = this.getCurrentHeight();
-      this.activeHeight = this.oldHeight + 'px';
+      this.expandAnimation.updateStartHeight();
       this.expanded = !this.expanded;
       this.expandedChange.emit(this.expanded);
     }
@@ -194,14 +173,6 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   }
 
   ngAfterViewInit() {
-    this.subscriptions.push(
-      this.expand.animate.subscribe(() => {
-        setTimeout(() => {
-          this.activeHeight = 'auto';
-          this.expandedState = this.expandedState === 'collapsed' ? 'expanded' : 'collapsed';
-        });
-      })
-    );
     this.subscriptions.push(
       this.displayMode.view.subscribe(viewChange => {
         // Listen for view changes and move cells around depending on the current displayType
@@ -247,16 +218,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   ngOnInit() {
     this.wrappedInjector = new HostWrapper(WrappedRow, this.vcr);
-    this.oldHeight = this.getCurrentHeight();
-    this.expandedState = this.expand.expanded ? 'expanded' : 'collapsed';
   }
 
   public get _view() {
     return this.wrappedInjector.get(WrappedRow, this.vcr).rowView;
-  }
-
-  private getCurrentHeight(): number {
-    const height = this.domAdapter.computedHeight(this.el.nativeElement) || 0;
-    return height;
   }
 }

@@ -14,6 +14,7 @@ import { ClrCommonPopoverModule } from '../../popover/common/popover.module';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
 import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
+import { ClrExpandableModule } from '../../utils/animations/expandable/expandable.module';
 
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
 import { ActionableOompaLoompa } from './chocolate/actionable-oompa-loompa';
@@ -97,6 +98,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrCommonPopoverModule,
     ClrLoadingModule,
     ClrOutsideClickModule,
+    ClrExpandableModule,
     ClrDragAndDropModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],

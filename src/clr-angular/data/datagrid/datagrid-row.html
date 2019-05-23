@@ -3,10 +3,17 @@
   Clicking of that wrapper label will equate to clicking on the whole row, which triggers the checkbox to toggle.
 -->
 <label class="datagrid-row-clickable" *ngIf="selection.rowSelectionMode">
-  <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
+  <clr-expandable [clrExpandTrigger]="expanded" *ngIf="globalExpandable.hasExpandableRow">
+    <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
+  </clr-expandable>
+  <ng-template [ngTemplateOutlet]="rowContent" *ngIf="!globalExpandable.hasExpandableRow"></ng-template>
 </label>
 
-<ng-template *ngIf="!selection.rowSelectionMode" [ngTemplateOutlet]="rowContent"></ng-template>
+<clr-expandable *ngIf="!selection.rowSelectionMode && globalExpandable.hasExpandableRow" [clrExpandTrigger]="expanded">
+  <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
+</clr-expandable>
+
+<ng-template *ngIf="!selection.rowSelectionMode && !globalExpandable.hasExpandableRow" [ngTemplateOutlet]="rowContent"></ng-template>
 
 <!--
     We need the "project into template" hacks because we need this in 2 different places
@@ -31,13 +38,13 @@
         </div>
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
              class="datagrid-select datagrid-fixed-column datagrid-cell">
-            <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
-            to label the radio by the first cell in the row (typically an id or name).
-            It's pretty easy to label it with the whole row since we already have an id for it, but in most
-            cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
-            <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
-                   [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
-                   [attr.aria-label]="commonStrings.select">
+          <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
+          to label the radio by the first cell in the row (typically an id or name).
+          It's pretty easy to label it with the whole row since we already have an id for it, but in most
+          cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
+          <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
+                 [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
+                 [attr.aria-label]="commonStrings.select">
         </div>
         <div *ngIf="rowActionService.hasActionableRow"
              class="datagrid-row-actions datagrid-fixed-column datagrid-cell">

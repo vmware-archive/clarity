@@ -393,18 +393,12 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _scrollableCells: ViewContainerRef;
     _stickyCells: ViewContainerRef;
     readonly _view: any;
-    activeHeight: string;
     checkboxId: string;
     commonStrings: ClrCommonStrings;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
     expand: DatagridIfExpandService;
-    readonly expandAnim: {
-        value: any;
-        params: {
-            oldHeight: string;
-        };
-    };
+    expandAnimation: ClrExpandable;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
@@ -416,7 +410,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
-    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, domAdapter: DomAdapter, commonStrings: ClrCommonStrings);
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
@@ -624,6 +618,20 @@ export interface ClrDropToleranceInterface {
 }
 
 export declare class ClrEmphasisModule {
+}
+
+export declare class ClrExpandable {
+    clrExpandTrigger: any;
+    readonly expandAnimation: {
+        value: any;
+        params: {
+            startHeight: number;
+        };
+    };
+    startHeight: number;
+    constructor(element: ElementRef, domAdapter: DomAdapter);
+    animationDone(): void;
+    updateStartHeight(): void;
 }
 
 export declare class ClrForm {
@@ -1365,6 +1373,8 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
 }
 
 export declare const DEFAULT_BUTTON_TYPES: any;
+
+export declare const EXPANDABLE_DIRECTIVES: Type<any>[];
 
 export declare function fade(opacity?: number): AnimationMetadata[];
 

@@ -30,7 +30,7 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   rowActions = 'Available actions';
   pickColumns = 'Show or hide columns';
   showColumns = 'Show Columns';
-  sortOf = 'Sort of';
+  sort = 'Sort';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

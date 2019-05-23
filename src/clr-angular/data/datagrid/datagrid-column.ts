@@ -241,7 +241,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   public get ariaButtonLabel() {
-    return this.commonStrings.sortOf;
+    return this.commonStrings.sort;
   }
 
   @Output('clrDgSortOrderChange') public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();

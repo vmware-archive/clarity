@@ -20,6 +20,7 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -28,13 +29,14 @@ export default function(): void {
       let filtersService: FiltersProvider<number>;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
+      const commonStrings = new ClrCommonStringsService();
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings);
       });
 
       it('receives a comparator to sort the column', function() {
@@ -141,6 +143,10 @@ export default function(): void {
         expect(sortService.comparator).toBeUndefined();
         component.sort();
         expect(sortService.comparator).toEqual(new DatagridPropertyComparator('test'));
+      });
+
+      it('should have ariaButtonLabel property', function() {
+        expect(component.ariaButtonLabel).toBe(new ClrCommonStringsService().sort);
       });
     });
 

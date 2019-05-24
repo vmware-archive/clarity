@@ -247,7 +247,8 @@ export default function(): void {
     `,
 })
 class GroupInternalsTestComponent {
-  @ViewChild('group') navGroup: ClrVerticalNavGroup;
+  @ViewChild('group', { static: false })
+  navGroup: ClrVerticalNavGroup;
 }
 
 @Component({
@@ -265,7 +266,8 @@ class GroupInternalsTestComponent {
     `,
 })
 class IfExpandedTestComponent {
-  @ViewChild('group') navGroup: ClrVerticalNavGroup;
+  @ViewChild('group', { static: false })
+  navGroup: ClrVerticalNavGroup;
 }
 
 @Component({
@@ -283,7 +285,8 @@ class IfExpandedTestComponent {
     `,
 })
 class TemplateAPITestComponent {
-  @ViewChild('group') navGroup: ClrVerticalNavGroup;
+  @ViewChild('group', { static: false })
+  navGroup: ClrVerticalNavGroup;
 
   expanded: boolean = false;
 

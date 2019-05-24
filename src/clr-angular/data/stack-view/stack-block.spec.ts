@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,8 @@ import { ClrStackViewModule } from './stack-view.module';
    `,
 })
 class BasicBlock {
-  @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
+  @ViewChild(ClrStackBlock, { static: false })
+  blockInstance: ClrStackBlock;
 }
 
 @Component({
@@ -41,7 +42,8 @@ class BasicBlock {
    `,
 })
 class NestedBlocks {
-  @ViewChild('main') blockInstance: ClrStackBlock;
+  @ViewChild('main', { static: false })
+  blockInstance: ClrStackBlock;
 }
 
 @Component({
@@ -53,7 +55,8 @@ class NestedBlocks {
    `,
 })
 class DynamicBlock {
-  @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
+  @ViewChild(ClrStackBlock, { static: false })
+  blockInstance: ClrStackBlock;
 
   expanded: boolean = false;
 }

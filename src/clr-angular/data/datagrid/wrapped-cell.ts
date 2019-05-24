@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,7 +17,8 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 })
 export class WrappedCell implements DynamicWrapper, AfterViewInit {
   _dynamic = false;
-  @ViewChild('cellPortal') templateRef: TemplateRef<void>;
+  @ViewChild('cellPortal', { static: false })
+  templateRef: TemplateRef<void>;
   cellView: EmbeddedViewRef<void>; // the cells projected view
 
   ngAfterViewInit() {

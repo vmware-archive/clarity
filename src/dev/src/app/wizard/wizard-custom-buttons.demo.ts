@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,7 +13,8 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-custom-buttons.demo.html',
 })
 export class WizardCustomButtonsDemo {
-  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild('wizard', { static: false })
+  wizard: ClrWizard;
 
   open = false;
   showWarning = false;

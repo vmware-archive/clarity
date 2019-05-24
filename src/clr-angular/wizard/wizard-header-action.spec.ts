@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,11 +26,16 @@ class TestComponent {
   myId: string = 'ohai';
   disableMe: boolean = false;
 
-  @ViewChild('unset') plainDefaultHA: ClrWizardHeaderAction;
-  @ViewChild('disabled') disabledHA: ClrWizardHeaderAction;
-  @ViewChild('identified') idHA: ClrWizardHeaderAction;
-  @ViewChild('projected') projectedHA: ClrWizardHeaderAction;
-  @ViewChild('clicker') clickedHA: ClrWizardHeaderAction;
+  @ViewChild('unset', { static: true })
+  plainDefaultHA: ClrWizardHeaderAction;
+  @ViewChild('disabled', { static: true })
+  disabledHA: ClrWizardHeaderAction;
+  @ViewChild('identified', { static: true })
+  idHA: ClrWizardHeaderAction;
+  @ViewChild('projected', { static: true })
+  projectedHA: ClrWizardHeaderAction;
+  @ViewChild('clicker', { static: true })
+  clickedHA: ClrWizardHeaderAction;
 
   private _lastClickedHeaderAction: string = '';
   public get lastClickedHeaderAction(): string {

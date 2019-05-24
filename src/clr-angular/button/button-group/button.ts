@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,7 +31,8 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
 export class ClrButton implements LoadingListener {
   private _enableService: boolean = false;
 
-  @ViewChild('buttonProjectedRef') templateRef: TemplateRef<ClrButton>;
+  @ViewChild('buttonProjectedRef', { static: true })
+  templateRef: TemplateRef<ClrButton>;
 
   constructor(
     @SkipSelf()

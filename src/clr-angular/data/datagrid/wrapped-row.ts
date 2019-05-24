@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,7 +18,8 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 export class WrappedRow implements DynamicWrapper, AfterViewInit {
   _dynamic = false;
 
-  @ViewChild('rowPortal') templateRef: TemplateRef<void>;
+  @ViewChild('rowPortal', { static: false })
+  templateRef: TemplateRef<void>;
   rowView: EmbeddedViewRef<void>; // the rows projected view (in memory)
 
   ngAfterViewInit() {

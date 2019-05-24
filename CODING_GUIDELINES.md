@@ -130,11 +130,13 @@ ClrLoading (directive)
 
 #### Providers and services class names
 
-Once again, providers are exported Typescript classes so they are prefixed. To avoid conflicts with similar component names, they are suffixed with `Service`:
+Providers that are exported for consumers should be prefixed with `Clr` and suffixed with `Service`. This avoids conflict with similar component names. If they are _only_ used internally they are not prefixed but should still be suffixed with `Service`:
 
 ```
-ClrSomeService
+ClrSomeExternalService
 ClrIfOpenService
+AnInternalService
+AnotherInternalService
 ```
 
 #### Modules

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -321,6 +321,13 @@ export default function(): void {
         title.click();
         context.detectChanges();
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
+      });
+
+      it('add aria-label to button', function() {
+        context.testComponent.comparator = new TestComparator();
+        context.detectChanges();
+        const title = context.clarityElement.querySelector('.datagrid-column-title');
+        console.log(title, title.attributes, context.testComponent, title.attributes['aria-label'].value);
       });
 
       it('adds and removes the correct icon when sorting', function() {

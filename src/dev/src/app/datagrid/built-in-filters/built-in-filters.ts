@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,17 +8,19 @@ import { Component } from '@angular/core';
 import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { PokemonFilter } from '../utils/pokemon-filter';
+import { IDFilter } from '../utils/id-filter';
 
 @Component({
-  selector: 'clr-datagrid-string-filtering-demo',
+  selector: 'clr-built-in-filters-demo',
   providers: [Inventory],
-  templateUrl: 'string-filtering.html',
+  templateUrl: 'built-in-filters.html',
   styleUrls: ['../datagrid.demo.scss'],
 })
-export class DatagridStringFilteringDemo {
+export class DatagridBuiltInFiltersDemo {
   users: User[];
 
   pokemonFilter = new PokemonFilter();
+  idFilter = new IDFilter();
   myFilterValue1 = 'A';
   myFilterValue2 = 'E';
   displayFilter = true;

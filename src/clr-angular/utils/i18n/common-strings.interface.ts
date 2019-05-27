@@ -93,4 +93,12 @@ export abstract class ClrCommonStrings {
    * Datagrid: sort of columns
    */
   sortColumn?: string;
+  /**
+   * Datagrid numeric filter: min
+   */
+  minValue?: string;
+  /**
+   * Datagrid numeric filter: max
+   */
+  maxValue?: string;
 }

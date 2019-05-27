@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -18,9 +18,9 @@
 <h4>String filter</h4>
 
 <p>
-  At the moment, the only built-in filter we provide is the "string" filter one, meaning the user is offered a text input,
-  and the rows will be filtered based on a string-matching function you provide. You should now be familiar with our use
-  of interfaces for this, so here is the interface your string matcher should implement:
+    The first built-in filter we provide is the "string" filter one, which can be seen on the Pokemon column below.
+    The user is offered a text input, and the rows will be filtered based on a string-matching function you provide.
+    You should now be familiar with our use of interfaces for this, so here is the interface your string matcher should implement:
 </p>
 
 <p>
@@ -30,12 +30,23 @@
 
 <p>
   In our example, we can allow the user to filter not only by pokemon name, but also by entering the exact number of the pokemon
-  he's interested in.
+  they are interested in.
+</p>
+
+<h4>Numeric filter</h4>
+
+<p>
+    The ID column demonstrates a built-in numeric filter.  You provide the function logic and the user can
+    optionally enter high and low limits for elements in the column.  In this case, pass a <code class="clr-code">&lt;clr-dg-numeric-filter&gt;</code> component.
 </p>
 
 <clr-datagrid>
-  <clr-dg-column>User ID</clr-dg-column>
-  <clr-dg-column>Name
+  <clr-dg-column>
+    Name
+  </clr-dg-column>
+  <clr-dg-column>
+    User ID
+    <clr-dg-numeric-filter [clrDgNumericFilter]="idFilter"></clr-dg-numeric-filter>
   </clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
@@ -45,8 +56,8 @@
   <clr-dg-column>Favorite color</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users">
-    <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
     <clr-dg-cell>
       {{user.pokemon.name}}

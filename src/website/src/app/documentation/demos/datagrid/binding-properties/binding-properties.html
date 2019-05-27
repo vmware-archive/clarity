@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -9,15 +9,22 @@
 <p>
     For an easy setup of datagrid column features, you can simply specify the property to bind it to
     in your model. When you do, the column will benefit from all built-in features for this case:
-    sorting based on the natural comparison, filtering based on string value, and anything else we
-    might add in the future. You can bind to as deep a property as you want in your model, using
-    a standard dot-separated syntax:
+    sorting based on the natural comparison, filtering using either of the built-in filters, and
+    anything else we might add in the future. You can bind to as deep a property as you want in
+    your model, using a standard dot-separated syntax:
     <code class="clr-code">[clrDgField]=&quot;'my.deep.property'&quot;</code>
 </p>
 <p>
     You can also see in the following example how every feature we offer is always opt-in:
     we did not declare any binding on the "User ID" column, which means it is not sortable or
     filterable.
+</p>
+<p>
+    By default, bound columns are assumed to contain string-like contents and the user is presented
+    with the normal string filter. If you know that the contents of the column will be numeric, you
+    can instead use the built-in numeric range filter by adding
+    <code class="clr-code">[clrDgColType]=&quot;'number'&quot;</code>.
+    You can see an example of this in the "Wins" column.
 </p>
 
 <clr-datagrid>
@@ -26,6 +33,7 @@
     <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
     <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
     <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+    <clr-dg-column [clrDgField]="'wins'" [clrDgColType]="'number'">Wins</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
@@ -35,6 +43,7 @@
         <clr-dg-cell>
             <span class="color-square" [style.backgroundColor]="user.color"></span>
         </clr-dg-cell>
+        <clr-dg-cell>{{user.wins}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>

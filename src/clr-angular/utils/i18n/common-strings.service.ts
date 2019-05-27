@@ -30,6 +30,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   rowActions = 'Available actions';
   pickColumns = 'Show or hide columns';
   showColumns = 'Show Columns';
+  minValue = 'Min value';
+  maxValue = 'Max value';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

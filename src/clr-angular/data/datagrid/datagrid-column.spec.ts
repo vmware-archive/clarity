@@ -144,10 +144,6 @@ export default function(): void {
         component.sort();
         expect(sortService.comparator).toEqual(new DatagridPropertyComparator('test'));
       });
-
-      it('should have ariaButtonLabel property', function() {
-        expect(component.ariaButtonLabel).toBe(new ClrCommonStringsService().sort);
-      });
     });
 
     describe('Template API', function() {

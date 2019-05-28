@@ -53,6 +53,13 @@
     building your Angular CLI application.
 </p>
 <p>
+    Changing the locale requires its data to be registered first.
+    <clr-code-snippet [clrCode]="registerLocaleExample"></clr-code-snippet>
+    Afterwards you can simply provide the locale in any Module or Component by the 
+    <code class="clr-code">LOCALE_ID</code> token.
+    <clr-code-snippet [clrCode]="provideLocaleExample"></clr-code-snippet>
+</p>
+<p>
     For more information on setting the locale
     parameter and loading the locale data, please read the Angular
     <a href="https://angular.io/guide/i18n" target="_blank">internationalization</a>

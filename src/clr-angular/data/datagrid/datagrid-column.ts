@@ -47,7 +47,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
           <button 
             class="datagrid-column-title" 
-            [attr.aria-label]="ariaButtonLabel"
+            [attr.aria-label]="commonStrings.sort"
             *ngIf="sortable" 
             (click)="sort()" 
             type="button">
@@ -238,10 +238,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
       case ClrDatagridSortOrder.DESC:
         return 'descending';
     }
-  }
-
-  public get ariaButtonLabel() {
-    return this.commonStrings.sort;
   }
 
   @Output('clrDgSortOrderChange') public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();

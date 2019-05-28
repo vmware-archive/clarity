@@ -273,7 +273,6 @@ export declare class ClrDatagridCell implements OnInit {
 
 export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
     readonly _view: any;
-    readonly ariaButtonLabel: string;
     readonly ariaSort: "none" | "ascending" | "descending";
     commonStrings: ClrCommonStrings;
     customFilter: boolean;

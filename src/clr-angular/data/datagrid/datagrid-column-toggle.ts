@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChild } from '@angular/core';
+import { Component, ContentChild, Inject } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 
@@ -15,6 +15,8 @@ import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
 
+import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
+
 @Component({
   selector: 'clr-dg-column-toggle',
   template: `
@@ -22,10 +24,11 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
       #anchor
       (click)="toggleSwitchPanel()"
       class="btn btn-sm btn-link column-toggle--action"
+      [attr.aria-controls]="columnSwitchId" 
       type="button">
       <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
     </button>
-    <div class="column-switch"
+    <div [id]="columnSwitchId" class="column-switch"
          *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
       <div class="switch-header">
         <ng-container *ngIf="!customToggleTitle">{{commonStrings.showColumns}}</ng-container>
@@ -33,6 +36,7 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
         <button
           class="btn btn-sm btn-link toggle-switch-close-button"
           (click)="toggleSwitchPanel()"
+          [attr.aria-label]="commonStrings.close"
           type="button">
           <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
         </button>
@@ -57,6 +61,7 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
     </div>
   `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'open' },
+  providers: [UNIQUE_ID_PROVIDER],
 })
 /** @deprecated since 2.0, remove in 3.0 */
 export class ClrDatagridColumnToggle {
@@ -72,7 +77,11 @@ export class ClrDatagridColumnToggle {
   @ContentChild(ClrDatagridColumnToggleButton, { static: false })
   customToggleButton: ClrDatagridColumnToggleButton;
 
-  constructor(public commonStrings: ClrCommonStrings, private columnsService: ColumnsService) {}
+  constructor(
+    public commonStrings: ClrCommonStrings,
+    private columnsService: ColumnsService,
+    @Inject(UNIQUE_ID) public columnSwitchId: string
+  ) {}
 
   get hideableColumnStates(): ColumnState[] {
     const hideables = this.columnsService.columns.filter(column => column.value.hideable);

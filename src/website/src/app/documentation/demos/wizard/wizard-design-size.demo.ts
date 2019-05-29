@@ -12,7 +12,7 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-design-size.demo.html',
 })
 export class WizardDesignSizeDemo {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
   open: boolean = false;
   size: string = 'xl';

@@ -41,7 +41,7 @@ const EXAMPLE = `
   styleUrls: ['./stack-view.demo.scss'],
 })
 export class StackViewAngularLazyloadDemo extends StackViewNgDemo {
-  @ViewChild('lazyBlock', { static: false })
+  @ViewChild('lazyBlock', { static: true })
   lazyBlock: ClrStackBlock;
 
   resetChildren(): void {

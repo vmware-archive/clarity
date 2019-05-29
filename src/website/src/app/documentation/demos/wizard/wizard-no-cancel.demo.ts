@@ -12,7 +12,7 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-no-cancel.demo.html',
 })
 export class WizardNoCancel {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
   open: boolean = false;

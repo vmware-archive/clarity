@@ -24,7 +24,7 @@ export class ClipboardInput {
     this._copyContent = value;
   }
 
-  @ViewChild('inputToCopy', { static: false })
+  @ViewChild('inputToCopy', { static: true })
   set input(inputRef: ElementRef) {
     if (inputRef) {
       const input = inputRef.nativeElement;

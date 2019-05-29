@@ -701,7 +701,7 @@
     ...
 &#125;)
 export class WizardJumpToDemo &#123;
-    @ViewChild("ohai", {static: false}) wizard: ClrWizard; // makes wizard accessible through this.wizard!!!
+    @ViewChild("ohai") wizard: ClrWizard; // makes wizard accessible through this.wizard!!!
     ...
 </code></pre>
 
@@ -1116,7 +1116,5 @@ export class WizardJumpToDemo &#123;
                 </li>
             </ul>
         </div>
-
     </article>
-
 </clr-doc-wrapper>

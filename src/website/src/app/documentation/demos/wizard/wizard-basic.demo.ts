@@ -11,11 +11,11 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-basic.demo.html',
 })
 export class WizardBasic {
-  @ViewChild('wizardmd', { static: false })
+  @ViewChild('wizardmd', { static: true })
   wizardMedium: ClrWizard;
-  @ViewChild('wizardlg', { static: false })
+  @ViewChild('wizardlg', { static: true })
   wizardLarge: ClrWizard;
-  @ViewChild('wizardxl', { static: false })
+  @ViewChild('wizardxl', { static: true })
   wizardExtraLarge: ClrWizard;
 
   mdOpen: boolean = false;

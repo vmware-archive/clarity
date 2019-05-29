@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -83,6 +83,12 @@ export function spec<C, H>(
      * and modifying their prototype is definitely a bad idea
      */
     Object.assign(this, TestContext.prototype);
+    // What changed from 8.0.0-rc5 -> 8.0.0 ?!?!!
+    // After Anglar 8 updates functions are not getting assigned to this.
+    this.detectChanges = TestContext.prototype.detectChanges;
+    this.getClarityProvider = TestContext.prototype.getClarityProvider;
+    this.init = TestContext.prototype.init;
+    this.getProvider = TestContext.prototype.getProvider;
   });
 
   beforeEach(function(this: TestContext<C, H>) {

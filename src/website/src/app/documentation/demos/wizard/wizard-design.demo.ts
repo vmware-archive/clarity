@@ -93,9 +93,9 @@ import { DisableFocusTrap } from '../../utils/disable-focus-trap';
   ],
 })
 export class WizardDesignDemo {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  @ViewChild('number', { static: false })
+  @ViewChild('number', { static: true })
   numberField: any;
 
   open: boolean = true;
@@ -276,7 +276,7 @@ export class WizardDesignDemo {
     this.showPowerError = false;
   }
 
-  @ViewChild('pageOne', { static: false })
+  @ViewChild('pageOne', { static: true })
   pageOne: ClrWizardPage;
 
   get pageOneTitle(): string {
@@ -286,7 +286,7 @@ export class WizardDesignDemo {
     return 'Basic Information';
   }
 
-  @ViewChild('pageTwo', { static: false })
+  @ViewChild('pageTwo', { static: true })
   pageTwo: ClrWizardPage;
 
   get pageTwoTitle(): string {
@@ -296,7 +296,7 @@ export class WizardDesignDemo {
     return 'Color';
   }
 
-  @ViewChild('pageThree', { static: false })
+  @ViewChild('pageThree', { static: true })
   pageThree: ClrWizardPage;
 
   get pageThreeTitle(): string {
@@ -306,7 +306,7 @@ export class WizardDesignDemo {
     return 'Power';
   }
 
-  @ViewChild('pageFour', { static: false })
+  @ViewChild('pageFour', { static: true })
   pageFour: ClrWizardPage;
 
   get pageFourTitle(): string {

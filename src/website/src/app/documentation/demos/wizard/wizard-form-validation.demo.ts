@@ -12,9 +12,9 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-form-validation.demo.html',
 })
 export class WizardFormValidation {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  @ViewChild('number', { static: false })
+  @ViewChild('number', { static: true })
   numberField: any;
 
   open: boolean = false;

@@ -11,11 +11,11 @@ import { ClrWizard, ClrWizardPage } from '@clr/angular';
   templateUrl: './wizard-async-completion.demo.html',
 })
 export class WizardAsyncCompletion {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  @ViewChild('myForm', { static: false })
+  @ViewChild('myForm', { static: true })
   formData: any;
-  @ViewChild('myFinishPage', { static: false })
+  @ViewChild('myFinishPage', { static: true })
   finishPage: ClrWizardPage;
 
   loadingFlag: boolean = false;

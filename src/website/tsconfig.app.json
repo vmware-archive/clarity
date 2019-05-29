@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
     "baseUrl": "./",
+    "module": "esnext",
     "resolveJsonModule": true,
     "paths": {
       "@clr/angular": ["../clr-angular"],

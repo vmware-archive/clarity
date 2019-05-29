@@ -45,7 +45,7 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
 
   @Input() fragmentOffsetTop: number;
 
-  @ViewChild('fragmentContent', { static: false })
+  @ViewChild('fragmentContent', { static: true })
   fragmentContent: ElementRef;
 
   fragmentContentElState: any;

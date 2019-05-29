@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,7 +57,7 @@ export class ClrSignpost {
    * Uses ContentChild to check for a user supplied element with the ClrSignpostTrigger on it.
    *
    */
-  @ContentChild(ClrSignpostTrigger)
+  @ContentChild(ClrSignpostTrigger, { static: false })
   set customTrigger(trigger: ClrSignpostTrigger) {
     this.useCustomTrigger = !!trigger;
   }

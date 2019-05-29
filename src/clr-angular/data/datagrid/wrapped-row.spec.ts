@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,11 +11,12 @@ import { WrappedRow } from './wrapped-row';
 
 @Component({
   template: `
-        <dg-wrapped-row #wrapper>Hello World!<dg-wrapped-row>
+        <dg-wrapped-row>Hello World!</dg-wrapped-row>
     `,
 })
 class WrappedRowTest {
-  @ViewChild('wrapper') wrapper: WrappedRow;
+  @ViewChild(WrappedRow, { static: true })
+  wrapper: WrappedRow;
 }
 
 interface TestContext {

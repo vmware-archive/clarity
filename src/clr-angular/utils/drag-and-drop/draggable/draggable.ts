@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -60,7 +60,8 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     this.componentFactory = this.cfr.resolveComponentFactory<ClrDraggableGhost<T>>(ClrDraggableGhost);
   }
 
-  @ContentChild(ClrIfDragged) customGhost: ClrIfDragged<T>;
+  @ContentChild(ClrIfDragged, { static: false })
+  customGhost: ClrIfDragged<T>;
 
   @Input('clrDraggable')
   set dataTransfer(value: T) {

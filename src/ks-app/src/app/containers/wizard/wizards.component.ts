@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -33,11 +33,13 @@ export class KSWizards {
   private aClrWizardPageHeaderActions: ClrWizardPageHeaderActions;
 
   // Form Wizard Demo
-  @ViewChild('formWizard') formWizard: ClrWizard;
+  @ViewChild('formWizard', { static: false })
+  formWizard: ClrWizard;
   formOpen: boolean = false;
   formModel = { name: '', favorite: '', number: '' };
 
   // inlineWizard demo
-  @ViewChild('inlineWizard') inlineWizard: ClrWizard;
+  @ViewChild('inlineWizard', { static: false })
+  inlineWizard: ClrWizard;
   inlineOpen: boolean = false;
 }

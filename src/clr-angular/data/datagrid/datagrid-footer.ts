@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,7 +39,8 @@ export class ClrDatagridFooter<T = any> {
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
-  @ContentChild(ClrDatagridColumnToggle) toggle: ClrDatagridColumnToggle;
+  @ContentChild(ClrDatagridColumnToggle, { static: false })
+  toggle: ClrDatagridColumnToggle;
 
   get hasHideableColumns(): boolean {
     return this.columnsService.hasHideableColumns;

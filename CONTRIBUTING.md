@@ -35,12 +35,12 @@ Barring exceptionally small contributions like one-line bug fixes, please follow
 
 ## Contributing to Documentation
 
-The [Clarity documentation website](https://clarity.design) is also in this repository in the `website`
-branch. You can contribute to the documentation by submitting pull requests against that branch. Details about how to
-setup and run the website locally can be found on the wiki at
-https://github.com/vmware/clarity/wiki/Building-the-Website.
-Please note that for larger contributions to the website, you will need to follow the
-[development contribution process](/DEVELOPMENT_CONTRIBUTION.md) too.
+The [Clarity documentation website](https://clarity.design) is in the folder `src/website`. You can contribute
+to the documentation by submitting pull requests with chenges that update the demos in that application. Details about
+how to setup
+and run the website locally can be found on the wiki at https://github.com/vmware/clarity/wiki/Building-the-Website.
+Please note that for larger contributions to the website, you will need to follow the [development contribution
+process](/DEVELOPMENT_CONTRIBUTION.md) too.
 
 ## Reporting Bugs and Creating Issues
 

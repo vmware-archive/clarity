@@ -92,5 +92,5 @@ export abstract class ClrCommonStrings {
   /**
    * Datagrid: sort of columns
    */
-  sort?: string;
+  sortColumn?: string;
 }

@@ -47,7 +47,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
           <button 
             class="datagrid-column-title" 
-            [attr.aria-label]="commonStrings.sort"
+            [attr.aria-label]="commonStrings.sortColumn"
             *ngIf="sortable" 
             (click)="sort()" 
             type="button">

@@ -323,7 +323,7 @@ export default function(): void {
         context.testComponent.comparator = new TestComparator();
         context.detectChanges();
         const title = context.clarityElement.querySelector('.datagrid-column-title');
-        console.log(title, title.attributes, context.testComponent, title.attributes['aria-label'].value);
+        expect(title.attributes['aria-label'].value).toBe(new ClrCommonStringsService().sortColumn);
       });
 
       it('adds and removes the correct icon when sorting', function() {

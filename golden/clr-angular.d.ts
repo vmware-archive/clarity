@@ -202,7 +202,7 @@ export declare abstract class ClrCommonStrings {
     selectAll?: string;
     show?: string;
     showColumns?: string;
-    sort?: string;
+    sortColumn?: string;
     success?: string;
     warning?: string;
 }

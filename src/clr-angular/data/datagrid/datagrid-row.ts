@@ -63,7 +63,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
-  @ViewChild(ClrExpandable) expandAnimation: ClrExpandable;
+  @ViewChild(ClrExpandable, { static: false })
+  expandAnimation: ClrExpandable;
 
   /**
    * Model of the row, to use for selection

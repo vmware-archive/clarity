@@ -40,5 +40,7 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'pickColumns', role: 'Datagrid: show and hide columns icon alt text' },
     { key: 'showColumns', role: 'Datagrid: show columns title' },
     { key: 'sortColumn', role: 'Datagrid: sort columns title' },
+    { key: 'minValue', role: 'Datagrid: minimum value (numeric filters)' },
+    { key: 'maxValue', role: 'Datagrid: maximum value (numeric filters' },
   ];
 }

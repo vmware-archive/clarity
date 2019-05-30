@@ -16,6 +16,7 @@ import { FocusService } from '../../../utils/focus/focus.service';
 import { FocusableItem } from '../../../utils/focus/focusable-item/focusable-item';
 import { linkParent, linkVertical } from '../../../utils/focus/focusable-item/linkers';
 import { wrapObservable } from '../../../utils/focus/wrap-observable';
+import { take } from 'rxjs/operators';
 
 @Injectable()
 export class DropdownFocusHandler implements FocusableItem {
@@ -112,7 +113,10 @@ export class DropdownFocusHandler implements FocusableItem {
       // For dropdowns, the menu shouldn't actually be in the tab order. We manually focus it when opening.
       this.renderer.setAttribute(el, 'tabindex', '-1');
       // When the user moves focus outside of the menu, we close the dropdown
-      this.renderer.listen(el, 'focusout', event => {
+      this.renderer.listen(el, 'blur', event => {
+        // we clear out any existing focus on the items
+        this.children.pipe(take(1)).subscribe(items => items.forEach(item => item.blur()));
+
         // focusout + relatedTarget because a simple blur event would trigger
         // when the user clicks an item inside of the menu, closing the dropdown.
         if (event.relatedTarget && isPlatformBrowser(this.platformId)) {

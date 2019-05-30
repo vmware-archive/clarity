@@ -68,7 +68,6 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   host: {
     '[class.datagrid-column]': 'true',
     '[attr.aria-sort]': 'ariaSort',
-    '[attr.tabindex]': '-1',
     role: 'columnheader',
   },
 })

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,14 +8,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { FocusService } from '../../utils/focus/focus.service';
+import { FocusableItem } from '../../utils/focus/focusable-item/focusable-item';
 
 import { ClrDropdown } from './dropdown';
 import { ClrDropdownModule } from './dropdown.module';
+import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
+import { Subscription } from 'rxjs';
 
 export default function(): void {
   describe('Dropdown', () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
+    let subscription: Subscription;
 
     beforeEach(() => {
       TestBed.configureTestingModule({ imports: [ClrDropdownModule], declarations: [TestComponent] });
@@ -27,6 +32,10 @@ export default function(): void {
 
     afterEach(() => {
       fixture.destroy();
+
+      if (subscription) {
+        subscription.unsubscribe();
+      }
     });
 
     it('projects content', () => {
@@ -187,7 +196,7 @@ export default function(): void {
       nestedToggle.click();
       fixture.detectChanges();
 
-      ifOpenService.openChange.subscribe(() => {
+      subscription = ifOpenService.openChange.subscribe(() => {
         expect(fixture.componentInstance.customClickHandlerDone).toBe(true);
       });
 
@@ -197,6 +206,18 @@ export default function(): void {
 
       // Make sure the dropdown correctly closed, otherwise our expect() in the subscription might not have run.
       expect(ifOpenService.open).toBe(false);
+    });
+
+    it('declares a FocusService provider', () => {
+      const focusService = fixture.debugElement.query(By.directive(ClrDropdown)).injector.get(FocusService, null);
+      expect(focusService).not.toBeNull();
+    });
+
+    it('declares a DropdownFocusHandler provider', () => {
+      const injector = fixture.debugElement.query(By.directive(ClrDropdown)).injector;
+      const focusHandler = injector.get(DropdownFocusHandler, null);
+      expect(focusHandler).not.toBeNull();
+      expect(injector.get(FocusableItem, null)).toBe(focusHandler);
     });
   });
 }
@@ -227,7 +248,8 @@ export default function(): void {
     `,
 })
 class TestComponent {
-  @ViewChild(ClrDropdown) dropdownInstance: ClrDropdown;
+  @ViewChild(ClrDropdown, { static: false })
+  dropdownInstance: ClrDropdown;
 
   menuClosable: boolean = true;
   testCnt: number = 0;

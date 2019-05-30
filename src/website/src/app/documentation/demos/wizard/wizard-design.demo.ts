@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -93,8 +93,10 @@ import { DisableFocusTrap } from '../../utils/disable-focus-trap';
   ],
 })
 export class WizardDesignDemo {
-  @ViewChild('wizard') wizard: ClrWizard;
-  @ViewChild('number') numberField: any;
+  @ViewChild('wizard', { static: false })
+  wizard: ClrWizard;
+  @ViewChild('number', { static: false })
+  numberField: any;
 
   open: boolean = true;
 
@@ -274,7 +276,8 @@ export class WizardDesignDemo {
     this.showPowerError = false;
   }
 
-  @ViewChild('pageOne') pageOne: ClrWizardPage;
+  @ViewChild('pageOne', { static: false })
+  pageOne: ClrWizardPage;
 
   get pageOneTitle(): string {
     if (this.pageOne.completed) {
@@ -283,7 +286,8 @@ export class WizardDesignDemo {
     return 'Basic Information';
   }
 
-  @ViewChild('pageTwo') pageTwo: ClrWizardPage;
+  @ViewChild('pageTwo', { static: false })
+  pageTwo: ClrWizardPage;
 
   get pageTwoTitle(): string {
     if (this.pageTwo.completed) {
@@ -292,7 +296,8 @@ export class WizardDesignDemo {
     return 'Color';
   }
 
-  @ViewChild('pageThree') pageThree: ClrWizardPage;
+  @ViewChild('pageThree', { static: false })
+  pageThree: ClrWizardPage;
 
   get pageThreeTitle(): string {
     if (this.pageThree.completed) {
@@ -301,7 +306,8 @@ export class WizardDesignDemo {
     return 'Power';
   }
 
-  @ViewChild('pageFour') pageFour: ClrWizardPage;
+  @ViewChild('pageFour', { static: false })
+  pageFour: ClrWizardPage;
 
   get pageFourTitle(): string {
     if (this.pageFour.completed) {

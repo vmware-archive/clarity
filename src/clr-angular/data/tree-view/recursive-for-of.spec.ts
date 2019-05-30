@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,8 +38,10 @@ const TEST_ROOT: TestNode = {
   `,
 })
 class TestComponent {
-  @ViewChild(ClrRecursiveForOf) recursiveForOf: ClrRecursiveForOf<TestNode>;
-  @ViewChild(TemplateRef) template: TemplateRef<ClrRecursiveForOfContext<TestNode>>;
+  @ViewChild(ClrRecursiveForOf, { static: false })
+  recursiveForOf: ClrRecursiveForOf<TestNode>;
+  @ViewChild(TemplateRef, { static: false })
+  template: TemplateRef<ClrRecursiveForOfContext<TestNode>>;
 
   root: TestNode | TestNode[] = TEST_ROOT;
   getChildren = getChildren;

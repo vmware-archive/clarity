@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,7 +47,8 @@ export default function(): void {
 
 @Component({ template: `<div *ngFor="let n of numbers; trackBy: trackBy">{{n}}</div>` })
 class FullTest {
-  @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems<number>;
+  @ViewChild(ClrDatagridItems, { static: false })
+  datagridItems: ClrDatagridItems<number>;
 
   numbers = [1, 2, 3, 4, 5];
 

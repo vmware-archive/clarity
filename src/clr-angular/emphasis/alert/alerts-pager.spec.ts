@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -99,12 +99,14 @@ export default function() {
 
 @Component({ template: `<clr-alerts-pager [(clrCurrentAlertIndex)]="index"></clr-alerts-pager>` })
 export class TestIndex {
-  @ViewChild(ClrAlertsPager) pagerInstance: ClrAlertsPager;
+  @ViewChild(ClrAlertsPager, { static: false })
+  pagerInstance: ClrAlertsPager;
   index: number = 0;
 }
 
 @Component({ template: `<clr-alerts-pager [(clrCurrentAlert)]="currentAlert"></clr-alerts-pager>` })
 export class TestInstance {
-  @ViewChild(ClrAlertsPager) pagerInstance: ClrAlertsPager;
+  @ViewChild(ClrAlertsPager, { static: false })
+  pagerInstance: ClrAlertsPager;
   currentAlert: ClrAlert;
 }

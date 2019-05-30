@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,9 +12,12 @@ import { ClrWizard, ClrWizardPage } from '@clr/angular';
   templateUrl: './wizard-jump-to.demo.html',
 })
 export class WizardJumpToDemo {
-  @ViewChild('wizard') wizard: ClrWizard;
-  @ViewChild('pageThree') pageThree: ClrWizardPage;
-  @ViewChild('pageFive') pageFive: ClrWizardPage;
+  @ViewChild('wizard', { static: false })
+  wizard: ClrWizard;
+  @ViewChild('pageThree', { static: false })
+  pageThree: ClrWizardPage;
+  @ViewChild('pageFive', { static: false })
+  pageFive: ClrWizardPage;
 
   open: boolean = false;
 

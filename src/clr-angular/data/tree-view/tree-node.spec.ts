@@ -130,6 +130,13 @@ export default function(): void {
         expect(this.node.isExpandable()).toBeTrue();
       });
 
+      it('is expandable handles no children', function(this: TsApiContext) {
+        this.node._model.children = undefined;
+        expect(() => {
+          this.node.isExpandable();
+        }).not.toThrow();
+      });
+
       it('is expanded if the expand service is', function(this: TsApiContext) {
         expect(this.node.expanded).toBeFalse();
         this.expandService.toggle();
@@ -137,7 +144,7 @@ export default function(): void {
       });
 
       it('is expandable and does not fetch children if overriden to be expandable', function(this: TsApiContext) {
-        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined);
+        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined, this.featureService);
         const spy = spyOnProperty(recursiveModel, 'children', 'get');
         this.node._model = recursiveModel;
         this.node.expandable = true;
@@ -146,7 +153,7 @@ export default function(): void {
       });
 
       it('is not expandable and does not fetch children if overriden not to be expandable', function(this: TsApiContext) {
-        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined);
+        const recursiveModel = new RecursiveTreeNodeModel(null, null, () => undefined, this.featureService);
         const spy = spyOnProperty(recursiveModel, 'children', 'get');
         this.node._model = recursiveModel;
         this.node.expandable = false;

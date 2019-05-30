@@ -80,21 +80,23 @@ export default function(): void {
     it('initializes the recursion service with the correct values', function(this: Context) {
       expect(this.featuresService.recursion).toBeTruthy();
       expect(this.featuresService.recursion.template).toBe(this.hostComponent.template);
-      expect(this.featuresService.recursion.root).toEqual([new RecursiveTreeNodeModel(TEST_ROOT, null, getChildren)]);
+      expect(this.featuresService.recursion.root).toEqual([
+        new RecursiveTreeNodeModel(TEST_ROOT, null, getChildren, this.featuresService),
+      ]);
     });
 
     it('updates the recursion service if the nodes change', function(this: Context) {
       this.hostComponent.root = TEST_ROOT.children[0];
       this.fixture.detectChanges();
       expect(this.featuresService.recursion.root).toEqual([
-        new RecursiveTreeNodeModel(TEST_ROOT.children[0], null, getChildren),
+        new RecursiveTreeNodeModel(TEST_ROOT.children[0], null, getChildren, this.featuresService),
       ]);
     });
 
     it('accepts multiple roots', function(this: Context) {
       this.hostComponent.root = [TEST_ROOT, TEST_ROOT];
       this.fixture.detectChanges();
-      const wrappedRoot = new RecursiveTreeNodeModel(TEST_ROOT, null, getChildren);
+      const wrappedRoot = new RecursiveTreeNodeModel(TEST_ROOT, null, getChildren, this.featuresService);
       expect(this.featuresService.recursion.root).toEqual([wrappedRoot, wrappedRoot]);
     });
   });

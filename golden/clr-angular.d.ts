@@ -873,11 +873,12 @@ export declare class ClrRadioWrapper implements DynamicWrapper, OnInit {
     ngOnInit(): void;
 }
 
-export declare class ClrRecursiveForOf<T> implements OnChanges {
+export declare class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
     getChildren: (node: T) => AsyncArray<T>;
     nodes: T | T[];
-    constructor(template: TemplateRef<ClrRecursiveForOfContext<T>>, featuresService: TreeFeaturesService<T>);
+    constructor(template: TemplateRef<ClrRecursiveForOfContext<T>>, featuresService: TreeFeaturesService<T>, cdr: ChangeDetectorRef);
     ngOnChanges(): void;
+    ngOnDestroy(): void;
 }
 
 export interface ClrRecursiveForOfContext<T> {

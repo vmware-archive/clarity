@@ -79,7 +79,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     if (typeof this.expandable !== 'undefined') {
       return this.expandable;
     }
-    return !!this.expandService.expandable || this._model.children.length > 0;
+    return !!this.expandService.expandable || (this._model.children && this._model.children.length > 0);
   }
 
   @Input('clrSelected')

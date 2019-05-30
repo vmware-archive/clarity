@@ -35,7 +35,8 @@ const TEST_ROOT: RecursiveTreeNodeModel<TestNode> = new RecursiveTreeNodeModel(
     ],
   },
   null,
-  getChildren
+  getChildren,
+  this.featuresService
 );
 
 @Component({

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,6 +8,7 @@ import { isObservable, Subscription } from 'rxjs';
 
 import { TreeNodeModel } from './tree-node.model';
 import { AsyncArray, isPromise } from './async-array';
+import { TreeFeaturesService } from '../tree-features.service';
 
 /*
  * A recursive model is built received from the app and traversed to create the corresponding components.
@@ -17,7 +18,8 @@ export class RecursiveTreeNodeModel<T> extends TreeNodeModel<T> {
   constructor(
     model: T,
     parent: RecursiveTreeNodeModel<T> | null,
-    private getChildren: (node: T) => AsyncArray<T> | undefined
+    private getChildren: (node: T) => AsyncArray<T> | undefined,
+    private featuresService: TreeFeaturesService<T> | undefined
   ) {
     super();
     this.model = model;
@@ -59,10 +61,13 @@ export class RecursiveTreeNodeModel<T> extends TreeNodeModel<T> {
       this._children = [];
     }
     this.childrenFetched = true;
+    if (this.featuresService) {
+      this.featuresService.childrenFetched.next();
+    }
   }
 
   private wrapChildren(rawModels: T[]) {
-    return rawModels.map(m => new RecursiveTreeNodeModel(m, this, this.getChildren));
+    return rawModels.map(m => new RecursiveTreeNodeModel(m, this, this.getChildren, this.featuresService));
   }
 
   private _children: RecursiveTreeNodeModel<T>[] = [];

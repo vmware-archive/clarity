@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,16 +24,21 @@ function observableChildren(node: string): Observable<string[]> {
 export default function(): void {
   describe('RecursiveTreeNodeModel', () => {
     it('fetches children through the given function', function() {
-      const root = new RecursiveTreeNodeModel('A', null, synchronousChildren);
+      const root = new RecursiveTreeNodeModel('A', null, synchronousChildren, this.featureService);
       expect(root.children.map(c => c.model)).toEqual(['AA', 'AB']);
     });
 
     it('offers a fetchChildren() method that fetches the children only once', function() {
       let nbFetch = 0;
-      const root = new RecursiveTreeNodeModel('A', null, node => {
-        nbFetch++;
-        return synchronousChildren(node);
-      });
+      const root = new RecursiveTreeNodeModel(
+        'A',
+        null,
+        node => {
+          nbFetch++;
+          return synchronousChildren(node);
+        },
+        this.featureService
+      );
       expect(nbFetch).toBe(0);
       root.fetchChildren();
       expect(nbFetch).toBe(1);
@@ -43,10 +48,15 @@ export default function(): void {
 
     it('offers a clearChildren() method that forces the children to be fetched again next time', function() {
       let nbFetch = 0;
-      const root = new RecursiveTreeNodeModel('A', null, node => {
-        nbFetch++;
-        return synchronousChildren(node);
-      });
+      const root = new RecursiveTreeNodeModel(
+        'A',
+        null,
+        node => {
+          nbFetch++;
+          return synchronousChildren(node);
+        },
+        this.featureService
+      );
       root.fetchChildren();
       expect(nbFetch).toBe(1);
       root.clearChildren();
@@ -55,14 +65,14 @@ export default function(): void {
     });
 
     it('declares itself as parent for created children', function() {
-      const root = new RecursiveTreeNodeModel('A', null, synchronousChildren);
+      const root = new RecursiveTreeNodeModel('A', null, synchronousChildren, this.featureService);
       expect(root.children.map(c => c.parent)).toEqual([root, root]);
     });
 
     it(
       'can unwrap a Promise for the children',
       fakeAsync(function() {
-        const root = new RecursiveTreeNodeModel('A', null, promiseChildren);
+        const root = new RecursiveTreeNodeModel('A', null, promiseChildren, this.featureService);
         root.fetchChildren();
         tick();
         expect(root.children.map(c => c.model)).toEqual(['AA', 'AB']);
@@ -70,14 +80,14 @@ export default function(): void {
     );
 
     it('can unwrap an Observable for the children', function() {
-      const root = new RecursiveTreeNodeModel('A', null, observableChildren);
+      const root = new RecursiveTreeNodeModel('A', null, observableChildren, this.featureService);
       expect(root.children.map(c => c.model)).toEqual(['AA', 'AB']);
     });
 
     it(
       'marks itself as loading while waiting for children from a Promise',
       fakeAsync(function() {
-        const root = new RecursiveTreeNodeModel('A', null, promiseChildren);
+        const root = new RecursiveTreeNodeModel('A', null, promiseChildren, this.featureService);
         root.fetchChildren();
         expect(root.loading).toBeTrue();
         tick();
@@ -88,7 +98,12 @@ export default function(): void {
     it(
       'marks itself as loading while waiting for children from an Observable',
       fakeAsync(function() {
-        const root = new RecursiveTreeNodeModel('A', null, node => observableChildren(node).pipe(delay(0)));
+        const root = new RecursiveTreeNodeModel(
+          'A',
+          null,
+          node => observableChildren(node).pipe(delay(0)),
+          this.featureService
+        );
         root.fetchChildren();
         expect(root.loading).toBeTrue();
         tick();

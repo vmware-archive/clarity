@@ -47,8 +47,10 @@ import { ClrDatagridPageSize } from './datagrid-page-size';
   host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
-  @ContentChild(ClrDatagridPageSize) _pageSizeComponent: ClrDatagridPageSize;
-  @ViewChild('currentPageInput') currentPageInputRef: ElementRef;
+  @ContentChild(ClrDatagridPageSize, { static: false })
+  _pageSizeComponent: ClrDatagridPageSize;
+  @ViewChild('currentPageInput', { static: false })
+  currentPageInputRef: ElementRef;
 
   constructor(public page: Page) {
     this.page.activated = true;

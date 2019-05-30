@@ -574,14 +574,19 @@ export declare class ClrDropdown implements OnDestroy {
 }
 
 export declare class ClrDropdownItem implements AfterViewInit {
-    constructor(dropdown: ClrDropdown, el: ElementRef, _dropdownService: RootDropdownService, renderer: Renderer2);
+    disabled: boolean | string;
+    constructor(dropdown: ClrDropdown, el: ElementRef<HTMLElement>, _dropdownService: RootDropdownService, renderer: Renderer2, focusableItem: FocusableItem);
     ngAfterViewInit(): void;
+    ngOnDestroy(): void;
     onDropdownItemClick(): void;
 }
 
-export declare class ClrDropdownMenu extends AbstractPopover {
+export declare class ClrDropdownMenu extends AbstractPopover implements AfterContentInit, OnDestroy {
+    items: QueryList<FocusableItem>;
     position: string;
-    constructor(injector: Injector, parentHost: ElementRef, nested: ClrDropdownMenu);
+    constructor(injector: Injector, parentHost: ElementRef<HTMLElement>, nested: ClrDropdownMenu, focusHandler: DropdownFocusHandler);
+    ngAfterContentInit(): void;
+    ngOnDestroy(): void;
 }
 
 export declare class ClrDropdownModule {
@@ -590,7 +595,7 @@ export declare class ClrDropdownModule {
 export declare class ClrDropdownTrigger {
     readonly active: boolean;
     isRootLevelToggle: boolean;
-    constructor(dropdown: ClrDropdown, ifOpenService: IfOpenService);
+    constructor(dropdown: ClrDropdown, ifOpenService: IfOpenService, el: ElementRef<HTMLElement>, focusHandler: DropdownFocusHandler);
     onDropdownTriggerClick(event: any): void;
 }
 

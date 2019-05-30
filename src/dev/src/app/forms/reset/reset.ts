@@ -11,7 +11,8 @@ import { ClrForm } from '@clr/angular';
 
 @Component({ templateUrl: './reset.html' })
 export class FormsResetDemo {
-  @ViewChild(ClrForm) form: ClrForm;
+  @ViewChild(ClrForm, { static: false })
+  form: ClrForm;
 
   model = new FormGroup({
     required: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/asdfasdf/)]),

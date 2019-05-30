@@ -24,7 +24,8 @@ import { IfOpenService } from '../../../../clr-angular/utils/conditional/if-open
   providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 export class DummyAnchor {
-  @ViewChild('ignore') ignore: ElementRef;
+  @ViewChild('ignore', { static: false })
+  ignore: ElementRef;
 
   constructor(private ifOpenService: IfOpenService) {}
 

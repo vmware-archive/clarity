@@ -43,7 +43,7 @@
   text-transform: none;
 
   &:hover,
-  &:focus {
+  &.clr-focus {
     background-color: $clr-dropdown-bg-hover-color;
     color: $clr-dropdown-item-text-color;
     text-decoration: none;
@@ -73,7 +73,7 @@
     }
 
     &:active,
-    &:focus {
+    &.clr-focus {
       background: none;
       box-shadow: none;
     }

@@ -10,7 +10,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 
 @Component({
-  selector: 'clr-expandable',
+  selector: 'clr-expandable-animation',
   template: `
     <ng-content></ng-content>
   `,
@@ -18,18 +18,14 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
     `
     :host {
       display: block;
-      overflow: hidden;
     }
   `,
   ],
-  host: {
-    class: 'expandable',
-  },
   animations: [
     trigger('expandAnimation', [
       transition('void => *', []),
       transition('* => *', [
-        style({ height: '{{startHeight}}px' }),
+        style({ height: '{{startHeight}}px', overflow: 'hidden' }),
         animate('0.2s ease-in-out', style({ height: '*' })),
       ]),
     ]),

@@ -46,7 +46,6 @@ let nbRow: number = 0;
     '[class.datagrid-row]': 'true',
     '[class.datagrid-selected]': 'selected',
     '[attr.aria-owns]': 'id',
-    '[style.overflow-y]': '"hidden"',
     role: 'rowgroup',
   },
   providers: [

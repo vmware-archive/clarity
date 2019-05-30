@@ -283,7 +283,7 @@ export default function(): void {
       });
 
       it('contains expandable element', function() {
-        expect(context.clarityElement.querySelector('.expandable')).not.toBeNull();
+        expect(context.clarityElement.querySelector('clr-expandable-animation')).not.toBeNull();
       });
 
       it("doesn't display the details when collapsed", function() {

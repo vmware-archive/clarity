@@ -6,52 +6,19 @@
 
 import { Component } from '@angular/core';
 
-import { TestContext } from '../../data/datagrid/helpers.spec';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { FocusableItem } from '../../utils/focus/focusable-item/focusable-item';
+import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { Point } from '../common/popover';
 
 import { ClrDropdownMenu } from './dropdown-menu';
-
-export default function(): void {
-  describe('DropdownMenu component', function() {
-    let context: TestContext<ClrDropdownMenu, SimpleTest>;
-
-    beforeEach(function() {
-      context = this.create(ClrDropdownMenu, SimpleTest, [IfOpenService]);
-      context.getClarityProvider(IfOpenService).open = true;
-      context.detectChanges();
-    });
-
-    it('projects content', function() {
-      expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
-    });
-
-    it('has the correct css classes', () => {
-      expect(context.testElement.querySelector('.dropdown-menu')).not.toBeNull();
-    });
-
-    it('supports clrPosition option', () => {
-      // Default is bottom-left since menuPosition is set to ""
-      expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
-      expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
-
-      context.clarityDirective.position = 'bottom-right';
-      context.detectChanges();
-      expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_RIGHT);
-      expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_TOP);
-
-      context.clarityDirective.position = 'top-right';
-      context.detectChanges();
-      expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
-      expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
-    });
-  });
-}
+import { ClrDropdown } from './dropdown';
+import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
 
 @Component({
   template: `
         <clr-dropdown>
-            <clr-dropdown-menu [clrPosition]="position">
+            <clr-dropdown-menu *ngIf="menu" [clrPosition]="position">
                 Hello world
             </clr-dropdown-menu>
         </clr-dropdown>
@@ -59,4 +26,67 @@ export default function(): void {
 })
 class SimpleTest {
   position: string;
+
+  menu = true;
+}
+
+export default function(): void {
+  describe('DropdownMenu component', function() {
+    type Context = TestContext<ClrDropdownMenu, SimpleTest>;
+    spec(ClrDropdownMenu, SimpleTest, null, { declarations: [ClrDropdown] });
+
+    beforeEach(function(this: Context) {
+      this.getClarityProvider(IfOpenService).open = true;
+      this.detectChanges();
+    });
+
+    it('projects content', function(this: Context) {
+      expect(this.clarityElement.textContent.trim()).toMatch('Hello world');
+    });
+
+    it('has the correct css classes', function(this: Context) {
+      expect(this.hostElement.querySelector('.dropdown-menu')).not.toBeNull();
+    });
+
+    it('supports clrPosition option', function(this: Context) {
+      // Default is bottom-left since menuPosition is set to ""
+      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
+      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
+
+      this.clarityDirective.position = 'bottom-right';
+      this.detectChanges();
+      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_RIGHT);
+      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.RIGHT_TOP);
+
+      this.clarityDirective.position = 'top-right';
+      this.detectChanges();
+      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
+      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
+    });
+
+    it('adds the menu role to the host', function(this: Context) {
+      expect(this.clarityElement.getAttribute('role')).toBe('menu');
+    });
+
+    it('declares itself to the DropdownFocusHandler', function(this: Context) {
+      expect(this.getClarityProvider(DropdownFocusHandler).container).toBe(this.clarityElement);
+    });
+
+    it('adds DropdownItem children to the DropdownFocusHandler', function(this: Context) {
+      const focusHandler = this.getClarityProvider(DropdownFocusHandler);
+      const spy = spyOn(focusHandler, 'addChildren');
+      const newChildren = <FocusableItem[]>[{ id: '1' }, { id: '2' }, { id: '3' }];
+      this.clarityDirective.items.reset(newChildren);
+      this.clarityDirective.items.notifyOnChanges();
+      expect(spy).toHaveBeenCalledWith(newChildren);
+    });
+
+    it('removes children from the DropdownFocusHandler on destroy', function(this: Context) {
+      const focusHandler = this.getClarityProvider(DropdownFocusHandler);
+      const spy = spyOn(focusHandler, 'resetChildren');
+      this.hostComponent.menu = false;
+      this.detectChanges();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
 }

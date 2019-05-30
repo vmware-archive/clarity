@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -41,7 +41,8 @@ const EXAMPLE = `
   styleUrls: ['./stack-view.demo.scss'],
 })
 export class StackViewAngularLazyloadDemo extends StackViewNgDemo {
-  @ViewChild('lazyBlock') lazyBlock: ClrStackBlock;
+  @ViewChild('lazyBlock', { static: false })
+  lazyBlock: ClrStackBlock;
 
   resetChildren(): void {
     this.lazyBlock.expanded = false;

@@ -270,7 +270,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
    */
   public customFilter = false;
 
-  @ContentChild(CustomFilter)
+  @ContentChild(CustomFilter, { static: false })
   public set projectedFilter(custom: any) {
     if (custom) {
       this.deleteFilter();

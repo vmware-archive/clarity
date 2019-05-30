@@ -10,7 +10,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
     `
 })
 export class ReactiveFormsDemo {
-    @ViewChild(ClrForm) clrForm;
+    @ViewChild(ClrForm, {static: false}) clrForm;
 
     exampleForm = new FormGroup({
         sample: new FormControl('', Validators.required),

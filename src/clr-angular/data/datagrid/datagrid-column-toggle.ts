@@ -67,8 +67,10 @@ export class ClrDatagridColumnToggle {
   public popoverPoint: Point = Point.LEFT_BOTTOM;
   public open: boolean = false;
 
-  @ContentChild(ClrDatagridColumnToggleTitle) customToggleTitle: ClrDatagridColumnToggleTitle;
-  @ContentChild(ClrDatagridColumnToggleButton) customToggleButton: ClrDatagridColumnToggleButton;
+  @ContentChild(ClrDatagridColumnToggleTitle, { static: false })
+  customToggleTitle: ClrDatagridColumnToggleTitle;
+  @ContentChild(ClrDatagridColumnToggleButton, { static: false })
+  customToggleButton: ClrDatagridColumnToggleButton;
 
   constructor(public commonStrings: ClrCommonStrings, private columnsService: ColumnsService) {}
 

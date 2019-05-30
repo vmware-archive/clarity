@@ -3,10 +3,24 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, Inject, Injector, Input, Optional, SkipSelf } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Inject,
+  Injector,
+  Input,
+  OnDestroy,
+  Optional,
+  QueryList,
+  SkipSelf,
+} from '@angular/core';
 import { AbstractPopover } from '../common/abstract-popover';
 import { Point } from '../common/popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
+import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
+import { FocusableItem } from '../../utils/focus/focusable-item/focusable-item';
 
 @Component({
   selector: 'clr-dropdown-menu',
@@ -15,17 +29,19 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
     `,
   host: {
     '[class.dropdown-menu]': 'true',
+    '[attr.role]': '"menu"',
   },
 })
-export class ClrDropdownMenu extends AbstractPopover {
+export class ClrDropdownMenu extends AbstractPopover implements AfterContentInit, OnDestroy {
   constructor(
     injector: Injector,
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
-    parentHost: ElementRef,
+    parentHost: ElementRef<HTMLElement>,
     @Optional()
     @SkipSelf()
-    nested: ClrDropdownMenu
+    nested: ClrDropdownMenu,
+    focusHandler: DropdownFocusHandler
   ) {
     if (!parentHost) {
       throw new Error('clr-dropdown-menu should only be used inside of a clr-dropdown');
@@ -42,6 +58,7 @@ export class ClrDropdownMenu extends AbstractPopover {
     }
     this.popoverOptions.allowMultipleOpen = true;
     this.closeOnOutsideClick = true;
+    this.focusHandler = focusHandler;
   }
 
   @Input('clrPosition')
@@ -85,5 +102,20 @@ export class ClrDropdownMenu extends AbstractPopover {
         this.popoverPoint = Point.LEFT_TOP;
         break;
     }
+  }
+
+  private focusHandler: DropdownFocusHandler;
+  @ContentChildren(FocusableItem) items: QueryList<FocusableItem>;
+
+  ngAfterContentInit() {
+    this.focusHandler.container = this.el.nativeElement;
+    this.items.changes.subscribe(() => this.focusHandler.addChildren(this.items.toArray()));
+    // I saw this on GitHub as a solution to avoid code duplication because of missed QueryList changes
+    this.items.notifyOnChanges();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+    this.focusHandler.resetChildren();
   }
 }

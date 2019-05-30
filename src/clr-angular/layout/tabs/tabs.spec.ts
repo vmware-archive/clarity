@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,8 +47,10 @@ import { IfActiveService } from '../../utils/conditional/if-active.service';
    `,
 })
 class TestComponent {
-  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
-  @ViewChild('first') firstTab: ClrTab;
+  @ViewChild(ClrTabs, { static: false })
+  tabsInstance: ClrTabs;
+  @ViewChild('first', { static: false })
+  firstTab: ClrTab;
   inOverflow: boolean = false;
   layout: TabsLayout = TabsLayout.HORIZONTAL;
 }
@@ -68,7 +70,8 @@ class TestComponent {
    `,
 })
 class NgIfFirstTest {
-  @ViewChild('first') firstTab: ClrTab;
+  @ViewChild('first', { static: false })
+  firstTab: ClrTab;
 }
 
 @Component({
@@ -86,7 +89,8 @@ class NgIfFirstTest {
    `,
 })
 class NgIfSecondTest {
-  @ViewChild('first') firstTab: ClrTab;
+  @ViewChild('first', { static: true })
+  firstTab: ClrTab;
 }
 
 @Component({
@@ -115,7 +119,8 @@ class NgIfSecondTest {
     `,
 })
 class NestedTabsTest {
-  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+  @ViewChild(ClrTabs, { static: true })
+  tabsInstance: ClrTabs;
 }
 
 @Component({
@@ -133,7 +138,8 @@ class NestedTabsTest {
    `,
 })
 class NoClrIfActiveTest {
-  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+  @ViewChild(ClrTabs, { static: true })
+  tabsInstance: ClrTabs;
 }
 
 @Component({
@@ -151,7 +157,8 @@ class NoClrIfActiveTest {
    `,
 })
 class ScalingTestComponent {
-  @ViewChild('content') content: ElementRef;
+  @ViewChild('content', { static: false })
+  content: ElementRef;
 }
 
 describe('Tabs', () => {

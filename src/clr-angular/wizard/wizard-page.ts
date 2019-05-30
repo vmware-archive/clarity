@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,7 +57,8 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  @ContentChild(ClrWizardPageTitle) public pageTitle: ClrWizardPageTitle;
+  @ContentChild(ClrWizardPageTitle, { static: true })
+  public pageTitle: ClrWizardPageTitle;
 
   /**
    * Contains a reference to the desired title for the page's step in the
@@ -69,7 +70,8 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  @ContentChild(ClrWizardPageNavTitle) public pageNavTitle: ClrWizardPageNavTitle;
+  @ContentChild(ClrWizardPageNavTitle, { static: true })
+  public pageNavTitle: ClrWizardPageNavTitle;
 
   /**
    * Contains a reference to the buttons defined within the page. If not defined,
@@ -79,7 +81,8 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  @ContentChild(ClrWizardPageButtons) public _buttons: ClrWizardPageButtons;
+  @ContentChild(ClrWizardPageButtons, { static: true })
+  public _buttons: ClrWizardPageButtons;
 
   /**
    * Contains a reference to the header actions defined within the page. If not defined,
@@ -89,7 +92,8 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  @ContentChild(ClrWizardPageHeaderActions) public _headerActions: ClrWizardPageHeaderActions;
+  @ContentChild(ClrWizardPageHeaderActions, { static: true })
+  public _headerActions: ClrWizardPageHeaderActions;
 
   /**
    *

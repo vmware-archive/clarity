@@ -398,7 +398,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
     expand: DatagridIfExpandService;
-    expandAnimation: ClrExpandable;
+    expandAnimation: ClrExpandableAnimation;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
@@ -625,7 +625,7 @@ export interface ClrDropToleranceInterface {
 export declare class ClrEmphasisModule {
 }
 
-export declare class ClrExpandable {
+export declare class ClrExpandableAnimation {
     clrExpandTrigger: any;
     readonly expandAnimation: {
         value: any;
@@ -1379,7 +1379,7 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
 
 export declare const DEFAULT_BUTTON_TYPES: any;
 
-export declare const EXPANDABLE_DIRECTIVES: Type<any>[];
+export declare const EXPANDABLE_ANIMATION_DIRECTIVES: Type<any>[];
 
 export declare function fade(opacity?: number): AnimationMetadata[];
 

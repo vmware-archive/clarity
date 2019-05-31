@@ -6,7 +6,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { EXPANDABLE_DIRECTIVES } from './index';
+import { EXPANDABLE_ANIMATION_DIRECTIVES } from './index';
 
-@NgModule({ imports: [CommonModule], declarations: [EXPANDABLE_DIRECTIVES], exports: [EXPANDABLE_DIRECTIVES] })
-export class ClrExpandableModule {}
+@NgModule({
+  imports: [CommonModule],
+  declarations: [EXPANDABLE_ANIMATION_DIRECTIVES],
+  exports: [EXPANDABLE_ANIMATION_DIRECTIVES],
+})
+export class ClrExpandableAnimationModule {}

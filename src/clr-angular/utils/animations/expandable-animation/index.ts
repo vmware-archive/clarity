@@ -5,8 +5,8 @@
  */
 import { Type } from '@angular/core';
 
-import { ClrExpandable } from './expandable';
+import { ClrExpandableAnimation } from './expandable-animation';
 
-export * from './expandable';
+export * from './expandable-animation';
 
-export const EXPANDABLE_DIRECTIVES: Type<any>[] = [ClrExpandable];
+export const EXPANDABLE_ANIMATION_DIRECTIVES: Type<any>[] = [ClrExpandableAnimation];

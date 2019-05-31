@@ -31,7 +31,7 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
     ]),
   ],
 })
-export class ClrExpandable {
+export class ClrExpandableAnimation {
   @Input() clrExpandTrigger: any;
 
   startHeight: number = 0;

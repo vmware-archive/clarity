@@ -35,7 +35,7 @@ import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
-import { ClrExpandable } from '../../utils/animations/expandable/expandable';
+import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
 
 let nbRow: number = 0;
 
@@ -62,8 +62,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
-  @ViewChild(ClrExpandable, { static: false })
-  expandAnimation: ClrExpandable;
+  @ViewChild(ClrExpandableAnimation, { static: false })
+  expandAnimation: ClrExpandableAnimation;
 
   /**
    * Model of the row, to use for selection

@@ -43,8 +43,8 @@ export class ClrDatagridActionOverflow implements OnDestroy {
        * Locate all child nodes inside the #menu and attach attr.aria-label
        * with there innerText as label.
        */
-      this.menuWrapper.nativeElement.childNodes.forEach(function(node) {
-          node.setAttribute('aria-label', node.innerText);
+      this.menuWrapper.nativeElement.childNodes.forEach(function(node: HTMLElement) {
+        node.setAttribute('aria-label', node.innerText);
       });
     }
   }

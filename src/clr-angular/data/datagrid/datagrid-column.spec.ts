@@ -20,6 +20,7 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -28,13 +29,14 @@ export default function(): void {
       let filtersService: FiltersProvider<number>;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
+      const commonStrings = new ClrCommonStringsService();
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings);
       });
 
       it('receives a comparator to sort the column', function() {
@@ -315,6 +317,13 @@ export default function(): void {
         title.click();
         context.detectChanges();
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
+      });
+
+      it('add aria-label to button', function() {
+        context.testComponent.comparator = new TestComparator();
+        context.detectChanges();
+        const title = context.clarityElement.querySelector('.datagrid-column-title');
+        expect(title.attributes['aria-label'].value).toBe(new ClrCommonStringsService().sortColumn);
       });
 
       it('adds and removes the correct icon when sorting', function() {

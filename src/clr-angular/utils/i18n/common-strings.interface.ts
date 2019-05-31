@@ -89,4 +89,8 @@ export abstract class ClrCommonStrings {
    * Datagrid: show columns
    */
   showColumns?: string;
+  /**
+   * Datagrid: sort of columns
+   */
+  sortColumn?: string;
 }

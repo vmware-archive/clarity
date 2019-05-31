@@ -39,5 +39,6 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'rowActions', role: 'Datagrid: row actions icon alt text' },
     { key: 'pickColumns', role: 'Datagrid: show and hide columns icon alt text' },
     { key: 'showColumns', role: 'Datagrid: show columns title' },
+    { key: 'sortColumn', role: 'Datagrid: sort columns title' },
   ];
 }

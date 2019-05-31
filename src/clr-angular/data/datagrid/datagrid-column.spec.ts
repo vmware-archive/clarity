@@ -25,6 +25,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 const PROVIDERS_NEEDED = [
   Sort,
@@ -44,13 +45,14 @@ export default function(): void {
       let filtersService: FiltersProvider<number>;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
+      const commonStrings = new ClrCommonStringsService();
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null);
+        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings);
       });
 
       it('has an id for identification', function() {
@@ -313,6 +315,13 @@ export default function(): void {
 
       it('adds the .datagrid-column class to the host', function() {
         expect(context.clarityElement.classList.contains('datagrid-column')).toBeTruthy();
+      });
+
+      it('add aria-label to button', function() {
+        context.testComponent.comparator = new TestComparator();
+        context.detectChanges();
+        const title = context.clarityElement.querySelector('.datagrid-column-title');
+        expect(title.attributes['aria-label'].value).toBe(new ClrCommonStringsService().sortColumn);
       });
 
       it('displays a clickable column title to sort if the column is sortable', function() {

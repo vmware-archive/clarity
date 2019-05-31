@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -82,6 +82,15 @@ export default function(): void {
       actionItem.click();
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
+    });
+
+    it('menu items should have aria-label attribute with the innerText as content', () => {
+      toggle.click();
+      context.detectChanges();
+      /* Simulate ngAfterContentChecked trigger */
+      context.clarityDirective.ngAfterContentChecked();
+      const actionItem: HTMLElement = context.clarityElement.querySelector('.action-item');
+      expect(actionItem.attributes['aria-label'].value).toBe(actionItem.innerText);
     });
   });
 }

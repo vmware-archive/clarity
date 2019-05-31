@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, ElementRef, ViewChild } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 
@@ -25,6 +25,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
+  @ViewChild('menu') menuWrapper: ElementRef;
   public anchorPoint: Point = Point.RIGHT_CENTER;
   public popoverPoint: Point = Point.LEFT_CENTER;
 
@@ -34,6 +35,18 @@ export class ClrDatagridActionOverflow implements OnDestroy {
 
   ngOnDestroy() {
     this.rowActionService.unregister();
+  }
+
+  ngAfterContentChecked(): void {
+    if (this.menuWrapper && this.menuWrapper.nativeElement) {
+      /**
+       * Locate all child nodes inside the #menu and attach attr.aria-label
+       * with there innerText as label.
+       */
+      this.menuWrapper.nativeElement.childNodes.forEach(function(node) {
+          node.setAttribute('aria-label', node.innerText);
+      });
+    }
   }
 
   /**

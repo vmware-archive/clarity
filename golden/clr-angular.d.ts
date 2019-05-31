@@ -202,6 +202,7 @@ export declare abstract class ClrCommonStrings {
     selectAll?: string;
     show?: string;
     showColumns?: string;
+    sortColumn?: string;
     success?: string;
     warning?: string;
 }
@@ -273,6 +274,7 @@ export declare class ClrDatagridCell implements OnInit {
 export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
+    commonStrings: ClrCommonStrings;
     customFilter: boolean;
     field: string;
     filterValue: string;
@@ -286,7 +288,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     /** @deprecated */ sorted: boolean;
     /** @deprecated */ sortedChange: EventEmitter<boolean>;
     updateFilterValue: string;
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;

@@ -27,6 +27,7 @@ import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-dg-column',
@@ -44,8 +45,13 @@ import { WrappedColumn } from './wrapped-column';
               <ng-content></ng-content>
           </ng-template>
 
-          <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
-              <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+          <button 
+            class="datagrid-column-title" 
+            [attr.aria-label]="commonStrings.sortColumn"
+            *ngIf="sortable" 
+            (click)="sort()" 
+            type="button">
+              <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
               <clr-icon
                       *ngIf="sortIcon"
                       [attr.shape]="sortIcon"
@@ -53,8 +59,8 @@ import { WrappedColumn } from './wrapped-column';
           </button>
 
           <span class="datagrid-column-title" *ngIf="!sortable">
-               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-            </span>
+              <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+          </span>
 
           <clr-dg-column-separator></clr-dg-column-separator>
       </div>
@@ -67,7 +73,12 @@ import { WrappedColumn } from './wrapped-column';
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements OnDestroy, OnInit {
-  constructor(private _sort: Sort<T>, filters: FiltersProvider<T>, private vcr: ViewContainerRef) {
+  constructor(
+    private _sort: Sort<T>,
+    filters: FiltersProvider<T>,
+    private vcr: ViewContainerRef,
+    public commonStrings: ClrCommonStrings
+  ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted

@@ -256,8 +256,7 @@ export default function() {
    `,
 })
 class TestComponent {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   currentAlertIndex: number = 0;
@@ -292,8 +291,7 @@ class TestComponent {
    `,
 })
 class TestAlertInstance {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   public currentAlert: ClrAlert;
@@ -314,8 +312,7 @@ class TestAlertInstance {
    `,
 })
 class DynamicAlerts {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   dynamicAlerts: Array<any>;

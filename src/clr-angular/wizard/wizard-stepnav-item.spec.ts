@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -33,10 +33,8 @@ class TestComponent implements AfterContentInit {
   page: MockPage;
   projector: string = 'foo';
 
-  @ViewChild(ClrWizardStepnavItem, { static: true })
-  stepNavItem: ClrWizardStepnavItem;
-  @ViewChild(ClrWizardPageNavTitle, { static: true })
-  navTitleRef: ClrWizardPageNavTitle;
+  @ViewChild(ClrWizardStepnavItem) stepNavItem: ClrWizardStepnavItem;
+  @ViewChild(ClrWizardPageNavTitle) navTitleRef: ClrWizardPageNavTitle;
 
   public ngAfterContentInit(): void {
     this.page.navTitle = this.navTitleRef.pageNavTitleTemplateRef;

@@ -11,12 +11,9 @@ import { ClrWizard, ClrWizardPage } from '@clr/angular';
   templateUrl: './wizard-async-completion.demo.html',
 })
 export class WizardAsyncCompletion {
-  @ViewChild('wizard', { static: false })
-  wizard: ClrWizard;
-  @ViewChild('myForm', { static: false })
-  formData: any;
-  @ViewChild('myFinishPage', { static: false })
-  finishPage: ClrWizardPage;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild('myForm') formData: any;
+  @ViewChild('myFinishPage') finishPage: ClrWizardPage;
 
   loadingFlag: boolean = false;
   errorFlag: boolean = false;

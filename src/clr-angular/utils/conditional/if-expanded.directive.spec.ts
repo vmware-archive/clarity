@@ -104,8 +104,7 @@ export default function(): void {
   providers: [{ provide: 'counter', useValue: { total: 0 } }],
 })
 class SimpleTest {
-  @ViewChild(ClrIfExpanded, { static: false })
-  ifExpanded: ClrIfExpanded;
+  @ViewChild(ClrIfExpanded) ifExpanded: ClrIfExpanded;
 
   constructor(@Inject('counter') public counter: { total: number }) {}
 }

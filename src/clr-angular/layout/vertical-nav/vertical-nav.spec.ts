@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -589,8 +589,7 @@ class IconsAndNavGroupTestComponent {}
     `,
 })
 class ViewBasicsTestComponent {
-  @ViewChild('nav', { static: false })
-  nav: ClrVerticalNav;
+  @ViewChild('nav') nav: ClrVerticalNav;
 
   groupToggle: boolean = true;
   iconToggle: boolean = true;
@@ -610,8 +609,7 @@ class APITestComponent {
   collapsed: boolean = false;
   collapsedChange: boolean;
 
-  @ViewChild('nav', { static: false })
-  nav: ClrVerticalNav;
+  @ViewChild('nav') nav: ClrVerticalNav;
 
   updateCollapsed(val: boolean) {
     this.collapsedChange = val;

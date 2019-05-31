@@ -45,8 +45,7 @@ const TEST_ROOT: RecursiveTreeNodeModel<TestNode> = new RecursiveTreeNodeModel(
   `,
 })
 class TestComponent {
-  @ViewChild('template', { static: false })
-  template: TemplateRef<ClrRecursiveForOfContext<TestNode>>;
+  @ViewChild('template') template: TemplateRef<ClrRecursiveForOfContext<TestNode>>;
 
   parent = TEST_ROOT;
   children: RecursiveTreeNodeModel<TestNode>[];

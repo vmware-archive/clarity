@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -367,13 +367,13 @@ class RenderWidthTest {
   hasActions = false;
   selected: any[] = [];
   singleSelect;
-  @ViewChild('dgContainer', { static: false, read: ElementRef })
+  @ViewChild('dgContainer', { read: ElementRef })
   container: ElementRef;
-  @ViewChild('datagridDefault', { static: false, read: ElementRef })
+  @ViewChild('datagridDefault', { read: ElementRef })
   datagridDefault: ElementRef;
-  @ViewChild('datagridSingleSelect', { static: false, read: ElementRef })
+  @ViewChild('datagridSingleSelect', { read: ElementRef })
   datagridSingleSelect: ElementRef;
-  @ViewChild('datagridMultiSelect', { static: false, read: ElementRef })
+  @ViewChild('datagridMultiSelect', { read: ElementRef })
   datagridMultiSelect: ElementRef;
 }
 

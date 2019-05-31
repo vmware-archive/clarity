@@ -21,7 +21,7 @@ import { ClrTabsModule } from './tabs.module';
    `,
 })
 class TestWrapper {
-  @ViewChild('tabContentViewContainer', { static: true, read: ViewContainerRef })
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
   set tabContentViewContainer(value: ViewContainerRef) {
     this.tabsService.tabContentViewContainer = value;
   }
@@ -39,8 +39,7 @@ class TestWrapper {
   `,
 })
 class TestComponent {
-  @ViewChild(ClrTab, { static: false })
-  tabInstance: ClrTab;
+  @ViewChild(ClrTab) tabInstance: ClrTab;
 }
 
 describe('Tab', () => {
@@ -61,6 +60,7 @@ describe('Tab', () => {
   it('initializes the correct aria attribute values', () => {
     instance.tabContent.ifActiveService.current = instance.self;
     fixture.detectChanges();
+
     expect(instance.tabLink.ariaControls).toMatch(/clr-tab-content-[0-9]/);
     expect(instance.tabContent.ariaLabelledBy).toMatch(/clr-tab-link-[0-9]/);
   });

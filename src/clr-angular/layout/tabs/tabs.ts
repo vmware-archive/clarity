@@ -68,7 +68,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   /* tslint:disable:no-unused-variable */
-  @ViewChild('tabContentViewContainer', { static: true, read: ViewContainerRef })
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
   private set tabContentViewContainer(value: ViewContainerRef) {
     this.tabsService.tabContentViewContainer = value;
   }

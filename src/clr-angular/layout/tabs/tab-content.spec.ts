@@ -19,7 +19,7 @@ import { TabsService } from './providers/tabs.service';
    `,
 })
 class TestWrapper {
-  @ViewChild('tabContentViewContainer', { read: ViewContainerRef, static: true })
+  @ViewChild('tabContentViewContainer', { read: ViewContainerRef })
   set tabContentViewContainer(value: ViewContainerRef) {
     this.tabsService.tabContentViewContainer = value;
   }

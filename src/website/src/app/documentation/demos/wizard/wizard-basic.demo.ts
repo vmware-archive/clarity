@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,12 +11,9 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-basic.demo.html',
 })
 export class WizardBasic {
-  @ViewChild('wizardmd', { static: false })
-  wizardMedium: ClrWizard;
-  @ViewChild('wizardlg', { static: false })
-  wizardLarge: ClrWizard;
-  @ViewChild('wizardxl', { static: false })
-  wizardExtraLarge: ClrWizard;
+  @ViewChild('wizardmd') wizardMedium: ClrWizard;
+  @ViewChild('wizardlg') wizardLarge: ClrWizard;
+  @ViewChild('wizardxl') wizardExtraLarge: ClrWizard;
 
   mdOpen: boolean = false;
   lgOpen: boolean = false;

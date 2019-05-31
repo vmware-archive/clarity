@@ -202,11 +202,11 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public displayCells = false;
 
-  @ViewChild('stickyCells', { static: false, read: ViewContainerRef })
+  @ViewChild('stickyCells', { read: ViewContainerRef })
   _stickyCells: ViewContainerRef;
-  @ViewChild('scrollableCells', { static: false, read: ViewContainerRef })
+  @ViewChild('scrollableCells', { read: ViewContainerRef })
   _scrollableCells: ViewContainerRef;
-  @ViewChild('calculatedCells', { static: false, read: ViewContainerRef })
+  @ViewChild('calculatedCells', { read: ViewContainerRef })
   _calculatedCells: ViewContainerRef;
 
   private wrappedInjector: Injector;

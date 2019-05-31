@@ -653,8 +653,7 @@ class TestComponent {
 class TestComponentWithNgModel {
   dateValue: string;
 
-  @ViewChild(ClrDateInput, { static: false })
-  dateInputInstance: ClrDateInput;
+  @ViewChild(ClrDateInput) dateInputInstance: ClrDateInput;
 }
 
 @Component({
@@ -692,8 +691,7 @@ class TestComponentWithReactiveForms {
     `,
 })
 class TestComponentWithTemplateDrivenForms {
-  @ViewChild('templateForm', { static: false })
-  templateForm: NgForm;
+  @ViewChild('templateForm') templateForm: NgForm;
   dateInput: string = '01/01/2015';
   dateOutput: Date;
 

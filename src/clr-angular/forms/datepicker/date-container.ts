@@ -68,8 +68,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   invalid = false;
   focus = false;
   control: NgControl;
-  @ContentChild(ClrLabel, { static: false })
-  label: ClrLabel;
+  @ContentChild(ClrLabel) label: ClrLabel;
 
   private subscriptions: Subscription[] = [];
 

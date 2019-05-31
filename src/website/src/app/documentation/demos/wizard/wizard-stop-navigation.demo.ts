@@ -12,8 +12,7 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-stop-navigation.demo.html',
 })
 export class WizardStopNavigation {
-  @ViewChild('wizard', { static: false })
-  wizard: ClrWizard;
+  @ViewChild('wizard') wizard: ClrWizard;
 
   untouched: boolean = true;
   loading: boolean = false;

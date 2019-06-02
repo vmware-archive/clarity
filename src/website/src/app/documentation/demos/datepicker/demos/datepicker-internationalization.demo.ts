@@ -24,5 +24,5 @@ registerLocaleData(localeFr);
 })
 export class DatepickerInternationalizationDemo {
   registerLocaleExample = REGISTER_LOCALE_EXAMPLE;
-  provideLocaleExample = PROVIDE_LOCALE_EXAMPLE; 
+  provideLocaleExample = PROVIDE_LOCALE_EXAMPLE;
 }

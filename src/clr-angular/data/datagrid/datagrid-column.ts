@@ -55,7 +55,6 @@ let nbCount: number = 0;
               *ngIf="sortable" 
               (click)="sort()" 
               type="button">
-                <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
                 <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
             </button>
 

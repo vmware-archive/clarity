@@ -120,7 +120,8 @@ class TestFilter implements ClrDatagridNumericFilterInterface<number> {
                                      [(clrFilterValue)]="filterValue"></clr-dg-numeric-filter>`,
 })
 class FullTest {
-  @ViewChild(CustomFilter) customFilter: CustomFilter;
+  @ViewChild(CustomFilter, { static: false })
+  customFilter: CustomFilter;
 
   filter: ClrDatagridNumericFilterInterface<number>;
   filterValue: [number, number];

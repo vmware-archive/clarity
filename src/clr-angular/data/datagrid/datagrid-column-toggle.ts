@@ -88,7 +88,7 @@ export class ClrDatagridColumnToggle {
   }
 
   get ariaLabelToggle(): string {
-    return this.open ? this.commonStrings.open : this.commonStrings.close;
+    return this.open ? this.commonStrings.close : this.commonStrings.open;
   }
 
   toggleColumnState(columnState: ColumnState, event: boolean) {

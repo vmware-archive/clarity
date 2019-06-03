@@ -72,6 +72,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public replaced;
 
+  public expandAnimationTrigger: boolean = false;
+
   constructor(
     public selection: Selection<T>,
     public rowActionService: RowActionService,
@@ -195,6 +197,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
             this._scrollableCells.insert(cell._view);
           });
         }
+      }),
+      this.expand.animate.subscribe(() => {
+        this.expandAnimationTrigger = !this.expandAnimationTrigger;
       })
     );
   }

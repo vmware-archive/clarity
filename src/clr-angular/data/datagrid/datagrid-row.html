@@ -3,13 +3,13 @@
   Clicking of that wrapper label will equate to clicking on the whole row, which triggers the checkbox to toggle.
 -->
 <label class="datagrid-row-clickable" *ngIf="selection.rowSelectionMode">
-  <clr-expandable-animation [clrExpandTrigger]="expanded" *ngIf="globalExpandable.hasExpandableRow">
+  <clr-expandable-animation [clrExpandTrigger]="expandAnimationTrigger" *ngIf="globalExpandable.hasExpandableRow">
     <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
   </clr-expandable-animation>
   <ng-template [ngTemplateOutlet]="rowContent" *ngIf="!globalExpandable.hasExpandableRow"></ng-template>
 </label>
 
-<clr-expandable-animation *ngIf="!selection.rowSelectionMode && globalExpandable.hasExpandableRow" [clrExpandTrigger]="expanded">
+<clr-expandable-animation *ngIf="!selection.rowSelectionMode && globalExpandable.hasExpandableRow" [clrExpandTrigger]="expandAnimationTrigger">
   <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
 </clr-expandable-animation>
 

@@ -399,6 +399,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     displayCells: boolean;
     expand: DatagridIfExpandService;
     expandAnimation: ClrExpandableAnimation;
+    expandAnimationTrigger: boolean;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;

@@ -25,7 +25,8 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
-  @ViewChild('menu') menuWrapper: ElementRef;
+  @ViewChild('menu', { static: false })
+  menuWrapper: ElementRef;
   public anchorPoint: Point = Point.RIGHT_CENTER;
   public popoverPoint: Point = Point.LEFT_CENTER;
 

@@ -19,7 +19,7 @@ import * as GLOBAL from '../settings/global.json';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-  @ViewChild('content', { static: false })
+  @ViewChild('content', { static: true })
   contentRef: ElementRef;
   environment = environment;
 

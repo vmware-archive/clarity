@@ -23,7 +23,7 @@ export class VerticalNavDemo extends ClarityDocComponent implements OnInit, OnDe
   }
 
   // TODO: Whole logic below needs to be extracted from here and datagrid and reused.
-  @ViewChild('demoView', { static: false })
+  @ViewChild('demoView', { static: true })
   demoView;
 
   private _subscriptions: Subscription[] = [];

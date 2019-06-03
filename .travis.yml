@@ -1,15 +1,11 @@
 language: node_js
 node_js:
-- '10'
+- '12'
 env:
   global:
   - CXX=g++-4.8
   matrix:
   - TEST_SUITE='test:travis'
-  - TEST_SUITE='test:visual set1'
-  - TEST_SUITE='test:visual set2'
-  - TEST_SUITE='test:visual set3'
-  - TEST_SUITE='test:visual set4'
 sudo: required
 dist: trusty
 group: edge
@@ -35,11 +31,11 @@ cache:
   - node_modules
 script:
 - node scripts/travis
-jobs:
-  include:
-  - stage: publish
-    if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
-    before_script:
-    - npm run build
-    script:
-    - bash ./scripts/publish-build.sh
+#jobs:
+#  include:
+#  - stage: publish
+#    if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
+#    before_script:
+#    - npm run build
+#    script:
+#    - bash ./scripts/publish-build.sh

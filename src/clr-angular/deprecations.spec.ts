@@ -21,8 +21,8 @@ describe('Deprecations', () => {
       expect(ClrDatagridColumnToggleButton).toBeTruthy();
     });
     it('should deprecate but still support clrDgRowSelection', () => {
-      // Can't grab it since its just a setter
-      expect(Object.keys(ClrDatagrid.prototype)).toContain('rowSelectionMode');
+      const propTest = Object.getOwnPropertyDescriptor(ClrDatagrid.prototype, 'rowSelectionMode');
+      expect(propTest.set).toBeDefined();
     });
     it('should handle ClrForm.markAsDirty as ClrForm.markAsTouched', () => {
       spyOn(ClrForm.prototype, 'markAsTouched');

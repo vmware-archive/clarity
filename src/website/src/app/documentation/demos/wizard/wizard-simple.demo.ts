@@ -13,7 +13,7 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-simple.demo.html',
 })
 export class WizardSimple {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
   skipStepTwo: boolean = true;
   _open: boolean = false;

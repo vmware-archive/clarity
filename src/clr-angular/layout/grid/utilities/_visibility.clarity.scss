@@ -1,0 +1,47 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Responsive visibility utilities
+.clr-invisible {
+  visibility: hidden !important;
+}
+
+@each $bp in map-keys($clr-grid-breakpoints) {
+  .clr-hidden-#{$bp}-up {
+    @include clr-media-breakpoint-up($bp) {
+      display: none !important;
+    }
+  }
+}
+
+// Print utilities
+.clr-visible-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+
+.clr-visible-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+
+.clr-visible-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}
+
+.clr-hidden-print {
+  @media print {
+    display: none !important;
+  }
+}

@@ -8,12 +8,17 @@
 @import '../utils/helpers.clarity';
 @import '../utils/a11y.clarity';
 
-// Grid Dependencies
+// Grid and Layout Utility Dependencies
 @import '../layout/grid/variables/variables.clarity';
 @import '../layout/grid/mixins/breakpoint.clarity';
 @import '../layout/grid/mixins/grid.clarity';
 @import '../layout/grid/mixins/grid-framework.clarity';
+@import '../layout/grid/utilities/align.clarity';
+@import '../layout/grid/utilities/clearfix.clarity';
+@import '../layout/grid/utilities/display.clarity';
 @import '../layout/grid/utilities/flex.clarity';
+@import '../layout/grid/utilities/float.clarity';
+@import '../layout/grid/utilities/visibility.clarity';
 
 //Color
 @import '../color/variables.color';

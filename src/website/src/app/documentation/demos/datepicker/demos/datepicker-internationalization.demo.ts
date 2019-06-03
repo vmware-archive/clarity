@@ -5,8 +5,24 @@
  */
 import { Component } from '@angular/core';
 
+const PROVIDE_LOCALE_EXAMPLE = `
+providers: [
+    {provide: LOCALE_ID, useValue: 'fr'}
+]
+`;
+
+const REGISTER_LOCALE_EXAMPLE = `
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
+`;
+
 @Component({
   selector: 'clr-datepicker-internationalization-demo',
   templateUrl: './datepicker-internationalization.demo.html',
 })
-export class DatepickerInternationalizationDemo {}
+export class DatepickerInternationalizationDemo {
+  registerLocaleExample = REGISTER_LOCALE_EXAMPLE;
+  provideLocaleExample = PROVIDE_LOCALE_EXAMPLE;
+}

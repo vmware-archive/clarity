@@ -272,7 +272,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     placeholder: ClrDatagridPlaceholder<T>;
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
-    rowSelectionMode: boolean;
+    /** @deprecated */ rowSelectionMode: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];
@@ -689,7 +689,7 @@ export declare class ClrExpandableAnimation {
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    markAsDirty(): void;
+    /** @deprecated */ markAsDirty(): void;
     markAsTouched(): void;
 }
 

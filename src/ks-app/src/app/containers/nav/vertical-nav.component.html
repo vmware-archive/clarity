@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -27,51 +27,6 @@
       </div>
     </header>
     <div class="content-container">
-      <div class="content-area">
-        <div class="example-options">
-          <h6>Options</h6>
-          <div class="btn-group">
-            <div class="radio btn">
-              <input type="radio" name="vertNavRadios" id="rad1" [(ngModel)]="option" value="link">
-              <label for="rad1">Nav Group Link</label>
-            </div>
-            <div class="radio btn">
-              <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="text">
-              <label for="rad2">Nav Group Text</label>
-            </div>
-            <div class="radio btn">
-              <input type="radio" name="vertNavRadios" id="rad3" [(ngModel)]="option" value="lazyText">
-              <label for="rad3">Nav Group Text + Lazy Loading</label>
-            </div>
-          </div>
-        </div>
-        <div class="controls">
-          <h6>Controls</h6>
-          <button class="btn" (click)="toggleNav()">Toggle Nav</button>
-          <button class="btn" (click)="toggleGroup()">Toggle Group</button>
-        </div>
-
-        <clr-alert [clrAlertType]="'alert-danger'" [clrAlertClosable]="false" *ngIf="option === 'text'">
-          <div class="alert-item">
-                        <span class="alert-text">
-                            Lazy Loading + Nav Group parent text (instead of parent links)
-                            will not highlight when a child route is active and the nav group is collapsed.
-                            If you don't have a nav group parent link we recommend that you do not use lazy loading.
-                        </span>
-          </div>
-        </clr-alert>
-
-        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false" *ngIf="option === 'lazyText'">
-          <div class="alert-item">
-                        <span class="alert-text">
-                            Lazy Loading can work with Nav Group Text but we have to provide a hidden/empty link
-                            which is used to detect the parent route and mark the nav group as active when collapsed.
-                        </span>
-          </div>
-        </clr-alert>
-
-        <router-outlet></router-outlet>
-      </div>
       <clr-vertical-nav *ngIf="option === 'link'"
                         [clrVerticalNavCollapsible]="true"
                         [clrVerticalNavCollapsed]="navCollapsed"
@@ -216,7 +171,6 @@
         </clr-vertical-nav>
       </ng-container>
 
-
       <ng-container *ngIf="option === 'lazyText'">
         <clr-vertical-nav
           [clrVerticalNavCollapsible]="true"
@@ -288,6 +242,51 @@
 
         </clr-vertical-nav>
       </ng-container>
+      <div class="content-area">
+        <div class="example-options">
+          <h6>Options</h6>
+          <div class="btn-group">
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad1" [(ngModel)]="option" value="link">
+              <label for="rad1">Nav Group Link</label>
+            </div>
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="text">
+              <label for="rad2">Nav Group Text</label>
+            </div>
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad3" [(ngModel)]="option" value="lazyText">
+              <label for="rad3">Nav Group Text + Lazy Loading</label>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <h6>Controls</h6>
+          <button class="btn" (click)="toggleNav()">Toggle Nav</button>
+          <button class="btn" (click)="toggleGroup()">Toggle Group</button>
+        </div>
+
+        <clr-alert [clrAlertType]="'alert-danger'" [clrAlertClosable]="false" *ngIf="option === 'text'">
+          <div class="alert-item">
+                        <span class="alert-text">
+                            Lazy Loading + Nav Group parent text (instead of parent links)
+                            will not highlight when a child route is active and the nav group is collapsed.
+                            If you don't have a nav group parent link we recommend that you do not use lazy loading.
+                        </span>
+          </div>
+        </clr-alert>
+
+        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false" *ngIf="option === 'lazyText'">
+          <div class="alert-item">
+                        <span class="alert-text">
+                            Lazy Loading can work with Nav Group Text but we have to provide a hidden/empty link
+                            which is used to detect the parent route and mark the nav group as active when collapsed.
+                        </span>
+          </div>
+        </clr-alert>
+
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

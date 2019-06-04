@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,9 +11,6 @@ const EXAMPLE = `
         ...
     </header>
     <div class="content-container">
-        <div class="content-area">
-            ...
-        </div>
         <nav class="sidenav">
             <section class="sidenav-content">
                 <a href="..." class="nav-link active">
@@ -44,6 +41,9 @@ const EXAMPLE = `
                 </section>
             </section>
         </nav>
+        <div class="content-area">
+            ...
+        </div>
     </div>
 </div>
 `;

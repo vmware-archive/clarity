@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -26,24 +26,6 @@
                 </div>
             </header>
             <div class="content-container">
-                <div class="content-area">
-                    <h4>
-                        {{case.title}}
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum
-                        dignissim
-                        eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat
-                        vitae sem at, tincidunt elementum magna. Phasellus tristique posuere dui, ut tempus felis
-                        sagittis
-                        quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget
-                        gravida.
-                        Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
-                        purus
-                        volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
-                        non, imperdiet ipsum.
-                    </p>
-                </div>
                 <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
 
                     <ng-container *ngFor="let item of case.items">
@@ -69,6 +51,24 @@
                     </ng-container>
 
                 </clr-vertical-nav>
+                <div class="content-area">
+                    <h4>
+                        {{case.title}}
+                    </h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum
+                        dignissim
+                        eget massa sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat
+                        vitae sem at, tincidunt elementum magna. Phasellus tristique posuere dui, ut tempus felis
+                        sagittis
+                        quis. Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget
+                        gravida.
+                        Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie cursus, sapien
+                        purus
+                        volutpat lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
+                        non, imperdiet ipsum.
+                    </p>
+                </div>
             </div>
         </div>
     </div>

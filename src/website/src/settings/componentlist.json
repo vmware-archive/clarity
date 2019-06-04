@@ -370,6 +370,18 @@
       "comments": ""
     },
     {
+      "url": "stepper",
+      "text": "Stepper",
+      "type": "component",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 20,
+      "dox": 20,
+      "comments": "",
+      "newLayout": true
+    },
+    {
       "url": "tables",
       "text": "Tables",
       "type": "component",

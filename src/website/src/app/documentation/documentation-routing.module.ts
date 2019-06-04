@@ -286,6 +286,15 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'stepper',
+        loadChildren: () =>
+          import('src/app/documentation/demos/stepper/stepper.demo.module').then(m => m.StepperDemoModule),
+        data: {
+          bodyClass: 'page-stepper-view',
+          browserTitle: 'Stepper',
+        },
+      },
+      {
         path: 'tables',
         loadChildren: () =>
           import('src/app/documentation/demos/tables/tables.demo.module').then(m => m.TablesDemoModule),

@@ -10,6 +10,10 @@ import { LandingComponent } from './landing.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', component: LandingComponent },
+  {
+    path: 'accordion',
+    loadChildren: () => import('src/app/accordion/accordion.demo.module').then(m => m.AccordionDemoModule),
+  },
   { path: 'alert', loadChildren: () => import('src/app/alert/alert.demo.module').then(m => m.AlertDemoModule) },
   { path: 'badges', loadChildren: () => import('src/app/badges/badges.demo.module').then(m => m.BadgesDemoModule) },
   {
@@ -87,6 +91,7 @@ export const APP_ROUTES: Routes = [
     path: 'stack-view',
     loadChildren: () => import('src/app/stack-view/stack-view.demo.module').then(m => m.StackViewDemoModule),
   },
+  { path: 'stepper', loadChildren: () => import('src/app/stepper/stepper.demo.module').then(m => m.StepperDemoModule) },
   { path: 'tables', loadChildren: () => import('src/app/tables/tables.demo.module').then(m => m.TablesDemoModule) },
   { path: 'tabs', loadChildren: () => import('src/app/tabs/tabs.demo.module').then(m => m.TabsDemoModule) },
   {

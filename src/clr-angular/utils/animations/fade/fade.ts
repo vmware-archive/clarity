@@ -5,9 +5,11 @@
  */
 import { animate, AnimationMetadata, style, transition } from '@angular/animations';
 
+import { defaultAnimationTiming } from './../constants';
+
 export function fade(opacity: number = 1): AnimationMetadata[] {
   return [
-    transition('void => *', [style({ opacity: 0 }), animate('0.2s ease-in-out', style({ opacity: opacity }))]),
-    transition('* => void', [animate('0.2s ease-in-out', style({ opacity: 0 }))]),
+    transition('void => *', [style({ opacity: 0 }), animate(defaultAnimationTiming, style({ opacity: opacity }))]),
+    transition('* => void', [animate(defaultAnimationTiming, style({ opacity: 0 }))]),
   ];
 }

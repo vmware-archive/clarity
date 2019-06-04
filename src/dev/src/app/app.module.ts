@@ -5,7 +5,7 @@
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ClarityModule } from '@clr/angular';
@@ -17,7 +17,7 @@ import { LandingComponent } from './landing.component';
 
 @NgModule({
   declarations: [AppComponent, LandingComponent, AppContentContainerComponent],
-  imports: [BrowserAnimationsModule, CommonModule, FormsModule, ClarityModule, ROUTING],
+  imports: [BrowserAnimationsModule, CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

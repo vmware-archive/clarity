@@ -2,7 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-.clr-screen-reader-only {
+@mixin screen-reader-only() {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -12,4 +12,12 @@
   width: 1px;
   overflow: hidden;
   white-space: nowrap;
+  top: 0;
+  left: 0;
+}
+
+@include exports('a11y.clarity') {
+  .clr-screen-reader-only {
+    @include screen-reader-only();
+  }
 }

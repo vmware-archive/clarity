@@ -282,6 +282,10 @@ export default function(): void {
         expect(context.clarityElement.querySelector('.spinner')).not.toBeNull();
       });
 
+      it('contains expandable element', function() {
+        expect(context.clarityElement.querySelector('clr-expandable-animation')).not.toBeNull();
+      });
+
       it("doesn't display the details when collapsed", function() {
         expect(context.clarityElement.textContent).toMatch('Hello world');
         expect(context.clarityElement.textContent).not.toMatch('Detail');

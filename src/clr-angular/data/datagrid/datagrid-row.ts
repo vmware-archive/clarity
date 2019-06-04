@@ -35,6 +35,7 @@ import { WrappedRow } from './wrapped-row';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
 
 let nbRow: number = 0;
 
@@ -61,12 +62,17 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
+  @ViewChild(ClrExpandableAnimation, { static: false })
+  expandAnimation: ClrExpandableAnimation;
+
   /**
    * Model of the row, to use for selection
    */
   @Input('clrDgItem') item: T;
 
   public replaced;
+
+  public expandAnimationTrigger: boolean = false;
 
   constructor(
     public selection: Selection<T>,
@@ -145,6 +151,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public toggleExpand() {
     if (this.expand.expandable) {
+      this.expandAnimation.updateStartHeight();
       this.expanded = !this.expanded;
       this.expandedChange.emit(this.expanded);
     }
@@ -190,6 +197,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
             this._scrollableCells.insert(cell._view);
           });
         }
+      }),
+      this.expand.animate.subscribe(() => {
+        this.expandAnimationTrigger = !this.expandAnimationTrigger;
       })
     );
   }

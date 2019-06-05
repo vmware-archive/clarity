@@ -53,6 +53,7 @@ import WrappedCellSpec from './wrapped-cell.spec';
 import WrappedColumnSpec from './wrapped-column.spec';
 import WrappedRowSpec from './wrapped-row.spec';
 import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
+import ColumnReorderServiceSpecs from './providers/column-reorder.service.spec';
 
 describe('Datagrid', function() {
   addHelpers();
@@ -66,6 +67,7 @@ describe('Datagrid', function() {
     DisplayModeServiceSpecs();
     TableSizeServiceSpec();
     ColumnResizerServiceSpecs();
+    ColumnReorderServiceSpecs();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();

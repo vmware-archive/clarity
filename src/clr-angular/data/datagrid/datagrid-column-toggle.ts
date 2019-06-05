@@ -75,8 +75,10 @@ export class ClrDatagridColumnToggle {
   constructor(public commonStrings: ClrCommonStrings, private columnsService: ColumnsService) {}
 
   get hideableColumnStates(): ColumnState[] {
-    const hideables = this.columnsService.columns.filter(column => column.value.hideable);
-    return hideables.map(column => column.value);
+    return this.columnsService.columns
+      .filter(column => column.value.hideable)
+      .sort((column1, column2) => column1.value.order - column2.value.order)
+      .map(column => column.value);
   }
 
   get hasOnlyOneVisibleColumn(): boolean {

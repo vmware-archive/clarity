@@ -3,7 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterContentInit, Component, ContentChildren, Input, OnDestroy, QueryList } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnDestroy,
+  QueryList,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ClrDatagridCell } from './datagrid-cell';
@@ -12,6 +21,8 @@ import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { Reorderable } from './interfaces/reorderable.interface';
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -38,7 +49,10 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
                         class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell">
             </div>
         </ng-container>
-        <ng-content></ng-content>
+        <ng-container #detailCells></ng-container>
+        <ng-container *ngIf="cells.length === 0">
+          <ng-content></ng-content>
+        </ng-container>
     `,
   host: {
     '[class.datagrid-row-flex]': 'true',
@@ -54,10 +68,14 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     public selection: Selection,
     public rowActionService: RowActionService,
     public expand: DatagridIfExpandService,
-    public expandableRows: ExpandableRowsCount
+    public expandableRows: ExpandableRowsCount,
+    private columnReorderService: ColumnReorderService
   ) {}
 
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
+
+  @ViewChild('detailCells', { static: true, read: ViewContainerRef })
+  _detailCells: ViewContainerRef;
 
   @Input('clrDgReplace')
   set replace(value: boolean) {
@@ -67,14 +85,54 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   public replacedRow = false;
 
   ngAfterContentInit() {
+    this.detachAllViews(this._detailCells);
+    this.insertOrderedViews(this._detailCells);
     this.subscriptions.push(
       this.expand.replace.subscribe(replaceChange => {
         this.replacedRow = replaceChange;
+      }),
+      this.cells.changes.subscribe(() => {
+        this.detachAllViews(this._detailCells);
+        this.insertOrderedViews(this._detailCells);
+      }),
+      this.columnReorderService.reorderCompleted.subscribe(() => {
+        this.detachAllViews(this._detailCells);
+        this.insertOrderedViews(this._detailCells);
       })
     );
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  private assignRawOrders(): ClrDatagridCell[] {
+    return this.cells.map((cell, index) => {
+      if (this.columnReorderService.orderAt(index) > -1) {
+        cell.order = this.columnReorderService.orderAt(index);
+      } else {
+        cell.order = index;
+      }
+      return cell;
+    });
+  }
+
+  private insertOrderedViews(containerRef: ViewContainerRef): void {
+    this.setInUniqOrders(this.assignRawOrders()).forEach(cell => containerRef.insert(cell._view));
+  }
+
+  private detachAllViews(containerRef: ViewContainerRef): void {
+    for (let i = containerRef.length; i > 0; i--) {
+      containerRef.detach().detectChanges();
+    }
+  }
+
+  public setInUniqOrders(reorderablesWithRawOrder: Reorderable[]): Reorderable[] {
+    return reorderablesWithRawOrder
+      .sort((reorderable1, reorderable2) => reorderable1.order - reorderable2.order)
+      .map((reorderable, index) => {
+        reorderable.order = index;
+        return reorderable;
+      });
   }
 }

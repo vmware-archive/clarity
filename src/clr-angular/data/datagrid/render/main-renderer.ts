@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -89,6 +89,12 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         this.setupColumns();
         this.columnsSizesStable = false;
         this.stabilizeColumns();
+      }),
+      this.columnsService.checkFirstVisible.subscribe(() => {
+        this.findFirstVisible();
+      }),
+      this.columnsService.checkLastVisible.subscribe(() => {
+        this.findLastVisible();
       })
     );
   }
@@ -113,6 +119,14 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     this.headers.forEach((header, index) => header.setColumnState(index));
     this.columnsService.columns.splice(this.headers.length); // Trim any old columns
     this.rows.forEach(row => row.setColumnState());
+  }
+
+  private findFirstVisible() {
+    this.headers.forEach(header => header.isFirstVisible());
+  }
+
+  private findLastVisible() {
+    this.headers.forEach(header => header.isLastVisible());
   }
 
   private _heightSet: boolean = false;

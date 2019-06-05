@@ -8,6 +8,7 @@ import { Component, ContentChildren, Injector, OnInit, QueryList, ViewContainerR
 import { ClrSignpost } from '../../popover/signpost/signpost';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { WrappedCell } from './wrapped-cell';
+import { Reorderable } from './interfaces/reorderable.interface';
 
 @Component({
   selector: 'clr-dg-cell',
@@ -20,7 +21,7 @@ import { WrappedCell } from './wrapped-cell';
     role: 'gridcell',
   },
 })
-export class ClrDatagridCell implements OnInit {
+export class ClrDatagridCell implements Reorderable, OnInit {
   /*********
    * @property signpost
    *
@@ -32,6 +33,8 @@ export class ClrDatagridCell implements OnInit {
   @ContentChildren(ClrSignpost) signpost: QueryList<ClrSignpost>;
 
   constructor(private vcr: ViewContainerRef) {}
+
+  order: number;
 
   private wrappedInjector: Injector;
 

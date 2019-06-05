@@ -17,6 +17,18 @@
       "dox": 20
     },
     {
+      "url": "accordion",
+      "text": "Accordion",
+      "type": "component",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 20,
+      "dox": 20,
+      "comments": "",
+      "newLayout": true
+    },
+    {
       "url": "alerts",
       "text": "Alerts",
       "type": "component",

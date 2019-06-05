@@ -5,7 +5,6 @@
  */
 
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ContentChildren,
@@ -36,6 +35,8 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { Reorderable } from './interfaces/reorderable.interface';
 
 let nbRow: number = 0;
 
@@ -54,7 +55,7 @@ let nbRow: number = 0;
     { provide: LoadingListener, useExisting: DatagridIfExpandService },
   ],
 })
-export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
+export class ClrDatagridRow<T = any> implements AfterViewInit {
   public id: string;
   public radioId: string;
   public checkboxId: string;
@@ -83,7 +84,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    private columnReorderService: ColumnReorderService
   ) {
     nbRow++;
     this.id = 'clr-dg-row' + nbRow;
@@ -168,9 +170,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   ngAfterContentInit() {
     this.dgCells.changes.subscribe(() => {
-      this.dgCells.forEach(cell => {
-        this._scrollableCells.insert(cell._view);
-      });
+      this.insertOrderedViews(this._scrollableCells);
     });
   }
 
@@ -179,27 +179,27 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
       this.displayMode.view.subscribe(viewChange => {
         // Listen for view changes and move cells around depending on the current displayType
         // remove cell views from display view
-        for (let i = this._scrollableCells.length; i > 0; i--) {
-          this._scrollableCells.detach();
-        }
+        this.detachAllViews(this._scrollableCells);
         // remove cell views from calculated view
-        for (let i = this._calculatedCells.length; i > 0; i--) {
-          this._calculatedCells.detach();
-        }
+        this.detachAllViews(this._calculatedCells);
         if (viewChange === DatagridDisplayMode.CALCULATE) {
           this.displayCells = false;
-          this.dgCells.forEach(cell => {
-            this._calculatedCells.insert(cell._view);
-          });
+          this.insertOrderedViews(this._calculatedCells);
         } else {
           this.displayCells = true;
-          this.dgCells.forEach(cell => {
-            this._scrollableCells.insert(cell._view);
-          });
+          this.insertOrderedViews(this._scrollableCells);
         }
       }),
       this.expand.animate.subscribe(() => {
         this.expandAnimationTrigger = !this.expandAnimationTrigger;
+      })
+    );
+
+    // A subscription that listens for view reordering
+    this.subscriptions.push(
+      this.columnReorderService.reorderCompleted.subscribe(() => {
+        this.detachAllViews(this._scrollableCells);
+        this.insertOrderedViews(this._scrollableCells);
       })
     );
   }
@@ -227,5 +227,35 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public get _view() {
     return this.wrappedInjector.get(WrappedRow, this.vcr).rowView;
+  }
+
+  private assignRawOrders(): ClrDatagridCell[] {
+    return this.dgCells.map((cell, index) => {
+      if (this.columnReorderService.orderAt(index) > -1) {
+        cell.order = this.columnReorderService.orders[index];
+      } else {
+        cell.order = index;
+      }
+      return cell;
+    });
+  }
+
+  private insertOrderedViews(containerRef: ViewContainerRef): void {
+    this.setInUniqOrders(this.assignRawOrders()).forEach(cell => containerRef.insert(cell._view));
+  }
+
+  private detachAllViews(containerRef: ViewContainerRef): void {
+    for (let i = containerRef.length; i > 0; i--) {
+      containerRef.detach().detectChanges();
+    }
+  }
+
+  public setInUniqOrders(reorderablesWithRawOrder: Reorderable[]): Reorderable[] {
+    return reorderablesWithRawOrder
+      .sort((reorderable1, reorderable2) => reorderable1.order - reorderable2.order)
+      .map((reorderable, index) => {
+        reorderable.order = index;
+        return reorderable;
+      });
   }
 }

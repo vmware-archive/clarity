@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -102,6 +102,8 @@ export class ClrDatagridHideableColumn implements OnDestroy {
       this.columnState.subscribe((state: ColumnState) => {
         if (state.changes && state.changes.indexOf(DatagridColumnChanges.HIDDEN) > -1) {
           this.hiddenChange.emit(state.hidden); // Can emit through @Output when desugared syntax is used
+          this.columnsService.requestFirstVisibleChangeCheck();
+          this.columnsService.requestLastVisibleChangeCheck();
         }
       })
     );

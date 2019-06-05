@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,6 +13,7 @@ export interface ColumnState {
   hideable?: boolean; // This tells whether column can be hidden or not
   hidden?: boolean; // This is the state of column visibility
   titleTemplateRef?: TemplateRef<any>; // This is the template of the column content that will be used in the column toggle.
+  order?: number; // This is the position order of the column
 }
 
 export interface ColumnStateDiff extends ColumnState {

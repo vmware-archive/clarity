@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -90,6 +90,7 @@ export class ClrDraggableGhost<T> implements OnDestroy {
         // Position the draggable ghost.
         const topLeftPosition: PagePosition = this.findTopLeftPosition(event.dragPosition, offset);
         this.setPositionStyle(this.draggableGhostEl, topLeftPosition.pageX, topLeftPosition.pageY);
+        this.dragEventListener.ghostAnchorPosition = topLeftPosition;
         this.dragEventListener.dropPointPosition = this.findDropPointPosition(topLeftPosition);
       })
     );

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,7 +8,7 @@
 
 <p>
     Use the <code class="clr-code">clr-vertical-nav</code> component to create the Vertical Nav.
-    Add the <code class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.  Use <code class="clr-code">&lt;div class="nav-divider"&gt;&lt;/div&gt;</code> to add a horizonal divider to separate logical groups.  
+    Add the <code class="clr-code">clrVerticalNavLink</code> directive on each Nav Link in the Vertical Nav.  Use <code class="clr-code">&lt;div class="nav-divider"&gt;&lt;/div&gt;</code> to add a horizonal divider to separate logical groups.
 </p>
 
 <div class="clr-example">
@@ -22,9 +22,6 @@
             </div>
         </header>
         <div class="content-container">
-            <div class="content-area">
-                <router-outlet></router-outlet>
-            </div>
             <clr-vertical-nav>
                 <a clrVerticalNavLink routerLink="./charmander" routerLinkActive="active">Charmander</a>
                 <a clrVerticalNavLink routerLink="./jigglypuff" routerLinkActive="active">Jigglypuff</a>
@@ -34,6 +31,9 @@
                 <div class="nav-divider"></div>
                 <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
             </clr-vertical-nav>
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

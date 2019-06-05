@@ -5,7 +5,6 @@
  */
 
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ContentChildren,
@@ -36,6 +35,8 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { ViewAccessor, ViewManagerService } from './providers/view-manager.service';
 
 let nbRow: number = 0;
 
@@ -54,7 +55,7 @@ let nbRow: number = 0;
     { provide: LoadingListener, useExisting: DatagridIfExpandService },
   ],
 })
-export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
+export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
   public id: string;
   public radioId: string;
   public checkboxId: string;
@@ -83,7 +84,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    private columnReorderService: ColumnReorderService,
+    private viewManager: ViewManagerService
   ) {
     nbRow++;
     this.id = 'clr-dg-row' + nbRow;
@@ -168,9 +171,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   ngAfterContentInit() {
     this.dgCells.changes.subscribe(() => {
-      this.dgCells.forEach(cell => {
-        this._scrollableCells.insert(cell._view);
-      });
+      this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
     });
   }
 
@@ -179,27 +180,27 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
       this.displayMode.view.subscribe(viewChange => {
         // Listen for view changes and move cells around depending on the current displayType
         // remove cell views from display view
-        for (let i = this._scrollableCells.length; i > 0; i--) {
-          this._scrollableCells.detach();
-        }
+        this.viewManager.detachAllViews(this._scrollableCells);
         // remove cell views from calculated view
-        for (let i = this._calculatedCells.length; i > 0; i--) {
-          this._calculatedCells.detach();
-        }
+        this.viewManager.detachAllViews(this._calculatedCells);
         if (viewChange === DatagridDisplayMode.CALCULATE) {
           this.displayCells = false;
-          this.dgCells.forEach(cell => {
-            this._calculatedCells.insert(cell._view);
-          });
+          this.viewManager.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
         } else {
           this.displayCells = true;
-          this.dgCells.forEach(cell => {
-            this._scrollableCells.insert(cell._view);
-          });
+          this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
         }
       }),
       this.expand.animate.subscribe(() => {
         this.expandAnimationTrigger = !this.expandAnimationTrigger;
+      })
+    );
+
+    // A subscription that listens for view reordering
+    this.subscriptions.push(
+      this.columnReorderService.reorderCompleted.subscribe(() => {
+        this.viewManager.detachAllViews(this._scrollableCells);
+        this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
       })
     );
   }
@@ -227,5 +228,16 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   public get _view() {
     return this.wrappedInjector.get(WrappedRow, this.vcr).rowView;
+  }
+
+  private assignRawOrders(): ClrDatagridCell[] {
+    return this.dgCells.map((cell, index) => {
+      if (this.columnReorderService.orderAt(index) > -1) {
+        cell.order = this.columnReorderService.orders[index];
+      } else {
+        cell.order = index;
+      }
+      return cell;
+    });
   }
 }

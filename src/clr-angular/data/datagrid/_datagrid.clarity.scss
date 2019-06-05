@@ -8,7 +8,7 @@
     '.datagrid-header',
     '.datagrid-body',
     '.datagrid-row',
-    '.datagrid-column',
+    '.datagrid-column-wrapper',
     '.datagrid-cell'
   );
 
@@ -59,7 +59,7 @@
     }
 
     &.datagrid-column {
-      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+      padding: 0;
     }
   }
 
@@ -327,10 +327,21 @@
       vertical-align: top;
       border: none;
 
-      &:last-child {
-        .datagrid-column-separator {
+      .datagrid-column-droppable.draggable-match {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        .datagrid-column-drop-line {
           display: none;
         }
+      }
+
+      .datagrid-column-wrapper {
+        flex: 1 1 auto;
+        width: 100%;
       }
 
       clr-dg-filter,
@@ -439,21 +450,20 @@
       }
 
       .datagrid-column-separator {
-        $dg-padding-less-border: 0.5rem - $clr-rem-1px;
         position: relative;
-        left: 0.5rem;
+        left: 0;
         flex: 0 0 auto;
         width: $clr-default-borderwidth;
         order: 100;
-        margin-left: auto;
         height: 100%;
+        margin-left: -1px;
 
-        &::after {
+        &::before {
           content: '';
           position: absolute;
-          height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+          height: calc(100% - 0.5rem);
           width: $clr-rem-1px;
-          top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + #{$clr-rem-1px});
+          top: 0.25rem;
           left: 0;
           background-color: $clr-table-border-color;
         }
@@ -462,10 +472,9 @@
           position: absolute;
           width: calc(0.5rem + #{$clr-rem-1px});
           right: -0.25rem;
-          top: -0.25rem;
+          top: 0;
           cursor: col-resize;
-          height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
-          z-index: map-get($clr-layers, datagrid-header);
+          height: 100%;
         }
         .datagrid-column-resize-tracker {
           position: absolute;
@@ -474,13 +483,17 @@
           width: 1px;
           height: 0;
           border-right: $clr-default-borderwidth dotted $clr-color-action-300;
-          transform: translateX(0px);
           cursor: col-resize;
+          z-index: map-get($clr-layers, draggable-ghost);
         }
 
         .exceeded-max {
           border-right: $clr-default-borderwidth dotted rgba($clr-color-danger-700, 0.3);
         }
+      }
+
+      &.datagrid-last-visible-column .datagrid-column-separator {
+        display: none;
       }
 
       .datagrid-signpost-trigger .signpost {
@@ -489,6 +502,63 @@
         .signpost-trigger {
           height: inherit;
           line-height: 1rem;
+        }
+      }
+
+      .in-drag & {
+        position: relative;
+        .draggable-match {
+          display: flex;
+          border: none;
+          &.draggable-over {
+            .datagrid-column-drop-line {
+              position: relative;
+              display: block;
+              left: -1px;
+              width: 0;
+              height: 0;
+              margin-left: 0;
+              &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 2px;
+                height: 100vh;
+                background-color: $clr-action-purple-dark;
+                z-index: map-get($clr-layers, column-switch);
+              }
+            }
+          }
+        }
+        &.datagrid-first-visible-column .draggable-over {
+          .datagrid-column-drop-line {
+            left: 0;
+          }
+        }
+        &.datagrid-last-visible-column .draggable-over {
+          .datagrid-column-drop-line {
+            left: -2px;
+          }
+        }
+
+        &-drag-mode .draggable-match {
+          display: none;
+        }
+
+        &-drag-mode ~ .datagrid-column .draggable-match .datagrid-column-drop-line {
+          margin-left: auto;
+        }
+      }
+      .draggable-ghost .datagrid-column-wrapper {
+        @include clr-datagrid-column-ghost();
+      }
+
+      &-drop-mode {
+        z-index: map-get($clr-layers, draggable-ghost);
+        .datagrid-column-wrapper {
+          @include clr-datagrid-column-ghost();
         }
       }
     }
@@ -722,6 +792,8 @@
           max-height: 12.5rem;
           overflow-y: auto;
           min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+          display: flex;
+          flex-direction: column;
 
           li {
             line-height: 1rem;
@@ -784,12 +856,6 @@
     .datagrid-header {
       min-height: 1rem;
     }
-    .datagrid-column .datagrid-column-separator {
-      &::after {
-        height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
-        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
-      }
-    }
     .datagrid-cell {
       clr-icon {
         margin-top: calc(-0.125rem - 1px);
@@ -816,10 +882,6 @@
       }
       &.datagrid-cell {
         padding: 0;
-      }
-      &.datagrid-column {
-        padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-        padding-bottom: calc(#{$clr-table--compact-verticalPadding});
       }
     }
     .datagrid-signpost-trigger .signpost .signpost-trigger {

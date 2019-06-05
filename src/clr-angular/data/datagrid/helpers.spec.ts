@@ -32,6 +32,8 @@ import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { ViewManagerService } from './providers/view-manager.service';
 
 // Reusable list of providers used in a number of tests
 export const DATAGRID_SPEC_PROVIDERS = [
@@ -45,6 +47,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   DatagridIfExpandService,
   Page,
   ColumnsService,
+  ColumnReorderService,
   Items,
   DatagridRenderOrganizer,
   RowActionService,
@@ -52,6 +55,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   StateDebouncer,
   StateProvider,
   TableSizeService,
+  ViewManagerService,
 ];
 
 export class TestContext<D, C> {

@@ -42,6 +42,8 @@ import { DatagridRenderOrganizer } from './render/render-organizer';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { ColumnsService } from './providers/columns.service';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { ViewManagerService } from './providers/view-manager.service';
 
 @Component({
   selector: 'clr-datagrid',
@@ -58,8 +60,10 @@ import { ColumnsService } from './providers/columns.service';
     StateDebouncer,
     StateProvider,
     TableSizeService,
+    ColumnReorderService,
     ColumnsService,
     DisplayModeService,
+    ViewManagerService,
   ],
   host: { '[class.datagrid-host]': 'true' },
 })
@@ -74,7 +78,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private displayMode: DisplayModeService,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStrings,
+    private columnReorderService: ColumnReorderService,
+    private viewManager: ViewManagerService
   ) {}
 
   /* reference to the enum so that template can access */
@@ -204,9 +210,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         if (!this.items.smart) {
           this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
         }
-        this.rows.forEach(row => {
-          this._displayedRows.insert(row._view);
-        });
+        this.viewManager.insertAllViews(this._displayedRows, this.rows.toArray());
       })
     );
   }
@@ -217,6 +221,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   ngAfterViewInit() {
     // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
     this.refresh.emit(this.stateProvider.state);
+
+    this.columnReorderService.containerRef = this._projectedDisplayColumns;
     this._subscriptions.push(this.stateProvider.change.subscribe(state => this.refresh.emit(state)));
     this._subscriptions.push(
       this.selection.change.subscribe(s => {
@@ -228,43 +234,46 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       })
     );
     // A subscription that listens for displayMode changes on the datagrid
-    this.displayMode.view.subscribe(viewChange => {
-      // Remove any projected columns from the projectedDisplayColumns container
-      for (let i = this._projectedDisplayColumns.length; i > 0; i--) {
-        this._projectedDisplayColumns.detach();
-      }
-      // Remove any projected columns from the projectedCalculationColumns container
-      for (let i = this._projectedCalculationColumns.length; i > 0; i--) {
-        this._projectedCalculationColumns.detach();
-      }
-      // Remove any projected rows from the calculationRows container
-      for (let i = this._calculationRows.length; i > 0; i--) {
-        this._calculationRows.detach();
-      }
-      // Remove any projected rows from the displayedRows container
-      for (let i = this._displayedRows.length; i > 0; i--) {
-        this._displayedRows.detach();
-      }
-      if (viewChange === DatagridDisplayMode.DISPLAY) {
-        // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
-        this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
-        this.columns.forEach(column => {
-          this._projectedDisplayColumns.insert(column._view);
-        });
-        this.rows.forEach(row => {
-          this._displayedRows.insert(row._view);
-        });
-      } else {
-        // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
-        this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
-        this.columns.forEach(column => {
-          this._projectedCalculationColumns.insert(column._view);
-        });
-        this.rows.forEach(row => {
-          this._calculationRows.insert(row._view);
-        });
-      }
-    });
+    this._subscriptions.push(
+      this.displayMode.view.subscribe(viewChange => {
+        // Remove any projected columns from the projectedDisplayColumns container
+        this.viewManager.detachAllViews(this._projectedDisplayColumns);
+        // Remove any projected columns from the projectedCalculationColumns container
+        this.viewManager.detachAllViews(this._projectedCalculationColumns);
+        // Remove any projected rows from the calculationRows container
+        this.viewManager.detachAllViews(this._calculationRows);
+        // Remove any projected rows from the displayedRows container
+        this.viewManager.detachAllViews(this._displayedRows);
+
+        if (viewChange === DatagridDisplayMode.DISPLAY) {
+          // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
+          this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
+          this.viewManager.insertAllViews(this._projectedDisplayColumns, this.assignRawOrders(), true);
+          this.columnReorderService.updateOrders(this.columns.map(column => column.order));
+          this.viewManager.insertAllViews(this._displayedRows, this.rows.toArray());
+        } else {
+          // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
+          this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
+          this.viewManager.insertAllViews(this._projectedCalculationColumns, this.assignRawOrders(), true);
+          this.columnReorderService.updateOrders(this.columns.map(column => column.order));
+          this.viewManager.insertAllViews(this._calculationRows, this.rows.toArray());
+        }
+      })
+    );
+
+    // A subscription that listens for view reordering
+    this._subscriptions.push(
+      this.columnReorderService.reorderRequested.subscribe(orderChanges => {
+        // apply requested reorder data
+        this.columns
+          .filter(column => typeof orderChanges[column.order] === 'number')
+          .forEach(column => (column.order = orderChanges[column.order]));
+        // detach column views from the view container
+        this.viewManager.detachAllViews(this._projectedDisplayColumns);
+        this.viewManager.insertAllViews(this._projectedDisplayColumns, this.assignRawOrders(), true);
+        this.columnReorderService.updateOrders(this.columns.map(column => column.order), true);
+      })
+    );
   }
 
   /**
@@ -280,12 +289,22 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     this.organizer.resize();
   }
 
-  @ViewChild('projectedDisplayColumns', { static: false, read: ViewContainerRef })
+  @ViewChild('projectedDisplayColumns', { static: true, read: ViewContainerRef })
   _projectedDisplayColumns: ViewContainerRef;
-  @ViewChild('projectedCalculationColumns', { static: false, read: ViewContainerRef })
+  @ViewChild('projectedCalculationColumns', { static: true, read: ViewContainerRef })
   _projectedCalculationColumns: ViewContainerRef;
-  @ViewChild('displayedRows', { static: false, read: ViewContainerRef })
+  @ViewChild('displayedRows', { static: true, read: ViewContainerRef })
   _displayedRows: ViewContainerRef;
-  @ViewChild('calculationRows', { static: false, read: ViewContainerRef })
+  @ViewChild('calculationRows', { static: true, read: ViewContainerRef })
   _calculationRows: ViewContainerRef;
+
+  private assignRawOrders(): ClrDatagridColumn[] {
+    return this.columns.map((column, index) => {
+      // Once columns has its order assigned, we will use it from here on
+      if (typeof column.order !== 'number') {
+        column.order = index;
+      }
+      return column;
+    });
+  }
 }

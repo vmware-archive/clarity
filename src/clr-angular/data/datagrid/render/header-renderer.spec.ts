@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,6 +28,7 @@ import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-o
 import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 import { ColumnsService } from '../providers/columns.service';
+import { ColumnReorderService } from '../providers/column-reorder.service';
 
 @Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
 class SimpleTest {}
@@ -79,6 +80,7 @@ export default function(): void {
         TableSizeService,
         Renderer2,
         ColumnsService,
+        ColumnReorderService,
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
@@ -196,8 +198,8 @@ export default function(): void {
       column2InitialWidth = widthOf(columnHeader2Element);
       column3InitialWidth = widthOf(columnHeader3Element);
       column4InitialWidth = widthOf(columnHeader4Element);
-      columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[0];
-      columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[2];
+      columnHeader1DraggableDebugElement = columnHeader1DebugElement.queryAll(By.directive(ClrDraggable))[1];
+      columnHeader3DraggableDebugElement = columnHeader3DebugElement.queryAll(By.directive(ClrDraggable))[1];
       columnHeader1DraggableDirective = columnHeader1DraggableDebugElement.injector.get(ClrDraggable);
       columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);
     });

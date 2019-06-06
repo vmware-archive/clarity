@@ -255,13 +255,11 @@ export declare class ClrDatagridActionBar {
 export declare class ClrDatagridActionOverflow implements OnDestroy {
     anchorPoint: Point;
     commonStrings: ClrCommonStrings;
-    menuWrapper: ElementRef;
     open: boolean;
     openChanged: EventEmitter<boolean>;
     popoverPoint: Point;
     constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings);
     close(event: MouseEvent): void;
-    ngAfterContentChecked(): void;
     ngOnDestroy(): void;
     toggle(event: any): void;
 }
@@ -298,7 +296,6 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 
 export declare class ClrDatagridColumnToggle {
     anchorPoint: Point;
-    readonly ariaLabelToggle: string;
     commonStrings: ClrCommonStrings;
     customToggleButton: ClrDatagridColumnToggleButton;
     customToggleTitle: ClrDatagridColumnToggleTitle;

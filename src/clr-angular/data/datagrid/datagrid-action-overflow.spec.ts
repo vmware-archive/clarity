@@ -83,15 +83,6 @@ export default function(): void {
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
     });
-
-    it('menu items should have aria-label attribute with the innerText as content', () => {
-      toggle.click();
-      context.detectChanges();
-      /* Simulate ngAfterContentChecked trigger */
-      context.clarityDirective.ngAfterContentChecked();
-      const actionItem: HTMLElement = context.clarityElement.querySelector('.action-item');
-      expect(actionItem.attributes['aria-label'].value).toBe(actionItem.innerText);
-    });
   });
 }
 

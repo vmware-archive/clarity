@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, OnDestroy, Output, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 
@@ -13,7 +13,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 @Component({
   selector: 'clr-dg-action-overflow',
   template: `
-        <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor>
+        <button #anchor type="button" class="datagrid-action-toggle" (click)="toggle($event)">
             <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.rowActions"></clr-icon>
         </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
@@ -25,8 +25,6 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
-  @ViewChild('menu', { static: false })
-  menuWrapper: ElementRef;
   public anchorPoint: Point = Point.RIGHT_CENTER;
   public popoverPoint: Point = Point.LEFT_CENTER;
 
@@ -36,18 +34,6 @@ export class ClrDatagridActionOverflow implements OnDestroy {
 
   ngOnDestroy() {
     this.rowActionService.unregister();
-  }
-
-  ngAfterContentChecked(): void {
-    if (this.menuWrapper && this.menuWrapper.nativeElement) {
-      /**
-       * Locate all child nodes inside the #menu and attach attr.aria-label
-       * with there innerText as label.
-       */
-      this.menuWrapper.nativeElement.childNodes.forEach(function(node: HTMLElement) {
-        node.setAttribute('aria-label', node.innerText);
-      });
-    }
   }
 
   /**

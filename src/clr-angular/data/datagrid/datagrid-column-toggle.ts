@@ -22,7 +22,7 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
       #anchor
       (click)="toggleSwitchPanel()"
       class="btn btn-sm btn-link column-toggle--action"
-      [attr.aria-label]="ariaLabelToggle"
+      aria-controls="expandable" 
       type="button">
       <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
     </button>
@@ -87,10 +87,6 @@ export class ClrDatagridColumnToggle {
     return (
       nbNonHideableColumns === 0 && this.hideableColumnStates.filter(columnState => !columnState.hidden).length === 1
     );
-  }
-
-  get ariaLabelToggle(): string {
-    return this.open ? this.commonStrings.close : this.commonStrings.open;
   }
 
   toggleColumnState(columnState: ColumnState, event: boolean) {

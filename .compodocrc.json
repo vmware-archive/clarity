@@ -2,5 +2,6 @@
   "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
   "output": "dist/website/browser/api",
   "disableInternal": true,
-  "disableCoverage": true
+  "disableCoverage": true,
+  "silent": true
 }

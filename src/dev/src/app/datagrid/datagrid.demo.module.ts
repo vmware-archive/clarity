@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -35,7 +35,7 @@ import { DatagridSelectionDemo } from './selection/selection';
 import { DatagridServerDrivenDemo } from './server-driven/server-driven';
 import { DatagridSmartIteratorDemo } from './smart-iterator/smart-iterator';
 import { DatagridSortingDemo } from './sorting/sorting';
-import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
+import { DatagridBuiltInFiltersDemo } from './built-in-filters/built-in-filters';
 import { DatagridResponsiveFooterDemo } from './responsive-footer/responsive-footer';
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
@@ -62,7 +62,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridServerDrivenDemo,
     DatagridSmartIteratorDemo,
     DatagridSortingDemo,
-    DatagridStringFilteringDemo,
+    DatagridBuiltInFiltersDemo,
     DatagridResponsiveFooterDemo,
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
@@ -92,7 +92,7 @@ import { ColorFilter } from './utils/color-filter';
     DatagridServerDrivenDemo,
     DatagridSmartIteratorDemo,
     DatagridSortingDemo,
-    DatagridStringFilteringDemo,
+    DatagridBuiltInFiltersDemo,
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
     DatagridColumnSizingDemo,

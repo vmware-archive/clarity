@@ -17,6 +17,7 @@ import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.mo
 import { ClrExpandableAnimationModule } from '../../utils/animations/expandable-animation/expandable-animation.module';
 
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
+import { DatagridNumericFilter } from './built-in/filters/datagrid-numeric-filter';
 import { ActionableOompaLoompa } from './chocolate/actionable-oompa-loompa';
 import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { ExpandableOompaLoompa } from './chocolate/expandable-oompa-loompa';
@@ -87,6 +88,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
 
   // Built-in shortcuts
   DatagridStringFilter,
+  DatagridNumericFilter,
 ];
 
 @NgModule({

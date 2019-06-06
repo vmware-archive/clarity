@@ -229,6 +229,8 @@ export declare abstract class ClrCommonStrings {
     expand?: string;
     hide?: string;
     info?: string;
+    maxValue?: string;
+    minValue?: string;
     more?: string;
     next?: string;
     open?: string;
@@ -308,13 +310,14 @@ export declare class ClrDatagridCell implements OnInit {
     ngOnInit(): void;
 }
 
-export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
+export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit {
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
+    colType: 'string' | 'number';
     commonStrings: ClrCommonStrings;
     customFilter: boolean;
     field: string;
-    filterValue: string;
+    filterValue: string | [number, number];
     filterValueChange: EventEmitter<{}>;
     projectedFilter: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
@@ -324,7 +327,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     readonly sortable: boolean;
     sorted: boolean;
     sortedChange: EventEmitter<boolean>;
-    updateFilterValue: string;
+    updateFilterValue: string | [number, number];
     constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -399,6 +402,10 @@ export declare class ClrDatagridItems<T> implements DoCheck, OnDestroy {
 }
 
 export declare class ClrDatagridModule {
+}
+
+export interface ClrDatagridNumericFilterInterface<T> {
+    accepts(item: T, low: number, high: number): boolean;
 }
 
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
@@ -1426,10 +1433,33 @@ export declare const CONDITIONAL_DIRECTIVES: Type<any>[];
 
 export declare const CUSTOM_BUTTON_TYPES: any;
 
+export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>> implements CustomFilter, AfterViewInit {
+    commonStrings: ClrCommonStrings;
+    customNumericFilter: ClrDatagridNumericFilterInterface<T> | RegisteredFilter<T, DatagridNumericFilterImpl<T>>;
+    filterContainer: ClrDatagridFilter<T>;
+    filterValueChange: EventEmitter<{}>;
+    high: number | string;
+    input: ElementRef;
+    low: number | string;
+    open: boolean;
+    value: [number, number];
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStrings);
+    close(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+}
+
 export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
     prop: string;
     constructor(prop: string);
     compare(a: T, b: T): number;
+}
+
+export declare class DatagridPropertyNumericFilter<T = any> implements ClrDatagridNumericFilterInterface<T> {
+    exact: boolean;
+    prop: string;
+    constructor(prop: string, exact?: boolean);
+    accepts(item: T, low: number, high: number): boolean;
 }
 
 export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagridStringFilterInterface<T> {

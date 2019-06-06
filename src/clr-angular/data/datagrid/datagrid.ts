@@ -221,8 +221,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   ngAfterViewInit() {
     // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
     this.refresh.emit(this.stateProvider.state);
-    this._subscriptions.push(this.stateProvider.change.subscribe(state => this.refresh.emit(state)));
     this._subscriptions.push(
+      this.stateProvider.change.subscribe(state => this.refresh.emit(state)),
       this.selection.change.subscribe(s => {
         if (this.selection.selectionType === SelectionType.Single) {
           this.singleSelectedChanged.emit(<T>s);
@@ -232,46 +232,46 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       }),
       this.page.change.subscribe(() => {
         this.datagridTable.nativeElement.focus();
+      }),
+      // A subscription that listens for displayMode changes on the datagrid
+      this.displayMode.view.subscribe(viewChange => {
+        // Remove any projected columns from the projectedDisplayColumns container
+        for (let i = this._projectedDisplayColumns.length; i > 0; i--) {
+          this._projectedDisplayColumns.detach();
+        }
+        // Remove any projected columns from the projectedCalculationColumns container
+        for (let i = this._projectedCalculationColumns.length; i > 0; i--) {
+          this._projectedCalculationColumns.detach();
+        }
+        // Remove any projected rows from the calculationRows container
+        for (let i = this._calculationRows.length; i > 0; i--) {
+          this._calculationRows.detach();
+        }
+        // Remove any projected rows from the displayedRows container
+        for (let i = this._displayedRows.length; i > 0; i--) {
+          this._displayedRows.detach();
+        }
+        if (viewChange === DatagridDisplayMode.DISPLAY) {
+          // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
+          this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
+          this.columns.forEach(column => {
+            this._projectedDisplayColumns.insert(column._view);
+          });
+          this.rows.forEach(row => {
+            this._displayedRows.insert(row._view);
+          });
+        } else {
+          // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
+          this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
+          this.columns.forEach(column => {
+            this._projectedCalculationColumns.insert(column._view);
+          });
+          this.rows.forEach(row => {
+            this._calculationRows.insert(row._view);
+          });
+        }
       })
     );
-    // A subscription that listens for displayMode changes on the datagrid
-    this.displayMode.view.subscribe(viewChange => {
-      // Remove any projected columns from the projectedDisplayColumns container
-      for (let i = this._projectedDisplayColumns.length; i > 0; i--) {
-        this._projectedDisplayColumns.detach();
-      }
-      // Remove any projected columns from the projectedCalculationColumns container
-      for (let i = this._projectedCalculationColumns.length; i > 0; i--) {
-        this._projectedCalculationColumns.detach();
-      }
-      // Remove any projected rows from the calculationRows container
-      for (let i = this._calculationRows.length; i > 0; i--) {
-        this._calculationRows.detach();
-      }
-      // Remove any projected rows from the displayedRows container
-      for (let i = this._displayedRows.length; i > 0; i--) {
-        this._displayedRows.detach();
-      }
-      if (viewChange === DatagridDisplayMode.DISPLAY) {
-        // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
-        this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
-        this.columns.forEach(column => {
-          this._projectedDisplayColumns.insert(column._view);
-        });
-        this.rows.forEach(row => {
-          this._displayedRows.insert(row._view);
-        });
-      } else {
-        // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
-        this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
-        this.columns.forEach(column => {
-          this._projectedCalculationColumns.insert(column._view);
-        });
-        this.rows.forEach(row => {
-          this._calculationRows.insert(row._view);
-        });
-      }
-    });
   }
 
   /**

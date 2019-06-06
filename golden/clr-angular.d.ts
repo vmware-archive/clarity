@@ -225,15 +225,20 @@ export declare abstract class ClrCommonStrings {
     close?: string;
     collapse?: string;
     current?: string;
+    currentPage?: string;
     danger?: string;
     expand?: string;
+    firstPage?: string;
     hide?: string;
     info?: string;
+    lastPage?: string;
     more?: string;
     next?: string;
+    nextPage?: string;
     open?: string;
     pickColumns?: string;
     previous?: string;
+    previousPage?: string;
     rowActions?: string;
     select?: string;
     selectAll?: string;
@@ -241,6 +246,7 @@ export declare abstract class ClrCommonStrings {
     showColumns?: string;
     sortColumn?: string;
     success?: string;
+    totalPages?: string;
     warning?: string;
 }
 
@@ -403,6 +409,7 @@ export declare class ClrDatagridModule {
 
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     _pageSizeComponent: ClrDatagridPageSize;
+    commonStrings: ClrCommonStrings;
     currentChanged: EventEmitter<number>;
     currentPage: number;
     currentPageInputRef: ElementRef;
@@ -413,7 +420,7 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     page: Page;
     pageSize: number;
     totalItems: number;
-    constructor(page: Page);
+    constructor(page: Page, commonStrings: ClrCommonStrings);
     next(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;

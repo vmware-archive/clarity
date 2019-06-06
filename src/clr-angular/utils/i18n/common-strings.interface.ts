@@ -93,4 +93,28 @@ export abstract class ClrCommonStrings {
    * Datagrid: sort of columns
    */
   sortColumn?: string;
+  /**
+   * Datagrid: first page
+   */
+  firstPage?: string;
+  /**
+   * Datagrid: last page
+   */
+  lastPage?: string;
+  /**
+   * Datagrid: next page
+   */
+  nextPage?: string;
+  /**
+   * Datagrid: previous page
+   */
+  previousPage?: string;
+  /**
+   * Datagrid: previous page
+   */
+  currentPage?: string;
+  /**
+   * Datagird: total pages
+   */
+  totalPages?: string;
 }

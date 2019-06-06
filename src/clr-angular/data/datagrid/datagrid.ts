@@ -74,6 +74,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private displayMode: DisplayModeService,
     private renderer: Renderer2,
     private el: ElementRef,
+    private page: Page,
     public commonStrings: ClrCommonStrings
   ) {}
 
@@ -194,6 +195,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   @ViewChild('scrollableColumns', { static: false, read: ViewContainerRef })
   scrollableColumns: ViewContainerRef;
 
+  @ViewChild('datagridTable', { static: false, read: ElementRef })
+  datagridTable: ElementRef;
+
   ngAfterContentInit() {
     if (!this.items.smart) {
       this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
@@ -225,6 +229,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         } else if (this.selection.selectionType === SelectionType.Multi) {
           this.selectedChanged.emit(<T[]>s);
         }
+      }),
+      this.page.change.subscribe(() => {
+        this.datagridTable.nativeElement.focus();
       })
     );
     // A subscription that listens for displayMode changes on the datagrid

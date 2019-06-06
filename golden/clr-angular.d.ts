@@ -272,7 +272,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     placeholder: ClrDatagridPlaceholder<T>;
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
-    /** @deprecated */ rowSelectionMode: boolean;
+    rowSelectionMode: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];
@@ -327,7 +327,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     readonly sortable: boolean;
     sorted: boolean;
     sortedChange: EventEmitter<boolean>;
-    updateFilterValue: string;
+    updateFilterValue: string | [number, number];
     constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -689,7 +689,7 @@ export declare class ClrExpandableAnimation {
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    /** @deprecated */ markAsDirty(): void;
+    markAsDirty(): void;
     markAsTouched(): void;
 }
 

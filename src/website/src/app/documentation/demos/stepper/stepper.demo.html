@@ -1,0 +1,29 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <h5 class="component-summary" id="stepper-header">
+      A stepper structures multi-step processes into 2 or more expanding panels that break up complex workflows.
+    </h5>
+
+    <div id="design-guidelines">
+      <h3>Design Guidelines</h3>
+      <clr-design-stepper-demo></clr-design-stepper-demo>
+    </div>
+
+    <div id="code-examples">
+      <h3 id="examples">Code &amp; Examples</h3>
+      <p>
+        The Stepper is an extension of the base Accordion component. The stepper requires use of the Angular Forms API.
+        Using the Forms API allows the stepper to easily reflect the form state of each step in the stepper template.
+      </p>
+
+      <p>
+        Leverage our <code>*clrIfExpanded</code> structural directive on the <code>clr-stepper-panel</code> to only
+        instantiate children when they are displayed.
+      </p>
+
+      <clr-angular-stepper-reactive-demo></clr-angular-stepper-reactive-demo>
+      <clr-angular-stepper-template-demo></clr-angular-stepper-template-demo>
+      <clr-angular-stepper-api-demo></clr-angular-stepper-api-demo>
+    </div>
+  </article>
+</clr-doc-wrapper>

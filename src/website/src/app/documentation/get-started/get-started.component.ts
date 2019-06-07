@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,6 +57,7 @@ const UI_CDN = `
 @Component({
   selector: 'get-started',
   templateUrl: './get-started.component.html',
+  styleUrls: ['./get-started.component.scss'],
   host: {
     '[class.content-area]': 'true',
   },
@@ -65,6 +66,9 @@ export class GetStartedComponent {
   sketchBaseUrl = environment.sketch_base_url;
   sketchIconsUrl = environment.sketch_icons_url;
   sketchVersion = RELEASES.all[RELEASES.current].sketch;
+  lightFigma = environment.figma_link_light;
+  darkFigma = environment.figma_link_dark;
+  iconFigma = environment.figma_icons;
   public uiCdn = UI_CDN;
   public ngModuleExample = NG_MODULE_EXAMPLE;
   public htmlImports = HTML_IMPORTS;

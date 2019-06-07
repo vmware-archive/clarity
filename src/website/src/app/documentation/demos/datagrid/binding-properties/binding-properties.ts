@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ const EXAMPLE = `
     <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
     <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
     <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+    <clr-dg-column [clrDgField]="'wins'" [clrDgColType]="'number'">Wins</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
@@ -24,6 +25,7 @@ const EXAMPLE = `
         <clr-dg-cell>
             <span class="color-square" [style.backgroundColor]="user.color"></span>
         </clr-dg-cell>
+        <clr-dg-cell>{{user.wins}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>

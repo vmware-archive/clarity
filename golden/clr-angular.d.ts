@@ -41,6 +41,43 @@ export declare const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[];
 
 export declare const CLR_WIZARD_DIRECTIVES: any[];
 
+export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+    multiPanel: boolean;
+    panels: QueryList<ClrAccordionPanel>;
+    subscriptions: Subscription[];
+    constructor(accordionService: AccordionService);
+    ngAfterViewInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+}
+
+export declare class ClrAccordionContent {
+}
+
+export declare class ClrAccordionDescription {
+}
+
+export declare class ClrAccordionPanel implements OnInit, OnChanges {
+    readonly AccordionStatus: typeof AccordionStatus;
+    commonStrings: ClrCommonStrings;
+    disabled: boolean;
+    focusHeader: boolean;
+    id: string;
+    panel: Observable<AccordionPanelModel>;
+    panelOpen: boolean;
+    panelOpenChange: EventEmitter<boolean>;
+    constructor(commonStrings: ClrCommonStrings, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
+    collapsePanelOnAnimationDone(panel: AccordionPanelModel): void;
+    getPanelStateClasses(panel: AccordionPanelModel): string;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnInit(): void;
+    togglePanel(): void;
+}
+
+export declare class ClrAccordionTitle {
+}
+
 export declare class ClrAlert {
     _closed: boolean;
     _closedChanged: EventEmitter<boolean>;
@@ -192,6 +229,8 @@ export declare abstract class ClrCommonStrings {
     expand?: string;
     hide?: string;
     info?: string;
+    maxValue?: string;
+    minValue?: string;
     more?: string;
     next?: string;
     open?: string;
@@ -233,7 +272,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     placeholder: ClrDatagridPlaceholder<T>;
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
-    /** @deprecated */ rowSelectionMode: boolean;
+    rowSelectionMode: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];
@@ -271,13 +310,14 @@ export declare class ClrDatagridCell implements OnInit {
     ngOnInit(): void;
 }
 
-export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements OnDestroy, OnInit {
+export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit {
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
+    colType: 'string' | 'number';
     commonStrings: ClrCommonStrings;
     customFilter: boolean;
     field: string;
-    filterValue: string;
+    filterValue: string | [number, number];
     filterValueChange: EventEmitter<{}>;
     projectedFilter: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
@@ -285,9 +325,9 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;
-    /** @deprecated */ sorted: boolean;
-    /** @deprecated */ sortedChange: EventEmitter<boolean>;
-    updateFilterValue: string;
+    sorted: boolean;
+    sortedChange: EventEmitter<boolean>;
+    updateFilterValue: string | [number, number];
     constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -364,6 +404,10 @@ export declare class ClrDatagridItems<T> implements DoCheck, OnDestroy {
 export declare class ClrDatagridModule {
 }
 
+export interface ClrDatagridNumericFilterInterface<T> {
+    accepts(item: T, low: number, high: number): boolean;
+}
+
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     _pageSizeComponent: ClrDatagridPageSize;
     currentChanged: EventEmitter<number>;
@@ -400,6 +444,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
     expand: DatagridIfExpandService;
+    expandAnimation: ClrExpandableAnimation;
+    expandAnimationTrigger: boolean;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
@@ -626,10 +672,24 @@ export interface ClrDropToleranceInterface {
 export declare class ClrEmphasisModule {
 }
 
+export declare class ClrExpandableAnimation {
+    clrExpandTrigger: any;
+    readonly expandAnimation: {
+        value: any;
+        params: {
+            startHeight: number;
+        };
+    };
+    startHeight: number;
+    constructor(element: ElementRef, domAdapter: DomAdapter);
+    animationDone(): void;
+    updateStartHeight(): void;
+}
+
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    /** @deprecated */ markAsDirty(): void;
+    markAsDirty(): void;
     markAsTouched(): void;
 }
 
@@ -987,6 +1047,39 @@ export declare class ClrStackViewCustomTags {
 export declare class ClrStackViewModule {
 }
 
+export declare class ClrStepButton implements OnInit {
+    submitButton: boolean;
+    type: ClrStepButtonType | string;
+    constructor(clrStep: ClrStepperPanel, stepperService: StepperService);
+    navigateToNextPanel(): void;
+    ngOnInit(): void;
+}
+
+export declare enum ClrStepButtonType {
+    Next = "next",
+    Submit = "submit"
+}
+
+export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+    form: FormGroupDirective | NgForm;
+    initialPanel: string;
+    panels: QueryList<ClrStepperPanel>;
+    subscriptions: Subscription[];
+    constructor(formGroup: FormGroupDirective, ngForm: NgForm, stepperService: StepperService);
+    ngAfterViewInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+}
+
+export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
+    commonStrings: ClrCommonStrings;
+    readonly formGroup: import("@angular/forms").FormGroup;
+    id: string;
+    constructor(commonStrings: ClrCommonStrings, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    ngOnInit(): void;
+}
+
 export declare class ClrTab {
     readonly active: boolean;
     id: number;
@@ -1340,10 +1433,33 @@ export declare const CONDITIONAL_DIRECTIVES: Type<any>[];
 
 export declare const CUSTOM_BUTTON_TYPES: any;
 
+export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>> implements CustomFilter, AfterViewInit {
+    commonStrings: ClrCommonStrings;
+    customNumericFilter: ClrDatagridNumericFilterInterface<T> | RegisteredFilter<T, DatagridNumericFilterImpl<T>>;
+    filterContainer: ClrDatagridFilter<T>;
+    filterValueChange: EventEmitter<{}>;
+    high: number | string;
+    input: ElementRef;
+    low: number | string;
+    open: boolean;
+    value: [number, number];
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStrings);
+    close(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+}
+
 export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
     prop: string;
     constructor(prop: string);
     compare(a: T, b: T): number;
+}
+
+export declare class DatagridPropertyNumericFilter<T = any> implements ClrDatagridNumericFilterInterface<T> {
+    exact: boolean;
+    prop: string;
+    constructor(prop: string, exact?: boolean);
+    accepts(item: T, low: number, high: number): boolean;
 }
 
 export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagridStringFilterInterface<T> {
@@ -1366,6 +1482,8 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
 }
 
 export declare const DEFAULT_BUTTON_TYPES: any;
+
+export declare const EXPANDABLE_ANIMATION_DIRECTIVES: Type<any>[];
 
 export declare function fade(opacity?: number): AnimationMetadata[];
 

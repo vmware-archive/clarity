@@ -12,11 +12,11 @@ import { ClrWizard, ClrWizardPage } from '@clr/angular';
   templateUrl: './wizard-jump-to.demo.html',
 })
 export class WizardJumpToDemo {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  @ViewChild('pageThree', { static: false })
+  @ViewChild('pageThree', { static: true })
   pageThree: ClrWizardPage;
-  @ViewChild('pageFive', { static: false })
+  @ViewChild('pageFive', { static: true })
   pageFive: ClrWizardPage;
 
   open: boolean = false;

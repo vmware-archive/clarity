@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
   },
 })
 export class DatagridDemo extends ClarityDocComponent implements OnInit, OnDestroy {
-  @ViewChild('demoView', { static: false })
+  @ViewChild('demoView', { static: true })
   demoView;
 
   constructor(private route: ActivatedRoute, private router: Router) {

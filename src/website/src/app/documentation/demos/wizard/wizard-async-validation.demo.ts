@@ -11,9 +11,9 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-async-validation.demo.html',
 })
 export class WizardAsyncValidation {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  @ViewChild('myForm', { static: false })
+  @ViewChild('myForm', { static: true })
   formData: any;
 
   loadingFlag: boolean = false;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -30,7 +30,7 @@ import { DatagridServerDrivenDemo } from './server-driven/server-driven';
 import { DatagridSmartIteratorDemo } from './smart-iterator/smart-iterator';
 import { DatagridSortingDemo } from './sorting/sorting';
 import { DatagridResponsiveFooterDemo } from './responsive-footer/responsive-footer';
-import { DatagridStringFilteringDemo } from './string-filtering/string-filtering';
+import { DatagridBuiltInFiltersDemo } from './built-in-filters/built-in-filters';
 import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async';
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
 
@@ -47,7 +47,7 @@ const ROUTES: Routes = [
       { path: 'binding-properties', component: DatagridBindingPropertiesDemo },
       { path: 'sorting', component: DatagridSortingDemo },
       { path: 'filtering', component: DatagridFilteringDemo },
-      { path: 'string-filtering', component: DatagridStringFilteringDemo },
+      { path: 'string-filtering', component: DatagridBuiltInFiltersDemo },
       { path: 'pagination', component: DatagridPaginationDemo },
       { path: 'pagination-scrolling', component: DatagridPaginationScrollingDemo },
       { path: 'pagination-conditional', component: DatagridConditionalPaginationDemo },

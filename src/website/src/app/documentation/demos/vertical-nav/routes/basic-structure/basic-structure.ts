@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,9 +11,6 @@ const HTML_EXAMPLE = `
         ...
     </header>
     <div class="content-container">
-        <div class="content-area">
-            <router-outlet></router-outlet>
-        </div>
         <clr-vertical-nav>
             <a clrVerticalNavLink routerLink="./charmander" routerLinkActive="active">Charmander</a>
             <a clrVerticalNavLink routerLink="./jigglypuff" routerLinkActive="active">Jigglypuff</a>
@@ -23,6 +20,9 @@ const HTML_EXAMPLE = `
             <div class="nav-divider"></div>
             <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
         </clr-vertical-nav>
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 `;

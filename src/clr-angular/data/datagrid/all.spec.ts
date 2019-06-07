@@ -10,7 +10,6 @@
  * over the place because we load them asynchronously.
  */
 
-import DatagridRowExpandAnimationSpecs from './animation-hack/row-expand-animation.spec';
 import DatagridPropertyComparatorSpecs from './built-in/comparators/datagrid-property-comparator.spec';
 import DatagridPropertyStringFilterSpecs from './built-in/filters/datagrid-property-string-filter.spec';
 import DatagridStringFilterSpecs from './built-in/filters/datagrid-string-filter.spec';
@@ -100,7 +99,6 @@ describe('Datagrid', function() {
     DatagridRowRendererSpecs();
     DatagridHeaderRendererSpecs();
     DatagridMainRendererSpecs();
-    DatagridRowExpandAnimationSpecs();
   });
   describe('Built-in', function() {
     NestedPropertySpecs();

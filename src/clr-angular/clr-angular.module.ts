@@ -18,6 +18,7 @@ import { ClrConditionalModule } from './utils/conditional/conditional.module';
 import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
+import { ClrStepperModule } from './accordion/stepper/stepper.module';
 
 @NgModule({
   exports: [
@@ -34,6 +35,7 @@ import { ClrWizardModule } from './wizard/wizard.module';
     ClrPopoverModule,
     ClrWizardModule,
     ClrDragAndDropModule,
+    ClrStepperModule,
   ],
 })
 export class ClarityModule {}

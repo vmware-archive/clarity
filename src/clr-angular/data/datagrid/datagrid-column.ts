@@ -19,13 +19,16 @@ import { Subscription } from 'rxjs';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
+import { DatagridPropertyNumericFilter } from './built-in/filters/datagrid-property-numeric-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
+import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
+import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
@@ -34,12 +37,17 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   template: `
       <div class="datagrid-column-flex">
           <!-- I'm really not happy with that select since it's not very scalable -->
-          <ng-content select="clr-dg-filter, clr-dg-string-filter"></ng-content>
+          <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
 
           <clr-dg-string-filter
-                  *ngIf="field && !customFilter"
+                  *ngIf="field && !customFilter && (colType=='string')"
                   [clrDgStringFilter]="registered"
                   [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+          
+          <clr-dg-numeric-filter
+                  *ngIf="field && !customFilter && (colType=='number')"
+                  [clrDgNumericFilter]="registered"
+                  [(clrFilterValue)]="filterValue"></clr-dg-numeric-filter>
 
           <ng-template #columnTitle>
               <ng-content></ng-content>
@@ -71,7 +79,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     role: 'columnheader',
   },
 })
-export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
+export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements OnDestroy, OnInit {
   constructor(
     private _sort: Sort<T>,
@@ -120,7 +128,11 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
     if (typeof field === 'string') {
       this._field = field;
       if (!this.customFilter) {
-        this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+        if (this.colType === 'number') {
+          this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
+        } else {
+          this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+        }
       }
       if (!this._sortBy) {
         this._sortBy = new DatagridPropertyComparator(field);
@@ -154,6 +166,15 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
       }
     }
   }
+
+  /*
+    * What type is this column?  This defaults to STRING, but can also be
+    * set to NUMBER.  Unsupported types default to STRING. Users can set it
+    * via the [clrDgColType] input by setting it to 'string' or 'number'.
+    */
+
+  // TODO: We might want to make this an enum in the future
+  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
 
   /**
    * Indicates if the column is sortable
@@ -279,25 +300,38 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, Datag
   }
 
   public get filterValue() {
-    return this.filter.value;
+    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
+      return this.filter.value;
+    }
   }
 
   @Input('clrFilterValue')
-  public set updateFilterValue(newValue: string) {
+  public set updateFilterValue(newValue: string | [number, number]) {
     if (!this.filter) {
       return;
     }
-    if (!newValue) {
-      newValue = '';
-    }
-    if (newValue !== this.filter.value) {
-      this.filter.value = newValue;
+    if (this.filter instanceof DatagridStringFilterImpl) {
+      if (!newValue || typeof newValue !== 'string') {
+        newValue = '';
+      }
+      if (newValue !== this.filter.value) {
+        this.filter.value = newValue;
+      }
+    } else if (this.filter instanceof DatagridNumericFilterImpl) {
+      if (!newValue || !(newValue instanceof Array)) {
+        newValue = [null, null];
+      }
+      if (newValue.length === 2 && (newValue[0] !== this.filter.value[0] || newValue[1] !== this.filter.value[1])) {
+        this.filter.value = newValue;
+      }
     }
   }
 
-  public set filterValue(newValue: string) {
-    this.updateFilterValue = newValue;
-    this.filterValueChange.emit(this.filter.value);
+  public set filterValue(newValue: string | [number, number]) {
+    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
+      this.updateFilterValue = newValue;
+      this.filterValueChange.emit(this.filter.value);
+    }
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();

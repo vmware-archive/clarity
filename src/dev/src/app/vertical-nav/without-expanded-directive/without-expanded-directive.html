@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -25,27 +25,6 @@
             </div>
         </header>
         <div class="content-container">
-            <div class="content-area">
-                <div class="example-options">
-                    <h6>Options</h6>
-                    <div class="btn-group">
-                        <div class="radio btn">
-                            <input type="radio" name="vertNavRadios" id="rad1" [(ngModel)]="option" value="text">
-                            <label for="rad1">Nav Group Text</label>
-                        </div>
-                        <div class="radio btn">
-                            <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="link">
-                            <label for="rad2">Nav Group Link</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="example-controls">
-                    <h6>Controls</h6>
-                    <button class="btn" (click)="toggleNav()">Toggle Nav</button>
-                    <button class="btn" (click)="toggleGroup()">Toggle Group</button>
-                </div>
-                <router-outlet></router-outlet>
-            </div>
             <clr-vertical-nav *ngIf="option === 'link'"
                               [clrVerticalNavCollapsible]="true"
                               [clrVerticalNavCollapsed]="navCollapsed"
@@ -119,7 +98,6 @@
 
             </clr-vertical-nav>
 
-
             <clr-vertical-nav *ngIf="option === 'text'"
                               [clrVerticalNavCollapsible]="true"
                               [clrVerticalNavCollapsed]="navCollapsed"
@@ -180,6 +158,27 @@
                 </a>
 
             </clr-vertical-nav>
+            <div class="content-area">
+                <div class="example-options">
+                    <h6>Options</h6>
+                    <div class="btn-group">
+                        <div class="radio btn">
+                            <input type="radio" name="vertNavRadios" id="rad1" [(ngModel)]="option" value="text">
+                            <label for="rad1">Nav Group Text</label>
+                        </div>
+                        <div class="radio btn">
+                            <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="link">
+                            <label for="rad2">Nav Group Link</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-controls">
+                    <h6>Controls</h6>
+                    <button class="btn" (click)="toggleNav()">Toggle Nav</button>
+                    <button class="btn" (click)="toggleGroup()">Toggle Group</button>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@
  */
 
 import { Component, Directive } from '@angular/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { ClrDatagridModule } from './datagrid.module';
 import { ClrDatagridPagination } from './datagrid-pagination';
@@ -48,7 +49,13 @@ export default function(): void {
   describe('ClrDatagridPagination component integration', function() {
     type Context = TestContext<ClrDatagridPagination, IntegrationTest>;
 
-    spec(ClrDatagridPagination, IntegrationTest, ClrDatagridModule, { declarations: [InstantiationCounter] }, false);
+    spec(
+      ClrDatagridPagination,
+      IntegrationTest,
+      ClrDatagridModule,
+      { declarations: [InstantiationCounter], imports: [NoopAnimationsModule] },
+      false
+    );
 
     it('sets the page size a single time on initialization', function(this: Context) {
       const spy = spyOnProperty(Page.prototype, 'size', 'set').and.callThrough();

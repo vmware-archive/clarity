@@ -12,18 +12,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const appRoutes: Routes = [
   {
     path: 'icons',
-    loadChildren: 'src/app/icons/icons.module#IconsModule',
+    loadChildren: () => import('src/app/icons/icons.module').then(m => m.IconsModule),
     data: {
       bodyClass: 'layout-icons',
     },
   },
   {
     path: 'community',
-    loadChildren: 'src/app/community/community.module#CommunityModule',
+    loadChildren: () => import('src/app/community/community.module').then(m => m.CommunityModule),
   },
   {
     path: 'news',
-    loadChildren: 'src/app/news/news.module#NewsModule',
+    loadChildren: () => import('src/app/news/news.module').then(m => m.NewsModule),
   },
   {
     path: '',

@@ -5,6 +5,8 @@
  */
 import { animate, AnimationMetadata, style, transition } from '@angular/animations';
 
+import { defaultAnimationTiming } from './../constants';
+
 export function fadeSlide(direction: string): AnimationMetadata[] {
   let transform: string = null;
   if (direction === 'up') {
@@ -19,7 +21,7 @@ export function fadeSlide(direction: string): AnimationMetadata[] {
     throw new Error('Unknown direction ' + direction + ' for slide animation.');
   }
   return [
-    transition('void => *', [style({ opacity: 0, transform: transform }), animate('0.2s ease-in-out')]),
-    transition('* => void', [animate('0.2s ease-in-out', style({ opacity: 0, transform: transform }))]),
+    transition('void => *', [style({ opacity: 0, transform: transform }), animate(defaultAnimationTiming)]),
+    transition('* => void', [animate(defaultAnimationTiming, style({ opacity: 0, transform: transform }))]),
   ];
 }

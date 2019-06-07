@@ -1,0 +1,221 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('accordion.clarity') {
+  .clr-accordion {
+    display: block;
+    counter-reset: accordion;
+    margin-bottom: 1rem;
+  }
+
+  .clr-accordion-panel {
+    display: block;
+  }
+
+  .clr-accordion-header {
+    color: $clr-accordion-text-color;
+    border: 1px solid $clr-accordion-border-color;
+    box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color;
+    background: $clr-accordion-header-background-color;
+    transition: all 200ms ease-in-out;
+    border-bottom: 0;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    font-size: 0.65rem;
+    text-align: left;
+    @include focus-within();
+
+    &:hover {
+      background-color: $clr-accordion-header-hover-background-color;
+    }
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      flex-flow: row;
+    }
+  }
+
+  .clr-accordion-panel:last-child {
+    .clr-accordion-content,
+    .clr-accordion-header {
+      border-bottom: 1px solid $clr-accordion-border-color;
+    }
+  }
+
+  .clr-accordion-number {
+    padding: 0 0.75rem;
+    display: none;
+
+    &::before {
+      content: counter(accordion) '.';
+      counter-increment: accordion;
+    }
+  }
+
+  .clr-accordion-header-button {
+    width: 100%;
+    border: 0;
+    padding: $clr-accordion-padding;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    color: $clr-accordion-text-color;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      max-width: 280px;
+    }
+  }
+
+  button.clr-accordion-header-button {
+    outline: none; // parent .clr-accordion-header element contains focus style
+  }
+
+  .clr-accordion-status {
+    width: 1.5rem;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .clr-accordion-title {
+    width: calc(100% - 1.5rem);
+    max-width: 280px;
+    display: inline-block;
+  }
+
+  .clr-accordion-description {
+    padding: $clr-accordion-padding;
+    padding-top: 0;
+    width: 100%;
+    max-width: 650px;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      padding-top: $clr-accordion-padding;
+    }
+  }
+
+  .clr-accordion-content {
+    background: $clr-accordion-content-background-color;
+    border: 1px solid $clr-accordion-border-color;
+    border-bottom: 0;
+    overflow: hidden;
+    display: block;
+    padding: 0.75rem;
+    display: none;
+
+    .clr-form {
+      padding: 0;
+    }
+
+    &.ng-trigger {
+      padding: 0; // inner element/padding to prevent extra hight in ng animation
+    }
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      padding: 0.75rem 2.25rem;
+    }
+  }
+
+  .clr-accordion-inner-content {
+    padding: 0.75rem;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      padding: 0.75rem 2.25rem;
+    }
+  }
+
+  .clr-accordion-angle {
+    transition: all 200ms ease-in-out;
+  }
+
+  .clr-accordion-error-icon,
+  .clr-accordion-complete-icon {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+
+  // panel states
+  .clr-accordion-panel-open {
+    .clr-accordion-content {
+      display: block;
+    }
+
+    .clr-accordion-angle {
+      visibility: visible;
+      transform: rotate(90deg);
+    }
+
+    .clr-accordion-header {
+      background: $clr-accordion-active-background-color;
+    }
+  }
+
+  .clr-accordion-panel-complete {
+    .clr-accordion-complete-icon {
+      display: inline-block;
+      color: $clr-accordion-complete-color;
+    }
+
+    .clr-accordion-angle {
+      visibility: visible;
+    }
+
+    .clr-accordion-header {
+      box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color-complete;
+    }
+
+    .ng-trigger.clr-accordion-content {
+      display: block;
+    }
+  }
+
+  .clr-accordion-panel-error {
+    .clr-accordion-header {
+      border-color: $clr-accordion-border-left-color-error;
+      box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color-error;
+      border-bottom: 1px solid $clr-accordion-border-left-color-error;
+      background-color: $clr-accordion-active-background-color;
+    }
+
+    .clr-accordion-error-icon {
+      display: inline-block;
+      color: $clr-accordion-error-color;
+    }
+  }
+
+  .clr-accordion-panel-error .clr-accordion-number,
+  .clr-accordion-panel-complete .clr-accordion-number {
+    @include screen-reader-only();
+  }
+
+  // stepper forms mode
+  .clr-stepper-forms {
+    .clr-accordion-panel-inactive .clr-accordion-angle {
+      visibility: hidden;
+    }
+
+    .clr-accordion-panel-open .clr-accordion-angle {
+      visibility: visible;
+    }
+
+    .clr-accordion-status {
+      width: 3rem;
+    }
+
+    .clr-accordion-title {
+      width: calc(100% - 3rem);
+    }
+
+    .clr-accordion-number {
+      display: inline-block;
+    }
+  }
+
+  .clr-step-button {
+    display: block;
+    margin-top: 1rem;
+  }
+}

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/dev",
     "baseUrl": "./",
-    "module": "es2015",
+    "module": "esnext",
     "paths": {
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../clr-icons"],

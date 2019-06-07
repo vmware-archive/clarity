@@ -141,6 +141,19 @@ export default function(): void {
         expect(this.ifOpenService.open).toBeFalsy();
       });
 
+      it('blurs the focused items when container is focused and blurred', function(this: TestContext) {
+        this.focusHandler.container = this.container;
+        this.focusHandler.addChildren(this.children);
+        this.ifOpenService.open = true;
+
+        const spyBlur = spyOn(this.children[0], 'blur');
+        this.container.focus();
+        expect(spyBlur).not.toHaveBeenCalled();
+
+        this.container.blur();
+        expect(spyBlur).toHaveBeenCalled();
+      });
+
       it('puts focus back on the trigger when the dropdown becomes closed', function(this: TestContext) {
         this.focusHandler.trigger = this.trigger;
         this.focusHandler.container = this.container;
@@ -253,7 +266,7 @@ export default function(): void {
         expect(this.trigger.getAttribute('tabindex')).toBe('-1');
       });
 
-      it('toggles the .clr-focus class on the trigger when focused an blurred', function(this: TestContext) {
+      it('toggles the .clr-focus class on the trigger when focused and blurred', function(this: TestContext) {
         this.focusHandler.trigger = this.trigger;
         expect(this.trigger.classList).not.toContain('clr-focus');
         this.focusHandler.focus();

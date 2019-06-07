@@ -11,7 +11,7 @@ import { ClrWizard } from '@clr/angular';
   templateUrl: './wizard-not-closable.demo.html',
 })
 export class WizardNotClosable {
-  @ViewChild('wizard', { static: false })
+  @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
   open: boolean = false;

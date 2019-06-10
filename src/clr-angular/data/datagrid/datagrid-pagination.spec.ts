@@ -329,19 +329,24 @@ export default function(): void {
       });
 
       it('expect buttons to have the correct aria-label from ClrCommonStringsService', function() {
-        const firstPage = context.clarityElement.querySelector('.pagination-first');
-        const lastPage = context.clarityElement.querySelector('.pagination-last');
-        const previousPage = context.clarityElement.querySelector('.pagination-previous');
-        const nextPage = context.clarityElement.querySelector('.pagination-next');
-        const currentPage = context.clarityElement.querySelector('.pagination-current');
-        const totalPages = context.clarityElement.querySelector('.pagination-list span');
-
-        expect(firstPage.attributes['aria-label'].value).toBe(commonStrings.firstPage);
-        expect(lastPage.attributes['aria-label'].value).toBe(commonStrings.lastPage);
-        expect(previousPage.attributes['aria-label'].value).toBe(commonStrings.previousPage);
-        expect(nextPage.attributes['aria-label'].value).toBe(commonStrings.nextPage);
-        expect(currentPage.attributes['aria-label'].value).toBe(commonStrings.currentPage);
-        expect(totalPages.attributes['aria-label'].value).toBe(commonStrings.totalPages);
+        expect(context.clarityElement.querySelector('.pagination-first').attributes['aria-label'].value).toBe(
+          commonStrings.firstPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-last').attributes['aria-label'].value).toBe(
+          commonStrings.lastPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-previous').attributes['aria-label'].value).toBe(
+          commonStrings.previousPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-next').attributes['aria-label'].value).toBe(
+          commonStrings.nextPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-current').attributes['aria-label'].value).toBe(
+          commonStrings.currentPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-list span').attributes['aria-label'].value).toBe(
+          commonStrings.totalPages
+        );
       });
     });
   });

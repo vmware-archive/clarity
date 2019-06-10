@@ -41,6 +41,12 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'pickColumns', role: 'Datagrid: show and hide columns icon alt text' },
     { key: 'showColumns', role: 'Datagrid: show columns title' },
     { key: 'sortColumn', role: 'Datagrid: sort columns title' },
+    { key: 'firstPage', role: 'Datagrid: pagination first page button text' },
+    { key: 'lastPage', role: 'Datagrid: pagination last page button text' },
+    { key: 'nextPage', role: 'Datagrid: pagination next page button text' },
+    { key: 'previousPage', role: 'Datagrid: pagination previous page button text' },
+    { key: 'currentPage', role: 'Datagrid: pagination current page button text' },
+    { key: 'totalPages', role: 'Datagrid: pagination total pages button text' },
     { key: 'minValue', role: 'Datagrid: minimum value (numeric filters)' },
     { key: 'maxValue', role: 'Datagrid: maximum value (numeric filters' },
   ];

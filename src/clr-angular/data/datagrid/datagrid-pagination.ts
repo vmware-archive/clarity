@@ -17,6 +17,7 @@ import {
 import { Subscription } from 'rxjs';
 import { Page } from './providers/page';
 import { ClrDatagridPageSize } from './datagrid-page-size';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 @Component({
   selector: 'clr-dg-pagination',
@@ -28,18 +29,51 @@ import { ClrDatagridPageSize } from './datagrid-page-size';
       <ng-content></ng-content>
     </div>
     <div class="pagination-list" *ngIf="page.last > 1">
-      <button type="button" class="pagination-first" [disabled]="page.current <= 1" (click)="page.current = 1">
+      <button
+        type="button" 
+        class="pagination-first" 
+        [disabled]="page.current <= 1" 
+        (click)="page.current = 1"
+        [attr.aria-label]="commonStrings.firstPage"
+        >
         <clr-icon shape="step-forward-2 down"></clr-icon>
       </button>
-      <button type="button" class="pagination-previous" [disabled]="page.current <= 1" (click)="page.current = page.current - 1">
+      <button 
+        type="button"
+        class="pagination-previous" 
+        [disabled]="page.current <= 1" 
+        (click)="page.current = page.current - 1"
+        [attr.aria-label]="commonStrings.previousPage"
+        >
         <clr-icon shape="angle left"></clr-icon>
       </button>
-      <input #currentPageInput type="text" class="pagination-current" [size]="page.last.toString().length" [value]="page.current"
-             (keydown.enter)="updateCurrentPage($event)" (blur)="updateCurrentPage($event)"/>&nbsp;/&nbsp;<span>{{page.last}}</span>
-      <button type="button" class="pagination-next" [disabled]="page.current >= page.last" (click)="page.current = page.current + 1">
+      <input 
+        #currentPageInput 
+        type="text" 
+        class="pagination-current" 
+        [size]="page.last.toString().length" 
+        [value]="page.current"
+        (keydown.enter)="updateCurrentPage($event)" 
+        (blur)="updateCurrentPage($event)"
+        [attr.aria-label]="commonStrings.currentPage"
+        />
+        &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.totalPages">{{page.last}}</span>
+      <button 
+        type="button"
+        class="pagination-next" 
+        [disabled]="page.current >= page.last" 
+        (click)="page.current = page.current + 1"
+        [attr.aria-label]="commonStrings.nextPage"
+        >
         <clr-icon shape="angle right"></clr-icon>
       </button>
-      <button type="button" class="pagination-last" [disabled]="page.current >= page.last" (click)="page.current = page.last">
+      <button 
+        type="button" 
+        class="pagination-last" 
+        [disabled]="page.current >= page.last" 
+        (click)="page.current = page.last"
+        [attr.aria-label]="commonStrings.lastPage"
+        >
         <clr-icon shape="step-forward-2 up"></clr-icon>
       </button>
     </div>
@@ -52,7 +86,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   @ViewChild('currentPageInput', { static: false })
   currentPageInputRef: ElementRef;
 
-  constructor(public page: Page) {
+  constructor(public page: Page, public commonStrings: ClrCommonStrings) {
     this.page.activated = true;
   }
 

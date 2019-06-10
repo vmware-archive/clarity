@@ -31,6 +31,12 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   pickColumns = 'Show or hide columns';
   showColumns = 'Show Columns';
   sortColumn = 'Sort Column';
+  firstPage = 'First Page';
+  lastPage = 'Last Page';
+  nextPage = 'Next Page';
+  previousPage = 'Previous Page';
+  currentPage = 'Current Page';
+  totalPages = 'Total Pages';
   minValue = 'Min value';
   maxValue = 'Max value';
 }

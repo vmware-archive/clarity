@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,16 +9,19 @@ import { ClrDatagridPagination } from './datagrid-pagination';
 import { TestContext } from './helpers.spec';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('ClrDatagridPagination component', function() {
     describe('Typescript API', function() {
       let pageService: Page;
       let component: ClrDatagridPagination;
+      let commonStrings: ClrCommonStringsService;
 
       beforeEach(function() {
         pageService = new Page(new StateDebouncer());
-        component = new ClrDatagridPagination(pageService);
+        commonStrings = new ClrCommonStringsService();
+        component = new ClrDatagridPagination(pageService, commonStrings);
         component.ngOnInit(); // For the subscription that will get destroyed.
       });
 
@@ -307,6 +310,43 @@ export default function(): void {
         );
 
         expect(invalidButton).toBeUndefined();
+      });
+    });
+
+    describe('Accessibility', function() {
+      // Until we can properly type "this"
+      let context: TestContext<ClrDatagridPagination, FullTest>;
+      let commonStrings: ClrCommonStringsService;
+
+      beforeEach(function() {
+        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        commonStrings = new ClrCommonStringsService();
+
+        context.testComponent.size = 10;
+        context.testComponent.total = 100;
+        context.testComponent.current = 10;
+        context.detectChanges();
+      });
+
+      it('expect buttons to have the correct aria-label from ClrCommonStringsService', function() {
+        expect(context.clarityElement.querySelector('.pagination-first').attributes['aria-label'].value).toBe(
+          commonStrings.firstPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-last').attributes['aria-label'].value).toBe(
+          commonStrings.lastPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-previous').attributes['aria-label'].value).toBe(
+          commonStrings.previousPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-next').attributes['aria-label'].value).toBe(
+          commonStrings.nextPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-current').attributes['aria-label'].value).toBe(
+          commonStrings.currentPage
+        );
+        expect(context.clarityElement.querySelector('.pagination-list span').attributes['aria-label'].value).toBe(
+          commonStrings.totalPages
+        );
       });
     });
   });

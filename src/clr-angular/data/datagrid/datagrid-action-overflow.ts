@@ -13,7 +13,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 @Component({
   selector: 'clr-dg-action-overflow',
   template: `
-        <button #anchor type="button" class="datagrid-action-toggle" (click)="toggle($event)">
+        <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor>
             <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.rowActions"></clr-icon>
         </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"

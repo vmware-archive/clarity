@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -7,23 +7,22 @@
 <h2>Built-in filters</h2>
 
 <p>
-    Before reading this, you should make sure you read the
-    previous section on custom filters. Done? Then you
-    might be a bit overwhelmed by the complexity of custom filters, understandably.
-    What if you want <em>just a bit more</em> than default string value filters, but phenomenal
-    cosmic filter power turns out to be slightly overkill? This is where our built-in custom
-    filters come handy. They let you customize specific parts of the filter like the
-    string matching function, without having to rewrite the whole thing yourself from two-way
+    Before reading this, you should make sure you read the previous section on custom filters.
+    Done? Then you might be a bit overwhelmed by the complexity of custom filters,
+    understandably.  What if you want <em>just a bit more</em> than default string value filters,
+    but phenomenal cosmic filter power turns out to be slightly overkill? This is where our
+    built-in custom filters come handy. They let you customize specific parts of the filter like the
+    filter matching function, without having to rewrite the whole thing yourself from two-way
     binding inputs to integration in the datagrid.
 </p>
 
 <h4>String filter</h4>
 
 <p>
-    At the moment, the only built-in filter we provide is the "string" filter one, meaning the
-    user is offered a text input, and the rows will be filtered based on a string-matching
-    function you provide. You should now be familiar with our use of interfaces for this, so here
-    is the interface your string matcher should implement:
+    The first and default filter is the "string" filter one, meaning the user is offered a text
+    input, and the rows will be filtered based on a string-matching function you provide. You
+    should now be familiar with our use of interfaces for this, so here is the interface your
+    string matcher should implement:
 </p>
 <clr-code-snippet [clrCode]="examples.stringFilterInterface" clrLanguage="typescript"></clr-code-snippet>
 <p>
@@ -34,8 +33,21 @@
 
 <p>
     In our example, we can allow the user to filter not only by pokemon name, but also by
-    entering the exact number of the pokemon he's interested in.
+    entering the exact number of the pokemon they are interested in.
 </p>
+
+<h4>Numeric filter</h4>
+
+<p>
+    Another built-in filter is the numeric filter, which allows you to filter a column by a minimum
+    and/or maximum numeric value. The "Wins" column demonstrates the numeric filter. You provide the
+    function logic and the user can optionally enter high and low limits for elements in the column.
+    In this case, use a <code class="clr-code">&lt;clr-dg-numeric-filter&gt;</code> component and
+    pass the filter to the <code class="clr-code">[clrDgNumericFilter]</code> property.
+</p>
+<clr-code-snippet [clrCode]="examples.numericFilterInterface" clrLanguage="typescript"></clr-code-snippet>
+
+<clr-code-snippet [clrCode]="examples.numericFilterInput" clrLanguage="html"></clr-code-snippet>
 
 <clr-datagrid>
     <clr-dg-column>User ID</clr-dg-column>
@@ -46,6 +58,10 @@
         <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
     </clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
+    <clr-dg-column>
+        Wins
+        <clr-dg-numeric-filter [clrDgNumericFilter]="winsFilter"></clr-dg-numeric-filter>
+    </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
@@ -57,6 +73,7 @@
         <clr-dg-cell>
             <span class="color-square" [style.backgroundColor]="user.color"></span>
         </clr-dg-cell>
+        <clr-dg-cell>{{user.wins}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
@@ -65,14 +82,17 @@
 <clr-code-snippet [clrCode]="examples.stringFilterTS" clrLanguage="typescript"></clr-code-snippet>
 <clr-code-snippet [clrCode]="examples.stringFilterHTML" clrLanguage="html"></clr-code-snippet>
 
-<h4>String filter with preset value</h4>
+<h4>Filters with preset values</h4>
 
 <p>
-    You can use a preset filter with string filters to initialze the data grid to a specific state.
-    <code class="clr-code">[(clrFilterValue)]</code> can be pre-set.
+    You can use a preset filter with either of the built-in filters to initialze the data grid to a
+    specific state. <code class="clr-code">[(clrFilterValue)]</code> can be pre-set to a string for
+    a string filter or a range of numbers for a numeric filter.  With numeric filters you can pass
+    <code class="clr-code">null</code> for either of the limits to not set it.  The example below
+    sets a lower limit of 10 and no upper limit.
 </p>
 
-<clr-code-snippet [clrCode]="examples.stringFilterPresetHTML" clrLanguage="html"></clr-code-snippet>
+<clr-code-snippet [clrCode]="examples.filterPresetHTML" clrLanguage="html"></clr-code-snippet>
 
 <clr-datagrid>
     <clr-dg-column>User ID</clr-dg-column>
@@ -83,6 +103,10 @@
         <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter" [(clrFilterValue)]="myFilterValue"></clr-dg-string-filter>
     </clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
+    <clr-dg-column>
+        Wins
+        <clr-dg-numeric-filter [clrDgNumericFilter]="winsFilter" [clrFilterValue]="[10, null]"></clr-dg-numeric-filter>
+    </clr-dg-column>
 
     <clr-dg-row *clrDgItems="let user of users">
         <clr-dg-cell>{{user.id}}</clr-dg-cell>
@@ -94,6 +118,7 @@
         <clr-dg-cell>
             <span class="color-square" [style.backgroundColor]="user.color"></span>
         </clr-dg-cell>
+        <clr-dg-cell>{{user.wins}}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>

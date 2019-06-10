@@ -14,6 +14,7 @@ import { ClarityDocComponent } from '../clarity-doc';
   },
 })
 export class I18nDemo extends ClarityDocComponent {
+  newLayout = true;
   constructor() {
     super('internationalization');
   }
@@ -46,5 +47,7 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'previousPage', role: 'Datagrid: pagination previous page button text' },
     { key: 'currentPage', role: 'Datagrid: pagination current page button text' },
     { key: 'totalPages', role: 'Datagrid: pagination total pages button text' },
+    { key: 'minValue', role: 'Datagrid: minimum value (numeric filters)' },
+    { key: 'maxValue', role: 'Datagrid: maximum value (numeric filters' },
   ];
 }

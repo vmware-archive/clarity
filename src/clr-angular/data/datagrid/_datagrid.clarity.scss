@@ -334,10 +334,20 @@
       }
 
       clr-dg-filter,
-      clr-dg-string-filter {
+      clr-dg-string-filter,
+      clr-dg-numeric-filter {
         display: flex;
         order: 99;
         margin-left: auto;
+      }
+
+      .datagrid-filter-input-spacer {
+        width: 0.5rem;
+        display: inline-block;
+      }
+
+      .datagrid-numeric-filter-input {
+        width: 78px;
       }
 
       .datagrid-filter-toggle {

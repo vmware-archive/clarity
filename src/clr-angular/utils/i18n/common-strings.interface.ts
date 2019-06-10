@@ -117,4 +117,12 @@ export abstract class ClrCommonStrings {
    * Datagird: total pages
    */
   totalPages?: string;
+  /*
+   * Datagrid numeric filter: min
+   */
+  minValue?: string;
+  /**
+   * Datagrid numeric filter: max
+   */
+  maxValue?: string;
 }

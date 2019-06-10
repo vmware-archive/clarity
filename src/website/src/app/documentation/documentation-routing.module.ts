@@ -32,6 +32,15 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'accordion',
+        loadChildren: () =>
+          import('src/app/documentation/demos/accordion/accordion.demo.module').then(m => m.AccordionDemoModule),
+        data: {
+          bodyClass: 'page-accordion-view',
+          browserTitle: 'Accordion',
+        },
+      },
+      {
         path: 'alerts',
         loadChildren: () =>
           import('src/app/documentation/demos/alert/alerts.demo.module').then(m => m.AlertsDemoModule),
@@ -283,6 +292,15 @@ const documentationRoutes: Routes = [
         data: {
           bodyClass: 'page-stack-view',
           browserTitle: 'Stack View',
+        },
+      },
+      {
+        path: 'stepper',
+        loadChildren: () =>
+          import('src/app/documentation/demos/stepper/stepper.demo.module').then(m => m.StepperDemoModule),
+        data: {
+          bodyClass: 'page-stepper-view',
+          browserTitle: 'Stepper',
         },
       },
       {

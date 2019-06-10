@@ -26,7 +26,7 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
       type="button">
       <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
     </button>
-    <div class="column-switch"
+    <div id="expandable" class="column-switch"
          *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
       <div class="switch-header">
         <ng-container *ngIf="!customToggleTitle">{{commonStrings.showColumns}}</ng-container>

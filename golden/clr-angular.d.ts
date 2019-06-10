@@ -220,8 +220,6 @@ export declare abstract class ClrCommonStrings {
     hide?: string;
     info?: string;
     lastPage?: string;
-    maxValue?: string;
-    minValue?: string;
     more?: string;
     next?: string;
     nextPage?: string;

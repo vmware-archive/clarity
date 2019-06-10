@@ -10,12 +10,12 @@ p.lead-header {
   margin: 32px 0 16px;
 }
 
-clr-code-snippet /deep/ pre {
+clr-code-snippet ::ng-deep pre {
   margin: 24px 0;
   padding: 18px;
 }
 
-clr-code-snippet /deep/ pre code {
+clr-code-snippet ::ng-deep pre code {
   line-height: 1.8em;
 }
 

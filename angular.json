@@ -29,9 +29,6 @@
               }
             ],
             "styles": ["src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules"]
-            },
             "scripts": ["node_modules/@webcomponents/custom-elements/custom-elements.min.js"]
           },
           "configurations": {
@@ -139,9 +136,6 @@
               "node_modules/prismjs/themes/prism-solarizedlight.css",
               "src/ks-app/src/styles.scss"
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": ["node_modules"]
-            },
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/prismjs/prism.js",
@@ -208,6 +202,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "styles": ["src/clr-angular/main.scss"],
             "main": "tests/tests.entry.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js"

@@ -49,7 +49,6 @@ module.exports = function(karma) {
       require('karma-jasmine'),
       require('karma-jasmine-matchers'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-scss-preprocessor'),
       // Reporters
       require('karma-jasmine-html-reporter'),
       require('karma-htmlfile-reporter'),
@@ -75,16 +74,13 @@ module.exports = function(karma) {
       // Clarity UI
       {
         pattern: './src/clr-angular/main.scss',
-        included: true,
+        included: false,
         watched: true,
       },
 
       // Entry point to all our spec files
       { pattern: './tests/tests.entry.ts', watched: false },
     ],
-    preprocessors: {
-      'src/clr-angular/**/*.scss': ['scss'],
-    },
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
       jasmine: {
@@ -96,12 +92,6 @@ module.exports = function(karma) {
       outputFile: './reports/unit/index.html',
       useLegacyStyle: true,
       useCompactStyle: true,
-    },
-    scssPreprocessor: {
-      options: {
-        sourceMap: true,
-        includePaths: ['node_modules'],
-      },
     },
     coverageIstanbulReporter: {
       dir: './reports/coverage/',

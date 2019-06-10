@@ -24,7 +24,7 @@
 }
 
 pre,
-clr-code-snippet /deep/ pre {
+clr-code-snippet ::ng-deep pre {
   background-color: $clr-color-neutral-50;
   padding: 12px;
 }

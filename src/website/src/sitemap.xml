@@ -61,6 +61,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://clarity.design/documentation/accordion</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://clarity.design/documentation/alerts</loc>
         <changefreq>daily</changefreq>
     </url>
@@ -238,6 +242,10 @@
     </url>
     <url>
         <loc>https://clarity.design/documentation/stack-view</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/documentation/stepper</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

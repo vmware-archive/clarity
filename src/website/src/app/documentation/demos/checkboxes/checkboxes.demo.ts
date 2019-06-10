@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,9 +31,18 @@ export class CheckboxesDemo extends ClarityDocComponent {
     super('checkboxes');
   }
 
-  exampleOne = '';
-  exampleTwo = '';
-  exampleThree = '';
+  exampleOne = {
+    one: false,
+    two: false,
+  };
+  exampleTwo = {
+    one: false,
+    two: false,
+  };
+  exampleThree = {
+    one: false,
+    two: false,
+  };
   exampleFour = '';
 
   uiBasic: any = UiBasic;

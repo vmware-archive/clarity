@@ -62,11 +62,11 @@
         <clr-checkbox-container>
             <label>Full checkbox example</label>
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="test3" required value="option1" [(ngModel)]="exampleOne" />
+                <input type="checkbox" clrCheckbox name="test3" required value="option1" [(ngModel)]="exampleOne.one" />
                 <label>Option 1</label>
             </clr-checkbox-wrapper>
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="test3" required value="option2" [(ngModel)]="exampleOne" />
+                <input type="checkbox" clrCheckbox name="test3" required value="option2" [(ngModel)]="exampleOne.two" />
                 <label>Option 2</label>
             </clr-checkbox-wrapper>
             <clr-control-helper>Helper text</clr-control-helper>
@@ -87,11 +87,11 @@
         <clr-checkbox-container clrInline>
             <label>Inline checkbox example</label>
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="test4" required value="option1" [(ngModel)]="exampleTwo" />
+                <input type="checkbox" clrCheckbox name="test4" required value="option1" [(ngModel)]="exampleTwo.one" />
                 <label>Option 1</label>
             </clr-checkbox-wrapper>
             <clr-checkbox-wrapper>
-                <input type="checkbox" clrCheckbox name="test4" required value="option2" [(ngModel)]="exampleTwo" />
+                <input type="checkbox" clrCheckbox name="test4" required value="option2" [(ngModel)]="exampleTwo.two" />
                 <label>Option 2</label>
             </clr-checkbox-wrapper>
             <clr-control-helper>Helper text</clr-control-helper>
@@ -114,11 +114,11 @@
         <clr-checkbox-container>
           <label>Disabled checkbox example</label>
           <clr-checkbox-wrapper>
-            <input type="checkbox" clrCheckbox name="test5" value="option1" [(ngModel)]="exampleThree" disabled />
+            <input type="checkbox" clrCheckbox name="test5" value="option1" [(ngModel)]="exampleThree.one" disabled />
             <label>Option 1</label>
           </clr-checkbox-wrapper>
           <clr-checkbox-wrapper>
-            <input type="checkbox" clrCheckbox name="test5" value="option2" [(ngModel)]="exampleThree" disabled />
+            <input type="checkbox" clrCheckbox name="test5" value="option2" [(ngModel)]="exampleThree.two" disabled />
             <label>Option 2</label>
           </clr-checkbox-wrapper>
           <clr-control-helper>Helper text</clr-control-helper>

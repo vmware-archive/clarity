@@ -1203,7 +1203,6 @@ export default function(): void {
 
           previousBtn = debugWiz.nativeElement.querySelector('.clrtest-page-previous-2');
           expect(previousBtn).not.toBe(null, 'expect page buttons to be present');
-          console.log(viewTestComponent);
           wizardBtnDisabled = viewTestComponent.pagePreviousBtn.isDisabled;
           expect(wizardBtnDisabled).toBe(false, 'expect page level button not to be disabled');
 

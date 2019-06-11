@@ -151,6 +151,14 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'internationalization',
+        loadChildren: 'src/app/documentation/demos/i18n/i18n.demo.module#I18nDemoModule',
+        data: {
+          bodyClass: 'i18n',
+          browserTitle: 'Internationalization',
+        },
+      },
+      {
         path: 'labels',
         loadChildren: 'src/app/documentation/demos/labels/labels.demo.module#LabelsDemoModule',
         data: {

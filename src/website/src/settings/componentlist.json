@@ -184,6 +184,16 @@
       "newLayout": true
     },
     {
+      "url": "internationalization",
+      "text": "Internationalization",
+      "type": "pattern",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 20,
+      "dox": 20
+    },
+    {
       "url": "labels",
       "text": "Labels",
       "type": "component",

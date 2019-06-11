@@ -83,6 +83,24 @@ export default function(): void {
         expect(this.trigger.getAttribute('id')).toBe(id);
       });
 
+      it('toggles open when arrow up or down on the trigger', function(this: TestContext) {
+        fakeAsync(function(this: TestContext) {
+          expect(this.ifOpenService.open).toBeFalsy();
+          this.focusHandler.trigger = this.trigger;
+
+          this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowup' }));
+          expect(this.ifOpenService.open).toBeTruthy();
+
+          //once open, the up/down arrow keys control the focus on menu items, so we close again for the next test
+          this.ifOpenService.open = false;
+          tick();
+          expect(this.ifOpenService.open).toBeFalsy();
+
+          this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowdown' }));
+          expect(this.ifOpenService.open).toBeTruthy();
+        });
+      });
+
       it('listens to arrow keys on the trigger', function(this: TestContext) {
         const spy = spyOn(this.focusService, 'listenToArrowKeys');
         this.focusHandler.trigger = this.trigger;

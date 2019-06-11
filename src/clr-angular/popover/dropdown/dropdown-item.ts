@@ -15,6 +15,7 @@ import { RootDropdownService } from './providers/dropdown.service';
   host: {
     '[class.dropdown-item]': 'true',
     '[attr.role]': '"menuitem"',
+    '[attr.aria-disabled]': 'disabled',
   },
   providers: [BASIC_FOCUSABLE_ITEM_PROVIDER],
 })
@@ -33,6 +34,10 @@ export class ClrDropdownItem implements AfterViewInit {
   set disabled(value: boolean | string) {
     // Empty string attribute evaluates to false but should disable the item, so we need to add a special case for it.
     this.focusableItem.disabled = !!value || value === '';
+  }
+
+  get disabled() {
+    return this.focusableItem.disabled;
   }
 
   ngAfterViewInit() {

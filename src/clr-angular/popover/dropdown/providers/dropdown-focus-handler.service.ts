@@ -97,6 +97,8 @@ export class DropdownFocusHandler implements FocusableItem {
       this.renderer.setAttribute(el, 'tabindex', '-1');
     } else {
       // The root trigger is the only one outside of the menu, so it needs to its own key listeners.
+      this.renderer.listen(el, 'keydown.arrowup', event => this.ifOpenService.toggleWithEvent(event));
+      this.renderer.listen(el, 'keydown.arrowdown', event => this.ifOpenService.toggleWithEvent(event));
       this.focusService.listenToArrowKeys(el);
     }
   }

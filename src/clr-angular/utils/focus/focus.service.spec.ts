@@ -130,6 +130,12 @@ export default function(): void {
         expect(spy).toHaveBeenCalledWith(target);
       });
 
+      it('does not move focus to another item if current is undefined', function(this: TestContext) {
+        const spy = spyOn(this.focusService, 'moveTo');
+        this.focusService.move(ArrowKeyDirection.DOWN, undefined);
+        expect(spy).not.toHaveBeenCalled();
+      });
+
       it('waits for the next item if it is an Observable', function(this: TestContext) {
         const first = new MockFocusableItem('1');
         const second = new MockFocusableItem('2');

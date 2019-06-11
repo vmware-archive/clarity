@@ -57,19 +57,21 @@ export class FocusService {
    * The second parameter, optional, is here to allow recursion to skip disabled items.
    */
   move(direction: ArrowKeyDirection, current = this.current) {
-    const next = current[direction];
-    if (next) {
-      // Turning the value into an Observable isn't great, but it's the fastest way to avoid code duplication.
-      // If performance ever matters for this, we can refactor using additional private methods.
-      const nextObs = isObservable(next) ? next : of(next);
-      nextObs.subscribe(item => {
-        if (item.disabled) {
-          return this.move(direction, item);
-        } else {
-          this.moveTo(item);
-          return true;
-        }
-      });
+    if (current) {
+      const next = current[direction];
+      if (next) {
+        // Turning the value into an Observable isn't great, but it's the fastest way to avoid code duplication.
+        // If performance ever matters for this, we can refactor using additional private methods.
+        const nextObs = isObservable(next) ? next : of(next);
+        nextObs.subscribe(item => {
+          if (item.disabled) {
+            return this.move(direction, item);
+          } else {
+            this.moveTo(item);
+            return true;
+          }
+        });
+      }
     }
     return false;
   }

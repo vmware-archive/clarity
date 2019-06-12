@@ -83,10 +83,18 @@ export default function(): void {
         expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
       });
 
-      it('#anchor should have aria-controls set to "expandable" ', function() {
+      it('#anchor should have aria-controls set', function() {
         expect(
           context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
-        ).toBe('expandable');
+        ).toBeDefined();
+      });
+
+      it('.column-switch should have id and it have to match the aria-control', function() {
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(
+          context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
+        ).toBe(context.clarityElement.querySelector('div.column-switch').attributes.id.value);
       });
 
       it('toggle switch close button should have aria-label for close', function() {

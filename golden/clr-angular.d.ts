@@ -336,6 +336,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 
 export declare class ClrDatagridColumnToggle {
     anchorPoint: Point;
+    columnSwitchId: string;
     commonStrings: ClrCommonStrings;
     customToggleButton: ClrDatagridColumnToggleButton;
     customToggleTitle: ClrDatagridColumnToggleTitle;
@@ -343,7 +344,7 @@ export declare class ClrDatagridColumnToggle {
     readonly hideableColumnStates: ColumnState[];
     open: boolean;
     popoverPoint: Point;
-    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService);
+    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService, columnSwitchId: string);
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
 }

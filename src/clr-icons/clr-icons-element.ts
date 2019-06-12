@@ -63,6 +63,11 @@ ClarityIconElement.prototype.connectedCallback = function() {
   // So we could check whether the attribute values really changed or not.
   // If not, we don't need to execute the same codes again.
 
+  // We want to hide the custom element from screen readers but allow the svg/img content to still be read inline
+  // Adding role=none allows the screen reader to skip the custom element as if it were a div or span.
+  // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
+  this.setAttribute('role', 'none');
+
   if (this.hasAttribute('size')) {
     const sizeAttrValue = this.getAttribute('size');
 
@@ -125,7 +130,7 @@ ClarityIconElement.prototype.attributeChangedCallback = function(
     this._setIconSize(newValue);
   }
 
-  // Note: the size attribute is irrelavent from the shape template;
+  // Note: the size attribute is irrelevant from the shape template;
   // That's why the size checking placed before detecting changes in shape and title attributes.
   // This means even if the shape is not found, the injected shape will have the user-given size.
 
@@ -173,10 +178,13 @@ ClarityIconElement.prototype.disconnectedCallback = function() {
 
 ClarityIconElement.prototype._setAriaLabelledBy = function() {
   const existingAriaLabelledBy: string = this.getAttribute('aria-labelledby');
+  const svgElement: SVGElement = this.querySelector('svg');
+  const elementToSet = svgElement ? svgElement : this;
+
   if (!existingAriaLabelledBy) {
-    this.setAttribute('aria-labelledby', this.clrIconUniqId);
+    elementToSet.setAttribute('aria-labelledby', this.clrIconUniqId);
   } else if (existingAriaLabelledBy && existingAriaLabelledBy.indexOf(this.clrIconUniqId) < 0) {
-    this.setAttribute('aria-labelledby', existingAriaLabelledBy + ' ' + this.clrIconUniqId);
+    elementToSet.setAttribute('aria-labelledby', existingAriaLabelledBy + ' ' + this.clrIconUniqId);
   }
 };
 

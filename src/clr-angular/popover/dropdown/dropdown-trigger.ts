@@ -19,7 +19,7 @@ import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service
     '[class.expandable]': '!isRootLevelToggle',
     '[class.active]': 'active',
     '[attr.aria-haspopup]': '"menu"',
-    '[attr.aria-expanded]': 'ifOpenService.open',
+    '[attr.aria-expanded]': 'active',
   },
 })
 export class ClrDropdownTrigger {

@@ -259,6 +259,12 @@ export default function(): void {
           expect(myAriaControls).toBe(stepNavItemId, 'aria-controls should contain id');
         });
 
+        it('should add disabled attribute when isDisabled return true', () => {
+          fakeOutPage.disabled = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.querySelector('button.clr-wizard-stepnav-link').hasAttribute('disabled')).toBeTruthy();
+        });
+
         it('should have role of tab', () => {
           let myRole: string;
 

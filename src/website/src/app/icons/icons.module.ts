@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,6 +17,7 @@ import { IconsSetsComponent } from './icons-sets/icons-sets.component';
 import { FragmentLinkDirective } from './utils/fragment-link.directive';
 import { FragmentContentComponent } from './utils/fragment-content.component';
 import { IconDetailCardComponent } from './icons-sets/icon-detail-card/icon-detail-card.component';
+import { IconsA11yComponent } from './icons-a11y/icons-a11y.component';
 
 @NgModule({
   imports: [ROUTING, CommonModule, ClarityModule, UtilsModule, FormsModule],
@@ -26,6 +27,7 @@ import { IconDetailCardComponent } from './icons-sets/icon-detail-card/icon-deta
     IconsHowToUseComponent,
     IconsApiComponent,
     IconsSetsComponent,
+    IconsA11yComponent,
     FragmentLinkDirective,
     FragmentContentComponent,
     IconDetailCardComponent,

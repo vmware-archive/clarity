@@ -32,4 +32,12 @@ export class CommonStringsService implements ClrCommonStrings {
   danger = 'Erreur';
   rowActions = 'Actions disponibles';
   pickColumns = 'Modifier les colonnes';
+  showColumns = 'Afficher les colonnes';
+  sortColumn = 'Colonne de tri';
+  firstPage = 'Première page';
+  lastPage = 'Dernière page';
+  nextPage = 'Page suivante';
+  previousPage = 'Page précédente';
+  currentPage = 'Page actuelle';
+  totalPages = 'Pages totales';
 }

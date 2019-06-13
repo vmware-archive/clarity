@@ -105,7 +105,6 @@
     height: $clr-header-height;
 
     .nav-text {
-      padding: 0 $clr-header-nav-text-horizontal-padding;
       font-weight: 500;
     }
 
@@ -117,21 +116,14 @@
     .nav-link {
       position: relative;
       display: inline-block;
+      text-align: center;
+      padding: $clr-header-nav-text-vertical-padding $clr-header-nav-text-horizontal-padding;
       @include remove-text-decoration();
       @include header-nav-appearance();
 
       .fa, /* TODO: deprecated. Remove support for font awesome*/
-      .nav-icon,
-      .nav-text,
-      &.nav-icon,
-      &.nav-text {
-        line-height: $clr-header-height;
-      }
-
-      .fa, /* TODO: deprecated. Remove support for font awesome*/
       .nav-icon {
         font-size: $clr-nav-icon-size;
-        text-align: center;
       }
 
       clr-icon {
@@ -166,13 +158,6 @@
 
       &.active {
         background: rgba($clr-color-neutral-0, 0.15);
-        opacity: 1;
-      }
-
-      &.active.nav-icon,
-      &.active.nav-text,
-      &.active .nav-icon,
-      &.active .nav-text {
         opacity: 1;
       }
 
@@ -335,6 +320,7 @@
 
       input {
         line-height: 1rem;
+        margin: $clr-header-nav-text-vertical-padding 0;
       }
     }
 

@@ -240,6 +240,7 @@
               "src/website/src/favicon.ico",
               "src/website/src/manifest.json",
               "src/website/src/sitemap.xml",
+              "src/website/src/robots.txt",
               {
                 "glob": "versions.json",
                 "input": "src/website/src/settings/",

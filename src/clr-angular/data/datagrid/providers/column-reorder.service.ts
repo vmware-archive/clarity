@@ -10,6 +10,11 @@ import { DatagridColumnChanges } from '../enums/column-changes.enum';
 
 let nbColumnsGroup = 0;
 
+export interface ReorderRequest {
+  sourceIndex: number;
+  targetIndex: number;
+}
+
 @Injectable()
 export class ColumnReorderService {
   // the common group id that will be shared across
@@ -20,54 +25,8 @@ export class ColumnReorderService {
     this._columnsGroupId = 'dg-column-group-' + nbColumnsGroup++;
   }
 
-  private reorderQueue: number[] = [];
+  private _reorderRequested: Subject<ReorderRequest> = new Subject<ReorderRequest>();
 
-  private _reorderRequested: Subject<number[]> = new Subject<number[]>();
-
-  private _reorderCompleted: Subject<void> = new Subject<void>();
-
-  private processReorderRequest(draggedFrom: number, draggedTo: number): void {
-    // Also, the method queues all order change spec. Why do we queue each order's change spec?
-    // Because we cannot order one by one as we would lose the original order and mess up the reordering process.
-    // Before changing any column's order, we should first determine how each column's order should change first
-    // and then finally emit reorder specs array at once. The ClrDatagrid component subscribes to reorder specs event
-    // and applies the reorder specs to its columns.
-
-    this.reorderQueue = [];
-    if (draggedTo > draggedFrom) {
-      // Dragged to the right so each in-between columns should decrement their flex orders
-      for (let i = draggedFrom + 1; i <= draggedTo; i++) {
-        this.reorderQueue[i] = i - 1;
-      }
-    } else if (draggedTo < draggedFrom) {
-      // Dragged to the left so each in-between columns should decrement their flex orders
-      for (let i = draggedFrom - 1; i >= draggedTo; i--) {
-        this.reorderQueue[i] = i + 1;
-      }
-    }
-    this.reorderQueue[draggedFrom] = draggedTo;
-    // After queueing all required specs, emit what kind of reorder is requested
-    if (this.reorderQueue.length > 0) {
-      this._reorderRequested.next(this.reorderQueue);
-    }
-  }
-
-  private hasDiffWith(newOrders: number[]): boolean {
-    if (!this.orders) {
-      return true;
-    }
-    if (!newOrders) {
-      return false;
-    }
-    if (this.orders.length !== newOrders.length) {
-      return true;
-    }
-    return newOrders.filter((newOrder, index) => newOrder !== this.orders[index]).length > 0;
-  }
-
-  // ClrDatagrid updates this array of order values after re-ordering happens.
-  // Then, rows will change their cell position according to its order values in this array.
-  // So when re-ordering happens, we broadcast through "reorderCompleted" subject to notify rows.
   orders: number[];
 
   containerRef: ViewContainerRef;
@@ -76,24 +35,19 @@ export class ColumnReorderService {
     return this._columnsGroupId;
   }
 
-  get reorderRequested(): Observable<number[]> {
+  get reorderRequested(): Observable<ReorderRequest> {
     return this._reorderRequested.asObservable();
   }
 
-  get reorderCompleted(): Observable<void> {
-    return this._reorderCompleted.asObservable();
-  }
-
   // The following method is called by column ClrDatagridColumn when one column is dropped on another.
-  public reorderViews(draggedView: ViewRef, targetView: ViewRef): void {
-    const draggedFrom = this.containerRef.indexOf(draggedView);
-    const draggedTo = this.containerRef.indexOf(targetView);
-    this.processReorderRequest(draggedFrom, draggedTo);
+  reorderViews(sourceView: ViewRef, targetView: ViewRef): void {
+    const sourceIndex = this.containerRef.indexOf(sourceView);
+    const targetIndex = this.containerRef.indexOf(targetView);
+    this._reorderRequested.next({ sourceIndex, targetIndex });
   }
 
-  // The following method will be called by ClrDatagrid, after it finishes applying order changes, to broadcast to
-  // all cells how column orders are updated and then cells will start applying changed orders.
-  public updateOrders(orders: number[], onReordering = false): void {
+  // The following method will be called by ClrDatagrid after it finishes applying order changes
+  updateOrders(orders: number[]): void {
     if (orders && orders.length > 0 && this.hasDiffWith(orders)) {
       // update with new orders
       this.orders = orders;
@@ -103,20 +57,30 @@ export class ColumnReorderService {
         this.columnsService.emitStateChangeAt(index, { changes: [DatagridColumnChanges.ORDER], order: order });
       });
 
-      // notify whatever that needs to respond to reorder changes
-      if (onReordering) {
-        this._reorderCompleted.next();
-      }
-
       this.columnsService.requestFirstVisibleChangeCheck();
       this.columnsService.requestLastVisibleChangeCheck();
     }
   }
 
-  public orderAt(index: number): number {
+  orderAt(index: number): number {
     if (this.orders && typeof this.orders[index] === 'number') {
       return this.orders[index];
     }
     return -1;
+  }
+
+  private hasDiffWith(newOrders: number[]): boolean {
+    // Initially this.orders is undefined
+    // so there will be definitely diff as long as newOrders has items
+    if (!this.orders && newOrders && newOrders.length > 0) {
+      return true;
+    }
+    if (!newOrders) {
+      return false;
+    }
+    if (this.orders.length !== newOrders.length) {
+      return true;
+    }
+    return newOrders.some((newOrder, index) => newOrder !== this.orders[index]);
   }
 }

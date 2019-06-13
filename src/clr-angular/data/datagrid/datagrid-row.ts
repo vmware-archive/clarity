@@ -12,6 +12,7 @@ import {
   EventEmitter,
   Injector,
   Input,
+  OnDestroy,
   Output,
   QueryList,
   Renderer2,
@@ -55,7 +56,7 @@ let nbRow: number = 0;
     { provide: LoadingListener, useExisting: DatagridIfExpandService },
   ],
 })
-export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
+export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAccessor {
   public id: string;
   public radioId: string;
   public checkboxId: string;
@@ -171,7 +172,11 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
 
   ngAfterContentInit() {
     this.dgCells.changes.subscribe(() => {
-      this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
+      this.dgCells.forEach((cell, index) => {
+        if (this._scrollableCells.indexOf(cell._view) === -1) {
+          this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
+        }
+      });
     });
   }
 
@@ -179,9 +184,9 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
     this.subscriptions.push(
       this.displayMode.view.subscribe(viewChange => {
         // Listen for view changes and move cells around depending on the current displayType
-        // remove cell views from display view
+        // detach cell views from display view
         this.viewManager.detachAllViews(this._scrollableCells);
-        // remove cell views from calculated view
+        // detach cell views from calculated view
         this.viewManager.detachAllViews(this._calculatedCells);
         if (viewChange === DatagridDisplayMode.CALCULATE) {
           this.displayCells = false;
@@ -193,14 +198,11 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
       }),
       this.expand.animate.subscribe(() => {
         this.expandAnimationTrigger = !this.expandAnimationTrigger;
-      })
-    );
-
-    // A subscription that listens for view reordering
-    this.subscriptions.push(
-      this.columnReorderService.reorderCompleted.subscribe(() => {
-        this.viewManager.detachAllViews(this._scrollableCells);
-        this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
+      }),
+      // A subscription that listens for view reordering
+      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+        const sourceView = this._scrollableCells.get(reorderRequest.sourceIndex);
+        this._scrollableCells.move(sourceView, reorderRequest.targetIndex);
       })
     );
   }
@@ -209,6 +211,9 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
 
   ngOnDestroy() {
     this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+    if (this.wrappedInjector && this._view) {
+      this._view.destroy();
+    }
   }
 
   public displayCells = false;
@@ -233,7 +238,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, ViewAccessor {
   private assignRawOrders(): ClrDatagridCell[] {
     return this.dgCells.map((cell, index) => {
       if (this.columnReorderService.orderAt(index) > -1) {
-        cell.order = this.columnReorderService.orders[index];
+        cell.order = this.columnReorderService.orderAt(index);
       } else {
         cell.order = index;
       }

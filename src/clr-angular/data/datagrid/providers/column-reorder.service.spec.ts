@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ColumnReorderService } from './column-reorder.service';
-import { MOCK_COLUMN_SERVICE_PROVIDER } from './columns.service.mock';
+import { ColumnReorderService, ReorderRequest } from './column-reorder.service';
+import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './columns.service.mock';
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef, ViewRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
+import { ColumnsService } from './columns.service';
 
 @Component({
   template: `
@@ -18,7 +19,11 @@ import { Subscription } from 'rxjs';
   `,
 })
 class TestComponent implements OnInit, OnDestroy {
-  constructor(public vcr: ViewContainerRef, private columnReorderService: ColumnReorderService) {
+  constructor(
+    public vcr: ViewContainerRef,
+    private columnReorderService: ColumnReorderService,
+    private columnsService: ColumnsService
+  ) {
     columnReorderService.containerRef = vcr;
   }
 
@@ -35,9 +40,9 @@ class TestComponent implements OnInit, OnDestroy {
   view2: ViewRef;
   view3: ViewRef;
 
-  reorderQueue: number[];
-
-  reordered: boolean = false;
+  reorderRequest: ReorderRequest;
+  firstVisibleChecked = false;
+  lastVisibleChecked = false;
 
   ngOnInit() {
     this.view1 = this.template1.createEmbeddedView(null);
@@ -49,8 +54,15 @@ class TestComponent implements OnInit, OnDestroy {
     this.vcr.insert(this.view3);
 
     this.subscriptions.push(
-      this.columnReorderService.reorderRequested.subscribe(reorderQueue => (this.reorderQueue = reorderQueue)),
-      this.columnReorderService.reorderCompleted.subscribe(reorderQueue => (this.reordered = true))
+      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+        this.reorderRequest = reorderRequest;
+      }),
+      this.columnsService.checkFirstVisible.subscribe(() => {
+        this.firstVisibleChecked = true;
+      }),
+      this.columnsService.checkLastVisible.subscribe(() => {
+        this.lastVisibleChecked = true;
+      })
     );
   }
 
@@ -65,6 +77,7 @@ export default function(): void {
 
     let testComponent: TestComponent;
     let columnReorderService: ColumnReorderService;
+    let columnsService: MockColumnsService;
 
     beforeEach(function() {
       TestBed.configureTestingModule({
@@ -74,6 +87,9 @@ export default function(): void {
       fixture = TestBed.createComponent(TestComponent);
       fixture.detectChanges();
       columnReorderService = TestBed.get(ColumnReorderService);
+      columnsService = <MockColumnsService>TestBed.get(ColumnsService);
+      columnsService.mockColumns(3);
+
       testComponent = fixture.componentInstance;
     });
 
@@ -90,21 +106,35 @@ export default function(): void {
     });
 
     it('emits reorder request data when reorderViews method gets called', function() {
-      expect(testComponent.reorderQueue).toBeUndefined();
+      expect(testComponent.reorderRequest).toBeUndefined();
       columnReorderService.reorderViews(testComponent.view1, testComponent.view2);
-      expect(testComponent.reorderQueue).not.toBeUndefined();
+      expect(testComponent.reorderRequest).not.toBeUndefined();
     });
 
-    it('emits order change completion when updateOrders method gets called on reordering', function() {
-      expect(testComponent.reordered).toBeFalsy();
-      columnReorderService.updateOrders([1, 2, 3], true);
-      expect(testComponent.reordered).toBeTruthy();
-    });
-
-    it('updates orders array when updateOrders method gets called', function() {
+    it('updates orders property value through updateOrders method', function() {
       expect(columnReorderService.orders).toBeUndefined();
-      columnReorderService.updateOrders([3, 1, 0, 2]);
-      expect(columnReorderService.orders).toEqual([3, 1, 0, 2]);
+      columnReorderService.updateOrders([1, 0, 2]);
+      expect(columnReorderService.orders).toEqual([1, 0, 2]);
+    });
+
+    it('updates column states on orders', function() {
+      expect(columnsService.columns[0].value.order).toBeUndefined();
+      expect(columnsService.columns[1].value.order).toBeUndefined();
+      expect(columnsService.columns[2].value.order).toBeUndefined();
+
+      columnReorderService.updateOrders([1, 0, 2]);
+
+      expect(columnsService.columns[0].value.order).toBe(1);
+      expect(columnsService.columns[1].value.order).toBe(0);
+      expect(columnsService.columns[2].value.order).toBe(2);
+    });
+
+    it('requests first and last visible columns checks after updating orders', function() {
+      expect(testComponent.firstVisibleChecked).toBeFalsy();
+      expect(testComponent.lastVisibleChecked).toBeFalsy();
+      columnReorderService.updateOrders([1, 0, 2]);
+      expect(testComponent.firstVisibleChecked).toBeTruthy();
+      expect(testComponent.lastVisibleChecked).toBeTruthy();
     });
 
     it('returns new order at index', function() {
@@ -118,32 +148,32 @@ export default function(): void {
     describe('should emit proper reorder request data on moving:', () => {
       it(`1st view to 2nd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view1, testComponent.view2);
-        expect(testComponent.reorderQueue).toEqual([1, 0]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 0, targetIndex: 1 });
       });
 
       it(`2nd view to 1st views's place`, function() {
         columnReorderService.reorderViews(testComponent.view2, testComponent.view1);
-        expect(testComponent.reorderQueue).toEqual([1, 0]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 1, targetIndex: 0 });
       });
 
       it(`2nd view to 3rd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view2, testComponent.view3);
-        expect(testComponent.reorderQueue).toEqual([, 2, 1]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 1, targetIndex: 2 });
       });
 
       it(`3rd view to 2nd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view3, testComponent.view2);
-        expect(testComponent.reorderQueue).toEqual([, 2, 1]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 2, targetIndex: 1 });
       });
 
       it(`1st view to 3rd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view1, testComponent.view3);
-        expect(testComponent.reorderQueue).toEqual([2, 0, 1]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 0, targetIndex: 2 });
       });
 
       it(`3rd view to 1st view's place`, function() {
         columnReorderService.reorderViews(testComponent.view3, testComponent.view1);
-        expect(testComponent.reorderQueue).toEqual([1, 2, 0]);
+        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 2, targetIndex: 0 });
       });
     });
   });

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild, ViewRef } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
@@ -18,8 +18,8 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 export class WrappedCell implements DynamicWrapper, AfterViewInit {
   _dynamic = false;
   @ViewChild('cellPortal', { static: false })
-  templateRef: TemplateRef<void>;
-  cellView: EmbeddedViewRef<void>; // the cells projected view
+  templateRef: TemplateRef<null>;
+  cellView: ViewRef; // the cells projected view
 
   ngAfterViewInit() {
     this.cellView = this.templateRef.createEmbeddedView(null);

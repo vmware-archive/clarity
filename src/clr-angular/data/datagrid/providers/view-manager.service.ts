@@ -17,7 +17,7 @@ export interface ViewAccessor {
 export class ViewManagerService {
   detachAllViews(containerRef: ViewContainerRef): void {
     for (let i = containerRef.length; i > 0; i--) {
-      containerRef.detach().detectChanges();
+      containerRef.detach();
     }
   }
 

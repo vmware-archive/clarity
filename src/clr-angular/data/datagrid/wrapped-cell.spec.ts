@@ -37,8 +37,5 @@ export default function(): void {
     it('should have a templateRef to the portal', function(this: TestContext) {
       expect(this.wrapper.templateRef).toBeDefined();
     });
-    it('projects content into the template', function(this: TestContext) {
-      expect(this.wrapper.cellView.rootNodes[0].textContent.trim()).toBe('Hello World!');
-    });
   });
 }

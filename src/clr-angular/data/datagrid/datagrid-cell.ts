@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChildren, Injector, OnInit, QueryList, ViewContainerRef } from '@angular/core';
+import { Component, ContentChildren, Injector, OnDestroy, OnInit, QueryList, ViewContainerRef } from '@angular/core';
 
 import { ClrSignpost } from '../../popover/signpost/signpost';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
@@ -21,7 +21,7 @@ import { ViewAccessor } from './providers/view-manager.service';
     role: 'gridcell',
   },
 })
-export class ClrDatagridCell implements ViewAccessor, OnInit {
+export class ClrDatagridCell implements ViewAccessor, OnInit, OnDestroy {
   /*********
    * @property signpost
    *
@@ -44,5 +44,11 @@ export class ClrDatagridCell implements ViewAccessor, OnInit {
 
   public get _view() {
     return this.wrappedInjector.get(WrappedCell, this.vcr).cellView;
+  }
+
+  ngOnDestroy() {
+    if (this.wrappedInjector && this._view) {
+      this._view.destroy();
+    }
   }
 }

@@ -236,13 +236,13 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     // A subscription that listens for displayMode changes on the datagrid
     this._subscriptions.push(
       this.displayMode.view.subscribe(viewChange => {
-        // Remove any projected columns from the projectedDisplayColumns container
+        // Detach any projected columns from the projectedDisplayColumns container
         this.viewManager.detachAllViews(this._projectedDisplayColumns);
-        // Remove any projected columns from the projectedCalculationColumns container
+        // Detach any projected columns from the projectedCalculationColumns container
         this.viewManager.detachAllViews(this._projectedCalculationColumns);
-        // Remove any projected rows from the calculationRows container
+        // Detach any projected rows from the calculationRows container
         this.viewManager.detachAllViews(this._calculationRows);
-        // Remove any projected rows from the displayedRows container
+        // Detach any projected rows from the displayedRows container
         this.viewManager.detachAllViews(this._displayedRows);
 
         if (viewChange === DatagridDisplayMode.DISPLAY) {
@@ -258,20 +258,14 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
           this.columnReorderService.updateOrders(this.columns.map(column => column.order));
           this.viewManager.insertAllViews(this._calculationRows, this.rows.toArray());
         }
-      })
-    );
-
-    // A subscription that listens for view reordering
-    this._subscriptions.push(
-      this.columnReorderService.reorderRequested.subscribe(orderChanges => {
-        // apply requested reorder data
-        this.columns
-          .filter(column => typeof orderChanges[column.order] === 'number')
-          .forEach(column => (column.order = orderChanges[column.order]));
-        // detach column views from the view container
-        this.viewManager.detachAllViews(this._projectedDisplayColumns);
-        this.viewManager.insertAllViews(this._projectedDisplayColumns, this.assignRawOrders(), true);
-        this.columnReorderService.updateOrders(this.columns.map(column => column.order), true);
+      }),
+      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+        const sourceView = this._projectedDisplayColumns.get(reorderRequest.sourceIndex);
+        this._projectedDisplayColumns.move(sourceView, reorderRequest.targetIndex);
+        // update order value of each columns
+        this.columns.forEach(column => (column.order = this._projectedDisplayColumns.indexOf(column._view)));
+        // persist updated column orders to the service so cells will have corresponding fallback order
+        this.columnReorderService.updateOrders(this.columns.map(column => column.order));
       })
     );
   }

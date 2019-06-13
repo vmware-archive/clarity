@@ -7,7 +7,6 @@ import {
   Component,
   ContentChild,
   EventEmitter,
-  Inject,
   Injector,
   Input,
   OnDestroy,
@@ -16,7 +15,7 @@ import {
   ViewContainerRef,
   ViewRef,
 } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
@@ -33,8 +32,6 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
-import { COLUMN_STATE } from './providers/column-state.provider';
-import { ColumnState } from './interfaces/column-state.interface';
 import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { ColumnReorderService } from './providers/column-reorder.service';
 import { ViewAccessor } from './providers/view-manager.service';
@@ -107,7 +104,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     filters: FiltersProvider<T>,
     private vcr: ViewContainerRef,
     public commonStrings: ClrCommonStrings,
-    @Inject(COLUMN_STATE) private columnState: BehaviorSubject<ColumnState>,
     private columnReorderService: ColumnReorderService
   ) {
     super(filters);
@@ -133,6 +129,9 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   private subscriptions: Subscription[] = [];
 
   ngOnDestroy() {
+    if (this.wrappedInjector && this._view) {
+      this._view.destroy();
+    }
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 

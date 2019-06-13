@@ -96,9 +96,10 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
         this.viewManager.detachAllViews(this._detailCells);
         this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
       }),
-      this.columnReorderService.reorderCompleted.subscribe(() => {
-        this.viewManager.detachAllViews(this._detailCells);
-        this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
+      // A subscription that listens for view reordering
+      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+        const sourceView = this._detailCells.get(reorderRequest.sourceIndex);
+        this._detailCells.move(sourceView, reorderRequest.targetIndex);
       })
     );
   }

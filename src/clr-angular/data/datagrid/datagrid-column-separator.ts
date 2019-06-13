@@ -4,12 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { DOCUMENT } from '@angular/common';
-import { Component, ElementRef, Inject, Input, Renderer2, SimpleChanges } from '@angular/core';
+import { Component, Inject, Renderer2 } from '@angular/core';
 
 import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { ColumnResizerService } from './providers/column-resizer.service';
 import { TableSizeService } from './providers/table-size.service';
-import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-dg-column-separator',

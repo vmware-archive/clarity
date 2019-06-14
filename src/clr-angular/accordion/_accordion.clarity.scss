@@ -54,6 +54,7 @@
   }
 
   .clr-accordion-header-button {
+    flex: 1 1 0%;
     width: 100%;
     border: 0;
     padding: $clr-accordion-padding;
@@ -63,7 +64,7 @@
     color: $clr-accordion-text-color;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      max-width: 280px;
+      min-width: 280px;
     }
   }
 

@@ -270,13 +270,13 @@
                     <div class="clrweb-DoxMedia">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img">
-                                <button class="btn btn-primary btn-icon" style="margin-right: 12px">
+                                <button class="btn btn-primary btn-icon" aria-label="add" style="margin-right: 12px">
                                     <clr-icon shape="plus"></clr-icon>
                                 </button>
-                                <button class="btn btn-icon" style="margin-right: 12px">
+                                <button class="btn btn-icon" aria-label="favorite" style="margin-right: 12px">
                                     <clr-icon shape="star"></clr-icon>
                                 </button>
-                                <button class="btn btn-link btn-icon">
+                                <button class="btn btn-link btn-icon" aria-label="download">
                                     <clr-icon shape="download"></clr-icon>
                                 </button>
                             </div>
@@ -297,13 +297,13 @@
                     <div class="clrweb-DoxMedia is-dont-block">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img">
-                                <button class="btn btn-primary btn-sm btn-icon" style="margin-right: 12px">
+                                <button class="btn btn-primary btn-sm btn-icon" aria-label="add" style="margin-right: 12px">
                                     <clr-icon shape="plus"></clr-icon>
                                 </button>
-                                <button class="btn btn-sm btn-icon" style="margin-right: 12px">
+                                <button class="btn btn-sm btn-icon" aria-label="favorite" style="margin-right: 12px">
                                     <clr-icon shape="star"></clr-icon>
                                 </button>
-                                <button class="btn btn-sm btn-link btn-icon">
+                                <button class="btn btn-sm btn-link btn-icon" aria-label="download">
                                     <clr-icon shape="download"></clr-icon>
                                 </button>
                             </div>
@@ -438,7 +438,8 @@
             <h3>Icon Buttons</h3>
 
             <p>
-                Use the <code class="clr-code">.btn-icon</code> class to create Icon Buttons
+                Use the <code class="clr-code">.btn-icon</code> class to create Icon Buttons.
+                Make sure to set an appropriate aria-label that describes the action for screen readers.
             </p>
 
             <clr-icon-buttons-demo class="clrweb-button-demo"></clr-icon-buttons-demo>

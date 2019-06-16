@@ -16,7 +16,6 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DetailService } from './providers/detail.service';
-import { skip } from 'rxjs/operators';
 
 @Directive({
   selector: '[clrIfDetail]',

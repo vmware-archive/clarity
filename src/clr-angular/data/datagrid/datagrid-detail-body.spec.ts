@@ -6,7 +6,6 @@
 import { Component } from '@angular/core';
 
 import { TestContext } from './helpers.spec';
-import { DetailService } from './providers/detail.service';
 import { ClrDatagridDetailBody } from './datagrid-detail-body';
 
 const content = 'Detail Pane';
@@ -15,11 +14,9 @@ export default function(): void {
   describe('ClrDatagridDetailBody component', function() {
     describe('View', function() {
       let context: TestContext<ClrDatagridDetailBody, FullTest>;
-      let detailService: DetailService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridDetailBody, FullTest, [DetailService]);
-        detailService = context.getClarityProvider(DetailService);
+        context = this.create(ClrDatagridDetailBody, FullTest);
         context.detectChanges();
       });
 

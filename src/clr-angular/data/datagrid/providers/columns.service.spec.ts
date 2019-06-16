@@ -12,12 +12,13 @@ export default function(): void {
   describe('ColumnsService provider', function() {
     let provider: ColumnsService;
     let subscription: Subscription;
-    let state: ColumnState;
+    let state: ColumnState = null;
     const col1 = { width: 100 };
     const col2 = { hideable: true };
 
     beforeEach(function() {
       provider = new ColumnsService();
+      state = null;
       provider.columns = [new BehaviorSubject<ColumnState>({ ...col1 }), new BehaviorSubject<ColumnState>({ ...col2 })];
     });
 
@@ -59,6 +60,19 @@ export default function(): void {
       expect(provider.columns[0].value).toEqual({ ...col1, ...diff });
       provider.resetToLastCache();
       expect(provider.columns[0].value).toEqual({ ...col1, changes: ALL_COLUMN_CHANGES });
+    });
+
+    it('does not emit a reset if there is no cache', () => {
+      spyOn(provider.columns[0], 'next');
+      provider.resetToLastCache();
+      expect(provider.columns[0].next).not.toHaveBeenCalled();
+    });
+
+    it('can detect if there is a cache', () => {
+      provider.resetToLastCache();
+      expect(provider.hasCache()).toBeFalse();
+      provider.cache();
+      expect(provider.hasCache()).toBeTrue();
     });
   });
 }

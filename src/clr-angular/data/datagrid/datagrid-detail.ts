@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, Inject, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { DetailService } from './providers/detail.service';
 import { ESC } from '../../utils/key-codes/key-codes';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'clr-dg-detail',
@@ -23,7 +24,11 @@ export class ClrDatagridDetail implements OnDestroy {
   private listener: () => void;
 
   // For some reason was not getting the HostListener to fire in tests...need to investigate
-  constructor(private detailService: DetailService, private renderer: Renderer2) {
+  constructor(
+    private detailService: DetailService,
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
     this.listener = this.renderer.listen('document', 'keydown', event => {
       if (event.keyCode === ESC) {
         this.detailService.close();
@@ -35,6 +40,9 @@ export class ClrDatagridDetail implements OnDestroy {
     if (this.listener) {
       this.listener();
       delete this.listener;
+    }
+    if (isPlatformBrowser(this.platformId)) {
+      document.querySelector<HTMLElement>('.datagrid-detail-caret-button.is-open').focus();
     }
   }
 }

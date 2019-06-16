@@ -15,11 +15,9 @@ export default function(): void {
   describe('ClrDatagridDetailHeader component', function() {
     describe('Typescript API', function() {
       let context: TestContext<ClrDatagridDetailHeader, FullTest>;
-      let detailService: DetailService;
 
       beforeEach(function() {
         context = this.create(ClrDatagridDetailHeader, FullTest, [DetailService]);
-        detailService = context.getClarityProvider(DetailService);
         context.detectChanges();
       });
 

@@ -11,7 +11,7 @@ import { ALL_COLUMN_CHANGES } from '../enums/column-changes.enum';
 @Injectable()
 export class ColumnsService {
   columns: BehaviorSubject<ColumnState>[] = [];
-  private _cache: ColumnState[];
+  private _cache: ColumnState[] = [];
 
   cache() {
     this._cache = this.columns.map(subject => {
@@ -22,20 +22,17 @@ export class ColumnsService {
   }
 
   hasCache() {
-    return !!this._cache;
+    return !!this._cache.length;
   }
 
   resetToLastCache(clear = true) {
-    if (!this._cache) {
-      return;
-    }
     this._cache.forEach((state, index) => {
       // Just emit the exact value from the cache
       this.columns[index].next({ ...state, changes: ALL_COLUMN_CHANGES });
     });
 
     if (clear) {
-      delete this._cache;
+      this._cache = [];
     }
   }
 

@@ -3,7 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { DetailService } from './providers/detail.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
@@ -13,7 +14,9 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     '[class.datagrid-detail-header]': 'true',
   },
   template: `
-    <ng-content></ng-content>
+    <div class="datagrid-detail-header-title" tabindex="0">
+      <ng-content></ng-content>
+    </div>
     <div class="datagrid-detail-pane-close">
       <button type="button" 
               class="btn btn-link" 
@@ -25,5 +28,19 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   `,
 })
 export class ClrDatagridDetailHeader {
-  constructor(public detailService: DetailService, public commonStrings: ClrCommonStrings) {}
+  constructor(
+    public detailService: DetailService,
+    public commonStrings: ClrCommonStrings,
+    @Inject(PLATFORM_ID) private platformId: object,
+    private element: ElementRef
+  ) {}
+
+  ngAfterContentInit() {
+    // Set Timeout is required to move focus properly
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        this.element.nativeElement.querySelector('[tabindex]').focus();
+      });
+    }
+  }
 }

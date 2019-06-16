@@ -919,6 +919,8 @@
    */
   .datagrid-host {
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1.5rem;
     grid-template-areas:
       'datagrid-actions'
       'datagrid'
@@ -1074,13 +1076,16 @@
     font-size: 0.75rem;
     line-height: 1.5rem;
     padding-left: 1rem;
-    padding-right: 3rem;
     margin-top: 0;
+    display: flex;
+    flex-direction: row;
+
+    .datagrid-detail-header-title {
+      flex: 1 1 auto;
+    }
 
     .datagrid-detail-pane-close {
-      position: absolute;
-      top: 0.5rem;
-      right: 0rem;
+      flex: 1 1 4rem;
       padding: 0;
       cursor: pointer;
 

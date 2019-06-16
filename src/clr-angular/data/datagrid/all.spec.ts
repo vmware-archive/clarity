@@ -61,7 +61,7 @@ import DatagridDetailBodySpecs from './datagrid-detail-body.spec';
 import DatagridDetailHeaderSpecs from './datagrid-detail-header.spec';
 import DatagridIfDetailSpecs from './datagrid-if-detail.spec';
 
-fdescribe('Datagrid', function() {
+describe('Datagrid', function() {
   addHelpers();
 
   describe('Providers', function() {

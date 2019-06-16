@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -298,6 +298,43 @@ export default function(): void {
         expect(columnsService.columns[1].value.strictWidth).toBe(0);
       });
     });
+
+    describe('detail pane', function() {
+      let context: TestContext<DatagridMainRenderer<number>, ColumnsWidthTest>;
+      let columnsService: ColumnsService;
+
+      beforeEach(function() {
+        context = this.create(DatagridMainRenderer, DatagridDetailPaneTest);
+        columnsService = context.getClarityProvider(ColumnsService);
+        columnsService.resetToLastCache();
+        spyOn(columnsService, 'resetToLastCache');
+        spyOn(columnsService, 'emitStateChangeAt');
+        context.detectChanges();
+      });
+
+      it('toggles the detail pane open and caches old state', function() {
+        // context.detectChanges();
+        context.clarityDirective.toggleDetailPane(true);
+        context.detectChanges();
+        expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
+        expect(columnsService.emitStateChangeAt).toHaveBeenCalled();
+      });
+
+      it('toggles the detail pane closed', function() {
+        context.clarityDirective.toggleDetailPane(false);
+        expect(columnsService.resetToLastCache).toHaveBeenCalled();
+        expect(columnsService.emitStateChangeAt).not.toHaveBeenCalled();
+      });
+
+      it('toggles the currently active detail item', function() {
+        context.clarityDirective.toggleDetailPane(true);
+        expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
+        expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
+        context.clarityDirective.toggleDetailPane(true);
+        expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
+        expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
+      });
+    });
   });
 }
 
@@ -464,6 +501,43 @@ class ColumnsWidthTest {
     `,
 })
 class DatagridHeightTest {
+  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  pageSize = 5;
+
+  changeList() {
+    if (this.pageSize === 5) {
+      this.pageSize = this.numbers.length; // after 1st click
+    } else {
+      this.pageSize = 5; // after 3rd click
+    }
+  }
+}
+
+@Component({
+  template: `
+        <clr-datagrid>
+            <clr-dg-column>Number</clr-dg-column>
+            <clr-dg-column>Number</clr-dg-column>
+            <clr-dg-row *clrDgItems="let number of numbers">
+                <clr-dg-cell>{{number}}</clr-dg-cell>
+                <clr-dg-cell>{{number}}</clr-dg-cell>
+            </clr-dg-row>
+          
+          <clr-dg-detail *clrIfDetail="let detail">
+            {{detail}}
+          </clr-dg-detail>
+
+            <clr-dg-footer>
+                <button
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="changeList()">Change
+                </button>
+                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
+            </clr-dg-footer>
+        </clr-datagrid>
+    `,
+})
+class DatagridDetailPaneTest {
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   pageSize = 5;
 

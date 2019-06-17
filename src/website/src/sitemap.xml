@@ -301,6 +301,10 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://clarity.design/news/2.0.1</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://clarity.design/news/2.0.0</loc>
         <changefreq>daily</changefreq>
     </url>
@@ -318,6 +322,10 @@
     </url>
     <url>
         <loc>https://clarity.design/news/2.0.0-beta.1</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/1.1.4</loc>
         <changefreq>daily</changefreq>
     </url>
     <url>

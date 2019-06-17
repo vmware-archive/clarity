@@ -1,6 +1,11 @@
 {
-  "current": "2.0.0",
+  "current": "2.0.1",
   "all": {
+    "2.0.1": {
+      "date": "June 17, 2019",
+      "sketch": "2.0.0",
+      "commit": "aeba8551bc0d1e39912528686e12577e92f42a96"
+    },
     "2.0.0": {
       "date": "May 23, 2019",
       "sketch": "2.0.0",
@@ -25,6 +30,11 @@
       "date": "Mar 6, 2019",
       "sketch": "2.0.0",
       "commit": ""
+    },
+    "1.1.4": {
+      "date": "June 17, 2019",
+      "sketch": "1.0.0",
+      "commit": "79ab7f018120d5b96be8cc28aea33c7651ef682e"
     },
     "1.1.3": {
       "date": "Apr 22, 2019",

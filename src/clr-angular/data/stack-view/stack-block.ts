@@ -1,9 +1,8 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
@@ -29,10 +28,11 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
     <dd class="stack-block-content">
       <ng-content></ng-content>
     </dd>
-    <!-- FIXME: remove this string concatenation when boolean states are supported -->
-    <div [@collapse]="''+!expanded" class="stack-children" >
-      <ng-content select="clr-stack-block"></ng-content>
-    </div>
+    <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children">
+      <div [style.height]="expanded ? 'auto' : 0">
+        <ng-content select="clr-stack-block"></ng-content>
+      </div>
+    </clr-expandable-animation>
   `,
   // Custom elements are inline by default
   styles: [
@@ -42,13 +42,6 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   ],
   // Make sure the host has the proper class for styling purposes
   host: { '[class.stack-block]': 'true' },
-  animations: [
-    trigger('collapse', [
-      state('true', style({ height: 0, display: 'none' })),
-      transition('true => false', [animate('0.2s ease-in-out', style({ height: '*', display: '*' }))]),
-      transition('false => true', [style({ height: '*', display: '*' }), animate('0.2s ease-in-out')]),
-    ]),
-  ],
 })
 export class ClrStackBlock implements OnInit {
   @HostBinding('class.stack-block-expanded')

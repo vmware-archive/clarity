@@ -30,6 +30,7 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
       ]),
     ]),
   ],
+  providers: [DomAdapter],
 })
 export class ClrExpandableAnimation {
   @Input() clrExpandTrigger: any;

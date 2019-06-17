@@ -29,7 +29,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
       <ng-content></ng-content>
     </dd>
     <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children">
-      <div class="stack-children" [style.height]="expanded ? 'auto' : 0">
+      <div [style.height]="expanded ? 'auto' : 0">
         <ng-content select="clr-stack-block"></ng-content>
       </div>
     </clr-expandable-animation>

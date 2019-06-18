@@ -98,8 +98,8 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
       }),
       // A subscription that listens for view reordering
       this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-        const sourceView = this._detailCells.get(reorderRequest.sourceIndex);
-        this._detailCells.move(sourceView, reorderRequest.targetIndex);
+        const sourceView = this._detailCells.get(reorderRequest.sourceOrder);
+        this._detailCells.move(sourceView, reorderRequest.targetOrder);
       })
     );
   }

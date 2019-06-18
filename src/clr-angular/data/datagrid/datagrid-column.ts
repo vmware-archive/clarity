@@ -141,20 +141,41 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   inDragMode: boolean = false;
 
-  @Output('clrDgColumnOrderChange') orderChange = new EventEmitter<number>(true);
+  @Output('clrDgColumnOrderChange') orderChange = new EventEmitter<number>();
 
   private _order: number;
+  private _userDefinedOrder: number;
 
   get order(): number {
     return this._order;
   }
 
-  @Input('clrDgColumnOrder')
+  get userDefinedOrder(): number {
+    return this._userDefinedOrder;
+  }
+
   set order(value: number) {
     const oldOrder = this._order;
     this._order = value;
     if (typeof oldOrder === 'number' && oldOrder !== this._order) {
       this.orderChange.emit(this._order);
+    }
+  }
+
+  @Input('clrDgColumnOrder')
+  set userDefinedOrder(value: number) {
+    if (typeof value === 'number') {
+      this._userDefinedOrder = value;
+      if (typeof this._order === 'number' && value !== this._order) {
+        // TODO: move these block of code the service
+        // const maxValue = this.columnReorderService.orders.length - 1;
+        // if (value > maxValue) {
+        //   value = maxValue;
+        // } else if (value < 0) {
+        //   value = 0;
+        // }
+        this.columnReorderService.requestReorder(this._order, value);
+      }
     }
   }
 

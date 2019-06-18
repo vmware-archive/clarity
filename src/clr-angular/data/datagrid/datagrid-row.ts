@@ -171,13 +171,16 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
   @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
 
   ngAfterContentInit() {
-    this.dgCells.changes.subscribe(() => {
-      this.dgCells.forEach((cell, index) => {
-        if (this._scrollableCells.indexOf(cell._view) === -1) {
-          this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
-        }
-      });
-    });
+    this.subscriptions.push(
+      this.dgCells.changes.subscribe(() => {
+        this.dgCells.forEach((cell, index) => {
+          if (this._scrollableCells.indexOf(cell._view) === -1) {
+            this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
+          }
+        });
+        this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
+      })
+    );
   }
 
   ngAfterViewInit() {
@@ -194,6 +197,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
         } else {
           this.displayCells = true;
           this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
+          this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
         }
       }),
       this.expand.animate.subscribe(() => {
@@ -201,8 +205,9 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
       }),
       // A subscription that listens for view reordering
       this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-        const sourceView = this._scrollableCells.get(reorderRequest.sourceIndex);
-        this._scrollableCells.move(sourceView, reorderRequest.targetIndex);
+        const sourceView = this._scrollableCells.get(reorderRequest.sourceOrder);
+        this._scrollableCells.move(sourceView, reorderRequest.targetOrder);
+        this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
       })
     );
   }

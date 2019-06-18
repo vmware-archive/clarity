@@ -11,8 +11,8 @@ import { DatagridColumnChanges } from '../enums/column-changes.enum';
 let nbColumnsGroup = 0;
 
 export interface ReorderRequest {
-  sourceIndex: number;
-  targetIndex: number;
+  sourceOrder: number;
+  targetOrder: number;
 }
 
 @Injectable()
@@ -41,9 +41,13 @@ export class ColumnReorderService {
 
   // The following method is called by column ClrDatagridColumn when one column is dropped on another.
   reorderViews(sourceView: ViewRef, targetView: ViewRef): void {
-    const sourceIndex = this.containerRef.indexOf(sourceView);
-    const targetIndex = this.containerRef.indexOf(targetView);
-    this._reorderRequested.next({ sourceIndex, targetIndex });
+    const sourceOrder = this.containerRef.indexOf(sourceView);
+    const targetOrder = this.containerRef.indexOf(targetView);
+    this.requestReorder(sourceOrder, targetOrder);
+  }
+
+  requestReorder(sourceOrder: number, targetOrder: number) {
+    this._reorderRequested.next({ sourceOrder, targetOrder });
   }
 
   // The following method will be called by ClrDatagrid after it finishes applying order changes

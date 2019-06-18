@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from '@angular/core';
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
@@ -21,9 +21,8 @@ import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { ColumnState } from './interfaces/column-state.interface';
 import { ColumnReorderService } from './providers/column-reorder.service';
-import { MockColumnReorderService } from './providers/column-reorder.mock';
+import { ColumnsService } from './providers/columns.service';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -31,7 +30,6 @@ export default function(): void {
       let sortService: Sort<number>;
       let filtersService: FiltersProvider<number>;
       let comparator: TestComparator;
-      let columnState: BehaviorSubject<ColumnState>;
       let columnReorder: ColumnReorderService;
       let component: ClrDatagridColumn<number>;
       const commonStrings = new ClrCommonStringsService();
@@ -40,12 +38,9 @@ export default function(): void {
         const stateDebouncer = new StateDebouncer();
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
-        columnState = new BehaviorSubject<ColumnState>({
-          changes: [],
-        });
-        columnReorder = new MockColumnReorderService(null);
+        columnReorder = new ColumnReorderService(new ColumnsService());
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings, columnState, columnReorder);
+        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings, columnReorder);
       });
 
       it('receives a comparator to sort the column', function() {
@@ -432,20 +427,15 @@ export default function(): void {
         expect(this.context.clarityDirective.order).toBe(5);
       });
 
-      it(
-        'emits new order on setting',
-        fakeAsync(function() {
-          this.context = this.create(ClrDatagridColumn, ReorderTest, DATAGRID_SPEC_PROVIDERS);
-          this.context.clarityDirective.order = 4;
-          tick();
-          this.context.detectChanges();
-          expect(this.context.testComponent.emittedOrder).toBeUndefined(`shouldn't emit on first setting.`);
-          this.context.clarityDirective.order = 2;
-          tick();
-          this.context.detectChanges();
-          expect(this.context.testComponent.emittedOrder).toBe(2);
-        })
-      );
+      it('emits new order on setting', function() {
+        this.context = this.create(ClrDatagridColumn, ReorderTest, DATAGRID_SPEC_PROVIDERS);
+        this.context.clarityDirective.order = 4;
+        this.context.detectChanges();
+        expect(this.context.testComponent.emittedOrder).toBeUndefined(`shouldn't emit on first setting.`);
+        this.context.clarityDirective.order = 2;
+        this.context.detectChanges();
+        expect(this.context.testComponent.emittedOrder).toBe(2);
+      });
     });
   });
 }

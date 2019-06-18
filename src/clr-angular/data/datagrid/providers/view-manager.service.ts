@@ -10,6 +10,7 @@ import { EmbeddedViewRef, Injectable, ViewContainerRef } from '@angular/core';
 export interface ViewAccessor {
   _view: EmbeddedViewRef<void>;
   order?: number;
+  userDefinedOrder?: number;
 }
 
 // ViewManagerService is a service class that contains utility methods for managing views.
@@ -21,18 +22,43 @@ export class ViewManagerService {
     }
   }
 
-  insertAllViews(containerRef: ViewContainerRef, viewAccessors: ViewAccessor[], ordered = false): void {
-    if (ordered) {
-      this.setInUniqOrders(viewAccessors).forEach(viewAccessor => containerRef.insert(viewAccessor._view));
+  insertAllViews(containerRef: ViewContainerRef, viewAccessors: ViewAccessor[], prioritized = false): void {
+    if (prioritized) {
+      this.prioritizeByOrder(viewAccessors).forEach(viewAccessor => containerRef.insert(viewAccessor._view));
     } else {
       viewAccessors.forEach(viewAccessor => containerRef.insert(viewAccessor._view));
     }
   }
 
-  private setInUniqOrders(viewAccessors: ViewAccessor[]): ViewAccessor[] {
+  private prioritizeByOrder(viewAccessors: ViewAccessor[]): ViewAccessor[] {
+    // As an example, this method would turn the following array:
+    // [ {view: _view, order: 1}, {view: _view, order: 2}, {view: _view, order: 0} ] into
+    // [ {view: _view, order: 0}, {view: _view, order: 1}, {view: _view, order: 2} ].
+    // The lower the order value a View Accessor Component has, the higher the priority it will have.
+    // The higher the priority it has, the earlier it will be placed in the array.
     return viewAccessors
-      .sort((viewAccessor1, viewAccessor2) => viewAccessor1.order - viewAccessor2.order)
-      .map((viewAccessor, index) => {
+      .sort((viewAccessor1: ViewAccessor, viewAccessor2: ViewAccessor) => {
+        if (viewAccessor1.order > viewAccessor2.order) {
+          return 1;
+        } else if (viewAccessor1.order < viewAccessor2.order) {
+          return -1;
+        }
+
+        if (viewAccessor1.order === viewAccessor1.userDefinedOrder) {
+          return -1;
+        } else if (viewAccessor2.order === viewAccessor2.userDefinedOrder) {
+          return 1;
+        }
+
+        if (viewAccessor1.order === viewAccessors.indexOf(viewAccessor1)) {
+          return -1;
+        } else if (viewAccessor2.order === viewAccessors.indexOf(viewAccessor2)) {
+          return 1;
+        }
+
+        return 0;
+      })
+      .map((viewAccessor: ViewAccessor, index: number) => {
         viewAccessor.order = index;
         return viewAccessor;
       });

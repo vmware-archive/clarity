@@ -148,32 +148,32 @@ export default function(): void {
     describe('should emit proper reorder request data on moving:', () => {
       it(`1st view to 2nd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view1, testComponent.view2);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 0, targetIndex: 1 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 0, targetOrder: 1 });
       });
 
       it(`2nd view to 1st views's place`, function() {
         columnReorderService.reorderViews(testComponent.view2, testComponent.view1);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 1, targetIndex: 0 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 1, targetOrder: 0 });
       });
 
       it(`2nd view to 3rd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view2, testComponent.view3);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 1, targetIndex: 2 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 1, targetOrder: 2 });
       });
 
       it(`3rd view to 2nd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view3, testComponent.view2);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 2, targetIndex: 1 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 2, targetOrder: 1 });
       });
 
       it(`1st view to 3rd view's place`, function() {
         columnReorderService.reorderViews(testComponent.view1, testComponent.view3);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 0, targetIndex: 2 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 0, targetOrder: 2 });
       });
 
       it(`3rd view to 1st view's place`, function() {
         columnReorderService.reorderViews(testComponent.view3, testComponent.view1);
-        expect(testComponent.reorderRequest).toEqual({ sourceIndex: 2, targetIndex: 0 });
+        expect(testComponent.reorderRequest).toEqual({ sourceOrder: 2, targetOrder: 0 });
       });
     });
   });

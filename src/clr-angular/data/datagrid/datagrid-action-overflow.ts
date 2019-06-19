@@ -10,7 +10,6 @@ import {
   OnDestroy,
   Output,
   ElementRef,
-  Directive,
   NgZone,
   Inject,
   PLATFORM_ID,
@@ -21,8 +20,7 @@ import { Point } from '../../popover/common/popover';
 import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { isPlatformBrowser } from '@angular/common';
-import { filter, first, last, take, takeLast, debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { take, debounceTime } from 'rxjs/operators';
 
 let clrDgActionId = 0;
 
@@ -51,7 +49,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStrings,
     private ref: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: object,
+    @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone
   ) {
     this.rowActionService.register();

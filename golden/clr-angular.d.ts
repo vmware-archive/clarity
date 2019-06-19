@@ -271,6 +271,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     allSelected: boolean;
     columns: QueryList<ClrDatagridColumn<T>>;
     commonStrings: ClrCommonStrings;
+    datagridTable: ElementRef;
     expandableRows: ExpandableRowsCount;
     items: Items<T>;
     iterator: ClrDatagridItems<T>;
@@ -278,7 +279,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     placeholder: ClrDatagridPlaceholder<T>;
     refresh: EventEmitter<ClrDatagridStateInterface<T>>;
     rowActionService: RowActionService;
-    rowSelectionMode: boolean;
+    /** @deprecated */ rowSelectionMode: boolean;
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
     selected: T[];
@@ -286,7 +287,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, page: Page, commonStrings: ClrCommonStrings);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -302,8 +303,10 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     commonStrings: ClrCommonStrings;
     open: boolean;
     openChanged: EventEmitter<boolean>;
+    overflowClassName: string;
+    popoverId: string;
     popoverPoint: Point;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings);
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, ref: ElementRef, platformId: Object, zone: NgZone);
     close(event: MouseEvent): void;
     ngOnDestroy(): void;
     toggle(event: any): void;
@@ -331,8 +334,8 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;
-    sorted: boolean;
-    sortedChange: EventEmitter<boolean>;
+    /** @deprecated */ sorted: boolean;
+    /** @deprecated */ sortedChange: EventEmitter<boolean>;
     updateFilterValue: string | [number, number];
     constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
     ngOnDestroy(): void;
@@ -360,6 +363,7 @@ export interface ClrDatagridComparatorInterface<T> {
 
 export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter {
     readonly active: boolean;
+    anchor: ElementRef;
     anchorPoint: Point;
     commonStrings: ClrCommonStrings;
     customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
@@ -696,7 +700,7 @@ export declare class ClrExpandableAnimation {
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    markAsDirty(): void;
+    /** @deprecated */ markAsDirty(): void;
     markAsTouched(): void;
 }
 

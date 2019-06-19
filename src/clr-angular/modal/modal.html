@@ -23,7 +23,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" [attr.aria-label]="commonStrings.close" class="close" *ngIf="closable" (click)="close()">
-              <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+              <clr-icon shape="close"></clr-icon>
             </button>
             <div class="modal-title-wrapper" id="{{modalId}}">
               <ng-content select=".modal-title"></ng-content>

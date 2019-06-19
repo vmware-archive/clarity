@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 import { PopoverOptions } from '../../popover/common/popover-options.interface';
@@ -57,6 +57,10 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
   public anchorPoint: Point = Point.RIGHT_BOTTOM;
   public popoverPoint: Point = Point.RIGHT_TOP;
   public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
+
+  @ViewChild('anchor', { static: false, read: ElementRef })
+  anchor: ElementRef;
+
   /**
    * Tracks whether the filter dropdown is open or not
    */
@@ -71,6 +75,9 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     if (boolOpen !== this._open) {
       this._open = boolOpen;
       this.openChanged.emit(boolOpen);
+      if (!boolOpen) {
+        this.anchor.nativeElement.focus();
+      }
     }
   }
 

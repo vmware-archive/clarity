@@ -39,6 +39,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   totalPages = 'Total Pages';
   minValue = 'Min value';
   maxValue = 'Max value';
+  modalContentStart = 'Beginning of Modal Content';
+  modalContentEnd = 'End of Modal Content';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

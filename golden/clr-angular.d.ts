@@ -234,6 +234,8 @@ export declare abstract class ClrCommonStrings {
     lastPage?: string;
     maxValue?: string;
     minValue?: string;
+    modalContentEnd?: string;
+    modalContentStart?: string;
     more?: string;
     next?: string;
     nextPage?: string;

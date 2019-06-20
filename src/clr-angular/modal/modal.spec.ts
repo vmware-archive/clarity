@@ -275,4 +275,18 @@ describe('Modal', () => {
   it('close button should have attribute aria-label', () => {
     expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(commonStrings.close);
   });
+
+  it(
+    'should have text based boundaries for screen readers',
+    fakeAsync(() => {
+      // MacOS + Voice Over does not properly isolate modal content so
+      // we must give screen reader users text based warnings when they
+      // are entering and leaving modal content.
+      getModalInstance(fixture).open();
+      fixture.detectChanges();
+      const messages = compiled.querySelectorAll('.clr-sr-only');
+      expect(messages[0].innerText).toBe('Beginning of Modal Content');
+      expect(messages[1].innerText).toBe('End of Modal Content');
+    })
+  );
 });

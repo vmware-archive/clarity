@@ -1,20 +1,23 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, Input } from '@angular/core';
+import { ClipboardCopyService } from '../clipboard-copy.service';
 
 @Component({
-  selector: 'clr-color-scheme',
-  templateUrl: './color-scheme.demo.html',
-  styleUrls: ['./color-scheme.demo.scss'],
+  selector: 'clr-color-scheme-donut',
+  templateUrl: './color-scheme-donut.demo.html',
+  styleUrls: ['./color-scheme-donut.demo.scss'],
 })
-export class ColorScheme {
+export class ColorSchemeDonut {
   readonly cx = 24;
   readonly cy = 24;
   readonly radius = 20;
   readonly viewBox = `0 0 ${2 * this.cx} ${2 * this.cy}`;
+
+  constructor(private clipboardCopy: ClipboardCopyService) {}
 
   copyContent: string = '';
 
@@ -89,12 +92,9 @@ export class ColorScheme {
     return `rotate(${index * segmentAngle} ${this.cx} ${this.cy})`;
   }
 
-  copyOnClick: boolean = false;
+  copiedColor = false;
 
-  copyNotificationOnClick() {
-    this.copyOnClick = true;
-    setTimeout(() => {
-      this.copyOnClick = false;
-    }, 1000);
+  copyToClipboard(color: string) {
+    this.clipboardCopy.executeCopy(color);
   }
 }

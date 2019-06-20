@@ -917,6 +917,7 @@
   /*
    * The following are styles for Detail Pane
    */
+  /* autoprefixer grid: autoplace */
   .datagrid-host {
     display: grid;
     grid-template-columns: 1fr;
@@ -947,61 +948,6 @@
   .datagrid-detail-pane {
     grid-area: datagrid-detail;
   }
-
-  // This is the autoprefixer css grid version
-  //.datagrid-host {
-  //  display: -ms-grid;
-  //  display: grid;
-  //  grid-template-areas:
-  //    'datagrid-actions'
-  //    'datagrid'
-  //    'datagrid-footer';
-  //}
-  //.datagrid-host.datagrid-detail-open {
-  //  -ms-grid-columns: 1fr 2fr;
-  //  grid-template-columns: 1fr 2fr;
-  //  -ms-grid-rows: auto auto 1.5rem;
-  //  grid-template-rows: auto auto 1.5rem;
-  //  grid-template-areas:
-  //    'datagrid-actions datagrid-actions'
-  //    'datagrid datagrid-detail'
-  //    'datagrid-footer datagrid-detail';
-  //}
-  //.datagrid {
-  //  -ms-grid-row: 2;
-  //  -ms-grid-column: 1;
-  //  grid-area: datagrid;
-  //  width: auto;
-  //}
-  //.datagrid-host.datagrid-detail-open > .datagrid {
-  //  -ms-grid-row: 2;
-  //  -ms-grid-column: 1;
-  //}
-  //.datagrid-action-bar {
-  //  -ms-grid-row: 1;
-  //  -ms-grid-column: 1;
-  //  grid-area: datagrid-actions;
-  //}
-  //.datagrid-host.datagrid-detail-open > .datagrid-action-bar {
-  //  -ms-grid-row: 1;
-  //  -ms-grid-column: 1;
-  //  -ms-grid-column-span: 2;
-  //}
-  //.datagrid-footer {
-  //  -ms-grid-row: 3;
-  //  -ms-grid-column: 1;
-  //  grid-area: datagrid-footer;
-  //}
-  //.datagrid-host.datagrid-detail-open > .datagrid-footer {
-  //  -ms-grid-row: 3;
-  //  -ms-grid-column: 1;
-  //}
-  //.datagrid-detail-pane {
-  //  -ms-grid-row: 2;
-  //  -ms-grid-row-span: 2;
-  //  -ms-grid-column: 2;
-  //  grid-area: datagrid-detail;
-  //}
 
   .datagrid-detail-open {
     .datagrid {

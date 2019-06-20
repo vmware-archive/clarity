@@ -11,6 +11,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ClrFocusTrapModule } from '../utils/focus-trap/focus-trap.module';
 
+import { ClrCommonStringsService } from '../utils/i18n/common-strings.service';
+
 import { ClrModal } from './modal';
 import { ClrModalModule } from './modal.module';
 
@@ -60,6 +62,7 @@ class TestDefaultsComponent {
 describe('Modal', () => {
   let fixture: ComponentFixture<any>;
   let compiled: any;
+  const commonStrings = new ClrCommonStringsService();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -267,5 +270,9 @@ describe('Modal', () => {
     const focusable = fixture.debugElement.query(By.directive(FocusTrapDirective));
 
     expect(focusable).toBeDefined();
+  });
+
+  it('close button should have attribute aria-label', () => {
+    expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(commonStrings.close);
   });
 });

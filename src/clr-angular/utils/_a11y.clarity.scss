@@ -17,7 +17,7 @@
 }
 
 @include exports('a11y.clarity') {
-  .clr-screen-reader-only {
+  .clr-sr-only {
     @include screen-reader-only();
   }
 }

@@ -41,8 +41,9 @@ export class ClrDatagridDetail implements OnDestroy {
       this.listener();
       delete this.listener;
     }
-    if (isPlatformBrowser(this.platformId)) {
-      document.querySelector<HTMLElement>('.datagrid-detail-caret-button.is-open').focus();
+    const button = document.querySelector<HTMLElement>('.datagrid-detail-caret-button.is-open');
+    if (isPlatformBrowser(this.platformId) && button) {
+      button.focus();
     }
   }
 }

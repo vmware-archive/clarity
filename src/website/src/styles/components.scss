@@ -677,3 +677,18 @@ _:-ms-fullscreen,
     border: 1px solid #cccccc;
   }
 }
+
+// Utility class for an textarea element that's temporarily
+// created and used for copying content into clipboard
+.offscreen-clipboard-textarea {
+  position: fixed !important;
+  border: none !important;
+  height: 1px !important;
+  width: 1px !important;
+
+  left: 0 !important;
+  top: -1px !important;
+
+  padding: 0 !important;
+  margin: 0 0 -1px 0 !important;
+}

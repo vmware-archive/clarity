@@ -7,6 +7,9 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+// This is an utility service class for copying text to clipboard.
+// Currently, we use this only in color demo components.
+// If we need to use it somewhere else in the future, we should consider moving to utils directory.
 @Injectable()
 export class ClipboardCopyService {
   private textareaEl: HTMLTextAreaElement;
@@ -18,8 +21,7 @@ export class ClipboardCopyService {
 
     // make it off screen
     this.textareaEl.setAttribute('readonly', '');
-    this.textareaEl.style.position = 'absolute';
-    this.textareaEl.style.left = '-9999px';
+    this.textareaEl.classList.add('offscreen-clipboard-textarea');
   }
 
   private setTextareaValue(value: string) {

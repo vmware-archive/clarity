@@ -125,4 +125,12 @@ export abstract class ClrCommonStrings {
    * Datagrid numeric filter: max
    */
   maxValue?: string;
+  /**
+   * Modal start of content
+   */
+  modalContentStart?: string;
+  /**
+   * Modal end of content
+   */
+  modalContentEnd?: string;
 }

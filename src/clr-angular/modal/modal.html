@@ -15,7 +15,7 @@
          role="dialog"
          [attr.aria-hidden]="!_open"
          [attr.aria-labelledby]="modalId">
-
+      <div class="clr-sr-only">{{commonStrings.modalContentStart}}</div>
       <div class="modal-content-wrapper">
         <!-- only used in wizards -->
         <ng-content select=".modal-nav"></ng-content>
@@ -33,6 +33,7 @@
           <ng-content select=".modal-footer"></ng-content>
         </div>
       </div>
+      <div class="clr-sr-only">{{commonStrings.modalContentEnd}}</div>
     </div>
 
     <div [@fade] class="modal-backdrop"

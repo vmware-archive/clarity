@@ -84,13 +84,13 @@ describe('ClrStep Reactive Forms', () => {
     it('should show the appropriate aria-live message based on form state', () => {
       const mockStep = new AccordionPanelModel('groupName', 0);
       const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
-      let liveSection: HTMLElement = fixture.nativeElement.querySelector('.clr-screen-reader-only');
+      let liveSection: HTMLElement = fixture.nativeElement.querySelector('.clr-sr-only');
       expect(liveSection).toBe(null);
 
       mockStep.status = AccordionStatus.Error;
       (stepperService as MockStepperService).step.next(mockStep);
       fixture.detectChanges();
-      liveSection = fixture.nativeElement.querySelector('.clr-screen-reader-only');
+      liveSection = fixture.nativeElement.querySelector('.clr-sr-only');
       expect(liveSection.getAttribute('aria-live')).toBe('assertive');
       expect(liveSection.innerText.trim()).toBe('Error');
 

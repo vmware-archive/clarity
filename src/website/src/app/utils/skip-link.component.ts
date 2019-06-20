@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <button
       class="btn btn-warning btn-sm clr-docs-skip-link"
-      [class.clr-screen-reader-only]="hideSkipLink"
+      [class.clr-sr-only]="hideSkipLink"
       (click)="skipToContent()"
       (focus)="hideSkipLink = false"
       (blur)="hideSkipLink = true">

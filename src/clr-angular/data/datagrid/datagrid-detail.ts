@@ -25,9 +25,9 @@ export class ClrDatagridDetail implements OnDestroy {
 
   // For some reason was not getting the HostListener to fire in tests...need to investigate
   constructor(
-    private detailService: DetailService,
+    public detailService: DetailService,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.listener = this.renderer.listen('document', 'keydown', event => {
       if (event.keyCode === ESC) {
@@ -41,7 +41,7 @@ export class ClrDatagridDetail implements OnDestroy {
       this.listener();
       delete this.listener;
     }
-    const button = document.querySelector<HTMLElement>('.datagrid-detail-caret-button.is-open');
+    const button: HTMLButtonElement = document.querySelector('.datagrid-detail-caret-button.is-open');
     if (isPlatformBrowser(this.platformId) && button) {
       button.focus();
     }

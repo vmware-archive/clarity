@@ -31,7 +31,7 @@ export class ClrDatagridDetailHeader {
   constructor(
     public detailService: DetailService,
     public commonStrings: ClrCommonStrings,
-    @Inject(PLATFORM_ID) private platformId: object,
+    @Inject(PLATFORM_ID) private platformId: Object,
     private element: ElementRef
   ) {}
 

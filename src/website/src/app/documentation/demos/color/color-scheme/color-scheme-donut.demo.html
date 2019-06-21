@@ -1,12 +1,10 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<clipboard-input [clrCopyContent]="copyContent"></clipboard-input>
 <svg width="100%" height="100%" [attr.viewBox]="viewBox" class="donut">
-
     <path *ngFor="let bgColor of scheme.schemeColors; let bgColorIndex = index;" class="bg-segment"
           [attr.d]="getPath(360/scheme.schemeColors.length, 21)"
           [attr.cx]="cx"
@@ -15,7 +13,7 @@
           [class.active]="bgColorIndex===activeIndex"
           [attr.transform]="multiRotate(bgColorIndex, 360/scheme.schemeColors.length)"></path>
 
-    <g (mouseleave)="activeIndex=-1">
+    <g (mouseleave)="activeIndex=-1;">
         <path *ngFor="let color of scheme.schemeColors; let colorIndex = index;" class="clickable-segment"
               [attr.d]="getPath(360/scheme.schemeColors.length, 20)"
               [attr.cx]="cx"
@@ -23,7 +21,8 @@
               [attr.fill]="color.hex"
               [attr.transform]="multiRotate(colorIndex, 360/scheme.schemeColors.length)"
               (mouseover)="activeIndex=colorIndex"
-              (click)="activeIndex=colorIndex; copyContent=color.hex; copyNotificationOnClick()"></path>
+              (mouseleave)="copiedColor = false"
+              (click)="activeIndex=colorIndex; copyToClipboard(color.hex); copiedColor=true;"></path>
 
         <circle fill="white"
                 [attr.cx]="cx"
@@ -35,10 +34,11 @@
             {{activeColor}}
         </text>
 
-        <text [attr.x]="cx"
+        <text class="copy-text"
+              [attr.x]="cx"
               [attr.y]="cy"
-              [class.notify]="copyOnClick"
-              font-size="2.8" text-anchor="middle" dy="5.5" class="copy-text">
+              [class.notify]="copiedColor"
+              font-size="2.8" text-anchor="middle" dy="5.5">
             Copied!
         </text>
     </g>

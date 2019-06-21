@@ -92,15 +92,6 @@ export default function(): void {
 
     describe('View and Behavior', () => {
       describe('Renders as expected', () => {
-        it('list element should have role of tablist', () => {
-          let myRole: string;
-          const myListElement = myStepnavEl.querySelector('ol');
-
-          expect(myListElement.hasAttribute('role')).toBeTruthy('stepnav list element has role attr');
-          myRole = myListElement.getAttribute('role');
-          expect(myRole).toBe('tablist');
-        });
-
         it('should have .clr-wizard-stepnav class', () => {
           expect(myStepnavEl.classList.contains('clr-wizard-stepnav')).toBe(true);
         });

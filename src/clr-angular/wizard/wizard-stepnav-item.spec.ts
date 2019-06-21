@@ -265,14 +265,6 @@ export default function(): void {
           expect(myStepnavItem.querySelector('button.clr-wizard-stepnav-link').hasAttribute('disabled')).toBeTruthy();
         });
 
-        it('should have role of tab', () => {
-          let myRole: string;
-
-          expect(myStepnavItem.hasAttribute('role')).toBeTruthy('stepnav item should have role attr');
-          myRole = myStepnavItem.getAttribute('role');
-          expect(myRole).toBe('tab', 'aria role should be tab');
-        });
-
         it('should have clr-nav-link and nav-item classes', () => {
           expect(myStepnavItem.classList.contains('nav-item')).toBe(true, 'stepnav item has .nav-item class');
           expect(myStepnavItem.classList.contains('clr-nav-link')).toBe(true, 'stepnav item has .clr-nav-link class');

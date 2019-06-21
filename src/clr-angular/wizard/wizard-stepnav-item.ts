@@ -21,7 +21,6 @@ import { ClrWizardPage } from './wizard-page';
     '[id]': 'id',
     '[attr.aria-selected]': 'isCurrent',
     '[attr.aria-controls]': 'id',
-    role: 'tab',
     '[class.clr-nav-link]': 'true',
     '[class.nav-item]': 'true',
     '[class.active]': 'isCurrent',

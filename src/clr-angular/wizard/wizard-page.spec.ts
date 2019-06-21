@@ -1090,11 +1090,6 @@ export default function(): void {
       });
 
       describe('view', () => {
-        it('should have a role of tabpanel', () => {
-          const testMe = pageOne.nativeElement.getAttribute('role');
-          expect(testMe).toBe('tabpanel');
-        });
-
         it('aria-hidden should reflect if page is not current', () => {
           // explicitly set a page to current
           const expectedPage = pageTwo.componentInstance;

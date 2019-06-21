@@ -31,7 +31,6 @@ let wizardPageIndex = 0;
   template: '<ng-content></ng-content>',
   host: {
     '[id]': 'id',
-    role: 'tabpanel',
     '[attr.aria-hidden]': '!current',
     '[attr.aria-labelledby]': 'stepItemId',
     '[class.active]': 'current',

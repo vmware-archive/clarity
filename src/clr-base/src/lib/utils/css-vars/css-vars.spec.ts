@@ -95,14 +95,12 @@ describe('CssVarsPolyfill', () => {
 
     it('adds polyfills property if not defined', () => {
       delete window.__ClarityInternals.polyfills;
-      const hasRun = cssVarsPolyfillHasRun(window);
       expect(window.__ClarityInternals).toBeDefined();
       expect(window.__ClarityInternals).toEqual(expected);
     });
 
     it('adds cssVarsHasRun property if it is not defined', () => {
       delete window.__ClarityInternals.polyfills.cssVarsHasRun;
-      const hasRun = cssVarsPolyfillHasRun(window);
       expect(window.__ClarityInternals).toBeDefined();
       expect(window.__ClarityInternals).toEqual(expected);
     });

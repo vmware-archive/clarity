@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -48,6 +48,9 @@
       display: flex;
       flex-direction: row;
       width: 100%;
+      // align focus style across modal title
+      line-height: 1.13rem;
+      margin-top: -0.13rem;
     }
 
     .modal-body {

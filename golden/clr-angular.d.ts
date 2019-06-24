@@ -1294,7 +1294,8 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     stopNavigation: boolean;
     stopNext: boolean;
     wizardFinished: EventEmitter<any>;
-    constructor(navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
+    wizardTitle: ElementRef;
+    constructor(platformId: Object, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
     cancel(): void;
     checkAndCancel(): void;
     close(): void;

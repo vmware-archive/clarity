@@ -48,7 +48,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   constructor(
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStrings,
-    private ref: ElementRef,
+    private elementRef: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone
   ) {
@@ -84,7 +84,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
             .asObservable()
             .pipe(debounceTime(0), take(1))
             .subscribe(() => {
-              const firstButton = this.ref.nativeElement.querySelector(`.${this.overflowClassName} button`);
+              const firstButton = this.elementRef.nativeElement.querySelector(`.${this.overflowClassName} button`);
               if (firstButton) {
                 firstButton.focus();
               }

@@ -609,6 +609,18 @@ export default function(): void {
         checkMe.unsubscribe();
       });
 
+      it('should notify movedToNextPage if wizard has next is triggered', function() {
+        let calledAsExpected = false;
+        const checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {
+          calledAsExpected = true;
+        });
+
+        wizardNavigationService.next();
+        context.detectChanges();
+        expect(calledAsExpected).toBe(true, 'next page notification sent to wizard');
+        checkMe.unsubscribe();
+      });
+
       it('should notify movedToNextPage if wizard has alt-next and danger-next clicked', function() {
         let calledAsExpected = false;
         const checkMe = wizardNavigationService.movedToNextPage.subscribe(() => {

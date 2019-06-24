@@ -1255,7 +1255,7 @@ export declare class ClrVerticalNavLink {
 export declare class ClrVerticalNavModule {
 }
 
-export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, DoCheck {
+export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     _open: boolean;
     _openChanged: EventEmitter<boolean>;
     _stopModalAnimations: boolean;
@@ -1264,7 +1264,6 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     clrWizardOpen: boolean;
     currentPage: ClrWizardPage;
     currentPageChanged: EventEmitter<any>;
-    differ: any;
     disableStepnav: boolean;
     forceForward: boolean;
     headerActionService: HeaderActionService;
@@ -1298,11 +1297,10 @@ export declare class ClrWizard implements OnInit, OnDestroy, AfterContentInit, D
     ngAfterContentInit(): void;
     ngDoCheck(): void;
     ngOnDestroy(): void;
-    ngOnInit(): void;
     open(): void;
     previous(): void;
     reset(): void;
-    toggle(value: boolean): void;
+    toggle(open: boolean): void;
 }
 
 export declare class ClrWizardButton {

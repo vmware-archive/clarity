@@ -17,7 +17,7 @@ const path = require('path');
 const supported = ['.js', '.ts', '.html', '.css', '.scss', '.sass'];
 
 // Grab list of staged files
-const files = exec('git diff --name-only --cached', { encoding: 'utf8' }).split('\n');
+const files = exec('git diff --name-only --cached --diff-filter=d', { encoding: 'utf8' }).split('\n');
 const year = new Date().getFullYear();
 
 files.forEach(file => {

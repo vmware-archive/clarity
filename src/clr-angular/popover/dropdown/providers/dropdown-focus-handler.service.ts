@@ -119,10 +119,16 @@ export class DropdownFocusHandler implements FocusableItem {
         // we clear out any existing focus on the items
         this.children.pipe(take(1)).subscribe(items => items.forEach(item => item.blur()));
 
-        // focusout + relatedTarget because a simple blur event would trigger
-        // when the user clicks an item inside of the menu, closing the dropdown.
-        if (event.relatedTarget && isPlatformBrowser(this.platformId)) {
-          if (el.contains(event.relatedTarget) || event.relatedTarget === this.trigger) {
+        // event.relatedTarget is null in IE11. In that case we use document.activeElement which correctly points
+        // to the element we want to check. Note that other browsers might point document.activeElement to the
+        // wrong element. This is ok, because all the other browsers we support relies on event.relatedTarget.
+        const target = event.relatedTarget || document.activeElement;
+
+        // If the user clicks on an item which triggers the blur, we don't want to close it since it may open a submenu.
+        // In the case of needing to close it (i.e. user selected an item and the dropdown menu is set to close on
+        // selection), dropdown-item.ts handles it.
+        if (target && isPlatformBrowser(this.platformId)) {
+          if (el.contains(target) || target === this.trigger) {
             return;
           }
         }

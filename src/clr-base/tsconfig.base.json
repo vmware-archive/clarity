@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "declaration": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "../../dist/clr-base",
+    // Only necessary because @types/uglify-js can't find types for source-map
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es5",
+    "lib": ["es2017", "dom"],
+    "paths": {
+      "@clr/angular": ["../clr-angular"],
+      "@clr/icons": ["../clr-icons"],
+      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
+    }
+  },
+  "include": ["custom_typings/**/*.ts", "src/**/*.ts"],
+  "exclude": ["node_modules/**", "src/test.ts", "**/*.spec.ts"]
+}

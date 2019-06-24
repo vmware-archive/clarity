@@ -318,13 +318,8 @@ export class WizardNavigationService implements OnDestroy {
   public next(): void {
     if (this.currentPageIsLast) {
       this.checkAndCommitCurrentPage('finish');
-      return;
-    }
-
-    this.checkAndCommitCurrentPage('next');
-
-    if (!this.wizardHasAltNext && !this.wizardStopNavigation) {
-      this._movedToNextPage.next(true);
+    } else {
+      this.checkAndCommitCurrentPage('next');
     }
   }
 
@@ -425,6 +420,10 @@ export class WizardNavigationService implements OnDestroy {
 
     if (isNext || isDangerNext) {
       this.forceNext();
+    }
+
+    if (!this.wizardHasAltNext && !this.wizardStopNavigation) {
+      this._movedToNextPage.next(true);
     }
   }
 

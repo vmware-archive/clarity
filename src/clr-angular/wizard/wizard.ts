@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
- * This software is released under MIT license.
- * The full license information can be found in LICENSE in the root directory of this project.
- */
+* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* This software is released under MIT license.
+* The full license information can be found in LICENSE in the root directory of this project.
+*/
 
 import {
   AfterContentInit,
@@ -16,8 +16,13 @@ import {
   OnDestroy,
   Output,
   QueryList,
+  ViewChild,
+  PLATFORM_ID,
+  Inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { ButtonHubService } from './providers/button-hub.service';
 import { HeaderActionService } from './providers/header-actions.service';
@@ -203,6 +208,8 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
 
   @ContentChildren(ClrWizardPage) pages: QueryList<ClrWizardPage>;
   @ContentChildren(ClrWizardHeaderAction) headerActions: QueryList<ClrWizardHeaderAction>;
+  @ViewChild('wizardTitle', { static: false })
+  wizardTitle: ElementRef;
 
   public get currentPage() {
     return this.navService.currentPage;
@@ -228,6 +235,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   private subscriptions: Subscription[] = [];
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     public navService: WizardNavigationService,
     public pageCollection: PageCollectionService,
     public buttonService: ButtonHubService,
@@ -438,14 +446,16 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   }
 
   private listenForNextPageChanges(): Subscription {
-    return this.navService.movedToNextPage.subscribe(() => {
+    return this.navService.movedToNextPage.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(() => {
       this.onMoveNext.emit();
+      this.wizardTitle.nativeElement.focus();
     });
   }
 
   private listenForPreviousPageChanges(): Subscription {
-    return this.navService.movedToPreviousPage.subscribe(() => {
+    return this.navService.movedToPreviousPage.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(() => {
       this.onMovePrevious.emit();
+      this.wizardTitle.nativeElement.focus();
     });
   }
 

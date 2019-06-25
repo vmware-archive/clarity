@@ -10,6 +10,7 @@ import { TestContext } from './helpers.spec';
 import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
 import { ColumnsService } from './providers/columns.service';
 import { fakeAsync, tick } from '@angular/core/testing';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
@@ -80,6 +81,23 @@ export default function(): void {
         context.clarityElement.querySelector('.toggle-switch-close-button').click();
         context.detectChanges();
         expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+      });
+
+      it('.column-switch should have id and it have to match the aria-control', function() {
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(
+          context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
+        ).toBe(context.clarityElement.querySelector('div.column-switch').attributes.id.value);
+      });
+
+      it('toggle switch close button should have aria-label for close', function() {
+        /* Open it */
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        expect(
+          context.clarityElement.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value
+        ).toBe(new ClrCommonStringsService().close);
       });
 
       it('projects template as switch content', function() {

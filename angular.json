@@ -338,13 +338,6 @@
             "tsConfig": "src/clr-base/tsconfig.spec.json",
             "karmaConfig": "src/clr-base/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/clr-base/tsconfig.base.json", "src/clr-base/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     }

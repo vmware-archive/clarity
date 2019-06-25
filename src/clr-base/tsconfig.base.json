@@ -9,7 +9,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "../../dist/clr-base",
-    // Only necessary because @types/uglify-js can't find types for source-map
     "skipLibCheck": true,
     "strict": true,
     "target": "es5",

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { cssVarsPolyfillHasRun, runCssVarsPolyfill } from './index';
+import { cssVarsPolyfillHasRun, runCssVarsPolyfill } from './css-vars';
 import IWindow from '../../interfaces/window.interface';
 
 declare var window: IWindow;
@@ -95,12 +95,14 @@ describe('CssVarsPolyfill', () => {
 
     it('adds polyfills property if not defined', () => {
       delete window.__ClarityInternals.polyfills;
+      cssVarsPolyfillHasRun(window);
       expect(window.__ClarityInternals).toBeDefined();
       expect(window.__ClarityInternals).toEqual(expected);
     });
 
     it('adds cssVarsHasRun property if it is not defined', () => {
       delete window.__ClarityInternals.polyfills.cssVarsHasRun;
+      cssVarsPolyfillHasRun(window);
       expect(window.__ClarityInternals).toBeDefined();
       expect(window.__ClarityInternals).toEqual(expected);
     });

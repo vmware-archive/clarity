@@ -5,7 +5,7 @@
  */
 
 import IWindow from './lib/interfaces/window.interface';
-import { runCssVarsPolyfill } from './lib/utils/css-vars';
+import { runCssVarsPolyfill } from './lib/utils/css-vars/css-vars';
 
 declare var window: IWindow;
 

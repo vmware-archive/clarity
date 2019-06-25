@@ -192,6 +192,52 @@
     @include screen-reader-only();
   }
 
+  // temporary overrides to match stackview until stepper, accordion and stackview are aligned
+  // https://github.com/vmware/clarity/issues/3471
+  .clr-accordion:not(.clr-stepper-forms) {
+    .clr-accordion-header {
+      box-shadow: none;
+    }
+
+    .clr-accordion-panel:first-child .clr-accordion-header {
+      border-top-left-radius: $clr-accordion-border-radius;
+      border-top-right-radius: $clr-accordion-border-radius;
+    }
+
+    .clr-accordion-panel:last-child .clr-accordion-header {
+      border-bottom-left-radius: $clr-accordion-border-radius;
+      border-bottom-right-radius: $clr-accordion-border-radius;
+    }
+
+    .clr-accordion-title {
+      font-weight: 500;
+      font-size: 0.541667rem;
+    }
+
+    .clr-accordion-header-button,
+    .clr-accordion-description {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.5rem;
+    }
+
+    .clr-accordion-content {
+      padding: 0;
+    }
+
+    .clr-accordion-inner-content {
+      padding: 0.25rem 1.45833rem;
+    }
+
+    .clr-accordion-status {
+      width: 0.8rem;
+
+      clr-icon {
+        width: 0.58333rem;
+        height: 0.58333rem;
+      }
+    }
+  }
+
   // stepper forms mode
   .clr-stepper-forms {
     .clr-accordion-panel-inactive .clr-accordion-angle {

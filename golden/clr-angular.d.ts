@@ -517,6 +517,7 @@ export declare class ClrDataModule {
 
 export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
+    actionButton: ElementRef;
     commonStrings: ClrCommonStrings;
     control: NgControl;
     focus: boolean;
@@ -525,6 +526,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     label: ClrLabel;
     constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
+    close(): void;
     controlClass(): string;
     ngOnDestroy(): void;
     ngOnInit(): void;

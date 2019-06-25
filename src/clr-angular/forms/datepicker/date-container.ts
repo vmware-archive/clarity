@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnDestroy, Optional, ContentChild } from '@angular/core';
+import { Component, OnDestroy, Optional, ContentChild, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
@@ -33,7 +33,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-content select="[clrDate]"></ng-content>
-            <button type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
+            <button #actionButton type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -71,6 +71,12 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   @ContentChild(ClrLabel, { static: false })
   label: ClrLabel;
 
+  private toggleButton: ElementRef;
+  @ViewChild('actionButton', { static: false })
+  set actionButton(button: ElementRef) {
+    this.toggleButton = button;
+  }
+
   private subscriptions: Subscription[] = [];
 
   constructor(
@@ -102,6 +108,11 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
         this.control = control;
       })
     );
+  }
+
+  @HostListener('body:keyup.escape')
+  close(): void {
+    this.toggleButton.nativeElement.focus();
   }
 
   ngOnInit() {

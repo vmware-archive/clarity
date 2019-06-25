@@ -192,6 +192,32 @@
     @include screen-reader-only();
   }
 
+  // temporary overrides to match stackview until stepper, accordion and stackview are aligned
+  .clr-accordion:not(.clr-stepper-forms) {
+    .clr-accordion-header-button,
+    .clr-accordion-description {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.58333rem;
+    }
+
+    .clr-accordion-content {
+      padding: 0;
+    }
+
+    .clr-accordion-inner-content {
+      padding: 0.25rem 1.45833rem;
+    }
+
+    .clr-accordion-status {
+      width: 0.8rem;
+
+      clr-icon {
+        width: 0.58333rem;
+        height: 0.58333rem;
+      }
+    }
+  }
+
   // stepper forms mode
   .clr-stepper-forms {
     .clr-accordion-panel-inactive .clr-accordion-angle {

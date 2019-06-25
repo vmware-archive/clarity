@@ -19,6 +19,6 @@
       "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
     }
   },
-  "include": ["custom_typings/**/*.ts", "src/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules/**", "src/test.ts", "**/*.spec.ts"]
 }

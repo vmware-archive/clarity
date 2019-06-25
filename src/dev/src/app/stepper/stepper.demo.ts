@@ -16,7 +16,7 @@ export class StepperDemo {
   showSecondStep = true;
   initialStep = 'contact';
   form: FormGroup = this.getReactiveForm();
-  templateForm: {} = this.getTemplateForm();
+  templateForm: any = this.getTemplateForm();
   partiallyCompletedForm: FormGroup = this.getReactiveForm();
 
   submit() {

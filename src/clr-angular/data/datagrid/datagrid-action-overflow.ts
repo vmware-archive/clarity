@@ -20,7 +20,6 @@ import { Point } from '../../popover/common/popover';
 import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { isPlatformBrowser } from '@angular/common';
-import { take, debounceTime } from 'rxjs/operators';
 
 let clrDgActionId = 0;
 
@@ -78,17 +77,14 @@ export class ClrDatagridActionOverflow implements OnDestroy {
       this.openChanged.emit(boolOpen);
       if (boolOpen && isPlatformBrowser(this.platformId)) {
         this.zone.runOutsideAngular(() => {
-          // It emits 2+ onStable events in a synchronous sequence. We need to wait for the last one.
-          // Some of them are probably only in dev mode, but some are caused by collapsing the previous overflow window.
-          this.zone.onStable
-            .asObservable()
-            .pipe(debounceTime(0), take(1))
-            .subscribe(() => {
-              const firstButton = this.elementRef.nativeElement.querySelector(`.${this.overflowClassName} button`);
-              if (firstButton) {
-                firstButton.focus();
-              }
-            });
+          setTimeout(() => {
+            const firstButton = this.elementRef.nativeElement.querySelector(
+              `.${this.overflowClassName} button.action-item`
+            );
+            if (firstButton) {
+              firstButton.focus();
+            }
+          });
         });
       }
     }

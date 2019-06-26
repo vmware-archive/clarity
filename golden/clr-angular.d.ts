@@ -306,7 +306,7 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     overflowClassName: string;
     popoverId: string;
     popoverPoint: Point;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, ref: ElementRef, platformId: Object, zone: NgZone);
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, elementRef: ElementRef, platformId: Object, zone: NgZone);
     close(event: MouseEvent): void;
     ngOnDestroy(): void;
     toggle(event: any): void;
@@ -371,7 +371,7 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     openChanged: EventEmitter<boolean>;
     popoverOptions: PopoverOptions;
     popoverPoint: Point;
-    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings);
+    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings, platformId: Object);
     toggle(): void;
 }
 

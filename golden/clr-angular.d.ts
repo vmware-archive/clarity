@@ -519,8 +519,9 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     readonly isEnabled: boolean;
     label: ClrLabel;
     newFormsLayout: boolean;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, newFormsLayout: boolean, ngControlService: NgControlService);
+    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, newFormsLayout: boolean, ngControlService: NgControlService, elementRef: ElementRef);
     addGrid(): boolean;
+    close(event: any): void;
     controlClass(): string;
     ngOnDestroy(): void;
     ngOnInit(): void;

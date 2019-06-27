@@ -15,7 +15,8 @@
     "paths": {
       "@clr/angular": ["src/clr-angular"],
       "@clr/icons": ["src/clr-icons"],
-      "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"]
+      "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"],
+      "@clr/base": ["src/clr-base", "src/clr-base/*"]
     },
     "lib": ["es2017", "dom"]
   },

@@ -317,6 +317,29 @@
           }
         }
       }
+    },
+    "clr-base": {
+      "projectType": "library",
+      "root": "src/clr-base",
+      "sourceRoot": "src/clr-base/src",
+      "prefix": "clrx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "src/clr-base/tsconfig.base.json",
+            "project": "src/clr-base/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/clr-base/src/test.ts",
+            "tsConfig": "src/clr-base/tsconfig.spec.json",
+            "karmaConfig": "src/clr-base/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "schematics": {

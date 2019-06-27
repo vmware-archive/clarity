@@ -89,4 +89,12 @@ export abstract class ClrCommonStrings {
    * Datagrid: show columns
    */
   showColumns?: string;
+  /**
+   * Datagrid: detail pane start content for screen reader
+   */
+  detailPaneStart?: string;
+  /**
+   * Datagrid: detail pane end content for screen reader
+   */
+  detailPaneEnd?: string;
 }

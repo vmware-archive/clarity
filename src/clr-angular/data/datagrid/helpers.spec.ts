@@ -32,6 +32,7 @@ import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { DetailService } from './providers/detail.service';
+import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 // Reusable list of providers used in a number of tests
 export const DATAGRID_SPEC_PROVIDERS = [
@@ -53,6 +54,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   StateDebouncer,
   StateProvider,
   TableSizeService,
+  UNIQUE_ID_PROVIDER,
 ];
 
 export class TestContext<D, C> {

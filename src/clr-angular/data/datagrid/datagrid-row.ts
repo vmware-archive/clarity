@@ -152,6 +152,25 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     }
   }
 
+  @ViewChild('detailButton') detailButton;
+
+  private _detailOpenLabel = '';
+  @Input()
+  set detailOpenLabel(label: string) {
+    this._detailOpenLabel = label;
+  }
+  get detailOpenLabel(): string {
+    return this._detailOpenLabel ? this._detailOpenLabel : this.commonStrings.open;
+  }
+  private _detailCloseLabel = '';
+  @Input()
+  set detailCloseLabel(label: string) {
+    this._detailCloseLabel = label;
+  }
+  get detailCloseLabel(): string {
+    return this._detailCloseLabel ? this._detailCloseLabel : this.commonStrings.open;
+  }
+
   /*****
    * property dgCells
    *

@@ -189,6 +189,8 @@ export declare abstract class ClrCommonStrings {
     collapse?: string;
     current?: string;
     danger?: string;
+    detailPaneEnd?: string;
+    detailPaneStart?: string;
     expand?: string;
     hide?: string;
     info?: string;
@@ -241,7 +243,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, detailService: DetailService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, detailService: DetailService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings, datagridId: string);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -312,10 +314,11 @@ export interface ClrDatagridComparatorInterface<T> {
     compare(a: T, b: T): number;
 }
 
-export declare class ClrDatagridDetail implements OnDestroy {
+export declare class ClrDatagridDetail {
+    commonStrings: ClrCommonStrings;
     detailService: DetailService;
-    constructor(detailService: DetailService, renderer: Renderer2, platformId: Object);
-    ngOnDestroy(): void;
+    constructor(detailService: DetailService, commonStrings: ClrCommonStrings);
+    closeCheck(event: KeyboardEvent): void;
 }
 
 export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter {
@@ -405,6 +408,9 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     readonly _view: any;
     checkboxId: string;
     commonStrings: ClrCommonStrings;
+    detailButton: any;
+    detailCloseLabel: string;
+    detailOpenLabel: string;
     detailService: DetailService;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;

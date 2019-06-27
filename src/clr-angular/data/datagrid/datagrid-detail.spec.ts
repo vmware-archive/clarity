@@ -9,8 +9,7 @@ import { async } from '@angular/core/testing';
 import { TestContext } from './helpers.spec';
 import { ClrDatagridDetail } from './datagrid-detail';
 import { DetailService } from './providers/detail.service';
-import { createKeyboardEvent } from '../../forms/datepicker/utils/test-utils';
-import { ESC } from '../../utils/key-codes/key-codes';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
 const content = 'Detail Pane';
 
@@ -65,7 +64,8 @@ export default function(): void {
         detailService.open({});
         context.detectChanges();
         expect(context.clarityElement.innerHTML).toContain(content);
-        document.dispatchEvent(createKeyboardEvent(ESC, 'keydown'));
+        const event = new KeyboardEvent('keyup', { key: 'Escape' });
+        document.dispatchEvent(event);
         context.detectChanges();
         expect(detailService.close).toHaveBeenCalled();
       }));
@@ -78,6 +78,15 @@ export default function(): void {
         detailService.close();
         context.detectChanges();
         expect(context.clarityElement.innerHTML).not.toContain('clrfocustrap');
+      });
+
+      it('should have text based boundaries for screen readers', () => {
+        const commonStrings = context.getClarityProvider(ClrCommonStrings);
+        detailService.open({});
+        context.detectChanges();
+        const messages = context.testElement.querySelectorAll('.clr-sr-only');
+        expect(messages[0].innerText).toBe(commonStrings.detailPaneStart);
+        expect(messages[1].innerText).toBe(commonStrings.detailPaneEnd);
       });
     });
   });

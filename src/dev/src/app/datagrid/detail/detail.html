@@ -21,7 +21,7 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
   <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user" [detailOpenLabel]="'Open row details for ' + user.name" [detailCloseLabel]="'Open row details for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

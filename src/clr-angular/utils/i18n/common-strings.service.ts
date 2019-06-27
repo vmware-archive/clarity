@@ -7,10 +7,7 @@ import { SkipSelf, Optional, InjectableProvider, forwardRef } from '@angular/cor
 
 import { ClrCommonStrings } from './common-strings.interface';
 
-// @TODO Put the Required type back in when our minimumly supported version of Angular uses
-// TS 2.8 or greater (should be Angular 7)
-// export class ClrCommonStringsService implements Required<ClrCommonStrings> {
-export class ClrCommonStringsService implements ClrCommonStrings {
+export class ClrCommonStringsService implements Required<ClrCommonStrings> {
   open = 'Open';
   close = 'Close';
   show = 'Show';
@@ -30,6 +27,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   rowActions = 'Available actions';
   pickColumns = 'Show or hide columns';
   showColumns = 'Show Columns';
+  detailPaneStart = 'Start of row details';
+  detailPaneEnd = 'End of row details';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

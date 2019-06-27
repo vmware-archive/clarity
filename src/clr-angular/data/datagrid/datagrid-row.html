@@ -46,7 +46,7 @@
         <div *ngIf="globalExpandable.hasExpandableRow"
              class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell">
           <ng-container *ngIf="expand.expandable">
-            <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button">
+            <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button" [attr.aria-label]="detailService.isOpen ? detailCloseLabel : detailOpenLabel">
               <clr-icon shape="caret"
                         class="datagrid-expandable-caret-icon"
                         [attr.dir]="expand.expanded ? 'down' : 'right'"
@@ -57,7 +57,9 @@
         </div>
         <div *ngIf="detailService.enabled"
              class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
-          <button (click)="detailService.toggle(item)" type="button" class="datagrid-detail-caret-button" [class.is-open]="detailService.isRowOpen(item)">
+          <button (click)="detailService.toggle(item, detailButton)" type="button" #detailButton class="datagrid-detail-caret-button"
+                  [class.is-open]="detailService.isRowOpen(item)" [attr.aria-label]="detailService.isOpen ? detailCloseLabel : detailOpenLabel"
+                  [attr.aria-expanded]="detailService.isOpen" [attr.aria-controls]="detailService.id" aria-haspopup="dialog">
             <clr-icon shape="angle-double"
                       [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
                       class="datagrid-detail-caret-icon"

@@ -11,6 +11,7 @@ import {
   ContentChildren,
   ElementRef,
   EventEmitter,
+  Inject,
   Input,
   OnDestroy,
   Output,
@@ -43,6 +44,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { SelectionType } from './enums/selection-type';
 import { ColumnsService } from './providers/columns.service';
 import { DetailService } from './providers/detail.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-datagrid',
@@ -62,6 +64,7 @@ import { DetailService } from './providers/detail.service';
     TableSizeService,
     ColumnsService,
     DisplayModeService,
+    UNIQUE_ID_PROVIDER,
   ],
   host: {
     '[class.datagrid-host]': 'true',
@@ -80,8 +83,11 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private displayMode: DisplayModeService,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings
-  ) {}
+    public commonStrings: ClrCommonStrings,
+    @Inject(UNIQUE_ID) datagridId: string
+  ) {
+    this.detailService.id = datagridId;
+  }
 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;

@@ -1033,7 +1033,8 @@
     .datagrid-detail-pane-close {
       flex: 1 1 4rem;
       padding: 0;
-      cursor: pointer;
+      display: flex;
+      justify-content: flex-end;
 
       .btn.btn-link {
         color: $clr-dark-gray;

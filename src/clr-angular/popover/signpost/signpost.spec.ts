@@ -10,9 +10,14 @@ import { spec, TestContext } from '../../utils/testing/helpers.spec';
 
 import { ClrSignpost } from './signpost';
 import { ClrSignpostModule } from './signpost.module';
+import { SignpostIdService } from './providers/signpost-id.service';
 
 interface Context extends TestContext<ClrSignpost, TestDefaultSignpost | TestCustomTriggerSignpost> {
   ifOpenService: IfOpenService;
+  triggerButton: HTMLButtonElement;
+  contentCloseButton: HTMLButtonElement;
+  content: HTMLDivElement;
+  signpostIdService: SignpostIdService;
 }
 
 export default function(): void {
@@ -21,6 +26,7 @@ export default function(): void {
       spec(ClrSignpost, TestDefaultSignpost, ClrSignpostModule);
 
       beforeEach(function(this: Context) {
+        this.signpostIdService = this.getClarityProvider(SignpostIdService);
         this.ifOpenService = this.getClarityProvider(IfOpenService);
       });
 
@@ -97,6 +103,59 @@ export default function(): void {
         expect(this.ifOpenService.open).toBe(false);
       });
     });
+
+    describe('aria-control values', () => {
+      spec(ClrSignpost, TestDefaultSignpost, ClrSignpostModule);
+
+      function checkAriaControlsId(id: string, element: HTMLElement) {
+        const triggerControlsValue = element.querySelector('.signpost-action').getAttribute('aria-controls');
+        const closeControlsValue = element
+          .querySelector('.signpost-content .signpost-action')
+          .getAttribute('aria-controls');
+        const contentId = element.querySelector('.signpost-content').getAttribute('id');
+
+        expect(id).toBe(
+          contentId,
+          'ClrSignpostContent id is out of sync (content gets a new id each time it is created)'
+        );
+        expect(id).toBe(
+          triggerControlsValue,
+          'ClrSignpost id does not match the signpost trigger aria-controls value on the signpost trigger'
+        );
+        expect(id).toBe(
+          closeControlsValue,
+          'ClrSignpost id does not match the aria-controls value on the close button'
+        );
+      }
+
+      beforeEach(function(this: Context) {
+        this.signpostIdService = this.getClarityProvider(SignpostIdService);
+        this.triggerButton = this.hostElement.querySelector('.signpost-action');
+      });
+
+      it('are correct when content is opened', function(this: Context) {
+        let currentId;
+        this.signpostIdService.id.subscribe(idChange => {
+          currentId = idChange;
+        });
+
+        // First open
+        this.triggerButton.click();
+        this.fixture.detectChanges();
+
+        checkAriaControlsId(currentId, this.clarityElement);
+
+        // Close it
+        this.triggerButton.click();
+        this.fixture.detectChanges();
+
+        // Second open
+        this.triggerButton.click();
+        this.fixture.detectChanges();
+
+        checkAriaControlsId(currentId, this.clarityElement);
+      });
+    });
   });
 }
 
@@ -121,6 +180,7 @@ export default function(): void {
 class TestCustomTriggerSignpost {
   @ViewChild(ClrSignpost, { static: false })
   signpost: ClrSignpost;
+  openState: boolean = false;
 
   position: string = 'right-middle';
 }

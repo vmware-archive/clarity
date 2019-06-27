@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,6 +10,8 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { SIGNPOST_POSITIONS } from './signpost-positions';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { SignpostIdService } from './providers/signpost-id.service';
 
 // aka where the arrow / pointer is at in relation to the anchor
 const POSITIONS: string[] = [
@@ -30,19 +32,21 @@ const POSITIONS: string[] = [
 @Component({
   selector: 'clr-signpost-content',
   template: `
-        <div class="signpost-flex-wrap">
-            <div class="popover-pointer"></div>
-            <div class="signpost-content-header">
-                <button type="button" class="signpost-action close" (click)="close()">
-                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
-                </button>
-            </div>
-            <div class="signpost-content-body">
-                <ng-content></ng-content>
-            </div>
-        </div>
-    `,
-  host: { '[class.signpost-content]': 'true' },
+      <div class="signpost-wrap">
+          <div class="popover-pointer"></div>
+          <div class="signpost-content-body">
+              <ng-content></ng-content>
+          </div>
+          <div class="signpost-content-header">
+              <button type="button" [attr.aria-label]="commonStrings.signpostClose" class="signpost-action close"
+                      (click)="close()" [attr.aria-controls]="signpostContentId">
+                  <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+              </button>
+          </div>
+      </div>
+  `,
+  host: { '[class.signpost-content]': 'true', '[id]': 'signpostContentId' },
+  providers: [UNIQUE_ID_PROVIDER],
 })
 export class ClrSignpostContent extends AbstractPopover {
   constructor(
@@ -50,16 +54,19 @@ export class ClrSignpostContent extends AbstractPopover {
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
     parentHost: ElementRef,
-    commonStrings: ClrCommonStrings
+    commonStrings: ClrCommonStrings,
+    @Inject(UNIQUE_ID) public signpostContentId: string,
+    private signpostIdService: SignpostIdService
   ) {
+    super(injector, parentHost);
     if (!parentHost) {
       throw new Error('clr-signpost-content should only be used inside of a clr-signpost');
     }
-    super(injector, parentHost);
     this.commonStrings = commonStrings;
     // Defaults
     this.position = 'right-middle';
     this.closeOnOutsideClick = true;
+    this.signpostIdService.setId(signpostContentId);
   }
 
   commonStrings: ClrCommonStrings;

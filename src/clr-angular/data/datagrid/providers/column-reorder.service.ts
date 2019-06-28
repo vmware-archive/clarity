@@ -56,13 +56,8 @@ export class ColumnReorderService {
       // update with new orders
       this.orders = orders;
 
-      // update the columns states with their new orders
-      this.orders.forEach((order, index) => {
-        this.columnsService.emitStateChangeAt(index, { changes: [DatagridColumnChanges.ORDER], order: order });
-      });
-
-      this.columnsService.requestFirstVisibleChangeCheck();
-      this.columnsService.requestLastVisibleChangeCheck();
+      // update their states on their new orders as well
+      this.updateColumnStatesWithNewOrders();
     }
   }
 
@@ -71,6 +66,21 @@ export class ColumnReorderService {
       return this.orders[index];
     }
     return -1;
+  }
+
+  private updateColumnStatesWithNewOrders() {
+    this.orders.forEach((order, index) => {
+      this.columnsService.emitStateChangeAt(index, { changes: [DatagridColumnChanges.ORDER], order: order });
+    });
+
+    // The first and last visible columns might
+    // have been changed after orders were changed
+    this.haveFirstAndLastVisibleColumnsChanged();
+  }
+
+  private haveFirstAndLastVisibleColumnsChanged() {
+    this.columnsService.requestFirstVisibleChangeCheck();
+    this.columnsService.requestLastVisibleChangeCheck();
   }
 
   private hasDiffWith(newOrders: number[]): boolean {

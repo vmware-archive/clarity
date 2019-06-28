@@ -424,7 +424,7 @@ export default function(): void {
         this.context = this.create(ClrDatagridColumn, ReorderTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.order = 5;
         this.context.detectChanges();
-        expect(this.context.clarityDirective.order).toBe(5);
+        expect(this.context.clarityDirective.userDefinedOrder).toBe(5);
       });
 
       it('emits new order on setting', function() {

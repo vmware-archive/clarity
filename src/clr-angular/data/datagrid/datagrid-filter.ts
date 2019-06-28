@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, Input, Output, PLATFORM_ID, ViewChild } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 import { PopoverOptions } from '../../popover/common/popover-options.interface';
@@ -13,6 +13,7 @@ import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Custom filter that can be added in any column to override the default object property string filter.
@@ -50,13 +51,21 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 })
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter {
-  constructor(_filters: FiltersProvider<T>, public commonStrings: ClrCommonStrings) {
+  constructor(
+    _filters: FiltersProvider<T>,
+    public commonStrings: ClrCommonStrings,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     super(_filters);
   }
 
   public anchorPoint: Point = Point.RIGHT_BOTTOM;
   public popoverPoint: Point = Point.RIGHT_TOP;
   public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
+
+  @ViewChild('anchor', { static: false, read: ElementRef })
+  anchor: ElementRef;
+
   /**
    * Tracks whether the filter dropdown is open or not
    */
@@ -71,6 +80,9 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     if (boolOpen !== this._open) {
       this._open = boolOpen;
       this.openChanged.emit(boolOpen);
+      if (!boolOpen && isPlatformBrowser(this.platformId)) {
+        this.anchor.nativeElement.focus();
+      }
     }
   }
 

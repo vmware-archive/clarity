@@ -273,6 +273,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     allSelected: boolean;
     columns: QueryList<ClrDatagridColumn<T>>;
     commonStrings: ClrCommonStrings;
+    datagridTable: ElementRef;
     expandableRows: ExpandableRowsCount;
     items: Items<T>;
     iterator: ClrDatagridItems<T>;
@@ -288,7 +289,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, page: Page, commonStrings: ClrCommonStrings);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -304,8 +305,10 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     commonStrings: ClrCommonStrings;
     open: boolean;
     openChanged: EventEmitter<boolean>;
+    overflowClassName: string;
+    popoverId: string;
     popoverPoint: Point;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings);
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, elementRef: ElementRef, platformId: Object, zone: NgZone);
     close(event: MouseEvent): void;
     ngOnDestroy(): void;
     toggle(event: any): void;
@@ -363,6 +366,7 @@ export interface ClrDatagridComparatorInterface<T> {
 
 export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter {
     readonly active: boolean;
+    anchor: ElementRef;
     anchorPoint: Point;
     commonStrings: ClrCommonStrings;
     customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
@@ -370,7 +374,7 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     openChanged: EventEmitter<boolean>;
     popoverOptions: PopoverOptions;
     popoverPoint: Point;
-    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings);
+    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings, platformId: Object);
     toggle(): void;
 }
 

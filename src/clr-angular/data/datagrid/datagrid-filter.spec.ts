@@ -25,7 +25,7 @@ export default function(): void {
         const stateDebouncer = new StateDebouncer();
         filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         filter = new TestFilter();
-        component = new ClrDatagridFilter(filterService, {});
+        component = new ClrDatagridFilter(filterService, {}, null);
       });
 
       afterEach(function() {

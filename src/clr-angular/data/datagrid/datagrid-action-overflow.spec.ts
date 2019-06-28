@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { TestContext } from './helpers.spec';
 import { RowActionService } from './providers/row-action-service';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 export default function(): void {
   describe('DatagridActionOverflow component', function() {
@@ -83,6 +84,46 @@ export default function(): void {
       context.detectChanges();
       expect(context.clarityDirective.open).toBe(false);
     });
+
+    it(
+      'first item is focused when opened',
+      fakeAsync(function() {
+        toggle.click();
+        context.detectChanges();
+        tick();
+        const firstButton = context.clarityElement.querySelector('.action-item');
+        expect(document.activeElement).toBe(firstButton);
+        // Verify focus has moved on close
+        toggle.click();
+        context.detectChanges();
+        tick();
+        expect(document.activeElement).not.toBe(firstButton);
+      })
+    );
+
+    it(
+      'focus is applied only once per click',
+      fakeAsync(function() {
+        // Open
+        toggle.click();
+        context.detectChanges();
+        const firstButton = context.clarityElement.querySelector('.action-item');
+        expect(firstButton).toBeTruthy();
+        const focusSpy = spyOn(firstButton, 'focus');
+        tick();
+        expect(focusSpy.calls.count()).toBe(1);
+        // Close
+        toggle.click();
+        context.detectChanges();
+        tick();
+        expect(focusSpy.calls.count()).toBe(1);
+        // Reopen
+        toggle.click();
+        context.detectChanges();
+        tick();
+        expect(focusSpy.calls.count()).toBe(2);
+      })
+    );
   });
 }
 

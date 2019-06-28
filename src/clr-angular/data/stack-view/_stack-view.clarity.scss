@@ -179,8 +179,8 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
           background-image: generateCaretIcon($clr-accordion-text-color);
           @include icon-background-styles();
           transform: rotate(-90deg);
-          width: 12px;
-          height: 12px;
+          width: 0.5rem;
+          height: 0.5rem;
         }
       }
       > .stack-block-label,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,7 +31,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
-
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 @Component({
   template: `
     <clr-datagrid *ngIf="!destroy"
@@ -650,6 +650,16 @@ export default function(): void {
         expect(headActionOverflowCell).toBeNull();
         expect(actionOverflowCell.length).toEqual(0);
       });
+
+      it('should have aria-label with value `Select`', function() {
+        context = this.create(ClrDatagrid, ActionableRowTest);
+        context.getClarityProvider(RowActionService);
+        expect(
+          context.clarityElement
+            .querySelector('.datagrid-header .datagrid-column.datagrid-row-actions')
+            .getAttribute('aria-label')
+        ).toBe(new ClrCommonStringsService().select);
+      });
     });
 
     describe('Expandable rows', function() {
@@ -678,6 +688,16 @@ export default function(): void {
         const hiddenCell: HTMLElement = context.clarityElement.querySelector('.hidden-cell');
         expect(hiddenCell.classList).toContain('datagrid-cell--hidden');
         expect(window.getComputedStyle(hiddenCell).display).toBe('none');
+      });
+
+      it('should have aria-label with value `Expand`', function() {
+        const context = this.create(ClrDatagrid, ExpandableRowTest);
+        context.getClarityProvider(RowActionService);
+        expect(
+          context.clarityElement
+            .querySelector('.datagrid-header .datagrid-column.datagrid-expandable-caret')
+            .getAttribute('aria-label')
+        ).toBe(new ClrCommonStringsService().expand);
       });
     });
 
@@ -778,6 +798,14 @@ export default function(): void {
           selection.currentSingle = 1;
           context.detectChanges();
           expect(row.classList.contains('datagrid-selected')).toBeTruthy();
+        });
+
+        it('should have aria-label with value `Select`', function() {
+          expect(
+            context.clarityElement
+              .querySelector('.datagrid-header .datagrid-column.datagrid-select')
+              .getAttribute('aria-label')
+          ).toBe(new ClrCommonStringsService().select);
         });
       });
     });

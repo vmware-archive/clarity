@@ -26,7 +26,7 @@
                 </div>
                 <!-- header for datagrid where you can select one row only -->
                 <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"
-                     *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+                     *ngIf="selection.selectionType === SELECTION_TYPE.Single" [attr.aria-label]="commonStrings.select">
                   <div class="datagrid-column-separator"></div>
                 </div>
                 <!-- header for single row action; only displayType if we have at least one actionable row in datagrid -->

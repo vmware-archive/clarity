@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, OnDestroy, Optional, ContentChild } from '@angular/core';
+import { Component, OnDestroy, Optional, ContentChild, Inject, HostListener, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
@@ -55,7 +55,13 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-container *ngTemplateOutlet="clrDate"></ng-container>
-            <button type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
+            <button
+                    type="button"
+                    class="clr-input-group-icon-action"
+                    (click)="toggleDatepicker($event)" 
+                    *ngIf="isEnabled" 
+                    [attr.title]="commonStrings.open" 
+                    [disabled]="control?.disabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -69,6 +75,10 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     
     <ng-template #clrDate>
       <ng-content select="[clrDate]"></ng-content>
+    </ng-template>
+    
+    <ng-template #btnTemplate>
+        <ng-content select="button"></ng-content>
     </ng-template>
     
     <ng-container *ngIf="newFormsLayout; then newLayout else oldLayout"></ng-container>
@@ -115,12 +125,14 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     @Optional()
     @Inject(IS_NEW_FORMS_LAYOUT)
     public newFormsLayout: boolean,
-    private ngControlService: NgControlService
+    private ngControlService: NgControlService,
+    private elementRef: ElementRef
   ) {
     this.subscriptions.push(
       this._ifOpenService.openChange.subscribe(open => {
         if (open) {
           this.initializeCalendar();
+          this.escapeReady = true;
         }
       })
     );
@@ -134,6 +146,17 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
         this.control = control;
       })
     );
+  }
+
+  private escapeReady; // Gate to be used by this escape listener and the subscription change event from ifOpenSvc
+  @HostListener('body:keyup.escape', ['$event'])
+  close(event) {
+    if (this.newFormsLayout && this.escapeReady) {
+      this.elementRef.nativeElement.querySelector('.clr-input-group-icon-action').focus();
+    } else if (!this.newFormsLayout && this.escapeReady) {
+      this.elementRef.nativeElement.querySelector('.datepicker-trigger').focus();
+    }
+    this.escapeReady = false;
   }
 
   ngOnInit() {

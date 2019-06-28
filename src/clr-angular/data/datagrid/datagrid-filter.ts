@@ -58,7 +58,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
   public popoverPoint: Point = Point.RIGHT_TOP;
   public popoverOptions: PopoverOptions = { allowMultipleOpen: true };
 
-  @ViewChild('anchor', { static: false, read: ElementRef })
+  @ViewChild('anchor', { read: ElementRef })
   anchor: ElementRef;
 
   /**

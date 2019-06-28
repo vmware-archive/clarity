@@ -193,7 +193,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   @ViewChild('scrollableColumns', { read: ViewContainerRef })
   scrollableColumns: ViewContainerRef;
 
-  @ViewChild('datagridTable', { static: false, read: ElementRef })
+  @ViewChild('datagridTable', { read: ElementRef })
   datagridTable: ElementRef;
 
   ngAfterContentInit() {

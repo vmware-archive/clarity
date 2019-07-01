@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
 
 @Component({
@@ -24,6 +24,13 @@ import { DatagridColumnChanges } from './enums/column-changes.enum';
 export class ClrDatagridColumnToggleButton {
   constructor(private columnsService: ColumnsService) {}
 
+  private allSelected: Subject<boolean> = new EventEmitter();
+
+  @Output('clrAllSelected')
+  get clrAllSelected(): Observable<boolean> {
+    return this.allSelected.asObservable();
+  }
+
   private hideableColumns(): BehaviorSubject<ColumnState>[] {
     return this.columnsService.columns.filter(column => column.value.hideable);
   }
@@ -39,5 +46,6 @@ export class ClrDatagridColumnToggleButton {
         changes: [DatagridColumnChanges.HIDDEN],
       })
     );
+    this.allSelected.next(true);
   }
 }

@@ -222,6 +222,7 @@ export declare class ClrCommonFormsModule {
 }
 
 export declare abstract class ClrCommonStrings {
+    allColumnsSelected?: string;
     close?: string;
     collapse?: string;
     current?: string;
@@ -248,6 +249,7 @@ export declare abstract class ClrCommonStrings {
     selectAll?: string;
     show?: string;
     showColumns?: string;
+    showColumnsMenuDescription?: string;
     sortColumn?: string;
     success?: string;
     totalPages?: string;
@@ -305,7 +307,6 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     commonStrings: ClrCommonStrings;
     open: boolean;
     openChanged: EventEmitter<boolean>;
-    overflowClassName: string;
     popoverId: string;
     popoverPoint: Point;
     constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, elementRef: ElementRef, platformId: Object, zone: NgZone);
@@ -346,6 +347,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 }
 
 export declare class ClrDatagridColumnToggle {
+    allSelectedElement: ElementRef<HTMLElement>;
     anchorPoint: Point;
     columnSwitchId: string;
     commonStrings: ClrCommonStrings;
@@ -353,11 +355,14 @@ export declare class ClrDatagridColumnToggle {
     customToggleTitle: ClrDatagridColumnToggleTitle;
     readonly hasOnlyOneVisibleColumn: boolean;
     readonly hideableColumnStates: ColumnState[];
+    menuDescriptionElement: ElementRef<HTMLElement>;
     open: boolean;
     popoverPoint: Point;
-    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService, columnSwitchId: string);
+    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService, columnSwitchId: string, platformId: Object, zone: NgZone);
+    allColumnsSelected(): void;
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
+    trackByFn(index: any): any;
 }
 
 export interface ClrDatagridComparatorInterface<T> {

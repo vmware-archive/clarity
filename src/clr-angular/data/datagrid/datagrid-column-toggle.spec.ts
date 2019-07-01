@@ -62,43 +62,61 @@ export default function(): void {
     });
 
     describe('View', function() {
-      it('toggles switch panel', function() {
-        context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
-      });
+      it(
+        'toggles switch panel',
+        fakeAsync(function() {
+          context.detectChanges();
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          columnToggle.toggleSwitchPanel();
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
+          columnToggle.toggleSwitchPanel();
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+        })
+      );
 
-      it('closes switch panel when close button is clicked', function() {
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
-        context.clarityElement.querySelector('.toggle-switch-close-button').click();
-        context.detectChanges();
-        expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
-      });
+      it(
+        'closes switch panel when close button is clicked',
+        fakeAsync(function() {
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+          columnToggle.toggleSwitchPanel();
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(1);
+          context.clarityElement.querySelector('.toggle-switch-close-button').click();
+          context.detectChanges();
+          tick();
+          expect(context.clarityElement.querySelectorAll('.column-switch').length).toBe(0);
+        })
+      );
 
-      it('.column-switch should have id and it have to match the aria-control', function() {
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        expect(
-          context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
-        ).toBe(context.clarityElement.querySelector('div.column-switch').attributes.id.value);
-      });
+      it(
+        '.column-switch should have id and it have to match the aria-control',
+        fakeAsync(function() {
+          columnToggle.toggleSwitchPanel();
+          context.detectChanges();
+          tick();
+          expect(
+            context.clarityElement.querySelector('button.column-toggle--action').attributes['aria-controls'].value
+          ).toBe(context.clarityElement.querySelector('div.column-switch').attributes.id.value);
+        })
+      );
 
-      it('toggle switch close button should have aria-label for close', function() {
-        /* Open it */
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        expect(
-          context.clarityElement.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value
-        ).toBe(new ClrCommonStringsService().close);
-      });
+      it(
+        'toggle switch close button should have aria-label for close',
+        fakeAsync(function() {
+          /* Open it */
+          columnToggle.toggleSwitchPanel();
+          context.detectChanges();
+          tick();
+          expect(
+            context.clarityElement.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value
+          ).toBe(new ClrCommonStringsService().close);
+        })
+      );
 
       it('projects template as switch content', function() {
         columnsService.mockAllHideable();

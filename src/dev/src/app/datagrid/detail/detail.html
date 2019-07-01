@@ -15,6 +15,10 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
 </style>
 
 <clr-datagrid [(clrDgSelected)]="selection">
+  <clr-dg-action-bar>
+    <button class="btn">Test</button>
+  </clr-dg-action-bar>
+
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'creation'"><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column>
@@ -62,7 +66,7 @@ clr-datagrid ::ng-deep .datagrid-detail-body {
     </ng-template>
   </clr-dg-detail-->
 
-  <!--  Desugared option for two way binding, currently causing chocolate errors -->
+  <!--  Desugared option for two way binding -->
   <ng-template [(clrIfDetail)]="state" let-detail>
     <clr-dg-detail>
       <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>

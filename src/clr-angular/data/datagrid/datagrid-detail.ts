@@ -11,6 +11,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
   selector: 'clr-dg-detail',
   host: {
     '[class.datagrid-detail-pane]': 'true',
+    '[style.height.px]': 'detailService.height',
   },
   // We put the *ngIf on the clrFocusTrap so it doesn't always exist on the page
   template: `

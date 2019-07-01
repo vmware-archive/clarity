@@ -22,5 +22,6 @@ export class DatagridDetailDemo {
     inventory.size = 103;
     inventory.reset();
     this.users = inventory.all;
+    this.state = this.users[2];
   }
 }

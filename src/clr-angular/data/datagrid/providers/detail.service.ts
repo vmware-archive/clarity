@@ -15,6 +15,7 @@ export class DetailService {
   private _enabled = false;
   public button: any;
   public id: string;
+  public height: number = 0;
 
   get enabled(): boolean {
     return this._enabled;

@@ -121,18 +121,17 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         display: inline-block;
         content: '';
         float: left;
-        height: $clr-dropdown-caret-icon-dimension;
-        width: $clr-dropdown-caret-icon-dimension;
-        margin: (0.25rem + $clr-rem-1px) 0.25rem 0 0;
+        height: 0.58333rem;
+        width: 0.58333rem;
+        margin: (0.25rem + $clr-rem-1px) 0.2rem 0 0;
         text-align: center;
       }
     }
 
     .stack-block-caret {
-      height: 0.5rem;
-      width: 0.5rem;
-      margin-right: 0.125rem;
-
+      height: 0.58333rem;
+      width: 0.58333rem;
+      margin-right: 0.2rem;
       fill: $clr-stack-view-stack-block-caret-color;
     }
 
@@ -177,9 +176,11 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         cursor: pointer;
 
         &::before {
-          background-image: generateCaretIcon();
+          background-image: generateCaretIcon($clr-accordion-text-color);
           @include icon-background-styles();
           transform: rotate(-90deg);
+          width: 0.5rem;
+          height: 0.5rem;
         }
       }
       > .stack-block-label,

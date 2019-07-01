@@ -21,7 +21,7 @@ $clr-stack-view-stack-block-expanded-bg-color: $clr-global-selection-color !defa
 $clr-stack-view-stack-block-expandable-hover: $clr-color-neutral-200 !default;
 $clr-stack-view-stack-block-content-text-color: inherit !default;
 $clr-stack-view-stack-block-expanded-text-color: $clr-color-neutral-1000 !default;
-$clr-stack-view-stack-block-caret-color: $clr-color-neutral-500 !default;
+$clr-stack-view-stack-block-caret-color: $clr-global-font-color !default;
 
 $clr-stack-view-font-weight: $clr-p3-font-weight !default;
 // @deprecated in 2.0 $clr-stack prefix to be replaced by $clr-stack-view
@@ -33,7 +33,7 @@ $clr-stack-view-font-weight: $clr-p3-font-weight !default;
 $clr-stack-view-line-height: $clr-p3-line-height !default;
 $clr-stack-view-letter-spacing: $clr-p3-letter-spacing !default;
 
-$clr-stack-view-stack-block-label-text-color: $clr-color-neutral-900 !default;
+$clr-stack-view-stack-block-label-text-color: $clr-global-font-color !default;
 $clr-stack-view-stack-block-label-font-size: $clr-p2-font-size !default;
 $clr-stack-view-stack-block-label-font-weight: $clr-p2-font-weight !default;
 $clr-stack-view-stack-block-label-line-height: $clr-p2-line-height !default;

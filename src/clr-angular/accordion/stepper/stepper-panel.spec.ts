@@ -84,20 +84,45 @@ describe('ClrStep Reactive Forms', () => {
     it('should show the appropriate aria-live message based on form state', () => {
       const mockStep = new AccordionPanelModel('groupName', 0);
       const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
-      let liveSection: HTMLElement = fixture.nativeElement.querySelector('.clr-sr-only');
+      let liveSection: HTMLElement = fixture.nativeElement.querySelector('[aria-live="assertive"]');
       expect(liveSection).toBe(null);
 
       mockStep.status = AccordionStatus.Error;
       (stepperService as MockStepperService).step.next(mockStep);
       fixture.detectChanges();
-      liveSection = fixture.nativeElement.querySelector('.clr-sr-only');
-      expect(liveSection.getAttribute('aria-live')).toBe('assertive');
+      liveSection = fixture.nativeElement.querySelector('[aria-live="assertive"]');
+      expect(liveSection).toBeTruthy();
       expect(liveSection.innerText.trim()).toBe('Error');
 
       mockStep.status = AccordionStatus.Complete;
       (stepperService as MockStepperService).step.next(mockStep);
       fixture.detectChanges();
       expect(liveSection.innerText.trim()).toBe('Success');
+    });
+
+    it('should associate the header button to the step status message', () => {
+      const mockStep = new AccordionPanelModel('groupName', 0);
+      const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
+      mockStep.status = AccordionStatus.Error;
+      (stepperService as MockStepperService).step.next(mockStep);
+      fixture.detectChanges();
+
+      const liveSectionId: string = fixture.nativeElement.querySelector('[aria-live="assertive"]').id;
+      const headerButtonDescribeBy: string = fixture.nativeElement
+        .querySelector('.clr-accordion-header-button')
+        .getAttribute('aria-describedby');
+      expect(liveSectionId).toBe(headerButtonDescribeBy);
+    });
+
+    it('should disable the header button based on the appropriate step state', () => {
+      const mockStep = new AccordionPanelModel('groupName', 0);
+      const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
+
+      mockStep.status = AccordionStatus.Error;
+      mockStep.disabled = true;
+      (stepperService as MockStepperService).step.next(mockStep);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.clr-accordion-header-button').getAttribute('disabled')).toBe('');
     });
   });
 });

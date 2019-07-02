@@ -81,6 +81,18 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
     return `clr-accordion-panel-${panel.status} ${panel.open ? 'clr-accordion-panel-open' : ''}`;
   }
 
+  getAccordionContentId(id: string) {
+    return `clr-accordion-content-${id}'`;
+  }
+
+  getAccordionStatusId(id: string) {
+    return `clr-accordion-header-status-${id}'`;
+  }
+
+  getAccordionHeaderId(id: string) {
+    return `clr-accordion-header-${id}`;
+  }
+
   private emitPanelChange(panel: AccordionPanelModel) {
     this.panelOpenChange.emit(panel.open);
 

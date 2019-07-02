@@ -69,6 +69,9 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
     panelOpenChange: EventEmitter<boolean>;
     constructor(commonStrings: ClrCommonStrings, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
     collapsePanelOnAnimationDone(panel: AccordionPanelModel): void;
+    getAccordionContentId(id: string): string;
+    getAccordionHeaderId(id: string): string;
+    getAccordionStatusId(id: string): string;
     getPanelStateClasses(panel: AccordionPanelModel): string;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnInit(): void;

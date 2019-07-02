@@ -1,5 +1,5 @@
 <ng-container *ngIf="panel | async; let panel">
-  <div *ngIf="panel.status !== AccordionStatus.Inactive" aria-live="assertive" class="clr-sr-only">
+  <div *ngIf="panel.status !== AccordionStatus.Inactive" [id]="getAccordionStatusId(panel.templateId)" aria-live="assertive" class="clr-sr-only">
     <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.danger}}</ng-container>
     <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.success}}</ng-container>
   </div>
@@ -12,10 +12,11 @@
         (click)="togglePanel()"
         (focus)="focusHeader = true"
         (blur)="focusHeader = false"
-        [id]="'clr-accordion-header-' + panel.templateId"
-        [attr.aria-controls]="'clr-accordion-content-' + panel.templateId"
-        [attr.aria-expanded]="panel.open"
+        [id]="getAccordionHeaderId(panel.templateId)"
         [disabled]="panel.disabled"
+        [attr.aria-controls]="getAccordionContentId(panel.templateId)"
+        [attr.aria-expanded]="panel.open"
+        [attr.aria-describedby]="getAccordionStatusId(panel.templateId)"
       >
         <span class="clr-accordion-status">
           <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>
@@ -30,9 +31,9 @@
     <div
       @skipInitialRender
       role="region"
-      [id]="'clr-accordion-content-' + panel.templateId"
+      [id]="getAccordionContentId(panel.templateId)"
       [attr.aria-hidden]="!panel.open"
-      [attr.aria-labelledby]="'clr-accordion-header-' + panel.templateId"
+      [attr.aria-labelledby]="getAccordionHeaderId(panel.templateId)"
     >
       <div
         *ngIf="panel.open"

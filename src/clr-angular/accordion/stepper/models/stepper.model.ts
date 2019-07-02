@@ -19,7 +19,7 @@ export class StepperModel extends AccordionModel {
 
   updatePanelOrder(ids: string[]) {
     super.updatePanelOrder(ids);
-    this.openFirstPanel(ids);
+    this.openFirstPanel();
   }
 
   togglePanel(panelId: string) {
@@ -38,7 +38,7 @@ export class StepperModel extends AccordionModel {
   }
 
   overrideInitialPanel(panelId: string) {
-    this.panels.filter(panel => this._panels[panelId] !== undefined).forEach(panel => {
+    this.panels.filter(() => this._panels[panelId] !== undefined).forEach(panel => {
       if (panel.index < this._panels[panelId].index) {
         this.completePanel(panel.id);
       } else if (panel.id === panelId) {
@@ -55,6 +55,7 @@ export class StepperModel extends AccordionModel {
 
   resetPanels() {
     this.panels.forEach(p => this.resetPanel(p.id));
+    this.openFirstPanel();
   }
 
   private resetAllFuturePanels(panelId: string) {
@@ -63,11 +64,14 @@ export class StepperModel extends AccordionModel {
 
   private resetPanel(panelId: string) {
     this._panels[panelId].status = AccordionStatus.Inactive;
-    this._panels[panelId].open = this._panels[panelId].index === 0; // if first panel set to be open
+    this._panels[panelId].open = false;
+    this._panels[panelId].disabled = true;
   }
 
-  private openFirstPanel(ids: string[]) {
-    ids.forEach(id => (this._panels[id].open = this._panels[id].index === 0));
+  private openFirstPanel() {
+    const firstPanel = this.getFirstPanel();
+    this._panels[firstPanel.id].open = true;
+    this._panels[firstPanel.id].disabled = true;
   }
 
   private completePanel(panelId: string) {
@@ -77,11 +81,12 @@ export class StepperModel extends AccordionModel {
   }
 
   private openNextPanel(currentPanelId: string) {
-    const nextPanel = this.panels.find(s => s.index === this._panels[currentPanelId].index + 1);
+    const nextPanel = this.getNextPanel(currentPanelId);
 
     if (nextPanel) {
       this.resetAllFuturePanels(nextPanel.id);
       this._panels[nextPanel.id].open = true;
+      this._panels[nextPanel.id].disabled = true;
     }
   }
 
@@ -89,6 +94,14 @@ export class StepperModel extends AccordionModel {
     this.resetAllFuturePanels(panelId);
     this._panels[panelId].open = true;
     this._panels[panelId].status = AccordionStatus.Error;
+  }
+
+  private getFirstPanel() {
+    return this.panels.find(panel => panel.index === 0);
+  }
+
+  private getNextPanel(currentPanelId: string) {
+    return this.panels.find(s => s.index === this._panels[currentPanelId].index + 1);
   }
 
   private getNumberOfIncompletePanels() {

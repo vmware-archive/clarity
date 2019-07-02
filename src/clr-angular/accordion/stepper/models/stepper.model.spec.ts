@@ -30,6 +30,28 @@ describe('StepperModel', () => {
     expect(stepper.panels[1].status).toBe(AccordionStatus.Inactive);
   });
 
+  it('should disable the header buttons by default until a step is completed', () => {
+    // default
+    expect(stepper.panels[0].status).toBe(AccordionStatus.Inactive);
+    expect(stepper.panels[0].disabled).toBe(true);
+    expect(stepper.panels[1].disabled).toBe(true);
+    expect(stepper.panels[2].disabled).toBe(true);
+
+    // valid next step
+    stepper.navigateToNextPanel(step1Id, true);
+    expect(stepper.panels[0].status).toBe(AccordionStatus.Complete);
+    expect(stepper.panels[0].disabled).toBe(false);
+    expect(stepper.panels[1].disabled).toBe(true);
+    expect(stepper.panels[2].disabled).toBe(true);
+
+    // invalid next step
+    stepper.navigateToNextPanel(step2Id, false);
+    expect(stepper.panels[1].status).toBe(AccordionStatus.Error);
+    expect(stepper.panels[0].disabled).toBe(false);
+    expect(stepper.panels[1].disabled).toBe(true);
+    expect(stepper.panels[2].disabled).toBe(true);
+  });
+
   it('should navigate to next step if current step is valid and mark step complete', () => {
     stepper.navigateToNextPanel(step1Id);
     expect(stepper.panels[0].status).toBe(AccordionStatus.Complete);

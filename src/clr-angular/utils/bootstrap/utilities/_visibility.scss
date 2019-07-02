@@ -14,7 +14,17 @@
       display: none !important;
     }
   }
+  .clr-hidden-#{$bp}-up {
+    @include media-breakpoint-up($bp) {
+      display: none !important;
+    }
+  }
   .hidden-#{$bp}-down {
+    @include media-breakpoint-down($bp) {
+      display: none !important;
+    }
+  }
+  .clr-hidden-#{$bp}-down {
     @include media-breakpoint-down($bp) {
       display: none !important;
     }

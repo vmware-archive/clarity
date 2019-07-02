@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -311,9 +311,9 @@ describe('ClarityIcons', () => {
       resetCallbacks();
     });
 
-    it('should insert the SVG markup', () => {
+    it('should insert the SVG markup also make sure that the shape is case-insensitive', () => {
       const clarityIcon = document.createElement('clr-icon');
-      clarityIcon.setAttribute('shape', 'home');
+      clarityIcon.setAttribute('shape', 'HoMe ');
 
       const divSampleElement = document.createElement('div');
       divSampleElement.innerHTML = ClarityIcons.get('home');

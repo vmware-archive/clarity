@@ -185,16 +185,13 @@
                             <div class="clrweb-DoxMedia-img">
                                 <div class="btn-group btn-primary btn-icon">
                                     <button class="btn">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        <span class="clr-icon-title">Add</span>
+                                        <clr-icon shape="check" title="check"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="favorite"></clr-icon>
-                                        <span class="clr-icon-title">Favorite</span>
+                                        <clr-icon shape="home" title="home"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="download"></clr-icon>
-                                        <span class="clr-icon-title">Download</span>
+                                        <clr-icon shape="user" title="user"></clr-icon>
                                     </button>
                                 </div>
                             </div>
@@ -215,16 +212,13 @@
                             <div class="clrweb-DoxMedia-img">
                                 <div class="btn-group btn-primary btn-sm btn-icon">
                                     <button class="btn">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        <span class="clr-icon-title">Add</span>
+                                        <clr-icon shape="check" title="check"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="favorite"></clr-icon>
-                                        <span class="clr-icon-title">Favorite</span>
+                                        <clr-icon shape="home" title="home"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="download"></clr-icon>
-                                        <span class="clr-icon-title">Download</span>
+                                        <clr-icon shape="user" title="user"></clr-icon>
                                     </button>
                                 </div>
                             </div>
@@ -248,16 +242,16 @@
                             <div class="clrweb-DoxMedia-img">
                                 <div class="btn-group btn-primary">
                                     <button class="btn">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        Add
+                                        <clr-icon shape="check"></clr-icon>
+                                        Check
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="favorite"></clr-icon>
-                                        Favorite
+                                        <clr-icon shape="home"></clr-icon>
+                                        Home
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="download"></clr-icon>
-                                        Download
+                                        <clr-icon shape="user"></clr-icon>
+                                        User Profile
                                     </button>
                                 </div>
                             </div>
@@ -278,16 +272,16 @@
                             <div class="clrweb-DoxMedia-img">
                                 <div class="btn-group btn-primary">
                                     <button class="btn">
-                                        Add
-                                        <clr-icon shape="plus"></clr-icon>
+                                        Check
+                                        <clr-icon shape="check"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        Favorite
-                                        <clr-icon shape="favorite"></clr-icon>
+                                        Home
+                                        <clr-icon shape="home"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        Download
-                                        <clr-icon shape="download"></clr-icon>
+                                        User Profile
+                                        <clr-icon shape="user"></clr-icon>
                                     </button>
                                 </div>
                             </div>
@@ -302,6 +296,15 @@
                     </div>
                 </div>
             </div>
+
+            <h3>Accessibility</h3>
+            <p>
+                If your icon button has no text, we recommend adding the <code class="clr-code">title=""</code> attribute to 
+                your icon buttons. This adds some additional context for users unfamiliar with what action your icon button 
+                might produce. The text should reflect the action being completed.
+            </p>
+
+            <clr-code-snippet [clrCode]="accessibilityExample"></clr-code-snippet>
 
             <h3>Overflow</h3>
 
@@ -335,7 +338,7 @@
                                     </button>
                                     <div class="btn-group-overflow open">
                                         <button class="btn dropdown-toggle">
-                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                            <clr-icon shape="ellipsis-horizontal" title="Expand dropdown"></clr-icon>
                                         </button>
                                         <div class="dropdown-menu">
                                             <button class="btn">Download</button>
@@ -366,24 +369,24 @@
                             <div class="clrweb-DoxMedia-img is-left-aligned">
                                 <div class="btn-group btn-primary">
                                     <button class="btn">
-                                        <clr-icon shape="plus"></clr-icon>
+                                        <clr-icon shape="check" title="Add"></clr-icon>
                                         Add
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="favorite"></clr-icon>
-                                        Favorite
+                                        <clr-icon shape="folder" title="Folder"></clr-icon>
+                                        Folder
                                     </button>
                                     <div class="btn-group-overflow open">
                                         <button class="btn dropdown-toggle">
-                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                            <clr-icon shape="ellipsis-horizontal" title="Expand dropdown"></clr-icon>
                                         </button>
                                         <div class="dropdown-menu">
                                             <button class="btn">
-                                                <clr-icon shape="download"></clr-icon>
+                                                <clr-icon shape="download" title="Download"></clr-icon>
                                                 Download
                                             </button>
                                             <button class="btn">
-                                                <clr-icon shape="refresh"></clr-icon>
+                                                <clr-icon shape="refresh" title="Refresh"></clr-icon>
                                                 Refresh
                                             </button>
                                         </div>
@@ -399,16 +402,14 @@
                             <div class="clrweb-DoxMedia-img">
                                 <div class="btn-group btn-primary btn-icon">
                                     <button class="btn">
-                                        <clr-icon shape="plus"></clr-icon>
-                                        <span class="clr-icon-title">Add</span>
+                                        <clr-icon shape="check" title="Add"></clr-icon>
                                     </button>
                                     <button class="btn">
-                                        <clr-icon shape="favorite"></clr-icon>
-                                        <span class="clr-icon-title">Favorite</span>
+                                        <clr-icon shape="folder" title="Folder"></clr-icon>
                                     </button>
                                     <div class="btn-group-overflow open">
                                         <button class="btn dropdown-toggle">
-                                            <clr-icon shape="ellipsis-horizontal"></clr-icon>
+                                            <clr-icon shape="ellipsis-horizontal" title="Expand dropdown"></clr-icon>
                                         </button>
                                         <div class="dropdown-menu">
                                             <button class="btn">

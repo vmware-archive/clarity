@@ -41,7 +41,7 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
     public commonStrings: ClrCommonStrings,
     @Optional() private formGroupName: FormGroupName,
     @Optional() private ngModelGroup: NgModelGroup,
-    stepperService: StepperService,
+    private stepperService: StepperService,
     ifExpandService: IfExpandService,
     @Inject(UNIQUE_ID) id: string
   ) {
@@ -51,6 +51,7 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.panel = this.panel.pipe(tap(panel => this.triggerAllFormControlValidationIfError(panel)));
+    this.stepperService.disablePanel(this.id, true);
   }
 
   private triggerAllFormControlValidationIfError(panel: AccordionPanelModel) {

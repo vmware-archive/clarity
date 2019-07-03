@@ -160,7 +160,6 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
   private computeDatagridHeight() {
     // IE doesn't return correct value for getComputedStyle(element).getPropertyValue("height")
     const value: number = this.domAdapter.clientRect(this.el.nativeElement).height;
-    this.detailService.height = value;
     this.renderer.setStyle(this.el.nativeElement, 'height', value + 'px');
     this._heightSet = true;
   }

@@ -917,43 +917,10 @@
   /*
    * The following are styles for Detail Pane
    */
-  /* autoprefixer xgrid: autoplace */
-  //.datagrid-host {
-  //  display: grid;
-  //  grid-template-columns: 1fr;
-  //  grid-template-rows: auto auto 1.5rem;
-  //  grid-template-areas:
-  //    'datagrid-actions'
-  //    'datagrid'
-  //    'datagrid-footer';
-  //}
-  //.datagrid-host.datagrid-detail-open {
-  //  grid-template-columns: 1fr 2fr;
-  //  grid-template-rows: auto auto 1.5rem;
-  //  grid-template-areas:
-  //    'datagrid-actions datagrid-actions'
-  //    'datagrid datagrid-detail'
-  //    'datagrid-footer datagrid-detail';
-  //}
-  //.datagrid {
-  //  grid-area: datagrid;
-  //  width: auto;
-  //}
-  //.datagrid-action-bar {
-  //  grid-area: datagrid-actions;
-  //}
-  //.datagrid-footer {
-  //  grid-area: datagrid-footer;
-  //}
-  //.datagrid-detail-pane {
-  //  grid-area: datagrid-detail;
-  //}
+  /* autoprefixer grid: autoplace */
   .datagrid-host {
-    display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-    -ms-grid-rows: auto auto 1.5rem;
     grid-template-rows: auto auto 1.5rem;
     grid-template-areas:
       'datagrid-actions'
@@ -961,9 +928,7 @@
       'datagrid-footer';
   }
   .datagrid-host.datagrid-detail-open {
-    -ms-grid-columns: 1fr 2fr;
     grid-template-columns: 1fr 2fr;
-    -ms-grid-rows: auto auto 1.5rem;
     grid-template-rows: auto auto 1.5rem;
     grid-template-areas:
       'datagrid-actions datagrid-actions'
@@ -971,32 +936,16 @@
       'datagrid-footer datagrid-detail';
   }
   .datagrid {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
     grid-area: datagrid;
     width: auto;
   }
-  .datagrid-host.datagrid-detail-open > .datagrid {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-  }
   .datagrid-action-bar {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
     grid-area: datagrid-actions;
   }
-  .datagrid-host.datagrid-detail-open > .datagrid-action-bar {
-    -ms-grid-column-span: 2;
-  }
   .datagrid-footer {
-    -ms-grid-row: 3;
-    -ms-grid-column: 1;
     grid-area: datagrid-footer;
   }
   .datagrid-detail-pane {
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 2;
-    -ms-grid-column: 2;
     grid-area: datagrid-detail;
   }
 
@@ -1067,6 +1016,7 @@
 
   .datagrid-detail-body {
     flex: 1 1 auto;
+    padding: 0 1rem;
   }
 
   .datagrid-detail-header {

@@ -37,7 +37,6 @@ export class ClrDatagridDetailHeader {
   @ViewChild('title') title;
 
   ngAfterViewInit() {
-    // Set Timeout is required to move focus properly
     if (isPlatformBrowser(this.platformId)) {
       this.title.nativeElement.focus();
     }

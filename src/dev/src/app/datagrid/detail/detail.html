@@ -6,17 +6,22 @@
 
 <h2>Detail Pane</h2>
 
-<style>
-clr-datagrid ::ng-deep .datagrid-detail-body {
-  padding: 0 1rem;
-}
-::ng-deep .datagrid-nav { display: none; }
-::ng-deep h2 { display: none; }
-</style>
+<input type="text" placeholder="Can't type into me" />
 
 <clr-datagrid [(clrDgSelected)]="selection">
   <clr-dg-action-bar>
-    <button class="btn">Test</button>
+    <div class="btn-group">
+      <clr-dropdown>
+        <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
+          Export
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
+          <button type="button" clrDropdownItem>Export All</button>
+          <button type="button" clrDropdownItem>Export Selected Items</button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
   </clr-dg-action-bar>
 
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>

@@ -82,9 +82,9 @@ export class ClrDatagridColumnToggle {
   @ContentChild(ClrDatagridColumnToggleButton, { static: false })
   customToggleButton: ClrDatagridColumnToggleButton;
   @ViewChild('menuDescription', { read: ElementRef, static: false })
-  menuDescriptionElement: ElementRef<HTMLElement>;
+  private menuDescriptionElement: ElementRef<HTMLElement>;
   @ViewChild('allSelected', { read: ElementRef, static: false })
-  allSelectedElement: ElementRef<HTMLElement>;
+  private allSelectedElement: ElementRef<HTMLElement>;
 
   constructor(
     public commonStrings: ClrCommonStrings,

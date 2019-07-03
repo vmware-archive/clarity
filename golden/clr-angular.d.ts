@@ -347,7 +347,6 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 }
 
 export declare class ClrDatagridColumnToggle {
-    allSelectedElement: ElementRef<HTMLElement>;
     anchorPoint: Point;
     columnSwitchId: string;
     commonStrings: ClrCommonStrings;
@@ -355,7 +354,6 @@ export declare class ClrDatagridColumnToggle {
     customToggleTitle: ClrDatagridColumnToggleTitle;
     readonly hasOnlyOneVisibleColumn: boolean;
     readonly hideableColumnStates: ColumnState[];
-    menuDescriptionElement: ElementRef<HTMLElement>;
     open: boolean;
     popoverPoint: Point;
     constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService, columnSwitchId: string, platformId: Object, zone: NgZone);

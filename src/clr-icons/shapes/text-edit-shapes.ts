@@ -73,11 +73,11 @@ export const ClrShapeLanguage = clrIconSVG(`<path d="M30,3H14v5h2V5h14c0.6,0,1,0
 		C33.3,4.3,32,3,30.3,3z M13.1,22.9l-0.5-1.6H9.5l-0.6,1.6H6.5L9.8,14h2.4l3.3,8.9L13.1,22.9z M28.3,15v2c-1.3,0-2.7-0.4-3.9-1
 		c-1.2,0.6-2.6,0.9-4,1l-0.1-2c0.7,0,1.4-0.1,2.1-0.3c-0.9-0.9-1.5-2-1.8-3.2h2.1c0.3,0.9,0.9,1.6,1.6,2.2c1.1-0.9,1.8-2.2,1.9-3.7
 		h-6V8h3V6h2v2h3.3l0.1,1c0.1,2.1-0.7,4.2-2.2,5.7C27.1,14.9,27.7,15,28.3,15z" class="clr-i-solid clr-i-solid-path-2" />`);
-export const ClrShapeForegroundColor = clrIconSVG(
+export const ClrShapeTextColor = clrIconSVG(
   `<path d="M19.47,3.84a1.45,1.45,0,0,0-1.4-1H18a1.45,1.45,0,0,0-1.42,1L8.42,21.56a1.35,1.35,0,0,0-.14.59,1,1,0,0,0,1,1,1.11,1.11,0,0,0,1.08-.77l2.08-4.65h11l2.08,4.59a1.24,1.24,0,0,0,1.12.83,1.08,1.08,0,0,0,1.08-1.08,1.59,1.59,0,0,0-.14-.57ZM13.36,15.71,18,5.49l4.6,10.22Z" class="clr-i-outline clr-i-outline-path-1"/>
   <rect x="4.06" y="25" width="28" height="8" rx="2" ry="2" class="clr-i-outline clr-i-outline-path-2"/>`
 );
-export const ClrShapeHighlightColor = clrIconSVG(
+export const ClrShapeHighlighter = clrIconSVG(
   `<path d="M15.82,26.06a1,1,0,0,1-.71-.29L8.67,19.33a1,1,0,0,1-.29-.71,1,1,0,0,1,.29-.71L23,3.54a5.55,5.55,0,1,1,7.85,7.86L16.53,25.77A1,1,0,0,1,15.82,26.06Zm-5-7.44,5,5L29.48,10a3.54,3.54,0,0,0,0-5,3.63,3.63,0,0,0-5,0Z" class="clr-i-outline clr-i-outline-path-1"/>
   <path d="M10.38,28.28A1,1,0,0,1,9.67,28L6.45,24.77a1,1,0,0,1-.22-1.09l2.22-5.44a1,1,0,0,1,1.63-.33l6.45,6.44A1,1,0,0,1,16.2,26l-5.44,2.22A1.33,1.33,0,0,1,10.38,28.28ZM8.33,23.82l2.29,2.28,3.43-1.4L9.74,20.39Z" class="clr-i-outline clr-i-outline-path-2"/>
   <path d="M8.94,30h-5a1,1,0,0,1-.84-1.55l3.22-4.94a1,1,0,0,1,1.55-.16l3.21,3.22a1,1,0,0,1,.06,1.35L9.7,29.64A1,1,0,0,1,8.94,30ZM5.78,28H8.47L9,27.34l-1.7-1.7Z" class="clr-i-outline clr-i-outline-path-3"/>
@@ -137,8 +137,8 @@ export const TextEditShapes: any = {
   'align-middle': ClrShapeAlignMiddle,
   'align-top': ClrShapeAlignTop,
   language: ClrShapeLanguage,
-  'foreground-color': ClrShapeForegroundColor,
-  'highlight-color': ClrShapeHighlightColor,
+  'text-color': ClrShapeTextColor,
+  highlighter: ClrShapeHighlighter,
   indent: ClrShapeIndent,
   outdent: ClrShapeOutdent,
   strikethrough: ClrShapeStrikethrough,

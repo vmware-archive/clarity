@@ -133,4 +133,12 @@ export abstract class ClrCommonStrings {
    * Modal end of content
    */
   modalContentEnd?: string;
+  /**
+   * Datagrid Show columns menu description
+   */
+  showColumnsMenuDescription?: string;
+  /**
+   * Datagrid Show columns / All columns selected confirmation
+   */
+  allColumnsSelected?: string;
 }

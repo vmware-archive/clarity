@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ContentChild, Inject } from '@angular/core';
+import { Component, ContentChild, ElementRef, Inject, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
 
 import { Point } from '../../popover/common/popover';
 
@@ -14,6 +14,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
+import { isPlatformBrowser } from '@angular/common';
 
 import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 
@@ -31,6 +32,8 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
     <div [id]="columnSwitchId" class="column-switch"
          *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
       <div class="switch-header">
+        <div class="clr-sr-only" tabindex="-1" #menuDescription>{{commonStrings.showColumnsMenuDescription}}</div>
+        <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.allColumnsSelected}}</div>
         <ng-container *ngIf="!customToggleTitle">{{commonStrings.showColumns}}</ng-container>
         <ng-content select="clr-dg-column-toggle-title"></ng-content>
         <button
@@ -42,7 +45,7 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
         </button>
       </div>
       <ul class="switch-content list-unstyled">
-        <li *ngFor="let columnState of hideableColumnStates;">
+        <li *ngFor="let columnState of hideableColumnStates;trackBy: trackByFn">
           <clr-checkbox-wrapper>
             <input clrCheckbox type="checkbox"
                    [disabled]="hasOnlyOneVisibleColumn && !columnState.hidden"
@@ -56,7 +59,9 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
       </ul>
       <div class="switch-footer">
         <ng-content select="clr-dg-column-toggle-button"></ng-content>
-        <clr-dg-column-toggle-button *ngIf="!customToggleButton">{{commonStrings.selectAll}}</clr-dg-column-toggle-button>
+        <clr-dg-column-toggle-button *ngIf="!customToggleButton" (clrAllSelected)="allColumnsSelected()">
+          {{commonStrings.selectAll}}
+        </clr-dg-column-toggle-button>
       </div>
     </div>
   `,
@@ -76,11 +81,17 @@ export class ClrDatagridColumnToggle {
   customToggleTitle: ClrDatagridColumnToggleTitle;
   @ContentChild(ClrDatagridColumnToggleButton, { static: false })
   customToggleButton: ClrDatagridColumnToggleButton;
+  @ViewChild('menuDescription', { read: ElementRef, static: false })
+  private menuDescriptionElement: ElementRef<HTMLElement>;
+  @ViewChild('allSelected', { read: ElementRef, static: false })
+  private allSelectedElement: ElementRef<HTMLElement>;
 
   constructor(
     public commonStrings: ClrCommonStrings,
     private columnsService: ColumnsService,
-    @Inject(UNIQUE_ID) public columnSwitchId: string
+    @Inject(UNIQUE_ID) public columnSwitchId: string,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private zone: NgZone
   ) {}
 
   get hideableColumnStates(): ColumnState[] {
@@ -106,5 +117,22 @@ export class ClrDatagridColumnToggle {
 
   toggleSwitchPanel() {
     this.open = !this.open;
+    if (this.open && isPlatformBrowser(this.platformId)) {
+      this.zone.runOutsideAngular(() => {
+        setTimeout(() => {
+          this.menuDescriptionElement.nativeElement.focus();
+        });
+      });
+    }
+  }
+
+  allColumnsSelected() {
+    this.allSelectedElement.nativeElement.focus();
+  }
+
+  // Without tracking the checkboxes get rerendered on model update, which leads
+  // to loss of focus after checkbox toggle.
+  trackByFn(index) {
+    return index;
   }
 }

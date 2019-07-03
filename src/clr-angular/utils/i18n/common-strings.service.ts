@@ -41,6 +41,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   maxValue = 'Max value';
   modalContentStart = 'Beginning of Modal Content';
   modalContentEnd = 'End of Modal Content';
+  showColumnsMenuDescription = 'Show or hide columns menu';
+  allColumnsSelected = 'All columns selected';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

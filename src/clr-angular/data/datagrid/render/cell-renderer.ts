@@ -27,10 +27,6 @@ export class DatagridCellRenderer implements OnDestroy {
 
     this.runAllChanges = ALL_COLUMN_CHANGES;
 
-    // WARNING: This subscription takes place before this.clearWidth method gets called.
-    // So whatever width style applied on the subscription will be removed in the this.clearWidth.
-    // But when DatagridRenderStep.COMPUTE_COLUMN_WIDTHS takes place, the cell will apply the state width style again.
-    // And this newly applied style could be exactly the same as the previously removed width style.
     this.stateSubscription = columnState.subscribe(state => this.stateChanges(state));
   }
 

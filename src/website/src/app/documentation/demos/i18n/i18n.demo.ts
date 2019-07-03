@@ -48,6 +48,11 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'currentPage', role: 'Datagrid: pagination current page button text' },
     { key: 'totalPages', role: 'Datagrid: pagination total pages button text' },
     { key: 'minValue', role: 'Datagrid: minimum value (numeric filters)' },
-    { key: 'maxValue', role: 'Datagrid: maximum value (numeric filters' },
+    { key: 'maxValue', role: 'Datagrid: maximum value (numeric filters)' },
+    {
+      key: 'showColumnsMenuDescription',
+      role: 'Datagrid: screen reader only description of the Show/Hide columns menu',
+    },
+    { key: 'allColumnsSelected', role: 'Datagrid: screen reader only confirmation that all columns were selected' },
   ];
 }

@@ -32,7 +32,7 @@ let clrDgActionId = 0;
         </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
                      [clrPopoverOldPopoverPoint]="popoverPoint">
-            <div [attr.class]="overflowClassName" (clrOutsideClick)="close($event)" [clrStrict]="true" 
+            <div class="datagrid-action-overflow" (clrOutsideClick)="close($event)" [clrStrict]="true" 
                     role="menu" [attr.id]="popoverId" [attr.aria-hidden]="!open">
                 <ng-content></ng-content>
             </div>
@@ -40,7 +40,6 @@ let clrDgActionId = 0;
     `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
-  public overflowClassName = 'datagrid-action-overflow';
   public anchorPoint: Point = Point.RIGHT_CENTER;
   public popoverPoint: Point = Point.LEFT_CENTER;
 
@@ -78,9 +77,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
       if (boolOpen && isPlatformBrowser(this.platformId)) {
         this.zone.runOutsideAngular(() => {
           setTimeout(() => {
-            const firstButton = this.elementRef.nativeElement.querySelector(
-              `.${this.overflowClassName} button.action-item`
-            );
+            const firstButton = this.elementRef.nativeElement.querySelector('button.action-item');
             if (firstButton) {
               firstButton.focus();
             }
@@ -108,9 +105,9 @@ export class ClrDatagridActionOverflow implements OnDestroy {
 
   public close(event: MouseEvent) {
     /*
-         * Because this listener is added synchonously, before the event finishes bubbling up the DOM,
-         * we end up firing on the very click that just opened the menu, p
-         * otentially closing it immediately every time. So we just ignore it.
+         * Because this listener is added synchronously, before the event finishes bubbling up the DOM,
+         * we end up firing on the very click that just opened the menu,
+         * potentially closing it immediately every time. So we just ignore it.
          */
     if (event === this.openingEvent) {
       delete this.openingEvent;

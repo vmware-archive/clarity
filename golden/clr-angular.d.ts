@@ -210,6 +210,7 @@ export declare class ClrCommonFormsModule {
 }
 
 export declare abstract class ClrCommonStrings {
+    allColumnsSelected?: string;
     close?: string;
     collapse?: string;
     current?: string;
@@ -235,6 +236,7 @@ export declare abstract class ClrCommonStrings {
     select?: string;
     selectAll?: string;
     show?: string;
+    showColumnsMenuDescription?: string;
     sortColumn?: string;
     success?: string;
     totalPages?: string;
@@ -288,7 +290,6 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     commonStrings: ClrCommonStrings;
     open: boolean;
     openChanged: EventEmitter<boolean>;
-    overflowClassName: string;
     popoverId: string;
     popoverPoint: Point;
     constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, elementRef: ElementRef, platformId: Object, zone: NgZone);
@@ -344,12 +345,13 @@ export declare class ClrDatagridColumnToggle implements OnInit, OnDestroy {
     open: boolean;
     popoverPoint: Point;
     title: ClrDatagridColumnToggleTitle;
-    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings);
+    constructor(hideableColumnService: HideableColumnService, columnToggleButtons: ColumnToggleButtonsService, commonStrings: ClrCommonStrings, platformId: Object, zone: NgZone);
     ngOnDestroy(): void;
     ngOnInit(): void;
     selectAll(): void;
     toggleColumn(event: boolean, column: DatagridHideableColumnModel): void;
     toggleUI(): void;
+    trackByFn(index: any): any;
 }
 
 export interface ClrDatagridComparatorInterface<T> {

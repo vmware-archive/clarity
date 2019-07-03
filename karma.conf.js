@@ -97,6 +97,12 @@ module.exports = function(karma) {
       dir: './reports/coverage/',
       fixWebpackSourcePaths: true,
       reports: ['html', 'lcovonly', 'cobertura'],
+      thresholds: {
+        statements: 90,
+        lines: 90,
+        branches: 80, // goal to increase this to 90%
+        functions: 90,
+      },
     },
     browsers: [
       // ChromeHeadless is the default, but you can toggle this list in dev. Always reset back to just ChromeHeadless.

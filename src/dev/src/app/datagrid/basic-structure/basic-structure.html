@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -14,17 +14,15 @@
   <code class="clr-code">*clrDgItems</code>, see Smart iterator) on the rows to iterate over your data.
 </p>
 
-<button type="button" class="btn btn-primary" (click)="toggle=!toggle">toggle</button>
-
 <clr-datagrid>
   <clr-dg-column>User ID</clr-dg-column>
-  <clr-dg-column *ngIf="!toggle">Name</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
   <clr-dg-row *ngFor="let user of users">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
-    <clr-dg-cell *ngIf="!toggle">{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
     <clr-dg-cell>{{user.color}}</clr-dg-cell>
   </clr-dg-row>

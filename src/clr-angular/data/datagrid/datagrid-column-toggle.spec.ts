@@ -45,7 +45,7 @@ export default function(): void {
       beforeEach(function() {
         hideableColumnService = new HideableColumnService();
         columnToggleButtons = new ColumnToggleButtonsService();
-        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {});
+        component = new ClrDatagridColumnToggle(hideableColumnService, columnToggleButtons, {}, null, null);
       });
 
       it('gets a list of hideable columns from the HideableColumnService', function() {

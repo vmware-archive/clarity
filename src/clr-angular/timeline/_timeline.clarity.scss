@@ -1,0 +1,155 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('timeline.clarity') {
+  .clr-timeline {
+    display: flex;
+    padding: $clr-timeline-padding-width;
+  }
+
+  .clr-timeline-step {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: $clr-timeline-step-min-width;
+    margin-left: $clr-timeline-gutter-width;
+
+    clr-icon {
+      width: $clr-timeline-icon-size;
+      height: $clr-timeline-icon-size;
+      min-width: $clr-timeline-icon-size;
+      min-height: $clr-timeline-icon-size;
+    }
+
+    clr-icon[shape='spinner'] {
+      animation: spin 1s linear infinite;
+    }
+
+    clr-icon[shape='circle'] {
+      color: $clr-gray;
+    }
+
+    clr-icon[shape='dot-circle'] {
+      color: $clr-action-blue;
+    }
+
+    clr-icon[shape='success-standard'] {
+      color: $clr-green;
+    }
+
+    clr-icon[shape='error-standard'] {
+      color: $clr-red;
+    }
+
+    // style for the connecting line between icons
+    &:not(:last-of-type) .clr-timeline-step-body::before {
+      content: '';
+      background: $clr-timeline-line-color;
+      height: $clr-timeline-line-thickness;
+      width: calc(
+        100% - (#{$clr-timeline-icon-size} - 2 * #{$clr-timeline-icon-inner-padding}) + #{$clr-timeline-gutter-width}
+      );
+      transform: translate(
+        $clr-timeline-icon-size - $clr-timeline-icon-inner-padding,
+        -0.5 * ($clr-timeline-line-thickness + $clr-timeline-icon-size)
+      );
+    }
+  }
+
+  // Note: headers (timestamps) are unable to auto-adjust height based on their siblings' using pure CSS.
+  // Hence forcing them in one-line by using "nowrap".
+  .clr-timeline-step-header {
+    color: $clr-timeline-step-header-color;
+    font-size: $clr-timeline-step-header-font-size;
+    line-height: $clr-timeline-step-header-line-height;
+    white-space: nowrap;
+    margin-bottom: $clr-timeline-step-header-padding-bottom;
+  }
+
+  .clr-timeline-step-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .clr-timeline-step-title {
+    color: $clr-timeline-step-title-color;
+    font-size: $clr-timeline-step-title-font-size;
+    font-weight: $clr-timeline-step-title-font-weight;
+    line-height: $clr-timeline-step-title-line-height;
+    margin-top: $clr-timeline-step-title-padding-top;
+    margin-bottom: $clr-timeline-step-title-padding-bottom;
+  }
+
+  .clr-timeline-step-description {
+    color: $clr-timeline-step-description-color;
+    font-size: $clr-timeline-step-description-font-size;
+    line-height: $clr-timeline-step-description-line-height;
+    button {
+      display: block;
+      margin-top: $clr-timeline-step-description-button-top-margin;
+    }
+    img {
+      width: 100%;
+      margin-top: $clr-timeline-step-description-img-top-margin;
+    }
+  }
+
+  .clr-timeline.clr-timeline-vertical {
+    flex-direction: column;
+    min-width: $clr-timeline-vertical-min-width;
+
+    .clr-timeline-step {
+      flex-direction: row;
+      margin-left: 0;
+      position: relative; /* required for vertical line to get 100% height of step body it belongs to */
+
+      &:not(:last-of-type) {
+        margin-bottom: $clr-timeline-vertical-gutter-width;
+      }
+
+      // style for the connecting line between icons
+      &:not(:last-of-type) .clr-timeline-step-body::before {
+        position: absolute;
+        width: $clr-timeline-line-thickness;
+        height: calc(100% + 2 * #{$clr-timeline-icon-inner-padding});
+        transform: translate(
+          -0.5 * ($clr-timeline-icon-size - $clr-timeline-line-thickness) - $clr-timeline-icon-inner-padding - $clr-timeline-vertical-step-body-left-padding,
+          $clr-timeline-icon-size - $clr-timeline-icon-inner-padding - $clr-timeline-vertical-step-body-top-padding
+        );
+      }
+    }
+
+    .clr-timeline-step-header {
+      text-align: right;
+      white-space: normal;
+      word-break: break-word;
+      width: $clr-timeline-vertical-step-header-min-width;
+      min-width: $clr-timeline-vertical-step-header-min-width;
+      margin-right: $clr-timeline-vertical-step-header-right-padding;
+      margin-top: $clr-timeline-vertical-step-header-top-padding;
+      margin-bottom: 0;
+    }
+
+    .clr-timeline-step-title {
+      margin-top: 0;
+    }
+
+    .clr-timeline-step-body {
+      display: flex;
+      flex-direction: column;
+      min-width: $clr-timeline-vertical-step-min-width;
+      margin-left: $clr-timeline-vertical-step-body-left-padding;
+      margin-top: $clr-timeline-vertical-step-body-top-padding;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

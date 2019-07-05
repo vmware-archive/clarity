@@ -106,6 +106,10 @@ export const APP_ROUTES: Routes = [
     path: 'tree-view',
     loadChildren: () => import('./tree-view/tree-view.demo.module').then(m => m.TreeViewDemoModule),
   },
+  {
+    path: 'timeline',
+    loadChildren: () => import('./timeline/timeline.demo.module').then(m => m.TimelineDemoModule),
+  },
   { path: 'toggles', loadChildren: () => import('./toggles/toggles.demo.module').then(m => m.TogglesDemoModule) },
   {
     path: 'tooltips',

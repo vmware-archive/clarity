@@ -10,6 +10,7 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostTrigger } from './signpost-trigger';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { SignpostIdService } from './providers/signpost-id.service';
 
 @Component({
   selector: 'clr-signpost',
@@ -26,7 +27,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <ng-content></ng-content>
     `,
   host: { '[class.signpost]': 'true' },
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }, SignpostIdService],
 })
 
 /*********

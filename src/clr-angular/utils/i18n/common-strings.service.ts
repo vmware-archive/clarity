@@ -43,6 +43,8 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   modalContentEnd = 'End of Modal Content';
   showColumnsMenuDescription = 'Show or hide columns menu';
   allColumnsSelected = 'All columns selected';
+  signpostToggle = 'Signpost Toggle';
+  signpostClose = 'Signpost Close';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

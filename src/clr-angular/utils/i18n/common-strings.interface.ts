@@ -141,4 +141,13 @@ export abstract class ClrCommonStrings {
    * Datagrid Show columns / All columns selected confirmation
    */
   allColumnsSelected?: string;
+  /**
+   * Signpost Toggle Button
+   */
+  signpostToggle?: string;
+  /**
+   * Signpost Close Button
+   * (used inside signpost content components)
+   */
+  signpostClose?: string;
 }

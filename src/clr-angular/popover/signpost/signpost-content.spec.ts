@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,7 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostContent } from './signpost-content';
 import { SIGNPOST_POSITIONS } from './signpost-positions';
+import { SignpostIdService } from './providers/signpost-id.service';
 
 export default function(): void {
   describe('ClrSignpostContent', function() {
@@ -22,7 +23,11 @@ export default function(): void {
     let context: TestContext<ClrSignpostContent, SimpleTest>;
 
     beforeEach(function() {
-      context = this.createOnly(ClrSignpostContent, SimpleTest, [IfOpenService], [ClrIconCustomTag]);
+      context = this.createOnly(ClrSignpostContent, SimpleTest, [SignpostIdService, IfOpenService], [ClrIconCustomTag]);
+    });
+
+    it('has an id', () => {
+      expect(context.clarityElement.getAttribute('id')).toBeDefined();
     });
 
     it('projects content when open', function() {

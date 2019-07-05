@@ -99,13 +99,13 @@
     }
 
     &.top-left {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-bottom-right-radius: 0; // Turn off rounded corner here
       }
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: 0;
+        right: -1px;
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
@@ -127,13 +127,13 @@
     }
 
     &.top-right {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-bottom-left-radius: 0; // Turn off rounded corner here
       }
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: 0;
+        left: -1px;
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
@@ -162,13 +162,13 @@
     }
 
     &.bottom-left {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-top-right-radius: 0; // Turn off rounded corners here
       }
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: 0;
+        right: -1px;
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
@@ -190,13 +190,13 @@
     }
 
     &.bottom-right {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-top-left-radius: 0; // Turn off rounded corners here
       }
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: 0;
+        left: -1px;
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
@@ -224,13 +224,13 @@
     }
 
     &.left-top {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-bottom-right-radius: 0; // Turn off rounded corners here
       }
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: 0;
+        bottom: -1px;
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
@@ -255,13 +255,13 @@
     }
 
     &.left-bottom {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-top-right-radius: 0; // Turn off rounded corners here
       }
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: 0;
+        top: -1px;
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
@@ -291,13 +291,13 @@
     }
 
     &.right-top {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-bottom-left-radius: 0; // turn off rounded corner here
       }
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: 0;
+        bottom: -1px;
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
@@ -320,13 +320,13 @@
     }
 
     &.right-bottom {
-      .signpost-flex-wrap {
+      .signpost-wrap {
         border-top-left-radius: 0; // turn off rounded corner here
       }
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: 0;
+        top: -1px;
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
@@ -340,21 +340,22 @@
   .signpost-content-header {
     display: flex;
     justify-content: flex-end;
-    flex: 0 0 1rem;
+    position: absolute;
+    width: 100%;
+    background-color: inherit;
+    top: 0;
   }
 
-  .signpost-flex-wrap {
+  .signpost-wrap {
     border: $clr-default-borderwidth solid $clr-signpost-outerBorder;
     border-radius: $clr-signpost-border-radius;
     background-color: $clr-signpost-innerBlock;
-    display: flex;
-    flex-direction: column;
     z-index: map-get($clr-layers, tooltips);
+    position: relative;
   }
 
   .signpost-content-body {
-    flex: 1 1 auto;
-    padding: 0 1rem 1rem;
+    padding: 1rem;
     max-height: 20rem;
     overflow-y: auto;
   }

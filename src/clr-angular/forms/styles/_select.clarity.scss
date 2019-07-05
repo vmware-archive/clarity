@@ -97,8 +97,12 @@
     }
   }
 
-  .clr-error select[multiple] {
+  .clr-error select {
     border-color: $clr-forms-invalid-color;
+
+    &:not([multiple]) {
+      @include input-border-bottom-animation($clr-forms-invalid-color);
+    }
   }
 
   .clr-form-control-disabled .clr-select {

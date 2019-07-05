@@ -237,6 +237,8 @@ export declare abstract class ClrCommonStrings {
     selectAll?: string;
     show?: string;
     showColumnsMenuDescription?: string;
+    signpostClose?: string;
+    signpostToggle?: string;
     sortColumn?: string;
     success?: string;
     totalPages?: string;
@@ -984,7 +986,8 @@ export declare class ClrSignpost {
 export declare class ClrSignpostContent extends AbstractPopover {
     commonStrings: ClrCommonStrings;
     position: string;
-    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStrings);
+    signpostContentId: string;
+    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStrings, signpostContentId: string, signpostIdService: SignpostIdService);
     close(): void;
 }
 
@@ -992,7 +995,10 @@ export declare class ClrSignpostModule {
 }
 
 export declare class ClrSignpostTrigger implements OnDestroy {
-    constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef);
+    ariaControl: string;
+    ariaExpanded: boolean;
+    commonStrings: ClrCommonStrings;
+    constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings, signpostIdService: SignpostIdService, platformId: Object);
     ngOnDestroy(): void;
     onSignpostTriggerClick(event: Event): void;
 }

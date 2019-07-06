@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,7 @@ import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { Layouts, LayoutService } from '../common/providers/layout.service';
 import { MarkControlService } from '../common/providers/mark-control.service';
+import { ControlIdService } from '../common/providers/control-id.service';
 
 export function ContainerNoLabelSpec(testContainer, testControl, testComponent): void {
   describe('no label', () => {
@@ -64,7 +65,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule, ReactiveFormsModule],
         declarations: [testContainer, ...directives, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService, MarkControlService],
+        providers: [NgControl, NgControlService, IfErrorService, LayoutService, MarkControlService, ControlIdService],
       });
       fixture = TestBed.createComponent(testComponent);
 

@@ -33,6 +33,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
   private ifErrorService: IfErrorService;
   private controlClassService: ControlClassService;
   private markControlService: MarkControlService;
+  protected renderer: Renderer2;
+  protected el: ElementRef<any>;
 
   protected subscriptions: Subscription[] = [];
   protected index = 0;
@@ -50,6 +52,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
     renderer: Renderer2,
     el: ElementRef
   ) {
+    this.renderer = renderer;
+    this.el = el;
     try {
       this.ngControlService = injector.get(NgControlService);
       this.ifErrorService = injector.get(IfErrorService);
@@ -110,6 +114,9 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
       this.controlIdService.id = this._id;
     } else {
       this._id = this.controlIdService.id;
+    }
+    if (this.renderer && this.el) {
+      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.controlIdService.id + '-helper');
     }
 
     if (this.ngControlService) {

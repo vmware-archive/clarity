@@ -86,22 +86,32 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   public replacedRow = false;
 
   ngAfterContentInit() {
+    this.displayViews();
+    this.subscriptions.push(this.onCellChanges(), this.onReplacedRowChange(), this.onReorderRequest());
+  }
+
+  private onReplacedRowChange(): Subscription {
+    return this.expand.replace.subscribe(replaceChange => {
+      this.replacedRow = replaceChange;
+    });
+  }
+
+  private onCellChanges(): Subscription {
+    return this.cells.changes.subscribe(() => {
+      this.displayViews();
+    });
+  }
+
+  private onReorderRequest(): Subscription {
+    return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+      const sourceView = this._detailCells.get(reorderRequest.sourceOrder);
+      this._detailCells.move(sourceView, reorderRequest.targetOrder);
+    });
+  }
+
+  private displayViews() {
     this.viewManager.detachAllViews(this._detailCells);
     this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
-    this.subscriptions.push(
-      this.expand.replace.subscribe(replaceChange => {
-        this.replacedRow = replaceChange;
-      }),
-      this.cells.changes.subscribe(() => {
-        this.viewManager.detachAllViews(this._detailCells);
-        this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
-      }),
-      // A subscription that listens for view reordering
-      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-        const sourceView = this._detailCells.get(reorderRequest.sourceOrder);
-        this._detailCells.move(sourceView, reorderRequest.targetOrder);
-      })
-    );
   }
 
   ngOnDestroy() {

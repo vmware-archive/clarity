@@ -221,53 +221,65 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   ngAfterViewInit() {
     // TODO: determine if we can get rid of provider wiring in view init so that subscriptions can be done earlier
     this.refresh.emit(this.stateProvider.state);
-
     this.columnReorderService.containerRef = this._projectedDisplayColumns;
-    this._subscriptions.push(this.stateProvider.change.subscribe(state => this.refresh.emit(state)));
     this._subscriptions.push(
-      this.selection.change.subscribe(s => {
-        if (this.selection.selectionType === SelectionType.Single) {
-          this.singleSelectedChanged.emit(<T>s);
-        } else if (this.selection.selectionType === SelectionType.Multi) {
-          this.selectedChanged.emit(<T[]>s);
-        }
-      })
+      this.onStateProviderChange(),
+      this.onSelectionChange(),
+      this.onDisplayModeChange(),
+      this.onReorderRequest()
     );
-    // A subscription that listens for displayMode changes on the datagrid
-    this._subscriptions.push(
-      this.displayMode.view.subscribe(viewChange => {
-        // Detach any projected columns from the projectedDisplayColumns container
-        this.viewManager.detachAllViews(this._projectedDisplayColumns);
-        // Detach any projected columns from the projectedCalculationColumns container
-        this.viewManager.detachAllViews(this._projectedCalculationColumns);
-        // Detach any projected rows from the calculationRows container
-        this.viewManager.detachAllViews(this._calculationRows);
-        // Detach any projected rows from the displayedRows container
-        this.viewManager.detachAllViews(this._displayedRows);
+  }
 
-        if (viewChange === DatagridDisplayMode.DISPLAY) {
-          // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
-          this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
-          this.viewManager.insertAllViews(this._projectedDisplayColumns, this.assignRawOrders(), true);
-          this.columnReorderService.updateOrders(this.columns.map(column => column.order));
-          this.viewManager.insertAllViews(this._displayedRows, this.rows.toArray());
-        } else {
-          // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
-          this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
-          this.viewManager.insertAllViews(this._projectedCalculationColumns, this.assignRawOrders(), true);
-          this.columnReorderService.updateOrders(this.columns.map(column => column.order));
-          this.viewManager.insertAllViews(this._calculationRows, this.rows.toArray());
-        }
-      }),
-      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-        const sourceView = this._projectedDisplayColumns.get(reorderRequest.sourceOrder);
-        this._projectedDisplayColumns.move(sourceView, reorderRequest.targetOrder);
-        // update order value of each columns
-        this.columns.forEach(column => (column.order = this._projectedDisplayColumns.indexOf(column._view)));
-        // persist updated column orders to the service so cells will have corresponding fallback order
+  private onStateProviderChange(): Subscription {
+    return this.stateProvider.change.subscribe(state => this.refresh.emit(state));
+  }
+
+  private onSelectionChange(): Subscription {
+    return this.selection.change.subscribe(s => {
+      if (this.selection.selectionType === SelectionType.Single) {
+        this.singleSelectedChanged.emit(<T>s);
+      } else if (this.selection.selectionType === SelectionType.Multi) {
+        this.selectedChanged.emit(<T[]>s);
+      }
+    });
+  }
+
+  private onDisplayModeChange(): Subscription {
+    return this.displayMode.view.subscribe(viewChange => {
+      // Detach any projected columns from the projectedDisplayColumns container
+      this.viewManager.detachAllViews(this._projectedDisplayColumns);
+      // Detach any projected columns from the projectedCalculationColumns container
+      this.viewManager.detachAllViews(this._projectedCalculationColumns);
+      // Detach any projected rows from the calculationRows container
+      this.viewManager.detachAllViews(this._calculationRows);
+      // Detach any projected rows from the displayedRows container
+      this.viewManager.detachAllViews(this._displayedRows);
+
+      if (viewChange === DatagridDisplayMode.DISPLAY) {
+        // Set state, style for the datagrid to DISPLAY and insert row & columns into containers
+        this.renderer.removeClass(this.el.nativeElement, 'datagrid-calculate-mode');
+        this.viewManager.insertAllViews(this._projectedDisplayColumns, this.assignRawOrders(), true);
         this.columnReorderService.updateOrders(this.columns.map(column => column.order));
-      })
-    );
+        this.viewManager.insertAllViews(this._displayedRows, this.rows.toArray());
+      } else {
+        // Set state, style for the datagrid to CALCULATE and insert row & columns into containers
+        this.renderer.addClass(this.el.nativeElement, 'datagrid-calculate-mode');
+        this.viewManager.insertAllViews(this._projectedCalculationColumns, this.assignRawOrders(), true);
+        this.columnReorderService.updateOrders(this.columns.map(column => column.order));
+        this.viewManager.insertAllViews(this._calculationRows, this.rows.toArray());
+      }
+    });
+  }
+
+  private onReorderRequest(): Subscription {
+    return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+      const sourceView = this._projectedDisplayColumns.get(reorderRequest.sourceOrder);
+      this._projectedDisplayColumns.move(sourceView, reorderRequest.targetOrder);
+      // update order value of each columns
+      this.columns.forEach(column => (column.order = this._projectedDisplayColumns.indexOf(column._view)));
+      // persist updated column orders to the service so cells will have corresponding fallback order
+      this.columnReorderService.updateOrders(this.columns.map(column => column.order));
+    });
   }
 
   /**

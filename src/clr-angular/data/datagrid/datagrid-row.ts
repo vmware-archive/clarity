@@ -168,48 +168,59 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
    * A Query List of the ClrDatagrid cells in this row.
    *
    */
-  @ContentChildren(ClrDatagridCell) dgCells: QueryList<ClrDatagridCell>;
+  @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
 
   ngAfterContentInit() {
     this.subscriptions.push(
-      this.dgCells.changes.subscribe(() => {
-        this.dgCells.forEach((cell, index) => {
+      this.cells.changes.subscribe(() => {
+        this.cells.forEach((cell, index) => {
           if (this._scrollableCells.indexOf(cell._view) === -1) {
             this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
           }
         });
-        this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
+        this.updateCellOrder();
       })
     );
   }
 
   ngAfterViewInit() {
-    this.subscriptions.push(
-      this.displayMode.view.subscribe(viewChange => {
-        // Listen for view changes and move cells around depending on the current displayType
-        // detach cell views from display view
-        this.viewManager.detachAllViews(this._scrollableCells);
-        // detach cell views from calculated view
-        this.viewManager.detachAllViews(this._calculatedCells);
-        if (viewChange === DatagridDisplayMode.CALCULATE) {
-          this.displayCells = false;
-          this.viewManager.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
-        } else {
-          this.displayCells = true;
-          this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
-          this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
-        }
-      }),
-      this.expand.animate.subscribe(() => {
-        this.expandAnimationTrigger = !this.expandAnimationTrigger;
-      }),
-      // A subscription that listens for view reordering
-      this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-        const sourceView = this._scrollableCells.get(reorderRequest.sourceOrder);
-        this._scrollableCells.move(sourceView, reorderRequest.targetOrder);
-        this.dgCells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
-      })
-    );
+    this.subscriptions.push(this.onDisplayModeChange(), this.onAnimate(), this.onReorderRequest());
+  }
+
+  private onDisplayModeChange(): Subscription {
+    return this.displayMode.view.subscribe(viewChange => {
+      // Listen for view changes and move cells around depending on the current displayType
+      // detach cell views from display view
+      this.viewManager.detachAllViews(this._scrollableCells);
+      // detach cell views from calculated view
+      this.viewManager.detachAllViews(this._calculatedCells);
+      if (viewChange === DatagridDisplayMode.CALCULATE) {
+        this.displayCells = false;
+        this.viewManager.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
+      } else {
+        this.displayCells = true;
+        this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
+        this.updateCellOrder();
+      }
+    });
+  }
+
+  private onReorderRequest(): Subscription {
+    return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
+      const sourceView = this._scrollableCells.get(reorderRequest.sourceOrder);
+      this._scrollableCells.move(sourceView, reorderRequest.targetOrder);
+      this.updateCellOrder();
+    });
+  }
+
+  private updateCellOrder(): void {
+    this.cells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
+  }
+
+  private onAnimate(): Subscription {
+    return this.expand.animate.subscribe(() => {
+      this.expandAnimationTrigger = !this.expandAnimationTrigger;
+    });
   }
 
   private subscriptions: Subscription[] = [];
@@ -241,7 +252,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
   }
 
   private assignRawOrders(): ClrDatagridCell[] {
-    return this.dgCells.map((cell, index) => {
+    return this.cells.map((cell, index) => {
       if (this.columnReorderService.orderAt(index) > -1) {
         cell.order = this.columnReorderService.orderAt(index);
       } else {

@@ -18,6 +18,7 @@ export * from './utils/index';
 export * from './wizard/index';
 export * from './accordion/index';
 export * from './accordion/stepper/index';
+export * from './progress/spinner/index';
 
 // Below are exported for internal use only and may change without notice
 export { FocusTrapTracker as ÇlrFocusTrapTracker } from './utils/focus-trap/focus-trap-tracker.service';

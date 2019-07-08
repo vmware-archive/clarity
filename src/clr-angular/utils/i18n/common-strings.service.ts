@@ -45,6 +45,7 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   allColumnsSelected = 'All columns selected';
   signpostToggle = 'Signpost Toggle';
   signpostClose = 'Signpost Close';
+  loading = 'Loading';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

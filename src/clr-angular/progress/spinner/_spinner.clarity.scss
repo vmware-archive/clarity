@@ -21,6 +21,7 @@
     background: generateSpinnerIcon($clr-spinner-bg-color, $clr-spinner-color, $clr-spinner-opacity);
     text-indent: 100%;
     overflow: hidden;
+    white-space: nowrap;
 
     &.spinner-md {
       @include min-height(1.5rem);

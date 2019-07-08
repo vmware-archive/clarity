@@ -19,6 +19,7 @@ import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
 import { ClrStepperModule } from './accordion/stepper/stepper.module';
+import { ClrSpinnerModule } from './progress/spinner/spinner.module';
 
 @NgModule({
   exports: [
@@ -36,6 +37,7 @@ import { ClrStepperModule } from './accordion/stepper/stepper.module';
     ClrWizardModule,
     ClrDragAndDropModule,
     ClrStepperModule,
+    ClrSpinnerModule,
   ],
 })
 export class ClarityModule {}

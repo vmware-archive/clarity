@@ -96,9 +96,9 @@ export class WizardAsyncValidation {
       (clrWizardPageOnCancel)="doCancel()">
       <ng-template clrPageTitle>Form with async validation</ng-template> <!-- mandatory -->
 
-      <div class="spinner" *ngIf="loadingFlag">
-          Loading...
-      </div>
+      <clr-spinner *ngIf="loadingFlag">
+          Loading
+      </clr-spinner>
       <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
           <clr-alert-item>
               This&nbsp;<a

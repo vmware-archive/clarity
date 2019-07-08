@@ -181,9 +181,9 @@ export class WizardAsyncCompletion {
             </div>
         </clr-alert>
 
-        <div class="spinner" *ngIf="loadingFlag">
-            Loading...
-        </div>
+        <clr-spinner *ngIf="loadingFlag">
+            Loading
+        </clr-spinner>
 
         <p *ngIf="errorFlag && !loadingFlag">Go back and try again!</p>
 

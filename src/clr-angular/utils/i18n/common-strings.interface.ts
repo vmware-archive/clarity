@@ -150,4 +150,8 @@ export abstract class ClrCommonStrings {
    * (used inside signpost content components)
    */
   signpostClose?: string;
+  /*
+   * Loaders/Spinners
+   */
+  loading?: string;
 }

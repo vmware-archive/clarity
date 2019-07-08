@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -1162,6 +1162,36 @@ export const ClrShapeHostGroup = clrIconSVG(
 <path class="clr-i-solid clr-i-solid-path-2" d="M20.1,24.81 L18.1,24.81 L18.1,6 L6.1,6 L6.1,4 L19.1,4 C19.6522847,4 20.1,4.44771525 20.1,5 L20.1,24.81 Z" />
 <path class="clr-i-solid clr-i-solid-path-3" d="M24.08,20 L22.08,20 L22.08,2 L11.08,2 L11.08,0 L23.08,0 C23.6322847,0 24.08,0.44771525 24.08,1 L24.08,20 Z" />`
 );
+export const ClrShapeStorageAdapter = clrIconSVG(
+  `<path d="M6.06,30a1,1,0,0,1-1-1V8h-2a1,1,0,0,1,0-2h4V29A1,1,0,0,1,6.06,30Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M30.06,27h-25V9h25a3,3,0,0,1,3,3V24A3,3,0,0,1,30.06,27Zm-23-2h23a1,1,0,0,0,1-1V12a1,1,0,0,0-1-1h-23Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <rect x="22.06" y="20" width="6" height="2" class="clr-i-outline clr-i-outline-path-3"/>
+  <rect x="22.06" y="14" width="6" height="2" class="clr-i-outline clr-i-outline-path-4"/>
+  <path d="M19.06,22h-8V20h7V14h2v7A1,1,0,0,1,19.06,22Z" class="clr-i-outline clr-i-outline-path-5"/>`
+);
+export const ClrShapeNodeGroup = clrIconSVG(
+  `<path d="M33.53,21.58l-4.94-2.83V13.09a1,1,0,0,0-.51-.87L22.64,9.1a1,1,0,0,0-1,0L16.2,12.22a1,1,0,0,0-.51.87v5.66l-4.94,2.83a1,1,0,0,0-.5.87v6.24a1,1,0,0,0,.5.86l5.45,3.12a1,1,0,0,0,1,0l4.95-2.83,4.95,2.83a1,1,0,0,0,.5.14,1,1,0,0,0,.49-.14l5.45-3.12a1,1,0,0,0,.5-.86V22.45A1,1,0,0,0,33.53,21.58ZM22.14,11.12l4.45,2.55V19l-4.46,2.56-4.44-2.6V13.67ZM16.69,30.65l-4.44-2.54V23l4.68-2.68,4.4,2.57V28ZM32,28.11l-4.44,2.54L22.93,28V22.93l4.46-2.57L32,23Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M7,27.43a1,1,0,0,1-1-1V19.9A1,1,0,0,1,6.5,19l4.95-2.83V10.54a1,1,0,0,1,.5-.87l5.21-3a1,1,0,0,1,1.37.37,1,1,0,0,1-.38,1.37l-4.7,2.68v5.66a1,1,0,0,1-.51.87L8,20.48v5.95A1,1,0,0,1,7,27.43Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M3,25.05a1,1,0,0,1-1-1V17.53a1,1,0,0,1,.5-.86l5-2.84V8.17A1,1,0,0,1,8,7.31l5.25-3a1,1,0,0,1,1,1.74L9.45,8.75v5.66a1,1,0,0,1-.51.87L4,18.11v5.94A1,1,0,0,1,3,25.05Z" class="clr-i-outline clr-i-outline-path-3"/>`
+);
+export const ClrShapeNodes = clrIconSVG(
+  `<path d="M10.5,34.29,2,29.39V19.58l8.5-4.9,8.5,4.9v9.81ZM4,28.23,10.5,32,17,28.23V20.74L10.5,17,4,20.74Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M25.5,34.29,17,29.39V19.58l8.5-4.9,8.5,4.9v9.81ZM19,28.23,25.5,32,32,28.23V20.74L25.5,17,19,20.74Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M18,21.32l-8.5-4.9V6.61L18,1.71l8.5,4.9v9.81Zm-6.5-6.06L18,19l6.5-3.75V7.77L18,4,11.5,7.77Z" class="clr-i-outline clr-i-outline-path-3"/>`
+);
+export const ClrShapeNamespace = clrIconSVG(
+  `<path d="M27,4.18a1,1,0,1,0-1,1.73l6,3.47V26.62l-6,3.47a1,1,0,0,0-.37,1.36,1,1,0,0,0,1.37.37l7-4.05V8.23Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M9.68,29.9,4,26.62V9.38L9.68,6.1a1,1,0,1,0-1-1.73L2,8.23V27.77l6.68,3.86a1,1,0,0,0,1.37-.37A1,1,0,0,0,9.68,29.9Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M10,12V24a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V12a2,2,0,0,0-2-2H12A2,2,0,0,0,10,12Zm7,0v5H12V12Zm-5,7h5v5H12Zm7,5V19h5v5Zm5-7H19V12h5Z" class="clr-i-outline clr-i-outline-path-3"/>`
+);
+export const ClrShapeNode = clrIconSVG(
+  `<path d="M18,30.66,7,24.33V11.67L18,5.34l11,6.33V24.33ZM9,23.18l9,5.17,9-5.17V12.82L18,7.65,9,12.82Z" class="clr-i-outline clr-i-outline-path-1"/>`
+);
+export const ClrShapePod = clrIconSVG(
+  `<path d="M26,32H10a6,6,0,0,1-6-6V10a6,6,0,0,1,6-6H26a6,6,0,0,1,6,6V26A6,6,0,0,1,26,32ZM10,6a4,4,0,0,0-4,4V26a4,4,0,0,0,4,4H26a4,4,0,0,0,4-4V10a4,4,0,0,0-4-4Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M26.56,15H15.44A1.43,1.43,0,0,0,14,16.44v8.12A1.43,1.43,0,0,0,15.44,26H26.56A1.43,1.43,0,0,0,28,24.56V16.44A1.43,1.43,0,0,0,26.56,15ZM26,24H16V17H26Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M12.4,19H10V12H20v1.4h2v-2A1.43,1.43,0,0,0,20.56,10H9.44A1.43,1.43,0,0,0,8,11.44v8.12A1.43,1.43,0,0,0,9.44,21h3Z" class="clr-i-outline clr-i-outline-path-3"/>`
+);
 
 export const TechnologyShapes: any = {
   'ruler-pencil': ClrShapeRulerPencil,
@@ -1250,6 +1280,12 @@ export const TechnologyShapes: any = {
   inductor: ClrShapeInductor,
   resistor: ClrShapeResistor,
   'host-group': ClrShapeHostGroup,
+  'storage-adapter': ClrShapeStorageAdapter,
+  'node-group': ClrShapeNodeGroup,
+  nodes: ClrShapeNodes,
+  namespace: ClrShapeNamespace,
+  node: ClrShapeNode,
+  pod: ClrShapePod,
 };
 
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));

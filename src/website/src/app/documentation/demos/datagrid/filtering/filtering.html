@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -80,6 +80,18 @@
 
 <clr-code-snippet [clrCode]="examples.colorFilterTS" clrLanguage="typescript"></clr-code-snippet>
 <clr-code-snippet [clrCode]="examples.colorFilterHTML" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    By default, filtering searches the original model value for matches. In cases where you format the text 
+    for display (such as using a pipe), you may want to create a custom filter to handle searching the
+    formatted text. Otherwise, the results you see may not be filtered in the way you expect.
+</p>
+
+<clr-code-snippet [clrCode]="examples.filterSearchResults" clrLanguage="html"></clr-code-snippet>
+<p>
+    In the example above you will need to go with custom filters that will take into account 
+    the data that the user sees is the same that he is searching into.
+</p>
 
 <h4>Preset Column Filters</h4>
 

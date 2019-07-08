@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -117,4 +117,17 @@ class ColorFilter implements ClrDatagridFilterInterface<User> {
     Name
 </clr-dg-column>
 `,
+  filterSearchResults: `
+<-- 
+  Will search into user.creation that in this case is 'Date' object
+  and not the result of the pipe 'Jan 6, 2018' 
+-->
+<clr-dg-cell [clrDgField]="'creation'">{{ user.creation | date }}</clr-dg-cell>
+
+<-- 
+  Will search into user.name and will not include user.id, 
+  searching for user.id will not return any result.
+-->
+<clr-dg-cell [clrDgField]="'name'">{{ user.id }} : {{ user.name }}</clr-dg-cell>
+  `,
 };

@@ -102,6 +102,8 @@
     "@angular/cli": "8.0.0",
     "@angular/compiler-cli": "8.0.0",
     "@angular/language-service": "8.0.0",
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
     "@types/jasmine": "3.3.13",
     "@types/jasmine-expect": "3.8.1",
     "@types/jasmine-matchers": "0.2.32",
@@ -169,7 +171,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run license:fix"
+      "pre-commit": "npm run format:fix && npm run license:fix",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }

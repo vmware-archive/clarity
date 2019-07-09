@@ -227,5 +227,12 @@ export default function(): void {
         expect(this.control.ngOnDestroy).toBeDefined();
       });
     });
+
+    describe('aria roles', function() {
+      it('adds the aria-describedby for helper', function() {
+        setupTest(this, WithControl, TestControl3);
+        expect(this.input.getAttribute('aria-describedby')).toContain('-helper');
+      });
+    });
   });
 }

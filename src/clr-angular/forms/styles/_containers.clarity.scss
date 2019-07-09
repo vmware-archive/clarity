@@ -79,6 +79,7 @@
     .clr-form-control > .clr-form-control.clr-form-control-multi .clr-control-label {
       width: $clr-forms-baseline * 32;
       flex-shrink: 0;
+      margin-top: 0.125rem;
     }
     &.clr-row .clr-control-label {
       width: auto;

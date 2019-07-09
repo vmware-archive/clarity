@@ -171,29 +171,34 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
 
   ngAfterContentInit() {
-    this.subscriptions.push(
-      this.cells.changes.subscribe(() => {
-        this.cells.forEach((cell, index) => {
-          if (this._scrollableCells.indexOf(cell._view) === -1) {
-            this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
-          }
-        });
-        this.updateCellOrder();
-      })
-    );
+    this.subscriptions.push(this.resetViewsOnCellChanges());
   }
 
   ngAfterViewInit() {
-    this.subscriptions.push(this.onDisplayModeChange(), this.onAnimate(), this.onReorderRequest());
+    this.subscriptions.push(
+      this.resetViewsOnDisplayModeChange(),
+      this.triggerAnimationOnExpandAnimate(),
+      this.reorderOnRequest()
+    );
   }
 
-  private onDisplayModeChange(): Subscription {
+  private resetViewsOnCellChanges(): Subscription {
+    return this.cells.changes.subscribe(() => {
+      this.cells.forEach((cell, index) => {
+        if (this._scrollableCells.indexOf(cell._view) === -1) {
+          // if new column's view is not in the container
+          this._scrollableCells.insert(cell._view, this.columnReorderService.orderAt(index));
+        }
+      });
+      this.updateCellOrder();
+    });
+  }
+
+  private resetViewsOnDisplayModeChange(): Subscription {
     return this.displayMode.view.subscribe(viewChange => {
-      // Listen for view changes and move cells around depending on the current displayType
-      // detach cell views from display view
-      this.viewManager.detachAllViews(this._scrollableCells);
-      // detach cell views from calculated view
-      this.viewManager.detachAllViews(this._calculatedCells);
+      [this._scrollableCells, this._calculatedCells].forEach(viewContainer =>
+        this.viewManager.detachAllViews(viewContainer)
+      );
       if (viewChange === DatagridDisplayMode.CALCULATE) {
         this.displayCells = false;
         this.viewManager.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
@@ -205,7 +210,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
     });
   }
 
-  private onReorderRequest(): Subscription {
+  private reorderOnRequest(): Subscription {
     return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
       const sourceView = this._scrollableCells.get(reorderRequest.sourceOrder);
       this._scrollableCells.move(sourceView, reorderRequest.targetOrder);
@@ -213,14 +218,14 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
     });
   }
 
-  private updateCellOrder(): void {
-    this.cells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
-  }
-
-  private onAnimate(): Subscription {
+  private triggerAnimationOnExpandAnimate(): Subscription {
     return this.expand.animate.subscribe(() => {
       this.expandAnimationTrigger = !this.expandAnimationTrigger;
     });
+  }
+
+  private updateCellOrder(): void {
+    this.cells.forEach(cell => (cell.order = this._scrollableCells.indexOf(cell._view)));
   }
 
   private subscriptions: Subscription[] = [];

@@ -12,3 +12,4 @@ export const STRICT_WIDTH_CLASS = 'datagrid-fixed-width';
 export const HIDDEN_COLUMN_CLASS = 'datagrid-hidden-column';
 export const FIRST_VISIBLE_COLUMN_CLASS = 'datagrid-first-visible-column';
 export const LAST_VISIBLE_COLUMN_CLASS = 'datagrid-last-visible-column';
+export const CALCULATE_MODE_CLASS = 'datagrid-calculate-mode';

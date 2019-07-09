@@ -86,30 +86,30 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   public replacedRow = false;
 
   ngAfterContentInit() {
-    this.displayViews();
-    this.subscriptions.push(this.onCellChanges(), this.onReplacedRowChange(), this.onReorderRequest());
+    this.resetViews();
+    this.subscriptions.push(this.resetViewsOnCellChanges(), this.setReplacedOnExpandReplace(), this.reorderOnRequest());
   }
 
-  private onReplacedRowChange(): Subscription {
+  private setReplacedOnExpandReplace(): Subscription {
     return this.expand.replace.subscribe(replaceChange => {
       this.replacedRow = replaceChange;
     });
   }
 
-  private onCellChanges(): Subscription {
+  private resetViewsOnCellChanges(): Subscription {
     return this.cells.changes.subscribe(() => {
-      this.displayViews();
+      this.resetViews();
     });
   }
 
-  private onReorderRequest(): Subscription {
+  private reorderOnRequest(): Subscription {
     return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
       const sourceView = this._detailCells.get(reorderRequest.sourceOrder);
       this._detailCells.move(sourceView, reorderRequest.targetOrder);
     });
   }
 
-  private displayViews() {
+  private resetViews() {
     this.viewManager.detachAllViews(this._detailCells);
     this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
   }

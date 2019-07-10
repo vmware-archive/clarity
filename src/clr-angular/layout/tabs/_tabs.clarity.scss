@@ -75,3 +75,8 @@ button.nav-link {
     }
   }
 }
+
+// Firefox A11Y can't see tabs with visibility: hidden;
+.tabs-overflow [role='tab'] {
+  visibility: visible;
+}

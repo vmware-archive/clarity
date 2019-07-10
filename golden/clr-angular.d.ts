@@ -1226,12 +1226,15 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
     readonly isVertical: boolean;
+    keyFocus: ClrKeyFocus;
     layout: TabsLayout;
     readonly tabIds: string;
     readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;
     tabsService: TabsService;
     constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService);
+    checkFocusVisible(): void;
+    inOverflow(): boolean;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleOverflow(event: any): void;

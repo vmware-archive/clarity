@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,7 @@ import { ClrTabContent } from './tab-content';
 import { ClrTabLink } from './tab-link.directive';
 import { ClrTabOverflowContent } from './tab-overflow-content';
 import { ClrTabs } from './tabs';
+import { ClrKeyFocusModule } from '../../utils/focus/key-focus/key-focus.module';
 
 export const CLR_TABS_DIRECTIVES: Type<any>[] = [
   ClrTabContent,
@@ -31,7 +32,14 @@ export const CLR_TABS_DIRECTIVES: Type<any>[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ClrCommonPopoverModule, ClrConditionalModule, ClrIconModule, ClrTemplateRefModule],
+  imports: [
+    CommonModule,
+    ClrCommonPopoverModule,
+    ClrConditionalModule,
+    ClrIconModule,
+    ClrTemplateRefModule,
+    ClrKeyFocusModule,
+  ],
   declarations: [CLR_TABS_DIRECTIVES],
   exports: [CLR_TABS_DIRECTIVES, ClrConditionalModule],
 })

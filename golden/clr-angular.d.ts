@@ -1229,6 +1229,7 @@ export declare class ClrTabLink {
     readonly active: boolean;
     readonly addLinkClasses: boolean;
     readonly ariaControls: string;
+    el: ElementRef;
     ifActiveService: IfActiveService;
     inOverflow: boolean;
     tabLinkId: string;
@@ -1248,12 +1249,16 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
     readonly isVertical: boolean;
+    keyFocus: ClrKeyFocus;
     layout: TabsLayout;
     readonly tabIds: string;
     readonly tabLinkDirectives: ClrTabLink[];
+    tabLinkElements: HTMLElement[];
     tabsId: number;
     tabsService: TabsService;
-    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService);
+    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService, platformId: Object);
+    checkFocusVisible(): void;
+    inOverflow(): boolean;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleOverflow(event: any): void;

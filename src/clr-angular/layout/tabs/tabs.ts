@@ -14,6 +14,7 @@ import {
   HostBinding,
   ViewContainerRef,
   ViewChild,
+  PLATFORM_ID,
 } from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
@@ -26,11 +27,15 @@ import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { TabsLayout } from './enums/tabs-layout.enum';
 import { Subscription } from 'rxjs';
+import { ClrKeyFocus } from '../../utils/focus/key-focus/key-focus';
+import { startWith, filter } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'clr-tabs',
   template: `
-        <ul class="nav" role="tablist" [attr.aria-owns]="tabIds">
+        <ul class="nav" role="tablist" [attr.aria-owns]="tabIds" [clrKeyFocus]="tabLinkElements" clrDirection="both"
+            (clrFocusChange)="checkFocusVisible()">
             <!--tab links-->
             <ng-container *ngFor="let link of tabLinkDirectives">
                 <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow">
@@ -40,10 +45,10 @@ import { Subscription } from 'rxjs';
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
-                <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open"
-                     (click)="toggleOverflow($event)">
-                    <li role="presentation" class="nav-item">
-                        <button class="btn btn-link nav-link dropdown-toggle" type="button" [class.active]="activeTabInOverflow">
+                <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open" role="presentation">
+                    <li role="application" class="nav-item" (click)="toggleOverflow($event)">
+                        <button class="btn btn-link nav-link dropdown-toggle" type="button" aria-hidden="true"
+                                [class.active]="activeTabInOverflow" [class.open]="inOverflow()" tabIndex="-1">
                             <clr-icon shape="ellipsis-horizontal"
                               [class.is-info]="ifOpenService.open"
                               [attr.title]="commonStrings.keys.more"></clr-icon>
@@ -66,6 +71,9 @@ import { Subscription } from 'rxjs';
 })
 export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
+  private get overflowPosition() {
+    return this._tabLinkDirectives.filter(link => !link.inOverflow).length;
+  }
 
   /* tslint:disable:no-unused-variable */
   @ViewChild('tabContentViewContainer', { static: true, read: ViewContainerRef })
@@ -97,12 +105,18 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
     return this._tabLinkDirectives;
   }
 
+  tabLinkElements: HTMLElement[] = [];
+
+  @ViewChild(ClrKeyFocus, { static: true })
+  keyFocus: ClrKeyFocus;
+
   constructor(
     public ifActiveService: IfActiveService,
     public ifOpenService: IfOpenService,
     public tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number,
-    public commonStrings: ClrCommonStringsService
+    public commonStrings: ClrCommonStringsService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   get activeTabInOverflow() {
@@ -114,12 +128,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   }
 
   ngAfterContentInit() {
-    this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
-    this.subscriptions.push(
-      this.tabs.changes.subscribe(() => {
-        this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
-      })
-    );
+    this.subscriptions.push(this.listenForTabLinkChanges(), this.listenForOverflowMenuFocusChanges());
 
     if (typeof this.ifActiveService.current === 'undefined' && this.tabLinkDirectives[0]) {
       this.tabLinkDirectives[0].activate();
@@ -128,6 +137,21 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   toggleOverflow(event: any) {
     this.ifOpenService.toggleWithEvent(event);
+  }
+
+  checkFocusVisible() {
+    if (!this.ifOpenService.open && this.inOverflow()) {
+      this.ifOpenService.open = true;
+    } else if (this.ifOpenService.open && !this.inOverflow()) {
+      this.ifOpenService.open = false;
+    }
+  }
+
+  inOverflow() {
+    return (
+      this.tabLinkElements.indexOf(document.activeElement as HTMLElement) > -1 &&
+      this.keyFocus.current >= this.overflowPosition
+    );
   }
 
   @HostBinding('class.tabs-vertical')
@@ -139,5 +163,30 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
     this.subscriptions.forEach(sub => {
       sub.unsubscribe();
     });
+  }
+
+  private listenForTabLinkChanges() {
+    return this.tabs.changes.pipe(startWith(this.tabs.map(tab => tab.tabLink))).subscribe(() => {
+      this._tabLinkDirectives = this.tabs.map(tab => tab.tabLink);
+      this.tabLinkElements = this._tabLinkDirectives.map(tab => tab.el.nativeElement);
+    });
+  }
+
+  private listenForOverflowMenuFocusChanges() {
+    return this.ifOpenService.openChange.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(open => {
+      if (open && !this.inOverflow()) {
+        this.focusToFirstItemInOverflow();
+      } else if (!open && this.nextFocusedItemIsNotInOverflow()) {
+        this.keyFocus.resetTabFocus();
+      }
+    });
+  }
+
+  private focusToFirstItemInOverflow() {
+    this.keyFocus.moveTo(this.overflowPosition);
+  }
+
+  private nextFocusedItemIsNotInOverflow() {
+    return this.tabLinkElements.find(e => e === document.activeElement) === undefined;
   }
 }

@@ -218,10 +218,10 @@ describe('Tabs', () => {
       expect(compiled.querySelector('.tabs-overflow')).toBeNull();
     });
 
-    it('sets the role on the overflow button li to presentation', () => {
+    it('sets the role on the overflow button li to application', () => {
       context.fixture.componentInstance.inOverflow = true;
       context.fixture.detectChanges();
-      expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('presentation');
+      expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('application');
     });
 
     it('does not reuse views with *clrIfActive', () => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -92,6 +92,15 @@ export default function(): void {
         expect(columnsService.columns[1].value.hidden).toBeFalsy();
         expect(columnsService.columns[2].value.titleTemplateRef).toBeUndefined();
       });
+
+      it('set hidden state through clrDgHideableColumn input', function() {
+        testSugaredComponent.hideFirst = true;
+        fixture.detectChanges();
+        expect(columnsService.columns[0].value.hidden).toBeTruthy();
+        testSugaredComponent.hideFirst = false;
+        fixture.detectChanges();
+        expect(columnsService.columns[0].value.hidden).toBeFalsy();
+      });
     });
 
     describe('De-sugered', function() {
@@ -138,6 +147,15 @@ export default function(): void {
         columnsService.emitStateChangeAt(1, { hidden: true, changes: [DatagridColumnChanges.HIDDEN] });
         fixture.detectChanges();
         expect(testDesugaredComponent.hideSecond).toBeTruthy();
+      });
+
+      it('set hidden state through clrDgHidden input', function() {
+        testDesugaredComponent.hideSecond = true;
+        fixture.detectChanges();
+        expect(columnsService.columns[1].value.hidden).toBeTruthy();
+        testDesugaredComponent.hideSecond = false;
+        fixture.detectChanges();
+        expect(columnsService.columns[1].value.hidden).toBeFalsy();
       });
     });
   });

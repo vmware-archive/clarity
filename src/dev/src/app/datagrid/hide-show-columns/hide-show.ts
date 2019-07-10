@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,7 +17,8 @@ import { User } from '../inventory/user';
 })
 export class DatagridHideShowDemo {
   users: User[];
-  showId = true;
+  deleteIdColumn = false;
+  hideNameColumn = false;
   shortFormat = true;
   conditionalSignpost = true;
   currentPageSize = 1;
@@ -28,7 +29,19 @@ export class DatagridHideShowDemo {
     this.users = inventory.all;
   }
 
+  get idControlMessage() {
+    return this.deleteIdColumn ? 'Add User Id Column' : 'Delete User Id Column';
+  }
+
+  get nameControlMessage() {
+    return this.hideNameColumn ? 'Show Name Column' : 'Hide Name Column';
+  }
+
   toggleId() {
-    this.showId = !this.showId;
+    this.deleteIdColumn = !this.deleteIdColumn;
+  }
+
+  toggleName() {
+    this.hideNameColumn = !this.hideNameColumn;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,6 +57,10 @@ ClarityIconElement.prototype._setIconSize = function(size: string) {
   }
 };
 
+ClarityIconElement.prototype._normalizeShape = function(value: string): string {
+  return value.split(/\s/)[0].toLowerCase();
+};
+
 ClarityIconElement.prototype.connectedCallback = function() {
   // One thing to note here is that the attributeChangedCallback method is called for every attribute first
   // before this connectedCallback method called only once when the custom element is inserted into the DOM.
@@ -82,7 +86,7 @@ ClarityIconElement.prototype.connectedCallback = function() {
   // This means even if the shape is not found, the injected shape will have the user-given size.
 
   if (this.hasAttribute('shape')) {
-    const shapeAttrValue = this.getAttribute('shape').split(/\s/)[0];
+    const shapeAttrValue = this._normalizeShape(this.getAttribute('shape'));
 
     this._shapeTemplateSubscription = ShapeTemplateObserver.instance.subscribeTo(
       shapeAttrValue,
@@ -135,7 +139,7 @@ ClarityIconElement.prototype.attributeChangedCallback = function(
   // This means even if the shape is not found, the injected shape will have the user-given size.
 
   if (attributeName === 'shape') {
-    this.currentShapeAttrVal = newValue.split(/\s/)[0];
+    this.currentShapeAttrVal = this._normalizeShape(newValue);
 
     // transfer change handler callback to new shape name
     if (this._shapeTemplateSubscription) {

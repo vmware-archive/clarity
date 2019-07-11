@@ -45,6 +45,7 @@
     "test": "ng test clr-angular --watch false --code-coverage",
     "test:watch": "ng test clr-angular --watch --code-coverage",
     "test:travis": "npm-run-all test:format test:lint test build build:ks build:dev test:golden",
+    "format:file": "prettier --write",
     "format:fix": "pretty-quick --staged",
     "license:fix": "node scripts/update-license",
     "visual:fix": "npm-run-all 'visual:fix:light -- {*}' 'visual:fix:dark -- {*}' --",

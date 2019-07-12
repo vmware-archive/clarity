@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -12,10 +12,10 @@
         <clr-icon shape="caret down"></clr-icon>
     </button>
     <clr-dropdown-menu>
-        <label class="dropdown-header">Dropdown header</label>
-        <button href="javascript://" clrDropdownItem>Action 1</button>
-        <button href="javascript://" class="disabled" clrDropdownItem>Disabled Action</button>
-        <div class="dropdown-divider"></div>
+        <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+        <button aria-label="Dropdown header Action 1" href="javascript://" clrDropdownItem>Action 1</button>
+        <button aria-label="Dropdown header Disabled Action" href="javascript://" class="disabled" clrDropdownItem>Disabled Action</button>
+        <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
         <clr-dropdown>
             <button clrDropdownTrigger id="sub-menu-1">Link 1</button>
             <clr-dropdown-menu>

@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-x
+
           <h3>Placement</h3>
           <div class="clr-row">
             <div class="clr-col-12 clr-col-lg-6">
@@ -173,7 +173,7 @@ x
                     right of the first nested menu, creating a zig-zag pattern.
                   </p>
                 </div>
-              </div>f
+              </div>
             </div>
           </div>
         </div>
@@ -182,11 +182,13 @@ x
           <h2>Accessibility</h2>
           <p>Clarity Angular component conforms to the following guidelines:</p>
           <ul class="list">
-            <li>A dropdown menu should have an element with the role <code class="clr-code">button</code> that opens the menu</li>
+            <li>A dropdown menu should have an element with the role <code class="clr-code">button</code> that opens the menu.</li>
             <li>The element with the <code class="clr-code">button</code> role should also have an <code class="clr-code">aria-expanded</code>
-              attribute which is set to true when the dropdown menu is open
+              attribute which is set to true when the dropdown menu is open.
             </li>
-            <li>The items should have the role <code class="clr-code">menuitem</code></li>
+            <li>The items should be inside an element with the role <code class="clr-code">menu</code>, and have the role <code class="clr-code">menuitem</code>.</li>
+            <li>If the menu uses headings, the heading should be used as an accessible description for each related item.</li>
+            <li>A visual element with role <code class="clr-code">separator</code> may be used between groups of items within a menu. The separator is not focusable or interactive.</li>
           </ul>
 
           <h4>Keyboard Interaction</h4>

@@ -70,9 +70,9 @@
             <clr-icon shape="caret down"></clr-icon>
           </button>
           <clr-dropdown-menu clrPosition="top-right" *clrIfOpen>
-            <label class="dropdown-header">Dropdown header</label>
-            <button type="button" clrDropdownItem>Action 1</button>
-            <button type="button" disabled clrDropdownItem>Disabled Action</button>
+            <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+            <button aria-label="Dropdown header Action 1" type="button" clrDropdownItem>Action 1</button>
+            <button aria-label="Dropdown header Disabled Action" type="button" disabled clrDropdownItem>Disabled Action</button>
             <div class="dropdown-divider"></div>
             <clr-dropdown>
               <button type="button" clrDropdownTrigger>Link 1</button>

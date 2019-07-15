@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,13 +24,17 @@ import { DateNavigationService } from './providers/date-navigation.service';
             [class.is-selected]="dayView.isSelected"
             [attr.tabindex]="dayView.tabIndex"
             (click)="selectDay()"
-            (focus)="onDayViewFocus()">
+            (focus)="onDayViewFocus()"
+            [attr.aria-label]="dayString">
             {{dayView.dayModel.date}}
         </button>
     `,
   host: { '[class.day]': 'true' },
 })
 export class ClrDay {
+  private _dayView: DayViewModel;
+  public dayString: string;
+
   constructor(
     private _dateNavigationService: DateNavigationService,
     private _ifOpenService: IfOpenService,
@@ -40,7 +44,16 @@ export class ClrDay {
   /**
    * DayViewModel input which is used to build the Day View.
    */
-  @Input('clrDayView') dayView: DayViewModel;
+
+  @Input('clrDayView')
+  public set dayView(day: DayViewModel) {
+    this._dayView = day;
+    this.dayString = this._dayView.dayModel.toDateString();
+  }
+
+  public get dayView(): DayViewModel {
+    return this._dayView;
+  }
 
   /**
    * Updates the focusedDay in the DateNavigationService when the ClrDay is focused.

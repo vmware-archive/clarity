@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,8 @@ import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { createKeyboardEvent } from './utils/test-utils';
 import { ClrYearpicker } from './yearpicker';
+import { YearRangeModel } from './model/year-range.model';
+import { ClrCommonStringsService } from '@clr/angular';
 
 export default function() {
   describe('Yearpicker Component', () => {
@@ -43,6 +45,7 @@ export default function() {
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           DateIOService,
+          ClrCommonStringsService,
         ]);
       });
 
@@ -59,7 +62,7 @@ export default function() {
       it('calls to navigate to the previous decade', () => {
         spyOn(context.clarityDirective, 'previousDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
 
         button.click();
         context.detectChanges();
@@ -70,7 +73,7 @@ export default function() {
       it('calls to navigate to the current decade', () => {
         spyOn(context.clarityDirective, 'currentDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
 
         button.click();
         context.detectChanges();
@@ -81,7 +84,7 @@ export default function() {
       it('calls to navigate to the next decade', () => {
         spyOn(context.clarityDirective, 'nextDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
 
         button.click();
         context.detectChanges();
@@ -117,6 +120,71 @@ export default function() {
           }
           count++;
         }
+      });
+
+      it('has the correct aria-label for the previousDecade button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const previousDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        expect(previousDecadeBtn.attributes['aria-label'].value).toEqual('Previous decade');
+      });
+
+      it('has the correct aria-label for the currentDecade button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const currentDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        expect(currentDecadeBtn.attributes['aria-label'].value).toEqual('Current decade');
+      });
+
+      it('has the correct aria-label for the nextDecade button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const nextDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
+        expect(nextDecadeBtn.attributes['aria-label'].value).toEqual('Next decade');
+      });
+
+      function checkLiveElementYearRangeModel(element: HTMLDivElement, yrm: YearRangeModel) {
+        const yearFloor = yrm.yearRange[0];
+        const yearCeil = yrm.yearRange[yrm.yearRange.length - 1];
+        expect(element.innerText).toEqual(`The current decade is ${yearFloor} to ${yearCeil}.`);
+      }
+
+      it('updates the aria-live element when the next decade button is clicked', () => {
+        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
+
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
+        button.click();
+        context.detectChanges();
+
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
+      });
+
+      it('updates the aria-live element when the previous button is clicked', () => {
+        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
+
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        button.click();
+        context.detectChanges();
+
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
+      });
+
+      it('updates the aria-live element when the current button is clicked', () => {
+        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
+
+        // Go back first
+        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
+        const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        previousButton.click();
+        context.detectChanges();
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
+
+        const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        currentButton.click();
+        context.detectChanges();
+
+        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
       });
 
       // IE doesn't handle KeyboardEvent constructor
@@ -166,6 +234,7 @@ export default function() {
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           DateIOService,
+          ClrCommonStringsService,
         ]);
       });
 
@@ -272,6 +341,7 @@ export default function() {
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           DateIOService,
+          ClrCommonStringsService,
         ]);
       }
 

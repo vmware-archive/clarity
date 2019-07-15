@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,6 +17,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
+import { ClrCommonStringsService } from '@clr/angular';
 
 export default function() {
   describe('Daypicker Component', () => {
@@ -39,6 +40,7 @@ export default function() {
         LocaleHelperService,
         DatepickerFocusService,
         DateFormControlService,
+        ClrCommonStringsService,
       ]);
       viewManagerService = context.getClarityProvider(ViewManagerService);
       localeHelperService = context.getClarityProvider(LocaleHelperService);
@@ -100,6 +102,55 @@ export default function() {
         context.detectChanges();
 
         expect(context.clarityDirective.nextMonth).toHaveBeenCalled();
+      });
+
+      it('has correct title and aria-label for monthpicker button', () => {
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.monthpicker-trigger');
+        const currentMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
+        const expectedString = `Select month, the current month is ${currentMonth}`;
+        expect(button.title).toEqual(expectedString);
+        expect(button.attributes['aria-label'].value).toEqual(expectedString);
+      });
+
+      it('has correct title and aria-label for yearpicker button', () => {
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.yearpicker-trigger');
+        const currentYear = dateNavigationService.displayedCalendar.year;
+        const expectedString = `Select year, the current year is ${currentYear}`;
+        expect(button.title).toEqual(expectedString);
+        expect(button.attributes['aria-label'].value).toEqual(expectedString);
+      });
+
+      it('sets the correct aria-label value on the previous month button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
+        const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        expect(previousButton.attributes['aria-label'].value).toEqual('Previous month');
+      });
+
+      it('sets the correct aria-label value on the current month button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
+        const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        expect(currentButton.attributes['aria-label'].value).toEqual('Current month');
+      });
+
+      it('sets the correct aria-label value on the next month button', () => {
+        const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
+        const nextButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        expect(nextButton.attributes['aria-label'].value).toEqual('Next month');
+      });
+
+      it('updates the aria-live view element when the month and year are changed', () => {
+        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
+        let testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
+        let testYear = dateNavigationService.displayedCalendar.year;
+
+        expect(liveElement.innerText).toEqual(`The current month is ${testMonth}. The current year is ${testYear}.`);
+
+        dateNavigationService.selectedDay = new DayModel(2025, 9, 1);
+        context.detectChanges();
+        testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
+        testYear = dateNavigationService.displayedCalendar.year;
+
+        expect(liveElement.innerText).toEqual(`The current month is ${testMonth}. The current year is ${testYear}.`);
       });
     });
 

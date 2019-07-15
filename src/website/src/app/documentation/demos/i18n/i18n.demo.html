@@ -54,7 +54,7 @@ import &#123; klingonLocale &#125; from './translations/klingon';
 @Component(&#123;...&#125;)
 export class AppComponent &#123;
   constructor(commonStrings: ClrCommonStringsService) &#123;
-    // Call this method to set the new locale values into the service, defaults for English 
+    // Call this method to set the new locale values into the service, defaults for English
     // will be used for in any missing strings
     commonStrings.localize(klingonLocale);
   &#125;
@@ -102,7 +102,7 @@ export class MyCommonStringsService implements ClrCommonStrings &#123;
       </table>
 
       <h3 id="updating-to-latest">Updating to v1.2.1 or 2.1.1</h3>
-      
+
       <p>If you used the original implementation of <code class="clr-code">ClrCommonStrings</code> found in versions prior to v1.2.1 and v2.1.1, you need to follow
         these steps to update to the new API.
       </p>

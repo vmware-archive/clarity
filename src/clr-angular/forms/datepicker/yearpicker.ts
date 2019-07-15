@@ -17,15 +17,30 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
   selector: 'clr-yearpicker',
   template: `
         <div class="year-switchers">
-            <button class="calendar-btn switcher" type="button" (click)="previousDecade()">
-                <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.previous"></clr-icon>
-            </button>
-            <button class="calendar-btn switcher" type="button" (click)="currentDecade()">
-                <clr-icon shape="event" [attr.title]="commonStrings.keys.current"></clr-icon>
-            </button>
-            <button class="calendar-btn switcher" type="button" (click)="nextDecade()">
-                <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.next"></clr-icon>
-            </button>
+          <div aria-live="polite" class="clr-sr-only">
+            {{ ariaLiveDecadeText  }}.
+          </div>
+          <button 
+              class="calendar-btn switcher" 
+              type="button" 
+              (click)="previousDecade()"
+              [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade">
+              <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
+          </button>
+          <button 
+              class="calendar-btn switcher" 
+              type="button" 
+              (click)="currentDecade()"
+              [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade">
+              <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
+          </button>
+          <button 
+              class="calendar-btn switcher" 
+              type="button" 
+              (click)="nextDecade()"
+              [attr.aria-label]="commonStrings.keys.datepickerNextDecade">
+              <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
+          </button>
         </div>
         <div class="years">
             <button
@@ -53,7 +68,16 @@ export class ClrYearpicker implements AfterViewInit {
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;
+    this.updateRange(this.yearRangeModel);
   }
+
+  get ariaLiveDecadeText(): string {
+    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentDecadePhrase, {
+      DECADE_RANGE: this.decadeRange,
+    });
+  }
+
+  private decadeRange;
 
   /**
    * YearRangeModel which is used to build the YearPicker view.
@@ -102,6 +126,7 @@ export class ClrYearpicker implements AfterViewInit {
    */
   previousDecade(): void {
     this.yearRangeModel = this.yearRangeModel.previousDecade();
+    this.updateRange(this.yearRangeModel);
     // Year in the yearpicker is not focused because while navigating to a different decade,
     // you want the focus to remain on the decade switcher arrows.
   }
@@ -114,6 +139,7 @@ export class ClrYearpicker implements AfterViewInit {
       this.yearRangeModel = this.yearRangeModel.currentDecade();
     }
     this._datepickerFocusService.focusCell(this._elRef);
+    this.updateRange(this.yearRangeModel);
   }
 
   /**
@@ -121,6 +147,7 @@ export class ClrYearpicker implements AfterViewInit {
    */
   nextDecade(): void {
     this.yearRangeModel = this.yearRangeModel.nextDecade();
+    this.updateRange(this.yearRangeModel);
     // Year in the yearpicker is not focused because while navigating to a different decade,
     // you want the focus to remain on the decade switcher arrows.
   }
@@ -165,10 +192,18 @@ export class ClrYearpicker implements AfterViewInit {
     }
   }
 
+  private updateRange(yrm: YearRangeModel): void {
+    const floor = yrm.yearRange[0];
+    const ceil = yrm.yearRange[yrm.yearRange.length - 1];
+    this.decadeRange = `${floor} to ${ceil}`;
+  }
+
   /**
    * Focuses on the current calendar year when the View is initialized.
    */
   ngAfterViewInit() {
     this._datepickerFocusService.focusCell(this._elRef);
+
+    // update the value for  decade range
   }
 }

@@ -53,11 +53,69 @@ export class I18nDemo extends ClarityDocComponent {
       key: 'showColumnsMenuDescription',
       role: 'Datagrid: screen reader only description of the Show/Hide columns menu',
     },
+    {
+      key: 'allColumnsSelected',
+      role: 'Datagrid: screen reader only confirmation that all columns were selected',
+    },
+    { key: 'loading', role: 'Display loading text (Default: Loading)' },
+    { key: 'datepickerToggle', role: 'The open/close button for a datepicker' },
+    {
+      key: 'datepickerPreviousMonth',
+      role: 'The button that navigates daypicker to a monthpicker',
+    },
+    {
+      key: 'datepickerCurrentMonth',
+      role: 'The button that navigates a daypicker to current month',
+    },
     { key: 'allColumnsSelected', role: 'Datagrid: screen reader only confirmation that all columns were selected' },
     { key: 'loading', role: 'Display loading text (Default: Loading)' },
     { key: 'singleSelectionAriaLabel', role: 'Datagrid: aria label for header single selection header column' },
     { key: 'singleActionableAriaLabel', role: 'Datagrid: aria label for row action header column' },
     { key: 'detailExpandableAriaLabel', role: 'Datagrid: aria label for expandable row toggle button' },
     { key: 'alertCloseButtonAriaLabel', role: 'Alert: aria label for closing alert' },
+    { key: 'datepickerOpen', role: 'The open/close button for a datepicker' },
+    { key: 'datepickerPreviousMonth', role: 'The button that navigates daypicker to a monthpicker' },
+    { key: 'datepickerCurrentMonth', role: 'The button that navigates a daypicker to current month' },
+    {
+      key: 'datepickerNextMonth',
+      role: 'The button that navigates a daypicker to the next month',
+    },
+    {
+      key: 'datepickerPreviousDecade',
+      role: 'The button that navigates a yearpicker to previous decade',
+    },
+    {
+      key: 'datepickerNextDecade',
+      role: 'The button that navigates a yearpicker to next decade',
+    },
+    {
+      key: 'datepickerCurrentDecade',
+      role: 'The button that navigates the yearpicker to current decade',
+    },
+    {
+      key: 'datepickerSelectMonthText',
+      role:
+        'Populates aria-label and title for monthpicker button. Is concatenated with the (localized) value for calendarMonth as well as this value',
+    },
+    {
+      key: 'datepickerSelectYearText',
+      role:
+        'Populates aria-label and title for yearpicker button. Is concatenated with the (localized) value for calendarYear as well as this value',
+    },
+    {
+      key: 'daypickerSRCurrentMonthPhrase',
+      role:
+        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the month changes.',
+    },
+    {
+      key: 'daypickerSRCurrentYearPhrase',
+      role:
+        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the year changes.',
+    },
+    {
+      key: 'daypickerSRCurrentDecadePhrase',
+      role:
+        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the decade changes.',
+    },
   ];
 }

@@ -47,4 +47,17 @@ export const commonStringsDefault: ClrCommonStrings = {
   detailExpandableAriaLabel: 'Toggle more row content',
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
+  // DatePicker
+  datepickerToggle: 'Toggle datepicker',
+  datepickerPreviousMonth: 'Previous month',
+  datepickerCurrentMonth: 'Current month',
+  datepickerNextMonth: 'Next month',
+  datepickerPreviousDecade: 'Previous decade',
+  datepickerNextDecade: 'Next decade',
+  datepickerCurrentDecade: 'Current decade',
+  datepickerSelectMonthText: 'Select month, the current month is {CALENDAR_MONTH}',
+  datepickerSelectYearText: 'Select year, the current year is {CALENDAR_YEAR}',
+  daypickerSRCurrentMonthPhrase: 'The current month is {CURRENT_MONTH}',
+  daypickerSRCurrentYearPhrase: 'The current year is {CURRENT_YEAR}',
+  daypickerSRCurrentDecadePhrase: 'The current decade is {DECADE_RANGE}',
 };

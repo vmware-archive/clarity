@@ -67,5 +67,10 @@ export default function(): void {
       testDayModel = dayModel2.clone();
       expect(assertEqualDates(testDayModel.toDate(), dayModel2.toDate())).toBe(true);
     });
+
+    it('provides a toDateString method that returns the local date string', () => {
+      const testString = dayModel1.toDateString();
+      expect(testString).toEqual('1/1/2018');
+    });
   });
 }

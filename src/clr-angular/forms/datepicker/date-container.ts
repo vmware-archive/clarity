@@ -33,7 +33,14 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-content select="[clrDate]"></ng-content>
-            <button #actionButton type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.keys.open" [disabled]="control?.disabled">
+            <button #actionButton 
+                    type="button" 
+                    class="clr-input-group-icon-action"
+                    [attr.title]="commonStrings.keys.datepickerToggle"
+                    [attr.aria-label]="commonStrings.keys.datepickerToggle"
+                    [disabled]="control?.disabled"
+                    (click)="toggleDatepicker($event)"
+                    *ngIf="isEnabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -56,6 +63,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
     DateNavigationService,
     DatepickerEnabledService,
     DateFormControlService,
+    ClrCommonStringsService,
   ],
   host: {
     '[class.clr-form-control-disabled]': 'control?.disabled',

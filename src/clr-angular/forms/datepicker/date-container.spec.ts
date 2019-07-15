@@ -135,6 +135,16 @@ export default function() {
           expect(context.clarityElement.className).toContain('clr-form-control-disabled');
         });
       }));
+
+      it('has an accessible title on the calendar toggle button', () => {
+        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        expect(toggleButton.title).toEqual('Toggle datepicker');
+      });
+
+      it('has an accessible aria-label on the calendar toggle button', () => {
+        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        expect(toggleButton.attributes['aria-label'].value).toEqual('Toggle datepicker');
+      });
     });
 
     describe('Typescript API', () => {

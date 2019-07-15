@@ -19,6 +19,30 @@ export class ClrDaypicker {
     public commonStrings: ClrCommonStringsService
   ) {}
 
+  get monthAttrString(): string {
+    return this.commonStrings.parse(this.commonStrings.keys.datepickerSelectMonthText, {
+      CALENDAR_MONTH: this.calendarMonth,
+    });
+  }
+
+  get yearAttrString(): string {
+    return this.commonStrings.parse(this.commonStrings.keys.datepickerSelectYearText, {
+      CALENDAR_YEAR: this.calendarYear.toString(),
+    });
+  }
+
+  get ariaLiveMonth(): string {
+    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentMonthPhrase, {
+      CURRENT_MONTH: this.calendarMonth,
+    });
+  }
+
+  get updateAriaLiveYear(): string {
+    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentYearPhrase, {
+      CURRENT_YEAR: this.calendarYear.toString(),
+    });
+  }
+
   /**
    * Calls the ViewManagerService to change to the monthpicker view.
    */

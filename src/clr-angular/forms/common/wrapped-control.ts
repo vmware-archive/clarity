@@ -16,6 +16,8 @@ import {
   ElementRef,
   OnDestroy,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { filter, distinctUntilChanged, startWith } from 'rxjs/operators';
 
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
@@ -26,7 +28,6 @@ import { IfErrorService } from './if-error/if-error.service';
 import { NgControl } from '@angular/forms';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
-import { Subscription } from 'rxjs';
 
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
   private ngControlService: NgControlService;
@@ -110,21 +111,39 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
   ngOnInit() {
     this._containerInjector = new HostWrapper(this.wrapperType, this.vcr, this.index);
     this.controlIdService = this._containerInjector.get(ControlIdService);
+
     if (this._id) {
       this.controlIdService.id = this._id;
     } else {
       this._id = this.controlIdService.id;
     }
-    if (this.renderer && this.el) {
-      this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.controlIdService.id + '-helper');
-    }
 
     if (this.ngControlService) {
       this.ngControlService.setControl(this.ngControl);
     }
+
+    this.listenForErrorStateChanges();
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  private listenForErrorStateChanges() {
+    if (this.ifErrorService) {
+      this.subscriptions.push(
+        this.ifErrorService.statusChanges
+          .pipe(startWith(false), filter(() => this.renderer && !!this.el), distinctUntilChanged())
+          .subscribe(error => this.setAriaDescribedBy(error))
+      );
+    }
+  }
+
+  private setAriaDescribedBy(error: boolean) {
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.getAriaDescribedById(error));
+  }
+
+  private getAriaDescribedById(error: boolean): string {
+    return this.controlIdService.id.concat(error ? '-error' : '-helper');
   }
 }

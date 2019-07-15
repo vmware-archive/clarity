@@ -92,7 +92,7 @@ class WithWrapperWithId {}
 @Component({ template: `<test-wrapper2><input testControl id="hello" /></test-wrapper2>` })
 class WithMultipleNgContent {}
 
-@Component({ template: `<test-wrapper3><input testControl3 [(ngModel)]="model" /><test-wrapper>` })
+@Component({ template: `<test-wrapper3><input testControl3 [(ngModel)]="model" required /><test-wrapper>` })
 class WithControl {
   model = '';
 }
@@ -232,6 +232,15 @@ export default function(): void {
       it('adds the aria-describedby for helper', function() {
         setupTest(this, WithControl, TestControl3);
         expect(this.input.getAttribute('aria-describedby')).toContain('-helper');
+      });
+
+      it('adds the aria-describedby for error messages', function(this: TestContext) {
+        setupTest(this, WithControl, TestControl3);
+        this.input.focus();
+        this.input.blur();
+        this.fixture.detectChanges();
+
+        expect(this.input.getAttribute('aria-describedby')).toContain('-error');
       });
     });
   });

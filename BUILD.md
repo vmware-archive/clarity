@@ -115,3 +115,10 @@ to manually fix those.
 These scripts use Docker to start up a container with selenium and chrome to run the Gemini tests. Currently there are 4 sets
 in our code base and these are arbitrary sets to parallelize running them in Travis builds. You must pass in the set(s) for both
 of these scripts (e.g. `npm run test:visual set1 set3`).
+
+##### `npm run format:file -- path/to/file`
+
+When contributing to clarity there is a post commit hook installed and run with
+[husky](https://github.com/typicode/husky) that will only format the files staged before they are committed. There are
+corner cases and editors that may not behave as expected and it is possible to create a pull request that fails because
+the files are not properly formatted. This command can be used to format a specific file or a space separated list of files.

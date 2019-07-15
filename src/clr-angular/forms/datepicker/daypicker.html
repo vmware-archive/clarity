@@ -1,21 +1,45 @@
 <div class="calendar-header">
+    <div aria-live="polite" class="clr-sr-only">
+      {{ ariaLiveMonth }}.  {{updateAriaLiveYear}}.
+    </div>
     <div class="calendar-pickers">
-        <button class="calendar-btn monthpicker-trigger" type="button" (click)="changeToMonthView()">
-            {{calendarMonth}}
+        <button
+                class="calendar-btn monthpicker-trigger"
+                type="button" (click)="changeToMonthView()"
+                [attr.aria-label]="monthAttrString"
+                [attr.title]="monthAttrString">
+                {{calendarMonth}}
         </button>
-        <button class="calendar-btn yearpicker-trigger" type="button" (click)="changeToYearView()">
+        <button
+                class="calendar-btn yearpicker-trigger"
+                type="button"
+                (click)="changeToYearView()"
+                [attr.aria-label]="yearAttrString"
+                [attr.title]="yearAttrString">
             {{calendarYear}}
         </button>
     </div>
     <div class="calendar-switchers">
-        <button class="calendar-btn switcher" type="button" (click)="previousMonth()">
-            <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.previous"></clr-icon>
+        <button
+            class="calendar-btn switcher"
+            type="button"
+            (click)="previousMonth()"
+            [attr.aria-label]="commonStrings.keys.datepickerPreviousMonth">
+            <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousMonth"></clr-icon>
         </button>
-        <button class="calendar-btn switcher" type="button" (click)="currentMonth()">
-            <clr-icon shape="event" [attr.title]="commonStrings.keys.current"></clr-icon>
+        <button
+            class="calendar-btn switcher"
+            type="button"
+            (click)="currentMonth()"
+            [attr.aria-label]="commonStrings.keys.datepickerCurrentMonth">
+            <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentMonth"></clr-icon>
         </button>
-        <button class="calendar-btn switcher" type="button" (click)="nextMonth()">
-            <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.next"></clr-icon>
+        <button
+            class="calendar-btn switcher"
+            type="button"
+            (click)="nextMonth()"
+            [attr.aria-label]="commonStrings.keys.datepickerNextMonth">
+            <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextMonth"></clr-icon>
         </button>
     </div>
 </div>

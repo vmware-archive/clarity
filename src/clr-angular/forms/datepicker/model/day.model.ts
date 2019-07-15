@@ -26,9 +26,6 @@ export class DayModel {
     return false;
   }
 
-  /**
-   * Converts the CalendarDate into the Javascript Date object.
-   */
   toDate(): Date {
     return new Date(this.year, this.month, this.date);
   }
@@ -49,5 +46,9 @@ export class DayModel {
    */
   clone(): DayModel {
     return new DayModel(this.year, this.month, this.date);
+  }
+
+  public toDateString(): string {
+    return this.toDate().toLocaleDateString();
   }
 }

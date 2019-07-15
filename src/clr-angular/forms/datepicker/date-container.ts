@@ -55,13 +55,14 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-container *ngTemplateOutlet="clrDate"></ng-container>
-            <button
-                    type="button"
+            <button #actionButton 
+                    type="button" 
                     class="clr-input-group-icon-action"
-                    (click)="toggleDatepicker($event)" 
-                    *ngIf="isEnabled" 
-                    [attr.title]="commonStrings.keys.open" 
-                    [disabled]="control?.disabled">
+                    [attr.title]="commonStrings.keys.datepickerToggle"
+                    [attr.aria-label]="commonStrings.keys.datepickerToggle"
+                    [disabled]="control?.disabled"
+                    (click)="toggleDatepicker($event)"
+                    *ngIf="isEnabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -95,6 +96,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
     DateNavigationService,
     DatepickerEnabledService,
     DateFormControlService,
+    ClrCommonStringsService,
   ],
   host: {
     '[class.date-container]': '!newFormsLayout',

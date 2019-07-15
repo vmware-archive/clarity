@@ -164,4 +164,20 @@ export interface ClrCommonStrings {
    * Alert: Close alert button
    */
   alertCloseButtonAriaLabel?: string;
+
+  /**
+   * Datepicker UI labels
+   */
+  datepickerToggle?: string;
+  datepickerPreviousMonth?: string;
+  datepickerCurrentMonth?: string;
+  datepickerNextMonth?: string;
+  datepickerPreviousDecade?: string;
+  datepickerNextDecade?: string;
+  datepickerCurrentDecade?: string;
+  datepickerSelectMonthText?: string;
+  datepickerSelectYearText?: string;
+  daypickerSRCurrentMonthPhrase?: string;
+  daypickerSRCurrentYearPhrase?: string;
+  daypickerSRCurrentDecadePhrase?: string;
 }

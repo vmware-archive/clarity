@@ -226,6 +226,18 @@ export interface ClrCommonStrings {
     current?: string;
     currentPage?: string;
     danger?: string;
+    datepickerCurrentDecade?: string;
+    datepickerCurrentMonth?: string;
+    datepickerNextDecade?: string;
+    datepickerNextMonth?: string;
+    datepickerPreviousDecade?: string;
+    datepickerPreviousMonth?: string;
+    datepickerSelectMonthText?: string;
+    datepickerSelectYearText?: string;
+    datepickerToggle?: string;
+    daypickerSRCurrentDecadePhrase?: string;
+    daypickerSRCurrentMonthPhrase?: string;
+    daypickerSRCurrentYearPhrase?: string;
     detailExpandableAriaLabel?: string;
     expand?: string;
     firstPage?: string;
@@ -596,6 +608,7 @@ export declare class ClrDatepickerViewManager extends AbstractPopover {
 }
 
 export declare class ClrDay {
+    dayString: string;
     dayView: DayViewModel;
     constructor(_dateNavigationService: DateNavigationService, _ifOpenService: IfOpenService, dateFormControlService: DateFormControlService);
     onDayViewFocus(): void;
@@ -603,9 +616,13 @@ export declare class ClrDay {
 }
 
 export declare class ClrDaypicker {
+    readonly ariaLiveMonth: string;
     readonly calendarMonth: string;
     readonly calendarYear: number;
     commonStrings: ClrCommonStringsService;
+    readonly monthAttrString: string;
+    readonly updateAriaLiveYear: string;
+    readonly yearAttrString: string;
     constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService);
     changeToMonthView(): void;
     changeToYearView(): void;
@@ -1466,6 +1483,7 @@ export declare class ClrWizardStepnavItem {
 }
 
 export declare class ClrYearpicker implements AfterViewInit {
+    readonly ariaLiveDecadeText: string;
     readonly calendarYear: number;
     commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;

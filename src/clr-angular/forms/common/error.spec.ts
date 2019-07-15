@@ -45,15 +45,6 @@ export default function(): void {
       ).toBeTrue();
     });
 
-    it('sets the the aria-describedby given so screen reader can associate error to input', function() {
-      const controlIdService = fixture.debugElement.injector.get(ControlIdService);
-      const message = fixture.nativeElement.querySelector('clr-control-error');
-      expect(message.getAttribute('aria-describedby')).toBe(controlIdService.id);
-      controlIdService.id = 'test';
-      fixture.detectChanges();
-      expect(message.getAttribute('aria-describedby')).toBe('test');
-    });
-
     it('leaves the for aria-describedby untouched if it exists', function() {
       const explicitFixture = TestBed.createComponent(ExplicitAriaTest);
       explicitFixture.detectChanges();

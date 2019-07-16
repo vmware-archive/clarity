@@ -62,9 +62,9 @@ export declare class ClrAccordionDescription {
 
 export declare class ClrAccordionPanel implements OnInit, OnChanges {
     readonly AccordionStatus: typeof AccordionStatus;
+    accordionDescription: QueryList<ClrAccordionDescription>;
     commonStrings: ClrCommonStrings;
     disabled: boolean;
-    focusHeader: boolean;
     id: string;
     panel: Observable<AccordionPanelModel>;
     panelOpen: boolean;

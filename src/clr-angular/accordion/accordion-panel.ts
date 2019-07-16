@@ -14,6 +14,8 @@ import {
   Inject,
   OnInit,
   OnChanges,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -25,6 +27,7 @@ import { AccordionStatus } from './enums/accordion-status.enum';
 import { panelAnimation } from './utils/animation';
 import { IfExpandService } from '../utils/conditional/if-expanded.service';
 import { AccordionPanelModel } from './models/accordion.model';
+import { ClrAccordionDescription } from './accordion-description';
 
 @Component({
   selector: 'clr-accordion-panel',
@@ -38,9 +41,9 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   @Input('clrAccordionPanelDisabled') disabled = false;
   @Input('clrAccordionPanelOpen') panelOpen = false;
   @Output('clrAccordionPanelOpenChange') panelOpenChange = new EventEmitter<boolean>();
+  @ContentChildren(ClrAccordionDescription) accordionDescription: QueryList<ClrAccordionDescription>;
 
   panel: Observable<AccordionPanelModel>;
-  focusHeader = false;
   readonly AccordionStatus = AccordionStatus;
 
   constructor(

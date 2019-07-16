@@ -20,19 +20,12 @@
     background: $clr-accordion-header-background-color;
     transition: all 200ms ease-in-out;
     border-bottom: 0;
-    display: flex;
-    flex-flow: row wrap;
     width: 100%;
     font-size: 0.65rem;
     text-align: left;
-    @include focus-within();
 
     &:hover {
       background-color: $clr-accordion-header-hover-background-color;
-    }
-
-    @media (min-width: $clr-accordion-responsive-breakpoint) {
-      flex-flow: row;
     }
   }
 
@@ -54,6 +47,8 @@
   }
 
   .clr-accordion-header-button {
+    display: flex;
+    flex-flow: row wrap;
     flex: 1 1 0%;
     width: 100%;
     border: 0;
@@ -64,12 +59,8 @@
     color: $clr-accordion-text-color;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      min-width: 280px;
+      flex-flow: row;
     }
-  }
-
-  button.clr-accordion-header-button {
-    outline: none; // parent .clr-accordion-header element contains focus style
   }
 
   .clr-accordion-status {
@@ -79,19 +70,25 @@
   }
 
   .clr-accordion-title {
-    width: calc(100% - 1.5rem);
-    max-width: 280px;
     display: inline-block;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      min-width: 7.2rem;
+    }
+  }
+
+  .clr-accordion-header-has-description {
+    .clr-accordion-title {
+      max-width: 11rem;
+    }
   }
 
   .clr-accordion-description {
-    padding: $clr-accordion-padding;
-    padding-top: 0;
-    width: 100%;
+    display: inline-block;
     max-width: 650px;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      padding-top: $clr-accordion-padding;
+      margin-left: 1.5rem;
     }
   }
 
@@ -100,7 +97,6 @@
     border: 1px solid $clr-accordion-border-color;
     border-bottom: 0;
     overflow: hidden;
-    display: block;
     padding: 0.75rem;
     display: none;
 
@@ -214,8 +210,7 @@
       font-size: 0.541667rem;
     }
 
-    .clr-accordion-header-button,
-    .clr-accordion-description {
+    .clr-accordion-header-button {
       padding: 0.25rem 0.5rem;
       font-size: 0.5rem;
     }
@@ -249,11 +244,7 @@
     }
 
     .clr-accordion-status {
-      width: 3rem;
-    }
-
-    .clr-accordion-title {
-      width: calc(100% - 3rem);
+      min-width: 3rem;
     }
 
     .clr-accordion-number {

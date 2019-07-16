@@ -5,18 +5,17 @@
   </div>
 
   <div role="group" [ngClass]="getPanelStateClasses(panel)">
-    <div class="clr-accordion-header" [class.focus-within]="focusHeader">
+    <div class="clr-accordion-header">
       <button
         type="button"
         class="clr-accordion-header-button"
         (click)="togglePanel()"
-        (focus)="focusHeader = true"
-        (blur)="focusHeader = false"
         [id]="getAccordionHeaderId(panel.templateId)"
         [disabled]="panel.disabled"
         [attr.aria-controls]="getAccordionContentId(panel.templateId)"
         [attr.aria-expanded]="panel.open"
         [attr.aria-describedby]="getAccordionStatusId(panel.templateId)"
+        [class.clr-accordion-header-has-description]="(accordionDescription.changes | async)?.length || accordionDescription.length"
       >
         <span class="clr-accordion-status">
           <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>
@@ -25,8 +24,8 @@
           <clr-icon shape="check-circle" class="clr-accordion-complete-icon"></clr-icon>
         </span>
         <ng-content select="clr-accordion-title, clr-step-title"></ng-content>
+        <ng-content select="clr-accordion-description, clr-step-description"></ng-content>
       </button>
-      <ng-content select="clr-accordion-description, clr-step-description"></ng-content>
     </div>
     <div
       @skipInitialRender

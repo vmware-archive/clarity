@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,15 +15,18 @@ const EXAMPLE = `
         </section>
         <div class="login-group">
             <clr-select-container>
+                <label class="clr-sr-only">User Role</label>
                 <select clrSelect name="type" [(ngModel)]="form.type">
                     <option value="local">Local Users</option>
                     <option value="admin">Administrator</option>
                 </select>
             </clr-select-container>
             <clr-input-container>
+                <label class="clr-sr-only">Username</label>
                 <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username"/>
             </clr-input-container>
             <clr-password-container>
+                <label class="clr-sr-only">Password</label>
                 <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="form.password"/>
             </clr-password-container>
             <clr-checkbox-wrapper>

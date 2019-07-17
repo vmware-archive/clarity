@@ -218,6 +218,7 @@ export declare abstract class ClrCommonStrings {
     current?: string;
     currentPage?: string;
     danger?: string;
+    detailExpandableAriaLabel?: string;
     expand?: string;
     firstPage?: string;
     hide?: string;
@@ -242,6 +243,8 @@ export declare abstract class ClrCommonStrings {
     showColumnsMenuDescription?: string;
     signpostClose?: string;
     signpostToggle?: string;
+    singleActionableAriaLabel?: string;
+    singleSelectionAriaLabel?: string;
     sortColumn?: string;
     success?: string;
     totalPages?: string;
@@ -263,6 +266,9 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     _projectedCalculationColumns: ViewContainerRef;
     _projectedDisplayColumns: ViewContainerRef;
     allSelected: boolean;
+    clrDetailExpandableAriaLabel: string;
+    clrDgSingleActionableAriaLabel: string;
+    clrDgSingleSelectionAriaLabel: string;
     columns: QueryList<ClrDatagridColumn<T>>;
     commonStrings: ClrCommonStrings;
     datagridTable: ElementRef;

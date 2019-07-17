@@ -26,17 +26,17 @@
                 </div>
                 <!-- header for datagrid where you can select one row only -->
                 <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"
-                     *ngIf="selection.selectionType === SELECTION_TYPE.Single">
+                     *ngIf="selection.selectionType === SELECTION_TYPE.Single" [attr.aria-label]="clrDgSingleSelectionAriaLabel">
                   <div class="datagrid-column-separator"></div>
                 </div>
                 <!-- header for single row action; only displayType if we have at least one actionable row in datagrid -->
                 <div role="columnheader" class="datagrid-column datagrid-row-actions datagrid-fixed-column"
-                     *ngIf="rowActionService.hasActionableRow">
+                     *ngIf="rowActionService.hasActionableRow" [attr.aria-label]="clrDgSingleActionableAriaLabel">
                   <div class="datagrid-column-separator"></div>
                 </div>
                 <!-- header for carets; only displayType if we have at least one expandable row in datagrid -->
                 <div role="columnheader" class="datagrid-column datagrid-expandable-caret datagrid-fixed-column"
-                     *ngIf="expandableRows.hasExpandableRow">
+                     *ngIf="expandableRows.hasExpandableRow" [attr.aria-label]="clrDetailExpandableAriaLabel">
                   <div class="datagrid-column-separator"></div>
                 </div>
                 <ng-container #projectedDisplayColumns></ng-container>

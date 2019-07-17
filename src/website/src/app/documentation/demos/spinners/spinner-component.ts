@@ -11,7 +11,7 @@ const EXAMPLE = `
 
 const EXAMPLE1 = `
 <div *ngIf="downloadingFile">
-  <clr-spinner  inline>
+  <clr-spinner clrInline>
     Downloading
   </clr-spinner>
   <span>
@@ -21,7 +21,7 @@ const EXAMPLE1 = `
 `;
 
 const EXAMPLE2 = `
-<clr-spinner *ngIf="downloadinInvoice" medium assertive>Downloading</clr-spinner>
+<clr-spinner *ngIf="downloadinInvoice" clrMedium clrAssertive>Downloading</clr-spinner>
 `;
 
 @Component({
@@ -36,37 +36,37 @@ export class SpinnerComponentDemo {
 
   props = [
     {
-      name: '[inline]',
+      name: '[clrInline]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Create an inline spinner',
     },
     {
-      name: '[inverse]',
+      name: '[clrInverse]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Create spinner for dark background',
     },
     {
-      name: '[small]',
+      name: '[clrSmall]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Make the spinner small 18x18 pixels',
     },
     {
-      name: '[medium]',
+      name: '[clrMedium]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Medium spinners 36x36 pixels',
     },
     {
-      name: '[assertive]',
+      name: '[clrAssertive]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Set aria-live to "assertive", default is "polite"',
     },
     {
-      name: '[off]',
+      name: '[clrOff]',
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Set aria-live to "off", no event will be broadcasted to screen readers',

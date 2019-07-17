@@ -17,21 +17,27 @@ const SPINNER_INLINE = 'spinner-inline';
 
 const SPINNER_SMALL_SIZE = 'spinner-sm';
 const SPINNER_MEDIUM_SIZE = 'spinner-md';
+const SPINNER_LARGE_SIZE = 'spinner-lg';
 
 @Component({
-  template: `<clr-spinner small medium inline>Loading ...</clr-spinner>`,
+  template: `<clr-spinner clrSmall clrMedium clrInline>Loading ...</clr-spinner>`,
 })
 class TestComponent {}
 
 @Component({
-  template: `<clr-spinner small inverse off>Loading ...</clr-spinner>`,
+  template: `<clr-spinner clrSmall clrInverse clrOff>Loading ...</clr-spinner>`,
 })
 class TestSmallComponent {}
 
 @Component({
-  template: `<clr-spinner medium assertive>Loading ...</clr-spinner>`,
+  template: `<clr-spinner clrMedium clrAssertive>Loading ...</clr-spinner>`,
 })
 class TestMediumComponent {}
+
+@Component({
+  template: `<clr-spinner>Loading ...</clr-spinner>`,
+})
+class TestLargeComponent {}
 
 describe('ClrSpinner component', () => {
   describe('View', () => {
@@ -40,7 +46,7 @@ describe('ClrSpinner component', () => {
 
     beforeEach(function() {
       TestBed.configureTestingModule({
-        declarations: [TestComponent, TestSmallComponent, TestMediumComponent],
+        declarations: [TestComponent, TestSmallComponent, TestMediumComponent, TestLargeComponent],
         imports: [ClrSpinnerModule],
       });
     });
@@ -95,6 +101,39 @@ describe('ClrSpinner component', () => {
     });
 
     describe('Sizes', () => {
+      function componentWidth(fix): number {
+        return Math.floor(fix.debugElement.query(By.directive(ClrSpinner)).nativeElement.getBoundingClientRect().width);
+      }
+
+      function componentHeight(fix): number {
+        return Math.floor(
+          fix.debugElement.query(By.directive(ClrSpinner)).nativeElement.getBoundingClientRect().height
+        );
+      }
+      it(`.${SPINNER_SMALL_SIZE} should have the size ot 18x18`, () => {
+        const fixtureSmall = TestBed.createComponent(TestSmallComponent);
+        fixtureSmall.detectChanges();
+
+        expect(componentHeight(fixtureSmall)).toBe(18);
+        expect(componentWidth(fixtureSmall)).toBe(18);
+      });
+
+      it(`.${SPINNER_MEDIUM_SIZE} should have the size ot 36x36`, () => {
+        const fixtureMedium = TestBed.createComponent(TestMediumComponent);
+        fixtureMedium.detectChanges();
+
+        expect(componentHeight(fixtureMedium)).toBe(36);
+        expect(componentWidth(fixtureMedium)).toBe(36);
+      });
+
+      it(`.${SPINNER_LARGE_SIZE} should have the size ot 72x72`, () => {
+        const fixtureLarge = TestBed.createComponent(TestLargeComponent);
+        fixtureLarge.detectChanges();
+
+        expect(componentHeight(fixtureLarge)).toBe(72);
+        expect(componentWidth(fixtureLarge)).toBe(72);
+      });
+
       it(`should add .${SPINNER_SMALL_SIZE}`, () => {
         fixture = TestBed.createComponent(TestSmallComponent);
         clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;

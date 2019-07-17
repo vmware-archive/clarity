@@ -58,7 +58,7 @@
   </button>
 
   <div *ngIf="downloadingFile">
-    <clr-spinner inline>Downloading</clr-spinner>
+    <clr-spinner clrInline>Downloading</clr-spinner>
     <span> Downloading</span>
   </div>
 </div>
@@ -78,6 +78,6 @@
   <button *ngIf="!downloadinInvoice" (click)="toggleProgressBar('downloadinInvoice')" class="btn btn-primary">
     Download Invoice
   </button>
-  <clr-spinner *ngIf="downloadinInvoice" medium assertive>Downloading</clr-spinner>
+  <clr-spinner *ngIf="downloadinInvoice" clrMedium clrAssertive>Downloading</clr-spinner>
 </div>
 <clr-code-snippet [clrCode]="example2"></clr-code-snippet>

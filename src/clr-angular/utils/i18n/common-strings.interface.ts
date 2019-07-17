@@ -154,4 +154,18 @@ export abstract class ClrCommonStrings {
    * Loaders/Spinners
    */
   loading?: string;
+  /**
+   * Datagrid: Single selection header
+   */
+  singleSelectionAriaLabel?: string;
+
+  /**
+   * Datagrid: Single actionable header
+   */
+  singleActionableAriaLabel?: string;
+
+  /**
+   * Datagrid: Expandable row
+   */
+  detailExpandableAriaLabel?: string;
 }

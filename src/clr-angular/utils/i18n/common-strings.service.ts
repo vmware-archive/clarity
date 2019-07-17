@@ -46,6 +46,9 @@ export class ClrCommonStringsService implements ClrCommonStrings {
   signpostToggle = 'Signpost Toggle';
   signpostClose = 'Signpost Close';
   loading = 'Loading';
+  singleSelectionAriaLabel = 'Single selection header';
+  singleActionableAriaLabel = 'Single actionable header';
+  detailExpandableAriaLabel = 'Toggle more row content';
 }
 
 export function commonStringsFactory(existing?: ClrCommonStrings): ClrCommonStrings {

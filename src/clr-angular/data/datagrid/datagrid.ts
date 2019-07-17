@@ -144,6 +144,10 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
 
   @Output('clrDgSingleSelectedChange') singleSelectedChanged = new EventEmitter<T>(false);
 
+  @Input() clrDgSingleSelectionAriaLabel: string = this.commonStrings.singleSelectionAriaLabel;
+  @Input() clrDgSingleActionableAriaLabel: string = this.commonStrings.singleActionableAriaLabel;
+  @Input() clrDetailExpandableAriaLabel: string = this.commonStrings.detailExpandableAriaLabel;
+
   /**
    * @deprecated since 2.0, remove in 3.0
    *

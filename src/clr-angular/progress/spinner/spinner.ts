@@ -3,16 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-
-const SPINNER_BASE_CLASS = 'spinner';
-
-const SPINNER_INVERSE = 'spinner-inverse';
-const SPINNER_INLINE = 'spinner-inline';
-
-const SPINNER_SMALL_SIZE = 'spinner-sm';
-const SPINNER_MEDIUM_SIZE = 'spinner-md';
 
 @Component({
   selector: 'clr-spinner',
@@ -20,25 +12,104 @@ const SPINNER_MEDIUM_SIZE = 'spinner-md';
     <ng-content></ng-content>
   `,
   host: {
-    '[attr.class]': 'assignClass',
     '[attr.aria-live]': 'setAriaLive',
     '[attr.aria-busy]': 'true',
   },
 })
 export class ClrSpinner {
+  /**
+   * Default class for all spinners. This class is always true
+   */
+  @HostBinding('class.spinner')
+  get spinnerClass() {
+    return true;
+  }
+
   // Style
-  @Input() inline: boolean;
-  @Input() inverse: boolean;
+  private _inline: boolean;
+  @HostBinding('class.spinner-inline')
+  get inlineClass() {
+    return this._inline;
+  }
+
+  @Input('clrInline')
+  set clrInline(value: boolean | string) {
+    this._inline = isBooleanAttributeSet(value);
+  }
+
+  private _inverse: boolean;
+  @HostBinding('class.spinner-inverse')
+  get inverseClass() {
+    return this._inverse;
+  }
+
+  @Input('clrInverse')
+  set clrInverse(value: boolean | string) {
+    this._inverse = isBooleanAttributeSet(value);
+  }
 
   // Size
-  @Input() small: boolean;
-  @Input() medium: boolean;
-  /* No need to handle large - default value */
+  /**
+   * By default all spinners are Large. (spinner-lg)
+   * To change the size you need to use set clrSmall or clrMedium to TRUE/
+   */
+
+  /**
+   * Small
+   */
+  private _small: boolean;
+  @HostBinding('class.spinner-sm')
+  get smallClass() {
+    return this._small;
+  }
+
+  @Input('clrSmall')
+  set clrSmall(value: boolean | string) {
+    this._small = isBooleanAttributeSet(value);
+  }
+
+  /**
+   * When clrSmall & clrMedium are set both to true.
+   * The CSS with high priority will be small - so medium size will be ignored.
+   *
+   * For this reason if clrSmall is set we won't add clrMedium class.
+   *
+   * NOTE: This is dictated by the CSS rules.
+   * DON'T USE clrSmall & clrMedium to toggle classes. This could change without notice.
+   *
+   * Also there is no logical need to have both of them set to TRUE or FALSE.
+   */
+  private _medium: boolean;
+  @HostBinding('class.spinner-md')
+  get mediumClass() {
+    if (this._small) {
+      return false;
+    }
+    return this._medium;
+  }
+
+  @Input('clrMedium')
+  set clrMedium(value: boolean | string) {
+    this._medium = isBooleanAttributeSet(value);
+  }
 
   // Aria Live
-  @Input() assertive: boolean;
-  @Input() off: boolean;
-  /* No need to handle polite - default value */
+
+  /**
+   * By default aria-live will be set to `polite` .
+   * To change is it you need to set clrAssertive or clrOff to TRUE
+   *
+   * There is priority:
+   *   Default: polite
+   *   Asertive
+   *   Off
+   *
+   * In case when for some reason you have clrAssertive=TRUE and clrOff=TRUE,
+   * we gonna set `assertive` as value of aria-live.
+   *
+   */
+  @Input('clrAssertive') assertive: boolean;
+  @Input('clrOff') off: boolean;
 
   get setAriaLive() {
     if (isBooleanAttributeSet(this.assertive)) {
@@ -48,26 +119,5 @@ export class ClrSpinner {
       return 'off';
     }
     return 'polite';
-  }
-
-  get assignClass(): string {
-    const classes = [SPINNER_BASE_CLASS];
-
-    if (isBooleanAttributeSet(this.inline)) {
-      classes.push(SPINNER_INLINE);
-    }
-
-    if (isBooleanAttributeSet(this.inverse)) {
-      classes.push(SPINNER_INVERSE);
-    }
-
-    // You could have only on size at a time...
-    if (isBooleanAttributeSet(this.small)) {
-      classes.push(SPINNER_SMALL_SIZE);
-    } else if (isBooleanAttributeSet(this.medium)) {
-      classes.push(SPINNER_MEDIUM_SIZE);
-    }
-
-    return classes.join(' ');
   }
 }

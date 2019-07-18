@@ -21,6 +21,7 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./progress-bar-static-cards']">Static Progress Bar in Cards</a></li>
             <li><a [routerLink]="['./progress-bar-inline']">Inline Progress Bar</a></li>
             <li><a [routerLink]="['./progress-bar-inline-cards']">Inline Progress Bar in Cards</a></li>
+            <li><a [routerLink]="['./progress-bar-component']">Progress Bar Component</a></li>
         </ul>
         <router-outlet></router-outlet>
     `,

@@ -27,6 +27,8 @@ export declare const CLR_MODAL_DIRECTIVES: Type<any>[];
 
 export declare const CLR_NAVIGATION_DIRECTIVES: Type<any>[];
 
+export declare const CLR_PROGRESS_BAR_DIRECTIVES: Type<any>[];
+
 export declare const CLR_SIGNPOST_DIRECTIVES: Type<any>[];
 
 export declare const CLR_SPINNER_DIRECTIVES: Type<any>[];
@@ -942,6 +944,37 @@ export declare class ClrPasswordModule {
 }
 
 export declare class ClrPopoverModule {
+}
+
+export declare class ClrProgressBar {
+    readonly ariaLive: "assertive" | "off" | "polite";
+    assertive: boolean;
+    clrDanger: boolean | string;
+    clrFade: boolean | string;
+    clrFlash: boolean | string;
+    clrFlashDanger: boolean | string;
+    clrLabeled: boolean | string;
+    clrLoop: boolean | string;
+    clrSuccess: boolean | string;
+    readonly dangerClass: boolean;
+    readonly displayValue: string;
+    displayval: string;
+    externalId: string;
+    readonly fadeClass: boolean;
+    readonly flashClass: boolean;
+    readonly flashDangerClass: boolean;
+    id: string;
+    readonly labeledClass: boolean;
+    readonly loopClass: boolean;
+    max: number;
+    off: boolean;
+    readonly progressClass: boolean;
+    readonly successClass: boolean;
+    value: number;
+    displayAriaLive(): boolean;
+}
+
+export declare class ClrProgressBarModule {
 }
 
 export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> {

@@ -38,6 +38,13 @@ export default function(): void {
       expect(this.clarityElement.getAttribute('role')).toBe('menuitem');
     });
 
+    it('sets the disabled attribute if set by input', function(this: Context) {
+      expect(this.clarityElement.getAttribute('disabled')).toBeNull();
+      this.hostComponent.disabled = true;
+      this.detectChanges();
+      expect(this.clarityElement.getAttribute('disabled')).toBe('');
+    });
+
     it('sets aria-disabled to true if the FocusableItem is disabled', function(this: Context) {
       expect(this.clarityElement.getAttribute('aria-disabled')).toBe('false');
       this.hostComponent.disabled = true;

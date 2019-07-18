@@ -16,6 +16,7 @@ import { RootDropdownService } from './providers/dropdown.service';
     '[class.dropdown-item]': 'true',
     '[attr.role]': '"menuitem"',
     '[attr.aria-disabled]': 'disabled',
+    '[attr.disabled]': "disabled? '' : null",
   },
   providers: [BASIC_FOCUSABLE_ITEM_PROVIDER],
 })

@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 
 import { ClarityModule } from '@clr/angular';
 
-import { OldProgressBarCardsDemo } from './old-progress-bar-cards';
 import { ProgressBarAnimationsDemo } from './progress-bar-animations';
 import { ProgressBarCardsDemo } from './progress-bar-cards';
 import { ProgressBarColorsDemo } from './progress-bar-colors';
@@ -20,6 +19,7 @@ import { ProgressBarSidenavDemo } from './progress-bar-sidenav';
 import { ProgressBarStaticDemo } from './progress-bar-static';
 import { ProgressBarStaticCardsDemo } from './progress-bar-static-cards';
 import { ProgressBarsDemo } from './progress-bars.demo';
+import { ProgressBarComponentDemo } from './progress-bar-component';
 import { ROUTING } from './progress-bars.demo.routing';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { ROUTING } from './progress-bars.demo.routing';
     ProgressBarStaticCardsDemo,
     ProgressBarInlineDemo,
     ProgressBarInlineCardsDemo,
-    OldProgressBarCardsDemo,
+    ProgressBarComponentDemo,
   ],
   exports: [
     ProgressBarExamplesDemo,
@@ -50,6 +50,7 @@ import { ROUTING } from './progress-bars.demo.routing';
     ProgressBarStaticCardsDemo,
     ProgressBarInlineDemo,
     ProgressBarInlineCardsDemo,
+    ProgressBarComponentDemo,
   ],
 })
 export class ProgressBarsDemoModule {}

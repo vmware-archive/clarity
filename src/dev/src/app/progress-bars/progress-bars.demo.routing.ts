@@ -6,7 +6,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OldProgressBarCardsDemo } from './old-progress-bar-cards';
 import { ProgressBarAnimationsDemo } from './progress-bar-animations';
 import { ProgressBarCardsDemo } from './progress-bar-cards';
 import { ProgressBarColorsDemo } from './progress-bar-colors';
@@ -17,6 +16,7 @@ import { ProgressBarLoopDemo } from './progress-bar-loop';
 import { ProgressBarSidenavDemo } from './progress-bar-sidenav';
 import { ProgressBarStaticDemo } from './progress-bar-static';
 import { ProgressBarStaticCardsDemo } from './progress-bar-static-cards';
+import { ProgressBarComponentDemo } from './progress-bar-component';
 import { ProgressBarsDemo } from './progress-bars.demo';
 
 const ROUTES: Routes = [
@@ -35,7 +35,7 @@ const ROUTES: Routes = [
       { path: 'progress-bar-static-cards', component: ProgressBarStaticCardsDemo },
       { path: 'progress-bar-inline', component: ProgressBarInlineDemo },
       { path: 'progress-bar-inline-cards', component: ProgressBarInlineCardsDemo },
-      { path: 'old-progress-bar-cards', component: OldProgressBarCardsDemo },
+      { path: 'progress-bar-component', component: ProgressBarComponentDemo },
     ],
   },
 ];

@@ -17,6 +17,7 @@ export * from './modal/index';
 export * from './popover/index';
 export * from './utils/index';
 export * from './wizard/index';
+export * from './progress/spinner/index';
 
 // Below are exported for internal use only and may change without notice
 export { FocusTrapTracker as ÇlrFocusTrapTracker } from './utils/focus-trap/focus-trap-tracker.service';

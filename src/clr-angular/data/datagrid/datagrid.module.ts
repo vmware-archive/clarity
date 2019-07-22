@@ -15,7 +15,7 @@ import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
 import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
-
+import { ClrSpinnerModule } from '../../progress/spinner/spinner.module';
 import { DatagridRowExpandAnimation } from './animation-hack/row-expand-animation';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
 import { ActionableOompaLoompa } from './chocolate/actionable-oompa-loompa';
@@ -103,6 +103,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrLoadingModule,
     ClrOutsideClickModule,
     ClrDragAndDropModule,
+    ClrSpinnerModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],
   exports: [CLR_DATAGRID_DIRECTIVES, ClrIfExpandModule],

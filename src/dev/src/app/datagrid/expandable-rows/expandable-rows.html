@@ -91,8 +91,24 @@
             </ng-template>
         </clr-dg-row-detail>
     </clr-dg-row>
-
-
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
 
+<h3>Mixed expandable and non expandable rows</h3>
+
+<clr-datagrid>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Pokemon</clr-dg-column>
+
+  <clr-dg-row *ngFor="let user of users.slice(0, 4);let i = index">
+    <clr-dg-cell>{{ user.name }}</clr-dg-cell>
+    <clr-dg-cell>{{ user.pokemon.name }}</clr-dg-cell>
+    <ng-container *ngIf="i % 2" ngProjectAs="clr-dg-row-detail">
+      <clr-dg-row-detail *clrIfExpanded>
+        Lorem ipsum...{{user|json}}
+      </clr-dg-row-detail>
+    </ng-container>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{ users.length }} users</clr-dg-footer>
+</clr-datagrid>

@@ -25,7 +25,7 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
       #anchor
       (click)="toggleSwitchPanel()"
       class="btn btn-sm btn-link column-toggle--action"
-      [attr.aria-controls]="columnSwitchId" 
+      [attr.aria-controls]="columnSwitchId"
       type="button">
       <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
     </button>
@@ -117,7 +117,7 @@ export class ClrDatagridColumnToggle {
 
   toggleSwitchPanel() {
     this.open = !this.open;
-    if (this.open && isPlatformBrowser(this.platformId)) {
+    if (this.open && isPlatformBrowser(this.platformId) && this.menuDescriptionElement) {
       this.zone.runOutsideAngular(() => {
         setTimeout(() => {
           this.menuDescriptionElement.nativeElement.focus();

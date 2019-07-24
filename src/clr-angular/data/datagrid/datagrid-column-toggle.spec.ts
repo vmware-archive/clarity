@@ -28,13 +28,18 @@ export default function(): void {
     });
 
     describe('Typescript API', function() {
-      it('toggles switch panel', function() {
-        expect(columnToggle.open).toBeFalsy();
-        columnToggle.toggleSwitchPanel();
-        expect(columnToggle.open).toBeTruthy();
-        columnToggle.toggleSwitchPanel();
-        expect(columnToggle.open).toBeFalsy();
-      });
+      it(
+        'toggles switch panel',
+        fakeAsync(function() {
+          expect(columnToggle.open).toBeFalsy();
+          columnToggle.toggleSwitchPanel();
+          tick();
+          expect(columnToggle.open).toBeTruthy();
+          columnToggle.toggleSwitchPanel();
+          tick();
+          expect(columnToggle.open).toBeFalsy();
+        })
+      );
 
       it('returns states of hideable columns hideable columns', function() {
         columnsService.mockPartialHideable(0, 1);
@@ -247,7 +252,7 @@ export default function(): void {
 }
 
 @Component({
-  template: `    
+  template: `
     <ng-template>Template Content</ng-template>
     <!--The above ng-template is required/used as a hideable column template-->
     <clr-dg-column-toggle>

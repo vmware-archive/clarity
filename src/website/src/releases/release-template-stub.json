@@ -1,4 +1,5 @@
 {
+  "2.1.0": "src/website/src/releases/2.x/2.1.0.html",
   "2.0.2": "src/website/src/releases/2.x/2.0.2.html",
   "2.0.1": "src/website/src/releases/2.x/2.0.1.html",
   "2.0.0": "src/website/src/releases/2.x/2.0.0.html",
@@ -7,6 +8,7 @@
   "2.0.0-beta.2": "src/website/src/releases/2.x/2.0.0-beta.2.html",
   "2.0.0-beta.1": "src/website/src/releases/2.x/2.0.0-beta.1.html",
 
+  "1.2.0": "src/website/src/releases/1.x/1.2.0.html",
   "1.1.5": "src/website/src/releases/1.x/1.1.5.html",
   "1.1.4": "src/website/src/releases/1.x/1.1.4.html",
   "1.1.3": "src/website/src/releases/1.x/1.1.3.html",

@@ -809,16 +809,6 @@ export default function(): void {
       });
 
       describe('View', function() {
-        /*
-         * For some reason this test is breaking all other tests. 
-         * Not sure why - need to investigate more 
-         * 
-        it('should have aria-label with  value Select', function() {
-          expect(context.clarityElement.querySelector('.datagrid-header .datagrid-column.datagrid-select')
-          .getAttribute('aria-label')).toBe('Select row from Datagrid');
-        });
-        */
-
         it('sets the proper selected class', function() {
           const row = context.clarityElement.querySelectorAll('.datagrid-row')[1];
           expect(row.classList.contains('datagrid-selected')).toBeFalsy();
@@ -832,7 +822,7 @@ export default function(): void {
             context.clarityElement
               .querySelector('.datagrid-header .datagrid-column.datagrid-select')
               .getAttribute('aria-label')
-          ).toBe(new ClrCommonStringsService().select);
+          ).toBe('Select row from Datagrid');
         });
       });
     });

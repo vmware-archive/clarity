@@ -68,6 +68,7 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
     commonStrings: ClrCommonStrings;
     disabled: boolean;
     id: string;
+    isAccordion: boolean;
     panel: Observable<AccordionPanelModel>;
     panelOpen: boolean;
     panelOpenChange: EventEmitter<boolean>;
@@ -1163,8 +1164,11 @@ export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnD
 export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
     commonStrings: ClrCommonStrings;
     readonly formGroup: import("@angular/forms").FormGroup;
+    headerButton: ElementRef;
     id: string;
-    constructor(commonStrings: ClrCommonStrings, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    isAccordion: boolean;
+    constructor(platformId: Object, commonStrings: ClrCommonStrings, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    ngOnDestroy(): void;
     ngOnInit(): void;
 }
 

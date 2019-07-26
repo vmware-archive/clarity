@@ -61,4 +61,12 @@ describe('StepperService', () => {
       .pipe(take(1))
       .subscribe(step => expect(step.open).toBe(true));
   });
+
+  it('should notify when the next panel has opened', () => {
+    let activeStepId = null;
+    stepperService.activeStep.subscribe(id => (activeStepId = id));
+
+    stepperService.navigateToNextPanel('1', true);
+    expect(activeStepId).toBe('1');
+  });
 });

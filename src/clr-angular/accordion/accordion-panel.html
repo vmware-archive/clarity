@@ -11,11 +11,13 @@
         class="clr-accordion-header-button"
         (click)="togglePanel()"
         [id]="getAccordionHeaderId(panel.templateId)"
-        [disabled]="panel.disabled"
+        [disabled]="isAccordion && panel.disabled"
+        [attr.aria-disabled]="!isAccordion && panel.disabled"
         [attr.aria-controls]="getAccordionContentId(panel.templateId)"
         [attr.aria-expanded]="panel.open"
         [attr.aria-describedby]="getAccordionStatusId(panel.templateId)"
         [class.clr-accordion-header-has-description]="(accordionDescription.changes | async)?.length || accordionDescription.length"
+        #headerButton
       >
         <span class="clr-accordion-status">
           <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>

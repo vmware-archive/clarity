@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 import { map, distinctUntilChanged } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { AccordionService } from './../../providers/accordion.service';
 import { StepperModel } from '../models/stepper.model';
@@ -15,6 +15,9 @@ import { StepperModel } from '../models/stepper.model';
 export class StepperService extends AccordionService {
   readonly panelsCompleted = this.getAllCompletedPanelChanges();
   protected accordion = new StepperModel();
+
+  private _activeStepChanges = new Subject<string>();
+  readonly activeStep = this._activeStepChanges.asObservable();
 
   resetPanels() {
     this.accordion.resetPanels();
@@ -28,12 +31,23 @@ export class StepperService extends AccordionService {
 
   navigateToNextPanel(currentPanelId: string, currentPanelValid = true) {
     this.accordion.navigateToNextPanel(currentPanelId, currentPanelValid);
+    this.updateNextStep(currentPanelId, currentPanelValid);
     this.emitUpdatedPanels();
   }
 
   overrideInitialPanel(panelId: string) {
     this.accordion.overrideInitialPanel(panelId);
     this.emitUpdatedPanels();
+  }
+
+  private updateNextStep(currentPanelId: string, currentPanelValid: boolean) {
+    const nextPanel = this.accordion.getNextPanel(currentPanelId);
+
+    if (currentPanelValid && nextPanel) {
+      this._activeStepChanges.next(nextPanel.id);
+    } else if (currentPanelValid) {
+      this._activeStepChanges.next(currentPanelId);
+    }
   }
 
   private getAllCompletedPanelChanges(): Observable<boolean> {

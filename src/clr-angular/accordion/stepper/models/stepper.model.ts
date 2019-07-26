@@ -58,6 +58,10 @@ export class StepperModel extends AccordionModel {
     this.openFirstPanel();
   }
 
+  getNextPanel(currentPanelId: string) {
+    return this.panels.find(s => s.index === this._panels[currentPanelId].index + 1);
+  }
+
   private resetAllFuturePanels(panelId: string) {
     this.panels.filter(panel => panel.index >= this._panels[panelId].index).forEach(panel => this.resetPanel(panel.id));
   }
@@ -98,10 +102,6 @@ export class StepperModel extends AccordionModel {
 
   private getFirstPanel() {
     return this.panels.find(panel => panel.index === 0);
-  }
-
-  private getNextPanel(currentPanelId: string) {
-    return this.panels.find(s => s.index === this._panels[currentPanelId].index + 1);
   }
 
   private getNumberOfIncompletePanels() {

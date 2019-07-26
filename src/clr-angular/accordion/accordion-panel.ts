@@ -45,6 +45,7 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
 
   panel: Observable<AccordionPanelModel>;
   readonly AccordionStatus = AccordionStatus;
+  isAccordion = true;
 
   constructor(
     public commonStrings: ClrCommonStrings,

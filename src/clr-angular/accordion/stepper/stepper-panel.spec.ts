@@ -5,11 +5,11 @@
  */
 
 import { Component, ViewChild } from '@angular/core';
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { ClrStepperModule } from './stepper.module';
@@ -46,6 +46,7 @@ class TemplateFormsTestComponent {
 
 class MockStepperService extends StepperService {
   step = new BehaviorSubject<AccordionPanelModel>(new AccordionPanelModel('groupName', 0));
+  activeStep = new Subject<string>();
 
   getPanelChanges() {
     return this.step;
@@ -114,7 +115,7 @@ describe('ClrStep Reactive Forms', () => {
       expect(liveSectionId).toBe(headerButtonDescribeBy);
     });
 
-    it('should disable the header button based on the appropriate step state', () => {
+    it('should add aria-disabled attribute to the header button based on the appropriate step state', () => {
       const mockStep = new AccordionPanelModel('groupName', 0);
       const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
 
@@ -122,8 +123,28 @@ describe('ClrStep Reactive Forms', () => {
       mockStep.disabled = true;
       (stepperService as MockStepperService).step.next(mockStep);
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.clr-accordion-header-button').getAttribute('disabled')).toBe('');
+      // use 'aria-disabled' instead of 'disabled' so screen reader users can be auto focused to next step and have title be readable
+      expect(fixture.nativeElement.querySelector('.clr-accordion-header-button').getAttribute('aria-disabled')).toBe(
+        'true'
+      );
+      expect(fixture.nativeElement.querySelector('.clr-accordion-header-button').getAttribute('disabled')).toBe(null);
     });
+
+    it(
+      'should auto focus the step heading button when previous step next button was clicked',
+      fakeAsync(() => {
+        const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
+        const input = fixture.nativeElement.querySelector('.clr-accordion-header-button');
+
+        spyOn(input, 'focus');
+        expect(input.focus).not.toHaveBeenCalled();
+
+        (stepperService as MockStepperService).activeStep.next('groupName');
+        tick();
+
+        expect(input.focus).toHaveBeenCalled();
+      })
+    );
   });
 });
 

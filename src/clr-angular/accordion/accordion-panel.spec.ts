@@ -169,6 +169,16 @@ describe('ClrAccordionPanel', () => {
       expect(panelRegion.getAttribute('aria-hidden')).toBe('false');
     });
 
+    it('should set proper disable attribute when disabled programmatically', () => {
+      const headerButton = panelElement.querySelector('button');
+      expect(headerButton.getAttribute('disabled')).toBe(null);
+
+      fixture.componentInstance.disabled = true;
+      fixture.detectChanges();
+
+      expect(headerButton.getAttribute('disabled')).toBe('');
+    });
+
     it('should get the appropriate panel class based on current panel state', () => {
       const panelGroup = panelElement.querySelector('[role="group"]');
       const headerButton = panelElement.querySelector('button');

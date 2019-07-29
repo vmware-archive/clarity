@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,6 @@ declare const require: any;
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 // Then we find all the tests.
-const context = (require as any).context('../src/', true, /^((?![\\/]ks-app[\\/]).)*\.spec\.ts$/);
+const context = (require as any).context('../src/', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

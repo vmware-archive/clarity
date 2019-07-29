@@ -99,11 +99,6 @@ relies on `webpack` as well, since the `webpack` script produces the `clr-icons.
 The `webpack` script also processes the `package.json` and `README.md` files for all of our packages.
 This means that running `npm build: icons` by itself will NOT produce a complete package.
 
-##### `npm run ks:publish`
-
-This script publishes the kitchen sink app located under `src/ks-app`. Note that surge must be globally installed to be able to
-publish this app. You can still locally test the kitchen sink app by `ng serve ks-app`.
-
 ##### `npm run test:lint` and `npm run lint:fix`
 
 The `test:lint` script will run the linter and fail if linting fails. The `lint:fix` script is very similar but

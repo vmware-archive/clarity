@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -65,6 +65,19 @@ export default function(): void {
             wizard.close();
 
             expect(wizard._open).toBe(true, 'wizard._open should not have changed');
+          });
+
+          it('should not close on escape if clrWizardClosable is set to false', () => {
+            wizard.open();
+            expect(wizard.closable).toBe(true);
+            expect(wizard._open).toBe(true);
+
+            wizard.closable = false;
+            document.body.dispatchEvent(new KeyboardEvent('keyup', { key: 'Escape' }));
+            context.detectChanges();
+
+            expect(wizard.closable).toBe(false);
+            expect(wizard._open).toBe(true);
           });
         });
 

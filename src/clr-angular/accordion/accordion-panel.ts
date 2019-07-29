@@ -89,10 +89,6 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
     return `clr-accordion-content-${id}'`;
   }
 
-  getAccordionStatusId(id: string) {
-    return `clr-accordion-header-status-${id}'`;
-  }
-
   getAccordionHeaderId(id: string) {
     return `clr-accordion-header-${id}`;
   }

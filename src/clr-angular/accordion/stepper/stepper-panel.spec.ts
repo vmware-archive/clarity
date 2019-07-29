@@ -12,6 +12,7 @@ import { By } from '@angular/platform-browser';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { ClrStepperModule } from './stepper.module';
 import { AccordionStatus } from './../enums/accordion-status.enum';
 import { AccordionPanelModel } from '../models/accordion.model';
@@ -94,25 +95,24 @@ describe('ClrStep Reactive Forms', () => {
       liveSection = fixture.nativeElement.querySelector('[aria-live="assertive"]');
       expect(liveSection).toBeTruthy();
       expect(liveSection.innerText.trim()).toBe('Error');
-
-      mockStep.status = AccordionStatus.Complete;
-      (stepperService as MockStepperService).step.next(mockStep);
-      fixture.detectChanges();
-      expect(liveSection.innerText.trim()).toBe('Success');
     });
 
-    it('should associate the header button to the step status message', () => {
+    it('should show appropriate screen reader only status in button based on form state', () => {
       const mockStep = new AccordionPanelModel('groupName', 0);
       const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
+      const commonStringsService = fixture.debugElement.query(By.directive(ClrStepper)).injector.get(ClrCommonStrings);
       mockStep.status = AccordionStatus.Error;
       (stepperService as MockStepperService).step.next(mockStep);
       fixture.detectChanges();
 
-      const liveSectionId: string = fixture.nativeElement.querySelector('[aria-live="assertive"]').id;
-      const headerButtonDescribeBy: string = fixture.nativeElement
-        .querySelector('.clr-accordion-header-button')
-        .getAttribute('aria-describedby');
-      expect(liveSectionId).toBe(headerButtonDescribeBy);
+      const statusMessage = fixture.nativeElement.querySelector('button .clr-sr-only');
+      expect(statusMessage.innerText.trim()).toBe(commonStringsService.danger);
+
+      mockStep.status = AccordionStatus.Complete;
+      (stepperService as MockStepperService).step.next(mockStep);
+      fixture.detectChanges();
+
+      expect(statusMessage.innerText.trim()).toBe(commonStringsService.success);
     });
 
     it('should add aria-disabled attribute to the header button based on the appropriate step state', () => {

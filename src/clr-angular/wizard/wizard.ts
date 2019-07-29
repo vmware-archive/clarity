@@ -393,7 +393,9 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * alternative cancel functionality. In most cases, use `ClrWizard.cancel()` instead.
    */
   public modalCancel(): void {
-    this.checkAndCancel();
+    if (this.closable) {
+      this.checkAndCancel();
+    }
   }
 
   /**

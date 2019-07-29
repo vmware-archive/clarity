@@ -154,6 +154,6 @@ When a new item is created and added to the public API, the following things sho
 
 * Ensure every new public item is re-exported through the `public_api.ts` file. Usually there are `index.ts` files in directories that any public items should be re-exported through, and then the `index.ts` files are re-exported up the tree. This only applies inside of `src/clr-angular` directory.
 * Ensure that every time you import inside of `clr-angular` directory that you import from the direct file, and not an index. This can be misleading and hard to catch, but it breaks AoT compilation if you don't export it correctly.
-* Include a reference to the public item in the ks-app somewhere, use it if possible but just importing it and setting it as a reference in the component properties ensures that we can test AoT compilation and proper visibility of items. It should be imported from `@clr/angular` and not from a relative path.
+* Include a reference to the public item in the `dev` app somewhere, use it if possible but just importing it and setting it as a reference in the component properties ensures that we can test AoT compilation and proper visibility of items. It should be imported from `@clr/angular` and not from a relative path.
 
 If it is not meant to be a public item (like a private service), be sure not to include it in the `public_api.ts`.

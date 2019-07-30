@@ -10,12 +10,12 @@ import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
-import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
-import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
-import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
-import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { Subscription } from 'rxjs';
 
 /**
@@ -29,17 +29,17 @@ import { Subscription } from 'rxjs';
   providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }, UNIQUE_ID_PROVIDER],
   template: `
       <button class="datagrid-filter-toggle"
-              clrSmartAnchor
-              clrSmartOpenCloseButton
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton
               [class.datagrid-filter-open]="open" [class.datagrid-filtered]="active"
               type="button"></button>
 
       <div class="datagrid-filter"
            [id]="popoverId"
            clrFocusTrap
-           *clrSmartPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
+           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <div class="datagrid-filter-close-wrapper">
-              <button type="button" class="close" clrSmartCloseButton>
+              <button type="button" class="close" clrPopoverCloseButton>
                   <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
               </button>
           </div>
@@ -55,7 +55,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
   constructor(
     _filters: FiltersProvider<T>,
     public commonStrings: ClrCommonStrings,
-    private smartToggleService: ClrSmartPopoverToggleService,
+    private smartToggleService: ClrPopoverToggleService,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {
     super(_filters);
@@ -67,7 +67,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
   }
 
   // Smart Popover
-  public smartPosition: ClrSmartPosition = {
+  public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.AFTER,
     anchor: ClrAlignment.END,

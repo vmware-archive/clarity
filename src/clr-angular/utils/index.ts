@@ -10,4 +10,4 @@ export * from './conditional/index';
 export * from './expand/index';
 export * from './i18n/index';
 export * from './drag-and-drop/index';
-export * from './smart-popover/index';
+export * from './popover/index';

@@ -11,33 +11,33 @@ import { Component, Renderer2, ViewChild } from '@angular/core';
 import { ClrAlignment } from './enums/alignment.enum';
 import { ClrAxis } from './enums/axis.enum';
 import { ClrSide } from './enums/side.enum';
-import { ClrSmartPopoverContent } from './smart-popover-content';
-import { ClrSmartPopoverEventsService } from './providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './providers/smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from './providers/smart-popover-toggle.service';
-import { ClrSmartPosition } from './interfaces/smart-position.interface';
-import { ClrSmartPopoverModule } from './smart-popover.module';
+import { ClrPopoverContent } from './popover-content';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
+import { ClrPopoverPositionService } from './providers/popover-position.service';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
+import { ClrPopoverPosition } from './interfaces/popover-position.interface';
+import { ClrPopoverModuleNext } from './popover.module';
 
 @Component({
   selector: 'test-host',
   template: `
     <button #anchor
-            clrSmartAnchor
-            clrSmartOpenCloseButton>Popover Toggle</button>
-    <div *clrSmartPopoverContent="openState at smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll"
-         (clrSmartPopoverContentChange)="changeCounter($event)">Popover content</div>
+            clrPopoverAnchor
+            clrPopoverOpenCloseButton>Popover Toggle</button>
+    <div *clrPopoverContent="openState at smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll"
+         (clrPopoverContentChange)="changeCounter($event)">Popover content</div>
   `,
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+  providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 @Component({
   template: `
 
   `,
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+  providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class SimpleContent {
-  @ViewChild(ClrSmartPopoverContent) content: ClrSmartPopoverContent;
-  public smartPosition: ClrSmartPosition = {
+  @ViewChild(ClrPopoverContent) content: ClrPopoverContent;
+  public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.BEFORE,
     anchor: ClrAlignment.START,
@@ -53,22 +53,22 @@ class SimpleContent {
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverContent', function() {
-    type Context = TestContext<ClrSmartPopoverContent, SimpleContent> & {
+  describe('ClrPopoverContent', function() {
+    type Context = TestContext<ClrPopoverContent, SimpleContent> & {
       testComponent: SimpleContent;
-      clarityDirective: ClrSmartPopoverModule;
-      eventService: ClrSmartPopoverEventsService;
-      positionService: ClrSmartPopoverPositionService;
-      toggleService: ClrSmartPopoverToggleService;
+      clarityDirective: ClrPopoverModuleNext;
+      eventService: ClrPopoverEventsService;
+      positionService: ClrPopoverPositionService;
+      toggleService: ClrPopoverToggleService;
     };
     beforeEach(function(this: Context) {
       /*
-       * The ClrSmartPopoverContent element is a template and not rendered in the DOM,
+       * The ClrPopoverContent element is a template and not rendered in the DOM,
        * This test is reliant on the @ViewChild in the test component.
        * the spec() helper wasn't working out of the box here.
        */
       TestBed.configureTestingModule({
-        imports: [ClrSmartPopoverModule],
+        imports: [ClrPopoverModuleNext],
         declarations: [SimpleContent],
         providers: [Renderer2],
       });
@@ -76,19 +76,19 @@ export default function(): void {
       this.fixture.detectChanges();
       this.testComponent = this.fixture.componentInstance;
       this.clarityDirective = this.fixture.componentInstance.content;
-      this.eventService = this.fixture.debugElement.injector.get(ClrSmartPopoverEventsService);
-      this.positionService = this.fixture.debugElement.injector.get(ClrSmartPopoverPositionService);
-      this.toggleService = this.fixture.debugElement.injector.get(ClrSmartPopoverToggleService);
+      this.eventService = this.fixture.debugElement.injector.get(ClrPopoverEventsService);
+      this.positionService = this.fixture.debugElement.injector.get(ClrPopoverPositionService);
+      this.toggleService = this.fixture.debugElement.injector.get(ClrPopoverToggleService);
     });
 
     describe('Providers', function(this: Context) {
-      it('declares a ClrSmartPopoverEventService', function(this: Context) {
+      it('declares a Popover EventService', function(this: Context) {
         expect(this.eventService).toBeDefined();
       });
-      it('declares a ClrSmartPopoverPositionService', function(this: Context) {
+      it('declares a Popover PositionService', function(this: Context) {
         expect(this.positionService).toBeDefined();
       });
-      it('declares a ClrSmartPopoverToggleService', function(this: Context) {
+      it('declares a Popover ToggleService', function(this: Context) {
         expect(this.toggleService).toBeDefined();
       });
     });
@@ -108,7 +108,7 @@ export default function(): void {
     });
 
     describe('Template API', () => {
-      it('binds to [clrSmartPopoverContent] open state', function(this: Context) {
+      it('binds to [clrPopoverContent] open state', function(this: Context) {
         expect(this.testComponent.openState).toBe(this.toggleService.open);
         this.testComponent.openState = undefined;
         expect(this.toggleService.open).toBe(false);
@@ -116,9 +116,9 @@ export default function(): void {
         expect(this.toggleService.open).toBe(false);
       });
 
-      it('binds to [clrSmartPopoverContentAt] position', function(this: Context) {
+      it('binds to [clrPopoverContentAt] position', function(this: Context) {
         expect(this.testComponent.smartPosition).toEqual(this.positionService.position);
-        const newPosition: ClrSmartPosition = {
+        const newPosition: ClrPopoverPosition = {
           anchor: ClrAlignment.CENTER,
           axis: ClrAxis.HORIZONTAL,
           content: ClrAlignment.CENTER,
@@ -129,14 +129,14 @@ export default function(): void {
         expect(this.positionService.position).toEqual(newPosition);
       });
 
-      it('binds to [clrSmartPopoverContentOutsideClickToClose]', function(this: Context) {
+      it('binds to [clrPopoverContentOutsideClickToClose]', function(this: Context) {
         expect(this.eventService.outsideClickClose).toBe(true);
         this.testComponent.closeClick = false;
         this.fixture.detectChanges();
         expect(this.eventService.outsideClickClose).toBe(false);
       });
 
-      it('binds to [clrSmartPopoverContentScrollToClose]', function(this: Context) {
+      it('binds to [clrPopoverContentScrollToClose]', function(this: Context) {
         expect(this.testComponent.closeScroll).toBe(this.eventService.scrollToClose);
         this.testComponent.closeScroll = false;
         this.fixture.detectChanges();

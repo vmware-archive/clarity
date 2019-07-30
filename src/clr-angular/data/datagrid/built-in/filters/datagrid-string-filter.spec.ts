@@ -18,9 +18,9 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridStringFilter } from './datagrid-string-filter';
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
 import { ColumnToggleButtonsService } from '../../providers/column-toggle-buttons.service';
-import { ClrSmartPopoverToggleService } from '../../../../utils/smart-popover/providers/smart-popover-toggle.service';
-import { ClrSmartPopoverPositionService } from '../../../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverEventsService } from '../../../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../../../utils/popover/providers/popover-events.service';
 
 class MockRenderer {
   listen() {}
@@ -32,9 +32,9 @@ const PROVIDERS = [
   Page,
   StateDebouncer,
   ColumnToggleButtonsService,
-  ClrSmartPopoverEventsService,
-  ClrSmartPopoverPositionService,
-  ClrSmartPopoverToggleService,
+  ClrPopoverEventsService,
+  ClrPopoverPositionService,
+  ClrPopoverToggleService,
   {
     provide: Renderer2,
     useClass: MockRenderer,

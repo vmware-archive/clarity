@@ -19,7 +19,7 @@ import { ClrIfExpandModule } from './utils/expand/if-expand.module';
 import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
-import { ClrSmartPopoverModule } from './utils/smart-popover/smart-popover.module';
+import { ClrPopoverModuleNext } from './utils/popover/popover.module';
 
 @NgModule({
   exports: [
@@ -37,7 +37,7 @@ import { ClrSmartPopoverModule } from './utils/smart-popover/smart-popover.modul
     ClrPopoverModule,
     ClrWizardModule,
     ClrDragAndDropModule,
-    ClrSmartPopoverModule,
+    ClrPopoverModuleNext,
   ],
 })
 export class ClarityModule {}

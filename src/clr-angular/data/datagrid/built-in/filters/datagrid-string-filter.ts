@@ -13,7 +13,7 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
-import { ClrSmartPopoverToggleService } from '../../../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-string-filter',
@@ -37,7 +37,7 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   constructor(
     filters: FiltersProvider<T>,
     private domAdapter: DomAdapter,
-    private smartToggleService: ClrSmartPopoverToggleService
+    private smartToggleService: ClrPopoverToggleService
   ) {
     super(filters);
     this.subs.push(this.smartToggleService.openChange.subscribe(openChange => (this.open = openChange)));

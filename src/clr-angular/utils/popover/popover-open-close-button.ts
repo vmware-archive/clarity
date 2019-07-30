@@ -6,19 +6,19 @@
  */
 
 import { Directive, EventEmitter, HostListener, OnDestroy, Output } from '@angular/core';
-import { ClrSmartPopoverToggleService } from './providers/smart-popover-toggle.service';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
 import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[clrSmartOpenCloseButton]',
+  selector: '[clrPopoverOpenCloseButton]',
   host: {
     '[class.clr-smart-open-close]': 'true',
   },
 })
-export class ClrSmartOpenCloseButton implements OnDestroy {
+export class ClrPopoverOpenCloseButton implements OnDestroy {
   private subscriptions: Subscription[] = [];
 
-  constructor(private smartOpenService: ClrSmartPopoverToggleService) {
+  constructor(private smartOpenService: ClrPopoverToggleService) {
     this.subscriptions.push(
       this.smartOpenService.openChange.subscribe(change => {
         this.openCloseChange.next(change);
@@ -26,7 +26,7 @@ export class ClrSmartOpenCloseButton implements OnDestroy {
     );
   }
 
-  @Output('clrSmartOpenCloseChange') openCloseChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output('clrPopoverOpenCloseChange') openCloseChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostListener('click', ['$event'])
   handleClick(event: MouseEvent) {

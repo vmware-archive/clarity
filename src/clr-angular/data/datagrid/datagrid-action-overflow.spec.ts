@@ -97,7 +97,7 @@ export default function(): void {
                 <!-- Preserves old behavior w/o complicated listener event code -->
                 <!-- Exposes the popover directives to consumers and asks them to tell us when/if content -->
                 <!-- clicks should be closed -->
-                <button class="action-item" clrSmartCloseButton>Hello world</button>
+                <button class="action-item" clrPopoverOpenCloseButton>Hello world</button>
             </clr-dg-action-overflow>
         </div>`,
 })

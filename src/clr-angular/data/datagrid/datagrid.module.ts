@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 
 import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrIconModule } from '../../icon/icon.module';
-import { ClrCommonPopoverModule } from '../../popover/common/popover.module';
 import { ClrIfExpandModule } from '../../utils/expand/if-expand.module';
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrOutsideClickModule } from '../../utils/outside-click/outside-click.module';
@@ -48,7 +47,7 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
-import { ClrSmartPopoverModule } from '../../utils/smart-popover/smart-popover.module';
+import { ClrPopoverModuleNext } from '../../utils/popover/popover.module';
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
@@ -103,11 +102,10 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrIconModule,
     ClrFormsModule,
     FormsModule,
-    ClrCommonPopoverModule,
     ClrLoadingModule,
     ClrOutsideClickModule,
     ClrDragAndDropModule,
-    ClrSmartPopoverModule,
+    ClrPopoverModuleNext,
     ClrFocusTrapModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],

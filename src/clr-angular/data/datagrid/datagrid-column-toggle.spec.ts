@@ -11,9 +11,9 @@ import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { TestContext } from './helpers.spec';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 
 @Component({
   template: `
@@ -120,19 +120,19 @@ export default function(): void {
     describe('View', function() {
       let context: TestContext<ClrDatagridColumnToggle, SimpleTest>;
       let hideableColumnService: HideableColumnService;
-      let toggleService: ClrSmartPopoverToggleService;
+      let toggleService: ClrPopoverToggleService;
 
       beforeEach(function() {
         context = this.create(ClrDatagridColumnToggle, SimpleTest, [
           HideableColumnService,
           ColumnToggleButtonsService,
-          ClrSmartPopoverEventsService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverToggleService,
+          ClrPopoverEventsService,
+          ClrPopoverPositionService,
+          ClrPopoverToggleService,
           Renderer2,
         ]);
         hideableColumnService = context.getClarityProvider(HideableColumnService);
-        toggleService = context.getClarityProvider(ClrSmartPopoverToggleService);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
       it('has a toggle icon', function() {

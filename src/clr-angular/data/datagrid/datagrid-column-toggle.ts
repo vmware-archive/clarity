@@ -11,13 +11,13 @@ import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.se
 import { HideableColumnService } from './providers/hideable-column.service';
 import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
-import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
-import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
-import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
-import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   selector: 'clr-dg-column-toggle',
@@ -26,8 +26,8 @@ import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/provider
               role="button"
               type="button"
               class="btn btn-sm btn-link column-toggle--action"
-              clrSmartAnchor
-              clrSmartOpenCloseButton
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton
               [attr.aria-owns]="popoverId">
           <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
       </button>
@@ -35,13 +35,13 @@ import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/provider
            role="dialog"
            [id]="popoverId"
            clrFocusTrap
-           *clrSmartPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
+           *clrPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <div class="switch-header">
               <!-- TODO(matt): Use common strings here --> 
               <span>Show Columns</span>
               <button
                       class="btn btn-sm btn-link"
-                      clrSmartCloseButton
+                      clrPopoverCloseButton
                       type="button">
                   <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
               </button>
@@ -72,19 +72,14 @@ import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/provider
       </div>
   `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'openState' },
-  providers: [
-    UNIQUE_ID_PROVIDER,
-    ClrSmartPopoverEventsService,
-    ClrSmartPopoverPositionService,
-    ClrSmartPopoverToggleService,
-  ],
+  providers: [UNIQUE_ID_PROVIDER, ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private _allColumnsVisible: boolean;
 
   // Smart Popover
-  public smartPosition: ClrSmartPosition = {
+  public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.BEFORE,
     anchor: ClrAlignment.START,

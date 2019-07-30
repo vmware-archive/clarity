@@ -13,9 +13,9 @@ import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 
 class MockRenderer {
   listen() {}
@@ -27,12 +27,12 @@ export default function(): void {
       let filterService: FiltersProvider<number>;
       let filter: TestFilter;
       let component: ClrDatagridFilter<number>;
-      let toggleService: ClrSmartPopoverToggleService;
+      let toggleService: ClrPopoverToggleService;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
         filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
-        toggleService = new ClrSmartPopoverToggleService();
+        toggleService = new ClrPopoverToggleService();
         filter = new TestFilter();
         component = new ClrDatagridFilter(filterService, {}, toggleService, '');
       });
@@ -67,7 +67,7 @@ export default function(): void {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridFilter<number>, FullTest>;
       let filter: TestFilter;
-      let toggleService: ClrSmartPopoverToggleService;
+      let toggleService: ClrPopoverToggleService;
 
       beforeEach(function() {
         filter = new TestFilter();
@@ -75,12 +75,12 @@ export default function(): void {
           FiltersProvider,
           Page,
           StateDebouncer,
-          ClrSmartPopoverEventsService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverToggleService,
+          ClrPopoverEventsService,
+          ClrPopoverPositionService,
+          ClrPopoverToggleService,
           Renderer2,
         ]);
-        toggleService = context.getClarityProvider(ClrSmartPopoverToggleService);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
       it('receives an input for the filter logic', function() {
@@ -114,9 +114,9 @@ export default function(): void {
           FiltersProvider,
           Page,
           StateDebouncer,
-          ClrSmartPopoverEventsService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverToggleService,
+          ClrPopoverEventsService,
+          ClrPopoverPositionService,
+          ClrPopoverToggleService,
           {
             provide: Renderer2,
             useClass: MockRenderer,

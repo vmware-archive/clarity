@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
-export class ClrSmartPopoverToggleService {
+export class ClrPopoverToggleService {
   /**
    *  Popovers might need to ignore click events on an element
    *  (eg: popover opens on focus on an input field. Clicks should be ignored in this case)

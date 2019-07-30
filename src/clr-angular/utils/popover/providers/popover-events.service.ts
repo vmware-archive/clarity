@@ -6,7 +6,7 @@
  */
 
 import { ElementRef, Injectable, Renderer2, Inject, OnDestroy } from '@angular/core';
-import { ClrSmartPopoverToggleService } from './smart-popover-toggle.service';
+import { ClrPopoverToggleService } from './popover-toggle.service';
 import { Observable, fromEvent, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
@@ -14,7 +14,7 @@ import { DOCUMENT } from '@angular/common';
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
 @Injectable()
-export class ClrSmartPopoverEventsService implements OnDestroy {
+export class ClrPopoverEventsService implements OnDestroy {
   public outsideClickClose = true;
   public scrollToClose = true;
   private documentClickListener: () => void;
@@ -23,7 +23,7 @@ export class ClrSmartPopoverEventsService implements OnDestroy {
 
   constructor(
     private renderer: Renderer2,
-    private smartOpenService: ClrSmartPopoverToggleService,
+    private smartOpenService: ClrPopoverToggleService,
     @Inject(DOCUMENT) private document: HTMLDocument
   ) {
     this.subscriptions.push(

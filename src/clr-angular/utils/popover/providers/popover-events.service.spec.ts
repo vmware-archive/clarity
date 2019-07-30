@@ -7,33 +7,33 @@
 
 import { Component, ElementRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { ClrSmartPopoverEventsService } from './smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from './smart-popover-toggle.service';
+import { ClrPopoverEventsService } from './popover-events.service';
+import { ClrPopoverPositionService } from './popover-position.service';
+import { ClrPopoverToggleService } from './popover-toggle.service';
 
 @Component({
   selector: 'test-host',
   template: '',
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService],
+  providers: [ClrPopoverEventsService, ClrPopoverPositionService],
 })
 class TestHost {}
 
 interface TestContext {
-  eventService: ClrSmartPopoverEventsService;
-  toggleService: ClrSmartPopoverToggleService;
+  eventService: ClrPopoverEventsService;
+  toggleService: ClrPopoverToggleService;
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverEventService', function() {
+  describe('Popover EventService', function() {
     describe('API', () => {
       beforeEach(function(this: TestContext) {
         TestBed.configureTestingModule({
           declarations: [TestHost],
-          providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+          providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
         });
         const fixture = TestBed.createComponent(TestHost);
-        this.eventService = fixture.debugElement.injector.get(ClrSmartPopoverEventsService, null);
-        this.toggleService = fixture.debugElement.injector.get(ClrSmartPopoverToggleService, null);
+        this.eventService = fixture.debugElement.injector.get(ClrPopoverEventsService, null);
+        this.toggleService = fixture.debugElement.injector.get(ClrPopoverToggleService, null);
       });
       function setupAnchor(context: TestContext): ElementRef {
         const anchor = document.createElement('button');
@@ -103,7 +103,7 @@ export default function(): void {
         expect(closeBtn.nativeElement.focus).toHaveBeenCalled();
       });
       /*
-       * NOTE: private functions called when ClrSmartPopoverToggleService.openChange event fires
+       * NOTE: private functions called when ClrPopoverToggleService.openChange event fires
        * will be tested with a full component / popover complex
        */
     });

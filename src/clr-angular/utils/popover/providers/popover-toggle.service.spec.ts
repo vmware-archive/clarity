@@ -8,32 +8,32 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
-import { ClrSmartPopoverEventsService } from './smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from './smart-popover-toggle.service';
+import { ClrPopoverEventsService } from './popover-events.service';
+import { ClrPopoverPositionService } from './popover-position.service';
+import { ClrPopoverToggleService } from './popover-toggle.service';
 
 @Component({
   selector: 'test-host',
   template: '',
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+  providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class TestHost {}
 
 interface TestContext {
-  eventService: ClrSmartPopoverEventsService;
-  toggleService: ClrSmartPopoverToggleService;
+  eventService: ClrPopoverEventsService;
+  toggleService: ClrPopoverToggleService;
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverToggleService', function() {
+  describe('ClrPopoverToggleService', function() {
     describe('API', () => {
       beforeEach(function(this: TestContext) {
         TestBed.configureTestingModule({
           declarations: [TestHost],
-          providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+          providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
         });
         const fixture = TestBed.createComponent(TestHost);
-        this.toggleService = fixture.debugElement.injector.get(ClrSmartPopoverToggleService, null);
+        this.toggleService = fixture.debugElement.injector.get(ClrPopoverToggleService, null);
       });
 
       it('exposes an observable for the open change events', function(this: TestContext) {

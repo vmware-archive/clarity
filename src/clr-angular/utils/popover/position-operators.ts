@@ -5,14 +5,14 @@
  *
  */
 
-import { ClrSmartPosition } from './interfaces/smart-position.interface';
+import { ClrPopoverPosition } from './interfaces/popover-position.interface';
 import { ClrPopoverContentOffset } from './interfaces/popover-content-offset.interface';
 import { ClrViewportViolation } from './enums/viewport-violation.enum';
 import { ClrVisibilityCoords } from './interfaces/visibility-coords.interface';
 import { ClrAlignment } from './enums/alignment.enum';
 
 // Put the forward arg here but it is only needed when nudging content or anchors.
-export type ClrTransform = (position: ClrSmartPosition, back?: boolean) => ClrSmartPosition;
+export type ClrTransform = (position: ClrPopoverPosition, back?: boolean) => ClrPopoverPosition;
 
 export const flipSides: ClrTransform = position => {
   return {
@@ -44,10 +44,10 @@ export const nudgeContent: ClrTransform = (position, forward) => {
 };
 
 export function flipSidesAndNudgeContent(flip: ClrTransform, nudge: ClrTransform, nudgeBack?: boolean): ClrTransform {
-  return (position: ClrSmartPosition): ClrSmartPosition => nudge(flip(position), nudgeBack);
+  return (position: ClrPopoverPosition): ClrPopoverPosition => nudge(flip(position), nudgeBack);
 }
 
-export function align(position: ClrSmartPosition, anchor: ClientRect, content: ClientRect): ClrPopoverContentOffset {
+export function align(position: ClrPopoverPosition, anchor: ClientRect, content: ClientRect): ClrPopoverContentOffset {
   let xDiff = anchor.left;
   let yDiff = anchor.top;
 
@@ -85,7 +85,7 @@ export function align(position: ClrSmartPosition, anchor: ClientRect, content: C
   return { xOffset: xDiff, yOffset: yDiff };
 }
 
-function alignHorizontal(position: ClrSmartPosition, anchor: ClientRect, content: ClientRect): number {
+function alignHorizontal(position: ClrPopoverPosition, anchor: ClientRect, content: ClientRect): number {
   let horizontalOffset = 0;
   // horizontal offset for the anchor position
   switch (position.anchor /*calculate for the anchor alignment*/) {
@@ -131,7 +131,7 @@ function alignHorizontal(position: ClrSmartPosition, anchor: ClientRect, content
   return horizontalOffset;
 }
 
-function alignVertical(position: ClrSmartPosition, anchor: ClientRect, content: ClientRect): number {
+function alignVertical(position: ClrPopoverPosition, anchor: ClientRect, content: ClientRect): number {
   // y axis offsets for anchor alignment
   let verticalOffset = 0;
 

@@ -19,36 +19,31 @@ import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
-import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
-import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
-import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
-import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { Subscription } from 'rxjs';
 
 let clrDgActionId = 0;
 
 @Component({
   selector: 'clr-dg-action-overflow',
-  providers: [
-    UNIQUE_ID_PROVIDER,
-    ClrSmartPopoverToggleService,
-    ClrSmartPopoverEventsService,
-    ClrSmartPopoverPositionService,
-  ],
+  providers: [UNIQUE_ID_PROVIDER, ClrPopoverToggleService, ClrPopoverEventsService, ClrPopoverPositionService],
   template: `
       <button class="datagrid-action-toggle"
               type="button"
               role="button"
-              aria-haspopup="true" 
-              #anchor 
-              [attr.aria-controls]="popoverId" 
+              aria-haspopup="true"
+              #anchor
+              [attr.aria-controls]="popoverId"
               [attr.aria-expanded]="open"
-              [attr.aria-label]="commonStrings.keys.rowActions">
-              clrSmartAnchor
-              clrSmartOpenCloseButton
+              [attr.aria-label]="commonStrings.keys.rowActions"
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton>
           <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
       </button>
 
@@ -59,14 +54,14 @@ let clrDgActionId = 0;
            [attr.aria-hidden]="!open"
            [attr.id]="popoverId" 
            clrFocusTrap
-           *clrSmartPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
+           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <ng-content></ng-content>
       </div>
   `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {
   private subscriptions: Subscription[] = [];
-  public smartPosition: ClrSmartPosition = {
+  public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.HORIZONTAL,
     side: ClrSide.AFTER,
     anchor: ClrAlignment.CENTER,
@@ -79,7 +74,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
     private elementRef: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone,
-    private smartToggleService: ClrSmartPopoverToggleService,
+    private smartToggleService: ClrPopoverToggleService,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {
     this.rowActionService.register();

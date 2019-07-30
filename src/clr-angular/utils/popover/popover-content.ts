@@ -18,34 +18,34 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { ClrSmartPopoverToggleService } from './providers/smart-popover-toggle.service';
-import { ClrSmartPopoverEventsService } from './providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './providers/smart-popover-position.service';
-import { ClrSmartPosition } from './interfaces/smart-position.interface';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
+import { ClrPopoverPositionService } from './providers/popover-position.service';
+import { ClrPopoverPosition } from './interfaces/popover-position.interface';
 
 // https://github.com/angular/angular/issues/20351#issuecomment-344009887
 /** @dynamic */
-@Directive({ selector: '[clrSmartPopoverContent]' })
-export class ClrSmartPopoverContent implements AfterContentChecked, OnDestroy {
+@Directive({ selector: '[clrPopoverContent]' })
+export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
   private view: EmbeddedViewRef<void>;
   private subscriptions: Subscription[] = [];
 
-  @Input('clrSmartPopoverContent')
+  @Input('clrPopoverContent')
   public set open(value: boolean) {
     this.smartOpenService.open = !!value;
   }
 
-  @Input('clrSmartPopoverContentAt')
-  set clrSmartOpenContentAt(position: ClrSmartPosition) {
+  @Input('clrPopoverContentAt')
+  set contentAt(position: ClrPopoverPosition) {
     this.smartPositionService.position = position;
   }
 
-  @Input('clrSmartPopoverContentOutsideClickToClose')
+  @Input('clrPopoverContentOutsideClickToClose')
   set outsideClickClose(clickToClose) {
     this.smartEventsService.outsideClickClose = !!clickToClose;
   }
 
-  @Input('clrSmartPopoverContentScrollToClose')
+  @Input('clrPopoverContentScrollToClose')
   set scrollToClose(scrollToClose) {
     this.smartEventsService.scrollToClose = !!scrollToClose;
   }
@@ -55,9 +55,9 @@ export class ClrSmartPopoverContent implements AfterContentChecked, OnDestroy {
     private container: ViewContainerRef,
     private template: TemplateRef<any>,
     private renderer: Renderer2,
-    private smartPositionService: ClrSmartPopoverPositionService,
-    private smartEventsService: ClrSmartPopoverEventsService,
-    private smartOpenService: ClrSmartPopoverToggleService
+    private smartPositionService: ClrPopoverPositionService,
+    private smartEventsService: ClrPopoverEventsService,
+    private smartOpenService: ClrPopoverToggleService
   ) {}
 
   ngAfterViewInit() {

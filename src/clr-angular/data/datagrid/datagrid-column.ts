@@ -32,9 +32,9 @@ import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 let nbCount: number = 0;
 
@@ -79,7 +79,7 @@ let nbCount: number = 0;
             <clr-dg-column-separator></clr-dg-column-separator>
         </div>
     `,
-  providers: [ClrSmartPopoverPositionService, ClrSmartPopoverEventsService, ClrSmartPopoverToggleService],
+  providers: [ClrPopoverPositionService, ClrPopoverEventsService, ClrPopoverToggleService],
   host: {
     '[class.datagrid-column]': 'true',
     '[attr.aria-sort]': 'ariaSort',

@@ -6,16 +6,16 @@
  */
 
 import { Directive, ElementRef } from '@angular/core';
-import { ClrSmartPopoverEventsService } from './providers/smart-popover-events.service';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
 
 @Directive({
-  selector: '[clrSmartAnchor]',
+  selector: '[clrPopoverAnchor]',
   host: {
     '[class.clr-anchor]': 'true',
   },
 })
-export class ClrSmartPopoverAnchor {
-  constructor(smartEventService: ClrSmartPopoverEventsService, element: ElementRef) {
+export class ClrPopoverAnchor {
+  constructor(smartEventService: ClrPopoverEventsService, element: ElementRef) {
     smartEventService.anchorButtonRef = element;
   }
 }

@@ -6,20 +6,20 @@
  */
 
 import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-import { ClrSmartPopoverToggleService } from './providers/smart-popover-toggle.service';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
 import { spec, TestContext } from '../testing/helpers.spec';
-import { ClrSmartPopoverEventsService } from './providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './providers/smart-popover-position.service';
-import { ClrSmartCloseButton } from './smart-close-button';
-import { ClrSmartPopoverModule } from './smart-popover.module';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
+import { ClrPopoverPositionService } from './providers/popover-position.service';
+import { ClrPopoverCloseButton } from './popover-close-button';
+import { ClrPopoverModuleNext } from './popover.module';
 
 @Component({
   selector: 'test-host',
   template: `    
-    <button #closeButton clrSmartCloseButton (clrSmartOnCloseChange)="handleClose()">Smart Close Button</button>
-    <button #toggleButton clrSmartAnchor>Toggle Button</button>
+    <button #closeButton clrPopoverCloseButton (clrPopoverOnCloseChange)="handleClose()">Smart Close Button</button>
+    <button #toggleButton clrPopoverAnchor>Toggle Button</button>
   `,
-  providers: [ClrSmartPopoverToggleService],
+  providers: [ClrPopoverToggleService],
 })
 class TestHost {
   @ViewChild('closeButton', { read: ElementRef })
@@ -34,29 +34,24 @@ class TestHost {
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverCloseButton', function() {
-    type Context = TestContext<ClrSmartCloseButton, TestHost> & {
-      toggleService: ClrSmartPopoverToggleService;
-      eventService: ClrSmartPopoverEventsService;
+  describe('ClrPopoverCloseButton', function() {
+    type Context = TestContext<ClrPopoverCloseButton, TestHost> & {
+      toggleService: ClrPopoverToggleService;
+      eventService: ClrPopoverEventsService;
     };
     describe('TypeScript API', function(this: Context) {
-      spec(ClrSmartCloseButton, TestHost, ClrSmartPopoverModule, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverCloseButton, TestHost, ClrPopoverModuleNext, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
       beforeEach(function(this: Context) {
-        this.toggleService = this.getClarityProvider(ClrSmartPopoverToggleService);
-        this.eventService = this.getClarityProvider(ClrSmartPopoverEventsService);
+        this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
+        this.eventService = this.getClarityProvider(ClrPopoverEventsService);
         this.detectChanges();
       });
-      it('declares a ClrSmartPopoverToggleService', function(this: Context) {
+      it('declares a Popover ToggleService', function(this: Context) {
         expect(this.toggleService).toBeDefined();
       });
-      it('declares a ClrSmartPopoverEventService', function(this: Context) {
+      it('declares a Popover EventService', function(this: Context) {
         expect(this.eventService).toBeDefined();
       });
       it('sets the close button ref in the events service', function(this: Context) {
@@ -65,17 +60,12 @@ export default function(): void {
     });
 
     describe('Template API', () => {
-      spec(ClrSmartCloseButton, TestHost, ClrSmartPopoverModule, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverCloseButton, TestHost, ClrPopoverModuleNext, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
       beforeEach(function(this: Context) {
-        this.toggleService = this.getClarityProvider(ClrSmartPopoverToggleService);
-        this.eventService = this.getClarityProvider(ClrSmartPopoverEventsService);
+        this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
+        this.eventService = this.getClarityProvider(ClrPopoverEventsService);
         this.detectChanges();
       });
       it('emits a close change event when popover is closed', function(this: Context) {
@@ -97,13 +87,8 @@ export default function(): void {
       });
     });
     describe('View Basics', function(this: Context) {
-      spec(ClrSmartCloseButton, TestHost, undefined, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverCloseButton, TestHost, undefined, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
 
       it('adds the clr-smart-close-button classname to the host', function(this: Context) {

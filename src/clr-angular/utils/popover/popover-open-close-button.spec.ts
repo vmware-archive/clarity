@@ -6,20 +6,20 @@
  */
 
 import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-import { ClrSmartPopoverToggleService } from './providers/smart-popover-toggle.service';
-import { ClrSmartOpenCloseButton } from './smart-open-close-button';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
+import { ClrPopoverOpenCloseButton } from './popover-open-close-button';
 import { spec, TestContext } from '../testing/helpers.spec';
 import { Subscription } from 'rxjs';
-import { ClrSmartPopoverEventsService } from './providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './providers/smart-popover-position.service';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
+import { ClrPopoverPositionService } from './providers/popover-position.service';
 
 @Component({
   selector: 'test-host',
   template:
-    '<button #testAnchor clrSmartOpenCloseButton (clrSmartOpenCloseChange)="updateOpenState($event)">Smart' +
+    '<button #testAnchor clrPopoverOpenCloseButton (clrPopoverOpenCloseChange)="updateOpenState($event)">Smart' +
     ' Open Close' +
     ' Button</button>',
-  providers: [ClrSmartPopoverToggleService],
+  providers: [ClrPopoverToggleService],
 })
 class TestHost {
   @ViewChild('testAnchor', { read: ElementRef })
@@ -33,24 +33,19 @@ class TestHost {
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverOpenCloseButton', function() {
-    type Context = TestContext<ClrSmartOpenCloseButton, TestHost> & {
-      toggleService: ClrSmartPopoverToggleService;
+  describe('ClrPopoverOpenCloseButton', function() {
+    type Context = TestContext<ClrPopoverOpenCloseButton, TestHost> & {
+      toggleService: ClrPopoverToggleService;
     };
     describe('TypeScript API', function(this: Context) {
-      spec(ClrSmartOpenCloseButton, TestHost, undefined, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverOpenCloseButton, TestHost, undefined, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
       beforeEach(function(this: Context) {
-        this.toggleService = this.getClarityProvider(ClrSmartPopoverToggleService);
+        this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
         this.detectChanges();
       });
-      it('declares a ClrSmartPopoverToggleService', function(this: Context) {
+      it('declares a ClrPopoverToggleService', function(this: Context) {
         expect(this.toggleService).toBeDefined();
       });
       it('responds to openChange events from the toggleService', function(this: Context) {
@@ -68,16 +63,11 @@ export default function(): void {
     });
 
     describe('Template API', () => {
-      spec(ClrSmartOpenCloseButton, TestHost, undefined, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverOpenCloseButton, TestHost, undefined, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
       beforeEach(function(this: Context) {
-        this.toggleService = this.getClarityProvider(ClrSmartPopoverToggleService);
+        this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
         this.detectChanges();
       });
       it('emits events when the open state changes', function(this: Context) {
@@ -85,6 +75,7 @@ export default function(): void {
         this.clarityElement.click();
         expect(this.hostComponent.openState).toEqual(this.toggleService.open);
         expect(this.hostComponent.openState).toBe(true); // opened state
+        console.log(this.fixture.componentInstance);
         this.clarityElement.click();
         expect(this.hostComponent.openState).toEqual(this.toggleService.open);
         expect(this.hostComponent.openState).toBe(false); // closed state
@@ -96,13 +87,8 @@ export default function(): void {
       });
     });
     describe('View Basics', function(this: Context) {
-      spec(ClrSmartOpenCloseButton, TestHost, undefined, {
-        providers: [
-          ClrSmartPopoverToggleService,
-          ClrSmartPopoverPositionService,
-          ClrSmartPopoverEventsService,
-          Renderer2,
-        ],
+      spec(ClrPopoverOpenCloseButton, TestHost, undefined, {
+        providers: [ClrPopoverToggleService, ClrPopoverPositionService, ClrPopoverEventsService, Renderer2],
       });
 
       it('adds the clr-smart-open-close classname', function(this: Context) {

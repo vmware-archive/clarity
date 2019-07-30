@@ -9,10 +9,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClrAxis } from '../enums/axis.enum';
 import { ClrSide } from '../enums/side.enum';
-import { ClrSmartPosition } from '../interfaces/smart-position.interface';
-import { ClrSmartPopoverEventsService } from './smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from './smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from './smart-popover-toggle.service';
+import { ClrPopoverPosition } from '../interfaces/popover-position.interface';
+import { ClrPopoverEventsService } from './popover-events.service';
+import { ClrPopoverPositionService } from './popover-position.service';
+import { ClrPopoverToggleService } from './popover-toggle.service';
 import { ClrAlignment } from '@clr/angular';
 
 @Component({
@@ -20,7 +20,7 @@ import { ClrAlignment } from '@clr/angular';
   template: `
       <button #anchor class="btn">Anchor</button>
   `,
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+  providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class TestHost {
   @ViewChild('anchor', { read: ElementRef })
@@ -29,25 +29,25 @@ class TestHost {
 
 interface TestContext {
   fixture: ComponentFixture<TestHost>;
-  eventService: ClrSmartPopoverEventsService;
-  positionService: ClrSmartPopoverPositionService;
+  eventService: ClrPopoverEventsService;
+  positionService: ClrPopoverPositionService;
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverPositionService', function() {
+  describe('ClrPopoverPositionService', function() {
     beforeEach(function(this: TestContext) {
       TestBed.configureTestingModule({
         declarations: [TestHost],
-        providers: [ClrSmartPopoverEventsService, ClrSmartPopoverPositionService, ClrSmartPopoverToggleService],
+        providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
       });
       this.fixture = TestBed.createComponent(TestHost);
-      this.eventService = this.fixture.debugElement.injector.get(ClrSmartPopoverEventsService, null);
-      this.positionService = new ClrSmartPopoverPositionService(this.eventService, 'browser');
+      this.eventService = this.fixture.debugElement.injector.get(ClrPopoverEventsService, null);
+      this.positionService = new ClrPopoverPositionService(this.eventService, 'browser');
     });
 
     describe('API', () => {
       it('sets a position for the popover complex', function(this: TestContext) {
-        const testPosition: ClrSmartPosition = {
+        const testPosition: ClrPopoverPosition = {
           anchor: null,
           content: null,
           side: ClrSide.AFTER,
@@ -85,7 +85,7 @@ export default function(): void {
         });
 
         it('and aligns content when visibility is 🆗', function(this: TestContext) {
-          const goodPosition: ClrSmartPosition = {
+          const goodPosition: ClrPopoverPosition = {
             anchor: ClrAlignment.END,
             axis: ClrAxis.HORIZONTAL,
             content: ClrAlignment.START,
@@ -105,7 +105,7 @@ export default function(): void {
 
         it('and aligns content when ClrAxis is HORIZONTAL and there is a BOTTOM ViewportViolation', function(this: TestContext) {
           // Test a BOTTOM ViewportViolation
-          const bottomViolation: ClrSmartPosition = {
+          const bottomViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.START,
@@ -124,7 +124,7 @@ export default function(): void {
         });
 
         it('and aligns content when ClrAxis is HORIZONTAL and there is LEFT ViewportViolation', function(this: TestContext) {
-          const leftViolation: ClrSmartPosition = {
+          const leftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.START,
@@ -144,7 +144,7 @@ export default function(): void {
 
         it('and aligns content when ClrAxis is HORIZONTAL and there is a RIGHT ViewportViolation', function(this: TestContext) {
           // // Test a right violation
-          const rightViolation: ClrSmartPosition = {
+          const rightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.CENTER,
@@ -163,7 +163,7 @@ export default function(): void {
 
         it('and aligns content when ClrAxis is HORIZONTAL and there is a TOP ViewportViolation', function(this: TestContext) {
           // Test a TOP ViewportViolation
-          const topViolation: ClrSmartPosition = {
+          const topViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.START,
@@ -183,7 +183,7 @@ export default function(): void {
 
         it('and aligns content when ClrAxis is VERTICAL and there is a BOTTOM ViewportViolation', function(this: TestContext) {
           // Test a BOTTOM violataion
-          const bottomViolation: ClrSmartPosition = {
+          const bottomViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.CENTER,
@@ -202,7 +202,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there is a LEFT ViewportViolation', function(this: TestContext) {
-          const leftViolation: ClrSmartPosition = {
+          const leftViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.START,
@@ -220,7 +220,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there is a RIGHT ViewportViolation', function(this: TestContext) {
-          const rightViolation: ClrSmartPosition = {
+          const rightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.START,
@@ -238,7 +238,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there are TOP/LEFT ViewportViolation', function(this: TestContext) {
-          const topRightViolation: ClrSmartPosition = {
+          const topRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.START,
@@ -258,7 +258,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there are TOP/RIGHT ViewportViolations', function(this: TestContext) {
-          const topCenterViolation: ClrSmartPosition = {
+          const topCenterViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.END,
@@ -278,7 +278,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there are BOTTOM/LEFT ViewportViolations', function(this: TestContext) {
-          const bottomLeftViolation: ClrSmartPosition = {
+          const bottomLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.START,
@@ -298,7 +298,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is VERTICAL and there are BOTTOM/RIGHT ViewportViolations', function(this: TestContext) {
-          const bottomRightViolation: ClrSmartPosition = {
+          const bottomRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.END,
@@ -318,7 +318,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is HORIZONTAL and there are TOP/LEFT ViewportViolations', function(this: TestContext) {
-          const topLeftViolation: ClrSmartPosition = {
+          const topLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.START,
@@ -338,7 +338,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is HORIZONTAL and there are TOP/RIGHT ViewportViolations', function(this: TestContext) {
-          const topRightViolation: ClrSmartPosition = {
+          const topRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.START,
@@ -358,7 +358,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/LEFT ViewportViolations', function(this: TestContext) {
-          const bottomLeftViolation: ClrSmartPosition = {
+          const bottomLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
             anchor: ClrAlignment.END,
@@ -378,7 +378,7 @@ export default function(): void {
         });
 
         it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/RIGHT ViewportViolations', function(this: TestContext) {
-          const bottomRightViolation: ClrSmartPosition = {
+          const bottomRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
             anchor: ClrAlignment.END,

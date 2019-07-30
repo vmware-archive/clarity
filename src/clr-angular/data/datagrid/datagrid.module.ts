@@ -49,7 +49,7 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
-import { ClrSmartPopoverModule } from '../../utils/smart-popover/smart-popover.module';
+import { ClrPopoverModuleNext } from '../../utils/popover/popover.module';
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
@@ -102,13 +102,13 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
     ClrIconModule,
     ClrFormsModule,
     FormsModule,
-    ClrCommonPopoverModule,
     ClrLoadingModule,
     ClrOutsideClickModule,
     ClrExpandableAnimationModule,
     ClrDragAndDropModule,
     ClrSpinnerModule,
-    ClrSmartPopoverModule,
+    ClrCommonPopoverModule,
+    ClrPopoverModuleNext,
     ClrFocusTrapModule,
   ],
   declarations: [CLR_DATAGRID_DIRECTIVES],

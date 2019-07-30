@@ -6,15 +6,15 @@
  */
 
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
-import { ClrSmartPopoverAnchor } from '../../utils/smart-popover/smart-anchor';
+import { ClrPopoverEventsService } from './providers/popover-events.service';
+import { ClrPopoverToggleService } from './providers/popover-toggle.service';
+import { ClrPopoverAnchor } from './popover-anchor';
 import { spec, TestContext } from '../testing/helpers.spec';
 
 @Component({
   selector: 'test-host',
-  template: '<button #testAnchor clrSmartAnchor>Smart Anchor</button>',
-  providers: [ClrSmartPopoverEventsService, ClrSmartPopoverToggleService],
+  template: '<button #testAnchor clrPopoverAnchor>Smart Anchor</button>',
+  providers: [ClrPopoverEventsService, ClrPopoverToggleService],
 })
 class TestHost {
   @ViewChild('testAnchor', { read: ElementRef })
@@ -22,15 +22,15 @@ class TestHost {
 }
 
 export default function(): void {
-  describe('ClrSmartPopoverAnchor', function() {
-    type Context = TestContext<ClrSmartPopoverAnchor, TestHost> & {
-      eventService: ClrSmartPopoverEventsService;
+  describe('ClrPopoverAnchor', function() {
+    type Context = TestContext<ClrPopoverAnchor, TestHost> & {
+      eventService: ClrPopoverEventsService;
     };
     describe('Template API', () => {
-      spec(ClrSmartPopoverAnchor, TestHost, undefined, { providers: [ClrSmartPopoverEventsService] });
+      spec(ClrPopoverAnchor, TestHost, undefined, { providers: [ClrPopoverEventsService] });
 
       beforeEach(function(this: Context) {
-        this.eventService = this.getClarityProvider(ClrSmartPopoverEventsService);
+        this.eventService = this.getClarityProvider(ClrPopoverEventsService);
         this.detectChanges();
       });
 
@@ -39,7 +39,7 @@ export default function(): void {
       });
     });
     describe('View Basics', function(this: Context) {
-      spec(ClrSmartPopoverAnchor, TestHost, undefined, { providers: [ClrSmartPopoverEventsService] });
+      spec(ClrPopoverAnchor, TestHost, undefined, { providers: [ClrPopoverEventsService] });
       it('adds the clr-anchor classname', function(this: Context) {
         expect(this.clarityElement.classList).toContain('clr-anchor');
       });

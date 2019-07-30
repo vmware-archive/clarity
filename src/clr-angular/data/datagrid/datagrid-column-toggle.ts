@@ -7,34 +7,32 @@ import { Component, OnDestroy, OnInit, Inject, ContentChild, ElementRef, NgZone,
 import { Subscription } from 'rxjs';
 
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
-import { ClrSmartPosition } from '../../utils/smart-popover/interfaces/smart-position.interface';
-import { ClrAxis } from '../../utils/smart-popover/enums/axis.enum';
-import { ClrAlignment } from '../../utils/smart-popover/enums/alignment.enum';
-import { ClrSide } from '../../utils/smart-popover/enums/side.enum';
-import { ClrSmartPopoverEventsService } from '../../utils/smart-popover/providers/smart-popover-events.service';
-import { ClrSmartPopoverPositionService } from '../../utils/smart-popover/providers/smart-popover-position.service';
-import { ClrSmartPopoverToggleService } from '../../utils/smart-popover/providers/smart-popover-toggle.service';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
 import { isPlatformBrowser } from '@angular/common';
 import {ClrDatagridColumnToggleTitle} from './datagrid-column-toggle-title';
-import {ClrDatagridColumnToggleTitle} from './datagrid-column-toggle-title';
 import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
-import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
-
 
 @Component({
   selector: 'clr-dg-column-toggle',
-  // TODO(matt): confirm which aria attribute is correct (34/35)
+  // TODO(matt): confirm which aria (controls|owns) attribute is correct (34/35)
+  //
   template: `    
       <button
               role="button"
               type="button"
               class="btn btn-sm btn-link column-toggle--action"
-              clrSmartAnchor
-              clrSmartOpenCloseButton
+              clrPopoverAnchor
+              clrPopoverOpenCloseButton
               [attr.aria-controls]="popoverId"
               [attr.aria-owns]="popoverId">
           <clr-icon shape="view-columns" [attr.title]="commonStrings.keys.pickColumns"></clr-icon>
@@ -43,18 +41,18 @@ import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
            role="dialog"
            [id]="popoverId"
            clrFocusTrap
-           *clrSmartPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
+           *clrPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <div class="switch-header">
               <div class="clr-sr-only" tabindex="-1" #menuDescription>{{commonStrings.keys.showColumnsMenuDescription}}</div>
               <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.keys.allColumnsSelected}}</div>
               <ng-container *ngIf="!customToggleTitle">{{commonStrings.keys.showColumns}}</ng-container>
               <ng-content select="clr-dg-column-toggle-title"></ng-content>
-              <button
-                      class="btn btn-sm btn-link"
-                      clrSmartCloseButton
+              <button class="btn btn-sm btn-link"
+                      clrPopoverCloseButton
                       type="button"
                       [attr.aria-label]="commonStrings.keys.close">
-                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+                  <clr-icon shape="close" 
+                            [attr.title]="commonStrings.keys.close"></clr-icon>
               </button>
           </div>
           <ul class="switch-content list-unstyled">
@@ -79,12 +77,7 @@ import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
       </div>
   `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'openState' },
-  providers: [
-    UNIQUE_ID_PROVIDER,
-    ClrSmartPopoverEventsService,
-    ClrSmartPopoverPositionService,
-    ClrSmartPopoverToggleService,
-  ],
+  providers: [UNIQUE_ID_PROVIDER, ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 /** @deprecated since 2.0, remove in 3.0 */
 export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
@@ -92,7 +85,7 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   private _allColumnsVisible: boolean;
 
   // Smart Popover
-  public smartPosition: ClrSmartPosition = {
+  public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.BEFORE,
     anchor: ClrAlignment.START,

@@ -7,28 +7,28 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 
-import { ClrSmartPopoverEventsService } from './smart-popover-events.service';
-import { ClrSmartPosition } from '../interfaces/smart-position.interface';
+import { ClrPopoverEventsService } from './popover-events.service';
+import { ClrPopoverPosition } from '../interfaces/popover-position.interface';
 import { ClrPopoverContentOffset } from '../interfaces/popover-content-offset.interface';
 import { ClrViewportViolation } from '../enums/viewport-violation.enum';
-import { align, flipSidesAndNudgeContent, flipSides, nudgeContent, testVisibility } from '../clr-position-operators';
+import { align, flipSidesAndNudgeContent, flipSides, nudgeContent, testVisibility } from '../position-operators';
 import { ClrAxis } from '../enums/axis.enum';
 
 @Injectable()
-export class ClrSmartPopoverPositionService {
+export class ClrPopoverPositionService {
   private currentAnchorCoords: ClientRect;
   private currentContentCoords: ClientRect;
   private contentOffsets: ClrPopoverContentOffset;
-  private _position: ClrSmartPosition;
+  private _position: ClrPopoverPosition;
 
-  set position(position: ClrSmartPosition) {
+  set position(position: ClrPopoverPosition) {
     this._position = position;
   }
-  get position(): ClrSmartPosition {
+  get position(): ClrPopoverPosition {
     return this._position;
   }
 
-  constructor(private eventService: ClrSmartPopoverEventsService, @Inject(PLATFORM_ID) public platformId: Object) {}
+  constructor(private eventService: ClrPopoverEventsService, @Inject(PLATFORM_ID) public platformId: Object) {}
 
   public alignContent(content: HTMLElement): ClrPopoverContentOffset {
     if (!isPlatformBrowser(this.platformId)) {
@@ -47,7 +47,7 @@ export class ClrSmartPopoverPositionService {
     const visibilityViolations: ClrViewportViolation[] = testVisibility(this.contentOffsets, this.currentContentCoords);
     /**
      * Calculate the sum of viewport errors. This calculation is used below with the provided Axis in the given
-     * ClrSmartPosition. Its worth putting the ClrViewportViolation enum values here:
+     * ClrPopoverPosition. Its worth putting the ClrViewportViolation enum values here:
      *
      *   BOTTOM = 0,
      *   LEFT = 1,

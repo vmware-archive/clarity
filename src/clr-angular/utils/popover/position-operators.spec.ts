@@ -5,7 +5,7 @@
  *
  */
 
-import { ClrSmartPosition } from './interfaces/smart-position.interface';
+import { ClrPopoverPosition } from './interfaces/popover-position.interface';
 import { ClrAxis } from './enums/axis.enum';
 import { ClrSide } from './enums/side.enum';
 import { ClrAlignment } from './enums/alignment.enum';
@@ -16,13 +16,13 @@ import {
   flipSidesAndNudgeContent,
   nudgeContent,
   testVisibility,
-} from './clr-position-operators';
+} from './position-operators';
 import { ClrPopoverContentOffset } from './interfaces/popover-content-offset.interface';
 import { ClrViewportViolation } from './enums/viewport-violation.enum';
 
-export function ClrSmartTransformSpec(): void {
+export function ClrPositionTransformSpec(): void {
   describe('Transorm Function', () => {
-    let position: ClrSmartPosition;
+    let position: ClrPopoverPosition;
     beforeEach(function() {
       position = {
         anchor: ClrAlignment.START,
@@ -32,7 +32,7 @@ export function ClrSmartTransformSpec(): void {
       };
     });
     describe('flipSides', () => {
-      it('transforms a ClrSmartPosition.side into the opposite ClrSide', () => {
+      it('transforms a ClrPopoverPosition.side into the opposite ClrSide', () => {
         position = flipSides(position);
         expect(position.side).toBe(ClrSide.AFTER);
         position = flipSides(position);
@@ -40,7 +40,7 @@ export function ClrSmartTransformSpec(): void {
       });
     });
     describe('flipAxis', () => {
-      it('transforms ClrSmartPosition.axis into the opposite ClrAxis', () => {
+      it('transforms ClrPopoverPosition.axis into the opposite ClrAxis', () => {
         position = flipAxis(position);
         expect(position.axis).toBe(ClrAxis.VERTICAL);
         position = flipAxis(position);
@@ -48,7 +48,7 @@ export function ClrSmartTransformSpec(): void {
       });
     });
     describe('nudgeContent', () => {
-      it('transforms a CLrSmartPosition.content alignment forward from start to middle', () => {
+      it('transforms a ClrPopoverPosition.content alignment forward from start to middle', () => {
         position = nudgeContent(position, true);
         expect(position.content).toBe(ClrAlignment.CENTER);
       });
@@ -92,10 +92,10 @@ export function ClrSmartTransformSpec(): void {
   });
 }
 
-export function ClrSmartAlignmentSpec(): void {
+export function ClrAlignmentSpec(): void {
   describe('align function', () => {
     positionTestCases.forEach(testCase => {
-      it(`should calculate offsets for ClrSmartPosition: \n{\n${testCase.name}`, function() {
+      it(`should calculate offsets for ClrPopoverPosition: \n{\n${testCase.name}`, function() {
         let testOffsets: ClrPopoverContentOffset;
         testOffsets = align(testCase.position, testAnchorRect, testContentRect);
         expect(testOffsets).toEqual(testCase.expectedOffsets);
@@ -104,7 +104,7 @@ export function ClrSmartAlignmentSpec(): void {
   });
 }
 
-export function ClrSmartViewportValidationSpec() {
+export function ClrViewportValidationSpec() {
   describe('testVisability function', () => {
     // Remember the default browser size
     const originalWindowSize = {

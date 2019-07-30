@@ -39,7 +39,12 @@ export class StateProvider<T> {
   get state(): ClrDatagridStateInterface<T> {
     const state: ClrDatagridStateInterface<T> = {};
     if (this.page.size > 0) {
-      state.page = { from: this.page.firstItem, to: this.page.lastItem, size: this.page.size };
+      state.page = {
+        from: this.page.firstItem,
+        to: this.page.lastItem,
+        size: this.page.size,
+        current: this.page.current,
+      };
     }
     if (this.sort.comparator) {
       if (this.sort.comparator instanceof DatagridPropertyComparator) {

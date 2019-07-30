@@ -570,6 +570,7 @@ export default function(): void {
               from: 2,
               to: 3,
               size: 2,
+              current: 2,
             },
             sort: {
               by: comparator,

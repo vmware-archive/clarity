@@ -10,6 +10,7 @@ interface ClrDatagridStateInterface<T = any> {
         from?: number;
         to?: number;
         size?: number;
+        current?: number;
     }
     sort?: {
         by: string | ClrDatagridComparatorInterface<T>;

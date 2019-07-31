@@ -4,4 +4,4 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './index';
+export * from './lib/utils/css-vars/css-vars';

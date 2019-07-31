@@ -22,10 +22,26 @@ describe('ClrModalBody Directive', () => {
   it('adds tabindex="0" to modal body to make content focusable and scrollable with keyboards', () => {
     expect(fixture.componentInstance.testElement.nativeElement.getAttribute('tabindex')).toBe('0');
   });
+
+  // https://github.com/vmware/clarity/issues/3424
+  // https://github.com/vmware/clarity/issues/3642
+  it('focuses modal body on tab only, does not focus parent on inner content click', () => {
+    fixture.componentInstance.testLabel.nativeElement.click();
+    expect(fixture.componentInstance.testElement.nativeElement === document.activeElement).toBe(false);
+  });
 });
 
-@Component({ template: `<div class="modal-body" #testElement></div>` })
+@Component({
+  template: `
+    <div class="modal-body" #testElement>
+      <label #testLabel>test label</label>
+    </div>
+  `,
+})
 class TestComponent {
+  @ViewChild('testLabel', { static: false })
+  testLabel: ElementRef<HTMLElement>;
+
   @ViewChild('testElement', { static: false })
   testElement: ElementRef<HTMLElement>;
 }

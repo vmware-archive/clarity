@@ -8,14 +8,15 @@
  * BROWSER POLYFILLS
  */
 
+// https://stackoverflow.com/questions/54764616/problem-with-angular-element-support-in-chrome-and-ie11-simultaneously
+// ...said to include this before the polyfills listed below.
+import 'core-js/shim';
+
 /* IE10 and IE11 requires the following for NgClass support on SVG elements */
 // import "classlist.js"; // Run `npm install --save classlist.js`.
 
 /* Evergreen browsers require these. */
 import 'core-js/es6/reflect';
-
-/* Polyfill for icons web components */
-import '@webcomponents/custom-elements';
 
 /*
  * Required to support Web Animations `@angular/animation`.
@@ -26,6 +27,8 @@ import 'web-animations-js'; // Run `npm install --save web-animations-js`.
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
+// the following flag is set to prevent errors in IE11 related to zone.js showing up randomly
+(window as any).__Zone_enable_cross_context_check = true;
 import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 /***************************************************************************************************

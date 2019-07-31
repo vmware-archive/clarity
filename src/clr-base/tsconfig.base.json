@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "declaration": true,
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,

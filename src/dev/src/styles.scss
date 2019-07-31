@@ -5,6 +5,13 @@
 @import '../../clr-angular/color/variables.color';
 @import '../../clr-angular/utils/layers.clarity';
 
+:root {
+  --clr-test-header-text-color: magenta;
+  --clr-test-button-background-color: purple;
+  --clr-test-button-text-color: white;
+  --clr-test-border-color: magenta;
+}
+
 .clr-example {
   margin-top: 1rem;
 

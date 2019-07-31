@@ -4,7 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export default interface IWindow {
-  cssVars: any;
-  __ClarityInternals: { polyfills: { cssVarsHasRun: boolean } };
+export function exists(obj: {}, ...args: string[]): boolean {
+  if (typeof obj === 'undefined') {
+    return false;
+  }
+
+  if (args.length < 1) {
+    return true;
+  }
+
+  return exists(obj[args.shift()], ...args);
 }

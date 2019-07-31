@@ -2,13 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/dev",
-    "baseUrl": "./",
     "module": "esnext",
-    "paths": {
-      "@clr/angular": ["../clr-angular"],
-      "@clr/icons": ["../clr-icons"],
-      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
-    }
+    "moduleResolution": "node",
+    "target": "es5"
   },
 
   "exclude": ["test.ts", "**/*.spec.ts"]

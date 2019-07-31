@@ -32,6 +32,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: () => import('./combobox/combobox.demo.module').then(m => m.ComboboxDemoModule),
   },
   {
+    path: 'custom-props',
+    loadChildren: () => import('./custom-props/custom-props.demo.module').then(m => m.CustomPropsDemoModule),
+  },
+  {
     path: 'datagrid',
     loadChildren: () => import('./datagrid/datagrid.demo.module').then(m => m.DatagridDemoModule),
   },

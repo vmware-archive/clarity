@@ -9,8 +9,12 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "custom-webpack.config.js",
+              "mergeStrategies": { "externals": "replace" }
+            },
             "outputPath": "dist/dev",
             "index": "src/dev/src/index.html",
             "main": "src/dev/src/main.ts",
@@ -29,7 +33,10 @@
               }
             ],
             "styles": ["src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
-            "scripts": ["node_modules/@webcomponents/custom-elements/custom-elements.min.js"]
+            "scripts": [
+              "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -60,8 +67,11 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js"
+            },
             "browserTarget": "dev:build"
           },
           "configurations": {
@@ -249,7 +259,6 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "src/clr-base/tsconfig.base.json",
             "project": "src/clr-base/ng-package.json"
           }
         },

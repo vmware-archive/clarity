@@ -42,8 +42,7 @@
   width: 100%;
   text-transform: none;
 
-  &:hover,
-  &.clr-focus {
+  &:hover {
     background-color: $clr-dropdown-bg-hover-color;
     color: $clr-dropdown-item-text-color;
     text-decoration: none;
@@ -59,7 +58,7 @@
   }
 
   &:focus {
-    outline: 0;
+    z-index: inherit;
   }
 
   &.disabled,
@@ -72,8 +71,7 @@
       background: none;
     }
 
-    &:active,
-    &.clr-focus {
+    &:active {
       background: none;
       box-shadow: none;
     }

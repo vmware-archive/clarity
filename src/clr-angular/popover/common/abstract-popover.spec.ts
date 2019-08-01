@@ -11,7 +11,6 @@ import { By } from '@angular/platform-browser';
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { ESC } from '../../utils/key-codes/key-codes';
 
 import { AbstractPopover } from './abstract-popover';
 import { POPOVER_HOST_ANCHOR } from './popover-host-anchor.token';
@@ -32,8 +31,7 @@ describe('Abstract Popover', function() {
     // IE doesn't support KeyboardEvent as a constructor ¯\_(ツ)_/¯
     // @TODO Fix this for IE? Maybe.
     itIgnore(['ie'], 'closes the popover when ESC is pressed', () => {
-      const event: KeyboardEvent = new KeyboardEvent('keydown');
-      Object.defineProperties(event, { keyCode: { get: () => ESC } });
+      const event: KeyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
 
       document.dispatchEvent(event);
 

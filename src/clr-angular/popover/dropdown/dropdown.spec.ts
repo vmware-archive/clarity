@@ -235,7 +235,7 @@ export default function(): void {
             <clr-dropdown-menu *clrIfOpen>
                 <label class="dropdown-header">Header</label>
                 <a href="javascript://" clrDropdownItem>Item</a>
-                <a href="javascript://" class="disabled" clrDropdownItem>Disabled Item</a>
+                <a href="javascript://" clrDisabled="true" clrDropdownItem>Disabled Item</a>
                 <clr-dropdown>
                     <button clrDropdownTrigger class="nested">Nested</button>
                     <clr-dropdown-menu *clrIfOpen>

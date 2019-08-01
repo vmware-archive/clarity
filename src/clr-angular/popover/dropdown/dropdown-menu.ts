@@ -57,6 +57,7 @@ export class ClrDropdownMenu extends AbstractPopover implements AfterContentInit
       this.popoverPoint = Point.LEFT_TOP;
     }
     this.popoverOptions.allowMultipleOpen = true;
+    this.popoverOptions.ignoreGlobalESCListener = true;
     this.closeOnOutsideClick = true;
     this.focusHandler = focusHandler;
   }

@@ -6,20 +6,20 @@
 import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
-<clr-dropdown [clrCloseMenuOnItemClick]="false">
-    <button type="button" clrDropdownTrigger aria-label="dropdown demo button">
-        <clr-icon shape="error" class="is-error" size="24"></clr-icon>
-        <clr-icon shape="caret down"></clr-icon>
-    </button>
-    <clr-dropdown-menu *clrIfOpen>
-        <label class="dropdown-header">Dropdown header</label>
-        <button type="button" clrDropdownItem>Action 1</button>
-        <button type="button" clrDropdownItem>Action 2</button>
-        <div class="dropdown-divider" role="separator"></div>
-        <button type="button" clrDropdownItem>Link 1</button>
-        <button type="button" clrDropdownItem>Link 2</button>
-    </clr-dropdown-menu>
-</clr-dropdown>
+    <clr-dropdown [clrCloseMenuOnItemClick]="false">
+        <button clrDropdownTrigger aria-label="Dropdown demo button">
+            <clr-icon shape="error" class="is-error" size="24"></clr-icon>
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen>
+            <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+            <div aria-label="Dropdown header Action 1" clrDropdownItem>Action 1</div>
+            <div aria-label="Dropdown header Action 2"  clrDropdownItem>Action 2</div>
+            <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+            <div clrDropdownItem>Link 1</div>
+            <div clrDropdownItem>Link 2</div>
+        </clr-dropdown-menu>
+    </clr-dropdown>
 `;
 
 @Component({

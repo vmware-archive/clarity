@@ -76,14 +76,6 @@ export default function(): void {
         expect(spy).toHaveBeenCalled();
       });
 
-      it('updates aria-activedescendant on the container when focusing a new item', function(this: TestContext) {
-        const container = setupContainer(this);
-        const item = new MockFocusableItem('hello');
-        this.focusService.moveTo(item);
-        expect(container.getAttribute('aria-activedescendant')).toBe('hello');
-        expect(this.focusService.current).toBe(item);
-      });
-
       it('calls the focus() method of the new focused item', function(this: TestContext) {
         setupContainer(this);
         const item = new MockFocusableItem('');
@@ -114,20 +106,15 @@ export default function(): void {
         }
       });
 
-      it('skips disabled items', function(this: TestContext) {
+      it('focuses on disabled item in navigation', function(this: TestContext) {
         const current = new MockFocusableItem('1');
         const nope = new MockFocusableItem('2');
         nope.disabled = true;
-        const nopeAgain = new MockFocusableItem('3');
-        nopeAgain.disabled = true;
-        const target = new MockFocusableItem('4');
         current.down = nope;
-        nope.down = nopeAgain;
-        nopeAgain.down = target;
         const spy = spyOn(this.focusService, 'moveTo');
         this.focusService.reset(current);
         this.focusService.move(ArrowKeyDirection.DOWN);
-        expect(spy).toHaveBeenCalledWith(target);
+        expect(spy).toHaveBeenCalledWith(nope);
       });
 
       it('does not move focus to another item if current is undefined', function(this: TestContext) {
@@ -154,13 +141,13 @@ export default function(): void {
         const el = document.createElement('div');
         this.focusService.listenToArrowKeys(el);
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
-        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.UP);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.UP, jasmine.any(KeyboardEvent));
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
-        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.DOWN);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.DOWN, jasmine.any(KeyboardEvent));
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
-        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.LEFT);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.LEFT, jasmine.any(KeyboardEvent));
         el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
-        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT);
+        expect(spy).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT, jasmine.any(KeyboardEvent));
       });
 
       it('makes a given container focusable', function(this: TestContext) {

@@ -13,24 +13,24 @@ const HTML_EXAMPLE = `
     </button>
     <div class="dropdown-menu">
         <h4 class="dropdown-header">Dropdown header</h4>
-        <button type="button" class="dropdown-item active">Action</button>
-        <button type="button" class="dropdown-item disabled">Disabled Link</button>
+        <div class="dropdown-item active">Action</div>
+        <div class="dropdown-item disabled">Disabled Link</div>
         <div class="dropdown-divider" role="separator"></div>
-        <button type="button" class="dropdown-item">Lorem.</button>
+        <button class="dropdown-item">Lorem.</button>
         <div class="dropdown open right-bottom">
             <button class="dropdown-item active expandable">Lorem ipsum.</button>
             <div class="dropdown-menu">
-                <button type="button" class="dropdown-item">Foo.</button>
+                <div class="dropdown-item">Foo.</div>
                 <div class="dropdown open right-top">
                     <button class="dropdown-item active expandable">Bar.</button>
                     <div class="dropdown-menu">
-                        <button type="button" class="dropdown-item">Baz.</button>
+                        <div class="dropdown-item">Baz.</div>
                     </div>
                 </div>
-                <button type="button" class="dropdown-item">Foo 2.</button>
+                <div class="dropdown-item">Foo 2.</div>
             </div>
         </div>
-        <button type="button" class="dropdown-item">Ipsum.</button>
+        <button class="dropdown-item">Ipsum.</button>
     </div>
 </div>
 `;

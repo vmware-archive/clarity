@@ -7,17 +7,17 @@ import { Component } from '@angular/core';
 
 const EXAMPLE = `
 <div class="dropdown open">
-    <button type="button" class="dropdown-toggle btn btn-link">
+    <button class="dropdown-toggle btn btn-link">
         Dropdown Toggle
         <clr-icon shape="caret down"></clr-icon>
     </button>
     <div class="dropdown-menu">
         <h4 class="dropdown-header">Dropdown header</h4>
-        <button type="button" class="dropdown-item">Lorem.</button>
-        <button type="button" class="dropdown-item">Lorem ipsum.</button>
-        <button type="button" class="dropdown-item">Lorem ipsum dolor.</button>
-        <div class="dropdown-divider" role="separator"></div>
-        <button type="button" class="dropdown-item">Link</button>
+        <div aria-label="Dropdown header Lorem" class="dropdown-item">Lorem.</div>
+        <div aria-label="Dropdown header Lorem ipsum" class="dropdown-item">Lorem ipsum.</div>
+        <div aria-label="Dropdown header Lorem ipsum dolor" class="dropdown-item">Lorem ipsum dolor.</div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">Link</div>
     </div>
 </div>
 `;

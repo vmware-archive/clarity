@@ -133,22 +133,10 @@ export default function(): void {
         expect(spy).toHaveBeenCalledWith(this.container);
       });
 
-      it('sets a tabindex of -1 on the container', function(this: TestContext) {
+      it('sets a tabindex of 0 on the container', function(this: TestContext) {
         this.focusHandler.container = this.container;
-        expect(this.container.getAttribute('tabindex')).toBe('-1');
+        expect(this.container.getAttribute('tabindex')).toBe('0');
       });
-
-      it(
-        'focuses on the container when the dropdown becomes open',
-        fakeAsync(function(this: TestContext) {
-          this.focusHandler.container = this.container;
-          expect(document.activeElement).not.toBe(this.container);
-          this.ifOpenService.open = true;
-          // This specific focusing action is asynchronous so we have to tick
-          tick();
-          expect(document.activeElement).toBe(this.container);
-        })
-      );
 
       it('closes the dropdown when the container is blurred', function(this: TestContext) {
         this.focusHandler.container = this.container;
@@ -279,18 +267,12 @@ export default function(): void {
         document.body.removeChild(this.container);
       });
 
-      it('sets a tabindex of -1 on the trigger', function(this: TestContext) {
+      it('calls native elements focus() and blur when focused and blurred', function(this: TestContext) {
         this.focusHandler.trigger = this.trigger;
-        expect(this.trigger.getAttribute('tabindex')).toBe('-1');
-      });
-
-      it('toggles the .clr-focus class on the trigger when focused and blurred', function(this: TestContext) {
-        this.focusHandler.trigger = this.trigger;
-        expect(this.trigger.classList).not.toContain('clr-focus');
         this.focusHandler.focus();
-        expect(this.trigger.classList).toContain('clr-focus');
+        expect(document.activeElement).toBe(this.trigger);
         this.focusHandler.blur();
-        expect(this.trigger.classList).not.toContain('clr-focus');
+        expect(document.activeElement).not.toBe(this.trigger);
       });
 
       it('does not register the container to the FocusService', function(this: TestContext) {

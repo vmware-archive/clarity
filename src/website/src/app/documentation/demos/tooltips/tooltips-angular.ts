@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 const EXAMPLE1 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 1"></clr-icon>
     <clr-tooltip-content clrPosition="top-right" clrSize="xs" *clrIfOpen>
         <span>Lorem</span>
     </clr-tooltip-content>
@@ -16,7 +16,7 @@ const EXAMPLE1 = `
 
 const EXAMPLE2 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 2"></clr-icon>
     <clr-tooltip-content clrPosition="top-left" clrSize="sm" *clrIfOpen>
         <span>Lorem ipsum</span>
     </clr-tooltip-content>
@@ -25,7 +25,7 @@ const EXAMPLE2 = `
 
 const EXAMPLE3 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 3"></clr-icon>
     <clr-tooltip-content clrPosition="bottom-right" clrSize="md" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -34,7 +34,7 @@ const EXAMPLE3 = `
 
 const EXAMPLE4 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 4"></clr-icon>
     <clr-tooltip-content clrPosition="bottom-left" clrSize="lg" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -43,7 +43,7 @@ const EXAMPLE4 = `
 
 const EXAMPLE5 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 5"></clr-icon>
     <clr-tooltip-content *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -52,7 +52,7 @@ const EXAMPLE5 = `
 
 const EXAMPLE6 = `
 <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-circle" size="24"></clr-icon>
+    <clr-icon clrTooltipTrigger shape="info-circle" size="24" clrTooltipLabel="Uniq tooltip 6"></clr-icon>
     <clr-tooltip-content clrPosition="left" clrSize="sm" *clrIfOpen>
         <span>Lorem ipsum sit</span>
     </clr-tooltip-content>

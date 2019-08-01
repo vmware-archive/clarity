@@ -1,28 +1,14 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component } from '@angular/core';
-import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrTooltip } from './tooltip';
-
-describe('Tooltip component', function() {
-  addHelpers();
-
-  describe('Simple', function() {
-    let context: TestContext<ClrTooltip, SimpleTest>;
-
-    beforeEach(function() {
-      context = this.create(ClrTooltip, SimpleTest);
-    });
-
-    it('projects anchor content', function() {
-      expect(context.clarityElement.textContent).toMatch(/Hello/);
-    });
-  });
-});
+import { spec, TestContext } from '../../utils/testing/helpers.spec';
+import { TooltipIdService } from './providers/tooltip-id.service';
+import { ClrTooltipModule } from '@clr/angular';
 
 @Component({
   template: `
@@ -35,3 +21,28 @@ describe('Tooltip component', function() {
     `,
 })
 class SimpleTest {}
+
+interface TooltipContext extends TestContext<ClrTooltip, SimpleTest> {
+  tooltipIdService: TooltipIdService;
+}
+
+export default function(): void {
+  describe('Tooltip component', function() {
+    spec(ClrTooltip, SimpleTest, ClrTooltipModule, { providers: [TooltipIdService] });
+    beforeEach(function(this: TooltipContext) {
+      this.tooltipIdService = this.getClarityProvider(TooltipIdService);
+    });
+
+    describe('TypeScript API', function(this: TooltipContext) {
+      it('provides a TooltipIdService', function(this: TooltipContext) {
+        expect(this.tooltipIdService).toBeDefined();
+      });
+    });
+
+    describe('Simple', function(this: TooltipContext) {
+      it('projects anchor content', function() {
+        expect(this.clarityElement.textContent).toMatch(/Hello/);
+      });
+    });
+  });
+}

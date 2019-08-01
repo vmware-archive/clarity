@@ -1209,17 +1209,21 @@ export declare class ClrTooltip {
 }
 
 export declare class ClrTooltipContent extends AbstractPopover {
+    id: string;
     position: string;
     size: string;
-    constructor(injector: Injector, parentHost: ElementRef);
+    uniqueId: string;
+    constructor(injector: Injector, parentHost: ElementRef, uniqueId: string, tooltipIdService: TooltipIdService);
 }
 
 export declare class ClrTooltipModule {
 }
 
 export declare class ClrTooltipTrigger {
-    constructor(ifOpenService: IfOpenService);
+    ariaDescribedBy: any;
+    constructor(ifOpenService: IfOpenService, tooltipIdService: TooltipIdService);
     hideTooltip(): void;
+    ngOnDestroy(): void;
     showTooltip(): void;
 }
 

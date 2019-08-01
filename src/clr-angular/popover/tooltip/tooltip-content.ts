@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,6 +7,8 @@ import { Component, ElementRef, Inject, Injector, Input, Optional } from '@angul
 import { AbstractPopover } from '../common/abstract-popover';
 import { Point } from '../common/popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { TooltipIdService } from './providers/tooltip-id.service';
 
 const POSITIONS: string[] = ['bottom-left', 'bottom-right', 'top-left', 'top-right', 'right', 'left'];
 
@@ -19,25 +21,31 @@ const SIZES: string[] = ['xs', 'sm', 'md', 'lg'];
     `,
   host: {
     '[class.tooltip-content]': 'true',
-    // I'm giving up on animation, they did not work before and will not work now.
-    // Too many conflicts with Clarity UI.
     '[style.opacity]': '1',
+    role: 'tooltip',
+    '[id]': 'tooltipId',
   },
+  providers: [UNIQUE_ID_PROVIDER],
 })
 export class ClrTooltipContent extends AbstractPopover {
   constructor(
     injector: Injector,
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
-    parentHost: ElementRef
+    parentHost: ElementRef,
+    @Inject(UNIQUE_ID) public tooltipId: string,
+    private tooltipIdService: TooltipIdService
   ) {
+    super(injector, parentHost);
+
     if (!parentHost) {
       throw new Error('clr-tooltip-content should only be used inside of a clr-tooltip');
     }
-    super(injector, parentHost);
+
     // Defaults
     this.position = 'right';
     this.size = 'sm';
+    this.tooltipIdService.setId(tooltipId);
   }
 
   private _position: string;

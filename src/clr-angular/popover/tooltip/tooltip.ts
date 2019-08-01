@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ElementRef } from '@angular/core';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
+import { TooltipIdService } from './providers/tooltip-id.service';
 
 @Component({
   selector: 'clr-tooltip',
@@ -15,6 +16,6 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
   host: {
     '[class.tooltip]': 'true',
   },
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }, TooltipIdService],
 })
 export class ClrTooltip {}

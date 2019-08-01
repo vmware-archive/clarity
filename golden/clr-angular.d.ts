@@ -65,14 +65,14 @@ export declare class ClrAccordionDescription {
 export declare class ClrAccordionPanel implements OnInit, OnChanges {
     readonly AccordionStatus: typeof AccordionStatus;
     accordionDescription: QueryList<ClrAccordionDescription>;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     disabled: boolean;
     id: string;
     isAccordion: boolean;
     panel: Observable<AccordionPanelModel>;
     panelOpen: boolean;
     panelOpenChange: EventEmitter<boolean>;
-    constructor(commonStrings: ClrCommonStrings, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
+    constructor(commonStrings: ClrCommonStringsService, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
     collapsePanelOnAnimationDone(panel: AccordionPanelModel): void;
     getAccordionContentId(id: string): string;
     getAccordionHeaderId(id: string): string;
@@ -93,13 +93,13 @@ export declare class ClrAlert {
     alertType: string;
     cdr: ChangeDetectorRef;
     closable: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     iconService: AlertIconAndTypesService;
     isAppLevel: boolean;
     readonly isHidden: boolean;
     isSmall: boolean;
     multiAlertService: MultiAlertService;
-    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStrings);
+    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
     close(): void;
     open(): void;
 }
@@ -128,13 +128,13 @@ export declare class ClrAlerts implements AfterContentInit, OnDestroy {
 }
 
 export declare class ClrAlertsPager implements OnInit, OnDestroy {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     currentAlert: ClrAlert;
     currentAlertChange: EventEmitter<ClrAlert>;
     currentAlertIndex: number;
     currentAlertIndexChange: EventEmitter<number>;
     multiAlertService: MultiAlertService;
-    constructor(multiAlertService: MultiAlertService, commonStrings: ClrCommonStrings);
+    constructor(multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
     ngOnDestroy(): void;
     ngOnInit(): void;
     pageDown(): void;
@@ -162,13 +162,13 @@ export declare class ClrButtonGroup {
     anchorPoint: Point;
     buttonGroupNewService: ButtonInGroupService;
     buttons: QueryList<ClrButton>;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     inlineButtons: ClrButton[];
     menuButtons: ClrButton[];
     menuPosition: string;
     openMenu: boolean;
     popoverPoint: Point;
-    constructor(buttonGroupNewService: ButtonInGroupService, elementRef: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(buttonGroupNewService: ButtonInGroupService, elementRef: ElementRef, commonStrings: ClrCommonStringsService);
     getMoveIndex(buttonToMove: ClrButton): number;
     initializeButtons(): void;
     ngAfterContentInit(): void;
@@ -228,7 +228,7 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
 export declare class ClrCommonFormsModule {
 }
 
-export declare abstract class ClrCommonStrings {
+export interface ClrCommonStrings {
     allColumnsSelected?: string;
     close?: string;
     collapse?: string;
@@ -269,6 +269,14 @@ export declare abstract class ClrCommonStrings {
     warning?: string;
 }
 
+export declare class ClrCommonStringsService {
+    readonly keys: Readonly<ClrCommonStrings>;
+    localize(overrides: ClrCommonStrings): void;
+    parse(source: string, tokens?: {
+        [key: string]: string;
+    }): string;
+}
+
 export declare class ClrControlError {
     controlIdService: ControlIdService;
     constructor(controlIdService: ControlIdService);
@@ -290,7 +298,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     clrDgSingleActionableAriaLabel: string;
     clrDgSingleSelectionAriaLabel: string;
     columns: QueryList<ClrDatagridColumn<T>>;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     datagridTable: ElementRef;
     expandableRows: ExpandableRowsCount;
     items: Items<T>;
@@ -307,7 +315,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, page: Page, commonStrings: ClrCommonStrings);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, el: ElementRef, page: Page, commonStrings: ClrCommonStringsService);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -320,12 +328,12 @@ export declare class ClrDatagridActionBar {
 
 export declare class ClrDatagridActionOverflow implements OnDestroy {
     anchorPoint: Point;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     open: boolean;
     openChanged: EventEmitter<boolean>;
     popoverId: string;
     popoverPoint: Point;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStrings, elementRef: ElementRef, platformId: Object, zone: NgZone);
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStringsService, elementRef: ElementRef, platformId: Object, zone: NgZone);
     close(event: MouseEvent): void;
     ngOnDestroy(): void;
     toggle(event: any): void;
@@ -342,7 +350,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
     colType: 'string' | 'number';
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     customFilter: boolean;
     field: string;
     filterValue: string | [number, number];
@@ -356,7 +364,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sorted: boolean;
     sortedChange: EventEmitter<boolean>;
     updateFilterValue: string | [number, number];
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStrings);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStringsService);
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;
@@ -365,14 +373,14 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
 export declare class ClrDatagridColumnToggle {
     anchorPoint: Point;
     columnSwitchId: string;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     customToggleButton: ClrDatagridColumnToggleButton;
     customToggleTitle: ClrDatagridColumnToggleTitle;
     readonly hasOnlyOneVisibleColumn: boolean;
     readonly hideableColumnStates: ColumnState[];
     open: boolean;
     popoverPoint: Point;
-    constructor(commonStrings: ClrCommonStrings, columnsService: ColumnsService, columnSwitchId: string, platformId: Object, zone: NgZone);
+    constructor(commonStrings: ClrCommonStringsService, columnsService: ColumnsService, columnSwitchId: string, platformId: Object, zone: NgZone);
     allColumnsSelected(): void;
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
@@ -387,13 +395,13 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     readonly active: boolean;
     anchor: ElementRef;
     anchorPoint: Point;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
     open: boolean;
     openChanged: EventEmitter<boolean>;
     popoverOptions: PopoverOptions;
     popoverPoint: Point;
-    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStrings, platformId: Object);
+    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStringsService, platformId: Object);
     toggle(): void;
 }
 
@@ -442,7 +450,7 @@ export interface ClrDatagridNumericFilterInterface<T> {
 
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     _pageSizeComponent: ClrDatagridPageSize;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     currentChanged: EventEmitter<number>;
     currentPage: number;
     currentPageInputRef: ElementRef;
@@ -453,7 +461,7 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     page: Page;
     pageSize: number;
     totalItems: number;
-    constructor(page: Page, commonStrings: ClrCommonStrings);
+    constructor(page: Page, commonStrings: ClrCommonStringsService);
     next(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -473,7 +481,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _stickyCells: ViewContainerRef;
     readonly _view: any;
     checkboxId: string;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
     expand: DatagridIfExpandService;
@@ -490,7 +498,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
-    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService);
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
@@ -542,13 +550,13 @@ export declare class ClrDataModule {
 export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     actionButton: ElementRef;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     control: NgControl;
     focus: boolean;
     invalid: boolean;
     readonly isEnabled: boolean;
     label: ClrLabel;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStrings, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
+    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
     close(): void;
     controlClass(): string;
@@ -595,8 +603,8 @@ export declare class ClrDay {
 export declare class ClrDaypicker {
     readonly calendarMonth: string;
     readonly calendarYear: number;
-    commonStrings: ClrCommonStrings;
-    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStrings);
+    commonStrings: ClrCommonStringsService;
+    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService);
     changeToMonthView(): void;
     changeToYearView(): void;
     currentMonth(): void;
@@ -732,12 +740,12 @@ export declare class ClrFormsModule {
 }
 
 export declare class ClrHeader implements OnDestroy {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     isNavLevel1OnPage: boolean;
     isNavLevel2OnPage: boolean;
     openNavLevel: number;
     responsiveNavCodes: typeof ResponsiveNavCodes;
-    constructor(responsiveNavService: ResponsiveNavigationService, commonStrings: ClrCommonStrings);
+    constructor(responsiveNavService: ResponsiveNavigationService, commonStrings: ClrCommonStringsService);
     closeOpenNav(): void;
     initializeNavTriggers(navList: number[]): void;
     ngOnDestroy(): void;
@@ -869,7 +877,7 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     altClose: EventEmitter<boolean>;
     bypassScrollService: boolean;
     closable: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     focusTrap: FocusTrapDirective;
     modalId: string;
     size: string;
@@ -877,7 +885,7 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     skipAnimation: string;
     staticBackdrop: boolean;
     stopClose: boolean;
-    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStrings, modalId: string);
+    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStringsService, modalId: string);
     close(): void;
     fadeDone(e: AnimationEvent): void;
     ngOnChanges(changes: {
@@ -926,14 +934,14 @@ export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer
 export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     _dynamic: boolean;
     clrToggle: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     control: NgControl;
     focus: boolean;
     focusService: FocusService;
     invalid: boolean;
     label: ClrLabel;
     show: boolean;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, ngControlService: NgControlService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStrings);
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, ngControlService: NgControlService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -1042,17 +1050,17 @@ export declare class ClrSelectModule {
 }
 
 export declare class ClrSignpost {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     customTrigger: ClrSignpostTrigger;
     useCustomTrigger: boolean;
-    constructor(commonStrings: ClrCommonStrings);
+    constructor(commonStrings: ClrCommonStringsService);
 }
 
 export declare class ClrSignpostContent extends AbstractPopover {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     position: string;
     signpostContentId: string;
-    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStrings, signpostContentId: string, signpostIdService: SignpostIdService);
+    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService);
     close(): void;
 }
 
@@ -1062,8 +1070,8 @@ export declare class ClrSignpostModule {
 export declare class ClrSignpostTrigger implements OnDestroy {
     ariaControl: string;
     ariaExpanded: boolean;
-    commonStrings: ClrCommonStrings;
-    constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStrings, signpostIdService: SignpostIdService, platformId: Object);
+    commonStrings: ClrCommonStringsService;
+    constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, platformId: Object);
     ngOnDestroy(): void;
     onSignpostTriggerClick(event: Event): void;
 }
@@ -1090,7 +1098,7 @@ export declare class ClrStackBlock implements OnInit {
     readonly ariaExpanded: string;
     readonly caretDirection: string;
     readonly caretTitle: string;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     expandable: boolean;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
@@ -1100,7 +1108,7 @@ export declare class ClrStackBlock implements OnInit {
     readonly role: string;
     setChangedValue: boolean;
     readonly tabIndex: string;
-    constructor(parent: ClrStackBlock, commonStrings: ClrCommonStrings);
+    constructor(parent: ClrStackBlock, commonStrings: ClrCommonStringsService);
     addChild(): void;
     ngOnInit(): void;
     toggleExpand(): void;
@@ -1161,12 +1169,12 @@ export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnD
 }
 
 export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     readonly formGroup: import("@angular/forms").FormGroup;
     headerButton: ElementRef;
     id: string;
     isAccordion: boolean;
-    constructor(platformId: Object, commonStrings: ClrCommonStrings, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    constructor(platformId: Object, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -1210,7 +1218,7 @@ export declare class ClrTabOverflowContent extends AbstractPopover {
 
 export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly activeTabInOverflow: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
     readonly isVertical: boolean;
@@ -1219,7 +1227,7 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly tabLinkDirectives: ClrTabLink[];
     tabsId: number;
     tabsService: TabsService;
-    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStrings);
+    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleOverflow(event: any): void;
@@ -1275,7 +1283,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     STATES: typeof ClrSelectedState;
     _model: TreeNodeModel<T>;
     readonly ariaSelected: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     expandService: IfExpandService;
     expandable: boolean | undefined;
     expanded: boolean;
@@ -1286,7 +1294,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     selected: ClrSelectedState | boolean;
     selectedChange: EventEmitter<ClrSelectedState>;
     readonly treeNodeRole: string;
-    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStrings, injector: Injector);
+    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, injector: Injector);
     isExpandable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -1298,21 +1306,21 @@ export declare class ClrTreeViewModule {
 export declare class ClrVerticalNav implements OnDestroy {
     collapsed: boolean;
     collapsible: boolean;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     readonly hasIcons: boolean;
     readonly hasNavGroups: boolean;
-    constructor(_navService: VerticalNavService, _navIconService: VerticalNavIconService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, commonStrings: ClrCommonStrings);
+    constructor(_navService: VerticalNavService, _navIconService: VerticalNavIconService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, commonStrings: ClrCommonStringsService);
     ngOnDestroy(): void;
     toggleByButton(): void;
 }
 
 export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     expandAnimationState: string;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     userExpandedInput: boolean;
-    constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStrings);
+    constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStringsService);
     collapseGroup(): void;
     expandAnimationDone($event: AnimationEvent): void;
     expandGroup(): void;
@@ -1505,9 +1513,9 @@ export declare class ClrWizardStepnavItem {
 
 export declare class ClrYearpicker implements AfterViewInit {
     readonly calendarYear: number;
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;
-    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStrings);
+    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService);
     changeYear(year: number): void;
     currentDecade(): void;
     getTabIndex(year: number): number;
@@ -1524,7 +1532,7 @@ export declare const CONDITIONAL_DIRECTIVES: Type<any>[];
 export declare const CUSTOM_BUTTON_TYPES: any;
 
 export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>> implements CustomFilter, AfterViewInit {
-    commonStrings: ClrCommonStrings;
+    commonStrings: ClrCommonStringsService;
     customNumericFilter: ClrDatagridNumericFilterInterface<T> | RegisteredFilter<T, DatagridNumericFilterImpl<T>>;
     filterContainer: ClrDatagridFilter<T>;
     filterValueChange: EventEmitter<{}>;
@@ -1533,7 +1541,7 @@ export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegist
     low: number | string;
     open: boolean;
     value: [number, number];
-    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStrings);
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStringsService);
     close(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({ selector: 'clr-daypicker', templateUrl: './daypicker.html', host: { '[class.daypicker]': 'true' } })
 export class ClrDaypicker {
@@ -16,7 +16,7 @@ export class ClrDaypicker {
     private _viewManagerService: ViewManagerService,
     private _dateNavigationService: DateNavigationService,
     private _localeHelperService: LocaleHelperService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   /**

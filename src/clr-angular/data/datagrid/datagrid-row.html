@@ -34,7 +34,7 @@
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
              class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
           <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)" [id]="checkboxId"
-                 [attr.aria-label]="commonStrings.select">
+                 [attr.aria-label]="commonStrings.keys.select">
         </div>
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
              class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
@@ -44,7 +44,7 @@
             cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
             <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
                    [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
-                   [attr.aria-label]="commonStrings.select">
+                   [attr.aria-label]="commonStrings.keys.select">
         </div>
         <div *ngIf="rowActionService.hasActionableRow"
              class="datagrid-row-actions datagrid-fixed-column datagrid-cell" role="gridcell">
@@ -57,9 +57,9 @@
               <clr-icon shape="caret"
                         class="datagrid-expandable-caret-icon"
                         [attr.dir]="expand.expanded ? 'down' : 'right'"
-                        [attr.title]="expand.expanded ? commonStrings.collapse : commonStrings.expand"></clr-icon>
+                        [attr.title]="expand.expanded ? commonStrings.keys.collapse : commonStrings.keys.expand"></clr-icon>
             </button>
-            <clr-spinner *ngIf="expand.loading" clrSmall>{{ commonStrings.loading }}</clr-spinner>
+            <clr-spinner *ngIf="expand.loading" clrSmall>{{ commonStrings.keys.loading }}</clr-spinner>
           </ng-container>
         </div>
         <ng-container #scrollableCells></ng-container>

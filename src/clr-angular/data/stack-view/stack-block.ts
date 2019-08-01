@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-stack-block',
@@ -84,7 +84,7 @@ export class ClrStackBlock implements OnInit {
     @SkipSelf()
     @Optional()
     private parent: ClrStackBlock,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     if (parent) {
       parent.addChild();
@@ -113,7 +113,7 @@ export class ClrStackBlock implements OnInit {
   }
 
   get caretTitle(): string {
-    return this.expanded ? this.commonStrings.collapse : this.commonStrings.expand;
+    return this.expanded ? this.commonStrings.keys.collapse : this.commonStrings.keys.expand;
   }
 
   get role(): string {

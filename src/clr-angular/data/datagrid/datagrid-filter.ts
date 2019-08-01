@@ -12,7 +12,7 @@ import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
 
 /**
@@ -40,7 +40,7 @@ import { isPlatformBrowser } from '@angular/common';
                 <!-- FIXME: this whole filter part needs a final design before we can try to have a cleaner DOM -->
                 <div class="datagrid-filter-close-wrapper">
                     <button type="button" class="close" (click)="open = false">
-                        <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+                        <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
                     </button>
                 </div>
     
@@ -53,7 +53,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
   implements CustomFilter {
   constructor(
     _filters: FiltersProvider<T>,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     super(_filters);

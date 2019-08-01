@@ -19,7 +19,7 @@ import { tap, filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { StepperService } from './providers/stepper.service';
 import { stepAnimation } from '../utils/animation';
 import { triggerAllFormControlValidation } from '../../utils/forms/validation';
@@ -56,7 +56,7 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     @Optional() private formGroupName: FormGroupName,
     @Optional() private ngModelGroup: NgModelGroup,
     private stepperService: StepperService,

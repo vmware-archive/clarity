@@ -13,7 +13,7 @@ import { FiltersProvider, RegisteredFilter } from '../../providers/filters';
 import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
 import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
-import { ClrCommonStrings } from '../../../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-dg-numeric-filter',
@@ -27,18 +27,22 @@ import { ClrCommonStrings } from '../../../../utils/i18n/common-strings.interfac
                 mid-change detection when the input is destroyed.
             -->
             <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.minValue" 
-                [attr.aria-label]="commonStrings.minValue" />
+                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.keys.minValue" 
+                [attr.aria-label]="commonStrings.keys.minValue" />
                 <span class="datagrid-filter-input-spacer"></span>
             <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.maxValue"
-                [attr.aria-label]="commonStrings.maxValue" />
+                (keyup.enter)="close()" (keyup.escape)="close()" [placeholder]="commonStrings.keys.maxValue"
+                [attr.aria-label]="commonStrings.keys.maxValue" />
         </clr-dg-filter>
     `,
 })
 export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>>
   implements CustomFilter, AfterViewInit {
-  constructor(filters: FiltersProvider<T>, private domAdapter: DomAdapter, public commonStrings: ClrCommonStrings) {
+  constructor(
+    filters: FiltersProvider<T>,
+    private domAdapter: DomAdapter,
+    public commonStrings: ClrCommonStringsService
+  ) {
     super(filters);
   }
 

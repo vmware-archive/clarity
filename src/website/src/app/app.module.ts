@@ -6,7 +6,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ClarityModule, ClrCommonStrings } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { DocumentationModule } from './documentation/documentation.module';
-import { ClrCommonStringsService } from '../../../../src/clr-angular/utils/i18n/common-strings.service';
 import { UtilsModule } from './utils/utils.module';
 import { SkipLinkComponent } from './utils/skip-link.component';
 
@@ -28,7 +27,7 @@ import { SkipLinkComponent } from './utils/skip-link.component';
     UtilsModule,
     AppRoutingModule,
   ],
-  providers: [Title, { provide: ClrCommonStrings, useClass: ClrCommonStringsService }],
+  providers: [Title],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

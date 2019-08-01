@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { VerticalNavGroupRegistrationService } from './providers/vertical-nav-group-registration.service';
 import { VerticalNavIconService } from './providers/vertical-nav-icon.service';
 import { VerticalNavService } from './providers/vertical-nav.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-vertical-nav',
@@ -59,7 +59,7 @@ export class ClrVerticalNav implements OnDestroy {
     private _navService: VerticalNavService,
     private _navIconService: VerticalNavIconService,
     private _navGroupRegistrationService: VerticalNavGroupRegistrationService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     this._sub = this._navService.collapsedChanged.subscribe(value => {
       this._collapsedChanged.emit(value);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { ClrAlert } from './alert';
 import { MultiAlertService } from './providers/multi-alert.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-alerts-pager',
@@ -46,7 +46,7 @@ export class ClrAlertsPager implements OnInit, OnDestroy {
 
   @Output('clrCurrentAlertIndexChange') currentAlertIndexChange = new EventEmitter<number>();
 
-  constructor(public multiAlertService: MultiAlertService, public commonStrings: ClrCommonStrings) {}
+  constructor(public multiAlertService: MultiAlertService, public commonStrings: ClrCommonStringsService) {}
 
   ngOnInit() {
     this.multiAlertServiceChanges = this.multiAlertService.changes.subscribe(index => {

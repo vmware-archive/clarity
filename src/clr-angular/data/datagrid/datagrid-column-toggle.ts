@@ -10,7 +10,7 @@ import { Point } from '../../popover/common/popover';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
@@ -27,21 +27,21 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
       class="btn btn-sm btn-link column-toggle--action"
       [attr.aria-controls]="columnSwitchId"
       type="button">
-      <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
+      <clr-icon shape="view-columns" [attr.title]="commonStrings.keys.pickColumns"></clr-icon>
     </button>
     <div [id]="columnSwitchId" class="column-switch"
          *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
       <div class="switch-header">
-        <div class="clr-sr-only" tabindex="-1" #menuDescription>{{commonStrings.showColumnsMenuDescription}}</div>
-        <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.allColumnsSelected}}</div>
-        <ng-container *ngIf="!customToggleTitle">{{commonStrings.showColumns}}</ng-container>
+        <div class="clr-sr-only" tabindex="-1" #menuDescription>{{commonStrings.keys.showColumnsMenuDescription}}</div>
+        <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.keys.allColumnsSelected}}</div>
+        <ng-container *ngIf="!customToggleTitle">{{commonStrings.keys.showColumns}}</ng-container>
         <ng-content select="clr-dg-column-toggle-title"></ng-content>
         <button
           class="btn btn-sm btn-link toggle-switch-close-button"
           (click)="toggleSwitchPanel()"
-          [attr.aria-label]="commonStrings.close"
+          [attr.aria-label]="commonStrings.keys.close"
           type="button">
-          <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+          <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
         </button>
       </div>
       <ul class="switch-content list-unstyled">
@@ -60,7 +60,7 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
       <div class="switch-footer">
         <ng-content select="clr-dg-column-toggle-button"></ng-content>
         <clr-dg-column-toggle-button *ngIf="!customToggleButton" (clrAllSelected)="allColumnsSelected()">
-          {{commonStrings.selectAll}}
+          {{commonStrings.keys.selectAll}}
         </clr-dg-column-toggle-button>
       </div>
     </div>
@@ -87,7 +87,7 @@ export class ClrDatagridColumnToggle {
   private allSelectedElement: ElementRef<HTMLElement>;
 
   constructor(
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private columnsService: ColumnsService,
     @Inject(UNIQUE_ID) public columnSwitchId: string,
     @Inject(PLATFORM_ID) private platformId: Object,

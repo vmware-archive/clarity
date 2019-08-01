@@ -1,6 +1,6 @@
 <ng-container *ngIf="panel | async; let panel">
   <div *ngIf="panel.status !== AccordionStatus.Inactive" aria-live="assertive" class="clr-sr-only">
-    <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.danger}}</ng-container>
+    <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.keys.danger}}</ng-container>
   </div>
 
   <div role="group" [ngClass]="getPanelStateClasses(panel)">
@@ -18,8 +18,8 @@
         #headerButton
       >
         <span class="clr-sr-only">
-          <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.danger}}</ng-container>
-          <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.success}}</ng-container>
+          <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.keys.danger}}</ng-container>
+          <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.keys.success}}</ng-container>
         </span>
         <span class="clr-accordion-status">
           <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>

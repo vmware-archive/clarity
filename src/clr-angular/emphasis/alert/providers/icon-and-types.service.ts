@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,11 +8,11 @@ import { Injectable } from '@angular/core';
 
 import { AlertInfoObject } from '../utils/alert-info-object';
 import { ALERT_TYPES } from '../utils/alert-types';
-import { ClrCommonStrings } from '../../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../../utils/i18n/common-strings.service';
 
 @Injectable()
 export class AlertIconAndTypesService {
-  constructor(private commonStrings: ClrCommonStrings) {}
+  constructor(private commonStrings: ClrCommonStringsService) {}
 
   private defaultIconShape = 'info-circle';
   private _alertIconShape = '';
@@ -52,22 +52,22 @@ export class AlertIconAndTypesService {
       case 'warning':
         returnObj.shape = 'exclamation-triangle';
         returnObj.cssClass = 'alert-warning';
-        returnObj.title = this.commonStrings.warning;
+        returnObj.title = this.commonStrings.keys.warning;
         break;
       case 'danger':
         returnObj.shape = 'exclamation-circle';
         returnObj.cssClass = 'alert-danger';
-        returnObj.title = this.commonStrings.danger;
+        returnObj.title = this.commonStrings.keys.danger;
         break;
       case 'success':
         returnObj.shape = 'check-circle';
         returnObj.cssClass = 'alert-success';
-        returnObj.title = this.commonStrings.success;
+        returnObj.title = this.commonStrings.keys.success;
         break;
       default:
         returnObj.shape = this.defaultIconShape;
         returnObj.cssClass = 'alert-info';
-        returnObj.title = this.commonStrings.info;
+        returnObj.title = this.commonStrings.keys.info;
         break;
     }
 

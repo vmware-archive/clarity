@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -92,14 +92,17 @@
   // background-color: $body-bg;
   // }
 
+  // NOTE: Clarity is not using this. We use tabindex to add focus outline
+  // on certain ARIA-widgets (such as dropdown) and don't want to remove the outline.
+
   // Suppress the focus outline on elements that cannot be accessed via keyboard.
   // This prevents an unwanted focus outline from appearing around elements that
   // might still respond to pointer events.
   //
   // Credit: https://github.com/suitcss/base
-  [tabindex='-1']:focus {
-    outline: none !important;
-  }
+  //[tabindex='-1']:focus {
+  //  outline: none !important;
+  //}
 
   // NOTE: All of the following taken care of in Clarity
 

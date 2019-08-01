@@ -24,10 +24,16 @@ export class BasicFocusableItem implements FocusableItem {
   disabled = false;
 
   focus() {
-    this.renderer.addClass(this.el.nativeElement, 'clr-focus');
+    if (isPlatformBrowser(this.platformId)) {
+      this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0');
+      this.el.nativeElement.focus();
+    }
   }
   blur() {
-    this.renderer.removeClass(this.el.nativeElement, 'clr-focus');
+    if (isPlatformBrowser(this.platformId)) {
+      this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '-1');
+      this.el.nativeElement.blur();
+    }
   }
 
   activate() {

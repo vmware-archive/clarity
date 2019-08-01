@@ -7,28 +7,28 @@ import { Component } from '@angular/core';
 
 const EXAMPLE = `
 <clr-dropdown>
-    <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+    <button class="btn btn-outline-primary" clrDropdownTrigger>
         Dropdown
         <clr-icon shape="caret down"></clr-icon>
     </button>
     <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
-        <label class="dropdown-header">Dropdown header</label>
-        <button type="button" clrDropdownItem>Action 1</button>
-        <button type="button" disabled clrDropdownItem>Disabled Action</button>
-        <div class="dropdown-divider" role="separator"></div>
+        <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+        <div aria-label="Dropdown header Action 1" clrDropdownItem>Action 1</div>
+        <div aria-label="Dropdown header Disabled Action" [clrDisabled]="true" clrDropdownItem>Disabled Action</div>
+        <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
         <clr-dropdown>
-            <button type="button" clrDropdownTrigger>Link 1</button>
+            <button clrDropdownTrigger>Link 1</button>
             <clr-dropdown-menu>
-                <button type="button" clrDropdownItem>Foo</button>
+                <button clrDropdownItem>Foo</button>
                 <clr-dropdown>
-                    <button type="button" clrDropdownTrigger>Bar</button>
+                    <button clrDropdownTrigger>Bar</button>
                     <clr-dropdown-menu clrPosition="left-top">
-                        <button type="button" clrDropdownItem>Baz</button>
+                        <button clrDropdownItem>Baz</button>
                     </clr-dropdown-menu>
                 </clr-dropdown>
             </clr-dropdown-menu>
         </clr-dropdown>
-        <button type="button" clrDropdownItem>Link 2</button>
+        <div clrDropdownItem>Link 2</div>
     </clr-dropdown-menu>
 </clr-dropdown>
 `;

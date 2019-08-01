@@ -180,7 +180,7 @@
 
         <div id="accessibility">
           <h2>Accessibility</h2>
-          <p>Clarity Angular component conforms to the following guidelines:</p>
+          <p>Clarity Angular component follows these guidelines:</p>
           <ul class="list">
             <li>A dropdown menu should have an element with the role <code class="clr-code">button</code> that opens the menu.</li>
             <li>The element with the <code class="clr-code">button</code> role should also have an <code class="clr-code">aria-expanded</code>
@@ -189,14 +189,19 @@
             <li>The items should be inside an element with the role <code class="clr-code">menu</code>, and have the role <code class="clr-code">menuitem</code>.</li>
             <li>If the menu uses headings, the heading should be used as an accessible description for each related item.</li>
             <li>A visual element with role <code class="clr-code">separator</code> may be used between groups of items within a menu. The separator is not focusable or interactive.</li>
+            <li>An element that is not a menu item inside the menu should have the <code class="clr-code">aria-hidden</code> attribute set to <code class="clr-code">true</code>.</li>
+            <li>A menu item should not use the <code class="clr-code">disabled</code> attribute so disabled items can be focusable
+              <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_disabled_controls" target="_blank">*</a>.</li>
           </ul>
+
+          <p>Clarity UI component does not come pre-baked with all the necessary ARIA attributes. The application developer should follow the above guidelines in their implementation.</p>
 
           <h4>Keyboard Interaction</h4>
 
           <table class="table table-vertical">
             <tbody>
               <tr>
-                <th>Enter, Space, Down Arrow on the menu trigger</th>
+                <th>Enter, Space, Down Arrow on the menu button</th>
                 <td>Opens the menu and focuses on the first item</td>
               </tr>
               <tr>
@@ -208,8 +213,16 @@
                 <td>Focus on the next item, or the first item if currently on the first one</td>
               </tr>
               <tr>
+                <th>Right Arrow on a menu item with submenu</th>
+                <td>Opens the submenu and focuses on the first item</td>
+              </tr>
+              <tr>
+                <th>Left Arrow on a submenu</th>
+                <td>Closes the submenu and focuses on its parent item</td>
+              </tr>
+              <tr>
                 <th>Esc</th>
-                <td>Closes the menu and focuses on the trigger</td>
+                <td>Closes the menu and focuses on the trigger (in the case of submenu the trigger is its parent item).</td>
               </tr>
             </tbody>
           </table>
@@ -354,6 +367,30 @@
                         only four classes are valid: bottom-left, bottom-right, top-left, and top-right.</td>
                 </tr>
                 </tbody>
+            </table>
+
+            <h6><code class="clr-code">clrDropdownItem</code> directive</h6>
+            <table class="table">
+              <thead>
+              <tr>
+                <th class="left">Input / Output</th>
+                <th class="left hidden-xs-down">Values</th>
+                <th class="left hidden-xs-down">Default</th>
+                <th class="left">Effect</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td class="left">
+                  <b>[clrDisabled]</b>
+                  <div class="hidden-sm-up">Type: Boolean</div>
+                  <div class="hidden-sm-up">Default: false</div>
+                </td>
+                <td class="left hidden-xs-down">Boolean</td>
+                <td class="left hidden-xs-down">false</td>
+                <td class="left">If true, the menu item will have disabled style and set the aria-disabled attribute to true.</td>
+              </tr>
+              </tbody>
             </table>
 
             <h4 id="example">Example</h4>

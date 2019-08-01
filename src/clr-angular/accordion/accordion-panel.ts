@@ -21,7 +21,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../utils/id-generator/id-generator.service';
-import { ClrCommonStrings } from '../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../utils/i18n/common-strings.service';
 import { AccordionService } from './providers/accordion.service';
 import { AccordionStatus } from './enums/accordion-status.enum';
 import { panelAnimation } from './utils/animation';
@@ -48,7 +48,7 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   isAccordion = true;
 
   constructor(
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private accordionService: AccordionService,
     private ifExpandService: IfExpandService,
     @Inject(UNIQUE_ID) public id: string

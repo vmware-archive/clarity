@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component, ContentChildren, ElementRef, HostListener, Input, QueryList 
 import { Point } from '../../popover/common/popover';
 import { CLR_MENU_POSITIONS } from '../../popover/dropdown/menu-positions';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 import { ClrButton } from './button';
 
@@ -25,7 +25,7 @@ export class ClrButtonGroup {
   constructor(
     public buttonGroupNewService: ButtonInGroupService,
     private elementRef: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   inlineButtons: ClrButton[] = [];

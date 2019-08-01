@@ -30,7 +30,7 @@ import { Sort } from './providers/sort';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-dg-column',
@@ -55,7 +55,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 
           <button 
             class="datagrid-column-title" 
-            [attr.aria-label]="commonStrings.sortColumn"
+            [attr.aria-label]="commonStrings.keys.sortColumn"
             *ngIf="sortable" 
             (click)="sort()" 
             type="button">
@@ -85,7 +85,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     private _sort: Sort<T>,
     filters: FiltersProvider<T>,
     private vcr: ViewContainerRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     super(filters);
     this._sortSubscription = _sort.change.subscribe(sort => {

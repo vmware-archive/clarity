@@ -13,7 +13,7 @@ import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { VerticalNavGroupRegistrationService } from './providers/vertical-nav-group-registration.service';
 import { VerticalNavGroupService } from './providers/vertical-nav-group.service';
 import { VerticalNavService } from './providers/vertical-nav.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 const EXPANDED_STATE: string = 'expanded';
 const COLLAPSED_STATE: string = 'collapsed';
@@ -37,7 +37,7 @@ export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
     private _navGroupRegistrationService: VerticalNavGroupRegistrationService,
     private _navGroupService: VerticalNavGroupService,
     private _navService: VerticalNavService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     this._navGroupRegistrationService.registerNavGroup();
 

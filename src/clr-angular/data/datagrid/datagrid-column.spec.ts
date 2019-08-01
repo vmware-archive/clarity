@@ -21,6 +21,7 @@ import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -323,7 +324,7 @@ export default function(): void {
         context.testComponent.comparator = new TestComparator();
         context.detectChanges();
         const title = context.clarityElement.querySelector('.datagrid-column-title');
-        expect(title.attributes['aria-label'].value).toBe(new ClrCommonStringsService().sortColumn);
+        expect(title.attributes['aria-label'].value).toBe(commonStringsDefault.sortColumn);
       });
 
       it('adds and removes the correct icon when sorting', function() {

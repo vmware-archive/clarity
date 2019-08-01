@@ -39,7 +39,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { SelectionType } from './enums/selection-type';
 import { ColumnsService } from './providers/columns.service';
 
@@ -75,7 +75,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private renderer: Renderer2,
     private el: ElementRef,
     private page: Page,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   /* reference to the enum so that template can access */
@@ -144,9 +144,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
 
   @Output('clrDgSingleSelectedChange') singleSelectedChanged = new EventEmitter<T>(false);
 
-  @Input() clrDgSingleSelectionAriaLabel: string = this.commonStrings.singleSelectionAriaLabel;
-  @Input() clrDgSingleActionableAriaLabel: string = this.commonStrings.singleActionableAriaLabel;
-  @Input() clrDetailExpandableAriaLabel: string = this.commonStrings.detailExpandableAriaLabel;
+  @Input() clrDgSingleSelectionAriaLabel: string = this.commonStrings.keys.singleSelectionAriaLabel;
+  @Input() clrDgSingleActionableAriaLabel: string = this.commonStrings.keys.singleActionableAriaLabel;
+  @Input() clrDetailExpandableAriaLabel: string = this.commonStrings.keys.detailExpandableAriaLabel;
 
   /**
    * @deprecated since 2.0, remove in 3.0

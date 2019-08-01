@@ -10,7 +10,7 @@ import { TestContext } from './helpers.spec';
 import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
 import { ColumnsService } from './providers/columns.service';
 import { fakeAsync, tick } from '@angular/core/testing';
-import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 
 export default function(): void {
   describe('Datagrid Column Toggle component', function() {
@@ -119,7 +119,7 @@ export default function(): void {
           tick();
           expect(
             context.clarityElement.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value
-          ).toBe(new ClrCommonStringsService().close);
+          ).toBe(commonStringsDefault.close);
         })
       );
 

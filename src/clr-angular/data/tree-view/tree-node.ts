@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { IfExpandService } from '../../utils/conditional/if-expanded.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 import { DeclarativeTreeNodeModel } from './models/declarative-tree-node.model';
@@ -59,7 +59,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     parent: ClrTreeNode<T>,
     public featuresService: TreeFeaturesService<T>,
     public expandService: IfExpandService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     injector: Injector
   ) {
     if (this.featuresService.recursion) {

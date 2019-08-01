@@ -20,7 +20,7 @@ import {
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
-import { ClrCommonStrings } from '../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
 
 @Component({
@@ -66,7 +66,7 @@ export class ClrModal implements OnChanges, OnDestroy {
 
   constructor(
     private _scrollingService: ScrollingService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     @Inject(UNIQUE_ID) public modalId: string
   ) {}
 

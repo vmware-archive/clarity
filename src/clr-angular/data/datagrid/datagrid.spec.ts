@@ -28,7 +28,7 @@ import { Sort } from './providers/sort';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { SelectionType } from './enums/selection-type';
 import { HIDDEN_COLUMN_CLASS } from './render/constants';
-import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 
 @Component({
   template: `
@@ -458,13 +458,13 @@ export default function(): void {
 
       it('should cretae default values for clrDgSingleSelectionAriaLabel, clrDgSingleActionableAriaLabel, clrDetailExpandableAriaLabel', function() {
         expect(context.clarityDirective.clrDgSingleSelectionAriaLabel).toBe(
-          new ClrCommonStringsService().singleSelectionAriaLabel
+          commonStringsDefault.singleSelectionAriaLabel
         );
         expect(context.clarityDirective.clrDgSingleActionableAriaLabel).toBe(
-          new ClrCommonStringsService().singleActionableAriaLabel
+          commonStringsDefault.singleActionableAriaLabel
         );
         expect(context.clarityDirective.clrDetailExpandableAriaLabel).toBe(
-          new ClrCommonStringsService().detailExpandableAriaLabel
+          commonStringsDefault.detailExpandableAriaLabel
         );
       });
 

@@ -18,7 +18,7 @@ import {
 import { Point } from '../../popover/common/popover';
 
 import { RowActionService } from './providers/row-action-service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
 
 let clrDgActionId = 0;
@@ -28,7 +28,7 @@ let clrDgActionId = 0;
   template: `
         <button (click)="toggle($event)" type="button" class="datagrid-action-toggle" #anchor role="button" 
                     aria-haspopup="true" [attr.aria-controls]="popoverId" [attr.aria-expanded]="open">
-            <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.rowActions"></clr-icon>
+            <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
         </button>
         <ng-template [(clrPopoverOld)]="open" [clrPopoverOldAnchor]="anchor" [clrPopoverOldAnchorPoint]="anchorPoint"
                      [clrPopoverOldPopoverPoint]="popoverPoint">
@@ -45,7 +45,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
 
   constructor(
     private rowActionService: RowActionService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private elementRef: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone

@@ -9,7 +9,7 @@ import { AbstractPopover } from '../common/abstract-popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { SIGNPOST_POSITIONS } from './signpost-positions';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { SignpostIdService } from './providers/signpost-id.service';
 
@@ -38,9 +38,9 @@ const POSITIONS: string[] = [
               <ng-content></ng-content>
           </div>
           <div class="signpost-content-header">
-              <button type="button" [attr.aria-label]="commonStrings.signpostClose" class="signpost-action close"
+              <button type="button" [attr.aria-label]="commonStrings.keys.signpostClose" class="signpost-action close"
                       (click)="close()" [attr.aria-controls]="signpostContentId">
-                  <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
               </button>
           </div>
       </div>
@@ -54,7 +54,7 @@ export class ClrSignpostContent extends AbstractPopover {
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
     parentHost: ElementRef,
-    commonStrings: ClrCommonStrings,
+    commonStrings: ClrCommonStringsService,
     @Inject(UNIQUE_ID) public signpostContentId: string,
     private signpostIdService: SignpostIdService
   ) {
@@ -69,7 +69,7 @@ export class ClrSignpostContent extends AbstractPopover {
     this.signpostIdService.setId(signpostContentId);
   }
 
-  commonStrings: ClrCommonStrings;
+  commonStrings: ClrCommonStringsService;
 
   /**********
    *

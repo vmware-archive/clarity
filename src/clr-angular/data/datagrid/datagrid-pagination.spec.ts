@@ -330,22 +330,22 @@ export default function(): void {
 
       it('expect buttons to have the correct aria-label from ClrCommonStringsService', function() {
         expect(context.clarityElement.querySelector('.pagination-first').attributes['aria-label'].value).toBe(
-          commonStrings.firstPage
+          commonStrings.keys.firstPage
         );
         expect(context.clarityElement.querySelector('.pagination-last').attributes['aria-label'].value).toBe(
-          commonStrings.lastPage
+          commonStrings.keys.lastPage
         );
         expect(context.clarityElement.querySelector('.pagination-previous').attributes['aria-label'].value).toBe(
-          commonStrings.previousPage
+          commonStrings.keys.previousPage
         );
         expect(context.clarityElement.querySelector('.pagination-next').attributes['aria-label'].value).toBe(
-          commonStrings.nextPage
+          commonStrings.keys.nextPage
         );
         expect(context.clarityElement.querySelector('.pagination-current').attributes['aria-label'].value).toBe(
-          commonStrings.currentPage
+          commonStrings.keys.currentPage
         );
         expect(context.clarityElement.querySelector('.pagination-list span').attributes['aria-label'].value).toBe(
-          commonStrings.totalPages
+          commonStrings.keys.totalPages
         );
       });
     });

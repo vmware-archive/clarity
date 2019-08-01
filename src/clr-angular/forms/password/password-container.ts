@@ -16,7 +16,7 @@ import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export const TOGGLE_SERVICE = new InjectionToken<BehaviorSubject<boolean>>(undefined);
 export function ToggleServiceFactory() {
@@ -41,7 +41,7 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
             type="button">
             <clr-icon
             [attr.shape]="show ? 'eye-hide' : 'eye'"
-            [attr.title]="show ? commonStrings.hide : commonStrings.show"></clr-icon>
+            [attr.title]="show ? commonStrings.keys.hide : commonStrings.keys.show"></clr-icon>
           </button>
         </div>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
@@ -93,7 +93,7 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
     public focusService: FocusService,
     private ngControlService: NgControlService,
     @Inject(TOGGLE_SERVICE) private toggleService: BehaviorSubject<boolean>,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     this.subscriptions.push(
       this.ifErrorService.statusChanges.subscribe(invalid => {

@@ -17,7 +17,7 @@ import {
 import { Subscription } from 'rxjs';
 import { Page } from './providers/page';
 import { ClrDatagridPageSize } from './datagrid-page-size';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-dg-pagination',
@@ -34,7 +34,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         class="pagination-first" 
         [disabled]="page.current <= 1" 
         (click)="page.current = 1"
-        [attr.aria-label]="commonStrings.firstPage"
+        [attr.aria-label]="commonStrings.keys.firstPage"
         >
         <clr-icon shape="step-forward-2 down"></clr-icon>
       </button>
@@ -43,7 +43,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         class="pagination-previous" 
         [disabled]="page.current <= 1" 
         (click)="page.current = page.current - 1"
-        [attr.aria-label]="commonStrings.previousPage"
+        [attr.aria-label]="commonStrings.keys.previousPage"
         >
         <clr-icon shape="angle left"></clr-icon>
       </button>
@@ -55,15 +55,15 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         [value]="page.current"
         (keydown.enter)="updateCurrentPage($event)" 
         (blur)="updateCurrentPage($event)"
-        [attr.aria-label]="commonStrings.currentPage"
+        [attr.aria-label]="commonStrings.keys.currentPage"
         />
-        &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.totalPages">{{page.last}}</span>
+        &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
       <button 
         type="button"
         class="pagination-next" 
         [disabled]="page.current >= page.last" 
         (click)="page.current = page.current + 1"
-        [attr.aria-label]="commonStrings.nextPage"
+        [attr.aria-label]="commonStrings.keys.nextPage"
         >
         <clr-icon shape="angle right"></clr-icon>
       </button>
@@ -72,7 +72,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         class="pagination-last" 
         [disabled]="page.current >= page.last" 
         (click)="page.current = page.last"
-        [attr.aria-label]="commonStrings.lastPage"
+        [attr.aria-label]="commonStrings.keys.lastPage"
         >
         <clr-icon shape="step-forward-2 up"></clr-icon>
       </button>
@@ -86,7 +86,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   @ViewChild('currentPageInput', { static: false })
   currentPageInputRef: ElementRef;
 
-  constructor(public page: Page, public commonStrings: ClrCommonStrings) {
+  constructor(public page: Page, public commonStrings: ClrCommonStringsService) {
     this.page.activated = true;
   }
 

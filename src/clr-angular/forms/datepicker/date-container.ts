@@ -22,7 +22,7 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-date-container',
@@ -33,7 +33,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-content select="[clrDate]"></ng-content>
-            <button #actionButton type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.open" [disabled]="control?.disabled">
+            <button #actionButton type="button" class="clr-input-group-icon-action" (click)="toggleDatepicker($event)" *ngIf="isEnabled" [attr.title]="commonStrings.keys.open" [disabled]="control?.disabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
             <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
@@ -84,7 +84,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
     private dateFormControlService: DateFormControlService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private ifErrorService: IfErrorService,
     private focusService: FocusService,
     private controlClassService: ControlClassService,

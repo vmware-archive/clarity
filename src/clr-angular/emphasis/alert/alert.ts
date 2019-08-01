@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } f
 // providers
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-alert',
@@ -21,7 +21,7 @@ export class ClrAlert {
     public iconService: AlertIconAndTypesService,
     public cdr: ChangeDetectorRef,
     @Optional() public multiAlertService: MultiAlertService,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   @Input('clrAlertSizeSmall') isSmall: boolean = false;

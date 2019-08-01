@@ -3,16 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
-import { Injectable } from '@angular/core';
-
-import { COMMON_STRINGS_PROVIDER } from './common-strings.service';
-
-@Injectable({
-  providedIn: 'root',
-  ...COMMON_STRINGS_PROVIDER,
-})
-export abstract class ClrCommonStrings {
+export interface ClrCommonStrings {
   /**
    * Open button
    */

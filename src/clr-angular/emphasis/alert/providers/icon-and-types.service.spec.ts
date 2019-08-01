@@ -1,17 +1,16 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { AlertIconAndTypesService } from './icon-and-types.service';
-import { ClrCommonStrings } from '../../../utils/i18n/common-strings.interface';
 import { ClrCommonStringsService } from '../../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('Alert Icon and Types Service', function() {
     let testMe: AlertIconAndTypesService;
-    let commonStrings: ClrCommonStrings;
+    let commonStrings: ClrCommonStringsService;
 
     function testShape(alertType: string): string {
       return testMe.iconInfoFromType(alertType).shape;
@@ -76,7 +75,7 @@ export default function(): void {
       it('returns title based on alertType', function() {
         testMe.alertType = 'warning';
         expect(testMe.alertType).toBe('warning');
-        expect(testMe.alertIconTitle).toBe(commonStrings.warning);
+        expect(testMe.alertIconTitle).toBe(commonStrings.keys.warning);
       });
     });
 
@@ -92,8 +91,8 @@ export default function(): void {
       });
 
       it('returns info title as fallthrough', function() {
-        expect(testTitle(null)).toBe(commonStrings.info);
-        expect(testTitle('ohai')).toBe(commonStrings.info);
+        expect(testTitle(null)).toBe(commonStrings.keys.info);
+        expect(testTitle('ohai')).toBe(commonStrings.keys.info);
       });
 
       it('returns warning icon', function() {
@@ -105,7 +104,7 @@ export default function(): void {
       });
 
       it('returns warning title', function() {
-        expect(testTitle('warning')).toBe(commonStrings.warning);
+        expect(testTitle('warning')).toBe(commonStrings.keys.warning);
       });
 
       it('returns danger icon', function() {
@@ -117,7 +116,7 @@ export default function(): void {
       });
 
       it('returns danger title', function() {
-        expect(testTitle('danger')).toBe(commonStrings.danger);
+        expect(testTitle('danger')).toBe(commonStrings.keys.danger);
       });
 
       it('returns success icon', function() {
@@ -129,7 +128,7 @@ export default function(): void {
       });
 
       it('returns success title', function() {
-        expect(testTitle('success')).toBe(commonStrings.success);
+        expect(testTitle('success')).toBe(commonStrings.keys.success);
       });
 
       it('returns info icon', function() {
@@ -141,7 +140,7 @@ export default function(): void {
       });
 
       it('returns info title', function() {
-        expect(testTitle('info')).toBe(commonStrings.info);
+        expect(testTitle('info')).toBe(commonStrings.keys.info);
       });
     });
   });

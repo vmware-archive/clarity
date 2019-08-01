@@ -9,7 +9,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostTrigger } from './signpost-trigger';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { SignpostIdService } from './providers/signpost-id.service';
 
 @Component({
@@ -20,7 +20,7 @@ import { SignpostIdService } from './providers/signpost-id.service';
                 type="button"
                 class="signpost-action btn btn-small btn-link"
                 clrSignpostTrigger>
-                <clr-icon shape="info" [attr.title]="commonStrings.info"></clr-icon>
+                <clr-icon shape="info" [attr.title]="commonStrings.keys.info"></clr-icon>
             </button>
         </ng-container>
         
@@ -40,7 +40,7 @@ import { SignpostIdService } from './providers/signpost-id.service';
  *
  */
 export class ClrSignpost {
-  constructor(public commonStrings: ClrCommonStrings) {}
+  constructor(public commonStrings: ClrCommonStringsService) {}
 
   /**********
    * @property useCustomTrigger

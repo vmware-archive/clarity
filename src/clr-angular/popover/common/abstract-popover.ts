@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,6 @@ import {
 import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { ESC } from '../../utils/key-codes/key-codes';
 
 import { Point, Popover } from './popover';
 import { PopoverOptions } from './popover-options.interface';
@@ -114,11 +113,15 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
   private ignore: any;
 
   private attachESCListener(): void {
-    this.documentESCListener = this.renderer.listen('document', 'keydown', event => {
-      if (event && event.keyCode === ESC) {
-        this.ifOpenService.open = false;
-      }
-    });
+    if (!this.popoverOptions.ignoreGlobalESCListener) {
+      this.documentESCListener = this.renderer.listen('document', 'keydown', event => {
+        if (event && event.key) {
+          if (event.key === 'Escape' || event.key === 'Esc') {
+            this.ifOpenService.open = false;
+          }
+        }
+      });
+    }
   }
 
   private detachESCListener(): void {

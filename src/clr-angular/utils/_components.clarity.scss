@@ -44,9 +44,6 @@
 @import '../typography/typography.clarity';
 @import '../typography/code.clarity';
 
-// A11Y
-@import '../utils/a11y.clarity';
-
 //Buttons
 @import '../button/buttons.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity
 @import '../button/button-group/button-group.clarity'; // depends on variables.clarity, mixins.clarity

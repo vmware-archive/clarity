@@ -97,7 +97,6 @@
 @mixin checkbox-radio-label-styles($min-height, $padding-left, $color: $clr-forms-checkbox-label-color) {
   //Positioning
   position: relative;
-  margin-top: $clr-forms-baseline;
 
   //Display
   display: inline-block;

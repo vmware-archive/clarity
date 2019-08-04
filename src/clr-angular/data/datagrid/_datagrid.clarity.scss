@@ -974,8 +974,6 @@
         .datagrid-column {
           // This is a hack b/c styles were not applied out of the box when moving columns into the
           // calculation container element
-          font-size: $clr-table-fontsize;
-          line-height: $clr-table-lineheight;
           border-top: $clr-table-borderwidth solid $clr-tablerow-bordercolor;
           padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
           vertical-align: top;

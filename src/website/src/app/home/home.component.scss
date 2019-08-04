@@ -255,29 +255,6 @@
 
 .home-contact {
   width: 100%;
-  background-color: $clr-color-neutral-900;
-  background: -moz-linear-gradient(left, $clr-color-action-600 0%, #eaf700 50%, $clr-color-neutral-900 50%);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0%, $clr-color-action-600),
-    color-stop(50%, $clr-color-action-600),
-    color-stop(50%, $clr-color-neutral-900)
-  );
-  background: -webkit-linear-gradient(
-    left,
-    $clr-color-action-600 0%,
-    $clr-color-action-600 50%,
-    $clr-color-neutral-900 50%
-  );
-  background: -o-linear-gradient(left, $clr-color-action-600 0%, $clr-color-action-600 50%, $clr-color-neutral-900 50%);
-  background: -ms-linear-gradient(
-    left,
-    $clr-color-action-600 0%,
-    $clr-color-action-600 50%,
-    $clr-color-neutral-900 50%
-  );
   background: linear-gradient(
     to right,
     $clr-color-action-600 0%,

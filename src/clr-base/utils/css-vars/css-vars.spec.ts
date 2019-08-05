@@ -4,26 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import * as ponyfill from './css-vars-ponyfill-fork.esm.js';
+import * as ponyfill from './css-vars-ponyfill-fork';
 import { runCssVarsPolyfill, cssVarsDefaultConfig } from './css-vars';
 
 describe('Utilities - CssVarsPolyfill ', () => {
   describe('runCssVarsPolyfill() ', () => {
     it('calls cssVars() with default config', () => {
-      const setPropertyTypeSpy = jasmine.createSpy('setPropertyTypeSpy');
-      spyOnProperty(ponyfill, 'cssVars').and.returnValue(setPropertyTypeSpy);
+      spyOn(ponyfill, 'cssVars');
       runCssVarsPolyfill();
-      expect(setPropertyTypeSpy).toHaveBeenCalledWith(cssVarsDefaultConfig);
+      expect(ponyfill.cssVars).toHaveBeenCalledWith(cssVarsDefaultConfig);
     });
 
     it('calls cssVars() with custom config if given one', () => {
       const customConfig = {
         testsAreGood: true,
       };
-      const setPropertyTypeSpy = jasmine.createSpy('setPropertyTypeSpy');
-      spyOnProperty(ponyfill, 'cssVars').and.returnValue(setPropertyTypeSpy);
+
+      spyOn(ponyfill, 'cssVars');
       runCssVarsPolyfill(customConfig);
-      expect(setPropertyTypeSpy).toHaveBeenCalledWith(customConfig);
+      expect(ponyfill.cssVars).toHaveBeenCalledWith(customConfig);
     });
 
     it('calls ShadyCSS in the default config onComplete', () => {

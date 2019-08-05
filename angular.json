@@ -253,8 +253,8 @@
     "clr-base": {
       "projectType": "library",
       "root": "src/clr-base",
-      "sourceRoot": "src/clr-base/src",
-      "prefix": "clrx",
+      "sourceRoot": "src/clr-base",
+      "prefix": "clr-wc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

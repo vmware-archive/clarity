@@ -22,7 +22,7 @@ import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
 
 /**
@@ -43,7 +43,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
             class="datepicker-trigger"
             (click)="toggleDatepicker($event)"
             *ngIf="isEnabled">
-            <clr-icon shape="calendar" class="datepicker-trigger-icon" [attr.title]="commonStrings.open"></clr-icon>
+            <clr-icon shape="calendar" class="datepicker-trigger-icon" [attr.title]="commonStrings.keys.open"></clr-icon>
         </button>
         <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
     </ng-template>
@@ -60,7 +60,7 @@ import { IS_NEW_FORMS_LAYOUT } from '../common/providers/new-forms.service';
                     class="clr-input-group-icon-action"
                     (click)="toggleDatepicker($event)" 
                     *ngIf="isEnabled" 
-                    [attr.title]="commonStrings.open" 
+                    [attr.title]="commonStrings.keys.open" 
                     [disabled]="control?.disabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
@@ -117,7 +117,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
     private dateFormControlService: DateFormControlService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private ifErrorService: IfErrorService,
     private focusService: FocusService,
     private controlClassService: ControlClassService,

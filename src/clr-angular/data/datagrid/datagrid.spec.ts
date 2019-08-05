@@ -31,7 +31,7 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { StateProvider } from './providers/state.provider';
 import { TableSizeService } from './providers/table-size.service';
 import { DatagridRenderOrganizer } from './render/render-organizer';
-import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { commonStringsDefault } from '../../utils/i18n/common-strings.default';
 
 @Component({
   template: `
@@ -427,13 +427,13 @@ export default function(): void {
 
       it('should cretae default values for clrDgSingleSelectionAriaLabel, clrDgSingleActionableAriaLabel, clrDetailExpandableAriaLabel', function() {
         expect(context.clarityDirective.clrDgSingleSelectionAriaLabel).toBe(
-          new ClrCommonStringsService().singleSelectionAriaLabel
+          commonStringsDefault.singleSelectionAriaLabel
         );
         expect(context.clarityDirective.clrDgSingleActionableAriaLabel).toBe(
-          new ClrCommonStringsService().singleActionableAriaLabel
+          commonStringsDefault.singleActionableAriaLabel
         );
         expect(context.clarityDirective.clrDetailExpandableAriaLabel).toBe(
-          new ClrCommonStringsService().detailExpandableAriaLabel
+          commonStringsDefault.detailExpandableAriaLabel
         );
       });
 

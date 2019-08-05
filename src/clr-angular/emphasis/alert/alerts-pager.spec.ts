@@ -11,6 +11,7 @@ import { ClrEmphasisModule } from '../../emphasis/emphasis.module';
 import { ClrAlert } from './alert';
 import { ClrAlertsPager } from './alerts-pager';
 import { MultiAlertService } from './providers/multi-alert.service';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function() {
   describe('ClrAlerts pager component', function() {
@@ -20,7 +21,7 @@ export default function() {
 
       beforeEach(() => {
         service = new MultiAlertService();
-        component = new ClrAlertsPager(service, {});
+        component = new ClrAlertsPager(service, new ClrCommonStringsService());
       });
 
       afterEach(() => {

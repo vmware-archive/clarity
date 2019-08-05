@@ -13,6 +13,7 @@ import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('ClrDatagridFilter component', function() {
@@ -25,7 +26,7 @@ export default function(): void {
         const stateDebouncer = new StateDebouncer();
         filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         filter = new TestFilter();
-        component = new ClrDatagridFilter(filterService, {}, null);
+        component = new ClrDatagridFilter(filterService, new ClrCommonStringsService(), null);
       });
 
       afterEach(function() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,20 +11,20 @@ import { YearRangeModel } from './model/year-range.model';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-yearpicker',
   template: `
         <div class="year-switchers">
             <button class="calendar-btn switcher" type="button" (click)="previousDecade()">
-                <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.previous"></clr-icon>
+                <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.previous"></clr-icon>
             </button>
             <button class="calendar-btn switcher" type="button" (click)="currentDecade()">
-                <clr-icon shape="event" [attr.title]="commonStrings.current"></clr-icon>
+                <clr-icon shape="event" [attr.title]="commonStrings.keys.current"></clr-icon>
             </button>
             <button class="calendar-btn switcher" type="button" (click)="nextDecade()">
-                <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.next"></clr-icon>
+                <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.next"></clr-icon>
             </button>
         </div>
         <div class="years">
@@ -49,7 +49,7 @@ export class ClrYearpicker implements AfterViewInit {
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
     private _elRef: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;

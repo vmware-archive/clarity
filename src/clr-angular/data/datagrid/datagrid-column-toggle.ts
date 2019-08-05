@@ -25,7 +25,7 @@ import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { DatagridHideableColumnModel } from './datagrid-hideable-column.model';
 import { ColumnToggleButtonsService } from './providers/column-toggle-buttons.service';
 import { HideableColumnService } from './providers/hideable-column.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -36,20 +36,20 @@ import { isPlatformBrowser } from '@angular/common';
                 (click)="toggleUI()"
                 class="btn btn-sm btn-link column-toggle--action"
                 type="button">
-            <clr-icon shape="view-columns" [attr.title]="commonStrings.pickColumns"></clr-icon>
+            <clr-icon shape="view-columns" [attr.title]="commonStrings.keys.pickColumns"></clr-icon>
         </button>
         <div class="column-switch"
              *clrPopoverOld="open; anchor: anchor; anchorPoint: anchorPoint; popoverPoint: popoverPoint">
             <div class="switch-header">
-                <div class="sr-only" tabindex="-1" #menuDescription>{{commonStrings.showColumnsMenuDescription}}</div>
-                <div class="sr-only" tabindex="-1" #allSelected>{{commonStrings.allColumnsSelected}}</div>
+                <div class="sr-only" tabindex="-1" #menuDescription>{{commonStrings.keys.showColumnsMenuDescription}}</div>
+                <div class="sr-only" tabindex="-1" #allSelected>{{commonStrings.keys.allColumnsSelected}}</div>
                 <ng-container *ngIf="!title">Show Columns</ng-container>
                 <ng-content select="clr-dg-column-toggle-title"></ng-content>
                 <button
                     class="btn btn-sm btn-link"
                     (click)="toggleUI()"
                     type="button">
-                    <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+                    <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
                 </button>
             </div>
             <ul class="switch-content list-unstyled">
@@ -114,7 +114,7 @@ export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
   constructor(
     public hideableColumnService: HideableColumnService,
     private columnToggleButtons: ColumnToggleButtonsService,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone
   ) {}

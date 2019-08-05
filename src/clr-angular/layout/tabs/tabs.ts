@@ -20,7 +20,7 @@ import { TabsService } from './providers/tabs.service';
 import { ClrTabLink } from './tab-link.directive';
 import { ClrTabContent } from './tab-content';
 import { TABS_ID, TABS_ID_PROVIDER } from './tabs-id.provider';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
   selector: 'clr-tabs',
@@ -39,7 +39,7 @@ import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
                         <button class="btn btn-link nav-link dropdown-toggle" type="button" [class.active]="activeTabInOverflow">
                             <clr-icon shape="ellipsis-horizontal"
                               [class.is-info]="ifOpenService.open"
-                              [attr.title]="commonStrings.more"></clr-icon>
+                              [attr.title]="commonStrings.keys.more"></clr-icon>
                         </button>
                     </li>
                     <!--tab links in overflow menu-->
@@ -76,7 +76,7 @@ export class ClrTabs implements AfterContentInit {
     public ifOpenService: IfOpenService,
     public tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   get activeTabInOverflow() {

@@ -272,7 +272,7 @@ describe('Modal', () => {
   });
 
   it('close button should have attribute aria-label', () => {
-    expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(commonStrings.close);
+    expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(commonStrings.keys.close);
   });
 
   it(

@@ -8,14 +8,14 @@ import { Directive, ElementRef, HostListener, OnDestroy, Renderer2, PLATFORM_ID,
 import { Subscription } from 'rxjs';
 
 import { IfOpenService } from '../../utils/conditional/if-open.service';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { SignpostIdService } from './providers/signpost-id.service';
 
 @Directive({
   selector: '[clrSignpostTrigger]',
   host: {
     class: 'signpost-trigger',
-    '[attr.aria-label]': 'commonStrings.signpostToggle',
+    '[attr.aria-label]': 'commonStrings.keys.signpostToggle',
     '[attr.aria-expanded]': 'ariaExpanded',
     '[attr.aria-controls]': 'ariaControl',
   },
@@ -37,7 +37,7 @@ export class ClrSignpostTrigger implements OnDestroy {
     private ifOpenService: IfOpenService,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings,
+    public commonStrings: ClrCommonStringsService,
     private signpostIdService: SignpostIdService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {

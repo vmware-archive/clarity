@@ -34,7 +34,7 @@ import { HideableColumnService } from './providers/hideable-column.service';
 import { RowActionService } from './providers/row-action-service';
 import { Selection, SelectionType } from './providers/selection';
 import { WrappedRow } from './wrapped-row';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 let nbRow: number = 0;
 
@@ -74,7 +74,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
     private el: ElementRef,
-    public commonStrings: ClrCommonStrings
+    public commonStrings: ClrCommonStringsService
   ) {
     nbRow++;
     this.id = 'clr-dg-row' + nbRow;

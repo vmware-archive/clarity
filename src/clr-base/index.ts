@@ -4,4 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './css-vars';
+export * from './utils';
+export * from './components/clr-wc-element/clr-wc-element';

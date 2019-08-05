@@ -16,9 +16,8 @@
       "@clr/angular": ["src/clr-angular"],
       "@clr/icons": ["src/clr-icons"],
       "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"],
-      "@clr/base/components": ["src/clr-base/src/lib/components", "src/clr-base/src/lib/components/*"],
-      "@clr/base": ["src/clr-base/src"],
-      "@clr/base/*": ["src/clr-base/src/lib", "src/clr-base/src/lib/*"]
+      "@clr/base": ["src/clr-base"],
+      "@clr/base/*": ["src/clr-base/*"]
     },
     "lib": ["es2017", "dom"]
   },

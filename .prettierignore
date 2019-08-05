@@ -7,3 +7,4 @@ golden/
 .ng_build
 src/website/src/releases/final-template/auto-generated-routes.ts
 src/website/src/sitemap.xml
+src/clr-base/utils/css-vars/css-vars-ponyfill-fork.ts

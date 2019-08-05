@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { cssVars, variableStore } from './css-vars-ponyfill-fork.esm.js';
+import { cssVars, variableStore } from './css-vars-ponyfill-fork';
 import { exists } from '../helpers/exists';
 
 // exported for tests
@@ -22,4 +22,4 @@ export function runCssVarsPolyfill(config: {} = cssVarsDefaultConfig): void {
   cssVars(config);
 }
 
-export { variableStore } from './css-vars-ponyfill-fork.esm.js';
+export { variableStore } from './css-vars-ponyfill-fork';

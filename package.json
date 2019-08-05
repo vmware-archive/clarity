@@ -25,7 +25,7 @@
     "build:schematics:collection": "cpy --parents --cwd='src/schematics/src/' '**/*.json' ../../../dist/clr-angular/schematics",
     "build:schematics": "npm-run-all build:schematics:ts build:schematics:collection",
     "build:golden": "ts-api-guardian --out dist/golden/clr-angular.d.ts --stripExportPattern 'FocusTrapTracker' dist/clr-angular/index.d.ts",
-    "build": "npm-run-all clean build:ui build:icons build:angular build:schematics build:golden",
+    "build": "npm-run-all clean build:ui build:icons build:angular build:base build:schematics build:golden",
     "build:preview": "ng build --baseHref=/dev/",
     "build:dev": "ng build --prod dev",
     "ng": "ng",

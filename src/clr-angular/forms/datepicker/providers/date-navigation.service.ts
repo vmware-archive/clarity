@@ -120,7 +120,7 @@ export class DateNavigationService {
     if (this._displayedCalendar.isDayInCalendar(this.focusedDay)) {
       this._focusedDayChange.next(this.focusedDay);
     } else {
-      this.setDisplayedCalendar(this.focusedDay.calendar);
+      this.setDisplayedCalendar(new CalendarModel(this.focusedDay.year, this.focusedDay.month));
     }
     this._focusOnCalendarChange.next();
   }

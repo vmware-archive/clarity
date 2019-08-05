@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -55,17 +55,6 @@ export default function(): void {
 
       incrementDayModelAndCompare(dayModel1, 1);
       incrementDayModelAndCompare(dayModel1, -1);
-    });
-
-    it('returns the Calendar in which the DayModel belongs in', () => {
-      expect(dayModel1.calendar).not.toBeNull();
-      expect(dayModel2.calendar).not.toBeNull();
-
-      expect(dayModel1.calendar.month).toBe(0);
-      expect(dayModel1.calendar.year).toBe(2018);
-
-      expect(dayModel2.calendar.month).toBe(5);
-      expect(dayModel2.calendar.year).toBe(2018);
     });
 
     it('returns a clone of the DayModel', () => {

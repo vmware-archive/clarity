@@ -92,7 +92,7 @@
                 <ng-template clrPageTitle>Power</ng-template>
                 <ng-template clrPageNavTitle>{{ pageThreeTitle }}</ng-template>
 
-                <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
+                <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError"[clrCloseButtonAriaLabel]="'Close Wiki alert'">
                     <clr-alert-item>
                         <span class="alert-text">
                             Your power and weakness cannot be from the same source.

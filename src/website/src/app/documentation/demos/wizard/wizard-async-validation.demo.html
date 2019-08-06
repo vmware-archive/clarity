@@ -23,14 +23,14 @@
         <clr-spinner *ngIf="loadingFlag">
             Loading
         </clr-spinner>
-        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false">
+        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false" [clrCloseButtonAriaLabel]="'Close Wiki alert'">
             <clr-alert-item>
                 This&nbsp;<a
                     href="https://en.wikipedia.org/wiki/42_(number)#The_Hitchhiker.27s_Guide_to_the_Galaxy"
                     target="_blank">wiki article</a>&nbsp;might help you answer the question.
             </clr-alert-item>
         </clr-alert>
-        <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'">
+        <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'" [clrCloseButtonAriaLabel]="'Close Answer alert'">
             <clr-alert-item>
                 Your answer is incorrect.
             </clr-alert-item>

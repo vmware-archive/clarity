@@ -9,6 +9,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClrAlert } from './alert';
 import { ClrAlertModule } from './alert.module';
 
+const CLOSE_ARIA_LABEL = 'Close Test Alert';
+
 @Component({
   template: `
         <clr-alert
@@ -16,7 +18,8 @@ import { ClrAlertModule } from './alert.module';
             [clrAlertSizeSmall]="isSmall"
             [clrAlertClosable]="isClosable"
             [(clrAlertClosed)]="closed"
-            [clrAlertAppLevel]="isAppLevel">
+            [clrAlertAppLevel]="isAppLevel"
+            [clrCloseButtonAriaLabel]="closeAriaLabel">
             <div class="alert-item">
                 <span class="alert-text">
                 {{alertMsg}}
@@ -34,6 +37,7 @@ class TestComponent {
   isClosable: boolean = false;
   closed: boolean = false;
   isAppLevel: boolean = false;
+  closeAriaLabel: string = CLOSE_ARIA_LABEL;
 
   alertMsg: string = 'This is an alert!';
 }
@@ -120,6 +124,12 @@ export default function(): void {
     it('Has an ARIA role of alert', () => {
       const myAlert: HTMLElement = compiled.querySelector('.alert');
       expect(myAlert.getAttribute('role')).toBe('alert');
+    });
+
+    it('should be able to set close button text', () => {
+      fixture.componentInstance.isClosable = true;
+      fixture.detectChanges();
+      expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(CLOSE_ARIA_LABEL);
     });
 
     it('should not have an aria-live when using role alert', () => {

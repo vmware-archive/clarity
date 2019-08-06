@@ -93,6 +93,7 @@ export declare class ClrAlert {
     alertType: string;
     cdr: ChangeDetectorRef;
     closable: boolean;
+    clrCloseButtonAriaLabel: string;
     commonStrings: ClrCommonStringsService;
     iconService: AlertIconAndTypesService;
     isAppLevel: boolean;
@@ -229,6 +230,7 @@ export declare class ClrCommonFormsModule {
 }
 
 export interface ClrCommonStrings {
+    alertCloseButtonAriaLabel?: string;
     allColumnsSelected?: string;
     close?: string;
     collapse?: string;

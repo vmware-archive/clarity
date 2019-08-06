@@ -12,6 +12,7 @@ import { Point } from '../common/popover';
 import { ClrTooltipContent } from './tooltip-content';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { ClrTooltipModule } from './tooltip.module';
+import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 interface TooltipContext extends TestContext<ClrTooltipContent, SimpleTest> {
   ifOpenService: IfOpenService;
@@ -19,7 +20,7 @@ interface TooltipContext extends TestContext<ClrTooltipContent, SimpleTest> {
 
 export default function(): void {
   describe('TooltipContent component', function() {
-    spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, { providers: [IfOpenService] });
+    spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, { providers: [IfOpenService, UNIQUE_ID_PROVIDER] });
 
     beforeEach(function(this: TooltipContext) {
       this.getClarityProvider(IfOpenService).open = true;

@@ -159,4 +159,9 @@ export interface ClrCommonStrings {
    * Datagrid: Expandable row
    */
   detailExpandableAriaLabel?: string;
+
+  /**
+   * Alert: Close alert button
+   */
+  alertCloseButtonAriaLabel?: string;
 }

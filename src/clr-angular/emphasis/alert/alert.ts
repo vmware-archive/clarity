@@ -28,6 +28,9 @@ export class ClrAlert {
   @Input('clrAlertClosable') closable: boolean = true;
   @Input('clrAlertAppLevel') isAppLevel: boolean = false;
 
+  // Aria
+  @Input() clrCloseButtonAriaLabel: string = this.commonStrings.keys.alertCloseButtonAriaLabel;
+
   @Input('clrAlertClosed') _closed: boolean = false;
   @Output('clrAlertClosedChange') _closedChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 

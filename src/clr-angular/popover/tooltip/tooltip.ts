@@ -6,7 +6,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
-import { TooltipIdService } from './providers/tooltip-id.service';
+import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-tooltip',
@@ -16,6 +16,6 @@ import { TooltipIdService } from './providers/tooltip-id.service';
   host: {
     '[class.tooltip]': 'true',
   },
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }, TooltipIdService],
+  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }, UNIQUE_ID_PROVIDER],
 })
 export class ClrTooltip {}

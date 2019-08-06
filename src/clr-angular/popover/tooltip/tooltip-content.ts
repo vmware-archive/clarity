@@ -7,8 +7,7 @@ import { Component, ElementRef, Inject, Injector, Input, Optional } from '@angul
 import { AbstractPopover } from '../common/abstract-popover';
 import { Point } from '../common/popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
-import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
-import { TooltipIdService } from './providers/tooltip-id.service';
+import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 
 const POSITIONS: string[] = ['bottom-left', 'bottom-right', 'top-left', 'top-right', 'right', 'left'];
 
@@ -25,7 +24,6 @@ const SIZES: string[] = ['xs', 'sm', 'md', 'lg'];
     role: 'tooltip',
     '[id]': 'tooltipId',
   },
-  providers: [UNIQUE_ID_PROVIDER],
 })
 export class ClrTooltipContent extends AbstractPopover {
   constructor(
@@ -33,8 +31,7 @@ export class ClrTooltipContent extends AbstractPopover {
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
     parentHost: ElementRef,
-    @Inject(UNIQUE_ID) public tooltipId: string,
-    private tooltipIdService: TooltipIdService
+    @Inject(UNIQUE_ID) public tooltipId: string
   ) {
     super(injector, parentHost);
 
@@ -45,7 +42,6 @@ export class ClrTooltipContent extends AbstractPopover {
     // Defaults
     this.position = 'right';
     this.size = 'sm';
-    this.tooltipIdService.setId(tooltipId);
   }
 
   private _position: string;

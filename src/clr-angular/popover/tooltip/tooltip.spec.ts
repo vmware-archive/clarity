@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrTooltip } from './tooltip';
-import { TooltipIdService } from './providers/tooltip-id.service';
+import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   template: `
@@ -31,9 +31,9 @@ export default function(): void {
     });
 
     describe('TypeScript API', () => {
-      it('provides the TooltipIdService', () => {
-        const tooltipIDService: TooltipIdService = context.getClarityProvider(TooltipIdService);
-        expect(tooltipIDService).toBeDefined();
+      it('provides a tooltipId', () => {
+        const tooltipId: string = context.getClarityProvider(UNIQUE_ID);
+        expect(tooltipId).toBeDefined();
       });
     });
 

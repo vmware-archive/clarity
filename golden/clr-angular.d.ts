@@ -1267,7 +1267,7 @@ export declare class ClrTooltipContent extends AbstractPopover {
     position: string;
     size: string;
     tooltipId: string;
-    constructor(injector: Injector, parentHost: ElementRef, tooltipId: string, tooltipIdService: TooltipIdService);
+    constructor(injector: Injector, parentHost: ElementRef, tooltipId: string);
 }
 
 export declare class ClrTooltipModule {
@@ -1275,8 +1275,9 @@ export declare class ClrTooltipModule {
 
 export declare class ClrTooltipTrigger {
     ariaDescribedBy: any;
+    tooltipId: string;
     tooltipLabel: any;
-    constructor(ifOpenService: IfOpenService, tooltipIdService: TooltipIdService);
+    constructor(tooltipId: string, ifOpenService: IfOpenService);
     hideTooltip(): void;
     ngOnDestroy(): void;
     showTooltip(): void;

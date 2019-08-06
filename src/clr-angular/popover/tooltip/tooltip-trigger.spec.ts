@@ -9,21 +9,16 @@ import { Component } from '@angular/core';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 import { ClrTooltipTrigger } from './tooltip-trigger';
-import { TooltipIdService } from './providers/tooltip-id.service';
 
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { ClrTooltipModule } from './tooltip.module';
-
-interface TooltipContext extends TestContext<ClrTooltipTrigger, SimpleTest> {
-  tooltipIdService: TooltipIdService;
-}
+import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 export default function(): void {
   describe('TooltipTrigger component', function() {
-    spec(ClrTooltipTrigger, SimpleTest, ClrTooltipModule, { providers: [IfOpenService, TooltipIdService] });
+    spec(ClrTooltipTrigger, SimpleTest, ClrTooltipModule, { providers: [IfOpenService, UNIQUE_ID_PROVIDER] });
 
     beforeEach(function(this: TestContext<ClrTooltipTrigger, SimpleTest>) {
-      // context = this.create(ClrTooltipTrigger, SimpleTest, [IfOpenService]);
       this.detectChanges();
     });
 
@@ -43,21 +38,13 @@ export default function(): void {
       });
     });
 
-    describe('View basics', function(this: TooltipContext) {
-      beforeEach(function(this: TooltipContext) {
-        this.tooltipIdService = this.getClarityProvider(TooltipIdService);
+    describe('View basics', function() {
+      beforeEach(function() {
         this.detectChanges();
       });
 
-      it('has the role of button', function(this: TooltipContext) {
+      it('has the role of button', function() {
         expect(this.clarityElement.getAttribute('role')).toEqual('button');
-      });
-
-      it('has a uniq id for aria-describedby', function() {
-        const testId = 'clr-id-1';
-        this.tooltipIdService.setId(testId);
-        this.detectChanges();
-        expect(this.clarityElement.getAttribute('aria-describedby')).toContain(testId);
       });
 
       it('has a tab index of 0', function() {

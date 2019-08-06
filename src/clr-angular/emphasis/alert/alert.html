@@ -15,7 +15,13 @@
     <div class="alert-items">
         <ng-content></ng-content>
     </div>
-    <button type="button" class="close" *ngIf="closable" (click)="close()">
-        <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+    <button 
+        type="button" 
+        class="close" 
+        *ngIf="closable" 
+        (click)="close()" 
+        [attr.aria-label]="clrCloseButtonAriaLabel"
+        >
+        <clr-icon shape="close"></clr-icon>
     </button>
 </div>

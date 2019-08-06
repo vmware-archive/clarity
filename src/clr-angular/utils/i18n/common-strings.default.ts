@@ -45,4 +45,6 @@ export const commonStringsDefault: ClrCommonStrings = {
   singleSelectionAriaLabel: 'Single selection header',
   singleActionableAriaLabel: 'Single actionable header',
   detailExpandableAriaLabel: 'Toggle more row content',
+  // Alert
+  alertCloseButtonAriaLabel: 'Close alert',
 };

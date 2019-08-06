@@ -58,5 +58,6 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'singleSelectionAriaLabel', role: 'Datagrid: aria label for header single selection header column' },
     { key: 'singleActionableAriaLabel', role: 'Datagrid: aria label for row action header column' },
     { key: 'detailExpandableAriaLabel', role: 'Datagrid: aria label for expandable row toggle button' },
+    { key: 'alertCloseButtonAriaLabel', role: 'Alert: aria label for closing alert' },
   ];
 }

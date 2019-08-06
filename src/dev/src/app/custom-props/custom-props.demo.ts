@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { runCssVarsPolyfill } from '@clr/base';
 
 const themes = {
@@ -88,10 +88,14 @@ function getNewTheme(oldTheme: string): string {
   templateUrl: 'custom-props.demo.html',
   styleUrls: ['./custom-props.demo.scss'],
 })
-export class CustomPropsDemo {
+export class CustomPropsDemo implements OnInit {
   private _theme = 'default';
 
   cycleThemes(): void {
     this._theme = getNewTheme(this._theme);
+  }
+
+  ngOnInit() {
+    runCssVarsPolyfill();
   }
 }

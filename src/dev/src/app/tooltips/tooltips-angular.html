@@ -7,9 +7,9 @@
 <h6>Top-Right</h6>
 <div class="clr-example squeeze example-center" id="top-right">
     <clr-tooltip>
-        <clr-icon title="Tooltip icon" clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip"></clr-icon>
-        <clr-tooltip-content clrPosition="top-right" clrSize="xs">
-            <span>Lorem</span>
+        <clr-icon title="Tooltip icon" clrTooltipTrigger shape="info-standard" size="24" aria-label="blank id string"></clr-icon>
+        <clr-tooltip-content [id]="blankStringId" clrPosition="top-right" clrSize="xs">
+            <span>Lorem 12</span>
         </clr-tooltip-content>
     </clr-tooltip>
 </div>
@@ -17,8 +17,8 @@
 <h6>Top-Left</h6>
 <div class="clr-example squeeze example-center" id="top-left">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip2"></clr-icon>
-        <clr-tooltip-content clrPosition="top-left" clrSize="sm">
+        <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="valid id string"></clr-icon>
+        <clr-tooltip-content [id]="validString" clrPosition="top-left" clrSize="sm">
             <span>Lorem ipsum</span>
         </clr-tooltip-content>
     </clr-tooltip>
@@ -28,8 +28,8 @@
 <h6>Bottom-Right</h6>
 <div class="clr-example squeeze example-center" id="bottom-right">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip 3"></clr-icon>
-        <clr-tooltip-content clrPosition="bottom-right" clrSize="md">
+        <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="undefined id"></clr-icon>
+        <clr-tooltip-content [id]="undefinedId" clrPosition="bottom-right" clrSize="md">
             <span>Lorem ipsum sit</span>
         </clr-tooltip-content>
     </clr-tooltip>
@@ -39,8 +39,8 @@
 <h6>Bottom-Left</h6>
 <div class="clr-example squeeze example-center" id="bottom-left">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip4"></clr-icon>
-        <clr-tooltip-content clrPosition="bottom-left" clrSize="lg">
+        <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="null id"></clr-icon>
+        <clr-tooltip-content [id]="nullId" clrPosition="bottom-left" clrSize="lg">
             <span>Lorem ipsum sit</span>
         </clr-tooltip-content>
     </clr-tooltip>
@@ -50,7 +50,7 @@
 <h6>Right</h6>
 <div class="clr-example squeeze example-center" id="right">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip 5"></clr-icon>
+        <clr-icon id clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 5"></clr-icon>
         <clr-tooltip-content>
             <span>Lorem ipsum sit</span>
         </clr-tooltip-content>
@@ -61,7 +61,7 @@
 <h6>Left</h6>
 <div class="clr-example squeeze example-center" id="left">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip 6"></clr-icon>
+        <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 6"></clr-icon>
         <clr-tooltip-content clrPosition="left" clrSize="sm">
             <span>Lorem ipsum sit</span>
         </clr-tooltip-content>
@@ -71,7 +71,7 @@
 <h6>Tooltip *clrIfOpen Test</h6>
 <div class="clr-example squeeze example-center">
     <clr-tooltip>
-        <clr-icon clrTooltipTrigger shape="info-standard" size="24" clrTooltipLabel="Uniq tooltip 7"></clr-icon>
+        <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 7"></clr-icon>
         <clr-tooltip-content *clrIfOpen clrPosition="left" clrSize="sm">
             <span>Lorem ipsum sit</span>
         </clr-tooltip-content>
@@ -81,7 +81,7 @@
 <h6>ng-container test</h6>
 <div class="clr-example" style="margin-bottom:96px">
     <clr-tooltip>
-        <button clrTooltipTrigger class="btn btn-primary" clrTooltipLabel="Uniq tooltip 8">
+        <button clrTooltipTrigger class="btn btn-primary" aria-label="Uniq tooltip 8">
             <clr-icon shape="info-standard" size="24"></clr-icon>
         </button>
         <ng-container *ngIf="true">
@@ -97,7 +97,7 @@
 <h6>Tooltip in Dropdown</h6>
 <div class="clr-example" style="margin-bottom:120px">
     <clr-dropdown>
-        <button type="button" class="btn" clrDropdownTrigger clrTooltipLabel="Uniq tooltip 9">Click Me!</button>
+        <button type="button" class="btn" clrDropdownTrigger aria-label="Uniq tooltip 9">Click Me!</button>
         <clr-dropdown-menu>
             <clr-tooltip>
                 <button type="button" clrDropdownItem clrTooltipTrigger>

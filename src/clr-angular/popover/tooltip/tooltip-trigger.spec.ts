@@ -13,12 +13,33 @@ import { ClrTooltipTrigger } from './tooltip-trigger';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { ClrTooltipModule } from './tooltip.module';
 import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { TooltipIdService } from './providers/tooltip-id.service';
+
+@Component({
+  template: `
+        <span clrTooltipTrigger [attr.aria-label]="ariaLabel">
+            Hello world
+        </span>
+    `,
+})
+class SimpleTest {
+  ariaLabel = 'Uniq aria label';
+}
+
+interface TooltipContext extends TestContext<ClrTooltipTrigger, SimpleTest> {
+  tooltipIdService: TooltipIdService;
+  ifOpenService: IfOpenService;
+}
 
 export default function(): void {
-  describe('TooltipTrigger component', function() {
-    spec(ClrTooltipTrigger, SimpleTest, ClrTooltipModule, { providers: [IfOpenService, UNIQUE_ID_PROVIDER] });
+  describe('TooltipTrigger component', function(this: TooltipContext) {
+    spec(ClrTooltipTrigger, SimpleTest, ClrTooltipModule, {
+      providers: [IfOpenService, UNIQUE_ID_PROVIDER, TooltipIdService],
+    });
 
-    beforeEach(function(this: TestContext<ClrTooltipTrigger, SimpleTest>) {
+    beforeEach(function() {
+      this.ifOpenService = this.getClarityProvider(IfOpenService);
+      this.tooltipIdService = this.getClarityProvider(TooltipIdService);
       this.detectChanges();
     });
 
@@ -30,19 +51,21 @@ export default function(): void {
         this.clarityDirective.hideTooltip();
         expect(ifOpenService.open).toBe(false);
       });
-    });
 
-    describe('Template API', function() {
-      it('receives an input for clrTooltipLabel', function() {
-        expect(this.hostComponent.label).toEqual(this.clarityDirective.tooltipLabel);
+      it('responds to the TooltipIdService', function() {
+        let testId;
+        this.tooltipIdService.id.subscribe(idChange => {
+          testId = idChange;
+        });
+        expect(this.clarityDirective.ariaDescribedBy).toEqual(testId);
+
+        this.tooltipIdService.updateId('clr-id-99');
+        this.detectChanges();
+        expect(this.clarityDirective.ariaDescribedBy).toEqual(testId);
       });
     });
 
     describe('View basics', function() {
-      beforeEach(function() {
-        this.detectChanges();
-      });
-
       it('has the role of button', function() {
         expect(this.clarityElement.getAttribute('role')).toEqual('button');
       });
@@ -52,15 +75,4 @@ export default function(): void {
       });
     });
   });
-}
-
-@Component({
-  template: `
-        <span clrTooltipTrigger [clrTooltipLabel]="label">
-            Hello world
-        </span>
-    `,
-})
-class SimpleTest {
-  label = 'Uniq aria label';
 }

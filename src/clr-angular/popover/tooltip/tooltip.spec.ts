@@ -5,9 +5,10 @@
  */
 
 import { Component } from '@angular/core';
-import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrTooltip } from './tooltip';
-import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
+import { spec, TestContext } from '../../utils/testing/helpers.spec';
+import { TooltipIdService } from './providers/tooltip-id.service';
+import { ClrTooltipModule } from '@clr/angular';
 
 @Component({
   template: `
@@ -21,25 +22,26 @@ import { UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
 })
 class SimpleTest {}
 
+interface TooltipContext extends TestContext<ClrTooltip, SimpleTest> {
+  tooltipIdService: TooltipIdService;
+}
+
 export default function(): void {
   describe('Tooltip component', function() {
-    let context: TestContext<ClrTooltip, SimpleTest>;
-
-    addHelpers();
-    beforeEach(function() {
-      context = this.create(ClrTooltip, SimpleTest);
+    spec(ClrTooltip, SimpleTest, ClrTooltipModule, { providers: [TooltipIdService] });
+    beforeEach(function(this: TooltipContext) {
+      this.tooltipIdService = this.getClarityProvider(TooltipIdService);
     });
 
-    describe('TypeScript API', () => {
-      it('provides a tooltipId', () => {
-        const tooltipId: string = context.getClarityProvider(UNIQUE_ID);
-        expect(tooltipId).toBeDefined();
+    describe('TypeScript API', function(this: TooltipContext) {
+      it('provides a TooltipIdService', function(this: TooltipContext) {
+        expect(this.tooltipIdService).toBeDefined();
       });
     });
 
-    describe('Simple', function() {
+    describe('Simple', function(this: TooltipContext) {
       it('projects anchor content', function() {
-        expect(context.clarityElement.textContent).toMatch(/Hello/);
+        expect(this.clarityElement.textContent).toMatch(/Hello/);
       });
     });
   });

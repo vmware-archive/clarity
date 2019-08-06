@@ -169,6 +169,24 @@
                         in supported browsers.
                     </td>
                 </tr>
+                <tr>
+                    <td class="left">
+                        <b>[id]</b>
+                    </td>
+                    <td class="left hidden-xs-down">
+                        string
+                    </td>
+                    <td class="left">
+                        Consumers can supply a custom id for the tooltip content. If no id is supplied Clarity will
+                        generate one for the tooltip complex. Note: empty strings, undefined and null values will be
+                        coerced into an empty string and the content id / trigger aria-describedby values will not be
+                        accessible.
+                    </td>
+                    <td class="left">
+                        <span class="code">clr-tooltip-content</span>(id) associates with the
+                        <span class="code">clr-tooltip-trigger</span>(aria-describedby) attribute using this value.
+                    </td>
+                </tr>
                 </tbody>
             </table>
 

@@ -3,20 +3,23 @@
     "version": "2.0.2",
     "description": "Custom Elements for Clarity",
     "homepage": "https://clarity.design",
+    "sideEffects": [
+      "./**/*clr-wc-element.js"
+    ],
     "main": "index.js",
     "types": "index.d.ts",
     "repository": {
-        "type": "git",
-        "url": "ssh://git@git.eng.vmware.com/clarity.git"
+      "type": "git",
+      "url": "ssh://git@git.eng.vmware.com/clarity.git"
     },
     "peerDependencies": {
-        "@webcomponents/shadycss": "1.9.1",
-        "@webcomponents/webcomponentsjs": "2.2.10",
-        "lit-element": "2.2.0"
+      "@webcomponents/shadycss": "1.9.1",
+      "@webcomponents/webcomponentsjs": "2.2.10",
+      "lit-element": "2.2.0"
     },
     "author": "clarity",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/vmware/clarity/issues"
+      "url": "https://github.com/vmware/clarity/issues"
     }
 }

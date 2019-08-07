@@ -8,6 +8,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } f
 // providers
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
+import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 @Component({
@@ -40,6 +41,33 @@ export class ClrAlert {
   }
   get alertType(): string {
     return this.iconService.alertType;
+  }
+
+  /**
+   * clrPolite is not used in the code. Is here just to provide
+   * code complition and also mark component what type AriaLive
+   * will be used.
+   */
+  @Input('clrPolite') polite: boolean = true;
+  @Input('clrAssertive') assertive: boolean;
+  @Input('clrOff') off: boolean;
+  /**
+   * There is an order on how the attributes will take effect.
+   * Assertive, Off, Polite.
+   *
+   * Polite is default if non is passed.
+   *
+   * In the case of setting all of them to true. Assertive will be used.
+   *
+   */
+  get setAriaLive(): string {
+    if (isBooleanAttributeSet(this.assertive)) {
+      return 'assertive';
+    }
+    if (isBooleanAttributeSet(this.off)) {
+      return 'off';
+    }
+    return 'polite';
   }
 
   @Input('clrAlertIcon')

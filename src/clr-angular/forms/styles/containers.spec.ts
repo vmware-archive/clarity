@@ -287,16 +287,16 @@ describe('Form layouts', () => {
 
   function verticalTests() {
     describe('text', () => {
-      it('control height', () => verifyHeight('#text', base * 11)); // 229.34
-      it('label height', () => verifyHeight('#text .clr-control-label', base * 4)); // 24
+      it('control height', () => verifyHeight('#text', base * 10)); // 229.34
+      it('label height', () => verifyHeight('#text .clr-control-label', base * 3)); // 24
       it('wrapper height', () => verifyHeight('#text .clr-input-wrapper', base * 4)); // 181.34
       it('input height', () => verifyHeight('#text .clr-input', base * 4)); // 20.12
       it('subtext height', () => verifyHeight('#text .clr-subtext', base * 2)); // 24
     });
 
     describe('checkbox', () => {
-      it('control height', () => verifyHeight('#checkbox', base * 19));
-      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#checkbox', base * 18));
+      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#checkbox .clr-control-container', base * 15));
       it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
@@ -305,8 +305,8 @@ describe('Form layouts', () => {
     });
 
     describe('checkbox inline', () => {
-      it('control height', () => verifyHeight('#checkbox-inline', base * 11));
-      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#checkbox-inline', base * 10));
+      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#checkbox-inline .clr-control-container', base * 7));
       it('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
@@ -316,8 +316,8 @@ describe('Form layouts', () => {
     });
 
     describe('radio', () => {
-      it('control height', () => verifyHeight('#radio', base * 19));
-      it('label height', () => verifyHeight('#radio .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#radio', base * 18));
+      it('label height', () => verifyHeight('#radio .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#radio .clr-control-container', base * 15));
       it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
@@ -326,8 +326,8 @@ describe('Form layouts', () => {
     });
 
     describe('radio inline', () => {
-      it('control height', () => verifyHeight('#radio-inline', base * 11));
-      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#radio-inline', base * 10));
+      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#radio-inline .clr-control-container', base * 7));
       it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
@@ -336,11 +336,11 @@ describe('Form layouts', () => {
     });
 
     describe('file', () => {
-      it('control height', () => verifyHeight('#file', 79, false));
-      it('label height', () => verifyHeight('#file .clr-control-label', base * 4));
-      it('wrapper height', () => verifyHeight('#file .clr-file-wrapper', 25, false));
+      it('control height', () => verifyHeight('#file', base * 12));
+      it('label height', () => verifyHeight('#file .clr-control-label', base * 3));
+      it('wrapper height', () => verifyHeight('#file .clr-file-wrapper', base * 4));
       it('file height', () => verifyHeight('#file .clr-file', 0));
-      it('file label height', () => verifyHeight('#file .clr-file-wrapper .clr-control-label', 25, false));
+      it('file label height', () => verifyHeight('#file .clr-file-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#file .clr-subtext', base * 2));
     });
 
@@ -350,8 +350,8 @@ describe('Form layouts', () => {
         fileInput = height('#file-plain input');
       });
       // @TODO Figure out why IE calculates inputs differently
-      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput + base * 9, false));
-      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 4));
+      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput + base * 8, false));
+      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
       it('subtext height', () => verifyHeight('#file-plain .clr-subtext', base * 2));
     });
@@ -362,8 +362,8 @@ describe('Form layouts', () => {
         textarea = height('#textarea textarea');
       });
       // @TODO Figure out why IE can't calculate things normally
-      itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea + base * 8, false));
-      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 4));
+      itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea + base * 7, false));
+      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
       itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', base * 2));
@@ -372,8 +372,8 @@ describe('Form layouts', () => {
     describe('select', () => {
       // Skip IE because it calculates something oddly
       // @TODO figure out why IE adds some pixels
-      itIgnore(['ie'], 'control height', () => verifyHeight('#select', base * 11));
-      it('label height', () => verifyHeight('#select .clr-control-label', base * 4));
+      itIgnore(['ie'], 'control height', () => verifyHeight('#select', base * 10));
+      it('label height', () => verifyHeight('#select .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#select .clr-select-wrapper', base * 4));
       it('select height', () => verifyHeight('#select select', base * 4));
       it('subtext height', () => verifyHeight('#select .clr-subtext', base * 2));
@@ -387,8 +387,8 @@ describe('Form layouts', () => {
       beforeEach(() => {
         multiselect = height('#multiselect select');
       });
-      it('control height', () => verifyHeight('#multiselect', multiselect + base * 7, false));
-      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#multiselect', multiselect + base * 6, false));
+      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false));
       it('select height', () => verifyHeight('#multiselect select', multiselect, false));
       it('subtext height', () => verifyHeight('#multiselect .clr-subtext', base * 2));
@@ -398,7 +398,7 @@ describe('Form layouts', () => {
   function horizontalTests() {
     describe('text', () => {
       it('control height', () => verifyHeight('#text', base * 7));
-      it('label height', () => verifyHeight('#text .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#text .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#text .clr-input-wrapper', base * 4));
       it('input height', () => verifyHeight('#text .clr-input', base * 4));
       it('subtext height', () => verifyHeight('#text .clr-subtext', base * 2));
@@ -406,7 +406,7 @@ describe('Form layouts', () => {
 
     describe('checkbox', () => {
       it('control height', () => verifyHeight('#checkbox', base * 15));
-      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#checkbox .clr-control-container', base * 15));
       it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
@@ -416,7 +416,7 @@ describe('Form layouts', () => {
 
     describe('checkbox inline', () => {
       it('control height', () => verifyHeight('#checkbox-inline', base * 7));
-      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#checkbox-inline .clr-control-container', base * 7));
       it('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
@@ -427,7 +427,7 @@ describe('Form layouts', () => {
 
     describe('radio', () => {
       it('control height', () => verifyHeight('#radio', base * 15));
-      it('label height', () => verifyHeight('#radio .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#radio .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#radio .clr-control-container', base * 15));
       it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
@@ -437,7 +437,7 @@ describe('Form layouts', () => {
 
     describe('radio inline', () => {
       it('control height', () => verifyHeight('#radio-inline', base * 7));
-      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 3));
       it('container height', () => verifyHeight('#radio-inline .clr-control-container', base * 7));
       it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
@@ -446,11 +446,11 @@ describe('Form layouts', () => {
     });
 
     describe('file', () => {
-      it('control height', () => verifyHeight('#file', 55, false));
-      it('label height', () => verifyHeight('#file .clr-control-label', base * 4));
-      it('wrapper height', () => verifyHeight('#file .clr-file-wrapper', 25, false));
+      it('control height', () => verifyHeight('#file', base * 9));
+      it('label height', () => verifyHeight('#file .clr-control-label', base * 3));
+      it('wrapper height', () => verifyHeight('#file .clr-file-wrapper', base * 4));
       it('file height', () => verifyHeight('#file .clr-file', 0));
-      it('file label height', () => verifyHeight('#file .clr-file-wrapper .clr-control-label', 25, false));
+      it('file label height', () => verifyHeight('#file .clr-file-wrapper .clr-control-label', base * 4));
       it('subtext height', () => verifyHeight('#file .clr-subtext', base * 2));
     });
 
@@ -461,7 +461,7 @@ describe('Form layouts', () => {
       });
       // @TODO Figure out IE calculations
       itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput + base * 5, false));
-      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 4, false));
+      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3, false));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
       it('subtext height', () => verifyHeight('#file-plain .clr-subtext', base * 2));
     });
@@ -473,7 +473,7 @@ describe('Form layouts', () => {
       });
       // @TODO Figure out why IE can't calculate things normally
       itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea + base * 4, false));
-      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
       itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', base * 2));
@@ -481,7 +481,7 @@ describe('Form layouts', () => {
 
     describe('select', () => {
       it('control height', () => verifyHeight('#select', base * 7));
-      it('label height', () => verifyHeight('#select .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#select .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#select .clr-select-wrapper', base * 4));
       it('select height', () => verifyHeight('#select select', base * 4));
       it('subtext height', () => verifyHeight('#select .clr-subtext', base * 2));
@@ -493,7 +493,7 @@ describe('Form layouts', () => {
         multiselect = height('#multiselect select');
       });
       it('control height', () => verifyHeight('#multiselect', multiselect + base * 3, false));
-      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 4, false));
+      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3, false));
       it('wrapper height', () => verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false));
       it('select height', () => verifyHeight('#multiselect select', multiselect, false));
       it('subtext height', () => verifyHeight('#multiselect .clr-subtext', base * 2));
@@ -504,16 +504,16 @@ describe('Form layouts', () => {
     // With compact, the subtext is 18px tall (12px line height, 6px margin-top), but if the
     // subtext wraps it would be taller.
     describe('text', () => {
-      it('control height', () => verifyHeight('#text', base * 4.5, false));
-      it('label height', () => verifyHeight('#text .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#text', base * 4));
+      it('label height', () => verifyHeight('#text .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#text .clr-input-wrapper', base * 4));
       it('input height', () => verifyHeight('#text .clr-input', base * 4));
       it('subtext height', () => verifyHeight('#text .clr-subtext', base * 3));
     });
 
     describe('checkbox', () => {
-      it('control height', () => verifyHeight('#checkbox', base * 4.5, false));
-      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#checkbox', base * 4));
+      it('label height', () => verifyHeight('#checkbox .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#checkbox .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox .clr-checkbox', 16, false));
       it('checkbox label height', () => verifyHeight('#checkbox .clr-checkbox-wrapper .clr-control-label', base * 4));
@@ -521,8 +521,8 @@ describe('Form layouts', () => {
     });
 
     describe('checkbox inline', () => {
-      it('control height', () => verifyHeight('#checkbox-inline', base * 4.5, false));
-      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#checkbox-inline', base * 4));
+      it('label height', () => verifyHeight('#checkbox-inline .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#checkbox-inline .clr-checkbox-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#checkbox-inline .clr-checkbox', 16, false));
       it('checkbox label height', () =>
@@ -531,8 +531,8 @@ describe('Form layouts', () => {
     });
 
     describe('toggle', () => {
-      it('control height', () => verifyHeight('#toggle', base * 4.5, false));
-      it('label height', () => verifyHeight('#toggle .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#toggle', base * 4));
+      it('label height', () => verifyHeight('#toggle .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#toggle .clr-toggle-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#toggle .clr-checkbox', 16, false));
       it('checkbox label height', () => verifyHeight('#toggle .clr-toggle-wrapper .clr-control-label', base * 4));
@@ -540,8 +540,8 @@ describe('Form layouts', () => {
     });
 
     describe('toggle inline', () => {
-      it('control height', () => verifyHeight('#toggle-inline', base * 4.5, false));
-      it('label height', () => verifyHeight('#toggle-inline .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#toggle-inline', base * 4));
+      it('label height', () => verifyHeight('#toggle-inline .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#toggle-inline .clr-toggle-wrapper', base * 4));
       it('checkbox height', () => verifyHeight('#toggle-inline .clr-checkbox', 16, false));
       it('checkbox label height', () =>
@@ -550,8 +550,8 @@ describe('Form layouts', () => {
     });
 
     describe('radio', () => {
-      it('control height', () => verifyHeight('#radio', base * 4.5, false));
-      it('label height', () => verifyHeight('#radio .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#radio', base * 4));
+      it('label height', () => verifyHeight('#radio .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#radio .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio .clr-radio-wrapper .clr-control-label', base * 4));
@@ -559,8 +559,8 @@ describe('Form layouts', () => {
     });
 
     describe('radio inline', () => {
-      it('control height', () => verifyHeight('#radio-inline', base * 4.5, false));
-      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#radio-inline', base * 4));
+      it('label height', () => verifyHeight('#radio-inline .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#radio-inline .clr-radio-wrapper', base * 4));
       it('radio height', () => verifyHeight('#radio-inline .clr-radio', 16, false));
       it('radio label height', () => verifyHeight('#radio-inline .clr-radio-wrapper .clr-control-label', base * 4));
@@ -568,8 +568,8 @@ describe('Form layouts', () => {
     });
 
     describe('file', () => {
-      it('control height', () => verifyHeight('#file', base * 4.5, false));
-      it('label height', () => verifyHeight('#file .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#file', base * 4));
+      it('label height', () => verifyHeight('#file .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#file .clr-file-wrapper', base * 4));
       it('file height', () => verifyHeight('#file .clr-file', 0));
       it('file label height', () => verifyHeight('#file .clr-file-wrapper .clr-control-label', base * 4));
@@ -583,9 +583,8 @@ describe('Form layouts', () => {
         fileInput = height('#file-plain input');
       });
       // @TODO Figure out why IE calculates differently
-      // @TODO Firefox on Windows 10 will make the test fail.
-      itIgnore(['ie', 'firefox'], 'control height', () => verifyHeight('#file-plain', fileInput, false));
-      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 4, false));
+      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput, false));
+      it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3, false));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
       itIgnore(['ie'], 'subtext height', () => verifyHeight('#file-plain .clr-subtext', fileInput, false));
     });
@@ -597,15 +596,15 @@ describe('Form layouts', () => {
       });
       // @TODO Figure out why IE can't calculate things normally
       itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea, false));
-      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 4));
+      it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
       itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
       itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', textarea - base, false));
     });
 
     describe('select', () => {
-      it('control height', () => verifyHeight('#select', base * 4.5, false));
-      it('label height', () => verifyHeight('#select .clr-control-label', base * 4));
+      it('control height', () => verifyHeight('#select', base * 4));
+      it('label height', () => verifyHeight('#select .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#select .clr-select-wrapper', base * 4));
       it('select height', () => verifyHeight('#select select', base * 4));
       it('subtext height', () => verifyHeight('#select .clr-subtext', base * 3));
@@ -617,7 +616,7 @@ describe('Form layouts', () => {
         multiselect = height('#multiselect select');
       });
       it('control height', () => verifyHeight('#multiselect', multiselect, false));
-      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 4, false));
+      it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3, false));
       // @TODO Figure out IE calculations
       itIgnore(['ie'], 'wrapper height', () =>
         verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false)

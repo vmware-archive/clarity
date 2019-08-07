@@ -178,7 +178,7 @@ table.buttons-cmp-table td {
     flex: 0 0 108px;
     padding-left: $bl-1_5;
     position: relative;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
   }
   .dox-content-panel .dox-content {
     -ms-flex: 1 1 auto;
@@ -205,7 +205,7 @@ table.buttons-cmp-table td {
     }
     li {
       display: inline-block;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid hsl(0, 0%, 80%);
       &:last-child {
         border-right: 0 none;
       }
@@ -223,9 +223,9 @@ table.buttons-cmp-table td {
       padding-left: $bl-0_5 + 1;
     }
     a.active {
-      color: #000;
+      color: hsl(0, 0%, 0%);
       &:hover {
-        color: #000;
+        color: hsl(0, 0%, 0%);
       }
     }
   }
@@ -264,13 +264,13 @@ table.buttons-cmp-table td {
     }
   }
   h3#examples {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid hsl(0, 0%, 80%);
     padding-top: 2rem;
   }
 }
 
 .clrweb-tablink-scrolled.layout-documentation .dox-content {
-  border-top-color: #ccc !important;
+  border-top-color: hsl(0, 0%, 80%) !important;
 }
 
 @media (max-width: 768px) {
@@ -376,7 +376,7 @@ _:-ms-fullscreen,
   margin-top: $bl-1_0;
   &-block {
     min-height: 145px;
-    background: #eee;
+    background: hsl(0, 0%, 93%);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -391,7 +391,7 @@ _:-ms-fullscreen,
     width: 100%;
 
     &.other-color {
-      background: #c1cdd4;
+      background: hsl(202, 18%, 79%);
     }
 
     &.not-centered {
@@ -401,8 +401,8 @@ _:-ms-fullscreen,
     }
 
     &.is-colorblock {
-      background: #853fb3;
-      color: #fff;
+      background: hsl(276, 48%, 47%);
+      color: hsl(0, 0%, 100%);
       font-size: $bl-1_0;
       font-weight: 400;
       padding: 0 $bl-1_0;
@@ -449,7 +449,7 @@ _:-ms-fullscreen,
       content: ' ';
       display: block;
       width: 100%;
-      background: #318700;
+      background: hsl(98, 100%, 26%);
       height: 8px;
       position: absolute;
       top: -20px;
@@ -457,19 +457,19 @@ _:-ms-fullscreen,
     }
   }
   &.is-dont-block &-text::before {
-    background: #e12200;
+    background: hsl(9, 100%, 44%);
   }
   &.is-warn-block &-text::before {
-    background: #eb8d00;
+    background: hsl(36, 100%, 46%);
   }
   &.is-do-block &-do-dont {
-    color: #318700;
+    color: hsl(98, 100%, 26%);
   }
   &.is-dont-block &-do-dont {
-    color: #e12200;
+    color: hsl(9, 100%, 44%);
   }
   &.is-warn-block &-warn {
-    color: #eb8d00;
+    color: hsl(36, 100%, 46%);
   }
 }
 
@@ -515,7 +515,7 @@ _:-ms-fullscreen,
 
 .clrweb-DoxVersusBox {
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid hsl(0, 0%, 80%);
   border-radius: 3px;
   margin-top: $bl-2_0;
   @include clrwebMakeFlexbox;
@@ -528,12 +528,12 @@ _:-ms-fullscreen,
     -ms-flex: 0 0 (3 * $bl-1_0);
     flex: 0 0 (3 * $bl-1_0);
     min-height: 4 * $bl-1_0;
-    background: #eee;
+    background: hsl(0, 0%, 93%);
     @include clrwebMakeFlexbox(center);
     clr-icon {
       height: $bl-1_0;
       width: $bl-1_0;
-      color: #853fb3;
+      color: hsl(276, 48%, 47%);
       margin: 0 auto;
       display: block;
     }
@@ -554,8 +554,8 @@ _:-ms-fullscreen,
     height: $vs-dimension;
     width: $vs-dimension;
     display: block;
-    background: #853fb3;
-    color: #fff;
+    background: hsl(276, 48%, 47%);
+    color: hsl(0, 0%, 100%);
     line-height: $vs-dimension;
     border-radius: 49%;
     font-size: 14px;
@@ -632,7 +632,7 @@ _:-ms-fullscreen,
     height: 588px;
   }
   .backdrop-example-container {
-    background: #002538;
+    background: hsl(200, 100%, 11%);
     height: 100%;
     width: 100%;
   }
@@ -668,13 +668,13 @@ _:-ms-fullscreen,
 
 .clr-demo-container {
   padding: 24px 48px;
-  background-color: #eeeeee;
+  background-color: hsl(0, 0%, 93%);
 
   &__content {
     padding: 12px;
     width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 80%);
   }
 }
 

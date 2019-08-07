@@ -38,7 +38,7 @@
 
     &.spinner-inverse {
       // TODO: get ux input on direction here
-      background: generateSpinnerIcon($clr-spinner-inverse-bg-color);
+      background: generateSpinnerIcon($clr-spinner-inverse-bg-color, #74c1e2);
     }
 
     &.spinner-check {

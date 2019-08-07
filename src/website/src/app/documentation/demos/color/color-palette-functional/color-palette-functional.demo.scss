@@ -12,13 +12,13 @@
 
 .legend {
   &:not(.dark-text) {
-    color: #fff;
+    color: hsl(0, 0%, 100%);
   }
 }
 
 li.card-swatch {
-  background: #ccc;
-  color: #000;
+  background: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 0%);
   margin: 0;
   padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
   font-size: 16px;
@@ -68,7 +68,7 @@ li.card-swatch {
     }
   }
   &:not(.dark-text) {
-    color: #fff;
+    color: hsl(0, 0%, 100%);
   }
   &.copied {
     .card-swatch-content .rgb-value .copied-indication {
@@ -91,7 +91,7 @@ li.card-swatch {
 .clr-row {
   margin-top: 0.5rem;
   &.dark {
-    background: #1b2a32;
+    background: hsl(201, 30%, 15%);
     padding-bottom: 1rem;
   }
 }

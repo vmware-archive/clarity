@@ -34,7 +34,7 @@ svg {
   }
   text.copy-text {
     opacity: 0;
-    fill: #555;
+    fill: hsl(0, 0%, 33%);
     transition: all 0.2s ease-in-out;
     &.notify {
       opacity: 1;

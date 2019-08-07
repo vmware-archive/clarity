@@ -106,7 +106,7 @@ $clr-app-alert-info-close-icon-hover-opacity: $clr-app-alert-close-icon-hover-op
 // App Warning type
 // Usage: ./_alert.clarity.scss
 // TODO-UX: why is the next color not in our color palettes?
-$clr-app-alert-warning-bg-color: #c25400 !default;
+$clr-app-alert-warning-bg-color: hsl(26, 100%, 38%) !default;
 $clr-app-alert-warning-icon-color: $clr-app-alert-close-icon-color !default;
 $clr-app-alert-warning-border-color: none !default;
 $clr-app-alert-warning-font-color: $clr-app-level-alert-color !default;

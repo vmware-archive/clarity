@@ -12,7 +12,7 @@
   // without specifying z-index; IE11 is acting goofy.
   z-index: 2;
   &.inverse {
-    background: #414957;
+    background: hsl(218, 14%, 30%);
     margin: 0 0 $clr_baselineRem_2;
   }
   clr-icon {

@@ -8,7 +8,7 @@ h2 {
   padding: 0 $clr_baselineRem_0_5;
   margin-top: 0;
   &.deactivated {
-    color: #999;
+    color: hsl(0, 0%, 60%);
   }
 }
 
@@ -40,7 +40,7 @@ h2 {
     width: calc(100% - 26px);
     height: 24px;
     display: block;
-    background-color: #fff;
+    background-color: hsl(0, 0%, 100%);
     z-index: 3;
     transform: translateZ(0);
   }
@@ -69,7 +69,7 @@ h2 {
     border-width: 1px;
     border-bottom-width: 0;
     border-bottom-color: transparent;
-    background-color: #fff;
+    background-color: hsl(0, 0%, 100%);
     outline: 0 none;
   }
 

@@ -6,7 +6,7 @@
 $clr-datagrid-icon-size: 0.583333rem;
 $clr-datagrid-action-arrow-size: 0.25rem;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-$clr-datagrid-font-color: #adbbc4 !default;
+$clr-datagrid-font-color: hsl(203, 16%, 72%) !default;
 $clr-datagrid-default-border-color: $clr-color-neutral-400 !default;
 
 $clr-datagrid-row-hover: $clr-color-neutral-200 !default;
@@ -19,7 +19,7 @@ $clr-datagrid-pagination-input-border-focus-color: $clr-color-action-400 !defaul
 $clr-datagrid-popover-bg-color: $clr-color-neutral-0 !default;
 $clr-datagrid-popover-border-color: $clr-datagrid-default-border-color !default;
 $clr-datagrid-action-popover-hover-color: $clr-color-neutral-200 !default;
-$clr-datagrid-loading-background: rgba($clr-color-neutral-0, 0.6) !default;
+$clr-datagrid-loading-background: hsla(0, 0%, 0%, 0.6) !default;
 $clr-datagrid-row-selected: $clr-color-neutral-1000 !default;
 $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
 

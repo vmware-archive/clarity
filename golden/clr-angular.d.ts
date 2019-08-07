@@ -91,6 +91,7 @@ export declare class ClrAlert {
     readonly alertClass: string;
     alertIconShape: string;
     alertType: string;
+    assertive: boolean;
     cdr: ChangeDetectorRef;
     closable: boolean;
     clrCloseButtonAriaLabel: string;
@@ -100,6 +101,9 @@ export declare class ClrAlert {
     readonly isHidden: boolean;
     isSmall: boolean;
     multiAlertService: MultiAlertService;
+    off: boolean;
+    polite: boolean;
+    readonly setAriaLive: string;
     constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
     close(): void;
     open(): void;

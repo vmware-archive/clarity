@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 @import '../../../../styles/clarity-imports';
@@ -47,10 +47,10 @@ figure {
     border-top: $clr_baselineRem_0_25 solid currentColor;
     padding: $clr_baselineRem_0_125 0;
     &.do {
-      color: #318700;
+      color: hsl(98, 100%, 26%);
     }
     &.dont {
-      color: #e12200;
+      color: hsl(9, 100%, 44%);
     }
   }
 }

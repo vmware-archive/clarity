@@ -41,7 +41,7 @@ ul.whats-new-highlights {
       font-weight: normal;
       font-size: 18px;
       margin-top: $bl-2_0;
-      color: #000;
+      color: hsl(0, 0%, 0%);
       margin-bottom: 4px;
     }
   }
@@ -142,9 +142,9 @@ ul.whats-new-highlights {
 }
 
 hr {
-  color: #ddd;
+  color: hsl(0, 0%, 87%);
   border: 0 none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid hsl(0, 0%, 87%);
 }
 
 @mixin responsiveWhatsNewMediaBlocks {

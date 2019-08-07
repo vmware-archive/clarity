@@ -20,12 +20,20 @@ $clr-header-outline-offset: -0.208333rem !default;
 $clr-header-clarity-icons-size: 1rem !default;
 $clr-header-nav-text-horizontal-padding: 1rem !default;
 $clr-header-nav-text-vertical-padding: 0.75rem !default;
-$clr-header-2-bg-color: #485969 !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-2-bg-color: hsl(
+  209,
+  19%,
+  35%
+) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
 $clr-header-3-bg-color: $clr-color-secondary-action-1000 !default;
 $clr-header-4-bg-color: $clr-color-action-700 !default;
 $clr-header-5-bg-color: $clr-color-action-800 !default;
 $clr-header-6-bg-color: $clr-color-action-1000 !default;
-$clr-header-7-bg-color: #314351 !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-7-bg-color: hsl(
+  206,
+  25%,
+  25%
+) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
 
 $clr-header-font-color: $clr-color-neutral-50 !default;
 // @deprecated in 2.0 $clr-header-textColor to be replaced by $clr-header-font-color

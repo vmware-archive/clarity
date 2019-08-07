@@ -11,8 +11,8 @@
 }
 
 li.card-swatch {
-  background: #ccc;
-  color: #000;
+  background: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 0%);
   margin: 0;
   padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
   font-size: 16px;
@@ -54,7 +54,7 @@ li.card-swatch {
     }
   }
   &:not(.dark-text) {
-    color: #fff;
+    color: hsl(0, 0%, 100%);
   }
   &:not(:first-child) {
     cursor: pointer;

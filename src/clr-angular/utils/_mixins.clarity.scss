@@ -15,8 +15,8 @@ $imported-modules: () !default;
 
 //TODO: Should these mixins be moved into their own separate file?
 //Outline Styles
-$clr-outline-color: #6bc1e3;
-$clr-outline-color-inverse: rgba(255, 255, 255, 0.09);
+$clr-outline-color: hsl(197, 68%, 65%) !default;
+$clr-outline-color-inverse: hsla(0, 0%, 100%, 0.09) !default;
 $clr-outline-blur: 2px;
 $clr-outline-spread: 2px;
 

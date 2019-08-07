@@ -1,9 +1,9 @@
 @mixin clarityWebBoxShadow {
-  box-shadow: 0 3px 0 0 #d7d7d7;
+  box-shadow: 0 3px 0 0 hsl(0, 0%, 84%);
 }
 
 @mixin clarityHeaderBackground {
-  background-color: #002538;
+  background-color: hsl(200, 100%, 11%);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;

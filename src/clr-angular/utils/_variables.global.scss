@@ -43,7 +43,7 @@ $clr-outline-offset: -5px;
 // App bg color
 $clr-global-app-background: $clr-color-neutral-50 !default;
 // App selection color
-$clr-global-selection-color: #d9e4ea !default;
+$clr-global-selection-color: hsl(201, 29%, 88%) !default;
 $clr-selection-color: $clr-global-selection-color !default; // $clr-selection-color is deprecated and will be removed.
 $clr-global-on-selection-color: $clr-color-neutral-1000 !default;
 

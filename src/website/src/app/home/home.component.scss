@@ -64,7 +64,7 @@
     font-weight: 200;
     line-height: $bl-1_5;
     margin: $bl-0_25 5px;
-    color: #000;
+    color: hsl(0, 0%, 0%);
     max-width: 624px;
   }
 
@@ -135,7 +135,7 @@
     padding: $bl-2_0 0 $bl-1_0;
     border-radius: 3px;
     margin-top: baselineRem(7) * -1;
-    border: 1px solid #d7d7d7;
+    border: 1px solid hsl(0, 0%, 84%);
 
     @include clarityWebBoxShadow;
 
@@ -294,7 +294,7 @@ a.home-contact_link {
   position: relative;
   padding-left: $bl-2_0 + $bl-0_25;
 
-  color: #fff;
+  color: hsl(0, 0%, 100%);
 
   & > .img {
     display: block;

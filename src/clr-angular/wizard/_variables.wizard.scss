@@ -16,8 +16,8 @@ $clr-wizard-footer-height: 3.5rem !default;
 $clr-wizard-stepnav-active-bgcolor: $clr-global-selection-color !default;
 $clr-wizard-header-action-color: $clr-color-neutral-600 !default;
 $clr-wizard-header-action-color--hovered: $clr-color-neutral-1000 !default;
-$clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) rgba(0, 0, 0, 0.2);
-$clr-wizard-step-nav-border-color: #e4e4e4 !default;
+$clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) hsla(0, 0%, 0%, 0.2);
+$clr-wizard-step-nav-border-color: hsl(0, 0%, 89%) !default;
 $clr-wizard-border-radius: $clr-global-borderradius !default;
 $clr-wizard-stepnav-active-border-radius: $clr-wizard-border-radius !default;
 

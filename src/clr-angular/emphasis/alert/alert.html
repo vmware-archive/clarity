@@ -11,7 +11,7 @@
     [class.alert-hidden]="isHidden"
     [class.alert-sm]="isSmall"
     [class.alert-app-level]="isAppLevel"
-    role="alert">
+    [attr.aria-live]="setAriaLive">
     <div class="alert-items">
         <ng-content></ng-content>
     </div>

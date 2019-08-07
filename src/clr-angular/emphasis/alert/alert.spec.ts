@@ -19,7 +19,11 @@ const CLOSE_ARIA_LABEL = 'Close Test Alert';
             [clrAlertClosable]="isClosable"
             [(clrAlertClosed)]="closed"
             [clrAlertAppLevel]="isAppLevel"
-            [clrCloseButtonAriaLabel]="closeAriaLabel">
+            [clrCloseButtonAriaLabel]="closeAriaLabel"
+            [clrOff]="clrOff"
+            [clrAssertive]="clrAssertive"
+            [clrPolite]="clrPolite"
+            >
             <div class="alert-item">
                 <span class="alert-text">
                 {{alertMsg}}
@@ -38,6 +42,11 @@ class TestComponent {
   closed: boolean = false;
   isAppLevel: boolean = false;
   closeAriaLabel: string = CLOSE_ARIA_LABEL;
+
+  // AriaLive
+  clrOff: boolean = false;
+  clrAssertive: boolean = false;
+  clrPolite: boolean = false;
 
   alertMsg: string = 'This is an alert!';
 }
@@ -121,21 +130,46 @@ export default function(): void {
       expect(compiled.querySelector('.alert')).toBeNull();
     });
 
-    it('Has an ARIA role of alert', () => {
-      const myAlert: HTMLElement = compiled.querySelector('.alert');
-      expect(myAlert.getAttribute('role')).toBe('alert');
-    });
-
     it('should be able to set close button text', () => {
       fixture.componentInstance.isClosable = true;
       fixture.detectChanges();
       expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(CLOSE_ARIA_LABEL);
     });
 
-    it('should not have an aria-live when using role alert', () => {
-      // https://www.w3.org/TR/wai-aria-1.1/#alert
+    it("should have an aria-live value of polite when you don't apply any attribute", () => {
       const myAlert: HTMLElement = compiled.querySelector('.alert');
-      expect(myAlert.getAttribute('aria-live')).toBe(null);
+      expect(myAlert.getAttribute('aria-live')).toBe('polite');
+    });
+
+    it('should have an aria-live value of off when apply clrOff', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      fixture.componentInstance.clrOff = true;
+      fixture.detectChanges();
+      expect(myAlert.getAttribute('aria-live')).toBe('off');
+    });
+
+    it('should have an aria-live value of assertive when apply clrAssertive', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      fixture.componentInstance.clrAssertive = true;
+      fixture.detectChanges();
+      expect(myAlert.getAttribute('aria-live')).toBe('assertive');
+    });
+
+    it('should follow the aria-live priority when all of them are set', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      fixture.componentInstance.clrAssertive = true;
+      fixture.componentInstance.clrPolite = true;
+      fixture.componentInstance.clrOff = true;
+      fixture.detectChanges();
+      expect(myAlert.getAttribute('aria-live')).toBe('assertive');
+    });
+
+    it('should set clrPolite and clrOff - clrOff will be used', () => {
+      const myAlert: HTMLElement = compiled.querySelector('.alert');
+      fixture.componentInstance.clrPolite = true;
+      fixture.componentInstance.clrOff = true;
+      fixture.detectChanges();
+      expect(myAlert.getAttribute('aria-live')).toBe('off');
     });
 
     it('shows and hides the alert based on the clrAlertClosed input', () => {

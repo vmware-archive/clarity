@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,7 +36,7 @@ const EXAMPLE = `
                 [clrSbNotifyChange]="block.content!=='Content '+ (blockIndex+1)">
                 <clr-stack-label>{{block.title}}</clr-stack-label>
                 <clr-stack-content>
-                    <input type="text" [(ngModel)]="block.content" />
+                    <input type="text" [(ngModel)]="block.content" class="clr-input"/>
                 </clr-stack-content>
 
                 <clr-stack-block 
@@ -44,7 +44,7 @@ const EXAMPLE = `
                     [clrSbNotifyChange]="child.content!=='Sub-content '+ (blockChildIndex+1)">
                     <clr-stack-label>{{child.title}}</clr-stack-label>
                     <clr-stack-content>
-                        <input type="text" [(ngModel)]="child.content" />
+                        <input type="text" [(ngModel)]="child.content" class="clr-input"/>
                     </clr-stack-content>
                 </clr-stack-block>
             </clr-stack-block>

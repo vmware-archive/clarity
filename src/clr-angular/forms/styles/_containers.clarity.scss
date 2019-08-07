@@ -28,7 +28,7 @@
     color: $clr-forms-label-color;
     @include clr-getTypePropertiesForDomElement(form_label, (font-size));
     font-weight: 600;
-    line-height: $clr-forms-baseline * 4;
+    line-height: $clr-forms-baseline * 3;
   }
 
   .clr-control-container {

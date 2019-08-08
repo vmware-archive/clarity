@@ -173,7 +173,7 @@
         white-space: nowrap;
 
         &:focus {
-          outline-offset: -0.208333rem; //So that the outline styles aren't hidden because of the browser
+          outline-offset: -1 * $clr_baselineRem_5px; //So that the outline styles aren't hidden because of the browser
         }
 
         @include header-nav-appearance();

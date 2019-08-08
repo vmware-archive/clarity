@@ -7,7 +7,7 @@ $clr-tooltip-background-color: $clr-color-neutral-1000 !default;
 $clr-tooltip-border-radius: $clr_baselineRem_0_125 !default;
 $clr-tooltip-default-width: 10rem !default;
 $arrow-height: $clr_baselineRem_0_25 !default;
-$arrow-width: 0.208333rem !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
+$arrow-width: $clr_baselineRem_5px !default;
 $clr-tooltip-adjusted-margin: 0.666667rem !default;
 
 $clr-tooltip-color: $clr-color-neutral-0 !default;

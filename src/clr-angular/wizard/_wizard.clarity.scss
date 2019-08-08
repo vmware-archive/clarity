@@ -36,7 +36,7 @@
       flex: 0 0 auto;
       width: 100%;
       // right padding nudged a bit to better align icons
-      padding: $clr-wizard-default-space ($clr-wizard-default-space - 0.208333rem) $clr_baselineRem_0_25
+      padding: $clr-wizard-default-space ($clr-wizard-default-space - $clr_baselineRem_5px) $clr_baselineRem_0_25
         $clr-wizard-default-space;
       display: flex;
       flex-direction: row-reverse;

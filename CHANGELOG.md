@@ -1,21 +1,59 @@
+<a name="2.1.1"></a>
+
+## [2.1.1](https://github.com/vmware/clarity/compare/2.1.0...v2.1.1) (2019-08-08)
+
+### Bug Fixes
+
+* add aria-label for alert close button ([9e0c16e](https://github.com/vmware/clarity/commit/9e0c16e))
+* Sorting issues at datagrid ([adebe5d](https://github.com/vmware/clarity/commit/adebe5d))
+* clr-base imports and build ([4132a33](https://github.com/vmware/clarity/commit/4132a33))
+* css vars pony fill needs to run on module init ([7506e65](https://github.com/vmware/clarity/commit/7506e65))
+* enable side effect imports ([9f1b414](https://github.com/vmware/clarity/commit/9f1b414))
+* **datepicker:** remove circular reference ([5c4e4de](https://github.com/vmware/clarity/commit/5c4e4de))
+* update release note to remove reference to k8s ([9817718](https://github.com/vmware/clarity/commit/9817718))
+* updates to clr/base to support ie11 ([6616946](https://github.com/vmware/clarity/commit/6616946))
+* **a11y:** make disabled dropdown item focusable ([9a905f7](https://github.com/vmware/clarity/commit/9a905f7))
+* **datagrid:** mixed expandable non expandable bug ([1a50a08](https://github.com/vmware/clarity/commit/1a50a08))
+* **modal:** tab only focus style ([33684ef](https://github.com/vmware/clarity/commit/33684ef)), closes [#3642](https://github.com/vmware/clarity/issues/3642)
+* **stack-view:** editable stack view form fields looked unstyled in dev app ([99571d5](https://github.com/vmware/clarity/commit/99571d5))
+* **stepper:** aria-live message for only errors ([59f830a](https://github.com/vmware/clarity/commit/59f830a))
+* **stepper:** focus management ([6d20b04](https://github.com/vmware/clarity/commit/6d20b04))
+* **wizard:** prevent closing non closable wizards ([5a4167f](https://github.com/vmware/clarity/commit/5a4167f)), closes [#3499](https://github.com/vmware/clarity/issues/3499)
+
+### Code Refactoring
+
+* **i18n:** replace original provider with new implementation ([d293c8f](https://github.com/vmware/clarity/commit/d293c8f))
+
+### Features
+
+* added custom properties test page to dev app ([9c91182](https://github.com/vmware/clarity/commit/9c91182))
+* clrProgressBar new component ([971bd1d](https://github.com/vmware/clarity/commit/971bd1d))
+
+### BREAKING CHANGES
+
+* **i18n:** The previous i18n service would get removed from a production build in Angular since it wasn't
+  referenced. To address this, there is now a service that Clarity provides itself and you can pass a custom,
+  new localized set of strings into the service instead of trying to use the provider tree in Angular.
+  This will be helpful to future clr-base.
+
 <a name="2.1.0"></a>
 
 # [2.1.0](https://github.com/vmware/clarity/compare/v2.0.2...2.1.0) (2019-07-25)
 
 ### Bug Fixes
 
+* **login:** add labels for screen readers to form login controls ([6604ba6](https://github.com/vmware/clarity/commit/6604ba6)), closes [#3522](https://github.com/vmware/clarity/issues/3522)
 * adding labels to datagrid single & expandable column ([dc1dc2b](https://github.com/vmware/clarity/commit/dc1dc2b))
-* change clrSpinner API ([256df22](https://github.com/vmware/clarity/commit/256df22))
 * **datagrid:** input on hideable column ([3b77397](https://github.com/vmware/clarity/commit/3b77397))
 * **forms:** describe by for input validation errors ([730e080](https://github.com/vmware/clarity/commit/730e080)), closes [#3561](https://github.com/vmware/clarity/issues/3561)
-* **login:** add labels for screen readers to form login controls ([6604ba6](https://github.com/vmware/clarity/commit/6604ba6)), closes [#3522](https://github.com/vmware/clarity/issues/3522)
-* **ng:** dropdown item should add disabled attribute if set by input ([bcd032c](https://github.com/vmware/clarity/commit/bcd032c)), closes [#3634](https://github.com/vmware/clarity/issues/3634)
-* **stepper:** remove interstitial content ([c58007e](https://github.com/vmware/clarity/commit/c58007e)), closes [#3560](https://github.com/vmware/clarity/issues/3560)
 * adding the text-edit set to the svg icon build script ([b7d0bef](https://github.com/vmware/clarity/commit/b7d0bef))
 * attempt to fix github PR template ([6bd0fcb](https://github.com/vmware/clarity/commit/6bd0fcb))
+* change clrSpinner API ([256df22](https://github.com/vmware/clarity/commit/256df22))
 * dropdown item count by screen reader + docs update ([5fd4fd0](https://github.com/vmware/clarity/commit/5fd4fd0))
 * reverting app-level orange alerts to intended color ([#3612](https://github.com/vmware/clarity/issues/3612)) ([a4b63da](https://github.com/vmware/clarity/commit/a4b63da)), closes [#3604](https://github.com/vmware/clarity/issues/3604)
 * Update line-height for clr-control-label ([f8cf498](https://github.com/vmware/clarity/commit/f8cf498))
+* **ng:** dropdown item should add disabled attribute if set by input ([bcd032c](https://github.com/vmware/clarity/commit/bcd032c)), closes [#3634](https://github.com/vmware/clarity/issues/3634)
+* **stepper:** remove interstitial content ([c58007e](https://github.com/vmware/clarity/commit/c58007e)), closes [#3560](https://github.com/vmware/clarity/issues/3560)
 
 ### Features
 

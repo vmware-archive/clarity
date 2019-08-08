@@ -57,10 +57,6 @@ ClarityIconElement.prototype._setIconSize = function(size: string) {
   }
 };
 
-ClarityIconElement.prototype._setRoleAttr = function(role: string) {
-  this.setAttribute('role', role);
-};
-
 ClarityIconElement.prototype._normalizeShape = function(value: string): string {
   return value.split(/\s/)[0].toLowerCase();
 };

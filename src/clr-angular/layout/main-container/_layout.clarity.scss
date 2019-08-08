@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: $clr-global-app-background;
+    @include css-var(background, clr-global-app-background, $clr-global-app-background, $clr-use-custom-properties);
 
     .alert.alert-app-level {
       flex: 0 0 auto;

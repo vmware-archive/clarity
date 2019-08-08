@@ -12,9 +12,6 @@ $clr-label-borderwidth: $clr-global-borderwidth !default;
 // - ./_labels.clarity.scss
 $clr-label-font-color-light: $clr-color-neutral-700 !default;
 $clr-label-font-color-dark: $clr-color-neutral-1000 !default;
-// TWO DEPRECATED VARS BELOW
-$clr-label-font-color: $clr-label-font-color-light !default;
-$clr-label-font-color-contrast: $clr-label-font-color-dark !default;
 $clr-label-default-border-color: $clr-color-neutral-600 !default;
 
 // TYPOGRAPHIC STYLES
@@ -58,7 +55,19 @@ $clr-label-danger-bg-color: $clr-color-danger-100 !default;
 $clr-label-danger-font-color: $clr-color-danger-900 !default;
 $clr-label-danger-border-color: $clr-color-danger-200 !default;
 
-@function getLabelColor($type: gray, $property: color) {
+@function getLabelCssVarName($type: gray, $prop: color) {
+  @if $prop == color {
+    @return #{'clr-label-' + $type + '-font-' + $prop};
+  } @else {
+    @return #{'clr-label-' + $type + '-' + $prop};
+  }
+}
+
+@function getLabelColor($type: gray, $property: color, $var-type: 'sass-var') {
+  @if $var-type == 'css-var' {
+    @return getLabelCssVarName($type, $property);
+  }
+
   @if $type == gray {
     @return lookupGrayLabelColor($property);
   }

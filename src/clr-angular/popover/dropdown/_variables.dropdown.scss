@@ -36,8 +36,6 @@ $clr-dropdown-header-letter-spacing: $clr-p4-letter-spacing !default;
 // Usage: ../popover/dropdown/_menu-mixins.clarity.scss
 // Dropdown Item
 $clr-dropdown-item-color: $clr-color-neutral-700 !default;
-// @deprecated in 2.0 $clr-dropdown-item-text-color to be replaced by $clr-dropdown-item-color
-$clr-dropdown-item-text-color: $clr-dropdown-item-color !default;
 $clr-dropdown-item-font-size: $clr-p1-font-size !default;
 $clr-dropdown-item-font-weight: $clr-p1-font-weight !default;
 $clr-dropdown-item-letter-spacing: $clr-p1-letter-spacing !default;

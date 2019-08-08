@@ -4,8 +4,8 @@
 
 @include exports('forms.input-group') {
   .clr-input-group {
-    @include form-fields-appearance($clr-forms-border-color);
-    @include input-border-bottom-animation($clr-forms-focused-color);
+    @include form-fields-appearance();
+    @include input-border-bottom-animation();
     padding-right: $clr-forms-baseline * 4;
     max-width: calc(100% - #{$clr_baselineRem_1});
     height: $clr_baselineRem_1;
@@ -28,7 +28,7 @@
 
     .clr-input-group-icon-action {
       @include clr-no-styles-button();
-      color: $clr-forms-focused-color;
+      @include css-var(color, clr-forms-focused-color, $clr-forms-focused-color, $clr-use-custom-properties);
       padding: 0 $clr-forms-baseline * 1.5;
     }
   }
@@ -38,8 +38,17 @@
   }
 
   .clr-error .clr-input-group {
-    border-bottom-color: $clr-forms-invalid-color;
-    @include input-border-bottom-animation($clr-forms-invalid-color);
+    @include css-var(
+      border-bottom-color,
+      clr-forms-invalid-color,
+      $clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+    @include input-border-bottom-animation(
+      $clr-forms-invalid-color,
+      clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
     padding-right: $clr-forms-baseline;
   }
 

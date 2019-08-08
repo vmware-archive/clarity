@@ -4,6 +4,8 @@
 
 // @deprecated Bootstrap dependencies are deprecated since 1.0. Review for removal of this file before 2.0
 // (note that there is a section at the bottom that's not related to bootstap but may also be candidate for removal by 2.0)
+@import '../layout/nav/properties.nav';
+
 @include exports('reboot.clarity') {
   // Customizing BS4 reboot file below from Bootstrap 4.0.0-alpha.3
   // Styles taken directly from BS4 reboot file.
@@ -410,22 +412,23 @@
   }
 
   a:link {
-    color: $clr-link-color;
+    @include css-var(color, clr-link-color, $clr-link-color, $clr-use-custom-properties);
     text-decoration: none;
   }
 
   a:hover {
-    color: $clr-link-hover-color;
+    @include css-var(color, clr-link-hover-color, $clr-link-hover-color, $clr-use-custom-properties);
     text-decoration: underline;
   }
 
   a:active {
-    color: $clr-link-active-color;
+    @include css-var(color, clr-link-active-color, $clr-link-active-color, $clr-use-custom-properties);
     text-decoration: underline;
   }
 
   a:visited {
-    color: $clr-link-visited-color; //TODO: Not in the color palette. Will be added soon.
+    //TODO: Not in the color palette. Will be added soon.
+    @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
     text-decoration: none;
   }
 }

@@ -36,8 +36,6 @@ $clr-header-7-bg-color: hsl(
 ) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
 
 $clr-header-font-color: $clr-color-neutral-50 !default;
-// @deprecated in 2.0 $clr-header-textColor to be replaced by $clr-header-font-color
-$clr-header-textColor: $clr-header-font-color !default;
 
 $clr-header-title-color: $clr-header-font-color !default;
 $clr-header-title-font-size: $clr-h5-font-size !default;

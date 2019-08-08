@@ -22,16 +22,27 @@
     height: auto;
 
     resize: vertical;
-    background: $clr-forms-textarea-background-color;
-    border: $clr-global-borderwidth solid $clr-forms-border-color;
-    color: $clr-forms-text-color;
+    @include css-var(
+      background,
+      clr-forms-textarea-background-color,
+      $clr-forms-textarea-background-color,
+      $clr-use-custom-properties
+    );
+    border: $clr-global-borderwidth solid;
+    @include css-var(border-color, clr-forms-border-color, $clr-forms-border-color, $clr-use-custom-properties);
+    @include css-var(color, clr-forms-text-color, $clr-forms-text-color, $clr-use-custom-properties);
     border-radius: $clr-forms-baseline / 2;
     padding: $textarea-vertical-padding $textarea-horizontal-padding;
     font-size: $clr-forms-field-font-size;
 
     &:focus {
+      $focused-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-outline-color;
       outline: 0;
-      box-shadow: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-outline-color;
+      // Old IE/Edge
+      box-shadow: $focused-outline;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-forms-textarea-focused-outline, #{$focused-outline});
+      }
     }
 
     &:disabled {
@@ -40,11 +51,16 @@
   }
 
   .clr-error .clr-textarea {
-    border-color: $clr-forms-invalid-color;
+    @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
 
     &:focus {
+      $error-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px lighten($clr-forms-invalid-color, 30%);
       outline: 0;
-      box-shadow: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px lighten($clr-forms-invalid-color, 30%);
+      // Old IE/Edge
+      box-shadow: $error-outline;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-forms-textarea-invalid-focused-outline, #{$error-outline});
+      }
     }
   }
 

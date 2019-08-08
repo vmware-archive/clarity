@@ -32,7 +32,7 @@ $clr-vertical-nav-trigger-icon-align-margin: ($clr-vertical-nav-item-height - $c
 //Vertical Nav: Trigger
 $clr-vertical-nav-toggle-icon-color: $clr-color-neutral-1000 !default;
 $clr-vertical-nav-trigger-collapsed-margin: $clr_baselineRem_0_125 !default;
-$clr-vertical-nav-trigger-divider-border-color: rgba($clr-color-neutral-700, 0.2) !default;
+$clr-vertical-nav-trigger-divider-border-color: $clr-color-neutral-400 !default;
 
 //Vertical Nav: Links
 $clr-vertical-nav-link-padding-right: $clr_baselineRem_0_5 !default;

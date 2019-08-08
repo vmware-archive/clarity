@@ -11,7 +11,7 @@
   }
 
   .clr-form-control-disabled {
-    opacity: $clr-forms-disabled-opacity;
+    @include css-var(opacity, clr-forms-disabled-opacity, $clr-forms-disabled-opacity, $clr-use-custom-properties);
   }
 
   .clr-form-control-multi {
@@ -25,9 +25,14 @@
 
   .clr-control-label {
     display: block;
-    color: $clr-forms-label-color;
+    @include css-var(color, clr-forms-label-color, $clr-forms-label-color, $clr-use-custom-properties);
     font-size: $clr-forms-label-font-size;
-    font-weight: $clr-forms-label-font-weight;
+    @include css-var(
+      font-weight,
+      clr-forms-label-font-weight,
+      $clr-forms-label-font-weight,
+      $clr-use-custom-properties
+    );
     line-height: $clr-forms-baseline * 3;
   }
 
@@ -43,7 +48,7 @@
     display: block;
     font-size: $clr-forms-subtext-font-size;
     line-height: $clr-forms-subtext-line-height;
-    color: $clr-forms-subtext-color;
+    @include css-var(color, clr-forms-subtext-color, $clr-forms-subtext-color, $clr-use-custom-properties);
     margin-top: $clr-forms-baseline;
   }
 
@@ -57,7 +62,7 @@
     height: $clr-forms-icon-size;
     min-width: $clr-forms-icon-size;
     min-height: $clr-forms-icon-size;
-    color: $clr-forms-invalid-color;
+    @include css-var(color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
     display: none;
     margin-left: -1 * $clr_baselineRem_1;
   }
@@ -69,7 +74,7 @@
     }
 
     .clr-subtext {
-      color: $clr-forms-invalid-color;
+      @include css-var(color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
     }
   }
 

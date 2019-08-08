@@ -2,24 +2,51 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin vertical-nav-link-colors($color: $clr-vertical-nav-active-bg-color) {
-  color: $clr-vertical-nav-item-color;
+@mixin vertical-nav-link-colors() {
+  @include css-var(color, clr-vertical-nav-item-color, $clr-vertical-nav-item-color, $clr-use-custom-properties);
 
   &.active {
-    color: $clr-vertical-nav-item-active-color;
-    background-color: $color;
+    @include css-var(
+      color,
+      clr-vertical-nav-item-active-color,
+      $clr-vertical-nav-item-active-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      background-color,
+      clr-vertical-nav-active-bg-color,
+      $clr-vertical-nav-active-bg-color,
+      $clr-use-custom-properties
+    );
 
     .nav-icon {
-      fill: $clr-vertical-nav-icon-active-color;
+      @include css-var(
+        fill,
+        clr-vertical-nav-icon-active-color,
+        $clr-vertical-nav-icon-active-color,
+        $clr-use-custom-properties
+      );
     }
   }
 
   &:hover {
-    color: $clr-vertical-nav-item-active-color;
-    background-color: $clr-vertical-nav-hover-bg-color;
+    @include css-var(
+      color,
+      clr-vertical-nav-item-active-color,
+      $clr-vertical-nav-item-active-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      background-color,
+      clr-vertical-nav-hover-bg-color,
+      $clr-vertical-nav-hover-bg-color,
+      $clr-use-custom-properties
+    );
     text-decoration: none;
   }
 }
+
+@import './properties.vertical-nav';
 
 @include exports('vertical-nav.clarity') {
   .clr-vertical-nav {
@@ -33,17 +60,31 @@
     min-width: $clr-vertical-nav-min-width;
 
     //Others
-    background-color: $clr-vertical-nav-bg-color;
+    @include css-var(
+      background-color,
+      clr-vertical-nav-bg-color,
+      $clr-vertical-nav-bg-color,
+      $clr-use-custom-properties
+    );
     will-change: width;
     transition: width 0.2s ease-in-out;
 
     .nav-divider {
       //Dims
-      border: $clr-global-borderwidth solid $clr-vertical-nav-divider-color;
+      @include css-var(
+        border-color,
+        clr-vertical-nav-trigger-divider-border-color,
+        $clr-vertical-nav-trigger-divider-border-color,
+        $clr-use-custom-properties
+      );
+      border-style: solid;
+      @include css-var(
+        border-width,
+        clr-vertical-nav-trigger-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
       margin: $clr-vertical-nav-divider-margin 0;
-
-      //Others
-      opacity: 0.2;
     }
 
     .nav-content {
@@ -115,7 +156,12 @@
       padding: 0;
 
       //Others
-      color: $clr-vertical-nav-toggle-icon-color;
+      @include css-var(
+        color,
+        clr-vertical-nav-toggle-icon-color,
+        $clr-vertical-nav-toggle-icon-color,
+        $clr-use-custom-properties
+      );
       background-color: transparent;
       cursor: pointer;
       outline-offset: $clr-outline-offset;
@@ -172,7 +218,19 @@
 
     .nav-trigger + .nav-content {
       //Dims
-      border-top: $clr-global-borderwidth solid $clr-vertical-nav-trigger-divider-border-color;
+      @include css-var(
+        border-top-color,
+        clr-vertical-nav-trigger-divider-border-color,
+        $clr-vertical-nav-trigger-divider-border-color,
+        $clr-use-custom-properties
+      );
+      border-top-style: solid;
+      @include css-var(
+        border-top-width,
+        clr-vertical-nav-trigger-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
       padding-top: $clr_baselineRem_0_5;
     }
 
@@ -210,7 +268,12 @@
 
       //Others
       font-size: $clr-vertical-nav-header-font-size;
-      font-weight: $clr-vertical-nav-header-font-weight;
+      @include css-var(
+        font-weight,
+        clr-vertical-nav-header-font-weight,
+        $clr-vertical-nav-header-font-weight,
+        $clr-use-custom-properties
+      );
       letter-spacing: $clr-vertical-nav-header-letter-spacing;
       line-height: $clr-vertical-nav-item-height;
     }
@@ -296,21 +359,41 @@
 
     .nav-group.active:not(.is-expanded) {
       .nav-group-content {
-        background-color: $clr-vertical-nav-active-bg-color;
+        @include css-var(
+          background-color,
+          clr-vertical-nav-active-bg-color,
+          $clr-vertical-nav-active-bg-color,
+          $clr-use-custom-properties
+        );
 
         //Horrible Nesting but nothing I can do.
         .nav-icon {
-          fill: $clr-vertical-nav-icon-active-color;
+          @include css-var(
+            fill,
+            clr-vertical-nav-icon-active-color,
+            $clr-vertical-nav-icon-active-color,
+            $clr-use-custom-properties
+          );
         }
       }
     }
 
     .nav-group-content {
       .nav-link.active ~ .nav-group-trigger {
-        background-color: $clr-vertical-nav-active-bg-color;
+        @include css-var(
+          background-color,
+          clr-vertical-nav-active-bg-color,
+          $clr-vertical-nav-active-bg-color,
+          $clr-use-custom-properties
+        );
       }
       .nav-link:hover ~ .nav-group-trigger {
-        background-color: $clr-vertical-nav-hover-bg-color;
+        @include css-var(
+          background-color,
+          clr-vertical-nav-hover-bg-color,
+          $clr-vertical-nav-hover-bg-color,
+          $clr-use-custom-properties
+        );
       }
     }
 
@@ -402,7 +485,19 @@
 
       .nav-trigger + .nav-content {
         //Dims
-        border-bottom: $clr-global-borderwidth solid $clr-vertical-nav-trigger-divider-border-color;
+        @include css-var(
+          border-bottom-color,
+          clr-vertical-nav-trigger-divider-border-color,
+          $clr-vertical-nav-trigger-divider-border-color,
+          $clr-use-custom-properties
+        );
+        border-bottom-style: solid;
+        @include css-var(
+          border-bottom-width,
+          clr-vertical-nav-trigger-divider-border-width,
+          $clr-global-borderwidth,
+          $clr-use-custom-properties
+        );
         border-top: none;
         padding-top: 0;
       }

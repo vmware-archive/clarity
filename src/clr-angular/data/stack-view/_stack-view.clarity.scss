@@ -4,9 +4,22 @@
 
 $styledInputs: 'input[type=text], input[type=password], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=date], input[type=time], input[type=datetime-local]';
 
+@mixin lastElementBottomBorder($use-custom-props: true) {
+  border-bottom: none;
+  $fallbackShadow: 0 $clr_baselineRem_1px 0 $clr-stack-view-border-box-color;
+  $shadow: 0 $clr_baselineRem_1px 0 var(--clr-stack-view-border-box-color);
+  // IE/OldEdge
+  box-shadow: $fallbackShadow;
+  @if $use-custom-props == true {
+    box-shadow: $shadow;
+  }
+}
+
+@import './properties.stack-view';
+
 @include exports('stack-view.clarity') {
   .stack-header {
-    font-weight: $clr-stack-font-weight;
+    font-weight: $clr-stack-view-font-weight;
     display: flex;
     align-items: flex-end;
 
@@ -38,17 +51,29 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
   }
 
   .stack-view {
-    color: $clr-stack-view-color;
+    @include css-var(color, clr-stack-view-color, $clr-stack-view-color, $clr-use-custom-properties);
     font-size: $clr-stack-view-font-size;
     font-weight: $clr-stack-view-font-weight;
     line-height: $clr-stack-view-line-height;
     letter-spacing: $clr-stack-view-letter-spacing;
-
     margin-top: 0;
-    border: $clr-stack-view-border-width solid $clr-stack-view-border-color;
-    border-radius: $clr-stack-view-border-radius;
+    border-width: $clr-stack-view-border-width;
+    border-style: solid;
+
+    @include css-var(
+      border-color,
+      clr-stack-view-border-color,
+      $clr-stack-view-border-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      border-radius,
+      clr-stack-view-border-radius,
+      $clr-stack-view-border-radius,
+      $clr-use-custom-properties
+    );
     overflow-y: auto;
-    background-color: $clr-stack-view-bg-color;
+    @include css-var(background-color, clr-stack-view-bg-color, $clr-stack-view-bg-color, $clr-use-custom-properties);
     word-wrap: break-word;
 
     /* this fixes the overflow problem of children elements in a wrapper with a border-radius in Chrome */
@@ -66,7 +91,19 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       display: flex;
       // Wrapping for nested stack-blocks
       flex-flow: row wrap;
-      border-bottom: $clr_baselineRem_1px solid $clr-stack-view-stack-block-border-bottom;
+      @include css-var(
+        border-bottom-width,
+        clr-global-borderwidth,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      border-bottom-style: solid;
+      @include css-var(
+        border-bottom-color,
+        clr-stack-view-stack-block-border-bottom,
+        $clr-stack-view-stack-block-border-bottom,
+        $clr-use-custom-properties
+      );
       overflow-y: hidden;
     }
 
@@ -76,8 +113,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       // This way we keep a border-bottom on the last element if the stack view is higher
       // than the total height of the  blocks it contains, but we do not have a
       // weird 1px scroll when both heights match exactly.
-      border-bottom: none;
-      box-shadow: 0 $clr_baselineRem_1px 0 $clr-stack-view-border-box-color;
+      @include lastElementBottomBorder($clr-use-custom-properties);
     }
 
     .stack-block-changed {
@@ -89,7 +125,13 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         position: relative;
         width: 0;
         height: 0;
-        border-top: $clr_baselineRem_0_375 solid $clr-stack-block-changed-border-top-color;
+        border-top: $clr_baselineRem_0_375 solid;
+        @include css-var(
+          border-top-color,
+          clr-stack-block-changed-border-top-color,
+          $clr-stack-block-changed-border-top-color,
+          $clr-use-custom-properties
+        );
         border-right: $clr_baselineRem_0_375 solid transparent;
       }
     }
@@ -101,11 +143,21 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     .stack-block-label,
     .stack-block-content {
       padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
-      background-color: $clr-stack-view-stack-block-label-and-content-bg-color;
+      @include css-var(
+        background-color,
+        clr-stack-view-stack-block-label-and-content-bg-color,
+        $clr-stack-view-stack-block-label-and-content-bg-color,
+        $clr-use-custom-properties
+      );
     }
 
     .stack-block-label {
-      color: $clr-stack-view-stack-block-label-text-color;
+      @include css-var(
+        color,
+        clr-stack-view-stack-block-label-text-color,
+        $clr-stack-view-stack-block-label-text-color,
+        $clr-use-custom-properties
+      );
       font-size: $clr-stack-view-stack-block-label-font-size;
       font-weight: $clr-stack-view-stack-block-label-font-weight;
       line-height: $clr-stack-view-stack-block-label-line-height;
@@ -132,15 +184,25 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       height: $clr_baselineRem_0_583;
       width: $clr_baselineRem_0_583;
       margin-right: $clr_baselineRem_0_2;
-      fill: $clr-stack-view-stack-block-caret-color;
+      @include css-var(
+        fill,
+        clr-stack-view-stack-block-caret-color,
+        $clr-stack-view-stack-block-caret-color,
+        $clr-use-custom-properties
+      );
     }
 
     .stack-block-content {
-      color: $clr-stack-view-stack-block-content-text-color;
+      @include css-var(
+        color,
+        clr-stack-view-stack-block-content-text-color,
+        $clr-stack-view-stack-block-content-text-color,
+        $clr-use-custom-properties
+      );
       flex: 1 1 auto;
       width: 60%;
       margin-bottom: 0;
-      font-weight: $clr-stack-font-weight;
+      font-weight: $clr-stack-view-font-weight;
 
       @include clr-container;
     }
@@ -150,20 +212,29 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       width: 100%;
 
       .stack-block {
-        border-bottom-color: $clr-stack-view-stack-children-stack-block-border-bottom-color;
+        @include css-var(
+          border-bottom-color,
+          clr-stack-view-stack-children-stack-block-border-bottom-color,
+          $clr-stack-view-stack-children-stack-block-border-bottom-color,
+          $clr-use-custom-properties
+        );
       }
       > .stack-block:last-child,
       > :last-child .stack-block:last-of-type {
         // This way we keep a border-bottom on the last element if the stack view is higher
         // than the total height of the  blocks it contains, but we do not have a
         // weird 1px scroll when both heights match exactly.
-        border-bottom: none;
-        box-shadow: 0 $clr_baselineRem_1px 0 $clr-stack-view-border-box-color;
+        @include lastElementBottomBorder($clr-use-custom-properties);
       }
 
       .stack-block-label,
       .stack-block-content {
-        background-color: $clr-stack-view-stack-children-stack-block-label-and-content-bg-color;
+        @include css-var(
+          background-color,
+          clr-stack-view-stack-children-stack-block-label-and-content-bg-color,
+          $clr-stack-view-stack-children-stack-block-label-and-content-bg-color,
+          $clr-use-custom-properties
+        );
       }
 
       .stack-block-label {
@@ -192,7 +263,12 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       &:hover:not(.stack-block-expanded) {
         > .stack-block-label,
         > .stack-block-content {
-          background-color: $clr-stack-view-stack-block-expandable-hover;
+          @include css-var(
+            background-color,
+            clr-stack-view-stack-block-expandable-hover,
+            $clr-stack-view-stack-block-expandable-hover,
+            $clr-use-custom-properties
+          );
         }
       }
     }
@@ -204,14 +280,24 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
 
       > .stack-block-label,
       > .stack-block-content {
-        background-color: $clr-stack-view-stack-block-expanded-bg-color;
-        color: $clr-stack-view-stack-block-expanded-text-color;
+        @include css-var(
+          background-color,
+          clr-stack-view-stack-block-expanded-bg-color,
+          $clr-stack-view-stack-block-expanded-bg-color,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          color,
+          clr-stack-view-stack-block-expanded-text-color,
+          $clr-stack-view-stack-block-expanded-text-color,
+          $clr-use-custom-properties
+        );
       }
     }
 
     /*
-         * Styles specific to inputs used in a stack view
-         */
+      Styles specific to inputs used in a stack view
+    */
     #{$styledInputs},
     .select {
       display: inline-block;
@@ -248,24 +334,34 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     // TODO: Clean up if not being used
     .stack-block-expanded > .stack-block-content {
       #{$styledInputs} {
-        border-bottom-color: $clr-color-neutral-600;
-        @include input-border-bottom-animation($clr-color-action-600);
+        @include css-var(
+          border-bottom-color,
+          clr-color-neutral-600,
+          $clr-color-neutral-600,
+          $clr-use-custom-properties
+        );
+        @include input-border-bottom-animation($clr-color-action-600, clr-color-action-600, $clr-use-custom-properties);
       }
 
       .select {
         select {
-          border-bottom-color: $clr-color-neutral-600;
+          @include css-var(
+            border-bottom-color,
+            clr-color-neutral-600,
+            $clr-color-neutral-600,
+            $clr-use-custom-properties
+          );
         }
 
         &::after {
-          color: $clr-color-neutral-600;
+          @include css-var(color, clr-color-neutral-600, $clr-color-neutral-600, $clr-use-custom-properties);
         }
       }
     }
 
     /*
-         * Styles specific to stack views used in a modal
-         */
+      Styles specific to stack views used in a modal
+    */
     .modal & {
       height: 55vh;
       margin-bottom: 0;

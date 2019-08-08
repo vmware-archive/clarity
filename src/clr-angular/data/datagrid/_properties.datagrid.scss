@@ -1,0 +1,42 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('datagrid.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-datagrid-font-color: #{$clr-datagrid-font-color};
+      --clr-datagrid-default-border-color: var(--clr-color-neutral-400);
+      --clr-datagrid-icon-color: var(--clr-color-neutral-600);
+
+      // deprecated in 3.0
+      // should become --clr-datagrid-row-hover-color
+      --clr-datagrid-row-hover: var(--clr-color-neutral-200);
+      --clr-datagrid-row-hover-font-color: var(--clr-color-neutral-1000);
+      // deprecated in 3.0
+      // should become --clr-datagrid-action-toggle-color
+      --clr-datagrid-action-toggle: var(--clr-color-neutral-700);
+      --clr-datagrid-pagination-btn-color: var(--clr-color-neutral-700);
+      --clr-datagrid-pagination-btn-disabled-color: var(--clr-color-neutral-600);
+      --clr-datagrid-pagination-input-border-color: var(--clr-datagrid-default-border-color);
+      --clr-datagrid-pagination-input-border-focus-color: var(--clr-color-action-400);
+      --clr-datagrid-popover-bg-color: var(--clr-color-neutral-0);
+      --clr-datagrid-popover-border-color: var(--clr-datagrid-default-border-color);
+      --clr-datagrid-action-popover-hover-color: var(--clr-color-neutral-200);
+      --clr-datagrid-row-selected: var(--clr-color-neutral-1000);
+      --clr-datagrid-loading-background: #{$clr-datagrid-loading-background};
+      --clr-datagrid-popovers-box-shadow-color: rgba($clr-color-neutral-600, 0.25);
+
+      --clr-datagrid-column-switch-header-font-color: var(--clr-color-neutral-500);
+      --clr-datagrid-column-switch-header-font-hover-color: var(--clr-color-action-600);
+
+      --clr-datagrid-detail-caret-icon-open-bg-color: var(--clr-color-action-600);
+      --clr-datagrid-detail-caret-icon-open-icon-color: var(--clr-color-neutral-0);
+
+      --clr-datagrid-placeholder-color: var(--clr-color-neutral-500);
+      --clr-datagrid-placeholder-font-size: #{$clr-h5-font-size};
+
+      --clr-datagrid-pagination-btn-disabled-opacity: #{$clr-datagrid-pagination-btn-disabled-opacity};
+    }
+  }
+}

@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.login';
+
 @include exports('login.clarity') {
   .login-wrapper {
     display: flex;
@@ -12,7 +14,7 @@
     background-repeat: no-repeat;
 
     .login {
-      background: $clr-login-background-color;
+      @include css-var(background, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -23,9 +25,19 @@
       width: $clr-login-width;
 
       .title {
-        color: $clr-login-title-color;
-        font-weight: $clr-login-title-font-weight;
-        font-family: $clr-login-title-font-family;
+        @include css-var(color, clr-login-title-color, $clr-login-title-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-login-title-font-weight,
+          $clr-login-title-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          font-family,
+          clr-login-title-font-family,
+          $clr-login-title-font-family,
+          $clr-use-custom-properties
+        );
         font-size: $clr-login-title-font-size;
         letter-spacing: $clr-login-title-letter-spacing;
         line-height: $clr-login-title-line-height;
@@ -35,7 +47,7 @@
         }
 
         .hint {
-          color: $clr-login-title-color;
+          @include css-var(color, clr-login-title-color, $clr-login-title-color, $clr-use-custom-properties);
           margin-top: $clr_baselineRem_1_25;
           font-size: $clr_baselineRem_0_583;
         }
@@ -43,18 +55,38 @@
 
       // @TODO Is this used?
       .trademark {
-        color: $clr-login-trademark-color;
-        font-weight: $clr-login-trademark-font-weight;
-        font-family: $clr-login-trademark-font-family;
+        @include css-var(color, clr-login-trademark-color, $clr-login-trademark-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-login-trademark-font-weight,
+          $clr-login-trademark-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          font-family,
+          clr-login-trademark-font-family,
+          $clr-login-trademark-font-family,
+          $clr-use-custom-properties
+        );
         font-size: $clr-login-trademark-font-size;
         letter-spacing: $clr-login-trademark-letter-spacing;
       }
 
       // @TODO Is this used?
       .subtitle {
-        color: $clr-login-subtitle-color;
-        font-weight: $clr-login-subtitle-font-weight;
-        font-family: $clr-login-subtitle-font-family;
+        @include css-var(
+          font-weight,
+          clr-login-subtitle-font-weight,
+          $clr-login-subtitle-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(color, clr-login-subtitle-color, $clr-login-subtitle-color, $clr-use-custom-properties);
+        @include css-var(
+          font-family,
+          clr-login-subtitle-font-family,
+          $clr-login-subtitle-font-family,
+          $clr-use-custom-properties
+        );
         font-size: $clr-login-subtitle-font-size;
         letter-spacing: $clr-login-subtitle-letter-spacing;
         line-height: $clr-login-subtitle-line-height;
@@ -122,9 +154,19 @@
           display: none;
           margin: $clr_baselineRem_0_25 0 0 0;
           padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
-          background: $clr-color-danger-800;
-          color: $clr-login-background-color;
-          border-radius: $clr-global-borderradius;
+          @include css-var(
+            background,
+            clr-login-error-background-color,
+            $clr-color-danger-800,
+            $clr-use-custom-properties
+          );
+          @include css-var(color, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
+          @include css-var(
+            border-radius,
+            clr-login-error-border-radius,
+            $clr-global-borderradius,
+            $clr-use-custom-properties
+          );
           line-height: $clr_baselineRem_0_75;
 
           &:before {
@@ -167,7 +209,8 @@
         display: block;
         width: $clr_baselineRem_1px;
         height: 100%;
-        background: rgba($clr-color-neutral-1000, 0.1);
+        @include css-var(background, clr-login-panel-line-color, $clr-color-neutral-1000, $clr-use-custom-properties);
+        @include css-var(opacity, clr-login-panel-line-opacity, 0.1, $clr-use-custom-properties);
         top: 0;
         right: -1 * $clr_baselineRem_2px;
       }
@@ -177,7 +220,7 @@
   @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
     .login-wrapper {
       justify-content: center;
-      background: $clr-login-background-color;
+      @include css-var(background, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
 
       .login {
         width: 100%;

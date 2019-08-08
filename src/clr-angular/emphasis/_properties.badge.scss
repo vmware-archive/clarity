@@ -1,0 +1,32 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('badge.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-badge-font-color-light: var(--clr-color-neutral-0);
+      --clr-badge-font-color-dark: var(--clr-color-neutral-1000);
+
+      --clr-badge-info-bg-color: var(--clr-color-action-600);
+      --clr-badge-info-color: var(--clr-color-neutral-0);
+      --clr-badge-success-bg-color: var(--clr-color-success-700);
+      --clr-badge-success-color: var(--clr-color-neutral-0);
+      --clr-badge-warning-bg-color: var(--clr-color-warning-300);
+      --clr-badge-warning-color: var(--clr-color-neutral-1000);
+      --clr-badge-danger-bg-color: var(--clr-color-danger-800);
+      --clr-badge-danger-color: var(--clr-color-neutral-0);
+
+      --clr-badge-gray-bg-color: var(--clr-color-neutral-600);
+      --clr-badge-gray-color: var(--clr-badge-font-color-light);
+      --clr-badge-purple-bg-color: var(--clr-color-secondary-action-500);
+      --clr-badge-purple-color: var(--clr-badge-font-color-light);
+      --clr-badge-blue-bg-color: var(--clr-color-action-800);
+      --clr-badge-blue-color: var(--clr-badge-font-color-light);
+      --clr-badge-orange-bg-color: var(--clr-color-warning-500);
+      --clr-badge-orange-color: var(--clr-badge-font-color-dark);
+      --clr-badge-light-blue-bg-color: var(--clr-color-action-300);
+      --clr-badge-light-blue-color: var(--clr-badge-font-color-dark);
+    }
+  }
+}

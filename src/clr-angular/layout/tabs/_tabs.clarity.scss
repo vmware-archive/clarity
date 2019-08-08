@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.tabs';
+
 @include exports('tabs.clarity') {
   @media screen {
     section[aria-hidden='true'] {
@@ -64,13 +66,28 @@ button.nav-link {
 
       &.active,
       &:hover {
+        // IE/OldEdge
         box-shadow: inset $clr_baselineRem_3px 0 0 $clr-nav-active-box-shadow-color;
+        @if $clr-use-custom-properties == true {
+          box-shadow: inset $clr_baselineRem_3px 0 0 var(--clr-nav-active-box-shadow-color);
+        }
       }
       &.active {
-        background-color: $clr-global-selection-color;
+        @include css-var(
+          background-color,
+          clr-nav-active-bg-color,
+          $clr-global-selection-color,
+          $clr-use-custom-properties
+        );
       }
+
       &:not(.active):hover {
-        background-color: $clr-sidenav-link-hover-color;
+        @include css-var(
+          background-color,
+          clr-nav-hover-bg-color,
+          $clr-sidenav-link-hover-color,
+          $clr-use-custom-properties
+        );
       }
     }
   }

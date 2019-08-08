@@ -46,10 +46,6 @@ $clr-font-weight-semibold: null; // 500
 $clr-font-weight-bold: null; // 600
 $clr-font-weight-extrabold: null; // 600
 
-// @deprecated in 2.0 $clr-font-weights could not be removed because it is public
-// in the overwrites file. it had to be deprecated first
-$clr-font-weights: null; // (light: 200, regular: 400, bold: 600);
-
 // Paragraphs
 $clr-typography-smalltext: null; // 13/$clr-rem-denominator*$clr-font-size;
 $clr-typography-xsmalltext: null; // 12/$clr-rem-denominator*$clr-font-size;
@@ -71,7 +67,6 @@ $clr-content-area-padding-left: null; // $clr-baseline*1;
 $clr-card-bg-color: null; // $clr-color-neutral-0
 $clr-card-border-color: null; // $clr-color-neutral-200
 $clr-card-box-shadow: null; // 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1)
-$clr-card-border: null; // $clr-global-borderwidth solid rgba(215, 215, 215, 1)
 $clr-card-divider-color: null; // $clr-color-neutral-200
 $clr-card-text-font-size: null; // $clr-p1-font-size
 $clr-card-title-color: null; // $clr-h4-color

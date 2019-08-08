@@ -32,6 +32,7 @@
  * Global variables will have an effect on or in multiple Clarity components.
  * Where possible, there is a list files affected by the variable.
  */
+$clr-use-custom-properties: false;
 
 /*********
  * $clr-global-app-background
@@ -333,7 +334,6 @@ $clr-card-bg-color: hsl(198, 28%, 18%);
 $clr-card-border-color: hsl(203, 30%, 8%);
 $clr-card-title-color: hsl(210, 16%, 93%);
 $clr-card-box-shadow: 0 0.15rem 0 0 $clr-card-border-color;
-$clr-card-border: 0.05rem solid $clr-card-border-color;
 $clr-card-divider-color: $clr-card-border-color;
 // END: Card
 
@@ -368,7 +368,7 @@ $clr-datagrid-loading-background: rgba(0, 0, 0, 0.5);
 $clr-dropdown-active-text-color: hsl(0, 0%, 100%);
 $clr-dropdown-bg-color: hsl(198, 28%, 18%);
 $clr-dropdown-text-color: hsl(203, 16%, 72%);
-$clr-dropdown-item-text-color: hsl(203, 16%, 72%);
+$clr-dropdown-item-color: hsl(203, 16%, 72%);
 $clr-dropdown-border-color: hsl(0, 0%, 0%);
 $clr-dropdown-child-border-color: hsl(0, 0%, 0%);
 $clr-dropdown-bg-active-color: $clr-global-selection-color;
@@ -494,8 +494,8 @@ $clr-icon-color-highlight: hsl(198, 65%, 57%);
   * There are five color options and four status types a Clarity label may have.
 
   */
-$clr-label-font-color: hsl(0, 0%, 100%);
-$clr-label-font-color-contrast: hsl(0, 0%, 0%);
+$clr-label-font-color-light: hsl(0, 0%, 100%);
+$clr-label-font-color-dark: hsl(0, 0%, 0%);
 $clr-label-bg-hover-color: hsl(0, 0%, 34%);
 $clr-label-gray-bg-color: hsl(211, 10%, 47%);
 $clr-label-purple-bg-color: hsl(281, 44%, 62%);
@@ -503,16 +503,16 @@ $clr-label-blue-bg-color: hsl(201, 100%, 36%);
 $clr-label-orange-bg-color: hsl(31, 100%, 60%);
 $clr-label-light-blue-bg-color: hsl(194, 57%, 71%);
 $clr-label-info-bg-color: hsl(198, 79%, 28%);
-$clr-label-info-font-color: $clr-label-font-color;
+$clr-label-info-font-color: $clr-label-font-color-light;
 $clr-label-info-border-color: $clr-label-info-bg-color;
 $clr-label-success-bg-color: hsl(122, 45%, 23%);
-$clr-label-success-font-color: $clr-label-font-color;
+$clr-label-success-font-color: $clr-label-font-color-light;
 $clr-label-success-border-color: $clr-label-success-bg-color;
 $clr-label-danger-bg-color: hsl(357, 50%, 35%);
-$clr-label-danger-font-color: $clr-label-font-color;
+$clr-label-danger-font-color: $clr-label-font-color-light;
 $clr-label-danger-border-color: $clr-label-danger-bg-color;
 $clr-label-warning-bg-color: hsl(47, 87%, 27%);
-$clr-label-warning-font-color: $clr-label-font-color;
+$clr-label-warning-font-color: $clr-label-font-color-light;
 $clr-label-warning-border-color: $clr-label-warning-bg-color;
 // END: Labels
 
@@ -759,6 +759,7 @@ $clr-vertical-nav-active-bg-color: $clr-global-selection-color;
 $clr-vertical-nav-hover-bg-color: $clr-global-hover-bg-color;
 $clr-vertical-nav-icon-active-color: hsl(0, 0%, 100%);
 $clr-vertical-nav-toggle-icon-color: hsl(203, 16%, 72%);
+$clr-vertical-nav-trigger-divider-border-color: hsl(199, 19%, 17%);
 // END Vertical Nav
 
 /**********

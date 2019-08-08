@@ -23,14 +23,24 @@
 
       input[type='radio']:focus,
       input[type='checkbox']:focus {
+        $outline-shadow: 0 0 $clr_baselineRem_5px var(--clr-btn-group-focus-outline, $clr-btn-group-focus-outline);
+        $ie-outline-shadow: 0 0 $clr_baselineRem_5px $clr-btn-group-focus-outline;
         appearance: none;
         opacity: 1;
         top: 0;
         height: 100%;
         width: 100%;
-        box-shadow: 0 0 $clr_baselineRem_5px rgba(81, 203, 238, 1);
+        box-shadow: $ie-outline-shadow;
+        box-shadow: $outline-shadow;
         padding: $clr_baselineRem_3px 0 $clr_baselineRem_3px $clr_baselineRem_3px;
-        border: $clr_baselineRem_1px solid rgba(81, 203, 238, 1);
+        border-width: $clr_baselineRem_1px;
+        border-style: solid;
+        @include css-var(
+          border-color,
+          clr-btn-group-focus-outline,
+          $clr-btn-group-focus-outline,
+          $clr-use-custom-properties
+        );
 
         &::-ms-check {
           display: none;
@@ -64,7 +74,8 @@
     &.btn-warning {
       .tooltip:not(:last-child) .btn,
       .btn:not(:last-child) {
-        margin: 0 $clr-btn-border-width 0 0;
+        margin: 0;
+        @include css-var(margin-right, clr-btn-border-width, $clr-btn-border-width, $clr-use-custom-properties);
       }
     }
 
@@ -82,11 +93,13 @@
     }
 
     > .btn-group-overflow:last-child:not(:first-child) > .btn:first-child {
-      border-radius: 0 $clr-btn-border-radius $clr-btn-border-radius 0;
+      @include css-var(border-radius, clr-btn-border-radius, $clr-btn-border-radius, $clr-use-custom-properties);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
     > .btn-group-overflow:last-child:first-child > .btn:first-child {
-      border-radius: $clr-btn-border-radius;
+      @include css-var(border-radius, clr-btn-border-radius, $clr-btn-border-radius, $clr-use-custom-properties);
     }
 
     //To avoid double borders

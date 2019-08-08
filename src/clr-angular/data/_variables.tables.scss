@@ -11,14 +11,12 @@ $clr-thead-bgcolor: $clr-color-neutral-50 !default;
 // Usage: ./data/datagrid/_datagrid.clarity.scss
 $clr-table-header-border-bottom-color: $clr-color-neutral-400 !default;
 $clr-table-footer-border-top-color: $clr-color-neutral-400 !default;
-$clr-table-border-color: $clr-color-neutral-300 !default;
+$clr-table-border-color: $clr-color-neutral-400 !default;
 
 // Usage: ./data/_tables.clarity.scss
 $clr-tablerow-bordercolor: $clr-color-neutral-200 !default;
-// @deprecated in 2.0 $clr-table-bordercolor needs to be replaced by $clr-table-border-color
-$clr-table-bordercolor: $clr-color-neutral-400 !default;
 $clr-table-border-radius: $clr-global-borderradius !default;
-$clr-table-borderwidth: $clr_baselineRem_1px !default;
+$clr-table-borderwidth: $clr-global-borderwidth !default;
 $clr-table-smallpadding: $clr_baselineRem_0_25 !default;
 
 // Border radius of corner cells needs to be slightly less than the table's,
@@ -27,7 +25,6 @@ $clr-table-cornercellradius: $clr-table-border-radius - $clr_baselineRem_1px !de
 
 // Usage: ./data/_tables.clarity.scss
 // Usage: ./data/datagrid/_datagrid.clarity.scss
-$clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !default;
 $clr-table-font-color: $clr-color-neutral-700 !default;
 
 // Table dims and sizing

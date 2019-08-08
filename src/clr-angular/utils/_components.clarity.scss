@@ -29,6 +29,9 @@
 // Component variables
 @import '../utils/variables.clarity'; // depends on helpers.clarity, color/variables.clarity
 
+// Custom Properties
+@import '../utils/properties.clarity'; // variables.clarity, color/variables.color
+
 //Reboot
 @import '../utils/reboot.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
 
@@ -115,6 +118,7 @@
 
 //Forms
 @import '../forms/styles/mixins.forms';
+@import '../forms/styles/properties.forms';
 @import '../forms/styles/containers.clarity';
 @import '../forms/styles/form.clarity';
 @import '../forms/styles/checkbox.clarity';

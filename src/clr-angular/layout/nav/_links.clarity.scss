@@ -5,22 +5,22 @@
 @include exports('links.clarity') {
   // only imported for demos. gives a static view of links in various states.
   a.link-normal:link {
-    color: $clr-link-color;
+    @include css-var(color, clr-link-color, $clr-link-color, $clr-use-custom-properties);
     text-decoration: none;
   }
 
   a.link-hovered:link {
-    color: $clr-link-hover-color;
+    @include css-var(color, clr-link-hover-color, $clr-link-hover-color, $clr-use-custom-properties);
     text-decoration: underline;
   }
 
   a.link-clicked:link {
-    color: $clr-link-active-color;
+    @include css-var(color, clr-link-active-color, $clr-link-active-color, $clr-use-custom-properties);
     text-decoration: underline;
   }
 
   a.link-visited:link {
-    color: $clr-link-visited-color;
+    @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
     text-decoration: none;
   }
 }

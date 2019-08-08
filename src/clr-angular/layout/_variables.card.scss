@@ -10,16 +10,13 @@ $card-children-padding-vertical: $clr_baselineRem_0_5 !default;
 $card-children-padding-horizontal: $clr_baselineRem_0_75 !default;
 $card-children-space-between: $clr_baselineRem_0_5 !default;
 $clr-card-bg-color: $clr-color-neutral-0 !default;
-$clr-card-border-color: $clr-color-neutral-200 !default;
-$clr-card-box-shadow: 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1) !default;
-$clr-card-border: $clr-global-borderwidth solid rgba(215, 215, 215, 1) !default;
-$clr-card-divider-color: $clr-color-neutral-200 !default;
+$clr-card-border-color: $clr-color-neutral-300 !default;
+$clr-card-box-shadow: 0 $clr_baselineRem_0_125 0 0 #{$clr-card-border-color} !default;
+$clr-card-divider-color: $clr-card-border-color !default;
 
 // TYPOGRAPHY
 // Usage: ../layout/_card.clarity.scss
-// @deprecated in 2.0 $card-text-fontsize to be replaced by $clr-card-text-font-size
-$card-text-fontsize: $clr-p1-font-size !default;
-$clr-card-text-font-size: $card-text-fontsize !default;
+$clr-card-text-font-size: $clr-p1-font-size !default;
 
 $clr-card-title-color: $clr-h4-color !default;
 $clr-card-title-font-size: $clr-h4-font-size !default;

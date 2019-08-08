@@ -6,16 +6,16 @@
 
 @mixin clrdemo-colorPaletteLabels {
   text-transform: uppercase;
-  font-size: 0.8rem;
-  line-height: 1.1rem;
+  font-size: $clr_baselineRem_0_8;
+  line-height: $clr_baselineRem_1_1;
   font-weight: normal;
   letter-spacing: 0.8;
 }
 
 @mixin clr-colordemo-hexContrastBlockStyles {
   display: block;
-  line-height: 80px;
-  font-size: 2rem;
+  line-height: $clr_baselineRem_3_33;
+  font-size: $clr_baselineRem_2;
 }
 
 @mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
@@ -23,7 +23,7 @@
     content: '#{$color}';
     display: block;
     position: absolute;
-    bottom: 10px;
+    bottom: $clr_baselineRem_0_416;
     width: 100%;
     text-align: center;
     font-weight: 400;
@@ -37,16 +37,16 @@
 }
 
 @mixin clr-colordemo-sharedContainerStyles {
-  font-size: 16px;
+  font-size: $clr_baselineRem_0_667;
   margin: 0;
-  padding: 1.4rem;
+  padding: $clr_baselineRem_1_4;
 }
 
 @mixin clr-colordemo-sharedTableStyles {
   table {
     border-collapse: collapse;
-    min-width: 1140px;
-    min-width: 960px;
+    min-width: $clr_baselineRem_47_5;
+    min-width: $clr_baselineRem_40;
     width: 100%;
   }
 
@@ -57,12 +57,12 @@
   }
 
   td {
-    border: 1px solid $clr-color-neutral-0;
+    border: $clr-global-borderwidth solid $clr-color-neutral-0;
     vertical-align: middle;
     width: 8%;
     text-align: center;
     font-weight: 100;
-    color: hsl(0, 0%, 0%);
+    color: $clr-color-neutral-1000;
     position: relative;
   }
 }

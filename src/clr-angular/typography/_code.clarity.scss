@@ -5,9 +5,9 @@
 @include exports('code.clarity') {
   //Styles for Clarity Code Snippets
   pre {
-    margin: 0.5rem 0;
-    border: $clr-default-borderwidth solid $clr-color-neutral-400;
-    border-radius: $clr-default-borderradius;
+    margin: $clr_baselineRem_0_5 0;
+    border: $clr-global-borderwidth solid $clr-color-neutral-400;
+    border-radius: $clr-global-borderradius;
   }
   pre code {
     white-space: pre;

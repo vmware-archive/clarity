@@ -13,7 +13,7 @@
     vertical-align: middle;
     position: relative;
     display: block;
-    margin-right: 0.5rem;
+    margin-right: $clr_baselineRem_0_5;
 
     label {
       display: inline-block;
@@ -28,8 +28,8 @@
       @extend %custom-checkbox;
 
       position: absolute;
-      top: 0.25rem;
-      right: 0.25rem;
+      top: $clr_baselineRem_0_25;
+      right: $clr_baselineRem_0_25;
       height: $clr-icon-dimension-sm;
       width: $clr-icon-dimension-sm;
       opacity: 0;
@@ -41,8 +41,8 @@
       content: '';
       height: $clr-toggle-switch-base-height;
       width: $clr-toggle-switch-base-width;
-      border: 2px solid;
-      border-radius: 0.375rem;
+      border: $clr_baselineRem_2px solid;
+      border-radius: $clr_baselineRem_0_375;
       border-color: $clr-toggle-bg-color-off;
       background-color: $clr-toggle-bg-color-off;
       top: ($clr-forms-baseline / 2);
@@ -70,19 +70,19 @@
       content: '';
       height: $clr-toggle-switch-height;
       width: $clr-toggle-switch-height;
-      border: $clr-default-borderwidth solid $clr-toggle-handle-bg-color;
+      border: $clr-global-borderwidth solid $clr-toggle-handle-bg-color;
       border-radius: 50%;
       background-color: $clr-toggle-handle-bg-color;
       // TOCHECK: COMPUTATION...
-      top: (2 * $clr-rem-1px + $clr-forms-baseline / 2);
+      top: ($clr_baselineRem_2px + $clr-forms-baseline / 2);
       right: 0;
-      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
       transition-property: left;
     }
 
     input[type='checkbox']:checked + label::after {
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
       left: -1 * $clr-toggle-switch-left-spacing;
       transition-property: left;
@@ -115,10 +115,10 @@
         // toggle handle color for disabled/off and inner part of handle disabled/on
         background-color: $clr-toggle-disabled-off-bg-color;
         // toggle handle color for disabled/off handle outer border circle
-        border: 2px solid $clr-toggle-disabled-off-handle-border-color;
+        border: $clr_baselineRem_2px solid $clr-toggle-disabled-off-handle-border-color;
         width: $clr-toggle-switch-base-height;
         height: $clr-toggle-switch-base-height;
-        top: 3px;
+        top: $clr_baselineRem_3px;
       }
     }
 
@@ -134,7 +134,7 @@
       border-color: $clr-toggle-disabled-on-handle-border-color;
       width: $clr-toggle-switch-height;
       height: $clr-toggle-switch-height;
-      top: 5px;
+      top: $clr_baselineRem_5px;
       left: -1 * $clr-toggle-switch-left-spacing;
     }
 
@@ -156,7 +156,7 @@
 
       input[type='checkbox'] + label::after {
         right: 0;
-        left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+        left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
         transition-property: left;
       }
 
@@ -196,16 +196,16 @@
     }
     input[type='checkbox']:checked + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition-property: right;
     }
     input[type='checkbox']:disabled + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-left-spacing + $clr-rem-1px);
+      right: -1 * ($clr-toggle-switch-left-spacing + $clr_baselineRem_1px);
     }
     input[type='checkbox']:checked:disabled + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
     }
     .clr-control-inline .clr-toggle-wrapper .clr-control-label {
       margin-right: (9 * $clr-forms-baseline);

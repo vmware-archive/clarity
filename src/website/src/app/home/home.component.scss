@@ -14,15 +14,15 @@
     }
   }
 
-  $clrweb-home-sectionPadding: $bl-4_0;
+  $clrweb-home-sectionPadding: $clr_baselineRem_4;
 
   section {
     padding-top: $clrweb-home-sectionPadding;
     padding-bottom: $clrweb-home-sectionPadding;
 
     &.home-hero {
-      padding-top: 60px;
-      padding-bottom: 72px;
+      padding-top: $clr_baselineRem_2_5;
+      padding-bottom: $clr_baselineRem_3;
     }
 
     &.home-cards,
@@ -37,8 +37,8 @@
 }
 
 .home-hero {
-  height: 696px;
-  max-width: 1248px;
+  height: $clr_baselineRem_29;
+  max-width: $clr_baselineRem_52;
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -46,39 +46,39 @@
   .home-hero-content {
     position: relative;
     width: 100%;
-    max-width: 648px;
+    max-width: $clr_baselineRem_27;
     z-index: 1;
   }
 
   h1 {
     font-weight: 200;
     letter-spacing: -0.02em;
-    line-height: $bl-3_0;
-    font-size: 64px;
-    margin-bottom: $bl-0_5;
-    margin-top: $bl-0_5;
+    line-height: $clr_baselineRem_3;
+    font-size: $clr_baselineRem_2_66;
+    margin-bottom: $clr_baselineRem_0_5;
+    margin-top: $clr_baselineRem_0_5;
   }
 
   p.head {
-    font-size: $bl-0_75;
+    font-size: $clr_baselineRem_0_75;
     font-weight: 200;
-    line-height: $bl-1_5;
-    margin: $bl-0_25 5px;
-    color: hsl(0, 0%, 0%);
-    max-width: 624px;
+    line-height: $clr_baselineRem_1_5;
+    margin: $clr_baselineRem_0_25 $clr_baselineRem_5px;
+    color: $clr-color-neutral-1000;
+    max-width: $clr_baselineRem_26;
   }
 
   .home-hero-btn {
-    margin: $bl-1_5 0 $bl-1_0;
-    padding-left: 5px;
+    margin: $clr_baselineRem_1_5 0 $clr_baselineRem_1;
+    padding-left: $clr_baselineRem_5px;
   }
 
   .btn {
-    width: baselineRem(7);
-    height: $bl-2_0;
-    line-height: $bl-2_0 - 1;
+    width: $clr_baselineRem_7;
+    height: $clr_baselineRem_2;
+    line-height: $clr_baselineRem_2 - $clr_baselineRem_1px;
     margin: 0;
-    margin-right: $bl-0_75;
+    margin-right: $clr_baselineRem_0_75;
     font-weight: 400;
   }
 
@@ -87,7 +87,7 @@
   }
 
   p.subtext {
-    margin-left: 5px;
+    margin-left: $clr_baselineRem_5px;
 
     & > a {
       color: inherit;
@@ -103,11 +103,11 @@
   }
 
   .bg-img {
-    height: 520px;
-    width: 693px;
+    height: $clr_baselineRem_21_67;
+    width: $clr_baselineRem_28_875;
     position: absolute;
     bottom: 0;
-    left: 612px;
+    left: $clr_baselineRem_25_5;
     background-image: url('../../assets/images/clarity-logo.svg');
     background-size: cover;
     background-position: center center;
@@ -124,7 +124,7 @@
 
 .home-cards {
   width: 100%;
-  max-width: 1248px;
+  max-width: $clr_baselineRem_52;
   margin: 0 auto;
   z-index: 1;
   position: relative;
@@ -132,16 +132,16 @@
   .home-cards-container {
     background-color: rgba($clr-color-neutral-0, 0.9);
     width: 100%;
-    padding: $bl-2_0 0 $bl-1_0;
-    border-radius: 3px;
-    margin-top: baselineRem(7) * -1;
-    border: 1px solid hsl(0, 0%, 84%);
+    padding: $clr_baselineRem_2 0 $clr_baselineRem_1;
+    border-radius: $clr-global-borderradius;
+    margin-top: $clr_baselineRem_7 * -1;
+    border: $clr-global-borderwidth solid $clr-color-neutral-300;
 
     @include clarityWebBoxShadow;
 
     & > h1 {
       margin: 0;
-      margin-bottom: $bl-2_0;
+      margin-bottom: $clr_baselineRem_2;
       text-align: center;
     }
   }
@@ -152,19 +152,19 @@
   }
 
   .home-card {
-    padding: $bl-1_0 $bl-1_0 0 $bl-2_0;
+    padding: $clr_baselineRem_1 $clr_baselineRem_1 0 $clr_baselineRem_2;
     text-align: left;
   }
 
   .home-card-angular {
-    padding-right: $bl-1_5;
-    padding-left: $bl-1_0;
+    padding-right: $clr_baselineRem_1_5;
+    padding-left: $clr_baselineRem_1;
   }
 
   .home-card-title {
-    line-height: $bl-2_0;
+    line-height: $clr_baselineRem_2;
     vertical-align: middle;
-    margin: $bl-0_5 0 4px;
+    margin: $clr_baselineRem_0_5 0 $clr_baselineRem_4px;
     font-weight: 200;
     text-align: center;
   }
@@ -175,23 +175,23 @@
 
   p {
     margin: 0 auto;
-    font-size: 16px;
-    line-height: 28px;
+    font-size: $clr_baselineRem_0_667;
+    line-height: $clr_baselineRem_1_16;
     width: 100%;
-    max-width: baselineRem(10);
+    max-width: $clr_baselineRem_10;
   }
 }
 
 .home-process {
   width: 100%;
   padding: 0;
-  max-width: 962px;
+  max-width: $clr_baselineRem_40_0833;
   margin: 0 auto;
 
   h1 {
     margin: 0;
-    margin-top: $bl-1_0;
-    margin-bottom: $bl-3_0;
+    margin-top: $clr_baselineRem_1;
+    margin-bottom: $clr_baselineRem_3;
     text-align: center;
   }
 
@@ -203,11 +203,11 @@
     position: relative;
 
     & > .img {
-      height: $bl-1_5;
-      width: $bl-1_5;
+      height: $clr_baselineRem_1_5;
+      width: $clr_baselineRem_1_5;
       position: absolute;
-      left: $bl-0_25;
-      top: $bl-0_25;
+      left: $clr_baselineRem_0_25;
+      top: $clr_baselineRem_0_25;
       background-position: center center;
       background-size: contain;
       background-repeat: no-repeat;
@@ -230,8 +230,8 @@
     }
 
     & > h3 {
-      padding-left: 54px;
-      line-height: $bl-2_0;
+      padding-left: $clr_baselineRem_2_25;
+      line-height: $clr_baselineRem_2;
     }
   }
 }
@@ -242,14 +242,14 @@
 
   p {
     width: 100%;
-    max-width: baselineRem(17);
+    max-width: $clr_baselineRem_17;
     margin-top: 0;
-    margin-bottom: $bl-2_0;
-    font-size: 16px;
+    margin-bottom: $clr_baselineRem_2;
+    font-size: $clr_baselineRem_0_667;
   }
 
   &:nth-child(2n + 0) {
-    padding-left: $bl-1_5;
+    padding-left: $clr_baselineRem_1_5;
   }
 }
 
@@ -265,7 +265,7 @@
 
 .home-contact-container,
 .layout-home footer {
-  max-width: 1248px;
+  max-width: $clr_baselineRem_52;
   width: 100%;
   margin: 0 auto;
 }
@@ -274,32 +274,32 @@
   padding: 0;
 
   &:nth-child(2n + 0) {
-    padding-left: $bl-1_5;
+    padding-left: $clr_baselineRem_1_5;
 
     a.home-contact_link {
-      padding-left: $bl-3_0 + $bl-0_25;
+      padding-left: $clr_baselineRem_3 + $clr_baselineRem_0_25;
     }
 
     .img {
-      width: $bl-3_0;
+      width: $clr_baselineRem_3;
     }
   }
 }
 
 a.home-contact_link {
   display: block;
-  line-height: $bl-3_0;
-  margin-top: $bl-4_0;
-  margin-bottom: $bl-1_0;
+  line-height: $clr_baselineRem_3;
+  margin-top: $clr_baselineRem_4;
+  margin-bottom: $clr_baselineRem_1;
   position: relative;
-  padding-left: $bl-2_0 + $bl-0_25;
+  padding-left: $clr_baselineRem_2_25;
 
-  color: hsl(0, 0%, 100%);
+  color: $clr-color-neutral-0;
 
   & > .img {
     display: block;
-    height: $bl-3_0;
-    width: $bl-2_0;
+    height: $clr_baselineRem_3;
+    width: $clr_baselineRem_2;
     position: absolute;
     top: 0;
     left: 0;
@@ -328,23 +328,23 @@ a.home-contact_link {
   .layout-home {
     section,
     section.home-contact {
-      padding-left: $bl-0_75;
-      padding-right: $bl-0_75;
+      padding-left: $clr_baselineRem_0_75;
+      padding-right: $clr_baselineRem_0_75;
     }
 
     section.home-cards {
-      padding-left: $bl-1_0;
-      padding-right: $bl-1_0;
+      padding-left: $clr_baselineRem_1;
+      padding-right: $clr_baselineRem_1;
     }
 
     section.home-process {
-      padding-left: $bl-0_5;
-      padding-right: $bl-0_5;
+      padding-left: $clr_baselineRem_0_5;
+      padding-right: $clr_baselineRem_0_5;
     }
 
     footer {
-      padding-left: $bl-1_0;
-      padding-right: $bl-1_0;
+      padding-left: $clr_baselineRem_1;
+      padding-right: $clr_baselineRem_1;
     }
   }
 }
@@ -352,43 +352,43 @@ a.home-contact_link {
 @media (max-width: 1092px) {
   .home-hero {
     .bg-img {
-      left: 504px;
+      left: $clr_baselineRem_21;
     }
   }
 }
 
 @media (max-width: 991px) {
   .layout-home section.home-hero {
-    padding-top: $bl-1_0;
-    padding-bottom: $bl-3_0;
-    height: 660px;
+    padding-top: $clr_baselineRem_1;
+    padding-bottom: $clr_baselineRem_3;
+    height: $clr_baselineRem_27_5;
   }
 }
 
 @media (max-width: 907px) {
   .layout-home {
     section.home-process {
-      padding-left: 42px;
-      padding-right: 42px;
+      padding-left: $clr_baselineRem_1_75;
+      padding-right: $clr_baselineRem_1_75;
     }
   }
 
   .home-cards {
     .home-cards-container {
       & > h1 {
-        font-size: 28px;
-        line-height: $bl-1_5;
-        margin-bottom: $bl-1_0;
+        font-size: $clr_baselineRem_1_16;
+        line-height: $clr_baselineRem_1_5;
+        margin-bottom: $clr_baselineRem_1;
       }
     }
 
     .home-card {
-      padding: $bl-1_0 $bl-0_5 0 $bl-1_0;
+      padding: $clr_baselineRem_1 $clr_baselineRem_0_5 0 $clr_baselineRem_1;
     }
 
     .home-card-angular {
-      padding-right: $bl-0_5;
-      padding-left: $bl-0_5;
+      padding-right: $clr_baselineRem_0_5;
+      padding-left: $clr_baselineRem_0_5;
     }
   }
 }
@@ -396,18 +396,18 @@ a.home-contact_link {
 @media (max-width: 768px) {
   .layout-home section {
     &.home-hero {
-      padding-top: $bl-1_0;
-      height: 492px;
-      padding-bottom: $bl-1_0;
+      padding-top: $clr_baselineRem_1;
+      height: $clr_baselineRem_20_5;
+      padding-bottom: $clr_baselineRem_1;
     }
 
     &.home-cards {
-      padding-bottom: $bl-1_0;
+      padding-bottom: $clr_baselineRem_1;
     }
 
     &.home-process {
-      padding-left: $bl-1_0;
-      padding-right: $bl-1_0;
+      padding-left: $clr_baselineRem_1;
+      padding-right: $clr_baselineRem_1;
     }
 
     &.home-contact {
@@ -420,45 +420,45 @@ a.home-contact_link {
   .home-hero {
     h1 {
       margin-top: 0;
-      font-size: $bl-2_0;
+      font-size: $clr_baselineRem_2;
     }
 
     .home-hero-btn {
-      margin-top: $bl-0_75;
-      width: 336px;
+      margin-top: $clr_baselineRem_0_75;
+      width: $clr_baselineRem_336px;
     }
 
     .btn {
       display: block;
-      margin: $bl-1_0 auto;
+      margin: $clr_baselineRem_1 auto;
     }
 
     .bg-img {
-      height: 344px;
-      width: 455px;
-      left: 372px;
+      height: $clr_baselineRem_14_33;
+      width: $clr_baselineRem_18_95833;
+      left: $clr_baselineRem_15_5;
     }
 
     p.subtext {
-      margin-top: $bl-1_5;
-      font-size: 16px;
+      margin-top: $clr_baselineRem_1_5;
+      font-size: $clr_baselineRem_0_667;
     }
   }
 
   .home-cards {
     .home-cards-container {
-      margin-top: -1 * $bl-3_0;
+      margin-top: -1 * $clr_baselineRem_3;
 
       & > h1 {
-        margin-bottom: $bl-1_5;
-        padding-left: $bl-1_0;
-        padding-right: $bl-1_0;
+        margin-bottom: $clr_baselineRem_1_5;
+        padding-left: $clr_baselineRem_1;
+        padding-right: $clr_baselineRem_1;
       }
     }
 
     .home-card {
       position: relative;
-      padding: $bl-1_0 $bl-2_5 $bl-1_0 180px;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2_5 $clr_baselineRem_1 $clr_baselineRem_7_5;
       width: 100%;
       max-width: 100%;
       text-align: left;
@@ -466,10 +466,10 @@ a.home-contact_link {
 
     .home-card-bug {
       position: absolute;
-      width: 132px;
+      width: $clr_baselineRem_5_5;
       top: 50%;
-      left: $bl-1_5;
-      margin-top: -32px;
+      left: $clr_baselineRem_1_5;
+      margin-top: -1 * $clr_baselineRem_1_33;
     }
 
     .home-card-wrapper {
@@ -478,22 +478,22 @@ a.home-contact_link {
     }
 
     .home-card-title {
-      line-height: $bl-1_0;
+      line-height: $clr_baselineRem_1;
       margin: 0;
       text-align: left;
     }
 
     p {
       margin: 0;
-      font-size: 16px;
+      font-size: $clr_baselineRem_0_667;
       max-width: 100%;
-      margin-top: 16px;
+      margin-top: $clr_baselineRem_0_667;
     }
   }
 
   .home-process {
     h1 {
-      font-size: 28px;
+      font-size: $clr_baselineRem_1_16;
       margin-bottom: 0;
     }
 
@@ -514,15 +514,15 @@ a.home-contact_link {
     p {
       width: 100%;
       max-width: 100%;
-      margin-top: $bl-0_5;
+      margin-top: $clr_baselineRem_0_5;
       margin-bottom: 0;
-      padding: 0 $bl-0_5;
+      padding: 0 $clr_baselineRem_0_5;
     }
   }
 
   .home-contact {
     & > .row {
-      height: baselineRem(10);
+      height: $clr_baselineRem_10;
       flex-direction: column-reverse;
       -ms-flex-direction: column;
     }
@@ -532,7 +532,7 @@ a.home-contact_link {
     background-color: $clr-color-action-600;
     width: 100%;
     max-width: 100%;
-    padding-left: $bl-1_5;
+    padding-left: $clr_baselineRem_1_5;
 
     & + .home-contact-block {
       background-color: $clr-color-neutral-900;
@@ -540,55 +540,55 @@ a.home-contact_link {
   }
 
   a.home-contact_link {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
   }
 }
 
 @media (max-width: 545px) {
   .home-hero {
     h1 {
-      font-size: $bl-1_5;
+      font-size: $clr_baselineRem_1_5;
     }
 
     p.head {
-      line-height: $bl-1_0;
-      max-width: 460px;
+      line-height: $clr_baselineRem_1;
+      max-width: $clr_baselineRem_19_167;
     }
 
     .home-hero-btn {
-      width: 228px;
+      width: $clr_baselineRem_9_5;
     }
 
     .bg-img {
-      height: 295px;
-      width: 390px;
+      height: $clr_baselineRem_12_29167;
+      width: $clr_baselineRem_16_25;
       left: 55%;
-      bottom: $bl-1_0;
+      bottom: $clr_baselineRem_1;
     }
   }
 
   .home-cards {
     .home-cards-container {
-      padding-top: $bl-1_5;
-      margin-top: -1 * $bl-2_0;
+      padding-top: $clr_baselineRem_1_5;
+      margin-top: -1 * $clr_baselineRem_2;
     }
 
     .home-card {
-      padding-left: 156px;
-      padding-right: $bl-0_75;
+      padding-left: $clr_baselineRem_6_5;
+      padding-right: $clr_baselineRem_0_75;
     }
 
     .home-card-bug {
-      left: $bl-0_5;
+      left: $clr_baselineRem_0_5;
     }
 
     p {
-      line-height: $bl-1_0;
+      line-height: $clr_baselineRem_1;
     }
   }
 
   .home-contact-block {
-    padding-left: $bl-0_5 !important;
+    padding-left: $clr_baselineRem_0_5 !important;
   }
 }
 
@@ -596,7 +596,7 @@ a.home-contact_link {
   .layout-home {
     section {
       &.home-cards {
-        padding-bottom: $bl-1_0;
+        padding-bottom: $clr_baselineRem_1;
         padding-left: 0;
         padding-right: 0;
         border: 0 none;
@@ -609,32 +609,32 @@ a.home-contact_link {
       }
 
       &.home-process {
-        padding-bottom: $bl-1_0;
-        padding-left: $bl-0_5;
-        padding-right: $bl-0_5;
+        padding-bottom: $clr_baselineRem_1;
+        padding-left: $clr_baselineRem_0_5;
+        padding-right: $clr_baselineRem_0_5;
       }
     }
   }
 
   .home-hero {
     h1 {
-      font-size: 32px;
-      line-height: $bl-1_5;
+      font-size: $clr_baselineRem_1_33;
+      line-height: $clr_baselineRem_1_5;
       text-align: center;
-      margin-bottom: $bl-0_5 + 2;
+      margin-bottom: $clr_baselineRem_0_583;
     }
 
     p.head {
-      line-height: $bl-1_0;
-      max-width: 266px;
-      font-size: 16px;
+      line-height: $clr_baselineRem_1;
+      max-width: $clr_baselineRem_11_0833;
+      font-size: $clr_baselineRem_0_667;
       margin: 0 auto;
       text-align: center;
     }
 
     p.subtext {
-      margin-top: $bl-1_0;
-      font-size: 16px;
+      margin-top: $clr_baselineRem_1;
+      font-size: $clr_baselineRem_0_667;
       margin-left: 0;
       text-align: center;
     }
@@ -649,26 +649,26 @@ a.home-contact_link {
     }
 
     .btn {
-      min-width: 168px;
+      min-width: $clr_baselineRem_7;
       width: 80%;
-      max-width: 220px;
+      max-width: $clr_baselineRem_9_167;
     }
   }
 
   .home-cards {
     .home-cards-container {
-      padding-top: $bl-1_0;
+      padding-top: $clr_baselineRem_1;
       margin-top: 0;
     }
 
     .home-card-bug {
       position: static;
-      margin: 0 auto $bl-0_75;
+      margin: 0 auto $clr_baselineRem_0_75;
     }
 
     .home-card {
-      padding-left: $bl-1_0;
-      padding-right: $bl-1_0;
+      padding-left: $clr_baselineRem_1;
+      padding-right: $clr_baselineRem_1;
     }
 
     .home-card-title {
@@ -677,21 +677,21 @@ a.home-contact_link {
 
     p {
       width: 80%;
-      max-width: 260px;
-      margin: $bl-0_75 auto 0;
+      max-width: $clr_baselineRem_10_833;
+      margin: $clr_baselineRem_0_75 auto 0;
     }
   }
 
   .home-process-block {
     p {
-      font-size: 14px;
-      margin-top: $bl-0_25;
+      font-size: $clr_baselineRem_0_583;
+      margin-top: $clr_baselineRem_0_25;
     }
   }
 
   a.mit-link {
-    line-height: $bl-0_75;
-    padding-top: $bl-0_75;
-    padding-bottom: $bl-0_5;
+    line-height: $clr_baselineRem_0_75;
+    padding-top: $clr_baselineRem_0_75;
+    padding-bottom: $clr_baselineRem_0_5;
   }
 }

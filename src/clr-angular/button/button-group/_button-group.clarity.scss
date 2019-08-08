@@ -10,7 +10,7 @@
 @include exports('button-group.clarity') {
   .btn-group {
     display: inline-flex;
-    margin-right: 0.5rem;
+    margin-right: $clr_baselineRem_0_5;
 
     .btn {
       margin: 0;
@@ -28,9 +28,9 @@
         top: 0;
         height: 100%;
         width: 100%;
-        box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-        padding: 3px 0px 3px 3px;
-        border: 1px solid rgba(81, 203, 238, 1);
+        box-shadow: 0 0 $clr_baselineRem_5px rgba(81, 203, 238, 1);
+        padding: $clr_baselineRem_3px 0 $clr_baselineRem_3px $clr_baselineRem_3px;
+        border: $clr_baselineRem_1px solid rgba(81, 203, 238, 1);
 
         &::-ms-check {
           display: none;
@@ -165,7 +165,7 @@
     .checkbox,
     .radio {
       &.btn label {
-        line-height: calc(1rem - 1px);
+        line-height: $clr_baselineRem_1 - $clr_baselineRem_1px;
       }
     }
   }

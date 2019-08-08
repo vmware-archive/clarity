@@ -4,15 +4,15 @@
 
 @function getActiveWidthBoxShadowTop($type: default) {
   @if type == primary {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == outline-success {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == outline-danger {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == link {
@@ -20,10 +20,10 @@
   }
 
   @if type == inverse {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
-  @return 2px;
+  @return $clr_baselineRem_2px;
 }
 
 @function getSassButtonColor($type: default, $property: null) {
@@ -128,8 +128,8 @@
 }
 
 @mixin btn-min-max-widths() {
-  min-width: 3rem;
-  max-width: 15rem;
+  min-width: $clr_baselineRem_3;
+  max-width: $clr_baselineRem_15;
 }
 
 @mixin btn-text-properties() {
@@ -182,7 +182,7 @@
   .btn-group > .btn,
   .btn {
     clr-icon {
-      transform: translate3d(0rem, -2 * $clr-rem-1px, 0);
+      transform: translate3d(0, -1 * $clr_baselineRem_2px, 0);
     }
   }
 
@@ -295,9 +295,9 @@
   //Small Icon Button
   .btn-sm:not(.btn-link) {
     clr-icon {
-      width: 0.5rem;
-      height: 0.5rem;
-      transform: translate3d(0rem, -1 * $clr-rem-1px, 0);
+      width: $clr_baselineRem_0_5;
+      height: $clr_baselineRem_0_5;
+      transform: translate3d(0, -1 * $clr_baselineRem_1px, 0);
     }
   }
 
@@ -344,7 +344,7 @@
     label {
       display: block;
       line-height: inherit;
-      padding: 0 0.5rem;
+      padding: 0 $clr_baselineRem_0_5;
       cursor: pointer;
     }
   }

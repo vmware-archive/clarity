@@ -1,20 +1,7 @@
-$clrweb-content-maxwidth: 900px;
-$clr-font-size: 16px;
-$clr-rem-denominator: 16;
-$clr-baseline: 24px;
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
 
-@function baselineRem($multiplier) {
-  @return $multiplier * $clr-baseline;
-}
+@import './clarity-imports';
 
-$bl-0_25: baselineRem(0.25);
-$bl-0_5: baselineRem(0.5);
-$bl-0_75: baselineRem(0.75);
-$bl-1_5: baselineRem(1.5);
-$bl-0_833: baselineRem(0.83333);
-$bl-1_0: baselineRem(1);
-$bl-1_5: baselineRem(1.5);
-$bl-2_0: baselineRem(2);
-$bl-2_5: baselineRem(2.5);
-$bl-3_0: baselineRem(3);
-$bl-4_0: baselineRem(4);
+$clrweb-content-maxwidth: $clr_baselineRem_37_5;

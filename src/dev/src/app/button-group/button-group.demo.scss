@@ -2,20 +2,22 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../_utils/clarity-variables';
+
 .clr-example {
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 3px;
-  padding: 24px;
+  border: $clr_baselineRem_1px solid hsl(0, 0%, 80%);
+  border-radius: $clr-global-borderradius;
+  padding: $clr_baselineRem_1;
 
   &.space-below {
-    margin-bottom: 96px;
+    margin-bottom: $clr_baselineRem_4;
   }
 
   &.example-min-height {
-    min-height: 216px;
+    min-height: $clr_baselineRem_9;
   }
 
   &.example-padding-up {
-    padding: 96px 24px 24px 24px;
+    padding: $clr_baselineRem_4 $clr_baselineRem_1 $clr_baselineRem_1 $clr_baselineRem_1;
   }
 }

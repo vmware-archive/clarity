@@ -60,21 +60,21 @@
   .label,
   a.label {
     //default
-    $label-nudge-for-vertical-alignment: 1px;
+    $label-nudge-for-vertical-alignment: $clr_baselineRem_1px;
     font-size: $clr-label-font-size;
     font-weight: $clr-label-font-weight;
     letter-spacing: $clr-label-letter-spacing;
 
     // line-height needed to be adjusted to force center alignment
-    line-height: 0.458333rem;
+    line-height: $clr-label-font-size + $clr_baselineRem_1px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
-    border-radius: 0.5rem;
+    border-radius: $clr_baselineRem_0_5;
     border: $clr-label-borderwidth solid $clr-label-default-border-color;
-    height: 0.875rem;
-    margin: 0 0.25rem 0 0;
+    height: $clr_baselineRem_0_875;
+    margin: 0 $clr_baselineRem_0_25 0 0;
     white-space: nowrap;
     color: $clr-label-font-color;
 
@@ -95,7 +95,7 @@
       }
 
       &:active {
-        box-shadow: 0 1px 0 0 getLabelColor(gray, bg-color) inset;
+        box-shadow: 0 $clr_baselineRem_1px 0 0 getLabelColor(gray, bg-color) inset;
         transform: translateY(0.5px);
       }
     }
@@ -112,7 +112,8 @@
     @include generateStatusLabelStyles(danger);
 
     & > .badge {
-      margin: 0 -0.375rem 0 0.25rem; //-0.375 is -9px. 12px initial label padding plus a negative margin of 9
+      margin: 0 (-1 * $clr_baselineRem_0_375) 0 $clr_baselineRem_0_25;
+      //-0.375 is -9px. 12px initial label padding plus a negative margin of 9
     }
   }
 
@@ -123,21 +124,18 @@
   //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
   //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
   .badge {
-    $equiDimensions: 0.625rem;
-    $rem_10px: 0.416667rem;
-
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    min-width: $equiDimensions;
+    min-width: $clr_baselineRem_0_625;
     background: getLabelColor(gray, bg-color);
-    height: $equiDimensions;
+    height: $clr_baselineRem_0_625;
     line-height: normal;
-    border-radius: $rem_10px;
-    font-size: $rem_10px;
-    padding: 0 0.166667rem;
-    margin-right: 0.25rem;
+    border-radius: $clr_baselineRem_0_416;
+    font-size: $clr_baselineRem_0_416;
+    padding: 0 $clr_baselineRem_4px;
+    margin-right: $clr_baselineRem_0_25;
     white-space: nowrap;
     text-align: center;
     // TODO: use contrast color generators instead of hard-coded color vars
@@ -170,13 +168,13 @@
 
   @include fixForIE10AndUp {
     .badge {
-      padding: 0.083333rem 0.125rem 0;
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
     }
   }
 
   @include fixForMsEdge {
     .badge {
-      padding: 0.083333rem 0.125rem 0;
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
     }
   }
 }

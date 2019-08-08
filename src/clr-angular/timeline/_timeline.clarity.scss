@@ -43,9 +43,7 @@
       content: '';
       background: $clr-timeline-line-color;
       height: $clr-timeline-line-thickness;
-      width: calc(
-        100% - (#{$clr-timeline-icon-size} - 2 * #{$clr-timeline-icon-inner-padding}) + #{$clr-timeline-gutter-width}
-      );
+      width: calc(100% - #{0.5 * $clr-timeline-icon-size} - #{$clr-timeline-icon-inner-padding});
       transform: translate(
         $clr-timeline-icon-size - $clr-timeline-icon-inner-padding,
         -0.5 * ($clr-timeline-line-thickness + $clr-timeline-icon-size)
@@ -108,7 +106,7 @@
       &:not(:last-of-type) .clr-timeline-step-body::before {
         position: absolute;
         width: $clr-timeline-line-thickness;
-        height: calc(100% + 2 * #{$clr-timeline-icon-inner-padding});
+        height: calc(100% + #{2 * $clr-timeline-icon-inner-padding});
         transform: translate(
           -0.5 * ($clr-timeline-icon-size - $clr-timeline-line-thickness) - $clr-timeline-icon-inner-padding - $clr-timeline-vertical-step-body-left-padding,
           $clr-timeline-icon-size - $clr-timeline-icon-inner-padding - $clr-timeline-vertical-step-body-top-padding

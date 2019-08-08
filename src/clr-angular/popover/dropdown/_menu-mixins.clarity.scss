@@ -10,17 +10,17 @@
   left: 0;
 
   //Dimensions
-  min-width: 5rem;
-  max-width: 15rem;
+  min-width: $clr_baselineRem_5;
+  max-width: $clr_baselineRem_15;
 
   //Other
   background: $clr-dropdown-bg-color;
-  border: $clr-default-borderwidth solid $clr-dropdown-border-color;
+  border: $clr-global-borderwidth solid $clr-dropdown-border-color;
   border-radius: $clr-global-borderradius;
-  box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-dropdown-box-shadow;
+  box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-dropdown-box-shadow;
 
-  margin-top: 0.083333rem;
-  padding: 0.5rem 0;
+  margin-top: $clr_baselineRem_2px;
+  padding: $clr_baselineRem_0_5 0;
 
   visibility: hidden;
   z-index: map-get($clr-layers, dropdown-menu);
@@ -79,9 +79,9 @@
 }
 
 @mixin generate-dropdown-item-height() {
-  padding: 0.125rem 1rem;
+  padding: $clr_baselineRem_0_125 $clr_baselineRem_1;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
-    padding: 0.25rem 1rem;
+    padding: $clr_baselineRem_0_25 $clr_baselineRem_1;
   }
 }

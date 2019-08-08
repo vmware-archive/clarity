@@ -44,7 +44,7 @@
       position: absolute;
       content: '';
       display: none;
-      height: $mark-half-size + $clr-rem-1px;
+      height: $mark-half-size + $clr_baselineRem_1px;
       width: $clr-forms-checkbox-mark-size;
       border-left: $clr-forms-checkbox-mark-border-size solid $clr-forms-checkbox-mark-color;
       border-bottom: $clr-forms-checkbox-mark-border-size solid $clr-forms-checkbox-mark-color;
@@ -64,7 +64,7 @@
 
     input[type='checkbox'].clr-indeterminate + label::before,
     input[type='checkbox']:indeterminate + label::before {
-      border: $clr-default-borderwidth solid $clr-forms-checkbox-indeterminate-border-color;
+      border: $clr-global-borderwidth solid $clr-forms-checkbox-indeterminate-border-color;
     }
     input[type='checkbox'].clr-indeterminate + label::after,
     input[type='checkbox']:indeterminate + label::after {

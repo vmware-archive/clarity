@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -7,8 +7,8 @@
     @include form-fields-appearance($clr-forms-border-color);
     @include input-border-bottom-animation($clr-forms-focused-color);
     padding-right: $clr-forms-baseline * 4;
-    max-width: calc(100% - 1rem);
-    height: 24px;
+    max-width: calc(100% - #{$clr_baselineRem_1});
+    height: $clr_baselineRem_1;
 
     .clr-input {
       background: none;

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,16 +8,16 @@
 
 @mixin clrdemo-colorPaletteLabels {
   text-transform: uppercase;
-  font-size: 0.5rem;
-  line-height: 0.7rem;
+  font-size: $clr_baselineRem_0_5;
+  line-height: $clr_baselineRem_0_7;
   font-weight: 400;
   letter-spacing: 0.08em;
 }
 
 @mixin clr-colordemo-hexContrastBlockStyles {
   display: block;
-  line-height: 3.333333rem;
-  font-size: 2rem;
+  line-height: $clr_baselineRem_8px;
+  font-size: $clr_baselineRem_2;
 }
 
 @mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
@@ -38,16 +38,16 @@
 }
 
 @mixin clr-colordemo-sharedContainerStyles {
-  font-size: 0.666667rem;
+  font-size: $clr_baselineRem_0_667;
   margin: 0;
-  padding: 1.4rem;
+  padding: $clr_baselineRem_1_4;
 }
 
 @mixin clr-colordemo-sharedTableStyles {
   table {
     border-collapse: collapse;
-    min-width: 47.5rem;
-    min-width: 40rem;
+    min-width: $clr_baselineRem_47_5;
+    min-width: $clr_baselineRem_40;
     width: 100%;
   }
 
@@ -58,7 +58,7 @@
   }
 
   td {
-    border: $clr-default-borderwidth solid $clr-color-neutral-0;
+    border: $clr-global-borderwidth solid $clr-color-neutral-0;
     vertical-align: middle;
     width: 8%;
     text-align: center;

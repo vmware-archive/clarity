@@ -41,18 +41,18 @@ button.nav-link {
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
-    margin-right: 1rem;
+    margin-right: $clr_baselineRem_1;
     overflow: auto;
     flex-shrink: 0;
-    padding: 4px;
-    width: 10rem;
-    min-width: 2rem;
+    padding: $clr_baselineRem_4px;
+    width: $clr_baselineRem_10;
+    min-width: $clr_baselineRem_2;
 
     .nav-link {
       text-align: left;
-      padding: 0 0.5rem;
+      padding: 0 $clr_baselineRem_0_5;
       border: none;
-      margin-bottom: 1px;
+      margin-bottom: $clr_baselineRem_1px;
       flex-shrink: 0;
       margin-top: 0;
       margin-left: 0;
@@ -64,7 +64,7 @@ button.nav-link {
 
       &.active,
       &:hover {
-        box-shadow: inset 3px 0 0 $clr-nav-active-box-shadow-color;
+        box-shadow: inset $clr_baselineRem_3px 0 0 $clr-nav-active-box-shadow-color;
       }
       &.active {
         background-color: $clr-global-selection-color;

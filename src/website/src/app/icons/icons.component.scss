@@ -1,12 +1,16 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 @import '../../styles/clarity-imports';
 
-$clr-icons-hero-height: $clr-baseline * 10;
+$clr-icons-hero-height: $clr_baselineRem_10;
 $clr-icons-content-top: calc(#{$clr-icons-hero-height} + #{$clr-header-height});
-$clr-icons-content-width: 45rem;
-$clr-sidenav-width: $clr-baseline * 9;
+$clr-icons-content-width: $clr_baselineRem_1080px;
+$clr-sidenav-width: $clr_baselineRem_9;
 $clr-searchbar-nonsticky-margintop: 0;
-$clr-searchbar-container-height: 5rem + $clr-searchbar-nonsticky-margintop;
-$clr-searchbar-container-height-sm: 4.5rem;
+$clr-searchbar-container-height: $clr_baselineRem_5 + $clr-searchbar-nonsticky-margintop;
+$clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
 
 .icons-header {
   position: fixed;
@@ -27,8 +31,8 @@ $clr-searchbar-container-height-sm: 4.5rem;
     justify-content: center;
 
     .icon-bg-wrapper {
-      width: 80px;
-      height: 80px;
+      width: $clr_baselineRem_3_33;
+      height: $clr_baselineRem_3_33;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -58,16 +62,16 @@ $clr-searchbar-container-height-sm: 4.5rem;
     h1 {
       color: $clr-color-neutral-0;
       text-align: center;
-      margin: 0 0 $clr-baseline / 2 0;
+      margin: 0 0 $clr_baselineRem_0_5 0;
       font-weight: 400;
     }
 
     .icons-header-message {
-      font-size: 16px;
+      font-size: $clr_baselineRem_0_667;
       color: $clr-color-neutral-0;
       text-align: center;
       font-weight: 100;
-      margin: $clr-baseline / 2 0 $clr-baseline 0;
+      margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
     }
   }
 }
@@ -94,7 +98,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
   margin: $clr-searchbar-nonsticky-margintop auto 0;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 5px 0 rgba($clr-color-neutral-1000, 0);
+  box-shadow: 0 0 $clr_baselineRem_5px 0 rgba($clr-color-neutral-1000, 0);
   display: flex;
   transform: translate3d(0, 0, 0);
 
@@ -110,7 +114,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
     max-width: calc(#{$clr-icons-content-width} - #{$clr-sidenav-width});
     position: relative;
     flex: 0 0 auto;
-    padding: $clr-baseline $clr_baselineRem_1_5;
+    padding: $clr_baselineRem_1 $clr_baselineRem_1_5;
     margin-left: $clr-sidenav-width;
     text-align: left;
   }
@@ -141,7 +145,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
     input.searchbar-input {
       width: 100%;
-      padding: $clr-baseline $clr_baselineRem_2;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2;
       height: $clr_baselineRem_2;
       margin-bottom: $clr_baselineRem_0_75;
     }
@@ -166,7 +170,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
     label {
       text-transform: uppercase;
       font-weight: normal;
-      font-size: 12px;
+      font-size: $clr_baselineRem_0_5;
       padding: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_25;
     }
 
@@ -175,23 +179,23 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
       .nav-link {
         padding: $clr_baselineRem_0_125 $clr_baselineRem_0_25;
-        border-radius: 3px;
+        border-radius: $clr-global-borderradius;
       }
     }
   }
 
   .sidenav-content {
-    padding: $clr_baselineRem_1_5 0 0 $clr-baseline;
+    padding: $clr_baselineRem_1_5 0 0 $clr_baselineRem_1;
 
     &.sticky {
       position: fixed;
       top: $clr-header-height + $clr-searchbar-container-height;
-      max-height: calc(100vh - 60px);
+      max-height: calc(100vh - #{$clr_baselineRem_2_5});
       width: inherit;
     }
 
     &.on-icon-sets {
-      padding: $clr_baselineRem_0_5 0 0 $clr-baseline;
+      padding: $clr_baselineRem_0_5 0 0 $clr_baselineRem_1;
     }
   }
 }

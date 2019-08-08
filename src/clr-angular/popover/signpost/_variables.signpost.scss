@@ -14,8 +14,8 @@ $clr-signpost-outerBorder: $clr-signpost-content-border-color !default;
 $clr-signpost-action-color: $clr-color-neutral-600 !default;
 $clr-signpost-action-hover-color: $clr-color-action-700 !default;
 
-$clr-signpost-border-size: 0.5rem;
-$clr-signpost-border-radius: $clr-default-borderradius !default;
+$clr-signpost-border-size: $clr_baselineRem_0_5;
+$clr-signpost-border-radius: $clr-global-borderradius !default;
 
 // TODO: should be able to theme the colors in these pointers...
 $clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-outerBorder;

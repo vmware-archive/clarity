@@ -15,20 +15,23 @@
   }
 
   .clr-textarea {
+    $textarea-vertical-padding: $clr-forms-baseline + $clr_baselineRem_2px;
+    $textarea-horizontal-padding: $clr-forms-baseline * 2;
+
     max-width: calc(100% - #{$clr-forms-baseline});
     height: auto;
 
     resize: vertical;
     background: $clr-forms-textarea-background-color;
-    border: 1px solid $clr-forms-border-color;
+    border: $clr-global-borderwidth solid $clr-forms-border-color;
     color: $clr-forms-text-color;
     border-radius: $clr-forms-baseline / 2;
-    padding: calc(#{$clr-forms-baseline} + 2px) $clr-forms-baseline * 2;
+    padding: $textarea-vertical-padding $textarea-horizontal-padding;
     font-size: $clr-forms-field-font-size;
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 2px 2px $clr-outline-color;
+      box-shadow: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-outline-color;
     }
 
     &:disabled {
@@ -41,7 +44,7 @@
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 2px 2px lighten($clr-forms-invalid-color, 30%);
+      box-shadow: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px lighten($clr-forms-invalid-color, 30%);
     }
   }
 

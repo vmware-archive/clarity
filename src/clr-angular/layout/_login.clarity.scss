@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 1rem 2.5rem;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2_5;
       height: auto;
       min-height: 100vh;
       width: $clr-login-width;
@@ -36,8 +36,8 @@
 
         .hint {
           color: $clr-login-title-color;
-          margin-top: 1.25rem;
-          font-size: 0.5833rem;
+          margin-top: $clr_baselineRem_1_25;
+          font-size: $clr_baselineRem_0_583;
         }
       }
 
@@ -63,7 +63,7 @@
       .login-group {
         display: flex;
         flex-direction: column;
-        padding: 2rem 0 0 0;
+        padding: $clr_baselineRem_2 0 0 0;
 
         .auth-source,
         .username,
@@ -71,7 +71,7 @@
         .checkbox,
         .clr-form-control,
         .clr-checkbox-wrapper {
-          margin: 0.25rem 0 0.75rem 0;
+          margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
         }
 
         // Overrides for new forms layouts to match original login layout
@@ -97,10 +97,10 @@
             & > .clr-input-group {
               max-width: 100%;
               width: 100%;
-              padding-right: 0.4rem;
+              padding-right: $clr_baselineRem_0_4;
 
               & > .clr-input {
-                width: calc(100% - 1rem);
+                width: calc(100% - #{$clr_baselineRem_1});
               }
             }
           }
@@ -108,7 +108,7 @@
 
         // @TODO Is this used?
         .tooltip-validation {
-          margin-top: 0.25rem;
+          margin-top: $clr_baselineRem_0_25;
         }
 
         // @TODO Is this used?
@@ -120,19 +120,18 @@
 
         .error {
           display: none;
-          margin: 0.25rem 0 0 0;
-          padding: 0.375rem 0.5rem;
-          // TODO: use contrast checker vs. known background?
+          margin: $clr_baselineRem_0_25 0 0 0;
+          padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
           background: $clr-color-danger-800;
           color: $clr-login-background-color;
           border-radius: $clr-global-borderradius;
-          line-height: 0.75rem;
+          line-height: $clr_baselineRem_0_75;
 
           &:before {
             display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
             content: '';
             background: generateErrorIcon($clr-login-background-color);
-            margin: $clr-rem-1px 0.25rem 0 0;
+            margin: $clr_baselineRem_1px $clr_baselineRem_0_25 0 0;
             height: $clr-login-icon-size;
             width: $clr-login-icon-size;
           }
@@ -147,17 +146,17 @@
         }
 
         .btn {
-          margin: 3rem 0 0 0;
+          margin: $clr_baselineRem_3 0 0 0;
           max-width: none;
         }
 
         .error + .btn {
-          margin: 1rem 0 0 0;
+          margin: $clr_baselineRem_1 0 0 0;
         }
 
         .signup {
-          margin-top: 0.5rem;
-          font-size: 0.5833rem;
+          margin-top: $clr_baselineRem_0_5;
+          font-size: $clr_baselineRem_0_583;
           text-align: center;
         }
       }
@@ -166,11 +165,11 @@
         position: absolute;
         content: '';
         display: block;
-        width: 1px;
+        width: $clr_baselineRem_1px;
         height: 100%;
         background: rgba($clr-color-neutral-1000, 0.1);
         top: 0;
-        right: -2px;
+        right: -1 * $clr_baselineRem_2px;
       }
     }
   }
@@ -183,7 +182,7 @@
       .login {
         width: 100%;
         margin-left: 0;
-        padding: 1rem 20%;
+        padding: $clr_baselineRem_1 20%;
 
         &:after {
           content: none;
@@ -195,7 +194,7 @@
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     .login-wrapper {
       .login {
-        padding: 1rem 15%;
+        padding: $clr_baselineRem_1 15%;
       }
     }
   }

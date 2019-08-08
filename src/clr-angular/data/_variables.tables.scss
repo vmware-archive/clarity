@@ -18,12 +18,12 @@ $clr-tablerow-bordercolor: $clr-color-neutral-200 !default;
 // @deprecated in 2.0 $clr-table-bordercolor needs to be replaced by $clr-table-border-color
 $clr-table-bordercolor: $clr-color-neutral-400 !default;
 $clr-table-border-radius: $clr-global-borderradius !default;
-$clr-table-borderwidth: 1px !default;
-$clr-table-smallpadding: 0.25rem !default;
+$clr-table-borderwidth: $clr_baselineRem_1px !default;
+$clr-table-smallpadding: $clr_baselineRem_0_25 !default;
 
 // Border radius of corner cells needs to be slightly less than the table's,
 // To make sure they correctly cover the whole area up to the border.
-$clr-table-cornercellradius: calc(#{$clr-table-border-radius} - 1px) !default;
+$clr-table-cornercellradius: $clr-table-border-radius - $clr_baselineRem_1px !default;
 
 // Usage: ./data/_tables.clarity.scss
 // Usage: ./data/datagrid/_datagrid.clarity.scss
@@ -31,16 +31,16 @@ $clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !def
 $clr-table-font-color: $clr-color-neutral-700 !default;
 
 // Table dims and sizing
-$clr-table-fontsize: 0.541667rem !default;
-$clr-table-lineheight: 0.5833334rem !default;
-$clr-table-lineheightPaddingShim: (1rem - $clr-table-lineheight)/2 !default;
-$clr-table-cellpadding: 0.5rem !default;
-$clr-table-topcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
-$clr-table-bottomcellpadding: $clr-table-cellpadding - $clr-rem-1px !default;
-$clr-table-topcellpadding-cmp: $clr-table-cellpadding/2 - $clr-rem-1px !default;
-$clr-table-bottomcellpadding-cmp: $clr-table-cellpadding/2 - $clr-rem-1px !default;
+$clr-table-fontsize: $clr_baselineRem_0_5416 !default;
+$clr-table-lineheight: $clr_baselineRem_0_583 !default;
+$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2 !default;
+$clr-table-cellpadding: $clr_baselineRem_0_5 !default;
+$clr-table-topcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
+$clr-table-bottomcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
+$clr-table-topcellpadding-cmp: $clr-table-cellpadding/2 - $clr_baselineRem_1px !default;
+$clr-table-bottomcellpadding-cmp: $clr-table-cellpadding/2 - $clr_baselineRem_1px !default;
 
-$clr-table--compact-rowHeight: 1rem !default;
+$clr-table--compact-rowHeight: $clr_baselineRem_1 !default;
 $clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table-lineheight)/2 !default;
 
 // Table header styles

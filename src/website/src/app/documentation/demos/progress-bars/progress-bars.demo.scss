@@ -3,19 +3,21 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 @import '../../../../styles/clarity-imports';
 
+@import '../../../../styles/clarity-imports';
+
 .progress-bars-demo {
   .nav-item {
-    padding: 0.4rem 0 0.6rem;
+    padding: $clr_baselineRem_0_4 0 $clr_baselineRem_0_6;
   }
 
   .progbar-examples {
-    margin-bottom: 1.5rem; //24px
+    margin-bottom: $clr_baselineRem_1_5;
   }
 }
 
 .progbar-examples {
   .progress-block {
-    margin-top: 1rem;
+    margin-top: $clr_baselineRem_1;
   }
 }
 

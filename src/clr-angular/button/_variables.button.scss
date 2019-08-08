@@ -6,28 +6,28 @@
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-vertical-margin: 0.25rem !default;
+$clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
 $clr-btn-vertical-margin: $clr-button-vertical-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // Usage: ../layout/_card.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-margin: 0.5rem !default;
+$clr-button-horizontal-margin: $clr_baselineRem_0_5 !default;
 $clr-btn-horizontal-margin: $clr-button-horizontal-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-padding: 0.5rem !default;
+$clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
 $clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height: 1.5rem !default;
+$clr-button-height: $clr_baselineRem_1_5 !default;
 $clr-btn-height: $clr-button-height !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height-sm: 1rem !default;
+$clr-button-height-sm: $clr_baselineRem_1 !default;
 $clr-btn-height-sm: $clr-button-height-sm !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
@@ -39,12 +39,12 @@ $clr-button-padding: 0 $clr-btn-horizontal-padding !default;
 $clr-btn-padding: $clr-button-padding !default;
 
 $clr-btn-border-radius: $clr-global-borderradius !default;
-$clr-btn-border-width: $clr-default-borderwidth !default;
+$clr-btn-border-width: $clr-global-borderwidth !default;
 
 // standard appearance styles - overrideable but not advertised!
-$clr-btn-appearance-standard-line-height: calc(#{$clr-btn-height-sm} - 1px) !default;
+$clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
 $clr-btn-appearance-standard-letter-spacing: 0.073em !default;
-$clr-btn-appearance-standard-font-size: 0.458333rem !default;
+$clr-btn-appearance-standard-font-size: $clr_baselineRem_0_458 !default;
 $clr-btn-appearance-standard-font-weight: $clr-btn-font-weight !default;
 $clr-btn-appearance-standard-height: $clr-btn-height-sm !default;
 $clr-btn-appearance-standard-padding: $clr-btn-padding !default;
@@ -52,7 +52,7 @@ $clr-btn-appearance-standard-padding: $clr-btn-padding !default;
 // form-style button appearance styles - overrideable but not advertised!
 $clr-btn-appearance-form-line-height: $clr-btn-height !default;
 $clr-btn-appearance-form-letter-spacing: 0.12em !default;
-$clr-btn-appearance-form-font-size: 0.5rem !default;
+$clr-btn-appearance-form-font-size: $clr_baselineRem_0_5 !default;
 $clr-btn-appearance-form-font-weight: $clr-btn-font-weight !default;
 $clr-btn-appearance-form-height: $clr-btn-height !default;
 $clr-btn-appearance-form-padding: $clr-btn-padding !default;

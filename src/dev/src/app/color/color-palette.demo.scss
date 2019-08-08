@@ -15,11 +15,11 @@ p.card-swatch {
   background: hsl(0, 0%, 80%);
   color: hsl(0, 0%, 0%);
   margin: 0;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.666667rem;
+  padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+  font-size: $clr_baselineRem_0_667;
 
   &.upsize {
-    padding-top: 2rem;
+    padding-top: $clr_baselineRem_2;
   }
 
   &:before,
@@ -34,7 +34,7 @@ p.card-swatch {
     float: left;
     & > span {
       color: hsl(0, 0%, 0%);
-      padding-left: 0.125rem;
+      padding-left: $clr_baselineRem_0_125;
     }
   }
 
@@ -56,5 +56,5 @@ p.card-swatch {
 }
 
 .card-swatch-divider {
-  height: 0.5rem;
+  height: $clr_baselineRem_0_5;
 }

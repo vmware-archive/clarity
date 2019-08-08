@@ -50,8 +50,6 @@ $clr-font-weight-extrabold: null; // 600
 // in the overwrites file. it had to be deprecated first
 $clr-font-weights: null; // (light: 200, regular: 400, bold: 600);
 
-$clr-baseline: null; // 24px;
-
 // Paragraphs
 $clr-typography-smalltext: null; // 13/$clr-rem-denominator*$clr-font-size;
 $clr-typography-xsmalltext: null; // 12/$clr-rem-denominator*$clr-font-size;
@@ -72,8 +70,8 @@ $clr-content-area-padding-left: null; // $clr-baseline*1;
 // Cards
 $clr-card-bg-color: null; // $clr-color-neutral-0
 $clr-card-border-color: null; // $clr-color-neutral-200
-$clr-card-box-shadow: null; // 0 0.125rem 0 0 rgba(215, 215, 215, 1)
-$clr-card-border: null; // $clr-default-borderwidth solid rgba(215, 215, 215, 1)
+$clr-card-box-shadow: null; // 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1)
+$clr-card-border: null; // $clr-global-borderwidth solid rgba(215, 215, 215, 1)
 $clr-card-divider-color: null; // $clr-color-neutral-200
 $clr-card-text-font-size: null; // $clr-p1-font-size
 $clr-card-title-color: null; // $clr-h4-color
@@ -93,8 +91,8 @@ $clr-global-selection-color: null; // #D9E4EA;
 $clr-global-on-selection-color: null; // $clr-color-neutral-1000
 
 // Misc
-$clr-default-borderradius: null; // $clr-baseline*0.125;
-$clr-default-borderwidth: null; // 1px
+$clr-global-borderradius: null; // $clr_baselineRem_3px;
+$clr-global-borderwidth: null; // 1px
 
 // Buttons
 $clr-btn-vertical-margin: null; // $clr-baseline*0.25;
@@ -334,7 +332,7 @@ $clr-green-darkest: null; //  #0f2900 -- $clr-color-success-1000;
 /* Overwrite the default variable assignments in _tooltips.clarity.scss here:     */
 /*================================================================================*/
 
-$clr-tooltip-font-color: null; // $clr-color-neutral-0;
+$clr-tooltip-color: null; // $clr-color-neutral-0;
 $clr-tooltip-background-color: null; // $clr-color-neutral-1000;
 $clr-tooltip-default-width: null; // 10*$clr-baseline;
 $margin-value: null; // $clr-baseline*0.25;
@@ -385,7 +383,7 @@ $clr-datagrid-row-selected: null; // $clr-color-neutral-1000
 /* Overwrite the default variable assignments in _stack-view.clarity.scss here:      */
 /*================================================================================*/
 
-$clr-stack-view-border-width: null; // $clr-default-borderwidth
+$clr-stack-view-border-width: null; // $clr-global-borderwidth
 $clr-stack-view-border-radius: null; // $clr-global-borderradius
 $clr-stack-view-border-color: null; // $clr-color-neutral-400
 $clr-stack-view-bg-color: null; // $clr-color-neutral-50
@@ -495,7 +493,7 @@ $clr-btn-height: null; // $clr-baseline*1.5;
 $clr-btn-height-sm: null; // $clr-baseline;
 $clr-btn-padding: null; // 0 $clr-btn-horizontal-padding;
 $clr-btn-border-radius: null; // $clr-global-borderradius
-$clr-btn-border-width: null; // $clr-default-borderwidth
+$clr-btn-border-width: null; // $clr-global-borderwidth
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _toggles.clarity.scss here:      */
@@ -537,7 +535,7 @@ $clr-app-alert-close-icon-hover-opacity: null; // 1.0
 $clr-alert-top-margin: null; // $clr-baseline*0.25;
 $clr-alert-min-height: null; // $clr-baseline*1.5;
 $clr-alert-horizontal-padding: null; // $clr-baseline*0.5;
-$clr-alert-top-padding: null; // $clr-baseline*0.125;
+$clr-alert-top-padding: null; // $clr_baselineRem_3px;
 $clr-alert-bottom-padding: null; // $clr-baseline*0.375;
 $clr-alert-item-top-margin: null; // $clr-alert-bottom-padding - $clr-alert-top-padding;
 $clr-alert-item-min-height: null; // $clr-icon-dimension-sm;
@@ -546,7 +544,7 @@ $clr-alert-item-min-height: null; // $clr-icon-dimension-sm;
 $clr-alert-sm-min-height: null; // $clr-baseline*1;
 $clr-alert-sm-horizontal-padding: null; // $clr-baseline*0.25;
 $clr-alert-sm-top-padding: null; // 0;
-$clr-alert-sm-bottom-padding: null; // $clr-baseline*0.125;
+$clr-alert-sm-bottom-padding: null; // $clr_baselineRem_3px;
 $clr-alert-sm-item-top-margin: null; // $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding;
 $clr-alert-sm-item-min-height: null; // $clr-icon-dimension-sm;
 
@@ -651,9 +649,9 @@ $clr-app-alert-success-close-icon-hover-opacity: null; // $clr-app-alert-close-i
 /* Overwrite the default variable assignments in _labels.clarity.scss here:        */
 /*================================================================================*/
 
-$clr-label-padding-top-bottom: null; // 0.125rem
-$clr-label-padding-left-right: null; // 0.5rem
-$clr-label-borderwidth: null; // $clr-default-borderwidth
+$clr-label-padding-top-bottom: null; // $clr_baselineRem_0_125
+$clr-label-padding-left-right: null; // $clr_baselineRem_0_5
+$clr-label-borderwidth: null; // $clr-global-borderwidth
 $clr-label-font-color-light: null; // $clr-color-neutral-700
 $clr-label-font-color-dark: null; // $clr-color-neutral-1000
 $clr-label-bg-hover-color: null; // $clr-color-neutral-200
@@ -747,7 +745,7 @@ $clr-badge-light-blue-color: null; // $clr-badge-font-color-contrast
 /* Overwrite the default variable assignments in _dropdown.clarity.scss here:        */
 /*================================================================================*/
 
-$clr-dropdown-caret-icon-dimension: null; // 0.416667rem
+$clr-dropdown-caret-icon-dimension: null; // $clr_baselineRem_0_416
 $clr-dropdown-active-text-color: null; // $clr-color-neutral-1000
 $clr-dropdown-bg-color: null; // $clr-color-neutral-0
 $clr-dropdown-text-color: null; // $clr-color-neutral-700
@@ -768,13 +766,13 @@ $clr-signpost-content-bg-color: null; // $clr-color-neutral-0
 $clr-signpost-content-border-color: null; // $clr-color-neutral-500
 $clr-signpost-action-color: null; // $clr-color-neutral-600
 $clr-signpost-action-hover-color: null; // $clr-color-action-700
-$clr-signpost-border-radius: null; // $clr-default-borderradius
+$clr-signpost-border-radius: null; // $clr-global-borderradius
 
 /*================================================================================*/
 /* Overwrite the default variable assignments in _tooltips.clarity.scss here:        */
 /*================================================================================*/
 
-$clr-tooltip-font-color: null; // $clr-color-neutral-0
+$clr-tooltip-color: null; // $clr-color-neutral-0
 $clr-tooltip-background-color: null; // $clr-color-neutral-1000
 
 /*================================================================================*/
@@ -802,15 +800,15 @@ $clr-spinner-opacity: null; // 0.15
 
 $clr-wizard-main-bgcolor: null; // $clr-color-neutral-0
 $clr-wizard-sidenav-bgcolor: null; // $clr-color-neutral-50
-$clr-wizard-default-space: null; // 1rem
+$clr-wizard-default-space: null; // $clr_baselineRem_1
 $clr-wizard-main-textColor: null; // $clr-color-on-neutral-0
 $clr-wizard-sidenav-text: null; // $clr-color-neutral-900
 $clr-wizard-sidenav-text--active: null; // $clr-global-on-selection-color
 $clr-wizard-title-text: null; // $clr-color-neutral-1000
-$clr-wizard-stepnav-border-size: null; // 0.166667rem
+$clr-wizard-stepnav-border-size: null; // $clr_baselineRem_4px
 $clr-wizard-stepnav-border-color: null; // $clr-color-neutral-200
 $clr-wizard-stepnav-border-color--active: null; // $clr-color-success-400
-$clr-wizard-footer-height: null; // 3.5rem
+$clr-wizard-footer-height: null; // $clr_baselineRem_3_5
 $clr-wizard-stepnav-active-bgcolor: null; // $clr-global-selection-color
 $clr-wizard-header-action-color: null; // $clr-color-neutral-600
 $clr-wizard-header-action-color--hovered: null; // $clr-color-neutral-1000

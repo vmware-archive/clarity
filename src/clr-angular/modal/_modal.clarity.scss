@@ -13,10 +13,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: $clr_baselineRem_2;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
-    padding: 0.5rem;
+    padding: $clr_baselineRem_0_5;
   }
 }
 
@@ -38,8 +38,8 @@
     width: $clr-modal-xl-width;
   }
 
-  $modal-boxshadow-y: 1px;
-  $modal-boxshadow-spread: 2px;
+  $modal-boxshadow-y: $clr_baselineRem_1px;
+  $modal-boxshadow-spread: $clr_baselineRem_2px;
 
   .modal-content {
     padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom
@@ -52,7 +52,7 @@
 
 .modal-header {
   border-bottom: none;
-  padding: 0 0 1rem 0;
+  padding: 0 0 $clr_baselineRem_1 0;
 
   .modal-title {
     color: $clr-modal-title-color;
@@ -63,21 +63,21 @@
     letter-spacing: $clr-modal-title-letter-spacing;
 
     margin: 0;
-    padding: 0 0.125rem;
+    padding: 0 $clr_baselineRem_0_125;
   }
 
   .close {
-    margin-top: -0.0416667rem;
-    margin-right: -0.208333rem;
-    font-size: 1.0833rem;
-    line-height: 1rem;
+    margin-top: -1 * $clr_baselineRem_1px;
+    margin-right: -1 * $clr_baselineRem_5px;
+    font-size: $clr_baselineRem_1_0833;
+    line-height: $clr_baselineRem_1;
 
     clr-icon {
       fill: $clr-modal-close-color;
 
       // per measurement, this results in an icon that is 16x16...
-      width: 1rem;
-      height: 1rem;
+      width: $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
     }
   }
 }
@@ -92,7 +92,7 @@
   max-height: 70vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 0.125rem;
+  padding: 0 $clr_baselineRem_0_125;
 
   & > :first-child {
     margin-top: 0;
@@ -105,11 +105,11 @@
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 0 0 0;
+  padding: $clr_baselineRem_1 0 0 0;
 
   .btn {
     //switched right margin to left because footer is right aligned
-    margin: 0 0 0 0.5rem;
+    margin: 0 0 0 $clr_baselineRem_0_5;
   }
 }
 
@@ -121,11 +121,11 @@
 
 @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
   .modal-content {
-    padding: 0.5rem 0 0.5rem 1rem;
+    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
   }
 
   .modal-header {
-    padding: 0 1rem 0.5rem 0;
+    padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
   }
 
   .modal-body {
@@ -133,7 +133,7 @@
   }
 
   .modal-footer {
-    padding: 0.5rem 1rem 0 0;
+    padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
   }
 }
 

@@ -4,15 +4,13 @@
 
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 $clr-tooltip-background-color: $clr-color-neutral-1000 !default;
-$clr-tooltip-border-radius: 0.125rem !default;
-$clr-tooltip-default-width: 10rem !default;
-$arrow-height: 0.25rem !default;
-$arrow-width: 0.208333rem !default; //I wanted the arrow width to be 9. If I use 4.5/24 it still rounds up to 10.
-$clr-tooltip-adjusted-margin: 0.666667rem !default;
+$clr-tooltip-border-radius: $clr_baselineRem_0_125 !default;
+$clr-tooltip-default-width: $clr_baselineRem_10 !default;
+$arrow-height: $clr_baselineRem_0_25 !default;
+$arrow-width: $clr_baselineRem_5px !default;
+$clr-tooltip-adjusted-margin: $clr_baselineRem_0_667 !default;
 
 $clr-tooltip-color: $clr-color-neutral-0 !default;
-// @deprecated in 2.0 $clr-tooltip-font-color to be replaced by $clr-tooltip-color
-$clr-tooltip-font-color: $clr-tooltip-color !default;
 $clr-tooltip-font-size: $clr-p3-font-size !default;
 $clr-tooltip-font-weight: $clr-p3-font-weight !default;
 $clr-tooltip-letter-spacing: $clr-p3-letter-spacing !default;

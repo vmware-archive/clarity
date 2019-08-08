@@ -526,7 +526,7 @@
   }
 
   // Inside Nav Items
-  $clr-progressInNav-height: 0.2rem;
+  $clr-progressInNav-height: $clr_baselineRem_0_2;
   .nav-item {
     .progress,
     .progress-static {

@@ -68,7 +68,7 @@
     border: none;
     color: $clr-tree-node-caret-color;
     cursor: pointer;
-    outline-offset: -5px; //TODO: Replace with the outline offset mixin after the rem value change.
+    outline-offset: -1 * $clr_baselineRem_5px; //TODO: Replace with the outline offset mixin after the rem value change.
 
     &:hover {
       color: $clr-tree-node-caret-link-hover-color;

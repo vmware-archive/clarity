@@ -134,7 +134,7 @@
       border-color: $clr-toggle-disabled-on-handle-border-color;
       width: $clr-toggle-switch-height;
       height: $clr-toggle-switch-height;
-      top: 5px;
+      top: $clr_baselineRem_5px;
       left: -1 * $clr-toggle-switch-left-spacing;
     }
 

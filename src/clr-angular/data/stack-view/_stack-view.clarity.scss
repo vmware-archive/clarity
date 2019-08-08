@@ -123,7 +123,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         float: left;
         height: 0.58333rem;
         width: 0.58333rem;
-        margin: (0.25rem + $clr_baselineRem_1px) 0.2rem 0 0;
+        margin: (0.25rem + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
       }
     }
@@ -131,7 +131,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     .stack-block-caret {
       height: 0.58333rem;
       width: 0.58333rem;
-      margin-right: 0.2rem;
+      margin-right: $clr_baselineRem_0_2;
       fill: $clr-stack-view-stack-block-caret-color;
     }
 

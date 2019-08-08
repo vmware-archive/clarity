@@ -72,13 +72,13 @@ $clr-outline-spread: 2px;
 @mixin focus-within() {
   &:focus-within,
   &.focus-within {
-    outline: 2px solid Highlight;
+    outline: $clr_baselineRem_2px solid Highlight;
   }
 
   @media (-webkit-min-device-pixel-ratio: 0) {
     &:focus-within,
     &.focus-within {
-      outline: 5px auto -webkit-focus-ring-color;
+      outline: $clr_baselineRem_5px auto -webkit-focus-ring-color;
     }
   }
 }

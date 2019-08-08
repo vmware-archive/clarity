@@ -12,4 +12,4 @@ $clr-subnav-bgColor: $clr-color-neutral-0 !default;
 $clr-subnav-height: 1.5rem !default;
 
 // Usage: ../layout/nav/_subnav.clarity.scss
-$clr-nav-shadow: 0 -1px 0 $clr-color-neutral-400 inset;
+$clr-nav-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-color-neutral-400 inset;

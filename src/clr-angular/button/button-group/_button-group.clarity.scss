@@ -30,7 +30,7 @@
         width: 100%;
         box-shadow: 0 0 5px rgba(81, 203, 238, 1);
         padding: 3px 0px 3px 3px;
-        border: 1px solid rgba(81, 203, 238, 1);
+        border: $clr_baselineRem_1px solid rgba(81, 203, 238, 1);
 
         &::-ms-check {
           display: none;
@@ -165,7 +165,7 @@
     .checkbox,
     .radio {
       &.btn label {
-        line-height: calc(1rem - 1px);
+        line-height: calc(1rem - $clr_baselineRem_1px);
       }
     }
   }

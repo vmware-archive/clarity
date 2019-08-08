@@ -36,7 +36,7 @@
       }
 
       &:active {
-        box-shadow: 0 1px 0 0 getAlertColor($alertType, action-active) inset;
+        box-shadow: 0 $clr_baselineRem_1px 0 0 getAlertColor($alertType, action-active) inset;
       }
     }
 
@@ -65,7 +65,7 @@
 }
 
 @include exports('alert.clarity') {
-  $alertIconWidth: 1rem + $clr-rem-1px;
+  $alertIconWidth: 1rem + $clr_baselineRem_1px;
 
   .alert-icon {
     $alert-icon-dim: 1rem;
@@ -78,7 +78,7 @@
   .alert-icon-wrapper {
     flex: 0 0 $alertIconWidth;
     align-self: start;
-    padding-top: $clr-rem-1px;
+    padding-top: $clr_baselineRem_1px;
     height: 0.75rem;
   }
 
@@ -170,7 +170,7 @@
 
       .dropdown:last-child {
         // used to align far-right dropdown inside an alert
-        margin-right: -2 * $clr-rem-1px;
+        margin-right: -1 * $clr_baselineRem_2px;
       }
 
       .dropdown-item {
@@ -304,7 +304,7 @@
     // need to use 11 instead of 12 here or else vertical alignment is thrown off
     // by a pixel due to improper browser rounding; browsers aren't rendering on the
     // sub-pixel required but rounding up to the nearest whole pixel...
-    font-size: calc(0.5rem - 1px);
+    font-size: calc(0.5rem - $clr_baselineRem_1px);
     letter-spacing: normal;
     line-height: $alertSmallLineHeight;
 
@@ -313,7 +313,7 @@
     }
 
     .alert-item {
-      padding-top: $clr-rem-1px;
+      padding-top: $clr_baselineRem_1px;
       margin-bottom: $alertSmallNudge;
 
       &:last-child {
@@ -344,11 +344,11 @@
 
       clr-icon {
         $smallAlertCloseIconDims: 0.833333rem;
-        margin-top: -1 * ($alertSmallNudge + $clr-rem-1px);
-        margin-right: -1 * $clr-rem-1px;
+        margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
+        margin-right: -1 * $clr_baselineRem_1px;
         height: $smallAlertCloseIconDims;
         width: $smallAlertCloseIconDims;
-        line-height: calc(#{$smallAlertCloseIconDims} + 1px);
+        line-height: calc(#{$smallAlertCloseIconDims} + $clr_baselineRem_1px);
       }
     }
   }

@@ -15,7 +15,7 @@
 
   .clr-accordion-header {
     color: $clr-accordion-text-color;
-    border: 1px solid $clr-accordion-border-color;
+    border: $clr_baselineRem_1px solid $clr-accordion-border-color;
     box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color;
     background: $clr-accordion-header-background-color;
     transition: all 200ms ease-in-out;
@@ -32,7 +32,7 @@
   .clr-accordion-panel:last-child {
     .clr-accordion-content,
     .clr-accordion-header {
-      border-bottom: 1px solid $clr-accordion-border-color;
+      border-bottom: $clr_baselineRem_1px solid $clr-accordion-border-color;
     }
   }
 
@@ -94,7 +94,7 @@
 
   .clr-accordion-content {
     background: $clr-accordion-content-background-color;
-    border: 1px solid $clr-accordion-border-color;
+    border: $clr_baselineRem_1px solid $clr-accordion-border-color;
     border-bottom: 0;
     overflow: hidden;
     padding: 0.75rem;
@@ -173,7 +173,7 @@
     .clr-accordion-header {
       border-color: $clr-accordion-border-left-color-error;
       box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color-error;
-      border-bottom: 1px solid $clr-accordion-border-left-color-error;
+      border-bottom: $clr_baselineRem_1px solid $clr-accordion-border-left-color-error;
       background-color: $clr-accordion-active-background-color;
     }
 

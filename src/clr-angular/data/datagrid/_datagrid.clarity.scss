@@ -94,7 +94,7 @@
       padding: 0.25rem 0.25rem;
       margin-left: 0.25rem;
       border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-      box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
+      box-shadow: 0 $clr_baselineRem_1px 3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
       font-weight: normal;
       white-space: nowrap;
@@ -120,10 +120,10 @@
         width: 0;
         height: 0;
         // not all browsers support calc() in psuedoelements
-        margin-top: -1 * $clr-datagrid-action-arrow-size + $clr-rem-1px;
-        border-right: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid $clr-datagrid-popover-bg-color;
-        border-top: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
-        border-bottom: ($clr-datagrid-action-arrow-size - $clr-rem-1px) solid transparent;
+        margin-top: -1 * $clr-datagrid-action-arrow-size + $clr_baselineRem_1px;
+        border-right: ($clr-datagrid-action-arrow-size - $clr_baselineRem_1px) solid $clr-datagrid-popover-bg-color;
+        border-top: ($clr-datagrid-action-arrow-size - $clr_baselineRem_1px) solid transparent;
+        border-bottom: ($clr-datagrid-action-arrow-size - $clr_baselineRem_1px) solid transparent;
       }
 
       .action-item {
@@ -135,9 +135,9 @@
         border: 0;
         cursor: pointer;
         display: block;
-        line-height: calc(#{$clr-dropdown-line-height} - #{$clr-rem-1px});
+        line-height: calc(#{$clr-dropdown-line-height} - #{$clr_baselineRem_1px});
         margin: 0;
-        padding: 1px 1rem 0;
+        padding: $clr_baselineRem_1px 1rem 0;
         text-align: left;
         width: 100%;
 
@@ -175,7 +175,7 @@
 
         clr-icon {
           vertical-align: middle;
-          transform: translate3d(0px, -1px, 0);
+          transform: translate3d(0px, -1 * $clr_baselineRem_1px, 0);
         }
       }
     }
@@ -282,7 +282,7 @@
     .datagrid-row {
       background-color: $clr-thead-bgcolor;
       border-top: none;
-      border-bottom: 1px solid $clr-table-border-color;
+      border-bottom: $clr_baselineRem_1px solid $clr-table-border-color;
 
       .datagrid-row-sticky {
         background-color: $clr-thead-bgcolor;
@@ -382,7 +382,7 @@
         background: $clr-datagrid-popover-bg-color;
         padding: 0.75rem;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
+        box-shadow: 0 $clr_baselineRem_1px 3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
         font-weight: normal;
 
@@ -439,7 +439,7 @@
       }
 
       .datagrid-column-separator {
-        $dg-padding-less-border: 0.5rem - $clr-rem-1px;
+        $dg-padding-less-border: 0.5rem - $clr_baselineRem_1px;
         position: relative;
         left: 0.5rem;
         flex: 0 0 auto;
@@ -452,15 +452,15 @@
           content: '';
           position: absolute;
           height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-global-borderwidth});
-          width: $clr-rem-1px;
-          top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + #{$clr-rem-1px});
+          width: $clr_baselineRem_1px;
+          top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + #{$clr_baselineRem_1px});
           left: 0;
           background-color: $clr-table-border-color;
         }
 
         .datagrid-column-handle {
           position: absolute;
-          width: calc(0.5rem + #{$clr-rem-1px});
+          width: calc(0.5rem + #{$clr_baselineRem_1px});
           right: -0.25rem;
           top: -0.25rem;
           cursor: col-resize;
@@ -471,7 +471,7 @@
           position: absolute;
           top: -0.5rem;
           display: none;
-          width: 1px;
+          width: $clr_baselineRem_1px;
           height: 0;
           border-right: $clr-global-borderwidth dotted $clr-color-action-300;
           transform: translateX(0px);
@@ -596,7 +596,7 @@
         }
       }
       .datagrid-expandable-caret {
-        padding-top: 2px;
+        padding-top: $clr_baselineRem_2px;
       }
       &.datagrid-container {
         border-top: $clr-global-borderwidth solid $clr-table-border-color;
@@ -692,7 +692,7 @@
         padding: 0.75rem;
         background-color: $clr-datagrid-popover-bg-color;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
+        box-shadow: 0 $clr_baselineRem_1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
         width: 10.416667rem;
         display: flex;
         flex-direction: column;
@@ -725,7 +725,7 @@
 
           li {
             line-height: 1rem;
-            padding-left: 2 * $clr-rem-1px;
+            padding-left: $clr_baselineRem_2px;
           }
         }
 
@@ -787,17 +787,17 @@
     .datagrid-column .datagrid-column-separator {
       &::after {
         height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-global-borderwidth});
-        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
+        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + $clr_baselineRem_1px);
       }
     }
     .datagrid-cell {
       clr-icon {
-        margin-top: calc(-1 * $clr_baselineRem_0_125 - 1px);
+        margin-top: calc(-1 * $clr_baselineRem_0_125 - $clr_baselineRem_1px);
         margin-bottom: -1 - $clr_baselineRem_0_125;
       }
       .badge {
         margin-top: -1 * $clr_baselineRem_0_125;
-        margin-bottom: -1px;
+        margin-bottom: -1 * $clr_baselineRem_1px;
       }
     }
     .datagrid-expandable-caret {
@@ -818,7 +818,7 @@
         padding: 0;
       }
       &.datagrid-column {
-        padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+        padding-top: calc(#{$clr-table--compact-verticalPadding} + $clr_baselineRem_1px);
         padding-bottom: calc(#{$clr-table--compact-verticalPadding});
       }
     }
@@ -831,7 +831,7 @@
 
     .datagrid-footer {
       padding: 0 $clr-table-cellpadding;
-      line-height: calc(1rem - #{$clr-rem-1px});
+      line-height: calc(1rem - #{$clr_baselineRem_1px});
       .pagination {
         line-height: 1rem;
       }

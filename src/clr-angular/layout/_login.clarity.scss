@@ -132,7 +132,7 @@
             display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
             content: '';
             background: generateErrorIcon($clr-login-background-color);
-            margin: $clr-rem-1px 0.25rem 0 0;
+            margin: $clr_baselineRem_1px 0.25rem 0 0;
             height: $clr-login-icon-size;
             width: $clr-login-icon-size;
           }
@@ -166,11 +166,11 @@
         position: absolute;
         content: '';
         display: block;
-        width: 1px;
+        width: $clr_baselineRem_1px;
         height: 100%;
         background: rgba($clr-color-neutral-1000, 0.1);
         top: 0;
-        right: -2px;
+        right: -1 * $clr_baselineRem_2px;
       }
     }
   }

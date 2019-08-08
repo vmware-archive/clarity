@@ -137,7 +137,7 @@
   .btn-group-overflow,
   .tabs-overflow,
   .dropdown {
-    $dropdown-menu-positional-nudge: 2 * $clr-rem-1px;
+    $dropdown-menu-positional-nudge: $clr_baselineRem_2px;
 
     &.open > .dropdown-menu,
     &.open > .dropdown-menu-wrapper > .dropdown-menu {
@@ -215,7 +215,7 @@
     // nested dropdown (submenu)
     .dropdown {
       $clr-dropdown-submenu-overlap-margin: -0.166667rem;
-      $clr-dropdown-submenu-vertical-margin: (-1 * 0.75rem) - $clr-rem-1px;
+      $clr-dropdown-submenu-vertical-margin: (-1 * 0.75rem) - $clr_baselineRem_1px;
       // -1 is to account for the border that shifts the menu down by 1 pixel
 
       .dropdown-menu {

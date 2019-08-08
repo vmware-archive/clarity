@@ -56,8 +56,8 @@
   }
   .clr-form-control {
     .datepicker-trigger {
-      line-height: calc(1rem - 2px);
-      height: calc(1rem - 2px);
+      line-height: calc(1rem - $clr_baselineRem_2px);
+      height: calc(1rem - $clr_baselineRem_2px);
     }
   }
 
@@ -77,7 +77,7 @@
 
     //Other Props
     background: $clr-calendar-background-color;
-    border: 1px solid $clr-calendar-border-color;
+    border: $clr-global-borderwidth solid $clr-calendar-border-color;
     border-radius: $clr-global-borderradius;
     box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-popover-box-shadow-color;
     overflow: hidden;

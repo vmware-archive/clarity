@@ -8,7 +8,7 @@
     height: $clr-subnav-height;
     list-style-type: none;
     align-items: center;
-    box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+    box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
     margin: 0;
     width: 100%;
     white-space: nowrap;
@@ -19,7 +19,7 @@
 
       &.active > .nav-link {
         color: $clr-nav-link-active-color;
-        box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+        box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
       }
     }
 

@@ -4,15 +4,15 @@
 
 @function getActiveWidthBoxShadowTop($type: default) {
   @if type == primary {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == outline-success {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == outline-danger {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
   @if type == link {
@@ -20,10 +20,10 @@
   }
 
   @if type == inverse {
-    @return 1px;
+    @return $clr_baselineRem_1px;
   }
 
-  @return 2px;
+  @return $clr_baselineRem_2px;
 }
 
 @function getSassButtonColor($type: default, $property: null) {
@@ -182,7 +182,7 @@
   .btn-group > .btn,
   .btn {
     clr-icon {
-      transform: translate3d(0rem, -2 * $clr-rem-1px, 0);
+      transform: translate3d(0rem, -1 * $clr_baselineRem_2px, 0);
     }
   }
 
@@ -297,7 +297,7 @@
     clr-icon {
       width: 0.5rem;
       height: 0.5rem;
-      transform: translate3d(0rem, -1 * $clr-rem-1px, 0);
+      transform: translate3d(0rem, -1 * $clr_baselineRem_1px, 0);
     }
   }
 

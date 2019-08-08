@@ -60,7 +60,7 @@
   .label,
   a.label {
     //default
-    $label-nudge-for-vertical-alignment: 1px;
+    $label-nudge-for-vertical-alignment: $clr_baselineRem_1px;
     font-size: $clr-label-font-size;
     font-weight: $clr-label-font-weight;
     letter-spacing: $clr-label-letter-spacing;
@@ -95,7 +95,7 @@
       }
 
       &:active {
-        box-shadow: 0 1px 0 0 getLabelColor(gray, bg-color) inset;
+        box-shadow: 0 $clr_baselineRem_1px 0 0 getLabelColor(gray, bg-color) inset;
         transform: translateY(0.5px);
       }
     }

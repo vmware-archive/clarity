@@ -5,7 +5,7 @@ $clr-icons-content-top: calc(#{$clr-icons-hero-height} + #{$clr-header-height});
 $clr-icons-content-width: $clr_baselineRem_1080px;
 $clr-sidenav-width: $clr_baselineRem_9;
 $clr-searchbar-nonsticky-margintop: 0;
-$clr-searchbar-container-height: $clr_baselineRem_60px + $clr-searchbar-nonsticky-margintop;
+$clr-searchbar-container-height: $clr_baselineRem_5 + $clr-searchbar-nonsticky-margintop;
 $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
 
 .icons-header {
@@ -181,7 +181,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
   }
 
   .sidenav-content {
-    padding: $clr_baselineRem_1_5 0 0 $clr-baseline;
+    padding: $clr_baselineRem_1_5 0 0 $clr_baselineRem_1;
 
     &.sticky {
       position: fixed;
@@ -191,7 +191,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     }
 
     &.on-icon-sets {
-      padding: $clr_baselineRem_0_5 0 0 $clr-baseline;
+      padding: $clr_baselineRem_0_5 0 0 $clr_baselineRem_1;
     }
   }
 }

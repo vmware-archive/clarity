@@ -88,10 +88,8 @@ $clr-content-area-padding-right: $clr_baselineRem_24px !default;
 $clr-content-area-padding-bottom: $clr_baselineRem_24px !default;
 $clr-content-area-padding-left: $clr_baselineRem_24px !default;
 
-// TODO: this exists because we need to compute 1px equivalents in themes on some values that
-// cannot use calc() in IE11.
-// DEPRECATED?!
-$clr-rem-1px: 0.05rem;
+// DEPRECATED?! No longer used anywhere...
+$clr-rem-1px: $clr_baselineRem_1px;
 
 // @deprecated Bootstrap dependencies are deprecated since 1.0. Review for removal before 2.0.
 //BS4 overrides

@@ -41,7 +41,7 @@
       content: '';
       height: $clr-toggle-switch-base-height;
       width: $clr-toggle-switch-base-width;
-      border: 2px solid;
+      border: $clr_baselineRem_2px solid;
       border-radius: 0.375rem;
       border-color: $clr-toggle-bg-color-off;
       background-color: $clr-toggle-bg-color-off;
@@ -74,15 +74,15 @@
       border-radius: 50%;
       background-color: $clr-toggle-handle-bg-color;
       // TOCHECK: COMPUTATION...
-      top: (2 * $clr-rem-1px + $clr-forms-baseline / 2);
+      top: ($clr_baselineRem_2px + $clr-forms-baseline / 2);
       right: 0;
-      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
       transition-property: left;
     }
 
     input[type='checkbox']:checked + label::after {
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition: right $clr-toggle-transition-time $clr-toggle-transition-animation;
       left: -1 * $clr-toggle-switch-left-spacing;
       transition-property: left;
@@ -115,7 +115,7 @@
         // toggle handle color for disabled/off and inner part of handle disabled/on
         background-color: $clr-toggle-disabled-off-bg-color;
         // toggle handle color for disabled/off handle outer border circle
-        border: 2px solid $clr-toggle-disabled-off-handle-border-color;
+        border: $clr_baselineRem_2px solid $clr-toggle-disabled-off-handle-border-color;
         width: $clr-toggle-switch-base-height;
         height: $clr-toggle-switch-base-height;
         top: 3px;
@@ -156,7 +156,7 @@
 
       input[type='checkbox'] + label::after {
         right: 0;
-        left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+        left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
         transition-property: left;
       }
 
@@ -196,16 +196,16 @@
     }
     input[type='checkbox']:checked + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       transition-property: right;
     }
     input[type='checkbox']:disabled + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-left-spacing + $clr-rem-1px);
+      right: -1 * ($clr-toggle-switch-left-spacing + $clr_baselineRem_1px);
     }
     input[type='checkbox']:checked:disabled + label::after {
       left: unset;
-      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - (2 * $clr-rem-1px));
+      right: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
     }
     .clr-control-inline .clr-toggle-wrapper .clr-control-label {
       margin-right: (9 * $clr-forms-baseline);

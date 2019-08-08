@@ -38,8 +38,8 @@
     width: $clr-modal-xl-width;
   }
 
-  $modal-boxshadow-y: 1px;
-  $modal-boxshadow-spread: 2px;
+  $modal-boxshadow-y: $clr_baselineRem_1px;
+  $modal-boxshadow-spread: $clr_baselineRem_2px;
 
   .modal-content {
     padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom

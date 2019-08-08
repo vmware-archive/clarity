@@ -93,7 +93,7 @@
 
         &:before {
           border-top: $clr-signpost-pointer-psuedo-border;
-          bottom: 2px;
+          bottom: $clr_baselineRem_2px;
         }
       }
     }
@@ -105,11 +105,11 @@
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: -1px;
+        right: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
-          right: 1px;
+          right: $clr_baselineRem_1px;
         }
       }
     }
@@ -121,7 +121,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -133,11 +133,11 @@
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: -1px;
+        left: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -152,11 +152,11 @@
     &.bottom-right {
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-border;
-        top: calc(#{-1 * $clr-signpost-border-size} + 1px);
+        top: -1 * $clr-signpost-border-size + $clr_baselineRem_1px;
 
         &:before {
           border-bottom: $clr-signpost-pointer-psuedo-border;
-          top: 2px;
+          top: $clr_baselineRem_2px;
         }
       }
     }
@@ -168,11 +168,11 @@
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: -1px;
+        right: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
-          right: 1px;
+          right: $clr_baselineRem_1px;
         }
       }
     }
@@ -184,7 +184,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          right: calc(#{-1 * $clr-signpost-border-size} - 1px);
+          right: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
     }
@@ -196,11 +196,11 @@
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: -1px;
+        left: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -230,12 +230,12 @@
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: -1px;
+        bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
-          top: calc(#{-1 * $clr-signpost-border-size} - 1px);
-          right: 2px;
+          top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
+          right: $clr_baselineRem_2px;
         }
       }
     }
@@ -248,8 +248,8 @@
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
-          left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+          top: $clr_baselineRem_1px;
+          left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
       }
     }
@@ -261,12 +261,12 @@
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: -1px;
+        top: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
-          left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+          top: $clr_baselineRem_1px;
+          left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
       }
     }
@@ -285,7 +285,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-psuedo-border;
-          left: 2px;
+          left: $clr_baselineRem_2px;
         }
       }
     }
@@ -297,11 +297,11 @@
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: -1px;
+        bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
-          top: calc(#{-1 * $clr-signpost-border-size} - 1px);
+          top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
     }
@@ -314,7 +314,7 @@
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
+          top: $clr_baselineRem_1px;
         }
       }
     }
@@ -326,11 +326,11 @@
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: -1px;
+        top: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
+          top: $clr_baselineRem_1px;
         }
       }
     }

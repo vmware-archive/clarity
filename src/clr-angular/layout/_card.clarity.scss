@@ -14,7 +14,7 @@
     border: $clr-global-borderwidth solid rgba(0, 148, 210, 1);
     cursor: pointer;
     text-decoration: none;
-    transform: translateY(-2px);
+    transform: translateY(-1 * $clr_baselineRem_2px);
     transition: border 0.2s ease, transform 0.2s ease;
   }
 
@@ -86,7 +86,7 @@
       padding: 0.5rem 0.75rem;
       font-size: $clr-card-text-font-size;
       background-color: $clr-card-bg-color;
-      border-bottom: 1px solid $clr-card-border-color;
+      border-bottom: $clr-global-borderwidth solid $clr-card-border-color;
     }
 
     //Dropdowns

@@ -108,8 +108,8 @@
     }
 
     &:focus > :first-child {
-      outline-offset: $clr-rem-1px;
-      outline-width: $clr-rem-1px;
+      outline-offset: $clr_baselineRem_1px;
+      outline-width: $clr_baselineRem_1px;
       outline-color: rgb(59, 153, 252); //Color that Chrome uses
       outline-style: solid;
     }

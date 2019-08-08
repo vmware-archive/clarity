@@ -11,7 +11,7 @@ $card-children-padding-horizontal: 0.75rem !default;
 $card-children-space-between: 0.5rem !default;
 $clr-card-bg-color: $clr-color-neutral-0 !default;
 $clr-card-border-color: $clr-color-neutral-200 !default;
-$clr-card-box-shadow: 0 0.125rem 0 0 rgba(215, 215, 215, 1) !default;
+$clr-card-box-shadow: 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1) !default;
 $clr-card-border: $clr-global-borderwidth solid rgba(215, 215, 215, 1) !default;
 $clr-card-divider-color: $clr-color-neutral-200 !default;
 

@@ -63,7 +63,7 @@
     letter-spacing: $clr-modal-title-letter-spacing;
 
     margin: 0;
-    padding: 0 0.125rem;
+    padding: 0 $clr_baselineRem_0_125;
   }
 
   .close {
@@ -94,7 +94,7 @@
   max-height: 70vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 0.125rem;
+  padding: 0 $clr_baselineRem_0_125;
 
   & > :first-child {
     margin-top: 0;

@@ -71,7 +71,7 @@
     $alert-icon-dim: 1rem;
     height: $alert-icon-dim;
     width: $alert-icon-dim;
-    margin-left: -0.125rem;
+    margin-left: -1 * $clr_baselineRem_0_125;
     margin-top: -0.166667rem;
   }
 
@@ -214,7 +214,7 @@
 
       clr-icon {
         $alert-close-icon-dims: calc(1rem - #{$clr-alert-borderwidth});
-        margin-top: -0.125rem;
+        margin-top: -1 * $clr_baselineRem_0_125;
         height: $alert-close-icon-dims;
         width: $alert-close-icon-dims;
       }
@@ -279,7 +279,7 @@
     }
 
     .alert-icon-wrapper {
-      margin-top: 0.125rem;
+      margin-top: $clr_baselineRem_0_125;
     }
 
     .close {
@@ -371,7 +371,7 @@
 
       .alert-actions {
         flex: 1 0 100%;
-        padding-top: 0.125rem;
+        padding-top: $clr_baselineRem_0_125;
         // TOCHECK: CALCULATIONS
         padding-left: $clr-alert-icon-dimension-sm + $clr-icon-margin-right;
       }

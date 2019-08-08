@@ -262,7 +262,7 @@
 
       // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
       &:last-child.bottom-right > .dropdown-menu {
-        right: 0.125rem;
+        right: $clr_baselineRem_0_125;
       }
 
       // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
@@ -295,7 +295,7 @@
     @include header-nav-appearance();
 
     & > .nav-icon {
-      margin: 0 0.25rem 0.125rem 1rem;
+      margin: 0 0.25rem $clr_baselineRem_0_125 1rem;
     }
 
     label {

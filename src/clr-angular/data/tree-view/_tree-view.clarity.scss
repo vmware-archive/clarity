@@ -165,13 +165,13 @@
 
   @include fixForMsEdge {
     .clr-treenode-content .label {
-      margin-left: 0.125rem;
+      margin-left: $clr_baselineRem_0_125;
     }
   }
 
   @include fixForIE10AndUp {
     .clr-treenode-content .label {
-      margin-left: 0.125rem;
+      margin-left: $clr_baselineRem_0_125;
     }
   }
 }

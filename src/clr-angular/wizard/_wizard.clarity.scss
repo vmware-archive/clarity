@@ -188,7 +188,7 @@
       color: inherit;
       line-height: 0.666667rem;
       padding: 0.416667rem;
-      padding-right: 0.125rem;
+      padding-right: $clr_baselineRem_0_125;
       font-size: 0.583333rem;
       font-weight: inherit;
       letter-spacing: normal;
@@ -467,6 +467,6 @@
 @include fixForMsEdge {
   // Edge is pushing header actions down. This aligns them with the close btn.
   .clr-wizard .clr-wizard-header-action {
-    margin-top: -0.125rem;
+    margin-top: -1 * $clr_baselineRem_0_125;
   }
 }

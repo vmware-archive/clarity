@@ -366,7 +366,7 @@
           //Dims
           height: $clr-vertical-nav-item-height;
           width: $clr-vertical-nav-collapsed-caret-size;
-          margin-left: 0.125rem;
+          margin-left: $clr_baselineRem_0_125;
           margin-right: 0;
         }
       }

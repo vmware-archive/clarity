@@ -17,7 +17,7 @@
   background: $clr-dropdown-bg-color;
   border: $clr-global-borderwidth solid $clr-dropdown-border-color;
   border-radius: $clr-global-borderradius;
-  box-shadow: 0 $clr-global-borderwidth 0.125rem $clr-dropdown-box-shadow;
+  box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-dropdown-box-shadow;
 
   margin-top: 0.083333rem;
   padding: 0.5rem 0;
@@ -79,7 +79,7 @@
 }
 
 @mixin generate-dropdown-item-height() {
-  padding: 0.125rem 1rem;
+  padding: $clr_baselineRem_0_125 1rem;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     padding: 0.25rem 1rem;

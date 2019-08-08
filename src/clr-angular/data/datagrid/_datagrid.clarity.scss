@@ -35,7 +35,7 @@
   }
 
   .datagrid-expandable-caret {
-    padding: calc(0.125rem - #{$clr-global-borderwidth}) $horizontalPadding 0.125rem;
+    padding: calc($clr_baselineRem_0_125 - #{$clr-global-borderwidth}) $horizontalPadding $clr_baselineRem_0_125;
     text-align: center;
 
     .datagrid-expandable-caret-button {
@@ -48,7 +48,7 @@
     .datagrid-expandable-caret-icon {
       color: $clr-color-neutral-600;
       // nudge down for vertical alignment...
-      margin-top: 0.125rem;
+      margin-top: $clr_baselineRem_0_125;
       svg {
         transition: transform 0.2s ease-in-out;
       }
@@ -518,7 +518,7 @@
       }
 
       &.datagrid-expandable-caret {
-        padding: calc(0.125rem - #{$clr-global-borderwidth}) $horizontalPadding 0.125rem;
+        padding: calc($clr_baselineRem_0_125 - #{$clr-global-borderwidth}) $horizontalPadding $clr_baselineRem_0_125;
         text-align: center;
       }
 
@@ -792,18 +792,18 @@
     }
     .datagrid-cell {
       clr-icon {
-        margin-top: calc(-0.125rem - 1px);
-        margin-bottom: -0.125rem;
+        margin-top: calc(-1 * $clr_baselineRem_0_125 - 1px);
+        margin-bottom: -1 - $clr_baselineRem_0_125;
       }
       .badge {
-        margin-top: -0.125rem;
+        margin-top: -1 * $clr_baselineRem_0_125;
         margin-bottom: -1px;
       }
     }
     .datagrid-expandable-caret {
       text-align: center;
       .spinner {
-        margin-top: 0.125rem;
+        margin-top: $clr_baselineRem_0_125;
       }
       .datagrid-expandable-caret-button {
         @include clr-no-styles-button();
@@ -882,7 +882,7 @@
     }
 
     > * {
-      padding: 0 0.1rem;
+      padding: 0 $clr_baselineRem_0_1;
     }
 
     $clr-pagination-extra-margin: 0.5rem;

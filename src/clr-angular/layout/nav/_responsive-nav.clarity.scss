@@ -35,7 +35,7 @@
 
     &::before,
     &::after {
-      left: 0.125rem;
+      left: $clr_baselineRem_0_125;
       transform-origin: 9%;
       transition: $clr-trigger-animation;
     }
@@ -89,7 +89,7 @@
       height: 0.0833333rem;
       width: 1rem;
       background: $clr-color-neutral-0;
-      border-radius: 0.125rem;
+      border-radius: $clr-global-borderradius;
     }
 
     & > span {

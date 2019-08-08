@@ -72,7 +72,7 @@ $clr-content-area-padding-left: null; // $clr-baseline*1;
 // Cards
 $clr-card-bg-color: null; // $clr-color-neutral-0
 $clr-card-border-color: null; // $clr-color-neutral-200
-$clr-card-box-shadow: null; // 0 0.125rem 0 0 rgba(215, 215, 215, 1)
+$clr-card-box-shadow: null; // 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1)
 $clr-card-border: null; // $clr-global-borderwidth solid rgba(215, 215, 215, 1)
 $clr-card-divider-color: null; // $clr-color-neutral-200
 $clr-card-text-font-size: null; // $clr-p1-font-size
@@ -651,7 +651,7 @@ $clr-app-alert-success-close-icon-hover-opacity: null; // $clr-app-alert-close-i
 /* Overwrite the default variable assignments in _labels.clarity.scss here:        */
 /*================================================================================*/
 
-$clr-label-padding-top-bottom: null; // 0.125rem
+$clr-label-padding-top-bottom: null; // $clr_baselineRem_0_125
 $clr-label-padding-left-right: null; // 0.5rem
 $clr-label-borderwidth: null; // $clr-global-borderwidth
 $clr-label-font-color-light: null; // $clr-color-neutral-700

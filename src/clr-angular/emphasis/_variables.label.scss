@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ./_labels.clarity.scss
-$clr-label-padding-top-bottom: 0.125rem !default;
+$clr-label-padding-top-bottom: $clr_baselineRem_0_125 !default;
 $clr-label-padding-left-right: 0.5rem !default;
 $clr-label-borderwidth: $clr-global-borderwidth !default;
 

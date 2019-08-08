@@ -29,7 +29,7 @@
 
     &.spinner-inline,
     &.spinner-sm {
-      @include min-height(0.75rem);
+      @include min-height($clr_baselineRem_0_75);
     }
 
     &.spinner-inline {

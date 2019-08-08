@@ -380,7 +380,7 @@
         right: 0;
         margin-top: $clr_baselineRem_0_2;
         background: $clr-datagrid-popover-bg-color;
-        padding: 0.75rem;
+        padding: $clr_baselineRem_0_75;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
         box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
@@ -677,7 +677,7 @@
       }
       .column-toggle--action {
         // I'm overriding .btn/.btn-link here but am not confident this is the correct way to do it.
-        min-width: 0.75rem;
+        min-width: $clr_baselineRem_0_75;
         padding-left: 0;
         padding-right: 0;
 
@@ -689,7 +689,7 @@
 
       .column-switch {
         border-radius: $clr-global-borderradius;
-        padding: 0.75rem;
+        padding: $clr_baselineRem_0_75;
         background-color: $clr-datagrid-popover-bg-color;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
         // TODO: Add theme-able variable
@@ -708,7 +708,7 @@
           line-height: 1rem;
 
           button {
-            min-width: 0.75rem;
+            min-width: $clr_baselineRem_0_75;
             margin: 0;
             padding: 0;
             color: $clr-color-neutral-500;

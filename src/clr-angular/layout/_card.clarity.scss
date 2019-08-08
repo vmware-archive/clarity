@@ -83,7 +83,7 @@
     }
 
     .list-group-item {
-      padding: $clr_baselineRem_0_5 0.75rem;
+      padding: $clr_baselineRem_0_5 $clr_baselineRem_0_75;
       font-size: $clr-card-text-font-size;
       background-color: $clr-card-bg-color;
       border-bottom: $clr-global-borderwidth solid $clr-card-border-color;

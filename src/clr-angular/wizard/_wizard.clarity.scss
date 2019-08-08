@@ -266,7 +266,7 @@
 
     .clr-wizard-page:not([aria-hidden='true']) {
       padding: $clr-wizard-default-space;
-      padding-top: 0.75rem;
+      padding-top: $clr_baselineRem_0_75;
       display: block;
     }
   }

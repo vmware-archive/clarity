@@ -22,7 +22,7 @@
       margin-left: $clr-list-style-padding;
 
       &.compact {
-        line-height: 0.75rem;
+        line-height: $clr_baselineRem_0_75;
 
         & > li {
           margin-bottom: $clr_baselineRem_0_25;

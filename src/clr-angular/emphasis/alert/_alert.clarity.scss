@@ -79,7 +79,7 @@
     flex: 0 0 $alertIconWidth;
     align-self: start;
     padding-top: $clr_baselineRem_1px;
-    height: 0.75rem;
+    height: $clr_baselineRem_0_75;
   }
 
   .alert-item {
@@ -121,7 +121,7 @@
     font-size: $clr-alert-font-size;
     letter-spacing: $clr-alert-letter-spacing;
 
-    line-height: 0.75rem;
+    line-height: $clr_baselineRem_0_75;
     position: relative;
     box-sizing: border-box;
     display: flex;

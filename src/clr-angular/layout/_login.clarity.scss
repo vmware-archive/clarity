@@ -71,7 +71,7 @@
         .checkbox,
         .clr-form-control,
         .clr-checkbox-wrapper {
-          margin: $clr_baselineRem_0_25 0 0.75rem 0;
+          margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
         }
 
         // Overrides for new forms layouts to match original login layout
@@ -125,7 +125,7 @@
           background: $clr-color-danger-800;
           color: $clr-login-background-color;
           border-radius: $clr-global-borderradius;
-          line-height: 0.75rem;
+          line-height: $clr_baselineRem_0_75;
 
           &:before {
             display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work

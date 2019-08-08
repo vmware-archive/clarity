@@ -26,7 +26,7 @@ $clr-vertical-nav-item-active-color: $clr-color-neutral-700 !default;
 $clr-vertical-nav-bg-color: $clr-color-neutral-200 !default;
 $clr-vertical-nav-active-bg-color: $clr-color-neutral-0 !default;
 $clr-vertical-nav-hover-bg-color: $clr-color-neutral-400 !default;
-$clr-vertical-nav-top-padding: 0.75rem !default;
+$clr-vertical-nav-top-padding: $clr_baselineRem_0_75 !default;
 $clr-vertical-nav-trigger-icon-align-margin: ($clr-vertical-nav-item-height - $clr-vertical-nav-icon-size) / 2 !default;
 
 //Vertical Nav: Trigger

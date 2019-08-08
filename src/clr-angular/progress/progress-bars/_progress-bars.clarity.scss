@@ -562,7 +562,7 @@
       // vertically center???
 
       &:first-child {
-        padding-right: 0.75rem;
+        padding-right: $clr_baselineRem_0_75;
       }
 
       &:last-child {
@@ -609,7 +609,7 @@
 
     & > label {
       max-width: 33%;
-      line-height: 0.75rem;
+      line-height: $clr_baselineRem_0_75;
     }
 
     .progress,

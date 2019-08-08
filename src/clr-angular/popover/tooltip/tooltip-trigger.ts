@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
     tabindex: '0',
     '[class.tooltip-trigger]': 'true',
     '[attr.aria-describedby]': 'ariaDescribedBy',
-    role: 'button',
+    '[attr.role]': '"button"',
   },
 })
 export class ClrTooltipTrigger {

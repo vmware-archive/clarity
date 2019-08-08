@@ -71,19 +71,10 @@ ClarityIconElement.prototype.connectedCallback = function() {
   // So we could check whether the attribute values really changed or not.
   // If not, we don't need to execute the same codes again.
 
-  if (this.hasAttribute('role')) {
-    const roleAttrValue = this.getAttribute('role');
-
-    if (roleAttrValue === 'button') {
-      // Tooltip icons trigger directive sets the role to button for a11y
-      this._setRoleAttr(roleAttrValue);
-    } else {
-      // We want to hide the custom element from screen readers but allow the svg/img content to still be read inline
-      // Adding role=none allows the screen reader to skip the custom element as if it were a div or span.
-      // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
-      this._setRoleAttr('none');
-    }
-  }
+  // We want to hide the custom element from screen readers but allow the svg/img content to still be read inline
+  // Adding role=none allows the screen reader to skip the custom element as if it were a div or span.
+  // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
+  this.setAttribute('role', 'none');
 
   if (this.hasAttribute('size')) {
     const sizeAttrValue = this.getAttribute('size');

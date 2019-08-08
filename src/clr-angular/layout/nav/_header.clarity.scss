@@ -277,7 +277,7 @@
 
       // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
       :last-child.dropdown-menu {
-        margin-right: 0.333333rem;
+        margin-right: $clr_baselineRem_8px;
       }
     }
   }

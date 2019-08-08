@@ -159,7 +159,7 @@
       box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
       margin: 0 0 (-1 * $clr-global-borderwidth) 0;
       padding: $clr_baselineRem_0_25 0;
-      padding-left: 0.333333rem;
+      padding-left: $clr_baselineRem_8px;
       color: $clr-wizard-sidenav-text;
       font-weight: 400;
 

@@ -95,8 +95,8 @@
   }
 
   .alert-items {
-    $vertPadding: 0.333333rem;
-    $horizPadding: calc(0.5rem - #{$clr-alert-borderwidth});
+    $vertPadding: $clr_baselineRem_8px;
+    $horizPadding: 0.5rem - $clr-alert-borderwidth;
     flex: 1 1 auto;
     flex-flow: column nowrap;
     padding: $vertPadding $horizPadding;

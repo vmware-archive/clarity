@@ -118,7 +118,7 @@
   }
 
   .header-overflow-trigger {
-    $overflow-trigger-psuedo-positioning: -0.333333rem;
+    $overflow-trigger-psuedo-positioning: -1 * $clr_baselineRem_8px;
 
     & > span,
     & > span::before,

@@ -29,7 +29,7 @@
         height: 100%;
         width: 100%;
         box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-        padding: 3px 0px 3px 3px;
+        padding: $clr_baselineRem_3px 0 $clr_baselineRem_3px $clr_baselineRem_3px;
         border: $clr_baselineRem_1px solid rgba(81, 203, 238, 1);
 
         &::-ms-check {

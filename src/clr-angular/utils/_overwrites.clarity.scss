@@ -93,7 +93,7 @@ $clr-global-selection-color: null; // #D9E4EA;
 $clr-global-on-selection-color: null; // $clr-color-neutral-1000
 
 // Misc
-$clr-global-borderradius: null; // $clr-baseline*0.125;
+$clr-global-borderradius: null; // $clr_baselineRem_3px;
 $clr-global-borderwidth: null; // 1px
 
 // Buttons
@@ -537,7 +537,7 @@ $clr-app-alert-close-icon-hover-opacity: null; // 1.0
 $clr-alert-top-margin: null; // $clr-baseline*0.25;
 $clr-alert-min-height: null; // $clr-baseline*1.5;
 $clr-alert-horizontal-padding: null; // $clr-baseline*0.5;
-$clr-alert-top-padding: null; // $clr-baseline*0.125;
+$clr-alert-top-padding: null; // $clr_baselineRem_3px;
 $clr-alert-bottom-padding: null; // $clr-baseline*0.375;
 $clr-alert-item-top-margin: null; // $clr-alert-bottom-padding - $clr-alert-top-padding;
 $clr-alert-item-min-height: null; // $clr-icon-dimension-sm;
@@ -546,7 +546,7 @@ $clr-alert-item-min-height: null; // $clr-icon-dimension-sm;
 $clr-alert-sm-min-height: null; // $clr-baseline*1;
 $clr-alert-sm-horizontal-padding: null; // $clr-baseline*0.25;
 $clr-alert-sm-top-padding: null; // 0;
-$clr-alert-sm-bottom-padding: null; // $clr-baseline*0.125;
+$clr-alert-sm-bottom-padding: null; // $clr_baselineRem_3px;
 $clr-alert-sm-item-top-margin: null; // $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding;
 $clr-alert-sm-item-min-height: null; // $clr-icon-dimension-sm;
 

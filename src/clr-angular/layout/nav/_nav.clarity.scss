@@ -51,7 +51,7 @@
 
       &:hover,
       &.active {
-        box-shadow: 0 -3px 0 $clr-nav-active-box-shadow-color inset;
+        box-shadow: 0 (-1 * $clr_baselineRem_3px) 0 $clr-nav-active-box-shadow-color inset;
         transition: box-shadow 0.2s ease-in;
       }
 

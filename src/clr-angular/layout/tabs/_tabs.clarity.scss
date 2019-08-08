@@ -64,7 +64,7 @@ button.nav-link {
 
       &.active,
       &:hover {
-        box-shadow: inset 3px 0 0 $clr-nav-active-box-shadow-color;
+        box-shadow: inset $clr_baselineRem_3px 0 0 $clr-nav-active-box-shadow-color;
       }
       &.active {
         background-color: $clr-global-selection-color;

@@ -35,7 +35,7 @@
   }
 
   .datagrid-expandable-caret {
-    padding: calc($clr_baselineRem_0_125 - #{$clr-global-borderwidth}) $horizontalPadding $clr_baselineRem_0_125;
+    padding: $clr_baselineRem_2px $horizontalPadding $clr_baselineRem_0_125;
     text-align: center;
 
     .datagrid-expandable-caret-button {
@@ -94,7 +94,7 @@
       padding: 0.25rem 0.25rem;
       margin-left: 0.25rem;
       border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-      box-shadow: 0 $clr_baselineRem_1px 3px rgba($clr-color-neutral-600, 0.25);
+      box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
       font-weight: normal;
       white-space: nowrap;
@@ -382,7 +382,7 @@
         background: $clr-datagrid-popover-bg-color;
         padding: 0.75rem;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 $clr_baselineRem_1px 3px rgba($clr-color-neutral-600, 0.25);
+        box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
         font-weight: normal;
 
@@ -518,7 +518,7 @@
       }
 
       &.datagrid-expandable-caret {
-        padding: calc($clr_baselineRem_0_125 - #{$clr-global-borderwidth}) $horizontalPadding $clr_baselineRem_0_125;
+        padding: $clr_baselineRem_2px $horizontalPadding $clr_baselineRem_0_125;
         text-align: center;
       }
 
@@ -692,7 +692,8 @@
         padding: 0.75rem;
         background-color: $clr-datagrid-popover-bg-color;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-        box-shadow: 0 $clr_baselineRem_1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
+        // TODO: Add theme-able variable
+        box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba(116, 116, 116, 0.25);
         width: 10.416667rem;
         display: flex;
         flex-direction: column;

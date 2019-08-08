@@ -3,7 +3,8 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../typography/_typography.clarity.scss
-$clr-baseline-px: 24px !default;
+$clr-baseline-px: 24px;
+$clr-basefont-size: 125% !default; // TODO - switch on at the end...
 $clr-baseline-int: 24 !default;
 $clr-font-base-size: 14 !default; // Moved from original needs a better name
 

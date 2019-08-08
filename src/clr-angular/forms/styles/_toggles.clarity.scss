@@ -42,7 +42,7 @@
       height: $clr-toggle-switch-base-height;
       width: $clr-toggle-switch-base-width;
       border: $clr_baselineRem_2px solid;
-      border-radius: 0.375rem;
+      border-radius: $clr_baselineRem_0_375;
       border-color: $clr-toggle-bg-color-off;
       background-color: $clr-toggle-bg-color-off;
       top: ($clr-forms-baseline / 2);

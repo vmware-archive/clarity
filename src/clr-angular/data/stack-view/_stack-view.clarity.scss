@@ -82,15 +82,15 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
 
     .stack-block-changed {
       > .stack-block-label {
-        margin-left: -0.375rem;
+        margin-left: -1 * $clr_baselineRem_0_375;
       }
       &::before {
         content: ' ';
         position: relative;
         width: 0;
         height: 0;
-        border-top: 0.375rem solid $clr-stack-block-changed-border-top-color;
-        border-right: 0.375rem solid transparent;
+        border-top: $clr_baselineRem_0_375 solid $clr-stack-block-changed-border-top-color;
+        border-right: $clr_baselineRem_0_375 solid transparent;
       }
     }
 

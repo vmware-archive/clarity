@@ -117,5 +117,6 @@ export class I18nDemo extends ClarityDocComponent {
       role:
         'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the decade changes.',
     },
+    { key: 'stackViewChanged', role: 'Stack View: describes a particular stack block has changed' },
   ];
 }

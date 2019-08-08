@@ -3,8 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, HostBinding, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Inject, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-stack-block',
@@ -15,6 +16,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         (keyup.space)="toggleExpand()"
         (focus)="focused = true"
         (blur)="focused = false"
+        [id]="uniqueId"
         [attr.role]="role"
         [attr.tabindex]="tabIndex"
         [attr.aria-expanded]="ariaExpanded">
@@ -23,6 +25,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
                 *ngIf="expandable"
                 [attr.dir]="caretDirection"
                 [attr.title]="caretTitle"></clr-icon>
+      <span class="clr-sr-only" *ngIf="getChangedValue">{{commonStrings.keys.stackViewChanged}}</span>
       <ng-content select="clr-stack-label"></ng-content>
     </dt>
     <dd class="stack-block-content">
@@ -42,6 +45,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
   ],
   // Make sure the host has the proper class for styling purposes
   host: { '[class.stack-block]': 'true' },
+  providers: [UNIQUE_ID_PROVIDER],
 })
 export class ClrStackBlock implements OnInit {
   @HostBinding('class.stack-block-expanded')
@@ -84,6 +88,7 @@ export class ClrStackBlock implements OnInit {
     @SkipSelf()
     @Optional()
     private parent: ClrStackBlock,
+    @Inject(UNIQUE_ID) public uniqueId: string,
     public commonStrings: ClrCommonStringsService
   ) {
     if (parent) {
@@ -93,7 +98,7 @@ export class ClrStackBlock implements OnInit {
 
   ngOnInit(): void {
     // in order to access the parent ClrStackBlock's properties,
-    // the child ClrStackBlock  has to be fully initialized at first.
+    // the child ClrStackBlock has to be fully initialized at first.
     this._fullyInitialized = true;
   }
 

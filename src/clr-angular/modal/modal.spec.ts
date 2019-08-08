@@ -186,6 +186,13 @@ describe('Modal', () => {
   );
 
   it(
+    'focuses on the title when opened',
+    fakeAsync(() => {
+      expect(document.activeElement).toEqual(fixture.nativeElement.querySelector('.modal-title-wrapper'));
+    })
+  );
+
+  it(
     'supports a clrModalSize option',
     fakeAsync(() => {
       expect(compiled.querySelector('.modal-sm')).toBeNull();

@@ -278,6 +278,7 @@ export interface ClrCommonStrings {
     singleActionableAriaLabel?: string;
     singleSelectionAriaLabel?: string;
     sortColumn?: string;
+    stackViewChanged?: string;
     success?: string;
     totalPages?: string;
     warning?: string;
@@ -902,12 +903,12 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     commonStrings: ClrCommonStringsService;
     focusTrap: FocusTrapDirective;
     modalId: string;
+    modalTitle: ElementRef<HTMLDivElement>;
     size: string;
-    readonly sizeClass: string;
     skipAnimation: string;
     staticBackdrop: boolean;
     stopClose: boolean;
-    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStringsService, modalId: string);
+    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStringsService, platformId: Object, modalId: string);
     close(): void;
     fadeDone(e: AnimationEvent): void;
     ngOnChanges(changes: {
@@ -1130,7 +1131,8 @@ export declare class ClrStackBlock implements OnInit {
     readonly role: string;
     setChangedValue: boolean;
     readonly tabIndex: string;
-    constructor(parent: ClrStackBlock, commonStrings: ClrCommonStringsService);
+    uniqueId: string;
+    constructor(parent: ClrStackBlock, uniqueId: string, commonStrings: ClrCommonStringsService);
     addChild(): void;
     ngOnInit(): void;
     toggleExpand(): void;

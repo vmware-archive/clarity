@@ -13,6 +13,7 @@
          [class.modal-lg]="size == 'lg'"
          [class.modal-xl]="size == 'xl'"
          role="dialog"
+         aria-modal="true"
          [attr.aria-hidden]="!_open"
          [attr.aria-labelledby]="modalId">
       <div class="clr-sr-only">{{commonStrings.keys.modalContentStart}}</div>
@@ -25,7 +26,7 @@
             <button type="button" [attr.aria-label]="commonStrings.keys.close" class="close" *ngIf="closable" (click)="close()">
               <clr-icon shape="close"></clr-icon>
             </button>
-            <div class="modal-title-wrapper" id="{{modalId}}">
+            <div class="modal-title-wrapper" tabindex="0" id="{{modalId}}" #modalTitle>
               <ng-content select=".modal-title"></ng-content>
             </div>
           </div>

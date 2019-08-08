@@ -180,4 +180,8 @@ export interface ClrCommonStrings {
   daypickerSRCurrentMonthPhrase?: string;
   daypickerSRCurrentYearPhrase?: string;
   daypickerSRCurrentDecadePhrase?: string;
+  /**
+   * Stack View: Record has changed
+   */
+  stackViewChanged?: string;
 }

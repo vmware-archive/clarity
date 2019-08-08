@@ -334,7 +334,7 @@ $clr-green-darkest: null; //  #0f2900 -- $clr-color-success-1000;
 /* Overwrite the default variable assignments in _tooltips.clarity.scss here:     */
 /*================================================================================*/
 
-$clr-tooltip-font-color: null; // $clr-color-neutral-0;
+$clr-tooltip-color: null; // $clr-color-neutral-0;
 $clr-tooltip-background-color: null; // $clr-color-neutral-1000;
 $clr-tooltip-default-width: null; // 10*$clr-baseline;
 $margin-value: null; // $clr-baseline*0.25;
@@ -774,7 +774,7 @@ $clr-signpost-border-radius: null; // $clr-global-borderradius
 /* Overwrite the default variable assignments in _tooltips.clarity.scss here:        */
 /*================================================================================*/
 
-$clr-tooltip-font-color: null; // $clr-color-neutral-0
+$clr-tooltip-color: null; // $clr-color-neutral-0
 $clr-tooltip-background-color: null; // $clr-color-neutral-1000
 
 /*================================================================================*/

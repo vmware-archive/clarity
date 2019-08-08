@@ -11,8 +11,6 @@ $arrow-width: $clr_baselineRem_5px !default;
 $clr-tooltip-adjusted-margin: 0.666667rem !default;
 
 $clr-tooltip-color: $clr-color-neutral-0 !default;
-// @deprecated in 2.0 $clr-tooltip-font-color to be replaced by $clr-tooltip-color
-$clr-tooltip-font-color: $clr-tooltip-color !default;
 $clr-tooltip-font-size: $clr-p3-font-size !default;
 $clr-tooltip-font-weight: $clr-p3-font-weight !default;
 $clr-tooltip-letter-spacing: $clr-p3-letter-spacing !default;

@@ -62,7 +62,7 @@
     display: flex;
     flex: 0 0 auto;
     min-width: 8.5rem;
-    padding: 0 1rem;
+    padding: 0 $clr_baselineRem_1;
     height: $clr-header-height;
 
     & > a,
@@ -141,7 +141,7 @@
           top: initial;
           left: initial;
           transform: none;
-          margin-left: 1rem;
+          margin-left: $clr_baselineRem_1;
         }
 
         .nav-text {
@@ -233,7 +233,7 @@
         // Dropdown icons are 2px smaller
         height: 0.916667rem;
         width: 0.916667rem;
-        right: 1rem;
+        right: $clr_baselineRem_1;
       }
 
       .dropdown-toggle.nav-icon clr-icon[shape^='caret'] {
@@ -295,14 +295,14 @@
     @include header-nav-appearance();
 
     & > .nav-icon {
-      margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 1rem;
+      margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 $clr_baselineRem_1;
     }
 
     label {
       display: inline-block;
       height: $clr-header-height;
       line-height: $clr-header-height;
-      padding-left: 1rem;
+      padding-left: $clr_baselineRem_1;
       text-align: center;
 
       &::before {
@@ -319,7 +319,7 @@
       }
 
       input {
-        line-height: 1rem;
+        line-height: $clr_baselineRem_1;
         margin: $clr-header-nav-text-vertical-padding 0;
       }
     }

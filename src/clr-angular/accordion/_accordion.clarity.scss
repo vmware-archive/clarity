@@ -6,7 +6,7 @@
   .clr-accordion {
     display: block;
     counter-reset: accordion;
-    margin-bottom: 1rem;
+    margin-bottom: $clr_baselineRem_1;
   }
 
   .clr-accordion-panel {
@@ -128,8 +128,8 @@
   .clr-accordion-error-icon,
   .clr-accordion-complete-icon {
     display: none;
-    width: 1rem;
-    height: 1rem;
+    width: $clr_baselineRem_1;
+    height: $clr_baselineRem_1;
     padding: 0;
     margin: 0 $clr_baselineRem_0_5;
   }
@@ -254,6 +254,6 @@
 
   .clr-step-button {
     display: block;
-    margin-top: 1rem;
+    margin-top: $clr_baselineRem_1;
   }
 }

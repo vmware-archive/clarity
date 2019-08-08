@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 1rem 2.5rem;
+      padding: $clr_baselineRem_1 2.5rem;
       height: auto;
       min-height: 100vh;
       width: $clr-login-width;
@@ -100,7 +100,7 @@
               padding-right: 0.4rem;
 
               & > .clr-input {
-                width: calc(100% - 1rem);
+                width: calc(100% - #{$clr_baselineRem_1});
               }
             }
           }
@@ -151,7 +151,7 @@
         }
 
         .error + .btn {
-          margin: 1rem 0 0 0;
+          margin: $clr_baselineRem_1 0 0 0;
         }
 
         .signup {
@@ -182,7 +182,7 @@
       .login {
         width: 100%;
         margin-left: 0;
-        padding: 1rem 20%;
+        padding: $clr_baselineRem_1 20%;
 
         &:after {
           content: none;
@@ -194,7 +194,7 @@
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     .login-wrapper {
       .login {
-        padding: 1rem 15%;
+        padding: $clr_baselineRem_1 15%;
       }
     }
   }

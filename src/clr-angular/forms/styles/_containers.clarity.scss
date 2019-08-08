@@ -59,7 +59,7 @@
     min-height: $clr-forms-icon-size;
     color: $clr-forms-invalid-color;
     display: none;
-    margin-left: -1rem;
+    margin-left: -1 * $clr_baselineRem_1;
   }
 
   .clr-error {

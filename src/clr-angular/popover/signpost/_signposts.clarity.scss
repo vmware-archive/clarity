@@ -11,14 +11,14 @@
     }
 
     .signpost-action {
-      min-width: 1rem;
+      min-width: $clr_baselineRem_1;
       margin: 0;
       padding: 0;
       color: $clr-signpost-action-color;
 
       clr-icon {
-        width: 1rem;
-        height: 1rem;
+        width: $clr_baselineRem_1;
+        height: $clr_baselineRem_1;
       }
 
       &:hover,
@@ -355,7 +355,7 @@
   }
 
   .signpost-content-body {
-    padding: 1rem;
+    padding: $clr_baselineRem_1;
     max-height: 20rem;
     overflow-y: auto;
   }

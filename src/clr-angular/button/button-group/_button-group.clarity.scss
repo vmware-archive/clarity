@@ -165,7 +165,7 @@
     .checkbox,
     .radio {
       &.btn label {
-        line-height: calc(1rem - $clr_baselineRem_1px);
+        line-height: $clr_baselineRem_1 - $clr_baselineRem_1px;
       }
     }
   }

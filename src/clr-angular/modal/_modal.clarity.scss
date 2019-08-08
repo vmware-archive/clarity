@@ -52,7 +52,7 @@
 
 .modal-header {
   border-bottom: none;
-  padding: 0 0 1rem 0;
+  padding: 0 0 $clr_baselineRem_1 0;
 
   .modal-title {
     color: $clr-modal-title-color;
@@ -70,14 +70,14 @@
     margin-top: -0.0416667rem;
     margin-right: -1 * $clr_baselineRem_5px;
     font-size: 1.0833rem;
-    line-height: 1rem;
+    line-height: $clr_baselineRem_1;
 
     clr-icon {
       fill: $clr-modal-close-color;
 
       // per measurement, this results in an icon that is 16x16...
-      width: 1rem;
-      height: 1rem;
+      width: $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
     }
   }
 }
@@ -107,7 +107,7 @@
 .modal-footer {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 0 0 0;
+  padding: $clr_baselineRem_1 0 0 0;
 
   .btn {
     //switched right margin to left because footer is right aligned
@@ -123,11 +123,11 @@
 
 @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
   .modal-content {
-    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 1rem;
+    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
   }
 
   .modal-header {
-    padding: 0 1rem $clr_baselineRem_0_5 0;
+    padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
   }
 
   .modal-body {
@@ -135,7 +135,7 @@
   }
 
   .modal-footer {
-    padding: $clr_baselineRem_0_5 1rem 0 0;
+    padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
   }
 }
 

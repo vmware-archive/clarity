@@ -167,7 +167,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       }
 
       .stack-block-label {
-        padding-left: 1rem;
+        padding-left: $clr_baselineRem_1;
       }
     }
 
@@ -228,7 +228,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     // Yes, hard-coding the height isn't great. Haven't found anything better cross-browser.
     #{$styledInputs},
     .select select {
-      height: 1rem;
+      height: $clr_baselineRem_1;
     }
 
     // TODO: Clean up if not being used

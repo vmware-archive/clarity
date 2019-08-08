@@ -5,7 +5,7 @@
 // Usage: ./_vertical-nav.clarity.scss
 //Vertical Nav: Links
 $clr-vertical-nav-link-padding-right: $clr_baselineRem_0_5 !default;
-$clr-vertical-nav-link-padding-left: 1rem !default;
+$clr-vertical-nav-link-padding-left: $clr_baselineRem_1 !default;
 
 //Vertical Nav: Divider
 $clr-vertical-nav-divider-color: $clr-color-neutral-700 !default;
@@ -36,7 +36,7 @@ $clr-vertical-nav-trigger-divider-border-color: rgba($clr-color-neutral-700, 0.2
 
 //Vertical Nav: Links
 $clr-vertical-nav-link-padding-right: $clr_baselineRem_0_5 !default;
-$clr-vertical-nav-link-padding-left: 1rem !default;
+$clr-vertical-nav-link-padding-left: $clr_baselineRem_1 !default;
 
 // Vertical Nav: Header
 $clr-vertical-nav-header-font-size: $clr-p4-font-size !default;

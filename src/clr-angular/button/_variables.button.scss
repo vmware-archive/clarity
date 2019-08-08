@@ -27,7 +27,7 @@ $clr-button-height: 1.5rem !default;
 $clr-btn-height: $clr-button-height !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height-sm: 1rem !default;
+$clr-button-height-sm: $clr_baselineRem_1 !default;
 $clr-btn-height-sm: $clr-button-height-sm !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
@@ -42,7 +42,7 @@ $clr-btn-border-radius: $clr-global-borderradius !default;
 $clr-btn-border-width: $clr-global-borderwidth !default;
 
 // standard appearance styles - overrideable but not advertised!
-$clr-btn-appearance-standard-line-height: calc(#{$clr-btn-height-sm} - $clr_baselineRem_1px) !default;
+$clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
 $clr-btn-appearance-standard-letter-spacing: 0.073em !default;
 $clr-btn-appearance-standard-font-size: 0.458333rem !default;
 $clr-btn-appearance-standard-font-weight: $clr-btn-font-weight !default;

@@ -65,10 +65,10 @@
 }
 
 @include exports('alert.clarity') {
-  $alertIconWidth: 1rem + $clr_baselineRem_1px;
+  $alertIconWidth: $clr_baselineRem_1 + $clr_baselineRem_1px;
 
   .alert-icon {
-    $alert-icon-dim: 1rem;
+    $alert-icon-dim: $clr_baselineRem_1;
     height: $alert-icon-dim;
     width: $alert-icon-dim;
     margin-left: -1 * $clr_baselineRem_0_125;
@@ -205,15 +205,15 @@
 
     .close {
       $closeBtnNudge: 0.166667rem;
-      width: 1rem;
+      width: $clr_baselineRem_1;
       display: block;
       height: 1.5rem;
-      flex: 0 0 (1rem + $closeBtnNudge);
+      flex: 0 0 ($clr_baselineRem_1 + $closeBtnNudge);
       order: 100;
       padding-right: $closeBtnNudge;
 
       clr-icon {
-        $alert-close-icon-dims: calc(1rem - #{$clr-alert-borderwidth});
+        $alert-close-icon-dims: $clr_baselineRem_1 - $clr-alert-borderwidth;
         margin-top: -1 * $clr_baselineRem_0_125;
         height: $alert-close-icon-dims;
         width: $alert-close-icon-dims;
@@ -264,7 +264,7 @@
     .alert-item {
       justify-content: center;
       align-items: center;
-      min-height: 1rem;
+      min-height: $clr_baselineRem_1;
 
       .btn {
         @extend .btn-inverse;
@@ -338,9 +338,9 @@
 
     .close {
       padding-right: 0;
-      flex: 0 0 1rem;
-      height: 1rem;
-      line-height: 1rem;
+      flex: 0 0 $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
+      line-height: $clr_baselineRem_1;
 
       clr-icon {
         $smallAlertCloseIconDims: 0.833333rem;
@@ -348,7 +348,7 @@
         margin-right: -1 * $clr_baselineRem_1px;
         height: $smallAlertCloseIconDims;
         width: $smallAlertCloseIconDims;
-        line-height: calc(#{$smallAlertCloseIconDims} + $clr_baselineRem_1px);
+        line-height: $smallAlertCloseIconDims + $clr_baselineRem_1px;
       }
     }
   }

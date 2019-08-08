@@ -24,7 +24,7 @@
 
 @include exports('sidenav.clarity') {
   .sidenav {
-    line-height: 1rem;
+    line-height: $clr_baselineRem_1;
     max-width: 13rem;
     min-width: 9rem;
     width: $clr-sidenav-width;
@@ -35,7 +35,7 @@
     .sidenav-content {
       flex: 1 1 auto;
       overflow-x: hidden;
-      padding-bottom: 1rem;
+      padding-bottom: $clr_baselineRem_1;
 
       //nav link common styles
       .nav-link {
@@ -48,7 +48,7 @@
       }
 
       & > .nav-link {
-        margin: 1rem 0 0 1.25rem;
+        margin: $clr_baselineRem_1 0 0 1.25rem;
         padding-left: $clr_baselineRem_0_5;
 
         @include nav-link-colors();
@@ -62,7 +62,7 @@
       font-weight: $clr-sidenav-font-weight;
       letter-spacing: $clr-sidenav-letter-spacing;
 
-      margin-top: 1rem;
+      margin-top: $clr_baselineRem_1;
       width: 100%;
 
       .nav-list,

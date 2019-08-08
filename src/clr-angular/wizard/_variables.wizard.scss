@@ -4,7 +4,7 @@
 
 $clr-wizard-main-bgcolor: $clr-color-neutral-0 !default;
 $clr-wizard-sidenav-bgcolor: $clr-color-neutral-50 !default;
-$clr-wizard-default-space: 1rem !default;
+$clr-wizard-default-space: $clr_baselineRem_1 !default;
 $clr-wizard-main-textColor: $clr-color-on-neutral-0 !default;
 $clr-wizard-sidenav-text: $clr-color-neutral-900 !default;
 $clr-wizard-sidenav-text--active: $clr-global-on-selection-color !default;

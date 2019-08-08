@@ -57,7 +57,7 @@
     &::before,
     &::after {
       height: 0.0833333rem;
-      width: 1rem;
+      width: $clr_baselineRem_1;
       left: -1 * $clr_baselineRem_0_25;
       transform-origin: -3%;
       transition: $clr-trigger-animation;
@@ -87,7 +87,7 @@
     & > span::after {
       display: inline-block;
       height: 0.0833333rem;
-      width: 1rem;
+      width: $clr_baselineRem_1;
       background: $clr-color-neutral-0;
       border-radius: $clr-global-borderradius;
     }
@@ -164,7 +164,7 @@
         border: none;
         background: none;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: $clr_baselineRem_1;
         height: $clr-header-height;
         width: $clr-header-height;
         padding: 0 0 0.166667rem 0;
@@ -226,7 +226,7 @@
           }
 
           .nav-link {
-            padding: 0 $clr_baselineRem_0_5 0 1rem;
+            padding: 0 $clr_baselineRem_0_5 0 $clr_baselineRem_1;
             width: 100%;
             max-width: 100%;
             overflow: hidden;
@@ -325,12 +325,12 @@
               }
 
               .nav-text {
-                $nav-text-height: 1rem;
+                $nav-text-height: $clr_baselineRem_1;
 
                 display: inline-block;
                 color: $clr-sliding-panel-text-color;
                 line-height: $nav-text-height;
-                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 1rem;
+                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_1;
                 white-space: normal;
                 font-weight: normal;
               }
@@ -365,7 +365,7 @@
             width: $clr-sliding-panel-width;
             max-width: $clr-sliding-panel-width;
             z-index: $clr-sliding-panel-z-index + 1;
-            padding-left: 1rem;
+            padding-left: $clr_baselineRem_1;
 
             & > .nav-link {
               overflow: hidden;
@@ -402,12 +402,12 @@
         .sub-nav.clr-nav-level-1,
         .sidenav.clr-nav-level-1,
         .clr-vertical-nav.clr-nav-level-1 {
-          padding-top: $clr-header-height + 1rem;
+          padding-top: $clr-header-height + $clr_baselineRem_1;
           transform: translateX(0);
           transition: $clr-sliding-panel-animation;
 
           .sidenav-content {
-            padding-bottom: 1rem;
+            padding-bottom: $clr_baselineRem_1;
           }
         }
       }
@@ -425,7 +425,7 @@
         .header-nav.clr-nav-level-2,
         .subnav.clr-nav-level-2,
         .sub-nav.clr-nav-level-2 {
-          padding-top: 1rem;
+          padding-top: $clr_baselineRem_1;
         }
 
         .header-overflow-trigger {

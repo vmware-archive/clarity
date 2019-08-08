@@ -50,7 +50,7 @@ $clr-font-weight-extrabold: null; // 600
 // in the overwrites file. it had to be deprecated first
 $clr-font-weights: null; // (light: 200, regular: 400, bold: 600);
 
-$clr-baseline: null; // 24px;
+$clr-baseline: null; // $clr_baselineRem_1; ?! LEFTOFF: does this go away?!
 
 // Paragraphs
 $clr-typography-smalltext: null; // 13/$clr-rem-denominator*$clr-font-size;
@@ -802,7 +802,7 @@ $clr-spinner-opacity: null; // 0.15
 
 $clr-wizard-main-bgcolor: null; // $clr-color-neutral-0
 $clr-wizard-sidenav-bgcolor: null; // $clr-color-neutral-50
-$clr-wizard-default-space: null; // 1rem
+$clr-wizard-default-space: null; // $clr_baselineRem_1
 $clr-wizard-main-textColor: null; // $clr-color-on-neutral-0
 $clr-wizard-sidenav-text: null; // $clr-color-neutral-900
 $clr-wizard-sidenav-text--active: null; // $clr-global-on-selection-color

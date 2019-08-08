@@ -56,8 +56,8 @@
   }
   .clr-form-control {
     .datepicker-trigger {
-      line-height: calc(1rem - $clr_baselineRem_2px);
-      height: calc(1rem - $clr_baselineRem_2px);
+      line-height: $clr_baselineRem_1 - $clr_baselineRem_2px;
+      height: $clr_baselineRem_1 - $clr_baselineRem_2px;
     }
   }
 

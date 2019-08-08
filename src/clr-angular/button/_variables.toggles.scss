@@ -4,7 +4,7 @@
 
 // Usage: ../button/_toggles.clarity.scss
 // Toggle
-$clr-toggle-height: 1rem !default;
+$clr-toggle-height: $clr_baselineRem_1 !default;
 $clr-toggle-switch-base-height: $clr_baselineRem_0_75 !default;
 $clr-toggle-switch-base-width: 1.375rem !default;
 $clr-toggle-switch-height: 0.5833rem !default;

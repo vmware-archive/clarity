@@ -106,7 +106,7 @@
       &.expandable {
         $clr-dropdown-caret-margin-top: $clr_baselineRem_0_25;
 
-        margin-right: 1rem;
+        margin-right: $clr_baselineRem_1;
         padding-right: $clr_baselineRem_0_5;
 
         &:before {

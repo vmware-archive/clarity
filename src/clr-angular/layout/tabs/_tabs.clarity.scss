@@ -41,7 +41,7 @@ button.nav-link {
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
-    margin-right: 1rem;
+    margin-right: $clr_baselineRem_1;
     overflow: auto;
     flex-shrink: 0;
     padding: $clr_baselineRem_4px;

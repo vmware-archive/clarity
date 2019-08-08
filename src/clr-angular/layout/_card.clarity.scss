@@ -41,7 +41,7 @@
     display: block;
     background-color: $clr-card-bg-color;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: $clr_baselineRem_1;
     @extend %card-border-appearance;
 
     .btn-link {

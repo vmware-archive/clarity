@@ -17,8 +17,8 @@ $clr-header-divider-opacity: 0.15 !default;
 $clr-header-nav-opactiy: 0.65 !default;
 $clr-header-nav-hover-opacity: 1 !default;
 $clr-header-outline-offset: -1 * $clr_baselineRem_5px !default;
-$clr-header-clarity-icons-size: 1rem !default;
-$clr-header-nav-text-horizontal-padding: 1rem !default;
+$clr-header-clarity-icons-size: $clr_baselineRem_1 !default;
+$clr-header-nav-text-horizontal-padding: $clr_baselineRem_1 !default;
 $clr-header-nav-text-vertical-padding: $clr_baselineRem_0_75 !default;
 $clr-header-2-bg-color: hsl(
   209,

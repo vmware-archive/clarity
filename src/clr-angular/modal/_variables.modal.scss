@@ -3,10 +3,10 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../modal/_modal.clarity.scss
-$clr-modal-content-padding-top: 1rem !default;
-$clr-modal-content-padding-right: 1rem !default;
-$clr-modal-content-padding-bottom: 1rem !default;
-$clr-modal-content-padding-left: 1rem !default;
+$clr-modal-content-padding-top: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-right: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-bottom: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-left: $clr_baselineRem_1 !default;
 $clr-modal-close-color: $clr-color-neutral-600 !default;
 $clr-modal-bg-color: $clr-color-neutral-0 !default;
 $clr-modal-content-box-shadow-color: rgba(

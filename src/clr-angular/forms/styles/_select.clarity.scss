@@ -9,7 +9,7 @@
     white-space: nowrap;
 
     select {
-      @include custom-inputs(1rem);
+      @include custom-inputs($clr_baselineRem_1);
       @include form-fields-appearance($clr-forms-border-color);
       @include input-border-bottom-animation($clr-forms-focused-color);
       position: relative;

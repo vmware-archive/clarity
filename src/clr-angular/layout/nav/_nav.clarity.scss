@@ -15,7 +15,7 @@
 
     .nav-item {
       display: inline-block;
-      margin-right: 1rem;
+      margin-right: $clr_baselineRem_1;
 
       &.active > .nav-link {
         color: $clr-nav-link-active-color;
@@ -69,7 +69,7 @@
 
       // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
       &.nav-item {
-        margin-right: 1rem;
+        margin-right: $clr_baselineRem_1;
       }
     }
   }

@@ -1,6 +1,8 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
+@import '../../../color/variables.color';
+@import '../../../utils/variables.global';
 
 $clr-grid-breakpoints: (
   xs: 0,
@@ -11,7 +13,7 @@ $clr-grid-breakpoints: (
 ) !default;
 
 $clr-grid-columns: 12 !default;
-$clr-grid-gutter-width: 1rem !default;
+$clr-grid-gutter-width: $clr_baselineRem_1 !default;
 
 $clr-sizes: () !default;
 $clr-sizes: map-merge((25: 25%, 50: 50%, 75: 75%, 100: 100%, auto: auto), $clr-sizes);

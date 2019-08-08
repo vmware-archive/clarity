@@ -47,7 +47,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   detailExpandableAriaLabel: 'Toggle more row content',
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
-  // DatePicker
+  // Date Picker
   datepickerToggle: 'Toggle datepicker',
   datepickerPreviousMonth: 'Previous month',
   datepickerCurrentMonth: 'Current month',
@@ -60,4 +60,6 @@ export const commonStringsDefault: ClrCommonStrings = {
   daypickerSRCurrentMonthPhrase: 'The current month is {CURRENT_MONTH}',
   daypickerSRCurrentYearPhrase: 'The current year is {CURRENT_YEAR}',
   daypickerSRCurrentDecadePhrase: 'The current decade is {DECADE_RANGE}',
+  // Stack View
+  stackViewChanged: 'Value changed.',
 };

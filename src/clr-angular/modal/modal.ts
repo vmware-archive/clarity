@@ -16,12 +16,15 @@ import {
   SimpleChange,
   ViewChild,
   Inject,
+  ElementRef,
+  PLATFORM_ID,
 } from '@angular/core';
 
 import { FocusTrapDirective } from '../utils/focus-trap/focus-trap.directive';
 import { ScrollingService } from '../utils/scrolling/scrolling-service';
 import { ClrCommonStringsService } from '../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'clr-modal',
@@ -48,6 +51,8 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generato
 export class ClrModal implements OnChanges, OnDestroy {
   @ViewChild(FocusTrapDirective, { static: false })
   focusTrap: FocusTrapDirective;
+  @ViewChild('modalTitle', { static: false })
+  modalTitle: ElementRef<HTMLDivElement>;
 
   @HostBinding('class.open')
   @Input('clrModalOpen')
@@ -67,16 +72,9 @@ export class ClrModal implements OnChanges, OnDestroy {
   constructor(
     private _scrollingService: ScrollingService,
     public commonStrings: ClrCommonStringsService,
+    @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(UNIQUE_ID) public modalId: string
   ) {}
-
-  get sizeClass(): string {
-    if (this.size) {
-      return 'modal-' + this.size;
-    } else {
-      return '';
-    }
-  }
 
   // Detect when _open is set to true and set no-scrolling to true
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
@@ -118,9 +116,12 @@ export class ClrModal implements OnChanges, OnDestroy {
     this.focusTrap.setPreviousFocus(); // Handles moving focus back to the element that had it before.
   }
 
+  // TODO Investigate if we can decouple from animation events
   fadeDone(e: AnimationEvent) {
     if (e.toState === 'void') {
       this._openChanged.emit(false);
+    } else if (e.toState === 'false' && isPlatformBrowser(this.platformId) && this.modalTitle) {
+      this.modalTitle.nativeElement.focus();
     }
   }
 }

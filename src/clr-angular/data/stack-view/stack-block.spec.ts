@@ -49,7 +49,7 @@ class NestedBlocks {
 @Component({
   template: `
         <clr-stack-block [clrSbExpandable]="true" [(clrSbExpanded)]="expanded">
-            <clr-stack-label>Label</clr-stack-label>
+            <clr-stack-label id="STACK_LABEL_ID">Label</clr-stack-label>
             <clr-stack-content>Content</clr-stack-content>
         </clr-stack-block>
    `,
@@ -124,6 +124,13 @@ export default function(): void {
       fixture.detectChanges();
 
       expect(fixture.nativeElement.querySelector('.stack-block-caret')).toBeNull();
+    });
+
+    it('adds a unique id to the label', () => {
+      fixture = TestBed.createComponent(BasicBlock);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.stack-block-label').id).toContain('clr-id-');
     });
 
     it('toggles the caret direction based on the expandable property', () => {

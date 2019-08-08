@@ -10,7 +10,7 @@
 
   .clr-input {
     @include custom-inputs-reset($clr-forms-baseline * 4);
-    @include form-fields-appearance($clr-forms-border-color);
+    @include form-fields-appearance();
     padding: 0 $clr-forms-baseline;
     max-height: $clr-forms-baseline * 4;
     font-size: $clr-forms-field-font-size;
@@ -20,7 +20,7 @@
     }
 
     &:not([readonly]) {
-      @include input-border-bottom-animation($clr-forms-focused-color);
+      @include input-border-bottom-animation();
     }
 
     &:disabled {
@@ -29,8 +29,17 @@
   }
 
   .clr-error .clr-input:not([readonly]) {
-    border-bottom-color: $clr-forms-invalid-color;
-    @include input-border-bottom-animation($clr-forms-invalid-color);
+    @include css-var(
+      border-bottom-color,
+      clr-forms-invalid-color,
+      $clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+    @include input-border-bottom-animation(
+      $clr-forms-invalid-color,
+      clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
   }
 
   .clr-form-control.row .clr-input-wrapper {

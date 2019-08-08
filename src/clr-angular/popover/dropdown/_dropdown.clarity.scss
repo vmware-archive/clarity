@@ -3,6 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './_menu-mixins.clarity.scss';
+@import './properties.dropdown';
 
 %dropdown-content {
   overflow: hidden;
@@ -47,7 +48,12 @@
 
       &:not(.btn) {
         padding: 0 $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin 0 0;
-        color: $clr-dropdown-active-text-color;
+        @include css-var(
+          color,
+          clr-dropdown-active-text-color,
+          $clr-dropdown-active-text-color,
+          $clr-use-custom-properties
+        );
         clr-icon[shape^='caret'] {
           right: 0;
         }
@@ -58,7 +64,12 @@
       background: transparent;
       border: none;
       cursor: pointer;
-      color: $clr-dropdown-active-text-color;
+      @include css-var(
+        color,
+        clr-dropdown-active-text-color,
+        $clr-dropdown-active-text-color,
+        $clr-use-custom-properties
+      );
     }
   }
 
@@ -72,9 +83,14 @@
     @include generate-dropdown-menu();
 
     .dropdown-header {
-      color: $clr-dropdown-header-color;
+      @include css-var(color, clr-dropdown-header-color, $clr-dropdown-header-color, $clr-use-custom-properties);
       font-size: $clr-dropdown-header-font-size;
-      font-weight: $clr-dropdown-header-font-weight;
+      @include css-var(
+        font-weight,
+        clr-dropdown-header-font-weight,
+        $clr-dropdown-header-font-weight,
+        $clr-use-custom-properties
+      );
       letter-spacing: $clr-dropdown-header-letter-spacing;
 
       padding: 0 $clr_baselineRem_0_5;
@@ -128,7 +144,20 @@
     }
 
     .dropdown-divider {
-      border-bottom: $clr-global-borderwidth solid $clr-dropdown-divider-color;
+      font-size: $clr-dropdown-header-font-size;
+      @include css-var(
+        border-bottom-width,
+        clr-dropdown-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      border-bottom-style: solid;
+      @include css-var(
+        border-bottom-color,
+        clr-dropdown-divider-color,
+        $clr-dropdown-divider-color,
+        $clr-use-custom-properties
+      );
       margin: $clr_baselineRem_0_25 0;
     }
   }
@@ -219,7 +248,12 @@
       // -1 is to account for the border that shifts the menu down by 1 pixel
 
       .dropdown-menu {
-        border-color: $clr-dropdown-child-border-color;
+        @include css-var(
+          border-color,
+          clr-dropdown-child-border-color,
+          $clr-dropdown-child-border-color,
+          $clr-use-custom-properties
+        );
         position: absolute;
       }
 

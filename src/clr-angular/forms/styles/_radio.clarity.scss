@@ -18,7 +18,8 @@
       @include checkbox-radio-label-styles(
         $clr-forms-radio-label-height,
         $clr-forms-radio-padding-left,
-        $clr-forms-radio-label-color
+        $clr-forms-radio-label-color,
+        clr-forms-radio-label-color
       );
     }
 
@@ -32,33 +33,61 @@
         $clr-forms-radio-height,
         $clr-forms-radio-top,
         0,
-        $clr-forms-border-color
+        $clr-forms-border-color,
+        clr-forms-border-color
       );
       border-radius: 50%;
     }
 
     //Checked Radio Styles
     input[type='radio']:checked + label::before {
-      box-shadow: $clr-forms-radio-selected-shadow;
+      @include css-var(
+        box-shadow,
+        clr-forms-radio-selected-shadow,
+        $clr-forms-radio-selected-shadow,
+        $clr-use-custom-properties
+      );
       border: none;
     }
 
     //Outline color for unchecked radios
     input[type='radio']:focus + label::before {
       outline: 0;
-      box-shadow: $clr-forms-radio-focused-shadow;
+      @include css-var(
+        box-shadow,
+        clr-forms-radio-focused-shadow,
+        $clr-forms-radio-focused-shadow,
+        $clr-use-custom-properties
+      );
     }
 
     //Outline color for checked radios
     input[type='radio']:focus:checked + label::before {
       outline: 0;
+      // IE/OldEdge
       box-shadow: $clr-forms-radio-selected-shadow, $clr-forms-radio-focused-shadow;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-forms-radio-selected-shadow, $clr-forms-radio-selected-shadow),
+          var(--clr-forms-radio-focused-shadow, $clr-forms-radio-focused-shadow);
+      }
     }
 
     &.disabled {
       input[type='radio']:checked + label::before {
-        background-color: $clr-forms-radio-disabled-background-color; // 'dot' color
-        box-shadow: $clr-forms-radio-disabled-shadow; //background-color around the dot
+        // 'dot' color
+        @include css-var(
+          background-color,
+          clr-forms-radio-disabled-background-color,
+          $clr-forms-radio-disabled-background-color,
+          $clr-use-custom-properties
+        );
+        //background-color around the dot
+        @include css-var(
+          box-shadow,
+          clr-forms-radio-disabled-shadow,
+          $clr-forms-radio-disabled-shadow,
+          $clr-use-custom-properties
+        );
       }
     }
   }
@@ -70,7 +99,7 @@
   }
 
   .clr-error .clr-radio-wrapper input[type='radio'] + label::before {
-    border-color: $clr-forms-invalid-color;
+    @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
   }
 
   .clr-form-compact .clr-error .clr-subtext {

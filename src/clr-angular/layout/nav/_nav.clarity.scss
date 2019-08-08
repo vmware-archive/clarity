@@ -18,19 +18,21 @@
       margin-right: $clr_baselineRem_1;
 
       &.active > .nav-link {
-        color: $clr-nav-link-active-color;
+        @include css-var(color, clr-nav-link-active-color, $clr-nav-link-active-color, $clr-use-custom-properties);
+        // OldIE/Edge
         box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 var(--clr-nav-box-shadow-color, $clr-nav-box-shadow-color) inset;
+        }
       }
     }
 
     .nav-link {
-      color: $clr-nav-link-color;
+      @include css-var(color, clr-nav-link-color, $clr-nav-link-color, $clr-use-custom-properties);
       font-size: $clr-nav-link-font-size;
-      font-weight: $clr-nav-link-font-weight;
+      @include css-var(font-weight, clr-nav-link-font-weight, $clr-nav-link-font-weight, $clr-use-custom-properties);
       letter-spacing: $clr-nav-link-letter-spacing;
-
       line-height: $clr-subnav-height;
-
       display: inline-block;
       padding: 0 $clr_baselineRem_0_125;
       box-shadow: none;
@@ -51,7 +53,15 @@
 
       &:hover,
       &.active {
+        // OldIE/Edge
         box-shadow: 0 (-1 * $clr_baselineRem_3px) 0 $clr-nav-active-box-shadow-color inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0
+            (-1 * $clr_baselineRem_3px)
+            0
+            var(--clr-nav-active-box-shadow-color, $clr-nav-active-box-shadow-color)
+            inset;
+        }
         transition: box-shadow 0.2s ease-in;
       }
 
@@ -63,8 +73,13 @@
       }
 
       &.active {
-        color: $clr-nav-link-active-color;
-        font-weight: $clr-nav-link-active-font-weight;
+        @include css-var(color, clr-nav-link-active-color, $clr-nav-link-active-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-nav-link-active-font-weight,
+          $clr-nav-link-active-font-weight,
+          $clr-use-custom-properties
+        );
       }
 
       // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem

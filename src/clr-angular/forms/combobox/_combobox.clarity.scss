@@ -3,6 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import '../../popover/dropdown/menu-mixins.clarity';
+@import './properties.combobox';
 
 @include exports('combobox.clarity') {
   .clr-combobox {
@@ -19,11 +20,11 @@
     padding: 0 $clr-ng-select-trigger-right-padding 0 $clr-ng-select-trigger-left-padding;
     min-height: $clr-ng-select-min-height;
     width: $clr-ng-select-min-width;
-    font-size: $clr-ng-select-font-size;
+    @include css-var(font-size, clr-ng-select-font-size, $clr-ng-select-font-size, $clr-use-custom-properties);
 
     //Mixins
-    @include form-fields-appearance($clr-forms-border-color);
-    @include input-border-bottom-animation($clr-forms-focused-color);
+    @include form-fields-appearance();
+    @include input-border-bottom-animation();
 
     //Others
     outline: none;
@@ -39,7 +40,7 @@
     //Other
     background: none;
     border: none;
-    color: $clr-ng-select-trigger-color;
+    @include css-var(color, clr-ng-select-trigger-color, $clr-ng-select-trigger-color, $clr-use-custom-properties);
     cursor: pointer;
     outline: none;
     transform: translateX(-1 * $clr-ng-select-trigger-dimensions);

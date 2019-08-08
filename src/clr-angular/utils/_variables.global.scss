@@ -4,6 +4,10 @@
 
 $clr-baseline-px: 24px; // DEPRECATED in 3.0: no longer used in Clarity SASS
 
+// Usage: ./_properties.clarity.scss
+// This will remove custom property declarations if set to false
+$clr-use-custom-properties: true !default;
+
 // Usage: ../typography/_typography.clarity.scss
 $clr-baseline-int: 24 !default; // used by design for relational sizing
 $clr-baseline-denominator: 20 !default; // used in code to reduce impact of browser rounding

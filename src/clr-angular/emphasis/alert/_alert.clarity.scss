@@ -2,64 +2,121 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.alert';
+
 @mixin generateAlertType($alertType: 'info') {
-  background: getAlertColor($alertType, bg-color);
-  color: getAlertColor($alertType, color);
+  @include css-var(
+    background,
+    getAlertColor($alertType, bg-color, 'css-var'),
+    getAlertColor($alertType, bg-color),
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    color,
+    getAlertColor($alertType, color, 'css-var'),
+    getAlertColor($alertType, color),
+    $clr-use-custom-properties
+  );
+
   $border-prop: getAlertColor($alertType, border-color);
 
   @if $border-prop != 'none' {
-    border: $clr-alert-borderwidth solid $border-prop;
+    border: $clr-alert-borderwidth solid;
+    @include css-var(
+      border-color,
+      getAlertColor($alertType, border-color, 'css-var'),
+      $border-prop,
+      $clr-use-custom-properties
+    );
   } @else {
     border: none;
   }
 
   .alert-icon {
-    color: getAlertColor($alertType, icon);
+    @include css-var(
+      color,
+      getAlertColor($alertType, icon, 'css-var'),
+      getAlertColor($alertType, icon),
+      $clr-use-custom-properties
+    );
   }
 
+  $myActionCssVar: getAlertColor($alertType, action, 'css-var');
+  $myActionSassVar: getAlertColor($alertType, action);
+  $myActionActiveCssVar: getAlertColor($alertType, action-active, 'css-var');
+  $myActionActiveSassVar: getAlertColor($alertType, action-active);
+
   .alert-actions .dropdown .dropdown-toggle {
-    color: getAlertColor($alertType, action);
-    border-color: getAlertColor($alertType, action);
+    @include css-var(color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
+    @include css-var(border-color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
   }
 
   .alert-action,
   .dropdown-toggle {
-    color: getAlertColor($alertType, action);
+    @include css-var(color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
 
     &.btn {
-      border-color: getAlertColor($alertType, action);
+      @include css-var(border-color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
 
       &:focus,
       &:hover,
       &:active {
-        border-color: getAlertColor($alertType, action-active);
+        @include css-var(border-color, $myActionActiveCssVar, $myActionActiveSassVar, $clr-use-custom-properties);
       }
 
       &:active {
-        box-shadow: 0 $clr_baselineRem_1px 0 0 getAlertColor($alertType, action-active) inset;
+        // OldEdge + IE
+        box-shadow: 0 $clr_baselineRem_1px 0 0 $myActionActiveSassVar inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0
+            $clr_baselineRem_1px
+            0
+            0
+            var(css-variablize-string($myActionActiveCssVar), $myActionActiveSassVar)
+            inset;
+        }
       }
     }
 
     &:focus,
     &:hover,
     &:active {
+      @include css-var(color, $myActionActiveCssVar, $myActionActiveSassVar, $clr-use-custom-properties);
       color: getAlertColor($alertType, action-active);
     }
   }
 
   .close {
-    color: getAlertColor($alertType, close-icon);
-    opacity: getAlertColor($alertType, close-icon-opacity);
+    $myCloseIconSassVar: getAlertColor($alertType, close-icon);
+    $myCloseIconCssVar: getAlertColor($alertType, close-icon, 'css-var');
+
+    @include css-var(color, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
+    @include css-var(
+      opacity,
+      getAlertColor($alertType, close-icon-opacity, 'css-var'),
+      getAlertColor($alertType, close-icon-opacity),
+      $clr-use-custom-properties
+    );
 
     clr-icon {
-      fill: getAlertColor($alertType, close-icon);
+      @include css-var(fill, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
     }
 
     &:focus,
     &:hover,
     &:active {
-      color: getAlertColor($alertType, close-icon-hover);
-      opacity: getAlertColor($alertType, close-icon-hover-opacity);
+      @include css-var(
+        color,
+        getAlertColor($alertType, close-icon-hover, 'css-var'),
+        getAlertColor($alertType, close-icon-hover),
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        opacity,
+        getAlertColor($alertType, close-icon-hover-opacity, 'css-var'),
+        getAlertColor($alertType, close-icon-hover-opacity),
+        $clr-use-custom-properties
+      );
     }
   }
 }
@@ -127,7 +184,7 @@
     display: flex;
     flex-direction: row;
     width: auto;
-    border-radius: $clr-alert-borderradius;
+    @include css-var(border-radius, clr-alert-borderradius, $clr-alert-borderradius, $clr-use-custom-properties);
     margin-top: $clr-alert-top-margin;
 
     @include generateAlertType(info);
@@ -174,7 +231,7 @@
       }
 
       .dropdown-item {
-        color: $clr-dropdown-text-color;
+        @include css-var(color, clr-dropdown-text-color, $clr-dropdown-text-color, $clr-use-custom-properties);
         font-size: $clr-dropdown-font-size;
         line-height: $clr-dropdown-line-height;
         letter-spacing: $clr-dropdown-letter-spacing;
@@ -194,7 +251,7 @@
       button.dropdown-toggle:not(.btn) {
         background: transparent;
         cursor: pointer;
-        color: $clr-dropdown-text-color;
+        @include css-var(color, clr-dropdown-text-color, $clr-dropdown-text-color, $clr-use-custom-properties);
       }
     }
     .dropdown-toggle:not(.btn) {
@@ -304,7 +361,7 @@
     // need to use 11 instead of 12 here or else vertical alignment is thrown off
     // by a pixel due to improper browser rounding; browsers aren't rendering on the
     // sub-pixel required but rounding up to the nearest whole pixel...
-    font-size: calc(#{$clr_baselineRem_0_5} - #{$clr_baselineRem_1px});
+    font-size: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
     letter-spacing: normal;
     line-height: $alertSmallLineHeight;
 
@@ -412,27 +469,42 @@
   //3. Multiple app level alerts
   .alerts {
     &.alert-info {
-      background: $clr-color-action-800;
+      @include css-var(
+        background,
+        clr-app-alert-info-pager-bg-color,
+        $clr-color-action-800,
+        $clr-use-custom-properties
+      );
     }
 
     &.alert-danger {
-      background: $clr-color-danger-900;
+      @include css-var(
+        background,
+        clr-app-alert-danger-pager-bg-color,
+        $clr-color-danger-900,
+        $clr-use-custom-properties
+      );
     }
 
     &.alert-warning {
-      background: $clr-color-warning-900;
+      @include css-var(
+        background,
+        clr-app-alert-warning-pager-bg-color,
+        $clr-color-warning-900,
+        $clr-use-custom-properties
+      );
     }
 
+    // deprecated in 3.0 to be removed in 4.0
     &.alert-success {
-      background: $clr-color-success-900;
+      @include css-var(background, clr-color-success-900, $clr-color-success-900, $clr-use-custom-properties);
     }
   }
 
   .alerts-pager {
-    color: $clr-color-neutral-0;
+    @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
     font-size: $clr-alert-font-size;
     letter-spacing: $clr-alert-letter-spacing;
-
     float: left;
     min-height: $clr-alert-min-height;
     text-align: center;
@@ -441,7 +513,7 @@
 
   .alerts-pager-button {
     @include clr-no-styles-button();
-    color: $clr-color-neutral-0;
+    @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
     cursor: pointer;
   }
 

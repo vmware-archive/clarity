@@ -2,14 +2,21 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.subnav';
+
 @include exports('subnav.clarity') {
-  .sub-nav, /*TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
-    .subnav {
+  /*TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
+  .sub-nav,
+  .subnav {
     display: flex;
+    // IE/OldEdge
     box-shadow: $clr-nav-shadow;
+    @if $clr-use-custom-properties == true {
+      box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 var(--clr-nav-box-shadow-color, $clr-color-neutral-400) inset;
+    }
     justify-content: space-between; //nav to the first and aside to the very right
     align-items: center;
-    background-color: $clr-subnav-bgColor;
+    @include css-var(background-color, clr-subnav-bg-color, $clr-subnav-bgColor, $clr-use-custom-properties);
     height: $clr-subnav-height;
 
     .nav {

@@ -6,20 +6,21 @@
   display: inline-block;
   position: absolute;
   content: '';
-  background: $clr-header-font-color;
+  @include css-var(background, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+  @include css-var(opacity, clr-header-divider-opacity, $clr-header-divider-opacity, $clr-use-custom-properties);
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
-  width: $clr-global-borderwidth;
+  @include css-var(width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
   top: ($clr-header-height - $clr-header-section-divider-height) / 2;
   left: 0;
 }
 
 @mixin header-nav-appearance() {
-  color: $clr-header-font-color;
-  opacity: $clr-header-nav-opactiy;
+  @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+  @include css-var(opacity, clr-header-nav-opacity, $clr-header-nav-opactiy, $clr-use-custom-properties);
 
   &:enabled:hover {
-    opacity: $clr-header-nav-hover-opacity;
+    @include css-var(opacity, clr-header-nav-hover-opacity, $clr-header-nav-hover-opacity, $clr-use-custom-properties);
   }
 
   &:disabled {
@@ -29,31 +30,31 @@
 
 @mixin header-backgrounds() {
   &.header-1 {
-    background-color: $clr-header-bgColor;
+    @include css-var(background-color, clr-header-bg-color, $clr-header-bgColor, $clr-use-custom-properties);
   }
 
   &.header-2 {
-    background-color: $clr-header-2-bg-color;
+    @include css-var(background-color, clr-header-2-bg-color, $clr-header-2-bg-color, $clr-use-custom-properties);
   }
 
   &.header-3 {
-    background-color: $clr-header-3-bg-color;
+    @include css-var(background-color, clr-header-3-bg-color, $clr-header-3-bg-color, $clr-use-custom-properties);
   }
 
   &.header-4 {
-    background-color: $clr-header-4-bg-color;
+    @include css-var(background-color, clr-header-4-bg-color, $clr-header-4-bg-color, $clr-use-custom-properties);
   }
 
   &.header-5 {
-    background-color: $clr-header-5-bg-color;
+    @include css-var(background-color, clr-header-5-bg-color, $clr-header-5-bg-color, $clr-use-custom-properties);
   }
 
   &.header-6 {
-    background-color: $clr-header-6-bg-color;
+    @include css-var(background-color, clr-header-6-bg-color, $clr-header-6-bg-color, $clr-use-custom-properties);
   }
 
   &.header-7 {
-    background-color: $clr-header-7-bg-color;
+    @include css-var(background-color, clr-header-7-bg-color, $clr-header-7-bg-color, $clr-use-custom-properties);
   }
 }
 
@@ -87,10 +88,20 @@
     }
 
     .title {
-      color: $clr-header-font-color;
+      @include css-var(color, clr-header-title-color, $clr-header-title-color, $clr-use-custom-properties);
+      @include css-var(
+        font-weight,
+        clr-header-title-font-weight,
+        $clr-header-title-font-weight,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        font-family,
+        clr-header-title-font-family,
+        $clr-header-title-font-family,
+        $clr-use-custom-properties
+      );
       font-size: $clr-header-title-font-size;
-      font-weight: $clr-header-title-font-weight;
-      font-family: $clr-header-title-font-family;
       letter-spacing: $clr-header-title-letter-spacing;
       line-height: $clr-header-height;
       text-decoration: none;
@@ -327,7 +338,7 @@
     input[type='text'] {
       border: none;
       background: none;
-      color: $clr-header-font-color;
+      @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
       padding: 0;
       vertical-align: middle;
 
@@ -394,15 +405,17 @@
   }
 }
 
+@import '../main-container/properties.header';
+
 @include exports('header.clarity') {
   // TODO: rename to follow clr naming convention
   header,
   .header {
     display: flex;
-    color: $clr-header-font-color;
+    @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+    @include css-var(background-color, clr-header-bg-color, $clr-header-bgColor, $clr-use-custom-properties);
     height: $clr-header-height;
     white-space: nowrap;
-    background-color: $clr-header-bgColor;
 
     @include header-backgrounds();
     @include header-branding();

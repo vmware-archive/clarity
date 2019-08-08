@@ -14,22 +14,34 @@
   max-width: $clr_baselineRem_15;
 
   //Other
-  background: $clr-dropdown-bg-color;
-  border: $clr-global-borderwidth solid $clr-dropdown-border-color;
-  border-radius: $clr-global-borderradius;
+  @include css-var(background, clr-dropdown-bg-color, $clr-dropdown-bg-color, $clr-use-custom-properties);
+  @include css-var(border-width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
+  border-style: solid;
+  @include css-var(border-color, clr-dropdown-border-color, $clr-dropdown-border-color, $clr-use-custom-properties);
+  @include css-var(border-radius, clr-global-borderradius, $clr-global-borderradius, $clr-use-custom-properties);
+  // OldIE/Edge
   box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-dropdown-box-shadow;
-
+  @if $clr-use-custom-properties == true {
+    box-shadow: 0
+      $clr-global-borderwidth
+      $clr_baselineRem_0_125
+      var(--clr-dropdown-box-shadow, $clr-dropdown-box-shadow);
+  }
   margin-top: $clr_baselineRem_2px;
   padding: $clr_baselineRem_0_5 0;
-
   visibility: hidden;
   z-index: map-get($clr-layers, dropdown-menu);
 }
 
 @mixin generate-dropdown-item() {
-  color: $clr-dropdown-item-text-color;
+  @include css-var(color, clr-dropdown-item-color, $clr-dropdown-item-color, $clr-use-custom-properties);
   font-size: $clr-dropdown-item-font-size;
-  font-weight: $clr-dropdown-item-font-weight;
+  @include css-var(
+    font-weight,
+    clr-dropdown-item-font-weight,
+    $clr-dropdown-item-font-weight,
+    $clr-use-custom-properties
+  );
   letter-spacing: $clr-dropdown-item-letter-spacing;
 
   background: transparent;
@@ -43,14 +55,29 @@
   text-transform: none;
 
   &:hover {
-    background-color: $clr-dropdown-bg-hover-color;
-    color: $clr-dropdown-item-text-color;
+    @include css-var(
+      background-color,
+      clr-dropdown-bg-hover-color,
+      $clr-dropdown-bg-hover-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(color, clr-dropdown-item-color, $clr-dropdown-item-color, $clr-use-custom-properties);
     text-decoration: none;
   }
 
   &.active {
-    background: $clr-dropdown-selection-color;
-    color: $clr-dropdown-active-text-color;
+    @include css-var(
+      background,
+      clr-dropdown-selection-color,
+      $clr-dropdown-selection-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      clr-dropdown-active-text-color,
+      $clr-dropdown-active-text-color,
+      $clr-use-custom-properties
+    );
   }
 
   &:active {

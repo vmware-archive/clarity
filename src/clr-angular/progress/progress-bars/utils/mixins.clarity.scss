@@ -2,15 +2,19 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin clr-progress-color($color: $clr-color-action-600) {
+@mixin clr-progress-color(
+  $color: $clr-color-action-600,
+  $color-prop: clr-color-action-600,
+  $use-custom-props: $clr-use-custom-properties
+) {
   // for IE...
-  color: $color;
+  @include css-var(color, $color-prop, $color, $use-custom-props);
 
   &::-webkit-progress-value {
-    background-color: $color;
+    @include css-var(background-color, $color-prop, $color, $use-custom-props);
   }
 
   &::-moz-progress-bar {
-    background-color: $color;
+    @include css-var(background-color, $color-prop, $color, $use-custom-props);
   }
 }

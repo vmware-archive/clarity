@@ -2,16 +2,30 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.card';
+
 @include exports('card.clarity') {
   %card-border-appearance {
-    box-shadow: $clr-card-box-shadow; //Hardcoded color not in color palette
-    border-radius: $clr-global-borderradius;
-    border: $clr-card-border;
+    // IE/OldEdge
+    box-shadow: $clr-card-box-shadow;
+    @if $clr-use-custom-properties == true {
+      box-shadow: 0 $clr_baselineRem_0_125 0 0 var(--clr-card-box-shadow-color);
+    }
+    @include css-var(border-radius, clr-card-border-radius, $clr-global-borderradius, $clr-use-custom-properties);
+    @include css-var(border-width, clr-card-border-width, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-style: solid;
+    @include css-var(border-color, clr-card-border-color, $clr-card-border-color, $clr-use-custom-properties);
   }
 
   %clickable-card-transition {
-    box-shadow: 0 $clr_baselineRem_0_125 0 0 rgba(0, 148, 210, 1);
-    border: $clr-global-borderwidth solid rgba(0, 148, 210, 1);
+    // IE/OldEdge
+    box-shadow: 0 $clr_baselineRem_0_125 0 0 $clr-color-action-500;
+    @if $clr-use-custom-properties == true {
+      box-shadow: 0 $clr_baselineRem_0_125 0 0 var(--clr-card-clickable-box-shadow-color);
+    }
+    @include css-var(border-width, clr-card-border-width, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-style: solid;
+    @include css-var(border-color, clr-card-clickable-border-color, $clr-color-action-500, $clr-use-custom-properties);
     cursor: pointer;
     text-decoration: none;
     transform: translateY(-1 * $clr_baselineRem_2px);
@@ -39,7 +53,7 @@
   .card {
     position: relative;
     display: block;
-    background-color: $clr-card-bg-color;
+    @include css-var(background-color, clr-card-bg-color, $clr-card-bg-color, $clr-use-custom-properties);
     width: 100%;
     margin-top: $clr_baselineRem_1;
     @extend %card-border-appearance;
@@ -85,8 +99,10 @@
     .list-group-item {
       padding: $clr_baselineRem_0_5 $clr_baselineRem_0_75;
       font-size: $clr-card-text-font-size;
-      background-color: $clr-card-bg-color;
-      border-bottom: $clr-global-borderwidth solid $clr-card-border-color;
+      @include css-var(background-color, clr-card-bg-color, $clr-card-bg-color, $clr-use-custom-properties);
+      @include css-var(border-bottom-width, clr-card-border-width, $clr-global-borderwidth, $clr-use-custom-properties);
+      border-bottom-style: solid;
+      @include css-var(border-bottom-color, clr-card-border-color, $clr-card-border-color, $clr-use-custom-properties);
     }
 
     //Dropdowns
@@ -109,9 +125,9 @@
 
   .card-header,
   .card-title {
-    color: $clr-card-title-color;
+    @include css-var(color, clr-card-title-color, $clr-card-title-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-card-title-font-weight, $clr-card-title-font-weight, $clr-use-custom-properties);
     font-size: $clr-card-title-font-size;
-    font-weight: $clr-card-title-font-weight;
     letter-spacing: $clr-card-title-letter-spacing;
   }
 
@@ -122,11 +138,35 @@
   //Images
   .card-img {
     &:first-child > img {
-      border-radius: $clr-global-borderradius $clr-global-borderradius 0 0;
+      border-radius: 0;
+      @include css-var(
+        border-top-left-radius,
+        clr-card-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-top-right-radius,
+        clr-card-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
     }
 
     &:last-child > img {
-      border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
+      border-radius: 0;
+      @include css-var(
+        border-bottom-left-radius,
+        clr-card-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-bottom-right-radius,
+        clr-card-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
     }
 
     & > img {
@@ -138,7 +178,7 @@
   .card.card-img,
   .card > .card-img:first-child:last-child {
     & > img {
-      border-radius: $clr-global-borderradius;
+      @include css-var(border-radius, clr-card-border-radius, $clr-global-borderradius, $clr-use-custom-properties);
       @extend %card-image-appearance;
     }
   }
@@ -161,7 +201,9 @@
 
   .card-header,
   .card-block {
-    border-bottom: $clr-global-borderwidth solid $clr-card-border-color;
+    @include css-var(border-bottom-width, clr-card-border-width, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-bottom-style: solid;
+    @include css-var(border-bottom-color, clr-card-border-color, $clr-card-border-color, $clr-use-custom-properties);
 
     &:last-child {
       border-bottom: none;
@@ -172,7 +214,9 @@
   //Card dividers should only be used inside of a .card-block
   .card-divider {
     display: block;
-    border-bottom: $clr-global-borderwidth solid $clr-card-divider-color;
+    @include css-var(border-bottom-width, clr-card-border-width, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-bottom-style: solid;
+    @include css-var(border-bottom-color, clr-card-divider-color, $clr-card-divider-color, $clr-use-custom-properties);
   }
 
   .card-block {

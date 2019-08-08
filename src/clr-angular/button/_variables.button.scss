@@ -5,41 +5,27 @@
 // General
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
-$clr-btn-vertical-margin: $clr-button-vertical-margin !default;
+$clr-btn-vertical-margin: $clr_baselineRem_0_25 !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // Usage: ../layout/_card.clarity.scss
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-margin: $clr_baselineRem_0_5 !default;
-$clr-btn-horizontal-margin: $clr-button-horizontal-margin !default;
+$clr-btn-horizontal-margin: $clr_baselineRem_0_5 !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
-$clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
+$clr-btn-horizontal-padding: $clr_baselineRem_0_5 !default;
 
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height: $clr_baselineRem_1_5 !default;
-$clr-btn-height: $clr-button-height !default;
-
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height-sm: $clr_baselineRem_1 !default;
-$clr-btn-height-sm: $clr-button-height-sm !default;
-
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-font-weight: $clr-font-weight-semibold !default;
-$clr-btn-font-weight: $clr-button-font-weight !default;
-
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-padding: 0 $clr-btn-horizontal-padding !default;
-$clr-btn-padding: $clr-button-padding !default;
+$clr-btn-height: $clr_baselineRem_1_5 !default;
+$clr-btn-height-sm: $clr_baselineRem_1 !default;
+$clr-btn-font-weight: $clr-font-weight-semibold !default;
+$clr-btn-padding: 0 $clr-btn-horizontal-padding !default;
 
 $clr-btn-border-radius: $clr-global-borderradius !default;
 $clr-btn-border-width: $clr-global-borderwidth !default;
+
+// Usage: ./button-group/_button-group.clarity.scss
+$clr-btn-group-focus-outline: rgba(81, 203, 238, 1) !default;
 
 // standard appearance styles - overrideable but not advertised!
 $clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
@@ -607,8 +593,6 @@ $clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
 
 // For theme-able icon button color
 $clr-btn-icon-disabled-color: $clr-btn-default-disabled-color !default;
-// @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-icon-disabled-color: $clr-btn-icon-disabled-color !default;
 
 @function lookupFromIconButtonColors($property: null) {
   @if $property == disabled-color {

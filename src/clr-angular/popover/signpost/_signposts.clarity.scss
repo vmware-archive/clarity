@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.signpost';
+
 @include exports('signpost.clarity') {
   .signpost {
     display: inline-block;
@@ -14,7 +16,7 @@
       min-width: $clr_baselineRem_1;
       margin: 0;
       padding: 0;
-      color: $clr-signpost-action-color;
+      @include css-var(color, clr-signpost-action-color, $clr-signpost-action-color, $clr-use-custom-properties);
 
       clr-icon {
         width: $clr_baselineRem_1;
@@ -23,7 +25,12 @@
 
       &:hover,
       &.active {
-        color: $clr-signpost-action-hover-color;
+        @include css-var(
+          color,
+          clr-signpost-action-hover-color,
+          $clr-signpost-action-hover-color,
+          $clr-use-custom-properties
+        );
       }
     }
 
@@ -350,9 +357,26 @@
   }
 
   .signpost-wrap {
-    border: $clr-global-borderwidth solid $clr-signpost-outerBorder;
-    border-radius: $clr-signpost-border-radius;
-    background-color: $clr-signpost-innerBlock;
+    @include css-var(
+      border-radius,
+      clr-signpost-border-radius,
+      $clr-signpost-border-radius,
+      $clr-use-custom-properties
+    );
+    @include css-var(border-width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-style: solid;
+    @include css-var(
+      border-color,
+      clr-signpost-content-border-color,
+      $clr-signpost-content-border-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      background-color,
+      clr-signpost-content-bg-color,
+      $clr-signpost-content-bg-color,
+      $clr-use-custom-properties
+    );
     z-index: map-get($clr-layers, tooltips);
     position: relative;
   }

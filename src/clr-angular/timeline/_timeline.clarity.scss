@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './properties.timeline';
+
 @include exports('timeline.clarity') {
   .clr-timeline {
     display: flex;
@@ -23,25 +25,45 @@
     }
 
     clr-icon[shape='circle'] {
-      color: $clr-timeline-incomplete-step-color;
+      @include css-var(
+        color,
+        clr-timeline-incomplete-step-color,
+        $clr-timeline-incomplete-step-color,
+        $clr-use-custom-properties
+      );
     }
 
     clr-icon[shape='dot-circle'] {
-      color: $clr-timeline-current-step-color;
+      @include css-var(
+        color,
+        clr-timeline-current-step-color,
+        $clr-timeline-current-step-color,
+        $clr-use-custom-properties
+      );
     }
 
     clr-icon[shape='success-standard'] {
-      color: $clr-timeline-success-step-color;
+      @include css-var(
+        color,
+        clr-timeline-success-step-color,
+        $clr-timeline-success-step-color,
+        $clr-use-custom-properties
+      );
     }
 
     clr-icon[shape='error-standard'] {
-      color: $clr-timeline-error-step-color;
+      @include css-var(
+        color,
+        clr-timeline-error-step-color,
+        $clr-timeline-error-step-color,
+        $clr-use-custom-properties
+      );
     }
 
     // style for the connecting line between icons
     &:not(:last-of-type) .clr-timeline-step-body::before {
       content: '';
-      background: $clr-timeline-line-color;
+      @include css-var(background, clr-timeline-line-color, $clr-timeline-line-color, $clr-use-custom-properties);
       height: $clr-timeline-line-thickness;
       width: calc(100% - #{0.5 * $clr-timeline-icon-size} - #{$clr-timeline-icon-inner-padding});
       transform: translate(
@@ -54,7 +76,12 @@
   // Note: headers (timestamps) are unable to auto-adjust height based on their siblings' using pure CSS.
   // Hence forcing them in one-line by using "nowrap".
   .clr-timeline-step-header {
-    color: $clr-timeline-step-header-color;
+    @include css-var(
+      color,
+      clr-timeline-step-header-color,
+      $clr-timeline-step-header-color,
+      $clr-use-custom-properties
+    );
     font-size: $clr-timeline-step-header-font-size;
     line-height: $clr-timeline-step-header-line-height;
     white-space: nowrap;
@@ -67,16 +94,26 @@
   }
 
   .clr-timeline-step-title {
-    color: $clr-timeline-step-title-color;
+    @include css-var(color, clr-timeline-step-title-color, $clr-timeline-step-title-color, $clr-use-custom-properties);
     font-size: $clr-timeline-step-title-font-size;
-    font-weight: $clr-timeline-step-title-font-weight;
+    @include css-var(
+      font-weight,
+      clr-timeline-step-title-font-weight,
+      $clr-timeline-step-title-font-weight,
+      $clr-use-custom-properties
+    );
     line-height: $clr-timeline-step-title-line-height;
     margin-top: $clr-timeline-step-title-padding-top;
     margin-bottom: $clr-timeline-step-title-padding-bottom;
   }
 
   .clr-timeline-step-description {
-    color: $clr-timeline-step-description-color;
+    @include css-var(
+      color,
+      clr-timeline-step-description-color,
+      $clr-timeline-step-description-color,
+      $clr-use-custom-properties
+    );
     font-size: $clr-timeline-step-description-font-size;
     line-height: $clr-timeline-step-description-line-height;
     button {
@@ -96,7 +133,7 @@
     .clr-timeline-step {
       flex-direction: row;
       margin-left: 0;
-      position: relative; /* required for vertical line to get 100% height of step body it belongs to */
+      position: relative; // required for vertical line to get 100% height of step body it belongs to
 
       &:not(:last-of-type) {
         margin-bottom: $clr-timeline-vertical-gutter-width;

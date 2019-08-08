@@ -10,7 +10,7 @@
   right: $right;
   bottom: $bottom;
   left: $left;
-  background: $clr-nav-background-color;
+  @include css-var(background, clr-nav-background-color, $clr-nav-background-color, $clr-use-custom-properties);
   z-index: $clr-sliding-panel-z-index;
   height: 100vh;
 }
@@ -73,6 +73,8 @@
   }
 }
 
+@import './properties.responsive-nav';
+
 @include exports('responsive-nav.clarity') {
   .header-hamburger-trigger,
   .header-overflow-trigger {
@@ -88,8 +90,18 @@
       display: inline-block;
       height: $clr_baselineRem_2px;
       width: $clr_baselineRem_1;
-      background: $clr-color-neutral-0;
-      border-radius: $clr-global-borderradius;
+      @include css-var(
+        background,
+        clr-responsive-nav-trigger-bg-color,
+        $clr-color-neutral-0,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-radius,
+        clr-responsive-nav-hamburger-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
     }
 
     & > span {
@@ -126,8 +138,18 @@
       display: inline-block;
       height: $clr_baselineRem_4px;
       width: $clr_baselineRem_4px;
-      background: $clr-color-neutral-0;
-      border-radius: $clr_baselineRem_4px;
+      @include css-var(
+        background,
+        clr-responsive-nav-trigger-bg-color,
+        $clr-color-neutral-0,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-radius,
+        clr-responsive-nav-overflow-border-radius,
+        $clr_baselineRem_4px,
+        $clr-use-custom-properties
+      );
     }
 
     & > span {
@@ -231,7 +253,19 @@
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
-            border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+            border-radius: 0;
+            @include css-var(
+              border-top-left-radius,
+              clr-global-borderradius,
+              $clr-global-borderradius,
+              $clr-use-custom-properties
+            );
+            @include css-var(
+              border-bottom-left-radius,
+              clr-global-borderradius,
+              $clr-global-borderradius,
+              $clr-use-custom-properties
+            );
 
             @include vertical-nav-link-colors();
 
@@ -249,7 +283,13 @@
           &:hover,
           &.active {
             color: inherit;
-            background: $clr-responsive-nav-hover-bg; // Is the menu that showsup when the viewport is narrow (x-axis)
+            // Is the menu that showsup when the viewport is narrow (x-axis)
+            @include css-var(
+              background,
+              clr-responsive-nav-hover-bg,
+              $clr-responsive-nav-hover-bg,
+              $clr-use-custom-properties
+            );
           }
         }
       }
@@ -309,7 +349,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba($clr-color-neutral-1000, 0.85);
+            @include css-var(
+              background,
+              clr-responsive-nav-header-backdrop-bg-color,
+              $clr-color-neutral-1000,
+              $clr-use-custom-properties
+            );
+            @include css-var(opacity, clr-responsive-nav-header-backdrop-opacity, 0.85, $clr-use-custom-properties);
             cursor: pointer;
             z-index: $clr-sliding-panel-backdrop-z-index;
           }
@@ -328,7 +374,12 @@
                 $nav-text-height: $clr_baselineRem_1;
 
                 display: inline-block;
-                color: $clr-sliding-panel-text-color;
+                @include css-var(
+                  color,
+                  clr-sliding-panel-text-color,
+                  $clr-sliding-panel-text-color,
+                  $clr-use-custom-properties
+                );
                 line-height: $nav-text-height;
                 padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_1;
                 white-space: normal;
@@ -385,7 +436,12 @@
             }
 
             .title {
-              color: $clr-sliding-panel-text-color;
+              @include css-var(
+                color,
+                clr-sliding-panel-text-color,
+                $clr-sliding-panel-text-color,
+                $clr-use-custom-properties
+              );
               text-overflow: ellipsis;
               overflow: hidden;
             }

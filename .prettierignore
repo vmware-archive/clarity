@@ -10,3 +10,4 @@ src/website/src/sitemap.xml
 src/clr-core/utils/css-vars/css-vars-ponyfill-fork.ts
 src/clr-core/**/*.css.ts
 src/dev-core/src/api/
+src/clr-angular/utils/_mixins.clarity.scss

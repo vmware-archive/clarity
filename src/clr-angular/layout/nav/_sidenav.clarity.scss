@@ -4,23 +4,45 @@
 
 @mixin nav-link-colors {
   &:hover {
-    background: $clr-sidenav-link-hover-color;
+    @include css-var(
+      background,
+      clr-sidenav-link-hover-color,
+      $clr-sidenav-link-hover-color,
+      $clr-use-custom-properties
+    );
   }
 
   &.active {
-    background: $clr-sidenav-link-active-bg-color;
-    color: $clr-sidenav-link-active-color;
+    @include css-var(
+      background,
+      clr-sidenav-link-active-bg-color,
+      $clr-sidenav-link-active-bg-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(color, clr-sidenav-link-active-color, $clr-sidenav-link-active-color, $clr-use-custom-properties);
   }
 }
 
 @mixin sidenav-header-styles {
-  color: $clr-sidenav-header-color;
+  @include css-var(color, clr-sidenav-header-color, $clr-sidenav-header-color, $clr-use-custom-properties);
+  @include css-var(
+    font-weight,
+    clr-sidenav-header-font-weight,
+    $clr-sidenav-header-font-weight,
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    font-family,
+    clr-sidenav-header-font-family,
+    $clr-sidenav-header-font-family,
+    $clr-use-custom-properties
+  );
   font-size: $clr-sidenav-header-font-size;
-  font-weight: $clr-sidenav-header-font-weight;
   line-height: $clr-sidenav-header-line-height;
-  font-family: $clr-sidenav-header-font-family;
   letter-spacing: $clr-sidenav-header-letter-spacing;
 }
+
+@import './properties.sidenav';
 
 @include exports('sidenav.clarity') {
   .sidenav {
@@ -39,8 +61,20 @@
 
       //nav link common styles
       .nav-link {
+        border-radius: 0;
+        @include css-var(
+          border-top-left-radius,
+          clr-sidenav-link-active-border-radius,
+          $clr-sidenav-link-active-border-radius,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          border-bottom-left-radius,
+          clr-sidenav-link-active-border-radius,
+          $clr-sidenav-link-active-border-radius,
+          $clr-use-custom-properties
+        );
         display: inline-block;
-        border-radius: $clr-sidenav-link-active-border-radius 0 0 $clr-sidenav-link-active-border-radius;
         color: inherit;
         cursor: pointer;
         text-decoration: none;
@@ -57,11 +91,10 @@
     }
 
     .nav-group {
-      color: $clr-sidenav-color;
+      @include css-var(color, clr-sidenav-color, $clr-sidenav-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-sidenav-font-weight, $clr-sidenav-font-weight, $clr-use-custom-properties);
       font-size: $clr-sidenav-font-size;
-      font-weight: $clr-sidenav-font-weight;
       letter-spacing: $clr-sidenav-letter-spacing;
-
       margin-top: $clr_baselineRem_1;
       width: 100%;
 

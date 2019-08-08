@@ -8,19 +8,37 @@
 // IT'S AN ISSUE WITH THE NUMBER OF BUTTONS, NOT THE LENGTH OF THE TEXT
 // INSIDE THE BUTTONS
 
+@import './properties.wizard';
+
 @include exports('wizard.clarity') {
   .clr-wizard {
     .modal-dialog {
       display: flex;
       flex-direction: column;
       align-items: center;
+      // IE/OldEdge
       box-shadow: $clr-wizard-box-shadow;
+      @if $clr-use-custom-properties == true {
+        box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_2px $clr_baselineRem_2px var(--clr-wizard-box-shadow-color);
+      }
       height: 50%;
       max-height: 100%;
     }
 
     .modal-content {
-      border-radius: 0 $clr-wizard-border-radius $clr-wizard-border-radius 0;
+      border-radius: 0;
+      @include css-var(
+        border-top-right-radius,
+        clr-wizard-border-radius,
+        $clr-wizard-border-radius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-bottom-right-radius,
+        clr-wizard-border-radius,
+        $clr-wizard-border-radius,
+        $clr-use-custom-properties
+      );
       box-shadow: none;
       padding: 0;
       flex: 2 2 auto;
@@ -45,7 +63,7 @@
     }
 
     .modal-title {
-      color: $clr-wizard-title-text;
+      @include css-var(color, clr-wizard-title-text, $clr-wizard-title-text, $clr-use-custom-properties);
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -56,7 +74,7 @@
 
     .modal-body {
       flex: 1 1 auto;
-      color: $clr-wizard-main-textColor;
+      @include css-var(color, clr-wizard-main-textColor, $clr-wizard-main-textColor, $clr-use-custom-properties);
       width: 100%;
     }
 
@@ -84,6 +102,10 @@
       outline: none;
     }
 
+    .modal-title-wrapper {
+      width: 100%;
+    }
+
     .modal-header-actions-wrapper {
       flex: 1 0 auto;
       padding-left: $clr_baselineRem_0_5;
@@ -98,17 +120,32 @@
       min-width: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
       font-size: $clr-wizard-default-space + $clr_baselineRem_2px;
-      color: $clr-wizard-header-action-color;
+      @include css-var(
+        color,
+        clr-wizard-header-action-color,
+        $clr-wizard-header-action-color,
+        $clr-use-custom-properties
+      );
       transition: color linear 0.2s;
 
       & a {
-        color: $clr-wizard-header-action-color;
+        @include css-var(
+          color,
+          clr-wizard-header-action-color,
+          $clr-wizard-header-action-color,
+          $clr-use-custom-properties
+        );
       }
 
       &:hover,
       &:active,
       &:focus {
-        color: $clr-wizard-header-action-color--hovered;
+        @include css-var(
+          color,
+          unquote('clr-wizard-header-action-color--hovered'),
+          $clr-wizard-header-action-color--hovered,
+          $clr-use-custom-properties
+        );
       }
 
       clr-icon {
@@ -129,17 +166,41 @@
       overflow-y: auto;
       padding-bottom: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      border-right: $clr-global-borderwidth solid $clr-wizard-step-nav-border-color;
+      @include css-var(border-right-width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
+      border-right-style: solid;
+      @include css-var(
+        border-right-color,
+        clr-wizard-step-nav-border-color,
+        $clr-wizard-step-nav-border-color,
+        $clr-use-custom-properties
+      );
       height: 100%;
-      background-color: $clr-wizard-sidenav-bgcolor;
-      border-radius: $clr-wizard-border-radius 0 0 $clr-wizard-border-radius;
+      @include css-var(
+        background-color,
+        clr-wizard-sidenav-bgcolor,
+        $clr-wizard-sidenav-bgcolor,
+        $clr-use-custom-properties
+      );
+      border-radius: 0;
+      @include css-var(
+        border-top-left-radius,
+        clr-wizard-border-radius,
+        $clr-wizard-border-radius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-bottom-left-radius,
+        clr-wizard-border-radius,
+        $clr-wizard-border-radius,
+        $clr-use-custom-properties
+      );
     }
 
     .clr-wizard-stepnav {
       padding-left: $clr-wizard-default-space;
       display: block;
       font-size: $clr_baselineRem_0_583;
-      color: $clr-wizard-sidenav-text;
+      @include css-var(color, clr-wizard-sidenav-text, $clr-wizard-sidenav-text, $clr-use-custom-properties);
       width: 100%;
       flex: 1 1 auto;
     }
@@ -157,25 +218,55 @@
 
     .clr-wizard-stepnav-item {
       display: block;
+      // IE/OldEdge
       box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-wizard-stepnav-border-size) 0 0 var(--clr-wizard-stepnav-border-color) inset;
+      }
       margin: 0 0 (-1 * $clr-global-borderwidth) 0;
       padding: $clr_baselineRem_0_25 0;
       padding-left: $clr_baselineRem_8px;
-      color: $clr-wizard-sidenav-text;
-      font-weight: 400;
+      @include css-var(color, clr-wizard-sidenav-text, $clr-wizard-sidenav-text, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-font-weight-regular, $clr-font-weight-regular, $clr-use-custom-properties);
 
       &.active {
-        color: $clr-wizard-sidenav-text--active;
-        font-weight: 500;
+        @include css-var(
+          color,
+          unquote('clr-wizard-sidenav-text--active'),
+          $clr-wizard-sidenav-text--active,
+          $clr-use-custom-properties
+        );
+        @include css-var(font-weight, clr-font-weight-semibold, $clr-font-weight-semibold, $clr-use-custom-properties);
 
         .clr-wizard-stepnav-link {
-          background-color: $clr-wizard-stepnav-active-bgcolor;
-          border-radius: $clr-wizard-stepnav-active-border-radius 0 0 $clr-wizard-stepnav-active-border-radius;
+          @include css-var(
+            background-color,
+            clr-wizard-stepnav-active-bgcolor,
+            $clr-wizard-stepnav-active-bgcolor,
+            $clr-use-custom-properties
+          );
+          border-radius: 0;
+          @include css-var(
+            border-top-left-radius,
+            clr-wizard-border-radius,
+            $clr-wizard-border-radius,
+            $clr-use-custom-properties
+          );
+          @include css-var(
+            border-bottom-left-radius,
+            clr-wizard-border-radius,
+            $clr-wizard-border-radius,
+            $clr-use-custom-properties
+          );
         }
       }
 
       &.complete {
+        // IE/OldEdge
         box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color--active inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: var(--clr-wizard-stepnav-border-size) 0 0 var(--clr-wizard-stepnav-border-color--active) inset;
+        }
         transition: box-shadow 0.2s ease-in;
       }
 
@@ -216,7 +307,7 @@
     }
 
     .clr-wizard-title {
-      color: $clr-wizard-title-text;
+      @include css-var(color, clr-wizard-title-text, $clr-wizard-title-text, $clr-use-custom-properties);
       margin-top: 0;
       padding-top: $clr-wizard-default-space;
       padding-left: $clr-wizard-default-space;

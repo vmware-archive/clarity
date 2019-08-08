@@ -6,9 +6,6 @@
 // - ./_labels.clarity.scss
 $clr-badge-font-color-light: $clr-color-neutral-0 !default;
 $clr-badge-font-color-dark: $clr-color-neutral-1000 !default;
-// TWO DEPRECATED VARS BELOW
-$clr-badge-font-color: $clr-badge-font-color-light !default;
-$clr-badge-font-color-contrast: $clr-badge-font-color-dark !default;
 
 $clr-badge-info-bg-color: $clr-color-action-600 !default;
 $clr-badge-info-color: $clr-color-neutral-0 !default;
@@ -20,17 +17,25 @@ $clr-badge-danger-bg-color: $clr-color-danger-800 !default;
 $clr-badge-danger-color: $clr-color-neutral-0 !default;
 
 $clr-badge-gray-bg-color: $clr-color-neutral-600 !default;
-$clr-badge-gray-color: $clr-badge-font-color !default;
+$clr-badge-gray-color: $clr-badge-font-color-light !default;
 $clr-badge-purple-bg-color: $clr-color-secondary-action-500 !default;
-$clr-badge-purple-color: $clr-badge-font-color !default;
+$clr-badge-purple-color: $clr-badge-font-color-light !default;
 $clr-badge-blue-bg-color: $clr-color-action-800 !default;
-$clr-badge-blue-color: $clr-badge-font-color !default;
+$clr-badge-blue-color: $clr-badge-font-color-light !default;
 $clr-badge-orange-bg-color: $clr-color-warning-500 !default;
-$clr-badge-orange-color: $clr-badge-font-color-contrast !default;
+$clr-badge-orange-color: $clr-badge-font-color-dark !default;
 $clr-badge-light-blue-bg-color: $clr-color-action-300 !default;
-$clr-badge-light-blue-color: $clr-badge-font-color-contrast !default;
+$clr-badge-light-blue-color: $clr-badge-font-color-dark !default;
 
-@function getBadgeColor($type: gray, $property: color) {
+@function getBadgeCssVarName($type: gray, $prop: color) {
+  @return #{'clr-badge-' + $type + '-' + $prop};
+}
+
+@function getBadgeColor($type: gray, $property: color, $var-type: 'sass-var') {
+  @if $var-type == 'css-var' {
+    @return getBadgeCssVarName($type, $property);
+  }
+
   @if $type == gray {
     @return lookupGrayBadgeColor($property);
   }

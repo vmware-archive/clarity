@@ -20,20 +20,20 @@
     font-weight: 200;
     text-shadow: none;
     line-height: inherit;
-    color: $clr-close-color--normal;
+    @include css-var(color, unquote('clr-close-color--normal'), $clr-close-color--normal, $clr-use-custom-properties);
 
     clr-icon {
-      fill: $clr-close-color--normal;
+      @include css-var(fill, unquote('clr-close-color--normal'), $clr-close-color--normal, $clr-use-custom-properties);
     }
 
     &:focus,
     &:hover,
     &:active {
       opacity: 1;
-      color: $clr-close-color--hover;
+      @include css-var(color, unquote('clr-close-color--hover'), $clr-close-color--hover, $clr-use-custom-properties);
 
       clr-icon {
-        fill: $clr-close-color--hover;
+        @include css-var(fill, unquote('clr-close-color--hover'), $clr-close-color--hover, $clr-use-custom-properties);
       }
     }
 

@@ -74,41 +74,54 @@
   @return null;
 }
 
+@mixin button-css-var($button-type: default, $style: null, $styleNickname: null, $use-custom-props: true) {
+  @if $style != null and $styleNickname != null {
+    $cssVarName: #{'clr-btn-' + $button-type + '-' + $styleNickname};
+    $fallbackStyle: getSassButtonColor($button-type, $styleNickname);
+    @include css-var($style, $cssVarName, $fallbackStyle, $use-custom-props);
+  }
+}
+
 @mixin populateButtonProperties($button-type: default) {
-  border-color: getSassButtonColor($button-type, border-color);
-  background-color: getSassButtonColor($button-type, bg-color);
-  color: getSassButtonColor($button-type, color);
+  @include button-css-var($button-type, border-color, border-color, $clr-use-custom-properties);
+  @include button-css-var($button-type, background-color, bg-color, $clr-use-custom-properties);
+  @include button-css-var($button-type, color, color, $clr-use-custom-properties);
 
   //To override the visited state of anchor links styled as buttons
   &:visited {
-    color: getSassButtonColor($button-type, color);
+    @include button-css-var($button-type, color, color, $clr-use-custom-properties);
   }
 
   &:hover {
-    background-color: getSassButtonColor($button-type, hover-bg-color);
-    color: getSassButtonColor($button-type, hover-color);
+    @include button-css-var($button-type, background-color, hover-bg-color, $clr-use-custom-properties);
+    @include button-css-var($button-type, color, hover-color, $clr-use-custom-properties);
   }
 
   &:active {
     @if $button-type == link {
       box-shadow: none;
     } @else {
+      $fallbackColor: getSassButtonColor($button-type, box-shadow-color);
+
+      // IE/OldEdge
+      box-shadow: 0 getActiveWidthBoxShadowTop($button-type) 0 0 $fallbackColor inset;
+
       box-shadow: 0
         getActiveWidthBoxShadowTop($button-type)
         0
         0
-        getSassButtonColor($button-type, box-shadow-color)
+        var(#{'--clr-btn-' + $button-type + '-' + 'box-shadow-color'}, $fallbackColor)
         inset;
     }
   }
 
   &.disabled,
   &:disabled {
-    color: getSassButtonColor($button-type, disabled-color);
+    @include button-css-var($button-type, color, disabled-color, $clr-use-custom-properties);
     cursor: not-allowed;
     opacity: 0.4;
-    background-color: getSassButtonColor($button-type, disabled-bg-color);
-    border-color: getSassButtonColor($button-type, disabled-border-color);
+    @include button-css-var($button-type, background-color, disabled-bg-color, $clr-use-custom-properties);
+    @include button-css-var($button-type, border-color, disabled-border-color, $clr-use-custom-properties);
     box-shadow: none;
   }
 }
@@ -144,8 +157,9 @@
 }
 
 @mixin btn-default-border-styles() {
-  border-radius: $clr-btn-border-radius;
-  border: $clr-btn-border-width solid;
+  @include css-var(border-radius, clr-btn-border-radius, $clr-btn-border-radius, $clr-use-custom-properties);
+  @include css-var(border-width, clr-btn-border-width, $clr-btn-border-width, $clr-use-custom-properties);
+  border-style: solid;
 }
 
 @mixin btn-appearance() {
@@ -158,6 +172,40 @@
   -webkit-appearance: none !important;
 }
 
+@mixin btn-sm-appearance() {
+  @include css-var(
+    line-height,
+    clr-btn-appearance-standard-line-height,
+    $clr-btn-appearance-standard-line-height,
+    $clr-use-custom-properties
+  );
+  letter-spacing: $clr-btn-appearance-standard-letter-spacing;
+  @include css-var(
+    font-size,
+    clr-btn-appearance-standard-font-size,
+    $clr-btn-appearance-standard-font-size,
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    font-weight,
+    clr-btn-appearance-standard-font-weight,
+    $clr-btn-appearance-standard-font-weight,
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    height,
+    clr-btn-appearance-standard-height,
+    $clr-btn-appearance-standard-height,
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    padding,
+    clr-btn-appearance-standard-padding,
+    $clr-btn-appearance-standard-padding,
+    $clr-use-custom-properties
+  );
+}
+
 @mixin generateButton() {
   @include btn-appearance();
   @include btn-default-border-styles();
@@ -166,16 +214,44 @@
   @include btn-text-properties();
 }
 
+@import './properties.button';
+
 @include exports('buttons.clarity') {
   .btn {
     @include generateButton();
     @include populateButtonProperties(default);
-    line-height: $clr-btn-appearance-form-line-height;
+
+    @include css-var(
+      line-height,
+      clr-btn-appearance-form-line-height,
+      $clr-btn-appearance-form-line-height,
+      $clr-use-custom-properties
+    );
     letter-spacing: $clr-btn-appearance-form-letter-spacing;
-    font-size: $clr-btn-appearance-form-font-size;
-    font-weight: $clr-btn-appearance-form-font-weight;
-    height: $clr-btn-appearance-form-height;
-    padding: $clr-btn-appearance-form-padding;
+    @include css-var(
+      font-size,
+      clr-btn-appearance-form-font-size,
+      $clr-btn-appearance-form-font-size,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      font-weight,
+      clr-btn-appearance-form-font-weight,
+      $clr-btn-appearance-form-font-weight,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      height,
+      clr-btn-appearance-form-height,
+      $clr-btn-appearance-form-height,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      padding,
+      clr-btn-appearance-form-padding,
+      $clr-btn-appearance-form-padding,
+      $clr-use-custom-properties
+    );
   }
 
   //Clarity Buttons
@@ -266,12 +342,7 @@
 
   .btn.btn-sm,
   .btn-sm .btn {
-    line-height: $clr-btn-appearance-standard-line-height;
-    letter-spacing: $clr-btn-appearance-standard-letter-spacing;
-    font-size: $clr-btn-appearance-standard-font-size;
-    font-weight: $clr-btn-appearance-standard-font-weight;
-    height: $clr-btn-appearance-standard-height;
-    padding: $clr-btn-appearance-standard-padding;
+    @include btn-sm-appearance();
   }
 
   .btn-block {
@@ -281,10 +352,13 @@
   }
 
   .btn {
-    margin: $clr-btn-vertical-margin $clr-btn-horizontal-margin $clr-btn-vertical-margin 0;
+    @include css-var(margin-top, clr-btn-vertical-margin, $clr-btn-vertical-margin, $clr-use-custom-properties);
+    @include css-var(margin-bottom, clr-btn-vertical-margin, $clr-btn-vertical-margin, $clr-use-custom-properties);
+    @include css-var(margin-right, clr-btn-horizontal-margin, $clr-btn-horizontal-margin, $clr-use-custom-properties);
+    margin-left: 0;
 
     &.btn-link {
-      margin: $clr-btn-vertical-margin 0;
+      margin-right: 0;
     }
 
     &.btn-link.btn-inverse {
@@ -295,8 +369,8 @@
   //Small Icon Button
   .btn-sm:not(.btn-link) {
     clr-icon {
-      width: $clr_baselineRem_0_5;
-      height: $clr_baselineRem_0_5;
+      @include css-var(width, clr-btn-appearance-standard-icon-size, $clr_baselineRem_0_5, $clr-use-custom-properties);
+      @include css-var(height, clr-btn-appearance-standard-icon-size, $clr_baselineRem_0_5, $clr-use-custom-properties);
       transform: translate3d(0, -1 * $clr_baselineRem_1px, 0);
     }
   }
@@ -306,7 +380,7 @@
 
     &.disabled,
     &:disabled {
-      color: getSassButtonColor(icon, disabled-color);
+      @include button-css-var(icon, color, disabled-color, $clr-use-custom-properties);
     }
   }
 
@@ -324,12 +398,7 @@
     }
 
     &.btn-sm .btn-group-overflow > .dropdown-toggle {
-      line-height: $clr-btn-appearance-standard-line-height;
-      letter-spacing: $clr-btn-appearance-standard-letter-spacing;
-      font-size: $clr-btn-appearance-standard-font-size;
-      font-weight: $clr-btn-appearance-standard-font-weight;
-      height: $clr-btn-appearance-standard-height;
-      padding: $clr-btn-appearance-standard-padding;
+      @include btn-sm-appearance();
     }
   }
 

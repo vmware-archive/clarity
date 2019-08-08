@@ -5,52 +5,109 @@
 // TODO: Split badges and labels into separate files.
 
 @mixin generateLabelStyles($color: gray, $alias: 1) {
+  $sassVarBgColor: getLabelColor($color, bg-color);
+  $cssVarBgColor: getLabelColor($color, bg-color, 'css-var');
+  $sassVarTextColor: getLabelColor($color, color);
+  $cssVarTextColor: getLabelColor($color, color, 'css-var');
+
   &.label-#{'' + $color},
   &.label-#{$alias} {
-    border: $clr-label-borderwidth solid getLabelColor($color, bg-color);
+    border: $clr-label-borderwidth solid;
+    @include css-var(border-color, $cssVarBgColor, $sassVarBgColor, $clr-use-custom-properties);
   }
 
   &.clickable.label-#{'' + $color} {
     &:hover,
     &:active {
       text-decoration: none;
-      background: $clr-label-bg-hover-color;
+      @include css-var(background, clr-label-bg-hover-color, $clr-label-bg-hover-color, $clr-use-custom-properties);
     }
 
     &:active {
-      box-shadow: 0 $clr-label-borderwidth 0 0 getLabelColor($color, bg-color) inset;
+      // OldEdge/IE
+      box-shadow: 0 $clr-label-borderwidth 0 0 $sassVarBgColor inset;
+      box-shadow: 0 $clr-label-borderwidth 0 0 var(css-variablize-string($cssVarBgColor), $sassVarBgColor) inset;
       transform: translateY(0.5px);
     }
   }
 
   &.label-#{'' + $color} > .badge {
-    background: getBadgeColor($color, bg-color);
-    color: getBadgeColor($color, color);
+    @include css-var(
+      background,
+      getBadgeColor($color, bg-color, 'css-var'),
+      getBadgeColor($color, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getBadgeColor($color, color, 'css-var'),
+      getBadgeColor($color, color),
+      $clr-use-custom-properties
+    );
   }
 }
 
 @mixin generateBadgeStyles($color: gray, $alias: 1) {
   &.badge-#{'' + $color},
   &.badge-#{$alias} {
-    background: getBadgeColor($color, bg-color);
-    color: getBadgeColor($color, color);
+    @include css-var(
+      background,
+      getBadgeColor($color, bg-color, 'css-var'),
+      getBadgeColor($color, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getBadgeColor($color, color, 'css-var'),
+      getBadgeColor($color, color),
+      $clr-use-custom-properties
+    );
   }
 }
 
 @mixin generateStatusLabelStyles($status: info) {
   &.label-#{$status} {
-    background: getLabelColor($status, bg-color);
-    color: getLabelColor($status, color);
-    border: $clr-label-borderwidth solid getLabelColor($status, border-color);
+    @include css-var(
+      background,
+      getLabelColor($status, bg-color, 'css-var'),
+      getLabelColor($status, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getLabelColor($status, color, 'css-var'),
+      getLabelColor($status, color),
+      $clr-use-custom-properties
+    );
+    border: $clr-label-borderwidth solid;
+    @include css-var(
+      border-color,
+      getLabelColor($status, border-color, 'css-var'),
+      getLabelColor($status, border-color),
+      $clr-use-custom-properties
+    );
   }
 }
 
 @mixin generateStatusBadgeStyles($status: info) {
   &.badge-#{$status} {
-    background: getBadgeColor($status, bg-color);
-    color: getBadgeColor($status, color);
+    @include css-var(
+      background,
+      getBadgeColor($status, bg-color, 'css-var'),
+      getBadgeColor($status, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getBadgeColor($status, color, 'css-var'),
+      getBadgeColor($status, color),
+      $clr-use-custom-properties
+    );
   }
 }
+
+@import './properties.label';
+@import './properties.badge';
 
 @include exports('labels.clarity') {
   //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
@@ -61,9 +118,9 @@
   a.label {
     //default
     $label-nudge-for-vertical-alignment: $clr_baselineRem_1px;
-    font-size: $clr-label-font-size;
-    font-weight: $clr-label-font-weight;
-    letter-spacing: $clr-label-letter-spacing;
+    @include css-var(font-size, clr-label-font-size, $clr-label-font-size, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-label-font-weight, $clr-label-font-weight, $clr-use-custom-properties);
+    @include css-var(letter-spacing, clr-label-letter-spacing, $clr-label-letter-spacing, $clr-use-custom-properties);
 
     // line-height needed to be adjusted to force center alignment
     line-height: $clr-label-font-size + $clr_baselineRem_1px;
@@ -71,15 +128,21 @@
     justify-content: center;
     align-items: center;
     padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
-    border-radius: $clr_baselineRem_0_5;
-    border: $clr-label-borderwidth solid $clr-label-default-border-color;
+    @include css-var(border-radius, clr-label-border-radius, $clr_baselineRem_0_5, $clr-use-custom-properties);
+    border: $clr-label-borderwidth solid;
+    @include css-var(
+      border-color,
+      clr-label-default-border-color,
+      $clr-label-default-border-color,
+      $clr-use-custom-properties
+    );
     height: $clr_baselineRem_0_875;
     margin: 0 $clr_baselineRem_0_25 0 0;
     white-space: nowrap;
-    color: $clr-label-font-color;
+    @include css-var(color, clr-label-font-color-light, $clr-label-font-color-light, $clr-use-custom-properties);
 
     &:visited {
-      color: $clr-label-font-color;
+      @include css-var(color, clr-label-font-color-light, $clr-label-font-color-light, $clr-use-custom-properties);
     }
 
     &:focus,
@@ -91,11 +154,15 @@
     &.clickable {
       &:hover,
       &:active {
-        background: $clr-label-bg-hover-color;
+        @include css-var(background, clr-label-bg-hover-color, $clr-label-bg-hover-color, $clr-use-custom-properties);
       }
 
       &:active {
+        $mySassShadow: getLabelColor(gray, bg-color);
+        // OldEdge/IE
         box-shadow: 0 $clr_baselineRem_1px 0 0 getLabelColor(gray, bg-color) inset;
+        box-shadow: 0 $clr_baselineRem_1px 0 0
+          var(css-variablize-string(getLabelColor(gray, bg-color, 'css-var')), $mySassShadow) inset;
         transform: translateY(0.5px);
       }
     }
@@ -138,12 +205,10 @@
     margin-right: $clr_baselineRem_0_25;
     white-space: nowrap;
     text-align: center;
-    // TODO: use contrast color generators instead of hard-coded color vars
-    color: $clr-badge-font-color;
+    @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light, $clr-use-custom-properties);
 
-    // TODO: use contrast color generators instead of hard-coded color vars
     &:visited {
-      color: $clr-badge-font-color;
+      @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light, $clr-use-custom-properties);
     }
 
     @include generateBadgeStyles(gray, 1);

@@ -1,0 +1,12 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('combobox.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-ng-select-trigger-color: var(--clr-color-neutral-500);
+      --clr-ng-select-font-size: #{$clr-p2-font-size};
+    }
+  }
+}

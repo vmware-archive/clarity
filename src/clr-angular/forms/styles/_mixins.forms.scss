@@ -39,15 +39,32 @@
 }
 
 // Standard Clarity Input Bottom Border Animation
-@mixin input-border-bottom-animation($border-color) {
+@mixin input-border-bottom-animation(
+  $border-color-sass: $clr-forms-focused-color,
+  $border-color-prop: clr-forms-focused-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
   // Border-bottom animation on focus
-  background: linear-gradient(to bottom, transparent 95%, $border-color 95%) no-repeat;
+  @if $use-custom-props != true {
+    background: linear-gradient(to bottom, transparent 95%, $border-color-sass 95%) no-repeat;
+  } @else {
+    background: linear-gradient(
+        to bottom,
+        transparent 95%,
+        var(css-variablize-string($border-color-prop), $border-color-sass) 95%
+      )
+      no-repeat;
+  }
   background-size: 0% 100%;
   transition: background-size 0.2s ease;
 
   &:focus,
   &.clr-focus {
-    border-bottom: $clr-global-borderwidth solid $border-color;
+    @if $border-color-prop == null or $use-custom-props != true {
+      border-bottom-color: $border-color-sass;
+    } @else {
+      @include css-var(border-bottom-color, $border-color-prop, $border-color-sass, $use-custom-props);
+    }
     background-size: 100% 100%;
   }
 }
@@ -68,10 +85,22 @@
   }
 }
 
-@mixin form-fields-appearance($border-bottom-color) {
-  color: $clr-forms-text-color;
+@mixin form-fields-appearance(
+  $border-color-sass: $clr-forms-border-color,
+  $text-color-sass: $clr-forms-text-color,
+  $border-color-prop: clr-forms-border-color,
+  $text-color-prop: clr-forms-text-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  @if $use-custom-props != true {
+    color: $text-color-sass;
+    border-bottom: $clr-global-borderwidth solid $border-color-sass;
+  } @else {
+    @include css-var(color, $text-color-prop, $text-color-sass, $use-custom-props);
+    border-bottom: $clr-global-borderwidth solid;
+    @include css-var(border-bottom-color, $border-color-prop, $border-color-sass, $use-custom-props);
+  }
   display: inline-block;
-  border-bottom: $clr-global-borderwidth solid $border-bottom-color;
 }
 
 @mixin disabled-form-fields() {
@@ -94,21 +123,39 @@
   width: $size;
 }
 
-@mixin checkbox-radio-label-styles($min-height, $padding-left, $color: $clr-forms-checkbox-label-color) {
+@mixin checkbox-radio-label-styles(
+  $min-height,
+  $padding-left,
+  $color: $clr-forms-checkbox-label-color,
+  $color-prop: clr-forms-checkbox-label-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
   //Positioning
   position: relative;
 
   //Display
   display: inline-block;
-  color: $color;
   min-height: $min-height;
   padding-left: $padding-left;
   margin-top: 0;
   cursor: pointer;
   line-height: $clr-forms-baseline * 4;
+
+  @if $use-custom-props != true {
+    color: $color;
+  } @else {
+    @include css-var(color, $color-prop, $color, $use-custom-props);
+  }
 }
 
-@mixin checkbox-radio-shared-inactive($size, $top, $left, $border-color) {
+@mixin checkbox-radio-shared-inactive(
+  $size,
+  $top,
+  $left,
+  $border-color,
+  $border-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
   //Positioning
   position: absolute;
   top: $top;
@@ -119,7 +166,13 @@
   display: inline-block;
   height: $size;
   width: $size;
-  border: $clr-global-borderwidth solid $border-color;
+  border: $clr-global-borderwidth solid;
+
+  @if $use-custom-props != true or $border-color-prop == null {
+    border-color: $border-color;
+  } @else {
+    @include css-var(border-color, $border-color-prop, $border-color, $use-custom-props);
+  }
 }
 
 @mixin custom-inputs($height) {

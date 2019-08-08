@@ -83,7 +83,7 @@
     }
 
     .list-group-item {
-      padding: 0.5rem 0.75rem;
+      padding: $clr_baselineRem_0_5 0.75rem;
       font-size: $clr-card-text-font-size;
       background-color: $clr-card-bg-color;
       border-bottom: $clr-global-borderwidth solid $clr-card-border-color;
@@ -96,7 +96,7 @@
     @include fixForMsEdge() {
       .dropdown > .dropdown-toggle::after {
         display: inline-block;
-        margin-top: -0.5rem;
+        margin-top: -1 * $clr_baselineRem_0_5;
       }
     }
   }
@@ -209,7 +209,7 @@
     .card-media-description {
       display: flex;
       flex-direction: column;
-      margin: 0 0 0 0.5rem;
+      margin: 0 0 0 $clr_baselineRem_0_5;
     }
 
     .card-media-title {
@@ -243,7 +243,7 @@
   @media screen and (min-width: map-get($clr-grid-breakpoints, sm)) {
     .card-columns {
       column-count: 3;
-      column-gap: 0.5rem;
+      column-gap: $clr_baselineRem_0_5;
       break-inside: avoid;
       column-fill: balance;
 

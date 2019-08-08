@@ -21,17 +21,17 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       flex: 0 0 auto;
 
       .stack-action {
-        margin: 0 0 $clr_baselineRem_0_25 0.5rem;
+        margin: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_5;
 
         &.btn {
           min-width: 0;
-          padding: 0 0.5rem;
+          padding: 0 $clr_baselineRem_0_5;
         }
 
         &.btn-link {
           // Weird negative margin to make the button aligned with the stack view
           // in its default state. It then looks unaligned on hover only.
-          margin-right: -0.5rem;
+          margin-right: -1 * $clr_baselineRem_0_5;
         }
       }
     }
@@ -100,7 +100,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
 
     .stack-block-label,
     .stack-block-content {
-      padding: $clr_baselineRem_0_25 0.5rem;
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
       background-color: $clr-stack-view-stack-block-label-and-content-bg-color;
     }
 
@@ -179,8 +179,8 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
           background-image: generateCaretIcon($clr-accordion-text-color);
           @include icon-background-styles();
           transform: rotate(-90deg);
-          width: 0.5rem;
-          height: 0.5rem;
+          width: $clr_baselineRem_0_5;
+          height: $clr_baselineRem_0_5;
         }
       }
       > .stack-block-label,
@@ -216,7 +216,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     .select {
       display: inline-block;
       vertical-align: top;
-      margin-right: 0.5rem;
+      margin-right: $clr_baselineRem_0_5;
       // We need to account for the border at the bottom of inputs
       // Or the stack view blocks all move 1px when going in edit mode.
       // Inputs are 24px high but 25px total when you include the border.

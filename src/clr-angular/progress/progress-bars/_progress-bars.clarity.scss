@@ -558,7 +558,7 @@
 
     & > * {
       flex: 0 0 auto;
-      padding-right: 0.5rem;
+      padding-right: $clr_baselineRem_0_5;
       // vertically center???
 
       &:first-child {
@@ -600,7 +600,7 @@
 
   $clr-progressInline__inCard-height: 0.53329167rem;
   .card-block .progress-block {
-    margin-bottom: 0.5rem;
+    margin-bottom: $clr_baselineRem_0_5;
     padding: 0;
 
     &:last-child {

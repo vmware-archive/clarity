@@ -96,7 +96,7 @@
 
   .alert-items {
     $vertPadding: $clr_baselineRem_8px;
-    $horizPadding: 0.5rem - $clr-alert-borderwidth;
+    $horizPadding: $clr_baselineRem_0_5 - $clr-alert-borderwidth;
     flex: 1 1 auto;
     flex-flow: column nowrap;
     padding: $vertPadding $horizPadding;
@@ -113,7 +113,7 @@
     flex-shrink: 1;
     flex-basis: 98%; //needed for IE11
     max-width: 98%; //needed for IE11
-    margin-right: 0.5rem;
+    margin-right: $clr_baselineRem_0_5;
     text-align: left;
   }
 
@@ -182,7 +182,7 @@
     }
 
     .alert-action:not(:last-child) {
-      margin-right: 0.5rem;
+      margin-right: $clr_baselineRem_0_5;
     }
 
     .alert-action,
@@ -221,10 +221,10 @@
     }
 
     .close ~ .alert-item > .alert-actions {
-      padding-right: 0.5rem;
+      padding-right: $clr_baselineRem_0_5;
 
       & > .alert-action:last-child {
-        margin-right: 0.5rem;
+        margin-right: $clr_baselineRem_0_5;
       }
     }
   }
@@ -304,7 +304,7 @@
     // need to use 11 instead of 12 here or else vertical alignment is thrown off
     // by a pixel due to improper browser rounding; browsers aren't rendering on the
     // sub-pixel required but rounding up to the nearest whole pixel...
-    font-size: calc(0.5rem - $clr_baselineRem_1px);
+    font-size: calc(#{$clr_baselineRem_0_5} - #{$clr_baselineRem_1px});
     letter-spacing: normal;
     line-height: $alertSmallLineHeight;
 
@@ -405,7 +405,7 @@
   //2. Modal
   .modal {
     .alert + .modal-header {
-      margin-top: 0.5rem;
+      margin-top: $clr_baselineRem_0_5;
     }
   }
 

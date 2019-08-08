@@ -4,7 +4,7 @@
 
 // Usage: ./_labels.clarity.scss
 $clr-label-padding-top-bottom: $clr_baselineRem_0_125 !default;
-$clr-label-padding-left-right: 0.5rem !default;
+$clr-label-padding-left-right: $clr_baselineRem_0_5 !default;
 $clr-label-borderwidth: $clr-global-borderwidth !default;
 
 // COLOR

@@ -25,7 +25,7 @@
     -ms-overflow-style: -ms-autohiding-scrollbar;
     overflow: auto;
     flex: 1 1 auto;
-    margin-top: 0.5rem;
+    margin-top: $clr_baselineRem_0_5;
   }
 
   .datagrid-container {
@@ -342,7 +342,7 @@
       }
 
       .datagrid-filter-input-spacer {
-        width: 0.5rem;
+        width: $clr_baselineRem_0_5;
         display: inline-block;
       }
 
@@ -439,9 +439,9 @@
       }
 
       .datagrid-column-separator {
-        $dg-padding-less-border: 0.5rem - $clr_baselineRem_1px;
+        $dg-padding-less-border: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
         position: relative;
-        left: 0.5rem;
+        left: $clr_baselineRem_0_5;
         flex: 0 0 auto;
         width: $clr-global-borderwidth;
         order: 100;
@@ -460,16 +460,16 @@
 
         .datagrid-column-handle {
           position: absolute;
-          width: calc(0.5rem + #{$clr_baselineRem_1px});
+          width: $clr_baselineRem_0_5 + $clr_baselineRem_1px;
           right: -1 * $clr_baselineRem_0_25;
           top: -1 * $clr_baselineRem_0_25;
           cursor: col-resize;
-          height: calc(100% + 0.5rem - #{$clr-global-borderwidth});
+          height: calc(100% + #{$clr_baselineRem_0_5} - #{$clr-global-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);
         }
         .datagrid-column-resize-tracker {
           position: absolute;
-          top: -0.5rem;
+          top: -1 * $clr_baselineRem_0_5;
           display: none;
           width: $clr_baselineRem_1px;
           height: 0;
@@ -549,7 +549,7 @@
 
       &.datagrid-empty {
         border-top: 0;
-        padding: 0.5rem;
+        padding: $clr_baselineRem_0_5;
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -561,7 +561,7 @@
       .datagrid-placeholder-image {
         width: 2.5rem;
         height: 2.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: $clr_baselineRem_0_5;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -638,13 +638,13 @@
 
         .clr-select-wrapper {
           &::after {
-            top: 0.5rem;
+            top: $clr_baselineRem_0_5;
           }
         }
 
         .clr-page-size-select {
           font-size: 100%;
-          margin-left: 0.5rem;
+          margin-left: $clr_baselineRem_0_5;
           height: 1rem;
           line-height: 1rem;
           vertical-align: middle;
@@ -704,7 +704,7 @@
           justify-content: space-between;
           font-weight: 400;
           font-size: 0.666667rem;
-          padding-bottom: 0.5rem;
+          padding-bottom: $clr_baselineRem_0_5;
           line-height: 1rem;
 
           button {
@@ -767,15 +767,15 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    top: 0.5rem;
-    height: calc(100% - 0.5rem); // Account for the margin above the datagrid-action-bar
+    top: $clr_baselineRem_0_5;
+    height: calc(100% - #{$clr_baselineRem_0_5}); // Account for the margin above the datagrid-action-bar
     background-color: $clr-datagrid-loading-background;
     z-index: map-get($clr-layers, datagrid-host); // Keeps the spinner above the datagrid header.
   }
 
   .datagrid-select {
     .clr-control-label {
-      min-height: 0.5rem;
+      min-height: $clr_baselineRem_0_5;
       margin-top: -1 * $clr_baselineRem_0_2;
       padding-left: 0.583333rem;
     }
@@ -788,7 +788,7 @@
     .datagrid-column .datagrid-column-separator {
       &::after {
         height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-global-borderwidth});
-        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + $clr_baselineRem_1px);
+        top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + #{$clr_baselineRem_1px});
       }
     }
     .datagrid-cell {
@@ -886,7 +886,7 @@
       padding: 0 $clr_baselineRem_0_1;
     }
 
-    $clr-pagination-extra-margin: 0.5rem;
+    $clr-pagination-extra-margin: $clr_baselineRem_0_5;
     .pagination-first,
     .pagination-last,
     .pagination-previous,
@@ -982,7 +982,7 @@
           font-weight: $clr-typography-boldfont;
           font-size: $clr-typography-xxsmalltext;
           letter-spacing: $clr-kerning-tinytext;
-          line-height: 0.5rem;
+          line-height: $clr_baselineRem_0_5;
           margin-top: 1rem;
           margin-bottom: 0;
         }

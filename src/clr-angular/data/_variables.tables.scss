@@ -34,7 +34,7 @@ $clr-table-font-color: $clr-color-neutral-700 !default;
 $clr-table-fontsize: 0.541667rem !default;
 $clr-table-lineheight: 0.5833334rem !default;
 $clr-table-lineheightPaddingShim: (1rem - $clr-table-lineheight)/2 !default;
-$clr-table-cellpadding: 0.5rem !default;
+$clr-table-cellpadding: $clr_baselineRem_0_5 !default;
 $clr-table-topcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
 $clr-table-bottomcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
 $clr-table-topcellpadding-cmp: $clr-table-cellpadding/2 - $clr_baselineRem_1px !default;

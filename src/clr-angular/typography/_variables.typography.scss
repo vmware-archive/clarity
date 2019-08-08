@@ -47,7 +47,7 @@ $clr-typography-boldfont: $clr-font-weight-bold;
 
 // Paragraphs
 $clr-typography-smalltext: 0.541667rem !default; // 13px
-$clr-typography-xsmalltext: 0.5rem !default; // 12px
+$clr-typography-xsmalltext: $clr_baselineRem_0_5 !default; // 12px
 $clr-typography-xxsmalltext: 0.458333rem !default; // 11px
 $clr-typography-tinytext: 0.416667rem !default; // 10px
 
@@ -151,18 +151,18 @@ $clr-p6-color: $clr-global-font-color !default;
 $clr-p6-font-weight: $clr-typography-boldfont !default;
 $clr-p6-font-size: $clr-typography-xxsmalltext !default;
 $clr-p6-letter-spacing: $clr-kerning-tinytext !default;
-$clr-p6-line-height: 0.5rem !default;
+$clr-p6-line-height: $clr_baselineRem_0_5 !default;
 
 //P7 - label_text
 $clr-p7-color: $clr-global-font-color !default;
 $clr-p7-font-weight: $clr-typography-regfont !default;
 $clr-p7-font-size: $clr-typography-xxsmalltext !default;
 $clr-p7-letter-spacing: $clr-kerning-tinytext !default;
-$clr-p7-line-height: 0.5rem !default;
+$clr-p7-line-height: $clr_baselineRem_0_5 !default;
 
 //P8
 $clr-p8-color: $clr-global-font-color !default;
 $clr-p8-font-weight: $clr-typography-regfont !default;
 $clr-p8-font-size: $clr-typography-tinytext !default;
 $clr-p8-letter-spacing: $clr-kerning-tinytext !default;
-$clr-p8-line-height: 0.5rem !default;
+$clr-p8-line-height: $clr_baselineRem_0_5 !default;

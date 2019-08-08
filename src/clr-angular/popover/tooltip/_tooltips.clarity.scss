@@ -12,7 +12,7 @@
   border-radius: $clr-tooltip-border-radius;
   line-height: 0.75rem;
   margin: 0; //Resetting any margin that might be applied to span/div elements inside forms
-  padding: $clr_baselineRem_0_375 0.5rem;
+  padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
   width: $clr-tooltip-default-width;
 }
 

@@ -4,12 +4,12 @@
 
 // Usage: ./_vertical-nav.clarity.scss
 //Vertical Nav: Links
-$clr-vertical-nav-link-padding-right: 0.5rem !default;
+$clr-vertical-nav-link-padding-right: $clr_baselineRem_0_5 !default;
 $clr-vertical-nav-link-padding-left: 1rem !default;
 
 //Vertical Nav: Divider
 $clr-vertical-nav-divider-color: $clr-color-neutral-700 !default;
-$clr-vertical-nav-divider-margin: 0.5rem !default;
+$clr-vertical-nav-divider-margin: $clr_baselineRem_0_5 !default;
 
 //Vertical Nav: Icons
 $clr-vertical-nav-icon-size: 0.666667rem !default;
@@ -35,7 +35,7 @@ $clr-vertical-nav-trigger-collapsed-margin: $clr_baselineRem_0_125 !default;
 $clr-vertical-nav-trigger-divider-border-color: rgba($clr-color-neutral-700, 0.2) !default;
 
 //Vertical Nav: Links
-$clr-vertical-nav-link-padding-right: 0.5rem !default;
+$clr-vertical-nav-link-padding-right: $clr_baselineRem_0_5 !default;
 $clr-vertical-nav-link-padding-left: 1rem !default;
 
 // Vertical Nav: Header

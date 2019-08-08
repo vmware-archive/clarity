@@ -10,7 +10,7 @@
 @include exports('button-group.clarity') {
   .btn-group {
     display: inline-flex;
-    margin-right: 0.5rem;
+    margin-right: $clr_baselineRem_0_5;
 
     .btn {
       margin: 0;

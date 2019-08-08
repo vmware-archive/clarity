@@ -121,8 +121,7 @@
         .error {
           display: none;
           margin: $clr_baselineRem_0_25 0 0 0;
-          padding: $clr_baselineRem_0_375 0.5rem;
-          // TODO: use contrast checker vs. known background?
+          padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
           background: $clr-color-danger-800;
           color: $clr-login-background-color;
           border-radius: $clr-global-borderradius;
@@ -156,7 +155,7 @@
         }
 
         .signup {
-          margin-top: 0.5rem;
+          margin-top: $clr_baselineRem_0_5;
           font-size: 0.5833rem;
           text-align: center;
         }

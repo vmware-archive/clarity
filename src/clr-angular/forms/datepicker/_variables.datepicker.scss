@@ -8,7 +8,7 @@ $clr-calendar-border-color: $clr-color-neutral-400 !default;
 $clr-datepicker-trigger-color: $clr-color-action-600 !default;
 $clr-datepicker-trigger-hover-color: $clr-color-action-800 !default;
 $clr-calendar-margin-top: $clr_baselineRem_0_25;
-$clr-calendar-padding: 0.5rem;
+$clr-calendar-padding: $clr_baselineRem_0_5;
 
 $clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
 //(No of days in the week * 36px + 2 * 12px padding + 2px for border
@@ -21,7 +21,7 @@ $clr-calendar-btn-hover-focus-color: $clr-global-hover-color !default;
 $clr-calendar-btn-padding: 0;
 
 $clr-calendar-month-cell-height: 2rem;
-$clr-calendar-month-cell-padding: 0.5rem;
+$clr-calendar-month-cell-padding: $clr_baselineRem_0_5;
 
 $clr-calendar-picker-btn-font-size: 0.75rem;
 $clr-calendar-picker-btn-font-weight: 200;
@@ -33,7 +33,7 @@ $clr-calendar-active-cell-background-color: $clr-global-selection-color !default
 $clr-calendar-active-focus-cell-background-color: $clr-global-selection-color !default;
 $clr-calendar-active-cell-color: $clr-color-neutral-1000 !default;
 
-$clr-day-font-size: 0.5rem;
+$clr-day-font-size: $clr_baselineRem_0_5;
 $clr-switcher-width: $clr-calendar-click-target * 3;
 
 $clr-monthpicker-min-height: 6 * $clr-calendar-month-cell-height;

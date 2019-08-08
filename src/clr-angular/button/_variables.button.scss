@@ -13,13 +13,13 @@ $clr-btn-vertical-margin: $clr-button-vertical-margin !default;
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // Usage: ../layout/_card.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-margin: 0.5rem !default;
+$clr-button-horizontal-margin: $clr_baselineRem_0_5 !default;
 $clr-btn-horizontal-margin: $clr-button-horizontal-margin !default;
 
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-horizontal-padding: 0.5rem !default;
+$clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
 $clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
@@ -52,7 +52,7 @@ $clr-btn-appearance-standard-padding: $clr-btn-padding !default;
 // form-style button appearance styles - overrideable but not advertised!
 $clr-btn-appearance-form-line-height: $clr-btn-height !default;
 $clr-btn-appearance-form-letter-spacing: 0.12em !default;
-$clr-btn-appearance-form-font-size: 0.5rem !default;
+$clr-btn-appearance-form-font-size: $clr_baselineRem_0_5 !default;
 $clr-btn-appearance-form-font-weight: $clr-btn-font-weight !default;
 $clr-btn-appearance-form-height: $clr-btn-height !default;
 $clr-btn-appearance-form-padding: $clr-btn-padding !default;

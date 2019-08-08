@@ -26,7 +26,7 @@ $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
 $clr-datagrid-icon-size: 0.583333rem;
 $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-$clr-datagrid-column-separator-expandby: 0.5rem;
+$clr-datagrid-column-separator-expandby: $clr_baselineRem_0_5;
 $clr-datagrid-compact-outline-offset: -0.1666667rem;
 
 // Placeholder

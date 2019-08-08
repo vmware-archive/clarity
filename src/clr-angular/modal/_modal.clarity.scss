@@ -16,7 +16,7 @@
   padding: 2rem;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
-    padding: 0.5rem;
+    padding: $clr_baselineRem_0_5;
   }
 }
 
@@ -111,7 +111,7 @@
 
   .btn {
     //switched right margin to left because footer is right aligned
-    margin: 0 0 0 0.5rem;
+    margin: 0 0 0 $clr_baselineRem_0_5;
   }
 }
 
@@ -123,11 +123,11 @@
 
 @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
   .modal-content {
-    padding: 0.5rem 0 0.5rem 1rem;
+    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 1rem;
   }
 
   .modal-header {
-    padding: 0 1rem 0.5rem 0;
+    padding: 0 1rem $clr_baselineRem_0_5 0;
   }
 
   .modal-body {
@@ -135,7 +135,7 @@
   }
 
   .modal-footer {
-    padding: 0.5rem 1rem 0 0;
+    padding: $clr_baselineRem_0_5 1rem 0 0;
   }
 }
 

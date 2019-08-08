@@ -173,7 +173,7 @@
     .nav-trigger + .nav-content {
       //Dims
       border-top: $clr-global-borderwidth solid $clr-vertical-nav-trigger-divider-border-color;
-      padding-top: 0.5rem;
+      padding-top: $clr_baselineRem_0_5;
     }
 
     .nav-group-text,

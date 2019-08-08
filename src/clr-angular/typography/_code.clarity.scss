@@ -5,7 +5,7 @@
 @include exports('code.clarity') {
   //Styles for Clarity Code Snippets
   pre {
-    margin: 0.5rem 0;
+    margin: $clr_baselineRem_0_5 0;
   }
   pre {
     border: $clr-global-borderwidth solid $clr-color-neutral-400;

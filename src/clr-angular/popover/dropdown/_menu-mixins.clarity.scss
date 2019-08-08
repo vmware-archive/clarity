@@ -20,7 +20,7 @@
   box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-dropdown-box-shadow;
 
   margin-top: 0.083333rem;
-  padding: 0.5rem 0;
+  padding: $clr_baselineRem_0_5 0;
 
   visibility: hidden;
   z-index: map-get($clr-layers, dropdown-menu);

@@ -216,7 +216,7 @@
 
     // Reduce nesting from 5 to 3 at the most
     & > .dropdown {
-      $clr-header-action-caret-icon-right-position: 0.5rem;
+      $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
 
       & > .dropdown-toggle {
         position: relative;

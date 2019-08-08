@@ -85,7 +85,7 @@
 
     .modal-header-actions-wrapper {
       flex: 1 0 auto;
-      padding-left: 0.5rem;
+      padding-left: $clr_baselineRem_0_5;
       padding-right: 0.166667rem;
     }
 
@@ -248,7 +248,7 @@
     .clr-wizard-btn-wrapper {
       flex: 0 1 auto;
       min-width: 3.5rem;
-      padding-left: 0.5rem;
+      padding-left: $clr_baselineRem_0_5;
     }
 
     .clr-wizard-btn-wrapper[aria-hidden='true'] {

@@ -295,8 +295,8 @@
   //Small Icon Button
   .btn-sm:not(.btn-link) {
     clr-icon {
-      width: 0.5rem;
-      height: 0.5rem;
+      width: $clr_baselineRem_0_5;
+      height: $clr_baselineRem_0_5;
       transform: translate3d(0rem, -1 * $clr_baselineRem_1px, 0);
     }
   }
@@ -344,7 +344,7 @@
     label {
       display: block;
       line-height: inherit;
-      padding: 0 0.5rem;
+      padding: 0 $clr_baselineRem_0_5;
       cursor: pointer;
     }
   }

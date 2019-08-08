@@ -9,7 +9,7 @@
     white-space: nowrap;
 
     select {
-      @include custom-inputs(1rem);
+      @include custom-inputs($clr_baselineRem_1);
       @include form-fields-appearance($clr-forms-border-color);
       @include input-border-bottom-animation($clr-forms-focused-color);
       position: relative;
@@ -81,10 +81,10 @@
   select[size] {
     padding: 0;
     background: $clr-forms-select-multiple-background-color;
-    border: $clr-default-borderwidth solid $clr-forms-select-multiple-border-color;
+    border: $clr-global-borderwidth solid $clr-forms-select-multiple-border-color;
     border-radius: $clr-global-borderradius;
     height: auto;
-    min-width: 5rem;
+    min-width: $clr_baselineRem_5;
 
     &:hover,
     &:active {

@@ -24,9 +24,9 @@
 
 @include exports('sidenav.clarity') {
   .sidenav {
-    line-height: 1rem;
-    max-width: 13rem;
-    min-width: 9rem;
+    line-height: $clr_baselineRem_1;
+    max-width: $clr_baselineRem_13;
+    min-width: $clr_baselineRem_9;
     width: $clr-sidenav-width;
     border-right: $clr-sidenav-border-width solid $clr-sidenav-border-color;
     display: flex;
@@ -35,7 +35,7 @@
     .sidenav-content {
       flex: 1 1 auto;
       overflow-x: hidden;
-      padding-bottom: 1rem;
+      padding-bottom: $clr_baselineRem_1;
 
       //nav link common styles
       .nav-link {
@@ -48,8 +48,8 @@
       }
 
       & > .nav-link {
-        margin: 1rem 0 0 1.25rem;
-        padding-left: 0.5rem;
+        margin: $clr_baselineRem_1 0 0 $clr_baselineRem_1_25;
+        padding-left: $clr_baselineRem_0_5;
 
         @include nav-link-colors();
         @include sidenav-header-styles();
@@ -62,12 +62,12 @@
       font-weight: $clr-sidenav-font-weight;
       letter-spacing: $clr-sidenav-letter-spacing;
 
-      margin-top: 1rem;
+      margin-top: $clr_baselineRem_1;
       width: 100%;
 
       .nav-list,
       label {
-        padding: 0 0 0 1.75rem;
+        padding: 0 0 0 $clr_baselineRem_1_75;
       }
 
       .nav-list {
@@ -75,11 +75,11 @@
         margin-top: 0;
         overflow: hidden;
 
-        $navlink-padding: 0.166667rem;
+        $navlink-padding: $clr_baselineRem_4px;
 
         .nav-link {
-          line-height: 0.666667rem; // need a little extra to handle descenders
-          padding: $navlink-padding 0 $navlink-padding 0.5rem;
+          line-height: $clr_baselineRem_0_667; // need a little extra to handle descenders
+          padding: $navlink-padding 0 $navlink-padding $clr_baselineRem_0_5;
 
           @include nav-link-colors();
         }
@@ -95,9 +95,9 @@
     }
 
     .collapsible {
-      $clr-sidenav-caret-xOffset: 0.333333rem;
-      $clr-sidenav-caret-yOffset: 0.291667rem;
-      $clr-sidenav-caret-label-padding: 1.333333rem;
+      $clr-sidenav-caret-xOffset: $clr_baselineRem_8px;
+      $clr-sidenav-caret-yOffset: $clr_baselineRem_7px;
+      $clr-sidenav-caret-label-padding: $clr_baselineRem_1_33;
 
       label {
         cursor: pointer;

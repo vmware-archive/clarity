@@ -4,7 +4,7 @@
   margin-top: 0;
   .card-title {
     text-transform: lowercase;
-    margin-bottom: $clr-baseline;
+    margin-bottom: $clr_baselineRem_1;
     height: 24px;
   }
 
@@ -13,7 +13,7 @@
   }
 
   .card-block {
-    padding: $clr-baseline;
+    padding: $clr_baselineRem_1;
   }
   .card-footer {
     display: flex;
@@ -40,7 +40,7 @@ clr-code-snippet ::ng-deep pre {
 }
 
 .icon-variants {
-  margin-top: $clr-baseline;
+  margin-top: $clr_baselineRem_1;
   display: flex;
   flex-direction: row;
   button.icon-variant {
@@ -59,18 +59,18 @@ clr-code-snippet ::ng-deep pre {
     cursor: pointer;
 
     padding: 0;
-    margin-right: $clr_baselineRem_0_1;
+    margin-right: $clr_baselineRem_2px;
 
     transition: all 0.2s ease-out;
 
     &.active {
       border: 1px dashed rgba($clr-color-neutral-700, 1);
-      border-radius: $clr-default-borderradius;
+      border-radius: $clr-global-borderradius;
     }
 
     &:hover {
       border: 1px dashed rgba($clr-color-neutral-700, 1);
-      border-radius: $clr-default-borderradius;
+      border-radius: $clr-global-borderradius;
     }
 
     clr-icon {

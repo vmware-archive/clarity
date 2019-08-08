@@ -1,15 +1,16 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../button/_toggles.clarity.scss
 // Toggle
-$clr-toggle-height: 1rem !default;
-$clr-toggle-switch-base-height: 0.75rem !default;
-$clr-toggle-switch-base-width: 1.375rem !default;
-$clr-toggle-switch-height: 0.5833rem !default;
-$clr-toggle-switch-base-left-spacing: 0.375rem !default;
-$clr-toggle-switch-left-spacing: $clr-toggle-switch-base-width - $clr-toggle-switch-base-left-spacing + $clr-rem-1px !default;
+$clr-toggle-height: $clr_baselineRem_1 !default;
+$clr-toggle-switch-base-height: $clr_baselineRem_0_75 !default;
+$clr-toggle-switch-base-width: $clr_baselineRem_1_375 !default;
+$clr-toggle-switch-height: $clr_baselineRem_0_583 !default;
+$clr-toggle-switch-base-left-spacing: $clr_baselineRem_0_375 !default;
+$clr-toggle-switch-left-spacing: $clr-toggle-switch-base-width - $clr-toggle-switch-base-left-spacing +
+  $clr_baselineRem_1px !default;
 $clr-toggle-transition-time: 0.15s !default;
 $clr-toggle-transition-animation: ease-in !default;
 

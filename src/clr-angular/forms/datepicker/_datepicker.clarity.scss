@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -12,7 +12,7 @@
   //Other Props
   color: inherit;
   border: none;
-  border-radius: $clr-default-borderradius;
+  border-radius: $clr-global-borderradius;
   background: none;
   cursor: pointer;
   line-height: $clr-calendar-click-target;
@@ -56,8 +56,8 @@
   }
   .clr-form-control {
     .datepicker-trigger {
-      line-height: calc(1rem - 2px);
-      height: calc(1rem - 2px);
+      line-height: $clr_baselineRem_1 - $clr_baselineRem_2px;
+      height: $clr_baselineRem_1 - $clr_baselineRem_2px;
     }
   }
 
@@ -77,9 +77,9 @@
 
     //Other Props
     background: $clr-calendar-background-color;
-    border: 1px solid $clr-calendar-border-color;
-    border-radius: $clr-default-borderradius;
-    box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-popover-box-shadow-color;
+    border: $clr-global-borderwidth solid $clr-calendar-border-color;
+    border-radius: $clr-global-borderradius;
+    box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-popover-box-shadow-color;
     overflow: hidden;
     z-index: map-get($clr-layers, dropdown-menu);
   }
@@ -187,8 +187,8 @@
   .monthpicker-trigger,
   .yearpicker-trigger {
     //Dimensions
-    min-width: 2rem;
-    max-width: 2.5rem;
+    min-width: $clr_baselineRem_2;
+    max-width: $clr_baselineRem_2_5;
 
     //Other Props
     color: $clr-calendar-btn-color;
@@ -227,7 +227,7 @@
     //Other Props
     font-size: $clr-calendar-picker-btn-font-size;
     font-weight: $clr-calendar-picker-btn-font-weight;
-    outline-offset: -5px; //needed for chrome
+    outline-offset: -1 * $clr_baselineRem_5px; //needed for chrome
 
     &.is-selected {
       background: $clr-calendar-active-cell-background-color;

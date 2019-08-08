@@ -2,23 +2,25 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../../../../styles/clarity-imports';
+
 .color-square {
   display: inline-block;
   vertical-align: text-bottom;
-  height: 14px;
-  width: 14px;
-  border: 1px solid black;
-  border-radius: 4px;
+  height: $clr_baselineRem_0_583;
+  width: $clr_baselineRem_0_583;
+  border: $clr-global-borderwidth solid $clr-color-neutral-1000;
+  border-radius: $clr_baselineRem_4px;
 }
 
 .color-filter {
   display: block;
-  width: 100px;
+  width: $clr_baselineRem_100px;
 }
 
 .color-selectable {
   cursor: pointer;
-  margin: 2px;
+  margin: $clr_baselineRem_2px;
   opacity: 0.2;
 
   &:hover,
@@ -28,7 +30,7 @@
 }
 
 .lorem-ipsum {
-  max-width: 300px;
+  max-width: $clr_baselineRem_300px;
 }
 
 .username-list {
@@ -43,9 +45,9 @@
 }
 
 h2:first-child {
-  margin-top: 24px;
+  margin-top: $clr_baselineRem_1;
 }
 
 .limit-height clr-datagrid {
-  height: 286px;
+  height: $clr_baselineRem_12;
 }

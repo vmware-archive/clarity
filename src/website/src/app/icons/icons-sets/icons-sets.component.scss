@@ -1,14 +1,18 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 @import '../../../styles/clarity-imports';
 
 .alert {
-  margin: 6px 0;
+  margin: $clr_baselineRem_0_25 0;
 }
 
 h2 {
   padding: 0 $clr_baselineRem_0_5;
   margin-top: 0;
   &.deactivated {
-    color: hsl(0, 0%, 60%);
+    color: $clr-color-neutral-500;
   }
 }
 
@@ -28,19 +32,19 @@ h2 {
 
 .icon-detail {
   position: relative;
-  height: 264px;
+  height: $clr_baselineRem_11;
   overflow: hidden;
   will-change: height;
   transform: translateZ(-1);
   &:before {
     content: '';
     position: absolute;
-    top: 1px;
-    left: 13px;
-    width: calc(100% - 26px);
-    height: 24px;
+    top: $clr_baselineRem_1px;
+    left: $clr_baselineRem_13px;
+    width: calc(100% - #{$clr_baselineRem_1_0833});
+    height: $clr_baselineRem_1;
     display: block;
-    background-color: hsl(0, 0%, 100%);
+    background-color: $clr-color-neutral-0;
     z-index: 3;
     transform: translateZ(0);
   }
@@ -48,28 +52,28 @@ h2 {
 
 .visible-icon {
   position: relative;
-  top: 3px;
+  top: $clr_baselineRem_3px;
   width: 100%;
   height: 100%;
   display: flex;
   text-align: left;
   padding: $clr_baselineRem_0_75 $clr_baselineRem_0_25;
   background-color: transparent;
-  border: 1px solid rgba(215, 215, 215, 0);
+  border: $clr-global-borderwidth solid hsla(0, 0%, 84%, 0);
   transform: translateZ(0);
   color: $clr-color-neutral-700;
   cursor: pointer;
   z-index: 1;
 
   &.active {
-    border-top-left-radius: $clr-default-borderradius;
-    border-top-right-radius: $clr-default-borderradius;
-    border-color: rgba(215, 215, 215, 1);
+    border-top-left-radius: $clr-global-borderradius;
+    border-top-right-radius: $clr-global-borderradius;
+    border-color: hsl(0, 0%, 84%);
     border-style: solid;
-    border-width: 1px;
+    border-width: $clr-global-borderwidth;
     border-bottom-width: 0;
     border-bottom-color: transparent;
-    background-color: hsl(0, 0%, 100%);
+    background-color: $clr-color-neutral-0;
     outline: 0 none;
   }
 
@@ -84,9 +88,6 @@ h2 {
   .icon-shape-name {
     flex: 1 1 auto;
     margin-right: $clr_baselineRem_0_5;
-    //white-space: nowrap;
-    //overflow: hidden;
-    //text-overflow: ellipsis;
   }
 }
 
@@ -96,5 +97,5 @@ h2 {
 
 .download-set {
   margin-left: auto;
-  margin-top: 12px;
+  margin-top: $clr_baselineRem_0_5;
 }

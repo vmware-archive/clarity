@@ -11,14 +11,14 @@
     }
 
     .signpost-action {
-      min-width: 1rem;
+      min-width: $clr_baselineRem_1;
       margin: 0;
       padding: 0;
       color: $clr-signpost-action-color;
 
       clr-icon {
-        width: 1rem;
-        height: 1rem;
+        width: $clr_baselineRem_1;
+        height: $clr_baselineRem_1;
       }
 
       &:hover,
@@ -28,8 +28,8 @@
     }
 
     .signpost-content-header button clr-icon {
-      width: 0.666667rem;
-      height: 0.666667rem;
+      width: $clr_baselineRem_0_667;
+      height: $clr_baselineRem_0_667;
     }
   }
 
@@ -41,11 +41,10 @@
 
   .signpost-content {
     background-color: transparent;
-    min-width: 9rem;
-    max-width: 15rem;
-    // previous min-height of 3.5rem was too much for small signposts like in datagrid hide-show demo
-    min-height: 2rem;
-    max-height: 21rem;
+    min-width: $clr_baselineRem_9;
+    max-width: $clr_baselineRem_15;
+    min-height: $clr_baselineRem_2;
+    max-height: $clr_baselineRem_21;
     display: inline-block;
     position: relative;
     z-index: map-get($clr-layers, tooltips);
@@ -97,7 +96,7 @@
 
         &:before {
           border-top: $clr-signpost-pointer-psuedo-border;
-          bottom: 2px;
+          bottom: $clr_baselineRem_2px;
         }
       }
     }
@@ -109,11 +108,11 @@
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: -1px;
+        right: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
-          right: 1px;
+          right: $clr_baselineRem_1px;
         }
       }
     }
@@ -125,7 +124,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -137,11 +136,11 @@
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: -1px;
+        left: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -156,11 +155,11 @@
     &.bottom-right {
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-border;
-        top: calc(#{-1 * $clr-signpost-border-size} + 1px);
+        top: -1 * $clr-signpost-border-size + $clr_baselineRem_1px;
 
         &:before {
           border-bottom: $clr-signpost-pointer-psuedo-border;
-          top: 2px;
+          top: $clr_baselineRem_2px;
         }
       }
     }
@@ -172,11 +171,11 @@
 
       .popover-pointer {
         border-left: $clr-signpost-pointer-invisible-border;
-        right: -1px;
+        right: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-left: $clr-signpost-pointer-invisible-border;
-          right: 1px;
+          right: $clr_baselineRem_1px;
         }
       }
     }
@@ -188,7 +187,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          right: calc(#{-1 * $clr-signpost-border-size} - 1px);
+          right: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
     }
@@ -200,11 +199,11 @@
 
       .popover-pointer {
         border-right: $clr-signpost-pointer-invisible-border;
-        left: -1px;
+        left: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-right: $clr-signpost-pointer-invisible-border;
-          left: 1px;
+          left: $clr_baselineRem_1px;
         }
       }
     }
@@ -234,12 +233,12 @@
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: -1px;
+        bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
-          top: calc(#{-1 * $clr-signpost-border-size} - 1px);
-          right: 2px;
+          top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
+          right: $clr_baselineRem_2px;
         }
       }
     }
@@ -252,8 +251,8 @@
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
-          left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+          top: $clr_baselineRem_1px;
+          left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
       }
     }
@@ -265,12 +264,12 @@
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: -1px;
+        top: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
-          left: calc(#{-1 * $clr-signpost-border-size} - 2px);
+          top: $clr_baselineRem_1px;
+          left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
       }
     }
@@ -289,7 +288,7 @@
 
         &:before {
           border-right: $clr-signpost-pointer-psuedo-border;
-          left: 2px;
+          left: $clr_baselineRem_2px;
         }
       }
     }
@@ -301,11 +300,11 @@
 
       .popover-pointer {
         border-top: $clr-signpost-pointer-invisible-border;
-        bottom: -1px;
+        bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-top: $clr-signpost-pointer-invisible-border;
-          top: calc(#{-1 * $clr-signpost-border-size} - 1px);
+          top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
     }
@@ -318,7 +317,7 @@
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
+          top: $clr_baselineRem_1px;
         }
       }
     }
@@ -330,11 +329,11 @@
 
       .popover-pointer {
         border-bottom: $clr-signpost-pointer-invisible-border;
-        top: -1px;
+        top: (-1 * $clr_baselineRem_1px);
 
         &:before {
           border-bottom: $clr-signpost-pointer-invisible-border;
-          top: 1px;
+          top: $clr_baselineRem_1px;
         }
       }
     }
@@ -351,7 +350,7 @@
   }
 
   .signpost-wrap {
-    border: $clr-default-borderwidth solid $clr-signpost-outerBorder;
+    border: $clr-global-borderwidth solid $clr-signpost-outerBorder;
     border-radius: $clr-signpost-border-radius;
     background-color: $clr-signpost-innerBlock;
     z-index: map-get($clr-layers, tooltips);
@@ -359,8 +358,8 @@
   }
 
   .signpost-content-body {
-    padding: 1rem;
-    max-height: 20rem;
+    padding: $clr_baselineRem_1;
+    max-height: $clr_baselineRem_20;
     overflow-y: auto;
   }
 }

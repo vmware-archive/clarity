@@ -59,12 +59,12 @@
     min-height: $clr-forms-icon-size;
     color: $clr-forms-invalid-color;
     display: none;
-    margin-left: -1rem;
+    margin-left: -1 * $clr_baselineRem_1;
   }
 
   .clr-error {
     .clr-validate-icon {
-      margin-left: -4px; // @TODO Figure out why there is this 4px gap between elements
+      margin-left: -1 * $clr_baselineRem_4px; // @TODO Figure out why there is this 4px gap between elements
       display: inline-block;
     }
 
@@ -78,7 +78,7 @@
     .clr-form-control > .clr-form-control.clr-form-control-multi .clr-control-label {
       width: $clr-forms-baseline * 32;
       flex-shrink: 0;
-      margin-top: 0.125rem;
+      margin-top: $clr_baselineRem_0_125;
     }
     &.clr-row .clr-control-label {
       width: auto;

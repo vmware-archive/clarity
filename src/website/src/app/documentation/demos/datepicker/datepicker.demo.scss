@@ -1,10 +1,16 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
 .datepicker-demo {
-  margin-top: 24px;
+  margin-top: $clr_baselineRem_1;
 }
 
 .datepicker-output {
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 3px;
-  background: white;
-  padding: 12px;
+  border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  border-radius: $clr-global-borderradius;
+  background: $clr-color-neutral-0;
+  padding: $clr_baselineRem_0_5;
 }

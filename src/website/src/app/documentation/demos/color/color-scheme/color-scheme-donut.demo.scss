@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../../../../../styles/clarity-imports';
+
 :host {
   display: block;
   position: relative;
@@ -34,7 +36,7 @@ svg {
   }
   text.copy-text {
     opacity: 0;
-    fill: hsl(0, 0%, 33%);
+    fill: $clr-color-neutral-700;
     transition: all 0.2s ease-in-out;
     &.notify {
       opacity: 1;

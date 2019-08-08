@@ -8,18 +8,18 @@
     height: $clr-subnav-height;
     list-style-type: none;
     align-items: center;
-    box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+    box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
     margin: 0;
     width: 100%;
     white-space: nowrap;
 
     .nav-item {
       display: inline-block;
-      margin-right: 1rem;
+      margin-right: $clr_baselineRem_1;
 
       &.active > .nav-link {
         color: $clr-nav-link-active-color;
-        box-shadow: 0 -1px 0 $clr-nav-box-shadow-color inset;
+        box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
       }
     }
 
@@ -32,14 +32,14 @@
       line-height: $clr-subnav-height;
 
       display: inline-block;
-      padding: 0 0.125rem;
+      padding: 0 $clr_baselineRem_0_125;
       box-shadow: none;
 
       //Clarity Buttons as .nav-links in .nav
       &.btn {
         text-transform: none;
         margin: 0;
-        margin-bottom: -1 * $clr-default-borderwidth; //-1px to account for the border of the button
+        margin-bottom: -1 * $clr-global-borderwidth; //-1px to account for the border of the button
         border-radius: 0;
       }
 
@@ -51,7 +51,7 @@
 
       &:hover,
       &.active {
-        box-shadow: 0 -3px 0 $clr-nav-active-box-shadow-color inset;
+        box-shadow: 0 (-1 * $clr_baselineRem_3px) 0 $clr-nav-active-box-shadow-color inset;
         transition: box-shadow 0.2s ease-in;
       }
 
@@ -69,7 +69,7 @@
 
       // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
       &.nav-item {
-        margin-right: 1rem;
+        margin-right: $clr_baselineRem_1;
       }
     }
   }

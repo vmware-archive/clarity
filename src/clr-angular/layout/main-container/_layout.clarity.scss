@@ -46,7 +46,7 @@
       //min-height: 0px works in Firefox but not in IE. IE wants a positive value
       //IE:
       //http://stackoverflow.com/a/14964944/3538394
-      min-height: 1px;
+      min-height: $clr_baselineRem_1px;
 
       .content-area {
         flex: 1 1 auto;

@@ -15,7 +15,7 @@
 
   .close {
     float: right;
-    font-size: ($clr-baseline * 1.5);
+    font-size: $clr_baselineRem_1_5;
     transition: color linear 0.2s;
     font-weight: 200;
     text-shadow: none;

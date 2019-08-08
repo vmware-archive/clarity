@@ -1,7 +1,5 @@
-$bl-3_0: baselineRem(3);
-
 .github-btn {
-  margin-top: $bl-1_0 - 4;
+  margin-top: $clr_baselineRem_1 - $clr_baselineRem_4px;
 }
 
 @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
@@ -19,7 +17,7 @@ $bl-3_0: baselineRem(3);
 .header-dox {
   // Image positioning in the right column.
   &__media-container {
-    padding-top: $bl-3_0;
+    padding-top: $clr_baselineRem_3;
   }
 }
 
@@ -33,9 +31,9 @@ $bl-3_0: baselineRem(3);
 
 // Container style for comps
 .header-demo {
-  padding: 24px 48px;
-  margin: 24px 15px -12px;
-  background-color: hsl(0, 0%, 93%);
+  padding: $clr_baselineRem_1 $clr_baselineRem_2;
+  margin: $clr_baselineRem_1 $clr_baselineRem_0_625 (-1 * $clr_baselineRem_0_5);
+  background-color: $clr-color-neutral-200;
 
   header {
     a {
@@ -49,10 +47,10 @@ $bl-3_0: baselineRem(3);
 @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
   // Override for the comp demos
   .header-demo {
-    padding: 12px 24px;
+    padding: $clr_baselineRem_0_5 $clr_baselineRem_1;
     .branding {
-      padding: 0 12px;
-      min-width: 100px;
+      padding: 0 $clr_baselineRem_0_5;
+      min-width: $clr_baselineRem_100px;
     }
   }
   // Override for the sub-nav demo
@@ -69,9 +67,9 @@ $bl-3_0: baselineRem(3);
 
   .header-actions {
     &--overflow {
-      width: 165px;
+      width: $clr_baselineRem_165px;
       overflow: hidden;
-      font-size: 11px;
+      font-size: $clr_baselineRem_0_458;
     }
   }
 }

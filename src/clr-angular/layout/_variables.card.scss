@@ -4,15 +4,15 @@
 
 // Usages: ../layout/_card.clarity.scss
 // Usages: ../progress/progress-bars/_progress-bars.scss
-$card-children-padding-vertical: 0.5rem !default;
+$card-children-padding-vertical: $clr_baselineRem_0_5 !default;
 
 // Usage: ../layout/_card.clarity.scss
-$card-children-padding-horizontal: 0.75rem !default;
-$card-children-space-between: 0.5rem !default;
+$card-children-padding-horizontal: $clr_baselineRem_0_75 !default;
+$card-children-space-between: $clr_baselineRem_0_5 !default;
 $clr-card-bg-color: $clr-color-neutral-0 !default;
 $clr-card-border-color: $clr-color-neutral-200 !default;
-$clr-card-box-shadow: 0 0.125rem 0 0 rgba(215, 215, 215, 1) !default;
-$clr-card-border: $clr-default-borderwidth solid rgba(215, 215, 215, 1) !default;
+$clr-card-box-shadow: 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1) !default;
+$clr-card-border: $clr-global-borderwidth solid rgba(215, 215, 215, 1) !default;
 $clr-card-divider-color: $clr-color-neutral-200 !default;
 
 // TYPOGRAPHY

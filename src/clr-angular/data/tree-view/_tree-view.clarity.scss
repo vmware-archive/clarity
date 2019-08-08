@@ -62,7 +62,7 @@
     border: none;
     color: $clr-tree-node-caret-color;
     cursor: pointer;
-    outline-offset: -5px; //TODO: Replace with the outline offset mixin after the rem value change.
+    outline-offset: -1 * $clr_baselineRem_5px; //TODO: Replace with the outline offset mixin after the rem value change.
 
     &:hover {
       color: $clr-tree-node-caret-link-hover-color;
@@ -156,18 +156,18 @@
   }
 
   .clr-treenode-content .label {
-    margin-left: 0.25rem;
+    margin-left: $clr_baselineRem_0_25;
   }
 
   @include fixForMsEdge {
     .clr-treenode-content .label {
-      margin-left: 0.125rem;
+      margin-left: $clr_baselineRem_0_125;
     }
   }
 
   @include fixForIE10AndUp {
     .clr-treenode-content .label {
-      margin-left: 0.125rem;
+      margin-left: $clr_baselineRem_0_125;
     }
   }
 }

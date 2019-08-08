@@ -30,10 +30,10 @@
   }
   .droppable {
     &.draggable-match {
-      border: 1px dashed $clr-color-secondary-action-300;
+      border: $clr_baselineRem_1px dashed $clr-color-secondary-action-300;
     }
     &.draggable-over {
-      border: 1px dashed $clr-color-secondary-action-800;
+      border: $clr_baselineRem_1px dashed $clr-color-secondary-action-800;
     }
   }
 }

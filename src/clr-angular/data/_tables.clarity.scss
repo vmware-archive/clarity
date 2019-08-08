@@ -12,7 +12,7 @@
     background-color: $clr-table-bgcolor;
     color: $clr-table-font-color;
     margin: 0;
-    margin-top: 1rem;
+    margin-top: $clr_baselineRem_1;
     max-width: 100%;
     width: 100%;
 
@@ -84,8 +84,8 @@
   #{$table}-compact {
     #{$th},
     #{$td} {
-      padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
-      padding-bottom: calc(#{$clr-table--compact-verticalPadding});
+      padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
+      padding-bottom: $clr-table--compact-verticalPadding;
     }
   }
 }
@@ -201,7 +201,7 @@
     th,
     td {
       // nudge down to force row to 24px height with border
-      padding-top: calc(#{$clr-table--compact-verticalPadding} + 1px);
+      padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
       padding-bottom: $clr-table--compact-verticalPadding;
     }
 
@@ -209,9 +209,9 @@
       th,
       td {
         // nudge down to force row to 24px height with border
-        padding-top: calc(#{$clr-table--compact-verticalPadding} + 2px);
+        padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_2px;
         // account for now missing bottom border
-        padding-bottom: calc(#{$clr-table--compact-verticalPadding} + 1px);
+        padding-bottom: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
       }
     }
   }

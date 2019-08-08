@@ -9,7 +9,7 @@
   background: $clr-header-font-color;
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
-  width: $clr-default-borderwidth;
+  width: $clr-global-borderwidth;
   top: ($clr-header-height - $clr-header-section-divider-height) / 2;
   left: 0;
 }
@@ -61,8 +61,8 @@
   .branding {
     display: flex;
     flex: 0 0 auto;
-    min-width: 8.5rem;
-    padding: 0 1rem;
+    min-width: $clr_baselineRem_8_5;
+    padding: 0 $clr_baselineRem_1;
     height: $clr-header-height;
 
     & > a,
@@ -83,7 +83,7 @@
       flex-shrink: 0;
       height: $clr-logo-width;
       width: $clr-logo-width;
-      margin-right: 0.375rem;
+      margin-right: $clr_baselineRem_0_375;
     }
 
     .title {
@@ -141,12 +141,12 @@
           top: auto;
           left: auto;
           transform: none;
-          margin-left: 1rem;
+          margin-left: $clr_baselineRem_1;
         }
 
         .nav-text {
           margin-left: 0;
-          padding-left: 0.25rem;
+          padding-left: $clr_baselineRem_0_25;
         }
       }
 
@@ -216,7 +216,7 @@
 
     // Reduce nesting from 5 to 3 at the most
     & > .dropdown {
-      $clr-header-action-caret-icon-right-position: 0.5rem;
+      $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
 
       & > .dropdown-toggle {
         position: relative;
@@ -231,16 +231,16 @@
         top: 50%;
         transform: translateY(-50%);
         // Dropdown icons are 2px smaller
-        height: 0.916667rem;
-        width: 0.916667rem;
-        right: 1rem;
+        height: $clr_baselineRem_0_916;
+        width: $clr_baselineRem_0_916;
+        right: $clr_baselineRem_1;
       }
 
       .dropdown-toggle.nav-icon clr-icon[shape^='caret'] {
         right: $clr-header-action-caret-icon-right-position;
       }
 
-      $dropdown-nav-text-dist: 1.5rem;
+      $dropdown-nav-text-dist: $clr_baselineRem_1_5;
       .dropdown-toggle.nav-text {
         padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 
@@ -262,12 +262,12 @@
 
       // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
       &:last-child.bottom-right > .dropdown-menu {
-        right: 0.125rem;
+        right: $clr_baselineRem_0_125;
       }
 
       // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
       .dropdown-menu {
-        margin-top: -0.166667rem;
+        margin-top: -1 * $clr_baselineRem_4px;
         // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
         // will create empty space beyond the .main-container if the right isn't set to zero.
         // Re-evaluate later if we can come up with a better solution.
@@ -277,7 +277,7 @@
 
       // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
       :last-child.dropdown-menu {
-        margin-right: 0.333333rem;
+        margin-right: $clr_baselineRem_8px;
       }
     }
   }
@@ -289,20 +289,20 @@
     display: flex;
     align-items: center;
     flex: 0 0 auto;
-    max-width: 12rem;
+    max-width: $clr_baselineRem_12;
     padding: 0;
     height: $clr-header-height;
     @include header-nav-appearance();
 
     & > .nav-icon {
-      margin: 0 0.25rem 0.125rem 1rem;
+      margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 $clr_baselineRem_1;
     }
 
     label {
       display: inline-block;
       height: $clr-header-height;
       line-height: $clr-header-height;
-      padding-left: 1rem;
+      padding-left: $clr_baselineRem_1;
       text-align: center;
 
       &::before {
@@ -314,12 +314,12 @@
         cursor: pointer;
         height: $clr-search-icon-width;
         width: $clr-search-icon-width;
-        margin: 0.83335rem 0 0;
+        margin: $clr_baselineRem_0_83 0 0;
         vertical-align: top;
       }
 
       input {
-        line-height: 1rem;
+        line-height: $clr_baselineRem_1;
         margin: $clr-header-nav-text-vertical-padding 0;
       }
     }

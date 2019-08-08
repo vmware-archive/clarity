@@ -1,3 +1,8 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/clarity-imports';
 @import './../../styles/variables';
 @import './../../styles/mixins';
 
@@ -11,14 +16,14 @@
 
 section {
   width: 100%;
-  padding-left: $bl-1_0;
-  padding-right: $bl-1_0;
-  max-width: baselineRem(44);
+  padding-left: $clr_baselineRem_1;
+  padding-right: $clr_baselineRem_1;
+  max-width: $clr_baselineRem_44;
   margin: 0 auto;
-  padding-top: $bl-1_0;
+  padding-top: $clr_baselineRem_1;
 
   h3 {
-    margin-bottom: $bl-1_0;
+    margin-bottom: $clr_baselineRem_1;
   }
 }
 
@@ -27,7 +32,7 @@ section.community-top-section {
 }
 
 .social-card {
-  color: hsl(0, 0%, 34%);
+  color: $clr-color-neutral-700;
   text-align: center;
 
   &:hover,
@@ -37,34 +42,30 @@ section.community-top-section {
   }
 
   & > .card {
-    width: 240px;
-    margin: 12px auto;
-    padding: 0 $bl-1_0;
-  }
-
-  .card-text {
-    font-size: rem(1);
+    width: $clr_baselineRem_10;
+    margin: $clr_baselineRem_0_5 auto;
+    padding: 0 $clr_baselineRem_1;
   }
 }
 
 .community-social-icon {
-  margin-bottom: 33px;
-  margin-top: 8px;
+  margin-bottom: $clr_baselineRem_1_375;
+  margin-top: $clr_baselineRem_8px;
 
   & > img {
-    height: 64px;
+    height: $clr_baselineRem_2_66;
   }
 }
 
 .social-card-socialcast .community-social-icon {
-  // Images from design are not properly sized. Tweaks needed to happen. -- smathis 2016-2018/04/21
-  padding-top: 1.3px;
+  // TODO: Images from design are not properly sized. Tweaks needed to happen.
+  padding-top: $clr_baselineRem_0_054167;
 }
 
 .community-team-cards {
   .row {
-    margin-left: -1 * $bl-1_0;
-    margin-right: -1 * $bl-1_0;
+    margin-left: -1 * $clr_baselineRem_1;
+    margin-right: -1 * $clr_baselineRem_1;
   }
 
   .card {
@@ -73,29 +74,29 @@ section.community-top-section {
     border: 0 none;
     box-shadow: none;
     text-align: center;
-    padding: 0 $bl-1_0;
+    padding: 0 $clr_baselineRem_1;
 
     .card-text {
-      margin: 0 0 12px;
+      margin: 0 0 $clr_baselineRem_0_5;
     }
   }
 
   img {
-    width: 124px;
+    width: $clr_baselineRem_5_167;
   }
 }
 
 .community-team-name {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
 }
 
 .community-team-role {
   margin-top: 0;
-  font-size: 14px;
+  font-size: $clr_baselineRem_0_583;
 }
 
 .community-team-blurb {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
   text-align: left;
 }
 

@@ -2,17 +2,6 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@function baselineRem($remSize) {
-  @return $remSize * $clr-baseline;
-}
-
-//Because the "rem" unit does not work on pseudo-elements in IE,
-//we use a function to compute "rem" to "px" with Sass.
-@function rem($remSize) {
-  @warn 'rem() is deprecated. Please change units to rem.';
-  @return $remSize * $clr-font-base-size * 1px;
-}
-
 @mixin clr-appearance-normal() {
   -webkit-appearance: none;
   -moz-appearance: none;

@@ -1,5 +1,10 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 @import './../../styles/variables';
 @import './../../styles/mixins';
+@import '../../styles/clarity-imports';
 
 .content-area > section {
   max-width: $clrweb-content-maxwidth;
@@ -10,24 +15,24 @@
   }
 
   h2:first-of-type {
-    margin-top: 24px;
+    margin-top: $clr_baselineRem_1;
   }
 }
 
 ul.list {
-  margin-top: 4px;
+  margin-top: $clr_baselineRem_4px;
   margin-left: 1.3em;
 }
 
 ul.whats-new-highlights {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
 
   h6 + p {
     margin-top: 0;
   }
 
   & > li {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
 
     &:first-child {
       margin-top: 0;
@@ -39,46 +44,46 @@ ul.whats-new-highlights {
 
     & > h6 {
       font-weight: normal;
-      font-size: 18px;
-      margin-top: $bl-2_0;
-      color: hsl(0, 0%, 0%);
-      margin-bottom: 4px;
+      font-size: $clr_baselineRem_0_75;
+      margin-top: $clr_baselineRem_2;
+      color: $clr-color-neutral-1000;
+      margin-bottom: $clr_baselineRem_4px;
     }
   }
 }
 
 .page-whats-new {
   h2 {
-    margin-top: $bl-1_5;
+    margin-top: $clr_baselineRem_1_5;
   }
 
   h4 {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
   }
 
   h2 + h4 {
-    margin-top: $bl-0_25;
+    margin-top: $clr_baselineRem_0_25;
   }
 }
 
 %block-title-styles {
   margin-top: 0;
-  font-size: $bl-0_5;
+  font-size: $clr_baselineRem_0_5;
   line-height: normal;
   font-weight: 600;
 }
 
 %block-content-styles {
   margin-top: 0;
-  font-size: $bl-0_75;
+  font-size: $clr_baselineRem_0_75;
   line-height: 1.2em;
 }
 
 .whats-new-summary {
   margin-right: 0;
-  margin-top: $bl-0_5;
-  padding-bottom: $bl-0_25;
-  padding-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
+  padding-bottom: $clr_baselineRem_0_25;
+  padding-top: $clr_baselineRem_0_5;
   position: static;
 
   .summary-blocks {
@@ -92,7 +97,7 @@ ul.whats-new-highlights {
 
   .summary-block {
     float: left;
-    margin-right: $bl-0_75;
+    margin-right: $clr_baselineRem_0_75;
   }
 
   .summary-block-title {
@@ -107,18 +112,18 @@ ul.whats-new-highlights {
   }
 
   .whats-new-mediablock {
-    width: baselineRem(8);
+    width: $clr_baselineRem_8;
     margin-bottom: 0;
     display: inline-flex;
 
     .icon {
-      height: $bl-2_0;
-      width: $bl-2_0;
+      height: $clr_baselineRem_2;
+      width: $clr_baselineRem_2;
     }
 
     .description {
       margin-top: 0;
-      margin-left: $bl-0_25;
+      margin-left: $clr_baselineRem_0_25;
 
       & > .title {
         @extend %block-title-styles;
@@ -126,15 +131,15 @@ ul.whats-new-highlights {
 
       & > p.title + p {
         @extend %block-content-styles;
-        font-size: $bl-0_5;
-        width: baselineRem(5);
+        font-size: $clr_baselineRem_0_5;
+        width: $clr_baselineRem_5;
       }
     }
   }
 }
 
 .breaking-change-alert {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
 }
 
 .nobr {
@@ -142,9 +147,9 @@ ul.whats-new-highlights {
 }
 
 hr {
-  color: hsl(0, 0%, 87%);
+  color: $clr-color-neutral-300;
   border: 0 none;
-  border-bottom: 1px solid hsl(0, 0%, 87%);
+  border-bottom: $clr-global-borderwidth solid $clr-color-neutral-300;
 }
 
 @mixin responsiveWhatsNewMediaBlocks {
@@ -153,7 +158,7 @@ hr {
       width: 100%;
       margin-bottom: 0;
       margin-left: 0;
-      padding: $bl-0_25 $bl-0_5;
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
     }
   }
 }
@@ -170,8 +175,8 @@ hr {
   .whats-new-summary {
     .summary-block {
       float: none;
-      padding: $bl-0_25 0;
-      margin: 0 $bl-0_25;
+      padding: $clr_baselineRem_0_25 0;
+      margin: 0 $clr_baselineRem_0_25;
     }
   }
 }

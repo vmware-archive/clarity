@@ -36,7 +36,8 @@
       flex: 0 0 auto;
       width: 100%;
       // right padding nudged a bit to better align icons
-      padding: $clr-wizard-default-space ($clr-wizard-default-space - 0.208333rem) 0.25rem $clr-wizard-default-space;
+      padding: $clr-wizard-default-space ($clr-wizard-default-space - $clr_baselineRem_5px) $clr_baselineRem_0_25
+        $clr-wizard-default-space;
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
@@ -49,8 +50,8 @@
       flex-direction: row;
       width: 100%;
       // align focus style across modal title
-      line-height: 1.13rem;
-      margin-top: -0.13rem;
+      line-height: $clr_baselineRem_1_13;
+      margin-top: -1 * $clr_baselineRem_0_13;
     }
 
     .modal-body {
@@ -85,8 +86,8 @@
 
     .modal-header-actions-wrapper {
       flex: 1 0 auto;
-      padding-left: 0.5rem;
-      padding-right: 0.166667rem;
+      padding-left: $clr_baselineRem_0_5;
+      padding-right: $clr_baselineRem_4px;
     }
 
     .clr-wizard-header-action {
@@ -96,7 +97,7 @@
       margin: 0;
       min-width: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      font-size: $clr-wizard-default-space + 0.083333rem;
+      font-size: $clr-wizard-default-space + $clr_baselineRem_2px;
       color: $clr-wizard-header-action-color;
       transition: color linear 0.2s;
 
@@ -111,7 +112,7 @@
       }
 
       clr-icon {
-        $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - 0.083333rem);
+        $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - $clr_baselineRem_2px);
         height: $clr-wizard-header-action-icon-dim;
         width: $clr-wizard-header-action-icon-dim;
       }
@@ -128,7 +129,7 @@
       overflow-y: auto;
       padding-bottom: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      border-right: $clr-default-borderwidth solid $clr-wizard-step-nav-border-color;
+      border-right: $clr-global-borderwidth solid $clr-wizard-step-nav-border-color;
       height: 100%;
       background-color: $clr-wizard-sidenav-bgcolor;
       border-radius: $clr-wizard-border-radius 0 0 $clr-wizard-border-radius;
@@ -137,7 +138,7 @@
     .clr-wizard-stepnav {
       padding-left: $clr-wizard-default-space;
       display: block;
-      font-size: 0.583333rem;
+      font-size: $clr_baselineRem_0_583;
       color: $clr-wizard-sidenav-text;
       width: 100%;
       flex: 1 1 auto;
@@ -157,9 +158,9 @@
     .clr-wizard-stepnav-item {
       display: block;
       box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
-      margin: 0 0 (-1 * $clr-default-borderwidth) 0;
-      padding: 0.25rem 0;
-      padding-left: 0.333333rem;
+      margin: 0 0 (-1 * $clr-global-borderwidth) 0;
+      padding: $clr_baselineRem_0_25 0;
+      padding-left: $clr_baselineRem_8px;
       color: $clr-wizard-sidenav-text;
       font-weight: 400;
 
@@ -193,8 +194,8 @@
       display: flex;
       color: inherit;
       align-items: center;
-      padding: 0 0.125rem 0 0.416667rem;
-      font-size: 0.583333rem;
+      padding: 0 $clr_baselineRem_0_125 0 $clr_baselineRem_0_416;
+      font-size: $clr_baselineRem_0_583;
       font-weight: inherit;
       letter-spacing: normal;
       text-align: left;
@@ -204,8 +205,8 @@
       .clr-wizard-stepnav-link-suffix {
         display: flex;
         justify-content: center;
-        min-width: 1rem;
-        padding-right: 0.25rem + $clr-rem-1px;
+        min-width: $clr_baselineRem_1;
+        padding-right: $clr_baselineRem_0_25 + $clr_baselineRem_1px;
 
         .clr-wizard-stepnav-item-error-icon {
           transform: none;
@@ -256,8 +257,8 @@
 
     .clr-wizard-btn-wrapper {
       flex: 0 1 auto;
-      min-width: 3.5rem;
-      padding-left: 0.5rem;
+      min-width: $clr_baselineRem_3_5;
+      padding-left: $clr_baselineRem_0_5;
     }
 
     .clr-wizard-btn-wrapper[aria-hidden='true'] {
@@ -275,7 +276,7 @@
 
     .clr-wizard-page:not([aria-hidden='true']) {
       padding: $clr-wizard-default-space;
-      padding-top: 0.75rem;
+      padding-top: $clr_baselineRem_0_75;
       display: block;
     }
   }
@@ -340,7 +341,7 @@
     }
 
     .spinner:not(.spinner-inline):not(.clr-treenode-spinner) {
-      left: calc(50% + 4.791667rem);
+      left: calc(50% + #{$clr_baselineRem_4_791667});
       position: absolute;
       top: 40%;
     }
@@ -464,7 +465,7 @@
     }
 
     .clr-wizard-stepnav {
-      padding-top: 1rem;
+      padding-top: $clr_baselineRem_1;
     }
   }
 
@@ -478,6 +479,6 @@
 @include fixForMsEdge {
   // Edge is pushing header actions down. This aligns them with the close btn.
   .clr-wizard .clr-wizard-header-action {
-    margin-top: -0.125rem;
+    margin-top: -1 * $clr_baselineRem_0_125;
   }
 }

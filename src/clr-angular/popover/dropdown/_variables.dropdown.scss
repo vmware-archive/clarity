@@ -6,11 +6,11 @@
 // Usage: ../forms/_select.clarity.scss
 // Usage: ../layout/nav/_sidenav.clarity.scss
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
-$clr-dropdown-caret-icon-dimension: 0.416667rem !default;
+$clr-dropdown-caret-icon-dimension: $clr_baselineRem_0_416 !default;
 
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
 $clr-dropdown-active-text-color: $clr-color-neutral-1000 !default;
-$clr-dropdown-caret-left-margin: 0.083333rem !default;
+$clr-dropdown-caret-left-margin: $clr_baselineRem_2px !default;
 $clr-dropdown-bg-color: $clr-color-neutral-0 !default;
 $clr-dropdown-border-color: $clr-color-neutral-400 !default;
 $clr-dropdown-divider-color: $clr-color-neutral-200 !default;
@@ -41,5 +41,5 @@ $clr-dropdown-item-text-color: $clr-dropdown-item-color !default;
 $clr-dropdown-item-font-size: $clr-p1-font-size !default;
 $clr-dropdown-item-font-weight: $clr-p1-font-weight !default;
 $clr-dropdown-item-letter-spacing: $clr-p1-letter-spacing !default;
-$clr-dropdown-item-height: 1.25rem !default;
-$clr-dropdown-item-height-sm: 1.5rem !default;
+$clr-dropdown-item-height: $clr_baselineRem_1_25 !default;
+$clr-dropdown-item-height-sm: $clr_baselineRem_1_5 !default;

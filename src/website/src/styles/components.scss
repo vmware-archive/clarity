@@ -1,3 +1,9 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './clarity-imports';
+
 @mixin clrwebMakeFlexbox($alignItems: false) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,36 +21,36 @@
 
 .component-workstream-bugs {
   position: absolute;
-  top: $bl-1_0;
-  right: $bl-1_0;
-  width: 86px;
+  top: $clr_baselineRem_1;
+  right: $clr_baselineRem_1;
+  width: $clr_baselineRem_3_5833;
   .bug {
     &.hidden {
       visibility: hidden;
     }
     & > img {
-      height: $bl-1_0 + 1;
+      height: $clr_baselineRem_1 + $clr_baselineRem_1px;
     }
   }
   .bug-ng > img {
-    height: $bl-1_0 + 2;
+    height: $clr_baselineRem_1 + $clr_baselineRem_2px;
   }
 }
 
 .component-summary {
-  font-size: 16px;
+  font-size: $clr_baselineRem_0_667;
   font-weight: 200;
   &:not(.no-margin) {
-    margin-bottom: $bl-0_5 + 3;
-    margin-top: $bl-0_25 + 2;
+    margin-bottom: $clr_baselineRem_0_5 + $clr_baselineRem_3px;
+    margin-top: $clr_baselineRem_0_25 + $clr_baselineRem_2px;
   }
   & + p {
-    margin-top: $bl-1_0 - 2;
+    margin-top: $clr_baselineRem_1 - $clr_baselineRem_2px;
   }
 }
 
 clr-web-new-layout-alert + .component-summary:not(.no-margin) {
-  margin-top: $bl-2_0 - 4;
+  margin-top: $clr_baselineRem_2 - $clr_baselineRem_4px;
 }
 
 .layout-documentation {
@@ -79,20 +85,20 @@ clr-web-new-layout-alert + .component-summary:not(.no-margin) {
     }
   }
   .component-legend-item {
-    font-size: 13px;
-    width: baselineRem(5);
+    font-size: $clr_baselineRem_13px;
+    width: $clr_baselineRem_5;
     display: inline-block;
     span {
       display: inline-block;
     }
     .symbol {
-      width: $bl-0_75;
+      width: $clr_baselineRem_0_75;
       & > img {
-        margin-top: -3px;
+        margin-top: -1 * $clr_baselineRem_3px;
       }
     }
     &:first-child img {
-      margin-top: -1px;
+      margin-top: -1 * $clr_baselineRem_1px;
     }
     &:last-child img {
       margin-top: 0;
@@ -104,16 +110,16 @@ clr-web-new-layout-alert + .component-summary:not(.no-margin) {
   clr-typography-demo {
     div.indent {
       & > h4 {
-        font-size: 28px;
-        line-height: $bl-2_0;
+        font-size: $clr_baselineRem_1_16;
+        line-height: $clr_baselineRem_2;
         font-weight: 200;
-        margin-left: -1 * $bl-2_0;
-        margin-bottom: $bl-0_5;
+        margin-left: -1 * $clr_baselineRem_2;
+        margin-bottom: $clr_baselineRem_0_5;
       }
       & div.code-card {
-        padding-left: $bl-2_0;
+        padding-left: $clr_baselineRem_2;
         padding-top: 0;
-        padding-bottom: $bl-1_5;
+        padding-bottom: $clr_baselineRem_1_5;
       }
     }
   }
@@ -123,12 +129,12 @@ clr-web-new-layout-alert + .component-summary:not(.no-margin) {
   position: relative;
   left: 50%;
   margin-top: 15%;
-  margin-left: -23px;
+  margin-left: -1 * $clr_baselineRem_0_95833;
 }
 
 .page-stack-view {
   h3 + .alert {
-    margin-top: 16px;
+    margin-top: $clr_baselineRem_0_667;
   }
 }
 
@@ -138,12 +144,12 @@ table.buttons-cmp-table td {
 }
 
 .buttons-modal-gfx {
-  margin-top: $bl-1_0;
+  margin-top: $clr_baselineRem_1;
 }
 
 .buttons-modal-gfx p {
-  margin-top: $bl-0_25;
-  margin-bottom: $bl-0_75;
+  margin-top: $clr_baselineRem_0_25;
+  margin-bottom: $clr_baselineRem_0_75;
 }
 
 .main-container {
@@ -173,12 +179,12 @@ table.buttons-cmp-table td {
   }
 
   .dox-header {
-    padding-top: $bl-0_75;
-    -ms-flex: 0 0 108px;
-    flex: 0 0 108px;
-    padding-left: $bl-1_5;
+    padding-top: $clr_baselineRem_0_75;
+    -ms-flex: 0 0 $clr_baselineRem_4_5;
+    flex: 0 0 $clr_baselineRem_4_5;
+    padding-left: $clr_baselineRem_1_5;
     position: relative;
-    border-bottom: 1px solid hsl(0, 0%, 80%);
+    border-bottom: $clr-global-borderwidth solid $clr-color-neutral-400;
   }
   .dox-content-panel .dox-content {
     -ms-flex: 1 1 auto;
@@ -186,26 +192,26 @@ table.buttons-cmp-table td {
     overflow-y: scroll;
     width: 100%;
     max-width: 100%;
-    border-top: 1px solid transparent;
+    border-top: $clr-global-borderwidth solid transparent;
     height: 100%;
 
     .dox-content-wrapper {
-      padding-left: $bl-1_5;
-      padding-top: $bl-0_25;
-      padding-bottom: $bl-4_0;
-      max-width: 900px;
+      padding-left: $clr_baselineRem_1_5;
+      padding-top: $clr_baselineRem_0_25;
+      padding-bottom: $clr_baselineRem_4;
+      max-width: $clr_baselineRem_37_5;
       width: 100%;
     }
   }
   .dox-tabs {
-    padding-top: $bl-0_5;
+    padding-top: $clr_baselineRem_0_5;
     ul {
       margin-top: 0;
-      margin-bottom: $bl-0_25;
+      margin-bottom: $clr_baselineRem_0_25;
     }
     li {
       display: inline-block;
-      border-right: 1px solid hsl(0, 0%, 80%);
+      border-right: $clr-global-borderwidth solid $clr-color-neutral-400;
       &:last-child {
         border-right: 0 none;
       }
@@ -217,15 +223,15 @@ table.buttons-cmp-table td {
     }
     a {
       display: inline-block;
-      padding-right: $bl-0_75;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      padding-left: $bl-0_5 + 1;
+      padding-right: $clr_baselineRem_0_75;
+      padding-top: $clr_baselineRem_2px;
+      padding-bottom: $clr_baselineRem_2px;
+      padding-left: $clr_baselineRem_0_5 + $clr_baselineRem_1px;
     }
     a.active {
-      color: hsl(0, 0%, 0%);
+      color: $clr-color-neutral-1000;
       &:hover {
-        color: hsl(0, 0%, 0%);
+        color: $clr-color-neutral-1000;
       }
     }
   }
@@ -234,18 +240,18 @@ table.buttons-cmp-table td {
     & ~ #design-guidelines > h3,
     & ~ #code-examples > h3 {
       // This changed b/c labels doc has demo element between .component-summary and the h3 element.
-      margin-top: $bl-2_0;
+      margin-top: $clr_baselineRem_2;
     }
   }
   .clrweb-button-demo,
   .clrweb-stackview-demo {
     h4 {
-      font-size: 16px;
-      margin-bottom: $bl-0_25;
+      font-size: $clr_baselineRem_0_667;
+      margin-bottom: $clr_baselineRem_0_25;
     }
   }
   h3 + .clrweb-button-demo > h4:first-child {
-    margin-top: $bl-1_5;
+    margin-top: $clr_baselineRem_1_5;
   }
   .clrweb-datagrid-first-demo {
     h2 {
@@ -254,29 +260,29 @@ table.buttons-cmp-table td {
   }
   .clrweb-progress-demo {
     h4:not(.card-title) {
-      margin-top: $bl-1_5;
-      font-size: 16px;
+      margin-top: $clr_baselineRem_1_5;
+      font-size: $clr_baselineRem_0_667;
     }
   }
   .clrweb-wizardsteps-block {
     h4:first-child {
-      margin-top: $bl-1_0;
+      margin-top: $clr_baselineRem_1;
     }
   }
   h3#examples {
-    border-top: 1px solid hsl(0, 0%, 80%);
-    padding-top: 2rem;
+    border-top: $clr-global-borderwidth solid $clr-color-neutral-400;
+    padding-top: $clr_baselineRem_2;
   }
 }
 
 .clrweb-tablink-scrolled.layout-documentation .dox-content {
-  border-top-color: hsl(0, 0%, 80%) !important;
+  border-top-color: $clr-color-neutral-500 !important;
 }
 
 @media (max-width: 768px) {
   .layout-documentation .clrweb-wizardsteps-block {
     h4:first-child {
-      margin-top: 24px;
+      margin-top: $clr_baselineRem_1;
     }
   }
 }
@@ -289,18 +295,18 @@ table.buttons-cmp-table td {
 
 @media (max-width: 991px) {
   .layout-documentation .component-legend-item {
-    width: 108px;
+    width: $clr_baselineRem_4_5;
   }
 }
 
 @media (max-width: 415px) {
   .layout-documentation {
     h1 {
-      font-size: 28px;
-      line-height: $bl-1_5;
+      font-size: $clr_baselineRem_1_16;
+      line-height: $clr_baselineRem_1_5;
     }
     h1 + p {
-      margin-top: $bl-0_5;
+      margin-top: $clr_baselineRem_0_5;
     }
   }
 }
@@ -350,14 +356,14 @@ _:-ms-fullscreen,
   .layout-news .main-container .content-container .content-area,
   .layout-documentation .dox-header,
   .layout-documentation .dox-content-panel .dox-content .dox-content-wrapper {
-    padding-left: $bl-1_0;
-    padding-right: $bl-1_0;
+    padding-left: $clr_baselineRem_1;
+    padding-right: $clr_baselineRem_1;
   }
 }
 
 @media (max-width: 1136px) {
   .component-workstream-bugs {
-    right: $bl-1_0;
+    right: $clr_baselineRem_1;
   }
 }
 
@@ -367,16 +373,16 @@ _:-ms-fullscreen,
     padding-right: 0;
   }
   .card .card-title {
-    padding-left: $bl-0_75 - 2;
+    padding-left: $clr_baselineRem_0_75 - $clr_baselineRem_2px;
   }
 }
 
 .clrweb-DoxMedia {
   width: 100%;
-  margin-top: $bl-1_0;
+  margin-top: $clr_baselineRem_1;
   &-block {
-    min-height: 145px;
-    background: hsl(0, 0%, 93%);
+    min-height: $clr_baselineRem_6_04167;
+    background: $clr-color-neutral-200;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -387,7 +393,7 @@ _:-ms-fullscreen,
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 24px;
+    padding: $clr_baselineRem_1;
     width: 100%;
 
     &.other-color {
@@ -402,10 +408,10 @@ _:-ms-fullscreen,
 
     &.is-colorblock {
       background: hsl(276, 48%, 47%);
-      color: hsl(0, 0%, 100%);
-      font-size: $bl-1_0;
+      color: $clr-color-neutral-0;
+      font-size: $clr_baselineRem_1;
       font-weight: 400;
-      padding: 0 $bl-1_0;
+      padding: 0 $clr_baselineRem_1;
     }
   }
   &.is-figure &-block {
@@ -414,7 +420,7 @@ _:-ms-fullscreen,
   }
   &.is-figure &-text {
     p {
-      margin-top: $bl-0_25;
+      margin-top: $clr_baselineRem_0_25;
     }
   }
   &-img {
@@ -434,9 +440,9 @@ _:-ms-fullscreen,
     }
   }
   &-text {
-    padding-bottom: $bl-1_0;
+    padding-bottom: $clr_baselineRem_1;
     h6 {
-      margin-top: $bl-1_0 !important;
+      margin-top: $clr_baselineRem_1 !important;
     }
   }
   &.is-dont-block &-text,
@@ -444,16 +450,16 @@ _:-ms-fullscreen,
   &.is-warn-block &-text {
     position: relative;
     h6 {
-      margin-top: $bl-1_0;
+      margin-top: $clr_baselineRem_1;
     }
     &::before {
       content: ' ';
       display: block;
       width: 100%;
       background: hsl(98, 100%, 26%);
-      height: 8px;
+      height: $clr_baselineRem_8px;
       position: absolute;
-      top: -20px;
+      top: -1 * $clr_baselineRem_0_83;
       left: 0;
     }
   }
@@ -498,7 +504,7 @@ _:-ms-fullscreen,
     align-items: center;
   }
   .clrweb-DoxMedia-text {
-    padding: $bl-0_5 0 $bl-0_5 $bl-0_5;
+    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_0_5;
     h6 {
       margin-top: 0 !important;
     }
@@ -509,16 +515,16 @@ _:-ms-fullscreen,
   .clrweb-DoxMedia-block.is-colorblock {
     padding: 0;
     text-align: center;
-    width: $bl-2_0;
-    height: $bl-3_0;
+    width: $clr_baselineRem_2;
+    height: $clr_baselineRem_3;
   }
 }
 
 .clrweb-DoxVersusBox {
   width: 100%;
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 3px;
-  margin-top: $bl-2_0;
+  border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  border-radius: $clr-global-borderradius;
+  margin-top: $clr_baselineRem_2;
   @include clrwebMakeFlexbox;
   &-items {
     -ms-flex: 1 1 auto;
@@ -526,40 +532,40 @@ _:-ms-fullscreen,
     @include clrwebMakeFlexbox;
   }
   &-pin {
-    -ms-flex: 0 0 (3 * $bl-1_0);
-    flex: 0 0 (3 * $bl-1_0);
-    min-height: 4 * $bl-1_0;
-    background: hsl(0, 0%, 93%);
+    -ms-flex: 0 0 (3 * $clr_baselineRem_1);
+    flex: 0 0 (3 * $clr_baselineRem_1);
+    min-height: 4 * $clr_baselineRem_1;
+    background: $clr-color-neutral-200;
     @include clrwebMakeFlexbox(center);
     clr-icon {
-      height: $bl-1_0;
-      width: $bl-1_0;
+      height: $clr_baselineRem_1;
+      width: $clr_baselineRem_1;
       color: hsl(276, 48%, 47%);
       margin: 0 auto;
       display: block;
     }
   }
   &-vsWrapper {
-    -ms-flex: 0 0 $bl-2_0;
-    flex: 0 0 $bl-2_0;
+    -ms-flex: 0 0 $clr_baselineRem_2;
+    flex: 0 0 $clr_baselineRem_2;
     @include clrwebMakeFlexbox(center);
   }
   &-itemWrapper {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: $bl-1_0;
+    padding: $clr_baselineRem_1;
     @include clrwebMakeFlexbox(center);
   }
   &-vs {
-    $vs-dimension: $bl-1_5;
+    $vs-dimension: $clr_baselineRem_1_5;
     height: $vs-dimension;
     width: $vs-dimension;
     display: block;
     background: hsl(276, 48%, 47%);
-    color: hsl(0, 0%, 100%);
+    color: $clr-color-neutral-0;
     line-height: $vs-dimension;
     border-radius: 49%;
-    font-size: 14px;
+    font-size: $clr_baselineRem_0_583;
     font-weight: 100;
     letter-spacing: 0.02em;
     text-align: center;
@@ -578,14 +584,14 @@ _:-ms-fullscreen,
     margin: 0;
   }
   &-bookmark {
-    -ms-flex: 0 0 $bl-1_0;
-    flex: 0 0 $bl-1_0;
+    -ms-flex: 0 0 $clr_baselineRem_1;
+    flex: 0 0 $clr_baselineRem_1;
     text-align: left;
   }
   [shape='bookmark'] {
-    width: 26px;
-    margin-left: -5px;
-    height: 26px;
+    width: $clr_baselineRem_1_0833;
+    margin-left: -1 * $clr_baselineRem_5px;
+    height: $clr_baselineRem_1_0833;
   }
 }
 
@@ -607,17 +613,17 @@ _:-ms-fullscreen,
     }
     &-vs {
       margin: 0;
-      margin-left: $bl-1_0;
+      margin-left: $clr_baselineRem_1;
     }
   }
 }
 
 @media screen and (max-width: 768px) {
   .clrweb-DoxBookmark {
-    margin-top: $bl-0_5;
+    margin-top: $clr_baselineRem_0_5;
   }
   .clrweb-Img {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
   }
   .clrweb-Img--popout {
     margin-left: 0;
@@ -626,11 +632,11 @@ _:-ms-fullscreen,
 
 .in-place-takeover {
   .clr-example {
-    height: 398px;
+    height: $clr_baselineRem_16_5833;
     position: relative;
   }
   &.is-large .clr-example {
-    height: 588px;
+    height: $clr_baselineRem_24_5;
   }
   .backdrop-example-container {
     background: hsl(200, 100%, 11%);
@@ -652,30 +658,30 @@ _:-ms-fullscreen,
 }
 
 .has-h4-margin {
-  margin-top: 72px;
+  margin-top: $clr_baselineRem_3;
 }
 
 .has-h6-margin {
-  margin-top: 48px;
+  margin-top: $clr_baselineRem_2;
 }
 
 .has-margin-top-b2 {
-  margin-top: 48px;
+  margin-top: $clr_baselineRem_2;
 }
 
 .clr-demo {
-  margin-top: 24px;
+  margin-top: $clr_baselineRem_1;
 }
 
 .clr-demo-container {
-  padding: 24px 48px;
-  background-color: hsl(0, 0%, 93%);
+  padding: $clr_baselineRem_1 $clr_baselineRem_2;
+  background-color: $clr-color-neutral-200;
 
   &__content {
-    padding: 12px;
+    padding: $clr_baselineRem_0_5;
     width: 100%;
-    background-color: hsl(0, 0%, 100%);
-    border: 1px solid hsl(0, 0%, 80%);
+    background-color: $clr-color-neutral-0;
+    border: $clr-global-borderwidth solid $clr-color-neutral-400;
   }
 }
 

@@ -173,7 +173,7 @@
     .nav-trigger + .nav-content {
       //Dims
       border-top: $clr-global-borderwidth solid $clr-vertical-nav-trigger-divider-border-color;
-      padding-top: 0.5rem;
+      padding-top: $clr_baselineRem_0_5;
     }
 
     .nav-group-text,
@@ -330,7 +330,7 @@
       .nav-icon {
         //Dims
         margin: 0;
-        margin-left: 0.666667rem;
+        margin-left: $clr_baselineRem_0_667;
       }
 
       .nav-group-content {
@@ -366,7 +366,7 @@
           //Dims
           height: $clr-vertical-nav-item-height;
           width: $clr-vertical-nav-collapsed-caret-size;
-          margin-left: 0.125rem;
+          margin-left: $clr_baselineRem_0_125;
           margin-right: 0;
         }
       }

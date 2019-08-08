@@ -1,17 +1,21 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 .spacious {
-  margin-top: $bl-2_0;
+  margin-top: $clr_baselineRem_2;
 }
 
 .cozy {
-  margin-top: $bl-1_5;
+  margin-top: $clr_baselineRem_1_5;
 }
 
 .cozy-sm {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
 }
 
 p.cozy + p {
-  margin-top: 4px;
+  margin-top: $clr_baselineRem_4px;
 }
 
 p.squish {
@@ -19,10 +23,10 @@ p.squish {
 }
 
 ol.indent {
-  padding-left: $bl-2_0;
-  margin-top: $bl-1_0;
+  padding-left: $clr_baselineRem_2;
+  margin-top: $clr_baselineRem_1;
   & li {
-    padding-bottom: $bl-0_5;
+    padding-bottom: $clr_baselineRem_0_5;
   }
 }
 
@@ -31,7 +35,7 @@ h6.indent + p.indent {
 }
 
 .fully-wide {
-  padding: $bl-2_0 0;
+  padding: $clr_baselineRem_2 0;
   text-align: center;
 }
 
@@ -66,13 +70,13 @@ h6.indent + p.indent {
   .nav-group label > a {
     color: inherit;
     text-decoration: none;
-    padding-left: $bl-0_5;
+    padding-left: $clr_baselineRem_0_5;
     &:hover,
     &:active,
     &:focus {
       color: inherit;
       text-decoration: none;
-      background: hsl(0, 0%, 93%);
+      background: $clr-color-neutral-200;
     }
     &.active {
       background: hsl(201, 29%, 88%);
@@ -85,10 +89,10 @@ h6.indent + p.indent {
   }
   a.nav-link {
     & > .nav-link-tag {
-      color: hsl(0, 0%, 19%);
+      color: $clr-color-neutral-900;
       display: inline-block;
-      padding-left: 8px;
-      font-size: 10px;
+      padding-left: $clr_baselineRem_8px;
+      font-size: $clr_baselineRem_0_416;
       font-weight: 400;
       vertical-align: top;
       letter-spacing: 0.02em;
@@ -105,9 +109,9 @@ h6.indent + p.indent {
 .slider-nav .nav-group label > a {
   display: block;
   width: auto;
-  margin-left: -1 * $bl-0_5;
-  margin-right: -1 * $bl-0_5;
-  border-radius: 3px 0 0 3px;
+  margin-left: -1 * $clr_baselineRem_0_5;
+  margin-right: -1 * $clr_baselineRem_0_5;
+  border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
 }
 
 .valign {
@@ -138,19 +142,19 @@ code[class*='language-'] {
 }
 
 a.btn-primary {
-  color: hsl(0, 0%, 98%);
+  color: $clr-color-neutral-50;
   &:hover,
   &:active,
   &:visited,
   &:focus {
-    color: hsl(0, 0%, 100%);
+    color: $clr-color-neutral-0;
   }
 }
 
 @media (min-width: 577px) {
   ul#content_tabs {
     .nav .nav-item {
-      margin-right: $bl-0_25;
+      margin-right: $clr_baselineRem_0_25;
     }
   }
 }
@@ -165,31 +169,31 @@ a.btn-primary {
 
 :not(.layout-home) {
   .content-area section:first-of-type h1 {
-    margin-top: -1 * $bl-0_25;
+    margin-top: -1 * $clr_baselineRem_0_25;
   }
 }
 
 .sidenav .sidenav-content {
   margin-bottom: 0;
-  padding-bottom: $bl-1_0;
+  padding-bottom: $clr_baselineRem_1;
 }
 
 .header .branding .clarity-logo {
   background-image: url(../assets/images/clarity-logo.svg);
-  margin-right: $bl-0_5 - 1;
+  margin-right: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
   min-width: none;
-  height: 36px;
-  width: 36px;
+  height: $clr_baselineRem_1_5;
+  width: $clr_baselineRem_1_5;
 }
 
 .layout-documentation .sidenav {
-  max-width: 11.33rem;
+  max-width: $clr_baselineRem_11_33;
 }
 
 @media (min-width: 769px) {
   .layout-documentation .header .branding {
     width: 18%;
-    max-width: 11.33rem;
+    max-width: $clr_baselineRem_11_33;
   }
 }
 
@@ -209,8 +213,8 @@ a.btn-primary {
 .layout-documentation,
 .layout-news {
   .main-container .content-container .content-area {
-    padding-left: $bl-1_5;
-    padding-top: $bl-0_75;
+    padding-left: $clr_baselineRem_1_5;
+    padding-top: $clr_baselineRem_0_75;
   }
 }
 
@@ -219,37 +223,37 @@ a.btn-primary {
 .layout-news {
   h2,
   h3 {
-    margin-top: 120px;
+    margin-top: $clr_baselineRem_5;
   }
   h2 + h3 {
-    margin-top: $bl-1_5;
+    margin-top: $clr_baselineRem_1_5;
   }
   h5 {
-    color: hsl(0, 0%, 0%);
-    margin-top: 72px;
+    color: $clr-color-neutral-1000;
+    margin-top: $clr_baselineRem_3;
   }
   h4 {
-    margin-top: 72px;
+    margin-top: $clr_baselineRem_3;
   }
   h6 {
-    margin-top: 48px;
+    margin-top: $clr_baselineRem_2;
   }
   h5 + h6 {
-    margin-top: 36px;
+    margin-top: $clr_baselineRem_1_5;
   }
   h3 + h5,
   h2 + h5,
   h3 + h4,
   h1 + h5 {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
   }
   h6 + p {
-    margin-top: $bl-0_25;
+    margin-top: $clr_baselineRem_0_25;
   }
   pre {
     // TODO: move this into the background style of the code-highlight
     // component...
-    background: hsl(0, 0%, 100%) !important;
+    background: $clr-color-neutral-0 !important;
   }
 }
 .btn.no-margin {
@@ -260,16 +264,16 @@ a.btn-primary {
 }
 
 .margin-top-24 {
-  margin-top: 24px;
+  margin-top: $clr_baselineRem_1;
 }
 
 .margin-top-12 {
-  margin-top: 0.5rem;
+  margin-top: $clr_baselineRem_0_5;
 }
 
 .margin-right-0_25 {
   // Fix for badges demo in tree-view
-  margin-right: 0.25rem;
+  margin-right: $clr_baselineRem_0_25;
 }
 
 // Global Pages

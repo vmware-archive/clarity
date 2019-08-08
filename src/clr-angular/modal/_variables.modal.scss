@@ -3,10 +3,10 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../modal/_modal.clarity.scss
-$clr-modal-content-padding-top: 1rem !default;
-$clr-modal-content-padding-right: 1rem !default;
-$clr-modal-content-padding-bottom: 1rem !default;
-$clr-modal-content-padding-left: 1rem !default;
+$clr-modal-content-padding-top: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-right: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-bottom: $clr_baselineRem_1 !default;
+$clr-modal-content-padding-left: $clr_baselineRem_1 !default;
 $clr-modal-close-color: $clr-color-neutral-600 !default;
 $clr-modal-bg-color: $clr-color-neutral-0 !default;
 $clr-modal-content-box-shadow-color: rgba(
@@ -20,10 +20,10 @@ $clr-modal-border-radius: $clr-global-borderradius !default;
 
 // Usage: ../modal/_modal.clarity.scss
 // Usage: ../wizard/_wizard.clarity.scss
-$clr-modal-sm-width: 12rem !default;
-$clr-modal-md-width: 24rem !default;
-$clr-modal-lg-width: 36rem !default;
-$clr-modal-xl-width: 48rem !default;
+$clr-modal-sm-width: $clr_baselineRem_12 !default;
+$clr-modal-md-width: $clr_baselineRem_24 !default;
+$clr-modal-lg-width: $clr_baselineRem_36 !default;
+$clr-modal-xl-width: $clr_baselineRem_48 !default;
 
 // Usage: ../modal/_modal.clarity.scss
 $clr-modal-title-color: $clr-h3-color !default;

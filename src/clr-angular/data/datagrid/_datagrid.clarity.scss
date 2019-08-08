@@ -55,7 +55,7 @@
     }
 
     .spinner {
-      margin-top: 0.25rem;
+      margin-top: $clr_baselineRem_0_25;
     }
 
     &.datagrid-column {
@@ -91,8 +91,8 @@
     .datagrid-action-overflow {
       position: absolute;
       background: $clr-datagrid-popover-bg-color;
-      padding: 0.25rem 0.25rem;
-      margin-left: 0.25rem;
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_0_25;
+      margin-left: $clr_baselineRem_0_25;
       border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
       box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
@@ -357,7 +357,7 @@
         vertical-align: middle;
         width: $clr-datagrid-icon-size;
         height: $clr-datagrid-icon-size;
-        margin: 0 0.25rem;
+        margin: 0 $clr_baselineRem_0_25;
         background-repeat: no-repeat;
         background-size: contain;
         color: $clr-color-neutral-500;
@@ -461,8 +461,8 @@
         .datagrid-column-handle {
           position: absolute;
           width: calc(0.5rem + #{$clr_baselineRem_1px});
-          right: -0.25rem;
-          top: -0.25rem;
+          right: -1 * $clr_baselineRem_0_25;
+          top: -1 * $clr_baselineRem_0_25;
           cursor: col-resize;
           height: calc(100% + 0.5rem - #{$clr-global-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);

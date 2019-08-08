@@ -146,7 +146,7 @@
 
         .nav-text {
           margin-left: 0;
-          padding-left: 0.25rem;
+          padding-left: $clr_baselineRem_0_25;
         }
       }
 
@@ -295,7 +295,7 @@
     @include header-nav-appearance();
 
     & > .nav-icon {
-      margin: 0 0.25rem $clr_baselineRem_0_125 1rem;
+      margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 1rem;
     }
 
     label {

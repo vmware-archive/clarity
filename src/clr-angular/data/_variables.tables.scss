@@ -19,11 +19,11 @@ $clr-tablerow-bordercolor: $clr-color-neutral-200 !default;
 $clr-table-bordercolor: $clr-color-neutral-400 !default;
 $clr-table-border-radius: $clr-global-borderradius !default;
 $clr-table-borderwidth: $clr_baselineRem_1px !default;
-$clr-table-smallpadding: 0.25rem !default;
+$clr-table-smallpadding: $clr_baselineRem_0_25 !default;
 
 // Border radius of corner cells needs to be slightly less than the table's,
 // To make sure they correctly cover the whole area up to the border.
-$clr-table-cornercellradius: calc(#{$clr-table-border-radius} - $clr_baselineRem_1px) !default;
+$clr-table-cornercellradius: $clr-table-border-radius - $clr_baselineRem_1px !default;
 
 // Usage: ./data/_tables.clarity.scss
 // Usage: ./data/datagrid/_datagrid.clarity.scss

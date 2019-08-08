@@ -160,7 +160,7 @@
   }
 
   .clr-treenode-content .label {
-    margin-left: 0.25rem;
+    margin-left: $clr_baselineRem_0_25;
   }
 
   @include fixForMsEdge {

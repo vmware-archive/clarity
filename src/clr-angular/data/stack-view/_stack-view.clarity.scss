@@ -13,7 +13,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     .stack-title {
       display: block;
       flex: 1 1 auto;
-      padding: 0.25rem 0;
+      padding: $clr_baselineRem_0_25 0;
     }
 
     .stack-actions {
@@ -21,7 +21,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       flex: 0 0 auto;
 
       .stack-action {
-        margin: 0 0 0.25rem 0.5rem;
+        margin: 0 0 $clr_baselineRem_0_25 0.5rem;
 
         &.btn {
           min-width: 0;
@@ -100,7 +100,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
 
     .stack-block-label,
     .stack-block-content {
-      padding: 0.25rem 0.5rem;
+      padding: $clr_baselineRem_0_25 0.5rem;
       background-color: $clr-stack-view-stack-block-label-and-content-bg-color;
     }
 
@@ -123,7 +123,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         float: left;
         height: 0.58333rem;
         width: 0.58333rem;
-        margin: (0.25rem + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
+        margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
       }
     }

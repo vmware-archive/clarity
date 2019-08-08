@@ -82,6 +82,6 @@
   padding: $clr_baselineRem_0_125 1rem;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
-    padding: 0.25rem 1rem;
+    padding: $clr_baselineRem_0_25 1rem;
   }
 }

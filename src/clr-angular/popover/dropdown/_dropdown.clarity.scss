@@ -104,7 +104,7 @@
       @extend %dropdown-content;
 
       &.expandable {
-        $clr-dropdown-caret-margin-top: 0.25rem;
+        $clr-dropdown-caret-margin-top: $clr_baselineRem_0_25;
 
         margin-right: 1rem;
         padding-right: 0.5rem;
@@ -129,7 +129,7 @@
 
     .dropdown-divider {
       border-bottom: $clr-global-borderwidth solid $clr-dropdown-divider-color;
-      margin: 0.25rem 0;
+      margin: $clr_baselineRem_0_25 0;
     }
   }
 

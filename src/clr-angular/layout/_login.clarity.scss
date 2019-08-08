@@ -71,7 +71,7 @@
         .checkbox,
         .clr-form-control,
         .clr-checkbox-wrapper {
-          margin: 0.25rem 0 0.75rem 0;
+          margin: $clr_baselineRem_0_25 0 0.75rem 0;
         }
 
         // Overrides for new forms layouts to match original login layout
@@ -108,7 +108,7 @@
 
         // @TODO Is this used?
         .tooltip-validation {
-          margin-top: 0.25rem;
+          margin-top: $clr_baselineRem_0_25;
         }
 
         // @TODO Is this used?
@@ -120,7 +120,7 @@
 
         .error {
           display: none;
-          margin: 0.25rem 0 0 0;
+          margin: $clr_baselineRem_0_25 0 0 0;
           padding: 0.375rem 0.5rem;
           // TODO: use contrast checker vs. known background?
           background: $clr-color-danger-800;
@@ -132,7 +132,7 @@
             display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
             content: '';
             background: generateErrorIcon($clr-login-background-color);
-            margin: $clr_baselineRem_1px 0.25rem 0 0;
+            margin: $clr_baselineRem_1px $clr_baselineRem_0_25 0 0;
             height: $clr-login-icon-size;
             width: $clr-login-icon-size;
           }

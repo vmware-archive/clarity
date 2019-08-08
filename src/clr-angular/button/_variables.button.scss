@@ -6,7 +6,7 @@
 // Usage: ./_buttons.clarity.scss
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-vertical-margin: 0.25rem !default;
+$clr-button-vertical-margin: $clr_baselineRem_0_25 !default;
 $clr-btn-vertical-margin: $clr-button-vertical-margin !default;
 
 // Usage: ./_buttons.clarity.scss

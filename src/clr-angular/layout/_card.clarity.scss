@@ -225,7 +225,7 @@
       flex-direction: column;
 
       .card-media-description {
-        margin: 0.25rem 0 0 0;
+        margin: $clr_baselineRem_0_25 0 0 0;
       }
     }
   }
@@ -261,7 +261,7 @@
 
       .card {
         display: inline-block; //For some weird reason stops the cards from getting cut off between 2 columns
-        margin: 0.25rem;
+        margin: $clr_baselineRem_0_25;
       }
 
       .clickable {

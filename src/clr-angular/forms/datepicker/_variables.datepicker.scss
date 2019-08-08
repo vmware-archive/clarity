@@ -7,7 +7,7 @@ $clr-calendar-background-color: $clr-color-neutral-0 !default;
 $clr-calendar-border-color: $clr-color-neutral-400 !default;
 $clr-datepicker-trigger-color: $clr-color-action-600 !default;
 $clr-datepicker-trigger-hover-color: $clr-color-action-800 !default;
-$clr-calendar-margin-top: 0.25rem;
+$clr-calendar-margin-top: $clr_baselineRem_0_25;
 $clr-calendar-padding: 0.5rem;
 
 $clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;

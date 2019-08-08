@@ -28,8 +28,8 @@
       @extend %custom-checkbox;
 
       position: absolute;
-      top: 0.25rem;
-      right: 0.25rem;
+      top: $clr_baselineRem_0_25;
+      right: $clr_baselineRem_0_25;
       height: $clr-icon-dimension-sm;
       width: $clr-icon-dimension-sm;
       opacity: 0;

@@ -36,7 +36,8 @@
       flex: 0 0 auto;
       width: 100%;
       // right padding nudged a bit to better align icons
-      padding: $clr-wizard-default-space ($clr-wizard-default-space - 0.208333rem) 0.25rem $clr-wizard-default-space;
+      padding: $clr-wizard-default-space ($clr-wizard-default-space - 0.208333rem) $clr_baselineRem_0_25
+        $clr-wizard-default-space;
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
@@ -157,7 +158,7 @@
       display: block;
       box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
       margin: 0 0 (-1 * $clr-global-borderwidth) 0;
-      padding: 0.25rem 0;
+      padding: $clr_baselineRem_0_25 0;
       padding-left: 0.333333rem;
       color: $clr-wizard-sidenav-text;
       font-weight: 400;
@@ -199,7 +200,7 @@
       &::before {
         content: counter(a);
         counter-increment: a;
-        padding-right: 0.25rem + $clr_baselineRem_1px;
+        padding-right: $clr_baselineRem_0_25 + $clr_baselineRem_1px;
         min-width: 0.625rem;
       }
     }

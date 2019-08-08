@@ -87,7 +87,7 @@
     display: flex;
     flex-wrap: nowrap;
     min-height: $clr-alert-item-min-height;
-    margin-bottom: 0.25rem;
+    margin-bottom: $clr_baselineRem_0_25;
 
     &:last-child {
       margin-bottom: 0;
@@ -256,7 +256,7 @@
     .alert-items {
       // line-height of 24px on .alert-item inside app-level-alert
       // blows out the sizing, so we need vert-padding to be 6px, not 8px
-      $appLevelAlertVertPadding: 0.25rem;
+      $appLevelAlertVertPadding: $clr_baselineRem_0_25;
       padding-top: $appLevelAlertVertPadding;
       padding-bottom: $appLevelAlertVertPadding;
     }
@@ -309,7 +309,7 @@
     line-height: $alertSmallLineHeight;
 
     .alert-items {
-      padding: calc(#{$alertSmallNudge} - #{$clr-alert-borderwidth}) calc(0.25rem - #{$clr-alert-borderwidth});
+      padding: ($alertSmallNudge - $clr-alert-borderwidth) ($clr_baselineRem_0_25 - $clr-alert-borderwidth);
     }
 
     .alert-item {
@@ -333,7 +333,7 @@
 
     .alert-item > span,
     .alert-text {
-      margin-right: 0.25rem;
+      margin-right: $clr_baselineRem_0_25;
     }
 
     .close {
@@ -397,7 +397,7 @@
   .card {
     .alert {
       $clr-alert-card-horizontal-margin: 0;
-      $clr-alert-card-vertical-margin: 0.25rem;
+      $clr-alert-card-vertical-margin: $clr_baselineRem_0_25;
       margin: $clr-alert-card-vertical-margin $clr-alert-card-horizontal-margin;
     }
   }

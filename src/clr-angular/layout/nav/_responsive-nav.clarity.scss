@@ -58,7 +58,7 @@
     &::after {
       height: 0.0833333rem;
       width: 1rem;
-      left: -0.25rem;
+      left: -1 * $clr_baselineRem_0_25;
       transform-origin: -3%;
       transition: $clr-trigger-animation;
     }
@@ -330,7 +330,7 @@
                 display: inline-block;
                 color: $clr-sliding-panel-text-color;
                 line-height: $nav-text-height;
-                padding: 0.25rem 0 0.25rem 1rem;
+                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 1rem;
                 white-space: normal;
                 font-weight: normal;
               }

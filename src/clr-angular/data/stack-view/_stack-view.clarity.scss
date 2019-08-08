@@ -220,7 +220,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       // We need to account for the border at the bottom of inputs
       // Or the stack view blocks all move 1px when going in edit mode.
       // Inputs are 24px high but 25px total when you include the border.
-      margin-bottom: -1 + $clr-default-borderwidth;
+      margin-bottom: -1 + $clr-global-borderwidth;
     }
 
     // Fix for Firefox and IE, which are throwing line-height for inputs in the air,

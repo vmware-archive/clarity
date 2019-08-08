@@ -128,7 +128,7 @@
     }
 
     .dropdown-divider {
-      border-bottom: $clr-default-borderwidth solid $clr-dropdown-divider-color;
+      border-bottom: $clr-global-borderwidth solid $clr-dropdown-divider-color;
       margin: 0.25rem 0;
     }
   }

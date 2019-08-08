@@ -62,8 +62,8 @@ h2 {
   z-index: 1;
 
   &.active {
-    border-top-left-radius: $clr-default-borderradius;
-    border-top-right-radius: $clr-default-borderradius;
+    border-top-left-radius: $clr-global-borderradius;
+    border-top-right-radius: $clr-global-borderradius;
     border-color: rgba(215, 215, 215, 1);
     border-style: solid;
     border-width: 1px;

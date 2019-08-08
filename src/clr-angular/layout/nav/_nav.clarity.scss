@@ -39,7 +39,7 @@
       &.btn {
         text-transform: none;
         margin: 0;
-        margin-bottom: -1 * $clr-default-borderwidth; //-1px to account for the border of the button
+        margin-bottom: -1 * $clr-global-borderwidth; //-1px to account for the border of the button
         border-radius: 0;
       }
 

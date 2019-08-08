@@ -1,12 +1,12 @@
 @import '../../styles/clarity-imports';
 
-$clr-icons-hero-height: $clr-baseline * 10;
+$clr-icons-hero-height: $clr_baselineRem_10;
 $clr-icons-content-top: calc(#{$clr-icons-hero-height} + #{$clr-header-height});
-$clr-icons-content-width: 45rem;
-$clr-sidenav-width: $clr-baseline * 9;
+$clr-icons-content-width: $clr_baselineRem_1080px;
+$clr-sidenav-width: $clr_baselineRem_9;
 $clr-searchbar-nonsticky-margintop: 0;
-$clr-searchbar-container-height: 5rem + $clr-searchbar-nonsticky-margintop;
-$clr-searchbar-container-height-sm: 4.5rem;
+$clr-searchbar-container-height: $clr_baselineRem_60px + $clr-searchbar-nonsticky-margintop;
+$clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
 
 .icons-header {
   position: fixed;
@@ -58,7 +58,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
     h1 {
       color: $clr-color-neutral-0;
       text-align: center;
-      margin: 0 0 $clr-baseline / 2 0;
+      margin: 0 0 $clr_baselineRem_0_5 0;
       font-weight: 400;
     }
 
@@ -67,7 +67,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
       color: $clr-color-neutral-0;
       text-align: center;
       font-weight: 100;
-      margin: $clr-baseline / 2 0 $clr-baseline 0;
+      margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
     }
   }
 }
@@ -110,7 +110,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
     max-width: calc(#{$clr-icons-content-width} - #{$clr-sidenav-width});
     position: relative;
     flex: 0 0 auto;
-    padding: $clr-baseline $clr_baselineRem_1_5;
+    padding: $clr-baselineRem_1 $clr_baselineRem_1_5;
     margin-left: $clr-sidenav-width;
     text-align: left;
   }
@@ -141,7 +141,7 @@ $clr-searchbar-container-height-sm: 4.5rem;
 
     input.searchbar-input {
       width: 100%;
-      padding: $clr-baseline $clr_baselineRem_2;
+      padding: $clr-baselineRem_1 $clr_baselineRem_2;
       height: $clr_baselineRem_2;
       margin-bottom: $clr_baselineRem_0_75;
     }

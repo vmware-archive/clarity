@@ -127,7 +127,7 @@
       overflow-y: auto;
       padding-bottom: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      border-right: $clr-default-borderwidth solid $clr-wizard-step-nav-border-color;
+      border-right: $clr-global-borderwidth solid $clr-wizard-step-nav-border-color;
       height: 100%;
       background-color: $clr-wizard-sidenav-bgcolor;
       border-radius: $clr-wizard-border-radius 0 0 $clr-wizard-border-radius;
@@ -156,7 +156,7 @@
     .clr-wizard-stepnav-item {
       display: block;
       box-shadow: $clr-wizard-stepnav-border-size 0 0 $clr-wizard-stepnav-border-color inset;
-      margin: 0 0 (-1 * $clr-default-borderwidth) 0;
+      margin: 0 0 (-1 * $clr-global-borderwidth) 0;
       padding: 0.25rem 0;
       padding-left: 0.333333rem;
       color: $clr-wizard-sidenav-text;

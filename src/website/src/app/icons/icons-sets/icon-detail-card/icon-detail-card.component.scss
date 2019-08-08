@@ -65,12 +65,12 @@ clr-code-snippet ::ng-deep pre {
 
     &.active {
       border: 1px dashed rgba($clr-color-neutral-700, 1);
-      border-radius: $clr-default-borderradius;
+      border-radius: $clr-global-borderradius;
     }
 
     &:hover {
       border: 1px dashed rgba($clr-color-neutral-700, 1);
-      border-radius: $clr-default-borderradius;
+      border-radius: $clr-global-borderradius;
     }
 
     clr-icon {

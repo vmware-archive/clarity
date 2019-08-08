@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -12,7 +12,7 @@
   //Other Props
   color: inherit;
   border: none;
-  border-radius: $clr-default-borderradius;
+  border-radius: $clr-global-borderradius;
   background: none;
   cursor: pointer;
   line-height: $clr-calendar-click-target;
@@ -78,8 +78,8 @@
     //Other Props
     background: $clr-calendar-background-color;
     border: 1px solid $clr-calendar-border-color;
-    border-radius: $clr-default-borderradius;
-    box-shadow: 0 $clr-default-borderwidth 0.125rem $clr-popover-box-shadow-color;
+    border-radius: $clr-global-borderradius;
+    box-shadow: 0 $clr-global-borderwidth 0.125rem $clr-popover-box-shadow-color;
     overflow: hidden;
     z-index: map-get($clr-layers, dropdown-menu);
   }

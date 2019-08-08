@@ -70,7 +70,7 @@
       content: '';
       height: $clr-toggle-switch-height;
       width: $clr-toggle-switch-height;
-      border: $clr-default-borderwidth solid $clr-toggle-handle-bg-color;
+      border: $clr-global-borderwidth solid $clr-toggle-handle-bg-color;
       border-radius: 50%;
       background-color: $clr-toggle-handle-bg-color;
       // TOCHECK: COMPUTATION...

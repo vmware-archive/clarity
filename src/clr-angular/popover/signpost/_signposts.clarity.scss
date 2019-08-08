@@ -347,7 +347,7 @@
   }
 
   .signpost-wrap {
-    border: $clr-default-borderwidth solid $clr-signpost-outerBorder;
+    border: $clr-global-borderwidth solid $clr-signpost-outerBorder;
     border-radius: $clr-signpost-border-radius;
     background-color: $clr-signpost-innerBlock;
     z-index: map-get($clr-layers, tooltips);

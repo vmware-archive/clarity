@@ -35,7 +35,7 @@
   }
 
   .datagrid-expandable-caret {
-    padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
+    padding: calc(0.125rem - #{$clr-global-borderwidth}) $horizontalPadding 0.125rem;
     text-align: center;
 
     .datagrid-expandable-caret-button {
@@ -93,7 +93,7 @@
       background: $clr-datagrid-popover-bg-color;
       padding: 0.25rem 0.25rem;
       margin-left: 0.25rem;
-      border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+      border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
       box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
       border-radius: $clr-global-borderradius;
       font-weight: normal;
@@ -381,7 +381,7 @@
         margin-top: 0.2rem;
         background: $clr-datagrid-popover-bg-color;
         padding: 0.75rem;
-        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+        border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
         box-shadow: 0 1px 3px rgba($clr-color-neutral-600, 0.25);
         border-radius: $clr-global-borderradius;
         font-weight: normal;
@@ -443,7 +443,7 @@
         position: relative;
         left: 0.5rem;
         flex: 0 0 auto;
-        width: $clr-default-borderwidth;
+        width: $clr-global-borderwidth;
         order: 100;
         margin-left: auto;
         height: 100%;
@@ -451,7 +451,7 @@
         &::after {
           content: '';
           position: absolute;
-          height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+          height: calc(100% + #{$clr-datagrid-column-separator-expandby} - #{$clr-global-borderwidth});
           width: $clr-rem-1px;
           top: calc(-0.5 * #{$clr-datagrid-column-separator-expandby} + #{$clr-rem-1px});
           left: 0;
@@ -464,7 +464,7 @@
           right: -0.25rem;
           top: -0.25rem;
           cursor: col-resize;
-          height: calc(100% + 0.5rem - #{$clr-default-borderwidth});
+          height: calc(100% + 0.5rem - #{$clr-global-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);
         }
         .datagrid-column-resize-tracker {
@@ -473,13 +473,13 @@
           display: none;
           width: 1px;
           height: 0;
-          border-right: $clr-default-borderwidth dotted $clr-color-action-300;
+          border-right: $clr-global-borderwidth dotted $clr-color-action-300;
           transform: translateX(0px);
           cursor: col-resize;
         }
 
         .exceeded-max {
-          border-right: $clr-default-borderwidth dotted rgba($clr-color-danger-700, 0.3);
+          border-right: $clr-global-borderwidth dotted rgba($clr-color-danger-700, 0.3);
         }
       }
 
@@ -518,7 +518,7 @@
       }
 
       &.datagrid-expandable-caret {
-        padding: calc(0.125rem - #{$clr-default-borderwidth}) $horizontalPadding 0.125rem;
+        padding: calc(0.125rem - #{$clr-global-borderwidth}) $horizontalPadding 0.125rem;
         text-align: center;
       }
 
@@ -540,7 +540,7 @@
       flex: 1 1 auto;
       display: flex;
       justify-content: center;
-      border-top: $clr-default-borderwidth solid $clr-table-border-color;
+      border-top: $clr-global-borderwidth solid $clr-table-border-color;
     }
 
     .datagrid-placeholder {
@@ -599,7 +599,7 @@
         padding-top: 2px;
       }
       &.datagrid-container {
-        border-top: $clr-default-borderwidth solid $clr-table-border-color;
+        border-top: $clr-global-borderwidth solid $clr-table-border-color;
 
         .datagrid-cell {
           border-top: none;
@@ -616,10 +616,10 @@
     align-items: stretch;
     padding: 0 $clr-table-cellpadding;
     // Account for borders
-    line-height: calc(1.5rem - #{3 * $clr-default-borderwidth});
+    line-height: calc(1.5rem - #{3 * $clr-global-borderwidth});
     font-size: $clr-thead-font-size;
     background-color: $clr-thead-bgcolor;
-    border: $clr-default-borderwidth solid $clr-table-footer-border-top-color;
+    border: $clr-global-borderwidth solid $clr-table-footer-border-top-color;
     border-top: none;
     border-radius: 0 0 $clr-global-borderradius $clr-global-borderradius;
 
@@ -691,7 +691,7 @@
         border-radius: $clr-global-borderradius;
         padding: 0.75rem;
         background-color: $clr-datagrid-popover-bg-color;
-        border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+        border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
         box-shadow: 0 1px 3px rgba(116, 116, 116, 0.25); // TODO: Add theme-able variable
         width: 10.416667rem;
         display: flex;
@@ -721,7 +721,7 @@
         .switch-content {
           max-height: 12.5rem;
           overflow-y: auto;
-          min-height: calc(1rem + #{$clr-default-borderwidth}); // prevents scrollbars in IE.
+          min-height: calc(1rem + #{$clr-global-borderwidth}); // prevents scrollbars in IE.
 
           li {
             line-height: 1rem;
@@ -786,7 +786,7 @@
     }
     .datagrid-column .datagrid-column-separator {
       &::after {
-        height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-default-borderwidth});
+        height: calc(100% + 0.5 * #{$clr-datagrid-column-separator-expandby} - #{$clr-global-borderwidth});
         top: calc(-0.25 * #{$clr-datagrid-column-separator-expandby} + 1px);
       }
     }
@@ -866,7 +866,7 @@
     .pagination-current {
       background: none;
       background-color: $clr-forms-textarea-background-color;
-      border: $clr-default-borderwidth solid $clr-datagrid-pagination-input-border-color;
+      border: $clr-global-borderwidth solid $clr-datagrid-pagination-input-border-color;
       border-radius: $clr-global-borderradius;
       line-height: 1rem;
       min-width: 1rem;
@@ -876,8 +876,8 @@
       &:focus,
       &.clr-focus {
         background: none;
-        border: $clr-default-borderwidth solid $clr-datagrid-pagination-input-border-focus-color;
-        box-shadow: 0 0 $clr-default-borderwidth $clr-datagrid-pagination-input-border-focus-color;
+        border: $clr-global-borderwidth solid $clr-datagrid-pagination-input-border-focus-color;
+        box-shadow: 0 0 $clr-global-borderwidth $clr-datagrid-pagination-input-border-focus-color;
       }
     }
 

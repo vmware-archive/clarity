@@ -39,7 +39,7 @@ $clr-button-padding: 0 $clr-btn-horizontal-padding !default;
 $clr-btn-padding: $clr-button-padding !default;
 
 $clr-btn-border-radius: $clr-global-borderradius !default;
-$clr-btn-border-width: $clr-default-borderwidth !default;
+$clr-btn-border-width: $clr-global-borderwidth !default;
 
 // standard appearance styles - overrideable but not advertised!
 $clr-btn-appearance-standard-line-height: calc(#{$clr-btn-height-sm} - 1px) !default;

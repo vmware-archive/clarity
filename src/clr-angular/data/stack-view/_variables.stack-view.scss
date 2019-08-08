@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../stack-view/_stack-view.clarity.scss
-$clr-stack-view-border-width: $clr-default-borderwidth !default;
+$clr-stack-view-border-width: $clr-global-borderwidth !default;
 $clr-stack-view-border-radius: $clr-global-borderradius !default;
 $clr-stack-view-border-color: $clr-color-neutral-400 !default; // Border for stack view container
 $clr-stack-view-bg-color: $clr-color-neutral-50 !default;

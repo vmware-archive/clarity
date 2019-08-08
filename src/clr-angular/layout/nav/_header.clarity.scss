@@ -9,7 +9,7 @@
   background: $clr-header-font-color;
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
-  width: $clr-default-borderwidth;
+  width: $clr-global-borderwidth;
   top: ($clr-header-height - $clr-header-section-divider-height) / 2;
   left: 0;
 }

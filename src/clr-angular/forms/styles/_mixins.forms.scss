@@ -47,7 +47,7 @@
 
   &:focus,
   &.clr-focus {
-    border-bottom: $clr-default-borderwidth solid $border-color;
+    border-bottom: $clr-global-borderwidth solid $border-color;
     background-size: 100% 100%;
   }
 }
@@ -71,7 +71,7 @@
 @mixin form-fields-appearance($border-bottom-color) {
   color: $clr-forms-text-color;
   display: inline-block;
-  border-bottom: $clr-default-borderwidth solid $border-bottom-color;
+  border-bottom: $clr-global-borderwidth solid $border-bottom-color;
 }
 
 @mixin disabled-form-fields() {
@@ -119,7 +119,7 @@
   display: inline-block;
   height: $size;
   width: $size;
-  border: $clr-default-borderwidth solid $border-color;
+  border: $clr-global-borderwidth solid $border-color;
 }
 
 @mixin custom-inputs($height) {

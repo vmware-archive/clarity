@@ -35,6 +35,7 @@
     <div *ngFor="let shape of set.shapes" class="clr-icon-item clr-col-xs-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
       <clr-icon
         [attr.shape]="shape"
+        [attr.title]="shape"
         [ngClass]="{ 'is-solid': solid, 'has-alert': options == 'alert', 'has-badge': options == 'badge' }"
       ></clr-icon>
       <span class="icon-shape-name">{{ shape }}</span>

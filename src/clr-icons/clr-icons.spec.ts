@@ -601,6 +601,23 @@ describe('ClarityIcons', () => {
       const testShapeAfterTemplateChange = `<svg aria-labelledby="${clrIconUniqId}"><g></g></svg><span class="is-off-screen" id="${clrIconUniqId}">${customTitle}</span>`;
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShapeAfterTemplateChange));
     });
+
+    it('should have none role by default when appended to DOM', () => {
+      const clarityIcon = document.createElement('clr-icon');
+      expect(clarityIcon.getAttribute('role')).toBeNull();
+
+      document.body.appendChild(clarityIcon);
+      expect(clarityIcon.getAttribute('role')).toBe('none');
+    });
+
+    it('should not change already defined role value when appended into DOM', () => {
+      const clarityIcon = document.createElement('clr-icon');
+      clarityIcon.setAttribute('role', 'img');
+      expect(clarityIcon.getAttribute('role')).toBe('img');
+
+      document.body.appendChild(clarityIcon);
+      expect(clarityIcon.getAttribute('role')).toBe('img');
+    });
   });
 
   describe('SVG Icon Markups', () => {

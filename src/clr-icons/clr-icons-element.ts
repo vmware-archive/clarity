@@ -70,7 +70,9 @@ ClarityIconElement.prototype.connectedCallback = function() {
   // We want to hide the custom element from screen readers but allow the svg/img content to still be read inline
   // Adding role=none allows the screen reader to skip the custom element as if it were a div or span.
   // https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html
-  this.setAttribute('role', 'none');
+  if (!this.getAttribute('role')) {
+    this.setAttribute('role', 'none');
+  }
 
   if (this.hasAttribute('size')) {
     const sizeAttrValue = this.getAttribute('size');

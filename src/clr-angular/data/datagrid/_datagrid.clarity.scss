@@ -825,8 +825,8 @@
     }
     .datagrid-signpost-trigger .signpost .signpost-trigger {
       clr-icon:not([shape='info-circle'], [shape='exclamation-triangle'], [shape='exclamation-circle'], [shape='check-circle'], [shape='info'], [shape='error']) {
-        width: 0.875rem; //21px
-        height: 0.875rem; //21px
+        width: $clr_baselineRem_0_875;
+        height: $clr_baselineRem_0_875;
       }
     }
 

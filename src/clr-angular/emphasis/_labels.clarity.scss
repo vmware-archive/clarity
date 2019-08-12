@@ -73,7 +73,7 @@
     padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
     border-radius: $clr_baselineRem_0_5;
     border: $clr-label-borderwidth solid $clr-label-default-border-color;
-    height: 0.875rem;
+    height: $clr_baselineRem_0_875;
     margin: 0 $clr_baselineRem_0_25 0 0;
     white-space: nowrap;
     color: $clr-label-font-color;

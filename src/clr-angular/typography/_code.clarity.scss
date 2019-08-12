@@ -9,7 +9,7 @@
   }
   pre {
     border: $clr-global-borderwidth solid $clr-color-neutral-400;
-    max-height: 15rem;
+    max-height: $clr_baselineRem_15;
     border-radius: $clr-global-borderradius;
     overflow: auto;
   }

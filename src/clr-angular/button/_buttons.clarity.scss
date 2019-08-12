@@ -129,7 +129,7 @@
 
 @mixin btn-min-max-widths() {
   min-width: $clr_baselineRem_3;
-  max-width: 15rem;
+  max-width: $clr_baselineRem_15;
 }
 
 @mixin btn-text-properties() {

@@ -17,8 +17,8 @@ $imported-modules: () !default;
 //Outline Styles
 $clr-outline-color: hsl(197, 68%, 65%) !default;
 $clr-outline-color-inverse: hsla(0, 0%, 100%, 0.09) !default;
-$clr-outline-blur: 2px;
-$clr-outline-spread: 2px;
+$clr-outline-blur: $clr_baselineRem_2px;
+$clr-outline-spread: $clr_baselineRem_2px;
 
 @mixin include-outline-style-form-fields(
   $outline-color: $clr-outline-color,

@@ -64,7 +64,7 @@
 
   .clr-error {
     .clr-validate-icon {
-      margin-left: -4px; // @TODO Figure out why there is this 4px gap between elements
+      margin-left: -1 * $clr_baselineRem_4px; // @TODO Figure out why there is this 4px gap between elements
       display: inline-block;
     }
 

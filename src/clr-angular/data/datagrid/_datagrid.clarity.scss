@@ -531,8 +531,8 @@
 
       // align toggle input to row hight
       .clr-toggle-wrapper {
-        margin-top: -0.55rem;
-        padding-top: 0.35rem;
+        margin-top: -1 * $clr_baselineRem_0_55;
+        padding-top: $clr_baselineRem_0_35;
       }
     }
 
@@ -692,9 +692,9 @@
         padding: $clr_baselineRem_0_75;
         background-color: $clr-datagrid-popover-bg-color;
         border: $clr-global-borderwidth solid $clr-datagrid-popover-border-color;
-        // TODO: Add theme-able variable
+        // TODO: Add theme-able variable for box-shadow color
         box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px rgba(116, 116, 116, 0.25);
-        width: 10.416667rem;
+        width: $clr_baselineRem_10_416;
         display: flex;
         flex-direction: column;
         z-index: map-get($clr-layers, column-switch); // Keeps the popup above the datagrid header.
@@ -720,7 +720,7 @@
         }
 
         .switch-content {
-          max-height: 12.5rem;
+          max-height: $clr_baselineRem_12_5;
           overflow-y: auto;
           min-height: $clr_baselineRem_1 + $clr-global-borderwidth; // prevents scrollbars in IE.
 

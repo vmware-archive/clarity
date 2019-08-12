@@ -33,7 +33,7 @@
 
   &::before {
     position: absolute;
-    #{$oppA}: -0.35rem;
+    #{$oppA}: -1 * $clr_baselineRem_0_35;
     #{$oppB}: 0;
     #{$dirA}: auto;
     #{$dirB}: auto;

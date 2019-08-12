@@ -20,7 +20,7 @@ $clr-calendar-btn-color: $clr-color-action-500 !default;
 $clr-calendar-btn-hover-focus-color: $clr-global-hover-color !default;
 $clr-calendar-btn-padding: 0;
 
-$clr-calendar-month-cell-height: 2rem;
+$clr-calendar-month-cell-height: $clr_baselineRem_2;
 $clr-calendar-month-cell-padding: $clr_baselineRem_0_5;
 
 $clr-calendar-picker-btn-font-size: $clr_baselineRem_0_75;

@@ -61,7 +61,7 @@ $clr-h1-font-weight: $clr-typography-lightfont !default;
 $clr-h1-font-family: $clr-altFont !default;
 $clr-h1-font-size: 1.333333rem !default;
 $clr-h1-letter-spacing: normal !default;
-$clr-h1-line-height: 2rem !default;
+$clr-h1-line-height: $clr_baselineRem_2 !default;
 
 //H2 - login_trademark, page_mainHeading
 $clr-h2-color: $clr-global-content-header-font-color !default;
@@ -69,7 +69,7 @@ $clr-h2-font-weight: $clr-typography-lightfont !default;
 $clr-h2-font-family: $clr-altFont !default;
 $clr-h2-font-size: 1.166667rem !default;
 $clr-h2-letter-spacing: normal !default;
-$clr-h2-line-height: 2rem !default;
+$clr-h2-line-height: $clr_baselineRem_2 !default;
 
 //H3 - login_subtitle, modal_header, page_secondaryHeading
 $clr-h3-color: $clr-global-content-header-font-color !default;

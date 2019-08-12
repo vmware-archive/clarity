@@ -43,8 +43,7 @@
     background-color: transparent;
     min-width: 9rem;
     max-width: 15rem;
-    // previous min-height of 3.5rem was too much for small signposts like in datagrid hide-show demo
-    min-height: 2rem;
+    min-height: $clr_baselineRem_2;
     max-height: 21rem;
     display: inline-block;
     position: relative;

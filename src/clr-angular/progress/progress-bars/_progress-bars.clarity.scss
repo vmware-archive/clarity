@@ -69,7 +69,7 @@
         @include clr-appearance-normal();
 
         color: $clr-progress-bgColor;
-        min-width: 2rem;
+        min-width: $clr_baselineRem_2;
         background-color: transparent;
         background-image: none;
       }

@@ -187,8 +187,8 @@
   .monthpicker-trigger,
   .yearpicker-trigger {
     //Dimensions
-    min-width: 2rem;
-    max-width: 2.5rem;
+    min-width: $clr_baselineRem_2;
+    max-width: $clr_baselineRem_2_5;
 
     //Other Props
     color: $clr-calendar-btn-color;

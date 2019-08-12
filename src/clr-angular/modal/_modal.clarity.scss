@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: $clr_baselineRem_2;
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
     padding: $clr_baselineRem_0_5;

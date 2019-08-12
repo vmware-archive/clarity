@@ -45,7 +45,7 @@ button.nav-link {
     overflow: auto;
     flex-shrink: 0;
     padding: $clr_baselineRem_4px;
-    width: 10rem;
+    width: $clr_baselineRem_10;
     min-width: $clr_baselineRem_2;
 
     .nav-link {

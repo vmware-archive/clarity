@@ -276,7 +276,7 @@
 
       .header {
         .branding {
-          max-width: 10rem;
+          max-width: $clr_baselineRem_10;
           min-width: 0;
           overflow: hidden;
         }
@@ -462,7 +462,7 @@
     .main-container {
       .header {
         .branding {
-          max-width: 6rem;
+          max-width: $clr_baselineRem_6;
           min-width: 0;
           overflow: hidden;
         }

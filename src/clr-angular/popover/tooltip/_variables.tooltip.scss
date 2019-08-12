@@ -5,7 +5,7 @@
 // Usage: ../popover/tooltip/_tooltips.clarity.scss
 $clr-tooltip-background-color: $clr-color-neutral-1000 !default;
 $clr-tooltip-border-radius: $clr_baselineRem_0_125 !default;
-$clr-tooltip-default-width: 10rem !default;
+$clr-tooltip-default-width: $clr_baselineRem_10 !default;
 $arrow-height: $clr_baselineRem_0_25 !default;
 $arrow-width: $clr_baselineRem_5px !default;
 $clr-tooltip-adjusted-margin: 0.666667rem !default;

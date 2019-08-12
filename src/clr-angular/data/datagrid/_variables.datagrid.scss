@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../data/datagrid/_datagrid.clarity.scss
-$clr-datagrid-icon-size: 0.583333rem;
+$clr-datagrid-icon-size: $clr_baselineRem_0_583;
 $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
 $clr-datagrid-font-color: hsl(203, 16%, 72%) !default;
@@ -22,7 +22,7 @@ $clr-datagrid-action-popover-hover-color: $clr-color-neutral-200 !default;
 $clr-datagrid-loading-background: hsla(0, 0%, 0%, 0.6) !default;
 $clr-datagrid-row-selected: $clr-color-neutral-1000 !default;
 
-$clr-datagrid-icon-size: 0.583333rem;
+$clr-datagrid-icon-size: $clr_baselineRem_0_583;
 $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
 $horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;

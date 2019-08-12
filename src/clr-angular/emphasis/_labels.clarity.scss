@@ -124,19 +124,16 @@
   //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
   //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
   .badge {
-    $equiDimensions: 0.625rem;
-    $rem_10px: 0.416667rem;
-
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
     justify-content: center;
-    min-width: $equiDimensions;
+    min-width: $clr_baselineRem_0_625;
     background: getLabelColor(gray, bg-color);
-    height: $equiDimensions;
+    height: $clr_baselineRem_0_625;
     line-height: normal;
-    border-radius: $rem_10px;
-    font-size: $rem_10px;
+    border-radius: $clr_baselineRem_0_416;
+    font-size: $clr_baselineRem_0_416;
     padding: 0 $clr_baselineRem_4px;
     margin-right: $clr_baselineRem_0_25;
     white-space: nowrap;

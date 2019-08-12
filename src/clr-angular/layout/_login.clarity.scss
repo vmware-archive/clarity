@@ -37,7 +37,7 @@
         .hint {
           color: $clr-login-title-color;
           margin-top: $clr_baselineRem_1_25;
-          font-size: 0.5833rem;
+          font-size: $clr_baselineRem_0_583;
         }
       }
 
@@ -156,7 +156,7 @@
 
         .signup {
           margin-top: $clr_baselineRem_0_5;
-          font-size: 0.5833rem;
+          font-size: $clr_baselineRem_0_583;
           text-align: center;
         }
       }

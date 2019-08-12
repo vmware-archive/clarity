@@ -6,8 +6,8 @@
 // Toggle
 $clr-toggle-height: $clr_baselineRem_1 !default;
 $clr-toggle-switch-base-height: $clr_baselineRem_0_75 !default;
-$clr-toggle-switch-base-width: 1.375rem !default;
-$clr-toggle-switch-height: 0.5833rem !default;
+$clr-toggle-switch-base-width: $clr_baselineRem_1_375 !default;
+$clr-toggle-switch-height: $clr_baselineRem_0_583 !default;
 $clr-toggle-switch-base-left-spacing: $clr_baselineRem_0_375 !default;
 $clr-toggle-switch-left-spacing: $clr-toggle-switch-base-width - $clr-toggle-switch-base-left-spacing +
   $clr_baselineRem_1px !default;

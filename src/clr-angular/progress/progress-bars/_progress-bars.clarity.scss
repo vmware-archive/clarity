@@ -36,7 +36,7 @@
     height: 2em;
     margin: 0;
     // NOTE: previous measurements based on base font size of 14px; remove this comment once nobody cares...
-    max-height: 0.583333rem;
+    max-height: $clr_baselineRem_0_583;
     min-height: $clr_baselineRem_4px;
     overflow: hidden;
 

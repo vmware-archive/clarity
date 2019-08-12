@@ -121,16 +121,16 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         display: inline-block;
         content: '';
         float: left;
-        height: 0.58333rem;
-        width: 0.58333rem;
+        height: $clr_baselineRem_0_583;
+        width: $clr_baselineRem_0_583;
         margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
       }
     }
 
     .stack-block-caret {
-      height: 0.58333rem;
-      width: 0.58333rem;
+      height: $clr_baselineRem_0_583;
+      width: $clr_baselineRem_0_583;
       margin-right: $clr_baselineRem_0_2;
       fill: $clr-stack-view-stack-block-caret-color;
     }

@@ -49,7 +49,7 @@ $clr-typography-boldfont: $clr-font-weight-bold;
 $clr-typography-smalltext: 0.541667rem !default; // 13px
 $clr-typography-xsmalltext: $clr_baselineRem_0_5 !default; // 12px
 $clr-typography-xxsmalltext: 0.458333rem !default; // 11px
-$clr-typography-tinytext: 0.416667rem !default; // 10px
+$clr-typography-tinytext: $clr_baselineRem_0_416 !default; // 10px
 
 $clr-global-typography-margin-top: 1rem !default;
 $clr-global-typography-margin-bottom: 0 !default;
@@ -99,7 +99,7 @@ $clr-h5-line-height: 1rem !default;
 $clr-h6-color: $clr-color-neutral-900 !default;
 $clr-h6-font-weight: $clr-typography-sboldfont !default;
 $clr-h6-font-family: $clr-altFont !default;
-$clr-h6-font-size: 0.583333rem !default;
+$clr-h6-font-size: $clr_baselineRem_0_583 !default;
 $clr-h6-letter-spacing: $clr-kerning-smalltext !default;
 $clr-h6-line-height: 1rem !default;
 
@@ -114,7 +114,7 @@ $clr-p0-line-height: 1rem !default;
 //P1 - card text, dropdown_text, page_bodyText, sidenav_text, tab_text, toc_text
 $clr-p1-color: $clr-global-font-color !default;
 $clr-p1-font-weight: $clr-typography-regfont !default;
-$clr-p1-font-size: 0.583333rem !default;
+$clr-p1-font-size: $clr_baselineRem_0_583 !default;
 $clr-p1-letter-spacing: $clr-kerning-lotsatext !default;
 $clr-p1-line-height: 1rem !default;
 

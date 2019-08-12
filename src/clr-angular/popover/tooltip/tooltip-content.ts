@@ -22,7 +22,7 @@ const SIZES: string[] = ['xs', 'sm', 'md', 'lg'];
   host: {
     '[class.tooltip-content]': 'true',
     '[style.opacity]': '1',
-    role: 'tooltip',
+    '[attr.role]': '"tooltip"',
     '[id]': 'id',
   },
 })

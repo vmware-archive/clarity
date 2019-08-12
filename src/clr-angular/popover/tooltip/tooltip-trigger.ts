@@ -23,7 +23,7 @@ export class ClrTooltipTrigger {
   private subs: Subscription[] = [];
   constructor(private ifOpenService: IfOpenService, private tooltipIdService: TooltipIdService) {
     // The aria-described by comes from the id of content. It
-    this.subs.push(this.tooltipIdService.id.subscribe(idChange => (this.ariaDescribedBy = idChange)));
+    this.subs.push(this.tooltipIdService.id.subscribe(tooltipId => (this.ariaDescribedBy = tooltipId)));
   }
 
   @HostListener('mouseenter')

@@ -6,7 +6,7 @@
 $clr-tree-border-radius: $clr-global-borderradius !default;
 $clr-tree-caret-size: $clr-icon-dimension-sm !default;
 $clr-tree-spinner-size: $clr-icon-dimension-sm !default;
-$clr-tree-node-touch-target: 1.35rem !default;
+$clr-tree-node-touch-target: $clr_baselineRem_1_33 !default;
 $clr-tree-node-children-margin: $clr-tree-node-touch-target - $clr-tree-caret-size / 2 - $clr_baselineRem_1px !default;
 $clr-tree-node-touch-target-big: $clr_baselineRem_1_5 !default;
 $clr-tree-node-touch-target-small: $clr_baselineRem_1 !default;

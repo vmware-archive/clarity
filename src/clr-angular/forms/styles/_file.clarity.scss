@@ -35,7 +35,7 @@
     }
     .clr-control-label {
       margin-top: 0;
-      line-height: 0.9rem; // Fixes extra height in FF
+      line-height: $clr_baselineRem_0_9; // Fixes extra height in FF
     }
     .btn {
       height: $clr_baselineRem_1;

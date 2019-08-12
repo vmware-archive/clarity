@@ -51,7 +51,7 @@ $clr-typography-xsmalltext: $clr_baselineRem_0_5 !default; // 12px
 $clr-typography-xxsmalltext: $clr_baselineRem_0_458 !default; // 11px
 $clr-typography-tinytext: $clr_baselineRem_0_416 !default; // 10px
 
-$clr-global-typography-margin-top: 1rem !default;
+$clr-global-typography-margin-top: $clr_baselineRem_1 !default;
 $clr-global-typography-margin-bottom: 0 !default;
 
 // Header styles
@@ -67,7 +67,7 @@ $clr-h1-line-height: $clr_baselineRem_2 !default;
 $clr-h2-color: $clr-global-content-header-font-color !default;
 $clr-h2-font-weight: $clr-typography-lightfont !default;
 $clr-h2-font-family: $clr-altFont !default;
-$clr-h2-font-size: 1.166667rem !default;
+$clr-h2-font-size: $clr_baselineRem_1_16 !default;
 $clr-h2-letter-spacing: normal !default;
 $clr-h2-line-height: $clr_baselineRem_2 !default;
 
@@ -107,7 +107,7 @@ $clr-h6-line-height: 1rem !default;
 //P0 - Intro text
 $clr-p0-color: $clr-global-font-color !default;
 $clr-p0-font-weight: $clr-typography-lightfont !default;
-$clr-p0-font-size: 0.833333rem !default;
+$clr-p0-font-size: $clr_baselineRem_0_83 !default;
 $clr-p0-letter-spacing: normal !default;
 $clr-p0-line-height: 1rem !default;
 

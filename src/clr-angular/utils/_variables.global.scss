@@ -44,12 +44,9 @@ $clr_baselineRem_1_75: convertBaselineToBase20(42); // 42px
 $clr_baselineRem_2: convertBaselineToBase20(48); // 48 px
 $clr_baselineRem_2_5: convertBaselineToBase20(60); // 60px
 $clr_baselineRem_3: convertBaselineToBase20(72); // 72px
-$clr_baselineRem_72px: $clr_baselineRem_3;
 $clr_baselineRem_3_5: convertBaselineToBase20(84); // 84px
 $clr_baselineRem_4: convertBaselineToBase20(96); // 96px
-$clr_baselineRem_4_5: convertBaselineToBase20(108); // 108px
-$clr_baselineRem_108px: $clr_baselineRem_4_5;
-$clr_baselineRem_5: convertBaselineToBase20(120); // 120px
+$clr_baselineRem_5: convertBaselineToBase20(120); // 120px <- LEFTOFF
 $clr_baselineRem_6: convertBaselineToBase20(144); // 144px
 $clr_baselineRem_9: convertBaselineToBase20(216); // 216px
 $clr_baselineRem_10: convertBaselineToBase20(240); // 240px

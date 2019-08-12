@@ -321,7 +321,7 @@
 
     .datagrid-column {
       text-align: left;
-      min-width: 4rem;
+      min-width: $clr_baselineRem_4;
       display: flex;
       flex: 1 1 auto;
       vertical-align: top;
@@ -496,7 +496,7 @@
     .datagrid-cell {
       flex: 1 1 auto;
       text-align: left;
-      min-width: 4rem;
+      min-width: $clr_baselineRem_4;
       border: none;
 
       &.datagrid-fixed-column {
@@ -969,7 +969,7 @@
 
         .datagrid-column {
           display: table-cell;
-          min-width: 4rem;
+          min-width: $clr_baselineRem_4;
         }
 
         .datagrid-column {
@@ -993,7 +993,7 @@
           // This is a hack b/c styles were not applied out of the box when moving columns into the
           // calculation container element
           display: table-cell;
-          min-width: 4rem;
+          min-width: $clr_baselineRem_4;
           font-size: $clr-table-fontsize;
           line-height: $clr-table-lineheight;
           padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;

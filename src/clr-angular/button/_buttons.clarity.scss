@@ -128,7 +128,7 @@
 }
 
 @mixin btn-min-max-widths() {
-  min-width: 3rem;
+  min-width: $clr_baselineRem_3;
   max-width: 15rem;
 }
 

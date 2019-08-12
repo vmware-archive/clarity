@@ -12,7 +12,7 @@ $clr-wizard-title-text: $clr-color-neutral-1000 !default;
 $clr-wizard-stepnav-border-size: 0.166667rem !default;
 $clr-wizard-stepnav-border-color: $clr-color-neutral-200 !default;
 $clr-wizard-stepnav-border-color--active: $clr-color-success-400 !default;
-$clr-wizard-footer-height: 3.5rem !default;
+$clr-wizard-footer-height: $clr_baselineRem_3_5 !default;
 $clr-wizard-stepnav-active-bgcolor: $clr-global-selection-color !default;
 $clr-wizard-header-action-color: $clr-color-neutral-600 !default;
 $clr-wizard-header-action-color--hovered: $clr-color-neutral-1000 !default;

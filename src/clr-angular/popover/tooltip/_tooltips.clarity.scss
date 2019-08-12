@@ -150,7 +150,7 @@
     //Tooltips Size
     &.tooltip-xs > .tooltip-content,
     .tooltip-content.tooltip-xs {
-      width: 3rem;
+      width: $clr_baselineRem_3;
     }
 
     &.tooltip-sm > .tooltip-content,

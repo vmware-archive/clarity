@@ -10,6 +10,5 @@
       "@clr/icons": ["../clr-icons"],
       "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
     }
-  },
-  "exclude": ["prerender.ts", "server.ts"]
+  }
 }

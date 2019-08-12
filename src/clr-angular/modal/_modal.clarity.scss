@@ -67,9 +67,9 @@
   }
 
   .close {
-    margin-top: -0.0416667rem;
+    margin-top: -1 * $clr_baselineRem_1px;
     margin-right: -1 * $clr_baselineRem_5px;
-    font-size: 1.0833rem;
+    font-size: $clr_baselineRem_1_0833;
     line-height: $clr_baselineRem_1;
 
     clr-icon {

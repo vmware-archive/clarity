@@ -50,8 +50,8 @@
       flex-direction: row;
       width: 100%;
       // align focus style across modal title
-      line-height: 1.13rem;
-      margin-top: -0.13rem;
+      line-height: $clr_baselineRem_1_13;
+      margin-top: -1 * $clr_baselineRem_0_13;
     }
 
     .modal-body {
@@ -331,7 +331,7 @@
     }
 
     .spinner:not(.spinner-inline):not(.clr-treenode-spinner) {
-      left: calc(50% + 4.791667rem);
+      left: calc(50% + $clr_baselineRem_4_791667);
       position: absolute;
       top: 40%;
     }

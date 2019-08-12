@@ -44,7 +44,7 @@
     min-width: $clr_baselineRem_9;
     max-width: $clr_baselineRem_15;
     min-height: $clr_baselineRem_2;
-    max-height: 21rem;
+    max-height: $clr_baselineRem_21;
     display: inline-block;
     position: relative;
     z-index: map-get($clr-layers, tooltips);
@@ -355,7 +355,7 @@
 
   .signpost-content-body {
     padding: $clr_baselineRem_1;
-    max-height: 20rem;
+    max-height: $clr_baselineRem_20;
     overflow-y: auto;
   }
 }

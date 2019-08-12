@@ -439,7 +439,7 @@ $clr-forms-select-multiple-border-color: hsl(0, 0%, 0%);
 // Checkbox
 $clr-forms-checkbox-label-color: hsl(203, 16%, 72%);
 $clr-forms-checkbox-background-color: hsl(198, 65%, 57%); // Use color here
-$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.25rem $clr-forms-checkbox-background-color;
+$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.3rem $clr-forms-checkbox-background-color;
 $clr-forms-checkbox-indeterminate-border-color: hsl(203, 16%, 72%);
 $clr-forms-checkbox-mark-color: hsl(0, 0%, 0%);
 $clr-forms-checkbox-disabled-background-color: hsl(204, 10%, 60%);
@@ -448,7 +448,7 @@ $clr-forms-checkbox-disabled-mark-color: hsl(0, 0%, 0%);
 // Radio
 $clr-forms-radio-label-color: hsl(203, 16%, 72%);
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
-$clr-forms-radio-focused-shadow: 0 0 2px 2px $clr-link-active-color;
+$clr-forms-radio-focused-shadow: 0 0 0.1rem 0.1rem $clr-link-active-color;
 $clr-forms-radio-disabled-background-color: hsl(0, 0%, 0%);
 $clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
@@ -585,7 +585,7 @@ $clr-signpost-action-color: hsl(210, 16%, 93%);
 $clr-signpost-action-hover-color: hsl(198, 65%, 57%);
 $clr-signpost-content-bg-color: hsl(198, 28%, 18%);
 $clr-signpost-content-border-color: hsl(0, 0%, 0%);
-$clr-signpost-border-size: 0.5rem;
+$clr-signpost-border-size: 0.6rem;
 $clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-content-border-color;
 $clr-signpost-pointer-invisible-border: $clr-signpost-border-size solid transparent;
 $clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpost-content-bg-color;

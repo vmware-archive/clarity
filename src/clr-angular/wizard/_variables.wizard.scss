@@ -22,13 +22,13 @@ $clr-wizard-border-radius: $clr-global-borderradius !default;
 $clr-wizard-stepnav-active-border-radius: $clr-wizard-border-radius !default;
 
 $clr-wizard-all-dialog-min-width: $clr_baselineRem_10;
-$clr-wizard-all-dialog-min-height: 17.5rem;
+$clr-wizard-all-dialog-min-height: $clr_baselineRem_17_5;
 $clr-wizard-md-nav-min-width: $clr_baselineRem_9;
 $clr-wizard-md-nav-max-width: $clr_baselineRem_10;
-$clr-wizard-md-dialog-max-height: 21rem;
+$clr-wizard-md-dialog-max-height: $clr_baselineRem_21;
 $clr-wizard-lg-nav-min-width: $clr-wizard-all-dialog-min-width;
 $clr-wizard-lg-nav-max-width: $clr_baselineRem_12;
-$clr-wizard-lg-dialog-max-height: 30rem;
+$clr-wizard-lg-dialog-max-height: $clr_baselineRem_30;
 $clr-wizard-xl-nav-min-width: $clr-wizard-all-dialog-min-width;
-$clr-wizard-xl-nav-max-width: 13rem;
+$clr-wizard-xl-nav-max-width: $clr_baselineRem_13;
 $clr-wizard-xl-dialog-max-height: 75vh;

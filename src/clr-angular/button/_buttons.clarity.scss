@@ -182,7 +182,7 @@
   .btn-group > .btn,
   .btn {
     clr-icon {
-      transform: translate3d(0rem, -1 * $clr_baselineRem_2px, 0);
+      transform: translate3d(0, -1 * $clr_baselineRem_2px, 0);
     }
   }
 
@@ -297,7 +297,7 @@
     clr-icon {
       width: $clr_baselineRem_0_5;
       height: $clr_baselineRem_0_5;
-      transform: translate3d(0rem, -1 * $clr_baselineRem_1px, 0);
+      transform: translate3d(0, -1 * $clr_baselineRem_1px, 0);
     }
   }
 

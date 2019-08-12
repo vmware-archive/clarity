@@ -311,7 +311,7 @@
     flex-direction: column;
     flex: 1 1 auto;
     align-content: flex-start;
-    min-height: 3rem; // Includes header and space for a single (non existing) row
+    min-height: $clr_baselineRem_3; // Includes header and space for a single (non existing) row
     position: relative;
     height: 100%;
 

@@ -73,19 +73,19 @@
     display: inline-block;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      min-width: 7.2rem;
+      min-width: $clr_baselineRem_7_2;
     }
   }
 
   .clr-accordion-header-has-description {
     .clr-accordion-title {
-      max-width: 11rem;
+      max-width: $clr_baselineRem_11;
     }
   }
 
   .clr-accordion-description {
     display: inline-block;
-    max-width: 650px;
+    max-width: $clr_baselineRem_650px;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
       margin-left: $clr_baselineRem_1_5;
@@ -220,11 +220,11 @@
     }
 
     .clr-accordion-inner-content {
-      padding: $clr_baselineRem_0_25 1.45833rem;
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_1_4583;
     }
 
     .clr-accordion-status {
-      width: 0.8rem;
+      width: $clr_baselineRem_0_8;
 
       clr-icon {
         width: $clr_baselineRem_0_583;

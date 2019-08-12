@@ -97,7 +97,7 @@
             & > .clr-input-group {
               max-width: 100%;
               width: 100%;
-              padding-right: 0.4rem;
+              padding-right: $clr_baselineRem_0_4;
 
               & > .clr-input {
                 width: calc(100% - #{$clr_baselineRem_1});

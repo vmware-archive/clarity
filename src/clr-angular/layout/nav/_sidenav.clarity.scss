@@ -25,7 +25,7 @@
 @include exports('sidenav.clarity') {
   .sidenav {
     line-height: $clr_baselineRem_1;
-    max-width: 13rem;
+    max-width: $clr_baselineRem_13;
     min-width: $clr_baselineRem_9;
     width: $clr-sidenav-width;
     border-right: $clr-sidenav-border-width solid $clr-sidenav-border-color;

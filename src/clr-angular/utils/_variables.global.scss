@@ -30,6 +30,7 @@ $clr_baselineRem_7px: 0.35rem;
 $clr_baselineRem_8px: convertBaselineToBase20(8);
 $clr_baselineRem_0_375: convertBaselineToBase20(9); // 9px
 $clr_baselineRem_9px: $clr_baselineRem_0_375;
+$clr_baselineRem_0_4: convertBaselineToBase20(9.6); // 9.6px
 $clr_baselineRem_0_5: convertBaselineToBase20(12); // 12px
 $clr_baselineRem_12px: $clr_baselineRem_0_5;
 $clr_baselineRem_0_667: convertBaselineToBase20(16); // 16px
@@ -57,6 +58,7 @@ $clr_baselineRem_15: convertBaselineToBase20(360); // 360px
 
 // Misc sizings
 $clr_baselineRem_1_03: convertBaselineToBase20(24.72); // 24.72px
+$clr_baselineRem_1_0833: convertBaselineToBase20(26); // 26px
 $clr_baselineRem_1_33: convertBaselineToBase20(32); // 32px
 $clr_baselineRem_1_66: convertBaselineToBase20(40); // 40px
 $clr_baselineRem_1_375: convertBaselineToBase20(33); // 33px
@@ -76,12 +78,29 @@ $clr_baselineRem_10_416: convertBaselineToBase20(250); // 250px
 $clr_baselineRem_2_25: convertBaselineToBase20(54); // 54px
 $clr_baselineRem_1_16: convertBaselineToBase20(28); // 28px
 $clr_baselineRem_1_875: convertBaselineToBase20(45); // 45px
+$clr_baselineRem_0_8: convertBaselineToBase20(19.2); // 19.2px
 $clr_baselineRem_0_9: convertBaselineToBase20(21.6); // 21.6px
 $clr_baselineRem_8_5: convertBaselineToBase20(204); // 204px
 $clr_baselineRem_0_15625: convertBaselineToBase20(3.75); // 3.75px
+$clr_baselineRem_7_2: convertBaselineToBase20(172.8); // 172.8px
+$clr_baselineRem_11: convertBaselineToBase20(264); // 264px
+$clr_baselineRem_13: convertBaselineToBase20(312); // 312px
+$clr_baselineRem_1_4583: convertBaselineToBase20(35); // 35px
+$clr_baselineRem_17_5: convertBaselineToBase20(420); // 420px
+$clr_baselineRem_20: convertBaselineToBase20(480); // 480px
+$clr_baselineRem_21: convertBaselineToBase20(504); // 504px
+$clr_baselineRem_24: convertBaselineToBase20(576); // 576px
+$clr_baselineRem_30: convertBaselineToBase20(720); // 720px
+$clr_baselineRem_36: convertBaselineToBase20(864); // 864px
+$clr_baselineRem_48: convertBaselineToBase20(1152); // 1152px
+$clr_baselineRem_0_53329167: convertBaselineToBase20(12.79); // 12.79px
+$clr_baselineRem_1_13: convertBaselineToBase20(27.12); // 27.12px
+$clr_baselineRem_0_13: convertBaselineToBase20(3.12); // 3.12px
+$clr_baselineRem_4_791667: convertBaselineToBase20(115); // 115px
 
 $clr_baselineRem_78px: 3.9rem;
 
+$clr_baselineRem_650px: 32.5rem; // 650px
 $clr_baselineRem_1080px: 54rem; // 1080px
 
 // App border radus

@@ -77,7 +77,7 @@ $clr-h3-font-weight: $clr-typography-lightfont !default;
 $clr-h3-font-family: $clr-altFont !default;
 $clr-h3-font-size: $clr_baselineRem_0_916 !default;
 $clr-h3-letter-spacing: normal !default;
-$clr-h3-line-height: 1rem !default;
+$clr-h3-line-height: $clr_baselineRem_1 !default;
 
 //H4 - card titles, page_tertiaryHeading
 $clr-h4-color: $clr-global-content-header-font-color !default;
@@ -85,7 +85,7 @@ $clr-h4-font-weight: $clr-typography-lightfont !default;
 $clr-h4-font-family: $clr-altFont !default;
 $clr-h4-font-size: $clr_baselineRem_0_75 !default;
 $clr-h4-letter-spacing: normal !default;
-$clr-h4-line-height: 1rem !default;
+$clr-h4-line-height: $clr_baselineRem_1 !default;
 
 //H5 - dgrid placeholder, datagrid_column_toggle_title, form_block_label, nav_title, page_introParagraph, page_sectionHeader
 $clr-h5-color: $clr-global-font-color !default;
@@ -93,7 +93,7 @@ $clr-h5-font-weight: $clr-typography-regfont !default;
 $clr-h5-font-family: $clr-altFont !default;
 $clr-h5-font-size: $clr_baselineRem_0_667 !default;
 $clr-h5-letter-spacing: $clr-kerning-bigtext !default;
-$clr-h5-line-height: 1rem !default;
+$clr-h5-line-height: $clr_baselineRem_1 !default;
 
 //H6 - sidenav_sectionHeader, toc_header
 $clr-h6-color: $clr-color-neutral-900 !default;
@@ -101,7 +101,7 @@ $clr-h6-font-weight: $clr-typography-sboldfont !default;
 $clr-h6-font-family: $clr-altFont !default;
 $clr-h6-font-size: $clr_baselineRem_0_583 !default;
 $clr-h6-letter-spacing: $clr-kerning-smalltext !default;
-$clr-h6-line-height: 1rem !default;
+$clr-h6-line-height: $clr_baselineRem_1 !default;
 
 // Non-header text styles
 //P0 - Intro text
@@ -109,42 +109,42 @@ $clr-p0-color: $clr-global-font-color !default;
 $clr-p0-font-weight: $clr-typography-lightfont !default;
 $clr-p0-font-size: $clr_baselineRem_0_83 !default;
 $clr-p0-letter-spacing: normal !default;
-$clr-p0-line-height: 1rem !default;
+$clr-p0-line-height: $clr_baselineRem_1 !default;
 
 //P1 - card text, dropdown_text, page_bodyText, sidenav_text, tab_text, toc_text
 $clr-p1-color: $clr-global-font-color !default;
 $clr-p1-font-weight: $clr-typography-regfont !default;
 $clr-p1-font-size: $clr_baselineRem_0_583 !default;
 $clr-p1-letter-spacing: $clr-kerning-lotsatext !default;
-$clr-p1-line-height: 1rem !default;
+$clr-p1-line-height: $clr_baselineRem_1 !default;
 
 //P2 - form_label, stackview_header
 $clr-p2-color: $clr-global-font-color !default;
 $clr-p2-font-weight: $clr-typography-sboldfont !default;
 $clr-p2-font-size: $clr-typography-smalltext !default;
 $clr-p2-letter-spacing: $clr-kerning-smalltext !default;
-$clr-p2-line-height: 1rem !default;
+$clr-p2-line-height: $clr_baselineRem_1 !default;
 
 //P3 - alerts, form_group_fields, stackview_text, table_text, tooltip_text
 $clr-p3-color: $clr-global-font-color !default;
 $clr-p3-font-weight: $clr-typography-regfont !default;
 $clr-p3-font-size: $clr-typography-smalltext !default;
 $clr-p3-letter-spacing: $clr-kerning-smalltext !default;
-$clr-p3-line-height: 1rem !default;
+$clr-p3-line-height: $clr_baselineRem_1 !default;
 
 //P4 - small alerts, dropdown_header, vertical_nav_header
 $clr-p4-color: $clr-global-font-color !default;
 $clr-p4-font-weight: $clr-typography-boldfont !default;
 $clr-p4-font-size: $clr-typography-xsmalltext !default;
 $clr-p4-letter-spacing: $clr-kerning-smalltext !default;
-$clr-p4-line-height: 1rem !default;
+$clr-p4-line-height: $clr_baselineRem_1 !default;
 
 //P5
 $clr-p5-color: $clr-global-font-color !default;
 $clr-p5-font-weight: $clr-typography-regfont !default;
 $clr-p5-font-size: $clr-typography-xsmalltext !default;
 $clr-p5-letter-spacing: $clr-kerning-smalltext !default;
-$clr-p5-line-height: 1rem !default;
+$clr-p5-line-height: $clr_baselineRem_1 !default;
 
 //P6 - card link btns, form_subtext, table_header
 $clr-p6-color: $clr-global-font-color !default;

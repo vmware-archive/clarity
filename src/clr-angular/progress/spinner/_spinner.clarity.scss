@@ -50,7 +50,7 @@
   //Spinners inside of small buttons
   .btn-sm {
     .spinner {
-      @include min-height(0.541667rem);
+      @include min-height($clr_baselineRem_0_5416);
     }
   }
 

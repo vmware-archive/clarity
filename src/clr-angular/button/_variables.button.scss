@@ -44,7 +44,7 @@ $clr-btn-border-width: $clr-global-borderwidth !default;
 // standard appearance styles - overrideable but not advertised!
 $clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
 $clr-btn-appearance-standard-letter-spacing: 0.073em !default;
-$clr-btn-appearance-standard-font-size: 0.458333rem !default;
+$clr-btn-appearance-standard-font-size: $clr_baselineRem_0_458 !default;
 $clr-btn-appearance-standard-font-weight: $clr-btn-font-weight !default;
 $clr-btn-appearance-standard-height: $clr-btn-height-sm !default;
 $clr-btn-appearance-standard-padding: $clr-btn-padding !default;

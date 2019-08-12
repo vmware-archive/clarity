@@ -46,9 +46,9 @@ $clr-typography-sboldfont: $clr-font-weight-semibold;
 $clr-typography-boldfont: $clr-font-weight-bold;
 
 // Paragraphs
-$clr-typography-smalltext: 0.541667rem !default; // 13px
+$clr-typography-smalltext: $clr_baselineRem_0_5416 !default; // 13px
 $clr-typography-xsmalltext: $clr_baselineRem_0_5 !default; // 12px
-$clr-typography-xxsmalltext: 0.458333rem !default; // 11px
+$clr-typography-xxsmalltext: $clr_baselineRem_0_458 !default; // 11px
 $clr-typography-tinytext: $clr_baselineRem_0_416 !default; // 10px
 
 $clr-global-typography-margin-top: 1rem !default;

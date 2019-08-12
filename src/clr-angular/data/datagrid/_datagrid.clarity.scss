@@ -199,8 +199,8 @@
     }
 
     .datagrid-signpost-trigger .signpost {
-      margin: -0.3rem 0;
-      height: 1.03rem;
+      margin: (-1 * $clr_baselineRem_0_3) 0;
+      height: $clr_baselineRem_1_03;
       .signpost-trigger {
         height: inherit;
         line-height: $clr_baselineRem_1;
@@ -347,7 +347,7 @@
       }
 
       .datagrid-numeric-filter-input {
-        width: 78px;
+        width: $clr_baselineRem_78px;
       }
 
       .datagrid-filter-toggle {
@@ -484,8 +484,8 @@
       }
 
       .datagrid-signpost-trigger .signpost {
-        margin: -0.3rem 0;
-        height: 1.03rem;
+        margin: (-1 * $clr_baselineRem_0_3) 0;
+        height: $clr_baselineRem_1_03;
         .signpost-trigger {
           height: inherit;
           line-height: $clr_baselineRem_1;
@@ -590,7 +590,7 @@
     .datagrid-row-detail {
       .datagrid-cell {
         display: block;
-        padding-top: 11px;
+        padding-top: $clr_baselineRem_0_458;
         &.datagrid-hidden-column {
           display: none;
         }

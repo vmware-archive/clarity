@@ -541,7 +541,7 @@ $clr-modal-backdrop-color: hsla(0, 0, 0, 0.85);
   * - ../layout/nav/_subnav.clarity.scss
   */
 // $clr-sliding-panel-width: $clr_baselineRem_15;
-// $clr-sliding-panel-width-sm: 12rem;
+// $clr-sliding-panel-width-sm: $clr_baselineRem_12;
 $clr-sliding-panel-text-color: hsl(0, 0%, 34%);
 // $clr-trigger-position: $clr-sliding-panel-width + $clr_baselineRem_0_5;
 // $clr-trigger-position-sm: $clr-sliding-panel-width-sm + $clr_baselineRem_0_5;

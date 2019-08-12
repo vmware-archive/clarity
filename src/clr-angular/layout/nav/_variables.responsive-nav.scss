@@ -6,7 +6,7 @@
 // Responsive Nav
 $clr-sliding-panel-text-color: $clr-color-neutral-700 !default;
 $clr-sliding-panel-width: $clr_baselineRem_15 !default;
-$clr-sliding-panel-width-sm: 12rem !default;
+$clr-sliding-panel-width-sm: $clr_baselineRem_12 !default;
 $clr-trigger-position: $clr-sliding-panel-width + $clr_baselineRem_0_5 !default;
 $clr-trigger-position-sm: $clr-sliding-panel-width-sm + $clr_baselineRem_0_5 !default;
 $clr-sliding-panel-z-index: map-get($clr-layers, sidepanel);

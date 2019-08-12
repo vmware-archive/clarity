@@ -19,7 +19,7 @@
   border-radius: $clr-global-borderradius;
   box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-dropdown-box-shadow;
 
-  margin-top: 0.083333rem;
+  margin-top: $clr_baselineRem_2px;
   padding: $clr_baselineRem_0_5 0;
 
   visibility: hidden;

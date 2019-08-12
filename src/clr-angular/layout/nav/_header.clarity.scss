@@ -289,7 +289,7 @@
     display: flex;
     align-items: center;
     flex: 0 0 auto;
-    max-width: 12rem;
+    max-width: $clr_baselineRem_12;
     padding: 0;
     height: $clr-header-height;
     @include header-nav-appearance();

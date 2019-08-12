@@ -56,7 +56,7 @@
 
     &::before,
     &::after {
-      height: 0.0833333rem;
+      height: $clr_baselineRem_2px;
       width: $clr_baselineRem_1;
       left: -1 * $clr_baselineRem_0_25;
       transform-origin: -3%;
@@ -86,7 +86,7 @@
     & > span::before,
     & > span::after {
       display: inline-block;
-      height: 0.0833333rem;
+      height: $clr_baselineRem_2px;
       width: $clr_baselineRem_1;
       background: $clr-color-neutral-0;
       border-radius: $clr-global-borderradius;

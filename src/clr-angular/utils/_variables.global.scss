@@ -50,6 +50,8 @@ $clr_baselineRem_5: convertBaselineToBase20(120); // 120px
 $clr_baselineRem_6: convertBaselineToBase20(144); // 144px
 $clr_baselineRem_9: convertBaselineToBase20(216); // 216px
 $clr_baselineRem_10: convertBaselineToBase20(240); // 240px
+$clr_baselineRem_12: convertBaselineToBase20(288); // 288px
+$clr_baselineRem_15: convertBaselineToBase20(360); // 360px
 
 // Misc sizings
 $clr_baselineRem_1_03: convertBaselineToBase20(24.72); // 24.72px
@@ -63,11 +65,12 @@ $clr_baselineRem_0_916: convertBaselineToBase20(22); // 22px
 $clr_baselineRem_0_458: convertBaselineToBase20(11); // 11px
 $clr_baselineRem_0_5416: convertBaselineToBase20(13); // 13px
 $clr_baselineRem_0_55: convertBaselineToBase20(13.2); // 13.2px
+$clr_baselineRem_0_65: convertBaselineToBase20(16); // 15.6px <- just making it 16px to avoid rounding
 $clr_baselineRem_0_35: convertBaselineToBase20(8.4); // 8.4px
 $clr_baselineRem_5_25: convertBaselineToBase20(126); // 126px
 $clr_baselineRem_12_5: convertBaselineToBase20(300); // 300px
 $clr_baselineRem_10_416: convertBaselineToBase20(250); // 250px
-$clr_baselineRem_15: convertBaselineToBase20(360); // 360px
+$clr_baselineRem_2_25: convertBaselineToBase20(54); // 54px
 
 $clr_baselineRem_78px: 3.9rem;
 

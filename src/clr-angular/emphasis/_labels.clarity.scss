@@ -168,13 +168,13 @@
 
   @include fixForIE10AndUp {
     .badge {
-      padding: 0.083333rem $clr_baselineRem_0_125 0;
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
     }
   }
 
   @include fixForMsEdge {
     .badge {
-      padding: 0.083333rem $clr_baselineRem_0_125 0;
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
     }
   }
 }

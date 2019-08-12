@@ -10,10 +10,10 @@ $clr-datepicker-trigger-hover-color: $clr-color-action-800 !default;
 $clr-calendar-margin-top: $clr_baselineRem_0_25;
 $clr-calendar-padding: $clr_baselineRem_0_5;
 
-$clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
+$clr-calendar-width: (7 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + $clr_baselineRem_2px;
 //(No of days in the week * 36px + 2 * 12px padding + 2px for border
 
-$clr-calendar-height: (8 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + 0.083344;
+$clr-calendar-height: (8 * $clr-calendar-click-target) + (2 * $clr-calendar-padding) + $clr_baselineRem_2px;
 //(8 = 6 date rows + 1 row for day heading + 1 row for calendar switches and month/year pickers)
 
 $clr-calendar-btn-color: $clr-color-action-500 !default;

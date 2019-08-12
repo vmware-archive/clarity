@@ -96,7 +96,7 @@
       margin: 0;
       min-width: $clr-wizard-default-space;
       line-height: $clr-wizard-default-space;
-      font-size: $clr-wizard-default-space + 0.083333rem;
+      font-size: $clr-wizard-default-space + $clr_baselineRem_2px;
       color: $clr-wizard-header-action-color;
       transition: color linear 0.2s;
 
@@ -111,7 +111,7 @@
       }
 
       clr-icon {
-        $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - 0.083333rem);
+        $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - $clr_baselineRem_2px);
         height: $clr-wizard-header-action-icon-dim;
         width: $clr-wizard-header-action-icon-dim;
       }

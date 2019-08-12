@@ -21,7 +21,7 @@
     transition: all 200ms ease-in-out;
     border-bottom: 0;
     width: 100%;
-    font-size: 0.65rem;
+    font-size: $clr_baselineRem_0_65;
     text-align: left;
 
     &:hover {
@@ -109,7 +109,7 @@
     }
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      padding: $clr_baselineRem_0_75 2.25rem;
+      padding: $clr_baselineRem_0_75 $clr_baselineRem_2_25;
     }
   }
 
@@ -117,7 +117,7 @@
     padding: $clr_baselineRem_0_75;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      padding: $clr_baselineRem_0_75 2.25rem;
+      padding: $clr_baselineRem_0_75 $clr_baselineRem_2_25;
     }
   }
 

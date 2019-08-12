@@ -10,7 +10,7 @@ $clr-dropdown-caret-icon-dimension: $clr_baselineRem_0_416 !default;
 
 // Usage: ../popover/dropdown/_dropdown.clarity.scss
 $clr-dropdown-active-text-color: $clr-color-neutral-1000 !default;
-$clr-dropdown-caret-left-margin: 0.083333rem !default;
+$clr-dropdown-caret-left-margin: $clr_baselineRem_2px !default;
 $clr-dropdown-bg-color: $clr-color-neutral-0 !default;
 $clr-dropdown-border-color: $clr-color-neutral-400 !default;
 $clr-dropdown-divider-color: $clr-color-neutral-200 !default;

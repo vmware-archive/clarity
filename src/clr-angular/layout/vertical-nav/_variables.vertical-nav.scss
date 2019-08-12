@@ -20,7 +20,7 @@ $clr-vertical-nav-icon-active-color: $clr-color-action-600 !default;
 //Vertical Nav: Align
 $clr-vertical-nav-width: 10rem !default;
 $clr-vertical-nav-min-width: 2rem !default;
-$clr-vertical-nav-item-height: 1.5rem !default;
+$clr-vertical-nav-item-height: $clr_baselineRem_1_5 !default;
 $clr-vertical-nav-item-color: $clr-color-neutral-700 !default;
 $clr-vertical-nav-item-active-color: $clr-color-neutral-700 !default;
 $clr-vertical-nav-bg-color: $clr-color-neutral-200 !default;

@@ -719,7 +719,7 @@ $clr-p8-color: $clr-global-font-color;
   *
   * Usage: ../layout/vertical-nav/_vertical-nav.clarity.scss
   */
-// $clr-vertical-nav-item-height: 1.5rem;
+// $clr-vertical-nav-item-height: $clr_baselineRem_1_5;
 $clr-vertical-nav-item-color: hsl(203, 16%, 72%);
 $clr-vertical-nav-item-active-color: hsl(0, 0%, 100%);
 $clr-vertical-nav-bg-color: hsl(201, 30%, 13%);

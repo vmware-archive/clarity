@@ -64,7 +64,7 @@
   }
 
   .clr-accordion-status {
-    width: 1.5rem;
+    width: $clr_baselineRem_1_5;
     display: inline-block;
     vertical-align: top;
   }
@@ -88,7 +88,7 @@
     max-width: 650px;
 
     @media (min-width: $clr-accordion-responsive-breakpoint) {
-      margin-left: 1.5rem;
+      margin-left: $clr_baselineRem_1_5;
     }
   }
 

@@ -2,7 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-$clr-calendar-click-target: 1.5rem;
+$clr-calendar-click-target: $clr_baselineRem_1_5;
 $clr-calendar-background-color: $clr-color-neutral-0 !default;
 $clr-calendar-border-color: $clr-color-neutral-400 !default;
 $clr-datepicker-trigger-color: $clr-color-action-600 !default;

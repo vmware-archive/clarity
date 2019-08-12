@@ -240,7 +240,7 @@
         right: $clr-header-action-caret-icon-right-position;
       }
 
-      $dropdown-nav-text-dist: 1.5rem;
+      $dropdown-nav-text-dist: $clr_baselineRem_1_5;
       .dropdown-toggle.nav-text {
         padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 

@@ -37,7 +37,7 @@ $clr_baselineRem_12px: $clr_baselineRem_0_5;
 $clr_baselineRem_0_75: convertBaselineToBase20(18); // 18px
 $clr_baselineRem_18px: $clr_baselineRem_0_75;
 $clr_baselineRem_1: convertBaselineToBase20(24); // 24px
-$clr_baselineRem_24px: $clr_baselineRem_1; // LEFTOFF we may be able to get rid of this
+$clr_baselineRem_24px: $clr_baselineRem_1;
 $clr_baselineRem_1_25: convertBaselineToBase20(30); // 30px
 $clr_baselineRem_1_5: convertBaselineToBase20(36); // 36px
 $clr_baselineRem_36px: $clr_baselineRem_1_5;

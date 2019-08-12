@@ -41,8 +41,8 @@
     .datagrid-expandable-caret-button {
       @include clr-no-styles-button();
       cursor: pointer;
-      height: 1.25rem;
-      width: 1.25rem;
+      height: $clr_baselineRem_1_25;
+      width: $clr_baselineRem_1_25;
     }
 
     .datagrid-expandable-caret-icon {
@@ -272,7 +272,7 @@
     // bug(popover): prevents action-overflow from being on top (first row).
     // Needed to keep select/radio and expand svgs underneath header on scrolling
     z-index: map-get($clr-layers, datagrid-header);
-    min-height: 1.5rem;
+    min-height: $clr_baselineRem_1_5;
     width: auto;
 
     .datagrid-column {
@@ -616,7 +616,7 @@
     align-items: stretch;
     padding: 0 $clr-table-cellpadding;
     // Account for borders
-    line-height: calc(1.5rem - #{3 * $clr-global-borderwidth});
+    line-height: $clr_baselineRem_1_5 - (3 * $clr-global-borderwidth);
     font-size: $clr-thead-font-size;
     background-color: $clr-thead-bgcolor;
     border: $clr-global-borderwidth solid $clr-table-footer-border-top-color;
@@ -628,7 +628,7 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
-      line-height: 1.5rem;
+      line-height: $clr_baselineRem_1_5;
 
       &-size {
         display: block;

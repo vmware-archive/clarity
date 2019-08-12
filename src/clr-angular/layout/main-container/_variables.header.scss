@@ -9,7 +9,7 @@ $clr-header-height: 2.5rem !default;
 
 // Usage: ../layout/nav/_header.clarity.scss
 $clr-header-bgColor: $clr-color-neutral-900 !default;
-$clr-logo-width: 1.5rem !default;
+$clr-logo-width: $clr_baselineRem_1_5 !default;
 $clr-nav-icon-size: 0.916667rem !default;
 $clr-header-section-divider-height: 1.666667rem !default;
 $clr-search-icon-width: 0.833333rem !default;

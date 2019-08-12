@@ -207,7 +207,7 @@
       $closeBtnNudge: 0.166667rem;
       width: $clr_baselineRem_1;
       display: block;
-      height: 1.5rem;
+      height: $clr_baselineRem_1_5;
       flex: 0 0 ($clr_baselineRem_1 + $closeBtnNudge);
       order: 100;
       padding-right: $closeBtnNudge;
@@ -283,7 +283,7 @@
     }
 
     .close {
-      height: 1.5rem;
+      height: $clr_baselineRem_1_5;
       overflow: hidden;
 
       clr-icon {

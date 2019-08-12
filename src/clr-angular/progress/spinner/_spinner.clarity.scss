@@ -24,7 +24,7 @@
     white-space: nowrap;
 
     &.spinner-md {
-      @include min-height(1.5rem);
+      @include min-height($clr_baselineRem_1_5);
     }
 
     &.spinner-inline,

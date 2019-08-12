@@ -48,7 +48,7 @@
       }
 
       & > .nav-link {
-        margin: $clr_baselineRem_1 0 0 1.25rem;
+        margin: $clr_baselineRem_1 0 0 $clr_baselineRem_1_25;
         padding-left: $clr_baselineRem_0_5;
 
         @include nav-link-colors();

@@ -23,7 +23,7 @@ $clr-button-horizontal-padding: $clr_baselineRem_0_5 !default;
 $clr-btn-horizontal-padding: $clr-button-horizontal-padding !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn
-$clr-button-height: 1.5rem !default;
+$clr-button-height: $clr_baselineRem_1_5 !default;
 $clr-btn-height: $clr-button-height !default;
 
 // @deprecated in 2.0 $clr-button prefix to be replaced by $clr-btn

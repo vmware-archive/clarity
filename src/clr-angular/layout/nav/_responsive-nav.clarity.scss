@@ -80,7 +80,7 @@
   }
 
   .header-hamburger-trigger {
-    $trigger-span-psuedo-positioning: -0.291667rem;
+    $trigger-span-psuedo-positioning: -1 * $clr_baselineRem_7px;
 
     & > span,
     & > span::before,
@@ -124,10 +124,10 @@
     & > span::before,
     & > span::after {
       display: inline-block;
-      height: 0.166667rem;
-      width: 0.166667rem;
+      height: $clr_baselineRem_4px;
+      width: $clr_baselineRem_4px;
       background: $clr-color-neutral-0;
-      border-radius: 0.166667rem;
+      border-radius: $clr_baselineRem_4px;
     }
 
     & > span {
@@ -167,7 +167,7 @@
         font-size: $clr_baselineRem_1;
         height: $clr-header-height;
         width: $clr-header-height;
-        padding: 0 0 0.166667rem 0;
+        padding: 0 0 $clr_baselineRem_4px 0;
         //4px to vertically align the trigger lines. display flex was not working on all browsers.
         text-align: center;
         white-space: nowrap;

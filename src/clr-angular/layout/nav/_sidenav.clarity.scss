@@ -75,7 +75,7 @@
         margin-top: 0;
         overflow: hidden;
 
-        $navlink-padding: 0.166667rem;
+        $navlink-padding: $clr_baselineRem_4px;
 
         .nav-link {
           line-height: 0.666667rem; // need a little extra to handle descenders
@@ -96,8 +96,8 @@
 
     .collapsible {
       $clr-sidenav-caret-xOffset: $clr_baselineRem_8px;
-      $clr-sidenav-caret-yOffset: 0.291667rem;
-      $clr-sidenav-caret-label-padding: 1.333333rem;
+      $clr-sidenav-caret-yOffset: $clr_baselineRem_7px;
+      $clr-sidenav-caret-label-padding: $clr_baselineRem_1_33;
 
       label {
         cursor: pointer;

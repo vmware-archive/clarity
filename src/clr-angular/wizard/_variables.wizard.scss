@@ -9,7 +9,7 @@ $clr-wizard-main-textColor: $clr-color-on-neutral-0 !default;
 $clr-wizard-sidenav-text: $clr-color-neutral-900 !default;
 $clr-wizard-sidenav-text--active: $clr-global-on-selection-color !default;
 $clr-wizard-title-text: $clr-color-neutral-1000 !default;
-$clr-wizard-stepnav-border-size: 0.166667rem !default;
+$clr-wizard-stepnav-border-size: $clr_baselineRem_4px !default;
 $clr-wizard-stepnav-border-color: $clr-color-neutral-200 !default;
 $clr-wizard-stepnav-border-color--active: $clr-color-success-400 !default;
 $clr-wizard-footer-height: $clr_baselineRem_3_5 !default;

@@ -267,7 +267,7 @@
 
       // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
       .dropdown-menu {
-        margin-top: -0.166667rem;
+        margin-top: -1 * $clr_baselineRem_4px;
         // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
         // will create empty space beyond the .main-container if the right isn't set to zero.
         // Re-evaluate later if we can come up with a better solution.

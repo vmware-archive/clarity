@@ -72,7 +72,7 @@
     height: $alert-icon-dim;
     width: $alert-icon-dim;
     margin-left: -1 * $clr_baselineRem_0_125;
-    margin-top: -0.166667rem;
+    margin-top: -1 * $clr_baselineRem_4px;
   }
 
   .alert-icon-wrapper {
@@ -204,7 +204,7 @@
     }
 
     .close {
-      $closeBtnNudge: 0.166667rem;
+      $closeBtnNudge: $clr_baselineRem_4px;
       width: $clr_baselineRem_1;
       display: block;
       height: $clr_baselineRem_1_5;
@@ -299,7 +299,7 @@
 
   .alert-sm {
     $alertSmallLineHeight: 0.666667rem;
-    $alertSmallNudge: 0.166667rem; // basically 4px
+    $alertSmallNudge: $clr_baselineRem_4px; // basically 4px
 
     // need to use 11 instead of 12 here or else vertical alignment is thrown off
     // by a pixel due to improper browser rounding; browsers aren't rendering on the

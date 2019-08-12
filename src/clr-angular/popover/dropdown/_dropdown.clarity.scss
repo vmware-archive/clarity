@@ -214,7 +214,7 @@
 
     // nested dropdown (submenu)
     .dropdown {
-      $clr-dropdown-submenu-overlap-margin: -0.166667rem;
+      $clr-dropdown-submenu-overlap-margin: -1 * $clr_baselineRem_4px;
       $clr-dropdown-submenu-vertical-margin: (-1 * $clr_baselineRem_0_75) - $clr_baselineRem_1px;
       // -1 is to account for the border that shifts the menu down by 1 pixel
 

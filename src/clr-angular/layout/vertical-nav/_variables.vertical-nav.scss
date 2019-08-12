@@ -12,7 +12,7 @@ $clr-vertical-nav-divider-color: $clr-color-neutral-700 !default;
 $clr-vertical-nav-divider-margin: $clr_baselineRem_0_5 !default;
 
 //Vertical Nav: Icons
-$clr-vertical-nav-icon-size: 0.666667rem !default;
+$clr-vertical-nav-icon-size: $clr_baselineRem_0_667 !default;
 $clr-vertical-nav-icon-right-margin: $clr_baselineRem_0_25 !default;
 $clr-vertical-nav-collapsed-caret-size: $clr_baselineRem_0_416 !default;
 $clr-vertical-nav-icon-active-color: $clr-color-action-600 !default;

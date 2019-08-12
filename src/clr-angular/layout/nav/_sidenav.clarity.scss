@@ -78,7 +78,7 @@
         $navlink-padding: $clr_baselineRem_4px;
 
         .nav-link {
-          line-height: 0.666667rem; // need a little extra to handle descenders
+          line-height: $clr_baselineRem_0_667; // need a little extra to handle descenders
           padding: $navlink-padding 0 $navlink-padding $clr_baselineRem_0_5;
 
           @include nav-link-colors();

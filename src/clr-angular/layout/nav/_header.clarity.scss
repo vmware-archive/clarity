@@ -61,7 +61,7 @@
   .branding {
     display: flex;
     flex: 0 0 auto;
-    min-width: 8.5rem;
+    min-width: $clr_baselineRem_8_5;
     padding: 0 $clr_baselineRem_1;
     height: $clr-header-height;
 

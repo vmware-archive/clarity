@@ -496,7 +496,7 @@
 
   // Inside Cards
 
-  $clr-progressInCard-height: 0.15625rem;
+  $clr-progressInCard-height: $clr_baselineRem_0_15625;
   .card-block,
   .card-footer {
     .progress,

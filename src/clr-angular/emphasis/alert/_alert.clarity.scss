@@ -298,8 +298,8 @@
   }
 
   .alert-sm {
-    $alertSmallLineHeight: 0.666667rem;
-    $alertSmallNudge: $clr_baselineRem_4px; // basically 4px
+    $alertSmallLineHeight: $clr_baselineRem_0_667;
+    $alertSmallNudge: $clr_baselineRem_4px;
 
     // need to use 11 instead of 12 here or else vertical alignment is thrown off
     // by a pixel due to improper browser rounding; browsers aren't rendering on the
@@ -383,7 +383,7 @@
 
     .alert-app-level {
       .alert-actions {
-        margin-left: 1.875rem;
+        margin-left: $clr_baselineRem_1_875;
       }
     }
   }

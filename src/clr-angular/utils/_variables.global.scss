@@ -48,8 +48,6 @@ $clr_baselineRem_1080px: 54rem; // 1080px
 // TODO: we should look into why these are needed; some may be better represented by math
 // (a.k.a. $horizontal-padding - $border-width vs. $baseline_0_41967
 // others may represent a proliferation of non-standard values
-$clr_baselineRem_0_1: convertBaselineToBase20(2.4); // 2.4px
-$clr_baselineRem_0_2: convertBaselineToBase20(4.8); // 4.8px
 $clr_baselineRem_0_667: convertBaselineToBase20(16); // 16px
 $clr_baselineRem_0_375: convertBaselineToBase20(9); // 9px
 $clr_baselineRem_0_83: convertBaselineToBase20(20); // 20px
@@ -73,6 +71,8 @@ $clr_baselineRem_650px: 32.5rem; // 650px
 
 // Harmful
 // TODO: we should consider getting rid of these as they carry the rounding problem forward
+$clr_baselineRem_0_1: convertBaselineToBase20(2.4); // 2.4px
+$clr_baselineRem_0_2: convertBaselineToBase20(4.8); // 4.8px
 $clr_baselineRem_0_13: convertBaselineToBase20(3.12); // 3.12px
 $clr_baselineRem_0_15625: convertBaselineToBase20(3.75); // 3.75px
 $clr_baselineRem_0_3: convertBaselineToBase20(7.2); // 7.2px

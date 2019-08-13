@@ -6,6 +6,8 @@
 $clr-baseline-px: 24px;
 $clr-basefont-size: 125% !default; // TODO - switch on at the end...
 $clr-baseline-int: 24 !default;
+
+// DEPRECATED in 3.0; No longer sets anything now that we are using percentage
 $clr-font-base-size: 14 !default; // Moved from original needs a better name
 
 @function convertBaselineToBase20($size: 24) {

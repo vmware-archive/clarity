@@ -15,6 +15,9 @@
   }
 
   .clr-textarea {
+    $textarea-vertical-padding: $clr-forms-baseline + $clr_baselineRem_2px;
+    $textarea-horizontal-padding: $clr-forms-baseline * 2;
+
     max-width: calc(100% - #{$clr-forms-baseline});
     height: auto;
 
@@ -23,7 +26,7 @@
     border: $clr-global-borderwidth solid $clr-forms-border-color;
     color: $clr-forms-text-color;
     border-radius: $clr-forms-baseline / 2;
-    padding: calc(#{$clr-forms-baseline} + $clr_baselineRem_2px) $clr-forms-baseline * 2;
+    padding: $textarea-vertical-padding $textarea-horizontal-padding;
     font-size: $clr-forms-field-font-size;
 
     &:focus {

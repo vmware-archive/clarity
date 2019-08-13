@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../_utils/clarity-variables';
+
 .clr-example {
   display: flex;
   align-items: center;
@@ -10,5 +12,5 @@
 }
 
 .clr-icon {
-  margin-right: 6px;
+  margin-right: $clr_baselineRem_0_25;
 }

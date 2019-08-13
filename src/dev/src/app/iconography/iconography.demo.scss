@@ -2,21 +2,24 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../../../../clr-angular/color/variables.color';
+@import '../../../../clr-angular/utils/variables.global';
+
 .selection-preview-settings {
-  max-width: 500px;
+  max-width: $clr_baselineRem_500px;
 }
 
 .clr-icon-collection {
-  padding: 1rem;
+  padding: $clr_baselineRem_1;
 
   .clr-icon-item {
-    padding: 0.5rem 0.25rem;
+    padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
     white-space: nowrap;
 
     clr-icon {
-      width: 1rem;
-      height: 1rem;
-      margin: 0 0.5rem;
+      width: $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
+      margin: 0 $clr_baselineRem_0_5;
     }
 
     span.icon-shape-name {
@@ -31,16 +34,16 @@
   justify-content: center;
   background: transparent;
   margin: 0;
-  padding: 0.5rem 0;
+  padding: $clr_baselineRem_0_5 0;
 
   &.inverse {
     background: hsl(218, 14%, 30%);
-    margin: 0.5rem 0 0;
+    margin: $clr_baselineRem_0_5 0 0;
   }
 
   clr-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0 0.25rem;
+    width: $clr_baselineRem_1_5;
+    height: $clr_baselineRem_1_5;
+    margin: 0 $clr_baselineRem_0_25;
   }
 }

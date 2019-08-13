@@ -2,7 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../clr-angular/color/variables.color';
+@import './app/_utils/clarity-variables';
 @import '../../clr-angular/utils/layers.clarity';
 
 :root {
@@ -13,7 +13,7 @@
 }
 
 .clr-example {
-  margin-top: 1rem;
+  margin-top: $clr_baselineRem_1;
 
   .main-container {
     height: auto;
@@ -25,13 +25,13 @@
   }
 
   &.squeeze {
-    padding: 2rem;
+    padding: $clr_baselineRem_2;
   }
 }
 
 .modal.static {
   position: relative;
-  padding: 3rem;
+  padding: $clr_baselineRem_3;
   z-index: map-get($clr-layers, sidepanel-bg) - 1;
 }
 
@@ -47,15 +47,15 @@
 .modal-icon {
   float: left;
   color: $clr-color-success-400;
-  font-size: 3rem;
-  margin-right: 0.5rem;
+  font-size: $clr_baselineRem_3;
+  margin-right: $clr_baselineRem_0_5;
 }
 
 .backdrop-example-container {
   position: relative;
-  padding: 1rem;
+  padding: $clr_baselineRem_1;
 }
 
 .bump-down {
-  margin-top: 1rem !important;
+  margin-top: $clr_baselineRem_1 !important;
 }

@@ -41,8 +41,14 @@ $clr_baselineRem_4px: 0.2rem;
 $clr_baselineRem_6px: $clr_baselineRem_0_25;
 $clr_baselineRem_8px: convertBaselineToBase20(8);
 $clr_baselineRem_12px: $clr_baselineRem_0_5;
+$clr_baselineRem_13px: 0.65rem;
 $clr_baselineRem_18px: $clr_baselineRem_0_75;
-$clr_baselineRem_1080px: 54rem; // 1080px
+$clr_baselineRem_100px: 5rem;
+$clr_baselineRem_300px: 15rem;
+$clr_baselineRem_500px: 25rem;
+$clr_baselineRem_600px: 30rem;
+$clr_baselineRem_1024px: 51.2rem;
+$clr_baselineRem_1080px: 54rem;
 
 // Miscellaneous sizings - rem
 // TODO: we should look into why these are needed; some may be better represented by math
@@ -66,8 +72,17 @@ $clr_baselineRem_20: convertBaselineToBase20(480); // 480px
 $clr_baselineRem_5px: 0.25rem;
 $clr_baselineRem_7px: 0.35rem;
 $clr_baselineRem_9px: $clr_baselineRem_0_375;
+$clr_baselineRem_40px: 2rem;
+$clr_baselineRem_50px: 2.5rem;
 $clr_baselineRem_78px: 3.9rem;
-$clr_baselineRem_650px: 32.5rem; // 650px
+$clr_baselineRem_108px: 5.4rem;
+$clr_baselineRem_130px: 6.5rem;
+$clr_baselineRem_150px: 7.5rem;
+$clr_baselineRem_182px: 9.1rem;
+$clr_baselineRem_336px: 16.8rem;
+$clr_baselineRem_350px: 17.5rem;
+$clr_baselineRem_590px: 29.5rem;
+$clr_baselineRem_650px: 32.5rem;
 
 // Harmful
 // TODO: we should consider getting rid of these as they carry the rounding problem forward
@@ -84,8 +99,10 @@ $clr_baselineRem_0_53329167: convertBaselineToBase20(12.79); // 12.79px
 $clr_baselineRem_0_5416: convertBaselineToBase20(13); // 13px
 $clr_baselineRem_0_55: convertBaselineToBase20(13.2); // 13.2px
 $clr_baselineRem_0_583: convertBaselineToBase20(14); // 14px
+$clr_baselineRem_0_6: convertBaselineToBase20(14.4); // 14.4px
 $clr_baselineRem_0_625: convertBaselineToBase20(15); // 15px
 $clr_baselineRem_0_65: convertBaselineToBase20(16); // 15.6px <- just making it 16px to avoid rounding
+$clr_baselineRem_0_7: convertBaselineToBase20(16.8); // 16.8px
 $clr_baselineRem_0_8: convertBaselineToBase20(19.2); // 19.2px
 $clr_baselineRem_0_875: convertBaselineToBase20(21); // 21px
 $clr_baselineRem_0_9: convertBaselineToBase20(21.6); // 21.6px
@@ -95,6 +112,7 @@ $clr_baselineRem_1_0833: convertBaselineToBase20(26); // 26px
 $clr_baselineRem_1_13: convertBaselineToBase20(27.12); // 27.12px
 $clr_baselineRem_1_16: convertBaselineToBase20(28); // 28px
 $clr_baselineRem_1_375: convertBaselineToBase20(33); // 33px
+$clr_baselineRem_1_4: convertBaselineToBase20(33.6); // 33.6px
 $clr_baselineRem_1_4583: convertBaselineToBase20(35); // 35px
 $clr_baselineRem_1_875: convertBaselineToBase20(45); // 45px
 $clr_baselineRem_4_791667: convertBaselineToBase20(115); // 115px
@@ -110,6 +128,7 @@ $clr_baselineRem_21: convertBaselineToBase20(504); // 504px
 $clr_baselineRem_24: convertBaselineToBase20(576); // 576px
 $clr_baselineRem_30: convertBaselineToBase20(720); // 720px
 $clr_baselineRem_36: convertBaselineToBase20(864); // 864px
+$clr_baselineRem_47_5: convertBaselineToBase20(1140); // 1140px
 $clr_baselineRem_48: convertBaselineToBase20(1152); // 1152px
 
 // App border radus

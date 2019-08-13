@@ -1,0 +1,25 @@
+/*!
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@mixin screen-reader-only() {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+}
+
+@include exports('a11y.clarity') {
+  .clr-sr-only {
+    @include screen-reader-only();
+  }
+}

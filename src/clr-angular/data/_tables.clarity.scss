@@ -201,7 +201,7 @@
     th,
     td {
       // nudge down to force row to 24px height with border
-      padding-top: calc(#{$clr-table--compact-verticalPadding} + $clr_baselineRem_1px);
+      padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
       padding-bottom: $clr-table--compact-verticalPadding;
     }
 
@@ -209,9 +209,9 @@
       th,
       td {
         // nudge down to force row to 24px height with border
-        padding-top: calc(#{$clr-table--compact-verticalPadding} + $clr_baselineRem_2px);
+        padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_2px;
         // account for now missing bottom border
-        padding-bottom: calc(#{$clr-table--compact-verticalPadding} + $clr_baselineRem_1px);
+        padding-bottom: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
       }
     }
   }

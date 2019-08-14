@@ -6,7 +6,7 @@
 
 //Styles for Clarity Demos
 .clr-example {
-  margin-top: baselineRem(1);
+  margin-top: $clr_baselineRem_1;
   .main-container {
     height: auto;
     padding-top: 0;

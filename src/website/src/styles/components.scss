@@ -86,13 +86,13 @@ clr-web-new-layout-alert + .component-summary:not(.no-margin) {
   }
   .component-legend-item {
     font-size: $clr_baselineRem_13px;
-    width: baselineRem(5);
+    width: $clr_baselineRem_5;
     display: inline-block;
     span {
       display: inline-block;
     }
     .symbol {
-      width: $bl-0_75;
+      width: $clr_baselineRem_0_75;
       & > img {
         margin-top: -1 * $clr_baselineRem_3px;
       }
@@ -149,7 +149,7 @@ table.buttons-cmp-table td {
 
 .buttons-modal-gfx p {
   margin-top: $clr_baselineRem_0_25;
-  margin-bottom: $bl-0_75;
+  margin-bottom: $clr_baselineRem_0_75;
 }
 
 .main-container {
@@ -179,7 +179,7 @@ table.buttons-cmp-table td {
   }
 
   .dox-header {
-    padding-top: $bl-0_75;
+    padding-top: $clr_baselineRem_0_75;
     -ms-flex: 0 0 $clr_baselineRem_4_5;
     flex: 0 0 $clr_baselineRem_4_5;
     padding-left: $bl-1_5;
@@ -223,7 +223,7 @@ table.buttons-cmp-table td {
     }
     a {
       display: inline-block;
-      padding-right: $bl-0_75;
+      padding-right: $clr_baselineRem_0_75;
       padding-top: $clr_baselineRem_2px;
       padding-bottom: $clr_baselineRem_2px;
       padding-left: $clr_baselineRem_0_5 + $clr_baselineRem_1px;
@@ -373,7 +373,7 @@ _:-ms-fullscreen,
     padding-right: 0;
   }
   .card .card-title {
-    padding-left: $bl-0_75 - 2;
+    padding-left: $clr_baselineRem_0_75 - $clr_baselineRem_2px;
   }
 }
 

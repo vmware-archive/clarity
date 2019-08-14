@@ -9,25 +9,3 @@ $clr-link-color: $clr-color-action-600 !default;
 $clr-link-hover-color: $clr-color-action-600 !default;
 $clr-link-visited-color: hsl(238, 41%, 53%) !default;
 $clr-custom-links-hover-color: $clr-color-neutral-200 !default;
-
-// These utility styles get used in demos.
-// To test theming they need to live here.
-a.link-normal:link {
-  color: $clr-link-color;
-  text-decoration: none;
-}
-
-a.link-hovered:link {
-  color: $clr-link-hover-color;
-  text-decoration: underline;
-}
-
-a.link-clicked:link {
-  color: $clr-link-active-color;
-  text-decoration: underline;
-}
-
-a.link-visited:link {
-  color: $clr-link-visited-color;
-  text-decoration: none;
-}

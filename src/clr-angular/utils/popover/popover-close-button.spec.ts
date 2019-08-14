@@ -22,9 +22,9 @@ import { ClrPopoverModuleNext } from './popover.module';
   providers: [ClrPopoverToggleService],
 })
 class TestHost {
-  @ViewChild('closeButton', { read: ElementRef })
+  @ViewChild('closeButton', { read: ElementRef, static: true })
   closeButton: ElementRef;
-  @ViewChild('toggleButton', { read: ElementRef })
+  @ViewChild('toggleButton', { read: ElementRef, static: true })
   toggleButton: ElementRef;
   openState;
 

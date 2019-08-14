@@ -3,8 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnDestroy, OnInit, Inject, ContentChild, ElementRef, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Inject, ContentChild, ElementRef, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
 
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
@@ -19,13 +18,11 @@ import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
 import { isPlatformBrowser } from '@angular/common';
-import {ClrDatagridColumnToggleTitle} from './datagrid-column-toggle-title';
-import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
+import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
+import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 
 @Component({
   selector: 'clr-dg-column-toggle',
-  // TODO(matt): confirm which aria (controls|owns) attribute is correct (34/35)
-  //
   template: `    
       <button
               role="button"
@@ -47,7 +44,7 @@ import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
               <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.keys.allColumnsSelected}}</div>
               <ng-container *ngIf="!customToggleTitle">{{commonStrings.keys.showColumns}}</ng-container>
               <ng-content select="clr-dg-column-toggle-title"></ng-content>
-              <button class="btn btn-sm btn-link"
+              <button class="btn btn-sm btn-link toggle-switch-close-button"
                       clrPopoverCloseButton
                       type="button"
                       [attr.aria-label]="commonStrings.keys.close">
@@ -56,7 +53,7 @@ import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
               </button>
           </div>
           <ul class="switch-content list-unstyled">
-              <li *ngFor="let columnState of hideableColumnStates;trackBy: trackByFn"">
+              <li *ngFor="let columnState of hideableColumnStates;trackBy: trackByFn">
                   <clr-checkbox-wrapper>
                       <input clrCheckbox type="checkbox"
                              [disabled]="hasOnlyOneVisibleColumn && !columnState.hidden"
@@ -80,8 +77,7 @@ import {ClrDatagridColumnToggleButton} from './datagrid-column-toggle-button';
   providers: [UNIQUE_ID_PROVIDER, ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 /** @deprecated since 2.0, remove in 3.0 */
-export class ClrDatagridColumnToggle implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
+export class ClrDatagridColumnToggle {
   private _allColumnsVisible: boolean;
 
   // Smart Popover

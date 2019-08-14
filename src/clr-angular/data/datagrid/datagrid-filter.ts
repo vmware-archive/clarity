@@ -3,13 +3,23 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, Input, Output, Inject, ChangeDetectionStrategy, OnDestroy, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Inject,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  PLATFORM_ID,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from './providers/filters';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
-import { ClrCommonStrings } from '../../utils/i18n/common-strings.interface';
 import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
 import { ClrAxis } from '../../utils/popover/enums/axis.enum';
 import { ClrSide } from '../../utils/popover/enums/side.enum';
@@ -36,7 +46,9 @@ import { isPlatformBrowser } from '@angular/common';
               clrPopoverAnchor
               clrPopoverOpenCloseButton
               [class.datagrid-filter-open]="open" 
-              [class.datagrid-filtered]="active"></button>
+              [class.datagrid-filtered]="active">
+          <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
+      </button>
 
       <div class="datagrid-filter"
            [id]="popoverId"
@@ -44,7 +56,7 @@ import { isPlatformBrowser } from '@angular/common';
            *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <div class="datagrid-filter-close-wrapper">
               <button type="button" class="close" clrPopoverCloseButton>
-                  <clr-icon shape="close" [attr.title]="commonStrings.close"></clr-icon>
+                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
               </button>
           </div>
 
@@ -70,6 +82,9 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
       })
     );
   }
+
+  @ViewChild('anchor', { static: false, read: ElementRef })
+  anchor: ElementRef;
 
   // Smart Popover
   public smartPosition: ClrPopoverPosition = {

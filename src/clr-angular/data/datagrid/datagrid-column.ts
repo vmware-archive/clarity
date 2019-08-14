@@ -36,8 +36,6 @@ import { ClrPopoverPositionService } from '../../utils/popover/providers/popover
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
-let nbCount: number = 0;
-
 @Component({
   selector: 'clr-dg-column',
   template: `

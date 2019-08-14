@@ -22,7 +22,7 @@ import { ClrPopoverPositionService } from './providers/popover-position.service'
   providers: [ClrPopoverToggleService],
 })
 class TestHost {
-  @ViewChild('testAnchor', { read: ElementRef })
+  @ViewChild('testAnchor', { read: ElementRef, static: true })
   anchor: ElementRef;
 
   openState;
@@ -75,7 +75,6 @@ export default function(): void {
         this.clarityElement.click();
         expect(this.hostComponent.openState).toEqual(this.toggleService.open);
         expect(this.hostComponent.openState).toBe(true); // opened state
-        console.log(this.fixture.componentInstance);
         this.clarityElement.click();
         expect(this.hostComponent.openState).toEqual(this.toggleService.open);
         expect(this.hostComponent.openState).toBe(false); // closed state

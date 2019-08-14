@@ -3,17 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  Input,
-  OnDestroy,
-  Output,
-  ElementRef,
-  NgZone,
-  Inject,
-  PLATFORM_ID } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnDestroy, Output, NgZone, PLATFORM_ID } from '@angular/core';
 
 import { RowActionService } from './providers/row-action-service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
@@ -50,7 +40,6 @@ let clrDgActionId = 0;
       <div class="datagrid-action-overflow"
            role="menu" 
            [id]="popoverId"
-           [clrStrict]="true"
            [attr.aria-hidden]="!open"
            [attr.id]="popoverId" 
            clrFocusTrap
@@ -71,7 +60,6 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   constructor(
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStringsService,
-    private elementRef: ElementRef,
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone,
     private smartToggleService: ClrPopoverToggleService,
@@ -79,8 +67,11 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   ) {
     this.rowActionService.register();
     this.subscriptions.push(
-      this.smartToggleService.openChange.subscribe(change => {
-        this.open = change;
+      this.smartToggleService.openChange.subscribe(openState => {
+        this.open = openState;
+        if (openState) {
+          this.focusFirstButton();
+        }
       })
     );
     this.popoverId = 'clr-action-menu' + clrDgActionId++;
@@ -95,22 +86,25 @@ export class ClrDatagridActionOverflow implements OnDestroy {
     return this.smartToggleService.open;
   }
 
+  private focusFirstButton(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.zone.runOutsideAngular(() => {
+        setTimeout(() => {
+          const firstButton: HTMLButtonElement = document.querySelector('button.action-item');
+          if (firstButton) {
+            firstButton.focus();
+          }
+        });
+      });
+    }
+  }
+
   @Input('clrDgActionOverflowOpen')
   public set open(open: boolean) {
-    const boolOpen = !!open;
-    if (boolOpen !== this.smartToggleService.open) {
-      this.smartToggleService.open = boolOpen;
-      this.openChange.emit(boolOpen);
-      if (boolOpen && isPlatformBrowser(this.platformId)) {
-        this.zone.runOutsideAngular(() => {
-          setTimeout(() => {
-            const firstButton = this.elementRef.nativeElement.querySelector('button.action-item');
-            if (firstButton) {
-              firstButton.focus();
-            }
-          });
-        });
-      }
+    if (!!open !== this.smartToggleService.open) {
+      // prevents chocolate mess
+      this.smartToggleService.open = !!open;
+      this.openChange.emit(!!open);
     }
   }
 

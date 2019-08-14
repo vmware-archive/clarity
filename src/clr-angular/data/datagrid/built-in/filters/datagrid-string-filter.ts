@@ -20,14 +20,7 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   providers: [{ provide: CustomFilter, useExisting: DatagridStringFilter }],
   template: `
         <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-            <!--
-                Even though this *ngIf looks useless because the filter container already has one,
-                it prevents NgControlStatus and other directives automatically added by Angular
-                on inputs with NgModel from freaking out because of their host binding changing
-                mid-change detection when the input is destroyed.
-            -->
-            <input #input type="text" name="search" [(ngModel)]="value" *ngIf="open"
-                (keyup.enter)="close()" (keyup.escape)="close()" class="clr-input" />
+            <input #input type="text" name="search" [(ngModel)]="value" class="clr-input" />
         </clr-dg-filter>
     `,
 })
@@ -40,7 +33,6 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
     private smartToggleService: ClrPopoverToggleService
   ) {
     super(filters);
-    this.subs.push(this.smartToggleService.openChange.subscribe(openChange => (this.open = openChange)));
   }
 
   /**
@@ -75,14 +67,12 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
     this.subs.push(
-      this.filterContainer.openChange.subscribe((open: boolean) => {
-        if (open) {
-          // We need the timeout because at the time this executes, the input isn't
-          // displayed yet.
-          setTimeout(() => {
-            this.domAdapter.focus(this.input.nativeElement);
-          });
-        }
+      this.smartToggleService.openChange.subscribe(openChange => {
+        this.open = openChange;
+        // The timeout in used because when this executes, the input isn't displayed.
+        setTimeout(() => {
+          this.domAdapter.focus(this.input.nativeElement);
+        });
       })
     );
   }
@@ -113,8 +103,4 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();
-
-  public close() {
-    this.open = false;
-  }
 }

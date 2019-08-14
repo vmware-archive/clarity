@@ -35,11 +35,18 @@ export default function(): void {
         filterService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         toggleService = new ClrPopoverToggleService();
         filter = new TestFilter();
-        component = new ClrDatagridFilter(filterService, new ClrCommonStringsService(), toggleService, '', null);
-        // TODO(matt): refactor check and make sure this is correct
+        component = new ClrDatagridFilter(
+          filterService,
+          new ClrCommonStringsService(),
+          toggleService,
+          'browser',
+          'clr-id-1'
+        );
       });
 
       afterEach(function() {
+        const popoverContent = document.querySelectorAll('.clr-popover-content');
+        popoverContent.forEach(content => document.body.removeChild(content));
         component.ngOnDestroy();
       });
 

@@ -17,7 +17,7 @@ import { spec, TestContext } from '../testing/helpers.spec';
   providers: [ClrPopoverEventsService, ClrPopoverToggleService],
 })
 class TestHost {
-  @ViewChild('testAnchor', { read: ElementRef })
+  @ViewChild('testAnchor', { read: ElementRef, static: true })
   anchor: ElementRef;
 }
 

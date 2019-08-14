@@ -85,11 +85,9 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   DatagridCellRenderer,
 
   // Chocolate
-  // ColumnWillyWonka,
   DatagridWillyWonka,
   ActionableOompaLoompa,
   ExpandableOompaLoompa,
-  // FilterOompaLoompa,
 
   // Built-in shortcuts
   DatagridStringFilter,

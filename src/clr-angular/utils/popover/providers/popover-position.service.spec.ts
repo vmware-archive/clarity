@@ -23,7 +23,7 @@ import { ClrAlignment } from '@clr/angular';
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class TestHost {
-  @ViewChild('anchor', { read: ElementRef })
+  @ViewChild('anchor', { read: ElementRef, static: true })
   anchor: ElementRef;
 }
 

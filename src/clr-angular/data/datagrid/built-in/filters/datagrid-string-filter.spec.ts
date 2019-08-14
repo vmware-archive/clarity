@@ -17,7 +17,6 @@ import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 
 import { DatagridStringFilter } from './datagrid-string-filter';
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
-import { ColumnToggleButtonsService } from '../../providers/column-toggle-buttons.service';
 import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
 import { ClrPopoverPositionService } from '../../../../utils/popover/providers/popover-position.service';
 import { ClrPopoverEventsService } from '../../../../utils/popover/providers/popover-events.service';
@@ -31,7 +30,6 @@ const PROVIDERS = [
   DomAdapter,
   Page,
   StateDebouncer,
-  ColumnToggleButtonsService,
   ClrPopoverEventsService,
   ClrPopoverPositionService,
   ClrPopoverToggleService,
@@ -56,6 +54,12 @@ export default function(): void {
       filter = new TestFilter();
       context = this.create(DatagridStringFilter, FullTest, PROVIDERS);
       filtersInstance = TestBed.get(FiltersProvider);
+    });
+
+    afterEach(function() {
+      const popoverContent = document.querySelectorAll('.clr-popover-content');
+      popoverContent.forEach(content => document.body.removeChild(content));
+      context.fixture.destroy();
     });
 
     it('receives an input for the filter value', function() {

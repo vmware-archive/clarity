@@ -36,7 +36,8 @@ import { ClrPopoverModuleNext } from './popover.module';
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class SimpleContent {
-  @ViewChild(ClrPopoverContent) content: ClrPopoverContent;
+  @ViewChild(ClrPopoverContent, { read: ClrPopoverContent, static: true })
+  content: ClrPopoverContent;
   public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.BEFORE,
@@ -98,6 +99,7 @@ export default function(): void {
         this.testComponent.openState = true; // Add content to the DOM
         this.fixture.detectChanges();
         const content = document.body.getElementsByClassName('clr-popover-content');
+        // Popovers are not getting cleaned up here.
         expect(content.length).toBe(1);
         expect(content[0].textContent.trim()).toBe('Popover content');
 

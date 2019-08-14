@@ -998,11 +998,11 @@
 
   .datagrid-detail-pane {
     margin-top: 0.5rem;
-    border: $clr-default-borderwidth solid $clr-datagrid-popover-border-color;
+    border: $clr-default-borderwidth solid $clr-datagrid-default-border-color;
     border-left: none;
     border-top-right-radius: $clr-global-borderradius;
     border-bottom-right-radius: $clr-global-borderradius;
-    background: $clr-white;
+    background: $clr-datagrid-popover-bg-color;
     overflow: hidden;
     display: block;
   }
@@ -1039,7 +1039,7 @@
       justify-content: flex-end;
 
       .btn.btn-link {
-        color: $clr-dark-gray;
+        color: $clr-modal-close-color;
       }
     }
   }

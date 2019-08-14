@@ -111,15 +111,15 @@ clr-web-new-layout-alert + .component-summary:not(.no-margin) {
     div.indent {
       & > h4 {
         font-size: $clr_baselineRem_1_16;
-        line-height: $bl-2_0;
+        line-height: $clr_baselineRem_2;
         font-weight: 200;
-        margin-left: -1 * $bl-2_0;
+        margin-left: -1 * $clr_baselineRem_2;
         margin-bottom: $clr_baselineRem_0_5;
       }
       & div.code-card {
-        padding-left: $bl-2_0;
+        padding-left: $clr_baselineRem_2;
         padding-top: 0;
-        padding-bottom: $bl-1_5;
+        padding-bottom: $clr_baselineRem_1_5;
       }
     }
   }
@@ -182,7 +182,7 @@ table.buttons-cmp-table td {
     padding-top: $clr_baselineRem_0_75;
     -ms-flex: 0 0 $clr_baselineRem_4_5;
     flex: 0 0 $clr_baselineRem_4_5;
-    padding-left: $bl-1_5;
+    padding-left: $clr_baselineRem_1_5;
     position: relative;
     border-bottom: $clr-global-borderwidth solid $clr-color-neutral-400;
   }
@@ -196,9 +196,9 @@ table.buttons-cmp-table td {
     height: 100%;
 
     .dox-content-wrapper {
-      padding-left: $bl-1_5;
+      padding-left: $clr_baselineRem_1_5;
       padding-top: $clr_baselineRem_0_25;
-      padding-bottom: $bl-4_0;
+      padding-bottom: $clr_baselineRem_4;
       max-width: $clr_baselineRem_37_5;
       width: 100%;
     }
@@ -240,7 +240,7 @@ table.buttons-cmp-table td {
     & ~ #design-guidelines > h3,
     & ~ #code-examples > h3 {
       // This changed b/c labels doc has demo element between .component-summary and the h3 element.
-      margin-top: $bl-2_0;
+      margin-top: $clr_baselineRem_2;
     }
   }
   .clrweb-button-demo,
@@ -251,7 +251,7 @@ table.buttons-cmp-table td {
     }
   }
   h3 + .clrweb-button-demo > h4:first-child {
-    margin-top: $bl-1_5;
+    margin-top: $clr_baselineRem_1_5;
   }
   .clrweb-datagrid-first-demo {
     h2 {
@@ -260,7 +260,7 @@ table.buttons-cmp-table td {
   }
   .clrweb-progress-demo {
     h4:not(.card-title) {
-      margin-top: $bl-1_5;
+      margin-top: $clr_baselineRem_1_5;
       font-size: $clr_baselineRem_0_667;
     }
   }
@@ -303,7 +303,7 @@ table.buttons-cmp-table td {
   .layout-documentation {
     h1 {
       font-size: $clr_baselineRem_1_16;
-      line-height: $bl-1_5;
+      line-height: $clr_baselineRem_1_5;
     }
     h1 + p {
       margin-top: $clr_baselineRem_0_5;
@@ -514,8 +514,8 @@ _:-ms-fullscreen,
   .clrweb-DoxMedia-block.is-colorblock {
     padding: 0;
     text-align: center;
-    width: $bl-2_0;
-    height: $bl-3_0;
+    width: $clr_baselineRem_2;
+    height: $clr_baselineRem_3;
   }
 }
 
@@ -523,7 +523,7 @@ _:-ms-fullscreen,
   width: 100%;
   border: $clr-global-borderwidth solid $clr-color-neutral-400;
   border-radius: $clr-global-borderradius;
-  margin-top: $bl-2_0;
+  margin-top: $clr_baselineRem_2;
   @include clrwebMakeFlexbox;
   &-items {
     -ms-flex: 1 1 auto;
@@ -545,8 +545,8 @@ _:-ms-fullscreen,
     }
   }
   &-vsWrapper {
-    -ms-flex: 0 0 $bl-2_0;
-    flex: 0 0 $bl-2_0;
+    -ms-flex: 0 0 $clr_baselineRem_2;
+    flex: 0 0 $clr_baselineRem_2;
     @include clrwebMakeFlexbox(center);
   }
   &-itemWrapper {
@@ -556,7 +556,7 @@ _:-ms-fullscreen,
     @include clrwebMakeFlexbox(center);
   }
   &-vs {
-    $vs-dimension: $bl-1_5;
+    $vs-dimension: $clr_baselineRem_1_5;
     height: $vs-dimension;
     width: $vs-dimension;
     display: block;

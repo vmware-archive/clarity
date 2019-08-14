@@ -3,15 +3,15 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 .spacious {
-  margin-top: $bl-2_0;
+  margin-top: $clr_baselineRem_2;
 }
 
 .cozy {
-  margin-top: $bl-1_5;
+  margin-top: $clr_baselineRem_1_5;
 }
 
 .cozy-sm {
-  margin-top: $bl-0_5;
+  margin-top: $clr_baselineRem_0_5;
 }
 
 p.cozy + p {
@@ -23,10 +23,10 @@ p.squish {
 }
 
 ol.indent {
-  padding-left: $bl-2_0;
-  margin-top: $bl-1_0;
+  padding-left: $clr_baselineRem_2;
+  margin-top: $clr_baselineRem_1;
   & li {
-    padding-bottom: $bl-0_5;
+    padding-bottom: $clr_baselineRem_0_5;
   }
 }
 
@@ -35,7 +35,7 @@ h6.indent + p.indent {
 }
 
 .fully-wide {
-  padding: $bl-2_0 0;
+  padding: $clr_baselineRem_2 0;
   text-align: center;
 }
 
@@ -70,7 +70,7 @@ h6.indent + p.indent {
   .nav-group label > a {
     color: inherit;
     text-decoration: none;
-    padding-left: $bl-0_5;
+    padding-left: $clr_baselineRem_0_5;
     &:hover,
     &:active,
     &:focus {
@@ -154,7 +154,7 @@ a.btn-primary {
 @media (min-width: 577px) {
   ul#content_tabs {
     .nav .nav-item {
-      margin-right: $bl-0_25;
+      margin-right: $clr_baselineRem_0_25;
     }
   }
 }
@@ -169,18 +169,18 @@ a.btn-primary {
 
 :not(.layout-home) {
   .content-area section:first-of-type h1 {
-    margin-top: -1 * $bl-0_25;
+    margin-top: -1 * $clr_baselineRem_0_25;
   }
 }
 
 .sidenav .sidenav-content {
   margin-bottom: 0;
-  padding-bottom: $bl-1_0;
+  padding-bottom: $clr_baselineRem_1;
 }
 
 .header .branding .clarity-logo {
   background-image: url(../assets/images/clarity-logo.svg);
-  margin-right: $bl-0_5 - 1;
+  margin-right: $clr_baselineRem_0_5 - 1;
   min-width: none;
   height: $clr_baselineRem_1_5;
   width: $clr_baselineRem_1_5;
@@ -213,8 +213,8 @@ a.btn-primary {
 .layout-documentation,
 .layout-news {
   .main-container .content-container .content-area {
-    padding-left: $bl-1_5;
-    padding-top: $bl-0_75;
+    padding-left: $clr_baselineRem_1_5;
+    padding-top: $clr_baselineRem_0_75;
   }
 }
 

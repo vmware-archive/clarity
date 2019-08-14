@@ -14,7 +14,7 @@
     }
   }
 
-  $clrweb-home-sectionPadding: $bl-4_0;
+  $clrweb-home-sectionPadding: $clr_baselineRem_4;
 
   section {
     padding-top: $clrweb-home-sectionPadding;
@@ -132,7 +132,7 @@
   .home-cards-container {
     background-color: rgba($clr-color-neutral-0, 0.9);
     width: 100%;
-    padding: $bl-2_0 0 $bl-1_0;
+    padding: $clr_baselineRem_2 0 $clr_baselineRem_1;
     border-radius: $clr-global-borderradius;
     margin-top: $clr_baselineRem_7 * -1;
     border: $clr-global-borderwidth solid $clr-color-neutral-300;
@@ -359,7 +359,7 @@ a.home-contact_link {
 @media (max-width: 991px) {
   .layout-home section.home-hero {
     padding-top: $clr_baselineRem_1;
-    padding-bottom: $bl-3_0;
+    padding-bottom: $clr_baselineRem_3;
     height: $clr_baselineRem_27_5;
   }
 }
@@ -376,18 +376,18 @@ a.home-contact_link {
     .home-cards-container {
       & > h1 {
         font-size: $clr_baselineRem_1_16;
-        line-height: $bl-1_5;
-        margin-bottom: $bl-1_0;
+        line-height: $clr_baselineRem_1_5;
+        margin-bottom: $clr_baselineRem_1;
       }
     }
 
     .home-card {
-      padding: $bl-1_0 $bl-0_5 0 $bl-1_0;
+      padding: $clr_baselineRem_1 $clr_baselineRem_0_5 0 $clr_baselineRem_1;
     }
 
     .home-card-angular {
-      padding-right: $bl-0_5;
-      padding-left: $bl-0_5;
+      padding-right: $clr_baselineRem_0_5;
+      padding-left: $clr_baselineRem_0_5;
     }
   }
 }
@@ -395,18 +395,18 @@ a.home-contact_link {
 @media (max-width: 768px) {
   .layout-home section {
     &.home-hero {
-      padding-top: $bl-1_0;
+      padding-top: $clr_baselineRem_1;
       height: $clr_baselineRem_20_5;
-      padding-bottom: $bl-1_0;
+      padding-bottom: $clr_baselineRem_1;
     }
 
     &.home-cards {
-      padding-bottom: $bl-1_0;
+      padding-bottom: $clr_baselineRem_1;
     }
 
     &.home-process {
-      padding-left: $bl-1_0;
-      padding-right: $bl-1_0;
+      padding-left: $clr_baselineRem_1;
+      padding-right: $clr_baselineRem_1;
     }
 
     &.home-contact {
@@ -419,17 +419,17 @@ a.home-contact_link {
   .home-hero {
     h1 {
       margin-top: 0;
-      font-size: $bl-2_0;
+      font-size: $clr_baselineRem_2;
     }
 
     .home-hero-btn {
-      margin-top: $bl-0_75;
+      margin-top: $clr_baselineRem_0_75;
       width: $clr_baselineRem_336px;
     }
 
     .btn {
       display: block;
-      margin: $bl-1_0 auto;
+      margin: $clr_baselineRem_1 auto;
     }
 
     .bg-img {

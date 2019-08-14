@@ -114,7 +114,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     max-width: calc(#{$clr-icons-content-width} - #{$clr-sidenav-width});
     position: relative;
     flex: 0 0 auto;
-    padding: $clr-baselineRem_1 $clr_baselineRem_1_5;
+    padding: $clr_baselineRem_1 $clr_baselineRem_1_5;
     margin-left: $clr-sidenav-width;
     text-align: left;
   }
@@ -145,7 +145,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
 
     input.searchbar-input {
       width: 100%;
-      padding: $clr-baselineRem_1 $clr_baselineRem_2;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2;
       height: $clr_baselineRem_2;
       margin-bottom: $clr_baselineRem_0_75;
     }

@@ -32,7 +32,7 @@ ul.whats-new-highlights {
   }
 
   & > li {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
 
     &:first-child {
       margin-top: 0;
@@ -54,11 +54,11 @@ ul.whats-new-highlights {
 
 .page-whats-new {
   h2 {
-    margin-top: $bl-1_5;
+    margin-top: $clr_baselineRem_1_5;
   }
 
   h4 {
-    margin-top: $bl-1_0;
+    margin-top: $clr_baselineRem_1;
   }
 
   h2 + h4 {
@@ -75,7 +75,7 @@ ul.whats-new-highlights {
 
 %block-content-styles {
   margin-top: 0;
-  font-size: $bl-0_75;
+  font-size: $clr_baselineRem_0_75;
   line-height: 1.2em;
 }
 
@@ -97,7 +97,7 @@ ul.whats-new-highlights {
 
   .summary-block {
     float: left;
-    margin-right: $bl-0_75;
+    margin-right: $clr_baselineRem_0_75;
   }
 
   .summary-block-title {

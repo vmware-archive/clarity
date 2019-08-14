@@ -31,7 +31,7 @@ $clr-table-borderstyle: $clr-table-borderwidth solid $clr-table-bordercolor !def
 $clr-table-font-color: $clr-color-neutral-700 !default;
 
 // Table dims and sizing
-$clr-table-fontsize: 0.541667rem;
+$clr-table-fontsize: 0.541667rem !default;
 $clr-table-lineheight: 0.5833334rem !default;
 $clr-table-lineheightPaddingShim: (1rem - $clr-table-lineheight)/2 !default;
 $clr-table-cellpadding: 0.5rem !default;

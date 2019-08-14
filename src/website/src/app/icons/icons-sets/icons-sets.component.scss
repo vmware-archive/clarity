@@ -12,7 +12,7 @@ h2 {
   padding: 0 $clr_baselineRem_0_5;
   margin-top: 0;
   &.deactivated {
-    color: hsl(0, 0%, 60%);
+    color: $clr-color-neutral-500;
   }
 }
 

@@ -142,12 +142,12 @@ code[class*='language-'] {
 }
 
 a.btn-primary {
-  color: hsl(0, 0%, 98%);
+  color: $clr-color-neutral-50;
   &:hover,
   &:active,
   &:visited,
   &:focus {
-    color: hsl(0, 0%, 100%);
+    color: $clr-color-neutral-0;
   }
 }
 

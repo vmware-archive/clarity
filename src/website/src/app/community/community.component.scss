@@ -32,7 +32,7 @@ section.community-top-section {
 }
 
 .social-card {
-  color: hsl(0, 0%, 34%);
+  color: $clr-color-neutral-700;
   text-align: center;
 
   &:hover,
@@ -42,8 +42,8 @@ section.community-top-section {
   }
 
   & > .card {
-    width: 240px;
-    margin: 12px auto;
+    width: $clr_baselineRem_10;
+    margin: $clr_baselineRem_0_5 auto;
     padding: 0 $bl-1_0;
   }
 
@@ -53,17 +53,17 @@ section.community-top-section {
 }
 
 .community-social-icon {
-  margin-bottom: 33px;
-  margin-top: 8px;
+  margin-bottom: $clr_baselineRem_1_375;
+  margin-top: $clr_baselineRem_8px;
 
   & > img {
-    height: 64px;
+    height: $clr_baselineRem_2_66;
   }
 }
 
 .social-card-socialcast .community-social-icon {
-  // Images from design are not properly sized. Tweaks needed to happen. -- smathis 2016-2018/04/21
-  padding-top: 1.3px;
+  // TODO: Images from design are not properly sized. Tweaks needed to happen.
+  padding-top: $clr_baselineRem_0_054167;
 }
 
 .community-team-cards {
@@ -81,12 +81,12 @@ section.community-top-section {
     padding: 0 $bl-1_0;
 
     .card-text {
-      margin: 0 0 12px;
+      margin: 0 0 $clr_baselineRem_0_5;
     }
   }
 
   img {
-    width: 124px;
+    width: $clr_baselineRem_5_167;
   }
 }
 
@@ -96,7 +96,7 @@ section.community-top-section {
 
 .community-team-role {
   margin-top: 0;
-  font-size: 14px;
+  font-size: $clr_baselineRem_0_583;
 }
 
 .community-team-blurb {

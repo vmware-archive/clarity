@@ -1,6 +1,7 @@
 // Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
+
 @import '../../../../../styles/clarity-imports';
 
 .card-block {
@@ -11,11 +12,11 @@
 }
 
 li.card-swatch {
-  background: hsl(0, 0%, 80%);
-  color: hsl(0, 0%, 0%);
+  background: $clr-color-neutral-400;
+  color: $clr-color-neutral-1000;
   margin: 0;
   padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
-  font-size: 16px;
+  font-size: $clr_baselineRem_0_667;
   list-style: none;
   &.upsize {
     padding-bottom: $clr_baselineRem_2;
@@ -41,20 +42,20 @@ li.card-swatch {
       margin-left: auto;
       font-size: 0.9em;
       clr-icon {
-        margin: 0 3px;
+        margin: 0 $clr_baselineRem_0_125;
         opacity: 0;
         transition: all 0.2s ease-in-out;
       }
       .copied-indication {
         display: inline-block;
-        transform: translateX(-24px);
+        transform: translateX(-1 * $clr_baselineRem_1);
         opacity: 0;
         transition: all 0.2s ease-in-out;
       }
     }
   }
   &:not(.dark-text) {
-    color: hsl(0, 0%, 100%);
+    color: $clr-color-neutral-0;
   }
   &:not(:first-child) {
     cursor: pointer;
@@ -67,7 +68,7 @@ li.card-swatch {
 
   &.copied {
     .card-swatch-content .rgb-value .copied-indication {
-      transform: translateX(0px);
+      transform: translateX(0);
       opacity: 1;
     }
   }

@@ -1,3 +1,7 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 @import '../../../styles/clarity-imports';
 @import '../icons-get-started/icons-get-started.component';
 
@@ -16,15 +20,15 @@
     margin: 0 0 $clr_baselineRem_2;
   }
   clr-icon {
-    width: 36px;
-    height: 36px;
+    width: $clr_baselineRem_1_5;
+    height: $clr_baselineRem_1_5;
     margin: 0 $clr_baselineRem_0_25;
   }
 }
 
 .variant-options {
   line-height: 2.5em;
-  padding: 12px 0 0;
+  padding: $clr_baselineRem_0_5 0 0;
 }
 .variant-table {
   td.left:first-child {

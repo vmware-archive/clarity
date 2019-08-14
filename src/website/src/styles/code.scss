@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './clarity-imports';
+
 //Styles for Clarity Demos
 .clr-example {
   margin-top: baselineRem(1);
@@ -60,6 +62,6 @@ pre {
 // Fixes specific prism issue only for labels with badges (#1700: https://github.com/vmware/clarity/issues/1700)
 .prism-fix {
   pre {
-    margin-top: 7px;
+    margin-top: $clr_baselineRem_7px;
   }
 }

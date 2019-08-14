@@ -31,8 +31,8 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     justify-content: center;
 
     .icon-bg-wrapper {
-      width: 80px;
-      height: 80px;
+      width: $clr_baselineRem_3_33;
+      height: $clr_baselineRem_3_33;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -67,7 +67,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     }
 
     .icons-header-message {
-      font-size: 16px;
+      font-size: $clr_baselineRem_0_667;
       color: $clr-color-neutral-0;
       text-align: center;
       font-weight: 100;
@@ -98,7 +98,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
   margin: $clr-searchbar-nonsticky-margintop auto 0;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 5px 0 rgba($clr-color-neutral-1000, 0);
+  box-shadow: 0 0 $clr_baselineRem_5px 0 rgba($clr-color-neutral-1000, 0);
   display: flex;
   transform: translate3d(0, 0, 0);
 
@@ -170,7 +170,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     label {
       text-transform: uppercase;
       font-weight: normal;
-      font-size: 12px;
+      font-size: $clr_baselineRem_0_5;
       padding: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_25;
     }
 
@@ -179,7 +179,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
 
       .nav-link {
         padding: $clr_baselineRem_0_125 $clr_baselineRem_0_25;
-        border-radius: 3px;
+        border-radius: $clr-global-borderradius;
       }
     }
   }
@@ -190,7 +190,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
     &.sticky {
       position: fixed;
       top: $clr-header-height + $clr-searchbar-container-height;
-      max-height: calc(100vh - 60px);
+      max-height: calc(100vh - $clr_baselineRem_2_5);
       width: inherit;
     }
 
@@ -200,7 +200,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $clr_baselineRem_32) {
   .searchbar-container {
     height: $clr-searchbar-container-height-sm;
 

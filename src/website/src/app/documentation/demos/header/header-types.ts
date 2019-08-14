@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,7 +18,7 @@ const EXAMPLE = `
         <a href="..." class="nav-link"><span class="nav-text">Interactive Analytics</span></a>
     </div>
     <div class="header-actions">
-        <a href="..." class="nav-link nav-icon">
+        <a href="..." class="nav-link nav-icon" aria-label="settings">
             <clr-icon shape="cog"></clr-icon>
         </a>
     </div>
@@ -37,7 +37,7 @@ const EXAMPLE = `
         </label>
     </form>
     <div class="header-actions">
-        <a href="..." class="nav-link nav-icon">
+        <a href="..." class="nav-link nav-icon" aria-label="settings">
             <clr-icon shape="cog"></clr-icon>
         </a>
     </div>
@@ -52,7 +52,7 @@ const EXAMPLE = `
     </div>
     <div class="header-actions">
         <clr-dropdown>
-            <button class="nav-icon" clrDropdownTrigger>
+            <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
                 <clr-icon shape="cog"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -73,10 +73,10 @@ const EXAMPLE = `
         </a>
     </div>
     <div class="header-nav">
-        <a href="..." class="nav-link nav-icon">
+        <a href="..." class="nav-link nav-icon" aria-label="cloud">
             <clr-icon shape="cloud"></clr-icon>
         </a>
-        <a href="..." class="active nav-link nav-icon">
+        <a href="..." class="active nav-link nav-icon" aria-label="folder">
             <clr-icon shape="folder"></clr-icon>
         </a>
     </div>
@@ -87,7 +87,7 @@ const EXAMPLE = `
     </form>
     <div class="header-actions">
         <clr-dropdown>
-            <button class="nav-icon" clrDropdownTrigger>
+            <button class="nav-icon" clrDropdownTrigger aria-label="open user menu">
                 <clr-icon shape="user"></clr-icon>
                 <clr-icon shape="caret down"></clr-icon>
             </button>
@@ -123,7 +123,7 @@ const EXAMPLE = `
     </div>
     <div class="header-actions">
         <clr-dropdown>
-            <button class="nav-text" clrDropdownTrigger>
+            <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
                 john.doe@vmware.com
                 <clr-icon shape="caret down"></clr-icon>
             </button>

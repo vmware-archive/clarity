@@ -200,9 +200,19 @@
       border-top-right-radius: $clr-accordion-border-radius;
     }
 
-    .clr-accordion-panel:last-child .clr-accordion-header {
-      border-bottom-left-radius: $clr-accordion-border-radius;
-      border-bottom-right-radius: $clr-accordion-border-radius;
+    .clr-accordion-panel:last-child {
+      .clr-accordion-header {
+        border-bottom-left-radius: $clr-accordion-border-radius;
+        border-bottom-right-radius: $clr-accordion-border-radius;
+      }
+
+      .clr-accordion-panel-open {
+        .clr-accordion-header {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom: 0;
+        }
+      }
     }
 
     .clr-accordion-title {

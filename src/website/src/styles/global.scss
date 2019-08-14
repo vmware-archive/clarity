@@ -1,3 +1,7 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 .spacious {
   margin-top: $bl-2_0;
 }
@@ -183,13 +187,13 @@ a.btn-primary {
 }
 
 .layout-documentation .sidenav {
-  max-width: 11.33rem;
+  max-width: $clr_baselineRem_11_33;
 }
 
 @media (min-width: 769px) {
   .layout-documentation .header .branding {
     width: 18%;
-    max-width: 11.33rem;
+    max-width: $clr_baselineRem_11_33;
   }
 }
 
@@ -265,7 +269,7 @@ a.btn-primary {
 
 .margin-right-0_25 {
   // Fix for badges demo in tree-view
-  margin-right: 0.25rem;
+  margin-right: $clr_baselineRem_0_25;
 }
 
 // Global Pages

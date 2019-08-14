@@ -1,3 +1,7 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 //Styles for Clarity Demos
 .clr-example {
   margin-top: baselineRem(1);
@@ -30,7 +34,7 @@
 .modal-icon {
   float: left;
   color: $clr-color-success-400;
-  font-size: rem(3);
+  font-size: $clr_baselineRem_3;
   margin-right: $clr_baselineRem_0_5;
 }
 

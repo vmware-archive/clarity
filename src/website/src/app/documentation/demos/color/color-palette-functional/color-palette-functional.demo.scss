@@ -89,9 +89,9 @@ li.card-swatch {
 }
 
 .clr-row {
-  margin-top: 0.5rem;
+  margin-top: $clr_baselineRem_0_5;
   &.dark {
     background: hsl(201, 30%, 15%);
-    padding-bottom: 1rem;
+    padding-bottom: $clr_baselineRem_1;
   }
 }

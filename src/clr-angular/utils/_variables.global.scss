@@ -63,6 +63,7 @@ $clr_baselineRem_1_66: convertBaselineToBase20(40); // 40px
 $clr_baselineRem_1_75: convertBaselineToBase20(42); // 42px
 $clr_baselineRem_2_25: convertBaselineToBase20(54); // 54px
 $clr_baselineRem_3_5: convertBaselineToBase20(84); // 84px
+$clr_baselineRem_4_5: convertBaselineToBase20(108); // 108px
 $clr_baselineRem_6: convertBaselineToBase20(144); // 144px
 $clr_baselineRem_9: convertBaselineToBase20(216); // 216px
 $clr_baselineRem_12: convertBaselineToBase20(288); // 288px
@@ -75,7 +76,7 @@ $clr_baselineRem_9px: $clr_baselineRem_0_375;
 $clr_baselineRem_40px: 2rem;
 $clr_baselineRem_50px: 2.5rem;
 $clr_baselineRem_78px: 3.9rem;
-$clr_baselineRem_108px: 5.4rem;
+$clr_baselineRem_108px: $clr_baselineRem_4_5;
 $clr_baselineRem_130px: 6.5rem;
 $clr_baselineRem_150px: 7.5rem;
 $clr_baselineRem_182px: 9.1rem;
@@ -109,6 +110,7 @@ $clr_baselineRem_0_9: convertBaselineToBase20(21.6); // 21.6px
 $clr_baselineRem_0_916: convertBaselineToBase20(22); // 22px
 $clr_baselineRem_1_03: convertBaselineToBase20(24.72); // 24.72px
 $clr_baselineRem_1_0833: convertBaselineToBase20(26); // 26px
+$clr_baselineRem_1_1: convertBaselineToBase20(26.4); // 26.4px
 $clr_baselineRem_1_13: convertBaselineToBase20(27.12); // 27.12px
 $clr_baselineRem_1_16: convertBaselineToBase20(28); // 28px
 $clr_baselineRem_1_375: convertBaselineToBase20(33); // 33px
@@ -121,8 +123,10 @@ $clr_baselineRem_7_2: convertBaselineToBase20(172.8); // 172.8px
 $clr_baselineRem_8_5: convertBaselineToBase20(204); // 204px
 $clr_baselineRem_10_416: convertBaselineToBase20(250); // 250px
 $clr_baselineRem_11: convertBaselineToBase20(264); // 264px
+$clr_baselineRem_11_33: convertBaselineToBase20(271.92); // 271.92px
 $clr_baselineRem_12_5: convertBaselineToBase20(300); // 300px
 $clr_baselineRem_13: convertBaselineToBase20(312); // 312px
+$clr_baselineRem_13_33: convertBaselineToBase20(320); // 320px
 $clr_baselineRem_17_5: convertBaselineToBase20(420); // 420px
 $clr_baselineRem_21: convertBaselineToBase20(504); // 504px
 $clr_baselineRem_24: convertBaselineToBase20(576); // 576px

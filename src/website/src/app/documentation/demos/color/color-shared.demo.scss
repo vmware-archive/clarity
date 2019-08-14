@@ -6,8 +6,8 @@
 
 @mixin clrdemo-colorPaletteLabels {
   text-transform: uppercase;
-  font-size: 0.8rem;
-  line-height: 1.1rem;
+  font-size: $clr_baselineRem_0_8;
+  line-height: $clr_baselineRem_1_1;
   font-weight: normal;
   letter-spacing: 0.8;
 }
@@ -15,7 +15,7 @@
 @mixin clr-colordemo-hexContrastBlockStyles {
   display: block;
   line-height: 80px;
-  font-size: 2rem;
+  font-size: $clr_baselineRem_2;
 }
 
 @mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
@@ -39,7 +39,7 @@
 @mixin clr-colordemo-sharedContainerStyles {
   font-size: 16px;
   margin: 0;
-  padding: 1.4rem;
+  padding: $clr_baselineRem_1_4;
 }
 
 @mixin clr-colordemo-sharedTableStyles {

@@ -87,6 +87,7 @@
 
 //Nav
 @import '../layout/nav/header.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
+@import '../layout/nav/links.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity
 @import '../layout/nav/nav.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 @import '../layout/nav/subnav.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 @import '../layout/nav/sidenav.clarity'; // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity

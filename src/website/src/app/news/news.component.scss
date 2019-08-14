@@ -163,15 +163,15 @@ hr {
   }
 }
 
-@media (min-width: $clr_baselineRem_41_33) and (max-width: $clr_baselineRem_43) {
+@media (min-width: 992px) and (max-width: 1032px) {
   @include responsiveWhatsNewMediaBlocks;
 }
 
-@media (max-width: $clr_baselineRem_32_9167) {
+@media (max-width: 790px) {
   @include responsiveWhatsNewMediaBlocks;
 }
 
-@media (max-width: $clr_baselineRem_19_33) {
+@media (max-width: 464px) {
   .whats-new-summary {
     .summary-block {
       float: none;

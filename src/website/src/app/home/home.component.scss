@@ -76,7 +76,7 @@
   .btn {
     width: $clr_baselineRem_7;
     height: $clr_baselineRem_2;
-    line-height: $clr_baselineRem_2 - 1;
+    line-height: $clr_baselineRem_2 - $clr_baselineRem_1px;
     margin: 0;
     margin-right: $clr_baselineRem_0_75;
     font-weight: 400;

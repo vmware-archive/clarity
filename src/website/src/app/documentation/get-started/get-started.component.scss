@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  @media (min-width: $clr_baselineRem_13_33) and (max-width: $clr_baselineRem_20) {
+  @media (min-width: 320px) and (max-width: 480px) {
     grid-template-columns: 1fr;
   }
 

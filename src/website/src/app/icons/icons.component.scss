@@ -200,7 +200,7 @@ $clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
   }
 }
 
-@media screen and (max-width: $clr_baselineRem_32) {
+@media screen and (max-width: 768px) {
   .searchbar-container {
     height: $clr-searchbar-container-height-sm;
 

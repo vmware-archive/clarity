@@ -15,11 +15,13 @@ import { ClrStackSelect } from './stack-select';
 import { ClrStackView } from './stack-view';
 import { ClrStackViewCustomTags } from './stack-view-custom-tags';
 import { ClrIconModule } from '../../icon/icon.module';
+import { ClrStackContentInput } from './stack-content-input';
 
 export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
   ClrStackView,
   ClrStackHeader,
   ClrStackBlock,
+  ClrStackContentInput,
   ClrStackViewCustomTags,
   /**
    * Undocumented experimental feature: inline editing.

@@ -27,17 +27,15 @@ export class FocusService {
   listenToArrowKeys(el: HTMLElement) {
     // The following listeners return false when there was an action to take for the key pressed,
     // in order to prevent the default behavior of that key.
+    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowup', event => !this.move(ArrowKeyDirection.UP)));
     this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowup', event => !this.move(ArrowKeyDirection.UP, event))
+      this.renderer.listen(el, 'keydown.arrowdown', event => !this.move(ArrowKeyDirection.DOWN))
     );
     this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowdown', event => !this.move(ArrowKeyDirection.DOWN, event))
+      this.renderer.listen(el, 'keydown.arrowleft', event => !this.move(ArrowKeyDirection.LEFT))
     );
     this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowleft', event => !this.move(ArrowKeyDirection.LEFT, event))
-    );
-    this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowright', event => !this.move(ArrowKeyDirection.RIGHT, event))
+      this.renderer.listen(el, 'keydown.arrowright', event => !this.move(ArrowKeyDirection.RIGHT))
     );
   }
 
@@ -51,6 +49,15 @@ export class FocusService {
   }
 
   moveTo(item: FocusableItem) {
+    /**
+     * Make sure that item is not undefined,
+     * This is safety net in the case that someone sometime decide to
+     * call this method without having FocusableItem.
+     */
+    if (item === undefined) {
+      return;
+    }
+
     if (this.current) {
       this.current.blur();
     }
@@ -58,26 +65,23 @@ export class FocusService {
     this._current = item;
   }
 
-  move(direction: ArrowKeyDirection, event: any = undefined) {
+  move(direction: ArrowKeyDirection): boolean {
+    let moved = false;
     if (this.current) {
-      // We want to prevent default behavior that results from the keydown,
-      // which may undesirably move the cursor around when using a screen reader
-      if (event) {
-        event.preventDefault();
-      }
-
       const next = this.current[direction];
       if (next) {
         // Turning the value into an Observable isn't great, but it's the fastest way to avoid code duplication.
         // If performance ever matters for this, we can refactor using additional private methods.
         const nextObs = isObservable(next) ? next : of(next);
         nextObs.subscribe(item => {
-          this.moveTo(item);
-          return true;
+          if (item) {
+            this.moveTo(item);
+            moved = true;
+          }
         });
       }
     }
-    return false;
+    return moved;
   }
 
   activateCurrent() {

@@ -44,6 +44,7 @@ testem.log
 /src/clr-angular/package.json
 /src/clr-angular/README.md
 sauceconnect.log
+.env
 
 # e2e
 /e2e/*.js

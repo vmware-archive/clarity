@@ -29,7 +29,12 @@ To ensure the highest quality and maintainability for Clarity components, we adh
 ### SCSS
 
 * SCSS variables should use the `clr` prefix and follow the `kebab-case` convention: `$clr-some-variable`.
-* Coming soon...
+* all public classes must start with clr- prefix: `clr-sr-only`
+* variables must include `!default` so they can be overwritten.
+
+```scss
+$clr-base-border-size: 21 !default;
+```
 
 ### Typescript
 

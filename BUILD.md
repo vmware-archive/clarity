@@ -1,8 +1,20 @@
 # Local setup
 
-Clarity uses NodeJS 8+ and NPM 5+ for development, so ensure you have them installed and up to date.
+Clarity uses NodeJS 8+ and NPM 5+ for development, so ensure you have them installed and up to date. To find the exact
+version you could check `.nvmrc` file.
 
 It also uses Docker for running visual diff tests, so if you plan to run those tests you'll have to have Docker installed and running.
+
+Project structure is as fallow:
+
+```bash
+src
+├── clr-angular   # All Angular Clarity components and styles
+├── clr-base      # Web Components
+├── clr-icons     # Clarity Icons
+├── dev           # Development Application
+└── website       # Website and Documentation
+```
 
 # Understanding the build
 
@@ -117,3 +129,7 @@ When contributing to clarity there is a post commit hook installed and run with
 [husky](https://github.com/typicode/husky) that will only format the files staged before they are committed. There are
 corner cases and editors that may not behave as expected and it is possible to create a pull request that fails because
 the files are not properly formatted. This command can be used to format a specific file or a space separated list of files.
+
+##### `npm run test:golden` and `npm run fix:golden`
+
+To update and test for changes against `clr-angular.d.ts`.

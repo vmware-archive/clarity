@@ -92,68 +92,117 @@ git checkout -b topic/feature-name upstream/topic/feature-name
 
 ### Commits
 
-Open-source for web UI still feels like the Wild West, so we're trying to take a page from older open-source projects, even if... _Javascript_ 🙄. In particular, if your contribution is large, split it into smaller commits that are logically self-contained. You can then submit them as separate pull requests that we will review one by one and merge progressively into the topic branch. As a rule of thumb, try to keep each pull request under a couple hundred lines of code, _unit tests included_. We realize this isn't always easy, and sometimes not possible at all, so feel free to ask how to split your contribution in the GitHub issue. In general, it's a good idea to start coding the services first and test them in isolation, then move to the components.
+Open-source for web UI still feels like the Wild West, so we're trying to take a page from older open-source
+projects, even if... _Javascript_ 🙄. In particular, if your contribution is large, split it into smaller
+commits that are logically self-contained. You can then submit them as separate pull requests that we will
+review one by one and merge progressively into the topic branch. As a rule of thumb, try to keep each pull
+request under a couple hundred lines of code, _unit tests included_. We realize this isn't always easy, and
+sometimes not possible at all, so feel free to ask how to split your contribution in the GitHub issue. In general,
+it's a good idea to start coding the services first and test them in isolation, then move to the components.
 
 For your commit message, please use the following format:
 
 ```
-[<type>] <title>
-<BLANK LINE>
-<detailed commit message>
-<BLANK LINE>
-<reference to closing an issue>
-<BLANK LINE>
+<type>(optional scope): <description>
+ < BLANK LINE >
+
+[optional body]
+[optional Github clossing reference]
+
+ < BLANK LINE >
 Signed-off-by: Your Name <your.email@example.com>
 ```
 
-Type must be one of the following:
+`type` - could be one of `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `style`.
 
-* `UX`: Research and design principles. These are typically documentation commits.
-* `ICON`: Implementation of Clarity's Custom Element icons.
-* `UI`: Implementation of Clarity's static styles, its general look-and-feel.
-* `NG`: Implementation of Clarity's Angular components.
-* `WEB`: Website and documentation updates.
-* `CORE`: Distribution, build script and tooling.
-* `SCHEMATICS`: Implementation of schematics for Angular CLI.
+Set scope of the commit if posible:
+
+```
+  a11y      accordion    alert      badge         build     button        card   checkbox
+  datagrid  date-picker  dropdown   form          grid      header        i18n   input
+  label     list         login      modal         password  progress-bar  radio  select
+  sidenav   signpost     spinner    stack-view    stepper   table         tabs   textarea
+  toggle    tooltip      tree-view  vertical-nav
+```
+
+For example a commit message could look like this:
+
+```
+fix(date-picker): adds aria-labels for buttons
+
+- adds proper labels for all datepicker buttons
+- adds live region for calendar view that updates month/year values for screen readers
+- adds live region to year view that updates the decade range for screen readers
+- updates templates for ClrCommonStringsService
+
+Close: #4242
+
+Signed-off-by: Your Name <your.email@example.com>
+```
 
 These documents provide guidance creating a well-crafted commit message:
 
+* [Angular commit message format](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#commit-message-format)
 * [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/)
 * [Closing Issues Via Commit Messages](https://help.github.com/articles/closing-issues-via-commit-messages/)
+* [Conventional Commits ](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
+* [Github: Closing issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords)
 
 ### Submitting pull requests
 
-As you implement your contribution, make sure all work stays on your local topic branch. When an isolated part of the feature is complete with unit tests, make sure to submit your pull request **against the topic branch** on the main Clarity repository instead of `master`. This will allow us to accept and merge partial changes that shouldn't make it into a production release of Clarity yet. We expect every pull request to come with exhaustive unit tests for the submitted code.
+As you implement your contribution, make sure all work stays on your local topic branch. When an isolated part of
+the feature is complete with unit tests, make sure to submit your pull request **against the topic branch** on the
+main Clarity repository instead of `master`. This will allow us to accept and merge partial changes that shouldn't
+make it into a production release of Clarity yet. We expect every pull request to come with exhaustive unit tests
+for the submitted code.
 
-**Do not, at any point, rebase your local topic branch on newer versions of `master` while your work is still in progress!** This will create issues both for you, the reviewers, and maybe even other developers who might submit additional commits to your topic branch if you requested some help.
+**Do not, at any point, rebase your local topic branch on newer versions of `master` while your work is still in progress!**
+This will create issues both for you, the reviewers, and maybe even other developers who might submit additional commits to
+your topic branch if you requested some help.
 
 To make sure your pull request will pass our automated testing, before submitting you should:
 
+* Make sure `npm run test:golden` passes.
 * Make sure `npm test` passes for each of them.
-* Make sure `npm run clang:check` passes for each of them. If not, you can run `npm run clang:format` to format your code.
-* Make sure `npm run tslint:check` passes for each of them. If not, you can run `npm run tslint:fix` to try to auto-fix some of them.
   For certain lint failures you will have to fix them manually.
 
-If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/). Remember, submit it **against the topic branch** on the main Clarity repository, not `master`!
+To test the same thing that the CI will test you could run `npm run test:travis`
+
+If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
+
+* Assign yourself to the Pull-Request
+* Assign proper labels for example if you are making documentation update only use `documentation`, `website`
+* Assign connected Issue that this PR will resolve
 
 ### Taking reviews into account
 
-During the review process of your pull request(s), some changes might be requested by Clarity team members. If that happens, add extra commits to your pull request to address these changes. Make sure these new commits are also signed and follow our commit message format.
+During the review process of your pull request(s), some changes might be requested by Clarity team members.
+If that happens, add extra commits to your pull request to address these changes.
+Make sure these new commits are also signed and follow our commit message format.
 
-**Do not amend your commits or squash them**, it will only slow down the review process by forcing reviewers to check every line again. We'll clean up the commit history ourselves when we finally merge your pull request, you don't have to worry about it.
+Please keep an eye on you Pull-Request and try to address the comments if any, as soon as posible.
 
 ### Shipping it
 
-Once your contribution is fully implemented, reviewed and ready, we will rebase the topic branch on the newest `master` and squash down to fewer commits if needed (keeping you as the author, obviously). Chances are we will be more familiar with potential conflicts that might happen, but we can work with you if you want to solve some conflicts yourself. Once rebased we will merge the topic branch into `master`, which involves a quick internal pull request you don't have to worry about, and we will finally delete the topic branch.
+Once your contribution is fully implemented, reviewed and ready, we will rebase the topic branch on the newest `master` and squash down to fewer
+commits if needed (keeping you as the author, obviously).
+
+```bash
+$ git rebase -i master
+
+# Rebase commits and resolve conflict if any.
+
+$ git push origin branch -f
+```
+
+Chances are, we will be more familiar with potential conflicts
+that might happen, but we can work with you if you want to solve some conflicts yourself.
+Once rebased we will merge the topic branch into `master`, which involves a quick internal pull
+request you don't have to worry about, and we will finally delete the topic branch.
 
 At that point, your contribution will be available in the next official release of Clarity.
 
-## New item guidelines
+### Backport to older version.
 
-When a new item is created and added to the public API, the following things should be verified to ensure it is exported and tested fully.
-
-* Ensure every new public item is re-exported through the `public_api.ts` file. Usually there are `index.ts` files in directories that any public items should be re-exported through, and then the `index.ts` files are re-exported up the tree. This only applies inside of `src/clr-angular` directory.
-* Ensure that every time you import inside of `clr-angular` directory that you import from the direct file, and not an index. This can be misleading and hard to catch, but it breaks AoT compilation if you don't export it correctly.
-* Include a reference to the public item in the `dev` app somewhere, use it if possible but just importing it and setting it as a reference in the component properties ensures that we can test AoT compilation and proper visibility of items. It should be imported from `@clr/angular` and not from a relative path.
-
-If it is not meant to be a public item (like a private service), be sure not to include it in the `public_api.ts`.
+In some cases you will have to backport the changes into older version. Everything is the same here, only the
+target branch will be the older version that is effected.

@@ -12,6 +12,15 @@
   --clr-test-border-color: magenta;
 }
 
+.main-container {
+  height: auto !important;
+}
+
+.sidenav .sidenav-content {
+  // Remove the header height
+  height: calc(2.5rem - 100vh);
+}
+
 .clr-example {
   margin-top: 1rem;
 

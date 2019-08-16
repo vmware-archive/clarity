@@ -13,7 +13,7 @@ system:
       path: 'reports/gemini'
 
 
-#compositeImage: true
+compositeImage: true
 #sessionsPerBrowser: 2
 tolerance: 3.5
 windowSize: 1600x2400

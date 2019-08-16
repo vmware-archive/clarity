@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -28,36 +28,36 @@
 <form clrForm clrLayout="vertical">
 
   <clr-toggle-container>
-    <label>First</label>
+    <label>Default</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.one.one" value="one" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.default.one" name="vertical-default-one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.one.two" value="two" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.default.two" name="vertical-default-two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.one.three" value="three" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.default.three" name="vertical-default-three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
 
   <clr-toggle-container clrInline>
-    <label>Second</label>
+    <label>Inline</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.two.one" value="one" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.inline.one" name="vertical.inline.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.two.two" value="two" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.inline.two" name="vertical.inline.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.two.three" value="three" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.inline.three" name="vertical.inline.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
@@ -67,51 +67,69 @@
     <label>Disabled</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.three.one" value="one" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.disabled.one" name="vertical.disabled.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.three.two" value="two" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.disabled.two" name="vertical.disabled.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.three.three" value="three" name="three" [disabled]="disabled" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.disabled.three" name="vertical.disabled.three" [disabled]="disabled" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
 
   <clr-toggle-container class="clr-toggle-right">
-    <label>Alternate layout</label>
+    <label>Right toggle</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.four.one" value="one" name="four" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.right.one" name="vertical.right.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.four.two" value="two" name="four" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.right.two" name="vertical.right.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.four.three" value="three" name="four" [disabled]="disabled" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.right.three" name="vertical.right.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
 
   <clr-toggle-container clrInline class="clr-toggle-right">
-    <label>Alternate layout inline</label>
+    <label>Right toggle inline</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.five.one" value="one" name="five" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.rightInline.one" name="vertical.rightInline.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.five.two" value="two" name="five" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.rightInline.two" name="vertical.rightInline.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.five.three" value="three" name="five" [disabled]="disabled" />
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.rightInline.three" name="vertical.rightInline.three" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container>
+    <label>Error</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.error.one" name="vertical.error.one" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.error.two" name="vertical.error.two" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="vertical.error.three" name="vertical.error.three" required />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
@@ -122,125 +140,229 @@
 <h4>Horizontal</h4>
 
 <form clrForm clrLayout="horizontal">
+  
   <clr-toggle-container>
-    <label>First</label>
+    <label>Default</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.one.one" value="one" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.default.one" name="horizontal.default.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.one.two" value="two" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.default.two" name="horizontal.default.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.one.three" value="three" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.default.three" name="horizontal.default.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
-
-  <p>Selected: {{horizontal.one}}</p>
 
   <clr-toggle-container clrInline>
-    <label>Second</label>
+    <label>Inline</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.two.one" value="one" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.inline.one" name="horizontal.inline.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.two.two" value="two" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.inline.two" name="horizontal.inline.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.two.three" value="three" name="two" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.inline.three" name="horizontal.inline.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
 
-  <p>Selected: {{horizontal.two}}</p>
-
-  <clr-toggle-container clrInline>
-    <label>Second</label>
+  <clr-toggle-container>
+    <label>Disabled</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.three.one" value="one" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.disabled.one" name="horizontal.disabled.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.three.two" value="two" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.disabled.two" name="horizontal.disabled.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.three.three" value="three" name="three" [disabled]="disabled" />
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.disabled.three" name="horizontal.disabled.three" [disabled]="disabled" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
+
+  <clr-toggle-container class="clr-toggle-right">
+    <label>Right toggle</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.right.one" name="horizontal.right.one" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.right.two" name="horizontal.right.two" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.right.three" name="horizontal.right.three" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container clrInline class="clr-toggle-right">
+    <label>Right toggle inline</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.rightInline.one" name="horizontal.rightInline.one" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.rightInline.two" name="horizontal.rightInline.two" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.rightInline.three" name="horizontal.rightInline.three" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container>
+    <label>Error</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.error.one" name="horizontal.error.one" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.error.two" name="horizontal.error.two" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="horizontal.error.three" name="horizontal.error.three" required />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
 </form>
 
 <h4>Compact</h4>
 
 <form clrForm clrLayout="compact">
+ 
   <clr-toggle-container>
-    <label>First</label>
+    <label>Default</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.one.one" value="one" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.default.one" name="compact.default.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.one.two" value="two" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.default.two" name="compact.default.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.one.three" value="three" name="one" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.default.three" name="compact.default.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
-
-  <p>Selected: {{compact.one}}</p>
-
-  <clr-toggle-container clrInline="false">
-    <label>Second</label>
-    <clr-toggle-wrapper>
-      <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.two.one" value="one" name="two" />
-    </clr-toggle-wrapper>
-    <clr-toggle-wrapper>
-      <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.two.two" value="two" name="two" />
-    </clr-toggle-wrapper>
-    <clr-toggle-wrapper>
-      <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.two.three" value="three" name="two" />
-    </clr-toggle-wrapper>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>There was an error</clr-control-error>
-  </clr-toggle-container>
-
-  <p>Selected: {{compact.two}}</p>
 
   <clr-toggle-container clrInline>
-    <label>Second</label>
+    <label>Inline</label>
     <clr-toggle-wrapper>
       <label>One</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.three.one" value="one" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.inline.one" name="compact.inline.one" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Two</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.three.two" value="two" name="three" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.inline.two" name="compact.inline.two" />
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.three.three" value="three" name="three" [disabled]="disabled" />
+      <input clrToggle type="checkbox" [(ngModel)]="compact.inline.three" name="compact.inline.three" />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
+
+  <clr-toggle-container>
+    <label>Disabled</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.disabled.one" name="compact.disabled.one" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.disabled.two" name="compact.disabled.two" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.disabled.three" name="compact.disabled.three" [disabled]="disabled" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container class="clr-toggle-right">
+    <label>Right toggle</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.right.one" name="compact.right.one" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.right.two" name="compact.right.two" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.right.three" name="compact.right.three" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container clrInline class="clr-toggle-right">
+    <label>Right toggle inline</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.rightInline.one" name="compact.rightInline.one" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.rightInline.two" name="compact.rightInline.two" />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.rightInline.three" name="compact.rightInline.three" />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
+  <clr-toggle-container>
+    <label>Error</label>
+    <clr-toggle-wrapper>
+      <label>One</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.error.one" name="compact.error.one" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Two</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.error.two" name="compact.error.two" required />
+    </clr-toggle-wrapper>
+    <clr-toggle-wrapper>
+      <label>Three</label>
+      <input clrToggle type="checkbox" [(ngModel)]="compact.error.three" name="compact.error.three" required />
+    </clr-toggle-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-toggle-container>
+
 </form>
 
 
@@ -250,14 +372,14 @@
 
 <form class="clr-form">
   <div class="clr-form-control">
-    <label class="clr-control-label">Basic checkbox</label>
+    <label class="clr-control-label">Default</label>
     <div class="clr-control-container">
       <div class="clr-toggle-wrapper">
         <input type="checkbox" id="vertical-checkbox1" name="checkbox-basic" class="clr-toggle">
         <label for="vertical-checkbox1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="vertical-checkbox2" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="vertical-checkbox2" name="checkbox-basic" class="clr-toggle" checked>
         <label for="vertical-checkbox2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
@@ -273,14 +395,14 @@
 
   <div class="clr-form-control">
     <label class="clr-control-label">
-      Basic checkbox, error</label>
+      Error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-toggle-wrapper">
         <input type="checkbox" name="checkbox2" id="vertical-checkbox4" placeholder="Enter value here" class="clr-toggle">
         <label for="vertical-checkbox4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="vertical-checkbox5" placeholder="Enter value here" class="clr-toggle">
+        <input type="checkbox" name="checkbox2" id="vertical-checkbox5" placeholder="Enter value here" class="clr-toggle" checked>
         <label for="vertical-checkbox5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
@@ -296,14 +418,14 @@
 
   <div class="clr-form-control">
     <label class="clr-control-label">
-      Inline checkbox</label>
+      Inline</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-toggle-wrapper">
         <input type="checkbox" name="checkbox3" id="vertical-checkbox7" placeholder="Enter value here" class="clr-toggle">
         <label for="vertical-checkbox7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="vertical-checkbox8" placeholder="Enter value here" class="clr-toggle">
+        <input type="checkbox" name="checkbox3" id="vertical-checkbox8" placeholder="Enter value here" class="clr-toggle" checked>
         <label for="vertical-checkbox8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">

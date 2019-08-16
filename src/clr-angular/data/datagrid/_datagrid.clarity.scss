@@ -793,8 +793,9 @@
     }
     .datagrid-cell {
       clr-icon {
-        margin-top: calc(-1 * $clr_baselineRem_0_125 - $clr_baselineRem_1px);
-        margin-bottom: -1 - $clr_baselineRem_0_125;
+        margin-top: (-1 * $clr_baselineRem_0_125) - $clr_baselineRem_1px;
+        margin-bottom: -1 * $clr_baselineRem_0_125;
+        transform: translateY(-1 * $clr_baselineRem_1px);
       }
       .badge {
         margin-top: -1 * $clr_baselineRem_0_125;

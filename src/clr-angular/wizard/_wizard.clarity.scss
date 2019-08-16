@@ -331,7 +331,7 @@
     }
 
     .spinner:not(.spinner-inline):not(.clr-treenode-spinner) {
-      left: calc(50% + $clr_baselineRem_4_791667);
+      left: calc(50% + #{$clr_baselineRem_4_791667});
       position: absolute;
       top: 40%;
     }

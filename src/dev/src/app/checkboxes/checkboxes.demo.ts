@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input, Directive } from '@angular/core';
+import { Component, Input, Directive, ViewChildren, QueryList } from '@angular/core';
 import {
   ValidatorFn,
   Validators,
@@ -16,6 +16,7 @@ import {
   Validator,
   AbstractControl,
 } from '@angular/forms';
+import { ClrForm } from '@clr/angular';
 
 // @TODO Work out the support for validating checkbox groups
 @Directive({
@@ -62,58 +63,34 @@ function minimumSelection(minimum = 1): ValidatorFn {
   templateUrl: './checkboxes.demo.html',
 })
 export class CheckboxesDemo {
+  @ViewChildren(ClrForm) forms: QueryList<ClrForm>;
+
   disabled = true;
   vertical = {
-    one: {
-      one: '',
-      two: '',
-      three: '',
+    default: {
+      one: false,
+      two: true,
+      three: false,
     },
-    two: {
-      one: '',
-      two: '',
-      three: '',
+    inline: {
+      one: false,
+      two: true,
+      three: false,
     },
-    three: {
-      one: '',
-      two: '',
-      three: '',
+    disabled: {
+      one: false,
+      two: true,
+      three: false,
     },
-  };
-  horizontal = {
-    one: {
-      one: '',
-      two: '',
-      three: '',
-    },
-    two: {
-      one: '',
-      two: '',
-      three: '',
-    },
-    three: {
-      one: '',
-      two: '',
-      three: '',
+    error: {
+      one: false,
+      two: false,
+      three: false,
     },
   };
-  compact = {
-    one: {
-      one: '',
-      two: '',
-      three: '',
-    },
-    two: {
-      one: '',
-      two: '',
-      three: '',
-    },
-    three: {
-      one: '',
-      two: '',
-      three: '',
-    },
-  };
+
+  horizontal = Object.assign({}, this.vertical);
+  compact = Object.assign({}, this.vertical);
 
   vms = ['127.0.0.1', '192.168.0.1', '8.8.8.8'];
   reactiveForm = new FormGroup({
@@ -127,4 +104,9 @@ export class CheckboxesDemo {
       return { ip: vm, selected: false };
     }),
   };
+
+  ngAfterViewInit() {
+    // This just forces validation on each form on load for visual testing
+    this.forms.forEach(f => f.markAsTouched());
+  }
 }

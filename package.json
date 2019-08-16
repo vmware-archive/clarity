@@ -98,6 +98,9 @@
     "web-animations-js": "github:angular/web-animations-js#release_pr208",
     "zone.js": "~0.9.1"
   },
+  "optionalDependencies": {
+    "cypress": "3.4.1"
+  },
   "devDependencies": {
     "@angular-builders/custom-webpack": "8.1.0",
     "@angular-builders/dev-server": "7.3.1",
@@ -128,7 +131,6 @@
     "conventional-changelog-cli": "2.0.23",
     "cpy-cli": "2.0.0",
     "csso-cli": "2.0.2",
-    "cypress": "3.2.0",
     "del-cli": "1.1.0",
     "detect-browser": "4.1.0",
     "gemini": "7.4.1",

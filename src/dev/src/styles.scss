@@ -12,6 +12,14 @@
   --clr-test-border-color: magenta;
 }
 
+.main-container {
+  height: auto !important;
+}
+
+.sidenav .sidenav-content {
+  height: 100vh;
+}
+
 .clr-example {
   margin-top: 1rem;
 

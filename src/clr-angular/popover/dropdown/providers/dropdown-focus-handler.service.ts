@@ -119,7 +119,7 @@ export class DropdownFocusHandler implements FocusableItem {
       // doesn't receive the esc keydown
       this._unlistenFuncs.push(
         this.renderer.listen(el, 'keydown.esc', event => {
-          this.focusService.move(ArrowKeyDirection.LEFT, event);
+          this.focusService.move(ArrowKeyDirection.LEFT);
           event.stopPropagation();
         })
       );

@@ -109,9 +109,6 @@ export class ClrModal implements OnChanges, OnDestroy {
       return;
     }
     this._open = false;
-    // todo: remove this after animation bug is fixed https://github.com/angular/angular/issues/15798
-    // this was handled by the fadeDone event below, but that AnimationEvent is not firing in Angular 4.0.
-    this._openChanged.emit(false);
     // SPECME
     this.focusTrap.setPreviousFocus(); // Handles moving focus back to the element that had it before.
   }

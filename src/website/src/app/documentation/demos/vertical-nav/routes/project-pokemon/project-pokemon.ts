@@ -6,9 +6,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'clr-wikipedia-demo',
-  template: `
-        <p clrFocusOnViewInit>Credit: Wikipedia</p>
-    `,
+  selector: 'clr-project-pokemon-demo',
+  template: `Welcome to Project Pokemon!`,
 })
-export class WikipediaDemo {}
+export class ProjectPokemonDemo {}

@@ -16,6 +16,7 @@ import { ClrModalModule } from './modal/modal.module';
 import { ClrPopoverModule } from './popover/popover.module';
 import { ClrConditionalModule } from './utils/conditional/conditional.module';
 import { ClrIfExpandModule } from './utils/expand/if-expand.module';
+import { ClrFocusOnViewInitModule } from './utils/focus/focus-on-view-init/focus-on-view-init.module';
 import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
@@ -32,6 +33,7 @@ import { ClrProgressBarModule } from './progress/progress-bars/progress-bar.modu
     ClrIfExpandModule,
     ClrConditionalModule,
     ClrFocusTrapModule,
+    ClrFocusOnViewInitModule,
     ClrButtonModule,
     ClrFormsModule,
     ClrLayoutModule,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -53,6 +53,7 @@ import { Killers1Demo } from './without-expanded-directive/the-killers/the-kille
 import { Wikipedia1Demo } from './without-expanded-directive/wikipedia';
 import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/without-expanded-directive';
 import { VerticalNavHighlightsDemo } from './highlights/vertical-nav-highlights.demo';
+import { VerticalNavAccessibilityDemo } from './accessibility/vertical-nav-accessibility';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ClarityModule, ROUTING],
@@ -67,6 +68,7 @@ import { VerticalNavHighlightsDemo } from './highlights/vertical-nav-highlights.
     VerticalNavPartiallyNestedMenusDemo,
     VerticalNavPartiallyNestedIconMenusDemo,
     VerticalNavRoutingDemo,
+    VerticalNavAccessibilityDemo,
     VerticalNavHighlightsDemo,
     VerticalNavAllCases,
     BeatlesDemo,

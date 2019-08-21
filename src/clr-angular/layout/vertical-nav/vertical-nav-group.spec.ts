@@ -132,15 +132,12 @@ export default function(): void {
         fixture.destroy();
       });
 
-      it(
-        'does not contains the links if the nav group is not in ' + 'expanded state when clrIfExpanded is used',
-        () => {
-          expect(navGroup.expanded).toBe(false);
-          expect(compiled.querySelector('.nav-group-children').children.length).toBe(0);
-        }
-      );
+      it('does not contains the links if the nav group is not in expanded state when clrIfExpanded is used', () => {
+        expect(navGroup.expanded).toBe(false);
+        expect(compiled.querySelector('.nav-group-children').children.length).toBe(0);
+      });
 
-      it('contains the links if the nav group is not in ' + 'expanded state when clrIfExpanded is used', () => {
+      it('contains the links if the nav group is not in expanded state when clrIfExpanded is used', () => {
         expect(navGroup.expanded).toBe(false);
         expect(compiled.querySelector('.nav-group-children').children.length).toBe(0);
 

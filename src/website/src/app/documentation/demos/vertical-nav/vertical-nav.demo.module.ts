@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,6 +22,7 @@ import { PikachuDemo } from './routes/pokemon/pikachu';
 import { RaichuDemo } from './routes/pokemon/raichu';
 import { SnorlaxDemo } from './routes/pokemon/snorlax';
 import { BasicNavStructureDemo } from './routes/basic-structure/basic-structure';
+import { ProjectPokemonDemo } from './routes/project-pokemon/project-pokemon';
 import { PokedexDemo } from './routes/credits/pokedex';
 import { PokemonDemo } from './routes/credits/pokemon';
 import { IconLinksDemo } from './routes/icons/icons';
@@ -55,8 +56,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'charmander',
+            redirectTo: 'project-pokemon',
             pathMatch: 'full',
+          },
+          {
+            path: 'project-pokemon',
+            component: ProjectPokemonDemo,
           },
           {
             path: 'charmander',
@@ -376,6 +381,7 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule, ClarityModule, DocWrapperModule, RouterModule.forChild(routes), UtilsModule],
   declarations: [
+    ProjectPokemonDemo,
     VerticalNavDemo,
     BasicNavDemo,
     BasicNavUsage,

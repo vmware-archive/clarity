@@ -22,9 +22,6 @@
             </div>
         </header>
         <div class="content-container">
-            <div class="content-area">
-                <router-outlet></router-outlet>
-            </div>
             <clr-vertical-nav>
                 <a clrVerticalNavLink routerLink="./normal" routerLinkActive="active">
                     <clr-icon clrVerticalNavIcon shape="user"></clr-icon>
@@ -51,6 +48,9 @@
                     Credit
                 </a>
             </clr-vertical-nav>
+            <div class="content-area demo-allow-scroll">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>

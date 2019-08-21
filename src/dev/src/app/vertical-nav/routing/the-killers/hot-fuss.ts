@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-hot-fuss-demo',
   template: `
         <!--https://en.wikipedia.org/wiki/Hot_Fuss-->
-        <h4>Hot Fuss (2004)</h4>
+        <h4 clrFocusOnViewInit>Hot Fuss (2004)</h4>
         <p>
             Hot Fuss is the debut studio album by American rock band The Killers. 
             It was released on June 7, 2004 in the United Kingdom and on June 15, 2004 

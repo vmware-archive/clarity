@@ -15,7 +15,7 @@
     <div class="main-container" style="height: 400px">
         <header class="header">
             <div class="branding">
-                <a href="javascript://">
+                <a routerLink="./project-pokemon" routerLinkActive="active">
                     <clr-icon shape="bolt" class="is-inverse"></clr-icon>
                     <span class="title">Project Pokémon</span>
                 </a>
@@ -31,7 +31,7 @@
                 <div class="nav-divider"></div>
                 <a clrVerticalNavLink routerLink="./credit" routerLinkActive="active">Credit</a>
             </clr-vertical-nav>
-            <div class="content-area">
+            <div class="content-area demo-allow-scroll">
                 <router-outlet></router-outlet>
             </div>
         </div>

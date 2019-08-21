@@ -6,12 +6,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ClrIconModule } from '@clr/angular';
+import { ClrIconModule, ClrSpinnerModule } from '@clr/angular';
 import { TimelineDemo } from './timeline.demo';
 import { ROUTING } from './timeline.demo.routing';
 
 @NgModule({
-  imports: [CommonModule, ROUTING, ClrIconModule],
+  imports: [CommonModule, ROUTING, ClrIconModule, ClrSpinnerModule],
   declarations: [TimelineDemo],
   exports: [TimelineDemo],
 })

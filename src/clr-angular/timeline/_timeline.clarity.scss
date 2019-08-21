@@ -22,24 +22,20 @@
       min-height: $clr-timeline-icon-size;
     }
 
-    clr-icon[shape='spinner'] {
-      animation: spin 1s linear infinite;
-    }
-
     clr-icon[shape='circle'] {
-      color: $clr-gray;
+      color: $clr-timeline-incomplete-step-color;
     }
 
     clr-icon[shape='dot-circle'] {
-      color: $clr-action-blue;
+      color: $clr-timeline-current-step-color;
     }
 
     clr-icon[shape='success-standard'] {
-      color: $clr-green;
+      color: $clr-timeline-success-step-color;
     }
 
     clr-icon[shape='error-standard'] {
-      color: $clr-red;
+      color: $clr-timeline-error-step-color;
     }
 
     // style for the connecting line between icons

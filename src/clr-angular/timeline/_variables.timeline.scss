@@ -1,8 +1,13 @@
 // colors
-$clr-timeline-line-color: $clr-color-neutral-500; // #9a9a9a
-$clr-timeline-step-header-color: $clr-color-neutral-600; // #737373
-$clr-timeline-step-title-color: $clr-color-neutral-700; // #565656
-$clr-timeline-step-description-color: $clr-color-neutral-700; // #565656
+$clr-timeline-line-color: $clr-color-neutral-500 !default; // #9a9a9a
+$clr-timeline-step-header-color: $clr-color-neutral-600 !default; // #737373
+$clr-timeline-step-title-color: $clr-color-neutral-700 !default; // #565656
+$clr-timeline-step-description-color: $clr-color-neutral-700 !default; // #565656
+
+$clr-timeline-incomplete-step-color: $clr-color-neutral-600 !default;
+$clr-timeline-current-step-color: $clr-color-action-600 !default;
+$clr-timeline-success-step-color: $clr-color-success-400 !default;
+$clr-timeline-error-step-color: $clr-color-danger-800 !default;
 
 // 1rem = 24px
 

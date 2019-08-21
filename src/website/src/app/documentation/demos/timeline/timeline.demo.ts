@@ -3,20 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
 @Component({
-  selector: 'clr-color-demo',
-  templateUrl: './color.demo.html',
-  styleUrls: ['./color.demo.scss'],
+  selector: 'clr-timeline-demo',
+  templateUrl: './timeline.demo.html',
   host: {
     '[class.content-area]': 'true',
     '[class.dox-content-panel]': 'true',
   },
 })
-export class ColorDemo extends ClarityDocComponent {
+export class TimelineDemo extends ClarityDocComponent {
   constructor() {
-    super('color');
+    super('timeline');
   }
 }

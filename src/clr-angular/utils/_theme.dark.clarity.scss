@@ -661,6 +661,23 @@ $clr-nav-link-active-color: hsl(0, 0%, 100%);
 $clr-nav-link-color: hsl(203, 16%, 72%);
 // END: Tabs
 
+/**
+  * Timeline
+  * Use a timeline to show progress on concrete steps with a specific end goal.
+ */
+
+// colors
+$clr-timeline-line-color: hsl(203, 16%, 72%);
+$clr-timeline-step-header-color: hsl(210, 17%, 93%);
+$clr-timeline-step-title-color: hsl(203, 16%, 72%); // #565656
+$clr-timeline-step-description-color: hsl(203, 16%, 72%); // #565656
+
+$clr-timeline-incomplete-step-color: hsl(210, 17%, 93%);
+$clr-timeline-current-step-color: hsl(198, 65%, 57%);
+$clr-timeline-success-step-color: hsl(92, 79%, 40%);
+$clr-timeline-error-step-color: hsl(3, 90%, 62%);
+// END Timeline
+
 /**********
   * Tooltip
   * A tooltip provides a short description of a UI element.

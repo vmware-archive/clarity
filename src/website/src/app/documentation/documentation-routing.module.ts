@@ -312,6 +312,14 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'timeline',
+        loadChildren: () => import('./demos/timeline/timeline.demo.module').then(m => m.TimelineDemoModule),
+        data: {
+          bodyClass: 'page-tables',
+          browserTitle: 'Timeline',
+        },
+      },
+      {
         path: 'toggle-switches',
         loadChildren: () => import('./demos/toggles/toggles.demo.module').then(m => m.TogglesDemoModule),
         data: {

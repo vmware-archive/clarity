@@ -466,6 +466,17 @@
       "dox": 20
     },
     {
+      "url": "timeline",
+      "text": "Timeline",
+      "type": "component",
+      "newLayout": true,
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 5,
+      "dox": 20
+    },
+    {
       "url": "typography",
       "text": "Typography",
       "type": "pattern",

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,6 +21,7 @@ import { Component } from '@angular/core';
             <li><a [routerLink]="['./partial-nested-menus']">Partial Nested Menus</a></li>
             <li><a [routerLink]="['./partial-nested-icon-menus']">Partial Nested Icon Menus</a></li>
             <li><a [routerLink]="['./routing']">Routing</a></li>
+            <li><a [routerLink]="['./accessibility']">Accessibility</a></li>
             <li><a [routerLink]="['./without-expanded-directive']">Without Expanded Directive</a></li>
             <li><a [routerLink]="['./unstructured-routes']">Unstructured Routes</a></li>
             <li><a [routerLink]="['./highlights']">Highlights</a></li>

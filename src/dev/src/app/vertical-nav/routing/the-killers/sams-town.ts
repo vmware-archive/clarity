@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-sams-town-demo',
   template: `
         <!--Credit https://en.wikipedia.org/wiki/Sam%27s_Town-->
-        <h4>Sam's Town (2006)</h4>
+        <h4 clrFocusOnViewInit>Sam's Town (2006)</h4>
         <p>
             Sam's Town is the second studio album by American rock band The Killers, 
             released on October 2, 2006 in the United Kingdom and the following day 

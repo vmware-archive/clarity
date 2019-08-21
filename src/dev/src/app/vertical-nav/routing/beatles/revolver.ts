@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-revolver-demo',
   template: `
         <!--Credit https://en.wikipedia.org/wiki/Revolver_(Beatles_album)-->
-        <h4>Revolver (1966)</h4>
+        <h4 clrFocusOnViewInit>Revolver (1966)</h4>
         <p>
             Revolver is the seventh studio album by the English rock band the Beatles. 
             It was released on 5 August 1966 in the United Kingdom and three days 

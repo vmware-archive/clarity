@@ -15,6 +15,7 @@ import { ClrLayoutModule } from './layout/layout.module';
 import { ClrModalModule } from './modal/modal.module';
 import { ClrPopoverModule } from './popover/popover.module';
 import { ClrConditionalModule } from './utils/conditional/conditional.module';
+import { ClrFocusOnViewInitModule } from './utils/focus/focus-on-view-init/focus-on-view-init.module';
 import { ClrFocusTrapModule } from './utils/focus-trap/focus-trap.module';
 import { ClrLoadingModule } from './utils/loading/loading.module';
 import { ClrWizardModule } from './wizard/wizard.module';
@@ -32,6 +33,7 @@ import { ClrPopoverModuleNext } from './utils/popover/popover.module';
     ClrLoadingModule,
     ClrConditionalModule,
     ClrFocusTrapModule,
+    ClrFocusOnViewInitModule,
     ClrButtonModule,
     ClrFormsModule,
     ClrLayoutModule,

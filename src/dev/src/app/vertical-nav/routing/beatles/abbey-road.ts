@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'clr-abbey-road-demo',
   template: `
         <!--Credit https://en.wikipedia.org/wiki/Abbey_Road-->
-        <h4>Abbey Road (1969)</h4>
+        <h4 clrFocusOnViewInit>Abbey Road (1969)</h4>
         <p>
             Abbey Road is the eleventh studio album by the English rock band 
             the Beatles, released on 26 September 1969 by Apple Records. 

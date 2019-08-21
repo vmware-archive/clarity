@@ -9,6 +9,7 @@ import { NgModule, Type } from '@angular/core';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
+import { ClrFocusOnViewInitModule } from '../../utils/focus/focus-on-view-init/focus-on-view-init.module';
 
 import { ClrVerticalNav } from './vertical-nav';
 import { ClrVerticalNavGroup } from './vertical-nav-group';
@@ -25,8 +26,8 @@ export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule, ClrConditionalModule],
+  imports: [CommonModule, ClrIconModule, ClrConditionalModule, ClrFocusOnViewInitModule],
   declarations: [CLR_VERTICAL_NAV_DIRECTIVES],
-  exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrConditionalModule, ClrIconModule],
+  exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrConditionalModule, ClrIconModule, ClrFocusOnViewInitModule],
 })
 export class ClrVerticalNavModule {}

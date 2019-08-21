@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { VerticalNavAllCases } from './all-cases/vertical-all-cases.demo';
 import { VerticalNavBasicDemo } from './basic/vertical-nav-basic';
+
 import { VerticalNavCollapsibleDemo } from './collapsible/vertical-nav-collapsible';
 import { VerticalNavDirectIconDemo } from './direct-icon/vertical-nav-icon';
 import { VerticalNavHeaderAndDividerDemo } from './header-and-divider/vertical-nav-header-and-divider';
@@ -48,6 +49,7 @@ import { Killers1Demo } from './without-expanded-directive/the-killers/the-kille
 import { Wikipedia1Demo } from './without-expanded-directive/wikipedia';
 import { WithoutExpandedDirectiveDemo } from './without-expanded-directive/without-expanded-directive';
 import { VerticalNavHighlightsDemo } from './highlights/vertical-nav-highlights.demo';
+import { VerticalNavAccessibilityDemo } from './accessibility/vertical-nav-accessibility';
 
 const ROUTES: Routes = [
   {
@@ -65,6 +67,22 @@ const ROUTES: Routes = [
       { path: 'partial-nested-menus', component: VerticalNavPartiallyNestedMenusDemo },
       { path: 'partial-nested-icon-menus', component: VerticalNavPartiallyNestedIconMenusDemo },
       { path: 'highlights', component: VerticalNavHighlightsDemo },
+      {
+        path: 'accessibility',
+        component: VerticalNavAccessibilityDemo,
+        children: [
+          { path: '', redirectTo: 'beatles', pathMatch: 'full' },
+          { path: 'beatles', component: BeatlesDemo },
+          { path: 'beatles/abbey-road', component: AbbeyRoadDemo },
+          { path: 'beatles/revolver', component: RevolverDemo },
+          { path: 'beatles/rubber-soul', component: RubberSoulDemo },
+          { path: 'killers', component: KillersDemo },
+          { path: 'killers/hot-fuss', component: HotFussDemo },
+          { path: 'killers/day-and-age', component: DayAndAgeDemo },
+          { path: 'killers/sams-town', component: SamsTownDemo },
+          { path: 'wikipedia', component: WikipediaDemo },
+        ],
+      },
       {
         path: 'routing',
         component: VerticalNavRoutingDemo,

@@ -1,3 +1,24 @@
+<a name="2.1.2"></a>
+
+## [2.1.2](https://github.com/vmware/clarity/compare/v2.1.1...v2.1.2) (2019-08-22)
+
+### Bug Fixes
+
+* **a11y:** only set default icon role if it has no role defined by user ([a2e92ae](https://github.com/vmware/clarity/commit/a2e92ae))
+* **accordion:** remove rounded corners when last panel is open ([a9bd2ac](https://github.com/vmware/clarity/commit/a9bd2ac)), closes [#3685](https://github.com/vmware/clarity/issues/3685)
+* **date-picker:** adds aria-labels for buttons ([bf8430a](https://github.com/vmware/clarity/commit/bf8430a)), closes [#3467](https://github.com/vmware/clarity/issues/3467)
+* alerts in wizzard are read immediately when not urgent ([d241772](https://github.com/vmware/clarity/commit/d241772))
+* improve screen reader behaviors on stack-view and modal ([3f102e7](https://github.com/vmware/clarity/commit/3f102e7)), closes [#3566](https://github.com/vmware/clarity/issues/3566)
+* preventing duplicate style declarations in CSS ([5629635](https://github.com/vmware/clarity/commit/5629635)), closes [#3540](https://github.com/vmware/clarity/issues/3540)
+* **table:** table font-size not overrideable ([b7bea0d](https://github.com/vmware/clarity/commit/b7bea0d)), closes [#3544](https://github.com/vmware/clarity/issues/3544)
+* **tooltip:** adds a11y to tooltip ([530a2ed](https://github.com/vmware/clarity/commit/530a2ed))
+
+### Features
+
+* migrate color values from hex to hsl ([bc4b8bc](https://github.com/vmware/clarity/commit/bc4b8bc)), closes [#3286](https://github.com/vmware/clarity/issues/3286)
+* **datagrid:** Expose current page for clrDgRefresh ([d2a3e4a](https://github.com/vmware/clarity/commit/d2a3e4a))
+* **tabs:** key focus directive and tabs overflow focus management ([67a5512](https://github.com/vmware/clarity/commit/67a5512))
+
 <a name="2.1.1"></a>
 
 ## [2.1.1](https://github.com/vmware/clarity/compare/2.1.0...v2.1.1) (2019-08-08)
@@ -5,7 +26,7 @@
 ### Bug Fixes
 
 * add aria-label for alert close button ([9e0c16e](https://github.com/vmware/clarity/commit/9e0c16e))
-* Sorting issues at datagrid ([adebe5d](https://github.com/vmware/clarity/commit/adebe5d))
+* bug 3505 - Sorting issues at datagrid ([adebe5d](https://github.com/vmware/clarity/commit/adebe5d))
 * clr-base imports and build ([4132a33](https://github.com/vmware/clarity/commit/4132a33))
 * css vars pony fill needs to run on module init ([7506e65](https://github.com/vmware/clarity/commit/7506e65))
 * enable side effect imports ([9f1b414](https://github.com/vmware/clarity/commit/9f1b414))
@@ -35,6 +56,8 @@
   referenced. To address this, there is now a service that Clarity provides itself and you can pass a custom,
   new localized set of strings into the service instead of trying to use the provider tree in Angular.
   This will be helpful to future clr-base.
+
+Signed-off-by: Jeremy Wilken <mailto:gnomation@gnomeontherun.com>
 
 <a name="2.1.0"></a>
 

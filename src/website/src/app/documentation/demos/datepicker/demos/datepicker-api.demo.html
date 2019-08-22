@@ -1,10 +1,13 @@
 <h4>Basic API</h4>
 <p>
-    To use the date picker, add the <code class="clr-code">clrDate</code> directive on an
-    <code class="clr-code">input</code> field.
+    To use the date picker, add the <code class="clr-code">clrDate</code> directive to an
+    <code class="clr-code">input</code> field. Then, place the input inside the
+    <code class="clr-code">clr-date-container</code> container element.
 </p>
 <form class="datepicker-demo" clrForm clrLayout="vertical">
-    <input type="date" clrDate name="demo" [(ngModel)]="demo">
+    <clr-date-container>
+        <input type="date" clrDate name="demo" [(ngModel)]="demo">
+    </clr-date-container>
 </form>
 <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
 
@@ -20,4 +23,3 @@
         </span>
     </div>
 </clr-alert>
-

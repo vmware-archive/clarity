@@ -7,7 +7,9 @@
     </div>
 </clr-alert>
 <form clrForm class="datepicker-demo" clrLayout="vertical">
-    <input type="date" [(clrDate)]="date">
+    <clr-date-container>
+        <input type="date" [(clrDate)]="date">
+    </clr-date-container>
 </form>
 <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
 <h6>Output: </h6>

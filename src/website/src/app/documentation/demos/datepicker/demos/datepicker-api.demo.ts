@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
 <form clrForm clrLayout="vertical">
-  <input type="date" clrDate name="demo" [(ngModel)]="demo">
+  <clr-date-container>
+    <input type="date" clrDate name="demo" [(ngModel)]="demo">
+  </clr-date-container>
 </form>
 `;
 

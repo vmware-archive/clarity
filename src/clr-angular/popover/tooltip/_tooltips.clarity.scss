@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @mixin common-tooltip-styles {
-  color: $clr-tooltip-color;
+  color: $clr-tooltip-font-color;
   font-size: $clr-tooltip-font-size;
   font-weight: $clr-tooltip-font-weight;
   letter-spacing: $clr-tooltip-letter-spacing;

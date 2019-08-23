@@ -22,7 +22,7 @@ import * as COMPONENTS from '../../settings/componentlist.json';
     `,
 })
 export class DocumentationNavLinksComponent {
-  components = COMPONENTS.list;
+    components = COMPONENTS.list;
 
-  @Input() type: string;
+    @Input() type: string;
 }

@@ -62,6 +62,9 @@ export declare class ClrAccordionContent {
 export declare class ClrAccordionDescription {
 }
 
+export declare class ClrAccordionModule {
+}
+
 export declare class ClrAccordionPanel implements OnInit, OnChanges {
     readonly AccordionStatus: typeof AccordionStatus;
     accordionDescription: QueryList<ClrAccordionDescription>;
@@ -1194,6 +1197,9 @@ export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnD
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
+}
+
+export declare class ClrStepperModule {
 }
 
 export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {

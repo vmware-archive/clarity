@@ -18,6 +18,7 @@ import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { Layouts, LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
+import { PopoverPosition } from '../../popover/common/popover-positions';
 
 import { ClrDateContainer } from './date-container';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -145,6 +146,13 @@ export default function() {
         const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         expect(toggleButton.attributes['aria-label'].value).toEqual('Toggle datepicker');
       });
+
+      it('supports clrPosition option', () => {
+        expect(context.clarityDirective.position).toBeUndefined();
+        context.testComponent.position = 'top-left';
+        context.detectChanges();
+        expect(context.clarityDirective.position).toEqual('top-left');
+      });
     });
 
     describe('Typescript API', () => {
@@ -194,7 +202,7 @@ export default function() {
 
 @Component({
   template: `
-        <clr-date-container>
+        <clr-date-container [clrPosition]="position">
             <input type="date" clrDate [(ngModel)]="model" [disabled]="disabled">
         </clr-date-container>
     `,
@@ -202,4 +210,5 @@ export default function() {
 class TestComponent {
   model = '';
   disabled = false;
+  position: PopoverPosition;
 }

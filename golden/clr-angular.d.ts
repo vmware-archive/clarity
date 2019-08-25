@@ -587,6 +587,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     invalid: boolean;
     readonly isEnabled: boolean;
     label: ClrLabel;
+    position: PopoverPosition;
     constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
     close(): void;
@@ -621,6 +622,7 @@ export declare class ClrDatepickerViewManager extends AbstractPopover {
     readonly isDayView: boolean;
     readonly isMonthView: boolean;
     readonly isYearView: boolean;
+    position: PopoverPosition;
     constructor(parent: ElementRef, _injector: Injector, _viewManagerService: ViewManagerService);
 }
 

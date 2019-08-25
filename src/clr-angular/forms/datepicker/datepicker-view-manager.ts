@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ElementRef, Injector, SkipSelf } from '@angular/core';
+import { Component, ElementRef, Injector, SkipSelf, Input } from '@angular/core';
 
 import { AbstractPopover } from '../../popover/common/abstract-popover';
 import { Point } from '../../popover/common/popover';
+import { PopoverPosition } from '../../popover/common/popover-positions';
 
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
@@ -28,9 +29,50 @@ export class ClrDatepickerViewManager extends AbstractPopover {
    * Configure Popover Direction and Close indicators
    */
   private configurePopover(): void {
-    this.anchorPoint = Point.BOTTOM_LEFT;
-    this.popoverPoint = Point.LEFT_TOP;
+    this.position = 'bottom-left';
     this.closeOnOutsideClick = true;
+  }
+
+  @Input('clrPosition')
+  set position(position: PopoverPosition) {
+    switch (position) {
+      case 'top-right':
+        this.anchorPoint = Point.TOP_RIGHT;
+        this.popoverPoint = Point.RIGHT_BOTTOM;
+        break;
+      case 'top-left':
+        this.anchorPoint = Point.TOP_LEFT;
+        this.popoverPoint = Point.LEFT_BOTTOM;
+        break;
+      case 'bottom-right':
+        this.anchorPoint = Point.BOTTOM_RIGHT;
+        this.popoverPoint = Point.RIGHT_TOP;
+        break;
+      case 'bottom-left':
+        this.anchorPoint = Point.BOTTOM_LEFT;
+        this.popoverPoint = Point.LEFT_TOP;
+        break;
+      case 'right-top':
+        this.anchorPoint = Point.RIGHT_TOP;
+        this.popoverPoint = Point.LEFT_TOP;
+        break;
+      case 'right-bottom':
+        this.anchorPoint = Point.RIGHT_BOTTOM;
+        this.popoverPoint = Point.LEFT_BOTTOM;
+        break;
+      case 'left-top':
+        this.anchorPoint = Point.LEFT_TOP;
+        this.popoverPoint = Point.RIGHT_TOP;
+        break;
+      case 'left-bottom':
+        this.anchorPoint = Point.LEFT_BOTTOM;
+        this.popoverPoint = Point.RIGHT_BOTTOM;
+        break;
+      default:
+        this.anchorPoint = Point.BOTTOM_LEFT;
+        this.popoverPoint = Point.LEFT_TOP;
+        break;
+    }
   }
 
   /**

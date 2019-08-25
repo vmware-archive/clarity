@@ -3,7 +3,16 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, OnDestroy, Optional, ContentChild, HostListener, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  Optional,
+  ContentChild,
+  HostListener,
+  ViewChild,
+  ElementRef,
+  Input,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
@@ -23,6 +32,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { PopoverPosition } from '../../popover/common/popover-positions';
 
 @Component({
   selector: 'clr-date-container',
@@ -33,8 +43,8 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         <div class="clr-input-wrapper">
           <div class="clr-input-group" [class.clr-focus]="focus">
             <ng-content select="[clrDate]"></ng-content>
-            <button #actionButton 
-                    type="button" 
+            <button #actionButton
+                    type="button"
                     class="clr-input-group-icon-action"
                     [attr.title]="commonStrings.keys.datepickerToggle"
                     [attr.aria-label]="commonStrings.keys.datepickerToggle"
@@ -43,7 +53,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
                     *ngIf="isEnabled">
               <clr-icon shape="calendar"></clr-icon>
             </button>
-            <clr-datepicker-view-manager *clrIfOpen clrFocusTrap></clr-datepicker-view-manager>
+            <clr-datepicker-view-manager *clrIfOpen clrFocusTrap [clrPosition]="position"></clr-datepicker-view-manager>
           </div>
           <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
@@ -78,6 +88,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   control: NgControl;
   @ContentChild(ClrLabel, { static: false })
   label: ClrLabel;
+  @Input('clrPosition') position: PopoverPosition;
 
   private toggleButton: ElementRef;
   @ViewChild('actionButton', { static: false })

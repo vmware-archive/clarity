@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export const popoverPositions: string[] = [
+export const popoverPositions = [
   'bottom-left',
   'bottom-right',
   'top-left',
@@ -12,4 +12,6 @@ export const popoverPositions: string[] = [
   'left-top',
   'right-bottom',
   'right-top',
-];
+] as const;
+
+export type PopoverPosition = typeof popoverPositions[number];

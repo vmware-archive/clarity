@@ -31,6 +31,7 @@ const scopes = [
   'table',
   'tabs',
   'textarea',
+  'timeline',
   'toggle',
   'tooltip',
   'tree-view',

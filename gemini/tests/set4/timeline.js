@@ -15,6 +15,6 @@ gemini.suite('timeline', child => {
       actions.wait(WAIT_LOAD_TIME);
     })
     .setCaptureElements('.content-area')
-    .ignoreElements({ every: 'clr-icon[shape="spinner"]' })
+    .ignoreElements({ every: '.gemini-ignore' })
     .capture('default');
 });

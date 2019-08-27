@@ -9,6 +9,7 @@ import { ClrDatagrid } from './data/datagrid/datagrid';
 import { ClrDatagridColumnToggle } from './data/datagrid/datagrid-column-toggle';
 import { ClrDatagridColumnToggleTitle } from './data/datagrid/datagrid-column-toggle-title';
 import { ClrDatagridColumnToggleButton } from './data/datagrid/datagrid-column-toggle-button';
+import { ClrWizard } from './wizard/wizard';
 
 describe('Deprecations', () => {
   // When we deprecate some code, we should write a test to verify it is still in the bundle
@@ -43,5 +44,11 @@ describe('Deprecations', () => {
     it('should replace $clr-header-textColor SASS variable with $clr-header-font-color');
     it('should replace $card-text-fontsize SASS variable with $clr-card-text-font-size');
     it('should replace $clr-table-bordercolor SASS variable with $clr-table-border-color');
+  });
+  describe('3.0', () => {
+    it('should deprecate inline wizard inputs', () => {
+      const propTest = Object.getOwnPropertyDescriptor(ClrWizard.prototype, 'stopModalAnimations');
+      expect(propTest.get).toBeDefined();
+    });
   });
 });

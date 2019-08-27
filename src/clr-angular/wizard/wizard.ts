@@ -1,8 +1,8 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
-* This software is released under MIT license.
-* The full license information can be found in LICENSE in the root directory of this project.
-*/
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 import {
   AfterContentInit,
@@ -156,6 +156,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * wanted. Primary use is for the display of static/inline wizards.
    * Set using `[clrWizardPreventModalAnimation]` input.
    */
+  /** @deprecated since 3.0, input should be removed in 4.0 because is only related to inline wizards */
   @Input('clrWizardPreventModalAnimation') _stopModalAnimations: boolean = false;
   get stopModalAnimations(): string {
     return this._stopModalAnimations ? 'true' : 'false';

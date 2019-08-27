@@ -32,6 +32,12 @@ button.nav-link {
   display: inline;
 }
 
+@include fixForIE11AndUp {
+  .tab-content {
+    display: inline-block;
+  }
+}
+
 .tabs-vertical {
   display: flex;
 

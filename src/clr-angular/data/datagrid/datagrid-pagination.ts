@@ -47,17 +47,17 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         >
         <clr-icon shape="angle left"></clr-icon>
       </button>
-      <input 
-        #currentPageInput 
-        type="text" 
-        class="pagination-current" 
-        [size]="page.last.toString().length" 
-        [value]="page.current"
-        (keydown.enter)="updateCurrentPage($event)" 
-        (blur)="updateCurrentPage($event)"
-        [attr.aria-label]="commonStrings.keys.currentPage"
-        />
-        &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
+        <input 
+          #currentPageInput 
+          type="text" 
+          class="pagination-current clr-input" 
+          [size]="page.last.toString().length" 
+          [value]="page.current"
+          (keydown.enter)="updateCurrentPage($event)" 
+          (blur)="updateCurrentPage($event)"
+          [attr.aria-label]="commonStrings.keys.currentPage"
+          />
+          &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
       <button 
         type="button"
         class="pagination-next" 

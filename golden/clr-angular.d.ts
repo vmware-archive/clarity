@@ -206,7 +206,7 @@ export declare class ClrCalendar implements OnDestroy {
     readonly calendar: CalendarModel;
     calendarViewModel: CalendarViewModel;
     readonly focusedDay: DayModel;
-    readonly localeDaysNarrow: ReadonlyArray<string>;
+    readonly localeDays: ReadonlyArray<ClrDayOfWeek>;
     readonly selectedDay: DayModel;
     readonly today: DayModel;
     constructor(_localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef);

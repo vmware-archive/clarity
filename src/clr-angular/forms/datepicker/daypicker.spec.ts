@@ -139,7 +139,7 @@ export default function() {
       });
 
       it('updates the aria-live view element when the month and year are changed', () => {
-        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
+        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only[aria-live]');
         let testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
         let testYear = dateNavigationService.displayedCalendar.year;
 
@@ -151,6 +151,15 @@ export default function() {
         testYear = dateNavigationService.displayedCalendar.year;
 
         expect(liveElement.innerText).toEqual(`The current month is ${testMonth}. The current year is ${testYear}.`);
+      });
+
+      it('should have text based boundaries for screen readers', () => {
+        const srOnlyElements: HTMLDivElement[] = context.clarityElement.querySelectorAll(
+          '.clr-sr-only:not([aria-live])'
+        );
+
+        expect(srOnlyElements[0].innerText).toBe('Beginning of Modal Content');
+        expect(srOnlyElements[1].innerText).toBe('End of Modal Content');
       });
     });
 

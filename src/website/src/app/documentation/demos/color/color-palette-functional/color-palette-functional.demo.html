@@ -40,7 +40,7 @@
               <span class="hex-contrast" *ngIf="color.text === 'mid'">A</span>
             </div>
             <div class="rgb-value">
-              <span class="copied-indication">Copied!</span>
+              <span aria-hidden="true" class="copied-indication">Copied!</span>
               <clr-icon shape="copy"></clr-icon>
               {{color.value | uppercase}}</div>
           </div>

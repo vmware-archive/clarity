@@ -17,7 +17,10 @@ import { ViewManagerService } from './providers/view-manager.service';
   selector: 'clr-datepicker-view-manager',
   templateUrl: './datepicker-view-manager.html',
   providers: [ViewManagerService, DatepickerFocusService],
-  host: { '[class.datepicker]': 'true' },
+  host: {
+    '[class.datepicker]': 'true',
+    '[attr.aria-modal]': 'true',
+  },
 })
 export class ClrDatepickerViewManager extends AbstractPopover {
   constructor(@SkipSelf() parent: ElementRef, _injector: Injector, private _viewManagerService: ViewManagerService) {

@@ -2,19 +2,12 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin min-height($size) {
-  min-height: $size;
-  min-width: $size;
-  height: $size;
-  width: $size;
-}
-
 @include exports('spinner.clarity') {
   .spinner {
     // spinner-lg is the default
     position: relative;
     display: inline-block;
-    @include min-height($clr_baselineRem_3);
+    @include min-equilateral($clr_baselineRem_3);
     animation: spin 1s linear infinite;
     margin: 0;
     padding: 0;
@@ -24,12 +17,12 @@
     white-space: nowrap;
 
     &.spinner-md {
-      @include min-height($clr_baselineRem_1_5);
+      @include min-equilateral($clr_baselineRem_1_5);
     }
 
     &.spinner-inline,
     &.spinner-sm {
-      @include min-height($clr_baselineRem_0_75);
+      @include min-equilateral($clr_baselineRem_0_75);
     }
 
     &.spinner-inline {
@@ -50,7 +43,7 @@
   //Spinners inside of small buttons
   .btn-sm {
     .spinner {
-      @include min-height($clr_baselineRem_0_5416);
+      @include min-equilateral($clr_baselineRem_0_5416);
     }
   }
 

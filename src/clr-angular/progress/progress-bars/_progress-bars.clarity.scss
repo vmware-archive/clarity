@@ -57,8 +57,7 @@
 
       @include css-var(background-color, clr-progress-bg-color, $clr-progress-bgColor, $clr-use-custom-properties);
       border: none;
-      height: 100%;
-      width: 100%;
+      @include equilateral(100%);
 
       &[value='0']::-moz-progress-bar {
         // Firefox doesn't allow transition or animation on the progress bar. So it's going to be jumpy for now.

@@ -136,10 +136,7 @@
   .calendar-cell,
   .calendar-table .calendar-cell {
     //Dimensions
-    height: $clr-calendar-click-target;
-    width: $clr-calendar-click-target;
-    min-height: $clr-calendar-click-target;
-    min-width: $clr-calendar-click-target;
+    @include min-equilateral($clr-calendar-click-target);
     padding: 0;
 
     //Other Props

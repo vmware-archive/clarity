@@ -141,8 +141,7 @@
         &:after {
           content: '';
           float: left;
-          height: $clr-sidenav-collapse-toggle-icon-size;
-          width: $clr-sidenav-collapse-toggle-icon-size;
+          @include equilateral($clr-sidenav-collapse-toggle-icon-size);
           transform: translateX(-1 * $clr-sidenav-caret-xOffset) translateY($clr-sidenav-caret-yOffset);
           background-image: generateCaretIcon();
           @include icon-background-styles();

@@ -55,8 +55,7 @@
     .datagrid-expandable-caret-button {
       @include clr-no-styles-button();
       cursor: pointer;
-      height: $clr_baselineRem_1_25;
-      width: $clr_baselineRem_1_25;
+      @include equilateral($clr_baselineRem_1_25);
     }
 
     .datagrid-expandable-caret-icon {
@@ -137,8 +136,7 @@
         position: absolute;
         top: 50%;
         right: 100%;
-        width: 0;
-        height: 0;
+        @include equilateral(0);
         margin-top: -1 * $clr-datagrid-action-arrow-size;
         border-top: $clr-datagrid-action-arrow-size solid transparent;
         border-bottom: $clr-datagrid-action-arrow-size solid transparent;
@@ -157,8 +155,7 @@
         position: absolute;
         top: 50%;
         right: 100%;
-        width: 0;
-        height: 0;
+        @include equilateral(0);
         margin-top: -1 * $clr-datagrid-action-arrow-size + $clr_baselineRem_1px;
         border-top: ($clr-datagrid-action-arrow-size - $clr_baselineRem_1px) solid transparent;
         border-bottom: ($clr-datagrid-action-arrow-size - $clr_baselineRem_1px) solid transparent;
@@ -663,8 +660,7 @@
         cursor: pointer;
         float: right;
         vertical-align: middle;
-        width: $clr-datagrid-icon-size;
-        height: $clr-datagrid-icon-size;
+        @include equilateral($clr-datagrid-icon-size);
         margin: 0 $clr_baselineRem_0_25;
         background-repeat: no-repeat;
         background-size: contain;
@@ -832,8 +828,7 @@
         .sort-icon {
           @include css-var(color, clr-color-action-600, $clr-color-action-600, $clr-use-custom-properties);
           margin-left: auto; // pushes icon to rhs b/c of parents display: flex
-          width: $clr-datagrid-icon-size;
-          height: $clr-datagrid-icon-size;
+          @include equilateral($clr-datagrid-icon-size);
           vertical-align: middle;
         }
       }
@@ -987,8 +982,7 @@
       }
 
       .datagrid-placeholder-image {
-        width: $clr_baselineRem_2_5;
-        height: $clr_baselineRem_2_5;
+        @include equilateral($clr_baselineRem_2_5);
         margin-bottom: $clr_baselineRem_0_5;
         background-repeat: no-repeat;
         background-size: contain;
@@ -1350,8 +1344,7 @@
       }
       .datagrid-expandable-caret-button {
         @include clr-no-styles-button();
-        height: $clr_baselineRem_1;
-        width: $clr_baselineRem_1;
+        @include equilateral($clr_baselineRem_1);
         outline-offset: $clr-datagrid-compact-outline-offset;
       }
       .datagrid-expandable-caret-icon {
@@ -1367,8 +1360,7 @@
     }
     .datagrid-signpost-trigger .signpost .signpost-trigger {
       clr-icon:not([shape='info-circle'], [shape='exclamation-triangle'], [shape='exclamation-circle'], [shape='check-circle'], [shape='info'], [shape='error']) {
-        width: $clr_baselineRem_0_875;
-        height: $clr_baselineRem_0_875;
+        @include equilateral($clr_baselineRem_0_875);
       }
     }
 
@@ -1456,8 +1448,7 @@
     .pagination-next {
       display: flex;
       align-items: center;
-      width: $clr-datagrid-icon-size;
-      height: $clr-datagrid-icon-size;
+      @include equilateral($clr-datagrid-icon-size);
       background-repeat: no-repeat;
       background-size: contain;
     }

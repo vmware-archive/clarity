@@ -126,8 +126,7 @@
 
   .alert-icon {
     $alert-icon-dim: $clr_baselineRem_1;
-    height: $alert-icon-dim;
-    width: $alert-icon-dim;
+    @include equilateral($alert-icon-dim);
     margin-left: -1 * $clr_baselineRem_0_125;
     margin-top: -1 * $clr_baselineRem_4px;
   }
@@ -207,8 +206,7 @@
 
     .alert-item {
       .clr-icon {
-        height: $clr-alert-icon-dimension-sm;
-        width: $clr-alert-icon-dimension-sm;
+        @include equilateral($clr-alert-icon-dimension-sm);
         margin-right: $clr-icon-margin-right;
       }
 
@@ -272,8 +270,7 @@
       clr-icon {
         $alert-close-icon-dims: $clr_baselineRem_1 - $clr-alert-borderwidth;
         margin-top: -1 * $clr_baselineRem_0_125;
-        height: $alert-close-icon-dims;
-        width: $alert-close-icon-dims;
+        @include equilateral($alert-close-icon-dims);
       }
     }
 
@@ -403,8 +400,7 @@
         $smallAlertCloseIconDims: $clr_baselineRem_0_83;
         margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
         margin-right: -1 * $clr_baselineRem_1px;
-        height: $smallAlertCloseIconDims;
-        width: $smallAlertCloseIconDims;
+        @include equilateral($smallAlertCloseIconDims);
         line-height: $smallAlertCloseIconDims + $clr_baselineRem_1px;
       }
     }

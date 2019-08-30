@@ -285,8 +285,7 @@
       align-self: center;
 
       //Dims
-      height: $clr-vertical-nav-icon-size;
-      width: $clr-vertical-nav-icon-size;
+      @include equilateral($clr-vertical-nav-icon-size);
       margin-right: $clr-vertical-nav-icon-right-margin;
 
       //Others

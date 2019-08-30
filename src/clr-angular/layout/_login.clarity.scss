@@ -174,8 +174,7 @@
             content: '';
             background: generateErrorIcon($clr-login-background-color);
             margin: $clr_baselineRem_1px $clr_baselineRem_0_25 0 0;
-            height: $clr-login-icon-size;
-            width: $clr-login-icon-size;
+            @include equilateral($clr-login-icon-size);
           }
 
           &.active {

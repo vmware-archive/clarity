@@ -19,8 +19,7 @@
       @include css-var(color, clr-signpost-action-color, $clr-signpost-action-color, $clr-use-custom-properties);
 
       clr-icon {
-        width: $clr_baselineRem_1;
-        height: $clr_baselineRem_1;
+        @include equilateral($clr_baselineRem_1);
       }
 
       &:hover,
@@ -35,8 +34,7 @@
     }
 
     .signpost-content-header button clr-icon {
-      width: $clr_baselineRem_0_667;
-      height: $clr_baselineRem_0_667;
+      @include equilateral($clr_baselineRem_0_667);
     }
   }
 
@@ -61,14 +59,12 @@
     }
 
     .popover-pointer {
-      width: 0;
-      height: 0;
+      @include equilateral(0);
       position: absolute;
 
       &:before {
         content: '';
-        width: 0;
-        height: 0;
+        @include equilateral(0);
         position: absolute;
       }
     }

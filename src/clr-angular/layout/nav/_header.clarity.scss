@@ -82,8 +82,7 @@
     clr-icon {
       flex-grow: 0;
       flex-shrink: 0;
-      height: $clr-logo-width;
-      width: $clr-logo-width;
+      @include equilateral($clr-logo-width);
       margin-right: $clr_baselineRem_0_375;
     }
 
@@ -120,8 +119,7 @@
     }
 
     .nav-icon {
-      height: $clr-header-height;
-      width: $clr-header-height;
+      @include equilateral($clr-header-height);
     }
 
     .nav-link {
@@ -142,8 +140,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: $clr-header-clarity-icons-size;
-        width: $clr-header-clarity-icons-size;
+        @include equilateral($clr-header-clarity-icons-size);
       }
 
       &.nav-icon-text {
@@ -242,8 +239,7 @@
         top: 50%;
         transform: translateY(-50%);
         // Dropdown icons are 2px smaller
-        height: $clr_baselineRem_0_916;
-        width: $clr_baselineRem_0_916;
+        @include equilateral($clr_baselineRem_0_916);
         right: $clr_baselineRem_1;
       }
 
@@ -323,8 +319,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         cursor: pointer;
-        height: $clr-search-icon-width;
-        width: $clr-search-icon-width;
+        @include equilateral($clr-search-icon-width);
         margin: $clr_baselineRem_0_83 0 0;
         vertical-align: top;
       }

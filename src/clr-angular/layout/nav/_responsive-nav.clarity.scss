@@ -136,8 +136,7 @@
     & > span::before,
     & > span::after {
       display: inline-block;
-      height: $clr_baselineRem_4px;
-      width: $clr_baselineRem_4px;
+      @include equilateral($clr_baselineRem_4px);
       @include css-var(
         background,
         clr-responsive-nav-trigger-bg-color,
@@ -187,8 +186,7 @@
         background: none;
         cursor: pointer;
         font-size: $clr_baselineRem_1;
-        height: $clr-header-height;
-        width: $clr-header-height;
+        @include equilateral($clr-header-height);
         padding: 0 0 $clr_baselineRem_4px 0;
         //4px to vertically align the trigger lines. display flex was not working on all browsers.
         text-align: center;

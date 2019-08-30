@@ -56,8 +56,7 @@
     &::after {
       position: absolute;
       content: '';
-      height: $clr-forms-select-caret-size;
-      width: $clr-forms-select-caret-size;
+      @include equilateral($clr-forms-select-caret-size);
       top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) / 2;
       right: $clr-forms-baseline;
       // TODO: get rid of generated icons?

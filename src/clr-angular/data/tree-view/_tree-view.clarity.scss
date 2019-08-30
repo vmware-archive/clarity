@@ -52,8 +52,7 @@
         /*TODO: Update demos to use .clr-icon class*/
         .clr-icon {
       //Dimensions
-      height: $clr-tree-caret-size;
-      width: $clr-tree-caret-size;
+      @include equilateral($clr-tree-caret-size);
       margin-right: $clr-tree-node-content-icon-margin-right;
 
       //Others
@@ -68,8 +67,7 @@
     //Dimensions
     padding: 0;
     margin: 0;
-    height: $clr-tree-node-touch-target;
-    width: $clr-tree-node-touch-target;
+    @include equilateral($clr-tree-node-touch-target);
 
     //Others
     background: none;
@@ -91,8 +89,7 @@
 
   .clr-tree-node-caret-icon {
     //Dimensions
-    height: $clr-tree-caret-size;
-    width: $clr-tree-caret-size;
+    @include equilateral($clr-tree-caret-size);
 
     //Others
     vertical-align: middle;
@@ -100,17 +97,13 @@
 
   .clr-treenode-spinner-container {
     //Dimensions
-    height: $clr-tree-node-touch-target;
-    width: $clr-tree-node-touch-target;
+    @include equilateral($clr-tree-node-touch-target);
     padding: ($clr-tree-node-touch-target - $clr-tree-spinner-size) / 2;
   }
 
   .clr-treenode-spinner {
     //Dimensions
-    min-height: $clr-tree-spinner-size;
-    min-width: $clr-tree-spinner-size;
-    height: $clr-tree-spinner-size;
-    width: $clr-tree-spinner-size;
+    @include min-equilateral($clr-tree-spinner-size);
   }
 
   .clr-treenode-children {
@@ -125,10 +118,9 @@
     display: inline-block;
 
     //Dimensions
-    height: 100%;
+    @include equilateral(100%);
     margin: 0;
     padding: 0 0 0 $clr-tree-node-link-padding-left;
-    width: 100%;
 
     //Others
     background: transparent;
@@ -175,8 +167,7 @@
 
   .clr-tree-node-content-container > .clr-checkbox-wrapper {
     //Dimensions
-    height: $clr-tree-node-touch-target;
-    width: $clr-tree-node-touch-target;
+    @include equilateral($clr-tree-node-touch-target);
     padding-top: $clr-tree-checkbox-padding-top;
     padding-left: $clr-tree-checkbox-padding-left;
   }

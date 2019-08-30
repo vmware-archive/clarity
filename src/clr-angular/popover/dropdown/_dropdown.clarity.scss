@@ -33,8 +33,7 @@
         top: 50%;
         transform: translateY(-50%);
         color: inherit;
-        height: $clr-dropdown-caret-icon-dimension;
-        width: $clr-dropdown-caret-icon-dimension;
+        @include equilateral($clr-dropdown-caret-icon-dimension);
       }
 
       &.btn {
@@ -128,8 +127,7 @@
         &:before {
           content: '';
           float: right;
-          height: $clr_baselineRem_0_5;
-          width: $clr_baselineRem_0_5;
+          @include equilateral($clr_baselineRem_0_5);
           transform: rotate(-90deg);
           background-image: generateCaretIcon();
           @include icon-background-styles();

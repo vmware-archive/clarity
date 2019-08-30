@@ -18,10 +18,7 @@
     margin-left: $clr-timeline-gutter-width;
 
     clr-icon {
-      width: $clr-timeline-icon-size;
-      height: $clr-timeline-icon-size;
-      min-width: $clr-timeline-icon-size;
-      min-height: $clr-timeline-icon-size;
+      @include min-equilateral($clr-timeline-icon-size);
     }
 
     clr-icon[shape='circle'] {

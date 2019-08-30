@@ -32,8 +32,7 @@
 
   .clr-combobox-trigger {
     //Dimensions
-    height: $clr-ng-select-trigger-dimensions;
-    width: $clr-ng-select-trigger-dimensions;
+    @include equilateral($clr-ng-select-trigger-dimensions);
     padding: 0;
     margin: 0;
 

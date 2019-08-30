@@ -95,6 +95,23 @@ $clr-outline-spread: 2px;
   }
 }
 
+@mixin equilateral($size: 1.2rem) {
+  height: $size;
+  width: $size;
+}
+
+@mixin min-equilateral($size: 1.2rem) {
+  @include equilateral($size);
+  min-height: $size;
+  min-width: $size;
+}
+
+@mixin max-equilateral($size: 1.2rem) {
+  @include equilateral($size);
+  max-height: $size;
+  max-width: $size;
+}
+
 @function css-variablize-string($str: null) {
   @if $str != null {
     @return #{'--' + $str};

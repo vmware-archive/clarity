@@ -33,7 +33,18 @@
         <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
         
         <p>All fields should be assumed to be required. Clarity does not support a required input treatment for labels (which often comes in the form of an * by the label). The recommendation is to focus your forms to include only required fields, and if a field is optional then you can describe it as such in the label like (Optional).</p>
-        
+
+        <clr-alert clrAlertType="info" [clrAlertClosable]="false">
+          <clr-alert-item>
+              <span class="alert-text">
+                For screen reader accessibility, forms with validation messages should
+                provide a descriptive message on how validation messages will be triggered.
+                The <code class="clr-code">.clr-sr-only</code> class will hide content
+                and only make it visible for screen readers.
+              </span>
+          </clr-alert-item>
+        </clr-alert>
+
         <clr-code-snippet [clrCode]="ngOptional"></clr-code-snippet>
 
         <div class="alert alert-info">
@@ -43,7 +54,7 @@
                         <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
                     </div>
                     <span class="alert-text">
-                        This pattern is more accesible and clear by writing the word explicitly for users (and screenreaders) to read, with research to back this up compared with the use of a red required asterisk (<span style="color: red">*</span>). See <a href="https://www.fusionbox.com/blog/detail/rethinking-the-red-required-asterisk-for-better-form-ux/599/">this article from fusionbox</a> provides some evidence for this rationale.
+                        This pattern is more accessible and clear by writing the word "error" explicitly for users (and screenreaders) to read, with research to back this up compared with the use of a red required asterisk (<span style="color: red">*</span>). See <a href="https://www.fusionbox.com/blog/detail/rethinking-the-red-required-asterisk-for-better-form-ux/599/">this article from fusionbox</a> provides some evidence for this rationale.
                     </span>
                 </div>
             </div>
@@ -51,7 +62,7 @@
 
         <h4>Multiple error messages</h4>
 
-        <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validatior you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
+        <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validator you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
 
         <h4>Reset and force validation</h4>
 

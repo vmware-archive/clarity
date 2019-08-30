@@ -98,8 +98,7 @@
         @include css-var(fill, clr-modal-close-color, $clr-modal-close-color, $clr-use-custom-properties);
 
         // per measurement, this results in an icon that is 16x16...
-        width: $clr_baselineRem_1;
-        height: $clr_baselineRem_1;
+        @include equilateral($clr_baselineRem_1);
       }
     }
   }

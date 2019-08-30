@@ -244,10 +244,7 @@
       $clr-card-media-image-size: $clr_baselineRem_2_5;
       display: inline-block; //to make sure IE11 respects the max-height and max-width
       flex: 0 0 auto;
-      height: $clr-card-media-image-size;
-      width: $clr-card-media-image-size;
-      max-height: $clr-card-media-image-size;
-      max-width: $clr-card-media-image-size;
+      @include max-equilateral($clr-card-media-image-size);
     }
 
     .card-media-description {

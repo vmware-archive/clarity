@@ -58,10 +58,7 @@
   }
 
   .clr-validate-icon {
-    width: $clr-forms-icon-size;
-    height: $clr-forms-icon-size;
-    min-width: $clr-forms-icon-size;
-    min-height: $clr-forms-icon-size;
+    @include min-equilateral($clr-forms-icon-size);
     @include css-var(color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
     display: none;
     margin-left: -1 * $clr_baselineRem_1;

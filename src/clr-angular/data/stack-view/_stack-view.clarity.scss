@@ -123,8 +123,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       &::before {
         content: ' ';
         position: relative;
-        width: 0;
-        height: 0;
+        @include equilateral(0);
         border-top: $clr_baselineRem_0_375 solid;
         @include css-var(
           border-top-color,
@@ -173,16 +172,14 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         display: inline-block;
         content: '';
         float: left;
-        height: $clr_baselineRem_0_583;
-        width: $clr_baselineRem_0_583;
+        @include equilateral($clr_baselineRem_0_583);
         margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
       }
     }
 
     .stack-block-caret {
-      height: $clr_baselineRem_0_583;
-      width: $clr_baselineRem_0_583;
+      @include equilateral($clr_baselineRem_0_583);
       margin-right: $clr_baselineRem_0_2;
       @include css-var(
         fill,
@@ -250,8 +247,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
           background-image: generateCaretIcon($clr-accordion-text-color);
           @include icon-background-styles();
           transform: rotate(-90deg);
-          width: $clr_baselineRem_0_5;
-          height: $clr_baselineRem_0_5;
+          @include equilateral($clr_baselineRem_0_5);
         }
       }
       > .stack-block-label,

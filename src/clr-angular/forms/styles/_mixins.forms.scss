@@ -119,8 +119,7 @@
   //NOTE: Even though the input is invisible, we assign it a height
   //and width so that it aligns right behind the fake checkbox
   //and so that the user's default input size doesn't affect it
-  height: $size;
-  width: $size;
+  @include equilateral($size);
 }
 
 @mixin checkbox-radio-label-styles(
@@ -164,8 +163,7 @@
   //Display
   content: '';
   display: inline-block;
-  height: $size;
-  width: $size;
+  @include equilateral($size);
   border: $clr-global-borderwidth solid;
 
   @if $use-custom-props != true or $border-color-prop == null {

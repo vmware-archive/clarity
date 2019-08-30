@@ -28,8 +28,7 @@
         appearance: none;
         opacity: 1;
         top: 0;
-        height: 100%;
-        width: 100%;
+        @include equilateral(100%);
         box-shadow: $ie-outline-shadow;
         box-shadow: $outline-shadow;
         padding: $clr_baselineRem_3px 0 $clr_baselineRem_3px $clr_baselineRem_3px;
@@ -168,8 +167,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 0;
-      width: 0;
+      @include equilateral(0);
       opacity: 0;
     }
   }

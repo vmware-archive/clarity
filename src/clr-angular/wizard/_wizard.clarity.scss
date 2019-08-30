@@ -113,8 +113,7 @@
     }
 
     .clr-wizard-header-action {
-      width: $clr-wizard-default-space;
-      height: $clr-wizard-default-space;
+      @include equilateral($clr-wizard-default-space);
       padding: 0;
       margin: 0;
       min-width: $clr-wizard-default-space;
@@ -149,9 +148,7 @@
       }
 
       clr-icon {
-        $clr-wizard-header-action-icon-dim: ($clr-wizard-default-space - $clr_baselineRem_2px);
-        height: $clr-wizard-header-action-icon-dim;
-        width: $clr-wizard-header-action-icon-dim;
+        @include equilateral($clr-wizard-default-space - $clr_baselineRem_2px);
       }
     }
 
@@ -322,8 +319,7 @@
       display: flex;
       flex-direction: row;
       flex: 1 1 100%;
-      width: 100%;
-      height: 100%;
+      @include equilateral(100%);
       // firefox fix
       max-height: 100%;
 
@@ -472,8 +468,7 @@
     }
 
     clr-modal {
-      height: 100%;
-      width: 100%;
+      @include equilateral(100%);
       display: block;
     }
 
@@ -487,8 +482,7 @@
         height: 100%;
 
         .nav-panel {
-          width: 99%;
-          height: 99%;
+          @include equilateral(99%);
         }
       }
 
@@ -498,8 +492,7 @@
 
       .modal-dialog {
         min-height: 100%;
-        height: 100%;
-        width: 100%;
+        @include equilateral(100%);
         z-index: auto;
       }
     }
@@ -521,8 +514,7 @@
     }
 
     .modal-backdrop {
-      height: 0;
-      width: 0;
+      @include equilateral(0);
       display: none;
     }
 

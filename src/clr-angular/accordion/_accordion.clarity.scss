@@ -147,9 +147,8 @@
 
   .clr-accordion-error-icon,
   .clr-accordion-complete-icon {
+    @include equilateral($clr_baselineRem_1);
     display: none;
-    width: $clr_baselineRem_1;
-    height: $clr_baselineRem_1;
     padding: 0;
     margin: 0 $clr_baselineRem_0_5;
   }
@@ -294,8 +293,7 @@
       width: $clr_baselineRem_0_8;
 
       clr-icon {
-        width: $clr_baselineRem_0_583;
-        height: $clr_baselineRem_0_583;
+        @include equilateral($clr_baselineRem_0_583);
       }
     }
   }

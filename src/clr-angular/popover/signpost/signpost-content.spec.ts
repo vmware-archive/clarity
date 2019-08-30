@@ -7,7 +7,7 @@ import { Component, ElementRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 // I'm giving up, I'm using the datagrid ones for now.
-import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
+import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrIconCustomTag } from '../../icon/icon';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
@@ -15,15 +15,23 @@ import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 import { ClrSignpostContent } from './signpost-content';
 import { SIGNPOST_POSITIONS } from './signpost-positions';
 import { SignpostIdService } from './providers/signpost-id.service';
+import { SignpostFocusManager } from './providers/signpost-focus-manager.service';
 
 export default function(): void {
   describe('ClrSignpostContent', function() {
-    addHelpers();
-
     let context: TestContext<ClrSignpostContent, SimpleTest>;
 
     beforeEach(function() {
-      context = this.createOnly(ClrSignpostContent, SimpleTest, [SignpostIdService, IfOpenService], [ClrIconCustomTag]);
+      context = this.createOnly(
+        ClrSignpostContent,
+        SimpleTest,
+        [SignpostIdService, IfOpenService, SignpostFocusManager],
+        [ClrIconCustomTag]
+      );
+    });
+
+    afterEach(() => {
+      context.fixture.destroy();
     });
 
     it('has an id', () => {

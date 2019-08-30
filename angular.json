@@ -229,24 +229,6 @@
               "browserTarget": "website:build:production"
             }
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/website/server",
-            "main": "src/website/src/main.server.ts",
-            "tsConfig": "src/website/tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/website/src/environments/environment.ts",
-                  "with": "src/website/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
         }
       }
     },

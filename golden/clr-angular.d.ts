@@ -1157,12 +1157,13 @@ export declare class ClrSignpost {
     constructor(commonStrings: ClrCommonStringsService);
 }
 
-export declare class ClrSignpostContent extends AbstractPopover {
+export declare class ClrSignpostContent extends AbstractPopover implements OnDestroy {
     commonStrings: ClrCommonStringsService;
     position: string;
     signpostContentId: string;
-    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService);
+    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, platformId: Object, document: any);
     close(): void;
+    ngOnDestroy(): void;
 }
 
 export declare class ClrSignpostModule {
@@ -1172,8 +1173,10 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     ariaControl: string;
     ariaExpanded: boolean;
     commonStrings: ClrCommonStringsService;
-    constructor(ifOpenService: IfOpenService, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, platformId: Object);
+    isOpen: boolean;
+    constructor(ifOpenService: IfOpenService, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, document: any, platformId: Object);
     ngOnDestroy(): void;
+    ngOnInit(): void;
     onSignpostTriggerClick(event: Event): void;
 }
 

@@ -11,6 +11,7 @@ import { IfOpenService } from '../../utils/conditional/if-open.service';
 
 import { ClrSignpostModule } from './signpost.module';
 import { SignpostIdService } from './providers/signpost-id.service';
+import { SignpostFocusManager } from './providers/signpost-focus-manager.service';
 
 export default function(): void {
   describe('SignpostToggle component', function() {
@@ -23,7 +24,7 @@ export default function(): void {
       TestBed.configureTestingModule({
         imports: [ClrSignpostModule, ClrIconModule],
         declarations: [TestTrigger],
-        providers: [IfOpenService, SignpostIdService],
+        providers: [IfOpenService, SignpostIdService, SignpostFocusManager],
       });
 
       fixture = TestBed.createComponent(TestTrigger);
@@ -31,6 +32,10 @@ export default function(): void {
       clarityElement = fixture.nativeElement;
       ifOpenService = TestBed.get(IfOpenService);
       trigger = clarityElement.querySelector('.signpost-action');
+    });
+
+    afterEach(() => {
+      fixture.destroy();
     });
 
     it('should toggle the IfOpenService.open property on click', function() {
@@ -44,12 +49,16 @@ export default function(): void {
     it('should have active class when open', function() {
       expect(trigger.classList.contains('active')).toBeFalsy();
       trigger.click();
+      fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeTruthy();
       trigger.click();
+      fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeFalsy();
       ifOpenService.open = true;
+      fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeTruthy();
       ifOpenService.open = false;
+      fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeFalsy();
     });
 
@@ -65,15 +74,6 @@ export default function(): void {
       trigger.click();
       fixture.detectChanges();
       expect(trigger.getAttribute('aria-expanded')).toBe('false');
-    });
-
-    it('gets focus when the open state goes to false', () => {
-      trigger.click();
-      fixture.detectChanges();
-      expect(trigger).not.toEqual(<HTMLElement>document.activeElement);
-      trigger.click();
-      fixture.detectChanges();
-      expect(trigger).toEqual(<HTMLElement>document.activeElement);
     });
   });
 }

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, Inject, Injector, Input, Optional } from '@angular/core';
+import { Component, ElementRef, Inject, Injector, Input, Optional, OnDestroy, PLATFORM_ID } from '@angular/core';
 
 import { AbstractPopover } from '../common/abstract-popover';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
@@ -12,6 +12,8 @@ import { SIGNPOST_POSITIONS } from './signpost-positions';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { SignpostIdService } from './providers/signpost-id.service';
+import { SignpostFocusManager } from './providers/signpost-focus-manager.service';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 // aka where the arrow / pointer is at in relation to the anchor
 const POSITIONS: string[] = [
@@ -48,7 +50,9 @@ const POSITIONS: string[] = [
   host: { '[class.signpost-content]': 'true', '[id]': 'signpostContentId' },
   providers: [UNIQUE_ID_PROVIDER],
 })
-export class ClrSignpostContent extends AbstractPopover {
+export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
+  private document: Document;
+
   constructor(
     injector: Injector,
     @Optional()
@@ -56,7 +60,10 @@ export class ClrSignpostContent extends AbstractPopover {
     parentHost: ElementRef,
     commonStrings: ClrCommonStringsService,
     @Inject(UNIQUE_ID) public signpostContentId: string,
-    private signpostIdService: SignpostIdService
+    private signpostIdService: SignpostIdService,
+    private signpostFocusManager: SignpostFocusManager,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(DOCUMENT) document: any
   ) {
     super(injector, parentHost);
     if (!parentHost) {
@@ -67,6 +74,8 @@ export class ClrSignpostContent extends AbstractPopover {
     this.position = 'right-middle';
     this.closeOnOutsideClick = true;
     this.signpostIdService.setId(signpostContentId);
+
+    this.document = document;
   }
 
   commonStrings: ClrCommonStringsService;
@@ -133,5 +142,11 @@ export class ClrSignpostContent extends AbstractPopover {
     this.popoverPoint = setPosition.popoverPoint;
     this.popoverOptions.offsetY = setPosition.offsetY;
     this.popoverOptions.offsetX = setPosition.offsetX;
+  }
+
+  ngOnDestroy() {
+    if (isPlatformBrowser(this.platformId) && this.el.nativeElement.contains(this.document.activeElement)) {
+      this.signpostFocusManager.focusTrigger();
+    }
   }
 }

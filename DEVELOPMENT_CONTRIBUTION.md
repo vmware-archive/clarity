@@ -107,7 +107,7 @@ For your commit message, please use the following format:
  < BLANK LINE >
 
 [optional body]
-[optional Github clossing reference]
+[optional Github closing reference]
 
  < BLANK LINE >
 Signed-off-by: Your Name <your.email@example.com>
@@ -115,7 +115,7 @@ Signed-off-by: Your Name <your.email@example.com>
 
 `type` - could be one of `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `style`.
 
-Set scope of the commit if posible:
+Set scope of the commit if possible:
 
 ```
   a11y      accordion    alert      badge         build     button        card   checkbox
@@ -180,7 +180,7 @@ During the review process of your pull request(s), some changes might be request
 If that happens, add extra commits to your pull request to address these changes.
 Make sure these new commits are also signed and follow our commit message format.
 
-Please keep an eye on you Pull-Request and try to address the comments if any, as soon as posible.
+Please keep an eye on you Pull-Request and try to address the comments if any, as soon as possible.
 
 ### Shipping it
 

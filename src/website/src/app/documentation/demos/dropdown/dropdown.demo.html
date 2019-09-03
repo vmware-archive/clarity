@@ -401,20 +401,60 @@
               </tbody>
             </table>
 
-            <h4 id="example">Example</h4>
+            <h6><code class="clr-code">clrDropdownTrigger</code> directive</h6>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="left">Input / Output</th>
+                  <th class="left hidden-xs-down">Values</th>
+                  <th class="left hidden-xs-down">Default</th>
+                  <th class="left">Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="left">
+                    <b>[clrAriaLabelDropdownOpen]</b>
+                    <div class="hidden-sm-up">Type: String</div>
+                    <div class="hidden-sm-up">Default: 'Open dropdown'</div>
+                  </td>
+                  <td class="left hidden-xs-down">String</td>
+                  <td class="left hidden-xs-down">'Open dropdown'</td>
+                  <td class="left">Sets the aria-label value of a button that should open a dropdown.</td>
+                </tr>
+                <tr>
+                  <td class="left">
+                    <b>[clrAriaLabelDropdownClose]</b>
+                    <div class="hidden-sm-up">Type: String</div>
+                    <div class="hidden-sm-up">Default: 'Close dropdown'</div>
+                  </td>
+                  <td class="left hidden-xs-down">String</td>
+                  <td class="left hidden-xs-down">'Close dropdown'</td>
+                  <td class="left">Sets the aria-label value of a button that should close a dropdown.</td>
+                </tr>
+              </tbody>
+            </table>
 
-            <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. <code class="clr-code">clrPosition</code>
-                is set to top-left.
-                Default is bottom-left. For nested <code class="clr-code">&lt;clr-dropdown&gt;</code>,
-                only the following positions are valid:
-                bottom-left, bottom-right, top-left, top-right.</h6>
+      <h4 id="example">Example</h4>
 
-            <clr-dropdown-angular-positioning-demo></clr-dropdown-angular-positioning-demo>
+      <h6 id="clrmenuposition-is-set-to-top-left-default-is-bottom-left">1. <code class="clr-code">clrPosition</code>
+        is set to top-left.
+        Default is bottom-left. For nested <code class="clr-code">&lt;clr-dropdown&gt;</code>,
+        only the following positions are valid:
+        bottom-left, bottom-right, top-left, top-right.</h6>
 
-            <h6 id="clrclosemenuonitemclick-is-set-to-false-default-is-true">2. clrCloseMenuOnItemClick is set to false.
-                Default is true.</h6>
+      <clr-dropdown-angular-positioning-demo></clr-dropdown-angular-positioning-demo>
 
-            <clr-dropdown-angular-close-item-false-demo></clr-dropdown-angular-close-item-false-demo>
-        </div>
-    </article>
+      <h6 id="clrclosemenuonitemclick-is-set-to-false-default-is-true">2. clrCloseMenuOnItemClick is set to false.
+        Default is true.</h6>
+
+      <clr-dropdown-angular-close-item-false-demo></clr-dropdown-angular-close-item-false-demo>
+
+      <h6 id="clrclosemenuonitemclick-is-set-to-false-default-is-true">3. Aria-label is set through
+          clrAriaLabelDropdownOpen and clrAriaLabelDropdownClose inputs.
+      </h6>
+
+      <clr-dropdown-angular-aria-label-set-demo></clr-dropdown-angular-aria-label-set-demo>
+    </div>
+  </article>
 </clr-doc-wrapper>

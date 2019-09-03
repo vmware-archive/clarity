@@ -166,6 +166,12 @@ export interface ClrCommonStrings {
   alertCloseButtonAriaLabel?: string;
 
   /**
+   * Dropdown:Open or close a dropdown
+   */
+  dropdownOpenAriaLabel?: string;
+  dropdownCloseAriaLabel?: string;
+
+  /**
    * Datepicker UI labels
    */
   datepickerToggle?: string;

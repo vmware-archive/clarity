@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 
 const HTML_EXAMPLE = `
     <clr-dropdown [clrCloseMenuOnItemClick]="false">
-        <button clrDropdownTrigger aria-label="Dropdown demo button">
+        <button clrDropdownTrigger
+                clrAriaLabelDropdownOpen="Open demo dropdown"
+                clrAriaLabelDropdownClose="Close demo dropdown">
             <clr-icon shape="error" class="is-error" size="24"></clr-icon>
             <clr-icon shape="caret down"></clr-icon>
         </button>

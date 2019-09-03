@@ -97,7 +97,11 @@
 <h6>Tooltip in Dropdown</h6>
 <div class="clr-example" style="margin-bottom:120px">
     <clr-dropdown>
-        <button type="button" class="btn" clrDropdownTrigger aria-label="Uniq tooltip 9">Click Me!</button>
+        <button type="button" class="btn" 
+                clrDropdownTrigger 
+                clrAriaLabelDropdownOpen="Open uniq tooltip 9 dropdown"
+                clrAriaLabelDropdownClose="Close uniq tooltip 9 dropdown">
+        Click Me!</button>
         <clr-dropdown-menu>
             <clr-tooltip>
                 <button type="button" clrDropdownItem clrTooltipTrigger>

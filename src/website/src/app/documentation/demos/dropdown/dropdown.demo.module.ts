@@ -14,6 +14,7 @@ import { DropdownStaticIconToggleDemo } from './dropdown-static-icon-toggle';
 import { DropdownStaticButtonLinkToggleDemo } from './dropdown-static-buttonlink-toggle';
 import { DropdownAngularPositioningDemo } from './dropdown-angular-positioning';
 import { DropdownAngularCloseItemFalseDemo } from './dropdown-angular-close-item-false';
+import { DropdownAngularAriaLabelSetDemo } from './dropdown-angular-aria-label-set';
 import { DropdownsDemo } from './dropdown.demo';
 import { RouterModule } from '@angular/router';
 import { DocWrapperModule } from '../_doc-wrapper/doc-wrapper.module';
@@ -35,7 +36,7 @@ import { UtilsModule } from '../../../utils/utils.module';
     DropdownStaticButtonLinkToggleDemo,
     DropdownAngularPositioningDemo,
     DropdownAngularCloseItemFalseDemo,
-
+    DropdownAngularAriaLabelSetDemo,
     DropdownsDemo,
   ],
   exports: [DropdownsDemo],

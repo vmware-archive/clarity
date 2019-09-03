@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 
 const EXAMPLE = `
 <clr-dropdown>
-    <button class="btn btn-outline-primary" clrDropdownTrigger>
+    <button clrDropdownTrigger
+            clrAriaLabelDropdownOpen="Open positioning demo dropdown"
+            clrAriaLabelDropdownClose="Close positioning demo dropdown">
         Dropdown
         <clr-icon shape="caret down"></clr-icon>
     </button>

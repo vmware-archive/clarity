@@ -47,6 +47,9 @@ export const commonStringsDefault: ClrCommonStrings = {
   detailExpandableAriaLabel: 'Toggle more row content',
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
+  //Dropdown
+  dropdownOpenAriaLabel: 'Open dropdown',
+  dropdownCloseAriaLabel: 'Close dropdown',
   // Date Picker
   datepickerToggle: 'Toggle datepicker',
   datepickerPreviousMonth: 'Previous month',

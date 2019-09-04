@@ -13,7 +13,7 @@ To ensure the highest quality and maintainability for Clarity components, we adh
 * Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts` \* If the component has a single provider, the provider file can be placed directly in the same folder as the component itself
   * In the case of more complex components (like the Datagrid or the Wizard) where many providers are needed for the various subcomponents to communicate, the providers should be placed inside of a `providers` subfolder of the module folder like `/wizard/providers/wizard-navigation.service.ts`.
 * Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts`.
-  * If the component has one or two interfacees/abstract classes the file can be placed in the same folder as the component itself
+  * If the component has one or two interfaces/abstract classes the file can be placed in the same folder as the component itself
   * In the case of more complex components (w/ 3 or more) interfaces/abstract classes should be placed inside an interface subfolder like `/datagrid/interfaces/string-filter.interface.ts`
 * Enums should be named with a suffix like `sort-order.enum.ts`.
   * If the component has one or two enums the file can be placed in the same folder as the component

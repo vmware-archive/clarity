@@ -7,7 +7,7 @@
 <h2>Fixed Height</h2>
 
 <p>
-    From version 0.8.10 datagrids can now scroll easily if you set their height. The header and footer stay fixed, only the 
+    From version 0.8.10 datagrids can now scroll easily if you set their height. The header and footer stay fixed, only the
     body containing the rows scrolls. It's as simple as setting the height of the <code class="clr-code">clr-datagrid</code> element
     to a specific value, or making it 100% to fill its container:
 </p>
@@ -39,7 +39,7 @@
                 Favorite color
             </ng-container>
         </clr-dg-column>
-    
+
         <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
             <clr-dg-cell>{{user.id}}</clr-dg-cell>
             <clr-dg-cell>{{user.name}}</clr-dg-cell>
@@ -49,27 +49,27 @@
                 <span class="color-square" [style.backgroundColor]="user.color"></span>
             </clr-dg-cell>
         </clr-dg-row>
-    
+
         <clr-dg-footer>
             {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
             of {{pagination.totalItems}} users
             <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
         </clr-dg-footer>
     </clr-datagrid>
-    
+
 </div>
 
 <clr-code-snippet [clrCode]="example"  clrLanguage="html"></clr-code-snippet>
 <clr-code-snippet [clrCode]="style"  clrLanguage="css"></clr-code-snippet>
 
 <p>
-    Specifying a header's width in any way, including through CSS with a simple class, locks 
-    the corresponding column size and makes it non-flexible. No need to duplicate that information 
+    Specifying a header's width in any way, including through CSS with a simple class, locks
+    the corresponding column size and makes it non-flexible. No need to duplicate that information
     on the cells, just the header is enough.
 </p>
 
 <p>
-    In cases where there is not enoguth data to display the datagrid will fill the container until it 
+    In cases where there is not enough data to display the datagrid will fill the container until it
     reach 100% of the height
 </p>
 
@@ -100,7 +100,7 @@
                     Favorite color
                 </ng-container>
             </clr-dg-column>
-        
+
             <clr-dg-row *clrDgItems="let user of usersLimited" [clrDgItem]="user">
                 <clr-dg-cell>{{user.id}}</clr-dg-cell>
                 <clr-dg-cell>{{user.name}}</clr-dg-cell>
@@ -110,12 +110,12 @@
                     <span class="color-square" [style.backgroundColor]="user.color"></span>
                 </clr-dg-cell>
             </clr-dg-row>
-        
+
             <clr-dg-footer>
                 {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
                 of {{pagination.totalItems}} users
                 <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
             </clr-dg-footer>
         </clr-datagrid>
-        
+
     </div>

@@ -11,7 +11,7 @@
         <h4>Basic textarea</h4>
 
         <p>This is the most basic way to create a textarea inside of a form. This is only if you don't have a need for a label or validation. You need to add <code class="clr-code">clrTextarea</code> to your textarea to wire up the directive. Notice, it is not necessary to add <code class="clr-code">type="text"</code> as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.</p>
-        
+
         <p></p>
 
         <form clrForm>
@@ -21,7 +21,7 @@
         <p></p>
 
         <clr-code-snippet [clrCode]="ngBasic"></clr-code-snippet>
-        
+
         <h4>Labels</h4>
 
         <p>For anything beyond a standalone textarea field, you'll need to wrap it with the <code class="clr-code">ClrTextareaContainer</code> component. This is required to contain all of the logic and validation details for the individual textarea control.</p>
@@ -38,17 +38,17 @@
         </form>
 
         <p></p>
-        
+
         <clr-code-snippet [clrCode]="ngLabel"></clr-code-snippet>
-        
+
         <h4>Helper and error messages</h4>
 
-        <p>The textarea form control wires up with the validations placed on it, such as <code class="clr-code">required</code> or even custom built validators in Angular. Under the hood, it looks at the <code class="clr-code">NgControl</code> values to determine the control validitity, and display the helper text or error message accordingly.</p>
-        
+        <p>The textarea form control wires up with the validations placed on it, such as <code class="clr-code">required</code> or even custom built validators in Angular. Under the hood, it looks at the <code class="clr-code">NgControl</code> values to determine the control validity, and display the helper text or error message accordingly.</p>
+
         <p>Note: the validation only displays an error after the user has left focus on a control. This is for better UX where the user doesn't see an error while they are still typing.</p>
 
         <p></p>
-        
+
         <form clrForm>
             <clr-textarea-container>
                 <label>Label</label>
@@ -59,18 +59,18 @@
         </form>
 
         <p></p>
-        
+
         <clr-code-snippet [clrCode]="ngHelpers"></clr-code-snippet>
-        
+
 
 
 
         <h2 id="css-component">CSS Input Component</h2>
-        
+
         <p>Inputs can be used without Angular, but without some of the automatic interactivity. If you intend to create your own components, here are the basic features you'll need to build out.</p>
 
         <h4>Basic input</h4>
-        
+
         <p>It is possible to display the input by simply having the input as a standalone element not inside of a form. This may be useful in simple cases where you don't need a full form and just an inline input.</p>
 
         <p></p>
@@ -82,7 +82,7 @@
         </form>
 
         <p></p>
-        
+
         <clr-code-snippet [clrCode]="uiBasic"></clr-code-snippet>
 
         <h4>Full input display</h4>
@@ -105,13 +105,13 @@
         </form>
 
         <p></p>
-        
+
         <clr-code-snippet [clrCode]="uiFull"></clr-code-snippet>
-        
+
         <h4>Error state</h4>
 
         <p>To signify an error state, you need to add the <code class="clr-code">.clr-error</code> class to the <code class="clr-code">.clr-control-container</code> element. This will show the <code class="clr-code">.clr-validate-icon</code> and turn the <code class="clr-code">.clr-subtext</code> message to red. If you have helper text that needs to change to error content, you'll have to handle the hiding and showing of that content inside of the <code class="clr-code">.clr-subtext</code> element.</p>
-        
+
         <p></p>
 
         <form class="clr-form">

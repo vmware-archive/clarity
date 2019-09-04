@@ -28,7 +28,7 @@
                         <img src="assets/images/documentation/themes/theme-icons.svg" alt="Clarity Icons API"
                              class="clrweb-Img">
                         <div class="clrweb-DoxMedia-text">
-                            <strong>Font customization</strong> and the <a href="/icons/api">Clarity Icons API</a> 
+                            <strong>Font customization</strong> and the <a href="/icons/api">Clarity Icons API</a>
                             offer the
                             power to reinforce identity at the most fundamental levels of user experience.
                         </div>
@@ -75,7 +75,7 @@
                         <div class="clrweb-DoxMedia-text">
                             Dark theme is best suited for applications that are <strong>content-sparse, yet highly
                             interactive</strong>. A dark theme can help with eye strain if a user works with an
-                            application over a long span of time but in a way that requires <strong>focus but not a 
+                            application over a long span of time but in a way that requires <strong>focus but not a
                             great
                             amount of reading</strong>.
                         </div>
@@ -90,7 +90,7 @@
                 investment.
             </p>
             <p class="p1">
-                <strong>But theming can put some of those benefits at risk</strong>. Please review the following 
+                <strong>But theming can put some of those benefits at risk</strong>. Please review the following
                 guidelines
                 before building a custom theme.
             </p>
@@ -106,7 +106,7 @@
                             highlight actions or content.
                         </p>
                         <p class="p1">
-                            Harsh colors can cause eye strain for users over time. Avoid using too many bright, neon 
+                            Harsh colors can cause eye strain for users over time. Avoid using too many bright, neon
                             colors
                             and avoid using highly saturated/bold colors as backgrounds over large areas of content.
                         </p>
@@ -160,7 +160,7 @@
             </div>
             <h5>Create visual hierarchy</h5>
             <p class="p1">
-                Darker colors recede while lighter and brighter colors push forward. Be mindful of this when working 
+                Darker colors recede while lighter and brighter colors push forward. Be mindful of this when working
                 with
                 brand colors to create a custom theme.
             </p>
@@ -169,7 +169,7 @@
                     <div class="clrweb-DoxMedia is-do-block">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img">
-                                <img alt="Use light and dark colors to reinforce visual hierarchy and draw users’ 
+                                <img alt="Use light and dark colors to reinforce visual hierarchy and draw users’
                                 focus."
                                      class="clrweb-Img"
                                      src="assets/images/documentation/themes/theme-visual-do.svg">
@@ -195,7 +195,7 @@
                         <div class="clrweb-DoxMedia-text">
                             <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
                             <p class="p1">
-                                Draw attention to the wrong items with the use of color. In this example, the content 
+                                Draw attention to the wrong items with the use of color. In this example, the content
                                 of the
                                 cards and datagrid recede into the background while the sidenav and header unnecessarily
                                 draw the user’s attention.
@@ -209,7 +209,7 @@
                 <div class="clr-col-12 clr-col-md-6">
                     <div class="clrweb-DoxMedia">
                         <p class="p1">
-                            Avoid extreme light-on-dark and dark-on-light color combinations that could contribute to 
+                            Avoid extreme light-on-dark and dark-on-light color combinations that could contribute to
                             eye
                             strain.
                         </p>
@@ -234,9 +234,9 @@
             </div>
             <h5>Be Accessible</h5>
             <p class="p1">
-                Clarity’s color palette is WCAG AA compliant, meaning all color combinations of text-on-background meet 
+                Clarity’s color palette is WCAG AA compliant, meaning all color combinations of text-on-background meet
                 the
-                standard for color accessiblity for our users. Use the WebAIM Color Contrast Checker tool to test text 
+                standard for color accessibility for our users. Use the WebAIM Color Contrast Checker tool to test text
                 and
                 background colors when deciding how a brand’s color palette will be used in an application.
             </p>
@@ -282,13 +282,13 @@
                 <clr-tab>
                     <button clrTabLink="">Light Theme Base</button>
                     <clr-tab-content *clrIfActive>
-                        <p>In order to customize the Clarity light theme you will need to build with the Clarity SCSS 
+                        <p>In order to customize the Clarity light theme you will need to build with the Clarity SCSS
                             and
                             overwrite the SCSS variables that set the look-n-feel for each component you need to
                             customize. You will need to build your applications CSS output with Clarity's SCSS.
                         </p>
                         <h6>Remove Clarity CSS from your build configuration</h6>
-                        <p>First, since we are going to be creating custom component styles the first step is to remove 
+                        <p>First, since we are going to be creating custom component styles the first step is to remove
                             all of the Clarity css from your build process.</p>
                         <clr-code-snippet [clrCode]="uiNoNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
                         <h6>Add (or modify) your applications main.scss file</h6>
@@ -310,12 +310,12 @@
                             customize. You will need to build your application's CSS output with Clarity's SCSS.
                         </p>
                         <h6>Remove Clarity CSS from your build configuration</h6>
-                        <p>First, since we are going to be creating custom component styles the first step is to remove 
+                        <p>First, since we are going to be creating custom component styles the first step is to remove
                             all
                             of the Clarity CSS from your build process.</p>
                         <clr-code-snippet [clrCode]="uiNoNodeImports" [clrDisablePrism]="true"></clr-code-snippet>
                         <h6>Add or modify your application's main.scss file</h6>
-                        <p>Next, we need to include the Clarity dependencies and component styles. This example shows 
+                        <p>Next, we need to include the Clarity dependencies and component styles. This example shows
                             one way of adding the Clarity dependencies and component styles based on standard <code
                             class="clr-code">npm</code> installation into a <code class="clr-code">node_modules
                             </code> directory of the project. In this example, the

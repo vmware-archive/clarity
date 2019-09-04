@@ -96,4 +96,4 @@ You can submit an issue or a bug to our [GitHub repository](https://github.com/v
 * Screenshot is also a good way to show us what is the issue
 
 When providing NPM package version. Make sure to check them from the `package-lock.json` file.
-This is extremely important in the cases that NPM [versioning tags](https://devhints.io/semver) are applyed.
+This is extremely important in the cases that NPM [versioning tags](https://devhints.io/semver) are applied.

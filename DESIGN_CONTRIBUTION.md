@@ -17,7 +17,7 @@ get you started
 
 ### Getting Started
 
-Try answering the following questions to get started on researching and documenting the findings for conseration:
+Try answering the following questions to get started on researching and documenting the findings for consideration:
 
 * What problems does this component solve?
 * How will users interact with it?
@@ -81,7 +81,7 @@ Resources once the component is built in code.
 
 Remember, if (for example) a component has five use cases and ten features you still only need one instance designed
 in sketch (there is a handy way to toggle visibility for various parts of a sketch document). This is how we suggest
-that multiple visual representations be created for documentating the various use cases on github.
+that multiple visual representations be created for documenting the various use cases on github.
 
 ### Considerations
 

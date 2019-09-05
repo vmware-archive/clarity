@@ -95,6 +95,15 @@
       "twitter": "coryrylan",
       "img": "cory.png",
       "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Bozhidar Dryanovski",
+      "role": "Developer",
+      "blurb":
+        "Bozhidar is an experienced Software Engineer and JavaScript Developer, worked with almost all ancient and modern frameworks that shaped the World Wide Web the way that we know and love.",
+      "twitter": "dryanovski",
+      "img": "placeholder.png",
+      "workstreams": ["UI", "NG"]
     }
   ]
 }

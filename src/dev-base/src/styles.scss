@@ -1,0 +1,3 @@
+// Clarity Base dev app should only ever import the base global styles
+// This allows us to ensure our components are properly encapsulated.
+@import './../../clr-base/styles/global.scss';

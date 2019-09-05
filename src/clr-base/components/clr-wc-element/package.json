@@ -1,7 +1,7 @@
 {
-    "ngPackage": {
-        "lib": {
-            "entryFile": "clr-wc-element.ts"
-        }
+  "ngPackage": {
+    "lib": {
+      "entryFile": "clr-wc.element.ts"
     }
+  }
 }

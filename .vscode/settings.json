@@ -1,0 +1,5 @@
+{
+  "files.exclude": {
+    "**/*.element.css.ts": true
+  }
+}

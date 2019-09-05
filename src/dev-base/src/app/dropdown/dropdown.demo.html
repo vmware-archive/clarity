@@ -1,0 +1,9 @@
+<h1>Test Dropdown Demo</h1>
+
+<h3>Open: {{open}}</h3>
+
+<br/>
+
+<clr-wc-element [open]="open" (openChange)="open = $event.detail" title="click me!">
+  Hello World
+</clr-wc-element>

@@ -26,7 +26,7 @@
             <button type="button" [attr.aria-label]="commonStrings.keys.close" class="close" *ngIf="closable" (click)="close()">
               <clr-icon shape="close"></clr-icon>
             </button>
-            <div class="modal-title-wrapper" tabindex="0" id="{{modalId}}" #modalTitle>
+            <div class="modal-title-wrapper" id="{{modalId}}" clrFocusOnViewInit>
               <ng-content select=".modal-title"></ng-content>
             </div>
           </div>

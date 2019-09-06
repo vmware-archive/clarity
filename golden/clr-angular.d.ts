@@ -769,6 +769,13 @@ export declare class ClrExpandableAnimation {
     updateStartHeight(): void;
 }
 
+export declare class ClrFocusOnViewInit implements AfterViewInit {
+    isEnabled: boolean;
+    constructor(el: ElementRef, platformId: Object, focusOnViewInit: boolean, document: any, renderer: Renderer2);
+    ngAfterViewInit(): void;
+    onFocusout(): void;
+}
+
 export declare class ClrForm {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
@@ -920,12 +927,11 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     commonStrings: ClrCommonStringsService;
     focusTrap: FocusTrapDirective;
     modalId: string;
-    modalTitle: ElementRef<HTMLDivElement>;
     size: string;
     skipAnimation: string;
     staticBackdrop: boolean;
     stopClose: boolean;
-    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStringsService, platformId: Object, modalId: string);
+    constructor(_scrollingService: ScrollingService, commonStrings: ClrCommonStringsService, modalId: string);
     close(): void;
     fadeDone(e: AnimationEvent): void;
     ngOnChanges(changes: {
@@ -1703,6 +1709,8 @@ export declare const EXPANDABLE_ANIMATION_DIRECTIVES: Type<any>[];
 export declare function fade(opacity?: number): AnimationMetadata[];
 
 export declare function fadeSlide(direction: string): AnimationMetadata[];
+
+export declare const FOCUS_ON_VIEW_INIT: InjectionToken<boolean>;
 
 export declare const IS_TOGGLE: InjectionToken<BehaviorSubject<boolean>>;
 

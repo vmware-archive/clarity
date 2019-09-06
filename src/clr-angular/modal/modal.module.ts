@@ -11,12 +11,13 @@ import { ClrIconModule } from '../icon/icon.module';
 import { ClrFocusTrapModule } from '../utils/focus-trap/focus-trap.module';
 import { ClrModal } from './modal';
 import { ClrModalBody } from './modal-body';
+import { ClrFocusOnViewInitModule } from '../utils/focus/focus-on-view-init/focus-on-view-init.module';
 
 export const CLR_MODAL_DIRECTIVES: Type<any>[] = [ClrModal, ClrModalBody];
 
 @NgModule({
-  imports: [CommonModule, ClrIconModule, ClrFocusTrapModule],
+  imports: [CommonModule, ClrIconModule, ClrFocusTrapModule, ClrFocusOnViewInitModule],
   declarations: [CLR_MODAL_DIRECTIVES],
-  exports: [CLR_MODAL_DIRECTIVES],
+  exports: [CLR_MODAL_DIRECTIVES, ClrIconModule, ClrFocusOnViewInitModule],
 })
 export class ClrModalModule {}

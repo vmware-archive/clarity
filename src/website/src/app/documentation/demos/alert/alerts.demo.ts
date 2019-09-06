@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
-import { ÇlrFocusTrapTracker } from '@clr/angular';
+import { ÇlrFocusTrapTracker, FOCUS_ON_VIEW_INIT } from '@clr/angular';
 import { DisableFocusTrap } from '../../utils/disable-focus-trap';
 
 @Component({
@@ -16,7 +16,10 @@ import { DisableFocusTrap } from '../../utils/disable-focus-trap';
     '[class.content-area]': 'true',
     '[class.dox-content-panel]': 'true',
   },
-  providers: [{ provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap }],
+  providers: [
+    { provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap },
+    { provide: FOCUS_ON_VIEW_INIT, useValue: false },
+  ],
 })
 export class AlertsDemo extends ClarityDocComponent {
   expanded: boolean = false;

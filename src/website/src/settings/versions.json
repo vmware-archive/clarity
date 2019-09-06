@@ -1,4 +1,5 @@
 [
+  { "version": "v3", "url": "https://v3.clarity.design/documentation" },
   { "version": "v2", "url": "https://clarity.design/documentation" },
   { "version": "v1", "url": "https://v1.clarity.design" },
   { "version": "v0.13", "url": "https://vmware.github.io/clarity/documentation/v0.13" },

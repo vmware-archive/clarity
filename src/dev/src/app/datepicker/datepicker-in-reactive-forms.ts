@@ -8,7 +8,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'clr-datepicker-in-reactive-forms-demo',
-  // Note the .css extension here, not .scss. That's the best we can have at the moment.
   styleUrls: ['./datepicker.demo.scss'],
   templateUrl: './datepicker-in-reactive-forms.html',
 })

@@ -7,7 +7,6 @@ import { Component, LOCALE_ID } from '@angular/core';
 
 @Component({
   selector: 'clr-datepicker-date-input-wrapper-present-demo',
-  // Note the .css extension here, not .scss. That's the best we can have at the moment.
   styleUrls: ['./datepicker.demo.scss'],
   templateUrl: './datepicker-date-input-explicit-wrapper.html',
   providers: [{ provide: LOCALE_ID, useValue: 'en' }],

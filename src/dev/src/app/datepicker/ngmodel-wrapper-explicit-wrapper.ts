@@ -10,7 +10,6 @@ const DATE2: string = '05/05/2017';
 
 @Component({
   selector: 'clr-ng-model-wrapped-present-datepicker-demo',
-  // Note the .css extension here, not .scss. That's the best we can have at the moment.
   styleUrls: ['./datepicker.demo.scss'],
   templateUrl: './ngmodel-wrapper-explicit-wrapper.html',
   // providers: [{provide: LOCALE_ID, useValue: "en"}],

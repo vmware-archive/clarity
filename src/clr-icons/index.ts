@@ -24,7 +24,12 @@ if (typeof window !== 'undefined') {
   }
 
   // Defining clr-icon custom element
-  customElements.define('clr-icon', ClarityIconElement);
+  const isCustomElementsDefinedIE = setInterval(function() {
+    if (customElements !== undefined) {
+      customElements.define('clr-icon', ClarityIconElement);
+      clearInterval(isCustomElementsDefinedIE);
+    }
+  }, 50);
 }
 
 export { clarityIcons as ClarityIcons };

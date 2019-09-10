@@ -410,6 +410,46 @@
             </div>
         </div>
 
+        <div id="accessibility">
+            <h2>Accessibility</h2>
+            <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false">
+                <clr-alert-item>
+                    <span class="alert-text">
+                        Actionable controls inside dynamically genrated alerts are not accessible to screen reader users!
+                        For this reason Clarity does not recommend using dropdowns, buttons, links inside alerts that appear as dynamic notifications.
+                    </span>
+                </clr-alert-item>
+            </clr-alert>
+            <p>Accessibility problems related to using actionable controls inside dynamically generated alerts:</p>
+            <ul class="list">
+                <li>
+                    They are announced as part of the alert message, which is out of context and may be confusing. For example, the following alert will be announced as "success acknowledge":
+                    <div class="clr-row">
+                        <div class="clr-col-12 clr-col-md-6">
+                            <clr-alert clrAlertType="success" [clrAlertClosable]="false">
+                                <clr-alert-item>
+                                    <span class="alert-text">
+                                        Success
+                                    </span>
+                                    <div class="alert-actions">
+                                        <a class="alert-action" href="javascript://">Acknowledge</a>
+                                    </div>
+                                </clr-alert-item>
+                            </clr-alert>
+                        </div>
+                    </div>
+                </li>
+                <li>There is no way for the user to directly interact with the announced action controls.</li>
+            </ul>
+
+            <p>It is acceptable to use actions in static alerts. The following guidlines are recommended:</p>
+            <ul class="list">
+                <li>Controls can be <code class="clr-code">dropdown</code>, <code class="clr-code">button</code> or <code class="clr-code">link</code> elements.</li>
+                <li>Buttons should be used for actions, links for navigation.</li>
+                <li>The text for these controls should be as descriptive as possible.</li>
+            </ul>
+        </div>
+
         <div id="code-examples">
             <h3 id="examples">Code &amp; Examples</h3>
 

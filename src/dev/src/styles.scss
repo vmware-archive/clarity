@@ -16,6 +16,14 @@
   height: auto !important;
 }
 
+.sidenav {
+  min-height: calc(100vh - 2.5rem);
+}
+
+.content-area {
+  align-self: flex-start;
+}
+
 .sidenav .sidenav-content {
   // Remove the header height
   height: calc(2.5rem - 100vh);

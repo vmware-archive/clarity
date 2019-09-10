@@ -26,6 +26,6 @@ export class ExternalLinkDirective {
 
   private isLinkExternal() {
     const link = this.hostElement.nativeElement;
-    return !(link.hostname.includes(location.hostname) || link.hostname.length);
+    return !link.hostname.includes(location.hostname) || link.hostname.length;
   }
 }

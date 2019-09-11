@@ -452,9 +452,7 @@
         color: $clr-table-font-color;
         text-align: left;
         flex: 1 1 auto;
-        <<<<<<<HEAD
-        align-self: flex-start;
-        =======align-items: baseline;
+        align-items: baseline;
         align-self: center;
         display: flex;
 
@@ -462,7 +460,6 @@
           height: inherit;
           line-height: inherit;
         }
-        >>>>>>>f0a9293ad... fix: keep consistent height if signpost in datagrid header;
       }
 
       button.datagrid-column-title:hover {

@@ -36,6 +36,7 @@ const scopes = [
   'tooltip',
   'tree-view',
   'vertical-nav',
+  'wizard',
 ];
 
 module.exports = {

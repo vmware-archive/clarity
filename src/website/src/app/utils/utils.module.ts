@@ -12,7 +12,7 @@ import { HashListener } from './hash-listener.directive';
 import { ScrollSpy } from './scrollspy.directive';
 import { CodeSnippet } from './code-snippet';
 import { CodeHighlight } from './code-highlight';
-import { ExternalLinkDirective } from './external-link.directive';
+// import { ExternalLinkDirective } from './external-link.directive';
 
 @NgModule({
   imports: [CommonModule, ClarityModule],

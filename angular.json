@@ -36,7 +36,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules"]
             },
-            "scripts": ["node_modules/@webcomponents/custom-elements/custom-elements.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -261,11 +261,7 @@
               "src/clr-icons/clr-icons.scss",
               "src/website/src/styles/main.scss"
             ],
-            "scripts": [
-              "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-typescript.min.js",
-              "node_modules/@webcomponents/custom-elements/custom-elements.min.js"
-            ]
+            "scripts": ["node_modules/prismjs/prism.js", "node_modules/prismjs/components/prism-typescript.min.js"]
           },
           "configurations": {
             "production": {

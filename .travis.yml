@@ -26,11 +26,9 @@ services:
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
-    - google-chrome
+      - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
-    - google-chrome-stable
+      - g++-4.8
 cache:
   apt: true
   directories:

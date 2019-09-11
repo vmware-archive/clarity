@@ -16,7 +16,7 @@ export class ExternalLinkDirective {
 
   constructor(private hostElement: ElementRef, @Inject(PLATFORM_ID) private platformId: string) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId) && this.isLinkExternal()) {
       // https://developers.google.com/web/tools/lighthouse/audits/noopener
       this.noopener = 'noopener';

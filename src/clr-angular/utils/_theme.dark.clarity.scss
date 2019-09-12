@@ -534,6 +534,20 @@ $clr-header-5-bg-color: #3e436a;
 $clr-header-6-bg-color: #0f171c;
 // END Header overrides
 
+/**********
+ * Icons
+ * Icons by default are presentational only meaning they do not provide any context to screen readers
+ *
+ * Usage: ./_icons.clarity.scss
+ */
+$clr-icon-color-success: #60b515;
+$clr-icon-color-error: #f54f47;
+$clr-icon-color-warning: #fdd006;
+$clr-icon-color-info: #49afd9;
+$clr-icon-color-inverse: #ffffff;
+$clr-icon-color-highlight: #49afd9;
+// END: Icons
+
 /*****************
  * Label
  * Labels show concise metadata in a compact format. Here you can set the background-color and font color(s) for the

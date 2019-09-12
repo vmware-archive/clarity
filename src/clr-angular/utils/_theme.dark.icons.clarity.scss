@@ -1,0 +1,29 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+clr-icon {
+  &.is-green,
+  &.is-success {
+    fill: $clr-icon-color-success;
+  }
+  &.is-red,
+  &.is-danger,
+  &.is-error {
+    fill: $clr-icon-color-error;
+  }
+  &.is-warning {
+    fill: $clr-icon-color-warning;
+  }
+  &.is-blue,
+  &.is-info {
+    fill: $clr-icon-color-info;
+  }
+  &.is-white,
+  &.is-inverse {
+    fill: $clr-icon-color-inverse;
+  }
+  &.is-highlight {
+    fill: $clr-icon-color-highlight;
+  }
+}

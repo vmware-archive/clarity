@@ -471,13 +471,27 @@ $clr-header-5-bg-color: hsl(233, 26%, 33%);
 $clr-header-6-bg-color: hsl(203, 30%, 8%);
 // END Header overrides
 
+/**********
+ * Icons
+ * Icons by default are presentational only meaning they do not provide any context to screen readers
+ *
+ * Usage: ./_icons.clarity.scss
+ */
+$clr-icon-color-success: hsl(92, 79%, 40%);
+$clr-icon-color-error: hsl(3, 90%, 62%);
+$clr-icon-color-warning: hsl(49, 98%, 51%);
+$clr-icon-color-info: hsl(198, 65%, 57%);
+$clr-icon-color-inverse: hsl(0, 0%, 100%);
+$clr-icon-color-highlight: hsl(198, 65%, 57%);
+// END: Icons
+
 /*****************
   * Label
   * Labels show concise metadata in a compact format. Here you can set the background-color and font color(s) for the
   * different types of labels.
   *
   * There are five color options and four status types a Clarity label may have.
- 
+
   */
 $clr-label-font-color: hsl(0, 0%, 100%);
 $clr-label-font-color-contrast: hsl(0, 0%, 0%);

@@ -10,6 +10,7 @@ import { ClrModalBody } from './modal-body';
 
 describe('ClrModalBody Directive', () => {
   let fixture: ComponentFixture<TestComponent>;
+  let modalBodyEl: HTMLElement;
 
   beforeEach(function() {
     TestBed.configureTestingModule({
@@ -17,10 +18,20 @@ describe('ClrModalBody Directive', () => {
     });
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
+    modalBodyEl = fixture.componentInstance.testElement.nativeElement;
   });
 
   it('adds tabindex="0" to modal body to make content focusable and scrollable with keyboards', () => {
-    expect(fixture.componentInstance.testElement.nativeElement.getAttribute('tabindex')).toBe('0');
+    expect(modalBodyEl.getAttribute('tabindex')).toBe('0');
+  });
+
+  it('toggles tabindex="0" on mousedown and mouseup events', () => {
+    modalBodyEl.dispatchEvent(new Event('mousedown'));
+    fixture.detectChanges();
+    expect(modalBodyEl.getAttribute('tabindex')).toBeNull();
+    modalBodyEl.dispatchEvent(new Event('mouseup'));
+    fixture.detectChanges();
+    expect(modalBodyEl.getAttribute('tabindex')).toBe('0');
   });
 
   // https://github.com/vmware/clarity/issues/3424

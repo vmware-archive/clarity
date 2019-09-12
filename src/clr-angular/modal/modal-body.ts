@@ -15,26 +15,22 @@ import { Directive, HostListener } from '@angular/core';
 @Directive({
   selector: '.modal-body',
   host: {
-    '[attr.tabindex]': '"0"',
+    '[attr.tabindex]': 'tabindex',
   },
 })
 export class ClrModalBody {
-  private _mouseDown = false;
-
-  @HostListener('focus', ['$event'])
-  focus(event) {
-    if (this._mouseDown) {
-      event.target.blur();
-    }
-  }
+  tabindex = 0;
 
   @HostListener('mousedown')
   mouseDown() {
-    this._mouseDown = true;
+    // tabindex = 0 binding should be removed
+    // so it won't be focused when click starts with mousedown
+    delete this.tabindex;
   }
 
   @HostListener('mouseup')
   mouseUp() {
-    this._mouseDown = false;
+    // set the tabindex binding back when click is completed with mouseup
+    this.tabindex = 0;
   }
 }

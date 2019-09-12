@@ -50,6 +50,10 @@
     position: relative;
     z-index: map-get($clr-layers, tooltips);
 
+    &:hover {
+      cursor: default;
+    }
+
     .popover-pointer {
       width: 0;
       height: 0;

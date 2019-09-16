@@ -19,7 +19,8 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
         [id]="uniqueId"
         [attr.role]="role"
         [attr.tabindex]="tabIndex"
-        [attr.aria-expanded]="ariaExpanded">
+        [attr.aria-expanded]="ariaExpanded"
+        [attr.aria-controls]="getStackChildrenId()">
       <clr-icon shape="caret"
                 class="stack-block-caret"
                 *ngIf="expandable"
@@ -31,7 +32,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
     <dd class="stack-block-content">
       <ng-content></ng-content>
     </dd>
-    <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children">
+    <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
       <div [style.height]="expanded ? 'auto' : 0">
         <ng-content select="clr-stack-block"></ng-content>
       </div>
@@ -140,5 +141,9 @@ export class ClrStackBlock implements OnInit {
     } else {
       return this.expanded ? 'true' : 'false';
     }
+  }
+
+  getStackChildrenId() {
+    return this.expanded ? `clr-stack-children-${this.uniqueId}` : null;
   }
 }

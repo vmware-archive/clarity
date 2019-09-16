@@ -411,7 +411,7 @@ export default function(): void {
       });
     });
 
-    fdescribe('View filters', function() {
+    describe('View filters', function() {
       let context;
       beforeEach(function() {
         context = this.create(ClrDatagridColumn, ColTypeTest, DATAGRID_SPEC_PROVIDERS);

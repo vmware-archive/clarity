@@ -23,6 +23,9 @@ import { StateDebouncer } from './providers/state-debouncer.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 
+import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
+import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
+
 export default function(): void {
   describe('DatagridColumn component', function() {
     describe('Typescript API', function() {
@@ -407,6 +410,41 @@ export default function(): void {
         expect(activeFiltersTest.length).toBe(2);
       });
     });
+
+    fdescribe('View filters', function() {
+      let context;
+      beforeEach(function() {
+        context = this.create(ClrDatagridColumn, ColTypeTest, DATAGRID_SPEC_PROVIDERS);
+      });
+
+      it('should let you set `number` as clrDgColType', function() {
+        context.testComponent.type = 'number';
+        context.detectChanges();
+        expect(context.clarityDirective.colType).toBe('number');
+      });
+
+      it('should let you set `string` as clrDgColType', function() {
+        context.testComponent.type = 'string';
+        context.detectChanges();
+        expect(context.clarityDirective.colType).toBe('string');
+      });
+
+      it('when setting clrDgColType to `number` it should use the numeric filter', function() {
+        context.testComponent.type = 'number';
+        context.testComponent.field = 'id';
+        context.detectChanges();
+        expect(context.clarityDirective.registered.filter instanceof DatagridNumericFilterImpl).toBe(true);
+        expect(context.clarityElement.querySelector('clr-dg-numeric-filter')).toBeDefined();
+      });
+
+      it('when clrDgColType is set to `string` it shoul use the string filter', function() {
+        context.testComponent.type = 'string';
+        context.testComponent.field = 'id';
+        context.detectChanges();
+        expect(context.clarityDirective.registered.filter instanceof DatagridStringFilterImpl).toBe(true);
+        expect(context.clarityElement.querySelector('clr-dg-string-filter')).toBeDefined();
+      });
+    });
   });
 }
 
@@ -522,4 +560,16 @@ class UnregisterTest {
   show: boolean;
   filter = new TestStringFilter();
   filterValue = 'M';
+}
+
+@Component({
+  template: `
+        <clr-dg-column [clrDgField]="field" [clrDgColType]="type">
+            Column Title
+        </clr-dg-column>
+    `,
+})
+class ColTypeTest {
+  field: string;
+  type: string;
 }

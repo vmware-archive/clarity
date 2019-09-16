@@ -1118,6 +1118,7 @@ export declare class ClrStackBlock implements OnInit {
     uniqueId: string;
     constructor(parent: ClrStackBlock, uniqueId: string, commonStrings: ClrCommonStringsService);
     addChild(): void;
+    getStackChildrenId(): string;
     ngOnInit(): void;
     toggleExpand(): void;
 }

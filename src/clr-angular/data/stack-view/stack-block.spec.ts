@@ -265,5 +265,20 @@ export default function(): void {
       fixture.detectChanges();
       expect(fixture.componentInstance.expanded).toBeFalsy();
     });
+
+    it('sets aria-controls attribute corresponding to stack-children id', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+
+      const stackLabel = fixture.nativeElement.querySelector('.stack-block-label');
+      // make sure the attribute does not exist when collapsed
+      expect(stackLabel.getAttribute('aria-controls')).toBeNull();
+      fixture.componentInstance.expanded = true;
+      fixture.detectChanges();
+      const controlsId = stackLabel.getAttribute('aria-controls');
+      expect(controlsId).not.toBeNull();
+      const childrenId = fixture.nativeElement.querySelector('.stack-children').getAttribute('id');
+      expect(childrenId).toBe(controlsId);
+    });
   });
 }

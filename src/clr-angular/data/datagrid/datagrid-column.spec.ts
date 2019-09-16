@@ -411,7 +411,7 @@ export default function(): void {
       });
     });
 
-    describe('View filters', function() {
+    describe('Build-in string and numeric filters', function() {
       let context;
       beforeEach(function() {
         context = this.create(ClrDatagridColumn, ColTypeTest, DATAGRID_SPEC_PROVIDERS);

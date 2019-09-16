@@ -47,7 +47,7 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
                   *ngIf="field && !customFilter && (colType=='string')"
                   [clrDgStringFilter]="registered"
                   [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
-          
+
           <clr-dg-numeric-filter
                   *ngIf="field && !customFilter && (colType=='number')"
                   [clrDgNumericFilter]="registered"
@@ -57,11 +57,11 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
               <ng-content></ng-content>
           </ng-template>
 
-          <button 
-            class="datagrid-column-title" 
+          <button
+            class="datagrid-column-title"
             [attr.aria-label]="commonStrings.keys.sortColumn"
-            *ngIf="sortable" 
-            (click)="sort()" 
+            *ngIf="sortable"
+            (click)="sort()"
             type="button">
               <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
               <clr-icon
@@ -129,6 +129,15 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     return this._field;
   }
 
+  /*
+  * What type is this column?  This defaults to STRING, but can also be
+  * set to NUMBER.  Unsupported types default to STRING. Users can set it
+  * via the [clrDgColType] input by setting it to 'string' or 'number'.
+  */
+
+  // TODO: We might want to make this an enum in the future
+  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
+
   @Input('clrDgField')
   public set field(field: string) {
     if (typeof field === 'string') {
@@ -172,15 +181,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       }
     }
   }
-
-  /*
-    * What type is this column?  This defaults to STRING, but can also be
-    * set to NUMBER.  Unsupported types default to STRING. Users can set it
-    * via the [clrDgColType] input by setting it to 'string' or 'number'.
-    */
-
-  // TODO: We might want to make this an enum in the future
-  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
 
   /**
    * Indicates if the column is sortable

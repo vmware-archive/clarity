@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -32,6 +32,7 @@ import { FormsLayoutVerticalAngularDemo } from './layout-angular/layout-vertical
 import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 import { FormsResetDemo } from './reset/reset';
+import { FormsA11yDemo } from './a11y/a11y';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
@@ -57,6 +58,7 @@ import { FormsResetDemo } from './reset/reset';
     FormsTemplateDrivenDemo,
     FormsReactiveDemo,
     FormsResetDemo,
+    FormsA11yDemo,
   ],
   exports: [
     FormsDemo,
@@ -80,6 +82,7 @@ import { FormsResetDemo } from './reset/reset';
     FormsTemplateDrivenDemo,
     FormsReactiveDemo,
     FormsResetDemo,
+    FormsA11yDemo,
   ],
 })
 export class FormsDemoModule {}

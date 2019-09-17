@@ -184,4 +184,6 @@ export interface ClrCommonStrings {
    * Stack View: Record has changed
    */
   stackViewChanged?: string;
+  // Forms
+  formErrorSummary?: string;
 }

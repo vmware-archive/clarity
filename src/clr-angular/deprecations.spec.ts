@@ -27,7 +27,7 @@ describe('Deprecations', () => {
     });
     it('should handle ClrForm.markAsDirty as ClrForm.markAsTouched', () => {
       spyOn(ClrForm.prototype, 'markAsTouched');
-      ClrForm.prototype.markAsDirty();
+      ClrForm.prototype.markAsDirty(true);
       expect(ClrForm.prototype.markAsTouched).toHaveBeenCalled();
     });
     it('should replace $clr-default prefixed SASS variables with $clr-global prefixed variables');

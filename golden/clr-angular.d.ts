@@ -270,6 +270,7 @@ export interface ClrCommonStrings {
     detailExpandableAriaLabel?: string;
     expand?: string;
     firstPage?: string;
+    formErrorSummary?: string;
     hide?: string;
     info?: string;
     lastPage?: string;
@@ -776,11 +777,15 @@ export declare class ClrFocusOnViewInit implements AfterViewInit {
     onFocusout(): void;
 }
 
-export declare class ClrForm {
+export declare class ClrForm implements OnInit, OnDestroy {
+    labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
-    constructor(layoutService: LayoutService, markControlService: MarkControlService);
-    markAsDirty(): void;
-    markAsTouched(): void;
+    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef, renderer: Renderer2, commonStrings: ClrCommonStringsService);
+    markAsDirty(updateAriaLiveText?: boolean): void;
+    markAsTouched(updateAriaLiveText?: boolean): void;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+    onFormSubmit(): void;
 }
 
 export declare class ClrFormsModule {
@@ -862,6 +867,7 @@ export declare class ClrInputModule {
 
 export declare class ClrLabel implements OnInit, OnDestroy {
     forAttr: string;
+    readonly labelText: string;
     constructor(controlIdService: ControlIdService, layoutService: LayoutService, ngControlService: NgControlService, renderer: Renderer2, el: ElementRef);
     disableGrid(): void;
     ngOnDestroy(): void;

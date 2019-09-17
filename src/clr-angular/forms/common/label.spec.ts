@@ -18,8 +18,10 @@ import { NgControlService } from './providers/ng-control.service';
 @Component({ template: `<label></label>` })
 class NoForTest {}
 
-@Component({ template: `<label for="hello"></label>` })
-class ExplicitForTest {}
+@Component({ template: `<label [for]="forValue"></label>` })
+class ExplicitForTest {
+  forValue = 'hello';
+}
 
 @Component({
   template: `<div><label for="hello"></label></div>`,
@@ -142,6 +144,16 @@ export default function(): void {
       fixture.detectChanges();
       const label = fixture.nativeElement.querySelector('label');
       expect(label.getAttribute('for')).toBe('hello');
+    });
+
+    it('provides a host binding on the for attribute', function() {
+      TestBed.configureTestingModule({ declarations: [ClrLabel, ExplicitForTest], providers: [ControlIdService] });
+      const fixture = TestBed.createComponent(ExplicitForTest);
+      fixture.detectChanges();
+      fixture.componentInstance.forValue = 'updatedFor';
+      fixture.detectChanges();
+      const label = fixture.nativeElement.querySelector('label');
+      expect(label.getAttribute('for')).toBe('updatedFor');
     });
   });
 }

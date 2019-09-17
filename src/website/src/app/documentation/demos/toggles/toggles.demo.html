@@ -37,14 +37,16 @@
 
     <p></p>
 
-    <clr-toggle-wrapper>
-      <input type="checkbox" clrToggle name="test2" value="option1" />
-      <label>Option 1</label>
-    </clr-toggle-wrapper>
-    <clr-toggle-wrapper>
-      <input type="checkbox" clrToggle name="test2" value="option2" />
-      <label>Option 2</label>
-    </clr-toggle-wrapper>
+    <clr-toggle-container>
+      <clr-toggle-wrapper>
+        <input type="checkbox" clrToggle name="test2" value="option1" />
+        <label>Option 1</label>
+      </clr-toggle-wrapper>
+      <clr-toggle-wrapper>
+        <input type="checkbox" clrToggle name="test2" value="option2" />
+        <label>Option 2</label>
+      </clr-toggle-wrapper>
+    </clr-toggle-container>
 
     <p></p>
 
@@ -153,9 +155,13 @@
 
     <p></p>
 
-    <div class="clr-toggle-wrapper">
-      <input type="checkbox" id="checkbox0" name="checkbox-basic" value="option1" class="clr-toggle">
-      <label for="checkbox0">My choice</label>
+    <div class="clr-form-control">
+      <div class="clr-control-container">
+        <div class="clr-toggle-wrapper">
+          <input type="checkbox" id="toggle1" name="toggle-basic" value="option1" class="clr-toggle">
+          <label for="toggle1">My choice</label>
+        </div>
+      </div>
     </div>
 
     <p></p>
@@ -317,6 +323,35 @@
       <h4>Label</h4>
 
       <p>The label should clearly describe the setting. Although Clarity supports a toggle switch without a label, use this approach only if the purpose of the control is made clear elsewhere, for example, in a group label or section header.</p>
+    </div>
+
+    <div id="accessibility-guidelines">
+      <h2 id="accessability">Accessibility</h2>
+
+      <p>
+        For applications that use the <code class="clr-code">ClrToggle</code> directive and the associated
+        <code class="clr-code">ClrToggleContainer</code> and <code class="clr-code">ClrToggleWrapper</code>
+        components there is built in support that adds accessible behavior to the control and its form.
+        This behavior includes:
+      </p>
+      <p></p>
+      <ol>
+        <li>
+          Programmatically associating the correct label <code class="clr-code">for</code>
+          attribute with the <code class="clr-code">id</code> of the input</li>
+        <li>
+          Automatic wiring up of the <code class="clr-code">aria-describedby</code> behavior with associated
+          <code class="clr-code">clr-control-error</code> elements
+        </li>
+        <li>
+          An <code class="clr-code">aria-live</code> region that can notify screen readers about changes in
+          the control error state
+        </li>
+        <li>
+          Adds the label to a general form summary for screen readers when the control is in an error state
+          after a form submit
+        </li>
+      </ol>
     </div>
   </article>
 </clr-doc-wrapper>

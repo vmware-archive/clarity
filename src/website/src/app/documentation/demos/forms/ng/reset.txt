@@ -4,9 +4,12 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 @Component({
     template: `
     <form clrForm [formGroup]="exampleForm">
-        <input clrInput formControlName="sample" />
-        <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
-        <button class="btn" type="button" (click)="resetForm()">Reset</button>
+        <clr-input-container>
+            <label>Sample Text</label>
+            <input clrInput formControlName="sample" />
+            <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+            <button class="btn" type="button" (click)="resetForm()">Reset</button>
+        </clr-input-container>
     </form>
     `
 })

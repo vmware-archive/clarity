@@ -151,5 +151,33 @@
             </div>
         </div>
 
+        <div id="accessibility-guidelines">
+            <h2 id="accessibility">Accessibility</h2>
+
+            <p>
+                For applications that use the <code class="clr-code">ClrTextarea</code> directive and the associated
+                <code class="clr-code">ClrTextarea</code> component there is built in support that adds accessible
+                behavior to the control and its form. This behavior includes:
+            </p>
+            <p></p>
+            <ol>
+                <li>
+                    Programmatically associating the correct label <code class="clr-code">for</code>
+                    attribute with the <code class="clr-code">id</code> of the input</li>
+                <li>
+                    Automatic wiring up of the <code class="clr-code">aria-describedby</code> behavior with associated
+                    <code class="clr-code">clr-control-error</code> elements
+                </li>
+                <li>
+                    An <code class="clr-code">aria-live</code> region that can notify screen readers about changes in
+                    the control error state
+                </li>
+                <li>
+                    Adds the label to a general form summary for screen readers when the control is in an error state
+                    after a form submit
+                </li>
+            </ol>
+        </div>
+
     </article>
 </clr-doc-wrapper>

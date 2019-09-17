@@ -22,6 +22,7 @@ import { ProgressBarComponentDemo } from './progress-bar-component.demo';
 import { RouterModule } from '@angular/router';
 import { DocWrapperModule } from '../_doc-wrapper/doc-wrapper.module';
 import { UtilsModule } from '../../../utils/utils.module';
+import { ProgressBarStoryDemo } from './progress-bar-story';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { UtilsModule } from '../../../utils/utils.module';
     ProgressBarInlineCardsDemo,
     ProgressBarComponentDemo,
     OldProgressBarCardsDemo,
-
+    ProgressBarStoryDemo,
     ProgressBarsDemo,
   ],
   exports: [ProgressBarsDemo],

@@ -4,11 +4,319 @@
             id="a-progress-bar-is-a-linear-indicator-for-providing-feedback-about-an-ongoing-user-initiated-process">A
             progress bar is a linear indicator for providing feedback about an ongoing, user-initiated process.</h5>
 
+        <div id="design-guidelines">
+            <h2 id="guidelines">Design Guidelines</h2>
+            <h3>Usage</h3>
+
+            <p>Clarity has two types of progress bars:</p>
+
+            <ul class="list">
+                <li>A determinate progress bar, which shows process completion to a specific maximum goal. Use this
+                    when the process has a known duration. This could be a file download or upload. Or, a series of
+                    configuration steps that happen during an initialization process.
+                </li>
+                <li>An indeterminate progress bar, which animates continuously until the process is
+                    complete. Use this progress bar for a process when there is no estimate of
+                    the end time. It indicates that work is occurring without indicating a scope for completion or
+                    implying an estimate for how long it will take.
+                </li>
+            </ul>
+
+            <div class="clr-row">
+                <div class="clr-col">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <clr-progress-bar-story-demo></clr-progress-bar-story-demo>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="placement">Placement</h3>
+
+            <p>Progress bars are designed for use in the <a routerLink="../../app-layout">main content area</a>, <a
+                routerLink="../../header">header</a>, <a routerLink="../../cards">cards</a>,
+                and <a routerLink="../../modals">modals</a>. The size of the progress bar adjusts to its
+                container and indicates which process is being monitored through placement of the progress bar in the
+                container.</p>
+
+            <div class="clr-row">
+                <div class="clr-col-12 clr-col-md-6">
+                <div class="clrweb-DoxMedia">
+                    <div class="clrweb-DoxMedia-block">
+                        <div class="main-container" style="width: 100%; height: 25vh;">
+                            <header class="header header-6" style="height: 2rem">
+                              <div class="branding" style="width: 4rem; min-width: 4rem;">
+                                Header
+                              </div>
+                            </header>
+                            <div class="content-container">
+                                <div class="content-area">
+                                    <div class="progress top">
+                                        <progress value="50" max="100"></progress>
+                                    </div>
+                                </div>
+                                <nav class="sidenav" style="width: 4rem; min-width: 4rem">
+                                    Sidenav
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="clr-col-12 clr-col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block">
+                            <div class="main-container" style="width: 100%; height: 25vh;">
+                                <header class="header header-6" style="height: 2rem">
+                                    <div class="branding" style="width: 4rem; min-width: 4rem;">
+                                        Header
+                                    </div>
+                                    <div class="header-actions" style="justify-content: flex-start; padding-right: 0.5rem;">
+                                        <div class="progress top" style="align-self: center">
+                                            <progress value="50" max="100"></progress>
+                                        </div>
+                                    </div>
+                                </header>
+                                <div class="content-container">
+                                    <div class="content-area">
+                                        Content area
+                                    </div>
+                                    <nav class="sidenav" style="width: 4rem; min-width: 4rem">
+                                        Sidenav.
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clr-row">
+                <div class="clr-col-12 clr-col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="height: 237px">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="progress top">
+                                        <progress value="50" max="100"></progress>
+                                    </div>
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Card text</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="..." class="card-link">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Card top</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="clr-col-12 clr-col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="height: 237px">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Card text</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="progress">
+                                        <progress value="50" max="100"></progress>
+                                    </div>
+                                    <a href="..." class="card-link">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Card footer</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="clr-col-12 clr-col-md-4">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="height: 237px">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h4 class="card-title">Card title</h4>
+                                    <p class="card-text">Card text</p>
+                                    <div class="progress-block">
+                                        <label>Block</label>
+                                        <div class="progress-static">
+                                            <div class="progress-meter" data-value="50"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="..." class="card-link">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Card block</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 id="messaging">Messaging</h3>
+
+            <div class="clr-row">
+                <div class="clr-col-12 clr-col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="background-color: #ddd">
+                            <div class="progress labeled">
+                              <progress value="50" max="100"></progress>
+                              <span>50%</span>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Determinate Progress Bar</h6>
+                            <ul class="list-unstyled">
+                              <li>Shows progress to a specific maximum goal</li>
+                              <li>Has an optional label that shows percentage completion</li>
+                              <li>Keep messaging minimal</li>
+                              <li>Use specific messaging: Process starting, Process finished, etc</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clr-col-12 clr-col-md-6">
+                    <div class="clrweb-DoxMedia">
+                        <div class="clrweb-DoxMedia-block" style="background-color: #ddd">
+                            <div class="clrweb-DoxMedia-img">
+                              <div class="progress-group">
+                                <div class="clr-row">
+                                  <div class="clr-col text-left">Processing step 3 of 4</div>
+                                </div>
+                                <div class="progress loop"><progress></progress></div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="clrweb-DoxMedia-text">
+                            <h6>Indeterminate</h6>
+                            <ul class="list-unstyled">
+                              <li>Uses specific messaging: E.g "Loading update 3 of 7"</li>
+                              <li>Will animate continuously until complete</li>
+                              <li>Has no estmated end time</li>
+                              <li>Indicates work is occuring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>Clarity places the label on the right of the progress bar because the bar fills from left to right.</p>
+
+            <h3 id="progress-bar-versus-spinner">Progress Bar Versus Spinner</h3>
+
+            <p>Clarity also has a circular progress indicator, called a <a
+                routerLink="../../spinners">spinner</a>, which serves the same use case as
+                an indeterminate progress bar. Using a spinner or an indeterminate progress bar is
+                a matter of available space and activation point. In many cases, spinners are best
+                because they occupy less space.</p>
+        </div>
+
+        <div id="accessibility">
+            <h2>Accessibility</h2>
+
+            <p>When adding a progress bar, keep the following in mind when adding a label to make it accessible:</p>
+
+            <ul>
+                <li>A label should always be included with a progress bar</li>
+                <li>Use aria-labelledby along with an id in order to tie the label and the progress bar together</li>
+                <li>Never use color as the only affordance that indicates the nature or meaning of the progress bar</li>
+                <li>Use an explicit text label that conveys the nature or meaning of the progress bar for sight impaired
+                    users</li>
+                <li>Labels should be added above or below the progress bar</li>
+                <li>An optional <code class="clr-code">percentage</code> label can be included after the progress bar as
+                    needed</li>
+                <li>While explicit text labels are preferred, an <code class="clr-code">accessible icon</code> is acceptable when vertical text
+                    labels are deemed inappropriate</li>
+            </ul>
+
+            <p>
+                <strong>Note:</strong> When the optional percentage label is used it must be associated with the
+                progress bar it is describing. This can be accomplished by using the <code class="clr-code">id</code>
+                of the percentage label with the <code clr-code="clr-code">aria-describedby</code> attribute on the progress
+                bar. The following form demonstrates an accessible progress implementation that meets both visual and
+                screen reader consumption needs.
+            </p>
+
+            <clr-code-snippet [clrCode]="optionalPercentageLabel"></clr-code-snippet>
+
+            <h3>Label examples</h3>
+            <p>An explicit label accurately describes the operation for which the progress/status is being updated by
+                the progressbar</p>
+            <p></p>
+            <div class="clr-row">
+                <div class="clr-col-12 clr-col-md-6">
+                    <div class="clrweb-DoxMedia is-dont-block">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Generic Labels</h6>
+                            <ul>
+                                <li>Progress</li>
+                                <li>Starting</li>
+                                <li>Stopping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clr-col-12 clr-col-md-6">
+                    <div class="clrweb-DoxMedia is-do-block">
+                        <div class="clrweb-DoxMedia-text">
+                            <h6 class="clrweb-DoxMedia-do-dont">Explicit Labels</h6>
+                            <ul>
+                                <li>Adding VM</li>
+                                <li>Uploading image</li>
+                                <li>Downloading data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Deprecations</h3>
+            <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false">
+                <clr-alert-item>
+              <span class="alert-text">
+                  Several variations of progress bar have been found to be inaccessible and are now deprecated. They
+                  will be removed in Clarity v4.0.
+              </span>
+                </clr-alert-item>
+            </clr-alert>
+
+            The following variations of progress-bar are not accessible to screen reader users or visually impaired users because they rely on recognition of the color to convey meaning or status.
+            <ul>
+                <li>
+                    <strong>Flash</strong>
+                </li>
+                <li>
+                    <strong>flash-danger</strong>
+                </li>
+                <li>
+                    <strong>danger</strong>
+                </li>
+                <li>
+                    <strong>warning</strong>
+                </li>
+                <li>
+                    <strong>success</strong>
+                </li>
+            </ul>
+        </div>
+
         <div id="code-examples">
+            <h2 id="examples">Code & Examples</h2>
             <p>Progress bars consist of an HTML5 progress element inside the block-level element with the <code
                 class="clr-code">.progress</code> classname. The block-level container is necessary due to cross-browser
                 constraints with styling HTML5 progress elements.
                 As browsers improve, the intent is for this container to go away.</p>
+
+            <clr-progress-bar-component-demos></clr-progress-bar-component-demos>
 
             <clr-progress-bar-examples-demo class="clrweb-progress-demo"></clr-progress-bar-examples-demo>
 
@@ -22,12 +330,11 @@
 
             <h3 id="color">Color</h3>
 
-            <p>The default color of the fill bar is Action Blue. You can change the color as follows:</p>
-
-            <ul class="list">
-                <li>Green for success</li>
-                <li>Red to indicate danger or warning</li>
-            </ul>
+            <p>The default color of the fill bar is Action Blue. You may change the color as required by visual design.</p>
+            <p>
+                Using color to convey additional information e.g. Green to indicate Success is not recommended. Sight impaired users may not read the additional meaning without additional information such as a text label or icon.
+                The recommendation if such status information is needed in the context of a progress bar, is to communicate this with a notification or text label.
+            </p>
 
             <clr-progress-bar-colors-demo class="clrweb-progress-demo"></clr-progress-bar-colors-demo>
 
@@ -56,28 +363,73 @@
                 <li><strong>progress-fade:</strong> A progress container with the <code
                     class="clr-code">progress-fade</code> classname will fade out after it reaches 100%.
                 </li>
-                <li><strong>flash:</strong> A progress container with the <code class="clr-code">flash</code>
+                <li>
+                    <strong>flash:</strong>
+                    A progress container with the <code class="clr-code">flash</code>
                     classname will have the bar color change to green after it reaches 100%. This can be
                     combined with the <code class="clr-code">progress-fade</code> classname to have the
                     bar change color to green and then fade out.
+                    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'" [clrAlertSizeSmall]="true">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               This has been deprecated in Clarity v3.0 and will be removed in v4.0
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
                 </li>
-                <li><strong>flash-danger:</strong> A progress container with the <code
+                <li>
+                    <strong>flash-danger:</strong>
+                    A progress container with the <code
                     class="clr-code">flash-danger</code> classname will have the bar color change to
                     red after it reaches 100%. This classname can also be combined with the <code
                     class="clr-code">progress-fade</code> classname.
+                    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'" [clrAlertSizeSmall]="true">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               This has been deprecated in Clarity v2.0 and will be removed in v4.0
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
                 </li>
                 <li><strong>loop:</strong> A progress container with the <code class="clr-code">loop</code>
                     classname will show a progress bar that loops across infinitely. This is the style
                     for our indeterminate progress bar.
                 </li>
-                <li><strong>danger:</strong> A progress container with the <code class="clr-code">danger</code>
+                <li>
+                    <strong>danger:</strong>
+                    A progress container with the <code class="clr-code">danger</code>
                     classname will show up as red.
+                    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'" [clrAlertSizeSmall]="true">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               This has been deprecated in Clarity v2.0 and will be removed in v4.0
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
                 </li>
-                <li><strong>warning:</strong> A progress container with the <code class="clr-code">warning</code>
+                <li>
+                    <strong>warning:</strong>
+                    A progress container with the <code class="clr-code">warning</code>
                     classname will also show up as red.
+                    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'" [clrAlertSizeSmall]="true">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               This has been deprecated in Clarity v2.0 and will be removed in v4.0
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
                 </li>
-                <li><strong>success:</strong> A progress container with the <code class="clr-code">success</code>
+                <li>
+                    <strong>success:</strong>
+                    A progress container with the <code class="clr-code">success</code>
                     classname will show up as green.
+                    <clr-alert [clrAlertClosable]="false" [clrAlertType]="'warning'" [clrAlertSizeSmall]="true">
+                        <clr-alert-item>
+                            <span class="alert-text">
+                               This has been deprecated in Clarity v2.0 and will be removed in v4.0
+                            </span>
+                        </clr-alert-item>
+                    </clr-alert>
                 </li>
             </ul>
 
@@ -129,13 +481,13 @@
 
             <p>Progress bar blocks allow for <code class="clr-code">label</code> and <code class="clr-code">span</code>
                 elements to be placed alongside the <code class="clr-code">.progress</code> and <code
-                class="clr-code">.progress-static</code> element. The progress bar block is a wrapper element
+                    class="clr-code">.progress-static</code> element. The progress bar block is a wrapper element
                 with the <code class="clr-code">.progress-block</code> classname applied to it.</p>
 
             <p>Progress bar groups allow for vertical stacking of elements above and below the progress bar.
                 To create a progress bar group, wrap the <code class="clr-code">.progress</code> and <code
-                class="clr-code">.progress-static</code> element with a <code
-                class="clr-code">.progress-group</code> element.</p>
+                    class="clr-code">.progress-static</code> element with a <code
+                    class="clr-code">.progress-group</code> element.</p>
 
             <clr-progress-bar-inline-demo class="clrweb-progress-demo"></clr-progress-bar-inline-demo>
 
@@ -143,59 +495,6 @@
 
             <clr-progress-bar-inline-cards-demo class="clrweb-progress-demo"></clr-progress-bar-inline-cards-demo>
         </div>
-
-        <div id="design-guidelines">
-            <h3 id="guidelines">Usage</h3>
-
-            <p>Clarity has two types of progress bars:</p>
-
-            <ul class="list">
-                <li>A determinate progress bar, which shows process completion from 0 to 100%. Use this
-                    progress bar for a process of known duration.
-                </li>
-                <li>An indeterminate progress bar, which animates continuously until the process is
-                    complete. Use this progress bar for a process for which there is no estimate of
-                    the end time.
-                </li>
-            </ul>
-
-            <h4 id="placement">Placement</h4>
-
-            <p>Progress bars are designed for use in the main content area, <a
-                routerLink="../../header">header</a>, <a routerLink="../../cards">cards</a>,
-                and <a routerLink="../../modals">modals</a>. The size of the progress bar adjusts to its
-                container. Indicate which process is being monitored through placement of the progress bar in the
-                container.</p>
-
-            <h4 id="messaging">Messaging</h4>
-
-            <p>Use messaging as follows:</p>
-
-            <ul class="list">
-                <li>For a determinate progress bar, use a label to show percentage complete.</li>
-                <li>For an indeterminate progress indicator, add messaging to let the user know the operation is in
-                    progress, for example, “Working…,” or “Loading update 3 of 7.”
-                </li>
-                <li>Keep the messaging minimal.</li>
-            </ul>
-
-            <p>Clarity places the label on the right of the progress bar because the bar fills from left to right.</p>
-
-            <h4 id="progress-bar-versus-spinner">Progress Bar Versus Spinner</h4>
-
-            <p>Clarity also has a circular progress indicator, called a <a
-                routerLink="../../spinners">spinner</a>, which serves the same use case as
-                an indeterminate progress bar. Using a spinner or an indeterminate progress bar is
-                a matter of available space and activation point. In many cases, spinners are best
-                because they occupy less space.</p>
-        </div>
-
-
-        <div id="design-guidelines">
-            <h3 id="guidelines">Component</h3>
-            <clr-progress-bar-component-demos></clr-progress-bar-component-demos>
-        </div>
-
 
     </article>
 </clr-doc-wrapper>

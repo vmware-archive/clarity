@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { TestContext } from '../../helpers.spec';
@@ -14,12 +14,30 @@ import { FiltersProvider } from '../../providers/filters';
 import { Page } from '../../providers/page';
 import { StateDebouncer } from '../../providers/state-debouncer.provider';
 import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
+import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../../../utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../../../utils/popover/providers/popover-events.service';
 
 import { DatagridNumericFilter } from './datagrid-numeric-filter';
 import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
 
-const PROVIDERS = [FiltersProvider, DomAdapter, Page, StateDebouncer];
+class MockRenderer {
+  listen() {}
+}
 
+const PROVIDERS = [
+  FiltersProvider,
+  DomAdapter,
+  Page,
+  StateDebouncer,
+  ClrPopoverEventsService,
+  ClrPopoverPositionService,
+  ClrPopoverToggleService,
+  {
+    provide: Renderer2,
+    useClass: MockRenderer,
+  },
+];
 export default function(): void {
   describe('DatagridNumericFilter component', function() {
     // Until we can properly type "this"
@@ -47,7 +65,7 @@ export default function(): void {
     it('receives an input for the filter value', function() {
       context.testComponent.filterValue = [null, 10];
       context.detectChanges();
-      expect(context.clarityDirective.filter.value).toBe([null, 10]);
+      expect(context.clarityDirective.filter.value).toEqual([null, 10]);
     });
 
     it('wires the RegisteredFilter correctly', function() {
@@ -74,16 +92,16 @@ export default function(): void {
     });
 
     it('displays numeric inputs when open', function() {
-      expect(context.clarityElement.querySelectorAll("input[type='number']")).toBeNull();
+      expect(document.querySelector("input[type='number']")).toBeNull();
       openFilter();
-      expect(context.clarityElement.querySelectorAll("input[type='number']")).not.toBeNull();
+      expect(document.querySelector("input[type='number']")).not.toBeNull();
     });
 
     it(
       'focuses on the input when the filter opens',
       fakeAsync(function() {
         openFilter();
-        const input = context.clarityElement.querySelector("input[type='number']");
+        const input: HTMLInputElement = document.querySelector("input[type='number']");
         spyOn(input, 'focus');
         expect(input.focus).not.toHaveBeenCalled();
         tick();
@@ -94,20 +112,10 @@ export default function(): void {
     it('offers two way binding on the filtered state', function() {
       context.testComponent.filterValue = [1, 10];
       context.detectChanges();
-      expect(context.clarityDirective.value).toBe([1, 10]);
+      expect(context.clarityDirective.value).toEqual([1, 10]);
       context.clarityDirective.value = [null, 10];
       context.detectChanges();
-      expect(context.testComponent.filterValue).toBe([null, 10]);
-    });
-
-    xit('closes when the user presses Enter in the input', function() {
-      // TODO
-      openFilter();
-    });
-
-    xit('closes when the user presses Escape in the input', function() {
-      // TODO
-      openFilter();
+      expect(context.testComponent.filterValue).toEqual([null, 10]);
     });
   });
 }

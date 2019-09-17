@@ -105,6 +105,8 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
           other.high === this._high
         );
       }
+      return other === this;
     }
+    return false;
   }
 }

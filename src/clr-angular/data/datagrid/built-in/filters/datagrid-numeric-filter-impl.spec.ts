@@ -61,7 +61,7 @@ export default function(): void {
     });
 
     it('compares filters', function() {
-      let otherFilter = fullFilter;
+      let otherFilter: ClrDatagridFilterInterface<any> = fullFilter;
       expect(fullFilter.equals(otherFilter)).toBe(true);
       // Reference only comparison should be enough for the common case
       otherFilter = new DatagridNumericFilterImpl(new TestFilter());
@@ -99,10 +99,14 @@ export default function(): void {
 
 class TestFilter implements ClrDatagridNumericFilterInterface<number> {
   accepts(item: number, low: number, high: number) {
-    return (
-      // Make sure the limits are set and not null before checking them
-      low === null || item >= low || (high === null || item <= high)
-    );
+    if (low !== null && item < low) {
+      return false;
+    }
+
+    if (high !== null && item > high) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -14,6 +14,8 @@ import DatagridPropertyComparatorSpecs from './built-in/comparators/datagrid-pro
 import DatagridPropertyStringFilterSpecs from './built-in/filters/datagrid-property-string-filter.spec';
 import DatagridStringFilterSpecs from './built-in/filters/datagrid-string-filter.spec';
 import DatagridStringFilterImplSpecs from './built-in/filters/datagrid-string-filter-impl.spec';
+import DatagridNumericFilterSpecs from './built-in/filters/datagrid-numeric-filter.spec';
+import DatagridNumericFilterImplSpecs from './built-in/filters/datagrid-numeric-filter-impl.spec';
 import NestedPropertySpecs from './built-in/nested-property.spec';
 import DatagridActionBarSpecs from './datagrid-action-bar.spec';
 import DatagridActionOverflowSpecs from './datagrid-action-overflow.spec';
@@ -106,5 +108,7 @@ describe('Datagrid', function() {
     DatagridPropertyStringFilterSpecs();
     DatagridStringFilterSpecs();
     DatagridStringFilterImplSpecs();
+    DatagridNumericFilterSpecs();
+    DatagridNumericFilterImplSpecs();
   });
 });

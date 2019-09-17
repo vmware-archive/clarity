@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 
 import { ClarityIcons } from '@clr/icons';
 import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
+import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
 
 @Component({
   selector: 'documentation',
@@ -20,5 +21,6 @@ export class DocumentationComponent {
   environment = environment;
   constructor() {
     ClarityIcons.add(EssentialShapes);
+    ClarityIcons.add(TechnologyShapes);
   }
 }

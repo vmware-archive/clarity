@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,6 +7,8 @@ export class ProgBarExample {
   intervalId: any;
   value: number = 0;
   intervalTimeInMs: number = 450;
+  running = false;
+  complete = false;
 
   constructor(
     public label: string = 'demo',
@@ -19,6 +21,7 @@ export class ProgBarExample {
   }
 
   stop(): void {
+    this.complete = true;
     clearInterval(this.intervalId);
   }
 
@@ -38,10 +41,20 @@ export class ProgBarExample {
     }, this.intervalTimeInMs);
   }
 
+  isRunning(): boolean {
+    return this.running;
+  }
+
+  isFinished(): boolean {
+    return this.complete;
+  }
+
   run(): void {
     let myProgress: number = this.value;
     const maxProgressIncrement: number = 15;
     const minProgressIncrement: number = 4;
+    this.running = true;
+    this.complete = false;
 
     myProgress += Math.random() * (maxProgressIncrement - minProgressIncrement) + minProgressIncrement;
 

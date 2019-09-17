@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,6 +8,16 @@
     <h4>{{type.title}}</h4>
     <div [ngClass]="type.cssClassnames()">
         <progress value="{{type.value}}" max="100" [attr.data-displayval]="type.value + '%'"></progress>
+        {{ type.label }}
+    </div>
+    <div style="min-height: 1rem">
+        <ng-container *ngIf="type.label === 'flash-danger' && type.isFinished()">
+            <span class="danger-text">
+                <clr-icon shape="exclamation-circle" size="24"></clr-icon>
+                Connection to database timed out.
+                <a href="javascript://" class="btn btn-link" (click)="type.start()">Try again</a>
+            </span>
+        </ng-container>
     </div>
     <p><button class="btn btn-outline" (click)="type.start()">Show</button></p>
 </div>
@@ -19,12 +29,17 @@
 &lt;/div&gt;
 
 &lt;h4&gt;Success&lt;/h4&gt;
-&lt;div class=&quot;progress success&quot;&gt;
+&lt;div class=&quot;progress user&quot;&gt;
     &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
 &lt;/div&gt;
 
 &lt;h4&gt;Danger/Warning&lt;/h4&gt;
 &lt;div class=&quot;progress danger&quot;&gt;
     &lt;progress max=&quot;100&quot; value=&quot;0&quot; data-displayval=&quot;0%&quot;&gt;&lt;/progress&gt;
+    &lt;span class="danger-text"&gt;
+        &lt;clr-icon size="24" shape="exclamation-circle"&gt;;&lt;/clr-icon>
+        Connection to database timed out. &gt;
+        &lt;a&gt;Try again&lt;/a&gt;
+    &lt;/span&gt;
 &lt;/div&gt;
 </code></pre>

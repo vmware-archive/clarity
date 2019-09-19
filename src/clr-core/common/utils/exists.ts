@@ -4,14 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export function exists(obj: { [key: string]: any }, ...args: string[]): boolean {
-  if (typeof obj === 'undefined') {
-    return false;
-  }
+import { __, curryN, path } from 'ramda';
 
-  if (args.length < 1) {
-    return true;
-  }
+export const existsIn = curryN(2, (pathToCheck: string[], obj: object): boolean => {
+  const pathExists = path(pathToCheck, obj);
+  return typeof pathExists !== 'undefined';
+});
 
-  return exists(obj[args.shift() as any], ...args);
+export function elementExists(tagName: string, registry = window.customElements): boolean {
+  return !!registry.get(tagName);
 }
+
+export const existsInWindow = existsIn(__, window);

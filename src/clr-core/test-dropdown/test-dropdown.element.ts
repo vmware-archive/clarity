@@ -24,6 +24,7 @@ import { styles } from './test-dropdown.element.css';
 // @dynamic
 export class CwcTestDropdown extends LitElement {
   private _open = false;
+
   get open() {
     return this._open;
   }

@@ -2,6 +2,7 @@
 
 $clr-fontSkipBase64: true;
 $clr-font: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default;
+$clr-use-custom-properties: true;
 
 @import './../../../node_modules/normalize.css/normalize';
 @import './../../../node_modules/@clr/city/css/light.css';
@@ -10,3 +11,5 @@ $clr-font: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !d
 @import './../../../node_modules/@clr/city/css/semibold.css';
 @import './../../clr-ui/layout/layout';
 @import './../../clr-ui/typography/typography';
+@import '../../clr-angular/color/variables.color';
+@import '../../clr-angular/color/properties.color';

@@ -1,6 +1,284 @@
 @import './../styles/core-component';
-@import './../../clr-ui/icon/icon';
+
+@mixin setIconColor($clr-icon-color-var) {
+  fill: unquote($clr-icon-color-var);
+
+  .transparent-fill-stroke {
+    stroke: unquote($clr-icon-color-var);
+  }
+}
+
+@mixin rotateSVGIcon($deg) {
+  svg {
+    transform: rotate($deg);
+  }
+}
+
+@mixin flipSVGIcon($direction) {
+  @if $direction == 'horizontal' {
+    svg {
+      transform: scale(-1) rotateX(180deg);
+    }
+    /* stylelint-disable */
+  } @else if $direction == 'vertical' {
+    /* stylelint-enable */
+    svg {
+      transform: scale(-1) rotateY(180deg);
+    }
+  }
+}
 
 :host {
-  color: red;
+  display: inline-block;
+  @include equilateral($clr_baselineRem_0_667);
+  margin: 0;
+  vertical-align: middle;
+  @include setIconColor(#{'var(--clr-icon-color-default, currentColor)'});
+
+  & > div {
+    & > * {
+      height: 100%;
+      width: 100%;
+      display: block;
+      pointer-events: none;
+    }
+
+    & > svg {
+      transition: inherit;
+
+      title {
+        display: none;
+      }
+    }
+  }
+}
+
+div {
+  @include equilateral(100%);
+  overflow: hidden;
+}
+
+svg {
+  display: block;
+}
+
+.sr-only {
+  position: fixed !important;
+  border: none !important;
+  height: $clr_baselineRem_1px !important;
+  width: $clr_baselineRem_1px !important;
+
+  left: 0 !important;
+  top: -1 * $clr_baselineRem_1px !important;
+
+  overflow: hidden !important;
+
+  padding: 0 !important;
+  margin: 0 0 (-1 * $clr_baselineRem_1px) 0 !important;
+}
+
+// sizing
+:host(.clr-i-size-sm) {
+  // weirdly, the default... 16px
+  @include equilateral($clr_baselineRem_0_667);
+}
+
+:host(.clr-i-size-md) {
+  // 24px
+  @include equilateral($clr_baselineRem_1);
+}
+
+:host(.clr-i-size-lg) {
+  // 36px
+  @include equilateral($clr_baselineRem_1_5);
+}
+
+:host(.clr-i-size-xl) {
+  // 48px
+  @include equilateral($clr_baselineRem_2);
+}
+
+:host(.clr-i-size-xxl) {
+  // 64px
+  @include equilateral($clr_baselineRem_2_66);
+}
+
+// colors
+// DEPRECATED IN 3.0: is-green
+:host(.is-green),
+:host(.is-success) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-success, var(--clr-color-success-700,' + $clr-color-success-700 + '))'}
+  );
+}
+
+// DEPRECATED IN 3.0: is-red
+:host(.is-red),
+:host(.is-danger),
+:host(.is-error) {
+  @include setIconColor(#{'var(--clr-icon-color-error, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+}
+
+:host(.is-warning) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-warning, var(--clr-color-warning-900,' + $clr-color-warning-900 + '))'}
+  );
+}
+
+// DEPRECATED IN 3.0: is-blue
+:host(.is-blue),
+:host(.is-info) {
+  @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
+}
+
+// DEPRECATED IN 3.0: is-white
+:host(.is-white),
+:host(.is-inverse) {
+  @include setIconColor(#{'var(--clr-icon-color-inverse, var(--clr-color-neutral-0,' + $clr-color-neutral-0 + '))'});
+}
+
+:host(.is-highlight) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-highlight, var(--clr-color-action-600,' + $clr-color-action-600 + '))'}
+  );
+}
+
+// directional
+:host([dir='up']) {
+  @include rotateSVGIcon(0deg);
+}
+
+:host([dir='down']) {
+  @include rotateSVGIcon(180deg);
+}
+
+:host([dir='right']) {
+  @include rotateSVGIcon(90deg);
+}
+
+:host([dir='left']) {
+  @include rotateSVGIcon(270deg);
+}
+
+:host([flip='horizontal']) {
+  @include flipSVGIcon('horizontal');
+}
+
+:host([flip='vertical']) {
+  @include flipSVGIcon('vertical');
+}
+
+.clr-i-badge {
+  @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+}
+
+// outlined
+
+:host {
+  .clr-i-solid,
+  .clr-i-solid--badged,
+  .clr-i-solid--alerted {
+    display: none;
+  }
+
+  .clr-i-outline--alerted,
+  .clr-i-outline--badged {
+    &:not(.clr-i-outline) {
+      display: none;
+    }
+  }
+}
+
+:host([class*='has-alert']) .can-alert {
+  .clr-i-outline--alerted {
+    display: block;
+  }
+
+  .clr-i-outline:not(.clr-i-outline--alerted) {
+    display: none;
+  }
+}
+
+:host([class*='has-badge']) .can-badge {
+  .clr-i-outline--badged {
+    display: block;
+  }
+
+  .clr-i-outline:not(.clr-i-outline--badged) {
+    display: none;
+  }
+}
+
+// solid
+
+:host(.is-solid) .has-solid {
+  .clr-i-solid {
+    display: block;
+  }
+
+  .clr-i-outline,
+  .clr-i-outline--badged {
+    display: none;
+  }
+
+  .clr-i-solid--alerted,
+  .clr-i-solid--badged {
+    &:not(.clr-i-solid) {
+      display: none;
+    }
+  }
+}
+
+:host(.is-solid[class*='has-badge']) .can-badge.has-solid {
+  .clr-i-solid--badged {
+    display: block;
+  }
+
+  .clr-i-outline,
+  .clr-i-outline--badged,
+  .clr-i-solid:not(.clr-i-solid--badged) {
+    display: none;
+  }
+}
+
+:host(.is-solid[class*='has-alert']) .can-alert.has-solid {
+  .clr-i-solid--alerted {
+    display: block;
+  }
+
+  .clr-i-outline,
+  .clr-i-outline--alerted,
+  .clr-i-solid:not(.clr-i-solid--alerted) {
+    display: none;
+  }
+}
+
+// variant badge colors
+:host(.has-badge--success) {
+  .clr-i-badge {
+    @include setIconColor(
+      #{'var(--clr-icon-color-success, var(--clr-color-success-700,' + $clr-color-success-700 + '))'}
+    );
+  }
+}
+
+:host(.has-badge--error) {
+  .clr-i-badge {
+    @include setIconColor(#{'var(--clr-icon-color-error, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+  }
+}
+
+:host(.has-badge--info) {
+  .clr-i-badge {
+    @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
+  }
+}
+
+// alert colors
+:host(.has-alert) {
+  .clr-i-alert {
+    @include setIconColor(
+      #{'var(--clr-icon-color-warning, var(--clr-color-warning-900,' + $clr-color-warning-900 + '))'}
+    );
+  }
 }

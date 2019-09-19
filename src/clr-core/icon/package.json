@@ -1,7 +1,7 @@
 {
   "ngPackage": {
     "lib": {
-      "entryFile": "icon.element.ts"
+      "entryFile": "index.ts"
     }
   }
 }

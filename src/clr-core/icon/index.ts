@@ -5,3 +5,11 @@
  */
 
 export * from './icon.element';
+export * from './icon.service';
+
+// SHAPES
+export * from './shapes/unknown';
+export * from './shapes/user';
+
+// COLLECTIONS
+// export * from './collections/test';

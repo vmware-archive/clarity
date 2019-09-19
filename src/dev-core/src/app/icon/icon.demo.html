@@ -1,3 +1,163 @@
+<style>
+    table.table {
+        width: 100%;
+        max-width: 640px;
+        margin: 24px 0;
+    }
+
+    table.table th,
+    table.table td {
+        text-align: center;
+        line-height: 1.1em;
+    }
+</style>
+
 <h1>Icon Demo</h1>
 
-<cwc-icon></cwc-icon>
+<p><cwc-icon id="ohai"></cwc-icon></p>
+
+<h2>Icon Sizing</h2>
+
+<h3>Numeric Sizing</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>16</th>
+            <th>24</th>
+            <th>48</th>
+            <th>64</th>
+            <th>128</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="16"></cwc-icon></td>
+            <td><cwc-icon size="24"></cwc-icon></td>
+            <td><cwc-icon size="48"></cwc-icon></td>
+            <td><cwc-icon size="64"></cwc-icon></td>
+            <td><cwc-icon size="128"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>T-shirt Sizing</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>sm</th>
+            <th>md</th>
+            <th>lg</th>
+            <th>xl</th>
+            <th>xxl</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="sm"></cwc-icon></td>
+            <td><cwc-icon size="md"></cwc-icon></td>
+            <td><cwc-icon size="lg"></cwc-icon></td>
+            <td><cwc-icon size="xl"></cwc-icon></td>
+            <td><cwc-icon size="xxl"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Icon Colors</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>normal</th>
+            <th>info</th>
+            <th>success</th>
+            <th>error</th>
+            <th>danger</th>
+            <th>warning</th>
+            <th>inverse</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="24"></cwc-icon></td>
+            <td><cwc-icon size="24" class="is-info"></cwc-icon></td>
+            <td><cwc-icon size="24" class="is-success"></cwc-icon></td>
+            <td><cwc-icon size="24" class="is-error"></cwc-icon></td>
+            <td><cwc-icon size="24" class="is-danger"></cwc-icon></td>
+            <td><cwc-icon size="24" class="is-warning"></cwc-icon></td>
+            <td style="background: #575757"><cwc-icon size="24" class="is-inverse"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Icon Directions</h2>
+
+<h3>direction</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="text-align: right;">how?</th>
+            <th>up</th>
+            <th>left</th>
+            <th>down</th>
+            <th>right</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: right;">dir attr</td>
+            <td><cwc-icon size="24" dir="up"></cwc-icon></td>
+            <td><cwc-icon size="24" dir="left"></cwc-icon></td>
+            <td><cwc-icon size="24" dir="down"></cwc-icon></td>
+            <td><cwc-icon size="24" dir="right"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>orientation</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>normal</th>
+            <th>flip vertical</th>
+            <th>flip horizontal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="24" shape="user" class="has-badge"></cwc-icon></td>
+            <td><cwc-icon size="24" flip="vertical" shape="user" class="has-badge"></cwc-icon></td>
+            <td><cwc-icon size="24" flip="horizontal" shape="user" class="has-badge"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Icon Variants</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>outline</th>
+            <th>outline-badged</th>
+            <th>outline-alerted</th>
+            <th>solid</th>
+            <th>solid-badged</th>
+            <th>solid-alerted</th>
+            <th>solid-badged-success</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" shape="user"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="has-badge"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="has-alert"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-solid"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-solid has-badge"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-solid has-alert"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-solid has-badge--success"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>

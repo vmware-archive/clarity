@@ -72,41 +72,6 @@ const EXAMPLE = `
             <span class="title">Project Clarity</span>
         </a>
     </div>
-    <div class="header-nav">
-        <a href="..." class="nav-link nav-icon" aria-label="cloud">
-            <clr-icon shape="cloud"></clr-icon>
-        </a>
-        <a href="..." class="active nav-link nav-icon" aria-label="folder">
-            <clr-icon shape="folder"></clr-icon>
-        </a>
-    </div>
-    <form class="search">
-        <label for="search_input">
-            <input id="search_input" type="text" placeholder="Search for keywords...">
-        </label>
-    </form>
-    <div class="header-actions">
-        <clr-dropdown>
-            <button class="nav-icon" clrDropdownTrigger aria-label="open user menu">
-                <clr-icon shape="user"></clr-icon>
-                <clr-icon shape="caret down"></clr-icon>
-            </button>
-            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                <a href="..." clrDropdownItem>About</a>
-                <a href="..." clrDropdownItem>Preferences</a>
-                <a href="..." clrDropdownItem>Log out</a>
-            </clr-dropdown-menu>
-        </clr-dropdown>
-    </div>
-</header>
-
-<header class="header-6">
-    <div class="branding">
-        <a href="..." class="nav-link">
-            <clr-icon shape="vm-bug"></clr-icon>
-            <span class="title">Project Clarity</span>
-        </a>
-    </div>
     <div class="header-actions">
         <a href="..." class="nav-link nav-text">
             Log Out

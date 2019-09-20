@@ -3,30 +3,30 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/base/components/clr-wc-element';
-import { ClrWcElement } from '@clr/base/components/clr-wc-element';
+import '@clr/base/test-dropdown';
+import { CwcTestDropdown } from '@clr/base/test-dropdown';
 import {
-  createTestElement,
-  waitForComponent,
-  removeTestElement,
   componentIsStable,
+  createTestElement,
   getComponentSlotContent,
+  removeTestElement,
+  waitForComponent,
 } from '@clr/base/test/utils';
 
 describe('dropdown test element', () => {
   let testElement: HTMLElement;
-  let component: ClrWcElement;
+  let component: CwcTestDropdown;
 
   beforeEach(async () => {
     testElement = createTestElement();
     testElement.innerHTML = `
-      <clr-wc-element title="custom title">
+      <cwc-test-dropdown title="custom title">
         <span>hello world</span>
-      </clr-wc-element>
+      </cwc-test-dropdown>
     `;
 
-    await waitForComponent('clr-wc-element');
-    component = testElement.querySelector<ClrWcElement>('clr-wc-element');
+    await waitForComponent('cwc-test-dropdown');
+    component = testElement.querySelector<CwcTestDropdown>('cwc-test-dropdown');
   });
 
   afterEach(() => {

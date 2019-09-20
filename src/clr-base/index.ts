@@ -5,4 +5,6 @@
  */
 
 export * from './common';
-export * from './components/clr-wc-element/clr-wc.element';
+export * from './button/button.element';
+export * from './test-dropdown/test-dropdown.element';
+export * from './icon/icon.element';

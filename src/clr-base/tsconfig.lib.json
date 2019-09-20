@@ -7,7 +7,15 @@
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2018"],
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictFunctionTypes": true,
+    "noFallthroughCasesInSwitch": true
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,
@@ -16,6 +24,27 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true
+  },
+  "typedocOptions": {
+    "out": "./src/dev-base/src/api",
+    "readme": "none",
+    "includes": ["/src/clr-base/**/*.ts"],
+    "exclude": [
+      "**/node_modules/**",
+      "**/*.e2e-spec.*",
+      "**/*.po.*",
+      "**/*.spec.*",
+      "**/*.css.ts",
+      "**/*.d.*",
+      "**/*.styles.*",
+      "**/test/*.ts",
+      "**/index.ts"
+    ],
+    "includeDeclarations": false,
+    "excludeExternals": true,
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "excludeProtected": true
   },
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

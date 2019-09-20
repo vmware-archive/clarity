@@ -4,18 +4,30 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html, property } from 'lit-element';
 import { registerElementSafely } from '@clr/base/common';
+import { html, LitElement, property } from 'lit-element';
 
-import { styles } from './clr-wc.element.css';
+import { styles } from './test-dropdown.element.css';
 
+/**
+ * Dropdown, example test component. Do not use in production.
+ *
+ * @noInheritDoc
+ * @element `cwc-test-dropdown`
+ * @slot `default` - Content slot for dropdown content
+ * @styleAttr `outline` - Apply outline style.
+ * @cssProp `--clr-test-border-color`
+ * @cssProp `--clr-test-button-background-color`
+ * @cssProp  `--clr-test-button-text-color`
+ */
 // @dynamic
-export class ClrWcElement extends LitElement {
+export class CwcTestDropdown extends LitElement {
   private _open = false;
   get open() {
     return this._open;
   }
 
+  /** Set open to open or close the dropdown */
   @property({ type: Boolean })
   set open(value) {
     if (value !== this._open) {
@@ -26,6 +38,7 @@ export class ClrWcElement extends LitElement {
     }
   }
 
+  /** Set the dropdown button text */
   @property({ type: String })
   title = 'dropdown';
 
@@ -49,6 +62,7 @@ export class ClrWcElement extends LitElement {
     `;
   }
 
+  /** Toggle the current open state of the dropdown */
   toggle() {
     this.open = !this.open;
   }
@@ -58,4 +72,4 @@ export class ClrWcElement extends LitElement {
   }
 }
 
-registerElementSafely('clr-wc-element', ClrWcElement);
+registerElementSafely('cwc-test-dropdown', CwcTestDropdown);

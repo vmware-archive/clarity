@@ -1,33 +1,4 @@
 // Base ships a minimal global style for non component styles such as layout and typography
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-// TODO: these files need to be moved out of clr-angular and into a clr-ui directory
-
-// internal dependencies
-@import './../../clr-angular/utils/normalize';
-@import './../../clr-angular/utils/mixins.clarity';
-@import './../../clr-angular/color/variables.color';
-@import './../../clr-angular/utils/variables.global';
-
-// layout and grid
-@import './../../clr-angular/layout/grid/variables/variables.clarity';
-@import './../../clr-angular/layout/grid/mixins/breakpoint.clarity';
-@import './../../clr-angular/layout/grid/mixins/grid.clarity';
-@import './../../clr-angular/layout/grid/mixins/grid-framework.clarity';
-@import './../../clr-angular/layout/grid/utilities/align.clarity';
-@import './../../clr-angular/layout/grid/utilities/clearfix.clarity';
-@import './../../clr-angular/layout/grid/utilities/display.clarity';
-@import './../../clr-angular/layout/grid/utilities/flex.clarity';
-@import './../../clr-angular/layout/grid/utilities/float.clarity';
-@import './../../clr-angular/layout/grid/utilities/visibility.clarity';
-@import './../../clr-angular/layout/grid/grid.clarity';
-
-// typography
-@import './../../clr-angular/typography/variables.typography';
-@import './../../clr-angular/typography/typography.clarity';
-@import './../../clr-angular/typography/fonts.clarity';
+// @import '~normalize.css/normalize';
+@import './../../clr-ui/layout/layout';
+@import './../../clr-ui/typography/typography';

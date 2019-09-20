@@ -1,0 +1,22 @@
+{
+  "extends": "stylelint-config-recommended",
+  "defaultSeverity": "error",
+  "syntax": "scss",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "ignoreFiles": [
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "max-nesting-depth": 3,
+    "block-closing-brace-newline-after": "always",
+    "rule-empty-line-before": [ "always-multi-line", {
+      except: ["first-nested"],
+      ignore: ["after-comment"],
+    } ]
+  }
+}

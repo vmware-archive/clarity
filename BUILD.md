@@ -28,30 +28,30 @@ Each package has a slightly different build process, and this guide describes th
 
 ### `@clr/icons`
 
-Clarity Icons is built by running `npm run build:icons`, which calls the following tasks to build the package.
+Clarity Icons is built by running `npm run icons:build`, which calls the following tasks to build the package.
 
-1.  `build:icons:web` - Webpack compiles and bundles the TypeScript assets
-2.  `build:icons:css` - Sass compiles the styles
-3.  `build:icons:optimize` - CSSO optimizes the CSS
-4.  `build:icons:package` - Copy the `package.json` into the package, and set the version number
-5.  `build:icons:web` - Build the raw svg files and zip directories for designers
+1.  `icons:build:web` - Webpack compiles and bundles the TypeScript assets
+2.  `icons:build:css` - Sass compiles the styles
+3.  `icons:build:optimize` - CSSO optimizes the CSS
+4.  `icons:build:package` - Copy the `package.json` into the package, and set the version number
+5.  `icons:build:web` - Build the raw svg files and zip directories for designers
 
 ### `@clr/ui`
 
-Clarity UI is built by running `npm run build:ui`, which calls the following tasks to build the package.
+Clarity UI is built by running `npm run ui:build`, which calls the following tasks to build the package.
 
-1.  `build:ui:css` - Sass compiles the light and dark theme files
-2.  `build:ui:prefix` - Autoprefixer adds prefixes to CSS properties based on brower compatibility
-3.  `build:ui:src` - Copy in the source files for anyone building directly
-4.  `build:ui:optimize` - CSSO Optimize the CSS
-5.  `build:ui:package` - Copy the `package.json` into the package, and set the version number
+1.  `ui:build:css` - Sass compiles the light and dark theme files
+2.  `ui:build:prefix` - Autoprefixer adds prefixes to CSS properties based on brower compatibility
+3.  `ui:build:src` - Copy in the source files for anyone building directly
+4.  `ui:build:optimize` - CSSO Optimize the CSS
+5.  `ui:build:package` - Copy the `package.json` into the package, and set the version number
 
 ### `@clr/angular`
 
-Clarity Angular is built by running `npm run build:angular`, which calls the following tasks to build the package.
+Clarity Angular is built by running `npm run angular:build`, which calls the following tasks to build the package.
 
-1.  `build:angular:ngpackagr` - Angular CLI and ng-packagr build the Angular modules
-2.  `build:angular:package` - Copy the `package.json` into the package, and set the version number
+1.  `angular:build:ngpackagr` - Angular CLI and ng-packagr build the Angular modules
+2.  `angular:build:package` - Copy the `package.json` into the package, and set the version number
 
 # Globally Installed NPM packages
 
@@ -76,20 +76,20 @@ This will start up our demo app using the Angular CLI on port 4200 and watch for
 This script builds npm package candidates for all three packages we currently publish: `@clr/angular`, `@clr/ui`, and
 `@clr/icons` under the `/dist` folder.
 
-##### `npm test` and `npm run test:watch`
+##### `npm test` and `npm run angular:test:watch`
 
 The `test` script runs the unit tests using karma. The entry point for the tests is `tests/tests.entry.ts`.
 You may locally modify this file to constrain which tests to run if you are testing for specific components and don't want
-to run all the tests. You can run the tests in watch mode so they run continuously `npm run test:watch`.
+to run all the tests. You can run the tests in watch mode so they run continuously `npm run angular:test:watch`.
 
-##### `npm run test:travis`
+##### `npm run build:ci`
 
 The `test:travis` script is used by Travis-CI to run all of the checks, such as format, lint, and unit tests.
 If the code doesn't pass both the format and lint checkers, then the build fails before running the unit tests.
 
-##### `npm run test:format` and `npm run format:fix`
+##### `npm run format` and `npm run format:fix`
 
-We use [clang-format](https://github.com/angular/clang-format) as formatter for our code. `npm run test:format` will not
+We use [clang-format](https://github.com/angular/clang-format) as formatter for our code. `npm run format` will not
 actually format the file but only check if there are any files that would be changed. We do this via a shell script (`./scripts/clang-check.sh`),
 which runs the clang-format command (with `-output-replacements-xml` flag) and greps for any replacement that would be produced.
 
@@ -111,17 +111,17 @@ relies on `webpack` as well, since the `webpack` script produces the `clr-icons.
 The `webpack` script also processes the `package.json` and `README.md` files for all of our packages.
 This means that running `npm build: icons` by itself will NOT produce a complete package.
 
-##### `npm run test:lint` and `npm run lint:fix`
+##### `npm run lint` and `npm run lint:fix`
 
-The `test:lint` script will run the linter and fail if linting fails. The `lint:fix` script is very similar but
+The `lint` script will run the linter and fail if linting fails. The `lint:fix` script is very similar but
 is run with the `--fix` flag to auto-fix some rules if possible. Some lint rules cannot be auto fixed so you will have
 to manually fix those.
 
-##### `npm run test:visual` and `npm run visual:fix`
+##### `npm run gemini` and `npm run gemini:fix`
 
 These scripts use Docker to start up a container with selenium and chrome to run the Gemini tests. Currently there are 4 sets
 in our code base and these are arbitrary sets to parallelize running them in Travis builds. You must pass in the set(s) for both
-of these scripts (e.g. `npm run test:visual set1 set3`).
+of these scripts (e.g. `npm run gemini set1 set3`).
 
 ##### `npm run format:file -- path/to/file`
 
@@ -130,6 +130,6 @@ When contributing to clarity there is a post commit hook installed and run with
 corner cases and editors that may not behave as expected and it is possible to create a pull request that fails because
 the files are not properly formatted. This command can be used to format a specific file or a space separated list of files.
 
-##### `npm run test:golden` and `npm run fix:golden`
+##### `npm run angular:golden` and `npm run angular:golden:fix`
 
 To update and test for changes against `clr-angular.d.ts`.

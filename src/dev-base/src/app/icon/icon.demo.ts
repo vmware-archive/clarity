@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import '@clr/base/components/icon';
+import '@clr/base/icon';
 
 @Component({
   selector: 'app-icon-demo',

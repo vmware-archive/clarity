@@ -8,7 +8,7 @@ import { exists } from './exists';
 
 describe('Functional Helper: ', () => {
   describe('exists() ', () => {
-    beforeEach(function() {
+    beforeEach(() => {
       (window as any).test = {
         levelOne: {
           levelTwo: {

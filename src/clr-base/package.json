@@ -7,7 +7,7 @@
     "./esm5/**/*.element.js",
     "./esm2015/**/*.element.js",
     "./**/clr-base-components-button.js",
-    "./**/clr-base-components-clr-wc-element.js",
+    "./**/clr-base-components-test-dropdown.js",
     "./**/clr-base-components-icon.js"
   ],
   "main": "index.js",
@@ -19,7 +19,8 @@
   "peerDependencies": {
     "@webcomponents/shadycss": "1.9.1",
     "@webcomponents/webcomponentsjs": "2.2.10",
-    "lit-element": "^2.2.0"
+    "lit-element": "^2.2.0",
+    "tslib": "^1.9.0"
   },
   "author": "clarity",
   "license": "MIT",

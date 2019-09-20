@@ -4,13 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html } from 'lit-element';
 import { registerElementSafely } from '@clr/base/common';
+import { html, LitElement } from 'lit-element';
 
 import { styles } from './icon.element.css';
 
 // @dynamic
-export class ClrIcon extends LitElement {
+export class CwcIcon extends LitElement {
   static get styles() {
     return styles;
   }
@@ -20,4 +20,4 @@ export class ClrIcon extends LitElement {
   }
 }
 
-registerElementSafely('clr-wc-icon', ClrIcon);
+registerElementSafely('cwc-icon', CwcIcon);

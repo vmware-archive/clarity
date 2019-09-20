@@ -1,6 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# base related files
 *.element.css.ts
+src/dev-base/src/api
 
 # compiled output
 /dist

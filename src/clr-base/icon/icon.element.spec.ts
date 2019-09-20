@@ -3,20 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/base/components/icon';
-import { ClrIcon } from '@clr/base/components/icon';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/base/test/utils';
+import '@clr/base/icon';
+import { CwcIcon } from '@clr/base/icon';
+import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/base/test/utils';
 
 describe('icon element', () => {
   let testElement: HTMLElement;
-  let component: ClrIcon;
+  let component: CwcIcon;
 
   beforeEach(async () => {
     testElement = createTestElement();
-    testElement.innerHTML = `<clr-wc-icon></clr-wc-icon>`;
+    testElement.innerHTML = `<cwc-icon></cwc-icon>`;
 
-    await waitForComponent('clr-wc-icon');
-    component = testElement.querySelector<ClrIcon>('clr-wc-icon');
+    await waitForComponent('cwc-icon');
+    component = testElement.querySelector<CwcIcon>('cwc-icon');
   });
 
   afterEach(() => {

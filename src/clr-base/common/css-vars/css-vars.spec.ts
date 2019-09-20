@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import * as ponyfill from './css-vars-ponyfill-fork';
-import { runCssVarsPolyfill, cssVarsDefaultConfig } from './css-vars';
 import { spyOnFunction } from '@clr/base/test/utils';
+import { cssVarsDefaultConfig, runCssVarsPolyfill } from './css-vars';
+import * as ponyfill from './css-vars-ponyfill-fork';
 
 describe('Utilities - CssVarsPolyfill ', () => {
   describe('runCssVarsPolyfill() ', () => {

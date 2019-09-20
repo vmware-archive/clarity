@@ -5,7 +5,7 @@
  */
 
 const webpack = require('webpack');
-const pkg = require('./package.json');
+const pkg = require('./../../package.json');
 const path = require('path');
 
 module.exports = config => {

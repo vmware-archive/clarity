@@ -7,7 +7,7 @@
 
 # Override for PRs to deploy the dev app
 [context.deploy-preview]
-  command = "npm run build:preview && npm run website:news && npm run website:build && cp -R dist/dev dist/website/browser/dev"
+  command = "npm run angular:dev:preview && npm run website:news && npm run website:build && cp -R dist/dev dist/website/browser/dev"
 
 # Handle 404s in our app, SPA redirect config
 [[redirects]]

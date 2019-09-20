@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,7 +39,7 @@ module.exports = {
     'shapes/text-edit-shapes.min': './src/clr-icons/shapes/text-edit-shapes.ts',
   },
   output: {
-    path: path.resolve(__dirname, 'dist/clr-icons'),
+    path: path.resolve(__dirname, './../../dist/clr-icons'),
     filename: '[name].js',
     libraryTarget: 'umd',
     globalObject: 'this',

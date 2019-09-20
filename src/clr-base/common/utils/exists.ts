@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export function exists(obj: {}, ...args: string[]): boolean {
+export function exists(obj: { [key: string]: any }, ...args: string[]): boolean {
   if (typeof obj === 'undefined') {
     return false;
   }
@@ -13,5 +13,5 @@ export function exists(obj: {}, ...args: string[]): boolean {
     return true;
   }
 
-  return exists(obj[args.shift()], ...args);
+  return exists(obj[args.shift() as any], ...args);
 }

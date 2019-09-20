@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import '@clr/base/components/button';
+import '@clr/base/button';
 
 @Component({
   selector: 'app-button-demo',

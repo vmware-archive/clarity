@@ -12,7 +12,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "custom-webpack.config.js",
+              "path": "src/dev/custom-webpack.config.js",
               "mergeStrategies": { "externals": "replace" }
             },
             "outputPath": "dist/dev",
@@ -70,7 +70,7 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "customWebpackConfig": {
-              "path": "./custom-webpack.config.js"
+              "path": "./src/dev/custom-webpack.config.js"
             },
             "browserTarget": "dev:build"
           },
@@ -236,7 +236,7 @@
       "projectType": "library",
       "root": "src/clr-base",
       "sourceRoot": "src/clr-base",
-      "prefix": "clr-wc",
+      "prefix": "cwc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -284,6 +284,7 @@
             "tsConfig": "src/dev-base/tsconfig.app.json",
             "aot": false,
             "assets": [
+              { "glob": "**/*", "input": "src/dev-base/src/api/", "output": "./api/" },
               "src/dev-base/src/favicon.ico",
               "src/dev-base/src/assets",
               "src/dev-base/src/manifest.json",

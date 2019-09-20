@@ -4,13 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html } from 'lit-element';
 import { registerElementSafely } from '@clr/base/common';
+import { html, LitElement } from 'lit-element';
 
 import { styles } from './button.element.css';
 
 // @dynamic
-export class ClrButton extends LitElement {
+export class CwcButton extends LitElement {
   static get styles() {
     return styles;
   }
@@ -20,4 +20,4 @@ export class ClrButton extends LitElement {
   }
 }
 
-registerElementSafely('clr-wc-button', ClrButton);
+registerElementSafely('cwc-button', CwcButton);

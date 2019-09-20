@@ -12,7 +12,7 @@ import { ClarityModule } from '@clr/angular';
 import { CustomPropsDemo } from './custom-props.demo';
 import { ROUTING } from './custom-props.routing';
 
-import '@clr/base/components/clr-wc-element';
+import '@clr/base/test-dropdown';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],

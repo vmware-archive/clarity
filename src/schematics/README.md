@@ -50,7 +50,7 @@ You can test the schematic on a new project without the Angular CLI by using the
 
 Start by running `npm run build` to build the whole project. Then `cd dist/clr-angular` and run `npm link`. This will link this build directory to global node modules for schematics to leverage.
 
-Now, as you make changes run `npm run build:schematics` to build just the schematics.
+Now, as you make changes run `npm run schematics:build` to build just the schematics.
 
 Finally, in your new CLI project you can run `schematics @clr/angular:ng-add` to execute the schematic.
 

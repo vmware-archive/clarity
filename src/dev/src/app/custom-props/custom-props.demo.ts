@@ -5,7 +5,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { runCssVarsPolyfill } from '@clr/base';
+import { runCssVarsPolyfill } from '@clr/core';
 
 const themes = {
   default: {

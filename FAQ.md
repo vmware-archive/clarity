@@ -1,9 +1,9 @@
 #### How to run visual tests
 
 * You gonna need Docker installed and running
-* `npm run visual:fix` - this will run all visual tests and compare them to there snapshots. It could take a long time,
+* `npm run gemini:fix` - this will run all visual tests and compare them to there snapshots. It could take a long time,
   and also the changes that you made may not have effect at every test. Better solution will be to run only the effected sets.
-  `npm run visual:fix set2 set4`
+  `npm run gemini:fix set2 set4`
 * Verify that the screenshots which you will find as modified in your git changes reflect the changes you intended.
 * Commit and push the updated screenshots. This is enough to trigger our CI builds again.
 

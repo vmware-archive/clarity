@@ -10,8 +10,9 @@ Project structure is as fallow:
 ```bash
 src
 ├── clr-angular   # All Angular Clarity components and styles
-├── clr-base      # Web Components
+├── clr-core      # Web Components
 ├── clr-icons     # Clarity Icons
+├── clr-ui        # Common CSS
 ├── dev           # Development Application
 └── website       # Website and Documentation
 ```
@@ -41,7 +42,7 @@ Clarity Icons is built by running `npm run icons:build`, which calls the followi
 Clarity UI is built by running `npm run ui:build`, which calls the following tasks to build the package.
 
 1.  `ui:build:css` - Sass compiles the light and dark theme files
-2.  `ui:build:prefix` - Autoprefixer adds prefixes to CSS properties based on brower compatibility
+2.  `ui:build:prefix` - Autoprefixer adds prefixes to CSS properties based on browser compatibility
 3.  `ui:build:src` - Copy in the source files for anyone building directly
 4.  `ui:build:optimize` - CSSO Optimize the CSS
 5.  `ui:build:package` - Copy the `package.json` into the package, and set the version number
@@ -84,7 +85,7 @@ to run all the tests. You can run the tests in watch mode so they run continuous
 
 ##### `npm run build:ci`
 
-The `test:travis` script is used by Travis-CI to run all of the checks, such as format, lint, and unit tests.
+The `build:ci` script is used by Travis-CI to run all of the checks, such as format, lint, and unit tests.
 If the code doesn't pass both the format and lint checkers, then the build fails before running the unit tests.
 
 ##### `npm run format` and `npm run format:fix`
@@ -95,7 +96,7 @@ which runs the clang-format command (with `-output-replacements-xml` flag) and g
 
 The `npm run format:fix` does the actual formatting according to the rules specified in `.clang-format` file.
 
-##### `npm run build:angular`
+##### `npm run angular:build`
 
 This script produces the `@clr/angular` package using [ng-packagr](https://github.com/dherges/ng-packagr).
 
@@ -103,13 +104,13 @@ The script simply copies over the `package.json` template from our `npm` folder 
 `README.md` for all of our packages) into `src/clr-angular` and sets the correct version number. This is necessary
 because `ng-packagr` requires the `package.json` to be at the root of the `src` (defined in `ng-package.json`).
 
-##### `npm run build:icons`
+##### `npm run icons:build`
 
 This script produces the `clr-icons` package by bundling js files that can be included in consuming app.
 The `post` script generates the svg files and also zipped up files for the icon sets. Note that this script partially
 relies on `webpack` as well, since the `webpack` script produces the `clr-icons.css` and `clr-icons.min.css` files.
 The `webpack` script also processes the `package.json` and `README.md` files for all of our packages.
-This means that running `npm build: icons` by itself will NOT produce a complete package.
+This means that running `npm icons:build` by itself will NOT produce a complete package.
 
 ##### `npm run lint` and `npm run lint:fix`
 

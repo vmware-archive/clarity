@@ -162,11 +162,10 @@ your topic branch if you requested some help.
 
 To make sure your pull request will pass our automated testing, before submitting you should:
 
-* Make sure `npm run test:golden` passes.
 * Make sure `npm test` passes for each of them.
   For certain lint failures you will have to fix them manually.
 
-To test the same thing that the CI will test you could run `npm run test:travis`
+To test the same thing that the CI will test you could run `npm run build:ci`
 
 If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
 

@@ -9,7 +9,7 @@ Since our Angular build has issues when you import from a barrel, this is the so
 
 The source is in `src` and it compiles in to the `dist` directory. From the root of this repo, you can run
 `npx tsc -p tests/tslint/tsconfig.json` to compile the rule. However, we don't need to commit the `dist` directory,
-because its recompiled before any run of tslint (assuming you use `npm run test:lint`).
+because its recompiled before any run of tslint (assuming you use `npm run lint`).
 
 ### References
 

@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.app.json",
-  "compilerOptions": {
-    "paths": {
-      "@clr/base": ["dist/clr-base"],
-      "@clr/base/*": ["dist/clr-base/*"]
-    }
-  }
-}

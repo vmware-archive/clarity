@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/dev-core",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2015"
+  },
+
+  "exclude": ["test.ts", "**/*.spec.ts"]
+}

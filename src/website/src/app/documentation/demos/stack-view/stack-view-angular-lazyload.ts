@@ -19,7 +19,9 @@ const EXAMPLE = `
         <clr-stack-content>Content 1</clr-stack-content>
 
         <clr-stack-block *ngIf="children.length == 0">
-            <div>Loading...</div>
+            <clr-spinner clrAssertive clrInline>
+              Loading...
+            </clr-spinner>
         </clr-stack-block>
 
         <clr-stack-block *ngFor="let child of children">

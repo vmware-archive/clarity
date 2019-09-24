@@ -13,8 +13,9 @@ import { ClrTreeNode } from './tree-node';
 import { ClrTree } from './tree';
 import { ClrRecursiveForOf } from './recursive-for-of';
 import { RecursiveChildren } from './recursive-children';
+import { ClrTreeNodeLink } from './tree-node-link';
 
-export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode, ClrRecursiveForOf];
+export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode, ClrRecursiveForOf, ClrTreeNodeLink];
 
 @NgModule({
   imports: [CommonModule, ClrIconModule, ClrLoadingModule],

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,8 +18,8 @@ export class NodesWithIconsDemo {
       expanded: true,
       files: [
         { icon: 'home', name: 'Home', active: true },
-        { icon: 'calendar', name: 'Calendar', active: true },
-        { icon: 'user', name: 'User', active: true },
+        { icon: 'calendar', name: 'Calendar', active: false },
+        { icon: 'user', name: 'User', active: false },
         { icon: 'bell', name: 'Bell', active: false },
         { icon: 'image', name: 'Image', active: false },
         { icon: 'cloud', name: 'Cloud', active: false },

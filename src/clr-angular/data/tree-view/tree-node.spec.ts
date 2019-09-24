@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, PLATFORM_ID } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 
@@ -17,7 +17,10 @@ import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { DeclarativeTreeNodeModel } from './models/declarative-tree-node.model';
 import { ClrSelectedState } from './models/selected-state.enum';
 import { TreeFeaturesService } from './tree-features.service';
+import { TreeFocusManagerService } from './tree-focus-manager.service';
 import { ClrTreeNode } from './tree-node';
+import { KeyCodes } from 'src/clr-angular/utils/focus/key-codes.enum';
+import { TreeNodeModel } from './models/tree-node.model';
 
 @Component({
   template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded" [clrExpandable]="expandable">
@@ -40,6 +43,7 @@ interface TsApiContext {
   parent: ClrTreeNode<void>;
   featureService: TreeFeaturesService<void>;
   expandService: IfExpandService;
+  focusManagerService: TreeFocusManagerService<void>;
 }
 
 export default function(): void {
@@ -47,7 +51,10 @@ export default function(): void {
     type Context = TestContext<ClrTreeNode<void>, TestComponent>;
 
     describe('Providers', function() {
-      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, {
+        imports: [NoopAnimationsModule, ClrIconModule],
+        providers: [TreeFocusManagerService],
+      });
 
       it('declares a unique id provider', function(this: Context) {
         expect(this.getClarityProvider(UNIQUE_ID, null)).not.toBeNull();
@@ -63,15 +70,28 @@ export default function(): void {
         this.featureService = new TreeFeaturesService<void>();
         this.expandService = new IfExpandService();
         const stringsService = new ClrCommonStringsService();
+        this.focusManagerService = new TreeFocusManagerService<void>();
+        const platformID = { provide: PLATFORM_ID, useValue: 'browser' };
         this.parent = new ClrTreeNode(
           'parent',
+          platformID,
           undefined,
           this.featureService,
           this.expandService,
           stringsService,
+          this.focusManagerService,
           null
         );
-        this.node = new ClrTreeNode('node', this.parent, this.featureService, this.expandService, stringsService, null);
+        this.node = new ClrTreeNode(
+          'node',
+          platformID,
+          this.parent,
+          this.featureService,
+          this.expandService,
+          stringsService,
+          this.focusManagerService,
+          null
+        );
       });
 
       it('instantiates a DeclarativeTreeNodeModel', function(this: TsApiContext) {
@@ -168,7 +188,10 @@ export default function(): void {
     });
 
     describe('Template API', function() {
-      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, {
+        imports: [NoopAnimationsModule, ClrIconModule],
+        providers: [TreeFocusManagerService],
+      });
 
       it('offers a [(clrSelected)] two-way binding, but skips emitting output when setting input', function(this: Context) {
         this.hostComponent.selected = ClrSelectedState.SELECTED;
@@ -197,50 +220,25 @@ export default function(): void {
     });
 
     describe('View', function() {
-      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule, ClrIconModule] });
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, {
+        imports: [NoopAnimationsModule, ClrIconModule],
+        providers: [TreeFocusManagerService],
+      });
 
       it('projects content', function(this: Context) {
         expect(this.clarityElement.textContent).toContain('Hello world');
       });
 
       it('hides children when not expanded', function(this: Context) {
-        const childrenContainer = this.clarityElement.querySelector('.clr-treenode-children');
-        expect(childrenContainer.textContent).toContain('Child');
-        expect(getComputedStyle(childrenContainer).height).toBe('0px');
+        expect(this.clarityElement.querySelector('.clr-treenode-children').clientHeight).toBe(0);
         this.clarityDirective.expanded = true;
         this.detectChanges();
-        expect(getComputedStyle(childrenContainer).height).not.toBe('0px');
+        expect(this.clarityElement.querySelector('.clr-treenode-children').clientHeight).not.toBe(0);
+        expect(this.clarityElement.querySelector('.clr-treenode-children').textContent).toContain('Child');
       });
 
       it('adds the .clr-tree-node class to the host', function(this: Context) {
         expect(this.clarityElement.classList).toContain('clr-tree-node');
-      });
-
-      it('adds the tree role to root nodes', function(this: Context) {
-        expect(this.clarityElement.getAttribute('role')).toBe('tree');
-      });
-
-      it('adds the treeitem role to children nodes', function(this: Context) {
-        expect(this.clarityElement.querySelector('clr-tree-node').getAttribute('role')).toBe('treeitem');
-      });
-
-      it('adds the aria-multiselectable attribute to the root node when the tree is selectable', function(this: Context) {
-        expect(this.clarityElement.getAttribute('aria-multiselectable')).toBe('true');
-        expect(this.clarityElement.querySelector('clr-tree-node').getAttribute('aria-multiselectable')).toBeNull();
-        this.getClarityProvider(TreeFeaturesService).selectable = false;
-        this.detectChanges();
-        expect(this.clarityElement.getAttribute('aria-multiselectable')).toBeNull();
-      });
-
-      it('adds the aria-selected attribute to all nodes when the tree is selectable', function(this: Context) {
-        expect(this.clarityElement.getAttribute('aria-selected')).toBe('false');
-        expect(this.clarityElement.querySelector('clr-tree-node').getAttribute('aria-selected')).toBe('false');
-        this.clarityDirective.selected = ClrSelectedState.SELECTED;
-        this.detectChanges();
-        expect(this.clarityElement.getAttribute('aria-selected')).toBe('true');
-        this.getClarityProvider(TreeFeaturesService).selectable = false;
-        this.detectChanges();
-        expect(this.clarityElement.getAttribute('aria-multiselectable')).toBeNull();
       });
 
       it('displays a caret when expandable', function(this: Context) {
@@ -270,14 +268,6 @@ export default function(): void {
         expect(this.clarityDirective.expanded).toBeTrue();
         caret.click();
         expect(this.clarityDirective.expanded).toBeFalse();
-      });
-
-      it('adds the aria-expanded attribute on the caret', function(this: Context) {
-        const caret = this.clarityElement.querySelector('.clr-treenode-caret');
-        expect(caret.getAttribute('aria-expanded')).toBe('false');
-        this.clarityDirective.expanded = true;
-        this.detectChanges();
-        expect(caret.getAttribute('aria-expanded')).toBe('true');
       });
 
       it('displays a checkbox when selectable', function(this: Context) {
@@ -324,11 +314,170 @@ export default function(): void {
       });
 
       it('adds the group role on the children container if the node has children', function(this: Context) {
+        this.clarityDirective.expanded = true;
+        this.detectChanges();
         const childrenContainer = this.clarityElement.querySelector('.clr-treenode-children');
         expect(childrenContainer.getAttribute('role')).toBe('group');
         this.hostComponent.withChild = false;
         this.detectChanges();
         expect(childrenContainer.getAttribute('role')).toBeNull();
+      });
+    });
+
+    describe('A11y and Focus Management', function() {
+      spec(ClrTreeNode, TestComponent, ClrTreeViewModule, {
+        imports: [NoopAnimationsModule, ClrIconModule],
+        providers: [TreeFocusManagerService],
+      });
+
+      let contentContainer: HTMLElement;
+      let focusManager: TreeFocusManagerService<void>;
+
+      beforeEach(function() {
+        focusManager = this.getProvider(TreeFocusManagerService);
+        contentContainer = this.clarityElement.querySelector('.clr-tree-node-content-container');
+      });
+
+      it('adds role treeitem to node content container by default', function(this: Context) {
+        expect(contentContainer.getAttribute('role')).toBe('treeitem');
+      });
+
+      it('adds the aria-selected attribute to all nodes when the tree is selectable', function(this: Context) {
+        expect(contentContainer.getAttribute('aria-selected')).toBe('false');
+        this.clarityDirective.selected = ClrSelectedState.SELECTED;
+        this.detectChanges();
+        expect(contentContainer.getAttribute('aria-selected')).toBe('true');
+        this.getClarityProvider(TreeFeaturesService).selectable = false;
+        this.detectChanges();
+        expect(contentContainer.getAttribute('aria-selected')).toBeNull();
+      });
+
+      it('focuses on node content container', function(this: Context) {
+        this.clarityDirective.focusTreeNode();
+        expect(document.activeElement).toBe(contentContainer);
+      });
+
+      it('focuses node content container if caret button is focused', function(this: Context) {
+        const caretButton: HTMLElement = this.clarityElement.querySelector('.clr-treenode-caret');
+        caretButton.focus();
+        expect(document.activeElement).toBe(contentContainer);
+      });
+
+      it('focuses node content container if checkbox is focused', function(this: Context) {
+        const checkbox: HTMLElement = this.clarityElement.querySelector('.clr-checkbox');
+        checkbox.focus();
+        expect(document.activeElement).toBe(contentContainer);
+      });
+
+      it('assigns tabindex of -1 to content container by default', function(this: Context) {
+        expect(this.clarityDirective.contentContainerTabindex).toBe(-1);
+        expect(contentContainer.getAttribute('tabindex')).toBe('-1');
+      });
+
+      it('focuses node content container if focus is requested', function(this: Context) {
+        this.getProvider<TreeFocusManagerService<void>>(TreeFocusManagerService).focusNode(
+          this.clarityDirective._model
+        );
+        expect(document.activeElement).toBe(contentContainer);
+      });
+
+      it('assigns tabindex of 0 to content container if focus is requested', function(this: Context) {
+        this.getProvider<TreeFocusManagerService<void>>(TreeFocusManagerService).focusNode(
+          this.clarityDirective._model
+        );
+        this.detectChanges();
+        expect(this.clarityDirective.contentContainerTabindex).toBe(0);
+        expect(contentContainer.getAttribute('tabindex')).toBe('0');
+      });
+
+      it('assigns tabindex of -1 to content container if focus is requested on another node', function(this: Context) {
+        // the child node model requests focus here
+        const anotherNodeModel = this.clarityDirective._model.children[0];
+        this.getProvider<TreeFocusManagerService<void>>(TreeFocusManagerService).focusNode(anotherNodeModel);
+        expect(this.clarityDirective.contentContainerTabindex).toBe(-1);
+        this.detectChanges();
+        expect(contentContainer.getAttribute('tabindex')).toBe('-1');
+      });
+
+      it('takes default action which is toggling selection state on Enter key if node is selectable', function(this: Context) {
+        this.clarityDirective.selected = ClrSelectedState.UNSELECTED;
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Enter }));
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Enter }));
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+      });
+
+      it('takes default action which is toggling selection state on Space key if node is selectable', function(this: Context) {
+        this.clarityDirective.selected = ClrSelectedState.UNSELECTED;
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Space }));
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Space }));
+        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+      });
+
+      it('calls focusManager.focusFirstVisibleNode on Home key', function(this: Context) {
+        spyOn(focusManager, 'focusFirstVisibleNode');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Home }));
+        expect(focusManager.focusFirstVisibleNode).toHaveBeenCalled();
+      });
+
+      it('calls focusManager.focusLastVisibleNode on End key', function(this: Context) {
+        spyOn(focusManager, 'focusLastVisibleNode');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.End }));
+        expect(focusManager.focusLastVisibleNode).toHaveBeenCalled();
+      });
+
+      it('calls focusManager.focusNodeAbove on ArrowUp key', function(this: Context) {
+        spyOn(focusManager, 'focusNodeAbove');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowUp }));
+        expect(focusManager.focusNodeAbove).toHaveBeenCalledWith(this.clarityDirective._model);
+      });
+
+      it('calls focusManager.focusNodeBelow on ArrowDown key', function(this: Context) {
+        spyOn(focusManager, 'focusNodeBelow');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowDown }));
+        expect(focusManager.focusNodeBelow).toHaveBeenCalledWith(this.clarityDirective._model);
+      });
+
+      it('expands collapsed node if expandable on ArrowRight key', function(this: Context) {
+        this.clarityDirective._model.children = [null]; // children array needs to have something
+        expect(this.clarityDirective.expanded).toBeFalse();
+        expect(this.clarityDirective.isExpandable()).toBeTrue();
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+        expect(this.clarityDirective.expanded).toBeTrue();
+      });
+
+      it('toggles aria-expanded on expanded property value change on node content container', function(this: Context) {
+        this.clarityDirective._model.children = [null]; // children array needs to have something
+        expect(this.clarityDirective.expanded).toBeFalse();
+        expect(contentContainer.getAttribute('aria-expanded')).toBe('false');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+        expect(this.clarityDirective.expanded).toBeTrue();
+        this.detectChanges();
+        expect(contentContainer.getAttribute('aria-expanded')).toBe('true');
+      });
+
+      it('calls focusManager.focusNodeBelow if node is already expanded on ArrowRight key', function(this: Context) {
+        this.clarityDirective._model.children = [null]; // children array needs to have something
+        this.clarityDirective.expanded = true;
+        spyOn(focusManager, 'focusNodeBelow');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+        expect(focusManager.focusNodeBelow).toHaveBeenCalledWith(this.clarityDirective._model);
+      });
+
+      it('collapses expanded node on ArrowLeft key', function(this: Context) {
+        this.clarityDirective._model.children = [null]; // children array needs to have something
+        this.clarityDirective.expanded = true;
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+        expect(this.clarityDirective.expanded).toBeFalse();
+      });
+
+      it('calls focusManager.focusParent if node is already collapsed or not expandable on ArrowLeft key', function(this: Context) {
+        spyOn(focusManager, 'focusParent');
+        contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+        expect(focusManager.focusParent).toHaveBeenCalledWith(this.clarityDirective._model);
       });
     });
   });

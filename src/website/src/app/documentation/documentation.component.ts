@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 import { ClarityIcons } from '@clr/icons';
-import { EssentialShapes } from '@clr/icons/shapes/essential-shapes';
-import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
+import { AllShapes } from '@clr/icons/shapes/all-shapes';
 
 @Component({
   selector: 'documentation',
@@ -20,7 +19,6 @@ import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
 export class DocumentationComponent {
   environment = environment;
   constructor() {
-    ClarityIcons.add(EssentialShapes);
-    ClarityIcons.add(TechnologyShapes);
+    ClarityIcons.add(AllShapes);
   }
 }

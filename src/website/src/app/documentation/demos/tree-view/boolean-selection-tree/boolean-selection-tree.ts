@@ -1,21 +1,23 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 
 const EXAMPLE_HTML = `
-<clr-tree-node [clrExpanded]="true">
-    Permissions
-    <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
-        {{permission.type}}
-        <clr-tree-node *ngFor="let right of permission.rights" 
-                       [clrSelected]="right.enable" (clrSelectedChange)="right.enable = !!$event">
-            {{right.name}}
-        </clr-tree-node>
-    </clr-tree-node>
-</clr-tree-node>
+<clr-tree>
+  <clr-tree-node [clrExpanded]="true">
+      Permissions
+      <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
+          {{permission.type}}
+          <clr-tree-node *ngFor="let right of permission.rights" 
+                        [clrSelected]="right.enable" (clrSelectedChange)="right.enable = !!$event">
+              {{right.name}}
+          </clr-tree-node>
+      </clr-tree-node>
+  </clr-tree-node>
+</clr-tree>
 `;
 
 const EXAMPLE_TS = `

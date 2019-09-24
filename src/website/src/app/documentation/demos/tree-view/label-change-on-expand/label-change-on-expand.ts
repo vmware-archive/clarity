@@ -1,17 +1,19 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 
 const EXAMPLE_HTML = `
-<clr-tree-node [(clrExpanded)]="expanded">
-    {{expanded ? "I am expanded" : "I am collapsed"}}
-    <clr-tree-node>
-        Child Tree Node
-    </clr-tree-node>
-</clr-tree-node>
+<clr-tree>
+  <clr-tree-node [(clrExpanded)]="expanded">
+      {{expanded ? "I am expanded" : "I am collapsed"}}
+      <clr-tree-node>
+          Child Tree Node
+      </clr-tree-node>
+  </clr-tree-node>
+</clr-tree>
 `;
 
 const EXAMPLE_TS = `

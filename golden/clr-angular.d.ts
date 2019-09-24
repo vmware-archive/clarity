@@ -1439,10 +1439,15 @@ export declare class ClrTooltipTrigger {
     showTooltip(): void;
 }
 
-export declare class ClrTree<T> {
+export declare class ClrTree<T> implements AfterContentInit, OnDestroy {
     featuresService: TreeFeaturesService<T>;
+    readonly isMultiSelectable: boolean;
     lazy: boolean;
-    constructor(featuresService: TreeFeaturesService<T>);
+    tabindex: number;
+    constructor(featuresService: TreeFeaturesService<T>, focusManagerService: TreeFocusManagerService<T>, el: ElementRef);
+    ngAfterContentInit(): void;
+    ngOnDestroy(): void;
+    onFocusIn(event: FocusEvent): void;
 }
 
 export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
@@ -1450,20 +1455,23 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     _model: TreeNodeModel<T>;
     readonly ariaSelected: boolean;
     commonStrings: ClrCommonStringsService;
+    contentContainerTabindex: number;
     expandService: IfExpandService;
     expandable: boolean | undefined;
     expanded: boolean;
     expandedChange: EventEmitter<boolean>;
     featuresService: TreeFeaturesService<T>;
     nodeId: string;
-    readonly rootAriaMultiSelectable: boolean;
     selected: ClrSelectedState | boolean;
     selectedChange: EventEmitter<ClrSelectedState>;
-    readonly treeNodeRole: string;
-    constructor(nodeId: string, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, injector: Injector);
+    readonly treeNodeLink: ClrTreeNodeLink;
+    constructor(nodeId: string, platformId: Object, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, focusManager: TreeFocusManagerService<T>, injector: Injector);
+    broadcastFocusOnContainer(): void;
+    focusTreeNode(): void;
     isExpandable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;
+    onKeyDown(event: KeyboardEvent): void;
 }
 
 export declare class ClrTreeViewModule {

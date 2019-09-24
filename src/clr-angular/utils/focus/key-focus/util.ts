@@ -6,14 +6,32 @@
 
 import { KeyCodes, IEKeyCodes } from './../key-codes.enum';
 
+export function keyValidator(key: string) {
+  if (key === KeyCodes.ArrowUp || key === IEKeyCodes.ArrowUp) {
+    return KeyCodes.ArrowUp;
+  } else if (key === KeyCodes.ArrowDown || key === IEKeyCodes.ArrowDown) {
+    return KeyCodes.ArrowDown;
+  } else if (key === KeyCodes.ArrowRight || key === IEKeyCodes.ArrowRight) {
+    return KeyCodes.ArrowRight;
+  } else if (key === KeyCodes.ArrowLeft || key === IEKeyCodes.ArrowLeft) {
+    return KeyCodes.ArrowLeft;
+  } else if (key === KeyCodes.Space || key === IEKeyCodes.Space) {
+    return KeyCodes.Space;
+  } else if (key === KeyCodes.Escape || key === IEKeyCodes.Escape) {
+    return KeyCodes.Escape;
+  } else {
+    return key;
+  }
+}
+
 export function preventArrowKeyScroll(event: KeyboardEvent) {
-  const keyCodes = getKeyCodes(event);
+  const validKey = keyValidator(event.key);
 
   if (
-    event.key === keyCodes.ArrowUp ||
-    event.key === keyCodes.ArrowDown ||
-    event.key === keyCodes.ArrowLeft ||
-    event.key === keyCodes.ArrowRight
+    validKey === KeyCodes.ArrowUp ||
+    validKey === KeyCodes.ArrowDown ||
+    validKey === KeyCodes.ArrowLeft ||
+    validKey === KeyCodes.ArrowRight
   ) {
     // prevent element container scroll
     // MDN references this is really the only way to prevent native browser interactions

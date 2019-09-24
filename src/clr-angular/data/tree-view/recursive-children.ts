@@ -22,6 +22,9 @@ import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
       </ng-container>
     </ng-container>
   `,
+  host: {
+    '[attr.role]': '"group"', // Safari + VO needs direct relationship between treeitem and group; no element should exist between them
+  },
 })
 /**
  * Internal component, do not export!

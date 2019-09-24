@@ -1,29 +1,31 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 
 const EXAMPLE_HTML = `
-<clr-tree-node [clrExpanded]="true">
+<clr-tree>
+  <clr-tree-node [clrExpanded]="true">
     The Beatles
     <clr-tree-node>
         <a [routerLink]="['./album1']"
-           class="clr-treenode-link"
-           routerLinkActive="active">Abbey Road</a>
+          class="clr-treenode-link"
+          routerLinkActive="active">Abbey Road</a>
     </clr-tree-node>
     <clr-tree-node>
         <a [routerLink]="['./album2']"
-           class="clr-treenode-link"
-           routerLinkActive="active">Revolver</a>
+          class="clr-treenode-link"
+          routerLinkActive="active">Revolver</a>
     </clr-tree-node>
     <clr-tree-node>
         <a [routerLink]="['./album3']"
-           class="clr-treenode-link"
-           routerLinkActive="active">Rubber Soul</a>
+          class="clr-treenode-link"
+          routerLinkActive="active">Rubber Soul</a>
     </clr-tree-node>
-</clr-tree-node>
+  </clr-tree-node>
+</clr-tree>
 <router-outlet></router-outlet>
 `;
 

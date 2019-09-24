@@ -5,20 +5,22 @@
   -->
 <div class="clr-row">
   <div class="clr-col-12 clr-col-md-4">
-    <clr-tree-node class="example-beatles-tree" [clrExpanded]="true">
-      The Beatles
-      <clr-tree-node>
-        <a [routerLink]="['./album1']" class="clr-treenode-link" routerLinkActive="active">Abbey Road</a>
+    <clr-tree>
+      <clr-tree-node class="example-beatles-tree" [clrExpanded]="true">
+        The Beatles
+        <clr-tree-node>
+          <a [routerLink]="['./album1']" class="clr-treenode-link" routerLinkActive="active">Abbey Road</a>
+        </clr-tree-node>
+  
+        <clr-tree-node>
+          <a [routerLink]="['./album2']" class="clr-treenode-link" routerLinkActive="active">Revolver</a>
+        </clr-tree-node>
+  
+        <clr-tree-node>
+          <a [routerLink]="['./album3']" class="clr-treenode-link" routerLinkActive="active">Rubber Soul</a>
+        </clr-tree-node>
       </clr-tree-node>
-
-      <clr-tree-node>
-        <a [routerLink]="['./album2']" class="clr-treenode-link" routerLinkActive="active">Revolver</a>
-      </clr-tree-node>
-
-      <clr-tree-node>
-        <a [routerLink]="['./album3']" class="clr-treenode-link" routerLinkActive="active">Rubber Soul</a>
-      </clr-tree-node>
-    </clr-tree-node>
+    </clr-tree>
   </div>
   <div class="clr-col-12 clr-col-md-8 example-outlet">
     <router-outlet></router-outlet>

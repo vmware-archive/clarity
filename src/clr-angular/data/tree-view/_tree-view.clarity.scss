@@ -6,12 +6,6 @@
   .clr-tree-node {
     //Display
     display: block;
-
-    //Not sure why Firefox doesn't add this by default using the collapse
-    //animation directive.
-    @include fixForFirefox() {
-      overflow-y: hidden;
-    }
   }
 
   .clr-tree-node-content-container {
@@ -102,6 +96,8 @@
   .clr-treenode-children {
     //Dimensions
     margin-left: $clr-tree-node-children-margin;
+    will-change: height;
+    overflow-y: hidden;
   }
 
   .clr-treenode-link {

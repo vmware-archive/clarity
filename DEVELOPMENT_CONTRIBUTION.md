@@ -122,7 +122,7 @@ Set scope of the commit if possible:
   datagrid  date-picker  dropdown   form          grid      header        i18n   input
   label     list         login      modal         password  progress-bar  radio  select
   sidenav   signpost     spinner    stack-view    stepper   table         tabs   textarea
-  toggle    tooltip      tree-view  vertical-nav
+  toggle    tooltip      tree-view  vertical-nav  icons
 ```
 
 For example a commit message could look like this:

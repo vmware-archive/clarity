@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -34,10 +34,18 @@ export class ClarityIconsApi {
     return true;
   }
 
+  private normalizeShapeName(shapeName: string) {
+    return shapeName.toLowerCase();
+  }
+
   private setIconTemplate(shapeName: string, shapeTemplate: string): void {
     const trimmedShapeTemplate = shapeTemplate.trim();
 
     if (this.validateName(shapeName)) {
+      // Make sure the shapeName don't contain uppercase characters
+      // when registering it
+      shapeName = this.normalizeShapeName(shapeName);
+
       // if the shape name exists, delete it.
       if (iconShapeSources[shapeName]) {
         delete iconShapeSources[shapeName];
@@ -65,7 +73,7 @@ export class ClarityIconsApi {
 
   add(icons?: IconShapeSources): void {
     if (typeof icons !== 'object') {
-      throw new Error(`The argument must be an object literal passed in the following pattern: 
+      throw new Error(`The argument must be an object literal passed in the following pattern:
                 { "shape-name": "shape-template" }`);
     }
 
@@ -77,7 +85,7 @@ export class ClarityIconsApi {
   }
 
   has(shapeName: string): boolean {
-    return !!iconShapeSources[shapeName];
+    return !!iconShapeSources[this.normalizeShapeName(shapeName)];
   }
 
   get(shapeName?: string): any {
@@ -90,12 +98,12 @@ export class ClarityIconsApi {
       throw new TypeError('Only string argument is allowed in this method.');
     }
 
-    return iconShapeSources[shapeName];
+    return iconShapeSources[this.normalizeShapeName(shapeName)];
   }
 
   alias(aliases?: IconAlias): void {
     if (typeof aliases !== 'object') {
-      throw new Error(`The argument must be an object literal passed in the following pattern: 
+      throw new Error(`The argument must be an object literal passed in the following pattern:
                 { "shape-name": ["alias-name", ...] }`);
     }
 

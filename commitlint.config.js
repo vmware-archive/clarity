@@ -37,6 +37,7 @@ const scopes = [
   'tree-view',
   'vertical-nav',
   'wizard',
+  'icons',
 ];
 
 module.exports = {

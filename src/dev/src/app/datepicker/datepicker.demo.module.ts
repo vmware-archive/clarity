@@ -27,6 +27,7 @@ import { NgModelAutoWrappedDatepickerDemo } from './ngmodel-auto-wrapped';
 import { NgModelExplicitWrapperDemo } from './ngmodel-wrapper-explicit-wrapper';
 import { DisabledDemo } from './disabled';
 import { DatepickerLayoutDemo } from './layout';
+import { DatepickerMinMaxDemo } from './datepicker-min-max';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING, FormsModule, ReactiveFormsModule],
@@ -48,6 +49,7 @@ import { DatepickerLayoutDemo } from './layout';
     DatepickerLocaleData,
     DisabledDemo,
     DatepickerLayoutDemo,
+    DatepickerMinMaxDemo,
   ],
   exports: [
     DatepickerDemo,
@@ -67,6 +69,7 @@ import { DatepickerLayoutDemo } from './layout';
     DatepickerLocaleData,
     DisabledDemo,
     DatepickerLayoutDemo,
+    DatepickerMinMaxDemo,
   ],
 })
 export class DatepickerDemoModule {}

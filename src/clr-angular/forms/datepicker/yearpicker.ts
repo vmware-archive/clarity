@@ -12,6 +12,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { DateIOService } from './providers/date-io.service';
 
 @Component({
   selector: 'clr-yearpicker',
@@ -20,23 +21,23 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
           <div aria-live="polite" class="clr-sr-only">
             {{ ariaLiveDecadeText  }}.
           </div>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="previousDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade">
               <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
           </button>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="currentDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade">
               <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
           </button>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="nextDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerNextDecade">
               <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
@@ -61,6 +62,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 export class ClrYearpicker implements AfterViewInit {
   constructor(
     private _dateNavigationService: DateNavigationService,
+    private _dateIOService: DateIOService,
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
     private _elRef: ElementRef,

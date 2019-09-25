@@ -164,6 +164,19 @@ export default function() {
           expect(context.clarityDirective.placeholderText).toBe('Test');
         });
 
+        it('sets default values to min/max bounds if not provided by the user', () => {
+          expect(dateIOService.disabledDates.bottom).toEqual(new DayModel(0, 0, 1));
+          expect(dateIOService.disabledDates.top).toEqual(new DayModel(9999, 11, 31));
+        });
+
+        it('sets min/max bounds correctly', () => {
+          context.clarityDirective.min = '2000-05-07';
+          expect(dateIOService.disabledDates.bottom).toEqual(new DayModel(2000, 4, 7));
+
+          context.clarityDirective.max = '2020-05-07';
+          expect(dateIOService.disabledDates.top).toEqual(new DayModel(2020, 4, 7));
+        });
+
         it('gets whether the datepicker is enabled or not', () => {
           expect(enabledService.isEnabled).toBe(true);
           expect(context.clarityDirective.inputType).toBe('text');

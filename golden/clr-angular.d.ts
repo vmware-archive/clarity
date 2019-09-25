@@ -209,7 +209,7 @@ export declare class ClrCalendar implements OnDestroy {
     readonly localeDays: ReadonlyArray<ClrDayOfWeek>;
     readonly selectedDay: DayModel;
     readonly today: DayModel;
-    constructor(_localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef);
+    constructor(_localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _dateIOService: DateIOService, _elRef: ElementRef);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onKeyDown(event: KeyboardEvent): void;
@@ -572,6 +572,8 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     protected el: ElementRef;
     protected index: number;
     readonly inputType: string;
+    max: string;
+    min: string;
     placeholder: string;
     readonly placeholderText: string;
     protected renderer: Renderer2;
@@ -928,8 +930,9 @@ export declare class ClrModalModule {
 
 export declare class ClrMonthpicker implements AfterViewInit {
     readonly calendarMonthIndex: number;
+    readonly calendarYear: number;
     readonly monthNames: ReadonlyArray<string>;
-    constructor(_viewManagerService: ViewManagerService, _localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef);
+    constructor(_viewManagerService: ViewManagerService, _localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _dateIOService: DateIOService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef);
     changeMonth(monthIndex: number): void;
     getTabIndex(monthIndex: number): number;
     ngAfterViewInit(): void;
@@ -1632,7 +1635,7 @@ export declare class ClrYearpicker implements AfterViewInit {
     readonly calendarYear: number;
     commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;
-    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService);
+    constructor(_dateNavigationService: DateNavigationService, _dateIOService: DateIOService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService);
     changeYear(year: number): void;
     currentDecade(): void;
     getTabIndex(year: number): number;

@@ -66,6 +66,18 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
+  @Input()
+  set min(value: string) {
+    const [year, month, day] = value.split('-').map(n => parseInt(n, 10));
+    this.dateIOService.disabledDates.bottom = new DayModel(year, month - 1, day);
+  }
+
+  @Input()
+  set max(value: string) {
+    const [year, month, day] = value.split('-').map(n => parseInt(n, 10));
+    this.dateIOService.disabledDates.top = new DayModel(year, month - 1, day);
+  }
+
   protected index = 1;
   private initialClrDateInputValue: Date;
   private previousDateChange: Date;

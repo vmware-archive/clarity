@@ -16,15 +16,16 @@ import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { NO_OF_DAYS_IN_A_WEEK } from './utils/constants';
 import { ClrDayOfWeek } from './interfaces/day-of-week.interface';
+import { DateIOService } from './providers/date-io.service';
 
 @Component({ selector: 'clr-calendar', templateUrl: './calendar.html' })
 export class ClrCalendar implements OnDestroy {
   private _subs: Subscription[] = [];
-
   constructor(
     private _localeHelperService: LocaleHelperService,
     private _dateNavigationService: DateNavigationService,
     private _datepickerFocusService: DatepickerFocusService,
+    private _dateIOService: DateIOService,
     private _elRef: ElementRef
   ) {
     this.generateCalendarView();
@@ -94,7 +95,8 @@ export class ClrCalendar implements OnDestroy {
       this.selectedDay,
       this.focusedDay,
       this.today,
-      this._localeHelperService.firstDayOfWeek
+      this._localeHelperService.firstDayOfWeek,
+      this._dateIOService.disabledDates
     );
   }
 

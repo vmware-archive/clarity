@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,6 +10,7 @@ import { getDay } from '../utils/date-utils';
 import { CalendarModel } from './calendar.model';
 import { DayViewModel } from './day-view.model';
 import { DayModel } from './day.model';
+import { ClrDateRange } from '../interfaces/date-range.interface';
 
 export class CalendarViewModel {
   constructor(
@@ -17,7 +18,8 @@ export class CalendarViewModel {
     private selectedDay: DayModel,
     private focusableDay: DayModel,
     private today: DayModel,
-    public firstDayOfWeek: number
+    public firstDayOfWeek: number,
+    private disabledDates: ClrDateRange
   ) {
     this.initializeCalendarView();
   }
@@ -80,12 +82,32 @@ export class CalendarViewModel {
     this.initializeFocusableDay();
   }
 
+  private isDateDisabled(date: DayModel) {
+    let disabled = false;
+    const range = this.disabledDates;
+    // This is a little convoluted at first, but we check progressively to see if the date is in range.
+    // A `bottom` or `top` date limits the bounds
+    if (
+      (range.bottom &&
+        (range.bottom.year > date.year ||
+          (range.bottom.year >= date.year && range.bottom.month > date.month) ||
+          (range.bottom.year >= date.year && range.bottom.month >= date.month && range.bottom.date > date.date))) ||
+      (range.top &&
+        (range.top.year < date.year ||
+          (range.top.year <= date.year && range.top.month < date.month) ||
+          (range.top.year <= date.year && range.top.month <= date.month && range.top.date < date.date)))
+    ) {
+      disabled = true;
+    }
+    return disabled;
+  }
+
   /**
    * Generates a DayViewModel array based on the DayModel passed
    */
-  private generateDayViewModels(days: DayModel[], isDisabled: boolean, isCurrentCalendar: boolean): DayViewModel[] {
+  private generateDayViewModels(days: DayModel[], isExcluded: boolean, isCurrentCalendar: boolean): DayViewModel[] {
     const dayViews: DayViewModel[] = days.map(day => {
-      return new DayViewModel(day, false, isDisabled, false, false);
+      return new DayViewModel(day, false, isExcluded, this.isDateDisabled(day), false, false);
     });
     if (isCurrentCalendar && this.calendar.isDayInCalendar(this.today)) {
       dayViews[this.today.date - 1].isTodaysDate = true;

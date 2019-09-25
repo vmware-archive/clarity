@@ -14,7 +14,6 @@ import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-c
 
 import { DayModel } from './model/day.model';
 import { ClrMonthpicker } from './monthpicker';
-import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
@@ -45,7 +44,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
         ]);
         localeHelperService = context.getClarityProvider(LocaleHelperService);
       });
@@ -137,7 +135,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
         ]);
         localeHelperService = context.getClarityProvider(LocaleHelperService);
       });
@@ -207,7 +204,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
         ]);
       }
 

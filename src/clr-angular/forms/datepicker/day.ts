@@ -20,6 +20,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
             class="day-btn"
             type="button"
             [class.is-today]="dayView.isTodaysDate"
+            [class.is-excluded]="dayView.isExcluded"
             [class.is-disabled]="dayView.isDisabled"
             [class.is-selected]="dayView.isSelected"
             [attr.tabindex]="dayView.tabIndex"

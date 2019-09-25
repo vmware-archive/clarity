@@ -211,7 +211,7 @@ export declare class ClrCalendar implements OnDestroy {
     readonly localeDays: ReadonlyArray<ClrDayOfWeek>;
     readonly selectedDay: DayModel;
     readonly today: DayModel;
-    constructor(_localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef);
+    constructor(_localeHelperService: LocaleHelperService, _dateNavigationService: DateNavigationService, _datepickerFocusService: DatepickerFocusService, _dateIOService: DateIOService, _elRef: ElementRef);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onKeyDown(event: KeyboardEvent): void;
@@ -575,6 +575,8 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     protected el: ElementRef;
     protected index: number;
     readonly inputType: string;
+    max: string;
+    min: string;
     placeholder: string;
     readonly placeholderText: string;
     protected renderer: Renderer2;

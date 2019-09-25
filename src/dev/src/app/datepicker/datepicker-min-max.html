@@ -1,0 +1,33 @@
+<!--
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<div clrForm>
+  <h6>Min/Max Dates</h6>
+  <p></p>
+  <clr-date-container>
+    <input type="date" [(ngModel)]="model" clrDate [min]="minDate" [max]="maxDate">
+  </clr-date-container>
+</div>
+
+<button class="btn" (click)="toggleMinDate()">{{ minDate ? 'Remove' : 'Add'}} Min</button>
+<button class="btn" (click)="toggleMaxDate()">{{ maxDate ? 'Remove' : 'Add'}} Max</button>
+
+<div class="clr-row">
+  <div class="clr-col-12 clr-col-md-10 clr-col-lg-5">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>[(model)]</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{model}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,4 +1,5 @@
-<h4>Basic API</h4>
+<h3>API</h3>
+<h4><code class="clr-code">clrDate</code> Directive</h4>
 <p>
     To use the date picker, add the <code class="clr-code">clrDate</code> directive to an
     <code class="clr-code">input</code> field. Then, place the input inside the
@@ -23,3 +24,24 @@
         </span>
     </div>
 </clr-alert>
+
+<h4>Min/Max attributes</h4>
+<p>The earliest and latest acceptable dates can also be set. Just like the native HTML5 date spec a
+    <code class="clr-code">yyyy-mm-dd</code> string can be used in the value for min or max. If the max value isn't
+    a possible date then that the input has no max value. Similar for min values, if the string used is not a possible
+    date then the input will not have a min value.
+</p>
+<p>Only dates inside the min/max range will be selectable for the input when there is a bound placed for the min or max
+    attribute. </p>
+
+<h5>Only Min</h5>
+<form clrForm clrLayout="vertical">
+    <clr-date-container>
+        <input type="date" clrDate name="minDemo" [(ngModel)]="demo" min="2019-11-11">
+    </clr-date-container>
+</form>
+<clr-code-snippet [clrCode]="minExample"></clr-code-snippet>
+<h5>Only Max</h5>
+<clr-code-snippet [clrCode]="maxExample"></clr-code-snippet>
+<h5>Min and Max</h5>
+<clr-code-snippet [clrCode]="minMaxExample"></clr-code-snippet>

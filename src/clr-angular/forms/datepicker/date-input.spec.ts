@@ -151,6 +151,22 @@ export default function() {
           expect(controlClassService.className).toContain('clr-col-12');
           expect(context.clarityElement.className).not.toContain('clr-col-12');
         });
+
+        it('should handle big endien date strings for min inputs', () => {
+          // NOTE: big endian date format is yyyy-mm-dd
+          const testComponent = context.fixture.componentInstance;
+          const [minYear, minMonth, minDay] = testComponent.minDate.split('-').map(n => parseInt(n, 10));
+          const testMinDateModel = new DayModel(minYear, minMonth - 1, minDay);
+          expect(testMinDateModel).toEqual(dateIOService.disabledDates.minDate);
+        });
+
+        it('should handle big endien date strings for max inputs', () => {
+          // NOTE: big endian date format is yyyy-mm-dd
+          const testComponent = context.fixture.componentInstance;
+          const [maxYear, maxMonth, maxDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
+          const testMaxDateModel = new DayModel(maxYear, maxMonth - 1, maxDay);
+          expect(testMaxDateModel).toEqual(dateIOService.disabledDates.maxDate);
+        });
       });
 
       describe('Typescript API', () => {
@@ -162,6 +178,24 @@ export default function() {
         it('does not override placeholder provided by the user', () => {
           context.clarityDirective.placeholder = 'Test';
           expect(context.clarityDirective.placeholderText).toBe('Test');
+        });
+
+        it('sets default values to min/max bounds if not provided by the user', () => {
+          // This is a choice to remove the min/max added to the template for other tests, rather thean creating a completely
+          // new test component
+          delete context.fixture.componentInstance.minDate;
+          delete context.fixture.componentInstance.maxDate;
+          context.fixture.detectChanges();
+          expect(dateIOService.disabledDates.minDate).toEqual(new DayModel(0, 0, 1));
+          expect(dateIOService.disabledDates.maxDate).toEqual(new DayModel(9999, 11, 31));
+        });
+
+        it('sets min/max bounds correctly', () => {
+          context.clarityDirective.min = '2000-05-07';
+          expect(dateIOService.disabledDates.minDate).toEqual(new DayModel(2000, 4, 7));
+
+          context.clarityDirective.max = '2020-05-07';
+          expect(dateIOService.disabledDates.maxDate).toEqual(new DayModel(2020, 4, 7));
         });
 
         it('gets whether the datepicker is enabled or not', () => {
@@ -273,6 +307,50 @@ export default function() {
           inputEl.triggerEventHandler('change', inputEl);
 
           expect(context.clarityDirective.onValueChange).toHaveBeenCalled();
+        });
+
+        it('binds to the min attribute', () => {
+          const testComponent = context.fixture.componentInstance;
+          const [minYear, minMonth, minDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
+          const testMinDateModel = new DayModel(minYear, minMonth - 1, minDay);
+          expect(testMinDateModel).toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle null input
+          testComponent.maxDate = null;
+          context.fixture.detectChanges();
+          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle undefined
+          testComponent.maxDate = undefined;
+          context.fixture.detectChanges();
+          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle empty string
+          testComponent.maxDate = '';
+          context.fixture.detectChanges();
+          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+        });
+
+        it('binds to the max attribute', () => {
+          const testComponent = context.fixture.componentInstance;
+          const [maxYear, maxMonth, maxDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
+          const testMaxDateModel = new DayModel(maxYear, maxMonth - 1, maxDay);
+          expect(testMaxDateModel).toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle null axput
+          testComponent.maxDate = null;
+          context.fixture.detectChanges();
+          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle undefaxed
+          testComponent.maxDate = undefined;
+          context.fixture.detectChanges();
+          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+
+          // should handle empty straxg
+          testComponent.maxDate = '';
+          context.fixture.detectChanges();
+          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
         });
       });
     });
@@ -690,12 +768,19 @@ export default function() {
 
 @Component({
   template: `
-        <input type="date" clrDate (clrDateChange)="dateChanged($event)" class="test-class clr-col-12 clr-col-md-8">
+        <input 
+                class="test-class clr-col-12 clr-col-md-8"
+                type="date"
+                [min]="minDate"
+                [max]="maxDate"
+                clrDate
+                (clrDateChange)="dateChanged($event)">
     `,
 })
 class TestComponent {
   date: Date;
-
+  minDate = '2019-11-15';
+  maxDate = '2019-11-20';
   dateChanged(date: Date) {
     this.date = date;
   }

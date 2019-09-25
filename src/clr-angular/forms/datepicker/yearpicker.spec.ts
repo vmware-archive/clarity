@@ -14,7 +14,6 @@ import { TestContext } from '../../data/datagrid/helpers.spec';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-codes/key-codes';
 
-import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
@@ -26,6 +25,7 @@ import { ClrCommonStringsService } from '@clr/angular';
 import { TestBed } from '@angular/core/testing';
 import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
+import { DateIOService } from './providers/date-io.service';
 
 export default function() {
   describe('Yearpicker Component AriaLiveSerivice', function() {
@@ -130,7 +130,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
           ClrCommonStringsService,
         ]);
       });
@@ -272,7 +271,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
           ClrCommonStringsService,
         ]);
       });
@@ -379,7 +377,6 @@ export default function() {
           IfOpenService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
-          DateIOService,
           ClrCommonStringsService,
         ]);
       }

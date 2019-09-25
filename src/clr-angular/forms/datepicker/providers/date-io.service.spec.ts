@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,6 +13,7 @@ import { assertEqualDates } from '../utils/test-utils';
 
 import { DateIOService } from './date-io.service';
 import { LocaleHelperService } from './locale-helper.service';
+import { DayModel } from '../model/day.model';
 
 registerLocaleData(localeAk);
 registerLocaleData(localeHr);
@@ -187,6 +188,59 @@ export default function() {
         inputDate = '1.3 .2016';
         date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2016, 0, 3)));
+      });
+    });
+    describe('TypeScript API', () => {
+      beforeEach(() => {
+        localeHelperService = new LocaleHelperService('en-US');
+        dateIOService = new DateIOService(localeHelperService);
+      });
+
+      it('handles adding minDate inputs', () => {
+        const testDateModel = new DayModel(2019, 10, 11);
+        const thereIsNoDateModel = new DayModel(0, 0, 1);
+        let minInput = '2019-11-11';
+        dateIOService.setMinDate(minInput);
+        expect(testDateModel).toEqual(dateIOService.disabledDates.minDate);
+
+        // handles undefined
+        minInput = undefined;
+        dateIOService.setMinDate(minInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+
+        // handles null
+        minInput = null;
+        dateIOService.setMinDate(minInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+
+        // handles empty string
+        minInput = '';
+        dateIOService.setMinDate(minInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+      });
+
+      it('handles adding maxDate inputs', () => {
+        const testDateModel = new DayModel(2019, 10, 11);
+        const thereIsNoDateModel = new DayModel(9999, 11, 31);
+
+        let maxInput = '2019-11-11';
+        dateIOService.setMaxDate(maxInput);
+        expect(testDateModel).toEqual(dateIOService.disabledDates.maxDate);
+
+        // handles undefined
+        maxInput = undefined;
+        dateIOService.setMaxDate(maxInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
+
+        // handles null
+        maxInput = null;
+        dateIOService.setMaxDate(maxInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
+
+        // handles empty string
+        maxInput = '';
+        dateIOService.setMaxDate(maxInput);
+        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
       });
     });
   });

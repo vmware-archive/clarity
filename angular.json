@@ -115,6 +115,21 @@
         }
       }
     },
+    "clr-icons": {
+      "root": "src/clr-icons",
+      "projectType": "library",
+      "prefix": "clr",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/clr-icons/test.ts",
+            "tsConfig": "src/clr-icons/tsconfig.spec.json",
+            "karmaConfig": "src/clr-icons/karma.conf.js"
+          }
+        }
+      }
+    },
     "clr-angular": {
       "root": "src/clr-angular",
       "projectType": "library",

@@ -200,6 +200,14 @@
       );
     }
 
+    &.is-excluded {
+      opacity: 0.4; // consistent with disabled drop down items.
+
+      &:hover {
+        background: none;
+      }
+    }
+
     &.is-selected {
       @include css-var(
         background,
@@ -225,8 +233,8 @@
     }
 
     &.is-disabled {
-      opacity: 0.25;
-
+      opacity: 0.4; // consistent with disabled drop down items.
+      pointer-events: none;
       &:hover {
         background: none;
       }
@@ -285,6 +293,14 @@
     font-size: $clr-calendar-picker-btn-font-size;
     font-weight: $clr-calendar-picker-btn-font-weight;
     outline-offset: -1 * $clr_baselineRem_5px; //needed for chrome
+
+    &.is-disabled {
+      opacity: 0.4;
+      pointer-events: none;
+      &:hover {
+        background: none;
+      }
+    }
 
     &.is-selected {
       @include css-var(

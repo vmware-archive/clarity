@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,6 +10,7 @@ import { getDay } from '../utils/date-utils';
 import { CalendarModel } from './calendar.model';
 import { DayViewModel } from './day-view.model';
 import { DayModel } from './day.model';
+import { DateRange } from '../interfaces/date-range.interface';
 
 export class CalendarViewModel {
   constructor(
@@ -17,7 +18,8 @@ export class CalendarViewModel {
     private selectedDay: DayModel,
     private focusableDay: DayModel,
     private today: DayModel,
-    public firstDayOfWeek: number
+    public firstDayOfWeek: number,
+    private excludedDates: DateRange
   ) {
     this.initializeCalendarView();
   }
@@ -80,12 +82,21 @@ export class CalendarViewModel {
     this.initializeFocusableDay();
   }
 
+  private isDateExcluded(date: DayModel) {
+    const { minDate, maxDate }: DateRange = this.excludedDates;
+    const from = new Date(minDate.year, minDate.month - 1, minDate.date);
+    const to = new Date(maxDate.year, maxDate.month - 1, maxDate.date);
+    const today = new Date(date.year, date.month - 1, date.date);
+
+    return !(today >= from && today <= to);
+  }
+
   /**
    * Generates a DayViewModel array based on the DayModel passed
    */
-  private generateDayViewModels(days: DayModel[], isDisabled: boolean, isCurrentCalendar: boolean): DayViewModel[] {
+  private generateDayViewModels(days: DayModel[], isExcluded: boolean, isCurrentCalendar: boolean): DayViewModel[] {
     const dayViews: DayViewModel[] = days.map(day => {
-      return new DayViewModel(day, false, isDisabled, false, false);
+      return new DayViewModel(day, false, isExcluded, this.isDateExcluded(day), false, false);
     });
     if (isCurrentCalendar && this.calendar.isDayInCalendar(this.today)) {
       dayViews[this.today.date - 1].isTodaysDate = true;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,9 +21,18 @@ import {
 import { getNumberOfDaysInTheMonth, parseToFourDigitYear } from '../utils/date-utils';
 
 import { LocaleHelperService } from './locale-helper.service';
+import { DateRange } from '../interfaces/date-range.interface';
+import { DayModel } from '../model/day.model';
 
 @Injectable()
 export class DateIOService {
+  public disabledDates: DateRange = {
+    // This is the default range. It approximates the beginning of time to the end of time.
+    // Unless a minDate or maxDate is set with the native HTML5 api the range is all dates
+    // TODO: turn this into an Array of min/max ranges that allow configuration of multiple ranges.
+    minDate: new DayModel(0, 0, 1),
+    maxDate: new DayModel(9999, 11, 31),
+  };
   public cldrLocaleDateFormat: string = DEFAULT_LOCALE_FORMAT;
   private localeDisplayFormat: InputDateDisplayFormat = LITTLE_ENDIAN;
   private delimiters: [string, string] = ['/', '/'];
@@ -31,6 +40,30 @@ export class DateIOService {
   constructor(private _localeHelperService: LocaleHelperService) {
     this.cldrLocaleDateFormat = this._localeHelperService.localeDateFormat;
     this.initializeLocaleDisplayFormat();
+  }
+
+  public setMinDate(date: string): void {
+    // NOTE: I'm expecting consumers to pass one of four things here:
+    //       A proper date string(2019-11-11), null, undefined or empty string ('')
+    if (!date) {
+      // attribute binding was removed, reset back to the beginning of time
+      this.disabledDates.minDate = new DayModel(0, 0, 1);
+    } else {
+      const [year, month, day] = date.split('-').map(n => parseInt(n, 10));
+      this.disabledDates.minDate = new DayModel(year, month - 1, day);
+    }
+  }
+
+  public setMaxDate(date: string): void {
+    // NOTE: I'm expecting consumers to pass one of four things here:
+    //       A proper date string(2019-11-11), null, undefined or empty string ('')
+    if (!date) {
+      // attribute binding was removed, reset forward to the end of time
+      this.disabledDates.maxDate = new DayModel(9999, 11, 31);
+    } else {
+      const [year, month, day] = date.split('-').map(n => parseInt(n, 10));
+      this.disabledDates.maxDate = new DayModel(year, month - 1, day);
+    }
   }
 
   private initializeLocaleDisplayFormat(): void {

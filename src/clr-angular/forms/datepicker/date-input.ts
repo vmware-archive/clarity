@@ -66,6 +66,16 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     }
   }
 
+  @Input()
+  set min(dateString: string) {
+    this.dateIOService.setMinDate(dateString);
+  }
+
+  @Input()
+  set max(dateString: string) {
+    this.dateIOService.setMaxDate(dateString);
+  }
+
   protected index = 1;
   private initialClrDateInputValue: Date;
   private previousDateChange: Date;

@@ -69,8 +69,15 @@ export class GetStartedComponent {
   lightFigma = environment.figma_link_light;
   darkFigma = environment.figma_link_dark;
   iconFigma = environment.figma_icons;
+  colorFigma = environment.figma_color;
   public uiCdn = UI_CDN;
   public ngModuleExample = NG_MODULE_EXAMPLE;
   public htmlImports = HTML_IMPORTS;
   public nodeImports = NODE_IMPORTS;
+
+  gaClick(eventName: string) {
+    if (window.ga) {
+      window.ga('send', 'event', 'design-resource', 'click', eventName, this.sketchVersion);
+    }
+  }
 }

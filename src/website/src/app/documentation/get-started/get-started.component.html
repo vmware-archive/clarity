@@ -20,31 +20,34 @@
     <div class="design-assets">
         <div>
             <h4>Primary Font</h4>
-            <a class="btn btn-primary btn-sm" href="https://github.com/chrismsimpson/Metropolis/archive/r8.zip" target="_blank" rel="noopener">
+            <a class="btn btn-primary btn-sm" href="https://github.com/chrismsimpson/Metropolis/archive/r8.zip" target="_blank" rel="noopener" (click)="gaClick('font-metropolis')">
                 Metropolis (R8)
             </a>
         </div>
         <div>
-            <h4>Sketch Libraries</h4>
-            <a [href]="sketchBaseUrl + '/light/clarity-library-light-' + sketchVersion + '.sketch'" target="_blank"
-               class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion}})
+            <h4>Figma Libraries</h4>
+            <a [href]="lightFigma" target="_blank" (click)="gaClick('figma-light')"
+                class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion}})
             </a>
-            <a [href]="sketchBaseUrl + '/dark/clarity-library-dark-' + sketchVersion + '.sketch'" target="_blank"
-               class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion}})
+            <a [href]="darkFigma" target="_blank" (click)="gaClick('figma-dark')"
+                class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion}})
             </a>
-            <a [href]="sketchIconsUrl" target="_blank"
-               class="btn btn-primary btn-sm" rel="noopener">Icon Library ({{sketchVersion}})
+            <a [href]="iconFigma" target="_blank" (click)="gaClick('figma-icons')"
+                class="btn btn-primary btn-sm" rel="noopener">Icon Library ({{sketchVersion}})
+            </a>
+            <a [href]="colorFigma" target="_blank" (click)="gaClick('figma-color')"
+                class="btn btn-primary btn-sm" rel="noopener">Color Library ({{sketchVersion}})
             </a>
         </div>
         <div>
-            <h4>Figma Libraries (beta)</h4>
-            <a [href]="lightFigma" target="_blank"
+            <h4>Sketch Libraries</h4>
+            <a [href]="sketchBaseUrl + '/light/clarity-library-light-' + sketchVersion + '.sketch'" target="_blank" (click)="gaClick('sketch-light')"
                class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion}})
             </a>
-            <a [href]="darkFigma" target="_blank"
+            <a [href]="sketchBaseUrl + '/dark/clarity-library-dark-' + sketchVersion + '.sketch'" target="_blank" (click)="gaClick('sketch-dark')"
                class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion}})
             </a>
-            <a [href]="iconFigma" target="_blank"
+            <a [href]="sketchIconsUrl" target="_blank" (click)="gaClick('sketch-icons')"
                class="btn btn-primary btn-sm" rel="noopener">Icon Library ({{sketchVersion}})
             </a>
         </div>

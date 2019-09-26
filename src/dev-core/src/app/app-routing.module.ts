@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./typography/typography.demo.module').then(m => m.TypographyDemoModule),
   },
   { path: 'layout', loadChildren: () => import('./layout/layout.demo.module').then(m => m.LayoutDemoModule) },
+  {
+    path: 'lazy-load',
+    loadChildren: () => import('./lazy-load/lazy-load.demo.module').then(m => m.LazyLoadDemoModule),
+  },
   { path: 'button', loadChildren: () => import('./button/button.demo.module').then(m => m.ButtonDemoModule) },
   { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule) },
   { path: 'icon', loadChildren: () => import('./icon/icon.demo.module').then(m => m.IconDemoModule) },

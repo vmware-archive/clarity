@@ -188,6 +188,8 @@
     "source-map": "0.7.3",
     "stylelint": "10.0.1",
     "stylelint-config-recommended": "2.2.0",
+    "stylelint-declaration-use-variable": "1.7.0",
+    "stylelint-no-px": "0.12.1",
     "stylelint-scss": "3.9.2",
     "superagent": "5.1.0",
     "ts-api-guardian": "0.4.4",

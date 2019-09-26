@@ -6,3 +6,4 @@
 
 export * from './css-vars/css-vars';
 export * from './utils/register';
+export * from './decorators/query-slot';

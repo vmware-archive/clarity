@@ -5,10 +5,15 @@
  */
 
 export function checkEyes(testName, selector = '.content-area') {
-  cy.eyesCheckWindow({
-    tag: testName,
-    sizeMode: 'selector',
-    selector,
+  cy.get('.main-container').then(el => {
+    // Hack to set window height for scrolling only for visual testing
+    el[0].style.height = 'auto';
+    cy.eyesCheckWindow({
+      tag: testName,
+      sizeMode: 'selector',
+      selector,
+      ignore: [{ selector: '.applitools-ignore' }],
+    });
   });
 }
 

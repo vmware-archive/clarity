@@ -7,15 +7,15 @@
 }
 
 .dropdown div {
-  border: 2px solid var(--clr-test-border-color, #ccc);
+  border: 1px solid var(--clr-test-border-color, hsl(0, 0%, 80%));
   padding: 0.5rem;
   color: inherit;
   font-size: 0.75rem;
 }
 
 .dropdown .btn {
-  background-color: var(--clr-test-button-background-color, #ccc);
-  color: var(--clr-test-button-text-color, #2d2d2d);
+  background-color: var(--clr-test-button-background-color, hsl(0, 0%, 80%));
+  color: var(--clr-test-button-text-color, hsl(0, 0%, 18%));
   border-radius: 0.25rem;
   padding: 0.5rem;
   font-family: inherit;

@@ -3,11 +3,16 @@
   "defaultSeverity": "error",
   "syntax": "scss",
   "plugins": [
-    "stylelint-scss"
+    "stylelint-scss",
+    "stylelint-declaration-use-variable",
+    "stylelint-no-px"
   ],
   "ignoreFiles": [
   ],
   "rules": {
+    "sh-waqar/declaration-use-variable": [["color", { ignoreValues: ["inherit", "red", "blue"] }]],
+    "meowtec/no-px": [true, { "ignore": ["1px"] }],
+    "color-no-hex": true,
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "at-rule-no-unknown": null,

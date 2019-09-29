@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -127,6 +127,32 @@ export default function(): void {
       expect(filters.length).toBe(2);
     });
   });
+
+  describe('FiltersProvider provider unregisters filters correctly', function() {
+    beforeEach(function() {
+      const stateDebouncer = new StateDebouncer();
+      this.filtersInstance = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
+      this.registeredFilters = [];
+      for (let i = 0; i < 8; i++) {
+        this.registeredFilters.push(this.filtersInstance.add(new NumFilter(i)));
+      }
+    });
+
+    it('should unregister the designated filters', function() {
+      expect(this.registeredFilters.length).toBe(this.filtersInstance.getActiveFilters().length);
+
+      this.registeredFilters[0].unregister();
+      this.registeredFilters[2].unregister();
+      this.registeredFilters[4].unregister();
+      this.registeredFilters[6].unregister();
+
+      expect(this.filtersInstance.getActiveFilters().length).toBe(this.registeredFilters.length - 4);
+      expect(this.filtersInstance.getActiveFilters()[0]).toEqual(this.registeredFilters[1].filter);
+      expect(this.filtersInstance.getActiveFilters()[1]).toEqual(this.registeredFilters[3].filter);
+      expect(this.filtersInstance.getActiveFilters()[2]).toEqual(this.registeredFilters[5].filter);
+      expect(this.filtersInstance.getActiveFilters()[3]).toEqual(this.registeredFilters[7].filter);
+    });
+  });
 }
 
 abstract class TestFilter implements ClrDatagridFilterInterface<number> {
@@ -175,5 +201,19 @@ class ActiveFilter extends TestFilter {
 
   accepts(n: number): boolean {
     return n > 0;
+  }
+}
+
+class NumFilter extends TestFilter {
+  indexNumber: number;
+  constructor(_indexNumber: number) {
+    super();
+    this.indexNumber = _indexNumber;
+  }
+  accepts(n: number): boolean {
+    return n % 2 === 0;
+  }
+  isActive(): boolean {
+    return true;
   }
 }

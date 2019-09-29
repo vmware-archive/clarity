@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -60,7 +60,6 @@ export class FiltersProvider<T = any> {
    * Registers a filter, and returns a deregistration function
    */
   public add<F extends ClrDatagridFilterInterface<T>>(filter: F): RegisteredFilter<T, F> {
-    const index = this._all.length;
     const subscription = filter.changes.subscribe(() => this.resetPageAndEmitFilterChange([filter]));
     let hasUnregistered = false;
     const registered = new RegisteredFilter(filter, () => {
@@ -68,7 +67,10 @@ export class FiltersProvider<T = any> {
         return;
       }
       subscription.unsubscribe();
-      this._all.splice(index, 1);
+      const matchIndex = this._all.findIndex(item => item.filter === filter);
+      if (matchIndex >= 0) {
+        this._all.splice(matchIndex, 1);
+      }
       if (filter.isActive()) {
         this.resetPageAndEmitFilterChange([]);
       }

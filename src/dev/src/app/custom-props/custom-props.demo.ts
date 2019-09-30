@@ -6,6 +6,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { runCssVarsPolyfill } from '@clr/core';
+import '@clr/core/test-dropdown';
 
 const themes = {
   default: {

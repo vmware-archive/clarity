@@ -70,7 +70,8 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "customWebpackConfig": {
-              "path": "src/dev/custom-webpack.config.js"
+              "path": "src/dev/custom-webpack.config.js",
+              "mergeStrategies": { "externals": "replace" }
             },
             "browserTarget": "dev:build"
           },
@@ -292,7 +293,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/docs",
+            "outputPath": "dist/dev-core",
             "index": "src/dev-core/src/index.html",
             "main": "src/dev-core/src/main.ts",
             "polyfills": "src/dev-core/src/polyfills.ts",

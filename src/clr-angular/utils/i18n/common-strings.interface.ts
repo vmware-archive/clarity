@@ -184,4 +184,8 @@ export interface ClrCommonStrings {
    * Stack View: Record has changed
    */
   stackViewChanged?: string;
+  /**
+   * Vertical navigation group labels
+   */
+  verticalNavToggle?: string;
 }

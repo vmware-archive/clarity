@@ -4,8 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-const webpack = require('webpack');
-const pkg = require('./../../package.json');
 const path = require('path');
 
 module.exports = config => {
@@ -17,7 +15,11 @@ module.exports = config => {
    */
   config.module.rules.push({
     test: /\.js$/,
-    include: [path.resolve(__dirname, 'node_modules/lit-element'), path.resolve(__dirname, 'node_modules/lit-html')],
+    include: [
+      path.resolve('node_modules/lit-element'),
+      path.resolve('node_modules/lit-html'),
+      // path.resolve('dist/clr-core')
+    ],
     use: {
       loader: 'babel-loader',
       options: {

@@ -29,6 +29,7 @@ import 'web-animations-js'; // Run `npm install --save web-animations-js`.
  */
 // the following flag is set to prevent errors in IE11 related to zone.js showing up randomly
 (window as any).__Zone_enable_cross_context_check = true;
+(window as any).__Zone_disable_IE_check = true;
 import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 /***************************************************************************************************

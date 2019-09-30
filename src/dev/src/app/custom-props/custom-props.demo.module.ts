@@ -12,8 +12,6 @@ import { ClarityModule } from '@clr/angular';
 import { CustomPropsDemo } from './custom-props.demo';
 import { ROUTING } from './custom-props.routing';
 
-import '@clr/core/test-dropdown';
-
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

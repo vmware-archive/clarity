@@ -270,6 +270,7 @@ export interface ClrCommonStrings {
     stackViewChanged?: string;
     success?: string;
     totalPages?: string;
+    verticalNavToggle?: string;
     warning?: string;
 }
 
@@ -1278,6 +1279,7 @@ export declare class ClrTreeViewModule {
 }
 
 export declare class ClrVerticalNav implements OnDestroy {
+    readonly ariaExpanded: string;
     collapsed: boolean;
     collapsible: boolean;
     commonStrings: ClrCommonStringsService;

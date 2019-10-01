@@ -99,6 +99,11 @@
 
   .clr-error select[multiple] {
     border-color: $clr-forms-invalid-color;
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 2px 2px lighten($clr-forms-invalid-color, 30%);
+    }
   }
 
   .clr-form-control-disabled .clr-select {

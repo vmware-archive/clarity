@@ -24,8 +24,8 @@
 </ng-template>
 
 <ng-template #rowContent>
-  <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex">
-    <div class="datagrid-row-sticky">
+  <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex" [class.datagrid-row-detail-open]="detailService.isRowOpen(item)">
+  <div class="datagrid-row-sticky">
       <!-- Sticky elements here -->
       <ng-container #stickyCells></ng-container> <!-- placeholder for projecting other sticky cells as pinned-->
     </div>
@@ -53,14 +53,25 @@
         <div *ngIf="globalExpandable.hasExpandableRow"
              class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell" role="gridcell">
           <ng-container *ngIf="expand.expandable">
-            <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button">
-              <clr-icon shape="caret"
+            <button (click)="toggleExpand()" *ngIf="!expand.loading" type="button" class="datagrid-expandable-caret-button" [attr.aria-label]="detailService.isOpen ? clrDgDetailCloseLabel : clrDgDetailOpenLabel">
+            <clr-icon shape="caret"
                         class="datagrid-expandable-caret-icon"
                         [attr.dir]="expand.expanded ? 'down' : 'right'"
                         [attr.title]="expand.expanded ? commonStrings.keys.collapse : commonStrings.keys.expand"></clr-icon>
             </button>
             <clr-spinner *ngIf="expand.loading" clrSmall>{{ commonStrings.keys.loading }}</clr-spinner>
           </ng-container>
+        </div>
+        <div *ngIf="detailService.enabled"
+             class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
+          <button (click)="detailService.toggle(item, detailButton)" type="button" #detailButton class="datagrid-detail-caret-button"
+                  [class.is-open]="detailService.isRowOpen(item)" [attr.aria-label]="detailService.isOpen ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
+                  [attr.aria-expanded]="detailService.isOpen" [attr.aria-controls]="detailService.id" aria-haspopup="dialog">
+            <clr-icon shape="angle-double"
+                      [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
+                      class="datagrid-detail-caret-icon"
+                      [attr.title]="detailService.isRowOpen(item) ? commonStrings.keys.close: commonStrings.keys.open"></clr-icon>
+          </button>
         </div>
         <ng-container #scrollableCells></ng-container>
       </div>

@@ -36,6 +36,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
+import { DetailService } from './providers/detail.service';
 
 let nbRow: number = 0;
 
@@ -79,6 +80,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     public rowActionService: RowActionService,
     public globalExpandable: ExpandableRowsCount,
     public expand: DatagridIfExpandService,
+    public detailService: DetailService,
     private displayMode: DisplayModeService,
     private vcr: ViewContainerRef,
     private renderer: Renderer2,
@@ -155,6 +157,26 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
       this.expanded = !this.expanded;
       this.expandedChange.emit(this.expanded);
     }
+  }
+
+  @ViewChild('detailButton', { static: false })
+  detailButton;
+
+  private _detailOpenLabel = '';
+  @Input()
+  set clrDgDetailOpenLabel(label: string) {
+    this._detailOpenLabel = label;
+  }
+  get clrDgDetailOpenLabel(): string {
+    return this._detailOpenLabel ? this._detailOpenLabel : this.commonStrings.keys.open;
+  }
+  private _detailCloseLabel = '';
+  @Input()
+  set clrDgDetailCloseLabel(label: string) {
+    this._detailCloseLabel = label;
+  }
+  get clrDgDetailCloseLabel(): string {
+    return this._detailCloseLabel ? this._detailCloseLabel : this.commonStrings.keys.open;
   }
 
   /*****

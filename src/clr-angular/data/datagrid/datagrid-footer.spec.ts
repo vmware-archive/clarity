@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { ClrDatagridFooter } from './datagrid-footer';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { SelectionType } from './enums/selection-type';
+import { DetailService } from './providers/detail.service';
 
 export default function(): void {
   describe('ClrDatagridFooter component', function() {
@@ -88,6 +89,22 @@ export default function(): void {
         const footerSwitch: HTMLElement = document.body.querySelector('.switch-footer clr-dg-column-toggle-button');
         expect(titleText.innerText).toMatch('Custom Title');
         expect(footerSwitch.innerText).toMatch('OK!!!');
+      });
+    });
+
+    describe('View with Detail Pane open', function() {
+      let context: TestContext<ClrDatagridFooter<void>, ColumnTogglerTest>;
+
+      beforeEach(function() {
+        context = this.create(ClrDatagridFooter, ColumnTogglerTest, DATAGRID_SPEC_PROVIDERS);
+        context.detectChanges();
+      });
+
+      it('shows condensed footer with detail pane', function() {
+        expect(context.clarityElement.querySelector('clr-dg-column-toggle')).toBeTruthy();
+        context.getClarityProvider(DetailService).open({});
+        context.detectChanges();
+        expect(context.clarityElement.querySelector('clr-dg-column-toggle')).toBeFalsy();
       });
     });
   });

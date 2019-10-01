@@ -24,6 +24,7 @@ $clr-datagrid-row-selected: $clr-color-neutral-1000 !default;
 $horizontalPadding: ($clr-datagrid-fixed-column-size - 1.25rem) / 2;
 
 $clr-datagrid-icon-size: 0.583333rem;
+$clr-datagrid-icon-color: $clr-color-neutral-600 !default;
 $clr-datagrid-action-arrow-size: 0.25rem;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
 $clr-datagrid-column-separator-expandby: 0.5rem;

@@ -14,6 +14,7 @@ import {
   Output,
   ViewContainerRef,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -35,6 +36,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { DetailService } from './providers/detail.service';
 
 @Component({
   selector: 'clr-dg-column',
@@ -74,8 +76,8 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
           </span>
 
-            <clr-dg-column-separator></clr-dg-column-separator>
-        </div>
+          <clr-dg-column-separator *ngIf="showSeparator"></clr-dg-column-separator>
+      </div>
     `,
   providers: [ClrPopoverPositionService, ClrPopoverEventsService, ClrPopoverToggleService],
   host: {
@@ -91,10 +93,38 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     private _sort: Sort<T>,
     filters: FiltersProvider<T>,
     private vcr: ViewContainerRef,
+    private detailService: DetailService,
+    private changeDetectorRef: ChangeDetectorRef,
     public commonStrings: ClrCommonStringsService
   ) {
     super(filters);
-    this._sortSubscription = _sort.change.subscribe(sort => {
+    this.subscriptions.push(this.listenForSortingChanges());
+    this.subscriptions.push(this.listenForDetailPaneChanges());
+  }
+
+  public showSeparator = true;
+
+  /**
+   * Subscription to the sort service changes
+   */
+  private subscriptions: Subscription[] = [];
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  private listenForDetailPaneChanges() {
+    return this.detailService.stateChange.subscribe(state => {
+      if (this.showSeparator !== !state) {
+        this.showSeparator = !state;
+        // Have to manually change because of OnPush
+        this.changeDetectorRef.markForCheck();
+      }
+    });
+  }
+
+  private listenForSortingChanges() {
+    return this._sort.change.subscribe(sort => {
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
       if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
         this._sortOrder = ClrDatagridSortOrder.UNSORTED;
@@ -109,15 +139,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       }
       // deprecated: to be removed - END
     });
-  }
-
-  /**
-   * Subscription to the sort service changes
-   */
-  private _sortSubscription: Subscription;
-
-  ngOnDestroy() {
-    this._sortSubscription.unsubscribe();
   }
 
   /*

@@ -7,6 +7,7 @@
 import { ButtonSpecs } from './buttons';
 import { CheckboxesSpec } from './checkboxes';
 import { ColorSpec } from './color';
+import { DatagridSpec } from './datagrid';
 import { ListsSpec } from './lists';
 import { TogglesSpec } from './toggles';
 
@@ -17,6 +18,7 @@ describe(`Clarity - ${Cypress.env('CLARITY_THEME')}`, () => {
   // ButtonSpecs();
   CheckboxesSpec();
   ColorSpec();
+  // DatagridSpec();
   // ListsSpec();
   TogglesSpec();
 });

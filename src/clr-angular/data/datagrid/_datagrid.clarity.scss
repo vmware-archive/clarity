@@ -814,7 +814,7 @@
         @include css-var(color, clr-table-font-color, $clr-table-font-color, $clr-use-custom-properties);
         text-align: left;
         flex: 1 1 auto;
-        align-items: baseline;
+        align-items: center;
         align-self: center;
         display: flex;
 

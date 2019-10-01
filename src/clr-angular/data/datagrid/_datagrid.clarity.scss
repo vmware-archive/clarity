@@ -46,7 +46,7 @@
     }
 
     .datagrid-expandable-caret-icon {
-      color: $clr-color-neutral-600;
+      color: $clr-datagrid-icon-color;
       // nudge down for vertical alignment...
       margin-top: 0.125rem;
       svg {
@@ -413,6 +413,8 @@
 
       .datagrid-action-toggle {
         @include clr-no-styles-button();
+        color: $clr-datagrid-icon-color;
+
         &:active {
           color: $clr-datagrid-action-toggle; // Fixed active state on this button for Safari.
         }
@@ -772,6 +774,181 @@
     flex: 0 0 auto !important;
     min-width: 0 !important;
     display: block !important;
+  }
+
+  /**
+   * Detail pane
+   */
+  .datagrid-outer-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    overflow: auto;
+  }
+  .datagrid-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    min-width: 10rem;
+  }
+  .datagrid-detail-open {
+    .datagrid {
+      border-top-right-radius: 0;
+      border-right: none;
+    }
+    .datagrid-placeholder-container,
+    .datagrid-row {
+      border-right: 1px solid $clr-table-border-color;
+    }
+    .datagrid-footer {
+      border-bottom-right-radius: 0;
+    }
+    .pagination {
+      width: 100%;
+    }
+    .pagination-description-compact {
+      text-align: left;
+      flex: 1;
+    }
+    .datagrid-footer .pagination-list {
+      margin-right: 0;
+    }
+  }
+
+  .datagrid-row-detail-open {
+    position: relative;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      border: 10px solid $clr-table-border-color;
+      border-color: transparent $clr-table-border-color transparent transparent;
+      top: calc(0.5rem - 2px);
+      right: 0;
+    }
+
+    &:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      border: 9px solid $clr-datagrid-popover-bg-color;
+      border-color: transparent $clr-datagrid-popover-bg-color transparent transparent;
+      top: calc(0.5rem - 1px);
+      right: -1px;
+    }
+  }
+
+  .datagrid-detail-pane {
+    margin-top: 0.5rem;
+    border: $clr-global-borderwidth solid $clr-datagrid-default-border-color;
+    border-left: none;
+    border-top-right-radius: $clr-global-borderradius;
+    border-bottom-right-radius: $clr-global-borderradius;
+    background: $clr-datagrid-popover-bg-color;
+    overflow: hidden;
+    display: block;
+    flex-grow: 2;
+  }
+
+  .datagrid-detail-pane-content {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 100%;
+  }
+
+  .datagrid-detail-body {
+    flex: 1 1 auto;
+    padding: 0 1rem;
+  }
+
+  .datagrid-detail-header {
+    flex: 0 0 auto;
+    font-size: 0.75rem;
+    line-height: 1.4rem;
+    padding-left: 1rem;
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+
+    .datagrid-detail-header-title {
+      flex: 1 1 auto;
+      padding-top: 0.666667rem;
+    }
+
+    .datagrid-detail-pane-close {
+      flex: 1 1 1.5rem;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+
+      .btn.btn-link {
+        color: $clr-modal-close-color;
+        margin-top: 0.666667rem;
+        margin-bottom: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .datagrid-detail-caret {
+    padding: 0;
+    text-align: center;
+
+    &.datagrid-cell {
+      padding: 0.25rem 0.375rem;
+    }
+
+    .datagrid-detail-caret-button {
+      @include clr-no-styles-button();
+      cursor: pointer;
+      padding: calc(0.125rem - #{$clr-global-borderwidth}) $horizontalPadding 0.125rem;
+
+      &.is-open {
+        background-color: $clr-action-blue;
+        border-radius: $clr-global-borderradius;
+
+        .datagrid-detail-caret-icon {
+          color: $clr-white;
+        }
+      }
+    }
+
+    .datagrid-detail-caret-icon {
+      color: $clr-datagrid-icon-color;
+      // nudge down for vertical alignment...
+      margin-top: (0.125rem - $clr-rem-1px);
+    }
+
+    .spinner {
+      margin-top: 0.25rem;
+    }
+
+    &.datagrid-column {
+      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+    }
+  }
+
+  // Small screens should only display the detail pane when opened, or optionally forced by a class
+  .datagrid-detail-overlay {
+    &.datagrid-detail-open .datagrid-inner-wrapper {
+      display: none;
+    }
+    .datagrid-detail-pane {
+      border-left: 1px solid $clr-table-border-color;
+      border-radius: 0.125rem;
+    }
+  }
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+    .datagrid-detail-open .datagrid-inner-wrapper {
+      display: none;
+    }
+    .datagrid-detail-pane {
+      border-left: 1px solid $clr-table-border-color;
+      border-radius: 0.125rem;
+    }
   }
 
   /**

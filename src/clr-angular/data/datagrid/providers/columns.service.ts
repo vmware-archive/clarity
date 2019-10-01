@@ -1,15 +1,37 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ColumnStateDiff, ColumnState } from '../interfaces/column-state.interface';
+import { ALL_COLUMN_CHANGES } from '../enums/column-changes.enum';
 
 @Injectable()
 export class ColumnsService {
   columns: BehaviorSubject<ColumnState>[] = [];
+  private _cache: ColumnState[] = [];
+
+  cache() {
+    this._cache = this.columns.map(subject => {
+      const value = { ...subject.value };
+      delete value.changes;
+      return value;
+    });
+  }
+
+  hasCache() {
+    return !!this._cache.length;
+  }
+
+  resetToLastCache() {
+    this._cache.forEach((state, index) => {
+      // Just emit the exact value from the cache
+      this.columns[index].next({ ...state, changes: ALL_COLUMN_CHANGES });
+    });
+    this._cache = [];
+  }
 
   get columnStates(): ColumnState[] {
     return this.columns.map(column => column.value);
@@ -28,7 +50,6 @@ export class ColumnsService {
   }
 
   emitStateChange(column: BehaviorSubject<ColumnState>, diff: ColumnStateDiff) {
-    const current = column.value;
-    column.next({ ...current, ...diff });
+    column.next({ ...column.value, ...diff });
   }
 }

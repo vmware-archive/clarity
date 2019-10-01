@@ -42,6 +42,9 @@ export const commonStringsDefault: ClrCommonStrings = {
   signpostToggle: 'Signpost Toggle',
   signpostClose: 'Signpost Close',
   loading: 'Loading',
+  // Datagrid
+  detailPaneStart: 'Start of row details',
+  detailPaneEnd: 'End of row details',
   singleSelectionAriaLabel: 'Single selection header',
   singleActionableAriaLabel: 'Single actionable header',
   detailExpandableAriaLabel: 'Toggle more row content',

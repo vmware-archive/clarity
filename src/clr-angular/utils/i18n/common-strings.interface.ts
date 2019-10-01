@@ -108,7 +108,7 @@ export interface ClrCommonStrings {
    * Datagird: total pages
    */
   totalPages?: string;
-  /*
+  /**
    * Datagrid numeric filter: min
    */
   minValue?: string;
@@ -145,6 +145,14 @@ export interface ClrCommonStrings {
    * Loaders/Spinners
    */
   loading?: string;
+  /**
+   * Datagrid: detail pane start content for screen reader
+   */
+  detailPaneStart?: string;
+  /**
+   * Datagrid: detail pane end content for screen reader
+   */
+  detailPaneEnd?: string;
   /**
    * Datagrid: Single selection header
    */

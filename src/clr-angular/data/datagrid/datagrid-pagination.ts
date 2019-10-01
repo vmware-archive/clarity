@@ -18,10 +18,12 @@ import { Subscription } from 'rxjs';
 import { Page } from './providers/page';
 import { ClrDatagridPageSize } from './datagrid-page-size';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { DetailService } from './providers/detail.service';
 
 @Component({
   selector: 'clr-dg-pagination',
   template: `
+  <ng-container *ngIf="!detailService.isOpen">
     <div class="pagination-size" *ngIf="_pageSizeComponent">
       <ng-content select="clr-dg-page-size"></ng-content>
     </div>
@@ -77,7 +79,35 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         <clr-icon shape="step-forward-2 up"></clr-icon>
       </button>
     </div>
-    `,
+  </ng-container>
+  <ng-container *ngIf="detailService.isOpen">
+      <div class="pagination-description-compact">
+          {{page.firstItem + 1}}-{{page.lastItem + 1}} / {{page.totalItems}}
+      </div>
+      <div class="pagination-list">
+          <button
+                  type="button"
+                  class="pagination-previous"
+                  [disabled]="page.current <= 1"
+                  (click)="page.current = page.current - 1"
+                  [attr.aria-label]="commonStrings.keys.previousPage"
+          >
+              <clr-icon shape="angle left"></clr-icon>
+          </button>
+          <span>{{page.current}}</span>
+          <button
+                  type="button"
+                  class="pagination-next"
+                  [disabled]="page.current >= page.last"
+                  (click)="page.current = page.current + 1"
+                  [attr.aria-label]="commonStrings.keys.nextPage"
+          >
+              <clr-icon shape="angle right"></clr-icon>
+          </button>
+      </div>
+  </ng-container>
+
+  `,
   host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
@@ -86,7 +116,7 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   @ViewChild('currentPageInput', { static: false })
   currentPageInputRef: ElementRef;
 
-  constructor(public page: Page, public commonStrings: ClrCommonStringsService) {
+  constructor(public page: Page, public commonStrings: ClrCommonStringsService, public detailService: DetailService) {
     this.page.activated = true;
   }
 

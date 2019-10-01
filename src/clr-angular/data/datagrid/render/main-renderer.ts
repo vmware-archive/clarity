@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,6 +31,7 @@ import { ColumnsService } from '../providers/columns.service';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 import { DatagridRowRenderer } from './row-renderer';
 import { ColumnStateDiff } from '../interfaces/column-state.interface';
+import { DetailService } from '../providers/detail.service';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
@@ -56,6 +57,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     private domAdapter: DomAdapter,
     private el: ElementRef,
     private renderer: Renderer2,
+    private detailService: DetailService,
     private tableSizeService: TableSizeService,
     private columnsService: ColumnsService
   ) {
@@ -72,6 +74,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         }
       })
     );
+    this.subscriptions.push(this.detailService.stateChange.subscribe(state => this.toggleDetailPane(state)));
     this.subscriptions.push(this.items.change.subscribe(() => (this.shouldStabilizeColumns = true)));
   }
 
@@ -124,6 +127,24 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       }
     }
     return false;
+  }
+
+  public toggleDetailPane(state: boolean) {
+    if (this.headers) {
+      if (state && !this.columnsService.hasCache()) {
+        this.columnsService.cache();
+        this.headers.forEach((header, index) => {
+          if (index > 0) {
+            this.columnsService.emitStateChangeAt(index, {
+              changes: [DatagridColumnChanges.HIDDEN],
+              hidden: state,
+            });
+          }
+        });
+      } else if (!state) {
+        this.columnsService.resetToLastCache();
+      }
+    }
   }
 
   /**

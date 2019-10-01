@@ -10,6 +10,7 @@ import { TestContext } from './helpers.spec';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { DetailService } from './providers/detail.service';
 
 export default function(): void {
   describe('ClrDatagridPagination component', function() {
@@ -21,7 +22,7 @@ export default function(): void {
       beforeEach(function() {
         pageService = new Page(new StateDebouncer());
         commonStrings = new ClrCommonStringsService();
-        component = new ClrDatagridPagination(pageService, commonStrings);
+        component = new ClrDatagridPagination(pageService, commonStrings, null);
         component.ngOnInit(); // For the subscription that will get destroyed.
       });
 
@@ -88,7 +89,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
       it('receives an input for page size', function() {
@@ -124,7 +125,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
       it("doesn't display anything if there is only one page", function() {
@@ -319,7 +320,7 @@ export default function(): void {
       let commonStrings: ClrCommonStringsService;
 
       beforeEach(function() {
-        context = this.create(ClrDatagridPagination, FullTest, [Page, StateDebouncer]);
+        context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
         commonStrings = new ClrCommonStringsService();
 
         context.testComponent.size = 10;

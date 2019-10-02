@@ -1521,6 +1521,48 @@ export declare class ClrTextareaContainer extends ClrAbstractContainer {
 export declare class ClrTextareaModule {
 }
 
+export declare class ClrTimeline {
+    get isVertical(): boolean;
+    layout: ClrTimelineLayout;
+}
+
+export declare enum ClrTimelineLayout {
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical"
+}
+
+export declare class ClrTimelineModule {
+}
+
+export declare class ClrTimelineStep {
+    get iconAriaCurrent(): boolean;
+    get iconAriaLabel(): string;
+    get iconShape(): string;
+    get isProcessing(): boolean;
+    state: ClrTimelineStepState;
+    stepTitle: ElementRef;
+    stepTitleText: string;
+    constructor(iconAttributeService: TimelineIconAttributeService, platformId: Object);
+    ngAfterContentInit(): void;
+}
+
+export declare class ClrTimelineStepDescription {
+}
+
+export declare class ClrTimelineStepHeader {
+}
+
+export declare enum ClrTimelineStepState {
+    NOT_STARTED = "not-started",
+    CURRENT = "current",
+    PROCESSING = "processing",
+    SUCCESS = "success",
+    ERROR = "error"
+}
+
+export declare class ClrTimelineStepTitle {
+}
+
 export declare class ClrTooltip {
 }
 

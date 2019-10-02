@@ -20,3 +20,4 @@ export * from './accordion/index';
 export * from './accordion/stepper/index';
 export * from './progress/spinner/index';
 export * from './progress/progress-bars/index';
+export * from './timeline/index';

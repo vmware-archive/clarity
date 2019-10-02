@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'clr-timeline-demo',
-  templateUrl: './timeline.demo.html',
-})
-export class TimelineDemo {}
+export enum ClrTimelineStepState {
+  NOT_STARTED = 'not-started',
+  CURRENT = 'current',
+  PROCESSING = 'processing',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}

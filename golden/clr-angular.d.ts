@@ -808,6 +808,7 @@ export declare class ClrFocusOnViewInit implements AfterViewInit {
 }
 
 export declare class ClrForm implements OnInit, OnDestroy {
+    labelSize: number;
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef, renderer: Renderer2, commonStrings: ClrCommonStringsService);

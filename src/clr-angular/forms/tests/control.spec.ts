@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,7 @@ import { WrappedFormControl } from '../common/wrapped-control';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { MarkControlService } from '../common/providers/mark-control.service';
+import { LayoutService } from '../common/providers/layout.service';
 
 export function ControlStandaloneSpec(testComponent): void {
   describe('standalone use', () => {
@@ -42,7 +43,7 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
 
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
-    let control, fixture, ifErrorService, controlClassService, markControlService;
+    let control, fixture, ifErrorService, controlClassService, markControlService, layoutService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
@@ -50,13 +51,21 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       TestBed.configureTestingModule({
         imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService, MarkControlService],
+        providers: [
+          IfErrorService,
+          NgControlService,
+          ControlIdService,
+          ControlClassService,
+          MarkControlService,
+          LayoutService,
+        ],
       });
       fixture = TestBed.createComponent(testComponent);
       control = fixture.debugElement.query(By.directive(testControl));
       controlClassService = control.injector.get(ControlClassService);
       ifErrorService = control.injector.get(IfErrorService);
       markControlService = control.injector.get(MarkControlService);
+      layoutService = control.injector.get(LayoutService);
       spyOn(ifErrorService, 'triggerStatusChange');
       fixture.detectChanges();
     });

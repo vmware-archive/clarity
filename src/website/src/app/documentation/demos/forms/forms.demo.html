@@ -244,6 +244,12 @@
 
             <clr-code-snippet [clrCode]="ngValidate" clrLanguage="typescript"></clr-code-snippet>
 
+            <h4>Layout with grid</h4>
+            
+            <p>You can use the <code class="clr-code">clrLabelSize</code> directive to configure the label width for an entire form. This is useful for <code class="clr-code">horizontal</code> and compact layouts, but doesn't apply when you are using <code class="clr-code">vertical</code> layout. It will accept a number between 1-12 to calculate the width according to our grid, and the controls will adopt the remaining size. For example if you pass <code class="clr-code">clrLabelSize="4"</code> it will size the controls to use 8 grid columns for a total of 12 columns.</p>
+            
+            <clr-code-snippet [clrCode]="ngLabelSize"></clr-code-snippet>
+
             <h4>Overriding column widths</h4>
 
             <p>For horizontal layouts, you can override the default widths for labels (2 columns) and controls (10 columns). Even on horizontal layouts, the default behavior should still use a vertical layout for narrow mobile sizes. That means you should always include the class <code class="clr-code">clr-col-12</code> on both the input and label. Ensure your override columns add up to 12 to use the full space.</p>

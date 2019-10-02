@@ -15,6 +15,7 @@ import {
   PLATFORM_ID,
   QueryList,
   Renderer2,
+  Input,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LayoutService } from './providers/layout.service';
@@ -34,6 +35,11 @@ import { ClrLabel } from './label';
 export class ClrForm implements OnInit, OnDestroy {
   private ariaLiveElement: HTMLDivElement;
   private invalidControls = [];
+
+  @Input('clrLabelSize')
+  set labelSize(size: number) {
+    this.layoutService.labelSize = size;
+  }
 
   constructor(
     public layoutService: LayoutService,

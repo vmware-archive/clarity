@@ -28,6 +28,8 @@ import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 import { FormsResetDemo } from './reset/reset';
 import { FormsA11yDemo } from './a11y/a11y';
+import { FormsLayoutCompactAngularGridDemo } from './layout-angular/layout-compact-angular-grid';
+import { FormsLayoutHorizontalAngularGridDemo } from './layout-angular/layout-horizontal-angular-grid';
 
 const ROUTES: Routes = [
   {
@@ -44,6 +46,8 @@ const ROUTES: Routes = [
       { path: 'layout-compact-angular', component: FormsLayoutCompactAngularDemo },
       { path: 'layout-horizontal-angular', component: FormsLayoutHorizontalAngularDemo },
       { path: 'layout-vertical-angular', component: FormsLayoutVerticalAngularDemo },
+      { path: 'layout-horizontal-angular-grid', component: FormsLayoutHorizontalAngularGridDemo },
+      { path: 'layout-compact-angular-grid', component: FormsLayoutCompactAngularGridDemo },
       { path: 'input-group', component: FormsInputGroupDemo },
       { path: 'layout-modal', component: FormsLayoutModalDemo },
       { path: 'checkbox', component: FormsCheckboxDemo },

@@ -18,6 +18,7 @@ import { IfErrorService } from './if-error/if-error.service';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { WrappedFormControl } from './wrapped-control';
+import { LayoutService } from './providers/layout.service';
 
 /*
  * Components using the WrappedFormControl we want to test.
@@ -53,7 +54,14 @@ class TestControl2 extends WrappedFormControl<TestWrapper2> {
 @Component({
   selector: 'test-wrapper3',
   template: `<div id="wrapper"><ng-content></ng-content></div>`,
-  providers: [ControlIdService, MarkControlService, NgControlService, IfErrorService, ControlClassService],
+  providers: [
+    ControlIdService,
+    MarkControlService,
+    NgControlService,
+    IfErrorService,
+    ControlClassService,
+    LayoutService,
+  ],
 })
 class TestWrapper3 implements DynamicWrapper {
   _dynamic = false;
@@ -107,6 +115,7 @@ interface TestContext {
   markControlService?: MarkControlService;
   ngControlService?: NgControlService;
   ifErrorService?: IfErrorService;
+  layoutService?: LayoutService;
 }
 
 export default function(): void {
@@ -129,6 +138,7 @@ export default function(): void {
         testContext.controlClassService = wrapperDebugElement.injector.get(ControlClassService);
         testContext.ngControlService = wrapperDebugElement.injector.get(NgControlService);
         testContext.ifErrorService = testContext.control.injector.get(IfErrorService);
+        testContext.layoutService = testContext.control.injector.get(LayoutService);
       } catch (error) {}
     }
 

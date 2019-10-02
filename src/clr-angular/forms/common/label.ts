@@ -45,7 +45,7 @@ export class ClrLabel implements OnInit, OnDestroy {
       this.el.nativeElement.className.indexOf('clr-col') < 0
     ) {
       this.renderer.addClass(this.el.nativeElement, 'clr-col-12');
-      this.renderer.addClass(this.el.nativeElement, 'clr-col-md-2');
+      this.renderer.addClass(this.el.nativeElement, `clr-col-md-${this.layoutService.labelSize}`);
     }
     if (this.controlIdService && !this.forAttr) {
       this.subscriptions.push(this.controlIdService.idChange.subscribe(id => (this.forAttr = id)));

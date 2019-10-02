@@ -33,6 +33,8 @@ import { FormsTemplateDrivenDemo } from './template-driven/template-driven';
 import { FormsReactiveDemo } from './reactive/reactive';
 import { FormsResetDemo } from './reset/reset';
 import { FormsA11yDemo } from './a11y/a11y';
+import { FormsLayoutHorizontalAngularGridDemo } from './layout-angular/layout-horizontal-angular-grid';
+import { FormsLayoutCompactAngularGridDemo } from './layout-angular/layout-compact-angular-grid';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
@@ -49,6 +51,8 @@ import { FormsA11yDemo } from './a11y/a11y';
     FormsLayoutCompactAngularDemo,
     FormsLayoutHorizontalAngularDemo,
     FormsLayoutVerticalAngularDemo,
+    FormsLayoutHorizontalAngularGridDemo,
+    FormsLayoutCompactAngularGridDemo,
     FormsTextDemo,
     FormsCheckboxDemo,
     FormsFileDemo,

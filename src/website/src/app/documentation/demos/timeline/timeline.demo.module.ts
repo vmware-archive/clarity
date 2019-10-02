@@ -17,6 +17,7 @@ import { TimelineFullDemo } from './timeline-full-demo.component';
 import { TimelineContainerDemo } from './timeline-container-demo';
 import { TimelineBodyDemo } from './timeline-body-demo';
 import { TimelineStepDemo } from './timeline-step-demo';
+import { TimelineComponentDemo } from './timeline-component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,14 @@ import { TimelineStepDemo } from './timeline-step-demo';
     DocWrapperModule,
     UtilsModule,
   ],
-  declarations: [TimelineDemo, TimelineFullDemo, TimelineStepDemo, TimelineContainerDemo, TimelineBodyDemo],
+  declarations: [
+    TimelineDemo,
+    TimelineFullDemo,
+    TimelineStepDemo,
+    TimelineContainerDemo,
+    TimelineBodyDemo,
+    TimelineComponentDemo,
+  ],
   exports: [TimelineDemo],
 })
 export class TimelineDemoModule {}

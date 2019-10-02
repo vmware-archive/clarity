@@ -13,7 +13,7 @@ const vertical = `
 `;
 
 const horizontal = `
-<ul class="clr-timeline clr-timeline-horizontal">
+<ul class="clr-timeline">
   ...
 </ul>
 `;

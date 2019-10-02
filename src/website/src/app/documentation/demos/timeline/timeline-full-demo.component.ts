@@ -9,7 +9,7 @@ import { ClarityDocComponent } from '../clarity-doc';
 
 const code = {
   staticHorizontal: `
-<ul class="clr-timeline clr-timeline-horizontal">
+<ul class="clr-timeline">
   <li class="clr-timeline-step disabled">
     <div class="clr-timeline-step-header">11:59 am</div>
     <clr-icon shape="circle" aria-label="Not started"></clr-icon>
@@ -114,6 +114,82 @@ const code = {
     </li>
   </ul>
   `,
+  componentHorizontal: `
+  <clr-timeline>
+  <clr-timeline-step clrState="not-started">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>Root CA certificate requested.</clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="current">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>
+      Root CA certificate requested. Upload it to the KMS to complete the connection.
+      <button class="btn btn-sm">Action</button>
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step class="gemini-ignore" clrState="processing">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Make vCenter trust KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>
+      Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very long
+      and very long.
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="success">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Make KMS trust vCenter</clr-timeline-step-title>
+    <clr-timeline-step-description>Upload it to the KMS to complete the connection. Third
+      sentence.
+      <button class="btn btn-sm btn-link">Action</button>
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="error">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Connected</clr-timeline-step-title>
+    <clr-timeline-step-description>No. It's not connected.</clr-timeline-step-description>
+  </clr-timeline-step>
+</clr-timeline>
+`,
+  componentVertical: `
+  <clr-timeline clrLayout="vertical" style="width: 50%">
+  <clr-timeline-step clrState="not-started">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>Root CA certificate requested.</clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="current">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>
+      Root CA certificate requested. Upload it to the KMS to complete the connection.
+      <img src="assets/placeholder_350x150.png" alt="Example of an Image in a Card" />
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step class="gemini-ignore" clrState="processing">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Make vCenter trust KMS</clr-timeline-step-title>
+    <clr-timeline-step-description>
+      Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very long
+      and very long.
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="success">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <clr-timeline-step-title>Make KMS trust vCenter</clr-timeline-step-title>
+    <clr-timeline-step-description>Upload it to the KMS to complete the connection. Third
+      sentence.
+      <button class="btn btn-sm">Refresh</button>
+    </clr-timeline-step-description>
+  </clr-timeline-step>
+  <clr-timeline-step clrState="error">
+    <clr-timeline-step-header></clr-timeline-step-header>
+    <clr-timeline-step-title>Connected</clr-timeline-step-title>
+    <clr-timeline-step-description>No. It's not connected.</clr-timeline-step-description>
+  </clr-timeline-step>
+</clr-timeline>
+`,
 };
 
 @Component({
@@ -127,6 +203,8 @@ const code = {
 export class TimelineFullDemo extends ClarityDocComponent {
   staticHorizontal = code.staticHorizontal;
   staticVertical = code.staticVertical;
+  componentHorizontal = code.componentHorizontal;
+  componentVertical = code.componentVertical;
   constructor() {
     super('timeline');
   }

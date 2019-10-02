@@ -8,13 +8,27 @@ var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
 gemini.suite('timeline', child => {
-  child
-    .setUrl('/timeline')
-    .before((actions, find) => {
-      actions.waitForElementToShow('.content-area', WAIT_TIME);
-      actions.wait(WAIT_LOAD_TIME);
-    })
-    .setCaptureElements('.content-area')
-    .ignoreElements({ every: '.gemini-ignore' })
-    .capture('default');
+  gemini.suite('static', child => {
+    child
+      .setUrl('/timeline/static')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.content-area', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.content-area')
+      .ignoreElements({ every: '.gemini-ignore' })
+      .capture('default');
+  });
+
+  gemini.suite('angular', child => {
+    child
+      .setUrl('/timeline/angular')
+      .before((actions, find) => {
+        actions.waitForElementToShow('.content-area', WAIT_TIME);
+        actions.wait(WAIT_LOAD_TIME);
+      })
+      .setCaptureElements('.content-area')
+      .ignoreElements({ every: '.gemini-ignore' })
+      .capture('default');
+  });
 });

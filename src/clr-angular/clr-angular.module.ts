@@ -23,6 +23,7 @@ import { ClrStepperModule } from './accordion/stepper/stepper.module';
 import { ClrSpinnerModule } from './progress/spinner/spinner.module';
 import { ClrProgressBarModule } from './progress/progress-bars/progress-bar.module';
 import { ClrPopoverModuleNext } from './utils/popover/popover.module';
+import { ClrTimelineModule } from './timeline/timeline.module';
 
 @NgModule({
   exports: [
@@ -44,6 +45,7 @@ import { ClrPopoverModuleNext } from './utils/popover/popover.module';
     ClrSpinnerModule,
     ClrProgressBarModule,
     ClrPopoverModuleNext,
+    ClrTimelineModule,
   ],
 })
 export class ClarityModule {}

@@ -1419,6 +1419,44 @@ export declare class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
 export declare class ClrTextareaModule {
 }
 
+export declare class ClrTimeline {
+    readonly isVertical: boolean;
+    layout: ClrTimelineLayout;
+}
+
+export declare enum ClrTimelineLayout {
+    HORIZONTAL = "horizontal",
+    VERTICAL = "vertical"
+}
+
+export declare class ClrTimelineModule {
+}
+
+export declare class ClrTimelineStep {
+    readonly iconAriaCurrent: boolean;
+    readonly iconAriaLabel: string;
+    readonly iconShape: string;
+    readonly isProcessing: boolean;
+    state: ClrTimelineStepState;
+}
+
+export declare class ClrTimelineStepDescription {
+}
+
+export declare class ClrTimelineStepHeader {
+}
+
+export declare enum ClrTimelineStepState {
+    NOT_STARTED = "not-started",
+    CURRENT = "current",
+    PROCESSING = "processing",
+    SUCCESS = "success",
+    ERROR = "error"
+}
+
+export declare class ClrTimelineStepTitle {
+}
+
 export declare class ClrTooltip {
 }
 

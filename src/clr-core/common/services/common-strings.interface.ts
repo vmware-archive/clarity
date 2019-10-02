@@ -202,4 +202,12 @@ export interface ClrCommonStrings {
   // Vertical Nav
   verticalNavToggle: string;
   verticalNavGroupToggle: string;
+  /**
+   * Timeline Steps
+   */
+  timelineStepNotStarted: string;
+  timelineStepCurrent: string;
+  timelineStepSuccess: string;
+  timelineStepError: string;
+  timelineStepProcessing: string;
 }

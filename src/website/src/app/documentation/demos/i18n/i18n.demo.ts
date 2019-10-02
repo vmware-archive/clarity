@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ import { ClarityDocComponent } from '../clarity-doc';
 })
 export class I18nDemo extends ClarityDocComponent {
   newLayout = true;
+
   constructor() {
     super('internationalization');
   }
@@ -132,5 +133,10 @@ export class I18nDemo extends ClarityDocComponent {
       key: 'signpostToggle',
       role: 'Applies the aria-label value to the signpost trigger.',
     },
+    { key: 'timelineStepNotStarted', role: 'Used in the aria-label for the not started step icon' },
+    { key: 'timelineStepCurrent', role: 'Used in the aria-label for the current step icon' },
+    { key: 'timelineStepSuccess', role: 'Used in the aria-label for the success step icon' },
+    { key: 'timelineStepError', role: 'Used in the aria-label for the error step icon' },
+    { key: 'timelineStepProcessing', role: 'Used in the aria-label for the processing step icon' },
   ];
 }

@@ -71,4 +71,10 @@ export const commonStringsDefault: ClrCommonStrings = {
   //Vertical Nav
   verticalNavToggle: 'Toggle vertical navigation',
   verticalNavGroupToggle: 'Toggle vertical navigation group',
+  // Timeline steps
+  timelineStepNotStarted: 'Not started',
+  timelineStepCurrent: 'Current',
+  timelineStepSuccess: 'Completed',
+  timelineStepError: 'Error',
+  timelineStepProcessing: 'In progress',
 };

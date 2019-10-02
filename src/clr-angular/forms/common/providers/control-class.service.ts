@@ -1,22 +1,25 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
+import { LayoutService } from './layout.service';
 
 @Injectable()
 export class ControlClassService {
   className = '';
+
+  constructor(@Optional() private layoutService: LayoutService) {}
 
   controlClass(invalid = false, grid = false, additional = '') {
     const controlClasses = [this.className, additional];
     if (invalid) {
       controlClasses.push('clr-error');
     }
-    if (grid && this.className.indexOf('clr-col') === -1) {
-      controlClasses.push('clr-col-md-10 clr-col-12');
+    if (grid && this.layoutService && this.className.indexOf('clr-col') === -1) {
+      controlClasses.push(`clr-col-md-${this.layoutService.maxLabelSize - this.layoutService.labelSize} clr-col-12`);
     }
     return controlClasses.join(' ').trim();
   }

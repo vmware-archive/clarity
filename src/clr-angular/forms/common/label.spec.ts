@@ -113,6 +113,22 @@ export default function(): void {
       expect(label.classList.contains('clr-col-12')).toBeTrue();
     });
 
+    it('adds the grid classes for non-vertical non-default layouts', function() {
+      TestBed.configureTestingModule({
+        imports: [ClrIconModule],
+        declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
+        providers: [LayoutService],
+      });
+      const fixture = TestBed.createComponent(ContainerizedTest);
+      const layoutService = fixture.debugElement.injector.get(LayoutService);
+      layoutService.layout = Layouts.HORIZONTAL;
+      layoutService.labelSize = 3;
+      fixture.detectChanges();
+      const label = fixture.nativeElement.querySelector('label');
+      expect(label.classList.contains('clr-col-md-3')).toBeTrue();
+      expect(label.classList.contains('clr-col-12')).toBeTrue();
+    });
+
     it('disables adding the grid classes when manually disabled', function() {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],

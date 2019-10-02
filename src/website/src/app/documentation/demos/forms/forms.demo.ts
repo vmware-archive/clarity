@@ -23,6 +23,7 @@ import * as NgOverride from 'raw-loader!./ng/override.html';
 import * as NgOptional from 'raw-loader!./ng/optional.html';
 import * as NgReset from '!raw-loader!./ng/reset.txt';
 import * as NgValidate from '!raw-loader!./ng/validate.txt';
+import * as NgLabelSize from '!raw-loader!./ng/label-size.html';
 
 @Component({
   selector: 'clr-forms-demo',
@@ -55,4 +56,5 @@ export class FormsDemo extends ClarityDocComponent {
   ngOverride: any = NgOverride;
   ngReset: any = NgReset;
   ngValidate: any = NgValidate;
+  ngLabelSize: any = NgLabelSize;
 }

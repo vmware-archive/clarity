@@ -82,6 +82,13 @@ export default function(): void {
         component.ngOnDestroy();
         expect(pageService.size).toBe(0);
       });
+
+      it('does not emit the changes on destroy', () => {
+        spyOn(pageService, 'resetPageSize');
+        pageService.size = 7;
+        component.ngOnDestroy();
+        expect(pageService.resetPageSize).toHaveBeenCalledWith(true);
+      });
     });
 
     describe('Template API', function() {

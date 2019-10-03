@@ -1,15 +1,23 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Page } from './page';
 import { StateDebouncer } from './state-debouncer.provider';
+import { Subscription } from 'rxjs';
 
 export default function(): void {
   describe('Page provider', function() {
+    let subscriptions: Subscription[] = [];
+
     beforeEach(function() {
       this.pageInstance = new Page(new StateDebouncer());
+    });
+
+    afterEach(function() {
+      subscriptions.forEach(sub => sub.unsubscribe());
+      subscriptions = [];
     });
 
     it('has page size 0 by default', function() {
@@ -98,10 +106,12 @@ export default function(): void {
     it('exposes an Observable to follow page changes', function() {
       let nbChanges = 0;
       let currentPage: number;
-      this.pageInstance.change.subscribe((page: number) => {
-        nbChanges++;
-        currentPage = page;
-      });
+      subscriptions.push(
+        this.pageInstance.change.subscribe((page: number) => {
+          nbChanges++;
+          currentPage = page;
+        })
+      );
       expect(currentPage).toBeUndefined();
       this.pageInstance.current = 2;
       expect(currentPage).toBe(2);
@@ -110,6 +120,34 @@ export default function(): void {
       this.pageInstance.current = 1;
       expect(currentPage).toBe(1);
       expect(nbChanges).toBe(3);
+    });
+
+    it('does not emit changes when resetPageSize if set to preventEmit', function() {
+      // This test is a bit convoluted perhaps, but testing all ways to emit changes
+      let nbChanges = 0;
+      let currentPage: number;
+      this.pageInstance.size = 10; // Emit avoided by setting before subscribe
+      subscriptions.push(
+        this.pageInstance.change.subscribe((page: number) => {
+          nbChanges++;
+          currentPage = page;
+        })
+      );
+      expect(currentPage).toBeUndefined();
+      this.pageInstance.current = 2; // First emit
+      expect(currentPage).toBe(2);
+      expect(nbChanges).toBe(1);
+      this.pageInstance.resetPageSize(true); // No emit
+      expect(currentPage).toBe(2);
+      expect(nbChanges).toBe(1);
+      this.pageInstance.size = 10; // Second emit
+      expect(nbChanges).toBe(2);
+      this.pageInstance.current = 3; // Third emit
+      expect(currentPage).toBe(3);
+      expect(nbChanges).toBe(3);
+      this.pageInstance.resetPageSize(); // Fourth emit
+      expect(currentPage).toBe(1);
+      expect(nbChanges).toBe(4);
     });
   });
 }

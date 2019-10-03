@@ -219,7 +219,10 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 * We expect extensive unit test coverage of any code submitted.
 * Unit tests should not duplicate coverage. In particular, avoid multiple unit tests failing for the same error.
 * Do not test several components at the same time, unless you're specifically writing an integration test. You should manually declare parent components that might be needed for your test as **providers**, or even better mock them. In other words, make sure the only components your are declaring in your testing module are the currently tested component and the test host.
-* Split your unit tests in Typescript API, Template API and View (details coming soon).
+* Split your unit tests in Typescript API, Template API and View. Try to split these up when possible to make a logical disctinction between each piece of the component. If there are questions about how to organize, then group them as best you can and we'll review them.
+  * **Template API** - This group of tests are to test the inputs and outputs of a component work as expected. These tests should use the bindings as part of the test, and then validate the expected behavior.
+  * **Typescript API** - This group of tests are meant to test any public methods on the components themselves, like they are just generic objects. The tests should manipulate the components through the component methods and then validate the expected behavior.
+  * **View** - This group of tests should reflect user interactions, such as clicking or typing into a field. The tests should manipulate the component through simulating user behaviors (like mouse click) and then validate the expected behavior.
 
 ## Static UI
 

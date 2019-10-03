@@ -12,6 +12,7 @@ import { StateDebouncer } from './state-debouncer.provider';
 export class Page {
   constructor(private stateDebouncer: StateDebouncer) {}
 
+  private preventEmit = false;
   public activated = false;
 
   /**
@@ -24,7 +25,9 @@ export class Page {
   public set size(size: number) {
     const oldSize = this._size;
     if (size !== oldSize) {
-      this.stateDebouncer.changeStart();
+      if (!this.preventEmit) {
+        this.stateDebouncer.changeStart();
+      }
       this._size = size;
       if (size === 0) {
         this._current = 1;
@@ -35,10 +38,13 @@ export class Page {
       }
       // We always emit an event even if the current page index didn't change, because
       // the size changing means the items inside the page are different
-      this._change.next(this._current);
-      this._sizeChange.next(this._size);
-      this.stateDebouncer.changeDone();
+      if (!this.preventEmit) {
+        this._change.next(this._current);
+        this._sizeChange.next(this._size);
+        this.stateDebouncer.changeDone();
+      }
     }
+    this.preventEmit = false;
   }
 
   /**
@@ -158,7 +164,8 @@ export class Page {
   /**
    * Resets the page size to 0
    */
-  public resetPageSize(): void {
+  public resetPageSize(preventEmit = false): void {
+    this.preventEmit = preventEmit;
     this.size = 0;
   }
 }

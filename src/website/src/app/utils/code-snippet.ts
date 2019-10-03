@@ -21,7 +21,6 @@ import { CodeHighlight } from './code-highlight';
         pre {
             background: transparent;
             padding: 12px;
-            max-height: none;
         }
     `,
   ],

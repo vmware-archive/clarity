@@ -151,4 +151,23 @@ gemini.suite('wizard', child => {
       .setCaptureElements('.modal-dialog')
       .capture('default');
   });
+
+  gemini.suite('step-error', child => {
+    child
+      .setUrl('/wizard/step-error')
+      .before((actions, find) => {
+        actions.setWindowSize(1152, 700);
+        actions.waitForElementToShow('.btn', WAIT_TIME);
+        actions.click(find('.btn'));
+        actions.wait(WAIT_TIME);
+        actions.waitForElementToShow('.content-for-page-1', WAIT_TIME);
+        actions.click(find('.clr-wizard-btn--primary'));
+        actions.waitForElementToShow('.content-for-page-2', WAIT_TIME);
+        actions.click(find('.clr-wizard-btn--primary'));
+        actions.waitForElementToShow('.content-for-page-3', WAIT_TIME);
+        actions.wait(WAIT_TIME);
+      })
+      .setCaptureElements('.modal-content-wrapper')
+      .capture('default');
+  });
 });

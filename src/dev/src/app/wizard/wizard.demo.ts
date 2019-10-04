@@ -20,6 +20,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
                 <li><a [routerLink]="['./not-closable']">Not closable</a></li>
                 <li><a [routerLink]="['./custom-buttons']">Custom buttons</a></li>
                 <li><a [routerLink]="['./jump-to']">Jump-to page</a></li>
+                <li><a [routerLink]="['./step-error']">Step error</a></li>
             </ul>
         </div>
         <div class="clr-col-12 clr-col-sm-6">

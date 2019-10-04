@@ -11,7 +11,7 @@ import { PageCollectionService } from './providers/page-collection.service';
   selector: 'clr-wizard-stepnav',
   template: `
     <div class="clr-wizard-stepnav-list">
-      <div *ngFor="let page of pageService.pages" clr-wizard-stepnav-item [page]="page" class="clr-wizard-stepnav-item"></div>
+      <div *ngFor="let page of pageService.pages; let i = index" clr-wizard-stepnav-item [page]="page" class="clr-wizard-stepnav-item">{{i + 1}}</div>
     </div>
   `,
   host: { class: 'clr-wizard-stepnav' },

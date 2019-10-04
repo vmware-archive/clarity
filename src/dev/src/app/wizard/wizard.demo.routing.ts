@@ -23,6 +23,7 @@ import { WizardNotClosableDemo } from './wizard-not-closable.demo';
 import { WizardResetDemo } from './wizard-reset.demo';
 import { WizardSkipPageDemo } from './wizard-skip-page.demo';
 import { WizardStopNavigation } from './wizard-stop-navigation.demo';
+import { WizardStepErrorDemo } from './wizard-step-error.demo';
 import { WizardDemo } from './wizard.demo';
 
 const ROUTES: Routes = [
@@ -45,6 +46,7 @@ const ROUTES: Routes = [
       { path: 'alt-next', component: WizardAltNextDemo },
       { path: 'force-forward', component: WizardForceForwardDemo },
       { path: 'stop-navigation', component: WizardStopNavigation },
+      { path: 'step-error', component: WizardStepErrorDemo },
     ],
   },
 ];

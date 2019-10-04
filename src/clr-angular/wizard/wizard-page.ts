@@ -194,6 +194,39 @@ export class ClrWizardPage implements OnInit {
   public previousStepDisabledChange: EventEmitter<boolean> = new EventEmitter();
 
   /**
+   *
+   * @memberof WizardPage
+   *
+   */
+  private _hasError = false;
+
+  /**
+   * A getter that tells whether or not the page has an error.
+   *
+   * @memberof WizardPage
+   *
+   */
+  public get hasError() {
+    return this._hasError;
+  }
+
+  /**
+   * Sets whether the page has an error and also resolve the "falsy" value. The
+   * current logic treat a "0" or an empty string as false and likewise will treat any
+   * "truthy" value as true.
+   *
+   * @memberof WizardPage
+   *
+   */
+  @Input('clrWizardPageHasError')
+  public set hasError(val: boolean) {
+    const valBool = !!val;
+    if (valBool !== this._hasError) {
+      this._hasError = valBool;
+    }
+  }
+
+  /**
    * Overrides all actions from the page level, so you can use an alternate function for
    * validation or data-munging with a ClrWizardPage.onCommit (clrWizardPageOnCommit output),
    * ClrWizardPage.onCancel (clrWizardPageOnCancel output), or one

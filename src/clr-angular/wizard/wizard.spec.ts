@@ -681,13 +681,13 @@ export default function(): void {
         expect(checkme.textContent.trim()).toBe('Content for page 4', 'page 4 content ok');
 
         // NOW THE STEPNAV
-        checkme = context.hostElement.querySelector('#clr-wizard-step-1');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-1 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 1', 'step 1 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-2');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-2 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 2', 'step 2 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-4');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-4 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 4', 'step 4 ok');
       });
 
@@ -713,16 +713,16 @@ export default function(): void {
         expect(checkme.textContent.trim()).toBe('Content for page 4', 'page 4 content ok');
 
         // NOW THE STEPNAV
-        checkme = context.hostElement.querySelector('#clr-wizard-step-1');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-1 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 1', 'step 1 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-2');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-2 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 2', 'step 2 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-3');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-3 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 3', 'step 3 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-4');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-4 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 4', 'step 4 ok');
 
         // dynamically hiding a page
@@ -743,16 +743,16 @@ export default function(): void {
         expect(checkme.textContent.trim()).toBe('Content for page 4', 'page 4 content ok');
 
         // NOW THE STEPNAV
-        checkme = context.hostElement.querySelector('#clr-wizard-step-1');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-1 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 1', 'step 1 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-2');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-2 .clr-wizard-stepnav-link-title');
         expect(checkme).toBeNull();
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-3');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-3 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 3', 'step 3 ok');
 
-        checkme = context.hostElement.querySelector('#clr-wizard-step-4');
+        checkme = context.hostElement.querySelector('#clr-wizard-step-4 .clr-wizard-stepnav-link-title');
         expect(checkme.textContent.trim()).toBe('Page 4', 'step 4 ok');
       });
 

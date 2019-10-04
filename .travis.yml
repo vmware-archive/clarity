@@ -6,7 +6,7 @@ env:
   - CXX=g++-4.8
   - APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_JOB_ID}`
   matrix:
-  - TEST_SUITE='build:ci'
+  # - TEST_SUITE='build:ci' # Moved to Circle CI
   - TEST_SUITE='gemini set1'
   - TEST_SUITE='gemini set2'
   - TEST_SUITE='gemini set3'

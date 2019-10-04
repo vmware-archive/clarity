@@ -20,6 +20,7 @@ $clr-wizard-box-shadow: 0 $clr-rem-1px (2 * $clr-rem-1px) (2 * $clr-rem-1px) hsl
 $clr-wizard-step-nav-border-color: hsl(0, 0%, 89%) !default;
 $clr-wizard-border-radius: $clr-global-borderradius !default;
 $clr-wizard-stepnav-active-border-radius: $clr-wizard-border-radius !default;
+$clr-wizard-stepnav-error-color: $clr-color-danger-800 !default;
 
 $clr-wizard-all-dialog-min-width: 10rem;
 $clr-wizard-all-dialog-min-height: 17.5rem;

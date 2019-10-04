@@ -14,7 +14,13 @@ import { ClrWizardPage } from './wizard-page';
   selector: '[clr-wizard-stepnav-item]',
   template: `
         <button type="button" class="btn btn-link clr-wizard-stepnav-link" (click)="click()" [attr.disabled]="isDisabled ? '' : null">
-            <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template>
+            <span class="clr-wizard-stepnav-link-suffix">
+              <clr-icon shape="error-standard" class="is-error clr-wizard-stepnav-item-error-icon" *ngIf="hasError"></clr-icon>
+              <ng-content *ngIf="!hasError"></ng-content>              
+            </span>
+            <span class="clr-wizard-stepnav-link-title">
+              <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template> 
+            </span>
         </button>
     `,
   host: {
@@ -27,6 +33,7 @@ import { ClrWizardPage } from './wizard-page';
     '[class.disabled]': 'isDisabled',
     '[class.no-click]': '!canNavigate',
     '[class.complete]': 'isComplete',
+    '[class.error]': 'hasError',
   },
 })
 export class ClrWizardStepnavItem {
@@ -58,6 +65,11 @@ export class ClrWizardStepnavItem {
   public get isComplete(): boolean {
     this.pageGuard();
     return this.page.completed;
+  }
+
+  public get hasError(): boolean {
+    this.pageGuard();
+    return this.page.hasError && this.isComplete;
   }
 
   public get canNavigate(): boolean {

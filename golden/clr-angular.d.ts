@@ -1609,6 +1609,7 @@ export declare class ClrWizardPage implements OnInit {
     readonly enabled: boolean;
     finishButtonClicked: EventEmitter<ClrWizardPage>;
     readonly hasButtons: boolean;
+    hasError: boolean;
     readonly hasHeaderActions: boolean;
     readonly headerActions: TemplateRef<any>;
     readonly id: string;
@@ -1666,6 +1667,7 @@ export declare class ClrWizardStepnav {
 
 export declare class ClrWizardStepnavItem {
     readonly canNavigate: boolean;
+    readonly hasError: boolean;
     readonly id: string;
     readonly isComplete: boolean;
     readonly isCurrent: boolean;

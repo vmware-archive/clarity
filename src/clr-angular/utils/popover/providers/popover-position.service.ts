@@ -13,9 +13,12 @@ import { ClrPopoverContentOffset } from '../interfaces/popover-content-offset.in
 import { ClrViewportViolation } from '../enums/viewport-violation.enum';
 import { align, flipSidesAndNudgeContent, flipSides, nudgeContent, testVisibility } from '../position-operators';
 import { ClrAxis } from '../enums/axis.enum';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ClrPopoverPositionService {
+  private _smartPositionBehavior: BehaviorSubject<ClrPopoverPosition> = new BehaviorSubject(null);
+  _smartPosition: Observable<ClrPopoverPosition> = this._smartPositionBehavior.asObservable();
   private currentAnchorCoords: ClientRect;
   private currentContentCoords: ClientRect;
   private contentOffsets: ClrPopoverContentOffset;
@@ -23,9 +26,14 @@ export class ClrPopoverPositionService {
 
   set position(position: ClrPopoverPosition) {
     this._position = position;
+    this._smartPositionBehavior.next(position);
   }
   get position(): ClrPopoverPosition {
     return this._position;
+  }
+
+  get smartPosition(): Observable<ClrPopoverPosition> {
+    return this._smartPosition;
   }
 
   constructor(private eventService: ClrPopoverEventsService, @Inject(PLATFORM_ID) public platformId: Object) {}
@@ -42,7 +50,7 @@ export class ClrPopoverPositionService {
 
     this.currentAnchorCoords = this.eventService.anchorButtonRef.nativeElement.getBoundingClientRect();
     this.currentContentCoords = content.getBoundingClientRect();
-    this.contentOffsets = align(this.position, this.currentAnchorCoords, this.currentContentCoords);
+    this.contentOffsets = this.align(this.position, this.currentAnchorCoords, this.currentContentCoords);
 
     const visibilityViolations: ClrViewportViolation[] = testVisibility(this.contentOffsets, this.currentContentCoords);
     /**
@@ -99,17 +107,21 @@ export class ClrPopoverPositionService {
       case 0:
       case 3: {
         // BOTTOM(0) or TOP(3) are primary violations and we can just flip sides
-        this.contentOffsets = align(flipSides(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = this.align(flipSides(this.position), this.currentAnchorCoords, this.currentContentCoords);
         break;
       }
       case 1: {
         // LEFT(1) is secondary and needs to nudge content right
-        this.contentOffsets = align(nudgeContent(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = this.align(
+          nudgeContent(this.position),
+          this.currentAnchorCoords,
+          this.currentContentCoords
+        );
         break;
       }
       case 2: {
         // RIGHT(2) is secondary and  needs to nudge content left
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           nudgeContent(this.position, true),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -129,7 +141,7 @@ export class ClrPopoverPositionService {
       case 5: {
         // TOP(3)+RIGHT(2) is case 5. We need to flip sides and nudge the content to the left
         const flipAndNudgeLeft = flipSidesAndNudgeContent(flipSides, nudgeContent, true);
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           flipAndNudgeLeft(this.position),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -139,7 +151,7 @@ export class ClrPopoverPositionService {
       case 4: {
         //TOP(3)+LEFT(1) is case 4, we need to flip sides and nudge content to the right
         const flipAndNudgeRight = flipSidesAndNudgeContent(flipSides, nudgeContent, false);
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           flipAndNudgeRight(this.position),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -154,7 +166,7 @@ export class ClrPopoverPositionService {
       case 2: {
         // BOTTOM(0)+RIGHT(2) is case 2. We need to flip sides and nudge the content to the left
         const flipAndNudgeLeft = flipSidesAndNudgeContent(flipSides, nudgeContent, true);
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           flipAndNudgeLeft(this.position),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -164,7 +176,7 @@ export class ClrPopoverPositionService {
       case 1: {
         // BOTTOM(0)+LEFT(1) is case 1. We need to flip sides and nudge to the right
         const flipAndNudgeRight = flipSidesAndNudgeContent(flipSides, nudgeContent, false);
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           flipAndNudgeRight(this.position),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -182,12 +194,12 @@ export class ClrPopoverPositionService {
       case 1:
       case 2: {
         // LEFT(1) and RIGHT(2) are primary violations so we can flip sides
-        this.contentOffsets = align(flipSides(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = this.align(flipSides(this.position), this.currentAnchorCoords, this.currentContentCoords);
         break;
       }
       case 0: {
         // BOTTOM(0) is a secondary violation and we need to nudge content up
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           nudgeContent(this.position, true),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -196,7 +208,11 @@ export class ClrPopoverPositionService {
       }
       case 3: {
         // TOP(3) is a secondary violation and we need to nudge content down
-        this.contentOffsets = align(nudgeContent(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = this.align(
+          nudgeContent(this.position),
+          this.currentAnchorCoords,
+          this.currentContentCoords
+        );
         break;
       }
       default: {
@@ -213,7 +229,7 @@ export class ClrPopoverPositionService {
         // TOP(3)+RIGHT(2) is case 5.
         // In both of these cases we need to flip sides and nudge content down
         const flipAndNudgeDown = flipSidesAndNudgeContent(flipSides, nudgeContent, false);
-        this.contentOffsets = align(
+        this.contentOffsets = this.align(
           flipAndNudgeDown(this.position),
           this.currentAnchorCoords,
           this.currentContentCoords
@@ -231,12 +247,25 @@ export class ClrPopoverPositionService {
         // BOTTOM(0)+LEFT(1) is case 1.
         // In both cases we  need to flip sides and nudge content up
         const flipAndNudgeUp = flipSidesAndNudgeContent(flipSides, nudgeContent, true);
-        this.contentOffsets = align(flipAndNudgeUp(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = this.align(
+          flipAndNudgeUp(this.position),
+          this.currentAnchorCoords,
+          this.currentContentCoords
+        );
         break;
       }
       default: {
         break;
       }
     }
+  }
+
+  private align(
+    position: ClrPopoverPosition,
+    anchorCoords: ClientRect,
+    contentCoords: ClientRect
+  ): ClrPopoverContentOffset {
+    this._smartPositionBehavior.next(position);
+    return align(position, anchorCoords, contentCoords);
   }
 }

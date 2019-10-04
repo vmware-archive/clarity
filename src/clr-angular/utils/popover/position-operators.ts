@@ -10,6 +10,83 @@ import { ClrPopoverContentOffset } from './interfaces/popover-content-offset.int
 import { ClrViewportViolation } from './enums/viewport-violation.enum';
 import { ClrVisibilityCoords } from './interfaces/visibility-coords.interface';
 import { ClrAlignment } from './enums/alignment.enum';
+import { ClrAxis } from './enums/axis.enum';
+import { ClrSide } from './enums/side.enum';
+
+export const SIMPLE_TO_SMART_POSITIONS: { [input: string]: ClrPopoverPosition } = {
+  'top-left': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'top-middle': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'top-right': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'right-top': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'right-middle': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'right-bottom': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'bottom-right': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'bottom-middle': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'bottom-left': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'left-bottom': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'left-middle': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'left-top': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+};
 
 // Put the forward arg here but it is only needed when nudging content or anchors.
 export type ClrTransform = (position: ClrPopoverPosition, back?: boolean) => ClrPopoverPosition;
@@ -198,4 +275,45 @@ export function testVisibility(offset: ClrPopoverContentOffset, content: ClientR
   }
 
   return violations;
+}
+
+export function positionsEqual(positionA: ClrPopoverPosition, positionB: ClrPopoverPosition): boolean {
+  if ([undefined, null].includes(positionA) || [undefined, null].includes(positionB)) {
+    return false;
+  }
+
+  const aProps = Object.keys(positionA);
+  const bProps = Object.keys(positionB);
+
+  if (aProps.length !== bProps.length) {
+    return false;
+  }
+
+  for (const propName of aProps) {
+    if (positionA[propName] !== positionB[propName]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function posiblePositionsAsStrings() {
+  return Object.keys(SIMPLE_TO_SMART_POSITIONS);
+}
+
+export function findPositionString(position: ClrPopoverPosition): string {
+  for (const key in SIMPLE_TO_SMART_POSITIONS) {
+    if (positionsEqual(position, SIMPLE_TO_SMART_POSITIONS[key])) {
+      return key;
+    }
+  }
+  return null;
+}
+
+export function findPositionObject(position: string): ClrPopoverPosition {
+  return SIMPLE_TO_SMART_POSITIONS[position] || null;
+}
+
+export function validPosition(position: string): boolean {
+  return position && !!SIMPLE_TO_SMART_POSITIONS[position];
 }

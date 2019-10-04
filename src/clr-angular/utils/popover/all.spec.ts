@@ -5,7 +5,12 @@
  *
  */
 
-import { ClrPositionTransformSpec, ClrAlignmentSpec, ClrViewportValidationSpec } from './position-operators.spec';
+import {
+  ClrPositionHelperSpec,
+  ClrPositionTransformSpec,
+  ClrAlignmentSpec,
+  ClrViewportValidationSpec,
+} from './position-operators.spec';
 import EventServiceSpec from './providers/popover-events.service.spec';
 import ToggleServiceSpec from './providers/popover-toggle.service.spec';
 import PositionServiceSpec from './providers/popover-position.service.spec';
@@ -19,6 +24,7 @@ describe('ClrPopover', () => {
     ClrPositionTransformSpec();
     ClrAlignmentSpec();
     ClrViewportValidationSpec();
+    ClrPositionHelperSpec();
   });
   describe('Service', () => {
     EventServiceSpec();

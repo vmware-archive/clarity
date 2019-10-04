@@ -16,9 +16,147 @@ import {
   flipSidesAndNudgeContent,
   nudgeContent,
   testVisibility,
+  positionsEqual,
+  posiblePositionsAsStrings,
+  findPositionString,
+  findPositionObject,
+  validPosition,
 } from './position-operators';
 import { ClrPopoverContentOffset } from './interfaces/popover-content-offset.interface';
 import { ClrViewportViolation } from './enums/viewport-violation.enum';
+
+export const TEST_VERSION_OF_SIMPLE_TO_SMART_POSITIONS: { [input: string]: ClrPopoverPosition } = {
+  'top-left': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'top-middle': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'top-right': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'right-top': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'right-middle': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'right-bottom': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'bottom-right': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'bottom-middle': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'bottom-left': {
+    axis: ClrAxis.VERTICAL,
+    side: ClrSide.AFTER,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+  'left-bottom': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.START,
+  },
+  'left-middle': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.CENTER,
+  },
+  'left-top': {
+    axis: ClrAxis.HORIZONTAL,
+    side: ClrSide.BEFORE,
+    anchor: ClrAlignment.CENTER,
+    content: ClrAlignment.END,
+  },
+};
+
+export function ClrPositionHelperSpec(): void {
+  describe('ClrPosition helper functions', () => {
+    it('should return array of posible positions', () => {
+      expect(posiblePositionsAsStrings()).toEqual(Object.keys(TEST_VERSION_OF_SIMPLE_TO_SMART_POSITIONS));
+    });
+
+    it('should let you find position object by passing string names', () => {
+      posiblePositionsAsStrings().forEach(position => {
+        expect(findPositionObject(position)).toEqual(TEST_VERSION_OF_SIMPLE_TO_SMART_POSITIONS[position]);
+      });
+
+      expect(findPositionObject('NOT_VALID_NAME')).toEqual(null);
+    });
+
+    it('should find string name of position by passing position object', () => {
+      posiblePositionsAsStrings().forEach(position => {
+        expect(position).toBe(findPositionString(TEST_VERSION_OF_SIMPLE_TO_SMART_POSITIONS[position]));
+      });
+
+      // Not a valid position
+      expect(findPositionString({ axis: -5, side: -5, anchor: -5, content: -5 })).toBe(null);
+    });
+
+    it('should check that the position is valid', () => {
+      // test all known position keys that we want and expect to have
+      const positionKeys = Object.keys(TEST_VERSION_OF_SIMPLE_TO_SMART_POSITIONS);
+
+      positionKeys.forEach(positionKey => {
+        expect(validPosition(positionKey)).toBe(true);
+      });
+      // But make sure that it won't work for made up name
+      expect(validPosition('NOT_VALID_NAME')).toBe(false);
+    });
+
+    it("should compare two position and return false if they don't match", () => {
+      // order is not tehe same
+      expect(
+        positionsEqual({ side: 1, axis: 0, anchor: 0.5, content: 0 }, { side: 1, anchor: 0.5, content: 0, axis: 0 })
+      ).toBe(true);
+
+      // `side` & `axis` are not the same - check for more than one prop
+      expect(
+        positionsEqual({ content: 0, axis: 1, side: 1, anchor: 0.5 }, { axis: 0, anchor: 0.5, side: -1, content: 0 })
+      ).toBe(false);
+
+      // null as position
+      expect(positionsEqual({ side: 1, axis: 0, anchor: 0.5, content: 0 }, null)).toBe(false);
+      expect(positionsEqual(null, { side: 1, axis: 0, anchor: 0.5, content: 0 })).toBe(false);
+
+      // undefined as position
+      expect(positionsEqual({ side: 1, axis: 0, anchor: 0.5, content: 0 }, undefined)).toBe(false);
+      expect(positionsEqual(undefined, { side: 1, axis: 0, anchor: 0.5, content: 0 })).toBe(false);
+
+      // no need to test for array, number, string - expect TypeScript to prevent it.
+    });
+  });
+}
 
 export function ClrPositionTransformSpec(): void {
   describe('Transorm Function', () => {

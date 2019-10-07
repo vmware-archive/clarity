@@ -5,8 +5,8 @@
  */
 export const environment = {
   production: true,
-  latest: 'v3',
-  version: 'v2',
+  latest: 'v2',
+  version: 'v3',
   versions_url: 'https://clarity.design/versions.json',
   icons_base_url: '/.netlify/functions/download-icon',
   icons_url: 'https://github.com/vmware/clarity-assets/archive/master.zip',

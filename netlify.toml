@@ -14,3 +14,8 @@
   from = "/*"
   to = "/"
   status = 200
+
+[[headers]]
+  for = "/*.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

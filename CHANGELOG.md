@@ -1,3 +1,44 @@
+<a name="3.0.0-next.1"></a>
+
+# [3.0.0-next.1](https://github.com/vmware/clarity/compare/v2.2.0...v3.0.0-next.1) (2019-10-07)
+
+### Bug Fixes
+
+* download links don't indicate their purpose ([6dac2e7](https://github.com/vmware/clarity/commit/6dac2e7)), closes [#3168](https://github.com/vmware/clarity/issues/3168)
+* focus indicator for multi select ([b3eccaa](https://github.com/vmware/clarity/commit/b3eccaa))
+* focus stealing in modal by using disable-able clrFocusOnViewInit ([b1baacb](https://github.com/vmware/clarity/commit/b1baacb))
+* form a11y ([eba5d10](https://github.com/vmware/clarity/commit/eba5d10)), closes [#3556](https://github.com/vmware/clarity/issues/3556)
+* icon colors do not match clr-ui dark mode colors (hsl) ([49546e8](https://github.com/vmware/clarity/commit/49546e8))
+* keep consistent height if signpost in datagrid header ([f0a9293](https://github.com/vmware/clarity/commit/f0a9293)), closes [#1279](https://github.com/vmware/clarity/issues/1279)
+* on website input grouping heading overlaps example ([4afa5d9](https://github.com/vmware/clarity/commit/4afa5d9)), closes [#3802](https://github.com/vmware/clarity/issues/3802)
+* **stack-view:** a11y add aria-controls to stack-view ([1b1f044](https://github.com/vmware/clarity/commit/1b1f044)), closes [#3567](https://github.com/vmware/clarity/issues/3567)
+* remove max-height from `pre` ([a177618](https://github.com/vmware/clarity/commit/a177618)), closes [#1138](https://github.com/vmware/clarity/issues/1138)
+* **a11y:** changing color of yellow icons for a11y ([95a933e](https://github.com/vmware/clarity/commit/95a933e))
+* **build:** remove google-chrome-stable from addon ([982cbae](https://github.com/vmware/clarity/commit/982cbae))
+* **datagrid:** adding tests for clrDgColType ([b7a5c2e](https://github.com/vmware/clarity/commit/b7a5c2e))
+* **datagrid:** change test describe block ([6b66ec1](https://github.com/vmware/clarity/commit/6b66ec1))
+* **datagrid:** datagrid current page not rendered correctly in IE 11 ([0b902e4](https://github.com/vmware/clarity/commit/0b902e4)), closes [#3747](https://github.com/vmware/clarity/issues/3747)
+* **datagrid:** include missing tests for datagrid-numeric-filter ([c5c9842](https://github.com/vmware/clarity/commit/c5c9842))
+* selecting content in modal body ([8a25b58](https://github.com/vmware/clarity/commit/8a25b58))
+* **datagrid:** not working numberic filters at the datagrid ([a39ce80](https://github.com/vmware/clarity/commit/a39ce80))
+* **datagrid:** remove fdescribe ([c84939f](https://github.com/vmware/clarity/commit/c84939f))
+* **header:** icons in header documentation ([b9c8bde](https://github.com/vmware/clarity/commit/b9c8bde)), closes [#3616](https://github.com/vmware/clarity/issues/3616)
+* **icons:** 'ClarityIcons.add' must be case insensitive ([64c5685](https://github.com/vmware/clarity/commit/64c5685)), closes [#3800](https://github.com/vmware/clarity/issues/3800)
+* **signpost:** fix signpost focus management ([26bacc4](https://github.com/vmware/clarity/commit/26bacc4))
+* **signpost:** use default cursor in popover ([c102c4d](https://github.com/vmware/clarity/commit/c102c4d)), closes [#3803](https://github.com/vmware/clarity/issues/3803)
+* **stack-view:** stack view async loading ([53527e1](https://github.com/vmware/clarity/commit/53527e1)), closes [#3565](https://github.com/vmware/clarity/issues/3565)
+* **website:** add padding-right to responsive footer ([4e166e6](https://github.com/vmware/clarity/commit/4e166e6))
+* **wizard:** wizard title gets double focus attempts ([05265b6](https://github.com/vmware/clarity/commit/05265b6)), closes [#3792](https://github.com/vmware/clarity/issues/3792)
+
+### Features
+
+* **datagrid:** add detail pane ([ee0058b](https://github.com/vmware/clarity/commit/ee0058b)), closes [#2005](https://github.com/vmware/clarity/issues/2005)
+* **wizard:** wizard step error state ([49b453f](https://github.com/vmware/clarity/commit/49b453f)), closes [#2203](https://github.com/vmware/clarity/issues/2203)
+
+### BREAKING CHANGES
+
+* this changes the default height for a `pre` element, but can be easily overriden on app level
+
 <a name="2.2.0"></a>
 
 # [2.2.0](https://github.com/vmware/clarity/compare/v2.1.2...v2.2.0) (2019-09-05)

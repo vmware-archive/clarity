@@ -1,5 +1,12 @@
 <router-outlet></router-outlet>
 <nav class="sidenav" [clr-nav-level]="2">
+    <clr-alert [clrAlertType]="'warning'" [clrAlertAppLevel]="true" [clrAlertClosable]="false">
+        <clr-alert-item>
+            <span class="alert-text">
+                V3 is in prelease. Install it using the @next tag from NPM.
+            </span>
+        </clr-alert-item>
+    </clr-alert>
     <section class="sidenav-content">
         <version-switcher></version-switcher>
 

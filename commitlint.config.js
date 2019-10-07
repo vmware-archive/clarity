@@ -9,6 +9,7 @@ const scopes = [
   'checkbox',
   'color',
   'datagrid',
+  'datalist',
   'date-picker',
   'dropdown',
   'form',

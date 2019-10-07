@@ -41,6 +41,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: () => import('./datagrid/datagrid.demo.module').then(m => m.DatagridDemoModule),
   },
   {
+    path: 'datalist',
+    loadChildren: () => import('./datalist/datalist.demo.module').then(m => m.DatalistDemoModule),
+  },
+  {
     path: 'drag-and-drop',
     loadChildren: () => import('./drag-and-drop/drag-and-drop.demo.module').then(m => m.DragAndDropDemoModule),
   },

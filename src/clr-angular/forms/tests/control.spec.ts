@@ -17,6 +17,7 @@ import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { MarkControlService } from '../common/providers/mark-control.service';
 import { LayoutService } from '../common/providers/layout.service';
+import { DatalistIdService } from '../datalist/providers/datalist-id.service';
 
 export function ControlStandaloneSpec(testComponent): void {
   describe('standalone use', () => {
@@ -43,7 +44,14 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
 
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
-    let control, fixture, ifErrorService, controlClassService, markControlService, layoutService;
+    let control,
+      fixture,
+      ifErrorService,
+      controlClassService,
+      markControlService,
+      layoutService,
+      controlIdService,
+      datalistIdService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
@@ -58,6 +66,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
           ControlClassService,
           MarkControlService,
           LayoutService,
+          DatalistIdService,
         ],
       });
       fixture = TestBed.createComponent(testComponent);
@@ -66,12 +75,50 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       ifErrorService = control.injector.get(IfErrorService);
       markControlService = control.injector.get(MarkControlService);
       layoutService = control.injector.get(LayoutService);
+      controlIdService = control.injector.get(ControlIdService);
+      datalistIdService = control.injector.get(DatalistIdService);
       spyOn(ifErrorService, 'triggerStatusChange');
       fixture.detectChanges();
     });
 
+    it('should have the ControlIdService', () => {
+      expect(controlIdService).toBeTruthy();
+    });
+
+    it('should have the DatalistIdService', () => {
+      expect(datalistIdService).toBeTruthy();
+    });
+
     it(`should apply the ${controlClass} class`, () => {
       expect(control.nativeElement.classList.contains(controlClass));
+    });
+
+    it('should have the IfErrorService', () => {
+      expect(ifErrorService).toBeTruthy();
+    });
+
+    it('should have the MarkControlService', () => {
+      expect(markControlService.markAsTouched).toBeTruthy();
+    });
+
+    it('correctly extends WrappedFormControl', () => {
+      expect(control.injector.get(testControl).wrapperType).toBe(testContainer);
+      expect(WrappedFormControl.prototype.ngOnInit).toHaveBeenCalled();
+    });
+
+    it('should set the class on the control with ControlClassService', () => {
+      expect(controlClassService).toBeTruthy();
+      expect(controlClassService.initControlClass).toHaveBeenCalled();
+      expect(controlClassService.className).toEqual('test-class');
+    });
+
+    it('should handle blur events', () => {
+      // control must be both invalid and blurred to register the validity
+      control.nativeElement.value = 'abc';
+      control.nativeElement.dispatchEvent(new Event('input'));
+      control.nativeElement.dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
     });
 
     it('should have the IfErrorService', () => {

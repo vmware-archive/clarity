@@ -15,6 +15,7 @@ let nbSelection: number = 0;
 @Injectable()
 export class Selection<T = any> {
   public id: string;
+  public preserveSelection: boolean = false;
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
   private lockedRefs: T[] = []; // Ref of locked items
@@ -24,7 +25,7 @@ export class Selection<T = any> {
 
     this.subscriptions.push(
       this._filters.change.subscribe(() => {
-        if (!this._selectable) {
+        if (!this._selectable || this.preserveSelection) {
           return;
         }
         this.clearSelection();

@@ -19,6 +19,8 @@ import { SelectionType } from '../enums/selection-type';
 
 const numberSort = (a: number, b: number) => a - b;
 
+type Item = { id: number; modified?: boolean };
+
 export default function(): void {
   describe('Selection provider', function() {
     describe('with smart items', function() {
@@ -359,6 +361,77 @@ export default function(): void {
       });
     });
 
+    describe('clrDgPreserveSelection', () => {
+      let selectionInstance: Selection<number>;
+      let sortInstance: Sort<number>;
+      let pageInstance: Page;
+      let filtersInstance: FiltersProvider<number>;
+      let itemsInstance: Items<number>;
+
+      beforeEach(function() {
+        const stateDebouncer = new StateDebouncer();
+        pageInstance = new Page(stateDebouncer);
+        filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+        sortInstance = new Sort(stateDebouncer);
+        itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
+        itemsInstance.smartenUp();
+        itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        selectionInstance.preserveSelection = true;
+      });
+
+      afterEach(function() {
+        selectionInstance.destroy();
+        itemsInstance.destroy();
+      });
+
+      it('does not clear selection when a filter is added (even if selection is not visible)', function() {
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.currentSingle = 3;
+
+        const evenFilter: EvenFilter = new EvenFilter();
+
+        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+
+        evenFilter.toggle();
+
+        expect(selectionInstance.currentSingle).toBe(3);
+      });
+
+      it('does not clear multi selection when a filter is added (even if selection is not visible)', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.current = [2, 3];
+
+        const evenFilter: EvenFilter = new EvenFilter();
+
+        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+
+        evenFilter.toggle();
+
+        expect(selectionInstance.current).toEqual([2, 3]);
+      });
+
+      it(
+        'keeps only the remaining selection when the items are updated',
+        fakeAsync(function() {
+          selectionInstance.selectionType = SelectionType.Multi;
+          selectionInstance.current = [4, 3, 2];
+          const evenFilter: EvenFilter = new EvenFilter();
+
+          filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+          evenFilter.toggle();
+
+          itemsInstance.all = [1, 2, 3, 5];
+
+          tick();
+
+          expect(selectionInstance.current.length).toBe(2);
+          expect(selectionInstance.current).toEqual([3, 2]);
+        })
+      );
+    });
+
     describe('client-side selection and pagination', function() {
       type Item = { id: number; modified?: boolean };
 
@@ -496,8 +569,6 @@ export default function(): void {
     });
 
     describe('server-driven selection and pagination', function() {
-      type Item = { id: number; modified?: boolean };
-
       let selectionInstance: Selection<Item>;
       let sortInstance: Sort<Item>;
       let pageInstance: Page;
@@ -598,6 +669,25 @@ export default function(): void {
             tick();
             testToggleAllSelection(false, false, true);
             expect(selectionInstance.current[0].modified).toEqual(true);
+          })
+        );
+
+        it(
+          'should not clear selection when filter applied and clrDgPreserveSelection is true',
+          fakeAsync(() => {
+            const evenFilter: ItemEvenFilter = new ItemEvenFilter();
+            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.all = itemsA;
+            tick();
+            selectionInstance.setSelected(itemsA[0], true);
+            selectionInstance.preserveSelection = true;
+
+            filtersInstance.add(<ClrDatagridFilterInterface<Item>>evenFilter);
+            evenFilter.toggle();
+            tick();
+
+            expect(selectionInstance.current.length).toBe(1);
+            expect(selectionInstance.isSelected(itemsA[0])).toBeTruthy();
           })
         );
       });
@@ -778,5 +868,24 @@ abstract class TestFilter implements ClrDatagridFilterInterface<number> {
 class EvenFilter extends TestFilter {
   accepts(n: number): boolean {
     return n % 2 === 0;
+  }
+}
+
+class ItemEvenFilter implements ClrDatagridFilterInterface<Item> {
+  private active = false;
+
+  toggle() {
+    this.active = !this.active;
+    this.changes.next(this.active);
+  }
+
+  isActive(): boolean {
+    return this.active;
+  }
+
+  changes = new Subject<boolean>();
+
+  accepts(i: Item): boolean {
+    return i.id % 2 === 0;
   }
 }

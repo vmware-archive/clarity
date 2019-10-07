@@ -331,6 +331,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     _projectedDisplayColumns: ViewContainerRef;
     allSelected: boolean;
     clrDetailExpandableAriaLabel: string;
+    clrDgPreserveSelection: boolean;
     clrDgSingleActionableAriaLabel: string;
     clrDgSingleSelectionAriaLabel: string;
     columns: QueryList<ClrDatagridColumn<T>>;

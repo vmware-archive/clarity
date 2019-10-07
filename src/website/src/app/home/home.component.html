@@ -9,7 +9,7 @@
             <div class="home-hero-btn">
                 <a routerLink="get-started" class="btn btn-primary">Get Started</a>
                 <a routerLink="documentation" *ngIf="environment.latest == environment.version" class="btn btn-secondary btn-outline">Documentation</a>
-                <a href="https://{{environment.version}}.clarity.design" *ngIf="environment.latest !== environment.version" class="btn btn-secondary btn-outline">Documentation</a>
+                <a href="https://{{environment.latest}}.clarity.design" *ngIf="environment.latest !== environment.version" class="btn btn-secondary btn-outline">Documentation</a>
             </div>
             <p class="subtext">
                 View the <a rel="noopener" target="_blank" href="https://github.com/vmware/clarity">source</a> on GitHub

@@ -80,6 +80,14 @@ export class AppComponent implements OnInit {
     this.setTitle(filteredTitles.join(this.browserTitleSeparator));
   }
 
+  getDocumentationUrl() {
+    if (window.location.hostname === 'clarity.design' && environment.latest !== environment.version) {
+      return `https://${environment.latest}.clarity.design`;
+    } else {
+      return `/documentation`;
+    }
+  }
+
   private defaultBrowserTitle = 'Clarity Design System';
   private browserTitleSeparator = ' - ';
 

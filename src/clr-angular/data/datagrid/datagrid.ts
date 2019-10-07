@@ -160,6 +160,10 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   @Input() clrDgSingleActionableAriaLabel: string = this.commonStrings.keys.singleActionableAriaLabel;
   @Input() clrDetailExpandableAriaLabel: string = this.commonStrings.keys.detailExpandableAriaLabel;
 
+  @Input()
+  set clrDgPreserveSelection(state: boolean) {
+    this.selection.preserveSelection = state;
+  }
   /**
    * @deprecated since 2.0, remove in 3.0
    *

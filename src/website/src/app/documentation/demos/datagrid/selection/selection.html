@@ -139,3 +139,16 @@
 
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
+
+<h4>Preserving Selection</h4>
+<p>
+    By default, when a filter is applied to the datagrid the selection is cleared. This is done to ensure that all
+    selected items are always visible in the datagrid. In certain instances, this might not be desireable, therefore
+    we provide the <code class="clr-code">[clrDgPreserveSelection]</code> input. Setting this to true will retain the
+    current selection on the datagrid, even if filters are applied and selected items are not visible.
+</p>
+<p>
+    Note: If you do enable <code class="clr-code">[clrDgPreserveSelection]</code>, before performing any action on the
+    selected items, a confirmation should be shown to ensure the end-user is aware of which items they are operating on,
+    since the filters may hide some of the selected items from the user causing a discovery issue.
+</p>

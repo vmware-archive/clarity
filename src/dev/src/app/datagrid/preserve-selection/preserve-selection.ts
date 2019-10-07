@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 
-import { Inventory } from '../inventory/inventory';
+import { ClrDatagridStateInterface } from '@clr/angular';
+import { FetchResult, Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
 @Component({
@@ -16,22 +17,53 @@ import { User } from '../inventory/user';
 })
 export class DatagridPreserveSelectionDemo {
   users: User[];
-  _selected: User[] = [];
+  selected: User[] = [];
+  clientNoTrackByUsers: User[];
+  clientNoTrackBySelected: User[] = [];
+  clientTrackByIndexUsers: User[];
+  clientTrackByIndexSelected: User[] = [];
+  clientTrackByIdUsers: User[];
+  clientTrackByIdSelected: User[] = [];
+  serverTrackByIdUsers: User[];
+  serverTrackByIdSelected: User[] = [];
+  total = 100;
+  loading = true;
+
   currentPageSize: number = 10;
   nameFilter = '';
+  nameFilterNoTrackBy;
+  nameFilterTrackByIndex = '';
+  nameFilterTrackById = '';
+  nameFilterServerTrackBy = '';
+  preserveFilteringNoTrackBy = false;
+  preserveFilteringTrackByIndex = false;
+  preserveFilteringTrackByIdUsers = false;
+  preserveFilteringServerTrackBy = false;
 
-  get selected() {
-    return this._selected;
+  constructor(private inventory: Inventory) {
+    this.inventory.size = this.total;
+    this.inventory.latency = 500;
+    this.inventory.reset();
+    this.users = this.clientNoTrackByUsers = this.clientTrackByIndexUsers = this.clientTrackByIdUsers = this.inventory.all;
   }
 
-  set selected(selection: User[]) {
-    this._selected = selection;
-  }
-
-  constructor(inventory: Inventory) {
-    inventory.size = 100;
-    inventory.reset();
-    this.users = inventory.all;
+  refresh(state: ClrDatagridStateInterface) {
+    this.loading = true;
+    const filters: { [prop: string]: any[] } = {};
+    if (state.filters) {
+      for (const filter of state.filters) {
+        const { property, value } = <{ property: string; value: string }>filter;
+        filters[property] = [value];
+      }
+    }
+    this.inventory
+      .filter(filters)
+      .sort(<{ by: string; reverse: boolean }>state.sort)
+      .fetch(state.page.from, state.page.size)
+      .then((result: FetchResult) => {
+        this.serverTrackByIdUsers = result.users;
+        this.loading = false;
+      });
   }
 
   backUpUsers: User[] = [];
@@ -46,7 +78,11 @@ export class DatagridPreserveSelectionDemo {
     }
   }
 
-  trackByFn(index: number, item: any) {
+  trackByIndex(index: number, item: User) {
+    return index;
+  }
+
+  trackById(index: number, item: User) {
     return item.id;
   }
 }

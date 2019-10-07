@@ -111,6 +111,14 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'datalist',
+        loadChildren: () => import('./demos/datalist/datalist.module').then(m => m.DatalistDemoModule),
+        data: {
+          bodyClass: 'page-datalist',
+          browserTitle: 'Datalist',
+        },
+      },
+      {
         path: 'datepicker',
         loadChildren: () => import('./demos/datepicker/datepicker.demo.module').then(m => m.DatepickerDemoModule),
         data: {

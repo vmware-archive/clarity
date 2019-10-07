@@ -122,6 +122,17 @@
       "dox": 20
     },
     {
+      "url": "datalist",
+      "text": "Datalist",
+      "type": "component",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 20,
+      "dox": 20,
+      "newLayout": true
+    },
+    {
       "url": "datagrid",
       "text": "Datagrid",
       "type": "component",

@@ -5,6 +5,7 @@
  */
 export * from './common/index';
 export * from './checkbox/index';
+export * from './datalist/index';
 export * from './datepicker/index';
 export * from './input/index';
 export * from './password/index';

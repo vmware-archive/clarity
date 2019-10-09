@@ -642,7 +642,7 @@ export default function(): void {
       });
     });
 
-    fdescribe('conditional selection', function() {
+    describe('conditional selection', function() {
       let selectionInstance: Selection<any>;
       let sortInstance: Sort<any>;
       let pageInstance: Page;

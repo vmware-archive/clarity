@@ -17,6 +17,7 @@
     "format": "prettier --list-different './**/*.{js,json,md,ts,scss}'",
     "format:fix": "pretty-quick --staged",
     "format:file": "prettier --write",
+    "git:check-content": "node ./scripts/commit-content-check.js",
     "gemini": "npm-run-all core:sass 'gemini:light -- {*}' 'gemini:dark -- {*}' --",
     "gemini:light": "./scripts/docker-cdc.js -t",
     "gemini:dark": "./scripts/docker-cdc.js -t -c dark",
@@ -215,7 +216,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run license:fix",
+      "pre-commit": "npm run git:check-content && npm run format:fix && npm run license:fix",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

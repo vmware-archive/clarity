@@ -1,4 +1,12 @@
 // Base ships a minimal global style for non component styles such as layout and typography
-// @import '~normalize.css/normalize';
+
+$clr-fontSkipBase64: true;
+$clr-font: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default;
+
+@import './../../../node_modules/normalize.css/normalize';
+@import './../../../node_modules/@clr/city/css/light.css';
+@import './../../../node_modules/@clr/city/css/regular.css';
+@import './../../../node_modules/@clr/city/css/medium.css';
+@import './../../../node_modules/@clr/city/css/semibold.css';
 @import './../../clr-ui/layout/layout';
 @import './../../clr-ui/typography/typography';

@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "./dist/clr-core/fesm2015/**/clr-core-*.js",
+      "maxSize": "20 kB"
+    },
+    {
+      "path": "./dist/clr-core/fesm2015/**/clr-core.js",
+      "maxSize": "20 kB"
+    },
+    {
+      "path": "./dist/dev-core/**/main-es2015*.js",
+      "maxSize": "100 kB"
+    },
+    {
+      "path": "./dist/dev-core/styles.*.css",
+      "maxSize": "10 kB"
+    }
+  ]
+}

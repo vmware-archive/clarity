@@ -87,6 +87,42 @@ export default function(): void {
       });
     });
 
+    describe('Conditional selection', function() {
+      let context: TestContext<ClrDatagridRow, SelectableRow>;
+      let selectionProvider: Selection;
+
+      let radio: HTMLElement;
+      let checkbox: HTMLElement;
+
+      beforeEach(function() {
+        context = this.create(ClrDatagridRow, SelectableRow, DATAGRID_SPEC_PROVIDERS);
+        selectionProvider = TestBed.get(Selection);
+        TestBed.get(Items).all = [{ id: 1 }, { id: 2 }];
+      });
+
+      it('should toggle when clrDgSelectable is false for type  SelectionType.Multi', () => {
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.testComponent.clrDgSelectable = false;
+        context.detectChanges();
+        checkbox = context.clarityElement.querySelector("input[type='checkbox']");
+
+        expect(checkbox.getAttribute('disabled')).toBe('true');
+        expect(checkbox.getAttribute('aria-disabled')).toBe('true');
+
+        context.clarityDirective.toggle();
+        expect(context.clarityDirective.selected).toBe(true);
+      });
+
+      it('should be able you toggle the state of selection when clrDgSelectable is false', () => {
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.clarityDirective.toggle(true);
+        context.testComponent.clrDgSelectable = false;
+        context.detectChanges();
+        context.clarityDirective.toggle();
+        expect(context.clarityDirective.selected).toBe(false);
+      });
+    });
+
     describe('Selection', function() {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridRow, FullTest>;
@@ -422,6 +458,14 @@ export default function(): void {
     `,
 })
 class ProjectionTest {}
+
+@Component({
+  template: `<clr-dg-row [clrDgSelectable]="clrDgSelectable" [clrDgItem]="item">None</clr-dg-row>`,
+})
+class SelectableRow {
+  clrDgSelectable = true;
+  item: Item = { id: 42 };
+}
 
 @Component({ template: `<clr-dg-row [clrDgItem]="item" [(clrDgSelected)]="selected">Hello world</clr-dg-row>` })
 class FullTest {

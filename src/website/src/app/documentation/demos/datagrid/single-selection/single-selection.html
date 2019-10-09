@@ -90,7 +90,7 @@
     </p>
 </div>
 
-<clr-datagrid [(clrDgSingleSelected)]="rowSelected" [clrDgRowSelection]="true">
+<clr-datagrid [(clrDgSingleSelected)]="rowSelected">
 
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column>Name</clr-dg-column>
@@ -115,3 +115,31 @@
     If you need to listen to when the selection changes, you can use Angular's <a href="https://angular.io/guide/template-syntax">two way binding</a> to listen to the <code class="clr-code">(clrDgSingleSelectedChange)</code> event:
 </p>
 <clr-code-snippet [clrCode]="selectionChangeEventExample" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    In order to conditionally disable selection on a row, use the <code class="clr-code">clrDgSelectable</code> 
+    input to disable selection state changes. This has to be done on each row you wish to disable, and works with 
+    single and multi selection.
+</p>
+<clr-code-snippet [clrCode]="unselectableRow" clrLanguage="html"></clr-code-snippet>
+
+<button class="btn btn-primary" (click)="lockRows()">Lock Rows</button>
+<button class="btn btn-primary" (click)="unlockRows()">Unlock Rows</button>
+
+<clr-datagrid [(clrDgSingleSelected)]="rowSelected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row [clrDgSelectable]="!user.locked" *clrDgItems="let user of lockedUsers" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

@@ -17,6 +17,7 @@ export class Selection<T = any> {
   public id: string;
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
+  private lockedRefs: T[] = []; // Ref of licked items
 
   constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
     this.id = 'clr-dg-selection' + nbSelection++;
@@ -32,6 +33,9 @@ export class Selection<T = any> {
 
     this.subscriptions.push(
       this._items.allChanges.subscribe(updatedItems => {
+        // Reset the lockedRefs;
+        const updateLockedRef: T[] = [];
+
         switch (this.selectionType) {
           case SelectionType.None: {
             break;
@@ -56,6 +60,9 @@ export class Selection<T = any> {
               if (this.prevSingleSelectionRef === ref) {
                 newSingle = item;
                 selectionUpdated = true;
+              }
+              if (this.lockedRefs.indexOf(ref) > -1) {
+                updateLockedRef.push(ref);
               }
             });
 
@@ -94,6 +101,18 @@ export class Selection<T = any> {
                 });
               }
             }
+
+            // Duplicate loop, when the issue is issue#2342 is revisited keep in mind that
+            // we need to go over every updated item and check to see if there are valid to be
+            // locked or not and update it. When only add items that are found in the lockedRefs back.
+            //
+            // The both loops below that goes over updatedItems could be combined into one.
+            updatedItems.forEach((item, index) => {
+              const ref = trackBy(index, item);
+              if (this.lockedRefs.indexOf(ref) > -1) {
+                updateLockedRef.push(ref);
+              }
+            });
 
             // TODO: revisit this when we work on https://github.com/vmware/clarity/issues/2342
             // currently, the selection is cleared when filter is applied, so the logic inside
@@ -135,6 +154,8 @@ export class Selection<T = any> {
             break;
           }
         }
+        // Sync locked items
+        this.lockedRefs = updateLockedRef;
       })
     );
   }
@@ -198,6 +219,7 @@ export class Selection<T = any> {
     if (value === this._currentSingle) {
       return;
     }
+
     this._currentSingle = value;
     if (this._items.all && this._items.trackBy && value) {
       const lookup = this._items.all.findIndex(maybe => maybe === value);
@@ -279,7 +301,9 @@ export class Selection<T = any> {
     this.current.splice(indexOfItem, 1);
     if (this._items.trackBy && indexOfItem < this.prevSelectionRefs.length) {
       // Keep selected refs array in sync
-      this.prevSelectionRefs.splice(indexOfItem, 1);
+      const removedItems = this.prevSelectionRefs.splice(indexOfItem, 1);
+      // locked reference is no longer needed (if any)
+      this.lockedRefs = this.lockedRefs.filter(locked => locked !== removedItems[0]);
     }
   }
 
@@ -315,13 +339,54 @@ export class Selection<T = any> {
     if (this._selectionType !== SelectionType.Multi || !this._items.displayed) {
       return false;
     }
-    const displayedItems: T[] = this._items.displayed;
-    const nbDisplayed = this._items.displayed.length;
+    // make sure to exclude the locked items from the list when counting
+    const displayedItems: T[] = this._items.displayed.filter(item => {
+      return this.isLocked(item) === false;
+    });
+
+    const nbDisplayed = displayedItems.length;
     if (nbDisplayed < 1) {
       return false;
     }
     const temp: T[] = displayedItems.filter(item => this.current.indexOf(item) > -1);
     return temp.length === displayedItems.length;
+  }
+
+  private canItBeLocked() {
+    // We depend on the trackBy and all so there are part of the requirment of is item could be locked
+    return this._selectionType !== SelectionType.None;
+  }
+
+  /**
+   * Lock and unlock item
+   */
+  public lockItem(item: T, lock: boolean) {
+    if (this.canItBeLocked()) {
+      const ref = this._items.trackBy(this._items.all.findIndex(maybe => maybe === item), item);
+      if (lock === true) {
+        // Add to lockedRef
+        this.lockedRefs.push(ref);
+      } else {
+        // Remove from lockedRef
+        this.lockedRefs = this.lockedRefs.filter(lockedItem => ref !== lockedItem);
+      }
+    }
+  }
+
+  /**
+   * Check is item locked or not by searcing into lockedRefs for entry
+   */
+  public isLocked(item: T): boolean {
+    /**
+     * The check for selectionType will boost the performence by NOT searching
+     * into the array when there is no need for that.
+     */
+    if (this.canItBeLocked()) {
+      const ref = this._items.trackBy(this._items.all.findIndex(maybe => maybe === item), item);
+      return this.lockedRefs.indexOf(ref) > -1;
+    }
+
+    return false;
   }
 
   /**
@@ -331,20 +396,20 @@ export class Selection<T = any> {
     if (this._selectionType === SelectionType.None || this._selectionType === SelectionType.Single) {
       return;
     }
-    /*
-         * If every currently displayed item is already selected, we clear them.
-         * If at least one item isn't selected, we select every currently displayed item.
-         */
+    /**
+     * If every currently displayed item is already selected, we clear them.
+     * If at least one item isn't selected, we select every currently displayed item.
+     */
     if (this.isAllSelected()) {
       this._items.displayed.forEach(item => {
         const currentIndex = this.current.indexOf(item);
-        if (currentIndex > -1) {
+        if (currentIndex > -1 && this.isLocked(item) === false) {
           this.deselectItem(currentIndex);
         }
       });
     } else {
       this._items.displayed.forEach(item => {
-        if (this.current.indexOf(item) < 0) {
+        if (this.current.indexOf(item) < 0 && this.isLocked(item) === false) {
           this.selectItem(item);
         }
       });

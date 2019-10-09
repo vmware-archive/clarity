@@ -32,18 +32,27 @@
     <div class="datagrid-row-scrollable" [ngClass]="{'is-replaced': replaced && expanded}">
       <div class="datagrid-scrolling-cells">
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
-             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
+             class="datagrid-select datagrid-fixed-column datagrid-cell" 
+             [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
+             role="gridcell">
+             
           <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)" [id]="checkboxId"
+                 [attr.disabled]="clrDgSelectable ? null : true"
+                 [attr.aria-disabled]="clrDgSelectable ? null : true"
                  [attr.aria-label]="commonStrings.keys.select">
         </div>
         <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
-             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell">
+             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell"
+             [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
+             >
             <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
             to label the radio by the first cell in the row (typically an id or name).
             It's pretty easy to label it with the whole row since we already have an id for it, but in most
             cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
             <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
                    [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
+                   [attr.disabled]="clrDgSelectable ? null : true"
+                   [attr.aria-disabled]="clrDgSelectable ? null : true"
                    [attr.aria-label]="commonStrings.keys.select">
         </div>
         <div *ngIf="rowActionService.hasActionableRow"

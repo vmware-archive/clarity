@@ -536,8 +536,12 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _stickyCells: ViewContainerRef;
     readonly _view: any;
     checkboxId: string;
+<<<<<<< HEAD
     clrDgDetailCloseLabel: string;
     clrDgDetailOpenLabel: string;
+=======
+    clrDgSelectable: boolean;
+>>>>>>> f8e89c882... feat(datagrid): disable single or multi rows from selection
     commonStrings: ClrCommonStringsService;
     detailButton: any;
     detailService: DetailService;

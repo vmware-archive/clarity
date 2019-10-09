@@ -131,6 +131,16 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     }
   }
 
+  // By default every item is selectable
+  @Input('clrDgSelectable')
+  public set clrDgSelectable(value: boolean) {
+    this.selection.lockItem(this.item, value === false);
+  }
+
+  public get clrDgSelectable() {
+    return !this.selection.isLocked(this.item);
+  }
+
   @Output('clrDgSelectedChange') selectedChanged = new EventEmitter<boolean>(false);
 
   public toggle(selected = !this.selected) {

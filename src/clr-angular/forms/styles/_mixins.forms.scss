@@ -187,3 +187,43 @@
     outline: 0;
   }
 }
+
+@mixin range-style(
+  $height,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  -webkit-appearance: none;
+  left: 0;
+  height: $height;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}
+
+@mixin range-track-style(
+  $height,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  height: $height;
+  cursor: pointer;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}
+
+@mixin range-thumb-style(
+  $margin,
+  $size,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  margin-top: $margin;
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}

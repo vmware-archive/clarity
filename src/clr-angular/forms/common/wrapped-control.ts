@@ -30,7 +30,7 @@ import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
 
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
-  private ngControlService: NgControlService;
+  protected ngControlService: NgControlService;
   private ifErrorService: IfErrorService;
   private controlClassService: ControlClassService;
   private markControlService: MarkControlService;

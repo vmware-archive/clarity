@@ -454,6 +454,10 @@ $clr-forms-radio-disabled-background-color: hsl(0, 0%, 0%);
 $clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
 
+// Range
+$clr-forms-range-progress-fill-color: hsl(198, 65%, 57%);
+$clr-forms-range-track-color: hsl(200, 23%, 25%);
+
 /**********
   * Header
   * Headers provide branding, navigation, search, and access to global application actions such as settings and

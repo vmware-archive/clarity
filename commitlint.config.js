@@ -39,6 +39,7 @@ const scopes = [
   'vertical-nav',
   'wizard',
   'icons',
+  'range',
 ];
 
 module.exports = {

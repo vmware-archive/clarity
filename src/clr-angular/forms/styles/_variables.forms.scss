@@ -79,3 +79,11 @@ $clr-forms-radio-top: $clr-forms-checkbox-top;
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
 $clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
+
+// Range
+$clr-forms-range-progress-fill-color: $clr-color-action-600 !default;
+$clr-forms-range-track-color: $clr-color-neutral-200 !default;
+$clr-forms-range-track-height: $clr_baselineRem_4px;
+$clr-forms-range-thumb-height: $clr_baselineRem_0_583;
+$clr-forms-range-thumb-margin: -1 * $clr_baselineRem_5px;
+$clr-forms-range-margin: $clr_baselineRem_5px;

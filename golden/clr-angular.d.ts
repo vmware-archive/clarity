@@ -1102,6 +1102,26 @@ export declare class ClrRadioWrapper implements DynamicWrapper, OnInit {
     ngOnInit(): void;
 }
 
+export declare class ClrRange extends WrappedFormControl<ClrRangeContainer> {
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+}
+
+export declare class ClrRangeContainer implements DynamicWrapper, OnDestroy {
+    _dynamic: boolean;
+    control: NgControl;
+    hasProgress: boolean;
+    invalid: boolean;
+    label: ClrLabel;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, renderer: Renderer2, idService: ControlIdService);
+    addGrid(): boolean;
+    controlClass(): string;
+    getRangeProgressFillWidth(): string;
+    ngOnDestroy(): void;
+}
+
+export declare class ClrRangeModule {
+}
+
 export declare class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
     getChildren: (node: T) => AsyncArray<T>;
     nodes: T | T[];

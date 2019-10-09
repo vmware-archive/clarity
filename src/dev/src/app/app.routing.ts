@@ -83,6 +83,7 @@ export const APP_ROUTES: Routes = [
     loadChildren: () => import('./progress-bars/progress-bars.demo.module').then(m => m.ProgressBarsDemoModule),
   },
   { path: 'radios', loadChildren: () => import('./radios/radios.demo.module').then(m => m.RadiosDemoModule) },
+  { path: 'ranges', loadChildren: () => import('./range/range.demo.module').then(m => m.RangeDemoModule) },
   { path: 'selects', loadChildren: () => import('./selects/selects.demo.module').then(m => m.SelectsDemoModule) },
   {
     path: 'signposts',

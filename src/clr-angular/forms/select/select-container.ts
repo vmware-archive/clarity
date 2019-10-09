@@ -79,15 +79,10 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
   }
 
   addGrid() {
-    if (this.layoutService && !this.layoutService.isVertical()) {
-      return true;
-    }
-    return false;
+    return this.layoutService && !this.layoutService.isVertical();
   }
 
   ngOnDestroy() {
-    if (this.subscriptions) {
-      this.subscriptions.map(sub => sub.unsubscribe());
-    }
+    this.subscriptions.map(sub => sub.unsubscribe());
   }
 }

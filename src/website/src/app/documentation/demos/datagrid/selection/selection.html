@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -90,6 +90,16 @@
 </clr-datagrid>
 
 <clr-code-snippet [clrCode]="rowSelectionExample" clrLanguage="html"></clr-code-snippet>
+<clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false">
+    <clr-alert-item>
+          <span class="alert-text">
+            <code class="clr-code">clrDgRowSelection</code> has been deprecated in 2.0 and will be removed in a future major release.
+            It is impossible to support this functionality properly and also comply with accessibility standards for Clarity, and
+            we no longer can recommend using this pattern. The workaround is to simply use single selection without row selection.
+          </span>
+    </clr-alert-item>
+</clr-alert>
+
 <p>
     If you need an easier access to the selected state of a row, without having to go through the entire array,
     we also provide a boolean <code class="clr-code">[(clrDgSelected)]</code> two-way binding on the
@@ -102,3 +112,30 @@
     If you need to listen to when the selection changes, you can use Angular's <a href="https://angular.io/guide/template-syntax">two way binding</a> to listen to the <code class="clr-code">(clrDgSelectedChange)</code> event:
 </p>
 <clr-code-snippet [clrCode]="selectionChangeEventExample" clrLanguage="html"></clr-code-snippet>
+
+<p>
+    Mark a row with <code class="clr-code">clrDgSelectable</code>, this way the state of the row could not be changed by
+    user interactions. This property works only when using single or multi-selection modes.
+</p>
+<clr-code-snippet [clrCode]="unselectableRow" clrLanguage="html"></clr-code-snippet>
+
+<button class="btn btn-primary" (click)="lockRows()">Lock Rows</button>
+<button class="btn btn-primary" (click)="unlockRows()">Unlock Rows</button>
+
+<clr-datagrid [(clrDgSelected)]="selected">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row [clrDgSelectable]="!user.locked" *clrDgItems="let user of lockedUsers" [clrDgItem]="user">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

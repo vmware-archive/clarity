@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -639,6 +639,120 @@ export default function(): void {
             expect(selectionInstance.isSelected(itemsA[2])).toBe(false);
           })
         );
+      });
+    });
+
+    fdescribe('conditional selection', function() {
+      let selectionInstance: Selection<any>;
+      let sortInstance: Sort<any>;
+      let pageInstance: Page;
+      let filtersInstance: FiltersProvider<any>;
+      let itemsInstance: Items<any>;
+
+      beforeEach(function() {
+        const stateDebouncer = new StateDebouncer();
+        pageInstance = new Page(stateDebouncer);
+        filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
+        sortInstance = new Sort(stateDebouncer);
+        itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
+        itemsInstance.smartenUp();
+        itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+      });
+
+      afterEach(function() {
+        selectionInstance.destroy();
+        itemsInstance.destroy();
+      });
+
+      it("can't select item if it's locked when selection type is Multi", function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        // lock a row
+        selectionInstance.lockItem(4, true);
+        // make sure it's locked
+        expect(selectionInstance.isLocked(4)).toBe(true);
+        // select all
+        selectionInstance.toggleAll();
+        // locked row is not selected
+        expect(selectionInstance.isSelected(4)).toBe(false);
+
+        // unselect all
+        selectionInstance.toggleAll();
+        // locked row is not selectable
+        expect(selectionInstance.current.length).toEqual(0);
+        expect(selectionInstance.isSelected(4)).toBe(false);
+      });
+
+      /*
+       * single selection is done with radio button so there is no logic to prevent
+       * it from the provider - this must be handle at the component level
+       */
+      it("should not block selecting item if it's locked when selection type is Single", function() {
+        selectionInstance.selectionType = SelectionType.Single;
+        // lock a row
+        selectionInstance.lockItem(4, true);
+        // make sure it's locked
+        expect(selectionInstance.isLocked(4)).toBe(true);
+        selectionInstance.currentSingle = 4;
+        expect(selectionInstance.isSelected(4)).toBe(true);
+      });
+
+      it('should let you select locked item when using setSelected', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+
+        selectionInstance.lockItem(4, true);
+        selectionInstance.setSelected(4, true);
+        expect(selectionInstance.isSelected(4)).toBe(true);
+      });
+
+      it('should return true when all posible items are selected excluding locked', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.lockItem(4, true);
+        selectionInstance.toggleAll();
+        expect(selectionInstance.isAllSelected()).toBe(true);
+      });
+
+      /**
+       * Clearing selection must not change the lockedRef.
+       */
+      it('should not reset lockedRefs when clearing selection', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.lockItem(4, true);
+        selectionInstance.clearSelection();
+        expect(selectionInstance.isLocked(4)).toBe(true);
+      });
+
+      it('should remove locked item when is no longer part from the items list and type is Single', function() {
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.lockItem(4, true);
+        itemsInstance.all = [5, 6, 7];
+        expect(selectionInstance.isLocked(4)).toBe(false);
+      });
+
+      it('should remove locked item when is no longer part from the items list and type is Multi', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.lockItem(6, true);
+        itemsInstance.all = [5, 7, 8];
+        expect(selectionInstance.isLocked(6)).toBe(false);
+      });
+
+      it('should use trackBy to find already locked items when the list is replaced (integer)', function() {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.lockItem(2, true);
+        // Create new list of items
+        itemsInstance.all = [2, 5, 6, 7];
+        expect(selectionInstance.isLocked(2)).toBe(true);
+      });
+
+      it('should use trackBy to find already locked items when the list is replaced (object)', function() {
+        itemsInstance.trackBy = (index, { id }) => id;
+        selectionInstance.selectionType = SelectionType.Multi;
+        itemsInstance.all = [{ id: 1 }, { id: 2 }];
+        selectionInstance.lockItem({ id: 2 }, true);
+        // Create new list of items
+        itemsInstance.all = [{ id: 1 }, { id: 2 }];
+        expect(selectionInstance.isLocked({ id: 2 })).toBe(true);
       });
     });
   });

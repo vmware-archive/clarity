@@ -84,10 +84,7 @@ export class ClrRadioContainer implements OnDestroy {
   }
 
   addGrid() {
-    if (this.layoutService && !this.layoutService.isVertical()) {
-      return true;
-    }
-    return false;
+    return this.layoutService && !this.layoutService.isVertical();
   }
 
   ngOnDestroy() {

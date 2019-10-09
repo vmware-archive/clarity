@@ -68,6 +68,10 @@
       --clr-forms-radio-selected-shadow: var(--clr-forms-checkbox-checked-shadow);
       --clr-forms-radio-disabled-shadow: var(--clr-forms-checkbox-checked-shadow);
       --clr-forms-radio-focused-shadow: 0 0 #{$clr-outline-blur} #{$clr-outline-spread} #{$clr-outline-color};
+
+      // Range
+      --clr-forms-range-progress-fill-color: var(--clr-color-action-600);
+      --clr-forms-range-track-color: var(--clr-color-neutral-200);
     }
   }
 }

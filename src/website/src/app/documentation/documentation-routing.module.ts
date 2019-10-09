@@ -232,6 +232,14 @@ const documentationRoutes: Routes = [
         },
       },
       {
+        path: 'range',
+        loadChildren: () => import('./demos/range/range.module').then(m => m.RangeDemoModule),
+        data: {
+          bodyClass: 'page-range',
+          browserTitle: 'Range Input',
+        },
+      },
+      {
         path: 'select',
         loadChildren: () => import('./demos/select/select.demo.module').then(m => m.SelectDemoModule),
         data: {

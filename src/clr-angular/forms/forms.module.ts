@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ import { ClrPasswordModule } from './password/password.module';
 import { ClrRadioModule } from './radio/radio.module';
 import { ClrSelectModule } from './select/select.module';
 import { ClrTextareaModule } from './textarea/textarea.module';
+import { ClrRangeModule } from './range/range.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -27,6 +28,7 @@ import { ClrTextareaModule } from './textarea/textarea.module';
     ClrRadioModule,
     ClrSelectModule,
     ClrTextareaModule,
+    ClrRangeModule,
   ],
 })
 export class ClrFormsModule {}

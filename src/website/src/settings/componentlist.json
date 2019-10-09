@@ -319,6 +319,16 @@
       "dox": 20
     },
     {
+      "url": "range",
+      "text": "Range Input",
+      "type": "component",
+      "ux": 20,
+      "ui": 20,
+      "core": -1,
+      "ng": 5,
+      "dox": 20
+    },
+    {
       "url": null,
       "text": "Search",
       "type": "component",

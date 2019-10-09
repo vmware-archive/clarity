@@ -153,10 +153,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
    * Determines if the control needs to add grid classes
    */
   addGrid() {
-    if (this.layoutService && !this.layoutService.isVertical()) {
-      return true;
-    }
-    return false;
+    return this.layoutService && !this.layoutService.isVertical();
   }
 
   /**

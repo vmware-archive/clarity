@@ -483,6 +483,12 @@ export default function(): void {
         });
       });
 
+      describe('hasError', () => {
+        it('should be false by default', () => {
+          expect(testWizardPage.hasError).toBe(false);
+        });
+      });
+
       describe('current', () => {
         it('should return false if not current', () => {
           // make sure another page is current

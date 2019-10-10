@@ -3,11 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
-
+import { commonStringsDefault } from '../../utils/i18n/common-strings.default';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
 import { ClrDatagridColumn } from './datagrid-column';
@@ -20,8 +21,14 @@ import { FiltersProvider } from './providers/filters';
 import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
-import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
+
+class MockChangeDetector extends ChangeDetectorRef {
+  markForCheck() {}
+  detach() {}
+  detectChanges() {}
+  checkNoChanges() {}
+  reattach() {}
+}
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -37,7 +44,7 @@ export default function(): void {
         sortService = new Sort(stateDebouncer);
         filtersService = new FiltersProvider(new Page(stateDebouncer), stateDebouncer);
         comparator = new TestComparator();
-        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings);
+        component = new ClrDatagridColumn(sortService, filtersService, null, commonStrings, new MockChangeDetector());
       });
 
       afterEach(() => {

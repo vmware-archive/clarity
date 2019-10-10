@@ -388,14 +388,14 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     filterValueChange: EventEmitter<{}>;
     projectedFilter: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
-    sortIcon: any;
+    sortIcon: string;
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;
     sorted: boolean;
     sortedChange: EventEmitter<boolean>;
     updateFilterValue: string | [number, number];
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStringsService);
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, commonStrings: ClrCommonStringsService, changeDetectorRef: ChangeDetectorRef);
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;

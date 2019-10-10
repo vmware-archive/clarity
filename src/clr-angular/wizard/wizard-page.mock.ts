@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,12 +16,14 @@ export class MockPage {
   public current = false;
   public completed = false;
   public readyToComplete = false;
+  public hasError = false;
 
   public reset(): void {
     this.disabled = false;
     this.current = false;
     this.completed = false;
     this.readyToComplete = false;
+    this.hasError = false;
   }
 
   public navTitle: TemplateRef<any>;

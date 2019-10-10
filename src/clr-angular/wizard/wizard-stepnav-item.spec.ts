@@ -209,6 +209,28 @@ export default function(): void {
         });
       });
 
+      describe('hasError', () => {
+        it('should update false/true when page is updated', () => {
+          // mock inits/resets with all false
+          expect(testItemComponent.hasError).toBe(false, 'inits as false');
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(testItemComponent.hasError).toBe(true, 'updates when page is updated');
+          fakeOutPage.reset();
+          fixture.detectChanges();
+          expect(testItemComponent.hasError).toBe(false, 'resets when page is reset');
+        });
+
+        it('should not be updated if isComplete is not true', () => {
+          // mock inits/resets with all false
+          expect(testItemComponent.hasError).toBe(false, 'inits as false');
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(testItemComponent.hasError).toBe(false, 'not updating when page is updated');
+        });
+      });
+
       describe('canNavigate', () => {
         it('should update false/true when previous page is updated', () => {
           // default in the mock returns true
@@ -398,7 +420,67 @@ export default function(): void {
             'stepnav item has .complete class when page is completed'
           );
         });
+
+        it('aria-selected have .error class if page has an error', () => {
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            true,
+            'stepnav item has .error class when page has an error'
+          );
+        });
+
+        it('should toggle .error class with page error state', () => {
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            false,
+            'stepnav item does not have .error class when page has no error'
+          );
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            true,
+            'stepnav item has .error class when page has error'
+          );
+        });
+
+        it('aria-selected not have .error class if page has an error and page is not completed', () => {
+          fakeOutPage.completed = false;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            false,
+            'stepnav item does not have .error class when page has an error and page is not completed'
+          );
+        });
+
+        it('should not toggle .error class with page error state when page is not completed', () => {
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            false,
+            'stepnav item does not have .error class when page has no error'
+          );
+          fakeOutPage.completed = false;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            false,
+            'stepnav item does not have .error class when page has error and page is not completed'
+          );
+        });
+
+        it('should have a clr-icon when page has an error', () => {
+          expect(myStepnavItem.classList.contains('error')).toBe(
+            false,
+            'stepnav item does not have .error class when page has no error'
+          );
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          expect(myStepnavItem.querySelector('clr-icon[shape="error-standard"]')).not.toBeNull();
+        });
       });
+
       describe('Behavior', () => {
         let navServiceSpy: any;
         let myClickTarget: HTMLElement;

@@ -125,6 +125,9 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   private listenForSortingChanges() {
     return this._sort.change.subscribe(sort => {
+      // Need to manually mark the component to be checked
+      // for both activating and deactivating sorting
+      this.changeDetectorRef.markForCheck();
       // We're only listening to make sure we emit an event when the column goes from sorted to unsorted
       if (this.sortOrder !== ClrDatagridSortOrder.UNSORTED && sort.comparator !== this._sortBy) {
         this._sortOrder = ClrDatagridSortOrder.UNSORTED;
@@ -289,6 +292,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   @Output('clrDgSortOrderChange') public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();
 
+  public sortIcon: string;
   /**
    * Sorts the datagrid based on this column
    */
@@ -310,8 +314,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     this.sortedChange.emit(true);
     // deprecated: to be removed - END
   }
-
-  public sortIcon;
 
   /**
    * A custom filter for this column that can be provided in the projected content

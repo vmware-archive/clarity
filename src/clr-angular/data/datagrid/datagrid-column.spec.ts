@@ -7,22 +7,20 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
-
+import { commonStringsDefault } from '../../utils/i18n/common-strings.default';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
+import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
+import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
+import { DetailService } from './providers/detail.service';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
-import { commonStringsDefault } from '../../utils/i18n/common-strings.default';
-import { DetailService } from './providers/detail.service';
-
-import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
-import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -363,14 +361,6 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityElement.attributes['aria-sort'].value).toBe('descending');
       });
-
-      it('hides the separator when detail pane is open', function() {
-        const detailService = context.getClarityProvider(DetailService);
-        expect(context.clarityElement.querySelector('.datagrid-column-separator')).toBeTruthy();
-        detailService.open({});
-        context.detectChanges();
-        expect(context.clarityElement.querySelector('.datagrid-column-separator')).toBeFalsy();
-      });
     });
 
     describe('View filters', function() {
@@ -447,6 +437,31 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityDirective.registered.filter instanceof DatagridStringFilterImpl).toBe(true);
         expect(context.clarityElement.querySelector('clr-dg-string-filter')).toBeDefined();
+      });
+    });
+
+    describe('Column View Changes On ChangeDetectionStrategy.OnPush', function() {
+      beforeEach(function() {
+        this.context = this.create(ClrDatagridColumn, OnPushViewChangeTest, DATAGRID_SPEC_PROVIDERS);
+      });
+
+      it('hides the separator when detail pane is open', function() {
+        const detailService = this.context.getClarityProvider(DetailService);
+        expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeTruthy();
+        detailService.open({});
+        this.context.detectChanges();
+        expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeFalsy();
+      });
+
+      it('toggles sort icon if sort is activated or deactivated', function() {
+        // activates column's sorting
+        this.context.clarityDirective.sort();
+        this.context.detectChanges();
+        expect(this.context.clarityElement.querySelector('.sort-icon')).not.toBeNull();
+        // deactivate column's sorting by passing new test comparator
+        this.context.getClarityProvider(Sort).toggle(new TestComparator());
+        this.context.detectChanges();
+        expect(this.context.clarityElement.querySelector('.sort-icon')).toBeNull();
       });
     });
   });
@@ -577,3 +592,10 @@ class ColTypeTest {
   field: string;
   type: string;
 }
+
+// There should be only a limited number of input bindings in this testing case
+// as it tries to reflect view changes that's not dependent on input changes
+@Component({
+  template: `<clr-dg-column [clrDgField]="'test'">Hello World</clr-dg-column>`,
+})
+class OnPushViewChangeTest {}

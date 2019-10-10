@@ -393,7 +393,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     projectedFilter: any;
     showSeparator: boolean;
     sortBy: ClrDatagridComparatorInterface<T> | string;
-    sortIcon: any;
+    sortIcon: string;
     sortOrder: ClrDatagridSortOrder;
     sortOrderChange: EventEmitter<ClrDatagridSortOrder>;
     readonly sortable: boolean;

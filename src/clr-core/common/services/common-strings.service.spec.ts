@@ -4,26 +4,26 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrCommonStringsService } from './common-strings.service';
 import { commonStringsDefault } from './common-strings.default';
+import { CommonStringsService } from './common-strings.service';
 
-describe('Common Strings Service', function() {
+describe('Common Strings Service', () => {
   let service;
 
-  beforeEach(function() {
-    service = new ClrCommonStringsService();
+  beforeEach(() => {
+    service = new CommonStringsService();
   });
 
-  it('can get a value from common strings default', function() {
+  it('can get a value from common strings default', () => {
     expect(service.keys.open).toEqual(commonStringsDefault.open);
   });
 
-  it('can update its definitions', function() {
+  it('can update its definitions', () => {
     service.localize({ open: 'CUSTOM_OPEN' });
     expect(service.keys.open).toEqual('CUSTOM_OPEN');
   });
 
-  it('can replace a set of tokens when getting a string', function() {
+  it('can replace a set of tokens when getting a string', () => {
     service.localize({ open: 'Open {OPEN}' });
     expect(service.parse(service.keys.open, { OPEN: 'Seaseme' })).toEqual('Open Seaseme');
 

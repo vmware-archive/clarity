@@ -7,3 +7,6 @@
 export * from './css-vars/css-vars';
 export * from './utils/register';
 export * from './decorators/query-slot';
+export * from './services/common-strings.service';
+export * from './services/common-strings.interface';
+export * from './services/common-strings.default';

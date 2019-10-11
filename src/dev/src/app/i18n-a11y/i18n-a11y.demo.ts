@@ -5,9 +5,11 @@
  */
 import { Component, OnDestroy } from '@angular/core';
 import { ClrCommonStringsService } from '@clr/angular';
+import { commonStringsDefault } from '@clr/core';
+import { ClrCommonStrings } from '@clr/angular';
+
 import { USERS } from './users';
 import { frenchTranslation } from './fr-translation';
-import { commonStringsDefault } from '../../../../clr-angular/utils/i18n/common-strings.default';
 
 @Component({
   templateUrl: './i18n-a11y.demo.html',
@@ -18,6 +20,7 @@ import { commonStringsDefault } from '../../../../clr-angular/utils/i18n/common-
 export class I18nA11yDemo implements OnDestroy {
   users = USERS;
   selected = [];
+  test: ClrCommonStrings;
 
   constructor(private commonStrings: ClrCommonStringsService) {
     this.commonStrings.localize(frenchTranslation);

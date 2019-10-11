@@ -4,21 +4,53 @@ jobs:
   build:
     docker:
       - image: circleci/node:dubnium-browsers
+    environment:
+      NG_CLI_ANALYTICS: ci
     steps:
       - checkout
       - restore_cache:
           keys:
-            - modules{{checksum "package.json"}}
-            - modules
+            - v1-build{{checksum "package.json"}}
       - run: npm install
       - save_cache:
           paths:
             - node_modules
-          key: modules{{checksum "package.json"}}
+          key: v1-build{{checksum "package.json"}}
       - run: npm run build:ci
+  visual:
+    docker:
+      - image: circleci/node:dubnium-browsers
+    environment:
+      NG_CLI_ANALYTICS: 'ci'
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-visual{{checksum "package.json"}}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+            - /home/circleci/.cache/Cypress
+          key: v1-visual{{checksum "package.json"}}
+      - run: sh ./scripts/circleci/visual.sh
 # Workflows
 workflows:
   version: 2
   test:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - v2
+                - v1
+                - v0.13
+      - visual:
+          context: Applitools
+          filters:
+            branches:
+              ignore:
+                - v2
+                - v1
+                - v0.13

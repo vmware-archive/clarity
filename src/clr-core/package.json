@@ -19,8 +19,7 @@
   "peerDependencies": {
     "@webcomponents/shadycss": "1.9.1",
     "@webcomponents/webcomponentsjs": "2.2.10",
-    "lit-element": "^2.2.0",
-    "tslib": "^1.9.0"
+    "lit-element": "^2.2.0"
   },
   "author": "clarity",
   "license": "MIT",

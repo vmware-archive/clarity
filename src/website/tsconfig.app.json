@@ -8,7 +8,9 @@
     "paths": {
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../clr-icons"],
-      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"]
+      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"],
+      "@clr/core": ["../clr-core"],
+      "@clr/core/*": ["../clr-core/*"]
     }
   }
 }

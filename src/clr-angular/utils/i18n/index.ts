@@ -4,5 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './common-strings.interface';
+export { ClrCommonStrings } from '@clr/core';
 export * from './common-strings.service';

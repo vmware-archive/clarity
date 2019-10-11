@@ -7,6 +7,7 @@
 import { registerElementSafely } from '@clr/core/common';
 import { html, LitElement, property } from 'lit-element';
 
+import { commonStringsService } from '@clr/core/common';
 import { styles } from './test-dropdown.element.css';
 
 /**
@@ -54,6 +55,7 @@ export class CwcTestDropdown extends LitElement {
           this.open
             ? html`
             <div>
+              ${commonStringsService.keys.open}
               <slot></slot>
             </div>`
             : ''

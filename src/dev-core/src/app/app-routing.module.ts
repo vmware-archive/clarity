@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'button', loadChildren: () => import('./button/button.demo.module').then(m => m.ButtonDemoModule) },
   { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule) },
+  { path: 'i18n', loadChildren: () => import('./i18n/i18n.demo.module').then(m => m.I18nDemoModule) },
   { path: 'icon', loadChildren: () => import('./icon/icon.demo.module').then(m => m.IconDemoModule) },
 ];
 

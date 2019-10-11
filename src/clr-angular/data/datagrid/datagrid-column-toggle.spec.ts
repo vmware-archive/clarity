@@ -4,12 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { fakeAsync, tick } from '@angular/core/testing';
+import { commonStringsDefault } from '@clr/core';
+
 import { ClrDatagridColumnToggle } from './datagrid-column-toggle';
 import { TestContext } from './helpers.spec';
 import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from './providers/columns.service.mock';
 import { ColumnsService } from './providers/columns.service';
-import { fakeAsync, tick } from '@angular/core/testing';
-import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';

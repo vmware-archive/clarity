@@ -6,6 +6,7 @@
 import { ChangeDetectionStrategy, Component, Input, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { async } from '@angular/core/testing';
+import { commonStringsDefault } from '@clr/core';
 
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
@@ -28,7 +29,6 @@ import { Sort } from './providers/sort';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { SelectionType } from './enums/selection-type';
 import { HIDDEN_COLUMN_CLASS } from './render/constants';
-import { commonStringsDefault } from 'src/clr-angular/utils/i18n/common-strings.default';
 
 @Component({
   template: `

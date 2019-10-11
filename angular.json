@@ -139,12 +139,8 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "project": "src/clr-angular/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "src/clr-angular/ng-package.prod.json"
-            }
+            "project": "src/clr-angular/ng-package.json",
+            "tsConfig": "src/clr-angular/tsconfig.prod.json"
           }
         },
         "test": {
@@ -153,7 +149,8 @@
             "styles": ["src/clr-angular/main.scss"],
             "main": "src/clr-angular/test.ts",
             "tsConfig": "src/clr-angular/tsconfig.spec.json",
-            "karmaConfig": "src/clr-angular/karma.conf.js"
+            "karmaConfig": "src/clr-angular/karma.conf.js",
+            "codeCoverageExclude": ["src/clr-core/**/*.ts"]
           }
         },
         "lint": {

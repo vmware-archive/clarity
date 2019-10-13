@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClarityModule } from '@clr/angular';
 
 import { DatagridBasicStructureDemo } from './basic-structure/basic-structure';
+import { DatagridUsageDemo } from './usage/usage';
 import { DatagridBatchActionDemo } from './batch-action/batch-action';
 import { DatagridBindingPropertiesDemo } from './binding-properties/binding-properties';
 import { DatagridCustomRenderingDemo } from './custom-rendering/custom-rendering';
@@ -187,6 +188,13 @@ const routes: Routes = [
           demoName: 'Full Demo',
         },
       },
+      {
+        path: 'usage',
+        component: DatagridUsageDemo,
+        data: {
+          demoName: 'Usage',
+        },
+      },
     ],
   },
 ];
@@ -195,6 +203,7 @@ const routes: Routes = [
   imports: [CommonModule, FormsModule, ClarityModule, DocWrapperModule, RouterModule.forChild(routes), UtilsModule],
   declarations: [
     DatagridBasicStructureDemo,
+    DatagridUsageDemo,
     DatagridBatchActionDemo,
     DatagridBindingPropertiesDemo,
     DatagridCompactDemo,

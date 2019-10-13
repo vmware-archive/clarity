@@ -118,16 +118,23 @@ class ColorFilter implements ClrDatagridFilterInterface<User> {
 </clr-dg-column>
 `,
   filterSearchResults: `
-<-- 
-  Will search into user.creation that in this case is 'Date' object
-  and not the result of the pipe 'Jan 6, 2018' 
--->
-<clr-dg-cell [clrDgField]="'creation'">{{ user.creation | date }}</clr-dg-cell>
+<clr-datagrid>
+    <-- 
+      This will search into user.creation (a Date object) and not the result
+      of the pipe (the string 'Jan 6, 2018').
+    -->
+    <clr-dg-column [clrDgField]="'creation'">Creation Date</clr-dg-column>
 
-<-- 
-  Will search into user.name and will not include user.id, 
-  searching for user.id will not return any result.
--->
-<clr-dg-cell [clrDgField]="'name'">{{ user.id }} : {{ user.name }}</clr-dg-cell>
+    <-- 
+      This will search into user.name and will not include user.id -- 
+      searching for user.id will not return any results.
+    -->
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of users">
+        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+        <clr-dg-cell>{{ user.id }} : {{ user.name }}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
   `,
 };

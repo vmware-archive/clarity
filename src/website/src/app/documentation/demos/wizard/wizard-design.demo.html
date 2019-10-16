@@ -11,7 +11,7 @@
         </div>
 
         <clr-wizard #wizard [clrWizardOpen]="open" (clrWizardOpenChange)="reset($event)">
-            <clr-wizard-title>New Pok&egrave;mon</clr-wizard-title>
+            <clr-wizard-title>New Pok&eacute;mon</clr-wizard-title>
 
             <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
             <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
@@ -72,7 +72,7 @@
                 <ng-template clrPageNavTitle>{{ pageTwoTitle }}</ng-template>
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
-                        <label>Your pok&egrave;mon will be {{ colorLabel }}.</label>
+                        <label>Your pok&eacute;mon will be {{ colorLabel }}.</label>
                         <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let color of colorList"
                                 class="wizdemo-color-block-wrapper clr-col-3">
@@ -102,7 +102,7 @@
 
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
-                        <label>Your pok&egrave;mon {{ textsplanationOfPower }}.</label>
+                        <label>Your pok&eacute;mon {{ textsplanationOfPower }}.</label>
                         <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let icon of powerSources"
                                 class="wizdemo-color-block-wrapper clr-col-3">
@@ -132,7 +132,7 @@
 
                 <form #formPageTwo="ngForm">
                     <section class="form-block">
-                        <label>Your pok&egrave;mon {{ textsplanationOfWeakness }}.</label>
+                        <label>Your pok&eacute;mon {{ textsplanationOfWeakness }}.</label>
                         <div class="clr-row wizdemo-color-block-row">
                             <div *ngFor="let icon of powerSources"
                                 class="wizdemo-color-block-wrapper clr-col-3">
@@ -152,12 +152,12 @@
                 <ng-template clrPageTitle>Summary</ng-template>
 
                 <p>
-                    Your pok&egrave;mon's name is {{ model.name }}. {{ model.gender === "Male" ? "He" : "She" }}
+                    Your pok&eacute;mon's name is {{ model.name }}. {{ model.gender === "Male" ? "He" : "She" }}
                     {{ textsplanationOfPower }} but {{ textsplanationOfWeakness }}.
                 </p>
 
                 <p>
-                    Your pok&egrave;mon's power ranking is: {{ model.ranking }}{{ powerRankingPunctuation }}
+                    Your pok&eacute;mon's power ranking is: {{ model.ranking }}{{ powerRankingPunctuation }}
                 </p>
 
                 <p>

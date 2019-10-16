@@ -302,6 +302,7 @@ export interface ClrCommonStrings {
     stackViewChanged?: string;
     success?: string;
     totalPages?: string;
+    verticalNavToggle?: string;
     warning?: string;
 }
 
@@ -536,12 +537,9 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _stickyCells: ViewContainerRef;
     readonly _view: any;
     checkboxId: string;
-<<<<<<< HEAD
     clrDgDetailCloseLabel: string;
     clrDgDetailOpenLabel: string;
-=======
     clrDgSelectable: boolean;
->>>>>>> f8e89c882... feat(datagrid): disable single or multi rows from selection
     commonStrings: ClrCommonStringsService;
     detailButton: any;
     detailService: DetailService;
@@ -1482,6 +1480,7 @@ export declare class ClrTreeViewModule {
 }
 
 export declare class ClrVerticalNav implements OnDestroy {
+    readonly ariaExpanded: string;
     collapsed: boolean;
     collapsible: boolean;
     commonStrings: ClrCommonStringsService;

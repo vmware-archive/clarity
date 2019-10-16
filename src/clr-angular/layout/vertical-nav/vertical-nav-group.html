@@ -9,6 +9,8 @@
     <button
         class="nav-group-trigger"
         type="button"
+        [attr.aria-expanded]="expanded"
+        [attr.aria-label]="commonStrings.keys.verticalNavGroupToggle"
         (click)="toggleExpand()">
         <ng-content select="[clrVerticalNavIcon]"></ng-content>
         <div class="nav-group-text">

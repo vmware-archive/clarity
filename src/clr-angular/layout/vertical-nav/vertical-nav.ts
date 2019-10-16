@@ -53,6 +53,13 @@ export class ClrVerticalNav implements OnDestroy {
     return this._navIconService.hasIcons;
   }
 
+  get ariaExpanded(): string {
+    if (!this.collapsible) {
+      return null;
+    }
+    return !this.collapsed ? 'true' : 'false';
+  }
+
   private _sub: Subscription;
 
   constructor(

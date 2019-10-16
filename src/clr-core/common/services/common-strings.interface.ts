@@ -194,4 +194,7 @@ export interface ClrCommonStrings {
   stackViewChanged?: string;
   // Forms
   formErrorSummary?: string;
+  // Vertical Nav
+  verticalNavToggle?: string;
+  verticalNavGroupToggle?: string;
 }

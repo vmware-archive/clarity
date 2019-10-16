@@ -1419,6 +1419,7 @@ export declare class ClrTreeViewModule {
 }
 
 export declare class ClrVerticalNav implements OnDestroy {
+    readonly ariaExpanded: string;
     collapsed: boolean;
     collapsible: boolean;
     commonStrings: ClrCommonStringsService;

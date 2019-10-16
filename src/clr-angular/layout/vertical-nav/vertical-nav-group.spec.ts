@@ -230,6 +230,14 @@ export default function(): void {
 
         expect(navGroup.expanded).toBe(true);
       });
+
+      it('updates the buttons aria-expanded attribute', () => {
+        const button: HTMLButtonElement = compiled.querySelector('.nav-group-trigger');
+        expect(button.getAttribute('aria-expanded')).toBe('false');
+        navGroup.expanded = true;
+        fixture.detectChanges();
+        expect(button.getAttribute('aria-expanded')).toBe('true');
+      });
     });
   });
 }

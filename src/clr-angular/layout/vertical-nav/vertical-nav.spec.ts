@@ -14,6 +14,7 @@ import { ClrIconModule } from '../../icon/icon.module';
 import { VerticalNavService } from './providers/vertical-nav.service';
 import { ClrVerticalNav } from './vertical-nav';
 import { ClrVerticalNavModule } from './vertical-nav.module';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function(): void {
   describe('Vertical Nav', () => {
@@ -96,6 +97,21 @@ export default function(): void {
         fixture.detectChanges();
 
         expect(vertNavService.collapsed).toBe(false);
+      });
+
+      it('updates the  aria-expanded attribute when the vertical nav is expanded/collapsed', () => {
+        vertNavService.collapsible = true;
+        vertNavService.collapsed = true;
+        fixture.detectChanges();
+
+        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
+
+        expect(toggleVertNavBtn.getAttribute('aria-expanded')).toBe('false');
+
+        vertNavService.collapsed = false;
+        fixture.detectChanges();
+
+        expect(toggleVertNavBtn.getAttribute('aria-expanded')).toBe('true');
       });
     });
 
@@ -510,6 +526,34 @@ export default function(): void {
           expect(fixture.componentInstance.collapsedChange).toBe(false);
         })
       );
+    });
+
+    describe('Accessibility', () => {
+      let vertNavService: VerticalNavService;
+      let commonStrings: ClrCommonStringsService;
+
+      beforeEach(() => {
+        fixture = TestBed.createComponent(NoIconsNoNavGroupTestComponent);
+        fixture.detectChanges();
+
+        compiled = fixture.nativeElement;
+        vertNavService = fixture.debugElement.query(By.directive(ClrVerticalNav)).injector.get(VerticalNavService);
+        commonStrings = new ClrCommonStringsService();
+      });
+
+      afterEach(() => {
+        fixture.destroy();
+      });
+
+      it('expect toggle vertical nav button to have correct aria-label from ClrCommonStringsService', () => {
+        vertNavService.collapsible = true;
+        vertNavService.collapsed = true;
+
+        fixture.detectChanges();
+        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
+
+        expect(toggleVertNavBtn.getAttribute('aria-label')).toBe(commonStrings.keys.verticalNavToggle);
+      });
     });
   });
 }

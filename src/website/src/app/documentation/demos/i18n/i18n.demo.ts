@@ -118,5 +118,15 @@ export class I18nDemo extends ClarityDocComponent {
         'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the decade changes.',
     },
     { key: 'stackViewChanged', role: 'Stack View: describes a particular stack block has changed' },
+    {
+      key: 'verticalNavToggle',
+      role:
+        'Applies expanded/collapsed state to an aria-expanded attribute for screen readers when vertical nav button  expands/collapses the entire menu',
+    },
+    {
+      key: 'verticalNavGroupToggle',
+      role:
+        'Applies the expanded/collapsed state to an aria-expanded attribute for screen readers whenever vertical nav group buttons are expanded/collapsed',
+    },
   ];
 }

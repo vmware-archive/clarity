@@ -6,6 +6,8 @@
 
 <button type="button" class="nav-trigger"
         [class.on-collapse]="collapsed"
+        [attr.aria-expanded]="ariaExpanded"
+        [attr.aria-label]="commonStrings.keys.verticalNavToggle"
         (click)="toggleByButton()"
         *ngIf="collapsible">
     <clr-icon shape="angle-double"

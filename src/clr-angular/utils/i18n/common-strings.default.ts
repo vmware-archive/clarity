@@ -62,4 +62,6 @@ export const commonStringsDefault: ClrCommonStrings = {
   daypickerSRCurrentDecadePhrase: 'The current decade is {DECADE_RANGE}',
   // Stack View
   stackViewChanged: 'Value changed.',
+  //Vertical Nav
+  verticalNavToggle: 'Toggle navigation group',
 };

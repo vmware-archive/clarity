@@ -3,20 +3,27 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, ElementRef, AfterViewInit } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
+import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-spinner',
+  providers: [AriaLiveService],
   template: `
     <ng-content></ng-content>
   `,
   host: {
-    '[attr.aria-live]': 'setAriaLive',
     '[attr.aria-busy]': 'true',
   },
 })
-export class ClrSpinner {
+export class ClrSpinner implements AfterViewInit {
+  constructor(private el: ElementRef, private ariaLiveService: AriaLiveService) {}
+
+  ngAfterViewInit() {
+    this.ariaLiveService.announce(this.el.nativeElement, this.ariaLive);
+  }
+
   /**
    * Default class for all spinners. This class is always true
    */
@@ -110,14 +117,13 @@ export class ClrSpinner {
    */
   @Input('clrAssertive') assertive: boolean;
   @Input('clrOff') off: boolean;
-
-  get setAriaLive() {
+  get ariaLive(): AriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return 'assertive';
+      return AriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return 'off';
+      return AriaLivePoliteness.off;
     }
-    return 'polite';
+    return AriaLivePoliteness.polite;
   }
 }

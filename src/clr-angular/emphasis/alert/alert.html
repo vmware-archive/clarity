@@ -10,16 +10,15 @@
     [ngClass]="alertClass"
     [class.alert-hidden]="isHidden"
     [class.alert-sm]="isSmall"
-    [class.alert-app-level]="isAppLevel"
-    [attr.aria-live]="setAriaLive">
+    [class.alert-app-level]="isAppLevel">
     <div class="alert-items">
         <ng-content></ng-content>
     </div>
-    <button 
-        type="button" 
-        class="close" 
-        *ngIf="closable" 
-        (click)="close()" 
+    <button
+        type="button"
+        class="close"
+        *ngIf="closable"
+        (click)="close()"
         [attr.aria-label]="clrCloseButtonAriaLabel"
         >
         <clr-icon shape="close"></clr-icon>

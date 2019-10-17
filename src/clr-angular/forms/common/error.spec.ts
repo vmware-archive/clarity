@@ -9,6 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrControlError } from './error';
 import { ControlIdService } from './providers/control-id.service';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({ template: `<clr-control-error>Test error</clr-control-error>` })
 class SimpleTest {}
@@ -18,7 +19,7 @@ class ExplicitAriaTest {}
 
 export default function(): void {
   describe('ClrControlError', () => {
-    let fixture;
+    let fixture, announceSpyOn;
 
     beforeEach(function() {
       TestBed.configureTestingModule({
@@ -29,6 +30,14 @@ export default function(): void {
       fixture.detectChanges();
     });
 
+    it('expect to call AriaLiveService.announce', function() {
+      fixture = TestBed.createComponent(SimpleTest);
+      const ariaLiveService = fixture.debugElement.query(By.directive(ClrControlError)).injector.get(AriaLiveService);
+      announceSpyOn = spyOn(ariaLiveService, 'announce');
+      fixture.detectChanges();
+      expect(announceSpyOn).toHaveBeenCalled();
+    });
+
     it('projects content', function() {
       expect(fixture.debugElement.query(By.directive(ClrControlError)).nativeElement.innerText).toContain('Test error');
     });
@@ -36,12 +45,6 @@ export default function(): void {
     it('adds the .clr-subtext class to host', function() {
       expect(
         fixture.debugElement.query(By.directive(ClrControlError)).nativeElement.classList.contains('clr-subtext')
-      ).toBeTrue();
-    });
-
-    it('adds the aria-live to host so screen reader can announce error message', function() {
-      expect(
-        fixture.debugElement.query(By.directive(ClrControlError)).nativeElement.hasAttribute('aria-live')
       ).toBeTrue();
     });
 

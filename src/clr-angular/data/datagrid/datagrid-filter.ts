@@ -9,7 +9,6 @@ import {
   Input,
   Output,
   Inject,
-  ChangeDetectionStrategy,
   OnDestroy,
   PLATFORM_ID,
   ViewChild,

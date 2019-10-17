@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { User } from './user';
-import { BEGINNING, COLORS, NAMES, NOW, POKEMONS } from './values';
+import { COLORS, NAMES, POKEMONS } from './values';
 
 export class Inventory {
   public size = 100;
@@ -21,13 +21,18 @@ export class Inventory {
     this._all = [];
     for (let i = 0; i < this.size; i++) {
       this._all.push({
-        id: randomInt(100000),
-        name: NAMES[randomInt(NAMES.length)],
-        creation: new Date(BEGINNING + randomInt(NOW - BEGINNING)),
-        color: COLORS[randomInt(COLORS.length)],
-        pokemon: POKEMONS[randomInt(POKEMONS.length)],
+        id: i + 10000,
+        name: this.getItem(i, NAMES),
+        creation: new Date('June 23, 1912'),
+        color: this.getItem(i, COLORS),
+        pokemon: this.getItem(i, POKEMONS),
       });
     }
+  }
+
+  // Used by an iterator to pull an item out of an array in a repeatable way.
+  private getItem<T>(num: number, array: T[]): T {
+    return array[num % array.length];
   }
 
   private _checkCurrentQuery() {

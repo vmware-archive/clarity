@@ -355,7 +355,9 @@ export default function(): void {
           expand.expanded = true;
           tick();
           context.detectChanges();
-          const cellStyle = <HTMLElement>context.clarityElement.querySelector('.datagrid-cell:nth-child(2)');
+          const cellStyle = <HTMLElement>context.clarityElement.querySelector(
+            '.datagrid-scrolling-cells > .datagrid-cell'
+          );
           const details = <HTMLElement>context.clarityElement.querySelector('.datagrid-row-detail');
           expect(window.getComputedStyle(cellStyle).display).toBe('none');
           expect(window.getComputedStyle(details).display).toBe('flex');

@@ -19,25 +19,7 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
  */
 @Component({
   selector: 'clr-dg-row-detail',
-  template: `
-        <ng-container *ngIf="!replacedRow">
-            <!-- space for multiselection state -->
-            <div class="datagrid-cell datagrid-select datagrid-fixed-column"
-                *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
-            </div>
-            <!-- space for single selection state -->
-            <div class="datagrid-cell datagrid-select datagrid-fixed-column"
-                *ngIf="selection.selectionType === SELECTION_TYPE.Single">
-            </div>
-            <!-- space for single row action; only displayType if we have at least one actionable row in datagrid -->
-            <div class="datagrid-cell datagrid-row-actions datagrid-fixed-column"
-                *ngIf="rowActionService.hasActionableRow">
-            </div>
-            <!-- space for expandable caret action; only displayType if we have at least one expandable row in datagrid -->
-            <div *ngIf="expandableRows.hasExpandableRow"
-                        class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell">
-            </div>
-        </ng-container>
+  template: `  
         <ng-content></ng-content>
     `,
   host: {

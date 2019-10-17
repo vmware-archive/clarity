@@ -3,27 +3,48 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChangeDetectorRef, Component, EventEmitter, Input, Optional, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Inject,
+  ElementRef,
+  Component,
+  EventEmitter,
+  Input,
+  Optional,
+  Output,
+  AfterViewInit,
+  ContentChildren,
+  QueryList,
+} from '@angular/core';
 
 // providers
 import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAlertText } from './alert-text';
 
 @Component({
   selector: 'clr-alert',
-  providers: [AlertIconAndTypesService],
+  providers: [AlertIconAndTypesService, AriaLiveService],
   templateUrl: './alert.html',
   styles: [':host { display: block; }'],
 })
-export class ClrAlert {
+export class ClrAlert implements AfterViewInit {
   constructor(
     public iconService: AlertIconAndTypesService,
     public cdr: ChangeDetectorRef,
     @Optional() public multiAlertService: MultiAlertService,
-    public commonStrings: ClrCommonStringsService
+    public commonStrings: ClrCommonStringsService,
+    private ariaLiveService: AriaLiveService,
+    private el: ElementRef
   ) {}
+
+  ngAfterViewInit() {
+    // Announce the first time the alert is render if it is not hidden
+    this.announceAriaLiveMessage();
+  }
 
   @Input('clrAlertSizeSmall') isSmall: boolean = false;
   @Input('clrAlertClosable') closable: boolean = true;
@@ -39,6 +60,7 @@ export class ClrAlert {
   set alertType(val: string) {
     this.iconService.alertType = val;
   }
+
   get alertType(): string {
     return this.iconService.alertType;
   }
@@ -60,14 +82,14 @@ export class ClrAlert {
    * In the case of setting all of them to true. Assertive will be used.
    *
    */
-  get setAriaLive(): string {
+  get ariaLive(): AriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return 'assertive';
+      return AriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return 'off';
+      return AriaLivePoliteness.off;
     }
-    return 'polite';
+    return AriaLivePoliteness.polite;
   }
 
   @Input('clrAlertIcon')
@@ -79,6 +101,37 @@ export class ClrAlert {
     return this.iconService.iconInfoFromType(this.iconService.alertType).cssClass;
   }
 
+  @ContentChildren(ClrAlertText, { descendants: true, read: ElementRef })
+  alertTexts: QueryList<ElementRef>;
+  /**
+   * This handle the find what content to be annonced withing the aria-live container
+   * alerts that are hidden will be ignored.
+   *
+   * @remark
+   * We depend on the ClrAlertText Directive to find and parse the alert messages.
+   * Also this require the HTML markup for the alert to be
+   * ```html
+   * <div class="alert" role="alert">
+   *    <div class="alert-items">
+   *        <div class="alert-item static">
+   *            <span class="alert-text">
+   *                 ...
+   *            </span>
+   *        </div>
+   *    </div>
+   * </div>
+   * ```
+   */
+  private announceAriaLiveMessage(): void {
+    if (!this.isHidden && this.alertTexts.length) {
+      const message = this.alertTexts.map(alertText => alertText.nativeElement.textContent).join(' ');
+      // Don't call announce when there is nothing to say
+      if (message) {
+        this.ariaLiveService.announce(message, this.ariaLive);
+      }
+    }
+  }
+
   private previouslyHidden = false;
   private hidden = false;
 
@@ -86,6 +139,8 @@ export class ClrAlert {
     if (this.previouslyHidden !== this.hidden) {
       this.previouslyHidden = this.hidden;
       this.cdr.detectChanges();
+      // when alert hidden state change we could check and try to announce it.
+      this.announceAriaLiveMessage();
     }
   }
 

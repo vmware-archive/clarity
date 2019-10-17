@@ -6,6 +6,8 @@
 
 import { Component } from '@angular/core';
 import { async } from '@angular/core/testing';
+import { ClarityModule } from '../../clr-angular.module';
+import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
@@ -21,8 +23,92 @@ import { createKeyboardEvent } from './utils/test-utils';
 import { ClrYearpicker } from './yearpicker';
 import { YearRangeModel } from './model/year-range.model';
 import { ClrCommonStringsService } from '@clr/angular';
+import { TestBed } from '@angular/core/testing';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 
 export default function() {
+  describe('Yearpicker Component AriaLiveSerivice', function() {
+    let announceSpyOn: () => {};
+    let ariaLiveService: AriaLiveService;
+    let fixture, component;
+
+    beforeEach(function() {
+      let dateNavigationService: DateNavigationService;
+      const selectedYear: number = 2003;
+
+      dateNavigationService = new DateNavigationService();
+      dateNavigationService.initializeCalendar();
+      dateNavigationService.changeYear(selectedYear);
+
+      TestBed.configureTestingModule({
+        imports: [ClarityModule],
+        declarations: [TestComponent],
+        providers: [
+          ViewManagerService,
+          DatepickerFocusService,
+          IfOpenService,
+          { provide: DateNavigationService, useValue: dateNavigationService },
+          LocaleHelperService,
+          DateIOService,
+          ClrCommonStringsService,
+        ],
+      }).overrideComponent(ClrYearpicker, {
+        set: {
+          providers: [{ provide: AriaLiveService, useClass: MockAriaLiveService }],
+        },
+      });
+
+      fixture = TestBed.createComponent(TestComponent);
+      ariaLiveService = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(AriaLiveService);
+      component = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(ClrYearpicker);
+      announceSpyOn = spyOn(ariaLiveService, 'announce');
+      fixture.detectChanges();
+    });
+
+    function checkLiveElementYearRangeModel(yrm: YearRangeModel) {
+      const yearFloor = yrm.yearRange[0];
+      const yearCeil = yrm.yearRange[yrm.yearRange.length - 1];
+      expect(announceSpyOn).toHaveBeenCalledWith(`The current decade is ${yearFloor} to ${yearCeil}`);
+    }
+
+    it('updates the aria-live element when the next decade button is clicked', () => {
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
+      const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+      button.click();
+      fixture.detectChanges();
+
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+    });
+
+    it('updates the aria-live element when the previous button is clicked', () => {
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+
+      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
+      const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+      button.click();
+      fixture.detectChanges();
+
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+    });
+
+    it('updates the aria-live element when the current button is clicked', () => {
+      // Go back first
+      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
+      const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+      previousButton.click();
+      fixture.detectChanges();
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+
+      const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+      currentButton.click();
+      fixture.detectChanges();
+
+      checkLiveElementYearRangeModel(component.yearRangeModel);
+    });
+  });
+
   describe('Yearpicker Component', () => {
     let context: TestContext<ClrYearpicker, TestComponent>;
     let dateNavigationService: DateNavigationService;
@@ -62,7 +148,7 @@ export default function() {
       it('calls to navigate to the previous decade', () => {
         spyOn(context.clarityDirective, 'previousDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
 
         button.click();
         context.detectChanges();
@@ -73,7 +159,7 @@ export default function() {
       it('calls to navigate to the current decade', () => {
         spyOn(context.clarityDirective, 'currentDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
 
         button.click();
         context.detectChanges();
@@ -84,7 +170,7 @@ export default function() {
       it('calls to navigate to the next decade', () => {
         spyOn(context.clarityDirective, 'nextDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
+        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
 
         button.click();
         context.detectChanges();
@@ -124,67 +210,20 @@ export default function() {
 
       it('has the correct aria-label for the previousDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const previousDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const previousDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
         expect(previousDecadeBtn.attributes['aria-label'].value).toEqual('Previous decade');
       });
 
       it('has the correct aria-label for the currentDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const currentDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const currentDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
         expect(currentDecadeBtn.attributes['aria-label'].value).toEqual('Current decade');
       });
 
       it('has the correct aria-label for the nextDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const nextDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
+        const nextDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
         expect(nextDecadeBtn.attributes['aria-label'].value).toEqual('Next decade');
-      });
-
-      function checkLiveElementYearRangeModel(element: HTMLDivElement, yrm: YearRangeModel) {
-        const yearFloor = yrm.yearRange[0];
-        const yearCeil = yrm.yearRange[yrm.yearRange.length - 1];
-        expect(element.innerText).toEqual(`The current decade is ${yearFloor} to ${yearCeil}.`);
-      }
-
-      it('updates the aria-live element when the next decade button is clicked', () => {
-        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
-
-        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[3];
-        button.click();
-        context.detectChanges();
-
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
-      });
-
-      it('updates the aria-live element when the previous button is clicked', () => {
-        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
-
-        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
-        button.click();
-        context.detectChanges();
-
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
-      });
-
-      it('updates the aria-live element when the current button is clicked', () => {
-        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only');
-
-        // Go back first
-        const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
-        previousButton.click();
-        context.detectChanges();
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
-
-        const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
-        currentButton.click();
-        context.detectChanges();
-
-        checkLiveElementYearRangeModel(liveElement, context.clarityDirective.yearRangeModel);
       });
 
       // IE doesn't handle KeyboardEvent constructor

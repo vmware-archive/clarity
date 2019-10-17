@@ -10,11 +10,8 @@ import {
   ElementRef,
   HostListener,
   Inject,
-  OnDestroy,
-  OnInit,
   PLATFORM_ID,
   QueryList,
-  Renderer2,
   Input,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -22,18 +19,18 @@ import { LayoutService } from './providers/layout.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ClrLabel } from './label';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Directive({
   selector: '[clrForm]',
-  providers: [LayoutService, MarkControlService],
+  providers: [LayoutService, MarkControlService, AriaLiveService],
   host: {
     '[class.clr-form]': 'true',
     '[class.clr-form-horizontal]': 'layoutService.isHorizontal()',
     '[class.clr-form-compact]': 'layoutService.isCompact()',
   },
 })
-export class ClrForm implements OnInit, OnDestroy {
-  private ariaLiveElement: HTMLDivElement;
+export class ClrForm {
   private invalidControls = [];
 
   @Input('clrLabelSize')
@@ -46,8 +43,8 @@ export class ClrForm implements OnInit, OnDestroy {
     private markControlService: MarkControlService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private el: ElementRef,
-    private renderer: Renderer2,
-    private commonStrings: ClrCommonStringsService
+    private commonStrings: ClrCommonStringsService,
+    private ariaLiveService: AriaLiveService
   ) {}
 
   /** @deprecated since 2.0 */
@@ -61,7 +58,7 @@ export class ClrForm implements OnInit, OnDestroy {
 
     // I don't think consumers will call this with undefined, null or other values but
     // want to make sure this only guards against when this is called with false
-    if (updateAriaLiveText !== false && isPlatformBrowser(this.platformId) && this.ariaLiveElement) {
+    if (updateAriaLiveText !== false && isPlatformBrowser(this.platformId)) {
       this.invalidControls = Array.from(this.el.nativeElement.querySelectorAll('.ng-invalid'));
       if (this.invalidControls.length > 0) {
         this.invalidControls[0].focus();
@@ -78,10 +75,6 @@ export class ClrForm implements OnInit, OnDestroy {
     this.markAsTouched();
   }
 
-  ngOnInit() {
-    this.createAriaLiveElement();
-  }
-
   private updateAriaLive(): void {
     if (this.invalidControls.length === 0) {
       return;
@@ -89,34 +82,8 @@ export class ClrForm implements OnInit, OnDestroy {
 
     const errorList = this.labels.filter(label => this.invalidControls.find(control => label.forAttr === control.id));
 
-    this.ariaLiveElement.textContent = this.commonStrings.parse(this.commonStrings.keys.formErrorSummary, {
-      ERROR_NUMBER: errorList.length.toString(),
-    });
-  }
-
-  // TODO: refactor to a more generic service
-  private createAriaLiveElement() {
-    if (isPlatformBrowser(this.platformId)) {
-      // ClrForms need to have aria live element for screen readers.
-      this.ariaLiveElement = document.createElement('div');
-      this.renderer.setAttribute(this.ariaLiveElement, 'aria-live', 'polite');
-      this.renderer.setAttribute(this.ariaLiveElement, 'role', 'status');
-      this.renderer.setAttribute(this.ariaLiveElement, 'aria-atomic', 'true');
-      this.renderer.setAttribute(this.ariaLiveElement, 'aria-relevent', 'text');
-      this.renderer.addClass(this.ariaLiveElement, 'clr-sr-only');
-      this.renderer.insertBefore(this.el.nativeElement, this.ariaLiveElement, this.el.nativeElement.firstChild);
-    }
-  }
-
-  // TODO: refactor to a more generic service
-  private removeAriaLiveElement() {
-    if (isPlatformBrowser(this.platformId) && this.ariaLiveElement) {
-      this.el.nativeElement.removeChild(this.ariaLiveElement);
-      delete this.ariaLiveElement;
-    }
-  }
-
-  ngOnDestroy() {
-    this.removeAriaLiveElement();
+    this.ariaLiveService.announce(
+      this.commonStrings.parse(this.commonStrings.keys.formErrorSummary, { ERROR_NUMBER: errorList.length.toString() })
+    );
   }
 }

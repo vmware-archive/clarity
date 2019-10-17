@@ -12,6 +12,7 @@ import { LayoutService } from './providers/layout.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { ReactiveFormsModule, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ClrInputModule } from '../input/input.module';
+import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: `
@@ -99,29 +100,18 @@ export default function(): void {
     });
 
     it('updates aria-live with invalid controls', function() {
+      const ariaLiveService = fixture.debugElement.query(By.directive(ClrForm)).injector.get(AriaLiveService);
+      const announceSpyOn = spyOn(ariaLiveService, 'announce');
+
       spyOn(fixture.componentInstance.testLabel.nativeElement, 'focus');
       fixture.detectChanges(); // adds the correct form classes for display
       fixture.componentInstance.submitBtn.nativeElement.click();
       fixture.detectChanges(); // submit the form
 
-      const ariaLiveElement: HTMLDivElement = fixture.debugElement.nativeElement.querySelector('.clr-sr-only');
       const ariaLiveText = commonStrings.parse(commonStrings.keys.formErrorSummary, {
         ERROR_NUMBER: '1',
       });
-
-      expect(ariaLiveElement.innerText).toBe(ariaLiveText);
-    });
-
-    it('allows aria-live updates to be overridden', function() {
-      fixture.detectChanges(); // adds the correct form classes for display
-      fixture.componentInstance.form.markAsTouched(false);
-      fixture.detectChanges();
-      let ariaLiveText: HTMLDivElement = fixture.debugElement.nativeElement.querySelector('.clr-sr-only').textContent;
-      expect(ariaLiveText).toBeFalsy();
-      fixture.componentInstance.submitBtn.nativeElement.click();
-      fixture.detectChanges(); // submit the form
-      ariaLiveText = fixture.debugElement.nativeElement.querySelector('.clr-sr-only').textContent;
-      expect(ariaLiveText).toBeTruthy();
+      expect(announceSpyOn).toHaveBeenCalledWith(ariaLiveText);
     });
 
     it('responds when the form is submitted', function() {

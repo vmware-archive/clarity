@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,8 +14,9 @@ import { ClrAlert } from './alert';
 import { ClrAlertItem } from './alert-item';
 import { ClrAlerts } from './alerts';
 import { ClrAlertsPager } from './alerts-pager';
+import { ClrAlertText } from './alert-text';
 
-export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAlerts, ClrAlertsPager];
+export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAlerts, ClrAlertsPager, ClrAlertText];
 
 @NgModule({
   imports: [CommonModule, ClrIconModule, ClrDropdownModule],

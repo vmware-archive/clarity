@@ -11,6 +11,10 @@ import { LandingComponent } from './landing.component';
 export const APP_ROUTES: Routes = [
   { path: '', component: LandingComponent },
   {
+    path: 'accessibility',
+    loadChildren: () => import('./accessibility/accessibility.demo.module').then(m => m.AccessibilityDemoModule),
+  },
+  {
     path: 'accordion',
     loadChildren: () => import('./accordion/accordion.demo.module').then(m => m.AccordionDemoModule),
   },

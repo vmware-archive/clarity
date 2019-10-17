@@ -3,17 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Inject, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
+import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
+  providers: [AriaLiveService],
   selector: 'clr-progress-bar',
   template: `
     <progress [id]="id" [attr.max]="max" [attr.value]="value" [attr.data-displayval]="displayValue"></progress>
-    <span *ngIf="displayAriaLive()" [attr.aria-live]="ariaLive">{{ displayValue }}</span>
+    <span *ngIf="displayAriaLive()">{{ displayValue }}</span>
   `,
 })
 export class ClrProgressBar {
+  constructor(private ariaLiveService: AriaLiveService) {}
+
   /**
    * Handle component ID
    */
@@ -30,8 +34,20 @@ export class ClrProgressBar {
 
   // Progress
   @Input('clrMax') max: number = 100;
-  @Input('clrValue') value: number = 0;
   @Input('clrDisplayval') displayval: string;
+
+  private _value: number = 0;
+  @Input('clrValue')
+  get value() {
+    return this._value;
+  }
+
+  set value(value) {
+    this._value = value;
+    if (this.displayAriaLive()) {
+      this.ariaLiveService.announce(this.displayValue, this.ariaLive);
+    }
+  }
 
   // Styles
   @HostBinding('class.progress')
@@ -141,13 +157,13 @@ export class ClrProgressBar {
     return (this.value !== undefined || this.value !== 0) && this.value !== this.max;
   }
 
-  get ariaLive() {
+  get ariaLive(): AriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return 'assertive';
+      return AriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return 'off';
+      return AriaLivePoliteness.off;
     }
-    return 'polite';
+    return AriaLivePoliteness.polite;
   }
 }

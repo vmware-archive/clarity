@@ -28,6 +28,7 @@ import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderOrganizer } from './render/render-organizer';
+import { ARIA_LIVE_TICK } from '../../utils/a11y/aria-live.service';
 
 const PROVIDERS = [
   Selection,
@@ -354,8 +355,8 @@ export default function(): void {
         fakeAsync(function() {
           expand.expanded = true;
           expand.loading = true;
-          tick();
           context.detectChanges();
+          tick(ARIA_LIVE_TICK);
           expect(context.clarityElement.textContent.trim()).not.toMatch('Detail');
         })
       );

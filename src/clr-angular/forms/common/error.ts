@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  providers: [],
   selector: 'clr-control-error',
   template: `
     <ng-content></ng-content>

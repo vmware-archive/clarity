@@ -12,31 +12,30 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-yearpicker',
+  providers: [AriaLiveService],
   template: `
         <div class="year-switchers">
-          <div aria-live="polite" class="clr-sr-only">
-            {{ ariaLiveDecadeText  }}.
-          </div>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="previousDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade">
               <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
           </button>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="currentDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade">
               <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
           </button>
-          <button 
-              class="calendar-btn switcher" 
-              type="button" 
+          <button
+              class="calendar-btn switcher"
+              type="button"
               (click)="nextDecade()"
               [attr.aria-label]="commonStrings.keys.datepickerNextDecade">
               <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
@@ -64,7 +63,8 @@ export class ClrYearpicker implements AfterViewInit {
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
     private _elRef: ElementRef,
-    public commonStrings: ClrCommonStringsService
+    public commonStrings: ClrCommonStringsService,
+    private ariaLiveService: AriaLiveService
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;
@@ -196,6 +196,7 @@ export class ClrYearpicker implements AfterViewInit {
     const floor = yrm.yearRange[0];
     const ceil = yrm.yearRange[yrm.yearRange.length - 1];
     this.decadeRange = `${floor} to ${ceil}`;
+    this.ariaLiveService.announce(this.ariaLiveDecadeText);
   }
 
   /**
@@ -203,7 +204,6 @@ export class ClrYearpicker implements AfterViewInit {
    */
   ngAfterViewInit() {
     this._datepickerFocusService.focusCell(this._elRef);
-
-    // update the value for  decade range
+    this.ariaLiveService.announce(this.ariaLiveDecadeText);
   }
 }

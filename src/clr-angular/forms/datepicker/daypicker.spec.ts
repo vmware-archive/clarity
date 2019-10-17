@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { By } from '@angular/platform-browser';
+import { ClarityModule } from '../../clr-angular.module';
 
 import { ClrDaypicker } from './daypicker';
 import { DayModel } from './model/day.model';
@@ -18,8 +20,59 @@ import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '@clr/angular';
+import { TestBed } from '@angular/core/testing';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 
 export default function() {
+  describe('Daypicker Component AriaLiveService', function() {
+    let localeHelperService: LocaleHelperService;
+    let dateNavigationService: DateNavigationService;
+
+    it('updates the aria-live view element when the month and year are changed', () => {
+      dateNavigationService = new DateNavigationService();
+      // Initializing selected day just to make sure that previous and next month tests become easier
+      dateNavigationService.selectedDay = new DayModel(2015, 1, 1);
+      dateNavigationService.initializeCalendar();
+
+      TestBed.configureTestingModule({
+        imports: [ClarityModule],
+        declarations: [TestComponent],
+        providers: [
+          { provide: DateNavigationService, useValue: dateNavigationService },
+          DateIOService,
+          IfOpenService,
+          ViewManagerService,
+          LocaleHelperService,
+          DatepickerFocusService,
+          DateFormControlService,
+          ClrCommonStringsService,
+        ],
+      }).overrideComponent(ClrDaypicker, {
+        set: {
+          providers: [{ provide: AriaLiveService, useClass: MockAriaLiveService }],
+        },
+      });
+
+      const fixture = TestBed.createComponent(TestComponent);
+      const ariaLiveService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(AriaLiveService);
+      const announceSpyOn = spyOn(ariaLiveService, 'announce');
+
+      localeHelperService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(LocaleHelperService);
+      let testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
+      let testYear = dateNavigationService.displayedCalendar.year;
+      fixture.detectChanges();
+
+      expect(announceSpyOn).toHaveBeenCalledWith(`The current month is ${testMonth} The current year is ${testYear}`);
+
+      dateNavigationService.selectedDay = new DayModel(2025, 9, 1);
+      fixture.detectChanges();
+      testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
+      testYear = dateNavigationService.displayedCalendar.year;
+      expect(announceSpyOn).toHaveBeenCalledWith(`The current month is ${testMonth} The current year is ${testYear}`);
+    });
+  });
+
   describe('Daypicker Component', () => {
     let context: TestContext<ClrDaypicker, TestComponent>;
     let viewManagerService: ViewManagerService;
@@ -136,21 +189,6 @@ export default function() {
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
         const nextButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
         expect(nextButton.attributes['aria-label'].value).toEqual('Next month');
-      });
-
-      it('updates the aria-live view element when the month and year are changed', () => {
-        const liveElement: HTMLDivElement = context.clarityElement.querySelector('.clr-sr-only[aria-live]');
-        let testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
-        let testYear = dateNavigationService.displayedCalendar.year;
-
-        expect(liveElement.innerText).toEqual(`The current month is ${testMonth}. The current year is ${testYear}.`);
-
-        dateNavigationService.selectedDay = new DayModel(2025, 9, 1);
-        context.detectChanges();
-        testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
-        testYear = dateNavigationService.displayedCalendar.year;
-
-        expect(liveElement.innerText).toEqual(`The current month is ${testMonth}. The current year is ${testYear}.`);
       });
 
       it('should have text based boundaries for screen readers', () => {

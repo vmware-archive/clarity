@@ -96,6 +96,9 @@
 
     &:hover {
       @include css-var(background-color, clr-datagrid-row-hover, $clr-datagrid-row-hover, $clr-use-custom-properties);
+      .datagrid-row-sticky {
+        @include css-var(background-color, clr-datagrid-row-hover, $clr-datagrid-row-hover, $clr-use-custom-properties);
+      }
     }
 
     &.datagrid-selected {
@@ -106,6 +109,15 @@
         $clr-global-selection-color,
         $clr-use-custom-properties
       );
+      .datagrid-row-sticky {
+        @include css-var(color, clr-datagrid-row-selected, $clr-datagrid-row-selected, $clr-use-custom-properties);
+        @include css-var(
+          background-color,
+          clr-global-selection-color,
+          $clr-global-selection-color,
+          $clr-use-custom-properties
+        );
+      }
     }
 
     .datagrid-action-overflow {
@@ -502,6 +514,10 @@
     .datagrid-action-overflow {
       z-index: map-get($clr-layers, datagrid-popover);
     }
+
+    .datagrid-row-sticky {
+      z-index: map-get($clr-layers, datagrid-row-sticky);
+    }
   }
 
   .datagrid-row-sticky {
@@ -510,6 +526,18 @@
     flex-wrap: nowrap;
     position: sticky;
     left: 0;
+    z-index: map-get($clr-layers, datagrid-header-sticky);
+    .datagrid-cell:last-child {
+      &:after {
+        content: '';
+        width: 0.05rem;
+        height: calc(100% - 0.5rem);
+        position: absolute;
+        right: 0;
+        top: 0.25rem;
+        @include css-var(background-color, clr-table-border-color, $clr-table-border-color, $clr-use-custom-properties);
+      }
+    }
   }
 
   .datagrid-row-scrollable {
@@ -524,12 +552,18 @@
         flex: 0 0 auto;
       }
     }
+
+    .datagrid-column:last-child {
+      .datagrid-column-separator {
+        display: none;
+      }
+    }
   }
 
   .datagrid-row-flex {
     flex: 1 1 auto;
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
 
     .datagrid-row-detail {
       display: flex;
@@ -632,12 +666,6 @@
       vertical-align: top;
       border: none;
 
-      &:last-child {
-        .datagrid-column-separator {
-          display: none;
-        }
-      }
-
       clr-dg-filter,
       clr-dg-string-filter,
       clr-dg-numeric-filter {
@@ -661,7 +689,7 @@
         float: right;
         vertical-align: middle;
         @include equilateral($clr-datagrid-icon-size);
-        margin: 0 $clr_baselineRem_0_25;
+        margin-left: $clr_baselineRem_0_25;
         background-repeat: no-repeat;
         background-size: contain;
         @include css-var(color, clr-color-neutral-500, $clr-color-neutral-500, $clr-use-custom-properties);
@@ -794,12 +822,6 @@
         flex: 0 0 auto;
       }
 
-      &.datagrid-fixed-column {
-        flex: 0 0 $clr-datagrid-fixed-column-size;
-        max-width: $clr-datagrid-fixed-column-size;
-        min-width: $clr-datagrid-fixed-column-size;
-      }
-
       .datagrid-column-flex {
         display: flex;
         flex: 1 1 auto;
@@ -817,6 +839,13 @@
         .signpost .signpost-action.btn {
           height: inherit;
           line-height: inherit;
+        }
+
+        // Override checkbox labels only when they are in a column. This allows them to be vertically centered.
+        .clr-checkbox-wrapper label {
+          &:before {
+            top: 0;
+          }
         }
       }
 
@@ -899,6 +928,13 @@
           line-height: $clr_baselineRem_1;
         }
       }
+
+      &.datagrid-select,
+      &.datagrid-expandable-caret,
+      &.datagrid-row-actions {
+        max-width: $clr-datagrid-fixed-column-size;
+        min-width: $clr-datagrid-fixed-column-size;
+      }
     }
 
     .datagrid-cell {
@@ -907,14 +943,11 @@
       min-width: $clr_baselineRem_4;
       border: none;
 
-      &.datagrid-fixed-column {
-        flex: 0 0 $clr-datagrid-fixed-column-size;
-      }
-
+      // TODO can width/column classes be combined? width is added programetically as part of rendering, column is
+      //  class in template
       &.datagrid-fixed-width {
         flex: 0 0 auto;
       }
-
       &.datagrid-fixed-column {
         flex: 0 0 $clr-datagrid-fixed-column-size;
         max-width: $clr-datagrid-fixed-column-size;

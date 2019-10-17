@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ export class DatagridKitchenSinkData {
     {
       id: 3379,
       name: 'Rhona',
-      creation: '2014-04-11T03:02:57.974Z',
+      creation: '2014-04-11T20:02:57.974Z',
       color: 'Brown',
       pokemon: { number: 72, name: 'Tentacool' },
     },
@@ -29,7 +29,7 @@ export class DatagridKitchenSinkData {
     {
       id: 67461,
       name: 'Shenika',
-      creation: '2015-03-04T03:56:00.596Z',
+      creation: '2015-03-04T20:56:00.596Z',
       color: 'Yellow',
       pokemon: { number: 114, name: 'Tangela' },
     },
@@ -43,28 +43,28 @@ export class DatagridKitchenSinkData {
     {
       id: 81766,
       name: 'Alica',
-      creation: '2017-04-28T01:21:03.849Z',
+      creation: '2017-04-28T19:21:03.849Z',
       color: 'Brown',
       pokemon: { number: 136, name: 'Flareon' },
     },
     {
       id: 61317,
       name: 'Jeana',
-      creation: '2015-02-17T02:24:31.117Z',
+      creation: '2015-02-17T19:24:31.117Z',
       color: 'Magenta',
       pokemon: { number: 41, name: 'Zubat' },
     },
     {
       id: 34496,
       name: 'Nelson',
-      creation: '2014-10-01T05:27:24.819Z',
+      creation: '2014-10-01T19:27:24.819Z',
       color: 'Gray',
       pokemon: { number: 51, name: 'Dugtrio' },
     },
     {
       id: 24521,
       name: 'Nelson',
-      creation: '2016-12-08T03:03:36.589Z',
+      creation: '2016-12-08T19:03:36.589Z',
       color: 'Black',
       pokemon: { number: 42, name: 'Golbat' },
     },
@@ -92,7 +92,7 @@ export class DatagridKitchenSinkData {
     {
       id: 35217,
       name: 'Desirae',
-      creation: '2014-05-21T00:47:07.586Z',
+      creation: '2014-05-21T19:47:07.586Z',
       color: 'Red',
       pokemon: { number: 49, name: 'Venomoth' },
     },
@@ -211,7 +211,7 @@ export class DatagridKitchenSinkData {
     {
       id: 5106,
       name: 'Nelson',
-      creation: '2017-04-27T06:14:23.230Z',
+      creation: '2017-04-27T20:14:23.230Z',
       color: 'Red',
       pokemon: { number: 67, name: 'Machoke' },
     },

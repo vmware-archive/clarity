@@ -7,10 +7,6 @@ import { Component } from '@angular/core';
 
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
-import { ExpandableRowsCount } from './providers/global-expandable-rows';
-import { RowActionService } from './providers/row-action-service';
-import { Selection } from './providers/selection';
-import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
 export default function(): void {
@@ -50,36 +46,6 @@ export default function(): void {
       context.testComponent.replace = true;
       context.detectChanges();
       expect(expandState).toBe(true);
-    });
-
-    it('displays an empty cell in place of the caret', function() {
-      context.getClarityProvider(ExpandableRowsCount).register();
-      context.detectChanges();
-      expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(1);
-    });
-
-    it('displays an extra empty cell when the datagrid is selectable', function() {
-      const selection: Selection = context.getClarityProvider(Selection);
-      selection.selectionType = SelectionType.Multi;
-      context.detectChanges();
-      expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(1);
-      selection.selectionType = SelectionType.Single;
-      context.detectChanges();
-      expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(1);
-    });
-
-    it('displays an extra empty cell when the datagrid has an actionable row when replaced', function() {
-      context.getClarityProvider(RowActionService).register();
-      context.detectChanges();
-      expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(1);
-    });
-
-    it('displays as many extra empty cells as needed', function() {
-      const selection: Selection = context.getClarityProvider(Selection);
-      selection.selectionType = SelectionType.Multi;
-      context.getClarityProvider(RowActionService).register();
-      context.detectChanges();
-      expect(context.clarityElement.querySelectorAll('.datagrid-fixed-column').length).toBe(2);
     });
   });
 }

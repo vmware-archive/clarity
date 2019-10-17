@@ -14,9 +14,6 @@
             <div role="row" class="datagrid-row">
               <div class="datagrid-row-master datagrid-row-flex">
                 <div class="datagrid-row-sticky">
-                  <!-- Sticky elements here -->
-                </div>
-                <div class="datagrid-row-scrollable">
                   <!--header for datagrid where you can select multiple rows -->
                   <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"
                        *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
@@ -42,6 +39,8 @@
                        *ngIf="expandableRows.hasExpandableRow || detailService.enabled" [attr.aria-label]="clrDetailExpandableAriaLabel">
                     <div class="datagrid-column-separator"></div>
                   </div>
+                </div>
+                <div class="datagrid-row-scrollable">
                   <ng-container #projectedDisplayColumns></ng-container>
                 </div>
               </div>

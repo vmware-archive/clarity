@@ -103,33 +103,6 @@
 </p>
 <clr-code-snippet [clrCode]="selectionChangeEventExample" clrLanguage="html"></clr-code-snippet>
 
-<p>
-    Mark a row with <code class="clr-code">clrDgSelectable</code>, this way the state of the row could not be changed by
-    user interactions. This property works only when using single or multi-selection modes.
-</p>
-<clr-code-snippet [clrCode]="unselectableRow" clrLanguage="html"></clr-code-snippet>
-
-<button class="btn btn-primary" (click)="lockRows()">Lock Rows</button>
-<button class="btn btn-primary" (click)="unlockRows()">Unlock Rows</button>
-
-<clr-datagrid [(clrDgSelected)]="selected">
-    <clr-dg-column>User ID</clr-dg-column>
-    <clr-dg-column>Name</clr-dg-column>
-    <clr-dg-column>Creation date</clr-dg-column>
-    <clr-dg-column>Favorite color</clr-dg-column>
-
-    <clr-dg-row [clrDgSelectable]="!user.locked" *clrDgItems="let user of lockedUsers" [clrDgItem]="user">
-        <clr-dg-cell>{{user.id}}</clr-dg-cell>
-        <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>
-            <span class="color-square" [style.backgroundColor]="user.color"></span>
-        </clr-dg-cell>
-    </clr-dg-row>
-
-    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
-</clr-datagrid>
-
 <h4>Preserving Selection</h4>
 <p>
     By default, when a filter is applied to the datagrid the selection is cleared. This is done to ensure that all

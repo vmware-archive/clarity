@@ -7,7 +7,10 @@
 <form clrForm clrLayout="vertical" (submit)="submit()" [formGroup]="model">
   <clr-datalist-container>
     <label>Datalist - Reactive Form</label>
-    <input clrDatalist [clrData]="data" placeholder="Option" name="Option" autocomplete="off" formControlName="item" />
+    <input clrDatalist list="clr-datalist-1" placeholder="Option" name="Option" autocomplete="off" formControlName="item" />
+    <datalist id="clr-datalist-1">
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
   </clr-datalist-container>
   <button class="btn btn-primary" type="submit" [disabled]="model.invalid">Submit</button>
 </form>
@@ -15,12 +18,18 @@
 <h2>Horizontal <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
 <form clrForm clrLayout="horizontal">
   <clr-datalist-container>
-    <input clrDatalist [clrData]="data" [(ngModel)]="vertical.one" placeholder="No label, wrapper" name="Option2"/>
+    <input clrDatalist list="clr-datalist-2" [(ngModel)]="vertical.one" placeholder="No label, wrapper" name="Option2"/>
+    <datalist id="clr-datalist-2">
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
   </clr-datalist-container>
 
   <clr-datalist-container>
     <label>Full example</label>
-    <input clrDatalist [clrData]="data" [(ngModel)]="vertical.two" placeholder="Full example" required name="Option3" minlength="8" />
+    <input clrDatalist list="clr-datalist-3" [(ngModel)]="vertical.two" placeholder="Full example" required name="Option3" minlength="8" />
+    <datalist id="clr-datalist-3">
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error *clrIfError="'required'">This is required</clr-control-error>
     <clr-control-error *clrIfError="'minlength'">Must be at least 8 characters</clr-control-error>
@@ -28,7 +37,10 @@
 
   <clr-datalist-container>
     <label>Disabled</label>
-    <input clrDatalist [clrData]="data" [(ngModel)]="vertical.three" placeholder="Full example" name="Option4" required [disabled]="disabled"/>
+    <input clrDatalist list="clr-datalist-4" [(ngModel)]="vertical.three" placeholder="Full example" name="Option4" required [disabled]="disabled"/>
+    <datalist id="clr-datalist-4">
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-datalist-container>

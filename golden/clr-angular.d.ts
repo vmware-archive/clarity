@@ -606,6 +606,27 @@ export interface ClrDatagridStringFilterInterface<T> {
     accepts(item: T, search: string): boolean;
 }
 
+export declare class ClrDatalist extends WrappedFormControl<ClrDatalistContainer> {
+    constructor(focusService: FocusService, vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    triggerFocus(): void;
+    triggerValidation(): void;
+}
+
+export declare class ClrDatalistContainer implements DynamicWrapper {
+    _dynamic: boolean;
+    control: NgControl;
+    focus: boolean;
+    invalid: boolean;
+    label: ClrLabel;
+    constructor(controlClassService: ControlClassService, layoutService: LayoutService, ifErrorService: IfErrorService, focusService: FocusService, ngControlService: NgControlService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
+}
+
+export declare class ClrDatalistModule {
+}
+
 export declare class ClrDataModule {
 }
 

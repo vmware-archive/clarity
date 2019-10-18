@@ -12,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class DatalistDemo {
   disabled = true;
-  data: string[] = ['Item1', 'Item2', 'Item3'];
+  items: string[] = ['Item1', 'Item2', 'Item3'];
   model = new FormGroup({
     item: new FormControl(''),
   });

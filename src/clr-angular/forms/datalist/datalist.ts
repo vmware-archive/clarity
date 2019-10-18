@@ -14,31 +14,20 @@ import {
   Renderer2,
   ElementRef,
   HostListener,
-  Inject,
 } from '@angular/core';
 import { WrappedFormControl } from '../common/wrapped-control';
 import { ClrDatalistContainer } from './datalist-container';
 import { NgControl } from '@angular/forms';
-import { DatalistControllerService } from './providers/datalist-controller.service';
 import { FocusService } from '../common/providers/focus.service';
-import { UNIQUE_ID } from 'src/clr-angular/utils/id-generator/id-generator.service';
 
 @Directive({
   selector: '[clrDatalist]',
   host: {
     '[class.clr-input]': 'true',
-    '[attr.list]': 'listId',
   },
 })
 export class ClrDatalist extends WrappedFormControl<ClrDatalistContainer> {
-  public listId: string;
-  @Input('clrData')
-  set items(items: string[]) {
-    this.datalistControllerService.dataItems = items;
-  }
-
   constructor(
-    private datalistControllerService: DatalistControllerService,
     @Optional() private focusService: FocusService,
     vcr: ViewContainerRef,
     injector: Injector,
@@ -46,11 +35,9 @@ export class ClrDatalist extends WrappedFormControl<ClrDatalistContainer> {
     @Optional()
     control: NgControl,
     renderer: Renderer2,
-    el: ElementRef,
-    @Inject(UNIQUE_ID) private uniqueId: string
+    el: ElementRef
   ) {
     super(vcr, ClrDatalistContainer, injector, control, renderer, el);
-    this.listId = this.datalistControllerService.generateListId(this.uniqueId);
   }
 
   @HostListener('focus')

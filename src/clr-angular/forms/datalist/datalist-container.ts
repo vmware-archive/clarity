@@ -8,7 +8,6 @@ import { Component, ContentChild, Inject } from '@angular/core';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { DynamicWrapper } from '../../../clr-angular/utils/host-wrapping/dynamic-wrapper';
-import { DatalistControllerService } from './providers/datalist-controller.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -16,7 +15,6 @@ import { NgControlService } from '../common/providers/ng-control.service';
 import { NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ClrLabel } from '../common/label';
-import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-datalist-container',
@@ -27,9 +25,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       <div class="clr-input-wrapper">
         <div class="clr-input-group" [class.clr-focus]="focus">
           <ng-content select="[clrDatalist]"></ng-content>
-          <datalist [id]="listId">
-            <option *ngFor="let item of items" [value]="item"></option>
-          </datalist>
+          <ng-content select="datalist"></ng-content>
         </div>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
       </div>
@@ -42,16 +38,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
-  providers: [
-    ControlClassService,
-    LayoutService,
-    ControlIdService,
-    DatalistControllerService,
-    FocusService,
-    IfErrorService,
-    NgControlService,
-    UNIQUE_ID_PROVIDER,
-  ],
+  providers: [ControlClassService, LayoutService, ControlIdService, FocusService, IfErrorService, NgControlService],
 })
 export class ClrDatalistContainer implements DynamicWrapper {
   private subscriptions: Subscription[] = [];
@@ -59,34 +46,19 @@ export class ClrDatalistContainer implements DynamicWrapper {
   invalid: boolean = false;
   focus: boolean = false;
   control: NgControl;
-  items: string[];
-  listId: string;
 
   constructor(
-    private datalistControllerService: DatalistControllerService,
     private controlClassService: ControlClassService,
     private layoutService: LayoutService,
     private ifErrorService: IfErrorService,
     private focusService: FocusService,
-    private ngControlService: NgControlService,
-    @Inject(UNIQUE_ID) private uniqueId: string
+    private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => {
-        this.invalid = invalid;
-      })
+      this.ifErrorService.statusChanges.subscribe(invalid => (this.invalid = invalid)),
+      this.focusService.focusChange.subscribe(state => (this.focus = state)),
+      this.ngControlService.controlChanges.subscribe(control => (this.control = control))
     );
-    this.subscriptions.push(
-      this.focusService.focusChange.subscribe(state => {
-        this.focus = state;
-      })
-    );
-    this.subscriptions.push(
-      this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
-      })
-    );
-    this.listId = this.datalistControllerService.generateListId(this.uniqueId);
   }
 
   @ContentChild(ClrLabel, { static: false })
@@ -98,10 +70,6 @@ export class ClrDatalistContainer implements DynamicWrapper {
 
   addGrid() {
     return this.layoutService && !this.layoutService.isVertical();
-  }
-
-  ngAfterContentInit(): void {
-    this.items = this.datalistControllerService.dataItems;
   }
 
   ngOnDestroy() {

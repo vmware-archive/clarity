@@ -1121,7 +1121,7 @@
         min-width: $clr_baselineRem_0_75;
         padding-left: 0;
         padding-right: 0;
-        @include css-var(color, clr-color-action-500, $clr-color-action-500, $clr-use-custom-properties);
+        @include css-var(color, clr-color-neutral-500, $clr-color-neutral-500, $clr-use-custom-properties);
 
         &:hover {
           @include css-var(color, clr-color-action-600, $clr-color-action-600, $clr-use-custom-properties);
@@ -1530,6 +1530,9 @@
       border-top-right-radius: 0;
       border-right: none;
     }
+    .datagrid-inner-wrapper {
+      width: 34%;
+    }
     .datagrid-placeholder-container,
     .datagrid-row {
       border-right: $clr_baselineRem_1px solid $clr-table-border-color;
@@ -1611,6 +1614,7 @@
     overflow: hidden;
     display: block;
     flex-grow: 2;
+    width: 66%;
   }
 
   .datagrid-detail-pane-content {

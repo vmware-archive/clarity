@@ -29,6 +29,7 @@ import { DatagridExpandableRowsDemo } from './expandable-rows/expandable-rows';
 import { DatagridFixedHeightDemo } from './fixed-height/fixed-height';
 import { DatagridHideShowColumnsDemo } from './hide-show-columns/hide-show-columns';
 import { DatagridCompactDemo } from './compact/compact';
+import { DatagridDetailPaneDemo } from './detail/detail';
 
 import { ColorFilter } from './utils/color-filter';
 import { FakeLoader } from './expandable-rows/fake-loader';
@@ -145,6 +146,13 @@ const routes: Routes = [
         },
       },
       {
+        path: 'detail-pane',
+        component: DatagridDetailPaneDemo,
+        data: {
+          demoName: 'Detail Pane',
+        },
+      },
+      {
         path: 'expandable-rows',
         component: DatagridExpandableRowsDemo,
         data: {
@@ -205,6 +213,7 @@ const routes: Routes = [
     DatagridExpandableRowsDemo,
     DatagridFixedHeightDemo,
     DatagridHideShowColumnsDemo,
+    DatagridDetailPaneDemo,
     ColorFilter,
     FakeLoader,
     DatagridDemo,

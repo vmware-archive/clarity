@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,6 @@ import { ClarityModule } from '@clr/angular';
 import { UtilsModule } from '../utils/utils.module';
 import { DocumentationRoutingModule } from './documentation-routing.module';
 import { DocumentationComponent } from './documentation.component';
-import { DocumentationNavLinksComponent } from './documentation-nav-links.component';
 import { ComponentStatusComponent } from './component-status/component-status.component';
 import { NewLayoutAlertComponent } from './utils/new-layout-alert.component';
 import { StatusDotComponent } from './component-status/status-dot.component';
@@ -22,7 +21,6 @@ import { VersionSwitcherComponent } from './version-switcher/version-switcher.co
   imports: [CommonModule, FormsModule, UtilsModule, ClarityModule, HttpClientModule, DocumentationRoutingModule],
   declarations: [
     DocumentationComponent,
-    DocumentationNavLinksComponent,
     ComponentStatusComponent,
     StatusDotComponent,
     NewLayoutAlertComponent,

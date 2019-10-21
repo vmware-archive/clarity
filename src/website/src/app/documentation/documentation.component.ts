@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 
 import { ClarityIcons } from '@clr/icons';
 import { AllShapes } from '@clr/icons/shapes/all-shapes';
+import * as COMPONENTS from '../../settings/componentlist.json';
 
 @Component({
   selector: 'documentation',
@@ -18,7 +19,28 @@ import { AllShapes } from '@clr/icons/shapes/all-shapes';
 })
 export class DocumentationComponent {
   environment = environment;
+  components = COMPONENTS.list;
+  navExpandedState = {
+    pattern: true,
+    component: true,
+  };
+
   constructor() {
     ClarityIcons.add(AllShapes);
+    const cache = localStorage.getItem('navExpandedCache');
+    if (cache) {
+      try {
+        const state = JSON.parse(cache);
+        this.navExpandedState = state;
+      } catch (e) {
+        // Do nothing, defaults are set to open
+      }
+    }
+    console.log(this.navExpandedState);
+  }
+
+  cacheNavState($event, state) {
+    this.navExpandedState[state] = $event;
+    localStorage.setItem('navExpandedCache', JSON.stringify(this.navExpandedState));
   }
 }

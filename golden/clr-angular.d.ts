@@ -707,6 +707,7 @@ export declare class ClrDroppable<T> implements OnInit, OnDestroy {
     dropEmitter: EventEmitter<ClrDragEvent<T>>;
     dropTolerance: number | string | ClrDropToleranceInterface;
     group: string | string[];
+    isDraggableMatch: boolean;
     isDraggableOver: boolean;
     constructor(el: ElementRef, eventBus: DragAndDropEventBusService<T>, domAdapter: DomAdapter, renderer: Renderer2);
     ngOnDestroy(): void;

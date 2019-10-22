@@ -85,7 +85,7 @@ export class DatagridKitchenSinkDemo {
     this.toExport = [];
   }
 
-  onDelete(user: User) {
+  onDelete(user?: User) {
     this.cleanUp();
     if (user) {
       this.toDelete = [user];
@@ -94,7 +94,7 @@ export class DatagridKitchenSinkDemo {
     }
   }
 
-  onEdit(user: User) {
+  onEdit(user?: User) {
     this.cleanUp();
     if (user) {
       this.toEdit = user;

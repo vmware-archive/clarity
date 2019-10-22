@@ -6,6 +6,5 @@
     "moduleResolution": "node",
     "target": "es5"
   },
-
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

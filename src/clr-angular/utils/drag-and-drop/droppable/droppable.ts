@@ -34,7 +34,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     this.droppableEl = this.el.nativeElement;
   }
 
-  private isDraggableMatch: boolean = false;
+  isDraggableMatch: boolean = false;
   private _isDraggableOver: boolean = false;
 
   set isDraggableOver(value: boolean) {

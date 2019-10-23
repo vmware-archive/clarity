@@ -432,7 +432,7 @@ $clr-forms-select-multiple-border-color: hsl(0, 0%, 0%);
 //$clr-forms-select-hover-background: rgba(221, 221, 221, 0.5); // CAN WE KEY THIS FROM A KNOWN COLOR
 //$clr-forms-select-caret-hover-color: $clr-color-neutral-600;
 //$clr-forms-select-caret-color: hsl(0, 0%, 60%);
-//$clr-forms-select-option-color: $clr-forms-text-color;
+$clr-forms-select-option-color: hsl(201, 30%, 13%); // Option bg color on chrome/windows is white.
 //$clr-forms-select-multiple-background-color: hsl(0, 0%, 100%);
 //$clr-forms-select-multiple-border-color: $clr-color-neutral-400;
 //$clr-forms-select-multiple-option-color: $clr-forms-text-color;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,6 +25,7 @@ import { LayoutOnlyHeaderDemo } from './layout-only-header';
 import { LayoutSidenavPrimaryDemo } from './layout-sidenav-primary';
 import { LayoutSubnavPrimaryDemo } from './layout-subnav-primary';
 import { NavCodeInfoAlert } from './nav-code-info-alert';
+import { UtilsModule } from '../../../utils/utils.module';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { NavCodeInfoAlert } from './nav-code-info-alert';
     ClarityModule,
     RouterModule.forChild([{ path: '', component: NavigationDemo }]),
     DocWrapperModule,
+    UtilsModule,
   ],
   declarations: [
     NavsDemo,

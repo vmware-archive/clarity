@@ -1,16 +1,16 @@
-# Coding guidelines
+# Angular Coding guidelines
 
-To ensure the highest quality and maintainability for Clarity components, we adhere to the following guidelines when coding.
+To ensure the highest quality and maintainability for Clarity components, we adhere to the following guidelines for our Angular codebase.
 
 **Some of our code hasn't been updated to these standards yet, but these do take precedence. Copy-pasting existing code without updating it to follow these guidelines will result in a stalled PR.**
 
-## File names
+## Filenames
 
-* Components or directives should be named without a suffix like `datagrid-row.ts`, and be placed in the main module folder like `/datagrid/datagrid-row.ts`.
-* Providers, factories, services should be named with a suffix like `wizard-navigation.service.ts`.
+* Components or directives should be named without a suffix like `datagrid-row.ts`, and placed in the main module folder like `/datagrid/datagrid-row.ts`.
+* Providers, factories, services are named with a suffix like `wizard-navigation.service.ts`.
   * If the component has a single provider, the provider file can be placed directly in the same folder as the component itself.
-  * In the case of more complex components (like the Datagrid or the Wizard) where many providers are needed for the various subcomponents to communicate, the providers should be placed inside of a `providers` subfolder of the module folder like `/wizard/providers/wizard-navigation.service.ts`.
-* Interfaces and abstract classes used as interfaces should be named with a suffix like `datagrid-state.interface.ts`.
+  * Complex components (like the Datagrid or the Wizard) may use multiple providers for subcomponent communication. When using multiple providers, place them inside of a `providers` subfolder of the module folder. Example: `/wizard/providers/wizard-navigation.service.ts`.
+* Interfaces and abstract classes used as interfaces are named with a suffix like `datagrid-state.interface.ts`.
   * If the component has one or two interfaces/abstract classes the file can be placed in the same folder as the component itself
   * In the case of more complex components (w/ 3 or more) interfaces/abstract classes should be placed inside an interface subfolder like `/datagrid/interfaces/string-filter.interface.ts`
 * Enums should be named with a suffix like `sort-order.enum.ts`.
@@ -106,11 +106,11 @@ clr-component-subcomponent
 [clrComponentSubdirective]
 ```
 
-This is slightly verbose, but will prevent conflicts between components. This is a case where abbreviations are acceptable to reduce verbosity.
+This naming is slightly verbose but prevents conflicts between components. This use case is where abbreviations are acceptable to reduce verbosity.
 
 #### Inputs and outputs
 
-To avoid conflict with non-Clarity components, inputs and outputs of our directives and components should be prefixed with `clr`:
+To avoid conflict with non-Clarity components, inputs, and outputs of our directives and components should be prefixed with `clr`:
 
 ```
 [clrInput]
@@ -123,7 +123,7 @@ a `(clrPropertyChange)` output.
 
 #### Components and directives class names
 
-Components and directives are exported Typescript classes, so they respect the earlier convention and are prefixed with `Clr`. Contrary to the recommendation on the Angular style guide, they do not have any `Component` or `Directive` suffix, in order to allow us to switch from one to the other without breaking changes. For instance:
+Components and directives are exported Typescript classes, so they respect the earlier convention and are prefixed with `Clr`. Contrary to the recommendation on the Angular style guide, they do not have any `Component` or `Directive` suffix, to allow us to switch from one to the other without breaking changes. For instance:
 
 ```
 ClrWizard (component)
@@ -133,7 +133,7 @@ ClrLoading (directive)
 
 #### Providers and services class names
 
-Providers that are exported for consumers should be prefixed with `Clr` and suffixed with `Service`. This avoids conflict with similar component names. If they are _only_ used internally they are not prefixed but should still be suffixed with `Service`:
+Providers that are exported for consumers should be prefixed with `Clr` and suffixed with `Service`. This convention avoids conflict with similar component names. If they are _only_ used internally, they are not prefixed but should still be suffixed with `Service`:
 
 ```
 ClrSomeExternalService
@@ -157,16 +157,16 @@ ClrFormsModule
 
 ### Public API
 
-* Custom texts should almost always be received through content projection, **not** inputs. This will allow for icons, images, links, etc.
+* Custom texts should almost always be received through content projection, **not** inputs. This convention facilitates usage of icons, images, links, etc as custom content.
 * Offer an output for every internal state change, whether it's triggered by a user action or an internal operation (expand/collapse, on/off, option selected, etc).
 * Offer two-way binding rather than simple outputs when possible.
 * Use structural directives to receive `TemplateRef` instances, in order to offer a less verbose API than `<ng-template>` to the consumer.
-* Have related components (like parent / child) communicate by default through services.
-* Never use explicitly named template reference variables as part of the API, to query them through `@ContentChild`. Simply receive structural directives or inputs.
+* Have related components (like parent/child) communicate by default through services.
+* Never use explicitly named template reference variables as part of the API, to query them through `@ContentChild`. Receive structural directives or inputs.
 * Never make HTTP calls, and never impose formatting constraints on their backend API.
 * In cases where a directive cannot be used unless it is a child of another directive, it is usually best to throw a new Error in the constructor to alert developers that it is not supported. [Example](src/clr-angular/popover/dropdown/dropdown-menu.ts)
 
-Finally, and this is harder to put in black-or-white terms, keep the API as simple and natural as possible, even if it means more work on Clarity's side. Implementing multiple directives and components and making them communicate through services will lead to a much more pleasant integration than forcing your consumer to pass data manually from one to the other. Here are a couple examples of what to do and not to do (taken from real-life carousel components):
+Finally, and this is harder to put in black-or-white terms, keep the API as simple and natural as possible, even if it means more work on Clarity's side. Implementing multiple directives and components and making them communicate through services leads to a much more pleasant integration than forcing your consumer to pass data manually from one to the other. Here are a couple of examples of what to do and not to do (taken from real-life carousel components):
 
 * **Don't:** Using an `<ng-template>` and passing an `$implicit` value to it, that the consumer will have to tie to a template local variable:
 
@@ -188,7 +188,7 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 </clr-carousel>
 ```
 
-* **Do:** Introduce a new structural directive that behaves like an `*ngFor`, but will automatically communicate with the parent component through services:
+* **Do:** Introduce a new structural directive that behaves like an `*ngFor`, that automatically communicates with the parent component through services:
 
 ```html
 <clr-carousel>
@@ -204,12 +204,12 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 * Make sure to use CSS classnames with your components. We avoid using component tags in our CSS selectors. This often means adding a `host: { '[class.your-classname-here]': 'true' }` to your component definition. And in the CSS you would then use the classname defined on the host in your CSS selectors instead of the component element tag. So instead of using `clr-signpost { .. }` to apply styles to a component, you would use `.signpost { .. }`.
 * Bindings that are always true should be declared directly in the component's metadata using the `host` option. Other bindings should be on the corresponding property or getter, using the `@HostBinding` annotation.
 * Host listeners should always use the `@HostListener` annotation.
-* Methods used as event listeners in a component or directive should be named in a way that describe **what** they do, not **when** they trigger. For instance, if a method is used when the user clicks a button to toggle the selection, the method name should **not** be `onClick()`, it should be `toggleSelection()`. Here are more typical method names that are commonly used but that you should avoid: `onClick()`, `onHover()`, `onFocus()`, `onScroll()`, etc.
+* Methods used as event listeners in a component or directive should be named in a way that describes **what** they do, not **when** they trigger. For instance, if a method is used when the user clicks a button to toggle the selection, the method name should **not** be `onClick()`, it should be `toggleSelection()`. Here are more typical method names that are commonly used but that you should avoid: `onClick()`, `onHover()`, `onFocus()`, `onScroll()`, etc.
 
 ### Gotchas
 
 * Make sure your component or feature is fully accessible.
-* Never hardcode any text in your template or in the component. Any text visible to the user should be received from the consumer.
+* Never hardcode any text in your template in the component. Any text visible to the user should be received from the consumer.
 * Avoid using native elements API as much as possible. Use simple bindings or the renderer to achieve the same effect.
 * An `@Output` **should not** fire when we receive a new `@Input` value from the app.
 * Any button in your template should have `type="button"`, in case the component is used inside of a form.
@@ -218,11 +218,11 @@ Finally, and this is harder to put in black-or-white terms, keep the API as simp
 
 * We expect extensive unit test coverage of any code submitted.
 * Unit tests should not duplicate coverage. In particular, avoid multiple unit tests failing for the same error.
-* Do not test several components at the same time, unless you're specifically writing an integration test. You should manually declare parent components that might be needed for your test as **providers**, or even better mock them. In other words, make sure the only components your are declaring in your testing module are the currently tested component and the test host.
-* Split your unit tests in Typescript API, Template API and View. Try to split these up when possible to make a logical disctinction between each piece of the component. If there are questions about how to organize, then group them as best you can and we'll review them.
+* Do not test several components at the same time, unless you're explicitly writing an integration test. You should manually declare parent components that might be needed for your test as **providers**, or even better mock them. In other words, make sure the only components you are declaring in your testing module are the currently tested component and the test host.
+* Split your unit tests in Typescript API, Template API, and View. Try to split these up when possible to make a logical distinction between each piece of the component. If there are questions about how to organize, then group them as best you can, and we'll review them.
   * **Template API** - This group of tests are to test the inputs and outputs of a component work as expected. These tests should use the bindings as part of the test, and then validate the expected behavior.
-  * **Typescript API** - This group of tests are meant to test any public methods on the components themselves, like they are just generic objects. The tests should manipulate the components through the component methods and then validate the expected behavior.
-  * **View** - This group of tests should reflect user interactions, such as clicking or typing into a field. The tests should manipulate the component through simulating user behaviors (like mouse click) and then validate the expected behavior.
+  * **Typescript API** - This group of tests are meant to test any public methods on the components themselves like they are just generic objects. The tests should manipulate the components through the component methods and then validate the expected behavior.
+  * **View** - This group of tests should reflect user interactions, such as clicking or typing into a field. The tests should manipulate the component through simulating user behaviors (like a mouse click) and then validate the expected behavior.
 
 ## Static UI
 

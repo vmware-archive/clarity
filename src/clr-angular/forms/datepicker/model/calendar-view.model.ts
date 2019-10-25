@@ -83,23 +83,12 @@ export class CalendarViewModel {
   }
 
   private isDateDisabled(date: DayModel) {
-    let disabled = false;
-    const range = this.disabledDates;
-    // This is a little convoluted at first, but we check progressively to see if the date is in range.
-    // A `bottom` or `top` date limits the bounds
-    if (
-      (range.bottom &&
-        (range.bottom.year > date.year ||
-          (range.bottom.year >= date.year && range.bottom.month > date.month) ||
-          (range.bottom.year >= date.year && range.bottom.month >= date.month && range.bottom.date > date.date))) ||
-      (range.top &&
-        (range.top.year < date.year ||
-          (range.top.year <= date.year && range.top.month < date.month) ||
-          (range.top.year <= date.year && range.top.month <= date.month && range.top.date < date.date)))
-    ) {
-      disabled = true;
-    }
-    return disabled;
+    const { bottom, top } = this.disabledDates;
+    const from = new Date(bottom.year, bottom.month - 1, bottom.date);
+    const to = new Date(top.year, top.month - 1, top.date);
+    const today = new Date(date.year, date.month - 1, date.date);
+
+    return !(today >= from && today <= to);
   }
 
   /**

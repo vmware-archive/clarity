@@ -25,25 +25,26 @@
                     <div class="clrweb-DoxMedia has-h4-margin">
                         <div class="clrweb-DoxMedia-block">
                             <div class="clrweb-DoxMedia-img is-left-aligned">
-                                <clr-tree-node>
-                                    <div class="margin-right-0_25">Inbox</div> <span class="badge badge-info">1
-                                </span>
-                                    <ng-template [(clrIfExpanded)]="expanded">
-                                        <clr-tree-node>
-                                            New Email 1
-                                        </clr-tree-node>
-                                    </ng-template>
-                                </clr-tree-node>
-                                <clr-tree-node>
-                                    Folders
-                                    <ng-template clrIfExpanded>
-                                        <clr-tree-node>Sent Items</clr-tree-node>
-                                        <clr-tree-node>Junk Mail</clr-tree-node>
-                                        <clr-tree-node>To Me Directly</clr-tree-node>
-                                    </ng-template>
-                                </clr-tree-node>
+                                <clr-tree>
+                                    <clr-tree-node>
+                                        <div class="margin-right-0_25">Inbox</div> <span class="badge badge-info">1
+                                    </span>
+                                        <ng-template [(clrIfExpanded)]="expanded">
+                                            <clr-tree-node>
+                                                New Email 1
+                                            </clr-tree-node>
+                                        </ng-template>
+                                    </clr-tree-node>
+                                    <clr-tree-node>
+                                        Folders
+                                        <ng-template clrIfExpanded>
+                                            <clr-tree-node>Sent Items</clr-tree-node>
+                                            <clr-tree-node>Junk Mail</clr-tree-node>
+                                            <clr-tree-node>To Me Directly</clr-tree-node>
+                                        </ng-template>
+                                    </clr-tree-node>
+                                </clr-tree>
                             </div>
-
                         </div>
                     </div>
                 </div>

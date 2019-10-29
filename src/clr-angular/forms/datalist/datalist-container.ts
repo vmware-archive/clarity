@@ -73,8 +73,6 @@ export class ClrDatalistContainer implements DynamicWrapper {
   }
 
   ngOnDestroy() {
-    if (this.subscriptions) {
-      this.subscriptions.map(sub => sub.unsubscribe());
-    }
+    this.subscriptions.map(sub => sub.unsubscribe());
   }
 }

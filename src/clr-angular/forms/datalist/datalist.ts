@@ -38,6 +38,10 @@ export class ClrDatalist extends WrappedFormControl<ClrDatalistContainer> {
     el: ElementRef
   ) {
     super(vcr, ClrDatalistContainer, injector, control, renderer, el);
+
+    if (!this.focusService) {
+      throw new Error('clrDatalist requires being wrapped in <clr-datalist-container>');
+    }
   }
 
   @HostListener('focus')

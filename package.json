@@ -62,7 +62,7 @@
     "website:news": "node src/website/generate-news",
     "website:prerender": "npm-run-all website:news website:build website:functions website:404",
     "website:preview": "lite-server --core=dist/website/browser",
-    "icons:build": "npm-run-all icons:build:css icons:build:optimize icons:build:web icons:build:package icons:build:svg",
+    "icons:build": "npm-run-all icons:build:css icons:build:optimize icons:build:web icons:build:package",
     "icons:build:web": "webpack --config ./src/clr-icons/webpack.icons.config.js",
     "icons:build:css": "sass --source-map --precision=8 ./src/clr-icons/clr-icons.scss ./dist/clr-icons/clr-icons.css",
     "icons:build:optimize": "csso -i ./dist/clr-icons/clr-icons.css -o ./dist/clr-icons/clr-icons.min.css -s file;",

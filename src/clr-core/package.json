@@ -1,6 +1,6 @@
 {
   "name": "@clr/core",
-  "version": "2.0.2",
+  "version": "@VERSION",
   "description": "Custom Elements for Clarity",
   "homepage": "https://clarity.design",
   "sideEffects": [
@@ -14,7 +14,7 @@
   "types": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "ssh://git@git.eng.vmware.com/clarity.git"
+    "url": "git@github.com:vmware/clarity.git"
   },
   "peerDependencies": {
     "@webcomponents/shadycss": "1.9.1",

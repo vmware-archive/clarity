@@ -1192,6 +1192,119 @@ export const ClrShapePod = clrIconSVG(
   <path d="M26.56,15H15.44A1.43,1.43,0,0,0,14,16.44v8.12A1.43,1.43,0,0,0,15.44,26H26.56A1.43,1.43,0,0,0,28,24.56V16.44A1.43,1.43,0,0,0,26.56,15ZM26,24H16V17H26Z" class="clr-i-outline clr-i-outline-path-2"/>
   <path d="M12.4,19H10V12H20v1.4h2v-2A1.43,1.43,0,0,0,20.56,10H9.44A1.43,1.43,0,0,0,8,11.44v8.12A1.43,1.43,0,0,0,9.44,21h3Z" class="clr-i-outline clr-i-outline-path-3"/>`
 );
+export const ClrControlLun = clrIconSVG(
+  `
+  <path d="M8,24.59a25.5,25.5,0,0,0,2.75.59l1.21-1.41a24.13,24.13,0,0,1-4-.83Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M6,27.53V10.3c2.9,1.43,8.34,1.88,12,1.88s9.1-.45,12-1.88v5.11c-.91.82-5,2.13-12,2.13A34.81,34.81,0,0,1,8,16.33V18a40.86,40.86,0,0,0,10,1.16c3.46,0,9.13-.45,12-1.91v3.23h2V8h0s0,0,0-.07c0-3.35-8.8-4.25-14-4.25S4,4.58,4,7.93v19.6c0,2,3.17,3.14,6.83,3.72L8.38,28.68C7,28.28,6.13,27.84,6,27.53ZM18,5.68c7.15,0,11.53,1.44,12,2.25-.46.81-4.84,2.25-12,2.25S6.31,8.69,6,8C6.31,7.18,10.71,5.68,18,5.68Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M32.09,22H15.46l-5.41,6.31L15.49,34h16.6a2,2,0,0,0,2-2V23.93A2,2,0,0,0,32.09,22Zm0,10H16.34l-3.59-3.77L16.38,24H32.09v8Z" class="clr-i-outline clr-i-outline-path-3"/>
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-outline clr-i-outline-path-4"/>
+
+  <path d="M8,24.59a25.5,25.5,0,0,0,2.75.59l1.21-1.41a24.13,24.13,0,0,1-4-.83Z" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
+  <path d="M32.09,22H15.46l-5.41,6.31L15.49,34h16.6a2,2,0,0,0,2-2V23.93A2,2,0,0,0,32.09,22Zm0,10H16.34l-3.59-3.77L16.38,24H32.09v8Z" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
+  <path d="M18,17.54A34.81,34.81,0,0,1,8,16.33V18a40.86,40.86,0,0,0,10,1.16c3.46,0,9.13-.45,12-1.91v3.23h2V13.22a7.32,7.32,0,0,1-2,.28v1.91C29.09,16.23,25,17.54,18,17.54Z" class="clr-i-outline--badged clr-i-outline-path-4--badged"/>
+  <path d="M6,27.53V10.3c2.9,1.43,8.34,1.88,12,1.88a47.66,47.66,0,0,0,7.09-.52,7.45,7.45,0,0,1-1.51-1.8,47.4,47.4,0,0,1-5.58.32C10.71,10.18,6.31,8.69,6,8c.32-.8,4.72-2.3,12-2.3,1.66,0,3.16.08,4.51.21a7.56,7.56,0,0,1,.29-2c-1.7-.17-3.38-.24-4.8-.24-5.2,0-14,.9-14,4.25v19.6c0,2,3.17,3.14,6.83,3.72L8.38,28.68C7,28.28,6.13,27.84,6,27.53Z" class="clr-i-outline--badged clr-i-outline-path-5--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-6--badged clr-i-badge"/>
+
+  <path d="M8,24.59a25.5,25.5,0,0,0,2.75.59l1.21-1.41a24.13,24.13,0,0,1-4-.83Z"/><path d="M32.09,22H15.46l-5.41,6.31L15.49,34h16.6a2,2,0,0,0,2-2V23.93A2,2,0,0,0,32.09,22Zm0,10H16.34l-3.59-3.77L16.38,24H32.09v8Z" class="clr-i-outline--alerted clr-i-outline-path-1--alerted"/>
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-outline--alerted clr-i-outline-path-2--alerted"/>
+  <path d="M6,27.53V10.3c2.9,1.43,8.34,1.88,12,1.88h.59a3.59,3.59,0,0,1,.32-2H18C10.71,10.18,6.31,8.69,6,8c.32-.8,4.72-2.3,12-2.3,1.22,0,2.35.05,3.41.12l1.1-1.91c-1.6-.15-3.17-.21-4.51-.21-5.2,0-14,.9-14,4.25v19.6c0,2,3.17,3.14,6.83,3.72L8.38,28.68C7,28.28,6.13,27.84,6,27.53Z" class="clr-i-outline--alerted clr-i-outline-path-3--alerted"/>
+  <path d="M8,16.33V18a40.86,40.86,0,0,0,10,1.16c3.46,0,9.13-.45,12-1.91v3.23h2V15.4H30c-.91.82-5,2.13-12,2.13A34.81,34.81,0,0,1,8,16.33Z" class="clr-i-outline--alerted clr-i-outline-path-4--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-outline--alerted clr-i-outline-path-5--alerted clr-i-alert"/>
+
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-solid clr-i-solid-path-1"/>
+  <path d="M32.09,21H32V17.32c-1.9,2.93-10.46,3.3-14,3.3A42.43,42.43,0,0,1,8,19.56V17.88A40.59,40.59,0,0,0,18,19c5,0,13.2-.82,14-3.82V10.72c-2.21,3.36-10.49,3.46-14,3.46A42.12,42.12,0,0,1,8,13.11V11a40.59,40.59,0,0,0,10,1.14c5,0,13.28-.83,14-3.88V7.83h0c-.19-3.27-8.84-4.15-14-4.15S4.21,4.56,4,7.83H4v19.7c0,2.16,3.64,3.3,7.63,3.84l2.84,3,.59.62h17a3,3,0,0,0,3-3V23.93A3,3,0,0,0,32.09,21ZM8,26.08V24.4a25.79,25.79,0,0,0,3.46.7l-1.24,1.44C9.46,26.42,8.71,26.27,8,26.08ZM33.09,32a1,1,0,0,1-1,1H15.92L11.4,28.23,15.92,23H32.09a1,1,0,0,1,1,1Z" class="clr-i-solid clr-i-solid-path-2"/>
+
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-solid--badged clr-i-solid-path-1--badged"/>
+  <path d="M32.09,21H32V17.32c-1.9,2.93-10.46,3.3-14,3.3A42.43,42.43,0,0,1,8,19.56V17.88A40.59,40.59,0,0,0,18,19c5,0,13.2-.82,14-3.82v-2a7.34,7.34,0,0,1-4.12,0,39.47,39.47,0,0,1-9.88,1A42.12,42.12,0,0,1,8,13.11V11a40.59,40.59,0,0,0,10,1.14,47.76,47.76,0,0,0,7.09-.52A7.45,7.45,0,0,1,22.8,3.92c-1.7-.17-3.38-.24-4.8-.24-5.14,0-13.79.88-14,4.15H4v19.7c0,2.16,3.64,3.3,7.63,3.84l2.84,3,.59.62h17a3,3,0,0,0,3-3V23.93A3,3,0,0,0,32.09,21ZM8,26.08V24.4a25.79,25.79,0,0,0,3.46.7l-1.24,1.44C9.46,26.42,8.71,26.27,8,26.08ZM33.09,32a1,1,0,0,1-1,1H15.92L11.4,28.23,15.92,23H32.09a1,1,0,0,1,1,1Z" class="clr-i-solid--badged clr-i-solid-path-2--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-solid--badged clr-i-solid-path-3--badged clr-i-badge"/>
+
+  <path d="M16.11,27a1,1,0,1,0,1,1A1,1,0,0,0,16.11,27Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted"/>
+  <path d="M32.09,21H32V17.32c-1.9,2.93-10.46,3.3-14,3.3A42.43,42.43,0,0,1,8,19.56V17.88A40.59,40.59,0,0,0,18,19c4.85,0,12.8-.79,13.91-3.62H22.23a3.68,3.68,0,0,1-2.73-1.23H18A42.12,42.12,0,0,1,8,13.11V11a40.59,40.59,0,0,0,10,1.14h.59a3.61,3.61,0,0,1,.46-2.29l3.46-6c-1.6-.15-3.17-.21-4.51-.21-5.14,0-13.79.88-14,4.15H4v19.7c0,2.16,3.64,3.3,7.63,3.84l2.84,3,.59.62h17a3,3,0,0,0,3-3V23.93A3,3,0,0,0,32.09,21ZM8,26.08V24.4a25.79,25.79,0,0,0,3.46.7l-1.24,1.44C9.46,26.42,8.71,26.27,8,26.08ZM33.09,32a1,1,0,0,1-1,1H15.92L11.4,28.23,15.92,23H32.09a1,1,0,0,1,1,1Z" class="clr-i-solid--alerted clr-i-solid-path-2--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-solid--alerted clr-i-solid-path-3--alerted clr-i-alert"/>
+  `
+);
+export const ClrShapeMediaChanger = clrIconSVG(
+  `
+  <path d="M30,4H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V6A2,2,0,0,0,30,4ZM6,30V6H30V30Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <rect x="20" y="18" width="2" height="2"/><rect x="24" y="18" width="2" height="2" class="clr-i-outline clr-i-outline-path-2"/>
+  <rect x="20" y="22" width="2" height="2" class="clr-i-outline clr-i-outline-path-3"/>
+  <rect x="24" y="22" width="2" height="2" class="clr-i-outline clr-i-outline-path-4"/>
+  <path d="M27.22,10H20v4a.8.8,0,1,0,1.59,0V11.6h5.63a.8.8,0,1,0,0-1.6Z" class="clr-i-outline clr-i-outline-path-5"/>
+  <rect x="8.81" y="10" width="8.14" height="2" class="clr-i-outline clr-i-outline-path-6"/>
+  <rect x="8.81" y="14" width="8.14" height="2" class="clr-i-outline clr-i-outline-path-7"/>
+  <rect x="8.81" y="18" width="8.14" height="2" class="clr-i-outline clr-i-outline-path-8"/>
+  <rect x="8.81" y="22" width="8.14" height="2" class="clr-i-outline clr-i-outline-path-9"/>
+  <rect x="8.81" y="26" width="8.14" height="2" class="clr-i-outline clr-i-outline-path-10"/>
+
+  <rect x="20" y="18" width="2" height="2" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
+  <rect x="24" y="18" width="2" height="2" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
+  <rect x="20" y="22" width="2" height="2" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
+  <rect x="24" y="22" width="2" height="2" class="clr-i-outline--badged clr-i-outline-path-4--badged"/>
+  <rect x="8.81" y="10" width="8.14" height="2" class="clr-i-outline--badged clr-i-outline-path-5--badged"/>
+  <rect x="8.81" y="14" width="8.14" height="2" class="clr-i-outline--badged clr-i-outline-path-6--badged"/>
+  <rect x="8.81" y="18" width="8.14" height="2" class="clr-i-outline--badged clr-i-outline-path-7--badged"/>
+  <rect x="8.81" y="22" width="8.14" height="2" class="clr-i-outline--badged clr-i-outline-path-8--badged"/>
+  <rect x="8.81" y="26" width="8.14" height="2" class="clr-i-outline--badged clr-i-outline-path-9--badged"/>
+  <path d="M20,14a.8.8,0,1,0,1.59,0V11.6H25A7.74,7.74,0,0,1,23.66,10H20Z" class="clr-i-outline--badged clr-i-outline-path-10--badged"/>
+  <path d="M30,13.5h0V30H6V6H22.5V6a7.37,7.37,0,0,1,.28-2H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V13.22A7.37,7.37,0,0,1,30,13.5Z" class="clr-i-outline--badged clr-i-outline-path-11--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-12--badged clr-i-badge"/>
+
+  <rect x="20" y="18" width="2" height="2" class="clr-i-outline--alerted clr-i-outline-path-1--alerted"/>
+  <rect x="24" y="18" width="2" height="2" class="clr-i-outline--alerted clr-i-outline-path-2--alerted"/>
+  <rect x="20" y="22" width="2" height="2" class="clr-i-outline--alerted clr-i-outline-path-3--alerted"/>
+  <rect x="24" y="22" width="2" height="2" class="clr-i-outline--alerted clr-i-outline-path-4--alerted"/>
+  <rect x="8.81" y="10" width="8.14" height="2" class="clr-i-outline--alerted clr-i-outline-path-5--alerted"/>
+  <rect x="8.81" y="14" width="8.14" height="2" class="clr-i-outline--alerted clr-i-outline-path-6--alerted"/>
+  <rect x="8.81" y="18" width="8.14" height="2" class="clr-i-outline--alerted clr-i-outline-path-7--alerted"/>
+  <rect x="8.81" y="22" width="8.14" height="2" class="clr-i-outline--alerted clr-i-outline-path-8--alerted"/>
+  <rect x="8.81" y="26" width="8.14" height="2" class="clr-i-outline--alerted clr-i-outline-path-9--alerted"/>
+  <path d="M30,15.4V30H6V6H21.27l1.18-2H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V15.4Z" class="clr-i-outline--alerted clr-i-outline-path-10--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-outline--alerted clr-i-outline-path-11--alerted clr-i-alert"/>
+
+  <path d="M30,4H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V6A2,2,0,0,0,30,4ZM17,28H8.81V26H17Zm0-4H8.81V22H17Zm0-4H8.81V18H17Zm0-4H8.81V14H17Zm0-4H8.81V10H17ZM22,24H20V22h2Zm0-4H20V18h2Zm4,4H24V22h2Zm0-4H24V18h2Zm0-6H20V10h6Z" class="clr-i-solid clr-i-solid-path-1"/>
+
+  <path d="M30,13.5a7.49,7.49,0,0,1-4-1.16V14H20V10h3.66A7.49,7.49,0,0,1,22.5,6a7.37,7.37,0,0,1,.28-2H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V13.22A7.37,7.37,0,0,1,30,13.5ZM17,28H8.81V26H17Zm0-4H8.81V22H17Zm0-4H8.81V18H17Zm0-4H8.81V14H17Zm0-4H8.81V10H17ZM22,24H20V22h2Zm0-4H20V18h2Zm4,4H24V22h2Zm0-4H24V18h2Z" class="clr-i-solid--badged clr-i-solid-path-1--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-solid--badged clr-i-solid-path-2--badged clr-i-badge"/>
+
+  <path d="M22.23,15.4a3.68,3.68,0,0,1-3.18-5.51L22.45,4H6A2,2,0,0,0,4,6V30a2,2,0,0,0,2,2H7.88v1.57a1,1,0,0,0,2,0V32h16v1.57a1,1,0,0,0,2,0V32H30a2,2,0,0,0,2-2V15.4ZM17,28H8.81V26H17Zm0-4H8.81V22H17Zm0-4H8.81V18H17Zm0-4H8.81V14H17Zm0-4H8.81V10H17ZM22,24H20V22h2Zm0-4H20V18h2Zm4,4H24V22h2Zm0-4H24V18h2Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-solid--alerted clr-i-solid-path-2--alerted clr-i-alert"/>
+  `
+);
+export const ClrShapeTapeDrive = clrIconSVG(
+  `
+  <path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6ZM4,28V8H32V28Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M13.33,13.35a4.52,4.52,0,1,0,4.53,4.52A4.53,4.53,0,0,0,13.33,13.35Zm0,7.44a2.92,2.92,0,1,1,2.93-2.92A2.92,2.92,0,0,1,13.33,20.79Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M23.62,13.35a4.52,4.52,0,1,0,4.52,4.52A4.53,4.53,0,0,0,23.62,13.35Zm0,7.44a2.92,2.92,0,1,1,2.92-2.92A2.92,2.92,0,0,1,23.62,20.79Z" class="clr-i-outline clr-i-outline-path-3"/>
+  <path d="M6,11V23.55H8V12H29.34V10H7A1,1,0,0,0,6,11Z" class="clr-i-outline clr-i-outline-path-4"/>
+
+  <path d="M8.81,17.87a4.53,4.53,0,1,0,4.52-4.52A4.53,4.53,0,0,0,8.81,17.87Zm7.45,0A2.93,2.93,0,1,1,13.33,15,2.93,2.93,0,0,1,16.26,17.87Z" class="clr-i-outline--badged clr-i-outline-path-1--badged"/>
+  <path d="M19.1,17.87a4.52,4.52,0,1,0,4.52-4.52A4.53,4.53,0,0,0,19.1,17.87Zm7.44,0A2.92,2.92,0,1,1,23.62,15,2.92,2.92,0,0,1,26.54,17.87Z" class="clr-i-outline--badged clr-i-outline-path-2--badged"/>
+  <path d="M32,13.22V28H4V8H22.78a7.37,7.37,0,0,1-.28-2H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V12.34A7.65,7.65,0,0,1,32,13.22Z" class="clr-i-outline--badged clr-i-outline-path-3--badged"/>
+  <path d="M6,11V23.55H8V12H25.51a7.66,7.66,0,0,1-1.85-2H7A1,1,0,0,0,6,11Z" class="clr-i-outline--badged clr-i-outline-path-4--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-outline--badged clr-i-outline-path-5--badged clr-i-badge"/>
+
+  <path d="M8.81,17.87a4.53,4.53,0,1,0,4.52-4.52A4.53,4.53,0,0,0,8.81,17.87Zm7.45,0A2.93,2.93,0,1,1,13.33,15,2.93,2.93,0,0,1,16.26,17.87Z" class="clr-i-outline--alerted clr-i-outline-path-1--alerted"/>
+  <path d="M7,10a1,1,0,0,0-1,1V23.55H8V12H18.57A3.7,3.7,0,0,1,19,10Z" class="clr-i-outline--alerted clr-i-outline-path-2--alerted"/>
+  <path d="M33.68,15.4H32V28H4V8H20.14l1.15-2H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V15.38Z" class="clr-i-outline--alerted clr-i-outline-path-3--alerted"/>
+  <path d="M22.09,15.39a3.65,3.65,0,0,1-1.8-.55,4.51,4.51,0,1,0,7.11.56H25.17a2.92,2.92,0,1,1-3.08,0Z" class="clr-i-outline--alerted clr-i-outline-path-4--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-outline--alerted clr-i-outline-path-5--alerted clr-i-alert"/>
+
+  <path d="M32,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V8A2,2,0,0,0,32,6ZM30,24H6V12H30Z" class="clr-i-solid clr-i-solid-path-1"/>
+  <path d="M12.21,23a5,5,0,1,0-5-5A5,5,0,0,0,12.21,23Zm0-7a2,2,0,1,1-2,2A2,2,0,0,1,12.21,16Z" class="clr-i-solid clr-i-solid-path-2"/>
+  <path d="M23.79,23a5,5,0,1,0-5-5A5,5,0,0,0,23.79,23Zm0-7a2,2,0,1,1-2,2A2,2,0,0,1,23.79,16Z" class="clr-i-solid clr-i-solid-path-3"/>
+
+  <path d="M12.21,23a5,5,0,1,0-5-5A5,5,0,0,0,12.21,23Zm0-7a2,2,0,1,1-2,2A2,2,0,0,1,12.21,16Z" class="clr-i-solid--badged clr-i-solid-path-1--badged"/>
+  <path d="M23.79,23a5,5,0,1,0-5-5A5,5,0,0,0,23.79,23Zm0-7a2,2,0,1,1-2,2A2,2,0,0,1,23.79,16Z" class="clr-i-solid--badged clr-i-solid-path-2--badged"/>
+  <path d="M30,13.5V24H6V12H25.51a7.49,7.49,0,0,1-3-6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V12.34A7.49,7.49,0,0,1,30,13.5Z"class="clr-i-solid--badged clr-i-solid-path-3--badged"/>
+  <circle cx="30" cy="6" r="5" class="clr-i-solid--badged clr-i-solid-path-4--badged clr-i-badge"/>
+
+  <path d="M7.2,18a5,5,0,1,0,5-5A5,5,0,0,0,7.2,18Zm7,0a2,2,0,1,1-2-2A2,2,0,0,1,14.22,18Z" class="clr-i-solid--alerted clr-i-solid-path-1--alerted"/>
+  <path d="M18.78,18a5,5,0,1,0,9.27-2.6H22.23a3.71,3.71,0,0,1-2.17-.71A5,5,0,0,0,18.78,18Zm5-2a2,2,0,1,1-2,2A2,2,0,0,1,23.79,16Z" class="clr-i-solid--alerted clr-i-solid-path-2--alerted"/>
+  <path d="M33.68,15.4H30V24H6V12H18.57a3.65,3.65,0,0,1,.48-2.11L21.29,6H4A2,2,0,0,0,2,8V28a2,2,0,0,0,2,2H32a2,2,0,0,0,2-2V15.38Z" class="clr-i-solid--alerted clr-i-solid-path-3--alerted"/>
+  <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-solid--alerted clr-i-solid-path-4--alerted clr-i-alert"/>
+  `
+);
 
 export const TechnologyShapes: any = {
   'ruler-pencil': ClrShapeRulerPencil,
@@ -1254,6 +1367,7 @@ export const TechnologyShapes: any = {
   'cloud-network': ClrShapeCloudNetwork,
   'cloud-scale': ClrShapeCloudScale,
   'cloud-traffic': ClrShapeCloudTraffic,
+  'control-lun': ClrControlLun,
   deploy: ClrShapeDeploy,
   helix: ClrShapeHelix,
   flask: ClrShapeFlask,
@@ -1286,6 +1400,8 @@ export const TechnologyShapes: any = {
   namespace: ClrShapeNamespace,
   node: ClrShapeNode,
   pod: ClrShapePod,
+  'media-changer': ClrShapeMediaChanger,
+  'tape-drive': ClrShapeTapeDrive,
 };
 
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));

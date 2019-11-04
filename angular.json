@@ -297,7 +297,7 @@
             "tsConfig": "src/dev-core/tsconfig.app.json",
             "aot": false,
             "assets": [
-              { "glob": "**/*", "input": "src/dev-core/src/api/", "output": "./api/" },
+              { "glob": "**/*", "input": "src/dev-core/api/", "output": "./api/" },
               "src/dev-core/src/favicon.ico",
               "src/dev-core/src/assets",
               "src/dev-core/src/manifest.json",

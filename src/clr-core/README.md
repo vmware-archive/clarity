@@ -22,11 +22,11 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
 
     ```html
       <!--
-        - `large` is a attribute style hook
-        - [open] is setting a property on the element
-        - (openChange) is listening for the `openChange` custom event
+        - size - attribute style hook
+        - [open] - setting the 'open' property on the element
+        - (openChange) - listen for the `openChange` custom event
       -->
-      <cwc-modal large [open]="true" (openChange)="log($event.detail)">
+      <cwc-modal size="lg" [open]="true" (openChange)="log($event.detail)">
         <p>slot content</p>
       </cwc-modal>
     ```
@@ -36,11 +36,11 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
     ```html
     <!--
       Example of a modal web component in Vue
-      - `large` is a attribute style hook
-      - :open is setting a property on the element
-      - @openChange is listening for the `openChange` custom event
+      - size - attribute style hook
+      - :open - setting the 'open' property on the element
+      - @openChange - listen for the `openChange` custom event
     -->
-    <cwc-modal large :open="true" @openChange="log($event.detail)">
+    <cwc-modal size="lg" :open="true" @openChange="log($event.detail)">
       <p>slot content</p>
     </cwc-modal>
     ```
@@ -51,12 +51,12 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
     {
       /*
       Example of a modal web component in React with React Shim
-      - `large` is a attribute style hook
-      - open is setting a property on the element
-      - openChange is listening for the `openChange` custom event
+      - size - attribute style hook
+      - open - setting the 'open' property on the element
+      - openChange - listen for the `openChange` custom event
     */
     }
-    <CwcModal large open={this.state.open} openChange={this.log}>
+    <CwcModal size="lg" open={this.state.open} openChange={this.log}>
       <p>slot content</p>
     </CwcModal>;
     ```

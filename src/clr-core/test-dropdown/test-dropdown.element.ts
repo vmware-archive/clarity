@@ -14,12 +14,13 @@ import { styles } from './test-dropdown.element.css';
  * Dropdown, example test component. Do not use in production.
  *
  * @noInheritDoc
- * @element `cwc-test-dropdown`
- * @slot `default` - Content slot for dropdown content
- * @styleAttr `outline` - Apply outline style.
- * @cssProp `--clr-test-border-color`
- * @cssProp `--clr-test-button-background-color`
- * @cssProp  `--clr-test-button-text-color`
+ * @element cwc-test-dropdown
+ * @slot default - Content slot for dropdown content
+ * @attr outline - Apply outline style.
+ * @event openChange - notify open state change of dropdown
+ * @cssprop --clr-test-border-color
+ * @cssprop --clr-test-button-background-color
+ * @cssprop --clr-test-button-text-color
  */
 // @dynamic
 export class CwcTestDropdown extends LitElement {

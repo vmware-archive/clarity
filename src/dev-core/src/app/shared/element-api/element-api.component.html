@@ -1,0 +1,64 @@
+<section *ngIf="element | async as element">
+  <h2>{{element.name}}</h2>
+  <p>{{element.description}}</p>
+
+  <h4>Properties</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+    <tr *ngFor="let prop of element.properties">
+      <td><span>{{prop.name}}</span></td>
+      <td>{{prop.description}}</td>
+      <td>{{prop.type}}</td>
+    </tr>
+  </table>
+
+  <h4>Events</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let event of element.events">
+      <td><span>{{event.name}}</span></td>
+      <td>{{event.description}}</td>
+    </tr>
+  </table>
+
+  <h4>Slots</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let slot of element.slots">
+      <td><span>{{slot.name}}</span></td>
+      <td>{{slot.description}}</td>
+    </tr>
+  </table>
+
+  <h4>Attributes</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+      <tr *ngFor="let attr of element.attributes">
+        <td><span>{{attr.name}}</span></td>
+        <td>{{attr.description}}</td>
+      </tr>
+    </table>
+  
+    <h4>CSS Custom Properties</h4>
+    <table>
+      <tr>
+        <th>Name</th>
+      </tr>
+      <tr *ngFor="let cssProp of element.cssProperties">
+        <td><span>{{cssProp.name}}</span></td>
+      </tr>
+    </table>
+  </section>

@@ -30,18 +30,18 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * Icon web component that renders svg shapes that can be customized with CSS classnames.
  *
  * @noInheritDoc
- * @element `cwc-icon`
- * @styleAttr `size` - Apply numerical width-height or a t-shirt-sized CSS classname
- * @styleAttr `dir` - Rotate icon 90° with the top of the icon pointing in the specified direction.
- * @styleAttr `flip` - Reverse the orientation of the icon vertically or horizontally.
- * @cssProp `--clr-icon-color-default`
- * @cssProp `--clr-icon-color-success`
- * @cssProp `--clr-icon-color-danger`
- * @cssProp `--clr-icon-color-warning`
- * @cssProp `--clr-icon-color-error`
- * @cssProp `--clr-icon-color-info`
- * @cssProp `--clr-icon-color-inverse`
- * @cssProp `--clr-icon-color-highlight`
+ * @element cwc-icon
+ * @attr size - Apply numerical width-height or a t-shirt-sized CSS classname
+ * @attr dir - Rotate icon 90° with the top of the icon pointing in the specified direction.
+ * @attr flip - Reverse the orientation of the icon vertically or horizontally.
+ * @cssprop --clr-icon-color-default
+ * @cssprop --clr-icon-color-success
+ * @cssprop --clr-icon-color-danger
+ * @cssprop --clr-icon-color-warning
+ * @cssprop --clr-icon-color-error
+ * @cssprop --clr-icon-color-info
+ * @cssprop --clr-icon-color-inverse
+ * @cssprop --clr-icon-color-highlight
  */
 // @dynamic
 export class CwcIcon extends IconMixinClass {

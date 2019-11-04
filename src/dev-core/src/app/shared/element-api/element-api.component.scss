@@ -1,0 +1,38 @@
+h2,
+h4,
+table {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+section {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid hsl(0, 0%, 80%);
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid hsl(0, 0%, 80%);
+}
+
+th {
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.5rem;
+  width: 33.33%;
+}
+
+tr td:first-child span {
+  background-color: hsl(0, 0%, 95%);
+  padding: 0.1rem 0.2rem;
+}

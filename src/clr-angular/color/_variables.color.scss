@@ -4,20 +4,22 @@
 
 // Neutral palette -- text, backgrounds, and content
 
-$clr-color-hue: 201 !default;
+$clr-color-hue: 198 !default;
+// We need to consider allowing saturation to vary across lightness values
+
 $clr-color-neutral-saturation: 0% !default;
 
 $clr-color-neutral-0: hsl($clr-color-hue, $clr-color-neutral-saturation, 100%) !default;
 $clr-color-neutral-50: hsl($clr-color-hue, $clr-color-neutral-saturation, 98%) !default;
 $clr-color-neutral-100: hsl($clr-color-hue, $clr-color-neutral-saturation, 95%) !default;
-$clr-color-neutral-200: hsl($clr-color-hue, $clr-color-neutral-saturation, 93%) !default;
+$clr-color-neutral-200: hsl($clr-color-hue, $clr-color-neutral-saturation, 91%) !default;
 $clr-color-neutral-300: hsl($clr-color-hue, $clr-color-neutral-saturation, 87%) !default;
 $clr-color-neutral-400: hsl($clr-color-hue, $clr-color-neutral-saturation, 80%) !default;
-$clr-color-neutral-500: hsl($clr-color-hue, $clr-color-neutral-saturation, 60%) !default;
-$clr-color-neutral-600: hsl($clr-color-hue, $clr-color-neutral-saturation, 45%) !default;
-$clr-color-neutral-700: hsl($clr-color-hue, $clr-color-neutral-saturation, 34%) !default;
+$clr-color-neutral-500: hsl($clr-color-hue, $clr-color-neutral-saturation, 70%) !default;
+$clr-color-neutral-600: hsl($clr-color-hue, $clr-color-neutral-saturation, 55%) !default;
+$clr-color-neutral-700: hsl($clr-color-hue, $clr-color-neutral-saturation, 40%) !default;
 $clr-color-neutral-800: hsl($clr-color-hue, $clr-color-neutral-saturation, 27%) !default;
-$clr-color-neutral-900: hsl($clr-color-hue, $clr-color-neutral-saturation, 19%) !default;
+$clr-color-neutral-900: hsl($clr-color-hue, $clr-color-neutral-saturation, 20%) !default;
 $clr-color-neutral-1000: hsl($clr-color-hue, $clr-color-neutral-saturation, 0%) !default;
 
 $clr-color-on-neutral-0: $clr-color-neutral-1000 !default;
@@ -34,18 +36,18 @@ $clr-color-on-neutral-900: $clr-color-neutral-0 !default;
 $clr-color-on-neutral-1000: $clr-color-neutral-0 !default;
 
 // Action palette -- buttons and clickable items
-
-$clr-color-action-50: hsl(194, 54%, 92%) !default;
-$clr-color-action-100: hsl(194, 57%, 85%) !default;
-$clr-color-action-200: hsl(194, 58%, 78%) !default;
-$clr-color-action-300: hsl(194, 57%, 71%) !default;
-$clr-color-action-400: hsl(197, 66%, 56%) !default;
-$clr-color-action-500: hsl(198, 100%, 41%) !default;
-$clr-color-action-600: hsl($clr-color-hue, 100%, 36%) !default;
-$clr-color-action-700: hsl(205, 100%, 34%) !default;
-$clr-color-action-800: hsl(207, 100%, 27%) !default;
-$clr-color-action-900: hsl(210, 100%, 24%) !default;
-$clr-color-action-1000: hsl(200, 100%, 11%) !default;
+// 198 is the correct temperature specified above as $clr-color-hue 198
+$clr-color-action-50: hsl($clr-color-hue, 83%, 94%) !default;
+$clr-color-action-100: hsl($clr-color-hue, 81%, 88%) !default;
+$clr-color-action-200: hsl($clr-color-hue, 78%, 78%) !default;
+$clr-color-action-300: hsl($clr-color-hue, 69%, 69%) !default;
+$clr-color-action-400: hsl($clr-color-hue, 66%, 57%) !default;
+$clr-color-action-500: hsl($clr-color-hue, 80%, 46%) !default;
+$clr-color-action-600: hsl($clr-color-hue, 100%, 38%) !default;
+$clr-color-action-700: hsl($clr-color-hue, 100%, 34%) !default;
+$clr-color-action-800: hsl($clr-color-hue, 100%, 27%) !default;
+$clr-color-action-900: hsl($clr-color-hue, 100%, 21%) !default;
+$clr-color-action-1000: hsl($clr-color-hue, 100%, 15%) !default;
 
 $clr-color-on-action-50: $clr-color-neutral-1000 !default;
 $clr-color-on-action-100: $clr-color-neutral-1000 !default;
@@ -60,18 +62,20 @@ $clr-color-on-action-900: $clr-color-neutral-0 !default;
 $clr-color-on-action-1000: $clr-color-neutral-0 !default;
 
 // Secondary Action palette -- actions but off-the-beaten-path actions, like drag-and-drop
+// 282 is the correct temperature
 
-$clr-color-secondary-action-50: hsl(271, 100%, 95%) !default;
-$clr-color-secondary-action-100: hsl(276, 59%, 87%) !default;
-$clr-color-secondary-action-200: hsl(279, 51%, 78%) !default;
-$clr-color-secondary-action-300: hsl(279, 46%, 70%) !default;
-$clr-color-secondary-action-400: hsl(281, 44%, 62%) !default;
-$clr-color-secondary-action-500: hsl(281, 43%, 54%) !default;
-$clr-color-secondary-action-600: hsl(281, 50%, 45%) !default;
-$clr-color-secondary-action-700: hsl(282, 69%, 37%) !default;
-$clr-color-secondary-action-800: hsl(282, 100%, 29%) !default;
-$clr-color-secondary-action-900: hsl(278, 100%, 24%) !default;
-$clr-color-secondary-action-1000: hsl(276, 48%, 14%) !default;
+$clr-secondary-action-hue: 282;
+$clr-color-secondary-action-50: hsl($clr-secondary-action-hue, 100%, 95%) !default;
+$clr-color-secondary-action-100: hsl($clr-secondary-action-hue, 59%, 87%) !default;
+$clr-color-secondary-action-200: hsl($clr-secondary-action-hue, 51%, 78%) !default;
+$clr-color-secondary-action-300: hsl($clr-secondary-action-hue, 45%, 70%) !default;
+$clr-color-secondary-action-400: hsl($clr-secondary-action-hue, 44%, 62%) !default;
+$clr-color-secondary-action-500: hsl($clr-secondary-action-hue, 43%, 54%) !default;
+$clr-color-secondary-action-600: hsl($clr-secondary-action-hue, 50%, 45%) !default;
+$clr-color-secondary-action-700: hsl($clr-secondary-action-hue, 69%, 37%) !default;
+$clr-color-secondary-action-800: hsl($clr-secondary-action-hue, 100%, 29%) !default;
+$clr-color-secondary-action-900: hsl($clr-secondary-action-hue, 100%, 22%) !default;
+$clr-color-secondary-action-1000: hsl($clr-secondary-action-hue, 100%, 14%) !default;
 
 $clr-color-on-secondary-action-50: $clr-color-neutral-1000 !default;
 $clr-color-on-secondary-action-100: $clr-color-neutral-1000 !default;
@@ -86,18 +90,20 @@ $clr-color-on-secondary-action-900: $clr-color-neutral-0 !default;
 $clr-color-on-secondary-action-1000: $clr-color-neutral-0 !default;
 
 // Stoplight Danger color: alerts, error messaging, danger buttons
+// 14 is the correct temperature
 
-$clr-color-danger-50: hsl(7, 100%, 97%) !default;
-$clr-color-danger-100: hsl(4, 58%, 91%) !default;
-$clr-color-danger-200: hsl(1, 83%, 84%) !default;
-$clr-color-danger-300: hsl(1, 87%, 78%) !default;
-$clr-color-danger-400: hsl(1, 90%, 70%) !default;
-$clr-color-danger-500: hsl(3, 90%, 62%) !default;
-$clr-color-danger-600: hsl(4, 91%, 55%) !default;
-$clr-color-danger-700: hsl(9, 100%, 44%) !default;
-$clr-color-danger-800: hsl(10, 100%, 39%) !default;
-$clr-color-danger-900: hsl(12, 100%, 32%) !default;
-$clr-color-danger-1000: hsl(20, 100%, 20%) !default;
+$clr-danger-hue: 9;
+$clr-color-danger-50: hsl($clr-danger-hue, 100%, 97%) !default;
+$clr-color-danger-100: hsl($clr-danger-hue, 95%, 92%) !default;
+$clr-color-danger-200: hsl($clr-danger-hue, 91%, 86%) !default;
+$clr-color-danger-300: hsl($clr-danger-hue, 83%, 76%) !default;
+$clr-color-danger-400: hsl($clr-danger-hue, 85%, 67%) !default;
+$clr-color-danger-500: hsl($clr-danger-hue, 88%, 61%) !default;
+$clr-color-danger-600: hsl($clr-danger-hue, 92%, 50%) !default;
+$clr-color-danger-700: hsl($clr-danger-hue, 100%, 43%) !default;
+$clr-color-danger-800: hsl($clr-danger-hue, 100%, 38%) !default;
+$clr-color-danger-900: hsl($clr-danger-hue, 100%, 30%) !default;
+$clr-color-danger-1000: hsl($clr-danger-hue, 100%, 20%) !default;
 
 $clr-color-on-danger-50: $clr-color-neutral-1000 !default;
 $clr-color-on-danger-100: $clr-color-neutral-1000 !default;
@@ -112,18 +118,27 @@ $clr-color-on-danger-900: $clr-color-neutral-0 !default;
 $clr-color-on-danger-1000: $clr-color-neutral-0 !default;
 
 // Stoplight Warning color: alerts, warning messages
-
-$clr-color-warning-50: hsl(52, 100%, 95%) !default;
-$clr-color-warning-100: hsl(51, 97%, 85%) !default;
-$clr-color-warning-200: hsl(51, 100%, 69%) !default;
-$clr-color-warning-300: hsl(51, 100%, 52%) !default;
-$clr-color-warning-400: hsl(49, 98%, 51%) !default;
-$clr-color-warning-500: hsl(47, 100%, 49%) !default;
-$clr-color-warning-600: hsl(45, 100%, 46%) !default;
-$clr-color-warning-700: hsl(43, 100%, 44%) !default;
-$clr-color-warning-800: hsl(41, 100%, 41%) !default;
-$clr-color-warning-900: hsl(38, 100%, 38%) !default;
-$clr-color-warning-1000: hsl(13, 100%, 19%) !default;
+// NOTE: Yellow and orange colors are hard to portray on other background colors.
+// This is due to the complexity of the light waves in that area of the color spectrum.
+// As you can see we change the hue for the 800, 900 and 1000 levels.
+// This was done to preserve the vision for the Clarityness of these colors.
+$clr-warning-hue: 48;
+$clr-warning-hue-600: 46;
+$clr-warning-hue-700: 43;
+$clr-warning-hue-800: 41;
+$clr-warning-hue-900: 38;
+$clr-warning-hue-1000: 31;
+$clr-color-warning-50: hsl($clr-warning-hue, 100%, 95%) !default;
+$clr-color-warning-100: hsl($clr-warning-hue, 100%, 89%) !default;
+$clr-color-warning-200: hsl($clr-warning-hue, 100%, 83%) !default;
+$clr-color-warning-300: hsl($clr-warning-hue, 98%, 72%) !default;
+$clr-color-warning-400: hsl($clr-warning-hue, 94%, 57%) !default;
+$clr-color-warning-500: hsl($clr-warning-hue, 95%, 48%) !default;
+$clr-color-warning-600: hsl($clr-warning-hue-600, 100%, 45%) !default;
+$clr-color-warning-700: hsl($clr-warning-hue-700, 100%, 42%) !default;
+$clr-color-warning-800: hsl($clr-warning-hue-800, 100%, 36%) !default;
+$clr-color-warning-900: hsl($clr-warning-hue-900, 100%, 28%) !default;
+$clr-color-warning-1000: hsl($clr-warning-hue-1000, 100%, 19%) !default;
 
 $clr-color-on-warning-50: $clr-color-neutral-1000 !default;
 $clr-color-on-warning-100: $clr-color-neutral-1000 !default;
@@ -138,18 +153,20 @@ $clr-color-on-warning-900: $clr-color-neutral-1000 !default;
 $clr-color-on-warning-1000: $clr-color-neutral-0 !default;
 
 // Stoplight Success color: alerts, success messaging, success buttons
+// 93 is the correct temperature
 
-$clr-color-success-50: hsl(92, 52%, 88%) !default;
-$clr-color-success-100: hsl(85, 58%, 75%) !default;
-$clr-color-success-200: hsl(76, 76%, 49%) !default;
-$clr-color-success-300: hsl(83, 77%, 44%) !default;
-$clr-color-success-400: hsl(92, 79%, 40%) !default;
-$clr-color-success-500: hsl(90, 67%, 38%) !default;
-$clr-color-success-600: hsl(94, 85%, 32%) !default;
-$clr-color-success-700: hsl(99, 100%, 26%) !default;
-$clr-color-success-800: hsl(98, 100%, 21%) !default;
-$clr-color-success-900: hsl(99, 100%, 16%) !default;
-$clr-color-success-1000: hsl(108, 100%, 13%) !default;
+$clr-success-hue: 93;
+$clr-color-success-50: hsl($clr-success-hue, 52%, 88%) !default;
+$clr-color-success-100: hsl($clr-success-hue, 58%, 75%) !default;
+$clr-color-success-200: hsl($clr-success-hue, 76%, 49%) !default;
+$clr-color-success-300: hsl($clr-success-hue, 77%, 44%) !default;
+$clr-color-success-400: hsl($clr-success-hue, 79%, 40%) !default;
+$clr-color-success-500: hsl($clr-success-hue, 67%, 38%) !default;
+$clr-color-success-600: hsl($clr-success-hue, 85%, 32%) !default;
+$clr-color-success-700: hsl($clr-success-hue, 100%, 26%) !default;
+$clr-color-success-800: hsl($clr-success-hue, 100%, 21%) !default;
+$clr-color-success-900: hsl($clr-success-hue, 100%, 16%) !default;
+$clr-color-success-1000: hsl($clr-success-hue, 100%, 13%) !default;
 
 $clr-color-on-success-50: $clr-color-neutral-1000 !default;
 $clr-color-on-success-100: $clr-color-neutral-1000 !default;

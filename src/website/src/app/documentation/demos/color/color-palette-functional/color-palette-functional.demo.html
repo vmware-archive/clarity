@@ -36,13 +36,12 @@
             </div>
             <div *ngIf="!color.primary">
               <span *ngIf="color.bulleted" class="bullet">&#8226;</span>
-              <span>A</span>
-              <span class="hex-contrast" *ngIf="color.text === 'mid'">A</span>
+              <span>{{color.weight}}</span>
             </div>
             <div class="rgb-value">
               <span aria-hidden="true" class="copied-indication">Copied!</span>
               <clr-icon shape="copy"></clr-icon>
-              {{color.value | uppercase}}</div>
+              {{color.value}}</div>
           </div>
         </li>
       </ul>

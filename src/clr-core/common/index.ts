@@ -4,7 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+export * from './base/button.base';
 export * from './css-vars/css-vars';
+export * from './utils/dom';
 export * from './utils/register';
 export * from './decorators/query-slot';
 export * from './services/common-strings.service';

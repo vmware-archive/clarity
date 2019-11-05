@@ -1,3 +1,48 @@
 <h1>Button Demo</h1>
-  
-<cwc-button></cwc-button>
+
+<h2>Solid buttons</h2>
+<cwc-button state="primary">primary</cwc-button>
+<cwc-button state="success">success</cwc-button>
+<cwc-button state="warning">warning</cwc-button>
+<cwc-button state="danger">danger</cwc-button>
+<cwc-button state="danger" disabled>disabled</cwc-button>
+
+<h2>Outline buttons</h2>
+<cwc-button action="outline">outline</cwc-button>
+<cwc-button action="outline" state="success">success</cwc-button>
+<cwc-button action="outline" state="warning">warning</cwc-button>
+<cwc-button action="outline" state="danger">danger</cwc-button>
+<cwc-button action="outline" disabled>disabled</cwc-button>
+
+<h2>Icon buttons</h2>
+<cwc-button action="outline" icon><cwc-icon shape="user"></cwc-icon></cwc-button>
+<cwc-button state="success" icon><cwc-icon shape="user"></cwc-icon></cwc-button>
+<cwc-button state="warning" icon><cwc-icon shape="user"></cwc-icon></cwc-button>
+<cwc-button state="danger" icon><cwc-icon shape="user"></cwc-icon></cwc-button>
+<cwc-button icon disabled><cwc-icon shape="user"></cwc-icon></cwc-button>
+
+<h2>Block buttons</h2>
+<cwc-button state="primary" block>primary</cwc-button>
+<cwc-button state="success" block>success</cwc-button>
+
+<h2>Inverse buttons</h2>
+<div class="inverse-btn-container">
+  <cwc-button state="inverse">inverse</cwc-button>
+  <cwc-button state="inverse" disabled>inverse disabled</cwc-button>
+</div>
+
+<h2>Flat buttons</h2>
+<cwc-button action="link">flat</cwc-button>
+<cwc-button action="link" disabled>flat disabled</cwc-button>
+
+<h2>Sizes</h2>
+<cwc-button size="sm" state="primary">primary</cwc-button>
+<cwc-button size="sm" action="outline">outline</cwc-button>
+<cwc-button size="sm" state="success">success</cwc-button>
+<cwc-button size="sm" action="link">link</cwc-button>
+<cwc-button size="sm" action="link" disabled>disabled</cwc-button>
+
+<h2>Loading</h2>
+<cwc-button [loadingState]="myValidateBtnState" (click)="validateValidateBtn()" state="info">validate</cwc-button>
+<cwc-button [loadingState]="mySubmitBtnState" (click)="validateSubmitBtn()" action="outline" state="success">submit</cwc-button>
+

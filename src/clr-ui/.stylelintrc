@@ -10,7 +10,7 @@
   "ignoreFiles": [
   ],
   "rules": {
-    "sh-waqar/declaration-use-variable": [["color", { ignoreValues: ["inherit", "red", "blue"] }]],
+    "sh-waqar/declaration-use-variable": [["color", { ignoreValues: ["inherit", "red", "blue", "/^getSassButtonColor/"] }]],
     "meowtec/no-px": [true, { "ignore": ["1px"] }],
     "color-no-hex": true,
     "no-descending-specificity": null,

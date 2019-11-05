@@ -9,6 +9,15 @@ $clr-use-custom-properties: true;
 @import './../../../node_modules/@clr/city/css/regular.css';
 @import './../../../node_modules/@clr/city/css/medium.css';
 @import './../../../node_modules/@clr/city/css/semibold.css';
+
+@import './../../clr-angular/utils/mixins.clarity';
+@import './../../clr-angular/color/variables.color';
+@import './../../clr-angular/utils/variables.global';
+@import './../../clr-angular/typography/variables.typography';
+
+@import './../../clr-angular/color/properties.color';
+@import './../../clr-angular/typography/properties.typography';
+
 @import './../../clr-ui/layout/layout';
 @import './../../clr-ui/typography/typography';
 @import '../../clr-angular/color/variables.color';

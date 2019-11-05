@@ -4,10 +4,32 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
+import { ClrLoadingState } from '@clr/core';
 import '@clr/core/button';
 
 @Component({
   selector: 'app-button-demo',
   templateUrl: './button.demo.html',
+  styleUrls: ['./button.demo.scss'],
 })
-export class ButtonDemoComponent {}
+export class ButtonDemoComponent {
+  disabled = true;
+  myValidateBtnState = ClrLoadingState.DEFAULT;
+  mySubmitBtnState = ClrLoadingState.DEFAULT;
+
+  validateValidateBtn() {
+    this.myValidateBtnState = ClrLoadingState.LOADING;
+
+    setTimeout(() => {
+      this.myValidateBtnState = ClrLoadingState.SUCCESS;
+    }, 1500);
+  }
+
+  validateSubmitBtn() {
+    this.mySubmitBtnState = ClrLoadingState.LOADING;
+
+    setTimeout(() => {
+      this.mySubmitBtnState = ClrLoadingState.ERROR;
+    }, 1500);
+  }
+}

@@ -7,7 +7,10 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 import { ButtonDemoComponent } from './button.demo';
+
+ClarityIcons.addIcon(userIcon);
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild([{ path: '', component: ButtonDemoComponent }])],

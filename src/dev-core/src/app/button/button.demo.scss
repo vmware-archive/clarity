@@ -1,0 +1,7 @@
+@import './../../../../clr-angular/color/variables.color';
+@import './../../../../clr-angular/utils/variables.global';
+
+.inverse-btn-container {
+  padding: $clr_baselineRem_0_5 $clr_baselineRem_0_5;
+  background-color: $clr-color-neutral-900;
+}

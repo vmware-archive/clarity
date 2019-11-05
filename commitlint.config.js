@@ -7,6 +7,7 @@ const scopes = [
   'button',
   'card',
   'checkbox',
+  'color',
   'datagrid',
   'date-picker',
   'dropdown',

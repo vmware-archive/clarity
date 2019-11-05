@@ -3,7 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-export const COLOR_PALETTES = [
+
+/*
+  * @deprecated since 3.0, remove in 🤔?
+  */
+export const DEPRECATED_COLOR_PALETTES = [
   {
     type: 'Red',
     colors: [
@@ -232,5 +236,110 @@ export const COLOR_PALETTES = [
   {
     type: 'Black-white',
     colors: [{ value: '#000000', text: 'light' }, { value: '#FFFFFF', text: 'dark' }],
+  },
+];
+
+export const CLARITY_PALETTES = [
+  {
+    name: 'Neutral',
+    weights: [
+      { weight: 0, hsl: 'hsl(198, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 50, hsl: 'hsl(198, 0%, 98%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 100, hsl: 'hsl(198, 0%, 95%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 200, hsl: 'hsl(198, 0%, 91%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 300, hsl: 'hsl(198, 0%, 87%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 400, hsl: 'hsl(198, 0%, 80%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 500, hsl: 'hsl(198, 0%, 70%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 600, hsl: 'hsl(198, 0%, 55%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 700, hsl: 'hsl(198, 0%, 40%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 800, hsl: 'hsl(198, 0%, 27%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 900, hsl: 'hsl(198, 0%, 20%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 1000, hsl: 'hsl(198, 0%, 0%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+    ],
+  },
+  {
+    name: 'Action',
+    weights: [
+      { weight: null, hsl: 'hsl(0, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 50, hsl: 'hsl(198, 83%, 94%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 100, hsl: 'hsl(198, 81%, 88%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 200, hsl: 'hsl(198, 78%, 78%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 300, hsl: 'hsl(198, 69%, 69%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 400, hsl: 'hsl(198, 66%, 57%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 500, hsl: 'hsl(198, 80%, 46%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 600, hsl: 'hsl(198, 100%, 38%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 700, hsl: 'hsl(198, 100%, 34%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 800, hsl: 'hsl(198, 100%, 27%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 900, hsl: 'hsl(198, 100%, 21%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 1000, hsl: 'hsl(198, 100%, 15%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+    ],
+  },
+  {
+    name: 'Secondary action',
+    weights: [
+      { weight: null, hsl: 'hsl(0, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 50, hsl: 'hsl(282, 100%, 95%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 100, hsl: 'hsl(282, 59%, 87%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 200, hsl: 'hsl(282, 51%, 78%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 300, hsl: 'hsl(282, 45%, 70%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 400, hsl: 'hsl(282, 44%, 62%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 500, hsl: 'hsl(282, 43%, 54%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 600, hsl: 'hsl(282, 50%, 45%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 700, hsl: 'hsl(282, 69%, 37%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 800, hsl: 'hsl(282, 100%, 29%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 900, hsl: 'hsl(282, 100%, 22%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 1000, hsl: 'hsl(282, 48%, 14%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+    ],
+  },
+  {
+    name: 'Danger',
+    weights: [
+      { weight: null, hsl: 'hsl(0, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 50, hsl: 'hsl(14, 100%, 97%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 100, hsl: 'hsl(14, 95%, 92%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 200, hsl: 'hsl(14, 91%, 86%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 300, hsl: 'hsl(14, 83%, 76%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 400, hsl: 'hsl(14, 85%, 67%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 500, hsl: 'hsl(14, 88%, 61%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 600, hsl: 'hsl(14, 92%, 50%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 700, hsl: 'hsl(14, 100%, 43%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 800, hsl: 'hsl(14, 100%, 38%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 900, hsl: 'hsl(14, 100%, 30%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 1000, hsl: 'hsl(14, 100%, 20%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+    ],
+  },
+  {
+    name: 'Warning',
+    weights: [
+      { weight: null, hsl: 'hsl(0, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 50, hsl: 'hsl(48, 100%, 95%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 100, hsl: 'hsl(48, 100%, 89%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 200, hsl: 'hsl(48, 100%, 83%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 300, hsl: 'hsl(48, 98%, 72%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 400, hsl: 'hsl(48, 94%, 57%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 500, hsl: 'hsl(48, 95%, 48%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 600, hsl: 'hsl(46, 100%, 45%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 700, hsl: 'hsl(43, 100%, 42%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 800, hsl: 'hsl(41, 100%, 36%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 900, hsl: 'hsl(38, 100%, 28%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 1000, hsl: 'hsl(31, 100%, 19%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+    ],
+  },
+  {
+    name: 'Success',
+    weights: [
+      { weight: null, hsl: 'hsl(0, 0%, 100%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 50, hsl: 'hsl(93, 52%, 88%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 100, hsl: 'hsl(93, 58%, 75%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 200, hsl: 'hsl(93, 76%, 49%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 300, hsl: 'hsl(93, 77%, 44%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 400, hsl: 'hsl(93, 79%, 40%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 500, hsl: 'hsl(93, 67%, 38%)', on: 'hsl(198, 0%, 0%)', baseColor: true },
+      { weight: 600, hsl: 'hsl(93, 85%, 32%)', on: 'hsl(198, 0%, 0%)', baseColor: false },
+      { weight: 700, hsl: 'hsl(93, 100%, 26%)', on: 'hsl(198, 0%, 100%)', baseColor: true },
+      { weight: 800, hsl: 'hsl(93, 100%, 21%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 900, hsl: 'hsl(93, 100%, 16%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+      { weight: 1000, hsl: 'hsl(93, 100%, 13%)', on: 'hsl(198, 0%, 100%)', baseColor: false },
+    ],
   },
 ];

@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { COLOR_PALETTES } from './color-palettes';
+import { CLARITY_PALETTES, DEPRECATED_COLOR_PALETTES } from './color-palettes';
 import { ClipboardCopyService } from '../clipboard-copy.service';
+import { deprecate } from 'util';
 
 @Component({
   selector: 'clr-color-palette',
@@ -13,11 +14,13 @@ import { ClipboardCopyService } from '../clipboard-copy.service';
   templateUrl: './color-palette.demo.html',
 })
 export class ColorPaletteDemo {
-  palettes = COLOR_PALETTES;
+  deprecatedPalettes = DEPRECATED_COLOR_PALETTES;
+  clarityPalettes = CLARITY_PALETTES;
 
   constructor(private clipboardCopy: ClipboardCopyService) {}
 
   copyToClipboard(color: string) {
+    console.log('copied');
     this.clipboardCopy.executeCopy(color);
   }
 }

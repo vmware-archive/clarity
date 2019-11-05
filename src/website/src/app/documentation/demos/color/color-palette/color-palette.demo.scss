@@ -28,7 +28,7 @@ li.card-swatch {
   .card-swatch-content {
     display: flex;
     flex-grow: 1;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     .bullet {
       color: currentColor;
@@ -38,11 +38,16 @@ li.card-swatch {
     .hex-contrast {
       color: black;
     }
-    .rgb-value {
-      margin-left: auto;
-      font-size: 0.9em;
+    .weight {
+      display: flex;
+      align-items: center;
+    }
+    .copied {
+      display: flex;
+      align-items: center;
+      font-size: 0.5rem;
       clr-icon {
-        margin: 0 $clr_baselineRem_0_125;
+        margin: 0;
         opacity: 0;
         transition: all 0.2s ease-in-out;
       }
@@ -53,6 +58,11 @@ li.card-swatch {
         transition: all 0.2s ease-in-out;
       }
     }
+    .rgb-value {
+      display: flex;
+      //font-size: 0.9em;
+      align-items: center;
+    }
   }
   &:not(.dark-text) {
     color: $clr-color-neutral-0;
@@ -60,14 +70,14 @@ li.card-swatch {
   &:not(:first-child) {
     cursor: pointer;
     &:hover {
-      .card-swatch-content .rgb-value clr-icon {
+      .card-swatch-content .copied clr-icon {
         opacity: 1;
       }
     }
   }
 
   &.copied {
-    .card-swatch-content .rgb-value .copied-indication {
+    .card-swatch-content .copied .copied-indication {
       transform: translateX(0);
       opacity: 1;
     }

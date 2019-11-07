@@ -224,6 +224,17 @@ export default function() {
       });
 
       describe('Date Display', () => {
+        it('displays correct date on mobile in specific timezones', () => {
+          const inputEl: HTMLInputElement = context.testElement.querySelector('input');
+          enabledService.fakeIsEnabled = false;
+          context.detectChanges();
+
+          const userInputDate = '1997-06-22';
+          inputEl.value = userInputDate;
+          inputEl.dispatchEvent(new Event('change'));
+          expect(inputEl.value).toBe(userInputDate);
+        });
+
         it('displays the date on the input when the selectedDay is updated', () => {
           dateNavigationService.notifySelectedDayChanged(new DayModel(2015, 1, 1));
           expect(context.clarityElement.value).toBe('02/01/2015');

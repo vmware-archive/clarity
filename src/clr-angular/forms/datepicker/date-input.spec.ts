@@ -369,6 +369,52 @@ export default function() {
       );
     });
 
+    describe('Mobile Datepicker with Reactive Forms', () => {
+      beforeEach(function() {
+        TestBed.configureTestingModule({
+          imports: [ReactiveFormsModule, ClrFormsModule],
+          declarations: [TestComponentWithReactiveForms],
+        });
+
+        TestBed.overrideComponent(ClrDateContainer, {
+          set: {
+            providers: [{ provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService }],
+          },
+        });
+
+        context = this.create(ClrDateInput, TestComponentWithReactiveForms, [
+          ControlClassService,
+          { provide: NgControlService, useClass: MockNgControlService },
+          NgControl,
+          IfErrorService,
+          IfOpenService,
+          FocusService,
+          DatepickerFocusService,
+          DateNavigationService,
+          LocaleHelperService,
+          DateIOService,
+          ControlIdService,
+          DateFormControlService,
+        ]);
+
+        datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
+        enabledService = <MockDatepickerEnabledService>context.fixture.debugElement
+          .query(By.directive(ClrDateContainer))
+          .injector.get(DatepickerEnabledService);
+      });
+
+      it("date doesn't get deleted when setting it on mobile with a control attached", () => {
+        const input: HTMLInputElement = context.fixture.nativeElement.querySelector('input');
+        enabledService.fakeIsEnabled = false;
+        datepickerFocusService.focusInput(input);
+        context.detectChanges();
+
+        input.value = '1997-06-22';
+        input.dispatchEvent(new Event('change'));
+        expect(input.value).not.toBe('');
+      });
+    });
+
     describe('Datepicker with Reactive Forms', () => {
       let fixture: ComponentFixture<TestComponentWithReactiveForms>;
 

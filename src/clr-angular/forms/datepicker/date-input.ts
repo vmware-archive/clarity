@@ -204,6 +204,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       if (this.datepickerHasFormControl() && dateString !== this.control.value) {
         this.control.control.setValue(dateString);
       } else if (this.usingNativeDatepicker()) {
+        // valueAsDate expects UTC, date from input is time-zoned
+        date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
         this.renderer.setProperty(this.el.nativeElement, 'valueAsDate', date);
       } else {
         this.renderer.setProperty(this.el.nativeElement, 'value', dateString);

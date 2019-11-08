@@ -18,7 +18,7 @@ module.exports = config => {
     include: [
       path.resolve('node_modules/lit-element'),
       path.resolve('node_modules/lit-html'),
-      // path.resolve('dist/clr-core')
+      path.resolve('dist/clr-core'),
     ],
     use: {
       loader: 'babel-loader',

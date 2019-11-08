@@ -11,10 +11,12 @@ import { BasicNgComboboxDemo } from './basic-ng-combobox';
 import { OptionalMenuDemo } from './optional-menu';
 import { ComboboxDemo } from './combobox.demo';
 import { ROUTING } from './combobox.demo.routing';
-import { ClrComboboxModule } from '../../../../clr-angular/forms/combobox/combobox.module';
+// Commenting out temporarily. AOT builds do not work when importing outside of scoped library.
+// Can reimport once combobox is added as a public export to @clr/angular
+// import { ClrComboboxModule } from '../../../../clr-angular/forms/combobox/combobox.module';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, ClrComboboxModule],
+  imports: [CommonModule, ClarityModule, ROUTING],
   declarations: [ComboboxDemo, BasicNgComboboxDemo, OptionalMenuDemo],
   exports: [ComboboxDemo, BasicNgComboboxDemo, OptionalMenuDemo],
 })

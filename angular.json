@@ -19,7 +19,7 @@
             "index": "src/dev/src/index.html",
             "main": "src/dev/src/main.ts",
             "polyfills": "src/dev/src/polyfills.ts",
-            "tsConfig": "src/dev/tsconfig.dev.json",
+            "tsConfig": "src/dev/tsconfig.app.json",
             "assets": [
               {
                 "glob": "favicon.ico",
@@ -40,6 +40,8 @@
           },
           "configurations": {
             "production": {
+              "tsConfig": "src/dev/tsconfig.prod.json",
+              "styles": ["dist/clr-ui/clr-ui.min.css", "dist/clr-icons/clr-icons.min.css"],
               "fileReplacements": [
                 {
                   "replace": "src/dev/src/environments/environment.ts",
@@ -207,6 +209,13 @@
           },
           "configurations": {
             "production": {
+              "styles": [
+                "node_modules/prismjs/themes/prism-solarizedlight.css",
+                "dist/clr-ui/clr-ui.min.css",
+                "dist/clr-icons/clr-icons.min.css",
+                "src/website/src/styles/main.scss"
+              ],
+              "tsConfig": "src/website/tsconfig.prod.json",
               "fileReplacements": [
                 {
                   "replace": "src/website/src/environments/environment.ts",

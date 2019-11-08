@@ -154,6 +154,15 @@ export default function(): void {
         context.detectChanges();
         expect(context.clarityDirective.open).toBe(false);
       });
+
+      it('should call clrDgFilterOpenChange output when open changed', function() {
+        spyOn(context.fixture.componentInstance, 'clrDgFilterOpenChangeFn');
+        const toggle = context.clarityElement.querySelector('.datagrid-filter-toggle');
+        toggle.click();
+        expect(context.fixture.componentInstance.clrDgFilterOpenChangeFn).toHaveBeenCalledWith(true);
+        toggle.click();
+        expect(context.fixture.componentInstance.clrDgFilterOpenChangeFn).toHaveBeenCalledWith(true);
+      });
     });
   });
 }
@@ -172,11 +181,15 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   changes = new Subject<boolean>();
 }
 
-@Component({ template: `<clr-dg-filter [clrDgFilter]="filter" [clrDgFilterOpen]="open">Hello world</clr-dg-filter>` })
+@Component({
+  template: `<clr-dg-filter [clrDgFilter]="filter" [clrDgFilterOpen]="open" (clrDgFilterOpenChange)="clrDgFilterOpenChangeFn($event)">Hello world</clr-dg-filter>`,
+})
 class FullTest {
   @ViewChild(CustomFilter, { static: false })
   customFilter: CustomFilter;
 
   filter: ClrDatagridFilterInterface<number>;
   open: boolean = false;
+
+  clrDgFilterOpenChangeFn = ($event: boolean) => {};
 }

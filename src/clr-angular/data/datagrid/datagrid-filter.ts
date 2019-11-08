@@ -45,7 +45,7 @@ import { isPlatformBrowser } from '@angular/common';
               #anchor
               clrPopoverAnchor
               clrPopoverOpenCloseButton
-              [class.datagrid-filter-open]="open" 
+              [class.datagrid-filter-open]="open"
               [class.datagrid-filtered]="active">
           <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
       </button>
@@ -63,7 +63,6 @@ import { isPlatformBrowser } from '@angular/common';
           <ng-content></ng-content>
       </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter, OnDestroy {
@@ -94,19 +93,22 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     content: ClrAlignment.END,
   };
 
+  private _open: boolean = false;
   public get open() {
-    return this.smartToggleService.open;
+    return this._open;
   }
 
   @Input('clrDgFilterOpen')
   public set open(open: boolean) {
-    const boolOpen = !!open;
-    if (boolOpen !== this.open) {
-      this.smartToggleService.open = !!open;
-      this.openChange.emit(!!open);
-      if (!boolOpen && isPlatformBrowser(this.platformId)) {
+    open = !!open;
+    if (this.open !== open) {
+      this.smartToggleService.open = open;
+      this.openChange.emit(open);
+      if (!open && isPlatformBrowser(this.platformId)) {
         this.anchor.nativeElement.focus();
       }
+      // keep track of the state
+      this._open = open;
     }
   }
 

@@ -184,6 +184,7 @@
     "karma-jasmine-matchers": "4.0.1",
     "karma-mocha-reporter": "2.2.5",
     "karma-notify-reporter": "1.1.0",
+    "karma-parallel": "0.3.1",
     "karma-safari-launcher": "1.0.0",
     "karma-sauce-launcher": "2.0.2",
     "lite-server": "2.4.0",

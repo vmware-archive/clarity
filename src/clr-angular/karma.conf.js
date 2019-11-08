@@ -43,7 +43,7 @@ module.exports = function(karma) {
   const config = {
     autoWatch: true,
     basePath: '',
-    frameworks: ['jasmine', 'jasmine-matchers', '@angular-devkit/build-angular'],
+    frameworks: ['parallel', 'jasmine', 'jasmine-matchers', '@angular-devkit/build-angular'],
     plugins: [
       // Frameworks
       require('karma-jasmine'),
@@ -62,7 +62,12 @@ module.exports = function(karma) {
       require('karma-firefox-launcher'),
       require('karma-safari-launcher'),
       require('karma-sauce-launcher'),
+      require('karma-parallel'),
     ],
+    parallelOptions: {
+      executors: getNumberOfExecutors(),
+      shardStrategy: 'round-robin',
+    },
     files: [
       // Custom Elements
       {
@@ -122,13 +127,13 @@ module.exports = function(karma) {
     runnerPort: 9191,
     colors: true,
     logLevel: karma.LOG_INFO,
-    singleRun: process.env.TRAVIS ? true : false,
+    singleRun: process.env.CIRCLECI ? true : false,
     concurrency: Infinity,
     captureTimeout: 120000,
     customLaunchers: {
       ChromeHeadless: {
         base: 'Chrome',
-        flags: ['--headless', '--disable-gpu', '--remote-debugging-port=9222'],
+        flags: ['--headless', '--disable-gpu', '--remote-debugging-port=9222', '--disable-dev-shm-usage'],
       },
     },
     mochaReporter: {
@@ -138,3 +143,16 @@ module.exports = function(karma) {
 
   karma.set(config);
 };
+
+function getNumberOfExecutors() {
+  if (process.env.CIRCLECI) {
+    // optimize for more threads but CIRCLECI needs a limited set of 2
+    return 2;
+  } else if (process.env.npm_lifecycle_event === 'angular:test:watch') {
+    // in watch mode we only want a single instance of chrome running for easier debugging
+    return 1;
+  } else {
+    // when running the single build/test optimize for more threads
+    return Math.ceil(require('os').cpus().length / 2);
+  }
+}

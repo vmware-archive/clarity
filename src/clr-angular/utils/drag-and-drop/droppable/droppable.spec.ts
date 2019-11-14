@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -53,6 +53,7 @@ export default function(): void {
       this.testComponent = this.fixture.componentInstance;
       this.testElement = this.fixture.nativeElement;
       this.droppable = this.fixture.debugElement.query(By.directive(ClrDroppable));
+      this.droppableEl = this.droppable.nativeElement;
       this.eventBus = TestBed.get(DragAndDropEventBusService);
       this.fixture.detectChanges();
     });
@@ -117,7 +118,11 @@ export default function(): void {
       decorateEventWithDropPosition(mockDragMoveEventExt, { pageX: 500, pageY: 300 });
       this.eventBus.broadcast(mockDragMoveEventInt);
       expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-      const enterEventExt = new ClrDragEvent({ ...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER });
+      const enterEventExt = new ClrDragEvent({
+        ...mockDragMoveEventInt,
+        type: DragEventType.DRAG_ENTER,
+        dropTargetElement: this.droppableEl,
+      });
       expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
       expect(this.testComponent.dragLeaveEvent).toBeUndefined();
     });
@@ -148,11 +153,19 @@ export default function(): void {
       this.eventBus.broadcast(mockDragMoveEventInt);
 
       expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-      const enterEventExt = new ClrDragEvent({ ...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER });
+      const enterEventExt = new ClrDragEvent({
+        ...mockDragMoveEventInt,
+        type: DragEventType.DRAG_ENTER,
+        dropTargetElement: this.droppableEl,
+      });
       expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
       decorateEventWithDropPosition(mockDragMoveEventInt, { pageX: 0, pageY: 0 });
       this.eventBus.broadcast(mockDragMoveEventInt);
-      const leaveEventExt = new ClrDragEvent({ ...mockDragMoveEventInt, type: DragEventType.DRAG_LEAVE });
+      const leaveEventExt = new ClrDragEvent({
+        ...mockDragMoveEventInt,
+        type: DragEventType.DRAG_LEAVE,
+        dropTargetElement: this.droppableEl,
+      });
       expect(this.testComponent.dragLeaveEvent).toEqual(leaveEventExt);
     });
 
@@ -186,10 +199,18 @@ export default function(): void {
       decorateEventWithDropPosition(mockDragMoveEventExt, { pageX: 500, pageY: 300 });
       this.eventBus.broadcast(mockDragMoveEventInt);
       expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
-      const enterEventExt = new ClrDragEvent({ ...mockDragMoveEventInt, type: DragEventType.DRAG_ENTER });
+      const enterEventExt = new ClrDragEvent({
+        ...mockDragMoveEventInt,
+        type: DragEventType.DRAG_ENTER,
+        dropTargetElement: this.droppableEl,
+      });
       expect(this.testComponent.dragEnterEvent).toEqual(enterEventExt);
       this.eventBus.broadcast(mockDragEndEventInt);
-      const dropEventExt = new ClrDragEvent({ ...mockDragEndEventInt, type: DragEventType.DROP });
+      const dropEventExt = new ClrDragEvent({
+        ...mockDragEndEventInt,
+        type: DragEventType.DROP,
+        dropTargetElement: this.droppableEl,
+      });
       expect(this.testComponent.dropEvent).toEqual(dropEventExt);
     });
 
@@ -314,7 +335,11 @@ export default function(): void {
         delete this.testComponent.dragEnterEvent;
         delete this.testComponent.dragLeaveEvent;
 
-        const dragEvent = { type: DragEventType.DRAG_MOVE, dropPointPosition: { pageX: _pageX, pageY: _pageY } };
+        const dragEvent = {
+          type: DragEventType.DRAG_MOVE,
+          dropTargetElement: this.droppable.nativeElement,
+          dropPointPosition: { pageX: _pageX, pageY: _pageY },
+        };
         this.eventBus.broadcast(dragEvent);
         return dragEvent;
       };

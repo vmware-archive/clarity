@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ClrDragAndDropModule } from './drag-and-drop.module';
 import { ClrDraggable } from './draggable/draggable';
+import { ClrDroppable } from './droppable/droppable';
 import { emulateDragEvent } from './helpers.spec';
+import { ClrDragEvent } from './drag-event';
 
 // Here, we test drag and drop directives and components altogether in an integrated way.
 // Unlike other .spec test files, we use actual events in the following tests.
@@ -25,6 +27,9 @@ export default function(): void {
     let testComponent: WithDraggableTest;
     let testElement: HTMLElement;
     let draggable: ElementRef;
+    let droppable: ElementRef;
+    let dragSourceElement: HTMLElement;
+    let dropTargetElement: HTMLElement;
 
     beforeEach(function() {
       TestBed.configureTestingModule({
@@ -37,6 +42,11 @@ export default function(): void {
       testElement = fixture.nativeElement;
 
       draggable = fixture.debugElement.queryAll(By.directive(ClrDraggable))[1];
+      droppable = fixture.debugElement.queryAll(By.directive(ClrDroppable))[1];
+
+      dragSourceElement = draggable.nativeElement;
+      dropTargetElement = droppable.nativeElement;
+
       fixture.detectChanges();
     });
 
@@ -45,11 +55,15 @@ export default function(): void {
     });
 
     describe('Template API', function() {
-      const checkStaticProps = function(dragEvent: any) {
+      const checkStaticProps = function(dragEvent: any, expectDropTargetElement?: boolean) {
         // the following properties don't change accross different drag events
         // and expected to stay the same in all of them.
         expect(dragEvent.group).toBe('draggable-1');
         expect(dragEvent.dragDataTransfer).toEqual(MOCK_DATA_PAYLOAD);
+        expect(dragEvent.dragSourceElement).toBe(dragSourceElement);
+        if (expectDropTargetElement) {
+          expect(dragEvent.dropTargetElement).toBe(dropTargetElement);
+        }
       };
 
       it('should emit event with proper properties on dragStart', function() {
@@ -58,6 +72,7 @@ export default function(): void {
         checkStaticProps(testComponent.dragStartEvent);
         expect(testComponent.dragStartEvent.dragPosition).toEqual({ pageX: 10, pageY: 20, moveX: 10, moveY: 20 });
         expect(testComponent.dragStartEvent.dropPointPosition).toBeUndefined();
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined();
       });
 
       it('should emit event with proper properties on dragMove', function() {
@@ -71,16 +86,20 @@ export default function(): void {
         // offsetY = dragStart.pageY - draggable.pageY
         // dropPointPosition.pageX =  dragMove.pageX + draggable.width/2 - offsetX
         // dropPointPosition.pageY =  dragMove.pageY + draggable.height/2 - offsetY
+        // ghostAnchorPosition.pageX = dragMove.pageX - offsetX
+        // ghostAnchorPosition.pageX = dragMove.pageY - offsetY
         expect(testComponent.dragMoveEvent.dropPointPosition).toEqual({ pageX: 140, pageY: 205 });
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined({ pageX: 90, pageY: 180 });
       });
 
       it('should emit event with proper properties on dragEnter', function() {
         emulateDragEvent('mousedown', 0, 0, draggable.nativeElement);
         emulateDragEvent('mousemove', 10, 20);
         emulateDragEvent('mousemove', 500, 300);
-        checkStaticProps(testComponent.dragEnterEvent);
+        checkStaticProps(testComponent.dragEnterEvent, true);
         expect(testComponent.dragEnterEvent.dragPosition).toEqual({ pageX: 500, pageY: 300, moveX: 500, moveY: 300 });
         expect(testComponent.dragEnterEvent.dropPointPosition).toEqual({ pageX: 540, pageY: 305 });
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined({ pageX: 490, pageY: 280 });
       });
 
       it('should emit event with proper properties on dragLeave', function() {
@@ -88,9 +107,10 @@ export default function(): void {
         emulateDragEvent('mousemove', 10, 20);
         emulateDragEvent('mousemove', 500, 300);
         emulateDragEvent('mousemove', 100, 200);
-        checkStaticProps(testComponent.dragLeaveEvent);
+        checkStaticProps(testComponent.dragLeaveEvent, true);
         expect(testComponent.dragLeaveEvent.dragPosition).toEqual({ pageX: 100, pageY: 200, moveX: 100, moveY: 200 });
         expect(testComponent.dragLeaveEvent.dropPointPosition).toEqual({ pageX: 140, pageY: 205 });
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined({ pageX: 90, pageY: 180 });
       });
 
       it('should emit event with proper properties on dragEnd', function() {
@@ -102,6 +122,7 @@ export default function(): void {
         checkStaticProps(testComponent.dragEndEvent);
         expect(testComponent.dragEndEvent.dragPosition).toEqual({ pageX: 100, pageY: 200, moveX: 100, moveY: 200 });
         expect(testComponent.dragEndEvent.dropPointPosition).toEqual({ pageX: 140, pageY: 205 });
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined({ pageX: 90, pageY: 180 });
       });
 
       it('should emit event with proper properties on drop', function() {
@@ -109,9 +130,10 @@ export default function(): void {
         emulateDragEvent('mousemove', 10, 20);
         emulateDragEvent('mousemove', 500, 300);
         emulateDragEvent('mouseup', 500, 300);
-        checkStaticProps(testComponent.dropEvent);
+        checkStaticProps(testComponent.dropEvent, true);
         expect(testComponent.dropEvent.dragPosition).toEqual({ pageX: 500, pageY: 300, moveX: 500, moveY: 300 });
         expect(testComponent.dropEvent.dropPointPosition).toEqual({ pageX: 540, pageY: 305 });
+        expect(testComponent.dragStartEvent.ghostAnchorPosition).toBeUndefined({ pageX: 490, pageY: 280 });
       });
     });
 
@@ -240,10 +262,10 @@ export default function(): void {
 })
 class WithDraggableTest {
   public mockDataPayload = MOCK_DATA_PAYLOAD;
-  public dragStartEvent: any;
-  public dragMoveEvent: any;
-  public dragEndEvent: any;
-  public dragLeaveEvent: any;
-  public dragEnterEvent: any;
-  public dropEvent: any;
+  public dragStartEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
+  public dragMoveEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
+  public dragEndEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
+  public dragLeaveEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
+  public dragEnterEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
+  public dropEvent: ClrDragEvent<typeof MOCK_DATA_PAYLOAD>;
 }

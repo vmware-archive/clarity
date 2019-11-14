@@ -23,6 +23,8 @@
     & > .draggable {
       margin: 0;
       opacity: 1;
+      width: 100%;
+      height: 100%;
     }
     &.dropped {
       opacity: 0;

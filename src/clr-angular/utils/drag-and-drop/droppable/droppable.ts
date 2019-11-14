@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -81,9 +81,12 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
   }
 
+  // Following emitters can only provide source element
   @Output('clrDragStart') dragStartEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
   @Output('clrDragMove') dragMoveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
   @Output('clrDragEnd') dragEndEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
+
+  // Following emitters should provide both source and target elements
   @Output('clrDragLeave') dragLeaveEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
   @Output('clrDragEnter') dragEnterEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
   @Output('clrDrop') dropEmitter: EventEmitter<ClrDragEvent<T>> = new EventEmitter();
@@ -172,12 +175,12 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     const isInDropArea = this.isInDropArea(dragMoveEvent.dropPointPosition);
     if (!this._isDraggableOver && isInDropArea) {
       this.isDraggableOver = true;
-      const dragEnterEvent = { ...dragMoveEvent, type: DragEventType.DRAG_ENTER };
+      const dragEnterEvent = { ...dragMoveEvent, type: DragEventType.DRAG_ENTER, dropTargetElement: this.droppableEl };
       this.eventBus.broadcast(dragEnterEvent);
       this.dragEnterEmitter.emit(new ClrDragEvent(dragEnterEvent));
     } else if (this._isDraggableOver && !isInDropArea) {
       this.isDraggableOver = false;
-      const dragLeaveEvent = { ...dragMoveEvent, type: DragEventType.DRAG_LEAVE };
+      const dragLeaveEvent = { ...dragMoveEvent, type: DragEventType.DRAG_LEAVE, dropTargetElement: this.droppableEl };
       this.eventBus.broadcast(dragLeaveEvent);
       this.dragLeaveEmitter.emit(new ClrDragEvent(dragLeaveEvent));
     }
@@ -198,7 +201,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
         this.renderer.addClass(dragEndEvent.ghostElement, 'dropped');
       }
 
-      const dropEvent = { ...dragEndEvent, type: DragEventType.DROP };
+      const dropEvent = { ...dragEndEvent, type: DragEventType.DROP, dropTargetElement: this.droppableEl };
       this.eventBus.broadcast(dropEvent);
       this.dropEmitter.emit(new ClrDragEvent(dropEvent));
       this.isDraggableOver = false;

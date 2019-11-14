@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,11 +12,19 @@ export class ClrDragEvent<T> {
   public group: string | string[];
   public dragDataTransfer: T;
   public dropPointPosition: { pageX: number; pageY: number };
+  public ghostAnchorPosition: { pageX: number; pageY: number };
+  public dragSourceElement: any;
+  public dropTargetElement?: any; // optional as only Droppable provides dropTargetElement in DragEnter, DragLeave, Drop events
 
   constructor(dragEvent: DragEventInterface<T>) {
     this.dragPosition = dragEvent.dragPosition;
     this.group = dragEvent.group;
     this.dragDataTransfer = dragEvent.dragDataTransfer;
     this.dropPointPosition = dragEvent.dropPointPosition;
+    this.ghostAnchorPosition = dragEvent.ghostAnchorPosition;
+    this.dragSourceElement = dragEvent.dragSourceElement;
+    if (dragEvent.dropTargetElement) {
+      this.dropTargetElement = dragEvent.dropTargetElement;
+    }
   }
 }

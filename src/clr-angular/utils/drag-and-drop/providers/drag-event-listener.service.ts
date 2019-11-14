@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,6 +47,7 @@ export class DragEventListenerService<T> {
 
   // DraggableGhost component sets these properties:
   public ghostElement?: any;
+  public ghostAnchorPosition?: { pageX: number; pageY: number };
   public dropPointPosition?: { pageX: number; pageY: number };
 
   public attachDragListeners(draggableEl: Node) {
@@ -182,6 +183,8 @@ export class DragEventListenerService<T> {
       },
       group: this.group,
       dragDataTransfer: this.dragDataTransfer,
+      ghostAnchorPosition: this.ghostAnchorPosition,
+      dragSourceElement: this.draggableEl,
       ghostElement: this.ghostElement,
     };
   }

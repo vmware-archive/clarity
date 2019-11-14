@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,10 +22,15 @@ export interface DragPointPosition {
 export interface DragEventInterface<T> {
   type: DragEventType;
   group?: string | string[];
+  dragSourceElement?: any;
+  dropTargetElement?: any;
   ghostElement?: any;
   dragPosition: DragPointPosition;
   dragDataTransfer?: T;
   // For default ghosts, this dropPointPosition denotes the center point of the ghost element.
-  // This center point is used to determine whether the ghost is over droppable elements or not.
+  // This position point is used to determine whether the ghost is over droppable elements or not.
   dropPointPosition?: { pageX: number; pageY: number };
+  // For default ghosts, this ghostAnchorPosition denotes the top left point of the ghost element.
+  // This position point is used to determine where the ghost element is.
+  ghostAnchorPosition?: { pageX: number; pageY: number };
 }

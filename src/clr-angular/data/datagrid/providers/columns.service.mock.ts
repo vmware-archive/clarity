@@ -23,6 +23,16 @@ export class MockColumnsService extends ColumnsService {
   // and we need to assign the template ref from there.
   templateRef: TemplateRef<any>;
 
+  set orderOfFirstVisible(value: number) {
+    // needed to resort to Object.defineProperty as we use getter property in ColumnsService
+    Object.defineProperty(this, 'orderOfFirstVisible', { value });
+  }
+
+  set orderOfLastVisible(value: number) {
+    // needed to resort to Object.defineProperty as we use getter property in ColumnsService
+    Object.defineProperty(this, 'orderOfLastVisible', { value });
+  }
+
   mockColumns(columnNumber: number) {
     for (let i = 0; i < columnNumber; i++) {
       this.columns.push(columnStateFactory());

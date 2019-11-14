@@ -13,8 +13,8 @@ export default function(): void {
     let provider: ColumnsService;
     let subscription: Subscription;
     let state: ColumnState = null;
-    const col1 = { width: 100 };
-    const col2 = { hideable: true };
+    const col1 = { width: 100, order: 2 };
+    const col2 = { hideable: true, order: 3 };
 
     beforeEach(function() {
       provider = new ColumnsService();
@@ -30,6 +30,29 @@ export default function(): void {
 
     it('returns the current states', () => {
       expect(provider.columnStates).toEqual([col1, col2]);
+    });
+
+    it('returns orders of first and last visible columns', () => {
+      expect(provider.orderOfFirstVisible).toBe(2);
+      expect(provider.orderOfLastVisible).toBe(3);
+    });
+
+    it('requests change check on first visible', () => {
+      let requestEmitted = false;
+      subscription = provider.checkFirstVisible.subscribe(() => {
+        requestEmitted = true;
+      });
+      provider.requestFirstVisibleChangeCheck();
+      expect(requestEmitted).toBeTrue();
+    });
+
+    it('requests change check on last visible', () => {
+      let requestEmitted = false;
+      subscription = provider.checkLastVisible.subscribe(() => {
+        requestEmitted = true;
+      });
+      provider.requestLastVisibleChangeCheck();
+      expect(requestEmitted).toBeTrue();
     });
 
     it('can emitStateChange to a column directly', () => {

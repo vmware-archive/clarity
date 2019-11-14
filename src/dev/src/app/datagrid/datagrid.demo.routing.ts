@@ -35,6 +35,7 @@ import { DatagridTestCasesAsyncDemo } from './test-cases-async/test-cases-async'
 import { DatagridTestCasesDemo } from './test-cases/test-cases';
 import { DatagridDetailDemo } from './detail/detail';
 import { DatagridConditionalSelectionsDemo } from './conditional-selection/conditional-selection';
+import { DatagridColumnReorderingDemo } from './column-reordering/column-reordering';
 
 const ROUTES: Routes = [
   {
@@ -61,6 +62,7 @@ const ROUTES: Routes = [
       { path: 'placeholder', component: DatagridPlaceholderDemo },
       { path: 'scrolling', component: DatagridScrollingDemo },
       { path: 'column-sizing', component: DatagridColumnSizingDemo },
+      { path: 'column-reordering', component: DatagridColumnReorderingDemo },
       { path: 'compact', component: DatagridCompactDemo },
       { path: 'detail', component: DatagridDetailDemo },
       { path: 'expandable-rows', component: DatagridExpandableRowsDemo },

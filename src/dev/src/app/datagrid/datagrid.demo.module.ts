@@ -42,6 +42,7 @@ import { DatagridTestCasesDemo } from './test-cases/test-cases';
 import { ColorFilter } from './utils/color-filter';
 import { DatagridDetailDemo } from './detail/detail';
 import { DatagridConditionalSelectionsDemo } from './conditional-selection/conditional-selection';
+import { DatagridColumnReorderingDemo } from './column-reordering/column-reordering';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ClarityModule, ROUTING, UtilsDemoModule],
@@ -69,6 +70,7 @@ import { DatagridConditionalSelectionsDemo } from './conditional-selection/condi
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
     DatagridColumnSizingDemo,
+    DatagridColumnReorderingDemo,
     DatagridExpandableRowsDemo,
     DatagridTestCasesDemo,
     DatagridTestCasesAsyncDemo,
@@ -100,6 +102,7 @@ import { DatagridConditionalSelectionsDemo } from './conditional-selection/condi
     DatagridPlaceholderDemo,
     DatagridScrollingDemo,
     DatagridColumnSizingDemo,
+    DatagridColumnReorderingDemo,
     DatagridExpandableRowsDemo,
     DatagridTestCasesDemo,
     DatagridTestCasesAsyncDemo,

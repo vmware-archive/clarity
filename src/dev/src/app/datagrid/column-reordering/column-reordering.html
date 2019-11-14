@@ -1,0 +1,103 @@
+<!--
+  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Column Reordering</h2>
+
+<p>
+  Datagrid columns are reorderable by default.
+</p>
+
+<button class="btn btn-primary" (click)="addItem()">add a item</button>
+
+<clr-checkbox-container clrInline>
+  <label>Remove columns: </label>
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox [(ngModel)]="deleteIdColumn" />
+    <label>User ID</label>
+  </clr-checkbox-wrapper>
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox [(ngModel)]="deleteNameColumn" />
+    <label>Name</label>
+  </clr-checkbox-wrapper>
+</clr-checkbox-container>
+
+
+<div class="clr-form-control clr-form-control-multi">
+  <clr-input-container>
+    <label>User ID order:</label>
+    <input clrInput type="number" name="user-id-order" [(ngModel)]="userId" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Name order:</label>
+    <input clrInput type="number" name="name-order" [(ngModel)]="name" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Creation date order:</label>
+    <input clrInput type="number" name="date-order" [(ngModel)]="date" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Pokemon order:</label>
+    <input clrInput type="number" name="pokemon-order" [(ngModel)]="pokemon" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Favaorite color order:</label>
+    <input clrInput type="number" name="color-order" [(ngModel)]="color" />
+  </clr-input-container>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="selectedUsers">
+  <clr-dg-column [(clrDgColumnOrder)]="userId" *ngIf="!deleteIdColumn" [style.width.px]="100">
+    <ng-container *clrDgHideableColumn>
+      User ID
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'" [(clrDgColumnOrder)]="name" *ngIf="!deleteNameColumn">
+    <ng-container *clrDgHideableColumn>
+      Name
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [(clrDgColumnOrder)]="date" [style.width.px]="150">
+    <ng-container *clrDgHideableColumn>
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'" [(clrDgColumnOrder)]="pokemon">
+    <ng-container *clrDgHideableColumn>
+      Pokemon
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [(clrDgColumnOrder)]="color">
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell *ngIf="!deleteIdColumn">{{user.id}}</clr-dg-cell>
+    <clr-dg-cell *ngIf="!deleteNameColumn">{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date:'shortDate'}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <clr-dg-row-detail *clrIfExpanded="true">
+      <clr-dg-cell *ngIf="!deleteIdColumn">User ID Detail...</clr-dg-cell>
+      <clr-dg-cell *ngIf="!deleteNameColumn">Name Detail...</clr-dg-cell>
+      <clr-dg-cell>Creation date Detail...</clr-dg-cell>
+      <clr-dg-cell>Pokemon Detail...</clr-dg-cell>
+      <clr-dg-cell>Favorite color Detail...</clr-dg-cell>
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

@@ -149,6 +149,9 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     this.subscriptions.push(this.listenForReorderAnimRequest());
   }
 
+  // TODO: remove once OnPush change detection strategy is removed
+  _markForCheck = false;
+
   /**
    * Subscription to the sort service changes
    */

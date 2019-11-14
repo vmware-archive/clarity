@@ -290,7 +290,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     selection: Selection<T>;
     singleSelected: T;
     singleSelectedChanged: EventEmitter<T>;
-    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, detailService: DetailService, datagridId: string, el: ElementRef, page: Page, commonStrings: ClrCommonStringsService);
+    constructor(organizer: DatagridRenderOrganizer, items: Items<T>, expandableRows: ExpandableRowsCount, selection: Selection<T>, rowActionService: RowActionService, stateProvider: StateProvider<T>, displayMode: DisplayModeService, renderer: Renderer2, detailService: DetailService, datagridId: string, el: ElementRef, page: Page, commonStrings: ClrCommonStringsService, columnReorderService: ColumnReorderService, viewManager: ViewManagerService);
     dataChanged(): void;
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
@@ -311,24 +311,32 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     ngOnDestroy(): void;
 }
 
-export declare class ClrDatagridCell implements OnInit {
+export declare class ClrDatagridCell implements ViewAccessor, OnInit {
     readonly _view: any;
+    order: number;
     signpost: QueryList<ClrSignpost>;
     constructor(vcr: ViewContainerRef);
     ngOnInit(): void;
 }
 
-export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit {
+export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements ViewAccessor, OnDestroy, OnInit {
+    _markForCheck: boolean;
     readonly _view: any;
     readonly ariaSort: "none" | "ascending" | "descending";
     colType: 'string' | 'number';
+    readonly columnsGroupId: string;
     commonStrings: ClrCommonStringsService;
     customFilter: boolean;
+    dropAnimationTrigger: any;
     field: string;
     filterValue: string | [number, number];
     filterValueChange: EventEmitter<{}>;
+    inDragMode: boolean;
+    readonly inReorderDrop: boolean;
+    readonly inReorderShift: boolean;
+    order: number;
     projectedFilter: any;
-    showSeparator: boolean;
+    shiftAnimationTrigger: any;
     sortBy: ClrDatagridComparatorInterface<T> | string;
     sortIcon: string;
     sortOrder: ClrDatagridSortOrder;
@@ -337,9 +345,14 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sorted: boolean;
     sortedChange: EventEmitter<boolean>;
     updateFilterValue: string | [number, number];
-    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, detailService: DetailService, changeDetectorRef: ChangeDetectorRef, commonStrings: ClrCommonStringsService);
+    userDefinedOrder: number;
+    constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, changeDetectorRef: ChangeDetectorRef, commonStrings: ClrCommonStringsService, columnReorderService: ColumnReorderService, filterPopoverToggleService: ClrPopoverToggleService, domAdapter: DomAdapter);
+    closeFilterWhenDragStart(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
+    requestReorder(event: ClrDragEvent<ViewRef>): void;
+    resetDropAnimation(): void;
+    resetShiftAnimation(): void;
     sort(reverse?: boolean): void;
 }
 
@@ -467,12 +480,13 @@ export declare class ClrDatagridPlaceholder<T = any> {
     constructor(items: Items<T>);
 }
 
-export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
+export declare class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAccessor {
     SELECTION_TYPE: typeof SelectionType;
     _calculatedCells: ViewContainerRef;
     _scrollableCells: ViewContainerRef;
     _stickyCells: ViewContainerRef;
     readonly _view: any;
+    cells: QueryList<ClrDatagridCell>;
     checkboxId: string;
     clrDgDetailCloseLabel: string;
     clrDgDetailOpenLabel: string;
@@ -480,7 +494,6 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     commonStrings: ClrCommonStringsService;
     detailButton: any;
     detailService: DetailService;
-    dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;
     expand: DatagridIfExpandService;
     expandAnimation: ClrExpandableAnimation;
@@ -496,8 +509,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     selected: boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
-    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, detailService: DetailService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService);
-    ngAfterContentInit(): void;
+    constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, detailService: DetailService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService, columnReorderService: ColumnReorderService, viewManager: ViewManagerService);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
@@ -507,6 +519,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
 
 export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
     SELECTION_TYPE: typeof SelectionType;
+    _detailCells: ViewContainerRef;
     cells: QueryList<ClrDatagridCell>;
     expand: DatagridIfExpandService;
     expandableRows: ExpandableRowsCount;
@@ -514,7 +527,7 @@ export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, 
     replacedRow: boolean;
     rowActionService: RowActionService;
     selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount);
+    constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount, columnReorderService: ColumnReorderService, viewManager: ViewManagerService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
 }
@@ -624,7 +637,13 @@ export declare class ClrDragAndDropModule {
 export declare class ClrDragEvent<T> {
     dragDataTransfer: T;
     dragPosition: DragPointPosition;
+    dragSourceElement: any;
     dropPointPosition: {
+        pageX: number;
+        pageY: number;
+    };
+    dropTargetElement?: any;
+    ghostAnchorPosition: {
         pageX: number;
         pageY: number;
     };

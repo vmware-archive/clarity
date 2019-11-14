@@ -19,7 +19,7 @@ import {
   ViewRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DomAdapter } from 'src/clr-angular/utils/dom-adapter/dom-adapter';
+import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';

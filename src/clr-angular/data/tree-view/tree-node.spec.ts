@@ -19,8 +19,7 @@ import { ClrSelectedState } from './models/selected-state.enum';
 import { TreeFeaturesService } from './tree-features.service';
 import { TreeFocusManagerService } from './tree-focus-manager.service';
 import { ClrTreeNode } from './tree-node';
-import { KeyCodes } from 'src/clr-angular/utils/focus/key-codes.enum';
-import { TreeNodeModel } from './models/tree-node.model';
+import { KeyCodes } from '../../utils/focus/key-codes.enum';
 
 @Component({
   template: `<clr-tree-node #node [(clrSelected)]="selected" [(clrExpanded)]="expanded" [clrExpandable]="expandable">

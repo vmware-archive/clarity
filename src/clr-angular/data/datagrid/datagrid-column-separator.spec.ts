@@ -6,7 +6,7 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DomAdapter } from 'src/clr-angular/utils/dom-adapter/dom-adapter';
+import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 
 import { ClrDragAndDropModule } from '../../utils/drag-and-drop/drag-and-drop.module';
 import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';

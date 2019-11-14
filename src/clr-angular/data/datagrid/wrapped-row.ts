@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild, ViewRef } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
@@ -19,8 +19,8 @@ export class WrappedRow implements DynamicWrapper, AfterViewInit {
   _dynamic = false;
 
   @ViewChild('rowPortal', { static: false })
-  templateRef: TemplateRef<void>;
-  rowView: EmbeddedViewRef<void>; // the rows projected view (in memory)
+  templateRef: TemplateRef<null>;
+  rowView: ViewRef; // the rows projected view (in memory)
 
   ngAfterViewInit() {
     // Create the cells view in memory, not the DOM.

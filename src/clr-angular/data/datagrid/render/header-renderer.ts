@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,12 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 import { DatagridRenderStep } from '../enums/render-step.enum';
 import { ColumnResizerService } from '../providers/column-resizer.service';
-import { HIDDEN_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
+import {
+  FIRST_VISIBLE_COLUMN_CLASS,
+  HIDDEN_COLUMN_CLASS,
+  LAST_VISIBLE_COLUMN_CLASS,
+  STRICT_WIDTH_CLASS,
+} from './constants';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
@@ -128,6 +133,30 @@ export class DatagridHeaderRenderer implements OnDestroy {
       this.renderer.addClass(this.el.nativeElement, HIDDEN_COLUMN_CLASS);
     } else {
       this.renderer.removeClass(this.el.nativeElement, HIDDEN_COLUMN_CLASS);
+    }
+  }
+
+  public isFirstVisible() {
+    if (this.columnState.value.order === this.columnsService.orderOfFirstVisible) {
+      this.renderer.addClass(this.el.nativeElement, FIRST_VISIBLE_COLUMN_CLASS);
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, FIRST_VISIBLE_COLUMN_CLASS);
+    }
+  }
+
+  public isLastVisible() {
+    if (this.columnState.value.order === this.columnsService.orderOfLastVisible) {
+      this.renderer.addClass(this.el.nativeElement, LAST_VISIBLE_COLUMN_CLASS);
+      this.setFlexibleWhenAllStrict();
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, LAST_VISIBLE_COLUMN_CLASS);
+    }
+  }
+
+  private setFlexibleWhenAllStrict() {
+    const flexibleWidths = this.columnsService.columnStates.filter(state => !state.hidden && state.strictWidth === 0);
+    if (flexibleWidths.length === 0) {
+      this.columnsService.emitStateChange(this.columnState, { changes: [DatagridColumnChanges.WIDTH], strictWidth: 0 });
     }
   }
 }

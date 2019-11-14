@@ -34,6 +34,8 @@ import { DomAdapter } from '../../utils/dom-adapter/dom-adapter';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { DetailService } from './providers/detail.service';
 import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { ViewManagerService } from './providers/view-manager.service';
 
 // Reusable list of providers used in a number of tests
 export const DATAGRID_SPEC_PROVIDERS = [
@@ -47,6 +49,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   DatagridIfExpandService,
   Page,
   ColumnsService,
+  ColumnReorderService,
   Items,
   DatagridRenderOrganizer,
   RowActionService,
@@ -56,6 +59,7 @@ export const DATAGRID_SPEC_PROVIDERS = [
   TableSizeService,
   DetailService,
   UNIQUE_ID_PROVIDER,
+  ViewManagerService,
 ];
 
 export class TestContext<D, C> {

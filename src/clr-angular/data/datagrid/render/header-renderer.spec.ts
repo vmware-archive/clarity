@@ -21,7 +21,12 @@ import { Page } from '../providers/page';
 import { Sort } from '../providers/sort';
 import { StateDebouncer } from '../providers/state-debouncer.provider';
 import { TableSizeService } from '../providers/table-size.service';
-import { HIDDEN_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './constants';
+import {
+  FIRST_VISIBLE_COLUMN_CLASS,
+  HIDDEN_COLUMN_CLASS,
+  LAST_VISIBLE_COLUMN_CLASS,
+  STRICT_WIDTH_CLASS,
+} from './constants';
 import { DatagridHeaderRenderer } from './header-renderer';
 import { DatagridRenderOrganizer } from './render-organizer';
 import { MOCK_ORGANIZER_PROVIDER, MockDatagridRenderOrganizer } from './render-organizer.mock';
@@ -29,6 +34,8 @@ import { ColumnState } from '../interfaces/column-state.interface';
 import { DatagridColumnChanges } from '../enums/column-changes.enum';
 import { ColumnsService } from '../providers/columns.service';
 import { DetailService } from '../providers/detail.service';
+import { ColumnReorderService } from '../providers/column-reorder.service';
+import { MOCK_COLUMN_SERVICE_PROVIDER, MockColumnsService } from '../providers/columns.service.mock';
 
 @Component({ template: `<clr-dg-column>Hello world</clr-dg-column>` })
 class SimpleTest {}
@@ -66,13 +73,14 @@ export default function(): void {
     let context: TestContext<DatagridHeaderRenderer, SimpleTest>;
     let domAdapter: MockDomAdapter;
     let organizer: MockDatagridRenderOrganizer;
-    let columnsService: ColumnsService;
+    let columnsService: MockColumnsService;
     let stateSub: BehaviorSubject<ColumnState>;
 
     beforeEach(function() {
       context = this.create(DatagridHeaderRenderer, SimpleTest, [
         MOCK_ORGANIZER_PROVIDER,
         MOCK_DOM_ADAPTER_PROVIDER,
+        MOCK_COLUMN_SERVICE_PROVIDER,
         Sort,
         FiltersProvider,
         Page,
@@ -80,11 +88,11 @@ export default function(): void {
         TableSizeService,
         DetailService,
         Renderer2,
-        ColumnsService,
+        ColumnReorderService,
       ]);
       domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
       organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
-      columnsService = context.getClarityProvider(ColumnsService);
+      columnsService = <MockColumnsService>context.getClarityProvider(ColumnsService);
       context.clarityDirective.setColumnState(0);
       stateSub = columnsService.columns[0];
     });
@@ -143,6 +151,28 @@ export default function(): void {
       stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: false });
       expect(context.clarityElement.classList).not.toContain(HIDDEN_COLUMN_CLASS);
     });
+
+    it('sets first visible class if order matches with first visible', function() {
+      expect(context.clarityElement.classList).not.toContain(FIRST_VISIBLE_COLUMN_CLASS);
+      columnsService.orderOfFirstVisible = 5; // 5 is randomly chosen
+      columnsService.emitStateChange(stateSub, { changes: [DatagridColumnChanges.ORDER], order: 5 });
+      context.clarityDirective.isFirstVisible();
+      expect(context.clarityElement.classList).toContain(FIRST_VISIBLE_COLUMN_CLASS);
+      columnsService.emitStateChange(stateSub, { changes: [DatagridColumnChanges.ORDER], order: 8 });
+      context.clarityDirective.isFirstVisible();
+      expect(context.clarityElement.classList).not.toContain(FIRST_VISIBLE_COLUMN_CLASS);
+    });
+
+    it('sets last visible class if order matches with last visible', function() {
+      expect(context.clarityElement.classList).not.toContain(LAST_VISIBLE_COLUMN_CLASS);
+      columnsService.orderOfLastVisible = 5; // 5 is randomly chosen
+      columnsService.emitStateChange(stateSub, { changes: [DatagridColumnChanges.ORDER], order: 5 });
+      context.clarityDirective.isLastVisible();
+      expect(context.clarityElement.classList).toContain(LAST_VISIBLE_COLUMN_CLASS);
+      columnsService.emitStateChange(stateSub, { changes: [DatagridColumnChanges.ORDER], order: 8 });
+      context.clarityDirective.isLastVisible();
+      expect(context.clarityElement.classList).not.toContain(LAST_VISIBLE_COLUMN_CLASS);
+    });
   });
 
   describe('Datagrid Header Resize Rendering', function() {
@@ -198,8 +228,8 @@ export default function(): void {
       column2InitialWidth = widthOf(columnHeader2Element);
       column3InitialWidth = widthOf(columnHeader3Element);
       column4InitialWidth = widthOf(columnHeader4Element);
-      columnHeader1DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[0];
-      columnHeader3DraggableDebugElement = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[2];
+      columnHeader1DraggableDebugElement = columnHeader1DebugElement.queryAll(By.directive(ClrDraggable))[1];
+      columnHeader3DraggableDebugElement = columnHeader3DebugElement.queryAll(By.directive(ClrDraggable))[1];
       columnHeader1DraggableDirective = columnHeader1DraggableDebugElement.injector.get(ClrDraggable);
       columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);
     });

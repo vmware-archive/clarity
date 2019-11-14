@@ -308,7 +308,7 @@ export default function(): void {
         columnsService = context.getClarityProvider(ColumnsService);
         columnsService.resetToLastCache();
         spyOn(columnsService, 'resetToLastCache');
-        spyOn(columnsService, 'emitStateChangeAt');
+        spyOn(columnsService, 'emitStateChange');
         context.detectChanges();
       });
 
@@ -316,22 +316,22 @@ export default function(): void {
         context.clarityDirective.toggleDetailPane(true);
         context.detectChanges();
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
-        expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
+        expect(columnsService.emitStateChange).toHaveBeenCalledTimes(1);
       });
 
       it('toggles the detail pane closed and resets to cache', function() {
         context.clarityDirective.toggleDetailPane(false);
         expect(columnsService.resetToLastCache).toHaveBeenCalledTimes(1);
-        expect(columnsService.emitStateChangeAt).not.toHaveBeenCalled();
+        expect(columnsService.emitStateChange).not.toHaveBeenCalled();
       });
 
       it('toggles the currently active detail item without clearing cache or closing', function() {
         context.clarityDirective.toggleDetailPane(true);
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
-        expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
+        expect(columnsService.emitStateChange).toHaveBeenCalledTimes(1);
         context.clarityDirective.toggleDetailPane(true);
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
-        expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
+        expect(columnsService.emitStateChange).toHaveBeenCalledTimes(1);
       });
     });
   });

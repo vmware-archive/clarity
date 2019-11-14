@@ -92,6 +92,12 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
         this.setupColumns();
         this.columnsSizesStable = false;
         this.stabilizeColumns();
+      }),
+      this.columnsService.checkFirstVisible.subscribe(() => {
+        this.findFirstVisible();
+      }),
+      this.columnsService.checkLastVisible.subscribe(() => {
+        this.findLastVisible();
       })
     );
   }
@@ -118,6 +124,14 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     this.rows.forEach(row => row.setColumnState());
   }
 
+  private findFirstVisible() {
+    this.headers.forEach(header => header.isFirstVisible());
+  }
+
+  private findLastVisible() {
+    this.headers.forEach(header => header.isLastVisible());
+  }
+
   private _heightSet: boolean = false;
 
   private shouldComputeHeight(): boolean {
@@ -133,9 +147,12 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     if (this.headers) {
       if (state && !this.columnsService.hasCache()) {
         this.columnsService.cache();
-        this.headers.forEach((header, index) => {
-          if (index > 0) {
-            this.columnsService.emitStateChangeAt(index, {
+
+        // we show detail pane next to the very first visible columns
+        // so we have to hide all columns except the first visible column
+        this.columnsService.columns.forEach(column => {
+          if (column.getValue().order !== this.columnsService.orderOfFirstVisible) {
+            this.columnsService.emitStateChange(column, {
               changes: [DatagridColumnChanges.HIDDEN],
               hidden: state,
             });
@@ -179,28 +196,18 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
    * Makes each header compute its width.
    */
   private computeHeadersWidth() {
-    const nbColumns: number = this.headers.length;
-    let allStrict = true;
     this.headers.forEach((header, index) => {
       // On the last header column check whether all columns have strict widths.
-      // If all columns have strict widths, remove the strict width from the last column and make it the column's
+      // If all columns have strict widths, remove the strict width from the last visible column and make it the column's
       // minimum width so that when all previous columns shrink, it will get a flexible width and cover the empty
       // gap in the Datagrid.
       const state: ColumnStateDiff = {
         changes: [DatagridColumnChanges.WIDTH],
         ...header.getColumnWidthState(),
       };
-
-      if (!state.strictWidth) {
-        allStrict = false;
-      }
-
-      if (nbColumns === index + 1 && allStrict) {
-        state.strictWidth = 0;
-      }
-
       this.columnsService.emitStateChangeAt(index, state);
     });
+    this.columnsService.requestLastVisibleChangeCheck();
   }
 
   /**

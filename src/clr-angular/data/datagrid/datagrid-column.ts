@@ -3,7 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { animate, style, transition, trigger } from '@angular/animations';
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   EventEmitter,
@@ -13,34 +16,46 @@ import {
   OnInit,
   Output,
   ViewContainerRef,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
+  ViewRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-
+import { DomAdapter } from 'src/clr-angular/utils/dom-adapter/dom-adapter';
+import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
-import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
-import { DatagridPropertyNumericFilter } from './built-in/filters/datagrid-property-numeric-filter';
-import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
+import { DatagridPropertyNumericFilter } from './built-in/filters/datagrid-property-numeric-filter';
+import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
+import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
+import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
+import { ColumnReorderService, ReorderAnimRequest } from './providers/column-reorder.service';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
+import { ViewAccessor } from './providers/view-manager.service';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
-import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { WrappedColumn } from './wrapped-column';
-import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
-import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
-import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { DetailService } from './providers/detail.service';
+import { DROP_ANIM_STATE, SHIFT_ANIM_STATE } from './enums/column-reorder-animation.enum';
 
 @Component({
   selector: 'clr-dg-column',
   template: `
+    <div class="datagrid-column-wrapper"
+         [clrDraggable]="_view"
+         [clrGroup]="columnsGroupId"
+         (clrDragStart)="inDragMode = true;"
+         (clrDragMove)="_markForCheck = true;"
+         (clrDragEnd)="inDragMode = false;"
+         (@reorderDropAnimation.done)="resetDropAnimation()"
+         [@reorderDropAnimation]="dropAnimationTrigger"
+         (@reorderShiftAnimation.done)="resetShiftAnimation()"
+         [@reorderShiftAnimation]="shiftAnimationTrigger">
       <div class="datagrid-column-flex">
           <!-- I'm really not happy with that select since it's not very scalable -->
           <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
@@ -75,34 +90,64 @@ import { DetailService } from './providers/detail.service';
           <span class="datagrid-column-title" *ngIf="!sortable">
               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
           </span>
-
-          <clr-dg-column-separator *ngIf="showSeparator"></clr-dg-column-separator>
+      </div>
+      </div>
+      <clr-dg-column-separator></clr-dg-column-separator>
+      <div class="datagrid-column-droppable" 
+      clrDroppable 
+      [clrGroup]="columnsGroupId"
+      (clrDragStart)="_markForCheck = true; closeFilterWhenDragStart()"
+      (clrDrop)="requestReorder($event);">
+        <div class="datagrid-column-drop-line"></div>
       </div>
     `,
   providers: [ClrPopoverPositionService, ClrPopoverEventsService, ClrPopoverToggleService],
   host: {
     '[class.datagrid-column]': 'true',
+    '[class.datagrid-column-drag-mode]': 'inDragMode',
+    '[class.datagrid-column-reorder-drop]': 'inReorderDrop',
+    '[class.datagrid-column-reorder-shift]': 'inReorderShift',
     '[attr.aria-sort]': 'ariaSort',
     role: 'columnheader',
   },
+  animations: [
+    trigger('reorderDropAnimation', [
+      transition(`${DROP_ANIM_STATE.INACTIVE} => ${DROP_ANIM_STATE.ACTIVE}`, [
+        style({
+          position: 'fixed',
+          width: '{{width}}px',
+          height: '{{height}}px',
+          top: '{{fromTop}}px',
+          left: '{{fromLeft}}px',
+        }),
+        animate('0.2s 0.1s ease-in-out', style({ top: '{{toTop}}px', left: '{{toLeft}}px' })),
+      ]),
+    ]),
+    trigger('reorderShiftAnimation', [
+      transition(`${SHIFT_ANIM_STATE.INACTIVE} => ${SHIFT_ANIM_STATE.ACTIVE}`, [
+        style({ position: 'relative', left: '{{fromLeft}}px' }),
+        animate('0.2s ease-in-out', style({ left: '0px' })),
+      ]),
+    ]),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
-  implements OnDestroy, OnInit {
+  implements ViewAccessor, OnDestroy, OnInit {
   constructor(
     private _sort: Sort<T>,
     filters: FiltersProvider<T>,
     private vcr: ViewContainerRef,
-    private detailService: DetailService,
     private changeDetectorRef: ChangeDetectorRef,
-    public commonStrings: ClrCommonStringsService
+    public commonStrings: ClrCommonStringsService,
+    private columnReorderService: ColumnReorderService,
+    private filterPopoverToggleService: ClrPopoverToggleService,
+    private domAdapter: DomAdapter
   ) {
     super(filters);
     this.subscriptions.push(this.listenForSortingChanges());
-    this.subscriptions.push(this.listenForDetailPaneChanges());
+    this.subscriptions.push(this.listenForReorderAnimRequest());
   }
-
-  public showSeparator = true;
 
   /**
    * Subscription to the sort service changes
@@ -111,16 +156,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
-  }
-
-  private listenForDetailPaneChanges() {
-    return this.detailService.stateChange.subscribe(state => {
-      if (this.showSeparator !== !state) {
-        this.showSeparator = !state;
-        // Have to manually change because of OnPush
-        this.changeDetectorRef.markForCheck();
-      }
-    });
   }
 
   private listenForSortingChanges() {
@@ -142,6 +177,115 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       }
       // deprecated: to be removed - END
     });
+  }
+
+  private listenForReorderAnimRequest() {
+    return this.columnReorderService.reorderAnimRequested.subscribe(reorderAnimRequest => {
+      if (this._order === reorderAnimRequest.targetOrder) {
+        this.triggerDropAnimation(reorderAnimRequest);
+      } else if (reorderAnimRequest.sourceOrder <= this._order && this._order < reorderAnimRequest.targetOrder) {
+        this.triggerShiftAnimation(reorderAnimRequest, 1);
+      } else if (reorderAnimRequest.sourceOrder >= this._order && this._order > reorderAnimRequest.targetOrder) {
+        this.triggerShiftAnimation(reorderAnimRequest, -1);
+      }
+    });
+  }
+
+  // Drop animation when the column gets successfully dropped on its target Droppable
+  private triggerDropAnimation(reorderAnimRequest: ReorderAnimRequest) {
+    const sourceClientRect = this.domAdapter.clientRect(reorderAnimRequest.dragSourceElement);
+    const [fromTop, fromLeft] = [
+      reorderAnimRequest.ghostAnchorPosition.pageY,
+      reorderAnimRequest.ghostAnchorPosition.pageX,
+    ];
+    const [toTop, toLeft] = [sourceClientRect.top, sourceClientRect.left];
+    const [width, height] = [sourceClientRect.width, sourceClientRect.height];
+    this.dropAnimationTrigger = {
+      value: DROP_ANIM_STATE.ACTIVE,
+      params: { fromTop, fromLeft, toTop, toLeft, width, height },
+    };
+  }
+
+  // Shift animation for the other columns when the dragged column gets successfully dropped on its target Droppable
+  private triggerShiftAnimation(reorderAnimRequest: ReorderAnimRequest, ltr: 1 | -1) {
+    const sourceClientRect = this.domAdapter.clientRect(reorderAnimRequest.dragSourceElement);
+    this.changeDetectorRef.markForCheck();
+    this.shiftAnimationTrigger = {
+      value: SHIFT_ANIM_STATE.ACTIVE,
+      params: { fromLeft: ltr * sourceClientRect.width },
+    };
+  }
+
+  // Every datagrid column should have unique group id.
+  // Otherwise, they would get polluted with other datagrids draggable columns.
+  get columnsGroupId() {
+    return this.columnReorderService.columnsGroupId;
+  }
+
+  // We need to apply certain styles during dragging
+  inDragMode: boolean = false;
+
+  // We process the user given order before emitting
+  // so here we have async event emitter to circumvent chocolate error.
+  @Output('clrDgColumnOrderChange') private orderChange = new EventEmitter<number>(true);
+
+  private _order: number;
+  private _userDefinedOrder: number;
+
+  get order(): number {
+    return this._order;
+  }
+
+  get userDefinedOrder(): number {
+    return this._userDefinedOrder;
+  }
+
+  set order(value: number) {
+    const oldOrder = this._order;
+    this._order = value;
+    // when order gets set for the first time, don't emit it.
+    if (typeof oldOrder !== 'undefined' && oldOrder !== this._order) {
+      this.orderChange.emit(this._order);
+    }
+  }
+
+  @Input('clrDgColumnOrder')
+  set userDefinedOrder(value: number) {
+    if (typeof value === 'number') {
+      this._userDefinedOrder = value;
+      if (typeof this._order === 'number' && value !== this._order) {
+        this.columnReorderService.requestReorder(this._order, value);
+      }
+    }
+  }
+
+  dropAnimationTrigger: any = DROP_ANIM_STATE.INACTIVE;
+  shiftAnimationTrigger: any = SHIFT_ANIM_STATE.INACTIVE;
+
+  get inReorderDrop() {
+    return this.dropAnimationTrigger && this.dropAnimationTrigger.value === DROP_ANIM_STATE.ACTIVE;
+  }
+
+  get inReorderShift() {
+    return this.shiftAnimationTrigger && this.shiftAnimationTrigger.value === SHIFT_ANIM_STATE.ACTIVE;
+  }
+
+  resetDropAnimation() {
+    this.dropAnimationTrigger = { value: DROP_ANIM_STATE.INACTIVE };
+  }
+
+  resetShiftAnimation() {
+    this.shiftAnimationTrigger = { value: SHIFT_ANIM_STATE.INACTIVE };
+  }
+
+  requestReorder(event: ClrDragEvent<ViewRef>) {
+    this.columnReorderService.reorderViews(event.dragDataTransfer, this._view, event);
+  }
+
+  closeFilterWhenDragStart() {
+    if (this.filterPopoverToggleService.open) {
+      this.filterPopoverToggleService.open = false;
+    }
   }
 
   /*

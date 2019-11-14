@@ -106,6 +106,8 @@ export class ClrDatagridHideableColumn implements OnDestroy {
       this.columnState.subscribe((state: ColumnState) => {
         if (state.changes && state.changes.indexOf(DatagridColumnChanges.HIDDEN) > -1) {
           this.hiddenChange.emit(state.hidden); // Can emit through @Output when desugared syntax is used
+          this.columnsService.requestFirstVisibleChangeCheck();
+          this.columnsService.requestLastVisibleChangeCheck();
         }
       })
     );

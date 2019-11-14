@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ViewChild } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { Component, ViewChild, DebugElement, ViewRef, ViewContainerRef, TemplateRef } from '@angular/core';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { commonStringsDefault } from '@clr/core';
@@ -21,6 +21,10 @@ import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.int
 import { DetailService } from './providers/detail.service';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
+import { ClrDroppable, ClrDraggable, ClrDragEvent } from '../../utils/drag-and-drop';
+import { ColumnReorderService } from './providers/column-reorder.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { DROP_ANIM_STATE, SHIFT_ANIM_STATE } from './enums/column-reorder-animation.enum';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -445,14 +449,6 @@ export default function(): void {
         this.context = this.create(ClrDatagridColumn, OnPushViewChangeTest, DATAGRID_SPEC_PROVIDERS);
       });
 
-      it('hides the separator when detail pane is open', function() {
-        const detailService = this.context.getClarityProvider(DetailService);
-        expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeTruthy();
-        detailService.open({});
-        this.context.detectChanges();
-        expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeFalsy();
-      });
-
       it('toggles sort icon if sort is activated or deactivated', function() {
         // activates column's sorting
         this.context.clarityDirective.sort();
@@ -463,6 +459,158 @@ export default function(): void {
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelector('.sort-icon')).toBeNull();
       });
+    });
+    describe('Column Reorder', function() {
+      let context: TestContext<ClrDatagridColumn, ReorderTest>;
+      let columnDraggableDE: DebugElement;
+      let columnDraggable: ClrDraggable<any>;
+      let columnDroppableDE: DebugElement;
+      let columnDroppable: ClrDroppable<any>;
+      let column: ClrDatagridColumn;
+      let columnEl: HTMLElement;
+      let columnReorderService: ColumnReorderService;
+      let filterPopoverToggleService: ClrPopoverToggleService;
+      let testComponent: ReorderTest;
+
+      beforeEach(function() {
+        context = this.create(ClrDatagridColumn, ReorderTest, DATAGRID_SPEC_PROVIDERS);
+        column = context.clarityDirective;
+        columnEl = context.clarityElement;
+        columnDraggableDE = context.fixture.debugElement.queryAll(By.directive(ClrDraggable))[0];
+        columnDroppableDE = context.fixture.debugElement.queryAll(By.directive(ClrDroppable))[0];
+        columnDraggable = columnDraggableDE.injector.get(ClrDraggable);
+        columnDroppable = columnDroppableDE.injector.get(ClrDroppable);
+        columnReorderService = context.getClarityProvider(ColumnReorderService);
+        filterPopoverToggleService = context.getClarityProvider(ClrPopoverToggleService);
+        testComponent = context.testComponent;
+        context.detectChanges();
+      });
+
+      it('assigns unique string id with columnsGroupId', function() {
+        expect(context.clarityDirective.columnsGroupId).toBe(columnReorderService.columnsGroupId);
+      });
+
+      it('adds drag mode class on drag start', function() {
+        expect(column.inDragMode).toBeFalse();
+        columnDraggable.dragStartEmitter.next(null);
+        context.detectChanges();
+        expect(column.inDragMode).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-drag-mode')).toBeTrue();
+      });
+
+      it('removes drag mode class on drag end', function() {
+        columnDraggable.dragStartEmitter.next(null);
+        context.detectChanges();
+        expect(column.inDragMode).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-drag-mode')).toBeTrue();
+        columnDraggable.dragEndEmitter.next(null);
+        context.detectChanges();
+        expect(column.inDragMode).toBeFalse();
+        expect(columnEl.classList.contains('datagrid-column-drag-mode')).toBeFalse();
+      });
+
+      it('should add drop mode class on active drop animation state', function() {
+        expect(column.inReorderDrop).toBeFalse();
+        column.dropAnimationTrigger = {
+          value: DROP_ANIM_STATE.ACTIVE,
+        };
+        context.detectChanges();
+        expect(column.inReorderDrop).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-reorder-drop')).toBeTrue();
+      });
+
+      it('should remove drop mode class on inactive drop animation state', function() {
+        column.dropAnimationTrigger = {
+          value: DROP_ANIM_STATE.ACTIVE,
+        };
+        context.detectChanges();
+        expect(column.inReorderDrop).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-reorder-drop')).toBeTrue();
+        column.resetDropAnimation();
+        context.detectChanges();
+        expect(column.inReorderDrop).toBeFalse();
+        expect(columnEl.classList.contains('datagrid-column-reorder-drop')).toBeFalse();
+      });
+
+      it('should add shift mode class on active shift animation state', function() {
+        expect(column.inReorderShift).toBeFalse();
+        column.shiftAnimationTrigger = {
+          value: SHIFT_ANIM_STATE.ACTIVE,
+        };
+        context.detectChanges();
+        expect(column.inReorderShift).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-reorder-shift')).toBeTrue();
+      });
+
+      it('should remove shift mode class on inactive shift animation state', function() {
+        column.shiftAnimationTrigger = {
+          value: SHIFT_ANIM_STATE.ACTIVE,
+        };
+        context.detectChanges();
+        expect(column.inReorderShift).toBeTrue();
+        expect(columnEl.classList.contains('datagrid-column-reorder-shift')).toBeTrue();
+        column.resetShiftAnimation();
+        context.detectChanges();
+        expect(column.inReorderShift).toBeFalse();
+        expect(columnEl.classList.contains('datagrid-column-reorder-shift')).toBeFalse();
+      });
+
+      it('closes filter popover on start', function() {
+        filterPopoverToggleService.open = true;
+        columnDroppable.dragStartEmitter.next(null);
+        context.detectChanges();
+        expect(filterPopoverToggleService.open).toBeFalse();
+      });
+
+      it('request reorder on drop', function() {
+        spyOn(columnReorderService, 'reorderViews');
+        columnReorderService.containerRef = testComponent.dummyContainerRef;
+        columnReorderService.containerRef.insert(column._view);
+        columnReorderService.containerRef.insert(testComponent.dummyView);
+        const dropEvent = <ClrDragEvent<ViewRef>>{ dragDataTransfer: testComponent.dummyView };
+        columnDroppable.dropEmitter.next(dropEvent);
+        context.detectChanges();
+        expect(columnReorderService.reorderViews).toHaveBeenCalledWith(
+          testComponent.dummyView,
+          column._view,
+          dropEvent
+        );
+      });
+
+      it('request reorder on drop', function() {
+        spyOn(columnReorderService, 'reorderViews');
+        columnReorderService.containerRef = testComponent.dummyContainerRef;
+        columnReorderService.containerRef.insert(column._view);
+        columnReorderService.containerRef.insert(testComponent.dummyView);
+        const dropEvent = <ClrDragEvent<ViewRef>>{ dragDataTransfer: testComponent.dummyView };
+        columnDroppable.dropEmitter.next(dropEvent);
+        context.detectChanges();
+        expect(columnReorderService.reorderViews).toHaveBeenCalledWith(
+          testComponent.dummyView,
+          column._view,
+          dropEvent
+        );
+      });
+
+      it('accepts order input', function() {
+        context.testComponent.order = 5;
+        context.detectChanges();
+        expect(context.clarityDirective.userDefinedOrder).toBe(5);
+      });
+
+      it(
+        'emits order change',
+        fakeAsync(function() {
+          context.clarityDirective.order = 4;
+          context.detectChanges();
+          tick();
+          expect(context.testComponent.emittedOrder).toBeUndefined(`shouldn't emit on first setting.`);
+          context.clarityDirective.order = 2;
+          context.detectChanges();
+          tick();
+          expect(context.testComponent.emittedOrder).toBe(2);
+        })
+      );
     });
   });
 }
@@ -599,3 +747,36 @@ class ColTypeTest {
   template: `<clr-dg-column [clrDgField]="'test'">Hello World</clr-dg-column>`,
 })
 class OnPushViewChangeTest {}
+@Component({
+  template: `
+        <clr-dg-column [clrDgColumnOrder]="order" (clrDgColumnOrderChange)="orderChange($event)">
+          ColumnTitle
+        </clr-dg-column>
+
+        <ng-container #dummyViewContainer></ng-container>
+
+        <ng-template #dummyViewTpl>0</ng-template>
+    `,
+})
+class ReorderTest {
+  order: number;
+
+  emittedOrder: number;
+
+  orderChange(newOrder: number) {
+    this.emittedOrder = newOrder;
+  }
+
+  // The following viewcontainer will be used to mock the value of containerRef in ColumnReorderService
+  @ViewChild('dummyViewContainer', { read: ViewContainerRef, static: true })
+  dummyContainerRef: ViewContainerRef;
+
+  @ViewChild('dummyViewTpl', { static: true })
+  dummyViewTpl: TemplateRef<void>;
+
+  dummyView: ViewRef;
+
+  ngOnInit() {
+    this.dummyView = this.dummyViewTpl.createEmbeddedView(null);
+  }
+}

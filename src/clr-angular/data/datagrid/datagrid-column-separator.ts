@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component, Inject, Renderer2 } from '@angular/core';
 import { ClrDragEvent } from '../../utils/drag-and-drop/drag-event';
 import { ColumnResizerService } from './providers/column-resizer.service';
 import { TableSizeService } from './providers/table-size.service';
-import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 
 @Component({
   selector: 'clr-dg-column-separator',
@@ -59,12 +59,11 @@ export class ClrDatagridColumnSeparator {
     this.renderer.setStyle(this.document.body, 'cursor', 'auto');
   }
 
+  private withinMaxResizeRange: boolean;
   private redFlagTracker(resizeTrackerEl: HTMLElement) {
-    let isWithinMaxResizeRange: boolean;
-    // @TODO(JEREMY) Review this, it will always be true because above is always null
-    if (isWithinMaxResizeRange !== this.columnResizerService.isWithinMaxResizeRange) {
-      isWithinMaxResizeRange = this.columnResizerService.isWithinMaxResizeRange;
-      if (!isWithinMaxResizeRange) {
+    if (this.withinMaxResizeRange !== this.columnResizerService.isWithinMaxResizeRange) {
+      this.withinMaxResizeRange = this.columnResizerService.isWithinMaxResizeRange;
+      if (!this.withinMaxResizeRange) {
         this.renderer.addClass(resizeTrackerEl, 'exceeded-max');
       } else {
         this.renderer.removeClass(resizeTrackerEl, 'exceeded-max');

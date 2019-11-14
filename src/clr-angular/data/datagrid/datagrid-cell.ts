@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ContentChildren, Injector, OnInit, QueryList, ViewContainerRef } from '@angular/core';
-
 import { ClrSignpost } from '../../popover/signpost/signpost';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
+import { ViewAccessor } from './providers/view-manager.service';
 import { WrappedCell } from './wrapped-cell';
 
 @Component({
@@ -20,7 +20,7 @@ import { WrappedCell } from './wrapped-cell';
     role: 'gridcell',
   },
 })
-export class ClrDatagridCell implements OnInit {
+export class ClrDatagridCell implements ViewAccessor, OnInit {
   /*********
    * @property signpost
    *
@@ -32,6 +32,8 @@ export class ClrDatagridCell implements OnInit {
   @ContentChildren(ClrSignpost) signpost: QueryList<ClrSignpost>;
 
   constructor(private vcr: ViewContainerRef) {}
+
+  order: number;
 
   private wrappedInjector: Injector;
 

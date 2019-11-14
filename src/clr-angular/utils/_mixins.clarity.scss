@@ -117,3 +117,25 @@ $clr-outline-spread: 2px;
     @return #{'--' + $str};
   }
 }
+@mixin clr-datagrid-column-ghost() {
+  position: relative;
+  background-color: $clr-thead-bgcolor;
+  box-shadow: 0 3px 4px rgba(116, 116, 116, 0.3);
+  z-index: map-get($clr-layers, draggable-ghost);
+
+  .datagrid-column-separator {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: solid 1px #bbb;
+    border-left: solid 2px $clr-action-purple-light;
+  }
+}

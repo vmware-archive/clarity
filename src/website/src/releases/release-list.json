@@ -1,5 +1,5 @@
 {
-  "current": "2.3.1",
+  "current": "2.3.2",
   "all": {
     "3.0.0-next.2": {
       "date": "Oct 18, 2019",
@@ -9,8 +9,13 @@
       "date": "Oct 3, 2019",
       "sketch": "2.2.0"
     },
+    "2.3.2": {
+      "date": "Nov 14, 2019",
+      "sketch": "2.2.0",
+      "commit": "0bbfa656dc2e81c1d89c80ee35c6dc0c44daa396"
+    },
     "2.3.1": {
-      "date": "Oct 18, 2019",
+      "date": "Oct 31, 2019",
       "sketch": "2.2.0",
       "commit": "84475b93c84c24c83261f69d4ea990a560e7140f"
     },

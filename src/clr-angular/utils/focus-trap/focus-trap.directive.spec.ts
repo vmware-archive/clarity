@@ -18,7 +18,6 @@ import { ClrFocusTrapModule } from './focus-trap.module';
 describe('FocusTrap', () => {
   let fixture: ComponentFixture<any>;
   let compiled: any;
-  let component: TestComponent;
 
   let lastInput: HTMLElement;
 
@@ -27,6 +26,8 @@ describe('FocusTrap', () => {
   let directiveElement: HTMLElement;
 
   describe('default behavior', () => {
+    let component: TestComponent;
+
     beforeEach(() => {
       TestBed.configureTestingModule({ imports: [ClrFocusTrapModule], declarations: [TestComponent] });
       fixture = TestBed.createComponent(TestComponent);
@@ -53,15 +54,18 @@ describe('FocusTrap', () => {
       expect(directiveElement.getAttribute('tabindex')).toEqual('0');
     });
 
-    it('should add its off-screen focus rebounder elements to document body on instantiation', () => {
+    it('should add its off-screen focus rebounder elements on instantiation', () => {
       const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
       expect(offScreenEls.length).toBe(2);
     });
 
-    it('should add its off-screen focus elements as first an last elements in document body', () => {
-      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(document.body.firstChild).toBe(offScreenEls[0]);
-      expect(document.body.lastChild).toBe(offScreenEls[1]);
+    it('should place rebound elements correctly outside focus trap', () => {
+      const trap = document.getElementById('main-focus-trap');
+      const offScreenEls = document.querySelectorAll('span.offscreen-focus-rebounder');
+      // Now check their placement, the next element should be a rebounder
+      expect(trap.previousElementSibling).toEqual(offScreenEls[0]);
+      // Now check in the focus trap, the next element should be a rebounder
+      expect(trap.nextElementSibling).toEqual(offScreenEls[1]);
     });
 
     it('should rebound focus back to the directive if one of rebounding elements gets focused', () => {
@@ -83,23 +87,23 @@ describe('FocusTrap', () => {
       expect(document.body.querySelectorAll('span.offscreen-focus-rebounder').length).toBe(0);
     });
 
-    it(`should add off-screen rebounder elements only once`, () => {
+    it(`should add off-screen rebounder elements per trap`, () => {
       component.level1 = true;
       fixture.detectChanges();
       let offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(offScreenEls.length).toBe(2);
+      expect(offScreenEls.length).toBe(4);
       component.level2 = true;
       fixture.detectChanges();
       offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(offScreenEls.length).toBe(2);
+      expect(offScreenEls.length).toBe(6);
     });
 
-    it(`should remove off-screen rebounder elements only once`, () => {
+    it(`should remove off-screen rebounder elements per trap`, () => {
       component.level1 = true;
       component.level2 = true;
       fixture.detectChanges();
       let offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
-      expect(offScreenEls.length).toBe(2);
+      expect(offScreenEls.length).toBe(6);
       component.level2 = false;
       component.level1 = false;
       fixture.detectChanges();
@@ -197,11 +201,63 @@ describe('FocusTrap', () => {
       expect(document.activeElement).toBe(initialActiveElement);
     });
   });
+
+  describe('local behavior', () => {
+    let component: TestLocalModalComponent;
+    let rebounders: NodeList;
+    let first, last: HTMLElement;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [ClrFocusTrapModule],
+        declarations: [TestLocalModalComponent],
+      });
+
+      fixture = TestBed.createComponent(TestLocalModalComponent);
+      fixture.detectChanges();
+      component = fixture.componentInstance;
+
+      component.enableTrap = true;
+      fixture.detectChanges();
+      // Move focus into the trap, usually done by the host
+      document.getElementById('focus-trap').focus();
+
+      rebounders = document.querySelectorAll('.offscreen-focus-rebounder');
+      first = <HTMLElement>rebounders.item(0);
+      last = <HTMLElement>rebounders.item(1);
+    });
+
+    afterEach(() => {
+      fixture.destroy();
+    });
+
+    it('should trap focus locally', () => {
+      // We can't test tab focus movement for security reasons, so will test by manually moving focus as if tab was pressed
+      // First tab press
+      document.getElementById('button').focus();
+      expect(document.activeElement).toBe(document.getElementById('button'));
+      // Second tab press would go to bottom rebounder, then should move to host (focus trap)
+      last.focus();
+      expect(document.activeElement).toBe(document.getElementById('focus-trap'));
+    });
+
+    it('should allow focus to move outside with mouse and not steal focus back', () => {
+      expect(document.activeElement).toBe(document.getElementById('focus-trap'));
+      const input = document.getElementById('input');
+      input.focus(); // Move focus outside of trap
+      expect(document.activeElement).toBe(input);
+      const button = document.getElementById('button'); // Move back inside of trap
+      button.focus();
+      expect(document.activeElement).toBe(button);
+      last.focus();
+      expect(document.activeElement).toBe(last); // Focus trap no longer moves focus since we broke outside
+    });
+  });
 });
 
 @Component({
   template: `    
-        <form clrFocusTrap *ngIf="mainFocusTrap">
+        <form clrFocusTrap *ngIf="mainFocusTrap" id="main-focus-trap">
             <button id="first">
                 Button to test first input
             </button>
@@ -262,4 +318,18 @@ class TestModalComponent {
   modal: ClrModal;
   openState: boolean = false;
   model: any = { contactInfo: '' };
+}
+
+@Component({
+  template: `
+  <input id="input" type="text" />
+  <div id="parent">
+    <div [clrFocusTrap]="{strict: false}" *ngIf="enableTrap" id="focus-trap">
+      <button id="button">Focusable Button</button>
+    </div>
+  </div>
+`,
+})
+class TestLocalModalComponent {
+  enableTrap = false;
 }

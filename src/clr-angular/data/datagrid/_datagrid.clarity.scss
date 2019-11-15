@@ -842,10 +842,8 @@
         }
 
         // Override checkbox labels only when they are in a column. This allows them to be vertically centered.
-        .clr-checkbox-wrapper label {
-          &:before {
-            top: 0;
-          }
+        .clr-checkbox-wrapper .clr-control-label {
+          margin-top: -1 * $clr_baselineRem_0_4;
         }
       }
 

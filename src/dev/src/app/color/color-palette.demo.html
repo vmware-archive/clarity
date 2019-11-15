@@ -10,23 +10,25 @@
         <button clrTabLink>Clarity Colors (@3.0+)</button>
         <clr-tab-content *clrIfActive>
             <div class="clr-row">
-                <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of clarityPalettes">
-                    <h4>{{palette.name}} color</h4>
-                    <ng-container *ngFor="let color of palette.weights">
-                        <p class="card-swatch" [style.background]="color.hsl">
-                            <span [style.color]="fontColor(color.weight)">
-                                $clr-color-{{palette.name}}-{{color.weight == null ? '(n/a)' : color.weight}}
-                            </span>
-                        </p>
-                    </ng-container>
-                    <h4>{{palette.name}} color  ON</h4>
-                    <ng-container *ngFor="let color of palette.weights">
-                        <p class="card-swatch" [style.background]="color.on">
-                       <span [style.color]="color.hsl">
-                            $clr-color-{{palette.name}}-{{color.weight == null ? '(n/a)' : color.weight}}
-                        </span>
-                        </p>
-                    </ng-container>
+                <div class="clr-col-sm-6 clr-col-12" *ngFor="let palette of clarityPalettes">
+                    <div class="card card-block card-swatch-block">
+                        <h4>{{palette.name}} color</h4>
+                        <ng-container *ngFor="let color of palette.weights">
+                            <p class="card-swatch" [style.background]="color.hsl">
+                                <span [style.color]="fontColor(color.weight)">
+                                    $clr-color-{{palette.name}}-{{color.weight == null ? '(n/a)' : color.weight}}
+                                </span>
+                            </p>
+                        </ng-container>
+                        <h4>{{palette.name}} color  ON</h4>
+                        <ng-container *ngFor="let color of palette.weights">
+                            <p class="card-swatch" [style.background]="color.on">
+                               <span [style.color]="color.hsl">
+                                    $clr-color-{{palette.name}}-{{color.weight == null ? '(n/a)' : color.weight}}
+                                </span>
+                            </p>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </clr-tab-content>

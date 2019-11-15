@@ -19,7 +19,7 @@ describe(`Clarity - ${Cypress.env('CLARITY_THEME')}`, () => {
   // ButtonSpecs();
   CheckboxesSpec();
   ColorSpec();
-  DatagridSpec();
+  // DatagridSpec();
   // ListsSpec();
   TogglesSpec();
   SelectSpec();

@@ -11,6 +11,7 @@ import {
   HostListener,
   Inject,
   Injector,
+  Input,
   OnDestroy,
   PLATFORM_ID,
   Renderer2,
@@ -18,10 +19,17 @@ import {
 
 import { FocusTrapTracker } from './focus-trap-tracker.service';
 
+interface FocusTrapConfig {
+  strict: boolean;
+}
+
 @Directive({ selector: '[clrFocusTrap]' })
 export class FocusTrapDirective implements AfterViewInit, OnDestroy {
   private previousActiveElement: any;
+  private previousTrappedActiveElement: any;
+  private localFocusEscaped = false;
   private document: Document;
+  private parentElement: Element;
 
   private topReboundEl: any;
   private bottomReboundEl: any;
@@ -39,13 +47,36 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0');
   }
 
+  private _config: FocusTrapConfig = {
+    strict: true,
+  };
+  @Input('clrFocusTrap')
+  set config(config: FocusTrapConfig) {
+    this._config = Object.assign(this._config, config);
+  }
+
   @HostListener('document:focusin', ['$event'])
   onFocusIn(event: any) {
-    const nativeElement: HTMLElement = this.el.nativeElement;
-
-    if (this.focusTrapsTracker.current === this && event.target && !nativeElement.contains(event.target)) {
-      nativeElement.focus();
+    if (this.focusTrapsTracker.current !== this || !isPlatformBrowser(this.platformId) || this.localFocusEscaped) {
+      return;
     }
+    const nativeElement: HTMLElement = this.el.nativeElement;
+    if (this._config.strict && event.target && !nativeElement.contains(event.target)) {
+      // When the focus trap is global, always steal focus back if it goes outside
+      nativeElement.focus();
+    } else if (event.target === this.bottomReboundEl && nativeElement.contains(this.previousTrappedActiveElement)) {
+      // When the focus trap is local, if the user navigates via keyboard to the end element from within the trap, move to top
+      nativeElement.focus();
+    } else if (event.target === this.topReboundEl) {
+      // When the focus trap is local, if the user navigates via keyboard back to start element from within the trap, move to bottom
+      // @TODO implement an acceptable solution to SHIFT+TAB navigation
+    } else if (event.target !== nativeElement && !nativeElement.contains(event.target)) {
+      // If a user has escaped the trap using the mouse
+      // relax, don't do it, when you want to go to it, living those dreams, scheme those schemes, hit me with those laser beams
+      this.localFocusEscaped = true;
+    }
+    // Track the last focused item, so we can check
+    this.previousTrappedActiveElement = event.target;
   }
 
   private createFocusableOffScreenEl(): any {
@@ -59,33 +90,25 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
   }
 
   private addReboundEls() {
-    // We will add these focus rebounding elements only in the following conditions:
-    // 1. It should be running inside browser platform as it accesses document.body element
-    // 2. We should NOT add them more than once. Hence, we are counting a number of focus trappers
-    //    and only add on the first focus trapper.
-
-    if (isPlatformBrowser(this.platformId) && this.focusTrapsTracker.nbFocusTrappers === 1) {
+    if (isPlatformBrowser(this.platformId)) {
       this.topReboundEl = this.createFocusableOffScreenEl();
       this.bottomReboundEl = this.createFocusableOffScreenEl();
-      // Add reboundBeforeTrapEl to the document body as the first child
-      this.renderer.insertBefore(this.document.body, this.topReboundEl, this.document.body.firstChild);
-      // Add reboundAfterTrapEl to the document body as the last child
-      this.renderer.appendChild(this.document.body, this.bottomReboundEl);
+      const hostElement = this.el.nativeElement;
+      // Add reboundBeforeTrapEl right outside of host element
+      this.renderer.insertBefore(hostElement.parentElement, this.topReboundEl, hostElement);
+      // Add reboundAfterTrapEl right after host element
+      if (hostElement.nextSibling) {
+        this.renderer.insertBefore(hostElement.parentNode, this.bottomReboundEl, hostElement.nextSibling);
+      } else {
+        this.renderer.appendChild(hostElement.parentNode, this.bottomReboundEl);
+      }
     }
   }
 
   private removeReboundEls() {
-    if (
-      isPlatformBrowser(this.platformId) &&
-      this.focusTrapsTracker.nbFocusTrappers === 1 &&
-      this.topReboundEl &&
-      this.bottomReboundEl
-    ) {
-      // The renderer does not immediately remove the child nodes,
-      // which may lead to synchronicity issues.
-      this.document.body.removeChild(this.topReboundEl);
-      this.document.body.removeChild(this.bottomReboundEl);
-
+    if (isPlatformBrowser(this.platformId) && this.topReboundEl && this.bottomReboundEl) {
+      this.parentElement.removeChild(this.topReboundEl);
+      this.parentElement.removeChild(this.bottomReboundEl);
       // These are here to to make sure that
       // we completely delete all traces of the removed DOM objects.
       delete this.topReboundEl;
@@ -102,6 +125,7 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.previousActiveElement = <HTMLElement>this.document.activeElement;
+      this.parentElement = this.el.nativeElement.parentElement;
     }
 
     this.addReboundEls();

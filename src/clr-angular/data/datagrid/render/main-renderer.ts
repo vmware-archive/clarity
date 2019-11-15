@@ -161,6 +161,10 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       } else if (!state) {
         this.columnsService.resetToLastCache();
       }
+
+      // we need to request checks on the last visible column
+      // as we are hiding all columns except the very first visible one
+      this.columnsService.requestLastVisibleChangeCheck();
     }
   }
 

@@ -9,16 +9,11 @@
 
 $clr-use-custom-properties: true;
 
-@import '../../clr-angular/color/variables.color';
-@import '../../clr-angular/utils/variables.global';
-@import '../../clr-angular/utils/mixins.clarity';
+@import './mixins/mixins';
+@import './variables/variables';
 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
-
-@import './../../clr-angular/color/variables.color';
-@import './../../clr-angular/utils/variables.global';
-@import './../../clr-angular/typography/variables.typography';

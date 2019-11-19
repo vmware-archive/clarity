@@ -6,17 +6,22 @@
 
 import { checkEyes, setup } from '../util';
 
-const test = 'Toggles';
+const test = 'Tabs';
 
-export function TogglesSpec() {
+export function TabsSpec() {
   describe(test, () => {
     beforeEach(() => {
       setup(test);
     });
 
-    it('default', () => {
-      cy.visit('/toggles');
-      checkEyes('default');
+    it('static', () => {
+      cy.visit('/tabs/static');
+      checkEyes('static');
+    });
+
+    it('angular', () => {
+      cy.visit('/tabs/angular');
+      checkEyes('angular');
     });
   });
 }

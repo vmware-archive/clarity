@@ -6,17 +6,22 @@
 
 import { checkEyes, setup } from '../util';
 
-const test = 'Checkboxes';
+const test = 'Spinner';
 
-export function CheckboxesSpec() {
+export function SpinnerSpec() {
   describe(test, () => {
     beforeEach(() => {
       setup(test);
     });
 
-    it('default', () => {
-      cy.visit('/checkboxes');
-      checkEyes('default');
+    it('types', () => {
+      cy.visit('/spinners/spinner-types');
+      checkEyes('types');
+    });
+
+    it('sizes', () => {
+      cy.visit('/spinners/spinner-sizes');
+      checkEyes('sizes');
     });
   });
 }

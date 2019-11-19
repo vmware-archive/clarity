@@ -7,6 +7,7 @@
 var WAIT_TIME = 5000;
 var WAIT_LOAD_TIME = 1000;
 
+// @TODO COVERED BY APPLITOOLS, REMOVE
 gemini.suite('color', child => {
   gemini.suite('color-palette', child => {
     child

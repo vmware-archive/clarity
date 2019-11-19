@@ -46,7 +46,7 @@ import { ColumnsService } from './providers/columns.service';
 import { DetailService } from './providers/detail.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { ColumnReorderService } from './providers/column-reorder.service';
-import { ViewManagerService } from './providers/view-manager.service';
+import { ViewManagerUtils } from './utils/view-manager-utils';
 import { CALCULATE_MODE_CLASS } from './render/constants';
 
 @Component({
@@ -69,7 +69,6 @@ import { CALCULATE_MODE_CLASS } from './render/constants';
     ColumnReorderService,
     ColumnsService,
     DisplayModeService,
-    ViewManagerService,
   ],
   host: {
     '[class.datagrid-host]': 'true',
@@ -91,8 +90,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private el: ElementRef,
     private page: Page,
     public commonStrings: ClrCommonStringsService,
-    private columnReorderService: ColumnReorderService,
-    private viewManager: ViewManagerService
+    private columnReorderService: ColumnReorderService
   ) {
     this.detailService.id = datagridId;
   }
@@ -273,8 +271,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       if (!this.items.smart) {
         this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
       }
-      this.viewManager.detachAllViews(this._displayedRows);
-      this.viewManager.insertAllViews(this._displayedRows, this.rows.toArray());
+      ViewManagerUtils.detachAllViews(this._displayedRows);
+      ViewManagerUtils.insertAllViews(this._displayedRows, this.rows.toArray());
     });
   }
 
@@ -286,7 +284,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       this._displayedRows,
     ];
     return this.displayMode.view.subscribe(viewChange => {
-      viewContainers.forEach(viewContainer => this.viewManager.detachAllViews(viewContainer));
+      viewContainers.forEach(viewContainer => ViewManagerUtils.detachAllViews(viewContainer));
       if (viewChange === DatagridDisplayMode.DISPLAY) {
         this.renderer.removeClass(this.el.nativeElement, CALCULATE_MODE_CLASS);
         this.displayViewsInMode(this._projectedDisplayColumns, this._displayedRows);
@@ -299,11 +297,11 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
 
   private displayViewsInMode(columnsViewContainer: ViewContainerRef, rowsViewContainer: ViewContainerRef) {
     // insert column views prioritized by their orders
-    this.viewManager.insertAllViews(columnsViewContainer, this.assignRawOrders(), true);
+    ViewManagerUtils.insertAllViews(columnsViewContainer, this.assignRawOrders(), true);
     // update column orders before inserting row views
     this.columnReorderService.updateOrders(this.columns.map(column => column.order));
     // now insert rows
-    this.viewManager.insertAllViews(rowsViewContainer, this.rows.toArray());
+    ViewManagerUtils.insertAllViews(rowsViewContainer, this.rows.toArray());
   }
 
   private reorderOnRequest(): Subscription {

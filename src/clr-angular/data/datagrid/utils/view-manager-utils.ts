@@ -3,26 +3,19 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { EmbeddedViewRef, Injectable, ViewContainerRef } from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
+import { ViewAccessor } from '../interfaces/view-accessor.interface';
 
-// This is the interface that will be implemented by any component that accesses its view (EmbeddedViewRef).
-// Those components are currently ClrDatagridColumn, ClrDatagridCell, and ClrDatagridRow.
-export interface ViewAccessor {
-  _view: EmbeddedViewRef<void>;
-  order?: number;
-  userDefinedOrder?: number;
-}
-
-// ViewManagerService is a service class that contains utility methods for managing views.
+// ViewManagerUtils is a utility class that contains methods for managing views.
 @Injectable()
-export class ViewManagerService {
-  detachAllViews(containerRef: ViewContainerRef): void {
+export class ViewManagerUtils {
+  public static detachAllViews(containerRef: ViewContainerRef): void {
     for (let i = containerRef.length; i > 0; i--) {
       containerRef.detach();
     }
   }
 
-  reorderViews(containerRef: ViewContainerRef, viewAccessors: ViewAccessor[]) {
+  public static reorderViews(containerRef: ViewContainerRef, viewAccessors: ViewAccessor[]) {
     this.prioritizeByOrder(viewAccessors).forEach(viewAccessor => {
       if (containerRef.indexOf(viewAccessor._view) !== viewAccessor.order) {
         containerRef.move(viewAccessor._view, viewAccessor.order);
@@ -30,7 +23,11 @@ export class ViewManagerService {
     });
   }
 
-  insertAllViews(containerRef: ViewContainerRef, viewAccessors: ViewAccessor[], prioritized = false): void {
+  public static insertAllViews(
+    containerRef: ViewContainerRef,
+    viewAccessors: ViewAccessor[],
+    prioritized = false
+  ): void {
     if (prioritized) {
       this.prioritizeByOrder(viewAccessors).forEach(viewAccessor => containerRef.insert(viewAccessor._view));
     } else {
@@ -38,7 +35,7 @@ export class ViewManagerService {
     }
   }
 
-  private prioritizeByOrder(viewAccessors: ViewAccessor[]): ViewAccessor[] {
+  private static prioritizeByOrder(viewAccessors: ViewAccessor[]): ViewAccessor[] {
     // As an example, this method would turn the following array:
     // [ {view: _view, order: 1}, {view: _view, order: 2}, {view: _view, order: 0} ] into
     // [ {view: _view, order: 0}, {view: _view, order: 1}, {view: _view, order: 2} ].

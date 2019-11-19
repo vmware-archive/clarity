@@ -6,7 +6,7 @@
 import { Component, ContentChildren, Injector, OnInit, QueryList, ViewContainerRef } from '@angular/core';
 import { ClrSignpost } from '../../popover/signpost/signpost';
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
-import { ViewAccessor } from './providers/view-manager.service';
+import { ViewAccessor } from './interfaces/view-accessor.interface';
 import { WrappedCell } from './wrapped-cell';
 
 @Component({

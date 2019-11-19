@@ -5,7 +5,7 @@
  */
 import { Component, EmbeddedViewRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ViewManagerService } from './view-manager.service';
+import { ViewManagerUtils } from './view-manager-utils';
 
 @Component({
   template: `
@@ -47,14 +47,12 @@ export default function(): void {
   describe('View Manager Service', function() {
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;
-    let viewManager: ViewManagerService;
 
     beforeEach(function() {
       TestBed.configureTestingModule({ declarations: [TestComponent] });
       fixture = TestBed.createComponent(TestComponent);
       fixture.detectChanges();
       testComponent = fixture.componentInstance;
-      viewManager = new ViewManagerService();
     });
 
     afterEach(() => {
@@ -64,7 +62,7 @@ export default function(): void {
     it('inserts all views', function() {
       expect(testComponent.vcr.length).toBe(0);
       // Using Array.prototype.slice() to not modify the original array
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[0]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[1]._view);
@@ -72,13 +70,13 @@ export default function(): void {
     });
 
     it('reorders views', function() {
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
 
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[0]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[1]._view);
       expect(testComponent.vcr.get(2)).toEqual(testComponent.viewAccessors[2]._view);
-      viewManager.reorderViews(testComponent.vcr, testComponent.viewAccessors.slice().reverse());
+      ViewManagerUtils.reorderViews(testComponent.vcr, testComponent.viewAccessors.slice().reverse());
 
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[2]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[1]._view);
@@ -91,7 +89,7 @@ export default function(): void {
       testComponent.viewAccessors[1].order = 1;
       testComponent.viewAccessors[2].order = 0;
       // Using Array.prototype.slice() to not modify the original array
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[2]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[1]._view);
@@ -107,7 +105,7 @@ export default function(): void {
       testComponent.viewAccessors[2].order = 1;
       testComponent.viewAccessors[2].userDefinedOrder = 1;
       // Using Array.prototype.slice() to not modify the original array
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[0]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[2]._view);
@@ -123,7 +121,7 @@ export default function(): void {
       testComponent.viewAccessors[2].order = 1;
       testComponent.viewAccessors[2].userDefinedOrder = 1;
       // Using Array.prototype.slice() to not modify the original array
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[1]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[2]._view);
@@ -136,7 +134,7 @@ export default function(): void {
       testComponent.viewAccessors[1].order = null;
       testComponent.viewAccessors[2].order = 1;
       // Using Array.prototype.slice() to not modify the original array
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice(), true);
       expect(testComponent.vcr.length).toBe(3);
       expect(testComponent.vcr.get(0)).toEqual(testComponent.viewAccessors[0]._view);
       expect(testComponent.vcr.get(1)).toEqual(testComponent.viewAccessors[1]._view);
@@ -144,9 +142,9 @@ export default function(): void {
     });
 
     it('detaches all views', function() {
-      viewManager.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
+      ViewManagerUtils.insertAllViews(testComponent.vcr, testComponent.viewAccessors.slice());
       expect(testComponent.vcr.length).toBe(3);
-      viewManager.detachAllViews(testComponent.vcr);
+      ViewManagerUtils.detachAllViews(testComponent.vcr);
       expect(testComponent.vcr.length).toBe(0);
     });
   });

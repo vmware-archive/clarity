@@ -58,7 +58,7 @@ import WrappedRowSpec from './wrapped-row.spec';
 import ColumnsServiceSpecs from './providers/columns.service.spec';
 import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 import ColumnReorderServiceSpecs from './providers/column-reorder.service.spec';
-import ViewManagerServiceSpecs from './providers/view-manager.service.spec';
+import ViewManagerUtilsSpecs from './utils/view-manager-utils.spec';
 
 describe('Datagrid', function() {
   addHelpers();
@@ -74,7 +74,7 @@ describe('Datagrid', function() {
     TableSizeServiceSpec();
     ColumnResizerServiceSpecs();
     ColumnReorderServiceSpecs();
-    ViewManagerServiceSpecs();
+    ViewManagerUtilsSpecs();
   });
   describe('Components', function() {
     DatagridActionBarSpecs();

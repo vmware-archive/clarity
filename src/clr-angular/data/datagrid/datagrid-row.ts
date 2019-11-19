@@ -29,13 +29,14 @@ import { ClrDatagridCell } from './datagrid-cell';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { DatagridDisplayMode } from './enums/display-mode.enum';
 import { SelectionType } from './enums/selection-type';
+import { ViewAccessor } from './interfaces/view-accessor.interface';
 import { ColumnReorderService } from './providers/column-reorder.service';
 import { DetailService } from './providers/detail.service';
 import { DisplayModeService } from './providers/display-mode.service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
-import { ViewAccessor, ViewManagerService } from './providers/view-manager.service';
+import { ViewManagerUtils } from './utils/view-manager-utils';
 import { WrappedRow } from './wrapped-row';
 
 let nbRow: number = 0;
@@ -86,8 +87,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
     private renderer: Renderer2,
     private el: ElementRef,
     public commonStrings: ClrCommonStringsService,
-    private columnReorderService: ColumnReorderService,
-    private viewManager: ViewManagerService
+    private columnReorderService: ColumnReorderService
   ) {
     nbRow++;
     this.id = 'clr-dg-row' + nbRow;
@@ -246,13 +246,13 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
   private resetViewsOnDisplayModeChange(): Subscription {
     return this.displayMode.view.subscribe(viewChange => {
       const viewContainers = [this._scrollableCells, this._calculatedCells];
-      viewContainers.forEach(viewContainer => this.viewManager.detachAllViews(viewContainer));
+      viewContainers.forEach(viewContainer => ViewManagerUtils.detachAllViews(viewContainer));
       if (viewChange === DatagridDisplayMode.CALCULATE) {
         this.displayCells = false;
-        this.viewManager.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
+        ViewManagerUtils.insertAllViews(this._calculatedCells, this.assignRawOrders(), true);
       } else {
         this.displayCells = true;
-        this.viewManager.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
+        ViewManagerUtils.insertAllViews(this._scrollableCells, this.assignRawOrders(), true);
         this.updateCellOrder();
       }
     });
@@ -276,7 +276,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
       // we have to make sure there are views inserted in the view container
       // before calling reorderViews method from viewManager service
       if (byReordering && this._scrollableCells.length > 0) {
-        this.viewManager.reorderViews(this._scrollableCells, this.assignRawOrders());
+        ViewManagerUtils.reorderViews(this._scrollableCells, this.assignRawOrders());
         this.updateCellOrder();
       }
     });

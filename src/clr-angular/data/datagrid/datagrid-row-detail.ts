@@ -21,7 +21,7 @@ import { ColumnReorderService } from './providers/column-reorder.service';
 import { ExpandableRowsCount } from './providers/global-expandable-rows';
 import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
-import { ViewManagerService } from './providers/view-manager.service';
+import { ViewManagerUtils } from './utils/view-manager-utils';
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -48,8 +48,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     public rowActionService: RowActionService,
     public expand: DatagridIfExpandService,
     public expandableRows: ExpandableRowsCount,
-    private columnReorderService: ColumnReorderService,
-    private viewManager: ViewManagerService
+    private columnReorderService: ColumnReorderService
   ) {}
 
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
@@ -83,7 +82,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
       // we have to make sure there are views inserted in the view container
       // before calling reorderViews method from viewManager service
       if (byReordering && this._detailCells.length > 0) {
-        this.viewManager.reorderViews(this._detailCells, this.assignRawOrders());
+        ViewManagerUtils.reorderViews(this._detailCells, this.assignRawOrders());
         this.updateCellOrder();
         return;
       }
@@ -91,7 +90,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
       if (this.columnReorderService.orders) {
         if (this._detailCells.length === 0) {
           // we just need to insert the views initially when the view container is empty.
-          this.viewManager.insertAllViews(this._detailCells, this.assignRawOrders(), true);
+          ViewManagerUtils.insertAllViews(this._detailCells, this.assignRawOrders(), true);
         } else {
           this.cells.forEach((cell, index) => {
             if (this._detailCells.indexOf(cell._view) === -1) {

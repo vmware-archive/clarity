@@ -31,17 +31,17 @@ import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-f
 import { DatagridPropertyNumericFilter } from './built-in/filters/datagrid-property-numeric-filter';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
 import { DatagridStringFilterImpl } from './built-in/filters/datagrid-string-filter-impl';
+import { DROP_ANIM_STATE, SHIFT_ANIM_STATE } from './enums/column-reorder-animation.enum';
 import { ClrDatagridSortOrder } from './enums/sort-order.enum';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
+import { ViewAccessor } from './interfaces/view-accessor.interface';
 import { ColumnReorderService, ReorderAnimRequest } from './providers/column-reorder.service';
 import { CustomFilter } from './providers/custom-filter';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
-import { ViewAccessor } from './providers/view-manager.service';
 import { DatagridFilterRegistrar } from './utils/datagrid-filter-registrar';
 import { WrappedColumn } from './wrapped-column';
-import { DROP_ANIM_STATE, SHIFT_ANIM_STATE } from './enums/column-reorder-animation.enum';
 
 @Component({
   selector: 'clr-dg-column',

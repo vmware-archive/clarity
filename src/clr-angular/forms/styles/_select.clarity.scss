@@ -118,6 +118,15 @@
     }
   }
 
+  .clr-error select:not([multiple]) {
+    @include css-var(
+      border-bottom-color,
+      clr-forms-invalid-color,
+      $clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+  }
+
   .clr-error select[multiple] {
     @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
 

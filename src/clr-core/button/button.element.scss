@@ -212,6 +212,8 @@
   @include css-var(margin-bottom, clr-btn-vertical-margin, $clr-btn-vertical-margin);
   @include css-var(margin-right, clr-btn-horizontal-margin, $clr-btn-horizontal-margin);
   margin-left: 0;
+
+  user-select: none;
 }
 
 :host([icon]) {
@@ -228,12 +230,12 @@
   max-width: 100%;
 }
 
-:host([state='primary']) {
+:host([status='primary']) {
   @include populateButtonProperties(primary);
   @include btn-checked-styles(primary);
 }
 
-:host([state='success']) {
+:host([status='success']) {
   @include populateButtonProperties(success);
   @include btn-checked-styles(success);
 
@@ -243,8 +245,8 @@
   }
 }
 
-:host([state='danger']),
-:host([state='warning']) {
+:host([status='danger']),
+:host([status='warning']) {
   @include populateButtonProperties(danger);
   @include btn-checked-styles(danger);
 
@@ -258,7 +260,7 @@
   @include populateButtonProperties(default-outline);
 }
 
-:host([state='inverse']) {
+:host([status='inverse']) {
   @include populateButtonProperties(inverse);
 }
 

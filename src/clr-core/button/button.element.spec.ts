@@ -28,31 +28,59 @@ describe('button element', () => {
     expect(component.innerText).toBe(placeholderText.toUpperCase());
   });
 
-  it('should render a hidden button', async () => {
-    await componentIsStable(component);
-    const button = component.shadowRoot.querySelector('button');
-    expect(button).toBeDefined();
-    expect(button.hasAttribute('aria-hidden')).toBe(true);
-    expect(button.getAttribute('aria-hidden')).toBe('true');
+  describe('Button Behaviors', () => {
+    it('should render a hidden button', async () => {
+      await componentIsStable(component);
+      const button = component.shadowRoot.querySelector('button');
+      expect(button).toBeDefined();
+      expect(button.hasAttribute('aria-hidden')).toBe(true);
+      expect(button.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('should have a tab index of 0 to be able to focus', async () => {
+      expect(component.getAttribute('tabindex')).toBe('0');
+    });
+
+    it('should have a role of type button', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('button');
+    });
+
+    it('should remove button from tab index if disabled', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('tabindex')).toBe('0');
+
+      component.disabled = true;
+      await componentIsStable(component);
+      expect(component.hasAttribute('disabled')).toBe(true);
+      expect(component.getAttribute('tabindex')).toBe('-1');
+    });
   });
 
-  it('should have a tab index of 0 to be able to focus', () => {
-    expect(component.getAttribute('tabindex')).toBe('0');
-  });
+  describe('Readonly Button Behaviors', () => {
+    beforeEach(async () => {
+      component.readonly = true;
+    });
 
-  it('should have a role of type button', async () => {
-    await componentIsStable(component);
-    expect(component.getAttribute('role')).toBe('button');
-  });
+    afterEach(() => {
+      component.readonly = false;
+    });
 
-  it('should remove button from tab index if disabled', async () => {
-    await componentIsStable(component);
-    expect(component.getAttribute('tabindex')).toBe('0');
+    it('should not render a hidden button if readonly', async () => {
+      await componentIsStable(component);
+      const button = component.shadowRoot.querySelector('button');
+      expect(button).toBeNull();
+    });
 
-    component.disabled = true;
-    await componentIsStable(component);
-    expect(component.hasAttribute('disabled')).toBe(true);
-    expect(component.getAttribute('tabindex')).toBe('-1');
+    it('should not have a tabIndex attribute', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('tabindex')).toBeNull();
+    });
+
+    it('should not have a role attribute', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBeNull();
+    });
   });
 
   describe('LoadingStateChange', () => {

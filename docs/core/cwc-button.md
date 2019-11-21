@@ -8,7 +8,7 @@ Web component buttons.
 |-----------|----------|--------------------------------------------------|
 | `action`  | `string` | Define the type of action the button triggers <br/> (`default`, `outline`, `link`) |
 | `size`    | `string` | Sets the overall height and width of the button based on value <br/> (`default`, `sm`) |
-| `state`   | `string` | Sets the color of the button to match the state <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`) |
+| `status`  | `string` | Sets the color of the button to match the status <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`) |
 
 ## Properties
 

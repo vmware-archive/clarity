@@ -9,7 +9,6 @@ import {
   CwcBaseButton,
   getElementWidthUnless,
   getTranslateForChromeRenderingBugUnless,
-  hiddenButtonTemplate,
   toggleDisabledAttribute,
 } from '@clr/core/common';
 import { html, property } from 'lit-element';
@@ -29,7 +28,7 @@ export enum ClrLoadingState {
  * @element cwc-button
  * @slot default - Content slot for inside the button
  * @attr {String} action - Define the type of action the button triggers <br/> (`default`, `outline`, `link`)
- * @attr {String} state - Sets the color of the button to match the state <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`)
+ * @attr {String} status - Sets the color of the button to match the status <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`)
  * @attr {String} size - Sets the overall height and width of the button based on value <br/> (`default`, `sm`)
  * @cssprop --clr-btn-vertical-margin
  * @cssprop --clr-btn-horizontal-margin
@@ -181,18 +180,18 @@ export class CwcButton extends CwcBaseButton {
       case ClrLoadingState.LOADING:
         return html`
             <span class="spinner spinner-inline"></span>
-            ${hiddenButtonTemplate(this.disabled, this.value, this.name, this.type)}
+            ${this.hiddenButtonTemplate}
         `;
       case ClrLoadingState.SUCCESS:
         return html`
             <span class="spinner spinner-inline spinner-check"></span>
-            ${hiddenButtonTemplate(this.disabled, this.value, this.name, this.type)}
+            ${this.hiddenButtonTemplate}
           `;
       default:
         return html`
             <slot></slot>
-            ${hiddenButtonTemplate(this.disabled, this.value, this.name, this.type)}
-            `;
+            ${this.hiddenButtonTemplate}
+          `;
     }
   }
 

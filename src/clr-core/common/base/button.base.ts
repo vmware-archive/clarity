@@ -7,28 +7,13 @@
 import { html, LitElement, property } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
-export const hiddenButtonTemplate = (
-  disabled: boolean,
-  value: string,
-  name: string,
-  type: 'button' | 'submit' | 'reset' | 'menu'
-) => html`
-  <button
-    aria-hidden="true"
-    ?disabled="${disabled}"
-    tabindex="-1"
-    style="display: none"
-    value="${ifDefined(value)}"
-    name="${ifDefined(name)}"
-    type="${ifDefined(type)}"
-  ></button>
-`;
-
 // @dynamic
 export class CwcBaseButton extends LitElement {
   private _disabled: boolean = false;
   protected _previouslyDisabled: boolean = false;
 
+  @property({ type: Boolean, reflect: true })
+  readonly = false;
   @property({ type: String, reflect: true })
   role = 'button';
   @property({ type: String, reflect: true })
@@ -39,13 +24,12 @@ export class CwcBaseButton extends LitElement {
   value = '';
   @property({ type: Boolean, reflect: true })
   set disabled(value: boolean) {
+    // the _previouslyDisabled is used in button.element.ts for loading buttons
+    // to keep track of the state it had before being 'disabled' by the component when it's loading
     this._previouslyDisabled = this._disabled;
     this._disabled = !!value;
-    const old = this.disabled;
-    this.tabIndex = this.disabled ? -1 : 0;
-    this.requestUpdate('disabled', this._previouslyDisabled);
-    if (this.disabled !== old) {
-      this.requestUpdate('tabIndex', old);
+    if (this._disabled !== this._previouslyDisabled) {
+      this.requestUpdate('disabled', this._previouslyDisabled);
     }
   }
 
@@ -53,30 +37,59 @@ export class CwcBaseButton extends LitElement {
     return this._disabled;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.tabIndex = 0;
+  protected get hiddenButtonTemplate() {
+    return this.readonly
+      ? html``
+      : html`
+      <button
+          aria-hidden="true"
+          ?disabled="${this.disabled}"
+          tabindex="-1"
+          style="display: none"
+          value="${ifDefined(this.value)}"
+          name="${ifDefined(name)}"
+          type="${ifDefined(this.type)}"
+        ></button>`;
   }
 
   protected render() {
     return html`
-      <slot></slot>
-      ${hiddenButtonTemplate(this.disabled, this.value, this.name, this.type)}
+        <slot></slot>
+        ${this.hiddenButtonTemplate}
     `;
   }
 
   protected firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-
-    if (this.disabled) {
-      this.tabIndex = this.disabled ? -1 : 0;
-    }
+    this.updateButtonAttributes();
   }
 
   protected updated(props: Map<string, any>) {
     super.updated(props);
-    if (props.get('disabled')) {
+    // if readonly or disabled attribute was updated, button attributes might need updating
+    if (props.has('readonly') || props.has('disabled')) {
+      this.updateButtonAttributes();
+    }
+  }
+
+  private updateButtonAttributes() {
+    const oldRole = this.role;
+    const oldTabIndex = this.tabIndex;
+
+    if (this.readonly) {
+      this.removeAttribute('role');
+      this.removeAttribute('tabIndex');
+    } else {
+      this.role = 'button';
       this.tabIndex = this.disabled ? -1 : 0;
+    }
+
+    if (this.role !== oldRole) {
+      this.requestUpdate('role', oldRole);
+    }
+
+    if (this.tabIndex !== oldTabIndex) {
+      this.requestUpdate('tabIndex', oldTabIndex);
     }
   }
 }

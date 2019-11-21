@@ -92,7 +92,7 @@
     "core:golden": "ts-api-guardian --out dist/golden/clr-core.d.ts dist/clr-core/index.d.ts",
     "core:golden:fix": "npm run core:sass && npm run core:build:ngpackagr && ts-api-guardian --out golden/clr-core.d.ts dist/clr-core/index.d.ts",
     "core:golden:test": "diff -u golden/clr-core.d.ts dist/golden/clr-core.d.ts",
-    "core:lint": "npm run prelint && tslint -p . -c ./src/clr-core/tslint.json \"src/clr-core/**/*.ts\" && tslint -p . -c ./src/dev-core/tslint.json \"src/dev-core/**/*.ts\" && stylelint --config ./src/clr-ui/.stylelintrc \"src/clr-core/**/*.scss\" \"src/dev-core/**/*.scss\"",
+    "core:lint": "npm run prelint && tslint -p . -c ./src/clr-core/tslint.json \"src/clr-core/**/*.ts\" -e \"src/clr-core/**/*.css.ts\" && tslint -p . -c ./src/dev-core/tslint.json \"src/dev-core/**/*.ts\" && stylelint --config ./src/clr-ui/.stylelintrc \"src/clr-core/**/*.scss\" \"src/dev-core/**/*.scss\"",
     "core:lint:fix": "npm run prelint && tslint --fix -p . -c ./src/clr-core/tslint.json \"src/clr-core/**/*.ts\" && tslint --fix -p . -c ./src/dev-core/tslint.json \"src/dev-core/**/*.ts\" && stylelint --config ./src/clr-ui/.stylelintrc --fix \"src/clr-core/**/*.scss\" \"src/dev-core/**/*.scss\"",
     "core:sass": "sass-render --q --suffix '.css.ts' -t ./src/clr-core/sass-template.js ./src/clr-core/**/*element.scss",
     "core:sass:watch": "sass-render --q --suffix '.css.ts' -t ./src/clr-core/sass-template.js ./src/clr-core/**/*element.scss -w",

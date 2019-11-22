@@ -11,13 +11,13 @@
   ],
   "rules": {
     "sh-waqar/declaration-use-variable": [["color", { ignoreValues: ["inherit", "red", "blue", "/^getSassButtonColor/"] }]],
-    "meowtec/no-px": [true, { "ignore": ["1px"] }],
+    "meowtec/no-px": [true, { "ignore": ["1px", "-1px"] }],
     "color-no-hex": true,
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^cwc-/"] }],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^cwc-/", "/^_/"] }],
     "max-nesting-depth": 3,
     "rule-empty-line-before": [ "always-multi-line", {
       except: ["first-nested"],

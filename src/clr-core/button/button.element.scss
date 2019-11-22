@@ -1,8 +1,8 @@
-@import './../styles/core-component';
-@import './../../clr-angular/utils/mixins.clarity';
-@import './../../clr-angular/button/variables.button';
-@import './../../clr-angular/button/properties.button';
+@import './../styles/utils/core-component';
+@import './variables.button';
+@import './properties.button';
 
+// TODO: deprecated, will be replaced by cwc-progress and cwc-icon
 @import './../../clr-angular/progress/spinner/variables.spinner';
 @import './../../clr-angular/image/icons.clarity';
 @import './../../clr-angular/progress/spinner/spinner.clarity';
@@ -192,8 +192,6 @@
   @include btn-nowrap();
   @include btn-text-properties();
 }
-
-@import '../../clr-angular/button/properties.button';
 
 :host {
   box-sizing: border-box;

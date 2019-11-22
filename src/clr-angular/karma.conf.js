@@ -83,7 +83,7 @@ module.exports = function(karma) {
 
       // Clarity UI
       {
-        pattern: './src/clr-angular/main.scss',
+        pattern: './src/clr-ui/main.scss',
         included: false,
         watched: true,
       },

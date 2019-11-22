@@ -16,20 +16,21 @@
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
+  }
 
-    &.list {
-      list-style-position: outside;
-      margin-left: $clr-list-style-padding;
+  ul.list,
+  ol.list {
+    list-style-position: outside;
+    margin-left: $clr-list-style-padding;
 
-      &.compact {
-        line-height: $clr_baselineRem_0_75;
+    &.compact {
+      line-height: $clr_baselineRem_0_75;
 
-        & > li {
-          margin-bottom: $clr_baselineRem_0_25;
+      & > li {
+        margin-bottom: $clr_baselineRem_0_25;
 
-          &:last-child {
-            margin-bottom: 0;
-          }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }

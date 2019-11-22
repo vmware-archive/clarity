@@ -24,6 +24,7 @@
         @extend %clr-grid-column;
       }
     }
+
     .clr-col#{$infix},
     .clr-col#{$infix}-auto {
       @extend %clr-grid-column;
@@ -36,6 +37,7 @@
         flex-grow: 1;
         max-width: 100%;
       }
+
       .clr-col#{$infix}-auto {
         flex: 0 0 auto;
         width: auto;
@@ -65,10 +67,12 @@
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
         @if not($infix == '' and $i == 0) {
+          /* stylelint-disable */
           // Avoid emitting useless .offset-0
           .clr-offset#{$infix}-#{$i} {
             @include clr-make-col-offset($i, $columns);
           }
+          /* stylelint-enable */
         }
       }
     }

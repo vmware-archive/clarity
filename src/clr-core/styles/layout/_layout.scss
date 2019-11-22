@@ -1,15 +1,13 @@
-// TODO: these files need to be moved out of clr-angular and into a clr-core
-@import './../../../clr-angular/layout/grid/variables/variables.clarity';
-@import './../../../clr-angular/layout/grid/mixins/breakpoint.clarity';
-@import './../../../clr-angular/layout/grid/mixins/grid.clarity';
-@import './../../../clr-angular/layout/grid/mixins/grid-framework.clarity';
-@import './../../../clr-angular/layout/grid/utilities/align.clarity';
-@import './../../../clr-angular/layout/grid/utilities/clearfix.clarity';
-@import './../../../clr-angular/layout/grid/utilities/display.clarity';
-@import './../../../clr-angular/layout/grid/utilities/flex.clarity';
-@import './../../../clr-angular/layout/grid/utilities/float.clarity';
-@import './../../../clr-angular/layout/grid/utilities/visibility.clarity';
-@import './../../../clr-angular/layout/grid/grid.clarity';
+@import './mixins/breakpoint';
+@import './mixins/grid';
+@import './mixins/grid-framework';
+@import './utilities/align';
+@import './utilities/clearfix';
+@import './utilities/display';
+@import './utilities/flex';
+@import './utilities/float';
+@import './utilities/visibility';
+@import './grid/grid';
 
 *,
 *:before,

@@ -2,7 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../color/variables.color';
+@import '../../clr-core/styles/variables/variables.color';
 
 $clr-accordion-text-color: $clr-color-neutral-0;
 $clr-accordion-active-background-color: $clr-global-selection-color;

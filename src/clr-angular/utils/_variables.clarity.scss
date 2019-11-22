@@ -28,11 +28,7 @@
 // Typography
 // Vertical Nav
 
-//Global
-@import '../color/variables.color';
-@import '../utils/variables.global';
-@import '../typography/variables.typography';
-// END Global
+@import '../../clr-core/styles/variables/variables';
 
 // Alert
 @import '../emphasis/alert/variables.alert';
@@ -50,7 +46,7 @@
 
 // Button
 // Disabled states are global for all buttons, independent of status or type
-@import '../button/variables.button';
+@import '../../clr-core/button/variables.button';
 // BUTTON END
 
 // Card
@@ -60,10 +56,6 @@
 // Dropdown
 @import '../popover/dropdown/variables.dropdown';
 // END: Dropdown
-
-// List
-@import '../typography/variables.lists';
-// END: List
 
 // Table
 // NOTE: Datagrid depends on these

@@ -7,33 +7,35 @@ improve over the next few months.
 
 * [Icons](cwc-icon.md)
 * [Buttons](cwc-button.md)
-* [Typography](https://clarity.design/documentation/typography)
-* [Grid Layout System](https://clarity.design/documentation/grid)
 
 ## Installation
 
-To get started using core install via NPM.
+To get started using Core install via NPM.
 
 ```bash
-npm install @clr/core --save
+npm install @clr/city @clr/core
 ```
 
 ### Global Styles
 
-Clarity Core includes a global stylesheet that provides our base typography
-as well as our layout grid and utilities. You can import the global base
-styles via a CSS Preprocessor like Sass or reference the CSS directly in your HTML.
+Clarity Core includes a global stylesheet that provides our [typography utilities](https://clarity.design/documentation/typography)
+as well as our [layout grid utilities](https://clarity.design/documentation/grid).
+You can also use our default font, [Clarity City](https://github.com/vmware/clarity-city),
+by importing the provided font CSS file from Core. You can import the styles via
+a CSS Preprocessor like Sass or reference the CSS directly in your HTML.
 
 ```scss
 // import in Sass
-@import '~@clr/core/clr-core-global.min';
+@import '~@clr/core/global.min';
+@import '~@clr/core/font.min';
 ```
 
 Or
 
 ```html
 <!-- import in HTML -->
-<link href="/node_modules/@clr/core/clr-core-global.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/font.min.css" rel="stylesheet">
 ```
 
 ### Web Components

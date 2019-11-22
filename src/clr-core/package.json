@@ -16,12 +16,17 @@
     "type": "git",
     "url": "git@github.com:vmware/clarity.git"
   },
-  "peerDependencies": {
-    "@webcomponents/shadycss": "1.9.1",
-    "@webcomponents/webcomponentsjs": "2.2.10",
-    "lit-element": "^2.2.0",
-    "tslib": "^1.9.0",
-    "ramda": "0.26.1"
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2",
+    "tslib": "^1.10.0",
+    "ramda": "^0.26.1"
+  },
+  "optionalDependencies": {
+    "@clr/city": "^1.0.0",
+    "@webcomponents/shadycss": "^1.9.3",
+    "@webcomponents/custom-elements": "^1.3.1",
+    "@webcomponents/webcomponentsjs": "^2.4.0"
   },
   "author": "clarity",
   "license": "MIT",

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -148,6 +148,9 @@ export default function(options: ComponentOptions): Rule {
       }
       if (!packages.includes('@clr/icons')) {
         json.dependencies['@clr/icons'] = `${version}`;
+      }
+      if (!packages.includes('@clr/core')) {
+        json.dependencies['@clr/core'] = `${version}`;
       }
       if (!packages.includes('@webcomponents/custom-elements')) {
         json.dependencies['@webcomponents/custom-elements'] = '^1.0.0';

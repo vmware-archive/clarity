@@ -9,8 +9,8 @@
 
 $clr-use-custom-properties: true;
 
-@import './mixins/mixins';
-@import './variables/variables';
+@import './../mixins/mixins';
+@import './../variables/variables';
 
 *,
 *:before,

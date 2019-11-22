@@ -2,53 +2,32 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// Clarity Internal Dependencies- Begin Part 1
-@import '../utils/normalize';
-@import '../utils/mixins.clarity';
-@import '../utils/helpers.clarity';
-@import '../utils/a11y.clarity';
+// Clarity Internal Dependencies
+@import '../utils/normalize'; // TODO: upgrade to latest normalize, once updated clr-ui can import core as is.
 
-// Grid and Layout Utility Dependencies
-@import '../layout/grid/variables/variables.clarity';
-@import '../layout/grid/mixins/breakpoint.clarity';
-@import '../layout/grid/mixins/grid.clarity';
-@import '../layout/grid/mixins/grid-framework.clarity';
-@import '../layout/grid/utilities/align.clarity';
-@import '../layout/grid/utilities/clearfix.clarity';
-@import '../layout/grid/utilities/display.clarity';
-@import '../layout/grid/utilities/flex.clarity';
-@import '../layout/grid/utilities/float.clarity';
-@import '../layout/grid/utilities/visibility.clarity';
-
-//Color
-@import '../color/variables.color';
-
-//Layer - z-indices
-@import '../utils/layers.clarity';
+@import '../../clr-core/styles/mixins/mixins';
+@import '../../clr-core/styles/variables/variables';
+@import '../../clr-core/styles/variables/properties';
+@import '../../clr-core/styles/typography/typography';
+@import '../../clr-core/styles/typography/font-metropolis';
+@import '../../clr-core/styles/layout/layout';
+@import '../../clr-core/styles/utils/a11y';
 
 // Component variables
-@import '../utils/variables.clarity'; // depends on helpers.clarity, color/variables.clarity
-
-// Custom Properties
-@import '../utils/properties.clarity'; // variables.clarity, color/variables.color
+@import '../utils/variables.clarity';
 
 //Reboot
 @import '../utils/reboot.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity
+
+//Icons & Images
+@import '../image/icons.clarity'; // depends on variables.clarity
+@import '../image/images.clarity'; // depends on variables.clarity, mixins.clarity, icons.clarity
 
 //Popover
 @import '../popover/common/popover.clarity';
 
 // Smart Popover
 @import 'popover/popover-popover.clarity';
-
-//Icons & Images
-@import '../image/icons.clarity'; // depends on variables.clarity
-@import '../image/images.clarity'; // depends on variables.clarity, mixins.clarity, icons.clarity
-
-//Typography
-//depends on colors.clarity, color.clarity, variables.clarity, utilities.clarity
-@import '../typography/typography.clarity';
-@import '../typography/code.clarity';
 
 //Buttons
 @import '../button/buttons.clarity'; // depends on variables.clarity, mixins.clarity, color.clarity
@@ -74,14 +53,6 @@
 //Labels
 // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, typography.clarity, badges.clarity
 @import '../emphasis/labels.clarity';
-
-//Grid
-//depends on variables.clarity, mixins.clarity
-@import '../layout/grid/grid.clarity';
-
-//Lists
-//depends on variables.clarity, mixins.clarity, helpers.clarity, typograph.clarity
-@import '../typography/lists.clarity';
 
 //Login
 //depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, icons.clarity
@@ -161,10 +132,6 @@
 //Wizards
 // depends on variables.clarity, mixins.clarity, helpers.clarity, color.clarity, layers.clarity
 @import '../wizard/wizard.clarity';
-
-//Fonts
-// depends on variables.clarity
-@import '../typography/fonts.clarity'; // no dependencies on other clarity scss
 
 // Signposts
 @import '../popover/signpost/signposts.clarity';

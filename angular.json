@@ -148,7 +148,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "styles": ["src/clr-angular/main.scss"],
+            "styles": ["src/clr-ui/main.scss"],
             "main": "src/clr-angular/test.ts",
             "tsConfig": "src/clr-angular/tsconfig.spec.json",
             "karmaConfig": "src/clr-angular/karma.conf.js",
@@ -197,7 +197,7 @@
             ],
             "styles": [
               "node_modules/prismjs/themes/prism-solarizedlight.css",
-              "src/clr-angular/main.scss",
+              "src/clr-ui/main.scss",
               "src/clr-icons/clr-icons.scss",
               "src/website/src/styles/main.scss"
             ],

@@ -21,10 +21,10 @@ if (environment.production) {
 // Theme toggling, run `ng serve -c dark` to get dark theme
 if (environment.dark) {
   // tslint:disable-next-line
-  require('style-loader!./../../clr-angular/dark-theme.scss');
+  require('style-loader!./../../clr-ui/dark-theme.scss');
 } else {
   // tslint:disable-next-line
-  require('style-loader!./../../clr-angular/main.scss');
+  require('style-loader!./../../clr-ui/main.scss');
 }
 
 runCssVarsPolyfill();

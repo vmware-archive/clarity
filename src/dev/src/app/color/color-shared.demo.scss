@@ -2,9 +2,9 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../../../clr-angular/utils/mixins.clarity';
-@import '../../../../clr-angular/color/variables.color';
-@import '../../../../clr-angular/utils/variables.global';
+@import '../../../../clr-core/styles/mixins/mixins';
+@import '../../../../clr-core/styles/variables/variables.color';
+@import '../../../../clr-core/styles/variables/variables.global';
 
 @mixin clrdemo-colorPaletteLabels {
   text-transform: uppercase;

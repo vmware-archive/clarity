@@ -2,8 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../../../clr-angular/color/variables.color';
-@import '../../../../clr-angular/utils/variables.global';
+@import '../../../../clr-core/styles/variables/variables.color';
+@import '../../../../clr-core/styles/variables/variables.global';
 
 .selection-preview-settings {
   max-width: $clr_baselineRem_500px;

@@ -13,6 +13,7 @@
       display: none !important;
     }
   }
+
   .clr-hidden-#{$bp}-down {
     @include clr-media-breakpoint-down($bp) {
       display: none !important;

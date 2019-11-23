@@ -1,0 +1,125 @@
+@import './../styles/core-component';
+@import './../../clr-angular/utils/helpers.clarity';
+@import './../../clr-angular/emphasis/variables.label';
+@import './../../clr-angular/emphasis/variables.badge';
+@import './../../clr-angular/emphasis/properties.label';
+@import './../../clr-angular/emphasis/properties.badge';
+
+@mixin generateTagStyles($color: gray, $alias: 1) {
+  $sassVarBgColor: getLabelColor($color, bg-color);
+  $cssVarBgColor: getLabelColor($color, bg-color, 'css-var');
+  $sassVarTextColor: getLabelColor($color, color);
+  $cssVarTextColor: getLabelColor($color, color, 'css-var');
+
+  :host([color='#{'' + $color}']),
+  :host([alias='#{'' + $alias}']) {
+    border: $clr-label-borderwidth solid;
+    @include css-var(border-color, $cssVarBgColor, $sassVarBgColor);
+
+    // style for clickable tag
+    &:host(:not([readonly])) {
+      &:host(:hover),
+      &:host(:active) {
+        text-decoration: none;
+        @include css-var(background, clr-label-bg-hover-color, $clr-label-bg-hover-color);
+        cursor: pointer;
+      }
+
+      &:host(:active) {
+        // OldEdge/IE
+        box-shadow: 0 $clr-label-borderwidth 0 0 $sassVarBgColor inset;
+        box-shadow: 0 $clr-label-borderwidth 0 0 var(css-variablize-string($cssVarBgColor), $sassVarBgColor) inset;
+        transform: translateY($clr_baselineRem_0_5px);
+      }
+    }
+  }
+
+  :host([color='#{'' + $color}']) ::slotted(cwc-badge) {
+    @include css-var(background, getBadgeColor($color, bg-color, 'css-var'), getBadgeColor($color, bg-color));
+    @include css-var(color, getBadgeColor($color, color, 'css-var'), getBadgeColor($color, color));
+  }
+}
+
+@mixin generateStatusTagStyles($status: info) {
+  :host([status='#{'' + $status}']) {
+    @include css-var(background, getLabelColor($status, bg-color, 'css-var'), getLabelColor($status, bg-color));
+    @include css-var(color, getLabelColor($status, color, 'css-var'), getLabelColor($status, color));
+    border: $clr-label-borderwidth solid;
+    @include css-var(
+      border-color,
+      getLabelColor($status, border-color, 'css-var'),
+      getLabelColor($status, border-color)
+    );
+  }
+}
+
+:host {
+  //default
+  $label-nudge-for-vertical-alignment: $clr_baselineRem_1px;
+  @include css-var(font-size, clr-label-font-size, $clr-label-font-size);
+  @include css-var(font-weight, clr-label-font-weight, $clr-label-font-weight);
+  @include css-var(letter-spacing, clr-label-letter-spacing, $clr-label-letter-spacing);
+
+  // line-height needed to be adjusted to force center alignment
+  line-height: $clr-label-font-size + $clr_baselineRem_1px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
+  @include css-var(border-radius, clr-label-border-radius, $clr_baselineRem_0_5);
+  border: $clr-label-borderwidth solid;
+  @include css-var(border-color, clr-label-default-border-color, $clr-label-default-border-color);
+  height: $clr_baselineRem_0_875;
+  margin: 0 $clr_baselineRem_0_25 0 0;
+  white-space: nowrap;
+  @include css-var(color, clr-label-font-color-light, $clr-label-font-color-light);
+
+  &:host(:visited) {
+    @include css-var(color, clr-label-font-color-light, $clr-label-font-color-light);
+  }
+
+  &:host(:focus),
+  &:host(:hover),
+  &:host(:active) {
+    text-decoration: none;
+  }
+
+  // style for clickable tag
+  &:host(:not([readonly])) {
+    &:host(:hover),
+    &:host(:active) {
+      @include css-var(background, clr-label-bg-hover-color, $clr-label-bg-hover-color);
+    }
+
+    &:host(:active) {
+      $mySassShadow: getLabelColor(gray, bg-color);
+      // OldEdge/IE
+      box-shadow: 0 $clr_baselineRem_1px 0 0 getLabelColor(gray, bg-color) inset;
+      box-shadow: 0 $clr_baselineRem_1px 0 0
+        var(css-variablize-string(getLabelColor(gray, bg-color, 'css-var')), $mySassShadow) inset;
+      transform: translateY($clr_baselineRem_0_5px);
+    }
+  }
+
+  ::slotted(cwc-badge) {
+    margin: 0 (-1 * $clr_baselineRem_0_375) 0 $clr_baselineRem_0_25;
+  }
+}
+
+@include generateTagStyles(gray, 1);
+@include generateTagStyles(purple, 2);
+@include generateTagStyles(blue, 3);
+@include generateTagStyles(orange, 4);
+@include generateTagStyles(light-blue, 5);
+
+@include generateStatusTagStyles(info);
+@include generateStatusTagStyles(success);
+@include generateStatusTagStyles(warning);
+@include generateStatusTagStyles(danger);
+
+@include fixForFirefox() {
+  :host {
+    // properly aligns tags in firefox...
+    vertical-align: bottom;
+  }
+}

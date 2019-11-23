@@ -6,7 +6,11 @@ framework at all. This is an initial getting started guide and will continue to
 improve over the next few months.
 
 * [Icons](cwc-icon.md)
+* [Badges](cwc-badge.md)
 * [Buttons](cwc-button.md)
+* [Tags](cwc-tag.md)
+* [Typography](https://clarity.design/documentation/typography)
+* [Grid Layout System](https://clarity.design/documentation/grid)
 
 ## Installation
 

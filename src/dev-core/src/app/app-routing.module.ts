@@ -19,10 +19,12 @@ const routes: Routes = [
     path: 'lazy-load',
     loadChildren: () => import('./lazy-load/lazy-load.demo.module').then(m => m.LazyLoadDemoModule),
   },
+  { path: 'badge', loadChildren: () => import('./badge/badge.demo.module').then(m => m.BadgeDemoModule) },
   { path: 'button', loadChildren: () => import('./button/button.demo.module').then(m => m.ButtonDemoModule) },
   { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule) },
   { path: 'i18n', loadChildren: () => import('./i18n/i18n.demo.module').then(m => m.I18nDemoModule) },
   { path: 'icon', loadChildren: () => import('./icon/icon.demo.module').then(m => m.IconDemoModule) },
+  { path: 'tag', loadChildren: () => import('./tag/tag.demo.module').then(m => m.TagDemoModule) },
 ];
 
 @NgModule({

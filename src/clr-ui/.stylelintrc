@@ -17,10 +17,11 @@
     "no-duplicate-selectors": null,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^cwc-/"] }],
     "max-nesting-depth": 3,
     "rule-empty-line-before": [ "always-multi-line", {
       except: ["first-nested"],
-      ignore: ["after-comment"],
+      ignore: ["after-comment"]
     } ]
   }
 }

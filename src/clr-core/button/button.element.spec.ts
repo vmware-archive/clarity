@@ -6,6 +6,7 @@
 import { ClrLoadingState, CwcButton } from '@clr/core/button';
 import '@clr/core/button';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+
 describe('button element', () => {
   let testElement: HTMLElement;
   let component: CwcButton;

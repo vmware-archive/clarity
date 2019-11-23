@@ -67,8 +67,12 @@
 //depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, layers.clarity
 @import '../popover/dropdown/dropdown.clarity';
 
-//Labels & Badges
+//Badges
 // depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, typography.clarity
+@import '../emphasis/badges.clarity';
+
+//Labels
+// depends on variables.clarity, mixins.clarity, color.clarity, helpers.clarity, typography.clarity, badges.clarity
 @import '../emphasis/labels.clarity';
 
 //Grid

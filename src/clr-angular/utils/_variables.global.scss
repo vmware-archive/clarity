@@ -43,6 +43,7 @@ $clr_baselineRem_10: convertBaselineToBase20(240); // 240px
 $clr_baselineRem_15: convertBaselineToBase20(360); // 360px
 
 // Pixel-based utilities
+$clr_baselineRem_0_5px: convertBaselineToBase20(0.5); // used by cwc-tag to depress the tag .5px when user clicks
 $clr_baselineRem_1px: convertBaselineToBase20(1);
 $clr_baselineRem_2px: convertBaselineToBase20(2);
 $clr_baselineRem_3px: $clr_baselineRem_0_125;

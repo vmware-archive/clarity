@@ -14,7 +14,7 @@ import { By } from '@angular/platform-browser';
 
 @Component({
   template: `
-    <clr-expandable-animation [clrExpandTrigger]="data.length">
+    <clr-expandable-animation [clrExpandTrigger]="expanded">
       <div *ngFor="let item of data">{{item}}</div>
     </clr-expandable-animation>
     `,
@@ -22,7 +22,7 @@ import { By } from '@angular/platform-browser';
 class TestComponent {
   @ViewChild(ClrExpandableAnimation, { static: true })
   expandable: ClrExpandableAnimation;
-
+  expanded = false;
   data = ['one'];
 }
 
@@ -65,12 +65,14 @@ describe('Expandable animation', () => {
         clarityDirective.updateStartHeight();
         const collapsedHeight = clarityDirective.startHeight;
         component.data.push('two');
+        component.expanded = true;
         fixture.detectChanges();
         expect(clarityDirective.startHeight).toEqual(collapsedHeight);
         tick();
         expect(clarityDirective.startHeight).toEqual(collapsedHeight * 2);
         const expandedHeight = clarityDirective.startHeight;
         component.data.pop();
+        component.expanded = false;
         fixture.detectChanges();
         expect(clarityDirective.startHeight).toEqual(expandedHeight);
         tick();

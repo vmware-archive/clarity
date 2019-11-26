@@ -77,3 +77,9 @@ export class CwcTestDropdown extends LitElement {
 }
 
 registerElementSafely('cwc-test-dropdown', CwcTestDropdown);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cwc-test-dropdown': CwcTestDropdown;
+  }
+}

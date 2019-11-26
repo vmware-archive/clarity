@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import '../../clr-core/badge/properties';
+
 @mixin generateBadgeStyles($color: gray, $alias: 1) {
   &.badge-#{'' + $color},
   &.badge-#{$alias} {
@@ -36,8 +38,6 @@
     );
   }
 }
-
-@import './properties.badge';
 
 @include exports('badges.clarity') {
   //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values

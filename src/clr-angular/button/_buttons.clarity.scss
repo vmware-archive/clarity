@@ -214,7 +214,7 @@
   @include btn-text-properties();
 }
 
-@import './../../clr-core/button/properties.button';
+@import './../../clr-core/button/properties';
 
 @include exports('buttons.clarity') {
   .btn {

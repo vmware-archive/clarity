@@ -1,9 +1,6 @@
 @import './../styles/utils/core-component';
-
-@import './../../clr-angular/emphasis/variables.label';
-@import './../../clr-angular/emphasis/variables.badge';
-@import './../../clr-angular/emphasis/properties.label';
-@import './../../clr-angular/emphasis/properties.badge';
+@import './variables';
+@import './properties';
 
 @function getBadgeCssVarName($type: gray, $prop: color) {
   @return #{'clr-badge-' + $type + '-' + $prop};

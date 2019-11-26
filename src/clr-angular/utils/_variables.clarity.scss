@@ -41,12 +41,12 @@
 
 // Badge
 //Has code sharing with labels
-@import '../emphasis/variables.badge';
+@import '../../clr-core/badge/variables';
 // END: Badge
 
 // Button
 // Disabled states are global for all buttons, independent of status or type
-@import '../../clr-core/button/variables.button';
+@import '../../clr-core/button/variables';
 // BUTTON END
 
 // Card

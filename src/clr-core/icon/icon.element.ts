@@ -153,3 +153,9 @@ export interface CwcIcon extends IconMixinClass, UniqueId, CssHelpers {}
 registerElementSafely('cwc-icon', CwcIcon);
 
 // TODO: NOTE DEPRECATIONS IN CLR-ICONS!
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cwc-icon': CwcIcon;
+  }
+}

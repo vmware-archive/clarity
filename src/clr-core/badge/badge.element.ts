@@ -30,3 +30,9 @@ export class CwcBadge extends LitElement {
 }
 
 registerElementSafely('cwc-badge', CwcBadge);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cwc-badge': CwcBadge;
+  }
+}

@@ -25,3 +25,9 @@ export class CwcTag extends CwcBaseButton {
 }
 
 registerElementSafely('cwc-tag', CwcTag);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cwc-tag': CwcTag;
+  }
+}

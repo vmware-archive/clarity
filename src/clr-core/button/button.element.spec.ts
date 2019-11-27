@@ -14,7 +14,13 @@ describe('button element', () => {
 
   beforeEach(async () => {
     testElement = createTestElement();
-    testElement.innerHTML = `<cwc-button>${placeholderText}</cwc-button>`;
+    testElement.innerHTML = `
+      <form>
+        <cwc-button>
+          <span>${placeholderText}</span>
+        </cwc-button>
+      </form>
+    `;
 
     await waitForComponent('cwc-button');
     component = testElement.querySelector<CwcButton>('cwc-button');
@@ -32,7 +38,7 @@ describe('button element', () => {
   describe('Button Behaviors', () => {
     it('should render a hidden button', async () => {
       await componentIsStable(component);
-      const button = component.shadowRoot.querySelector('button');
+      const button = component.querySelector('button');
       expect(button).toBeDefined();
       expect(button.hasAttribute('aria-hidden')).toBe(true);
       expect(button.getAttribute('aria-hidden')).toBe('true');
@@ -56,6 +62,46 @@ describe('button element', () => {
       expect(component.hasAttribute('disabled')).toBe(true);
       expect(component.getAttribute('tabindex')).toBe('-1');
     });
+
+    it('should work with form elements when clicked', async done => {
+      await componentIsStable(component);
+      testElement.querySelector('form').addEventListener('submit', e => {
+        e.preventDefault();
+        expect(true).toBe(true);
+        done();
+      });
+
+      component.click();
+    });
+
+    it('should work with form elements when clicked via keyboard', async done => {
+      await componentIsStable(component);
+      testElement.querySelector('form').addEventListener('submit', e => {
+        e.preventDefault();
+        expect(true).toBe(true);
+        done();
+      });
+
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      component.focus();
+      component.dispatchEvent(event);
+    });
+
+    it('should not interact with form elements if disabled', async () => {
+      component.disabled = true;
+      await componentIsStable(component);
+      const o = { f: () => {} };
+      spyOn(o, 'f');
+      testElement.querySelector('form').addEventListener('submit', o.f);
+      expect(o.f).not.toHaveBeenCalled();
+    });
+
+    it('should prevent click when readonly or disabled', async () => {
+      component.disabled = true;
+      await componentIsStable(component);
+      const style = getComputedStyle(testElement.querySelector('cwc-button'));
+      expect(style.pointerEvents).toBe('none');
+    });
   });
 
   describe('Readonly Button Behaviors', () => {
@@ -69,7 +115,7 @@ describe('button element', () => {
 
     it('should not render a hidden button if readonly', async () => {
       await componentIsStable(component);
-      const button = component.shadowRoot.querySelector('button');
+      const button = component.querySelector('button');
       expect(button).toBeNull();
     });
 
@@ -142,6 +188,33 @@ describe('button element', () => {
 
       // uninstall to clean up
       jasmine.clock().uninstall();
+    });
+  });
+
+  describe('Button link', () => {
+    let testLinkElement: HTMLElement;
+    let componentLink: CwcButton;
+
+    beforeEach(async () => {
+      testLinkElement = createTestElement();
+      testLinkElement.innerHTML = `<cwc-button><a href="about">About</a></cwc-button>`;
+      await waitForComponent('cwc-button');
+      componentLink = testLinkElement.querySelector<CwcButton>('cwc-button');
+    });
+
+    afterEach(() => {
+      removeTestElement(testLinkElement);
+    });
+
+    it('should render a link properly', async () => {
+      await componentIsStable(componentLink);
+      expect(componentLink).toBeTruthy();
+      expect(componentLink.innerText).toBe('ABOUT');
+    });
+
+    it('should set button to be readonly', async () => {
+      await componentIsStable(componentLink);
+      expect(componentLink.readonly).toBe(true);
     });
   });
 });

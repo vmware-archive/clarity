@@ -5,7 +5,7 @@
 */
 
 import { preventArrowKeyScroll } from './util';
-import { KeyCodes, IEKeyCodes } from '../key-codes.enum';
+import { KeyCodes, IEKeyCodes } from '@clr/core/common';
 
 describe('preventArrowKeyScroll', () => {
   it('should prevent scroll on element based on key event', () => {

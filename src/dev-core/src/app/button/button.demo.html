@@ -1,5 +1,25 @@
 <h1>Button Demo</h1>
 
+<h2>Form Demo</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="name">Name</label><br />
+  <input formControlName="name" id="name" /><br />
+  <cwc-button status="primary">submit</cwc-button>
+</form>
+
+<h2>Link Demo</h2>
+<cwc-button status="primary">
+  <a routerLink="/">home</a>
+</cwc-button>
+
+<cwc-button>
+  <a routerLink="/i18n">this is a long link</a>
+</cwc-button>
+
+<cwc-button size="small">
+  <a routerLink="/i18n">small link</a>
+</cwc-button>
+
 <h2>Solid buttons</h2>
 <cwc-button status="primary">primary</cwc-button>
 <cwc-button status="success">success</cwc-button>

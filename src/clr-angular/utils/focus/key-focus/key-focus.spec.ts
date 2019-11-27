@@ -9,7 +9,7 @@ import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ClrKeyFocusModule } from './key-focus.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KeyCodes } from '../key-codes.enum';
+import { KeyCodes } from '@clr/core/common';
 
 @Component({
   template: `

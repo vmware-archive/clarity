@@ -92,14 +92,13 @@
   @include button-css-var($button-type, background-color, bg-color);
   @include button-css-var($button-type, color, color);
 
-  //To override the visited state of anchor links styled as buttons
-  &:host(:visited) {
-    @include button-css-var($button-type, color, color);
-  }
-
   &:host(:hover) {
     @include button-css-var($button-type, background-color, hover-bg-color);
     @include button-css-var($button-type, color, hover-color);
+  }
+
+  ::slotted(a) {
+    @include button-css-var($button-type, color, color);
   }
 
   &:host(:active) {
@@ -122,11 +121,8 @@
 
   &:host([disabled]) {
     @include button-css-var($button-type, color, disabled-color);
-    cursor: not-allowed;
-    opacity: 0.4;
     @include button-css-var($button-type, background-color, disabled-bg-color);
     @include button-css-var($button-type, border-color, disabled-border-color);
-    box-shadow: none;
   }
 }
 
@@ -167,13 +163,13 @@
 }
 
 @mixin btn-appearance() {
-  cursor: pointer;
+  box-sizing: border-box;
+  letter-spacing: $clr-btn-appearance-form-letter-spacing;
+  margin-left: 0;
+  user-select: none;
   display: inline-block;
-
-  // Overrides a Fix for IOS in BS4 _normalize.scss (~ln 330)
-  // `!important` is to override specificity in this instance
-  // But we wanted to preserve the normalize fix in non-Clarity buttons for iOS
   -webkit-appearance: none !important;
+  cursor: pointer;
 }
 
 @mixin btn-sm-appearance() {
@@ -185,33 +181,41 @@
   @include css-var(padding, clr-btn-appearance-standard-padding, $clr-btn-appearance-standard-padding);
 }
 
-@mixin generateButton() {
+:host {
   @include btn-appearance();
   @include btn-default-border-styles();
   @include btn-min-max-widths();
   @include btn-nowrap();
   @include btn-text-properties();
-}
-
-:host {
-  box-sizing: border-box;
-
-  @include generateButton();
   @include populateButtonProperties(default);
-
   @include css-var(line-height, clr-btn-appearance-form-line-height, $clr-btn-appearance-form-line-height);
-  letter-spacing: $clr-btn-appearance-form-letter-spacing;
   @include css-var(font-size, clr-btn-appearance-form-font-size, $clr-btn-appearance-form-font-size);
   @include css-var(font-weight, clr-btn-appearance-form-font-weight, $clr-btn-appearance-form-font-weight);
   @include css-var(height, clr-btn-appearance-form-height, $clr-btn-appearance-form-height);
   @include css-var(padding, clr-btn-appearance-form-padding, $clr-btn-appearance-form-padding);
-
   @include css-var(margin-top, clr-btn-vertical-margin, $clr-btn-vertical-margin);
   @include css-var(margin-bottom, clr-btn-vertical-margin, $clr-btn-vertical-margin);
   @include css-var(margin-right, clr-btn-horizontal-margin, $clr-btn-horizontal-margin);
-  margin-left: 0;
+  position: relative;
+  overflow: visible;
+}
 
-  user-select: none;
+:host([is-anchor]) {
+  padding: 0;
+}
+
+::slotted(a) {
+  @include css-var(padding, clr-btn-appearance-form-padding, $clr-btn-appearance-form-padding);
+  text-decoration: none !important;
+  display: block;
+  height: 100%;
+}
+
+:host([disabled]) {
+  opacity: 0.4;
+  box-shadow: none;
+  pointer-events: none; // required for proper a11y
+  cursor: not-allowed; // TODO: only partial support for not-allowed + pointer-events:none
 }
 
 :host([icon]) {

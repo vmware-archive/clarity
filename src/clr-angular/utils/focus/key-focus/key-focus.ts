@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 
 import { ClrKeyFocusItem } from './key-focus-item';
 import { ClrFocusDirection } from './enums/focus-direction.enum';
-import { KeyCodes } from './../key-codes.enum';
+import { KeyCodes } from '@clr/core/common';
 import { FocusableItem } from './interfaces';
 import { preventArrowKeyScroll, getKeyCodes } from './util';
 

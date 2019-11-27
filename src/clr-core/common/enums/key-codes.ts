@@ -4,19 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-// Event.key key codes for standard browsers and IE/Edge
-
 export enum KeyCodes {
-  ArrowUp = 'ArrowUp',
-  ArrowDown = 'ArrowDown',
-  ArrowRight = 'ArrowRight',
   ArrowLeft = 'ArrowLeft',
-  Space = ' ',
+  ArrowUp = 'ArrowUp',
+  ArrowRight = 'ArrowRight',
+  ArrowDown = 'ArrowDown',
+  Backspace = 'Backspace',
+  Tab = 'TAB',
+  Enter = 'Enter',
   Escape = 'Escape',
+  Space = 'Space',
   Home = 'Home',
   End = 'End',
-  Enter = 'Enter',
-  Tab = 'Tab',
 }
 
 export enum IEKeyCodes {

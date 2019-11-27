@@ -4,7 +4,7 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { KeyCodes, IEKeyCodes } from './../key-codes.enum';
+import { KeyCodes, IEKeyCodes } from '@clr/core/common';
 
 export function keyValidator(key: string) {
   if (key === KeyCodes.ArrowUp || key === IEKeyCodes.ArrowUp) {

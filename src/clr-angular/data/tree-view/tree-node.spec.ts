@@ -19,7 +19,7 @@ import { ClrSelectedState } from './models/selected-state.enum';
 import { TreeFeaturesService } from './tree-features.service';
 import { TreeFocusManagerService } from './tree-focus-manager.service';
 import { ClrTreeNode } from './tree-node';
-import { KeyCodes } from 'src/clr-angular/utils/focus/key-codes.enum';
+import { KeyCodes } from '@clr/core/common';
 import { TreeNodeModel } from './models/tree-node.model';
 
 @Component({

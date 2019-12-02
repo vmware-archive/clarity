@@ -88,6 +88,15 @@ export default function(): void {
       expect(popoverContent.textContent.trim()).toMatch('Hello world');
     });
 
+    it('should call clrDgActionOverflowOpenChange output when open changed', function() {
+      spyOn(context.fixture.componentInstance, 'clrDgActionOverflowOpenChangeFn');
+      const toggle = context.clarityElement.querySelector('.datagrid-action-toggle');
+      toggle.click();
+      expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(true);
+      toggle.click();
+      expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(false);
+    });
+
     it('closes the menu when an action menu item is clicked', function() {
       toggle.click();
       context.detectChanges();
@@ -121,12 +130,13 @@ export default function(): void {
             <div class="outside-click-test">
                 This is an area outside of the action overflow
             </div>
-            <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open">
+            <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open" (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)">
                 <button #actionItem class="action-item" clrPopoverCloseButton>Hello world</button>
             </clr-dg-action-overflow>
         </div>`,
 })
 class SimpleTest {
+  clrDgActionOverflowOpenChangeFn = ($event: boolean) => {};
   open: boolean;
   @ViewChild('actionItem', { read: ElementRef, static: true })
   actionItem: ElementRef;

@@ -38,10 +38,10 @@ let clrDgActionId = 0;
       </button>
 
       <div class="datagrid-action-overflow"
-           role="menu" 
+           role="menu"
            [id]="popoverId"
            [attr.aria-hidden]="!open"
-           [attr.id]="popoverId" 
+           [attr.id]="popoverId"
            clrFocusTrap
            *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <ng-content></ng-content>
@@ -82,8 +82,9 @@ export class ClrDatagridActionOverflow implements OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  private _open: boolean = false;
   public get open() {
-    return this.smartToggleService.open;
+    return this._open;
   }
 
   private focusFirstButton(): void {
@@ -101,10 +102,12 @@ export class ClrDatagridActionOverflow implements OnDestroy {
 
   @Input('clrDgActionOverflowOpen')
   public set open(open: boolean) {
-    if (!!open !== this.smartToggleService.open) {
+    const openState = !!open;
+    if (!!openState !== this.open) {
       // prevents chocolate mess
-      this.smartToggleService.open = !!open;
-      this.openChange.emit(!!open);
+      this.smartToggleService.open = openState;
+      this.openChange.emit(openState);
+      this._open = openState;
     }
   }
 

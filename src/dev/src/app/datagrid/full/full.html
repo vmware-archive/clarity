@@ -96,7 +96,7 @@
 
         <clr-dg-placeholder>No users found</clr-dg-placeholder>
         <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-            <clr-dg-action-overflow>
+            <clr-dg-action-overflow (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)">
                 <button class="action-item">
                     <clr-icon shape="note"></clr-icon>
                     Edit

@@ -25,5 +25,10 @@ read('./dist/clr-core')
     data.module = data.module.replace('fesm5', 'fesm2015');
     data.main = data.module;
     data.type = 'module';
+
+    // ngcc pollutes package.json files in the monorepo use case https://github.com/angular/angular/issues/33395
+    delete data['__processed_by_ivy_ngcc__'];
+    delete data['scripts'];
+
     fs.writeFileSync(file, JSON.stringify(data, null, 2));
   });

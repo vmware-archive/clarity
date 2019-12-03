@@ -12,6 +12,7 @@ import { styles } from './badge.element.css';
  * Web component badges.
  *
  * @noInheritDoc
+ * @beta 3.0
  * @element cwc-badge
  * @slot default - Content slot for inside the badge
  * @attr {String} color - Sets the color of the badge from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)

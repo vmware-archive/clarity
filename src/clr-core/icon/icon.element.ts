@@ -30,6 +30,7 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * Icon web component that renders svg shapes that can be customized with CSS classnames.
  *
  * @noInheritDoc
+ * @beta 3.0
  * @element cwc-icon
  * @attr size - Apply numerical width-height or a t-shirt-sized CSS classname
  * @attr dir - Rotate icon 90° with the top of the icon pointing in the specified direction.

@@ -14,6 +14,7 @@ import { styles } from './test-dropdown.element.css';
  * Dropdown, example test component. Do not use in production.
  *
  * @noInheritDoc
+ * @beta 3.0
  * @element cwc-test-dropdown
  * @slot default - Content slot for dropdown content
  * @attr outline - Apply outline style.

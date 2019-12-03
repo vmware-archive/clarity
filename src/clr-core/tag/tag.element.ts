@@ -10,6 +10,14 @@ import { styles } from './tag.element.css';
 /**
  * Web component tags.
  *
+ * ```typescript
+ * import '@clr/core/tag';
+ * ```
+ *
+ * ```html
+ * <cwc-tag status="info">Info</cwc-tag>
+ * ```
+ *
  * @noInheritDoc
  * @beta 3.0
  * @element cwc-tag

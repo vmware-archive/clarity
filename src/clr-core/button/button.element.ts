@@ -24,6 +24,14 @@ export enum ClrLoadingState {
 /**
  * Web component buttons.
  *
+ * ```typescript
+ * import '@clr/core/button';
+ * ```
+ *
+ * ```html
+ * <cwc-button>submit</cwc-button>
+ * ```
+ *
  * @noInheritDoc
  * @beta 3.0
  * @element cwc-button

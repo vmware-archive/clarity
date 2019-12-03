@@ -2,6 +2,16 @@
 
 Dropdown, example test component. Do not use in production.
 
+```typescript
+import '@clr/core/test-dropdown';
+```
+
+```html
+<cwc-test-dropdown title="click me!">
+   Hello World
+</cwc-test-dropdown>
+```
+
 ## Attributes
 
 | Attribute | Type  | Description          |

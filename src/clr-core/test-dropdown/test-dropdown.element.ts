@@ -13,6 +13,16 @@ import { styles } from './test-dropdown.element.css';
 /**
  * Dropdown, example test component. Do not use in production.
  *
+ * ```typescript
+ * import '@clr/core/test-dropdown';
+ * ```
+ *
+ * ```html
+ * <cwc-test-dropdown title="click me!">
+ *   Hello World
+ * </cwc-test-dropdown>
+ * ```
+ *
  * @noInheritDoc
  * @beta 3.0
  * @element cwc-test-dropdown

@@ -2,6 +2,14 @@
 
 Web component buttons.
 
+```typescript
+import '@clr/core/button';
+```
+
+```html
+<cwc-button>submit</cwc-button>
+```
+
 ## Attributes
 
 | Attribute | Type     | Description                                      |

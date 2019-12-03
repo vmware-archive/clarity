@@ -11,6 +11,7 @@ import { styles } from './tag.element.css';
  * Web component tags.
  *
  * @noInheritDoc
+ * @beta 3.0
  * @element cwc-tag
  * @slot default - Content slot for inside the tag
  * @attr {String} color - Sets the color of the tag (and badge if present) from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)

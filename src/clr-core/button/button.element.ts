@@ -25,6 +25,7 @@ export enum ClrLoadingState {
  * Web component buttons.
  *
  * @noInheritDoc
+ * @beta 3.0
  * @element cwc-button
  * @slot default - Content slot for inside the button
  * @attr {String} action - Define the type of action the button triggers <br/> (`default`, `outline`, `link`)

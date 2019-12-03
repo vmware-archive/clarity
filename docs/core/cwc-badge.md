@@ -2,6 +2,14 @@
 
 Web component badges.
 
+```typescript
+import '@clr/core/badge';
+```
+
+```html
+<cwc-badge status="info">2</cwc-badge>
+```
+
 ## Attributes
 
 | Attribute | Type     | Description                                      |

@@ -2,6 +2,14 @@
 
 Web component tags.
 
+```typescript
+import '@clr/core/tag';
+```
+
+```html
+<cwc-tag status="info">Info</cwc-tag>
+```
+
 ## Attributes
 
 | Attribute | Type     | Description                                      |

@@ -11,6 +11,14 @@ import { styles } from './badge.element.css';
 /**
  * Web component badges.
  *
+ * ```typescript
+ * import '@clr/core/badge';
+ * ```
+ *
+ * ```html
+ * <cwc-badge status="info">2</cwc-badge>
+ * ```
+ *
  * @noInheritDoc
  * @beta 3.0
  * @element cwc-badge

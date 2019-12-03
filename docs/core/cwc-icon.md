@@ -1,6 +1,17 @@
 # cwc-icon
 
 Icon web component that renders svg shapes that can be customized with CSS classnames.
+To load a icon import the need icon with the icon service.
+
+```typescript
+import { ClarityIcons, userIcon } from '@clr/core';
+
+ClarityIcons.addIcon(userIcon);
+```
+
+```html
+<cwc-icon shape="user"></cwc-icon>
+```
 
 ## Properties
 

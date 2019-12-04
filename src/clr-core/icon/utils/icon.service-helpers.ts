@@ -4,10 +4,10 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { existsIn } from '@clr/core/common';
+import { existsIn, IconRegistrySources } from '@clr/core/common';
 import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer';
-import { IconAlias, IconCollection, IconRegistrySources, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { IconAlias, IconAliasLegacyObject, IconShapeTuple } from '../interfaces/icon.interfaces';
 
 export function addIcon(shape: IconShapeTuple, registry: IconRegistrySources) {
   const [shapeName] = shape;
@@ -26,10 +26,10 @@ export function hasIcon(shapeName: string, registry: IconRegistrySources): boole
   return has(shapeName, registry);
 }
 
-export function setIconAliases(shapeName: string, aliasNames: string[], registry: IconRegistrySources) {
-  if (existsIn([shapeName], registry)) {
-    aliasNames.forEach(a => {
-      setIconAlias(shapeName, a, registry);
+export function setIconAliases(iconAlias: IconAlias, registry: IconRegistrySources) {
+  if (registry[iconAlias[0]]) {
+    iconAlias[1].forEach(a => {
+      setIconAlias(iconAlias[0], a, registry);
     });
   }
 }
@@ -46,20 +46,11 @@ export function setIconAlias(shapeName: string, aliasName: string, registry: Ico
   }
 }
 
-export function addCollection(collection: IconCollection, registry: IconRegistrySources) {
-  collection.icons.forEach((shape: any) => {
-    addIcon(shape, registry);
-  });
-  collection.aliases.forEach((alias: IconAlias) => {
-    legacyAlias(alias, registry);
-  });
-}
-
-export function legacyAlias(aliases: IconAlias, registry: IconRegistrySources) {
+export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistrySources) {
   for (const shapeNameKey in aliases) {
     if (aliases.hasOwnProperty(shapeNameKey)) {
       if (registry.hasOwnProperty(shapeNameKey)) {
-        setIconAliases(shapeNameKey, aliases[shapeNameKey], registry);
+        setIconAliases([shapeNameKey, aliases[shapeNameKey]], registry);
       } else {
         throw new Error(`An icon "${shapeNameKey}" you are trying to set aliases to doesn't exist in Clarity Icons.`);
       }

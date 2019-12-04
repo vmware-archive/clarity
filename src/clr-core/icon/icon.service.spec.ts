@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { IconRegistrySources } from '@clr/core/common';
 import { renderIcon } from './icon.renderer';
 import { ClarityIcons } from './icon.service';
-import { IconShapeCollection, IconShapeSources } from './interfaces/icon.interfaces';
-import { getCollectionFromTestIcons, testIcons } from './utils/test-icons';
+import { testIcons } from './utils/test-icons';
 
 describe('ClarityIcons service: ', () => {
   describe('get: ', () => {
-    let registry: IconShapeSources;
+    let registry: IconRegistrySources;
 
     beforeAll(() => {
       registry = Object.assign({}, ClarityIcons.registry);
@@ -77,38 +77,25 @@ describe('ClarityIcons service: ', () => {
     it('should add icons to the registry using icon shape tuples', () => {
       const [, testShape] = testIcons.badgedIcon;
       const expected = renderIcon(testShape);
-      ClarityIcons.addIcon(['test07', <IconShapeCollection>testShape]);
+      ClarityIcons.addIcons(['test07', testShape]);
       expect(ClarityIcons.get('test07')).toEqual(expected);
     });
 
     it('should add icons to the registry using string tuples', () => {
-      ClarityIcons.addIcon(['test08', <string>'testing']);
+      ClarityIcons.addIcons(['test08', <string>'testing']);
       expect(ClarityIcons.get('test08')).toEqual('testing');
     });
 
     it('should not overwrite icons that have already been added to the registry (legacy api)', () => {
-      ClarityIcons.addIcon(['test09', <string>'ohai']);
+      ClarityIcons.addIcons(['test09', <string>'ohai']);
       expect(ClarityIcons.get('test09')).toEqual('ohai');
-      ClarityIcons.addIcon(['test09', <string>'kthxbye']);
+      ClarityIcons.addIcons(['test09', <string>'kthxbye']);
       expect(ClarityIcons.get('test09')).toEqual('ohai');
-    });
-  });
-
-  describe('addCollection: ', () => {
-    it('should add icons and aliases', () => {
-      const myCollection = getCollectionFromTestIcons();
-      ClarityIcons.addCollection(myCollection);
-      expect(ClarityIcons.get('colltest999')).toBeDefined();
-      expect(ClarityIcons.get('colltest1000')).toBeDefined();
-      expect(ClarityIcons.get('colltest1001')).toBeDefined();
-      expect(ClarityIcons.get('colltest1002')).toBeDefined();
-      expect(ClarityIcons.get('the-works')).toBeDefined();
-      expect(ClarityIcons.get('just-lines')).toBeDefined();
     });
   });
 
   describe('alias: ', () => {
-    let clonedRegistry: IconShapeSources;
+    let clonedRegistry: IconRegistrySources;
 
     beforeAll(() => {
       clonedRegistry = Object.assign({}, ClarityIcons.registry);

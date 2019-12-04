@@ -26,13 +26,19 @@ ClarityIcons.addIcon(userIcon);
 
 ## CSS Custom Properties
 
-| Property                     |
-|------------------------------|
-| `--clr-icon-color-danger`    |
-| `--clr-icon-color-default`   |
-| `--clr-icon-color-error`     |
-| `--clr-icon-color-highlight` |
-| `--clr-icon-color-info`      |
-| `--clr-icon-color-inverse`   |
-| `--clr-icon-color-success`   |
-| `--clr-icon-color-warning`   |
+| Property                             |
+|--------------------------------------|
+| `--clr-icon-color-danger`            |
+| `--clr-icon-color-default`           |
+| `--clr-icon-color-error`             |
+| `--clr-icon-color-highlight`         |
+| `--clr-icon-color-info`              |
+| `--clr-icon-color-inverse`           |
+| `--clr-icon-color-inverse-danger`    |
+| `--clr-icon-color-inverse-error`     |
+| `--clr-icon-color-inverse-highlight` |
+| `--clr-icon-color-inverse-info`      |
+| `--clr-icon-color-inverse-success`   |
+| `--clr-icon-color-inverse-warning`   |
+| `--clr-icon-color-success`           |
+| `--clr-icon-color-warning`           |

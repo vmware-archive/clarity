@@ -6,7 +6,7 @@
     },
     {
       "path": "./dist/clr-core/fesm2015/**/clr-core.js",
-      "maxSize": "35 kB"
+      "maxSize": "42 kB"
     },
     {
       "path": "./dist/dev-core/**/main-es2015*.js",

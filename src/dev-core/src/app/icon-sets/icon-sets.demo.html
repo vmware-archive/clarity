@@ -1,0 +1,133 @@
+<style>
+    table.table {
+        width: 100%;
+        max-width: 32rem;
+        margin: 1.2rem 0;
+    }
+
+    table.table th,
+    table.table td {
+        text-align: left;
+        line-height: 1.1em;
+    }
+
+    .style-toggles label,
+    p > label {
+        padding-left: 0.9rem;
+    }
+    
+    .style-toggles label:first-child,
+    p > label:first-child {
+        padding-left: 0;
+    }
+
+    .filter-and-toggles {
+        border-bottom: 0.05rem solid #ccc;
+        padding-bottom: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    table b {
+        padding-right: 0.6rem;
+    }
+    tr + tr > td {
+        padding-top: 0.6rem;
+    }
+
+    .style-toggles input {
+        padding-right: 0.4rem;
+    }
+
+    .dc-icon-set cwc-icon {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .dc-icon-box table {
+        margin: 0;
+    }
+    
+    .dc-icon-box table td {
+        text-align: center;
+    }
+
+    .dc-icon-boxes {
+        padding: 1.2rem 0.4rem 0;
+        margin: 0;
+        background: #f4f4f4;
+    }
+
+    .dc-icon-boxes.inverse {
+        background: #565656;
+    }
+
+    .dc-icon-boxes.inverse .dc-icon-name {
+        color: #fff;
+    }
+
+    table tr td.dc-icon-name {
+        padding: 0.2rem 0 1.2rem;
+    }
+</style>
+
+<h1>Icon Sets Demo</h1>
+
+<section class="filter-and-toggles" [formGroup]="iconFilterAndToggles">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <label><b>Search:</b><input type="text" placeholder="Enter icon name" formControlName="filterText"></label>
+                </td>
+                <td>
+                    <label>
+                        <b>Show Icon Set:</b>
+                        <select formControlName="currentSet">
+                            <option value="All">All</option>
+                            <option *ngFor="let setName of availableSets" [value]="setName">{{setName}}</option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="style-toggles" colspan="2">
+                    <label>
+                        <input type="checkbox" formControlName="isSolid">
+                        Solid
+                    </label>
+                    <label>
+                        <input type="checkbox" formControlName="isInverse">
+                        Inverse
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <label><b>Decoration:</b></label>
+        <label><input type="radio" value="none" formControlName="decoration"> None</label>
+        <label><input type="radio" value="alerted" formControlName="decoration"> Alerted</label>
+        <label><input type="radio" value="badged" formControlName="decoration"> Badged</label>
+    </p>
+</section>
+
+<section *ngFor="let iconSet of visibleIconSets" id="dev-core-icon-set-core" class="dc-icon-set">
+    <h2>{{iconSet}} Set</h2>
+    <div [ngClass]="iconRowClassnames">
+        <ng-container *ngFor="let iconName of iconIndex[iconSet]">
+            <div class="dc-icon-box clr-col-2" *ngIf="showIcon(iconName)">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><cwc-icon [shape]="iconName" [ngClass]="iconClassnames"></cwc-icon></td>
+                        </tr>
+                        <tr>
+                            <td class="dc-icon-name">{{iconName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ng-container>
+    </div>
+</section>
+

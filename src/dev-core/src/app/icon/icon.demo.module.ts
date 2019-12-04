@@ -7,11 +7,11 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ClarityIcons, userIcon } from '@clr/core';
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 
 import { IconDemoComponent } from './icon.demo';
 
-ClarityIcons.addIcon(userIcon);
+ClarityIcons.addIcons(userIcon);
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild([{ path: '', component: IconDemoComponent }])],

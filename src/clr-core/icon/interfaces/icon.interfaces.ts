@@ -4,32 +4,38 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+type IconSvgString = string;
+type IconNameString = string;
+type IconAliases = string[];
+
 export interface IconShapeCollection {
-  outline?: string;
-  solid?: string;
-  outlineBadged?: string;
-  outlineAlerted?: string;
-  solidBadged?: string;
-  solidAlerted?: string;
+  outline?: IconSvgString;
+  solid?: IconSvgString;
+  outlineBadged?: IconSvgString;
+  outlineAlerted?: IconSvgString;
+  solidBadged?: IconSvgString;
+  solidAlerted?: IconSvgString;
 }
 
-export type IconShapeString = [string, string];
+type IconShapeTupleAsString = [IconNameString, IconSvgString];
+type IconShapeTupleAsObject = [IconNameString, IconSvgString];
 
-export type IconShapeTuple = IconShapeString | [string, IconShapeCollection];
+export type IconShapeTuple = IconShapeTupleAsString | IconShapeTupleAsObject;
 
 export interface IconShapeSources {
-  [key: string]: string | IconShapeCollection;
+  [key: string]: IconSvgString | IconShapeCollection;
 }
 
-export interface IconRegistrySources {
-  [key: string]: string;
+declare module '@clr/core/common' {
+  interface IconRegistrySources {
+    [key: string]: IconSvgString;
+  }
 }
 
-export interface IconAlias {
-  [key: string]: string[];
+export interface IconAliasLegacyObject {
+  [key: string]: IconAliases;
 }
 
-export interface IconCollection {
-  icons?: IconShapeTuple[];
-  aliases?: IconAlias[];
-}
+type NameOfIconToAlias = string;
+
+export type IconAlias = [NameOfIconToAlias, IconAliases];

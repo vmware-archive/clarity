@@ -122,6 +122,7 @@
     "@webcomponents/shadycss": "1.9.3",
     "@webcomponents/webcomponentsjs": "2.4.0",
     "core-js": "2.5.5",
+    "css-vars-ponyfill": "2.1.2",
     "jump.js": "1.0.2",
     "lit-element": "2.2.1",
     "lit-html": "1.1.2",

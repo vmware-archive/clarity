@@ -272,8 +272,7 @@
           "options": {
             "main": "src/clr-core/test.ts",
             "tsConfig": "src/clr-core/tsconfig.spec.json",
-            "karmaConfig": "src/clr-core/karma.conf.js",
-            "codeCoverageExclude": ["src/clr-core/common/css-vars/css-vars-ponyfill-fork.ts"]
+            "karmaConfig": "src/clr-core/karma.conf.js"
           }
         },
         "lint": {

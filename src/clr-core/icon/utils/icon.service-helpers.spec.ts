@@ -4,12 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { IconRegistrySources } from '@clr/core/common';
 import { renderIcon } from '../icon.renderer';
-import { IconRegistrySources, IconShapeCollection, IconShapeTuple } from '../interfaces/icon.interfaces';
-import { testIcons } from '../utils/test-icons';
-
 import { ClarityIcons } from '../icon.service';
-
+import { IconShapeTuple } from '../interfaces/icon.interfaces';
+import { testIcons } from '../utils/test-icons';
 import { addIcon, addIcons, getIcon, hasIcon, legacyAlias, setIconAlias, setIconAliases } from './icon.service-helpers';
 
 describe('ClarityIcons service helper functions: ', () => {
@@ -32,7 +31,7 @@ describe('ClarityIcons service helper functions: ', () => {
     it('should add new icons to registry from shapes', () => {
       const [, testShape] = testIcons.justOutline;
       const expected = renderIcon(testShape);
-      addIcon(['new-icon', <IconShapeCollection>testShape], registry);
+      addIcon(['new-icon', testShape], registry);
       expect(registry['new-icon']).toEqual(expected);
     });
 
@@ -43,7 +42,7 @@ describe('ClarityIcons service helper functions: ', () => {
       const expected = 'still here';
       addIcon([iconKey, expected], registry);
       expect(registry[iconKey]).toEqual(expected);
-      addIcon([iconKey, <IconShapeCollection>testShape], registry);
+      addIcon([iconKey, testShape], registry);
       expect(registry[iconKey]).not.toEqual(unexpected);
       expect(registry[iconKey]).toEqual(expected);
     });
@@ -56,7 +55,7 @@ describe('ClarityIcons service helper functions: ', () => {
       const iconsToAdd: IconShapeTuple[] = [
         ['icon01', 'ohai'],
         ['icon02', 'howdy'],
-        ['icon03', <IconShapeCollection>testShape],
+        ['icon03', testShape],
         ['unknown', 'should not be overwritten'],
       ];
 
@@ -75,7 +74,7 @@ describe('ClarityIcons service helper functions: ', () => {
       const expected = 'still here';
       addIcon([iconKey, expected], registry);
       expect(registry[iconKey]).toEqual(expected);
-      addIcon([iconKey, <IconShapeCollection>testShape], registry);
+      addIcon([iconKey, testShape], registry);
       expect(registry[iconKey]).not.toEqual(unexpected);
       expect(registry[iconKey]).toEqual(expected);
     });
@@ -104,7 +103,7 @@ describe('ClarityIcons service helper functions: ', () => {
     });
 
     it('should set up aliases', () => {
-      setIconAliases('ohai', ['hola', 'bonjour'], aliasTestRegistry);
+      setIconAliases(['ohai', ['hola', 'bonjour']], aliasTestRegistry);
       expect((aliasTestRegistry as any).hola).toBeDefined();
       expect((aliasTestRegistry as any).bonjour).toBeDefined();
       expect((aliasTestRegistry as any).hola).toEqual(aliasTestRegistry.ohai);
@@ -112,7 +111,7 @@ describe('ClarityIcons service helper functions: ', () => {
     });
 
     it('should do nothing if there is no icon to alias to', () => {
-      setIconAliases('jabberwocky', ['hola', 'bonjour'], aliasTestRegistry);
+      setIconAliases(['jabberwocky', ['hola', 'bonjour']], aliasTestRegistry);
       expect((aliasTestRegistry as any).hola).not.toBeDefined();
       expect((aliasTestRegistry as any).bonjour).not.toBeDefined();
     });

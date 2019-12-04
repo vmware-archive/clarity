@@ -16,6 +16,7 @@ import { html, LitElement, property } from 'lit-element';
 import { styles } from './icon.element.css';
 import { ClarityIcons } from './icon.service';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames';
+import { hasIcon } from './utils/icon.service-helpers';
 
 function updateSvgAriaAttrs(svgEl: SVGSVGElement, ariaId: string) {
   svgEl.setAttribute('role', 'img');
@@ -52,8 +53,14 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --clr-icon-color-warning
  * @cssprop --clr-icon-color-error
  * @cssprop --clr-icon-color-info
- * @cssprop --clr-icon-color-inverse
  * @cssprop --clr-icon-color-highlight
+ * @cssprop --clr-icon-color-inverse
+ * @cssprop --clr-icon-color-inverse-success
+ * @cssprop --clr-icon-color-inverse-danger
+ * @cssprop --clr-icon-color-inverse-warning
+ * @cssprop --clr-icon-color-inverse-error
+ * @cssprop --clr-icon-color-inverse-info
+ * @cssprop --clr-icon-color-inverse-highlight
  */
 // @dynamic
 export class CwcIcon extends IconMixinClass {
@@ -61,7 +68,7 @@ export class CwcIcon extends IconMixinClass {
   private _size: string;
 
   get shape() {
-    return ClarityIcons.has(this._shape) ? this._shape : 'unknown';
+    return hasIcon(this._shape, ClarityIcons.registry) ? this._shape : 'unknown';
   }
 
   /**
@@ -157,7 +164,9 @@ export class CwcIcon extends IconMixinClass {
   /** render() needs the .innerHTML because svg is converted to text otherwise */
   protected render() {
     return html`
-    <div .innerHTML="${ClarityIcons.get(this.shape)}"></div>
+    <div .innerHTML="${
+      ClarityIcons.registry[this.shape] ? ClarityIcons.registry[this.shape] : ClarityIcons.registry.unknown
+    }"></div>
     <span id="${this.ariaId}" class="sr-only">${this.ariaLabel}</span>`;
   }
 }

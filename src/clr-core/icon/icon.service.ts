@@ -4,18 +4,11 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { isNilOrEmpty, isObjectAndNotNilOrEmpty } from '@clr/core/common';
-import {
-  IconAlias,
-  IconCollection,
-  IconRegistrySources,
-  IconShapeCollection,
-  IconShapeSources,
-  IconShapeTuple,
-} from './interfaces/icon.interfaces';
+import { IconRegistrySources, isNilOrEmpty } from '@clr/core/common';
+import { IconAlias, IconAliasLegacyObject, IconShapeSources, IconShapeTuple } from './interfaces/icon.interfaces';
 import { unknownIcon } from './shapes/unknown';
 
-import { addCollection, addIcon, addIcons, getIcon, hasIcon, legacyAlias } from './utils/icon.service-helpers';
+import { addIcon, addIcons, getIcon, legacyAlias, setIconAliases } from './utils/icon.service-helpers';
 
 const iconRegistry: IconRegistrySources = {
   unknown: unknownIcon[1] as string,
@@ -38,25 +31,28 @@ export class ClarityIcons {
    * registry() returns a clone of the icon registry, not the actual registry itself.
    * Performing actions on the return value of registry() will not be reflected in the
    * actual iconsRegistry
-   *
    */
-  static get registry() {
+  static get registry(): IconRegistrySources {
     return { ...iconRegistry };
   }
 
-  static has(shapeName: string): boolean {
-    return hasIcon(shapeName, iconRegistry);
-  }
-
-  static addIcon(shape: IconShapeTuple) {
-    addIcon(shape, iconRegistry);
-  }
-
-  static addIcons(shapes: IconShapeTuple[]) {
+  static addIcons(...shapes: IconShapeTuple[]) {
     addIcons(shapes, iconRegistry);
   }
 
-  /** Legacy API call that accepts shapes in dictionary/hash format. */
+  static addAliases(...aliases: IconAlias[]) {
+    aliases.forEach(alias => setIconAliases(alias, iconRegistry));
+  }
+
+  /** @deprecated legacy API */
+  static get(shapeName?: string): string | IconRegistrySources {
+    if (isNilOrEmpty(shapeName)) {
+      return { ...iconRegistry };
+    }
+    return getIcon(shapeName, iconRegistry);
+  }
+
+  /** @deprecated legacy API */
   static add(shapes: IconShapeSources) {
     for (const shapeName in shapes) {
       if (shapes.hasOwnProperty(shapeName)) {
@@ -65,25 +61,8 @@ export class ClarityIcons {
     }
   }
 
-  static addCollection(collection: IconCollection) {
-    addCollection(collection, iconRegistry);
-  }
-
-  /**
-   * If passed no arguments, get() will return a clone of the icon registry.
-   */
-  static get(shapeName?: string): string | IconShapeCollection {
-    if (isNilOrEmpty(shapeName)) {
-      return { ...iconRegistry };
-    }
-    return getIcon(shapeName, iconRegistry);
-  }
-
-  static alias(aliases: IconAlias) {
-    if (!isObjectAndNotNilOrEmpty(aliases)) {
-      throw new Error(`The argument must be an object literal passed in the following pattern: 
-                  { "shape-name": ["alias-name", ...] }`);
-    }
-    legacyAlias(aliases, iconRegistry);
+  /** @deprecated legacy API */
+  static alias(alias: IconAliasLegacyObject) {
+    legacyAlias(alias, iconRegistry);
   }
 }

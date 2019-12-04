@@ -278,7 +278,49 @@ svg {
 :host(.has-alert) {
   .clr-i-alert {
     @include setIconColor(
-      #{'var(--clr-icon-color-warning, var(--clr-color-warning-900,' + $clr-color-warning-900 + '))'}
+      #{'var(--clr-icon-color-warning, var(--clr-color-warning-800,' + $clr-color-warning-800 + '))'}
+    );
+  }
+}
+
+// inverse + variants
+
+:host(.is-highlight.is-inverse) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-inverse-highlight, var(--clr-color-action-400,' + $clr-color-action-400 + '))'}
+  );
+}
+
+// variant badge colors
+:host(.has-badge--success.is-inverse) {
+  .clr-i-badge {
+    @include setIconColor(
+      #{'var(--clr-icon-color-inverse-success, var(--clr-color-success-400,' + $clr-color-success-400 + '))'}
+    );
+  }
+}
+
+:host(.has-badge--error.is-inverse) {
+  .clr-i-badge {
+    @include setIconColor(
+      #{'var(--clr-icon-color-inverse-error, var(--clr-color-danger-500,' + $clr-color-danger-500 + '))'}
+    );
+  }
+}
+
+:host(.has-badge--info.is-inverse) {
+  .clr-i-badge {
+    @include setIconColor(
+      #{'var(--clr-icon-color-inverse-info, var(--clr-color-action-400,' + $clr-color-action-400 + '))'}
+    );
+  }
+}
+
+// alert colors
+:host(.has-alert.is-inverse) {
+  .clr-i-alert {
+    @include setIconColor(
+      #{'var(--clr-icon-color-inverse-warning, var(--clr-color-warning-500,' + $clr-color-warning-500 + '))'}
     );
   }
 }

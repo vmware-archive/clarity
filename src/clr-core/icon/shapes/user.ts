@@ -22,4 +22,5 @@ const icon = {
     '<path d="M30.61,24.52a17.16,17.16,0,0,0-25.22,0,1.51,1.51,0,0,0-.39,1v6A1.5,1.5,0,0,0,6.5,33h23A1.5,1.5,0,0,0,31,31.5v-6A1.51,1.51,0,0,0,30.61,24.52Z"/><path d="M18,17a7,7,0,0,0,6.85-5.56,7.4,7.4,0,0,1-2.24-6.69A7,7,0,1,0,18,17Z"/>',
 };
 
-export const userIcon: IconShapeTuple = ['user', renderIcon(icon)];
+export const userIconName = 'user';
+export const userIcon: IconShapeTuple = [userIconName, renderIcon(icon)];

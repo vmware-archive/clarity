@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -41,12 +41,13 @@ export class ClrOptions extends AbstractPopover implements OnDestroy {
   }
 
   private initializeSubscriptions(): void {
-    this.sub = this.ifOpenService.ignoredElementChange.subscribe((el: ElementRef) => {
-      if (el) {
-        this.ignoredElement = el.nativeElement;
-      }
-      this.sub.unsubscribe();
-    });
+    // @TODO COMBOBOX: fix on combobox merge
+    // this.sub = this.toggleService.ignoredElementChange.subscribe((el: ElementRef) => {
+    //   if (el) {
+    //     this.ignoredElement = el.nativeElement;
+    //   }
+    //   this.sub.unsubscribe();
+    // });
   }
 
   // Lifecycle hooks

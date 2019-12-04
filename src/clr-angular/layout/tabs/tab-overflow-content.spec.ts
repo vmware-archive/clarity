@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrTabOverflowContent } from './tab-overflow-content';
 
@@ -26,7 +26,7 @@ describe('TabOverflowContent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ClrTabOverflowContent, TestComponent],
-      providers: [IfOpenService],
+      providers: [ClrPopoverToggleService],
     });
 
     fixture = TestBed.createComponent(TestComponent);

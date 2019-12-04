@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-codes/key-codes';
 
 import { ClrCalendar } from './calendar';
@@ -35,7 +35,7 @@ export default function() {
       context = this.create(ClrCalendar, TestComponent, [
         { provide: DateNavigationService, useValue: dateNavigationService },
         DateIOService,
-        IfOpenService,
+        ClrPopoverToggleService,
         ViewManagerService,
         LocaleHelperService,
         DatepickerFocusService,

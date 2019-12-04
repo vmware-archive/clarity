@@ -9,7 +9,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrOption } from './option';
 import { OptionSelectionService } from './providers/option-selection.service';
@@ -20,7 +20,11 @@ import { OptionSelectionService } from './providers/option-selection.service';
             Test
         </clr-option>
     `,
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }, OptionSelectionService],
+  providers: [
+    ClrPopoverToggleService,
+    { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef },
+    OptionSelectionService,
+  ],
 })
 class TestComponent {
   @ViewChild(ClrOption, { static: false })
@@ -33,20 +37,20 @@ class TestComponent {
             Test
         </clr-option>
     `,
-  providers: [IfOpenService, OptionSelectionService],
+  providers: [ClrPopoverToggleService, OptionSelectionService],
 })
 class TestComponentWithError {}
 
 export default function(): void {
   describe('Combobox Option Component', function() {
     let context: TestContext<ClrOption<string>, TestComponent>;
-    let ifOpenService: IfOpenService;
+    let toggleService: ClrPopoverToggleService;
     let optionSelectionService: OptionSelectionService<string>;
 
     describe('View Basics', function() {
       beforeEach(function() {
         context = this.createOnly(ClrOption, TestComponent, []);
-        ifOpenService = context.getClarityProvider(IfOpenService);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
       it('projects content', () => {
@@ -77,7 +81,7 @@ export default function(): void {
     describe('Typescript API', function() {
       beforeEach(function() {
         context = this.createOnly(ClrOption, TestComponent, []);
-        ifOpenService = context.getClarityProvider(IfOpenService);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
         optionSelectionService = <OptionSelectionService<string>>context.getClarityProvider(OptionSelectionService);
       });
 
@@ -98,11 +102,11 @@ export default function(): void {
       });
 
       it('closes the menu when an option is clicked', () => {
-        ifOpenService.open = true;
+        toggleService.open = true;
 
         context.clarityDirective.updateSelectionAndCloseMenu();
 
-        expect(ifOpenService.open).toBe(false);
+        expect(toggleService.open).toBe(false);
       });
 
       it('provides a ref to the ElementRef of the option', () => {

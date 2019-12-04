@@ -87,7 +87,7 @@ export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
    *
    */
   close() {
-    this.ifOpenService.open = false;
+    this.toggleService.open = false;
   }
 
   private _position: string;

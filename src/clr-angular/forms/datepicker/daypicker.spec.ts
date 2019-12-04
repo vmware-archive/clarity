@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { By } from '@angular/platform-browser';
 import { ClarityModule } from '../../clr-angular.module';
 
@@ -41,7 +41,7 @@ export default function() {
         providers: [
           { provide: DateNavigationService, useValue: dateNavigationService },
           DateIOService,
-          IfOpenService,
+          ClrPopoverToggleService,
           ViewManagerService,
           LocaleHelperService,
           DatepickerFocusService,
@@ -88,7 +88,7 @@ export default function() {
       context = this.create(ClrDaypicker, TestComponent, [
         { provide: DateNavigationService, useValue: dateNavigationService },
         DateIOService,
-        IfOpenService,
+        ClrPopoverToggleService,
         ViewManagerService,
         LocaleHelperService,
         DatepickerFocusService,

@@ -5,7 +5,7 @@
  */
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrDropdown } from './dropdown';
 import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
@@ -27,7 +27,7 @@ export class ClrDropdownTrigger {
 
   constructor(
     dropdown: ClrDropdown,
-    private ifOpenService: IfOpenService,
+    private toggleService: ClrPopoverToggleService,
     el: ElementRef<HTMLElement>,
     focusHandler: DropdownFocusHandler
   ) {
@@ -39,11 +39,11 @@ export class ClrDropdownTrigger {
   }
 
   get active(): boolean {
-    return this.ifOpenService.open;
+    return this.toggleService.open;
   }
 
   @HostListener('click', ['$event'])
   onDropdownTriggerClick(event: any): void {
-    this.ifOpenService.toggleWithEvent(event);
+    this.toggleService.toggleWithEvent(event);
   }
 }

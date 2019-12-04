@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@ import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnDest
 import { Subscription } from 'rxjs';
 
 import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { OptionSelectionService } from './providers/option-selection.service';
 
@@ -24,7 +24,7 @@ export class ClrOption<T> implements OnDestroy {
   @Input('clrValue') value: T;
 
   constructor(
-    private ifOpenService: IfOpenService,
+    private toggleService: ClrPopoverToggleService,
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
     parentHost: ElementRef,
@@ -63,7 +63,7 @@ export class ClrOption<T> implements OnDestroy {
     // This is what the native select does.
     this.optionSelectionService.renderSelection(this);
     this.optionSelectionService.updateSelection(this.value);
-    this.ifOpenService.open = false;
+    this.toggleService.open = false;
   }
 
   // Lifecycle Methods

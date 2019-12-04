@@ -5,7 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { FocusService } from '../../utils/focus/focus.service';
 
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
@@ -30,18 +30,20 @@ export default function(): void {
      */
 
     type Context = TestContext<ClrDropdownTrigger, SimpleTest>;
-    spec(ClrDropdownTrigger, SimpleTest, null, { providers: [{ provide: ClrDropdown, useValue: {} }, IfOpenService] });
+    spec(ClrDropdownTrigger, SimpleTest, null, {
+      providers: [{ provide: ClrDropdown, useValue: {} }, ClrPopoverToggleService],
+    });
 
     it('adds the aria-haspopup attribute to the host', function(this: Context) {
       expect(this.clarityElement.getAttribute('aria-haspopup')).toBe('menu');
     });
 
     it('adds the aria-expanded attribute to the host', function(this: Context) {
-      const ifOpenService = this.getProvider(IfOpenService);
-      ifOpenService.open = false;
+      const toggleService = this.getProvider(ClrPopoverToggleService);
+      toggleService.open = false;
       this.detectChanges();
       expect(this.clarityElement.getAttribute('aria-expanded')).toBe('false');
-      ifOpenService.open = true;
+      toggleService.open = true;
       this.detectChanges();
       expect(this.clarityElement.getAttribute('aria-expanded')).toBe('true');
     });

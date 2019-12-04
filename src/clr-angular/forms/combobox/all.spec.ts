@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,7 +19,8 @@ import ComboboxOptionIntegrationSpecs from './combobox-with-option.integration.s
 import ComboboxOptionsMenuIntegrationSpecs from './combobox-with-options-menu.integration.spec';
 import ComboboxSpecs from './combobox.spec';
 
-describe('Combobox component', function() {
+// @TODO COMBOBOX: disable until combobox is merged
+xdescribe('Combobox component', function() {
   addHelpers();
 
   describe('Directives', () => {

@@ -5,7 +5,7 @@
  */
 import { Component, ContentChild, ElementRef } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostTrigger } from './signpost-trigger';
@@ -24,12 +24,12 @@ import { SignpostFocusManager } from './providers/signpost-focus-manager.service
                 <clr-icon shape="info" [attr.title]="commonStrings.keys.info"></clr-icon>
             </button>
         </ng-container>
-        
+
         <ng-content></ng-content>
     `,
   host: { '[class.signpost]': 'true' },
   providers: [
-    IfOpenService,
+    ClrPopoverToggleService,
     SignpostFocusManager,
     { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef },
     SignpostIdService,

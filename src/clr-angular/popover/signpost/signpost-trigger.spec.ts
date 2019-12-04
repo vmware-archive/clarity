@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClrIconModule } from '../../icon/icon.module';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrSignpostModule } from './signpost.module';
 import { SignpostIdService } from './providers/signpost-id.service';
@@ -17,20 +17,20 @@ export default function(): void {
   describe('SignpostToggle component', function() {
     let fixture: ComponentFixture<any>;
     let clarityElement: any;
-    let ifOpenService: IfOpenService;
+    let toggleService: ClrPopoverToggleService;
     let trigger: HTMLElement;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ClrSignpostModule, ClrIconModule],
         declarations: [TestTrigger],
-        providers: [IfOpenService, SignpostIdService, SignpostFocusManager],
+        providers: [ClrPopoverToggleService, SignpostIdService, SignpostFocusManager],
       });
 
       fixture = TestBed.createComponent(TestTrigger);
       fixture.detectChanges();
       clarityElement = fixture.nativeElement;
-      ifOpenService = TestBed.get(IfOpenService);
+      toggleService = TestBed.get(ClrPopoverToggleService);
       trigger = clarityElement.querySelector('.signpost-action');
     });
 
@@ -39,11 +39,11 @@ export default function(): void {
     });
 
     it('should toggle the IfOpenService.open property on click', function() {
-      expect(ifOpenService.open).toBeUndefined();
+      expect(toggleService.open).toBeFalsy();
       trigger.click();
-      expect(ifOpenService.open).toEqual(true);
+      expect(toggleService.open).toEqual(true);
       trigger.click();
-      expect(ifOpenService.open).toEqual(false);
+      expect(toggleService.open).toEqual(false);
     });
 
     it('should have active class when open', function() {
@@ -54,10 +54,10 @@ export default function(): void {
       trigger.click();
       fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeFalsy();
-      ifOpenService.open = true;
+      toggleService.open = true;
       fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeTruthy();
-      ifOpenService.open = false;
+      toggleService.open = false;
       fixture.detectChanges();
       expect(trigger.classList.contains('active')).toBeFalsy();
     });

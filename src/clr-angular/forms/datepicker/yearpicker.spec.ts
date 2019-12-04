@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-codes/key-codes';
 
 import { DateNavigationService } from './providers/date-navigation.service';
@@ -47,7 +47,7 @@ export default function() {
         providers: [
           ViewManagerService,
           DatepickerFocusService,
-          IfOpenService,
+          ClrPopoverToggleService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           DateIOService,
@@ -127,7 +127,7 @@ export default function() {
         context = this.create(ClrYearpicker, TestComponent, [
           ViewManagerService,
           DatepickerFocusService,
-          IfOpenService,
+          ClrPopoverToggleService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           ClrCommonStringsService,
@@ -268,7 +268,7 @@ export default function() {
         context = this.create(ClrYearpicker, TestComponent, [
           ViewManagerService,
           DatepickerFocusService,
-          IfOpenService,
+          ClrPopoverToggleService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           ClrCommonStringsService,
@@ -374,7 +374,7 @@ export default function() {
         context = scope.create(ClrYearpicker, TestComponent, [
           ViewManagerService,
           DatepickerFocusService,
-          IfOpenService,
+          ClrPopoverToggleService,
           { provide: DateNavigationService, useValue: dateNavigationService },
           LocaleHelperService,
           ClrCommonStringsService,

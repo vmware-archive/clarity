@@ -559,7 +559,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     readonly isEnabled: boolean;
     label: ClrLabel;
     position: PopoverPosition;
-    constructor(_ifOpenService: IfOpenService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
+    constructor(_toggleService: ClrPopoverToggleService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
     close(): void;
     controlClass(): string;
@@ -602,7 +602,7 @@ export declare class ClrDatepickerViewManager extends AbstractPopover {
 export declare class ClrDay {
     dayString: string;
     dayView: DayViewModel;
-    constructor(_dateNavigationService: DateNavigationService, _ifOpenService: IfOpenService, dateFormControlService: DateFormControlService);
+    constructor(_dateNavigationService: DateNavigationService, _toggleService: ClrPopoverToggleService, dateFormControlService: DateFormControlService);
     onDayViewFocus(): void;
     selectDay(): void;
 }
@@ -669,10 +669,10 @@ export declare class ClrDragHandle<T> implements OnDestroy {
 }
 
 export declare class ClrDropdown implements OnDestroy {
-    ifOpenService: IfOpenService;
     isMenuClosable: boolean;
     parent: ClrDropdown;
-    constructor(parent: ClrDropdown, ifOpenService: IfOpenService, cdr: ChangeDetectorRef, dropdownService: RootDropdownService);
+    toggleService: ClrPopoverToggleService;
+    constructor(parent: ClrDropdown, toggleService: ClrPopoverToggleService, cdr: ChangeDetectorRef, dropdownService: RootDropdownService);
     ngOnDestroy(): void;
 }
 
@@ -700,7 +700,7 @@ export declare class ClrDropdownModule {
 export declare class ClrDropdownTrigger {
     readonly active: boolean;
     isRootLevelToggle: boolean;
-    constructor(dropdown: ClrDropdown, ifOpenService: IfOpenService, el: ElementRef<HTMLElement>, focusHandler: DropdownFocusHandler);
+    constructor(dropdown: ClrDropdown, toggleService: ClrPopoverToggleService, el: ElementRef<HTMLElement>, focusHandler: DropdownFocusHandler);
     onDropdownTriggerClick(event: any): void;
 }
 
@@ -822,7 +822,7 @@ export declare class ClrIfExpanded implements OnInit, OnDestroy {
 export declare class ClrIfOpen implements OnDestroy {
     open: boolean;
     openChange: EventEmitter<boolean>;
-    constructor(ifOpenService: IfOpenService, template: TemplateRef<any>, container: ViewContainerRef);
+    constructor(toggleService: ClrPopoverToggleService, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
     updateView(value: boolean): void;
 }
@@ -1031,14 +1031,17 @@ export interface ClrPopoverPosition {
 export declare class ClrPopoverPositionService {
     platformId: Object;
     position: ClrPopoverPosition;
+    shouldRealign: Observable<void>;
     constructor(eventService: ClrPopoverEventsService, platformId: Object);
     alignContent(content: HTMLElement): ClrPopoverContentOffset;
+    realign(): void;
 }
 
 export declare class ClrPopoverToggleService {
     open: boolean;
     readonly openChange: Observable<boolean>;
     openEvent: Event;
+    readonly originalEvent: Event;
     getEventChange(): Observable<Event>;
     toggleWithEvent(event: any): void;
 }
@@ -1168,7 +1171,7 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     ariaExpanded: boolean;
     commonStrings: ClrCommonStringsService;
     isOpen: boolean;
-    constructor(ifOpenService: IfOpenService, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, document: any, platformId: Object);
+    constructor(toggleService: ClrPopoverToggleService, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, document: any, platformId: Object);
     ngOnDestroy(): void;
     ngOnInit(): void;
     onSignpostTriggerClick(event: Event): void;
@@ -1326,7 +1329,6 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly activeTabInOverflow: boolean;
     commonStrings: ClrCommonStringsService;
     ifActiveService: IfActiveService;
-    ifOpenService: IfOpenService;
     readonly isVertical: boolean;
     keyFocus: ClrKeyFocus;
     layout: TabsLayout;
@@ -1335,7 +1337,8 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     tabLinkElements: HTMLElement[];
     tabsId: number;
     tabsService: TabsService;
-    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService, platformId: Object);
+    toggleService: ClrPopoverToggleService;
+    constructor(ifActiveService: IfActiveService, toggleService: ClrPopoverToggleService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService, platformId: Object);
     checkFocusVisible(): void;
     inOverflow(): boolean;
     ngAfterContentInit(): void;
@@ -1381,7 +1384,7 @@ export declare class ClrTooltipModule {
 
 export declare class ClrTooltipTrigger {
     ariaDescribedBy: any;
-    constructor(ifOpenService: IfOpenService, tooltipIdService: TooltipIdService);
+    constructor(toggleService: ClrPopoverToggleService, tooltipIdService: TooltipIdService);
     hideTooltip(): void;
     ngOnDestroy(): void;
     showTooltip(): void;

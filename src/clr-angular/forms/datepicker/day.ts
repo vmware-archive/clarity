@@ -6,7 +6,7 @@
 
 import { Component, Input } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { DayViewModel } from './model/day-view.model';
 import { DayModel } from './model/day.model';
@@ -38,7 +38,7 @@ export class ClrDay {
 
   constructor(
     private _dateNavigationService: DateNavigationService,
-    private _ifOpenService: IfOpenService,
+    private _toggleService: ClrPopoverToggleService,
     private dateFormControlService: DateFormControlService
   ) {}
 
@@ -70,6 +70,6 @@ export class ClrDay {
     const day: DayModel = this.dayView.dayModel;
     this._dateNavigationService.notifySelectedDayChanged(day);
     this.dateFormControlService.markAsDirty();
-    this._ifOpenService.open = false;
+    this._toggleService.open = false;
   }
 }

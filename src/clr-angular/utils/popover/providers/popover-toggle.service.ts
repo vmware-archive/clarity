@@ -47,6 +47,10 @@ export class ClrPopoverToggleService {
     return this._open;
   }
 
+  get originalEvent(): Event {
+    return this._openEvent;
+  }
+
   /**
    * Sometimes, we need to remember the event that triggered the toggling to avoid loops.
    * This is for instance the case of components that open on a click, but close on a click outside.

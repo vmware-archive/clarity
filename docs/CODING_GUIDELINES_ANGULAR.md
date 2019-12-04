@@ -137,7 +137,7 @@ Providers that are exported for consumers should be prefixed with `Clr` and suff
 
 ```
 ClrSomeExternalService
-ClrIfOpenService
+ClrIfActiveService
 AnInternalService
 AnotherInternalService
 ```

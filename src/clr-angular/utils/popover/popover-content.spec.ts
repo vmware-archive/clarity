@@ -5,7 +5,7 @@
  *
  */
 
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TestContext } from '../testing/helpers.spec';
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { ClrAlignment } from './enums/alignment.enum';
@@ -107,6 +107,21 @@ export default function(): void {
         this.fixture.detectChanges();
         expect(content.length).toBe(0);
       });
+
+      it(
+        'responds to shouldRealign events from the positionService',
+        fakeAsync(function(this: Context) {
+          const alignContentSpy = spyOn(this.clarityDirective as any, 'alignContent');
+          this.testComponent.openState = true; // Add content to the DOM
+          this.fixture.detectChanges();
+          expect(alignContentSpy).not.toHaveBeenCalled();
+          this.positionService.realign();
+          this.fixture.detectChanges();
+          tick();
+          // Make sure it has been called exactly one time
+          expect(alignContentSpy).toHaveBeenCalledTimes(1);
+        })
+      );
     });
 
     describe('Template API', () => {

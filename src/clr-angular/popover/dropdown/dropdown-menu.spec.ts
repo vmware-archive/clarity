@@ -6,7 +6,7 @@
 
 import { Component } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { FocusableItem } from '../../utils/focus/focusable-item/focusable-item';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { Point } from '../common/popover';
@@ -36,7 +36,7 @@ export default function(): void {
     spec(ClrDropdownMenu, SimpleTest, null, { declarations: [ClrDropdown] });
 
     beforeEach(function(this: Context) {
-      this.getClarityProvider(IfOpenService).open = true;
+      this.getClarityProvider(ClrPopoverToggleService).open = true;
       this.detectChanges();
     });
 

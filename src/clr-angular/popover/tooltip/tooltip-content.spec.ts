@@ -6,7 +6,7 @@
 
 import { Component } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { Point } from '../common/popover';
 
 import { ClrTooltipContent } from './tooltip-content';
@@ -45,7 +45,7 @@ class IdTest {
 }
 
 interface TooltipContext extends TestContext<ClrTooltipContent, SimpleTest> {
-  ifOpenService: IfOpenService;
+  toggleService: ClrPopoverToggleService;
   tooltipIdService: TooltipIdService;
 }
 
@@ -56,11 +56,11 @@ export default function(): void {
     describe('Template API', function(this: TooltipContext) {
       describe('handles values for custom id', function() {
         spec(ClrTooltipContent, IdTest, ClrTooltipModule, {
-          providers: [IfOpenService, UNIQUE_ID_PROVIDER, TooltipIdService],
+          providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
         });
 
         beforeEach(function(this: TooltipContext) {
-          this.getClarityProvider(IfOpenService).open = true;
+          this.getClarityProvider(ClrPopoverToggleService).open = true;
           this.tooltipIdService = this.getClarityProvider(TooltipIdService);
           this.detectChanges();
         });
@@ -91,11 +91,11 @@ export default function(): void {
 
       describe('handles inputs for position and size', function() {
         spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, {
-          providers: [IfOpenService, UNIQUE_ID_PROVIDER, TooltipIdService],
+          providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
         });
 
         beforeEach(function(this: TooltipContext) {
-          this.getClarityProvider(IfOpenService).open = true;
+          this.getClarityProvider(ClrPopoverToggleService).open = true;
           this.tooltipIdService = this.getClarityProvider(TooltipIdService);
           this.detectChanges();
         });
@@ -141,11 +141,11 @@ export default function(): void {
 
     describe('View basics', function() {
       spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, {
-        providers: [IfOpenService, UNIQUE_ID_PROVIDER, TooltipIdService],
+        providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
       });
 
       beforeEach(function(this: TooltipContext) {
-        this.getClarityProvider(IfOpenService).open = true;
+        this.getClarityProvider(ClrPopoverToggleService).open = true;
         this.tooltipIdService = this.getClarityProvider(TooltipIdService);
         this.detectChanges();
       });

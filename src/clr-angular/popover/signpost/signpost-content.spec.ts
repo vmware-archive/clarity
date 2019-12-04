@@ -9,7 +9,7 @@ import { TestBed } from '@angular/core/testing';
 // I'm giving up, I'm using the datagrid ones for now.
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrIconCustomTag } from '../../icon/icon';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { POPOVER_HOST_ANCHOR } from '../common/popover-host-anchor.token';
 
 import { ClrSignpostContent } from './signpost-content';
@@ -25,7 +25,7 @@ export default function(): void {
       context = this.createOnly(
         ClrSignpostContent,
         SimpleTest,
-        [SignpostIdService, IfOpenService, SignpostFocusManager],
+        [SignpostIdService, ClrPopoverToggleService, SignpostFocusManager],
         [ClrIconCustomTag]
       );
     });
@@ -42,14 +42,14 @@ export default function(): void {
       expect(context.clarityElement.textContent).toContain('Signpost content');
     });
 
-    it('has a close button that updates the IfOpenService.open value', function() {
+    it('has a close button that updates the ClrPopoverToggleService.open value', function() {
       const closer: HTMLElement = context.clarityElement.querySelector('.signpost-action');
       expect(closer).toBeDefined();
-      const service: IfOpenService = TestBed.get(IfOpenService);
-      const testValue: boolean = service.open;
+      const service: ClrPopoverToggleService = TestBed.get(ClrPopoverToggleService);
+      service.open = true;
       closer.click();
       context.detectChanges();
-      expect(testValue).not.toEqual(service.open);
+      expect(service.open).toBeFalse();
     });
 
     it('does not allow multiple open popovers', function() {

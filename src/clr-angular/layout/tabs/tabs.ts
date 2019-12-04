@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 
 import { IfActiveService } from '../../utils/conditional/if-active.service';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { TabsService } from './providers/tabs.service';
 import { ClrTab } from './tab';
@@ -45,12 +45,12 @@ import { isPlatformBrowser } from '@angular/common';
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
-                <div class="tabs-overflow bottom-right" [class.open]="ifOpenService.open" role="presentation">
+                <div class="tabs-overflow bottom-right" [class.open]="toggleService.open" role="presentation">
                     <li role="application" class="nav-item" (click)="toggleOverflow($event)">
                         <button class="btn btn-link nav-link dropdown-toggle" type="button" aria-hidden="true"
                                 [class.active]="activeTabInOverflow" [class.open]="inOverflow()" tabIndex="-1">
                             <clr-icon shape="ellipsis-horizontal"
-                              [class.is-info]="ifOpenService.open"
+                              [class.is-info]="toggleService.open"
                               [attr.title]="commonStrings.keys.more"></clr-icon>
                         </button>
                     </li>
@@ -67,7 +67,7 @@ import { isPlatformBrowser } from '@angular/common';
         </ul>
         <ng-container #tabContentViewContainer></ng-container>
     `,
-  providers: [IfActiveService, IfOpenService, TabsService, TABS_ID_PROVIDER],
+  providers: [IfActiveService, ClrPopoverToggleService, TabsService, TABS_ID_PROVIDER],
 })
 export class ClrTabs implements AfterContentInit, OnDestroy {
   private subscriptions: Subscription[] = [];
@@ -112,7 +112,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   constructor(
     public ifActiveService: IfActiveService,
-    public ifOpenService: IfOpenService,
+    public toggleService: ClrPopoverToggleService,
     public tabsService: TabsService,
     @Inject(TABS_ID) public tabsId: number,
     public commonStrings: ClrCommonStringsService,
@@ -136,14 +136,14 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   }
 
   toggleOverflow(event: any) {
-    this.ifOpenService.toggleWithEvent(event);
+    this.toggleService.toggleWithEvent(event);
   }
 
   checkFocusVisible() {
-    if (!this.ifOpenService.open && this.inOverflow()) {
-      this.ifOpenService.open = true;
-    } else if (this.ifOpenService.open && !this.inOverflow()) {
-      this.ifOpenService.open = false;
+    if (!this.toggleService.open && this.inOverflow()) {
+      this.toggleService.open = true;
+    } else if (this.toggleService.open && !this.inOverflow()) {
+      this.toggleService.open = false;
     }
   }
 
@@ -173,7 +173,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   }
 
   private listenForOverflowMenuFocusChanges() {
-    return this.ifOpenService.openChange.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(open => {
+    return this.toggleService.openChange.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(open => {
       if (open && !this.inOverflow()) {
         this.focusToFirstItemInOverflow();
       } else if (!open && this.nextFocusedItemIsNotInOverflow()) {

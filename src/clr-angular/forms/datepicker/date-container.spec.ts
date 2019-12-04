@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
@@ -34,7 +34,7 @@ export default function() {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
-    let ifOpenService: IfOpenService;
+    let toggleService: ClrPopoverToggleService;
 
     beforeEach(function() {
       TestBed.configureTestingModule({
@@ -44,7 +44,7 @@ export default function() {
         set: {
           providers: [
             { provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService },
-            IfOpenService,
+            ClrPopoverToggleService,
             DateNavigationService,
             LocaleHelperService,
             ControlClassService,
@@ -63,7 +63,7 @@ export default function() {
 
       enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
       dateFormControlService = context.getClarityProvider(DateFormControlService);
-      ifOpenService = context.getClarityProvider(IfOpenService);
+      toggleService = context.getClarityProvider(ClrPopoverToggleService);
     });
 
     // @deprecated these tests refer to the old forms layout only and can be removed when its removed
@@ -160,7 +160,7 @@ export default function() {
       itIgnore(['ie'], 'toggles the datepicker popover', () => {
         const fakeEvent: MouseEvent = new MouseEvent('fakeEvent');
         let flag: boolean;
-        const sub: Subscription = ifOpenService.openChange.subscribe(open => {
+        const sub: Subscription = toggleService.openChange.subscribe(open => {
           flag = open;
         });
 

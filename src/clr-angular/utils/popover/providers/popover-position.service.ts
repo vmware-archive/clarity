@@ -5,7 +5,7 @@
  *
  */
 import { isPlatformBrowser } from '@angular/common';
-import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject, EventEmitter } from '@angular/core';
 
 import { ClrPopoverEventsService } from './popover-events.service';
 import { ClrPopoverPosition } from '../interfaces/popover-position.interface';
@@ -13,6 +13,7 @@ import { ClrPopoverContentOffset } from '../interfaces/popover-content-offset.in
 import { ClrViewportViolation } from '../enums/viewport-violation.enum';
 import { align, flipSidesAndNudgeContent, flipSides, nudgeContent, testVisibility } from '../position-operators';
 import { ClrAxis } from '../enums/axis.enum';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class ClrPopoverPositionService {
@@ -20,6 +21,13 @@ export class ClrPopoverPositionService {
   private currentContentCoords: ClientRect;
   private contentOffsets: ClrPopoverContentOffset;
   private _position: ClrPopoverPosition;
+
+  private _shouldRealign: Subject<void> = new Subject();
+  shouldRealign: Observable<void> = this._shouldRealign.asObservable();
+
+  realign() {
+    this._shouldRealign.next();
+  }
 
   set position(position: ClrPopoverPosition) {
     this._position = position;

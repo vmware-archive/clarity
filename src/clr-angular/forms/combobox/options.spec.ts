@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrOptions } from './options';
 
@@ -18,7 +18,7 @@ import { ClrOptions } from './options';
             Test
         </clr-options>
     `,
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+  providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class TestComponent {}
 
@@ -28,19 +28,19 @@ class TestComponent {}
             Test
         </clr-options>
     `,
-  providers: [IfOpenService],
+  providers: [ClrPopoverToggleService],
 })
 class TestComponentWithError {}
 
 export default function(): void {
   describe('Select Options Menu Component', function() {
     let context: TestContext<ClrOptions, TestComponent>;
-    let ifOpenService: IfOpenService;
+    let toggleService: ClrPopoverToggleService;
 
     describe('View Basics', function() {
       beforeEach(function() {
         context = this.createOnly(ClrOptions, TestComponent, []);
-        ifOpenService = context.getClarityProvider(IfOpenService);
+        toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
       it('projects content', function() {
@@ -54,11 +54,11 @@ export default function(): void {
       });
 
       it('does not close the menu when you click on the menu', () => {
-        ifOpenService.open = true;
+        toggleService.open = true;
         const menu = context.testElement.querySelector('clr-options');
         menu.click();
 
-        expect(ifOpenService.open).toBe(true);
+        expect(toggleService.open).toBe(true);
       });
     });
 

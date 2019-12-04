@@ -10,20 +10,20 @@ import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { AbstractPopover } from './abstract-popover';
 import { POPOVER_HOST_ANCHOR } from './popover-host-anchor.token';
 
 describe('Abstract Popover', function() {
   let fixture: ComponentFixture<any>;
-  let ifOpenService: IfOpenService;
+  let toggleService: ClrPopoverToggleService;
 
   describe('Keyboard Events', () => {
     beforeEach(() => {
-      TestBed.configureTestingModule({ declarations: [TestPopover], providers: [IfOpenService] });
-      ifOpenService = TestBed.get(IfOpenService);
-      ifOpenService.open = true;
+      TestBed.configureTestingModule({ declarations: [TestPopover], providers: [ClrPopoverToggleService] });
+      toggleService = TestBed.get(ClrPopoverToggleService);
+      toggleService.open = true;
       fixture = TestBed.createComponent(TestPopover);
       fixture.detectChanges();
     });
@@ -35,7 +35,7 @@ describe('Abstract Popover', function() {
 
       document.dispatchEvent(event);
 
-      expect(ifOpenService.open).toBe(false);
+      expect(toggleService.open).toBe(false);
     });
   });
 
@@ -44,18 +44,18 @@ describe('Abstract Popover', function() {
       TestBed.configureTestingModule({
         declarations: [TestPopover, TestPopoverWithIfOpenDirective],
         imports: [ClrConditionalModule],
-        providers: [IfOpenService],
+        providers: [ClrPopoverToggleService],
       });
-      ifOpenService = TestBed.get(IfOpenService);
+      toggleService = TestBed.get(ClrPopoverToggleService);
       fixture = TestBed.createComponent(TestPopoverWithIfOpenDirective);
       fixture.detectChanges();
     });
 
-    it('opens the abstract popover only after IfOpenService is in open state', () => {
-      expect(ifOpenService.open).toBe(false);
+    it('opens the abstract popover only after ClrPopoverToggleService is in open state', () => {
+      expect(toggleService.open).toBe(false);
       expect(fixture.componentInstance.testPopover).toBeUndefined();
 
-      ifOpenService.open = true;
+      toggleService.open = true;
       fixture.detectChanges();
 
       expect(fixture.componentInstance.testPopover).not.toBeUndefined();
@@ -122,7 +122,7 @@ class TestPopoverWithIfOpenDirective {
         <input type="text" #ignoreInput (focus)="onFocus($event)">
         <test-popover-ignore *clrIfOpen></test-popover-ignore>
     `,
-  providers: [IfOpenService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+  providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class InputFocusPopover {
   @ViewChild('ignoreInput', { static: false })
@@ -130,10 +130,10 @@ class InputFocusPopover {
   @ViewChild(forwardRef(() => TestPopoverIgnoreElement), { static: false })
   popover: TestPopoverIgnoreElement;
 
-  constructor(private ifOpenService: IfOpenService) {}
+  constructor(private toggleService: ClrPopoverToggleService) {}
 
   onFocus(event: FocusEvent) {
-    this.ifOpenService.toggleWithEvent(event);
+    this.toggleService.toggleWithEvent(event);
   }
 }
 

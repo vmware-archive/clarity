@@ -16,7 +16,7 @@ import {
 import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
@@ -63,7 +63,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
     `,
   providers: [
     ControlIdService,
-    IfOpenService,
+    ClrPopoverToggleService,
     LocaleHelperService,
     IfErrorService,
     ControlClassService,
@@ -99,7 +99,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private _ifOpenService: IfOpenService,
+    private _toggleService: ClrPopoverToggleService,
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
     private dateFormControlService: DateFormControlService,
@@ -111,7 +111,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this._ifOpenService.openChange.subscribe(open => {
+      this._toggleService.openChange.subscribe(open => {
         if (open) {
           this.initializeCalendar();
         }
@@ -177,7 +177,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
    * Toggles the Datepicker Popover.
    */
   toggleDatepicker(event: MouseEvent) {
-    this._ifOpenService.toggleWithEvent(event);
+    this._toggleService.toggleWithEvent(event);
     this.dateFormControlService.markAsTouched();
   }
 

@@ -14,6 +14,7 @@ import { ClrPopoverEventsService } from './popover-events.service';
 import { ClrPopoverPositionService } from './popover-position.service';
 import { ClrPopoverToggleService } from './popover-toggle.service';
 import { ClrAlignment } from '@clr/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'test-host',
@@ -395,6 +396,35 @@ export default function(): void {
           expect(handleHorizontalAxisOneViolationSpy).not.toHaveBeenCalled();
           expect(handleVerticalAxisTwoViolationsSpy).not.toHaveBeenCalled();
           expect(handleHorizontalAxisTwoViolationsSpy.calls.count()).toEqual(1);
+        });
+      });
+
+      describe('handles content realignment', function(this: TestContext) {
+        let called: boolean;
+        let subscription: Subscription;
+        const realignHandler = () => (called = true);
+
+        beforeEach(function(this: TestContext) {
+          called = false;
+          subscription = this.positionService.shouldRealign.subscribe(realignHandler);
+          this.fixture.detectChanges();
+        });
+
+        it('and does not force initial realignment', function(this: TestContext) {
+          expect(called).toBeFalse();
+        });
+
+        it('and flags the popover for realignment after realign() is called', function(this: TestContext) {
+          this.positionService.realign();
+          this.fixture.detectChanges();
+          expect(called).toBeTrue();
+        });
+
+        afterEach(() => {
+          if (subscription) {
+            subscription.unsubscribe();
+            subscription = null;
+          }
         });
       });
     });

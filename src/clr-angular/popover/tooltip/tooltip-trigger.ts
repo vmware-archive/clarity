@@ -5,7 +5,7 @@
  */
 
 import { Directive, HostListener } from '@angular/core';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { TooltipIdService } from './providers/tooltip-id.service';
 import { Subscription } from 'rxjs';
 
@@ -21,7 +21,7 @@ import { Subscription } from 'rxjs';
 export class ClrTooltipTrigger {
   public ariaDescribedBy;
   private subs: Subscription[] = [];
-  constructor(private ifOpenService: IfOpenService, private tooltipIdService: TooltipIdService) {
+  constructor(private toggleService: ClrPopoverToggleService, private tooltipIdService: TooltipIdService) {
     // The aria-described by comes from the id of content. It
     this.subs.push(this.tooltipIdService.id.subscribe(tooltipId => (this.ariaDescribedBy = tooltipId)));
   }
@@ -29,13 +29,13 @@ export class ClrTooltipTrigger {
   @HostListener('mouseenter')
   @HostListener('focus')
   showTooltip(): void {
-    this.ifOpenService.open = true;
+    this.toggleService.open = true;
   }
 
   @HostListener('mouseleave')
   @HostListener('blur')
   hideTooltip(): void {
-    this.ifOpenService.open = false;
+    this.toggleService.open = false;
   }
 
   ngOnDestroy() {

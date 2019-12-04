@@ -6,7 +6,7 @@
 
 import { Component } from '@angular/core';
 
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 import { ClrTooltipTrigger } from './tooltip-trigger';
 
@@ -28,28 +28,28 @@ class SimpleTest {
 
 interface TooltipContext extends TestContext<ClrTooltipTrigger, SimpleTest> {
   tooltipIdService: TooltipIdService;
-  ifOpenService: IfOpenService;
+  toggleService: ClrPopoverToggleService;
 }
 
 export default function(): void {
   describe('TooltipTrigger component', function(this: TooltipContext) {
     spec(ClrTooltipTrigger, SimpleTest, ClrTooltipModule, {
-      providers: [IfOpenService, UNIQUE_ID_PROVIDER, TooltipIdService],
+      providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
     });
 
     beforeEach(function() {
-      this.ifOpenService = this.getClarityProvider(IfOpenService);
+      this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
       this.tooltipIdService = this.getClarityProvider(TooltipIdService);
       this.detectChanges();
     });
 
     describe('TypeScript API', function() {
       it('notifies the IfOpen service', function() {
-        const ifOpenService = this.getClarityProvider(IfOpenService);
+        const toggleService = this.getClarityProvider(ClrPopoverToggleService);
         this.clarityDirective.showTooltip();
-        expect(ifOpenService.open).toBe(true);
+        expect(toggleService.open).toBe(true);
         this.clarityDirective.hideTooltip();
-        expect(ifOpenService.open).toBe(false);
+        expect(toggleService.open).toBe(false);
       });
 
       it('responds to the TooltipIdService', function() {

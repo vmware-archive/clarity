@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
 import { ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { IfOpenService } from '../../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../../utils/popover/providers/popover-toggle.service';
 import { ClrOption } from '../option';
 
 import { OptionSelectionService } from './option-selection.service';
@@ -20,8 +20,8 @@ export default function() {
 
     beforeEach(() => {
       optionSelectionService = new OptionSelectionService();
-      fakeOption1 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
-      fakeOption2 = new ClrOption(new IfOpenService(), new ElementRef(null), null, optionSelectionService);
+      fakeOption1 = new ClrOption(new ClrPopoverToggleService(), new ElementRef(null), null, optionSelectionService);
+      fakeOption2 = new ClrOption(new ClrPopoverToggleService(), new ElementRef(null), null, optionSelectionService);
     });
 
     it('provides an observable to subscribe to change in value', () => {

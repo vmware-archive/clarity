@@ -12,7 +12,7 @@ import { By } from '@angular/platform-browser';
 import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrFormsModule } from '../../forms/forms.module';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
@@ -62,7 +62,7 @@ export default function() {
           { provide: NgControlService, useClass: MockNgControlService },
           NgControl,
           IfErrorService,
-          IfOpenService,
+          ClrPopoverToggleService,
           FocusService,
           DatepickerFocusService,
           DateNavigationService,
@@ -465,7 +465,7 @@ export default function() {
           { provide: NgControlService, useClass: MockNgControlService },
           NgControl,
           IfErrorService,
-          IfOpenService,
+          ClrPopoverToggleService,
           FocusService,
           DatepickerFocusService,
           DateNavigationService,

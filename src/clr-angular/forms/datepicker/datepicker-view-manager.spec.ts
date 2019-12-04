@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
-import { IfOpenService } from '../../utils/conditional/if-open.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { Point } from '../../popover/common/popover';
 import { PopoverPosition } from '../../popover/common/popover-positions';
 
@@ -28,7 +28,7 @@ export default function() {
       context = this.create(ClrDatepickerViewManager, TestComponent, [
         ViewManagerService,
         DatepickerFocusService,
-        IfOpenService,
+        ClrPopoverToggleService,
         DateNavigationService,
         LocaleHelperService,
         DateIOService,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,6 @@ import IfActiveDirectiveSpecs from './if-active.directive.spec';
 import IfActiveServiceSpecs from './if-active.service.spec';
 
 import IfOpenDirectiveSpecs from './if-open.directive.spec';
-import IfOpenServiceSpecs from './if-open.service.spec';
 
 describe('Conditional Utils', function() {
   describe('clrIfActive', function() {
@@ -23,7 +22,6 @@ describe('Conditional Utils', function() {
   });
 
   describe('clrIfOpen', function() {
-    IfOpenServiceSpecs();
     IfOpenDirectiveSpecs();
   });
 });

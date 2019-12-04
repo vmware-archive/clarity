@@ -17,7 +17,7 @@
 
 @mixin header-nav-appearance() {
   @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
-  @include css-var(opacity, clr-header-nav-opacity, $clr-header-nav-opactiy, $clr-use-custom-properties);
+  @include css-var(opacity, clr-header-nav-opacity, $clr-header-nav-opacity, $clr-use-custom-properties);
 
   &:enabled:hover {
     @include css-var(opacity, clr-header-nav-hover-opacity, $clr-header-nav-hover-opacity, $clr-use-custom-properties);

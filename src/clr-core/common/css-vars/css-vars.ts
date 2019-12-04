@@ -4,17 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import cssVars from 'css-vars-ponyfill';
 import { existsInWindow } from '../utils/exists';
-import { cssVars, variableStore } from './css-vars-ponyfill-fork';
 
 // exported for tests
 export const cssVarsDefaultConfig = {
   onlyLegacy: true,
   updateURLs: false,
   updateDOM: true,
-  onComplete: () => {
+  onComplete: (_cssText?: string, _styleElms?: HTMLStyleElement[], cssVariables?: { [key: string]: string }) => {
     if (existsInWindow(['ShadyCSS', 'styleDocument'])) {
-      (window as any).ShadyCSS.styleDocument(variableStore.dom);
+      (window as any).ShadyCSS.styleDocument(cssVariables);
     }
   },
 };
@@ -22,5 +22,3 @@ export const cssVarsDefaultConfig = {
 export function runCssVarsPolyfill(config: {} = cssVarsDefaultConfig): void {
   cssVars(config);
 }
-
-export { variableStore } from './css-vars-ponyfill-fork';

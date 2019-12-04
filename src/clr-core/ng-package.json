@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "./public-api.ts"
   },
-  "whitelistedNonPeerDependencies": ["lit-element", "lit-html", "tslib", "ramda"]
+  "whitelistedNonPeerDependencies": ["lit-element", "lit-html", "tslib", "ramda", "css-vars-ponyfill"]
 }

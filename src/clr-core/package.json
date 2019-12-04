@@ -22,7 +22,8 @@
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
     "tslib": "^1.10.0",
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "css-vars-ponyfill": "^2.1.2"
   },
   "optionalDependencies": {
     "@clr/city": "^1.0.0",

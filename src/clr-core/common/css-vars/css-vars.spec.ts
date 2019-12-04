@@ -4,16 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { spyOnFunction } from '@clr/core/test/utils';
+import * as cssVars from 'css-vars-ponyfill';
 import { cssVarsDefaultConfig, runCssVarsPolyfill } from './css-vars';
-import * as ponyfill from './css-vars-ponyfill-fork';
 
 describe('Utilities - CssVarsPolyfill ', () => {
   describe('runCssVarsPolyfill() ', () => {
     it('calls cssVars() with default config', () => {
-      spyOnFunction(ponyfill, 'cssVars');
+      spyOn(cssVars, 'default');
       runCssVarsPolyfill();
-      expect(ponyfill.cssVars).toHaveBeenCalledWith(cssVarsDefaultConfig);
+      expect(cssVars.default).toHaveBeenCalledWith(cssVarsDefaultConfig);
     });
 
     it('calls cssVars() with custom config if given one', () => {
@@ -21,9 +20,9 @@ describe('Utilities - CssVarsPolyfill ', () => {
         testsAreGood: true,
       };
 
-      spyOnFunction(ponyfill, 'cssVars');
+      spyOn(cssVars, 'default');
       runCssVarsPolyfill(customConfig);
-      expect(ponyfill.cssVars).toHaveBeenCalledWith(customConfig);
+      expect(cssVars.default).toHaveBeenCalledWith(customConfig);
     });
 
     it('calls ShadyCSS in the default config onComplete', () => {

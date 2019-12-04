@@ -36,14 +36,14 @@ const HTML_IMPORTS = `
 
 const NODE_IMPORTS = `
 "styles": [
-      "../node_modules/@clr/icons/clr-icons.min.css",
-      "../node_modules/@clr/ui/clr-ui.min.css",
+      "node_modules/@clr/icons/clr-icons.min.css",
+      "node_modules/@clr/ui/clr-ui.min.css",
       ... any other styles
 ],
 "scripts": [
   ... any existing scripts
-  "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-  "../node_modules/@clr/icons/clr-icons.min.js"
+  "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+  "node_modules/@clr/icons/clr-icons.min.js"
 ]
 `;
 

@@ -36,9 +36,6 @@ export enum ClrLoadingState {
  * @beta 3.0
  * @element cwc-button
  * @slot default - Content slot for inside the button
- * @attr {String} action - Define the type of action the button triggers <br/> (`default`, `outline`, `link`)
- * @attr {String} status - Sets the color of the button to match the status <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`)
- * @attr {String} size - Sets the overall height and width of the button based on value <br/> (`default`, `sm`)
  * @cssprop --clr-btn-vertical-margin
  * @cssprop --clr-btn-horizontal-margin
  * @cssprop --clr-btn-horizontal-padding
@@ -153,6 +150,22 @@ export enum ClrLoadingState {
  */
 // @dynamic
 export class CwcButton extends CwcBaseButton {
+  /** Define the type of action the button triggers */
+  @property({ type: String, reflect: true })
+  action: 'default' | 'outline' | 'link';
+
+  /** Sets the color of the button to match the status */
+  @property({ type: String, reflect: true })
+  status: 'default' | 'primary' | 'inverse' | 'success' | 'warning' | 'danger';
+
+  /** Sets the overall height and width of the button based on value */
+  @property({ type: String, reflect: true })
+  size: 'default' | 'sm';
+
+  /** Sets button type for icon */
+  @property({ type: String, reflect: true })
+  icon: '';
+
   private _loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
   /**

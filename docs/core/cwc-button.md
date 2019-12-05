@@ -10,19 +10,15 @@ import '@clr/core/button';
 <cwc-button>submit</cwc-button>
 ```
 
-## Attributes
-
-| Attribute | Type     | Description                                      |
-|-----------|----------|--------------------------------------------------|
-| `action`  | `string` | Define the type of action the button triggers <br/> (`default`, `outline`, `link`) |
-| `size`    | `string` | Sets the overall height and width of the button based on value <br/> (`default`, `sm`) |
-| `status`  | `string` | Sets the color of the button to match the status <br/> (`default`, `primary`, `inverse`, `success`, `warning`, `danger`) |
-
 ## Properties
 
-| Property       | Attribute       | Type              | Description                                      |
-|----------------|-----------------|-------------------|--------------------------------------------------|
-| `loadingState` | `loading-state` | `ClrLoadingState` | Changes the button content based on the value passed. The value must be of type `ClrLoadingState` and here are possible states:<br /><br />- `ClrLoadingState.DEFAULT` : shows the content of the button<br /><br />- `ClrLoadingState.LOADING` : disables the button and shows a spinner inside the button<br /><br />- `ClrLoadingState.SUCCESS` : disables the button and shows a check mark inside the button; auto-triggers to change back to DEFAULT state after 1000 ms<br /><br />- `ClrLoadingState.ERROR` : shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)<br /><br />Defaults to `ClrLoadingState.DEFAULT`. |
+| Property       | Attribute       | Type                                             | Default      | Description                                      |
+|----------------|-----------------|--------------------------------------------------|--------------|--------------------------------------------------|
+| `action`       | `action`        | `"default" \| "outline" \| "link"`               | **required** | Define the type of action the button triggers    |
+| `icon`         | `icon`          | `""`                                             | **required** | Sets button type for icon                        |
+| `loadingState` | `loading-state` | `ClrLoadingState`                                |              | Changes the button content based on the value passed. The value must be of type `ClrLoadingState` and here are possible states:<br /><br />- `ClrLoadingState.DEFAULT` : shows the content of the button<br /><br />- `ClrLoadingState.LOADING` : disables the button and shows a spinner inside the button<br /><br />- `ClrLoadingState.SUCCESS` : disables the button and shows a check mark inside the button; auto-triggers to change back to DEFAULT state after 1000 ms<br /><br />- `ClrLoadingState.ERROR` : shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)<br /><br />Defaults to `ClrLoadingState.DEFAULT`. |
+| `size`         | `size`          | `"default" \| "sm"`                              | **required** | Sets the overall height and width of the button based on value |
+| `status`       | `status`        | `"success" \| "warning" \| "danger" \| "default" \| "primary" \| "inverse"` | **required** | Sets the color of the button to match the status |
 
 ## Slots
 

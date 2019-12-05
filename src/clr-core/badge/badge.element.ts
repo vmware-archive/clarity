@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/common';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, property } from 'lit-element';
 import { styles } from './badge.element.css';
 
 /**
@@ -23,9 +23,6 @@ import { styles } from './badge.element.css';
  * @beta 3.0
  * @element cwc-badge
  * @slot default - Content slot for inside the badge
- * @attr {String} color - Sets the color of the badge from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)
- * @attr {String} alias - Sets the color of the badge from a predefined list of aliases <br/> (`1`, `2`, `3`, `4`, `5`)
- * @attr {String} status - Sets the color of the badge from a predefined list of statuses <br/> (`info`, `success`, `warning`, `danger`)
  * @cssprop --clr-badge-font-color-light
  * @cssprop --clr-badge-font-color-dark
  * @cssprop --clr-badge-info-bg-color
@@ -49,6 +46,14 @@ import { styles } from './badge.element.css';
  */
 // @dynamic
 export class CwcBadge extends LitElement {
+  /** Sets the color of the badge from a predefined list of choices */
+  @property({ type: String, reflect: true })
+  color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
+
+  /** Sets the color of the badge from a predefined list of statuses */
+  @property({ type: String, reflect: true })
+  status: 'info' | 'success' | 'warning' | 'danger';
+
   render() {
     return html`<slot></slot>`;
   }

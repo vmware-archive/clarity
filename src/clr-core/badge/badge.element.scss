@@ -1,177 +1,5 @@
 @import './../styles/utils/core-component';
-@import './variables';
 @import './properties';
-
-@function getBadgeCssVarName($type: gray, $prop: color) {
-  @return #{'clr-badge-' + $type + '-' + $prop};
-}
-
-@function getBadgeColor($type: gray, $property: color, $var-type: 'sass-var') {
-  @if $var-type == 'css-var' {
-    @return getBadgeCssVarName($type, $property);
-  }
-
-  @if $type == gray {
-    @return lookupGrayBadgeColor($property);
-  }
-
-  @if $type == purple {
-    @return lookupPurpleBadgeColor($property);
-  }
-
-  @if $type == blue {
-    @return lookupBlueBadgeColor($property);
-  }
-
-  @if $type == orange {
-    @return lookupOrangeBadgeColor($property);
-  }
-
-  @if $type == light-blue {
-    @return lookupLightBlueBadgeColor($property);
-  }
-
-  @if $type == success {
-    @return lookupSuccessBadgeColor($property);
-  }
-
-  @if $type == warning {
-    @return lookupWarningBadgeColor($property);
-  }
-
-  @if $type == danger {
-    @return lookupDangerBadgeColor($property);
-  }
-
-  @if $type == info {
-    @return lookupInfoBadgeColor($property);
-  }
-
-  @return null;
-}
-
-@function lookupGrayBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-gray-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-gray-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupPurpleBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-purple-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-purple-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupBlueBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-blue-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-blue-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupOrangeBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-orange-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-orange-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupLightBlueBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-light-blue-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-light-blue-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupInfoBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-info-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-info-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupSuccessBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-success-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-success-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupWarningBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-warning-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-warning-bg-color;
-  }
-
-  @return null;
-}
-
-@function lookupDangerBadgeColor($property: color) {
-  @if $property == color {
-    @return $clr-badge-danger-color;
-  }
-
-  @if $property == bg-color {
-    @return $clr-badge-danger-bg-color;
-  }
-
-  @return null;
-}
-
-@mixin generateBadgeStyles($color: gray, $alias: 1) {
-  :host([color='#{'' + $color}']),
-  :host([alias='#{'' + $alias}']) {
-    @include css-var(background, getBadgeColor($color, bg-color, 'css-var'), getBadgeColor($color, bg-color));
-    @include css-var(color, getBadgeColor($color, color, 'css-var'), getBadgeColor($color, color));
-  }
-}
-
-@mixin generateStatusBadgeStyles($status: info) {
-  :host([status='#{'' + $status}']) {
-    @include css-var(background, getBadgeColor($status, bg-color, 'css-var'), getBadgeColor($status, bg-color));
-    @include css-var(color, getBadgeColor($status, color, 'css-var'), getBadgeColor($status, color));
-  }
-}
 
 :host {
   display: inline-flex;
@@ -179,7 +7,6 @@
   align-items: center;
   justify-content: center;
   min-width: $clr_baselineRem_0_625;
-  background: getLabelColor(gray, bg-color);
   height: $clr_baselineRem_0_625;
   line-height: normal;
   border-radius: $clr_baselineRem_0_416;
@@ -188,19 +15,56 @@
   margin-right: $clr_baselineRem_0_25;
   white-space: nowrap;
   text-align: center;
-  @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light);
 
-  &:host(:visited) {
-    @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light);
-  }
+  background-color: var(--clr-badge-background-color);
+  color: var(--clr-badge-color);
 }
 
-@include generateBadgeStyles(gray, 1);
-@include generateBadgeStyles(purple, 2);
-@include generateBadgeStyles(blue, 3);
-@include generateBadgeStyles(orange, 4);
-@include generateBadgeStyles(light-blue, 5);
-@include generateStatusBadgeStyles(info);
-@include generateStatusBadgeStyles(success);
-@include generateStatusBadgeStyles(danger);
-@include generateStatusBadgeStyles(warning);
+:host(:visited) {
+  --clr-badge-color: var(--clr-color-on-neutral-600);
+}
+
+:host([color='gray']) {
+  --clr-badge-background-color: var(--clr-color-neutral-600);
+  --clr-badge-color: var(--clr-color-on-neutral-600);
+}
+
+:host([color='purple']) {
+  --clr-badge-background-color: var(--clr-color-secondary-action-500);
+  --clr-badge-color: var(--clr-color-on-secondary-action-500);
+}
+
+:host([color='blue']) {
+  --clr-badge-background-color: var(--clr-color-secondary-action-800);
+  --clr-badge-color: var(--clr-color-on-secondary-action-800);
+}
+
+:host([color='orange']) {
+  --clr-badge-background-color: var(--clr-color-warning-500);
+  --clr-badge-color: var(--clr-color-on-warning-500);
+}
+
+:host([color='light-blue']) {
+  --clr-badge-background-color: var(--clr-color-action-300);
+  --clr-badge-color: var(-clr-color-on-action-300);
+}
+
+:host([status='info']) {
+  --clr-badge-background-color: var(--clr-color-action-600);
+  --clr-badge-color: var(--clr-color-on-action-600);
+}
+
+:host([status='success']) {
+  --clr-badge-background-color: var(--clr-color-success-700);
+  --clr-badge-color: var(--clr-color-on-success-700);
+}
+
+:host([status='warning']) {
+  --clr-badge-background-color: var(--clr-color-warning-300);
+  --clr-badge-color: var(--clr-color-on-warning-300);
+}
+
+:host([status='danger']) {
+  --clr-badge-background-color: var(--clr-color-danger-800);
+  --clr-badge-color: var(--clr-color-on-danger-800);
+}

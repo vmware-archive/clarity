@@ -8,6 +8,7 @@ import '@clr/core/badge';
 
 @Component({
   selector: 'app-badge-demo',
+  styleUrls: ['./badge.demo.scss'],
   templateUrl: './badge.demo.html',
 })
 export class BadgeDemoComponent {

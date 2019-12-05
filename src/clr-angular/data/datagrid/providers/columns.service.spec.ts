@@ -42,7 +42,7 @@ export default function(): void {
       subscription = provider.checkFirstVisible.subscribe(() => {
         requestEmitted = true;
       });
-      provider.requestFirstVisibleChangeCheck();
+      provider.isFirstVisibleChanged();
       expect(requestEmitted).toBeTrue();
     });
 
@@ -51,7 +51,7 @@ export default function(): void {
       subscription = provider.checkLastVisible.subscribe(() => {
         requestEmitted = true;
       });
-      provider.requestLastVisibleChangeCheck();
+      provider.istLastVisibleChanged();
       expect(requestEmitted).toBeTrue();
     });
 

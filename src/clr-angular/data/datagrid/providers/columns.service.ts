@@ -64,11 +64,11 @@ export class ColumnsService {
     return this._isLastVisibleChanged.asObservable();
   }
 
-  requestFirstVisibleChangeCheck() {
+  isFirstVisibleChanged() {
     this._isFirstVisibleChanged.next();
   }
 
-  requestLastVisibleChangeCheck() {
+  istLastVisibleChanged() {
     this._isLastVisibleChanged.next();
   }
 

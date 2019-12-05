@@ -164,7 +164,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
 
       // we need to request checks on the last visible column
       // as we are hiding all columns except the very first visible one
-      this.columnsService.requestLastVisibleChangeCheck();
+      this.columnsService.istLastVisibleChanged();
     }
   }
 
@@ -211,7 +211,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
       };
       this.columnsService.emitStateChangeAt(index, state);
     });
-    this.columnsService.requestLastVisibleChangeCheck();
+    this.columnsService.istLastVisibleChanged();
   }
 
   /**

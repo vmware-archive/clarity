@@ -64,7 +64,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
   public replacedRow = false;
 
   ngAfterContentInit() {
-    this.subscriptions.push(this.updateViewsOnOrdersChange(), this.setReplacedOnExpandReplace());
+    this.subscriptions.push(this.reorderViewsOnOrdersChange(), this.setReplacedOnExpandReplace());
   }
 
   private setReplacedOnExpandReplace(): Subscription {
@@ -77,7 +77,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  private updateViewsOnOrdersChange(): Subscription {
+  private reorderViewsOnOrdersChange(): Subscription {
     return this.columnReorderService.ordersChange.subscribe((byReordering: boolean) => {
       // we have to make sure there are views inserted in the view container
       // before calling reorderViews method from viewManager service
@@ -89,7 +89,7 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
 
       if (this.columnReorderService.orders) {
         if (this._detailCells.length === 0) {
-          // we just need to insert the views initially when the view container is empty.
+          // directly insert the views initially if the view container is empty.
           ViewManagerUtils.insertAllViews(this._detailCells, this.assignRawOrders(), true);
         } else {
           this.cells.forEach((cell, index) => {

@@ -306,8 +306,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
 
   private reorderOnRequest(): Subscription {
     return this.columnReorderService.reorderRequested.subscribe(reorderRequest => {
-      const sourceView = this._projectedDisplayColumns.get(reorderRequest.sourceOrder);
-      this._projectedDisplayColumns.move(sourceView, reorderRequest.targetOrder);
+      const dragColumnView = this._projectedDisplayColumns.get(reorderRequest.dragColumnOrder);
+      this._projectedDisplayColumns.move(dragColumnView, reorderRequest.dropColumnOrder);
       // update order value of each columns
       this.columns.forEach(column => (column.order = this._projectedDisplayColumns.indexOf(column._view)));
       // persist updated column orders to the service so cells will have corresponding fallback order

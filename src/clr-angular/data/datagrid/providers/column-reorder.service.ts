@@ -4,18 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable, ViewContainerRef, ViewRef } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { ColumnsService } from './columns.service';
-import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ClrDragEvent } from '../../../utils/drag-and-drop/drag-event';
-import { first } from 'rxjs/operators';
+import { DatagridColumnChanges } from '../enums/column-changes.enum';
+import { ColumnsService } from './columns.service';
+import { ReorderRequest } from '../interfaces/reorder-request.interface';
 
 let nbColumnsGroup = 0;
-
-export interface ReorderRequest {
-  sourceOrder: number;
-  targetOrder: number;
-}
 
 export type ReorderAnimRequest = ReorderRequest & ClrDragEvent<ViewRef>;
 
@@ -54,15 +49,15 @@ export class ColumnReorderService {
   }
 
   // The following method is called by column ClrDatagridColumn when one column is dropped on another.
-  reorderViews(sourceView: ViewRef, targetView: ViewRef, dropEvent: ClrDragEvent<ViewRef>): void {
-    const sourceOrder = this.containerRef.indexOf(sourceView);
-    const targetOrder = this.containerRef.indexOf(targetView);
-    this.requestReorder(sourceOrder, targetOrder);
-    this._reorderAnimRequested.next({ sourceOrder, targetOrder, ...dropEvent });
+  reorderViews(dragColumnView: ViewRef, dropColumnView: ViewRef, dropEvent: ClrDragEvent<ViewRef>): void {
+    const dragColumnOrder = this.containerRef.indexOf(dragColumnView);
+    const dropColumnOrder = this.containerRef.indexOf(dropColumnView);
+    this.requestReorder(dragColumnOrder, dropColumnOrder);
+    this._reorderAnimRequested.next({ dragColumnOrder, dropColumnOrder, ...dropEvent });
   }
 
-  requestReorder(sourceOrder: number, targetOrder: number) {
-    this._reorderRequested.next({ sourceOrder, targetOrder });
+  requestReorder(dragColumnOrder: number, dropColumnOrder: number) {
+    this._reorderRequested.next({ dragColumnOrder, dropColumnOrder });
   }
 
   // The following method will be called by ClrDatagrid after it finishes applying order changes
@@ -93,12 +88,8 @@ export class ColumnReorderService {
 
     // The first and last visible columns might
     // have been changed after orders were changed
-    this.haveFirstAndLastVisibleColumnsChanged();
-  }
-
-  private haveFirstAndLastVisibleColumnsChanged() {
-    this.columnsService.requestFirstVisibleChangeCheck();
-    this.columnsService.requestLastVisibleChangeCheck();
+    this.columnsService.isFirstVisibleChanged();
+    this.columnsService.istLastVisibleChanged();
   }
 
   private hasDiffWith(newOrders: number[]): boolean {

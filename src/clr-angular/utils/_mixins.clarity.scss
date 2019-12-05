@@ -120,6 +120,7 @@ $clr-outline-spread: 2px;
 @mixin clr-datagrid-column-ghost() {
   position: relative;
   background-color: $clr-thead-bgcolor;
+  // TODO: should this be themeable
   box-shadow: 0 3px 4px rgba(116, 116, 116, 0.3);
   z-index: map-get($clr-layers, draggable-ghost);
 

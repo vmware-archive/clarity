@@ -184,11 +184,17 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   private listenForReorderAnimRequest() {
     return this.columnReorderService.reorderAnimRequested.subscribe(reorderAnimRequest => {
-      if (this._order === reorderAnimRequest.targetOrder) {
+      if (this._order === reorderAnimRequest.dropColumnOrder) {
         this.triggerDropAnimation(reorderAnimRequest);
-      } else if (reorderAnimRequest.sourceOrder <= this._order && this._order < reorderAnimRequest.targetOrder) {
+      } else if (
+        reorderAnimRequest.dragColumnOrder <= this._order &&
+        this._order < reorderAnimRequest.dropColumnOrder
+      ) {
         this.triggerShiftAnimation(reorderAnimRequest, 1);
-      } else if (reorderAnimRequest.sourceOrder >= this._order && this._order > reorderAnimRequest.targetOrder) {
+      } else if (
+        reorderAnimRequest.dragColumnOrder >= this._order &&
+        this._order > reorderAnimRequest.dropColumnOrder
+      ) {
         this.triggerShiftAnimation(reorderAnimRequest, -1);
       }
     });

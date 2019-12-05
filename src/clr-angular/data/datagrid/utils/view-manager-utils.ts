@@ -7,7 +7,6 @@ import { Injectable, ViewContainerRef } from '@angular/core';
 import { ViewAccessor } from '../interfaces/view-accessor.interface';
 
 // ViewManagerUtils is a utility class that contains methods for managing views.
-@Injectable()
 export class ViewManagerUtils {
   public static detachAllViews(containerRef: ViewContainerRef): void {
     for (let i = containerRef.length; i > 0; i--) {

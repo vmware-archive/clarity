@@ -204,7 +204,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
     this.subscriptions.push(
       this.triggerAnimationOnExpandAnimate(),
       this.resetViewsOnDisplayModeChange(),
-      this.resetViewsOnCellsChange(),
+      this.insertNewCellView(),
       this.reorderOnRequest()
     );
   }
@@ -258,7 +258,7 @@ export class ClrDatagridRow<T = any> implements AfterViewInit, OnDestroy, ViewAc
     });
   }
 
-  private resetViewsOnCellsChange(): Subscription {
+  private insertNewCellView(): Subscription {
     // This method is to handle a case when cells change without headers changing.
     // For example, one cell could be replaced by another in place.
     return this.cells.changes.subscribe(() => {

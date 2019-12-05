@@ -89,12 +89,18 @@ export declare class CommonStringsService {
 }
 
 export declare class CwcBadge extends LitElement {
+    color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
+    status: 'info' | 'success' | 'warning' | 'danger';
     render(): import("lit-element").TemplateResult;
     static readonly styles: import("lit-element").CSSResult;
 }
 
 export declare class CwcButton extends CwcBaseButton {
+    action: 'default' | 'outline' | 'link';
+    icon: '';
     loadingState: ClrLoadingState;
+    size: 'default' | 'sm';
+    status: 'default' | 'primary' | 'inverse' | 'success' | 'warning' | 'danger';
     connectedCallback(): void;
     render(): import("lit-element").TemplateResult;
     static readonly styles: import("lit-element").CSSResult;
@@ -116,6 +122,8 @@ export declare class CwcIcon extends IconMixinClass {
 }
 
 export declare class CwcTag extends CwcBaseButton {
+    color: '1' | '2' | '3' | '4' | '5';
+    status: 'info' | 'success' | 'warning' | 'danger';
     static readonly styles: import("lit-element").CSSResult;
 }
 

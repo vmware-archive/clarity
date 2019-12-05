@@ -5,6 +5,7 @@
  */
 
 import { CwcBaseButton, registerElementSafely } from '@clr/core/common';
+import { property } from 'lit-element';
 import { styles } from './tag.element.css';
 
 /**
@@ -22,9 +23,6 @@ import { styles } from './tag.element.css';
  * @beta 3.0
  * @element cwc-tag
  * @slot default - Content slot for inside the tag
- * @attr {String} color - Sets the color of the tag (and badge if present) from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)
- * @attr {String} alias - Sets the color of the tag (and badge if present) from a predefined list of aliases <br/> (`1`, `2`, `3`, `4`, `5`)
- * @attr {String} status - Sets the color of the tag (and badge if present) from a predefined list of statuses <br/> (`info`, `success`, `warning`, `danger`)
  * @cssprop --clr-tag-font-color-light
  * @cssprop --clr-tag-font-color-dark
  * @cssprop --clr-tag-default-border-color
@@ -58,6 +56,14 @@ import { styles } from './tag.element.css';
  */
 // @dynamic
 export class CwcTag extends CwcBaseButton {
+  /** Sets the color of the tag (and badge if present) from a predefined list of statuses */
+  @property({ type: String, reflect: true })
+  status: 'info' | 'success' | 'warning' | 'danger';
+
+  /** Sets the color of the tag (and badge if present) from a predefined list of choices */
+  @property({ type: String, reflect: true })
+  color: '1' | '2' | '3' | '4' | '5';
+
   static get styles() {
     return styles;
   }

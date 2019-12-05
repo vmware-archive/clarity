@@ -109,7 +109,7 @@ export class CwcBaseButton extends LitElement {
   }
 
   private emulateKeyBoardEventBehavior(e: KeyboardEvent) {
-    if (e.key === KeyCodes.Enter || e.code === KeyCodes.Space) {
+    if (!this.anchor && (e.key === KeyCodes.Enter || e.code === KeyCodes.Space)) {
       this.click();
       stopEvent(e);
     }

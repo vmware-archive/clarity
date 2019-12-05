@@ -1,9 +1,75 @@
-<a name="3.0.0-next.1"></a>
+<a name="3.0.0-next.4"></a>
 
-# [3.0.0-next.1](https://github.com/vmware/clarity/compare/v2.2.0...v3.0.0-next.1) (2019-10-07)
+# [3.0.0-next.4](https://github.com/vmware/clarity/compare/3.0.0-next.3...v3.0.0-next.4) (2019-12-05)
 
 ### Bug Fixes
 
+* **build:** stop csso from restructuring our styles ([331a9f7](https://github.com/vmware/clarity/commit/331a9f7))
+* add css prop docs ([27141df](https://github.com/vmware/clarity/commit/27141df))
+* aria-live.service to handle SR for all browsers and OS ([08c00e8](https://github.com/vmware/clarity/commit/08c00e8))
+* core add tag element types ([c4d5ecc](https://github.com/vmware/clarity/commit/c4d5ecc))
+* core golden exports ([7b62ba1](https://github.com/vmware/clarity/commit/7b62ba1))
+* datagrid animation performance issues ([41bd079](https://github.com/vmware/clarity/commit/41bd079)), closes [#3864](https://github.com/vmware/clarity/issues/3864)
+* prfixup ([c9cdea2](https://github.com/vmware/clarity/commit/c9cdea2))
+* update css vars ponyfill ([1a3240b](https://github.com/vmware/clarity/commit/1a3240b))
+* **button:** core button a11y fixes ([3be4137](https://github.com/vmware/clarity/commit/3be4137))
+
+### Features
+
+* **badge:** core badge ([3c73911](https://github.com/vmware/clarity/commit/3c73911))
+* **button:** improvements to base button ([d33dbad](https://github.com/vmware/clarity/commit/d33dbad))
+* **date-picker:** adds min/max date boundries for datepicker ([0ed5869](https://github.com/vmware/clarity/commit/0ed5869)), closes [#1984](https://github.com/vmware/clarity/issues/1984)
+
+<a name="3.0.0-next.3"></a>
+
+# [3.0.0-next.3](https://github.com/vmware/clarity/compare/v3.0.0-next.2...3.0.0-next.3) (2019-11-19)
+
+### Bug Fixes
+
+* remove broke stylelint rule ([90b0ac6](https://github.com/vmware/clarity/commit/90b0ac6))
+* **datagrid:** toggling sorting icon ([54c2c4c](https://github.com/vmware/clarity/commit/54c2c4c)), closes [#3823](https://github.com/vmware/clarity/issues/3823)
+* **datepicker:** prevent date from being deleted when selected on mobile ([af9ff5b](https://github.com/vmware/clarity/commit/af9ff5b))
+* **datepicker:** prevent date input from displaying -1 day for specific timezones on mobile devices ([a6c0968](https://github.com/vmware/clarity/commit/a6c0968))
+* **select:** add select option font color ([a7a2bed](https://github.com/vmware/clarity/commit/a7a2bed))
+* **vertical-nav:** add aria-expanded to vertical nav ([bd4e2d9](https://github.com/vmware/clarity/commit/bd4e2d9)), closes [#3575](https://github.com/vmware/clarity/issues/3575) [#3919](https://github.com/vmware/clarity/issues/3919) [#3919](https://github.com/vmware/clarity/issues/3919) [#3575](https://github.com/vmware/clarity/issues/3575)
+* datagrid clrDgFilterOpenChange was not fired ([89e569f](https://github.com/vmware/clarity/commit/89e569f))
+* missing dependency for tree-node ([043654e](https://github.com/vmware/clarity/commit/043654e))
+* removes unnecessary text from the mobile header title ([6bbee94](https://github.com/vmware/clarity/commit/6bbee94)), closes [#3853](https://github.com/vmware/clarity/issues/3853)
+* select-all checkmark position ([8a1ad96](https://github.com/vmware/clarity/commit/8a1ad96))
+* templates for private/unused variables ([0f3332d](https://github.com/vmware/clarity/commit/0f3332d))
+* website is missing code-highlight utils module for navigation page ([01854cb](https://github.com/vmware/clarity/commit/01854cb))
+
+### Features
+
+* adding equilateral sass mixins ([22b460c](https://github.com/vmware/clarity/commit/22b460c))
+* **button:** core buttons ([84aab93](https://github.com/vmware/clarity/commit/84aab93))
+* **form:** generic way to override column widths ([a0aeea9](https://github.com/vmware/clarity/commit/a0aeea9))
+* **icons:** migrating clarity icons to core ([671062b](https://github.com/vmware/clarity/commit/671062b))
+* **icons:** vol 16 icons ([d5c5ac6](https://github.com/vmware/clarity/commit/d5c5ac6))
+
+<a name="3.0.0-next.2"></a>
+
+# [3.0.0-next.2](https://github.com/vmware/clarity/compare/v2.2.0...v3.0.0-next.2) (2019-10-18)
+
+### Bug Fixes
+
+* **a11y:** changing color of yellow icons for a11y ([95a933e](https://github.com/vmware/clarity/commit/95a933e))
+* **build:** remove google-chrome-stable from addon ([982cbae](https://github.com/vmware/clarity/commit/982cbae))
+* **datagrid:** adding tests for clrDgColType ([b7a5c2e](https://github.com/vmware/clarity/commit/b7a5c2e))
+* **datagrid:** align column header vertically ([f373ee1](https://github.com/vmware/clarity/commit/f373ee1))
+* **datagrid:** change test describe block ([6b66ec1](https://github.com/vmware/clarity/commit/6b66ec1))
+* **datagrid:** datagrid current page not rendered correctly in IE 11 ([0b902e4](https://github.com/vmware/clarity/commit/0b902e4)), closes [#3747](https://github.com/vmware/clarity/issues/3747)
+* **datagrid:** don't emit page changes on destroy ([974ff9c](https://github.com/vmware/clarity/commit/974ff9c)), closes [#3815](https://github.com/vmware/clarity/issues/3815)
+* **datagrid:** include missing tests for datagrid-numeric-filter ([c5c9842](https://github.com/vmware/clarity/commit/c5c9842))
+* **datagrid:** not working numberic filters at the datagrid ([a39ce80](https://github.com/vmware/clarity/commit/a39ce80))
+* **datagrid:** remove fdescribe ([c84939f](https://github.com/vmware/clarity/commit/c84939f))
+* **header:** icons in header documentation ([b9c8bde](https://github.com/vmware/clarity/commit/b9c8bde)), closes [#3616](https://github.com/vmware/clarity/issues/3616)
+* **icons:** 'ClarityIcons.add' must be case insensitive ([64c5685](https://github.com/vmware/clarity/commit/64c5685)), closes [#3800](https://github.com/vmware/clarity/issues/3800)
+* **signpost:** fix signpost focus management ([26bacc4](https://github.com/vmware/clarity/commit/26bacc4))
+* **signpost:** use default cursor in popover ([c102c4d](https://github.com/vmware/clarity/commit/c102c4d)), closes [#3803](https://github.com/vmware/clarity/issues/3803)
+* **stack-view:** a11y add aria-controls to stack-view ([1b1f044](https://github.com/vmware/clarity/commit/1b1f044)), closes [#3567](https://github.com/vmware/clarity/issues/3567)
+* **stack-view:** stack view async loading ([53527e1](https://github.com/vmware/clarity/commit/53527e1)), closes [#3565](https://github.com/vmware/clarity/issues/3565)
+* **tabs:** extra spacing between tab and tab content in ie 11 ([c4e6979](https://github.com/vmware/clarity/commit/c4e6979)), closes [#3748](https://github.com/vmware/clarity/issues/3748)
 * download links don't indicate their purpose ([6dac2e7](https://github.com/vmware/clarity/commit/6dac2e7)), closes [#3168](https://github.com/vmware/clarity/issues/3168)
 * focus indicator for multi select ([b3eccaa](https://github.com/vmware/clarity/commit/b3eccaa))
 * focus stealing in modal by using disable-able clrFocusOnViewInit ([b1baacb](https://github.com/vmware/clarity/commit/b1baacb))
@@ -11,29 +77,22 @@
 * icon colors do not match clr-ui dark mode colors (hsl) ([49546e8](https://github.com/vmware/clarity/commit/49546e8))
 * keep consistent height if signpost in datagrid header ([f0a9293](https://github.com/vmware/clarity/commit/f0a9293)), closes [#1279](https://github.com/vmware/clarity/issues/1279)
 * on website input grouping heading overlaps example ([4afa5d9](https://github.com/vmware/clarity/commit/4afa5d9)), closes [#3802](https://github.com/vmware/clarity/issues/3802)
-* **stack-view:** a11y add aria-controls to stack-view ([1b1f044](https://github.com/vmware/clarity/commit/1b1f044)), closes [#3567](https://github.com/vmware/clarity/issues/3567)
 * remove max-height from `pre` ([a177618](https://github.com/vmware/clarity/commit/a177618)), closes [#1138](https://github.com/vmware/clarity/issues/1138)
-* **a11y:** changing color of yellow icons for a11y ([95a933e](https://github.com/vmware/clarity/commit/95a933e))
-* **build:** remove google-chrome-stable from addon ([982cbae](https://github.com/vmware/clarity/commit/982cbae))
-* **datagrid:** adding tests for clrDgColType ([b7a5c2e](https://github.com/vmware/clarity/commit/b7a5c2e))
-* **datagrid:** change test describe block ([6b66ec1](https://github.com/vmware/clarity/commit/6b66ec1))
-* **datagrid:** datagrid current page not rendered correctly in IE 11 ([0b902e4](https://github.com/vmware/clarity/commit/0b902e4)), closes [#3747](https://github.com/vmware/clarity/issues/3747)
-* **datagrid:** include missing tests for datagrid-numeric-filter ([c5c9842](https://github.com/vmware/clarity/commit/c5c9842))
 * selecting content in modal body ([8a25b58](https://github.com/vmware/clarity/commit/8a25b58))
-* **datagrid:** not working numberic filters at the datagrid ([a39ce80](https://github.com/vmware/clarity/commit/a39ce80))
-* **datagrid:** remove fdescribe ([c84939f](https://github.com/vmware/clarity/commit/c84939f))
-* **header:** icons in header documentation ([b9c8bde](https://github.com/vmware/clarity/commit/b9c8bde)), closes [#3616](https://github.com/vmware/clarity/issues/3616)
-* **icons:** 'ClarityIcons.add' must be case insensitive ([64c5685](https://github.com/vmware/clarity/commit/64c5685)), closes [#3800](https://github.com/vmware/clarity/issues/3800)
-* **signpost:** fix signpost focus management ([26bacc4](https://github.com/vmware/clarity/commit/26bacc4))
-* **signpost:** use default cursor in popover ([c102c4d](https://github.com/vmware/clarity/commit/c102c4d)), closes [#3803](https://github.com/vmware/clarity/issues/3803)
-* **stack-view:** stack view async loading ([53527e1](https://github.com/vmware/clarity/commit/53527e1)), closes [#3565](https://github.com/vmware/clarity/issues/3565)
+* update clr-angular.d.ts ([c953600](https://github.com/vmware/clarity/commit/c953600))
+* website regression ([da0158f](https://github.com/vmware/clarity/commit/da0158f))
 * **website:** add padding-right to responsive footer ([4e166e6](https://github.com/vmware/clarity/commit/4e166e6))
 * **wizard:** wizard title gets double focus attempts ([05265b6](https://github.com/vmware/clarity/commit/05265b6)), closes [#3792](https://github.com/vmware/clarity/issues/3792)
 
 ### Features
 
 * **datagrid:** add detail pane ([ee0058b](https://github.com/vmware/clarity/commit/ee0058b)), closes [#2005](https://github.com/vmware/clarity/issues/2005)
+* scss deprecations and base20 rem refactor ([e9d8046](https://github.com/vmware/clarity/commit/e9d8046))
+* **datagrid:** disable single or multi rows from selection ([403daee](https://github.com/vmware/clarity/commit/403daee)), closes [#1018](https://github.com/vmware/clarity/issues/1018)
+* **datagrid:** preserve selection while filtering ([8bdd294](https://github.com/vmware/clarity/commit/8bdd294))
+* **tree-view:** a11y and focus management ([039c224](https://github.com/vmware/clarity/commit/039c224)), closes [#3569](https://github.com/vmware/clarity/issues/3569) [#3571](https://github.com/vmware/clarity/issues/3571) [#3573](https://github.com/vmware/clarity/issues/3573)
 * **wizard:** wizard step error state ([49b453f](https://github.com/vmware/clarity/commit/49b453f)), closes [#2203](https://github.com/vmware/clarity/issues/2203)
+* scss deprecations and css custom properties for 3.0 ([9862fe2](https://github.com/vmware/clarity/commit/9862fe2))
 
 ### BREAKING CHANGES
 
@@ -45,25 +104,25 @@
 
 ### Bug Fixes
 
-* **wizard:** deprecate inline wizard ([6e959ed](https://github.com/vmware/clarity/commit/6e959ed)), closes [#3591](https://github.com/vmware/clarity/issues/3591)
-* website routing focus management ([146e150](https://github.com/vmware/clarity/commit/146e150))
+* ClrAccordionModule and ClrStepperModule added to default exports ([e0e2c56](https://github.com/vmware/clarity/commit/e0e2c56))
 * **a11y:** add bumpers to the datepicker ([2840c0c](https://github.com/vmware/clarity/commit/2840c0c)), closes [#3466](https://github.com/vmware/clarity/issues/3466)
 * **color:** visually hidden text is not hidden from screen readers ([f205365](https://github.com/vmware/clarity/commit/f205365)), closes [#3176](https://github.com/vmware/clarity/issues/3176)
 * **datagrid:** fix hsl regression ([c2db3f6](https://github.com/vmware/clarity/commit/c2db3f6))
 * **dropdown:** handle focus first item when there is non selectable item ([f483de1](https://github.com/vmware/clarity/commit/f483de1))
 * **header:** clarity icons with text misaligned in ie11 ([ccbd1e1](https://github.com/vmware/clarity/commit/ccbd1e1)), closes [#3519](https://github.com/vmware/clarity/issues/3519)
 * **sidenav:** sidenav in website documentation page doesn't collapse ([4ff84f2](https://github.com/vmware/clarity/commit/4ff84f2)), closes [#3704](https://github.com/vmware/clarity/issues/3704)
-* ClrAccordionModule and ClrStepperModule added to default exports ([e0e2c56](https://github.com/vmware/clarity/commit/e0e2c56))
 * **tooltip:** deprecation overwrote dark theme variable ([d46a9de](https://github.com/vmware/clarity/commit/d46a9de))
+* website routing focus management ([146e150](https://github.com/vmware/clarity/commit/146e150))
+* **wizard:** deprecate inline wizard ([6e959ed](https://github.com/vmware/clarity/commit/6e959ed)), closes [#3591](https://github.com/vmware/clarity/issues/3591)
 
 ### Features
 
-* **datepicker:** support clrPosition ([b0e6910](https://github.com/vmware/clarity/commit/b0e6910)), closes [#2331](https://github.com/vmware/clarity/issues/2331)
-* add clrFocusOnViewInit ([3fef3ab](https://github.com/vmware/clarity/commit/3fef3ab))
+* [UI] Implement timeline component ([cc5e7e5](https://github.com/vmware/clarity/commit/cc5e7e5)), closes [#3199](https://github.com/vmware/clarity/issues/3199)
 * **datagrid:** update datagrid popovers with new utility ([2e195c9](https://github.com/vmware/clarity/commit/2e195c9)), closes [#3374](https://github.com/vmware/clarity/issues/3374) [#652](https://github.com/vmware/clarity/issues/652) [#3161](https://github.com/vmware/clarity/issues/3161) [#3244](https://github.com/vmware/clarity/issues/3244) [#2683](https://github.com/vmware/clarity/issues/2683) [#2186](https://github.com/vmware/clarity/issues/2186)
+* add clrFocusOnViewInit ([3fef3ab](https://github.com/vmware/clarity/commit/3fef3ab))
+* **datepicker:** support clrPosition ([b0e6910](https://github.com/vmware/clarity/commit/b0e6910)), closes [#2331](https://github.com/vmware/clarity/issues/2331)
 * **timeline:** adding gemini tests for the timeline ([5bffb87](https://github.com/vmware/clarity/commit/5bffb87))
 * **timeline:** updating the timeline component to new sizing ([49411fa](https://github.com/vmware/clarity/commit/49411fa))
-* [UI] Implement timeline component ([cc5e7e5](https://github.com/vmware/clarity/commit/cc5e7e5)), closes [#3199](https://github.com/vmware/clarity/issues/3199)
 
 <a name="2.1.2"></a>
 
@@ -71,7 +130,9 @@
 
 ### Bug Fixes
 
+* **a11y:** only set default icon role if it has no role defined by user ([a2e92ae](https://github.com/vmware/clarity/commit/a2e92ae))
 * **accordion:** remove rounded corners when last panel is open ([a9bd2ac](https://github.com/vmware/clarity/commit/a9bd2ac)), closes [#3685](https://github.com/vmware/clarity/issues/3685)
+* **date-picker:** adds aria-labels for buttons ([bf8430a](https://github.com/vmware/clarity/commit/bf8430a)), closes [#3467](https://github.com/vmware/clarity/issues/3467)
 * alerts in wizzard are read immediately when not urgent ([d241772](https://github.com/vmware/clarity/commit/d241772))
 * feedback from Jeeyun ([3d4c183](https://github.com/vmware/clarity/commit/3d4c183))
 * feedback(Shijir) ([2dd487c](https://github.com/vmware/clarity/commit/2dd487c))
@@ -79,17 +140,15 @@
 * improve screen reader behaviors on stack-view and modal ([3f102e7](https://github.com/vmware/clarity/commit/3f102e7)), closes [#3566](https://github.com/vmware/clarity/issues/3566)
 * pr change (jeeyun and shijir) ([b813391](https://github.com/vmware/clarity/commit/b813391))
 * preventing duplicate style declarations in CSS ([5629635](https://github.com/vmware/clarity/commit/5629635)), closes [#3540](https://github.com/vmware/clarity/issues/3540)
-* **a11y:** only set default icon role if it has no role defined by user ([a2e92ae](https://github.com/vmware/clarity/commit/a2e92ae))
-* **date-picker:** adds aria-labels for buttons ([bf8430a](https://github.com/vmware/clarity/commit/bf8430a)), closes [#3467](https://github.com/vmware/clarity/issues/3467)
-* **table:** table font-size not overrideable ([b7bea0d](https://github.com/vmware/clarity/commit/b7bea0d)), closes [#3544](https://github.com/vmware/clarity/issues/3544)
 * remove unused code ([b36b699](https://github.com/vmware/clarity/commit/b36b699))
+* **table:** table font-size not overrideable ([b7bea0d](https://github.com/vmware/clarity/commit/b7bea0d)), closes [#3544](https://github.com/vmware/clarity/issues/3544)
 * **tooltip:** adds a11y to tooltip ([530a2ed](https://github.com/vmware/clarity/commit/530a2ed))
 
 ### Features
 
+* migrate color values from hex to hsl ([bc4b8bc](https://github.com/vmware/clarity/commit/bc4b8bc)), closes [#3286](https://github.com/vmware/clarity/issues/3286)
 * **datagrid:** Expose current page for clrDgRefresh ([d2a3e4a](https://github.com/vmware/clarity/commit/d2a3e4a))
 * **tabs:** key focus directive and tabs overflow focus management ([67a5512](https://github.com/vmware/clarity/commit/67a5512))
-* migrate color values from hex to hsl ([bc4b8bc](https://github.com/vmware/clarity/commit/bc4b8bc)), closes [#3286](https://github.com/vmware/clarity/issues/3286)
 
 <a name="2.1.1"></a>
 
@@ -97,21 +156,21 @@
 
 ### Bug Fixes
 
-* **a11y:** make disabled dropdown item focusable ([9a905f7](https://github.com/vmware/clarity/commit/9a905f7))
-* **stack-view:** editable stack view form fields looked unstyled in dev app ([99571d5](https://github.com/vmware/clarity/commit/99571d5))
 * add aria-label for alert close button ([9e0c16e](https://github.com/vmware/clarity/commit/9e0c16e))
 * bug 3505 - Sorting issues at datagrid ([adebe5d](https://github.com/vmware/clarity/commit/adebe5d))
 * clr-base imports and build ([4132a33](https://github.com/vmware/clarity/commit/4132a33))
 * css vars pony fill needs to run on module init ([7506e65](https://github.com/vmware/clarity/commit/7506e65))
 * enable side effect imports ([9f1b414](https://github.com/vmware/clarity/commit/9f1b414))
-* **datagrid:** mixed expandable non expandable bug ([1a50a08](https://github.com/vmware/clarity/commit/1a50a08))
 * **datepicker:** remove circular reference ([5c4e4de](https://github.com/vmware/clarity/commit/5c4e4de))
-* **modal:** tab only focus style ([33684ef](https://github.com/vmware/clarity/commit/33684ef)), closes [#3642](https://github.com/vmware/clarity/issues/3642)
+* update release note to remove reference to k8s ([9817718](https://github.com/vmware/clarity/commit/9817718))
 * updates to clr/base to support ie11 ([6616946](https://github.com/vmware/clarity/commit/6616946))
+* **a11y:** make disabled dropdown item focusable ([9a905f7](https://github.com/vmware/clarity/commit/9a905f7))
+* **datagrid:** mixed expandable non expandable bug ([1a50a08](https://github.com/vmware/clarity/commit/1a50a08))
+* **modal:** tab only focus style ([33684ef](https://github.com/vmware/clarity/commit/33684ef)), closes [#3642](https://github.com/vmware/clarity/issues/3642)
+* **stack-view:** editable stack view form fields looked unstyled in dev app ([99571d5](https://github.com/vmware/clarity/commit/99571d5))
 * **stepper:** aria-live message for only errors ([59f830a](https://github.com/vmware/clarity/commit/59f830a))
 * **stepper:** focus management ([6d20b04](https://github.com/vmware/clarity/commit/6d20b04))
 * **wizard:** prevent closing non closable wizards ([5a4167f](https://github.com/vmware/clarity/commit/5a4167f)), closes [#3499](https://github.com/vmware/clarity/issues/3499)
-* update release note to remove reference to k8s ([9817718](https://github.com/vmware/clarity/commit/9817718))
 
 ### Code Refactoring
 
@@ -133,26 +192,22 @@ Signed-off-by: Jeremy Wilken <mailto:gnomation@gnomeontherun.com>
 
 <a name="2.1.0"></a>
 
-# [2.1.0](https://github.com/vmware/clarity/compare/v2.1.0...2.1.0) (2019-07-25)
-
-<a name="2.1.0"></a>
-
-# [2.1.0](https://github.com/vmware/clarity/compare/v2.0.2...v2.1.0) (2019-07-25)
+# [2.1.0](https://github.com/vmware/clarity/compare/v2.0.2...2.1.0) (2019-07-25)
 
 ### Bug Fixes
 
+* **login:** add labels for screen readers to form login controls ([6604ba6](https://github.com/vmware/clarity/commit/6604ba6)), closes [#3522](https://github.com/vmware/clarity/issues/3522)
 * adding labels to datagrid single & expandable column ([dc1dc2b](https://github.com/vmware/clarity/commit/dc1dc2b))
-* change clrSpinner API ([256df22](https://github.com/vmware/clarity/commit/256df22))
 * **datagrid:** input on hideable column ([3b77397](https://github.com/vmware/clarity/commit/3b77397))
 * **forms:** describe by for input validation errors ([730e080](https://github.com/vmware/clarity/commit/730e080)), closes [#3561](https://github.com/vmware/clarity/issues/3561)
-* **login:** add labels for screen readers to form login controls ([6604ba6](https://github.com/vmware/clarity/commit/6604ba6)), closes [#3522](https://github.com/vmware/clarity/issues/3522)
-* **ng:** dropdown item should add disabled attribute if set by input ([bcd032c](https://github.com/vmware/clarity/commit/bcd032c)), closes [#3634](https://github.com/vmware/clarity/issues/3634)
-* **stepper:** remove interstitial content ([c58007e](https://github.com/vmware/clarity/commit/c58007e)), closes [#3560](https://github.com/vmware/clarity/issues/3560)
 * adding the text-edit set to the svg icon build script ([b7d0bef](https://github.com/vmware/clarity/commit/b7d0bef))
 * attempt to fix github PR template ([6bd0fcb](https://github.com/vmware/clarity/commit/6bd0fcb))
+* change clrSpinner API ([256df22](https://github.com/vmware/clarity/commit/256df22))
 * dropdown item count by screen reader + docs update ([5fd4fd0](https://github.com/vmware/clarity/commit/5fd4fd0))
 * reverting app-level orange alerts to intended color ([#3612](https://github.com/vmware/clarity/issues/3612)) ([a4b63da](https://github.com/vmware/clarity/commit/a4b63da)), closes [#3604](https://github.com/vmware/clarity/issues/3604)
 * Update line-height for clr-control-label ([f8cf498](https://github.com/vmware/clarity/commit/f8cf498))
+* **ng:** dropdown item should add disabled attribute if set by input ([bcd032c](https://github.com/vmware/clarity/commit/bcd032c)), closes [#3634](https://github.com/vmware/clarity/issues/3634)
+* **stepper:** remove interstitial content ([c58007e](https://github.com/vmware/clarity/commit/c58007e)), closes [#3560](https://github.com/vmware/clarity/issues/3560)
 
 ### Features
 

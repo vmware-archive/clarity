@@ -4,10 +4,12 @@
 
 @include exports('badge.properties') {
   @if $clr-use-custom-properties == true {
-    :root {
-      --clr-badge-font-color-light: var(--clr-color-neutral-0);
-      --clr-badge-font-color-dark: var(--clr-color-neutral-1000);
+    :root,
+    :host {
+      --clr-badge-background-color: var(--clr-color-neutral-600);
+      --clr-badge-color: var(--clr-color-on-neutral-600);
 
+      // START: deprecated for removal in 4.0
       --clr-badge-info-bg-color: var(--clr-color-action-600);
       --clr-badge-info-color: var(--clr-color-neutral-0);
       --clr-badge-success-bg-color: var(--clr-color-success-700);
@@ -27,6 +29,7 @@
       --clr-badge-orange-color: var(--clr-badge-font-color-dark);
       --clr-badge-light-blue-bg-color: var(--clr-color-action-300);
       --clr-badge-light-blue-color: var(--clr-badge-font-color-dark);
+      // END: deprecated for removal in 4.0
     }
   }
 }

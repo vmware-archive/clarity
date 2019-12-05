@@ -24,6 +24,7 @@
       // Usage: ./_labels.clarity.scss
       --clr-label-bg-hover-color: var(--clr-color-neutral-200);
 
+      // START: deprecated for removal in 4.0
       --clr-label-gray-bg-color: var(--clr-color-neutral-600);
       --clr-label-gray-color: var(--clr-label-font-color-light);
 
@@ -54,6 +55,7 @@
       --clr-label-danger-bg-color: var(--clr-color-danger-100);
       --clr-label-danger-font-color: var(--clr-color-danger-900);
       --clr-label-danger-border-color: var(--clr-color-danger-200);
+      // END: deprecated for removal in 4.0
     }
   }
 }

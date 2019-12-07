@@ -87,7 +87,7 @@
     "core:dev:build": "ng build dev-core --prod",
     "core:test": "npm run core:sass && ng test clr-core --watch=false && npm run core:golden:test",
     "core:test:watch": "ng test clr-core --watch --code-coverage",
-    "core:build": "npm-run-all core:lint core:sass core:build:ngpackagr core:build:package core:api:editor core:api core:golden core:build:package:format",
+    "core:build": "npm-run-all core:lint core:sass:components core:build:ngpackagr core:build:package core:sass core:api:editor core:api core:golden core:build:package:format",
     "core:build:package": "cpy ./src/clr-core/README.md ./dist/clr-core/; replace '@VERSION' $npm_package_version ./dist/clr-core/package.json",
     "core:build:package:format": "node ./src/clr-core/package.js",
     "core:build:ngpackagr": "ng build clr-core",

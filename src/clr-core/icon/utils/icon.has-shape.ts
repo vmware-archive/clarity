@@ -5,7 +5,7 @@
  */
 
 import { existsIn } from '@clr/core/common';
-import { anyPass } from 'ramda';
+import anyPass from 'ramda/es/anyPass';
 import { IconShapeCollection } from '../interfaces/icon.interfaces';
 
 export function iconHasBadgedShapes(icon: IconShapeCollection): boolean {

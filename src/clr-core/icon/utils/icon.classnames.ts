@@ -5,7 +5,7 @@
  */
 
 import { getEnumValues, transformToSpacedString } from '@clr/core/common';
-import { ifElse } from 'ramda';
+import ifElse from 'ramda/es/ifElse';
 import { CwcIcon } from '../icon.element';
 import { IconShapeCollection } from '../interfaces/icon.interfaces';
 import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape';

@@ -5,7 +5,7 @@
 */
 
 import { existsIn } from '@clr/core/common';
-import { has } from 'ramda';
+import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer';
 import { IconAlias, IconCollection, IconRegistrySources, IconShapeTuple } from '../interfaces/icon.interfaces';
 

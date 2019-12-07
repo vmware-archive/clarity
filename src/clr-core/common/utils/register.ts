@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { __, curryN } from 'ramda';
+import curryN from 'ramda/es/curryN';
+import __ from './__';
 import { elementExists } from './exists';
 
 const addElementToRegistry = curryN(3, (tagName: string, elementClass: any, registry = window.customElements) => {

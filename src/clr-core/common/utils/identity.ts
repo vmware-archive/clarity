@@ -4,7 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { allPass, is, isEmpty, isNil } from 'ramda';
+import allPass from 'ramda/es/allPass';
+import is from 'ramda/es/is';
+import isEmpty from 'ramda/es/isEmpty';
+import isNil from 'ramda/es/isNil';
 
 export function isNilOrEmpty(val: any): boolean {
   return isNil(val) || isEmpty(val);

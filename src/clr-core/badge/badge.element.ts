@@ -23,8 +23,6 @@ import { styles } from './badge.element.css';
  * @beta 3.0
  * @element cwc-badge
  * @slot default - Content slot for inside the badge
- * @attr {String} color - Sets the color of the badge from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)
- * @attr {String} status - Sets the color of the badge from a predefined list of statuses <br/> (`info`, `success`, `warning`, `danger`)
  * @cssprop --clr-badge-background-color
  * @cssprop --clr-badge-color
  */

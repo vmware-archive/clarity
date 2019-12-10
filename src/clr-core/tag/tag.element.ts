@@ -23,8 +23,6 @@ import { styles } from './tag.element.css';
  * @beta 3.0
  * @element cwc-tag
  * @slot default - Content slot for inside the tag
- * @attr {String} color - Sets the color of the tag (and badge if present) from a predefined list of choices <br/> (`gray`, `purple`, `blue`, `orange`, `light-blue`)
- * @attr {String} status - Sets the color of the tag (and badge if present) from a predefined list of statuses <br/> (`info`, `success`, `warning`, `danger`)
  * @cssprop --clr-tag-border-color
  * @cssprop --clr-tag-font-size
  * @cssprop --clr-tag-font-weight

@@ -234,7 +234,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run license:fix",
+      "pre-commit": "npm run format:fix && npm run license:fix && npm run core:api",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

@@ -128,5 +128,9 @@ export class I18nDemo extends ClarityDocComponent {
       role:
         'Applies the expanded/collapsed state to an aria-expanded attribute for screen readers whenever vertical nav group buttons are expanded/collapsed',
     },
+    {
+      key: 'signpostToggle',
+      role: 'Applies the aria-label value to the signpost trigger.',
+    },
   ];
 }

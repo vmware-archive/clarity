@@ -8,18 +8,9 @@ import { renderIcon } from '../icon.renderer';
 import { IconShapeTuple } from '../interfaces/icon.interfaces';
 
 const icon = {
-  outline: '',
-
-  outlineAlerted: '',
-
-  outlineBadged: '',
-
-  solid: '',
-
-  solidAlerted: '',
-
-  solidBadged: '',
+  outline: '<path d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34ZM18,4A14,14,0,1,0,32,18,14,14,0,0,0,18,4Z"/>',
+  solid: '<path d="M18,34A16,16,0,1,1,34,18,16,16,0,0,1,18,34Z"/>',
 };
 
-export const tmplIconName = 'tmpl';
-export const tmplIcon: IconShapeTuple = [tmplIconName, renderIcon(icon)];
+export const circleIconName = 'circle';
+export const circleIcon: IconShapeTuple = [circleIconName, renderIcon(icon)];

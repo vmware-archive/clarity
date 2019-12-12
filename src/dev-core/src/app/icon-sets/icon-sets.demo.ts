@@ -7,7 +7,14 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import '@clr/core/icon';
 
-import { coreCollectionAliases, coreCollectionIcons, loadCoreIconSet } from '@clr/core/icon';
+import {
+  coreCollectionAliases,
+  coreCollectionIcons,
+  essentialCollectionAliases,
+  essentialCollectionIcons,
+  loadCoreIconSet,
+  loadEssentialIconSet,
+} from '@clr/core/icon';
 
 const iconSets = [
   {
@@ -15,6 +22,12 @@ const iconSets = [
     loader: loadCoreIconSet,
     iconList: coreCollectionIcons,
     aliasList: coreCollectionAliases,
+  },
+  {
+    name: 'Essential',
+    loader: loadEssentialIconSet,
+    iconList: essentialCollectionIcons,
+    aliasList: essentialCollectionAliases,
   },
 ];
 
@@ -27,6 +40,7 @@ const iconSetIndex = loadAndIndexIconSets(iconSets);
 export class IconSetsDemoComponent {
   iconIndex: {
     Core?: string[];
+    Essential?: string[];
   } = {};
 
   iconFilterAndToggles = this.fb.group({
@@ -96,6 +110,3 @@ function createIconIndices(icons: [string, string][], aliases: [string, string[]
   const returnAry = iconsMap.concat(aliasMap).sort();
   return returnAry;
 }
-
-// TODO:
-// - update styles to use our base-20rem...

@@ -1,12 +1,16 @@
 {
   "files": [
     {
-      "path": "./dist/clr-core/fesm2015/**/clr-core-*.js",
+      "path": "./dist/clr-core/fesm2015/**/clr-core-!(icon).js",
       "maxSize": "20 kB"
     },
     {
+      "path": "./dist/clr-core/fesm2015/**/clr-core-icon.js",
+      "maxSize": "60 kB"
+    },
+    {
       "path": "./dist/clr-core/fesm2015/**/clr-core.js",
-      "maxSize": "42 kB"
+      "maxSize": "60 kB"
     },
     {
       "path": "./dist/dev-core/**/main-es2015*.js",

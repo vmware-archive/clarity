@@ -8,18 +8,8 @@ import { renderIcon } from '../icon.renderer';
 import { IconShapeTuple } from '../interfaces/icon.interfaces';
 
 const icon = {
-  outline: '',
-
-  outlineAlerted: '',
-
-  outlineBadged: '',
-
-  solid: '',
-
-  solidAlerted: '',
-
-  solidBadged: '',
+  outline: '<path d="M27,27H9a1,1,0,0,1,0-2H27a1,1,0,0,1,0,2Z"/>',
 };
 
-export const tmplIconName = 'tmpl';
-export const tmplIcon: IconShapeTuple = [tmplIconName, renderIcon(icon)];
+export const windowMinIconName = 'window-min';
+export const windowMinIcon: IconShapeTuple = [windowMinIconName, renderIcon(icon)];

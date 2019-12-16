@@ -8,7 +8,7 @@ import {
   OnDestroy,
   Optional,
   ContentChild,
-  HostListener,
+  AfterViewInit,
   ViewChild,
   ElementRef,
   Input,
@@ -81,7 +81,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
     '[class.clr-row]': 'addGrid()',
   },
 })
-export class ClrDateContainer implements DynamicWrapper, OnDestroy {
+export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit {
   _dynamic: boolean = false;
   invalid = false;
   focus = false;
@@ -111,13 +111,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     private ngControlService: NgControlService
   ) {
     this.subscriptions.push(
-      this._toggleService.openChange.subscribe(open => {
-        if (open) {
-          this.initializeCalendar();
-        }
-      })
-    );
-    this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
       })
@@ -129,15 +122,22 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy {
     );
   }
 
-  @HostListener('body:keyup.escape')
-  close(): void {
-    this.toggleButton.nativeElement.focus();
-  }
-
   ngOnInit() {
     this.subscriptions.push(
       this.ifErrorService.statusChanges.subscribe(invalid => {
         this.invalid = invalid;
+      })
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscriptions.push(
+      this._toggleService.openChange.subscribe(open => {
+        if (open) {
+          this.initializeCalendar();
+        } else {
+          this.toggleButton.nativeElement.focus();
+        }
       })
     );
   }

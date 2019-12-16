@@ -73,18 +73,25 @@ export default function() {
         context.detectChanges();
       });
 
-      it('returns focus to the toggle button when closed with the escape key', () => {
+      it('should returns focus to calendar when we close it', () => {
         const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         const actionButtonSpy = spyOn(actionButton, 'focus');
-        expect(actionButtonSpy.calls.count()).toBe(0);
-        actionButton.click();
+        toggleService.open = true;
         context.detectChanges();
+        toggleService.open = false;
+        context.detectChanges();
+        expect(actionButtonSpy.calls.count()).toBe(1);
+      });
+
+      it('should not call focus when date-picker is not visible', () => {
+        const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        const actionButtonSpy = spyOn(actionButton, 'focus');
         const event = new KeyboardEvent('keyup', {
           key: 'Escape',
         });
         document.body.dispatchEvent(event);
         context.detectChanges();
-        expect(actionButtonSpy.calls.count()).toBe(1);
+        expect(actionButtonSpy.calls.count()).toBe(0);
       });
 
       it('applies the clr-form-control class', () => {

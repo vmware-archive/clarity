@@ -960,7 +960,7 @@
         display: none;
       }
 
-      .in-drag & {
+      .in-drag &:not(.datagrid-fixed-column) {
         position: relative;
         .draggable-match {
           display: flex;

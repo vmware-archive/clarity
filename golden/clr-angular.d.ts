@@ -549,7 +549,7 @@ export interface ClrDatagridStringFilterInterface<T> {
 export declare class ClrDataModule {
 }
 
-export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
+export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit {
     _dynamic: boolean;
     actionButton: ElementRef;
     commonStrings: ClrCommonStringsService;
@@ -561,8 +561,8 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy {
     position: PopoverPosition;
     constructor(_toggleService: ClrPopoverToggleService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
-    close(): void;
     controlClass(): string;
+    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     toggleDatepicker(event: MouseEvent): void;

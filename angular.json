@@ -312,7 +312,7 @@
               "src/dev-core/src/robots.txt",
               "src/dev-core/src/sitemap.xml"
             ],
-            "styles": ["src/dev-core/src/styles.scss"],
+            "styles": ["src/dev-core/src/styles.scss", "node_modules/@clr/city/css/bundles/default.min.css"],
             "scripts": []
           },
           "configurations": {

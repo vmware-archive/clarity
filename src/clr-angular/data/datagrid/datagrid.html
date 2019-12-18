@@ -18,11 +18,9 @@
                 <!--header for datagrid where you can select multiple rows -->
                 <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"
                      *ngIf="selection.selectionType === SELECTION_TYPE.Multi">
-                            <span class="datagrid-column-title">
-                                <input clrCheckbox type="checkbox" [(ngModel)]="allSelected"
-                                       [attr.aria-label]="commonStrings.keys.selectAll">
-                            </span>
-                  <div class="datagrid-column-separator"></div>
+                  <input clrCheckbox type="checkbox" [(ngModel)]="allSelected"
+                         [attr.aria-label]="commonStrings.keys.selectAll">
+                <div class="datagrid-column-separator"></div>
                 </div>
                 <!-- header for datagrid where you can select one row only -->
                 <div role="columnheader" class="datagrid-column datagrid-select datagrid-fixed-column"

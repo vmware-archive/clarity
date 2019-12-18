@@ -31,7 +31,7 @@ a CSS Preprocessor like Sass or reference the CSS directly in your HTML.
 ```scss
 // import in Sass
 @import '~@clr/core/global.min';
-@import '~@clr/core/font.min';
+@import '~@clr/city/css/bundles/default.min';
 ```
 
 Or
@@ -39,7 +39,7 @@ Or
 ```html
 <!-- import in HTML -->
 <link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
-<link href="/node_modules/@clr/core/font.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/city/css/bundles/default.min" rel="stylesheet">
 ```
 
 ### Web Components

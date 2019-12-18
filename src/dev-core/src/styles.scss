@@ -1,4 +1,3 @@
 // Clarity Core dev app should only ever import the core global styles
 // This allows us to ensure our components are properly encapsulated.
 @import './../../clr-core/styles/global.scss';
-@import './../../clr-core/styles/font.scss';

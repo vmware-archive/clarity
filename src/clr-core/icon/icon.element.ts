@@ -51,14 +51,12 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --clr-icon-color-success
  * @cssprop --clr-icon-color-danger
  * @cssprop --clr-icon-color-warning
- * @cssprop --clr-icon-color-error
  * @cssprop --clr-icon-color-info
  * @cssprop --clr-icon-color-highlight
  * @cssprop --clr-icon-color-inverse
  * @cssprop --clr-icon-color-inverse-success
  * @cssprop --clr-icon-color-inverse-danger
  * @cssprop --clr-icon-color-inverse-warning
- * @cssprop --clr-icon-color-inverse-error
  * @cssprop --clr-icon-color-inverse-info
  * @cssprop --clr-icon-color-inverse-highlight
  */

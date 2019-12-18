@@ -113,10 +113,11 @@ svg {
 }
 
 // DEPRECATED IN 3.0: is-red
+// DEPRECATED IN 3.0: is-error
 :host(.is-red),
 :host(.is-danger),
 :host(.is-error) {
-  @include setIconColor(#{'var(--clr-icon-color-error, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+  @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
 }
 
 :host(.is-warning) {
@@ -131,15 +132,37 @@ svg {
   @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
 }
 
+:host(.is-highlight) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-highlight, var(--clr-color-action-600,' + $clr-color-action-600 + '))'}
+  );
+}
+
+// INVERSE COLORS
+
 // DEPRECATED IN 3.0: is-white
 :host(.is-white),
 :host(.is-inverse) {
   @include setIconColor(#{'var(--clr-icon-color-inverse, var(--clr-color-neutral-0,' + $clr-color-neutral-0 + '))'});
 }
 
-:host(.is-highlight) {
+:host(.is-inverse.is-success) {
   @include setIconColor(
-    #{'var(--clr-icon-color-highlight, var(--clr-color-action-600,' + $clr-color-action-600 + '))'}
+    #{'var(--clr-icon-color-inverse-success, var(--clr-color-success-400,' + $clr-color-success-400 + '))'}
+  );
+}
+
+// DEPRECATED IN 3.0: is-error
+:host(.is-inverse.is-error),
+:host(.is-inverse.is-danger) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-inverse-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'}
+  );
+}
+
+:host(.is-inverse.is-warning) {
+  @include setIconColor(
+    #{'var(--clr-icon-color-inverse-warning, var(--clr-color-warning-500,' + $clr-color-warning-500 + '))'}
   );
 }
 
@@ -262,9 +285,10 @@ svg {
   }
 }
 
+:host(.has-badge--danger),
 :host(.has-badge--error) {
   .clr-i-badge {
-    @include setIconColor(#{'var(--clr-icon-color-error, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+    @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
   }
 }
 
@@ -300,10 +324,12 @@ svg {
   }
 }
 
+// DEPRECATED IN 3.0: has-badge--error
+:host(.has-badge--danger.is-inverse),
 :host(.has-badge--error.is-inverse) {
   .clr-i-badge {
     @include setIconColor(
-      #{'var(--clr-icon-color-inverse-error, var(--clr-color-danger-500,' + $clr-color-danger-500 + '))'}
+      #{'var(--clr-icon-color-inverse-danger, var(--clr-color-danger-500,' + $clr-color-danger-500 + '))'}
     );
   }
 }

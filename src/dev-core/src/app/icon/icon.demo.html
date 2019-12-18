@@ -10,11 +10,69 @@
         text-align: center;
         line-height: 1.1em;
     }
+
+    .custom-icon-colors {
+        background: black;
+        padding: 8px 12px;
+        border-radius: 3px;
+        display: inline-block;
+        margin-left: 12px;
+        position: relative;
+    }
+
+    .custom-icon-colors::before {
+        content: 'B';
+        font-size: 14px;
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 4px;
+        color: white
+    }
+
+    .custom-icon-colors:first-child:before {
+        content: 'A';
+    }
+
+    .custom-icon-colors:last-child:before {
+        content: 'C';
+        color: inherit;
+    }
+
+    .custom-icon-colors-2 {
+        background: #eee;
+    }
+
+    .custom-icon-colors cwc-icon {
+        --clr-icon-color-danger: yellow;
+        --clr-icon-color-inverse: limegreen;
+        --clr-icon-color-inverse-danger: fuchsia;
+
+        height: 36px;
+        width: 36px;
+    }
 </style>
 
 <h1>Icon Demo</h1>
 
 <p><cwc-icon id="ohai"></cwc-icon></p>
+
+<h2>Custom Styling</h2>
+
+<div class="clr-row">
+    <div class="custom-icon-colors">
+        <cwc-icon shape="user" class="has-badge--danger is-inverse"></cwc-icon>
+    </div>
+    <div class="custom-icon-colors">
+        <cwc-icon shape="user" class="is-danger has-badge--danger is-inverse"></cwc-icon>
+    </div>
+    <div class="custom-icon-colors custom-icon-colors-2">
+        <cwc-icon shape="user" class="has-badge--danger"></cwc-icon>
+    </div>
+</div>
+<p><i>A should be green with a pink badge</i><br>
+<i>B should be all pink</i><br>
+<i>C should be default gray with a yellow badge</i></p>
 
 <h2>Icon Sizing</h2>
 

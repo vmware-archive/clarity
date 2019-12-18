@@ -31,6 +31,7 @@ import { debounceTime } from 'rxjs/operators';
 export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
   private view: EmbeddedViewRef<void>;
   private subscriptions: Subscription[] = [];
+  private _smartPositioning: boolean = true;
 
   @Input('clrPopoverContent')
   public set open(value: boolean) {
@@ -50,6 +51,11 @@ export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
   @Input('clrPopoverContentScrollToClose')
   set scrollToClose(scrollToClose) {
     this.smartEventsService.scrollToClose = !!scrollToClose;
+  }
+
+  @Input('clrPopoverContentSmartPositioning')
+  set smartPositioning(smart: boolean) {
+    this._smartPositioning = smart;
   }
 
   constructor(
@@ -111,21 +117,20 @@ export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
   private addContent() {
     // Create the view container
     this.view = this.container.createEmbeddedView(this.template);
+
+    if (this._smartPositioning) {
+      this.initSmartRoots();
+    } else {
+      this.initInlineRoots();
+    }
+
     this.smartEventsService.contentRef = this.view.rootNodes[0]; // So we know where/what to set close focus on
     this.renderer.addClass(this.view.rootNodes[0], 'clr-popover-content');
-    // Reset to the begining of the document to be available for sizing/positioning calculations.
-    // If we add new content to the bottom it triggers changes in the layout that may lead to false anchor
-    // coordinates values.
-    this.renderer.setStyle(this.view.rootNodes[0], 'top', '0px');
-    this.renderer.setStyle(this.view.rootNodes[0], 'left', '0px');
-    // We need to hide it during the calculation phase, while it's not yet finally positioned.
-    this.renderer.setStyle(this.view.rootNodes[0], 'opacity', '0');
+
     this.renderer.listen(this.view.rootNodes[0], 'click', event => {
       this.smartOpenService.openEvent = event;
     });
-    this.view.rootNodes.forEach(node => {
-      this.renderer.appendChild(this.document.body, node);
-    });
+
     // Mark for realingment on the next content-check cycle.
     this.shouldRealign = true;
   }
@@ -147,12 +152,44 @@ export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
     }
   }
 
+  /**
+   * Smart root nodes are in the document.body, with "fixed" position at (0 ,0), with opacity 0.
+   */
+  private initSmartRoots() {
+    this.view.rootNodes.forEach(node => {
+      this.renderer.appendChild(this.document.body, node);
+    });
+    this.renderer.setStyle(this.view.rootNodes[0], 'position', 'fixed');
+    // The relocation avoids triggerring of layout changes, which may lead to false anchor coordinates values.
+    this.renderer.setStyle(this.view.rootNodes[0], 'top', '0px');
+    this.renderer.setStyle(this.view.rootNodes[0], 'left', '0px');
+    // Hide during the calculation phase, to avoid flicker caused by the above initial relocation
+    this.renderer.setStyle(this.view.rootNodes[0], 'opacity', '0');
+  }
+
+  /**
+   * Inline root nodes reside where defined (inline), "relative"-ly positioned, with an "absolute" content wrapper.
+   */
+  private initInlineRoots() {
+    this.renderer.setStyle(this.view.rootNodes[0], 'position', 'relative');
+    const wrapper = this.renderer.createElement('div');
+    this.renderer.addClass(wrapper, 'clr-absolute-wrapper');
+
+    const root = this.view.rootNodes[0];
+    while (root.children && root.children.length > 0) {
+      wrapper.appendChild(root.children[0]);
+    }
+    this.view.rootNodes[0].appendChild(wrapper);
+  }
+
   private alignContent() {
     if (!this.view) {
       return;
     }
-    const positionCoords = this.smartPositionService.alignContent(this.view.rootNodes[0]);
-    this.renderer.setStyle(this.view.rootNodes[0], 'top', `${positionCoords.yOffset}px`);
-    this.renderer.setStyle(this.view.rootNodes[0], 'left', `${positionCoords.xOffset}px`);
+    if (this._smartPositioning) {
+      const positionCoords = this.smartPositionService.alignContent(this.view.rootNodes[0]);
+      this.renderer.setStyle(this.view.rootNodes[0], 'top', `${positionCoords.yOffset}px`);
+      this.renderer.setStyle(this.view.rootNodes[0], 'left', `${positionCoords.xOffset}px`);
+    }
   }
 }

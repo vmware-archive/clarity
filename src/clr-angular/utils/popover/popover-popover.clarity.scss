@@ -7,7 +7,11 @@
 
 @include exports('smart-popover.clarity') {
   .clr-popover-content {
-    position: fixed;
     z-index: map-get($clr-layers, smart-popover);
+  }
+
+  .clr-absolute-wrapper {
+    position: absolute;
+    margin-bottom: $clr_baselineRem_0_125;
   }
 }

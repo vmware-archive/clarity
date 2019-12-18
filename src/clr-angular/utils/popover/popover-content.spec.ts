@@ -24,7 +24,7 @@ import { ClrPopoverModuleNext } from './popover.module';
     <button #anchor
             clrPopoverAnchor
             clrPopoverOpenCloseButton>Popover Toggle</button>
-    <div *clrPopoverContent="openState at smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll"
+    <div *clrPopoverContent="openState at smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll; smartPositioning: smartPositioning"
          (clrPopoverContentChange)="changeCounter($event)">Popover content</div>
   `,
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
@@ -47,6 +47,7 @@ class SimpleContent {
   public openState = false;
   public closeClick = true;
   public closeScroll = true;
+  public smartPositioning = true;
   public changeCount = 0;
   changeCounter(event) {
     this.changeCount += 1;
@@ -122,6 +123,15 @@ export default function(): void {
           expect(alignContentSpy).toHaveBeenCalledTimes(1);
         })
       );
+
+      it('does not perform alignment when smart positioning is disabled', function(this: Context) {
+        const alignContentSpy = spyOn(this.positionService as any, 'alignContent');
+        this.testComponent.smartPositioning = false;
+        this.fixture.detectChanges();
+        this.testComponent.openState = true; // Add content to the DOM
+        this.fixture.detectChanges();
+        expect(alignContentSpy).not.toHaveBeenCalled();
+      });
     });
 
     describe('Template API', () => {
@@ -169,6 +179,27 @@ export default function(): void {
         const testElement: HTMLElement = <HTMLElement>content[0];
         expect(testElement.style.top).toMatch(/\d+px/);
         expect(testElement.style.left).toMatch(/\d+px/);
+      });
+
+      it('adds content to the body with corresponding styles when smart positioning is enabled', function(this: Context) {
+        this.testComponent.openState = true; // Add content to the DOM
+        this.fixture.detectChanges();
+        const content: HTMLElement = <HTMLElement>document.body.getElementsByClassName('clr-popover-content')[0];
+        expect(content.parentElement).toBe(document.body);
+        expect(content.style.position).toBe('fixed');
+      });
+
+      it('does not add content to the body with corresponding styles when smart positioning is disabled', function(this: Context) {
+        this.testComponent.smartPositioning = false;
+        this.fixture.detectChanges();
+        this.testComponent.openState = true; // Add content to the DOM
+        this.fixture.detectChanges();
+        const content: HTMLElement = <HTMLElement>document.body.getElementsByClassName('clr-popover-content')[0];
+        expect(content.parentElement).not.toBe(document.body);
+        expect(content.style.position).toBe('relative');
+        expect(content.style.top).toBeFalsy();
+        expect(content.style.left).toBeFalsy();
+        expect(content.getElementsByClassName('clr-absolute-wrapper').length).toBe(1);
       });
     });
   });

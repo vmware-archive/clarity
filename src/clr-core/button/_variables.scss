@@ -27,6 +27,9 @@ $clr-btn-border-width: $clr-global-borderwidth !default;
 // Usage: ./button-group/_button-group.clarity.scss
 $clr-btn-group-focus-outline: rgba(81, 203, 238, 1) !default;
 
+// Usage: ./button-group/_nav.clarity.scss
+$clr-nav-group-collapsible-focus-outline: rgb(59, 153, 252) !default;
+
 // standard appearance styles - overrideable but not advertised!
 $clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
 $clr-btn-appearance-standard-letter-spacing: 0.073em !default;

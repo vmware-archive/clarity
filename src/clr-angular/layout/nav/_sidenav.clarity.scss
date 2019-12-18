@@ -45,6 +45,12 @@
 @import './properties.sidenav';
 
 @include exports('sidenav.clarity') {
+  $clr-sidenav-caret-xOffset: $clr_baselineRem_8px;
+  $clr-sidenav-caret-yOffset: $clr_baselineRem_7px;
+  $clr-sidenav-caret-label-padding: $clr_baselineRem_1_33 - $clr_baselineRem_0_5 * 0.5;
+  $clr-sidenav-label-margin: $clr_baselineRem_0_5;
+  $navlink-padding: $clr_baselineRem_4px;
+
   .sidenav {
     line-height: $clr_baselineRem_1;
     max-width: $clr_baselineRem_13;
@@ -100,20 +106,20 @@
 
       .nav-list,
       label {
-        padding: 0 0 0 $clr_baselineRem_1_75;
+        padding: 0 0 0 ($clr-sidenav-caret-label-padding + $clr-sidenav-collapse-toggle-icon-size);
+        cursor: pointer;
+        display: inline-block;
+        width: 100%;
+        margin: 0 $clr-sidenav-label-margin * 0.5;
       }
 
       .nav-list {
         list-style: none;
         margin-top: 0;
-        overflow: hidden;
-
-        $navlink-padding: $clr_baselineRem_4px;
 
         .nav-link {
           line-height: $clr_baselineRem_0_667; // need a little extra to handle descenders
           padding: $navlink-padding 0 $navlink-padding $clr_baselineRem_0_5;
-
           @include nav-link-colors();
         }
       }
@@ -123,21 +129,16 @@
       }
 
       input[type='checkbox'] {
-        display: none;
+        @include screen-reader-only();
+        &:focus + label {
+          outline: $clr-nav-group-collapsible-focus-outline auto $clr_baselineRem_5px;
+        }
       }
     }
 
     .collapsible {
-      $clr-sidenav-caret-xOffset: $clr_baselineRem_8px;
-      $clr-sidenav-caret-yOffset: $clr_baselineRem_7px;
-      $clr-sidenav-caret-label-padding: $clr_baselineRem_1_33;
-
       label {
-        cursor: pointer;
-        display: inline-block;
-        width: 100%;
         padding: 0 0 0 $clr-sidenav-caret-label-padding;
-
         &:after {
           content: '';
           float: left;
@@ -149,14 +150,10 @@
         }
       }
 
-      .nav-list,
-      ul {
-        overflow: hidden;
-      }
-
       input[type='checkbox']:checked ~ .nav-list,
       input[type='checkbox']:checked ~ ul {
         height: 0;
+        display: none;
       }
 
       input[type='checkbox'] ~ .nav-list,

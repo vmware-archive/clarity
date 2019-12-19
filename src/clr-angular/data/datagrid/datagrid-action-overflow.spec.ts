@@ -90,10 +90,10 @@ export default function(): void {
 
     it('should call clrDgActionOverflowOpenChange output when open changed', function() {
       spyOn(context.fixture.componentInstance, 'clrDgActionOverflowOpenChangeFn');
-      const toggle = context.clarityElement.querySelector('.datagrid-action-toggle');
-      toggle.click();
+      const toggleBtn = context.clarityElement.querySelector('.datagrid-action-toggle');
+      toggleBtn.click();
       expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(true);
-      toggle.click();
+      toggleBtn.click();
       expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(false);
     });
 

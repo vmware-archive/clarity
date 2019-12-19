@@ -46,6 +46,7 @@ export { unknownStatusIcon } from './shapes/unknown-status';
 export { userIcon } from './shapes/user';
 export { viewColumnsIcon } from './shapes/view-columns';
 export { vmBugIcon } from './shapes/vm-bug';
+export { vmBugInverseIcon } from './shapes/vm-bug-inverse';
 export { warningStandardIcon } from './shapes/warning-standard';
 
 // SHAPES - ESSENTIAL

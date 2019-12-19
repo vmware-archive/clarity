@@ -76,9 +76,9 @@ export default function() {
       it('should returns focus to calendar when we close it', () => {
         const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         const actionButtonSpy = spyOn(actionButton, 'focus');
-        toggleService.open = true;
+        ifOpenService.open = true;
         context.detectChanges();
-        toggleService.open = false;
+        ifOpenService.open = false;
         context.detectChanges();
         expect(actionButtonSpy.calls.count()).toBe(1);
       });

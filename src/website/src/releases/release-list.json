@@ -1,6 +1,11 @@
 {
   "current": "2.3.4",
   "all": {
+    "3.0.0-next.5": {
+      "date": "Dec 19, 2019",
+      "sketch": "2.2.0",
+      "commit": "c822fc934bd88ba28e9eb8cd3a8b0ca014e4ea36"
+    },
     "3.0.0-next.4": {
       "date": "Dec 5, 2019",
       "sketch": "2.2.0",

@@ -1,5 +1,5 @@
 {
-  "current": "2.3.3",
+  "current": "2.3.4",
   "all": {
     "3.0.0-next.4": {
       "date": "Dec 5, 2019",
@@ -17,6 +17,11 @@
     "3.0.0-next.1": {
       "date": "Oct 3, 2019",
       "sketch": "2.2.0"
+    },
+    "2.3.4": {
+      "date": "Dec 19, 2019",
+      "sketch": "2.2.0",
+      "commit": "a8f5989dce8bbf4363f949352a1255a6d01abca0"
     },
     "2.3.3": {
       "date": "Dec 5, 2019",
@@ -102,6 +107,11 @@
       "date": "Mar 6, 2019",
       "sketch": "2.0.0",
       "commit": ""
+    },
+    "1.3.3": {
+      "date": "Dec 19, 2019",
+      "sketch": "1.0.0",
+      "commit": "7e94d3b2b7d80cc80fa5d5999a0e6fc8006a6cfb"
     },
     "1.3.2": {
       "date": "Oct 3, 2019",

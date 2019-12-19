@@ -43,6 +43,7 @@ import { unknownStatusIcon, unknownStatusIconName } from '../shapes/unknown-stat
 import { userIcon, userIconName } from '../shapes/user';
 import { viewColumnsIcon, viewColumnsIconName } from '../shapes/view-columns';
 import { vmBugIcon, vmBugIconName } from '../shapes/vm-bug';
+import { vmBugInverseIcon, vmBugInverseIconName } from '../shapes/vm-bug-inverse';
 import { warningStandardIcon, warningStandardIconName } from '../shapes/warning-standard';
 
 export const coreCollectionIcons: IconShapeTuple[] = [
@@ -81,6 +82,7 @@ export const coreCollectionIcons: IconShapeTuple[] = [
   userIcon,
   viewColumnsIcon,
   vmBugIcon,
+  vmBugInverseIcon,
   warningStandardIcon,
 ];
 
@@ -153,6 +155,7 @@ declare module '@clr/core/common' {
     [userIconName]?: string;
     [viewColumnsIconName]?: string;
     [vmBugIconName]?: string;
+    [vmBugInverseIconName]?: string;
     [warningStandardIconName]?: string;
   }
 }

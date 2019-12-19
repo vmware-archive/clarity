@@ -443,6 +443,8 @@ export declare const viewListIcon: IconShapeTuple;
 
 export declare const vmBugIcon: IconShapeTuple;
 
+export declare const vmBugInverseIcon: IconShapeTuple;
+
 export declare const volumeIcon: IconShapeTuple;
 
 export declare const wandIcon: IconShapeTuple;

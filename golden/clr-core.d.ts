@@ -4,6 +4,8 @@ export declare const accessibility2Icon: IconShapeTuple;
 
 export declare const addTextIcon: IconShapeTuple;
 
+export declare const administratorIcon: IconShapeTuple;
+
 export declare const alarmClockIcon: IconShapeTuple;
 
 export declare const alarmOffIcon: IconShapeTuple;
@@ -12,17 +14,43 @@ export declare const angleDoubleIcon: IconShapeTuple;
 
 export declare const angleIcon: IconShapeTuple;
 
+export declare const applicationIcon: IconShapeTuple;
+
+export declare const applicationsIcon: IconShapeTuple;
+
+export declare const archiveIcon: IconShapeTuple;
+
 export declare const arrowIcon: IconShapeTuple;
+
+export declare const assignUserIcon: IconShapeTuple;
 
 export declare const asteriskIcon: IconShapeTuple;
 
+export declare const atomIcon: IconShapeTuple;
+
+export declare const backupIcon: IconShapeTuple;
+
+export declare const backupRestoreIcon: IconShapeTuple;
+
 export declare const banIcon: IconShapeTuple;
 
+export declare const barCodeIcon: IconShapeTuple;
+
 export declare const barsIcon: IconShapeTuple;
+
+export declare const batteryIcon: IconShapeTuple;
 
 export declare const bellIcon: IconShapeTuple;
 
 export declare const betaIcon: IconShapeTuple;
+
+export declare const blockIcon: IconShapeTuple;
+
+export declare const blocksGroupIcon: IconShapeTuple;
+
+export declare const bluetoothIcon: IconShapeTuple;
+
+export declare const bluetoothOffIcon: IconShapeTuple;
 
 export declare const boltIcon: IconShapeTuple;
 
@@ -34,9 +62,19 @@ export declare const bubbleExclamationIcon: IconShapeTuple;
 
 export declare const bugIcon: IconShapeTuple;
 
+export declare const buildingIcon: IconShapeTuple;
+
 export declare const bullseyeIcon: IconShapeTuple;
 
+export declare const bundleIcon: IconShapeTuple;
+
 export declare const calendarIcon: IconShapeTuple;
+
+export declare const capacitorIcon: IconShapeTuple;
+
+export declare const cdDvdIcon: IconShapeTuple;
+
+export declare const certificateIcon: IconShapeTuple;
 
 export declare const checkCircleIcon: IconShapeTuple;
 
@@ -64,6 +102,12 @@ export declare const clockIcon: IconShapeTuple;
 export declare const cloneIcon: IconShapeTuple;
 
 export declare const cloudIcon: IconShapeTuple;
+
+export declare const cloudNetworkIcon: IconShapeTuple;
+
+export declare const cloudScaleIcon: IconShapeTuple;
+
+export declare const cloudTrafficIcon: IconShapeTuple;
 
 export interface ClrCommonStrings {
     alertCloseButtonAriaLabel?: string;
@@ -132,6 +176,10 @@ export declare enum ClrLoadingState {
     ERROR = 3
 }
 
+export declare const clusterIcon: IconShapeTuple;
+
+export declare const codeIcon: IconShapeTuple;
+
 export declare const cogIcon: IconShapeTuple;
 
 export declare const collapseCardIcon: IconShapeTuple;
@@ -148,6 +196,16 @@ export declare class CommonStringsService {
     }): string;
 }
 
+export declare const computerIcon: IconShapeTuple;
+
+export declare const connectIcon: IconShapeTuple;
+
+export declare const containerIcon: IconShapeTuple;
+
+export declare const containerVolumeIcon: IconShapeTuple;
+
+export declare const controlLunIcon: IconShapeTuple;
+
 export declare const copyIcon: IconShapeTuple;
 
 export declare const copyToClipboardIcon: IconShapeTuple;
@@ -155,6 +213,8 @@ export declare const copyToClipboardIcon: IconShapeTuple;
 export declare const coreCollectionAliases: IconAlias[];
 
 export declare const coreCollectionIcons: IconShapeTuple[];
+
+export declare const cpuIcon: IconShapeTuple;
 
 export declare const crosshairsIcon: IconShapeTuple;
 
@@ -217,9 +277,23 @@ export declare class CwcTestDropdown extends LitElement {
     static readonly styles: import("lit-element").CSSResult;
 }
 
+export declare const dashboardIcon: IconShapeTuple;
+
+export declare const dataClusterIcon: IconShapeTuple;
+
+export declare const deployIcon: IconShapeTuple;
+
 export declare const detailsIcon: IconShapeTuple;
 
+export declare const devicesIcon: IconShapeTuple;
+
+export declare const disconnectIcon: IconShapeTuple;
+
+export declare const displayIcon: IconShapeTuple;
+
 export declare const dotCircleIcon: IconShapeTuple;
+
+export declare const downloadCloudIcon: IconShapeTuple;
 
 export declare const downloadIcon: IconShapeTuple;
 
@@ -247,6 +321,8 @@ export declare const exclamationTriangleIcon: IconShapeTuple;
 
 export declare const expandCardIcon: IconShapeTuple;
 
+export declare const exportIcon: IconShapeTuple;
+
 export declare const eyeHideIcon: IconShapeTuple;
 
 export declare const eyeIcon: IconShapeTuple;
@@ -256,6 +332,8 @@ export declare const fileGroupIcon: IconShapeTuple;
 export declare const fileIcon: IconShapeTuple;
 
 export declare const fileSettingsIcon: IconShapeTuple;
+
+export declare const fileShareIcon: IconShapeTuple;
 
 export declare const fileZipIcon: IconShapeTuple;
 
@@ -277,6 +355,10 @@ export declare const fishIcon: IconShapeTuple;
 
 export declare const flameIcon: IconShapeTuple;
 
+export declare const flaskIcon: IconShapeTuple;
+
+export declare const floppyIcon: IconShapeTuple;
+
 export declare const folderIcon: IconShapeTuple;
 
 export declare const folderOpenIcon: IconShapeTuple;
@@ -287,6 +369,14 @@ export declare const fuelIcon: IconShapeTuple;
 
 export declare const gridViewIcon: IconShapeTuple;
 
+export declare const hardDiskIcon: IconShapeTuple;
+
+export declare const hardDriveDisksIcon: IconShapeTuple;
+
+export declare const hardDriveIcon: IconShapeTuple;
+
+export declare const helixIcon: IconShapeTuple;
+
 export declare const helpIcon: IconShapeTuple;
 
 export declare const helpInfoIcon: IconShapeTuple;
@@ -295,23 +385,39 @@ export declare const historyIcon: IconShapeTuple;
 
 export declare const homeIcon: IconShapeTuple;
 
+export declare const hostGroupIcon: IconShapeTuple;
+
+export declare const hostIcon: IconShapeTuple;
+
 export declare const hourglassIcon: IconShapeTuple;
 
 export declare const idBadgeIcon: IconShapeTuple;
 
 export declare const imageIcon: IconShapeTuple;
 
+export declare const importIcon: IconShapeTuple;
+
+export declare const inductorIcon: IconShapeTuple;
+
 export declare const infoCircleIcon: IconShapeTuple;
 
 export declare const infoStandardIcon: IconShapeTuple;
+
+export declare const installIcon: IconShapeTuple;
+
+export declare const keyboardIcon: IconShapeTuple;
 
 export declare const keyIcon: IconShapeTuple;
 
 export declare const landscapeIcon: IconShapeTuple;
 
+export declare const layersIcon: IconShapeTuple;
+
 export declare const libraryIcon: IconShapeTuple;
 
 export declare const lightbulbIcon: IconShapeTuple;
+
+export declare const linkIcon: IconShapeTuple;
 
 export declare const listIcon: IconShapeTuple;
 
@@ -319,23 +425,51 @@ export declare function loadCoreIconSet(): void;
 
 export declare function loadEssentialIconSet(): void;
 
+export declare function loadTechnologyIconSet(): void;
+
 export declare const lockIcon: IconShapeTuple;
 
 export declare const loginIcon: IconShapeTuple;
 
 export declare const logoutIcon: IconShapeTuple;
 
+export declare const mediaChangerIcon: IconShapeTuple;
+
+export declare const memoryIcon: IconShapeTuple;
+
 export declare const minusCircleIcon: IconShapeTuple;
 
 export declare const minusIcon: IconShapeTuple;
 
+export declare const mobileIcon: IconShapeTuple;
+
 export declare const moonIcon: IconShapeTuple;
+
+export declare const mouseIcon: IconShapeTuple;
+
+export declare const namespaceIcon: IconShapeTuple;
+
+export declare const networkGlobeIcon: IconShapeTuple;
+
+export declare const networkSettingsIcon: IconShapeTuple;
+
+export declare const networkSwitchIcon: IconShapeTuple;
 
 export declare const newIcon: IconShapeTuple;
 
 export declare const noAccessIcon: IconShapeTuple;
 
+export declare const nodeGroupIcon: IconShapeTuple;
+
+export declare const nodeIcon: IconShapeTuple;
+
+export declare const nodesIcon: IconShapeTuple;
+
 export declare const noteIcon: IconShapeTuple;
+
+export declare const noWifiIcon: IconShapeTuple;
+
+export declare const nvmeIcon: IconShapeTuple;
 
 export declare const objectsIcon: IconShapeTuple;
 
@@ -347,19 +481,33 @@ export declare const pasteIcon: IconShapeTuple;
 
 export declare const pencilIcon: IconShapeTuple;
 
+export declare const phoneHandsetIcon: IconShapeTuple;
+
 export declare const pinboardIcon: IconShapeTuple;
 
 export declare const pinIcon: IconShapeTuple;
 
+export declare const pluginIcon: IconShapeTuple;
+
 export declare const plusCircleIcon: IconShapeTuple;
 
 export declare const plusIcon: IconShapeTuple;
+
+export declare const podIcon: IconShapeTuple;
 
 export declare const popOutIcon: IconShapeTuple;
 
 export declare const portraitIcon: IconShapeTuple;
 
 export declare const printerIcon: IconShapeTuple;
+
+export declare const processOnVmIcon: IconShapeTuple;
+
+export declare const qrCodeIcon: IconShapeTuple;
+
+export declare const rackServerIcon: IconShapeTuple;
+
+export declare const radarIcon: IconShapeTuple;
 
 export declare const recycleIcon: IconShapeTuple;
 
@@ -369,7 +517,15 @@ export declare const refreshIcon: IconShapeTuple;
 
 export declare const repeatIcon: IconShapeTuple;
 
+export declare const resistorIcon: IconShapeTuple;
+
 export declare const resizeIcon: IconShapeTuple;
+
+export declare const resourcePoolIcon: IconShapeTuple;
+
+export declare const routerIcon: IconShapeTuple;
+
+export declare const rulerPencilIcon: IconShapeTuple;
 
 export declare function runCssVarsPolyfill(config?: {}): void;
 
@@ -379,6 +535,12 @@ export declare const scrollIcon: IconShapeTuple;
 
 export declare const searchIcon: IconShapeTuple;
 
+export declare const shieldCheckIcon: IconShapeTuple;
+
+export declare const shieldIcon: IconShapeTuple;
+
+export declare const shieldXIcon: IconShapeTuple;
+
 export declare const shrinkIcon: IconShapeTuple;
 
 export declare const sliderIcon: IconShapeTuple;
@@ -387,7 +549,15 @@ export declare const snowflakeIcon: IconShapeTuple;
 
 export declare const sortByIcon: IconShapeTuple;
 
+export declare const squidIcon: IconShapeTuple;
+
+export declare const ssdIcon: IconShapeTuple;
+
 export declare const stepForward2Icon: IconShapeTuple;
+
+export declare const storageAdapterIcon: IconShapeTuple;
+
+export declare const storageIcon: IconShapeTuple;
 
 export declare const successStandardIcon: IconShapeTuple;
 
@@ -399,11 +569,21 @@ export declare const syncIcon: IconShapeTuple;
 
 export declare const tableIcon: IconShapeTuple;
 
+export declare const tabletIcon: IconShapeTuple;
+
 export declare const tagIcon: IconShapeTuple;
 
 export declare const tagsIcon: IconShapeTuple;
 
+export declare const tapeDriveIcon: IconShapeTuple;
+
 export declare const targetIcon: IconShapeTuple;
+
+export declare const technologyCollectionAliases: IconAlias[];
+
+export declare const technologyCollectionIcons: IconShapeTuple[];
+
+export declare const terminalIcon: IconShapeTuple;
 
 export declare const thermometerIcon: IconShapeTuple;
 
@@ -421,15 +601,25 @@ export declare const treeViewIcon: IconShapeTuple;
 
 export declare const twoWayArrowsIcon: IconShapeTuple;
 
+export declare const unarchiveIcon: IconShapeTuple;
+
 export declare const undoIcon: IconShapeTuple;
+
+export declare const uninstallIcon: IconShapeTuple;
 
 export declare const unknownIcon: IconShapeTuple;
 
 export declare const unknownStatusIcon: IconShapeTuple;
 
+export declare const unlinkIcon: IconShapeTuple;
+
 export declare const unlockIcon: IconShapeTuple;
 
+export declare const uploadCloudIcon: IconShapeTuple;
+
 export declare const uploadIcon: IconShapeTuple;
+
+export declare const usbIcon: IconShapeTuple;
 
 export declare const userIcon: IconShapeTuple;
 
@@ -445,11 +635,17 @@ export declare const vmBugIcon: IconShapeTuple;
 
 export declare const vmBugInverseIcon: IconShapeTuple;
 
+export declare const vmIcon: IconShapeTuple;
+
+export declare const vmwAppIcon: IconShapeTuple;
+
 export declare const volumeIcon: IconShapeTuple;
 
 export declare const wandIcon: IconShapeTuple;
 
 export declare const warningStandardIcon: IconShapeTuple;
+
+export declare const wifiIcon: IconShapeTuple;
 
 export declare const windowCloseIcon: IconShapeTuple;
 

@@ -6,11 +6,11 @@
     },
     {
       "path": "./dist/clr-core/fesm2015/**/clr-core-icon.js",
-      "maxSize": "60 kB"
+      "maxSize": "100 kB"
     },
     {
       "path": "./dist/clr-core/fesm2015/**/clr-core.js",
-      "maxSize": "60 kB"
+      "maxSize": "100 kB"
     },
     {
       "path": "./dist/dev-core/**/main-es2015*.js",

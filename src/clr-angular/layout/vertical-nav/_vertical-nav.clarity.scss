@@ -396,6 +396,11 @@
       }
     }
 
+    // horizontally center the expand icon
+    &:not(.is-collapsed) .nav-link + .nav-group-trigger {
+      justify-content: center;
+    }
+
     .main-container:not([class*='open-overflow-menu']):not([class*='open-hamburger-menu']) &.is-collapsed {
       //Dims
       width: $clr-vertical-nav-min-width;

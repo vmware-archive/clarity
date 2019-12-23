@@ -5,7 +5,7 @@
  */
 import { Component } from '@angular/core';
 
-import { commonStringsDefault, commonStringsService } from '@clr/core/common';
+import { commonStringsDefault, CommonStringsService } from '@clr/core';
 import { frenchTranslation } from './fr-translation';
 
 @Component({
@@ -13,13 +13,13 @@ import { frenchTranslation } from './fr-translation';
   templateUrl: './i18n.demo.html',
 })
 export class I18nDemoComponent {
-  clrCommonStringsService = commonStringsService;
+  clrCommonStringsService = CommonStringsService;
 
   english() {
-    commonStringsService.localize(commonStringsDefault);
+    CommonStringsService.localize(commonStringsDefault);
   }
 
   french() {
-    commonStringsService.localize(frenchTranslation);
+    CommonStringsService.localize(frenchTranslation);
   }
 }

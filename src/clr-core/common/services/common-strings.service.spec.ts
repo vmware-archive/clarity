@@ -5,13 +5,13 @@
  */
 
 import { commonStringsDefault } from './common-strings.default';
-import { CommonStringsService } from './common-strings.service';
+import { CommonStringsServiceInternal } from './common-strings.service';
 
 describe('Common Strings Service', () => {
   let service;
 
   beforeEach(() => {
-    service = new CommonStringsService();
+    service = new CommonStringsServiceInternal();
   });
 
   it('can get a value from common strings default', () => {

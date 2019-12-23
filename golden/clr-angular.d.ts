@@ -249,7 +249,7 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
 export declare class ClrCommonFormsModule {
 }
 
-export declare class ClrCommonStringsService extends CommonStringsService {
+export declare class ClrCommonStringsService extends CommonStringsServiceInternal {
 }
 
 export declare class ClrControlError implements AfterViewInit {

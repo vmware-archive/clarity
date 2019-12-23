@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable } from '@angular/core';
-import { CommonStringsService } from '@clr/core';
+import { CommonStringsServiceInternal } from '@clr/core/common';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClrCommonStringsService extends CommonStringsService {}
+export class ClrCommonStringsService extends CommonStringsServiceInternal {}

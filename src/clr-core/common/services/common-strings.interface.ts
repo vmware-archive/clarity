@@ -176,6 +176,7 @@ export interface ClrCommonStrings {
   /**
    * Datepicker UI labels
    */
+  datepickerClear?: string;
   datepickerToggle?: string;
   datepickerPreviousMonth?: string;
   datepickerCurrentMonth?: string;

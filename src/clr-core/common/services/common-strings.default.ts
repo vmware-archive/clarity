@@ -51,6 +51,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
   // Date Picker
+  datepickerClear: 'Clear datepicker',
   datepickerToggle: 'Toggle datepicker',
   datepickerPreviousMonth: 'Previous month',
   datepickerCurrentMonth: 'Current month',

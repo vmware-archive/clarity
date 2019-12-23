@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -160,6 +160,21 @@ export default function() {
         context.detectChanges();
         expect(context.clarityDirective.position).toEqual('top-left');
       });
+
+      it('should display clear icon when there is set date', () => {
+        dateFormControlService.value = '12/12/12';
+        context.detectChanges();
+        const clearButton = context.clarityElement.querySelector('clr-icon[shape="times"]');
+        expect(clearButton).not.toBeNull();
+      });
+      it('should clear value when x is clicked', () => {
+        dateFormControlService.value = '12/12/12';
+        context.detectChanges();
+        const clearButton = context.clarityElement.querySelector('clr-icon[shape="times"]');
+        clearButton.click();
+        context.detectChanges();
+        expect(dateFormControlService.value).toBe('');
+      });
     });
 
     describe('Typescript API', () => {
@@ -202,6 +217,12 @@ export default function() {
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
         controlClassService.className = 'clr-col-2';
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
+      });
+
+      it('clearDateValue should call method from DateIOService to request clear', () => {
+        const spyClear = spyOn(dateFormControlService, 'clear');
+        context.clarityDirective.clearDateValue();
+        expect(spyClear).toHaveBeenCalled();
       });
     });
   });

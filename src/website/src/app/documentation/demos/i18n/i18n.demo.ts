@@ -58,6 +58,7 @@ export class I18nDemo extends ClarityDocComponent {
       role: 'Datagrid: screen reader only confirmation that all columns were selected',
     },
     { key: 'loading', role: 'Display loading text (Default: Loading)' },
+    { key: 'datepickerClear', role: 'The clear button for the datepicker' },
     { key: 'datepickerToggle', role: 'The open/close button for a datepicker' },
     {
       key: 'datepickerPreviousMonth',

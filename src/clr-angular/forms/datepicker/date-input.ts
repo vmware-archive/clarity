@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,6 +57,13 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
   @Input('clrDate')
   set date(date: Date) {
+    if (this.initialClrDateInputValue === undefined && !date) {
+      this.initialClrDateInputValue = date;
+      return;
+    }
+    // The second part of the if will try prevent update call when
+    // there is no initial date and date is empty string. This is the default
+    // state of the component.
     if (this.previousDateChange !== date) {
       this.updateDate(this.getValidDateValueFromDate(date));
     }
@@ -109,7 +116,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       this.listenForControlValueChanges(),
       this.listenForTouchChanges(),
       this.listenForDirtyChanges(),
-      this.listenForInputRefocus()
+      this.listenForInputRefocus(),
+      this.listenForClearRequest()
     );
   }
 
@@ -182,10 +190,13 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   }
 
   private processInitialInputs() {
+    let value = this.initialClrDateInputValue;
     if (this.datepickerHasFormControl()) {
-      this.updateDate(this.dateIOService.getDateValueFromDateString(this.control.value));
-    } else {
-      this.updateDate(this.initialClrDateInputValue);
+      value = this.dateIOService.getDateValueFromDateString(this.control.value);
+      // at start if the date is null there is no need to do antyhing at this moment.
+    }
+    if (value) {
+      this.updateDate(value);
     }
   }
 
@@ -207,13 +218,16 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     this.updateInput(date);
   }
 
-  private updateInput(date: Date) {
+  private updateInput(date: Date): void {
+    let value;
     if (date) {
       const dateString = this.dateIOService.toLocaleDisplayFormatString(date);
+      value = dateString;
       if (this.usingNativeDatepicker()) {
         // valueAsDate expects UTC, date from input is time-zoned
         date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
         this.renderer.setProperty(this.el.nativeElement, 'valueAsDate', date);
+        value = date;
       } else if (this.datepickerHasFormControl() && dateString !== this.control.value) {
         this.control.control.setValue(dateString);
       } else {
@@ -221,6 +235,11 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       }
     } else {
       this.renderer.setProperty(this.el.nativeElement, 'value', '');
+      value = '';
+    }
+
+    if (this.dateFormControlService) {
+      this.dateFormControlService.value = value;
     }
   }
 
@@ -255,7 +274,25 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         // only update date value if not being set by user
         filter(() => !this.datepickerFocusService.elementIsFocused(this.el.nativeElement))
       )
-      .subscribe((value: string) => this.updateDate(this.dateIOService.getDateValueFromDateString(value)));
+      .subscribe((value: string) => {
+        if (value === '' && this.previousDateChange === null) {
+          // when value is empty string and previous state is null
+          // no new date could be produced so there is no need of any
+          // actions.
+          return;
+        }
+        const input = this.dateIOService.getDateValueFromDateString(value);
+        if ((this.previousDateChange === null || this.previousDateChange === undefined) && input === null) {
+          // when the new date will result into null and previous value is null
+          // no need to update
+          return;
+        }
+
+        // toString() let me compare Date .. milliseconds are a thing!
+        if ((input && input.toString()) !== (this.previousDateChange && this.previousDateChange.toString())) {
+          this.updateDate(input);
+        }
+      });
   }
 
   private listenForUserSelectedDayChanges() {
@@ -278,5 +315,11 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     return this.dateNavigationService.selectedDayChange
       .pipe(filter(date => !!date))
       .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement));
+  }
+
+  private listenForClearRequest() {
+    return this.dateFormControlService.requestToClearData.subscribe(() => {
+      this.updateInput(null);
+    });
   }
 }

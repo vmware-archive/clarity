@@ -585,6 +585,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     actionButton: ElementRef;
     commonStrings: ClrCommonStringsService;
     control: NgControl;
+    readonly dateValue: any;
     focus: boolean;
     invalid: boolean;
     readonly isEnabled: boolean;
@@ -592,6 +593,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     position: PopoverPosition;
     constructor(_toggleService: ClrPopoverToggleService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
     addGrid(): boolean;
+    clearDateValue(): void;
     controlClass(): string;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;

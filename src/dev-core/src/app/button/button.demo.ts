@@ -5,7 +5,7 @@
  */
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClrLoadingState } from '@clr/core';
+import { ClrLoadingState } from '@clr/core/button';
 import '@clr/core/button';
 
 @Component({

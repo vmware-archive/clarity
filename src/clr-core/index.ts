@@ -5,8 +5,3 @@
  */
 
 export { CommonStringsService, ClrCommonStrings, commonStringsDefault, runCssVarsPolyfill } from './common/index';
-export * from './badge/index';
-export * from './button/index';
-export * from './icon/index';
-export * from './tag/index';
-export * from './test-dropdown/index';

@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { CommonStringsService } from '@clr/core';
 import { registerElementSafely } from '@clr/core/common';
 import { html, LitElement, property } from 'lit-element';
 
-import { commonStringsService } from '@clr/core/common';
 import { styles } from './test-dropdown.element.css';
 
 /**
@@ -68,7 +68,7 @@ export class CwcTestDropdown extends LitElement {
           this.open
             ? html`
             <div>
-              ${commonStringsService.keys.open}
+              ${CommonStringsService.keys.open}
               <slot></slot>
             </div>`
             : ''

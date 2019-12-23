@@ -7,7 +7,7 @@
 import { commonStringsDefault } from './common-strings.default';
 import { ClrCommonStrings } from './common-strings.interface';
 
-export class CommonStringsService {
+export class CommonStringsServiceInternal {
   /**
    * Access to all of the keys as strings
    */
@@ -39,4 +39,16 @@ export class CommonStringsService {
   }
 }
 
-export const commonStringsService = new CommonStringsService();
+// typically for core we would use a Static class with a instance object but for
+// clr-angular support we keep this a Class instance.
+/**
+ * I18n service for updating internalized component strings
+ *
+ * ```typescript
+ * import { CommonStringsService } from '@clr/core';
+ *
+ * CommonStringsService.keys.success // 'success'
+ * ```
+ */
+// tslint:disable-next-line
+export const CommonStringsService = new CommonStringsServiceInternal();

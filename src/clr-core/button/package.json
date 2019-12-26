@@ -1,7 +1,8 @@
 {
+  "sideEffects": true,
   "ngPackage": {
     "lib": {
-      "entryFile": "button.element.ts"
+      "entryFile": "index.ts"
     }
   }
 }

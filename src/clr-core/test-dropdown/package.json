@@ -1,7 +1,8 @@
 {
+  "sideEffects": true,
   "ngPackage": {
     "lib": {
-      "entryFile": "test-dropdown.element.ts"
+      "entryFile": "index.ts"
     }
   }
 }

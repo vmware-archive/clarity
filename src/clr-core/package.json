@@ -1,19 +1,8 @@
 {
   "name": "@clr/core",
   "version": "@VERSION",
-  "description": "Custom Elements for Clarity",
+  "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
-  "sideEffects": [
-    "./esm5/**/*.element.js",
-    "./esm2015/**/*.element.js",
-    "./**/clr-core-badge.js",
-    "./**/clr-core-button.js",
-    "./**/clr-core-test-dropdown.js",
-    "./**/clr-core-icon.js",
-    "./**/clr-core-tag.js"
-  ],
-  "main": "index.js",
-  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:vmware/clarity.git"

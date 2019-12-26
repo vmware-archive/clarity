@@ -1,4 +1,5 @@
 {
+  "sideEffects": true,
   "ngPackage": {
     "lib": {
       "entryFile": "index.ts"

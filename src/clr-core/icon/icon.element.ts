@@ -32,9 +32,9 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * To load a icon import the need icon with the icon service.
  *
  * ```typescript
- * import { ClarityIcons, userIcon } from '@clr/core';
+ * import { ClarityIcons, userIcon } from '@clr/core/icons';
  *
- * ClarityIcons.addIcon(userIcon);
+ * ClarityIcons.addIcons(userIcon);
  * ```
  *
  * ```html
@@ -44,9 +44,6 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @noInheritDoc
  * @beta 3.0
  * @element cwc-icon
- * @attr size - Apply numerical width-height or a t-shirt-sized CSS classname
- * @attr dir - Rotate icon 90° with the top of the icon pointing in the specified direction.
- * @attr flip - Reverse the orientation of the icon vertically or horizontally.
  * @cssprop --clr-icon-color-default
  * @cssprop --clr-icon-color-success
  * @cssprop --clr-icon-color-danger
@@ -86,7 +83,7 @@ export class CwcIcon extends IconMixinClass {
     return this._size;
   }
 
-  /** Converts between numerical values and t-shirt sizes */
+  /** Apply numerical width-height or a t-shirt-sized CSS classname */
   @property({ type: String, reflect: true })
   set size(val: string) {
     if (hasPropertyChanged(val, this._size)) {
@@ -99,25 +96,25 @@ export class CwcIcon extends IconMixinClass {
 
   /** If present, customizes the aria-label for the icon for accessibility. */
   @property({ type: String, reflect: true })
-  title = '';
+  title: string;
 
   /** If present, determines the id of the icon. Uses a generated unique id otherwise. */
   @property({ type: String, reflect: true })
-  id = '';
+  id: string;
 
   /**
    * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
    */
   @property({ type: String, reflect: true })
-  dir = '';
+  dir: string;
 
   /**
    * Takes an orientation value (horizontal|vertical) that reverses the orientation of the
    * icon vertically or horizontally.
    */
   @property({ type: String, reflect: true })
-  flip = '';
+  flip: string;
 
   firstUpdated() {
     if (isNilOrEmpty(this.id)) {
@@ -162,9 +159,7 @@ export class CwcIcon extends IconMixinClass {
   /** render() needs the .innerHTML because svg is converted to text otherwise */
   protected render() {
     return html`
-    <div .innerHTML="${
-      ClarityIcons.registry[this.shape] ? ClarityIcons.registry[this.shape] : ClarityIcons.registry.unknown
-    }"></div>
+    <div .innerHTML="${ClarityIcons.registry[this.shape]}"></div>
     <span id="${this.ariaId}" class="sr-only">${this.ariaLabel}</span>`;
   }
 }

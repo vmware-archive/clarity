@@ -3,10 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-icon-demo',
-  templateUrl: './icon.demo.html',
-})
-export class IconDemoComponent {}
+// TODO: move shapes and collections into the @clr/core/icon-shapes package for tree shaking
+export const temp = 'icon';

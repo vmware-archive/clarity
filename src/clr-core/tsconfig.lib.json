@@ -1,13 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "es2017",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "experimentalDecorators": true,
     "outDir": "../../out-tsc/lib",
-    "target": "es2015",
-    "module": "esnext",
     "declaration": true,
     "inlineSources": true,
     "types": [],
-    "lib": ["dom", "es2018"],
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,

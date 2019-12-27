@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CwcBaseButton, registerElementSafely } from '@clr/core/common';
+import { baseStyles, CwcBaseButton, registerElementSafely } from '@clr/core/common';
 import { property } from 'lit-element';
 import { styles } from './tag.element.css';
 
@@ -42,7 +42,7 @@ export class CwcTag extends CwcBaseButton {
   color: '1' | '2' | '3' | '4' | '5';
 
   static get styles() {
-    return styles;
+    return [baseStyles, styles];
   }
 }
 

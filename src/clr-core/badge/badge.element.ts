@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/common';
+import { baseStyles, registerElementSafely } from '@clr/core/common';
 import { html, LitElement, property } from 'lit-element';
 import { styles } from './badge.element.css';
 
@@ -41,7 +41,7 @@ export class CwcBadge extends LitElement {
   }
 
   static get styles() {
-    return styles;
+    return [baseStyles, styles];
   }
 }
 

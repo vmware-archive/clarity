@@ -20,3 +20,4 @@ export * from './utils/string';
 export * from './mixins/css-helpers';
 export * from './mixins/unique-id';
 export * from './mixins/apply-mixins';
+export { styles as baseStyles } from './base/base.element.css';

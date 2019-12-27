@@ -5,7 +5,7 @@
  */
 
 import { CommonStringsService } from '@clr/core';
-import { registerElementSafely } from '@clr/core/common';
+import { baseStyles, registerElementSafely } from '@clr/core/common';
 import { html, LitElement, property } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css';
@@ -57,7 +57,7 @@ export class CwcTestDropdown extends LitElement {
   title = 'dropdown';
 
   static get styles() {
-    return styles;
+    return [baseStyles, styles];
   }
 
   render() {

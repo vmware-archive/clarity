@@ -5,12 +5,16 @@
  */
 
 // Every Web Component will need to import a minimal amount of core CSS
-// This file should remain light as it is duplicated between components
 
 $clr-use-custom-properties: true;
 
 @import './../mixins/mixins';
 @import './../variables/variables';
+@import './a11y';
+
+:host {
+  box-sizing: border-box;
+}
 
 *,
 *:before,

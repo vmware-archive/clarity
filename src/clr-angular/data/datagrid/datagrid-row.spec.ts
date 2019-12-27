@@ -391,6 +391,21 @@ export default function(): void {
       );
 
       it(
+        'expands and collapses change the aria-label text aria-expanded',
+        fakeAsync(function() {
+          const caret = context.clarityElement.querySelector('.datagrid-expandable-caret button');
+          caret.click();
+          flushAnimations();
+          expect(caret.getAttribute('aria-label')).toBe(context.testComponent.clrDgDetailCloseLabel);
+          expect(caret.getAttribute('aria-expanded')).toBe('true');
+          caret.click();
+          flushAnimations();
+          expect(caret.getAttribute('aria-label')).toBe(context.testComponent.clrDgDetailOpenLabel);
+          expect(caret.getAttribute('aria-expanded')).toBe('false');
+        })
+      );
+
+      it(
         'offers 2-way binding on the expanded state of the row',
         fakeAsync(function() {
           context.testComponent.expanded = true;
@@ -478,7 +493,7 @@ class FullTest {
 
 @Component({
   template: `
-        <clr-dg-row [(clrDgExpanded)]="expanded">
+        <clr-dg-row [(clrDgExpanded)]="expanded" [clrDgDetailOpenLabel]="clrDgDetailOpenLabel" [clrDgDetailCloseLabel]="clrDgDetailCloseLabel">
             <clr-dg-cell>Hello world</clr-dg-cell>
             <clr-dg-row-detail *clrIfExpanded>
                 Detail
@@ -487,4 +502,6 @@ class FullTest {
 })
 class ExpandTest {
   expanded = false;
+  clrDgDetailOpenLabel: string = 'Open Me';
+  clrDgDetailCloseLabel: string = 'Close Me';
 }

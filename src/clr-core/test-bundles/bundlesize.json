@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "./dist/clr-core/global.min.css",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "./dist/test-bundles/webpack.bundle.js",
+      "maxSize": "10 kB"
+    }
+  ]
+}

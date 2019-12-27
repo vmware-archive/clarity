@@ -186,7 +186,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     this._detailCloseLabel = label;
   }
   get clrDgDetailCloseLabel(): string {
-    return this._detailCloseLabel ? this._detailCloseLabel : this.commonStrings.keys.open;
+    return this._detailCloseLabel ? this._detailCloseLabel : this.commonStrings.keys.close;
   }
 
   /*****

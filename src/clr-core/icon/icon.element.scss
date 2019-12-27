@@ -1,4 +1,4 @@
-@import './../styles/utils/core-component';
+@import './../styles/mixins/mixins';
 
 @mixin setIconColor($clr-icon-color-var) {
   fill: unquote($clr-icon-color-var);

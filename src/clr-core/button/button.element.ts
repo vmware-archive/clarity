@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/common';
+import { baseStyles, registerElementSafely } from '@clr/core/common';
 import {
   CwcBaseButton,
   getElementWidthUnless,
@@ -218,7 +218,7 @@ export class CwcButton extends CwcBaseButton {
   }
 
   static get styles() {
-    return styles;
+    return [baseStyles, styles];
   }
 
   private updateButtonState(state: ClrLoadingState) {

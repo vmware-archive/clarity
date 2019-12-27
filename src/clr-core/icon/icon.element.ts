@@ -6,6 +6,7 @@
 
 import {
   applyMixins,
+  baseStyles,
   CssHelpers,
   hasPropertyChanged,
   isNilOrEmpty,
@@ -123,7 +124,7 @@ export class CwcIcon extends IconMixinClass {
   }
 
   static get styles() {
-    return styles;
+    return [baseStyles, styles];
   }
 
   private get ariaId() {

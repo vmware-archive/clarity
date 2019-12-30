@@ -9,7 +9,7 @@ import { Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 
 const EXAMPLE = `
-<clr-datagrid>
+<clr-datagrid (clrDgVisibleItems)="visibleItems($event)">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
     <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
@@ -32,6 +32,11 @@ const EXAMPLE = `
 </clr-datagrid>
 `;
 
+const EXAMPLE_VISIBLE_ITEMS = `
+<clr-datagrid (clrDgVisibleItems)="visibleItems($event)">
+   <!-- ...-->
+</clr-datagrid>
+`.trim();
 @Component({
   selector: 'clr-datagrid-binding-properties-demo',
   providers: [Inventory],
@@ -40,11 +45,16 @@ const EXAMPLE = `
 })
 export class DatagridBindingPropertiesDemo {
   example = EXAMPLE;
+  exampleVisibleItems = EXAMPLE_VISIBLE_ITEMS;
   users: User[];
 
   constructor(inventory: Inventory) {
     inventory.size = 10;
     inventory.reset();
     this.users = inventory.all;
+  }
+
+  visibleItems($event) {
+    console.log('Current visible items', $event);
   }
 }

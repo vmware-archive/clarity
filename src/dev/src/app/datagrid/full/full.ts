@@ -70,6 +70,10 @@ export class DatagridFullDemo {
     });
   }
 
+  visibleItems($event) {
+    console.log('Visible Items', $event);
+  }
+
   refresh(state: ClrDatagridStateInterface) {
     if (!this.isServerDriven) {
       return;

@@ -90,6 +90,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     this.detailService.id = datagridId;
   }
 
+  @Output('clrDgVisibleItems') visibleItems = new EventEmitter<T[]>();
+
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
 
@@ -223,6 +225,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
     }
 
+    // Broadcast for the first time the state of the view.
+    this.visibleItems.emit(this.items.displayed);
+
     this._subscriptions.push(
       this.rows.changes.subscribe(() => {
         if (!this.items.smart) {
@@ -231,6 +236,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         this.rows.forEach(row => {
           this._displayedRows.insert(row._view);
         });
+        // After every change of the view, broadcast the items that are currently visible
+        this.visibleItems.emit(this.items.displayed);
       })
     );
   }

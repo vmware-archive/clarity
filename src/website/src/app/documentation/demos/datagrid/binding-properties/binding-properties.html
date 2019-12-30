@@ -27,7 +27,7 @@
     You can see an example of this in the "Wins" column.
 </p>
 
-<clr-datagrid>
+<clr-datagrid (clrDgVisibleItems)="visibleItems($event)">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
     <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
@@ -73,3 +73,23 @@
         </div>
     </div>
 </div>
+
+<h2>Visible items</h2>
+<p>
+    To get access to the items after filtering, sorting or what will be render inside the <code class="clr-code">ClrDatagrid</code>.
+    There is a Angular Output that could be monitor for those changes. <code class="clr-code">(clrDgVisibleItems)</code>
+</p>
+
+<clr-code-snippet [clrCode]="exampleVisibleItems" clrLanguage="html"></clr-code-snippet>
+<p>The change will be propagated every time when the view of visible items change.</p>
+
+<div class="alert alert-info">
+    <div class="alert-items">
+        <div class="alert-item static">
+            <span class="alert-text">
+                You could see the changes inside the Developer Tools of the Browser.
+            </span>
+        </div>
+    </div>
+</div>
+

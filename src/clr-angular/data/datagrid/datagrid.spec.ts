@@ -37,6 +37,7 @@ import { HIDDEN_COLUMN_CLASS } from './render/constants';
       [(clrDgSelected)]="selected"
       [clrDgLoading]="loading"
       (clrDgRefresh)="refresh($event)"
+      (clrDgVisibleItems)="visibleItems($event)"
       >
         <clr-dg-column>
             First
@@ -74,6 +75,11 @@ class FullTest {
     this.nbRefreshed++;
     this.latestState = state;
     this.loading = this.fakeLoad;
+  }
+
+  displayed = [];
+  visibleItems($event) {
+    this.displayed = $event;
   }
 }
 
@@ -491,6 +497,16 @@ export default function(): void {
         context.testComponent.selected = [5];
         context.detectChanges();
         expect(selection.current).toEqual([5]);
+      });
+
+      describe('clrDgVisibleItems', function() {
+        it('should get changes when visible items change', function() {
+          spyOn(context.testComponent, 'visibleItems');
+          expect(context.testComponent.displayed).toEqual(context.testComponent.items);
+          context.testComponent.items = [4, 5, 6];
+          context.detectChanges();
+          expect(context.testComponent.visibleItems).toHaveBeenCalled();
+        });
       });
 
       describe('clrDgRefresh output', function() {

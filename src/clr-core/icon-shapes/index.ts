@@ -174,6 +174,21 @@ export { wrenchIcon } from './shapes/wrench';
 export { zoomInIcon } from './shapes/zoom-in';
 export { zoomOutIcon } from './shapes/zoom-out';
 
+// SHAPES - CHARTS
+export { axisChartIcon } from './shapes/axis-chart';
+export { barChartIcon } from './shapes/bar-chart';
+export { bellCurveIcon } from './shapes/bell-curve';
+export { boxPlotIcon } from './shapes/box-plot';
+export { bubbleChartIcon } from './shapes/bubble-chart';
+export { cloudChartIcon } from './shapes/cloud-chart';
+export { curveChartIcon } from './shapes/curve-chart';
+export { gridChartIcon } from './shapes/grid-chart';
+export { heatMapIcon } from './shapes/heat-map';
+export { lineChartIcon } from './shapes/line-chart';
+export { pieChartIcon } from './shapes/pie-chart';
+export { scatterPlotIcon } from './shapes/scatter-plot';
+export { tickChartIcon } from './shapes/tick-chart';
+
 // SHAPES - TECHNOLOGY
 export { administratorIcon } from './shapes/administrator';
 export { applicationIcon } from './shapes/application';
@@ -302,6 +317,7 @@ export { textColorIcon } from './shapes/text-color';
 export { underlineIcon } from './shapes/underline';
 
 // COLLECTIONS
+export * from './collections/chart';
 export * from './collections/core';
 export * from './collections/essential';
 export * from './collections/technology';

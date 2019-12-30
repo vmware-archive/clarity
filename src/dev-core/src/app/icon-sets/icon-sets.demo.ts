@@ -8,10 +8,13 @@ import { FormBuilder } from '@angular/forms';
 import '@clr/core/icon';
 
 import {
+  chartCollectionAliases,
+  chartCollectionIcons,
   coreCollectionAliases,
   coreCollectionIcons,
   essentialCollectionAliases,
   essentialCollectionIcons,
+  loadChartIconSet,
   loadCoreIconSet,
   loadEssentialIconSet,
   loadTechnologyIconSet,
@@ -23,6 +26,12 @@ import {
 } from '@clr/core/icon-shapes';
 
 const iconSets = [
+  {
+    name: 'Chart',
+    loader: loadChartIconSet,
+    iconList: chartCollectionIcons,
+    aliasList: chartCollectionAliases,
+  },
   {
     name: 'Core',
     loader: loadCoreIconSet,
@@ -57,6 +66,7 @@ const iconSetIndex = loadAndIndexIconSets(iconSets);
 })
 export class IconSetsDemoComponent {
   iconIndex: {
+    Chart?: string[];
     Core?: string[];
     Essential?: string[];
     Technology?: string[];

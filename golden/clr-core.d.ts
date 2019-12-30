@@ -10,6 +10,22 @@ export declare const alarmClockIcon: IconShapeTuple;
 
 export declare const alarmOffIcon: IconShapeTuple;
 
+export declare const alignBottomIcon: IconShapeTuple;
+
+export declare const alignCenterIcon: IconShapeTuple;
+
+export declare const alignLeftIcon: IconShapeTuple;
+
+export declare const alignLeftTextIcon: IconShapeTuple;
+
+export declare const alignMiddleIcon: IconShapeTuple;
+
+export declare const alignRightIcon: IconShapeTuple;
+
+export declare const alignRightTextIcon: IconShapeTuple;
+
+export declare const alignTopIcon: IconShapeTuple;
+
 export declare const angleDoubleIcon: IconShapeTuple;
 
 export declare const angleIcon: IconShapeTuple;
@@ -46,11 +62,15 @@ export declare const betaIcon: IconShapeTuple;
 
 export declare const blockIcon: IconShapeTuple;
 
+export declare const blockQuoteIcon: IconShapeTuple;
+
 export declare const blocksGroupIcon: IconShapeTuple;
 
 export declare const bluetoothIcon: IconShapeTuple;
 
 export declare const bluetoothOffIcon: IconShapeTuple;
+
+export declare const boldIcon: IconShapeTuple;
 
 export declare const boltIcon: IconShapeTuple;
 
@@ -64,6 +84,8 @@ export declare const bugIcon: IconShapeTuple;
 
 export declare const buildingIcon: IconShapeTuple;
 
+export declare const bulletListIcon: IconShapeTuple;
+
 export declare const bullseyeIcon: IconShapeTuple;
 
 export declare const bundleIcon: IconShapeTuple;
@@ -74,7 +96,11 @@ export declare const capacitorIcon: IconShapeTuple;
 
 export declare const cdDvdIcon: IconShapeTuple;
 
+export declare const centerTextIcon: IconShapeTuple;
+
 export declare const certificateIcon: IconShapeTuple;
+
+export declare const checkboxListIcon: IconShapeTuple;
 
 export declare const checkCircleIcon: IconShapeTuple;
 
@@ -363,6 +389,8 @@ export declare const folderIcon: IconShapeTuple;
 
 export declare const folderOpenIcon: IconShapeTuple;
 
+export declare const fontSizeIcon: IconShapeTuple;
+
 export declare const formIcon: IconShapeTuple;
 
 export declare const fuelIcon: IconShapeTuple;
@@ -381,6 +409,8 @@ export declare const helpIcon: IconShapeTuple;
 
 export declare const helpInfoIcon: IconShapeTuple;
 
+export declare const highlighterIcon: IconShapeTuple;
+
 export declare const historyIcon: IconShapeTuple;
 
 export declare const homeIcon: IconShapeTuple;
@@ -397,6 +427,8 @@ export declare const imageIcon: IconShapeTuple;
 
 export declare const importIcon: IconShapeTuple;
 
+export declare const indentIcon: IconShapeTuple;
+
 export declare const inductorIcon: IconShapeTuple;
 
 export declare const infoCircleIcon: IconShapeTuple;
@@ -405,11 +437,17 @@ export declare const infoStandardIcon: IconShapeTuple;
 
 export declare const installIcon: IconShapeTuple;
 
+export declare const italicIcon: IconShapeTuple;
+
+export declare const justifyTextIcon: IconShapeTuple;
+
 export declare const keyboardIcon: IconShapeTuple;
 
 export declare const keyIcon: IconShapeTuple;
 
 export declare const landscapeIcon: IconShapeTuple;
+
+export declare const languageIcon: IconShapeTuple;
 
 export declare const layersIcon: IconShapeTuple;
 
@@ -426,6 +464,8 @@ export declare function loadCoreIconSet(): void;
 export declare function loadEssentialIconSet(): void;
 
 export declare function loadTechnologyIconSet(): void;
+
+export declare function loadTextEditIconSet(): void;
 
 export declare const lockIcon: IconShapeTuple;
 
@@ -469,11 +509,17 @@ export declare const noteIcon: IconShapeTuple;
 
 export declare const noWifiIcon: IconShapeTuple;
 
+export declare const numberListIcon: IconShapeTuple;
+
 export declare const nvmeIcon: IconShapeTuple;
 
 export declare const objectsIcon: IconShapeTuple;
 
 export declare const organizationIcon: IconShapeTuple;
+
+export declare const outdentIcon: IconShapeTuple;
+
+export declare const paintRollerIcon: IconShapeTuple;
 
 export declare const paperclipIcon: IconShapeTuple;
 
@@ -559,9 +605,15 @@ export declare const storageAdapterIcon: IconShapeTuple;
 
 export declare const storageIcon: IconShapeTuple;
 
+export declare const strikethroughIcon: IconShapeTuple;
+
+export declare const subscriptIcon: IconShapeTuple;
+
 export declare const successStandardIcon: IconShapeTuple;
 
 export declare const sunIcon: IconShapeTuple;
+
+export declare const superscriptIcon: IconShapeTuple;
 
 export declare const switchIcon: IconShapeTuple;
 
@@ -585,6 +637,14 @@ export declare const technologyCollectionIcons: IconShapeTuple[];
 
 export declare const terminalIcon: IconShapeTuple;
 
+export declare const textColorIcon: IconShapeTuple;
+
+export declare const textEditCollectionAliases: IconAlias[];
+
+export declare const textEditCollectionIcons: IconShapeTuple[];
+
+export declare const textIcon: IconShapeTuple;
+
 export declare const thermometerIcon: IconShapeTuple;
 
 export declare const timesCircleIcon: IconShapeTuple;
@@ -602,6 +662,8 @@ export declare const treeViewIcon: IconShapeTuple;
 export declare const twoWayArrowsIcon: IconShapeTuple;
 
 export declare const unarchiveIcon: IconShapeTuple;
+
+export declare const underlineIcon: IconShapeTuple;
 
 export declare const undoIcon: IconShapeTuple;
 

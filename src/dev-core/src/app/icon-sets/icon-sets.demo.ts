@@ -15,8 +15,11 @@ import {
   loadCoreIconSet,
   loadEssentialIconSet,
   loadTechnologyIconSet,
+  loadTextEditIconSet,
   technologyCollectionAliases,
   technologyCollectionIcons,
+  textEditCollectionAliases,
+  textEditCollectionIcons,
 } from '@clr/core/icon';
 
 const iconSets = [
@@ -38,6 +41,12 @@ const iconSets = [
     iconList: technologyCollectionIcons,
     aliasList: technologyCollectionAliases,
   },
+  {
+    name: 'Text-Edit',
+    loader: loadTextEditIconSet,
+    iconList: textEditCollectionIcons,
+    aliasList: textEditCollectionAliases,
+  },
 ];
 
 const iconSetIndex = loadAndIndexIconSets(iconSets);
@@ -51,6 +60,7 @@ export class IconSetsDemoComponent {
     Core?: string[];
     Essential?: string[];
     Technology?: string[];
+    'Text-Edit'?: string[];
   } = {};
 
   iconFilterAndToggles = this.fb.group({

@@ -271,7 +271,38 @@ export { vmIcon } from './shapes/vm';
 export { vmwAppIcon } from './shapes/vmw-app';
 export { wifiIcon } from './shapes/wifi';
 
+// SHAPES - TEXT-EDIT
+export { alignBottomIcon } from './shapes/align-bottom';
+export { alignCenterIcon } from './shapes/align-center';
+export { alignLeftIcon } from './shapes/align-left';
+export { alignLeftTextIcon } from './shapes/align-left-text';
+export { alignMiddleIcon } from './shapes/align-middle';
+export { alignRightIcon } from './shapes/align-right';
+export { alignRightTextIcon } from './shapes/align-right-text';
+export { alignTopIcon } from './shapes/align-top';
+export { blockQuoteIcon } from './shapes/block-quote';
+export { boldIcon } from './shapes/bold';
+export { bulletListIcon } from './shapes/bullet-list';
+export { centerTextIcon } from './shapes/center-text';
+export { checkboxListIcon } from './shapes/checkbox-list';
+export { fontSizeIcon } from './shapes/font-size';
+export { highlighterIcon } from './shapes/highlighter';
+export { indentIcon } from './shapes/indent';
+export { italicIcon } from './shapes/italic';
+export { justifyTextIcon } from './shapes/justify-text';
+export { languageIcon } from './shapes/language';
+export { numberListIcon } from './shapes/number-list';
+export { outdentIcon } from './shapes/outdent';
+export { paintRollerIcon } from './shapes/paint-roller';
+export { strikethroughIcon } from './shapes/strikethrough';
+export { subscriptIcon } from './shapes/subscript';
+export { superscriptIcon } from './shapes/superscript';
+export { textIcon } from './shapes/text';
+export { textColorIcon } from './shapes/text-color';
+export { underlineIcon } from './shapes/underline';
+
 // COLLECTIONS
 export * from './collections/core';
 export * from './collections/essential';
 export * from './collections/technology';
+export * from './collections/text-edit';

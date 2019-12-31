@@ -1,5 +1,7 @@
 {
-  "sideEffects": false,
+  "sideEffects": [
+    "./icon.element.js"
+  ],
   "ngPackage": {
     "lib": {
       "entryFile": "index.ts"

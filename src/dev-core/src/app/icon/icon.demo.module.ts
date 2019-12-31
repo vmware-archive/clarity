@@ -6,9 +6,8 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { ClarityIcons, userIcon } from '@clr/core/icon';
-
+import '@clr/core/icon';
+import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
 import { IconDemoComponent } from './icon.demo';
 
 ClarityIcons.addIcons(userIcon);

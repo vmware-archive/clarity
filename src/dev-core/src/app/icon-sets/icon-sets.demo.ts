@@ -20,7 +20,7 @@ import {
   technologyCollectionIcons,
   textEditCollectionAliases,
   textEditCollectionIcons,
-} from '@clr/core/icon';
+} from '@clr/core/icon-shapes';
 
 const iconSets = [
   {

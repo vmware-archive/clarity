@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import '@clr/core/icon';
-import { CwcIcon } from '@clr/core/icon';
+import { CwcIcon } from '@clr/core/icon-shapes';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { renderIcon } from './icon.renderer';
 import { ClarityIcons } from './icon.service';

@@ -73,7 +73,8 @@ export const textEditCollectionAliases: IconAlias[] = [];
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import { loadTextEditIconSet } from '@clr/core/icon';
+ * import '@clr/core/icon';
+ * import { loadTextEditIconSet } from '@clr/core/icon-set';
  *
  * loadTextEditIconSet();
  * ```

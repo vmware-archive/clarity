@@ -33,7 +33,8 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * To load a icon import the need icon with the icon service.
  *
  * ```typescript
- * import { ClarityIcons, userIcon } from '@clr/core/icons';
+ * import '@clr/core/icon';
+ * import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
  *
  * ClarityIcons.addIcons(userIcon);
  * ```

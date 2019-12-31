@@ -8,7 +8,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { ClarityIcons, userIcon } from '@clr/core/icon';
+import '@clr/core/icon';
+import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
 import { ButtonDemoComponent } from './button.demo';
 
 ClarityIcons.addIcons(userIcon);

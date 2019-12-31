@@ -106,7 +106,8 @@ export const coreCollectionAliases: IconAlias[] = [
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import { loadCoreIconSet } from '@clr/core/icon';
+ * import '@clr/core/icon';
+ * import { loadCoreIconSet } from '@clr/core/icon-set';
  *
  * loadCoreIconSet();
  * ```

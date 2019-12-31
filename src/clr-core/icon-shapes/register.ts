@@ -3,14 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
 import { registerElementSafely } from '@clr/core/common';
-import { CwcIcon } from '@clr/core/icon-shapes';
+import { CwcIcon } from './icon.element';
 
-registerElementSafely('cwc-icon', CwcIcon);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cwc-icon': CwcIcon;
-  }
-}
+export const register = registerElementSafely('cwc-icon', CwcIcon);

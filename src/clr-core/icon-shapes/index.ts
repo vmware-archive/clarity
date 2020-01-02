@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -316,9 +316,24 @@ export { textIcon } from './shapes/text';
 export { textColorIcon } from './shapes/text-color';
 export { underlineIcon } from './shapes/underline';
 
+// SHAPES - TRAVEL
+export { airplaneIcon } from './shapes/airplane';
+export { bicycleIcon } from './shapes/bicycle';
+export { boatIcon } from './shapes/boat';
+export { campervanIcon } from './shapes/campervan';
+export { carIcon } from './shapes/car';
+export { caravanIcon } from './shapes/caravan';
+export { compassIcon } from './shapes/compass';
+export { ferryIcon } from './shapes/ferry';
+export { mapIcon } from './shapes/map';
+export { mapMarkerIcon } from './shapes/map-marker';
+export { trailerIcon } from './shapes/trailer';
+export { truckIcon } from './shapes/truck';
+
 // COLLECTIONS
 export * from './collections/chart';
 export * from './collections/core';
 export * from './collections/essential';
 export * from './collections/technology';
 export * from './collections/text-edit';
+export * from './collections/travel';

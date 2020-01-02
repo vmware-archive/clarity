@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
@@ -43,7 +43,8 @@ export const chartCollectionAliases: IconAlias[] = [[lineChartIconName, ['analyt
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import { loadChartIconSet } from '@clr/core/icon';
+ * import '@clr/core/icon';
+ * import { loadChartIconSet } from '@clr/core/icon-set';
  *
  * loadChartIconSet();
  * ```

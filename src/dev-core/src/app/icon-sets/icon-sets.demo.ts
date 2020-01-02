@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,10 +19,13 @@ import {
   loadEssentialIconSet,
   loadTechnologyIconSet,
   loadTextEditIconSet,
+  loadTravelIconSet,
   technologyCollectionAliases,
   technologyCollectionIcons,
   textEditCollectionAliases,
   textEditCollectionIcons,
+  travelCollectionAliases,
+  travelCollectionIcons,
 } from '@clr/core/icon-shapes';
 
 const iconSets = [
@@ -56,6 +59,12 @@ const iconSets = [
     iconList: textEditCollectionIcons,
     aliasList: textEditCollectionAliases,
   },
+  {
+    name: 'Travel',
+    loader: loadTravelIconSet,
+    iconList: travelCollectionIcons,
+    aliasList: travelCollectionAliases,
+  },
 ];
 
 const iconSetIndex = loadAndIndexIconSets(iconSets);
@@ -71,6 +80,7 @@ export class IconSetsDemoComponent {
     Essential?: string[];
     Technology?: string[];
     'Text-Edit'?: string[];
+    Travel?: string[];
   } = {};
 
   iconFilterAndToggles = this.fb.group({

@@ -42,7 +42,7 @@ export const travelCollectionAliases: IconAlias[] = [[airplaneIconName, ['plane'
  *
  * ```typescript
  * import '@clr/core/icon';
- * import { loadTravelIconSet } from '@clr/core/icon-set';
+ * import { loadTravelIconSet } from '@clr/core/icon-shapes';
  *
  * loadTravelIconSet();
  * ```

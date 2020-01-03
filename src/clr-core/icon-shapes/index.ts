@@ -189,6 +189,30 @@ export { pieChartIcon } from './shapes/pie-chart';
 export { scatterPlotIcon } from './shapes/scatter-plot';
 export { tickChartIcon } from './shapes/tick-chart';
 
+// SHAPES - MEDIA
+export { cameraIcon } from './shapes/camera';
+export { fastForwardIcon } from './shapes/fast-forward';
+export { filmStripIcon } from './shapes/film-strip';
+export { headphonesIcon } from './shapes/headphones';
+export { imageGalleryIcon } from './shapes/image-gallery';
+export { microphoneIcon } from './shapes/microphone';
+export { microphoneMuteIcon } from './shapes/microphone-mute';
+export { musicNoteIcon } from './shapes/music-note';
+export { pauseIcon } from './shapes/pause';
+export { playIcon } from './shapes/play';
+export { powerIcon } from './shapes/power';
+export { replayAllIcon } from './shapes/replay-all';
+export { replayOneIcon } from './shapes/replay-one';
+export { rewindIcon } from './shapes/rewind';
+export { shuffleIcon } from './shapes/shuffle';
+export { stepForwardIcon } from './shapes/step-forward';
+export { stopIcon } from './shapes/stop';
+export { videoCameraIcon } from './shapes/video-camera';
+export { videoGalleryIcon } from './shapes/video-gallery';
+export { volumeDownIcon } from './shapes/volume-down';
+export { volumeMuteIcon } from './shapes/volume-mute';
+export { volumeUpIcon } from './shapes/volume-up';
+
 // SHAPES - TECHNOLOGY
 export { administratorIcon } from './shapes/administrator';
 export { applicationIcon } from './shapes/application';
@@ -356,6 +380,7 @@ export { truckIcon } from './shapes/truck';
 export * from './collections/chart';
 export * from './collections/core';
 export * from './collections/essential';
+export * from './collections/media';
 export * from './collections/technology';
 export * from './collections/social';
 export * from './collections/text-edit';

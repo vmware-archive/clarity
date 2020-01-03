@@ -66,7 +66,7 @@ export const socialCollectionAliases: IconAlias[] = [
  *
  * ```typescript
  * import '@clr/core/icon';
- * import { loadSocialIconSet } from '@clr/core/icon-set';
+ * import { loadSocialIconSet } from '@clr/core/icon-shapes';
  *
  * loadSocialIconSet();
  * ```

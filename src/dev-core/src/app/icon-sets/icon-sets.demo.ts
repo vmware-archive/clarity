@@ -17,10 +17,13 @@ import {
   loadChartIconSet,
   loadCoreIconSet,
   loadEssentialIconSet,
+  loadMediaIconSet,
   loadSocialIconSet,
   loadTechnologyIconSet,
   loadTextEditIconSet,
   loadTravelIconSet,
+  mediaCollectionAliases,
+  mediaCollectionIcons,
   socialCollectionAliases,
   socialCollectionIcons,
   technologyCollectionAliases,
@@ -49,6 +52,12 @@ const iconSets = [
     loader: loadEssentialIconSet,
     iconList: essentialCollectionIcons,
     aliasList: essentialCollectionAliases,
+  },
+  {
+    name: 'Media',
+    loader: loadMediaIconSet,
+    iconList: mediaCollectionIcons,
+    aliasList: mediaCollectionAliases,
   },
   {
     name: 'Social',
@@ -87,6 +96,7 @@ export class IconSetsDemoComponent {
     Chart?: string[];
     Core?: string[];
     Essential?: string[];
+    Media?: string[];
     Social?: string[];
     Technology?: string[];
     'Text-Edit'?: string[];

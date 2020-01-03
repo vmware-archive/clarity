@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -46,7 +46,7 @@ export function getIconSvgOpeningTag(icon: IconShapeCollection) {
   const iconSvgViewboxSize = 36;
   const iconSvgClasses = getIconSvgClasses(icon);
 
-  return `<svg version="1.1" class="${iconSvgClasses}" viewBox="0 0 ${iconSvgViewboxSize} ${iconSvgViewboxSize}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img">`;
+  return `<svg version="1.1" class="${iconSvgClasses}" viewBox="0 0 ${iconSvgViewboxSize} ${iconSvgViewboxSize}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false" role="img" aria-label="">`;
 }
 
 export function getIconSvgClosingTag(icon: IconShapeCollection): string {

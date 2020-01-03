@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   selector: 'clr-stack-view',
   template: `
         <ng-content select="clr-stack-header"></ng-content>
-        <dl class="stack-view"><ng-content></ng-content></dl>
+        <div class="stack-view"><ng-content></ng-content></div>
     `,
   // Custom elements are inline by default.
   styles: [

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
 @Component({
   selector: 'clr-stack-block',
   template: `
-    <dt class="stack-block-label"
+    <div class="stack-block-label"
         (click)="toggleExpand()"
         (keyup.enter)="toggleExpand()"
         (keyup.space)="toggleExpand()"
@@ -27,13 +27,19 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
                 [attr.dir]="caretDirection"
                 [attr.title]="caretTitle"></clr-icon>
       <span class="clr-sr-only" *ngIf="getChangedValue">{{commonStrings.keys.stackViewChanged}}</span>
-      <ng-content select="clr-stack-label"></ng-content>
-    </dt>
-    <dd class="stack-block-content">
-      <ng-content></ng-content>
-    </dd>
+      <div class="stack-view-key">
+        <!-- This structure changed to fix #3567 and the a11y request was to move away from dl's -->
+        <!-- I added the key class to update css targets for the original component style -->
+        <ng-content select="clr-stack-label"></ng-content>
+      </div>
+      <div class="stack-block-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+    
+
     <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
-      <div [style.height]="expanded ? 'auto' : 0">
+      <div [style.height]="expanded ? 'auto' : 0" role="region">
         <ng-content select="clr-stack-block"></ng-content>
       </div>
     </clr-expandable-animation>

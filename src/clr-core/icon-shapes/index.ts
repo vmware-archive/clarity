@@ -286,6 +286,28 @@ export { vmIcon } from './shapes/vm';
 export { vmwAppIcon } from './shapes/vmw-app';
 export { wifiIcon } from './shapes/wifi';
 
+// SHAPES - SOCIAL
+export { bookmarkIcon } from './shapes/bookmark';
+export { chatBubbleIcon } from './shapes/chat-bubble';
+export { crownIcon } from './shapes/crown';
+export { envelopeIcon } from './shapes/envelope';
+export { flagIcon } from './shapes/flag';
+export { halfStarIcon } from './shapes/half-star';
+export { happyFaceIcon } from './shapes/happy-face';
+export { hashtagIcon } from './shapes/hashtag';
+export { heartIcon } from './shapes/heart';
+export { heartBrokenIcon } from './shapes/heart-broken';
+export { inboxIcon } from './shapes/inbox';
+export { neutralFaceIcon } from './shapes/neutral-face';
+export { pictureIcon } from './shapes/picture';
+export { sadFaceIcon } from './shapes/sad-face';
+export { shareIcon } from './shapes/share';
+export { starIcon } from './shapes/star';
+export { talkBubblesIcon } from './shapes/talk-bubbles';
+export { tasksIcon } from './shapes/tasks';
+export { thumbsDownIcon } from './shapes/thumbs-down';
+export { thumbsUpIcon } from './shapes/thumbs-up';
+
 // SHAPES - TEXT-EDIT
 export { alignBottomIcon } from './shapes/align-bottom';
 export { alignCenterIcon } from './shapes/align-center';
@@ -335,5 +357,6 @@ export * from './collections/chart';
 export * from './collections/core';
 export * from './collections/essential';
 export * from './collections/technology';
+export * from './collections/social';
 export * from './collections/text-edit';
 export * from './collections/travel';

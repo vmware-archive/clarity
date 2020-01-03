@@ -44,7 +44,7 @@ export const chartCollectionAliases: IconAlias[] = [[lineChartIconName, ['analyt
  *
  * ```typescript
  * import '@clr/core/icon';
- * import { loadChartIconSet } from '@clr/core/icon-set';
+ * import { loadChartIconSet } from '@clr/core/icon-shapes';
  *
  * loadChartIconSet();
  * ```

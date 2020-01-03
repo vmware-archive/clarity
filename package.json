@@ -98,7 +98,7 @@
     "core:sass:components": "sass-render --q --suffix '.css.ts' -t ./src/clr-core/sass-template.js './src/clr-core/**/*element.scss'",
     "core:sass:components:watch": "sass-render --q --suffix '.css.ts' -t ./src/clr-core/sass-template.js './src/clr-core/**/*element.scss' -w",
     "core:sass:global": "sass --source-map --precision=8 ./src/clr-core/styles/global.scss ./dist/clr-core/global.css && csso -i ./dist/clr-core/global.css -o ./dist/clr-core/global.min.css -s file --no-restructure",
-    "core:api": "npm-run-all --parallel core:api:md core:api:json",
+    "core:api": "npm-run-all --parallel core:api:md core:api:json --",
     "core:api:md": "wca analyze 'src/clr-core/**/*.{js,ts}' --format=md --outDir=docs/core",
     "core:api:json": "wca analyze 'src/clr-core/**/*.{js,ts}' --format=json --outDir=src/dev-core/api",
     "core:api:editor": "wca analyze 'src/clr-core/**/*.{js,ts}' --format json --outFile dist/clr-core/custom-elements.json",
@@ -191,6 +191,7 @@
     "karma-parallel": "0.3.1",
     "karma-safari-launcher": "1.0.0",
     "karma-sauce-launcher": "2.0.2",
+    "lint-staged": "9.5.0",
     "lite-server": "2.4.0",
     "netlify-lambda": "1.4.5",
     "ng-packagr": "5.2.0",
@@ -232,8 +233,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run license:fix && npm run core:api",
+      "pre-commit": "npm run format:fix && npm run license:fix && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "lint-staged": {
+    "src/clr-core/**/*.{js,ts}": ["npm run core:api", "git add"]
   }
 }

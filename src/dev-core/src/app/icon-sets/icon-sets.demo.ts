@@ -6,6 +6,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import '@clr/core/icon';
+import { Subscription } from 'rxjs';
 
 import {
   chartCollectionAliases,
@@ -37,81 +38,33 @@ import {
   travelCollectionIcons,
 } from '@clr/core/icon-shapes';
 
-const iconSets = [
-  {
-    name: 'Chart',
-    loader: loadChartIconSet,
-    iconList: chartCollectionIcons,
-    aliasList: chartCollectionAliases,
-  },
-  {
-    name: 'Commerce',
-    loader: loadCommerceIconSet,
-    iconList: commerceCollectionIcons,
-    aliasList: commerceCollectionAliases,
-  },
-  {
-    name: 'Core',
-    loader: loadCoreIconSet,
-    iconList: coreCollectionIcons,
-    aliasList: coreCollectionAliases,
-  },
-  {
-    name: 'Essential',
-    loader: loadEssentialIconSet,
-    iconList: essentialCollectionIcons,
-    aliasList: essentialCollectionAliases,
-  },
-  {
-    name: 'Media',
-    loader: loadMediaIconSet,
-    iconList: mediaCollectionIcons,
-    aliasList: mediaCollectionAliases,
-  },
-  {
-    name: 'Social',
-    loader: loadSocialIconSet,
-    iconList: socialCollectionIcons,
-    aliasList: socialCollectionAliases,
-  },
-  {
-    name: 'Technology',
-    loader: loadTechnologyIconSet,
-    iconList: technologyCollectionIcons,
-    aliasList: technologyCollectionAliases,
-  },
-  {
-    name: 'Text-Edit',
-    loader: loadTextEditIconSet,
-    iconList: textEditCollectionIcons,
-    aliasList: textEditCollectionAliases,
-  },
-  {
-    name: 'Travel',
-    loader: loadTravelIconSet,
-    iconList: travelCollectionIcons,
-    aliasList: travelCollectionAliases,
-  },
-];
-
-const iconSetIndex = loadAndIndexIconSets(iconSets);
+// load all icons before component is created to prevent re-renders
+loadChartIconSet();
+loadCommerceIconSet();
+loadCoreIconSet();
+loadEssentialIconSet();
+loadMediaIconSet();
+loadSocialIconSet();
+loadTechnologyIconSet();
+loadTextEditIconSet();
+loadTravelIconSet();
 
 @Component({
   selector: 'app-icon-sets-demo',
   templateUrl: './icon-sets.demo.html',
 })
 export class IconSetsDemoComponent {
-  iconIndex: {
-    Chart?: string[];
-    Commerce?: string[];
-    Core?: string[];
-    Essential?: string[];
-    Media?: string[];
-    Social?: string[];
-    Technology?: string[];
-    'Text-Edit'?: string[];
-    Travel?: string[];
-  } = {};
+  iconIndex = {
+    Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
+    Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
+    Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
+    Essential: createIconIndices(essentialCollectionIcons, essentialCollectionAliases),
+    Media: createIconIndices(mediaCollectionIcons, mediaCollectionAliases),
+    Social: createIconIndices(socialCollectionIcons, socialCollectionAliases),
+    Technology: createIconIndices(technologyCollectionIcons, technologyCollectionAliases),
+    'Text-Edit': createIconIndices(textEditCollectionIcons, textEditCollectionAliases),
+    Travel: createIconIndices(travelCollectionIcons, travelCollectionAliases),
+  };
 
   iconFilterAndToggles = this.fb.group({
     currentSet: ['All'],
@@ -121,8 +74,27 @@ export class IconSetsDemoComponent {
     filterText: [''],
   });
 
+  isInverse = false;
+  iconClassnames = {};
+  availableSets = Object.keys(this.iconIndex);
+  visibleIconSets = this.availableSets;
+  subscriptions: Subscription[] = [];
+
   constructor(private fb: FormBuilder) {
-    this.iconIndex = iconSetIndex;
+    this.subscriptions.push(this.getFormChanges());
+  }
+
+  getFormChanges() {
+    return this.iconFilterAndToggles.valueChanges.subscribe(values => {
+      this.visibleIconSets = values.currentSet === 'All' ? this.availableSets : [values.currentSet];
+      this.isInverse = values.isInverse;
+      this.iconClassnames = {
+        'is-solid': values.isSolid,
+        'is-inverse': values.isInverse,
+        'has-alert': values.decoration === 'alerted',
+        'has-badge': values.decoration === 'badged',
+      };
+    });
   }
 
   showIcon(name: string): boolean {
@@ -130,53 +102,13 @@ export class IconSetsDemoComponent {
     return currentFilterText === '' || name.indexOf(currentFilterText) > -1;
   }
 
-  get availableSets() {
-    return iconSets.map(s => s.name);
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
-
-  get visibleIconSets() {
-    const currentSet = this.iconFilterAndToggles.get('currentSet').value;
-    return currentSet === 'All' ? this.availableSets : [currentSet];
-  }
-
-  get iconClassnames() {
-    const filterFormGroup = this.iconFilterAndToggles;
-    const isSolid = filterFormGroup.get('isSolid').value;
-    const isInverse = filterFormGroup.get('isInverse').value;
-    const decoration = filterFormGroup.get('decoration').value;
-
-    const classnameTests = [
-      ['is-solid', isSolid],
-      ['is-inverse', isInverse],
-      ['has-alert', decoration === 'alerted'],
-      ['has-badge', decoration === 'badged'],
-    ];
-
-    return classnameTests.map(item => (item[1] ? item[0] : '')).join(' ');
-  }
-
-  get iconRowClassnames() {
-    const defaultClassnames = 'clr-row dc-icon-boxes ';
-    return this.iconFilterAndToggles.get('isInverse').value ? defaultClassnames + 'inverse' : defaultClassnames;
-  }
-}
-
-function loadAndIndexIconSets(iconSetArray) {
-  const iconIndex = {};
-  iconSetArray.forEach(iconSet => {
-    const index = createIconIndices(iconSet.iconList, iconSet.aliasList);
-    iconSet.loader();
-    Object.defineProperty(iconIndex, iconSet.name, {
-      value: index,
-      enumerable: true,
-    });
-  });
-  return iconIndex;
 }
 
 function createIconIndices(icons: [string, string][], aliases: [string, string[]][]): string[] {
   const iconsMap = icons.map(iconTuple => iconTuple[0]);
   const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
-  const returnAry = iconsMap.concat(aliasMap).sort();
-  return returnAry;
+  return iconsMap.concat(aliasMap).sort();
 }

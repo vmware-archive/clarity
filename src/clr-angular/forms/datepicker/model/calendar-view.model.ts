@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -84,9 +84,9 @@ export class CalendarViewModel {
 
   private isDateExcluded(date: DayModel) {
     const { minDate, maxDate }: DateRange = this.excludedDates;
-    const from = new Date(minDate.year, minDate.month - 1, minDate.date);
-    const to = new Date(maxDate.year, maxDate.month - 1, maxDate.date);
-    const today = new Date(date.year, date.month - 1, date.date);
+    const from = minDate.toComparisonString();
+    const to = maxDate.toComparisonString();
+    const today = date.toComparisonString();
 
     return !(today >= from && today <= to);
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -71,6 +71,12 @@ export default function(): void {
     it('provides a toDateString method that returns the local date string', () => {
       const testString = dayModel1.toDateString();
       expect(testString).toEqual('1/1/2018');
+    });
+
+    it('provides a toComparisonString method to compare dates', () => {
+      const testString = dayModel1.toComparisonString();
+      // Remember, months are 0 indexed
+      expect(testString).toEqual('20180001');
     });
   });
 }

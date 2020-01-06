@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -135,12 +135,12 @@ export default function(): void {
         // iterate all the week arrays
         for (const day of view) {
           // iterate all of the days
-          if (day.dayModel.toDate() < dateRange.minDate.toDate()) {
-            expect(day.isDisabled).toBe(true); // if the date is less than the minDate should be  disabled
-          } else if (day.dayModel.toDate() > dateRange.maxDate.toDate()) {
-            expect(day.isDisabled).toBe(true); // if the date is above the max date it should be disabled
+          if (day.dayModel.toComparisonString() < dateRange.minDate.toComparisonString()) {
+            expect(day.isDisabled).toBe(true, `Expected ${day.dayModel.toDateString()} to be disabled`); // if the date is less than the minDate should be  disabled
+          } else if (day.dayModel.toComparisonString() > dateRange.maxDate.toComparisonString()) {
+            expect(day.isDisabled).toBe(true, `Expected ${day.dayModel.toDateString()} to be disabled`); // if the date is above the max date it should be disabled
           } else {
-            expect(day.isDisabled).toBe(false); // otherwise, the date should not be disabled
+            expect(day.isDisabled).toBe(false, `Expected ${day.dayModel.toDateString()} to be enabled`); // otherwise, the date should not be disabled
           }
         }
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -37,6 +37,14 @@ export class DayModel {
    */
   clone(): DayModel {
     return new DayModel(this.year, this.month, this.date);
+  }
+
+  toComparisonString(): string {
+    return `${this.year}${this.pad(this.month)}${this.pad(this.date)}`;
+  }
+
+  private pad(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
   }
 
   public toDateString(): string {

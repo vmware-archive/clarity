@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,9 +11,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./datepicker.demo.scss'],
 })
 export class DatepickerMinMaxDemo {
-  minDate: string = '2019-11-17';
-  maxDate: string = '2019-11-19';
-  model;
+  minDate: string = '2017-04-01';
+  maxDate: string = '2017-04-30';
+  model = '04/15/2017';
 
   toggleMaxDate() {
     if (this.minDate) {

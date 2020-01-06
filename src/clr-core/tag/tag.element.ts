@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CwcBaseButton, registerElementSafely } from '@clr/core/common';
-import { property } from 'lit-element';
+import { baseStyles, CwcBaseButton, property, registerElementSafely } from '@clr/core/common';
 import { styles } from './tag.element.css';
 
 /**
@@ -34,11 +33,11 @@ import { styles } from './tag.element.css';
 // @dynamic
 export class CwcTag extends CwcBaseButton {
   /** Sets the color of the tag (and badge if present) from a predefined list of statuses */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   status: 'info' | 'success' | 'warning' | 'danger';
 
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   color: '1' | '2' | '3' | '4' | '5';
 
   static get styles() {

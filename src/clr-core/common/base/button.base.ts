@@ -1,12 +1,13 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, property, query } from 'lit-element';
+import { html, LitElement, query } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
+import { property } from '../decorators/property';
 import { querySlot } from '../decorators/query-slot';
 import { KeyCodes } from './../enums/key-codes';
 import { stopEvent } from './../utils/events';
@@ -16,17 +17,17 @@ export class CwcBaseButton extends LitElement {
   private _disabled: boolean = false;
   protected _previouslyDisabled: boolean = false;
 
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean })
   readonly = false;
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   role = 'button';
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   type: 'button' | 'submit';
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   name = '';
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   value = '';
-  @property({ type: Boolean, reflect: true })
+  @property({ type: Boolean })
   set disabled(value: boolean) {
     // the _previouslyDisabled is used in button.element.ts for loading buttons
     // to keep track of the state it had before being 'disabled' by the component when it's loading

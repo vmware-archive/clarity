@@ -140,10 +140,14 @@ adhere to the following guidelines for our Core Web Component codebase.
 * Components should rarely if ever expose public methods as this encourages state.
 
 * Properties should only reflect into attributes if expecting primitive values
-  like `string`, `number`, or `boolean`.
+  like `string`, `number`, or `boolean`. Use the provided `@property` decorator
+  from `@clr/core/common` as this provides the same lit-element decorator with
+  our project defaults.
 
   ```typescript
-  @property({ type: Boolean, reflect: true }) open = false;
+  import { property } from '@clr/core/common';
+
+  @property({ type: Boolean }) open = false;
   ```
 
 * custom events by default should not bubble events to the global document.
@@ -170,7 +174,9 @@ adhere to the following guidelines for our Core Web Component codebase.
   a kebab case attribute.
 
   ```typescript
-  @property({ type: Boolean, reflect: true, attribute: 'loading-state' }) loadingState;
+  import { property } from '@clr/core/common';
+
+  @property({ type: Boolean, attribute: 'loading-state' }) loadingState;
   ```
 
 * If the component needs to render external text or HTML, use the [Slot API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots).

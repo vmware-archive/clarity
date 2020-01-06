@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,8 +10,8 @@ const HTML_EXAMPLE = `
 <form clrForm [formGroup]="dateForm" novalidate>
     <h4>Reactive Form Demo</h4>
     <clr-date-container>
-        <label for="dateControl">Date</label>
-        <input id="dateControl" type="date" clrDate formControlName="date"/>
+        <label>Date</label>
+        <input type="date" clrDate formControlName="date"/>
     </clr-date-container>
 </form>
 <pre class="datepicker-output">

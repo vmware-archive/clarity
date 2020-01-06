@@ -10,11 +10,14 @@ import '@clr/core/icon';
 import {
   chartCollectionAliases,
   chartCollectionIcons,
+  commerceCollectionAliases,
+  commerceCollectionIcons,
   coreCollectionAliases,
   coreCollectionIcons,
   essentialCollectionAliases,
   essentialCollectionIcons,
   loadChartIconSet,
+  loadCommerceIconSet,
   loadCoreIconSet,
   loadEssentialIconSet,
   loadMediaIconSet,
@@ -40,6 +43,12 @@ const iconSets = [
     loader: loadChartIconSet,
     iconList: chartCollectionIcons,
     aliasList: chartCollectionAliases,
+  },
+  {
+    name: 'Commerce',
+    loader: loadCommerceIconSet,
+    iconList: commerceCollectionIcons,
+    aliasList: commerceCollectionAliases,
   },
   {
     name: 'Core',
@@ -94,6 +103,7 @@ const iconSetIndex = loadAndIndexIconSets(iconSets);
 export class IconSetsDemoComponent {
   iconIndex: {
     Chart?: string[];
+    Commerce?: string[];
     Core?: string[];
     Essential?: string[];
     Media?: string[];

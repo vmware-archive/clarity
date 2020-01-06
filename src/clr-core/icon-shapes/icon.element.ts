@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,10 +10,11 @@ import {
   CssHelpers,
   hasPropertyChanged,
   isNilOrEmpty,
+  property,
   registerElementSafely,
   UniqueId,
 } from '@clr/core/common';
-import { html, LitElement, property } from 'lit-element';
+import { html, LitElement } from 'lit-element';
 import { styles } from './icon.element.css';
 import { ClarityIcons } from './icon.service';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames';
@@ -72,7 +73,7 @@ export class CwcIcon extends IconMixinClass {
    * Changes the svg glyph displayed in the icon component. Defaults to the 'unknown' icon if
    * the specified icon cannot be found in the icon registry.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   set shape(val: string) {
     if (hasPropertyChanged(val, this._shape)) {
       const oldVal = this._shape;
@@ -86,7 +87,7 @@ export class CwcIcon extends IconMixinClass {
   }
 
   /** Apply numerical width-height or a t-shirt-sized CSS classname */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   set size(val: string) {
     if (hasPropertyChanged(val, this._size)) {
       const oldVal = this._size;
@@ -97,25 +98,25 @@ export class CwcIcon extends IconMixinClass {
   }
 
   /** If present, customizes the aria-label for the icon for accessibility. */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   title: string;
 
   /** If present, determines the id of the icon. Uses a generated unique id otherwise. */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   id: string;
 
   /**
    * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   dir: string;
 
   /**
    * Takes an orientation value (horizontal|vertical) that reverses the orientation of the
    * icon vertically or horizontally.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   flip: string;
 
   firstUpdated() {

@@ -2,7 +2,16 @@
   "extends": "./../../tslint.json",
   "rules": {
     "no-barrel-imports": false,
-    "import-blacklist": [true, "rxjs", "rxjs/operators", "@angular", "@angular/common", "@angular/core", "ramda"],
+    "import-blacklist": [
+      true,
+      { "lit-element": ["property"] },
+      "rxjs",
+      "rxjs/operators",
+      "@angular",
+      "@angular/common",
+      "@angular/core",
+      "ramda"
+    ],
     "ordered-imports": true,
     "member-access": [true, "no-public"],
     "arrow-return-shorthand": true,

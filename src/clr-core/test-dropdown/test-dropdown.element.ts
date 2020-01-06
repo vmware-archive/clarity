@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { CommonStringsService } from '@clr/core';
-import { baseStyles, registerElementSafely } from '@clr/core/common';
-import { html, LitElement, property } from 'lit-element';
+import { baseStyles, property, registerElementSafely } from '@clr/core/common';
+import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css';
 

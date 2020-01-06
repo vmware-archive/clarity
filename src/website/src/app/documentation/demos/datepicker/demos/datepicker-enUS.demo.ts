@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,10 @@ import { Component } from '@angular/core';
   template: `
         <h5 style="margin-top: 24px">Locale Identifier: en-US</h5>
         <form clrForm clrLayout="vertical">
-            <input type="date" clrDate>
+            <clr-date-container>
+                <label>US locale</label>
+                <input type="date" clrDate>
+            </clr-date-container>
         </form>
         <table class="table">
             <thead>

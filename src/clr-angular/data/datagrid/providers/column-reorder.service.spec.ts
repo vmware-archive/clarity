@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -144,6 +144,18 @@ export default function(): void {
       expect(columnReorderService.orderAt(1)).toBe(0);
       expect(columnReorderService.orderAt(2)).toBe(2);
       expect(columnReorderService.orderAt(5)).toBe(-1);
+    });
+
+    it(`keeps requested drop column order less or equal to the number of column views`, () => {
+      const maxOrder = columnReorderService.containerRef.length - 1;
+      columnReorderService.requestReorder(0, 10);
+      expect(testComponent.reorderRequest).toEqual({ dragColumnOrder: 0, dropColumnOrder: maxOrder });
+    });
+
+    it(`keeps requested drop column order greater or equal to the number of column views`, () => {
+      const minOrder = 0;
+      columnReorderService.requestReorder(1, -1);
+      expect(testComponent.reorderRequest).toEqual({ dragColumnOrder: 1, dropColumnOrder: minOrder });
     });
 
     describe('should emit proper reorder request data on moving:', () => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,13 +18,13 @@ import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { ClrDatagridComparatorInterface } from './interfaces/comparator.interface';
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { ClrDatagridStringFilterInterface } from './interfaces/string-filter.interface';
-import { DetailService } from './providers/detail.service';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 import { ClrDroppable, ClrDraggable, ClrDragEvent } from '../../utils/drag-and-drop';
 import { ColumnReorderService } from './providers/column-reorder.service';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DROP_ANIM_STATE, SHIFT_ANIM_STATE } from './enums/column-reorder-animation.enum';
+import { ColumnsService } from './providers/columns.service';
 
 export default function(): void {
   describe('DatagridColumn component', function() {
@@ -468,6 +468,7 @@ export default function(): void {
       let columnDroppable: ClrDroppable<any>;
       let column: ClrDatagridColumn;
       let columnEl: HTMLElement;
+      let columnsService: ColumnsService;
       let columnReorderService: ColumnReorderService;
       let filterPopoverToggleService: ClrPopoverToggleService;
       let testComponent: ReorderTest;
@@ -480,6 +481,7 @@ export default function(): void {
         columnDroppableDE = context.fixture.debugElement.queryAll(By.directive(ClrDroppable))[0];
         columnDraggable = columnDraggableDE.injector.get(ClrDraggable);
         columnDroppable = columnDroppableDE.injector.get(ClrDroppable);
+        columnsService = context.getClarityProvider(ColumnsService);
         columnReorderService = context.getClarityProvider(ColumnReorderService);
         filterPopoverToggleService = context.getClarityProvider(ClrPopoverToggleService);
         testComponent = context.testComponent;
@@ -592,10 +594,10 @@ export default function(): void {
         );
       });
 
-      it('accepts order input', function() {
-        context.testComponent.order = 5;
+      it('accepts order input within range', function() {
+        context.testComponent.order = 3;
         context.detectChanges();
-        expect(context.clarityDirective.userDefinedOrder).toBe(5);
+        expect(context.clarityDirective.userDefinedOrder).toBe(3);
       });
 
       it(

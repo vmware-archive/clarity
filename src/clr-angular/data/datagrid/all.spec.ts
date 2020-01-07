@@ -60,7 +60,7 @@ import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 import ColumnReorderServiceSpecs from './providers/column-reorder.service.spec';
 import ViewManagerUtilsSpecs from './utils/view-manager-utils.spec';
 
-fdescribe('Datagrid', function() {
+describe('Datagrid', function() {
   addHelpers();
 
   describe('Providers', function() {

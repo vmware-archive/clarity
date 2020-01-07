@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,6 +36,13 @@ export class ColumnReorderService {
     return this._columnsGroupId;
   }
 
+  get maxOrder() {
+    // the maximum possible order should be the length of all columns minus 1
+    // if user tries to assign an order number that's bigger this max order number,
+    // we would intervene and assign this max order number
+    return this.columnsService.columns.length - 1;
+  }
+
   get ordersChange(): Observable<boolean> {
     return this._ordersChange.asObservable();
   }
@@ -57,6 +64,8 @@ export class ColumnReorderService {
   }
 
   requestReorder(dragColumnOrder: number, dropColumnOrder: number) {
+    const maxColumnOrder = this.containerRef.length - 1;
+    dropColumnOrder = Math.max(Math.min(dropColumnOrder, maxColumnOrder), 0);
     this._reorderRequested.next({ dragColumnOrder, dropColumnOrder });
   }
 

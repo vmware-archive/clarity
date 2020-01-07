@@ -123,7 +123,7 @@ class ReorderWithDetailPaneTest {
 }
 
 export default function(): void {
-  fdescribe('Datagrid Reorder Columns', function() {
+  describe('Datagrid Reorder Columns', function() {
     describe('Template API', function() {
       let fixture: ComponentFixture<any>;
       let testComponent: ReorderWithExpandRowTest;
@@ -239,7 +239,7 @@ export default function(): void {
       });
     });
 
-    fdescribe('View', function() {
+    describe('View', function() {
       let fixture: ComponentFixture<any>;
       let testComponent: ReorderWithExpandRowTest;
       let testElement: any;
@@ -292,7 +292,7 @@ export default function(): void {
         expect(columnEls[2].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
       });
 
-      fit(`sets last visible header width flexible if there is no flexible headers after deleting`, function() {
+      it(`sets last visible header width flexible if there is no flexible headers after deleting`, function() {
         testComponent.column_0_width = 123;
         testComponent.column_2_width = 123;
         fixture.detectChanges();

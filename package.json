@@ -48,8 +48,9 @@
     "angular:golden:fix": "npm run angular:build && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern 'FocusTrapTracker' dist/clr-angular/index.d.ts",
     "angular:golden:test": "diff -u golden/clr-angular.d.ts dist/golden/clr-angular.d.ts",
     "angular:dev:preview": "npm run core:sass && ng build --baseHref=/dev/",
-    "angular:dev:build": "ng build --prod dev",
+    "angular:dev:build": "ng build dev --prod --progress=false",
     "angular:dev:build:dark": "ng build --prod dev -c dark",
+    "angular:dev:deploy": "./scripts/dev.sh",
     "angular:dev:start": "npm run core:sass && ng serve dev",
     "angular:dev:start:dark": "ng serve dev -c dark",
     "angular:dev:start:ie": "ng serve dev --disableHostCheck --host 0.0.0.0 --port 4200",
@@ -57,13 +58,13 @@
     "schematics:build:collection": "cpy --parents --cwd='src/schematics/src/' '**/*.json' ../../../dist/clr-angular/schematics",
     "schematics:build": "npm-run-all schematics:build:ts schematics:build:collection",
     "website:start": "npm run core:sass && npm run website:news && ng serve website",
-    "website:build": "npm run website:news && node --max-old-space-size=2048 ./node_modules/@angular/cli/bin/ng build website --prod --progress=false",
-    "website:deploy-preview": "ng build website --progress=false",
-    "website:404": "cpy --rename 404.html dist/website/browser/index.html dist/website/browser",
+    "website:build": "npm run website:news && ng build website --prod --progress=false",
+    "website:deploy": "./scripts/website.sh",
+    "website:404": "cpy --rename 404.html dist/website/index.html dist/website",
     "website:functions": "netlify-lambda build scripts/netlify",
     "website:news": "node src/website/generate-news",
-    "website:prerender": "npm-run-all build:libs website:build website:functions website:404",
-    "website:preview": "lite-server --core=dist/website/browser",
+    "website:render": "npm-run-all build:libs website:build website:functions website:404",
+    "website:preview": "lite-server --core=dist/website",
     "icons:build": "npm-run-all icons:build:css icons:build:optimize icons:build:web icons:build:package",
     "icons:build:web": "webpack --config ./src/clr-icons/webpack.icons.config.js",
     "icons:build:css": "sass --source-map --precision=8 ./src/clr-icons/clr-icons.scss ./dist/clr-icons/clr-icons.css",
@@ -193,6 +194,7 @@
     "karma-sauce-launcher": "2.0.2",
     "lint-staged": "9.5.0",
     "lite-server": "2.4.0",
+    "netlify-cli": "2.25.0",
     "netlify-lambda": "1.4.5",
     "ng-packagr": "5.2.0",
     "npm-run-all": "4.1.5",
@@ -238,6 +240,9 @@
     }
   },
   "lint-staged": {
-    "src/clr-core/**/*.{js,ts}": ["npm run core:api", "git add"]
+    "src/clr-core/**/*.{js,ts}": [
+      "npm run core:api",
+      "git add"
+    ]
   }
 }

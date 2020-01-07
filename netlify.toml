@@ -1,13 +1,13 @@
 # Default build settings
 [build]
-  command = "npm run website:prerender"
+  command = "npm run website:render"
   functions = "dist/netlify"
-  publish = "dist/website/browser"
+  publish = "dist/website"
   environment = { CI = "true", NPM_FLAGS = '--no-optional', CYPRESS_INSTALL_BINARY = "false" }
 
 # Override for PRs to deploy the dev app
 [context.deploy-preview]
-  command = "npm run build:libs && npm run angular:dev:preview && npm run website:build && cp -R dist/dev dist/website/browser/dev"
+  command = "npm run build:libs && npm run angular:dev:preview && npm run website:build && cp -R dist/dev dist/website/dev"
 
 # Handle 404s in our app, SPA redirect config
 [[redirects]]

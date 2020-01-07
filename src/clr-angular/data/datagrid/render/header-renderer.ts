@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -154,8 +154,16 @@ export class DatagridHeaderRenderer implements OnDestroy {
   }
 
   private setFlexibleWhenAllStrict() {
+    // To figure out how many strict widths we have,
+    // we first need to make sure we compute the strict width properties of all columns.
+    // In other words, strict width properties should not be undefined for all columns.
+    const computedStrictWidths = this.columnsService.columnStates.filter(
+      state => typeof state.strictWidth !== 'undefined'
+    );
+
     const flexibleWidths = this.columnsService.columnStates.filter(state => !state.hidden && state.strictWidth === 0);
-    if (flexibleWidths.length === 0) {
+
+    if (computedStrictWidths.length === this.columnsService.columns.length && flexibleWidths.length === 0) {
       this.columnsService.emitStateChange(this.columnState, { changes: [DatagridColumnChanges.WIDTH], strictWidth: 0 });
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,25 +14,25 @@ import { ClrDatagridColumn } from './datagrid-column';
 import { ClrDatagridModule } from './datagrid.module';
 import { ColumnReorderService } from './providers/column-reorder.service';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
-import { FIRST_VISIBLE_COLUMN_CLASS, LAST_VISIBLE_COLUMN_CLASS } from './render/constants';
+import { FIRST_VISIBLE_COLUMN_CLASS, LAST_VISIBLE_COLUMN_CLASS, STRICT_WIDTH_CLASS } from './render/constants';
 import { ColumnsService } from './providers/columns.service';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
-import { ClrDatagridColumnToggle } from '.';
+import { debug } from 'util';
 
 @Component({
   template: `
     <clr-datagrid>
-      <clr-dg-column [clrDgColumnOrder]="column_0_Order">
+      <clr-dg-column [clrDgColumnOrder]="column_0_order" [style.width.px]="column_0_width">
         <ng-container *clrDgHideableColumn>
           A
         </ng-container>
       </clr-dg-column>
-      <clr-dg-column [clrDgColumnOrder]="column_1_Order" *ngIf="!hideMiddle">
+      <clr-dg-column [clrDgColumnOrder]="column_1_order" [style.width.px]="column_1_width" *ngIf="!hideMiddle">
         <ng-container *clrDgHideableColumn>
           B
         </ng-container>
       </clr-dg-column>
-      <clr-dg-column [clrDgColumnOrder]="column_2_Order">
+      <clr-dg-column [clrDgColumnOrder]="column_2_order" [style.width.px]="column_2_width">
         <ng-container *clrDgHideableColumn>
           C
         </ng-container>
@@ -60,9 +60,13 @@ import { ClrDatagridColumnToggle } from '.';
 })
 class ReorderWithExpandRowTest {
   items = [1];
-  column_0_Order: number;
-  column_1_Order: number;
-  column_2_Order: number;
+  column_0_order: number;
+  column_1_order: number;
+  column_2_order: number;
+
+  column_0_width: number;
+  column_1_width: number;
+  column_2_width: number;
 
   hideMiddle = false;
 
@@ -77,17 +81,17 @@ class ReorderWithExpandRowTest {
 @Component({
   template: `
     <clr-datagrid>
-      <clr-dg-column [clrDgColumnOrder]="column_0_Order">
+      <clr-dg-column [clrDgColumnOrder]="column_0_order">
         <ng-container *clrDgHideableColumn>
           A
         </ng-container>
       </clr-dg-column>
-      <clr-dg-column [clrDgColumnOrder]="column_1_Order" *ngIf="!hideMiddle">
+      <clr-dg-column [clrDgColumnOrder]="column_1_order" *ngIf="!hideMiddle">
         <ng-container *clrDgHideableColumn>
           B
         </ng-container>
       </clr-dg-column>
-      <clr-dg-column [clrDgColumnOrder]="column_2_Order">
+      <clr-dg-column [clrDgColumnOrder]="column_2_order">
         <ng-container *clrDgHideableColumn>
           C
         </ng-container>
@@ -110,16 +114,16 @@ class ReorderWithExpandRowTest {
 })
 class ReorderWithDetailPaneTest {
   items = [1];
-  column_0_Order: number;
-  column_1_Order: number;
-  column_2_Order: number;
+  column_0_order: number;
+  column_1_order: number;
+  column_2_order: number;
 
   @ViewChildren(ClrDatagridColumn) columns: QueryList<ClrDatagridColumn>;
   @ViewChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
 }
 
 export default function(): void {
-  describe('Datagrid Reorder Columns', function() {
+  fdescribe('Datagrid Reorder Columns', function() {
     describe('Template API', function() {
       let fixture: ComponentFixture<any>;
       let testComponent: ReorderWithExpandRowTest;
@@ -162,9 +166,9 @@ export default function(): void {
       });
 
       it(`can set column and cell orders from inputs`, function() {
-        testComponent.column_0_Order = 1;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 2;
+        testComponent.column_0_order = 1;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 2;
         fixture.detectChanges();
         columns = testComponent.columns.toArray();
         cells = testComponent.cells.toArray();
@@ -215,9 +219,9 @@ export default function(): void {
       });
 
       it(`inserts new column at user defined position without breaking the existing visual orders`, function() {
-        testComponent.column_0_Order = 1;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 2;
+        testComponent.column_0_order = 1;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 2;
         fixture.detectChanges();
         columns = testComponent.columns.toArray();
         cells = testComponent.cells.toArray();
@@ -235,7 +239,7 @@ export default function(): void {
       });
     });
 
-    describe('View', function() {
+    fdescribe('View', function() {
       let fixture: ComponentFixture<any>;
       let testComponent: ReorderWithExpandRowTest;
       let testElement: any;
@@ -270,6 +274,38 @@ export default function(): void {
         testComponent = null;
         columnEls = null;
         cellEls = null;
+      });
+
+      it(`sets last visible header width flexible if there is no flexible headers after hiding`, function() {
+        testComponent.column_0_width = 123;
+        testComponent.column_1_width = 123;
+        fixture.detectChanges();
+        columnEls = Array.from(testElement.querySelectorAll('clr-dg-column.datagrid-column'));
+        expect(columnEls[0].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+        expect(columnEls[1].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+        expect(columnEls[2].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
+
+        columnsService.emitStateChangeAt(2, { changes: [DatagridColumnChanges.HIDDEN], hidden: true });
+        columnEls = Array.from(testElement.querySelectorAll('clr-dg-column.datagrid-column'));
+        expect(columnEls[0].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+        expect(columnEls[1].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
+        expect(columnEls[2].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
+      });
+
+      fit(`sets last visible header width flexible if there is no flexible headers after deleting`, function() {
+        testComponent.column_0_width = 123;
+        testComponent.column_2_width = 123;
+        fixture.detectChanges();
+        columnEls = Array.from(testElement.querySelectorAll('clr-dg-column.datagrid-column'));
+        expect(columnEls[0].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+        expect(columnEls[1].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
+        expect(columnEls[2].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+
+        testComponent.hideMiddle = true;
+        fixture.detectChanges();
+        columnEls = Array.from(testElement.querySelectorAll('clr-dg-column.datagrid-column'));
+        expect(columnEls[0].classList.contains(STRICT_WIDTH_CLASS)).toBeTruthy();
+        expect(columnEls[1].classList.contains(STRICT_WIDTH_CLASS)).toBeFalsy();
       });
 
       it(`adds first and last visible column classes to appropriate columns initially`, function() {
@@ -326,9 +362,9 @@ export default function(): void {
       });
 
       it(`positions column and cell DOMs at user defined order`, function() {
-        testComponent.column_0_Order = 1;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 2;
+        testComponent.column_0_order = 1;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 2;
         fixture.detectChanges();
         columnEls = Array.from(testElement.querySelectorAll('clr-dg-column.datagrid-column'));
         cellEls = Array.from(testElement.querySelectorAll('clr-dg-cell.datagrid-cell'));
@@ -387,9 +423,9 @@ export default function(): void {
 
       it(`inserts new column at user defined position without breaking the existing DOM positions`, function() {
         // ["B", "A", "C"]
-        testComponent.column_0_Order = 1;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 2;
+        testComponent.column_0_order = 1;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 2;
         fixture.detectChanges();
         columnReorderService.requestReorder(0, 1);
         columnReorderService.requestReorder(2, 0);
@@ -407,9 +443,9 @@ export default function(): void {
 
       describe('With Detail Row', function() {
         it(`positions detail cell DOMs at user defined order`, function() {
-          testComponent.column_0_Order = 1;
-          testComponent.column_1_Order = 0;
-          testComponent.column_2_Order = 2;
+          testComponent.column_0_order = 1;
+          testComponent.column_1_order = 0;
+          testComponent.column_2_order = 2;
           testComponent.rowExpanded = true;
           fixture.detectChanges();
           cellEls = Array.from(testElement.querySelectorAll('clr-dg-cell.datagrid-cell'));
@@ -465,9 +501,9 @@ export default function(): void {
         it(`inserts new column at user defined position without breaking the existing DOM positions`, function() {
           // ["B", "A", "C"]
           testComponent.rowExpanded = true;
-          testComponent.column_0_Order = 1;
-          testComponent.column_1_Order = 0;
-          testComponent.column_2_Order = 2;
+          testComponent.column_0_order = 1;
+          testComponent.column_1_order = 0;
+          testComponent.column_2_order = 2;
           fixture.detectChanges();
           columnReorderService.requestReorder(0, 1);
           columnReorderService.requestReorder(2, 0);
@@ -489,9 +525,9 @@ export default function(): void {
         };
 
         beforeEach(function() {
-          testComponent.column_0_Order = 1;
-          testComponent.column_1_Order = 0;
-          testComponent.column_2_Order = 2;
+          testComponent.column_0_order = 1;
+          testComponent.column_1_order = 0;
+          testComponent.column_2_order = 2;
           fixture.detectChanges();
         });
 
@@ -627,9 +663,9 @@ export default function(): void {
       });
 
       it(`hides all columns except first visible one after showing detail pane`, function() {
-        testComponent.column_0_Order = 2;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 1;
+        testComponent.column_0_order = 2;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 1;
         fixture.detectChanges();
         testElement.querySelector('.datagrid-detail-caret-button').click();
         fixture.detectChanges();
@@ -642,9 +678,9 @@ export default function(): void {
       });
 
       it(`shows columns in their previous orders after hiding detail pane`, function() {
-        testComponent.column_0_Order = 2;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 1;
+        testComponent.column_0_order = 2;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 1;
         fixture.detectChanges();
         testElement.querySelector('.datagrid-detail-caret-button').click();
         fixture.detectChanges();
@@ -663,9 +699,9 @@ export default function(): void {
       });
 
       it(`should add both first and last visible column classes to only visible column after showing detail pane`, function() {
-        testComponent.column_0_Order = 2;
-        testComponent.column_1_Order = 0;
-        testComponent.column_2_Order = 1;
+        testComponent.column_0_order = 2;
+        testComponent.column_1_order = 0;
+        testComponent.column_2_order = 1;
         fixture.detectChanges();
         testElement.querySelector('.datagrid-detail-caret-button').click();
         fixture.detectChanges();

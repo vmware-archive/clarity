@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -309,6 +309,7 @@ export default function(): void {
         columnsService.resetToLastCache();
         spyOn(columnsService, 'resetToLastCache');
         spyOn(columnsService, 'emitStateChange');
+        spyOn(columnsService, 'istLastVisibleChanged');
         context.detectChanges();
       });
 
@@ -332,6 +333,15 @@ export default function(): void {
         context.clarityDirective.toggleDetailPane(true);
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
         expect(columnsService.emitStateChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('requests checks on any changes in the last visible column when detail pane toggles', function() {
+        context.clarityDirective.toggleDetailPane(true);
+        context.detectChanges();
+        expect(columnsService.istLastVisibleChanged).toHaveBeenCalled();
+        context.clarityDirective.toggleDetailPane(false);
+        context.detectChanges();
+        expect(columnsService.istLastVisibleChanged).toHaveBeenCalled();
       });
     });
   });

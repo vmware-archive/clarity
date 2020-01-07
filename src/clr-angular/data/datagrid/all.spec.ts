@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -60,7 +60,7 @@ import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 import ColumnReorderServiceSpecs from './providers/column-reorder.service.spec';
 import ViewManagerUtilsSpecs from './utils/view-manager-utils.spec';
 
-describe('Datagrid', function() {
+fdescribe('Datagrid', function() {
   addHelpers();
 
   describe('Providers', function() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -144,7 +144,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
   }
 
   public toggleDetailPane(state: boolean) {
-    if (this.headers) {
+    if (this.columnsService.columns && this.columnsService.columns.length) {
       if (state && !this.columnsService.hasCache()) {
         this.columnsService.cache();
 

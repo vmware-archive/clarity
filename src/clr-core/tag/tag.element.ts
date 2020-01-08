@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CwcBaseButton, property, registerElementSafely } from '@clr/core/common';
+import { baseStyles, CwcBaseButton, property, registerElementSafely, StatusTypes } from '@clr/core/common';
 import { styles } from './tag.element.css';
 
 /**
@@ -32,9 +32,11 @@ import { styles } from './tag.element.css';
  */
 // @dynamic
 export class CwcTag extends CwcBaseButton {
-  /** Sets the color of the tag (and badge if present) from a predefined list of statuses */
+  /** Sets the color of the tag (and badge if present) from the following predefined list of statuses:
+   *  'info', 'success', 'warning', 'danger'
+   */
   @property({ type: String })
-  status: 'info' | 'success' | 'warning' | 'danger';
+  status: StatusTypes;
 
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })

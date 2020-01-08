@@ -14,8 +14,8 @@ import '@clr/core/badge';
 
 | Property | Attribute | Type                                             | Default      | Description                                      |
 |----------|-----------|--------------------------------------------------|--------------|--------------------------------------------------|
-| `color`  | `color`   | `"gray" \| "purple" \| "blue" \| "orange" \| "light-blue"` | **required** | Sets the color of the badge from a predefined list of choices |
-| `status` | `status`  | `"info" \| "success" \| "warning" \| "danger"`   | **required** | Sets the color of the badge from a predefined list of statuses |
+| `color`  | `color`   | `"gray" \| "purple" \| "blue" \| "orange" \| "light-blue"` | **required** | Sets the color of the badge from the following predefined list of choices:<br />'gray', 'purple', 'blue', 'orange', 'light-blue' |
+| `status` | `status`  | `any`                                            |              | Sets the color of the badge from the following predefined list of statuses:<br />'info', 'success', 'warning', 'danger' |
 
 ## Slots
 

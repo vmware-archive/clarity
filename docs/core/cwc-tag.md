@@ -12,10 +12,10 @@ import '@clr/core/tag';
 
 ## Properties
 
-| Property | Attribute | Type                                           | Default      | Description                                      |
-|----------|-----------|------------------------------------------------|--------------|--------------------------------------------------|
-| `color`  | `color`   | `"1" \| "2" \| "3" \| "4" \| "5"`              | **required** | Sets the color of the tag (and badge if present) from a predefined list of choices |
-| `status` | `status`  | `"info" \| "success" \| "warning" \| "danger"` | **required** | Sets the color of the tag (and badge if present) from a predefined list of statuses |
+| Property | Attribute | Type                              | Default      | Description                                      |
+|----------|-----------|-----------------------------------|--------------|--------------------------------------------------|
+| `color`  | `color`   | `"1" \| "2" \| "3" \| "4" \| "5"` | **required** | Sets the color of the tag (and badge if present) from a predefined list of choices |
+| `status` | `status`  | `any`                             |              | Sets the color of the tag (and badge if present) from the following predefined list of statuses:<br />'info', 'success', 'warning', 'danger' |
 
 ## Slots
 

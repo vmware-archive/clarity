@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely } from '@clr/core/common';
+import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
 import { styles } from './badge.element.css';
 
@@ -28,16 +28,22 @@ import { styles } from './badge.element.css';
  */
 // @dynamic
 export class CwcBadge extends LitElement {
-  /** Sets the color of the badge from a predefined list of choices */
+  /** Sets the color of the badge from the following predefined list of choices:
+   *  'gray', 'purple', 'blue', 'orange', 'light-blue'
+   */
   @property({ type: String })
   color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
 
-  /** Sets the color of the badge from a predefined list of statuses */
+  /** Sets the color of the badge from the following predefined list of statuses:
+   *  'info', 'success', 'warning', 'danger'
+   */
   @property({ type: String })
-  status: 'info' | 'success' | 'warning' | 'danger';
+  status: StatusTypes;
 
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+    `;
   }
 
   static get styles() {

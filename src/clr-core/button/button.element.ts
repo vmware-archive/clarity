@@ -7,8 +7,10 @@
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
 import {
   CwcBaseButton,
+  DefaultSizes,
   getElementWidthUnless,
   getTranslateForChromeRenderingBugUnless,
+  StoplightStatusTypes,
   toggleDisabledAttribute,
 } from '@clr/core/common';
 import { html } from 'lit-element';
@@ -154,13 +156,19 @@ export class CwcButton extends CwcBaseButton {
   @property({ type: String })
   action: 'default' | 'outline' | 'link';
 
-  /** Sets the color of the button to match the status */
+  /**
+   * Sets the color of the button to match the following string statuses
+   * 'default', 'primary', 'inverse', 'success', 'warning', 'danger'
+   */
   @property({ type: String })
-  status: 'default' | 'primary' | 'inverse' | 'success' | 'warning' | 'danger';
+  status: 'default' | 'primary' | 'inverse' | StoplightStatusTypes;
 
-  /** Sets the overall height and width of the button based on value */
+  /**
+   * Sets the overall height and width of the button based on the following string values:
+   * 'default', 'sm'
+   */
   @property({ type: String })
-  size: 'default' | 'sm';
+  size: DefaultSizes;
 
   /** Sets button type for icon */
   @property({ type: String })
@@ -201,19 +209,19 @@ export class CwcButton extends CwcBaseButton {
     switch (this.loadingState) {
       case ClrLoadingState.LOADING:
         return html`
-            <span class="spinner spinner-inline"></span>
-            ${this.hiddenButtonTemplate}
+          <span class="spinner spinner-inline"></span>
+          ${this.hiddenButtonTemplate}
         `;
       case ClrLoadingState.SUCCESS:
         return html`
-            <span class="spinner spinner-inline spinner-check"></span>
-            ${this.hiddenButtonTemplate}
-          `;
+          <span class="spinner spinner-inline spinner-check"></span>
+          ${this.hiddenButtonTemplate}
+        `;
       default:
         return html`
-            <slot></slot>
-            ${this.hiddenButtonTemplate}
-          `;
+          <slot></slot>
+          ${this.hiddenButtonTemplate}
+        `;
     }
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -143,6 +143,12 @@ export default function() {
           expect(context.clarityElement.className).toContain('clr-form-control-disabled');
         });
       }));
+
+      it('should set disabled state when dateFormControlService.disabled is true', () => {
+        dateFormControlService.disabled = true;
+        context.detectChanges();
+        expect(context.clarityElement.className).toContain('clr-form-control-disabled');
+      });
 
       it('has an accessible title on the calendar toggle button', () => {
         const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');

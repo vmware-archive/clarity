@@ -48,7 +48,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
                     class="clr-input-group-icon-action"
                     [attr.title]="commonStrings.keys.datepickerToggle"
                     [attr.aria-label]="commonStrings.keys.datepickerToggle"
-                    [disabled]="control?.disabled"
+                    [disabled]="isInputDateDisabled"
                     (click)="toggleDatepicker($event)"
                     *ngIf="isEnabled">
               <clr-icon shape="calendar"></clr-icon>
@@ -75,7 +75,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
     DateFormControlService,
   ],
   host: {
-    '[class.clr-form-control-disabled]': 'control?.disabled',
+    '[class.clr-form-control-disabled]': 'isInputDateDisabled',
     '[class.clr-form-control]': 'true',
     '[class.clr-row]': 'addGrid()',
   },
@@ -160,6 +160,16 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
    */
   get isEnabled(): boolean {
     return this._datepickerEnabledService.isEnabled;
+  }
+
+  /**
+   * Return if Datepicker is diabled or not as Form Control
+   */
+  get isInputDateDisabled(): boolean {
+    /* clrForm wrapper or without clrForm */
+    return (
+      (this.control && this.control.disabled) || (this.dateFormControlService && this.dateFormControlService.disabled)
+    );
   }
 
   /**

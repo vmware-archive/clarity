@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,6 +38,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerEnabledService } from './providers/datepicker-enabled.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { datesAreEqual } from './utils/date-utils';
+import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
 
 // There are four ways the datepicker value is set
 // 1. Value set by user typing into text input as a string ex: '01/28/2015'
@@ -156,6 +157,11 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     } else {
       this.emitDateOutput(null);
     }
+  }
+
+  @Input('disabled')
+  set disabled(value: boolean | string) {
+    this.dateFormControlService.setDisabled(isBooleanAttributeSet(value));
   }
 
   private usingClarityDatepicker() {

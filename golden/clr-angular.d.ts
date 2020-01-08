@@ -588,6 +588,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     focus: boolean;
     invalid: boolean;
     readonly isEnabled: boolean;
+    readonly isInputDateDisabled: boolean;
     label: ClrLabel;
     position: PopoverPosition;
     constructor(_toggleService: ClrPopoverToggleService, _dateNavigationService: DateNavigationService, _datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
@@ -603,6 +604,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     protected control: NgControl;
     date: Date;
     dateChange: EventEmitter<Date>;
+    disabled: boolean | string;
     protected el: ElementRef;
     protected index: number;
     readonly inputType: string;

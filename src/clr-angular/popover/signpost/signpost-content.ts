@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -58,7 +58,7 @@ export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
     @Optional()
     @Inject(POPOVER_HOST_ANCHOR)
     parentHost: ElementRef,
-    commonStrings: ClrCommonStringsService,
+    public commonStrings: ClrCommonStringsService,
     @Inject(UNIQUE_ID) public signpostContentId: string,
     private signpostIdService: SignpostIdService,
     private signpostFocusManager: SignpostFocusManager,
@@ -69,7 +69,6 @@ export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
     if (!parentHost) {
       throw new Error('clr-signpost-content should only be used inside of a clr-signpost');
     }
-    this.commonStrings = commonStrings;
     // Defaults
     this.position = 'right-middle';
     this.closeOnOutsideClick = true;
@@ -77,8 +76,6 @@ export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
 
     this.document = document;
   }
-
-  commonStrings: ClrCommonStringsService;
 
   /**********
    *

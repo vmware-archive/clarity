@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -43,6 +43,7 @@ let clrDgActionId = 0;
            [attr.aria-hidden]="!open"
            [attr.id]="popoverId"
            clrFocusTrap
+           (click)="closeOverflowContent($event)"
            *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
           <ng-content></ng-content>
       </div>
@@ -80,6 +81,10 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   ngOnDestroy() {
     this.rowActionService.unregister();
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  closeOverflowContent(event): void {
+    this.smartToggleService.toggleWithEvent(event);
   }
 
   private _open: boolean = false;

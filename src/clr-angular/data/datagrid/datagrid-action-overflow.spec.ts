@@ -71,16 +71,6 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it("doesn't close the menu when an action menu item container is clicked", function() {
-      toggle.click();
-      context.detectChanges();
-
-      const actionOverflowMenu: HTMLElement = document.querySelector('.clr-popover-content');
-      actionOverflowMenu.click();
-      context.detectChanges();
-      expect(context.clarityDirective.open).toBe(true);
-    });
-
     it('projects menu content when open', function() {
       toggle.click();
       context.detectChanges();

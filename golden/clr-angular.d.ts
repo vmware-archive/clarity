@@ -309,6 +309,7 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     popoverId: string;
     smartPosition: ClrPopoverPosition;
     constructor(rowActionService: RowActionService, commonStrings: ClrCommonStringsService, platformId: Object, zone: NgZone, smartToggleService: ClrPopoverToggleService, popoverId: string);
+    closeOverflowContent(event: any): void;
     ngOnDestroy(): void;
 }
 

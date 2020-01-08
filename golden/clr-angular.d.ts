@@ -590,6 +590,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     control: NgControl;
     focus: boolean;
     invalid: boolean;
+    readonly isDisabled: boolean;
     readonly isEnabled: boolean;
     label: ClrLabel;
     position: PopoverPosition;
@@ -606,6 +607,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     protected control: NgControl;
     date: Date;
     dateChange: EventEmitter<Date>;
+    disabled: boolean | string;
     protected el: ElementRef;
     protected index: number;
     readonly inputType: string;

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -29,6 +29,13 @@
     </div>
 </div>
 
+<h6>No ClrForm</h6>
+<clr-date-container>
+    <label>Disabled Date Picker</label>
+    <input type="date" [(clrDate)]="date" [disabled]="disabled" />
+</clr-date-container>
+
+<h6>Controll Disabled & Enabled</h6>
 <div>
     <button class="btn" (click)="disabled = !disabled">Toggle Disabled</button>
 </div>

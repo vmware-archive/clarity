@@ -75,27 +75,27 @@ export function loadMediaIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [cameraIconName]?: string;
-    [fastForwardIconName]?: string;
-    [filmStripIconName]?: string;
-    [headphonesIconName]?: string;
-    [imageGalleryIconName]?: string;
-    [microphoneIconName]?: string;
-    [microphoneMuteIconName]?: string;
-    [musicNoteIconName]?: string;
-    [pauseIconName]?: string;
-    [playIconName]?: string;
-    [powerIconName]?: string;
-    [replayAllIconName]?: string;
-    [replayOneIconName]?: string;
-    [rewindIconName]?: string;
-    [shuffleIconName]?: string;
-    [stepForwardIconName]?: string;
-    [stopIconName]?: string;
-    [videoCameraIconName]?: string;
-    [videoGalleryIconName]?: string;
-    [volumeDownIconName]?: string;
-    [volumeMuteIconName]?: string;
-    [volumeUpIconName]?: string;
+    [cameraIconName]: string;
+    [fastForwardIconName]: string;
+    [filmStripIconName]: string;
+    [headphonesIconName]: string;
+    [imageGalleryIconName]: string;
+    [microphoneIconName]: string;
+    [microphoneMuteIconName]: string;
+    [musicNoteIconName]: string;
+    [pauseIconName]: string;
+    [playIconName]: string;
+    [powerIconName]: string;
+    [replayAllIconName]: string;
+    [replayOneIconName]: string;
+    [rewindIconName]: string;
+    [shuffleIconName]: string;
+    [stepForwardIconName]: string;
+    [stopIconName]: string;
+    [videoCameraIconName]: string;
+    [videoGalleryIconName]: string;
+    [volumeDownIconName]: string;
+    [volumeMuteIconName]: string;
+    [volumeUpIconName]: string;
   }
 }

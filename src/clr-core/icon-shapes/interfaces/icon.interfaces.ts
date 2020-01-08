@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { IconRegistrySources } from '@clr/core/common';
 
 type IconSvgString = string;
 type IconNameString = string;
@@ -31,6 +33,8 @@ declare module '@clr/core/common' {
     [key: string]: IconSvgString;
   }
 }
+
+export type IconRegistry = Partial<IconRegistrySources>;
 
 export interface IconAliasLegacyObject {
   [key: string]: IconAliases;

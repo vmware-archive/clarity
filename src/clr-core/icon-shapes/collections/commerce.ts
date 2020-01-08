@@ -71,25 +71,25 @@ export function loadCommerceIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [bankIconName]?: string;
-    [bitcoinIconName]?: string;
-    [calculatorIconName]?: string;
-    [coinBagIconName]?: string;
-    [creditCardIconName]?: string;
-    [dollarIconName]?: string;
-    [dollarBillIconName]?: string;
-    [eCheckIconName]?: string;
-    [euroIconName]?: string;
-    [pesoIconName]?: string;
-    [piggyBankIconName]?: string;
-    [poundIconName]?: string;
-    [rubleIconName]?: string;
-    [rupeeIconName]?: string;
-    [shoppingBagIconName]?: string;
-    [shoppingCartIconName]?: string;
-    [storeIconName]?: string;
-    [walletIconName]?: string;
-    [wonIconName]?: string;
-    [yenIconName]?: string;
+    [bankIconName]: string;
+    [bitcoinIconName]: string;
+    [calculatorIconName]: string;
+    [coinBagIconName]: string;
+    [creditCardIconName]: string;
+    [dollarIconName]: string;
+    [dollarBillIconName]: string;
+    [eCheckIconName]: string;
+    [euroIconName]: string;
+    [pesoIconName]: string;
+    [piggyBankIconName]: string;
+    [poundIconName]: string;
+    [rubleIconName]: string;
+    [rupeeIconName]: string;
+    [shoppingBagIconName]: string;
+    [shoppingCartIconName]: string;
+    [storeIconName]: string;
+    [walletIconName]: string;
+    [wonIconName]: string;
+    [yenIconName]: string;
   }
 }

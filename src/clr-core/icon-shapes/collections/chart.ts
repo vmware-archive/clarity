@@ -57,18 +57,18 @@ export function loadChartIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [axisChartIconName]?: string;
-    [barChartIconName]?: string;
-    [bellCurveIconName]?: string;
-    [boxPlotIconName]?: string;
-    [bubbleChartIconName]?: string;
-    [cloudChartIconName]?: string;
-    [curveChartIconName]?: string;
-    [gridChartIconName]?: string;
-    [heatMapIconName]?: string;
-    [lineChartIconName]?: string;
-    [pieChartIconName]?: string;
-    [scatterPlotIconName]?: string;
-    [tickChartIconName]?: string;
+    [axisChartIconName]: string;
+    [barChartIconName]: string;
+    [bellCurveIconName]: string;
+    [boxPlotIconName]: string;
+    [bubbleChartIconName]: string;
+    [cloudChartIconName]: string;
+    [curveChartIconName]: string;
+    [gridChartIconName]: string;
+    [heatMapIconName]: string;
+    [lineChartIconName]: string;
+    [pieChartIconName]: string;
+    [scatterPlotIconName]: string;
+    [tickChartIconName]: string;
   }
 }

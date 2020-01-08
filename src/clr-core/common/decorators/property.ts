@@ -36,7 +36,7 @@ export function property(options?: PropertyDeclaration<unknown, unknown>) {
 /**
  * https://developers.google.com/web/fundamentals/web-components/best-practices
  */
-export function getDefaultOptions(options: PropertyDeclaration<unknown, unknown>): PropertyDeclaration {
+export function getDefaultOptions(options?: PropertyDeclaration<unknown, unknown>): PropertyDeclaration {
   const type = options ? options.type : options;
 
   switch (type) {
@@ -69,6 +69,6 @@ export function getDefaultOptions(options: PropertyDeclaration<unknown, unknown>
       };
     }
     default:
-      return options;
+      return options as PropertyDeclaration<unknown, unknown>;
   }
 }

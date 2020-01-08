@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { IconRegistrySources } from '@clr/core/common';
 import { renderIcon } from '../icon.renderer';
 import { ClarityIcons } from '../icon.service';
-import { IconShapeTuple } from '../interfaces/icon.interfaces';
+import { IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces';
 import { testIcons } from '../utils/test-icons';
 import { addIcon, addIcons, getIcon, hasIcon, legacyAlias, setIconAlias, setIconAliases } from './icon.service-helpers';
 
@@ -160,7 +159,7 @@ describe('ClarityIcons service helper functions: ', () => {
   });
 
   describe('legacyAlias: ', () => {
-    let clonedRegistry: IconRegistrySources;
+    let clonedRegistry: IconRegistry;
 
     beforeAll(() => {
       clonedRegistry = Object.assign({}, ClarityIcons.registry);

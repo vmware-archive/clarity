@@ -1,32 +1,32 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { existsIn, IconRegistrySources } from '@clr/core/common';
+import { existsIn } from '@clr/core/common';
 import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer';
-import { IconAlias, IconAliasLegacyObject, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces';
 
-export function addIcon(shape: IconShapeTuple, registry: IconRegistrySources) {
+export function addIcon(shape: IconShapeTuple, registry: IconRegistry) {
   const [shapeName] = shape;
   if (!hasIcon(shapeName, registry)) {
     addIconToRegistry(shape, registry);
   }
 }
 
-export function addIcons(shapes: IconShapeTuple[], registry: IconRegistrySources) {
+export function addIcons(shapes: IconShapeTuple[], registry: IconRegistry) {
   shapes.forEach(s => {
     addIcon(s, registry);
   });
 }
 
-export function hasIcon(shapeName: string, registry: IconRegistrySources): boolean {
+export function hasIcon(shapeName: string, registry: IconRegistry): boolean {
   return has(shapeName, registry);
 }
 
-export function setIconAliases(iconAlias: IconAlias, registry: IconRegistrySources) {
+export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry) {
   if (registry[iconAlias[0]]) {
     iconAlias[1].forEach(a => {
       setIconAlias(iconAlias[0], a, registry);
@@ -34,7 +34,7 @@ export function setIconAliases(iconAlias: IconAlias, registry: IconRegistrySourc
   }
 }
 
-export function setIconAlias(shapeName: string, aliasName: string, registry: IconRegistrySources) {
+export function setIconAlias(shapeName: string, aliasName: string, registry: IconRegistry) {
   if (existsIn([shapeName], registry)) {
     Object.defineProperty(registry, aliasName, {
       get: () => {
@@ -46,7 +46,7 @@ export function setIconAlias(shapeName: string, aliasName: string, registry: Ico
   }
 }
 
-export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistrySources) {
+export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistry) {
   for (const shapeNameKey in aliases) {
     if (aliases.hasOwnProperty(shapeNameKey)) {
       if (registry.hasOwnProperty(shapeNameKey)) {
@@ -58,19 +58,11 @@ export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegist
   }
 }
 
-export function getIcon(shapeName: string, registry: IconRegistrySources): string {
-  return hasIcon(shapeName, registry) ? retrieveIconFromRegistry(shapeName, registry) : getUnknownIcon(registry);
+export function getIcon(shapeName: string, registry: IconRegistry): string {
+  return registry[shapeName] ? (registry[shapeName] as string) : (registry.unknown as string);
 }
 
-export function getUnknownIcon(registry: IconRegistrySources): string {
-  return registry.unknown;
-}
-
-function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistrySources) {
+function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistry) {
   const [shapeName, template] = shape;
   registry[shapeName] = renderIcon(template);
-}
-
-function retrieveIconFromRegistry(shapeName: string, registry: IconRegistrySources): string {
-  return registry[shapeName];
 }

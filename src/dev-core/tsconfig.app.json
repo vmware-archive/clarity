@@ -4,7 +4,16 @@
     "outDir": "../out-tsc/dev-core",
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2015"
+    "target": "es2015",
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictFunctionTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true
   },
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder } from '@angular/forms';
 import '@clr/core/icon';
 import { Subscription } from 'rxjs';
 
@@ -54,7 +54,7 @@ loadTravelIconSet();
   templateUrl: './icon-sets.demo.html',
 })
 export class IconSetsDemoComponent {
-  iconIndex = {
+  iconIndex: { [key: string]: string[] } = {
     Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
     Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
     Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
@@ -98,7 +98,7 @@ export class IconSetsDemoComponent {
   }
 
   showIcon(name: string): boolean {
-    const currentFilterText = this.iconFilterAndToggles.get('filterText').value;
+    const currentFilterText = (this.iconFilterAndToggles.get('filterText') as AbstractControl).value;
     return currentFilterText === '' || name.indexOf(currentFilterText) > -1;
   }
 

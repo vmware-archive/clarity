@@ -79,27 +79,27 @@ export function loadSocialIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [bookmarkIconName]?: string;
-    [calendarIconName]?: string;
-    [chatBubbleIconName]?: string;
-    [crownIconName]?: string;
-    [envelopeIconName]?: string;
-    [eventIconName]?: string;
-    [flagIconName]?: string;
-    [halfStarIconName]?: string;
-    [happyFaceIconName]?: string;
-    [hashtagIconName]?: string;
-    [heartIconName]?: string;
-    [heartBrokenIconName]?: string;
-    [inboxIconName]?: string;
-    [neutralFaceIconName]?: string;
-    [pictureIconName]?: string;
-    [sadFaceIconName]?: string;
-    [shareIconName]?: string;
-    [starIconName]?: string;
-    [talkBubblesIconName]?: string;
-    [tasksIconName]?: string;
-    [thumbsDownIconName]?: string;
-    [thumbsUpIconName]?: string;
+    [bookmarkIconName]: string;
+    [calendarIconName]: string;
+    [chatBubbleIconName]: string;
+    [crownIconName]: string;
+    [envelopeIconName]: string;
+    [eventIconName]: string;
+    [flagIconName]: string;
+    [halfStarIconName]: string;
+    [happyFaceIconName]: string;
+    [hashtagIconName]: string;
+    [heartIconName]: string;
+    [heartBrokenIconName]: string;
+    [inboxIconName]: string;
+    [neutralFaceIconName]: string;
+    [pictureIconName]: string;
+    [sadFaceIconName]: string;
+    [shareIconName]: string;
+    [starIconName]: string;
+    [talkBubblesIconName]: string;
+    [tasksIconName]: string;
+    [thumbsDownIconName]: string;
+    [thumbsUpIconName]: string;
   }
 }

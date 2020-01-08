@@ -1,16 +1,21 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { IconRegistrySources, isNilOrEmpty } from '@clr/core/common';
-import { IconAlias, IconAliasLegacyObject, IconShapeSources, IconShapeTuple } from './interfaces/icon.interfaces';
+import {
+  IconAlias,
+  IconAliasLegacyObject,
+  IconRegistry,
+  IconShapeSources,
+  IconShapeTuple,
+} from './interfaces/icon.interfaces';
 import { unknownIcon } from './shapes/unknown';
 
 import { addIcon, addIcons, getIcon, legacyAlias, setIconAliases } from './utils/icon.service-helpers';
 
-const iconRegistry: IconRegistrySources = {
+const iconRegistry: IconRegistry = {
   unknown: unknownIcon[1] as string,
 };
 
@@ -32,7 +37,7 @@ export class ClarityIcons {
    * Performing actions on the return value of registry() will not be reflected in the
    * actual iconsRegistry
    */
-  static get registry(): IconRegistrySources {
+  static get registry(): IconRegistry {
     return { ...iconRegistry };
   }
 
@@ -45,11 +50,8 @@ export class ClarityIcons {
   }
 
   /** @deprecated legacy API */
-  static get(shapeName?: string): string | IconRegistrySources {
-    if (isNilOrEmpty(shapeName)) {
-      return { ...iconRegistry };
-    }
-    return getIcon(shapeName, iconRegistry);
+  static get(shapeName?: string): string | IconRegistry {
+    return shapeName ? getIcon(shapeName, iconRegistry) : { ...iconRegistry };
   }
 
   /** @deprecated legacy API */

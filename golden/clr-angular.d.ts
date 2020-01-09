@@ -173,29 +173,27 @@ export declare class ClrButton implements LoadingListener {
     name: string;
     templateRef: TemplateRef<ClrButton>;
     type: string;
-    constructor(buttonInGroupService: ButtonInGroupService);
-    emitClick(): void;
+    constructor(buttonInGroupService: ButtonInGroupService, toggleService: ClrPopoverToggleService);
+    emitClick($event: any): void;
     loadingStateChange(state: ClrLoadingState): void;
     ngAfterViewInit(): void;
 }
 
 export declare class ClrButtonGroup {
-    anchorPoint: Point;
     buttonGroupNewService: ButtonInGroupService;
     buttons: QueryList<ClrButton>;
     commonStrings: ClrCommonStringsService;
     inlineButtons: ClrButton[];
     menuButtons: ClrButton[];
     menuPosition: string;
-    openMenu: boolean;
-    popoverPoint: Point;
-    constructor(buttonGroupNewService: ButtonInGroupService, elementRef: ElementRef, commonStrings: ClrCommonStringsService);
+    readonly open: boolean;
+    popoverId: string;
+    popoverPosition: ClrPopoverPosition;
+    constructor(buttonGroupNewService: ButtonInGroupService, elementRef: ElementRef, toggleService: ClrPopoverToggleService, popoverId: string, commonStrings: ClrCommonStringsService);
     getMoveIndex(buttonToMove: ClrButton): number;
     initializeButtons(): void;
     ngAfterContentInit(): void;
-    onMouseClick(target: any): void;
     rearrangeButton(button: ClrButton): void;
-    toggleMenu(): void;
 }
 
 export declare class ClrButtonGroupModule {

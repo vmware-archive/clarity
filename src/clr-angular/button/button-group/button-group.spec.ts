@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -118,7 +118,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const dropdownMenu: HTMLElement = compiled.querySelector('.dropdown-menu');
+        const dropdownMenu: HTMLElement = document.querySelector('.dropdown-menu');
         expect(dropdownMenu.children.length).toBe(3);
 
         // Should be a button
@@ -222,7 +222,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const overflowMenu: HTMLElement = compiled.querySelector('.dropdown-menu');
+        const overflowMenu: HTMLElement = document.querySelector('.dropdown-menu');
 
         expect(overflowMenu.children.length).toBe(1);
 
@@ -249,6 +249,7 @@ export default function(): void {
         expect(compiled.textContent).toMatch(/Button 2/);
         expect(compiled.textContent).toMatch(/Button 3/);
         expect(compiled.textContent).toMatch(/Button 4/);
+        expect(compiled.textContent).not.toMatch(/Button 5/);
       });
 
       it('projects the menu buttons projected by the user when the menu is open', () => {
@@ -256,8 +257,9 @@ export default function(): void {
         dropdownToggle.click();
 
         fixture.detectChanges();
+        const overflow = document.querySelector('.dropdown-menu');
 
-        expect(compiled.textContent).toMatch(/Button 5/);
+        expect(overflow.textContent).toMatch(/Button 5/);
       });
 
       it('renders the overflow initially', () => {
@@ -379,13 +381,13 @@ export default function(): void {
         expect(overflow).not.toBeNull();
       });
 
-      it('renders all buttons in the menu view container', () => {
+      it('renders all buttons in overflow container', () => {
         const dropdownToggle: HTMLElement = compiled.querySelector('.dropdown-toggle');
         dropdownToggle.click();
 
         fixture.detectChanges();
 
-        const overflowMenu: HTMLElement = compiled.querySelector('.dropdown-menu');
+        const overflowMenu: HTMLElement = document.querySelector('.dropdown-menu');
         expect(overflowMenu.children.length).toBe(5);
 
         // Should be a button
@@ -395,11 +397,11 @@ export default function(): void {
         expect(overflowMenu.children[3].classList.contains('btn')).toBe(true);
         expect(overflowMenu.children[4].classList.contains('btn')).toBe(true);
 
-        expect(compiled.textContent).toMatch(/Button 1/);
-        expect(compiled.textContent).toMatch(/Button 2/);
-        expect(compiled.textContent).toMatch(/Button 3/);
-        expect(compiled.textContent).toMatch(/Button 4/);
-        expect(compiled.textContent).toMatch(/Button 5/);
+        expect(overflowMenu.textContent).toMatch(/Button 1/);
+        expect(overflowMenu.textContent).toMatch(/Button 2/);
+        expect(overflowMenu.textContent).toMatch(/Button 3/);
+        expect(overflowMenu.textContent).toMatch(/Button 4/);
+        expect(overflowMenu.textContent).toMatch(/Button 5/);
       });
     });
 
@@ -418,54 +420,56 @@ export default function(): void {
         const dropdownToggle1: HTMLElement = compiled.querySelector('.test-btn-group-1 .dropdown-toggle');
         const dropdownToggle2: HTMLElement = compiled.querySelector('.test-btn-group-2 .dropdown-toggle');
 
+        // In this case only the first dropdown is opened
         dropdownToggle1.click();
-
         fixture.detectChanges();
+        let overflowMenu = document.querySelector('.dropdown-menu');
 
         expect(compiled.textContent).toMatch(/Button 1/);
         expect(compiled.textContent).toMatch(/Button 2/);
         expect(compiled.textContent).toMatch(/Button 3/);
-        expect(compiled.textContent).toMatch(/Button 4/);
-        expect(compiled.textContent).toMatch(/Button 5/);
+        expect(overflowMenu.textContent).toMatch(/Button 4/);
+        expect(overflowMenu.textContent).toMatch(/Button 5/);
+
         expect(compiled.textContent).toMatch(/Button 6/);
         expect(compiled.textContent).toMatch(/Button 7/);
         expect(compiled.textContent).toMatch(/Button 8/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 9/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 10/);
 
-        expect(compiled.textContent).not.toMatch(/Button 9/);
-        expect(compiled.textContent).not.toMatch(/Button 10/);
-
+        // Now second is opened, first is closed
         dropdownToggle2.click();
-
         fixture.detectChanges();
+        overflowMenu = document.querySelector('.dropdown-menu');
 
         expect(compiled.textContent).toMatch(/Button 1/);
         expect(compiled.textContent).toMatch(/Button 2/);
         expect(compiled.textContent).toMatch(/Button 3/);
-
-        expect(compiled.textContent).not.toMatch(/Button 4/);
-        expect(compiled.textContent).not.toMatch(/Button 5/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 4/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 5/);
 
         expect(compiled.textContent).toMatch(/Button 6/);
         expect(compiled.textContent).toMatch(/Button 7/);
         expect(compiled.textContent).toMatch(/Button 8/);
-        expect(compiled.textContent).toMatch(/Button 9/);
-        expect(compiled.textContent).toMatch(/Button 10/);
+        expect(overflowMenu.textContent).toMatch(/Button 9/);
+        expect(overflowMenu.textContent).toMatch(/Button 10/);
 
+        // Back to the first, second is closed
         dropdownToggle1.click();
-
         fixture.detectChanges();
+        overflowMenu = document.querySelector('.dropdown-menu');
 
         expect(compiled.textContent).toMatch(/Button 1/);
         expect(compiled.textContent).toMatch(/Button 2/);
         expect(compiled.textContent).toMatch(/Button 3/);
-        expect(compiled.textContent).toMatch(/Button 4/);
-        expect(compiled.textContent).toMatch(/Button 5/);
+        expect(overflowMenu.textContent).toMatch(/Button 4/);
+        expect(overflowMenu.textContent).toMatch(/Button 5/);
+
         expect(compiled.textContent).toMatch(/Button 6/);
         expect(compiled.textContent).toMatch(/Button 7/);
         expect(compiled.textContent).toMatch(/Button 8/);
-
-        expect(compiled.textContent).not.toMatch(/Button 9/);
-        expect(compiled.textContent).not.toMatch(/Button 10/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 9/);
+        expect(overflowMenu.textContent).not.toMatch(/Button 10/);
       });
     });
   });

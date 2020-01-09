@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,6 +13,7 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
 
 import { ClrButton } from './button';
 import { ClrButtonGroupModule } from './button-group.module';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   template: `
@@ -103,7 +104,7 @@ export default function(): void {
         TestBed.configureTestingModule({
           imports: [ClrButtonGroupModule],
           declarations: [TestButtonComponent],
-          providers: [ButtonInGroupService],
+          providers: [ButtonInGroupService, ClrPopoverToggleService],
         });
 
         fixture = TestBed.createComponent(TestButtonComponent);
@@ -228,7 +229,7 @@ export default function(): void {
         TestBed.configureTestingModule({
           imports: [ClrButtonGroupModule, ClrLoadingModule],
           declarations: [ButtonViewTestComponent],
-          providers: [ButtonInGroupService],
+          providers: [ButtonInGroupService, ClrPopoverToggleService],
         });
 
         fixture = TestBed.createComponent(ButtonViewTestComponent);

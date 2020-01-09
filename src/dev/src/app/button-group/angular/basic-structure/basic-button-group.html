@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -17,8 +17,21 @@
   </clr-button-group>
 </div>
 
+<label>Overflow position:
+  <select [(ngModel)]="position">
+    <option value="bottom-left">bottom-left</option>
+    <option value="bottom-right">bottom-right</option>
+    <option value="top-left">top-left</option>
+    <option value="top-right">top-right</option>
+    <option value="left-top">left-top</option>
+    <option value="left-bottom">left-bottom</option>
+    <option value="right-top">right-top</option>
+    <option value="right-bottom">right-bottom</option>
+  </select>
+</label>
+
 <div class="clr-example">
-  <clr-button-group class="btn-primary">
+  <clr-button-group class="btn-primary" [clrMenuPosition]="position">
     <clr-button (click)="handleClick(1)">1</clr-button>
     <clr-button (click)="handleClick(2)">2</clr-button>
     <clr-button (click)="handleClick(3)">3</clr-button>

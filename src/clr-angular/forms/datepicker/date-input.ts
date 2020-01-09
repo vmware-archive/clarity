@@ -281,6 +281,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
         filter(() => !this.datepickerFocusService.elementIsFocused(this.el.nativeElement))
       )
       .subscribe((value: string) => {
+        console.log('value is ', value);
         if (value === '' && this.previousDateChange === null) {
           // when value is empty string and previous state is null
           // no new date could be produced so there is no need of any

@@ -113,7 +113,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     private _toggleService: ClrPopoverToggleService,
     private _dateNavigationService: DateNavigationService,
     private _datepickerEnabledService: DatepickerEnabledService,
-    private dateFormControlService: DateFormControlService,
+    public dateFormControlService: DateFormControlService,
     public commonStrings: ClrCommonStringsService,
     private ifErrorService: IfErrorService,
     private focusService: FocusService,

@@ -42,7 +42,7 @@ export const travelCollectionAliases: IconAlias[] = [[airplaneIconName, ['plane'
  *
  * ```typescript
  * import '@clr/core/icon';
- * import { loadTravelIconSet } from '@clr/core/icon-set';
+ * import { loadTravelIconSet } from '@clr/core/icon-shapes';
  *
  * loadTravelIconSet();
  * ```
@@ -55,17 +55,17 @@ export function loadTravelIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [airplaneIconName]?: string;
-    [bicycleIconName]?: string;
-    [boatIconName]?: string;
-    [carIconName]?: string;
-    [caravanIconName]?: string;
-    [campervanIconName]?: string;
-    [compassIconName]?: string;
-    [ferryIconName]?: string;
-    [mapIconName]?: string;
-    [mapMarkerIconName]?: string;
-    [trailerIconName]?: string;
-    [truckIconName]?: string;
+    [airplaneIconName]: string;
+    [bicycleIconName]: string;
+    [boatIconName]: string;
+    [carIconName]: string;
+    [caravanIconName]: string;
+    [campervanIconName]: string;
+    [compassIconName]: string;
+    [ferryIconName]: string;
+    [mapIconName]: string;
+    [mapMarkerIconName]: string;
+    [trailerIconName]: string;
+    [truckIconName]: string;
   }
 }

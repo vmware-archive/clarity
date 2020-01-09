@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -139,8 +139,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       outline: none;
     }
 
-    .stack-block-label,
-    .stack-block-content {
+    .stack-block-label {
       padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
       @include css-var(
         background-color,
@@ -148,6 +147,14 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         $clr-stack-view-stack-block-label-and-content-bg-color,
         $clr-use-custom-properties
       );
+    }
+
+    .stack-block-content {
+      background-color: inherit;
+    }
+
+    .stack-block-caret {
+      align-self: center;
     }
 
     .stack-block-label {
@@ -165,8 +172,8 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       // We're doing a non-flexible item.
       // It's just easier to align and stretch everything vertically this way than with
       // floats or inline-blocks.
-      flex: 0 0 40%;
-      max-width: 40%;
+      flex: 1 1 auto;
+      display: flex;
 
       &::before {
         display: inline-block;
@@ -176,6 +183,11 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
       }
+    }
+
+    .stack-view-key {
+      flex: 0 0 40%;
+      max-width: 40%;
     }
 
     .stack-block-caret {
@@ -257,8 +269,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
 
       &.on-focus:not(.stack-block-expanded),
       &:hover:not(.stack-block-expanded) {
-        > .stack-block-label,
-        > .stack-block-content {
+        > .stack-block-label {
           @include css-var(
             background-color,
             clr-stack-view-stack-block-expandable-hover,
@@ -274,8 +285,7 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         transform: rotate(0deg);
       }
 
-      > .stack-block-label,
-      > .stack-block-content {
+      > .stack-block-label {
         @include css-var(
           background-color,
           clr-stack-view-stack-block-expanded-bg-color,
@@ -373,9 +383,17 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
       }
     }
 
-    .stack-children clr-stack-block {
+    .stack-children clr-stack-block,
+    .stack-children {
       .stack-block-label {
         padding-left: $clr_baselineRem_1_5;
+
+        &::before {
+          display: none;
+        }
+      }
+      .stack-block-content {
+        padding-left: $clr_baselineRem_0_3;
       }
     }
   }

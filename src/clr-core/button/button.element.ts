@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, registerElementSafely } from '@clr/core/common';
+import { baseStyles, property, registerElementSafely } from '@clr/core/common';
 import {
   CwcBaseButton,
   getElementWidthUnless,
   getTranslateForChromeRenderingBugUnless,
   toggleDisabledAttribute,
 } from '@clr/core/common';
-import { html, property } from 'lit-element';
+import { html } from 'lit-element';
 import { styles } from './button.element.css';
 
 export enum ClrLoadingState {
@@ -151,19 +151,19 @@ export enum ClrLoadingState {
 // @dynamic
 export class CwcButton extends CwcBaseButton {
   /** Define the type of action the button triggers */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   action: 'default' | 'outline' | 'link';
 
   /** Sets the color of the button to match the status */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   status: 'default' | 'primary' | 'inverse' | 'success' | 'warning' | 'danger';
 
   /** Sets the overall height and width of the button based on value */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   size: 'default' | 'sm';
 
   /** Sets button type for icon */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   icon: '';
 
   private _loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -181,7 +181,7 @@ export class CwcButton extends CwcBaseButton {
    *
    * Defaults to `ClrLoadingState.DEFAULT`.
    */
-  @property({ type: Number, reflect: true, attribute: 'loading-state' })
+  @property({ type: Number, attribute: 'loading-state' })
   set loadingState(state: ClrLoadingState) {
     const oldState = this._loadingState;
     this.updateButtonState(state);

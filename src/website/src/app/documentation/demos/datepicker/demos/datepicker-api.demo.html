@@ -5,8 +5,9 @@
     <code class="clr-code">input</code> field. Then, place the input inside the
     <code class="clr-code">clr-date-container</code> container element.
 </p>
-<form class="datepicker-demo" clrForm clrLayout="vertical">
+<form class="datepicker-demo" clrForm clrLayout="horizontal">
     <clr-date-container>
+        <label>Basic Demo</label>
         <input type="date" clrDate name="demo" [(ngModel)]="demo">
     </clr-date-container>
 </form>
@@ -37,11 +38,24 @@
 <h5>Only Min</h5>
 <form clrForm clrLayout="vertical">
     <clr-date-container>
-        <input type="date" clrDate name="minDemo" [(ngModel)]="demo" min="2019-11-11">
+        <label>Min date: 2019-11-17</label>
+        <input type="date" clrDate name="minDemo" [(ngModel)]="demo" min="2019-11-17">
     </clr-date-container>
 </form>
 <clr-code-snippet [clrCode]="minExample"></clr-code-snippet>
 <h5>Only Max</h5>
+<form clrForm clrLayout="vertical">
+    <clr-date-container>
+        <label>Max date: 2019-11-19</label>
+        <input type="date" clrDate name="maxDemo" [(ngModel)]="demo" max="2019-11-19">
+    </clr-date-container>
+</form>
 <clr-code-snippet [clrCode]="maxExample"></clr-code-snippet>
 <h5>Min and Max</h5>
+<form clrForm clrLayout="horizontal">
+    <clr-date-container>
+        <label>Min date: 2019-11-17 AND Max date: 2019-11-19</label>
+        <input type="date" clrDate name="minMaxDemo" [(ngModel)]="demo" min="2019-11-17" max="2019-11-19">
+    </clr-date-container>
+</form>
 <clr-code-snippet [clrCode]="minMaxExample"></clr-code-snippet>

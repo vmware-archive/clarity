@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,14 +14,6 @@ const testIcon = renderIcon('test');
 describe('icon element', () => {
   let testElement: HTMLElement;
   let component: CwcIcon;
-  let idcomponent: CwcIcon;
-  let updaterObject: CwcIcon;
-  let updaterValue: string;
-
-  function updateIconSizeMock(obj: CwcIcon, val: string) {
-    updaterObject = obj;
-    updaterValue = val;
-  }
 
   beforeAll(() => {
     ClarityIcons.add({ testing: testIcon });
@@ -30,16 +22,11 @@ describe('icon element', () => {
   beforeEach(async () => {
     testElement = createTestElement();
     testElement.innerHTML = `
-      <cwc-icon class="no-id"></cwc-icon>
-      <cwc-icon id="ohai"></cwc-icon>
+      <cwc-icon></cwc-icon>
     `;
 
-    updaterObject = void 0;
-    updaterValue = void 0;
-
     await waitForComponent('cwc-icon');
-    component = testElement.querySelector<CwcIcon>('cwc-icon.no-id');
-    idcomponent = testElement.querySelector<CwcIcon>('cwc-icon#ohai');
+    component = testElement.querySelector<CwcIcon>('cwc-icon');
   });
 
   afterEach(() => {
@@ -103,43 +90,18 @@ describe('icon element', () => {
     });
   });
 
-  describe('ariaId: ', () => {
-    it('ariaId should return an aria prefixed id for use by labelled by', async () => {
-      // only shape in registry is 'unknown'
-      await componentIsStable(idcomponent);
-      expect(idcomponent.shadowRoot.innerHTML.includes('aria-ohai')).toBe(true);
-    });
-    it('ariaId should default to a defined id', async () => {
+  describe('title and aria label: ', () => {
+    it('should set aria label when a icon title is provided', async () => {
       await componentIsStable(component);
-      expect(component.shadowRoot.innerHTML.includes('aria-undefined')).toBe(false);
-      expect(component.shadowRoot.innerHTML.includes('aria-cwc-icon-0')).toBe(false);
-    });
-  });
+      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(null);
+      expect(component.shadowRoot.querySelector('span')).toBe(null);
 
-  describe('id: ', () => {
-    it('should set an id if one is not given', async () => {
+      component.title = 'test';
       await componentIsStable(component);
-      const tagNameInId = component.tagName.toLowerCase();
-      expect(component.getAttribute('id')).toContain(tagNameInId);
-      expect(component.shadowRoot.innerHTML.includes('id="aria-' + tagNameInId)).toBe(true);
-      expect(component.shadowRoot.innerHTML.includes('aria-labelledby="aria-' + tagNameInId)).toBe(true);
-    });
 
-    it('should not overwrite id if one is given', async () => {
-      await componentIsStable(idcomponent);
-      const expectedId = 'ohai';
-      expect(idcomponent.shadowRoot.innerHTML.includes('id="aria-' + expectedId)).toBe(true);
-      expect(idcomponent.shadowRoot.innerHTML.includes('aria-labelledby="aria-' + expectedId)).toBe(true);
-      expect(idcomponent.id).toBe(expectedId);
-    });
-
-    it('should update id if it is changed', async () => {
-      const newId = 'kthxbye';
-      await componentIsStable(idcomponent);
-      idcomponent.setAttribute('id', newId);
-      await componentIsStable(idcomponent);
-      expect(idcomponent.shadowRoot.innerHTML.includes('id="aria-' + newId)).toBe(true);
-      expect(idcomponent.shadowRoot.innerHTML.includes('aria-labelledby="aria-' + newId)).toBe(true);
+      const id = component.shadowRoot.querySelector('span').getAttribute('id');
+      expect(id.includes('aria-cwc-icon')).toBe(true);
+      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
     });
   });
 
@@ -190,22 +152,10 @@ describe('icon element', () => {
     });
   });
 
-  describe('title: ', () => {
-    it('should generate a title consisting of "[shape] icon" in the sr-only element if no title is given', async () => {
-      const shape = 'testing';
-      let srOnlyEl: HTMLElement;
-      await componentIsStable(component);
-      component.setAttribute('shape', shape);
-      await componentIsStable(component);
-      srOnlyEl = component.shadowRoot.querySelector('.sr-only');
-      expect(srOnlyEl.innerHTML).toContain(shape + ' icon');
-    });
-  });
-
   describe('render(): ', () => {
     it('should render icon', async () => {
-      await componentIsStable(idcomponent);
-      const iconHtml = idcomponent.shadowRoot.innerHTML;
+      await componentIsStable(component);
+      const iconHtml = component.shadowRoot.innerHTML;
       const iconHtmlPaths = iconHtml
         .split('<')
         .map((val, index, arry) => {
@@ -214,22 +164,11 @@ describe('icon element', () => {
           }
         })
         .join('<');
-      expect(idcomponent.shadowRoot.innerHTML.includes('aria-' + idcomponent.id)).toBe(true);
-      expect(idcomponent.shadowRoot.innerHTML.includes(iconHtmlPaths)).toBe(true);
+      expect(component.shadowRoot.innerHTML.includes(iconHtmlPaths)).toBe(true);
     });
   });
 
   describe('Behavior: ', () => {
-    it('should reflect changes in id', async () => {
-      await componentIsStable(component);
-      component.id = 'howdy';
-      await componentIsStable(component);
-      expect(component.getAttribute('id')).toEqual(component.id);
-      component.setAttribute('id', 'kthxbye');
-      await componentIsStable(component);
-      expect(component.getAttribute('id')).toEqual(component.id);
-    });
-
     it('should reflect changes in shape', async () => {
       await componentIsStable(component);
       component.shape = 'testing';

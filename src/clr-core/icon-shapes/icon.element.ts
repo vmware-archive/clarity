@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,20 +9,16 @@ import {
   baseStyles,
   CssHelpers,
   hasPropertyChanged,
-  isNilOrEmpty,
+  property,
   registerElementSafely,
   UniqueId,
 } from '@clr/core/common';
-import { html, LitElement, property } from 'lit-element';
+import { html, LitElement, query } from 'lit-element';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { styles } from './icon.element.css';
 import { ClarityIcons } from './icon.service';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames';
 import { hasIcon } from './utils/icon.service-helpers';
-
-function updateSvgAriaAttrs(svgEl: SVGSVGElement, ariaId: string) {
-  svgEl.setAttribute('role', 'img');
-  svgEl.setAttribute('aria-labelledby', ariaId);
-}
 
 class IconMixinClass extends LitElement {}
 
@@ -61,6 +57,10 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  */
 // @dynamic
 export class CwcIcon extends IconMixinClass {
+  static get styles() {
+    return [baseStyles, styles];
+  }
+
   private _shape: string;
   private _size: string;
 
@@ -72,7 +72,7 @@ export class CwcIcon extends IconMixinClass {
    * Changes the svg glyph displayed in the icon component. Defaults to the 'unknown' icon if
    * the specified icon cannot be found in the icon registry.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   set shape(val: string) {
     if (hasPropertyChanged(val, this._shape)) {
       const oldVal = this._shape;
@@ -86,7 +86,7 @@ export class CwcIcon extends IconMixinClass {
   }
 
   /** Apply numerical width-height or a t-shirt-sized CSS classname */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   set size(val: string) {
     if (hasPropertyChanged(val, this._size)) {
       const oldVal = this._size;
@@ -97,72 +97,56 @@ export class CwcIcon extends IconMixinClass {
   }
 
   /** If present, customizes the aria-label for the icon for accessibility. */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   title: string;
-
-  /** If present, determines the id of the icon. Uses a generated unique id otherwise. */
-  @property({ type: String, reflect: true })
-  id: string;
 
   /**
    * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   dir: string;
 
   /**
    * Takes an orientation value (horizontal|vertical) that reverses the orientation of the
    * icon vertically or horizontally.
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   flip: string;
 
+  @query('svg') private svg: SVGElement;
+
+  private ariaLabel = `aria-${this._idPrefix}${this._uniqueId}`;
+
   firstUpdated() {
-    if (isNilOrEmpty(this.id)) {
-      this.id = this._idPrefix + this._uniqueId;
+    this.updateSVGAriaLabel();
+  }
+
+  updated(props: Map<string, any>) {
+    if (props.has('title')) {
+      this.updateSVGAriaLabel();
     }
-  }
-
-  static get styles() {
-    return [baseStyles, styles];
-  }
-
-  private get ariaId() {
-    return 'aria-' + this.id;
-  }
-
-  private get ariaLabel() {
-    return this.title || this.shape + ' icon';
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'none');
-    this.updateSVGAttributes();
   }
 
-  async updateSVGAttributes() {
-    await this.updateComplete;
-    const svgEl = this.shadowRoot.querySelector('svg');
-    if (svgEl !== null) {
-      updateSvgAriaAttrs(svgEl, this.ariaId);
-    }
-  }
-
-  updated(changedProperties: any) {
-    changedProperties.forEach((oldValue: any, propName: any) => {
-      if (oldValue && propName === 'id') {
-        this.updateSVGAttributes();
-      }
-    });
-  }
-
-  /** render() needs the .innerHTML because svg is converted to text otherwise */
   protected render() {
     return html`
-    <div .innerHTML="${ClarityIcons.registry[this.shape]}"></div>
-    <span id="${this.ariaId}" class="sr-only">${this.ariaLabel}</span>`;
+      ${unsafeHTML(ClarityIcons.registry[this.shape])}
+      ${this.title ? html`<span id="${this.ariaLabel}" class="sr-only">${this.title}</span>` : ''}
+    `;
+  }
+
+  private updateSVGAriaLabel() {
+    if (this.title) {
+      this.svg.removeAttribute('aria-label'); // remove empty label that makes icon decorative by default
+      this.svg.setAttribute('aria-labelledby', this.ariaLabel); // use labelledby for better SR support
+    } else {
+      this.svg.removeAttribute('aria-labelledby');
+    }
   }
 }
 export interface CwcIcon extends IconMixinClass, UniqueId, CssHelpers {}

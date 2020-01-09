@@ -189,6 +189,52 @@ export { pieChartIcon } from './shapes/pie-chart';
 export { scatterPlotIcon } from './shapes/scatter-plot';
 export { tickChartIcon } from './shapes/tick-chart';
 
+// SHAPES - COMMERCE
+export { bankIcon } from './shapes/bank';
+export { bitcoinIcon } from './shapes/bitcoin';
+export { calculatorIcon } from './shapes/calculator';
+export { coinBagIcon } from './shapes/coin-bag';
+export { creditCardIcon } from './shapes/credit-card';
+export { dollarIcon } from './shapes/dollar';
+export { dollarBillIcon } from './shapes/dollar-bill';
+export { eCheckIcon } from './shapes/e-check';
+export { euroIcon } from './shapes/euro';
+export { pesoIcon } from './shapes/peso';
+export { piggyBankIcon } from './shapes/piggy-bank';
+export { poundIcon } from './shapes/pound';
+export { rubleIcon } from './shapes/ruble';
+export { rupeeIcon } from './shapes/rupee';
+export { shoppingBagIcon } from './shapes/shopping-bag';
+export { shoppingCartIcon } from './shapes/shopping-cart';
+export { storeIcon } from './shapes/store';
+export { walletIcon } from './shapes/wallet';
+export { wonIcon } from './shapes/won';
+export { yenIcon } from './shapes/yen';
+
+// SHAPES - MEDIA
+export { cameraIcon } from './shapes/camera';
+export { fastForwardIcon } from './shapes/fast-forward';
+export { filmStripIcon } from './shapes/film-strip';
+export { headphonesIcon } from './shapes/headphones';
+export { imageGalleryIcon } from './shapes/image-gallery';
+export { microphoneIcon } from './shapes/microphone';
+export { microphoneMuteIcon } from './shapes/microphone-mute';
+export { musicNoteIcon } from './shapes/music-note';
+export { pauseIcon } from './shapes/pause';
+export { playIcon } from './shapes/play';
+export { powerIcon } from './shapes/power';
+export { replayAllIcon } from './shapes/replay-all';
+export { replayOneIcon } from './shapes/replay-one';
+export { rewindIcon } from './shapes/rewind';
+export { shuffleIcon } from './shapes/shuffle';
+export { stepForwardIcon } from './shapes/step-forward';
+export { stopIcon } from './shapes/stop';
+export { videoCameraIcon } from './shapes/video-camera';
+export { videoGalleryIcon } from './shapes/video-gallery';
+export { volumeDownIcon } from './shapes/volume-down';
+export { volumeMuteIcon } from './shapes/volume-mute';
+export { volumeUpIcon } from './shapes/volume-up';
+
 // SHAPES - TECHNOLOGY
 export { administratorIcon } from './shapes/administrator';
 export { applicationIcon } from './shapes/application';
@@ -354,8 +400,10 @@ export { truckIcon } from './shapes/truck';
 
 // COLLECTIONS
 export * from './collections/chart';
+export * from './collections/commerce';
 export * from './collections/core';
 export * from './collections/essential';
+export * from './collections/media';
 export * from './collections/technology';
 export * from './collections/social';
 export * from './collections/text-edit';

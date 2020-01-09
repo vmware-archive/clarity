@@ -48,8 +48,8 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
               class="clr-input-group-icon-action clr-datepicker-close-btn"
               [attr.title]="commonStrings.keys.datepickerClear"
               [attr.aria-label]="commonStrings.keys.datepickerClear"
-              [disabled]="control?.disabled"
-              (click)="clearDateValue()"
+              [disabled]="isInputDateDisabled"
+              (click)="dateFormControlService.clear()"
               *ngIf="dateValue">
                 <clr-icon shape="times"></clr-icon>
             </button>
@@ -60,7 +60,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
                     class="clr-input-group-icon-action"
                     [attr.title]="commonStrings.keys.datepickerToggle"
                     [attr.aria-label]="commonStrings.keys.datepickerToggle"
-                    [disabled]="control?.disabled"
+                    [disabled]="isInputDateDisabled"
                     (click)="toggleDatepicker($event)"
                     *ngIf="isEnabled">
               <clr-icon shape="calendar"></clr-icon>
@@ -85,10 +85,9 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
     DateNavigationService,
     DatepickerEnabledService,
     DateFormControlService,
-    ClrCommonStringsService,
   ],
   host: {
-    '[class.clr-form-control-disabled]': 'control?.disabled',
+    '[class.clr-form-control-disabled]': 'isInputDateDisabled',
     '[class.clr-form-control]': 'true',
     '[class.clr-row]': 'addGrid()',
   },
@@ -176,6 +175,16 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
   }
 
   /**
+   * Return if Datepicker is diabled or not as Form Control
+   */
+  get isInputDateDisabled(): boolean {
+    /* clrForm wrapper or without clrForm */
+    return (
+      (this.control && this.control.disabled) || (this.dateFormControlService && this.dateFormControlService.disabled)
+    );
+  }
+
+  /**
    * Processes the user input and Initializes the Calendar everytime the datepicker popover is open.
    */
   private initializeCalendar(): void {
@@ -188,13 +197,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
   toggleDatepicker(event: MouseEvent) {
     this._toggleService.toggleWithEvent(event);
     this.dateFormControlService.markAsTouched();
-  }
-
-  /**
-   * Clear datapicker value
-   */
-  public clearDateValue() {
-    this.dateFormControlService.clear();
   }
 
   public get dateValue() {

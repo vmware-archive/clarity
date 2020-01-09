@@ -144,6 +144,12 @@ export default function() {
         });
       }));
 
+      it('should set disabled state when dateFormControlService.disabled is true', () => {
+        dateFormControlService.disabled = true;
+        context.detectChanges();
+        expect(context.clarityElement.className).toContain('clr-form-control-disabled');
+      });
+
       it('has an accessible title on the calendar toggle button', () => {
         const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         expect(toggleButton.title).toEqual('Toggle datepicker');
@@ -219,9 +225,15 @@ export default function() {
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
       });
 
-      it('clearDateValue should call method from DateIOService to request clear', () => {
+      it('should call method from DateFormControlService to request clear', () => {
         const spyClear = spyOn(dateFormControlService, 'clear');
-        context.clarityDirective.clearDateValue();
+        dateFormControlService.value = '12/12/12';
+        context.detectChanges();
+        const clearBtn: HTMLElement = context.clarityElement.querySelector(
+          '.clr-input-group-icon-action.clr-datepicker-close-btn'
+        );
+        clearBtn.click();
+        expect(clearBtn).not.toBeNull();
         expect(spyClear).toHaveBeenCalled();
       });
     });

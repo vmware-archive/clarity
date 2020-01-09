@@ -34,6 +34,37 @@ jobs:
             - /home/circleci/.cache/Cypress
           key: v1-visual{{checksum "package.json"}}
       - run: sh ./scripts/circleci/visual.sh
+  website:
+    docker:
+      - image: circleci/node:dubnium
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-website{{checksum "package.json"}}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-website{{checksum "package.json"}}
+      - run: npm run website:render
+      - run: npm run website:deploy
+  dev:
+    docker:
+      - image: circleci/node:dubnium
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dev{{checksum "package.json"}}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dev{{checksum "package.json"}}
+      - run: npm run build:libs && npm run angular:dev:build
+      - run: npm run angular:dev:deploy
+
 # Workflows
 workflows:
   version: 2
@@ -48,6 +79,22 @@ workflows:
                 - v0.13
       - visual:
           context: Applitools
+          filters:
+            branches:
+              ignore:
+                - v2
+                - v1
+                - v0.13
+      - dev:
+          context: Netlify
+          filters:
+            branches:
+              ignore:
+                - v2
+                - v1
+                - v0.13  
+      - website:
+          context: Netlify
           filters:
             branches:
               ignore:

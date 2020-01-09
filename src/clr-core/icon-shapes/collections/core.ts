@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
@@ -107,7 +107,7 @@ export const coreCollectionAliases: IconAlias[] = [
  *
  * ```typescript
  * import '@clr/core/icon';
- * import { loadCoreIconSet } from '@clr/core/icon-set';
+ * import { loadCoreIconSet } from '@clr/core/icon-shapes';
  *
  * loadCoreIconSet();
  * ```
@@ -120,43 +120,43 @@ export function loadCoreIconSet() {
 
 declare module '@clr/core/common' {
   interface IconRegistrySources {
-    [unknownIconName]?: string;
-    [angleIconName]?: string;
-    [angleDoubleIconName]?: string;
-    [arrowIconName]?: string;
-    [barsIconName]?: string;
-    [bellIconName]?: string;
-    [calendarIconName]?: string;
-    [checkIconName]?: string;
-    [checkCircleIconName]?: string;
-    [cloudIconName]?: string;
-    [cogIconName]?: string;
-    [ellipsisHorizontalIconName]?: string;
-    [ellipsisVerticalIconName]?: string;
-    [errorStandardIconName]?: string;
-    [eventIconName]?: string;
-    [exclamationCircleIconName]?: string;
-    [exclamationTriangleIconName]?: string;
-    [eyeIconName]?: string;
-    [eyeHideIconName]?: string;
-    [filterGridIconName]?: string;
-    [filterGridCircleIconName]?: string;
-    [folderIconName]?: string;
-    [folderOpenIconName]?: string;
-    [helpInfoIconName]?: string;
-    [homeIconName]?: string;
-    [imageIconName]?: string;
-    [infoCircleIconName]?: string;
-    [infoStandardIconName]?: string;
-    [searchIconName]?: string;
-    [stepForward2IconName]?: string;
-    [successStandardIconName]?: string;
-    [timesIconName]?: string;
-    [unknownStatusIconName]?: string;
-    [userIconName]?: string;
-    [viewColumnsIconName]?: string;
-    [vmBugIconName]?: string;
-    [vmBugInverseIconName]?: string;
-    [warningStandardIconName]?: string;
+    [unknownIconName]: string;
+    [angleIconName]: string;
+    [angleDoubleIconName]: string;
+    [arrowIconName]: string;
+    [barsIconName]: string;
+    [bellIconName]: string;
+    [calendarIconName]: string;
+    [checkIconName]: string;
+    [checkCircleIconName]: string;
+    [cloudIconName]: string;
+    [cogIconName]: string;
+    [ellipsisHorizontalIconName]: string;
+    [ellipsisVerticalIconName]: string;
+    [errorStandardIconName]: string;
+    [eventIconName]: string;
+    [exclamationCircleIconName]: string;
+    [exclamationTriangleIconName]: string;
+    [eyeIconName]: string;
+    [eyeHideIconName]: string;
+    [filterGridIconName]: string;
+    [filterGridCircleIconName]: string;
+    [folderIconName]: string;
+    [folderOpenIconName]: string;
+    [helpInfoIconName]: string;
+    [homeIconName]: string;
+    [imageIconName]: string;
+    [infoCircleIconName]: string;
+    [infoStandardIconName]: string;
+    [searchIconName]: string;
+    [stepForward2IconName]: string;
+    [successStandardIconName]: string;
+    [timesIconName]: string;
+    [unknownStatusIconName]: string;
+    [userIconName]: string;
+    [viewColumnsIconName]: string;
+    [vmBugIconName]: string;
+    [vmBugInverseIconName]: string;
+    [warningStandardIconName]: string;
   }
 }

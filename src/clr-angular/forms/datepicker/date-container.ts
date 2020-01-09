@@ -45,7 +45,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
             <ng-content select="[clrDate]"></ng-content>
             <button
               type="button"
-              class="clr-input-group-icon-action clr-datepicker-close-btn"
+              class="clr-datepicker-clearbtn clr-input-group-icon-action clr-datepicker-close-btn"
               [attr.title]="commonStrings.keys.datepickerClear"
               [attr.aria-label]="commonStrings.keys.datepickerClear"
               [disabled]="isInputDateDisabled"
@@ -57,7 +57,7 @@ import { PopoverPosition } from '../../popover/common/popover-positions';
                   *ngIf="!dateValue"></div>
             <button #actionButton
                     type="button"
-                    class="clr-input-group-icon-action"
+                    class="clr-datepicker-calendar clr-input-group-icon-action"
                     [attr.title]="commonStrings.keys.datepickerToggle"
                     [attr.aria-label]="commonStrings.keys.datepickerToggle"
                     [disabled]="isInputDateDisabled"

@@ -28,13 +28,15 @@ import { DatepickerEnabledService } from './providers/datepicker-enabled.service
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ClrCommonFormsModule } from '../common/common.module';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function() {
-  describe('Date Container Component', () => {
+  fdescribe('Date Container Component', () => {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
     let toggleService: ClrPopoverToggleService;
+    const commonStringsService: ClrCommonStringsService = new ClrCommonStringsService();
 
     beforeEach(function() {
       TestBed.configureTestingModule({
@@ -74,7 +76,7 @@ export default function() {
       });
 
       it('should returns focus to calendar when we close it', () => {
-        const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-calendar');
         const actionButtonSpy = spyOn(actionButton, 'focus');
         toggleService.open = true;
         context.detectChanges();
@@ -100,17 +102,17 @@ export default function() {
 
       it('renders the datepicker toggle button based on the enabled service', () => {
         expect(enabledService.isEnabled).toBe(true);
-        expect(context.clarityElement.querySelector('.clr-input-group-icon-action')).not.toBeNull();
+        expect(context.clarityElement.querySelector('.clr-datepicker-calendar')).not.toBeNull();
 
         enabledService.fakeIsEnabled = false;
         context.detectChanges();
 
-        expect(context.clarityElement.querySelector('.clr-input-group-icon-action')).toBeNull();
+        expect(context.clarityElement.querySelector('.clr-datepicker-calendar')).toBeNull();
       });
 
       it('clicking on the button toggles the datepicker popover', () => {
         spyOn(context.clarityDirective, 'toggleDatepicker');
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-calendar');
 
         button.click();
         context.detectChanges();
@@ -126,7 +128,7 @@ export default function() {
       it('shows the datepicker view manager when icon button is clicked', () => {
         expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
 
-        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
+        const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-calendar');
         button.click();
         context.detectChanges();
 
@@ -151,13 +153,13 @@ export default function() {
       });
 
       it('has an accessible title on the calendar toggle button', () => {
-        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
-        expect(toggleButton.title).toEqual('Toggle datepicker');
+        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-calendar');
+        expect(toggleButton.title).toEqual(commonStringsService.keys.datepickerToggle);
       });
 
       it('has an accessible aria-label on the calendar toggle button', () => {
-        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
-        expect(toggleButton.attributes['aria-label'].value).toEqual('Toggle datepicker');
+        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-calendar');
+        expect(toggleButton.getAttribute('aria-label')).toEqual(commonStringsService.keys.datepickerToggle);
       });
 
       it('supports clrPosition option', () => {
@@ -167,16 +169,23 @@ export default function() {
         expect(context.clarityDirective.position).toEqual('top-left');
       });
 
+      it('has an accessible aria-label on the calendar clear button', () => {
+        dateFormControlService.value = '12/12/12';
+        context.detectChanges();
+        const clearButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-datepicker-clearbtn');
+        expect(clearButton.getAttribute('aria-label')).toEqual(commonStringsService.keys.datepickerClear);
+      });
+
       it('should display clear icon when there is set date', () => {
         dateFormControlService.value = '12/12/12';
         context.detectChanges();
-        const clearButton = context.clarityElement.querySelector('clr-icon[shape="times"]');
+        const clearButton = context.clarityElement.querySelector('.clr-datepicker-clearbtn');
         expect(clearButton).not.toBeNull();
       });
       it('should clear value when x is clicked', () => {
         dateFormControlService.value = '12/12/12';
         context.detectChanges();
-        const clearButton = context.clarityElement.querySelector('clr-icon[shape="times"]');
+        const clearButton = context.clarityElement.querySelector('.clr-datepicker-clearbtn');
         clearButton.click();
         context.detectChanges();
         expect(dateFormControlService.value).toBe('');
@@ -229,9 +238,7 @@ export default function() {
         const spyClear = spyOn(dateFormControlService, 'clear');
         dateFormControlService.value = '12/12/12';
         context.detectChanges();
-        const clearBtn: HTMLElement = context.clarityElement.querySelector(
-          '.clr-input-group-icon-action.clr-datepicker-close-btn'
-        );
+        const clearBtn: HTMLElement = context.clarityElement.querySelector('.clr-datepicker-clearbtn');
         clearBtn.click();
         expect(clearBtn).not.toBeNull();
         expect(spyClear).toHaveBeenCalled();

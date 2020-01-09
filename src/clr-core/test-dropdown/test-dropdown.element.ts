@@ -5,7 +5,7 @@
  */
 
 import { CommonStringsService } from '@clr/core';
-import { baseStyles, property, registerElementSafely } from '@clr/core/common';
+import { baseStyles, event, EventEmitter, property, registerElementSafely } from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css';
@@ -27,14 +27,15 @@ import { styles } from './test-dropdown.element.css';
  * @beta 3.0
  * @element cwc-test-dropdown
  * @slot default - Content slot for dropdown content
- * @attr outline - Apply outline style.
- * @event openChange - notify open state change of dropdown
+ * @event {boolean} openChange - notify open state change of dropdown
  * @cssprop --clr-test-border-color
  * @cssprop --clr-test-button-background-color
  * @cssprop --clr-test-button-text-color
  */
 // @dynamic
 export class CwcTestDropdown extends LitElement {
+  @event() private openChange: EventEmitter<boolean>;
+
   private _open = false;
 
   get open() {
@@ -48,7 +49,7 @@ export class CwcTestDropdown extends LitElement {
       const old = this._open;
       this._open = value;
       this.requestUpdate('open', old);
-      this.openChange();
+      this.openChange.emit(this.open);
     }
   }
 
@@ -80,10 +81,6 @@ export class CwcTestDropdown extends LitElement {
   /** Toggle the current open state of the dropdown */
   toggle() {
     this.open = !this.open;
-  }
-
-  private openChange() {
-    this.dispatchEvent(new CustomEvent('openChange', { detail: this.open }));
   }
 }
 

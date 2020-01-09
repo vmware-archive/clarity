@@ -45,14 +45,13 @@ describe('dropdown test element', () => {
   });
 
   it('should emit a custom event when opened or closed', async () => {
-    let event: any;
+    let value: any;
     await componentIsStable(component);
-    component.addEventListener('openChange', (e: any) => (event = e));
+    component.addEventListener('openChange', (event: CustomEvent) => (value = event.detail));
 
     component.open = true;
     await componentIsStable(component);
-
-    expect(event.detail).toBe(true);
+    expect(value).toBe(true);
   });
 
   it('should render dynamic title property', async () => {

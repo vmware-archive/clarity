@@ -189,7 +189,7 @@ export class CwcButton extends CwcBaseButton {
    *
    * Defaults to `ClrLoadingState.DEFAULT`.
    */
-  @property({ type: Number, attribute: 'loading-state' })
+  @property({ type: Number })
   set loadingState(state: ClrLoadingState) {
     const oldState = this._loadingState;
     this.updateButtonState(state);

@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { transformToSpacedString, transformToString, transformToUnspacedString } from './string';
+import { camelCaseToKebabCase, transformToSpacedString, transformToString, transformToUnspacedString } from './string';
 
 describe('Functional Helper: ', () => {
   function funcFactory(str: string): (x: number, y: number, z: number) => string {
@@ -35,6 +35,12 @@ describe('Functional Helper: ', () => {
   describe('transformToUnspacedString(): ', () => {
     it('has no spaces in it', () => {
       expect(transformToUnspacedString(tests, 2, 7, 1).indexOf(' ') < 0).toEqual(true);
+    });
+  });
+
+  describe('camelCaseToKebabCase', () => {
+    it('should format correctly', () => {
+      expect(camelCaseToKebabCase('camelCaseToKebabCase')).toBe('camel-case-to-kebab-case');
     });
   });
 });

@@ -36,13 +36,6 @@ export class ColumnReorderService {
     return this._columnsGroupId;
   }
 
-  get maxOrder() {
-    // the maximum possible order should be the length of all columns minus 1
-    // if user tries to assign an order number that's bigger this max order number,
-    // we would intervene and assign this max order number
-    return this.columnsService.columns.length - 1;
-  }
-
   get ordersChange(): Observable<boolean> {
     return this._ordersChange.asObservable();
   }

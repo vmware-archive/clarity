@@ -21,3 +21,7 @@ export function transformToSpacedString(fns: any[], ...args: any[]): string {
 export function transformToUnspacedString(fns: any[], ...args: any[]): string {
   return transformToString('', fns, ...args);
 }
+
+export function camelCaseToKebabCase(value: string) {
+  return value.replace(/[A-Z]/g, l => `-${l.toLowerCase()}`);
+}

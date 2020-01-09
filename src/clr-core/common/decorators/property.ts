@@ -6,20 +6,7 @@
 
 // tslint:disable-next-line
 import { property as prop } from 'lit-element';
-
-export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
-  noAccessor?: boolean;
-  attribute?: boolean | string;
-  type?: TypeHint;
-  reflect?: boolean;
-  converter?:
-    | ((value: string, type?: TypeHint) => Type)
-    | {
-        fromAttribute?(value: string | null, type?: TypeHint): Type;
-        toAttribute?(value: Type, type?: TypeHint): unknown;
-      };
-  hasChanged?(value: Type, oldValue: Type): boolean;
-}
+import { camelCaseToKebabCase } from '../utils/string';
 
 /**
  * lit-element @property decorator with custom defaults.
@@ -30,13 +17,16 @@ export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
  * supplied to configure property features.
  */
 export function property(options?: PropertyDeclaration<unknown, unknown>) {
-  return prop(getDefaultOptions(options)) as (protoOrDescriptor: {}, name?: string | number | symbol) => any;
+  return (protoOrDescriptor: {}, name: string) => prop(getDefaultOptions(name, options))(protoOrDescriptor, name);
 }
 
 /**
  * https://developers.google.com/web/fundamentals/web-components/best-practices
  */
-export function getDefaultOptions(options?: PropertyDeclaration<unknown, unknown>): PropertyDeclaration {
+export function getDefaultOptions(
+  propertyKey: string,
+  options?: PropertyDeclaration<unknown, unknown>
+): PropertyDeclaration {
   const type = options ? options.type : options;
 
   switch (type) {
@@ -45,12 +35,13 @@ export function getDefaultOptions(options?: PropertyDeclaration<unknown, unknown
     case Object:
       return { reflect: false, ...options };
     case String:
-      return { reflect: true, ...options };
+      return { reflect: true, attribute: camelCaseToKebabCase(propertyKey), ...options };
     case Number:
-      return { reflect: true, ...options };
+      return { reflect: true, attribute: camelCaseToKebabCase(propertyKey), ...options };
     case Boolean:
       return {
         reflect: true,
+        attribute: camelCaseToKebabCase(propertyKey),
         converter: {
           // Mimic standard HTML boolean attributes + support "false" attribute values
           // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes
@@ -71,4 +62,18 @@ export function getDefaultOptions(options?: PropertyDeclaration<unknown, unknown
     default:
       return options as PropertyDeclaration<unknown, unknown>;
   }
+}
+
+export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
+  noAccessor?: boolean;
+  attribute?: boolean | string;
+  type?: TypeHint;
+  reflect?: boolean;
+  converter?:
+    | ((value: string, type?: TypeHint) => Type)
+    | {
+        fromAttribute?(value: string | null, type?: TypeHint): Type;
+        toAttribute?(value: Type, type?: TypeHint): unknown;
+      };
+  hasChanged?(value: Type, oldValue: Type): boolean;
 }

@@ -1,22 +1,35 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChildren, ElementRef, HostListener, Input, QueryList } from '@angular/core';
+import { Component, Inject, ContentChildren, ElementRef, HostListener, Input, QueryList } from '@angular/core';
 
-import { Point } from '../../popover/common/popover';
-import { CLR_MENU_POSITIONS } from '../../popover/dropdown/menu-positions';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
+import { ClrAxis } from '../../utils/popover/enums/axis.enum';
+import { ClrSide } from '../../utils/popover/enums/side.enum';
+import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ClrPopoverPositions } from '../../utils/popover/enums/positions.enum';
 
 import { ClrButton } from './button';
 
 @Component({
   selector: 'clr-button-group',
   templateUrl: 'button-group.html',
-  providers: [ButtonInGroupService],
+  providers: [
+    ButtonInGroupService,
+    UNIQUE_ID_PROVIDER,
+    ClrPopoverToggleService,
+    ClrPopoverEventsService,
+    ClrPopoverPositionService,
+  ],
   host: { '[class.btn-group]': 'true' },
 })
 export class ClrButtonGroup {
@@ -25,8 +38,16 @@ export class ClrButtonGroup {
   constructor(
     public buttonGroupNewService: ButtonInGroupService,
     private elementRef: ElementRef,
+    private toggleService: ClrPopoverToggleService,
+    @Inject(UNIQUE_ID) public popoverId: string,
     public commonStrings: ClrCommonStringsService
   ) {}
+
+  public popoverPosition: ClrPopoverPosition = ClrPopoverPositions['bottom-left'];
+
+  public get open() {
+    return this.toggleService.open;
+  }
 
   inlineButtons: ClrButton[] = [];
   menuButtons: ClrButton[] = [];
@@ -111,115 +132,12 @@ export class ClrButtonGroup {
 
   @Input('clrMenuPosition')
   set menuPosition(pos: string) {
-    if (pos && CLR_MENU_POSITIONS.indexOf(pos) > -1) {
+    if (pos && ClrPopoverPositions[pos]) {
       this._menuPosition = pos;
     } else {
       this._menuPosition = 'bottom-left';
     }
-    // set the popover values based on menu position
-    switch (this._menuPosition) {
-      case 'top-right':
-        this.anchorPoint = Point.TOP_RIGHT;
-        this.popoverPoint = Point.RIGHT_BOTTOM;
-        break;
-      case 'top-left':
-        this.anchorPoint = Point.TOP_LEFT;
-        this.popoverPoint = Point.LEFT_BOTTOM;
-        break;
-      case 'bottom-right':
-        this.anchorPoint = Point.BOTTOM_RIGHT;
-        this.popoverPoint = Point.RIGHT_TOP;
-        break;
-      case 'bottom-left':
-        this.anchorPoint = Point.BOTTOM_LEFT;
-        this.popoverPoint = Point.LEFT_TOP;
-        break;
-      case 'right-top':
-        this.anchorPoint = Point.RIGHT_TOP;
-        this.popoverPoint = Point.LEFT_TOP;
-        break;
-      case 'right-bottom':
-        this.anchorPoint = Point.RIGHT_BOTTOM;
-        this.popoverPoint = Point.LEFT_BOTTOM;
-        break;
-      case 'left-top':
-        this.anchorPoint = Point.LEFT_TOP;
-        this.popoverPoint = Point.RIGHT_TOP;
-        break;
-      case 'left-bottom':
-        this.anchorPoint = Point.LEFT_BOTTOM;
-        this.popoverPoint = Point.RIGHT_BOTTOM;
-        break;
-      default:
-        this.anchorPoint = Point.BOTTOM_LEFT;
-        this.popoverPoint = Point.LEFT_TOP;
-        break;
-    }
-  }
 
-  private _openMenu: boolean = false;
-
-  get openMenu(): boolean {
-    return this._openMenu;
-  }
-
-  set openMenu(value: boolean) {
-    this._openMenu = value;
-  }
-
-  public anchorPoint: Point = Point.BOTTOM_LEFT; // default if menuPosition isn't set
-  public popoverPoint: Point = Point.LEFT_TOP; // default if menuPosition isn't set
-
-  /**
-   * Toggle the ClrDropdown Menu when the ClrDropdown Toggle is
-   * clicked. Also set a flag that indicates that the toggle
-   * was clicked so that we don't traverse the DOM to find the
-   * location of the click.
-   */
-  toggleMenu(): void {
-    this.openMenu = !this.openMenu;
-    this._overflowMenuToggleClicked = true;
-  }
-
-  /**
-   * Flag with indicates if the overflow menu toggle was clicked.
-   * If true, this can save us traversing the DOM to find
-   * whether the click was withing the button group toggle
-   * or menu in the onMouseClick method
-   */
-  private _overflowMenuToggleClicked: boolean = false;
-
-  // TODO: Generic Directive to handle this
-  /**
-   * Called on mouse clicks anywhere in the DOM.
-   * Checks to see if the mouseclick happened on the host or outside
-   */
-  @HostListener('document:click', ['$event.target'])
-  onMouseClick(target: any): void {
-    if (this.openMenu && !this._overflowMenuToggleClicked) {
-      // Reset the overflow menu toggle clicked flag
-      this._overflowMenuToggleClicked = false;
-      let current: any = target; // Get the element in the DOM on which the mouse was clicked
-      const host: any = this.elementRef.nativeElement; // Current Button Group
-
-      if (current.classList.contains('dropdown-menu')) {
-        current = current.parentNode;
-        while (current) {
-          if (current === document) {
-            this.openMenu = false;
-            return;
-          }
-
-          // If clicked on dropdown menu and menu is in host
-          // do nothing
-          if (current === host) {
-            return;
-          }
-          current = current.parentNode;
-        }
-      }
-      this.openMenu = false;
-    }
-    this._overflowMenuToggleClicked = false; // Reset the overflow menu toggle clicked flag
+    this.popoverPosition = ClrPopoverPositions[this._menuPosition];
   }
 }

@@ -1,6 +1,8 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../popover/dropdown/menu-mixins.clarity';
 
 @mixin square-off-btngroup-btns($dir: left) {
   border-top-#{$dir}-radius: 0;
@@ -179,5 +181,9 @@
         line-height: $clr_baselineRem_1 - $clr_baselineRem_1px;
       }
     }
+  }
+
+  .dropdown-menu.clr-button-group-menu {
+    visibility: visible;
   }
 }

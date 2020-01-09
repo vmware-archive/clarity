@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Optional, Output, SkipSelf, TemplateRef
 import { ClrLoadingState } from '../../utils/loading/loading';
 import { LoadingListener } from '../../utils/loading/loading-listener';
 import { ButtonInGroupService } from '../providers/button-in-group.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   selector: 'clr-button',
@@ -16,7 +17,7 @@ import { ButtonInGroupService } from '../providers/button-in-group.service';
         <ng-template #buttonProjectedRef>
             <button 
                 [class]="classNames" 
-                (click)="emitClick()"
+                (click)="emitClick($event)"
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled"
@@ -37,7 +38,8 @@ export class ClrButton implements LoadingListener {
   constructor(
     @SkipSelf()
     @Optional()
-    public buttonInGroupService: ButtonInGroupService
+    public buttonInGroupService: ButtonInGroupService,
+    private toggleService: ClrPopoverToggleService
   ) {}
 
   private _inMenu: boolean = false;
@@ -138,7 +140,8 @@ export class ClrButton implements LoadingListener {
 
   @Output('click') _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  emitClick(): void {
+  emitClick($event): void {
+    this.toggleService.toggleWithEvent($event);
     this._click.emit(true);
   }
 

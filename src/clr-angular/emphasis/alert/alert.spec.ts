@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -149,14 +149,12 @@ export default function(): void {
       });
 
       it("should have an aria-live value of polite when you don't apply any attribute", () => {
-        const myAlert: HTMLElement = compiled.querySelector('.alert');
         expect(component.ariaLive).toBe(AriaLivePoliteness.polite);
         fixture.detectChanges();
         expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, AriaLivePoliteness.polite);
       });
 
       it('should have an aria-live value of off when apply clrOff', () => {
-        const myAlert: HTMLElement = compiled.querySelector('.alert');
         fixture.componentInstance.clrOff = true;
         fixture.detectChanges();
         expect(component.ariaLive).toBe(AriaLivePoliteness.off);
@@ -164,7 +162,6 @@ export default function(): void {
       });
 
       it('should have an aria-live value of assertive when apply clrAssertive', () => {
-        const myAlert: HTMLElement = compiled.querySelector('.alert');
         fixture.componentInstance.clrAssertive = true;
         fixture.detectChanges();
         expect(component.ariaLive).toBe(AriaLivePoliteness.assertive);
@@ -172,7 +169,6 @@ export default function(): void {
       });
 
       it('should follow the aria-live priority when all of them are set', () => {
-        const myAlert: HTMLElement = compiled.querySelector('.alert');
         fixture.componentInstance.clrAssertive = true;
         fixture.componentInstance.clrPolite = true;
         fixture.componentInstance.clrOff = true;
@@ -181,7 +177,6 @@ export default function(): void {
       });
 
       it('should set clrPolite and clrOff - clrOff will be used', () => {
-        const myAlert: HTMLElement = compiled.querySelector('.alert');
         fixture.componentInstance.clrPolite = true;
         fixture.componentInstance.clrOff = true;
         fixture.detectChanges();

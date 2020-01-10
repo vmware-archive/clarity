@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild, Inject } from '@angular/core';
+import { Component, ContentChild } from '@angular/core';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';

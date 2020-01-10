@@ -1,13 +1,15 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ElementRef, Inject, Injector, Optional } from '@angular/core';
 
+// tslint:disable no-barrel-imports
 import { AbstractPopover } from '../../../../clr-angular/popover/common/abstract-popover';
 import { Point } from '../../../../clr-angular/popover/common/popover';
 import { POPOVER_HOST_ANCHOR } from '../../../../clr-angular/popover/common/popover-host-anchor.token';
+// tslint:enable no-barrel-imports
 
 import { DummyAnchor } from './dummy-anchor';
 

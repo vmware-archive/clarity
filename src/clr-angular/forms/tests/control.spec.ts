@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -44,14 +44,7 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
 
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
-    let control,
-      fixture,
-      ifErrorService,
-      controlClassService,
-      markControlService,
-      layoutService,
-      controlIdService,
-      datalistIdService;
+    let control, fixture, ifErrorService, controlClassService, markControlService, controlIdService, datalistIdService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
@@ -74,7 +67,6 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       controlClassService = control.injector.get(ControlClassService);
       ifErrorService = control.injector.get(IfErrorService);
       markControlService = control.injector.get(MarkControlService);
-      layoutService = control.injector.get(LayoutService);
       controlIdService = control.injector.get(ControlIdService);
       datalistIdService = control.injector.get(DatalistIdService);
       spyOn(ifErrorService, 'triggerStatusChange');

@@ -108,7 +108,7 @@ export declare class ClrAlert implements AfterViewInit {
     multiAlertService: MultiAlertService;
     off: boolean;
     polite: boolean;
-    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService, el: ElementRef);
+    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
     close(): void;
     ngAfterViewInit(): void;
     open(): void;
@@ -567,7 +567,7 @@ export declare class ClrDatalistContainer implements DynamicWrapper {
 }
 
 export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistContainer> implements AfterContentInit {
-    listValue: any;
+    listValue: string;
     constructor(focusService: FocusService, vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, datalistIdService: DatalistIdService);
     ngAfterContentInit(): void;
     triggerFocus(): void;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,9 +9,9 @@ import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { TestContext } from './helpers.spec';
 import { RowActionService } from './providers/row-action-service';
-import { ClrPopoverEventsService } from 'src/clr-angular/utils/popover/providers/popover-events.service';
-import { ClrPopoverToggleService } from 'src/clr-angular/utils/popover/providers/popover-toggle.service';
-import { ClrPopoverPositionService } from 'src/clr-angular/utils/popover/providers/popover-position.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { TestBed } from '@angular/core/testing';
 
 export default function(): void {
@@ -90,7 +90,7 @@ export default function(): void {
 
     it('should call clrDgActionOverflowOpenChange output when open changed', function() {
       spyOn(context.fixture.componentInstance, 'clrDgActionOverflowOpenChangeFn');
-      const toggle = context.clarityElement.querySelector('.datagrid-action-toggle');
+      toggle = context.clarityElement.querySelector('.datagrid-action-toggle');
       toggle.click();
       expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(true);
       toggle.click();

@@ -16,13 +16,14 @@ ClarityIcons.addIcons(userIcon);
 
 ## Properties
 
-| Property | Attribute | Type     | Default      | Description                                      |
-|----------|-----------|----------|--------------|--------------------------------------------------|
-| `dir`    | `dir`     | `string` | **required** | Takes a directional value (up\|down\|left\|right) that rotates the icon 90° with the<br />top of the icon pointing in the specified direction. |
-| `flip`   | `flip`    | `string` | **required** | Takes an orientation value (horizontal\|vertical) that reverses the orientation of the<br />icon vertically or horizontally. |
-| `shape`  | `shape`   | `string` |              | Changes the svg glyph displayed in the icon component. Defaults to the 'unknown' icon if<br />the specified icon cannot be found in the icon registry. |
-| `size`   | `size`    | `string` |              | Apply numerical width-height or a t-shirt-sized CSS classname |
-| `title`  | `title`   | `string` | **required** | If present, customizes the aria-label for the icon for accessibility. |
+| Property    | Attribute   | Type     | Default      | Description                                      |
+|-------------|-------------|----------|--------------|--------------------------------------------------|
+| `dir`       | `dir`       | `any`    |              |                                                  |
+| `direction` | `direction` | `any`    |              | Takes a directional value (up\|down\|left\|right) that rotates the icon 90° with the<br />top of the icon pointing in the specified direction. |
+| `flip`      | `flip`      | `any`    |              | Takes an orientation value (horizontal\|vertical) that reverses the orientation of the<br />icon vertically or horizontally using the strings: 'horizontal' or 'vertical' |
+| `shape`     | `shape`     | `string` |              | Changes the svg glyph displayed in the icon component. Defaults to the 'unknown' icon if<br />the specified icon cannot be found in the icon registry. |
+| `size`      | `size`      | `string` |              | Apply numerical width-height or a t-shirt-sized CSS classname |
+| `title`     | `title`     | `string` | **required** | If present, customizes the aria-label for the icon for accessibility. |
 
 ## CSS Custom Properties
 

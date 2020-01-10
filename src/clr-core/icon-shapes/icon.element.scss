@@ -167,19 +167,23 @@ svg {
 }
 
 // directional
-:host([dir='up']) {
+:host([dir='up']),
+:host([direction='up']) {
   @include rotateSVGIcon(0deg);
 }
 
-:host([dir='down']) {
+:host([dir='down']),
+:host([direction='down']) {
   @include rotateSVGIcon(180deg);
 }
 
-:host([dir='right']) {
+:host([dir='right']),
+:host([direction='right']) {
   @include rotateSVGIcon(90deg);
 }
 
-:host([dir='left']) {
+:host([dir='left']),
+:host([direction='left']) {
   @include rotateSVGIcon(270deg);
 }
 

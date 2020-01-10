@@ -8,7 +8,9 @@ import {
   applyMixins,
   baseStyles,
   CssHelpers,
+  Directions,
   hasPropertyChanged,
+  Orientations,
   property,
   registerElementSafely,
   UniqueId,
@@ -101,18 +103,28 @@ export class CwcIcon extends IconMixinClass {
   title: string;
 
   /**
+   * @deprecated
+   * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
+   * top of the icon pointing in the specified direction.
+   *
+   * Deprecated in 3.0. Use `direction` instead. `dir` will be removed in 4.0!
+   */
+  @property({ type: String })
+  dir: Directions;
+
+  /**
    * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
    */
   @property({ type: String })
-  dir: string;
+  direction: Directions;
 
   /**
    * Takes an orientation value (horizontal|vertical) that reverses the orientation of the
-   * icon vertically or horizontally.
+   * icon vertically or horizontally using the strings: 'horizontal' or 'vertical'
    */
   @property({ type: String })
-  flip: string;
+  flip: Orientations;
 
   @query('svg') private svg: SVGElement;
 

@@ -20,3 +20,7 @@ export type StatusTypes = 'info' | StoplightStatusTypes;
 
 // MISC
 export type AriaLivePolitenessSettings = 'off' | 'polite' | 'assertive';
+
+export type Directions = 'up' | 'down' | 'left' | 'right';
+
+export type Orientations = 'horizontal' | 'vertical';

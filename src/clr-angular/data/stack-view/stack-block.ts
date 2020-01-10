@@ -20,7 +20,11 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
         [attr.role]="role"
         [attr.tabindex]="tabIndex"
         [attr.aria-expanded]="ariaExpanded"
-        [attr.aria-controls]="getStackChildrenId()">
+        [attr.aria-controls]="getStackChildrenId()"
+        [attr.aria-posinset]="ariaPosinset"
+        [attr.aria-level]="ariaLevel"
+        [attr.aria-setsize]="ariaSetsize"
+        >
       <clr-icon shape="caret"
                 class="stack-block-caret"
                 *ngIf="expandable"
@@ -36,7 +40,6 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
         <ng-content></ng-content>
       </div>
     </div>
-    
 
     <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
       <div [style.height]="expanded ? 'auto' : 0" role="region">
@@ -47,7 +50,9 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
   // Custom elements are inline by default
   styles: [
     `
-        :host { display: block; }
+      :host {
+        display: block;
+      }
     `,
   ],
   // Make sure the host has the proper class for styling purposes
@@ -86,11 +91,26 @@ export class ClrStackBlock implements OnInit {
     }
   }
 
+  /**
+   * Depth of the stack view starting from 1 for first level
+   */
+  @Input('clrStackViewLevel') ariaLevel: number;
+
+  /**
+   * Total number of rows in a given group
+   */
+  @Input('clrStackViewSetsize') ariaSetsize: number;
+
+  /**
+   * The position of the row inside the grouped by level rows
+   */
+  @Input('clrStackViewPosinset') ariaPosinset: number;
+
   /*
-     * This would be more efficient with @ContentChildren, with the parent ClrStackBlock
-     * querying for children StackBlocks, but this feature is not available when downgrading
-     * the component for Angular 1.
-     */
+   * This would be more efficient with @ContentChildren, with the parent ClrStackBlock
+   * querying for children StackBlocks, but this feature is not available when downgrading
+   * the component for Angular 1.
+   */
   constructor(
     @SkipSelf()
     @Optional()

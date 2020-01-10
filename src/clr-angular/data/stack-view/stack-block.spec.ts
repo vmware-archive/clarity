@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,15 +14,18 @@ import { ClrStackViewModule } from './stack-view.module';
 
 @Component({
   template: `
-        <clr-stack-block>
-            <clr-stack-label>Label</clr-stack-label>
-            <clr-stack-content>Content</clr-stack-content>
-        </clr-stack-block>
-   `,
+    <clr-stack-block [clrStackViewLevel]="ariaLevel" [clrStackViewSetsize]="ariaSetsize" [clrStackViewPosinset]="ariaPosinset">
+      <clr-stack-label>Label</clr-stack-label>
+      <clr-stack-content>Content</clr-stack-content>
+    </clr-stack-block>
+  `,
 })
 class BasicBlock {
   @ViewChild(ClrStackBlock, { static: false })
   blockInstance: ClrStackBlock;
+  ariaLevel: number;
+  ariaSetsize: number;
+  ariaPosinset: number;
 }
 
 @Component({
@@ -82,6 +85,30 @@ export default function(): void {
     function getBlockInstance(bFixture: ComponentFixture<any>): ClrStackBlock {
       return bFixture.componentInstance.blockInstance;
     }
+
+    describe('Accessibility', () => {
+      let label: HTMLElement;
+      beforeEach(() => {
+        fixture = TestBed.createComponent(BasicBlock);
+        fixture.componentInstance.ariaLevel = 42;
+        fixture.componentInstance.ariaPosinset = 32;
+        fixture.componentInstance.ariaSetsize = 100;
+        fixture.detectChanges();
+        label = fixture.nativeElement.querySelector('.stack-block-label');
+      });
+
+      it('should attach aria-level to dd.stack-block-content', () => {
+        expect(label.getAttribute('aria-level')).toBe(fixture.componentInstance.ariaLevel.toString());
+      });
+
+      it('should attach aria-posinset to dd.stack-block-content', () => {
+        expect(label.getAttribute('aria-posinset')).toBe(fixture.componentInstance.ariaPosinset.toString());
+      });
+
+      it('should attach aria-setsize to dd.stack-block-content', () => {
+        expect(label.getAttribute('aria-setsize')).toBe(fixture.componentInstance.ariaSetsize.toString());
+      });
+    });
 
     it('projects content', () => {
       fixture = TestBed.createComponent(BasicBlock);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { By } from '@angular/platform-browser';
-import { ClarityModule } from '../../clr-angular.module';
 
 import { ClrDaypicker } from './daypicker';
 import { DayModel } from './model/day.model';
@@ -23,6 +22,7 @@ import { ClrCommonStringsService } from '@clr/angular';
 import { TestBed } from '@angular/core/testing';
 import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
+import { ClrDatepickerModule } from './datepicker.module';
 
 export default function() {
   describe('Daypicker Component AriaLiveService', function() {
@@ -36,7 +36,7 @@ export default function() {
       dateNavigationService.initializeCalendar();
 
       TestBed.configureTestingModule({
-        imports: [ClarityModule],
+        imports: [ClrDatepickerModule],
         declarations: [TestComponent],
         providers: [
           { provide: DateNavigationService, useValue: dateNavigationService },

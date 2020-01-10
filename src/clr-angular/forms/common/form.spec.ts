@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,7 @@ import { LayoutService } from './providers/layout.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { ReactiveFormsModule, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ClrInputModule } from '../input/input.module';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: `

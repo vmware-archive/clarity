@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,11 +17,9 @@ export default function(): void {
   describe('ClrDatagridDetail component', function() {
     describe('Typescript API', function() {
       let context: TestContext<ClrDatagridDetail, FullTest>;
-      let detailService: DetailService;
 
       beforeEach(function() {
         context = this.create(ClrDatagridDetail, FullTest, [DetailService]);
-        detailService = context.getClarityProvider(DetailService);
         context.detectChanges();
       });
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,7 +38,7 @@ class NoBarrelImportsWalker extends Lint.RuleWalker {
     // Here we get the path of the file being imported
     let path = node.moduleSpecifier.getText().replace(/'|"/gi, '');
 
-    // We only care if this is a relative path, otherwise its fine
+    // We only care if this is a relative path, otherwise assume it is fine
     if (path.startsWith('.')) {
       // We need to add add `.ts` for full path, unless it has one of our supported file types already
       if (['.html', '.txt', '.ts', '.json', '.js'].indexOf(extname(path)) === -1) {
@@ -54,6 +54,11 @@ class NoBarrelImportsWalker extends Lint.RuleWalker {
         // we catch it and throw an error because its a barrel.
         this.addFailureAtNode(node, `Not allowed to import from a barrel`);
       }
+    }
+
+    // Some IDEs are silly and put in various forms of incorrect relative paths
+    if (path.startsWith('src') || path.includes('clr-angular') || path.includes('golden/')) {
+      this.addFailureAtNode(node, `Invalid import path, please use relative paths`);
     }
 
     // call the base version of this visitor to actually parse this node

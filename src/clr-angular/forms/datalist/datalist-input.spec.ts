@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -88,6 +88,10 @@ export default function(): void {
         containerDE = fixture.debugElement.query(By.directive(ClrDatalistContainer));
         containerEl = containerDE.nativeElement;
         fixture.detectChanges();
+      });
+
+      it('should set the list', () => {
+        expect(containerEl.attributes.list).toEqual(containerDE.componentInstance.listValue);
       });
     });
   });

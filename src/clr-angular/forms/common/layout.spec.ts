@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,9 +26,9 @@ function customTestComponentFactory(
 export default function(): void {
   describe('ClrLayout', () => {
     it('sets the layout selection in LayoutService on init if provided', function() {
-      const TestClass = customTestComponentFactory();
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory();
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -36,9 +36,9 @@ export default function(): void {
     });
 
     it('accepts layout option through layout input binding', function() {
-      const TestClass = customTestComponentFactory();
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory();
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const component = fixture.debugElement.query(By.directive(ClrLayout));
       const directive = component.injector.get(ClrLayout);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -49,9 +49,9 @@ export default function(): void {
     });
 
     it('ignores invalid layout types', function() {
-      const TestClass = customTestComponentFactory(<Layouts>'invalid');
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(<Layouts>'invalid');
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -59,9 +59,9 @@ export default function(): void {
     });
 
     it('label should have a default size of 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -69,9 +69,9 @@ export default function(): void {
     });
 
     it('layout service should properly validate label sizes', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -91,9 +91,9 @@ export default function(): void {
     });
 
     it('horizontal layout label that are out of (1, 12) range should default to size of 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true, -1);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, -1);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -101,9 +101,9 @@ export default function(): void {
     });
 
     it('compact layout label that are out of (1, 12) range should default to size of 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, -1);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, -1);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -111,9 +111,9 @@ export default function(): void {
     });
 
     it("vertical layout label shouldn't be able to set label size", () => {
-      const TestClass = customTestComponentFactory(Layouts.VERTICAL, true, 3);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.VERTICAL, true, 3);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -121,9 +121,9 @@ export default function(): void {
     });
 
     it('ignores string label sizes for horizontal layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true, '2');
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, '2');
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -132,9 +132,9 @@ export default function(): void {
     });
 
     it('ignores boolean label sizes for horizontal layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true, true);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, true);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -143,9 +143,9 @@ export default function(): void {
     });
 
     it('ignores object label sizes for horizontal layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true, new Object());
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, new Object());
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -154,9 +154,9 @@ export default function(): void {
     });
 
     it('ignores null label sizes for horizontal layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true, null);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, null);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -165,9 +165,9 @@ export default function(): void {
     });
 
     it('ignores undefined label sizes for horizontal layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.HORIZONTAL, true);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -177,9 +177,9 @@ export default function(): void {
     //
 
     it('ignores string label sizes for compact layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, '2');
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, '2');
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -188,9 +188,9 @@ export default function(): void {
     });
 
     it('ignores boolean label sizes for compact layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, true);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, true);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -199,9 +199,9 @@ export default function(): void {
     });
 
     it('ignores object label sizes for compact layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, new Object());
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, new Object());
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -210,9 +210,9 @@ export default function(): void {
     });
 
     it('ignores null label sizes for compact layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, null);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, null);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
@@ -221,9 +221,9 @@ export default function(): void {
     });
 
     it('ignores undefined label sizes for compact layout and defaults to 2', () => {
-      const TestClass = customTestComponentFactory(Layouts.COMPACT, true, undefined);
-      TestBed.configureTestingModule({ declarations: [ClrLayout, TestClass] });
-      const fixture = TestBed.createComponent(TestClass);
+      const testClass = customTestComponentFactory(Layouts.COMPACT, true, undefined);
+      TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
+      const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 

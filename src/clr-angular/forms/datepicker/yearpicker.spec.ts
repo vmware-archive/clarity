@@ -1,12 +1,11 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component } from '@angular/core';
 import { async } from '@angular/core/testing';
-import { ClarityModule } from '../../clr-angular.module';
 import { By } from '@angular/platform-browser';
 
 import { itIgnore } from '../../../../tests/tests.helpers';
@@ -14,6 +13,7 @@ import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-codes/key-codes';
 
+import { ClrDatepickerModule } from './datepicker.module';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
@@ -42,7 +42,7 @@ export default function() {
       dateNavigationService.changeYear(selectedYear);
 
       TestBed.configureTestingModule({
-        imports: [ClarityModule],
+        imports: [ClrDatepickerModule],
         declarations: [TestComponent],
         providers: [
           ViewManagerService,

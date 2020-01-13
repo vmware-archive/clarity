@@ -42,6 +42,9 @@ import { isPlatformBrowser } from '@angular/common';
       <button class="datagrid-filter-toggle"
               type="button"
               #anchor
+              [attr.aria-label]="commonStrings.keys.datagridFilterAriaLabel"
+              [attr.aria-expanded]="ariaExpanded"
+              [attr.aria-controls]="popoverId"
               clrPopoverAnchor
               clrPopoverOpenCloseButton
               [class.datagrid-filter-open]="open"
@@ -66,6 +69,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter, OnDestroy {
   private subs: Subscription[] = [];
+  public ariaExpanded: boolean = false;
+
   constructor(
     _filters: FiltersProvider<T>,
     public commonStrings: ClrCommonStringsService,
@@ -77,6 +82,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     this.subs.push(
       smartToggleService.openChange.subscribe(change => {
         this.open = change;
+        this.ariaExpanded = change;
       })
     );
   }

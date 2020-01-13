@@ -430,6 +430,7 @@ export interface ClrDatagridComparatorInterface<T> {
 export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter, OnDestroy {
     readonly active: boolean;
     anchor: ElementRef;
+    ariaExpanded: boolean;
     commonStrings: ClrCommonStringsService;
     customFilter: ClrDatagridFilterInterface<T> | RegisteredFilter<T, ClrDatagridFilterInterface<T>>;
     open: boolean;

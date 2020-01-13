@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,6 +20,12 @@ import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-e
 
 class MockRenderer {
   listen() {}
+}
+
+function cleanPopoverDOM(component) {
+  const popoverContent = document.querySelectorAll('.clr-popover-content');
+  popoverContent.forEach(content => document.body.removeChild(content));
+  component.ngOnDestroy();
 }
 
 export default function(): void {
@@ -45,9 +51,7 @@ export default function(): void {
       });
 
       afterEach(function() {
-        const popoverContent = document.querySelectorAll('.clr-popover-content');
-        popoverContent.forEach(content => document.body.removeChild(content));
-        component.ngOnDestroy();
+        cleanPopoverDOM(component);
       });
 
       it('registers to the FiltersProvider provider', function() {
@@ -132,6 +136,34 @@ export default function(): void {
           },
         ]);
         context.testComponent.filter = filter;
+      });
+
+      afterEach(function() {
+        cleanPopoverDOM(context.clarityDirective);
+      });
+
+      it('correctly associates the popover content with the aria-controls value', function() {
+        const toggle: HTMLButtonElement = context.clarityElement.querySelector('.datagrid-filter-toggle');
+        toggle.click();
+        context.detectChanges();
+        const popover: HTMLDivElement = document.querySelector('.datagrid-filter');
+        expect(toggle.getAttribute('aria-controls')).toEqual(popover.getAttribute('id'));
+      });
+
+      it('correctly updates the aria-expanded state', function() {
+        const toggle: HTMLButtonElement = context.clarityElement.querySelector('.datagrid-filter-toggle');
+        expect(toggle.getAttribute('aria-expanded')).toBe('false');
+        toggle.click();
+        context.detectChanges();
+        expect(toggle.getAttribute('aria-expanded')).toBe('true');
+      });
+
+      it('has a button with the correct common string for datagridFilterAriaLabel', function() {
+        const toggle: HTMLButtonElement = context.clarityElement.querySelector('.datagrid-filter-toggle');
+        const commonStrings: ClrCommonStringsService = context.fixture.debugElement.injector.get(
+          ClrCommonStringsService
+        );
+        expect(toggle.getAttribute('aria-label')).toBe(commonStrings.keys.datagridFilterAriaLabel);
       });
 
       it('projects content into the dropdown', function() {

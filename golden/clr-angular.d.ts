@@ -1217,6 +1217,9 @@ export declare class ClrSpinnerModule {
 
 export declare class ClrStackBlock implements OnInit {
     readonly ariaExpanded: string;
+    ariaLevel: number;
+    ariaPosinset: number;
+    ariaSetsize: number;
     readonly caretDirection: string;
     readonly caretTitle: string;
     commonStrings: ClrCommonStringsService;

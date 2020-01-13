@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,29 +10,29 @@ const EXAMPLE = `
 <clr-stack-view>
     <clr-stack-header>Angular stack view</clr-stack-header>
 
-    <clr-stack-block>
+    <clr-stack-block [clrStackViewLevel]="1" [clrStackViewSetsize]="3" [clrStackViewPosinset]="1">
         <clr-stack-label>Label 1</clr-stack-label>
         <clr-stack-content>Content 1</clr-stack-content>
     </clr-stack-block>
 
-    <clr-stack-block [clrSbExpanded]="true">
+    <clr-stack-block [clrStackViewLevel]="1" [clrStackViewSetsize]="3" [clrStackViewPosinset]="2">
         <clr-stack-label>Label 2</clr-stack-label>
         <clr-stack-content>Content 2</clr-stack-content>
-        <clr-stack-block>
+        <clr-stack-block [clrStackViewLevel]="2" [clrStackViewSetsize]="3" [clrStackViewPosinset]="1">
             <clr-stack-label>Sub-label 1</clr-stack-label>
             <clr-stack-content>Sub-content 1</clr-stack-content>
         </clr-stack-block>
-        <clr-stack-block>
+        <clr-stack-block [clrStackViewLevel]="2" [clrStackViewSetsize]="3" [clrStackViewPosinset]="2">
             <clr-stack-label>Sub-label 2</clr-stack-label>
             <clr-stack-content>Sub-content 2</clr-stack-content>
         </clr-stack-block>
-        <clr-stack-block>
+        <clr-stack-block [clrStackViewLevel]="2" [clrStackViewSetsize]="3" [clrStackViewPosinset]="3">
             <clr-stack-label>Sub-label 3</clr-stack-label>
             <clr-stack-content>Sub-content 3</clr-stack-content>
         </clr-stack-block>
     </clr-stack-block>
 
-    <clr-stack-block>
+    <clr-stack-block [clrStackViewLevel]="1" [clrStackViewSetsize]="3" [clrStackViewPosinset]="3">
         <clr-stack-label>Label 3</clr-stack-label>
         <clr-stack-content>Content 3</clr-stack-content>
         <clr-stack-block>

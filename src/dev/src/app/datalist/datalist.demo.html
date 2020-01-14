@@ -1,8 +1,23 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
+<h2>Native Datalist (non Clarity)</h2>
+<input list="pasta">
+<datalist id="pasta">
+  <option>Bavette</option>
+  <option>Cannelloni</option>
+  <option>Fiorentine</option>
+  <option>Gnocchi</option>
+  <option>Pappardelle</option>
+  <option>Penne lisce</option>
+  <option>Pici</option>
+  <option>Rigatoni</option>
+  <option>Spaghetti</option>
+  <option>Tagliatelle</option>
+</datalist>
+
 <h2>Vertical</h2>
 <form clrForm clrLayout="vertical" (submit)="submit()" [formGroup]="model">
   <clr-datalist-container>

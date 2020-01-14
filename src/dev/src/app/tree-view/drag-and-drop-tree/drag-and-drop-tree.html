@@ -1,0 +1,13 @@
+<h4>Drag and Drop (recursive)</h4>
+<div class="clr-example">
+  <clr-tree>
+    <ng-container *clrRecursiveFor="let item of tree; getChildren: getChildren">
+      <div clrDroppable (clrDrop)="onDrop($event.dragDataTransfer, item)"></div>
+      <clr-tree-node [clrDraggable]="item" [(clrExpanded)]="item.expanded">
+        <clr-icon [attr.shape]="getShape(item)"></clr-icon>
+        {{item.name}}
+      </clr-tree-node>
+    </ng-container>
+    <div clrDroppable tabIndex="-1" (clrDrop)="onDrop($event.dragDataTransfer)"></div>
+  </clr-tree>
+</div>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,6 +17,7 @@ import { TreeNodeRoutingAbbeyRoadDemo } from './tree-node-routing/tree-node-rout
 import { TreeNodeRoutingRevolverDemo } from './tree-node-routing/tree-node-routing-revolver';
 import { TreeNodeRoutingRubberSoulDemo } from './tree-node-routing/tree-node-routing-rubber-soul';
 import { PreSelectionDemo } from './pre-selection/pre-selection';
+import { DragAndDropTreeDemo } from './drag-and-drop-tree/drag-and-drop-tree';
 
 const ROUTES: Routes = [
   {
@@ -29,6 +30,7 @@ const ROUTES: Routes = [
       { path: 'lazy-declarative', component: LazyDeclarativeTreeDemo },
       { path: 'lazy-recursive', component: LazyRecursiveTreeDemo },
       { path: 'nodes-with-icons', component: NodesWithIconsDemo },
+      { path: 'drag-and-drop-tree', component: DragAndDropTreeDemo },
       {
         path: 'routing',
         component: TreeNodeRoutingDemo,

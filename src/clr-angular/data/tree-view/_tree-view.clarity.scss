@@ -5,6 +5,46 @@
 @import './properties.tree-view';
 
 @include exports('tree-view.clarity') {
+  clr-tree .droppable {
+    position: absolute;
+    display: none;
+    height: 18px;
+    width: 80%; // TODO get correct width
+    margin-top: -9px;
+    &.draggable-match {
+      border: none;
+      display: inherit;
+    }
+    &.draggable-over {
+      border: none;
+    }
+    &.draggable-over:before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      margin-top: 5px;
+      background: #8939ad;
+      border-radius: 50%;
+    }
+    &.draggable-over:after {
+      content: '';
+      position: absolute;
+      border-bottom: 2px #8939ad solid;
+      height: 100%;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+  }
+
+  clr-tree .draggable-ghost {
+    background: white;
+    border: 1px solid #bbbbbb;
+    border-left: 2px solid #8939ad;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 0 3px 4px rgba(116, 116, 116, 0.3);
+  }
+
   .clr-tree-node {
     //Display
     display: block;

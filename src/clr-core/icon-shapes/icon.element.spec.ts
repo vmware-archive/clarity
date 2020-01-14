@@ -189,6 +189,26 @@ describe('icon element', () => {
       expect(component.getAttribute('size')).toEqual(component.size);
     });
 
+    it('should reflect changes in flip', async () => {
+      await componentIsStable(component);
+      component.flip = 'horizontal';
+      await componentIsStable(component);
+      expect(component.getAttribute('flip')).toEqual(component.flip);
+      component.setAttribute('flip', 'vertical');
+      await componentIsStable(component);
+      expect(component.getAttribute('flip')).toEqual(component.flip);
+    });
+
+    it('should reflect changes in direction', async () => {
+      await componentIsStable(component);
+      component.direction = 'up';
+      await componentIsStable(component);
+      expect(component.getAttribute('direction')).toEqual(component.direction);
+      component.setAttribute('direction', 'down');
+      await componentIsStable(component);
+      expect(component.getAttribute('direction')).toEqual(component.direction);
+    });
+
     it('should reflect changes in title', async () => {
       await componentIsStable(component);
       component.title = 'hallo';

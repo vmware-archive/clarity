@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -205,7 +205,7 @@ describe('FocusTrap', () => {
   describe('local behavior', () => {
     let component: TestLocalModalComponent;
     let rebounders: NodeList;
-    let first, last: HTMLElement;
+    let last: HTMLElement;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -223,7 +223,6 @@ describe('FocusTrap', () => {
       document.getElementById('focus-trap').focus();
 
       rebounders = document.querySelectorAll('.offscreen-focus-rebounder');
-      first = <HTMLElement>rebounders.item(0);
       last = <HTMLElement>rebounders.item(1);
     });
 

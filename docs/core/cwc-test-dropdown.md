@@ -12,12 +12,6 @@ import '@clr/core/test-dropdown';
 </cwc-test-dropdown>
 ```
 
-## Attributes
-
-| Attribute | Type  | Description          |
-|-----------|-------|----------------------|
-| `outline` | `any` | Apply outline style. |
-
 ## Properties
 
 | Property | Attribute | Type      | Default    | Description                            |
@@ -27,9 +21,9 @@ import '@clr/core/test-dropdown';
 
 ## Events
 
-| Event        | Description                          |
-|--------------|--------------------------------------|
-| `openChange` | notify open state change of dropdown |
+| Event        | Detail    | Description                          |
+|--------------|-----------|--------------------------------------|
+| `openChange` | `boolean` | notify open state change of dropdown |
 
 ## Slots
 

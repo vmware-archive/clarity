@@ -1,10 +1,12 @@
 {
+  "3.0.0-next.6": "src/website/src/releases/3.x/3.0.0-next.6.html",
   "3.0.0-next.5": "src/website/src/releases/3.x/3.0.0-next.5.html",
   "3.0.0-next.4": "src/website/src/releases/3.x/3.0.0-next.4.html",
   "3.0.0-next.3": "src/website/src/releases/3.x/3.0.0-next.3.html",
   "3.0.0-next.2": "src/website/src/releases/3.x/3.0.0-next.2.html",
   "3.0.0-next.1": "src/website/src/releases/3.x/3.0.0-next.1.html",
 
+  "2.3.5": "src/website/src/releases/2.x/2.3.5.html",
   "2.3.4": "src/website/src/releases/2.x/2.3.4.html",
   "2.3.3": "src/website/src/releases/2.x/2.3.3.html",
   "2.3.2": "src/website/src/releases/2.x/2.3.2.html",
@@ -24,6 +26,7 @@
   "2.0.0-beta.2": "src/website/src/releases/2.x/2.0.0-beta.2.html",
   "2.0.0-beta.1": "src/website/src/releases/2.x/2.0.0-beta.1.html",
 
+  "1.3.4": "src/website/src/releases/1.x/1.3.4.html",
   "1.3.3": "src/website/src/releases/1.x/1.3.3.html",
   "1.3.2": "src/website/src/releases/1.x/1.3.2.html",
   "1.3.1": "src/website/src/releases/1.x/1.3.1.html",

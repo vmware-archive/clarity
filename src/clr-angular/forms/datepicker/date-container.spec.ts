@@ -31,7 +31,7 @@ import { ClrCommonFormsModule } from '../common/common.module';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function() {
-  fdescribe('Date Container Component', () => {
+  describe('Date Container Component', () => {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;

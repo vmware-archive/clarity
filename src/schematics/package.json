@@ -1,6 +1,6 @@
 {
     "name": "@clr/schematics",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Schematics for Clarity",
     "homepage": "https://clarity.design",
     "bugs": {
@@ -23,8 +23,8 @@
     "license": "MIT",
     "schematics": "./src/collection.json",
     "dependencies": {
-        "@angular-devkit/core": "^0.5.5",
-        "@angular-devkit/schematics": "^0.5.5",
+        "@angular-devkit/core": "^8.3.22",
+        "@angular-devkit/schematics": "^8.3.22",
         "@schematics/angular": "^0.4.3",
         "@types/jasmine": "^2.6.0",
         "@types/node": "^8.0.31",

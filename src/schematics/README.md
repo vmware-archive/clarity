@@ -59,7 +59,7 @@ Finally, in your new CLI project you can run `schematics @clr/angular:ng-add` to
 During local development you can run the build `npm run build` from the repo root, and then `npm run publish:local` to publish it locally. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
 
 ```bash
-rm -rf ~/.config/verdaccio/storage/@clr && npm run build && npm run publish:local
+rm -rf ~/.config/verdaccio/storage/@clr && npm run build:libs && npm run publish:local
 ```
 
 Finally run `ng add @clr/angular` to have it install using your local registry.

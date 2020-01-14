@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -104,9 +104,25 @@ describe('ClarityIcons', () => {
     });
   });
 
+  describe('ClarityIconsApi.has()', () => {
+    it('should return boolean for icons and be case insensitive', () => {
+      const shapeName = 'nameWithCapitalLetter';
+      const shapeTemplate = '<svg><title>shape template</title></svg>';
+      const shape = { [shapeName]: shapeTemplate };
+
+      ClarityIcons.add(shape);
+      expect(ClarityIcons.has(shapeName)).toBe(true);
+      expect(ClarityIcons.has(shapeName.toLowerCase())).toBe(true);
+    });
+
+    it('should return false when the icon is not existing', () => {
+      expect(ClarityIcons.has('notExistingIcon')).toBe(false);
+    });
+  });
+
   describe('ClarityIconsApi.add()', () => {
     it('should throw an error if the argument is not a valid object literal', () => {
-      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
+      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern:
                 { "shape-name": "shape-template" }`;
 
       expect(() => {
@@ -119,6 +135,16 @@ describe('ClarityIcons', () => {
       expect(() => {
         ClarityIcons.add({ '': '' });
       }).toThrowError(expectedErrorMessage);
+    });
+
+    it('should cast name to lower case', () => {
+      const shapeName = 'nameWithCapitalLetter';
+      const shapeTemplate = '<svg><title>shape template</title></svg>';
+      const shape = { [shapeName]: shapeTemplate };
+
+      ClarityIcons.add(shape);
+      expect(ClarityIcons.get(shapeName)).toBe(shapeTemplate);
+      expect(ClarityIcons.get(shapeName.toLowerCase())).toBe(shapeTemplate);
     });
 
     it('should throw an error if a shape name contains a white space.', () => {
@@ -250,7 +276,7 @@ describe('ClarityIcons', () => {
 
   describe('ClarityIconsApi.alias()', () => {
     it('should throw an error if the argument is not a valid object literal', () => {
-      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern: 
+      const expectedErrorMessage = `The argument must be an object literal passed in the following pattern:
                 { "shape-name": ["alias-name", ...] }`;
 
       expect(() => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,10 +7,13 @@
 import {
   getEnumValues,
   hasPropertyChanged,
+  hasStringPropertyChanged,
+  hasStringPropertyChangedAndNotNil,
   isNilOrEmpty,
   isObject,
   isObjectAndNotNilOrEmpty,
   isString,
+  isStringOrNil,
 } from './identity';
 
 enum TestEnum {
@@ -50,11 +53,28 @@ describe('Functional Helper: ', () => {
       expect(isString(100)).toEqual(false);
       expect(isString(true)).toEqual(false);
       expect(isString(false)).toEqual(false);
+      expect(isString('ohai')).toEqual(true);
     });
 
     it('identifies non-empty items as expected', () => {
       expect(isString('')).toEqual(true);
-      expect(isString('ohai')).toEqual(true);
+    });
+  });
+
+  describe('isStringOrNil(): ', () => {
+    it('identifies strings as expected', () => {
+      expect(isStringOrNil([])).toEqual(false);
+      expect(isStringOrNil({})).toEqual(false);
+      expect(isStringOrNil(100)).toEqual(false);
+      expect(isStringOrNil(true)).toEqual(false);
+      expect(isStringOrNil(false)).toEqual(false);
+      expect(isStringOrNil('ohai')).toEqual(true);
+    });
+
+    it('identifies nil items as expected', () => {
+      expect(isStringOrNil(void 0)).toEqual(true);
+      expect(isStringOrNil(null)).toEqual(true);
+      expect(isStringOrNil('')).toEqual(true);
     });
   });
 
@@ -79,20 +99,60 @@ describe('Functional Helper: ', () => {
   });
 
   describe('hasPropertyChanged(): ', () => {
-    it('returns false if new value is empty, null, or undefined', () => {
-      expect(hasPropertyChanged(void 0, 'ohai')).toEqual(false);
-      expect(hasPropertyChanged(null, 'ohai')).toEqual(false);
-      expect(hasPropertyChanged('', 'ohai')).toEqual(false);
-    });
-    it('returns false if new value is not a string', () => {
-      expect(hasPropertyChanged(void 0, 'ohai')).toEqual(false);
-      expect(hasPropertyChanged(null, 'ohai')).toEqual(false);
+    it('returns true if new value is empty, null, or undefined and different from old value', () => {
+      expect(hasPropertyChanged(void 0, 'ohai')).toEqual(true);
+      expect(hasPropertyChanged(null, 'ohai')).toEqual(true);
+      expect(hasPropertyChanged('', 'ohai')).toEqual(true);
     });
     it('returns false if new value is equal to old value', () => {
       expect(hasPropertyChanged('ohai', 'ohai')).toEqual(false);
+      expect(hasPropertyChanged(true, true)).toEqual(false);
+      expect(hasPropertyChanged(100, 100)).toEqual(false);
     });
     it('returns true if new value is NOT equal to old value', () => {
       expect(hasPropertyChanged('ohai', 'kthxbye')).toEqual(true);
+      expect(hasPropertyChanged(false, true)).toEqual(true);
+      expect(hasPropertyChanged(49, 48)).toEqual(true);
+    });
+    it('returns true if new value new value is a different nil value', () => {
+      expect(hasPropertyChanged('', 'kthxbye')).toEqual(true);
+      expect(hasPropertyChanged(void 0, 'kthxbye')).toEqual(true);
+      expect(hasPropertyChanged(null, 'kthxbye')).toEqual(true);
+      expect(hasPropertyChanged(null, null)).toEqual(false);
+    });
+  });
+
+  describe('hasStringPropertyChanged(): ', () => {
+    it('returns true if new value is empty, null, or undefined and different from old value', () => {
+      expect(hasStringPropertyChanged(void 0, 'ohai')).toEqual(true);
+      expect(hasStringPropertyChanged(null, 'ohai')).toEqual(true);
+      expect(hasStringPropertyChanged('', 'ohai')).toEqual(true);
+    });
+    it('returns false if new value is equal to old value', () => {
+      expect(hasStringPropertyChanged('ohai', 'ohai')).toEqual(false);
+    });
+    it('returns true if new value is NOT equal to old value', () => {
+      expect(hasStringPropertyChanged('ohai', 'kthxbye')).toEqual(true);
+    });
+    it('returns true if new value new value is a different nil value', () => {
+      expect(hasStringPropertyChanged('', 'kthxbye')).toEqual(true);
+      expect(hasStringPropertyChanged(void 0, 'kthxbye')).toEqual(true);
+      expect(hasStringPropertyChanged(null, 'kthxbye')).toEqual(true);
+      expect(hasStringPropertyChanged(null, null)).toEqual(false);
+    });
+  });
+
+  describe('hasStringPropertyChangedAndNotNil(): ', () => {
+    it('returns false if new value is empty, null, or undefined', () => {
+      expect(hasStringPropertyChangedAndNotNil(void 0, 'ohai')).toEqual(false);
+      expect(hasStringPropertyChangedAndNotNil(null, 'ohai')).toEqual(false);
+      expect(hasStringPropertyChangedAndNotNil('', 'ohai')).toEqual(false);
+    });
+    it('returns false if new value is equal to old value', () => {
+      expect(hasStringPropertyChangedAndNotNil('ohai', 'ohai')).toEqual(false);
+    });
+    it('returns true if new value is NOT equal to old value', () => {
+      expect(hasStringPropertyChangedAndNotNil('ohai', 'kthxbye')).toEqual(true);
     });
   });
 

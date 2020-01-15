@@ -111,7 +111,12 @@
   <h2>{{iconSet}} Set</h2>
   <div class="clr-row dc-icon-boxes" [ngClass]="{ 'inverse': isInverse }">
       <div *ngFor="let iconName of iconIndex[iconSet]" class="dc-icon-box clr-col-2" [hidden]="!showIcon(iconName)">
-          <cwc-icon [shape]="iconName" [ngClass]="iconClassnames"></cwc-icon>
+          <cwc-icon 
+            [shape]="iconName"
+            [inverse]="isInverse"
+            [solid]="isSolid"
+            [alert]="isAlerted"
+            [badge]="isBadged"></cwc-icon>
           <p class="dc-icon-name">{{iconName}}</p>
       </div>
   </div>

@@ -75,9 +75,13 @@ export class IconSetsDemoComponent {
   });
 
   isInverse = false;
-  iconClassnames = {};
+  isSolid = false;
+  isAlerted = false;
+  isBadged = false;
+
   availableSets = Object.keys(this.iconIndex);
   visibleIconSets = this.availableSets;
+
   subscriptions: Subscription[] = [];
 
   constructor(private fb: FormBuilder) {
@@ -88,12 +92,9 @@ export class IconSetsDemoComponent {
     return this.iconFilterAndToggles.valueChanges.subscribe(values => {
       this.visibleIconSets = values.currentSet === 'All' ? this.availableSets : [values.currentSet];
       this.isInverse = values.isInverse;
-      this.iconClassnames = {
-        'is-solid': values.isSolid,
-        'is-inverse': values.isInverse,
-        'has-alert': values.decoration === 'alerted',
-        'has-badge': values.decoration === 'badged',
-      };
+      this.isSolid = values.isSolid;
+      this.isAlerted = values.decoration === 'alerted';
+      this.isBadged = values.decoration === 'badged';
     });
   }
 

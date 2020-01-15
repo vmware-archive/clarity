@@ -2,9 +2,9 @@
   "sideEffects": [
     "./icon.element.js"
   ],
-  "ngPackage": {
-    "lib": {
-      "entryFile": "index.ts"
-    }
-  }
+  "main": "./index.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
+  "name": "@clr/core/icon-shapes",
+  "type": "module"
 }

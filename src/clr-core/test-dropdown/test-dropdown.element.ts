@@ -4,8 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CommonStringsService } from '@clr/core';
-import { baseStyles, event, EventEmitter, property, registerElementSafely } from '@clr/core/common';
+import {
+  baseStyles,
+  CommonStringsService,
+  event,
+  EventEmitter,
+  property,
+  registerElementSafely,
+} from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css';

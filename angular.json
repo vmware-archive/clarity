@@ -264,7 +264,7 @@
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "project": "src/clr-core/ng-package.json",
-            "tsConfig": "src/clr-core/tsconfig.lib.json"
+            "tsConfig": "src/clr-core/tsconfig.json"
           }
         },
         "test": {
@@ -278,7 +278,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/clr-core/tsconfig.lib.json", "src/clr-core/tsconfig.spec.json"],
+            "tsConfig": ["src/clr-core/tsconfig.json", "src/clr-core/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }
@@ -312,7 +312,7 @@
               "src/dev-core/src/robots.txt",
               "src/dev-core/src/sitemap.xml"
             ],
-            "styles": ["src/dev-core/src/styles.scss", "node_modules/@clr/city/css/bundles/default.min.css"],
+            "styles": ["dist/clr-core/global.min.css", "node_modules/@clr/city/css/bundles/default.min.css"],
             "scripts": []
           },
           "configurations": {

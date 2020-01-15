@@ -13,7 +13,11 @@
     "noUnusedParameters": true,
     "strictFunctionTypes": true,
     "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@clr/core": ["dist/clr-core"],
+      "@clr/core/*": ["dist/clr-core/*"]
+    }
   },
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

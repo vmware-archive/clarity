@@ -1,12 +1,11 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es2017",
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
     "experimentalDecorators": true,
-    "outDir": "../../out-tsc/lib",
+    "outDir": "../../dist/clr-core",
     "declaration": true,
     "inlineSources": true,
     "types": [],
@@ -18,8 +17,19 @@
     "noUnusedParameters": true,
     "strictFunctionTypes": true,
     "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "importHelpers": true,
+    "composite": true,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "paths": {
+      "@clr/core/*": ["./*"]
+    }
   },
+  "exclude": ["**/test/*.ts", "test.ts", "**/*.spec.ts", "dist", "node_modules"],
+  "references": [{ "path": "./common" }],
   "typedocOptions": {
     "out": "./src/dev-core/src/api",
     "readme": "none",
@@ -40,6 +50,5 @@
     "excludeNotExported": true,
     "excludePrivate": true,
     "excludeProtected": true
-  },
-  "exclude": ["test.ts", "**/*.spec.ts"]
+  }
 }

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getEnumValues, transformToSpacedString } from '@clr/core/common';
-import ifElse from 'ramda/es/ifElse';
+import { getEnumValues, isString, transformToSpacedString } from '@clr/core/common';
+import isNil from 'ramda/es/isNil';
 import { CwcIcon } from '../icon.element';
 import { IconShapeCollection } from '../interfaces/icon.interfaces';
 import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape';
@@ -66,28 +66,56 @@ export function getIconSvgClasses(icon: IconShapeCollection): string {
   return transformToSpacedString(tests, icon);
 }
 
-// testme
-export const updateIconSizeStyleOrClassnames = ifElse(
-  (el: CwcIcon, size: string) => {
-    // have to call el here to keep TS happy...
-    return el && !isNaN(parseInt(size, 10));
-  },
-  (el: CwcIcon, size: string) => {
-    el.addEquilateralStyles(size + 'px');
-    el.removeClassnames(getAllIconTshirtSizeClassnames());
-  },
-  (el: CwcIcon, size: string) => {
-    let newTshirtSize;
-    if (isIconTshirtSizeClassname(size)) {
-      newTshirtSize = getIconTshirtSizeClassname(size);
+export enum SizeUpdateStrategies {
+  BadSizeValue = 'bad-value',
+  ValidSizeString = 'value-is-string',
+  ValidNumericString = 'value-is-numeric',
+  NilSizeValue = 'value-is-nil',
+}
+
+export function getUpdateSizeStrategy(size: string) {
+  if (isNil(size) || size === '') {
+    return SizeUpdateStrategies.NilSizeValue;
+  }
+
+  if (isString(size) && isIconTshirtSizeClassname(size)) {
+    return SizeUpdateStrategies.ValidSizeString;
+  }
+
+  if (!isNaN(parseInt(size, 10))) {
+    return SizeUpdateStrategies.ValidNumericString;
+  }
+
+  return SizeUpdateStrategies.BadSizeValue;
+}
+
+export function updateIconSizeStyleOrClassnames(el: CwcIcon, size: string) {
+  const updateStrategy = getUpdateSizeStrategy(size);
+
+  switch (updateStrategy) {
+    case SizeUpdateStrategies.ValidNumericString:
+      el.addEquilateralStyles(size + 'px');
+      el.removeClassnames(getAllIconTshirtSizeClassnames());
+      return;
+    case SizeUpdateStrategies.ValidSizeString:
+      const newTshirtSize = getIconTshirtSizeClassname(size);
       el.addClassname(newTshirtSize);
       el.removeClassnamesUnless(getAllIconTshirtSizeClassnames(), [newTshirtSize]);
       el.removeEquilateralStyles();
-    }
+      return;
+    case SizeUpdateStrategies.NilSizeValue: // nil values empty out all sizing
+      el.removeClassnames(getAllIconTshirtSizeClassnames());
+      el.removeEquilateralStyles();
+      return;
+    case SizeUpdateStrategies.BadSizeValue:
+      // bad-value is ignored
+      return;
+    default:
+      return;
   }
-);
+}
 
-enum IconTshirtSizes {
+export enum IconTshirtSizes {
   ExtraSmall = 'xs',
   Small = 'sm',
   Medium = 'md',
@@ -96,9 +124,8 @@ enum IconTshirtSizes {
   ExtraExtraLarge = 'xxl',
 }
 
-const iconTshirtSizeClassnamePrefix = 'clr-i-size-';
+export const iconTshirtSizeClassnamePrefix = 'clr-i-size-';
 
-// testme
 export function getIconTshirtSizeClassname(
   sizeToLookup: string,
   prefix = iconTshirtSizeClassnamePrefix,
@@ -112,12 +139,10 @@ export function getIconTshirtSizeClassname(
   return '';
 }
 
-// testme
 export function getAllIconTshirtSizeClassnames(prefix = iconTshirtSizeClassnamePrefix, sizes = IconTshirtSizes) {
   return getEnumValues(sizes).map((sz: string) => prefix + sz);
 }
 
-// testme
 export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes) {
   return getEnumValues(sizes).indexOf(classname) > -1;
 }

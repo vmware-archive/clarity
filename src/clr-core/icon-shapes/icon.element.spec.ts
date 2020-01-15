@@ -66,6 +66,29 @@ describe('icon element', () => {
       await componentIsStable(component);
       expect(component.requestUpdate).not.toHaveBeenCalled();
     });
+
+    it('shape should not run an update if the shape is assigned a nil or empty value', async () => {
+      const testShape = 'testing';
+      await componentIsStable(component);
+      component.shape = testShape;
+      await componentIsStable(component);
+      spyOn(component, 'requestUpdate').and.callThrough();
+
+      component.shape = '';
+      await componentIsStable(component);
+      expect(component.requestUpdate).not.toHaveBeenCalled();
+      expect(component.getAttribute('shape')).toEqual(testShape);
+
+      component.shape = null;
+      await componentIsStable(component);
+      expect(component.requestUpdate).not.toHaveBeenCalled();
+      expect(component.getAttribute('shape')).toEqual(testShape);
+
+      component.shape = void 0;
+      await componentIsStable(component);
+      expect(component.requestUpdate).not.toHaveBeenCalled();
+      expect(component.getAttribute('shape')).toEqual(testShape);
+    });
   });
 
   describe('size: ', () => {
@@ -88,24 +111,6 @@ describe('icon element', () => {
       await componentIsStable(component);
       expect(component.requestUpdate).not.toHaveBeenCalled();
     });
-  });
-
-  describe('title and aria label: ', () => {
-    it('should set aria label when a icon title is provided', async () => {
-      await componentIsStable(component);
-      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(null);
-      expect(component.shadowRoot.querySelector('span')).toBe(null);
-
-      component.title = 'test';
-      await componentIsStable(component);
-
-      const id = component.shadowRoot.querySelector('span').getAttribute('id');
-      expect(id.includes('aria-cwc-icon')).toBe(true);
-      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
-    });
-  });
-
-  describe('size: ', () => {
     it('should add classname if passed a t-shirt size', async () => {
       await componentIsStable(component);
       expect(component.classList.contains('clr-i-size-xl')).toBe(false);
@@ -131,6 +136,35 @@ describe('icon element', () => {
       await componentIsStable(component);
       expect(component.classList.contains('clr-i-size-xl')).toBe(true);
     });
+    it('should remove the size attribute if set to undefined', async () => {
+      await componentIsStable(component);
+      component.size = void 0;
+      await componentIsStable(component);
+      expect(component.classList.contains('clr-i-size-')).toBe(false);
+      expect(component.hasAttribute('size')).toBe(false);
+    });
+    it('should remove the size attribute if set to null', async () => {
+      await componentIsStable(component);
+      component.size = null;
+      await componentIsStable(component);
+      expect(component.classList.contains('clr-i-size-')).toBe(false);
+      expect(component.hasAttribute('size')).toBe(false);
+    });
+  });
+
+  describe('title and aria label: ', () => {
+    it('should set aria label when a icon title is provided', async () => {
+      await componentIsStable(component);
+      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(null);
+      expect(component.shadowRoot.querySelector('span')).toBe(null);
+
+      component.title = 'test';
+      await componentIsStable(component);
+
+      const id = component.shadowRoot.querySelector('span').getAttribute('id');
+      expect(id.includes('aria-cwc-icon')).toBe(true);
+      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
+    });
   });
 
   describe('sr-only: ', () => {
@@ -147,8 +181,99 @@ describe('icon element', () => {
       await componentIsStable(component);
       component.setAttribute('title', testTitle);
       await componentIsStable(component);
-      srOnlyEl = component.shadowRoot.querySelector('.sr-only');
+      srOnlyEl = component.shadowRoot.querySelector('.clr-sr-only');
       expect(srOnlyEl.innerHTML).toContain(testTitle);
+    });
+  });
+
+  describe('solid: ', () => {
+    it('should default to false', async () => {
+      await componentIsStable(component);
+      expect(component.hasAttribute('solid')).toBe(false);
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.solid = true;
+      await componentIsStable(component);
+      expect(component.hasAttribute('solid')).toBe(true);
+    });
+  });
+
+  describe('status: ', () => {
+    it('should default to empty string', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('status')).toEqual('');
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.status = 'info';
+      await componentIsStable(component);
+      expect(component.getAttribute('status')).toEqual('info');
+    });
+  });
+
+  describe('inverse: ', () => {
+    it('should default to false', async () => {
+      await componentIsStable(component);
+      expect(component.hasAttribute('inverse')).toBe(false);
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.inverse = true;
+      await componentIsStable(component);
+      expect(component.hasAttribute('inverse')).toBe(true);
+    });
+  });
+
+  describe('alert: ', () => {
+    it('should default to false', async () => {
+      await componentIsStable(component);
+      expect(component.hasAttribute('alert')).toBe(false);
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.alert = true;
+      await componentIsStable(component);
+      expect(component.hasAttribute('alert')).toBe(true);
+    });
+  });
+
+  describe('badge: ', () => {
+    it('should default to false', async () => {
+      await componentIsStable(component);
+      expect(component.badge).toBe(false);
+      expect(component.hasAttribute('badge')).toBe(false);
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.badge = true;
+      await componentIsStable(component);
+      expect(component.hasAttribute('badge')).toBe(true);
+    });
+  });
+
+  describe('badgeType: ', () => {
+    it('should default to undefined and not be present', async () => {
+      await componentIsStable(component);
+      expect(component.badgeType).toBe(undefined);
+      expect(component.hasAttribute('badge-type')).toBe(false);
+    });
+    it('should update if assigned a new value', async () => {
+      await componentIsStable(component);
+      component.badgeType = 'info';
+      await componentIsStable(component);
+      expect(component.hasAttribute('badge-type')).toBe(true);
+      await componentIsStable(component);
+      expect(component.getAttribute('badge-type')).toEqual('info');
+    });
+    it('should be removed if set to null', async () => {
+      await componentIsStable(component);
+      component.badgeType = 'danger';
+      await componentIsStable(component);
+      expect(component.hasAttribute('badge-type')).toBe(true);
+      component.badgeType = null;
+      await componentIsStable(component);
+      expect(component.hasAttribute('badge-type')).toBe(false);
     });
   });
 

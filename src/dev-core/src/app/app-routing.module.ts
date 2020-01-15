@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,6 +24,10 @@ const routes: Routes = [
   { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule) },
   { path: 'i18n', loadChildren: () => import('./i18n/i18n.demo.module').then(m => m.I18nDemoModule) },
   { path: 'icon', loadChildren: () => import('./icon/icon.demo.module').then(m => m.IconDemoModule) },
+  {
+    path: 'icon-deprecated',
+    loadChildren: () => import('./icon-deprecated/icon.demo.module').then(m => m.IconDemoModule),
+  },
   {
     path: 'icon-sets',
     loadChildren: () => import('./icon-sets/icon-sets.demo.module').then(m => m.IconSetsDemoModule),

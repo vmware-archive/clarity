@@ -9,10 +9,12 @@ import {
   baseStyles,
   CssHelpers,
   Directions,
-  hasPropertyChanged,
+  hasStringPropertyChanged,
+  hasStringPropertyChangedAndNotNil,
   Orientations,
   property,
   registerElementSafely,
+  StatusTypes,
   UniqueId,
 } from '@clr/core/common';
 import { html, LitElement, query } from 'lit-element';
@@ -76,7 +78,7 @@ export class CwcIcon extends IconMixinClass {
    */
   @property({ type: String })
   set shape(val: string) {
-    if (hasPropertyChanged(val, this._shape)) {
+    if (hasStringPropertyChangedAndNotNil(val, this._shape)) {
       const oldVal = this._shape;
       this._shape = val;
       this.requestUpdate('shape', oldVal);
@@ -90,7 +92,7 @@ export class CwcIcon extends IconMixinClass {
   /** Apply numerical width-height or a t-shirt-sized CSS classname */
   @property({ type: String })
   set size(val: string) {
-    if (hasPropertyChanged(val, this._size)) {
+    if (hasStringPropertyChanged(val, this._size)) {
       const oldVal = this._size;
       this._size = val;
       updateIconSizeStyleOrClassnames(this, val);
@@ -126,6 +128,57 @@ export class CwcIcon extends IconMixinClass {
   @property({ type: String })
   flip: Orientations;
 
+  /**
+   * Displays most icons in their "filled" version if set to `true`.
+   */
+  @property({ type: Boolean })
+  solid = false;
+
+  /**
+   * Changes color of icon fills and outlines to a color determined by the following
+   * list of statuses: 'info', 'success', 'warning', 'danger', 'highlight'
+   */
+  @property({ type: String })
+  status: StatusTypes | 'highlight' | '' = '';
+
+  /**
+   * Inverts color of icon fills and outlines if `true`.
+   * Useful for displaying icons on a dark background.
+   */
+  @property({ type: Boolean })
+  inverse = false;
+
+  /**
+   * Displays the icon warning symbol (triangle) if `true`
+   */
+  @property({ type: Boolean })
+  alert = false;
+
+  /**
+   * Displays the icon badge symbol (dot) if `true`
+   *
+   * Use the badgeType property (`badge-type` attribute) if you
+   * want a badge to display using a different pre-defined color.
+   */
+  @property({ type: Boolean })
+  badge = false;
+
+  /**
+   * Attribute: `badge-type`
+   * Sets the color of the icon badge (dot) from the following predefined.
+   * By default, the badge uses the 'danger' color. This property is only used
+   * to change the color of the badge. It is not required to show the badge,
+   * although it can be used independently to show the badge.
+   *
+   * The color of the badge can change according to the following
+   * list of statuses: 'info', 'success', 'warning', 'danger', 'inverse'
+   *
+   * Setting the badge to 'null' removes it from the DOM. This is necessary to
+   * remove the badge (dot) from the icon if you are using badgeType.
+   */
+  @property({ type: String })
+  badgeType: StatusTypes | 'inverse' | null; // [info | warning | danger | success]
+
   @query('svg') private svg: SVGElement;
 
   private ariaLabel = `aria-${this._idPrefix}${this._uniqueId}`;
@@ -148,7 +201,7 @@ export class CwcIcon extends IconMixinClass {
   protected render() {
     return html`
       ${unsafeHTML(ClarityIcons.registry[this.shape])}
-      ${this.title ? html`<span id="${this.ariaLabel}" class="sr-only">${this.title}</span>` : ''}
+      ${this.title ? html`<span id="${this.ariaLabel}" class="clr-sr-only">${this.title}</span>` : ''}
     `;
   }
 
@@ -163,8 +216,6 @@ export class CwcIcon extends IconMixinClass {
 }
 export interface CwcIcon extends IconMixinClass, UniqueId, CssHelpers {}
 registerElementSafely('cwc-icon', CwcIcon);
-
-// TODO: NOTE DEPRECATIONS IN CLR-ICONS!
 
 declare global {
   interface HTMLElementTagNameMap {

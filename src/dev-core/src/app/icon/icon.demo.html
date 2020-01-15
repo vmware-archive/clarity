@@ -61,13 +61,13 @@
 
 <div class="clr-row">
     <div class="custom-icon-colors">
-        <cwc-icon shape="user" class="has-badge--danger is-inverse"></cwc-icon>
+        <cwc-icon shape="user" inverse badge></cwc-icon>
     </div>
     <div class="custom-icon-colors">
-        <cwc-icon shape="user" class="is-danger has-badge--danger is-inverse"></cwc-icon>
+        <cwc-icon shape="user" status="danger" badge-type="danger" inverse></cwc-icon>
     </div>
     <div class="custom-icon-colors custom-icon-colors-2">
-        <cwc-icon shape="user" class="has-badge--danger"></cwc-icon>
+        <cwc-icon shape="user" badge-type="danger"></cwc-icon>
     </div>
 </div>
 <p><i>A should be green with a pink badge</i><br>
@@ -130,7 +130,6 @@
             <th>normal</th>
             <th>info</th>
             <th>success</th>
-            <th>error</th>
             <th>danger</th>
             <th>warning</th>
             <th>inverse</th>
@@ -139,12 +138,11 @@
     <tbody>
         <tr>
             <td><cwc-icon size="24"></cwc-icon></td>
-            <td><cwc-icon size="24" class="is-info"></cwc-icon></td>
-            <td><cwc-icon size="24" class="is-success"></cwc-icon></td>
-            <td><cwc-icon size="24" class="is-error"></cwc-icon></td>
-            <td><cwc-icon size="24" class="is-danger"></cwc-icon></td>
-            <td><cwc-icon size="24" class="is-warning"></cwc-icon></td>
-            <td style="background: #575757"><cwc-icon size="24" class="is-inverse"></cwc-icon></td>
+            <td><cwc-icon size="24" status="info"></cwc-icon></td>
+            <td><cwc-icon size="24" status="success"></cwc-icon></td>
+            <td><cwc-icon size="24" status="danger"></cwc-icon></td>
+            <td><cwc-icon size="24" status="warning"></cwc-icon></td>
+            <td style="background: #575757"><cwc-icon size="24" inverse></cwc-icon></td>
         </tr>
     </tbody>
 </table>
@@ -186,9 +184,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><cwc-icon size="24" shape="user" class="has-badge"></cwc-icon></td>
-            <td><cwc-icon size="24" flip="vertical" shape="user" class="has-badge"></cwc-icon></td>
-            <td><cwc-icon size="24" flip="horizontal" shape="user" class="has-badge"></cwc-icon></td>
+            <td><cwc-icon size="24" shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="24" flip="vertical" shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="24" flip="horizontal" shape="user" badge></cwc-icon></td>
         </tr>
     </tbody>
 </table>
@@ -210,12 +208,37 @@
     <tbody>
         <tr>
             <td><cwc-icon size="32" shape="user"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="has-badge"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="has-alert"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="is-solid"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="is-solid has-badge"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="is-solid has-alert"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" class="is-solid has-badge--success"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" alert></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid alert></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="success"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Badge Colors</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>default (danger)</th>
+            <th>info</th>
+            <th>success</th>
+            <th>warning</th>
+            <th>danger</th>
+            <th>error</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="info"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="success"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="warning"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="danger"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge-type="error"></cwc-icon></td>
         </tr>
     </tbody>
 </table>

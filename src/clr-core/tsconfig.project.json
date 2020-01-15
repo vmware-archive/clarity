@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/clr-core",
+    "rootDir": "./"
+  },
+  "include": ["./"],
+  "references": [
+    { "path": "./tsconfig.json" },
+    { "path": "./common" },
+    { "path": "./badge" },
+    { "path": "./button" },
+    { "path": "./icon" },
+    { "path": "./icon-shapes" },
+    { "path": "./tag" },
+    { "path": "./test-dropdown" }
+  ]
+}

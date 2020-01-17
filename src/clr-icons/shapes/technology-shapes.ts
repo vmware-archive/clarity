@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -1305,6 +1305,29 @@ export const ClrShapeTapeDrive = clrIconSVG(
   <path d="M26.85,1.14l-5.72,9.91A1.27,1.27,0,0,0,22.23,13H33.68a1.27,1.27,0,0,0,1.1-1.91L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="clr-i-solid--alerted clr-i-solid-path-4--alerted clr-i-alert"/>
   `
 );
+export const ClrShapeAnimation = clrIconSVG(
+  `<path d="M10.16,31.71a4.4,4.4,0,0,1-4.64-1A4.34,4.34,0,0,1,4.23,27.6a4.41,4.41,0,0,1,.18-1.2,11.61,11.61,0,0,1-1-2.56,6.4,6.4,0,0,0,9.33,8.63A11.55,11.55,0,0,1,10.16,31.71Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M18.41,27.68a7.61,7.61,0,0,1-9.08-1.26,7.58,7.58,0,0,1-1.27-9.06,14.26,14.26,0,0,1-.37-2.85,9.58,9.58,0,0,0,.22,13.33,9.63,9.63,0,0,0,13.35.22A14.46,14.46,0,0,1,18.41,27.68Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M21.66,26.21a12.1,12.1,0,1,1,8.57-3.54h0A12.11,12.11,0,0,1,21.66,26.21ZM21.66,4A10.11,10.11,0,0,0,11.54,14.11a10,10,0,0,0,3,7.14,10.12,10.12,0,0,0,14.31,0A10.11,10.11,0,0,0,21.66,4Zm7.86,18h0Z" class="clr-i-outline clr-i-outline-path-3"/>
+  
+  <path d="M3.5,23.77a6.41,6.41,0,0,0,9.33,8.67A11.65,11.65,0,0,1,3.5,23.77Z" class="clr-i-solid clr-i-solid-path-1"/>
+  <path d="M7.68,14.53a9.6,9.6,0,0,0,13.4,13.7A14.11,14.11,0,0,1,7.68,14.53Z" class="clr-i-solid clr-i-solid-path-2"/>
+  <path d="M21.78,2A12.12,12.12,0,1,1,9.66,14.15,12.12,12.12,0,0,1,21.78,2" class="clr-i-solid clr-i-solid-path-3"/>
+  `
+);
+export const ClrShapeCiCd = clrIconSVG(
+  `<path d="M23.53,19.81a7.45,7.45,0,0,1-1.65-.18,10.48,10.48,0,0,1,.72,2.13c.3,0,.61,0,.93,0a9.52,9.52,0,0,0,3-.49l-.93-1.81A7.67,7.67,0,0,1,23.53,19.81Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M18.36,17.87,18,17.49a7.4,7.4,0,0,1-2.2-5.92,7.31,7.31,0,0,1,1.54-4L17.26,9A1,1,0,0,0,18.17,10h.09a1,1,0,0,0,1-.91L19.6,5a1,1,0,0,0-.29-.79A1,1,0,0,0,18.52,4l-4.09.35a1,1,0,0,0,.17,2l1.29-.11a9.45,9.45,0,0,0-2.05,5.32,9.28,9.28,0,0,0,2.67,7.26l.31.37a7.33,7.33,0,0,1,2.06,4.91,7.39,7.39,0,0,1-.26,2.47l1.8.91a8.76,8.76,0,0,0,.45-3.51A9.28,9.28,0,0,0,18.36,17.87Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M32.4,17.91,31.19,18A9.65,9.65,0,0,0,23.53,2.45a9.33,9.33,0,0,0-3,.49l.91,1.8a7.67,7.67,0,0,1,9.76,7.39,7.58,7.58,0,0,1-1.65,4.72l.1-1.54a1,1,0,1,0-2-.13l-.28,4.08a1,1,0,0,0,.31.78.94.94,0,0,0,.69.28h.1l4.08-.42a1,1,0,0,0,.9-1.1A1,1,0,0,0,32.4,17.91Z" class="clr-i-outline clr-i-outline-path-3"/>
+  <path d="M4.07,20.44h.08l4.09-.35a1,1,0,1,0-.17-2l-1.39.12a7.63,7.63,0,0,1,4.52-1.49,7.9,7.9,0,0,1,1.63.18,10.23,10.23,0,0,1-.71-2.13c-.3,0-.61,0-.92,0a9.66,9.66,0,0,0-5.9,2l.12-1.31a1,1,0,0,0-.92-1.08,1,1,0,0,0-1.08.91l-.35,4.08a1,1,0,0,0,1,1.08Z" class="clr-i-outline clr-i-outline-path-4"/>
+  <path d="M18.42,28.23l-4.09.27a1,1,0,0,0,.13,2L16,30.39a7.71,7.71,0,0,1-12.54-6,7.6,7.6,0,0,1,.29-2L2,21.46a9.59,9.59,0,0,0-.47,2.95A9.7,9.7,0,0,0,17.19,32l-.12,1.18a1,1,0,0,0,.89,1.1h.11a1,1,0,0,0,1-.9l.42-4.06a1,1,0,0,0-1.06-1.1Z" class="clr-i-outline clr-i-outline-path-5"/>`
+);
+export const ClrShapeFileShare2 = clrIconSVG(
+  `<path d="M25,4H7.83A1.89,1.89,0,0,0,6,5.91V30.09A1.89,1.89,0,0,0,7.83,32H28.17A1.87,1.87,0,0,0,30,30.09V9ZM24,5.78,28.2,10H24ZM8,30V6H22v6h6V30Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M22,21.81a2.11,2.11,0,0,0-1.44.62l-5.72-2.66v-.44l5.66-2.65a2.08,2.08,0,1,0,.06-2.94h0a2.14,2.14,0,0,0-.64,1.48v.23l-5.64,2.66a2.08,2.08,0,1,0-.08,2.95l.08-.08,5.67,2.66v.3A2.09,2.09,0,1,0,22,21.84Z" class="clr-i-outline clr-i-outline-path-2"/>
+  
+  <path d="M25,4.06H7.83A1.89,1.89,0,0,0,6,6V30.15a1.89,1.89,0,0,0,1.83,1.91H28.17A1.87,1.87,0,0,0,30,30.15V9ZM22,26a2.09,2.09,0,0,1-2.1-2.08v-.3L14.27,21l-.08.08a2.08,2.08,0,1,1,.08-2.95l5.64-2.66v-.23a2.14,2.14,0,0,1,.64-1.48h0a2.08,2.08,0,1,1-.06,2.94l-5.66,2.65v.44l5.72,2.66A2.11,2.11,0,0,1,22,21.81l0,0A2.09,2.09,0,0,1,22,26Zm2-16V5.84l4.2,4.22Z" class="clr-i-solid clr-i-solid-path-1"/>`
+);
 
 export const TechnologyShapes: any = {
   'ruler-pencil': ClrShapeRulerPencil,
@@ -1402,6 +1425,9 @@ export const TechnologyShapes: any = {
   pod: ClrShapePod,
   'media-changer': ClrShapeMediaChanger,
   'tape-drive': ClrShapeTapeDrive,
+  animation: ClrShapeAnimation,
+  'ci-cd': ClrShapeCiCd,
+  'file-share-2': ClrShapeFileShare2,
 };
 
 Object.defineProperty(TechnologyShapes, 'server', descriptorConfig(TechnologyShapes.host));
@@ -1412,6 +1438,7 @@ Object.defineProperty(TechnologyShapes, 'disconnected', descriptorConfig(Technol
 Object.defineProperty(TechnologyShapes, 'receiver', descriptorConfig(TechnologyShapes['phone-handset']));
 Object.defineProperty(TechnologyShapes, 'design', descriptorConfig(TechnologyShapes['ruler-pencil']));
 Object.defineProperty(TechnologyShapes, 'dna', descriptorConfig(TechnologyShapes.helix));
+Object.defineProperty(TechnologyShapes, 'folder-share', descriptorConfig(TechnologyShapes['file-share']));
 
 if (typeof window !== 'undefined' && window.hasOwnProperty('ClarityIcons')) {
   window.ClarityIcons.add(TechnologyShapes);

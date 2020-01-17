@@ -17,6 +17,7 @@ import { compassIcon, compassIconName } from '../shapes/compass';
 import { ferryIcon, ferryIconName } from '../shapes/ferry';
 import { mapIcon, mapIconName } from '../shapes/map';
 import { mapMarkerIcon, mapMarkerIconName } from '../shapes/map-marker';
+import { onHolidayIcon, onHolidayIconName } from '../shapes/on-holiday';
 import { trailerIcon, trailerIconName } from '../shapes/trailer';
 import { truckIcon, truckIconName } from '../shapes/truck';
 
@@ -31,6 +32,7 @@ export const travelCollectionIcons: IconShapeTuple[] = [
   ferryIcon,
   mapIcon,
   mapMarkerIcon,
+  onHolidayIcon,
   trailerIcon,
   truckIcon,
 ];
@@ -65,6 +67,7 @@ declare module '@clr/core/common' {
     [ferryIconName]: string;
     [mapIconName]: string;
     [mapMarkerIconName]: string;
+    [onHolidayIconName]: string;
     [trailerIconName]: string;
     [truckIconName]: string;
   }

@@ -28,6 +28,7 @@ import { clipboardIcon, clipboardIconName } from '../shapes/clipboard';
 import { clockIcon, clockIconName } from '../shapes/clock';
 import { cloneIcon, cloneIconName } from '../shapes/clone';
 import { collapseCardIcon, collapseCardIconName } from '../shapes/collapse-card';
+import { colorPaletteIcon, colorPaletteIconName } from '../shapes/color-palette';
 import { colorPickerIcon, colorPickerIconName } from '../shapes/color-picker';
 import { copyIcon, copyIconName } from '../shapes/copy';
 import { copyToClipboardIcon, copyToClipboardIconName } from '../shapes/copy-to-clipboard';
@@ -153,6 +154,7 @@ export const essentialCollectionIcons: IconShapeTuple[] = [
   clockIcon,
   cloneIcon,
   collapseCardIcon,
+  colorPaletteIcon,
   colorPickerIcon,
   copyIcon,
   copyToClipboardIcon,
@@ -315,6 +317,7 @@ declare module '@clr/core/common' {
     [clockIconName]: string;
     [cloneIconName]: string;
     [collapseCardIconName]: string;
+    [colorPaletteIconName]: string;
     [colorPickerIconName]: string;
     [copyIconName]: string;
     [copyToClipboardIconName]: string;

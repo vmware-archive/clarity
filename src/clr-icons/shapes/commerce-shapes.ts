@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -165,6 +165,52 @@ export const ClrShapeRuble = clrIconSVG(
   `<path d="M20.57,20A8.23,8.23,0,0,0,29,12a8.23,8.23,0,0,0-8.43-8H12a1,1,0,0,0-1,1V18H9a1,1,0,0,0,0,2h2v2H9a1,1,0,0,0,0,2h2v7a1,1,0,0,0,2,0V24h9a1,1,0,0,0,0-2H13V20ZM13,6h7.57A6.24,6.24,0,0,1,27,12a6.23,6.23,0,0,1-6.43,6H13Z" class="clr-i-outline clr-i-outline-path-1" /><path d="M20.75,9.25H15v8.81h5.79a4.66,4.66,0,0,0,4.86-4.4A4.65,4.65,0,0,0,20.75,9.25Z" class="clr-i-solid clr-i-solid-path-1" /><path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm2.75,18.56H15V22h8.29a1,1,0,0,1,0,2H15v5a1.25,1.25,0,0,1-2.5,0V24H11.25a1,1,0,0,1,0-2h1.21V20.56H11.25a1.25,1.25,0,0,1,0-2.5h1.21V8a1.25,1.25,0,0,1,1.25-1.25h7a7.14,7.14,0,0,1,7.36,6.9A7.15,7.15,0,0,1,20.75,20.56Z" class="clr-i-solid clr-i-solid-path-2" />`
 );
 
+export const ClrShapeEmployeeGroup = clrIconSVG(
+  `<path d="M18.42,16.31a5.7,5.7,0,1,1,5.76-5.7A5.74,5.74,0,0,1,18.42,16.31Zm0-9.4a3.7,3.7,0,1,0,3.76,3.7A3.74,3.74,0,0,0,18.42,6.91Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M18.42,16.31a5.7,5.7,0,1,1,5.76-5.7A5.74,5.74,0,0,1,18.42,16.31Zm0-9.4a3.7,3.7,0,1,0,3.76,3.7A3.74,3.74,0,0,0,18.42,6.91Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <path d="M21.91,17.65a20.6,20.6,0,0,0-13,2A1.77,1.77,0,0,0,8,21.25v3.56a1,1,0,0,0,2,0V21.38a18.92,18.92,0,0,1,12-1.68Z" class="clr-i-outline clr-i-outline-path-3"/>
+  <path d="M33,22H26.3V20.52a1,1,0,0,0-2,0V22H17a1,1,0,0,0-1,1V33a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V23A1,1,0,0,0,33,22ZM32,32H18V24h6.3v.41a1,1,0,0,0,2,0V24H32Z" class="clr-i-outline clr-i-outline-path-4"/>
+  <rect x="21.81" y="27.42" width="5.96" height="1.4" class="clr-i-outline clr-i-outline-path-5"/>
+  <path d="M10.84,12.24a18,18,0,0,0-7.95,2A1.67,1.67,0,0,0,2,15.71v3.1a1,1,0,0,0,2,0v-2.9a16,16,0,0,1,7.58-1.67A7.28,7.28,0,0,1,10.84,12.24Z" class="clr-i-outline clr-i-outline-path-6"/>
+  <path d="M33.11,14.23a17.8,17.8,0,0,0-7.12-2,7.46,7.46,0,0,1-.73,2A15.89,15.89,0,0,1,32,15.91v2.9a1,1,0,1,0,2,0v-3.1A1.67,1.67,0,0,0,33.11,14.23Z" class="clr-i-outline clr-i-outline-path-7"/>
+  <path d="M10.66,10.61c0-.23,0-.45,0-.67a3.07,3.07,0,0,1,.54-6.11,3.15,3.15,0,0,1,2.2.89,8.16,8.16,0,0,1,1.7-1.08,5.13,5.13,0,0,0-9,3.27,5.1,5.1,0,0,0,4.7,5A7.42,7.42,0,0,1,10.66,10.61Z" class="clr-i-outline clr-i-outline-path-8"/>
+  <path d="M24.77,1.83a5.17,5.17,0,0,0-3.69,1.55,7.87,7.87,0,0,1,1.9,1,3.14,3.14,0,0,1,4.93,2.52,3.09,3.09,0,0,1-1.79,2.77,7.14,7.14,0,0,1,.06.93,7.88,7.88,0,0,1-.1,1.2,5.1,5.1,0,0,0,3.83-4.9A5.12,5.12,0,0,0,24.77,1.83Z" class="clr-i-outline clr-i-outline-path-9"/>
+  
+  <ellipse cx="18" cy="11.28" rx="4.76" ry="4.7" class="clr-i-solid clr-i-solid-path-1"/>
+  <path d="M10.78,11.75c.16,0,.32,0,.48,0,0-.15,0-.28,0-.43a6.7,6.7,0,0,1,3.75-6,4.62,4.62,0,1,0-4.21,6.46Z" class="clr-i-solid clr-i-solid-path-2"/>
+  <path d="M24.76,11.28c0,.15,0,.28,0,.43.16,0,.32,0,.48,0A4.58,4.58,0,1,0,21,5.29,6.7,6.7,0,0,1,24.76,11.28Z" class="clr-i-solid clr-i-solid-path-3"/>
+  <path d="M22.29,16.45a21.45,21.45,0,0,1,5.71,2,2.71,2.71,0,0,1,.68.53H34V15.56a.72.72,0,0,0-.38-.64,18,18,0,0,0-8.4-2.05l-.66,0A6.66,6.66,0,0,1,22.29,16.45Z" class="clr-i-solid clr-i-solid-path-4"/>
+  <path d="M6.53,20.92A2.76,2.76,0,0,1,8,18.47a21.45,21.45,0,0,1,5.71-2,6.66,6.66,0,0,1-2.27-3.55l-.66,0a18,18,0,0,0-8.4,2.05.72.72,0,0,0-.38.64V22H6.53Z" class="clr-i-solid clr-i-solid-path-5"/>
+  <rect x="21.46" y="26.69" width="5.96" height="1.4" class="clr-i-solid clr-i-solid-path-6"/>
+  <path d="M32.81,21.26H25.94v-1a1,1,0,0,0-2,0v1H22V18.43A20.17,20.17,0,0,0,18,18a19.27,19.27,0,0,0-9.06,2.22.76.76,0,0,0-.41.68v5.61h7.11v6.09a1,1,0,0,0,1,1H32.81a1,1,0,0,0,1-1V22.26A1,1,0,0,0,32.81,21.26Zm-1,10.36H17.64V23.26h6.3v.91a1,1,0,0,0,2,0v-.91h5.87Z" class="clr-i-solid clr-i-solid-path-7"/>`
+);
+
+export const ClrShapeEmployee = clrIconSVG(
+  `<path d="M16.43,16.69a7,7,0,1,1,7-7A7,7,0,0,1,16.43,16.69Zm0-11.92a5,5,0,1,0,5,5A5,5,0,0,0,16.43,4.77Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <path d="M22,17.9A25.41,25.41,0,0,0,5.88,19.57a4.06,4.06,0,0,0-2.31,3.68V29.2a1,1,0,1,0,2,0V23.25a2,2,0,0,1,1.16-1.86,22.91,22.91,0,0,1,9.7-2.11,23.58,23.58,0,0,1,5.57.66Z" class="clr-i-outline clr-i-outline-path-2"/>
+  <rect x="22.14" y="27.41" width="6.14" height="1.4" class="clr-i-outline clr-i-outline-path-3"/>
+  <path d="M33.17,21.47H28v2h4.17v8.37H18V23.47h6.3v.42a1,1,0,0,0,2,0V20a1,1,0,0,0-2,0v1.47H17a1,1,0,0,0-1,1V32.84a1,1,0,0,0,1,1H33.17a1,1,0,0,0,1-1V22.47A1,1,0,0,0,33.17,21.47Z" class="clr-i-outline clr-i-outline-path-4"/>
+  
+  <circle cx="16.86" cy="9.73" r="6.46" class="clr-i-solid clr-i-solid-path-1"/>
+  <rect x="21" y="28" width="7" height="1.4" class="clr-i-solid clr-i-solid-path-2"/>
+  <path d="M15,30v3a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V23a1,1,0,0,0-1-1H26V20.53a1,1,0,0,0-2,0V22H22V18.42A32.12,32.12,0,0,0,16.86,18a26,26,0,0,0-11,2.39,3.28,3.28,0,0,0-1.88,3V30Zm17,2H17V24h7v.42a1,1,0,0,0,2,0V24h6Z" class="clr-i-solid clr-i-solid-path-3"/>`
+);
+
+export const ClrShapeFactory = clrIconSVG(
+  `<path d="M33.47,7.37a1,1,0,0,0-1,.06L23,13.77V8.26a1,1,0,0,0-1.64-.77L13.48,14H10V4.62a1,1,0,0,0-.78-1l-4-.9a1,1,0,0,0-.85.2A1,1,0,0,0,4,3.73V14H3a1,1,0,0,0-1,1V31a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V8.26A1,1,0,0,0,33.47,7.37ZM6,5l2,.44V14H6ZM32,30H4V16h9.83a1,1,0,0,0,.64-.23L21,10.37v5.28a1,1,0,0,0,1.56.83L32,10.14Z" class="clr-i-outline clr-i-outline-path-1"/>
+  <rect x="6" y="17.99" width="8" height="2" class="clr-i-outline clr-i-outline-path-2"/>
+  <rect x="6" y="21.99" width="8" height="2" class="clr-i-outline clr-i-outline-path-3"/>
+  <rect x="6" y="25.99" width="8" height="2" class="clr-i-outline clr-i-outline-path-4"/>
+  <rect x="19" y="18.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-5"/>
+  <rect x="19" y="24.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-6"/>
+  <rect x="23" y="18.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-7"/>
+  <rect x="23" y="24.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-8"/>
+  <rect x="27" y="18.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-9"/>
+  <rect x="27" y="24.99" width="2" height="3" class="clr-i-outline clr-i-outline-path-10"/>
+  
+  <path d="M32.45,8.44,22,15.3V9.51a1,1,0,0,0-1.63-.78L14.07,14H10V4.06L4,2.71V14H2V31a1,1,0,0,0,1,1H33a1,1,0,0,0,1-1V9.27A1,1,0,0,0,32.45,8.44ZM14,29H6V27h8Zm0-4H6V23h8Zm0-4H6V19h8Zm8,8H20V26h2Zm0-6H20V20h2Zm4,6H24V26h2Zm0-6H24V20h2Zm4,6H28V26h2Zm0-6H28V20h2Z" class="clr-i-solid clr-i-solid-path-1"/>`
+);
+
 export const CommerceShapes: any = {
   calculator: ClrShapeCalculator,
   'piggy-bank': ClrShapePiggyBank,
@@ -186,6 +232,9 @@ export const CommerceShapes: any = {
   bitcoin: ClrShapeBitcoin,
   ruble: ClrShapeRuble,
   'coin-bag': ClrShapeCoinBag,
+  'employee-group': ClrShapeEmployeeGroup,
+  employee: ClrShapeEmployee,
+  factory: ClrShapeFactory,
 };
 
 Object.defineProperty(CommerceShapes, 'savings', descriptorConfig(CommerceShapes['piggy-bank']));

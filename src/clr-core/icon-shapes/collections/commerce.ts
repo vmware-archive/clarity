@@ -15,7 +15,10 @@ import { creditCardIcon, creditCardIconName } from '../shapes/credit-card';
 import { dollarIcon, dollarIconName } from '../shapes/dollar';
 import { dollarBillIcon, dollarBillIconName } from '../shapes/dollar-bill';
 import { eCheckIcon, eCheckIconName } from '../shapes/e-check';
+import { employeeIcon, employeeIconName } from '../shapes/employee';
+import { employeeGroupIcon, employeeGroupIconName } from '../shapes/employee-group';
 import { euroIcon, euroIconName } from '../shapes/euro';
+import { factoryIcon, factoryIconName } from '../shapes/factory';
 import { pesoIcon, pesoIconName } from '../shapes/peso';
 import { piggyBankIcon, piggyBankIconName } from '../shapes/piggy-bank';
 import { poundIcon, poundIconName } from '../shapes/pound';
@@ -37,7 +40,10 @@ export const commerceCollectionIcons: IconShapeTuple[] = [
   dollarIcon,
   dollarBillIcon,
   eCheckIcon,
+  employeeGroupIcon,
+  employeeIcon,
   euroIcon,
+  factoryIcon,
   pesoIcon,
   piggyBankIcon,
   poundIcon,
@@ -79,7 +85,10 @@ declare module '@clr/core/common' {
     [dollarIconName]: string;
     [dollarBillIconName]: string;
     [eCheckIconName]: string;
+    [employeeIconName]: string;
+    [employeeGroupIconName]: string;
     [euroIconName]: string;
+    [factoryIconName]: string;
     [pesoIconName]: string;
     [piggyBankIconName]: string;
     [poundIconName]: string;

@@ -8,6 +8,7 @@ import { ClarityIcons } from '../icon.service';
 import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces';
 
 import { administratorIcon, administratorIconName } from '../shapes/administrator';
+import { animationIcon, animationIconName } from '../shapes/animation';
 import { applicationIcon, applicationIconName } from '../shapes/application';
 import { applicationsIcon, applicationsIconName } from '../shapes/applications';
 import { archiveIcon, archiveIconName } from '../shapes/archive';
@@ -26,6 +27,7 @@ import { bundleIcon, bundleIconName } from '../shapes/bundle';
 import { capacitorIcon, capacitorIconName } from '../shapes/capacitor';
 import { cdDvdIcon, cdDvdIconName } from '../shapes/cd-dvd';
 import { certificateIcon, certificateIconName } from '../shapes/certificate';
+import { ciCdIcon, ciCdIconName } from '../shapes/ci-cd';
 import { cloudNetworkIcon, cloudNetworkIconName } from '../shapes/cloud-network';
 import { cloudScaleIcon, cloudScaleIconName } from '../shapes/cloud-scale';
 import { cloudTrafficIcon, cloudTrafficIconName } from '../shapes/cloud-traffic';
@@ -46,6 +48,7 @@ import { displayIcon, displayIconName } from '../shapes/display';
 import { downloadCloudIcon, downloadCloudIconName } from '../shapes/download-cloud';
 import { exportIcon, exportIconName } from '../shapes/export';
 import { fileShareIcon, fileShareIconName } from '../shapes/file-share';
+import { fileShare2Icon, fileShare2IconName } from '../shapes/file-share-2';
 import { flaskIcon, flaskIconName } from '../shapes/flask';
 import { floppyIcon, floppyIconName } from '../shapes/floppy';
 import { hardDiskIcon, hardDiskIconName } from '../shapes/hard-disk';
@@ -105,6 +108,7 @@ import { wifiIcon, wifiIconName } from '../shapes/wifi';
 
 export const technologyCollectionIcons: IconShapeTuple[] = [
   administratorIcon,
+  animationIcon,
   applicationIcon,
   applicationsIcon,
   archiveIcon,
@@ -123,6 +127,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   capacitorIcon,
   cdDvdIcon,
   certificateIcon,
+  ciCdIcon,
   cloudNetworkIcon,
   cloudScaleIcon,
   cloudTrafficIcon,
@@ -143,6 +148,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   downloadCloudIcon,
   exportIcon,
   fileShareIcon,
+  fileShare2Icon,
   flaskIcon,
   floppyIcon,
   hardDriveIcon,
@@ -210,6 +216,7 @@ export const technologyCollectionAliases: IconAlias[] = [
   [phoneHandsetIconName, ['receiver']],
   [rulerPencilIconName, ['design']],
   [helixIconName, ['dna']],
+  [fileShareIconName, ['folder-share']],
 ];
 
 /**
@@ -231,6 +238,7 @@ export function loadTechnologyIconSet() {
 declare module '@clr/core/common' {
   interface IconRegistrySources {
     [administratorIconName]: string;
+    [animationIconName]: string;
     [applicationIconName]: string;
     [applicationsIconName]: string;
     [archiveIconName]: string;
@@ -249,6 +257,7 @@ declare module '@clr/core/common' {
     [capacitorIconName]: string;
     [cdDvdIconName]: string;
     [certificateIconName]: string;
+    [ciCdIconName]: string;
     [cloudNetworkIconName]: string;
     [cloudScaleIconName]: string;
     [cloudTrafficIconName]: string;
@@ -269,6 +278,7 @@ declare module '@clr/core/common' {
     [downloadCloudIconName]: string;
     [exportIconName]: string;
     [fileShareIconName]: string;
+    [fileShare2IconName]: string;
     [flaskIconName]: string;
     [floppyIconName]: string;
     [hardDriveIconName]: string;

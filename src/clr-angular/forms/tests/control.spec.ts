@@ -67,7 +67,7 @@ export function AccessibilitySpec(testContainer, testControl, testComponent, con
     });
 
     it('should have aria-describedby', () => {
-      expect(input.getAttribute('aria-describedby')).toBe('clr-form-control-1-error');
+      expect(input.getAttribute('aria-describedby')).toContain('-error');
     });
 
     it('should let you overwrite the aria-describedby', () => {

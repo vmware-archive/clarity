@@ -4,15 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Inject, ContentChildren, ElementRef, HostListener, Input, QueryList } from '@angular/core';
+import { Component, Inject, ContentChildren, Input, QueryList } from '@angular/core';
 
 import { ButtonInGroupService } from '../providers/button-in-group.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
-import { ClrAxis } from '../../utils/popover/enums/axis.enum';
-import { ClrSide } from '../../utils/popover/enums/side.enum';
-import { ClrAlignment } from '../../utils/popover/enums/alignment.enum';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
@@ -37,7 +34,6 @@ export class ClrButtonGroup {
 
   constructor(
     public buttonGroupNewService: ButtonInGroupService,
-    private elementRef: ElementRef,
     private toggleService: ClrPopoverToggleService,
     @Inject(UNIQUE_ID) public popoverId: string,
     public commonStrings: ClrCommonStringsService

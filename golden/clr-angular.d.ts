@@ -189,7 +189,7 @@ export declare class ClrButtonGroup {
     readonly open: boolean;
     popoverId: string;
     popoverPosition: ClrPopoverPosition;
-    constructor(buttonGroupNewService: ButtonInGroupService, elementRef: ElementRef, toggleService: ClrPopoverToggleService, popoverId: string, commonStrings: ClrCommonStringsService);
+    constructor(buttonGroupNewService: ButtonInGroupService, toggleService: ClrPopoverToggleService, popoverId: string, commonStrings: ClrCommonStringsService);
     getMoveIndex(buttonToMove: ClrButton): number;
     initializeButtons(): void;
     ngAfterContentInit(): void;

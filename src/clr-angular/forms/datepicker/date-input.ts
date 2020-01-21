@@ -161,7 +161,9 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
 
   @Input('disabled')
   set disabled(value: boolean | string) {
-    this.dateFormControlService.setDisabled(isBooleanAttributeSet(value));
+    if (this.dateFormControlService) {
+      this.dateFormControlService.setDisabled(isBooleanAttributeSet(value));
+    }
   }
 
   private usingClarityDatepicker() {

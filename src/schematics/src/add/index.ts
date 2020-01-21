@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,8 @@ import { addSymbolToNgModuleMetadata } from '../utility/ast-utils';
 import { InsertChange } from '../utility/change';
 
 import { Schema as ComponentOptions } from './schema';
+
+import { readJsonFile, updateJsonFile } from '../utility/json-utils';
 
 // Determine where to load the package.json, if doing local dev or not
 let corePackage: any;
@@ -57,18 +59,6 @@ function findModuleFromOptions(host: Tree, options: ComponentOptions, config: an
   } else {
     throw new Error('Could not find the module, please specify a path to the app module file with the --module flag');
   }
-}
-
-// Read a file
-function readJsonFile(path: string) {
-  return JSON.parse(fs.readFileSync(path, 'utf-8'));
-}
-
-// Writes changes to a JSON file
-function updateJsonFile(path: string, callback: (a: any) => any) {
-  const json = readJsonFile(path);
-  callback(json);
-  fs.writeFileSync(path, JSON.stringify(json, null, 2));
 }
 
 // Checks if a version of Angular is compatible with current or next
@@ -152,6 +142,9 @@ export default function(options: ComponentOptions): Rule {
       if (!packages.includes('@clr/core')) {
         json.dependencies['@clr/core'] = `${version}`;
       }
+      if (!packages.includes('@clr/city')) {
+        json.dependencies['@clr/city'] = '^1.0.0';
+      }
       if (!packages.includes('@webcomponents/custom-elements')) {
         json.dependencies['@webcomponents/custom-elements'] = '^1.0.0';
       }
@@ -180,6 +173,9 @@ export default function(options: ComponentOptions): Rule {
       const stylesSearch = styles.join('|');
       const pathPrefix = json.apps ? '../' : '';
 
+      if (stylesSearch.search('node_modules/@clr/city/css/bundles/default.min.css') < 0) {
+        styles.unshift(pathPrefix + 'node_modules/@clr/city/css/bundles/default.min.css');
+      }
       if (stylesSearch.search('node_modules/@clr/ui/clr-ui') < 0) {
         styles.unshift(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
       }

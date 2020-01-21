@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -30,6 +30,7 @@ export class AppModule { }
 const HTML_IMPORTS = `
 <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
 <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
+<link rel="stylesheet" href="path/to/node_modules/node_modules/@clr/city/css/bundles/default.min.css">
 <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
 <script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 `;
@@ -38,6 +39,7 @@ const NODE_IMPORTS = `
 "styles": [
       "node_modules/@clr/icons/clr-icons.min.css",
       "node_modules/@clr/ui/clr-ui.min.css",
+      "node_modules/@clr/city/css/bundles/default.min.css"
       ... any other styles
 ],
 "scripts": [
@@ -52,6 +54,8 @@ const UI_CDN = `
 <link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
 <!-- Or load a specific version -->
 <link rel="stylesheet" href="https://unpkg.com/@clr/ui@0.12.5/clr-ui.min.css" />
+<!-- Load font weights needed from @clr/ui -->
+<link rel="stylesheet" href="https://unpkg.com/@clr/city@1.1.0/css/bundles/default.css" />
 `;
 
 @Component({

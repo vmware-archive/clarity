@@ -1,10 +1,11 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Usage: ../typography/_typography.clarity.scss
 $clr-fontSkipBase64: false !default;
-$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
+$clr-font: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
+//$clr-font: Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default; //Default font stack for Clarity
 $clr-altFont: $clr-font !default; //TODO: TBD. Alternative font for Clarity
 
 // Usage: ../code/syntax-highlight/_code.clarity.scss

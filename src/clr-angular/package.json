@@ -23,6 +23,7 @@
     "@angular/forms": "^8.0.0-rc.1",
     "@angular/platform-browser": "^8.0.0-rc.1",
     "@angular/platform-browser-dynamic": "^8.0.0-rc.1",
+    "@clr/city": "^1.0.0",
     "@clr/core": "@VERSION",
     "@clr/ui": "@VERSION"
   },
@@ -37,7 +38,8 @@
     "packageGroup": [
       "@clr/angular",
       "@clr/ui",
-      "@clr/icons"
+      "@clr/icons",
+      "@clr/city"
     ]
   }
 }

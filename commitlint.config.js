@@ -37,6 +37,7 @@ const scopes = [
   'toggle',
   'tooltip',
   'tree-view',
+  'typography',
   'vertical-nav',
   'wizard',
   'icons',

@@ -862,8 +862,11 @@ export declare class ClrIfOpen implements OnDestroy {
 }
 
 export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {
+    controlIdService: ControlIdService;
+    readonly getDescribedById: string;
     protected index: number;
-    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    userDescribedById: string;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, controlIdService: ControlIdService);
 }
 
 export declare class ClrInputContainer implements DynamicWrapper, OnDestroy {

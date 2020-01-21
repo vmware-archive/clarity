@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,8 +47,18 @@ import { Component } from '@angular/core';
 
           <button (click)="showErrorControlTest = !showErrorControlTest" class="btn">Toggle Error box</button>
           <div *ngIf="showErrorControlTest">
+            <p>Show simple out of context clrControlError</p>
             <clr-control-error>Must be at least 5 characters</clr-control-error>
           </div>
+
+          <form clrForm>
+            <clr-input-container>
+              <label>Field 1 label</label>
+              <input clrInput type="text" [(ngModel)]="fieldLabel" name="example" required />
+              <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+              <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+            </clr-input-container>
+          </form>
 
           <h3>ClrAlert</h3>
           <button (click)="toggleClrAlert()" class="btn">Toggle Alert Demo</button>
@@ -72,6 +82,8 @@ export class AriaLiveServiceDemo {
   public showMonitorTest: boolean = false;
   public showErrorControlTest: boolean = false;
   public showAlertTest: boolean = false;
+
+  public fieldLabel: string;
 
   spinners: boolean[] = [];
   endlessToggle: boolean = false;

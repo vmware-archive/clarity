@@ -42,6 +42,42 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
   fullTest('reactive', testContainer, testControl, testComponent, controlClass);
 }
 
+export function AccessibilitySpec(testContainer, testControl, testComponent, controlClass): void {
+  describe('Accessibility', () => {
+    let fixture;
+    let input: HTMLElement;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
+        declarations: [testContainer, testControl, testComponent],
+        providers: [
+          IfErrorService,
+          NgControlService,
+          ControlIdService,
+          ControlClassService,
+          MarkControlService,
+          LayoutService,
+          DatalistIdService,
+        ],
+      });
+      fixture = TestBed.createComponent(testComponent);
+      fixture.detectChanges();
+      input = fixture.nativeElement.querySelector('input');
+    });
+
+    it('should have aria-describedby', () => {
+      expect(input.getAttribute('aria-describedby')).toBe('clr-form-control-1-error');
+    });
+
+    it('should let you overwrite the aria-describedby', () => {
+      fixture.componentInstance.describedby = 'fakeId';
+      fixture.detectChanges();
+      expect(input.getAttribute('aria-describedby')).toBe(fixture.componentInstance.describedby);
+    });
+  });
+}
+
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
     let control, fixture, ifErrorService, controlClassService, markControlService, controlIdService, datalistIdService;

@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { TemplateDrivenSpec, ControlStandaloneSpec, ReactiveSpec } from '../tests/control.spec';
+import { TemplateDrivenSpec, ControlStandaloneSpec, ReactiveSpec, AccessibilitySpec } from '../tests/control.spec';
 import { ClrInputContainer } from './input-container';
 import { ClrInput } from './input';
 
@@ -26,6 +26,17 @@ class TemplateDrivenTest {}
 
 @Component({
   template: `
+    <clr-input-container>
+       <input clrInput name="model" [aria-describedby]="describedby" class="test-class" [(ngModel)]="model" />
+    <clr-input-container>
+    `,
+})
+class InputContainerTest {
+  describedby: string;
+}
+
+@Component({
+  template: `
     <div [formGroup]="example">
        <input clrInput name="model" class="test-class" formControlName="model" />
     </div>
@@ -42,5 +53,6 @@ export default function(): void {
     ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrInputContainer, ClrInput, TemplateDrivenTest, 'clr-input');
     ReactiveSpec(ClrInputContainer, ClrInput, ReactiveTest, 'clr-input');
+    AccessibilitySpec(ClrInputContainer, ClrInput, InputContainerTest, 'clr-input');
   });
 }

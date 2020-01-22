@@ -257,6 +257,7 @@ export interface ClrCommonStrings {
     current?: string;
     currentPage?: string;
     danger?: string;
+    datagridFilterAriaLabel?: string;
     datepickerCurrentDecade?: string;
     datepickerCurrentMonth?: string;
     datepickerNextDecade?: string;

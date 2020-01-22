@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,6 +20,3 @@ export * from './accordion/index';
 export * from './accordion/stepper/index';
 export * from './progress/spinner/index';
 export * from './progress/progress-bars/index';
-
-// Below are exported for internal use only and may change without notice
-export { FocusTrapTracker as ÇlrFocusTrapTracker } from './utils/focus-trap/focus-trap-tracker.service';

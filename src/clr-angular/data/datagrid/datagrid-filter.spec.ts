@@ -217,8 +217,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
   template: `<clr-dg-filter [clrDgFilter]="filter" [clrDgFilterOpen]="open" (clrDgFilterOpenChange)="clrDgFilterOpenChangeFn($event)">Hello world</clr-dg-filter>`,
 })
 class FullTest {
-  @ViewChild(CustomFilter, { static: false })
-  customFilter: CustomFilter;
+  @ViewChild(CustomFilter) customFilter: CustomFilter;
 
   filter: ClrDatagridFilterInterface<number>;
   open: boolean = false;

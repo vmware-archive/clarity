@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,7 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { UNIQUE_ID } from '../../id-generator/id-generator.service';
-import { BASIC_FOCUSABLE_ITEM_PROVIDER, BasicFocusableItem } from './basic-focusable-item.service';
+import { BASIC_FOCUSABLE_ITEM_PROVIDER } from './basic-focusable-item.service';
 import { FocusableItem } from './focusable-item';
 
 @Component({
@@ -18,7 +18,7 @@ class SimpleHost {}
 
 interface TestContext {
   el: HTMLElement;
-  item: BasicFocusableItem;
+  item: FocusableItem;
   id: string;
 }
 

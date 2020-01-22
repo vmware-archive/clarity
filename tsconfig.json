@@ -1,16 +1,12 @@
 {
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  },
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "rootDir": "./",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -25,7 +21,11 @@
       "@clr/core": ["src/clr-core"],
       "@clr/core/*": ["src/clr-core/*"]
     },
-    "lib": ["es2017", "dom"]
+    "lib": ["es2018", "dom"]
   },
-  "exclude": ["node_modules/**", "dist/**"]
+  "exclude": ["node_modules/**", "dist/**"],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }

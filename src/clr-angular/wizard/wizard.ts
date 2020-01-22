@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -207,10 +207,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
 
   @Output('clrWizardOnPrevious') onMovePrevious: EventEmitter<any> = new EventEmitter<any>(false);
 
-  @ContentChildren(ClrWizardPage) pages: QueryList<ClrWizardPage>;
+  @ContentChildren(ClrWizardPage, { descendants: true })
+  pages: QueryList<ClrWizardPage>;
   @ContentChildren(ClrWizardHeaderAction) headerActions: QueryList<ClrWizardHeaderAction>;
-  @ViewChild('wizardTitle', { static: false })
-  wizardTitle: ElementRef;
+  @ViewChild('wizardTitle') wizardTitle: ElementRef;
 
   public get currentPage() {
     return this.navService.currentPage;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 import { ClrAlert } from './alert';
 import { MultiAlertService } from './providers/multi-alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-alerts',
@@ -30,7 +31,12 @@ import { MultiAlertService } from './providers/multi-alert.service';
   styles: [':host { display: block }'],
 })
 export class ClrAlerts implements AfterContentInit, OnDestroy {
-  @ContentChildren(ClrAlert) allAlerts: QueryList<ClrAlert>;
+  private subscriptions: Subscription[] = [];
+
+  @ContentChildren(ClrAlert)
+  set allAlerts(value: QueryList<ClrAlert>) {
+    this.multiAlertService.manage(value); // provide alerts
+  }
 
   /**
    * Input/Output to support two way binding on current alert index
@@ -70,7 +76,7 @@ export class ClrAlerts implements AfterContentInit, OnDestroy {
    */
   get alerts() {
     return this.allAlerts.filter(alert => {
-      return alert.isHidden === false;
+      return alert.hidden === false;
     });
   }
 
@@ -84,14 +90,16 @@ export class ClrAlerts implements AfterContentInit, OnDestroy {
   constructor(public multiAlertService: MultiAlertService) {}
 
   ngAfterContentInit() {
-    this.multiAlertService.manage(this.allAlerts);
-    this.multiAlertService.changes.subscribe(index => {
-      this.currentAlertIndexChange.next(index);
-      this.currentAlertChange.next(this.multiAlertService.currentAlert);
-    });
+    this.subscriptions.push(
+      this.multiAlertService.changes.subscribe(index => {
+        this.currentAlertIndexChange.next(index);
+        this.currentAlertChange.next(this.multiAlertService.currentAlert);
+      })
+    );
   }
 
   ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
     this.multiAlertService.destroy();
   }
 }

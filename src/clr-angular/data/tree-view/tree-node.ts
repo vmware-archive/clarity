@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -37,6 +37,8 @@ import { TreeNodeModel } from './models/tree-node.model';
 import { TreeFeaturesService, TREE_FEATURES_PROVIDER } from './tree-features.service';
 import { TreeFocusManagerService } from './tree-focus-manager.service';
 import { ClrTreeNodeLink } from './tree-node-link';
+
+const LVIEW_CONTEXT_INDEX = 8;
 
 @Component({
   selector: 'clr-tree-node',
@@ -80,7 +82,14 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
       // I'm completely stuck, we have to hack into private properties until either
       // https://github.com/angular/angular/issues/14935 or https://github.com/angular/angular/issues/15998
       // are fixed
-      this._model = (<any>injector).view.context.clrModel;
+      // This is for non-ivy implementations
+      if ((<any>injector).view) {
+        this._model = (<any>injector).view.context.clrModel;
+      } else {
+        // Ivy puts this on a specific index of a _lView property
+        // tslint:disable-next-line
+        this._model = (<any>injector)._lView[LVIEW_CONTEXT_INDEX].clrModel;
+      }
     } else {
       // Force cast for now, not sure how to tie the correct type here to featuresService.recursion
       this._model = new DeclarativeTreeNodeModel(parent ? <DeclarativeTreeNodeModel<T>>parent._model : null);

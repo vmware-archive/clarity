@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,13 +16,17 @@ import { Subject } from 'rxjs';
  * It has the potential to trigger change detection loops or kill app performances.
  */
 export class WillyWonka implements AfterViewChecked {
-  private _chocolate = new Subject<void>();
+  private _chocolate = new Subject<string>();
 
-  public get chocolate(): Observable<void> {
+  public get chocolate(): Observable<string> {
     return this._chocolate.asObservable();
   }
 
+  disableChocolateCheck = false;
+
   ngAfterViewChecked() {
-    this._chocolate.next();
+    if (!this.disableChocolateCheck) {
+      this._chocolate.next();
+    }
   }
 }

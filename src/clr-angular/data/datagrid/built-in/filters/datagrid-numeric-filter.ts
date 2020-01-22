@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,10 +21,10 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   providers: [{ provide: CustomFilter, useExisting: DatagridNumericFilter }],
   template: `
         <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low" 
+            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low"
                    [placeholder]="commonStrings.keys.minValue" [attr.aria-label]="commonStrings.keys.minValue" />
                 <span class="datagrid-filter-input-spacer"></span>
-            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high" 
+            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high"
                    [placeholder]="commonStrings.keys.maxValue" [attr.aria-label]="commonStrings.keys.maxValue" />
         </clr-dg-filter>
     `,
@@ -60,6 +60,13 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     } else {
       this.setFilter(new DatagridNumericFilterImpl(value));
     }
+    if (this.initFilterValues) {
+      this.value = this.initFilterValues;
+      // This initFilterValues should be used only once after the filter registration
+      // So deleting this property value to prevent it from being used again
+      // if this customStringFilter property is set again
+      delete this.initFilterValues;
+    }
   }
 
   /**
@@ -70,14 +77,12 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   /**
    * We need the actual input element to automatically focus on it
    */
-  @ViewChild('input_low', { static: false })
-  public input: ElementRef;
+  @ViewChild('input_low') public input: ElementRef;
 
   /**
    * We grab the ClrDatagridFilter we wrap to register this StringFilter to it.
    */
-  @ViewChild(ClrDatagridFilter, { static: false })
-  public filterContainer: ClrDatagridFilter<T>;
+  @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
     this.subscriptions.push(
       this.popoverToggleService.openChange.subscribe(openChange => {
@@ -90,6 +95,7 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     );
   }
 
+  private initFilterValues: [number, number];
   /**
    * Common setter for the input values
    */
@@ -99,21 +105,22 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
 
   @Input('clrFilterValue')
   public set value(values: [number, number]) {
-    if (!this.filter) {
-      return;
-    }
-    if (values && (values[0] !== this.filter.low || values[1] !== this.filter.high)) {
-      if (typeof values[0] === 'number') {
-        this.filter.low = values[0];
-      } else {
-        this.filter.low = null;
+    if (this.filter) {
+      if (values && (values[0] !== this.filter.low || values[1] !== this.filter.high)) {
+        if (typeof values[0] === 'number') {
+          this.filter.low = values[0];
+        } else {
+          this.filter.low = null;
+        }
+        if (typeof values[1] === 'number') {
+          this.filter.high = values[1];
+        } else {
+          this.filter.high = null;
+        }
+        this.filterValueChange.emit(values);
       }
-      if (typeof values[1] === 'number') {
-        this.filter.high = values[1];
-      } else {
-        this.filter.high = null;
-      }
-      this.filterValueChange.emit(values);
+    } else {
+      this.initFilterValues = values;
     }
   }
 

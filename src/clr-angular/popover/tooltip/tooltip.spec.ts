@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 import { ClrTooltip } from './tooltip';
 import { spec, TestContext } from '../../utils/testing/helpers.spec';
 import { TooltipIdService } from './providers/tooltip-id.service';
-import { ClrTooltipModule } from '@clr/angular';
+import { ClrTooltipModule } from './tooltip.module';
 
 @Component({
   template: `

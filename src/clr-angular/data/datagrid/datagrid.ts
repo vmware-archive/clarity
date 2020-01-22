@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -120,8 +120,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   /**
    * We grab the smart iterator from projected content
    */
-  @ContentChild(ClrDatagridItems, { static: false })
-  public iterator: ClrDatagridItems<T>;
+  @ContentChild(ClrDatagridItems) public iterator: ClrDatagridItems<T>;
 
   /**
    * Array of all selected items
@@ -197,8 +196,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   /**
    * Custom placeholder detection
    */
-  @ContentChild(ClrDatagridPlaceholder, { static: false })
-  public placeholder: ClrDatagridPlaceholder<T>;
+  @ContentChild(ClrDatagridPlaceholder) public placeholder: ClrDatagridPlaceholder<T>;
 
   /**
    * Hideable Column data source / detection.
@@ -212,10 +210,10 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
    */
 
   @ContentChildren(ClrDatagridRow) rows: QueryList<ClrDatagridRow<T>>;
-  @ViewChild('scrollableColumns', { static: false, read: ViewContainerRef })
+  @ViewChild('scrollableColumns', { read: ViewContainerRef })
   scrollableColumns: ViewContainerRef;
 
-  @ViewChild('datagridTable', { static: false, read: ElementRef })
+  @ViewChild('datagridTable', { read: ElementRef })
   datagridTable: ElementRef;
 
   ngAfterContentInit() {
@@ -307,12 +305,12 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     this.organizer.resize();
   }
 
-  @ViewChild('projectedDisplayColumns', { static: false, read: ViewContainerRef })
+  @ViewChild('projectedDisplayColumns', { read: ViewContainerRef })
   _projectedDisplayColumns: ViewContainerRef;
-  @ViewChild('projectedCalculationColumns', { static: false, read: ViewContainerRef })
+  @ViewChild('projectedCalculationColumns', { read: ViewContainerRef })
   _projectedCalculationColumns: ViewContainerRef;
-  @ViewChild('displayedRows', { static: false, read: ViewContainerRef })
+  @ViewChild('displayedRows', { read: ViewContainerRef })
   _displayedRows: ViewContainerRef;
-  @ViewChild('calculationRows', { static: false, read: ViewContainerRef })
+  @ViewChild('calculationRows', { read: ViewContainerRef })
   _calculationRows: ViewContainerRef;
 }

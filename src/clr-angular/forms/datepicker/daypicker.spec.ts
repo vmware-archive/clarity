@@ -18,7 +18,7 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { ClrCommonStringsService } from '@clr/angular';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { TestBed } from '@angular/core/testing';
 import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';

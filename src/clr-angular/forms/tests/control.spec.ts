@@ -95,7 +95,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
 
     it('correctly extends WrappedFormControl', () => {
       expect(control.injector.get(testControl).wrapperType).toBe(testContainer);
-      expect(WrappedFormControl.prototype.ngOnInit).toHaveBeenCalled();
+      expect(testControl.prototype instanceof WrappedFormControl).toBeTrue();
     });
 
     it('should set the class on the control with ControlClassService', () => {
@@ -111,34 +111,10 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       control.nativeElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
       expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
-    });
-
-    it('should have the IfErrorService', () => {
-      expect(ifErrorService).toBeTruthy();
     });
 
     it('should have the MarkControlService', () => {
       expect(markControlService.markAsTouched).toBeTruthy();
-    });
-
-    it('correctly extends WrappedFormControl', () => {
-      expect(control.injector.get(testControl).wrapperType).toBe(testContainer);
-      expect(WrappedFormControl.prototype.ngOnInit).toHaveBeenCalled();
-    });
-
-    it('should set the class on the control with ControlClassService', () => {
-      expect(controlClassService).toBeTruthy();
-      expect(controlClassService.initControlClass).toHaveBeenCalled();
-      expect(controlClassService.className).toEqual('test-class');
-    });
-
-    it('should handle blur events', () => {
-      // control must be both invalid and blurred to register the validity
-      control.nativeElement.value = 'abc';
-      control.nativeElement.dispatchEvent(new Event('input'));
-      control.nativeElement.dispatchEvent(new Event('blur'));
-      fixture.detectChanges();
-      expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
     });
   });
 }

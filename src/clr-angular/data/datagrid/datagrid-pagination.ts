@@ -116,10 +116,8 @@ import { DetailService } from './providers/detail.service';
   host: { '[class.pagination]': 'true' },
 })
 export class ClrDatagridPagination implements OnDestroy, OnInit {
-  @ContentChild(ClrDatagridPageSize, { static: false })
-  _pageSizeComponent: ClrDatagridPageSize;
-  @ViewChild('currentPageInput', { static: false })
-  currentPageInputRef: ElementRef;
+  @ContentChild(ClrDatagridPageSize) _pageSizeComponent: ClrDatagridPageSize;
+  @ViewChild('currentPageInput') currentPageInputRef: ElementRef;
 
   constructor(public page: Page, public commonStrings: ClrCommonStringsService, public detailService: DetailService) {
     this.page.activated = true;

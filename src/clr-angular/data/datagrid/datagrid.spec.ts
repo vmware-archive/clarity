@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -935,7 +935,7 @@ export default function(): void {
       let displayModeService: MockDisplayModeService;
 
       beforeEach(function() {
-        context = this.createWithOverride(ClrDatagrid, ProjectionTest, [], [], DATAGRID_SPEC_PROVIDERS);
+        context = this.createWithOverrideComponent(ClrDatagrid, ProjectionTest, [], [], DATAGRID_SPEC_PROVIDERS);
         displayModeService = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
       });
 

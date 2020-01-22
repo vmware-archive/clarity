@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,19 +40,18 @@ import { isPlatformBrowser } from '@angular/common';
 export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   isAccordion = false;
 
-  @ViewChild('headerButton', { static: false })
-  headerButton: ElementRef;
+  @ViewChild('headerButton') headerButton: ElementRef;
   private subscriptions: Subscription[] = [];
 
   get formGroup() {
     return this.formGroupName ? this.formGroupName.control : this.ngModelGroup.control;
   }
 
-  get id() {
-    return this.formGroupName ? this.formGroupName.name : this.ngModelGroup.name;
+  get id(): string {
+    return this.formGroupName ? this.formGroupName.name.toString() : this.ngModelGroup.name;
   }
 
-  set id(_value) {} // overriding parent id required empty setter
+  set id(_value: string) {} // overriding parent id required empty setter
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

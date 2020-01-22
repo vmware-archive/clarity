@@ -5,7 +5,9 @@
  */
 import { User } from './user';
 import { COLORS, NAMES, POKEMONS } from './values';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class Inventory {
   public size = 100;
   public latency = 0;

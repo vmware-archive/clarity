@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,8 +25,7 @@ import { ClrDatagridDetailHeader } from './datagrid-detail-header';
     `,
 })
 export class ClrDatagridDetail {
-  @ContentChild(ClrDatagridDetailHeader, { static: false })
-  public header: ClrDatagridDetailHeader;
+  @ContentChild(ClrDatagridDetailHeader) public header: ClrDatagridDetailHeader;
 
   constructor(public detailService: DetailService, public commonStrings: ClrCommonStringsService) {}
 

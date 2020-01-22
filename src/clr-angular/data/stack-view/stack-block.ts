@@ -41,7 +41,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       </div>
     </div>
 
-    <clr-expandable-animation [@clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
+    <clr-expandable-animation [clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
       <div [style.height]="expanded ? 'auto' : 0" role="region">
         <ng-content select="clr-stack-block"></ng-content>
       </div>

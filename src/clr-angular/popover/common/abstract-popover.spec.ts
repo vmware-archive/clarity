@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -113,8 +113,7 @@ class TestPopover extends AbstractPopover {
     `,
 })
 class TestPopoverWithIfOpenDirective {
-  @ViewChild(TestPopover, { static: false })
-  testPopover: TestPopover;
+  @ViewChild(TestPopover) testPopover: TestPopover;
 }
 
 @Component({
@@ -125,9 +124,8 @@ class TestPopoverWithIfOpenDirective {
   providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class InputFocusPopover {
-  @ViewChild('ignoreInput', { static: false })
-  ignore: ElementRef;
-  @ViewChild(forwardRef(() => TestPopoverIgnoreElement), { static: false })
+  @ViewChild('ignoreInput') ignore: ElementRef;
+  @ViewChild(forwardRef(() => TestPopoverIgnoreElement))
   popover: TestPopoverIgnoreElement;
 
   constructor(private toggleService: ClrPopoverToggleService) {}

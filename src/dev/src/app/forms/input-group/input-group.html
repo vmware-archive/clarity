@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -21,7 +21,7 @@
             <span class="clr-subtext">Helper Text</span>
         </div>
     </div>
-    
+
     <div class="clr-form-control">
         <label for="select-group" class="clr-control-label">Basic input group a select</label>
         <div class="clr-control-container">
@@ -39,7 +39,7 @@
             <span class="clr-subtext">Helper Text</span>
         </div>
     </div>
-    
+
     <div class="clr-form-control">
         <label for="password-group" class="clr-control-label">Basic password with toggle</label>
         <div class="clr-control-container">
@@ -86,7 +86,7 @@
                 <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusSearchGroup }">
                     <clr-icon shape="search"></clr-icon>
                     <input type="search" name="search" [(ngModel)]="search" id="search-group" placeholder="Enter value here" class="clr-input" (focus)="focusSearchGroup = true" (blur)="focusSearchGroup = false">
-                    <clr-icon shape="times-circle" (click)="search = ''" [ngClass]="{'clr-input-group-icon-action': search.length}"></clr-icon>
+                    <clr-icon shape="times-circle"></clr-icon>
                 </div>
                 <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
             </div>

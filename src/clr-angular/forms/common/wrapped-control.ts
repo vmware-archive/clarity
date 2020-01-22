@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ import {
   Renderer2,
   ElementRef,
   OnDestroy,
+  Directive,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter, distinctUntilChanged, startWith } from 'rxjs/operators';
@@ -29,6 +30,7 @@ import { NgControl } from '@angular/forms';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
 
+@Directive()
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
   protected ngControlService: NgControlService;
   private ifErrorService: IfErrorService;

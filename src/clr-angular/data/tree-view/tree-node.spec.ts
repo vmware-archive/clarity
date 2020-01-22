@@ -28,8 +28,7 @@ import { KeyCodes } from '@clr/core/common';
   </clr-tree-node>`,
 })
 class TestComponent {
-  @ViewChild('node', { static: false })
-  tree: ClrTreeNode<void>;
+  @ViewChild('node') tree: ClrTreeNode<void>;
 
   selected = ClrSelectedState.UNSELECTED;
   expanded = false;

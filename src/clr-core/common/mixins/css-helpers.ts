@@ -31,13 +31,13 @@ export class CssHelpers {
     this.removeClassnamesUnless(classnamesToRemove, []);
   }
 
-  updateEquilateralStyles(size: string | null) {
-    this.style.width = size;
-    this.style.height = size;
+  updateEquilateralStyles(size?: string) {
+    this.style.width = size || '';
+    this.style.height = size || '';
   }
 
   removeEquilateralStyles() {
-    this.updateEquilateralStyles(null);
+    this.updateEquilateralStyles();
   }
 
   addEquilateralStyles(size: string) {

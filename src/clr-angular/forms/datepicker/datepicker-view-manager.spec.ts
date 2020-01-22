@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { Point } from '../../popover/common/popover';
-import { PopoverPosition } from '../../popover/common/popover-positions';
 
 import { ClrDatepickerViewManager } from './datepicker-view-manager';
 import { DateFormControlService } from './providers/date-form-control.service';
@@ -35,19 +33,6 @@ export default function() {
         DateFormControlService,
       ]);
       viewManagerService = context.getClarityProvider(ViewManagerService);
-    });
-
-    it('defaults the position as bottom-left', () => {
-      expect(context.clarityDirective.position).toBeUndefined();
-      expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
-      expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
-    });
-
-    it('sets position value', () => {
-      context.testComponent.position = 'top-right';
-      context.detectChanges();
-      expect((<any>context.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
-      expect((<any>context.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
     });
 
     it('shows the daypicker when dayView is set to true', () => {
@@ -82,12 +67,10 @@ export default function() {
 
 @Component({
   template: `
-        <clr-datepicker-view-manager [clrPosition]="position"></clr-datepicker-view-manager>
+        <clr-datepicker-view-manager></clr-datepicker-view-manager>
     `,
 })
 class TestComponent {
-  position: PopoverPosition;
-
   constructor(private dateNavigationService: DateNavigationService) {
     this.dateNavigationService.initializeCalendar();
   }

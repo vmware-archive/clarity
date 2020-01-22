@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -46,8 +46,7 @@ export class ClrRangeContainer implements DynamicWrapper, OnDestroy {
   private subscriptions: Subscription[] = [];
   invalid = false;
   _dynamic = false;
-  @ContentChild(ClrLabel, { static: false })
-  label: ClrLabel;
+  @ContentChild(ClrLabel) label: ClrLabel;
   control: NgControl;
 
   private _hasProgress: boolean = false;

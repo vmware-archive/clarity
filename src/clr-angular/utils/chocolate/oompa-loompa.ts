@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,9 @@ export abstract class OompaLoompa implements AfterContentChecked, OnDestroy {
   constructor(cdr: ChangeDetectorRef, willyWonka: WillyWonka) {
     this.subscription = willyWonka.chocolate.subscribe(() => {
       if (this.latestFlavor !== this.flavor) {
+        willyWonka.disableChocolateCheck = true;
         cdr.detectChanges();
+        willyWonka.disableChocolateCheck = false;
       }
     });
   }

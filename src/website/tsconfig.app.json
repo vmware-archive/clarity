@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
     "baseUrl": "./",
-    "module": "esnext",
     "resolveJsonModule": true,
     "paths": {
       "@clr/angular": ["../clr-angular"],
@@ -12,5 +11,6 @@
       "@clr/core": ["../clr-core"],
       "@clr/core/*": ["../clr-core/*"]
     }
-  }
+  },
+  "files": ["src/main.ts", "src/polyfills.ts", "typings.d.ts"]
 }

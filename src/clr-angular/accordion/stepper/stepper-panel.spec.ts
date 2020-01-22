@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, Injectable, ViewChild } from '@angular/core';
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,8 +28,7 @@ import { ClrStepper } from './stepper';
   `,
 })
 class ReactiveFormsTestComponent {
-  @ViewChild(ClrStepperPanel, { static: false })
-  step: ClrStepperPanel;
+  @ViewChild(ClrStepperPanel) step: ClrStepperPanel;
   form = new FormGroup({ groupName: new FormGroup({}) });
 }
 
@@ -41,10 +40,10 @@ class ReactiveFormsTestComponent {
   `,
 })
 class TemplateFormsTestComponent {
-  @ViewChild(ClrStepperPanel, { static: false })
-  step: ClrStepperPanel;
+  @ViewChild(ClrStepperPanel) step: ClrStepperPanel;
 }
 
+@Injectable()
 class MockStepperService extends StepperService {
   step = new BehaviorSubject<AccordionPanelModel>(new AccordionPanelModel('groupName', 0));
   activeStep = new Subject<string>();

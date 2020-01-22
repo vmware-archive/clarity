@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -48,8 +48,8 @@ describe('Functional Helper: ', () => {
       expect(getElementWidthUnless(testElement, false)).toEqual(elementWidth);
     });
 
-    it('returns null when unless is true', () => {
-      expect(getElementWidthUnless(testElement, true)).toBeNull();
+    it('returns empty string when unless is true', () => {
+      expect(getElementWidthUnless(testElement, true)).toEqual('');
     });
   });
 
@@ -60,8 +60,8 @@ describe('Functional Helper: ', () => {
       expect(getTranslateForChromeRenderingBugUnless(false)).toEqual(translateForChromeRenderingBug);
     });
 
-    it('returns null when unless is true', () => {
-      expect(getTranslateForChromeRenderingBugUnless(true)).toBeNull();
+    it('returns empty string when unless is true', () => {
+      expect(getTranslateForChromeRenderingBugUnless(true)).toEqual('');
     });
   });
 

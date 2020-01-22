@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -159,23 +159,46 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   * via the [clrDgColType] input by setting it to 'string' or 'number'.
   */
 
+  private _colType: 'string' | 'number' = 'string';
+
+  get colType() {
+    return this._colType;
+  }
+
   // TODO: We might want to make this an enum in the future
-  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
+  @Input('clrDgColType')
+  set colType(value: 'string' | 'number') {
+    this._colType = value;
+    if (!this.customFilter && !this.filter && this._colType && this._field) {
+      this.setupDefaultFilter(this._field, this._colType);
+    }
+  }
 
   @Input('clrDgField')
   public set field(field: string) {
     if (typeof field === 'string') {
       this._field = field;
-      if (!this.customFilter) {
-        if (this.colType === 'number') {
-          this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
-        } else {
-          this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
-        }
+      if (!this.customFilter && this._colType) {
+        this.setupDefaultFilter(this._field, this._colType);
       }
       if (!this._sortBy) {
-        this._sortBy = new DatagridPropertyComparator(field);
+        this._sortBy = new DatagridPropertyComparator(this._field);
       }
+    }
+  }
+
+  private setupDefaultFilter(field: string, colType: 'string' | 'number') {
+    if (colType === 'number') {
+      this.setFilter(new DatagridNumericFilterImpl(new DatagridPropertyNumericFilter(field)));
+    } else if (colType === 'string') {
+      this.setFilter(new DatagridStringFilterImpl(new DatagridPropertyStringFilter(field)));
+    }
+    if (this.filter && this.initFilterValue) {
+      this.updateFilterValue = this.initFilterValue;
+      // This initFilterValue should be used only once after the filter registration
+      // So deleting this property value to prevent it from being used again
+      // if this field property is set again
+      delete this.initFilterValue;
     }
   }
 
@@ -320,13 +343,17 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
    */
   public customFilter = false;
 
-  @ContentChild(CustomFilter, { static: false })
+  @ContentChild(CustomFilter)
   public set projectedFilter(custom: any) {
     if (custom) {
       this.deleteFilter();
       this.customFilter = true;
     }
   }
+
+  // This property holds filter value temporarily while this.filter property is not yet registered
+  // When this.filter is registered, this property value would be used update this.filter.value
+  private initFilterValue: string | [number, number];
 
   public get filterValue() {
     if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
@@ -336,23 +363,24 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   @Input('clrFilterValue')
   public set updateFilterValue(newValue: string | [number, number]) {
-    if (!this.filter) {
-      return;
-    }
-    if (this.filter instanceof DatagridStringFilterImpl) {
-      if (!newValue || typeof newValue !== 'string') {
-        newValue = '';
+    if (this.filter) {
+      if (this.filter instanceof DatagridStringFilterImpl) {
+        if (!newValue || typeof newValue !== 'string') {
+          newValue = '';
+        }
+        if (newValue !== this.filter.value) {
+          this.filter.value = newValue;
+        }
+      } else if (this.filter instanceof DatagridNumericFilterImpl) {
+        if (!newValue || !(newValue instanceof Array)) {
+          newValue = [null, null];
+        }
+        if (newValue.length === 2 && (newValue[0] !== this.filter.value[0] || newValue[1] !== this.filter.value[1])) {
+          this.filter.value = newValue;
+        }
       }
-      if (newValue !== this.filter.value) {
-        this.filter.value = newValue;
-      }
-    } else if (this.filter instanceof DatagridNumericFilterImpl) {
-      if (!newValue || !(newValue instanceof Array)) {
-        newValue = [null, null];
-      }
-      if (newValue.length === 2 && (newValue[0] !== this.filter.value[0] || newValue[1] !== this.filter.value[1])) {
-        this.filter.value = newValue;
-      }
+    } else {
+      this.initFilterValue = newValue;
     }
   }
 

@@ -1,29 +1,30 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-import * as UiErrors from 'raw-loader!./ui/errors.html';
-import * as UiForm from 'raw-loader!./ui/form.html';
-import * as UiGrid from 'raw-loader!./ui/grid.html';
-import * as UiLayouts from 'raw-loader!./ui/layouts.html';
-import * as UiStructure from 'raw-loader!./ui/structure.html';
+// tslint:disable no-var-imports no-var-requires no-require-imports variable-name
+const UiErrors = require('raw-loader!./ui/errors.html');
+const UiForm = require('raw-loader!./ui/form.html');
+const UiGrid = require('raw-loader!./ui/grid.html');
+const UiLayouts = require('raw-loader!./ui/layouts.html');
+const UiStructure = require('raw-loader!./ui/structure.html');
 
-import * as NgErrors from 'raw-loader!./ng/errors.html';
-import * as NgForm from 'raw-loader!./ng/form.html';
-import * as NgHelpers from 'raw-loader!./ng/helpers.html';
-import * as NgLayouts from 'raw-loader!./ng/layouts.html';
-import * as NgReactiveTs from '!raw-loader!./ng/reactive.txt';
-import * as NgReactiveHtml from 'raw-loader!./ng/reactive.html';
-import * as NgStructure from 'raw-loader!./ng/structure.html';
-import * as NgOverride from 'raw-loader!./ng/override.html';
-import * as NgOptional from 'raw-loader!./ng/optional.html';
-import * as NgReset from '!raw-loader!./ng/reset.txt';
-import * as NgValidate from '!raw-loader!./ng/validate.txt';
-import * as NgLabelSize from '!raw-loader!./ng/label-size.html';
+const NgErrors = require('raw-loader!./ng/errors.html');
+const NgForm = require('raw-loader!./ng/form.html');
+const NgHelpers = require('raw-loader!./ng/helpers.html');
+const NgLayouts = require('raw-loader!./ng/layouts.html');
+const NgReactiveTs = require('!raw-loader!./ng/reactive.txt');
+const NgReactiveHtml = require('raw-loader!./ng/reactive.html');
+const NgStructure = require('raw-loader!./ng/structure.html');
+const NgOverride = require('raw-loader!./ng/override.html');
+const NgOptional = require('raw-loader!./ng/optional.html');
+const NgReset = require('!raw-loader!./ng/reset.txt');
+const NgValidate = require('!raw-loader!./ng/validate.txt');
+const NgLabelSize = require('!raw-loader!./ng/label-size.html');
 
 @Component({
   selector: 'clr-forms-demo',

@@ -487,8 +487,7 @@ export default function(): void {
     `,
 })
 class BtnGroupInlineViewContainer {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 @Component({
@@ -503,8 +502,7 @@ class BtnGroupInlineViewContainer {
     `,
 })
 class BtnGroupBothViewContainersTest {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 @Component({
@@ -519,8 +517,7 @@ class BtnGroupBothViewContainersTest {
     `,
 })
 class BtnGroupFlipTest1 {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
   flip: boolean = false;
 }
@@ -537,8 +534,7 @@ class BtnGroupFlipTest1 {
     `,
 })
 class BtnGroupFlipTest2 {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
   flip: boolean = false;
 }
@@ -555,8 +551,7 @@ class BtnGroupFlipTest2 {
     `,
 })
 class BtnGroupProjectionUpdateTest {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
   show: boolean = true;
 }
@@ -574,8 +569,7 @@ class BtnGroupProjectionUpdateTest {
     `,
 })
 class BtnGroupMenuViewContainer {
-  @ViewChild(ClrButtonGroup, { static: false })
-  btnGroup: ClrButtonGroup;
+  @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 }
 
 /*
@@ -602,8 +596,6 @@ class BtnGroupMenuViewContainer {
     `,
 })
 class BtnGroupEHCAIWCTest {
-  @ViewChild('btnGroup1', { static: false })
-  btnGroup1: ClrButtonGroup;
-  @ViewChild('btnGroup2', { static: false })
-  btnGroup2: ClrButtonGroup;
+  @ViewChild('btnGroup1') btnGroup1: ClrButtonGroup;
+  @ViewChild('btnGroup2') btnGroup2: ClrButtonGroup;
 }

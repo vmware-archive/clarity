@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, DebugElement, Injectable, ViewChild } from '@angular/core';
+import { Component, DebugElement, Injectable, Renderer2, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgControl, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -29,6 +29,10 @@ import { DatepickerEnabledService } from './providers/datepicker-enabled.service
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
+import { ViewManagerService } from './providers/view-manager.service';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { LayoutService } from '../common/providers/layout.service';
 
 export default function() {
   describe('Date Input Component', () => {
@@ -49,6 +53,26 @@ export default function() {
       setControl = setControlSpy;
     }
 
+    const DATEPICKER_PROVIDERS: any[] = [
+      ControlClassService,
+      { provide: NgControlService, useClass: MockNgControlService },
+      NgControl,
+      LayoutService,
+      IfErrorService,
+      ClrPopoverToggleService,
+      ClrPopoverEventsService,
+      ClrPopoverPositionService,
+      FocusService,
+      DatepickerFocusService,
+      DateNavigationService,
+      LocaleHelperService,
+      Renderer2,
+      ViewManagerService,
+      DateIOService,
+      ControlIdService,
+      DateFormControlService,
+    ];
+
     describe('Basics', () => {
       beforeEach(function() {
         TestBed.overrideComponent(ClrDateContainer, {
@@ -57,21 +81,7 @@ export default function() {
           },
         });
 
-        context = this.create(ClrDateInput, TestComponent, [
-          ControlClassService,
-          { provide: NgControlService, useClass: MockNgControlService },
-          NgControl,
-          IfErrorService,
-          ClrPopoverToggleService,
-          FocusService,
-          DatepickerFocusService,
-          DateNavigationService,
-          LocaleHelperService,
-          DateIOService,
-          ControlIdService,
-          DateFormControlService,
-        ]);
-
+        context = this.create(ClrDateInput, TestComponent, DATEPICKER_PROVIDERS);
         enabledService = <MockDatepickerEnabledService>context.fixture.debugElement
           .query(By.directive(ClrDateContainer))
           .injector.get(DatepickerEnabledService);
@@ -452,6 +462,7 @@ export default function() {
         TestBed.configureTestingModule({
           imports: [ReactiveFormsModule, ClrFormsModule],
           declarations: [TestComponentWithReactiveForms],
+          providers: [ViewManagerService],
         });
 
         TestBed.overrideComponent(ClrDateContainer, {
@@ -460,20 +471,7 @@ export default function() {
           },
         });
 
-        context = this.create(ClrDateInput, TestComponentWithReactiveForms, [
-          ControlClassService,
-          { provide: NgControlService, useClass: MockNgControlService },
-          NgControl,
-          IfErrorService,
-          ClrPopoverToggleService,
-          FocusService,
-          DatepickerFocusService,
-          DateNavigationService,
-          LocaleHelperService,
-          DateIOService,
-          ControlIdService,
-          DateFormControlService,
-        ]);
+        context = this.create(ClrDateInput, TestComponentWithReactiveForms, DATEPICKER_PROVIDERS);
 
         datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
         enabledService = <MockDatepickerEnabledService>context.fixture.debugElement
@@ -768,7 +766,7 @@ export default function() {
 
 @Component({
   template: `
-        <input 
+        <input
                 class="test-class clr-col-12 clr-col-md-8"
                 type="date"
                 [min]="minDate"
@@ -795,8 +793,7 @@ class TestComponent {
 class TestComponentWithNgModel {
   dateValue: string;
 
-  @ViewChild(ClrDateInput, { static: false })
-  dateInputInstance: ClrDateInput;
+  @ViewChild(ClrDateInput) dateInputInstance: ClrDateInput;
 }
 
 @Component({
@@ -835,8 +832,7 @@ class TestComponentWithReactiveForms {
     `,
 })
 class TestComponentWithTemplateDrivenForms {
-  @ViewChild('templateForm', { static: false })
-  templateForm: NgForm;
+  @ViewChild('templateForm') templateForm: NgForm;
   dateInput: string = '01/01/2015';
   dateOutput: Date;
 

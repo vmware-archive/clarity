@@ -1,23 +1,24 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-import * as UiBasic from 'raw-loader!./ui/basic.html';
-import * as UiFull from 'raw-loader!./ui/full.html';
-import * as UiError from 'raw-loader!./ui/error.html';
-import * as UiInline from 'raw-loader!./ui/inline.html';
-import * as UiDisabled from 'raw-loader!./ui/disabled.html';
+// tslint:disable no-var-imports no-var-requires no-require-imports variable-name
+const UiBasic = require('raw-loader!./ui/basic.html');
+const UiFull = require('raw-loader!./ui/full.html');
+const UiError = require('raw-loader!./ui/error.html');
+const UiInline = require('raw-loader!./ui/inline.html');
+const UiDisabled = require('raw-loader!./ui/disabled.html');
 
-import * as NgBasic from 'raw-loader!./ng/basic.html';
-import * as NgLabel from 'raw-loader!./ng/label.html';
-import * as NgHelpers from 'raw-loader!./ng/helpers.html';
-import * as NgInline from 'raw-loader!./ng/inline.html';
-import * as NgDisabled from 'raw-loader!./ng/disabled.html';
-import * as NgIndeterminate from 'raw-loader!./ng/indeterminate.html';
+const NgBasic = require('raw-loader!./ng/basic.html');
+const NgLabel = require('raw-loader!./ng/label.html');
+const NgHelpers = require('raw-loader!./ng/helpers.html');
+const NgInline = require('raw-loader!./ng/inline.html');
+const NgDisabled = require('raw-loader!./ng/disabled.html');
+const NgIndeterminate = require('raw-loader!./ng/indeterminate.html');
 
 @Component({
   templateUrl: './checkboxes.demo.html',

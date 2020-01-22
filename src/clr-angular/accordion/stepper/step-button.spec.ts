@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injectable } from '@angular/core';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,12 +24,12 @@ import { StepperService } from './providers/stepper.service';
   `,
 })
 class TestComponent {
-  @ViewChild(ClrStepButton, { static: false })
-  button: ClrStepButton;
+  @ViewChild(ClrStepButton) button: ClrStepButton;
   buttonType = ClrStepButtonType.Next;
   form = new FormGroup({ group: new FormGroup({}) });
 }
 
+@Injectable()
 class MockStepperService extends StepperService {
   navigateToNextPanel() {}
 }

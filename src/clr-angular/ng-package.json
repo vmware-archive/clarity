@@ -7,6 +7,5 @@
     "umdModuleIds": {
       "rxjs": "rxjs"
     }
-  },
-  "whitelistedNonPeerDependencies": ["@angular-devkit/core", "@angular-devkit/schematics"]
+  }
 }

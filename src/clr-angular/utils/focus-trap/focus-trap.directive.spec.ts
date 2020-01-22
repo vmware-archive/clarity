@@ -313,8 +313,7 @@ class TestComponent {
         </clr-modal>`,
 })
 class TestModalComponent {
-  @ViewChild(ClrModal, { static: false })
-  modal: ClrModal;
+  @ViewChild(ClrModal) modal: ClrModal;
   openState: boolean = false;
   model: any = { contactInfo: '' };
 }

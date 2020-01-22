@@ -1,11 +1,12 @@
 {
-  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "src",
   "projects": {
     "dev": {
-      "root": "",
+      "root": "src/dev",
       "projectType": "application",
+      "sourceRoot": "src/dev/src",
       "prefix": "app",
       "architect": {
         "build": {
@@ -13,13 +14,16 @@
           "options": {
             "customWebpackConfig": {
               "path": "src/dev/custom-webpack.config.js",
-              "mergeStrategies": { "externals": "replace" }
+              "mergeStrategies": {
+                "externals": "replace"
+              }
             },
             "outputPath": "dist/dev",
             "index": "src/dev/src/index.html",
             "main": "src/dev/src/main.ts",
             "polyfills": "src/dev/src/polyfills.ts",
             "tsConfig": "src/dev/tsconfig.app.json",
+            "aot": true,
             "assets": [
               {
                 "glob": "favicon.ico",
@@ -32,7 +36,7 @@
                 "output": "/assets"
               }
             ],
-            "styles": ["src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
+            "styles": ["src/clr-angular/main.scss", "src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
             "scripts": [
               "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
               "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"
@@ -53,12 +57,12 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
             },
             "dark": {
+              "styles": ["src/clr-angular/dark-theme.scss", "src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
               "fileReplacements": [
                 {
                   "replace": "src/dev/src/environments/environment.ts",
@@ -73,7 +77,9 @@
           "options": {
             "customWebpackConfig": {
               "path": "src/dev/custom-webpack.config.js",
-              "mergeStrategies": { "externals": "replace" }
+              "mergeStrategies": {
+                "externals": "replace"
+              }
             },
             "browserTarget": "dev:build"
           },
@@ -86,29 +92,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/dev/test.ts",
-            "polyfills": "src/dev/polyfills.ts",
-            "tsConfig": "src/dev/tsconfig.spec.json",
-            "karmaConfig": "src/dev/karma.conf.js",
-            "styles": [],
-            "scripts": [],
-            "assets": [
-              {
-                "glob": "favicon.ico",
-                "input": "src/dev/",
-                "output": "/"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/dev/assets",
-                "output": "/assets"
-              }
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -119,8 +102,9 @@
       }
     },
     "clr-icons": {
-      "root": "src/clr-icons",
       "projectType": "library",
+      "root": "src/clr-icons",
+      "sourceRoot": "src/clr-icons/src",
       "prefix": "clr",
       "architect": {
         "test": {
@@ -134,21 +118,27 @@
       }
     },
     "clr-angular": {
-      "root": "src/clr-angular",
       "projectType": "library",
+      "root": "src",
+      "sourceRoot": "src/clr-angular/src",
       "prefix": "clr",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "project": "src/clr-angular/ng-package.json",
-            "tsConfig": "src/clr-angular/tsconfig.prod.json"
+            "tsConfig": "src/clr-angular/tsconfig.lib.json",
+            "project": "src/clr-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "src/clr-angular/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "styles": ["src/clr-ui/main.scss"],
+            "styles": ["src/clr-angular/main.scss"],
             "main": "src/clr-angular/test.ts",
             "tsConfig": "src/clr-angular/tsconfig.spec.json",
             "karmaConfig": "src/clr-angular/karma.conf.js",
@@ -165,15 +155,16 @@
       }
     },
     "website": {
-      "root": "src/website/",
-      "sourceRoot": "src/website/src",
       "projectType": "application",
-      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
+          "style": "scss",
           "spec": false
         }
       },
+      "root": "src/website",
+      "sourceRoot": "src/website/src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -183,6 +174,7 @@
             "main": "src/website/src/main.ts",
             "polyfills": "src/website/src/polyfills.ts",
             "tsConfig": "src/website/tsconfig.app.json",
+            "aot": true,
             "assets": [
               "src/website/src/favicon.ico",
               "src/website/src/manifest.json",
@@ -197,7 +189,7 @@
             ],
             "styles": [
               "node_modules/prismjs/themes/prism-solarizedlight.css",
-              "src/clr-ui/main.scss",
+              "src/clr-angular/main.scss",
               "src/clr-icons/clr-icons.scss",
               "src/website/src/styles/main.scss"
             ],
@@ -227,7 +219,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -236,6 +227,11 @@
                   "type": "initial",
                   "maximumWarning": "3mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -263,8 +259,13 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "project": "src/clr-core/ng-package.json",
-            "tsConfig": "src/clr-core/tsconfig.json"
+            "tsConfig": "src/clr-core/tsconfig.lib.json",
+            "project": "src/clr-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "src/clr-core/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -272,13 +273,14 @@
           "options": {
             "main": "src/clr-core/test.ts",
             "tsConfig": "src/clr-core/tsconfig.spec.json",
-            "karmaConfig": "src/clr-core/karma.conf.js"
+            "karmaConfig": "src/clr-core/karma.conf.js",
+            "codeCoverageExclude": ["src/clr-core/common/css-vars/css-vars-ponyfill-fork.ts"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/clr-core/tsconfig.json", "src/clr-core/tsconfig.spec.json"],
+            "tsConfig": ["src/clr-core/tsconfig.lib.json", "src/clr-core/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }
@@ -303,16 +305,20 @@
             "main": "src/dev-core/src/main.ts",
             "polyfills": "src/dev-core/src/polyfills.ts",
             "tsConfig": "src/dev-core/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
-              { "glob": "**/*", "input": "src/dev-core/api/", "output": "./api/" },
+              {
+                "glob": "**/*",
+                "input": "src/dev-core/api/",
+                "output": "./api/"
+              },
               "src/dev-core/src/favicon.ico",
               "src/dev-core/src/assets",
               "src/dev-core/src/manifest.json",
               "src/dev-core/src/robots.txt",
               "src/dev-core/src/sitemap.xml"
             ],
-            "styles": ["dist/clr-core/global.min.css", "node_modules/@clr/city/css/bundles/default.min.css"],
+            "styles": ["src/dev-core/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -329,7 +335,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -338,6 +343,11 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -362,5 +372,8 @@
       "styleext": "scss"
     }
   },
-  "defaultProject": "dev"
+  "defaultProject": "dev",
+  "cli": {
+    "analytics": false
+  }
 }

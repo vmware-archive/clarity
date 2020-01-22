@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,10 +47,8 @@ import { IfActiveService } from '../../utils/conditional/if-active.service';
    `,
 })
 class TestComponent {
-  @ViewChild(ClrTabs, { static: false })
-  tabsInstance: ClrTabs;
-  @ViewChild('first', { static: false })
-  firstTab: ClrTab;
+  @ViewChild(ClrTabs) tabsInstance: ClrTabs;
+  @ViewChild('first') firstTab: ClrTab;
   inOverflow: boolean = false;
   layout: TabsLayout = TabsLayout.HORIZONTAL;
 }
@@ -70,8 +68,7 @@ class TestComponent {
    `,
 })
 class NgIfFirstTest {
-  @ViewChild('first', { static: false })
-  firstTab: ClrTab;
+  @ViewChild('first') firstTab: ClrTab;
 }
 
 @Component({
@@ -157,8 +154,7 @@ class NoClrIfActiveTest {
    `,
 })
 class ScalingTestComponent {
-  @ViewChild('content', { static: false })
-  content: ElementRef;
+  @ViewChild('content') content: ElementRef;
 }
 
 describe('Tabs', () => {

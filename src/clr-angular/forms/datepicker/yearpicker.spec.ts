@@ -21,7 +21,7 @@ import { ViewManagerService } from './providers/view-manager.service';
 import { createKeyboardEvent } from './utils/test-utils';
 import { ClrYearpicker } from './yearpicker';
 import { YearRangeModel } from './model/year-range.model';
-import { ClrCommonStringsService } from '@clr/angular';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { TestBed } from '@angular/core/testing';
 import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';

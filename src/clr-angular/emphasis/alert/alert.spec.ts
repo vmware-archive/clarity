@@ -33,8 +33,7 @@ const CLOSE_ARIA_LABEL = 'Close Test Alert';
    `,
 })
 class TestComponent {
-  @ViewChild(ClrAlert, { static: false })
-  alertInstance: ClrAlert;
+  @ViewChild(ClrAlert) alertInstance: ClrAlert;
 
   type: string = '';
   isSmall: boolean = false;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,6 +12,7 @@ import { ClrConditionalModule } from '../../utils/conditional/conditional.module
 import { ClrFocusTrapModule } from '../../utils/focus-trap/focus-trap.module';
 import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.module';
 import { ClrCommonFormsModule } from '../common/common.module';
+import { ClrPopoverModuleNext } from '../../utils/popover/popover.module';
 
 import { ClrCalendar } from './calendar';
 import { ClrDateContainer } from './date-container';
@@ -38,6 +39,7 @@ export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
     CommonModule,
     ClrHostWrappingModule,
     ClrConditionalModule,
+    ClrPopoverModuleNext,
     ClrIconModule,
     ClrFocusTrapModule,
     ClrCommonFormsModule,

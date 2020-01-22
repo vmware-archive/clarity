@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -13,7 +13,7 @@ import { ClrPopoverPosition } from '../interfaces/popover-position.interface';
 import { ClrPopoverEventsService } from './popover-events.service';
 import { ClrPopoverPositionService } from './popover-position.service';
 import { ClrPopoverToggleService } from './popover-toggle.service';
-import { ClrAlignment } from '@clr/angular';
+import { ClrAlignment } from '../enums/alignment.enum';
 import { Subscription } from 'rxjs';
 
 @Component({

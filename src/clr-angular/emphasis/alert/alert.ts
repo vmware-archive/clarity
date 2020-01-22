@@ -14,6 +14,8 @@ import {
   AfterViewInit,
   ContentChildren,
   QueryList,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
 
 // providers
@@ -23,6 +25,7 @@ import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribut
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 import { ClrAlertText } from './alert-text';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-alert',
@@ -30,14 +33,30 @@ import { ClrAlertText } from './alert-text';
   templateUrl: './alert.html',
   styles: [':host { display: block; }'],
 })
-export class ClrAlert implements AfterViewInit {
+export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
+  private subscriptions: Subscription[] = [];
+
   constructor(
-    public iconService: AlertIconAndTypesService,
-    public cdr: ChangeDetectorRef,
-    @Optional() public multiAlertService: MultiAlertService,
-    public commonStrings: ClrCommonStringsService,
+    private iconService: AlertIconAndTypesService,
+    private cdr: ChangeDetectorRef,
+    @Optional() private multiAlertService: MultiAlertService,
+    private commonStrings: ClrCommonStringsService,
     private ariaLiveService: AriaLiveService
   ) {}
+
+  ngOnInit() {
+    if (this.multiAlertService) {
+      this.subscriptions.push(
+        this.multiAlertService.changes.subscribe(() => {
+          this.hidden = this.multiAlertService.currentAlert !== this;
+        })
+      );
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
   ngAfterViewInit() {
     // Announce the first time the alert is render if it is not hidden
@@ -121,7 +140,7 @@ export class ClrAlert implements AfterViewInit {
    * ```
    */
   private announceAriaLiveMessage(): void {
-    if (!this.isHidden && this.alertTexts.length) {
+    if (!this.hidden && this.alertTexts.length) {
       const message = this.alertTexts.map(alertText => alertText.nativeElement.textContent).join(' ');
       // Don't call announce when there is nothing to say
       if (message) {
@@ -130,35 +149,17 @@ export class ClrAlert implements AfterViewInit {
     }
   }
 
-  private previouslyHidden = false;
-  private hidden = false;
+  private _hidden: boolean;
 
-  private detectChangesIfNeeded() {
-    if (this.previouslyHidden !== this.hidden) {
-      this.previouslyHidden = this.hidden;
+  set hidden(value: boolean) {
+    if (value !== this._hidden) {
+      this._hidden = value;
       this.cdr.detectChanges();
-      // when alert hidden state change we could check and try to announce it.
-      this.announceAriaLiveMessage();
     }
   }
 
-  get isHidden() {
-    if (this.multiAlertService) {
-      // change detection issue in production mode causes currentAlert to be undefined when only the first alert exists
-      // https://github.com/vmware/clarity/issues/2430
-      if (this.multiAlertService.currentAlert === this || this.multiAlertService.count === 0) {
-        if (this.hidden === true) {
-          this.previouslyHidden = true;
-          this.hidden = false;
-        }
-      } else if (this.hidden === false) {
-        this.previouslyHidden = false;
-        this.hidden = true;
-      }
-      this.detectChangesIfNeeded();
-    }
-
-    return this.hidden;
+  get hidden() {
+    return this._hidden;
   }
 
   close(): void {

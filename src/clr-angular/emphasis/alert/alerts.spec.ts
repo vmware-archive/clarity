@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -256,8 +256,7 @@ export default function() {
    `,
 })
 class TestComponent {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   currentAlertIndex: number = 0;
@@ -292,8 +291,7 @@ class TestComponent {
    `,
 })
 class TestAlertInstance {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   public currentAlert: ClrAlert;
@@ -314,8 +312,7 @@ class TestAlertInstance {
    `,
 })
 class DynamicAlerts {
-  @ViewChild(ClrAlerts, { static: false })
-  public alertsInstance: ClrAlerts;
+  @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
   dynamicAlerts: Array<any>;

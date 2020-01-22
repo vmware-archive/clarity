@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,6 +47,13 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
     } else {
       this.setFilter(new DatagridStringFilterImpl(value));
     }
+    if (this.initFilterValue) {
+      this.value = this.initFilterValue;
+      // This initFilterValue should be used only once after the filter registration
+      // So deleting this property value to prevent it from being used again
+      // if this customStringFilter property is set again
+      delete this.initFilterValue;
+    }
   }
 
   /**
@@ -57,14 +64,12 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   /**
    * We need the actual input element to automatically focus on it
    */
-  @ViewChild('input', { static: false })
-  public input: ElementRef;
+  @ViewChild('input') public input: ElementRef;
 
   /**
    * We grab the ClrDatagridFilter we wrap to register this StringFilter to it.
    */
-  @ViewChild(ClrDatagridFilter, { static: false })
-  public filterContainer: ClrDatagridFilter<T>;
+  @ViewChild(ClrDatagridFilter) public filterContainer: ClrDatagridFilter<T>;
   ngAfterViewInit() {
     this.subs.push(
       this.smartToggleService.openChange.subscribe(openChange => {
@@ -82,6 +87,8 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
     this.subs.forEach(sub => sub.unsubscribe());
   }
 
+  private initFilterValue: string;
+
   /**
    * Common setter for the input value
    */
@@ -90,15 +97,16 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   }
   @Input('clrFilterValue')
   public set value(value: string) {
-    if (!this.filter) {
-      return;
-    }
-    if (!value) {
-      value = '';
-    }
-    if (value !== this.filter.value) {
-      this.filter.value = value;
-      this.filterValueChange.emit(value);
+    if (this.filter) {
+      if (!value) {
+        value = '';
+      }
+      if (value !== this.filter.value) {
+        this.filter.value = value;
+        this.filterValueChange.emit(value);
+      }
+    } else {
+      this.initFilterValue = value;
     }
   }
 

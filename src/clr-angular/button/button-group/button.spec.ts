@@ -38,12 +38,9 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
     `,
 })
 class TestButtonComponent {
-  @ViewChild('button1', { static: false })
-  button1: ClrButton;
-  @ViewChild('button2', { static: false })
-  button2: ClrButton;
-  @ViewChild('button3', { static: false })
-  button3: ClrButton;
+  @ViewChild('button1') button1: ClrButton;
+  @ViewChild('button2') button2: ClrButton;
+  @ViewChild('button3') button3: ClrButton;
 
   flag: boolean = false;
   button2InMenu: boolean = true;
@@ -82,12 +79,9 @@ class TestButtonComponent {
     `,
 })
 export class ButtonViewTestComponent {
-  @ViewChild('button1', { static: false })
-  button1: ClrButton;
-  @ViewChild('button2', { static: false })
-  button2: ClrButton;
-  @ViewChild('button3', { static: false })
-  button3: ClrButton;
+  @ViewChild('button1') button1: ClrButton;
+  @ViewChild('button2') button2: ClrButton;
+  @ViewChild('button3') button3: ClrButton;
 
   load: boolean = true;
 }

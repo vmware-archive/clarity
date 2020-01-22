@@ -1,19 +1,17 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Injectable, QueryList } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { Subject } from 'rxjs';
-
+import { Observable, Subject, Subscription } from 'rxjs';
 import { ClrAlert } from '../alert';
 
 @Injectable()
 export class MultiAlertService {
-  private allAlerts: QueryList<ClrAlert> = new QueryList<ClrAlert>();
   private subscription: Subscription;
-  private _current = 0;
+
+  private allAlerts: QueryList<ClrAlert>;
 
   /**
    * The Observable that lets other classes subscribe to changes
@@ -22,6 +20,8 @@ export class MultiAlertService {
   public get changes(): Observable<number> {
     return this._change.asObservable();
   }
+
+  private _current: number;
 
   get current() {
     return this._current;
@@ -34,11 +34,11 @@ export class MultiAlertService {
   }
 
   get activeAlerts() {
-    return this.allAlerts.filter(alert => !alert._closed);
+    return this.allAlerts && this.allAlerts.filter(alert => !alert._closed);
   }
 
   get currentAlert() {
-    return this.activeAlerts[this.current];
+    return this.activeAlerts && this.activeAlerts[this.current];
   }
 
   set currentAlert(alert: ClrAlert) {
@@ -46,7 +46,7 @@ export class MultiAlertService {
   }
 
   get count() {
-    return this.activeAlerts.length;
+    return (this.activeAlerts && this.activeAlerts.length) || 0;
   }
 
   manage(alerts: QueryList<ClrAlert>) {
@@ -54,6 +54,12 @@ export class MultiAlertService {
       this.subscription.unsubscribe();
     }
     this.allAlerts = alerts;
+    // After receiving alerts' QueryList,
+    // we are picking index 0 as current by default if a user hasn't any index
+    this.current = typeof this._current === 'number' ? this._current : 0;
+    // we have to also broadcast that initial index
+    this._change.next(this.current);
+
     this.subscription = this.allAlerts.changes.subscribe(() => {
       if (this.current >= this.allAlerts.length) {
         this.current = Math.max(0, this.allAlerts.length - 1);

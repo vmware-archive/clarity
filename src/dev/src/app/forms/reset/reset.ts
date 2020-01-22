@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,8 +11,7 @@ import { ClrForm } from '@clr/angular';
 
 @Component({ templateUrl: './reset.html' })
 export class FormsResetDemo {
-  @ViewChild(ClrForm, { static: false })
-  form: ClrForm;
+  @ViewChild(ClrForm) form: ClrForm;
 
   model = new FormGroup({
     required: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/asdfasdf/)]),

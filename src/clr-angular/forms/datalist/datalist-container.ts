@@ -70,8 +70,7 @@ export class ClrDatalistContainer implements DynamicWrapper {
     );
   }
 
-  @ContentChild(ClrLabel, { static: false })
-  label: ClrLabel;
+  @ContentChild(ClrLabel) label: ClrLabel;
 
   controlClass() {
     return this.controlClassService.controlClass(this.invalid, this.addGrid());

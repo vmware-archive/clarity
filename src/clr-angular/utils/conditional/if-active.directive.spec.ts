@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -45,11 +45,11 @@ export default function(): void {
         expect(this.clarityDirective.updateView).toBeDefined();
 
         // when activeState is false there should be no embedded views
-        expect(this.clarityDirective.container._embeddedViews.length).toEqual(0);
+        expect(this.clarityDirective.container.length).toEqual(0);
 
         // We can call the updateView function
         this.clarityDirective.updateView(true);
-        expect(this.clarityDirective.container._embeddedViews.length).toEqual(1);
+        expect(this.clarityDirective.container.length).toEqual(1);
       });
 
       it('emits an activeChange event only if the active state changes', function() {
@@ -128,7 +128,6 @@ export default function(): void {
     `,
 })
 class IfOpenTest {
-  @ViewChild(ClrIfActive, { static: false })
-  directive: ClrIfActive;
+  @ViewChild(ClrIfActive) directive: ClrIfActive;
   activeState: boolean = false;
 }

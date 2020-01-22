@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
@@ -123,9 +123,12 @@ describe('ClrProgressBar component', () => {
       });
 
       it('should add classes based on attributes "labeled fade loop success danger flash flash-danger"', () => {
-        expect(clrProgressBar.getAttribute('class')).toContain(
-          'progress labeled progress-fade loop success danger flash flash-danger'
-        );
+        const klasses = clrProgressBar
+          .getAttribute('class')
+          .split(' ')
+          .sort((a, b) => (a > b ? 1 : -1))
+          .join(' ');
+        expect(klasses).toContain('danger flash flash-danger labeled loop progress progress-fade random success');
       });
 
       it('should be able to add custom class if needed', () => {

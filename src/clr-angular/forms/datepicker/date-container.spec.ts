@@ -4,12 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TestBed, async } from '@angular/core/testing';
-import { Subscription } from 'rxjs';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
@@ -28,6 +26,28 @@ import { DatepickerEnabledService } from './providers/datepicker-enabled.service
 import { MockDatepickerEnabledService } from './providers/datepicker-enabled.service.mock';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ClrCommonFormsModule } from '../common/common.module';
+import { ClrPopoverPositions } from '../../utils/popover/enums/positions.enum';
+import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
+import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
+import { ViewManagerService } from './providers/view-manager.service';
+
+const DATEPICKER_PROVIDERS: any[] = [
+  ClrPopoverEventsService,
+  ClrPopoverPositionService,
+  ClrPopoverToggleService,
+  DateNavigationService,
+  ViewManagerService,
+  LocaleHelperService,
+  ControlClassService,
+  IfErrorService,
+  FocusService,
+  LayoutService,
+  NgControlService,
+  DateIOService,
+  ControlIdService,
+  DateFormControlService,
+  Renderer2,
+];
 
 export default function() {
   describe('Date Container Component', () => {
@@ -42,24 +62,11 @@ export default function() {
       });
       TestBed.overrideComponent(ClrDateContainer, {
         set: {
-          providers: [
-            { provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService },
-            ClrPopoverToggleService,
-            DateNavigationService,
-            LocaleHelperService,
-            ControlClassService,
-            IfErrorService,
-            FocusService,
-            LayoutService,
-            NgControlService,
-            DateIOService,
-            ControlIdService,
-            DateFormControlService,
-          ],
+          providers: [{ provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService }],
         },
       });
 
-      context = this.create(ClrDateContainer, TestComponent, []);
+      context = this.create(ClrDateContainer, TestComponent, DATEPICKER_PROVIDERS);
 
       enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
       dateFormControlService = context.getClarityProvider(DateFormControlService);
@@ -67,20 +74,26 @@ export default function() {
     });
 
     // @deprecated these tests refer to the old forms layout only and can be removed when its removed
-
     describe('View Basics', () => {
       beforeEach(() => {
         context.detectChanges();
       });
 
+      afterEach(() => {
+        // Close the popover to clear the DOM
+        const viewManager = document.querySelector('clr-datepicker-view-manager');
+        if (viewManager) {
+          viewManager.remove();
+        }
+      });
+
       it('should returns focus to calendar when we close it', () => {
         const actionButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
-        const actionButtonSpy = spyOn(actionButton, 'focus');
-        toggleService.open = true;
+        actionButton.click();
         context.detectChanges();
-        toggleService.open = false;
+        actionButton.click();
         context.detectChanges();
-        expect(actionButtonSpy.calls.count()).toBe(1);
+        expect(document.activeElement).toEqual(actionButton);
       });
 
       it('should not call focus when date-picker is not visible', () => {
@@ -109,13 +122,12 @@ export default function() {
       });
 
       it('clicking on the button toggles the datepicker popover', () => {
-        spyOn(context.clarityDirective, 'toggleDatepicker');
         const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
 
         button.click();
         context.detectChanges();
 
-        expect(context.clarityDirective.toggleDatepicker).toHaveBeenCalled();
+        expect(context.clarityDirective.open).toEqual(true);
       });
 
       it('projects the date input', () => {
@@ -124,13 +136,12 @@ export default function() {
       });
 
       it('shows the datepicker view manager when icon button is clicked', () => {
-        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).toBeNull();
+        expect(document.querySelector('clr-datepicker-view-manager')).toBeNull();
 
         const button: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
         button.click();
         context.detectChanges();
-
-        expect(context.clarityElement.querySelector('clr-datepicker-view-manager')).not.toBeNull();
+        expect(document.querySelector('clr-datepicker-view-manager')).not.toBeNull();
       });
 
       it('tracks the disabled state', async(() => {
@@ -161,36 +172,16 @@ export default function() {
       });
 
       it('supports clrPosition option', () => {
-        expect(context.clarityDirective.position).toBeUndefined();
         context.testComponent.position = 'top-left';
         context.detectChanges();
-        expect(context.clarityDirective.position).toEqual('top-left');
+        expect(context.clarityDirective.popoverPosition).toEqual(ClrPopoverPositions['top-left']);
       });
     });
 
     describe('Typescript API', () => {
-      // IE doesn't support MouseEvent constructors
-      itIgnore(['ie'], 'toggles the datepicker popover', () => {
-        const fakeEvent: MouseEvent = new MouseEvent('fakeEvent');
-        let flag: boolean;
-        const sub: Subscription = toggleService.openChange.subscribe(open => {
-          flag = open;
-        });
-
-        expect(flag).toBeUndefined();
-        context.clarityDirective.toggleDatepicker(fakeEvent);
-        context.detectChanges();
-
-        expect(flag).toBe(true);
-
-        sub.unsubscribe();
-      });
-
       it('marks the date control as touched when the datepicker popover is toggled', () => {
         spyOn(dateFormControlService, 'markAsTouched');
-
-        context.clarityDirective.toggleDatepicker(null);
-
+        toggleService.open = true;
         expect(dateFormControlService.markAsTouched).toHaveBeenCalled();
       });
 

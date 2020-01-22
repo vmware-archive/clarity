@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -71,7 +71,7 @@ export class ClrTabLink {
     // Here, we create a container so that its template can be used to create embeddedView on the fly.
     // See TabsService's renderView() method and how it's used in Tabs class for an example.
     const factory = this.cfr.resolveComponentFactory(TemplateRefContainer);
-    this.templateRefContainer = this.viewContainerRef.createComponent(factory, 1, undefined, [
+    this.templateRefContainer = this.viewContainerRef.createComponent(factory, undefined, undefined, [
       [this.el.nativeElement],
     ]).instance;
   }

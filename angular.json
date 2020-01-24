@@ -274,7 +274,7 @@
             "main": "src/clr-core/test.ts",
             "tsConfig": "src/clr-core/tsconfig.spec.json",
             "karmaConfig": "src/clr-core/karma.conf.js",
-            "codeCoverageExclude": ["src/clr-core/common/css-vars/css-vars-ponyfill-fork.ts"]
+            "codeCoverageExclude": ["src/clr-core/**/*.stories.ts", "src/clr-core/icon-shapes/collections/*.ts"]
           }
         },
         "lint": {

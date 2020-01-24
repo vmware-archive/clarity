@@ -1183,6 +1183,7 @@ export declare class ClrTabContent implements OnDestroy {
 export declare class ClrTabLink {
     readonly active: boolean;
     readonly ariaControls: string;
+    el: ElementRef;
     ifActiveService: IfActiveService;
     inOverflow: boolean;
     tabLinkId: string;
@@ -1196,18 +1197,22 @@ export declare class ClrTabOverflowContent extends AbstractPopover {
     constructor(injector: Injector, parentHost: ElementRef);
 }
 
-export declare class ClrTabs implements AfterContentInit {
+export declare class ClrTabs implements AfterContentInit, OnDestroy {
     readonly activeTabInOverflow: boolean;
     commonStrings: ClrCommonStringsService;
     ifActiveService: IfActiveService;
     ifOpenService: IfOpenService;
-    tabContents: QueryList<ClrTabContent>;
+    keyFocus: ClrKeyFocus;
     readonly tabIds: string;
-    tabLinkDirectives: QueryList<ClrTabLink>;
+    readonly tabLinkDirectives: ClrTabLink[];
+    tabLinkElements: HTMLElement[];
     tabsId: number;
     tabsService: TabsService;
-    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService);
+    constructor(ifActiveService: IfActiveService, ifOpenService: IfOpenService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService, platformId: Object);
+    checkFocusVisible(): void;
+    inOverflow(): boolean;
     ngAfterContentInit(): void;
+    ngOnDestroy(): void;
     toggleOverflow(event: any): void;
 }
 

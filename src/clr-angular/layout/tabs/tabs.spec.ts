@@ -200,7 +200,7 @@ describe('Tabs', () => {
     it('sets the role on the overflow button li to presentation', () => {
       context.fixture.componentInstance.inOverflow = true;
       context.fixture.detectChanges();
-      expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('presentation');
+      expect(compiled.querySelector('.tabs-overflow .nav-item').getAttribute('role')).toEqual('application');
     });
 
     it('does not reuse views with *clrIfActive', () => {

@@ -6,26 +6,25 @@
 @import './../../clr-angular/progress/spinner/spinner.clarity';
 
 :host {
-  --clr-btn-box-shadow-color: #{$clr-color-action-500};
-  --clr-btn-border-radius: #{$clr_baselineRem_3px};
-  --clr-btn-border-width: #{$clr_baselineRem_1px};
-  --clr-btn-font-size: #{$clr_baselineRem_0_5};
-  --clr-btn-font-weight: #{$clr-font-weight-semibold};
-  --clr-btn-border-color: #{$clr-color-action-600};
-  --clr-btn-color: #{$clr-color-neutral-0};
-  --clr-btn-background: #{$clr-color-action-600};
-  --clr-btn-line-height: 1.7rem;
-  --clr-btn-letter-spacing: 0.12em;
-
-  background: var(--clr-btn-background);
-  color: var(--clr-btn-color);
-  border-color: var(--clr-btn-border-color);
-  border-radius: var(--clr-btn-border-radius);
-  border-width: var(--clr-btn-border-width);
-  font-size: var(--clr-btn-font-size);
-  font-weight: var(--clr-btn-font-weight);
-  line-height: var(--clr-btn-line-height);
-  letter-spacing: var(--clr-btn-letter-spacing);
+  --box-shadow-color: #{$clr-color-action-500};
+  --border-radius: #{$clr_baselineRem_3px};
+  --border-width: #{$clr_baselineRem_1px};
+  --font-size: #{$clr_baselineRem_0_5};
+  --font-weight: #{$clr-font-weight-semibold};
+  --border-color: #{$clr-color-action-600};
+  --color: #{$clr-color-neutral-0};
+  --background: #{$clr-color-action-600};
+  --line-height: 1.7rem;
+  --letter-spacing: 0.12em;
+  background: var(--background);
+  color: var(--color);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  border-width: var(--border-width);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
   padding: 0 #{$clr_baselineRem_0_5};
   user-select: none;
   display: inline-block;
@@ -44,11 +43,11 @@
 }
 
 :host(:hover) {
-  --clr-btn-background: #{$clr-color-action-800};
+  --background: #{$clr-color-action-800};
 }
 
 :host(:active) {
-  box-shadow: 0 $clr_baselineRem_1px 0 0 var(--clr-btn-box-shadow-color) inset;
+  box-shadow: 0 $clr_baselineRem_1px 0 0 var(--box-shadow-color) inset;
 }
 
 :host([is-anchor]) {
@@ -56,7 +55,8 @@
 }
 
 ::slotted {
-  line-height: var(--clr-btn-line-height);
+  line-height: var(--line-height);
+  color: inherit;
 }
 
 ::slotted(a) {
@@ -64,81 +64,85 @@
   text-decoration: none !important;
   display: block;
   height: 100%;
-  color: var(--clr-btn-color);
-  line-height: var(--clr-btn-line-height);
+  color: inherit;
+  line-height: var(--line-height);
+}
+
+::slotted(cwc-icon) {
+  --color: inherit;
 }
 
 :host([action='outline']) {
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-action-600};
+  --background: transparent;
+  --color: #{$clr-color-action-600};
 }
 
 :host([action='outline']:hover) {
-  --clr-btn-background: #{$clr-color-action-50};
+  --background: #{$clr-color-action-50};
 }
 
 :host([status='success']) {
-  --clr-btn-box-shadow-color: #{$clr-color-success-900};
-  --clr-btn-border-color: #{$clr-color-success-700};
-  --clr-btn-background: #{$clr-color-success-700};
+  --box-shadow-color: #{$clr-color-success-900};
+  --border-color: #{$clr-color-success-700};
+  --background: #{$clr-color-success-700};
 }
 
 :host([status='success']:hover) {
-  --clr-btn-background: #{$clr-color-success-800};
+  --background: #{$clr-color-success-800};
 }
 
 :host([status='success'][action='outline']) {
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-success-700};
+  --background: transparent;
+  --color: #{$clr-color-success-700};
 }
 
 :host([status='success'][action='outline']:hover) {
-  --clr-btn-background: #{$clr-color-success-50};
+  --background: #{$clr-color-success-50};
 }
 
 :host([status='danger']) {
-  --clr-btn-box-shadow-color: #{$clr-color-danger-900};
-  --clr-btn-border-color: #{$clr-color-danger-700};
-  --clr-btn-background: #{$clr-color-danger-700};
+  --box-shadow-color: #{$clr-color-danger-900};
+  --border-color: #{$clr-color-danger-700};
+  --background: #{$clr-color-danger-700};
 }
 
 :host([status='danger']:hover) {
-  --clr-btn-background: #{$clr-color-danger-800};
+  --background: #{$clr-color-danger-800};
 }
 
 :host([status='danger'][action='outline']) {
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-danger-700};
+  --background: transparent;
+  --color: #{$clr-color-danger-700};
 }
 
 :host([status='danger'][action='outline']:hover) {
-  --clr-btn-background: #{$clr-color-danger-50};
+  --background: #{$clr-color-danger-50};
 }
 
 :host([status='inverse']) {
-  --clr-btn-box-shadow-color: rgba($clr-color-neutral-1000, 0.25);
-  --clr-btn-border-color: #{$clr-color-neutral-0};
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-neutral-0};
+  --box-shadow-color: rgba($clr-color-neutral-1000, 0.25);
+  --border-color: #{$clr-color-neutral-0};
+  --background: transparent;
+  --color: #{$clr-color-neutral-0};
 }
 
 :host([action='flat']) {
-  --clr-btn-background: transparent;
-  --clr-btn-border-color: transparent;
-  --clr-btn-color: #{$clr-color-action-600};
+  --background: transparent;
+  --border-color: transparent;
+  --color: #{$clr-color-action-600};
   margin-right: 0;
   box-shadow: none;
 }
 
 :host([action='flat']:hover) {
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-action-800};
+  --background: transparent;
+  --color: #{$clr-color-action-800};
 }
 
 :host([size='sm']) {
-  --clr-btn-line-height: #{$clr_baselineRem_1 - $clr_baselineRem_1px};
-  --clr-btn-letter-spacing: 0.073em;
-  --clr-btn-font-size: #{$clr_baselineRem_0_458};
+  --line-height: #{$clr_baselineRem_1 - $clr_baselineRem_1px};
+  --letter-spacing: 0.073em;
+  --font-size: #{$clr_baselineRem_0_458};
   --padding: #{0 $clr_baselineRem_0_5};
 
   .spinner {
@@ -158,9 +162,9 @@
 }
 
 :host([disabled]) {
-  --clr-btn-color: #{$clr-color-neutral-700};
-  --clr-btn-background: hsl(0, 0%, 80%);
-  --clr-btn-border-color: #{$clr-color-neutral-700};
+  --color: #{$clr-color-neutral-700};
+  --background: hsl(0, 0%, 80%);
+  --border-color: #{$clr-color-neutral-700};
   opacity: 0.4;
   box-shadow: none;
   pointer-events: none;
@@ -168,13 +172,13 @@
 }
 
 :host([action='outline'][disabled]) {
-  --clr-btn-background: transparent;
+  --background: transparent;
 }
 
 :host([status='inverse'][disabled]) {
-  --clr-btn-background: transparent;
-  --clr-btn-color: #{$clr-color-neutral-0};
-  --clr-btn-border-color: #{$clr-color-neutral-0};
+  --background: transparent;
+  --color: #{$clr-color-neutral-0};
+  --border-color: #{$clr-color-neutral-0};
 }
 
 .spinner {

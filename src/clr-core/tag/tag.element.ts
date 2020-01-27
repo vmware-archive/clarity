@@ -8,7 +8,8 @@ import { baseStyles, CwcBaseButton, property, registerElementSafely, StatusTypes
 import { styles } from './tag.element.css';
 
 /**
- * Web component tags.
+ * Tags show concise metadata in a compact format.
+ * Tags are visually styled to differentiate them from buttons.
  *
  * ```typescript
  * import '@clr/core/tag';
@@ -18,17 +19,15 @@ import { styles } from './tag.element.css';
  * <cwc-tag status="info">Info</cwc-tag>
  * ```
  *
- * @noInheritDoc
- * @beta 3.0
  * @element cwc-tag
  * @slot default - Content slot for inside the tag
- * @cssprop --clr-tag-border-color
- * @cssprop --clr-tag-font-size
- * @cssprop --clr-tag-font-weight
- * @cssprop --clr-tag-letter-spacing
- * @cssprop --clr-tag-border-radius
- * @cssprop --clr-tag-bg-color
- * @cssprop --clr-tag-bg-hover-color
+ * @cssprop --font-size
+ * @cssprop --font-weight
+ * @cssprop --letter-spacing
+ * @cssprop --border-radius
+ * @cssprop --background
+ * @cssprop --background-hover
+ * @cssprop --border
  */
 // @dynamic
 export class CwcTag extends CwcBaseButton {
@@ -40,7 +39,7 @@ export class CwcTag extends CwcBaseButton {
 
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })
-  color: '1' | '2' | '3' | '4' | '5';
+  color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
 
   static get styles() {
     return [baseStyles, styles];

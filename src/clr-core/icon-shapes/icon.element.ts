@@ -13,7 +13,6 @@ import {
   hasStringPropertyChangedAndNotNil,
   Orientations,
   property,
-  registerElementSafely,
   StatusTypes,
   UniqueId,
 } from '@clr/core/common';
@@ -29,7 +28,7 @@ class IconMixinClass extends LitElement {}
 applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
 
 /**
- * Icon web component that renders svg shapes that can be customized with CSS classnames.
+ * Icon component that renders svg shapes that can be customized.
  * To load a icon import the need icon with the icon service.
  *
  * ```typescript
@@ -43,10 +42,8 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * <cwc-icon shape="user"></cwc-icon>
  * ```
  *
- * @noInheritDoc
- * @beta 3.0
  * @element cwc-icon
- * @cssprop --clr-icon-color-default
+ * @cssprop --clr-icon-color
  * @cssprop --clr-icon-color-success
  * @cssprop --clr-icon-color-danger
  * @cssprop --clr-icon-color-warning
@@ -205,10 +202,3 @@ export class CwcIcon extends IconMixinClass {
   }
 }
 export interface CwcIcon extends IconMixinClass, UniqueId, CssHelpers {}
-registerElementSafely('cwc-icon', CwcIcon);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cwc-icon': CwcIcon;
-  }
-}

@@ -9,7 +9,8 @@ import { html, LitElement } from 'lit-element';
 import { styles } from './badge.element.css';
 
 /**
- * Web component badges.
+ * Badges provide a method to highlight a count of an element either next to it
+ * or inside the element itself.
  *
  * ```typescript
  * import '@clr/core/badge';
@@ -19,12 +20,10 @@ import { styles } from './badge.element.css';
  * <cwc-badge status="info">2</cwc-badge>
  * ```
  *
- * @noInheritDoc
- * @beta 3.0
  * @element cwc-badge
  * @slot default - Content slot for inside the badge
- * @cssprop --clr-badge-background-color
- * @cssprop --clr-badge-color
+ * @cssprop --background
+ * @cssprop --color
  */
 // @dynamic
 export class CwcBadge extends LitElement {

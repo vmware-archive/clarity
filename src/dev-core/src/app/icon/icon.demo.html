@@ -11,6 +11,11 @@
         line-height: 1.1em;
     }
 
+    .inverse-blackout {
+        background: black;
+        color: #ccc;
+    }
+    
     .custom-icon-colors {
         background: black;
         padding: 8px 12px;
@@ -64,10 +69,10 @@
         <cwc-icon shape="user" inverse badge></cwc-icon>
     </div>
     <div class="custom-icon-colors">
-        <cwc-icon shape="user" status="danger" badge-type="danger" inverse></cwc-icon>
+        <cwc-icon shape="user" status="danger" badge="danger" inverse></cwc-icon>
     </div>
     <div class="custom-icon-colors custom-icon-colors-2">
-        <cwc-icon shape="user" badge-type="danger"></cwc-icon>
+        <cwc-icon shape="user" badge="danger"></cwc-icon>
     </div>
 </div>
 <p><i>A should be green with a pink badge</i><br>
@@ -199,6 +204,20 @@
             <th>outline</th>
             <th>outline-badged</th>
             <th>outline-alerted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" shape="user"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="warning-triangle"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
             <th>solid</th>
             <th>solid-badged</th>
             <th>solid-alerted</th>
@@ -207,13 +226,10 @@
     </thead>
     <tbody>
         <tr>
-            <td><cwc-icon size="32" shape="user"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" badge></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" alert></cwc-icon></td>
             <td><cwc-icon size="32" shape="user" solid></cwc-icon></td>
             <td><cwc-icon size="32" shape="user" solid badge></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid alert></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="success"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge="warning-triangle"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" solid badge="success"></cwc-icon></td>
         </tr>
     </tbody>
 </table>
@@ -223,22 +239,53 @@
 <table class="table">
     <thead>
         <tr>
-            <th>default (danger)</th>
+            <th>fallthrough value</th>
+            <th>inherit</th>
             <th>info</th>
             <th>success</th>
             <th>warning</th>
             <th>danger</th>
-            <th>error</th>
+            <th>inherit-triangle</th>
+            <th>warning-triangle</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><cwc-icon size="32" shape="user" badge></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="info"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="success"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="warning"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="danger"></cwc-icon></td>
-            <td><cwc-icon size="32" shape="user" solid badge-type="error"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="inherit"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="info"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="success"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="warning"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="danger"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="inherit-triangle"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" badge="warning-triangle"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table inverse-blackout">
+    <thead>
+        <tr>
+            <th>fallthrough value</th>
+            <th>inherit</th>
+            <th>info</th>
+            <th>success</th>
+            <th>warning</th>
+            <th>danger</th>
+            <th>inherit-triangle</th>
+            <th>warning-triangle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" inverse shape="user" badge></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="inherit"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="info"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="success"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="warning"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="danger"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="inherit-triangle"></cwc-icon></td>
+            <td><cwc-icon size="32" inverse shape="user" badge="warning-triangle"></cwc-icon></td>
         </tr>
     </tbody>
 </table>

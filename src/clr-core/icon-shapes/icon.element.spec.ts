@@ -225,55 +225,34 @@ describe('icon element', () => {
     });
   });
 
-  describe('alert: ', () => {
-    it('should default to false', async () => {
-      await componentIsStable(component);
-      expect(component.hasAttribute('alert')).toBe(false);
-    });
-    it('should update if assigned a new value', async () => {
-      await componentIsStable(component);
-      component.alert = true;
-      await componentIsStable(component);
-      expect(component.hasAttribute('alert')).toBe(true);
-    });
-  });
-
   describe('badge: ', () => {
     it('should default to false', async () => {
       await componentIsStable(component);
-      expect(component.badge).toBe(false);
+      expect(component.badge).toBe(undefined);
       expect(component.hasAttribute('badge')).toBe(false);
     });
     it('should update if assigned a new value', async () => {
       await componentIsStable(component);
-      component.badge = true;
+      component.badge = 'warning';
       await componentIsStable(component);
       expect(component.hasAttribute('badge')).toBe(true);
     });
-  });
-
-  describe('badgeType: ', () => {
-    it('should default to undefined and not be present', async () => {
-      await componentIsStable(component);
-      expect(component.badgeType).toBe(undefined);
-      expect(component.hasAttribute('badge-type')).toBe(false);
-    });
     it('should update if assigned a new value', async () => {
       await componentIsStable(component);
-      component.badgeType = 'info';
+      component.badge = 'info';
       await componentIsStable(component);
-      expect(component.hasAttribute('badge-type')).toBe(true);
+      expect(component.hasAttribute('badge')).toBe(true);
       await componentIsStable(component);
-      expect(component.getAttribute('badge-type')).toEqual('info');
+      expect(component.getAttribute('badge')).toEqual('info');
     });
     it('should be removed if set to null', async () => {
       await componentIsStable(component);
-      component.badgeType = 'danger';
+      component.badge = 'danger';
       await componentIsStable(component);
-      expect(component.hasAttribute('badge-type')).toBe(true);
-      component.badgeType = null;
+      expect(component.hasAttribute('badge')).toBe(true);
+      component.badge = null;
       await componentIsStable(component);
-      expect(component.hasAttribute('badge-type')).toBe(false);
+      expect(component.hasAttribute('badge')).toBe(false);
     });
   });
 

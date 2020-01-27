@@ -51,13 +51,11 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --clr-icon-color-danger
  * @cssprop --clr-icon-color-warning
  * @cssprop --clr-icon-color-info
- * @cssprop --clr-icon-color-highlight
  * @cssprop --clr-icon-color-inverse
  * @cssprop --clr-icon-color-inverse-success
  * @cssprop --clr-icon-color-inverse-danger
  * @cssprop --clr-icon-color-inverse-warning
  * @cssprop --clr-icon-color-inverse-info
- * @cssprop --clr-icon-color-inverse-highlight
  */
 // @dynamic
 export class CwcIcon extends IconMixinClass {
@@ -149,35 +147,27 @@ export class CwcIcon extends IconMixinClass {
   inverse = false;
 
   /**
-   * Displays the icon warning symbol (triangle) if `true`
-   */
-  @property({ type: Boolean })
-  alert = false;
-
-  /**
-   * Displays the icon badge symbol (dot) if `true`
-   *
-   * Use the badgeType property (`badge-type` attribute) if you
-   * want a badge to display using a different pre-defined color.
-   */
-  @property({ type: Boolean })
-  badge = false;
-
-  /**
-   * Attribute: `badge-type`
-   * Sets the color of the icon badge (dot) from the following predefined.
-   * By default, the badge uses the 'danger' color. This property is only used
-   * to change the color of the badge. It is not required to show the badge,
-   * although it can be used independently to show the badge.
+   * Attribute: `badge`
+   * Sets the color of the icon decoration that appears in the top-right corner
+   * of the glyph. The icon decoration is derived from the following predefined types.
    *
    * The color of the badge can change according to the following
-   * list of statuses: 'info', 'success', 'warning', 'danger', 'inverse'
+   * list of statuses:
+   * 'info'  -> blue dot
+   * 'success' -> green dot
+   * 'warning' -> yellow dot
+   * 'danger' -> red dot
+   * 'inherit' -> dot inherits color of full icon glyph
+   * 'warning-triangle' -> yellow triangle
+   * 'inherit-triangle' -> triangle inherits color of full icon glyph
+   * unrecognized value, empty string, or true -> red dot
    *
-   * Setting the badge to 'null' removes it from the DOM. This is necessary to
-   * remove the badge (dot) from the icon if you are using badgeType.
+   * By default, the badge displays a 'danger' dot (a red-colored dot).
+   *
+   * Setting the badge to 'null' removes the attribute from the DOM.
    */
   @property({ type: String })
-  badgeType: StatusTypes | 'inverse' | null; // [info | warning | danger | success]
+  badge: StatusTypes | 'inherit' | 'warning-triangle' | 'inherit-triangle' | true | null;
 
   @query('svg') private svg: SVGElement;
 

@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.lib.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "../common/entrypoint.tsconfig.json" },
+    { "path": "../icon-shapes/entrypoint.tsconfig.json" }
+  ]
+}

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ElementRef, forwardRef, Injector, Optional, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injector, Optional, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -14,6 +14,60 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 
 import { AbstractPopover } from './abstract-popover';
 import { POPOVER_HOST_ANCHOR } from './popover-host-anchor.token';
+
+@Component({
+  selector: 'test-popover',
+  template: `
+        <div class="test-popover">Popover</div>
+    `,
+})
+class TestPopover extends AbstractPopover {
+  constructor(injector: Injector, @Optional() parent: ElementRef) {
+    super(injector, parent);
+  }
+}
+
+@Component({
+  template: `
+        <test-popover *clrIfOpen></test-popover>
+    `,
+})
+class TestPopoverWithIfOpenDirective {
+  @ViewChild(TestPopover) testPopover: TestPopover;
+}
+
+@Component({
+  template: `
+        <input type="text" #ignoreInput (focus)="onFocus($event)">
+        <test-popover-ignore #ignoreElement *clrIfOpen></test-popover-ignore>
+    `,
+  providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
+})
+class InputFocusPopover {
+  @ViewChild('ignoreInput') ignore: ElementRef;
+  @ViewChild('ignoreElement') popover: any; // cant use TestPopoverIgnoreElement as type since it will refer to class before declaration in es2015+
+
+  constructor(private toggleService: ClrPopoverToggleService) {}
+
+  onFocus(event: FocusEvent) {
+    this.toggleService.toggleWithEvent(event);
+  }
+}
+
+@Component({
+  selector: 'test-popover-ignore',
+  template: `
+        <div class="test-popover">Popover</div>
+    `,
+})
+class TestPopoverIgnoreElement extends AbstractPopover {
+  constructor(injector: Injector, @Optional() parent: ElementRef, parentHost: InputFocusPopover) {
+    super(injector, parent);
+    if (parentHost && parentHost.ignore) {
+      this.ignoredElement = parentHost.ignore.nativeElement;
+    }
+  }
+}
 
 describe('Abstract Popover', function() {
   let fixture: ComponentFixture<any>;
@@ -94,58 +148,3 @@ describe('Abstract Popover', function() {
     // });
   });
 });
-
-@Component({
-  selector: 'test-popover',
-  template: `
-        <div class="test-popover">Popover</div>
-    `,
-})
-class TestPopover extends AbstractPopover {
-  constructor(injector: Injector, @Optional() parent: ElementRef) {
-    super(injector, parent);
-  }
-}
-
-@Component({
-  template: `
-        <test-popover *clrIfOpen></test-popover>
-    `,
-})
-class TestPopoverWithIfOpenDirective {
-  @ViewChild(TestPopover) testPopover: TestPopover;
-}
-
-@Component({
-  template: `
-        <input type="text" #ignoreInput (focus)="onFocus($event)">
-        <test-popover-ignore *clrIfOpen></test-popover-ignore>
-    `,
-  providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
-})
-class InputFocusPopover {
-  @ViewChild('ignoreInput') ignore: ElementRef;
-  @ViewChild(forwardRef(() => TestPopoverIgnoreElement))
-  popover: TestPopoverIgnoreElement;
-
-  constructor(private toggleService: ClrPopoverToggleService) {}
-
-  onFocus(event: FocusEvent) {
-    this.toggleService.toggleWithEvent(event);
-  }
-}
-
-@Component({
-  selector: 'test-popover-ignore',
-  template: `
-        <div class="test-popover">Popover</div>
-    `,
-})
-class TestPopoverIgnoreElement extends AbstractPopover {
-  constructor(injector: Injector, @Optional() parent: ElementRef, parentHost: InputFocusPopover) {
-    super(injector, parent);
-    if (parentHost && parentHost.ignore) {
-      this.ignoredElement = parentHost.ignore.nativeElement;
-    }
-  }
-}

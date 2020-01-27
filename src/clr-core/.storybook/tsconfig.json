@@ -1,0 +1,21 @@
+{
+  "include": ["../**/*.stories.ts", "../../dist/clr-core"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./../",
+    "paths": {
+      "@clr/core": ["../../dist/clr-core"],
+      "@clr/core/*": ["../../dist/clr-core/*"]
+    }
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "ignoreDiagnostics": [2300]
+  }
+}

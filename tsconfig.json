@@ -18,8 +18,8 @@
       "@clr/angular": ["src/clr-angular"],
       "@clr/icons": ["src/clr-icons"],
       "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"],
-      "@clr/core": ["src/clr-core"],
-      "@clr/core/*": ["src/clr-core/*"]
+      "@clr/core": ["dist/clr-core"],
+      "@clr/core/*": ["dist/clr-core/*"]
     },
     "lib": ["es2018", "dom"]
   },

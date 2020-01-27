@@ -14,7 +14,6 @@ src
 ├── clr-icons     # Clarity Icons
 ├── clr-ui        # Common CSS
 ├── dev           # Development Application for Angular
-├── dev-core      # Development Application for Web Components
 ├── schematics    # Auto update scripts
 └── website       # Website and Documentation
 ```

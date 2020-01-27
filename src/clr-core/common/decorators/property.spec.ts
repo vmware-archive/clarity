@@ -44,4 +44,11 @@ describe('@property decorator defaults', () => {
   it('should auto format property names to appropriate attribute name', () => {
     expect(getDefaultOptions('propName', { type: Number }).attribute).toBe('prop-name');
   });
+
+  it('should remove attributes when string type is set to null or undefined', () => {
+    const stringConverter: any = getDefaultOptions(prop, { type: String }).converter;
+    expect(stringConverter.toAttribute(null)).toBe(null);
+    expect(stringConverter.toAttribute(undefined)).toBe(null);
+    expect(stringConverter.toAttribute('test')).toBe('test');
+  });
 });

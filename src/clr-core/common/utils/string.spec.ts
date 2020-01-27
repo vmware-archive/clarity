@@ -4,7 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { camelCaseToKebabCase, transformToSpacedString, transformToString, transformToUnspacedString } from './string';
+import {
+  camelCaseToKebabCase,
+  setStyles,
+  transformToSpacedString,
+  transformToString,
+  transformToUnspacedString,
+} from './string';
 
 describe('Functional Helper: ', () => {
   function funcFactory(str: string): (x: number, y: number, z: number) => string {
@@ -41,6 +47,13 @@ describe('Functional Helper: ', () => {
   describe('camelCaseToKebabCase', () => {
     it('should format correctly', () => {
       expect(camelCaseToKebabCase('camelCaseToKebabCase')).toBe('camel-case-to-kebab-case');
+    });
+  });
+
+  describe('setStyles', () => {
+    it('should convert a object map of CSS styles to a single concatenated string', () => {
+      const styles = { color: 'red', background: 'blue', display: 'block' };
+      expect(setStyles(styles)).toBe('color:red;background:blue;display:block;');
     });
   });
 });

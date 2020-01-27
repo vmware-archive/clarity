@@ -1,8 +1,8 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --background: #{$clr-color-neutral-600};
-  --color: #{$clr-color-on-neutral-600};
+  --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
+  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
 
   display: inline-flex;
   vertical-align: middle;
@@ -21,50 +21,50 @@
 }
 
 :host(:visited) {
-  --color: #{$clr-color-on-neutral-600};
+  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
 }
 
 :host([color='gray']) {
-  --background: #{$clr-color-neutral-600};
-  --color: #{$clr-color-on-neutral-600};
+  --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
+  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
 }
 
 :host([color='purple']) {
-  --background: #{$clr-color-secondary-action-500};
-  --color: #{$clr-color-on-secondary-action-500};
+  --background: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
+  --color: var(--clr-color-on-secondary-action-500, #{$clr-color-on-secondary-action-500});
 }
 
 :host([color='blue']) {
-  --background: #{$clr-color-secondary-action-800};
-  --color: #{$clr-color-on-secondary-action-800};
+  --background: var(--clr-color-secondary-action-800, #{$clr-color-secondary-action-800});
+  --color: var(--clr-color-on-secondary-action-800, #{$clr-color-on-secondary-action-800});
 }
 
 :host([color='orange']) {
-  --background: #{$clr-color-warning-500};
-  --color: #{$clr-color-on-warning-500};
+  --background: var(--clr-color-warning-500, #{$clr-color-warning-500});
+  --color: var(--clr-color-on-warning-500, #{$clr-color-on-warning-500});
 }
 
 :host([color='light-blue']) {
-  --background: #{$clr-color-action-300};
-  --color: #{$clr-color-on-action-300};
+  --background: var(--clr-color-action-300, #{$clr-color-action-300});
+  --color: var(--clr-color-on-action-300, #{$clr-color-on-action-300});
 }
 
 :host([status='info']) {
-  --background: #{$clr-color-action-600};
-  --color: #{$clr-color-on-action-600};
+  --background: var(--clr-color-action-600, #{$clr-color-action-600});
+  --color: var(--clr-color-on-action-600, #{$clr-color-on-action-600});
 }
 
 :host([status='success']) {
-  --background: #{$clr-color-success-700};
-  --color: #{$clr-color-on-success-700};
+  --background: var(--clr-color-success-700, #{$clr-color-success-700});
+  --color: var(--clr-color-on-success-700, #{$clr-color-on-success-700});
 }
 
 :host([status='warning']) {
-  --background: #{$clr-color-warning-300};
-  --color: #{$clr-color-on-warning-300};
+  --background: var(--clr-color-warning-300, #{$clr-color-warning-300});
+  --color: var(--clr-color-on-warning-300, #{$clr-color-on-warning-300});
 }
 
 :host([status='danger']) {
-  --background: #{$clr-color-danger-800};
-  --color: #{$clr-color-on-danger-800};
+  --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
+  --color: var(--clr-color-on-danger-800, #{$clr-color-on-danger-800});
 }

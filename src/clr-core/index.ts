@@ -4,4 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+// we export any non component code such as utilities at the root '@clr/core'
 export { CommonStringsService, ClrCommonStrings, commonStringsDefault, runCssVarsPolyfill } from '@clr/core/common';

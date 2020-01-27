@@ -1,13 +1,13 @@
 @import './../styles/mixins/mixins';
 
 :host {
+  --background-hover: var(--clr-color-neutral-200, #{$clr-color-neutral-200});
+  --border: #{$clr-global-borderwidth} solid var(--clr-color-neutral-600, #{$clr-color-neutral-600});
   --font-size: #{$clr-p7-font-size};
   --font-weight: #{$clr-p7-font-weight};
   --letter-spacing: #{$clr-p7-letter-spacing};
   --border-radius: #{$clr_baselineRem_0_5};
   --background: none;
-  --background-hover: #{$clr-color-neutral-200};
-  --border: #{$clr-global-borderwidth solid $clr-color-neutral-600};
 
   line-height: var(--font-size);
   border-radius: var(--border-radius);
@@ -23,7 +23,7 @@
   white-space: nowrap;
 
   &:host(:visited) {
-    --color: #{$clr-color-on-neutral-600};
+    --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
   }
 
   &:host(:focus),
@@ -42,9 +42,7 @@
     }
 
     &:host(:active) {
-      // OldEdge/IE
       box-shadow: 0 $clr_baselineRem_1px 0 0 var(--background) inset;
-      box-shadow: 0 $clr-global-borderwidth 0 0 var(--background) inset;
       transform: translateY($clr_baselineRem_0_5px);
     }
   }
@@ -55,7 +53,7 @@
 }
 
 :host([color='gray']) {
-  --border: #{$clr-global-borderwidth} solid #{$clr-color-neutral-600};
+  --border: #{$clr_baselineRem_1px} solid var(--clr-color-neutral-600, #{$clr-color-neutral-600});
 
   ::slotted(cwc-badge) {
     --background: #{$clr-color-neutral-600};
@@ -64,67 +62,67 @@
 }
 
 :host([color='purple']) {
-  --border: #{$clr-global-borderwidth} solid #{$clr-color-secondary-action-500};
+  --border: #{$clr_baselineRem_1px} solid var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
 
   ::slotted(cwc-badge) {
-    --background: #{$clr-color-secondary-action-500};
-    --color: #{$clr-color-on-secondary-action-500};
+    --background: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
+    --color: var(--clr-color-on-secondary-action-500, #{$clr-color-on-secondary-action-500});
   }
 }
 
 :host([color='blue']) {
-  --border: #{$clr-global-borderwidth} solid #{$clr-color-action-800};
+  --border: #{$clr_baselineRem_1px} solid var(--clr-color-action-800, #{$clr-color-action-800});
 
   ::slotted(cwc-badge) {
-    --background: #{$clr-color-secondary-action-800};
-    --color: #{$clr-color-on-secondary-action-800};
+    --background: var(--clr-color-secondary-action-800, #{$clr-color-secondary-action-800});
+    --color: var(--clr-color-on-secondary-action-800, #{$clr-color-on-secondary-action-800});
   }
 }
 
 :host([color='orange']) {
-  --border: #{$clr-global-borderwidth} solid #{$clr-color-warning-500};
+  --border: #{$clr_baselineRem_1px} solid var(--clr-color-warning-500, #{$clr-color-warning-500});
 
   ::slotted(cwc-badge) {
-    --background: #{$clr-color-warning-500};
-    --color: #{$clr-color-on-warning-500};
+    --background: var(--clr-color-warning-500, #{$clr-color-warning-500});
+    --color: var(--clr-color-on-warning-500, #{$clr-color-on-warning-500});
   }
 }
 
 :host([color='light-blue']) {
-  --border: #{$clr-global-borderwidth} solid #{$clr-color-action-300};
+  --border: #{$clr_baselineRem_1px} solid var(--clr-color-action-300, #{$clr-color-action-300});
 
   ::slotted(cwc-badge) {
-    --background: #{$clr-color-action-300};
-    --color: #{$clr-color-on-action-300};
+    --background: var(--clr-color-action-300, #{$clr-color-action-300});
+    --color: var(--clr-color-on-action-300, #{$clr-color-on-action-300});
   }
 }
 
 :host([status='info']) {
-  --background: #{$clr-color-action-50};
-  --background-hover: #{$clr-color-action-100};
-  --border: $clr-global-borderwidth solid #{$clr-color-action-400};
-  --color: #{$clr-color-action-800};
+  --background: var(--clr-color-action-50, #{$clr-color-action-50});
+  --background-hover: var(--clr-color-action-100, #{$clr-color-action-100});
+  --border: $clr_baselineRem_1px solid var(--clr-color-action-400, #{$clr-color-action-400});
+  --color: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
 :host([status='success']) {
-  --background: #{$clr-color-success-50};
-  --background-hover: #{$clr-color-success-100};
-  --color: #{$clr-color-success-800};
-  --border: $clr-global-borderwidth solid #{$clr-color-success-400};
+  --background: var(--clr-color-success-50, #{$clr-color-success-50});
+  --background-hover: var(--clr-color-success-100, #{$clr-color-success-100});
+  --color: var(--clr-color-success-800, #{$clr-color-success-800});
+  --border: $clr_baselineRem_1px solid var(--clr-color-success-400, #{$clr-color-success-400});
 }
 
 :host([status='warning']) {
-  --background: #{$clr-color-warning-100};
-  --background-hover: #{$clr-color-warning-200};
-  --color: #{$clr-color-neutral-900};
-  --border: $clr-global-borderwidth solid #{$clr-color-warning-300};
+  --background: var(--clr-color-warning-100, #{$clr-color-warning-100});
+  --background-hover: var(--clr-color-warning-200, #{$clr-color-warning-200});
+  --color: var(--clr-color-neutral-900, #{$clr-color-neutral-900});
+  --border: $clr_baselineRem_1px solid var(--clr-color-warning-300, #{$clr-color-warning-300});
 }
 
 :host([status='danger']) {
-  --background: #{$clr-color-danger-100};
-  --background-hover: #{$clr-color-danger-200};
-  --color: #{$clr-color-danger-900};
-  --border: $clr-global-borderwidth solid #{$clr-color-danger-200};
+  --background: var(--clr-color-danger-100, #{$clr-color-danger-100});
+  --background-hover: var(--clr-color-danger-200, #{$clr-color-danger-200});
+  --color: var(--clr-color-danger-900, #{$clr-color-danger-900});
+  --border: $clr_baselineRem_1px solid var(--clr-color-danger-200, #{$clr-color-danger-200});
 }
 
 @include fixForFirefox() {

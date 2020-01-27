@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import {
   getElementWidth,
   getElementWidthUnless,

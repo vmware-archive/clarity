@@ -25,3 +25,20 @@ export function transformToUnspacedString(fns: any[], ...args: any[]): string {
 export function camelCaseToKebabCase(value: string) {
   return value.replace(/[A-Z]/g, l => `-${l.toLowerCase()}`);
 }
+
+/**
+ * Take a object map of css properties and if value concatenate string of all computed values
+ * Useful for dynamic style tags in lit-html templates
+ */
+export function setStyles(styles: { [key: string]: string }) {
+  return Object.keys(styles).reduce(
+    (allStyles, prop) => `${allStyles}${styles[prop] ? `${prop}:${styles[prop]};` : ''}`,
+    ''
+  );
+}
+
+/** Used for Storybook docs to define knob group for css properties */
+export const cssGroup = 'CSS Custom Properties';
+
+/** Used for Storybook docs to define knob group for JavaScript properties */
+export const propertiesGroup = 'Default Properties';

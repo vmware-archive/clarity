@@ -143,6 +143,6 @@ function getNumberOfExecutors() {
     return 1;
   } else {
     // when running the single build/test optimize for more threads
-    return Math.ceil(require('os').cpus().length / 2);
+    return 4;
   }
 }

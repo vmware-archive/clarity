@@ -11,6 +11,11 @@
         line-height: 1.1em;
     }
 
+    .inverse-blackout {
+        background: black;
+        color: #ccc;
+    }
+
     .custom-icon-colors {
         background: black;
         padding: 8px 12px;
@@ -56,7 +61,7 @@
 <h1>Icon Deprecations</h1>
 
 <p>This demo displays the backwards compatible classnames API that is deprecated in 3.0 and will be removed in 4.0.</p>
-<p>This shows that the expected deprecations still work as expected in 3.0.</p>
+<p>This shows that the 3.0 deprecations still work as expected.</p>
 
 <h2>Custom Styling</h2>
 
@@ -145,6 +150,31 @@
     </tbody>
 </table>
 
+<table class="table inverse-blackout">
+    <thead>
+        <tr>
+            <th>outline</th>
+            <th>outline-badged</th>
+            <th>outline-alerted</th>
+            <th>solid</th>
+            <th>solid-badged</th>
+            <th>solid-alerted</th>
+            <th>solid-badged-success</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" shape="user" class="is-inverse"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse has-badge"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse has-alert"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-alert"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge--success"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
 <h3>Badge Colors</h3>
 
 <table class="table">
@@ -164,6 +194,27 @@
             <td><cwc-icon size="32" shape="user" class="is-solid has-badge--success"></cwc-icon></td>
             <td><cwc-icon size="32" shape="user" class="is-solid has-badge--danger"></cwc-icon></td>
             <td><cwc-icon size="32" shape="user" class="is-solid has-badge--error"></cwc-icon></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table inverse-blackout">
+    <thead>
+        <tr>
+            <th>default (danger)</th>
+            <th>info</th>
+            <th>success</th>
+            <th>danger</th>
+            <th>error</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><cwc-icon size="32" shape="user" class="is-inverse has-badge"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge--info"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge--success"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge--danger"></cwc-icon></td>
+            <td><cwc-icon size="32" shape="user" class="is-inverse is-solid has-badge--error"></cwc-icon></td>
         </tr>
     </tbody>
 </table>

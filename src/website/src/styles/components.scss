@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -698,4 +698,22 @@ _:-ms-fullscreen,
 
   padding: 0 !important;
   margin: 0 0 -1px 0 !important;
+}
+
+.clr-tab-container {
+  background-color: $clr-color-neutral-100;
+  border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  border-radius: $clr-global-borderradius;
+  margin-top: $clr_baselineRem_1;
+  box-shadow: 0.05rem 0.05rem 0.1rem #ddd;
+
+  .nav-item:first-child {
+    margin-left: $clr_baselineRem_0_5;
+  }
+
+  .tab-content > *,
+  clr-code-snippet pre {
+    margin-left: $clr_baselineRem_0_5;
+    margin-right: $clr_baselineRem_0_5;
+  }
 }

@@ -173,10 +173,10 @@
 
             <h6 id="the-clarity-baseline-is-24px">The Clarity Baseline is 24px</h6>
 
-            <p>All elements in Clarity are built in terms of 24px:</p>
+            <p>All elements in Clarity are <em>designed</em> with a 24px baseline:</p>
 
             <ul class="list">
-                <li>The height of all components and text elements is in multiples of 24px.</li>
+                <li>The visual height of all components and text elements is in multiples of 24px.</li>
                 <li>The vertical white space between elements is also in multiples of 24px.</li>
             </ul>
 
@@ -184,14 +184,70 @@
 
             <h6 id="repeat-24px-in-your-layout">Repeat 24px in Your Layout</h6>
             <p>
-                Calculate the vertical margins and padding between elements using the Clarity baseline.
+                Design the vertical margins and padding between elements using the Clarity baseline.
                 A multiple of 24px can be a whole or half-ratio. Common numbers include: 6px, 12px, 18px,
                 24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px.
             </p>
+        </div>
+
+        <div id="code-examples">
+            <h3 id="examples">Code &amp; Examples</h3>
+
+            <p>Clarity layouts and components are <em>designed</em> with a "24px baseline". This means that the visual size of our components is expressed in clean multiples of 24.</p>
+
+            <p>But starting with version 3.0, the Clarity CSS <em>code's</em> rem values are derived from a root font-size of 20px!</p>
+
+            <p>Why the difference?</p>
+
+            <h4 style="margin-top: 2.4rem;">Rem Sizing</h4>
+
+            <p>In its underlying code, the Clarity styles had to move away from a root font-size of 24px for a couple of reasons:</p>
+
+            <ul class="list" style="margin-top: 1.2rem">
+                <li>24px was not a clean multiple of many common sizes. 1px, for example, had to be derived from 0.04166667rem. 16px, likewise, had a measurement of 0.6666667rem. The lack of clean multiples left us at the mercy of browsers rounding out our values. This introduced inconsistency across browsers and sloppy line rendering in many cases.</li>
+                <li>Early styling decisions before Clarity 1.0 broke expected browser sizing preferences and negatively impacted the accessibility of Clarity for some users.</li>
+            </ul>
+
+            <p>The changes to "rem" sizing in Clarity addresses both of those concerns. But there are a few caveats to keep in mind.</p>
+
+            <h5>Design remains at 24px, underlying code is at 20px</h5>
+
+            <p>The visual baseline for our design system remains 24px with a base grid of 6px. <em>For designers using the Clarity Design System, nothing has changed</em>.</p>
+
+            <p>Developers, however, must convert 24px based designs to a system that uses 20px at its core.</p>
+
+            <h5>Converting from old 24px-based styles to new 20px based styles</h5>
+
+            <p>First and most importantly, you do not need to do <em>anything</em> if your application does not use rem values or percentages that rely on Clarity's default root font-size.</p>
+
+            <p>If you do, however, rely on the rem sizing available in Clarity, there are a number of options available to update the old code to the new rem sizing.</p>
+
+            <h6>Set hard pixel values (Not recommended)</h6>
+
+            <p>If you are already setting hard pixel values outside of Clarity, no change is needed on your part. Setting hard pixel values is not recommended, however, because it breaks accessibility and browser text resizing features.</p>
+
+            <h6>Update your rem values</h6>
+
+            <p>If you are using rem values outside of Clarity, you can update them by either:</p>
+
+            <ul class="list" style="margin-top: 1.2rem">
+                <li>multiplying them by 1.2 – so a value of <code class="clr-code">1.4rem</code> in a SASS file becomes <code class="clr-code">1.2 * 1.4rem</code></li>
+                <li>doing the math upfront and updating rem values in place – so that <code class="clr-code">1.4rem</code> becomes <code class="clr-code">1.68rem</code></li>
+            </ul>
+
+            <h6>Use Clarity's $clrBaselineRem_* variables (Recommended)</h6>
+
+            <p><a href="//github.com/vmware/clarity/blob/master/src/clr-core/styles/variables/_variables.global.scss" target="_blank" rel="noopener noreferrer">Clarity has a number of size variables that you can use in your applications</a>. It is recommended that you update your application to make use of them. This is the safest course of action going forward and will result in the least amount of rework in the future.</p>
 
 
-            <h6 id="rem-units">Changing vertical rhythm with rem</h6>
-            <p>
+            <h6>What if I can't do this right now?</h6>
+
+            <p>If you would prefer to update Clarity to version 3.x and cannot update the sizes in your application that rely on Clarity's baseline, you can override the <code class="clr-code">$clr-baseline-denominator</code> SASS variable. Setting it to <code class="clr-code">24</code> ignores the baseline changes, putting everything back to the pre-3.0 24px baseline.</p>
+
+            <p>Clarity implemented this workaround to make the transition to 3.0 easier on our users, allowing them to take on the work of updating their rem sizes at their own pace if they need to. Note that this should be consider a temporary workaround, however, not a long-term solution. There is no guarantee that this override will be supported beyond 3.0.</p>
+
+            <h4 id="rem-units">Customizing the root font-size</h4>
+            <p style="margin-bottom: 1.2rem">
                 Clarity uses <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units" target="_blank">rem units</a> for its whitespace and sizing. If the 24px vertical baseline
                 is too large or too small for your needs, you can edit this globally across a Clarity application
                 by changing the <code class="clr-code">font-size</code> style of the <code class="clr-code">html</code>
@@ -206,6 +262,8 @@
                 components is equal to one-fourth of the baseline. So instead of a 6px grid, the example above will
                 put your application on a 5px grid.
             </p>
-        </div>
+
+        </div> 
+
     </article>
 </clr-doc-wrapper>

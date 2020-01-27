@@ -1,14 +1,8 @@
-@import './mixins/breakpoint';
-@import './mixins/grid';
-@import './mixins/grid-framework';
-@import './utilities/align';
-@import './utilities/clearfix';
-@import './utilities/display';
-@import './utilities/flex';
-@import './utilities/float';
-@import './utilities/visibility';
-@import './grid/grid';
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
 
+// For 3.0 do not ship global layout styles until evaluation of global styles API is complete
 *,
 *:before,
 *:after {

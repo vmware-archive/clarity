@@ -4,8 +4,7 @@
 
 @include exports('badge.properties') {
   @if $clr-use-custom-properties == true {
-    :root,
-    :host {
+    :root {
       --clr-badge-background-color: var(--clr-color-neutral-600);
       --clr-badge-color: var(--clr-color-on-neutral-600);
 

@@ -1,13 +1,5 @@
 @import './../styles/mixins/mixins';
 
-@mixin setIconColor($clr-icon-color-var) {
-  fill: unquote($clr-icon-color-var);
-
-  .transparent-fill-stroke {
-    stroke: unquote($clr-icon-color-var);
-  }
-}
-
 @mixin rotateSVGIcon($deg) {
   svg {
     transform: rotate($deg);
@@ -29,33 +21,13 @@
 }
 
 :host {
+  --clr-icon-color: #{$clr-color-neutral-700};
+  --clr-icon-badge-color: #{$clr-color-danger-700};
   display: inline-block;
   @include equilateral($clr_baselineRem_0_667);
   margin: 0;
   vertical-align: middle;
-  @include setIconColor(#{'var(--clr-icon-color-default, currentColor)'});
-
-  & > div {
-    & > * {
-      height: 100%;
-      width: 100%;
-      display: block;
-      pointer-events: none;
-    }
-
-    & > svg {
-      transition: inherit;
-
-      title {
-        display: none;
-      }
-    }
-  }
-}
-
-div {
-  @include equilateral(100%);
-  overflow: hidden;
+  fill: var(--clr-icon-color);
 }
 
 svg {
@@ -93,9 +65,7 @@ svg {
 :host(.is-green),
 :host(.is-success),
 :host([status='success']) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-success, var(--clr-color-success-700,' + $clr-color-success-700 + '))'}
-  );
+  --clr-icon-color: #{$clr-color-success-700};
 }
 
 // DEPRECATED IN 3.0: is-red, is-error, is-danger
@@ -103,28 +73,23 @@ svg {
 :host(.is-danger),
 :host(.is-error),
 :host([status='danger']) {
-  @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+  --clr-icon-color: #{$clr-color-danger-700};
 }
 
 // DEPRECATED IN 3.0: is-warning
 :host(.is-warning),
 :host([status='warning']) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-warning, var(--clr-color-warning-900,' + $clr-color-warning-900 + '))'}
-  );
+  --clr-icon-color: #{$clr-color-warning-900};
 }
 
-// DEPRECATED IN 3.0: is-blue, is-info
+// DEPRECATED IN 3.0: is-blue, is-info, is-highlight
 :host(.is-blue),
 :host(.is-info),
+:host(.is-highlight),
 :host([status='info']) {
-  @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
+  --clr-icon-color: #{$clr-color-action-600};
 }
 
-// DEPRECATED IN 3.0: is-highlight
-:host(.is-highlight) {
-  @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
-}
 
 // INVERSE COLORS
 
@@ -132,16 +97,21 @@ svg {
 :host(.is-white),
 :host(.is-inverse),
 :host([inverse]) {
-  @include setIconColor(#{'var(--clr-icon-color-inverse, var(--clr-color-neutral-0,' + $clr-color-neutral-0 + '))'});
+  --clr-icon-color: #{$clr-color-neutral-0};
+}
+
+// DEPRECATED IN 3.0: is-info, is-inverse
+:host([inverse].is-info),
+:host([status='info'].is-inverse),
+:host([inverse][status='info']) {
+  --clr-icon-color: #{$clr-color-action-600};
 }
 
 // DEPRECATED IN 3.0: is-success, is-inverse
 :host([inverse].is-success),
 :host([status='success'].is-inverse),
 :host([inverse][status='success']) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-inverse-success, var(--clr-color-success-400,' + $clr-color-success-400 + '))'}
-  );
+  --clr-icon-color: #{$clr-color-success-400};
 }
 
 // DEPRECATED IN 3.0: is-error, is-danger, is-inverse
@@ -151,9 +121,7 @@ svg {
 :host([inverse].is-error),
 :host([inverse].is-danger),
 :host([inverse][status='danger']) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-inverse-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'}
-  );
+  --clr-icon-color: #{$clr-color-danger-700};
 }
 
 // DEPRECATED IN 3.0: is-warning, is-inverse
@@ -161,9 +129,7 @@ svg {
 :host([status='warning'].is-inverse),
 :host([inverse].is-warning),
 :host([inverse][status='warning']) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-inverse-warning, var(--clr-color-warning-500,' + $clr-color-warning-500 + '))'}
-  );
+  --clr-icon-color: #{$clr-color-warning-500};
 }
 
 // directional
@@ -195,8 +161,8 @@ svg {
   @include flipSVGIcon('vertical');
 }
 
-.clr-i-badge {
-  @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
+.clr-i-badge, .clr-i-alert {
+  fill: var(--clr-icon-badge-color);
 }
 
 // outlined
@@ -301,60 +267,40 @@ svg {
 // DEPRECATED IN 3.0: has-badge--success
 :host(.has-badge--success),
 :host([badge='success']) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-success, var(--clr-color-success-700,' + $clr-color-success-700 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-success-700};
 }
 
 // DEPRECATED IN 3.0: has-badge--danger, has-badge--error
 :host(.has-badge--danger),
 :host(.has-badge--error),
 :host([badge='danger']) {
-  .clr-i-badge {
-    @include setIconColor(#{'var(--clr-icon-color-danger, var(--clr-color-danger-700,' + $clr-color-danger-700 + '))'});
-  }
+  --clr-icon-badge-color: #{$clr-color-danger-700};
 }
 
 // there is no .has-badge--warning classname
 :host([badge='warning']) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-warning, var(--clr-color-warning-900,' + $clr-color-warning-900 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-warning-900};
 }
 
 :host([badge='inherit']) {
-  .clr-i-badge {
-    @include setIconColor('inherit');
-  }
+  --clr-icon-badge-color: inherit;
 }
 
 // DEPRECATED IN 3.0: has-badge--info
 :host(.has-badge--info),
 :host([badge='info']) {
-  .clr-i-badge {
-    @include setIconColor(#{'var(--clr-icon-color-info, var(--clr-color-action-600,' + $clr-color-action-600 + '))'});
-  }
+  --clr-icon-badge-color: #{$clr-color-action-600};
 }
 
 // alert colors
 // DEPRECATED IN 3.0: has-alert
 :host(.has-alert),
 :host([badge$='triangle']) {
-  .clr-i-alert {
-    @include setIconColor(
-      #{'var(--clr-icon-color-warning, var(--clr-color-warning-800,' + $clr-color-warning-800 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-warning-800};
 }
 
 :host([badge='inherit-triangle']) {
-  .clr-i-alert {
-    @include setIconColor('inherit');
-  }
+  --clr-icon-badge-color: inherit;
 }
 
 // inverse + variants
@@ -366,19 +312,13 @@ svg {
 :host(.has-badge--error[inverse]),
 :host(.has-badge--danger.is-inverse),
 :host(.has-badge--error.is-inverse) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-inverse-danger, var(--clr-color-danger-500,' + $clr-color-danger-500 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-danger-500};
 }
 
 // DEPRECATED IN 3.0: is-highlight, is-inverse
 :host([inverse].is-highlight),
 :host(.is-highlight.is-inverse) {
-  @include setIconColor(
-    #{'var(--clr-icon-color-inverse-info, var(--clr-color-action-400,' + $clr-color-action-400 + '))'}
-  );
+  --clr-icon-color: $clr-color-action-400;
 }
 
 // variant badge colors
@@ -387,26 +327,16 @@ svg {
 :host([inverse].has-badge--success),
 :host([badge='success'].is-inverse),
 :host(.has-badge--success.is-inverse) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-inverse-success, var(--clr-color-success-400,' + $clr-color-success-400 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-success-400};
 }
 
 :host([badge='inherit'][inverse]) {
-  .clr-i-badge {
-    @include setIconColor('inherit');
-  }
+  --clr-icon-badge-color: inherit;
 }
 
 // there is no has-badge--warning classname
 :host([badge='warning'][inverse]) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-inverse-warning, var(--clr-color-warning-500,' + $clr-color-warning-500 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-warning-500};
 }
 
 // DEPRECATED IN 3.0: has-badge--info, is-inverse
@@ -414,11 +344,7 @@ svg {
 :host(.has-badge--info[inverse]),
 :host([badge='info'].is-inverse),
 :host(.has-badge--info.is-inverse) {
-  .clr-i-badge {
-    @include setIconColor(
-      #{'var(--clr-icon-color-inverse-info, var(--clr-color-action-400,' + $clr-color-action-400 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-action-400};
 }
 
 // alert colors
@@ -427,15 +353,9 @@ svg {
 :host(.has-alert[inverse]),
 :host(.is-inverse[badge$='triangle']),
 :host(.has-alert.is-inverse) {
-  .clr-i-alert {
-    @include setIconColor(
-      #{'var(--clr-icon-color-inverse-warning, var(--clr-color-warning-500,' + $clr-color-warning-500 + '))'}
-    );
-  }
+  --clr-icon-badge-color: #{$clr-color-warning-500};
 }
 
 :host([badge='inherit-triangle'][inverse]) {
-  .clr-i-alert {
-    @include setIconColor('inherit');
-  }
+  --clr-icon-badge-color: inherit;
 }

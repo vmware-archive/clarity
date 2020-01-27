@@ -1,34 +1,28 @@
 @import './../styles/mixins/mixins';
-@import './../badge/properties';
-@import './variables';
-@import './properties';
 
 :host {
-  //default
-  $label-nudge-for-vertical-alignment: $clr_baselineRem_1px;
-  @include css-var(font-size, clr-tag-font-size, $clr-label-font-size);
-  @include css-var(font-weight, clr-tag-font-weight, $clr-label-font-weight);
-  @include css-var(letter-spacing, clr-tag-letter-spacing, $clr-label-letter-spacing);
+  --clr-tag-font-size: #{$clr-p7-font-size + $clr_baselineRem_1px}; // line-height needed to be adjusted to force center alignment
+  --clr-tag-font-weight: #{$clr-p7-font-weight};
+  --clr-tag-letter-spacing: #{$clr-p7-letter-spacing};
+  --clr-tag-border-radius: #{$clr_baselineRem_0_5};
+  --clr-tag-background: none;
+  --clr-tag-background-hover: #{$clr-color-neutral-200};
+  --clr-tag-border: #{$clr-global-borderwidth solid $clr-color-neutral-600};
 
-  // line-height needed to be adjusted to force center alignment
-  line-height: $clr-label-font-size + $clr_baselineRem_1px;
+  line-height: var(--clr-tag-font-size);
+  border-radius: var(--clr-tag-border-radius);
+  background: var(--clr-tag-background);
+  border: var(--clr-tag-border);
+  color: var(--clr-tag-color);
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
-  @include css-var(border-radius, clr-tag-border-radius, $clr_baselineRem_0_5);
-  border: $clr-label-borderwidth solid;
-  @include css-var(border-color, clr-tag-default-border-color, $clr-label-default-border-color);
+  padding: 0 $clr_baselineRem_0_5 $clr_baselineRem_1px;
   height: $clr_baselineRem_0_875;
-  margin: 0 $clr_baselineRem_0_25 0 0;
   white-space: nowrap;
 
-  background-color: var(--clr-tag-bg-color);
-  border-color: var(--clr-tag-border-color);
-  color: var(--clr-tag-color);
-
   &:host(:visited) {
-    --clr-tag-color: var(--clr-color-on-neutral-600);
+    --clr-tag-color: #{$clr-color-on-neutral-600};
   }
 
   &:host(:focus),
@@ -42,14 +36,14 @@
     &:host(:hover),
     &:host(:active) {
       text-decoration: none;
-      background-color: var(--clr-tag-background-hover-color);
+      background-color: var(--clr-tag-background-hover);
       cursor: pointer;
     }
 
     &:host(:active) {
       // OldEdge/IE
-      box-shadow: 0 $clr_baselineRem_1px 0 0 var(--clr-tag-bg-color) inset;
-      box-shadow: 0 $clr-label-borderwidth 0 0 var(--clr-tag-bg-color) inset;
+      box-shadow: 0 $clr_baselineRem_1px 0 0 var(--clr-tag-background) inset;
+      box-shadow: 0 $clr-global-borderwidth 0 0 var(--clr-tag-background) inset;
       transform: translateY($clr_baselineRem_0_5px);
     }
   }
@@ -60,76 +54,76 @@
 }
 
 :host([color='gray']) {
-  --clr-tag-border-color: var(--clr-color-neutral-600);
+  --clr-tag-border: #{$clr-global-borderwidth} solid #{$clr-color-neutral-600};
 
   ::slotted(cwc-badge) {
-    --clr-badge-background-color: var(--clr-color-neutral-600);
-    --clr-badge-color: var(--clr-color-on-neutral-600);
+    --clr-badge-background: #{$clr-color-neutral-600};
+    --clr-badge-color: #{$clr-color-on-neutral-600};
   }
 }
 
 :host([color='purple']) {
-  --clr-tag-border-color: var(--clr-color-secondary-action-500);
+  --clr-tag-border: #{$clr-global-borderwidth} solid #{$clr-color-secondary-action-500};
 
   ::slotted(cwc-badge) {
-    --clr-badge-background-color: var(--clr-color-secondary-action-500);
-    --clr-badge-color: var(--clr-color-on-secondary-action-500);
+    --clr-badge-background: #{$clr-color-secondary-action-500};
+    --clr-badge-color: #{$clr-color-on-secondary-action-500};
   }
 }
 
 :host([color='blue']) {
-  --clr-tag-border-color: var(--clr-color-action-800);
+  --clr-tag-border: #{$clr-global-borderwidth} solid #{$clr-color-action-800};
 
   ::slotted(cwc-badge) {
-    --clr-badge-background-color: var(--clr-color-secondary-action-800);
-    --clr-badge-color: var(--clr-color-on-secondary-action-800);
+    --clr-badge-background: #{$clr-color-secondary-action-800};
+    --clr-badge-color: #{$clr-color-on-secondary-action-800};
   }
 }
 
 :host([color='orange']) {
-  --clr-tag-border-color: var(--clr-color-warning-500);
+  --clr-tag-border: #{$clr-global-borderwidth} solid #{$clr-color-warning-500};
 
   ::slotted(cwc-badge) {
-    --clr-badge-background-color: var(--clr-color-warning-500);
-    --clr-badge-color: var(--clr-color-on-warning-500);
+    --clr-badge-background: #{$clr-color-warning-500};
+    --clr-badge-color: #{$clr-color-on-warning-500};
   }
 }
 
 :host([color='light-blue']) {
-  --clr-tag-border-color: var(--clr-color-action-300);
+  --clr-tag-border: #{$clr-global-borderwidth} solid #{$clr-color-action-300};
 
   ::slotted(cwc-badge) {
-    --clr-badge-background-color: var(--clr-color-action-300);
-    --clr-badge-color: var(--clr-color-on-action-300);
+    --clr-badge-background: #{$clr-color-action-300};
+    --clr-badge-color: #{$clr-color-on-action-300};
   }
 }
 
 :host([status='info']) {
-  --clr-tag-bg-color: var(--clr-color-action-50);
-  --clr-tag-background-hover-color: var(--clr-color-action-100);
-  --clr-tag-border-color: var(--clr-color-action-400);
-  --clr-tag-color: var(--clr-color-action-800);
+  --clr-tag-background: #{$clr-color-action-50};
+  --clr-tag-background-hover: #{$clr-color-action-100};
+  --clr-tag-border: $clr-global-borderwidth solid #{$clr-color-action-400};
+  --clr-tag-color: #{$clr-color-action-800};
 }
 
 :host([status='success']) {
-  --clr-tag-bg-color: var(--clr-color-success-50);
-  --clr-tag-background-hover-color: var(--clr-color-success-100);
-  --clr-tag-color: var(--clr-color-success-800);
-  --clr-tag-border-color: var(--clr-color-success-400);
+  --clr-tag-background: #{$clr-color-success-50};
+  --clr-tag-background-hover: #{$clr-color-success-100};
+  --clr-tag-color: #{$clr-color-success-800};
+  --clr-tag-border: $clr-global-borderwidth solid #{$clr-color-success-400};
 }
 
 :host([status='warning']) {
-  --clr-tag-bg-color: var(--clr-color-warning-100);
-  --clr-tag-background-hover-color: var(--clr-color-warning-200);
-  --clr-tag-color: var(--clr-color-neutral-900);
-  --clr-tag-border-color: var(--clr-color-warning-300);
+  --clr-tag-background: #{$clr-color-warning-100};
+  --clr-tag-background-hover: #{$clr-color-warning-200};
+  --clr-tag-color: #{$clr-color-neutral-900};
+  --clr-tag-border: $clr-global-borderwidth solid #{$clr-color-warning-300};
 }
 
 :host([status='danger']) {
-  --clr-tag-bg-color: var(--clr-color-danger-100);
-  --clr-tag-background-hover-color: var(--clr-color-danger-200);
-  --clr-tag-color: var(--clr-color-danger-900);
-  --clr-tag-border-color: var(--clr-color-danger-200);
+  --clr-tag-background: #{$clr-color-danger-100};
+  --clr-tag-background-hover: #{$clr-color-danger-200};
+  --clr-tag-color: #{$clr-color-danger-900};
+  --clr-tag-border: $clr-global-borderwidth solid #{$clr-color-danger-200};
 }
 
 @include fixForFirefox() {

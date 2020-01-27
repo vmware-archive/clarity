@@ -1,0 +1,220 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './code';
+@import './lists';
+
+@include exports('typography.clarity') {
+  //Headings
+  h1 {
+    @include css-var(color, clr-h1-color, $clr-h1-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h1-font-weight, $clr-h1-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h1-font-family, $clr-h1-font-family, $clr-use-custom-properties);
+    font-size: $clr-h1-font-size;
+    letter-spacing: $clr-h1-letter-spacing;
+    line-height: $clr-h1-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  h2 {
+    @include css-var(color, clr-h2-color, $clr-h2-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h2-font-weight, $clr-h2-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h2-font-family, $clr-h2-font-family, $clr-use-custom-properties);
+    font-size: $clr-h2-font-size;
+    letter-spacing: $clr-h2-letter-spacing;
+    line-height: $clr-h2-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  h3 {
+    @include css-var(color, clr-h3-color, $clr-h3-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h3-font-weight, $clr-h3-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h3-font-family, $clr-h3-font-family, $clr-use-custom-properties);
+    font-size: $clr-h3-font-size;
+    letter-spacing: $clr-h3-letter-spacing;
+    line-height: $clr-h3-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  h4 {
+    @include css-var(color, clr-h4-color, $clr-h4-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h4-font-weight, $clr-h4-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h4-font-family, $clr-h4-font-family, $clr-use-custom-properties);
+    font-size: $clr-h4-font-size;
+    letter-spacing: $clr-h4-letter-spacing;
+    line-height: $clr-h4-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  h5 {
+    @include css-var(color, clr-h5-color, $clr-h5-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h5-font-weight, $clr-h5-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h5-font-family, $clr-h5-font-family, $clr-use-custom-properties);
+    font-size: $clr-h5-font-size;
+    letter-spacing: $clr-h5-letter-spacing;
+    line-height: $clr-h5-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  h6 {
+    @include css-var(color, clr-h6-color, $clr-h6-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-h6-font-weight, $clr-h6-font-weight, $clr-use-custom-properties);
+    @include css-var(font-family, clr-h6-font-family, $clr-h6-font-family, $clr-use-custom-properties);
+    font-size: $clr-h6-font-size;
+    letter-spacing: $clr-h6-letter-spacing;
+    line-height: $clr-h6-line-height;
+    margin-top: $clr-global-typography-margin-top;
+    margin-bottom: $clr-global-typography-margin-bottom;
+  }
+
+  //Body.
+  body {
+    @include css-var(color, clr-p1-color, $clr-p1-color, $clr-use-custom-properties);
+    @include css-var(font-weight, clr-p1-font-weight, $clr-p1-font-weight, $clr-use-custom-properties);
+    font-size: $clr-p1-font-size;
+    letter-spacing: $clr-p1-letter-spacing;
+    line-height: $clr-p1-line-height;
+    margin-bottom: $clr-global-typography-margin-bottom;
+
+    @include css-var(font-family, clr-font, $clr-font, $clr-use-custom-properties);
+    margin-top: 0 !important;
+  }
+
+  //Paragraph
+
+  // angular demos is injecting style selectors such as `p[_ngcontent-jfh-3]`
+  // that are overriding these styles. i'm using specificity below to try and force the issue.
+
+  body {
+    p {
+      @include css-var(color, clr-p1-color, $clr-p1-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p1-font-weight, $clr-p1-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p1-font-size;
+      letter-spacing: $clr-p1-letter-spacing;
+      line-height: $clr-p1-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p0,
+    p.p0 {
+      @include css-var(color, clr-p0-color, $clr-p0-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p0-font-weight, $clr-p0-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p0-font-size;
+      letter-spacing: $clr-p0-letter-spacing;
+      line-height: $clr-p0-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p2,
+    p.p2 {
+      @include css-var(color, clr-p2-color, $clr-p2-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p2-font-weight, $clr-p2-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p2-font-size;
+      letter-spacing: $clr-p2-letter-spacing;
+      line-height: $clr-p2-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p3,
+    p.p3 {
+      @include css-var(color, clr-p3-color, $clr-p3-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p3-font-weight, $clr-p3-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p3-font-size;
+      letter-spacing: $clr-p3-letter-spacing;
+      line-height: $clr-p3-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p4,
+    p.p4 {
+      @include css-var(color, clr-p4-color, $clr-p4-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p4-font-weight, $clr-p4-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p4-font-size;
+      letter-spacing: $clr-p4-letter-spacing;
+      line-height: $clr-p4-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p5,
+    p.p5 {
+      @include css-var(color, clr-p5-color, $clr-p5-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p5-font-weight, $clr-p5-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p5-font-size;
+      letter-spacing: $clr-p5-letter-spacing;
+      line-height: $clr-p5-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p6,
+    p.p6 {
+      @include css-var(color, clr-p6-color, $clr-p6-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p6-font-weight, $clr-p6-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p6-font-size;
+      letter-spacing: $clr-p6-letter-spacing;
+      line-height: $clr-p6-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p7,
+    p.p7 {
+      @include css-var(color, clr-p7-color, $clr-p7-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p7-font-weight, $clr-p7-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p7-font-size;
+      letter-spacing: $clr-p7-letter-spacing;
+      line-height: $clr-p7-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+
+    .p8,
+    p.p8 {
+      @include css-var(color, clr-p8-color, $clr-p8-color, $clr-use-custom-properties);
+      @include css-var(font-weight, clr-p8-font-weight, $clr-p8-font-weight, $clr-use-custom-properties);
+      font-size: $clr-p8-font-size;
+      letter-spacing: $clr-p8-letter-spacing;
+      line-height: $clr-p8-line-height;
+      margin-top: $clr-global-typography-margin-top;
+      margin-bottom: $clr-global-typography-margin-bottom;
+    }
+  }
+
+  .text-light {
+    @include css-var(font-weight, clr-font-weight-light, $clr-font-weight-light, $clr-use-custom-properties);
+  }
+
+  .text-right {
+    text-align: right !important;
+  }
+
+  .text-center {
+    text-align: center !important;
+  }
+
+  .text-left {
+    text-align: left !important;
+  }
+
+  .text-justify {
+    text-align: justify !important;
+  }
+
+  //HTML
+  html {
+    @include css-var(color, clr-global-font-color, $clr-global-font-color, $clr-use-custom-properties);
+    @include css-var(font-family, clr-font, $clr-font, $clr-use-custom-properties);
+    font-size: $clr-basefont-size;
+  }
+}

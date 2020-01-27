@@ -8,10 +8,13 @@
 @import '../../clr-core/styles/mixins/mixins';
 @import '../../clr-core/styles/variables/variables';
 @import '../../clr-core/styles/variables/properties';
-@import '../../clr-core/styles/typography/typography';
-@import '../../clr-core/styles/typography/font-metropolis';
-@import '../../clr-core/styles/layout/layout';
 @import '../../clr-core/styles/utils/a11y';
+
+// Layout/Grid
+@import '../layout/grid/grid';
+
+@import '../typography/typography';
+@import '../typography/font-metropolis';
 
 // Component variables
 @import '../utils/variables.clarity';

@@ -4,8 +4,7 @@
 
 @include exports('button.properties') {
   @if $clr-use-custom-properties == true {
-    :root,
-    :host {
+    :root {
       // Spacing
       --clr-btn-vertical-margin: #{$clr-btn-vertical-margin};
       --clr-btn-horizontal-margin: #{$clr-btn-horizontal-margin};

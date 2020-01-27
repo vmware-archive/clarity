@@ -21,8 +21,8 @@
 }
 
 :host {
-  --color: #{$clr-color-neutral-700};
-  --badge-color: #{$clr-color-danger-700};
+  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  --badge-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
   display: inline-block;
   @include equilateral($clr_baselineRem_0_667);
   margin: 0;
@@ -65,7 +65,7 @@ svg {
 :host(.is-green),
 :host(.is-success),
 :host([status='success']) {
-  --color: #{$clr-color-success-700};
+  --color: var(--clr-color-success-700, #{$clr-color-success-700});
 }
 
 // DEPRECATED IN 3.0: is-red, is-error, is-danger
@@ -73,13 +73,13 @@ svg {
 :host(.is-danger),
 :host(.is-error),
 :host([status='danger']) {
-  --color: #{$clr-color-danger-700};
+  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
 }
 
 // DEPRECATED IN 3.0: is-warning
 :host(.is-warning),
 :host([status='warning']) {
-  --color: #{$clr-color-warning-900};
+  --color: var(--clr-color-warning-900, #{$clr-color-warning-900});
 }
 
 // DEPRECATED IN 3.0: is-blue, is-info, is-highlight
@@ -87,7 +87,7 @@ svg {
 :host(.is-info),
 :host(.is-highlight),
 :host([status='info']) {
-  --color: #{$clr-color-action-600};
+  --color: var(--clr-color-action-600, #{$clr-color-action-600});
 }
 
 // INVERSE COLORS
@@ -96,21 +96,21 @@ svg {
 :host(.is-white),
 :host(.is-inverse),
 :host([inverse]) {
-  --color: #{$clr-color-neutral-0};
+  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
 }
 
 // DEPRECATED IN 3.0: is-info, is-inverse
 :host([inverse].is-info),
 :host([status='info'].is-inverse),
 :host([inverse][status='info']) {
-  --color: #{$clr-color-action-600};
+  --color: var(--clr-color-action-400, #{$clr-color-action-400});
 }
 
 // DEPRECATED IN 3.0: is-success, is-inverse
 :host([inverse].is-success),
 :host([status='success'].is-inverse),
 :host([inverse][status='success']) {
-  --color: #{$clr-color-success-400};
+  --color: var(--clr-color-success-400, #{$clr-color-success-400});
 }
 
 // DEPRECATED IN 3.0: is-error, is-danger, is-inverse
@@ -120,7 +120,7 @@ svg {
 :host([inverse].is-error),
 :host([inverse].is-danger),
 :host([inverse][status='danger']) {
-  --color: #{$clr-color-danger-700};
+  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
 }
 
 // DEPRECATED IN 3.0: is-warning, is-inverse
@@ -128,7 +128,7 @@ svg {
 :host([status='warning'].is-inverse),
 :host([inverse].is-warning),
 :host([inverse][status='warning']) {
-  --color: #{$clr-color-warning-500};
+  --color: var(--clr-color-warning-500, #{$clr-color-warning-500});
 }
 
 // directional
@@ -267,19 +267,19 @@ svg {
 // DEPRECATED IN 3.0: has-badge--success
 :host(.has-badge--success),
 :host([badge='success']) {
-  --badge-color: #{$clr-color-success-700};
+  --badge-color: var(--clr-color-success-700, #{$clr-color-success-700});
 }
 
 // DEPRECATED IN 3.0: has-badge--danger, has-badge--error
 :host(.has-badge--danger),
 :host(.has-badge--error),
 :host([badge='danger']) {
-  --badge-color: #{$clr-color-danger-700};
+  --badge-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
 }
 
 // there is no .has-badge--warning classname
 :host([badge='warning']) {
-  --badge-color: #{$clr-color-warning-900};
+  --badge-color: var(--clr-color-warning-900, #{$clr-color-warning-900});
 }
 
 :host([badge='inherit']) {
@@ -289,14 +289,14 @@ svg {
 // DEPRECATED IN 3.0: has-badge--info
 :host(.has-badge--info),
 :host([badge='info']) {
-  --badge-color: #{$clr-color-action-600};
+  --badge-color: var(--clr-color-action-600, #{$clr-color-action-600});
 }
 
 // alert colors
 // DEPRECATED IN 3.0: has-alert
 :host(.has-alert),
 :host([badge$='triangle']) {
-  --badge-color: #{$clr-color-warning-800};
+  --badge-color: var(--clr-color-warning-800, #{$clr-color-warning-800});
 }
 
 :host([badge='inherit-triangle']) {
@@ -312,13 +312,13 @@ svg {
 :host(.has-badge--error[inverse]),
 :host(.has-badge--danger.is-inverse),
 :host(.has-badge--error.is-inverse) {
-  --badge-color: #{$clr-color-danger-500};
+  --badge-color: var(--clr-color-danger-500, #{$clr-color-danger-500});
 }
 
 // DEPRECATED IN 3.0: is-highlight, is-inverse
 :host([inverse].is-highlight),
 :host(.is-highlight.is-inverse) {
-  --color: $clr-color-action-400;
+  --color: var(--clr-color-action-400, #{$clr-color-action-400});
 }
 
 // variant badge colors
@@ -327,7 +327,7 @@ svg {
 :host([inverse].has-badge--success),
 :host([badge='success'].is-inverse),
 :host(.has-badge--success.is-inverse) {
-  --badge-color: #{$clr-color-success-400};
+  --badge-color: var(--clr-color-success-400, #{$clr-color-success-400});
 }
 
 :host([badge='inherit'][inverse]) {
@@ -336,7 +336,7 @@ svg {
 
 // there is no has-badge--warning classname
 :host([badge='warning'][inverse]) {
-  --badge-color: #{$clr-color-warning-500};
+  --badge-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
 }
 
 // DEPRECATED IN 3.0: has-badge--info, is-inverse
@@ -344,7 +344,7 @@ svg {
 :host(.has-badge--info[inverse]),
 :host([badge='info'].is-inverse),
 :host(.has-badge--info.is-inverse) {
-  --badge-color: #{$clr-color-action-400};
+  --badge-color: var(--clr-color-action-400, #{$clr-color-action-400});
 }
 
 // alert colors
@@ -353,7 +353,7 @@ svg {
 :host(.has-alert[inverse]),
 :host(.is-inverse[badge$='triangle']),
 :host(.has-alert.is-inverse) {
-  --badge-color: #{$clr-color-warning-500};
+  --badge-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
 }
 
 :host([badge='inherit-triangle'][inverse]) {

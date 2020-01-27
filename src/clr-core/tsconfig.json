@@ -4,11 +4,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "../../dist/clr-core",
     "declaration": true,
     "inlineSources": true,
-    "types": [],
+    "types": ["jasmine"],
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -17,7 +19,7 @@
     "noUnusedParameters": true,
     "strictFunctionTypes": true,
     "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "sourceMap": true,
     "inlineSourceMap": false,
     "importHelpers": true,
@@ -25,30 +27,10 @@
     "baseUrl": "./",
     "rootDir": "./",
     "paths": {
+      "@clr/core/test/*": ["./test/*"],
       "@clr/core/*": ["./*"]
     }
   },
-  "exclude": ["**/test/*.ts", "test.ts", "**/*.spec.ts", "dist", "node_modules"],
-  "references": [{ "path": "./common" }],
-  "typedocOptions": {
-    "out": "./src/dev-core/src/api",
-    "readme": "none",
-    "includes": ["/src/clr-core/**/*.ts"],
-    "exclude": [
-      "**/node_modules/**",
-      "**/*.e2e-spec.*",
-      "**/*.po.*",
-      "**/*.spec.*",
-      "**/*.css.ts",
-      "**/*.d.*",
-      "**/*.styles.*",
-      "**/test/*.ts",
-      "**/index.ts"
-    ],
-    "includeDeclarations": false,
-    "excludeExternals": true,
-    "excludeNotExported": true,
-    "excludePrivate": true,
-    "excludeProtected": true
-  }
+  "exclude": ["test.ts", "dist", "node_modules"],
+  "references": [{ "path": "./common/entrypoint.tsconfig.json" }]
 }

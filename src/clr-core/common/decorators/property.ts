@@ -35,7 +35,14 @@ export function getDefaultOptions(
     case Object:
       return { reflect: false, ...options };
     case String:
-      return { reflect: true, attribute: camelCaseToKebabCase(propertyKey), ...options };
+      return {
+        reflect: true,
+        attribute: camelCaseToKebabCase(propertyKey),
+        converter: {
+          toAttribute: (value: string) => (!!value ? value : null),
+        },
+        ...options,
+      };
     case Number:
       return { reflect: true, attribute: camelCaseToKebabCase(propertyKey), ...options };
     case Boolean:

@@ -7,8 +7,6 @@
 // SIZES
 export type BasicTShirtSizes = 'sm' | 'md' | 'lg' | 'xl';
 
-export type DefaultSizes = 'default' | 'sm';
-
 type ExtraTShirtSizes = 'xs' | 'xxl';
 
 export type TShirtSizes = BasicTShirtSizes | ExtraTShirtSizes;

@@ -6,14 +6,14 @@
 @import './../../clr-angular/progress/spinner/spinner.clarity';
 
 :host {
-  --box-shadow-color: #{$clr-color-action-500};
+  --box-shadow-color: var(--clr-color-action-500, #{$clr-color-action-500});
   --border-radius: #{$clr_baselineRem_3px};
   --border-width: #{$clr_baselineRem_1px};
   --font-size: #{$clr_baselineRem_0_5};
   --font-weight: #{$clr-font-weight-semibold};
-  --border-color: #{$clr-color-action-600};
-  --color: #{$clr-color-neutral-0};
-  --background: #{$clr-color-action-600};
+  --border-color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --background: var(--clr-color-action-600, #{$clr-color-action-600});
   --line-height: 1.7rem;
   --letter-spacing: 0.12em;
   background: var(--background);
@@ -43,7 +43,7 @@
 }
 
 :host(:hover) {
-  --background: #{$clr-color-action-800};
+  --background: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
 :host(:active) {
@@ -74,69 +74,69 @@
 
 :host([action='outline']) {
   --background: transparent;
-  --color: #{$clr-color-action-600};
+  --color: var(--clr-color-action-600, #{$clr-color-action-600});
 }
 
 :host([action='outline']:hover) {
-  --background: #{$clr-color-action-50};
+  --background: var(clr-color-action-50, #{$clr-color-action-50});
 }
 
 :host([status='success']) {
-  --box-shadow-color: #{$clr-color-success-900};
-  --border-color: #{$clr-color-success-700};
-  --background: #{$clr-color-success-700};
+  --box-shadow-color: var(clr-color-success-900, #{$clr-color-success-900});
+  --border-color: var(--clr-color-success-700, #{$clr-color-success-700});
+  --background: var(--clr-color-success-700, #{$clr-color-success-700});
 }
 
 :host([status='success']:hover) {
-  --background: #{$clr-color-success-800};
+  --background: var(--clr-color-success-800, #{$clr-color-success-800});
 }
 
 :host([status='success'][action='outline']) {
   --background: transparent;
-  --color: #{$clr-color-success-700};
+  --color: var(--clr-color-success-700, #{$clr-color-success-700});
 }
 
 :host([status='success'][action='outline']:hover) {
-  --background: #{$clr-color-success-50};
+  --background: var(--clr-color-success-50, #{$clr-color-success-50});
 }
 
 :host([status='danger']) {
-  --box-shadow-color: #{$clr-color-danger-900};
-  --border-color: #{$clr-color-danger-700};
-  --background: #{$clr-color-danger-700};
+  --box-shadow-color: var(--clr-color-danger-900, #{$clr-color-danger-900});
+  --border-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --background: var(--clr-color-danger-700, #{$clr-color-danger-700});
 }
 
 :host([status='danger']:hover) {
-  --background: #{$clr-color-danger-800};
+  --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
 }
 
 :host([status='danger'][action='outline']) {
   --background: transparent;
-  --color: #{$clr-color-danger-700};
+  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
 }
 
 :host([status='danger'][action='outline']:hover) {
-  --background: #{$clr-color-danger-50};
+  --background: var(--clr-color-danger-50, #{$clr-color-danger-50});
 }
 
 :host([status='inverse']) {
-  --box-shadow-color: rgba($clr-color-neutral-1000, 0.25);
-  --border-color: #{$clr-color-neutral-0};
+  --box-shadow-color: rgba(var(--clr-color-neutral-1000, $clr-color-neutral-1000), 0.25);
+  --border-color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
   --background: transparent;
-  --color: #{$clr-color-neutral-0};
+  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
 }
 
 :host([action='flat']) {
   --background: transparent;
   --border-color: transparent;
-  --color: #{$clr-color-action-600};
+  --color: var(--clr-color-action-600, #{$clr-color-action-600});
   margin-right: 0;
   box-shadow: none;
 }
 
 :host([action='flat']:hover) {
   --background: transparent;
-  --color: #{$clr-color-action-800};
+  --color: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
 :host([size='sm']) {
@@ -162,9 +162,9 @@
 }
 
 :host([disabled]) {
-  --color: #{$clr-color-neutral-700};
+  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
   --background: hsl(0, 0%, 80%);
-  --border-color: #{$clr-color-neutral-700};
+  --border-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
   opacity: 0.4;
   box-shadow: none;
   pointer-events: none;
@@ -177,8 +177,8 @@
 
 :host([status='inverse'][disabled]) {
   --background: transparent;
-  --color: #{$clr-color-neutral-0};
-  --border-color: #{$clr-color-neutral-0};
+  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --border-color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
 }
 
 .spinner {

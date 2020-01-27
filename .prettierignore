@@ -8,6 +8,5 @@ golden/
 src/website/src/releases/final-template/auto-generated-routes.ts
 src/website/src/sitemap.xml
 src/clr-core/**/*.css.ts
-src/dev-core/api/
 src/clr-angular/utils/_mixins.clarity.scss
 docs/core

@@ -47,7 +47,7 @@ describe('dropdown test element', () => {
   it('should emit a custom event when opened or closed', async () => {
     let value: any;
     await componentIsStable(component);
-    component.addEventListener('openChange', (event: CustomEvent) => (value = event.detail));
+    component.addEventListener<any>('openChange', (event: CustomEvent) => (value = event.detail));
 
     component.open = true;
     await componentIsStable(component);

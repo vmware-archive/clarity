@@ -202,7 +202,7 @@ describe('icon element', () => {
   describe('status: ', () => {
     it('should default to empty string', async () => {
       await componentIsStable(component);
-      expect(component.getAttribute('status')).toEqual('');
+      expect(component.getAttribute('status')).toEqual(null);
     });
     it('should update if assigned a new value', async () => {
       await componentIsStable(component);
@@ -265,6 +265,8 @@ describe('icon element', () => {
         .map((val, index, arry) => {
           if (index !== 0 && index < arry.length - 1) {
             return val;
+          } else {
+            return void 0;
           }
         })
         .join('<');

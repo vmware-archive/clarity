@@ -1,0 +1,65 @@
+/* Temporary Clarity typography for demos until core global styles are complete */
+body {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.doc {
+  color: hsl(0, 0%, 40%);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: normal;
+  line-height: 1.2rem;
+}
+
+h1,
+h2 {
+  color: hsl(0, 0%, 40%);
+  font-weight: 200;
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+p {
+  color: hsl(0, 0%, 40%);
+  font-size: 0.7rem;
+}
+
+/* Doc styles for getting started */
+.doc {
+  padding: 1.1rem;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 45rem;
+}
+
+.doc pre {
+  background: hsl(214, 100%, 99%);
+  padding: 1rem;
+  border: 0;
+}
+
+.doc code {
+  background: hsl(214, 100%, 99%);
+}
+
+.doc li {
+  list-style: none;
+  margin-bottom: 3rem;
+}
+
+.docblock-propstable-body td {
+  min-width: 240px;
+}
+
+.docblock-propstable-body li {
+  list-style-position: outside;
+}
+
+.demo-inverse {
+  padding: 0.2rem;
+  display: inline-block;
+  background: hsl(0, 0%, 34%);
+}

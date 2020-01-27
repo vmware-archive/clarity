@@ -2,8 +2,6 @@
 
 # core related files
 *.element.css.ts
-src/dev-core/api
-
 
 # compiled output
 /dist

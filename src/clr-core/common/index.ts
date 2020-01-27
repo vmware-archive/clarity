@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-/** @internal */
+/** @internal common is internal private module to Clarity Core */
 export * from './base/button.base';
 export * from './css-vars/css-vars';
 export * from './utils/dom';

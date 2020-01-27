@@ -506,10 +506,6 @@ $clr-btn-link-checked-color: $clr-color-action-800 !default;
     @return $clr-btn-link-hover-color;
   }
 
-  // @if $property == box-shadow-color {
-  //     @return $clr-btn-link-box-shadow-color;
-  // }
-
   @if $property == disabled-color {
     @return $clr-btn-link-disabled-color;
   }

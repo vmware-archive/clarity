@@ -21,3 +21,11 @@ $clr-use-custom-properties: true;
 *:after {
   box-sizing: border-box;
 }
+
+:host {
+  font-family: inherit;
+}
+
+slot {
+  font-family: inherit;
+}

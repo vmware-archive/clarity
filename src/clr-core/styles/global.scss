@@ -1,16 +1,8 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// Core ships a minimal global style for non component styles such as layout and typography
-
-$clr-font: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !default;
-$clr-use-custom-properties: true;
-
+// Core ships a minimal global styles to set CSS reset and base font size
 @import './../../../node_modules/normalize.css/normalize';
-@import './mixins/mixins';
-@import './variables/variables';
-@import './variables/properties';
 @import './typography/typography';
 @import './layout/layout';
-@import './utils/a11y';

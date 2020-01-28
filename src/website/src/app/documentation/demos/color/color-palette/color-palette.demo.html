@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -17,14 +17,15 @@
                 <div class="card-swatch-content">
                     <div class="weight">
                         <div *ngIf="color.baseColor" class="bullet">&#8226;</div>
-                        <span>{{color.weight == null ? 'n/a' : color.weight}}</span>
+                        <div *ngIf="!color.baseColor" class="bullet">&nbsp;</div>
+                        <span>{{color.weight}}</span>
                     </div>
                     <div class="copied">
                         <span aria-hidden="true" class="copied-indication">Copied!</span>
                         <clr-icon shape="copy"></clr-icon>
                     </div>
                     <div class="rgb-value">
-                        {{color.weight == null ? '' : color.hsl}}
+                        {{color.hsl}}
                     </div>
                 </div>
             </li>

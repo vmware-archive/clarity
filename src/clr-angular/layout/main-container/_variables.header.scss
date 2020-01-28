@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -26,7 +26,8 @@ $clr-header-2-bg-color: hsl(
   35%
 ) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
 $clr-header-3-bg-color: $clr-color-secondary-action-1000 !default;
-$clr-header-4-bg-color: $clr-color-action-700 !default;
+// Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-4-bg-color: hsl(202, 66%, 41%) !default;
 $clr-header-5-bg-color: $clr-color-action-800 !default;
 $clr-header-6-bg-color: $clr-color-action-1000 !default;
 $clr-header-7-bg-color: hsl(

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -10,7 +10,7 @@ $clr-stack-view-bg-color: $clr-color-neutral-50 !default;
 $clr-stack-view-stack-block-border-bottom: $clr-color-neutral-300 !default;
 //border-bottom for stack-view rows (not last)
 $clr-stack-view-border-box-color: $clr-color-neutral-300 !default;
-$clr-stack-block-changed-border-top-color: $clr-color-action-700 !default;
+$clr-stack-block-changed-border-top-color: $clr-color-action-600 !default;
 $clr-stack-view-stack-block-label-and-content-bg-color: $clr-color-neutral-50 !default;
 // stkvw row bg color when not expanded
 $clr-stack-view-stack-children-stack-block-border-bottom-color: $clr-color-neutral-200 !default;

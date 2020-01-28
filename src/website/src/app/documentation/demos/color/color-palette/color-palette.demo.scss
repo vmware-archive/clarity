@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -16,7 +16,7 @@ li.card-swatch {
   color: $clr-color-neutral-1000;
   margin: 0;
   padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
-  font-size: $clr_baselineRem_0_667;
+  font-size: $clr_baselineRem_0_625;
   list-style: none;
   &.upsize {
     padding-bottom: $clr_baselineRem_2;
@@ -34,6 +34,7 @@ li.card-swatch {
       color: currentColor;
       padding: 0;
       font-size: 1.2em;
+      width: $clr_baselineRem_0_5;
     }
     .hex-contrast {
       color: black;
@@ -45,7 +46,7 @@ li.card-swatch {
     .copied {
       display: flex;
       align-items: center;
-      font-size: 0.5rem;
+      font-size: $clr_baselineRem_0_5;
       clr-icon {
         margin: 0;
         opacity: 0;
@@ -85,6 +86,7 @@ li.card-swatch {
 }
 
 .card-swatch-block {
+  margin-top: $clr_baselineRem_0_3;
   padding: 0;
   box-shadow: none;
   border: none;

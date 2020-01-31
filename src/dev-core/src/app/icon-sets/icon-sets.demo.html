@@ -115,8 +115,7 @@
             [shape]="iconName"
             [inverse]="isInverse"
             [solid]="isSolid"
-            [alert]="isAlerted"
-            [badge]="isBadged"></cwc-icon>
+            [badge]="isBadged ? true : (isAlerted ? 'warning-triangle' : null)"></cwc-icon>
           <p class="dc-icon-name">{{iconName}}</p>
       </div>
   </div>

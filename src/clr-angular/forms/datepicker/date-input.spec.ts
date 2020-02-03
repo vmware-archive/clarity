@@ -657,6 +657,18 @@ export default function() {
         dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
       });
 
+      it('when disabled is true there must be attribute attach to the input', () => {
+        fixture.componentInstance.disabled = true;
+        fixture.detectChanges();
+        const datePicker = fixture.nativeElement.querySelector('input');
+        expect(datePicker.getAttribute('disabled')).not.toBeNull();
+
+        // make sure that it won't stay and trick the styles
+        fixture.componentInstance.disabled = false;
+        fixture.detectChanges();
+        expect(datePicker.getAttribute('disabled')).toBeNull();
+      });
+
       it('supports a clrDate Input', () => {
         const date: Date = new Date();
 

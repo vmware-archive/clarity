@@ -30,12 +30,19 @@
 </div>
 
 <h6>No ClrForm</h6>
+
+<h6>Controll Disabled & Enabled</h6>
 <clr-date-container>
     <label>Disabled Date Picker</label>
     <input type="date" [(clrDate)]="date" [disabled]="disabled" />
 </clr-date-container>
 
-<h6>Controll Disabled & Enabled</h6>
 <div>
     <button class="btn" (click)="disabled = !disabled">Toggle Disabled</button>
 </div>
+
+<h6>Disabled and will stay that way</h6>
+<clr-date-container>
+    <label>Disabled Date Picker</label>
+    <input type="date" [(clrDate)]="date" disabled />
+</clr-date-container>

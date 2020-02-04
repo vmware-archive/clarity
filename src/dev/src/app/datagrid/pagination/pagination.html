@@ -81,9 +81,15 @@
   </clr-dg-row>
 
   <clr-dg-footer>
-    <clr-dg-pagination #pagination [clrDgPageSize]="5" (clrDgPageChange)="pageChange($event)">
+    <clr-dg-pagination
+      #pagination
+      [clrDgPageSize]="5"
+      [clrDgPageInputDisabled]="clrDgPageInputDisabled"
+      (clrDgPageChange)="pageChange($event)">
       <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+
+<button (click)="toggleCurrentPageInput()" class="btn">Toggle current page input</button>

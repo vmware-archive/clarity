@@ -17,6 +17,7 @@ import { User } from '../inventory/user';
 export class DatagridPaginationDemo {
   users: User[];
   expanded: false;
+  clrDgPageInputDisabled: boolean = false;
 
   constructor(inventory: Inventory) {
     inventory.size = 103;
@@ -26,5 +27,9 @@ export class DatagridPaginationDemo {
 
   pageChange($event) {
     console.log($event);
+  }
+
+  toggleCurrentPageInput() {
+    this.clrDgPageInputDisabled = !this.clrDgPageInputDisabled;
   }
 }

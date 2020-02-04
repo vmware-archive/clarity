@@ -450,6 +450,7 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     currentPage: number;
     currentPageInputRef: ElementRef;
     detailService: DetailService;
+    disableCurrentPageInput: boolean;
     readonly firstItem: number;
     readonly lastItem: number;
     lastPage: number;

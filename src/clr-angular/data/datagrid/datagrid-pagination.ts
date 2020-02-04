@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -49,7 +49,8 @@ import { DetailService } from './providers/detail.service';
         >
         <clr-icon shape="angle left"></clr-icon>
       </button>
-        <input 
+        <input
+          *ngIf="!disableCurrentPageInput; else readOnly"
           #currentPageInput 
           type="text" 
           class="pagination-current clr-input" 
@@ -59,6 +60,10 @@ import { DetailService } from './providers/detail.service';
           (blur)="updateCurrentPage($event)"
           [attr.aria-label]="commonStrings.keys.currentPage"
           />
+          <ng-template #readOnly>
+            <span>{{ page.current }}</span>
+          </ng-template>
+
           &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
       <button 
         type="button"
@@ -154,6 +159,8 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   public get pageSize(): number {
     return this.page.size;
   }
+
+  @Input('clrDgPageInputDisabled') public disableCurrentPageInput: boolean;
 
   @Input('clrDgPageSize')
   public set pageSize(size: number) {

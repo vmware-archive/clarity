@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -123,6 +123,18 @@ export default function(): void {
         context.clarityDirective.currentPage = 3;
         context.detectChanges();
         expect(context.testComponent.current).toBe(3);
+      });
+
+      it('disables the current page input', function() {
+        context.testComponent.disableCurrentPageInput = true;
+        context.detectChanges();
+        expect(context.clarityDirective.disableCurrentPageInput).toBe(true);
+      });
+
+      it('enables the current page input', function() {
+        context.testComponent.disableCurrentPageInput = false;
+        context.detectChanges();
+        expect(context.clarityDirective.disableCurrentPageInput).toBe(false);
       });
     });
 
@@ -318,6 +330,22 @@ export default function(): void {
 
         expect(invalidButton).toBeUndefined();
       });
+
+      it('disables current page input', () => {
+        context.clarityDirective.lastPage = 2;
+        context.testComponent.disableCurrentPageInput = true;
+        context.detectChanges();
+
+        expect(context.clarityDirective.currentPageInputRef).toBeUndefined();
+      });
+
+      it('enables current page input', () => {
+        context.clarityDirective.lastPage = 2;
+        context.testComponent.disableCurrentPageInput = false;
+        context.detectChanges();
+
+        expect(context.clarityDirective.currentPageInputRef).toBeDefined();
+      });
     });
 
     describe('Accessibility', function() {
@@ -364,7 +392,8 @@ export default function(): void {
                     [(clrDgPage)]="current"
                     [clrDgPageSize]="size"
                     [clrDgTotalItems]="total"
-                    [clrDgLastPage]="last">
+                    [clrDgLastPage]="last"
+                    [clrDgPageInputDisabled]="disableCurrentPageInput">
                 </clr-dg-pagination>`,
 })
 class FullTest {
@@ -374,4 +403,5 @@ class FullTest {
   size: number;
   total: number;
   last: number;
+  disableCurrentPageInput: boolean;
 }

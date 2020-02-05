@@ -657,7 +657,7 @@ export default function() {
         dateNavigationService = dateContainerDebugElement.injector.get(DateNavigationService);
       });
 
-      it('when disabled is true there must be attribute attach to the input', () => {
+      it('when disabled is true there must be attribute attached to the input', () => {
         fixture.componentInstance.disabled = true;
         fixture.detectChanges();
         const datePicker = fixture.nativeElement.querySelector('input');

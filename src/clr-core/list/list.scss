@@ -1,0 +1,86 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+$list-indent: $cds-token-layout-space-md;
+$list-default-ordered-type: decimal;
+$list-default-unordered-type: disc;
+
+@mixin renderListStyles($type: ul, $styles: null) {
+  $ul-default: disc;
+  $ol-default: decimal;
+
+  @if $styles != null {
+    @each $style in $styles {
+      #{$type}[cds-list='#{$style}'] {
+        list-style-type: $style;
+      }
+    }
+  }
+}
+
+%kill-list-styles {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  // zero-width blank space added to help VoiceOver screen reader read a list-style-type none list
+  list-style: '\200B' !important;
+  list-style-position: inside !important;
+}
+
+ol[cds-list] {
+  list-style-type: $list-default-ordered-type;
+  list-style-position: outside;
+  padding-left: $list-indent;
+}
+
+ul[cds-list]:not([cds-list='unstyled']) {
+  list-style-type: $list-default-unordered-type;
+  list-style-position: outside;
+  padding-left: $list-indent;
+}
+
+@include renderListStyles(ul, disc circle square);
+
+@include renderListStyles(
+  ol,
+  decimal decimal-leading-zero lower-alpha lower-latin lower-roman upper-alpha upper-latin upper-roman
+);
+
+ul[cds-list='unstyled'] {
+  @extend %kill-list-styles;
+
+  & > li {
+    & > ul:not[cds-list='unstyled'],
+    ol {
+      margin-left: 0;
+      padding-left: $list-indent;
+    }
+
+    & > ul[cds-list='unstyled'] {
+      margin-left: 0;
+      padding-left: $list-indent !important;
+    }
+  }
+}
+
+ul:not([cds-list='unstyled']),
+ol[cds-list] {
+  & > li > ul[cds-list='unstyled'] {
+    margin-left: 0;
+    padding-left: $list-indent !important;
+  }
+}
+
+ol[cds-list] > li > ol[cds-list] {
+  margin-left: 0;
+  padding-left: $list-indent;
+}
+
+ul[cds-layout~='horizontal'],
+ol[cds-layout~='horizontal'] {
+  li {
+    list-style-position: inside;
+  }
+}

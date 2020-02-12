@@ -1,80 +1,9 @@
-/* Temporary Clarity typography for demos until core global styles are complete */
-body {
-  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
-}
-
-.doc {
-  color: hsl(0, 0%, 40%);
-  font-weight: 400;
-  font-size: 0.7rem;
-  letter-spacing: normal;
-  line-height: 1.2rem;
-}
-
-h1,
-h2 {
-  color: hsl(0, 0%, 40%);
-  font-weight: 200;
-  font-size: 1.6rem;
-}
-
-h2 {
-  font-size: 1.4rem;
-}
-
-h1 span {
-  font-size: 1.4rem;
-}
-
-p {
-  color: hsl(0, 0%, 40%);
-  font-size: 0.7rem;
-}
-
-/* Doc styles for getting started */
-.doc {
-  padding: 1.1rem;
-  margin: 0 auto;
-  text-align: left;
-  max-width: 40rem;
-}
-
-.doc pre {
-  background: hsl(214, 100%, 99%);
-  padding: 1rem;
-  border: 0;
-  overflow-x: auto;
-}
-
-.doc code {
-  background: hsl(214, 100%, 99%);
-}
-
-.doc ul,
-.doc ol {
-  padding: 0;
-}
-
-.doc li {
-  list-style: none;
-  margin-bottom: 3rem;
-}
-
-.doc li li {
-  list-style: disc;
-  margin-bottom: 0.5rem;
-  margin-left: 2rem;
-}
-
-.doc .link-list {
-  padding-left: 1rem;
-}
-
-.doc .link-list li {
-  padding-left: 1rem;
-  list-style: disc;
-  margin-bottom: 0.5rem;
-}
+@import './../../../../dist/clr-core/styles/module.reset.css';
+@import './../../../../dist/clr-core/styles/module.tokens.css';
+@import './../../../../dist/clr-core/styles/module.layout.css';
+@import './../../../../dist/clr-core/styles/module.typography.css';
+@import './../../../../dist/clr-core/list/list.css';
+@import '~@clr/city/css/bundles/default.min.css';
 
 .docblock-propstable-body td {
   min-width: 240px;
@@ -84,8 +13,162 @@ p {
   list-style-position: outside;
 }
 
-.demo-inverse {
-  padding: 0.2rem;
+/* Demo Components */
+cds-demo[layout],
+.layout-demo {
+  background: hsl(91, 56%, 78%);
+  overflow: hidden;
   display: inline-block;
-  background: hsl(0, 0%, 34%);
+}
+
+cds-demo[layout][tall] > [cds-layout],
+.layout-demo.tall-demo > cds-layout {
+  min-height: 300px;
+}
+
+cds-demo[layout][wide],
+.layout-demo.wide-demo {
+  width: 100%;
+  display: block;
+}
+
+cds-demo[placeholder],
+cds-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(198, 14%, 92%);
+  min-width: 50px;
+  min-height: 50px;
+}
+
+cds-demo[inverse] {
+  background: var(--cds-token-color-neutral-800);
+}
+
+cds-demo[inline-block] {
+  display: inline-block;
+}
+
+cds-demo[spacing-padding] cds-placeholder {
+  padding: 0;
+}
+
+cds-demo[spacing-padding] > [cds-layout] {
+  background: hsl(92, 46%, 74%);
+}
+
+cds-demo[spacing-margin] > div {
+  background: hsl(31, 87%, 79%);
+}
+
+cds-card {
+  background: hsl(0, 0%, 100%);
+  padding: 1rem;
+  border: 1px solid hsl(0, 0%, 87%);
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+}
+
+.space-demo {
+  height: 20px;
+  display: inline-block;
+  background: #2d2d2d;
+}
+
+.sbdocs.sbdocs-wrapper {
+  padding-top: 30px !important;
+}
+
+.sbdocs-title,
+.sbdocs-h1,
+.sbdocs-h2,
+.sbdocs-h3 {
+  font-weight: 300 !important;
+  margin-bottom: 24px !important;
+  margin: 0 0 24px 0 !important;
+}
+
+.sbdocs-img,
+.sbdocs-p,
+.sbdocs-ol,
+.sbdocs-ul {
+  margin: 0 0 24px 0 !important;
+}
+
+.demo-layout {
+  margin: -1rem;
+}
+
+.sbdocs .demo-layout {
+  box-shadow: 0.05rem 0.1rem 0.3rem 0.3rem hsl(198, 0%, 80%);
+  margin: 0;
+}
+
+.demo-app-layout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.demo-header {
+  background: var(--cds-token-color-action-1000);
+  color: var(--cds-token-color-neutral-0);
+}
+
+.demo-content {
+  background: var(--cds-token-color-neutral-200);
+}
+
+.demo-footer {
+  background: var(--cds-token-color-neutral-0);
+  color: var(--cds-token-color-neutral-700);
+  box-shadow: 0 0.05rem 0 hsl(198, 0%, 70%) inset;
+}
+
+.demo-sidenav {
+  background: var(--cds-token-color-neutral-200);
+  box-shadow: -0.05rem 0 0 rgba(0, 0, 0, 0.2) inset;
+  width: 25%;
+}
+
+.demo-sidebar {
+  background: var(--cds-token-color-neutral-100);
+  width: 25%;
+}
+
+.demo-subnav {
+  background: var(--cds-token-color-neutral-0);
+  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
+}
+
+.demo-alt-navicon {
+  opacity: 0.6;
+}
+
+.demo-scrollable-content {
+  overflow-y: auto;
+  justify-content: start;
+  align-items: start;
+  padding: 12px;
+  height: 100%;
+}
+
+.demo-alt-header,
+.demo-alt-header-2 {
+  width: 60px !important;
+}
+
+.demo-alt-header-2 {
+  background: var(--cds-token-color-neutral-900);
+}
+
+.demo-alt-content {
+  background: var(--cds-token-color-neutral-0);
+}
+
+.demo-alt-content-header {
+  background: var(--cds-token-color-neutral-0);
+  color: var(--cds-token-color-neutral-700);
+  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
 }

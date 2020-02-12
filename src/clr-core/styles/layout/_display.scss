@@ -1,0 +1,67 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin display($breakpoint) {
+  [cds-layout~='display\@#{$breakpoint}:none'] {
+    display: none !important;
+  }
+
+  [cds-layout~='display\@#{$breakpoint}:flex'] {
+    display: flex !important;
+  }
+
+  [cds-layout~='display\@#{$breakpoint}:block'] {
+    display: block !important;
+  }
+
+  [cds-layout~='display\@#{$breakpoint}:inline'] {
+    display: inline !important;
+  }
+}
+
+[cds-layout~='display:none'] {
+  display: none !important;
+}
+
+[cds-layout~='display:flex'] {
+  display: flex !important;
+}
+
+[cds-layout~='display:block'] {
+  display: block !important;
+}
+
+[cds-layout~='display:inline'] {
+  display: inline !important;
+}
+
+[cds-layout~='display:screen-reader-only'] {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: $cds-token-layout-width-sm-static) {
+  @include display('sm');
+}
+
+@media (min-width: $cds-token-layout-width-md-static) {
+  @include display('md');
+}
+
+@media (min-width: $cds-token-layout-width-lg-static) {
+  @include display('lg');
+}
+
+@media (min-width: $cds-token-layout-width-xl-static) {
+  @include display('xl');
+}

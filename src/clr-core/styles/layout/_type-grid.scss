@@ -1,0 +1,168 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin generateGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [cds-layout~='grid'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
+      grid-gap: #{$sizeValue};
+    }
+  }
+}
+
+@mixin generateColumnsAndRows($breakpoint: null) {
+  @for $i from 1 through $cds-token-layout-grid-cols-static {
+    // implicit columns/rows
+    [cds-layout~='cols#{$breakpoint}:#{$i}'] > * {
+      grid-column: span $i / span $i;
+    }
+
+    [cds-layout~='rows#{$breakpoint}:#{$i}'] > * {
+      grid-row: span $i / span $i;
+    }
+  }
+}
+
+@mixin generateExplicitColumnAndRow($breakpoint: null) {
+  @for $i from 1 through $cds-token-layout-grid-cols-static {
+    // explicit column/row positions
+    [cds-layout~='col#{$breakpoint}:#{$i}'] {
+      grid-column: span $i / span $i !important;
+    }
+
+    [cds-layout~='row#{$breakpoint}:#{$i}'] {
+      grid-row: span $i / span $i !important;
+    }
+  }
+}
+
+@mixin position($breakpoint: null) {
+  // +1 for grid cols/rows which end at beginning of next item
+  @for $i from 1 through $cds-token-layout-grid-cols-static + 1 {
+    [cds-layout~='col#{$breakpoint}:start-#{$i}'] {
+      grid-column-start: $i !important;
+    }
+
+    [cds-layout~='col#{$breakpoint}:end-#{$i}'] {
+      grid-column-end: $i !important;
+    }
+
+    [cds-layout~='row#{$breakpoint}:start-#{$i}'] {
+      grid-row-start: $i !important;
+    }
+
+    [cds-layout~='row#{$breakpoint}:end-#{$i}'] {
+      grid-row-end: $i !important;
+    }
+  }
+}
+
+[cds-layout~='grid'] {
+  display: grid;
+  align-items: flex-start;
+  align-content: flex-start;
+  grid-template-columns: repeat($cds-token-layout-grid-cols, 1fr);
+  width: 100%;
+
+  &[cds-layout~='rows'] {
+    grid-template-rows: repeat(12, auto);
+  }
+
+  & > [cds-layout~='row'] {
+    align-self: stretch;
+  }
+
+  &[cds-layout~='cols:auto'] {
+    grid-auto-flow: column;
+    grid-template-columns: initial;
+  }
+
+  // alignments
+  &[cds-layout~='align-items:top'] {
+    align-items: start;
+    align-content: start;
+  }
+
+  &[cds-layout~='align-items:right'] {
+    justify-items: flex-end;
+  }
+
+  &[cds-layout~='align-items:bottom'] {
+    align-items: end;
+    align-content: end;
+  }
+
+  &[cds-layout~='align-items:left'] {
+    justify-items: flex-start;
+    align-content: flex-start;
+  }
+
+  &[cds-layout~='align-items:vertical-stretch'] {
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  &[cds-layout~='align-items:vertical-center'] {
+    align-items: center;
+    align-content: center;
+  }
+
+  &[cds-layout~='align-items:horizontal-stretch'] {
+    justify-items: stretch;
+    justify-content: stretch;
+  }
+
+  &[cds-layout~='align-items:horizontal-center'] {
+    justify-items: center;
+    justify-content: center;
+  }
+
+  &[cds-layout~='align-items:stretch'] {
+    align-items: stretch;
+    align-content: stretch;
+    justify-items: stretch;
+    justify-content: stretch;
+  }
+
+  &[cds-layout~='align-items:center'] {
+    align-items: center;
+    align-content: center;
+  }
+}
+
+[cds-layout*='cols\@'] > * {
+  grid-column: span $cds-token-layout-grid-cols;
+}
+
+[cds-layout*='col\@'] {
+  grid-column: span 12;
+}
+
+@include generateGaps();
+@include generateColumnsAndRows();
+@include generateExplicitColumnAndRow();
+@include position();
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateGaps($breakpoint);
+  }
+}
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateColumnsAndRows($breakpoint);
+  }
+}
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateExplicitColumnAndRow($breakpoint);
+  }
+}
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include position($breakpoint);
+  }
+}

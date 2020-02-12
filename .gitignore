@@ -2,6 +2,7 @@
 
 # core related files
 *.element.css.ts
+src/clr-core/styles/tokens/generated
 
 # compiled output
 /dist

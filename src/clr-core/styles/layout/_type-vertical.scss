@@ -1,0 +1,123 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin generateGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] > * {
+      margin-bottom: $sizeValue;
+    }
+  }
+}
+
+@include generateGaps();
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateGaps($breakpoint);
+  }
+}
+
+[cds-layout~='vertical'] {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  align-items: flex-start;
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  // Align Items
+  &[cds-layout~='align-items:top'] {
+    justify-content: flex-start;
+    justify-items: flex-start;
+  }
+
+  &[cds-layout~='align-items:bottom'] {
+    justify-content: flex-end;
+    justify-items: flex-end;
+  }
+
+  &[cds-layout~='align-items:left'] {
+    align-items: flex-start;
+  }
+
+  &[cds-layout~='align-items:right'] {
+    align-items: flex-end;
+  }
+
+  &[cds-layout~='align-items:vertical-center'] {
+    justify-content: center;
+    justify-items: center;
+  }
+
+  &[cds-layout~='align-items:vertical-stretch'] {
+    justify-content: stretch;
+    justify-items: stretch;
+  }
+
+  &[cds-layout~='align-items:horizontal-center'] {
+    align-items: center;
+  }
+
+  &[cds-layout~='align-items:horizontal-stretch'] {
+    align-items: stretch;
+  }
+
+  &[cds-layout~='align-items:center'] {
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  &[cds-layout~='align-items:stretch'] {
+    align-items: stretch;
+    justify-content: stretch;
+    justify-items: stretch;
+  }
+
+  &[cds-layout~='align-items:stretch'] > *,
+  &[cds-layout~='align-items:vertical-stretch'] > * {
+    flex-grow: 1;
+  }
+
+  // Align Single Item
+  [cds-layout~='align:stretch'] {
+    flex-grow: 1 !important;
+  }
+
+  [cds-layout~='align:shrink'] {
+    flex-shrink: 1 !important;
+    flex-grow: 0 !important;
+  }
+
+  [cds-layout~='align:center'],
+  [cds-layout~='align:horizontal-center'] {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  [cds-layout~='align:center'],
+  [cds-layout~='align:horizontal-center'] {
+    align-self: center;
+  }
+
+  [cds-layout~='align:top'] {
+    margin-bottom: auto;
+  }
+
+  [cds-layout~='align:bottom'] {
+    margin-top: auto;
+  }
+
+  [cds-layout~='align:right'] {
+    margin-left: auto;
+  }
+
+  [cds-layout~='align:left'] {
+    margin-right: auto;
+  }
+}

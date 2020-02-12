@@ -1,1 +1,21 @@
-@import './../../styles/utils/base.element';
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/utils';
+@import './../../styles/variables/variables';
+@import './../../styles/layout/layout';
+
+// Every Web Component will need to import a minimal amount of core CSS
+
+$clr-use-custom-properties: true;
+
+:host {
+  font-family: inherit;
+  contain: content; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
+}
+
+slot {
+  font-family: inherit;
+}

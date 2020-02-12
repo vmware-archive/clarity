@@ -1,0 +1,129 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin generateGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [cds-layout~='horizontal'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
+      margin: calc(-1 * #{$sizeValue}) 0 0 calc(-1 * #{$sizeValue});
+      width: calc(100% + #{$sizeValue});
+
+      & > * {
+        margin: $sizeValue 0 0 $sizeValue;
+      }
+    }
+  }
+}
+
+@include generateGaps();
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateGaps($breakpoint);
+  }
+}
+
+[cds-layout~='horizontal'] {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  margin: 0;
+  min-height: 0;
+
+  &[cds-layout~='no-wrap'] {
+    flex-wrap: nowrap;
+  }
+
+  // Align Items
+  &[cds-layout~='align-items:top'] {
+    align-content: flex-start;
+  }
+
+  &[cds-layout~='align-items:bottom'] {
+    align-content: flex-end;
+  }
+
+  &[cds-layout~='align-items:vertical-center'] {
+    align-content: center;
+  }
+
+  &[cds-layout~='align-items:left'] {
+    justify-content: flex-start;
+  }
+
+  &[cds-layout~='align-items:horizontal-stretch'] {
+    justify-content: stretch;
+  }
+
+  &[cds-layout~='align-items:vertical-stretch'] {
+    align-content: stretch;
+  }
+
+  &[cds-layout~='align-items:right'] {
+    justify-content: flex-end;
+  }
+
+  &[cds-layout~='align-items:horizontal-center'] {
+    justify-content: center;
+  }
+
+  &[cds-layout~='align-items:center'] {
+    justify-content: center;
+    align-content: center;
+  }
+
+  &[cds-layout~='align-items:stretch'] {
+    justify-content: stretch;
+    align-content: stretch;
+  }
+
+  &[cds-layout~='align-items:stretch'] > *,
+  &[cds-layout~='align-items:horizontal-stretch'] > * {
+    flex-grow: 1;
+  }
+
+  &[cds-layout~='align-items:stretch'] > *,
+  &[cds-layout~='align-items:vertical-stretch'] {
+    align-content: stretch;
+  }
+
+  // Align Single Item
+  [cds-layout~='align:stretch'] {
+    flex-grow: 1 !important;
+  }
+
+  [cds-layout~='align:shrink'] {
+    flex-shrink: 1 !important;
+    flex-grow: 0 !important;
+  }
+
+  [cds-layout~='align:center'],
+  [cds-layout~='align:vertical-center'] {
+    align-self: center;
+  }
+
+  [cds-layout~='align:center'],
+  [cds-layout~='align:horizontal-center'] {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  [cds-layout~='align:top'] {
+    align-self: flex-start;
+  }
+
+  [cds-layout~='align:bottom'] {
+    align-self: flex-end;
+  }
+
+  [cds-layout~='align:right'] {
+    margin-left: auto;
+  }
+
+  [cds-layout~='align:left'] {
+    margin-right: auto;
+  }
+}

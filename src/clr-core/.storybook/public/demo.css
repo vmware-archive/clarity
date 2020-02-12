@@ -3,6 +3,12 @@ body {
   font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
 }
 
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
 .doc {
   color: hsl(0, 0%, 40%);
   font-weight: 400;
@@ -88,4 +94,33 @@ p {
   padding: 0.2rem;
   display: inline-block;
   background: hsl(0, 0%, 34%);
+}
+
+.cds-layout-demo {
+  border: 1px solid hsl(0, 0%, 90%);
+  padding: 12px;
+  width: 100%;
+}
+
+.cds-layout-demo > cds-layout {
+  min-height: 300px;
+}
+
+/* temp for layout prototyping */
+cds-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: hsl(0, 0%, 97%);
+  min-width: 2.6rem;
+}
+
+cds-card {
+  background: hsl(0, 0%, 100%);
+  padding: 1rem;
+  border: 1px solid hsl(0, 0%, 87%);
+  border-radius: 3px;
+  display: block;
+  width: 100%;
 }

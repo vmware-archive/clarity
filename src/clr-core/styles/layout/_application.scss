@@ -1,0 +1,78 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// experimental ideas of providing out of the box layout configurations
+cds-layout[type='application-1'] {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'nav subnav subnav'
+    'nav content content'
+    'nav footer footer';
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100vh;
+  background: hsl(0, 0%, 98%);
+
+  cds-header {
+    grid-area: header;
+  }
+
+  cds-sub-nav {
+    grid-area: subnav;
+  }
+
+  cds-side-nav {
+    grid-area: nav;
+  }
+
+  cds-content {
+    grid-area: content;
+    padding: var(--cds-token-size-sm);
+  }
+
+  cds-footer {
+    grid-area: footer;
+  }
+}
+
+cds-layout[type='content-1'] {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'subnav subnav'
+    'content content'
+    'footer footer';
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100vh;
+  width: 100%;
+  background: hsl(0, 0%, 98%);
+
+  cds-header {
+    grid-area: header;
+  }
+
+  cds-sub-nav {
+    grid-area: subnav;
+  }
+
+  cds-content {
+    grid-area: content;
+    max-width: 980px;
+    width: 100%;
+    margin: var(--cds-token-size-lg) auto;
+
+    // card styles
+    background: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 87%);
+    border-radius: 3px;
+    display: block;
+    padding: var(--cds-token-size-md);
+  }
+
+  cds-footer {
+    grid-area: footer;
+  }
+}

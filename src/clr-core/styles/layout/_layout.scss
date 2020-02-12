@@ -2,7 +2,15 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// For 3.0 do not ship global layout styles until evaluation of global styles API is complete
+@import './config';
+@import './mixins';
+@import './grid';
+@import './spacing';
+@import './display';
+@import './text';
+@import './visibility';
+@import './application';
+
 *,
 *:before,
 *:after {

@@ -2,9 +2,128 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import './../variables/variables';
+@import './../variables/variables.color';
+@import './../variables/variables.global';
+// TODO: with an explicit API that can be used internally and externally we no
+// longer need the $clr typography variables and can move the sass typography
+// vars back into clr-angular/clr-ui. This will encourage us to use the Typography
+// system with Core.
 
-// For 3.0 do not ship global typography styles until evaluation of global styles API is complete
 html {
   font-size: $clr-basefont-size;
+}
+
+[cds-body-text] {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_583;
+  letter-spacing: normal;
+  line-height: $clr_baselineRem_1;
+}
+
+[cds-divider] {
+  height: 1px;
+  box-shadow: var(--clr-color-neutral-300, #{$clr-color-neutral-300}) 0 0 0 1px inset;
+}
+
+/*
+ * cds-heading, style heading content
+ */
+[cds-heading],
+cds-text,
+[cds-text] {
+  display: block;
+  margin: 0;
+  letter-spacing: normal;
+  // TODO: need line height fix
+}
+
+[cds-heading] {
+  font-weight: 200;
+  color: var(--clr-color-neutral-1000, #{$clr-color-neutral-1000});
+}
+
+[cds-heading='1'] {
+  font-size: $clr_baselineRem_1_33;
+  line-height: $clr_baselineRem_2;
+}
+
+[cds-heading='2'] {
+  font-size: $clr_baselineRem_1_16;
+  line-height: $clr_baselineRem_2;
+}
+
+[cds-heading='3'] {
+  font-size: $clr_baselineRem_0_916;
+  line-height: $clr_baselineRem_1;
+}
+
+[cds-heading='4'] {
+  font-size: $clr_baselineRem_0_916;
+  line-height: $clr_baselineRem_1;
+}
+
+[cds-heading='5'] {
+  font-size: $clr_baselineRem_0_667;
+  letter-spacing: 0.01em; // not sure why clr-ui only h5 is adjusted
+}
+
+[cds-heading='6'] {
+  font-size: $clr_baselineRem_0_583;
+}
+
+/*
+ * cds-text, style text content
+ */
+[cds-text] {
+  color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  letter-spacing: normal;
+  line-height: $clr_baselineRem_1;
+}
+
+[cds-text='1'] {
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_5416;
+}
+
+[cds-text='2'] {
+  font-weight: 500;
+  font-size: $clr_baselineRem_0_5416;
+}
+
+[cds-text='3'] {
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_5416;
+}
+
+[cds-text='4'] {
+  font-weight: 600;
+  font-size: $clr_baselineRem_0_5;
+}
+
+[cds-text='5'] {
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_5;
+}
+
+[cds-text='6'] {
+  font-weight: 600;
+  font-size: $clr_baselineRem_0_458;
+  letter-spacing: 0.03em;
+  line-height: $clr_baselineRem_0_5;
+}
+
+[cds-text='7'] {
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_458;
+  letter-spacing: 0.03em;
+  line-height: $clr_baselineRem_0_5;
+}
+
+[cds-text='8'] {
+  font-weight: 400;
+  font-size: $clr_baselineRem_0_416;
+  letter-spacing: 0.03em;
+  line-height: $clr_baselineRem_0_5;
 }

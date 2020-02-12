@@ -5,4 +5,5 @@
 // Core ships a minimal global styles to set CSS reset and base font size
 @import './../../../node_modules/normalize.css/normalize';
 @import './typography/typography';
+@import './tokens/tokens';
 @import './layout/layout';

@@ -1,0 +1,17 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// wip: what should we support? To what extent?
+[cds-layout~='block'] {
+  display: block !important;
+}
+
+[cds-layout~='stretch'] {
+  flex-grow: 1 !important;
+}
+
+[cds-layout~='shrink'] {
+  flex-shrink: 1 !important;
+  flex-grow: 0 !important;
+}

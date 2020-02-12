@@ -1,0 +1,275 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+cds-layout {
+  width: 100%;
+  --gap: 0;
+  --x-align: flex-start;
+  --y-align: flex-start;
+
+  &[y-align~='top'] {
+    --y-align: flex-start;
+  }
+
+  &[y-align~='bottom'] {
+    --y-align: flex-end;
+  }
+
+  &[y-align~='center'] {
+    --y-align: center;
+  }
+
+  &[x-align~='left'] {
+    --x-align: flex-start;
+  }
+
+  &[x-align~='stretch'] {
+    --x-align: stretch;
+  }
+
+  &[y-align~='stretch'] {
+    --y-align: stretch;
+  }
+
+  &[x-align~='right'] {
+    --x-align: flex-end;
+  }
+
+  &[x-align~='center'] {
+    --x-align: center;
+  }
+
+  &[gap='xs'] {
+    --gap: var(--cds-token-size-xs);
+  }
+
+  &[gap='sm'] {
+    --gap: var(--cds-token-size-sm);
+  }
+
+  &[gap='md'] {
+    --gap: var(--cds-token-size-md);
+  }
+
+  &[gap='lg'] {
+    --gap: var(--cds-token-size-lg);
+  }
+
+  &[gap='xl'] {
+    --gap: var(--cds-token-size-xl);
+  }
+
+  &[debug] {
+    box-shadow: 0 0 0 2px red;
+
+    > * {
+      box-shadow: inset 0 0 0 2px blue;
+    }
+  }
+}
+
+cds-layout[type='horizontal'] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: var(--y-align);
+  justify-content: var(--x-align);
+  margin-left: calc(-1 * var(--gap));
+  margin-top: calc(-1 * var(--gap));
+
+  & > * {
+    margin-left: var(--gap);
+    margin-top: var(--gap);
+  }
+
+  &[x-align~='stretch'] > * {
+    flex-grow: 1;
+  }
+
+  &[y-align~='stretch'] {
+    align-content: stretch;
+  }
+
+  &[gap='xs'] {
+    --gap: var(--cds-token-size-xs);
+  }
+
+  &[gap='sm'] {
+    --gap: var(--cds-token-size-sm);
+  }
+
+  &[gap='md'] {
+    --gap: var(--cds-token-size-md);
+  }
+
+  &[gap='lg'] {
+    --gap: var(--cds-token-size-lg);
+  }
+
+  &[gap='xl'] {
+    --gap: var(--cds-token-size-xl);
+  }
+}
+
+cds-layout[type='vertical'] {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: var(--y-align);
+  justify-items: var(--y-align);
+  align-items: var(--x-align);
+
+  &[x-align~='stretch'] {
+    align-items: stretch;
+  }
+
+  &[y-align~='stretch'] > * {
+    flex-grow: 1;
+  }
+
+  &[gap='xs'] > * {
+    margin-bottom: var(--cds-token-size-xs);
+  }
+
+  &[gap='sm'] > * {
+    margin-bottom: var(--cds-token-size-sm);
+  }
+
+  &[gap='md'] > * {
+    margin-bottom: var(--cds-token-size-md);
+  }
+
+  &[gap='lg'] > * {
+    margin-bottom: var(--cds-token-size-lg);
+  }
+
+  &[gap='xl'] > * {
+    margin-bottom: var(--cds-token-size-xl);
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+cds-layout[type='grid'] {
+  display: grid;
+  grid-gap: var(--gap);
+  align-items: start;
+  grid-template-columns: repeat($cols, 1fr);
+
+  &[columns='auto'] {
+    grid-auto-flow: column;
+    grid-template-columns: initial;
+  }
+
+  &[y-align='stretch'] {
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  &[y-align='center'] {
+    align-items: center;
+    align-content: center;
+  }
+
+  &[y-align='bottom'] {
+    align-items: end;
+    align-content: end;
+  }
+}
+
+cds-layout[columns*='\@'] {
+  grid-template-columns: 12fr;
+  grid-column: span $cols;
+}
+
+[cds-layout*='row-span-'],
+[cds-layout*='row-end-'] {
+  align-self: stretch;
+}
+
+%full-width-columns-explicit {
+  grid-column: span $cols;
+}
+
+@for $i from 1 through $cols {
+  [cds-layout~='col-span-#{$i}\@sm'],
+  [cds-layout~='col-span-#{$i}\@md'],
+  [cds-layout~='col-span-#{$i}\@lg'],
+  [cds-layout~='col-span-#{$i}\@xl'] {
+    @extend %full-width-columns-explicit;
+  }
+}
+
+@for $i from 1 through $cols {
+  cds-layout[columns~='#{$i}'] {
+    grid-template-columns: repeat($i, 1fr);
+  }
+
+  cds-layout[rows~='#{$i}'] {
+    grid-template-rows: repeat($i, 1fr);
+  }
+}
+
+@for $i from 1 through $cols {
+  [cds-layout~='col-span-#{$i}'] {
+    grid-column: span $i / span $i;
+  }
+
+  [cds-layout~='row-span-#{$i}'] {
+    grid-row: span $i / span $i;
+  }
+}
+
+@media (min-width: $sm-break) {
+  @include column('sm');
+}
+
+@media (min-width: $md-break) {
+  @include column('md');
+}
+
+@media (min-width: $lg-break) {
+  @include column('lg');
+}
+
+@media (min-width: $xl-break) {
+  @include column('xl');
+}
+
+// start/end positions
+@for $i from 1 through $cols {
+  [cds-layout~='col-start-#{$i}'] {
+    grid-column-start: $i;
+  }
+
+  [cds-layout~='row-start-#{$i}'] {
+    grid-row-start: $i;
+  }
+
+  [cds-layout~='col-end-#{$i}'] {
+    grid-column-end: $i;
+  }
+
+  [cds-layout~='row-end-#{$i}'] {
+    grid-row-end: $i;
+  }
+}
+
+@media (min-width: $sm-break) {
+  @include position('sm');
+}
+
+@media (min-width: $md-break) {
+  @include position('md');
+}
+
+@media (min-width: $lg-break) {
+  @include position('lg');
+}
+
+@media (min-width: $xl-break) {
+  @include position('xl');
+}

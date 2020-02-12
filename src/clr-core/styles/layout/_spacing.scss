@@ -1,0 +1,52 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// wip: need specific sides and @ breakpoints
+cds-layout[padding='xs'],
+[cds-layout~='p-xs'] {
+  padding: var(--cds-token-size-xs) !important;
+}
+
+cds-layout[padding='sm'],
+[cds-layout~='p-sm'] {
+  padding: var(--cds-token-size-sm) !important;
+}
+
+cds-layout[padding='md'],
+[cds-layout~='p-md'] {
+  padding: var(--cds-token-size-md) !important;
+}
+
+cds-layout[padding='lg'],
+[cds-layout~='p-lg'] {
+  padding: var(--cds-token-size-lg) !important;
+}
+
+cds-layout[padding='xl'],
+[cds-layout~='p-xl'] {
+  padding: var(--cds-token-size-xl) !important;
+}
+
+// Likely remove, adding margin utils discourages the use
+// of the cds-layout component which helps make vertical alignment
+// consistent and introduces another way to control spacing in the layout system
+// [cds-layout~='m-xs'] {
+//   margin: var(--cds-token-size-xs) !important;
+// }
+
+// [cds-layout~='m-sm'] {
+//   margin: var(--cds-token-size-sm) !important;
+// }
+
+// [cds-layout~='m-md'] {
+//   margin: var(--cds-token-size-md) !important;
+// }
+
+// [cds-layout~='m-lg'] {
+//   margin: var(--cds-token-size-lg) !important;
+// }
+
+// [cds-layout~='m-xl'] {
+//   margin: var(--cds-token-size-xl) !important;
+// }

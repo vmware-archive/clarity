@@ -1,0 +1,55 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin column($breakpoint) {
+  @for $i from 1 through $cols {
+    // implicit columns/rows
+    cds-layout[columns~='#{$i}\@#{$breakpoint}'] {
+      grid-template-columns: repeat($i, 1fr);
+    }
+
+    cds-layout[rows~='#{$i}\@#{$breakpoint}'] {
+      grid-template-rows: repeat($i, 1fr);
+    }
+
+    // explicit column/row positions
+    [cds-layout~='col-span-#{$i}\@#{$breakpoint}'] {
+      grid-column: span $i / span $i;
+    }
+
+    [cds-layout~='row-span-#{$i}\@#{$breakpoint}'] {
+      grid-row: span $i / span $i;
+    }
+  }
+}
+
+@mixin position($breakpoint) {
+  @for $i from 1 through $cols {
+    [cds-layout~='col-start-#{$i}\@#{$breakpoint}'] {
+      grid-column-start: $i;
+    }
+
+    [cds-layout~='col-end-#{$i}\@#{$breakpoint}'] {
+      grid-column-end: $i;
+    }
+
+    [cds-layout~='row-start-#{$i}\@#{$breakpoint}'] {
+      grid-row-start: $i;
+    }
+
+    [cds-layout~='row-end-#{$i}\@#{$breakpoint}'] {
+      grid-row-end: $i;
+    }
+  }
+}
+
+@mixin visibility($breakpoint) {
+  [cds-layout~='hide\@#{$breakpoint}'] {
+    display: none !important;
+  }
+
+  [cds-layout~='show\@#{$breakpoint}'] {
+    display: initial !important;
+  }
+}

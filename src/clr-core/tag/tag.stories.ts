@@ -11,7 +11,7 @@ import { boolean, color as colorKnob, number, select, text } from '@storybook/ad
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components|Tag',
+  title: 'Components/Tag',
   component: 'cds-tag',
   parameters: {
     options: { showPanel: true },

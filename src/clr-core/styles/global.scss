@@ -3,6 +3,4 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // Core ships a minimal global styles to set CSS reset and base font size
-@import './../../../node_modules/normalize.css/normalize';
-@import './typography/typography';
-@import './layout/layout';
+@import './module.reset';

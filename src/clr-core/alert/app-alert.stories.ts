@@ -14,7 +14,7 @@ import { html } from 'lit-html';
 ClarityIcons.addIcons(userIcon);
 
 export default {
-  title: 'Components|App Alert',
+  title: 'Components/App Alert',
   component: 'cds-app-alert',
   parameters: {
     options: { showPanel: true },

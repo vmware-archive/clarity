@@ -1,0 +1,19 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+[cds-layout~='container:fill'] {
+  width: 100%;
+}
+
+[cds-layout~='container:center'] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@each $width, $width-value in $cds-layout-widths {
+  [cds-layout~='container:#{$width}'] {
+    width: 100%;
+    max-width: $width-value;
+  }
+}

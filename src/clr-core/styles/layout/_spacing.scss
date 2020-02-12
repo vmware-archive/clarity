@@ -1,0 +1,25 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// why are we doing these in groups?
+// so that more explicit side declarations can override more general axis declarations
+// it's more verbose but allows customization through greater specificity
+// <div cds-layout="p:sm p-t:lg p-b:none">...</div>
+
+// The micro syntax is primarily needed for performance.
+// To support all the sides as well as breakpoints we need
+// a compact syntax to prevent an excessive amount of generated CSS.
+// [type]-[side]@[breakpoint]:[size]
+
+@include spacers();
+@include axisSpacers();
+@include sideSpacers();
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include spacers($breakpoint);
+    @include axisSpacers($breakpoint);
+    @include sideSpacers($breakpoint);
+  }
+}

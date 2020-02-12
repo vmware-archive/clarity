@@ -7,10 +7,10 @@
 import { property, registerElementSafely } from '@clr/core/common';
 import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
-import { ClrCommonStrings, commonStringsDefault, CommonStringsService } from './';
+import { ClrCommonStrings, commonStringsDefault, CommonStringsService } from './../';
 
 export default {
-  title: 'Documentation|Utilities',
+  title: 'Experimental/Utilities',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true }, // disabled for scroll jump

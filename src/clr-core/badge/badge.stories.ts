@@ -10,7 +10,7 @@ import { color as colorKnob, number, select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components|Badge',
+  title: 'Components/Badge',
   component: 'cds-badge',
   parameters: {
     options: { showPanel: true },

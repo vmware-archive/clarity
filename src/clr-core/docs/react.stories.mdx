@@ -1,0 +1,34 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Documentation/React" />
+
+# Preact
+
+To use Clarity Core with Preact follow the package <a href="./?path=/docs/documentation-getting-started--page">installation instructions</a>.
+Once installed import the component into your JavaScript file.
+
+```typescript
+import '@clr/core/alert';
+```
+
+```jsx
+/*
+Example of a alert web component in Preact
+- status - attribute style hook
+- closable - setting the 'closable' property on the element
+- onCloseChange - listen for the 'closeChange' custom event
+*/
+
+<cds-alert status="info" closable={this.state.closable} onCloseChange={this.log}>
+  Hello World
+</cds-alert>
+```
+
+## React
+
+A shim layer <em>(a.k.a wrapper)</em> must be used for web components to work in
+React applications. This is due to React not being compatible with Web Standards
+such as <a href="https://custom-elements-everywhere.com">custom elements</a>.
+You can try out an <a href="https://stackblitz.com/edit/react-ts-drskpx">early
+work in progress prototype here</a>.

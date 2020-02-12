@@ -1,0 +1,20 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// This is a performance optimization that aliases the token to
+// a "minified" value to reduce overall bundle size.
+
+:root {
+  --cdlsxs: var(--cds-token-layout-space-xs);
+  --cdlssm: var(--cds-token-layout-space-sm);
+  --cdlsmd: var(--cds-token-layout-space-md);
+  --cdlslg: var(--cds-token-layout-space-lg);
+  --cdlsxl: var(--cds-token-layout-space-xl);
+}
+
+$cds-token-layout-space-xs: var(--cdlsxs, $cds-token-layout-space-xs-static);
+$cds-token-layout-space-sm: var(--cdlssm, $cds-token-layout-space-sm-static);
+$cds-token-layout-space-md: var(--cdlsmd, $cds-token-layout-space-md-static);
+$cds-token-layout-space-lg: var(--cdlslg, $cds-token-layout-space-lg-static);
+$cds-token-layout-space-xl: var(--cdlsxl, $cds-token-layout-space-xl-static);

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -182,5 +182,58 @@ $opp-directions: (
   _:-ms-fullscreen,
   :root {
     @content;
+  }
+}
+
+// line-height erasers
+
+@function getLineHeightGap($line-height-value: 1.2em, $line-height-token: null) {
+  @if ($line-height-token == null) or ($line-height-value < 1) {
+    @return 0;
+  }
+  @return calc((#{$line-height-token} - 1em) / 2);
+}
+
+@function pullUp($line-height-gap: 1.2em, $font-top-gap: 0.147em) {
+  @return calc((#{$font-top-gap} + #{$line-height-gap}) * -1);
+}
+
+@function pushDown(
+  $line-height-gap: 0.6em,
+  $font-top-gap: 0.147em,
+  $font-ascender-height: 0.17,
+  $font-x-height: 0.517
+) {
+  @return calc(((1em - #{$font-top-gap} - #{$font-ascender-height} - #{$font-x-height}) + #{$line-height-gap}) * -1);
+}
+
+// default are for metropolis/clarity-city
+@mixin line-height-eraser(
+  $line-height-gap-em: 0.6em,
+  $font-top-gap-em: 0.147em,
+  $font-ascender-height-em: 0.17em,
+  $font-x-height-em: 0.517em
+) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-bottom: pullUp($line-height-gap-em, $font-top-gap-em);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: pushDown($line-height-gap-em, $font-top-gap-em, $font-ascender-height-em, $font-x-height-em);
+  }
+}
+
+@mixin remove-line-height-erasers() {
+  &::before,
+  &::after {
+    content: none;
   }
 }

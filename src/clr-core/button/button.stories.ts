@@ -16,7 +16,7 @@ import { html } from 'lit-html';
 ClarityIcons.addIcons(userIcon);
 
 export default {
-  title: 'Components|Button',
+  title: 'Components/Button',
   component: 'cds-button',
   parameters: {
     options: { showPanel: true },
@@ -63,7 +63,7 @@ export const API = () => {
   const borderRadius = text('--border-radius', undefined, cssGroup);
 
   return html`
-    <div class=${buttonStatus === 'inverse' ? 'demo-inverse' : ''}>
+    <cds-demo ?inverse=${buttonStatus === 'inverse'} inline-block>
       <style>
         cds-button {
           ${setStyles({
@@ -84,7 +84,7 @@ export const API = () => {
         @click=${action('click')}>
         ${size === 'icon' ? html`<cds-icon></cds-icon>` : slot}
       </cds-button>
-    </div>
+        </cds-demo>
   `;
 };
 

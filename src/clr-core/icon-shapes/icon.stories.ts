@@ -56,7 +56,7 @@ loadTravelIconSet();
 ClarityIcons.addIcons(userIcon, imageIcon);
 
 export default {
-  title: 'Components|Icon',
+  title: 'Components/Icon',
   component: 'cds-icon',
   parameters: {
     options: { showPanel: true },
@@ -115,7 +115,7 @@ export const API = () => {
   const badgeColor = colorKnob('--badge-color', undefined, cssGroup);
 
   return html`
-    <div class=${inverse === true ? 'demo-inverse' : ''}>
+    <cds-demo ?inverse=${inverse} inline-block>
       <style>
         cds-icon {
           ${setStyles({
@@ -134,7 +134,7 @@ export const API = () => {
         .flip=${fl}
         @click=${action('click')}>
       </cds-icon>
-    </div>
+    </cds-demo>
   `;
 };
 
@@ -293,7 +293,9 @@ export const badges = () => {
     <div><cds-icon shape="user" size="lg" badge="inherit" inverse></cds-icon></div>
 
     <cds-icon shape="user" size="lg" badge="warning-triangle"></cds-icon>
-    <div class="demo-inverse"><cds-icon shape="user" size="lg" badge="inherit-triangle" inverse></cds-icon></div>
+    <cds-demo inverse inline-block>
+      <cds-icon shape="user" size="lg" badge="inherit-triangle" inverse></cds-icon>
+    </cds-demo>
   `;
 };
 
@@ -313,7 +315,7 @@ export const status = () => {
     <cds-icon shape="user" status="danger" size="lg" solid></cds-icon>
 
     <h2>Inverse</h2>
-    <span class="demo-inverse">
+    <cds-demo inverse inline-block>
       <cds-icon shape="user" inverse size="lg"></cds-icon>
       <cds-icon shape="user" inverse status="info" size="lg"></cds-icon>
       <cds-icon shape="user" inverse status="success" size="lg"></cds-icon>
@@ -325,7 +327,7 @@ export const status = () => {
       <cds-icon shape="user" inverse status="success" size="lg" solid></cds-icon>
       <cds-icon shape="user" inverse status="warning" size="lg" solid></cds-icon>
       <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>   
-    </span>
+    </cds-demo>
   `;
 };
 
@@ -420,7 +422,7 @@ registerElementSafely('clr-icon', LegacyIcon);
 
 export const legacy = () => {
   return html`
-    <section class="doc">
+    <section>
       <h1>Deprecated API (clr-icon)</h1>
       <p>To create a backwards compatible clr-icon import and register the cds-icon under a tag alias</p>
 

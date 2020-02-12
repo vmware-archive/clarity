@@ -7,5 +7,5 @@
     "noImplicitAny": false
   },
   "files": ["test.ts"],
-  "include": ["**/*.ts", "**/*.d.ts"]
+  "include": ["**/*.ts", "**/*.d.ts", "**/*.json"]
 }

@@ -141,7 +141,9 @@ export class ClrButton implements LoadingListener {
   @Output('click') _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   emitClick($event): void {
-    this.toggleService.toggleWithEvent($event);
+    if (this.inMenu) {
+      this.toggleService.toggleWithEvent($event);
+    }
     this._click.emit(true);
   }
 

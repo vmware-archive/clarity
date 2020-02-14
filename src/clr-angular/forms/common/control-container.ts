@@ -6,20 +6,20 @@
 
 import { Component } from '@angular/core';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
-import { NgControlService } from '../common/providers/ng-control.service';
-import { ControlIdService } from '../common/providers/control-id.service';
-import { ControlClassService } from '../common/providers/control-class.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
+import { IfErrorService } from './if-error/if-error.service';
+import { NgControlService } from './providers/ng-control.service';
+import { ControlIdService } from './providers/control-id.service';
+import { ControlClassService } from './providers/control-class.service';
 
 @Component({
-  selector: 'clr-input-container',
+  selector: 'clr-control-container',
   template: `
         <ng-content select="label"></ng-content>
         <label *ngIf="!label && addGrid()"></label>
         <div class="clr-control-container" [ngClass]="controlClass()">
             <div class="clr-input-wrapper">
-                <ng-content select="[clrInput]"></ng-content>
+                <ng-content></ng-content>
                 <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
             </div>
             <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
@@ -33,4 +33,4 @@ import { ClrAbstractContainer } from '../common/abstract-container';
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrInputContainer extends ClrAbstractContainer {}
+export class ClrControlContainer extends ClrAbstractContainer {}

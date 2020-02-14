@@ -142,6 +142,7 @@
     "@babel/runtime": "^7.4.5",
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",
+    "@ng-select/ng-select": "3.7.2",
     "@storybook/addon-a11y": "6.0.0-alpha.0",
     "@storybook/addon-actions": "6.0.0-alpha.0",
     "@storybook/addon-cssresources": "6.0.0-alpha.0",

@@ -4,17 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild, OnDestroy, Optional, Input, Renderer2 } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { NgControl } from '@angular/forms';
+import { Component, Input, Optional, Renderer2 } from '@angular/core';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { LayoutService } from '../common/providers/layout.service';
-import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ControlIdService } from '../common/providers/control-id.service';
-import { ClrLabel } from '../common/label';
 import { ControlClassService } from '../common/providers/control-class.service';
+import { ClrAbstractContainer } from '../common/abstract-container';
 
 @Component({
   selector: 'clr-range-container',
@@ -42,13 +39,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrRangeContainer implements DynamicWrapper, OnDestroy {
-  private subscriptions: Subscription[] = [];
-  invalid = false;
-  _dynamic = false;
-  @ContentChild(ClrLabel) label: ClrLabel;
-  control: NgControl;
-
+export class ClrRangeContainer extends ClrAbstractContainer {
   private _hasProgress: boolean = false;
 
   @Input('clrRangeHasProgress')
@@ -64,23 +55,14 @@ export class ClrRangeContainer implements DynamicWrapper, OnDestroy {
   }
 
   constructor(
-    private ifErrorService: IfErrorService,
-    @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService,
-    private ngControlService: NgControlService,
+    ifErrorService: IfErrorService,
+    @Optional() layoutService: LayoutService,
+    controlClassService: ControlClassService,
+    ngControlService: NgControlService,
     private renderer: Renderer2,
     private idService: ControlIdService
   ) {
-    this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => {
-        this.invalid = invalid;
-      })
-    );
-    this.subscriptions.push(
-      this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
-      })
-    );
+    super(ifErrorService, layoutService, controlClassService, ngControlService);
   }
 
   getRangeProgressFillWidth(): string {
@@ -99,17 +81,5 @@ export class ClrRangeContainer implements DynamicWrapper, OnDestroy {
     const valueAsPercent = (inputValue - inputMinValue) * 100 / (inputMaxValue - inputMinValue);
 
     return valueAsPercent * inputWidth / 100 + 'px';
-  }
-
-  controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
-  }
-
-  addGrid() {
-    return this.layoutService && !this.layoutService.isVertical();
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
   }
 }

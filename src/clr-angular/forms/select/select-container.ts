@@ -4,21 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild, OnDestroy, Optional } from '@angular/core';
-import { SelectMultipleControlValueAccessor, NgControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, ContentChild } from '@angular/core';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
-import { LayoutService } from '../common/providers/layout.service';
-import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ControlIdService } from '../common/providers/control-id.service';
-import { ClrLabel } from '../common/label';
 import { ControlClassService } from '../common/providers/control-class.service';
+import { ClrAbstractContainer } from '../common/abstract-container';
 
 @Component({
   selector: 'clr-select-container',
-  template: `    
+  template: `
         <ng-content select="label"></ng-content>
         <label *ngIf="!label && addGrid()"></label>
         <div class="clr-control-container" [ngClass]="controlClass()">
@@ -38,26 +35,12 @@ import { ControlClassService } from '../common/providers/control-class.service';
   },
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
-  private subscriptions: Subscription[] = [];
-  invalid = false;
-  _dynamic = false;
-  @ContentChild(ClrLabel) label: ClrLabel;
-  @ContentChild(SelectMultipleControlValueAccessor) multiple: SelectMultipleControlValueAccessor;
+export class ClrSelectContainer extends ClrAbstractContainer {
+  @ContentChild(SelectMultipleControlValueAccessor, { static: false })
+  multiple: SelectMultipleControlValueAccessor;
   private multi = false;
-  control: NgControl;
 
-  constructor(
-    private ifErrorService: IfErrorService,
-    @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService,
-    private ngControlService: NgControlService
-  ) {
-    this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => {
-        this.invalid = invalid;
-      })
-    );
+  ngOnInit() {
     this.subscriptions.push(
       this.ngControlService.controlChanges.subscribe(control => {
         if (control) {
@@ -70,17 +53,5 @@ export class ClrSelectContainer implements DynamicWrapper, OnDestroy {
 
   wrapperClass() {
     return this.multi ? 'clr-multiselect-wrapper' : 'clr-select-wrapper';
-  }
-
-  controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
-  }
-
-  addGrid() {
-    return this.layoutService && !this.layoutService.isVertical();
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
   }
 }

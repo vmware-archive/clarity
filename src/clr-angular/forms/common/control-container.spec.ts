@@ -6,19 +6,19 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { ClrInput } from './input';
-import { ClrInputContainer } from './input-container';
+import { ClrControlContainer } from './control-container';
+import { ClrControl } from './control';
 
-import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests/container.spec';
+import { ContainerNoLabelSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests/container.spec';
 
 @Component({
   template: `
-    <clr-input-container>
-        <input name="model" clrInput required [(ngModel)]="model" [disabled]="disabled" />
+    <clr-control-container>
+        <input name="model" clrControl required [(ngModel)]="model" [disabled]="disabled" />
         <label>Hello World</label>
         <clr-control-helper>Helper text</clr-control-helper>
         <clr-control-error>Must be at least 5 characters</clr-control-error>
-    </clr-input-container>
+    </clr-control-container>
     `,
 })
 class SimpleTest {
@@ -28,9 +28,9 @@ class SimpleTest {
 
 @Component({
   template: `
-  <clr-input-container>
-    <input clrInput name="model" [(ngModel)]="model" />
-  </clr-input-container>`,
+  <clr-control-container>
+    <input clrControl name="model" [(ngModel)]="model" />
+  </clr-control-container>`,
 })
 class NoLabelTest {
   model;
@@ -39,12 +39,12 @@ class NoLabelTest {
 @Component({
   template: `
   <form [formGroup]="form">
-    <clr-input-container>
-      <input clrInput formControlName="model" />
+    <clr-control-container>
+      <input clrControl formControlName="model" />
       <label>Hello World</label>
       <clr-control-helper>Helper text</clr-control-helper>
       <clr-control-error>Must be at least 5 characters</clr-control-error>
-    </clr-input-container>
+    </clr-control-container>
   </form>`,
 })
 class ReactiveTest {
@@ -55,9 +55,9 @@ class ReactiveTest {
 }
 
 export default function(): void {
-  describe('ClrInputContainer', () => {
-    ContainerNoLabelSpec(ClrInputContainer, ClrInput, NoLabelTest);
-    TemplateDrivenSpec(ClrInputContainer, ClrInput, SimpleTest, '.clr-input-wrapper [clrInput]');
-    ReactiveSpec(ClrInputContainer, ClrInput, ReactiveTest, '.clr-input-wrapper [clrInput]');
+  describe('ClrControlContainer', () => {
+    ContainerNoLabelSpec(ClrControlContainer, ClrControl, NoLabelTest);
+    TemplateDrivenSpec(ClrControlContainer, ClrControl, SimpleTest, '.clr-input-wrapper [clrControl]');
+    ReactiveSpec(ClrControlContainer, ClrControl, ReactiveTest, '.clr-input-wrapper [clrControl]');
   });
 }

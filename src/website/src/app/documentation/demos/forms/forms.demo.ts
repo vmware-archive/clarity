@@ -25,6 +25,8 @@ const NgOptional = require('raw-loader!./ng/optional.html');
 const NgReset = require('!raw-loader!./ng/reset.txt');
 const NgValidate = require('!raw-loader!./ng/validate.txt');
 const NgLabelSize = require('!raw-loader!./ng/label-size.html');
+const NgGenericTs = require('!raw-loader!./ng/generic.txt');
+const NgGenericHtml = require('!raw-loader!./ng/generic.html');
 
 @Component({
   selector: 'clr-forms-demo',
@@ -58,4 +60,6 @@ export class FormsDemo extends ClarityDocComponent {
   ngReset: any = NgReset;
   ngValidate: any = NgValidate;
   ngLabelSize: any = NgLabelSize;
+  ngGenericTs: any = NgGenericTs;
+  ngGenericHtml: any = NgGenericHtml;
 }

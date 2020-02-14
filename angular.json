@@ -36,7 +36,12 @@
                 "output": "/assets"
               }
             ],
-            "styles": ["src/clr-angular/main.scss", "src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
+            "styles": [
+              "src/clr-angular/main.scss",
+              "src/clr-icons/clr-icons.scss",
+              "src/dev/src/styles.scss",
+              "node_modules/@ng-select/ng-select/themes/default.theme.css"
+            ],
             "scripts": [
               "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
               "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"

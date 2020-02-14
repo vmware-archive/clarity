@@ -10,10 +10,10 @@ import { CodeHighlight } from './code-highlight';
   selector: 'clr-code-snippet',
   template: `
         <ng-container *ngIf="!disablePrism">
-            <pre><code [clr-code-highlight]="'language-'+language">{{code.trim()}}</code></pre>
+            <pre><code [clr-code-highlight]="'language-'+language">{{code.default.trim()}}</code></pre>
         </ng-container>
         <ng-container *ngIf="disablePrism">
-            <pre><code class="clr-code">{{code.trim()}}</code></pre>
+            <pre><code class="clr-code">{{code.default.trim()}}</code></pre>
         </ng-container>
     `,
   styles: [
@@ -28,7 +28,7 @@ import { CodeHighlight } from './code-highlight';
 export class CodeSnippet implements AfterViewInit {
   @ViewChild(CodeHighlight) codeHighlight: CodeHighlight;
 
-  @Input('clrCode') public code: string;
+  @Input('clrCode') public code: { default: string };
   @Input('clrLanguage') public language: string = 'html';
   @Input('clrDisablePrism') public disablePrism: boolean = false;
 

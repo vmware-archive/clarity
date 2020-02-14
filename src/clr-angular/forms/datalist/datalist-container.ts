@@ -4,18 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { LayoutService } from '../common/providers/layout.service';
-import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
-import { NgControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { ClrLabel } from '../common/label';
 import { DatalistIdService } from './providers/datalist-id.service';
+import { ClrAbstractContainer } from '../common/abstract-container';
 
 @Component({
   selector: 'clr-datalist-container',
@@ -49,38 +46,18 @@ import { DatalistIdService } from './providers/datalist-id.service';
     DatalistIdService,
   ],
 })
-export class ClrDatalistContainer implements DynamicWrapper {
-  private subscriptions: Subscription[] = [];
-  _dynamic: boolean = false;
-  invalid: boolean = false;
+export class ClrDatalistContainer extends ClrAbstractContainer {
   focus: boolean = false;
-  control: NgControl;
 
   constructor(
-    private controlClassService: ControlClassService,
-    private layoutService: LayoutService,
-    private ifErrorService: IfErrorService,
-    private focusService: FocusService,
-    private ngControlService: NgControlService
+    controlClassService: ControlClassService,
+    @Optional() layoutService: LayoutService,
+    ifErrorService: IfErrorService,
+    ngControlService: NgControlService,
+    private focusService: FocusService
   ) {
-    this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => (this.invalid = invalid)),
-      this.focusService.focusChange.subscribe(state => (this.focus = state)),
-      this.ngControlService.controlChanges.subscribe(control => (this.control = control))
-    );
-  }
+    super(ifErrorService, layoutService, controlClassService, ngControlService);
 
-  @ContentChild(ClrLabel) label: ClrLabel;
-
-  controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
-  }
-
-  addGrid() {
-    return this.layoutService && !this.layoutService.isVertical();
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
+    this.subscriptions.push(this.focusService.focusChange.subscribe(state => (this.focus = state)));
   }
 }

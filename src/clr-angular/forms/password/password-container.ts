@@ -4,19 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild, Inject, InjectionToken, Input, OnDestroy, Optional } from '@angular/core';
-import { NgControl } from '@angular/forms';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
+import { Component, Inject, InjectionToken, Input, Optional } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
-import { ClrLabel } from '../common/label';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
+import { ClrAbstractContainer } from '../common/abstract-container';
 
 export const TOGGLE_SERVICE = new InjectionToken<BehaviorSubject<boolean>>(undefined);
 export function ToggleServiceFactory() {
@@ -64,11 +62,7 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
     TOGGLE_SERVICE_PROVIDER,
   ],
 })
-export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
-  private subscriptions: Subscription[] = [];
-  invalid = false;
-  control: NgControl;
-  _dynamic = false;
+export class ClrPasswordContainer extends ClrAbstractContainer {
   show = false;
   focus = false;
   private _toggle = true;
@@ -83,30 +77,20 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
   get clrToggle() {
     return this._toggle;
   }
-  @ContentChild(ClrLabel) label: ClrLabel;
 
   constructor(
-    private ifErrorService: IfErrorService,
-    @Optional() private layoutService: LayoutService,
-    private controlClassService: ControlClassService,
+    ifErrorService: IfErrorService,
+    @Optional() layoutService: LayoutService,
+    controlClassService: ControlClassService,
+    ngControlService: NgControlService,
     public focusService: FocusService,
-    private ngControlService: NgControlService,
     @Inject(TOGGLE_SERVICE) private toggleService: BehaviorSubject<boolean>,
     public commonStrings: ClrCommonStringsService
   ) {
-    this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => {
-        this.invalid = invalid;
-      })
-    );
+    super(ifErrorService, layoutService, controlClassService, ngControlService);
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
-      })
-    );
-    this.subscriptions.push(
-      this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
       })
     );
   }
@@ -114,17 +98,5 @@ export class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
   toggle() {
     this.show = !this.show;
     this.toggleService.next(this.show);
-  }
-
-  controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
-  }
-
-  addGrid() {
-    return this.layoutService && !this.layoutService.isVertical();
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
   }
 }

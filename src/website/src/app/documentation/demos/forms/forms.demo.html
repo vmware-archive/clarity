@@ -1,7 +1,7 @@
 <clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
     <article>
         <h5 class="component-summary" id="a-form-is-a-structured-layout-of-related-input-components">
-            Forms are a grouping of input controls that allow a user to submit information to your application.    
+            Forms are a grouping of input controls that allow a user to submit information to your application.
         </h5>
 
         <div id="top">
@@ -245,9 +245,9 @@
             <clr-code-snippet [clrCode]="ngValidate" clrLanguage="typescript"></clr-code-snippet>
 
             <h4>Layout with grid</h4>
-            
+
             <p>You can use the <code class="clr-code">clrLabelSize</code> directive to configure the label width for an entire form. This is useful for <code class="clr-code">horizontal</code> and compact layouts, but doesn't apply when you are using <code class="clr-code">vertical</code> layout. It will accept a number between 1-12 to calculate the width according to our grid, and the controls will adopt the remaining size. For example if you pass <code class="clr-code">clrLabelSize="4"</code> it will size the controls to use 8 grid columns for a total of 12 columns.</p>
-            
+
             <clr-code-snippet [clrCode]="ngLabelSize"></clr-code-snippet>
 
             <h4>Overriding column widths</h4>
@@ -262,6 +262,28 @@
 
             <clr-code-snippet [clrCode]="ngReactiveTs" clrLanguage="typescript"></clr-code-snippet>
             <clr-code-snippet [clrCode]="ngReactiveHtml"></clr-code-snippet>
+
+
+            <h4>Custom and non-Clarity Controls</h4>
+            <p>Applications often have form controls that are not supported by Clarity directly. To make these controls work nicely with Clarity, you can wrap them in a generic control container. Regardless if you make your own form controls or import a third party control, the generic container should help make your controls more consistent. The only requirement is that the form control works with Angular forms (Reactive or Template-Driven).</p>
+            <p>The basic process is to wrap the form control in the <code class="clr-code">clr-control-container</code> component, and then apply the <code class="clr-code">clrControl</code> directive to the form control itself.</p>
+            <div class="alert alert-info">
+              <div class="alert-items">
+                <div class="alert-item static">
+                  <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                  </div>
+                  <span class="alert-text">
+                      It is likely that you'll have to write some CSS rules to make the custom controls fit and look correct within the generic control container. Use specific selectors to avoid changing the default form control behaviors in other parts of the application!
+                    </span>
+                </div>
+              </div>
+            </div>
+
+            <clr-code-snippet [clrCode]="ngGenericTs" clrLanguage="typescript"></clr-code-snippet>
+            <clr-code-snippet [clrCode]="ngGenericHtml"></clr-code-snippet>
+
+
 
 
             <h2 id="forms-code-samples">Forms with CSS</h2>

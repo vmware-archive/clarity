@@ -45,6 +45,22 @@ export declare const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[];
 
 export declare const CLR_WIZARD_DIRECTIVES: any[];
 
+export declare abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy {
+    _dynamic: boolean;
+    control: NgControl;
+    protected controlClassService: ControlClassService;
+    protected ifErrorService: IfErrorService;
+    invalid: boolean;
+    label: ClrLabel;
+    protected layoutService: LayoutService;
+    protected ngControlService: NgControlService;
+    protected subscriptions: Subscription[];
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    addGrid(): boolean;
+    controlClass(): string;
+    ngOnDestroy(): void;
+}
+
 export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, OnDestroy {
     multiPanel: boolean;
     panels: QueryList<ClrAccordionPanel>;
@@ -234,17 +250,9 @@ export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> 
     ngOnInit(): void;
 }
 
-export declare class ClrCheckboxContainer implements OnDestroy {
+export declare class ClrCheckboxContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
-    control: NgControl;
-    invalid: boolean;
-    label: ClrLabel;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
-    ngOnInit(): void;
 }
 
 export declare class ClrCheckboxModule {
@@ -266,6 +274,14 @@ export declare class ClrCommonStringsService extends CommonStringsServiceInterna
 }
 
 export declare class ClrConditionalModule {
+}
+
+export declare class ClrControl extends WrappedFormControl<ClrControlContainer> {
+    protected index: number;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+}
+
+export declare class ClrControlContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrControlError implements AfterViewInit {
@@ -623,16 +639,9 @@ export declare class ClrDatalist implements AfterContentInit {
     ngOnDestroy(): void;
 }
 
-export declare class ClrDatalistContainer implements DynamicWrapper {
-    _dynamic: boolean;
-    control: NgControl;
+export declare class ClrDatalistContainer extends ClrAbstractContainer {
     focus: boolean;
-    invalid: boolean;
-    label: ClrLabel;
-    constructor(controlClassService: ControlClassService, layoutService: LayoutService, ifErrorService: IfErrorService, focusService: FocusService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
+    constructor(controlClassService: ControlClassService, layoutService: LayoutService, ifErrorService: IfErrorService, ngControlService: NgControlService, focusService: FocusService);
 }
 
 export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistContainer> implements AfterContentInit {
@@ -943,15 +952,7 @@ export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
-export declare class ClrInputContainer implements DynamicWrapper, OnDestroy {
-    _dynamic: boolean;
-    control: NgControl;
-    invalid: boolean;
-    label: ClrLabel;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
+export declare class ClrInputContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrInputModule {
@@ -1082,21 +1083,14 @@ export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer
     triggerValidation(): void;
 }
 
-export declare class ClrPasswordContainer implements DynamicWrapper, OnDestroy {
-    _dynamic: boolean;
+export declare class ClrPasswordContainer extends ClrAbstractContainer {
     set clrToggle(state: boolean);
     get clrToggle(): boolean;
     commonStrings: ClrCommonStringsService;
-    control: NgControl;
     focus: boolean;
     focusService: FocusService;
-    invalid: boolean;
-    label: ClrLabel;
     show: boolean;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, focusService: FocusService, ngControlService: NgControlService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, focusService: FocusService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
     toggle(): void;
 }
 
@@ -1209,16 +1203,9 @@ export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
-export declare class ClrRadioContainer implements OnDestroy {
+export declare class ClrRadioContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
-    control: NgControl;
-    invalid: boolean;
-    label: ClrLabel;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
 }
 
 export declare class ClrRadioModule {
@@ -1234,18 +1221,11 @@ export declare class ClrRange extends WrappedFormControl<ClrRangeContainer> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
-export declare class ClrRangeContainer implements DynamicWrapper, OnDestroy {
-    _dynamic: boolean;
-    control: NgControl;
+export declare class ClrRangeContainer extends ClrAbstractContainer {
     set hasProgress(val: boolean);
     get hasProgress(): boolean;
-    invalid: boolean;
-    label: ClrLabel;
     constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, renderer: Renderer2, idService: ControlIdService);
-    addGrid(): boolean;
-    controlClass(): string;
     getRangeProgressFillWidth(): string;
-    ngOnDestroy(): void;
 }
 
 export declare class ClrRangeModule {
@@ -1269,16 +1249,9 @@ export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
-export declare class ClrSelectContainer implements DynamicWrapper, OnDestroy {
-    _dynamic: boolean;
-    control: NgControl;
-    invalid: boolean;
-    label: ClrLabel;
+export declare class ClrSelectContainer extends ClrAbstractContainer {
     multiple: SelectMultipleControlValueAccessor;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
+    ngOnInit(): void;
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
 }
 
@@ -1518,15 +1491,7 @@ export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
-export declare class ClrTextareaContainer implements DynamicWrapper, OnDestroy {
-    _dynamic: boolean;
-    control: NgControl;
-    invalid: boolean;
-    label: ClrLabel;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngOnDestroy(): void;
+export declare class ClrTextareaContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrTextareaModule {
@@ -1944,3 +1909,22 @@ export declare const TOGGLE_SERVICE_PROVIDER: {
 };
 
 export declare function ToggleServiceFactory(): BehaviorSubject<boolean>;
+
+export declare class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
+    _id: string;
+    protected controlIdService: ControlIdService;
+    protected el: ElementRef<any>;
+    get id(): string;
+    set id(value: string);
+    protected index: number;
+    protected ngControlService: NgControlService;
+    protected renderer: Renderer2;
+    protected subscriptions: Subscription[];
+    protected vcr: ViewContainerRef;
+    protected wrapperType: Type<W>;
+    constructor(vcr: ViewContainerRef, wrapperType: Type<W>, injector: Injector, ngControl: NgControl, renderer: Renderer2, el: ElementRef);
+    protected getProviderFromContainer<T>(token: Type<T> | InjectionToken<T>, notFoundValue?: T): T;
+    ngOnDestroy(): void;
+    ngOnInit(): void;
+    triggerValidation(): void;
+}

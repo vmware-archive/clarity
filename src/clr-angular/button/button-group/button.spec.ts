@@ -91,6 +91,7 @@ export default function(): void {
     let fixture: ComponentFixture<any>;
     let debugEl: DebugElement;
     let componentInstance: any;
+    let toggleService: ClrPopoverToggleService;
     let buttons: HTMLButtonElement[];
 
     describe('Typescript API', () => {
@@ -104,6 +105,7 @@ export default function(): void {
         fixture = TestBed.createComponent(TestButtonComponent);
         fixture.detectChanges();
         debugEl = fixture.debugElement;
+        toggleService = debugEl.injector.get(ClrPopoverToggleService);
         componentInstance = debugEl.componentInstance;
       });
 
@@ -157,6 +159,15 @@ export default function(): void {
         componentInstance.button1.emitClick();
 
         expect(componentInstance.flag).toBe(false);
+      });
+
+      it('calls toggle service only on buttons in menu', () => {
+        spyOn(toggleService, 'toggleWithEvent');
+        expect(componentInstance.flag).toBe(false);
+        componentInstance.button1.emitClick();
+        expect(toggleService.toggleWithEvent).not.toHaveBeenCalled();
+        componentInstance.button2.emitClick();
+        expect(toggleService.toggleWithEvent).toHaveBeenCalled();
       });
 
       it('implements LoadingListener', () => {

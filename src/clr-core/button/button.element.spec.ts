@@ -133,14 +133,10 @@ describe('button element', () => {
   });
 
   describe('LoadingStateChange', () => {
-    const expectedTransform = 'translateZ(0px)';
-
     it('should set default state as expected', async () => {
       await componentIsStable(component);
       component.loadingState = ClrLoadingState.DEFAULT;
       await componentIsStable(component);
-      expect(component.style.width).toEqual('');
-      expect(component.style.transform).toEqual('');
       expect(component.hasAttribute('disabled')).toEqual(false);
     });
 
@@ -151,18 +147,21 @@ describe('button element', () => {
       await componentIsStable(component);
 
       // I'm getting 152.016px and 152.015625px, so the test fails without rounding
-      expect(parseFloat(component.style.width).toFixed(3)).toEqual(size.toFixed(3));
-      expect(component.style.transform).toEqual(expectedTransform);
+      expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
     });
 
     it('should set success state as expected', async () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
+
+      component.loadingState = ClrLoadingState.LOADING;
+      await componentIsStable(component);
+
       component.loadingState = ClrLoadingState.SUCCESS;
       await componentIsStable(component);
-      expect(parseFloat(component.style.width).toFixed(3)).toEqual(size.toFixed(3));
-      expect(component.style.transform).toEqual(expectedTransform);
+
+      expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
     });
 
@@ -173,19 +172,16 @@ describe('button element', () => {
       jasmine.clock().uninstall();
       jasmine.clock().install();
 
+      component.loadingState = ClrLoadingState.LOADING;
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
       component.loadingState = ClrLoadingState.SUCCESS;
       await componentIsStable(component);
-      expect(parseFloat(component.style.width).toFixed(3)).toEqual(size.toFixed(3));
-      expect(component.style.transform).toEqual(expectedTransform);
+      expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
 
       jasmine.clock().tick(1000);
       await componentIsStable(component);
-
-      expect(component.style.width).toEqual('');
-      expect(component.style.transform).toEqual('');
       expect(component.hasAttribute('disabled')).toEqual(false);
 
       // uninstall to clean up

@@ -5,13 +5,8 @@
  */
 
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
-import {
-  CwcBaseButton,
-  getElementWidthUnless,
-  getTranslateForChromeRenderingBugUnless,
-  toggleDisabledAttribute,
-} from '@clr/core/common';
-import { html } from 'lit-element';
+import { CwcBaseButton, getElementWidth } from '@clr/core/common';
+import { html, query } from 'lit-element';
 import { styles } from './button.element.css';
 
 export enum ClrLoadingState {
@@ -20,6 +15,10 @@ export enum ClrLoadingState {
   SUCCESS = 'success',
   ERROR = 'error',
 }
+
+// TODO: replace with circular progress bar when complete
+const iconSpinnerCheck = html`<span class="spinner spinner-inline spinner-check"></span>`;
+const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
 
 /**
  * Buttons allow an application to communicate action and direct user intent.
@@ -73,7 +72,7 @@ export class CwcButton extends CwcBaseButton {
   @property({ type: Boolean })
   block: boolean;
 
-  private _loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  @query('.private-host') privateHost: HTMLElement;
 
   /**
    * Changes the button content based on the value passed.
@@ -84,75 +83,58 @@ export class CwcButton extends CwcBaseButton {
    * - `error`: shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)
    */
   @property({ type: String })
-  set loadingState(state: ClrLoadingState) {
-    const oldState = this._loadingState;
-    this.updateButtonState(state);
-    this.requestUpdate('loadingState', oldState);
+  loadingState = ClrLoadingState.DEFAULT;
+
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+
+    if (this.loadingState !== ClrLoadingState.DEFAULT) {
+      this.updateLoadingState();
+    }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.tabIndex = 0;
-  }
-
-  get loadingState() {
-    return this._loadingState;
+  update(props: Map<string, any>) {
+    if (this.privateHost && props.has('loadingState')) {
+      this.updateLoadingState();
+    }
+    super.update(props);
   }
 
   render() {
-    switch (this.loadingState) {
-      case ClrLoadingState.LOADING:
-        return html`
-          <span class="spinner spinner-inline"></span>
-          ${this.hiddenButtonTemplate}
-        `;
-      case ClrLoadingState.SUCCESS:
-        return html`
-          <span class="spinner spinner-inline spinner-check"></span>
-          ${this.hiddenButtonTemplate}
-        `;
-      default:
-        return html`
-          <slot></slot>
-          ${this.hiddenButtonTemplate}
-        `;
-    }
+    return html`
+    <div class="private-host">
+      ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
+      ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
+      ${this.loadingState === ClrLoadingState.DEFAULT ? html`<slot></slot>` : ''}
+      ${this.hiddenButtonTemplate}
+    </div>
+    `;
   }
 
   static get styles() {
     return [baseStyles, styles];
   }
 
-  private updateButtonState(state: ClrLoadingState) {
-    if (state === this.loadingState) {
-      return;
-    }
-
-    this._loadingState = state;
-
-    if (state === ClrLoadingState.ERROR) {
-      // in case of error, go back to default case; app should display relevant error message
-      this.loadingState = ClrLoadingState.DEFAULT;
+  private updateLoadingState() {
+    if (this.loadingState === ClrLoadingState.LOADING) {
+      this.disableButton();
+    } else if (this.loadingState === ClrLoadingState.SUCCESS) {
+      this.disableButton();
+      setTimeout(() => this.enableButton(), 1000);
     } else {
-      // this is when button state is one of: DEFAULT | LOADING | SUCCESS
-      const stateIsDefault = state === ClrLoadingState.DEFAULT;
-
-      // if state is DEFAULT, remove any width or transform attributes that may have been added.
-      // else (state is LOADING | SUCCESS), set explicit width and transform attribute before entering this state
-      this.style.width = getElementWidthUnless(this, stateIsDefault);
-      this.style.transform = getTranslateForChromeRenderingBugUnless(stateIsDefault);
-
-      // the button is disabled during LOADING | SUCCESS state
-      // it is NOT disabled if state is DEFAULT and it was not previously disabled
-      toggleDisabledAttribute(this, stateIsDefault && !this._previouslyDisabled);
-
-      if (state === ClrLoadingState.SUCCESS) {
-        // after displaying success state for a second, go back to default case
-        setTimeout(() => {
-          this.loadingState = ClrLoadingState.DEFAULT;
-        }, 1000);
-      }
+      this.enableButton();
     }
+  }
+
+  private disableButton() {
+    this.privateHost.style.width = getElementWidth(this.privateHost);
+    this.disabled = true;
+  }
+
+  private enableButton() {
+    this.loadingState = ClrLoadingState.DEFAULT;
+    this.privateHost.style.removeProperty('width');
+    this.disabled = false;
   }
 }
 

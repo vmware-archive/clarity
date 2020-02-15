@@ -42,7 +42,6 @@ export const API = () => {
     propertiesGroup
   );
   const size = select('size', { 'medium (default)': 'md', sm: 'sm', icon: 'icon' }, undefined, propertiesGroup);
-  const block = boolean('block', false, propertiesGroup);
   const disabled = boolean('disabled', false, propertiesGroup);
   const loadingState = select(
     'loadingState',
@@ -90,7 +89,6 @@ export const API = () => {
         .size=${size}
         .loadingState=${loadingState}
         .disabled=${disabled}
-        .block=${block}
         @click=${action('click')}>
         ${size === 'icon' ? html`<cwc-icon></cwc-icon>` : slot}
       </cwc-button>
@@ -174,7 +172,7 @@ export const links = () => {
     </cwc-button>
 
     <cwc-button size="sm">
-      <a routerLink="/i18n">small link</a>
+      <a href="#">small link</a>
     </cwc-button>
 
     <h2>Outline Links</h2>
@@ -187,7 +185,7 @@ export const links = () => {
     </cwc-button>
 
     <cwc-button action="outline" size="sm">
-      <a routerLink="/i18n">small link</a>
+      <a href="#">small link</a>
     </cwc-button>
   `;
 };

@@ -14,9 +14,6 @@ import { stopEvent } from './../utils/events';
 
 // @dynamic
 export class CwcBaseButton extends LitElement {
-  private _disabled: boolean = false;
-  protected _previouslyDisabled: boolean = false;
-
   @property({ type: Boolean })
   readonly = false;
   @property({ type: String })
@@ -28,21 +25,9 @@ export class CwcBaseButton extends LitElement {
   @property({ type: String })
   value = '';
   @property({ type: Boolean })
-  set disabled(value: boolean) {
-    // the _previouslyDisabled is used in button.element.ts for loading buttons
-    // to keep track of the state it had before being 'disabled' by the component when it's loading
-    this._previouslyDisabled = this._disabled;
-    this._disabled = !!value;
-    if (this._disabled !== this._previouslyDisabled) {
-      this.requestUpdate('disabled', this._previouslyDisabled);
-    }
-  }
+  disabled = false;
 
   @querySlot('a') private anchor: HTMLAnchorElement;
-
-  get disabled() {
-    return this._disabled;
-  }
 
   protected get hiddenButtonTemplate() {
     return this.readonly

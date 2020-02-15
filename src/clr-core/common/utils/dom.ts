@@ -14,18 +14,3 @@ export function getElementWidthUnless(element: HTMLElement, unless: boolean) {
   }
   return '';
 }
-export function getTranslateForChromeRenderingBugUnless(unless: boolean) {
-  const translateFix = 'translateZ(0px)';
-  if (!unless) {
-    return translateFix;
-  }
-  return '';
-}
-
-export function toggleDisabledAttribute(el: HTMLElement, off: boolean) {
-  if (off) {
-    el.removeAttribute('disabled');
-  } else {
-    el.setAttribute('disabled', '');
-  }
-}

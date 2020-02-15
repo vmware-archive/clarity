@@ -8,26 +8,30 @@
 :host {
   --box-shadow-color: var(--clr-color-action-500, #{$clr-color-action-500});
   --border-radius: #{$clr_baselineRem_3px};
-  --border-width: #{$clr_baselineRem_1px};
-  --font-size: #{$clr_baselineRem_0_5};
-  --font-weight: #{$clr-font-weight-semibold};
   --border-color: var(--clr-color-action-600, #{$clr-color-action-600});
   --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
   --background: var(--clr-color-action-600, #{$clr-color-action-600});
+  display: inline-block;
+}
+
+.private-host {
+  --font-size: #{$clr_baselineRem_0_5};
   --line-height: 1.7rem;
   --letter-spacing: 0.12em;
+  --padding: 0 #{$clr_baselineRem_0_5};
+
   background: var(--background);
   color: var(--color);
   border-color: var(--border-color);
   border-radius: var(--border-radius);
-  border-width: var(--border-width);
+  border-width: $clr-global-borderwidth;
   font-size: var(--font-size);
-  font-weight: var(--font-weight);
+  font-weight: 500;
   line-height: var(--line-height);
   letter-spacing: var(--letter-spacing);
-  padding: 0 #{$clr_baselineRem_0_5};
+  padding: var(--padding);
   user-select: none;
-  display: inline-block;
+  display: block;
   -webkit-appearance: none !important;
   cursor: pointer;
   min-width: $clr_baselineRem_3;
@@ -37,9 +41,10 @@
   vertical-align: middle;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: visible;
   border-style: solid;
   position: relative;
+  transform: translateZ(0px); // for chrome rendering bug
 }
 
 :host(:hover) {
@@ -51,7 +56,9 @@
 }
 
 :host([is-anchor]) {
-  padding: 0;
+  .private-host {
+    padding: 0;
+  }
 }
 
 ::slotted {
@@ -75,48 +82,48 @@
 :host([action='outline']) {
   --background: transparent;
   --color: var(--clr-color-action-600, #{$clr-color-action-600});
-}
 
-:host([action='outline']:hover) {
-  --background: var(clr-color-action-50, #{$clr-color-action-50});
+  .private-host:hover {
+    --background: var(--clr-color-action-50, #{$clr-color-action-50});
+  }
 }
 
 :host([status='success']) {
   --box-shadow-color: var(clr-color-success-900, #{$clr-color-success-900});
   --border-color: var(--clr-color-success-700, #{$clr-color-success-700});
   --background: var(--clr-color-success-700, #{$clr-color-success-700});
-}
 
-:host([status='success']:hover) {
-  --background: var(--clr-color-success-800, #{$clr-color-success-800});
+  .private-host:hover {
+    --background: var(--clr-color-success-800, #{$clr-color-success-800});
+  }
 }
 
 :host([status='success'][action='outline']) {
   --background: transparent;
   --color: var(--clr-color-success-700, #{$clr-color-success-700});
-}
 
-:host([status='success'][action='outline']:hover) {
-  --background: var(--clr-color-success-50, #{$clr-color-success-50});
+  .private-host:hover {
+    --background: var(--clr-color-success-50, #{$clr-color-success-50});
+  }
 }
 
 :host([status='danger']) {
   --box-shadow-color: var(--clr-color-danger-900, #{$clr-color-danger-900});
   --border-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
   --background: var(--clr-color-danger-700, #{$clr-color-danger-700});
-}
 
-:host([status='danger']:hover) {
-  --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
+  .private-host:hover {
+    --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
+  }
 }
 
 :host([status='danger'][action='outline']) {
   --background: transparent;
   --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
-}
 
-:host([status='danger'][action='outline']:hover) {
-  --background: var(--clr-color-danger-50, #{$clr-color-danger-50});
+  .private-host:hover {
+    --background: var(--clr-color-danger-50, #{$clr-color-danger-50});
+  }
 }
 
 :host([status='inverse']) {
@@ -130,16 +137,19 @@
   --background: transparent;
   --border-color: transparent;
   --color: var(--clr-color-action-600, #{$clr-color-action-600});
-  margin-right: 0;
-  box-shadow: none;
+
+  .private-host {
+    margin-right: 0;
+    box-shadow: none;
+  }
 }
 
-:host([action='flat']:hover) {
+:host([action='flat']) .private-host:hover {
   --background: transparent;
   --color: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
-:host([size='sm']) {
+:host([size='sm']) .private-host {
   --line-height: #{$clr_baselineRem_1 - $clr_baselineRem_1px};
   --letter-spacing: 0.073em;
   --font-size: #{$clr_baselineRem_0_458};
@@ -151,24 +161,22 @@
   }
 }
 
-:host([size='icon']) {
+:host([size='icon']) .private-host {
   min-width: 0;
-}
-
-:host([block]) {
-  display: block;
-  width: 100%;
-  max-width: 100%;
 }
 
 :host([disabled]) {
   --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
   --background: hsl(0, 0%, 80%);
   --border-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
-  opacity: 0.4;
-  box-shadow: none;
   pointer-events: none;
-  cursor: not-allowed;
+
+  .private-host {
+    opacity: 0.4;
+    box-shadow: none;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
 
 :host([action='outline'][disabled]) {

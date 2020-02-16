@@ -13,7 +13,7 @@ import { KeyCodes } from './../enums/key-codes';
 import { stopEvent } from './../utils/events';
 
 // @dynamic
-export class CwcBaseButton extends LitElement {
+export class CdsBaseButton extends LitElement {
   @property({ type: Boolean })
   readonly = false;
   @property({ type: String })

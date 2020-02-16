@@ -13,7 +13,7 @@ import {
   infoCircleIcon,
   timesIcon,
 } from '@clr/core/icon-shapes';
-import { CwcBaseAlert } from './alert.base';
+import { CdsBaseAlert } from './alert.base';
 import { styles } from './app-alert.element.css';
 /**
  * Web component alerts.
@@ -23,15 +23,15 @@ import { styles } from './app-alert.element.css';
  * ```
  *
  * ```html
- * <cwc-app-alert>
- *    <cwc-alert-content>This is an alert.</cwc-alert-content>
- * </cwc-app-alert>
+ * <cds-app-alert>
+ *    <cds-alert-content>This is an alert.</cds-alert-content>
+ * </cds-app-alert>
  * ```
  *
  * @noInheritDoc
  * @beta 3.0
- * @element cwc-app-alert
- * @slot default - Content slot for inside the alert. Usually will contain at least a <cwc-alert-content> component.
+ * @element cds-app-alert
+ * @slot default - Content slot for inside the alert. Usually will contain at least a <cds-alert-content> component.
  * @cssprop --color
  * @cssprop --background
  * @cssprop --icon-color
@@ -39,7 +39,7 @@ import { styles } from './app-alert.element.css';
  * @cssprop --close-icon-color-hover
  */
 // @dynamic
-export class CwcAppAlert extends CwcBaseAlert {
+export class CdsAppAlert extends CdsBaseAlert {
   /** Sets the color of the alert from a predefined list of statuses */
   @property({ type: String })
   status: 'info' | 'warning' | 'danger';
@@ -49,12 +49,12 @@ export class CwcAppAlert extends CwcBaseAlert {
   }
 }
 
-registerElementSafely('cwc-app-alert', CwcAppAlert);
+registerElementSafely('cds-app-alert', CdsAppAlert);
 
 ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-app-alert': CwcAppAlert;
+    'cds-app-alert': CdsAppAlert;
   }
 }

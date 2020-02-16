@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CwcBaseButton, property, registerElementSafely, StatusTypes } from '@clr/core/common';
+import { baseStyles, CdsBaseButton, property, registerElementSafely, StatusTypes } from '@clr/core/common';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css';
 
@@ -17,10 +17,10 @@ import { styles } from './tag.element.css';
  * ```
  *
  * ```html
- * <cwc-tag status="info">Info</cwc-tag>
+ * <cds-tag status="info">Info</cds-tag>
  * ```
  *
- * @element cwc-tag
+ * @element cds-tag
  * @slot default - Content slot for inside the tag
  * @cssprop --background
  * @cssprop --background-hover
@@ -28,7 +28,7 @@ import { styles } from './tag.element.css';
  * @cssprop --border-radius
  */
 // @dynamic
-export class CwcTag extends CwcBaseButton {
+export class CdsTag extends CdsBaseButton {
   /** Sets the color of the tag (and badge if present) from the following predefined list of statuses:
    *  'info', 'success', 'warning', 'danger'
    */
@@ -52,10 +52,10 @@ export class CwcTag extends CwcBaseButton {
   }
 }
 
-registerElementSafely('cwc-tag', CwcTag);
+registerElementSafely('cds-tag', CdsTag);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-tag': CwcTag;
+    'cds-tag': CdsTag;
   }
 }

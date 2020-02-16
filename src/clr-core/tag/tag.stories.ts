@@ -12,7 +12,7 @@ import { html } from 'lit-html';
 
 export default {
   title: 'Components|Tag',
-  component: 'cwc-tag',
+  component: 'cds-tag',
   parameters: {
     options: { showPanel: true },
     design: {
@@ -43,52 +43,52 @@ export const API = () => {
 
   return html`
     <style>
-      cwc-tag {
+      cds-tag {
         ${setStyles({
           '--color': textColor,
           '--background': background,
         })}
     </style>
-    <cwc-tag
+    <cds-tag
       .readonly=${readonly}
       .status=${tagStatus}
       .color=${tagColor}
       @click=${action('click')}>
-      ${slot} ${badge && badge !== 0 ? html`<cwc-badge>${badge}</cwc-badge>` : ''}
-    </cwc-tag>
+      ${slot} ${badge && badge !== 0 ? html`<cds-badge>${badge}</cds-badge>` : ''}
+    </cds-tag>
   `;
 };
 
 export const color = () => {
   return html`
     <h2>Status</h2>
-    <cwc-tag status="info">Info</cwc-tag>
-    <cwc-tag status="success">Success</cwc-tag>
-    <cwc-tag status="warning">Warning</cwc-tag>
-    <cwc-tag status="danger">Danger</cwc-tag>
+    <cds-tag status="info">Info</cds-tag>
+    <cds-tag status="success">Success</cds-tag>
+    <cds-tag status="warning">Warning</cds-tag>
+    <cds-tag status="danger">Danger</cds-tag>
 
     <h2>Color</h2>
-    <cwc-tag color="gray">Default</cwc-tag>
-    <cwc-tag color="purple">Purple</cwc-tag>
-    <cwc-tag color="blue">Blue</cwc-tag>
-    <cwc-tag color="orange">Orange</cwc-tag>
-    <cwc-tag color="light-blue">Light Blue</cwc-tag>
+    <cds-tag color="gray">Default</cds-tag>
+    <cds-tag color="purple">Purple</cds-tag>
+    <cds-tag color="blue">Blue</cds-tag>
+    <cds-tag color="orange">Orange</cds-tag>
+    <cds-tag color="light-blue">Light Blue</cds-tag>
   `;
 };
 
 export const badges = () => {
   return html`
     <h2>Status</h2>
-    <cwc-tag readonly status="info">Info <cwc-badge>1</cwc-badge></cwc-tag>
-    <cwc-tag readonly status="success">Success <cwc-badge>2</cwc-badge></cwc-tag>
-    <cwc-tag readonly status="warning">Warning <cwc-badge>3</cwc-badge> </cwc-tag>
-    <cwc-tag readonly status="danger">Danger <cwc-badge>12</cwc-badge></cwc-tag>
+    <cds-tag readonly status="info">Info <cds-badge>1</cds-badge></cds-tag>
+    <cds-tag readonly status="success">Success <cds-badge>2</cds-badge></cds-tag>
+    <cds-tag readonly status="warning">Warning <cds-badge>3</cds-badge> </cds-tag>
+    <cds-tag readonly status="danger">Danger <cds-badge>12</cds-badge></cds-tag>
 
     <h2>Color</h2>
-    <cwc-tag readonly color="gray">Default <cwc-badge>1</cwc-badge></cwc-tag>
-    <cwc-tag readonly color="purple">Purple <cwc-badge>2</cwc-badge></cwc-tag>
-    <cwc-tag readonly color="blue">Blue <cwc-badge>3</cwc-badge></cwc-tag>
-    <cwc-tag readonly color="orange">Orange <cwc-badge>12</cwc-badge></cwc-tag>
-    <cwc-tag readonly color="light-blue">Light Blue <cwc-badge>15</cwc-badge></cwc-tag>
+    <cds-tag readonly color="gray">Default <cds-badge>1</cds-badge></cds-tag>
+    <cds-tag readonly color="purple">Purple <cds-badge>2</cds-badge></cds-tag>
+    <cds-tag readonly color="blue">Blue <cds-badge>3</cds-badge></cds-tag>
+    <cds-tag readonly color="orange">Orange <cds-badge>12</cds-badge></cds-tag>
+    <cds-tag readonly color="light-blue">Light Blue <cds-badge>15</cds-badge></cds-tag>
   `;
 };

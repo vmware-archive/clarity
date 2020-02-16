@@ -5,7 +5,7 @@
  */
 
 import '@clr/core/icon';
-import { ClarityIcons, CwcIcon, imageIcon, userIcon } from '@clr/core/icon-shapes';
+import { CdsIcon, ClarityIcons, imageIcon, userIcon } from '@clr/core/icon-shapes';
 import { action } from '@storybook/addon-actions';
 import { boolean, color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
@@ -57,7 +57,7 @@ ClarityIcons.addIcons(userIcon, imageIcon);
 
 export default {
   title: 'Components|Icon',
-  component: 'cwc-icon',
+  component: 'cds-icon',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true }, // disabled for performance
@@ -117,13 +117,13 @@ export const API = () => {
   return html`
     <div class=${inverse === true ? 'demo-inverse' : ''}>
       <style>
-        cwc-icon {
+        cds-icon {
           ${setStyles({
             '--color': color,
             '--badge-color': badgeColor,
           })}
       </style>
-      <cwc-icon
+      <cds-icon
         .badge=${badge}
         .status=${iconStatus}
         .solid=${solid}
@@ -133,7 +133,7 @@ export const API = () => {
         .inverse=${inverse}
         .flip=${fl}
         @click=${action('click')}>
-      </cwc-icon>
+      </cds-icon>
     </div>
   `;
 };
@@ -243,7 +243,7 @@ export const all = () => {
           ${iconIndex[k].map(
             i => html`
             <div class="dc-icon-box" .hidden=${!i.includes(search)}>
-            <cwc-icon
+            <cds-icon
               .badge=${badge}
               .status=${iconStatus}
               .solid=${solid}
@@ -252,8 +252,8 @@ export const all = () => {
               .direction=${dir}
               .inverse=${inverse}
               .flip=${fl}>
-            </cwc-icon>
-            </cwc-icon>
+            </cds-icon>
+            </cds-icon>
               <p class="dc-icon-name">${i}</p>
             </div>
           `
@@ -268,63 +268,63 @@ export const all = () => {
 export const sizes = () => {
   return html`
     <h2>T-Shirt Sizes</h2>
-    <cwc-icon size="sm"></cwc-icon>
-    <cwc-icon size="md"></cwc-icon>
-    <cwc-icon size="lg"></cwc-icon>
-    <cwc-icon size="xl"></cwc-icon>
-    <cwc-icon size="xxl"></cwc-icon>
+    <cds-icon size="sm"></cds-icon>
+    <cds-icon size="md"></cds-icon>
+    <cds-icon size="lg"></cds-icon>
+    <cds-icon size="xl"></cds-icon>
+    <cds-icon size="xxl"></cds-icon>
 
     <h2>Numeric Sizes</h2>
-    <cwc-icon size="16"></cwc-icon>
-    <cwc-icon size="24"></cwc-icon>
-    <cwc-icon size="48"></cwc-icon>
-    <cwc-icon size="64"></cwc-icon>
-    <cwc-icon size="128"></cwc-icon>
+    <cds-icon size="16"></cds-icon>
+    <cds-icon size="24"></cds-icon>
+    <cds-icon size="48"></cds-icon>
+    <cds-icon size="64"></cds-icon>
+    <cds-icon size="128"></cds-icon>
   `;
 };
 
 export const badges = () => {
   return html`
     <h1>Badges</h1>
-    <cwc-icon shape="user" size="lg" badge="info"></cwc-icon>
-    <cwc-icon shape="user" size="lg" badge="success"></cwc-icon>
-    <cwc-icon shape="user" size="lg" badge="danger"></cwc-icon>
-    <cwc-icon shape="user" size="lg" badge="warning"></cwc-icon>
-    <div><cwc-icon shape="user" size="lg" badge="inherit" inverse></cwc-icon></div>
+    <cds-icon shape="user" size="lg" badge="info"></cds-icon>
+    <cds-icon shape="user" size="lg" badge="success"></cds-icon>
+    <cds-icon shape="user" size="lg" badge="danger"></cds-icon>
+    <cds-icon shape="user" size="lg" badge="warning"></cds-icon>
+    <div><cds-icon shape="user" size="lg" badge="inherit" inverse></cds-icon></div>
 
-    <cwc-icon shape="user" size="lg" badge="warning-triangle"></cwc-icon>
-    <div class="demo-inverse"><cwc-icon shape="user" size="lg" badge="inherit-triangle" inverse></cwc-icon></div>
+    <cds-icon shape="user" size="lg" badge="warning-triangle"></cds-icon>
+    <div class="demo-inverse"><cds-icon shape="user" size="lg" badge="inherit-triangle" inverse></cds-icon></div>
   `;
 };
 
 export const status = () => {
   return html`
     <h1>Status</h1>
-    <cwc-icon shape="user" size="lg"></cwc-icon>
-    <cwc-icon shape="user" status="info" size="lg"></cwc-icon>
-    <cwc-icon shape="user" status="success" size="lg"></cwc-icon>
-    <cwc-icon shape="user" status="warning" size="lg"></cwc-icon>
-    <cwc-icon shape="user" status="danger" size="lg"></cwc-icon>
+    <cds-icon shape="user" size="lg"></cds-icon>
+    <cds-icon shape="user" status="info" size="lg"></cds-icon>
+    <cds-icon shape="user" status="success" size="lg"></cds-icon>
+    <cds-icon shape="user" status="warning" size="lg"></cds-icon>
+    <cds-icon shape="user" status="danger" size="lg"></cds-icon>
 
-    <cwc-icon shape="user" size="lg" solid></cwc-icon>
-    <cwc-icon shape="user" status="info" size="lg" solid></cwc-icon>
-    <cwc-icon shape="user" status="success" size="lg" solid></cwc-icon>
-    <cwc-icon shape="user" status="warning" size="lg" solid></cwc-icon>
-    <cwc-icon shape="user" status="danger" size="lg" solid></cwc-icon>
+    <cds-icon shape="user" size="lg" solid></cds-icon>
+    <cds-icon shape="user" status="info" size="lg" solid></cds-icon>
+    <cds-icon shape="user" status="success" size="lg" solid></cds-icon>
+    <cds-icon shape="user" status="warning" size="lg" solid></cds-icon>
+    <cds-icon shape="user" status="danger" size="lg" solid></cds-icon>
 
     <h2>Inverse</h2>
     <span class="demo-inverse">
-      <cwc-icon shape="user" inverse size="lg"></cwc-icon>
-      <cwc-icon shape="user" inverse status="info" size="lg"></cwc-icon>
-      <cwc-icon shape="user" inverse status="success" size="lg"></cwc-icon>
-      <cwc-icon shape="user" inverse status="warning" size="lg"></cwc-icon>
-      <cwc-icon shape="user" inverse status="danger" size="lg"></cwc-icon>
+      <cds-icon shape="user" inverse size="lg"></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg"></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg"></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg"></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg"></cds-icon>
 
-      <cwc-icon shape="user" inverse size="lg" solid></cwc-icon>
-      <cwc-icon shape="user" inverse status="info" size="lg" solid></cwc-icon>
-      <cwc-icon shape="user" inverse status="success" size="lg" solid></cwc-icon>
-      <cwc-icon shape="user" inverse status="warning" size="lg" solid></cwc-icon>
-      <cwc-icon shape="user" inverse status="danger" size="lg" solid></cwc-icon>   
+      <cds-icon shape="user" inverse size="lg" solid></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg" solid></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg" solid></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg" solid></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>   
     </span>
   `;
 };
@@ -332,10 +332,10 @@ export const status = () => {
 export const direction = () => {
   return html`
     <h1>Direction</h1>
-    <cwc-icon size="lg" direction="up"></cwc-icon>
-    <cwc-icon size="lg" direction="left"></cwc-icon>
-    <cwc-icon size="lg" direction="down"></cwc-icon>
-    <cwc-icon size="lg" direction="right"></cwc-icon>
+    <cds-icon size="lg" direction="up"></cds-icon>
+    <cds-icon size="lg" direction="left"></cds-icon>
+    <cds-icon size="lg" direction="down"></cds-icon>
+    <cds-icon size="lg" direction="right"></cds-icon>
   `;
 };
 
@@ -370,7 +370,7 @@ export const customStyles = () => {
         color: inherit;
       }
 
-      cwc-icon {
+      cds-icon {
         height: 36px;
         width: 36px;
       }
@@ -390,13 +390,13 @@ export const customStyles = () => {
     </style>
     <h1>Custom Styles</h1>
     <div class="custom-icon-colors">
-      <cwc-icon shape="user" badge class="icon-a"></cwc-icon>
+      <cds-icon shape="user" badge class="icon-a"></cds-icon>
     </div>
     <div class="custom-icon-colors">
-      <cwc-icon shape="user" class="icon-b"></cwc-icon>
+      <cds-icon shape="user" class="icon-b"></cds-icon>
     </div>
     <div class="custom-icon-colors">
-      <cwc-icon shape="user" badge class="icon-c"></cwc-icon>
+      <cds-icon shape="user" badge class="icon-c"></cds-icon>
     </div>
     <p>
       <i>A should be green with a pink badge</i><br>
@@ -409,24 +409,24 @@ export const customStyles = () => {
 export const flip = () => {
   return html`
     <h1>Flip</h1>
-    <cwc-icon size="lg" shape="image"></cwc-icon>
-    <cwc-icon size="lg" flip="vertical" shape="image"></cwc-icon>
-    <cwc-icon size="lg" flip="horizontal" shape="image"></cwc-icon>
+    <cds-icon size="lg" shape="image"></cds-icon>
+    <cds-icon size="lg" flip="vertical" shape="image"></cds-icon>
+    <cds-icon size="lg" flip="horizontal" shape="image"></cds-icon>
   `;
 };
 
-class LegacyIcon extends CwcIcon {}
+class LegacyIcon extends CdsIcon {}
 registerElementSafely('clr-icon', LegacyIcon);
 
 export const legacy = () => {
   return html`
     <section class="doc">
       <h1>Deprecated API (clr-icon)</h1>
-      <p>To create a backwards compatible clr-icon import and register the cwc-icon under a tag alias</p>
+      <p>To create a backwards compatible clr-icon import and register the cds-icon under a tag alias</p>
 
       <pre>
         <code>
-          class LegacyIcon extends CwcIcon { }
+          class LegacyIcon extends CdsIcon { }
           customElements.define('clr-icon', LegacyIcon);
         </code>
       </pre>

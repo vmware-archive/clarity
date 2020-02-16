@@ -3,21 +3,21 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { CwcAlertActions } from '@clr/core/alert';
+import { CdsAlertActions } from '@clr/core/alert';
 import '@clr/core/alert';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('alert-actions element', () => {
   let testElement: HTMLElement;
-  let component: CwcAlertActions;
+  let component: CdsAlertActions;
   const placeholderText: string = 'Alert Text Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();
-    testElement.innerHTML = `<cwc-alert-actions>${placeholderText}</cwc-alert-actions>`;
+    testElement.innerHTML = `<cds-alert-actions>${placeholderText}</cds-alert-actions>`;
 
-    await waitForComponent('cwc-alert-actions');
-    component = testElement.querySelector<CwcAlertActions>('cwc-alert-actions');
+    await waitForComponent('cds-alert-actions');
+    component = testElement.querySelector<CdsAlertActions>('cds-alert-actions');
   });
 
   afterEach(() => {

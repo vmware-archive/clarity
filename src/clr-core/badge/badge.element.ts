@@ -17,16 +17,16 @@ import { styles } from './badge.element.css';
  * ```
  *
  * ```html
- * <cwc-badge status="info">2</cwc-badge>
+ * <cds-badge status="info">2</cds-badge>
  * ```
  *
- * @element cwc-badge
+ * @element cds-badge
  * @slot default - Content slot for inside the badge
  * @cssprop --background
  * @cssprop --color
  */
 // @dynamic
-export class CwcBadge extends LitElement {
+export class CdsBadge extends LitElement {
   /** Sets the color of the badge from the following predefined list of choices:
    *  'gray', 'purple', 'blue', 'orange', 'light-blue'
    */
@@ -52,10 +52,10 @@ export class CwcBadge extends LitElement {
   }
 }
 
-registerElementSafely('cwc-badge', CwcBadge);
+registerElementSafely('cds-badge', CdsBadge);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-badge': CwcBadge;
+    'cds-badge': CdsBadge;
   }
 }

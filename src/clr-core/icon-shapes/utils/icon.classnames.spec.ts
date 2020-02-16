@@ -6,7 +6,7 @@
 
 import { getEnumValues } from '@clr/core/common';
 import '@clr/core/icon';
-import { CwcIcon } from '@clr/core/icon-shapes';
+import { CdsIcon } from '@clr/core/icon-shapes';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { renderIcon } from '../icon.renderer';
 import { ClarityIcons } from '../icon.service';
@@ -95,7 +95,7 @@ describe('Icon classname helpers: ', () => {
   describe('updateIconSizeStyleOrClassnames', () => {
     const testIcon = renderIcon('test');
     let testElement: HTMLElement;
-    let component: CwcIcon;
+    let component: CdsIcon;
 
     beforeAll(() => {
       ClarityIcons.add({ testing: testIcon });
@@ -104,11 +104,11 @@ describe('Icon classname helpers: ', () => {
     beforeEach(async () => {
       testElement = createTestElement();
       testElement.innerHTML = `
-        <cwc-icon></cwc-icon>
+        <cds-icon></cds-icon>
       `;
 
-      await waitForComponent('cwc-icon');
-      component = testElement.querySelector<CwcIcon>('cwc-icon');
+      await waitForComponent('cds-icon');
+      component = testElement.querySelector<CdsIcon>('cds-icon');
     });
 
     afterEach(() => {

@@ -15,7 +15,7 @@ ClarityIcons.addIcons(userIcon);
 
 export default {
   title: 'Components|App Alert',
-  component: 'cwc-app-alert',
+  component: 'cds-app-alert',
   parameters: {
     options: { showPanel: true },
     design: {
@@ -45,7 +45,7 @@ export const API = () => {
 
   return html`
     <style>
-      cwc-app-alert {
+      cds-app-alert {
         ${setStyles({
           '--color': alertColor,
           '--background': background,
@@ -54,45 +54,45 @@ export const API = () => {
           '--close-icon-color-hover': closeIconColorHover,
         })}
     </style>
-    <cwc-app-alert 
+    <cds-app-alert 
       .closable=${closable}
       .iconShape=${iconShape}
       .iconTitle=${iconTitle}
       .status=${alertStatus}
       @closedChange=${action('closeChanged')}>
-        <cwc-alert-content>
+        <cds-alert-content>
           ${slot}
-        </cwc-alert-content>
-    </cwc-app-alert>
+        </cds-alert-content>
+    </cds-app-alert>
   `;
 };
 
 export const status = () => {
   return html`
-    <cwc-app-alert status="info">
-      <cwc-alert-content>
+    <cds-app-alert status="info">
+      <cds-alert-content>
         Foobar
-      </cwc-alert-content>
-      <cwc-app-alert-actions>
-       <cwc-button>Fix</cwc-button>
-    </cwc-app-alert-actions>
-    </cwc-app-alert>
-    <cwc-app-alert status="warning">
-      <cwc-alert-content>
+      </cds-alert-content>
+      <cds-app-alert-actions>
+       <cds-button>Fix</cds-button>
+    </cds-app-alert-actions>
+    </cds-app-alert>
+    <cds-app-alert status="warning">
+      <cds-alert-content>
         Bar
-      </cwc-alert-content>
-      <cwc-app-alert-actions>
-       <cwc-button>Fix</cwc-button>
-    </cwc-app-alert-actions>
-    </cwc-app-alert>
-    <cwc-app-alert status="danger">
-      <cwc-alert-content>
+      </cds-alert-content>
+      <cds-app-alert-actions>
+       <cds-button>Fix</cds-button>
+    </cds-app-alert-actions>
+    </cds-app-alert>
+    <cds-app-alert status="danger">
+      <cds-alert-content>
         Baz
-      </cwc-alert-content>
-      <cwc-app-alert-actions>
-       <cwc-button>Fix</cwc-button>
-    </cwc-app-alert-actions>
-    </cwc-app-alert>
+      </cds-alert-content>
+      <cds-app-alert-actions>
+       <cds-button>Fix</cds-button>
+    </cds-app-alert-actions>
+    </cds-app-alert>
   `;
 };
 
@@ -107,10 +107,10 @@ export const customStyles = () => {
         --close-icon-color-hover: #FBC1DA;
       }
     </style>
-    <cwc-app-alert class="alert-branding" icon-shape="user">
-      <cwc-alert-content>
+    <cds-app-alert class="alert-branding" icon-shape="user">
+      <cds-alert-content>
         Foobar
-      </cwc-alert-content>
-    </cwc-app-alert>
+      </cds-alert-content>
+    </cds-app-alert>
   `;
 };

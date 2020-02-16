@@ -26,9 +26,9 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
         - [open] - setting the 'open' property on the element
         - (openChange) - listen for the `openChange` custom event
       -->
-      <cwc-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+      <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
         <p>slot content</p>
-      </cwc-modal>
+      </cds-modal>
     ```
 
     #### Vue
@@ -40,9 +40,9 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
       - :open - setting the 'open' property on the element
       - @openChange - listen for the `openChange` custom event
     -->
-    <cwc-modal size="lg" :open="true" @openChange="log($event.detail)">
+    <cds-modal size="lg" :open="true" @openChange="log($event.detail)">
       <p>slot content</p>
-    </cwc-modal>
+    </cds-modal>
     ```
 
     #### React (Support Coming Soon)
@@ -56,7 +56,7 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
       - openChange - listen for the `openChange` custom event
     */
     }
-    <CwcModal size="lg" open={this.state.open} openChange={this.log}>
+    <CdsModal size="lg" open={this.state.open} openChange={this.log}>
       <p>slot content</p>
-    </CwcModal>;
+    </CdsModal>;
     ```

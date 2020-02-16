@@ -17,7 +17,7 @@
     "no-duplicate-selectors": null,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^cwc-/", "/^_/"] }],
+    "selector-type-no-unknown": [true, { "ignoreTypes": ["/^cds-/", "/^_/"] }],
     "max-nesting-depth": 3,
     "rule-empty-line-before": [ "always-multi-line", {
       except: ["first-nested"],

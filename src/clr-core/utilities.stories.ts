@@ -75,9 +75,9 @@ export const lazyLoading = () => {
         ${
           this.loaded
             ? html`
-          <cwc-test-dropdown>
+          <cds-test-dropdown>
             Hello World
-          </cwc-test-dropdown>
+          </cds-test-dropdown>
         `
             : html`<button @click=${() => this.load()}>load component</button>`
         }

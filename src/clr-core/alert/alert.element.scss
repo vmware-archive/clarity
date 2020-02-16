@@ -72,7 +72,7 @@
   //close alert button.
   .alert-item > span,
   .alert-text,
-  ::slotted(cwc-alert-content) {
+  ::slotted(cds-alert-content) {
     display: inline-block; //needed for IE11
     flex-grow: 1;
     flex-shrink: 1;
@@ -102,7 +102,7 @@
       --close-icon-color: var(--close-icon-color-hover);
     }
 
-    cwc-icon {
+    cds-icon {
       $alert-close-icon-dims: $clr_baselineRem_1 - $clr-global-borderwidth;
       margin-top: -1 * $clr_baselineRem_0_125;
       @include equilateral($alert-close-icon-dims);
@@ -110,7 +110,7 @@
     }
   }
 
-  button.close ~ .alert-item > ::slotted(cwc-alert-actions) {
+  button.close ~ .alert-item > ::slotted(cds-alert-actions) {
     padding-right: $clr_baselineRem_0_5;
 
     & > .alert-action:last-child {
@@ -178,7 +178,7 @@
 
   .alert-item > span,
   .alert-text,
-  ::slotted(cwc-alert-content) {
+  ::slotted(cds-alert-content) {
     margin-right: $clr_baselineRem_0_25;
   }
 
@@ -188,7 +188,7 @@
     height: $clr_baselineRem_1;
     line-height: $clr_baselineRem_1;
 
-    cwc-icon {
+    cds-icon {
       $smallAlertCloseIconDims: $clr_baselineRem_0_83;
       margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
       margin-right: -1 * $clr_baselineRem_1px;

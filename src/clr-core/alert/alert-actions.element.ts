@@ -16,20 +16,20 @@ import { styles } from './alert-actions.element.css';
  * ```
  *
  * ```html
- * <cwc-app-alert>
- *    <cwc-alert-content>Lorem ipsum dolor sit amet</cwc-alert-content>
- *    <cwc-alert-actions>
- *       <cwc-button>Fix</cwc-button>
- *    </cwc-alert-actions>
- * </cwc-app-alert>
+ * <cds-app-alert>
+ *    <cds-alert-content>Lorem ipsum dolor sit amet</cds-alert-content>
+ *    <cds-alert-actions>
+ *       <cds-button>Fix</cds-button>
+ *    </cds-alert-actions>
+ * </cds-app-alert>
  * ```
  *
  * @noInheritDoc
  * @beta 3.0
- * @element cwc-alert-actions
+ * @element cds-alert-actions
  */
 // @dynamic
-export class CwcAlertActions extends LitElement {
+export class CdsAlertActions extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('slot', 'actions');
@@ -44,10 +44,10 @@ export class CwcAlertActions extends LitElement {
   }
 }
 
-registerElementSafely('cwc-alert-actions', CwcAlertActions);
+registerElementSafely('cds-alert-actions', CdsAlertActions);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-alert-actions': CwcAlertActions;
+    'cds-alert-actions': CdsAlertActions;
   }
 }

@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { CwcAlert } from '@clr/core/alert';
+import { CdsAlert } from '@clr/core/alert';
 import '@clr/core/alert';
 import { CommonStringsService, CommonStringsServiceInternal } from '@clr/core/common';
-import { CwcIcon } from '@clr/core/icon-shapes';
+import { CdsIcon } from '@clr/core/icon-shapes';
 import {
   componentIsStable,
   createTestElement,
@@ -17,7 +17,7 @@ import {
 
 describe('alert element', () => {
   let testElement: HTMLElement;
-  let component: CwcAlert;
+  let component: CdsAlert;
   const placeholderText: string = 'I am a default alert with no attributes.';
   const placeholderActionsText: string = 'This is where action elements go.';
 
@@ -25,14 +25,14 @@ describe('alert element', () => {
     beforeEach(async () => {
       testElement = createTestElement();
       testElement.innerHTML = `
-        <cwc-alert>
-          <cwc-alert-content>${placeholderText}</cwc-alert-content>
-          <cwc-alert-actions>${placeholderActionsText}</cwc-alert-actions>
-        </cwc-alert>
+        <cds-alert>
+          <cds-alert-content>${placeholderText}</cds-alert-content>
+          <cds-alert-actions>${placeholderActionsText}</cds-alert-actions>
+        </cds-alert>
       `;
 
-      await waitForComponent('cwc-alert');
-      component = testElement.querySelector<CwcAlert>('cwc-alert');
+      await waitForComponent('cds-alert');
+      component = testElement.querySelector<CdsAlert>('cds-alert');
     });
 
     afterEach(() => {
@@ -42,8 +42,8 @@ describe('alert element', () => {
     it('should create the component', async () => {
       await componentIsStable(component);
       const slots = getComponentSlotContent(component);
-      expect(slots.default).toBe(`<cwc-alert-content>${placeholderText}</cwc-alert-content>`);
-      expect(slots.actions).toBe(`<cwc-alert-actions slot="actions">${placeholderActionsText}</cwc-alert-actions>`);
+      expect(slots.default).toBe(`<cds-alert-content>${placeholderText}</cds-alert-content>`);
+      expect(slots.actions).toBe(`<cds-alert-actions slot="actions">${placeholderActionsText}</cds-alert-actions>`);
     });
 
     it('should support closable option', async () => {
@@ -63,7 +63,7 @@ describe('alert element', () => {
 
     it('should set icon shape based on status', async () => {
       await componentIsStable(component);
-      let icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      let icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
 
       expect(icon.hasAttribute('shape')).toBe(true);
@@ -71,21 +71,21 @@ describe('alert element', () => {
 
       component.status = 'success';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('shape')).toBe(true);
       expect(icon.getAttribute('shape')).toEqual('check-circle');
 
       component.status = 'warning';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('shape')).toBe(true);
       expect(icon.getAttribute('shape')).toEqual('exclamation-triangle');
 
       component.status = 'danger';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('shape')).toBe(true);
       expect(icon.getAttribute('shape')).toEqual('exclamation-circle');
@@ -93,10 +93,10 @@ describe('alert element', () => {
 
     it('should support custom icon shape', async () => {
       await componentIsStable(component);
-      let icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      let icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       component.iconShape = 'exclamation-triangle';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('shape')).toBe(true);
       expect(icon.getAttribute('shape')).toEqual('exclamation-triangle');
@@ -104,7 +104,7 @@ describe('alert element', () => {
 
     it('should set icon title based on status', async () => {
       await componentIsStable(component);
-      let icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      let icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
 
       expect(icon.hasAttribute('title')).toBe(true);
@@ -112,7 +112,7 @@ describe('alert element', () => {
 
       component.status = 'success';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon).toBeDefined();
       expect(icon.hasAttribute('title')).toBe(true);
@@ -120,7 +120,7 @@ describe('alert element', () => {
 
       component.status = 'warning';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon).toBeDefined();
       expect(icon.hasAttribute('title')).toBe(true);
@@ -128,7 +128,7 @@ describe('alert element', () => {
 
       component.status = 'danger';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon).toBeDefined();
       expect(icon.hasAttribute('title')).toBe(true);
@@ -137,7 +137,7 @@ describe('alert element', () => {
 
     it('should support custom icon title', async () => {
       await componentIsStable(component);
-      let icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      let icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
 
       expect(icon.hasAttribute('shape')).toBe(true);
@@ -145,7 +145,7 @@ describe('alert element', () => {
 
       component.iconTitle = 'my-icon-title';
       await componentIsStable(component);
-      icon = component.shadowRoot.querySelector<CwcIcon>('cwc-icon');
+      icon = component.shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon).toBeDefined();
       expect(icon.hasAttribute('title')).toBe(true);

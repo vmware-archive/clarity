@@ -13,7 +13,7 @@ import {
   infoCircleIcon,
   timesIcon,
 } from '@clr/core/icon-shapes';
-import { CwcBaseAlert } from './alert.base';
+import { CdsBaseAlert } from './alert.base';
 import { styles } from './alert.element.css';
 
 /**
@@ -24,15 +24,15 @@ import { styles } from './alert.element.css';
  * ```
  *
  * ```html
- * <cwc-alert>
- *    <cwc-alert-content>This is an alert.</cwc-alert-content>
- * </cwc-alert>
+ * <cds-alert>
+ *    <cds-alert-content>This is an alert.</cds-alert-content>
+ * </cds-alert>
  * ```
  *
  * @noInheritDoc
  * @beta 3.0
- * @element cwc-alert
- * @slot default - Content slot for inside the alert. Usually will contain at least a <cwc-alert-content> component.
+ * @element cds-alert
+ * @slot default - Content slot for inside the alert. Usually will contain at least a <cds-alert-content> component.
  * @cssprop --color
  * @cssprop --background
  * @cssprop --border-radius
@@ -42,7 +42,7 @@ import { styles } from './alert.element.css';
  * @cssprop --close-icon-color-hover
  */
 // @dynamic
-export class CwcAlert extends CwcBaseAlert {
+export class CdsAlert extends CdsBaseAlert {
   /** Sets the overall height and width of the alert and icon based on value */
   @property({ type: String })
   size: 'default' | 'sm';
@@ -52,12 +52,12 @@ export class CwcAlert extends CwcBaseAlert {
   }
 }
 
-registerElementSafely('cwc-alert', CwcAlert);
+registerElementSafely('cds-alert', CdsAlert);
 
 ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-alert': CwcAlert;
+    'cds-alert': CdsAlert;
   }
 }

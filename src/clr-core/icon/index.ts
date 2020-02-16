@@ -5,12 +5,12 @@
  */
 
 import { registerElementSafely } from '@clr/core/common';
-import { CwcIcon } from '@clr/core/icon-shapes';
+import { CdsIcon } from '@clr/core/icon-shapes';
 
-registerElementSafely('cwc-icon', CwcIcon);
+registerElementSafely('cds-icon', CdsIcon);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-icon': CwcIcon;
+    'cds-icon': CdsIcon;
   }
 }

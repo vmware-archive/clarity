@@ -259,7 +259,7 @@
       "projectType": "library",
       "root": "src/clr-core",
       "sourceRoot": "src/clr-core",
-      "prefix": "cwc",
+      "prefix": "cds",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

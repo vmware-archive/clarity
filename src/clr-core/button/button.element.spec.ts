@@ -1,29 +1,29 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ClrLoadingState, CwcButton } from '@clr/core/button';
+import { CdsButton, ClrLoadingState } from '@clr/core/button';
 import '@clr/core/button';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('button element', () => {
   let testElement: HTMLElement;
-  let component: CwcButton;
+  let component: CdsButton;
   const placeholderText: string = 'Button Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();
     testElement.innerHTML = `
       <form>
-        <cwc-button>
+        <cds-button>
           <span>${placeholderText}</span>
-        </cwc-button>
+        </cds-button>
       </form>
     `;
 
-    await waitForComponent('cwc-button');
-    component = testElement.querySelector<CwcButton>('cwc-button');
+    await waitForComponent('cds-button');
+    component = testElement.querySelector<CdsButton>('cds-button');
   });
 
   afterEach(() => {
@@ -99,7 +99,7 @@ describe('button element', () => {
     it('should prevent click when readonly or disabled', async () => {
       component.disabled = true;
       await componentIsStable(component);
-      const style = getComputedStyle(testElement.querySelector('cwc-button'));
+      const style = getComputedStyle(testElement.querySelector('cds-button'));
       expect(style.pointerEvents).toBe('none');
     });
   });
@@ -191,13 +191,13 @@ describe('button element', () => {
 
   describe('Button link', () => {
     let testLinkElement: HTMLElement;
-    let componentLink: CwcButton;
+    let componentLink: CdsButton;
 
     beforeEach(async () => {
       testLinkElement = createTestElement();
-      testLinkElement.innerHTML = `<cwc-button><a href="about">About</a></cwc-button>`;
-      await waitForComponent('cwc-button');
-      componentLink = testLinkElement.querySelector<CwcButton>('cwc-button');
+      testLinkElement.innerHTML = `<cds-button><a href="about">About</a></cds-button>`;
+      await waitForComponent('cds-button');
+      componentLink = testLinkElement.querySelector<CdsButton>('cds-button');
     });
 
     afterEach(() => {

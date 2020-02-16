@@ -16,24 +16,24 @@ import { styles } from './alert-content.element.css';
  * ```
  *
  * ```html
- * <cwc-alert>
- *    <cwc-alert-content>Lorem ipsum dolor sit amet</cwc-alert-content>
- * </cwc-alert>
+ * <cds-alert>
+ *    <cds-alert-content>Lorem ipsum dolor sit amet</cds-alert-content>
+ * </cds-alert>
  *
- * <cwc-app-alert>
- *    <cwc-alert-content>Lorem ipsum dolor sit amet</cwc-alert-content>
- *    <cwc-alert-actions>
- *       <cwc-button>Fix</cwc-button>
- *    </cwc-alert-actions>
- * </cwc-app-alert>
+ * <cds-app-alert>
+ *    <cds-alert-content>Lorem ipsum dolor sit amet</cds-alert-content>
+ *    <cds-alert-actions>
+ *       <cds-button>Fix</cds-button>
+ *    </cds-alert-actions>
+ * </cds-app-alert>
  * ```
  *
  * @noInheritDoc
  * @beta 3.0
- * @element cwc-alert-content
+ * @element cds-alert-content
  */
 // @dynamic
-export class CwcAlertContent extends LitElement {
+export class CdsAlertContent extends LitElement {
   render() {
     return html`
       <slot></slot>
@@ -45,10 +45,10 @@ export class CwcAlertContent extends LitElement {
   }
 }
 
-registerElementSafely('cwc-alert-content', CwcAlertContent);
+registerElementSafely('cds-alert-content', CdsAlertContent);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-alert-content': CwcAlertContent;
+    'cds-alert-content': CdsAlertContent;
   }
 }

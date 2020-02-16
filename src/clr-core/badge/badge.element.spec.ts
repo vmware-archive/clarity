@@ -1,23 +1,23 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { CwcBadge } from '@clr/core/badge';
+import { CdsBadge } from '@clr/core/badge';
 import '@clr/core/badge';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('badge element', () => {
   let testElement: HTMLElement;
-  let component: CwcBadge;
+  let component: CdsBadge;
   const placeholderText: string = 'Badge Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();
-    testElement.innerHTML = `<cwc-badge>${placeholderText}</cwc-badge>`;
+    testElement.innerHTML = `<cds-badge>${placeholderText}</cds-badge>`;
 
-    await waitForComponent('cwc-badge');
-    component = testElement.querySelector<CwcBadge>('cwc-badge');
+    await waitForComponent('cds-badge');
+    component = testElement.querySelector<CdsBadge>('cds-badge');
   });
 
   afterEach(() => {

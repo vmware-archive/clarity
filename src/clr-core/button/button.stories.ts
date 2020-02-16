@@ -17,7 +17,7 @@ ClarityIcons.addIcons(userIcon);
 
 export default {
   title: 'Components|Button',
-  component: 'cwc-button',
+  component: 'cds-button',
   parameters: {
     options: { showPanel: true },
     design: {
@@ -65,7 +65,7 @@ export const API = () => {
   return html`
     <div class=${buttonStatus === 'inverse' ? 'demo-inverse' : ''}>
       <style>
-        cwc-button {
+        cds-button {
           ${setStyles({
             '--color': buttonColor,
             '--background': background,
@@ -75,15 +75,15 @@ export const API = () => {
             '--border-radius': borderRadius,
           })}
       </style>
-      <cwc-button
+      <cds-button
         .action=${actionType}
         .status=${buttonStatus}
         .size=${size}
         .loadingState=${loadingState}
         .disabled=${disabled}
         @click=${action('click')}>
-        ${size === 'icon' ? html`<cwc-icon></cwc-icon>` : slot}
-      </cwc-button>
+        ${size === 'icon' ? html`<cds-icon></cds-icon>` : slot}
+      </cds-button>
     </div>
   `;
 };
@@ -97,7 +97,7 @@ export const form = () => {
     }}">
       <label for="name">Name</label><br />
       <input id="name" /><br />
-      <cwc-button type="submit">submit</cwc-button>
+      <cds-button type="submit">submit</cds-button>
     </form>
   `;
 };
@@ -105,9 +105,9 @@ export const form = () => {
 export const actions = () => {
   return html`
     <h1>Actions</h1>
-    <cwc-button>solid</cwc-button>
-    <cwc-button action="outline">outline</cwc-button>
-    <cwc-button action="flat">link</cwc-button>
+    <cds-button>solid</cds-button>
+    <cds-button action="outline">outline</cds-button>
+    <cds-button action="flat">link</cds-button>
   `;
 };
 
@@ -115,18 +115,18 @@ export const status = () => {
   return html`
     <section>
       <h2>Solid Status</h2>
-      <cwc-button>primary</cwc-button>
-      <cwc-button status="success">success</cwc-button>
-      <cwc-button status="danger">danger</cwc-button>
-      <cwc-button status="danger" disabled>disabled</cwc-button>
+      <cds-button>primary</cds-button>
+      <cds-button status="success">success</cds-button>
+      <cds-button status="danger">danger</cds-button>
+      <cds-button status="danger" disabled>disabled</cds-button>
     </section>
 
     <section>
       <h2>Outline Status</h2>
-      <cwc-button action="outline">primary</cwc-button>
-      <cwc-button action="outline" status="success">success</cwc-button>
-      <cwc-button action="outline" status="danger">danger</cwc-button>
-      <cwc-button action="outline" disabled>disabled</cwc-button>
+      <cds-button action="outline">primary</cds-button>
+      <cds-button action="outline" status="success">success</cds-button>
+      <cds-button action="outline" status="danger">danger</cds-button>
+      <cds-button action="outline" disabled>disabled</cds-button>
     </section>
   `;
 };
@@ -134,51 +134,51 @@ export const status = () => {
 export const icons = () => {
   return html`
     <h2>Icon Solid</h2>
-    <cwc-button aria-label="user account" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" disabled size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" status="success" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" status="danger" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
+    <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
 
     <h2>Icon Outline</h2>
-    <cwc-button aria-label="user account" action="outline" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" action="outline" disabled size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" action="outline" status="success" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
-    <cwc-button aria-label="user account" action="outline" status="danger" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
+    <cds-button aria-label="user account" action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" action="outline" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" action="outline" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <cds-button aria-label="user account" action="outline" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
 
     <h2>Icon with text</h2>
-    <cwc-button><cwc-icon shape="user"></cwc-icon> user account</cwc-button>
-    <cwc-button action="outline"><cwc-icon shape="user"></cwc-icon> user account</cwc-button>
-    <cwc-button action="flat"><cwc-icon shape="user"></cwc-icon> user account</cwc-button>
+    <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
+    <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
+    <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
   `;
 };
 
 export const links = () => {
   return html`
     <h1>Solid Links</h1>
-    <cwc-button>
+    <cds-button>
       <a href="#">link</a>
-    </cwc-button>
+    </cds-button>
 
-    <cwc-button>
+    <cds-button>
       <a href="#">this is a long link</a>
-    </cwc-button>
+    </cds-button>
 
-    <cwc-button size="sm">
+    <cds-button size="sm">
       <a href="#">small link</a>
-    </cwc-button>
+    </cds-button>
 
     <h2>Outline Links</h2>
-    <cwc-button action="outline">
+    <cds-button action="outline">
       <a href="#">link</a>
-    </cwc-button>
+    </cds-button>
 
-    <cwc-button action="outline">
+    <cds-button action="outline">
       <a href="#">this is a long link</a>
-    </cwc-button>
+    </cds-button>
 
-    <cwc-button action="outline" size="sm">
+    <cds-button action="outline" size="sm">
       <a href="#">small link</a>
-    </cwc-button>
+    </cds-button>
   `;
 };
 
@@ -187,23 +187,23 @@ export const sizes = () => {
     <h1>Sizes</h1>
 
     <h2>Solid</h2>
-    <cwc-button>default</cwc-button>
-    <cwc-button size="sm">small</cwc-button>
-    <cwc-button aria-label="user account" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
+    <cds-button>default</cds-button>
+    <cds-button size="sm">small</cds-button>
+    <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
 
     <h2>Outline</h2>
-    <cwc-button action="outline">default</cwc-button>
-    <cwc-button action="outline" size="sm">small</cwc-button>
-    <cwc-button action="outline" aria-label="user account" size="icon"><cwc-icon shape="user"></cwc-icon></cwc-button>
+    <cds-button action="outline">default</cds-button>
+    <cds-button action="outline" size="sm">small</cds-button>
+    <cds-button action="outline" aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
   `;
 };
 
 export const loading = () => {
   return html`
     <h1>Loading</h1>
-    <cwc-button .loadingState="${ClrLoadingState.LOADING}">solid</cwc-button>
-    <cwc-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cwc-button>
-    <cwc-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cwc-button>
+    <cds-button .loadingState="${ClrLoadingState.LOADING}">solid</cds-button>
+    <cds-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cds-button>
+    <cds-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cds-button>
   `;
 };
 
@@ -220,6 +220,6 @@ export const customStyles = () => {
       }
     </style>
     <h1>Custom CSS</h1>
-    <cwc-button class="btn-branding">button</cwc-button>
+    <cds-button class="btn-branding">button</cds-button>
   `;
 };

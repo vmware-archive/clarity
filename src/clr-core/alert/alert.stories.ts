@@ -15,7 +15,7 @@ ClarityIcons.addIcons(userIcon);
 
 export default {
   title: 'Components|Alert',
-  component: 'cwc-alert',
+  component: 'cds-alert',
   parameters: {
     options: { showPanel: true },
     design: {
@@ -48,7 +48,7 @@ export const API = () => {
 
   return html`
     <style>
-      cwc-alert {
+      cds-alert {
         ${setStyles({
           '--color': alertColor,
           '--background': background,
@@ -59,57 +59,57 @@ export const API = () => {
           '--close-icon-color-hover': closeIconColorHover,
         })}
     </style>
-    <cwc-alert 
+    <cds-alert 
       .closable=${closable}
       .iconShape=${iconShape}
       .iconTitle=${iconTitle}
       .size=${size} 
       .status=${alertStatus}
       @closedChange=${action('closeChanged')}>
-        <cwc-alert-content>
+        <cds-alert-content>
           ${slot}
-        </cwc-alert-content>
-    </cwc-alert>
+        </cds-alert-content>
+    </cds-alert>
   `;
 };
 
 export const status = () => {
   return html`
-    <cwc-alert status="info">
-      <cwc-alert-content>
+    <cds-alert status="info">
+      <cds-alert-content>
         Foobar
-      </cwc-alert-content>
-    </cwc-alert>
-    <cwc-alert status="success">
-      <cwc-alert-content>
+      </cds-alert-content>
+    </cds-alert>
+    <cds-alert status="success">
+      <cds-alert-content>
         Foo
-      </cwc-alert-content>
-    </cwc-alert>
-    <cwc-alert status="warning">
-      <cwc-alert-content>
+      </cds-alert-content>
+    </cds-alert>
+    <cds-alert status="warning">
+      <cds-alert-content>
         Bar
-      </cwc-alert-content>
-    </cwc-alert>
-    <cwc-alert status="danger">
-      <cwc-alert-content>
+      </cds-alert-content>
+    </cds-alert>
+    <cds-alert status="danger">
+      <cds-alert-content>
         Baz
-      </cwc-alert-content>
-    </cwc-alert>
+      </cds-alert-content>
+    </cds-alert>
   `;
 };
 
 export const sizes = () => {
   return html`
-    <cwc-alert>
-      <cwc-alert-content>
+    <cds-alert>
+      <cds-alert-content>
         Foobar
-      </cwc-alert-content>
-    </cwc-alert>
-    <cwc-alert size='sm'>
-      <cwc-alert-content>
+      </cds-alert-content>
+    </cds-alert>
+    <cds-alert size='sm'>
+      <cds-alert-content>
         Bar
-      </cwc-alert-content>
-    </cwc-alert>
+      </cds-alert-content>
+    </cds-alert>
   `;
 };
 
@@ -124,10 +124,10 @@ export const customStyles = () => {
         --close-icon-color-hover: #4D007A;
       }
     </style>
-    <cwc-alert class="alert-branding" icon-shape="user">
-      <cwc-alert-content>
+    <cds-alert class="alert-branding" icon-shape="user">
+      <cds-alert-content>
         Foobar
-      </cwc-alert-content>
-    </cwc-alert>
+      </cds-alert-content>
+    </cds-alert>
   `;
 };

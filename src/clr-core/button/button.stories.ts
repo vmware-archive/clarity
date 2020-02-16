@@ -61,10 +61,6 @@ export const API = () => {
   const borderColor = color('--border-color', undefined, cssGroup);
   const borderWidth = text('--border-width', undefined, cssGroup);
   const borderRadius = text('--border-radius', undefined, cssGroup);
-  const fontSize = text('--font-size', undefined, cssGroup);
-  const fontWeight = text('--font-weight', undefined, cssGroup);
-  const lineHeight = text('--line-height', undefined, cssGroup);
-  const letterSpacing = text('--letter-spacing', undefined, cssGroup);
 
   return html`
     <div class=${buttonStatus === 'inverse' ? 'demo-inverse' : ''}>
@@ -77,10 +73,6 @@ export const API = () => {
             '--border-color': borderColor,
             '--border-width': borderWidth,
             '--border-radius': borderRadius,
-            '--font-size': fontSize,
-            '--font-weight': fontWeight,
-            '--line-height': lineHeight,
-            '--letter-spacing': letterSpacing,
           })}
       </style>
       <cwc-button

@@ -36,13 +36,9 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * @cssprop --box-shadow-color
  * @cssprop --border-radius
  * @cssprop --border-width
- * @cssprop --font-size
- * @cssprop --font-weight
  * @cssprop --border-color
  * @cssprop --color
  * @cssprop --background
- * @cssprop --line-height
- * @cssprop --letter-spacing
  */
 // @dynamic
 export class CwcButton extends CwcBaseButton {

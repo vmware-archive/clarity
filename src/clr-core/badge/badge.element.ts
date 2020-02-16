@@ -41,7 +41,9 @@ export class CwcBadge extends LitElement {
 
   render() {
     return html`
-      <slot></slot>
+      <div class="private-host">
+        <slot></slot>
+      </div>
     `;
   }
 

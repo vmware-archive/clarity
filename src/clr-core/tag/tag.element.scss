@@ -1,59 +1,59 @@
 @import './../styles/mixins/utils';
 
 :host {
-  --background-hover: var(--clr-color-neutral-200, #{$clr-color-neutral-200});
-  --border: #{$clr-global-borderwidth} solid var(--clr-color-neutral-600, #{$clr-color-neutral-600});
-  --font-size: #{$clr-p7-font-size};
-  --font-weight: #{$clr-p7-font-weight};
-  --letter-spacing: #{$clr-p7-letter-spacing};
-  --border-radius: #{$clr_baselineRem_0_5};
   --background: none;
+  --background-hover: var(--clr-color-neutral-200, #{$clr-color-neutral-200});
+  --border-radius: #{$clr_baselineRem_0_5};
+  --border-color: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
+  display: inline-block;
+}
 
+.private-host {
   line-height: var(--font-size);
   border-radius: var(--border-radius);
   background: var(--background);
-  border: var(--border);
+  border: #{$clr-global-borderwidth} solid var(--border-color);
   color: var(--color);
-  font-size: var(--font-size);
+  font-size: $clr-p7-font-size;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: $clr_baselineRem_1px $clr_baselineRem_0_5 $clr_baselineRem_1px;
   height: $clr_baselineRem_0_875;
   white-space: nowrap;
+}
 
-  &:host(:visited) {
-    --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
-  }
+:host(:visited) {
+  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
+}
 
-  &:host(:focus),
-  &:host(:hover),
-  &:host(:active) {
+:host(:focus),
+:host(:hover),
+:host(:active) {
+  text-decoration: none;
+}
+
+// style for clickable tag
+:host(:not([readonly])) {
+  &:host(:hover) .private-host,
+  &:host(:active) .private-host {
     text-decoration: none;
+    background-color: var(--background-hover);
+    cursor: pointer;
   }
 
-  // style for clickable tag
-  &:host(:not([readonly])) {
-    &:host(:hover),
-    &:host(:active) {
-      text-decoration: none;
-      background-color: var(--background-hover);
-      cursor: pointer;
-    }
-
-    &:host(:active) {
-      box-shadow: 0 $clr_baselineRem_1px 0 0 var(--background) inset;
-      transform: translateY($clr_baselineRem_0_5px);
-    }
-  }
-
-  ::slotted(cwc-badge) {
-    margin: 0 (-1 * $clr_baselineRem_0_375) 0 $clr_baselineRem_0_25;
+  &:host(:active) .private-host {
+    box-shadow: 0 $clr_baselineRem_1px 0 0 var(--background) inset;
+    transform: translateY($clr_baselineRem_0_5px);
   }
 }
 
+::slotted(cwc-badge) {
+  margin: 0 (-1 * $clr_baselineRem_0_375) 0 $clr_baselineRem_0_25;
+}
+
 :host([color='gray']) {
-  --border: #{$clr_baselineRem_1px} solid var(--clr-color-neutral-600, #{$clr-color-neutral-600});
+  --border-color: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
 
   ::slotted(cwc-badge) {
     --background: #{$clr-color-neutral-600};
@@ -62,7 +62,7 @@
 }
 
 :host([color='purple']) {
-  --border: #{$clr_baselineRem_1px} solid var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
+  --border-color: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
 
   ::slotted(cwc-badge) {
     --background: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
@@ -71,7 +71,7 @@
 }
 
 :host([color='blue']) {
-  --border: #{$clr_baselineRem_1px} solid var(--clr-color-action-800, #{$clr-color-action-800});
+  --border-color: var(--clr-color-action-800, #{$clr-color-action-800});
 
   ::slotted(cwc-badge) {
     --background: var(--clr-color-secondary-action-800, #{$clr-color-secondary-action-800});
@@ -80,7 +80,7 @@
 }
 
 :host([color='orange']) {
-  --border: #{$clr_baselineRem_1px} solid var(--clr-color-warning-500, #{$clr-color-warning-500});
+  --border-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
 
   ::slotted(cwc-badge) {
     --background: var(--clr-color-warning-500, #{$clr-color-warning-500});
@@ -89,7 +89,7 @@
 }
 
 :host([color='light-blue']) {
-  --border: #{$clr_baselineRem_1px} solid var(--clr-color-action-300, #{$clr-color-action-300});
+  --border-color: var(--clr-color-action-300, #{$clr-color-action-300});
 
   ::slotted(cwc-badge) {
     --background: var(--clr-color-action-300, #{$clr-color-action-300});
@@ -100,7 +100,7 @@
 :host([status='info']) {
   --background: var(--clr-color-action-50, #{$clr-color-action-50});
   --background-hover: var(--clr-color-action-100, #{$clr-color-action-100});
-  --border: $clr_baselineRem_1px solid var(--clr-color-action-400, #{$clr-color-action-400});
+  --border-color: var(--clr-color-action-400, #{$clr-color-action-400});
   --color: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
@@ -108,21 +108,21 @@
   --background: var(--clr-color-success-50, #{$clr-color-success-50});
   --background-hover: var(--clr-color-success-100, #{$clr-color-success-100});
   --color: var(--clr-color-success-800, #{$clr-color-success-800});
-  --border: $clr_baselineRem_1px solid var(--clr-color-success-400, #{$clr-color-success-400});
+  --border-color: var(--clr-color-success-400, #{$clr-color-success-400});
 }
 
 :host([status='warning']) {
   --background: var(--clr-color-warning-100, #{$clr-color-warning-100});
   --background-hover: var(--clr-color-warning-200, #{$clr-color-warning-200});
   --color: var(--clr-color-neutral-900, #{$clr-color-neutral-900});
-  --border: $clr_baselineRem_1px solid var(--clr-color-warning-300, #{$clr-color-warning-300});
+  --border-color: var(--clr-color-warning-300, #{$clr-color-warning-300});
 }
 
 :host([status='danger']) {
   --background: var(--clr-color-danger-100, #{$clr-color-danger-100});
   --background-hover: var(--clr-color-danger-200, #{$clr-color-danger-200});
   --color: var(--clr-color-danger-900, #{$clr-color-danger-900});
-  --border: $clr_baselineRem_1px solid var(--clr-color-danger-200, #{$clr-color-danger-200});
+  --border-color: var(--clr-color-danger-200, #{$clr-color-danger-200});
 }
 
 @include fixForFirefox() {

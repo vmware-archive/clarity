@@ -5,6 +5,7 @@
  */
 
 import { baseStyles, CwcBaseButton, property, registerElementSafely, StatusTypes } from '@clr/core/common';
+import { html } from 'lit-element';
 import { styles } from './tag.element.css';
 
 /**
@@ -21,13 +22,10 @@ import { styles } from './tag.element.css';
  *
  * @element cwc-tag
  * @slot default - Content slot for inside the tag
- * @cssprop --font-size
- * @cssprop --font-weight
- * @cssprop --letter-spacing
- * @cssprop --border-radius
  * @cssprop --background
  * @cssprop --background-hover
- * @cssprop --border
+ * @cssprop --border-color
+ * @cssprop --border-radius
  */
 // @dynamic
 export class CwcTag extends CwcBaseButton {
@@ -40,9 +38,17 @@ export class CwcTag extends CwcBaseButton {
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })
   color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
-
   static get styles() {
     return [baseStyles, styles];
+  }
+
+  render() {
+    return html`
+    <div class="private-host">
+      <slot></slot>
+    </div>
+    ${this.hiddenButtonTemplate}
+    `;
   }
 }
 

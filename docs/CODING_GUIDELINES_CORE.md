@@ -284,6 +284,10 @@ adhere to the following guidelines for our Core Web Component codebase.
   consistently and with explicit intent and constraint.
 
 * Any style that causes layout reflow should **not** be exposed via CSS Custom Properties.
+  This includes padding, margins and border sizes.
+
+* Prefer exposing shorthand values unless the shorthand alters sizes like border
+  `border-color: var(--border-color)` not `border: var(--border)`
 
 * Core components cannot rely on global styles such as clr-ui grid and typography.
   Components should be completely independent. This allows teams who are migrating
@@ -297,6 +301,27 @@ adhere to the following guidelines for our Core Web Component codebase.
   aliased due to app embedding and e2e workflows. This prevents version
   collisions and dependencies form having to share the same global values.
 
+  ```scss
+  :host {
+    // --[optional template element]-[css property]-[optional element state]: value;
+    --icon-color-hover: var(...);
+    --icon-color: var(...);
+    --color: var(...);
+  }
+
+  .inner-host {
+    color: var(--color);
+
+    &:hover {
+      --color: var(--color-hover);
+    }
+  }
+
+  cwc-icon {
+    --color: var(--icon-color);
+  }
+  ```
+
 * Components are themed using CSS Custom Properties defined on the `:host` element.
   This ensures the component is only styled explicitly by the API we define and
   cannot accidentally be changed at a global scope.
@@ -307,29 +332,39 @@ adhere to the following guidelines for our Core Web Component codebase.
     // public style API
     --background: #{$clr-color-neutral-600};
     --color: #{$clr-color-on-neutral-600};
+    display: inline-block;
+  }
 
-    // private styles below
+  // Styles other than the default display should not be applied directly to the
+  // `:host` selector. This ensures only customizations only done through
+  // the public CSS Custom properties.
+  .private-host {
+    background: var(--background);
+    color: var(--color);
   }
   ```
 
 * Alternate states of a component should leverage existing base properties to
   keep the API small and flexible.
 
+* Only colors should use global vars and fall back to hard coded sass vars so
+  components render independently without requiring global styles.
+
   ```scss
   // cwc-badge
   :host {
-    --background: #{$clr-color-neutral-600};
-    --color: #{$clr-color-on-neutral-600};
+    --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
+    --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
   }
 
   :host([status='success']) {
-    --background: #{$clr-color-success-700};
-    --color: #{$clr-color-on-success-700};
+    --background: var(--clr-color-success-700, #{$clr-color-success-700});
+    --color: var(--clr-color-on-success-700, #{$clr-color-on-success-700});
   }
 
   :host([status='danger']) {
-    --background: #{$clr-color-danger-800};
-    --color: #{$clr-color-on-danger-800};
+    --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
+    --color: var(--clr-color-on-danger-800, #{$clr-color-on-danger-800});
   }
   ```
 

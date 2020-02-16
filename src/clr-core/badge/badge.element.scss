@@ -3,7 +3,10 @@
 :host {
   --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
   --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
+  display: inline-block;
+}
 
+.private-host {
   display: inline-flex;
   vertical-align: middle;
   align-items: center;

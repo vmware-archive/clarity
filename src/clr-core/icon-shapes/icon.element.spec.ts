@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import '@clr/core/icon';
-import { CwcIcon } from '@clr/core/icon-shapes';
+import { CdsIcon } from '@clr/core/icon-shapes';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { renderIcon } from './icon.renderer';
 import { ClarityIcons } from './icon.service';
@@ -13,7 +13,7 @@ const testIcon = renderIcon('test');
 
 describe('icon element', () => {
   let testElement: HTMLElement;
-  let component: CwcIcon;
+  let component: CdsIcon;
 
   beforeAll(() => {
     ClarityIcons.add({ testing: testIcon });
@@ -22,11 +22,11 @@ describe('icon element', () => {
   beforeEach(async () => {
     testElement = createTestElement();
     testElement.innerHTML = `
-      <cwc-icon></cwc-icon>
+      <cds-icon></cds-icon>
     `;
 
-    await waitForComponent('cwc-icon');
-    component = testElement.querySelector<CwcIcon>('cwc-icon');
+    await waitForComponent('cds-icon');
+    component = testElement.querySelector<CdsIcon>('cds-icon');
   });
 
   afterEach(() => {
@@ -162,7 +162,7 @@ describe('icon element', () => {
       await componentIsStable(component);
 
       const id = component.shadowRoot.querySelector('span').getAttribute('id');
-      expect(id.includes('aria-cwc-icon')).toBe(true);
+      expect(id.includes('aria-cds-icon')).toBe(true);
       expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
     });
   });

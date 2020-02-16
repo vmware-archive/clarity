@@ -24,14 +24,14 @@ import { styles } from './test-dropdown.element.css';
  * ```
  *
  * ```html
- * <cwc-test-dropdown title="click me!">
+ * <cds-test-dropdown title="click me!">
  *   Hello World
- * </cwc-test-dropdown>
+ * </cds-test-dropdown>
  * ```
  *
  * @noInheritDoc
  * @beta 3.0
- * @element cwc-test-dropdown
+ * @element cds-test-dropdown
  * @slot default - Content slot for dropdown content
  * @event {boolean} openChange - notify open state change of dropdown
  * @cssprop --clr-test-border-color
@@ -39,7 +39,7 @@ import { styles } from './test-dropdown.element.css';
  * @cssprop --clr-test-button-text-color
  */
 // @dynamic
-export class CwcTestDropdown extends LitElement {
+export class CdsTestDropdown extends LitElement {
   @event() private openChange: EventEmitter<boolean>;
 
   private _open = false;
@@ -90,10 +90,10 @@ export class CwcTestDropdown extends LitElement {
   }
 }
 
-registerElementSafely('cwc-test-dropdown', CwcTestDropdown);
+registerElementSafely('cds-test-dropdown', CdsTestDropdown);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-test-dropdown': CwcTestDropdown;
+    'cds-test-dropdown': CdsTestDropdown;
   }
 }

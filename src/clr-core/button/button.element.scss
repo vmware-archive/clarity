@@ -1,6 +1,6 @@
 @import './../styles/mixins/utils';
 
-// TODO: progress spinner CSS deprecated, will be replaced by cwc-progress
+// TODO: progress spinner CSS deprecated, will be replaced by cds-progress
 @import './../../clr-angular/progress/spinner/variables.spinner';
 @import './../../clr-angular/image/icons.clarity';
 @import './../../clr-angular/progress/spinner/spinner.clarity';
@@ -75,7 +75,7 @@
   line-height: var(--line-height);
 }
 
-::slotted(cwc-icon) {
+::slotted(cds-icon) {
   --color: inherit;
 }
 

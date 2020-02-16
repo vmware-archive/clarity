@@ -141,9 +141,9 @@
         - [open] - setting a property on the element
         - (openChange) - listening for the `openChange` custom event
       -->
-      <cwc-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+      <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
         <p>slot content</p>
-      </cwc-modal>
+      </cds-modal>
     ```
 
     #### Vue
@@ -155,9 +155,9 @@
       - :open - setting a property on the element
       - @openChange - listening for the `openChange` custom event
     -->
-    <cwc-modal large :open="true" @openChange="log($event.detail)">
+    <cds-modal large :open="true" @openChange="log($event.detail)">
       <p>slot content</p>
-    </cwc-modal>
+    </cds-modal>
     ```
 
     #### React (Support Coming Soon)
@@ -171,7 +171,7 @@
       - openChange - listening for the `openChange` custom event
     */
     }
-    <CwcModal large open={this.state.open} openChange={this.log}>
+    <CdsModal large open={this.state.open} openChange={this.log}>
       <p>slot content</p>
-    </CwcModal>;
+    </CdsModal>;
     ```

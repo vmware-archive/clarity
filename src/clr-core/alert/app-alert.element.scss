@@ -35,7 +35,7 @@
 
   .alert-item > span,
   .alert-text,
-  ::slotted(cwc-alert-content) {
+  ::slotted(cds-alert-content) {
     flex: 0 1 auto;
   }
 
@@ -44,7 +44,7 @@
   }
 
   button.close {
-    cwc-icon {
+    cds-icon {
       margin-top: -1 * $clr_baselineRem_5px;
     }
   }

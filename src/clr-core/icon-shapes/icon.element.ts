@@ -39,10 +39,10 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * ```
  *
  * ```html
- * <cwc-icon shape="user"></cwc-icon>
+ * <cds-icon shape="user"></cds-icon>
  * ```
  *
- * @element cwc-icon
+ * @element cds-icon
  * @cssprop --clr-icon-color
  * @cssprop --clr-icon-color-success
  * @cssprop --clr-icon-color-danger
@@ -55,7 +55,7 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --clr-icon-color-inverse-info
  */
 // @dynamic
-export class CwcIcon extends IconMixinClass {
+export class CdsIcon extends IconMixinClass {
   static get styles() {
     return [baseStyles, styles];
   }
@@ -201,4 +201,4 @@ export class CwcIcon extends IconMixinClass {
     }
   }
 }
-export interface CwcIcon extends IconMixinClass, UniqueId, CssHelpers {}
+export interface CdsIcon extends IconMixinClass, UniqueId, CssHelpers {}

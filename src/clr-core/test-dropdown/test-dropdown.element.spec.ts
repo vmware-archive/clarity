@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import '@clr/core/test-dropdown';
-import { CwcTestDropdown } from '@clr/core/test-dropdown';
+import { CdsTestDropdown } from '@clr/core/test-dropdown';
 import {
   componentIsStable,
   createTestElement,
@@ -16,18 +16,18 @@ import {
 
 describe('dropdown test element', () => {
   let testElement: HTMLElement;
-  let component: CwcTestDropdown;
+  let component: CdsTestDropdown;
 
   beforeEach(async () => {
     testElement = createTestElement();
     testElement.innerHTML = `
-      <cwc-test-dropdown title="custom title">
+      <cds-test-dropdown title="custom title">
         <span>hello world</span>
-      </cwc-test-dropdown>
+      </cds-test-dropdown>
     `;
 
-    await waitForComponent('cwc-test-dropdown');
-    component = testElement.querySelector<CwcTestDropdown>('cwc-test-dropdown');
+    await waitForComponent('cds-test-dropdown');
+    component = testElement.querySelector<CdsTestDropdown>('cds-test-dropdown');
   });
 
   afterEach(() => {

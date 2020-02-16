@@ -12,7 +12,7 @@ import { html } from 'lit-html';
 export default {
   title: '_Dropdown',
   decorators: [withKnobs],
-  component: 'cwc-test-dropdown',
+  component: 'cds-test-dropdown',
 };
 
 export const API = () => {
@@ -22,17 +22,17 @@ export const API = () => {
 
   return html`
     <style>
-      cwc-test-dropdown {
+      cds-test-dropdown {
         --border-color: ${color('--border-color', 'hsl(0, 0%, 80%)')};
         --background: ${color('--background', 'hsl(0, 0%, 80%)')};
         --color: ${color('--color', 'hsl(0, 0%, 18%)')};
       }
     </style>
-    <cwc-test-dropdown
+    <cds-test-dropdown
       .title=${title}
       .open=${open}
       @openChange="${(e: any) => action('openChange')(e.detail)}">
       ${slot}
-    </cwc-test-dropdown>
+    </cds-test-dropdown>
   `;
 };

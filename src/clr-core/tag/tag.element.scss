@@ -48,14 +48,14 @@
   }
 }
 
-::slotted(cwc-badge) {
+::slotted(cds-badge) {
   margin: 0 (-1 * $clr_baselineRem_0_375) 0 $clr_baselineRem_0_25;
 }
 
 :host([color='gray']) {
   --border-color: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
 
-  ::slotted(cwc-badge) {
+  ::slotted(cds-badge) {
     --background: #{$clr-color-neutral-600};
     --color: #{$clr-color-on-neutral-600};
   }
@@ -64,7 +64,7 @@
 :host([color='purple']) {
   --border-color: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
 
-  ::slotted(cwc-badge) {
+  ::slotted(cds-badge) {
     --background: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
     --color: var(--clr-color-on-secondary-action-500, #{$clr-color-on-secondary-action-500});
   }
@@ -73,7 +73,7 @@
 :host([color='blue']) {
   --border-color: var(--clr-color-action-800, #{$clr-color-action-800});
 
-  ::slotted(cwc-badge) {
+  ::slotted(cds-badge) {
     --background: var(--clr-color-secondary-action-800, #{$clr-color-secondary-action-800});
     --color: var(--clr-color-on-secondary-action-800, #{$clr-color-on-secondary-action-800});
   }
@@ -82,7 +82,7 @@
 :host([color='orange']) {
   --border-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
 
-  ::slotted(cwc-badge) {
+  ::slotted(cds-badge) {
     --background: var(--clr-color-warning-500, #{$clr-color-warning-500});
     --color: var(--clr-color-on-warning-500, #{$clr-color-on-warning-500});
   }
@@ -91,7 +91,7 @@
 :host([color='light-blue']) {
   --border-color: var(--clr-color-action-300, #{$clr-color-action-300});
 
-  ::slotted(cwc-badge) {
+  ::slotted(cds-badge) {
     --background: var(--clr-color-action-300, #{$clr-color-action-300});
     --color: var(--clr-color-on-action-300, #{$clr-color-on-action-300});
   }

@@ -39,7 +39,7 @@ export const clarityCore = () => {
         max-width: 8rem;
       }
 
-      .welcome cwc-button {
+      .welcome cds-button {
         margin-top: 1rem;
       }
     </style>
@@ -48,9 +48,9 @@ export const clarityCore = () => {
       <h1>Clarity Core</h1>
       <h2>Web Component Implementation of the Clarity Design System</h2>
 
-      <cwc-button status="primary">
+      <cds-button status="primary">
         <a href="./?path=/story/documentation-welcome--getting-started">Get Started</a>
-      </cwc-button>
+      </cds-button>
     </section>
   `;
 };
@@ -121,9 +121,9 @@ font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
 
           <pre><code>
           ${`
-<cwc-button>Hello World</cwc-button>
+<cds-button>Hello World</cds-button>
 <script>
-  const button = document.querySelector('cwc-button');
+  const button = document.querySelector('cds-button');
   button.status = 'danger';
 </script>
           `}
@@ -173,9 +173,9 @@ export class AppModule { }
 - (openChange) - listen for the 'openChange' custom event
 -->
 
-<cwc-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+<cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
   <p>slot content</p>
-</cwc-modal>
+</cds-modal>
         `}
       </code></pre>
     </section>
@@ -210,9 +210,9 @@ Example of a modal web component in Vue
 - @openChange - listen for the 'openChange' custom event
 -->
 
-<cwc-modal size="lg" :open="true" @openChange="log">
+<cds-modal size="lg" :open="true" @openChange="log">
   <p>slot content</p>
-</cwc-modal>
+</cds-modal>
       `}
       </code></pre>
     </section>
@@ -242,9 +242,9 @@ Example of a modal web component in Preact
 - openChange - listen for the 'openChange' custom event
 */
 
-<cwc-modal size="lg" open={this.state.open} onOpenChange={this.log}>
+<cds-modal size="lg" open={this.state.open} onOpenChange={this.log}>
   <p>slot content</p>
-</cwc-modal>
+</cds-modal>
       `}
       </code></pre>
 

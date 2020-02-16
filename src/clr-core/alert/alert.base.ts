@@ -5,7 +5,7 @@
  */
 
 import '@clr/core/button';
-import { CwcButton } from '@clr/core/button';
+import { CdsButton } from '@clr/core/button';
 import {
   CommonStringsService,
   event,
@@ -47,7 +47,7 @@ const iconMap = {
  * Base class for alerts. Contains properties and functions common to all alerts.
  */
 // @dynamic
-export class CwcBaseAlert extends LitElement {
+export class CdsBaseAlert extends LitElement {
   @event() private closedChange: EventEmitter<boolean>;
 
   /** If false, the alert will not render the close button.  */
@@ -66,7 +66,7 @@ export class CwcBaseAlert extends LitElement {
   @property({ type: String })
   iconTitle = '';
 
-  @querySlotAll('cwc-button') private buttons: NodeListOf<CwcButton>;
+  @querySlotAll('cds-button') private buttons: NodeListOf<CdsButton>;
 
   get alertIconShape() {
     /* 
@@ -108,7 +108,7 @@ export class CwcBaseAlert extends LitElement {
       <div class="alert-wrapper">
         <div class="alert-item">
           <div class="alert-icon-wrapper">
-            <cwc-icon class="alert-icon" shape="${this.alertIconShape}" title="${this.alertIconTitle}"></cwc-icon>
+            <cds-icon class="alert-icon" shape="${this.alertIconShape}" title="${this.alertIconTitle}"></cds-icon>
           </div>
           <slot></slot>
           <slot name="actions" @slotchange="${this.updateButtons()}"></slot>
@@ -119,7 +119,7 @@ export class CwcBaseAlert extends LitElement {
           ? html`<button @click="${() => this.closeAlert()}" aria-label="${
               CommonStringsService.keys.alertCloseButtonAriaLabel
             }"
-          class="close" action="outline" icon><cwc-icon shape="times"></cwc-icon></button>`
+          class="close" action="outline" icon><cds-icon shape="times"></cds-icon></button>`
           : html``
       }
     `;

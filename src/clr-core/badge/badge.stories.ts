@@ -11,7 +11,7 @@ import { html } from 'lit-html';
 
 export default {
   title: 'Components|Badge',
-  component: 'cwc-badge',
+  component: 'cds-badge',
   parameters: {
     options: { showPanel: true },
     design: {
@@ -47,45 +47,45 @@ export const API = () => {
 
   return html`
     <style>
-      cwc-badge {
+      cds-badge {
         ${setStyles({
           '--color': textColor,
           '--background': background,
         })}
     </style>
-    <cwc-badge
+    <cds-badge
       .status=${badgeStatus}
       .color=${badgeColor}>
       ${slot}
-    </cwc-badge>
+    </cds-badge>
   `;
 };
 
 export const status = () => {
   return html`
     <h1>Status</h1>
-    <cwc-badge status="info">2</cwc-badge>
-    <cwc-badge status="success">3</cwc-badge>
-    <cwc-badge status="warning">12</cwc-badge>
-    <cwc-badge status="danger">15</cwc-badge>
+    <cds-badge status="info">2</cds-badge>
+    <cds-badge status="success">3</cds-badge>
+    <cds-badge status="warning">12</cds-badge>
+    <cds-badge status="danger">15</cds-badge>
   `;
 };
 
 export const color = () => {
   return html`
     <style>
-      cwc-badge.app-custom {
+      cds-badge.app-custom {
         --background: darkblue;
         --color: snow;
       }
     </style>
     <h1>Color</h1>
-    <cwc-badge>5</cwc-badge>
-    <cwc-badge color="gray">1</cwc-badge>
-    <cwc-badge color="purple">1</cwc-badge>
-    <cwc-badge color="blue">15</cwc-badge>
-    <cwc-badge color="orange">2</cwc-badge>
-    <cwc-badge color="light-blue">3</cwc-badge>
-    <cwc-badge class='app-custom'>23</cwc-badge>
+    <cds-badge>5</cds-badge>
+    <cds-badge color="gray">1</cds-badge>
+    <cds-badge color="purple">1</cds-badge>
+    <cds-badge color="blue">15</cds-badge>
+    <cds-badge color="orange">2</cds-badge>
+    <cds-badge color="light-blue">3</cds-badge>
+    <cds-badge class='app-custom'>23</cds-badge>
   `;
 };

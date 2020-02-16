@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
-import { CwcBaseButton, getElementWidth } from '@clr/core/common';
+import { CdsBaseButton, getElementWidth } from '@clr/core/common';
 import { html, query } from 'lit-element';
 import { styles } from './button.element.css';
 
@@ -28,10 +28,10 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * ```
  *
  * ```html
- * <cwc-button>submit</cwc-button>
+ * <cds-button>submit</cds-button>
  * ```
  *
- * @element cwc-button
+ * @element cds-button
  * @slot default - Content slot for inside the button
  * @cssprop --box-shadow-color
  * @cssprop --border-radius
@@ -41,7 +41,7 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * @cssprop --background
  */
 // @dynamic
-export class CwcButton extends CwcBaseButton {
+export class CdsButton extends CdsBaseButton {
   /**
    * Define the type of action the button triggers
    *
@@ -134,10 +134,10 @@ export class CwcButton extends CwcBaseButton {
   }
 }
 
-registerElementSafely('cwc-button', CwcButton);
+registerElementSafely('cds-button', CdsButton);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cwc-button': CwcButton;
+    'cds-button': CdsButton;
   }
 }

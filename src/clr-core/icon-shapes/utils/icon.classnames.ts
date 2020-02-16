@@ -6,7 +6,7 @@
 
 import { getEnumValues, isString, transformToSpacedString } from '@clr/core/common';
 import isNil from 'ramda/es/isNil';
-import { CwcIcon } from '../icon.element';
+import { CdsIcon } from '../icon.element';
 import { IconShapeCollection } from '../interfaces/icon.interfaces';
 import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape';
 
@@ -89,7 +89,7 @@ export function getUpdateSizeStrategy(size: string) {
   return SizeUpdateStrategies.BadSizeValue;
 }
 
-export function updateIconSizeStyleOrClassnames(el: CwcIcon, size: string) {
+export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
   const updateStrategy = getUpdateSizeStrategy(size);
 
   switch (updateStrategy) {

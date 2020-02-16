@@ -118,7 +118,7 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 * One Component per file.
 
-* Custom Elements (Web Components) should be prefixed with `cwc-`.
+* Custom Elements (Web Components) should be prefixed with `cds-`.
 
 * There is no prefix on public custom element attributes or properties.
 
@@ -127,7 +127,7 @@ adhere to the following guidelines for our Core Web Component codebase.
 * Built-in component style options should be exposed via attributes and CSS
   Custom Properties.
 
-* The Component class should be prefixed with `Cwc`. Example `export class CwcModal { }`
+* The Component class should be prefixed with `Cds`. Example `export class CdsModal { }`
 
 * Style attributes related to sizes should use t-shirt style values. Example
   `size="sm"` ... xs, sm, md, lg, xl xxl
@@ -177,32 +177,32 @@ adhere to the following guidelines for our Core Web Component codebase.
 * If the component needs to render external text or HTML, use the [Slot API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots).
 
   ```html
-  <cwc-modal>
+  <cds-modal>
     <p>slot content</p>
-  </cwc-modal>
+  </cds-modal>
   ```
 
 * We do not use named slots as a public API but rather provide wrapper components.
 
   ```html
-  <cwc-modal>
-    <cwc-modal-header></cwc-modal-header>
-    <cwc-modal-body></cwc-modal-body>
-    <cwc-modal-actions></cwc-modal-actions>
-  </cwc-modal>
+  <cds-modal>
+    <cds-modal-header></cds-modal-header>
+    <cds-modal-body></cds-modal-body>
+    <cds-modal-actions></cds-modal-actions>
+  </cds-modal>
   ```
 
   Internally we use named slots but automatically add the named slot.
 
   ```html
-  <!-- cwc-modal template -->
+  <!-- cds-modal template -->
   <slot name="header"></slot>
   <slot></slot>
   <slot name="actions"></slot>
   ```
 
   ```typescript
-  // cwc-modal-actions
+  // cds-modal-actions
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('slot', 'actions');
@@ -217,14 +217,14 @@ adhere to the following guidelines for our Core Web Component codebase.
   /**
    * Dropdown, example test component. Do not use in production.
    *
-   * @element `cwc-test-dropdown`
+   * @element `cds-test-dropdown`
    * @slot `default` - Content slot for dropdown content
    * @attr `outline` - Apply outline style.
    * @cssprop `--border-color`
    * @cssprop `--background`
    * @cssprop `--color`
    */
-  export class CwcDropdown {}
+  export class CdsDropdown {}
   ```
 
 * These component conventions allow frameworks to consume the Web easily
@@ -237,9 +237,9 @@ adhere to the following guidelines for our Core Web Component codebase.
     - [open] is setting a property on the element
     - (openChange) is listening for the `openChange` custom event
   -->
-  <cwc-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+  <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
     <p>slot content</p>
-  </cwc-modal>
+  </cds-modal>
   ```
 
   ```html
@@ -249,9 +249,9 @@ adhere to the following guidelines for our Core Web Component codebase.
     - :open is setting a property on the element
     - @openChange is listening for the `openChange` custom event
   -->
-  <cwc-modal size="lg" :open="true" @openChange="log($event.detail)">
+  <cds-modal size="lg" :open="true" @openChange="log($event.detail)">
     <p>slot content</p>
-  </cwc-modal>
+  </cds-modal>
   ```
 
   ```jsx
@@ -263,9 +263,9 @@ adhere to the following guidelines for our Core Web Component codebase.
     - openChange is listening for the `openChange` custom event
   */
   }
-  <CwcModal size="lg" open={this.state.open} openChange={this.log}>
+  <CdsModal size="lg" open={this.state.open} openChange={this.log}>
     <p>slot content</p>
-  </CwcModal>;
+  </CdsModal>;
   ```
 
 ## Component Templates
@@ -317,7 +317,7 @@ adhere to the following guidelines for our Core Web Component codebase.
     }
   }
 
-  cwc-icon {
+  cds-icon {
     --color: var(--icon-color);
   }
   ```
@@ -327,7 +327,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   cannot accidentally be changed at a global scope.
 
   ```scss
-  // cwc-badge
+  // cds-badge
   :host {
     // public style API
     --background: #{$clr-color-neutral-600};
@@ -351,7 +351,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   components render independently without requiring global styles.
 
   ```scss
-  // cwc-badge
+  // cds-badge
   :host {
     --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
     --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
@@ -372,14 +372,14 @@ adhere to the following guidelines for our Core Web Component codebase.
 
   ```scss
   // application level styles
-  cwc-badge.product-badge {
+  cds-badge.product-badge {
     --background: purple;
     --color: white;
   }
   ```
 
   ```html
-  <cwc-badge class="product-badge">1</cwc-badge>
+  <cds-badge class="product-badge">1</cds-badge>
   ```
 
 * Host defined properties allow teams to prefix their own core components to
@@ -388,13 +388,13 @@ adhere to the following guidelines for our Core Web Component codebase.
 
   ```html
   <style>
-    cwc-badge {
+    cds-badge {
       --color: green;
     }
   </style>
-  <cwc-badge></cwc-badge> <!-- only host application badges are changed -->
+  <cds-badge></cds-badge> <!-- only host application badges are changed -->
 
-  <product-cwc-badge></product-cwc-badge> <!-- embedded product styles are preserved -->
+  <product-cds-badge></product-cds-badge> <!-- embedded product styles are preserved -->
   ```
 
 ## Public Import API
@@ -448,10 +448,10 @@ adhere to the following guidelines for our Core Web Component codebase.
 
   ```html
   <!-- default tag name -->
-  <cwc-modal></cwc-modal>
+  <cds-modal></cds-modal>
 
   <!-- safe alias name to ship -->
-  <my-lib-cwc-modal></my-lib-cwc-modal>
+  <my-lib-cds-modal></my-lib-cds-modal>
   ```
 
 * When shipping a library using Clarity Web Components you must list

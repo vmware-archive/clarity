@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -15,11 +15,11 @@
     (clrModalAlternateClose)="modalCancel()">
 
     <nav class="modal-nav clr-wizard-stepnav-wrapper">
-        <h3 class="clr-wizard-title"><ng-content select="clr-wizard-title"></ng-content></h3>
+        <h1 class="clr-wizard-title"><ng-content select="clr-wizard-title"></ng-content></h1>
         <clr-wizard-stepnav></clr-wizard-stepnav>
     </nav>
 
-    <h3 class="modal-title">
+    <h2 class="modal-title">
         <span tabindex="-1" #wizardTitle class="modal-title-text">
             <ng-template [ngTemplateOutlet]="navService.currentPageTitle"></ng-template>
         </span>
@@ -32,7 +32,7 @@
                 <ng-template [ngTemplateOutlet]="navService.currentPage.headerActions"></ng-template>
             </div>
         </div>
-    </h3>
+    </h2>
 
     <div class="modal-body">
         <main clr-wizard-pages-wrapper class="clr-wizard-content">

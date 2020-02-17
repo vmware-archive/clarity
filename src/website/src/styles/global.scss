@@ -163,7 +163,7 @@ a.btn-primary {
 }
 
 :not(.layout-home) {
-  .content-area section:first-of-type h1 {
+  .content-area section:first-of-type h1 :not(.clr-wizard) {
     margin-top: -1 * $clr_baselineRem_0_25;
   }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -311,6 +311,8 @@
       padding-right: $clr-wizard-default-space * 0.5;
       padding-bottom: $clr-wizard-default-space;
       flex: 0 0 auto;
+      font-size: $clr-modal-title-font-size;
+      line-height: $clr-modal-title-line-height;
     }
 
     // normal modal ignores this. wizard needs it so the nav and content

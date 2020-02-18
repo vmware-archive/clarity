@@ -17,23 +17,6 @@ jobs:
             - node_modules
           key: v1-build{{checksum "package.json"}}
       - run: npm run build:ci
-  visual:
-    docker:
-      - image: circleci/node:erbium-browsers
-    environment:
-      NG_CLI_ANALYTICS: 'ci'
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-visual{{checksum "package.json"}}
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-            - /home/circleci/.cache/Cypress
-          key: v1-visual{{checksum "package.json"}}
-      - run: sh ./scripts/circleci/visual.sh
   website:
     docker:
       - image: circleci/node:erbium
@@ -71,14 +54,6 @@ workflows:
   test:
     jobs:
       - build:
-          filters:
-            branches:
-              ignore:
-                - v2
-                - v1
-                - v0.13
-      - visual:
-          context: Applitools
           filters:
             branches:
               ignore:

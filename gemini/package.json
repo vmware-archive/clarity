@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "gemini": "npm-run-all 'gemini:light -- {*}' 'gemini:dark -- {*}' --",
+    "gemini:light": "./docker-cdc.js -t",
+    "gemini:dark": "./docker-cdc.js -t -c dark",
+    "gemini:fix": "npm-run-all 'gemini:fix:light -- {*}' 'gemini:fix:dark -- {*}' --",
+    "gemini:fix:light": "./docker-cdc.js -u",
+    "gemini:fix:dark": "./docker-cdc.js -u -c dark"
+  },
+  "dependencies": {
+    "gemini": "7.4.1",
+    "html-reporter": "3.6.4",
+    "lite-server": "2.4.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "npm-run-all": "4.1.5"
+  }
+}

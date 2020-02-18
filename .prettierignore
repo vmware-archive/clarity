@@ -5,6 +5,7 @@ reports/
 golden/
 .vscode
 .ng_build
+**/node_modules/**
 src/website/src/releases/final-template/auto-generated-routes.ts
 src/website/src/sitemap.xml
 src/clr-core/**/*.css.ts

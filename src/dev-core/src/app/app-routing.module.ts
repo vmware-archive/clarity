@@ -19,6 +19,7 @@ const routes: Routes = [
     path: 'lazy-load',
     loadChildren: () => import('./lazy-load/lazy-load.demo.module').then(m => m.LazyLoadDemoModule),
   },
+  { path: 'alert', loadChildren: () => import('./alert/alert.demo.module').then(m => m.AlertDemoModule) },
   { path: 'badge', loadChildren: () => import('./badge/badge.demo.module').then(m => m.BadgeDemoModule) },
   { path: 'button', loadChildren: () => import('./button/button.demo.module').then(m => m.ButtonDemoModule) },
   { path: 'dropdown', loadChildren: () => import('./dropdown/dropdown.demo.module').then(m => m.DropdownDemoModule) },

@@ -16,6 +16,7 @@ export * from './enums/key-codes';
 export * from './services/common-strings.service';
 export * from './services/common-strings.interface';
 export * from './services/common-strings.default';
+export * from './utils/conditional';
 export * from './utils/exists';
 export * from './utils/identity';
 export * from './utils/string';

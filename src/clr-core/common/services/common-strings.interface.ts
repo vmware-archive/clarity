@@ -7,115 +7,115 @@ export interface ClrCommonStrings {
   /**
    * Open button
    */
-  open?: string;
+  open: string;
   /**
    * Close button
    */
-  close?: string;
+  close: string;
   /**
    * Show button
    */
-  show?: string;
+  show: string;
   /**
    * Hide button
    */
-  hide?: string;
+  hide: string;
   /**
    * Expandable components: expand caret
    */
-  expand?: string;
+  expand: string;
   /**
    * Expandable components: collapse caret
    */
-  collapse?: string;
+  collapse: string;
   /**
    * Overflow menus: ellipsis button
    */
-  more?: string;
+  more: string;
   /**
    * Selectable components: checkbox or radio
    */
-  select?: string;
+  select: string;
   /**
    * Selectable components: checkbox to select all
    */
-  selectAll?: string;
+  selectAll: string;
   /**
    * Pagination: previous button
    */
-  previous?: string;
+  previous: string;
   /**
    * Pagination: next button
    */
-  next?: string;
+  next: string;
   /**
    * Pagination: go to current
    */
-  current?: string;
+  current: string;
   /**
    * Alert levels: info
    */
-  info?: string;
+  info: string;
   /**
    * Alert levels: success
    */
-  success?: string;
+  success: string;
   /**
    * Alert levels: warning
    */
-  warning?: string;
+  warning: string;
   /**
    * Alert levels: danger
    */
-  danger?: string;
+  danger: string;
   /**
    * Datagrid: row actions
    */
-  rowActions?: string;
+  rowActions: string;
   /**
    * Datagrid: pick columns
    */
-  pickColumns?: string;
+  pickColumns: string;
   /**
    * Datagrid: show columns
    */
-  showColumns?: string;
+  showColumns: string;
   /**
    * Datagrid: sort of columns
    */
-  sortColumn?: string;
+  sortColumn: string;
   /**
    * Datagrid: first page
    */
-  firstPage?: string;
+  firstPage: string;
   /**
    * Datagrid: last page
    */
-  lastPage?: string;
+  lastPage: string;
   /**
    * Datagrid: next page
    */
-  nextPage?: string;
+  nextPage: string;
   /**
    * Datagrid: previous page
    */
-  previousPage?: string;
+  previousPage: string;
   /**
    * Datagrid: previous page
    */
-  currentPage?: string;
+  currentPage: string;
   /**
    * Datagird: total pages
    */
-  totalPages?: string;
+  totalPages: string;
   /**
    * Datagrid numeric filter: min
    */
-  minValue?: string;
+  minValue: string;
   /**
    * Datagrid numeric filter: max
    */
-  maxValue?: string;
+  maxValue: string;
   /**
    * Datagrid filter toggle button
    */
@@ -124,82 +124,82 @@ export interface ClrCommonStrings {
   /**
    * Modal start of content
    */
-  modalContentStart?: string;
+  modalContentStart: string;
   /**
    * Modal end of content
    */
-  modalContentEnd?: string;
+  modalContentEnd: string;
   /**
    * Datagrid Show columns menu description
    */
-  showColumnsMenuDescription?: string;
+  showColumnsMenuDescription: string;
   /**
    * Datagrid Show columns / All columns selected confirmation
    */
-  allColumnsSelected?: string;
+  allColumnsSelected: string;
   /**
    * Signpost Toggle Button
    */
-  signpostToggle?: string;
+  signpostToggle: string;
   /**
    * Signpost Close Button
    * (used inside signpost content components)
    */
-  signpostClose?: string;
+  signpostClose: string;
   /*
    * Loaders/Spinners
    */
-  loading?: string;
+  loading: string;
   /**
    * Datagrid: detail pane start content for screen reader
    */
-  detailPaneStart?: string;
+  detailPaneStart: string;
   /**
    * Datagrid: detail pane end content for screen reader
    */
-  detailPaneEnd?: string;
+  detailPaneEnd: string;
   /**
    * Datagrid: Single selection header
    */
-  singleSelectionAriaLabel?: string;
+  singleSelectionAriaLabel: string;
 
   /**
    * Datagrid: Single actionable header
    */
-  singleActionableAriaLabel?: string;
+  singleActionableAriaLabel: string;
 
   /**
    * Datagrid: Expandable row
    */
-  detailExpandableAriaLabel?: string;
+  detailExpandableAriaLabel: string;
 
   /**
    * Alert: Close alert button
    */
-  alertCloseButtonAriaLabel?: string;
+  alertCloseButtonAriaLabel: string;
 
   /**
    * Datepicker UI labels
    */
-  datepickerToggle?: string;
-  datepickerPreviousMonth?: string;
-  datepickerCurrentMonth?: string;
-  datepickerNextMonth?: string;
-  datepickerPreviousDecade?: string;
-  datepickerNextDecade?: string;
-  datepickerCurrentDecade?: string;
-  datepickerSelectMonthText?: string;
-  datepickerSelectYearText?: string;
-  daypickerSRCurrentMonthPhrase?: string;
-  daypickerSRCurrentYearPhrase?: string;
-  daypickerSRCurrentDecadePhrase?: string;
+  datepickerToggle: string;
+  datepickerPreviousMonth: string;
+  datepickerCurrentMonth: string;
+  datepickerNextMonth: string;
+  datepickerPreviousDecade: string;
+  datepickerNextDecade: string;
+  datepickerCurrentDecade: string;
+  datepickerSelectMonthText: string;
+  datepickerSelectYearText: string;
+  daypickerSRCurrentMonthPhrase: string;
+  daypickerSRCurrentYearPhrase: string;
+  daypickerSRCurrentDecadePhrase: string;
   /**
    * Stack View: Record has changed
    */
-  stackViewChanged?: string;
+  stackViewChanged: string;
   // Forms
-  formErrorSummary?: string;
+  formErrorSummary: string;
   // Vertical Nav
-  verticalNavToggle?: string;
-  verticalNavGroupToggle?: string;
+  verticalNavToggle: string;
+  verticalNavGroupToggle: string;
 }

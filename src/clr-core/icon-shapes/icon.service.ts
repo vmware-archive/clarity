@@ -49,6 +49,10 @@ export class ClarityIcons {
     aliases.forEach(alias => setIconAliases(alias, iconRegistry));
   }
 
+  static getIconNameFromShape(iconShape: IconShapeTuple) {
+    return iconShape[0];
+  }
+
   /** @deprecated legacy API */
   static get(shapeName?: string): string | IconRegistry {
     return shapeName ? getIcon(shapeName, iconRegistry) : { ...iconRegistry };

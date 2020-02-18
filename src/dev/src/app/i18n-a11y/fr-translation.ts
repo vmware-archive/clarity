@@ -6,7 +6,7 @@
 
 import { ClrCommonStrings } from '@clr/core';
 
-export const frenchTranslation: ClrCommonStrings = {
+export const frenchTranslation: Partial<ClrCommonStrings> = {
   open: 'Ouvrir',
   close: 'Fermer',
   show: 'Montrer',

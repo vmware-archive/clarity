@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,7 @@ import { KeyCodes } from '@clr/core/common';
     <div *ngIf="open" clrKeyFocus [clrDirection]="direction" [clrFocusOnLoad]="focusOnLoad" (clrFocusChange)="changed = true">
       <button clrKeyFocusItem>Button 1</button>
       <button clrKeyFocusItem>Button 2</button>
-      <button clrKeyFocusItem>Button 3</button>
+      <button *ngIf="showLast" clrKeyFocusItem>Button 3</button>
     </div>
   `,
 })
@@ -27,18 +27,22 @@ class TestComponent {
   changed: boolean = false;
   direction: string = 'vertical';
   focusOnLoad = true;
+  showLast: boolean = true;
 }
 
 @Component({
   template: `
-    <div [clrKeyFocus]="buttons">
+    <div [clrKeyFocus]="buttons" [clrFocusOnLoad]="focusOnLoad">
       <button>Button 1</button>
       <button>Button 2</button>
+      <button *ngIf="showLast">Button 3</button>
     </div>
   `,
 })
 class DOMTestComponent {
   buttons: any;
+  focusOnLoad: boolean = true;
+  showLast: boolean = true;
 }
 
 let fixture: ComponentFixture<any>;
@@ -118,6 +122,15 @@ describe('KeyFocus directive', () => {
       expect(clarityDirective.current).toBe(0);
       keyPress(KeyCodes.ArrowUp);
       expect(clarityDirective.current).toBe(0);
+    });
+    it('current value updates, when elements are being removed', () => {
+      openMenu();
+      expect(clarityDirective.current).toBe(0);
+      keyPress(KeyCodes.End);
+      expect(clarityDirective.current).toBe(2);
+      component.showLast = false;
+      fixture.detectChanges();
+      expect(clarityDirective.current).toBe(1);
     });
   });
 
@@ -280,7 +293,19 @@ describe('KeyFocus directive', () => {
       // An example of this is the Tabs component.
       domComponent.buttons = Array.from(fixture.nativeElement.querySelectorAll('button'));
       fixture.detectChanges();
-      expect(clarityDirective.focusableItems.length).toBe(2);
+      expect(clarityDirective.focusableItems.length).toBe(3);
+    });
+    it('focus updates, when elements are being removed', () => {
+      domComponent.buttons = Array.from(fixture.nativeElement.querySelectorAll('button'));
+      fixture.detectChanges();
+      expect(document.activeElement.textContent).toBe('Button 1');
+      keyPress(KeyCodes.End);
+      expect(document.activeElement.textContent).toBe('Button 3');
+      domComponent.showLast = false;
+      fixture.detectChanges();
+      domComponent.buttons = Array.from(fixture.nativeElement.querySelectorAll('button'));
+      fixture.detectChanges();
+      expect(document.activeElement.textContent).toBe('Button 2');
     });
   });
 });

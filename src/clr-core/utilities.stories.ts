@@ -18,7 +18,7 @@ export default {
 };
 
 export const internationalization = () => {
-  const frenchTranslation: ClrCommonStrings = {
+  const frenchTranslation: Partial<ClrCommonStrings> = {
     open: 'Ouvrir',
     close: 'Fermer',
     show: 'Montrer',

@@ -6,7 +6,7 @@
 
 import { renderIcon } from './icon.renderer';
 import { ClarityIcons } from './icon.service';
-import { IconRegistry } from './interfaces/icon.interfaces';
+import { IconRegistry, IconShapeTuple } from './interfaces/icon.interfaces';
 import { testIcons } from './utils/test-icons';
 
 describe('ClarityIcons service: ', () => {
@@ -91,6 +91,14 @@ describe('ClarityIcons service: ', () => {
       expect(ClarityIcons.get('test09')).toEqual('ohai');
       ClarityIcons.addIcons(['test09', <string>'kthxbye']);
       expect(ClarityIcons.get('test09')).toEqual('ohai');
+    });
+  });
+
+  describe('getIconNameFromShape: ', () => {
+    it('should return the icon name string from an icon shape tuple', () => {
+      const testIcon: IconShapeTuple = ['test09', <string>'ohai'];
+      ClarityIcons.addIcons(testIcon);
+      expect(ClarityIcons.getIconNameFromShape(testIcon)).toEqual('test09');
     });
   });
 

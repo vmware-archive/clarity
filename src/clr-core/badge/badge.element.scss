@@ -1,4 +1,4 @@
-@import './../styles/mixins/mixins';
+@import './../styles/mixins/utils';
 
 :host {
   --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});

@@ -1,0 +1,199 @@
+@import './../styles/mixins/utils';
+
+:host {
+  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  --background: var(--clr-color-action-50, #{$clr-color-action-50});
+  --border-radius: var(--clr-global-borderradius, #{$clr-global-borderradius});
+  --border-color: var(--clr-color-action-400, #{$clr-color-action-400});
+  --icon-color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --close-icon-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  --close-icon-color-hover: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
+  $alertIconWidth: $clr_baselineRem_1 + $clr_baselineRem_1px;
+  font-size: $clr-typography-smalltext;
+  letter-spacing: $clr-kerning-smalltext;
+  line-height: $clr_baselineRem_0_75;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  border-radius: var(--border-radius);
+  background: var(--background);
+  border: $clr-global-borderwidth solid;
+  border-color: var(--border-color);
+  color: var(--color);
+
+  .alert-action:not(:last-child) {
+    margin-right: $clr_baselineRem_0_5;
+  }
+
+  .alert-action,
+  .dropdown-toggle {
+    text-decoration: underline;
+  }
+
+  .alert-icon {
+    $alert-icon-dim: $clr_baselineRem_1;
+    @include equilateral($alert-icon-dim);
+    margin-left: -1 * $clr_baselineRem_0_125;
+    margin-top: -1 * $clr_baselineRem_4px;
+    --color: var(--icon-color);
+  }
+
+  .alert-icon-wrapper {
+    flex: 0 0 $alertIconWidth;
+    align-self: start;
+    padding-top: $clr_baselineRem_1px;
+    height: $clr_baselineRem_0_75;
+  }
+
+  .alert-item {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: $clr_baselineRem_0_75;
+    margin-bottom: $clr_baselineRem_0_25;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .alert-wrapper {
+    $vertPadding: $clr_baselineRem_8px;
+    $horizPadding: $clr_baselineRem_0_5 - $clr-global-borderwidth;
+    flex: 1 1 auto;
+    flex-flow: column nowrap;
+    padding: $vertPadding $horizPadding;
+    display: flex;
+  }
+  //display: inline-block and max-width were specifically added for IE 10.
+  //Flexbox content wouldn't wrap otherwise :(. 98% was just an estimate to distance the text from the
+  //close alert button.
+  .alert-item > span,
+  .alert-text,
+  ::slotted(cwc-alert-content) {
+    display: inline-block; //needed for IE11
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 98%; //needed for IE11
+    max-width: 98%; //needed for IE11
+    margin-right: $clr_baselineRem_0_5;
+    text-align: left;
+  }
+
+  button.close {
+    $closeBtnNudge: $clr_baselineRem_4px;
+    width: $clr_baselineRem_1;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    height: $clr_baselineRem_1_5;
+    flex: 0 0 ($clr_baselineRem_1 + $closeBtnNudge);
+    order: 100;
+    margin: 0;
+    padding: 0 $closeBtnNudge 0 0;
+    border: none;
+
+    &:focus,
+    &:hover,
+    &:active {
+      background: none;
+      --close-icon-color: var(--close-icon-color-hover);
+    }
+
+    cwc-icon {
+      $alert-close-icon-dims: $clr_baselineRem_1 - $clr-global-borderwidth;
+      margin-top: -1 * $clr_baselineRem_0_125;
+      @include equilateral($alert-close-icon-dims);
+      fill: var(--close-icon-color);
+    }
+  }
+
+  button.close ~ .alert-item > ::slotted(cwc-alert-actions) {
+    padding-right: $clr_baselineRem_0_5;
+
+    & > .alert-action:last-child {
+      margin-right: $clr_baselineRem_0_5;
+    }
+  }
+}
+
+:host([status='info']) {
+  --background: var(--clr-color-action-50, #{$clr-color-action-50});
+  --border-color: var(--clr-color-action-400, #{$clr-color-action-400});
+  --icon-color: var(--clr-color-action-600, #{$clr-color-action-600});
+}
+
+:host([status='success']) {
+  --background: var(--clr-color-success-50, #{$clr-color-success-50});
+  --border-color: var(--clr-color-success-400, #{$clr-color-success-400});
+  --icon-color: var(--clr-color-success-700, #{$clr-color-success-700});
+}
+
+:host([status='warning']) {
+  --background: var(--clr-color-warning-100, #{$clr-color-warning-100});
+  --border-color: var(--clr-color-warning-400, #{$clr-color-warning-400});
+  --icon-color: var(--clr-color-neutral-700, #{$clr-color-warning-700});
+}
+
+:host([status='danger']) {
+  --background: var(--clr-color-danger-100, #{$clr-color-danger-100});
+  --border-color: var(--clr-color-danger-200, #{$clr-color-danger-200});
+  --icon-color: var(--clr-color-danger-800, #{$clr-color-danger-800});
+}
+
+:host([size='sm']) {
+  $alertSmallLineHeight: $clr_baselineRem_0_667;
+  $alertSmallNudge: $clr_baselineRem_4px;
+  // need to use 11 instead of 12 here or else vertical alignment is thrown off
+  // by a pixel due to improper browser rounding; browsers aren't rendering on the
+  // sub-pixel required but rounding up to the nearest whole pixel...
+  font-size: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
+  letter-spacing: normal;
+  line-height: $alertSmallLineHeight;
+
+  .alert-wrapper {
+    padding: ($alertSmallNudge - $clr-global-borderwidth) ($clr_baselineRem_0_25 - $clr-global-borderwidth);
+  }
+
+  .alert-item {
+    padding-top: $clr_baselineRem_1px;
+    margin-bottom: $alertSmallNudge;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .alert-icon-wrapper {
+    padding-top: 0;
+    height: $alertSmallLineHeight;
+  }
+
+  .alert-icon {
+    margin-left: -1 * $alertSmallNudge;
+    margin-top: -1 * $alertSmallNudge;
+  }
+
+  .alert-item > span,
+  .alert-text,
+  ::slotted(cwc-alert-content) {
+    margin-right: $clr_baselineRem_0_25;
+  }
+
+  button.close {
+    padding-right: 0;
+    flex: 0 0 $clr_baselineRem_1;
+    height: $clr_baselineRem_1;
+    line-height: $clr_baselineRem_1;
+
+    cwc-icon {
+      $smallAlertCloseIconDims: $clr_baselineRem_0_83;
+      margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
+      margin-right: -1 * $clr_baselineRem_1px;
+      @include equilateral($smallAlertCloseIconDims);
+      line-height: $smallAlertCloseIconDims + $clr_baselineRem_1px;
+    }
+  }
+}

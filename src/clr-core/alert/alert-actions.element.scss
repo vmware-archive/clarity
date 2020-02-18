@@ -1,0 +1,8 @@
+@import './../styles/mixins/utils';
+
+:host {
+  flex: 0 0 auto;
+  white-space: nowrap;
+
+  // TODO: add style override for dropdown component inside alert-actions after cwc-dropdown is implemented
+}

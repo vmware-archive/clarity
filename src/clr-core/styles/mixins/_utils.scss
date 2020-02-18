@@ -1,0 +1,186 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../variables/variables';
+
+// NOTE: file added to prettierignore because it was added unwanted spaces in the css-var() mixin
+
+//Credit: Zurb Foundation for Apps https://github.com/zurb/foundation-apps/blob/master/scss/helpers/_functions.scss
+//Keep track of modules that have been imported, so we don't import more than once
+$imported-modules: () !default;
+@mixin exports($name) {
+  //check if they have been imported
+  @if (index($imported-modules, $name) == null) {
+    $imported-modules: append($imported-modules, $name) !global;
+    @content;
+  }
+}
+
+//TODO: Should these mixins be moved into their own separate file?
+//Outline Styles
+$clr-outline-color: hsl(197, 68%, 65%) !default;
+$clr-outline-color-inverse: hsla(0, 0%, 100%, 0.09) !default;
+$clr-outline-blur: $clr_baselineRem_2px;
+$clr-outline-spread: $clr_baselineRem_2px;
+
+@mixin include-outline-style-form-fields(
+  $outline-color: $clr-outline-color,
+  $outline-blur: $clr-outline-blur,
+  $outline-spread: $clr-outline-spread
+) {
+  outline: 0;
+  box-shadow: 0 0 $outline-blur $outline-spread $outline-color;
+}
+
+@mixin include-outline-style-links() {
+  outline: 0;
+  text-decoration: underline;
+}
+
+@mixin include-outline-style-header-links($outline-color: $clr-outline-color-inverse) {
+  background: $outline-color;
+  outline: 0;
+  text-decoration: none;
+}
+
+@mixin overflow-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin off-screen-styles() {
+  position: fixed !important;
+  border: none !important;
+  height: 1px !important;
+  width: 1px !important;
+
+  left: 0 !important;
+  top: $clr_baselineRem_-1px !important;
+
+  overflow: hidden !important;
+  visibility: hidden !important;
+
+  padding: 0 !important;
+  margin: 0 0 $clr_baselineRem_-1px 0 !important;
+}
+
+@mixin remove-text-decoration() {
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+@mixin focus-within() {
+  &:focus-within,
+  &.focus-within {
+    outline: $clr_baselineRem_2px solid Highlight;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 0) {
+    &:focus-within,
+    &.focus-within {
+      outline: $clr_baselineRem_5px auto -webkit-focus-ring-color;
+    }
+  }
+}
+
+@mixin css-var($style: null, $var: null, $fallback: '', $do-custom-prop: true) {
+  @if $style != null and $var != null {
+    /* #{$var} */
+    #{$style}: $fallback;
+    @if $do-custom-prop == true {
+      #{$style}: var(css-variablize-string($var), $fallback);
+    }
+  }
+}
+
+@mixin equilateral($size: 1.2rem) {
+  height: $size;
+  width: $size;
+}
+
+@mixin min-equilateral($size: 1.2rem) {
+  @include equilateral($size);
+  min-height: $size;
+  min-width: $size;
+}
+
+@mixin max-equilateral($size: 1.2rem) {
+  @include equilateral($size);
+  max-height: $size;
+  max-width: $size;
+}
+
+@function css-variablize-string($str: null) {
+  @if $str != null {
+    @return #{'--' + $str};
+  }
+}
+
+@mixin clr-appearance-normal() {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+}
+
+@mixin clr-no-styles-button {
+  @include clr-appearance-normal();
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+
+  @at-root button#{&} {
+    cursor: pointer;
+  }
+}
+
+//Dropdowns & Tooltips
+$opp-directions: (
+  top: bottom,
+  bottom: top,
+  left: right,
+  right: left
+);
+
+@mixin clr-container() {
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin fixForFirefox() {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin fixForMsEdge() {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin fixForIE10AndUp() {
+  _:-ms-input-placeholder,
+  :root {
+    @content;
+  }
+}
+
+@mixin fixForIE11AndUp() {
+  _:-ms-fullscreen,
+  :root {
+    @content;
+  }
+}

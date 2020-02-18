@@ -64,20 +64,20 @@ function runGemini(config) {
   // Kill docker if already running in past failure
   shell.exec('docker stop clarity_chrome', { silent: true });
   const ngConfig = program.configuration ? '-c ' + program.configuration : '';
-  shell.exec(`npm run build:libs`);
-  shell.exec(`ng build dev ${ngConfig}`);
-  let server = shell.exec('node_modules/.bin/lite-server --baseDir=dist/dev', { async: true });
+  shell.exec(`cd ../ && npm run build:libs`);
+  shell.exec(`cd ../ && ng build dev ${ngConfig}`);
+  let server = shell.exec('node_modules/.bin/lite-server --baseDir=../dist/dev', { async: true });
   let status = shell.exec(
     'docker run --rm --name=clarity_chrome -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a'
   );
   let geminiStatus = 0;
-  let screensDir = program.configuration ? `./gemini/${program.configuration}-screens` : './gemini/screens';
+  let screensDir = program.configuration ? `./${program.configuration}-screens` : './screens';
   if (status.code === 0) {
     config.args.forEach(function(arg) {
       let gemini = shell.exec(
         `node_modules/.bin/gemini ${
           config.action
-        } gemini/tests/${arg} --html-reporter-path ./reports/gemini/${arg} --root-url ${generateRootUrl()} --screenshots-dir ${screensDir}`
+        } tests/${arg} --html-reporter-path ../reports/gemini/${arg} --root-url ${generateRootUrl()} --screenshots-dir ${screensDir}`
       ); // TODO: A better way to build string cmds.
       geminiStatus += gemini.code; // add up any non-zero exit codes
     });

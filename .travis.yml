@@ -4,14 +4,11 @@ node_js:
 env:
   global:
   - CXX=g++-4.8
-#  - APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_JOB_ID}`
   matrix:
-  # - TEST_SUITE='build:ci' # Moved to Circle CI
   - TEST_SUITE='gemini set1'
   - TEST_SUITE='gemini set2'
   - TEST_SUITE='gemini set3'
   - TEST_SUITE='gemini set4'
-#  - TEST_SUITE='applitools:ci'
 sudo: required
 dist: trusty
 group: edge
@@ -34,12 +31,5 @@ cache:
   directories:
   - node_modules
 script:
-- node scripts/travis
-#jobs:
-#  include:
-#  - stage: publish
-#    if: "(NOT type IN (api, cron, pull_request)) AND branch = master AND repo = vmware/clarity"
-#    before_script:
-#    - npm run build
-#    script:
-#    - bash ./scripts/publish-build.sh
+- cd gemini && npm install && npm run $TEST_SUITE
+

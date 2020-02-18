@@ -15,7 +15,7 @@ src/clr-angular/.ng_pkg_build
 /reports
 
 # dependencies
-/node_modules
+node_modules
 
 # IDEs and editors
 /.idea

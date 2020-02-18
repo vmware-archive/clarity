@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -107,10 +107,6 @@ export class ClrKeyFocus {
   }
 
   private get currentItem() {
-    if (this._current >= this.focusableItems.length) {
-      return null;
-    }
-
     return this.focusableItems[this._current];
   }
 
@@ -125,20 +121,25 @@ export class ClrKeyFocus {
   private initializeFocus() {
     if (this.focusableItems && this.focusableItems.length) {
       this.focusableItems.forEach(i => (i.tabIndex = -1));
-      this.currentItem.tabIndex = 0;
-    }
 
-    if (this.focusOnLoad) {
-      this.currentItem.focus();
-      this.focusChange.next();
+      // It is possible that the focus was on an element, whose index is no longer available.
+      // This can happen when some of the focusable elements are being removed.
+      // In such cases, the new focus is initialized on the last focusable element.
+      if (this._current >= this.focusableItems.length) {
+        this._current = this.focusableItems.length - 1;
+      }
+      this.currentItem.tabIndex = 0;
+
+      if (this.focusOnLoad) {
+        this.currentItem.focus();
+        this.focusChange.next();
+      }
     }
   }
 
   private listenForItemUpdates() {
     return this.clrKeyFocusItems.changes.subscribe(() => {
-      this.focusableItems.forEach(item => (item.tabIndex = -1));
-      this._current = 0;
-      this.currentItem.tabIndex = 0;
+      this.initializeFocus();
     });
   }
 

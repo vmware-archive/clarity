@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:dubnium-browsers
+      - image: circleci/node:erbium-browsers
     environment:
       NG_CLI_ANALYTICS: ci
     steps:
@@ -19,7 +19,7 @@ jobs:
       - run: npm run build:ci
   visual:
     docker:
-      - image: circleci/node:dubnium-browsers
+      - image: circleci/node:erbium-browsers
     environment:
       NG_CLI_ANALYTICS: 'ci'
     steps:
@@ -36,7 +36,7 @@ jobs:
       - run: sh ./scripts/circleci/visual.sh
   website:
     docker:
-      - image: circleci/node:dubnium
+      - image: circleci/node:erbium
     steps:
       - checkout
       - restore_cache:
@@ -51,7 +51,7 @@ jobs:
       - run: npm run website:deploy
   dev:
     docker:
-      - image: circleci/node:dubnium
+      - image: circleci/node:erbium
     steps:
       - checkout
       - restore_cache:
@@ -92,7 +92,7 @@ workflows:
               ignore:
                 - v2
                 - v1
-                - v0.13  
+                - v0.13
       - website:
           context: Netlify
           filters:

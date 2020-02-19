@@ -137,10 +137,10 @@
   "devDependencies": {
     "@angular-builders/custom-webpack": "8.1.0",
     "@angular-builders/dev-server": "7.3.1",
-    "@angular-devkit/build-angular": "git+https://git@github.com/angular/angular-devkit-build-angular-builds.git",
+    "@angular-devkit/build-angular": "~0.900.1",
     "@angular-devkit/build-ng-packagr": "~0.900.1",
     "@angular-devkit/core": "9.0.1",
-    "@angular/cli": "git+https://git@github.com/angular/cli-builds.git",
+    "@angular/cli": "9.0.1",
     "@angular/compiler-cli": "9.0.0",
     "@angular/language-service": "9.0.0",
     "@applitools/eyes-cypress": "3.6.7",

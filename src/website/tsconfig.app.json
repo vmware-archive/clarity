@@ -4,7 +4,6 @@
     "outDir": "../../out-tsc/app",
     "baseUrl": "./",
     "resolveJsonModule": true,
-    "target": "es5",
     "paths": {
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../clr-icons"],

@@ -199,6 +199,7 @@
     "karma-parallel": "0.3.1",
     "karma-safari-launcher": "1.0.0",
     "karma-sauce-launcher": "2.0.2",
+    "lite-server": "2.5.4",
     "netlify-cli": "2.25.0",
     "netlify-lambda": "1.4.5",
     "ng-packagr": "9.0.0",

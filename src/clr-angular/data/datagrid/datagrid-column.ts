@@ -42,6 +42,18 @@ import { DetailService } from './providers/detail.service';
   selector: 'clr-dg-column',
   template: `
       <div class="datagrid-column-flex">
+          <button
+            class="datagrid-column-title"
+            [attr.aria-label]="commonStrings.keys.sortColumn"
+            *ngIf="sortable"
+            (click)="sort()"
+            type="button">
+              <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
+              <clr-icon
+                      *ngIf="sortIcon"
+                      [attr.shape]="sortIcon"
+                      class="sort-icon"></clr-icon>
+          </button>
           <!-- I'm really not happy with that select since it's not very scalable -->
           <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
 
@@ -59,18 +71,6 @@ import { DetailService } from './providers/detail.service';
               <ng-content></ng-content>
           </ng-template>
 
-          <button
-            class="datagrid-column-title"
-            [attr.aria-label]="commonStrings.keys.sortColumn"
-            *ngIf="sortable"
-            (click)="sort()"
-            type="button">
-              <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
-              <clr-icon
-                      *ngIf="sortIcon"
-                      [attr.shape]="sortIcon"
-                      class="sort-icon"></clr-icon>
-          </button>
 
           <span class="datagrid-column-title" *ngIf="!sortable">
               <ng-container *ngTemplateOutlet="columnTitle"></ng-container>

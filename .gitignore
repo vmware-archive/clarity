@@ -63,3 +63,6 @@ auto-generated-routes.ts
 # cypress
 cypress/screenshots
 cypress/videos
+
+# Local Netlify folder
+.netlify

@@ -6,6 +6,7 @@
 
 import curryN from 'ramda/es/curryN';
 import { elementExists, existsInWindow, isBrowser } from './exists';
+import { setupCDSGlobal } from './global';
 
 const addElementToRegistry = curryN(
   3,
@@ -14,6 +15,8 @@ const addElementToRegistry = curryN(
       console.warn(`${tagName} has already been registered`);
     } else {
       registry.define(tagName, elementClass);
+      setupCDSGlobal();
+      window.CDS._loadedElements.push(tagName);
     }
   }
 );

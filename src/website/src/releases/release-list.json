@@ -1,10 +1,10 @@
 {
-  "current": "2.3.7",
+  "current": "2.3.8",
   "all": {
     "3.0.0-rc.1": {
       "date": "Feb 21, 2020",
       "sketch": "2.2.0",
-      "commit": "4f2757704664ad5d136432f326b3a241c298d5a2"
+      "commit": "0d7374c71473d0d6eda29899612afaa900de6c3d"
     },
     "3.0.0-next.8": {
       "date": "Feb 8, 2020",
@@ -42,6 +42,11 @@
     "3.0.0-next.1": {
       "date": "Oct 3, 2019",
       "sketch": "2.2.0"
+    },
+    "2.3.8": {
+      "date": "Feb 21, 2020",
+      "sketch": "2.2.0",
+      "commit": "d7154438a29c6166429b92ff1e5c0dc2fd739b09"
     },
     "2.3.7": {
       "date": "Feb 8, 2020",

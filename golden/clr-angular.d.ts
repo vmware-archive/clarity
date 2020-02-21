@@ -684,6 +684,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     set date(date: Date);
     dateChange: EventEmitter<Date>;
     set disabled(value: boolean | string);
+    get disabled(): boolean | string;
     protected el: ElementRef;
     protected index: number;
     get inputType(): string;

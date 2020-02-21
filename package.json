@@ -1,6 +1,6 @@
 {
   "name": "@clr/clarity",
-  "version": "3.0.0-next.8",
+  "version": "3.0.0-rc.1",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -29,6 +29,7 @@
     "publish:prepare": "npm-run-all clean ngcc:fix build:libs",
     "publish:latest": "npm run publish:prepare; npm run ngcc:fix; npm run angular:build:package; npm run core:build:package; npm run ui:build:package; npm publish dist/clr-core; npm publish dist/clr-ui; npm publish dist/clr-angular; npm publish dist/clr-icons",
     "publish:next": "npm run publish:prepare; npm publish dist/clr-core --tag next; npm publish dist/clr-ui --tag next; npm publish dist/clr-angular --tag next; npm publish dist/clr-icons --tag next",
+    "publish:rc": "npm run publish:prepare; npm publish dist/clr-core --tag rc; npm publish dist/clr-ui --tag rc; npm publish dist/clr-angular --tag rc; npm publish dist/clr-icons --tag rc",
     "publish:local": "npm run publish:prepare; npm publish dist/clr-core --registry http://localhost:4873; npm publish dist/clr-ui --registry http://localhost:4873; npm publish dist/clr-angular --registry http://localhost:4873; npm publish dist/clr-icons --registry http://localhost:4873",
     "angular:build": "npm-run-all angular:build:ngpackagr angular:build:package angular:golden",
     "angular:build:package": "cpy ./src/clr-angular/README.md ./dist/clr-angular/; replace '@VERSION' $npm_package_version ./dist/clr-angular/package.json",

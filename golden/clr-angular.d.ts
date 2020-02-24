@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+export declare enum AriaLivePoliteness {
+    off = "off",
+    polite = "polite",
+    assertive = "assertive"
+}
+
+export declare class AriaLiveService implements OnDestroy {
+    ARIA_LIVE_TICK: number;
+    get id(): string;
+    constructor(ngZone: NgZone, _document: any, platformId: Object);
+    announce(message: string | HTMLElement, politeness?: AriaLivePoliteness): void;
+    clearContainer(): void;
+    ngOnDestroy(): void;
+    removeAriaLiveContainer(): void;
+}
+
+=======
+>>>>>>> 9b019f997... fix: rename AriaLivePoliteness to ClrAriaLivePoliteness
 export declare class ClarityModule {
 }
 
@@ -104,27 +123,29 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
 export declare class ClrAccordionTitle {
 }
 
-export declare class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
+export declare class ClrAlert implements OnInit, OnDestroy {
     _closed: boolean;
     _closedChanged: EventEmitter<boolean>;
     get alertClass(): string;
     set alertIconShape(value: string);
+<<<<<<< HEAD
     alertTexts: QueryList<ElementRef>;
     set alertType(val: string);
     get alertType(): string;
     get ariaLive(): AriaLivePoliteness;
     assertive: boolean;
+=======
+    get alertType(): string;
+    set alertType(val: string);
+>>>>>>> 1cce024ca... refactor(a11y): providing aria-live service as public service and updating documentation
     closable: boolean;
     clrCloseButtonAriaLabel: string;
     set hidden(value: boolean);
     get hidden(): boolean;
     isAppLevel: boolean;
     isSmall: boolean;
-    off: boolean;
-    polite: boolean;
-    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
     close(): void;
-    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     open(): void;
@@ -180,6 +201,27 @@ export declare enum ClrAlignment {
     END = 1
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+export declare enum ClrAriaLivePoliteness {
+    off = "off",
+    polite = "polite",
+    assertive = "assertive"
+}
+
+>>>>>>> 9b019f997... fix: rename AriaLivePoliteness to ClrAriaLivePoliteness
+export declare class ClrAriaLiveService implements OnDestroy {
+    get id(): string;
+    constructor(ngZone: NgZone, _document: any, platformId: Object);
+    announce(message: string | HTMLElement, politeness?: ClrAriaLivePoliteness): void;
+    clearContainer(): void;
+    ngOnDestroy(): void;
+    removeAriaLiveContainer(): void;
+}
+
+>>>>>>> f101a5dd3... fix: update clr-angular.d.ts
 export declare enum ClrAxis {
     VERTICAL = 0,
     HORIZONTAL = 1
@@ -276,6 +318,7 @@ export declare class ClrCommonStringsService extends CommonStringsServiceInterna
 export declare class ClrConditionalModule {
 }
 
+<<<<<<< HEAD
 export declare class ClrControl extends WrappedFormControl<ClrControlContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
@@ -285,9 +328,11 @@ export declare class ClrControlContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrControlError implements AfterViewInit {
+=======
+export declare class ClrControlError {
+>>>>>>> 1cce024ca... refactor(a11y): providing aria-live service as public service and updating documentation
     controlIdService: ControlIdService;
-    constructor(controlIdService: ControlIdService, ariaLiveService: AriaLiveService, el: ElementRef);
-    ngAfterViewInit(): void;
+    constructor(controlIdService: ControlIdService);
 }
 
 export declare class ClrControlHelper {
@@ -720,20 +765,17 @@ export declare class ClrDay {
     selectDay(): void;
 }
 
-export declare class ClrDaypicker implements AfterViewInit {
-    get ariaLiveMonth(): string;
+export declare class ClrDaypicker {
     get calendarMonth(): string;
     get calendarYear(): number;
     commonStrings: ClrCommonStringsService;
     get monthAttrString(): string;
-    get updateAriaLiveYear(): string;
     get yearAttrString(): string;
-    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService);
     changeToMonthView(): void;
     changeToYearView(): void;
     currentMonth(): void;
     nextMonth(): void;
-    ngAfterViewInit(): void;
     previousMonth(): void;
 }
 
@@ -873,9 +915,9 @@ export declare class ClrForm {
     set labelSize(size: number);
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
-    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef);
     markAsDirty(updateAriaLiveText?: boolean): void;
-    markAsTouched(updateAriaLiveText?: boolean): void;
+    markAsTouched(): void;
     onFormSubmit(): void;
 }
 
@@ -1167,8 +1209,6 @@ export declare class ClrPopoverToggleService {
 }
 
 export declare class ClrProgressBar {
-    get ariaLive(): AriaLivePoliteness;
-    assertive: boolean;
     set clrDanger(value: boolean | string);
     set clrFade(value: boolean | string);
     set clrFlash(value: boolean | string);
@@ -1183,18 +1223,20 @@ export declare class ClrProgressBar {
     get fadeClass(): boolean;
     get flashClass(): boolean;
     get flashDangerClass(): boolean;
-    set id(value: string);
     get id(): string;
+    set id(value: string);
     get labeledClass(): boolean;
     get loopClass(): boolean;
     max: number;
-    off: boolean;
     get progressClass(): boolean;
     get successClass(): boolean;
     get value(): number;
+<<<<<<< HEAD
     set value(value: number);
     constructor(ariaLiveService: AriaLiveService);
     displayAriaLive(): boolean;
+=======
+>>>>>>> 1cce024ca... refactor(a11y): providing aria-live service as public service and updating documentation
 }
 
 export declare class ClrProgressBarModule {
@@ -1301,9 +1343,7 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     onSignpostTriggerClick(event: Event): void;
 }
 
-export declare class ClrSpinner implements AfterViewInit {
-    get ariaLive(): AriaLivePoliteness;
-    assertive: boolean;
+export declare class ClrSpinner {
     set clrInline(value: boolean | string);
     set clrInverse(value: boolean | string);
     set clrMedium(value: boolean | string);
@@ -1311,11 +1351,8 @@ export declare class ClrSpinner implements AfterViewInit {
     get inlineClass(): boolean;
     get inverseClass(): boolean;
     get mediumClass(): boolean;
-    off: boolean;
     get smallClass(): boolean;
     get spinnerClass(): boolean;
-    constructor(el: ElementRef, ariaLiveService: AriaLiveService);
-    ngAfterViewInit(): void;
 }
 
 export declare class ClrSpinnerModule {
@@ -1796,11 +1833,10 @@ export declare class ClrWizardStepnavItem {
 }
 
 export declare class ClrYearpicker implements AfterViewInit {
-    get ariaLiveDecadeText(): string;
     get calendarYear(): number;
     commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;
-    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService);
     changeYear(year: number): void;
     currentDecade(): void;
     getTabIndex(year: number): number;

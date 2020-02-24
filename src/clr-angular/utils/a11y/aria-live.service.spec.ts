@@ -5,25 +5,28 @@
  */
 
 import { Component } from '@angular/core';
-import { AriaLiveService, AriaLivePoliteness, ARIA_LIVE_TICK } from './aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from './aria-live.service';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+
+// keep in sync with the ClrAriaLiveService manualy
+const ARIA_LIVE_TICK: number = 100;
 
 @Component({
   selector: 'aria-live-test',
   template: '',
-  providers: [AriaLiveService],
+  providers: [ClrAriaLiveService],
 })
 class AriaLiveTest {
   // tslint:disable
-  constructor(private ariaLiveService: AriaLiveService) {}
+  constructor(private ariaLiveService: ClrAriaLiveService) {}
   // tslint:enable
 }
 
 interface TestContext {
-  ariaLiveService: AriaLiveService;
+  ariaLiveService: ClrAriaLiveService;
 }
 
-let fixture, ariaLiveContent: HTMLElement, ariaLiveService: AriaLiveService;
+let fixture, ariaLiveContent: HTMLElement, ariaLiveService: ClrAriaLiveService;
 
 describe('AriaLive service', function() {
   beforeEach(function() {
@@ -32,7 +35,7 @@ describe('AriaLive service', function() {
     });
 
     fixture = TestBed.createComponent(AriaLiveTest);
-    ariaLiveService = fixture.debugElement.injector.get(AriaLiveService, null);
+    ariaLiveService = fixture.debugElement.injector.get(ClrAriaLiveService, null);
   });
 
   it('should set default aria-live value to `polite`', function(this: TestContext) {
@@ -67,7 +70,7 @@ describe('AriaLive service', function() {
     it(
       'should let you change the aria-live value',
       fakeAsync(function(this: TestContext) {
-        ariaLiveService.announce('Must be Assertive', AriaLivePoliteness.assertive);
+        ariaLiveService.announce('Must be Assertive', ClrAriaLivePoliteness.assertive);
         tick(ARIA_LIVE_TICK);
         ariaLiveContent = document.getElementById(ariaLiveService.id);
         expect(ariaLiveContent.getAttribute('aria-live')).toBe('assertive');
@@ -77,7 +80,7 @@ describe('AriaLive service', function() {
     it(
       'should not create aria-live container when politness is off',
       fakeAsync(function(this: TestContext) {
-        ariaLiveService.announce('message you never gonna see', AriaLivePoliteness.off);
+        ariaLiveService.announce('message you never gonna see', ClrAriaLivePoliteness.off);
         tick(ARIA_LIVE_TICK);
         ariaLiveContent = document.getElementById(ariaLiveService.id);
         expect(ariaLiveContent).toBe(null);

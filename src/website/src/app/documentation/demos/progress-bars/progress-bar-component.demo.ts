@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -55,24 +55,6 @@ export class ProgressBarComponentDemo {
       type: 'String',
       defaultValue: 'Empty string',
       description: 'Overwrite the default value representation.',
-    },
-    {
-      name: '[clrPolite]',
-      type: 'Boolean',
-      defaultValue: 'true',
-      description: 'Change the default aria-live value to polite',
-    },
-    {
-      name: '[clrAssertive]',
-      type: 'Boolean',
-      defaultValue: 'false',
-      description: 'Change the default aria-live value to assertive',
-    },
-    {
-      name: '[clrOff]',
-      type: 'Boolean',
-      defaultValue: 'false',
-      description: 'Change the default aria-live value to off. No aria-live event will be trigger',
     },
     {
       name: '[clrLabeled]',

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,11 +12,9 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-yearpicker',
-  providers: [AriaLiveService],
   template: `
         <div class="year-switchers">
           <button
@@ -63,21 +61,11 @@ export class ClrYearpicker implements AfterViewInit {
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
     private _elRef: ElementRef,
-    public commonStrings: ClrCommonStringsService,
-    private ariaLiveService: AriaLiveService
+    public commonStrings: ClrCommonStringsService
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;
-    this.updateRange(this.yearRangeModel);
   }
-
-  get ariaLiveDecadeText(): string {
-    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentDecadePhrase, {
-      DECADE_RANGE: this.decadeRange,
-    });
-  }
-
-  private decadeRange;
 
   /**
    * YearRangeModel which is used to build the YearPicker view.
@@ -126,7 +114,6 @@ export class ClrYearpicker implements AfterViewInit {
    */
   previousDecade(): void {
     this.yearRangeModel = this.yearRangeModel.previousDecade();
-    this.updateRange(this.yearRangeModel);
     // Year in the yearpicker is not focused because while navigating to a different decade,
     // you want the focus to remain on the decade switcher arrows.
   }
@@ -139,7 +126,6 @@ export class ClrYearpicker implements AfterViewInit {
       this.yearRangeModel = this.yearRangeModel.currentDecade();
     }
     this._datepickerFocusService.focusCell(this._elRef);
-    this.updateRange(this.yearRangeModel);
   }
 
   /**
@@ -147,7 +133,6 @@ export class ClrYearpicker implements AfterViewInit {
    */
   nextDecade(): void {
     this.yearRangeModel = this.yearRangeModel.nextDecade();
-    this.updateRange(this.yearRangeModel);
     // Year in the yearpicker is not focused because while navigating to a different decade,
     // you want the focus to remain on the decade switcher arrows.
   }
@@ -192,18 +177,10 @@ export class ClrYearpicker implements AfterViewInit {
     }
   }
 
-  private updateRange(yrm: YearRangeModel): void {
-    const floor = yrm.yearRange[0];
-    const ceil = yrm.yearRange[yrm.yearRange.length - 1];
-    this.decadeRange = `${floor} to ${ceil}`;
-    this.ariaLiveService.announce(this.ariaLiveDecadeText);
-  }
-
   /**
    * Focuses on the current calendar year when the View is initialized.
    */
   ngAfterViewInit() {
     this._datepickerFocusService.focusCell(this._elRef);
-    this.ariaLiveService.announce(this.ariaLiveDecadeText);
   }
 }

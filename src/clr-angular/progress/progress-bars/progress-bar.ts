@@ -5,19 +5,14 @@
  */
 import { Component, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
-  providers: [AriaLiveService],
   selector: 'clr-progress-bar',
   template: `
     <progress [id]="id" [attr.max]="max" [attr.value]="value" [attr.data-displayval]="displayValue"></progress>
-    <span *ngIf="displayAriaLive()">{{ displayValue }}</span>
   `,
 })
 export class ClrProgressBar {
-  constructor(private ariaLiveService: AriaLiveService) {}
-
   /**
    * Handle component ID
    */
@@ -44,9 +39,6 @@ export class ClrProgressBar {
 
   set value(value) {
     this._value = value;
-    if (this.displayAriaLive()) {
-      this.ariaLiveService.announce(this.displayValue, this.ariaLive);
-    }
   }
 
   // Styles
@@ -135,10 +127,6 @@ export class ClrProgressBar {
     this._flashDanger = isBooleanAttributeSet(value);
   }
 
-  // Aria Live
-  @Input('clrAssertive') assertive: boolean;
-  @Input('clrOff') off: boolean;
-
   /**
    * Make sure that we always will have something that is readable
    * for the screen reader
@@ -148,22 +136,5 @@ export class ClrProgressBar {
       return this.displayval;
     }
     return `${this.value}%`;
-  }
-
-  /**
-   * Display aria-live only when there is value and it's not 0 or equal to the max value
-   */
-  displayAriaLive() {
-    return (this.value !== undefined || this.value !== 0) && this.value !== this.max;
-  }
-
-  get ariaLive(): AriaLivePoliteness {
-    if (isBooleanAttributeSet(this.assertive)) {
-      return AriaLivePoliteness.assertive;
-    }
-    if (isBooleanAttributeSet(this.off)) {
-      return AriaLivePoliteness.off;
-    }
-    return AriaLivePoliteness.polite;
   }
 }

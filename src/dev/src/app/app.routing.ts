@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,10 +10,6 @@ import { LandingComponent } from './landing.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', component: LandingComponent },
-  {
-    path: 'accessibility',
-    loadChildren: () => import('./accessibility/accessibility.demo.module').then(m => m.AccessibilityDemoModule),
-  },
   {
     path: 'accordion',
     loadChildren: () => import('./accordion/accordion.demo.module').then(m => m.AccordionDemoModule),

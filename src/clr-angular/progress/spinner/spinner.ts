@@ -1,15 +1,13 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Input, HostBinding, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-spinner',
-  providers: [AriaLiveService],
   template: `
     <ng-content></ng-content>
   `,
@@ -17,13 +15,7 @@ import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.
     '[attr.aria-busy]': 'true',
   },
 })
-export class ClrSpinner implements AfterViewInit {
-  constructor(private el: ElementRef, private ariaLiveService: AriaLiveService) {}
-
-  ngAfterViewInit() {
-    this.ariaLiveService.announce(this.el.nativeElement, this.ariaLive);
-  }
-
+export class ClrSpinner {
   /**
    * Default class for all spinners. This class is always true
    */
@@ -98,32 +90,5 @@ export class ClrSpinner implements AfterViewInit {
   @Input('clrMedium')
   set clrMedium(value: boolean | string) {
     this._medium = isBooleanAttributeSet(value);
-  }
-
-  // Aria Live
-
-  /**
-   * By default aria-live will be set to `polite` .
-   * To change is it you need to set clrAssertive or clrOff to TRUE
-   *
-   * There is priority:
-   *   Default: polite
-   *   Asertive
-   *   Off
-   *
-   * In case when for some reason you have clrAssertive=TRUE and clrOff=TRUE,
-   * we gonna set `assertive` as value of aria-live.
-   *
-   */
-  @Input('clrAssertive') assertive: boolean;
-  @Input('clrOff') off: boolean;
-  get ariaLive(): AriaLivePoliteness {
-    if (isBooleanAttributeSet(this.assertive)) {
-      return AriaLivePoliteness.assertive;
-    }
-    if (isBooleanAttributeSet(this.off)) {
-      return AriaLivePoliteness.off;
-    }
-    return AriaLivePoliteness.polite;
   }
 }

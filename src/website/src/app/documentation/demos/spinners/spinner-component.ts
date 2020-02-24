@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,10 +20,6 @@ const EXAMPLE1 = `
 </div>
 `;
 
-const EXAMPLE2 = `
-<clr-spinner *ngIf="downloadinInvoice" clrMedium clrAssertive>Downloading</clr-spinner>
-`;
-
 @Component({
   selector: 'clr-spinner-component',
   templateUrl: './spinner-component.html',
@@ -32,7 +28,6 @@ const EXAMPLE2 = `
 export class SpinnerComponentDemo {
   example = EXAMPLE;
   example1 = EXAMPLE1;
-  example2 = EXAMPLE2;
 
   props = [
     {
@@ -58,18 +53,6 @@ export class SpinnerComponentDemo {
       type: 'Boolean',
       defaultValue: 'false',
       description: 'Medium spinners 36x36 pixels',
-    },
-    {
-      name: '[clrAssertive]',
-      type: 'Boolean',
-      defaultValue: 'false',
-      description: 'Set aria-live to "assertive", default is "polite"',
-    },
-    {
-      name: '[clrOff]',
-      type: 'Boolean',
-      defaultValue: 'false',
-      description: 'Set aria-live to "off", no event will be broadcasted to screen readers',
     },
   ];
 

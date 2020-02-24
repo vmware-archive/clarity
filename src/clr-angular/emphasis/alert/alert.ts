@@ -23,13 +23,13 @@ import { AlertIconAndTypesService } from './providers/icon-and-types.service';
 import { MultiAlertService } from './providers/multi-alert.service';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 import { ClrAlertText } from './alert-text';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-alert',
-  providers: [AlertIconAndTypesService, AriaLiveService],
+  providers: [AlertIconAndTypesService, ClrAriaLiveService],
   templateUrl: './alert.html',
   styles: [':host { display: block; }'],
 })
@@ -41,7 +41,7 @@ export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
     private cdr: ChangeDetectorRef,
     @Optional() private multiAlertService: MultiAlertService,
     private commonStrings: ClrCommonStringsService,
-    private ariaLiveService: AriaLiveService
+    private ariaLiveService: ClrAriaLiveService
   ) {}
 
   ngOnInit() {
@@ -87,8 +87,11 @@ export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
    * code complition and also mark component what type AriaLive
    * will be used.
    */
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrPolite') polite: boolean = true;
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrAssertive') assertive: boolean;
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrOff') off: boolean;
   /**
    * There is an order on how the attributes will take effect.
@@ -99,14 +102,14 @@ export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
    * In the case of setting all of them to true. Assertive will be used.
    *
    */
-  get ariaLive(): AriaLivePoliteness {
+  get ariaLive(): ClrAriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return AriaLivePoliteness.assertive;
+      return ClrAriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return AriaLivePoliteness.off;
+      return ClrAriaLivePoliteness.off;
     }
-    return AriaLivePoliteness.polite;
+    return ClrAriaLivePoliteness.polite;
   }
 
   @Input('clrAlertIcon')

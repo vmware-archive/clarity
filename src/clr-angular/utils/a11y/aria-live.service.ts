@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { uniqueIdFactory } from '../id-generator/id-generator.service';
 
-export enum AriaLivePoliteness {
+export enum ClrAriaLivePoliteness {
   off = 'off',
   polite = 'polite',
   assertive = 'assertive',
@@ -18,28 +18,25 @@ export enum AriaLivePoliteness {
 /**
  * Time in milliseconds before inserting the content into the container
  */
-export const ARIA_LIVE_TICK: number = 100;
+const ARIA_LIVE_TICK: number = 100;
 
 /**
  * This service handle `aria-live` accessibility attribute. The issue is that you need
  * to have the DOM Element with attribute `aria-live` before you could insert content
  * and SR (Screen Reader) pick the change and announce it.
  *
- * @remark
- * This is a private service, nothing here is part of Clarity's public API. It could change at any point in time.
- *
  * ```typescript
- * import { AriaLiveService } from 'src/clr-angular/utils/a11y/aria-live.service';
+ * import { ClrAriaLiveService } from 'src/clr-angular/utils/a11y/aria-live.service';
  *
  * @Component({
  * selector: 'clr-demo-component',
- * providers: [AriaLiveService],
+ * providers: [ClrAriaLiveService],
  * template: `
  *   <ng-content></ng-content>
  * `,
  * })
  * export class DemoComponent {
- *  constructor(ariaLiveService: AriaLiveService) {}
+ *  constructor(ariaLiveService: ClrAriaLiveService) {}
  *
  *  public actionThatWillTriggerChange() {
  *    this.ariaLiveService.announce('message that I want to announce to SR');
@@ -48,8 +45,10 @@ export const ARIA_LIVE_TICK: number = 100;
  * ```
  *
  */
-@Injectable()
-export class AriaLiveService implements OnDestroy {
+@Injectable({
+  providedIn: 'root',
+})
+export class ClrAriaLiveService implements OnDestroy {
   private ariaLiveElement: HTMLElement;
   private document: Document;
   private previousTimeout: ReturnType<typeof setTimeout>;
@@ -88,8 +87,11 @@ export class AriaLiveService implements OnDestroy {
    * @param message - This could be simple string or HTMLElement
    * @param politeness - 'polite', 'assertive' or 'off'
    */
-  public announce(message: string | HTMLElement, politeness: AriaLivePoliteness = AriaLivePoliteness.polite): void {
-    if (politeness === AriaLivePoliteness.off) {
+  public announce(
+    message: string | HTMLElement,
+    politeness: ClrAriaLivePoliteness = ClrAriaLivePoliteness.polite
+  ): void {
+    if (politeness === ClrAriaLivePoliteness.off) {
       return;
     }
 
@@ -128,7 +130,6 @@ export class AriaLiveService implements OnDestroy {
    */
   public ngOnDestroy() {
     clearTimeout(this.previousTimeout);
-
     if (isPlatformBrowser(this.platformId) && this.ariaLiveElement) {
       this.document.body.removeChild(this.ariaLiveElement);
       this.ariaLiveElement = null;
@@ -158,7 +159,7 @@ export class AriaLiveService implements OnDestroy {
     ariaLiveElement.classList.add('clr-sr-only');
 
     ariaLiveElement.setAttribute('aria-atomic', 'true');
-    ariaLiveElement.setAttribute('aria-live', AriaLivePoliteness.polite);
+    ariaLiveElement.setAttribute('aria-live', ClrAriaLivePoliteness.polite);
 
     this.document.body.appendChild(ariaLiveElement);
 

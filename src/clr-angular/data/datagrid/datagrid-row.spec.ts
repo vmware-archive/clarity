@@ -19,7 +19,6 @@ import { Items } from './providers/items';
 import { Selection } from './providers/selection';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { SelectionType } from './enums/selection-type';
-import { ARIA_LIVE_TICK } from '../../utils/a11y/aria-live.service';
 
 type Item = { id: number };
 
@@ -370,7 +369,7 @@ export default function(): void {
           expand.expanded = true;
           expand.loading = true;
           context.detectChanges();
-          tick(ARIA_LIVE_TICK);
+          tick(100);
           expect(context.clarityElement.textContent.trim()).not.toMatch('Detail');
         })
       );

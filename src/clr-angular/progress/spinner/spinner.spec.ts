@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { ClrSpinnerModule } from './spinner.module';
 import { ClrSpinner } from './spinner';
 
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 const SPINNER_BASE_CLASS = 'spinner';
 
@@ -61,14 +61,14 @@ describe('ClrSpinner component', () => {
     });
 
     describe('AriaLive', () => {
-      it('should call AriaLiveService.announce', () => {
+      it('should call ClrAriaLiveService.announce', () => {
         fixture = TestBed.createComponent(TestMediumComponent);
-        const ariaLiveService = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(AriaLiveService);
+        const ariaLiveService = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrAriaLiveService);
         const announceSpyOn = spyOn(ariaLiveService, 'announce');
         fixture.detectChanges();
         expect(announceSpyOn).toHaveBeenCalledWith(
           fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement,
-          AriaLivePoliteness.assertive
+          ClrAriaLivePoliteness.assertive
         );
       });
 
@@ -77,7 +77,7 @@ describe('ClrSpinner component', () => {
         fixture.detectChanges();
         clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
         const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(AriaLivePoliteness.polite);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.polite);
         expect(clrSpinner.getAttribute('aria-busy')).toBe('true');
       });
 
@@ -86,7 +86,7 @@ describe('ClrSpinner component', () => {
         clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
         fixture.detectChanges();
         const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(AriaLivePoliteness.off);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.off);
       });
 
       it('should set aria-live to "assertive"', () => {
@@ -94,7 +94,7 @@ describe('ClrSpinner component', () => {
         clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
         fixture.detectChanges();
         const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(AriaLivePoliteness.assertive);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.assertive);
       });
     });
 

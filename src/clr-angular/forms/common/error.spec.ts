@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrControlError } from './error';
 import { ControlIdService } from './providers/control-id.service';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({ template: `<clr-control-error>Test error</clr-control-error>` })
 class SimpleTest {}
@@ -30,9 +30,11 @@ export default function(): void {
       fixture.detectChanges();
     });
 
-    it('expect to call AriaLiveService.announce', function() {
+    it('expect to call ClrAriaLiveService.announce', function() {
       fixture = TestBed.createComponent(SimpleTest);
-      const ariaLiveService = fixture.debugElement.query(By.directive(ClrControlError)).injector.get(AriaLiveService);
+      const ariaLiveService = fixture.debugElement
+        .query(By.directive(ClrControlError))
+        .injector.get(ClrAriaLiveService);
       announceSpyOn = spyOn(ariaLiveService, 'announce');
       fixture.detectChanges();
       expect(announceSpyOn).toHaveBeenCalled();

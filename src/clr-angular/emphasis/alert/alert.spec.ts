@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrAlert } from './alert';
 import { ClrAlertModule } from './alert.module';
-import { AriaLivePoliteness, AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLivePoliteness, ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 const CLOSE_ARIA_LABEL = 'Close Test Alert';
 
@@ -136,35 +136,35 @@ export default function(): void {
     });
 
     describe('AriaLive', function() {
-      let ariaLiveService: AriaLiveService;
+      let ariaLiveService: ClrAriaLiveService;
       let announceSpyOn, component;
 
       beforeEach(function() {
         fixture = TestBed.createComponent(TestComponent);
 
         component = fixture.debugElement.query(By.directive(ClrAlert)).injector.get(ClrAlert);
-        ariaLiveService = fixture.debugElement.query(By.directive(ClrAlert)).injector.get(AriaLiveService);
+        ariaLiveService = fixture.debugElement.query(By.directive(ClrAlert)).injector.get(ClrAriaLiveService);
         announceSpyOn = spyOn(ariaLiveService, 'announce');
       });
 
       it("should have an aria-live value of polite when you don't apply any attribute", () => {
-        expect(component.ariaLive).toBe(AriaLivePoliteness.polite);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.polite);
         fixture.detectChanges();
-        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, AriaLivePoliteness.polite);
+        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, ClrAriaLivePoliteness.polite);
       });
 
       it('should have an aria-live value of off when apply clrOff', () => {
         fixture.componentInstance.clrOff = true;
         fixture.detectChanges();
-        expect(component.ariaLive).toBe(AriaLivePoliteness.off);
-        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, AriaLivePoliteness.off);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.off);
+        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, ClrAriaLivePoliteness.off);
       });
 
       it('should have an aria-live value of assertive when apply clrAssertive', () => {
         fixture.componentInstance.clrAssertive = true;
         fixture.detectChanges();
-        expect(component.ariaLive).toBe(AriaLivePoliteness.assertive);
-        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, AriaLivePoliteness.assertive);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.assertive);
+        expect(announceSpyOn).toHaveBeenCalledWith(fixture.componentInstance.alertMsg, ClrAriaLivePoliteness.assertive);
       });
 
       it('should follow the aria-live priority when all of them are set', () => {
@@ -172,14 +172,14 @@ export default function(): void {
         fixture.componentInstance.clrPolite = true;
         fixture.componentInstance.clrOff = true;
         fixture.detectChanges();
-        expect(component.ariaLive).toBe(AriaLivePoliteness.assertive);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.assertive);
       });
 
       it('should set clrPolite and clrOff - clrOff will be used', () => {
         fixture.componentInstance.clrPolite = true;
         fixture.componentInstance.clrOff = true;
         fixture.detectChanges();
-        expect(component.ariaLive).toBe(AriaLivePoliteness.off);
+        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.off);
       });
     });
 

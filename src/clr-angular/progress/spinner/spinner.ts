@@ -1,15 +1,15 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, Input, HostBinding, ElementRef, AfterViewInit } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-spinner',
-  providers: [AriaLiveService],
+  providers: [ClrAriaLiveService],
   template: `
     <ng-content></ng-content>
   `,
@@ -18,7 +18,7 @@ import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.
   },
 })
 export class ClrSpinner implements AfterViewInit {
-  constructor(private el: ElementRef, private ariaLiveService: AriaLiveService) {}
+  constructor(private el: ElementRef, private ariaLiveService: ClrAriaLiveService) {}
 
   ngAfterViewInit() {
     this.ariaLiveService.announce(this.el.nativeElement, this.ariaLive);
@@ -115,15 +115,17 @@ export class ClrSpinner implements AfterViewInit {
    * we gonna set `assertive` as value of aria-live.
    *
    */
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrAssertive') assertive: boolean;
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrOff') off: boolean;
-  get ariaLive(): AriaLivePoliteness {
+  get ariaLive(): ClrAriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return AriaLivePoliteness.assertive;
+      return ClrAriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return AriaLivePoliteness.off;
+      return ClrAriaLivePoliteness.off;
     }
-    return AriaLivePoliteness.polite;
+    return ClrAriaLivePoliteness.polite;
   }
 }

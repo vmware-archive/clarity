@@ -23,14 +23,14 @@ import { ClrYearpicker } from './yearpicker';
 import { YearRangeModel } from './model/year-range.model';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { TestBed } from '@angular/core/testing';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 import { DateIOService } from './providers/date-io.service';
 
 export default function() {
   describe('Yearpicker Component AriaLiveSerivice', function() {
     let announceSpyOn: () => {};
-    let ariaLiveService: AriaLiveService;
+    let ariaLiveService: ClrAriaLiveService;
     let fixture, component;
 
     beforeEach(function() {
@@ -55,12 +55,12 @@ export default function() {
         ],
       }).overrideComponent(ClrYearpicker, {
         set: {
-          providers: [{ provide: AriaLiveService, useClass: MockAriaLiveService }],
+          providers: [{ provide: ClrAriaLiveService, useClass: MockAriaLiveService }],
         },
       });
 
       fixture = TestBed.createComponent(TestComponent);
-      ariaLiveService = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(AriaLiveService);
+      ariaLiveService = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(ClrAriaLiveService);
       component = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(ClrYearpicker);
       announceSpyOn = spyOn(ariaLiveService, 'announce');
       fixture.detectChanges();

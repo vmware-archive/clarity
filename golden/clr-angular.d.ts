@@ -112,7 +112,7 @@ export declare class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
     alertTexts: QueryList<ElementRef>;
     set alertType(val: string);
     get alertType(): string;
-    get ariaLive(): AriaLivePoliteness;
+    get ariaLive(): ClrAriaLivePoliteness;
     assertive: boolean;
     closable: boolean;
     clrCloseButtonAriaLabel: string;
@@ -122,7 +122,7 @@ export declare class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
     isSmall: boolean;
     off: boolean;
     polite: boolean;
-    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
     close(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
@@ -178,6 +178,19 @@ export declare enum ClrAlignment {
     START = 0,
     CENTER = 0.5,
     END = 1
+}
+
+export declare enum ClrAriaLivePoliteness {
+    off = "off",
+    polite = "polite",
+    assertive = "assertive"
+}
+
+export declare class ClrAriaLiveService implements OnDestroy {
+    get id(): string;
+    constructor(ngZone: NgZone, _document: any, platformId: Object);
+    announce(message: string | HTMLElement, politeness?: ClrAriaLivePoliteness): void;
+    ngOnDestroy(): void;
 }
 
 export declare enum ClrAxis {
@@ -286,7 +299,7 @@ export declare class ClrControlContainer extends ClrAbstractContainer {
 
 export declare class ClrControlError implements AfterViewInit {
     controlIdService: ControlIdService;
-    constructor(controlIdService: ControlIdService, ariaLiveService: AriaLiveService, el: ElementRef);
+    constructor(controlIdService: ControlIdService, ariaLiveService: ClrAriaLiveService, el: ElementRef);
     ngAfterViewInit(): void;
 }
 
@@ -728,7 +741,7 @@ export declare class ClrDaypicker implements AfterViewInit {
     get monthAttrString(): string;
     get updateAriaLiveYear(): string;
     get yearAttrString(): string;
-    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
     changeToMonthView(): void;
     changeToYearView(): void;
     currentMonth(): void;
@@ -873,7 +886,7 @@ export declare class ClrForm {
     set labelSize(size: number);
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
-    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Object, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
     markAsDirty(updateAriaLiveText?: boolean): void;
     markAsTouched(updateAriaLiveText?: boolean): void;
     onFormSubmit(): void;
@@ -1167,7 +1180,7 @@ export declare class ClrPopoverToggleService {
 }
 
 export declare class ClrProgressBar {
-    get ariaLive(): AriaLivePoliteness;
+    get ariaLive(): ClrAriaLivePoliteness;
     assertive: boolean;
     set clrDanger(value: boolean | string);
     set clrFade(value: boolean | string);
@@ -1193,7 +1206,7 @@ export declare class ClrProgressBar {
     get successClass(): boolean;
     get value(): number;
     set value(value: number);
-    constructor(ariaLiveService: AriaLiveService);
+    constructor(ariaLiveService: ClrAriaLiveService);
     displayAriaLive(): boolean;
 }
 
@@ -1302,7 +1315,7 @@ export declare class ClrSignpostTrigger implements OnDestroy {
 }
 
 export declare class ClrSpinner implements AfterViewInit {
-    get ariaLive(): AriaLivePoliteness;
+    get ariaLive(): ClrAriaLivePoliteness;
     assertive: boolean;
     set clrInline(value: boolean | string);
     set clrInverse(value: boolean | string);
@@ -1314,7 +1327,7 @@ export declare class ClrSpinner implements AfterViewInit {
     off: boolean;
     get smallClass(): boolean;
     get spinnerClass(): boolean;
-    constructor(el: ElementRef, ariaLiveService: AriaLiveService);
+    constructor(el: ElementRef, ariaLiveService: ClrAriaLiveService);
     ngAfterViewInit(): void;
 }
 
@@ -1800,7 +1813,7 @@ export declare class ClrYearpicker implements AfterViewInit {
     get calendarYear(): number;
     commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;
-    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: AriaLiveService);
+    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
     changeYear(year: number): void;
     currentDecade(): void;
     getTabIndex(year: number): number;

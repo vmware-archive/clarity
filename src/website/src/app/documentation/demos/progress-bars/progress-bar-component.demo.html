@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -31,6 +31,28 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="alert alert-warning">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Deprecation: Since v4, we will no longer handle setting <code class="clr-code">aria-live</code> and announcing
+          the message
+          for you by default. Based on the application use case, you can use the new <code
+            class="clr-code">ClrAriaLiveService</code>
+          to make announcements when they make sense for a user to hear about updates or loading status changes.
+
+          This will result in of removing few inputs provided by the component such as
+          <code class="clr-code">clrPolite</code>,
+          <code class="clr-code">clrAssertive</code>,
+          <code class="clr-code">clrOff</code>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <h4>Examples</h4>
   <clr-code-snippet [clrCode]="example"></clr-code-snippet>

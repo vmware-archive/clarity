@@ -9,7 +9,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ClrProgressBarModule } from './progress-bar.module';
 import { ClrProgressBar } from './progress-bar';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: `<clr-progress-bar  id="randomId" [clrValue]="progressValue"></clr-progress-bar>`,
@@ -68,7 +68,9 @@ describe('ClrProgressBar component', () => {
       it('expect to add class and aria-live', () => {
         fixture = TestBed.createComponent(TestDisplayValueComponent);
         fixture.componentInstance.progressValue = 20;
-        const ariaLiveService = fixture.debugElement.query(By.directive(ClrProgressBar)).injector.get(AriaLiveService);
+        const ariaLiveService = fixture.debugElement
+          .query(By.directive(ClrProgressBar))
+          .injector.get(ClrAriaLiveService);
         const announceSpyOn = spyOn(ariaLiveService, 'announce');
 
         fixture.detectChanges();
@@ -76,7 +78,7 @@ describe('ClrProgressBar component', () => {
         clrProgressBar = fixture.debugElement.query(By.directive(ClrProgressBar)).nativeElement;
 
         expect(clrProgressBar.querySelector('span').innerText).toBe('20%');
-        expect(announceSpyOn).toHaveBeenCalledWith('20%', AriaLivePoliteness.polite);
+        expect(announceSpyOn).toHaveBeenCalledWith('20%', ClrAriaLivePoliteness.polite);
       });
 
       it('expect to remove aria-live when progress finish, test also auto max value', () => {

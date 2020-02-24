@@ -171,6 +171,22 @@
                 <code class="clr-code">aria-live</code> region will be updated with the associated labels for each
                 control in the error state.
             </p>
+
+            <div class="alert alert-warning">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            Deprecation: Since v4, we will no longer handle setting <code class="clr-code">aria-live</code> and
+                            announcing the message for you by default. Based on the application use case, you can use the new
+                            <code class="clr-code">ClrAriaLiveService</code> to make announcements when they make sense for a
+                             user to hear about updates or loading status changes.
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="code-examples">

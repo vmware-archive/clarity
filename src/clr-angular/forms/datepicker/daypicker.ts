@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,11 +9,11 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-daypicker',
-  providers: [AriaLiveService],
+  providers: [ClrAriaLiveService],
   templateUrl: './daypicker.html',
   host: { '[class.daypicker]': 'true' },
 })
@@ -23,10 +23,11 @@ export class ClrDaypicker implements AfterViewInit {
     private _dateNavigationService: DateNavigationService,
     private _localeHelperService: LocaleHelperService,
     public commonStrings: ClrCommonStringsService,
-    private ariaLiveService: AriaLiveService
+    private ariaLiveService: ClrAriaLiveService
   ) {}
 
   ngAfterViewInit() {
+    /** @deprecated since 3.0, remove in 4.0 */
     this.ariaLiveService.announce(`${this.ariaLiveMonth} ${this.updateAriaLiveYear}`);
   }
 

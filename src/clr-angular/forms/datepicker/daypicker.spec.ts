@@ -20,12 +20,12 @@ import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { TestBed } from '@angular/core/testing';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 import { ClrDatepickerModule } from './datepicker.module';
 
 export default function() {
-  describe('Daypicker Component AriaLiveService', function() {
+  describe('Daypicker Component ClrAriaLiveService', function() {
     let localeHelperService: LocaleHelperService;
     let dateNavigationService: DateNavigationService;
 
@@ -50,12 +50,12 @@ export default function() {
         ],
       }).overrideComponent(ClrDaypicker, {
         set: {
-          providers: [{ provide: AriaLiveService, useClass: MockAriaLiveService }],
+          providers: [{ provide: ClrAriaLiveService, useClass: MockAriaLiveService }],
         },
       });
 
       const fixture = TestBed.createComponent(TestComponent);
-      const ariaLiveService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(AriaLiveService);
+      const ariaLiveService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(ClrAriaLiveService);
       const announceSpyOn = spyOn(ariaLiveService, 'announce');
 
       localeHelperService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(LocaleHelperService);

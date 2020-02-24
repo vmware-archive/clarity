@@ -5,10 +5,10 @@
  */
 import { Component, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
-  providers: [AriaLiveService],
+  providers: [ClrAriaLiveService],
   selector: 'clr-progress-bar',
   template: `
     <progress [id]="id" [attr.max]="max" [attr.value]="value" [attr.data-displayval]="displayValue"></progress>
@@ -16,7 +16,7 @@ import { AriaLiveService, AriaLivePoliteness } from '../../utils/a11y/aria-live.
   `,
 })
 export class ClrProgressBar {
-  constructor(private ariaLiveService: AriaLiveService) {}
+  constructor(private ariaLiveService: ClrAriaLiveService) {}
 
   /**
    * Handle component ID
@@ -136,7 +136,9 @@ export class ClrProgressBar {
   }
 
   // Aria Live
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrAssertive') assertive: boolean;
+  /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrOff') off: boolean;
 
   /**
@@ -157,13 +159,13 @@ export class ClrProgressBar {
     return (this.value !== undefined || this.value !== 0) && this.value !== this.max;
   }
 
-  get ariaLive(): AriaLivePoliteness {
+  get ariaLive(): ClrAriaLivePoliteness {
     if (isBooleanAttributeSet(this.assertive)) {
-      return AriaLivePoliteness.assertive;
+      return ClrAriaLivePoliteness.assertive;
     }
     if (isBooleanAttributeSet(this.off)) {
-      return AriaLivePoliteness.off;
+      return ClrAriaLivePoliteness.off;
     }
-    return AriaLivePoliteness.polite;
+    return ClrAriaLivePoliteness.polite;
   }
 }

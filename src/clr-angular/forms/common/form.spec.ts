@@ -12,7 +12,7 @@ import { LayoutService } from './providers/layout.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { ReactiveFormsModule, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ClrInputModule } from '../input/input.module';
-import { AriaLiveService } from '../../utils/a11y/aria-live.service';
+import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: `
@@ -100,7 +100,7 @@ export default function(): void {
     });
 
     it('updates aria-live with invalid controls', function() {
-      const ariaLiveService = fixture.debugElement.query(By.directive(ClrForm)).injector.get(AriaLiveService);
+      const ariaLiveService = fixture.debugElement.query(By.directive(ClrForm)).injector.get(ClrAriaLiveService);
       const announceSpyOn = spyOn(ariaLiveService, 'announce');
 
       spyOn(fixture.componentInstance.testLabel.nativeElement, 'focus');

@@ -99,10 +99,10 @@ You'll also want to ensure that when you build the project that you're increment
 
 ##### How to test package with npm registry
 
-During local development you can run the build `npm run build` from the repo root, and then `npm run publish:local` to publish it locally. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
+During local development you can build and publish to the local registry `npm run publish:local`. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
 
 ```bash
-rm -rf ~/.config/verdaccio/storage/@clr && npm run build && npm run publish:local
+rm -rf ~/.config/verdaccio/storage/@clr && npm run publish:local
 ```
 
 Finally run `ng update @clr/angular --from 0.12.7` (update the version number) to have it install using your local registry.

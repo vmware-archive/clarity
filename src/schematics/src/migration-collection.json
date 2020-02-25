@@ -5,6 +5,11 @@
       "version": "0.13.0-rc.1",
       "factory": "./update/update-0.13.0",
       "description": "Updates for Clarity 0.13.0"
+    },
+    "migration-0002": {
+      "version": "3.0.0",
+      "factory": "./update/update-3.0.0",
+      "description": "Updates for Clarity 3.0.0"
     }
   }
 }

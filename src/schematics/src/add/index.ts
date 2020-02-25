@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -152,8 +152,8 @@ export default function(options: ComponentOptions): Rule {
       if (!packages.includes('@clr/core')) {
         json.dependencies['@clr/core'] = `${version}`;
       }
-      if (!packages.includes('@webcomponents/custom-elements')) {
-        json.dependencies['@webcomponents/custom-elements'] = '^1.0.0';
+      if (!packages.includes('@webcomponents/webcomponentsjs')) {
+        json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
       }
     });
 
@@ -189,9 +189,13 @@ export default function(options: ComponentOptions): Rule {
       if (scriptsSearch.search('node_modules/@clr/icons/clr-icons.min.js') < 0) {
         scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
       }
-      if (scriptsSearch.search('node_modules/@webcomponents/custom-elements/custom-elements.min.js') < 0) {
+      if (scriptsSearch.search('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js') < 0) {
+        // Want this second
+        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js');
+      }
+      if (scriptsSearch.search('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js') < 0) {
         // Want this first
-        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/custom-elements/custom-elements.min.js');
+        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
       }
     });
 

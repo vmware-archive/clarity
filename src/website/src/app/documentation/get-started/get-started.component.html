@@ -11,7 +11,7 @@
     </p>
     <h2 id="howToUse">How to Use Clarity</h2>
     <p>We offer three approaches for utilizing Clarity: just the UX guidelines, UX guidelines and our HTML/CSS framework, or put everything together with our Angular implementation.</p>
-    
+
     <h3 id="designResources">Using Clarity Design Resources</h3>
     <p>Jumpstart your project with one of our Sketch or Figma-based design resources. Start by downloading the <a
         href="https://github.com/chrismsimpson/Metropolis" target="_blank">Metropolis fonts</a>. Then download your
@@ -55,7 +55,7 @@
 
     <h3 id="uiInstallation">HTML/CSS Framework</h3>
     <p>If you just want to use our HTML/CSS implementations, you need to get the latest code from NPM and then add the assets to your project.</p>
-    <p><clr-code-snippet [clrCode]="'npm install @clr/ui --save'" [clrDisablePrism]="true"></clr-code-snippet></p>
+    <p><clr-code-snippet [clrCode]="'npm install @clr/ui --save'"></clr-code-snippet></p>
     <p>You'll need to include one of the files found at <code class="clr-code">node_modules/@clr/ui/clr-ui.min.css</code> for the normal theme or <code class="clr-code">node_modules/@clr/ui/clr-ui-dark.min.css</code> for the dark theme into your build tooling.</p>
     <p>You can also load this CSS file from a CDN like you see below. See <a href="https://unpkg.com/#/">unpkg.com</a> for more details.</p>
     <p><clr-code-snippet [clrCode]="uiCdn" clrLanguage="html"></clr-code-snippet></p>
@@ -76,18 +76,15 @@
     <ol class="list">
         <li>Generate a new Angular application (if you haven't already):
             <clr-code-snippet
-                    [clrCode]="'ng new my-app'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
+                    [clrCode]="'ng new my-app'"></clr-code-snippet>
         </li>
         <li>Navigate to the directory:
             <clr-code-snippet
-                    [clrCode]="'cd my-app'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
+                    [clrCode]="'cd my-app'"></clr-code-snippet>
         </li>
         <li>Run the ng add command for Clarity:
             <clr-code-snippet
-                    [clrCode]="'ng add @clr/angular'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
+                    [clrCode]="'ng add @clr/angular'"></clr-code-snippet>
         </li>
     </ol>
     <p></p>
@@ -107,26 +104,22 @@
         <li><b>@clr/icons.</b> The library that provides the custom element icons.</li>
         <li><b>@clr/ui.</b> Contains the static styles for building HTML components.</li>
         <li><b>@clr/angular.</b> Contains the Angular components. This package depends on @clr/ui for styles.
-        <li><b>@webcomponents/custom-elements.</b> A polyfill for webcomponents for older browsers, which Clarity depends upon.</li>
+        <li><b>@webcomponents/webcomponentsjs.</b> A polyfill for webcomponents for older browsers, which Clarity depends upon.</li>
     </ul>
 
     <p>Install them all by running the following command with NPM.</p>
     <p><clr-code-snippet
-                    [clrCode]="'npm install @clr/icons @clr/angular @clr/ui @webcomponents/custom-elements@1.0.0 --save'"
-                    [clrDisablePrism]="true"></clr-code-snippet>
+                    clrLanguage="bash"
+                    [clrCode]="'npm install @clr/icons @clr/angular @clr/ui @webcomponents/webcomponentsjs --save'"></clr-code-snippet>
     </p>
 
     <h5 id="step-3-scripts-styles">Step 3: Adding scripts and styles</h5>
     <p>If you are using the Angular CLI, you need to add the <code class="clr-code">angular.json</code> file.</p>
     <p>Find the <code class="clr-code">scripts</code> and <code class="clr-code">styles</code> arrays and add the following:
-        <clr-code-snippet
-                [clrCode]="nodeImports"
-                [clrDisablePrism]="true"></clr-code-snippet></p>
+        <clr-code-snippet clrLanguage="javascript" [clrCode]="nodeImports"></clr-code-snippet></p>
     <p></p>
     <p>If you are not using the CLI, you'll need to add the files listed above to your build tooling or you could also put them in the head of the index.html file like:
-    <clr-code-snippet
-                [clrCode]="htmlImports"
-                [clrDisablePrism]="true"></clr-code-snippet></p>
+    <clr-code-snippet clrLanguage="html" [clrCode]="htmlImports"></clr-code-snippet></p>
     <p></p>
 
     <h5 id="step-4-install-clarity-angular">Step 4: Add Clarity to Angular application</h5>
@@ -138,21 +131,18 @@
     <h4 id="step-5-run-your-app">Step 5: Run Your App</h4>
     <clr-code-snippet
             clrLanguage="bash"
-            [clrCode]="'npm start'"
-            [clrDisablePrism]="true"></clr-code-snippet>
+            [clrCode]="'npm start'"></clr-code-snippet>
     <h4 id="step6-update">Step 6: Update Clarity</h4>
     <p>In order to keep up with Clarity, you can use ng update to automatically update Clarity to the latest version in your Angular project. This will also run any migration schematics, which can update code for you or warn you about changes in Clarity that affect your application. It usually helps to update Angular first, then Clarity.</p>
     <clr-code-snippet
             clrLanguage="bash"
             [clrCode]="'ng update @angular/core @angular/cli
-ng update @clr/angular'"
-            [clrDisablePrism]="true"></clr-code-snippet>
+ng update @clr/angular'"></clr-code-snippet>
     <p>If you want to update to a prerelease version, you can do so by running:</p>
     <clr-code-snippet
             clrLanguage="bash"
             [clrCode]="'ng update @angular/core@next @angular/cli@next
-ng update @clr/angular@next'"
-            [clrDisablePrism]="true"></clr-code-snippet>
+ng update @clr/angular@next'"></clr-code-snippet>
     <h2 id="browserSupport">Device and Browser Support</h2>
     <p class="bump-down"><img src="assets/images/get-started/device_support.png" alt="Device and Browser Support"
                               class="hidden-sm-down img-fluid"></p>

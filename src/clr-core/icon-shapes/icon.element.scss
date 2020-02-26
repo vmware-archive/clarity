@@ -28,6 +28,7 @@
   margin: 0;
   vertical-align: middle;
   fill: var(--color);
+  contain: strict;
 }
 
 svg {

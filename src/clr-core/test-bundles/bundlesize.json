@@ -6,7 +6,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "11 kB"
+      "maxSize": "17 kB"
     }
   ]
 }

@@ -1,8 +1,4 @@
 {
   "sideEffects": true,
-  "main": "./index.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
-  "name": "@clr/core/alert",
-  "type": "module"
+  "name": "@clr/core/alert"
 }

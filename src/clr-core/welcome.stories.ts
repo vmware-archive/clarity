@@ -63,6 +63,10 @@ export const gettingStarted = () => {
       <p>
         Clarity Core is a Web Component implementation of the <a href="https://clarity.design">Clarity Design System</a>.
         Clarity Core provides a set of reusable UI components that work in any JavaScript framework or no framework at all.
+      </p>
+
+      <p>
+        Core is currently in a stable but beta state and we are actively looking for feedback from teams.
         You can read more about Core and its goals in our <a href="https://medium.com/claritydesignsystem/clarity-core-72f6d3a029bc">Medium blog post</a>.
       </p>
 

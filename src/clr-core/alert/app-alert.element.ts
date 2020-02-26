@@ -28,7 +28,6 @@ import { styles } from './app-alert.element.css';
  * </cds-app-alert>
  * ```
  *
- * @noInheritDoc
  * @beta 3.0
  * @element cds-app-alert
  * @slot default - Content slot for inside the alert. Usually will contain at least a <cds-alert-content> component.

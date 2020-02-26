@@ -22,6 +22,10 @@ h2 {
   font-size: 1.4rem;
 }
 
+h1 span {
+  font-size: 1.4rem;
+}
+
 p {
   color: hsl(0, 0%, 40%);
   font-size: 0.7rem;
@@ -32,22 +36,34 @@ p {
   padding: 1.1rem;
   margin: 0 auto;
   text-align: left;
-  max-width: 45rem;
+  max-width: 40rem;
 }
 
 .doc pre {
   background: hsl(214, 100%, 99%);
   padding: 1rem;
   border: 0;
+  overflow-x: auto;
 }
 
 .doc code {
   background: hsl(214, 100%, 99%);
 }
 
+.doc ul,
+.doc ol {
+  padding: 0;
+}
+
 .doc li {
   list-style: none;
   margin-bottom: 3rem;
+}
+
+.doc li li {
+  list-style: disc;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
 }
 
 .docblock-propstable-body td {

@@ -62,6 +62,8 @@ export const gettingStarted = () => {
 
       <p>
         Clarity Core is a Web Component implementation of the <a href="https://clarity.design">Clarity Design System</a>.
+        Clarity Core provides a set of reusable UI components that work in any JavaScript framework or no framework at all.
+        You can read more about Core and its goals in our <a href="https://medium.com/claritydesignsystem/clarity-core-72f6d3a029bc">Medium blog post</a>.
       </p>
 
       <h2>Installing</h2>
@@ -109,11 +111,11 @@ font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
             the Clarity Web Components. To use a component import the component into your
             JavaScript.
           </p>
-          <pre><code>import '@clr/core/modal';</code></pre>
+          <pre><code>import '@clr/core/alert';</code></pre>
         </li>
         <li>
           <h3>4. Use Web Component with JavaScript or framework of choice.</h3>
-          <pre><code>import '@clr/core/modal';</code></pre>
+          <pre><code>import '@clr/core/alert';</code></pre>
 
           <p>
             Once imported, the component is registered and ready to use in your HTML.
@@ -149,7 +151,7 @@ export const angular = () => {
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import '@clr/core/modal';
+import '@clr/core/alert';
 
 @NgModule({
   imports:      [ BrowserModule ],
@@ -168,14 +170,14 @@ export class AppModule { }
       <pre><code>
       ${`
 <!--
-- size - attribute style hook
-- [open] - setting the 'open' property on the element
-- (openChange) - listen for the 'openChange' custom event
+- status - attribute style hook
+- [closable] - setting the 'closable' property on the element
+- (closeChange) - listen for the 'closeChange' custom event
 -->
 
-<cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
-  <p>slot content</p>
-</cds-modal>
+<cds-alert status="info" [closable]="true" (closeChange)="log($event.detail)">
+  Hello World
+</cds-alert>
         `}
       </code></pre>
     </section>
@@ -193,7 +195,7 @@ export const vue = () => {
       </p>
 
 <pre><code>
-import '@clr/core/modal';
+import '@clr/core/alert';
 </code></pre>
 
       <p>
@@ -204,15 +206,15 @@ import '@clr/core/modal';
       <pre><code>
       ${`
 <!--
-Example of a modal web component in Vue
-- size - attribute style hook
-- :open - setting the 'open' property on the element
-- @openChange - listen for the 'openChange' custom event
+Example of a alert web component in Vue
+- status - attribute style hook
+- :closable - setting the 'closable' property on the element
+- @closeChange - listen for the 'closeChange' custom event
 -->
 
-<cds-modal size="lg" :open="true" @openChange="log">
-  <p>slot content</p>
-</cds-modal>
+<cds-alert status="info" :closable="true" @closeChange="log">
+  Hello World
+</cds-alert>
       `}
       </code></pre>
     </section>
@@ -230,28 +232,28 @@ export const react = () => {
       </p>
 
 <pre><code>
-import '@clr/core/modal';
+import '@clr/core/alert';
 </code></pre>
 
       <pre><code>
       ${`
 /*
-Example of a modal web component in Preact
-- size - attribute style hook
-- open - setting the 'open' property on the element
-- openChange - listen for the 'openChange' custom event
+Example of a alert web component in Preact
+- status - attribute style hook
+- closable - setting the 'closable' property on the element
+- onCloseChange - listen for the 'closeChange' custom event
 */
 
-<cds-modal size="lg" open={this.state.open} onOpenChange={this.log}>
-  <p>slot content</p>
-</cds-modal>
+<cds-alert status="info" closable={this.state.closable} onCloseChange={this.log}>
+  Hello World
+</cds-alert>
       `}
       </code></pre>
 
       <h2>React</h2>
       <p>
         Due to React not being compatible with Web Standards such as <a href="https://custom-elements-everywhere.com">custom elements</a>
-        a shim layer must be used. More details on this will be added soon.
+        a shim layer must be used. You can try out a <a href="https://stackblitz.com/edit/react-ts-drskpx">early work in progress prototype here</a>.
       </p>
     </section>
   `;

@@ -9,6 +9,12 @@
 [context.deploy-preview]
   command = "npm run build:libs && npm run angular:dev:preview && npm run website:build && cp -R dist/dev dist/website/dev"
 
+# Redirect support for storybook demo
+[[redirects]]
+  from = "/storybook/core/*"
+  to = "/storybook/core"
+  status = 200
+
 # Handle 404s in our app, SPA redirect config
 [[redirects]]
   from = "/*"

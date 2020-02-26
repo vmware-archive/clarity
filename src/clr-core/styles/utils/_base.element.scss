@@ -12,18 +12,16 @@ $clr-use-custom-properties: true;
 @import './../variables/variables';
 @import './a11y';
 
-:host {
-  box-sizing: border-box;
-}
-
 *,
 *:before,
-*:after {
+*:after,
+:host {
   box-sizing: border-box;
 }
 
 :host {
   font-family: inherit;
+  contain: content; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
 }
 
 slot {

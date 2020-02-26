@@ -3,6 +3,7 @@
   "version": "@VERSION",
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
+  "sideEffects": true,
   "repository": {
     "type": "git",
     "url": "git@github.com:vmware/clarity.git"

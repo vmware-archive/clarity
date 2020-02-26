@@ -26,7 +26,15 @@ del.sync(['./dist/clr-core/**/*.{tsbuildinfo,ngsummary.json}', './dist/clr-core/
 read('./dist/clr-core')
   .filter(f => f.includes('package.json'))
   .forEach(file => {
-    const data = fs.readJsonSync(file);
-    ['__processed_by_ivy_ngcc__', 'scripts'].forEach(p => delete data[p]);
-    fs.writeJsonSync(file, data, { spaces: 2 });
+    const packageFile = fs.readJsonSync(file);
+    ['__processed_by_ivy_ngcc__', 'scripts'].forEach(p => delete packageFile[p]);
+
+    const metaData = {
+      main: './index.js',
+      module: './index.js',
+      typings: './index.d.ts',
+      type: 'module',
+    };
+
+    fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
   });

@@ -24,7 +24,6 @@ import { styles } from './alert-actions.element.css';
  * </cds-app-alert>
  * ```
  *
- * @noInheritDoc
  * @beta 3.0
  * @element cds-alert-actions
  */

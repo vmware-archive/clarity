@@ -29,7 +29,6 @@ import { styles } from './test-dropdown.element.css';
  * </cds-test-dropdown>
  * ```
  *
- * @noInheritDoc
  * @beta 3.0
  * @element cds-test-dropdown
  * @slot default - Content slot for dropdown content

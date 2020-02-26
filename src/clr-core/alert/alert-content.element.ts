@@ -28,7 +28,6 @@ import { styles } from './alert-content.element.css';
  * </cds-app-alert>
  * ```
  *
- * @noInheritDoc
  * @beta 3.0
  * @element cds-alert-content
  */

@@ -2,9 +2,5 @@
   "sideEffects": [
     "./icon.element.js"
   ],
-  "main": "./index.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
-  "name": "@clr/core/icon-shapes",
-  "type": "module"
+  "name": "@clr/core/icon-shapes"
 }

@@ -66,6 +66,16 @@ p {
   margin-left: 2rem;
 }
 
+.doc .link-list {
+  padding-left: 1rem;
+}
+
+.doc .link-list li {
+  padding-left: 1rem;
+  list-style: disc;
+  margin-bottom: 0.5rem;
+}
+
 .docblock-propstable-body td {
   min-width: 240px;
 }

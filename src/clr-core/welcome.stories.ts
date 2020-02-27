@@ -103,7 +103,7 @@ export const gettingStarted = () => {
       <ul>
         <li>
           <h3>1. Install the Clarity Core package from npm.</h3>
-          <pre><code>npm install @clr/core --save</code></pre>
+          <pre><code>npm install @clr/core @clr/city --save</code></pre>
         </li>
         <li>
           <h3>2. Global Styles</h3>
@@ -124,7 +124,7 @@ export const gettingStarted = () => {
 
 <!-- or use CSS directly -->
 <link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
-<link href="/node_modules/@clr/city/css/bundles/default.min" rel="stylesheet">
+<link href="/node_modules/@clr/city/css/bundles/default.min.css" rel="stylesheet">
           `}
           </code></pre>
 
@@ -132,7 +132,9 @@ export const gettingStarted = () => {
 
           <pre><code>
           ${`
-font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+body {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+}
           `}
           </code></pre>
         </li>
@@ -150,7 +152,7 @@ font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
             To use a component import the component into your JavaScript or TypeScript.
           </p>
 
-          <pre><code>import '@clr/core/alert';</code></pre>
+          <pre><code>import '@clr/core/button';</code></pre>
 
           <p>
             Once imported, the component is automatically registered and ready to use in your HTML.
@@ -193,6 +195,42 @@ font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   `;
 };
 
+export const changelog = () => {
+  return html`
+    <section class="doc">
+      <h1>Changelog</h1>
+      <hr />
+
+      <h2>3.0 beta</h2>
+
+      <p>
+        3.0 beta is the first release for Clarity Core which includes the following:
+      </p>
+
+      <ul class="link-list">
+        <li>
+          <a href="./?path=/story/components-alert--api">Alert Component</a>
+        </li>
+        <li>
+          <a href="./?path=/story/components-app-alert--api">App Alert Component</a>
+        </li>
+        <li>
+          <a href="./?path=/story/components-badge--api">Badge Component</a>
+        </li>
+        <li>
+          <a href="./?path=/story/components-button--api">Button Component</a>
+        </li>
+        <li>
+          <a href="./?path=/story/components-icon--api">Icon Component</a>
+        </li>
+        <li>
+          <a href="./?path=/story/components-tag--api">Tag Component</a>
+        </li>
+      </ul>
+    </section>
+  `;
+};
+
 export const browserSupport = () => {
   return html`
     <style>
@@ -229,8 +267,8 @@ npm install @webcomponents/webcomponentsjs
 
           <pre><code>
           ${`
-<script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-<script src="./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+<script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
           `}
           </code></pre>
         </li>
@@ -285,7 +323,7 @@ export const angular = () => {
       </p>
 
       <p>
-        To use Clarity Core with Angular follow the package <a href="/?path=/story/welcome--getting-started">installation instructions</a>.
+        To use Clarity Core with Angular follow the package <a href="./?path=/story/welcome--getting-started">installation instructions</a>.
         Once installed add <code>CUSTOM_ELEMENTS_SCHEMA</code> to your application
         module.
       </p>
@@ -333,7 +371,7 @@ export const vue = () => {
       <h1>Vue</h1>
 
       <p>
-        To use Clarity Core with Vue follow the package <a href="/?path=/story/welcome--getting-started">installation instructions</a>.
+        To use Clarity Core with Vue follow the package <a href="./?path=/story/welcome--getting-started">installation instructions</a>.
         Once installed import the component into your JavaScript file.
       </p>
 
@@ -369,7 +407,7 @@ export const react = () => {
       <h1>Preact</h1>
 
       <p>
-        To use Clarity Core with Preact follow the package <a href="/?path=/story/welcome--getting-started">installation instructions</a>.
+        To use Clarity Core with Preact follow the package <a href="./?path=/story/welcome--getting-started">installation instructions</a>.
         Once installed import the component into your JavaScript file.
       </p>
 

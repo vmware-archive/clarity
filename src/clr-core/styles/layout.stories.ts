@@ -450,11 +450,15 @@ export const spacing = () => {
       <h1 cds-heading="1">Spacing</h1>
 
       <h2 cds-heading="2">Padding</h2>
-      <cds-placeholder cds-layout="p-xs"><span>p-xs</span></cds-placeholder>
-      <cds-placeholder cds-layout="p-sm"><span>p-sm</span></cds-placeholder>
-      <cds-placeholder cds-layout="p-md"><span>p-md</span></cds-placeholder>
-      <cds-placeholder cds-layout="p-lg"><span>p-lg</span></cds-placeholder>
-      <cds-placeholder cds-layout="p-xl"><span>p-xl</span></cds-placeholder>
+      <cds-placeholder pad="none"><span>pad="none"</span></cds-placeholder>
+      <cds-placeholder pad="xs"><span>pad="xs"</span></cds-placeholder>
+      <cds-placeholder pad="sm"><span>pad="sm"</span></cds-placeholder>
+      <cds-placeholder pad="md"><span>pad="md"</span></cds-placeholder>
+      <cds-placeholder pad="lg"><span>pad="lg"</span></cds-placeholder>
+      <cds-placeholder pad="xl"><span>pad="xl"</span></cds-placeholder>
+      <cds-placeholder pad="[md,none]"><span>pad="[md,none]"</span></cds-placeholder>
+      <cds-placeholder pad="[xs,xl]"><span>pad="[xs,xl]"</span></cds-placeholder>
+      <cds-placeholder pad="[lg,sm]"><span>pad="[xs,xl]"</span></cds-placeholder>
 
       <!-- <h2 cds-heading="2">Margin</h2>
       <cds-placeholder><span cds-layout="m-xs">m-xs</span></cds-placeholder>
@@ -464,17 +468,29 @@ export const spacing = () => {
       <cds-placeholder><span cds-layout="m-xl">m-xl</span></cds-placeholder> -->
 
       <h2 cds-heading="2">Padding cds-layout</h2>
-      <cds-layout type="horizontal" padding="xs" x-align="center">
-        <span>padding='xs'</span>
+      <cds-layout type="horizontal" pad="xs" x-align="center">
+        <span>pad='xs'</span>
       </cds-layout>
-      <cds-layout type="horizontal" padding="sm" x-align="center">
-        <span>padding='sm'</span>
+      <cds-layout type="horizontal" pad="sm" x-align="center">
+        <span>pad='sm'</span>
       </cds-layout>
-      <cds-layout type="horizontal" padding="md" x-align="center">
-        <span>padding='md'</span>
+      <cds-layout type="horizontal" pad="md" x-align="center">
+        <span>pad='md'</span>
       </cds-layout>
-      <cds-layout type="horizontal" padding="lg" x-align="center">
-        <span>padding='lg'</span>
+      <cds-layout type="horizontal" pad="lg" x-align="center">
+        <span>pad='lg'</span>
+      </cds-layout>
+      <cds-layout type="horizontal" pad="xl" x-align="center">
+        <span>pad='xl'</span>
+      </cds-layout>
+      <cds-layout type="horizontal" pad="[none,md]" x-align="center">
+        <span>pad='[none,md]'</span>
+      </cds-layout>
+      <cds-layout type="horizontal" pad="[sm,xs]" x-align="center">
+        <span>pad='[sm,xs]'</span>
+      </cds-layout>
+      <cds-layout type="horizontal" pad="[xl,lg]" x-align="center">
+        <span>pad='[xl,lg]'</span>
       </cds-layout>
     </cds-layout>
   `;

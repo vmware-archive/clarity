@@ -3,50 +3,88 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // wip: need specific sides and @ breakpoints
-cds-layout[padding='xs'],
-[cds-layout~='p-xs'] {
+[pad='none'] {
+  padding: 0 !important;
+}
+
+[pad='xs'] {
   padding: var(--cds-token-size-xs) !important;
 }
 
-cds-layout[padding='sm'],
-[cds-layout~='p-sm'] {
+[pad='sm'] {
   padding: var(--cds-token-size-sm) !important;
 }
 
-cds-layout[padding='md'],
-[cds-layout~='p-md'] {
+[pad='md'] {
   padding: var(--cds-token-size-md) !important;
 }
 
-cds-layout[padding='lg'],
-[cds-layout~='p-lg'] {
+[pad='lg'] {
   padding: var(--cds-token-size-lg) !important;
 }
 
-cds-layout[padding='xl'],
-[cds-layout~='p-xl'] {
+[pad='xl'] {
   padding: var(--cds-token-size-xl) !important;
 }
 
-// Likely remove, adding margin utils discourages the use
-// of the cds-layout component which helps make vertical alignment
-// consistent and introduces another way to control spacing in the layout system
-// [cds-layout~='m-xs'] {
-//   margin: var(--cds-token-size-xs) !important;
-// }
+/* Padding by axis */
 
-// [cds-layout~='m-sm'] {
-//   margin: var(--cds-token-size-sm) !important;
-// }
+[pad^='[none'] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 
-// [cds-layout~='m-md'] {
-//   margin: var(--cds-token-size-md) !important;
-// }
+[pad$='none]'] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
-// [cds-layout~='m-lg'] {
-//   margin: var(--cds-token-size-lg) !important;
-// }
+[pad^='[xs'] {
+  padding-top: var(--cds-token-size-xs) !important;
+  padding-bottom: var(--cds-token-size-xs) !important;
+}
 
-// [cds-layout~='m-xl'] {
-//   margin: var(--cds-token-size-xl) !important;
-// }
+[pad$='xs]'] {
+  padding-left: var(--cds-token-size-xs) !important;
+  padding-right: var(--cds-token-size-xs) !important;
+}
+
+[pad^='[sm'] {
+  padding-top: var(--cds-token-size-sm) !important;
+  padding-bottom: var(--cds-token-size-sm) !important;
+}
+
+[pad$='sm]'] {
+  padding-left: var(--cds-token-size-sm) !important;
+  padding-right: var(--cds-token-size-sm) !important;
+}
+
+[pad^='[md'] {
+  padding-top: var(--cds-token-size-md) !important;
+  padding-bottom: var(--cds-token-size-md) !important;
+}
+
+[pad$='md]'] {
+  padding-left: var(--cds-token-size-md) !important;
+  padding-right: var(--cds-token-size-md) !important;
+}
+
+[pad^='[lg'] {
+  padding-top: var(--cds-token-size-lg) !important;
+  padding-bottom: var(--cds-token-size-lg) !important;
+}
+
+[pad$='lg]'] {
+  padding-left: var(--cds-token-size-lg) !important;
+  padding-right: var(--cds-token-size-lg) !important;
+}
+
+[pad^='[xl'] {
+  padding-top: var(--cds-token-size-xl) !important;
+  padding-bottom: var(--cds-token-size-xl) !important;
+}
+
+[pad$='xl]'] {
+  padding-left: var(--cds-token-size-xl) !important;
+  padding-right: var(--cds-token-size-xl) !important;
+}

@@ -5,14 +5,6 @@
  */
 
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
-import {
-  checkCircleIcon,
-  ClarityIcons,
-  exclamationCircleIcon,
-  exclamationTriangleIcon,
-  infoCircleIcon,
-  timesIcon,
-} from '@clr/core/icon-shapes';
 import { CdsBaseAlert } from './alert.base';
 import { styles } from './app-alert.element.css';
 /**
@@ -49,8 +41,6 @@ export class CdsAppAlert extends CdsBaseAlert {
 }
 
 registerElementSafely('cds-app-alert', CdsAppAlert);
-
-ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);
 
 declare global {
   interface HTMLElementTagNameMap {

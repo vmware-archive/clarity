@@ -14,6 +14,7 @@ import {
   querySlotAll,
   returnOrFallthrough,
 } from '@clr/core/common';
+import '@clr/core/icon';
 import {
   checkCircleIcon,
   ClarityIcons,
@@ -23,6 +24,8 @@ import {
   timesIcon,
 } from '@clr/core/icon-shapes';
 import { html, LitElement } from 'lit-element';
+
+ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);
 
 const iconMap = {
   info: {
@@ -129,5 +132,3 @@ export class CdsBaseAlert extends LitElement {
     this.closedChange.emit(true);
   }
 }
-
-ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);

@@ -1,15 +1,6 @@
 <clr-vertical-nav class="documentation-vertical-nav" [clr-nav-level]="2">
     <version-switcher></version-switcher>
 
-    <clr-alert [clrAlertType]="'warning'" [clrAlertAppLevel]="true" [clrAlertClosable]="false">
-        <clr-alert-item>
-            <span class="alert-text">
-                V3 is in prelease. Install it using the @next tag from NPM.
-            </span>
-        </clr-alert-item>
-    </clr-alert>
-
-
     <a clrVerticalNavLink routerLink="/documentation" routerLinkActive="active"
         [routerLinkActiveOptions]="{exact:true}">
         <clr-icon shape="home" clrVerticalNavIcon></clr-icon> Component Status

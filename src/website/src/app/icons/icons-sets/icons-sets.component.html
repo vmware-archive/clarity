@@ -1,13 +1,3 @@
-<div class="alert alert-warning">
-        <div class="alert-items">
-            <div class="alert-item static">
-                <div class="alert-icon-wrapper">
-                    <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
-                </div>
-                <span class="alert-text">Starting in Clarity Icons v0.12, some icons have been deprecated. <a href="https://vmware.github.io/clarity/news/0.12.0-rc.2" target="_blank">Click&nbsp;here</a> for the details.</span>
-            </div>
-        </div>
-    </div>
 <section class="icons-sets-container" [style.min-height.px]="initialHeight">
 
     <fragment-content *ngFor="let setName of setNames" [fragmentLink]="setName" [fragmentOffsetTop]="sets[setName].fragmentOffset">

@@ -65,7 +65,7 @@ function runGemini(config) {
   shell.exec('docker stop clarity_chrome', { silent: true });
   const ngConfig = program.configuration ? '-c ' + program.configuration : '';
   shell.exec(`cd ../ && npm run build:libs`);
-  shell.exec(`cd ../ && ng build dev ${ngConfig}`);
+  shell.exec(`cd ../ && node_modules/.bin/ng build dev ${ngConfig}`);
   let server = shell.exec('node_modules/.bin/lite-server --baseDir=../dist/dev', { async: true });
   let status = shell.exec(
     'docker run --rm --name=clarity_chrome -d -p 4444:4444 selenium/standalone-chrome@sha256:b899f16b6d963600ef6da8a8dd49e311146033ed66cb5af71eccb78ab378e19a'

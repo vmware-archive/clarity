@@ -22,12 +22,12 @@ describe('CDS global', () => {
     });
 
     it('should log a warning if more than one version was detected', () => {
-      spyOn(console, 'warn');
+      const consoleSpy = spyOn(console, 'warn').and.callFake(() => {});
       setupCDSGlobal();
       window.CDS._version.push('1.0.0');
       window.CDS._version.push('2.0.0');
       setupCDSGlobal();
-      expect(console.warn).toHaveBeenCalled();
+      expect(consoleSpy).toHaveBeenCalled();
     });
 
     it('should log all registered elements', () => {
@@ -45,6 +45,19 @@ describe('CDS global', () => {
 
     it('should log user agent', () => {
       expect(window.CDS.getVersion().userAgent.length).toBeTruthy();
+    });
+
+    it('should not store duplicate versions when loading', () => {
+      setupCDSGlobal();
+      window.CDS._version = ['@VERSION'];
+      setupCDSGlobal();
+      expect(window.CDS._version.length).toEqual(1);
+    });
+
+    it('should show loaded version in body attribute', () => {
+      setupCDSGlobal();
+      const attrValue = (document.querySelector('body') as HTMLElement).getAttribute('cds-version');
+      expect(attrValue).toEqual('@VERSION');
     });
   });
 });

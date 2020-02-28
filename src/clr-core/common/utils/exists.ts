@@ -14,7 +14,13 @@ export const existsIn = curryN(2, (pathToCheck: string[], obj: object): boolean 
   return typeof pathExists !== 'undefined';
 });
 
-export function elementExists(tagName: string, registry = window.customElements): boolean {
+export function elementExists(tagName: string, registry?: { get: (name: string) => {} }): boolean {
+  if (!registry) {
+    registry = window && window.customElements;
+  }
+  if (!registry) {
+    return true; // we don't want to execute further actions because window does not exist
+  }
   return !!registry.get(tagName);
 }
 

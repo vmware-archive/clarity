@@ -33,13 +33,11 @@ export function setupCDSGlobal() {
 }
 
 function initializeCDSGlobal() {
-  if (!window.CDS) {
-    window.CDS = {
-      _version: [],
-      _loadedElements: [],
-      getVersion,
-    };
-  }
+  window.CDS = window.CDS || {
+    _version: [],
+    _loadedElements: [],
+    getVersion,
+  };
 }
 
 function getVersion() {
@@ -49,18 +47,21 @@ function getVersion() {
     angularVersion: getAngularVersion(),
     userAgent: navigator.userAgent,
   };
-
   console.log(JSON.stringify(log, null, 2));
   return log;
 }
 
 function getAngularVersion() {
-  const appRoot = document.querySelector('[ng-version]');
+  const appRoot = document && document.querySelector('[ng-version]');
   return appRoot ? appRoot.getAttribute('ng-version') : undefined;
 }
 
 function setRunningVersion() {
-  window.CDS._version = [...new Set([...window.CDS._version, '@VERSION'])];
+  const loadedVersion = '@VERSION';
+  if (window.CDS._version.indexOf(loadedVersion) < 0) {
+    window.CDS._version.push(loadedVersion);
+  }
+
   (document.querySelector('body') as HTMLElement).setAttribute('cds-version', window.CDS._version[0]);
 
   if (window.CDS._version.length > 1) {

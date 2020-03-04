@@ -717,6 +717,7 @@ export declare class ClrDropdown implements OnDestroy {
 export declare class ClrDropdownItem implements AfterViewInit {
     disabled: boolean | string;
     disabledDeprecated: boolean | string;
+    dropdownItemId: string;
     setByDeprecatedDisabled: boolean;
     constructor(dropdown: ClrDropdown, el: ElementRef<HTMLElement>, _dropdownService: RootDropdownService, renderer: Renderer2, focusableItem: FocusableItem);
     ngAfterViewInit(): void;

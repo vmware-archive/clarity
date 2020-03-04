@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -75,12 +75,6 @@ export default function(): void {
 
       it('aliases the DropdownFocusHandler as a FocusableItem', function(this: TestContext) {
         expect(this.fixture.debugElement.injector.get(FocusableItem, null)).toBe(this.focusHandler);
-      });
-
-      it('sets the id of the trigger to the unique generated id', function(this: TestContext) {
-        const id = this.fixture.debugElement.injector.get(UNIQUE_ID, 'not_found');
-        this.focusHandler.trigger = this.trigger;
-        expect(this.trigger.getAttribute('id')).toBe(id);
       });
 
       it('toggles open when arrow up or down on the trigger', function(this: TestContext) {

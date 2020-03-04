@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
 const EXAMPLE1 = `
-import { Component, AfterViewInit, ClrAriaLiveService } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { ClrAriaLiveService } from '@clr/angular';
 
 @Component({
   selector: 'my-component',
@@ -35,7 +36,8 @@ this.ariaLiveService.announce(
 `;
 
 const EXAMPLE3 = `
-import { Component, AfterViewInit, ClrAriaLiveService } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { ClrAriaLiveService } from '@clr/angular';
 import { download } from 'my-code'
 
 @Component({

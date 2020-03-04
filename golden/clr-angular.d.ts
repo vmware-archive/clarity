@@ -807,6 +807,8 @@ export declare class ClrDropdownItem implements AfterViewInit {
     get disabled(): boolean | string;
     set disabledDeprecated(value: boolean | string);
     get disabledDeprecated(): boolean | string;
+    set dropdownItemId(value: string);
+    get dropdownItemId(): string;
     setByDeprecatedDisabled: boolean;
     constructor(dropdown: ClrDropdown, el: ElementRef<HTMLElement>, _dropdownService: RootDropdownService, renderer: Renderer2, focusableItem: FocusableItem);
     ngAfterViewInit(): void;

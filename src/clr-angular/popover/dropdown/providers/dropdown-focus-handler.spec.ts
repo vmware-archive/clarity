@@ -77,12 +77,6 @@ export default function(): void {
         expect(this.fixture.debugElement.injector.get(FocusableItem, null)).toBe(this.focusHandler);
       });
 
-      it('sets the id of the trigger to the unique generated id', function(this: TestContext) {
-        const id = this.fixture.debugElement.injector.get(UNIQUE_ID, 'not_found');
-        this.focusHandler.trigger = this.trigger;
-        expect(this.trigger.getAttribute('id')).toBe(id);
-      });
-
       it('toggles open when arrow up or down on the trigger', function(this: TestContext) {
         fakeAsync(function(this: TestContext) {
           expect(this.toggleService.open).toBeFalsy();

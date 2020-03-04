@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -33,6 +33,17 @@ export default function(): void {
     spec(ClrDropdownItem, SimpleTest, null, {
       // Dummy dropdown provider, I don't even need a single property or method on it at the moment.
       providers: [{ provide: ClrDropdown, useValue: {} }, ROOT_DROPDOWN_PROVIDER],
+    });
+
+    it('sets the id to the unique generated id', function(this: Context) {
+      const id = 'myId';
+      this.clarityElement.setAttribute('id', id);
+      this.detectChanges();
+      expect(this.clarityElement.getAttribute('id')).toBe(id);
+    });
+
+    it('should have id by default', function(this: Context) {
+      expect(this.clarityElement.getAttribute('id')).not.toBe(null);
     });
 
     it('adds the menuitem role to the host', function(this: Context) {

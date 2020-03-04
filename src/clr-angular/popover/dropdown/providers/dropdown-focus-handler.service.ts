@@ -83,7 +83,6 @@ export class DropdownFocusHandler implements FocusableItem {
   }
   set trigger(el: HTMLElement) {
     this._trigger = el;
-    this.renderer.setAttribute(el, 'id', this.id);
 
     if (this.parent) {
       this._unlistenFuncs.push(

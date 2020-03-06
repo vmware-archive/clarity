@@ -545,14 +545,19 @@ export default function(): void {
         fixture.destroy();
       });
 
-      it('expect toggle vertical nav button to have correct aria-label from ClrCommonStringsService', () => {
+      it('expect buttons to have correct aria-label from ClrCommonStringsService', () => {
         vertNavService.collapsible = true;
         vertNavService.collapsed = true;
 
         fixture.detectChanges();
-        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
 
-        expect(toggleVertNavBtn.getAttribute('aria-label')).toBe(commonStrings.keys.verticalNavToggle);
+        const verticalNavToggleString = commonStrings.keys.verticalNavToggle;
+
+        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
+        const navBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-btn');
+
+        expect(toggleVertNavBtn.getAttribute('aria-label')).toBe(verticalNavToggleString);
+        expect(navBtn.getAttribute('aria-label')).toBe(verticalNavToggleString);
       });
     });
   });
@@ -662,9 +667,9 @@ class APITestComponent {
 
 @Component({
   template: `
-        <div 
-            class="main-container" 
-            [class.open-overflow-menu]="overflowMenu" 
+        <div
+            class="main-container"
+            [class.open-overflow-menu]="overflowMenu"
             [class.open-hamburger-menu]="hamburgerMenu">
             <clr-vertical-nav>
                 <clr-vertical-nav-group>

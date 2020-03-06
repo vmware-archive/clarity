@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,6 +18,7 @@ import { IfErrorService } from './if-error.service';
 
 const errorMessage = 'ERROR_MESSAGE';
 const minLengthMessage = 'MIN_LENGTH_MESSAGE';
+const maxLengthMessage = 'MAX_LENGTH_MESSAGE';
 
 @Component({ template: `<div *clrIfError></div>` })
 class InvalidUseTest {}
@@ -34,6 +35,9 @@ class GeneralErrorTest {}
   template: `
         <clr-control-error *clrIfError="'required'">${errorMessage}</clr-control-error>
         <clr-control-error *clrIfError="'minlength'">${minLengthMessage}</clr-control-error>
+        <clr-control-error *clrIfError="'maxlength'; error as err">
+          ${maxLengthMessage}-{{err.requiredLength}}-{{err.actualLength}}
+        </clr-control-error>
     `,
   providers: [IfErrorService, NgControlService],
 })
@@ -116,6 +120,14 @@ export default function(): void {
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
         expect(fixture.nativeElement.innerHTML).toContain(minLengthMessage);
+      });
+
+      it('displays the error message with values from error object in context', () => {
+        const control = new FormControl('abcdef', [Validators.maxLength(5)]);
+        ngControlService.setControl(control);
+        ifErrorService.triggerStatusChange();
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
       });
     });
   });

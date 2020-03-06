@@ -10,8 +10,8 @@
     />
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
-    <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
-    <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'; error as err">Must be at least {{ err.requiredLength }} characters</clr-control-error>
+    <clr-control-error *clrIfError="'pattern'; error as err">It must match '{{ err.requiredPattern }}'</clr-control-error>
   </clr-control-container>
 
   <clr-control-container>
@@ -38,8 +38,8 @@
     <input clrControl placeholder="Input control" formControlName="required" />
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
-    <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
-    <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'; error as err">Must be at least {{ err.requiredLength }} characters</clr-control-error>
+    <clr-control-error *clrIfError="'pattern'; error as err">It must match '{{ err.requiredPattern }}'</clr-control-error>
   </clr-control-container>
 
   <clr-control-container>

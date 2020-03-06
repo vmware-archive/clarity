@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -52,7 +52,7 @@ export class ClrIfError {
 
   private displayError(invalid: boolean) {
     if (invalid && !this.displayed) {
-      this.container.createEmbeddedView(this.template);
+      this.container.createEmbeddedView(this.template, { error: this.control.getError(this.error) });
       this.displayed = true;
     } else if (!invalid) {
       this.container.clear();

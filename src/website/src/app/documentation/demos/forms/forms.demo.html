@@ -248,7 +248,7 @@
 
             <h4>Multiple error messages</h4>
 
-            <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validator you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one.</p>
+            <p>If you want to support multiple error messages, you can do this by defining an error message for each scenario using <code class="clr-code">clrIfError</code>. It is recommended that you create an error message for each validator you specify. Use the validator name provided in the binding for <code class="clr-code">*clrIfError="'errorName'"</code>, which might be your custom validator or a built in Angular one. Optionally, you can access the error object <code class="clr-code">*clrIfError="'errorName'; error as err"</code> to customize the error message.</p>
 
             <h4>Reset and force validation</h4>
 

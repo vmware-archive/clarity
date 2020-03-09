@@ -101,4 +101,9 @@ export class ClrTabLink {
   get active() {
     return this.ifActiveService.current === this.id;
   }
+
+  @HostBinding('attr.tabindex')
+  get tabindex() {
+    return this.active ? 0 : -1;
+  }
 }

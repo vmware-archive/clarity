@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -32,11 +32,6 @@ describe('Typescript API', () => {
     fixture = TestBed.createComponent(TestComponent);
     fixture.detectChanges();
     component = fixture.componentInstance;
-  });
-
-  it('should set the host element tabindex', () => {
-    component.button.tabIndex = -1;
-    expect(fixture.nativeElement.querySelector('button').getAttribute('tabindex')).toBe('-1');
   });
 
   it('should focus host element', () => {

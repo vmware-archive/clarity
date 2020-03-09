@@ -51,5 +51,6 @@ describe('Deprecations', () => {
       expect(propTest.get).toBeDefined();
     });
     it('should not do aria-live by default');
+    it('should replace dummy clr-tab-overflow-content with simple div');
   });
 });

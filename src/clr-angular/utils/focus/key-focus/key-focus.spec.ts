@@ -5,11 +5,12 @@
  */
 
 import { ClrKeyFocus } from './key-focus';
-import { Component, DebugElement, ViewChild } from '@angular/core';
+import { Component, DebugElement, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { ClrKeyFocusModule } from './key-focus.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { KeyCodes } from '@clr/core/common';
+import { ClrKeyFocusItem } from './key-focus-item';
 
 @Component({
   template: `
@@ -23,6 +24,7 @@ import { KeyCodes } from '@clr/core/common';
 class TestComponent {
   @ViewChild(ClrKeyFocus, { static: true })
   keyFocus: ClrKeyFocus;
+  @ViewChildren(ClrKeyFocusItem) keyFocusItems: QueryList<ClrKeyFocusItem>;
   open: boolean = false;
   changed: boolean = false;
   direction: string = 'vertical';
@@ -61,8 +63,8 @@ const openMenu = () => {
   clarityDirective = directiveDebugElement.injector.get(ClrKeyFocus);
 };
 
-const keyPress = (key: string) => {
-  clarityElement.dispatchEvent(new KeyboardEvent('keydown', { key, code: key }));
+const keyPress = (key: string, el = clarityElement, bubbles = true) => {
+  el.dispatchEvent(new KeyboardEvent('keydown', { key, code: key, bubbles }));
 };
 
 describe('KeyFocus directive', () => {
@@ -130,6 +132,11 @@ describe('KeyFocus directive', () => {
       expect(clarityDirective.current).toBe(2);
       component.showLast = false;
       fixture.detectChanges();
+    });
+    it('checks if keyboard event comes focused current', () => {
+      openMenu();
+      expect(clarityDirective.current).toBe(0);
+      keyPress(KeyCodes.ArrowUp, component.keyFocusItems.last.nativeElement);
       expect(clarityDirective.current).toBe(1);
     });
   });

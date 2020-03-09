@@ -3,18 +3,20 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, Type, ViewChild } from '@angular/core';
-
+import { Component, DebugElement, ElementRef, Type, ViewChild } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { addHelpers, TestContext } from '../../data/datagrid/helpers.spec';
-
-import { TabsService } from './providers/tabs.service';
-import { TabsLayout } from './enums/tabs-layout.enum';
-import { ClrTab } from './tab';
-import { ClrTabs } from './tabs';
 import { IfActiveService } from '../../utils/conditional/if-active.service';
+import { ClrKeyFocus } from '../../utils/focus/key-focus/key-focus';
+import { TabsLayout } from './enums/tabs-layout.enum';
+import { TabsService } from './providers/tabs.service';
+import { ClrTab } from './tab';
+import { ClrTabLink } from './tab-link.directive';
+import { ClrTabs } from './tabs';
 
 @Component({
   template: `
+    <button class="dummy-button">test</button>
     <clr-tabs [clrLayout]="layout">
         <clr-tab #first>
             <button clrTabLink>Tab1</button>
@@ -233,6 +235,95 @@ describe('Tabs', () => {
       context.detectChanges();
       expect(tabsService.tabContentViewContainer.indexOf(initialView)).toBe(-1);
       expect(compiled.querySelectorAll('section').length).toEqual(1);
+    });
+  });
+
+  describe('Tab Overflow & ClrKeyFocus', () => {
+    let context: TestContext<ClrTabs, TestComponent>;
+    let tabLinkDEs: DebugElement[];
+    let tabLinkEls: HTMLElement[];
+    let keyFocus: ClrKeyFocus;
+    let dummyButton: HTMLElement;
+
+    beforeEach(function() {
+      context = this.create(ClrTabs, TestComponent);
+
+      tabLinkDEs = context.fixture.debugElement.queryAll(By.directive(ClrTabLink));
+      tabLinkEls = tabLinkDEs.map(de => de.nativeElement);
+
+      keyFocus = context.clarityDirective.keyFocus;
+
+      dummyButton = context.testElement.querySelector('.dummy-button');
+
+      context.testComponent.inOverflow = true;
+      context.fixture.detectChanges();
+    });
+
+    afterEach(() => {
+      context.fixture.destroy();
+    });
+
+    it('reset keyFocus current to active tab index', () => {
+      const activeTabIndex = 1;
+      tabLinkDEs[activeTabIndex].injector.get(ClrTabLink).activate();
+      context.detectChanges();
+      keyFocus.moveTo(2);
+      expect(document.activeElement).toBe(tabLinkEls[2]);
+      expect(keyFocus.current).toBe(2);
+      dummyButton.focus();
+      expect(keyFocus.current).toBe(activeTabIndex);
+    });
+
+    it('opens tab overflow when focus position enters overflow position range', () => {
+      expect(context.clarityElement.querySelector('.dropdown-menu')).toBeNull();
+
+      keyFocus.moveTo(3);
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).not.toBeNull();
+    });
+
+    it('focuses first tab link in overflow when overflow trigger is clicked', () => {
+      expect(context.clarityElement.querySelector('.dropdown-menu')).toBeNull();
+      context.clarityElement.querySelector('.dropdown-toggle').click();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).not.toBeNull();
+      expect(document.activeElement).toBe(tabLinkEls[3]);
+    });
+
+    it('focuses last visible tab link when overflow is closed', () => {
+      context.clarityElement.querySelector('.dropdown-toggle').click();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).not.toBeNull();
+      context.clarityElement.querySelector('.dropdown-toggle').click();
+      context.detectChanges();
+      expect(document.activeElement).toBe(tabLinkEls[2]);
+    });
+
+    it('puts overflow trigger in tab sequence if it contains active tab link', () => {
+      expect(context.clarityElement.querySelector('.dropdown-toggle').tabIndex).toBe(-1);
+      tabLinkDEs[3].injector.get(ClrTabLink).activate();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-toggle').tabIndex).toBe(0);
+    });
+
+    it('opens overflow automatically if overflow trigger get tab focus', () => {
+      tabLinkDEs[3].injector.get(ClrTabLink).activate();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).toBeNull();
+      expect(context.clarityElement.querySelector('.dropdown-toggle').tabIndex).toBe(0);
+      context.clarityElement.querySelector('.dropdown-toggle').focus();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).not.toBeNull();
+    });
+
+    it('closes overflow if click is registered outside of tabs', () => {
+      expect(context.clarityElement.querySelector('.dropdown-menu')).toBeNull();
+      context.clarityElement.querySelector('.dropdown-toggle').click();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).not.toBeNull();
+      context.testElement.querySelector('.dummy-button').click();
+      context.detectChanges();
+      expect(context.clarityElement.querySelector('.dropdown-menu')).toBeNull();
     });
   });
 

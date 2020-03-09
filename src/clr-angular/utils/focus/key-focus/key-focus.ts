@@ -4,23 +4,32 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { EventEmitter, HostListener, Input, Output, Component, ContentChildren, QueryList } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { ClrKeyFocusItem } from './key-focus-item';
-import { ClrFocusDirection } from './enums/focus-direction.enum';
+import {
+  Component,
+  ContentChildren,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  QueryList,
+  ElementRef,
+} from '@angular/core';
 import { KeyCodes } from '@clr/core/common';
+import { Subscription } from 'rxjs';
+import { ClrFocusDirection } from './enums/focus-direction.enum';
 import { FocusableItem } from './interfaces';
-import { preventArrowKeyScroll, getKeyCodes } from './util';
+import { ClrKeyFocusItem } from './key-focus-item';
+import { getKeyCodes, preventArrowKeyScroll } from './util';
 
 @Component({
   selector: '[clrKeyFocus]',
   template: '<ng-content></ng-content>',
 })
 export class ClrKeyFocus {
+  constructor(private elementRef: ElementRef) {}
   @Input('clrDirection') direction = ClrFocusDirection.VERTICAL;
   @Input('clrFocusOnLoad') focusOnLoad = false;
-  @Output('clrFocusChange') private focusChange: EventEmitter<void> = new EventEmitter<void>();
+  @Output('clrFocusChange') private focusChange: EventEmitter<number> = new EventEmitter<number>();
   @ContentChildren(ClrKeyFocusItem, { descendants: true })
   private clrKeyFocusItems: QueryList<ClrKeyFocusItem>;
 
@@ -36,6 +45,10 @@ export class ClrKeyFocus {
     }
   }
 
+  get nativeElement(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
+
   get focusableItems() {
     if (this._focusableItems) {
       return this._focusableItems;
@@ -45,8 +58,35 @@ export class ClrKeyFocus {
   }
 
   private _current: number = 0;
+
   get current() {
     return this._current;
+  }
+
+  set current(value: number) {
+    if (this._current !== value) {
+      this._current = value;
+    }
+  }
+
+  get currentItem() {
+    return this.focusableItems[this._current];
+  }
+
+  get currentItemElement(): HTMLElement {
+    return this.currentItem.nativeElement ? this.currentItem.nativeElement : <HTMLElement>this.currentItem;
+  }
+
+  focusCurrent() {
+    this.currentItem.focus();
+    this.focusChange.next(this._current);
+  }
+
+  moveTo(position: number) {
+    if (this.positionInRange(position)) {
+      this.current = position;
+      this.focusCurrent();
+    }
   }
 
   private subscriptions: Subscription[] = [];
@@ -62,14 +102,22 @@ export class ClrKeyFocus {
 
   @HostListener('keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
+    // Make sure event was originated on the current item's element
+    if (this.currentItemElement !== event.target) {
+      const position = this.getItemPosition(<HTMLElement>event.target);
+      if (this.positionInRange(position)) {
+        this.current = position;
+      }
+    }
+
     if (this.prevKeyPressed(event) && this.currentFocusIsNotFirstItem()) {
-      this.keyAction(() => this._current--);
+      this.moveTo(this.current - 1);
     } else if (this.nextKeyPressed(event) && this.currentFocusIsNotLastItem()) {
-      this.keyAction(() => this._current++);
+      this.moveTo(this.current + 1);
     } else if (event.code === KeyCodes.Home) {
-      this.keyAction(() => (this._current = 0));
+      this.moveTo(0);
     } else if (event.code === KeyCodes.End) {
-      this.keyAction(() => (this._current = this.focusableItems.length - 1));
+      this.moveTo(this.focusableItems.length - 1);
     }
 
     preventArrowKeyScroll(event);
@@ -77,37 +125,23 @@ export class ClrKeyFocus {
 
   @HostListener('click', ['$event'])
   setClickedItemCurrent(event: any) {
-    let position: number;
-
-    if (this.focusableItems[0].nativeElement) {
-      position = this.focusableItems.map(item => item.nativeElement).indexOf(event.target);
-    } else {
-      position = this.focusableItems.indexOf(event.target);
-    }
+    const position = this.getItemPosition(event.target);
 
     if (position > -1) {
-      this._current = position;
+      this.moveTo(position);
     }
   }
 
-  resetTabFocus() {
-    this.currentItem.tabIndex = -1;
-    this._current = 0;
-    this.currentItem.tabIndex = 0;
-  }
-
-  moveTo(position: number) {
-    if (this.positionInRange(position) && position !== this._current) {
-      this.keyAction(() => (this._current = position));
+  private getItemPosition(item: HTMLElement) {
+    if (this._focusableItems) {
+      return this.focusableItems.indexOf(item);
+    } else {
+      return this.focusableItems.map(_item => _item.nativeElement).indexOf(item);
     }
   }
 
   private positionInRange(position: number) {
     return position >= 0 && position < this.focusableItems.length;
-  }
-
-  private get currentItem() {
-    return this.focusableItems[this._current];
   }
 
   private currentFocusIsNotFirstItem() {
@@ -120,15 +154,12 @@ export class ClrKeyFocus {
 
   private initializeFocus() {
     if (this.focusableItems && this.focusableItems.length) {
-      this.focusableItems.forEach(i => (i.tabIndex = -1));
-
       // It is possible that the focus was on an element, whose index is no longer available.
       // This can happen when some of the focusable elements are being removed.
       // In such cases, the new focus is initialized on the last focusable element.
       if (this._current >= this.focusableItems.length) {
         this._current = this.focusableItems.length - 1;
       }
-      this.currentItem.tabIndex = 0;
 
       if (this.focusOnLoad) {
         this.currentItem.focus();
@@ -141,14 +172,6 @@ export class ClrKeyFocus {
     return this.clrKeyFocusItems.changes.subscribe(() => {
       this.initializeFocus();
     });
-  }
-
-  private keyAction(action: Function) {
-    this.currentItem.tabIndex = -1;
-    action.call(this);
-    this.currentItem.tabIndex = 0;
-    this.currentItem.focus();
-    this.focusChange.next();
   }
 
   private nextKeyPressed(event: KeyboardEvent) {

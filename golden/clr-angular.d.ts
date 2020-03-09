@@ -1467,6 +1467,7 @@ export declare class ClrTabLink {
     get inOverflow(): boolean;
     get tabLinkId(): string;
     set tabLinkId(id: string);
+    get tabindex(): 0 | -1;
     tabsId: number;
     templateRefContainer: TemplateRefContainer;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
@@ -1477,26 +1478,33 @@ export declare class ClrTabOverflowContent {
 }
 
 export declare class ClrTabs implements AfterContentInit, OnDestroy {
+    _mousedown: boolean;
     get activeTabInOverflow(): boolean;
+    get activeTabPosition(): number;
     commonStrings: ClrCommonStringsService;
     ifActiveService: IfActiveService;
+    get isCurrentInOverflow(): boolean;
     get isVertical(): boolean;
     keyFocus: ClrKeyFocus;
     set layout(layout: TabsLayout);
     get layout(): TabsLayout;
-    skipFocusCheck: boolean;
     get tabIds(): string;
     get tabLinkDirectives(): ClrTabLink[];
     tabLinkElements: HTMLElement[];
+    set tabOverflowEl(value: ElementRef);
     tabsId: number;
     tabsService: TabsService;
     toggleService: ClrPopoverToggleService;
-    constructor(ifActiveService: IfActiveService, toggleService: ClrPopoverToggleService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService, platformId: Object);
-    checkFocusVisible(): void;
-    inOverflow(): boolean;
+    constructor(ifActiveService: IfActiveService, toggleService: ClrPopoverToggleService, tabsService: TabsService, tabsId: number, commonStrings: ClrCommonStringsService);
+    closeOnEscapeKey(): void;
+    closeOnFocusOut(event: FocusEvent): void;
+    closeOnOutsideClick(event: Event, tabOverflowTrigger: HTMLElement): void;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
-    toggleOverflow(event: any): void;
+    openOverflowOnFocus(): void;
+    resetKeyFocusCurrentToActive(event: FocusEvent): void;
+    toggleOverflowOnClick(): void;
+    toggleOverflowOnPosition(position: number): void;
 }
 
 export declare class ClrTabsModule {

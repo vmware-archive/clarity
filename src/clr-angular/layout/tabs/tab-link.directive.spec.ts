@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -48,6 +48,10 @@ describe('TabLink Directive', () => {
     instance = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    fixture.destroy();
+  });
+
   it('has the correct css classes', () => {
     expect(compiled.querySelector('.btn-link')).toBeDefined();
     expect(compiled.querySelector('.nav-link')).toBeDefined();
@@ -91,5 +95,13 @@ describe('TabLink Directive', () => {
     fixture.detectChanges();
     expect(links[0].active).toEqual(false);
     expect(links[1].active).toEqual(true);
+  });
+
+  it('puts itself in tab sequence only if active', () => {
+    const tabLinks: HTMLElement[] = compiled.querySelectorAll('button');
+    tabLinks[1].click();
+    fixture.detectChanges();
+    expect(tabLinks[0].tabIndex).toBe(-1);
+    expect(tabLinks[1].tabIndex).toBe(0);
   });
 });

@@ -51,7 +51,7 @@
   --background: var(--clr-color-action-800, #{$clr-color-action-800});
 }
 
-:host(:active) {
+:host(:active) .private-host {
   box-shadow: 0 $clr_baselineRem_1px 0 0 var(--box-shadow-color) inset;
 }
 
@@ -165,18 +165,22 @@
   min-width: 0;
 }
 
-:host([disabled]) {
-  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
-  --background: hsl(0, 0%, 80%);
-  --border-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
-  pointer-events: none;
+:host([disabled]),
+:host([disabled]) .private-host {
+  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700}) !important;
+  --background: hsl(0, 0%, 80%) !important;
+  --border-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700}) !important;
+  outline: 0;
+}
 
-  .private-host {
-    opacity: 0.4;
-    box-shadow: none;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
+:host([disabled]) .private-host {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+:host([disabled]:active) {
+  pointer-events: none;
 }
 
 :host([action='outline'][disabled]) {

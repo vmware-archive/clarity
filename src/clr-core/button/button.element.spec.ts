@@ -97,10 +97,12 @@ describe('button element', () => {
     });
 
     it('should prevent click when readonly or disabled', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('disabled')).toBe(null);
+
       component.disabled = true;
       await componentIsStable(component);
-      const style = getComputedStyle(testElement.querySelector('cds-button'));
-      expect(style.pointerEvents).toBe('none');
+      expect(component.getAttribute('disabled')).toBe('');
     });
   });
 

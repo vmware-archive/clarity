@@ -24,6 +24,7 @@ const scopes = [
   'password',
   'progress-bar',
   'radio',
+  'schematics',
   'select',
   'sidenav',
   'signpost',

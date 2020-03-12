@@ -15,13 +15,13 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
   selector: 'clr-button',
   template: `
         <ng-template #buttonProjectedRef>
-            <button 
-                [class]="classNames" 
+            <button
+                [class]="classNames"
                 (click)="emitClick($event)"
                 [attr.type]="type"
                 [attr.name]="name"
                 [attr.disabled]="disabled"
-                [id]="id">
+                [attr.id]="id">
                 <span class="spinner spinner-inline" *ngIf="loading"></span>
                 <ng-content></ng-content>
             </button>

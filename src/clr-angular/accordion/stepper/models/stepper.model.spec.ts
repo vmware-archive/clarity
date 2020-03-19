@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 */
@@ -135,5 +135,38 @@ describe('StepperModel', () => {
   it('should set the specified errors of a step', () => {
     stepper.setPanelsWithErrors([step1Id]);
     expect(stepper.panels[0].status).toBe(AccordionStatus.Error);
+  });
+
+  /**
+   * This test is a bit long, but it's hard to test private property without
+   * going over the flow of the public methods.
+   *
+   * The test must verify that stepperModelInitialize is set to true after the
+   * first run of the main flow and false after reseting the pannels.
+   */
+  it('should prevent calling openFirstPanel multiple times', () => {
+    stepper = new StepperModel();
+    stepper.addPanel(step1Id);
+    stepper.addPanel(step2Id);
+    stepper.addPanel(step3Id);
+    expect(stepper.panels[0].open).toBe(false);
+    stepper.updatePanelOrder([step1Id, step2Id, step3Id]);
+    expect(stepper.panels[0].open).toBe(true);
+
+    // complite the first panel
+    stepper.navigateToNextPanel(step1Id, true);
+    expect(stepper.panels[0].open).toBe(false);
+
+    // Update panels - we must not update the first panel here
+    stepper.updatePanelOrder([step1Id, step2Id, step3Id]);
+    expect(stepper.panels[0].open).toBe(false);
+
+    // reseting the panels will let us go over the code again
+    stepper.resetPanels();
+    stepper.updatePanelOrder([step1Id, step2Id, step3Id]);
+    expect(stepper.panels[0].open).toBe(true);
+    stepper.navigateToNextPanel(step1Id, true);
+    stepper.updatePanelOrder([step1Id, step2Id, step3Id]);
+    expect(stepper.panels[0].open).toBe(false);
   });
 });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,6 +8,8 @@ import { AccordionModel } from '../../models/accordion.model';
 import { AccordionStatus } from '../../enums/accordion-status.enum';
 
 export class StepperModel extends AccordionModel {
+  private stepperModelInitialize: boolean = false;
+
   get allPanelsCompleted(): boolean {
     return this.panels.length && this.getNumberOfIncompletePanels() === 0 && this.getNumberOfOpenPanels() === 0;
   }
@@ -19,7 +21,9 @@ export class StepperModel extends AccordionModel {
 
   updatePanelOrder(ids: string[]) {
     super.updatePanelOrder(ids);
-    this.openFirstPanel();
+    if (this.stepperModelInitialize === false) {
+      this.openFirstPanel();
+    }
   }
 
   togglePanel(panelId: string) {
@@ -54,6 +58,8 @@ export class StepperModel extends AccordionModel {
   }
 
   resetPanels() {
+    /* return stepper to initialize state */
+    this.stepperModelInitialize = false;
     this.panels.forEach(p => this.resetPanel(p.id));
     this.openFirstPanel();
   }
@@ -76,6 +82,7 @@ export class StepperModel extends AccordionModel {
     const firstPanel = this.getFirstPanel();
     this._panels[firstPanel.id].open = true;
     this._panels[firstPanel.id].disabled = true;
+    this.stepperModelInitialize = true;
   }
 
   private completePanel(panelId: string) {

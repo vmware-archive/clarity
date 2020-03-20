@@ -16,6 +16,6 @@ declare module '!raw-loader!*' {
 interface Window {
   ClarityIcons: any;
   ga: any;
-  trackHiringAlert(eventLabel: string, externalLink?: boolean);
+  trackSurveyAlert(eventLabel: string, externalLink?: boolean);
   trackIconSearch(searchedIcon: string, numberOfMatches: number);
 }

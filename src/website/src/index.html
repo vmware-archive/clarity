@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0065AB"/>
     <meta name="Description" content="Clarity Design System. UX guidelines, HTML/CSS framework, and Angular components working together to craft exceptional experiences">
-    
+
     <base href="/">
 
     <link rel="manifest" href="/manifest.json">
@@ -39,6 +39,11 @@
 
             window["trackIconSearch"] = function (searchedIcon, numberOfMatches) {
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
+            }
+
+
+            window["trackHiringAlert"] = function (eventLabel) {
+                ga('send', 'event', 'clarity-survey', 'click', eventLabel);
             }
         }
     </script>

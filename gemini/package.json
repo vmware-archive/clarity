@@ -5,12 +5,17 @@
     "gemini:dark": "./docker-cdc.js -t -c dark",
     "gemini:fix": "npm-run-all 'gemini:fix:light -- {*}' 'gemini:fix:dark -- {*}' --",
     "gemini:fix:light": "./docker-cdc.js -u",
-    "gemini:fix:dark": "./docker-cdc.js -u -c dark"
+    "gemini:fix:dark": "./docker-cdc.js -u -c dark",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "gemini": "7.4.1",
     "html-reporter": "3.6.4",
     "lite-server": "2.4.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.3",
+    "acorn": ">=6.4.1"
   },
   "private": true,
   "devDependencies": {

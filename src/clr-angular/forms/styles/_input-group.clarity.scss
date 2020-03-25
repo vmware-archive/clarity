@@ -6,8 +6,7 @@
   .clr-input-group {
     @include form-fields-appearance();
     @include input-border-bottom-animation();
-    padding-right: $clr-forms-baseline * 4;
-    max-width: calc(100% - #{$clr_baselineRem_1});
+    max-width: 100%;
     height: $clr_baselineRem_1;
 
     .clr-input {
@@ -22,8 +21,26 @@
       }
     }
 
+    /* handle case when select is used without clr-select-wrapper */
     select {
       border: none;
+    }
+
+    .clr-select-wrapper select,
+    .clr-multiselect-wrapper select {
+      border: none;
+    }
+
+    .clr-input-group-addon {
+      @include css-var(color, clr-forms-subtext-color, $clr-forms-subtext-color, $clr-use-custom-properties);
+
+      &:first-child {
+        padding: 0 0 0 ($clr-forms-baseline * 1.5);
+      }
+
+      &:last-child {
+        padding: 0 ($clr-forms-baseline * 1.5) 0 0;
+      }
     }
 
     .clr-input-group-icon-action {
@@ -54,10 +71,10 @@
       clr-forms-invalid-color,
       $clr-use-custom-properties
     );
-    padding-right: $clr-forms-baseline;
   }
 
   .clr-form-horizontal .clr-input-group {
+    max-width: 100%;
     padding-right: 0;
   }
 }

@@ -283,7 +283,12 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
 export declare class ClrCommonFormsModule {
 }
 
-export declare class ClrCommonStringsService extends CommonStringsServiceInternal {
+export declare class ClrCommonStringsService {
+    get keys(): Readonly<ClrCommonStrings>;
+    localize(overrides: Partial<ClrCommonStrings>): void;
+    parse(source: string, tokens?: {
+        [key: string]: string;
+    }): string;
 }
 
 export declare class ClrConditionalModule {

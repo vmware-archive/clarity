@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -119,7 +119,18 @@
     .clr-subtext {
       display: inline-block;
       margin-top: $clr-forms-baseline;
-      margin-left: $clr-forms-baseline;
+      margin-left: $clr-forms-icon-size;
+    }
+
+    .clr-error {
+      .clr-subtext {
+        margin-left: 0rem;
+      }
+
+      // Center the validation icon
+      .clr-validate-icon {
+        margin-left: 0rem;
+      }
     }
 
     .clr-subtext-wrapper {

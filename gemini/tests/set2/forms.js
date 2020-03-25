@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -129,9 +129,9 @@ gemini.suite('forms', child => {
     child
       .setUrl('/forms/input-group')
       .before((actions, find) => {
-        actions.waitForElementToShow('.clr-form', WAIT_TIME);
+        actions.waitForElementToShow('.input-group-example', WAIT_TIME);
       })
-      .setCaptureElements('.clr-form')
+      .setCaptureElements('.input-group-example')
       .capture('default');
   });
 

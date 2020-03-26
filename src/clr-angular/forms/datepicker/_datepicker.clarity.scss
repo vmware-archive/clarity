@@ -184,7 +184,8 @@
     width: 100%;
 
     //Other Props
-    color: inherit;
+    @include css-var(color, clr-day-cell-color, $clr-day-cell-color, $clr-use-custom-properties);
+    @include css-var(font-size, clr-day-font-size, $clr-day-font-size, $clr-use-custom-properties);
 
     &.is-today {
       @include css-var(

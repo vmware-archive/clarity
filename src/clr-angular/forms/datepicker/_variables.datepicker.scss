@@ -34,6 +34,7 @@ $clr-calendar-active-focus-cell-background-color: $clr-global-selection-color !d
 $clr-calendar-active-cell-color: $clr-color-neutral-1000 !default;
 
 $clr-day-font-size: $clr_baselineRem_0_5;
+$clr-day-cell-color: inherit;
 $clr-switcher-width: $clr-calendar-click-target * 3;
 
 $clr-monthpicker-min-height: 6 * $clr-calendar-month-cell-height;

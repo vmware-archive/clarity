@@ -1,0 +1,28 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/List/Getting Started" />
+
+# Lists
+
+Lists in Clarity Core come in three varieties – ordered, unordered, and
+unstyled. Any "compact" style variations for list display is now handled through
+Clarity Core layouts.
+
+## Installation
+
+To use the list styles import the global CSS.
+
+```scss
+// import into sass or css
+@import '~@clr/core/lost/list.min';
+
+// or import in html
+<link href="/node_modules/@clr/core/list/list.min.css" rel="stylesheet">
+```
+
+## Usage
+
+<Preview>
+  <Story id="components-list-stories--api" />
+</Preview>

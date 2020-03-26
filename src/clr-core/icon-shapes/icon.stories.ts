@@ -56,7 +56,7 @@ loadTravelIconSet();
 ClarityIcons.addIcons(userIcon, imageIcon);
 
 export default {
-  title: 'Components/Icon',
+  title: 'Components/Icon/Stories',
   component: 'cds-icon',
   parameters: {
     options: { showPanel: true },
@@ -66,76 +66,6 @@ export default {
       url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=0%3A2700',
     },
   },
-};
-
-export const API = () => {
-  const shape = select('shape', { default: undefined, user: 'user', image: 'image' }, 'user', propertiesGroup);
-  const size = select(
-    'size',
-    { 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
-    'lg',
-    propertiesGroup
-  );
-  const dir = select(
-    'dir',
-    { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
-    undefined,
-    propertiesGroup
-  );
-  const fl = select(
-    'flip',
-    { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
-    undefined,
-    propertiesGroup
-  );
-  const badge = select(
-    'badge',
-    {
-      'none (default)': undefined,
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      danger: 'danger',
-      inherit: 'inherit',
-      'warning-triangle': 'warning-triangle',
-      'inherit-triangle': 'inherit-triangle',
-    },
-    undefined,
-    propertiesGroup
-  );
-  const iconStatus = select(
-    'status',
-    { 'none (default)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    undefined,
-    propertiesGroup
-  );
-  const inverse = boolean('inverse', false, propertiesGroup);
-  const solid = boolean('solid', false, propertiesGroup);
-  const color = colorKnob('--color', undefined, cssGroup);
-  const badgeColor = colorKnob('--badge-color', undefined, cssGroup);
-
-  return html`
-    <cds-demo ?inverse=${inverse} inline-block>
-      <style>
-        cds-icon {
-          ${setStyles({
-            '--color': color,
-            '--badge-color': badgeColor,
-          })}
-      </style>
-      <cds-icon
-        .badge=${badge}
-        .status=${iconStatus}
-        .solid=${solid}
-        .size=${size}
-        .shape=${shape}
-        .direction=${dir}
-        .inverse=${inverse}
-        .flip=${fl}
-        @click=${action('click')}>
-      </cds-icon>
-    </cds-demo>
-  `;
 };
 
 export const all = () => {
@@ -265,16 +195,88 @@ export const all = () => {
   `;
 };
 
+export const API = () => {
+  const shape = select('shape', { default: undefined, user: 'user', image: 'image' }, 'user', propertiesGroup);
+  const size = select(
+    'size',
+    { 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
+    'lg',
+    propertiesGroup
+  );
+  const dir = select(
+    'dir',
+    { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
+    undefined,
+    propertiesGroup
+  );
+  const fl = select(
+    'flip',
+    { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
+    undefined,
+    propertiesGroup
+  );
+  const badge = select(
+    'badge',
+    {
+      'none (default)': undefined,
+      info: 'info',
+      success: 'success',
+      warning: 'warning',
+      danger: 'danger',
+      inherit: 'inherit',
+      'warning-triangle': 'warning-triangle',
+      'inherit-triangle': 'inherit-triangle',
+    },
+    undefined,
+    propertiesGroup
+  );
+  const iconStatus = select(
+    'status',
+    { 'none (default)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
+    undefined,
+    propertiesGroup
+  );
+  const inverse = boolean('inverse', false, propertiesGroup);
+  const solid = boolean('solid', false, propertiesGroup);
+  const color = colorKnob('--color', undefined, cssGroup);
+  const badgeColor = colorKnob('--badge-color', undefined, cssGroup);
+
+  return html`
+    <cds-demo ?inverse=${inverse} inline-block>
+      <style>
+        cds-icon {
+          ${setStyles({
+            '--color': color,
+            '--badge-color': badgeColor,
+          })}
+      </style>
+      <cds-icon
+        .badge=${badge}
+        .status=${iconStatus}
+        .solid=${solid}
+        .size=${size}
+        .shape=${shape}
+        .direction=${dir}
+        .inverse=${inverse}
+        .flip=${fl}
+        @click=${action('click')}>
+      </cds-icon>
+    </cds-demo>
+  `;
+};
+
+export const icon = () => {
+  return html`<cds-icon shape="user"></cds-icon>`;
+};
+
 export const sizes = () => {
   return html`
-    <h2>T-Shirt Sizes</h2>
     <cds-icon size="sm"></cds-icon>
     <cds-icon size="md"></cds-icon>
     <cds-icon size="lg"></cds-icon>
     <cds-icon size="xl"></cds-icon>
     <cds-icon size="xxl"></cds-icon>
 
-    <h2>Numeric Sizes</h2>
     <cds-icon size="16"></cds-icon>
     <cds-icon size="24"></cds-icon>
     <cds-icon size="48"></cds-icon>
@@ -285,13 +287,10 @@ export const sizes = () => {
 
 export const badges = () => {
   return html`
-    <h1>Badges</h1>
     <cds-icon shape="user" size="lg" badge="info"></cds-icon>
     <cds-icon shape="user" size="lg" badge="success"></cds-icon>
     <cds-icon shape="user" size="lg" badge="danger"></cds-icon>
     <cds-icon shape="user" size="lg" badge="warning"></cds-icon>
-    <div><cds-icon shape="user" size="lg" badge="inherit" inverse></cds-icon></div>
-
     <cds-icon shape="user" size="lg" badge="warning-triangle"></cds-icon>
     <cds-demo inverse inline-block>
       <cds-icon shape="user" size="lg" badge="inherit-triangle" inverse></cds-icon>
@@ -301,7 +300,6 @@ export const badges = () => {
 
 export const status = () => {
   return html`
-    <h1>Status</h1>
     <cds-icon shape="user" size="lg"></cds-icon>
     <cds-icon shape="user" status="info" size="lg"></cds-icon>
     <cds-icon shape="user" status="success" size="lg"></cds-icon>
@@ -313,8 +311,11 @@ export const status = () => {
     <cds-icon shape="user" status="success" size="lg" solid></cds-icon>
     <cds-icon shape="user" status="warning" size="lg" solid></cds-icon>
     <cds-icon shape="user" status="danger" size="lg" solid></cds-icon>
+  `;
+};
 
-    <h2>Inverse</h2>
+export const statusInverse = () => {
+  return html`
     <cds-demo inverse inline-block>
       <cds-icon shape="user" inverse size="lg"></cds-icon>
       <cds-icon shape="user" inverse status="info" size="lg"></cds-icon>
@@ -333,7 +334,6 @@ export const status = () => {
 
 export const direction = () => {
   return html`
-    <h1>Direction</h1>
     <cds-icon size="lg" direction="up"></cds-icon>
     <cds-icon size="lg" direction="left"></cds-icon>
     <cds-icon size="lg" direction="down"></cds-icon>
@@ -372,7 +372,7 @@ export const customStyles = () => {
         color: inherit;
       }
 
-      cds-icon {
+      .custom-icon-colors cds-icon {
         height: 36px;
         width: 36px;
       }
@@ -390,7 +390,6 @@ export const customStyles = () => {
         --badge-color: yellow;
       }
     </style>
-    <h1>Custom Styles</h1>
     <div class="custom-icon-colors">
       <cds-icon shape="user" badge class="icon-a"></cds-icon>
     </div>
@@ -410,7 +409,6 @@ export const customStyles = () => {
 
 export const flip = () => {
   return html`
-    <h1>Flip</h1>
     <cds-icon size="lg" shape="image"></cds-icon>
     <cds-icon size="lg" flip="vertical" shape="image"></cds-icon>
     <cds-icon size="lg" flip="horizontal" shape="image"></cds-icon>
@@ -422,18 +420,6 @@ registerElementSafely('clr-icon', LegacyIcon);
 
 export const legacy = () => {
   return html`
-    <section>
-      <h1>Deprecated API (clr-icon)</h1>
-      <p>To create a backwards compatible clr-icon import and register the cds-icon under a tag alias</p>
-
-      <pre>
-        <code>
-          class LegacyIcon extends CdsIcon { }
-          customElements.define('clr-icon', LegacyIcon);
-        </code>
-      </pre>
-    </section>
-    
     <h2>Size</h2>
     <clr-icon shape="info-circle" size="12"></clr-icon>
     <clr-icon shape="info-circle" size="16"></clr-icon>

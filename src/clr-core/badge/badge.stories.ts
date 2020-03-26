@@ -10,7 +10,7 @@ import { color as colorKnob, number, select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components/Badge',
+  title: 'Components/Badge/Stories',
   component: 'cds-badge',
   parameters: {
     options: { showPanel: true },
@@ -63,7 +63,6 @@ export const API = () => {
 
 export const status = () => {
   return html`
-    <h1>Status</h1>
     <cds-badge status="info">2</cds-badge>
     <cds-badge status="success">3</cds-badge>
     <cds-badge status="warning">12</cds-badge>
@@ -73,19 +72,24 @@ export const status = () => {
 
 export const color = () => {
   return html`
-    <style>
-      cds-badge.app-custom {
-        --background: darkblue;
-        --color: snow;
-      }
-    </style>
-    <h1>Color</h1>
     <cds-badge>5</cds-badge>
     <cds-badge color="gray">1</cds-badge>
     <cds-badge color="purple">1</cds-badge>
     <cds-badge color="blue">15</cds-badge>
     <cds-badge color="orange">2</cds-badge>
     <cds-badge color="light-blue">3</cds-badge>
+    
+  `;
+};
+
+export const colorCustom = () => {
+  return html`
+    <style>
+      cds-badge.app-custom {
+        --background: darkblue;
+        --color: snow;
+      }
+    </style>
     <cds-badge class='app-custom'>23</cds-badge>
   `;
 };

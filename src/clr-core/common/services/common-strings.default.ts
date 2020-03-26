@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrCommonStrings } from './common-strings.interface';
+import { ClrCommonStrings } from './common-strings.interface.js';
 
 export const commonStringsDefault: ClrCommonStrings = {
   open: 'Open',

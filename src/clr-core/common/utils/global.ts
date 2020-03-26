@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isBrowser } from './exists';
+import { isBrowser } from './exists.js';
 
 export interface CDSGlobal {
   _version: string[];

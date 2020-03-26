@@ -4,47 +4,47 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { ClarityIcons } from '../icon.service';
-import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { ClarityIcons } from '../icon.service.js';
+import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-import { angleIcon, angleIconName } from '../shapes/angle';
-import { angleDoubleIcon, angleDoubleIconName } from '../shapes/angle-double';
-import { arrowIcon, arrowIconName } from '../shapes/arrow';
-import { barsIcon, barsIconName } from '../shapes/bars';
-import { bellIcon, bellIconName } from '../shapes/bell';
-import { calendarIcon, calendarIconName } from '../shapes/calendar';
-import { checkIcon, checkIconName } from '../shapes/check';
-import { checkCircleIcon, checkCircleIconName } from '../shapes/check-circle';
-import { cloudIcon, cloudIconName } from '../shapes/cloud';
-import { cogIcon, cogIconName } from '../shapes/cog';
-import { ellipsisHorizontalIcon, ellipsisHorizontalIconName } from '../shapes/ellipsis-horizontal';
-import { ellipsisVerticalIcon, ellipsisVerticalIconName } from '../shapes/ellipsis-vertical';
-import { errorStandardIcon, errorStandardIconName } from '../shapes/error-standard';
-import { eventIcon, eventIconName } from '../shapes/event';
-import { exclamationCircleIcon, exclamationCircleIconName } from '../shapes/exclamation-circle';
-import { exclamationTriangleIcon, exclamationTriangleIconName } from '../shapes/exclamation-triangle';
-import { eyeIcon, eyeIconName } from '../shapes/eye';
-import { eyeHideIcon, eyeHideIconName } from '../shapes/eye-hide';
-import { filterGridIcon, filterGridIconName } from '../shapes/filter-grid';
-import { filterGridCircleIcon, filterGridCircleIconName } from '../shapes/filter-grid-circle';
-import { folderIcon, folderIconName } from '../shapes/folder';
-import { folderOpenIcon, folderOpenIconName } from '../shapes/folder-open';
-import { helpInfoIcon, helpInfoIconName } from '../shapes/help-info';
-import { homeIcon, homeIconName } from '../shapes/home';
-import { imageIcon, imageIconName } from '../shapes/image';
-import { infoCircleIcon, infoCircleIconName } from '../shapes/info-circle';
-import { infoStandardIcon, infoStandardIconName } from '../shapes/info-standard';
-import { searchIcon, searchIconName } from '../shapes/search';
-import { stepForward2Icon, stepForward2IconName } from '../shapes/step-forward-2';
-import { successStandardIcon, successStandardIconName } from '../shapes/success-standard';
-import { timesIcon, timesIconName } from '../shapes/times';
-import { unknownIconName } from '../shapes/unknown';
-import { unknownStatusIcon, unknownStatusIconName } from '../shapes/unknown-status';
-import { userIcon, userIconName } from '../shapes/user';
-import { viewColumnsIcon, viewColumnsIconName } from '../shapes/view-columns';
-import { vmBugIcon, vmBugIconName } from '../shapes/vm-bug';
-import { vmBugInverseIcon, vmBugInverseIconName } from '../shapes/vm-bug-inverse';
-import { warningStandardIcon, warningStandardIconName } from '../shapes/warning-standard';
+import { angleDoubleIcon, angleDoubleIconName } from '../shapes/angle-double.js';
+import { angleIcon, angleIconName } from '../shapes/angle.js';
+import { arrowIcon, arrowIconName } from '../shapes/arrow.js';
+import { barsIcon, barsIconName } from '../shapes/bars.js';
+import { bellIcon, bellIconName } from '../shapes/bell.js';
+import { calendarIcon, calendarIconName } from '../shapes/calendar.js';
+import { checkCircleIcon, checkCircleIconName } from '../shapes/check-circle.js';
+import { checkIcon, checkIconName } from '../shapes/check.js';
+import { cloudIcon, cloudIconName } from '../shapes/cloud.js';
+import { cogIcon, cogIconName } from '../shapes/cog.js';
+import { ellipsisHorizontalIcon, ellipsisHorizontalIconName } from '../shapes/ellipsis-horizontal.js';
+import { ellipsisVerticalIcon, ellipsisVerticalIconName } from '../shapes/ellipsis-vertical.js';
+import { errorStandardIcon, errorStandardIconName } from '../shapes/error-standard.js';
+import { eventIcon, eventIconName } from '../shapes/event.js';
+import { exclamationCircleIcon, exclamationCircleIconName } from '../shapes/exclamation-circle.js';
+import { exclamationTriangleIcon, exclamationTriangleIconName } from '../shapes/exclamation-triangle.js';
+import { eyeHideIcon, eyeHideIconName } from '../shapes/eye-hide.js';
+import { eyeIcon, eyeIconName } from '../shapes/eye.js';
+import { filterGridCircleIcon, filterGridCircleIconName } from '../shapes/filter-grid-circle.js';
+import { filterGridIcon, filterGridIconName } from '../shapes/filter-grid.js';
+import { folderOpenIcon, folderOpenIconName } from '../shapes/folder-open.js';
+import { folderIcon, folderIconName } from '../shapes/folder.js';
+import { helpInfoIcon, helpInfoIconName } from '../shapes/help-info.js';
+import { homeIcon, homeIconName } from '../shapes/home.js';
+import { imageIcon, imageIconName } from '../shapes/image.js';
+import { infoCircleIcon, infoCircleIconName } from '../shapes/info-circle.js';
+import { infoStandardIcon, infoStandardIconName } from '../shapes/info-standard.js';
+import { searchIcon, searchIconName } from '../shapes/search.js';
+import { stepForward2Icon, stepForward2IconName } from '../shapes/step-forward-2.js';
+import { successStandardIcon, successStandardIconName } from '../shapes/success-standard.js';
+import { timesIcon, timesIconName } from '../shapes/times.js';
+import { unknownStatusIcon, unknownStatusIconName } from '../shapes/unknown-status.js';
+import { unknownIconName } from '../shapes/unknown.js';
+import { userIcon, userIconName } from '../shapes/user.js';
+import { viewColumnsIcon, viewColumnsIconName } from '../shapes/view-columns.js';
+import { vmBugInverseIcon, vmBugInverseIconName } from '../shapes/vm-bug-inverse.js';
+import { vmBugIcon, vmBugIconName } from '../shapes/vm-bug.js';
+import { warningStandardIcon, warningStandardIconName } from '../shapes/warning-standard.js';
 
 export const coreCollectionIcons: IconShapeTuple[] = [
   angleIcon,

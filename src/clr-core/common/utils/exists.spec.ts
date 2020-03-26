@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { existsIn, existsInWindow, isBrowser } from './exists';
+import { existsIn, existsInWindow, isBrowser } from './exists.js';
 
 describe('Functional Helper: ', () => {
   describe('existsInWindow(): ', () => {

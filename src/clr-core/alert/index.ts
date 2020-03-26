@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './alert-actions.element';
-export * from './alert-content.element';
-export * from './alert.element';
-export * from './app-alert.element';
+export * from './alert-actions.element.js';
+export * from './alert-content.element.js';
+export * from './alert.element.js';
+export * from './app-alert.element.js';

@@ -5,7 +5,7 @@
  */
 
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
-import { getElementWidth, getElementWidthUnless } from './dom';
+import { getElementWidth, getElementWidthUnless } from './dom.js';
 
 describe('Functional Helper: ', () => {
   describe('getElementWidth() ', () => {

@@ -5,8 +5,8 @@
  */
 
 import curryN from 'ramda/es/curryN';
-import { elementExists, existsInWindow, isBrowser } from './exists';
-import { setupCDSGlobal } from './global';
+import { elementExists, existsInWindow, isBrowser } from './exists.js';
+import { setupCDSGlobal } from './global.js';
 
 const addElementToRegistry = curryN(
   3,

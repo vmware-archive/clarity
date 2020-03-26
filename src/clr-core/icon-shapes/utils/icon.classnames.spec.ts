@@ -8,10 +8,10 @@ import { getEnumValues } from '@clr/core/common';
 import '@clr/core/icon';
 import { CdsIcon } from '@clr/core/icon-shapes';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
-import { renderIcon } from '../icon.renderer';
-import { ClarityIcons } from '../icon.service';
+import { renderIcon } from '../icon.renderer.js';
+import { ClarityIcons } from '../icon.service.js';
 
-import { IconShapeCollection } from '../interfaces/icon.interfaces';
+import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 import {
   getIconSvgClasses,
   getIconTshirtSizeClassname,
@@ -22,8 +22,8 @@ import {
   isIconTshirtSizeClassname,
   SizeUpdateStrategies,
   updateIconSizeStyleOrClassnames,
-} from './icon.classnames';
-import { testIcons } from './test-icons';
+} from './icon.classnames.js';
+import { testIcons } from './test-icons.js';
 
 describe('Icon classname helpers: ', () => {
   describe('getIconSvgClasses: ', () => {
@@ -219,7 +219,7 @@ describe('Icon classname helpers: ', () => {
       expect(getIconTshirtSizeClassname('')).toEqual('');
     });
     it('should return properly prefixed t-shirt sizes if passed a valid t-shirt size', () => {
-      getEnumValues(IconTshirtSizes).forEach(size => {
+      (getEnumValues(IconTshirtSizes) as any[]).forEach(size => {
         expect(getIconTshirtSizeClassname(size)).toEqual(iconTshirtSizeClassnamePrefix + size);
       });
     });
@@ -227,7 +227,7 @@ describe('Icon classname helpers: ', () => {
 
   describe('isIconTshirtSizeClassname', () => {
     it('should return true for known t-shirt sizes', () => {
-      getEnumValues(IconTshirtSizes).forEach(size => {
+      (getEnumValues(IconTshirtSizes) as any[]).forEach(size => {
         expect(isIconTshirtSizeClassname(size)).toBe(true);
       });
     });

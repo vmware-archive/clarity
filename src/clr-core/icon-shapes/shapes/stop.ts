@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { renderIcon } from '../icon.renderer';
-import { IconShapeTuple } from '../interfaces/icon.interfaces';
+import { renderIcon } from '../icon.renderer.js';
+import { IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
 const icon = {
   outline: '<path d="M30,32H6a2,2,0,0,1-2-2V6A2,2,0,0,1,6,4H30a2,2,0,0,1,2,2V30A2,2,0,0,1,30,32ZM6,6V30H30V6Z"/>',

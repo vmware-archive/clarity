@@ -5,8 +5,8 @@
  */
 
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
-import { CdsBaseAlert } from './alert.base';
-import { styles } from './app-alert.element.css';
+import { CdsBaseAlert } from './alert.base.js';
+import { styles } from './app-alert.element.css.js';
 /**
  * Web component alerts.
  *

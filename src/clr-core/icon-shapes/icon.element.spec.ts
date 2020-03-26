@@ -6,8 +6,8 @@
 import '@clr/core/icon';
 import { CdsIcon } from '@clr/core/icon-shapes';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
-import { renderIcon } from './icon.renderer';
-import { ClarityIcons } from './icon.service';
+import { renderIcon } from './icon.renderer.js';
+import { ClarityIcons } from './icon.service.js';
 
 const testIcon = renderIcon('test');
 

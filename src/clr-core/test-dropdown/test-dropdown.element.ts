@@ -14,7 +14,7 @@ import {
 } from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
 
-import { styles } from './test-dropdown.element.css';
+import { styles } from './test-dropdown.element.css.js';
 
 /**
  * Dropdown, example test component. Do not use in production.

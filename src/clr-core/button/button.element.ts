@@ -7,7 +7,7 @@
 import { baseStyles, property, registerElementSafely } from '@clr/core/common';
 import { CdsBaseButton, getElementWidth } from '@clr/core/common';
 import { html, query } from 'lit-element';
-import { styles } from './button.element.css';
+import { styles } from './button.element.css.js';
 
 export enum ClrLoadingState {
   DEFAULT = 'default',

@@ -4,24 +4,24 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-/** @internal common is internal private module to Clarity Core */
-export * from './base/button.base';
-export * from './css-vars/css-vars';
-export * from './utils/dom';
-export * from './utils/register';
-export * from './decorators/query-slot';
-export * from './decorators/property';
-export * from './decorators/event';
-export * from './enums/key-codes';
-export * from './services/common-strings.service';
-export * from './services/common-strings.interface';
-export * from './services/common-strings.default';
-export * from './utils/conditional';
-export * from './utils/exists';
-export * from './utils/identity';
-export * from './utils/string';
-export * from './mixins/css-helpers';
-export * from './mixins/unique-id';
-export * from './mixins/apply-mixins';
-export * from './interfaces';
+/** @internal common is an internal private module to Clarity Core */
+export * from './base/button.base.js';
+export * from './css-vars/css-vars.js';
+export * from './utils/dom.js';
+export * from './utils/register.js';
+export * from './decorators/query-slot.js';
+export * from './decorators/property.js';
+export * from './decorators/event.js';
+export * from './enums/key-codes.js';
+export * from './services/common-strings.service.js';
+export * from './services/common-strings.interface.js';
+export * from './services/common-strings.default.js';
+export * from './utils/conditional.js';
+export * from './utils/exists.js';
+export * from './utils/identity.js';
+export * from './utils/string.js';
+export * from './mixins/css-helpers.js';
+export * from './mixins/unique-id.js';
+export * from './mixins/apply-mixins.js';
+export * from './interfaces/index.js';
 export { styles as baseStyles } from './base/base.element.css.js';

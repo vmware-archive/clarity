@@ -14,7 +14,7 @@ import {
   isObjectAndNotNilOrEmpty,
   isString,
   isStringOrNil,
-} from './identity';
+} from './identity.js';
 
 enum TestEnum {
   Foo = 'foo',

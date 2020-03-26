@@ -303,8 +303,9 @@ export declare class ClrControlContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrControlError implements AfterViewInit {
+    controlClassService: ControlClassService;
     controlIdService: ControlIdService;
-    constructor(controlIdService: ControlIdService, ariaLiveService: ClrAriaLiveService, el: ElementRef);
+    constructor(controlIdService: ControlIdService, controlClassService: ControlClassService, ariaLiveService: ClrAriaLiveService, el: ElementRef);
     ngAfterViewInit(): void;
 }
 

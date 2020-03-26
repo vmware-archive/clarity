@@ -27,7 +27,7 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
 
 /**
  * Icon component that renders svg shapes that can be customized.
- * To load a icon import the need icon with the icon service.
+ * To load an icon, import the icon with the icon service.
  *
  * ```typescript
  * import '@clr/core/icon';

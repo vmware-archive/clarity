@@ -9,7 +9,7 @@ import { select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components/List',
+  title: 'Components/List/Stories',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true },
@@ -50,16 +50,7 @@ export const API = () => {
   );
 
   return html`
-    <div cds-layout="vertical gap:md" cds-body-text>
-      <h1 cds-text="heading">Lists (Experimental)</h1>
-
-      <div cds-layout="vertical gap:sm">
-        <p>
-          Lists in Clarity Core come in three varieties – ordered, unordered, and unstyled. 
-          Any "compact" style variations for list display is now handled through Clarity Core layouts.
-        </p>
-      </div>
-
+    <div cds-layout="vertical gap:md">
       <cds-card>
         <div cds-layout="vertical gap:sm">
           <h2 cds-text="title">Unstyled List</h2>

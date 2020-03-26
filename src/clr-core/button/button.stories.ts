@@ -16,7 +16,7 @@ import { html } from 'lit-html';
 ClarityIcons.addIcons(userIcon);
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Stories',
   component: 'cds-button',
   parameters: {
     options: { showPanel: true },
@@ -90,7 +90,6 @@ export const API = () => {
 
 export const form = () => {
   return html`
-    <h1>Form Demo (see actions)</h1>
     <form @submit="${(e: Event) => {
       e.preventDefault();
       action('submit')(e);
@@ -104,7 +103,6 @@ export const form = () => {
 
 export const actions = () => {
   return html`
-    <h1>Actions</h1>
     <cds-button>solid</cds-button>
     <cds-button action="outline">outline</cds-button>
     <cds-button action="flat">link</cds-button>
@@ -113,39 +111,42 @@ export const actions = () => {
 
 export const status = () => {
   return html`
-    <section>
-      <h2>Solid Status</h2>
-      <cds-button>primary</cds-button>
-      <cds-button status="success">success</cds-button>
-      <cds-button status="danger">danger</cds-button>
-      <cds-button status="danger" disabled>disabled</cds-button>
-    </section>
-
-    <section>
-      <h2>Outline Status</h2>
-      <cds-button action="outline">primary</cds-button>
-      <cds-button action="outline" status="success">success</cds-button>
-      <cds-button action="outline" status="danger">danger</cds-button>
-      <cds-button action="outline" disabled>disabled</cds-button>
-    </section>
+    <cds-button>primary</cds-button>
+    <cds-button status="success">success</cds-button>
+    <cds-button status="danger">danger</cds-button>
+    <cds-button status="danger" disabled>disabled</cds-button>
   `;
 };
 
-export const icons = () => {
+export const statusOutline = () => {
   return html`
-    <h2>Icon Solid</h2>
+    <cds-button action="outline">primary</cds-button>
+    <cds-button action="outline" status="success">success</cds-button>
+    <cds-button action="outline" status="danger">danger</cds-button>
+    <cds-button action="outline" disabled>disabled</cds-button>
+  `;
+};
+
+export const iconSolid = () => {
+  return html`
     <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+  `;
+};
 
-    <h2>Icon Outline</h2>
+export const iconOutline = () => {
+  return html`
     <cds-button aria-label="user account" action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" action="outline" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" action="outline" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
     <cds-button aria-label="user account" action="outline" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+  `;
+};
 
-    <h2>Icon with text</h2>
+export const iconWithText = () => {
+  return html`
     <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
     <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
     <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
@@ -154,7 +155,6 @@ export const icons = () => {
 
 export const links = () => {
   return html`
-    <h1>Solid Links</h1>
     <cds-button>
       <a href="#">link</a>
     </cds-button>
@@ -166,8 +166,7 @@ export const links = () => {
     <cds-button size="sm">
       <a href="#">small link</a>
     </cds-button>
-
-    <h2>Outline Links</h2>
+    <br />
     <cds-button action="outline">
       <a href="#">link</a>
     </cds-button>
@@ -184,14 +183,10 @@ export const links = () => {
 
 export const sizes = () => {
   return html`
-    <h1>Sizes</h1>
-
-    <h2>Solid</h2>
     <cds-button>default</cds-button>
     <cds-button size="sm">small</cds-button>
     <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-
-    <h2>Outline</h2>
+    <br />
     <cds-button action="outline">default</cds-button>
     <cds-button action="outline" size="sm">small</cds-button>
     <cds-button action="outline" aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
@@ -200,7 +195,6 @@ export const sizes = () => {
 
 export const loading = () => {
   return html`
-    <h1>Loading</h1>
     <cds-button .loadingState="${ClrLoadingState.LOADING}">solid</cds-button>
     <cds-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cds-button>
     <cds-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cds-button>
@@ -219,7 +213,6 @@ export const customStyles = () => {
         --background: #9136a8;
       }
     </style>
-    <h1>Custom CSS</h1>
     <cds-button class="btn-branding">button</cds-button>
   `;
 };

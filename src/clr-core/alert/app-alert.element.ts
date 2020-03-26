@@ -8,7 +8,9 @@ import { baseStyles, property, registerElementSafely } from '@clr/core/common';
 import { CdsBaseAlert } from './alert.base.js';
 import { styles } from './app-alert.element.css.js';
 /**
- * Web component alerts.
+ * App-level alerts are placed at the very top of the global context. They should
+ * not be placed in any other configuration. Their purpose is to provide global
+ * alerts available and relating to the full context of the overall application.
  *
  * ```typescript
  * import '@clr/core/alert';
@@ -16,7 +18,7 @@ import { styles } from './app-alert.element.css.js';
  *
  * ```html
  * <cds-app-alert>
- *    <cds-alert-content>This is an alert.</cds-alert-content>
+ *  <cds-alert-content>This is an app alert.</cds-alert-content>
  * </cds-app-alert>
  * ```
  *

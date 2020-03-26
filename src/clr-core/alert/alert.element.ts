@@ -9,7 +9,8 @@ import { CdsBaseAlert } from './alert.base.js';
 import { styles } from './alert.element.css.js';
 
 /**
- * Web component alerts.
+ * Alerts are banners that communicate a message with a severity attached to it.
+ * They grab the user’s attention to provide critical information needed in context.
  *
  * ```typescript
  * import '@clr/core/alert';
@@ -17,7 +18,7 @@ import { styles } from './alert.element.css.js';
  *
  * ```html
  * <cds-alert>
- *    <cds-alert-content>This is an alert.</cds-alert-content>
+ *   <cds-alert-content>This is an alert.</cds-alert-content>
  * </cds-alert>
  * ```
  *

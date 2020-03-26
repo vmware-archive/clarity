@@ -11,7 +11,7 @@ import { boolean, color as colorKnob, number, select, text } from '@storybook/ad
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components/Tag',
+  title: 'Components/Tag/Stories',
   component: 'cds-tag',
   parameters: {
     options: { showPanel: true },
@@ -59,15 +59,17 @@ export const API = () => {
   `;
 };
 
-export const color = () => {
+export const status = () => {
   return html`
-    <h2>Status</h2>
     <cds-tag status="info">Info</cds-tag>
     <cds-tag status="success">Success</cds-tag>
     <cds-tag status="warning">Warning</cds-tag>
     <cds-tag status="danger">Danger</cds-tag>
+  `;
+};
 
-    <h2>Color</h2>
+export const color = () => {
+  return html`
     <cds-tag color="gray">Default</cds-tag>
     <cds-tag color="purple">Purple</cds-tag>
     <cds-tag color="blue">Blue</cds-tag>
@@ -76,15 +78,17 @@ export const color = () => {
   `;
 };
 
-export const badges = () => {
+export const badgesStatus = () => {
   return html`
-    <h2>Status</h2>
     <cds-tag readonly status="info">Info <cds-badge>1</cds-badge></cds-tag>
     <cds-tag readonly status="success">Success <cds-badge>2</cds-badge></cds-tag>
     <cds-tag readonly status="warning">Warning <cds-badge>3</cds-badge> </cds-tag>
     <cds-tag readonly status="danger">Danger <cds-badge>12</cds-badge></cds-tag>
+  `;
+};
 
-    <h2>Color</h2>
+export const badgesColor = () => {
+  return html`
     <cds-tag readonly color="gray">Default <cds-badge>1</cds-badge></cds-tag>
     <cds-tag readonly color="purple">Purple <cds-badge>2</cds-badge></cds-tag>
     <cds-tag readonly color="blue">Blue <cds-badge>3</cds-badge></cds-tag>

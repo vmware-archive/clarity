@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { returnOrFallthrough } from './conditional';
+import { returnOrFallthrough } from './conditional.js';
 
 describe('Conditional Helper: ', () => {
   describe('returnOrFallthrough() ', () => {

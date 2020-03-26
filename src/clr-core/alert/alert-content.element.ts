@@ -6,7 +6,7 @@
 
 import { baseStyles, registerElementSafely } from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
-import { styles } from './alert-content.element.css';
+import { styles } from './alert-content.element.css.js';
 
 /**
  * Web component alert content to be used inside alert.

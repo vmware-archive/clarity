@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { commonStringsDefault } from './common-strings.default';
-import { CommonStringsServiceInternal } from './common-strings.service';
+import { commonStringsDefault } from './common-strings.default.js';
+import { CommonStringsServiceInternal } from './common-strings.service.js';
 
 describe('Common Strings Service', () => {
-  let service;
+  let service: CommonStringsServiceInternal;
 
   beforeEach(() => {
     service = new CommonStringsServiceInternal();

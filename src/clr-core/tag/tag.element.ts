@@ -6,7 +6,7 @@
 
 import { baseStyles, CdsBaseButton, property, registerElementSafely, StatusTypes } from '@clr/core/common';
 import { html } from 'lit-element';
-import { styles } from './tag.element.css';
+import { styles } from './tag.element.css.js';
 
 /**
  * Tags show concise metadata in a compact format.

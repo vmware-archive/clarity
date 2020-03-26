@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { renderIcon } from './icon.renderer';
-import { ClarityIcons } from './icon.service';
-import { IconRegistry, IconShapeTuple } from './interfaces/icon.interfaces';
-import { testIcons } from './utils/test-icons';
+import { renderIcon } from './icon.renderer.js';
+import { ClarityIcons } from './icon.service.js';
+import { IconRegistry, IconShapeTuple } from './interfaces/icon.interfaces.js';
+import { testIcons } from './utils/test-icons.js';
 
 describe('ClarityIcons service: ', () => {
   describe('get: ', () => {

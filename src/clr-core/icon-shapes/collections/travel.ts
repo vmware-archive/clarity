@@ -4,22 +4,22 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from '../icon.service';
-import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { ClarityIcons } from '../icon.service.js';
+import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-import { airplaneIcon, airplaneIconName } from '../shapes/airplane';
-import { bicycleIcon, bicycleIconName } from '../shapes/bicycle';
-import { boatIcon, boatIconName } from '../shapes/boat';
-import { campervanIcon, campervanIconName } from '../shapes/campervan';
-import { carIcon, carIconName } from '../shapes/car';
-import { caravanIcon, caravanIconName } from '../shapes/caravan';
-import { compassIcon, compassIconName } from '../shapes/compass';
-import { ferryIcon, ferryIconName } from '../shapes/ferry';
-import { mapIcon, mapIconName } from '../shapes/map';
-import { mapMarkerIcon, mapMarkerIconName } from '../shapes/map-marker';
-import { onHolidayIcon, onHolidayIconName } from '../shapes/on-holiday';
-import { trailerIcon, trailerIconName } from '../shapes/trailer';
-import { truckIcon, truckIconName } from '../shapes/truck';
+import { airplaneIcon, airplaneIconName } from '../shapes/airplane.js';
+import { bicycleIcon, bicycleIconName } from '../shapes/bicycle.js';
+import { boatIcon, boatIconName } from '../shapes/boat.js';
+import { campervanIcon, campervanIconName } from '../shapes/campervan.js';
+import { carIcon, carIconName } from '../shapes/car.js';
+import { caravanIcon, caravanIconName } from '../shapes/caravan.js';
+import { compassIcon, compassIconName } from '../shapes/compass.js';
+import { ferryIcon, ferryIconName } from '../shapes/ferry.js';
+import { mapMarkerIcon, mapMarkerIconName } from '../shapes/map-marker.js';
+import { mapIcon, mapIconName } from '../shapes/map.js';
+import { onHolidayIcon, onHolidayIconName } from '../shapes/on-holiday.js';
+import { trailerIcon, trailerIconName } from '../shapes/trailer.js';
+import { truckIcon, truckIconName } from '../shapes/truck.js';
 
 export const travelCollectionIcons: IconShapeTuple[] = [
   airplaneIcon,

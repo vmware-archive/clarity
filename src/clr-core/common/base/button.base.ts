@@ -7,10 +7,10 @@
 import { html, LitElement, query } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
-import { property } from '../decorators/property';
-import { querySlot } from '../decorators/query-slot';
-import { KeyCodes } from './../enums/key-codes';
-import { stopEvent } from './../utils/events';
+import { property } from '../decorators/property.js';
+import { querySlot } from '../decorators/query-slot.js';
+import { KeyCodes } from './../enums/key-codes.js';
+import { stopEvent } from './../utils/events.js';
 
 // @dynamic
 export class CdsBaseButton extends LitElement {
@@ -39,7 +39,7 @@ export class CdsBaseButton extends LitElement {
           tabindex="-1"
           style="display: none"
           value="${ifDefined(this.value)}"
-          name="${ifDefined(name)}"
+          name="${ifDefined(this.name)}"
           type="${ifDefined(this.type)}"
         ></button>`;
   }

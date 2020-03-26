@@ -10,7 +10,7 @@ import {
   transformToSpacedString,
   transformToString,
   transformToUnspacedString,
-} from './string';
+} from './string.js';
 
 describe('Functional Helper: ', () => {
   function funcFactory(str: string): (x: number, y: number, z: number) => string {

@@ -1,14 +1,14 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { isString } from '@clr/core/common';
-import { getInnerSvgFromShapes, renderIcon } from './icon.renderer';
-import { IconShapeSources } from './interfaces/icon.interfaces';
-import { IconDecorationClassnames, IconSvgClassnames } from './utils/icon.classnames';
-import { dummyIconShape, testIcons } from './utils/test-icons';
+import { getInnerSvgFromShapes, renderIcon } from './icon.renderer.js';
+import { IconShapeSources } from './interfaces/icon.interfaces.js';
+import { IconDecorationClassnames, IconSvgClassnames } from './utils/icon.classnames.js';
+import { dummyIconShape, testIcons } from './utils/test-icons.js';
 
 describe('Icon renderer: ', () => {
   describe('renderIcon: ', () => {

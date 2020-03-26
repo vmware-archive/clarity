@@ -6,7 +6,7 @@
 
 import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/common';
 import { html, LitElement } from 'lit-element';
-import { styles } from './badge.element.css';
+import { styles } from './badge.element.css.js';
 
 /**
  * Badges provide a method to highlight a count of an element either next to it

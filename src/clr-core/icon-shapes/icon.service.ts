@@ -10,10 +10,10 @@ import {
   IconRegistry,
   IconShapeSources,
   IconShapeTuple,
-} from './interfaces/icon.interfaces';
-import { unknownIcon } from './shapes/unknown';
+} from './interfaces/icon.interfaces.js';
+import { unknownIcon } from './shapes/unknown.js';
 
-import { addIcon, addIcons, getIcon, legacyAlias, setIconAliases } from './utils/icon.service-helpers';
+import { addIcon, addIcons, getIcon, legacyAlias, setIconAliases } from './utils/icon.service-helpers.js';
 
 const iconRegistry: IconRegistry = {
   unknown: unknownIcon[1] as string,

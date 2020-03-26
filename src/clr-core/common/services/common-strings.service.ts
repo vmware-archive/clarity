@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { commonStringsDefault } from './common-strings.default';
-import { ClrCommonStrings } from './common-strings.interface';
+import { commonStringsDefault } from './common-strings.default.js';
+import { ClrCommonStrings } from './common-strings.interface.js';
 
 export class CommonStringsServiceInternal {
   /**

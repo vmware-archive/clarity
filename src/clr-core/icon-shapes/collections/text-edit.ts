@@ -4,37 +4,37 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { ClarityIcons } from '../icon.service';
-import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { ClarityIcons } from '../icon.service.js';
+import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-import { alignBottomIcon, alignBottomIconName } from '../shapes/align-bottom';
-import { alignCenterIcon, alignCenterIconName } from '../shapes/align-center';
-import { alignLeftIcon, alignLeftIconName } from '../shapes/align-left';
-import { alignLeftTextIcon, alignLeftTextIconName } from '../shapes/align-left-text';
-import { alignMiddleIcon, alignMiddleIconName } from '../shapes/align-middle';
-import { alignRightIcon, alignRightIconName } from '../shapes/align-right';
-import { alignRightTextIcon, alignRightTextIconName } from '../shapes/align-right-text';
-import { alignTopIcon, alignTopIconName } from '../shapes/align-top';
-import { blockQuoteIcon, blockQuoteIconName } from '../shapes/block-quote';
-import { boldIcon, boldIconName } from '../shapes/bold';
-import { bulletListIcon, bulletListIconName } from '../shapes/bullet-list';
-import { centerTextIcon, centerTextIconName } from '../shapes/center-text';
-import { checkboxListIcon, checkboxListIconName } from '../shapes/checkbox-list';
-import { fontSizeIcon, fontSizeIconName } from '../shapes/font-size';
-import { highlighterIcon, highlighterIconName } from '../shapes/highlighter';
-import { indentIcon, indentIconName } from '../shapes/indent';
-import { italicIcon, italicIconName } from '../shapes/italic';
-import { justifyTextIcon, justifyTextIconName } from '../shapes/justify-text';
-import { languageIcon, languageIconName } from '../shapes/language';
-import { numberListIcon, numberListIconName } from '../shapes/number-list';
-import { outdentIcon, outdentIconName } from '../shapes/outdent';
-import { paintRollerIcon, paintRollerIconName } from '../shapes/paint-roller';
-import { strikethroughIcon, strikethroughIconName } from '../shapes/strikethrough';
-import { subscriptIcon, subscriptIconName } from '../shapes/subscript';
-import { superscriptIcon, superscriptIconName } from '../shapes/superscript';
-import { textIcon, textIconName } from '../shapes/text';
-import { textColorIcon, textColorIconName } from '../shapes/text-color';
-import { underlineIcon, underlineIconName } from '../shapes/underline';
+import { alignBottomIcon, alignBottomIconName } from '../shapes/align-bottom.js';
+import { alignCenterIcon, alignCenterIconName } from '../shapes/align-center.js';
+import { alignLeftTextIcon, alignLeftTextIconName } from '../shapes/align-left-text.js';
+import { alignLeftIcon, alignLeftIconName } from '../shapes/align-left.js';
+import { alignMiddleIcon, alignMiddleIconName } from '../shapes/align-middle.js';
+import { alignRightTextIcon, alignRightTextIconName } from '../shapes/align-right-text.js';
+import { alignRightIcon, alignRightIconName } from '../shapes/align-right.js';
+import { alignTopIcon, alignTopIconName } from '../shapes/align-top.js';
+import { blockQuoteIcon, blockQuoteIconName } from '../shapes/block-quote.js';
+import { boldIcon, boldIconName } from '../shapes/bold.js';
+import { bulletListIcon, bulletListIconName } from '../shapes/bullet-list.js';
+import { centerTextIcon, centerTextIconName } from '../shapes/center-text.js';
+import { checkboxListIcon, checkboxListIconName } from '../shapes/checkbox-list.js';
+import { fontSizeIcon, fontSizeIconName } from '../shapes/font-size.js';
+import { highlighterIcon, highlighterIconName } from '../shapes/highlighter.js';
+import { indentIcon, indentIconName } from '../shapes/indent.js';
+import { italicIcon, italicIconName } from '../shapes/italic.js';
+import { justifyTextIcon, justifyTextIconName } from '../shapes/justify-text.js';
+import { languageIcon, languageIconName } from '../shapes/language.js';
+import { numberListIcon, numberListIconName } from '../shapes/number-list.js';
+import { outdentIcon, outdentIconName } from '../shapes/outdent.js';
+import { paintRollerIcon, paintRollerIconName } from '../shapes/paint-roller.js';
+import { strikethroughIcon, strikethroughIconName } from '../shapes/strikethrough.js';
+import { subscriptIcon, subscriptIconName } from '../shapes/subscript.js';
+import { superscriptIcon, superscriptIconName } from '../shapes/superscript.js';
+import { textColorIcon, textColorIconName } from '../shapes/text-color.js';
+import { textIcon, textIconName } from '../shapes/text.js';
+import { underlineIcon, underlineIconName } from '../shapes/underline.js';
 
 export const textEditCollectionIcons: IconShapeTuple[] = [
   alignBottomIcon,

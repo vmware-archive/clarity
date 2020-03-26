@@ -8,20 +8,18 @@ import {
   applyMixins,
   baseStyles,
   CssHelpers,
-  Directions,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
-  Orientations,
   property,
-  StatusTypes,
   UniqueId,
 } from '@clr/core/common';
 import { html, LitElement, query } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { styles } from './icon.element.css';
-import { ClarityIcons } from './icon.service';
-import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames';
-import { hasIcon } from './utils/icon.service-helpers';
+import { Directions, Orientations, StatusTypes } from '../common/interfaces/index.js';
+import { styles } from './icon.element.css.js';
+import { ClarityIcons } from './icon.service.js';
+import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames.js';
+import { hasIcon } from './utils/icon.service-helpers.js';
 
 class IconMixinClass extends LitElement {}
 

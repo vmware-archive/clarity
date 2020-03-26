@@ -4,11 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { renderIcon } from '../icon.renderer';
-import { ClarityIcons } from '../icon.service';
-import { IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces';
-import { testIcons } from '../utils/test-icons';
-import { addIcon, addIcons, getIcon, hasIcon, legacyAlias, setIconAlias, setIconAliases } from './icon.service-helpers';
+import { renderIcon } from '../icon.renderer.js';
+import { ClarityIcons } from '../icon.service.js';
+import { IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces.js';
+import { testIcons } from '../utils/test-icons.js';
+import {
+  addIcon,
+  addIcons,
+  getIcon,
+  hasIcon,
+  legacyAlias,
+  setIconAlias,
+  setIconAliases,
+} from './icon.service-helpers.js';
 
 describe('ClarityIcons service helper functions: ', () => {
   let registry: any;
@@ -93,7 +101,7 @@ describe('ClarityIcons service helper functions: ', () => {
   });
 
   describe('setIconAliases: ', () => {
-    let aliasTestRegistry;
+    let aliasTestRegistry: any;
 
     beforeEach(() => {
       aliasTestRegistry = {
@@ -103,21 +111,21 @@ describe('ClarityIcons service helper functions: ', () => {
 
     it('should set up aliases', () => {
       setIconAliases(['ohai', ['hola', 'bonjour']], aliasTestRegistry);
-      expect((aliasTestRegistry as any).hola).toBeDefined();
-      expect((aliasTestRegistry as any).bonjour).toBeDefined();
-      expect((aliasTestRegistry as any).hola).toEqual(aliasTestRegistry.ohai);
-      expect((aliasTestRegistry as any).bonjour).toEqual(aliasTestRegistry.ohai);
+      expect(aliasTestRegistry.hola).toBeDefined();
+      expect(aliasTestRegistry.bonjour).toBeDefined();
+      expect(aliasTestRegistry.hola).toEqual(aliasTestRegistry.ohai);
+      expect(aliasTestRegistry.bonjour).toEqual(aliasTestRegistry.ohai);
     });
 
     it('should do nothing if there is no icon to alias to', () => {
       setIconAliases(['jabberwocky', ['hola', 'bonjour']], aliasTestRegistry);
-      expect((aliasTestRegistry as any).hola).not.toBeDefined();
-      expect((aliasTestRegistry as any).bonjour).not.toBeDefined();
+      expect(aliasTestRegistry.hola).not.toBeDefined();
+      expect(aliasTestRegistry.bonjour).not.toBeDefined();
     });
   });
 
   describe('setIconAlias: ', () => {
-    let aliasTestRegistry;
+    let aliasTestRegistry: any;
 
     beforeEach(() => {
       aliasTestRegistry = {
@@ -127,18 +135,18 @@ describe('ClarityIcons service helper functions: ', () => {
 
     it('should set up an alias', () => {
       setIconAlias('ohai', 'hola', aliasTestRegistry);
-      expect((aliasTestRegistry as any).hola).toBeDefined();
-      expect((aliasTestRegistry as any).hola).toEqual(aliasTestRegistry.ohai);
+      expect(aliasTestRegistry.hola).toBeDefined();
+      expect(aliasTestRegistry.hola).toEqual(aliasTestRegistry.ohai);
     });
 
     it('should do nothing if there is no icon to alias to', () => {
       setIconAlias('jabberwocky', 'bonjour', aliasTestRegistry);
-      expect((aliasTestRegistry as any).bonjour).not.toBeDefined();
+      expect(aliasTestRegistry.bonjour).not.toBeDefined();
     });
   });
 
   describe('getIcon: ', () => {
-    let getTestRegistry;
+    let getTestRegistry: any;
 
     beforeEach(() => {
       getTestRegistry = {

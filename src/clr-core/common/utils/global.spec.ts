@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { setupCDSGlobal } from './global';
+import { setupCDSGlobal } from './global.js';
 
 describe('CDS global', () => {
   beforeEach(() => {

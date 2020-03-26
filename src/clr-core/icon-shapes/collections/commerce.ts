@@ -4,32 +4,32 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from '../icon.service';
-import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { ClarityIcons } from '../icon.service.js';
+import { IconAlias, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-import { bankIcon, bankIconName } from '../shapes/bank';
-import { bitcoinIcon, bitcoinIconName } from '../shapes/bitcoin';
-import { calculatorIcon, calculatorIconName } from '../shapes/calculator';
-import { coinBagIcon, coinBagIconName } from '../shapes/coin-bag';
-import { creditCardIcon, creditCardIconName } from '../shapes/credit-card';
-import { dollarIcon, dollarIconName } from '../shapes/dollar';
-import { dollarBillIcon, dollarBillIconName } from '../shapes/dollar-bill';
-import { eCheckIcon, eCheckIconName } from '../shapes/e-check';
-import { employeeIcon, employeeIconName } from '../shapes/employee';
-import { employeeGroupIcon, employeeGroupIconName } from '../shapes/employee-group';
-import { euroIcon, euroIconName } from '../shapes/euro';
-import { factoryIcon, factoryIconName } from '../shapes/factory';
-import { pesoIcon, pesoIconName } from '../shapes/peso';
-import { piggyBankIcon, piggyBankIconName } from '../shapes/piggy-bank';
-import { poundIcon, poundIconName } from '../shapes/pound';
-import { rubleIcon, rubleIconName } from '../shapes/ruble';
-import { rupeeIcon, rupeeIconName } from '../shapes/rupee';
-import { shoppingBagIcon, shoppingBagIconName } from '../shapes/shopping-bag';
-import { shoppingCartIcon, shoppingCartIconName } from '../shapes/shopping-cart';
-import { storeIcon, storeIconName } from '../shapes/store';
-import { walletIcon, walletIconName } from '../shapes/wallet';
-import { wonIcon, wonIconName } from '../shapes/won';
-import { yenIcon, yenIconName } from '../shapes/yen';
+import { bankIcon, bankIconName } from '../shapes/bank.js';
+import { bitcoinIcon, bitcoinIconName } from '../shapes/bitcoin.js';
+import { calculatorIcon, calculatorIconName } from '../shapes/calculator.js';
+import { coinBagIcon, coinBagIconName } from '../shapes/coin-bag.js';
+import { creditCardIcon, creditCardIconName } from '../shapes/credit-card.js';
+import { dollarBillIcon, dollarBillIconName } from '../shapes/dollar-bill.js';
+import { dollarIcon, dollarIconName } from '../shapes/dollar.js';
+import { eCheckIcon, eCheckIconName } from '../shapes/e-check.js';
+import { employeeGroupIcon, employeeGroupIconName } from '../shapes/employee-group.js';
+import { employeeIcon, employeeIconName } from '../shapes/employee.js';
+import { euroIcon, euroIconName } from '../shapes/euro.js';
+import { factoryIcon, factoryIconName } from '../shapes/factory.js';
+import { pesoIcon, pesoIconName } from '../shapes/peso.js';
+import { piggyBankIcon, piggyBankIconName } from '../shapes/piggy-bank.js';
+import { poundIcon, poundIconName } from '../shapes/pound.js';
+import { rubleIcon, rubleIconName } from '../shapes/ruble.js';
+import { rupeeIcon, rupeeIconName } from '../shapes/rupee.js';
+import { shoppingBagIcon, shoppingBagIconName } from '../shapes/shopping-bag.js';
+import { shoppingCartIcon, shoppingCartIconName } from '../shapes/shopping-cart.js';
+import { storeIcon, storeIconName } from '../shapes/store.js';
+import { walletIcon, walletIconName } from '../shapes/wallet.js';
+import { wonIcon, wonIconName } from '../shapes/won.js';
+import { yenIcon, yenIconName } from '../shapes/yen.js';
 
 export const commerceCollectionIcons: IconShapeTuple[] = [
   bankIcon,

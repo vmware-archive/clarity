@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { IconShapeCollection } from '../interfaces/icon.interfaces';
-import { getIconSvgClasses, getShapeClassname, IconDecorationClassnames } from './icon.classnames';
+import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
+import { getIconSvgClasses, getShapeClassname, IconDecorationClassnames } from './icon.classnames.js';
 
 export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string) {
   const shapeClassname = getShapeClassname(shapeName);

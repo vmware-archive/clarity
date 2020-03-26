@@ -6,7 +6,7 @@
 
 // tslint:disable-next-line
 import { property as prop } from 'lit-element';
-import { camelCaseToKebabCase } from '../utils/string';
+import { camelCaseToKebabCase } from '../utils/string.js';
 
 /**
  * lit-element @property decorator with custom defaults.

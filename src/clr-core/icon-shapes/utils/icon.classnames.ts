@@ -6,9 +6,9 @@
 
 import { getEnumValues, isString, transformToSpacedString } from '@clr/core/common';
 import isNil from 'ramda/es/isNil';
-import { CdsIcon } from '../icon.element';
-import { IconShapeCollection } from '../interfaces/icon.interfaces';
-import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape';
+import { CdsIcon } from '../icon.element.js';
+import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
+import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape.js';
 
 export enum IconSvgClassnames {
   Badged = 'can-badge',

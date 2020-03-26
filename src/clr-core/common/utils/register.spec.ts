@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 /* jasmine is running these async and it's yielding weird passes/fails */
-// import { registerElementSafely } from './register';
-// import { elementExists } from './exists';
+// import { registerElementSafely } from './register.js';
+// import { elementExists } from './exists.js';
 
 // jasmine choked badly on this when i had it as an ES2015 class...
 /* tslint:disable:variable-name curly no-shadowed-variable */

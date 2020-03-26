@@ -4,10 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property, registerElementSafely } from '@clr/core/common';
+import {
+  ClrCommonStrings,
+  commonStringsDefault,
+  CommonStringsService,
+  property,
+  registerElementSafely,
+} from '@clr/core/common';
 import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
-import { ClrCommonStrings, commonStringsDefault, CommonStringsService } from './../';
 
 export default {
   title: 'Experimental/Utilities',

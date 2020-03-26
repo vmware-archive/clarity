@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html, LitElement } from 'lit-element';
-import { registerElementSafely } from '../utils/register';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils';
+import { registerElementSafely } from '../utils/register.js';
+import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
 import { querySlot, querySlotAll } from './query-slot';
 
 class TestElement extends LitElement {

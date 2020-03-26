@@ -6,8 +6,8 @@
 
 import { existsIn } from '@clr/core/common';
 import has from 'ramda/es/has';
-import { renderIcon } from '../icon.renderer';
-import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces';
+import { renderIcon } from '../icon.renderer.js';
+import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
 export function addIcon(shape: IconShapeTuple, registry: IconRegistry) {
   const [shapeName] = shape;

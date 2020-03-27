@@ -139,11 +139,11 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 * Properties should only reflect into attributes if expecting primitive values
   like `string`, `number`, or `boolean`. Use the provided `@property` decorator
-  from `@clr/core/common` as this provides the same lit-element decorator with
+  from `@clr/core/internal` as this provides the same lit-element decorator with
   our project defaults.
 
   ```typescript
-  import { property } from '@clr/core/common';
+  import { property } from '@clr/core/internal';
 
   @property({ type: Boolean }) open = false;
   ```
@@ -158,7 +158,7 @@ adhere to the following guidelines for our Core Web Component codebase.
 * Custom events should use our built in `@event` decorator.
 
   ```typescript
-  import { event } from '@clr/core/common';
+  import { event } from '@clr/core/internal';
 
   @event() private closedChange: EventEmitter<boolean>;
 
@@ -169,7 +169,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   the lit-element decorator by adding our preferred defaults.
 
   ```typescript
-  import { property } from '@clr/core/common';
+  import { property } from '@clr/core/internal';
 
   @property({ type: Boolean }) loadingState;
   ```
@@ -411,7 +411,7 @@ adhere to the following guidelines for our Core Web Component codebase.
 * We ship modern es2015 modules as the default.
 * Use a module bundler to dedupe and handle peer dependencies.
 * Share peer deps to prevent multiple versions running at one time.
-* `@clr/core/common` is private internal API only for internal use of Core components.
+* `@clr/core/internal` is private internal API only for internal use of Core components.
 
 ## Unit Testing
 

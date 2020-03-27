@@ -5,8 +5,8 @@
  */
 
 import '@clr/core/alert';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/common';
 import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { boolean, color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

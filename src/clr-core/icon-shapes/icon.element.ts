@@ -8,14 +8,16 @@ import {
   applyMixins,
   baseStyles,
   CssHelpers,
+  Directions,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
+  Orientations,
   property,
+  StatusTypes,
   UniqueId,
-} from '@clr/core/common';
+} from '@clr/core/internal';
 import { html, LitElement, query } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { Directions, Orientations, StatusTypes } from '../common/interfaces/index.js';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames.js';

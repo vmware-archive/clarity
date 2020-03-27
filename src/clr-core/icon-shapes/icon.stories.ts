@@ -11,7 +11,6 @@ import { boolean, color as colorKnob, select, text } from '@storybook/addon-knob
 import { html } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 
-import { cssGroup, propertiesGroup, registerElementSafely, setStyles } from '@clr/core/common';
 import {
   chartCollectionAliases,
   chartCollectionIcons,
@@ -41,6 +40,7 @@ import {
   travelCollectionAliases,
   travelCollectionIcons,
 } from '@clr/core/icon-shapes';
+import { cssGroup, propertiesGroup, registerElementSafely, setStyles } from '@clr/core/internal';
 
 loadChartIconSet();
 loadCommerceIconSet();

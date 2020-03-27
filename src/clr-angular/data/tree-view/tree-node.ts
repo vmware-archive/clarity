@@ -25,7 +25,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { KeyCodes } from '@clr/core/common';
+import { KeyCodes } from '@clr/core/internal';
 import { IfExpandService } from '../../utils/conditional/if-expanded.service';
 import { keyValidator, preventArrowKeyScroll } from '../../utils/focus/key-focus/util';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';

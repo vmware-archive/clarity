@@ -5,7 +5,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { commonStringsDefault, ClrCommonStrings } from '@clr/core/common';
+import { commonStringsDefault, ClrCommonStrings } from '@clr/core/internal';
 
 @Injectable({
   providedIn: 'root',

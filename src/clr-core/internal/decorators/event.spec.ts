@@ -4,7 +4,7 @@
 * The full license information can be found in LICENSE in the root directory of this project.
 */
 
-import { event, EventEmitter, registerElementSafely } from '@clr/core/common';
+import { event, EventEmitter, registerElementSafely } from '@clr/core/internal';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { LitElement } from 'lit-element';
 

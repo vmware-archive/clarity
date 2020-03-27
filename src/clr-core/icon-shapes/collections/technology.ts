@@ -235,7 +235,7 @@ export function loadTechnologyIconSet() {
   ClarityIcons.addAliases(...technologyCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [administratorIconName]: string;
     [animationIconName]: string;

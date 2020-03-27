@@ -10,7 +10,7 @@ import {
   CommonStringsService,
   property,
   registerElementSafely,
-} from '@clr/core/common';
+} from '@clr/core/internal';
 import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
 

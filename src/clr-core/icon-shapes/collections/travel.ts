@@ -55,7 +55,7 @@ export function loadTravelIconSet() {
   ClarityIcons.addAliases(...travelCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [airplaneIconName]: string;
     [bicycleIconName]: string;

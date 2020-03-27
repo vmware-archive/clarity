@@ -75,7 +75,7 @@ export function loadCommerceIconSet() {
   ClarityIcons.addAliases(...commerceCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [bankIconName]: string;
     [bitcoinIconName]: string;

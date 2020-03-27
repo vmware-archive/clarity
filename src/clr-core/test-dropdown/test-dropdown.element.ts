@@ -11,7 +11,7 @@ import {
   EventEmitter,
   property,
   registerElementSafely,
-} from '@clr/core/common';
+} from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css.js';

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely } from '@clr/core/common';
+import { baseStyles, property, registerElementSafely } from '@clr/core/internal';
 import { CdsBaseAlert } from './alert.base.js';
 import { styles } from './alert.element.css.js';
 

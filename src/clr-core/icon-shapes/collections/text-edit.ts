@@ -85,7 +85,7 @@ export function loadTextEditIconSet() {
   ClarityIcons.addAliases(...textEditCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [alignBottomIconName]: string;
     [alignCenterIconName]: string;

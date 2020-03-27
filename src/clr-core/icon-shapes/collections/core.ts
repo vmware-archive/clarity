@@ -118,7 +118,7 @@ export function loadCoreIconSet() {
   ClarityIcons.addAliases(...coreCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [unknownIconName]: string;
     [angleIconName]: string;

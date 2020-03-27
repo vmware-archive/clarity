@@ -14,7 +14,7 @@ import {
   QueryList,
   ElementRef,
 } from '@angular/core';
-import { KeyCodes } from '@clr/core/common';
+import { KeyCodes } from '@clr/core/internal';
 import { Subscription } from 'rxjs';
 import { ClrFocusDirection } from './enums/focus-direction.enum';
 import { FocusableItem } from './interfaces';

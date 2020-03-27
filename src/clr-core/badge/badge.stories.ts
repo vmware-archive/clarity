@@ -5,7 +5,7 @@
  */
 
 import '@clr/core/badge';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/common';
+import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { color as colorKnob, number, select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 

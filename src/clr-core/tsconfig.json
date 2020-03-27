@@ -33,5 +33,5 @@
     }
   },
   "exclude": ["test.ts", "dist", "node_modules"],
-  "references": [{ "path": "./common/entrypoint.tsconfig.json" }]
+  "references": [{ "path": "./internal/entrypoint.tsconfig.json" }]
 }

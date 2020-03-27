@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/common';
+import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import '@clr/core/tag';
 import { action } from '@storybook/addon-actions';
 import { boolean, color as colorKnob, number, select, text } from '@storybook/addon-knobs';

@@ -61,6 +61,13 @@ export const API = () => {
   const borderColor = color('--border-color', undefined, cssGroup);
   const borderWidth = text('--border-width', undefined, cssGroup);
   const borderRadius = text('--border-radius', undefined, cssGroup);
+  const fontSize = text('--font-size', undefined, cssGroup);
+  const fontWeight = text('--font-weight', undefined, cssGroup);
+  const fontFamily = text('--font-family', undefined, cssGroup);
+  const textTransform = text('--text-transform', undefined, cssGroup);
+  const letterSpacing = text('--letter-spacing', undefined, cssGroup);
+  const padding = text('--padding', undefined, cssGroup);
+  const height = text('--height', undefined, cssGroup);
 
   return html`
     <cds-demo ?inverse=${buttonStatus === 'inverse'} inline-block>
@@ -73,6 +80,13 @@ export const API = () => {
             '--border-color': borderColor,
             '--border-width': borderWidth,
             '--border-radius': borderRadius,
+            '--font-size': fontSize,
+            '--font-weight': fontWeight,
+            '--font-family': fontFamily,
+            '--text-transform': textTransform,
+            '--letter-spacing': letterSpacing,
+            '--padding': padding,
+            '--height': height,
           })}
       </style>
       <cds-button
@@ -84,18 +98,20 @@ export const API = () => {
         @click=${action('click')}>
         ${size === 'icon' ? html`<cds-icon></cds-icon>` : slot}
       </cds-button>
-        </cds-demo>
+    </cds-demo>
   `;
 };
 
 export const form = () => {
   return html`
-    <form @submit="${(e: Event) => {
+    <form cds-layout="vertical gap:sm" @submit="${(e: Event) => {
       e.preventDefault();
       action('submit')(e);
     }}">
-      <label for="name">Name</label><br />
-      <input id="name" /><br />
+      <div cds-layout="vertical gap:xs">
+        <label for="name" cds-text="caption">Name</label>
+        <input id="name" />
+      </div>
       <cds-button type="submit">submit</cds-button>
     </form>
   `;
@@ -103,101 +119,122 @@ export const form = () => {
 
 export const actions = () => {
   return html`
-    <cds-button>solid</cds-button>
-    <cds-button action="outline">outline</cds-button>
-    <cds-button action="flat">link</cds-button>
+    <div cds-layout="horizontal gap:xs">
+      <cds-button>solid</cds-button>
+      <cds-button action="outline">outline</cds-button>
+      <cds-button action="flat">link</cds-button>
+    </div>
   `;
 };
 
 export const status = () => {
   return html`
-    <cds-button>primary</cds-button>
-    <cds-button status="success">success</cds-button>
-    <cds-button status="danger">danger</cds-button>
-    <cds-button status="danger" disabled>disabled</cds-button>
-  `;
+    <div cds-layout="horizontal gap:xs">
+      <cds-button>primary</cds-button>
+      <cds-button status="success">success</cds-button>
+      <cds-button status="danger">danger</cds-button>
+      <cds-button status="danger" disabled>disabled</cds-button>
+    </div>
+`;
 };
 
 export const statusOutline = () => {
   return html`
-    <cds-button action="outline">primary</cds-button>
-    <cds-button action="outline" status="success">success</cds-button>
-    <cds-button action="outline" status="danger">danger</cds-button>
-    <cds-button action="outline" disabled>disabled</cds-button>
-  `;
+    <div cds-layout="horizontal gap:xs">
+      <cds-button action="outline">primary</cds-button>
+      <cds-button action="outline" status="success">success</cds-button>
+      <cds-button action="outline" status="danger">danger</cds-button>
+      <cds-button action="outline" disabled>disabled</cds-button>
+    </div>
+`;
 };
 
 export const iconSolid = () => {
   return html`
-    <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <div cds-layout="horizontal gap:xs">
+      <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    </div>
   `;
 };
 
 export const iconOutline = () => {
   return html`
-    <cds-button aria-label="user account" action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" action="outline" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" action="outline" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <cds-button aria-label="user account" action="outline" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <div cds-layout="horizontal gap:xs">
+      <cds-button aria-label="user account" action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" action="outline" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" action="outline" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <cds-button aria-label="user account" action="outline" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    </div>
   `;
 };
 
 export const iconWithText = () => {
   return html`
-    <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
-    <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
-    <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
+    <div cds-layout="horizontal gap:xs">
+      <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
+      <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
+      <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
+    </div>
   `;
 };
 
 export const links = () => {
   return html`
-    <cds-button>
-      <a href="#">link</a>
-    </cds-button>
+    <div cds-layout="horizontal gap:xs">
+      <cds-button>
+        <a href="#">link</a>
+      </cds-button>
 
-    <cds-button>
-      <a href="#">this is a long link</a>
-    </cds-button>
+      <cds-button>
+        <a href="#">this is a long link</a>
+      </cds-button>
 
-    <cds-button size="sm">
-      <a href="#">small link</a>
-    </cds-button>
-    <br />
-    <cds-button action="outline">
-      <a href="#">link</a>
-    </cds-button>
+      <cds-button size="sm">
+        <a href="#">small link</a>
+      </cds-button>
+      <br />
+      <cds-button action="outline">
+        <a href="#">link</a>
+      </cds-button>
 
-    <cds-button action="outline">
-      <a href="#">this is a long link</a>
-    </cds-button>
+      <cds-button action="outline">
+        <a href="#">this is a long link</a>
+      </cds-button>
 
-    <cds-button action="outline" size="sm">
-      <a href="#">small link</a>
-    </cds-button>
+      <cds-button action="outline" size="sm">
+        <a href="#">small link</a>
+      </cds-button>
+    </div>
   `;
 };
 
 export const sizes = () => {
   return html`
-    <cds-button>default</cds-button>
-    <cds-button size="sm">small</cds-button>
-    <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    <br />
-    <cds-button action="outline">default</cds-button>
-    <cds-button action="outline" size="sm">small</cds-button>
-    <cds-button action="outline" aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal align-items:bottom gap:xs">
+        <cds-button>default</cds-button>
+        <cds-button size="sm">small</cds-button>
+        <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      </div>
+      <div cds-layout="horizontal align-items:bottom gap:xs">
+        <cds-button action="outline">default</cds-button>
+        <cds-button action="outline" size="sm">small</cds-button>
+        <cds-button action="outline" aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      </div>
+    </div>
   `;
 };
 
 export const loading = () => {
   return html`
-    <cds-button .loadingState="${ClrLoadingState.LOADING}">solid</cds-button>
-    <cds-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cds-button>
-    <cds-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cds-button>
+    <div cds-layout="horizontal gap:xs align-items:bottom">
+      <cds-button .loadingState="${ClrLoadingState.LOADING}">solid</cds-button>
+      <cds-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cds-button>
+      <cds-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cds-button>
+    </div>
   `;
 };
 
@@ -206,11 +243,25 @@ export const customStyles = () => {
     <style>
       .btn-branding {
         --background: #a447bb;
-        --border-color: #a447bb;
+        --border-color: #74178b;
+        --border-width: 0.15rem;
+        --border-radius: 0.4rem;
+        --text-transform: capitalize;
+        --padding-vertical: 0.9rem;
+        --padding-horizontal: 1rem;
+        --font-size: 0.9rem;
+        --font-weight: bolder;
+        --font-family: 'Courier New', monospace;
+        --height: 2.4rem;
       }
 
       .btn-branding:hover {
-        --background: #9136a8;
+        --background: #74178b;
+      }
+
+      .btn-branding:active {
+        --border-color: #44005b;
+        --box-shadow-color: #44005b;
       }
     </style>
     <cds-button class="btn-branding">button</cds-button>

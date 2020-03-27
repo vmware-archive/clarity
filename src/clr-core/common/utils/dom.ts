@@ -5,7 +5,10 @@
  */
 
 export function getElementWidth(element: HTMLElement, unit = 'px') {
-  return element.getBoundingClientRect ? element.getBoundingClientRect().width + unit : '';
+  if (element) {
+    return element.getBoundingClientRect ? element.getBoundingClientRect().width + unit : '';
+  }
+  return '';
 }
 
 export function getElementWidthUnless(element: HTMLElement, unless: boolean) {

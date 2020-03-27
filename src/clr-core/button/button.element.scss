@@ -1,163 +1,192 @@
-@import './../styles/mixins/utils';
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
 
-// TODO: progress spinner CSS deprecated, will be replaced by cds-progress
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
+
+// TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
 @import './../../clr-angular/progress/spinner/variables.spinner';
 @import './../../clr-angular/image/icons.clarity';
 @import './../../clr-angular/progress/spinner/spinner.clarity';
 
 :host {
-  --box-shadow-color: var(--clr-color-action-500, #{$clr-color-action-500});
-  --border-radius: #{$clr_baselineRem_3px};
-  --border-color: var(--clr-color-action-600, #{$clr-color-action-600});
-  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
-  --background: var(--clr-color-action-600, #{$clr-color-action-600});
+  --box-shadow-color: #{$cds-token-color-action-900};
+
+  --border-radius: #{$cds-token-global-border-radius};
+  --border-width: #{$cds-token-global-border-width};
+  --border-color: #{$cds-token-color-action-600};
+  --background: #{$cds-token-color-action-600};
+
+  --color: #{$cds-token-color-neutral-0};
+  --font-size: #{$cds-token-space-size-6};
+  --font-weight: #{$cds-token-typography-font-weight-semibold};
+  --font-family: #{$cds-token-typography-font-family};
+  --text-transform: uppercase;
+  --letter-spacing: 0.12em;
+
+  --padding: #{$cds-token-layout-space-sm};
+  --height: calc(#{$cds-token-space-size-11} + #{$cds-token-space-size-1});
+
   display: inline-block;
 }
 
 .private-host {
-  --font-size: #{$clr_baselineRem_0_5};
-  --line-height: 1.7rem;
-  --letter-spacing: 0.12em;
-  --padding: 0 #{$clr_baselineRem_0_5};
-
+  -webkit-appearance: none !important;
+  align-items: center;
   background: var(--background);
-  color: var(--color);
   border-color: var(--border-color);
   border-radius: var(--border-radius);
-  border-width: $clr-global-borderwidth;
-  font-size: var(--font-size);
-  font-weight: 500;
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing);
-  padding: var(--padding);
-  user-select: none;
-  display: block;
-  -webkit-appearance: none !important;
+  border-style: solid;
+  border-width: var(--border-width);
+  color: var(--color);
   cursor: pointer;
-  min-width: $clr_baselineRem_3;
+  display: inline-flex;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  height: var(--height);
+  justify-content: center;
+  letter-spacing: var(--letter-spacing);
+  line-height: 1em;
+  // TODO: following is a fix for Firefox cutting off right edge of buttons. remove when no longer needed.
+  margin-right: #{$cds-token-space-size-1};
+  min-width: #{$cds-token-space-size-13};
+  overflow: visible;
+  padding: var(--padding);
+  position: relative;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  text-overflow: ellipsis;
+  text-transform: var(--text-transform);
+  transform: translateZ(0px); // for chrome rendering bug
+  user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: visible;
-  border-style: solid;
-  position: relative;
-  transform: translateZ(0px); // for chrome rendering bug
-}
 
-:host(:hover) {
-  --background: var(--clr-color-action-800, #{$clr-color-action-800});
-}
+  &:active {
+    box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+  }
 
-:host(:active) .private-host {
-  box-shadow: 0 $clr_baselineRem_1px 0 0 var(--box-shadow-color) inset;
-}
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--font-size);
 
-:host([is-anchor]) {
-  .private-host {
-    padding: 0;
+    & > span {
+      @include line-height-eraser(0em);
+    }
   }
 }
 
+:host(:active) .private-host {
+  box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+}
+
+:host(:hover) {
+  --background: #{$cds-token-color-action-800};
+}
+
 ::slotted {
-  line-height: var(--line-height);
+  line-height: 1em;
   color: inherit;
 }
 
 ::slotted(a) {
-  padding: 0 #{$clr_baselineRem_0_5};
   text-decoration: none !important;
   display: block;
   height: 100%;
   color: inherit;
-  line-height: var(--line-height);
 }
 
 ::slotted(cds-icon) {
+  $icon-overage-nudge: calc(#{$cds-token-space-size-2} * -1);
+
   --color: inherit;
+
+  @include equilateral(calc(#{$cds-token-space-size-6} + #{$cds-token-space-size-4}));
+  margin-top: $icon-overage-nudge;
+  margin-left: $icon-overage-nudge;
 }
 
 :host([action='outline']) {
   --background: transparent;
-  --color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --color: #{$cds-token-color-action-600};
 
   .private-host:hover {
-    --background: var(--clr-color-action-50, #{$clr-color-action-50});
+    --background: #{$cds-token-color-action-50};
   }
 }
 
 :host([status='success']) {
-  --box-shadow-color: var(clr-color-success-900, #{$clr-color-success-900});
-  --border-color: var(--clr-color-success-700, #{$clr-color-success-700});
-  --background: var(--clr-color-success-700, #{$clr-color-success-700});
+  --box-shadow-color: #{$cds-token-color-success-900};
+  --border-color: #{$cds-token-color-success-700};
+  --background: #{$cds-token-color-success-700};
 
   .private-host:hover {
-    --background: var(--clr-color-success-800, #{$clr-color-success-800});
+    --background: #{$cds-token-color-success-800};
   }
 }
 
 :host([status='success'][action='outline']) {
   --background: transparent;
-  --color: var(--clr-color-success-700, #{$clr-color-success-700});
+  --color: #{$cds-token-color-success-700};
 
   .private-host:hover {
-    --background: var(--clr-color-success-50, #{$clr-color-success-50});
+    --background: #{$cds-token-color-success-50};
   }
 }
 
 :host([status='danger']) {
-  --box-shadow-color: var(--clr-color-danger-900, #{$clr-color-danger-900});
-  --border-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
-  --background: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --box-shadow-color: #{$cds-token-color-danger-900};
+  --border-color: #{$cds-token-color-danger-700};
+  --background: #{$cds-token-color-danger-700};
 
   .private-host:hover {
-    --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
+    --background: #{$cds-token-color-danger-800};
   }
 }
 
 :host([status='danger'][action='outline']) {
   --background: transparent;
-  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --color: #{$cds-token-color-danger-700};
 
   .private-host:hover {
-    --background: var(--clr-color-danger-50, #{$clr-color-danger-50});
+    --background: #{$cds-token-color-danger-50};
   }
 }
 
 :host([status='inverse']) {
-  --box-shadow-color: rgba(var(--clr-color-neutral-1000, $clr-color-neutral-1000), 0.25);
-  --border-color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --box-shadow-color: rgba($cds-token-color-neutral-1000, 0.25);
+  --border-color: #{$cds-token-color-neutral-0};
   --background: transparent;
-  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([action='flat']) {
   --background: transparent;
   --border-color: transparent;
-  --color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --color: #{$cds-token-color-action-600};
 
   .private-host {
-    margin-right: 0;
     box-shadow: none;
   }
 }
 
 :host([action='flat']) .private-host:hover {
   --background: transparent;
-  --color: var(--clr-color-action-800, #{$clr-color-action-800});
+  --color: #{$cds-token-color-action-600};
 }
 
 :host([size='sm']) .private-host {
-  --line-height: #{$clr_baselineRem_1 - $clr_baselineRem_1px};
   --letter-spacing: 0.073em;
-  --font-size: #{$clr_baselineRem_0_458};
-  --padding: #{0 $clr_baselineRem_0_5};
+  --padding: #{$cds-token-layout-space-xs} #{$cds-token-layout-space-sm};
+  --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
 
   .spinner {
-    @include min-equilateral($clr_baselineRem_0_5416);
-    margin-bottom: -0.05rem;
+    @include min-equilateral(#{$cds-token-space-size-6});
   }
 }
 
@@ -167,9 +196,9 @@
 
 :host([disabled]),
 :host([disabled]) .private-host {
-  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700}) !important;
-  --background: hsl(0, 0%, 80%) !important;
-  --border-color: var(--clr-color-neutral-700, #{$clr-color-neutral-700}) !important;
+  --color: #{$cds-token-color-neutral-700} !important;
+  --background: #{$cds-token-color-neutral-400} !important;
+  --border-color: #{$cds-token-color-neutral-700} !important;
   outline: 0;
 }
 
@@ -189,10 +218,6 @@
 
 :host([status='inverse'][disabled]) {
   --background: transparent;
-  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
-  --border-color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
-}
-
-.spinner {
-  margin-bottom: -0.1rem;
+  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-token-color-neutral-0};
 }

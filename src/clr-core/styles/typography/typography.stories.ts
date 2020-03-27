@@ -73,6 +73,18 @@ export const weights = () => {
   `;
 };
 
+export const inline = () => {
+  return html`
+    <cds-demo>
+      <span cds-text="display inline">We</span>
+      <span cds-text="body inline"> should </span>
+      <span cds-text="title inline"> all </span>
+      <span cds-text="caption inline"> be </span>
+      <span cds-text="section inline"> inline!</span>
+    </cds-demo>
+  `;
+};
+
 export const position = () => {
   return html`
     <cds-demo cds-layout="vertical gap:md">

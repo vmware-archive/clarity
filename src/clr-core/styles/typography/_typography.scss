@@ -16,6 +16,7 @@
 }
 
 [cds-text] {
+  font-family: $cds-token-typography-font-family;
   margin-top: 0;
   margin-bottom: 0;
   width: 100%;
@@ -25,9 +26,13 @@
 [cds-text*='heading'],
 [cds-text*='title'],
 [cds-text*='section'],
-[cds-text*='subsection'],
-[cds-text*='h'] {
+[cds-text*='subsection'] {
   font-family: $cds-token-typography-header-font-family;
+}
+
+[cds-text*='inline'] {
+  width: auto !important;
+  display: inline-block !important;
 }
 
 // LEGACY FONT STYLES
@@ -36,6 +41,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h0-line-height-static, $cds-token-typography-h0-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h0-font-size;
   font-weight: $cds-token-typography-h0-font-weight;
   color: $cds-token-typography-h0-color;
@@ -47,6 +53,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h1-line-height-static, $cds-token-typography-h1-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h1-font-size;
   font-weight: $cds-token-typography-h1-font-weight;
   color: $cds-token-typography-h1-color;
@@ -58,6 +65,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h2-line-height-static, $cds-token-typography-h2-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h2-font-size;
   font-weight: $cds-token-typography-h2-font-weight;
   color: $cds-token-typography-h2-color;
@@ -69,6 +77,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h3-line-height-static, $cds-token-typography-h3-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h3-font-size;
   font-weight: $cds-token-typography-h3-font-weight;
   color: $cds-token-typography-h3-color;
@@ -80,6 +89,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h4-line-height-static, $cds-token-typography-h4-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h4-font-size;
   font-weight: $cds-token-typography-h4-font-weight;
   color: $cds-token-typography-h4-color;
@@ -91,6 +101,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h5-line-height-static, $cds-token-typography-h5-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h5-font-size;
   font-weight: $cds-token-typography-h5-font-weight;
   color: $cds-token-typography-h5-color;
@@ -102,6 +113,7 @@
   $lh-gap: getLineHeightGap($cds-token-typography-h6-line-height-static, $cds-token-typography-h6-line-height);
   @include LHE($lh-gap);
 
+  font-family: $cds-token-typography-header-font-family;
   font-size: $cds-token-typography-h6-font-size;
   font-weight: $cds-token-typography-h6-font-weight;
   color: $cds-token-typography-h6-color;
@@ -278,7 +290,6 @@
 }
 
 [cds-text*='body'] {
-  font-family: $cds-token-typography-font-family;
   color: $cds-token-typography-body-color;
   font-weight: $cds-token-typography-body-font-weight;
   font-size: $cds-token-typography-body-font-size;

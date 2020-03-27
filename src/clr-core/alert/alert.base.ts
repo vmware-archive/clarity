@@ -6,14 +6,6 @@
 
 import '@clr/core/button';
 import { CdsButton } from '@clr/core/button';
-import {
-  CommonStringsService,
-  event,
-  EventEmitter,
-  property,
-  querySlotAll,
-  returnOrFallthrough,
-} from '@clr/core/common';
 import '@clr/core/icon';
 import {
   checkCircleIcon,
@@ -23,6 +15,14 @@ import {
   infoCircleIcon,
   timesIcon,
 } from '@clr/core/icon-shapes';
+import {
+  CommonStringsService,
+  event,
+  EventEmitter,
+  property,
+  querySlotAll,
+  returnOrFallthrough,
+} from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 
 ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);

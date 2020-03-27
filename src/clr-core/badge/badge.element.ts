@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/common';
+import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './badge.element.css.js';
 

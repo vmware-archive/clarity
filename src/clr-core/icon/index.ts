@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/common';
 import { CdsIcon } from '@clr/core/icon-shapes';
+import { registerElementSafely } from '@clr/core/internal';
 
 registerElementSafely('cds-icon', CdsIcon);
 

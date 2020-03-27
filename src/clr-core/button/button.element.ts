@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CdsBaseButton, getElementWidth, property, registerElementSafely } from '@clr/core/common';
+import { baseStyles, CdsBaseButton, getElementWidth, property, registerElementSafely } from '@clr/core/internal';
 import { html, query } from 'lit-element';
 import { styles } from './button.element.css.js';
 

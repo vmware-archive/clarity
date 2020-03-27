@@ -6,9 +6,9 @@
 
 import '@clr/core/button';
 import { ClrLoadingState } from '@clr/core/button';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/common';
 import '@clr/core/icon';
 import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { boolean, color, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

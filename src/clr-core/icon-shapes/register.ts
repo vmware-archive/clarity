@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { registerElementSafely } from '@clr/core/common';
+import { registerElementSafely } from '@clr/core/internal';
 import { CdsIcon } from './icon.element.js';
 
 export const register = registerElementSafely('cds-icon', CdsIcon);

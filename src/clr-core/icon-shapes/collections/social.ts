@@ -77,7 +77,7 @@ export function loadSocialIconSet() {
   ClarityIcons.addAliases(...socialCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [bookmarkIconName]: string;
     [calendarIconName]: string;

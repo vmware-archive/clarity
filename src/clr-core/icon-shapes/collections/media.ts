@@ -73,7 +73,7 @@ export function loadMediaIconSet() {
   ClarityIcons.addAliases(...mediaCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [cameraIconName]: string;
     [fastForwardIconName]: string;

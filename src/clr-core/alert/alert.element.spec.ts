@@ -5,8 +5,8 @@
  */
 import { CdsAlert } from '@clr/core/alert';
 import '@clr/core/alert';
-import { CommonStringsService, CommonStringsServiceInternal } from '@clr/core/common';
 import { CdsIcon } from '@clr/core/icon-shapes';
+import { CommonStringsService, CommonStringsServiceInternal } from '@clr/core/internal';
 import {
   componentIsStable,
   createTestElement,

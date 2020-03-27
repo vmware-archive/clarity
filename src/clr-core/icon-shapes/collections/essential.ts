@@ -294,7 +294,7 @@ export function loadEssentialIconSet() {
   ClarityIcons.addAliases(...essentialCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [accessibility1IconName]: string;
     [accessibility2IconName]: string;

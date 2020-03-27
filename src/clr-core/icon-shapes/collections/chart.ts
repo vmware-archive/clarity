@@ -55,7 +55,7 @@ export function loadChartIconSet() {
   ClarityIcons.addAliases(...chartCollectionAliases);
 }
 
-declare module '@clr/core/common' {
+declare module '@clr/core/internal' {
   interface IconRegistrySources {
     [axisChartIconName]: string;
     [barChartIconName]: string;

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getEnumValues } from '@clr/core/common';
 import '@clr/core/icon';
 import { CdsIcon } from '@clr/core/icon-shapes';
+import { getEnumValues } from '@clr/core/internal';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { renderIcon } from '../icon.renderer.js';
 import { ClarityIcons } from '../icon.service.js';

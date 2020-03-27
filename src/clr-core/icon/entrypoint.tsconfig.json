@@ -4,7 +4,7 @@
     "composite": true
   },
   "references": [
-    { "path": "../common/entrypoint.tsconfig.json" },
+    { "path": "../internal/entrypoint.tsconfig.json" },
     { "path": "../icon-shapes/entrypoint.tsconfig.json" }
   ]
 }

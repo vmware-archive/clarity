@@ -6,7 +6,7 @@
   },
   "include": ["./"],
   "references": [
-    { "path": "./common/entrypoint.tsconfig.json" },
+    { "path": "./internal/entrypoint.tsconfig.json" },
     { "path": "./badge/entrypoint.tsconfig.json" },
     { "path": "./button/entrypoint.tsconfig.json" },
     { "path": "./icon/entrypoint.tsconfig.json" },

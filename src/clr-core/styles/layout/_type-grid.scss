@@ -59,8 +59,8 @@
 
 [cds-layout~='grid'] {
   display: grid;
-  align-items: flex-start;
-  align-content: flex-start;
+  align-items: start;
+  align-content: start;
   grid-template-columns: repeat($cds-token-layout-grid-cols, 1fr);
   width: 100%;
 
@@ -78,55 +78,58 @@
   }
 
   // alignments
-  &[cds-layout~='align-items:top'] {
+  &[cds-layout~='align:top'] {
     align-items: start;
     align-content: start;
   }
 
-  &[cds-layout~='align-items:right'] {
-    justify-items: flex-end;
+  &[cds-layout~='align:right'] {
+    justify-items: end;
+    justify-content: end;
   }
 
-  &[cds-layout~='align-items:bottom'] {
+  &[cds-layout~='align:bottom'] {
     align-items: end;
     align-content: end;
   }
 
-  &[cds-layout~='align-items:left'] {
-    justify-items: flex-start;
-    align-content: flex-start;
+  &[cds-layout~='align:left'] {
+    justify-items: start;
+    justify-content: start;
   }
 
-  &[cds-layout~='align-items:vertical-stretch'] {
+  &[cds-layout~='align:vertical-stretch'] {
     align-items: stretch;
     align-content: stretch;
   }
 
-  &[cds-layout~='align-items:vertical-center'] {
-    align-items: center;
-    align-content: center;
-  }
-
-  &[cds-layout~='align-items:horizontal-stretch'] {
+  &[cds-layout~='align:horizontal-stretch'] {
     justify-items: stretch;
     justify-content: stretch;
   }
 
-  &[cds-layout~='align-items:horizontal-center'] {
+  &[cds-layout~='align:stretch'] {
+    align-items: stretch;
+    align-content: stretch;
+    justify-items: stretch;
+    justify-content: stretch;
+  }
+
+  &[cds-layout~='align:vertical-center'] {
+    align-items: center;
+    align-content: center;
+  }
+
+  &[cds-layout~='align:horizontal-center'] {
     justify-items: center;
     justify-content: center;
   }
 
-  &[cds-layout~='align-items:stretch'] {
-    align-items: stretch;
-    align-content: stretch;
-    justify-items: stretch;
-    justify-content: stretch;
-  }
-
-  &[cds-layout~='align-items:center'] {
+  &[cds-layout~='align:center'] {
     align-items: center;
     align-content: center;
+    justify-items: center;
+    justify-content: center;
   }
 }
 

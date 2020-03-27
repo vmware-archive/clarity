@@ -67,7 +67,7 @@ export const horizontalLayoutNoWrap = () => {
 export const horizontalLayoutAlignTop = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:top">
+      <div cds-layout="horizontal gap:sm align:top">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -79,7 +79,7 @@ export const horizontalLayoutAlignTop = () => {
 export const horizontalLayoutAlignBottom = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:bottom">
+      <div cds-layout="horizontal gap:sm align:bottom">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -91,7 +91,7 @@ export const horizontalLayoutAlignBottom = () => {
 export const horizontalLayoutAlignLeft = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="horizontal gap:sm align-items:left">
+      <div cds-layout="horizontal gap:sm align:left">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -103,7 +103,7 @@ export const horizontalLayoutAlignLeft = () => {
 export const horizontalLayoutAlignRight = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="horizontal gap:sm align-items:right">
+      <div cds-layout="horizontal gap:sm align:right">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -115,7 +115,7 @@ export const horizontalLayoutAlignRight = () => {
 export const horizontalLayoutAlignVerticalCenter = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-center">
+      <div cds-layout="horizontal gap:sm align:vertical-center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -127,7 +127,7 @@ export const horizontalLayoutAlignVerticalCenter = () => {
 export const horizontalLayoutAlignHorizontalCenter = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="horizontal gap:sm align-items:horizontal-center">
+      <div cds-layout="horizontal gap:sm align:horizontal-center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -139,7 +139,7 @@ export const horizontalLayoutAlignHorizontalCenter = () => {
 export const horizontalLayoutAlignCenter = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="horizontal gap:sm align-items:center">
+      <div cds-layout="horizontal gap:sm align:center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -151,7 +151,7 @@ export const horizontalLayoutAlignCenter = () => {
 export const horizontalLayoutAlignVerticalStretch = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-stretch">
+      <div cds-layout="horizontal gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -163,7 +163,7 @@ export const horizontalLayoutAlignVerticalStretch = () => {
 export const horizontalLayoutAlignHorizontalStretch = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="horizontal gap:sm align-items:horizontal-stretch">
+      <div cds-layout="horizontal gap:sm align:horizontal-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -175,7 +175,7 @@ export const horizontalLayoutAlignHorizontalStretch = () => {
 export const horizontalLayoutAlignStretch = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="horizontal gap:sm align-items:stretch">
+      <div cds-layout="horizontal gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -199,7 +199,7 @@ export const horizontalLayoutItemStretch = () => {
 export const horizontalLayoutItemShrink = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="horizontal gap:sm align-items:horizontal-stretch">
+      <div cds-layout="horizontal gap:sm align:horizontal-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:shrink">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -211,7 +211,7 @@ export const horizontalLayoutItemShrink = () => {
 export const horizontalLayoutItemAlignCenter = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-stretch">
+      <div cds-layout="horizontal gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:center">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -223,7 +223,7 @@ export const horizontalLayoutItemAlignCenter = () => {
 export const horizontalLayoutItemAlignVerticalCenter = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-stretch">
+      <div cds-layout="horizontal gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:vertical-center">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -247,7 +247,7 @@ export const horizontalLayoutItemAlignHorizontalCenter = () => {
 export const horizontalLayoutItemAlignTop = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-stretch">
+      <div cds-layout="horizontal gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:top">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -259,7 +259,7 @@ export const horizontalLayoutItemAlignTop = () => {
 export const horizontalLayoutItemAlignBottom = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="horizontal gap:sm align-items:vertical-stretch">
+      <div cds-layout="horizontal gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:bottom">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -283,7 +283,7 @@ export const horizontalLayoutItemAlignRight = () => {
 export const horizontalLayoutItemAlignLeft = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="horizontal gap:sm align-items:right">
+      <div cds-layout="horizontal gap:sm align:right">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:left">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -383,7 +383,7 @@ export const verticalLayoutWrap = () => {
 export const verticalLayoutAlignTop = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:top">
+      <div cds-layout="vertical gap:sm align:top">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -394,7 +394,7 @@ export const verticalLayoutAlignTop = () => {
 export const verticalLayoutAlignBottom = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:bottom">
+      <div cds-layout="vertical gap:sm align:bottom">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -405,7 +405,7 @@ export const verticalLayoutAlignBottom = () => {
 export const verticalLayoutAlignLeft = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="vertical gap:sm align-items:left">
+      <div cds-layout="vertical gap:sm align:left">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -416,7 +416,7 @@ export const verticalLayoutAlignLeft = () => {
 export const verticalLayoutAlignRight = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="vertical gap:sm align-items:right">
+      <div cds-layout="vertical gap:sm align:right">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -427,7 +427,7 @@ export const verticalLayoutAlignRight = () => {
 export const verticalLayoutAlignVerticalCenter = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:vertical-center">
+      <div cds-layout="vertical gap:sm align:vertical-center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -438,7 +438,7 @@ export const verticalLayoutAlignVerticalCenter = () => {
 export const verticalLayoutAlignHorizontalCenter = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="vertical gap:sm align-items:horizontal-center">
+      <div cds-layout="vertical gap:sm align:horizontal-center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -449,7 +449,7 @@ export const verticalLayoutAlignHorizontalCenter = () => {
 export const verticalLayoutAlignCenter = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="vertical gap:sm align-items:center">
+      <div cds-layout="vertical gap:sm align:center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -461,7 +461,7 @@ export const verticalLayoutAlignCenter = () => {
 export const verticalLayoutAlignVerticalStretch = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:vertical-stretch">
+      <div cds-layout="vertical gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -472,7 +472,7 @@ export const verticalLayoutAlignVerticalStretch = () => {
 export const verticalLayoutAlignHorizontalStretch = () => {
   return html`
   <cds-demo layout wide>
-    <div cds-layout="vertical gap:sm align-items:horizontal-stretch">
+    <div cds-layout="vertical gap:sm align:horizontal-stretch">
       <cds-placeholder>1</cds-placeholder>
       <cds-placeholder>2</cds-placeholder>
     </div>
@@ -483,7 +483,7 @@ export const verticalLayoutAlignHorizontalStretch = () => {
 export const verticalLayoutAlignStretch = () => {
   return html`
     <cds-demo layout wide tall>
-      <div cds-layout="vertical gap:sm align-items:stretch">
+      <div cds-layout="vertical gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
       </div>
@@ -506,7 +506,7 @@ export const verticalLayoutItemStretch = () => {
 export const verticalLayoutItemShrink = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:vertical-stretch">
+      <div cds-layout="vertical gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:shrink">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -554,7 +554,7 @@ export const verticalLayoutItemAlignHorizontalCenter = () => {
 export const verticalLayoutItemAlignTop = () => {
   return html`
     <cds-demo layout tall>
-      <div cds-layout="vertical gap:sm align-items:bottom">
+      <div cds-layout="vertical gap:sm align:bottom">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:top">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -590,7 +590,7 @@ export const verticalLayoutItemAlignRight = () => {
 export const verticalLayoutItemAlignLeft = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="vertical gap:sm align-items:right">
+      <div cds-layout="vertical gap:sm align:right">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:left">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -800,7 +800,7 @@ export const gridLayoutColumnsStartEndResponsive = () => {
 export const gridLayoutRows = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid cols:6 rows:8 gap:sm align-items:stretch">
+      <div cds-layout="grid cols:6 rows:8 gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder cds-layout="col:12 row:4">3</cds-placeholder>
@@ -812,7 +812,7 @@ export const gridLayoutRows = () => {
 export const gridLayoutRowsResponsive = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid cols:6 rows:4 rows@sm:8 gap:sm align-items:stretch">
+      <div cds-layout="grid cols:6 rows:4 rows@sm:8 gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder cds-layout="col:12 row:8 row@sm:4">3</cds-placeholder>
@@ -824,7 +824,7 @@ export const gridLayoutRowsResponsive = () => {
 export const gridLayoutRowsStartEnd = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid cols:4 gap:sm align-items:stretch">
+      <div cds-layout="grid cols:4 gap:sm align:stretch">
         <cds-placeholder cds-layout="row:4 row:start-6">1</cds-placeholder>
         <cds-placeholder cds-layout="row:3 row:start-4">2</cds-placeholder>
         <cds-placeholder cds-layout="row:12">3</cds-placeholder>
@@ -836,7 +836,7 @@ export const gridLayoutRowsStartEnd = () => {
 export const gridLayoutRowsStartEndResponsive = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid cols@md:12 rows@sm:4 gap:sm align-items:stretch">
+      <div cds-layout="grid cols@md:12 rows@sm:4 gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="row@sm:start-10">2</cds-placeholder>
       </div>
@@ -846,12 +846,12 @@ export const gridLayoutRowsStartEndResponsive = () => {
 
 export const gridLayoutAlignTop = () => {
   return html`
-    <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm">
+    <cds-demo layout tall wide>
+      <div cds-layout="grid gap:sm">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
-        <cds-placeholder style="height:300px">4</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>  
   `;
@@ -859,12 +859,12 @@ export const gridLayoutAlignTop = () => {
 
 export const gridLayoutAlignBottom = () => {
   return html`
-    <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:bottom">
+    <cds-demo layout tall wide>
+      <div cds-layout="grid gap:sm align:bottom">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
-        <cds-placeholder style="height:300px">4</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -873,7 +873,7 @@ export const gridLayoutAlignBottom = () => {
 export const gridLayoutAlignLeft = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:left">
+      <div cds-layout="grid cols:auto gap:sm align:left">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -886,7 +886,7 @@ export const gridLayoutAlignLeft = () => {
 export const gridLayoutAlignRight = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:right">
+      <div cds-layout="grid cols:auto gap:sm align:right">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -898,12 +898,25 @@ export const gridLayoutAlignRight = () => {
 
 export const gridLayoutAlignVerticalCenter = () => {
   return html`
-    <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:vertical-center">
+    <cds-demo layout tall wide>
+      <div cds-layout="grid gap:sm align:vertical-center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
-        <cds-placeholder style="height:300px">4</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
+export const gridLayoutAlignHorizontalCenter = () => {
+  return html`
+    <cds-demo layout wide>
+      <div cds-layout="grid cols:auto gap:sm align:horizontal-center">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+        <cds-placeholder>3</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -912,10 +925,11 @@ export const gridLayoutAlignVerticalCenter = () => {
 export const gridLayoutAlignCenter = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid gap:sm cols:auto align-items:center">
+      <div cds-layout="grid cols:auto gap:sm align:center">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -923,12 +937,12 @@ export const gridLayoutAlignCenter = () => {
 
 export const gridLayoutAlignVerticalStretch = () => {
   return html`
-    <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:vertical-stretch">
+    <cds-demo layout tall wide>
+      <div cds-layout="grid gap:sm align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
-        <cds-placeholder style="height:300px">4</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -936,8 +950,8 @@ export const gridLayoutAlignVerticalStretch = () => {
 
 export const gridLayoutAlignHorizontalStretch = () => {
   return html`
-    <cds-demo layout wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:horizontal-stretch">
+    <cds-demo layout tall wide>
+      <div cds-layout="grid cols:3 gap:sm align:horizontal-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
@@ -950,11 +964,11 @@ export const gridLayoutAlignHorizontalStretch = () => {
 export const gridLayoutAlignStretch = () => {
   return html`
     <cds-demo layout tall wide>
-      <div cds-layout="grid cols:auto gap:sm align-items:stretch">
+      <div cds-layout="grid cols:auto gap:sm align:stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
-        <cds-placeholder style="height:300px">4</cds-placeholder>
+        <cds-placeholder>4</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -1098,7 +1112,7 @@ export const spacingMarginResponsive = () => {
   return html`
     <cds-demo spacing-margin cds-layout="vertical gap:lg">
       <div><cds-placeholder cds-layout="m@sm:md">m@sm:md</cds-placeholder></div>
-      <div><cds-placeholder cds-layout="m-l@sm:lg">ml@sm:lg</cds-placeholder></div>
+      <div><cds-placeholder cds-layout="m-l@sm:lg">m-l@sm:lg</cds-placeholder></div>
     </cds-demo>
   `;
 };
@@ -1106,7 +1120,7 @@ export const spacingMarginResponsive = () => {
 export const utilitiesDisplay = () => {
   return html`
     <cds-demo layout wide>
-      <div cds-layout="vertical gap:md align-items:stretch" cds-text="body">
+      <div cds-layout="vertical gap:md align:stretch" cds-text="body">
         <cds-placeholder cds-layout="display:none display@sm:flex">display:none display@sm:flex</cds-placeholder>
         <cds-placeholder>...<span cds-layout="display:none display@md:inline">display:none display@md:inline</span>...</cds-placeholder>
         <cds-placeholder cds-layout="display:none display@lg:block">display:none display@lg:block</cds-placeholder>
@@ -1163,13 +1177,13 @@ const scrollableContentHtml = html`${scrollableContent}`;
 
 export const patternsApplicationVerticalLayout = () => {
   return html`
-    <div class="demo-layout demo-app-layout" cds-layout="vertical align-items:stretch">
+    <div class="demo-layout demo-app-layout" cds-layout="vertical align:stretch">
       <header class="demo-header" cds-layout="p:sm p@md:md">
         header
       </header>
-      <div cds-layout="horizontal align-items:stretch no-wrap">
+      <div cds-layout="horizontal align:stretch no-wrap">
         <nav class="demo-sidenav" cds-layout="p:sm p@md:md">sidebar</nav>
-        <div cds-layout="vertical align-items:stretch">
+        <div cds-layout="vertical align:stretch">
           <div class="demo-content demo-scrollable-content">
             <div cds-layout="vertical gap:sm p:md">
               ${scrollableContentHtml}
@@ -1184,12 +1198,12 @@ export const patternsApplicationVerticalLayout = () => {
 
 export const patternsApplicationVerticalLayoutSubnav = () => {
   return html`
-    <div class="demo-layout demo-app-layout" cds-layout="vertical align-items:stretch">
+    <div class="demo-layout demo-app-layout" cds-layout="vertical align:stretch">
       <header class="demo-header" cds-layout="p:sm p@md:md align:shrink">
         header
       </header>
       <div class="demo-subnav" cds-layout="p-y:xs p-x:sm p-x@md:md align:shrink">subnav</div>
-      <div cds-layout="horizontal align-items:stretch">
+      <div cds-layout="horizontal align:stretch">
         <nav class="demo-sidenav" cds-layout="p:sm p@md:md align:shrink">sidebar</nav>
         <div class="demo-content demo-scrollable-content" cds-layout="align:stretch">
           <div cds-layout="vertical gap:sm p:md">
@@ -1207,16 +1221,16 @@ export const patternsApplicationVerticalIconLayout = () => {
     <div class="demo-layout demo-app-layout" cds-layout="horizontal no-wrap">
       <header class="demo-header demo-alt-header" cds-layout="p:sm vertical gap:md">
         <cds-icon shape="applications" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="blocks-group" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="bundle" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="building" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
+        <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>
+        <cds-icon shape="bundle" size="lg" inverse></cds-icon>
+        <cds-icon shape="building" size="lg" inverse></cds-icon>
+        <cds-icon shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
       </header>
-      <div cds-layout="horizontal gap:none align-items:stretch no-wrap">
+      <div cds-layout="horizontal gap:none align:stretch no-wrap">
         <nav class="demo-sidenav" cds-layout="p:md">
           <p cds-text="section">sidebar</p>
         </nav>
-        <div cds-layout="vertical align-items:stretch">
+        <div cds-layout="vertical align:stretch">
           <div class="demo-header demo-alt-content-header" cds-layout="p:sm align:shrink">header</div>
           <div class="demo-content demo-scrollable-content demo-alt-content" cds-layout="align:stretch">
             <div cds-layout="vertical gap:sm p:md">
@@ -1235,16 +1249,16 @@ export const patternsApplicationVerticalIconLayoutHybrid = () => {
     <div class="demo-layout demo-app-layout" cds-layout="horizontal no-wrap">
       <header class="demo-header demo-alt-header-2" cds-layout="p:sm vertical gap:md">
         <cds-icon shape="applications" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="blocks-group" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="bundle" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="building" size="lg" inverse></cds-icon>
-        <cds-icon class="demo-alt-navicon" shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
+        <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>
+        <cds-icon shape="bundle" size="lg" inverse></cds-icon>
+        <cds-icon shape="building" size="lg" inverse></cds-icon>
+        <cds-icon shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
       </header>
-      <div cds-layout="vertical align-items:stretch">
+      <div cds-layout="vertical align:stretch">
         <header class="demo-header" cds-layout="p:sm p@md:md">
           header
         </header>
-        <div cds-layout="horizontal align-items:stretch">
+        <div cds-layout="horizontal align:stretch">
           <nav class="demo-sidenav" cds-layout="p:sm p@md:md align:shrink">sidebar</nav>
           <div class="demo-content demo-scrollable-content" cds-layout="align:stretch">
             <div cds-layout="vertical gap:sm p:md">
@@ -1260,11 +1274,11 @@ export const patternsApplicationVerticalIconLayoutHybrid = () => {
 
 export const patternsContentSiteThreeColumn = () => {
   return html`
-    <div class="demo-layout" cds-layout="vertical align-items:stretch" style="height: 100vh">
+    <div class="demo-layout" cds-layout="vertical align:stretch" style="height: 100vh">
       <header class="demo-header" cds-layout="p:sm p@md:md align:shrink">
         header
       </header>
-      <div cds-layout="horizontal align-items:vertical-stretch" class="demo-content">
+      <div cds-layout="horizontal align:vertical-stretch" class="demo-content">
         <nav class="demo-sidenav" cds-layout="p:sm p@md:md">sidebar</nav>
         <div class="demo-content" cds-layout="p:sm p@md:md align:stretch">content</div>
         <section class="demo-sidebar" cds-layout="p:sm p@md:md">sidebar</section>
@@ -1280,7 +1294,7 @@ export const patternsContentSiteSingleRail = () => {
       <header class="demo-header" cds-layout="p:sm p@sm:md">
         header
       </header>
-      <div cds-layout="grid gap:md gap@md:lg p:md p@sm:lg py@lg:xl container:lg container:center">
+      <div cds-layout="grid gap:md gap@md:lg p:md p@sm:lg p-y@lg:xl container:lg container:center">
         <div cds-layout="vertical gap:md gap@md:lg col@sm:7">
           <h3 cds-text="display">Title</h3>
           <p cds-text="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
@@ -1318,11 +1332,11 @@ export const patternsContentSiteSingleRail = () => {
 
 export const patternsResponsiveImageGallery = () => {
   return html`
-    <div class="demo-layout" cds-layout="vertical align-items:horizontal-stretch">
+    <div class="demo-layout" cds-layout="vertical align:horizontal-stretch">
       <header class="demo-header" cds-layout="p:sm p@md:md">
         header
       </header>
-      <div cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:md gap:sm align-items:horizontal-stretch" class="demo-content">
+      <div cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:md gap:sm align:horizontal-stretch" class="demo-content">
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />

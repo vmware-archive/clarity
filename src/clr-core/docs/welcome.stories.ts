@@ -30,7 +30,7 @@ export const core = () => {
         max-width: 7rem;
       }
     </style>
-    <section cds-layout="vertical gap:lg align-items:center m-t:xl" cds-text="center">
+    <section cds-layout="vertical gap:lg align:center m-t:xl" cds-text="center">
       <img src="./assets/images/clarity-logo.svg" alt="Clarity Core" class="welcome-img" />
       <h1 cds-text="display">Clarity Core <clr-icon shape="beta" size="xl" solid status="info" style="transform: translate3d(-0.3em, -0.4em, 0)"></clr-icon></h1>
       <h2 cds-text="section">Web Component Implementation of the Clarity Design System</h2>
@@ -48,7 +48,7 @@ export const core = () => {
           in our <a href="https://medium.com/claritydesignsystem/clarity-core-72f6d3a029bc" target="_blank" rel="noopener">Medium blog post</a>.
         </p>
       </div>
-      <div cds-layout="horizontal gap:xs align-items:center">
+      <div cds-layout="horizontal gap:xs align:center">
         <cds-button status="primary">
           <a href="./?path=/docs/documentation-getting-started--page">Get Started</a>
         </cds-button>

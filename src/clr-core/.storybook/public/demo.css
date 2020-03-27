@@ -142,8 +142,14 @@ cds-card {
   box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
 }
 
-.demo-alt-navicon {
+.demo-alt-header cds-icon,
+.demo-alt-header-2 cds-icon {
   opacity: 0.6;
+}
+
+.demo-alt-header cds-icon:first-child,
+.demo-alt-header-2 cds-icon:first-child {
+  opacity: 1;
 }
 
 .demo-scrollable-content {

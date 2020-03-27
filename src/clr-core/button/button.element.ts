@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely } from '@clr/core/common';
-import { CdsBaseButton, getElementWidth } from '@clr/core/common';
+import { baseStyles, CdsBaseButton, getElementWidth, property, registerElementSafely } from '@clr/core/common';
 import { html, query } from 'lit-element';
 import { styles } from './button.element.css.js';
 
@@ -33,12 +32,19 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  *
  * @element cds-button
  * @slot default - Content slot for inside the button
- * @cssprop --box-shadow-color
+ * @cssprop --background
+ * @cssprop --border-color
  * @cssprop --border-radius
  * @cssprop --border-width
- * @cssprop --border-color
+ * @cssprop --box-shadow-color
  * @cssprop --color
- * @cssprop --background
+ * @cssprop --font-family
+ * @cssprop --font-size
+ * @cssprop --font-weight
+ * @cssprop --height
+ * @cssprop --letter-spacing
+ * @cssprop --padding
+ * @cssprop --text-transform
  */
 // @dynamic
 export class CdsButton extends CdsBaseButton {
@@ -96,12 +102,13 @@ export class CdsButton extends CdsBaseButton {
     super.update(props);
   }
 
+  // nested span tags allow for line-height erasers on the innermost span and flex-based centering on the outermost span
   render() {
     return html`
     <div class="private-host">
       ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
       ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
-      ${this.loadingState === ClrLoadingState.DEFAULT ? html`<slot></slot>` : ''}
+      ${this.loadingState === ClrLoadingState.DEFAULT ? html`<span><span><slot></slot></span></span>` : ''}
       ${this.hiddenButtonTemplate}
     </div>
     `;

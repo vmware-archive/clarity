@@ -9,6 +9,14 @@ props:
     type: 'number'
     category: 'global'
     private: true
+  - name: border-radius
+    value: '3px'
+    type: 'px'
+    category: 'global'
+  - name: border-width
+    value: '1px'
+    type: 'px'
+    category: 'global'
 
   # Space
   - name: 'size-0'
@@ -44,15 +52,27 @@ props:
     type: 'px'
     category: 'space'
   - name: 'size-8'
-    value: '24px'
+    value: '18px'
     type: 'px'
     category: 'space'
   - name: 'size-9'
-    value: '32px'
+    value: '24px'
     type: 'px'
     category: 'space'
   - name: 'size-10'
+    value: '32px'
+    type: 'px'
+    category: 'space'
+  - name: 'size-11'
+    value: '36px'
+    type: 'px'
+    category: 'space'
+  - name: 'size-12'
     value: '48px'
+    type: 'px'
+    category: 'space'
+  - name: 'size-13'
+    value: '72px'
     type: 'px'
     category: 'space'
   - name: xs
@@ -121,11 +141,11 @@ props:
 
   # font settings for line height erasers
   - name: font-top-gap-height 
-    value: '0.147em'
+    value: '0.1475em'
     type: 'em'
     category: 'global'
   - name: font-ascender-height
-    value: '0.17em'
+    value: '0.1703em'
     type: 'em'
     category: 'global'
   - name: font-x-height

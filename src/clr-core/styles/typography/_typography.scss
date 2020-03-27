@@ -299,7 +299,13 @@
 
 [cds-text*='body'] {
   $lh-gap: getLineHeightGap($cds-token-typography-body-line-height-static, $cds-token-typography-body-line-height);
-  @include LHE($lh-gap);
+  @include line-height-eraser(
+    $lh-gap,
+    $cds-token-global-font-top-gap-height,
+    $cds-token-global-font-ascender-height,
+    $cds-token-global-font-x-height,
+    0.1em
+  );
 }
 
 [cds-text*='message'] {

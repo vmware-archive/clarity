@@ -24,6 +24,10 @@ describe('Functional Helper: ', () => {
     it('returns the width of an element', () => {
       expect(getElementWidth(testElement)).toEqual(elementWidth);
     });
+
+    it('returns an empty string if passed junk', () => {
+      expect(getElementWidth(null)).toEqual('');
+    });
   });
 
   describe('getElementWidthUnless() ', () => {

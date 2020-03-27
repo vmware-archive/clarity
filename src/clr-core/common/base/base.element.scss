@@ -14,6 +14,7 @@ $clr-use-custom-properties: true;
 :host {
   font-family: inherit;
   contain: content; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
+  -webkit-appearance: none !important;
 }
 
 slot {

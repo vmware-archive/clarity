@@ -72,6 +72,15 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     this.dragEventListener.group = value;
   }
 
+  @Input('clrDragStartDelay')
+  set dragStartDelay(value: number) {
+    if (typeof value === 'number') {
+      this.dragEventListener.dragStartDelay = value;
+    } else if (typeof value === 'string') {
+      this.dragEventListener.dragStartDelay = parseInt(value, 10) || 0;
+    }
+  }
+
   private createDefaultGhost(event: DragEventInterface<T>) {
     this.draggableSnapshot.capture(this.draggableEl, event);
     // NOTE: The default ghost element will appear

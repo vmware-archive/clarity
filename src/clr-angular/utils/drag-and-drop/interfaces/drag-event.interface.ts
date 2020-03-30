@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,8 +15,8 @@ export enum DragEventType {
 export interface DragPointPosition {
   pageX: number;
   pageY: number;
-  moveX: number;
-  moveY: number;
+  moveX?: number;
+  moveY?: number;
 }
 
 export interface DragEventInterface<T> {
@@ -27,5 +27,5 @@ export interface DragEventInterface<T> {
   dragDataTransfer?: T;
   // For default ghosts, this dropPointPosition denotes the center point of the ghost element.
   // This center point is used to determine whether the ghost is over droppable elements or not.
-  dropPointPosition?: { pageX: number; pageY: number };
+  dropPointPosition?: DragPointPosition;
 }

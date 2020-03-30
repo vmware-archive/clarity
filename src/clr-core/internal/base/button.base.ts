@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { removeAttributes } from '@clr/core/internal';
 import { html, LitElement, query } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
@@ -11,6 +12,15 @@ import { property } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { KeyCodes } from './../enums/key-codes.js';
 import { stopEvent } from './../utils/events.js';
+
+// TODO: replace with circular progress bar when complete
+export const iconSpinnerCheck = html`<span class="button-status-icon"><span class="spinner spinner-inline spinner-check"></span></span>`;
+
+export const iconSpinner = html`<span class="button-status-icon"><span class="spinner spinner-inline"></span></span>`;
+
+export const iconSlot = html`<span class="button-icon"><slot name="button-icon"></slot></span>`;
+
+export const badgeSlot = html`<span class="button-badge"><slot name="button-badge"></slot></span>`;
 
 // @dynamic
 export class CdsBaseButton extends LitElement {
@@ -74,8 +84,8 @@ export class CdsBaseButton extends LitElement {
    */
   private setupNativeButtonBehavior() {
     this.appendHiddenButton();
-    this.addEventListener('click', e => this.triggerNativeButtonBehavior(e));
-    this.addEventListener('keydown', e => this.emulateKeyBoardEventBehavior(e));
+    this.addEventListener('click', this.triggerNativeButtonBehavior);
+    this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
   }
 
   private triggerNativeButtonBehavior(event: Event) {
@@ -111,8 +121,7 @@ export class CdsBaseButton extends LitElement {
     }
 
     if (this.readonly) {
-      this.removeAttribute('role');
-      this.removeAttribute('tabIndex');
+      removeAttributes(this, 'role', 'tabIndex');
       this.appendHiddenButton();
     } else {
       this.role = 'button';

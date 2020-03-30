@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@clr/core/badge';
 import '@clr/core/button';
 import { ClrLoadingState } from '@clr/core/button';
 import '@clr/core/icon';
@@ -41,7 +42,7 @@ export const API = () => {
     undefined,
     propertiesGroup
   );
-  const size = select('size', { 'medium (default)': 'md', sm: 'sm', icon: 'icon' }, undefined, propertiesGroup);
+  const size = select('size', { 'medium (default)': 'md', sm: 'sm' }, undefined, propertiesGroup);
   const disabled = boolean('disabled', false, propertiesGroup);
   const loadingState = select(
     'loadingState',
@@ -96,7 +97,7 @@ export const API = () => {
         .loadingState=${loadingState}
         .disabled=${disabled}
         @click=${action('click')}>
-        ${size === 'icon' ? html`<cds-icon></cds-icon>` : slot}
+        ${slot}
       </cds-button>
     </cds-demo>
   `;
@@ -149,34 +150,64 @@ export const statusOutline = () => {
 `;
 };
 
-export const iconSolid = () => {
-  return html`
-    <div cds-layout="horizontal gap:xs">
-      <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    </div>
-  `;
-};
-
-export const iconOutline = () => {
-  return html`
-    <div cds-layout="horizontal gap:xs">
-      <cds-button aria-label="user account" action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" action="outline" disabled size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" action="outline" status="success" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-      <cds-button aria-label="user account" action="outline" status="danger" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
-    </div>
-  `;
-};
-
 export const iconWithText = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
-      <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
-      <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
-      <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal gap:xs">
+        <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
+        <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
+        <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-button size="sm"><cds-icon shape="user"></cds-icon> user account</cds-button>
+        <cds-button size="sm" action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
+        <cds-button size="sm" action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
+      </div>
+    </div>
+  `;
+};
+
+export const iconWithTextAndBadge = () => {
+  return html`
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal gap:xs">
+        <cds-button><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button action="outline"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button action="flat"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-button size="sm"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button size="sm" action="outline"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button size="sm" action="flat"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+      </div>
+    </div>
+  `;
+};
+
+export const textAndBadge = () => {
+  return html`
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal gap:xs">
+        <cds-button>Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-button status="danger">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="danger" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-button status="success">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="success" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs p-b:xs" style="background: #313131">
+        <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-button size="sm">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button size="sm" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button size="sm" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
     </div>
   `;
 };
@@ -214,15 +245,13 @@ export const links = () => {
 export const sizes = () => {
   return html`
     <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal align-items:bottom gap:xs">
-        <cds-button>default</cds-button>
-        <cds-button size="sm">small</cds-button>
-        <cds-button aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <div cds-layout="horizontal align-items:left gap:xs">
+        <cds-button>Default ('md')</cds-button>
+        <cds-button action="outline">Default ('md')</cds-button>
       </div>
-      <div cds-layout="horizontal align-items:bottom gap:xs">
-        <cds-button action="outline">default</cds-button>
-        <cds-button action="outline" size="sm">small</cds-button>
-        <cds-button action="outline" aria-label="user account" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+      <div cds-layout="horizontal align-items:left gap:xs">
+        <cds-button size="sm">Compact ('sm')</cds-button>
+        <cds-button action="outline" size="sm">Compact ('sm')</cds-button>
       </div>
     </div>
   `;
@@ -230,10 +259,19 @@ export const sizes = () => {
 
 export const loading = () => {
   return html`
-    <div cds-layout="horizontal gap:xs align-items:bottom">
-      <cds-button .loadingState="${ClrLoadingState.LOADING}">solid</cds-button>
-      <cds-button action="outline" .loadingState="${ClrLoadingState.LOADING}">outline</cds-button>
-      <cds-button size="sm" .loadingState="${ClrLoadingState.LOADING}">small</cds-button>
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal gap:xs align-items:bottom">
+        <cds-button loading-state="default">default</cds-button>
+        <cds-button loading-state="loading">default</cds-button>
+        <cds-button loading-state="success">default</cds-button>
+        <cds-button loading-state="error">default</cds-button>
+      </div>
+      <div cds-layout="horizontal gap:xs align-items:bottom">
+        <cds-button size="sm" loading-state="default">default</cds-button>
+        <cds-button size="sm" loading-state="loading">default</cds-button>
+        <cds-button size="sm" loading-state="success">default</cds-button>
+        <cds-button size="sm" loading-state="error">default</cds-button>
+      </div>
     </div>
   `;
 };

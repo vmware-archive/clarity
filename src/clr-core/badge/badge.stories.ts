@@ -6,7 +6,7 @@
 
 import '@clr/core/badge';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
-import { color as colorKnob, number, select } from '@storybook/addon-knobs';
+import { color as colorKnob, number, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 
 export default {
@@ -44,6 +44,13 @@ export const API = () => {
   );
   const textColor = colorKnob('--color', undefined, cssGroup);
   const background = colorKnob('--background', undefined, cssGroup);
+  const borderColor = colorKnob('--border-color', undefined, cssGroup);
+  const borderWidth = text('--border-width', undefined, cssGroup);
+  const fontSize = text('--font-size', undefined, cssGroup);
+  const fontWeight = text('--font-weight', undefined, cssGroup);
+  const size = text('--size', undefined, cssGroup);
+  const padding = text('--padding', undefined, cssGroup);
+  const borderRadius = text('--border-radius', undefined, cssGroup);
 
   return html`
     <style>
@@ -51,6 +58,13 @@ export const API = () => {
         ${setStyles({
           '--color': textColor,
           '--background': background,
+          '--border-color': borderColor,
+          '--border-width': borderWidth,
+          '--border-radius': borderRadius,
+          '--font-size': fontSize,
+          '--font-weight': fontWeight,
+          '--size': size,
+          '--padding': padding,
         })}
     </style>
     <cds-badge
@@ -89,7 +103,31 @@ export const colorCustom = () => {
         --background: darkblue;
         --color: snow;
       }
+
+      cds-badge.app-custom-2 {
+        --background: fuchsia;
+        --color: snow;
+        --border-color: rgba(255, 255, 255, 0.7);
+        --border-width: 0.1rem;
+        --font-size: 0.7rem;
+        --font-weight: bold;
+        --size: 1.4rem;
+        --padding: 0.1rem 0.3rem;
+      }
+
+      cds-badge.app-custom-3 {
+        --background: limegreen;
+        --color: darkgreen;
+        --border-color: darkgreen;
+        --border-width: 0.1rem;
+        --font-size: 0.7rem;
+        --font-weight: bolder;
+        --size: 1.4rem;
+        --padding: 0.1rem 0.3rem;
+      }
     </style>
-    <cds-badge class='app-custom'>23</cds-badge>
+    <p><cds-badge class='app-custom'>2300+</cds-badge></p>
+    <p><cds-badge class='app-custom-2'>3</cds-badge></p>
+    <p><cds-badge class='app-custom-3'>34,000+</cds-badge></p>
   `;
 };

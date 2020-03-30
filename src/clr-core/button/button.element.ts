@@ -4,9 +4,30 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CdsBaseButton, getElementWidth, property, registerElementSafely } from '@clr/core/internal';
+import {
+  badgeSlot,
+  baseStyles,
+  CdsBaseButton,
+  getElementWidth,
+  iconSpinner,
+  iconSpinnerCheck,
+  iconSlot,
+  property,
+  querySlot,
+  registerElementSafely,
+  setAttributes,
+} from '@clr/core/internal';
+import '@clr/core/icon';
+import { ClarityIcons, errorStandardIcon } from '@clr/core/icon-shapes';
 import { html, query } from 'lit-element';
+import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
+
+ClarityIcons.addIcons(errorStandardIcon);
+
+// TODO: when we migrate away from the base64 icons in other states, we will need to either move the consts
+// into this file or move the base button here. pulling cds-icons into core/internal creates a circular dependency
+const iconSpinnerError = html`<span class="button-status-icon"><cds-icon shape="error-standard"></cds-icon></span>`;
 
 export enum ClrLoadingState {
   DEFAULT = 'default',
@@ -15,9 +36,24 @@ export enum ClrLoadingState {
   ERROR = 'error',
 }
 
-// TODO: replace with circular progress bar when complete
-const iconSpinnerCheck = html`<span class="spinner spinner-inline spinner-check"></span>`;
-const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
+function buttonSlots(icon: boolean, badge: boolean) {
+  // nested span tags allow for line-height erasers on the innermost span and flex-based centering on the outermost span
+  const textSlot = html`<span class="button-content"><span><slot></slot></span></span>`;
+  const slotWithIcon = html`${iconSlot}${textSlot}`;
+  const slotWithBadge = html`${textSlot}${badgeSlot}`;
+  const slotWithContentAndBadge = html`${iconSlot}${textSlot}${badgeSlot}`;
+
+  switch (true) {
+    case icon === true && badge === true:
+      return html`${slotWithContentAndBadge}`;
+    case icon === true:
+      return html`${slotWithIcon}`;
+    case badge === true:
+      return html`${slotWithBadge}`;
+    default:
+      return html`${textSlot}`;
+  }
+}
 
 /**
  * Buttons allow an application to communicate action and direct user intent.
@@ -29,6 +65,7 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * ```html
  * <cds-button>submit</cds-button>
  * ```
+ *
  * @beta
  * @element cds-button
  * @slot default - Content slot for inside the button
@@ -67,13 +104,17 @@ export class CdsButton extends CdsBaseButton {
    * Sets the overall height and width of the button based on the following string values:
    */
   @property({ type: String })
-  size: 'sm' | 'md' | 'icon';
+  size: 'sm' | 'md';
 
   /** Sets if the button should be full width with display block */
   @property({ type: Boolean })
   block: boolean;
 
   @query('.private-host') privateHost: HTMLElement;
+
+  @querySlot('cds-icon') private icon: HTMLElement;
+
+  @querySlot('cds-badge') private badge: HTMLElement;
 
   /**
    * Changes the button content based on the value passed.
@@ -94,6 +135,12 @@ export class CdsButton extends CdsBaseButton {
     }
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    setAttributes(this.icon, ['slot', 'button-icon']);
+    setAttributes(this.badge, ['slot', 'button-badge']);
+  }
+
   update(props: Map<string, any>) {
     if (this.privateHost && props.has('loadingState')) {
       this.updateLoadingState();
@@ -101,41 +148,48 @@ export class CdsButton extends CdsBaseButton {
     super.update(props);
   }
 
-  // nested span tags allow for line-height erasers on the innermost span and flex-based centering on the outermost span
   render() {
-    return html`
-    <div class="private-host">
-      ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
-      ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
-      ${this.loadingState === ClrLoadingState.DEFAULT ? html`<span><span><slot></slot></span></span>` : ''}
-      ${this.hiddenButtonTemplate}
-    </div>
-    `;
+    const loadingState = this.loadingState;
+    const hasIcon = !!this.icon;
+    const hasBadge = !!this.badge;
+
+    return html`<div class="private-host" cds-layout="horizontal">${
+      loadingState === ClrLoadingState.SUCCESS ? html`${iconSpinnerCheck}` : ''
+    }${loadingState === ClrLoadingState.ERROR ? html`${iconSpinnerError}` : ''}${
+      loadingState === ClrLoadingState.LOADING ? html`${iconSpinner}` : ''
+    }${loadingState === ClrLoadingState.DEFAULT ? html`${buttonSlots(hasIcon, hasBadge)}` : ''}${
+      this.hiddenButtonTemplate
+    }</div>`;
   }
 
   static get styles() {
-    return [baseStyles, styles];
+    return [baseStyles, baseButtonStyles, styles];
   }
 
   private updateLoadingState() {
-    if (this.loadingState === ClrLoadingState.LOADING) {
-      this.disableButton();
-    } else if (this.loadingState === ClrLoadingState.SUCCESS) {
-      this.disableButton();
-      setTimeout(() => this.enableButton(), 1000);
-    } else {
-      this.enableButton();
+    switch (this.loadingState) {
+      case ClrLoadingState.LOADING:
+        this.disableButton();
+        return;
+      case ClrLoadingState.SUCCESS:
+        this.disableButton();
+        return;
+      case ClrLoadingState.ERROR:
+        this.disableButton();
+        return;
+      default:
+        this.enableButton();
     }
   }
 
   private disableButton() {
-    this.privateHost.style.width = getElementWidth(this.privateHost);
+    this.style.width = getElementWidth(this);
     this.disabled = true;
   }
 
   private enableButton() {
     this.loadingState = ClrLoadingState.DEFAULT;
-    this.privateHost.style.removeProperty('width');
+    this.style.removeProperty('width');
     this.disabled = false;
   }
 }

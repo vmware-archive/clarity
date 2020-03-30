@@ -161,9 +161,6 @@ describe('button element', () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
 
-      component.loadingState = ClrLoadingState.LOADING;
-      await componentIsStable(component);
-
       component.loadingState = ClrLoadingState.SUCCESS;
       await componentIsStable(component);
 
@@ -171,27 +168,15 @@ describe('button element', () => {
       expect(component.hasAttribute('disabled')).toEqual(true);
     });
 
-    it('should set to default state after success', async () => {
-      // will throw the following error without the uninstall() call:
-      // "Jasmine Clock was unable to install over custom global timer functions. Is the clock already installed?"
-      // See: https://github.com/gruntjs/grunt-contrib-jasmine/issues/213
-      jasmine.clock().uninstall();
-      jasmine.clock().install();
-
-      component.loadingState = ClrLoadingState.LOADING;
+    it('should set error state as expected', async () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
-      component.loadingState = ClrLoadingState.SUCCESS;
+
+      component.loadingState = ClrLoadingState.ERROR;
       await componentIsStable(component);
+
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
-
-      jasmine.clock().tick(1000);
-      await componentIsStable(component);
-      expect(component.hasAttribute('disabled')).toEqual(false);
-
-      // uninstall to clean up
-      jasmine.clock().uninstall();
     });
   });
 

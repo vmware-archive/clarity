@@ -1,0 +1,224 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
+
+// TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
+@import './../../clr-angular/progress/spinner/variables.spinner';
+@import './../../clr-angular/image/icons.clarity';
+@import './../../clr-angular/progress/spinner/spinner.clarity';
+
+:host {
+  --box-shadow-color: #{$cds-token-color-action-900};
+
+  --border-radius: #{$cds-token-global-border-radius};
+  --border-width: #{$cds-token-global-border-width};
+  --border-color: #{$cds-token-color-action-600};
+  --background: #{$cds-token-color-action-600};
+
+  --color: #{$cds-token-color-neutral-0};
+  --font-size: #{$cds-token-space-size-6};
+
+  --padding: #{$cds-token-layout-space-sm};
+  --height: #{$cds-token-space-size-11};
+
+  display: inline-block;
+
+  // following is a fix for Firefox cutting off right edge of buttons. remove when no longer needed.
+  // it is okay to force this to 1px because we never want it to grow or be customized
+  padding-right: 1px;
+}
+
+.private-host {
+  -webkit-appearance: none !important;
+  align-items: center;
+  background: var(--background);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: var(--border-width);
+  color: var(--color);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size);
+  height: var(--height);
+  justify-content: center;
+  line-height: 1em;
+  min-width: #{$cds-token-space-size-13};
+  overflow: visible;
+  padding: var(--padding);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transform: translateZ(0px); // for chrome rendering bug
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:active {
+    box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+  }
+
+  & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--font-size);
+  }
+
+  .button-status-icon {
+    transform: translateY(calc(-1 * #{$cds-token-space-size-1}));
+
+    cds-icon {
+      @include min-equilateral(#{$cds-token-space-size-8});
+      fill: var(--color);
+    }
+
+    cds-icon[shape='error-standard'] {
+      --color: #{$cds-token-color-danger-700};
+    }
+  }
+}
+
+:host(:active) .private-host {
+  box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+}
+
+:host(:hover) {
+  --background: #{$cds-token-color-action-800};
+}
+
+::slotted {
+  line-height: 1em;
+  color: inherit;
+}
+
+::slotted(a) {
+  text-decoration: none !important;
+  display: block;
+  height: 100%;
+  color: inherit;
+}
+
+::slotted(cds-icon) {
+  --color: inherit;
+
+  @include equilateral(calc(var(--font-size) + (2 * #{$cds-token-space-size-2})));
+  margin-top: calc(-1 * #{$cds-token-space-size-1});
+}
+
+:host([action='outline']) {
+  --background: transparent;
+  --color: #{$cds-token-color-action-600};
+
+  .private-host:hover {
+    --background: #{$cds-token-color-action-50};
+  }
+}
+
+:host([status='success']) {
+  --box-shadow-color: #{$cds-token-color-success-900};
+  --border-color: #{$cds-token-color-success-700};
+  --background: #{$cds-token-color-success-700};
+
+  .private-host:hover {
+    --background: #{$cds-token-color-success-800};
+  }
+}
+
+:host([status='success'][action='outline']) {
+  --background: transparent;
+  --color: #{$cds-token-color-success-700};
+
+  .private-host:hover {
+    --background: #{$cds-token-color-success-50};
+  }
+}
+
+:host([status='danger']) {
+  --box-shadow-color: #{$cds-token-color-danger-900};
+  --border-color: #{$cds-token-color-danger-700};
+  --background: #{$cds-token-color-danger-700};
+
+  .private-host:hover {
+    --background: #{$cds-token-color-danger-800};
+  }
+}
+
+:host([status='danger'][action='outline']) {
+  --background: transparent;
+  --color: #{$cds-token-color-danger-700};
+
+  .private-host:hover {
+    --background: #{$cds-token-color-danger-50};
+  }
+}
+
+:host([status='inverse']) {
+  --box-shadow-color: rgba(0, 0, 0, 0.25);
+  --border-color: #{$cds-token-color-neutral-0};
+  --background: transparent;
+  --color: #{$cds-token-color-neutral-0};
+}
+
+:host([action='flat']) {
+  --background: transparent;
+  --border-color: transparent;
+  --color: #{$cds-token-color-action-600};
+
+  .private-host {
+    box-shadow: none;
+  }
+}
+
+:host([action='flat']) .private-host:hover {
+  --background: transparent;
+  --color: #{$cds-token-color-action-600};
+}
+
+:host([size='sm']) .private-host {
+  --padding: #{$cds-token-layout-space-xs} #{$cds-token-layout-space-sm};
+  --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
+
+  .spinner:not(.spinner-check) {
+    @include min-equilateral(#{$cds-token-space-size-6});
+  }
+
+  .button-status-icon {
+    cds-icon,
+    .spinner-check {
+      transform: translateY(#{$cds-token-space-size-1});
+    }
+  }
+}
+
+:host([disabled]),
+:host([disabled]) .private-host {
+  --color: #{$cds-token-color-neutral-500} !important;
+  --background: #{$cds-token-color-neutral-200} !important;
+  --border-color: #{$cds-token-color-neutral-500} !important;
+  outline: 0;
+}
+
+:host([disabled]) .private-host {
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+:host([disabled]:active) {
+  pointer-events: none;
+}
+
+:host([action='outline'][disabled]) {
+  --background: transparent;
+}
+
+:host([status='inverse'][disabled]) {
+  --background: transparent;
+  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-token-color-neutral-0};
+}

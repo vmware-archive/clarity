@@ -17,7 +17,7 @@ module.exports = config => {
     esm: {
       coverage: true,
       importMap: 'src/clr-core/import-map.importmap',
-      coverageExclude: ['dist/clr-core/**/*.spec.js'],
+      coverageExclude: ['dist/clr-core/**/*.spec.js', 'dist/clr-core/internal/css-vars/*.js'],
     },
     colors: true,
     browsers: ['ChromeHeadlessNoSandbox'],

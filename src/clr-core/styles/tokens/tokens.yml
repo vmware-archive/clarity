@@ -1180,7 +1180,7 @@ props:
     type: 'hsl'
     category: 'color'
   - name: warning-800
-    value: 'hsl(41, 100%, 36%)'
+    value: 'hsl(41, 100%, 34%)'
     value-on: 'hsl(198, 0%, 100%)'
     type: 'hsl'
     category: 'color'
@@ -1191,7 +1191,7 @@ props:
     category: 'color'
   - name: warning-1000
     value: 'hsl(31, 100%, 19%)'
-    value-on: 'hsl(198, 0%, 100%)'
+    value-on: 'hsl(198, 0%, 0%)'
     type: 'hsl'
     category: 'color'
 

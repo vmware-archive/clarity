@@ -17,3 +17,25 @@ export function getElementWidthUnless(element: HTMLElement, unless: boolean) {
   }
   return '';
 }
+
+export type HTMLAttributeTuple = [string, string | boolean];
+
+export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttributeTuple[]) {
+  if (element) {
+    attributeTuples.forEach(([attr, val]) => {
+      if (val === false || val === null) {
+        element.removeAttribute(attr);
+      } else {
+        element.setAttribute(attr, val + '');
+      }
+    });
+  }
+}
+
+export function removeAttributes(element: HTMLElement, ...attrs: string[]) {
+  if (element) {
+    attrs.forEach(attr => {
+      element.removeAttribute(attr);
+    });
+  }
+}

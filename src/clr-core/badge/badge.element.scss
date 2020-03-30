@@ -1,73 +1,108 @@
+@import './../styles/tokens/generated/index';
 @import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
 
 :host {
-  --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
-  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
+  --background: #{$cds-token-color-neutral-600};
+  --border-color: #{$cds-token-color-neutral-600};
+  --border-width: #{$cds-token-global-border-width};
+  --color: #{$cds-token-color-neutral-0};
+  --font-size: #{$cds-token-typography-p8-font-size};
+  --font-weight: #{$cds-token-typography-font-weight-regular};
+  --size: #{$cds-token-space-size-7-static - $cds-token-space-size-1-static};
+  --padding: calc(#{$cds-token-space-size-3} - var(--border-width));
+  --border-radius: calc((var(--size) / 2) - #{$cds-token-space-size-1});
   display: inline-block;
+  text-align: center;
 }
 
 .private-host {
   display: inline-flex;
-  vertical-align: middle;
   align-items: center;
   justify-content: center;
-  min-width: $clr_baselineRem_0_625;
-  height: $clr_baselineRem_0_625;
-  line-height: normal;
-  border-radius: $clr_baselineRem_0_416;
-  font-size: $clr_baselineRem_0_416;
-  padding: 0 $clr_baselineRem_4px;
+  height: var(--size);
+  line-height: 1em;
+  border-radius: var(--border-radius);
+  border-width: var(--border-width);
+  border-style: solid;
+  border-color: var(--border-color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: #{$cds-token-typography-body-letter-spacing};
   white-space: nowrap;
-  text-align: center;
   background: var(--background);
   color: var(--color);
+  padding: var(--padding);
+
+  & > span {
+    display: inline-flex;
+    height: var(--font-size);
+    min-width: calc(0.8 * var(--font-size));
+    align-items: center;
+    justify-content: center;
+
+    & > span {
+      text-align: center;
+      width: 100%;
+      @include line-height-eraser(0em);
+    }
+  }
 }
 
 :host(:visited) {
-  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([color='gray']) {
-  --background: var(--clr-color-neutral-600, #{$clr-color-neutral-600});
-  --color: var(--clr-color-on-neutral-600, #{$clr-color-on-neutral-600});
+  --background: #{$cds-token-color-neutral-600};
+  --border-color: #{$cds-token-color-neutral-600};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([color='purple']) {
-  --background: var(--clr-color-secondary-action-500, #{$clr-color-secondary-action-500});
-  --color: var(--clr-color-on-secondary-action-500, #{$clr-color-on-secondary-action-500});
+  --background: #{$cds-token-color-secondary-action-500};
+  --border-color: #{$cds-token-color-secondary-action-500};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([color='blue']) {
-  --background: var(--clr-color-secondary-action-800, #{$clr-color-secondary-action-800});
-  --color: var(--clr-color-on-secondary-action-800, #{$clr-color-on-secondary-action-800});
+  --background: #{$cds-token-color-action-800};
+  --border-color: #{$cds-token-color-action-800};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([color='orange']) {
-  --background: var(--clr-color-warning-500, #{$clr-color-warning-500});
-  --color: var(--clr-color-on-warning-500, #{$clr-color-on-warning-500});
+  --background: #{$cds-token-color-warning-1000};
+  --border-color: #{$cds-token-color-warning-1000};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([color='light-blue']) {
-  --background: var(--clr-color-action-300, #{$clr-color-action-300});
-  --color: var(--clr-color-on-action-300, #{$clr-color-on-action-300});
+  --background: #{$cds-token-color-action-500};
+  --border-color: #{$cds-token-color-action-500};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([status='info']) {
-  --background: var(--clr-color-action-600, #{$clr-color-action-600});
-  --color: var(--clr-color-on-action-600, #{$clr-color-on-action-600});
+  --background: #{$cds-token-color-action-800};
+  --border-color: #{$cds-token-color-action-800};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([status='success']) {
-  --background: var(--clr-color-success-700, #{$clr-color-success-700});
-  --color: var(--clr-color-on-success-700, #{$clr-color-on-success-700});
+  --background: #{$cds-token-color-success-800};
+  --border-color: #{$cds-token-color-success-800};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([status='warning']) {
-  --background: var(--clr-color-warning-300, #{$clr-color-warning-300});
-  --color: var(--clr-color-on-warning-300, #{$clr-color-on-warning-300});
+  --background: #{$cds-token-color-warning-1000};
+  --border-color: #{$cds-token-color-warning-1000};
+  --color: #{$cds-token-color-neutral-0};
 }
 
 :host([status='danger']) {
-  --background: var(--clr-color-danger-800, #{$clr-color-danger-800});
-  --color: var(--clr-color-on-danger-800, #{$clr-color-on-danger-800});
+  --background: #{$cds-token-color-danger-900};
+  --border-color: #{$cds-token-color-danger-900};
+  --color: #{$cds-token-color-neutral-0};
 }

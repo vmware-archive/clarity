@@ -23,7 +23,14 @@ import { styles } from './badge.element.css.js';
  * @element cds-badge
  * @slot default - Content slot for inside the badge
  * @cssprop --background
+ * @cssprop --border-color
+ * @cssprop --border-radius
+ * @cssprop --border-width
  * @cssprop --color
+ * @cssprop --font-size
+ * @cssprop --font-weight
+ * @cssprop --padding
+ * @cssprop --size
  */
 export class CdsBadge extends LitElement {
   /** Sets the color of the badge from the following predefined list of choices:
@@ -41,7 +48,7 @@ export class CdsBadge extends LitElement {
   render() {
     return html`
       <div class="private-host">
-        <slot></slot>
+        <span><span><slot></slot></span></span>
       </div>
     `;
   }

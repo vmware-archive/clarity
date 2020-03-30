@@ -76,7 +76,7 @@
     "core:golden": "npm run core:build:api",
     "core:golden:fix": "npm run core:golden && cpy dist/clr-core/custom-elements.json ./src/clr-core/",
     "core:golden:test": "diff -u src/clr-core/custom-elements.json dist/clr-core/custom-elements.json",
-    "core:test": "npm-run-all -p core:test:treeshaking core:test:unit",
+    "core:test": "npm-run-all -s core:test:unit core:test:treeshaking",
     "core:test:watch": "npm run core:test:karma -- --auto-watch=true --single-run=false --coverage=false",
     "core:test:unit": "npm-run-all -s core:build:ts:spec core:test:karma core:build:sass:min core:build:clean",
     "core:test:karma": "karma start src/clr-core/karma.conf.js",

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,6 +8,15 @@
 
 <div class="clr-example">
     <button class="btn btn-primary" clrDraggable>draggable</button>
+</div>
+
+
+<h4>Delayed Drag Start</h4>
+
+<p>Hold your pointer down for at least 500ms to trigger drag start</p>
+
+<div class="clr-example">
+    <button class="btn btn-primary" clrDraggable [clrDragStartDelay]="500">draggable</button>
 </div>
 
 <h4>Draggable cards</h4>

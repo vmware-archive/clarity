@@ -6,6 +6,7 @@
 import { Subject } from 'rxjs';
 import { DragEventListenerService } from './drag-event-listener.service';
 import { Injectable } from '@angular/core';
+import { DragPointPosition } from '../interfaces/drag-event.interface';
 
 // This mock service is necessary because the real service uses Renderer2 and attaches complex event listeners.
 // This class mocks that as setting ".hasListener" to true
@@ -17,6 +18,7 @@ export class MockDragEventListener {
   public dragStarted: Subject<any> = new Subject<any>();
   public dragMoved: Subject<any> = new Subject<any>();
   public dragEnded: Subject<any> = new Subject<any>();
+  public dragStartPosition: DragPointPosition;
 
   public attachDragListeners(draggableEl: any) {
     this.draggableEl = draggableEl;

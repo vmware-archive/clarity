@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,11 +7,9 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { DomAdapter } from '../dom-adapter/dom-adapter';
-
-import { ClrDraggableGhost } from './index';
 import { ClrDragAndDropModule } from './drag-and-drop.module';
+import { ClrDraggableGhost } from './draggable-ghost';
 import { DragEventListenerService } from './providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';
 import { DraggableSnapshotService } from './providers/draggable-snapshot.service';
@@ -57,7 +55,9 @@ export default function(): void {
       });
 
       it('should appear on the first drag move event', function() {
+        this.dragEventListener.dragStartPosition = { pageX: 0, pageY: 0 };
         const mockDragMoveEvent = { dragPosition: { pageX: 33, pageY: 44 } };
+
         this.dragEventListener.dragMoved.next(mockDragMoveEvent);
 
         expect(this.ghostElement.style.left).toBe(`${mockDragMoveEvent.dragPosition.pageX}px`);
@@ -66,6 +66,7 @@ export default function(): void {
       });
 
       it('should be dragged from mouse position on page', function() {
+        this.dragEventListener.dragStartPosition = { pageX: 0, pageY: 0 };
         const mockDragMoveEvent1 = { dragPosition: { pageX: 120, pageY: 60 } };
         const mockDragMoveEvent2 = { dragPosition: { pageX: 180, pageY: 120 } };
 

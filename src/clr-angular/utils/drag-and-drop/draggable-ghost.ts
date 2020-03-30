@@ -82,7 +82,10 @@ export class ClrDraggableGhost<T> implements OnDestroy {
               `${this.draggableSnapshot.clientRect.left}px`
             );
           } else {
-            this.animateToOnLeave(`${event.dragPosition.pageY}px`, `${event.dragPosition.pageX}px`);
+            this.animateToOnLeave(
+              `${this.dragEventListener.dragStartPosition.pageY}px`,
+              `${this.dragEventListener.dragStartPosition.pageY}px`
+            );
           }
           isAnimationConfigured = true;
         }

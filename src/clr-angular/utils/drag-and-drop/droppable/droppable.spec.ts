@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { ClrDragEvent } from '../drag-event';
 import { generateDragPosition } from '../helpers.spec';
-import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
+import { DragEventInterface, DragEventType, DragPointPosition } from '../interfaces/drag-event.interface';
 import { ClrDropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 import { MOCK_DRAG_DROP_EVENT_BUS } from '../providers/drag-and-drop-event-bus.service.mock';
@@ -34,7 +34,7 @@ export default function(): void {
     mockDragEndEventExt = new ClrDragEvent(mockDragEndEventInt);
   });
 
-  const decorateEventWithDropPosition = (event, dropPointPosition: { pageX: number; pageY: number }) => {
+  const decorateEventWithDropPosition = (event, dropPointPosition: DragPointPosition) => {
     event.dropPointPosition = dropPointPosition;
   };
 

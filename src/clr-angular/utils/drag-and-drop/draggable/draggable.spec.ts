@@ -71,6 +71,12 @@ export default function(): void {
       expect(this.draggable.nativeElement.classList.contains('draggable')).toBeTruthy();
     });
 
+    it('should pass drag start delay to dragListener', function() {
+      this.testComponent.dragStartDelay = 123;
+      this.fixture.detectChanges();
+      expect(this.dragEventListener.dragStartDelay).toBe(123);
+    });
+
     it('should emit event on drag start', function() {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
@@ -154,10 +160,12 @@ export default function(): void {
 }
 
 @Component({
-  template: `<div clrDraggable (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`,
+  template: `<div clrDraggable [clrDragStartDelay]="dragStartDelay" (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`,
 })
 class BasicDraggableTest {
   dragStartEvent: ClrDragEvent<any>;
   dragMoveEvent: ClrDragEvent<any>;
   dragEndEvent: ClrDragEvent<any>;
+
+  dragStartDelay: number;
 }

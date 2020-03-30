@@ -828,10 +828,7 @@ export declare class ClrDragAndDropModule {
 export declare class ClrDragEvent<T> {
     dragDataTransfer: T;
     dragPosition: DragPointPosition;
-    dropPointPosition: {
-        pageX: number;
-        pageY: number;
-    };
+    dropPointPosition: DragPointPosition;
     group: string | string[];
     constructor(dragEvent: DragEventInterface<T>);
 }
@@ -842,6 +839,7 @@ export declare class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     dragEndEmitter: EventEmitter<ClrDragEvent<T>>;
     dragMoveEmitter: EventEmitter<ClrDragEvent<T>>;
     dragOn: boolean;
+    set dragStartDelay(value: number);
     dragStartEmitter: EventEmitter<ClrDragEvent<T>>;
     set group(value: string | string[]);
     constructor(el: ElementRef, dragEventListener: DragEventListenerService<T>, dragHandleRegistrar: DragHandleRegistrarService<T>, viewContainerRef: ViewContainerRef, cfr: ComponentFactoryResolver, injector: Injector, draggableSnapshot: DraggableSnapshotService<T>, globalDragMode: GlobalDragModeService);

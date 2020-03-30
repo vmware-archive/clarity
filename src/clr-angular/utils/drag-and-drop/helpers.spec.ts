@@ -14,8 +14,8 @@ export const generateDragPosition = (
     return {
       pageX: startPosition[0],
       pageY: startPosition[1],
-      moveX: startPosition[0],
-      moveY: startPosition[1],
+      moveX: 0,
+      moveY: 0,
     };
   }
   return {

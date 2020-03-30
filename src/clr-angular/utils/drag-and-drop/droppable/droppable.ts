@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { DomAdapter } from '../../dom-adapter/dom-adapter';
 import { ClrDragEvent } from '../drag-event';
-import { DragEventInterface, DragEventType } from '../interfaces/drag-event.interface';
+import { DragEventInterface, DragEventType, DragPointPosition } from '../interfaces/drag-event.interface';
 import { ClrDropToleranceInterface } from '../interfaces/drop-tolerance.interface';
 import { DragAndDropEventBusService } from '../providers/drag-and-drop-event-bus.service';
 
@@ -131,7 +131,7 @@ export class ClrDroppable<T> implements OnInit, OnDestroy {
     }
   }
 
-  private isInDropArea(point: { pageX: number; pageY: number }): boolean {
+  private isInDropArea(point: DragPointPosition): boolean {
     if (!point) {
       return false;
     }

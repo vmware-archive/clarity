@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, OnDestroy } from '@angular/core';
-import { ClrCommonStringsService } from '@clr/angular';
-import { commonStringsDefault, ClrCommonStrings } from '@clr/core/internal';
+import { ClrCommonStringsService, commonStringsDefault, ClrCommonStrings } from '@clr/angular';
 
 import { USERS } from './users';
 import { frenchTranslation } from './fr-translation';

@@ -6,10 +6,11 @@
 
 import { ClrKeyFocus } from './key-focus';
 import { Component, DebugElement, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { ClrKeyFocusModule } from './key-focus.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { KeyCodes } from '@clr/core/internal';
+
+import { KeyCodes } from './../../enums/key-codes.enum';
+import { ClrKeyFocusModule } from './key-focus.module';
 import { ClrKeyFocusItem } from './key-focus-item';
 
 @Component({

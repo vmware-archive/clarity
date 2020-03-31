@@ -5,7 +5,9 @@
  */
 
 import { Injectable } from '@angular/core';
-import { commonStringsDefault, ClrCommonStrings } from '@clr/core/internal';
+
+import { commonStringsDefault } from './../../utils/i18n/common-strings.default';
+import { ClrCommonStrings } from './../../utils/i18n/common-strings.interface';
 
 @Injectable({
   providedIn: 'root',

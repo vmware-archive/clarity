@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrCommonStrings } from '@clr/core';
+import { ClrCommonStrings } from '@clr/angular';
 
 export const frenchTranslation: Partial<ClrCommonStrings> = {
   open: 'Ouvrir',

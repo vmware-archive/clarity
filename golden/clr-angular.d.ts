@@ -283,6 +283,72 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
 export declare class ClrCommonFormsModule {
 }
 
+export interface ClrCommonStrings {
+    alertCloseButtonAriaLabel: string;
+    allColumnsSelected: string;
+    close: string;
+    collapse: string;
+    current: string;
+    currentPage: string;
+    danger: string;
+    datagridFilterAriaLabel?: string;
+    datepickerCurrentDecade: string;
+    datepickerCurrentMonth: string;
+    datepickerNextDecade: string;
+    datepickerNextMonth: string;
+    datepickerPreviousDecade: string;
+    datepickerPreviousMonth: string;
+    datepickerSelectMonthText: string;
+    datepickerSelectYearText: string;
+    datepickerToggle: string;
+    daypickerSRCurrentDecadePhrase: string;
+    daypickerSRCurrentMonthPhrase: string;
+    daypickerSRCurrentYearPhrase: string;
+    detailExpandableAriaLabel: string;
+    detailPaneEnd: string;
+    detailPaneStart: string;
+    expand: string;
+    firstPage: string;
+    formErrorSummary: string;
+    hide: string;
+    info: string;
+    lastPage: string;
+    loading: string;
+    maxValue: string;
+    minValue: string;
+    modalContentEnd: string;
+    modalContentStart: string;
+    more: string;
+    next: string;
+    nextPage: string;
+    open: string;
+    pickColumns: string;
+    previous: string;
+    previousPage: string;
+    rowActions: string;
+    select: string;
+    selectAll: string;
+    show: string;
+    showColumns: string;
+    showColumnsMenuDescription: string;
+    signpostClose: string;
+    signpostToggle: string;
+    singleActionableAriaLabel: string;
+    singleSelectionAriaLabel: string;
+    sortColumn: string;
+    stackViewChanged: string;
+    success: string;
+    timelineStepCurrent: string;
+    timelineStepError: string;
+    timelineStepNotStarted: string;
+    timelineStepProcessing: string;
+    timelineStepSuccess: string;
+    totalPages: string;
+    verticalNavGroupToggle: string;
+    verticalNavToggle: string;
+    warning: string;
+}
+
 export declare class ClrCommonStringsService {
     get keys(): Readonly<ClrCommonStrings>;
     localize(overrides: Partial<ClrCommonStrings>): void;
@@ -1882,6 +1948,8 @@ export declare class ClrYearpicker implements AfterViewInit {
 }
 
 export declare function collapse(): AnimationMetadata[];
+
+export declare const commonStringsDefault: ClrCommonStrings;
 
 export declare const CONDITIONAL_DIRECTIVES: Type<any>[];
 

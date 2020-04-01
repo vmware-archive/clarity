@@ -88,15 +88,15 @@ import { ViewManagerService } from './providers/view-manager.service';
   },
 })
 export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit {
-  _dynamic: boolean = false;
+  _dynamic = false;
   invalid = false;
   focus = false;
   control: NgControl;
   @ContentChild(ClrLabel) label: ClrLabel;
   @Input('clrPosition')
   set clrPosition(position: string) {
-    if (position && ClrPopoverPositions[position]) {
-      this.viewManagerService.position = ClrPopoverPositions[position];
+    if (position && (ClrPopoverPositions as Record<string, any>)[position]) {
+      this.viewManagerService.position = (ClrPopoverPositions as Record<string, any>)[position];
     }
   }
   get popoverPosition(): ClrPopoverPosition {
@@ -135,7 +135,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
       this.ngControlService.controlChanges.subscribe(control => {
         this.control = control;
       }),
-      this.toggleService.openChange.subscribe(state => {
+      this.toggleService.openChange.subscribe(() => {
         this.dateFormControlService.markAsTouched();
       })
     );

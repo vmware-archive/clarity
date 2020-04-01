@@ -519,7 +519,7 @@ class BtnGroupBothViewContainersTest {
 class BtnGroupFlipTest1 {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
-  flip: boolean = false;
+  flip = false;
 }
 
 @Component({
@@ -536,7 +536,7 @@ class BtnGroupFlipTest1 {
 class BtnGroupFlipTest2 {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
-  flip: boolean = false;
+  flip = false;
 }
 
 @Component({
@@ -553,7 +553,7 @@ class BtnGroupFlipTest2 {
 class BtnGroupProjectionUpdateTest {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
 
-  show: boolean = true;
+  show = true;
 }
 
 /* This feature is not recommended but we are just testing the fallback */

@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-let id: number = 0;
+let id = 0;
 
 export class ProgBarExample {
   intervalId: any;
   demoId: string = 'prog-example-toggle-' + id++;
-  value: number = 0;
-  intervalTimeInMs: number = 100;
+  value = 0;
+  intervalTimeInMs = 100;
 
   constructor(
     private label: string = 'demo',
@@ -44,8 +44,8 @@ export class ProgBarExample {
 
   run(): void {
     let myProgress: number = this.value;
-    const maxProgressIncrement: number = 15;
-    const minProgressIncrement: number = 4;
+    const maxProgressIncrement = 15;
+    const minProgressIncrement = 4;
 
     myProgress += Math.random() * (maxProgressIncrement - minProgressIncrement) + minProgressIncrement;
 

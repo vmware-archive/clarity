@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,7 @@ import { COLORS } from '../inventory/values';
   selector: 'clr-datagrid-color-filter-demo',
   template: `
         <span *ngFor="let color of allColors" class="color-square color-selectable"
-            (click)="toggleColor(color)" 
+            (click)="toggleColor(color)"
             [style.backgroundColor]="color"
             [class.color-selected]="selectedColors[color]"></span>`,
   styleUrls: ['../datagrid.demo.scss'],
@@ -36,7 +36,11 @@ export class ColorFilter implements ClrDatagridFilterInterface<User> {
 
   toggleColor(color: string) {
     this.selectedColors[color] = !this.selectedColors[color];
-    this.selectedColors[color] ? this.nbColors++ : this.nbColors--;
+    if (this.selectedColors[color]) {
+      this.nbColors++;
+    } else {
+      this.nbColors--;
+    }
     this.changes.emit(true);
   }
 

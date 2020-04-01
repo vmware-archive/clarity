@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,13 +15,13 @@ export class WizardForceForwardDemo {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
-  _open: boolean = false;
+  _open = false;
 
   open() {
     this._open = !this.open;
   }
 
-  code: string = `import { ClrWizard } from "@clr/angular";
+  code = `import { ClrWizard } from "@clr/angular";
 
 @Component({
     ...
@@ -36,7 +36,7 @@ export class WizardForceForwardDemo {
 }
     `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="_open" [clrWizardForceForwardNavigation]="true">
     <clr-wizard-title>Wizard, Only Forward Navigation</clr-wizard-title>
 

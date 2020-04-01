@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -50,18 +50,18 @@ export default function(): void {
 
     it('supports clrPosition option', function(this: Context) {
       // Default is bottom-left since menuPosition is set to ""
-      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_LEFT);
-      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
+      expect((this.clarityDirective as any).anchorPoint).toEqual(Point.BOTTOM_LEFT);
+      expect((this.clarityDirective as any).popoverPoint).toEqual(Point.LEFT_TOP);
 
       this.clarityDirective.position = 'bottom-right';
       this.detectChanges();
-      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_RIGHT);
-      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.RIGHT_TOP);
+      expect((this.clarityDirective as any).anchorPoint).toEqual(Point.BOTTOM_RIGHT);
+      expect((this.clarityDirective as any).popoverPoint).toEqual(Point.RIGHT_TOP);
 
       this.clarityDirective.position = 'top-right';
       this.detectChanges();
-      expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.TOP_RIGHT);
-      expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
+      expect((this.clarityDirective as any).anchorPoint).toEqual(Point.TOP_RIGHT);
+      expect((this.clarityDirective as any).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
     });
 
     it('adds the menu role to the host', function(this: Context) {
@@ -75,7 +75,7 @@ export default function(): void {
     it('adds DropdownItem children to the DropdownFocusHandler', function(this: Context) {
       const focusHandler = this.getClarityProvider(DropdownFocusHandler);
       const spy = spyOn(focusHandler, 'addChildren');
-      const newChildren = <FocusableItem[]>[{ id: '1' }, { id: '2' }, { id: '3' }];
+      const newChildren = [{ id: '1' }, { id: '2' }, { id: '3' }] as FocusableItem[];
       this.clarityDirective.items.reset(newChildren);
       this.clarityDirective.items.notifyOnChanges();
       expect(spy).toHaveBeenCalledWith(newChildren);

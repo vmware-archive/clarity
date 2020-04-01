@@ -105,11 +105,7 @@ function generateRoutes() {
     }
   });
   var final_routes = ROUTES_TEMPLATE.replace('${routes}', routes);
-  fs.writeFileSync(
-    FINAL_ROUTES_PATH,
-    `// tslint:disable
-  ${final_routes}`
-  );
+  fs.writeFileSync(FINAL_ROUTES_PATH, final_routes);
 }
 
 function generateSitemapNewsUrls() {

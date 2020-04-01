@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component, Inject, NgModule } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from './id-generator.service';
@@ -33,13 +33,12 @@ class UniqueIdTest {}
 
 describe('ID Generator Service', function() {
   it("generates uniq id's", function() {
-    let fixture: ComponentFixture<UniqueIdTest>;
     TestBed.configureTestingModule({
       imports: [IdTestingModule],
       providers: [UNIQUE_ID_PROVIDER],
       declarations: [UniqueIdTest],
     });
-    fixture = TestBed.createComponent(UniqueIdTest);
+    const fixture = TestBed.createComponent(UniqueIdTest);
     fixture.detectChanges();
 
     const elements = fixture.debugElement.queryAll(By.directive(IdTest));

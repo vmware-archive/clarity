@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,11 +19,11 @@ export class ColorSchemeDonut {
 
   constructor(private clipboardCopy: ClipboardCopyService) {}
 
-  copyContent: string = '';
+  copyContent = '';
 
   donutHoleRadius: number;
 
-  activeColor: string = '';
+  activeColor = '';
 
   private _scheme: any;
 
@@ -38,7 +38,7 @@ export class ColorSchemeDonut {
     this.donutHoleRadius = this.radius - 8;
   }
 
-  private _activeIndex: number = -1;
+  private _activeIndex = -1;
 
   get activeIndex(): number {
     return this._activeIndex;
@@ -56,17 +56,11 @@ export class ColorSchemeDonut {
 
   getPath(segmentAngle: number, radius: number) {
     const startAngle = -90;
-    let endAngle: number;
-    let x1: number;
-    let y1: number;
-    let x2: number;
-    let y2: number;
-
-    endAngle = startAngle + segmentAngle;
-    x1 = this.cx + radius * Math.cos(Math.PI * startAngle / 180);
-    y1 = this.cy + radius * Math.sin(Math.PI * startAngle / 180);
-    x2 = this.cx + radius * Math.cos(Math.PI * endAngle / 180);
-    y2 = this.cy + radius * Math.sin(Math.PI * endAngle / 180);
+    const endAngle = startAngle + segmentAngle;
+    const x1 = this.cx + radius * Math.cos(Math.PI * startAngle / 180);
+    const y1 = this.cy + radius * Math.sin(Math.PI * startAngle / 180);
+    const x2 = this.cx + radius * Math.cos(Math.PI * endAngle / 180);
+    const y2 = this.cy + radius * Math.sin(Math.PI * endAngle / 180);
     return (
       'M' +
       this.cx +

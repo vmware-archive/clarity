@@ -13,13 +13,17 @@ describe('preventArrowKeyScroll', () => {
     const mockEvent = {
       key: KeyCodes.ArrowDown,
       code: KeyCodes.ArrowDown,
-      preventDefault: () => {},
+      preventDefault: () => {
+        // Do nothing
+      },
     };
 
     const mockIncorrectKeyCodeEvent = {
       key: KeyCodes.Space,
       code: 'Space',
-      preventDefault: () => {},
+      preventDefault: () => {
+        // Do nothing
+      },
     };
 
     spyOn(mockEvent, 'preventDefault');
@@ -35,7 +39,9 @@ describe('preventArrowKeyScroll', () => {
     const mockEvent = {
       key: IEKeyCodes.ArrowDown,
       code: undefined,
-      preventDefault: () => {},
+      preventDefault: () => {
+        // Do nothing
+      },
     };
 
     spyOn(mockEvent, 'preventDefault');

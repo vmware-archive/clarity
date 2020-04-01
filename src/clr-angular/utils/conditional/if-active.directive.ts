@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,7 +31,7 @@ import { IF_ACTIVE_ID, IfActiveService } from './if-active.service';
  */
 export class ClrIfActive implements OnDestroy {
   private subscription: Subscription;
-  private wasActive: boolean = false;
+  private wasActive = false;
 
   constructor(
     private ifActiveService: IfActiveService,
@@ -70,6 +70,15 @@ export class ClrIfActive implements OnDestroy {
     }
   }
 
+  /********
+   *
+   * @description
+   * A getter that returns the current IfActiveService.active value.
+   */
+  public get active() {
+    return this.ifActiveService.current === this.id;
+  }
+
   /**********
    * @property activeChange
    *
@@ -79,15 +88,6 @@ export class ClrIfActive implements OnDestroy {
    *
    */
   @Output('clrIfActiveChange') activeChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
-  /********
-   *
-   * @description
-   * A getter that returns the current IfActiveService.active value.
-   */
-  public get active() {
-    return this.ifActiveService.current === this.id;
-  }
 
   /*********
    *

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Directive, ViewContainerRef } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { ClrIfDragged } from './if-dragged';
@@ -69,10 +69,7 @@ export default function(): void {
 }
 
 @Directive({ selector: '[mockVCRProvider]' })
-class MockVCRProvider {
-  // tslint:disable-next-line
-  constructor(private vcr: ViewContainerRef) {}
-}
+class MockVCRProvider {}
 @Component({
   template: `<div mockVCRProvider class="parent-vcr"><span class="if-dragged" *clrIfDragged>Test</span></div>`,
 })

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,7 +20,7 @@ export class ColumnResizerService {
 
   private widthBeforeResize: number;
 
-  private _resizedBy: number = 0;
+  private _resizedBy = 0;
 
   public get resizedBy() {
     return this._resizedBy;

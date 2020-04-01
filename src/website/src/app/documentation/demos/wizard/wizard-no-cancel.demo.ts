@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ export class WizardNoCancel {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
-  open: boolean = false;
+  open = false;
 
   pageArray: string[] = ['1', '2', '3'];
 
@@ -24,7 +24,7 @@ export class WizardNoCancel {
     this.wizard.reset();
   }
 
-  code: string = `
+  code = `
 @Component({
     ...
 })
@@ -40,7 +40,7 @@ export class WizardNoCancel {
 }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="open"
     [clrWizardClosable]="false"
     [clrWizardSize]="'md'"

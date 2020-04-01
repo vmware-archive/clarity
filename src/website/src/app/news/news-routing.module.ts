@@ -7,9 +7,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NewsComponent } from './news.component';
-// tslint:disable no-barrel-imports
+// eslint-disable-next-line clarity/no-barrel-imports
 import { AUTO_GENERATED_ROUTES } from '../../releases/final-template/auto-generated-routes';
-// tslint:enable no-barrel-imports
 
 const newsRoutes: Routes = [
   {

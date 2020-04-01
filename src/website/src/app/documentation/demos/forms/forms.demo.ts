@@ -6,7 +6,7 @@
 import { Component } from '@angular/core';
 import { ClarityDocComponent } from '../clarity-doc';
 
-// tslint:disable no-var-imports no-var-requires no-require-imports variable-name
+/* eslint-disable @typescript-eslint/no-var-requires */
 const UiErrors = require('raw-loader!./ui/errors.html');
 const UiForm = require('raw-loader!./ui/form.html');
 const UiGrid = require('raw-loader!./ui/grid.html');

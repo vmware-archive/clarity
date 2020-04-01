@@ -22,7 +22,9 @@ import { ClrPopoverPositionService } from '../../../../utils/popover/providers/p
 import { ClrPopoverEventsService } from '../../../../utils/popover/providers/popover-events.service';
 
 class MockRenderer {
-  listen() {}
+  listen() {
+    // Do nothing
+  }
 }
 
 const PROVIDERS = [

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,13 +11,20 @@ import { Component } from '@angular/core';
   templateUrl: './progress-bar-component.html',
 })
 export class ProgressBarComponentDemo {
-  examples = [
+  examples: {
+    name: string;
+    label: string;
+    state: boolean;
+    value: number;
+    interval: any;
+    setup: { flash: boolean; fade: boolean };
+  }[] = [
     {
       name: 'flash',
       label: 'Flash only',
       state: false,
       value: 20,
-      interval: undefined,
+      interval: null,
       setup: { flash: true, fade: false },
     },
     {
@@ -25,7 +32,7 @@ export class ProgressBarComponentDemo {
       label: 'Flash & Fade',
       state: false,
       value: 20,
-      interval: undefined,
+      interval: null,
       setup: { flash: true, fade: true },
     },
   ];

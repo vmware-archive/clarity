@@ -42,10 +42,10 @@ import { ClrTabOverflowContent } from './tab-overflow-content';
                 </ng-container>
             </ng-container>
             <ng-container *ngIf="tabsService.overflowTabs.length > 0">
-                <div class="tabs-overflow bottom-right" role="presentation" 
+                <div class="tabs-overflow bottom-right" role="presentation"
                   [class.open]="toggleService.open">
                     <li role="application" class="nav-item">
-                        <button #tabOverflowTrigger class="btn btn-link nav-link dropdown-toggle" type="button" aria-hidden="true" 
+                        <button #tabOverflowTrigger class="btn btn-link nav-link dropdown-toggle" type="button" aria-hidden="true"
                         [attr.tabindex]="activeTabInOverflow && !toggleService.open? 0: -1"
                         [class.active]="activeTabInOverflow"
                         [class.open]="toggleService.open"
@@ -58,8 +58,8 @@ import { ClrTabOverflowContent } from './tab-overflow-content';
                         </button>
                     </li>
                     <!--tab links in overflow menu-->
-                    <clr-tab-overflow-content *ngIf="toggleService.open"  
-                      (document:keydown.esc)="closeOnEscapeKey()" 
+                    <clr-tab-overflow-content *ngIf="toggleService.open"
+                      (document:keydown.esc)="closeOnEscapeKey()"
                       (document:click)="closeOnOutsideClick($event, tabOverflowTrigger)"
                       (focusout)="closeOnFocusOut($event)">
                         <ng-container *ngFor="let link of tabLinkDirectives">
@@ -82,19 +82,18 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
     return this._tabLinkDirectives.filter(link => !link.inOverflow).length;
   }
 
-  /* tslint:disable:no-unused-variable */
   @ViewChild('tabContentViewContainer', { static: true, read: ViewContainerRef })
+  // @ts-ignore
   private set tabContentViewContainer(value: ViewContainerRef) {
     this.tabsService.tabContentViewContainer = value;
   }
-  /* tslint:enable:no-unused-variable */
 
   @Input('clrLayout')
   set layout(layout: TabsLayout) {
     if (
       Object.keys(TabsLayout)
         .map(key => {
-          return TabsLayout[key];
+          return (TabsLayout as Record<string, any>)[key];
         })
         .indexOf(layout) >= 0
     ) {
@@ -165,7 +164,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
   }
 
   resetKeyFocusCurrentToActive(event: FocusEvent) {
-    const keyFocusContainsFocus = this.keyFocus.nativeElement.contains(<HTMLElement>event.relatedTarget);
+    const keyFocusContainsFocus = this.keyFocus.nativeElement.contains(event.relatedTarget as HTMLElement);
     if (!keyFocusContainsFocus && this.keyFocus.current !== this.activeTabPosition) {
       this.keyFocus.current = this.activeTabPosition;
     }
@@ -197,7 +196,7 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
 
   closeOnFocusOut(event: FocusEvent) {
     if (
-      !this._tabOverflowEl.contains(<HTMLElement>event.relatedTarget) &&
+      !this._tabOverflowEl.contains(event.relatedTarget as HTMLElement) &&
       this.toggleService.open &&
       !this._mousedown
     ) {
@@ -221,12 +220,12 @@ export class ClrTabs implements AfterContentInit, OnDestroy {
     // This is because we have another handler on the tabOverflowTrigger element itself.
     // As this handler method is on the document level so the event bubbles up to it and conflicts
     // with the tabOverflowTrigger handler resulting in opening the tab overflow and closing it right away consecutively.
-    if (event.target === tabOverflowTrigger || tabOverflowTrigger.contains(<HTMLElement>event.target)) {
+    if (event.target === tabOverflowTrigger || tabOverflowTrigger.contains(event.target as HTMLElement)) {
       return;
     }
 
     // Move current to the last visible focusable item
-    if (!this._tabOverflowEl.contains(<HTMLElement>event.target) && this.isCurrentInOverflow) {
+    if (!this._tabOverflowEl.contains(event.target as HTMLElement) && this.isCurrentInOverflow) {
       this.keyFocus.moveTo(this.overflowPosition - 1);
     }
   }

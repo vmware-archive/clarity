@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,7 +23,7 @@ import { EmptyAnchor } from './empty-anchor';
  * TODO - make sure these comment annotations do not break ng-packgr.
  */
 export class HostWrapper<W extends DynamicWrapper> implements Injector {
-  constructor(containerType: Type<W>, vcr: ViewContainerRef, index: number = 0) {
+  constructor(containerType: Type<W>, vcr: ViewContainerRef, index = 0) {
     this.injector = vcr.injector;
     // If the host is already wrapped, we don't do anything
     if (!this.injector.get(containerType, null)) {

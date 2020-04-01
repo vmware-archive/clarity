@@ -27,11 +27,11 @@ export class ClrDatalist implements AfterContentInit {
     this.subscriptions.push(this.datalistIdService.idChange.subscribe(id => (this.datalistId = id)));
   }
   @Input()
-  set id(idValue) {
+  set id(idValue: string) {
     if (!!idValue && this.datalistIdService) {
       this.datalistId = idValue;
       this.datalistIdService.id = idValue;
-    } else if (!!idValue) {
+    } else if (idValue) {
       this.datalistId = idValue;
     }
   }

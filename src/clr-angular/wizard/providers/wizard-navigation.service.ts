@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -360,25 +360,18 @@ export class WizardNavigationService implements OnDestroy {
    */
   public checkAndCommitCurrentPage(buttonType: string): void {
     const currentPage: ClrWizardPage = this.currentPage;
-    let iAmTheLastPage: boolean;
-
-    let isNext: boolean;
-    let isDanger: boolean;
-    let isDangerNext: boolean;
-    let isDangerFinish: boolean;
-    let isFinish: boolean;
 
     if (!currentPage.readyToComplete || this.wizardStopNavigation) {
       return;
     }
 
-    iAmTheLastPage = this.currentPageIsLast;
+    const iAmTheLastPage = this.currentPageIsLast;
 
-    isNext = buttonType === 'next';
-    isDanger = buttonType === 'danger';
-    isDangerNext = isDanger && !iAmTheLastPage;
-    isDangerFinish = isDanger && iAmTheLastPage;
-    isFinish = buttonType === 'finish' || isDangerFinish;
+    const isNext = buttonType === 'next';
+    const isDanger = buttonType === 'danger';
+    const isDangerNext = isDanger && !iAmTheLastPage;
+    const isDangerFinish = isDanger && iAmTheLastPage;
+    const isFinish = buttonType === 'finish' || isDangerFinish;
 
     if (isFinish && !iAmTheLastPage) {
       return;
@@ -467,13 +460,11 @@ export class WizardNavigationService implements OnDestroy {
    * @memberof WizardNavigationService
    */
   public previous(): void {
-    let previousPage: ClrWizardPage;
-
     if (this.currentPageIsFirst || this.wizardStopNavigation) {
       return;
     }
 
-    previousPage = this.pageCollection.getPreviousPage(this.currentPage);
+    const previousPage = this.pageCollection.getPreviousPage(this.currentPage);
 
     if (!previousPage) {
       return;
@@ -529,7 +520,7 @@ export class WizardNavigationService implements OnDestroy {
    *
    * @memberof WizardNavigationService
    */
-  public wizardHasAltCancel: boolean = false;
+  public wizardHasAltCancel = false;
 
   /**
    * A boolean flag shared across the Wizard subcomponents that follows the value
@@ -539,7 +530,7 @@ export class WizardNavigationService implements OnDestroy {
    *
    * @memberof WizardNavigationService
    */
-  public wizardHasAltNext: boolean = false;
+  public wizardHasAltNext = false;
 
   /**
    * A boolean flag shared across the Wizard subcomponents that follows the value
@@ -551,7 +542,7 @@ export class WizardNavigationService implements OnDestroy {
    *
    * @memberof WizardNavigationService
    */
-  public wizardStopNavigation: boolean = false;
+  public wizardStopNavigation = false;
 
   /**
    * A boolean flag shared with the stepnav items that prevents user clicks on
@@ -559,7 +550,7 @@ export class WizardNavigationService implements OnDestroy {
    *
    * @memberof WizardNavigationService
    */
-  public wizardDisableStepnav: boolean = false;
+  public wizardDisableStepnav = false;
 
   /**
    * Performs all required checks to determine if a user can navigate to a page. Checking at each
@@ -578,19 +569,10 @@ export class WizardNavigationService implements OnDestroy {
    *
    * @memberof WizardNavigationService
    */
-  public goTo(pageToGoToOrId: any, lazyComplete: boolean = false) {
-    let pageToGoTo: ClrWizardPage;
-    let currentPage: ClrWizardPage;
-    let myPages: PageCollectionService;
-    let pagesToCheck: ClrWizardPage[];
-    let okayToMove: boolean;
-    let goingForward: boolean;
-    let currentPageIndex: number;
-    let goToPageIndex: number;
-
-    myPages = this.pageCollection;
-    pageToGoTo = typeof pageToGoToOrId === 'string' ? myPages.getPageById(pageToGoToOrId) : pageToGoToOrId;
-    currentPage = this.currentPage;
+  public goTo(pageToGoToOrId: any, lazyComplete = false) {
+    const myPages = this.pageCollection;
+    const pageToGoTo = typeof pageToGoToOrId === 'string' ? myPages.getPageById(pageToGoToOrId) : pageToGoToOrId;
+    const currentPage = this.currentPage;
 
     // no point in going to the current page. you're there already!
     // also hard block on any navigation when stopNavigation is true
@@ -598,12 +580,11 @@ export class WizardNavigationService implements OnDestroy {
       return;
     }
 
-    currentPageIndex = myPages.getPageIndex(currentPage);
-    goToPageIndex = myPages.getPageIndex(pageToGoTo);
-    goingForward = goToPageIndex > currentPageIndex;
-    pagesToCheck = myPages.getPageRangeFromPages(this.currentPage, pageToGoTo);
-
-    okayToMove = lazyComplete || this.canGoTo(pagesToCheck);
+    const currentPageIndex = myPages.getPageIndex(currentPage);
+    const goToPageIndex = myPages.getPageIndex(pageToGoTo);
+    const goingForward = goToPageIndex > currentPageIndex;
+    const pagesToCheck = myPages.getPageRangeFromPages(this.currentPage, pageToGoTo);
+    const okayToMove = lazyComplete || this.canGoTo(pagesToCheck);
 
     if (!okayToMove) {
       return;
@@ -643,8 +624,6 @@ export class WizardNavigationService implements OnDestroy {
     }
 
     pagesToCheck.forEach((page: ClrWizardPage) => {
-      let previousPage: ClrWizardPage;
-
       if (!okayToMove) {
         return;
       }
@@ -655,7 +634,7 @@ export class WizardNavigationService implements OnDestroy {
       }
 
       // so we know our page is not completed...
-      previousPage = myPages.getPageIndex(page) > 0 ? myPages.getPreviousPage(page) : null;
+      const previousPage = myPages.getPageIndex(page) > 0 ? myPages.getPreviousPage(page) : null;
       previousPagePasses = previousPage === null || previousPage.completed === true;
 
       // we are false if not the current page AND previous page is not completed
@@ -713,11 +692,10 @@ export class WizardNavigationService implements OnDestroy {
    */
   public updateNavigation(): void {
     let toSetCurrent: ClrWizardPage;
-    let currentPageRemoved: boolean;
 
     this.pageCollection.updateCompletedStates();
 
-    currentPageRemoved = this.pageCollection.pagesAsArray.indexOf(this.currentPage) < 0;
+    const currentPageRemoved = this.pageCollection.pagesAsArray.indexOf(this.currentPage) < 0;
     if (currentPageRemoved) {
       toSetCurrent = this.pageCollection.findFirstIncompletePage();
       this.currentPage = toSetCurrent;

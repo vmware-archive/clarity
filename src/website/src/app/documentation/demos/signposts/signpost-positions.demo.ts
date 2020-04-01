@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -34,8 +34,8 @@ export class SignpostPositionsDemo extends ClarityDocComponent {
     'left-middle',
     'left-bottom',
   ];
-  position: string = 'right-middle';
-  html: string = `
+  position = 'right-middle';
+  html = `
 <clr-select-container>
   <label>Select a position:</label>
   <select clrSelect name="position" [(ngModel)]="position">
@@ -49,7 +49,7 @@ export class SignpostPositionsDemo extends ClarityDocComponent {
   </clr-signpost-content>
 </clr-signpost>
     `;
-  code: string = `
+  code = `
 @Component({
     ...
 })

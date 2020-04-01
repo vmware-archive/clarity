@@ -78,7 +78,7 @@ export class ClrYearpicker implements AfterViewInit {
     });
   }
 
-  private decadeRange;
+  private decadeRange: string;
 
   /**
    * YearRangeModel which is used to build the YearPicker view.

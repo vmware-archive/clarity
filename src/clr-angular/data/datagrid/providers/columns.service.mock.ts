@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -29,7 +29,7 @@ export class MockColumnsService extends ColumnsService {
     }
   }
 
-  mockHideableAt(index: number, hidden: boolean = false) {
+  mockHideableAt(index: number, hidden = false) {
     this.emitStateChange(this.columns[index], {
       hideable: true,
       titleTemplateRef: this.templateRef || new MockHideableColumnTemplateRef(),
@@ -38,12 +38,12 @@ export class MockColumnsService extends ColumnsService {
     });
   }
 
-  mockAllHideable(hidden: boolean = false) {
-    this.columns.forEach((column, index) => this.mockHideableAt(index, hidden));
+  mockAllHideable(hidden = false) {
+    this.columns.forEach((_column, index) => this.mockHideableAt(index, hidden));
   }
 
-  mockPartialHideable(from: number, to: number, hidden: boolean = false) {
-    this.columns.forEach((column, index) => {
+  mockPartialHideable(from: number, to: number, hidden = false) {
+    this.columns.forEach((_column, index) => {
       if (index >= from && index <= to) {
         this.mockHideableAt(index, hidden);
       }

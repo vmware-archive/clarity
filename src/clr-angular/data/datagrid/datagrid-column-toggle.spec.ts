@@ -34,11 +34,11 @@ class ColumnToggleTest {
   }
 
   constructor(columnsService: ColumnsService) {
-    this.mockColumnsService = <MockColumnsService>columnsService;
+    this.mockColumnsService = columnsService as MockColumnsService;
   }
 
-  hasCustomToggleTitle: boolean = false;
-  hasCustomToggleButton: boolean = false;
+  hasCustomToggleTitle = false;
+  hasCustomToggleButton = false;
 }
 
 export default function(): void {
@@ -55,7 +55,7 @@ export default function(): void {
         ClrPopoverPositionService,
         ClrPopoverEventsService,
       ]);
-      columnsService = <MockColumnsService>context.getClarityProvider(ColumnsService);
+      columnsService = context.getClarityProvider(ColumnsService) as MockColumnsService;
       testComponent = context.testComponent;
       columnToggle = context.clarityDirective;
       columnsService.mockColumns(3);
@@ -224,13 +224,13 @@ export default function(): void {
           context.detectChanges();
           tick();
           const testInputs: NodeList = document.querySelectorAll('.switch-content input');
-          const secondInput: HTMLInputElement = <HTMLInputElement>testInputs[2];
+          const secondInput: HTMLInputElement = testInputs[2] as HTMLInputElement;
           expect(secondInput.disabled).toBeTruthy();
           secondInput.click();
           context.detectChanges();
           expect(spyToggleColumnState).not.toHaveBeenCalled();
           const changedInputs: NodeList = document.querySelectorAll('.switch-content input');
-          const changedSecondInput: HTMLInputElement = <HTMLInputElement>changedInputs[2];
+          const changedSecondInput: HTMLInputElement = changedInputs[2] as HTMLInputElement;
           expect(changedSecondInput.checked).toBeTruthy();
         })
       );
@@ -243,8 +243,8 @@ export default function(): void {
           context.detectChanges();
           tick();
           const testInputs: NodeList = document.querySelectorAll('.switch-content input');
-          const inputZero: HTMLInputElement = <HTMLInputElement>testInputs[0];
-          const inputOne: HTMLInputElement = <HTMLInputElement>testInputs[1];
+          const inputZero: HTMLInputElement = testInputs[0] as HTMLInputElement;
+          const inputOne: HTMLInputElement = testInputs[1] as HTMLInputElement;
           expect(inputZero.disabled).toBeFalsy();
           expect(inputOne.disabled).toBeFalsy();
           columnsService.mockPartialHideable(0, 1, true);

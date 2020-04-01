@@ -27,7 +27,7 @@ import { TabsLayout } from './enums/tabs-layout.enum';
 })
 class TestComponent {
   @ViewChildren(ClrTabLink) tabLinkChildren: QueryList<ClrTabLink>;
-  inOverflow: boolean = false;
+  inOverflow = false;
 }
 
 describe('TabLink Directive', () => {

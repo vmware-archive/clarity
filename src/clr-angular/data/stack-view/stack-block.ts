@@ -62,16 +62,16 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
 export class ClrStackBlock implements OnInit {
   @HostBinding('class.stack-block-expanded')
   @Input('clrSbExpanded')
-  expanded: boolean = false;
+  expanded = false;
   @Output('clrSbExpandedChange') expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @HostBinding('class.stack-block-expandable')
   @Input('clrSbExpandable')
-  expandable: boolean = false;
+  expandable = false;
 
-  focused: boolean = false;
-  private _changedChildren: number = 0;
-  private _fullyInitialized: boolean = false;
-  private _changed: boolean = false;
+  focused = false;
+  private _changedChildren = 0;
+  private _fullyInitialized = false;
+  private _changed = false;
 
   @HostBinding('class.stack-block-changed')
   get getChangedValue(): boolean {

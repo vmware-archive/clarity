@@ -22,7 +22,7 @@ export class ClrProgressBar {
    * Handle component ID
    */
   private _ID: string;
-  @HostBinding('attr.id') externalId: string = '';
+  @HostBinding('attr.id') externalId = '';
   @Input()
   set id(value: string) {
     this._ID = value;
@@ -33,10 +33,10 @@ export class ClrProgressBar {
   }
 
   // Progress
-  @Input('clrMax') max: number = 100;
+  @Input('clrMax') max = 100;
   @Input('clrDisplayval') displayval: string;
 
-  private _value: number = 0;
+  private _value = 0;
   @Input('clrValue')
   get value() {
     return this._value;

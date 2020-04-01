@@ -112,6 +112,12 @@ export const all = () => {
   const inverse = boolean('inverse', false, propertiesGroup);
   const solid = boolean('solid', false, propertiesGroup);
 
+  function createIconIndices(icons: [string, string][], aliases: [string, string[]][]): string[] {
+    const iconsMap = icons.map(iconTuple => iconTuple[0]);
+    const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
+    return iconsMap.concat(aliasMap).sort();
+  }
+
   const iconIndex: { [key: string]: string[] } = {
     Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
     Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
@@ -125,12 +131,6 @@ export const all = () => {
   };
 
   const iconSets = Object.keys(iconIndex);
-
-  function createIconIndices(icons: [string, string][], aliases: [string, string[]][]): string[] {
-    const iconsMap = icons.map(iconTuple => iconTuple[0]);
-    const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
-    return iconsMap.concat(aliasMap).sort();
-  }
 
   return html`
     <style>
@@ -327,7 +327,7 @@ export const statusInverse = () => {
       <cds-icon shape="user" inverse status="info" size="lg" solid></cds-icon>
       <cds-icon shape="user" inverse status="success" size="lg" solid></cds-icon>
       <cds-icon shape="user" inverse status="warning" size="lg" solid></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>   
+      <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>
     </cds-demo>
   `;
 };

@@ -10,7 +10,7 @@ import { componentIsStable, createTestElement, removeTestElement, waitForCompone
 describe('button element', () => {
   let testElement: HTMLElement;
   let component: CdsButton;
-  const placeholderText: string = 'Button Placeholder';
+  const placeholderText = 'Button Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();
@@ -90,7 +90,11 @@ describe('button element', () => {
     it('should not interact with form elements if disabled', async () => {
       component.disabled = true;
       await componentIsStable(component);
-      const o = { f: () => {} };
+      const o = {
+        f: () => {
+          // Do nothing
+        },
+      };
       spyOn(o, 'f');
       testElement.querySelector('form').addEventListener('submit', o.f);
       expect(o.f).not.toHaveBeenCalled();
@@ -219,7 +223,11 @@ describe('button element', () => {
 
     it('should not trigger button click if link', async () => {
       await componentIsStable(component);
-      const o = { f: () => {} };
+      const o = {
+        f: () => {
+          // Do nothing
+        },
+      };
       spyOn(o, 'f');
       componentLink.addEventListener('click', o.f);
 

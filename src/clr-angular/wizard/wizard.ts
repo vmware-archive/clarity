@@ -64,10 +64,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this._forceForward = !!value;
     this.navService.forceForwardNavigation = value;
   }
-  private _forceForward: boolean = false;
   get forceForward(): boolean {
     return this._forceForward;
   }
+  private _forceForward = false;
 
   _open = false;
   /**
@@ -93,10 +93,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this._stopNext = !!value;
     this.navService.wizardHasAltNext = value;
   }
-  private _stopNext: boolean = false;
-  get stopNext() {
+  get stopNext(): boolean {
     return this._stopNext;
   }
+  private _stopNext = false;
 
   /**
    * Prevents ClrWizard from closing when the cancel button or close "X" is clicked.
@@ -111,10 +111,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this._stopCancel = !!value;
     this.navService.wizardHasAltCancel = value;
   }
-  private _stopCancel: boolean = false;
   get stopCancel(): boolean {
     return this._stopCancel;
   }
+  private _stopCancel = false;
 
   /**
    * Prevents ClrWizard from performing any form of navigation away from the current
@@ -129,10 +129,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this._stopNavigation = !!value;
     this.navService.wizardStopNavigation = value;
   }
-  private _stopNavigation = false;
-  get stopNavigation() {
+  get stopNavigation(): boolean {
     return this._stopNavigation;
   }
+  private _stopNavigation = false;
 
   /**
    * Prevents clicks on the links in the stepnav from working.
@@ -146,10 +146,10 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this._disableStepnav = !!value;
     this.navService.wizardDisableStepnav = value;
   }
-  private _disableStepnav: boolean = false;
   get disableStepnav(): boolean {
     return this._disableStepnav;
   }
+  private _disableStepnav = false;
 
   /**
    * Used to communicate to the underlying modal that animations are not
@@ -157,7 +157,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * Set using `[clrWizardPreventModalAnimation]` input.
    */
   /** @deprecated since 3.0, input should be removed in 4.0 because is only related to inline wizards */
-  @Input('clrWizardPreventModalAnimation') _stopModalAnimations: boolean = false;
+  @Input('clrWizardPreventModalAnimation') _stopModalAnimations = false;
   get stopModalAnimations(): string {
     return this._stopModalAnimations ? 'true' : 'false';
   }
@@ -212,7 +212,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   @ContentChildren(ClrWizardHeaderAction) headerActions: QueryList<ClrWizardHeaderAction>;
   @ViewChild('wizardTitle') wizardTitle: ElementRef;
 
-  public get currentPage() {
+  public get currentPage(): ClrWizardPage {
     return this.navService.currentPage;
   }
 
@@ -220,15 +220,15 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this.navService.goTo(page, true);
   }
 
-  public get isLast() {
+  public get isLast(): boolean {
     return this.navService.currentPageIsLast;
   }
 
-  public get isFirst() {
+  public get isFirst(): boolean {
     return this.navService.currentPageIsFirst;
   }
 
-  public get isStatic() {
+  public get isStatic(): boolean {
     return (this.elementRef.nativeElement as HTMLElement).classList.contains('clr-wizard--inline');
   }
 
@@ -236,7 +236,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     public navService: WizardNavigationService,
     public pageCollection: PageCollectionService,
     public buttonService: ButtonHubService,
@@ -255,17 +255,17 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     this.differ = differs.find([]).create(null);
   }
 
-  public ngAfterContentInit() {
+  public ngAfterContentInit(): void {
     this.pageCollection.pages = this.pages;
     this.headerActionService.wizardHeaderActions = this.headerActions;
     this.initializeButtons();
   }
 
-  public ngDoCheck() {
+  public ngDoCheck(): void {
     this.updateNavOnPageChanges();
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
@@ -279,7 +279,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * navigation where event emissions have already been done and firing them again
    * may cause an event loop.
    */
-  public finish(skipChecksAndEmits = true) {
+  public finish(skipChecksAndEmits = true): void {
     if (skipChecksAndEmits) {
       this.forceFinish();
     } else {
@@ -292,7 +292,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * Good for a last step in an alternate workflow. Does the same thing as
    * calling `ClrWizard.finish(true)` or `ClrWizard.finish()` without a parameter.
    */
-  public forceFinish() {
+  public forceFinish(): void {
     if (this.stopNavigation) {
       return;
     }
@@ -362,7 +362,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
    * It is another way to navigate without having to rewrite the wizard’s default
    * functionality from scratch.
    */
-  public next(skipChecksAndEmits: boolean = true): void {
+  public next(skipChecksAndEmits = true): void {
     if (skipChecksAndEmits) {
       this.forceNext();
     } else {

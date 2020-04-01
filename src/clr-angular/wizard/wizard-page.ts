@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -206,7 +206,7 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  public get hasError() {
+  public get hasError(): boolean {
     return this._hasError;
   }
 
@@ -235,7 +235,7 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  @Input('clrWizardPagePreventDefault') public preventDefault: boolean = false;
+  @Input('clrWizardPagePreventDefault') public preventDefault = false;
 
   /**
    *
@@ -488,7 +488,7 @@ export class ClrWizardPage implements OnInit {
    *
    * @memberof ClrWizardPage
    */
-  public get id() {
+  public get id(): string {
     // covers things like null, undefined, false, and empty string
     // while allowing zero to pass
     const idIsNonZeroFalsy = !this._id && this._id !== 0;
@@ -519,7 +519,7 @@ export class ClrWizardPage implements OnInit {
    * @memberof WizardPage
    *
    */
-  private _complete: boolean = false;
+  private _complete = false;
 
   /**
    * A page is marked as completed if it is both readyToComplete and completed,
@@ -629,7 +629,7 @@ export class ClrWizardPage implements OnInit {
    */
   public get headerActions(): TemplateRef<any> {
     if (!this._headerActions) {
-      return;
+      return undefined;
     }
     return this._headerActions.pageHeaderActionsTemplateRef;
   }
@@ -650,7 +650,7 @@ export class ClrWizardPage implements OnInit {
    */
   public get buttons(): TemplateRef<any> {
     if (!this._buttons) {
-      return;
+      return undefined;
     }
     return this._buttons.pageButtonsTemplateRef;
   }

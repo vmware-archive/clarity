@@ -95,7 +95,7 @@ export default function(): void {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function(this: any) {
         context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
@@ -143,7 +143,7 @@ export default function(): void {
       // Until we can properly type "this"
       let context: TestContext<ClrDatagridPagination, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function(this: any) {
         context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
       });
 
@@ -325,7 +325,7 @@ export default function(): void {
         context.testComponent.current = 1;
         context.detectChanges();
 
-        const invalidButton = Array.from(context.clarityElement.querySelectorAll('button')).find(
+        const invalidButton = (Array.from(context.clarityElement.querySelectorAll('button')) as HTMLElement[]).find(
           (btn: HTMLElement) => btn.getAttribute('type') !== 'button'
         );
 
@@ -354,7 +354,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridPagination, FullTest>;
       let commonStrings: ClrCommonStringsService;
 
-      beforeEach(function() {
+      beforeEach(function(this: any) {
         context = this.create(ClrDatagridPagination, FullTest, [Page, DetailService, StateDebouncer]);
         commonStrings = new ClrCommonStringsService();
 
@@ -400,7 +400,7 @@ export default function(): void {
 class FullTest {
   // this value needs to be initialized; otherwise, when you call a setter for size, the page number is set
   // mid-cycle and throws an error.
-  current: number = 1;
+  current = 1;
   size: number;
   total: number;
   last: number;

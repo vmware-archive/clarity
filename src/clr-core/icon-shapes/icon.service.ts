@@ -61,8 +61,9 @@ export class ClarityIcons {
   /** @deprecated legacy API */
   static add(shapes: IconShapeSources) {
     for (const shapeName in shapes) {
+      // eslint-disable-next-line no-prototype-builtins
       if (shapes.hasOwnProperty(shapeName)) {
-        addIcon(<IconShapeTuple>[shapeName, shapes[shapeName]], iconRegistry);
+        addIcon([shapeName, shapes[shapeName]] as IconShapeTuple, iconRegistry);
       }
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -94,7 +94,7 @@ export class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   }
 
   private listenForDOMChanges() {
-    return this.panels.changes.pipe(startWith(this.panels)).subscribe(panels => {
+    return this.panels.changes.pipe(startWith(this.panels)).subscribe((panels: QueryList<ClrStepperPanel>) => {
       this.stepperService.updatePanelOrder(panels.toArray().map(p => p.id));
 
       if (this.initialPanel) {

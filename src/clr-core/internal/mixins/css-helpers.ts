@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CssHelpers extends HTMLElement {}
 
 export class CssHelpers {

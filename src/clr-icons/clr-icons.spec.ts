@@ -33,7 +33,6 @@ import { clrIconSVG } from './utils/svg-tag-generator';
 // @TODO Fix icons tests so they run in IE by not comparing string literals but actually inspecting element composition
 
 // This is a base test object for all sets
-/* tslint:disable:no-string-literal */
 const ALL_SETS = [
   { name: 'Commerce shapes', shapes: CommerceShapes, randomShape: { 'e-check': CommerceShapes['e-check'] } },
   { name: 'Essential shapes', shapes: EssentialShapes, randomShape: { pencil: EssentialShapes['pencil'] } },
@@ -44,7 +43,6 @@ const ALL_SETS = [
   { name: 'Chart shapes', shapes: ChartShapes, randomShape: { 'bar-chart': ChartShapes['bar-chart'] } },
   { name: 'Text Edit shapes', shapes: TextEditShapes, randomShape: { bold: TextEditShapes['bold'] } },
 ];
-/* tslint:enable:no-string-literal */
 
 describe('ClarityIcons', () => {
   afterEach(() => {
@@ -128,7 +126,7 @@ describe('ClarityIcons', () => {
                 { "shape-name": "shape-template" }`;
 
       expect(() => {
-        ClarityIcons.add(<any>'');
+        ClarityIcons.add('' as any);
       }).toThrowError(expectedErrorMessage);
     });
 
@@ -653,11 +651,7 @@ describe('ClarityIcons', () => {
       let allShapes = Object.keys(shapes);
 
       if (exceptions && exceptions.length > 0) {
-        allShapes = allShapes.filter(shape => {
-          if (exceptions.indexOf(shape) === -1) {
-            return shape;
-          }
-        });
+        allShapes = allShapes.filter(shape => exceptions.indexOf(shape) === -1);
       }
 
       for (const shapeName in allShapes) {

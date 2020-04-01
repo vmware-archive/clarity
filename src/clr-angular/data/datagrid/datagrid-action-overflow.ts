@@ -61,7 +61,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   constructor(
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStringsService,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     private zone: NgZone,
     private smartToggleService: ClrPopoverToggleService,
     @Inject(UNIQUE_ID) public popoverId: string
@@ -83,26 +83,26 @@ export class ClrDatagridActionOverflow implements OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  closeOverflowContent(event): void {
+  closeOverflowContent(event: Event): void {
     this.smartToggleService.toggleWithEvent(event);
-  }
-
-  private _open: boolean = false;
-  public get open() {
-    return this._open;
   }
 
   private focusFirstButton(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.zone.runOutsideAngular(() => {
         setTimeout(() => {
-          const firstButton: HTMLButtonElement = document.querySelector('button.action-item');
+          const firstButton: HTMLButtonElement | null = document.querySelector('button.action-item');
           if (firstButton) {
             firstButton.focus();
           }
         });
       });
     }
+  }
+
+  private _open = false;
+  public get open() {
+    return this._open;
   }
 
   @Input('clrDgActionOverflowOpen')

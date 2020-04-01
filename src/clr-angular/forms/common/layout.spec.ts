@@ -10,11 +10,7 @@ import { By } from '@angular/platform-browser';
 import { ClrLayout } from './layout';
 import { LayoutService, Layouts } from './providers/layout.service';
 
-function customTestComponentFactory(
-  layout: Layouts = Layouts.VERTICAL,
-  hasLabelSize: boolean = false,
-  labelSize: any = 2
-) {
+function customTestComponentFactory(layout: Layouts = Layouts.VERTICAL, hasLabelSize = false, labelSize: any = 2) {
   @Component({
     template: `<div clrForm clrLayout="${layout}" ${hasLabelSize ? `clrLabelSize="${labelSize}"` : ''}></div>`,
     providers: [LayoutService],
@@ -49,7 +45,7 @@ export default function(): void {
     });
 
     it('ignores invalid layout types', function() {
-      const testClass = customTestComponentFactory(<Layouts>'invalid');
+      const testClass = customTestComponentFactory('invalid' as Layouts);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);

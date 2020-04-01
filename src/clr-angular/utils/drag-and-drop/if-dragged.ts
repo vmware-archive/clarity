@@ -1,12 +1,11 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Directive, OnDestroy, Optional, SkipSelf, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { DragEventInterface } from './interfaces/drag-event.interface';
 import { DragEventListenerService } from './providers/drag-event-listener.service';
 
 // This structural directive will be used mainly together with `clr-draggable-ghost` directive inside of clrDraggable
@@ -29,12 +28,12 @@ export class ClrIfDragged<T> implements OnDestroy {
     }
 
     this.subscriptions.push(
-      this.dragEventListener.dragStarted.subscribe((event: DragEventInterface<T>) => {
+      this.dragEventListener.dragStarted.subscribe(() => {
         this.container.createEmbeddedView(this.template);
       })
     );
     this.subscriptions.push(
-      this.dragEventListener.dragEnded.subscribe((event: DragEventInterface<T>) => {
+      this.dragEventListener.dragEnded.subscribe(() => {
         this.container.clear();
       })
     );

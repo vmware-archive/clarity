@@ -189,7 +189,7 @@ export default function(): void {
         selectionInstance.selectionType = SelectionType.Multi;
         let nbChanges = 0;
         let currentSelection: number[];
-        selectionInstance.change.subscribe((items: number[]) => {
+        selectionInstance.change.subscribe((items: any) => {
           nbChanges++;
           currentSelection = items;
         });
@@ -206,7 +206,7 @@ export default function(): void {
         selectionInstance.selectionType = SelectionType.Single;
         let nbChanges = 0;
         let currentSelection: number;
-        selectionInstance.change.subscribe((item: number) => {
+        selectionInstance.change.subscribe((item: any) => {
           nbChanges++;
           currentSelection = item;
         });
@@ -220,7 +220,7 @@ export default function(): void {
       it('does not emit selection change twice after a filter is applied', function() {
         selectionInstance.selectionType = SelectionType.Multi;
         let nbChanges = 0;
-        selectionInstance.change.subscribe((items: any) => {
+        selectionInstance.change.subscribe(() => {
           nbChanges++;
         });
 
@@ -228,7 +228,7 @@ export default function(): void {
         expect(nbChanges).toBe(1);
 
         const evenFilter: EvenFilter = new EvenFilter();
-        filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
+        filtersInstance.add(evenFilter);
         evenFilter.toggle();
 
         // current is set to [] because filter is applied, and nbChanges is 3.
@@ -244,7 +244,7 @@ export default function(): void {
 
         const evenFilter: EvenFilter = new EvenFilter();
 
-        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+        filtersInstance.add(evenFilter);
 
         evenFilter.toggle();
 
@@ -297,7 +297,7 @@ export default function(): void {
 
         const evenFilter: EvenFilter = new EvenFilter();
 
-        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+        filtersInstance.add(evenFilter);
 
         evenFilter.toggle();
 
@@ -392,7 +392,7 @@ export default function(): void {
 
         const evenFilter: EvenFilter = new EvenFilter();
 
-        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+        filtersInstance.add(evenFilter as ClrDatagridFilterInterface<number>);
 
         evenFilter.toggle();
 
@@ -405,7 +405,7 @@ export default function(): void {
 
         const evenFilter: EvenFilter = new EvenFilter();
 
-        filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+        filtersInstance.add(evenFilter as ClrDatagridFilterInterface<number>);
 
         evenFilter.toggle();
 
@@ -419,7 +419,7 @@ export default function(): void {
           selectionInstance.current = [4, 3, 2];
           const evenFilter: EvenFilter = new EvenFilter();
 
-          filtersInstance.add(<ClrDatagridFilterInterface<number>>evenFilter);
+          filtersInstance.add(evenFilter as ClrDatagridFilterInterface<number>);
           evenFilter.toggle();
 
           itemsInstance.all = [1, 2, 3, 5];
@@ -458,7 +458,7 @@ export default function(): void {
         });
       }
 
-      function testSelectedItems(latestItems, selectedIndexes: number[]) {
+      function testSelectedItems(latestItems: any[], selectedIndexes: number[]) {
         latestItems.forEach((item, index) => {
           const state = selectedIndexes.indexOf(index) > -1;
           expect(selectionInstance.isSelected(item)).toEqual(state);
@@ -507,8 +507,8 @@ export default function(): void {
           });
         }
 
-        it('should support trackBy item', testTrackBy((index, item) => item.id));
-        it('should support trackBy index', testTrackBy((index, item) => index));
+        it('should support trackBy item', testTrackBy((_index, item) => item.id));
+        it('should support trackBy index', testTrackBy((index, _item) => index));
       });
 
       describe('single selection', function() {
@@ -561,8 +561,8 @@ export default function(): void {
           });
         }
 
-        it('should support trackBy item', testTrackBy((index, item) => item.id));
-        it('should support trackBy index', testTrackBy((index, item) => index));
+        it('should support trackBy item', testTrackBy((_index, item) => item.id));
+        it('should support trackBy index', testTrackBy((index, _item) => index));
       });
     });
 
@@ -577,13 +577,13 @@ export default function(): void {
       const itemsB = [{ id: 4 }, { id: 5 }, { id: 6 }];
       const itemsC = itemsA.map(item => Object.assign({ modified: true }, item));
 
-      function testSelection(stateA, stateB, stateC) {
+      function testSelection(stateA: any, stateB: any, stateC: any) {
         expect(selectionInstance.isSelected(itemsA[0])).toEqual(stateA);
         expect(selectionInstance.isSelected(itemsB[0])).toEqual(stateB);
         expect(selectionInstance.isSelected(itemsC[0])).toEqual(stateC);
       }
 
-      function testToggleAllSelection(stateA, stateB, stateC) {
+      function testToggleAllSelection(stateA: any, stateB: any, stateC: any) {
         itemsA.forEach(element => {
           expect(selectionInstance.isSelected(element)).toEqual(stateA);
         });
@@ -619,7 +619,7 @@ export default function(): void {
         it(
           'should support trackBy item',
           fakeAsync(() => {
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             itemsInstance.all = itemsA;
             tick();
             selectionInstance.setSelected(itemsA[0], true);
@@ -637,7 +637,7 @@ export default function(): void {
         it(
           'accepts pre-selected items with trackBy when `all` has not been defined',
           fakeAsync(() => {
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             selectionInstance.current = [{ id: 1 }, { id: 2 }, { id: 3 }];
             tick();
             itemsInstance.all = itemsA;
@@ -651,7 +651,7 @@ export default function(): void {
         it(
           'should support toggleAll selection on page change',
           fakeAsync(() => {
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             itemsInstance.all = itemsA;
             pageInstance.size = 3;
             pageInstance.current = 1;
@@ -674,13 +674,13 @@ export default function(): void {
           'should not clear selection when filter applied and clrDgPreserveSelection is true',
           fakeAsync(() => {
             const evenFilter: ItemEvenFilter = new ItemEvenFilter();
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             itemsInstance.all = itemsA;
             tick();
             selectionInstance.setSelected(itemsA[0], true);
             selectionInstance.preserveSelection = true;
 
-            filtersInstance.add(<ClrDatagridFilterInterface<Item>>evenFilter);
+            filtersInstance.add(evenFilter as ClrDatagridFilterInterface<Item>);
             evenFilter.toggle();
             tick();
 
@@ -699,7 +699,7 @@ export default function(): void {
         it(
           'should support trackBy item',
           fakeAsync(() => {
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             itemsInstance.all = itemsA;
             tick();
             selectionInstance.currentSingle = itemsA[0];
@@ -717,7 +717,7 @@ export default function(): void {
         it(
           'accepts pre-selected items with trackBy when `all` has not been defined',
           fakeAsync(() => {
-            itemsInstance.trackBy = (index, item) => item.id;
+            itemsInstance.trackBy = (_index, item) => item.id;
             selectionInstance.currentSingle = { id: 1 };
             tick();
             itemsInstance.all = itemsA;
@@ -731,11 +731,11 @@ export default function(): void {
     });
 
     describe('conditional selection', function() {
-      let selectionInstance: Selection<any>;
-      let sortInstance: Sort<any>;
+      let selectionInstance: Selection;
+      let sortInstance: Sort;
       let pageInstance: Page;
-      let filtersInstance: FiltersProvider<any>;
-      let itemsInstance: Items<any>;
+      let filtersInstance: FiltersProvider;
+      let itemsInstance: Items;
 
       beforeEach(function() {
         const stateDebouncer = new StateDebouncer();
@@ -834,7 +834,7 @@ export default function(): void {
       });
 
       it('should use trackBy to find already locked items when the list is replaced (object)', function() {
-        itemsInstance.trackBy = (index, { id }) => id;
+        itemsInstance.trackBy = (_index, { id }) => id;
         selectionInstance.selectionType = SelectionType.Multi;
         itemsInstance.all = [{ id: 1 }, { id: 2 }];
         selectionInstance.lockItem({ id: 2 }, true);

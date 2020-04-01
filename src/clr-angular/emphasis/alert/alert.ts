@@ -63,14 +63,14 @@ export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
     this.announceAriaLiveMessage();
   }
 
-  @Input('clrAlertSizeSmall') isSmall: boolean = false;
-  @Input('clrAlertClosable') closable: boolean = true;
-  @Input('clrAlertAppLevel') isAppLevel: boolean = false;
+  @Input('clrAlertSizeSmall') isSmall = false;
+  @Input('clrAlertClosable') closable = true;
+  @Input('clrAlertAppLevel') isAppLevel = false;
 
   // Aria
   @Input() clrCloseButtonAriaLabel: string = this.commonStrings.keys.alertCloseButtonAriaLabel;
 
-  @Input('clrAlertClosed') _closed: boolean = false;
+  @Input('clrAlertClosed') _closed = false;
   @Output('clrAlertClosedChange') _closedChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   @Input('clrAlertType')
@@ -88,7 +88,7 @@ export class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
    * will be used.
    */
   /** @deprecated since 3.0, remove in 4.0 */
-  @Input('clrPolite') polite: boolean = true;
+  @Input('clrPolite') polite = true;
   /** @deprecated since 3.0, remove in 4.0 */
   @Input('clrAssertive') assertive: boolean;
   /** @deprecated since 3.0, remove in 4.0 */

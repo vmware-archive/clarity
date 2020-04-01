@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,7 +19,7 @@ import { Subscription } from 'rxjs';
   },
 })
 export class HashListener implements OnDestroy, OnInit {
-  constructor(private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Record<string, any>) {
     this.sub = this.route.fragment.subscribe(f => {
       this.scrollToAnchor(f, false);
     });

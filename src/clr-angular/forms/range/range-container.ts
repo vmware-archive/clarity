@@ -40,7 +40,7 @@ import { ClrAbstractContainer } from '../common/abstract-container';
   providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
 })
 export class ClrRangeContainer extends ClrAbstractContainer {
-  private _hasProgress: boolean = false;
+  private _hasProgress = false;
 
   @Input('clrRangeHasProgress')
   set hasProgress(val: boolean) {
@@ -66,7 +66,7 @@ export class ClrRangeContainer extends ClrAbstractContainer {
   }
 
   getRangeProgressFillWidth(): string {
-    const input = <HTMLInputElement>this.renderer.selectRootElement('[clrRange]#' + this.idService.id);
+    const input = this.renderer.selectRootElement('[clrRange]#' + this.idService.id);
 
     const inputWidth = input.offsetWidth;
     const inputMinValue = +input.min;

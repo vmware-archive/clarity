@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -35,15 +35,6 @@ export class ClrIfOpen implements OnDestroy {
     this.toggleService.open = value;
   }
 
-  /**********
-   * @property openChange
-   *
-   * @description
-   * An event emitter that emits when the open property is set to allow for 2way binding when the directive is
-   * used with de-structured / de-sugared syntax.
-   */
-  @Output('clrIfOpenChange') openChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-
   /********
    *
    * @description
@@ -53,6 +44,15 @@ export class ClrIfOpen implements OnDestroy {
   public get open() {
     return this.toggleService.open;
   }
+
+  /**********
+   * @property openChange
+   *
+   * @description
+   * An event emitter that emits when the open property is set to allow for 2way binding when the directive is
+   * used with de-structured / de-sugared syntax.
+   */
+  @Output('clrIfOpenChange') openChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   constructor(
     private toggleService: ClrPopoverToggleService,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,7 +19,7 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
  */
 @Component({
   selector: 'clr-dg-row-detail',
-  template: `  
+  template: `
         <ng-content></ng-content>
     `,
   host: {
@@ -28,7 +28,7 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
     '[class.datagrid-container]': 'cells.length === 0',
   },
 })
-export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
+export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
   /* reference to the enum so that template can access it */
   public SELECTION_TYPE = SelectionType;
 

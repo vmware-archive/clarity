@@ -100,7 +100,7 @@ class WithWrapperWithId {}
 @Component({ template: `<test-wrapper2><input testControl id="hello" /></test-wrapper2>` })
 class WithMultipleNgContent {}
 
-@Component({ template: `<test-wrapper3><input testControl3 [(ngModel)]="model" required /><test-wrapper>` })
+@Component({ template: `<test-wrapper3><input testControl3 [(ngModel)]="model" required /></test-wrapper3>` })
 class WithControl {
   model = '';
 }
@@ -127,7 +127,9 @@ export default function(): void {
       });
       testContext.fixture = TestBed.createComponent(testComponent);
       testContext.fixture.detectChanges();
-      const wrapperDebugElement = testContext.fixture.debugElement.query(By.directive(TestWrapper));
+      const wrapperDebugElement =
+        testContext.fixture.debugElement.query(By.directive(TestWrapper)) ||
+        testContext.fixture.debugElement.query(By.directive(TestWrapper3));
       testContext.wrapper = wrapperDebugElement.componentInstance;
       testContext.control = testContext.fixture.debugElement.query(By.directive(testControl)).injector.get(testControl);
       testContext.controlIdService = wrapperDebugElement.injector.get(ControlIdService);
@@ -139,7 +141,9 @@ export default function(): void {
         testContext.ngControlService = wrapperDebugElement.injector.get(NgControlService);
         testContext.ifErrorService = wrapperDebugElement.injector.get(IfErrorService);
         testContext.layoutService = wrapperDebugElement.injector.get(LayoutService);
-      } catch (error) {}
+      } catch (error) {
+        // Swallow errors
+      }
     }
 
     describe('getProviderFromContainer', function() {

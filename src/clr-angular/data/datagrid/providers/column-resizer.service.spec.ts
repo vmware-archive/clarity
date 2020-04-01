@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
@@ -18,9 +18,7 @@ import { ColumnResizerService } from './column-resizer.service';
   template: `<div></div>`,
   styles: [':host { position: position; width: 200px; height: 400px;}'],
 })
-class TestComponent {
-  constructor(el: ElementRef, renderer: Renderer2, domAdapter: DomAdapter, organizer: DatagridRenderOrganizer) {}
-}
+class TestComponent {}
 
 export default function(): void {
   describe('Column Resizer Service', function() {
@@ -51,8 +49,8 @@ export default function(): void {
       fixture.detectChanges();
 
       columnHostEl = fixture.nativeElement;
-      columnResizerService = <ColumnResizerService>fixture.debugElement.injector.get(ColumnResizerService);
-      datagridRenderOrganizer = <DatagridRenderOrganizer>fixture.debugElement.injector.get(DatagridRenderOrganizer);
+      columnResizerService = fixture.debugElement.injector.get(ColumnResizerService);
+      datagridRenderOrganizer = fixture.debugElement.injector.get(DatagridRenderOrganizer);
     });
 
     afterEach(() => {

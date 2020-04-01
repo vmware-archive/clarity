@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -35,6 +35,7 @@ export class InfiniteTree {
   // I apologize if it's hard to read, but I figured maintenance is not critical since this is neither public
   // nor written to be build upon.
   select(node: string, state: ClrSelectedState) {
+    const prefixIndex = this.selected.findIndex(s => node.startsWith(s));
     switch (state) {
       case ClrSelectedState.SELECTED:
         if (this.isSelected(node) !== ClrSelectedState.SELECTED) {
@@ -43,7 +44,6 @@ export class InfiniteTree {
         }
         break;
       case ClrSelectedState.UNSELECTED:
-        const prefixIndex = this.selected.findIndex(s => node.startsWith(s));
         if (prefixIndex >= 0) {
           const [prefix] = this.selected.splice(prefixIndex, 1);
           if (prefix !== node) {

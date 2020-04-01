@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, Optional, Renderer2 } from '@angular/core';
 import { LayoutService } from './layout.service';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class ControlClassService {
   }
 
   // We want to remove the column classes from the input up to the container
-  initControlClass(renderer, element: HTMLElement) {
+  initControlClass(renderer: Renderer2, element: HTMLElement) {
     if (element && element.className) {
       this.className = element.className;
       const klasses = element.className.split(' ');

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,8 +39,8 @@ export class DatagridHeaderRenderer implements OnDestroy {
   /**
    * Indicates if the column has a strict width, so it doesn't shrink or expand based on the content.
    */
-  private widthSet: boolean = false;
-  private autoSet: boolean = false;
+  private widthSet = false;
+  private autoSet = false;
 
   private subscriptions: Subscription[] = [];
 

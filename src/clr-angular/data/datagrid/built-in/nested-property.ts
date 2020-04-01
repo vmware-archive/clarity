@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,14 +22,18 @@ export class NestedProperty<T = any> {
     if (this.splitProp) {
       let value = item;
       for (const nestedProp of this.splitProp) {
-        if (value == null || typeof value === 'undefined' || typeof value[nestedProp] === 'undefined') {
+        if (
+          value === null ||
+          typeof value === 'undefined' ||
+          typeof (value as Record<string, any>)[nestedProp] === 'undefined'
+        ) {
           return undefined;
         }
-        value = value[nestedProp];
+        value = (value as Record<string, any>)[nestedProp];
       }
       return value;
     } else {
-      return item[this.prop];
+      return (item as Record<string, any>)[this.prop];
     }
   }
 }

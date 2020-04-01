@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -49,18 +49,18 @@ export const CUSTOM_BUTTON_TYPES: any = {
   styles: ['[aria-hidden="true"] { display: none; }'],
 })
 export class ClrWizardButton {
-  @Input('type') public type: string = '';
+  @Input('type') public type = '';
 
-  @Input('clrWizardButtonDisabled') public disabled: boolean = false;
+  @Input('clrWizardButtonDisabled') public disabled = false;
 
-  @Input('clrWizardButtonHidden') public hidden: boolean = false;
+  @Input('clrWizardButtonHidden') public hidden = false;
 
   // EventEmitter which is emitted when a button is clicked.
   @Output('clrWizardButtonClicked') wasClicked: EventEmitter<string> = new EventEmitter<string>(false);
 
   constructor(public navService: WizardNavigationService, public buttonService: ButtonHubService) {}
 
-  private checkDefaultAndCustomType(valueToCheck: string = '', typeToLookUp: string) {
+  private checkDefaultAndCustomType(valueToCheck = '', typeToLookUp: string) {
     if (DEFAULT_BUTTON_TYPES[typeToLookUp] === valueToCheck) {
       return true;
     }

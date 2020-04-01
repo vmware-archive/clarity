@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,8 +36,8 @@ export class TestContext<C, H> {
     this.hostElement = this.fixture.nativeElement;
     this.clarityDebugElement = this.fixture.debugElement.query(By.directive(this.clarityDirectiveType));
     if (!this.clarityDebugElement) {
-      const componentName = (<any>this.hostType).name;
-      const clarityDirectiveName = (<any>this.clarityDirectiveType).name;
+      const componentName = this.hostType.name;
+      const clarityDirectiveName = this.clarityDirectiveType.name;
       throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
     }
     this.clarityDirective = this.clarityDebugElement.injector.get(this.clarityDirectiveType);

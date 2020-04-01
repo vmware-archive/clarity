@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -35,7 +35,7 @@ import { DetailService } from '../providers/detail.service';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
-export const domAdapterFactory = (platformId: Object) => {
+export const domAdapterFactory = (platformId: Record<string, any>) => {
   if (isPlatformBrowser(platformId)) {
     return new DomAdapter();
   } else {
@@ -49,7 +49,7 @@ export const domAdapterFactory = (platformId: Object) => {
   selector: 'clr-datagrid',
   providers: [{ provide: DomAdapter, useFactory: domAdapterFactory, deps: [PLATFORM_ID] }],
 })
-export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
+export class DatagridMainRenderer implements AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy {
   constructor(
     private organizer: DatagridRenderOrganizer,
     private items: Items,
@@ -118,7 +118,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     this.rows.forEach(row => row.setColumnState());
   }
 
-  private _heightSet: boolean = false;
+  private _heightSet = false;
 
   private shouldComputeHeight(): boolean {
     if (!this._heightSet && this.page.size > 0) {
@@ -133,7 +133,7 @@ export class DatagridMainRenderer<T = any> implements AfterContentInit, AfterVie
     if (this.headers) {
       if (state && !this.columnsService.hasCache()) {
         this.columnsService.cache();
-        this.headers.forEach((header, index) => {
+        this.headers.forEach((_header, index) => {
           if (index > 0) {
             this.columnsService.emitStateChangeAt(index, {
               changes: [DatagridColumnChanges.HIDDEN],

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,8 +21,8 @@ export class LayoutService {
   // This is basically a replacement for Object.values(), which IE11 and Node <9 don't support :(
   // String enums cannot be reverse-mapped, meaning Layouts['COMPACT'] does not return 'compact' so
   // this exists to deal with this little caveat to get the list of the values as an array.
-  private layoutValues: string[] = Object.keys(Layouts).map(key => Layouts[key]);
-  private _labelSize: number = 2;
+  private layoutValues: string[] = Object.keys(Layouts).map(key => (Layouts as Record<string, any>)[key]);
+  private _labelSize = 2;
 
   set labelSize(size: number) {
     if (this.labelSizeIsValid(size)) {

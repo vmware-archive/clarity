@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,10 +11,10 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './modal-animation-design.demo.html',
 })
 export class ModalAnimationDesignDemo implements OnInit {
-  animatedExampleIn: boolean = false;
+  animatedExampleIn = false;
   interval: any;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Record<string, any>) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {

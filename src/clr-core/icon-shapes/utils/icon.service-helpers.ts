@@ -9,15 +9,9 @@ import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer.js';
 import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-export function addIcon(shape: IconShapeTuple, registry: IconRegistry) {
-  const [shapeName] = shape;
-  if (!hasIcon(shapeName, registry)) {
-    addIconToRegistry(shape, registry);
-  }
-}
-
 export function addIcons(shapes: IconShapeTuple[], registry: IconRegistry) {
   shapes.forEach(s => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     addIcon(s, registry);
   });
 }
@@ -26,11 +20,19 @@ export function hasIcon(shapeName: string, registry: IconRegistry): boolean {
   return has(shapeName, registry);
 }
 
-export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry) {
-  if (registry[iconAlias[0]]) {
-    iconAlias[1].forEach(a => {
-      setIconAlias(iconAlias[0], a, registry);
-    });
+export function getIcon(shapeName: string, registry: IconRegistry): string {
+  return registry[shapeName] ? (registry[shapeName] as string) : (registry.unknown as string);
+}
+
+function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistry) {
+  const [shapeName, template] = shape;
+  registry[shapeName] = renderIcon(template);
+}
+
+export function addIcon(shape: IconShapeTuple, registry: IconRegistry) {
+  const [shapeName] = shape;
+  if (!hasIcon(shapeName, registry)) {
+    addIconToRegistry(shape, registry);
   }
 }
 
@@ -46,9 +48,19 @@ export function setIconAlias(shapeName: string, aliasName: string, registry: Ico
   }
 }
 
+export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry) {
+  if (registry[iconAlias[0]]) {
+    iconAlias[1].forEach(a => {
+      setIconAlias(iconAlias[0], a, registry);
+    });
+  }
+}
+
 export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistry) {
   for (const shapeNameKey in aliases) {
+    // eslint-disable-next-line no-prototype-builtins
     if (aliases.hasOwnProperty(shapeNameKey)) {
+      // eslint-disable-next-line no-prototype-builtins
       if (registry.hasOwnProperty(shapeNameKey)) {
         setIconAliases([shapeNameKey, aliases[shapeNameKey]], registry);
       } else {
@@ -56,13 +68,4 @@ export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegist
       }
     }
   }
-}
-
-export function getIcon(shapeName: string, registry: IconRegistry): string {
-  return registry[shapeName] ? (registry[shapeName] as string) : (registry.unknown as string);
-}
-
-function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistry) {
-  const [shapeName, template] = shape;
-  registry[shapeName] = renderIcon(template);
 }

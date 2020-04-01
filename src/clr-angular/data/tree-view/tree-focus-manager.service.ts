@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -37,7 +37,7 @@ export class TreeFocusManagerService<T> {
   private findLastVisibleInNode(model: TreeNodeModel<T>): TreeNodeModel<T> {
     // the method will traverse through until it finds the last visible node from the given node
     if (!model) {
-      return;
+      return null;
     }
     if (model.expanded && model.children.length > 0) {
       const children = model.children;
@@ -50,7 +50,7 @@ export class TreeFocusManagerService<T> {
 
   private findNextFocusable(model: TreeNodeModel<T>): TreeNodeModel<T> {
     if (!model) {
-      return;
+      return null;
     }
 
     const siblings = this.findSiblings(model);
@@ -61,6 +61,7 @@ export class TreeFocusManagerService<T> {
     } else if (selfIndex === siblings.length - 1) {
       return this.findNextFocusable(model.parent);
     }
+    return null;
   }
 
   private findLastVisibleInTree(): TreeNodeModel<T> {
@@ -71,7 +72,7 @@ export class TreeFocusManagerService<T> {
 
   private findNodeAbove(model: TreeNodeModel<T>): TreeNodeModel<T> {
     if (!model) {
-      return;
+      return null;
     }
 
     const siblings = this.findSiblings(model);
@@ -82,11 +83,12 @@ export class TreeFocusManagerService<T> {
     } else if (selfIndex > 0) {
       return this.findLastVisibleInNode(siblings[selfIndex - 1]);
     }
+    return null;
   }
 
   private findNodeBelow(model: TreeNodeModel<T>): TreeNodeModel<T> {
     if (!model) {
-      return;
+      return null;
     }
 
     if (model.expanded && model.children.length > 0) {

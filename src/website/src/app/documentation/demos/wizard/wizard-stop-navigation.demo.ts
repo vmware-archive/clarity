@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,11 +15,11 @@ export class WizardStopNavigation {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
-  untouched: boolean = true;
-  loading: boolean = false;
-  errorFlag: boolean = false;
-  progress: number = 0;
-  open: boolean = false;
+  untouched = true;
+  loading = false;
+  errorFlag = false;
+  progress = 0;
+  open = false;
 
   get readyToFinish(): boolean {
     return !this.untouched && !this.loading;
@@ -66,7 +66,7 @@ export class WizardStopNavigation {
     }
   }
 
-  code: string = `
+  code = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -127,7 +127,7 @@ export class WizardStopNavigation {
     }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'"
     [clrWizardPreventNavigation]="loading"
     [clrWizardDisableStepnav]="readyToFinish"

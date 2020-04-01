@@ -91,7 +91,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const vertNav: HTMLElement = <HTMLElement>compiled.querySelector('.nav-btn');
+        const vertNav: HTMLElement = compiled.querySelector('.nav-btn');
         vertNav.click();
 
         fixture.detectChanges();
@@ -104,7 +104,7 @@ export default function(): void {
         vertNavService.collapsed = true;
         fixture.detectChanges();
 
-        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
+        const toggleVertNavBtn: HTMLElement = compiled.querySelector('.nav-trigger');
 
         expect(toggleVertNavBtn.getAttribute('aria-expanded')).toBe('false');
 
@@ -140,7 +140,7 @@ export default function(): void {
         fixture.detectChanges();
 
         const displayStyle: string = window
-          .getComputedStyle(<HTMLElement>compiled.querySelector('.nav-link'))
+          .getComputedStyle(compiled.querySelector('.nav-link') as HTMLElement)
           .getPropertyValue('display');
 
         expect(displayStyle).toBe('none');
@@ -197,7 +197,7 @@ export default function(): void {
         fixture.detectChanges();
 
         const displayStyle: string = window
-          .getComputedStyle(<HTMLElement>compiled.querySelector('.nav-group'))
+          .getComputedStyle(compiled.querySelector('.nav-group') as HTMLElement)
           .getPropertyValue('display');
 
         expect(displayStyle).toBe('none');
@@ -237,7 +237,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const navGroupTrigger: HTMLElement = <HTMLElement>compiled.querySelector('.nav-group-trigger');
+        const navGroupTrigger: HTMLElement = compiled.querySelector('.nav-group-trigger');
         navGroupTrigger.click();
 
         fixture.detectChanges();
@@ -271,7 +271,7 @@ export default function(): void {
         fixture.detectChanges();
 
         const displayStyle: string = window
-          .getComputedStyle(<HTMLElement>compiled.querySelector('.nav-link'))
+          .getComputedStyle(compiled.querySelector('.nav-link') as HTMLElement)
           .getPropertyValue('display');
 
         expect(displayStyle).toBe('none');
@@ -286,7 +286,7 @@ export default function(): void {
         fixture.detectChanges();
 
         const displayStyle: string = window
-          .getComputedStyle(<HTMLElement>compiled.querySelector('.nav-link'))
+          .getComputedStyle(compiled.querySelector('.nav-link') as HTMLElement)
           .getPropertyValue('display');
 
         expect(displayStyle).not.toBe('none');
@@ -301,7 +301,7 @@ export default function(): void {
         fixture.detectChanges();
 
         const displayStyle: string = window
-          .getComputedStyle(<HTMLElement>compiled.querySelector('.nav-link'))
+          .getComputedStyle(compiled.querySelector('.nav-link') as HTMLElement)
           .getPropertyValue('display');
 
         expect(displayStyle).not.toBe('none');
@@ -328,7 +328,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('is-collapsed')).toBe(true);
       });
@@ -339,7 +339,7 @@ export default function(): void {
 
         fixture.detectChanges();
 
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('is-collapsed')).toBe(true);
 
@@ -351,13 +351,13 @@ export default function(): void {
       });
 
       it('adds the .has-icons class when the nav has icons', () => {
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('has-icons')).toBe(true);
       });
 
       it('removes the .has-icons class when the nav has icons', () => {
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('has-icons')).toBe(true);
 
@@ -370,13 +370,13 @@ export default function(): void {
       });
 
       it('adds the .has-nav-groups class when the nav has icons', () => {
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('has-nav-groups')).toBe(true);
       });
 
       it('removes the .has-nav-groups class when the nav has icons', () => {
-        const nav: HTMLElement = <HTMLElement>compiled.querySelector('clr-vertical-nav');
+        const nav: HTMLElement = compiled.querySelector('clr-vertical-nav');
 
         expect(nav.classList.contains('has-nav-groups')).toBe(true);
 
@@ -510,7 +510,7 @@ export default function(): void {
 
           fixture.detectChanges();
 
-          const trigger: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
+          const trigger: HTMLElement = compiled.querySelector('.nav-trigger');
           trigger.click();
 
           fixture.detectChanges();
@@ -553,8 +553,8 @@ export default function(): void {
 
         const verticalNavToggleString = commonStrings.keys.verticalNavToggle;
 
-        const toggleVertNavBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-trigger');
-        const navBtn: HTMLElement = <HTMLElement>compiled.querySelector('.nav-btn');
+        const toggleVertNavBtn: HTMLElement = compiled.querySelector('.nav-trigger');
+        const navBtn: HTMLElement = compiled.querySelector('.nav-btn');
 
         expect(toggleVertNavBtn.getAttribute('aria-label')).toBe(verticalNavToggleString);
         expect(navBtn.getAttribute('aria-label')).toBe(verticalNavToggleString);
@@ -575,7 +575,7 @@ export default function(): void {
     `,
 })
 class NoIconsNoNavGroupTestComponent {
-  collapsible: boolean = false;
+  collapsible = false;
 }
 
 @Component({
@@ -640,8 +640,8 @@ class IconsAndNavGroupTestComponent {}
 class ViewBasicsTestComponent {
   @ViewChild('nav') nav: ClrVerticalNav;
 
-  groupToggle: boolean = true;
-  iconToggle: boolean = true;
+  groupToggle = true;
+  iconToggle = true;
 }
 
 @Component({
@@ -654,8 +654,8 @@ class ViewBasicsTestComponent {
     `,
 })
 class APITestComponent {
-  collapsible: boolean = false;
-  collapsed: boolean = false;
+  collapsible = false;
+  collapsed = false;
   collapsedChange: boolean;
 
   @ViewChild('nav') nav: ClrVerticalNav;
@@ -683,6 +683,6 @@ class APITestComponent {
     `,
 })
 class ResponsiveVerticalNavTestComponent {
-  overflowMenu: boolean = false;
-  hamburgerMenu: boolean = false;
+  overflowMenu = false;
+  hamburgerMenu = false;
 }

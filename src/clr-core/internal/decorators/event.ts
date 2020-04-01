@@ -21,6 +21,21 @@ export class EventEmitter<T> {
   }
 }
 
+// Legacy TS Decorator
+function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
+  Object.defineProperty(protoOrDescriptor, name, descriptor);
+}
+
+// TC39 Decorators proposal
+function standardEvent(descriptor: PropertyDescriptor, element: { key: string }) {
+  return {
+    kind: 'method',
+    placement: 'prototype',
+    key: element.key,
+    descriptor,
+  };
+}
+
 export function event() {
   return (protoOrDescriptor: any, name: string): any => {
     const descriptor = {
@@ -34,20 +49,5 @@ export function event() {
     return name !== undefined
       ? legacyEvent(descriptor, protoOrDescriptor, name)
       : standardEvent(descriptor, protoOrDescriptor);
-  };
-}
-
-// Legacy TS Decorator
-function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
-  Object.defineProperty(protoOrDescriptor, name, descriptor);
-}
-
-// TC39 Decorators proposal
-function standardEvent(descriptor: PropertyDescriptor, element: { key: string }) {
-  return {
-    kind: 'method',
-    placement: 'prototype',
-    key: element.key,
-    descriptor,
   };
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,7 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class RangeDemo {
   disabled = true;
-  standalone: number = 60;
+  standalone = 60;
   vertical = {
     one: 31,
     two: 26,
@@ -37,8 +37,8 @@ export class RangeDemo {
 
   rangeValue = 1;
 
-  rangeChange(event) {
-    console.log('rangeChange', event.target.value);
+  rangeChange(event: Event) {
+    console.log('rangeChange', (event.target as HTMLInputElement).value);
   }
 
   submit() {

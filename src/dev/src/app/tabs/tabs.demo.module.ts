@@ -12,9 +12,8 @@ import { TabsAngularDemo } from './tabs-angular';
 import { TabsStaticDemo } from './tabs-static';
 import { TabsDemo } from './tabs.demo';
 import { ROUTING } from './tabs.demo.routing';
-// tslint:disable no-barrel-imports
+// eslint-disable-next-line clarity/no-barrel-imports
 import { ClrKeyFocusModule } from './../../../../clr-angular/utils/focus/key-focus/key-focus.module';
-// tslint:enable no-barrel-imports
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING, ClrKeyFocusModule],

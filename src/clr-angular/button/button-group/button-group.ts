@@ -128,12 +128,12 @@ export class ClrButtonGroup {
 
   @Input('clrMenuPosition')
   set menuPosition(pos: string) {
-    if (pos && ClrPopoverPositions[pos]) {
+    if (pos && (ClrPopoverPositions as Record<string, any>)[pos]) {
       this._menuPosition = pos;
     } else {
       this._menuPosition = 'bottom-left';
     }
 
-    this.popoverPosition = ClrPopoverPositions[this._menuPosition];
+    this.popoverPosition = (ClrPopoverPositions as Record<string, any>)[this._menuPosition];
   }
 }

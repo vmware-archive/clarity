@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ export class BasicFocusableItem implements FocusableItem {
     @Inject(UNIQUE_ID) public id: string,
     private el: ElementRef<HTMLElement>,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     renderer.setAttribute(el.nativeElement, 'id', id);
     renderer.setAttribute(el.nativeElement, 'tabindex', '-1');

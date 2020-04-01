@@ -64,7 +64,7 @@ export default function(): void {
       this.detectChanges();
       const recursiveChildrenDE = this.fixture.debugElement.query(By.directive(RecursiveChildren));
       expect(recursiveChildrenDE).toBeTruthy();
-      expect((<RecursiveChildren<void>>recursiveChildrenDE.componentInstance).children).toBe(emptyTree);
+      expect((recursiveChildrenDE.componentInstance as RecursiveChildren<void>).children).toBe(emptyTree);
     });
 
     it('gets tree role by default', function(this: Context) {

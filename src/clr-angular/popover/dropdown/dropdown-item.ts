@@ -31,8 +31,8 @@ export class ClrDropdownItem implements AfterViewInit {
     private focusableItem: FocusableItem
   ) {}
 
-  private unlisten;
-  public setByDeprecatedDisabled: boolean = false;
+  private unlisten: () => void;
+  public setByDeprecatedDisabled = false;
 
   @Input('clrDisabled')
   set disabled(value: boolean | string) {

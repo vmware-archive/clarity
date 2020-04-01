@@ -16,6 +16,7 @@ import { MockFocusableItem } from '../../../utils/focus/focusable-item/focusable
 import { Linkers } from '../../../utils/focus/focusable-item/linkers';
 import { UNIQUE_ID } from '../../../utils/id-generator/id-generator.service';
 import { DROPDOWN_FOCUS_HANDLER_PROVIDER, DropdownFocusHandler } from './dropdown-focus-handler.service';
+// eslint-disable-next-line id-blacklist
 import any = jasmine.any;
 
 @Component({
@@ -197,8 +198,8 @@ export default function(): void {
 
       it('does not point left or right', function(this: TestContext) {
         this.focusHandler.addChildren(this.children);
-        expect((<FocusableItem>this.focusHandler).left).toBeUndefined();
-        expect((<FocusableItem>this.focusHandler).right).toBeUndefined();
+        expect((this.focusHandler as FocusableItem).left).toBeUndefined();
+        expect((this.focusHandler as FocusableItem).right).toBeUndefined();
       });
 
       it('points correctly even if children have been added early', function(this: TestContext) {
@@ -303,9 +304,9 @@ export default function(): void {
 
       it('does not point up, down or left', function(this: TestContext) {
         this.focusHandler.addChildren(this.children);
-        expect((<FocusableItem>this.focusHandler).up).toBeUndefined();
-        expect((<FocusableItem>this.focusHandler).down).toBeUndefined();
-        expect((<FocusableItem>this.focusHandler).left).toBeUndefined();
+        expect((this.focusHandler as FocusableItem).up).toBeUndefined();
+        expect((this.focusHandler as FocusableItem).down).toBeUndefined();
+        expect((this.focusHandler as FocusableItem).left).toBeUndefined();
       });
 
       it('links received children back to the trigger', function(this: TestContext) {
@@ -319,7 +320,7 @@ export default function(): void {
         this.toggleService.open = true;
         const back = this.children[0].left;
         expect(isObservable(back)).toBeTruthy();
-        (<Observable<FocusableItem>>back).subscribe(() => null);
+        (back as Observable<FocusableItem>).subscribe(() => null);
         expect(this.toggleService.open).toBeFalsy();
       });
 

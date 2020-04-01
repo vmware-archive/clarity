@@ -80,7 +80,7 @@ export default function(): void {
       xit('clicking on the link opens the nav group', () => {
         // TODO(v2): Figure out upgrade issue related to testing disconnections
         const navGroup: ClrVerticalNavGroup = fixture.componentInstance.navGroup;
-        const link: HTMLElement = (<HTMLElement>compiled.querySelector('#link2')) as HTMLElement;
+        const link: HTMLElement = compiled.querySelector('#link2');
         expect(navGroup.expanded).toBe(false);
 
         link.click();

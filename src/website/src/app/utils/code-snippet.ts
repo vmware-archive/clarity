@@ -61,8 +61,8 @@ export class CodeSnippet implements AfterViewInit {
     return this._code.trim();
   }
 
-  @Input('clrLanguage') public language: string = 'html';
-  @Input('clrDisablePrism') public disablePrism: boolean = false;
+  @Input('clrLanguage') public language = 'html';
+  @Input('clrDisablePrism') public disablePrism = false;
 
   ngAfterViewInit(): void {
     if (this.codeHighlight) {

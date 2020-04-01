@@ -62,7 +62,9 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
       this.ifErrorService = injector.get(IfErrorService);
       this.controlClassService = injector.get(ControlClassService);
       this.markControlService = injector.get(MarkControlService);
-    } catch (e) {}
+    } catch (e) {
+      // Swallow errors
+    }
 
     if (this.controlClassService) {
       this.controlClassService.initControlClass(renderer, el.nativeElement);

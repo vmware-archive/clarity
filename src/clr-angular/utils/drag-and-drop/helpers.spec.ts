@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,8 +28,8 @@ export const generateDragPosition = (
 
 export const emulateDragEvent = (
   eventName: string,
-  pageX: number = 0,
-  pageY: number = 0,
+  pageX = 0,
+  pageY = 0,
   element: Document | Node = document.body
 ): void => {
   const emulatedEvent: any = new CustomEvent(eventName, { bubbles: true });

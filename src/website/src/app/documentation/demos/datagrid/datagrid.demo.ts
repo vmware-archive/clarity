@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -29,13 +29,13 @@ export class DatagridDemo extends ClarityDocComponent implements OnInit, OnDestr
 
   childRoutes: Route[];
 
-  previous: boolean = false;
-  next: boolean = false;
+  previous = false;
+  next = false;
 
   previousRoute: Route;
   nextRoute: Route;
 
-  parentRoute: string = '';
+  parentRoute = '';
 
   ngOnInit() {
     const tempArr: any[] = this.route.routeConfig.children;

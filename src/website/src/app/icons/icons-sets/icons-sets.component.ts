@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -64,7 +64,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
   previewClasses: any;
 
   // When jumping to a fragment, leverage some space between window top and the fragment
-  fragmentOffset: number = 192;
+  fragmentOffset = 192;
 
   @ViewChildren(FragmentContentComponent) fragmentContentElRef: QueryList<FragmentContentComponent>;
 
@@ -76,7 +76,7 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
     private _iconsViewService: IconsViewService,
     private _renderer: Renderer2,
     private _activeFragmentService: ActiveFragmentService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     this.subscriptions.push(
       this._iconsViewService.previewClasses.subscribe(newPreviewClasses => {
@@ -139,17 +139,18 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
    */
 
   prepareIconsSets() {
-    // tslint:disable-next-line
     for (const setName in this.sets) {
-      this.sets[setName].setTitle = setName
-        .split('-')
-        .map(word => {
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        })
-        .join(' ');
+      if (this.sets.hasOwnProperty(setName)) {
+        this.sets[setName].setTitle = setName
+          .split('-')
+          .map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          })
+          .join(' ');
 
-      this.sets[setName].matchedIcons = this.sets[setName].searchableIcons;
-      this.sets[setName].fragmentOffset = -this.fragmentOffset;
+        this.sets[setName].matchedIcons = this.sets[setName].searchableIcons;
+        this.sets[setName].fragmentOffset = -this.fragmentOffset;
+      }
     }
 
     this.sets['core-shapes'].fragmentOffset = -Number.MAX_VALUE;

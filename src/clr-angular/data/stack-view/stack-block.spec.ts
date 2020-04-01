@@ -58,7 +58,7 @@ class NestedBlocks {
 class DynamicBlock {
   @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
 
-  expanded: boolean = false;
+  expanded = false;
 }
 
 export default function(): void {

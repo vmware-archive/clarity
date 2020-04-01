@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-// tslint:disable
 declare module '*.html' {
+  // eslint-disable-next-line
   var _: string;
   export default _;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -13,7 +13,7 @@ export class ClrPopoverToggleService {
    *  Popovers might need to ignore click events on an element
    *  (eg: popover opens on focus on an input field. Clicks should be ignored in this case)
    */
-  private _open: boolean = false;
+  private _open = false;
   private _openChange: Subject<boolean> = new Subject<boolean>();
   private _openEvent: Event;
   private _openEventChange: Subject<Event> = new Subject<Event>();

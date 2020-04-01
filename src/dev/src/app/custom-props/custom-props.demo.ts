@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,7 +39,7 @@ let counter = 0;
 
 function switchTheme(toTheme: string): string {
   const newStyle = document.createElement('style');
-  const theme = themes[toTheme];
+  const theme = (themes as Record<string, any>)[toTheme];
 
   document.head.appendChild(newStyle);
   newStyle.id = 'ie-theme_' + counter++;

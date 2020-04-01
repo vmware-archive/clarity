@@ -169,19 +169,17 @@ describe('icon element', () => {
 
   describe('sr-only: ', () => {
     it('should contain the sr-only element for screen readers', async () => {
-      let srOnlyEl: HTMLElement;
       await componentIsStable(component);
-      srOnlyEl = component.shadowRoot.querySelector('.sr-only');
+      const srOnlyEl = component.shadowRoot.querySelector('.sr-only');
       expect(srOnlyEl).toBeDefined();
     });
 
     it('should update sr-only element if title is changed', async () => {
       const testTitle = 'Title Me';
-      let srOnlyEl: HTMLElement;
       await componentIsStable(component);
       component.setAttribute('title', testTitle);
       await componentIsStable(component);
-      srOnlyEl = component.shadowRoot.querySelector('.clr-sr-only');
+      const srOnlyEl = component.shadowRoot.querySelector('.clr-sr-only');
       expect(srOnlyEl.innerHTML).toContain(testTitle);
     });
   });

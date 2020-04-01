@@ -43,9 +43,11 @@ export class ScrollSpy implements OnDestroy, OnInit {
       window.requestAnimationFrame(() => {
         const currentLinkIndex = this.findCurrentAnchor() || 0;
         this.linkElements.forEach((link: ElementRef, index: number) => {
-          index === currentLinkIndex
-            ? this.renderer.addClass(link.nativeElement, 'active')
-            : this.renderer.removeClass(link.nativeElement, 'active');
+          if (index === currentLinkIndex) {
+            this.renderer.addClass(link.nativeElement, 'active');
+          } else {
+            this.renderer.removeClass(link.nativeElement, 'active');
+          }
         });
         this.throttle = false;
       });

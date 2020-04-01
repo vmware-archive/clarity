@@ -12,7 +12,6 @@ interface Window {
 
 declare var window: Window;
 
-/* tslint:disable:variable-name */
 export const ClrShapeRulerPencil = clrIconSVG(
   `<polygon class="clr-i-outline clr-i-outline-path-1" points="9 17.41 9 27 18.59 27 16.59 25 11 25 11 19.41 9 17.41"/>
             <path class="clr-i-outline clr-i-outline-path-2" d="M34.87,32.29,32,29.38V32H4V27.85H6v-1.6H4V19.6H6V18H4V11.6H6V10H4V4.41L19.94,20.26V17.44L3.71,1.29A1,1,0,0,0,2,2V33a1,1,0,0,0,1,1H34.16a1,1,0,0,0,.71-1.71Z"/>

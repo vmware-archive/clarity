@@ -94,7 +94,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private dateNavigationService: DateNavigationService,
     @Optional() private datepickerEnabledService: DatepickerEnabledService,
     @Optional() private dateFormControlService: DateFormControlService,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     @Optional() private focusService: FocusService,
     private datepickerFocusService: DatepickerFocusService
   ) {
@@ -292,6 +292,6 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   private listenForInputRefocus() {
     return this.dateNavigationService.selectedDayChange
       .pipe(filter(date => !!date))
-      .subscribe(v => this.datepickerFocusService.focusInput(this.el.nativeElement));
+      .subscribe(() => this.datepickerFocusService.focusInput(this.el.nativeElement));
   }
 }

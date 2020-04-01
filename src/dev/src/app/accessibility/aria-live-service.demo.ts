@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -67,14 +67,14 @@ import { Component } from '@angular/core';
     `,
 })
 export class AriaLiveServiceDemo {
-  public showClrSpinner: boolean = false;
-  public showClrProgressBar: boolean = false;
-  public showMonitorTest: boolean = false;
-  public showErrorControlTest: boolean = false;
-  public showAlertTest: boolean = false;
+  public showClrSpinner = false;
+  public showClrProgressBar = false;
+  public showMonitorTest = false;
+  public showErrorControlTest = false;
+  public showAlertTest = false;
 
   spinners: boolean[] = [];
-  endlessToggle: boolean = false;
+  endlessToggle = false;
   endglessInterval: any;
   endlessCreation() {
     this.endlessToggle = !this.endlessToggle;
@@ -90,7 +90,7 @@ export class AriaLiveServiceDemo {
 
   // Progress
 
-  public monitorValue: number = 0;
+  public monitorValue = 0;
   private monitorInterval: any;
   toggleClrProgressBar() {
     this.showMonitorTest = !this.showMonitorTest;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -73,7 +73,7 @@ export class PageCollectionService {
     const pageCount = this.pagesCount;
 
     if (pageCount < 2) {
-      return;
+      return null;
     }
 
     return this.pagesAsArray[pageCount - 2];
@@ -89,7 +89,7 @@ export class PageCollectionService {
     const pageCount = this.pagesCount;
 
     if (pageCount < 1) {
-      return;
+      return null;
     }
 
     return this.pagesAsArray[pageCount - 1];
@@ -103,7 +103,7 @@ export class PageCollectionService {
    */
   public get firstPage(): ClrWizardPage {
     if (!this.pagesCount) {
-      return;
+      return null;
     }
 
     return this.pagesAsArray[0];
@@ -267,13 +267,11 @@ export class PageCollectionService {
    * @memberof PageCollectionService
    */
   public previousPageIsCompleted(page: ClrWizardPage) {
-    let previousPage: ClrWizardPage;
-
     if (!page) {
       return false;
     }
 
-    previousPage = this.getPreviousPage(page);
+    const previousPage = this.getPreviousPage(page);
 
     if (null === previousPage) {
       // page is the first page. no previous page.

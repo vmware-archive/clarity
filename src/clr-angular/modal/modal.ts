@@ -49,17 +49,17 @@ export class ClrModal implements OnChanges, OnDestroy {
 
   @HostBinding('class.open')
   @Input('clrModalOpen')
-  _open: boolean = false;
+  _open = false;
   @Output('clrModalOpenChange') _openChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  @Input('clrModalClosable') closable: boolean = true;
+  @Input('clrModalClosable') closable = true;
   @Input('clrModalSize') size: string;
-  @Input('clrModalStaticBackdrop') staticBackdrop: boolean = true;
-  @Input('clrModalSkipAnimation') skipAnimation: string = 'false';
+  @Input('clrModalStaticBackdrop') staticBackdrop = true;
+  @Input('clrModalSkipAnimation') skipAnimation = 'false';
 
   // presently this is only used by wizards
-  @Input('clrModalOverrideScrollService') bypassScrollService: boolean = false;
-  @Input('clrModalPreventClose') stopClose: boolean = false;
+  @Input('clrModalOverrideScrollService') bypassScrollService = false;
+  @Input('clrModalPreventClose') stopClose = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   constructor(

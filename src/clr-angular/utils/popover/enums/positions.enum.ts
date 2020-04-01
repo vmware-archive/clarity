@@ -16,6 +16,10 @@ interface ClrPopoverPositionsInterface {
   content: ClrAlignment;
 }
 
+export interface ClrPopoverPositions {
+  [key: string]: any;
+}
+
 export class ClrPopoverPositions {
   static 'top-right': ClrPopoverPositionsInterface = {
     axis: ClrAxis.VERTICAL,

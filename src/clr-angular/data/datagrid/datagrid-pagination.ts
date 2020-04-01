@@ -32,18 +32,18 @@ import { DetailService } from './providers/detail.service';
     </div>
     <div class="pagination-list" *ngIf="page.last > 1">
       <button
-        type="button" 
-        class="pagination-first" 
-        [disabled]="page.current <= 1" 
+        type="button"
+        class="pagination-first"
+        [disabled]="page.current <= 1"
         (click)="page.current = 1"
         [attr.aria-label]="commonStrings.keys.firstPage"
         >
         <clr-icon shape="step-forward-2 down"></clr-icon>
       </button>
-      <button 
+      <button
         type="button"
-        class="pagination-previous" 
-        [disabled]="page.current <= 1" 
+        class="pagination-previous"
+        [disabled]="page.current <= 1"
         (click)="page.current = page.current - 1"
         [attr.aria-label]="commonStrings.keys.previousPage"
         >
@@ -51,12 +51,12 @@ import { DetailService } from './providers/detail.service';
       </button>
         <input
           *ngIf="!disableCurrentPageInput; else readOnly"
-          #currentPageInput 
-          type="text" 
-          class="pagination-current clr-input" 
-          [size]="page.last.toString().length" 
+          #currentPageInput
+          type="text"
+          class="pagination-current clr-input"
+          [size]="page.last.toString().length"
           [value]="page.current"
-          (keydown.enter)="updateCurrentPage($event)" 
+          (keydown.enter)="updateCurrentPage($event)"
           (blur)="updateCurrentPage($event)"
           [attr.aria-label]="commonStrings.keys.currentPage"
           />
@@ -65,19 +65,19 @@ import { DetailService } from './providers/detail.service';
           </ng-template>
 
           &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
-      <button 
+      <button
         type="button"
-        class="pagination-next" 
-        [disabled]="page.current >= page.last" 
+        class="pagination-next"
+        [disabled]="page.current >= page.last"
         (click)="page.current = page.current + 1"
         [attr.aria-label]="commonStrings.keys.nextPage"
         >
         <clr-icon shape="angle right"></clr-icon>
       </button>
-      <button 
-        type="button" 
-        class="pagination-last" 
-        [disabled]="page.current >= page.last" 
+      <button
+        type="button"
+        class="pagination-last"
+        [disabled]="page.current >= page.last"
         (click)="page.current = page.last"
         [attr.aria-label]="commonStrings.keys.lastPage"
         >
@@ -151,14 +151,14 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
     }
   }
 
+  @Input('clrDgPageInputDisabled') public disableCurrentPageInput: boolean;
+
   /**
    * Page size
    */
   public get pageSize(): number {
     return this.page.size;
   }
-
-  @Input('clrDgPageInputDisabled') public disableCurrentPageInput: boolean;
 
   @Input('clrDgPageSize')
   public set pageSize(size: number) {

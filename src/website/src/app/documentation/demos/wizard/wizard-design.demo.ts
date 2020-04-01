@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -98,7 +98,7 @@ export class WizardDesignDemo {
   @ViewChild('number', { static: true })
   numberField: any;
 
-  open: boolean = true;
+  open = true;
 
   reset(val: boolean): void {
     this.open = val;
@@ -107,8 +107,8 @@ export class WizardDesignDemo {
       this.model.name = '';
       this.model.favorite = '';
       this.model.number = '';
-      this.model.ht_feet = '1 ft.';
-      this.model.ht_inches = '0 in.';
+      this.model.htFeet = '1 ft.';
+      this.model.htInches = '0 in.';
       this.model.weight = '';
       this.model.gender = 'Male';
       this.model.color = 'blue';
@@ -146,8 +146,8 @@ export class WizardDesignDemo {
     name: '',
     favorite: '',
     number: '',
-    ht_feet: '1 ft.',
-    ht_inches: '0 in.',
+    htFeet: '1 ft.',
+    htInches: '0 in.',
     weight: '',
     gender: 'Male',
     color: 'blue',

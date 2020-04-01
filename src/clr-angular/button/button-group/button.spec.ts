@@ -41,8 +41,8 @@ class TestButtonComponent {
   @ViewChild('button2') button2: ClrButton;
   @ViewChild('button3') button3: ClrButton;
 
-  flag: boolean = false;
-  button2InMenu: boolean = true;
+  flag = false;
+  button2InMenu = true;
 
   toggleClick(): void {
     this.flag = !this.flag;
@@ -82,7 +82,7 @@ export class ButtonViewTestComponent {
   @ViewChild('button2') button2: ClrButton;
   @ViewChild('button3') button3: ClrButton;
 
-  load: boolean = true;
+  load = true;
 }
 
 export default function(): void {

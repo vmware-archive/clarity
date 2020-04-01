@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -17,7 +17,6 @@ import {
   nudgeContent,
   testVisibility,
 } from './position-operators';
-import { ClrPopoverContentOffset } from './interfaces/popover-content-offset.interface';
 import { ClrViewportViolation } from './enums/viewport-violation.enum';
 
 export function ClrPositionTransformSpec(): void {
@@ -96,8 +95,7 @@ export function ClrAlignmentSpec(): void {
   describe('align function', () => {
     positionTestCases.forEach(testCase => {
       it(`should calculate offsets for ClrPopoverPosition: \n{\n${testCase.name}`, function() {
-        let testOffsets: ClrPopoverContentOffset;
-        testOffsets = align(testCase.position, testAnchorRect, testContentRect);
+        const testOffsets = align(testCase.position, testAnchorRect, testContentRect);
         expect(testOffsets).toEqual(testCase.expectedOffsets);
       });
     });
@@ -113,14 +111,14 @@ export function ClrViewportValidationSpec() {
     };
     beforeEach(() => {
       // resize the browser for this suite
-      (<any>window).innerHeight = 600;
-      (<any>window).innerWidth = 600;
+      (window as any).innerHeight = 600;
+      (window as any).innerWidth = 600;
       window.dispatchEvent(new Event('resize'));
     });
     afterEach(() => {
       // Put the browser size back to its original
-      (<any>window).innerHeight = originalWindowSize.innerHeight;
-      (<any>window).innerWidth = originalWindowSize.innerWidth;
+      (window as any).innerHeight = originalWindowSize.innerHeight;
+      (window as any).innerWidth = originalWindowSize.innerWidth;
       window.dispatchEvent(new Event('resize'));
     });
     describe('Single violations', () => {

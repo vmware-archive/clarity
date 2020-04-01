@@ -81,7 +81,7 @@ export default function(): void {
       beforeEach(function() {
         context = this.createOnly(ClrOption, TestComponent, []);
         toggleService = context.getClarityProvider(ClrPopoverToggleService);
-        optionSelectionService = <OptionSelectionService<string>>context.getClarityProvider(OptionSelectionService);
+        optionSelectionService = context.getClarityProvider(OptionSelectionService) as OptionSelectionService<string>;
       });
 
       it('calls to render the option when an option is clicked', () => {

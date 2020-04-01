@@ -21,7 +21,7 @@ import { DatagridRowRenderer } from './row-renderer';
 export default function(): void {
   describe('DatagridMainRenderer directive', function() {
     describe('static loading', function() {
-      let context: TestContext<DatagridMainRenderer<number>, StaticTest>;
+      let context: TestContext<DatagridMainRenderer, StaticTest>;
       let organizer: MockDatagridRenderOrganizer;
       let resizeSpy: jasmine.Spy;
       let computeStateSpy: jasmine.Spy;
@@ -36,7 +36,7 @@ export default function(): void {
           [],
           [{ provide: DatagridRenderOrganizer, useClass: MockDatagridRenderOrganizer }]
         );
-        organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
+        organizer = context.getClarityProvider(DatagridRenderOrganizer) as MockDatagridRenderOrganizer;
         computeStateSpy = spyOn(DatagridHeaderRenderer.prototype, 'getColumnWidthState');
         columnsService = context.getClarityProvider(ColumnsService);
       });
@@ -94,7 +94,7 @@ export default function(): void {
     });
 
     describe('dynamic loading', function() {
-      let context: TestContext<DatagridMainRenderer<number>, DynamicTest>;
+      let context: TestContext<DatagridMainRenderer, DynamicTest>;
       let resizeSpy, rowsSpy: jasmine.Spy;
 
       beforeEach(function() {
@@ -224,7 +224,7 @@ export default function(): void {
     });
 
     describe('smart columns width', function() {
-      let context: TestContext<DatagridMainRenderer<number>, ColumnsWidthTest>;
+      let context: TestContext<DatagridMainRenderer, ColumnsWidthTest>;
       let organizer: DatagridRenderOrganizer;
       let columnsService: ColumnsService;
 
@@ -275,7 +275,7 @@ export default function(): void {
     });
 
     describe('detail pane', function() {
-      let context: TestContext<DatagridMainRenderer<number>, ColumnsWidthTest>;
+      let context: TestContext<DatagridMainRenderer, ColumnsWidthTest>;
       let columnsService: ColumnsService;
 
       beforeEach(function() {

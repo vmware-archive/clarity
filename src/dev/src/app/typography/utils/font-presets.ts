@@ -104,14 +104,13 @@ export const fontPresets: [string, FontMeasurements][] = [
 
 export function getPreset(toCheck: string, presets = fontPresets) {
   const preset = presets.find(p => p[0] === toCheck);
-  let presetName: string, presetObj: FontMeasurements;
 
   if (typeof preset === 'undefined') {
     return null;
   }
 
-  presetName = preset[0];
-  presetObj = preset[1];
+  const presetName = preset[0];
+  const presetObj = preset[1];
 
   return {
     font: presetName,

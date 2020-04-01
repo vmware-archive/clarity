@@ -35,7 +35,9 @@ class ReactiveFormsTestComponent {
     group2: new FormGroup({}),
   });
 
-  submit() {}
+  submit() {
+    // Do nothing
+  }
 }
 
 @Component({
@@ -50,7 +52,9 @@ class TemplateFormsTestComponent {
   @ViewChild(ClrStepper) stepper: ClrStepper;
   @ViewChild('testForm') form: FormGroup;
   showSecondStep = true;
-  submit() {}
+  submit() {
+    // Do nothing
+  }
 }
 
 describe('ClrStepper', () => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,13 +28,13 @@ import { ClrWizardModule } from './wizard.module';
     `,
 })
 class ViewTestComponent {
-  public show: boolean = true;
-  public btnType: string = '';
-  public disableBtn: boolean = false;
-  public hideBtn: boolean = false;
-  public projector: string = 'mundo';
-  private _clickCount: number = 0;
-  private _lastBtnClicked: string = '';
+  public show = true;
+  public btnType = '';
+  public disableBtn = false;
+  public hideBtn = false;
+  public projector = 'mundo';
+  private _clickCount = 0;
+  private _lastBtnClicked = '';
   public get clickCount(): number {
     return this._clickCount;
   }
@@ -1096,10 +1096,9 @@ export default function(): void {
         });
 
         it('hidden button wrappers should have aria-hidden set to true', () => {
-          let myVal: string;
           myTestComponent.hideBtn = true;
           fixture.detectChanges();
-          myVal = buttonElement.getAttribute('aria-hidden');
+          const myVal = buttonElement.getAttribute('aria-hidden');
           expect(myVal).toBe('true');
         });
       });

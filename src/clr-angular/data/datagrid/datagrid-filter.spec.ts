@@ -19,10 +19,12 @@ import { ClrPopoverPositionService } from '../../utils/popover/providers/popover
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 
 class MockRenderer {
-  listen() {}
+  listen() {
+    // Do nothing
+  }
 }
 
-function cleanPopoverDOM(component) {
+function cleanPopoverDOM(component: ClrDatagridFilter) {
   const popoverContent = document.querySelectorAll('.clr-popover-content');
   popoverContent.forEach(content => document.body.removeChild(content));
   component.ngOnDestroy();
@@ -45,7 +47,7 @@ export default function(): void {
           filterService,
           new ClrCommonStringsService(),
           toggleService,
-          'browser',
+          'browser' as any,
           'clr-id-1'
         );
       });
@@ -82,7 +84,7 @@ export default function(): void {
       let filter: TestFilter;
       let toggleService: ClrPopoverToggleService;
 
-      beforeEach(function() {
+      beforeEach(function(this: any) {
         filter = new TestFilter();
         context = this.create(ClrDatagridFilter, FullTest, [
           FiltersProvider,
@@ -121,7 +123,7 @@ export default function(): void {
       let context: TestContext<ClrDatagridFilter<number>, FullTest>;
       let filter: TestFilter;
 
-      beforeEach(function() {
+      beforeEach(function(this: any) {
         filter = new TestFilter();
         context = this.create(ClrDatagridFilter, FullTest, [
           FiltersProvider,
@@ -206,7 +208,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return this.active;
   }
 
-  accepts(n: number): boolean {
+  accepts(_n: number): boolean {
     return true;
   }
 
@@ -220,7 +222,9 @@ class FullTest {
   @ViewChild(CustomFilter) customFilter: CustomFilter;
 
   filter: ClrDatagridFilterInterface<number>;
-  open: boolean = false;
+  open = false;
 
-  clrDgFilterOpenChangeFn = ($event: boolean) => {};
+  clrDgFilterOpenChangeFn = (_$event: boolean) => {
+    // Do nothing
+  };
 }

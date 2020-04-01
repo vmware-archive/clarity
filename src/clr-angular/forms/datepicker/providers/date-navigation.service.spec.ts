@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -128,7 +128,7 @@ export default function() {
       });
 
       it('does not regenerate the current calendar ' + 'when the displayed calendar is already current', () => {
-        let count: number = 0;
+        let count = 0;
         const sub: Subscription = dateNavigationService.displayedCalendarChange.subscribe(() => {
           count++;
         });
@@ -180,7 +180,7 @@ export default function() {
       });
 
       it('notifies when the calendar has changed', () => {
-        let count: number = 0;
+        let count = 0;
         sub = dateNavigationService.displayedCalendarChange.subscribe(() => {
           count++;
         });
@@ -197,7 +197,7 @@ export default function() {
       });
 
       it('notifies when the focus day has changed but remains in the same calendar', () => {
-        let count: number = 0;
+        let count = 0;
         sub = dateNavigationService.focusedDayChange.subscribe(() => {
           count++;
         });
@@ -224,7 +224,7 @@ export default function() {
       });
 
       it('notifies to update focus on the calendar when the user navigates using the keyboard', () => {
-        let count: number = 0;
+        let count = 0;
         sub = dateNavigationService.focusOnCalendarChange.subscribe(() => {
           count++;
         });
@@ -240,7 +240,7 @@ export default function() {
       });
 
       it('notifies to update focus on the calendar when the user moves to the current month', () => {
-        let count: number = 0;
+        let count = 0;
         sub = dateNavigationService.focusOnCalendarChange.subscribe(() => {
           count++;
         });

@@ -51,7 +51,7 @@ export default function(): void {
       });
 
       it('emits an openChange event', function() {
-        let nbChanges: number = 0;
+        let nbChanges = 0;
         let currentChange: boolean;
         this.testComponent.directive.openChange.subscribe((change: boolean) => {
           currentChange = change;
@@ -104,5 +104,5 @@ export default function(): void {
 })
 class IfOpenTest {
   @ViewChild(ClrIfOpen) directive: ClrIfOpen;
-  openState: boolean = false;
+  openState = false;
 }

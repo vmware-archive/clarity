@@ -40,10 +40,10 @@ export class ClrDropdown implements OnDestroy {
     dropdownService: RootDropdownService
   ) {
     this.subscriptions.push(dropdownService.changes.subscribe(value => (this.toggleService.open = value)));
-    this.subscriptions.push(toggleService.openChange.subscribe(value => this.cdr.markForCheck()));
+    this.subscriptions.push(toggleService.openChange.subscribe(() => this.cdr.markForCheck()));
   }
 
-  @Input('clrCloseMenuOnItemClick') isMenuClosable: boolean = true;
+  @Input('clrCloseMenuOnItemClick') isMenuClosable = true;
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());

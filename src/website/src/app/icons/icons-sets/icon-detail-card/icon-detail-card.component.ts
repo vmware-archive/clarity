@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,8 +16,6 @@ import { COMMON_PATH } from '../../icons.component';
   styleUrls: ['./icon-detail-card.component.scss'],
 })
 export class IconDetailCardComponent {
-  constructor() {}
-
   commonPath = COMMON_PATH;
 
   private _clrIcon: string;
@@ -25,10 +23,6 @@ export class IconDetailCardComponent {
   private _clrIconTemplate: string;
   private _clrIconAliases: string[];
   private _activeVariantClasses: string;
-
-  get clrIconSet(): string {
-    return this._clrIconSet;
-  }
 
   get activeVariantClasses(): string {
     return this._activeVariantClasses;
@@ -88,11 +82,6 @@ export class IconDetailCardComponent {
   get clrIcon(): string {
     return this._clrIcon;
   }
-
-  get clrIconAliases(): string[] {
-    return this._clrIconAliases || [];
-  }
-
   @Input()
   set clrIcon(value: string) {
     this._activeVariantClasses = '';
@@ -104,18 +93,25 @@ export class IconDetailCardComponent {
     this.hasSolid = this._clrIconTemplate.indexOf('has-solid') > -1;
   }
 
+  get clrIconSet(): string {
+    return this._clrIconSet;
+  }
+
   @Input()
   set clrIconSet(setName: string) {
     this._clrIconSet = setName;
   }
 
+  get clrIconAliases(): string[] {
+    return this._clrIconAliases || [];
+  }
   @Input()
   set clrIconAliases(aliases: string[]) {
     this._clrIconAliases = aliases;
   }
 
-  get downloadPath() {
-    const variant = {
+  get downloadPath(): string {
+    const variant: Record<string, string> = {
       '': '-line',
       'has-alert': '-outline-alerted',
       'has-badge': '-outline-badged',

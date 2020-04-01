@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   templateUrl: './disabled.html',
 })
 export class DisabledDemo {
-  model: string = '';
+  model = '';
   date = new Date();
   disabled = true;
 }

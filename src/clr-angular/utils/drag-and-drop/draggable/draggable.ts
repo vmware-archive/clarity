@@ -44,7 +44,7 @@ export class ClrDraggable<T> implements AfterContentInit, OnDestroy {
   private draggableEl: any;
   private subscriptions: Subscription[] = [];
   private componentFactory: ComponentFactory<ClrDraggableGhost<T>>;
-  public dragOn: boolean = false;
+  public dragOn = false;
 
   constructor(
     private el: ElementRef,

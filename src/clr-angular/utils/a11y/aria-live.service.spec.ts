@@ -9,7 +9,7 @@ import { ClrAriaLiveService, ClrAriaLivePoliteness } from './aria-live.service';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 // keep in sync with the ClrAriaLiveService manualy
-const ARIA_LIVE_TICK: number = 100;
+const ARIA_LIVE_TICK = 100;
 
 @Component({
   selector: 'aria-live-test',
@@ -17,18 +17,17 @@ const ARIA_LIVE_TICK: number = 100;
   providers: [ClrAriaLiveService],
 })
 class AriaLiveTest {
-  // tslint:disable
+  // @ts-ignore
   constructor(private ariaLiveService: ClrAriaLiveService) {}
-  // tslint:enable
 }
 
 interface TestContext {
   ariaLiveService: ClrAriaLiveService;
 }
 
-let fixture, ariaLiveContent: HTMLElement, ariaLiveService: ClrAriaLiveService;
-
 describe('AriaLive service', function() {
+  let fixture, ariaLiveContent: HTMLElement, ariaLiveService: ClrAriaLiveService;
+
   beforeEach(function() {
     TestBed.configureTestingModule({
       declarations: [AriaLiveTest],

@@ -222,7 +222,7 @@ export default function(): void {
       it('toggles the expanded state when the .nav-group-trigger is clicked', () => {
         expect(navGroup.expanded).toBe(false);
 
-        const button: HTMLElement = <HTMLElement>compiled.querySelector('.nav-group-trigger');
+        const button: HTMLElement = compiled.querySelector('.nav-group-trigger');
 
         button.click();
 
@@ -293,7 +293,7 @@ class IfExpandedTestComponent {
 class TemplateAPITestComponent {
   @ViewChild('group') navGroup: ClrVerticalNavGroup;
 
-  expanded: boolean = false;
+  expanded = false;
 
   expandedChange: boolean;
 

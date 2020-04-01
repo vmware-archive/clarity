@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,7 +23,7 @@ export default function(): void {
 
     beforeEach(function() {
       context = this.create(ClrDatagridColumnToggleButton, ButtonTest, [MOCK_COLUMN_SERVICE_PROVIDER]);
-      columnsService = <MockColumnsService>context.getClarityProvider(ColumnsService);
+      columnsService = context.getClarityProvider(ColumnsService) as MockColumnsService;
       toggleButton = context.clarityDirective;
       columnsService.mockColumns(3);
     });

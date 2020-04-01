@@ -62,7 +62,7 @@ export class ClrSignpostContent extends AbstractPopover implements OnDestroy {
     @Inject(UNIQUE_ID) public signpostContentId: string,
     private signpostIdService: SignpostIdService,
     private signpostFocusManager: SignpostFocusManager,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     @Inject(DOCUMENT) document: any
   ) {
     super(injector, parentHost);

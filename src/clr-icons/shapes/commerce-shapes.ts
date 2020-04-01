@@ -6,7 +6,6 @@
 import { descriptorConfig } from '../utils/descriptor-config';
 import { clrIconSVG } from '../utils/svg-tag-generator';
 
-/* tslint:disable:variable-name */
 export const ClrShapeCalculator = clrIconSVG(
   `<path class="clr-i-outline clr-i-outline-path-1" d="M28,2H8A2,2,0,0,0,6,4V32a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V4A2,2,0,0,0,28,2ZM8,32V4H28V32Z"/>
             <path class="clr-i-outline clr-i-outline-path-2" d="M12,8H25.67V6H11a1,1,0,0,0-1,1v4.67h2Z"/>

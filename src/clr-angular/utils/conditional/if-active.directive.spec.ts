@@ -53,7 +53,7 @@ export default function(): void {
       });
 
       it('emits an activeChange event only if the active state changes', function() {
-        let nbChanges: number = 0;
+        let nbChanges = 0;
         let currentChange: boolean;
         this.testComponent.directive.activeChange.subscribe((change: boolean) => {
           currentChange = change;
@@ -129,5 +129,5 @@ export default function(): void {
 })
 class IfOpenTest {
   @ViewChild(ClrIfActive) directive: ClrIfActive;
-  activeState: boolean = false;
+  activeState = false;
 }

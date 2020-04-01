@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,7 +25,7 @@ let wizardHeaderActionIndex = 0;
 })
 export class ClrWizardHeaderAction {
   // title is explanatory text added to the header action
-  @Input('title') title: string = '';
+  @Input('title') title = '';
 
   // If our host has an ID attribute, we use this instead of our index.
   @Input('id') _id: string = (wizardHeaderActionIndex++).toString();
@@ -34,7 +34,7 @@ export class ClrWizardHeaderAction {
     return `clr-wizard-header-action-${this._id}`;
   }
 
-  @Input('clrWizardHeaderActionDisabled') public disabled: boolean = false;
+  @Input('clrWizardHeaderActionDisabled') public disabled = false;
 
   @Output('actionClicked') headerActionClicked: EventEmitter<string> = new EventEmitter(false);
 

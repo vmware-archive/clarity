@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { GlobalDragModeService } from './global-drag-mode.service';
@@ -33,7 +33,4 @@ export default function(): void {
 }
 
 @Component({ providers: [GlobalDragModeService], template: `<div>test</div>` })
-class TestComponent {
-  // tslint:disable-next-line
-  constructor(private renderer: Renderer2, private globalDragMode: GlobalDragModeService) {}
-}
+class TestComponent {}

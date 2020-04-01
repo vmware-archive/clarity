@@ -22,7 +22,7 @@ import { AriaService } from './providers/aria.service';
 import { TABS_ID } from './tabs-id.provider';
 import { TabsLayout } from './enums/tabs-layout.enum';
 
-let nbTabLinkComponents: number = 0;
+let nbTabLinkComponents = 0;
 
 @Directive({
   selector: '[clrTabLink]',

@@ -66,7 +66,7 @@ describe('CssHelpers mixin - ', () => {
     it('should add classnames to the element', async () => {
       await componentIsStable(component);
       const addedClassname = 'ohai';
-      expect(component.addClassname(addedClassname));
+      component.addClassname(addedClassname);
       expect(component.classList.contains(addedClassname)).toEqual(true);
     });
   });
@@ -74,7 +74,7 @@ describe('CssHelpers mixin - ', () => {
   describe('removeClassname: ', () => {
     it('should remove classnames from the element', async () => {
       await componentIsStable(component);
-      expect(component.removeClassname(testClassname));
+      component.removeClassname(testClassname);
       expect(component.classList.contains(testClassname)).toEqual(false);
     });
   });
@@ -116,7 +116,7 @@ describe('CssHelpers mixin - ', () => {
       expect(component.classList).toEqual(expected);
     });
     it('should not remove classnames unless told to', async () => {
-      expect(component.removeClassnamesUnless([classname1, classname2], [testClassname]));
+      component.removeClassnamesUnless([classname1, classname2], [testClassname]);
       await componentIsStable(component);
       expect(component.classList.contains(testClassname)).toEqual(true);
       expect(component.classList.contains(classname1)).toEqual(false);

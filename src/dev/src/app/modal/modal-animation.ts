@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './modal-animation.demo.html',
 })
 export class ModalAnimationDemo implements OnInit {
-  animatedExampleIn: boolean = false;
+  animatedExampleIn = false;
 
   ngOnInit(): void {
     // If you want interactivity, go to the Angular component demo. :-P

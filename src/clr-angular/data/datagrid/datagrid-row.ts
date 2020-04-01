@@ -38,7 +38,7 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { ClrExpandableAnimation } from '../../utils/animations/expandable-animation/expandable-animation';
 import { DetailService } from './providers/detail.service';
 
-let nbRow: number = 0;
+let nbRow = 0;
 
 @Component({
   selector: 'clr-dg-row',
@@ -70,9 +70,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
    */
   @Input('clrDgItem') item: T;
 
-  public replaced;
+  public replaced: boolean;
 
-  public expandAnimationTrigger: boolean = false;
+  public expandAnimationTrigger = false;
 
   constructor(
     public selection: Selection<T>,
@@ -168,7 +168,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     }
   }
 
-  @ViewChild('detailButton') detailButton;
+  @ViewChild('detailButton') detailButton: HTMLButtonElement;
 
   private _detailOpenLabel = '';
   @Input()

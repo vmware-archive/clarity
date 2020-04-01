@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -37,10 +37,10 @@ class SimpleTest {}
   template: `
     <div class="container" style="width: 1100px;">
         <clr-datagrid>
-            
+
             <clr-dg-column>First</clr-dg-column>
             <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
-            <clr-dg-column [style.width.px]="column3WidthStrict" 
+            <clr-dg-column [style.width.px]="column3WidthStrict"
             (clrDgColumnResize)="newWidth = $event">Three</clr-dg-column>
             <clr-dg-column>Four</clr-dg-column>
 
@@ -57,7 +57,7 @@ class SimpleTest {}
 })
 class HeaderResizeTestComponent {
   items = [1, 2, 3];
-  column3WidthStrict: number = 200;
+  column3WidthStrict = 200;
   newWidth: number;
 }
 
@@ -82,8 +82,8 @@ export default function(): void {
         Renderer2,
         ColumnsService,
       ]);
-      domAdapter = <MockDomAdapter>context.getClarityProvider(DomAdapter);
-      organizer = <MockDatagridRenderOrganizer>context.getClarityProvider(DatagridRenderOrganizer);
+      domAdapter = context.getClarityProvider(DomAdapter) as MockDomAdapter;
+      organizer = context.getClarityProvider(DatagridRenderOrganizer) as MockDatagridRenderOrganizer;
       columnsService = context.getClarityProvider(ColumnsService);
       context.clarityDirective.setColumnState(0);
       stateSub = columnsService.columns[0];

@@ -13,9 +13,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-// tslint:disable no-barrel-imports
 import { ClarityModule } from '../../clr-angular.module';
-// tslint:enable no-barrel-imports
 import { DisplayModeService } from './providers/display-mode.service';
 import { MockDisplayModeService } from './providers/display-mode.mock';
 import { Selection } from './providers/selection';
@@ -76,8 +74,8 @@ export class TestContext<D, C> {
     this.testElement = this.fixture.nativeElement;
     this.clarityDebugElement = this.fixture.debugElement.query(By.directive(clarityDirectiveType));
     if (!this.clarityDebugElement) {
-      const componentName = (<any>componentType).name;
-      const clarityDirectiveName = (<any>clarityDirectiveType).name;
+      const componentName = (componentType as any).name;
+      const clarityDirectiveName = (clarityDirectiveType as any).name;
       throw new Error(`Test component ${componentName} doesn't contain a ${clarityDirectiveName}`);
     }
     this.clarityDirective = this.clarityDebugElement.injector.get(clarityDirectiveType);

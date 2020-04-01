@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+/* eslint-disable */
 export const environment = {
   production: true,
   latest: 'v3',

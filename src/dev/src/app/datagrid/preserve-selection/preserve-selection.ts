@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -29,9 +29,9 @@ export class DatagridPreserveSelectionDemo {
   total = 100;
   loading = true;
 
-  currentPageSize: number = 10;
+  currentPageSize = 10;
   nameFilter = '';
-  nameFilterNoTrackBy;
+  nameFilterNoTrackBy: string;
   nameFilterTrackByIndex = '';
   nameFilterTrackById = '';
   nameFilterServerTrackBy = '';
@@ -52,13 +52,13 @@ export class DatagridPreserveSelectionDemo {
     const filters: { [prop: string]: any[] } = {};
     if (state.filters) {
       for (const filter of state.filters) {
-        const { property, value } = <{ property: string; value: string }>filter;
+        const { property, value } = filter;
         filters[property] = [value];
       }
     }
     this.inventory
       .filter(filters)
-      .sort(<{ by: string; reverse: boolean }>state.sort)
+      .sort(state.sort as { by: string; reverse: boolean })
       .fetch(state.page.from, state.page.size)
       .then((result: FetchResult) => {
         this.serverTrackByIdUsers = result.users;
@@ -78,11 +78,11 @@ export class DatagridPreserveSelectionDemo {
     }
   }
 
-  trackByIndex(index: number, item: User) {
+  trackByIndex(index: number, _item: User) {
     return index;
   }
 
-  trackById(index: number, item: User) {
+  trackById(_index: number, item: User) {
     return item.id;
   }
 }

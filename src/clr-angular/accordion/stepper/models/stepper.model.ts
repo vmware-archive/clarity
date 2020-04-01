@@ -8,7 +8,7 @@ import { AccordionModel } from '../../models/accordion.model';
 import { AccordionStatus } from '../../enums/accordion-status.enum';
 
 export class StepperModel extends AccordionModel {
-  private stepperModelInitialize: boolean = false;
+  private stepperModelInitialize = false;
 
   get allPanelsCompleted(): boolean {
     return this.panels.length && this.getNumberOfIncompletePanels() === 0 && this.getNumberOfOpenPanels() === 0;

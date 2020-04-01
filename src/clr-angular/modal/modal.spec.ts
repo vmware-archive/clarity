@@ -37,10 +37,10 @@ import { ClrModalModule } from './modal.module';
 class TestComponent {
   @ViewChild(ClrModal) modalInstance: ClrModal;
 
-  opened: boolean = true;
-  closable: boolean = true;
-  size: string = '';
-  staticBackdrop: boolean = false;
+  opened = true;
+  closable = true;
+  size = '';
+  staticBackdrop = false;
 }
 
 @Component({
@@ -57,7 +57,7 @@ class TestComponent {
    `,
 })
 class TestDefaultsComponent {
-  opened: boolean = true;
+  opened = true;
 }
 
 describe('Modal', () => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -51,8 +51,6 @@ interface TooltipContext extends TestContext<ClrTooltipContent, SimpleTest> {
 
 export default function(): void {
   describe('TooltipContent component', function() {
-    describe('TypeScript API', function() {});
-
     describe('Template API', function(this: TooltipContext) {
       describe('handles values for custom id', function() {
         spec(ClrTooltipContent, IdTest, ClrTooltipModule, {
@@ -106,21 +104,21 @@ export default function(): void {
 
         it('accepts a [clrPosition] input', function(this: TooltipContext) {
           // Default is right
-          expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.RIGHT_CENTER);
-          expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
+          expect((this.clarityDirective as any).anchorPoint).toEqual(Point.RIGHT_CENTER);
+          expect((this.clarityDirective as any).popoverPoint).toEqual(Point.LEFT_TOP);
           expect(this.clarityElement.classList).toContain('tooltip-right');
 
           this.hostComponent.position = 'bottom-right';
           this.detectChanges();
-          expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.BOTTOM_CENTER);
-          expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.LEFT_TOP);
+          expect((this.clarityDirective as any).anchorPoint).toEqual(Point.BOTTOM_CENTER);
+          expect((this.clarityDirective as any).popoverPoint).toEqual(Point.LEFT_TOP);
           expect(this.clarityElement.classList).not.toContain('tooltip-right');
           expect(this.clarityElement.classList).toContain('tooltip-bottom-right');
 
           this.hostComponent.position = 'top-left';
           this.detectChanges();
-          expect((<any>this.clarityDirective).anchorPoint).toEqual(Point.TOP_CENTER);
-          expect((<any>this.clarityDirective).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
+          expect((this.clarityDirective as any).anchorPoint).toEqual(Point.TOP_CENTER);
+          expect((this.clarityDirective as any).popoverPoint).toEqual(Point.RIGHT_BOTTOM);
           expect(this.clarityElement.classList).not.toContain('tooltip-bottom-right');
           expect(this.clarityElement.classList).toContain('tooltip-top-left');
         });

@@ -10,7 +10,7 @@ import { ClrWizard } from '@clr/angular';
 @Component({ selector: 'clr-wizard-force-forward', templateUrl: './wizard-force-forward.demo.html' })
 export class WizardForceForwardDemo {
   @ViewChild('wizard') wizard: ClrWizard;
-  _open: boolean = false;
+  _open = false;
 
   open() {
     this._open = !this.open;

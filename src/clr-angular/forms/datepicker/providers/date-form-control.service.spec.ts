@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,7 +25,7 @@ export default function() {
     });
 
     it('provides a method to notify that the form state should be changed to touched', () => {
-      let touchedStatus: boolean = false;
+      let touchedStatus = false;
 
       const sub: Subscription = dateFormControlService.touchedChange.subscribe(() => {
         touchedStatus = true;
@@ -39,7 +39,7 @@ export default function() {
     });
 
     it('provides a method to notify that the form state should be changed to dirty', () => {
-      let dirtyStatus: boolean = false;
+      let dirtyStatus = false;
 
       const sub: Subscription = dateFormControlService.dirtyChange.subscribe(() => {
         dirtyStatus = true;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -271,7 +271,6 @@ export default function(): void {
 
     it('findFirstIncompletePageIndex() should return last index if all pages complete', function() {
       const pageArray = [];
-      let indexToTest: number;
       const expectedIndex = pageCollectionService.pagesCount - 1;
 
       pageArray.push(pageCollectionService.firstPage);
@@ -284,7 +283,7 @@ export default function(): void {
         page.completed = true;
       });
 
-      indexToTest = pageCollectionService.findFirstIncompletePageIndex();
+      const indexToTest = pageCollectionService.findFirstIncompletePageIndex();
 
       expect(indexToTest).toBe(expectedIndex);
     });

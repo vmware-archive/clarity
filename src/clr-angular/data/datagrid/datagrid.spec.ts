@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { ChangeDetectionStrategy, Component, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { async } from '@angular/core/testing';
 
@@ -295,7 +295,7 @@ class MixedExpandableRowTest {
 }
 
 class TestComparator implements ClrDatagridComparatorInterface<number> {
-  compare(a: number, b: number): number {
+  compare(_a: number, _b: number): number {
     return 0;
   }
 }
@@ -305,7 +305,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return true;
   }
 
-  accepts(n: number): boolean {
+  accepts(_n: number): boolean {
     return true;
   }
 
@@ -325,7 +325,7 @@ class TestCustomStateFilter extends TestFilter {
 }
 
 class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
-  accepts(item: number, search: string) {
+  accepts(_item: number, _search: string) {
     return true;
   }
 }
@@ -364,8 +364,6 @@ class HiddenColumnTest {
     </clr-datagrid>`,
 })
 class ProjectionTest {
-  constructor(renderer: Renderer2) {}
-
   items = [1, 2, 3];
 }
 
@@ -765,7 +763,7 @@ export default function(): void {
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, SingleSelectionTest, [Selection]);
-        selection = <Selection<number>>context.getClarityProvider(Selection);
+        selection = context.getClarityProvider(Selection) as Selection<number>;
       });
 
       describe('TypeScript API', function() {
@@ -784,8 +782,8 @@ export default function(): void {
         });
 
         it('does not emit a change event for on initialization, before selection', function() {
-          let singleSelectedchangeCount: number = 0;
-          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+          let singleSelectedchangeCount = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(() => singleSelectedchangeCount++);
 
           expect(selection.currentSingle).toBeUndefined();
           expect(singleSelectedchangeCount).toEqual(0);
@@ -794,8 +792,8 @@ export default function(): void {
         });
 
         it('it emits a change event when changing the selection', function() {
-          let singleSelectedchangeCount: number = 0;
-          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+          let singleSelectedchangeCount = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(() => singleSelectedchangeCount++);
 
           context.testComponent.selected = 1;
           context.detectChanges();
@@ -806,8 +804,8 @@ export default function(): void {
         });
 
         it('it does not emit a change event when setting selection to undefined/null if already undefined/null', function() {
-          let singleSelectedchangeCount: number = 0;
-          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+          let singleSelectedchangeCount = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(() => singleSelectedchangeCount++);
 
           expect(selection.currentSingle).toBeUndefined();
           expect(singleSelectedchangeCount).toEqual(0);
@@ -821,8 +819,8 @@ export default function(): void {
         });
 
         it('it does not emit a change event when selecting the same value', function() {
-          let singleSelectedchangeCount: number = 0;
-          const sub = context.clarityDirective.singleSelectedChanged.subscribe(s => singleSelectedchangeCount++);
+          let singleSelectedchangeCount = 0;
+          const sub = context.clarityDirective.singleSelectedChanged.subscribe(() => singleSelectedchangeCount++);
 
           context.testComponent.selected = 1;
           context.detectChanges();
@@ -876,7 +874,7 @@ export default function(): void {
 
       beforeEach(function() {
         context = this.create(ClrDatagrid, OnPushTest, [Selection], [MultiSelectionTest]);
-        selection = <Selection<number>>context.getClarityProvider(Selection);
+        selection = context.getClarityProvider(Selection) as Selection<number>;
       });
 
       describe('Template API', function() {
@@ -936,7 +934,7 @@ export default function(): void {
 
       beforeEach(function() {
         context = this.createWithOverrideComponent(ClrDatagrid, ProjectionTest, [], [], DATAGRID_SPEC_PROVIDERS);
-        displayModeService = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
+        displayModeService = context.getClarityProvider(DisplayModeService) as MockDisplayModeService;
       });
 
       it('moves columns into the display container', function() {

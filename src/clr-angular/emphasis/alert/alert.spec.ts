@@ -35,19 +35,19 @@ const CLOSE_ARIA_LABEL = 'Close Test Alert';
 class TestComponent {
   @ViewChild(ClrAlert) alertInstance: ClrAlert;
 
-  type: string = '';
-  isSmall: boolean = false;
-  isClosable: boolean = false;
-  closed: boolean = false;
-  isAppLevel: boolean = false;
+  type = '';
+  isSmall = false;
+  isClosable = false;
+  closed = false;
+  isAppLevel = false;
   closeAriaLabel: string = CLOSE_ARIA_LABEL;
 
   // AriaLive
-  clrOff: boolean = false;
-  clrAssertive: boolean = false;
-  clrPolite: boolean = false;
+  clrOff = false;
+  clrAssertive = false;
+  clrPolite = false;
 
-  alertMsg: string = 'This is an alert!';
+  alertMsg = 'This is an alert!';
 }
 
 export default function(): void {

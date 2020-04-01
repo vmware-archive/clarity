@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -469,56 +469,4 @@
       </div>
     </div>
   </div>
-</form>
-
-<h2>Validation in Groups (WIP)</h2>
-
-<form clrForm [formGroup]="reactiveForm">
-  <!--<clr-checkbox-container [clrFormGroup]="reactiveForm.controls.vmsSelection">-->
-  <clr-checkbox-container>
-    <label>Reactive Forms</label>
-    <clr-checkbox-wrapper formArrayName="vmsSelection" *ngFor="let vm of vmsSelection; let i = index">
-      <label>{{vms[i]}}</label>
-      <input clrCheckbox type="checkbox" [formControl]="vm" />
-    </clr-checkbox-wrapper>
-    <clr-control-helper>Select a VM.</clr-control-helper>
-    <clr-control-error>You must select at least one.</clr-control-error>
-  </clr-checkbox-container>
-  <clr-input-container>
-    <label>Your name</label>
-    <input clrInput formControlName="name" />
-    <clr-control-helper>This field is required</clr-control-helper>
-    <clr-control-error>Cannot be blank!</clr-control-error>
-  </clr-input-container>
-
-  <p>Array valid: {{reactiveForm.get('vmsSelection').valid}} | Form valid: {{reactiveForm.valid}}</p>
-</form>
-
-<form clrForm #form="ngForm">
-  <!--<clr-checkbox-container ngModelGroup="selected" minSelected #selected="ngModelGroup" [clrFormGroup]="selected">-->
-  <clr-checkbox-container ngModelGroup="selected" minSelected #selected="ngModelGroup">
-    <label>Select at least one</label>
-    <clr-checkbox-wrapper>
-      <label>{{vms[0]}}</label>
-      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[0].selected" name="checkbox0" #one="ngModel" />
-    </clr-checkbox-wrapper>
-    <clr-checkbox-wrapper>
-      <label>{{vms[1]}}</label>
-      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[1].selected" name="checkbox1" #two="ngModel" />
-    </clr-checkbox-wrapper>
-    <clr-checkbox-wrapper>
-      <label>{{vms[2]}}</label>
-      <input clrCheckbox type="checkbox" [(ngModel)]="templateForm.vmsSelection[2].selected" name="checkbox2" #three="ngModel" />
-    </clr-checkbox-wrapper>
-    <clr-control-helper>Select a VM.</clr-control-helper>
-    <clr-control-error>You must select at least two.</clr-control-error>
-  </clr-checkbox-container>
-  <clr-input-container>
-    <label>Your name</label>
-    <input clrInput [(ngModel)]="templateForm.name" name="name" required />
-    <clr-control-helper>This field is required</clr-control-helper>
-    <clr-control-error>Cannot be blank!</clr-control-error>
-  </clr-input-container>
-
-  <p>Group valid: {{selected.valid}} | Form valid: {{form.valid}} | One valid: {{one.valid}}</p>
 </form>

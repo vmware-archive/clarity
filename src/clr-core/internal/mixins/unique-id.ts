@@ -6,6 +6,7 @@
 
 let idGenerator = 0;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface UniqueId extends HTMLElement {}
 
 export class UniqueId {

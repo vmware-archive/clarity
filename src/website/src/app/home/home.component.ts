@@ -19,26 +19,27 @@ export class HomeComponent {
   currentSeason = 'bg-img-collaboration';
   environment = environment;
 
-  private getCurrentSeason(): string {
-    const now = new Date();
-    const currentYear = now.getFullYear();
+  // commenting out for now to keep lint happy
+  // private getCurrentSeason(): string {
+  //   const now = new Date();
+  //   const currentYear = now.getFullYear();
 
-    if (now < new Date(currentYear, 2, 1)) {
-      return 'winter'; // Jan 1 - Mar 1
-    }
+  //   if (now < new Date(currentYear, 2, 1)) {
+  //     return 'winter'; // Jan 1 - Mar 1
+  //   }
 
-    if (now < new Date(currentYear, 5, 1)) {
-      return 'spring'; // Mar 1 - Jun 1
-    }
+  //   if (now < new Date(currentYear, 5, 1)) {
+  //     return 'spring'; // Mar 1 - Jun 1
+  //   }
 
-    if (now < new Date(currentYear, 8, 1)) {
-      return ''; // Jun 1 - Sep 1
-    }
+  //   if (now < new Date(currentYear, 8, 1)) {
+  //     return ''; // Jun 1 - Sep 1
+  //   }
 
-    if (now < new Date(currentYear, 11, 1)) {
-      return ''; // Sep 1 - Dec 1
-    }
+  //   if (now < new Date(currentYear, 11, 1)) {
+  //     return ''; // Sep 1 - Dec 1
+  //   }
 
-    return 'winter'; // Dec 1 - Dec 31
-  }
+  //   return 'winter'; // Dec 1 - Dec 31
+  // }
 }

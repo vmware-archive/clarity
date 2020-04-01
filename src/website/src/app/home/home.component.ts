@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,10 +15,11 @@ import { environment } from '../../environments/environment';
   },
 })
 export class HomeComponent {
-  currentSeason = `bg-img-${this.getCurrentSeason()}`;
+  // currentSeason = `bg-img-${this.getCurrentSeason()}`;
+  currentSeason = 'bg-img-collaboration';
   environment = environment;
 
-  private getCurrentSeason() {
+  private getCurrentSeason(): string {
     const now = new Date();
     const currentYear = now.getFullYear();
 
@@ -31,11 +32,11 @@ export class HomeComponent {
     }
 
     if (now < new Date(currentYear, 8, 1)) {
-      return 'summer'; // Jun 1 - Sep 1
+      return ''; // Jun 1 - Sep 1
     }
 
     if (now < new Date(currentYear, 11, 1)) {
-      return 'autumn'; // Sep 1 - Dec 1
+      return ''; // Sep 1 - Dec 1
     }
 
     return 'winter'; // Dec 1 - Dec 31

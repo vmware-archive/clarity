@@ -112,6 +112,10 @@
     background-size: cover;
     background-position: center center;
 
+    &-collaboration {
+      background-image: url('../../assets/images/clarity-logo-collaboration.svg');
+    }
+
     &-spring {
       background-image: url('../../assets/images/clarity-logo-spring.svg');
     }
@@ -130,7 +134,7 @@
   position: relative;
 
   .home-cards-container {
-    background-color: rgba($clr-color-neutral-0, 0.9);
+    background-color: rgba($clr-color-neutral-0, 0.7);
     width: 100%;
     padding: $clr_baselineRem_2 0 $clr_baselineRem_1;
     border-radius: $clr-global-borderradius;
@@ -171,6 +175,10 @@
 
   .home-card-bug {
     text-align: center;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   p {

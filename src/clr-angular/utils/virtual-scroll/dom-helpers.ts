@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,11 +8,11 @@
  * TODO: make this part of a global DOM adapter service at some point, merging it with the one from the Datagrid?
  */
 
-export function ratioBottomReady(container: HTMLElement, ignore: number = 0) {
+export function ratioBottomReady(container: HTMLElement, ignore = 0) {
   return (container.scrollHeight - container.scrollTop - ignore) / container.clientHeight - 1;
 }
 
-export function ratioTopReady(container: HTMLElement, ignore: number = 0) {
+export function ratioTopReady(container: HTMLElement, ignore = 0) {
   return (container.scrollTop - ignore) / container.clientHeight;
 }
 

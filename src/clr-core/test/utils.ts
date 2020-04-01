@@ -1,10 +1,11 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 export const spyOnFunction = <T>(obj: T, func: keyof T) => {
+  // eslint-disable-next-line jasmine/no-unsafe-spy
   const spy = jasmine.createSpy(func as string);
   spyOnProperty(obj, func, 'get').and.returnValue(spy);
 
@@ -39,21 +40,7 @@ export function getComponentSlotContent(component: HTMLElement): { [name: string
   );
 }
 
-export function componentIsStable(component: any) {
-  return retry(
-    () =>
-      new Promise(async (resolve, reject) => {
-        const stable = await component.updateComplete;
-        if (stable) {
-          resolve('success');
-        } else {
-          reject('error');
-        }
-      })
-  );
-}
-
-function retry(fn, maxTries = 10, promise?: Promise<any>, promiseObject?: { resolve: any; reject: any }) {
+function retry(fn: any, maxTries = 10, promise?: Promise<any>, promiseObject?: { resolve: any; reject: any }) {
   maxTries--;
   promiseObject = promiseObject || {
     resolve: null,
@@ -80,4 +67,19 @@ function retry(fn, maxTries = 10, promise?: Promise<any>, promiseObject?: { reso
     });
 
   return promise;
+}
+
+export function componentIsStable(component: any) {
+  return retry(
+    () =>
+      // eslint-disable-next-line no-async-promise-executor
+      new Promise(async (resolve, reject) => {
+        const stable = await component.updateComplete;
+        if (stable) {
+          resolve('success');
+        } else {
+          reject('error');
+        }
+      })
+  );
 }

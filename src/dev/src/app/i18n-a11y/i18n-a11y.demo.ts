@@ -17,7 +17,7 @@ import { frenchTranslation } from './fr-translation';
 })
 export class I18nA11yDemo implements OnDestroy {
   users = USERS;
-  selected = [];
+  selected: any[] = [];
   test: ClrCommonStrings;
 
   constructor(private commonStrings: ClrCommonStringsService) {

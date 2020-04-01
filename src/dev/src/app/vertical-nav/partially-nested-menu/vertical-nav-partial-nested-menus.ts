@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,7 +18,7 @@ export class VerticalNavPartiallyNestedMenusDemo {
     this.case = this.verticalNavCases.partiallyNestedMenu;
   }
 
-  private _collapse: boolean = false;
+  private _collapse = false;
 
   get collapse(): boolean {
     return this._collapse;

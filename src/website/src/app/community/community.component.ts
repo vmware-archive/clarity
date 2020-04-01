@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,5 +18,5 @@ import * as CONTRIBUTORS from '../../community/contributors.json';
 export class CommunityComponent {
   team: any[] = CLARITYTEAM.members;
   contributors: string[] = CONTRIBUTORS.contributors;
-  teamImgUrl: string = 'assets/images/team/';
+  teamImgUrl = 'assets/images/team/';
 }

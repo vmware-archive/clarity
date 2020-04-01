@@ -100,7 +100,7 @@ export default function(): void {
     it('focuses on the first projected button', function() {
       const ngZone = TestBed.get(NgZone);
       spyOn(ngZone, 'runOutsideAngular').and.callFake(
-        (fn: Function) =>
+        (_fn: Function) =>
           function() {
             context.fixture.whenStable().then(() => {
               const firstButton: HTMLButtonElement = context.testComponent.actionItem.nativeElement;
@@ -126,7 +126,9 @@ export default function(): void {
         </div>`,
 })
 class SimpleTest {
-  clrDgActionOverflowOpenChangeFn = ($event: boolean) => {};
+  clrDgActionOverflowOpenChangeFn = (_$event: boolean) => {
+    // Do nothing
+  };
   open: boolean;
   @ViewChild('actionItem', { read: ElementRef, static: true })
   actionItem: ElementRef;

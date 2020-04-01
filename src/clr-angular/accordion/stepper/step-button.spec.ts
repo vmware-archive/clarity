@@ -31,7 +31,9 @@ class TestComponent {
 
 @Injectable()
 class MockStepperService extends StepperService {
-  navigateToNextPanel() {}
+  navigateToNextPanel() {
+    // Do nothing.
+  }
 }
 
 describe('ClrStepButton', () => {

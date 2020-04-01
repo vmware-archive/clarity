@@ -30,13 +30,17 @@ export default function() {
       });
 
       it('page up calls the multi alert service', function() {
-        spyOn(service, 'next').and.callFake(() => {});
+        spyOn(service, 'next').and.callFake(() => {
+          // Do nothing
+        });
         component.pageUp();
         expect(service.next).toHaveBeenCalled();
       });
 
       it('page down calls the multi alert service', function() {
-        spyOn(service, 'previous').and.callFake(() => {});
+        spyOn(service, 'previous').and.callFake(() => {
+          // Do nothingno
+        });
         component.pageDown();
         expect(service.previous).toHaveBeenCalled();
       });
@@ -101,7 +105,7 @@ export default function() {
 @Component({ template: `<clr-alerts-pager [(clrCurrentAlertIndex)]="index"></clr-alerts-pager>` })
 export class TestIndex {
   @ViewChild(ClrAlertsPager) pagerInstance: ClrAlertsPager;
-  index: number = 0;
+  index = 0;
 }
 
 @Component({ template: `<clr-alerts-pager [(clrCurrentAlert)]="currentAlert"></clr-alerts-pager>` })

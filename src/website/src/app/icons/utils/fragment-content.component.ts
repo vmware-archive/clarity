@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,7 +36,7 @@ export class FragmentContentComponent implements AfterViewInit, OnDestroy {
     private _renderer: Renderer2,
     private _route: ActivatedRoute,
     private _activeFragmentService: ActiveFragmentService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {}
 
   private subscriptions: Subscription[] = [];

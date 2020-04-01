@@ -28,7 +28,9 @@ describe('Utilities - CssVarsPolyfill ', () => {
     it('calls ShadyCSS in the default config onComplete', () => {
       // this test is here to  prevent us from removing the ShadyCSS call...
       (window as any).ShadyCSS = {
-        styleDocument: () => {},
+        styleDocument: () => {
+          // Do nothing
+        },
       };
 
       spyOn((window as any).ShadyCSS, 'styleDocument');

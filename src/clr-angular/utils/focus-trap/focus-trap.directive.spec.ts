@@ -195,7 +195,13 @@ describe('FocusTrap', () => {
       expect(document.activeElement).toBe(contactInfo);
 
       // Use the escape key to close the modal
-      const escEvent = { shiftKey: false, keyCode: 27, preventDefault: () => {} };
+      const escEvent = {
+        shiftKey: false,
+        keyCode: 27,
+        preventDefault: () => {
+          // Do nothing
+        },
+      };
       fixture.componentInstance.modal.close(escEvent);
       fixture.detectChanges();
       expect(document.activeElement).toBe(initialActiveElement);
@@ -223,7 +229,7 @@ describe('FocusTrap', () => {
       document.getElementById('focus-trap').focus();
 
       rebounders = document.querySelectorAll('.offscreen-focus-rebounder');
-      last = <HTMLElement>rebounders.item(1);
+      last = rebounders.item(1) as HTMLElement;
     });
 
     afterEach(() => {
@@ -255,7 +261,7 @@ describe('FocusTrap', () => {
 });
 
 @Component({
-  template: `    
+  template: `
         <form clrFocusTrap *ngIf="mainFocusTrap" id="main-focus-trap">
             <button id="first">
                 Button to test first input
@@ -314,8 +320,9 @@ class TestComponent {
 })
 class TestModalComponent {
   @ViewChild(ClrModal) modal: ClrModal;
-  openState: boolean = false;
+  openState = false;
   model: any = { contactInfo: '' };
+  diagnostic = '';
 }
 
 @Component({

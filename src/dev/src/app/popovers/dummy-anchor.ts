@@ -5,10 +5,10 @@
  */
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
-// tslint:disable no-barrel-imports
+// eslint-disable-next-line clarity/no-barrel-imports
 import { POPOVER_HOST_ANCHOR } from '../../../../clr-angular/popover/common/popover-host-anchor.token';
+// eslint-disable-next-line clarity/no-barrel-imports
 import { ClrPopoverToggleService } from '../../../../clr-angular/utils/popover/providers/popover-toggle.service';
-// tslint:enable no-barrel-imports
 
 @Component({
   selector: 'clr-dummy-anchor',
@@ -30,7 +30,7 @@ export class DummyAnchor {
 
   constructor(private toggleService: ClrPopoverToggleService) {}
 
-  @Input() openOnFocus: boolean = false;
+  @Input() openOnFocus = false;
 
   onFocus(event: FocusEvent) {
     this.toggleService.toggleWithEvent(event);
@@ -48,7 +48,7 @@ export class DummyAnchor {
     }
   }
 
-  onFocusOut(event: FocusEvent) {
+  onFocusOut(_event: FocusEvent) {
     this.toggleService.open = false;
   }
 

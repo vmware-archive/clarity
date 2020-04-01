@@ -68,7 +68,7 @@ export default function() {
 
       context = this.create(ClrDateContainer, TestComponent, DATEPICKER_PROVIDERS);
 
-      enabledService = <MockDatepickerEnabledService>context.getClarityProvider(DatepickerEnabledService);
+      enabledService = context.getClarityProvider(DatepickerEnabledService) as MockDatepickerEnabledService;
       dateFormControlService = context.getClarityProvider(DateFormControlService);
       toggleService = context.getClarityProvider(ClrPopoverToggleService);
     });

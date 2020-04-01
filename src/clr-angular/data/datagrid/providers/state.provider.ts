@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -52,7 +52,7 @@ export class StateProvider<T> {
                  * Special case for the default object property comparator,
                  * we give the property name instead of the actual comparator.
                  */
-        state.sort = { by: (<DatagridPropertyComparator<T>>this.sort.comparator).prop, reverse: this.sort.reverse };
+        state.sort = { by: (this.sort.comparator as DatagridPropertyComparator<T>).prop, reverse: this.sort.reverse };
       } else {
         state.sort = { by: this.sort.comparator, reverse: this.sort.reverse };
       }

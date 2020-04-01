@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -94,8 +94,8 @@ const EXAMPLE_TS = `
   templateUrl: './tree-view-dynamic.html',
 })
 export class TreeViewDynamicDemo {
-  @Input('clrDemoShowCode') showCode: boolean = false;
-  @Input('clrDemoShowHalf') showHalf: boolean = false;
+  @Input('clrDemoShowCode') showCode = false;
+  @Input('clrDemoShowHalf') showHalf = false;
 
   exampleHtml = EXAMPLE_HTML;
   exampleTs = EXAMPLE_TS;

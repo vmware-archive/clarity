@@ -19,7 +19,7 @@ export default function(): void {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ClrTimelineStepTitle, TestTimelineStepTitle],
-        providers: [UNIQUE_ID_PROVIDER, TimelineStepIdService!],
+        providers: [UNIQUE_ID_PROVIDER, TimelineStepIdService],
       });
 
       fixture = TestBed.createComponent(TestTimelineStepTitle);

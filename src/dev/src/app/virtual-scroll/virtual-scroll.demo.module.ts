@@ -7,9 +7,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ClrAlertModule } from '@clr/angular';
-// tslint:disable no-barrel-imports
+// eslint-disable-next-line clarity/no-barrel-imports
 import { ClrVirtualScrollModule } from '../../../../clr-angular/utils/virtual-scroll/virtual-scroll.module';
-// tslint:enable no-barrel-imports
 
 import { VirtualScrollArrayDemo } from './virtual-scroll-array';
 import { VirtualScrollInfiniteGeneratorDemo } from './virtual-scroll-infinite-generator';

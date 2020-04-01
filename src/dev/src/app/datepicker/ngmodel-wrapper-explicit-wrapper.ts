@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 
-const DATE1: string = '01/02/2015';
-const DATE2: string = '05/05/2017';
+const DATE1 = '01/02/2015';
+const DATE2 = '05/05/2017';
 
 @Component({
   selector: 'clr-ng-model-wrapped-present-datepicker-demo',

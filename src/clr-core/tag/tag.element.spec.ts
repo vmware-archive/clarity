@@ -10,7 +10,7 @@ import { componentIsStable, createTestElement, removeTestElement, waitForCompone
 describe('tag element', () => {
   let testElement: HTMLElement;
   let component: CdsTag;
-  const placeholderText: string = 'Tag Placeholder';
+  const placeholderText = 'Tag Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();

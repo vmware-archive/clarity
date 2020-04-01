@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,9 +22,9 @@ import { ClrWizardModule } from './wizard.module';
     `,
 })
 class TestComponent {
-  projector: string = 'montana';
-  myId: string = 'ohai';
-  disableMe: boolean = false;
+  projector = 'montana';
+  myId = 'ohai';
+  disableMe = false;
 
   @ViewChild('unset', { static: true })
   plainDefaultHA: ClrWizardHeaderAction;
@@ -37,12 +37,12 @@ class TestComponent {
   @ViewChild('clicker', { static: true })
   clickedHA: ClrWizardHeaderAction;
 
-  private _lastClickedHeaderAction: string = '';
+  private _lastClickedHeaderAction = '';
   public get lastClickedHeaderAction(): string {
     return this._lastClickedHeaderAction;
   }
 
-  public titleToUpdate: string = 'title to update';
+  public titleToUpdate = 'title to update';
 
   public click(clickedActionId: string) {
     this._lastClickedHeaderAction = clickedActionId;
@@ -244,34 +244,30 @@ export default function(): void {
 
       describe('disabled', () => {
         it('should have .disabled class if set to be disabled', () => {
-          let testMe: Element;
           testComponent.disableMe = true;
           fixture.detectChanges();
           expect(testComponent.projectedHA.disabled).toBe(true, 'verify component disabled as expected');
-          testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-projection');
+          const testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-projection');
           expect(testMe.classList.contains('disabled')).toBe(true, 'disabled header action has .disabled');
         });
       });
 
       describe('title', () => {
         it('should be empty string by default', () => {
-          let testMe: Element;
           expect(testComponent.projectedHA.title).toBe('', 'verify inits as empty string');
-          testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-projection');
+          const testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-projection');
           expect(testMe.getAttribute('title')).toBe('', 'verify DOM title is also an empty string');
         });
 
         it('should be settable', () => {
-          let testMe: Element;
           expect(testComponent.idHA.title).toBe('I have a title', 'verify title is set');
-          testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-ohai');
+          const testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-ohai');
           expect(testMe.getAttribute('title')).toBe('I have a title', 'verify DOM title is also set');
         });
 
         it('should update', () => {
-          let testMe: Element;
           expect(testComponent.clickedHA.title).toBe('title to update', 'verify title is set');
-          testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-gotklikz');
+          const testMe = debugEl.nativeElement.querySelector('#clr-wizard-header-action-gotklikz');
           expect(testMe.getAttribute('title')).toBe('title to update', 'verify DOM title updated');
           testComponent.titleToUpdate = 'updated title';
           fixture.detectChanges();

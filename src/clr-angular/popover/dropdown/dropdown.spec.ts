@@ -250,8 +250,8 @@ export default function(): void {
 class TestComponent {
   @ViewChild(ClrDropdown) dropdownInstance: ClrDropdown;
 
-  menuClosable: boolean = true;
-  testCnt: number = 0;
+  menuClosable = true;
+  testCnt = 0;
 
   outsideButtonClickHandler(): void {
     this.testCnt++;

@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-const YEARS_TO_DISPLAY: number = 10;
+const YEARS_TO_DISPLAY = 10;
 
 export class YearRangeModel {
   constructor(private readonly year: number) {
@@ -35,7 +35,7 @@ export class YearRangeModel {
    * Function which generate a range of numbers from floor to ceil.
    */
   private generateRange(floor: number, ceil: number): number[] {
-    return Array.from({ length: ceil - floor }, (v, k) => k + floor);
+    return Array.from({ length: ceil - floor }, (_v, k) => k + floor);
   }
 
   /**

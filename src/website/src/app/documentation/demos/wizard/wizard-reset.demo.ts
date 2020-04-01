@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,7 @@ export class WizardResetDemo implements OnInit {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
-  public open: boolean = false;
+  public open = false;
 
   public model: any;
 
@@ -41,7 +41,7 @@ export class WizardResetDemo implements OnInit {
     }
   }
 
-  code: string = `
+  code = `
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -82,7 +82,7 @@ export class WizardResetDemo implements OnInit {
 }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard 
   [(clrWizardOpen)]="open"
   [clrWizardSize]="'md'"

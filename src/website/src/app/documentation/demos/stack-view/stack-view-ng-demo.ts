@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,7 +22,7 @@ export class StackViewNgDemo {
     { title: 'Label 3', content: 'Content 3' },
   ];
 
-  editModal: boolean = false;
+  editModal = false;
 
   /*
      * Lazy loading demo

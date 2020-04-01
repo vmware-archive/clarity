@@ -11,6 +11,6 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-angular.demo.html',
 })
 export class TabsAngularDemo {
-  layout: string = 'vertical';
-  inOverflow: boolean = false;
+  layout = 'vertical';
+  inOverflow = false;
 }

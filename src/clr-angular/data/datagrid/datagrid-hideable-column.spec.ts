@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -69,7 +69,7 @@ export default function(): void {
         });
         fixture = TestBed.createComponent(HideableSugaredTest);
         columnsService = fixture.debugElement.injector.get(ColumnsService);
-        testSugaredComponent = <HideableSugaredTest>fixture.componentInstance;
+        testSugaredComponent = fixture.componentInstance;
 
         column1HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[0];
         column2HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[1];
@@ -114,7 +114,7 @@ export default function(): void {
         });
         fixture = TestBed.createComponent(HideableDesugeredTest);
         columnsService = fixture.debugElement.injector.get(ColumnsService);
-        testDesugaredComponent = <HideableDesugeredTest>fixture.componentInstance;
+        testDesugaredComponent = fixture.componentInstance;
 
         column1HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[0];
         column2HeaderRendererDE = fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[1];

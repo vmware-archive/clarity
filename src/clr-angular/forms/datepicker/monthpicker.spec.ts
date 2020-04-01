@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,7 +25,7 @@ export default function() {
     let context: TestContext<ClrMonthpicker, TestComponent>;
     let localeHelperService: LocaleHelperService;
     let dateNavigationService: DateNavigationService;
-    const selectedMonth: number = 1;
+    const selectedMonth = 1;
 
     function initializeCalendar(selectedDay: DayModel) {
       dateNavigationService = new DateNavigationService();
@@ -54,7 +54,7 @@ export default function() {
 
         expect(buttons.length).toBe(months.length);
 
-        let count: number = 0;
+        let count = 0;
         for (const button of buttons) {
           expect(button.textContent.trim()).toMatch(months[count]);
           count++;
@@ -79,7 +79,7 @@ export default function() {
 
       it('initializes the tab indices correctly', () => {
         const buttons: HTMLButtonElement[] = context.clarityElement.querySelectorAll('button');
-        let count: number = 0;
+        let count = 0;
         for (const button of buttons) {
           if (count === selectedMonth) {
             expect(button.tabIndex).toBe(context.clarityDirective.getTabIndex(count));
@@ -142,7 +142,7 @@ export default function() {
       it('has access to the month array', () => {
         const months: ReadonlyArray<string> = localeHelperService.localeMonthsWide;
 
-        let count: number = 0;
+        let count = 0;
         for (const month of localeHelperService.localeMonthsWide) {
           expect(month).toMatch(months[count]);
           count++;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,18 +21,19 @@ export class DatagridStringFilterImpl<T = any> implements ClrDatagridFilterInter
   }
 
   /**
-   * Raw input value
-   */
-  private _rawValue: string = '';
-  public get value(): string {
-    return this._rawValue;
-  }
-  /**
    * Input value converted to lowercase
    */
-  private _lowerCaseValue: string = '';
+  private _lowerCaseValue = '';
   public get lowerCaseValue() {
     return this._lowerCaseValue;
+  }
+
+  /**
+   * Raw input value
+   */
+  private _rawValue = '';
+  public get value(): string {
+    return this._rawValue;
   }
   /**
    * Common setter for the input value

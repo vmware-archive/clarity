@@ -27,7 +27,7 @@ export class DropdownFocusHandler implements FocusableItem {
     private parent: DropdownFocusHandler,
     private toggleService: ClrPopoverToggleService,
     private focusService: FocusService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     this.resetChildren();
     this.moveToFirstItemWhenOpen();
@@ -36,7 +36,7 @@ export class DropdownFocusHandler implements FocusableItem {
     }
   }
 
-  private _unlistenFuncs = [];
+  private _unlistenFuncs: Function[] = [];
 
   /**
    * If the dropdown was opened by clicking on the trigger, we automatically move to the first item
@@ -205,7 +205,7 @@ export class DropdownFocusHandler implements FocusableItem {
   }
 
   ngOnDestroy() {
-    this._unlistenFuncs.forEach((unlisten: () => void) => unlisten());
+    this._unlistenFuncs.forEach((unlisten: Function) => unlisten());
     this.focusService.detachListeners();
   }
 }

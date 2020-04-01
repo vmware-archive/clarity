@@ -145,15 +145,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   }
 
   /*
-     * Simple object property shortcut, activates both sorting and filtering
-     * based on native comparison of the specified property on the items.
-     */
-  private _field: string;
-  public get field() {
-    return this._field;
-  }
-
-  /*
   * What type is this column?  This defaults to STRING, but can also be
   * set to NUMBER.  Unsupported types default to STRING. Users can set it
   * via the [clrDgColType] input by setting it to 'string' or 'number'.
@@ -172,6 +163,15 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     if (!this.customFilter && !this.filter && this._colType && this._field) {
       this.setupDefaultFilter(this._field, this._colType);
     }
+  }
+
+  /*
+   * Simple object property shortcut, activates both sorting and filtering
+   * based on native comparison of the specified property on the items.
+   */
+  private _field: string;
+  public get field() {
+    return this._field;
   }
 
   @Input('clrDgField')
@@ -315,7 +315,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   @Output('clrDgSortOrderChange') public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();
 
-  public sortIcon: string;
+  public sortIcon: string | null;
   /**
    * Sorts the datagrid based on this column
    */
@@ -351,16 +351,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     }
   }
 
-  // This property holds filter value temporarily while this.filter property is not yet registered
-  // When this.filter is registered, this property value would be used update this.filter.value
-  private initFilterValue: string | [number, number];
-
-  public get filterValue() {
-    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
-      return this.filter.value;
-    }
-  }
-
   @Input('clrFilterValue')
   public set updateFilterValue(newValue: string | [number, number]) {
     if (this.filter) {
@@ -382,6 +372,17 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     } else {
       this.initFilterValue = newValue;
     }
+  }
+
+  // This property holds filter value temporarily while this.filter property is not yet registered
+  // When this.filter is registered, this property value would be used update this.filter.value
+  private initFilterValue: string | [number, number];
+
+  public get filterValue() {
+    if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
+      return this.filter.value;
+    }
+    return null;
   }
 
   public set filterValue(newValue: string | [number, number]) {

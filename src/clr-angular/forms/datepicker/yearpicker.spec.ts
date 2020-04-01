@@ -34,10 +34,9 @@ export default function() {
     let fixture, component;
 
     beforeEach(function() {
-      let dateNavigationService: DateNavigationService;
-      const selectedYear: number = 2003;
+      const selectedYear = 2003;
 
-      dateNavigationService = new DateNavigationService();
+      const dateNavigationService = new DateNavigationService();
       dateNavigationService.initializeCalendar();
       dateNavigationService.changeYear(selectedYear);
 
@@ -75,7 +74,7 @@ export default function() {
     it('updates the aria-live element when the next decade button is clicked', () => {
       checkLiveElementYearRangeModel(component.yearRangeModel);
       const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+      const button = switchers.children[2] as HTMLButtonElement;
       button.click();
       fixture.detectChanges();
 
@@ -86,7 +85,7 @@ export default function() {
       checkLiveElementYearRangeModel(component.yearRangeModel);
 
       const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+      const button = switchers.children[0] as HTMLButtonElement;
       button.click();
       fixture.detectChanges();
 
@@ -96,12 +95,12 @@ export default function() {
     it('updates the aria-live element when the current button is clicked', () => {
       // Go back first
       const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+      const previousButton = switchers.children[0] as HTMLButtonElement;
       previousButton.click();
       fixture.detectChanges();
       checkLiveElementYearRangeModel(component.yearRangeModel);
 
-      const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+      const currentButton = switchers.children[1] as HTMLButtonElement;
       currentButton.click();
       fixture.detectChanges();
 
@@ -112,7 +111,7 @@ export default function() {
   describe('Yearpicker Component', () => {
     let context: TestContext<ClrYearpicker, TestComponent>;
     let dateNavigationService: DateNavigationService;
-    const selectedYear: number = 2003;
+    const selectedYear = 2003;
 
     function initializeCalendar(selYear: number) {
       dateNavigationService = new DateNavigationService();
@@ -147,7 +146,7 @@ export default function() {
       it('calls to navigate to the previous decade', () => {
         spyOn(context.clarityDirective, 'previousDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        const button = switchers.children[0] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -158,7 +157,7 @@ export default function() {
       it('calls to navigate to the current decade', () => {
         spyOn(context.clarityDirective, 'currentDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const button = switchers.children[1] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -169,7 +168,7 @@ export default function() {
       it('calls to navigate to the next decade', () => {
         spyOn(context.clarityDirective, 'nextDecade');
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const button = switchers.children[2] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -196,7 +195,7 @@ export default function() {
         const yearIndex: number = context.clarityDirective.yearRangeModel.yearRange.indexOf(selectedYear);
         const years: HTMLButtonElement[] = context.clarityElement.querySelectorAll('.year');
 
-        let count: number = 0;
+        let count = 0;
         for (const year of years) {
           if (count === yearIndex) {
             expect(year.classList.contains('is-selected')).toBe(true);
@@ -209,19 +208,19 @@ export default function() {
 
       it('has the correct aria-label for the previousDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const previousDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        const previousDecadeBtn = switchers.children[0] as HTMLButtonElement;
         expect(previousDecadeBtn.attributes['aria-label'].value).toEqual('Previous decade');
       });
 
       it('has the correct aria-label for the currentDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const currentDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const currentDecadeBtn = switchers.children[1] as HTMLButtonElement;
         expect(currentDecadeBtn.attributes['aria-label'].value).toEqual('Current decade');
       });
 
       it('has the correct aria-label for the nextDecade button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.year-switchers');
-        const nextDecadeBtn: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const nextDecadeBtn = switchers.children[2] as HTMLButtonElement;
         expect(nextDecadeBtn.attributes['aria-label'].value).toEqual('Next decade');
       });
 

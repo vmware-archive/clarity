@@ -30,7 +30,7 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
   providers: [{ provide: LoadingListener, useExisting: ClrButton }],
 })
 export class ClrButton implements LoadingListener {
-  private _enableService: boolean = false;
+  private _enableService = false;
 
   @ViewChild('buttonProjectedRef', { static: true })
   templateRef: TemplateRef<ClrButton>;
@@ -42,7 +42,7 @@ export class ClrButton implements LoadingListener {
     private toggleService: ClrPopoverToggleService
   ) {}
 
-  private _inMenu: boolean = false;
+  private _inMenu = false;
 
   get inMenu(): boolean {
     return this._inMenu;
@@ -61,7 +61,7 @@ export class ClrButton implements LoadingListener {
     }
   }
 
-  private _classNames: string = 'btn';
+  private _classNames = 'btn';
 
   get classNames(): string {
     return this._classNames;
@@ -140,7 +140,7 @@ export class ClrButton implements LoadingListener {
 
   @Output('click') _click: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  emitClick($event): void {
+  emitClick($event: Event): void {
     if (this.inMenu) {
       this.toggleService.toggleWithEvent($event);
     }

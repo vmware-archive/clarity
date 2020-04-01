@@ -22,7 +22,9 @@ import { DatagridNumericFilter } from './datagrid-numeric-filter';
 import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
 
 class MockRenderer {
-  listen() {}
+  listen() {
+    // Do nothing
+  }
 }
 
 const PROVIDERS = [

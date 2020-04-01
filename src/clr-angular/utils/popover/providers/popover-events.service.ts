@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -72,7 +72,7 @@ export class ClrPopoverEventsService implements OnDestroy {
 
   private testForSmartPopoverContentContainer(event: Event): boolean {
     // Filter for the documentScroller observable event targets
-    let target: Element = <Element>event.target;
+    let target = event.target as HTMLElement;
 
     // Walk up the DOM tree until we get to the element that is a direct child of the body.
     while (target.classList && target.parentElement.localName !== 'body') {
@@ -100,7 +100,7 @@ export class ClrPopoverEventsService implements OnDestroy {
         } else {
           this.smartOpenService.open = false;
           // Rather than a complex change to the focus trap I put focus on the element that was clicked
-          const clickedElement: HTMLElement = <HTMLElement>event.target;
+          const clickedElement = event.target as HTMLElement;
           clickedElement.focus();
         }
       });
@@ -119,7 +119,7 @@ export class ClrPopoverEventsService implements OnDestroy {
 
   private escapeListener: () => void;
   public addEscapeListener() {
-    this.escapeListener = this.renderer.listen(this.document, 'keydown.escape', event => {
+    this.escapeListener = this.renderer.listen(this.document, 'keydown.escape', () => {
       this.smartOpenService.open = false;
       this.setAnchorFocus();
     });

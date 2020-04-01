@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,8 +15,8 @@ import { ClrWizard } from '@clr/angular';
 export class WizardSimple {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  skipStepTwo: boolean = true;
-  _open: boolean = false;
+  skipStepTwo = true;
+  _open = false;
 
   toggleStepTwo() {
     this.skipStepTwo = !this.skipStepTwo;
@@ -26,7 +26,7 @@ export class WizardSimple {
     this._open = !this.open;
   }
 
-  code: string = `
+  code = `
 @Component({
     ...
 })
@@ -45,7 +45,7 @@ export class WizardSimple {
 }
     `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="_open">
     <clr-wizard-title>Skipping Page Two</clr-wizard-title>
 

@@ -43,5 +43,5 @@ export function hasStringPropertyChangedAndNotNil(val: string | null | undefined
 }
 
 export function getEnumValues(enumeration: any) {
-  return (<any>Object).values(enumeration);
+  return Object.values(enumeration);
 }

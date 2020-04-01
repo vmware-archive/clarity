@@ -13,12 +13,12 @@ describe('icon hasShape helpers: ', () => {
     it('should return true if icon has badged shapes', () => {
       const [, testShape] = testIcons.badgedIcon;
       const [, testShape2] = testIcons.badgedIcon2;
-      expect(iconHasBadgedShapes(<IconShapeCollection>testShape)).toEqual(true);
-      expect(iconHasBadgedShapes(<IconShapeCollection>testShape2)).toEqual(true);
+      expect(iconHasBadgedShapes(testShape as IconShapeCollection)).toEqual(true);
+      expect(iconHasBadgedShapes(testShape2 as IconShapeCollection)).toEqual(true);
     });
     it('should return false if icon does not have badged shapes', () => {
       const [, testShape] = testIcons.nonBadgedIcon;
-      expect(iconHasBadgedShapes(<IconShapeCollection>testShape)).toEqual(false);
+      expect(iconHasBadgedShapes(testShape as IconShapeCollection)).toEqual(false);
     });
   });
 
@@ -26,12 +26,12 @@ describe('icon hasShape helpers: ', () => {
     it('should return true if icon has badged shapes', () => {
       const [, testShape] = testIcons.alertedIcon;
       const [, testShape2] = testIcons.alertedIcon2;
-      expect(iconHasAlertedShapes(<IconShapeCollection>testShape)).toEqual(true);
-      expect(iconHasAlertedShapes(<IconShapeCollection>testShape2)).toEqual(true);
+      expect(iconHasAlertedShapes(testShape as IconShapeCollection)).toEqual(true);
+      expect(iconHasAlertedShapes(testShape2 as IconShapeCollection)).toEqual(true);
     });
     it('should return false if icon does not have badged shapes', () => {
       const [, testShape] = testIcons.nonAlertedIcon;
-      expect(iconHasAlertedShapes(<IconShapeCollection>testShape)).toEqual(false);
+      expect(iconHasAlertedShapes(testShape as IconShapeCollection)).toEqual(false);
     });
   });
 
@@ -40,13 +40,13 @@ describe('icon hasShape helpers: ', () => {
       const [, testShape] = testIcons.solidIcon;
       const [, testShape2] = testIcons.solidIcon2;
       const [, testShape3] = testIcons.solidIcon3;
-      expect(iconHasSolidShapes(<IconShapeCollection>testShape)).toEqual(true);
-      expect(iconHasSolidShapes(<IconShapeCollection>testShape2)).toEqual(true);
-      expect(iconHasSolidShapes(<IconShapeCollection>testShape3)).toEqual(true);
+      expect(iconHasSolidShapes(testShape as IconShapeCollection)).toEqual(true);
+      expect(iconHasSolidShapes(testShape2 as IconShapeCollection)).toEqual(true);
+      expect(iconHasSolidShapes(testShape3 as IconShapeCollection)).toEqual(true);
     });
     it('should return false if icon does not have badged shapes', () => {
       const [, testShape] = testIcons.justOutline;
-      expect(iconHasSolidShapes(<IconShapeCollection>testShape)).toEqual(false);
+      expect(iconHasSolidShapes(testShape as IconShapeCollection)).toEqual(false);
     });
   });
 });

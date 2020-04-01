@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -74,10 +74,10 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
     private _router: Router,
     private _iconsViewService: IconsViewService,
     private _renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     this._subscriptions.push(
-      this._router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
+      this._router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
         this.isOnIconSetsRoute = _router.isActive('/icons', true);
 
         // reset search input value when route changes to another pages
@@ -97,13 +97,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  private _isSearchbarSticky = false;
-
-  get isSearchbarSticky(): boolean {
-    return this._isSearchbarSticky;
-  }
-
-  searchValue: string = '';
+  searchValue = '';
 
   resetSearchBar() {
     this.searchValue = '';
@@ -113,6 +107,12 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
   getSearchValue($event: any) {
     this._iconsViewService.searchValue.next($event.target.value);
     // this.searchValue = $event.target.value;
+  }
+
+  private _isSearchbarSticky = false;
+
+  get isSearchbarSticky(): boolean {
+    return this._isSearchbarSticky;
   }
 
   set isSearchbarSticky(value: boolean) {
@@ -186,7 +186,7 @@ export class IconsComponent implements AfterViewInit, OnDestroy {
     this._iconsViewService.previewClasses.next(this.previewClasses);
   }
 
-  private _iconSolidness: boolean = false;
+  private _iconSolidness = false;
 
   get iconSolidness(): boolean {
     return this._iconSolidness;

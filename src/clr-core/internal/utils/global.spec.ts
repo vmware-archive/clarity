@@ -22,7 +22,9 @@ describe('CDS global', () => {
     });
 
     it('should log a warning if more than one version was detected', () => {
-      const consoleSpy = spyOn(console, 'warn').and.callFake(() => {});
+      const consoleSpy = spyOn(console, 'warn').and.callFake(() => {
+        // Do nothing
+      });
       setupCDSGlobal();
       window.CDS._version.push('1.0.0');
       window.CDS._version.push('2.0.0');

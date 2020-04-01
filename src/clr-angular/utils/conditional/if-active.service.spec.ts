@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,7 @@ export default function(): void {
 
     describe('Typescript API', function() {
       it('provides an observable for changes', function() {
-        let nbChanges: number = 0;
+        let nbChanges = 0;
         let currentChange: number;
 
         // Subscribe first
@@ -41,19 +41,10 @@ export default function(): void {
         expect(currentChange).toEqual(11);
       });
 
-      it('sets the current active value in the service', function() {
+      it('tracks the current active value in the service', function() {
         expect(ifActiveService.current).not.toBeDefined();
         ifActiveService.current = 5;
         expect(ifActiveService.current).toEqual(5);
-      });
-
-      it('gets the current active value of the service', function() {
-        const init = 1;
-        let test: any;
-        ifActiveService.current = init;
-        expect(test).toBeUndefined();
-        test = ifActiveService.current;
-        expect(test).toEqual(init);
       });
     });
   });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -42,11 +42,11 @@ export default function(): void {
       };
       const element = document.createElement('input');
       element.className = 'test-class';
-      controlClassService.initControlClass(renderer, element);
+      controlClassService.initControlClass(renderer as any, element);
       expect(controlClassService.className).toEqual('test-class');
       expect(renderer.removeClass).not.toHaveBeenCalled();
       element.className = 'clr-col-4 test-class';
-      controlClassService.initControlClass(renderer, element);
+      controlClassService.initControlClass(renderer as any, element);
       expect(controlClassService.className).toEqual('clr-col-4 test-class');
       expect(renderer.removeClass).toHaveBeenCalledWith(element, 'clr-col-4');
     });

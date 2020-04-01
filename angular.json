@@ -96,13 +96,6 @@
               "browserTarget": "dev:build:dark"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/dev/tsconfig.app.json", "src/dev/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     },
@@ -148,13 +141,6 @@
             "tsConfig": "src/clr-angular/tsconfig.spec.json",
             "karmaConfig": "src/clr-angular/karma.conf.js",
             "codeCoverageExclude": ["src/clr-core/**/*.ts"]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/clr-angular/tsconfig.lint.json", "src/clr-angular/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -280,13 +266,6 @@
             "tsConfig": "src/clr-core/tsconfig.spec.json",
             "karmaConfig": "src/clr-core/karma.conf.js",
             "codeCoverageExclude": ["src/clr-core/**/*.stories.ts", "src/clr-core/icon-shapes/collections/*.ts"]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/clr-core/tsconfig.lib.json", "src/clr-core/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
           }
         }
       }

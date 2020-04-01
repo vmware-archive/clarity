@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -50,9 +50,9 @@ const HTML_EXAMLPE = `
 export class ProgressBarInlineCardsDemo implements OnInit {
   htmlExample = HTML_EXAMLPE;
 
-  value1: number = 0;
-  value2: number = 0;
-  value3: number = 0;
+  value1 = 0;
+  value2 = 0;
+  value3 = 0;
 
   getNewValue(): number {
     const random: number = Math.floor(Math.random() * 98) + 1;

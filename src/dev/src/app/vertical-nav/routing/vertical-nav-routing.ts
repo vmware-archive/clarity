@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,17 +15,17 @@ import { VerticalNavCases } from '../vertical-nav-cases';
   styleUrls: ['../vertical-nav.demo.scss'],
 })
 export class VerticalNavRoutingDemo {
-  option: string = 'link';
+  option = 'link';
 
   case: any;
 
-  groupExpand: boolean = true;
+  groupExpand = true;
 
   updateGroupExpand(event: any) {
     this.groupExpand = event;
   }
 
-  navCollapsed: boolean = false;
+  navCollapsed = false;
 
   updateNavCollapsed(val: boolean): void {
     this.navCollapsed = val;

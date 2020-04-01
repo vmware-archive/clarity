@@ -47,7 +47,7 @@ import { ClrAbstractContainer } from '../common/abstract-container';
   ],
 })
 export class ClrDatalistContainer extends ClrAbstractContainer {
-  focus: boolean = false;
+  focus = false;
 
   constructor(
     controlClassService: ControlClassService,

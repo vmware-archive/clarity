@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,8 +23,8 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
   /**
    * Internal values and accessor
    */
-  private _low: number = null;
-  private _high: number = null;
+  private _low: number | null = null;
+  private _high: number | null = null;
 
   /**
    * Common setters for the input values, including individual limits and
@@ -46,6 +46,9 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
     }
   }
 
+  public get low() {
+    return this._low;
+  }
   public set low(low: number) {
     if (low !== this._low) {
       this._low = low;
@@ -53,19 +56,14 @@ export class DatagridNumericFilterImpl<T = any> implements ClrDatagridFilterInte
     }
   }
 
+  public get high() {
+    return this._high;
+  }
   public set high(high: number) {
     if (high !== this._high) {
       this._high = high;
       this._changes.next([this._low, this._high]);
     }
-  }
-
-  public get low() {
-    return this._low;
-  }
-
-  public get high() {
-    return this._high;
   }
 
   /**

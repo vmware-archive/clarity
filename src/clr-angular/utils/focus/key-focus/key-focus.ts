@@ -45,11 +45,6 @@ export class ClrKeyFocus {
       this.initializeFocus();
     }
   }
-
-  get nativeElement(): HTMLElement {
-    return this.elementRef.nativeElement;
-  }
-
   get focusableItems() {
     if (this._focusableItems) {
       return this._focusableItems;
@@ -58,7 +53,11 @@ export class ClrKeyFocus {
     }
   }
 
-  private _current: number = 0;
+  get nativeElement(): HTMLElement {
+    return this.elementRef.nativeElement;
+  }
+
+  private _current = 0;
 
   get current() {
     return this._current;
@@ -75,7 +74,7 @@ export class ClrKeyFocus {
   }
 
   get currentItemElement(): HTMLElement {
-    return this.currentItem.nativeElement ? this.currentItem.nativeElement : <HTMLElement>this.currentItem;
+    return this.currentItem.nativeElement ? this.currentItem.nativeElement : (this.currentItem as HTMLElement);
   }
 
   focusCurrent() {
@@ -105,7 +104,7 @@ export class ClrKeyFocus {
   handleKeyboardEvent(event: KeyboardEvent) {
     // Make sure event was originated on the current item's element
     if (this.currentItemElement !== event.target) {
-      const position = this.getItemPosition(<HTMLElement>event.target);
+      const position = this.getItemPosition(event.target as HTMLElement);
       if (this.positionInRange(position)) {
         this.current = position;
       }

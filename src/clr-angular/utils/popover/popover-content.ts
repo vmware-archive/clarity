@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -43,12 +43,12 @@ export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
   }
 
   @Input('clrPopoverContentOutsideClickToClose')
-  set outsideClickClose(clickToClose) {
+  set outsideClickClose(clickToClose: boolean) {
     this.smartEventsService.outsideClickClose = !!clickToClose;
   }
 
   @Input('clrPopoverContentScrollToClose')
-  set scrollToClose(scrollToClose) {
+  set scrollToClose(scrollToClose: boolean) {
     this.smartEventsService.scrollToClose = !!scrollToClose;
   }
 

@@ -72,7 +72,7 @@ export default function(): void {
 
       beforeEach(function() {
         context = this.create(ClrDatagridRow, ProjectionTest, DATAGRID_SPEC_PROVIDERS);
-        displayMode = <MockDisplayModeService>context.getClarityProvider(DisplayModeService);
+        displayMode = context.getClarityProvider(DisplayModeService) as MockDisplayModeService;
       });
 
       it('responds when display mode is CALCULATE and DISPLAY', function() {
@@ -353,10 +353,8 @@ export default function(): void {
           expand.expanded = true;
           tick();
           context.detectChanges();
-          const cellStyle = <HTMLElement>context.clarityElement.querySelector(
-            '.datagrid-scrolling-cells > .datagrid-cell'
-          );
-          const details = <HTMLElement>context.clarityElement.querySelector('.datagrid-row-detail');
+          const cellStyle = context.clarityElement.querySelector('.datagrid-scrolling-cells > .datagrid-cell');
+          const details = context.clarityElement.querySelector('.datagrid-row-detail');
           expect(window.getComputedStyle(cellStyle).display).toBe('none');
           expect(window.getComputedStyle(details).display).toBe('flex');
           expect(details.textContent).toMatch('Detail');
@@ -514,7 +512,7 @@ class FullTest {
 })
 class ExpandTest {
   expanded = false;
-  clrDgDetailOpenLabel: string = 'Open Me';
-  clrDgDetailCloseLabel: string = 'Close Me';
   removeRowDetail = false;
+  clrDgDetailOpenLabel = 'Open Me';
+  clrDgDetailCloseLabel = 'Close Me';
 }

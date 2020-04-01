@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -31,7 +31,7 @@
 
                   <clr-select-container>
                     <label>Height (Feet)</label>
-                    <select clrSelect name="ht_feet" [(ngModel)]="model.ht_feet">
+                    <select clrSelect name="ht_feet" [(ngModel)]="model.htFeet">
                       <option *ngFor="let measure of [ '0 ft.', '1 ft.', '2 ft.', '3 ft.', '4 ft.' ]" [value]="measure">
                         {{measure}}
                       </option>
@@ -40,7 +40,7 @@
 
                   <clr-select-container>
                     <label>Height (Inches)</label>
-                    <select clrSelect name="ht_inches" [(ngModel)]="model.ht_inches">
+                    <select clrSelect name="ht_inches" [(ngModel)]="model.htInches">
                       <option
                         *ngFor="let inch of [ '0 in.', '1 in.', '2 in.', '3 in.', '4 in.', '5 in.', '6 in.', '7 in.', '8 in.', '9 in.', '10 in.', '11 in.' ]"
                         [value]="inch">

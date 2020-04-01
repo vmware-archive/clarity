@@ -12,7 +12,7 @@ import { ClrWizard } from '@clr/angular';
 export class WizardResetDemo implements OnInit {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  public open: boolean = false;
+  public open = false;
 
   public model: any;
 

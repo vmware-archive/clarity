@@ -82,21 +82,21 @@ describe('ClarityIcons service: ', () => {
     });
 
     it('should add icons to the registry using string tuples', () => {
-      ClarityIcons.addIcons(['test08', <string>'testing']);
+      ClarityIcons.addIcons(['test08', 'testing']);
       expect(ClarityIcons.get('test08')).toEqual('testing');
     });
 
     it('should not overwrite icons that have already been added to the registry (legacy api)', () => {
-      ClarityIcons.addIcons(['test09', <string>'ohai']);
+      ClarityIcons.addIcons(['test09', 'ohai']);
       expect(ClarityIcons.get('test09')).toEqual('ohai');
-      ClarityIcons.addIcons(['test09', <string>'kthxbye']);
+      ClarityIcons.addIcons(['test09', 'kthxbye']);
       expect(ClarityIcons.get('test09')).toEqual('ohai');
     });
   });
 
   describe('getIconNameFromShape: ', () => {
     it('should return the icon name string from an icon shape tuple', () => {
-      const testIcon: IconShapeTuple = ['test09', <string>'ohai'];
+      const testIcon: IconShapeTuple = ['test09', 'ohai'];
       ClarityIcons.addIcons(testIcon);
       expect(ClarityIcons.getIconNameFromShape(testIcon)).toEqual('test09');
     });

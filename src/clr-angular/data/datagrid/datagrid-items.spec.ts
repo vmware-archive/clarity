@@ -41,7 +41,7 @@ class TrackByIndexTest {
 
   numbers = [1, 2, 3, 4, 5];
 
-  trackBy = (index, item) => index;
+  trackBy = (index, _item) => index;
 }
 
 export default function(): void {

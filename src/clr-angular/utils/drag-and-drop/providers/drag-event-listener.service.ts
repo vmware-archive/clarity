@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,7 +23,7 @@ export class DragEventListenerService<T> {
   private dragMove: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
   private dragEnd: Subject<DragEventInterface<T>> = new Subject<DragEventInterface<T>>();
 
-  private hasDragStarted: boolean = false;
+  private hasDragStarted = false;
 
   get dragStarted(): Observable<DragEventInterface<T>> {
     return this.dragStart.asObservable();
@@ -73,8 +73,8 @@ export class DragEventListenerService<T> {
   }
 
   private getNativeEventObject(event: MouseEvent | TouchEvent): any {
-    if ((<TouchEvent>event).hasOwnProperty('changedTouches')) {
-      return (<TouchEvent>event).changedTouches[0];
+    if ((event as TouchEvent).hasOwnProperty('changedTouches')) {
+      return (event as TouchEvent).changedTouches[0];
     } else {
       return event;
     }

@@ -13,5 +13,5 @@ import { ClrWizard } from '@clr/angular';
 export class WizardInlineDemo {
   @ViewChild('wizard') wizard: ClrWizard;
 
-  public open: boolean = true;
+  public open = true;
 }

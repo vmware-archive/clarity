@@ -74,9 +74,9 @@ describe('UniqueId mixin - ', () => {
       const highestIdNumber = Math.max.apply(null, testIds);
       const lowestIdNumber = Math.min.apply(null, testIds);
       expect(highestIdNumber - lowestIdNumber).toEqual(2);
-      expect(testIds[0] !== testIds[1]).toEqual(true);
-      expect(testIds[0] !== testIds[2]).toEqual(true);
-      expect(testIds[1] !== testIds[2]).toEqual(true);
+      expect(testIds[0]).not.toEqual(testIds[1]);
+      expect(testIds[0]).not.toEqual(testIds[2]);
+      expect(testIds[1]).not.toEqual(testIds[2]);
     });
   });
 

@@ -10,22 +10,22 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MockDomAdapter extends DomAdapter {
   _userDefinedWidth = 0;
-  userDefinedWidth(element: any): number {
+  userDefinedWidth(_element: any): number {
     return this._userDefinedWidth;
   }
 
   _scrollBarWidth = 0;
-  scrollBarWidth(element: any) {
+  scrollBarWidth(_element: any) {
     return this._scrollBarWidth;
   }
 
   _scrollWidth = 0;
-  scrollWidth(element: any) {
+  scrollWidth(_element: any) {
     return this._scrollWidth;
   }
 
   _computedHeight = 0;
-  computedHeight(element: any) {
+  computedHeight(_element: any) {
     return this._computedHeight;
   }
 }

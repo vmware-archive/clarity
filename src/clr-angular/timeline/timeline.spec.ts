@@ -67,9 +67,6 @@ export default function(): void {
 
     describe('View', () => {
       let fixture: ComponentFixture<TestTimelineContent>;
-      /* tslint:disable:no-unused-variable */
-      let hostComponent: TestTimelineContent;
-
       let timelineSteps: DebugElement[];
 
       beforeEach(() => {
@@ -81,7 +78,6 @@ export default function(): void {
         fixture = TestBed.createComponent(TestTimelineContent);
         fixture.detectChanges();
 
-        hostComponent = fixture.componentInstance;
         timelineSteps = fixture.debugElement.queryAll(By.directive(ClrTimelineStep));
       });
 

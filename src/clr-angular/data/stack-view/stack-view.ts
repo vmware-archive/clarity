@@ -22,11 +22,11 @@ export class ClrStackView {
   /**
    * Undocumented experimental feature: inline editing.
    */
-  editable: boolean = false;
+  editable = false;
 
   @Output('clrStackSave') save: EventEmitter<void> = new EventEmitter<void>(false);
 
-  private _editMode: boolean = false;
+  private _editMode = false;
 
   editingChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 

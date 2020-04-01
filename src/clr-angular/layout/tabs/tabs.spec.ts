@@ -51,7 +51,7 @@ import { ClrTabs } from './tabs';
 class TestComponent {
   @ViewChild(ClrTabs) tabsInstance: ClrTabs;
   @ViewChild('first') firstTab: ClrTab;
-  inOverflow: boolean = false;
+  inOverflow = false;
   layout: TabsLayout = TabsLayout.HORIZONTAL;
 }
 

@@ -259,7 +259,7 @@ class TestComponent {
   @ViewChild(ClrAlerts) public alertsInstance: ClrAlerts;
   @ViewChildren(ClrAlert) public alertInstances: QueryList<ClrAlert>;
 
-  currentAlertIndex: number = 0;
+  currentAlertIndex = 0;
 }
 
 @Component({

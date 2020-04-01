@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,11 +18,11 @@ export class WizardBasic {
   @ViewChild('wizardxl', { static: true })
   wizardExtraLarge: ClrWizard;
 
-  mdOpen: boolean = false;
-  lgOpen: boolean = false;
-  xlOpen: boolean = false;
+  mdOpen = false;
+  lgOpen = false;
+  xlOpen = false;
 
-  code: string = `import {Component, ViewChild} from "@angular/core";
+  code = `import {Component, ViewChild} from "@angular/core";
 import {ClrWizard} from "@clr/angular";
 
 @Component({
@@ -38,7 +38,7 @@ export class WizardBasic {
     xlOpen: boolean = false;
 `;
 
-  html: string = `<clr-wizard #wizardmd [(clrWizardOpen)]="mdOpen" clrWizardSize="md">
+  html = `<clr-wizard #wizardmd [(clrWizardOpen)]="mdOpen" clrWizardSize="md">
     <clr-wizard-title>Medium-Sized Wizard</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>

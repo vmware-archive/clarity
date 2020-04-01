@@ -4,21 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-// tslint:disable-next-line
 import { property as prop } from 'lit-element';
 import { camelCaseToKebabCase } from '../utils/string.js';
-
-/**
- * lit-element @property decorator with custom defaults.
- * https://lit-element.polymer-project.org/guide/properties#property-options
- *
- * A property decorator which creates a LitElement property which reflects a
- * corresponding attribute value. A PropertyDeclaration may optionally be
- * supplied to configure property features.
- */
-export function property(options?: PropertyDeclaration<unknown, unknown>) {
-  return (protoOrDescriptor: {}, name: string) => prop(getDefaultOptions(name, options))(protoOrDescriptor, name);
-}
 
 /**
  * https://developers.google.com/web/fundamentals/web-components/best-practices
@@ -39,7 +26,7 @@ export function getDefaultOptions(
         reflect: true,
         attribute: camelCaseToKebabCase(propertyKey),
         converter: {
-          toAttribute: (value: string) => (!!value ? value : null),
+          toAttribute: (value: string) => (value ? value : null),
         },
         ...options,
       };
@@ -69,6 +56,18 @@ export function getDefaultOptions(
     default:
       return options as PropertyDeclaration<unknown, unknown>;
   }
+}
+
+/**
+ * lit-element @property decorator with custom defaults.
+ * https://lit-element.polymer-project.org/guide/properties#property-options
+ *
+ * A property decorator which creates a LitElement property which reflects a
+ * corresponding attribute value. A PropertyDeclaration may optionally be
+ * supplied to configure property features.
+ */
+export function property(options?: PropertyDeclaration<unknown, unknown>) {
+  return (protoOrDescriptor: {}, name: string) => prop(getDefaultOptions(name, options))(protoOrDescriptor, name);
 }
 
 export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {

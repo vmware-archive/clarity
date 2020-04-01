@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ export class WizardCustomButtonsDemo {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
 
-  open: boolean = false;
+  open = false;
 
   public handleDangerClick(): void {
     this.wizard.finish();
@@ -37,7 +37,7 @@ export class WizardCustomButtonsDemo {
     }
   }
 
-  code: string = `
+  code = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -69,7 +69,7 @@ export class WizardCustomButtonsDemo {
 }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
 
     <clr-wizard-title>Custom and default buttons</clr-wizard-title>

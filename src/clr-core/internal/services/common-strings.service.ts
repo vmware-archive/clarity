@@ -50,5 +50,4 @@ export class CommonStringsServiceInternal {
  * CommonStringsService.keys.success // 'success'
  * ```
  */
-// tslint:disable-next-line
 export const CommonStringsService = new CommonStringsServiceInternal();

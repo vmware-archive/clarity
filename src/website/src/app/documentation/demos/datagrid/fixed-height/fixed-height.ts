@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -55,7 +55,7 @@ export class DatagridFixedHeightDemo {
   style = STYLE;
   users: User[];
   usersLimited: User[];
-  currentPageSize: number = 10;
+  currentPageSize = 10;
 
   constructor(inventory: Inventory) {
     inventory.size = 10;

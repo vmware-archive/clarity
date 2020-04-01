@@ -23,7 +23,7 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 
 @Component({
   selector: 'clr-dg-column-toggle',
-  template: `    
+  template: `
       <button
               role="button"
               type="button"
@@ -48,7 +48,7 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
                       clrPopoverCloseButton
                       type="button"
                       [attr.aria-label]="commonStrings.keys.close">
-                  <clr-icon shape="close" 
+                  <clr-icon shape="close"
                             [attr.title]="commonStrings.keys.close"></clr-icon>
               </button>
           </div>
@@ -87,7 +87,7 @@ export class ClrDatagridColumnToggle {
     anchor: ClrAlignment.START,
     content: ClrAlignment.START,
   };
-  public openState;
+  public openState: boolean;
 
   @ContentChild(ClrDatagridColumnToggleTitle) customToggleTitle: ClrDatagridColumnToggleTitle;
   @ContentChild(ClrDatagridColumnToggleButton) customToggleButton: ClrDatagridColumnToggleButton;
@@ -108,7 +108,7 @@ export class ClrDatagridColumnToggle {
     public commonStrings: ClrCommonStringsService,
     private columnsService: ColumnsService,
     @Inject(UNIQUE_ID) public columnSwitchId: string,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     private zone: NgZone,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {}
@@ -151,7 +151,7 @@ export class ClrDatagridColumnToggle {
 
   // Without tracking the checkboxes get rerendered on model update, which leads
   // to loss of focus after checkbox toggle.
-  trackByFn(index) {
+  trackByFn(index: number) {
     return index;
   }
 }

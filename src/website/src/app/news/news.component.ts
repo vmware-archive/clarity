@@ -44,7 +44,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
 
   private _subscriptions: Subscription[] = [];
 
-  private _hasIcons: boolean = false;
+  private _hasIcons = false;
 
   get hasIcons(): boolean {
     return this._hasIcons;
@@ -54,7 +54,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     this._hasIcons = value;
   }
 
-  private _hasGitHub: boolean = false;
+  private _hasGitHub = false;
 
   get hasGitHub(): boolean {
     return this._hasGitHub;
@@ -96,7 +96,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     );
   }
 
-  orderVersions(a, b) {
+  orderVersions(a: any, b: any) {
     if (parseFloat(b.key.substring(1)) > 1) {
       return parseFloat(b.key.substring(1)) - parseFloat(a.key.substring(1));
     } else {
@@ -114,11 +114,11 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     const tempArr: Release[] = this.releaseArr.filter(release => release.clrRelease === releaseNo);
     if (tempArr.length > 0) {
       this.currentTemplate = tempArr[0].templateRef;
-      this.setInfo(releaseNo, RELEASES.all[releaseNo]);
+      this.setInfo(releaseNo, (RELEASES.all as Record<string, any>)[releaseNo]);
     }
   }
 
-  newPackages(a, b) {
+  newPackages() {
     return compareReleases(this.releaseNumber, '0.11.0');
   }
 

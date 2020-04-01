@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,18 +12,21 @@ let clrIconId = 0;
 const offScreenSpan = document.createElement('span');
 offScreenSpan.className = 'is-off-screen';
 
-let parentConstructor = function() {
+let parentConstructor = function(this: any) {
+  // eslint-disable-next-line prefer-rest-params
   return HTMLElement.apply(this, arguments);
 };
 if (typeof Reflect === 'object') {
   parentConstructor = function() {
+    // eslint-disable-next-line prefer-rest-params
     return (Reflect as any).construct(HTMLElement, arguments, this.constructor);
   };
 }
 
-export function ClarityIconElement() {
+export function ClarityIconElement(this: any) {
   'use strict';
 
+  // eslint-disable-next-line prefer-rest-params
   const _instance = (parentConstructor as any).apply(this, arguments);
 
   _instance.clrIconUniqId = '_clr_icon_' + clrIconId;
@@ -41,7 +44,7 @@ ClarityIconElement.prototype = Object.create(HTMLElement.prototype, {
 ClarityIconElement.prototype.constructor = ClarityIconElement;
 
 ClarityIconElement.prototype._appendCustomTitle = function() {
-  const cloneOffScreenSpan = <HTMLElement>offScreenSpan.cloneNode(false);
+  const cloneOffScreenSpan = offScreenSpan.cloneNode(false) as HTMLElement;
   cloneOffScreenSpan.id = this.clrIconUniqId;
   cloneOffScreenSpan.textContent = this.currentTitleAttrVal;
   this.appendChild(cloneOffScreenSpan);
@@ -129,7 +132,7 @@ ClarityIconElement.prototype.connectedCallback = function() {
 
 ClarityIconElement.prototype.attributeChangedCallback = function(
   attributeName: string,
-  oldValue: string,
+  _oldValue: string,
   newValue: string
 ) {
   if (attributeName === 'size') {

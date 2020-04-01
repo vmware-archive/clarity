@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,7 +17,7 @@ export class WizardFormValidation {
   @ViewChild('number', { static: true })
   numberField: any;
 
-  open: boolean = false;
+  open = false;
 
   model = {
     name: '',
@@ -25,7 +25,7 @@ export class WizardFormValidation {
     number: '',
   };
 
-  code: string = `
+  code = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -44,7 +44,7 @@ export class WizardFormValidation {
 }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="open">
   <clr-wizard-title>Wizard with form validation</clr-wizard-title>
 

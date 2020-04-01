@@ -69,7 +69,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
 
   constructor(
     @Inject(UNIQUE_ID) public nodeId: string,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     @Optional()
     @SkipSelf()
     parent: ClrTreeNode<T>,
@@ -84,16 +84,15 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
       // https://github.com/angular/angular/issues/14935 or https://github.com/angular/angular/issues/15998
       // are fixed
       // This is for non-ivy implementations
-      if ((<any>injector).view) {
-        this._model = (<any>injector).view.context.clrModel;
+      if ((injector as any).view) {
+        this._model = (injector as any).view.context.clrModel;
       } else {
         // Ivy puts this on a specific index of a _lView property
-        // tslint:disable-next-line
-        this._model = (<any>injector)._lView[LVIEW_CONTEXT_INDEX].clrModel;
+        this._model = (injector as any)._lView[LVIEW_CONTEXT_INDEX].clrModel;
       }
     } else {
       // Force cast for now, not sure how to tie the correct type here to featuresService.recursion
-      this._model = new DeclarativeTreeNodeModel(parent ? <DeclarativeTreeNodeModel<T>>parent._model : null);
+      this._model = new DeclarativeTreeNodeModel(parent ? (parent._model as DeclarativeTreeNodeModel<T>) : null);
     }
     this._model.nodeId = this.nodeId;
   }

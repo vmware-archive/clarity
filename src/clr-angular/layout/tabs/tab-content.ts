@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import { IF_ACTIVE_ID, IfActiveService } from '../../utils/conditional/if-active
 import { AriaService } from './providers/aria.service';
 import { TabsService } from './providers/tabs.service';
 
-let nbTabContentComponents: number = 0;
+let nbTabContentComponents = 0;
 
 @Component({
   selector: 'clr-tab-content',
@@ -41,12 +41,11 @@ export class ClrTabContent implements OnDestroy {
   // The template must be applied on the top-down phase of view-child initialization to prevent
   // components in the content from initializing before a content container exists.
   // Some child components need their container for sizing calculations.
-  /* tslint:disable:no-unused-variable */
   @ViewChild('tabContentProjectedRef', { static: true })
+  // @ts-ignore
   private set templateRef(value: TemplateRef<ClrTabContent>) {
     this.viewRef = this.tabsService.tabContentViewContainer.createEmbeddedView(value);
   }
-  /* tslint:enable:no-unused-variable */
 
   get ariaLabelledBy(): string {
     return this.ariaService.ariaLabelledBy;

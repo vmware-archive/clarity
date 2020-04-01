@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -80,13 +80,13 @@ export default function() {
       });
 
       it('ignores just text', () => {
-        const inputDate: string = 'abc';
+        const inputDate = 'abc';
         const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
       });
 
       it('ignores invalid dates', () => {
-        let inputDate: string = '10/21/test';
+        let inputDate = '10/21/test';
         const date1: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date1).toBeNull();
 
@@ -100,13 +100,13 @@ export default function() {
       });
 
       it('ignores empty strings', () => {
-        const inputDate: string = '';
+        const inputDate = '';
         const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
       });
 
       it('parse a two digit year', () => {
-        let inputDate: string = '01/02/20';
+        let inputDate = '01/02/20';
         let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2020, 0, 2))).toBe(true);
@@ -118,29 +118,29 @@ export default function() {
       });
 
       it('should not parse a five digit year', () => {
-        const inputDate: string = '01/02/10000';
+        const inputDate = '01/02/10000';
         expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('should not parse a three digit year', () => {
-        const inputDate: string = '01/02/201';
+        const inputDate = '01/02/201';
         expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('should not parse a 1 digit year', () => {
-        const inputDate: string = '01/02/2';
+        const inputDate = '01/02/2';
         expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('parse a 1 digit date', () => {
-        const inputDate: string = '01/2/2015';
+        const inputDate = '01/2/2015';
         const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2015, 0, 2))).toBe(true);
       });
 
       it('ignores invalid dates', () => {
-        let inputDate: string = '01/55/2015';
+        let inputDate = '01/55/2015';
         const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).toBeNull();
 
@@ -155,19 +155,19 @@ export default function() {
       });
 
       it('parses a 1 digit month', () => {
-        const inputDate: string = '1/02/2015';
+        const inputDate = '1/02/2015';
         const date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(date).not.toBeNull();
         expect(assertEqualDates(date, new Date(2015, 0, 2))).toBe(true);
       });
 
       it('ignores invalid months', () => {
-        const inputDate: string = '13/02/2015';
+        const inputDate = '13/02/2015';
         expect(dateIOService.getDateValueFromDateString(inputDate)).toBeNull();
       });
 
       it('ignores the minus sign and considers it as a delimiter', () => {
-        let inputDate: string = '1/-2/2015';
+        let inputDate = '1/-2/2015';
         let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 0, 2)));
 
@@ -181,7 +181,7 @@ export default function() {
       });
 
       it('processes dates with different delimiters', () => {
-        let inputDate: string = '1/ 2/2015';
+        let inputDate = '1/ 2/2015';
         let date: Date = dateIOService.getDateValueFromDateString(inputDate);
         expect(assertEqualDates(date, new Date(2015, 0, 2)));
 

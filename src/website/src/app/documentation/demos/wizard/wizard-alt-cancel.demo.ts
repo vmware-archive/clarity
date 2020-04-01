@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,9 +14,9 @@ import { ClrWizard } from '@clr/angular';
 export class WizardAltCancelDemo {
   @ViewChild('wizard', { static: true })
   wizard: ClrWizard;
-  open: boolean = false;
+  open = false;
 
-  public showCancelConfirm: boolean = false;
+  public showCancelConfirm = false;
 
   public pageCustomCancel(): void {
     this.showCancelConfirm = true;
@@ -34,7 +34,7 @@ export class WizardAltCancelDemo {
     }
   }
 
-  code: string = `
+  code = `
 import { Component, ViewChild } from "@angular/core";
 import { ClrWizard } from "@clr/angular";
 
@@ -64,7 +64,7 @@ export class WizardAltCancelDemo {
 }
 `;
 
-  html: string = `
+  html = `
 <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnCancel)="doCancel()" [clrWizardPreventDefaultCancel]="true">
     <clr-wizard-title>Wizard with alternate cancel</clr-wizard-title>
 

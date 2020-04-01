@@ -25,7 +25,7 @@ export class StackViewNgDemo {
     { title: 'Label 3', content: 'Content 3' },
   ];
 
-  editModal: boolean = false;
+  editModal = false;
 
   /*
      * Lazy loading demo

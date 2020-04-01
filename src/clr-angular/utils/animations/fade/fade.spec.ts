@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,7 +47,7 @@ describe('Fade', () => {
   });
 
   describe('fade with custom opacity', () => {
-    const opacityValue: number = 0.8;
+    const opacityValue = 0.8;
     const customOpacityFade: AnimationMetadata[] = fade(opacityValue);
     const enterTransition: AnimationTransitionMetadata = customOpacityFade[0] as AnimationTransitionMetadata;
     const exitTransition: AnimationTransitionMetadata = customOpacityFade[1] as AnimationTransitionMetadata;

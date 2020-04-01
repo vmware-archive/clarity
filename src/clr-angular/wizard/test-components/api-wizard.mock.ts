@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -55,8 +55,8 @@ export class TemplateApiWizardTestComponent {
   mySize: string;
   projectedTitle = 'My Great Title';
   projectedPageTitle = 'Title for Page 2';
-  open: boolean = true;
-  lazyLoadContent: string = 'Loading';
+  open = true;
+  lazyLoadContent = 'Loading';
   projectedContent = 'Projection Projection';
   projectedButton = 'Click Me';
   projectedCustomButton = 'Custom';

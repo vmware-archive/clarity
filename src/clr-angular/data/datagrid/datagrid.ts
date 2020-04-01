@@ -184,7 +184,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
    * Selects/deselects all currently displayed items
    * @param value
    */
-  public set allSelected(value: boolean) {
+  public set allSelected(_value: boolean) {
     /**
      * This is a setter but we ignore the value.
      * It's strange, but it lets us have an indeterminate state where only
@@ -243,9 +243,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
       this.stateProvider.change.subscribe(state => this.refresh.emit(state)),
       this.selection.change.subscribe(s => {
         if (this.selection.selectionType === SelectionType.Single) {
-          this.singleSelectedChanged.emit(<T>s);
+          this.singleSelectedChanged.emit(s as T);
         } else if (this.selection.selectionType === SelectionType.Multi) {
-          this.selectedChanged.emit(<T[]>s);
+          this.selectedChanged.emit(s as T[]);
         }
       }),
       this.page.change.subscribe(() => {

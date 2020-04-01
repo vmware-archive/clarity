@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -69,7 +69,7 @@ export default function() {
     });
 
     it('does not notify when the value remains the same', () => {
-      let count: number = 0;
+      let count = 0;
       const sub: Subscription = optionSelectionService.valueChanged.subscribe(() => {
         count++;
       });
@@ -86,7 +86,7 @@ export default function() {
     });
 
     it('does not notify when the selected option remains the same', () => {
-      let count: number = 0;
+      let count = 0;
       const sub: Subscription = optionSelectionService.renderSelectionChanged.subscribe(() => {
         count++;
       });

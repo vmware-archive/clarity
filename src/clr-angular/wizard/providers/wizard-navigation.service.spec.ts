@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,7 +7,6 @@
 import { TestContext } from '../../utils/testing/helpers.spec';
 import { BasicWizardTestComponent } from '../test-components/basic-wizard.mock';
 import { ClrWizard } from '../wizard';
-import { ClrWizardPage } from '../wizard-page';
 
 import { PageCollectionService } from './page-collection.service';
 import { WizardNavigationService } from './wizard-navigation.service';
@@ -196,7 +195,6 @@ export default function(): void {
       const startPage = wizardNavigationService.pageCollection.getPageByIndex(0);
       const testPage = wizardNavigationService.pageCollection.getPageByIndex(1);
       const goToPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-      let pageAsExpected: boolean;
 
       // goTo checks completed states
       startPage.completed = true;
@@ -205,7 +203,7 @@ export default function(): void {
       wizardNavigationService.goTo(goToPage);
       context.detectChanges();
 
-      pageAsExpected = wizardNavigationService.currentPage === goToPage;
+      const pageAsExpected = wizardNavigationService.currentPage === goToPage;
 
       expect(pageAsExpected).toBe(true);
     });
@@ -462,14 +460,12 @@ export default function(): void {
 
       it('should emit finish button was clicked', function() {
         const lastPage = wizardNavigationService.pageCollection.lastPage;
-        let currentPage: ClrWizardPage;
-        let lastPageIsCurrent: boolean;
 
         wizardNavigationService.currentPage = lastPage;
         context.detectChanges();
-        currentPage = wizardNavigationService.currentPage;
+        const currentPage = wizardNavigationService.currentPage;
 
-        lastPageIsCurrent = currentPage === lastPage;
+        const lastPageIsCurrent = currentPage === lastPage;
         expect(lastPageIsCurrent).toBe(true, 'verify last page is the current page');
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
@@ -483,14 +479,12 @@ export default function(): void {
 
       it('should emit danger button was clicked', function() {
         const lastPage = wizardNavigationService.pageCollection.lastPage;
-        let currentPage: ClrWizardPage;
-        let lastPageIsCurrent: boolean;
 
         wizardNavigationService.currentPage = lastPage;
         context.detectChanges();
 
-        currentPage = wizardNavigationService.currentPage;
-        lastPageIsCurrent = currentPage === lastPage;
+        const currentPage = wizardNavigationService.currentPage;
+        const lastPageIsCurrent = currentPage === lastPage;
         expect(lastPageIsCurrent).toBe(true, 'verify last page is the current page');
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
@@ -553,14 +547,12 @@ export default function(): void {
           calledAsExpected = true;
         });
         const lastPage = wizardNavigationService.pageCollection.lastPage;
-        let currentPage: ClrWizardPage;
-        let lastPageIsCurrent: boolean;
 
         wizardNavigationService.currentPage = lastPage;
         context.detectChanges();
-        currentPage = wizardNavigationService.currentPage;
+        const currentPage = wizardNavigationService.currentPage;
 
-        lastPageIsCurrent = currentPage === lastPage;
+        const lastPageIsCurrent = currentPage === lastPage;
         expect(lastPageIsCurrent).toBe(true, 'verify last page is the current page');
 
         wizardNavigationService.checkAndCommitCurrentPage('finish');
@@ -576,14 +568,12 @@ export default function(): void {
           calledAsExpected = true;
         });
         const lastPage = wizardNavigationService.pageCollection.lastPage;
-        let currentPage: ClrWizardPage;
-        let lastPageIsCurrent: boolean;
 
         wizardNavigationService.currentPage = lastPage;
         context.detectChanges();
-        currentPage = wizardNavigationService.currentPage;
+        const currentPage = wizardNavigationService.currentPage;
 
-        lastPageIsCurrent = currentPage === lastPage;
+        const lastPageIsCurrent = currentPage === lastPage;
         expect(lastPageIsCurrent).toBe(true, 'verify last page is the current page');
 
         wizardNavigationService.checkAndCommitCurrentPage('danger');
@@ -662,7 +652,6 @@ export default function(): void {
       it('should not commit page, fire events, or navigate if next overridden at wizard level', function() {
         const currentPage = wizardNavigationService.currentPage;
         const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-        let currentAsExpected: boolean;
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
         spyOn(currentPage.nextButtonClicked, 'emit');
@@ -672,7 +661,7 @@ export default function(): void {
 
         wizardNavigationService.wizardHasAltNext = true;
         wizardNavigationService.checkAndCommitCurrentPage('next');
-        currentAsExpected = currentPage === expectedPage;
+        const currentAsExpected = currentPage === expectedPage;
 
         // still need some events fired
         expect(currentPage.primaryButtonClicked.emit).toHaveBeenCalled();
@@ -687,7 +676,6 @@ export default function(): void {
       it('should not commit page, fire events, or navigate if next overridden at page level', function() {
         const currentPage = wizardNavigationService.currentPage;
         const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-        let currentAsExpected: boolean;
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
         spyOn(currentPage.nextButtonClicked, 'emit');
@@ -699,7 +687,7 @@ export default function(): void {
         context.detectChanges();
 
         wizardNavigationService.checkAndCommitCurrentPage('next');
-        currentAsExpected = currentPage === expectedPage;
+        const currentAsExpected = currentPage === expectedPage;
 
         // still need some events fired
         expect(currentPage.primaryButtonClicked.emit).toHaveBeenCalled();
@@ -714,7 +702,6 @@ export default function(): void {
       it('should not commit page, fire events, or navigate if stop navigation is set', function() {
         const currentPage = wizardNavigationService.currentPage;
         const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(0);
-        let currentAsExpected: boolean;
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
         spyOn(currentPage.nextButtonClicked, 'emit');
@@ -724,7 +711,7 @@ export default function(): void {
 
         wizardNavigationService.wizardStopNavigation = true;
         wizardNavigationService.checkAndCommitCurrentPage('next');
-        currentAsExpected = currentPage === expectedPage;
+        const currentAsExpected = currentPage === expectedPage;
 
         // should not fire events at all
         expect(currentPage.primaryButtonClicked.emit).not.toHaveBeenCalled();
@@ -738,7 +725,6 @@ export default function(): void {
       it('should navigate if not overridden and next clicked', function() {
         const currentPage = wizardNavigationService.currentPage;
         const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-        let currentAsExpected: boolean;
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
         spyOn(currentPage.nextButtonClicked, 'emit');
@@ -751,7 +737,7 @@ export default function(): void {
         expect(currentPage.preventDefault).toBe(false, 'page prevent default false by default');
 
         wizardNavigationService.checkAndCommitCurrentPage('next');
-        currentAsExpected = wizardNavigationService.currentPage === expectedPage;
+        const currentAsExpected = wizardNavigationService.currentPage === expectedPage;
 
         // still need some events fired
         expect(currentPage.primaryButtonClicked.emit).toHaveBeenCalledTimes(1);
@@ -766,7 +752,6 @@ export default function(): void {
       it('should navigate if not overridden and danger-next clicked', function() {
         const currentPage = wizardNavigationService.currentPage;
         const expectedPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-        let currentAsExpected: boolean;
 
         spyOn(currentPage.primaryButtonClicked, 'emit');
         spyOn(currentPage.dangerButtonClicked, 'emit');
@@ -779,7 +764,7 @@ export default function(): void {
         expect(currentPage.preventDefault).toBe(false, 'page prevent default false by default');
 
         wizardNavigationService.checkAndCommitCurrentPage('danger');
-        currentAsExpected = wizardNavigationService.currentPage === expectedPage;
+        const currentAsExpected = wizardNavigationService.currentPage === expectedPage;
 
         // these get called in routines outside of checkAndCommit by default. simplify in the future?
         expect(currentPage.onCommit.emit).not.toHaveBeenCalled();
@@ -807,12 +792,11 @@ export default function(): void {
         const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
         const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
         const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-        let pagesToTest: ClrWizardPage[];
 
         firstPage.completed = true;
         secondPage.completed = true;
         thirdPage.completed = true;
-        pagesToTest = [firstPage, secondPage, thirdPage];
+        const pagesToTest = [firstPage, secondPage, thirdPage];
 
         expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
       });
@@ -821,12 +805,11 @@ export default function(): void {
         const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
         const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
         const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-        let pagesToTest: ClrWizardPage[];
 
         firstPage.completed = true;
         secondPage.completed = true;
         thirdPage.completed = false;
-        pagesToTest = [firstPage, secondPage, thirdPage];
+        const pagesToTest = [firstPage, secondPage, thirdPage];
 
         expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
       });
@@ -834,13 +817,12 @@ export default function(): void {
       it('should return true if last page is incomplete but current page', function() {
         const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
         const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
-        let pagesToTest: ClrWizardPage[];
 
         firstPage.completed = true;
         secondPage.completed = false;
         wizardNavigationService.currentPage = secondPage;
 
-        pagesToTest = [firstPage, secondPage];
+        const pagesToTest = [firstPage, secondPage];
 
         expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(true);
       });
@@ -849,12 +831,11 @@ export default function(): void {
         const firstPage = wizardNavigationService.pageCollection.getPageByIndex(0);
         const secondPage = wizardNavigationService.pageCollection.getPageByIndex(1);
         const thirdPage = wizardNavigationService.pageCollection.getPageByIndex(2);
-        let pagesToTest: ClrWizardPage[];
 
         firstPage.completed = true;
         secondPage.completed = false;
         thirdPage.completed = false;
-        pagesToTest = [firstPage, secondPage, thirdPage];
+        const pagesToTest = [firstPage, secondPage, thirdPage];
 
         expect(wizardNavigationService.canGoTo(pagesToTest)).toBe(false);
       });

@@ -82,9 +82,9 @@ export default function() {
         });
 
         context = this.create(ClrDateInput, TestComponent, DATEPICKER_PROVIDERS);
-        enabledService = <MockDatepickerEnabledService>context.fixture.debugElement
+        enabledService = context.fixture.debugElement
           .query(By.directive(ClrDateContainer))
-          .injector.get(DatepickerEnabledService);
+          .injector.get(DatepickerEnabledService) as MockDatepickerEnabledService;
         dateIOService = context.fixture.debugElement.query(By.directive(ClrDateContainer)).injector.get(DateIOService);
         dateNavigationService = context.fixture.debugElement
           .query(By.directive(ClrDateContainer))
@@ -220,7 +220,7 @@ export default function() {
         });
 
         it('sets the selectedDay if the value of the input is valid', () => {
-          const testEl: HTMLInputElement = <HTMLInputElement>document.createElement('INPUT');
+          const testEl = document.createElement('INPUT') as HTMLInputElement;
           testEl.value = '01/02/2015';
 
           expect(dateNavigationService.selectedDay).toBeNull(); // TestComponent is <input clrDate>. null Input
@@ -230,7 +230,7 @@ export default function() {
         });
 
         it('sets the selectedDay to a null if the value of the input is invalid', () => {
-          const testEl: HTMLInputElement = <HTMLInputElement>document.createElement('INPUT');
+          const testEl = document.createElement('INPUT') as HTMLInputElement;
           testEl.value = '01/02/201';
 
           expect(dateNavigationService.selectedDay).toBeNull();
@@ -474,9 +474,9 @@ export default function() {
         context = this.create(ClrDateInput, TestComponentWithReactiveForms, DATEPICKER_PROVIDERS);
 
         datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
-        enabledService = <MockDatepickerEnabledService>context.fixture.debugElement
+        enabledService = context.fixture.debugElement
           .query(By.directive(ClrDateContainer))
-          .injector.get(DatepickerEnabledService);
+          .injector.get(DatepickerEnabledService) as MockDatepickerEnabledService;
       });
 
       it("date doesn't get deleted when setting it on mobile with a control attached", () => {
@@ -826,7 +826,7 @@ class TestComponentWithClrDate {
     `,
 })
 class TestComponentWithReactiveForms {
-  dateInput: string = '01/01/2015';
+  dateInput = '01/01/2015';
   testForm = new FormGroup({ date: new FormControl(this.dateInput) });
 
   dateOutput: Date;
@@ -845,7 +845,7 @@ class TestComponentWithReactiveForms {
 })
 class TestComponentWithTemplateDrivenForms {
   @ViewChild('templateForm') templateForm: NgForm;
-  dateInput: string = '01/01/2015';
+  dateInput = '01/01/2015';
   dateOutput: Date;
 
   dateChanged(date: Date) {

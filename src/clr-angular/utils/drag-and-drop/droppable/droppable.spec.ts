@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -395,7 +395,7 @@ export default function(): void {
     });
 
     it('can register dragEnter if dropPointPosition is within drop tolerance added as number', function() {
-      const tolerance: number = 20;
+      const tolerance = 20;
       this.expectDropToleranceInput(tolerance).toBeCheckedAs({
         top: tolerance,
         right: tolerance,

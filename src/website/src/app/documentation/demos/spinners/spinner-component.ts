@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -74,9 +74,9 @@ export class SpinnerComponentDemo {
   ];
 
   // Triggers
-  fetchingUserInformation: boolean = false;
-  downloadingFile: boolean = false;
-  downloadinInvoice: boolean = false;
+  fetchingUserInformation = false;
+  downloadingFile = false;
+  downloadinInvoice = false;
 
   public toggleProgressBar(name: string) {
     return (this[name] = !this[name]);

@@ -5,11 +5,12 @@
  */
 import { Component, ElementRef, Inject, Injector, Optional } from '@angular/core';
 
-// tslint:disable no-barrel-imports
+// eslint-disable-next-line clarity/no-barrel-imports
 import { AbstractPopover } from '../../../../clr-angular/popover/common/abstract-popover';
+// eslint-disable-next-line clarity/no-barrel-imports
 import { Point } from '../../../../clr-angular/popover/common/popover';
+// eslint-disable-next-line clarity/no-barrel-imports
 import { POPOVER_HOST_ANCHOR } from '../../../../clr-angular/popover/common/popover-host-anchor.token';
-// tslint:enable no-barrel-imports
 
 import { DummyAnchor } from './dummy-anchor';
 

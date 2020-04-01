@@ -43,7 +43,7 @@ export default function(): void {
       });
       this.fixture = TestBed.createComponent(TestHost);
       this.eventService = this.fixture.debugElement.injector.get(ClrPopoverEventsService, null);
-      this.positionService = new ClrPopoverPositionService(this.eventService, 'browser');
+      this.positionService = new ClrPopoverPositionService(this.eventService, 'browser' as any);
     });
 
     describe('API', () => {

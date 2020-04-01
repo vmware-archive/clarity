@@ -31,7 +31,7 @@ import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
   },
 })
 export class ClrForm {
-  private invalidControls = [];
+  private invalidControls: HTMLElement[] = [];
 
   @Input('clrLabelSize')
   set labelSize(size: number) {
@@ -41,7 +41,7 @@ export class ClrForm {
   constructor(
     public layoutService: LayoutService,
     private markControlService: MarkControlService,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     private el: ElementRef,
     private commonStrings: ClrCommonStringsService,
     private ariaLiveService: ClrAriaLiveService
@@ -49,7 +49,7 @@ export class ClrForm {
 
   /** @deprecated since 2.0 */
   markAsDirty(updateAriaLiveText?: boolean) {
-    this.markAsTouched((updateAriaLiveText = true));
+    this.markAsTouched(updateAriaLiveText);
   }
 
   // Trying to avoid adding an input and keep this backwards compatible at the same time
@@ -81,7 +81,7 @@ export class ClrForm {
       return;
     }
 
-    const errorList = this.labels.filter(label => this.invalidControls.find(control => label.forAttr === control.id));
+    const errorList = this.labels.filter(label => !!this.invalidControls.find(control => label.forAttr === control.id));
 
     this.ariaLiveService.announce(
       this.commonStrings.parse(this.commonStrings.keys.formErrorSummary, { ERROR_NUMBER: errorList.length.toString() })

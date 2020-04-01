@@ -26,7 +26,7 @@ import { ClrWizardModule } from './wizard.module';
 class MyPageCollectionMock extends PageCollectionMock {
   public previousPage: MockPage;
 
-  public getPreviousPage() {
+  public getPreviousPage(): MockPage {
     if (this.previousPage) {
       return this.previousPage;
     }
@@ -82,10 +82,10 @@ class TemplateTestComponent {
   @ViewChild('lifecycle') lifecycleTemplateTester: ClrWizardPage;
   @ViewChild('other') otherTemplateTester: ClrWizardPage;
 
-  public navTwoWayBindingPassed: boolean = false;
+  public navTwoWayBindingPassed = false;
   public testId = 'ohai';
 
-  private _navTestNextDisabled: boolean = false;
+  private _navTestNextDisabled = false;
   public get navTestNextDisabled(): boolean {
     return this._navTestNextDisabled;
   }
@@ -96,7 +96,7 @@ class TemplateTestComponent {
     }
   }
 
-  private _navTestPreviousDisabled: boolean = true;
+  private _navTestPreviousDisabled = true;
   public get navTestPreviousDisabled(): boolean {
     return this._navTestPreviousDisabled;
   }
@@ -107,7 +107,7 @@ class TemplateTestComponent {
     }
   }
 
-  private _navStopCancel: boolean = false;
+  private _navStopCancel = false;
   public get navStopCancel(): boolean {
     return this._navStopCancel;
   }
@@ -290,67 +290,47 @@ export default function(): void {
 
       it('should not auto-assign an id of zero', () => {
         const myId = firstPage.id;
-        let myMungedId: string[];
-        let generatedId: string;
 
-        myMungedId = myId.split('-').reverse();
-        generatedId = myMungedId[0];
+        const myMungedId = myId.split('-').reverse();
+        const generatedId = myMungedId[0];
         expect(generatedId).toBe('0', 'should pass 0 as id if specified');
       });
 
       it('should not pass an id of false', () => {
-        let myId: string;
-        let myMungedId: string[];
-        let generatedId: string;
-
         firstPage._id = false;
-        myId = firstPage.id;
-        myMungedId = myId.split('-').reverse();
-        generatedId = myMungedId[0];
+        const myId = firstPage.id;
+        const myMungedId = myId.split('-').reverse();
+        const generatedId = myMungedId[0];
         expect(generatedId).not.toBe('false', 'should not pass false as an id');
       });
 
       it('should not pass an id of null', () => {
-        let myId: string;
-        let myMungedId: string[];
-        let generatedId: string;
-
         firstPage._id = null;
-        myId = firstPage.id;
-        myMungedId = myId.split('-').reverse();
-        generatedId = myMungedId[0];
+        const myId = firstPage.id;
+        const myMungedId = myId.split('-').reverse();
+        const generatedId = myMungedId[0];
         expect(generatedId).not.toBe('null', 'should not pass null as an id');
       });
 
       it('should not pass an id of empty string', () => {
-        let myId: string;
-        let myMungedId: string[];
-        let generatedId: string;
-
         firstPage._id = '';
-        myId = firstPage.id;
-        myMungedId = myId.split('-').reverse();
-        generatedId = myMungedId[0];
+        const myId = firstPage.id;
+        const myMungedId = myId.split('-').reverse();
+        const generatedId = myMungedId[0];
         expect(generatedId).not.toBe('null', 'should not pass null as an id');
       });
 
       it('should not pass an undefined id', () => {
-        let myId: string;
-        let myMungedId: string[];
-        let generatedId: string;
-
         firstPage._id = undefined;
-        myId = firstPage.id;
-        myMungedId = myId.split('-').reverse();
-        generatedId = myMungedId[0];
+        const myId = firstPage.id;
+        const myMungedId = myId.split('-').reverse();
+        const generatedId = myMungedId[0];
         expect(generatedId).not.toBe('undefined', 'should not pass undefined as an id');
       });
 
       it('should not pass a negative number as an id', () => {
-        let myId: string;
-
         firstPage._id = -1;
-        myId = firstPage.id;
+        const myId = firstPage.id;
         expect(myId).not.toBe('clr-wizard-page--1', 'should not pass a negative number as an id');
       });
 
@@ -417,11 +397,9 @@ export default function(): void {
       describe('id', () => {
         it('should return an indexed id if none is specified', () => {
           const myId = testWizardPage.id;
-          let myMungedId: string[];
-          let mungedIdNaN: boolean;
           expect(myId).toContain('clr-wizard-page-', 'id should contain prefix');
-          myMungedId = myId.split('-').reverse();
-          mungedIdNaN = isNaN(Number(myMungedId[0]));
+          const myMungedId = myId.split('-').reverse();
+          const mungedIdNaN = isNaN(Number(myMungedId[0]));
           expect(mungedIdNaN).toBe(false, 'index should be a number');
         });
 
@@ -912,13 +890,13 @@ export default function(): void {
       // TODO: BUILD THESE TESTS OUT AT THE WIZARD LEVEL. ONLY WIZARD HANDLES CANCEL/CLOSE
       // BECAUSE IT NEEDS TO COMMUNICATE WITH MODAL PROPERTIES
       xdescribe('pageOnCancel', () => {
-        it('should pass page id when emitted', () => {});
+        it('should pass page id when emitted');
 
-        it('should only emit once by default', () => {});
+        it('should only emit once by default');
 
-        it('should only emit once if overridden at page level', () => {});
+        it('should only emit once if overridden at page level');
 
-        it('should only emit once if overridden at wizard level', () => {});
+        it('should only emit once if overridden at wizard level');
       });
 
       describe('id', () => {
@@ -1021,8 +999,7 @@ export default function(): void {
         });
 
         it('should be able to project other components', () => {
-          let myInnerComponent: DebugElement;
-          myInnerComponent = pageFour.query(By.directive(ClrAlert));
+          const myInnerComponent = pageFour.query(By.directive(ClrAlert));
 
           expect(myInnerComponent).toBeDefined('inner alert component should exist');
           expect(myInnerComponent.nativeElement.textContent.trim()).toContain(
@@ -1087,18 +1064,14 @@ export default function(): void {
         it('aria-hidden should reflect if page is not current', () => {
           // explicitly set a page to current
           const expectedPage = pageTwo.componentInstance;
-          let currentPage: ClrWizardPage;
-          let pageOneTest: string;
-          let pageTwoTest: string;
-          let currentPageIdTest: boolean;
 
           viewTestComponent.testWizard.next();
           fixture.detectChanges();
 
-          currentPage = viewTestComponent.testWizard.navService.currentPage;
-          pageOneTest = pageOne.nativeElement.getAttribute('aria-hidden');
-          pageTwoTest = pageTwo.nativeElement.getAttribute('aria-hidden');
-          currentPageIdTest = currentPage.id === expectedPage.id;
+          const currentPage = viewTestComponent.testWizard.navService.currentPage;
+          const pageOneTest = pageOne.nativeElement.getAttribute('aria-hidden');
+          const pageTwoTest = pageTwo.nativeElement.getAttribute('aria-hidden');
+          const currentPageIdTest = currentPage.id === expectedPage.id;
 
           expect(currentPageIdTest).toBe(true, 'make sure current page got set as expected');
 
@@ -1116,14 +1089,12 @@ export default function(): void {
 
         it("aria-labelledby should update if page's id is changed", () => {
           const pageColl = viewTestComponent.testWizard.pageCollection;
-          let labelToTest: string;
-          let expected: string;
 
           viewTestComponent.testId = 'onoez';
           fixture.detectChanges();
 
-          labelToTest = pageOne.nativeElement.getAttribute('aria-labelledby');
-          expected = pageColl.getStepItemIdForPage(pageOne.componentInstance);
+          const labelToTest = pageOne.nativeElement.getAttribute('aria-labelledby');
+          const expected = pageColl.getStepItemIdForPage(pageOne.componentInstance);
 
           expect(labelToTest).toBe(expected, 'updated label should be reflected in component view');
           expect(labelToTest).toContain('onoez', 'aria-labelledBy should update');
@@ -1142,14 +1113,13 @@ export default function(): void {
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
           let previousBtn: Node;
-          let testIfCurrent: boolean;
           let wizardBtnDisabled: boolean;
 
           // setup
           wizard.navService.next();
           fixture.detectChanges();
 
-          testIfCurrent = wizard.navService.currentPage === pageToTest;
+          const testIfCurrent = wizard.navService.currentPage === pageToTest;
 
           expect(testIfCurrent).toBe(true, 'expect page to have been made current');
 
@@ -1178,7 +1148,6 @@ export default function(): void {
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
           let previousBtn: DebugElement;
-          let testIfCurrent: boolean;
           let wizardBtnDisabled: boolean;
 
           // setup -- going to page three
@@ -1187,7 +1156,7 @@ export default function(): void {
 
           fixture.detectChanges();
 
-          testIfCurrent = wizard.navService.currentPage === pageToTest;
+          const testIfCurrent = wizard.navService.currentPage === pageToTest;
           expect(testIfCurrent).toBe(true, 'expect page to have been made current');
 
           previousBtn = debugWiz.nativeElement.querySelector('.clrtest-page-previous-2');
@@ -1214,17 +1183,15 @@ export default function(): void {
           const pageToTest = pageThree.componentInstance;
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
-          let previousBtn: HTMLElement;
-          let testIfCurrent: boolean;
 
           // setup
           wizard.next();
           viewTestComponent.disablePrevious = true;
           fixture.detectChanges();
 
-          testIfCurrent = wizard.navService.currentPage === pageToTest;
+          const testIfCurrent = wizard.navService.currentPage === pageToTest;
           expect(testIfCurrent).not.toBe(true, 'expect page not to be current');
-          previousBtn = debugWiz.nativeElement.querySelector('.clrtest-page-previous-2 > button');
+          const previousBtn = debugWiz.nativeElement.querySelector('.clrtest-page-previous-2 > button');
 
           // absent query result is null
           expect(previousBtn).toBeNull('page-level buttons should not be here');
@@ -1236,23 +1203,20 @@ export default function(): void {
           const pageToTest = pageOne;
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
-          let cancelBtn: HTMLElement;
           const serviceSpy = spyOn(wizard.navService, 'cancel').and.callThrough();
           const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, 'emit').and.callThrough();
           const wizardCancelSpy = spyOn(wizard.onCancel, 'emit').and.callThrough();
           const wizardCloseSpy = spyOn(wizard, 'close').and.callThrough();
-          let currentPage: ClrWizardPage;
-          let expectedCurrent: boolean;
 
           // setup
           viewTestComponent.preventCancel = true;
           fixture.detectChanges();
 
-          currentPage = wizard.navService.currentPage;
-          expectedCurrent = currentPage === pageToTest.componentInstance;
+          const currentPage = wizard.navService.currentPage;
+          const expectedCurrent = currentPage === pageToTest.componentInstance;
           expect(expectedCurrent).toBe(true, 'expect page to be current');
 
-          cancelBtn = debugWiz.nativeElement.querySelector('.clrtest-page-cancel > button');
+          const cancelBtn = debugWiz.nativeElement.querySelector('.clrtest-page-cancel > button');
           cancelBtn.click();
 
           // navservice should fire cancel event
@@ -1272,23 +1236,20 @@ export default function(): void {
           const pageToTest = pageOne;
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
-          let cancelBtn: HTMLElement;
           const serviceSpy = spyOn(wizard.navService, 'cancel').and.callThrough();
           const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, 'emit').and.callThrough();
           const wizardCancelSpy = spyOn(wizard.onCancel, 'emit').and.callThrough();
           const wizardCloseSpy = spyOn(wizard, 'close').and.callThrough();
-          let currentPage: ClrWizardPage;
-          let expectedCurrent: boolean;
 
           // setup
           viewTestComponent.preventCancel = false; // set explicitly
           fixture.detectChanges();
 
-          currentPage = wizard.navService.currentPage;
-          expectedCurrent = currentPage === pageToTest.componentInstance;
+          const currentPage = wizard.navService.currentPage;
+          const expectedCurrent = currentPage === pageToTest.componentInstance;
           expect(expectedCurrent).toBe(true, 'expect page to be current');
 
-          cancelBtn = debugWiz.nativeElement.querySelector('.clrtest-page-cancel > button');
+          const cancelBtn = debugWiz.nativeElement.querySelector('.clrtest-page-cancel > button');
           cancelBtn.click();
 
           // navservice should fire cancel event
@@ -1305,23 +1266,20 @@ export default function(): void {
           const pageToTest = pageTwo;
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
-          let cancelBtn: HTMLElement;
           const serviceSpy = spyOn(wizard.navService, 'cancel').and.callThrough();
           const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, 'emit').and.callThrough();
           const wizardCancelSpy = spyOn(wizard.onCancel, 'emit').and.callThrough();
           const wizardCloseSpy = spyOn(wizard, 'close').and.callThrough();
-          let currentPage: ClrWizardPage;
-          let expectedCurrent: boolean;
 
           wizard.next();
           fixture.detectChanges();
 
           // setup
-          currentPage = wizard.navService.currentPage;
-          expectedCurrent = currentPage === pageToTest.componentInstance;
+          const currentPage = wizard.navService.currentPage;
+          const expectedCurrent = currentPage === pageToTest.componentInstance;
           expect(expectedCurrent).toBe(true, 'expect page to be current');
 
-          cancelBtn = debugWiz.nativeElement.querySelector('.clr-test-wizard-cancel > button');
+          const cancelBtn = debugWiz.nativeElement.querySelector('.clr-test-wizard-cancel > button');
           cancelBtn.click();
 
           // navservice should fire cancel event
@@ -1341,14 +1299,11 @@ export default function(): void {
           const pageToTest = pageFour;
           const wizard = viewTestComponent.testWizard;
           const debugWiz = fixture.debugElement.query(By.directive(ClrWizard));
-          let cancelBtn: HTMLElement;
           const serviceSpy = spyOn(wizard.navService, 'cancel').and.callThrough();
           const pageSpy = spyOn(pageToTest.componentInstance.pageOnCancel, 'emit').and.callThrough();
           const wizardCancelSpy = spyOn(wizard.onCancel, 'emit').and.callThrough();
           const wizardCloseSpy = spyOn(wizard, 'close').and.callThrough();
           const componentSpy = spyOn(viewTestComponent, 'altCancel').and.callThrough();
-          let currentPage: ClrWizardPage;
-          let expectedCurrent: boolean;
 
           // setup
           wizard.next(); // => page 2
@@ -1359,14 +1314,13 @@ export default function(): void {
 
           fixture.detectChanges();
 
-          currentPage = wizard.navService.currentPage;
-          expectedCurrent = currentPage === pageToTest.componentInstance;
+          const currentPage = wizard.navService.currentPage;
+          const expectedCurrent = currentPage === pageToTest.componentInstance;
           expect(expectedCurrent).toBe(true, 'expect page to be current');
 
           expect(viewTestComponent.altCancelRan).toBe(false, 'verify alt cancel is false');
 
-          cancelBtn = debugWiz.nativeElement.querySelector('.clr-test-wizard-cancel > button');
-
+          const cancelBtn = debugWiz.nativeElement.querySelector('.clr-test-wizard-cancel > button');
           cancelBtn.click();
 
           // navservice should fire cancel event

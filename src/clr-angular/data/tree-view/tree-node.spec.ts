@@ -144,7 +144,9 @@ export default function(): void {
       });
 
       it('is expandable if it has children', function(this: TsApiContext) {
-        this.node._model.children.push(new DeclarativeTreeNodeModel(<DeclarativeTreeNodeModel<void>>this.node._model));
+        this.node._model.children.push(
+          new DeclarativeTreeNodeModel(this.node._model as DeclarativeTreeNodeModel<void>)
+        );
         expect(this.node.isExpandable()).toBeTrue();
       });
 
@@ -399,20 +401,20 @@ export default function(): void {
 
       it('takes default action which is toggling selection state on Enter key if node is selectable', function(this: Context) {
         this.clarityDirective.selected = ClrSelectedState.UNSELECTED;
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toEqual(ClrSelectedState.UNSELECTED);
         contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Enter }));
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toEqual(ClrSelectedState.SELECTED);
         contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Enter }));
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toEqual(ClrSelectedState.UNSELECTED);
       });
 
       it('takes default action which is toggling selection state on Space key if node is selectable', function(this: Context) {
         this.clarityDirective.selected = ClrSelectedState.UNSELECTED;
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toBe(ClrSelectedState.UNSELECTED);
         contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Space }));
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.SELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toBe(ClrSelectedState.SELECTED);
         contentContainer.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.Space }));
-        expect(<ClrSelectedState>this.clarityDirective.selected).toBe(ClrSelectedState.UNSELECTED);
+        expect(this.clarityDirective.selected as ClrSelectedState).toBe(ClrSelectedState.UNSELECTED);
       });
 
       it('calls focusManager.focusFirstVisibleNode on Home key', function(this: Context) {

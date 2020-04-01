@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -233,11 +233,11 @@ export default function() {
     `,
 })
 class TestComponent {
-  isToday: boolean = false;
-  isExcluded: boolean = false;
-  isDisabled: boolean = false;
-  isSelected: boolean = false;
-  isFocusable: boolean = false;
+  isToday = false;
+  isExcluded = false;
+  isDisabled = false;
+  isSelected = false;
+  isFocusable = false;
   dayModel: DayModel = new DayModel(2018, 0, 1);
 
   dayView: DayViewModel = new DayViewModel(

@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const UP_ARROW: number = 38;
-export const DOWN_ARROW: number = 40;
-export const RIGHT_ARROW: number = 39;
-export const LEFT_ARROW: number = 37;
-export const ENTER: number = 13;
-export const SPACE: number = 32;
-export const TAB: number = 9;
-export const ESC: number = 27;
+export const UP_ARROW = 38;
+export const DOWN_ARROW = 40;
+export const RIGHT_ARROW = 39;
+export const LEFT_ARROW = 37;
+export const ENTER = 13;
+export const SPACE = 32;
+export const TAB = 9;
+export const ESC = 27;

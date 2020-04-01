@@ -25,19 +25,9 @@ declare global {
   }
 }
 
-export function setupCDSGlobal() {
-  if (isBrowser()) {
-    initializeCDSGlobal();
-    setRunningVersion();
-  }
-}
-
-function initializeCDSGlobal() {
-  window.CDS = window.CDS || {
-    _version: [],
-    _loadedElements: [],
-    getVersion,
-  };
+function getAngularVersion() {
+  const appRoot = document && document.querySelector('[ng-version]');
+  return appRoot ? appRoot.getAttribute('ng-version') : undefined;
 }
 
 function getVersion() {
@@ -51,9 +41,12 @@ function getVersion() {
   return log;
 }
 
-function getAngularVersion() {
-  const appRoot = document && document.querySelector('[ng-version]');
-  return appRoot ? appRoot.getAttribute('ng-version') : undefined;
+function initializeCDSGlobal() {
+  window.CDS = window.CDS || {
+    _version: [],
+    _loadedElements: [],
+    getVersion,
+  };
 }
 
 function setRunningVersion() {
@@ -68,5 +61,12 @@ function setRunningVersion() {
     console.warn(
       'Running more than one version of Clarity can cause unexpected issues. Please ensure only one version is loaded.'
     );
+  }
+}
+
+export function setupCDSGlobal() {
+  if (isBrowser()) {
+    initializeCDSGlobal();
+    setRunningVersion();
   }
 }

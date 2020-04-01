@@ -72,7 +72,7 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
   /**
    * Indicates if the filter dropdown is open
    */
-  public open: boolean = false;
+  public open = false;
 
   /**
    * We need the actual input element to automatically focus on it
@@ -133,15 +133,6 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     }
   }
 
-  public get high() {
-    if (typeof this.filter.high === 'number' && isFinite(this.filter.high)) {
-      return this.filter.high;
-    } else {
-      // There's not a high limit
-      return null;
-    }
-  }
-
   public set low(low: number | string) {
     if (typeof low === 'number' && low !== this.filter.low) {
       this.filter.low = low;
@@ -149,6 +140,15 @@ export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, D
     } else if (typeof low !== 'number') {
       this.filter.low = null;
       this.filterValueChange.emit([this.filter.low, this.filter.high]);
+    }
+  }
+
+  public get high() {
+    if (typeof this.filter.high === 'number' && isFinite(this.filter.high)) {
+      return this.filter.high;
+    } else {
+      // There's not a high limit
+      return null;
     }
   }
 

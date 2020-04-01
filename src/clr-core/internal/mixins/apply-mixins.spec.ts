@@ -40,12 +40,11 @@ describe('ApplyMixin helper - ', () => {
 
   it('should not have mixin properties on unrelated classes', async () => {
     const testElement = createTestElement();
-    let component: PristineElement;
     testElement.innerHTML = `
       <apply-mixin-test-clean-element></apply-mixin-test-clean-element>
     `;
     await waitForComponent('apply-mixin-test-clean-element');
-    component = testElement.querySelector<PristineElement>('apply-mixin-test-clean-element');
+    const component = testElement.querySelector('apply-mixin-test-clean-element');
     await componentIsStable(component);
     expect((component as any)._uniqueId).toBeUndefined();
     removeTestElement(testElement);
@@ -53,14 +52,13 @@ describe('ApplyMixin helper - ', () => {
 
   it('should have mixin properties on expected classes', async () => {
     const testElement = createTestElement();
-    let component: MixinElement;
     testElement.innerHTML = `
       <apply-mixin-test-dirty-element></apply-mixin-test-dirty-element>
     `;
     await waitForComponent('apply-mixin-test-dirty-element');
-    component = testElement.querySelector<MixinElement>('apply-mixin-test-dirty-element');
+    const component = testElement.querySelector('apply-mixin-test-dirty-element');
     await componentIsStable(component);
-    expect(component._uniqueId).toBeDefined();
+    expect((component as any)._uniqueId).toBeDefined();
     removeTestElement(testElement);
   });
 });

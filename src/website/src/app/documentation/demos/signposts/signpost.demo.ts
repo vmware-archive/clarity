@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,9 +20,9 @@ export class SignpostDemo extends ClarityDocComponent {
     super('signposts');
   }
 
-  openState: boolean = false;
+  openState = false;
 
-  html: string = `
+  html = `
 <clr-signpost>
     <clr-signpost-content *clrIfOpen>
         <h3>Default Signpost</h3>

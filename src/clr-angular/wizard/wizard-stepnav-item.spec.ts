@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,7 +31,7 @@ class TestComponent implements AfterContentInit {
     this.page = fakeOutPage;
   }
   page: MockPage;
-  projector: string = 'foo';
+  projector = 'foo';
 
   @ViewChild(ClrWizardStepnavItem, { static: true })
   stepNavItem: ClrWizardStepnavItem;
@@ -266,18 +266,16 @@ export default function(): void {
     describe('View and Behavior', () => {
       describe('Renders as expected', () => {
         it('should have id', () => {
-          let myId: string;
           expect(myStepnavItem.hasAttribute('id')).toBeTruthy('stepnav item should have an id');
-          myId = myStepnavItem.getAttribute('id');
+          const myId = myStepnavItem.getAttribute('id');
           expect(myId).toBe(testItemComponent.id, 'stepnav item id should contain id');
         });
 
         it('should have aria-controls attribute', () => {
-          let myAriaControls: string;
           const stepNavItemId = testItemComponent.id;
 
           expect(myStepnavItem.hasAttribute('aria-controls')).toBeTruthy('stepnav item should have aria-controls attr');
-          myAriaControls = myStepnavItem.getAttribute('aria-controls');
+          const myAriaControls = myStepnavItem.getAttribute('aria-controls');
           expect(myAriaControls).toBe(stepNavItemId, 'aria-controls should contain id');
         });
 

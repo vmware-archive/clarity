@@ -100,7 +100,7 @@ export default function(): void {
       );
       const calView: DayViewModel[][] = calViewModel.calendarView;
 
-      let count: number = 1;
+      let count = 1;
       for (const view of calView) {
         for (const day of view) {
           if (prevDays.length > 0) {
@@ -226,30 +226,30 @@ export default function(): void {
       const prevUS: number[] = [31];
       const currUS: number[] = Array(31)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       const nextUS: number[] = Array(10)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       testCalendarViewDates(prevUS, currUS, nextUS, testJan2018US);
 
       const testJan2018Fr = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 1, dateRange);
       const prevFr: number[] = [];
       const currFr: number[] = Array(31)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       const nextFr: number[] = Array(11)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       testCalendarViewDates(prevFr, currFr, nextFr, testJan2018Fr);
 
       const testJan2018Random = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 5, dateRange);
       const prevRandom: number[] = [29, 30, 31];
       const currRandom: number[] = Array(31)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       const nextRandom: number[] = Array(8)
         .fill(0)
-        .map((e, i) => i + 1);
+        .map((_e, i) => i + 1);
       testCalendarViewDates(prevRandom, currRandom, nextRandom, testJan2018Random);
     });
 

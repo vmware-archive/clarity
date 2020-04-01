@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -242,9 +242,9 @@ export default function(): void {
       });
 
       describe('Overriding modal animation with (clrWizardPreventModalAnimation)', () => {
-        xit('should set stopModalAnimations to false when true', () => {});
+        xit('should set stopModalAnimations to false when true');
 
-        xit('should default to false', () => {});
+        xit('should default to false');
       });
 
       describe('Current page onchange', () => {
@@ -426,18 +426,13 @@ export default function(): void {
           });
 
           it('page buttons override default wizard buttons', () => {
-            let cancel: any;
-            let previous: any;
-            let next: any;
-            let finish: any;
-
             wizard.pageCollection.lastPage.makeCurrent();
             context.detectChanges();
 
-            cancel = context.hostElement.querySelector('.clr-wizard-btn--tertiary');
-            previous = context.hostElement.querySelector('.clr-wizard-btn--secondary');
-            next = context.hostElement.querySelector('.clr-wizard-btn--primary.disabled');
-            finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)');
+            const cancel = context.hostElement.querySelector('.clr-wizard-btn--tertiary');
+            const previous = context.hostElement.querySelector('.clr-wizard-btn--secondary');
+            const next = context.hostElement.querySelector('.clr-wizard-btn--primary.disabled');
+            const finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)');
 
             // custom buttons can omit expected buttons if they want
             expect(cancel).toBeNull();
@@ -456,24 +451,23 @@ export default function(): void {
           // TODO: Header actions are not widely available atm. When they are then we should complete
           // this test plan.
 
-          xit('header actions show up', () => {});
+          xit('header actions show up');
 
-          xit('headerActionService.wizardHeaderActions is set to wizard.headerActions', () => {});
+          xit('headerActionService.wizardHeaderActions is set to wizard.headerActions');
 
-          xit('headerActionService.wizardHeaderActions updates with wizard', () => {});
+          xit('headerActionService.wizardHeaderActions updates with wizard');
 
-          xit("header actions don't show up when they aren't there", () => {});
+          xit("header actions don't show up when they aren't there");
 
-          xit('page header actions take precedence', () => {});
+          xit('page header actions take precedence');
 
-          xit('clicking on a header action does something', () => {});
+          xit('clicking on a header action does something');
 
-          xit('wizard falls through to wizard header actions', () => {});
+          xit('wizard falls through to wizard header actions');
 
           xit(
             "wizard doesn't show header action when page with header actions " +
-              "changes to a page w/o header actions and the wizard doesn't have them",
-            () => {}
+              "changes to a page w/o header actions and the wizard doesn't have them"
           );
         });
       });
@@ -498,12 +492,11 @@ export default function(): void {
         });
 
         it('clrWizardOnCancel output is not fired when wizard is closed by finish button', () => {
-          let finish: any;
           expect(context.hostComponent._cancelled).toBe(0, 'verify initial state');
 
           wizard.pageCollection.lastPage.makeCurrent();
           context.detectChanges();
-          finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)');
+          const finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)') as HTMLElement;
           finish.click();
           context.detectChanges();
 
@@ -513,12 +506,11 @@ export default function(): void {
         });
 
         it('clrWizardOnFinish output is fired', () => {
-          let finish: any;
           expect(context.hostComponent._finished).toBe(0, 'verify initial state');
 
           wizard.pageCollection.lastPage.makeCurrent();
           context.detectChanges();
-          finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)');
+          const finish = context.hostElement.querySelector('.clr-wizard-btn--primary:not(.disabled)') as HTMLElement;
           finish.click();
           context.detectChanges();
 
@@ -768,44 +760,44 @@ export default function(): void {
 
     describe('View and Behavior', () => {
       describe('Close X', () => {
-        xit('shows up by default', () => {});
+        xit('shows up by default');
 
-        xit('can be hidden with the clrWizardClosable input', () => {});
+        xit('can be hidden with the clrWizardClosable input');
       });
 
       describe('Backdrop is static', () => {
-        xit('clrModalStaticBackdrop is set to true', () => {});
+        xit('clrModalStaticBackdrop is set to true');
       });
 
       describe('Navigation', () => {
-        xit('happy path through to finish', () => {});
+        xit('happy path through to finish');
 
-        xit('close and open on last open page', () => {});
+        xit('close and open on last open page');
 
-        xit('close and open on last navigable page', () => {});
+        xit('close and open on last navigable page');
 
-        xit('sets last navigable page current when current page is removed', () => {});
+        xit('sets last navigable page current when current page is removed');
       });
 
       describe('Custom Navigation', () => {
         describe('Alt Cancel Override', () => {
-          xit('clrWizardPreventDefaultCancel input keeps wizard from getting cancelled', () => {});
+          xit('clrWizardPreventDefaultCancel input keeps wizard from getting cancelled');
         });
       });
 
       describe('Delegates to modal', () => {
         // validate that clrModalSize is set as expected
-        xit('clrModalSize is set as expected', () => {});
+        xit('clrModalSize is set as expected');
 
         // validate that clrModalClosable is set as expected
-        xit('clrModalClosable is set as expected', () => {});
+        xit('clrModalClosable is set as expected');
 
         // validate that clrModalOpenChange event calls wizard.cancel
         // both dynamically and through clicking
-        xit('clrModalOpenChange event calls wizard.cancel', () => {});
+        xit('clrModalOpenChange event calls wizard.cancel');
 
         // validate that clrModalSkipAnimation is set as expected
-        xit('clrModalSkipAnimation is set as expected', () => {});
+        xit('clrModalSkipAnimation is set as expected');
       });
     });
   });

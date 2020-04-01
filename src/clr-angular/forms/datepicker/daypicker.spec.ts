@@ -127,7 +127,7 @@ export default function() {
       it('calls to navigate to the previous month', () => {
         spyOn(context.clarityDirective, 'previousMonth');
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        const button = switchers.children[0] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -138,7 +138,7 @@ export default function() {
       it('calls to navigate to the current month', () => {
         spyOn(context.clarityDirective, 'currentMonth');
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const button = switchers.children[1] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -149,7 +149,7 @@ export default function() {
       it('calls to navigate to the next month', () => {
         spyOn(context.clarityDirective, 'nextMonth');
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const button: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const button = switchers.children[2] as HTMLButtonElement;
 
         button.click();
         context.detectChanges();
@@ -175,19 +175,19 @@ export default function() {
 
       it('sets the correct aria-label value on the previous month button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const previousButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[0];
+        const previousButton = switchers.children[0] as HTMLButtonElement;
         expect(previousButton.attributes['aria-label'].value).toEqual('Previous month');
       });
 
       it('sets the correct aria-label value on the current month button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const currentButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[1];
+        const currentButton = switchers.children[1] as HTMLButtonElement;
         expect(currentButton.attributes['aria-label'].value).toEqual('Current month');
       });
 
       it('sets the correct aria-label value on the next month button', () => {
         const switchers: HTMLElement = context.clarityElement.querySelector('.calendar-switchers');
-        const nextButton: HTMLButtonElement = <HTMLButtonElement>switchers.children[2];
+        const nextButton = switchers.children[2] as HTMLButtonElement;
         expect(nextButton.attributes['aria-label'].value).toEqual('Next month');
       });
 

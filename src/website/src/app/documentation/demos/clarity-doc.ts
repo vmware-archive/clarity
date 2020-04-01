@@ -1,15 +1,15 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { COMPONENT_MAP } from '../../utils/component-list';
 
 export class ClarityDocComponent {
-  ui: number = -1;
-  ng: number = -1;
-  title: string = '';
-  newLayout: boolean = false;
+  ui = -1;
+  ng = -1;
+  title = '';
+  newLayout = false;
 
   constructor(componentName: string) {
     const component = COMPONENT_MAP.get(componentName);

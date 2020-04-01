@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,7 +25,7 @@ export class LocaleHelperService {
     this.initializeLocaleData();
   }
 
-  private _firstDayOfWeek: number = 0;
+  private _firstDayOfWeek = 0;
   private _localeDays: ReadonlyArray<ClrDayOfWeek>;
   private _localeMonthsAbbreviated: ReadonlyArray<string>;
   private _localeMonthsWide: ReadonlyArray<string>;
@@ -88,7 +88,7 @@ export class LocaleHelperService {
     }
     // Rearrange the tempArr to start with the first day of the week based on the locale.
     if (firstDayOfWeek > 0) {
-      const prevDays: string[] = tempArr.splice(0, firstDayOfWeek);
+      const prevDays: { day: string; narrow: string }[] = tempArr.splice(0, firstDayOfWeek);
       tempArr.push(...prevDays);
     }
     this._localeDays = tempArr;

@@ -26,11 +26,11 @@ class TestComponent {
   @ViewChild(ClrKeyFocus, { static: true })
   keyFocus: ClrKeyFocus;
   @ViewChildren(ClrKeyFocusItem) keyFocusItems: QueryList<ClrKeyFocusItem>;
-  open: boolean = false;
-  changed: boolean = false;
-  direction: string = 'vertical';
+  open = false;
+  changed = false;
+  direction = 'vertical';
   focusOnLoad = true;
-  showLast: boolean = true;
+  showLast = true;
 }
 
 @Component({
@@ -44,8 +44,8 @@ class TestComponent {
 })
 class DOMTestComponent {
   buttons: any;
-  focusOnLoad: boolean = true;
-  showLast: boolean = true;
+  focusOnLoad = true;
+  showLast = true;
 }
 
 let fixture: ComponentFixture<any>;

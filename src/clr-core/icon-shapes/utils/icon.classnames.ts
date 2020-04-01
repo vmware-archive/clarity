@@ -58,6 +58,38 @@ export function getShapeClassname(shapeType: string) {
   return className;
 }
 
+export enum IconTshirtSizes {
+  ExtraSmall = 'xs',
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+  ExtraLarge = 'xl',
+  ExtraExtraLarge = 'xxl',
+}
+
+export const iconTshirtSizeClassnamePrefix = 'clr-i-size-';
+
+export function getIconTshirtSizeClassname(
+  sizeToLookup: string,
+  prefix = iconTshirtSizeClassnamePrefix,
+  sizes = IconTshirtSizes
+): string {
+  const tshirtSizesVals = getEnumValues(sizes);
+  const indexOfSize = tshirtSizesVals.indexOf(sizeToLookup);
+  if (indexOfSize > -1) {
+    return prefix + tshirtSizesVals[indexOfSize];
+  }
+  return '';
+}
+
+export function getAllIconTshirtSizeClassnames(prefix = iconTshirtSizeClassnamePrefix, sizes = IconTshirtSizes) {
+  return getEnumValues(sizes).map(sz => prefix + sz);
+}
+
+export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes) {
+  return getEnumValues(sizes).indexOf(classname) > -1;
+}
+
 export function getIconSvgClasses(icon: IconShapeCollection): string {
   const testSolid = (i: IconShapeCollection) => (iconHasSolidShapes(i) ? IconSvgClassnames.Solid : '');
   const testBadged = (i: IconShapeCollection) => (iconHasBadgedShapes(i) ? IconSvgClassnames.Badged : '');
@@ -91,6 +123,7 @@ export function getUpdateSizeStrategy(size: string) {
 
 export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
   const updateStrategy = getUpdateSizeStrategy(size);
+  const newTshirtSize = getIconTshirtSizeClassname(size);
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
@@ -98,7 +131,6 @@ export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
       el.removeClassnames(getAllIconTshirtSizeClassnames());
       return;
     case SizeUpdateStrategies.ValidSizeString:
-      const newTshirtSize = getIconTshirtSizeClassname(size);
       el.addClassname(newTshirtSize);
       el.removeClassnamesUnless(getAllIconTshirtSizeClassnames(), [newTshirtSize]);
       el.removeEquilateralStyles();
@@ -113,36 +145,4 @@ export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
     default:
       return;
   }
-}
-
-export enum IconTshirtSizes {
-  ExtraSmall = 'xs',
-  Small = 'sm',
-  Medium = 'md',
-  Large = 'lg',
-  ExtraLarge = 'xl',
-  ExtraExtraLarge = 'xxl',
-}
-
-export const iconTshirtSizeClassnamePrefix = 'clr-i-size-';
-
-export function getIconTshirtSizeClassname(
-  sizeToLookup: string,
-  prefix = iconTshirtSizeClassnamePrefix,
-  sizes = IconTshirtSizes
-): string {
-  const tshirtSizesVals = getEnumValues(sizes);
-  const indexOfSize = tshirtSizesVals.indexOf(sizeToLookup);
-  if (indexOfSize > -1) {
-    return prefix + tshirtSizesVals[indexOfSize];
-  }
-  return '';
-}
-
-export function getAllIconTshirtSizeClassnames(prefix = iconTshirtSizeClassnamePrefix, sizes = IconTshirtSizes) {
-  return getEnumValues(sizes).map((sz: string) => prefix + sz);
-}
-
-export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes) {
-  return getEnumValues(sizes).indexOf(classname) > -1;
 }

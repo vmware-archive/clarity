@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,22 +14,27 @@ import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
 
 @Injectable()
 export class NoopDomAdapter implements DomAdapter {
+  // @ts-ignore
   userDefinedWidth(element: any): number {
     return 0;
   }
 
+  // @ts-ignore
   scrollBarWidth(element: any) {
     return 0;
   }
 
+  // @ts-ignore
   scrollWidth(element: any) {
     return 0;
   }
 
+  // @ts-ignore
   computedHeight(element: any): number {
     return 0;
   }
 
+  // @ts-ignore
   clientRect(element: any): ClientRect {
     return {
       top: 0,
@@ -41,9 +46,13 @@ export class NoopDomAdapter implements DomAdapter {
     };
   }
 
+  // @ts-ignore
   minWidth(element: any): number {
     return 0;
   }
 
-  focus(element: any): void {}
+  // @ts-ignore
+  focus(element: any): void {
+    // Do nothing
+  }
 }

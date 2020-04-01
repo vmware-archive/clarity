@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,8 +15,8 @@ import { VerticalNavGroupService } from './providers/vertical-nav-group.service'
 import { VerticalNavService } from './providers/vertical-nav.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
-const EXPANDED_STATE: string = 'expanded';
-const COLLAPSED_STATE: string = 'collapsed';
+const EXPANDED_STATE = 'expanded';
+const COLLAPSED_STATE = 'collapsed';
 
 @Component({
   selector: 'clr-vertical-nav-group',
@@ -84,7 +84,7 @@ export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
     );
   }
 
-  private wasExpanded: boolean = false;
+  private wasExpanded = false;
 
   @HostBinding('class.is-expanded')
   get expanded(): boolean {

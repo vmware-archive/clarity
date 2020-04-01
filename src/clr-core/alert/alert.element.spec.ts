@@ -18,8 +18,8 @@ import {
 describe('alert element', () => {
   let testElement: HTMLElement;
   let component: CdsAlert;
-  const placeholderText: string = 'I am a default alert with no attributes.';
-  const placeholderActionsText: string = 'This is where action elements go.';
+  const placeholderText = 'I am a default alert with no attributes.';
+  const placeholderActionsText = 'This is where action elements go.';
 
   describe('Basic alert behaviors', () => {
     beforeEach(async () => {

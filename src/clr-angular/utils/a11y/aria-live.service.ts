@@ -18,7 +18,7 @@ export enum ClrAriaLivePoliteness {
 /**
  * Time in milliseconds before inserting the content into the container
  */
-const ARIA_LIVE_TICK: number = 100;
+const ARIA_LIVE_TICK = 100;
 
 /**
  * This service handle `aria-live` accessibility attribute. The issue is that you need
@@ -56,12 +56,12 @@ export class ClrAriaLiveService implements OnDestroy {
   constructor(
     private ngZone: NgZone,
     @Inject(DOCUMENT) _document: any,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     this.document = _document;
   }
 
-  private _id: string = `clr-aria-live-element-${uniqueIdFactory()}`;
+  private _id = `clr-aria-live-element-${uniqueIdFactory()}`;
   /**
    * get access to the internal HTML `id` that gonna be used for the AriaLive container.
    * @return ID of the DOM Element as string.
@@ -119,7 +119,7 @@ export class ClrAriaLiveService implements OnDestroy {
       // the last one. That's what the SR will try to do anyway.
       clearTimeout(this.previousTimeout);
       this.previousTimeout = setTimeout(() => {
-        this.ariaLiveElement.textContent = <string>message;
+        this.ariaLiveElement.textContent = message as string;
       }, ARIA_LIVE_TICK);
     });
   }

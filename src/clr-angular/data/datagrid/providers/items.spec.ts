@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -160,7 +160,7 @@ export default function(): void {
 
     it('does not emit items changes until the page size is available', function() {
       let nbChanges = 0;
-      this.itemsInstance.change.subscribe((items: number[]) => {
+      this.itemsInstance.change.subscribe(() => {
         nbChanges++;
       });
       this.pageInstance.activated = true;

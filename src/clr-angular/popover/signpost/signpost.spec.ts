@@ -248,12 +248,12 @@ export default function(): void {
 })
 class TestCustomTriggerSignpost {
   @ViewChild(ClrSignpost) signpost: ClrSignpost;
-  openState: boolean = false;
+  openState = false;
 
   @ViewChild('outsideClick', { read: ElementRef, static: true })
   outsideClickBtn: ElementRef;
 
-  position: string = 'right-middle';
+  position = 'right-middle';
 }
 
 @Component({
@@ -274,7 +274,7 @@ class TestCustomTriggerSignpost {
 class TestDefaultSignpost {
   @ViewChild(ClrSignpost) signpost: ClrSignpost;
 
-  openState: boolean = false;
+  openState = false;
 
   @ViewChild('outsideClick', { read: ElementRef, static: true })
   outsideClickBtn: ElementRef;

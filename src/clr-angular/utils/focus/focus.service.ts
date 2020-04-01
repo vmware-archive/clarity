@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,7 @@ import { FocusableItem } from './focusable-item/focusable-item';
 export class FocusService {
   constructor(private renderer: Renderer2) {}
 
-  private _unlistenFuncs = [];
+  private _unlistenFuncs: Function[] = [];
   private _current: FocusableItem;
   public get current() {
     return this._current;
@@ -27,16 +27,10 @@ export class FocusService {
   listenToArrowKeys(el: HTMLElement) {
     // The following listeners return false when there was an action to take for the key pressed,
     // in order to prevent the default behavior of that key.
-    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowup', event => !this.move(ArrowKeyDirection.UP)));
-    this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowdown', event => !this.move(ArrowKeyDirection.DOWN))
-    );
-    this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowleft', event => !this.move(ArrowKeyDirection.LEFT))
-    );
-    this._unlistenFuncs.push(
-      this.renderer.listen(el, 'keydown.arrowright', event => !this.move(ArrowKeyDirection.RIGHT))
-    );
+    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowup', () => !this.move(ArrowKeyDirection.UP)));
+    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowdown', () => !this.move(ArrowKeyDirection.DOWN)));
+    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowleft', () => !this.move(ArrowKeyDirection.LEFT)));
+    this._unlistenFuncs.push(this.renderer.listen(el, 'keydown.arrowright', () => !this.move(ArrowKeyDirection.RIGHT)));
   }
 
   registerContainer(el: HTMLElement) {
@@ -93,7 +87,7 @@ export class FocusService {
   }
 
   public detachListeners() {
-    this._unlistenFuncs.forEach((unlisten: () => void) => unlisten());
+    this._unlistenFuncs.forEach(unlisten => unlisten());
   }
 }
 

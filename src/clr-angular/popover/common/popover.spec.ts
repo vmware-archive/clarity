@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,12 +10,12 @@ describe('Popover', function() {
   let anchor: HTMLElement;
   let popover: HTMLElement;
   let popoverInstance: Popover;
-  const padding: number = 60;
-  const anchorHeight: number = 150;
-  const anchorWidth: number = 150;
-  const popoverHeight: number = 50;
-  const popoverWidth: number = 50;
-  const popoverMargin: number = 5;
+  const padding = 60;
+  const anchorHeight = 150;
+  const anchorWidth = 150;
+  const popoverHeight = 50;
+  const popoverWidth = 50;
+  const popoverMargin = 5;
 
   beforeEach(() => {
     container = document.createElement('div');
@@ -201,17 +201,17 @@ describe('Popover', function() {
   });
 
   afterEach(() => {
-    /* tslint:disable:no-unused-expression */
     // Polyfill for IE11 `.remove()`
     (function() {
       function remove() {
-        this.parentNode && this.parentNode.removeChild(this);
+        if (this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
       }
       if (!Element.prototype.remove) {
         Element.prototype.remove = remove;
       }
     })();
-    /* tslint:enable:no-unused-expression */
 
     document.getElementById('container').remove();
   });

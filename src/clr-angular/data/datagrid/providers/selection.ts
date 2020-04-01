@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,12 +10,12 @@ import { FiltersProvider } from './filters';
 import { Items } from './items';
 import { SelectionType } from '../enums/selection-type';
 
-let nbSelection: number = 0;
+let nbSelection = 0;
 
 @Injectable()
 export class Selection<T = any> {
   public id: string;
-  public preserveSelection: boolean = false;
+  public preserveSelection = false;
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
   private lockedRefs: T[] = []; // Ref of locked items
@@ -45,7 +45,7 @@ export class Selection<T = any> {
           case SelectionType.Single: {
             let newSingle: any;
             const trackBy: TrackByFunction<T> = this._items.trackBy;
-            let selectionUpdated: boolean = false;
+            let selectionUpdated = false;
 
             // if the currentSingle has been set before data was loaded, we look up and save the ref from current data set
             if (this.currentSingle && !this.prevSingleSelectionRef) {
@@ -90,7 +90,7 @@ export class Selection<T = any> {
           case SelectionType.Multi: {
             let leftOver: any[] = this.current.slice();
             const trackBy: TrackByFunction<any> = this._items.trackBy;
-            let selectionUpdated: boolean = false;
+            let selectionUpdated = false;
 
             // if the current has been set before data was loaded, we look up and save the ref from current data set
             if (this.current.length > 0 && this.prevSelectionRefs.length !== this.current.length) {
@@ -186,16 +186,11 @@ export class Selection<T = any> {
   }
 
   /** @deprecated since 2.0, remove in 3.0 */
-  public rowSelectionMode: boolean = false;
+  public rowSelectionMode = false;
 
   private get _selectable(): boolean {
     return this._selectionType === SelectionType.Multi || this._selectionType === SelectionType.Single;
   }
-  /**
-   * Ignore items changes in the same change detection cycle.
-   */
-  // tslint:disable-next-line
-  private debounce: boolean = false;
 
   /**
    * Subscriptions to the other providers changes.
@@ -227,10 +222,6 @@ export class Selection<T = any> {
       this.prevSingleSelectionRef = this._items.trackBy(lookup, value);
     }
     this.emitChange();
-    // Ignore items changes in the same change detection cycle.
-    // @TODO This can likely be removed!
-    this.debounce = true;
-    setTimeout(() => (this.debounce = false));
   }
 
   /**
@@ -248,10 +239,6 @@ export class Selection<T = any> {
     this._current = value;
     if (emit) {
       this.emitChange();
-      // Ignore items changes in the same change detection cycle.
-      // @TODO This can likely be removed!
-      this.debounce = true;
-      setTimeout(() => (this.debounce = false));
     }
   }
 
@@ -312,6 +299,8 @@ export class Selection<T = any> {
    * Selects or deselects an item
    */
   public setSelected(item: T, selected: boolean) {
+    const index = this.current ? this.current.indexOf(item) : -1;
+
     switch (this._selectionType) {
       case SelectionType.None:
         break;
@@ -319,7 +308,6 @@ export class Selection<T = any> {
         // in single selection, set currentSingle method should be used
         break;
       case SelectionType.Multi:
-        const index = this.current.indexOf(item);
         if (index >= 0 && !selected) {
           this.deselectItem(index);
           this.emitChange();

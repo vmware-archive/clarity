@@ -69,13 +69,13 @@ import { isPlatformBrowser } from '@angular/common';
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
   implements CustomFilter, OnDestroy {
   private subs: Subscription[] = [];
-  public ariaExpanded: boolean = false;
+  public ariaExpanded = false;
 
   constructor(
     _filters: FiltersProvider<T>,
     public commonStrings: ClrCommonStringsService,
     private smartToggleService: ClrPopoverToggleService,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {
     super(_filters);
@@ -98,7 +98,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     content: ClrAlignment.END,
   };
 
-  private _open: boolean = false;
+  private _open = false;
   public get open() {
     return this._open;
   }

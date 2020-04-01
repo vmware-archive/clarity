@@ -100,7 +100,7 @@ export class Inventory {
     return this;
   }
 
-  fetch(skip: number = 0, limit: number = this._currentQuery.length): Promise<FetchResult> {
+  fetch(skip = 0, limit: number = this._currentQuery.length): Promise<FetchResult> {
     // Stringify and parse to mimic new object creation like a real HTTP request
     const items = JSON.stringify(this._currentQuery.slice(skip, skip + limit));
     const result: FetchResult = { users: JSON.parse(items), length: this._currentQuery.length };
@@ -109,7 +109,7 @@ export class Inventory {
   }
 
   private _fakeHttp<T>(result: T): Promise<T> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => resolve(result), this.latency);
     });
   }

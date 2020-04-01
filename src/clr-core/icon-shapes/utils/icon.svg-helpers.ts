@@ -7,6 +7,22 @@
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 import { getIconSvgClasses, getShapeClassname, IconDecorationClassnames } from './icon.classnames.js';
 
+export function getBadgeSvg(shapeClassname: string) {
+  return [
+    '<circle cx="30" cy="6" r="5"  class="',
+    [shapeClassname, IconDecorationClassnames.Badge].join(' '),
+    '" />',
+  ].join('');
+}
+
+export function getAlertSvg(shapeClassname: string) {
+  return [
+    '<path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="',
+    [shapeClassname, IconDecorationClassnames.Alert].join(' '),
+    '"/>',
+  ].join('');
+}
+
 export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string) {
   const shapeClassname = getShapeClassname(shapeName);
   let transformedSvg = shapeSvg.split('/>').join(` class="${shapeClassname}"/>`);
@@ -24,22 +40,6 @@ export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string) {
       break;
   }
   return transformedSvg;
-}
-
-export function getBadgeSvg(shapeClassname: string) {
-  return [
-    '<circle cx="30" cy="6" r="5"  class="',
-    [shapeClassname, IconDecorationClassnames.Badge].join(' '),
-    '" />',
-  ].join('');
-}
-
-export function getAlertSvg(shapeClassname: string) {
-  return [
-    '<path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="',
-    [shapeClassname, IconDecorationClassnames.Alert].join(' '),
-    '"/>',
-  ].join('');
 }
 
 export function getIconSvgOpeningTag(icon: IconShapeCollection) {

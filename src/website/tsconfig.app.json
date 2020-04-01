@@ -5,6 +5,9 @@
     "baseUrl": "./",
     "resolveJsonModule": true,
     "target": "es2015",
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noImplicitReturns": false,
     "paths": {
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../clr-icons"],

@@ -20,11 +20,6 @@ import { registerElementSafely } from './../utils/register';
  * }
  * ```
  */
-export const customElement = (tagName: string) => (classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor) => {
-  typeof classOrDescriptor === 'function'
-    ? legacyCustomElement(tagName, classOrDescriptor)
-    : standardCustomElement(tagName, classOrDescriptor);
-};
 
 // TC39 Decorators proposal
 const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => {
@@ -44,6 +39,12 @@ const legacyCustomElement = (tagName: string, classDef: Constructor<HTMLElement>
   return classDef as any;
 };
 
+export const customElement = (tagName: string) => (classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor) => {
+  typeof classOrDescriptor === 'function'
+    ? legacyCustomElement(tagName, classOrDescriptor)
+    : standardCustomElement(tagName, classOrDescriptor);
+};
+
 // TC39 Decorators proposal
 interface ClassDescriptor {
   kind: 'class';
@@ -61,7 +62,6 @@ interface ClassElement {
   descriptor?: PropertyDescriptor;
 }
 
-// tslint:disable-next-line:interface-over-type-literal
 export type Constructor<T> = {
   new (...args: any[]): T;
 };

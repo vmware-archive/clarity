@@ -9,7 +9,6 @@
 // import { elementExists } from './exists.js';
 
 // jasmine choked badly on this when i had it as an ES2015 class...
-/* tslint:disable:variable-name curly no-shadowed-variable */
 /*
 const __extends =
   (this && this.__extends) ||
@@ -41,7 +40,6 @@ const TestElement = (function(_super) {
   }
   return TestElement;
 })(HTMLElement);
-/* tslint:enable:variable-name curly no-shadowed-variable only-arrow-functions */
 
 /*
 const TEST_TAGNAME = 'my-test-el-001';

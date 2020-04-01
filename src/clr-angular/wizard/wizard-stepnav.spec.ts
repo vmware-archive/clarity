@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,8 +18,6 @@ import { ClrWizardModule } from './wizard.module';
 
 let mockPages: MockPage[];
 
-mockPages = resetMockPages();
-
 class StepnavPageCollection extends PageCollectionMock {
   public get pages(): MockPage[] {
     return mockPages;
@@ -29,6 +27,8 @@ class StepnavPageCollection extends PageCollectionMock {
 function resetMockPages(): MockPage[] {
   return [new MockPage(0), new MockPage(1), new MockPage(2)];
 }
+
+mockPages = resetMockPages();
 
 @Component({
   template: `

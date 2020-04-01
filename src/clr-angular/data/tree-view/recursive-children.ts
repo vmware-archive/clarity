@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,7 +38,7 @@ export class RecursiveChildren<T> {
           // In the case of lazy-loading recursive trees, we clear the children on collapse.
           // This is better in case they change between two user interaction, and that way
           // the app itself can decide whether to cache them or not.
-          (<RecursiveTreeNodeModel<T>>this.parent).clearChildren();
+          (this.parent as RecursiveTreeNodeModel<T>).clearChildren();
         }
       });
     }

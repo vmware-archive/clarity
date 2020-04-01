@@ -10,7 +10,7 @@ import { componentIsStable, createTestElement, removeTestElement, waitForCompone
 describe('alert-content element', () => {
   let testElement: HTMLElement;
   let component: CdsAlertContent;
-  const placeholderContent: string = 'Alert Content Placeholder';
+  const placeholderContent = 'Alert Content Placeholder';
 
   beforeEach(async () => {
     testElement = createTestElement();

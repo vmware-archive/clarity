@@ -3,8 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { DOCUMENT } from '@angular/common';
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { FontPreset } from './utils/font-presets';
 
@@ -30,9 +29,9 @@ function calcDescenderHeight(fontObj: FontPreset): number {
   return 1 - fontObj.topGap - fontObj.ascender - fontObj.xHeight;
 }
 
-let myStyleSheet;
+let myStyleSheet: HTMLStyleElement;
 
-function updateFontProperties(fontObj: FontPreset, doc: Document): void {
+function updateFontProperties(fontObj: FontPreset): void {
   if (!myStyleSheet) {
     myStyleSheet = document.createElement('style');
     document.head.appendChild(myStyleSheet);
@@ -77,16 +76,10 @@ export class TypographyLineHeightDemo {
   showBackgrounds = false;
   showOverlay = false;
 
-  private document: Document;
-
   currentFont = 'Metropolis';
 
-  constructor(private injector: Injector) {
-    this.document = this.injector.get(DOCUMENT);
-  }
-
   changeFont(fontPreset: FontPreset) {
-    updateFontProperties(fontPreset, this.document);
+    updateFontProperties(fontPreset);
     this.currentFont = fontPreset.font;
   }
 }

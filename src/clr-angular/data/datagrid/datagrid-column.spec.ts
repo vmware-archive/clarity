@@ -469,7 +469,7 @@ export default function(): void {
 }
 
 class TestComparator implements ClrDatagridComparatorInterface<number> {
-  compare(a: number, b: number): number {
+  compare(_a: number, _b: number): number {
     return 0;
   }
 }
@@ -479,7 +479,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return true;
   }
 
-  accepts(n: number): boolean {
+  accepts(_n: number): boolean {
     return true;
   }
 
@@ -487,7 +487,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
 }
 
 class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
-  accepts(n: number, search: string): boolean {
+  accepts(_n: number, _search: string): boolean {
     return true;
   }
 }
@@ -550,6 +550,7 @@ class FilterTest {
 class StringFilterTest {
   filter = new TestStringFilter();
   field: string;
+  filterValue = '';
 
   @ViewChild(DatagridStringFilter) stringFilter: DatagridStringFilter<number>;
 }

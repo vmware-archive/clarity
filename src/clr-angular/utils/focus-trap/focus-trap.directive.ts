@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,7 +39,7 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     private injector: Injector,
     private focusTrapsTracker: FocusTrapTracker,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Record<string, any>
   ) {
     this.document = this.injector.get(DOCUMENT);
     this.focusTrapsTracker.current = this;
@@ -124,7 +124,7 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.previousActiveElement = <HTMLElement>this.document.activeElement;
+      this.previousActiveElement = this.document.activeElement as HTMLElement;
       this.parentElement = this.el.nativeElement.parentElement;
     }
 

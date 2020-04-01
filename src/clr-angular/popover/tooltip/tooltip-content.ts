@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -49,25 +49,25 @@ export class ClrTooltipContent extends AbstractPopover {
     this.updateId(uniqueId);
   }
 
-  private _position: string;
-
-  get position() {
-    return this._position;
-  }
-
   get id(): string {
     return this._id;
   }
 
   @Input()
   set id(value: string) {
-    value ? this.updateId(value) : this.updateId('');
+    this.updateId(value || '');
   }
-  private _id;
+  private _id: string;
 
   private updateId(id: string) {
     this._id = id;
     this.tooltipIdService.updateId(id);
+  }
+
+  private _position: string;
+
+  get position() {
+    return this._position;
   }
 
   @Input('clrPosition')

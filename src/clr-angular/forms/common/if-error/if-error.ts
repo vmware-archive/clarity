@@ -43,7 +43,7 @@ export class ClrIfError {
   @Input('clrIfError') error: string;
 
   private subscriptions: Subscription[] = [];
-  private displayed: boolean = false;
+  private displayed = false;
   private control: NgControl;
 
   ngOnDestroy() {

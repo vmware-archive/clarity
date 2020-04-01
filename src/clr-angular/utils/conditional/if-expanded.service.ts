@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,9 +11,9 @@ import { ClrLoadingState } from '../loading/loading';
 
 @Injectable()
 export class IfExpandService implements LoadingListener {
-  public expandable: number = 0;
+  public expandable = 0;
 
-  protected _loading: boolean = false;
+  protected _loading = false;
   get loading(): boolean {
     return this._loading;
   }
@@ -25,7 +25,7 @@ export class IfExpandService implements LoadingListener {
     }
   }
 
-  protected _expanded: boolean = false;
+  protected _expanded = false;
   get expanded(): boolean {
     return this._expanded;
   }

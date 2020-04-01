@@ -59,7 +59,7 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   /**
    * Indicates if the filter dropdown is open
    */
-  public open: boolean = false;
+  public open = false;
 
   /**
    * We need the actual input element to automatically focus on it

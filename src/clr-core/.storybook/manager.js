@@ -1,5 +1,6 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming/create';
+import { STORY_CHANGED } from '@storybook/core-events';
 
 addons.setConfig({
   options: {
@@ -11,6 +12,12 @@ addons.setConfig({
     brandUrl: 'https://clarity.design',
     brandImage: './assets/images/clarity-logo.svg',
   }),
+});
+
+addons.register('storybook/ga-analytics', api => {
+  if (window.ga) {
+    api.on(STORY_CHANGED, () => ga('send', 'pageview', `/storybook/core/?path=${api.getUrlState().path}`));
+  }
 });
 
 setTimeout(() => {

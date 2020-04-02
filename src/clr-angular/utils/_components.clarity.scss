@@ -5,9 +5,9 @@
 // Clarity Internal Dependencies
 @import '../utils/normalize'; // TODO: upgrade to latest normalize, once updated clr-ui can import core as is.
 
-@import '../../clr-core/styles/mixins/utils';
-@import '../../clr-core/styles/variables/variables';
-@import '../../clr-core/styles/variables/properties';
+@import '../utils/mixins';
+@import '../utils/variables/variables';
+@import '../utils/variables/properties';
 
 // Layout/Grid
 @import '../layout/grid/grid';

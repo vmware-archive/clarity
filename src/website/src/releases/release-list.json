@@ -1,57 +1,67 @@
 {
-  "current": "3.0.1",
+  "current": "3.1.0",
   "all": {
+    "3.1.0": {
+      "date": "Apr 2, 2020",
+      "sketch": "",
+      "commit": "6da155d7f33ca4875748819782bb7053979868d0"
+    },
     "3.0.1": {
       "date": "Mar 12, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "da8a565eb73927242676441ab74fda13771c73ff"
     },
     "3.0.0": {
       "date": "Feb 27, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "d452f2f3e606c9394ce7d1f1495802fd7c45cb7c"
     },
     "3.0.0-rc.1": {
       "date": "Feb 21, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "0d7374c71473d0d6eda29899612afaa900de6c3d"
     },
     "3.0.0-next.8": {
       "date": "Feb 8, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "4f2757704664ad5d136432f326b3a241c298d5a2"
     },
     "3.0.0-next.7": {
       "date": "Jan 23, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "93c094e769cb556d8ce2af0230d5fa259f3bb452"
     },
     "3.0.0-next.6": {
       "date": "Jan 9, 2020",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "6ead3ef681168ace68ce5884e85643f8f21e8184"
     },
     "3.0.0-next.5": {
       "date": "Dec 19, 2019",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "c822fc934bd88ba28e9eb8cd3a8b0ca014e4ea36"
     },
     "3.0.0-next.4": {
       "date": "Dec 5, 2019",
-      "sketch": "2.2.0",
+      "sketch": "",
       "commit": "3be4137e363a40e783067602f70a282a08880555"
     },
     "3.0.0-next.3": {
       "date": "Nov 19, 2019",
-      "sketch": "2.2.0"
+      "sketch": ""
     },
     "3.0.0-next.2": {
       "date": "Oct 18, 2019",
-      "sketch": "2.2.0"
+      "sketch": ""
     },
     "3.0.0-next.1": {
       "date": "Oct 3, 2019",
-      "sketch": "2.2.0"
+      "sketch": ""
+    },
+    "2.4.0": {
+      "date": "Apr 2, 2020",
+      "sketch": "2.2.0",
+      "commit": "2438e3727fd9e36a5cbbc24ae215bebb5e5d18d4"
     },
     "2.3.9": {
       "date": "Mar 12, 2020",

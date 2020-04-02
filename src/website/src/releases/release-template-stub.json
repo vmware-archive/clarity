@@ -1,4 +1,5 @@
 {
+  "3.1.0": "src/website/src/releases/3.x/3.1.0.html",
   "3.0.1": "src/website/src/releases/3.x/3.0.1.html",
   "3.0.0": "src/website/src/releases/3.x/3.0.0.html",
   "3.0.0-rc.1": "src/website/src/releases/3.x/3.0.0-rc.1.html",
@@ -11,6 +12,7 @@
   "3.0.0-next.2": "src/website/src/releases/3.x/3.0.0-next.2.html",
   "3.0.0-next.1": "src/website/src/releases/3.x/3.0.0-next.1.html",
 
+  "2.4.0": "src/website/src/releases/2.x/2.4.0.html",
   "2.3.9": "src/website/src/releases/2.x/2.3.9.html",
   "2.3.8": "src/website/src/releases/2.x/2.3.8.html",
   "2.3.7": "src/website/src/releases/2.x/2.3.7.html",

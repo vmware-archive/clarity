@@ -13,6 +13,7 @@ export const environment = {
   sketch_base_url: 'https://github.com/vmware/clarity-assets/raw/master/sketch',
   sketch_icons_url:
     'https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-2.2.0.sketch',
+  figma_url: 'https://www.figma.com/@vmware',
   figma_link_light: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library-light-2.2.0',
   figma_link_dark: 'https://www.figma.com/file/wRYSrWSffZXcdQuiolwkym/Clarity-UI-Library-dark-2.2.0',
   figma_icons: 'https://www.figma.com/file/40gaW7S2yP7B0ME6QNDEsR/Clarity-Icons-2.2.0',

@@ -62,7 +62,17 @@
                     </p>
                 </div>
             </div>
-            <div class="group whats-new-mediablock">
+            <div *ngIf="sketchVersion === ''" class="group whats-new-mediablock">
+                <img class="icon" src="assets/images/logos/figma.svg" />
+                <div class="description">
+                    <p class="title">Figma library</p>
+                    <p>
+                        <!-- TODO: proper fallbacks? -->
+                        <a [href]="figmaUrl" target="_blank">View Figma Library</a><br />
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="sketchVersion !== ''" class="group whats-new-mediablock">
                 <img class="icon" src="assets/images/logos/sketch.png" />
                 <div class="description">
                     <p class="title">Sketch template</p>

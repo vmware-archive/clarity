@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,6 +11,7 @@ import { BreakingChange } from './counters/breaking-change.directive';
 import { BugFix } from './counters/bug-fix.directive';
 import { NewComponent } from './counters/new-component.directive';
 import { Subscription } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 import * as RELEASES from '../../releases/release-list.json';
 
@@ -33,6 +34,8 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
   nbNewComponents: number;
   newPackageFormat = false;
   hasDarkTheme = false;
+
+  figmaUrl: string;
 
   releaseNumber: string;
   releaseDate: string;
@@ -131,6 +134,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
     this.nbBugFixes = this.bugFixes ? this.bugFixes.length : 0;
     this.nbNewComponents = this.newComponents ? this.newComponents.length : 0;
     this.newPackageFormat = compareReleases('0.11.0-beta', releaseNo) >= 0;
+    this.figmaUrl = environment.figma_url;
   }
 
   ngAfterViewInit() {

@@ -2,8 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../../../clr-core/styles/variables/variables.color';
-@import '../../../../clr-core/styles/variables/variables.global';
+@import '../../../../clr-angular/utils/variables/variables.color';
+@import '../../../../clr-angular/utils/variables/variables.global';
 
 @function getLineHeightGap($line-height: 1.2) {
   @if ($line-height < 1) {

@@ -4,7 +4,7 @@
 
 @import './../../styles/tokens/generated/index';
 @import './../../styles/mixins/utils';
-@import './../../styles/variables/variables';
+@import './../../styles/tokens/legacy';
 @import './../../styles/layout/layout';
 
 // Every Web Component will need to import a minimal amount of core CSS

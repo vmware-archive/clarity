@@ -45,24 +45,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-  trackSurveyAction(eventLabel: string) {
-    if (window.trackSurveyAlert) {
-      window.trackSurveyAlert(eventLabel);
-    }
-
-    // close survey in future visits
-    if (eventLabel === 'close-survey') {
-      const expireDate = new Date();
-      expireDate.setDate(expireDate.getDate() + 60); // set an expire for 60 days
-      const surveyCookie = `closeSurvey=true;expires=${expireDate.toUTCString()}`;
-      document.cookie = surveyCookie;
-    }
-  }
-
-  showSurvey(): boolean {
-    return !document.cookie.includes('closeSurvey=true');
-  }
-
   bodyClasses = [];
 
   updateBodyClasses() {

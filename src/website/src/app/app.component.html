@@ -1,15 +1,5 @@
 <clr-main-container>
     <app-skip-link [focusElement]="contentRef.nativeElement"></app-skip-link>
-    <clr-alert *ngIf="showSurvey()" [clrAlertType]="'alert-info'" [clrAlertAppLevel]="true" (clrAlertClosedChange)="trackSurveyAction('close-survey')">
-      <clr-alert-item>
-        <span class="alert-text">
-            Hey there, we’d like to find out how you feel about Clarity! Take a 3 minute survey and tell us what you think!
-        </span>
-        <div class="alert-actions">
-          <a class="btn alert-action" target="_blank" href="https://vmwareuxr.sjc1.qualtrics.com/jfe/form/SV_6lFHAvuxNUALhS5" (click)="trackSurveyAction('start-survey')">Start</a>
-        </div>
-      </clr-alert-item>
-    </clr-alert>
     <clr-header class="header-6">
         <div class="branding">
             <a routerLink="/" class="logo-and-title">

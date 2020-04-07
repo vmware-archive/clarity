@@ -6,11 +6,9 @@
 @import './../../styles/mixins/utils';
 @import './../../styles/tokens/legacy';
 @import './../../styles/layout/layout';
+@import './../../styles/typography/typography';
 
 // Every Web Component will need to import a minimal amount of core CSS
-
-$clr-use-custom-properties: true;
-
 :host {
   font-family: inherit;
   contain: content; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain

@@ -12,5 +12,7 @@ module.exports = {
   output: {
     filename: 'webpack.bundle.js',
     path: path.resolve(__dirname, '../../../dist/test-bundles'),
+    sourceMapFilename: 'webpack.bundle.js.map',
   },
+  devtool: 'source-map',
 };

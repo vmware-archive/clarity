@@ -4,8 +4,11 @@
 
 @mixin generateGaps($breakpoint: null) {
   @each $size, $sizeValue in $cds-layout-sizes {
-    [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] > * {
-      margin-bottom: $sizeValue;
+    [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
+      & > *,
+      &::slotted(*) {
+        margin-bottom: $sizeValue !important;
+      }
     }
   }
 }
@@ -25,8 +28,9 @@
   justify-content: flex-start;
   align-items: flex-start;
 
-  & > *:last-child {
-    margin-bottom: 0;
+  & > *:last-child,
+  &::slotted(*:last-child) {
+    margin-bottom: 0 !important;
   }
 
   // Align Items
@@ -73,8 +77,10 @@
   }
 
   &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:vertical-stretch'] > * {
-    flex-grow: 1;
+  &[cds-layout~='align:vertical-stretch'] > *,
+  &[cds-layout~='align:stretch']::slotted(*),
+  &[cds-layout~='align:vertical-stretch']::slotted(*) {
+    flex-grow: 1 !important;
   }
 
   // Align Single Item

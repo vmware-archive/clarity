@@ -8,8 +8,9 @@
       margin: calc(-1 * #{$sizeValue}) 0 0 calc(-1 * #{$sizeValue});
       width: calc(100% + #{$sizeValue});
 
-      & > * {
-        margin: $sizeValue 0 0 $sizeValue;
+      & > *,
+      &::slotted(*) {
+        margin: $sizeValue 0 0 $sizeValue !important;
       }
     }
   }
@@ -81,13 +82,17 @@
   }
 
   &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:horizontal-stretch'] > * {
-    flex-grow: 1;
+  &[cds-layout~='align:horizontal-stretch'] > *,
+  &[cds-layout~='align:stretch']::slotted(*),
+  &[cds-layout~='align:horizontal-stretch']::slotted(*) {
+    flex-grow: 1 !important;
   }
 
   &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:vertical-stretch'] {
-    align-content: stretch;
+  &[cds-layout~='align:vertical-stretch'],
+  &[cds-layout~='align:stretch']::slotted(*),
+  &[cds-layout~='align:vertical-stretch']::slotted(*) {
+    align-content: stretch !important;
   }
 
   // Align Single Item

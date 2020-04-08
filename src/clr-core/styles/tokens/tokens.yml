@@ -98,17 +98,17 @@ props:
 
   # layout
   - name: width-xs
-    value: '480px'
+    value: '576px'
     type: 'px'
     category: 'layout'
     absolute-value: true # width must retain px values for media queries
   - name: width-sm
-    value: '720px'
+    value: '768px'
     type: 'px'
     category: 'layout'
     absolute-value: true
   - name: width-md
-    value: '1024px'
+    value: '992px'
     type: 'px'
     category: 'layout'
     absolute-value: true

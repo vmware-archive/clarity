@@ -60,16 +60,16 @@ adhere to the following guidelines for our Core Web Component codebase.
   `clr-core/my-toggle/my-toggle.element.ts`.
 
 * Stateless Utilities should be named appropriately in the `utils` directory.
-  `clr-core/common/utils/register.ts`.
+  `clr-core/internal/utils/register.ts`.
 
 * Stateful Utilities should be named with a `service` suffix in the `services`
-  directory. `clr-core/common/services/common-strings.service.ts`.
+  directory. `clr-core/internal/services/common-strings.service.ts`.
 
 * Common Interfaces should be named with a `interface` suffix in the `interfaces`
-  directory. `clr-core/common/interfaces/types.interface.ts`.
+  directory. `clr-core/internal/interfaces/types.interface.ts`.
 
 * Common Enums should be named with a `enum` suffix in the `enums`
-  directory. `clr-core/common/enums/key-events.enum.ts`.
+  directory. `clr-core/internal/enums/key-events.enum.ts`.
 
 * Common Functions should have an appropriate file name with no prefix or suffix
   that describes the functionality.
@@ -209,6 +209,19 @@ adhere to the following guidelines for our Core Web Component codebase.
   }
   ```
 
+  The Web Component can apply styles to content that is provided by the application
+  using the `::slotted` CSS selector. However, we should try to avoid applying any
+  styles that may alter layout of the provided content. Layout should be managed
+  by the host application as we do want to assume layout use cases.
+
+  ```html
+  <cds-modal>
+    <div cds-layout="vertical gap:md">
+      ...
+    </div>
+  </cds-modal>
+  ```
+
 * Components should follow the appropriate TSDoc summary convention as well as
   appropriate TSDoc comments for properties and methods. See existing components
   for convention examples.
@@ -297,7 +310,7 @@ adhere to the following guidelines for our Core Web Component codebase.
 * Public API surface for component styling should **not** use the `clr-` global
   prefixing convention. If there is a naming collision with a local host var and
   global theming var it can break on the component ([see example](https://codepen.io/coryrylan/pen/vYEMxgo)).
-  This is also necessary for micro frontends where a component may need to be
+  This is also necessary for micro front-ends where a component may need to be
   aliased due to app embedding and e2e workflows. This prevents version
   collisions and dependencies form having to share the same global values.
 

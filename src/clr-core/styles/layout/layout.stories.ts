@@ -1142,9 +1142,9 @@ export const utilitiesDisplayScreenReaderOnly = () => {
 export const utilitiesContainers = () => {
   return html`
     <div cds-layout="vertical gap:md">
-      <cds-demo layout cds-layout="container:xs">container:xs (480px)</cds-demo>
-      <cds-demo layout cds-layout="container:sm">container:sm (720px)</cds-demo>
-      <cds-demo layout cds-layout="container:md">container:md (1024px)</cds-demo>
+      <cds-demo layout cds-layout="container:xs">container:xs (576px)</cds-demo>
+      <cds-demo layout cds-layout="container:sm">container:sm (768px)</cds-demo>
+      <cds-demo layout cds-layout="container:md">container:md (992px)</cds-demo>
       <cds-demo layout cds-layout="container:lg">container:lg (1200px)</cds-demo>
       <cds-demo layout cds-layout="container:xl">container:xl (1440px)</cds-demo>
       <cds-demo layout cds-layout="container:xs container:center">container:xs container:center</cds-demo>

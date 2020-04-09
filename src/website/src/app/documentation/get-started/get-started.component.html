@@ -27,24 +27,24 @@
         <div>
             <h4>Figma Libraries</h4>
             <a [href]="lightFigma" target="_blank" (click)="gaClick('figma-light')"
-                class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion}})
+                class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion || figmaVersion}})
             </a>
             <a [href]="darkFigma" target="_blank" (click)="gaClick('figma-dark')"
-                class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion}})
+                class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion || figmaVersion}})
             </a>
             <a [href]="iconFigma" target="_blank" (click)="gaClick('figma-icons')"
-                class="btn btn-primary btn-sm" rel="noopener">Icon Library ({{sketchVersion}})
+                class="btn btn-primary btn-sm" rel="noopener">Icon Library ({{sketchVersion || figmaVersion}})
             </a>
             <a [href]="colorFigma" target="_blank" (click)="gaClick('figma-color')"
-                class="btn btn-primary btn-sm" rel="noopener">Color Library ({{sketchVersion}})
+                class="btn btn-primary btn-sm" rel="noopener">Color Library ({{sketchVersion || figmaVersion}})
             </a>
         </div>
-        <div>
+        <div *ngIf="majorVersion < 3">
             <h4>Sketch Libraries</h4>
-            <a [href]="sketchBaseUrl + '/light/clarity-library-light-' + sketchVersion + '.sketch'" target="_blank" (click)="gaClick('sketch-light')"
+            <a [href]="sketchBaseUrl + '/light/clarity-library-light-' + sketchVersion + '.sketch?raw=true'" target="_blank" (click)="gaClick('sketch-light')"
                class="btn btn-primary btn-sm" rel="noopener">UI Library - Light ({{sketchVersion}})
             </a>
-            <a [href]="sketchBaseUrl + '/dark/clarity-library-dark-' + sketchVersion + '.sketch'" target="_blank" (click)="gaClick('sketch-dark')"
+            <a [href]="sketchBaseUrl + '/dark/clarity-library-dark-' + sketchVersion + '.sketch?raw=true'" target="_blank" (click)="gaClick('sketch-dark')"
                class="btn btn-primary btn-sm" rel="noopener">UI Library - Dark ({{sketchVersion}})
             </a>
             <a [href]="sketchIconsUrl" target="_blank" (click)="gaClick('sketch-icons')"

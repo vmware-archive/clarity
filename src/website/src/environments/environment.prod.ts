@@ -10,9 +10,9 @@ export const environment = {
   versions_url: 'https://clarity.design/versions.json',
   icons_base_url: '/.netlify/functions/download-icon',
   icons_url: 'https://github.com/vmware/clarity-assets/archive/master.zip',
-  sketch_base_url: 'https://github.com/vmware/clarity-assets/raw/master/sketch',
+  sketch_base_url: 'https://github.com/vmware/clarity-assets/blob/master/sketch',
   sketch_icons_url:
-    'https://github.com/vmware/clarity-assets/raw/master/sketch/icons/clarity-library-icons-2.2.0.sketch',
+    'https://github.com/vmware/clarity-assets/blob/master/sketch/icons/clarity-library-icons-2.2.0.sketch?raw=true',
   figma_url: 'https://www.figma.com/@vmware',
   figma_link_light: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library-light-2.2.0',
   figma_link_dark: 'https://www.figma.com/file/wRYSrWSffZXcdQuiolwkym/Clarity-UI-Library-dark-2.2.0',

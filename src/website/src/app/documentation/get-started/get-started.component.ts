@@ -68,6 +68,8 @@ export class GetStartedComponent {
   sketchBaseUrl = environment.sketch_base_url;
   sketchIconsUrl = environment.sketch_icons_url;
   sketchVersion = RELEASES.all[RELEASES.current].sketch;
+  figmaVersion = RELEASES.all[RELEASES.current].figma;
+  majorVersion: Number = Number(environment.version.charAt(1));
   lightFigma = environment.figma_link_light;
   darkFigma = environment.figma_link_dark;
   iconFigma = environment.figma_icons;

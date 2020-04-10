@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/button';
 import { CdsButton } from '@clr/core/button';
 import '@clr/core/icon';
 import {
@@ -49,7 +48,6 @@ const iconMap = {
 /**
  * Base class for alerts. Contains properties and functions common to all alerts.
  */
-// @dynamic
 export class CdsBaseAlert extends LitElement {
   @event() private closedChange: EventEmitter<boolean>;
 

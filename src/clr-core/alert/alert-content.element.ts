@@ -28,10 +28,9 @@ import { styles } from './alert-content.element.css.js';
  * </cds-app-alert>
  * ```
  *
- * @beta 3.0
+ * @beta
  * @element cds-alert-content
  */
-// @dynamic
 export class CdsAlertContent extends LitElement {
   render() {
     return html`

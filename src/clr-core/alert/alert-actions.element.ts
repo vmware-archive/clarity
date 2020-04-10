@@ -24,10 +24,9 @@ import { styles } from './alert-actions.element.css';
  * </cds-app-alert>
  * ```
  *
- * @beta 3.0
+ * @beta
  * @element cds-alert-actions
  */
-// @dynamic
 export class CdsAlertActions extends LitElement {
   connectedCallback() {
     super.connectedCallback();

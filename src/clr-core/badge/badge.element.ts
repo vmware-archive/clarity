@@ -19,13 +19,12 @@ import { styles } from './badge.element.css.js';
  * ```html
  * <cds-badge status="info">2</cds-badge>
  * ```
- *
+ * @beta
  * @element cds-badge
  * @slot default - Content slot for inside the badge
  * @cssprop --background
  * @cssprop --color
  */
-// @dynamic
 export class CdsBadge extends LitElement {
   /** Sets the color of the badge from the following predefined list of choices:
    *  'gray', 'purple', 'blue', 'orange', 'light-blue'

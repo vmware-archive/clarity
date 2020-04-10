@@ -42,19 +42,11 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * <cds-icon shape="user"></cds-icon>
  * ```
  *
+ * @beta
  * @element cds-icon
- * @cssprop --clr-icon-color
- * @cssprop --clr-icon-color-success
- * @cssprop --clr-icon-color-danger
- * @cssprop --clr-icon-color-warning
- * @cssprop --clr-icon-color-info
- * @cssprop --clr-icon-color-inverse
- * @cssprop --clr-icon-color-inverse-success
- * @cssprop --clr-icon-color-inverse-danger
- * @cssprop --clr-icon-color-inverse-warning
- * @cssprop --clr-icon-color-inverse-info
+ * @cssprop --color
+ * @cssprop --badge-color
  */
-// @dynamic
 export class CdsIcon extends IconMixinClass {
   static get styles() {
     return [baseStyles, styles];

@@ -20,13 +20,18 @@ const standardQuery = (descriptor: PropertyDescriptor, element: any) => ({
   descriptor,
 });
 
+export interface QuerySlotConfig {
+  required?: 'error' | 'warning';
+  requiredMessage?: string;
+}
+
 /**
  * A property decorator that converts a class property into a getter that
  * executes a querySelector on the element's light DOM Slot.
  *
  * @ExportDecoratedItems
  */
-export function querySlot(selector: string) {
+export function querySlot(selector: string, config?: QuerySlotConfig) {
   return (
     protoOrDescriptor: {} | any,
     // tslint:disable-next-line:no-any decorator
@@ -34,7 +39,20 @@ export function querySlot(selector: string) {
   ): any => {
     const descriptor = {
       get(this: LitElement) {
-        return this.querySelector(selector);
+        const ref = this.querySelector(selector);
+
+        if (!ref && config && config.required) {
+          const message =
+            config.requiredMessage ||
+            `The <${selector}> element is required to use <${this.tagName.toLocaleLowerCase()}>`;
+          if (config.required === 'error') {
+            throw new Error(message);
+          } else {
+            console.warn(message);
+          }
+        }
+
+        return ref;
       },
       enumerable: true,
       configurable: true,

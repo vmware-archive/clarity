@@ -4,14 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { registerElementSafely } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
-import { registerElementSafely } from '../utils/register.js';
+
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
-import { querySlot, querySlotAll } from './query-slot';
+import { querySlot, querySlotAll } from './query-slot.js';
 
 class TestElement extends LitElement {
   @querySlot('#test') test: HTMLDivElement;
   @querySlotAll('.item') testItems: NodeListOf<HTMLDivElement>;
+  @querySlot('#error', { required: 'error' })
+  testError: HTMLDivElement;
+  @querySlot('#errorMessage', { required: 'error', requiredMessage: 'test message' })
+  testErrorWithMessage: HTMLDivElement;
 
   render() {
     return html`
@@ -56,5 +61,15 @@ describe('query slot decorator', () => {
     expect(component).toBeTruthy();
     expect(component.testItems.length).toBe(3);
     expect(Array.from(component.testItems)[0].innerText).toBe('item 1');
+  });
+
+  it('should throw if element is required', () => {
+    const el = () => component.testError;
+    expect(el).toThrow();
+  });
+
+  it('should throw custom message if element is required ', () => {
+    const el = () => component.testErrorWithMessage;
+    expect(el).toThrow(new Error('test message'));
   });
 });

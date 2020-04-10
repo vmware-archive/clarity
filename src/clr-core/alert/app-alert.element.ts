@@ -22,7 +22,7 @@ import { styles } from './app-alert.element.css.js';
  * </cds-app-alert>
  * ```
  *
- * @beta 3.0
+ * @beta
  * @element cds-app-alert
  * @slot default - Content slot for inside the alert. Usually will contain at least a <cds-alert-content> component.
  * @cssprop --color
@@ -31,7 +31,6 @@ import { styles } from './app-alert.element.css.js';
  * @cssprop --close-icon-color
  * @cssprop --close-icon-color-hover
  */
-// @dynamic
 export class CdsAppAlert extends CdsBaseAlert {
   /** Sets the color of the alert from a predefined list of statuses */
   @property({ type: String })

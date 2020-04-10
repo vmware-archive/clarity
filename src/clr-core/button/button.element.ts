@@ -29,7 +29,7 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * ```html
  * <cds-button>submit</cds-button>
  * ```
- *
+ * @beta
  * @element cds-button
  * @slot default - Content slot for inside the button
  * @cssprop --background
@@ -46,7 +46,6 @@ const iconSpinner = html`<span class="spinner spinner-inline"></span>`;
  * @cssprop --padding
  * @cssprop --text-transform
  */
-// @dynamic
 export class CdsButton extends CdsBaseButton {
   /**
    * Define the type of action the button triggers

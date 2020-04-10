@@ -77,7 +77,7 @@ export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
   type?: TypeHint;
   reflect?: boolean;
   converter?:
-    | ((value: string, type?: TypeHint) => Type)
+    | ((value: string | null, type?: TypeHint) => Type)
     | {
         fromAttribute?(value: string | null, type?: TypeHint): Type;
         toAttribute?(value: Type, type?: TypeHint): unknown;

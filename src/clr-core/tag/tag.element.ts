@@ -20,6 +20,7 @@ import { styles } from './tag.element.css.js';
  * <cds-tag status="info">Info</cds-tag>
  * ```
  *
+ * @beta
  * @element cds-tag
  * @slot default - Content slot for inside the tag
  * @cssprop --background
@@ -27,7 +28,6 @@ import { styles } from './tag.element.css.js';
  * @cssprop --border-color
  * @cssprop --border-radius
  */
-// @dynamic
 export class CdsTag extends CdsBaseButton {
   /** Sets the color of the tag (and badge if present) from the following predefined list of statuses:
    *  'info', 'success', 'warning', 'danger'

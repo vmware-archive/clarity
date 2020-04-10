@@ -29,15 +29,13 @@ import { styles } from './test-dropdown.element.css.js';
  * </cds-test-dropdown>
  * ```
  *
- * @beta 3.0
- * @element cds-test-dropdown
+ * @beta
  * @slot default - Content slot for dropdown content
  * @event {boolean} openChange - notify open state change of dropdown
- * @cssprop --clr-test-border-color
- * @cssprop --clr-test-button-background-color
- * @cssprop --clr-test-button-text-color
+ * @cssprop --border-color
+ * @cssprop --background-color
+ * @cssprop --text-color
  */
-// @dynamic
 export class CdsTestDropdown extends LitElement {
   @event() private openChange: EventEmitter<boolean>;
 

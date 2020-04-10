@@ -9,7 +9,15 @@
 const fs = require('fs');
 const theo = require('theo');
 
-function getRemValue(prop, base = 20) {
+const relativeValueStore = {};
+
+function getId() {
+  return Math.random()
+    .toString(36)
+    .substr(2, 9);
+}
+
+function getRemValue(prop, base) {
   return `${(parseInt(prop.value.slice(0, -2)) / base).toFixed(base === 20 ? 2 : 4)}rem`;
 }
 
@@ -17,24 +25,36 @@ function isRelativePxValue(prop) {
   return prop.type === 'px' && !prop['absolute-value'];
 }
 
-function getPropValue(prop) {
-  return isRelativePxValue(prop) ? getRemValue(prop) : prop.value;
+function getPropValue(prop, base = 20) {
+  return isRelativePxValue(prop) ? getRemValue(prop, base) : prop.value;
+}
+
+function getPropString(prop, base = 20) {
+  // if the token is private but a relative value we generate a unique css custom prop
+  // to be able dynamically adjust it for apps using base 16px font size
+  if (prop.private && isRelativePxValue(prop)) {
+    relativeValueStore[prop.value] = relativeValueStore[prop.value] ? relativeValueStore[prop.value] : getId();
+    return `    --cds_${relativeValueStore[prop.value]}: ${getPropValue(prop, base)};\n`;
+  } else {
+    return `    --cds-token-${prop.category}-${prop.name}: ${getPropValue(prop, base)};\n`;
+  }
 }
 
 theo.registerFormat('core-tokens-public', result => {
-  const publicTokens = result
+  const tokens = result
     .get('props')
     .map(prop => prop.toJS())
-    .filter(prop => prop.private !== true);
+    .filter(prop => !prop.legacy);
 
-  const properties = publicTokens
-    .map(prop => `    --cds-token-${prop.category}-${prop.name}: ${getPropValue(prop)};\n`)
+  const properties = tokens
+    .filter(prop => !prop.private)
+    .map(prop => getPropString(prop))
     .sort()
     .reduce((props, next) => `${props}${next}`, '');
 
-  const base16Properties = publicTokens
+  const base16Properties = tokens
     .filter(prop => isRelativePxValue(prop))
-    .map(prop => `    --cds-token-${prop.category}-${prop.name}: ${getRemValue(prop, 16)};\n`)
+    .map(prop => getPropString(prop, 16))
     .sort()
     .reduce((props, next) => `${props}${next}`, '');
 
@@ -53,17 +73,23 @@ ${base16Properties}
 theo.registerFormat('core-tokens-scss', result => {
   return `${result
     .get('props')
+    .map(prop => prop.toJS())
     .map(prop => {
-      const value = getPropValue(prop.toJS());
-      const name = `$cds-token-${prop.get('category')}-${prop.get('name')}`;
-      const staticVariableName = `${name}-static`;
-      const staticVariable = `${staticVariableName}: ${value};`;
-      const cssProp = `var(--cds-token-${prop.get('category')}-${prop.get('name')}, ${value});`;
-      const variable = prop.get('private') !== true ? `${name}: ${cssProp}` : `${name}: ${value};`;
+      const value = getPropValue(prop);
+      const sassVariable = `$cds-token-${prop.category}-${prop.name}`;
+      const propName =
+        prop.private && isRelativePxValue(prop)
+          ? `--cds_${relativeValueStore[prop.value]}`
+          : `--cds-token-${prop.category}-${prop.name}`;
+      const cssProp = `var(${propName}, ${value})`;
+      const dynamicVariable =
+        !prop.private || (prop.private && isRelativePxValue(prop))
+          ? `${sassVariable}: ${cssProp};\n`
+          : `${sassVariable}: ${value};\n`;
+      const staticVariable = `${sassVariable}-static: ${value};`;
 
-      return `${staticVariable}\n${variable}`;
+      return `${dynamicVariable}${staticVariable}`;
     })
-    .toJS()
     .sort()
     .reduce((props, next) => `${props}\n${next}`, '')}`;
 });
@@ -72,36 +98,30 @@ fs.mkdir('./src/clr-core/styles/tokens/generated', { recursive: true }, () => {}
 
 theo
   .convert({
+    format: { type: 'core-tokens-public' },
     transform: {
       type: 'web',
       file: './src/clr-core/styles/tokens/tokens.yml',
-    },
-    format: {
-      type: 'core-tokens-public',
     },
   })
   .then(scss => fs.writeFileSync('./src/clr-core/styles/tokens/generated/_public.scss', scss));
 
 theo
   .convert({
+    format: { type: 'core-tokens-scss' },
     transform: {
       type: 'web',
       file: './src/clr-core/styles/tokens/tokens.yml',
-    },
-    format: {
-      type: 'core-tokens-scss',
     },
   })
   .then(scss => fs.writeFileSync('./src/clr-core/styles/tokens/generated/_index.scss', scss));
 
 theo
   .convert({
+    format: { type: 'raw.json' },
     transform: {
       type: 'web',
       file: './src/clr-core/styles/tokens/tokens.yml',
-    },
-    format: {
-      type: 'raw.json',
     },
   })
   .then(json => {

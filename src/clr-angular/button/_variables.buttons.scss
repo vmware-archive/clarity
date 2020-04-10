@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -533,13 +533,13 @@ $clr-btn-link-checked-color: $clr-color-action-800 !default;
 $clr-btn-inverse-color: $clr-color-neutral-0 !default;
 $clr-btn-inverse-border-color: $clr-color-neutral-0 !default;
 $clr-btn-inverse-bg-color: transparent !default;
-$clr-btn-inverse-hover-bg-color: rgba($clr-color-neutral-0, 0.15) !default;
+$clr-btn-inverse-hover-bg-color: rgba(255, 255, 255, 0.15) !default;
 $clr-btn-inverse-hover-color: $clr-color-neutral-0 !default;
-$clr-btn-inverse-box-shadow-color: rgba($clr-color-neutral-1000, 0.25) !default;
+$clr-btn-inverse-box-shadow-color: rgba(0, 0, 0, 0.25) !default;
 $clr-btn-inverse-disabled-color: $clr-color-neutral-0 !default;
 $clr-btn-inverse-disabled-bg-color: $clr-btn-inverse-bg-color !default;
 $clr-btn-inverse-disabled-border-color: $clr-color-neutral-0 !default;
-$clr-btn-inverse-checked-bg-color: rgba($clr-color-neutral-0, 0.15) !default;
+$clr-btn-inverse-checked-bg-color: rgba(255, 255, 255, 0.15) !default;
 $clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
 
 @function lookupFromInverseButtonColors($property: null) {

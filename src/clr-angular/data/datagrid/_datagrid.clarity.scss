@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -7,7 +7,7 @@
 }
 
 @mixin clr-datagrid-popover-shadows {
-  $fallbackShadowColor: rgba($clr-color-neutral-600, 0.25);
+  $fallbackShadowColor: rgba(140, 140, 140, 0.25);
   // IE/OldEdge
   box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px $fallbackShadowColor;
   box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px
@@ -914,7 +914,7 @@
 
         .exceeded-max {
           // TODO: CSS property here?
-          border-right: $clr-global-borderwidth dotted rgba($clr-color-danger-700, 0.3);
+          border-right: $clr-global-borderwidth dotted rgba(219, 33, 0, 0.3);
         }
       }
 

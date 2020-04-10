@@ -159,7 +159,7 @@
 }
 
 :host([status='inverse']) {
-  --box-shadow-color: rgba($cds-token-color-neutral-1000, 0.25);
+  --box-shadow-color: rgba(0, 0, 0, 0.25);
   --border-color: #{$cds-token-color-neutral-0};
   --background: transparent;
   --color: #{$cds-token-color-neutral-0};

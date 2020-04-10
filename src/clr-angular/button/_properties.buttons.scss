@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -149,13 +149,13 @@
       --clr-btn-inverse-color: var(--clr-color-neutral-0);
       --clr-btn-inverse-border-color: var(--clr-color-neutral-0);
       --clr-btn-inverse-bg-color: transparent;
-      --clr-btn-inverse-hover-bg-color: rgba($clr-color-neutral-0, 0.15);
+      --clr-btn-inverse-hover-bg-color: rgba(255, 255, 255, 0.15);
       --clr-btn-inverse-hover-color: var(--clr-color-neutral-0);
-      --clr-btn-inverse-box-shadow-color: rgba($clr-color-neutral-1000, 0.25);
+      --clr-btn-inverse-box-shadow-color: rgba(0, 0, 0, 0.25);
       --clr-btn-inverse-disabled-color: var(--clr-color-neutral-0);
       --clr-btn-inverse-disabled-bg-color: var(--clr-btn-inverse-bg-color);
       --clr-btn-inverse-disabled-border-color: var(--clr-color-neutral-0);
-      --clr-btn-inverse-checked-bg-color: rgba($clr-color-neutral-0, 0.15);
+      --clr-btn-inverse-checked-bg-color: rgba(255, 255, 255, 0.15);
       --clr-btn-inverse-checked-color: var(--clr-color-neutral-0);
 
       // For theme-able icon button color

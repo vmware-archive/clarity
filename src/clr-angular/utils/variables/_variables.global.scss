@@ -253,7 +253,7 @@ $clr-close-color--hover: $clr-color-neutral-1000 !default;
 $clr-close-color--hover-opacity: 0.5 !default;
 
 // Box Shadow
-$clr-popover-box-shadow-color: rgba($clr-color-neutral-600, 0.25) !default;
+$clr-popover-box-shadow-color: rgba(140, 140, 140, 0.25) !default;
 
 // All z-indexes should come from here, to have a centralized file to reorganize them if needed
 $clr-layers: (

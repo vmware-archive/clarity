@@ -105,11 +105,11 @@
   }
 
   [cds-layout~='align:top'] {
-    margin-bottom: auto;
+    margin-bottom: auto !important;
   }
 
   [cds-layout~='align:bottom'] {
-    margin-top: auto;
+    margin-top: auto !important;
   }
 
   [cds-layout~='align:right'] {

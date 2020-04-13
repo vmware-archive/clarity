@@ -125,10 +125,10 @@
   }
 
   [cds-layout~='align:right'] {
-    margin-left: auto;
+    margin-left: auto !important;
   }
 
   [cds-layout~='align:left'] {
-    margin-right: auto;
+    margin-right: auto !important;
   }
 }

@@ -199,7 +199,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   ngAfterContentInit() {
     this.dgCells.changes.subscribe(() => {
       this.dgCells.forEach(cell => {
-        this._scrollableCells.insert(cell._view);
+        if (!cell._view.destroyed) {
+          this._scrollableCells.insert(cell._view);
+        }
       });
     });
   }

@@ -167,6 +167,15 @@ export default function (): void {
         expect(testElement.style.top).toMatch(/\d+px/);
         expect(testElement.style.left).toMatch(/\d+px/);
       });
+
+      it('does not fail when the popup view is immediately destroyed', fakeAsync(function (this: Context) {
+        this.testComponent.openState = true;
+        this.fixture.detectChanges();
+        this.testComponent.openState = false;
+        this.fixture.detectChanges();
+
+        expect(tick).not.toThrowAnyError();
+      }));
     });
   });
 }

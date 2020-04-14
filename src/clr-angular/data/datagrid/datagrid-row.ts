@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -169,7 +169,9 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   ngAfterContentInit() {
     this.dgCells.changes.subscribe(() => {
       this.dgCells.forEach(cell => {
-        this._scrollableCells.insert(cell._view);
+        if (!cell._view.destroyed) {
+          this._scrollableCells.insert(cell._view);
+        }
       });
     });
   }

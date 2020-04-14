@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -406,6 +406,19 @@ export default function(): void {
         })
       );
 
+      it(
+        'retains its own cells when row detail gets toggled',
+        fakeAsync(function() {
+          expect(context.clarityElement.querySelectorAll('clr-dg-cell').length).toBe(1);
+          context.testComponent.removeRowDetail = true;
+          context.detectChanges();
+          expect(context.clarityElement.querySelectorAll('clr-dg-cell').length).toBe(1);
+          context.testComponent.removeRowDetail = false;
+          context.detectChanges();
+          expect(context.clarityElement.querySelectorAll('clr-dg-cell').length).toBe(1);
+        })
+      );
+
       function flushAnimations() {
         context.detectChanges();
         tick();
@@ -434,11 +447,16 @@ class FullTest {
   template: `
         <clr-dg-row [(clrDgExpanded)]="expanded">
             <clr-dg-cell>Hello world</clr-dg-cell>
-            <clr-dg-row-detail *clrIfExpanded>
+            <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
+              <clr-dg-row-detail *clrIfExpanded>
                 Detail
             </clr-dg-row-detail>
+            </ng-container>
         </clr-dg-row>`,
 })
 class ExpandTest {
   expanded = false;
+  clrDgDetailOpenLabel: string = 'Open Me';
+  clrDgDetailCloseLabel: string = 'Close Me';
+  removeRowDetail = false;
 }

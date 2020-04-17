@@ -55,6 +55,7 @@ export class CdsIcon extends IconMixinClass {
   private _shape: string;
   private _size: string;
 
+  @property({ type: String })
   get shape() {
     return hasIcon(this._shape, ClarityIcons.registry) ? this._shape : 'unknown';
   }
@@ -63,7 +64,6 @@ export class CdsIcon extends IconMixinClass {
    * Changes the svg glyph displayed in the icon component. Defaults to the 'unknown' icon if
    * the specified icon cannot be found in the icon registry.
    */
-  @property({ type: String })
   set shape(val: string) {
     if (hasStringPropertyChangedAndNotNil(val, this._shape)) {
       const oldVal = this._shape;

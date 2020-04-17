@@ -55,7 +55,7 @@ function retry(fn: any, maxTries = 10, promise?: Promise<any>, promiseObject?: {
     });
 
   fn()
-    .then(result => {
+    .then((result: any) => {
       promiseObject.resolve(result);
     })
     .catch(() => {

@@ -7,7 +7,7 @@
 import curryN from 'ramda/es/curryN';
 import isNil from 'ramda/es/isNil';
 import path from 'ramda/es/path';
-import __ from './__';
+import __ from './__.js';
 
 export const existsIn = curryN(2, (pathToCheck: string[], obj: object): boolean => {
   const pathExists = path(pathToCheck, obj);

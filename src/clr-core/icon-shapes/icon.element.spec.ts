@@ -280,7 +280,7 @@ describe('icon element', () => {
       expect(component.getAttribute('shape')).toEqual(component.shape);
       component.setAttribute('shape', 'testing');
       await componentIsStable(component);
-      expect(component.getAttribute('shape')).toEqual(component.shape);
+      expect(component.shape).toEqual('testing');
     });
 
     it('should reflect changes in size', async () => {

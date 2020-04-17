@@ -44,8 +44,8 @@ describe('Functional Helper: ', () => {
           levelThree: {
             notTrue: false,
             notStrung: '',
-            nullified: null,
-            notDefined: undefined,
+            nullified: null as any,
+            notDefined: undefined as any,
           },
         },
       },

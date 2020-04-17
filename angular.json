@@ -228,35 +228,6 @@
           }
         }
       }
-    },
-    "clr-core": {
-      "projectType": "library",
-      "root": "src/clr-core",
-      "sourceRoot": "src/clr-core",
-      "prefix": "cds",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "src/clr-core/tsconfig.lib.json",
-            "project": "src/clr-core/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "src/clr-core/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/clr-core/test.ts",
-            "tsConfig": "src/clr-core/tsconfig.spec.json",
-            "karmaConfig": "src/clr-core/karma.conf.js",
-            "codeCoverageExclude": ["src/clr-core/**/*.stories.ts", "src/clr-core/icon-shapes/collections/*.ts"]
-          }
-        }
-      }
     }
   },
   "schematics": {

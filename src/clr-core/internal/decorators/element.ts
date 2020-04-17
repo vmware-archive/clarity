@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from './../utils/register';
+import { registerElementSafely } from './../utils/register.js';
 
 /**
  * @experimental

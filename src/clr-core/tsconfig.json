@@ -4,7 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
@@ -32,6 +32,6 @@
       "@clr/core/*": ["./*"]
     }
   },
-  "exclude": ["test.ts", "dist", "node_modules"],
+  "exclude": ["dist", "node_modules"],
   "references": [{ "path": "./internal/entrypoint.tsconfig.json" }]
 }

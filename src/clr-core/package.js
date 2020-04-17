@@ -21,7 +21,10 @@ const read = dir =>
       []
     );
 
-del.sync(['./dist/clr-core/**/*.{tsbuildinfo,ngsummary.json}', './dist/clr-core/*.{tsbuildinfo,ngsummary.json}']);
+del.sync([
+  './dist/clr-core/**/*.{tsbuildinfo,ngsummary.json,spec.js,spec.js.map,spec.d.ts}',
+  './dist/clr-core/*.{tsbuildinfo,ngsummary.json,spec.js,spec.js.map,spec.d.ts}',
+]);
 
 read('./dist/clr-core')
   .filter(f => f.includes('package.json'))

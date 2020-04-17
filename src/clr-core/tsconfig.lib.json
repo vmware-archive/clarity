@@ -5,5 +5,5 @@
     "strictNullChecks": true
   },
   "allowSyntheticDefaultImports": false,
-  "exclude": ["**/test/*.ts", "test.ts", "**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts"]
+  "exclude": ["**/test/*.ts", "**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts"]
 }

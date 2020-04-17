@@ -37,7 +37,6 @@ function getVersion() {
     angularVersion: getAngularVersion(),
     userAgent: navigator.userAgent,
   };
-  console.log(JSON.stringify(log, null, 2));
   return log;
 }
 

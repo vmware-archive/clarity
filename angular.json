@@ -38,7 +38,7 @@
             ],
             "styles": [
               "src/clr-angular/main.scss",
-              "src/clr-icons/clr-icons.scss",
+              "packages/icons/src/clr-icons.scss",
               "src/dev/src/styles.scss",
               "node_modules/@ng-select/ng-select/themes/default.theme.css"
             ],
@@ -67,7 +67,11 @@
               "buildOptimizer": true
             },
             "dark": {
-              "styles": ["src/clr-angular/dark-theme.scss", "src/clr-icons/clr-icons.scss", "src/dev/src/styles.scss"],
+              "styles": [
+                "src/clr-angular/dark-theme.scss",
+                "packages/icons/src/clr-icons.scss",
+                "src/dev/src/styles.scss"
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/dev/src/environments/environment.ts",
@@ -95,22 +99,6 @@
             "dark": {
               "browserTarget": "dev:build:dark"
             }
-          }
-        }
-      }
-    },
-    "clr-icons": {
-      "projectType": "library",
-      "root": "src/clr-icons",
-      "sourceRoot": "src/clr-icons/src",
-      "prefix": "clr",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/clr-icons/test.ts",
-            "tsConfig": "src/clr-icons/tsconfig.spec.json",
-            "karmaConfig": "src/clr-icons/karma.conf.js"
           }
         }
       }
@@ -181,7 +169,7 @@
             "styles": [
               "node_modules/prismjs/themes/prism-solarizedlight.css",
               "src/clr-angular/main.scss",
-              "src/clr-icons/clr-icons.scss",
+              "packages/icons/src/clr-icons.scss",
               "src/website/src/styles/main.scss"
             ],
             "scripts": [

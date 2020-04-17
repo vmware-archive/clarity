@@ -8,8 +8,8 @@
     "target": "es5",
     "paths": {
       "@clr/angular": ["../clr-angular"],
-      "@clr/icons": ["../clr-icons"],
-      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"],
+      "@clr/icons": ["../../packages/icons/src"],
+      "@clr/icons/shapes/*": ["../../packages/icons/src/shapes", "../../packages/icons/src/shapes/*"],
       "@clr/core": ["../../dist/clr-core"],
       "@clr/core/*": ["../../dist/clr-core/*"]
     }

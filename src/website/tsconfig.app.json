@@ -10,8 +10,8 @@
     "noImplicitReturns": false,
     "paths": {
       "@clr/angular": ["../clr-angular"],
-      "@clr/icons": ["../clr-icons"],
-      "@clr/icons/shapes/*": ["../clr-icons/shapes", "../clr-icons/shapes/*"],
+      "@clr/icons": ["../../packages/icons/src"],
+      "@clr/icons/shapes/*": ["../../packages/icons/src/shapes", "../../packages/icons/src/shapes/*"],
       "@clr/core": ["../clr-core"],
       "@clr/core/*": ["../clr-core/*"]
     }

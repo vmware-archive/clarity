@@ -3,7 +3,6 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { itIgnore } from '../../tests/tests.helpers';
 
 import {
   getErrorShape,
@@ -390,7 +389,7 @@ describe('ClarityIcons', () => {
       );
     });
 
-    itIgnore(['ie'], 'should not inject anything if the custom title is not given', () => {
+    it('should not inject anything if the custom title is not given', () => {
       const testShape = `<svg><g></g></svg>`;
       ClarityIcons.add({ 'test-shape': testShape });
 
@@ -401,7 +400,7 @@ describe('ClarityIcons', () => {
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
     });
 
-    itIgnore(['ie'], 'should inject a custom title into the template if title attribute is present', () => {
+    it('should inject a custom title into the template if title attribute is present', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const customTitle = 'my-custom-title';
       clarityIcon.setAttribute('shape', 'angle');
@@ -412,7 +411,7 @@ describe('ClarityIcons', () => {
       );
     });
 
-    itIgnore(['ie'], "should inject custom title if given and template doesn't contain title tag", () => {
+    it("should inject custom title if given and template doesn't contain title tag", () => {
       const customTitle = 'my-custom-title';
       const shapeBeforeTitleAttrChange = `<svg><g></g></svg>`;
 
@@ -427,7 +426,7 @@ describe('ClarityIcons', () => {
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(shapeAfterTitleAttrChange));
     });
 
-    itIgnore(['ie'], "should inject a custom title if it's is specified before the shape attribute specified", () => {
+    it("should inject a custom title if it's is specified before the shape attribute specified", () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const customTitle = 'my-custom-title';
       clarityIcon.setAttribute('title', customTitle);
@@ -484,7 +483,7 @@ describe('ClarityIcons', () => {
       expect(clarityIcon.querySelector(`#${clrIconUniqId}`)).toBeNull();
     });
 
-    itIgnore(['ie'], 'should persist title even after shape attribute update', () => {
+    it('should persist title even after shape attribute update', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const customTitle = 'my-custom-title';
 
@@ -512,7 +511,7 @@ describe('ClarityIcons', () => {
       expect(clarityIcon.querySelector('svg').getAttribute('aria-labelledby')).toBe(clarityIcon.clrIconUniqId);
     });
 
-    itIgnore(['ie'], 'should inject error shape if icon is not found', () => {
+    it('should inject error shape if icon is not found', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const nonExistingShape = 'non-existing-icon';
 
@@ -520,7 +519,7 @@ describe('ClarityIcons', () => {
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(getErrorShape()));
     });
 
-    itIgnore(['ie'], 'should inject error shape with title if icon is not found', () => {
+    it('should inject error shape with title if icon is not found', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const customTitle = 'my-custom-title';
       clarityIcon.setAttribute('shape', 'non-existing-icon');
@@ -530,7 +529,7 @@ describe('ClarityIcons', () => {
       );
     });
 
-    itIgnore(['ie'], 'should reflect the updated shape template in injected icon', () => {
+    it('should reflect the updated shape template in injected icon', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       clarityIcon.setAttribute('shape', 'non-existing-icon');
       document.body.appendChild(clarityIcon);
@@ -546,7 +545,7 @@ describe('ClarityIcons', () => {
       expect(removeWhitespace(clarityIcon.innerHTML)).toBe(removeWhitespace(testShape));
     });
 
-    itIgnore(['ie'], 'should update template if template change before injected', () => {
+    it('should update template if template change before injected', () => {
       const testIcon = document.createElement('clr-icon') as ClarityIconElement;
       testIcon.setAttribute('shape', 'user');
       const testShape = `<svg><g><title>first</title></g></svg>`;
@@ -609,7 +608,7 @@ describe('ClarityIcons', () => {
       expect(changeHandlerCallbacks[userAttrName]).toBeUndefined();
     });
 
-    itIgnore(['ie'], 'should persist title when shape template gets updated', () => {
+    it('should persist title when shape template gets updated', () => {
       const clarityIcon = document.createElement('clr-icon') as ClarityIconElement;
       const nonExistingShape = 'non-existing-icon';
       const customTitle = 'my-custom-title';

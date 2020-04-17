@@ -31,5 +31,5 @@ cache:
   directories:
   - node_modules
 script:
-- cd gemini && npm install && npm run $TEST_SUITE
+- cd gemini && npm install && npm --prefix packages/icons install && npm run $TEST_SUITE
 

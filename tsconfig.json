@@ -27,7 +27,7 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@clr/angular": ["src/clr-angular"],
-      "@clr/icons": ["src/clr-icons"],
+      "@clr/icons": ["packages/icons/src/clr-icons"],
       "@clr/icons/shapes/*": ["src/clr-icons/shapes", "src/clr-icons/shapes/*"]
     },
     "lib": ["es2018", "dom"]

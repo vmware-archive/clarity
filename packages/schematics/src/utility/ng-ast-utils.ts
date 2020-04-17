@@ -8,8 +8,8 @@
 import { normalize } from '@angular-devkit/core';
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 import * as ts from 'typescript';
-import { findNode, getSourceNodes } from '../utility/ast-utils';
-import { AppConfig } from '../utility/config';
+import { findNode, getSourceNodes } from './ast-utils';
+import { AppConfig } from './config';
 
 export function findBootstrapModuleCall(host: Tree, mainPath: string): ts.CallExpression | null {
   const mainBuffer = host.read(mainPath);

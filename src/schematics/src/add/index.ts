@@ -74,15 +74,15 @@ function updateJsonFile(path: string, callback: (a: any) => any) {
 // Checks if a version of Angular is compatible with current or next
 function getVersion(ngVersion: string, clrVersion: string) {
   const diff = 6; // Number disparity between Angular and Clarity, this works as long as we stay in sync with versioning
-  const version1 = Number.parseInt(ngVersion.split('.')[0]);
-  const version2 = Number.parseInt(clrVersion.split('.')[0]);
+  const version1 = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
+  const version2 = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
 
   if (version1 - version2 > diff) {
     // If Angular is more than 6 versions ahead, use `next` tag
     return 'next';
   } else {
     // Else, calculate correct Clarity version by subtracting 6 from Angular major
-    return (version1 - diff).toString();
+    return `^${version1 - diff}.0.0`;
   }
 }
 
@@ -151,9 +151,6 @@ export default function(options: ComponentOptions): Rule {
       }
       if (!packages.includes('@clr/icons')) {
         json.dependencies['@clr/icons'] = `${version}`;
-      }
-      if (!packages.includes('@clr/core')) {
-        json.dependencies['@clr/core'] = `${version}`;
       }
       if (!packages.includes('@webcomponents/webcomponentsjs')) {
         json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';

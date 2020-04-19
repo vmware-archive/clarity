@@ -17,6 +17,7 @@ module.exports = config => {
     esm: {
       coverage: true,
       importMap: 'src/clr-core/import-map.importmap',
+      coverageExclude: ['dist/clr-core/**/*.spec.js'],
     },
     colors: true,
     browsers: ['ChromeHeadlessNoSandbox'],
@@ -41,6 +42,8 @@ module.exports = config => {
     coverageIstanbulReporter: {
       dir: './reports/coverage/clr-core',
       reports: ['html', 'lcovonly'],
+      combineBrowserReports: true,
+      skipFilesWithNoCoverage: true,
       thresholds: {
         statements: 90,
         lines: 90,

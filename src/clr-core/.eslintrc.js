@@ -4,7 +4,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off', // TOO MUCH WORK AT THE MOMENT
     '@typescript-eslint/no-explicit-any': 'off', // Would LOVE to turn this on
-
+    '@typescript-eslint/no-use-before-define': 'off', // cause slow analysis on TS files with Storybook https://github.com/typescript-eslint/typescript-eslint/issues/1856
     '@typescript-eslint/ban-types': [
       'error',
       {
@@ -17,6 +17,7 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'no-public' }],
     'no-restricted-imports': [
       'error',
       {

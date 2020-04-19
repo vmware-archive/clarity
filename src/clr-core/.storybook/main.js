@@ -1,5 +1,4 @@
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
-const path = require('path');
 
 module.exports = {
   stories: ['../**/*.stories.(ts|mdx)'],
@@ -26,12 +25,14 @@ module.exports = {
     });
 
     config.resolve.extensions.push('.ts');
-    config.resolve.extensions.push('.js');
-    config.resolve.alias = {
-      '@clr/core': path.resolve(__dirname, '../../../dist/clr-core'),
-      '@clr/core/*': path.resolve(__dirname, '../../../dist/clr-core/*'),
-    };
     config.resolve.plugins = [new TsConfigPathsPlugin({ configFileName: 'src/clr-core/.storybook/tsconfig.json' })];
+
+    // https://github.com/storybookjs/storybook/blob/next/app/web-components/README.md
+    const webComponentsRule = config.module.rules.find(
+      rule => rule.use && rule.use.options && rule.use.options.babelrc === false
+    );
+    // disable dependency compilation
+    webComponentsRule.test = [];
 
     return config;
   },

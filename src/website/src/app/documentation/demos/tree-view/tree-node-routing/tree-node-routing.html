@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -7,36 +7,27 @@
     <div class="clr-col-12 clr-col-md-4">
         <clr-tree>
             <clr-tree-node [clrExpanded]="true">
-                The Beatles
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(0)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 0">Abbey Road
-                    </button>
-                </clr-tree-node>
-    
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(1)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 1">Revolver
-                    </button>
-                </clr-tree-node>
-    
-                <clr-tree-node>
-                    <button
-                            (click)="showPane(2)"
-                            class="clr-treenode-link"
-                            [class.active]="pane === 2">Rubber Soul
-                    </button>
-                </clr-tree-node>
+              The Beatles
+              <clr-tree-node>
+                  <a [routerLink]="['./album1']"
+                    class="clr-treenode-link"
+                    routerLinkActive="active">Abbey Road</a>
+              </clr-tree-node>
+              <clr-tree-node>
+                  <a [routerLink]="['./album2']"
+                    class="clr-treenode-link"
+                    routerLinkActive="active">Revolver</a>
+              </clr-tree-node>
+              <clr-tree-node>
+                  <a [routerLink]="['./album3']"
+                    class="clr-treenode-link"
+                    routerLinkActive="active">Rubber Soul</a>
+              </clr-tree-node>
             </clr-tree-node>
-        </clr-tree>
+          </clr-tree>
     </div>
     <div class="clr-col-12 clr-col-md-8 example-outlet">
-        <h4 style="margin-top: 0">{{content[pane].title}}</h4>
-        <p>{{content[pane].content}}</p>
+        <router-outlet></router-outlet>
     </div>
 </div>
 

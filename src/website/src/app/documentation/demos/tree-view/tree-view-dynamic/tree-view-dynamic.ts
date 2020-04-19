@@ -14,7 +14,8 @@ const EXAMPLE_HTML = `
           <button
                   (click)="openFile(directory.name, file.name)"
                   class="clr-treenode-link"
-                  [class.active]="file.active">
+                  [class.active]="file.active"
+                  [attr.aria-selected]="file.active">
               <clr-icon [attr.shape]="file.icon"></clr-icon>
               {{file.name}}
           </button>

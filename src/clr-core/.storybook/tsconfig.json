@@ -1,6 +1,6 @@
 {
   "include": ["../**/*.stories.ts", "../../dist/clr-core"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "../**/test/*.ts", "../**/*.spec.ts"],
   "compilerOptions": {
     "target": "es2017",
     "module": "esnext",

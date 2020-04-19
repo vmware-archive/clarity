@@ -1,11 +1,13 @@
 import '!style-loader!css-loader!./public/demo.css';
-import { configure, setCustomElements, addDecorator, addParameters } from '@storybook/web-components';
+import { setCustomElements, addDecorator, addParameters } from '@storybook/web-components';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withCssResources } from '@storybook/addon-cssresources';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
+import { applyPolyfill } from 'custom-elements-hmr-polyfill';
 import * as customElements from '../../../dist/clr-core/custom-elements.json';
 
+applyPolyfill();
 addDecorator(withKnobs);
 addDecorator(withDesign);
 addDecorator(withCssResources);
@@ -49,13 +51,3 @@ addParameters({
 
 // https://github.com/storybookjs/storybook/tree/master/app/web-components
 setCustomElements(customElements.default);
-
-const req = require.context('../', true, /\.stories\.(ts|mdx)$/);
-configure(req, module);
-if (module.hot) {
-  module.hot.accept(req.id, () => {
-    const currentLocationHref = window.location.href;
-    window.history.pushState(null, null, currentLocationHref);
-    window.location.reload();
-  });
-}

@@ -11,12 +11,15 @@ import { setupCDSGlobal } from './global.js';
 const addElementToRegistry = curryN(
   3,
   (tagName: string, elementClass: any, registry: { define: (a: string, b: any) => {} }) => {
-    if (elementExists(tagName)) {
+    if (elementExists(tagName) && !isStorybook()) {
       console.warn(`${tagName} has already been registered`);
     } else {
       registry.define(tagName, elementClass);
       setupCDSGlobal();
-      window.CDS._loadedElements.push(tagName);
+
+      if (!window.CDS._loadedElements.some(i => i === tagName)) {
+        window.CDS._loadedElements.push(tagName);
+      }
     }
   }
 );
@@ -25,4 +28,8 @@ export function registerElementSafely(tagName: string, elementClass: any) {
   if (isBrowser() && existsInWindow(['customElements'])) {
     addElementToRegistry(tagName, elementClass, window.customElements);
   }
+}
+
+function isStorybook() {
+  return window.location.href.includes('localhost:6006');
 }

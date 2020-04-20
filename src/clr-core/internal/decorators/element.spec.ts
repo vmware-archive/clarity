@@ -11,9 +11,22 @@ import { customElement } from './element.js';
 @customElement('test-custom-element-decorator')
 export class TestElement extends LitElement {}
 
+export class LegacyTestElement extends LitElement {
+  constructor() {
+    super();
+  }
+}
+
 describe('event decorator', () => {
   it('should register the custom element', async () => {
     const component = customElements.get('test-custom-element-decorator');
     expect(component).toBe(TestElement);
+  });
+
+  it('should support native decorator API proposal', () => {
+    const desc = { kind: 'class', elements: [''] };
+    customElement('test-custom-element-decorator-legacy')(desc as any).finisher(LegacyTestElement);
+    const component = customElements.get('test-custom-element-decorator-legacy');
+    expect(component).toBe(LegacyTestElement);
   });
 });

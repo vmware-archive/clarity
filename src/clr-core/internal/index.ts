@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-/** @internal common is an internal private module to Clarity Core */
+/** @internal private module to Clarity Core */
 export * from './base/button.base.js';
 export * from './css-vars/css-vars.js';
 export * from './utils/dom.js';
@@ -18,6 +18,7 @@ export * from './services/common-strings.interface.js';
 export * from './services/common-strings.default.js';
 export * from './utils/conditional.js';
 export * from './utils/exists.js';
+export * from './utils/framework.js';
 export * from './utils/identity.js';
 export * from './utils/string.js';
 export * from './mixins/css-helpers.js';

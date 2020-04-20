@@ -26,6 +26,18 @@ export function camelCaseToKebabCase(value: string) {
   return value.replace(/[A-Z]/g, l => `-${l.toLowerCase()}`);
 }
 
+export function kebabCaseToCamelCase(str: string) {
+  return str
+    .split('-')
+    .map((item, index) => (index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item))
+    .join('');
+}
+
+export function kebabCaseToPascalCase(string: string) {
+  const camelCase = kebabCaseToCamelCase(string);
+  return capitalizeFirstLetter(camelCase);
+}
+
 /**
  * Take a object map of css properties and if value concatenate string of all computed values
  * Useful for dynamic style tags in lit-html templates
@@ -35,6 +47,10 @@ export function setStyles(styles: { [key: string]: string }) {
     (allStyles, prop) => `${allStyles}${styles[prop] ? `${prop}:${styles[prop]};` : ''}`,
     ''
   );
+}
+
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 /** Used for Storybook docs to define knob group for css properties */

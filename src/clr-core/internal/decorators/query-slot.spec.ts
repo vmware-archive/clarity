@@ -72,4 +72,10 @@ describe('query slot decorator', () => {
     const el = () => component.testErrorWithMessage;
     expect(el).toThrow(new Error('test message'));
   });
+
+  it('should support native decorator API proposal', () => {
+    const proto = { key: 'testEvent' };
+    const conf = querySlot('#test')(proto, undefined);
+    expect(conf.key).toBe('testEvent');
+  });
 });

@@ -10,6 +10,9 @@ import {
   transformToSpacedString,
   transformToString,
   transformToUnspacedString,
+  capitalizeFirstLetter,
+  kebabCaseToCamelCase,
+  kebabCaseToPascalCase,
 } from './string.js';
 
 describe('Functional Helper: ', () => {
@@ -54,6 +57,24 @@ describe('Functional Helper: ', () => {
     it('should convert a object map of CSS styles to a single concatenated string', () => {
       const styles = { color: 'red', background: 'blue', display: 'block' };
       expect(setStyles(styles)).toBe('color:red;background:blue;display:block;');
+    });
+  });
+
+  describe('capitalizeFirstLetter', () => {
+    it('should capitalize the first letter of a string', () => {
+      expect(capitalizeFirstLetter('abc')).toBe('Abc');
+    });
+  });
+
+  describe('kebabCaseToCamelCase', () => {
+    it('should format correctly', () => {
+      expect(kebabCaseToCamelCase('test-string')).toBe('testString');
+    });
+  });
+
+  describe('kebabCaseToPascalCase', () => {
+    it('should format correctly', () => {
+      expect(kebabCaseToPascalCase('test-string')).toBe('TestString');
     });
   });
 });

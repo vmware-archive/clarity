@@ -5,6 +5,7 @@
  */
 
 import { isBrowser } from './exists.js';
+import { getAngularVersion, getReactVersion, getVueVersion } from './framework.js';
 
 export interface CDSGlobal {
   _version: string[];
@@ -15,8 +16,10 @@ export interface CDSGlobal {
 export interface CDSLog {
   versions: string[];
   loadedElements: string[];
-  angularVersion?: string | null;
   userAgent: string;
+  angularVersion?: string | undefined;
+  reactVersion?: string | undefined;
+  vueVersion?: string | undefined;
 }
 
 declare global {
@@ -25,17 +28,14 @@ declare global {
   }
 }
 
-function getAngularVersion() {
-  const appRoot = document && document.querySelector('[ng-version]');
-  return appRoot ? appRoot.getAttribute('ng-version') : undefined;
-}
-
 function getVersion() {
   const log: CDSLog = {
     versions: window.CDS._version,
     loadedElements: window.CDS._loadedElements,
-    angularVersion: getAngularVersion(),
     userAgent: navigator.userAgent,
+    angularVersion: getAngularVersion(false),
+    reactVersion: getReactVersion(false),
+    vueVersion: getVueVersion(false),
   };
   return log;
 }

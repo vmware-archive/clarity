@@ -39,4 +39,10 @@ describe('event decorator', () => {
     await componentIsStable(component);
     expect(value).toBe('hello');
   });
+
+  it('should support native decorator API proposal', () => {
+    const proto = { key: 'testEvent' };
+    const conf = event()(proto, undefined);
+    expect(conf.key).toBe('testEvent');
+  });
 });

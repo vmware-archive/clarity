@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getDefaultOptions } from './property.js';
+import { getDefaultOptions, requirePropertyCheck } from './property.js';
 
 const prop = 'prop';
 
@@ -50,5 +50,49 @@ describe('@property decorator defaults', () => {
     expect(stringConverter.toAttribute(null)).toBe(null);
     expect(stringConverter.toAttribute(undefined)).toBe(null);
     expect(stringConverter.toAttribute('test')).toBe('test');
+  });
+
+  it('should allow properties to be required and error', () => {
+    class Proto {
+      testProp: undefined;
+      tagName = 'cds-test-error';
+      connectedCallback() {
+        // do nothing
+      }
+    }
+
+    requirePropertyCheck(Proto.prototype, 'testProp', { type: String, required: 'error' });
+
+    let err: string;
+
+    try {
+      new Proto().connectedCallback();
+    } catch (error) {
+      err = error.toString();
+    }
+
+    expect(err).toContain('Error: testProp is required to use cds-test-error component.');
+  });
+
+  it('should allow properties to be required and warn', () => {
+    // remove Jasmine from window as log service wont log during tests by default.
+    const jasmine = window.jasmine;
+    window.jasmine = undefined;
+    spyOn(console, 'warn');
+
+    class Proto {
+      test: undefined;
+      tagName = 'cds-test-warning';
+      connectedCallback() {
+        // do nothing
+      }
+    }
+
+    requirePropertyCheck(Proto.prototype, 'test', { type: String, required: 'warning' });
+
+    new Proto().connectedCallback();
+
+    expect(console.warn).toHaveBeenCalled();
+    window.jasmine = jasmine;
   });
 });

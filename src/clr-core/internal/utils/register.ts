@@ -7,6 +7,7 @@
 import curryN from 'ramda/es/curryN';
 import { elementExists, existsInWindow, isBrowser } from './exists.js';
 import { setupCDSGlobal } from './global.js';
+import { isStorybook } from './framework.js';
 
 const addElementToRegistry = curryN(
   3,
@@ -28,8 +29,4 @@ export function registerElementSafely(tagName: string, elementClass: any) {
   if (isBrowser() && existsInWindow(['customElements'])) {
     addElementToRegistry(tagName, elementClass, window.customElements);
   }
-}
-
-function isStorybook() {
-  return window.location.href.includes('localhost:6006');
 }

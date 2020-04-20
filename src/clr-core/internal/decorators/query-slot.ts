@@ -5,6 +5,7 @@
  */
 
 import { LitElement } from 'lit-element';
+import { LogService } from '../services/log.service.js';
 
 // Slot Query decorators are similar to the query decorator in lit-element.
 // Instead of querying the component template they query the content slot of the component.
@@ -32,11 +33,7 @@ export interface QuerySlotConfig {
  * @ExportDecoratedItems
  */
 export function querySlot(selector: string, config?: QuerySlotConfig) {
-  return (
-    protoOrDescriptor: {} | any,
-    // tslint:disable-next-line:no-any decorator
-    name?: PropertyKey
-  ): any => {
+  return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
     const descriptor = {
       get(this: LitElement) {
         const ref = this.querySelector(selector);
@@ -48,7 +45,7 @@ export function querySlot(selector: string, config?: QuerySlotConfig) {
           if (config.required === 'error') {
             throw new Error(message);
           } else {
-            console.warn(message);
+            LogService.warn(message, this);
           }
         }
 
@@ -70,11 +67,7 @@ export function querySlot(selector: string, config?: QuerySlotConfig) {
  * @ExportDecoratedItems
  */
 export function querySlotAll(selector: string) {
-  return (
-    protoOrDescriptor: {} | any,
-    // tslint:disable-next-line:no-any decorator
-    name?: PropertyKey
-  ): any => {
+  return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
     const descriptor = {
       get(this: LitElement) {
         return this.querySelectorAll(selector);

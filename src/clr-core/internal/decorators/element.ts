@@ -40,7 +40,7 @@ const legacyCustomElement = (tagName: string, classDef: Constructor<HTMLElement>
 };
 
 export const customElement = (tagName: string) => (classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor) => {
-  typeof classOrDescriptor === 'function'
+  return typeof classOrDescriptor === 'function'
     ? legacyCustomElement(tagName, classOrDescriptor)
     : standardCustomElement(tagName, classOrDescriptor);
 };

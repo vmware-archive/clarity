@@ -38,11 +38,8 @@ describe('CDS global', () => {
     });
 
     it('should log Angular version if available', () => {
-      const body = document.querySelector('body');
-      expect(window.CDS.getVersion().angularVersion).toBe(undefined);
-      body.setAttribute('ng-version', 'test-version');
+      document.body.setAttribute('ng-version', 'test-version');
       expect(window.CDS.getVersion().angularVersion).toBe('test-version');
-      body.removeAttribute('ng-version');
     });
 
     it('should log user agent', () => {

@@ -87,6 +87,8 @@ export class CdsIcon extends IconMixinClass {
     }
   }
 
+  // TODO: MAKE title A REQUIRED(warn) PROPERTY WHEN THAT IS READY
+
   /** If present, customizes the aria-label for the icon for accessibility. */
   @property({ type: String })
   title: string;
@@ -160,7 +162,7 @@ export class CdsIcon extends IconMixinClass {
 
   @query('svg') private svg: SVGElement;
 
-  private ariaLabel = `aria-${this._idPrefix}${this._uniqueId}`;
+  private idForAriaLabel = 'aria-' + this._idPrefix + this._uniqueId;
 
   firstUpdated() {
     this.updateSVGAriaLabel();
@@ -180,14 +182,14 @@ export class CdsIcon extends IconMixinClass {
   protected render() {
     return html`
       ${unsafeHTML(ClarityIcons.registry[this.shape])}
-      ${this.title ? html`<span id="${this.ariaLabel}" class="clr-sr-only">${this.title}</span>` : ''}
+      ${this.title ? html`<span id="${this.idForAriaLabel}" class="clr-sr-only">${this.title}</span>` : ''}
     `;
   }
 
   private updateSVGAriaLabel() {
     if (this.title) {
       this.svg.removeAttribute('aria-label'); // remove empty label that makes icon decorative by default
-      this.svg.setAttribute('aria-labelledby', this.ariaLabel); // use labelledby for better SR support
+      this.svg.setAttribute('aria-labelledby', this.idForAriaLabel); // use labelledby for better SR support
     } else {
       this.svg.removeAttribute('aria-labelledby');
     }

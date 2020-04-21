@@ -221,12 +221,16 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
         if (viewChange === DatagridDisplayMode.CALCULATE) {
           this.displayCells = false;
           this.dgCells.forEach(cell => {
-            this._calculatedCells.insert(cell._view);
+            if (!cell._view.destroyed) {
+              this._calculatedCells.insert(cell._view);
+            }
           });
         } else {
           this.displayCells = true;
           this.dgCells.forEach(cell => {
-            this._scrollableCells.insert(cell._view);
+            if (!cell._view.destroyed) {
+              this._scrollableCells.insert(cell._view);
+            }
           });
         }
       }),

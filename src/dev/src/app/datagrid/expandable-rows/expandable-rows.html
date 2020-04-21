@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -42,8 +42,13 @@
       <input type="checkbox" clrCheckbox name="date" [(ngModel)]="date" />
       <label>Hidden Date Column</label>
     </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="remove-row-detail" [(ngModel)]="removeRowDetail" />
+      <label>Remove Row Detail</label>
+    </clr-checkbox-wrapper>
   </clr-checkbox-container>
 </form>
+
 
 <clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected">
     <clr-dg-column>User ID</clr-dg-column>
@@ -68,7 +73,8 @@
         <!-- Example using a wrapper component -->
         <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
 
-        <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+        <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
+          <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
             <ng-template [clrFakeLoader]="slowLoad" clrLoading>
                 <ng-template [ngIf]="detail === 'default'">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
@@ -90,6 +96,7 @@
                 </ng-template>
             </ng-template>
         </clr-dg-row-detail>
+        </ng-container>
     </clr-dg-row>
     <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>

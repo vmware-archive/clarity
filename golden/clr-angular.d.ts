@@ -1696,7 +1696,8 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
 }
 
 export declare class ClrTreeNodeLink {
-    constructor(el: ElementRef);
+    routerLinkActive: RouterLinkActive;
+    constructor(el: ElementRef, routerLinkActive: RouterLinkActive);
     activate(): void;
 }
 

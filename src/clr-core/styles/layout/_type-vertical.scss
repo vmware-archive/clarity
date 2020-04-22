@@ -23,7 +23,7 @@
 
 [cds-layout~='vertical'] {
   width: 100%;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;

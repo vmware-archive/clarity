@@ -1,6 +1,12 @@
 {
-  "current": "3.1.0",
+  "current": "3.1.1",
   "all": {
+    "3.1.1": {
+      "date": "Apr 23, 2020",
+      "figma": "2.2.0",
+      "sketch": "",
+      "commit": "95963194bb09baa57a133aa0bcd6be67673a2c2e"
+    },
     "3.1.0": {
       "date": "Apr 2, 2020",
       "figma": "2.2.0",
@@ -68,6 +74,11 @@
       "date": "Oct 3, 2019",
       "figma": "2.2.0",
       "sketch": ""
+    },
+    "2.4.1": {
+      "date": "Apr 23, 2020",
+      "sketch": "2.2.0",
+      "commit": "aff49be46f7b41108a998e11a8f0c39c808a8b99"
     },
     "2.4.0": {
       "date": "Apr 2, 2020",
@@ -188,6 +199,11 @@
       "date": "Mar 6, 2019",
       "sketch": "2.0.0",
       "commit": ""
+    },
+    "1.3.7": {
+      "date": "April 23, 2020",
+      "sketch": "1.0.0",
+      "commit": "897e6f36569b3d8d18ecaf18c1839e33ed02f687"
     },
     "1.3.6": {
       "date": "Mar 12, 2020",

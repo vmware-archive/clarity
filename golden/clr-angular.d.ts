@@ -110,14 +110,14 @@ export declare class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
     get alertClass(): string;
     set alertIconShape(value: string);
     alertTexts: QueryList<ElementRef>;
-    set alertType(val: string);
     get alertType(): string;
+    set alertType(val: string);
     get ariaLive(): ClrAriaLivePoliteness;
     assertive: boolean;
     closable: boolean;
     clrCloseButtonAriaLabel: string;
-    set hidden(value: boolean);
     get hidden(): boolean;
+    set hidden(value: boolean);
     isAppLevel: boolean;
     isSmall: boolean;
     off: boolean;
@@ -160,8 +160,8 @@ export declare class ClrAlertsPager implements OnInit, OnDestroy {
     set currentAlert(alert: ClrAlert);
     get currentAlert(): ClrAlert;
     currentAlertChange: EventEmitter<ClrAlert>;
-    set currentAlertIndex(index: number);
     get currentAlertIndex(): number;
+    set currentAlertIndex(index: number);
     currentAlertIndexChange: EventEmitter<number>;
     multiAlertService: MultiAlertService;
     constructor(multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
@@ -203,10 +203,10 @@ export declare class ClrButton implements LoadingListener {
     buttonInGroupService: ButtonInGroupService;
     get classNames(): string;
     set classNames(value: string);
-    get disabled(): any;
     set disabled(value: any);
-    get id(): string;
+    get disabled(): any;
     set id(value: string);
+    get id(): string;
     get inMenu(): boolean;
     set inMenu(value: boolean);
     loading: boolean;
@@ -227,8 +227,8 @@ export declare class ClrButtonGroup {
     commonStrings: ClrCommonStringsService;
     inlineButtons: ClrButton[];
     menuButtons: ClrButton[];
-    get menuPosition(): string;
     set menuPosition(pos: string);
+    get menuPosition(): string;
     get open(): boolean;
     popoverId: string;
     popoverPosition: ClrPopoverPosition;
@@ -425,8 +425,8 @@ export declare class ClrDatagridActionBar {
 
 export declare class ClrDatagridActionOverflow implements OnDestroy {
     commonStrings: ClrCommonStringsService;
-    get open(): boolean;
     set open(open: boolean);
+    get open(): boolean;
     openChange: EventEmitter<boolean>;
     popoverId: string;
     smartPosition: ClrPopoverPosition;
@@ -449,10 +449,10 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     set colType(value: 'string' | 'number');
     commonStrings: ClrCommonStringsService;
     customFilter: boolean;
-    get field(): string;
     set field(field: string);
-    get filterValue(): string | [number, number];
+    get field(): string;
     set filterValue(newValue: string | [number, number]);
+    get filterValue(): string | [number, number];
     filterValueChange: EventEmitter<any>;
     set projectedFilter(custom: any);
     showSeparator: boolean;
@@ -618,10 +618,10 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     set lastPage(last: number);
     get middlePages(): number[];
     page: Page;
-    get pageSize(): number;
     set pageSize(size: number);
-    get totalItems(): number;
+    get pageSize(): number;
     set totalItems(total: number);
+    get totalItems(): number;
     constructor(page: Page, commonStrings: ClrCommonStringsService, detailService: DetailService);
     next(): void;
     ngOnDestroy(): void;
@@ -642,12 +642,12 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     _stickyCells: ViewContainerRef;
     get _view(): any;
     checkboxId: string;
-    set clrDgDetailCloseLabel(label: string);
     get clrDgDetailCloseLabel(): string;
-    set clrDgDetailOpenLabel(label: string);
+    set clrDgDetailCloseLabel(label: string);
     get clrDgDetailOpenLabel(): string;
-    set clrDgSelectable(value: boolean);
+    set clrDgDetailOpenLabel(label: string);
     get clrDgSelectable(): boolean;
+    set clrDgSelectable(value: boolean);
     commonStrings: ClrCommonStringsService;
     detailButton: any;
     detailService: DetailService;
@@ -665,8 +665,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     radioId: string;
     replaced: any;
     rowActionService: RowActionService;
-    get selected(): boolean;
     set selected(value: boolean);
+    get selected(): boolean;
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
     constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, detailService: DetailService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService);
@@ -877,10 +877,10 @@ export declare class ClrDropdown implements OnDestroy {
 export declare class ClrDropdownItem implements AfterViewInit {
     set disabled(value: boolean | string);
     get disabled(): boolean | string;
-    set disabledDeprecated(value: boolean | string);
     get disabledDeprecated(): boolean | string;
-    set dropdownItemId(value: string);
+    set disabledDeprecated(value: boolean | string);
     get dropdownItemId(): string;
+    set dropdownItemId(value: string);
     setByDeprecatedDisabled: boolean;
     constructor(dropdown: ClrDropdown, el: ElementRef<HTMLElement>, _dropdownService: RootDropdownService, renderer: Renderer2, focusableItem: FocusableItem);
     ngAfterViewInit(): void;
@@ -1018,8 +1018,8 @@ export declare class ClrIfError {
 }
 
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
-    get expanded(): boolean;
     set expanded(value: boolean);
+    get expanded(): boolean;
     expandedChange: EventEmitter<boolean>;
     constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: IfExpandService);
     ngOnDestroy(): void;
@@ -1201,10 +1201,10 @@ export declare class ClrPopoverContent implements AfterContentChecked, OnDestroy
 }
 
 export declare class ClrPopoverEventsService implements OnDestroy {
-    set anchorButtonRef(ref: ElementRef);
     get anchorButtonRef(): ElementRef;
-    set closeButtonRef(ref: ElementRef);
+    set anchorButtonRef(ref: ElementRef);
     get closeButtonRef(): ElementRef;
+    set closeButtonRef(ref: ElementRef);
     set contentRef(host: ElementRef);
     get contentRef(): ElementRef;
     ignoredEvent: any;
@@ -1243,8 +1243,8 @@ export declare class ClrPopoverPositionService {
 }
 
 export declare class ClrPopoverToggleService {
-    set open(value: boolean);
     get open(): boolean;
+    set open(value: boolean);
     get openChange(): Observable<boolean>;
     set openEvent(event: Event);
     get openEvent(): Event;
@@ -1278,8 +1278,8 @@ export declare class ClrProgressBar {
     off: boolean;
     get progressClass(): boolean;
     get successClass(): boolean;
-    get value(): number;
     set value(value: number);
+    get value(): number;
     constructor(ariaLiveService: ClrAriaLiveService);
     displayAriaLive(): boolean;
 }
@@ -1366,8 +1366,8 @@ export declare class ClrSignpost {
 
 export declare class ClrSignpostContent extends AbstractPopover implements OnDestroy {
     commonStrings: ClrCommonStringsService;
-    get position(): string;
     set position(position: string);
+    get position(): string;
     signpostContentId: string;
     constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, platformId: Object, document: any);
     close(): void;
@@ -1500,8 +1500,8 @@ export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit
     commonStrings: ClrCommonStringsService;
     get formGroup(): import("@angular/forms").FormGroup;
     headerButton: ElementRef;
-    get id(): string;
     set id(_value: string);
+    get id(): string;
     isAccordion: boolean;
     constructor(platformId: Object, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
     ngOnDestroy(): void;
@@ -1523,8 +1523,8 @@ export declare class ClrTabContent implements OnDestroy {
     get ariaLabelledBy(): string;
     id: number;
     ifActiveService: IfActiveService;
-    get tabContentId(): string;
     set tabContentId(id: string);
+    get tabContentId(): string;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, tabsService: TabsService);
     ngOnDestroy(): void;
 }
@@ -1558,8 +1558,8 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     get isCurrentInOverflow(): boolean;
     get isVertical(): boolean;
     keyFocus: ClrKeyFocus;
-    set layout(layout: TabsLayout);
     get layout(): TabsLayout;
+    set layout(layout: TabsLayout);
     get tabIds(): string;
     get tabLinkDirectives(): ClrTabLink[];
     tabLinkElements: HTMLElement[];
@@ -1639,12 +1639,12 @@ export declare class ClrTooltip {
 }
 
 export declare class ClrTooltipContent extends AbstractPopover {
-    get id(): string;
     set id(value: string);
+    get id(): string;
     get position(): string;
     set position(position: string);
-    get size(): string;
     set size(size: string);
+    get size(): string;
     uniqueId: string;
     constructor(injector: Injector, parentHost: ElementRef, uniqueId: string, tooltipIdService: TooltipIdService);
 }
@@ -1679,13 +1679,13 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     contentContainerTabindex: number;
     expandService: IfExpandService;
     expandable: boolean | undefined;
-    get expanded(): boolean;
     set expanded(value: boolean);
+    get expanded(): boolean;
     expandedChange: EventEmitter<boolean>;
     featuresService: TreeFeaturesService<T>;
     nodeId: string;
-    get selected(): ClrSelectedState | boolean;
     set selected(value: ClrSelectedState | boolean);
+    get selected(): ClrSelectedState | boolean;
     selectedChange: EventEmitter<ClrSelectedState>;
     get treeNodeLink(): ClrTreeNodeLink;
     constructor(nodeId: string, platformId: Object, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, focusManager: TreeFocusManagerService<T>, injector: Injector);
@@ -1721,8 +1721,8 @@ export declare class ClrVerticalNav implements OnDestroy {
 
 export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
     commonStrings: ClrCommonStringsService;
-    get expandAnimationState(): string;
     set expandAnimationState(value: string);
+    get expandAnimationState(): string;
     get expanded(): boolean;
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
@@ -1762,8 +1762,8 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     get currentPage(): ClrWizardPage;
     set currentPage(page: ClrWizardPage);
     currentPageChanged: EventEmitter<any>;
-    set disableStepnav(value: boolean);
     get disableStepnav(): boolean;
+    set disableStepnav(value: boolean);
     set forceForward(value: boolean);
     get forceForward(): boolean;
     headerActionService: HeaderActionService;
@@ -1779,13 +1779,13 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     pageCollection: PageCollectionService;
     pages: QueryList<ClrWizardPage>;
     size: string;
-    set stopCancel(value: boolean);
     get stopCancel(): boolean;
+    set stopCancel(value: boolean);
     get stopModalAnimations(): string;
-    set stopNavigation(value: boolean);
     get stopNavigation(): boolean;
-    set stopNext(value: boolean);
+    set stopNavigation(value: boolean);
     get stopNext(): boolean;
+    set stopNext(value: boolean);
     wizardFinished: EventEmitter<any>;
     wizardTitle: ElementRef;
     constructor(platformId: Object, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
@@ -1857,15 +1857,15 @@ export declare class ClrWizardPage implements OnInit {
     get enabled(): boolean;
     finishButtonClicked: EventEmitter<ClrWizardPage>;
     get hasButtons(): boolean;
-    get hasError(): boolean;
     set hasError(val: boolean);
+    get hasError(): boolean;
     get hasHeaderActions(): boolean;
     get headerActions(): TemplateRef<any>;
     get id(): string;
     get navTitle(): TemplateRef<any>;
     nextButtonClicked: EventEmitter<ClrWizardPage>;
-    get nextStepDisabled(): boolean;
     set nextStepDisabled(val: boolean);
+    get nextStepDisabled(): boolean;
     nextStepDisabledChange: EventEmitter<boolean>;
     onCommit: EventEmitter<string>;
     onLoad: EventEmitter<string>;
@@ -1876,8 +1876,8 @@ export declare class ClrWizardPage implements OnInit {
     preventDefault: boolean;
     previousButtonClicked: EventEmitter<ClrWizardPage>;
     get previousCompleted(): boolean;
-    get previousStepDisabled(): boolean;
     set previousStepDisabled(val: boolean);
+    get previousStepDisabled(): boolean;
     previousStepDisabledChange: EventEmitter<boolean>;
     primaryButtonClicked: EventEmitter<string>;
     get readyToComplete(): boolean;
@@ -1885,8 +1885,8 @@ export declare class ClrWizardPage implements OnInit {
     get stopCancel(): boolean;
     set stopCancel(val: boolean);
     stopCancelChange: EventEmitter<boolean>;
-    get stopNext(): boolean;
     set stopNext(val: boolean);
+    get stopNext(): boolean;
     get title(): TemplateRef<any>;
     constructor(navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService);
     makeCurrent(): void;
@@ -1960,11 +1960,11 @@ export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegist
     set customNumericFilter(value: ClrDatagridNumericFilterInterface<T> | RegisteredFilter<T, DatagridNumericFilterImpl<T>>);
     filterContainer: ClrDatagridFilter<T>;
     filterValueChange: EventEmitter<any>;
-    get high(): number | string;
     set high(high: number | string);
+    get high(): number | string;
     input: ElementRef;
-    get low(): number | string;
     set low(low: number | string);
+    get low(): number | string;
     open: boolean;
     get value(): [number, number];
     set value(values: [number, number]);
@@ -1999,8 +1999,8 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
     filterValueChange: EventEmitter<any>;
     input: ElementRef;
     open: boolean;
-    get value(): string;
     set value(value: string);
+    get value(): string;
     constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, smartToggleService: ClrPopoverToggleService);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
@@ -2054,8 +2054,8 @@ export declare class WrappedFormControl<W extends DynamicWrapper> implements OnI
     _id: string;
     protected controlIdService: ControlIdService;
     protected el: ElementRef<any>;
-    get id(): string;
     set id(value: string);
+    get id(): string;
     protected index: number;
     protected ngControlService: NgControlService;
     protected renderer: Renderer2;

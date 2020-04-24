@@ -1,3 +1,4 @@
+@import './../styles/tokens/generated/index';
 @import './../styles/mixins/utils';
 
 @mixin rotateSVGIcon($deg) {
@@ -21,10 +22,10 @@
 }
 
 :host {
-  --color: var(--clr-color-neutral-700, #{$clr-color-neutral-700});
-  --badge-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --color: #{$cds-token-color-neutral-700};
+  --badge-color: #{$cds-token-color-danger-700};
   display: inline-block;
-  @include equilateral($clr_baselineRem_0_667);
+  @include equilateral(#{$cds-token-space-size-7});
   margin: 0;
   vertical-align: middle;
   fill: var(--color);
@@ -38,27 +39,27 @@ svg {
 // sizing
 :host(.clr-i-size-sm) {
   // weirdly, the default... 16px
-  @include equilateral($clr_baselineRem_0_667);
+  @include equilateral(#{$cds-token-space-size-7});
 }
 
 :host(.clr-i-size-md) {
   // 24px
-  @include equilateral($clr_baselineRem_1);
+  @include equilateral(#{$cds-token-space-size-9});
 }
 
 :host(.clr-i-size-lg) {
   // 36px
-  @include equilateral($clr_baselineRem_1_5);
+  @include equilateral(#{$cds-token-space-size-11});
 }
 
 :host(.clr-i-size-xl) {
   // 48px
-  @include equilateral($clr_baselineRem_2);
+  @include equilateral(#{$cds-token-space-size-12});
 }
 
 :host(.clr-i-size-xxl) {
   // 64px
-  @include equilateral($clr_baselineRem_2_66);
+  @include equilateral(calc(#{$cds-token-space-size-13} - #{$cds-token-space-size-5}));
 }
 
 // colors
@@ -66,7 +67,7 @@ svg {
 :host(.is-green),
 :host(.is-success),
 :host([status='success']) {
-  --color: var(--clr-color-success-700, #{$clr-color-success-700});
+  --color: #{$cds-token-color-success-700};
 }
 
 // DEPRECATED IN 3.0: is-red, is-error, is-danger
@@ -74,13 +75,13 @@ svg {
 :host(.is-danger),
 :host(.is-error),
 :host([status='danger']) {
-  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --color: #{$cds-token-color-danger-700};
 }
 
 // DEPRECATED IN 3.0: is-warning
 :host(.is-warning),
 :host([status='warning']) {
-  --color: var(--clr-color-warning-900, #{$clr-color-warning-900});
+  --color: #{$cds-token-color-warning-900};
 }
 
 // DEPRECATED IN 3.0: is-blue, is-info, is-highlight
@@ -88,7 +89,7 @@ svg {
 :host(.is-info),
 :host(.is-highlight),
 :host([status='info']) {
-  --color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --color: #{$cds-token-color-action-600};
 }
 
 // INVERSE COLORS
@@ -97,21 +98,21 @@ svg {
 :host(.is-white),
 :host(.is-inverse),
 :host([inverse]) {
-  --color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --color: #{$cds-token-color-neutral-0};
 }
 
 // DEPRECATED IN 3.0: is-info, is-inverse
 :host([inverse].is-info),
 :host([status='info'].is-inverse),
 :host([inverse][status='info']) {
-  --color: var(--clr-color-action-400, #{$clr-color-action-400});
+  --color: #{$cds-token-color-action-400};
 }
 
 // DEPRECATED IN 3.0: is-success, is-inverse
 :host([inverse].is-success),
 :host([status='success'].is-inverse),
 :host([inverse][status='success']) {
-  --color: var(--clr-color-success-400, #{$clr-color-success-400});
+  --color: #{$cds-token-color-success-400};
 }
 
 // DEPRECATED IN 3.0: is-error, is-danger, is-inverse
@@ -121,7 +122,7 @@ svg {
 :host([inverse].is-error),
 :host([inverse].is-danger),
 :host([inverse][status='danger']) {
-  --color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --color: #{$cds-token-color-danger-700};
 }
 
 // DEPRECATED IN 3.0: is-warning, is-inverse
@@ -129,7 +130,7 @@ svg {
 :host([status='warning'].is-inverse),
 :host([inverse].is-warning),
 :host([inverse][status='warning']) {
-  --color: var(--clr-color-warning-500, #{$clr-color-warning-500});
+  --color: #{$cds-token-color-warning-500};
 }
 
 // directional
@@ -268,19 +269,19 @@ svg {
 // DEPRECATED IN 3.0: has-badge--success
 :host(.has-badge--success),
 :host([badge='success']) {
-  --badge-color: var(--clr-color-success-700, #{$clr-color-success-700});
+  --badge-color: #{$cds-token-color-success-700};
 }
 
 // DEPRECATED IN 3.0: has-badge--danger, has-badge--error
 :host(.has-badge--danger),
 :host(.has-badge--error),
 :host([badge='danger']) {
-  --badge-color: var(--clr-color-danger-700, #{$clr-color-danger-700});
+  --badge-color: #{$cds-token-color-danger-700};
 }
 
 // there is no .has-badge--warning classname
 :host([badge='warning']) {
-  --badge-color: var(--clr-color-warning-900, #{$clr-color-warning-900});
+  --badge-color: #{$cds-token-color-warning-900};
 }
 
 :host([badge='inherit']) {
@@ -290,14 +291,14 @@ svg {
 // DEPRECATED IN 3.0: has-badge--info
 :host(.has-badge--info),
 :host([badge='info']) {
-  --badge-color: var(--clr-color-action-600, #{$clr-color-action-600});
+  --badge-color: #{$cds-token-color-action-600};
 }
 
 // alert colors
 // DEPRECATED IN 3.0: has-alert
 :host(.has-alert),
 :host([badge$='triangle']) {
-  --badge-color: var(--clr-color-warning-800, #{$clr-color-warning-800});
+  --badge-color: #{$cds-token-color-warning-800};
 }
 
 :host([badge='inherit-triangle']) {
@@ -313,13 +314,13 @@ svg {
 :host(.has-badge--error[inverse]),
 :host(.has-badge--danger.is-inverse),
 :host(.has-badge--error.is-inverse) {
-  --badge-color: var(--clr-color-danger-500, #{$clr-color-danger-500});
+  --badge-color: #{$cds-token-color-danger-500};
 }
 
 // DEPRECATED IN 3.0: is-highlight, is-inverse
 :host([inverse].is-highlight),
 :host(.is-highlight.is-inverse) {
-  --color: var(--clr-color-action-400, #{$clr-color-action-400});
+  --color: #{$cds-token-color-action-400};
 }
 
 // variant badge colors
@@ -328,7 +329,7 @@ svg {
 :host([inverse].has-badge--success),
 :host([badge='success'].is-inverse),
 :host(.has-badge--success.is-inverse) {
-  --badge-color: var(--clr-color-success-400, #{$clr-color-success-400});
+  --badge-color: #{$cds-token-color-success-400};
 }
 
 :host([badge='inherit'][inverse]) {
@@ -337,7 +338,7 @@ svg {
 
 // there is no has-badge--warning classname
 :host([badge='warning'][inverse]) {
-  --badge-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
+  --badge-color: #{$cds-token-color-warning-500};
 }
 
 // DEPRECATED IN 3.0: has-badge--info, is-inverse
@@ -345,7 +346,7 @@ svg {
 :host(.has-badge--info[inverse]),
 :host([badge='info'].is-inverse),
 :host(.has-badge--info.is-inverse) {
-  --badge-color: var(--clr-color-action-400, #{$clr-color-action-400});
+  --badge-color: #{$cds-token-color-action-400};
 }
 
 // alert colors
@@ -354,7 +355,7 @@ svg {
 :host(.has-alert[inverse]),
 :host(.is-inverse[badge$='triangle']),
 :host(.has-alert.is-inverse) {
-  --badge-color: var(--clr-color-warning-500, #{$clr-color-warning-500});
+  --badge-color: #{$cds-token-color-warning-500};
 }
 
 :host([badge='inherit-triangle'][inverse]) {

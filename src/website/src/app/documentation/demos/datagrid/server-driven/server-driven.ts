@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -42,12 +42,13 @@ export class DatagridServerDrivenDemo {
         from: 0,
         to: 9,
         size: 10,
+        current: 1,
       };
     }
     this.inventory
       .filter(filters)
       .sort(<{ by: string; reverse: boolean }>state.sort)
-      .fetch(state.page.from, state.page.size)
+      .fetch(state.page.size * (state.page.current - 1), state.page.size)
       .then((result: FetchResult) => {
         this.users = result.users;
         this.total = result.length;

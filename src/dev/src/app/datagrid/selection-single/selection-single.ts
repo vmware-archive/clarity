@@ -50,7 +50,7 @@ export class DatagridSelectionSingleDemo {
     this.inventory
       .filter(filters)
       .sort(state.sort as { by: string; reverse: boolean })
-      .fetch(state.page.from, state.page.size)
+      .fetch(state.page.size * (state.page.current - 1), state.page.size)
       .then((result: FetchResult) => {
         setTimeout(() => {
           this.trackByIdServerUsers = result.users;

@@ -88,7 +88,10 @@ export class DatagridFullDemo {
     this.inventory
       .filter(filters)
       .sort(state.sort as { by: string; reverse: boolean })
-      .fetch(state.page && state.page.from, state.page && state.page.size)
+      .fetch(
+        state.page && state.page.size && state.page.current && state.page.size * (state.page.current - 1),
+        state.page && state.page.size
+      )
       .then((result: FetchResult) => {
         this.users = result.users;
         this.total = result.length;

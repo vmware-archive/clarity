@@ -42,12 +42,13 @@ export class DatagridServerDrivenDemo {
         from: 0,
         to: 9,
         size: 10,
+        current: 1,
       };
     }
     this.inventory
       .filter(filters)
       .sort(state.sort as { by: string; reverse: boolean })
-      .fetch(state.page.from, state.page.size)
+      .fetch(state.page.size * (state.page.current - 1), state.page.size)
       .then((result: FetchResult) => {
         this.users = result.users;
         this.total = result.length;

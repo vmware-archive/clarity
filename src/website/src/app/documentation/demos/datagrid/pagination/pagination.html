@@ -50,12 +50,20 @@
         <tr>
             <td>&nbsp;</td>
             <td class="left">firstItem</td>
-            <td class="left">Index of the first item displayed on the current page, starting from 0.</td>
+            <td class="left">
+              If totalItems is not 0, the value is set to the index of the first item displayed on the current page, starting from 0.
+              <br>
+              If totalItems is 0, the value is set to -1.
+            </td>
         </tr>
         <tr>
             <td class="left">&nbsp;</td>
             <td class="left">lastItem</td>
-            <td class="left">Index of the last item displayed on the current page, starting from 0.</td>
+            <td class="left">
+              If totalItems is not 0, the value is set to the index of the last item displayed on the current page, starting from 0.
+              <br>
+              If totalItems is 0, the value is set to -1.
+            </td>
         </tr>
     </tbody>
 </table>

@@ -1,0 +1,6 @@
+{
+  "optimizers": {
+    "*.js": ["@parcel/optimizer-terser"],
+    "*.css": ["@parcel/optimizer-csso"]
+  }
+}

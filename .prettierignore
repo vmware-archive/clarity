@@ -14,3 +14,4 @@ packages/core/src/styles/tokens/generated/**
 packages/core/dist/
 docs/core
 apps/core-create-react-app
+.cache

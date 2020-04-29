@@ -1,0 +1,10 @@
+@import '../node_modules/@clr/core/global.min.css';
+@import '../node_modules/@clr/city/css/bundles/default.min.css';
+
+body {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+}
+
+main {
+  padding: 1.2rem;
+}

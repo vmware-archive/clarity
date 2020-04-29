@@ -7,9 +7,9 @@
 @import './../styles/mixins/mixins';
 
 // TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
-@import './../../clr-angular/progress/spinner/variables.spinner';
-@import './../../clr-angular/image/icons.clarity';
-@import './../../clr-angular/progress/spinner/spinner.clarity';
+@import './../../../packages/angular/projects/clr-angular/src/progress/spinner/variables.spinner';
+@import './../../../packages/angular/projects/clr-angular/src/image/icons.clarity';
+@import './../../../packages/angular/projects/clr-angular/src/progress/spinner/spinner.clarity';
 
 :host {
   --box-shadow-color: #{$cds-token-color-action-900};

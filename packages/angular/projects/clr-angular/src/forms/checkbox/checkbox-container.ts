@@ -4,12 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
 
 import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
+import { LayoutService } from '../common/providers/layout.service';
 
 @Component({
   selector: 'clr-checkbox-container,clr-toggle-container',
@@ -34,7 +35,15 @@ import { ClrAbstractContainer } from '../common/abstract-container';
 })
 export class ClrCheckboxContainer extends ClrAbstractContainer {
   private inline = false;
-  // private formGroup: AbstractControl;
+
+  constructor(
+    protected ifErrorService: IfErrorService,
+    @Optional() protected layoutService: LayoutService,
+    protected controlClassService: ControlClassService,
+    protected ngControlService: NgControlService
+  ) {
+    super(ifErrorService, layoutService, controlClassService, ngControlService);
+  }
 
   /*
    * Here we want to support the following cases

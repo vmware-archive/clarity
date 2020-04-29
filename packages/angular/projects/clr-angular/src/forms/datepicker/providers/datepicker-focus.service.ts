@@ -13,7 +13,7 @@ import { first, filter } from 'rxjs/operators';
  */
 @Injectable()
 export class DatepickerFocusService {
-  constructor(private _ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: Record<string, any>) {}
+  constructor(private _ngZone: NgZone, @Inject(PLATFORM_ID) private platformId: any) {}
 
   focusCell(elRef: ElementRef): void {
     this._ngZone.runOutsideAngular(() => {

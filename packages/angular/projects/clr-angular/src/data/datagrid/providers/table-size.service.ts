@@ -22,7 +22,7 @@ export class TableSizeService {
     this._tableRef = element;
   }
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Record<string, any>) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
   public set table(table: ElementRef) {
     if (isPlatformBrowser(this.platformId) && table.nativeElement) {
       this.tableRef = table.nativeElement.querySelector('.datagrid-table');

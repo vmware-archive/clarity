@@ -69,7 +69,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
 
   constructor(
     @Inject(UNIQUE_ID) public nodeId: string,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     @Optional()
     @SkipSelf()
     parent: ClrTreeNode<T>,

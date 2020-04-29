@@ -6,7 +6,7 @@
     "build": "npm-run-all build:css build:prefix build:src build:optimize build:package",
     "build:css": "sass --source-map --precision=8 src/main.scss ../../dist/clr-ui/clr-ui.css; sass --source-map --precision=8 src/dark-theme.scss ../../dist/clr-ui/clr-ui-dark.css",
     "build:prefix": "postcss ../../dist/clr-ui/clr-ui.css -o ../../dist/clr-ui/clr-ui.css; postcss ../../dist/clr-ui/clr-ui-dark.css -o ../../dist/clr-ui/clr-ui-dark.css",
-    "build:src": "cpy --parents --cwd='../../src/clr-angular/' '**/*.scss' ../../dist/clr-ui/src/ && cpy --parents --cwd='../../src/clr-core/' '**/*.scss' ../../dist/clr-ui/clr-core/",
+    "build:src": "cpy --parents --cwd='../angular/projects/clr-angular/src/' '**/*.scss' ../../../../../dist/clr-ui/src/ && cpy --parents --cwd='../../src/clr-core/' '**/*.scss' ../../dist/clr-ui/clr-core/",
     "build:optimize": "csso -i ../../dist/clr-ui/clr-ui.css -o ../../dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ../../dist/clr-ui/clr-ui-dark.css -o ../../dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
     "build:package": "cpy npm.json README.md ../../dist/clr-ui/; mv ../../dist/clr-ui/npm.json ../../dist/clr-ui/package.json; replace '@VERSION' $npm_package_version ../../dist/clr-ui/package.json; ",
     "lint": "stylelint --config ../../src/clr-core/.stylelintrc 'src/**/*.scss'",

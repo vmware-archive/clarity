@@ -6,7 +6,6 @@
 
 import { Component } from '@angular/core';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
@@ -129,8 +128,8 @@ export default function() {
         const dvm: DayViewModel = context.clarityDirective.dayView;
         expect(dayBtn.attributes['aria-label'].value).toEqual(dvm.dayModel.toDateString());
       });
-      // @TODO determine if this actually fails in IE
-      itIgnore(['ie'], 'updates the focusable date when a button is focused', () => {
+
+      it('updates the focusable date when a button is focused', () => {
         spyOn(context.clarityDirective, 'onDayViewFocus');
         const button: HTMLButtonElement = context.clarityElement.children[0];
 

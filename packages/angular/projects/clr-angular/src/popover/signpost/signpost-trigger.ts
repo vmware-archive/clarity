@@ -45,7 +45,7 @@ export class ClrSignpostTrigger implements OnDestroy {
     private signpostIdService: SignpostIdService,
     private signpostFocusManager: SignpostFocusManager,
     @Inject(DOCUMENT) document: any,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.document = document;
   }

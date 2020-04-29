@@ -35,7 +35,7 @@ import { DetailService } from '../providers/detail.service';
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
-export const domAdapterFactory = (platformId: Record<string, any>) => {
+export const domAdapterFactory = (platformId: any) => {
   if (isPlatformBrowser(platformId)) {
     return new DomAdapter();
   } else {

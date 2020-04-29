@@ -61,7 +61,7 @@ export class ClrDatagridActionOverflow implements OnDestroy {
   constructor(
     private rowActionService: RowActionService,
     public commonStrings: ClrCommonStringsService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     private zone: NgZone,
     private smartToggleService: ClrPopoverToggleService,
     @Inject(UNIQUE_ID) public popoverId: string

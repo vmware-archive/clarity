@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { itIgnore } from '../../../../tests/tests.helpers';
 
 import { ClrIconModule } from '../../icon/icon.module';
 
@@ -111,7 +110,7 @@ import { ClrIconModule } from '../../icon/icon.module';
         </div>
       </div>
     </div>
-  
+
     <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="toggle-inline">
       <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
         Inline checkbox</label>
@@ -349,10 +348,9 @@ describe('Form layouts', () => {
       beforeEach(() => {
         fileInput = height('#file-plain input');
       });
-      // @TODO Figure out why IE calculates inputs differently
-      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput + base * 8, false));
+      it('control height', () => verifyHeight('#file-plain', fileInput + base * 8, false));
       it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
+      it('wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
       it('subtext height', () => verifyHeight('#file-plain .clr-subtext', base * 2));
     });
 
@@ -361,18 +359,15 @@ describe('Form layouts', () => {
       beforeEach(() => {
         textarea = height('#textarea textarea');
       });
-      // @TODO Figure out why IE can't calculate things normally
-      itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea + base * 7, false));
+      it('control height', () => verifyHeight('#textarea', textarea + base * 7, false));
       it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
-      itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
+      it('wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
+      it('textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', base * 2));
     });
 
     describe('select', () => {
-      // Skip IE because it calculates something oddly
-      // @TODO figure out why IE adds some pixels
-      itIgnore(['ie'], 'control height', () => verifyHeight('#select', base * 10));
+      it('control height', () => verifyHeight('#select', base * 10));
       it('label height', () => verifyHeight('#select .clr-control-label', base * 3));
       it('wrapper height', () => verifyHeight('#select .clr-select-wrapper', base * 4));
       it('select height', () => verifyHeight('#select select', base * 4));
@@ -459,10 +454,9 @@ describe('Form layouts', () => {
       beforeEach(() => {
         fileInput = height('#file-plain input');
       });
-      // @TODO Figure out IE calculations
-      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput + base * 5, false));
+      it('control height', () => verifyHeight('#file-plain', fileInput + base * 5, false));
       it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3, false));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
+      it('wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
       it('subtext height', () => verifyHeight('#file-plain .clr-subtext', base * 2));
     });
 
@@ -471,11 +465,10 @@ describe('Form layouts', () => {
       beforeEach(() => {
         textarea = height('#textarea textarea');
       });
-      // @TODO Figure out why IE can't calculate things normally
-      itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea + base * 4, false));
+      it('control height', () => verifyHeight('#textarea', textarea + base * 4, false));
       it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
-      itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
+      it('wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
+      it('textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', base * 2));
     });
 
@@ -582,11 +575,10 @@ describe('Form layouts', () => {
         // the default file input is out of our control, so need to get its size for calculations
         fileInput = height('#file-plain input');
       });
-      // @TODO Figure out why IE calculates differently
-      itIgnore(['ie'], 'control height', () => verifyHeight('#file-plain', fileInput, false));
+      it('control height', () => verifyHeight('#file-plain', fileInput, false));
       it('label height', () => verifyHeight('#file-plain .clr-control-label', base * 3, false));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
-      itIgnore(['ie'], 'subtext height', () => verifyHeight('#file-plain .clr-subtext', fileInput, false));
+      it('wrapper height', () => verifyHeight('#file-plain .clr-file-wrapper', fileInput, false));
+      it('subtext height', () => verifyHeight('#file-plain .clr-subtext', fileInput, false));
     });
 
     describe('textarea', () => {
@@ -594,11 +586,10 @@ describe('Form layouts', () => {
       beforeEach(() => {
         textarea = height('#textarea textarea');
       });
-      // @TODO Figure out why IE can't calculate things normally
-      itIgnore(['ie'], 'control height', () => verifyHeight('#textarea', textarea, false));
+      it('control height', () => verifyHeight('#textarea', textarea, false));
       it('label height', () => verifyHeight('#textarea .clr-control-label', base * 3));
-      itIgnore(['ie'], 'wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
-      itIgnore(['ie'], 'textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
+      it('wrapper height', () => verifyHeight('#textarea .clr-textarea-wrapper', textarea, false));
+      it('textarea height', () => verifyHeight('#textarea .clr-textarea', textarea, false));
       it('subtext height', () => verifyHeight('#textarea .clr-subtext', textarea - base, false));
     });
 
@@ -617,12 +608,9 @@ describe('Form layouts', () => {
       });
       it('control height', () => verifyHeight('#multiselect', multiselect, false));
       it('label height', () => verifyHeight('#multiselect .clr-control-label', base * 3, false));
-      // @TODO Figure out IE calculations
-      itIgnore(['ie'], 'wrapper height', () =>
-        verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false)
-      );
+      it('wrapper height', () => verifyHeight('#multiselect .clr-multiselect-wrapper', multiselect, false));
       it('select height', () => verifyHeight('#multiselect select', multiselect, false));
-      itIgnore(['ie'], 'subtext height', () => verifyHeight('#multiselect .clr-subtext', multiselect - base, false));
+      it('subtext height', () => verifyHeight('#multiselect .clr-subtext', multiselect - base, false));
     });
   }
 

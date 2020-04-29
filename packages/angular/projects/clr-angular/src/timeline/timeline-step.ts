@@ -43,7 +43,7 @@ export class ClrTimelineStep {
 
   constructor(
     private iconAttributeService: TimelineIconAttributeService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
+    @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
   ngAfterContentInit() {

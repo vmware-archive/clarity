@@ -41,7 +41,7 @@ export class ClrForm {
   constructor(
     public layoutService: LayoutService,
     private markControlService: MarkControlService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     private el: ElementRef,
     private commonStrings: ClrCommonStringsService,
     private ariaLiveService: ClrAriaLiveService

@@ -188,7 +188,7 @@ export declare enum ClrAriaLivePoliteness {
 
 export declare class ClrAriaLiveService implements OnDestroy {
     get id(): string;
-    constructor(ngZone: NgZone, _document: any, platformId: Record<string, any>);
+    constructor(ngZone: NgZone, _document: any, platformId: any);
     announce(message: string | HTMLElement, politeness?: ClrAriaLivePoliteness): void;
     ngOnDestroy(): void;
 }
@@ -266,6 +266,11 @@ export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> 
 export declare class ClrCheckboxContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
+    protected controlClassService: ControlClassService;
+    protected ifErrorService: IfErrorService;
+    protected layoutService: LayoutService;
+    protected ngControlService: NgControlService;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
 }
 
 export declare class ClrCheckboxModule {
@@ -430,7 +435,7 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     openChange: EventEmitter<boolean>;
     popoverId: string;
     smartPosition: ClrPopoverPosition;
-    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStringsService, platformId: Record<string, any>, zone: NgZone, smartToggleService: ClrPopoverToggleService, popoverId: string);
+    constructor(rowActionService: RowActionService, commonStrings: ClrCommonStringsService, platformId: any, zone: NgZone, smartToggleService: ClrPopoverToggleService, popoverId: string);
     closeOverflowContent(event: Event): void;
     ngOnDestroy(): void;
 }
@@ -493,7 +498,7 @@ export declare class ClrDatagridColumnToggle {
     openState: boolean;
     popoverId: string;
     smartPosition: ClrPopoverPosition;
-    constructor(commonStrings: ClrCommonStringsService, columnsService: ColumnsService, columnSwitchId: string, platformId: Record<string, any>, zone: NgZone, popoverId: string);
+    constructor(commonStrings: ClrCommonStringsService, columnsService: ColumnsService, columnSwitchId: string, platformId: any, zone: NgZone, popoverId: string);
     allColumnsSelected(): void;
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
@@ -543,7 +548,7 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     openChange: EventEmitter<boolean>;
     popoverId: string;
     smartPosition: ClrPopoverPosition;
-    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStringsService, smartToggleService: ClrPopoverToggleService, platformId: Record<string, any>, popoverId: string);
+    constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStringsService, smartToggleService: ClrPopoverToggleService, platformId: any, popoverId: string);
     ngOnDestroy(): void;
 }
 
@@ -778,7 +783,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     placeholder: string;
     get placeholderText(): string;
     protected renderer: Renderer2;
-    constructor(viewContainerRef: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, dateIOService: DateIOService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: Record<string, any>, focusService: FocusService, datepickerFocusService: DatepickerFocusService);
+    constructor(viewContainerRef: ViewContainerRef, injector: Injector, el: ElementRef, renderer: Renderer2, control: NgControl, container: ClrDateContainer, dateIOService: DateIOService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, platformId: any, focusService: FocusService, datepickerFocusService: DatepickerFocusService);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     onValueChange(target: HTMLInputElement): void;
@@ -946,7 +951,7 @@ export declare class ClrExpandableAnimation {
 
 export declare class ClrFocusOnViewInit implements AfterViewInit {
     set isEnabled(value: boolean);
-    constructor(el: ElementRef, platformId: Record<string, any>, focusOnViewInit: boolean, document: any, renderer: Renderer2);
+    constructor(el: ElementRef, platformId: any, focusOnViewInit: boolean, document: any, renderer: Renderer2);
     ngAfterViewInit(): void;
     onFocusout(): void;
 }
@@ -958,7 +963,7 @@ export declare class ClrForm {
     set labelSize(size: number);
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
-    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: Record<string, any>, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
+    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: any, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
     markAsDirty(updateAriaLiveText?: boolean): void;
     markAsTouched(updateAriaLiveText?: boolean): void;
     onFormSubmit(): void;
@@ -1231,11 +1236,11 @@ export interface ClrPopoverPosition {
 }
 
 export declare class ClrPopoverPositionService {
-    platformId: Record<string, any>;
+    platformId: any;
     set position(position: ClrPopoverPosition);
     get position(): ClrPopoverPosition;
     shouldRealign: Observable<void>;
-    constructor(eventService: ClrPopoverEventsService, platformId: Record<string, any>);
+    constructor(eventService: ClrPopoverEventsService, platformId: any);
     alignContent(content: HTMLElement): ClrPopoverContentOffset;
     realign(): void;
 }
@@ -1292,6 +1297,11 @@ export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> {
 export declare class ClrRadioContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
+    protected controlClassService: ControlClassService;
+    protected ifErrorService: IfErrorService;
+    protected layoutService: LayoutService;
+    protected ngControlService: NgControlService;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
 }
 
 export declare class ClrRadioModule {
@@ -1336,7 +1346,12 @@ export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
 }
 
 export declare class ClrSelectContainer extends ClrAbstractContainer {
+    protected controlClassService: ControlClassService;
+    protected ifErrorService: IfErrorService;
+    protected layoutService: LayoutService;
     multiple: SelectMultipleControlValueAccessor;
+    protected ngControlService: NgControlService;
+    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     ngOnInit(): void;
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
 }
@@ -1367,7 +1382,7 @@ export declare class ClrSignpostContent extends AbstractPopover implements OnDes
     get position(): string;
     set position(position: string);
     signpostContentId: string;
-    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, platformId: Record<string, any>, document: any);
+    constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, platformId: any, document: any);
     close(): void;
     ngOnDestroy(): void;
 }
@@ -1380,7 +1395,7 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     ariaExpanded: boolean;
     commonStrings: ClrCommonStringsService;
     isOpen: boolean;
-    constructor(toggleService: ClrPopoverToggleService, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, document: any, platformId: Record<string, any>);
+    constructor(toggleService: ClrPopoverToggleService, el: ElementRef, commonStrings: ClrCommonStringsService, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, document: any, platformId: any);
     ngOnDestroy(): void;
     ngOnInit(): void;
     onSignpostTriggerClick(event: Event): void;
@@ -1501,7 +1516,7 @@ export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit
     get id(): string;
     set id(_value: string);
     isAccordion: boolean;
-    constructor(platformId: Record<string, any>, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
+    constructor(platformId: any, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
     ngOnDestroy(): void;
     ngOnInit(): void;
 }
@@ -1612,7 +1627,7 @@ export declare class ClrTimelineStep {
     state: ClrTimelineStepState;
     stepTitle: ElementRef;
     stepTitleText: string;
-    constructor(iconAttributeService: TimelineIconAttributeService, platformId: Record<string, any>);
+    constructor(iconAttributeService: TimelineIconAttributeService, platformId: any);
     ngAfterContentInit(): void;
 }
 
@@ -1686,7 +1701,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     set selected(value: ClrSelectedState | boolean);
     selectedChange: EventEmitter<ClrSelectedState>;
     get treeNodeLink(): ClrTreeNodeLink;
-    constructor(nodeId: string, platformId: Record<string, any>, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, focusManager: TreeFocusManagerService<T>, injector: Injector);
+    constructor(nodeId: string, platformId: any, parent: ClrTreeNode<T>, featuresService: TreeFeaturesService<T>, expandService: IfExpandService, commonStrings: ClrCommonStringsService, focusManager: TreeFocusManagerService<T>, injector: Injector);
     broadcastFocusOnContainer(): void;
     focusTreeNode(): void;
     isExpandable(): boolean;
@@ -1786,7 +1801,7 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     get stopNext(): boolean;
     wizardFinished: EventEmitter<any>;
     wizardTitle: ElementRef;
-    constructor(platformId: Record<string, any>, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
+    constructor(platformId: any, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
     cancel(): void;
     checkAndCancel(): void;
     close(): void;

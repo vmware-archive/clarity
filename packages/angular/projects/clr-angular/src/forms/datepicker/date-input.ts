@@ -94,7 +94,7 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     @Optional() private dateNavigationService: DateNavigationService,
     @Optional() private datepickerEnabledService: DatepickerEnabledService,
     @Optional() private dateFormControlService: DateFormControlService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     @Optional() private focusService: FocusService,
     private datepickerFocusService: DatepickerFocusService
   ) {

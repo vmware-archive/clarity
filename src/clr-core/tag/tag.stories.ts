@@ -66,29 +66,35 @@ export const API = () => {
 
 export const status = () => {
   return html`
-    <cds-tag readonly status="info">Info</cds-tag>
-    <cds-tag readonly status="success">Success</cds-tag>
-    <cds-tag readonly status="warning">Warning</cds-tag>
-    <cds-tag readonly status="danger">Danger</cds-tag>
+    <div cds-layout="vertical gap:xs">
+      <cds-tag readonly status="info">Info</cds-tag>
+      <cds-tag readonly status="success">Success</cds-tag>
+      <cds-tag readonly status="warning">Warning</cds-tag>
+      <cds-tag readonly status="danger">Danger</cds-tag>
+    </div>
   `;
 };
 
 export const color = () => {
   return html`
-    <cds-tag readonly color="gray">Default</cds-tag>
-    <cds-tag readonly color="purple">Purple</cds-tag>
-    <cds-tag readonly color="blue">Blue</cds-tag>
-    <cds-tag readonly color="orange">Orange</cds-tag>
-    <cds-tag readonly color="light-blue">Light Blue</cds-tag>
+    <div cds-layout="vertical gap:xs">
+      <cds-tag readonly color="gray">Default</cds-tag>
+      <cds-tag readonly color="purple">Purple</cds-tag>
+      <cds-tag readonly color="blue">Blue</cds-tag>
+      <cds-tag readonly color="orange">Orange</cds-tag>
+      <cds-tag readonly color="light-blue">Light Blue</cds-tag>
+    </div>
   `;
 };
 
 export const badgesStatus = () => {
   return html`
-    <cds-tag readonly status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
-    <cds-tag readonly status="success">Success <cds-badge status="success">2</cds-badge></cds-tag>
-    <cds-tag readonly status="warning">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
-    <cds-tag readonly status="danger">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
+    <div cds-layout="vertical gap:xs">
+      <cds-tag readonly status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
+      <cds-tag readonly status="success">Success <cds-badge status="success">2</cds-badge></cds-tag>
+      <cds-tag readonly status="warning">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
+      <cds-tag readonly status="danger">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
+    </div>
   `;
 };
 
@@ -105,34 +111,36 @@ export const badgesColor = () => {
 
 export const clickable = () => {
   return html`
-    <div>
-      <cds-tag aria-label="Clickable example of a default tag" color="gray">Default</cds-tag>
-      <cds-tag aria-label="Clickable example of a purple tag" color="purple">Purple</cds-tag>
-      <cds-tag aria-label="Clickable example of a blue tag" color="blue">Blue</cds-tag>
-      <cds-tag aria-label="Clickable example of an orange tag" color="orange">Orange</cds-tag>
-      <cds-tag aria-label="Clickable example of a light blue tag" color="light-blue">Light Blue</cds-tag>
-    </div>
-    <div>
-      <cds-tag aria-label="Clickable example of a tag with the info status" status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a tag with the success status" status="success">Success <cds-badge status="success">2</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a tag with the warning status" status="warning">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
-      <cds-tag aria-label="Clickable example of a tag with the danger status" status="danger">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
-    </div>
-    <div>
-      <cds-tag aria-label="Clickable example of a default tag with a badge" color="gray">Default <cds-badge>A</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a purple tag with a badge" color="purple">Purple <cds-badge>B</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a blue tag with a badge" color="blue">Blue <cds-badge>C</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of an orange tag with a badge" color="orange">Orange <cds-badge>D</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a light-blue tag with a badge" color="light-blue">Light Blue <cds-badge>E</cds-badge></cds-tag>
-    </div>
-    <div>
-      <cds-tag aria-label="Clickable example of a gray tag with an icon and a badge" color="gray"><cds-icon shape="user"></cds-icon>Default <cds-badge>A</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a purple tag with an icon and a badge" color="purple"><cds-icon shape="user"></cds-icon>Purple</cds-tag>
-      <cds-tag aria-label="Clickable example of a blue tag with an icon and a badge" color="blue"><cds-icon shape="user"></cds-icon>Blue <cds-badge>B</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of an orange tag with an icon and a badge" color="orange"><cds-icon shape="user"></cds-icon>Orange</cds-tag>
-      <cds-tag aria-label="Clickable example of a light-blue tag with an icon and a badge" color="light-blue"><cds-icon shape="user"></cds-icon>Light Blue <cds-badge>C</cds-badge></cds-tag>
-      <cds-tag aria-label="Clickable example of a tag with an icon and a badge and a status of info" status="info"><cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">12,000</cds-badge></cds-tag>
-    <cds-tag aria-label="Clickable example of a tag with an icon and a badge and a status of success" status="success"><cds-icon shape="info-standard"></cds-icon>Success <cds-badge status="success">23+</cds-badge></cds-tag>
+    <div cds-layout="vertical gap:xs">
+      <div cds-layout="horizontal gap:xs">
+        <cds-tag aria-label="Clickable example of a default tag" color="gray">Default</cds-tag>
+        <cds-tag aria-label="Clickable example of a purple tag" color="purple">Purple</cds-tag>
+        <cds-tag aria-label="Clickable example of a blue tag" color="blue">Blue</cds-tag>
+        <cds-tag aria-label="Clickable example of an orange tag" color="orange">Orange</cds-tag>
+        <cds-tag aria-label="Clickable example of a light blue tag" color="light-blue">Light Blue</cds-tag>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-tag aria-label="Clickable example of a tag with the info status" status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a tag with the success status" status="success">Success <cds-badge status="success">2</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a tag with the warning status" status="warning">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
+        <cds-tag aria-label="Clickable example of a tag with the danger status" status="danger">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-tag aria-label="Clickable example of a default tag with a badge" color="gray">Default <cds-badge>A</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a purple tag with a badge" color="purple">Purple <cds-badge>B</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a blue tag with a badge" color="blue">Blue <cds-badge>C</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of an orange tag with a badge" color="orange">Orange <cds-badge>D</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a light-blue tag with a badge" color="light-blue">Light Blue <cds-badge>E</cds-badge></cds-tag>
+      </div>
+      <div cds-layout="horizontal gap:xs">
+        <cds-tag aria-label="Clickable example of a gray tag with an icon and a badge" color="gray"><cds-icon shape="user"></cds-icon>Default <cds-badge>A</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a purple tag with an icon and a badge" color="purple"><cds-icon shape="user"></cds-icon>Purple</cds-tag>
+        <cds-tag aria-label="Clickable example of a blue tag with an icon and a badge" color="blue"><cds-icon shape="user"></cds-icon>Blue <cds-badge>B</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of an orange tag with an icon and a badge" color="orange"><cds-icon shape="user"></cds-icon>Orange</cds-tag>
+        <cds-tag aria-label="Clickable example of a light-blue tag with an icon and a badge" color="light-blue"><cds-icon shape="user"></cds-icon>Light Blue <cds-badge>C</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a tag with an icon and a badge and a status of info" status="info"><cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">12,000</cds-badge></cds-tag>
+        <cds-tag aria-label="Clickable example of a tag with an icon and a badge and a status of success" status="success"><cds-icon shape="info-standard"></cds-icon>Success <cds-badge status="success">23+</cds-badge></cds-tag>
+      </div>
     </div>
   `;
 };

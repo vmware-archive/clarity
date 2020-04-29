@@ -222,3 +222,7 @@
   --color: #{$cds-token-color-neutral-0};
   --border-color: #{$cds-token-color-neutral-0};
 }
+
+:host([block]) .private-host {
+  width: 100%;
+}

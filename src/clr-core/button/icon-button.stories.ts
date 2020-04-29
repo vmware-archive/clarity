@@ -142,6 +142,17 @@ export const sizes = () => {
   `;
 };
 
+export const block = () => {
+  return html`
+    <div cds-layout="vertical gap:xs align:horizontal-stretch">
+      <cds-icon-button block><cds-icon shape="user"></cds-icon></cds-icon-button>
+      <cds-icon-button block action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      <cds-icon-button block size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      <cds-icon-button block action="outline" size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
+    </div>
+  `;
+};
+
 export const loading = () => {
   return html`
     <div cds-layout="horizontal gap:xs align-items:bottom">

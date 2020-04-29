@@ -6,7 +6,7 @@
   --background: none;
   --color: #{$cds-token-color-neutral-600};
   --padding: 0 #{$cds-token-space-size-2};
-  --size: #{$cds-token-space-size-8-static + $cds-token-space-size-2-static + $cds-token-space-size-1-static};
+  --size: #{$cds-token-space-size-8-static + $cds-token-space-size-3-static};
   --font-size: #{($cds-token-space-size-8-static + $cds-token-space-size-2-static) / 2 + $cds-token-space-size-1-static};
   --border-radius: calc(var(--size) / 2);
   --border-color: #{$cds-token-color-neutral-600};
@@ -35,13 +35,21 @@
   .tag-badge,
   .tag-content,
   .tag-close-icon {
-    height: var(--size);
+    height: calc(var(--size) - #{$cds-token-space-size-2});
     display: inline-flex;
     align-items: center;
   }
 
-  .tag-badge,
-  .tag-content {
+  .tag-badge {
+    height: calc(var(--size) - #{$cds-token-space-size-1});
+  }
+
+  ::slotted(cds-badge) {
+    transform: translateY(calc(-1 - #{$cds-token-space-size-2}));
+    --size: #{$cds-token-space-size-7};
+  }
+
+  .tag-badge {
     transform: translateY(calc(-1 * #{$cds-token-space-size-1}));
   }
 
@@ -52,13 +60,11 @@
   .tag-icon {
     overflow: hidden;
     width: calc(var(--size) - (2 * var(--border-width) + (2 * #{$cds-token-space-size-1})));
-    transform: translateY(#{$cds-token-space-size-1});
   }
 
   .tag-close-icon {
     overflow: hidden;
     width: calc(var(--size) - #{$cds-token-space-size-3});
-    transform: translateY(calc(-1.5 * #{$cds-token-space-size-1}));
   }
 
   .tag-icon + .tag-content {
@@ -95,7 +101,8 @@
 }
 
 ::slotted(cds-icon) {
-  @include equilateral(var(--size));
+  @include equilateral(calc(var(--size) - #{$cds-token-space-size-3}));
+  margin-bottom: 1px;
   fill: var(--color);
 }
 

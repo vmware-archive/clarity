@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+}
+
+cds-button:not(:defined) {
+  display: none;
+}

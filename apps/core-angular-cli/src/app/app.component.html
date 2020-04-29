@@ -1,0 +1,12 @@
+<style>
+  cds-alert {
+    --background: #f5e5bf;
+    --color: #2d2d2d;
+  }
+</style>
+
+<cds-alert status="warning" [closable]="true" *ngIf="show" (closedChange)="show = false">
+  Hello World
+</cds-alert>
+
+<cds-button status="success" (click)="show = true">Open Alert</cds-button>

@@ -60,9 +60,5 @@ auto-generated-routes.ts
 *.sketch
 *.zip
 
-# cypress
-cypress/screenshots
-cypress/videos
-
 # Local Netlify folder
 .netlify

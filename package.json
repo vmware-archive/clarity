@@ -119,9 +119,7 @@
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
-  "optionalDependencies": {
-    "cypress": "3.4.1"
-  },
+  "optionalDependencies": {},
   "devDependencies": {
     "@angular-builders/custom-webpack": "8.1.0",
     "@angular-builders/dev-server": "7.3.1",

@@ -1,27 +1,39 @@
-# Dev
+### Installing Clarity Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+1.  Install Clarity Icons package through npm:
 
-## Development server
+    ```
+    npm install @clr/icons
+    ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2.  Install Clarity UI package through npm:
 
-## Code scaffolding
+    ```
+    npm install @clr/ui
+    ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3.  Install the clarity-angular package through npm:
 
-## Build
+    ```
+    npm install @clr/angular
+    ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+4.  Import the ClarityModule into your Angular application's module. Your application's main module might look like this:
 
-## Running unit tests
+    ```
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { ClarityModule } from '@clr/angular';
+    import { AppComponent } from './app.component';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    @NgModule({
+        imports: [
+            BrowserModule,
+            ClarityModule,
+            ....
+         ],
+         declarations: [ AppComponent ],
+         bootstrap: [ AppComponent ]
+    })
+    export class AppModule {    }
+    ```

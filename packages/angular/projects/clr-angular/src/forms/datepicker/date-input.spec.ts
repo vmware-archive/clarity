@@ -9,7 +9,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { FormControl, FormGroup, FormsModule, NgControl, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
@@ -299,9 +298,7 @@ export default function() {
           expect(context.clarityElement.placeholder).toBe('MM/DD/YYYY');
         });
 
-        // Ignore Safari and IE here because it silently disallows setting to `date` types
-        // since it is not supported.
-        itIgnore(['safari', 'ie'], 'binds the input type correctly', () => {
+        it('binds the input type correctly', () => {
           expect(context.clarityElement.type).toBe('text');
 
           enabledService.fakeIsEnabled = false;
@@ -441,9 +438,7 @@ export default function() {
         })
       );
 
-      // IE doesn't handle Event constructor
-      itIgnore(
-        ['ie'],
+      it(
         'updates the model and the selectedDay when the changes the input field',
         fakeAsync(() => {
           dateInputDebugElement.nativeElement.value = '01/02/2015';
@@ -731,8 +726,7 @@ export default function() {
         expect(fixture.componentInstance.date.getFullYear()).toBe(2015);
       });
 
-      // IE doesn't like event constructors
-      itIgnore(['ie'], 'emits the date when the user changes the input', () => {
+      it('emits the date when the user changes the input', () => {
         dateInputDebugElement.nativeElement.value = '01/02/2015';
         dateInputDebugElement.nativeElement.dispatchEvent(new Event('change'));
 

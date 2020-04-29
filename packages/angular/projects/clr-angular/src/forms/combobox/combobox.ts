@@ -30,7 +30,7 @@ import { ComboboxNoopDomAdapter } from './utils/combobox-noop-dom-adapter.servic
 
 // Fixes build error
 // @dynamic (https://github.com/angular/angular/issues/19698#issuecomment-338340211)
-export function comboboxDomAdapterFactory(platformId: Record<string, any>) {
+export function comboboxDomAdapterFactory(platformId: any) {
   if (isPlatformBrowser(platformId)) {
     return new ComboboxDomAdapter();
   } else {

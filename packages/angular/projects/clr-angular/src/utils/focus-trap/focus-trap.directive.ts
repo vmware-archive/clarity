@@ -39,7 +39,7 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     private injector: Injector,
     private focusTrapsTracker: FocusTrapTracker,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.document = this.injector.get(DOCUMENT);
     this.focusTrapsTracker.current = this;

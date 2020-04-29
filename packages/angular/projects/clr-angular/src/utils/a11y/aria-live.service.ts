@@ -53,11 +53,7 @@ export class ClrAriaLiveService implements OnDestroy {
   private document: Document;
   private previousTimeout: ReturnType<typeof setTimeout>;
 
-  constructor(
-    private ngZone: NgZone,
-    @Inject(DOCUMENT) _document: any,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
-  ) {
+  constructor(private ngZone: NgZone, @Inject(DOCUMENT) _document: any, @Inject(PLATFORM_ID) private platformId: any) {
     this.document = _document;
   }
 

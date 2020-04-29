@@ -36,10 +36,7 @@ export class ClrPopoverPositionService {
     return this._position;
   }
 
-  constructor(
-    private eventService: ClrPopoverEventsService,
-    @Inject(PLATFORM_ID) public platformId: Record<string, any>
-  ) {}
+  constructor(private eventService: ClrPopoverEventsService, @Inject(PLATFORM_ID) public platformId: any) {}
 
   public alignContent(content: HTMLElement): ClrPopoverContentOffset {
     if (!isPlatformBrowser(this.platformId)) {

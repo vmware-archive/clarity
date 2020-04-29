@@ -5,9 +5,7 @@
   "plugins": [
     "stylelint-scss"
   ],
-  "ignoreFiles": [
-    "src/clr-angular/utils/_normalize.scss"
-  ],
+
   "rules": {
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,

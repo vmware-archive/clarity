@@ -75,7 +75,7 @@ export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDa
     _filters: FiltersProvider<T>,
     public commonStrings: ClrCommonStringsService,
     private smartToggleService: ClrPopoverToggleService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {
     super(_filters);

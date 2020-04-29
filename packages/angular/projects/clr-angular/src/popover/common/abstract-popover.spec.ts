@@ -8,7 +8,6 @@ import { Component, ElementRef, Injector, Optional, ViewChild } from '@angular/c
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
@@ -82,9 +81,7 @@ describe('Abstract Popover', function() {
       fixture.detectChanges();
     });
 
-    // IE doesn't support KeyboardEvent as a constructor ¯\_(ツ)_/¯
-    // @TODO Fix this for IE? Maybe.
-    itIgnore(['ie'], 'closes the popover when ESC is pressed', () => {
+    it('closes the popover when ESC is pressed', () => {
       const event: KeyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
 
       document.dispatchEvent(event);

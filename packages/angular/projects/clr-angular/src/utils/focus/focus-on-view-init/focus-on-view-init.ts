@@ -17,7 +17,7 @@ import {
 } from '@angular/core';
 import { FOCUS_ON_VIEW_INIT } from './focus-on-view-init.provider';
 
-/*  This directive is for guiding the document focus to the newly added content when its view is initialized 
+/*  This directive is for guiding the document focus to the newly added content when its view is initialized
     so that assistive technologies can read its content. */
 @Directive({
   selector: '[clrFocusOnViewInit]',
@@ -25,7 +25,7 @@ import { FOCUS_ON_VIEW_INIT } from './focus-on-view-init.provider';
 export class ClrFocusOnViewInit implements AfterViewInit {
   constructor(
     private el: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     @Inject(FOCUS_ON_VIEW_INIT) private focusOnViewInit: boolean,
     @Inject(DOCUMENT) document: any,
     private renderer: Renderer2

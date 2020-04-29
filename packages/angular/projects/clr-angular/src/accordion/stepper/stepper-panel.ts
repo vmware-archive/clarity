@@ -56,7 +56,7 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   }
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     public commonStrings: ClrCommonStringsService,
     @Optional() private formGroupName: FormGroupName,
     @Optional() private ngModelGroup: NgModelGroup,

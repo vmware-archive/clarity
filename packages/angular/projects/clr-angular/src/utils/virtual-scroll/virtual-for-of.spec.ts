@@ -8,8 +8,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { itIgnore } from '../../../../tests/tests.helpers';
-
 import { NonNgIterable } from './non-ng-iterable';
 import { VirtualForOf } from './virtual-for-of';
 
@@ -134,8 +132,7 @@ export default function(): void {
       })
     );
 
-    itIgnore(
-      ['firefox', 'safari'],
+    it(
       'can accept an NonNgIterable instead of an array',
       fakeAsync(function(this: TestContext) {
         this.testComponent.numbers = {

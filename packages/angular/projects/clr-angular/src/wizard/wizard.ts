@@ -236,7 +236,7 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   private subscriptions: Subscription[] = [];
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     public navService: WizardNavigationService,
     public pageCollection: PageCollectionService,
     public buttonService: ButtonHubService,

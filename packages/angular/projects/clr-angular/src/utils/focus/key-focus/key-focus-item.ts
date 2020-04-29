@@ -17,7 +17,7 @@ export class ClrKeyFocusItem {
     return this.elementRef.nativeElement;
   }
 
-  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: Record<string, any>) {}
+  constructor(private elementRef: ElementRef, @Inject(PLATFORM_ID) private platformId: any) {}
 
   focus() {
     if (isPlatformBrowser(this.platformId)) {

@@ -15,7 +15,7 @@ export class BasicFocusableItem implements FocusableItem {
     @Inject(UNIQUE_ID) public id: string,
     private el: ElementRef<HTMLElement>,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     renderer.setAttribute(el.nativeElement, 'id', id);
     renderer.setAttribute(el.nativeElement, 'tabindex', '-1');

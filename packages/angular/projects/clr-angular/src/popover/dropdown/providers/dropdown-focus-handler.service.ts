@@ -27,7 +27,7 @@ export class DropdownFocusHandler implements FocusableItem {
     private parent: DropdownFocusHandler,
     private toggleService: ClrPopoverToggleService,
     private focusService: FocusService,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.resetChildren();
     this.moveToFirstItemWhenOpen();

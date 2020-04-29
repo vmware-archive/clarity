@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - run: npm install && npm --prefix packages/icons install
+      - run: npm install && npm --prefix packages/icons install && npm --prefix packages/angular install
       - run: npm run build:ci
 
     env:

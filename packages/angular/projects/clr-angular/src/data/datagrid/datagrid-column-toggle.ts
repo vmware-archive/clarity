@@ -108,7 +108,7 @@ export class ClrDatagridColumnToggle {
     public commonStrings: ClrCommonStringsService,
     private columnsService: ColumnsService,
     @Inject(UNIQUE_ID) public columnSwitchId: string,
-    @Inject(PLATFORM_ID) private platformId: Record<string, any>,
+    @Inject(PLATFORM_ID) private platformId: any,
     private zone: NgZone,
     @Inject(UNIQUE_ID) public popoverId: string
   ) {}

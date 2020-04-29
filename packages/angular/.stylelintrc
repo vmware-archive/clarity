@@ -1,0 +1,6 @@
+{
+  "extends": "../../.stylelintrc",
+  "ignoreFiles": [
+    "projects/clr-angular/src/utils/_normalize.scss"
+  ]
+}

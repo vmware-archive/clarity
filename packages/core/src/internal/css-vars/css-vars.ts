@@ -19,6 +19,7 @@ export const cssVarsDefaultConfig = {
   },
 };
 
-export function runCssVarsPolyfill(config: {} = cssVarsDefaultConfig): void {
-  cssVars(config);
+export function runCssVarsPolyfill(config: {} = cssVarsDefaultConfig, ponyfill = cssVars): string {
+  ponyfill(config);
+  return ponyfill.name ? ponyfill.name : 'anonymous fn';
 }

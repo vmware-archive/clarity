@@ -5,11 +5,11 @@ import { html, LitElement } from 'lit-element';
 
 # Grid
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 The grid layout type enables columns to be defined for layout. This is useful
 for controlling the spacing of items within a container as well as responsive

@@ -24,6 +24,7 @@
     "@clr/core/icon": "/base/dist/core/icon/index.js",
     "@clr/core/icon-shapes": "/base/dist/core/icon-shapes/index.js",
     "@clr/core/internal": "/base/dist/core/internal/index.js",
+    "@clr/core/internal-components": "/base/dist/core/internal-components/index.js",
     "@clr/core/modal": "/base/dist/core/modal/index.js",
     "@clr/core/tag": "/base/dist/core/tag/index.js",
     "@clr/core/test-dropdown": "/base/dist/core/test-dropdown/index.js",

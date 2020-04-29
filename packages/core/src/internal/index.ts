@@ -7,6 +7,7 @@
 /** @internal private module to Clarity Core */
 export * from './base/button.base.js';
 export * from './css-vars/css-vars.js';
+export * from './utils/css.js';
 export * from './utils/dom.js';
 export * from './utils/register.js';
 export * from './decorators/query-slot.js';

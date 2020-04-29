@@ -170,7 +170,7 @@ describe('icon element', () => {
   describe('sr-only: ', () => {
     it('should contain the sr-only element for screen readers', async () => {
       await componentIsStable(component);
-      const srOnlyEl = component.shadowRoot.querySelector('.sr-only');
+      const srOnlyEl = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"]');
       expect(srOnlyEl).toBeDefined();
     });
 
@@ -179,7 +179,7 @@ describe('icon element', () => {
       await componentIsStable(component);
       component.setAttribute('title', testTitle);
       await componentIsStable(component);
-      const srOnlyEl = component.shadowRoot.querySelector('.clr-sr-only');
+      const srOnlyEl = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"]');
       expect(srOnlyEl.innerHTML).toContain(testTitle);
     });
   });

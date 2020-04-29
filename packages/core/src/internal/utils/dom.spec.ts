@@ -7,6 +7,7 @@
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import {
   addAttributeValue,
+  assignSlotNames,
   getElementWidth,
   getElementWidthUnless,
   HTMLAttributeTuple,
@@ -221,6 +222,56 @@ describe('Functional Helper: ', () => {
       attrsToRemove.forEach(attr => {
         expect(testElement.hasAttribute(attr)).toBe(false);
       });
+    });
+  });
+
+  describe('assignSlotNames() ', () => {
+    let testElement: HTMLElement;
+    let testDiv1: HTMLElement;
+    let testDiv2: HTMLElement;
+    let testDiv3: null;
+    let testDiv4: HTMLElement;
+
+    beforeEach(() => {
+      testElement = createTestElement();
+      testElement.innerHTML =
+        '<div id="testDiv1">ohai</div><div id="testDiv2">kthxbye</div><div id="testDiv4">omye</div>';
+      testDiv1 = testElement.querySelector('#testDiv1');
+      testDiv2 = testElement.querySelector('#testDiv2');
+      testDiv3 = testElement.querySelector('#testDiv3');
+      testDiv4 = testElement.querySelector('#testDiv4');
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('spec sets up as expected', () => {
+      expect(testDiv1 instanceof HTMLElement).toBe(true, 'retrieves testDiv1 as expected');
+      expect(testDiv2 instanceof HTMLElement).toBe(true, 'retrieves testDiv2 as expected');
+      expect(testDiv3).toBeNull('testDiv3 does not exist');
+      expect(testDiv4 instanceof HTMLElement).toBe(true, 'retrieves testDiv4 as expected');
+    });
+
+    it('assigns slot names as expected', () => {
+      assignSlotNames([testDiv1, 'test1'], [testDiv2, 'test2']);
+      expect(testDiv1.getAttribute('slot')).toBe('test1', 'assigns testDiv1 slot');
+      expect(testDiv2.getAttribute('slot')).toBe('test2', 'assigns testDiv2 slot');
+      expect(testDiv4.getAttribute('slot')).toBeNull('does not assign testDiv4 slot');
+    });
+
+    it('removes slot names as expected', () => {
+      assignSlotNames([testDiv1, 'test1'], [testDiv2, 'test2']);
+      expect(testDiv1.getAttribute('slot')).toBe('test1', 'assigns testDiv1 slot');
+      assignSlotNames([testDiv1, false]);
+      expect(testDiv1.getAttribute('slot')).toBeNull('removes testDiv1 slot');
+      expect(testDiv2.getAttribute('slot')).toBe('test2', 'leaves testDiv2 slot alone');
+    });
+
+    it('does not die on divs that do not exist', () => {
+      assignSlotNames([testDiv1, 'test1'], [testDiv2, 'test2'], [testDiv3, 'test3']);
+      expect(testDiv1.getAttribute('slot')).toBe('test1', 'assigns testDiv1 slot');
+      expect(testDiv2.getAttribute('slot')).toBe('test2', 'leaves testDiv2 slot alone');
     });
   });
 

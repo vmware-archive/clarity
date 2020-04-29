@@ -4,11 +4,11 @@ import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 
 # Horizontal
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 The horizontal layout type enables horizontal rows of items that can wrap automatically.
 Spacing, alignments and gap between items can all be configured with the component.
@@ -34,7 +34,7 @@ is only applied between layout items.
 
 ## No Wrap
 
-You can disable wrapping using the `wrap="none"` attribute. This will force
+You can disable wrapping using the `no-wrap` value in the `cds-layout` attribute. This will force
 the items to follow standard CSS overflow rules (`hidden`/`scroll`).
 
 <Preview>

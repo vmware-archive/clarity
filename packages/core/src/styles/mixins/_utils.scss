@@ -184,3 +184,17 @@ $opp-directions: (
     @content;
   }
 }
+
+@mixin vertical-center-content($flex-block: 'inline') {
+  @if $flex-block == 'block' {
+    display: flex;
+  } @else {
+    display: inline-flex;
+  }
+  align-items: center;
+}
+
+@mixin center-content($flex-block: 'inline') {
+  @include vertical-center-content($flex-block);
+  justify-content: center;
+}

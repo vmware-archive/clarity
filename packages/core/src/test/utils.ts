@@ -30,10 +30,11 @@ export function getComponentSlotContent(component: HTMLElement): { [name: string
   return Array.from(component.shadowRoot.querySelectorAll('slot')).reduce(
     (acc: { [name: string]: string }, slot: HTMLSlotElement) => {
       const name = slot.name.length > 0 ? slot.name : 'default';
-      acc[name] = (slot.assignedNodes() as any[]).reduce(
-        (p, n) => p + (n.outerHTML !== undefined ? n.outerHTML : ''),
-        ''
-      );
+      acc[name] = (slot.assignedNodes() as any[]).reduce((p, n) => {
+        let returnDom = n.outerHTML;
+        returnDom = n.outerHTML ? n.outerHTML : n.textContent.trim();
+        return p + (returnDom ? returnDom : '');
+      }, '');
       return acc;
     },
     {}

@@ -7,9 +7,9 @@
 @import './../styles/mixins/mixins';
 
 // TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
-@import './../../../packages/angular/projects/clr-angular/src/progress/spinner/variables.spinner';
-@import './../../../packages/angular/projects/clr-angular/src/image/icons.clarity';
-@import './../../../packages/angular/projects/clr-angular/src/progress/spinner/spinner.clarity';
+@import './../../../angular/projects/clr-angular/src/progress/spinner/variables.spinner';
+@import './../../../angular/projects/clr-angular/src/image/icons.clarity';
+@import './../../../angular/projects/clr-angular/src/progress/spinner/spinner.clarity';
 
 :host {
   --box-shadow-color: #{$cds-token-color-action-900};
@@ -28,6 +28,10 @@
   --height: #{$cds-token-space-size-11};
 
   height: var(--height); // height is set so button is not distorted when in flex container
+  --min-width: #{$cds-token-space-size-13};
+
+  --text-decoration: none;
+
   display: inline-block;
 
   // following is a fix for Firefox cutting off right edge of buttons. remove when no longer needed.
@@ -36,8 +40,9 @@
 }
 
 .private-host {
+  @include vertical-center-content;
+
   -webkit-appearance: none !important;
-  align-items: center;
   background: var(--background);
   border-color: var(--border-color);
   border-radius: var(--border-radius);
@@ -45,17 +50,16 @@
   border-width: var(--border-width);
   color: var(--color);
   cursor: pointer;
-  display: inline-flex;
   font-size: var(--font-size);
-  height: var(--height);
+  height: auto;
   justify-content: center;
   line-height: 1em;
-  min-width: #{$cds-token-space-size-13};
+  min-width: var(--min-width);
   overflow: visible;
   padding: var(--padding);
   position: relative;
   text-align: center;
-  text-decoration: none;
+  text-decoration: var(--text-decoration);
   text-overflow: ellipsis;
   transform: translateZ(0px); // for chrome rendering bug
   user-select: none;
@@ -67,9 +71,7 @@
   }
 
   & > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include center-content('block');
     height: var(--font-size);
   }
 
@@ -103,11 +105,8 @@
 ::slotted(a) {
   text-decoration: none !important;
   display: block;
+  height: 100%;
   color: inherit;
-  margin: calc(var(--padding) * -1);
-  padding: var(--padding);
-  height: var(--height);
-  min-width: #{$cds-token-space-size-13};
 }
 
 ::slotted(cds-icon) {
@@ -186,12 +185,12 @@
   --color: #{$cds-token-color-action-600};
 }
 
-:host([size='sm']) {
+:host([size='sm']) .private-host {
   --padding: #{$cds-token-layout-space-sm} #{$cds-token-layout-space-md};
   --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
 
   ::slotted(a) {
-    margin: calc(#{$cds-token-layout-space-sm} * -1) calc(#{$cds-token-layout-space-md} * -1);
+    margin: 0 #{$cds-token-space-size-1};
   }
 }
 

@@ -3,12 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { CdsIcon } from '@clr/core/icon-shapes';
 import { CdsIconButton, ClrLoadingState } from '@clr/core/button';
 import '@clr/core/button';
 import '@clr/core/icon';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
-describe('icon button element', () => {
+describe('Icon button element – ', () => {
   let testElement: HTMLElement;
   let component: CdsIconButton;
 
@@ -33,7 +34,7 @@ describe('icon button element', () => {
     expect(component.querySelector('cds-icon')).not.toBe(null);
   });
 
-  describe('LoadingStateChange', () => {
+  describe('LoadingStateChange: ', () => {
     it('should set default state as expected', async () => {
       await componentIsStable(component);
       component.loadingState = ClrLoadingState.DEFAULT;
@@ -75,7 +76,7 @@ describe('icon button element', () => {
     });
   });
 
-  describe('Button Behaviors', () => {
+  describe('Button Behaviors: ', () => {
     xit('should warn on a missing aria-label', async () => {
       // await componentIsStable(component);
       // const button = component.querySelector('button');
@@ -88,5 +89,39 @@ describe('icon button element', () => {
       await componentIsStable(component);
       expect(component.getAttribute('role')).toBe('button');
     });
+  });
+});
+
+describe('Anchor Tags in Buttons: ', () => {
+  let testElement: HTMLElement;
+  let component: CdsIconButton;
+  let anchor: HTMLElement;
+  let icon: CdsIcon;
+
+  beforeEach(async () => {
+    testElement = createTestElement();
+    testElement.innerHTML = `
+      <form>
+        <cds-icon-button><a href="javascript:void(0)"><cds-icon></cds-icon></a></cds-icon-button>
+      </form>
+    `;
+
+    await waitForComponent('cds-icon-button');
+    component = testElement.querySelector<CdsIconButton>('cds-icon-button');
+    anchor = component.querySelector('a');
+    icon = component.querySelector('cds-icon');
+  });
+
+  afterEach(() => {
+    removeTestElement(testElement);
+  });
+
+  it('should set element slots as expected', async () => {
+    expect(anchor).toBeDefined();
+    expect(icon).toBeDefined();
+    expect(anchor.hasAttribute('slot')).toBe(true);
+    expect(icon.hasAttribute('slot')).toBe(false);
+    expect(anchor.getAttribute('slot')).toBe('button-icon');
+    expect(icon.classList.contains('anchored-icon')).toBe(true);
   });
 });

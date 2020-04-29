@@ -5,11 +5,11 @@ import { html, LitElement } from 'lit-element';
 
 # Spacing
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 Spacing is managed by two sets of spacing tokens. One set for managing space
 within components and another for managing page level layout space.

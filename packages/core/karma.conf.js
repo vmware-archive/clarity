@@ -12,7 +12,7 @@ module.exports = config => {
       require('karma-coverage-istanbul-reporter'),
     ],
     client: { clearContext: false },
-    files: glob.sync('dist/core/**/*.spec.js').map(f => ({ pattern: f, type: 'module' })),
+    files: glob.sync('dist/core/**/!(test-dropdown.element).spec.js').map(f => ({ pattern: f, type: 'module' })),
     esm: {
       coverage: true,
       importMap: './import-map.importmap',
@@ -46,7 +46,7 @@ module.exports = config => {
       thresholds: {
         statements: 90,
         lines: 90,
-        branches: 85, // need to get to 90
+        branches: 89,
         functions: 90,
       },
     },

@@ -3,7 +3,7 @@ const rules = {
     [
       'color',
       {
-        ignoreValues: ['inherit', 'red', 'blue', '/^getSassButtonColor/'],
+        ignoreValues: ['inherit', 'red', 'blue', 'transparent', '/^getSassButtonColor/'],
       },
     ],
   ],

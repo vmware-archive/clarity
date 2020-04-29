@@ -17,8 +17,8 @@
 }
 
 .private-host {
-  display: inline-flex;
-  align-items: center;
+  @include center-content;
+
   justify-content: center;
   height: var(--size);
   line-height: 1em;
@@ -35,11 +35,10 @@
   padding: var(--padding);
 
   & > span {
-    display: inline-flex;
+    @include center-content;
+
     height: var(--font-size);
     min-width: calc(0.8 * var(--font-size));
-    align-items: center;
-    justify-content: center;
 
     & > span {
       text-align: center;
@@ -105,4 +104,17 @@
   --background: #{$cds-token-color-danger-900};
   --border-color: #{$cds-token-color-danger-900};
   --color: #{$cds-token-color-neutral-0};
+}
+
+// Hack for Safari; Safari needs badge content to be bold
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .private-host {
+      font-weight: 600;
+
+      & > span {
+        transform: translateY(calc(-0.06667 * var(--size)));
+      }
+    }
+  }
 }

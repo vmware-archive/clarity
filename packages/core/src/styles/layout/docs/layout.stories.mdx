@@ -6,11 +6,11 @@ import '@clr/core/alert';
 
 # Layout
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 Clarity Core components do not provide surrounding white space. Spacing
 between components is managed entirely by the `cds-layout` attribute. This

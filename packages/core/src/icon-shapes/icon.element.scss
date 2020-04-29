@@ -22,13 +22,11 @@
 }
 
 :host {
-  --color: #{$cds-token-color-neutral-700};
-  --badge-color: #{$cds-token-color-danger-700};
   display: inline-block;
   @include equilateral(#{$cds-token-space-size-7});
   margin: 0;
   vertical-align: middle;
-  fill: var(--color);
+  fill: var(--color, #{$cds-token-color-neutral-700});
   contain: strict;
 }
 
@@ -164,7 +162,7 @@ svg {
 
 .clr-i-badge,
 .clr-i-alert {
-  fill: var(--badge-color);
+  fill: var(--badge-color, #{$cds-token-color-danger-700});
 }
 
 // outlined
@@ -360,4 +358,8 @@ svg {
 
 :host([badge='inherit-triangle'][inverse]) {
   --badge-color: inherit;
+}
+
+:host(.anchored-icon) {
+  --color: inherit;
 }

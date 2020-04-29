@@ -1,0 +1,65 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
+
+:host {
+  --text-decoration: none;
+  --color: #{$cds-token-color-action-600};
+  --font-size: inherit;
+  --line-height: inherit;
+  --letter-spacing: inherit;
+
+  padding: 0;
+  display: inline;
+}
+
+.private-host {
+  min-width: 0;
+  background: none;
+  border-radius: 0;
+  border: 0 none;
+  height: auto;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  text-decoration: var(--text-decoration);
+  padding: 0;
+  vertical-align: inherit;
+  align-items: baseline;
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+::slotted(cds-icon) {
+  --color: inherit;
+  @include equilateral(1em);
+  transform: translateY(0.125em);
+}
+
+::slotted(cds-icon:first-child) {
+  margin-right: #{$cds-token-space-size-2};
+}
+
+::slotted(cds-icon:last-child) {
+  margin-left: #{$cds-token-space-size-2};
+}
+
+:host(:active) .private-host {
+  box-shadow: none;
+}
+
+:host(:active) {
+  --color: #{$cds-token-color-action-900};
+  --text-decoration: underline;
+}
+
+:host(:hover) {
+  --color: #{$cds-token-color-action-900};
+  --text-decoration: underline;
+}

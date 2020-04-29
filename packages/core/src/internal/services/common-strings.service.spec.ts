@@ -30,4 +30,9 @@ describe('Common Strings Service', () => {
     service.localize({ close: 'Close {ONE} {TWO}' });
     expect(service.parse(service.keys.close, { ONE: 'Uno', TWO: 'Dos' })).toEqual('Close Uno Dos');
   });
+
+  it('should return initial string if passed no tokens', () => {
+    service.localize({ open: 'Open {OPEN}' });
+    expect(service.parse(service.keys.open)).toEqual('Open {OPEN}');
+  });
 });

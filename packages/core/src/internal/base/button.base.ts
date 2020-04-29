@@ -39,12 +39,16 @@ export class CdsBaseButton extends LitElement {
   @property({ type: Boolean })
   disabled = false;
 
-  @querySlot('a') private anchor: HTMLAnchorElement;
+  @querySlot('cds-icon') protected icon: HTMLElement;
+
+  @querySlot('a') protected anchor: HTMLAnchorElement;
+
+  @querySlot('cds-badge') protected badge: HTMLElement;
 
   protected get hiddenButtonTemplate() {
     return this.readonly
       ? html``
-      : html` <button
+      : html`<button
           aria-hidden="true"
           ?disabled="${this.disabled}"
           tabindex="-1"
@@ -126,6 +130,7 @@ export class CdsBaseButton extends LitElement {
 
     if (this.anchor) {
       this.readonly = true;
+      this.setAttribute('is-anchor', '');
     }
 
     if (this.readonly) {

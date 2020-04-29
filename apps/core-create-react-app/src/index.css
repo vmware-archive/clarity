@@ -1,0 +1,9 @@
+body {
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  padding: 1rem;
+}
+
+cds-alert {
+  --background: #f5e5bf;
+  --color: #2d2d2d;
+}

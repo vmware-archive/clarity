@@ -11,7 +11,7 @@
   --font-weight: #{$cds-token-typography-font-weight-regular};
   --size: #{$cds-token-space-size-7-static - $cds-token-space-size-1-static};
   --padding: calc(#{$cds-token-space-size-3} - var(--border-width));
-  --border-radius: calc((var(--size) / 2) - #{$cds-token-space-size-1});
+  --border-radius: calc(var(--size) / 2);
   display: inline-block;
   text-align: center;
 }

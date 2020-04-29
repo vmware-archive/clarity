@@ -257,6 +257,17 @@ export const sizes = () => {
   `;
 };
 
+export const block = () => {
+  return html`
+    <div cds-layout="vertical gap:xs align:horizontal-stretch">
+      <cds-button block>Default ('md')</cds-button>
+      <cds-button block action="outline">Default ('md')</cds-button>
+      <cds-button block size="sm">Compact ('sm')</cds-button>
+      <cds-button block action="outline" size="sm">Compact ('sm')</cds-button>
+    </div>
+  `;
+};
+
 export const loading = () => {
   return html`
     <div cds-layout="vertical gap:sm">

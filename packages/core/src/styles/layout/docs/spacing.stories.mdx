@@ -5,11 +5,11 @@ import { html, LitElement } from 'lit-element';
 
 # Spacing
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 Spacing can be controlled three ways: `Gap`, `Padding` and `Margin`.
 Spacing values are t-shirt sizes `[xxs, xs, sm, md, lg, xl, xxl]` and align with

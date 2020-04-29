@@ -44,5 +44,12 @@ describe('event decorator', () => {
     const proto = { key: 'testEvent' };
     const conf = event()(proto, undefined);
     expect(conf.key).toBe('testEvent');
+    expect(conf.descriptor.get().eventName).toBe('testEvent');
+  });
+
+  it('should support legacy decorator for now', () => {
+    const proto = {};
+    const conf = event()(proto, 'ohai');
+    expect(conf).toBeUndefined();
   });
 });

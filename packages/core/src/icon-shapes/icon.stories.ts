@@ -360,7 +360,7 @@ export const customStyles = () => {
       }
 
       .custom-icon-colors::before {
-        content: 'B';
+        content: 'X';
         font-size: 14px;
         position: absolute;
         display: block;
@@ -369,13 +369,16 @@ export const customStyles = () => {
         color: white;
       }
 
-      .custom-icon-colors:first-child::before {
+      .custom-icon-colors.a::before {
         content: 'A';
       }
 
-      .custom-icon-colors:last-child::before {
+      .custom-icon-colors.b::before {
+        content: 'B';
+      }
+
+      .custom-icon-colors.c::before {
         content: 'C';
-        color: inherit;
       }
 
       .custom-icon-colors cds-icon {
@@ -390,19 +393,20 @@ export const customStyles = () => {
 
       .icon-b {
         --color: fuchsia;
+        --badge-color: fuchsia;
       }
 
       .icon-c {
         --badge-color: yellow;
       }
     </style>
-    <div class="custom-icon-colors">
+    <div class="custom-icon-colors a">
       <cds-icon shape="user" badge class="icon-a"></cds-icon>
     </div>
-    <div class="custom-icon-colors">
-      <cds-icon shape="user" class="icon-b"></cds-icon>
+    <div class="custom-icon-colors b">
+      <cds-icon shape="user" class="icon-b" badge="warning-triangle"></cds-icon>
     </div>
-    <div class="custom-icon-colors">
+    <div class="custom-icon-colors c">
       <cds-icon shape="user" badge class="icon-c"></cds-icon>
     </div>
     <p>

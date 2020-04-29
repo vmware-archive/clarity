@@ -6,12 +6,11 @@
 
 import { ClarityIcons, timesIcon } from '@clr/core/icon-shapes';
 import {
+  assignSlotNames,
   baseStyles,
   CdsBaseButton,
   property,
-  querySlot,
   registerElementSafely,
-  setAttributes,
   StatusTypes,
 } from '@clr/core/internal';
 import { html } from 'lit-element';
@@ -67,16 +66,9 @@ export class CdsTag extends CdsBaseButton {
   @property({ type: Boolean })
   closable = false;
 
-  @querySlot('cds-icon') private icon: HTMLElement;
-
-  @querySlot('cds-badge') private badge: HTMLElement;
-
   connectedCallback() {
     super.connectedCallback();
-    // TODO: this routine is repeated in button.element.ts. it may make sense to find a way to
-    // abstract it for dry-ing and reuse
-    setAttributes(this.icon, ['slot', 'tag-icon']);
-    setAttributes(this.badge, ['slot', 'tag-badge']);
+    assignSlotNames([this.icon, 'tag-icon'], [this.badge, 'tag-badge']);
   }
 
   updated(props: Map<string, string | boolean | null | undefined>) {
@@ -94,9 +86,13 @@ export class CdsTag extends CdsBaseButton {
   render() {
     return html`
       <div class="private-host" cds-layout="horizontal">
-        ${this.icon ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>` : html``}
+        ${this.icon
+          ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>`
+          : html`<span class="tag-icon empty"></span>`}
         <span class="tag-content"><slot></slot></span>
-        ${this.badge ? html`<span class="tag-badge"><slot name="tag-badge"></slot></span>` : html``}
+        ${this.badge
+          ? html`<span class="tag-badge"><slot name="tag-badge"></slot></span>`
+          : html`<span class="tag-badge empty"></span>`}
         ${this.closable ? html`<span class="tag-close-icon"><cds-icon shape="times"></cds-icon></span>` : html``}
       </div>
       ${this.hiddenButtonTemplate}

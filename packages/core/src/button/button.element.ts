@@ -5,6 +5,7 @@
  */
 
 import {
+  assignSlotNames,
   badgeSlot,
   baseStyles,
   CdsBaseButton,
@@ -13,9 +14,7 @@ import {
   iconSpinnerCheck,
   iconSlot,
   property,
-  querySlot,
   registerElementSafely,
-  setAttributes,
 } from '@clr/core/internal';
 import '@clr/core/icon';
 import { ClarityIcons, errorStandardIcon } from '@clr/core/icon-shapes';
@@ -82,7 +81,9 @@ function buttonSlots(icon: boolean, badge: boolean) {
  * @cssprop --font-weight
  * @cssprop --height
  * @cssprop --letter-spacing
+ * @cssprop --min-width
  * @cssprop --padding
+ * @cssprop --text-decoration
  * @cssprop --text-transform
  */
 export class CdsButton extends CdsBaseButton {
@@ -114,10 +115,6 @@ export class CdsButton extends CdsBaseButton {
 
   @query('.private-host') privateHost: HTMLElement;
 
-  @querySlot('cds-icon') private icon: HTMLElement;
-
-  @querySlot('cds-badge') private badge: HTMLElement;
-
   /**
    * Changes the button content based on the value passed.
    *
@@ -139,8 +136,7 @@ export class CdsButton extends CdsBaseButton {
 
   connectedCallback() {
     super.connectedCallback();
-    setAttributes(this.icon, ['slot', 'button-icon']);
-    setAttributes(this.badge, ['slot', 'button-badge']);
+    assignSlotNames([this.icon, 'button-icon'], [this.badge, 'button-badge']);
   }
 
   update(props: Map<string, any>) {

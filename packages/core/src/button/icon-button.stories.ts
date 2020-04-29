@@ -154,6 +154,25 @@ export const block = () => {
   `;
 };
 
+export const links = () => {
+  return html`
+    <div cds-layout="vertical gap:xs align:horizontal-stretch">
+      <cds-icon-button
+        ><a href="#"><cds-icon shape="user"></cds-icon></a
+      ></cds-icon-button>
+      <cds-icon-button action="outline"
+        ><a href="#"><cds-icon shape="user"></cds-icon></a
+      ></cds-icon-button>
+      <cds-icon-button size="sm"
+        ><a href="#"><cds-icon shape="user"></cds-icon></a
+      ></cds-icon-button>
+      <cds-icon-button action="outline" size="sm"
+        ><a href="#"><cds-icon shape="user"></cds-icon></a
+      ></cds-icon-button>
+    </div>
+  `;
+};
+
 export const loading = () => {
   return html`
     <div cds-layout="horizontal gap:sm align-items:bottom">

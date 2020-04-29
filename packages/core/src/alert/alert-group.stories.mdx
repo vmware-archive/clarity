@@ -1,0 +1,78 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Experimental/Alert Group/Getting Started" />
+
+# Alert Groups
+
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
+
+Alert groups are containers for a set of alerts. Alert groups can hold one or many alerts
+inside of them with the expectation that all alerts will be of the same type. The exception
+to this rule is the `loading` alert type, which will be displayed regardless of the type
+of alert group containing it.
+
+```typescript
+import '@clr/core/alert';
+```
+
+```html
+<cds-alert-group status="danger" type="default">
+  <cds-alert closable>
+    Single alert
+    <cds-alert-actions>
+      buttons, links
+    </cds-alert-actions>
+  </cds-alert>
+  <cds-alert type="loading">
+    Single Alert
+  </cds-alert>
+  <cds-alert closable>
+    <cds-icon shape="custom-icon-shape"></cds-icon>
+    Another alert
+    <cds-alert-actions>
+      buttons, links
+    </cds-alert-actions>
+  </cds-alert>
+</cds-alert-group>
+```
+
+## Alert Group
+
+<Preview>
+  <Story id="experimental-alert-group-stories--alert-group" />
+</Preview>
+
+## Lightweight Alert Group
+
+<Preview>
+  <Story id="experimental-alert-group-stories--lightweight-alert-group" />
+</Preview>
+
+## Banner Alert Group
+
+<Preview>
+  <Story id="experimental-alert-group-stories--banner-group" />
+</Preview>
+
+## Banner Alert Group Statuses
+
+<Preview>
+  <Story id="experimental-alert-group-stories--banner-group-status" />
+</Preview>
+
+## Compact Alert Groups
+
+<Preview>
+  <Story id="experimental-alert-group-stories--compact-alert-group" />
+</Preview>
+
+## Custom-Styled Alert Group
+
+<Preview>
+  <Story id="experimental-alert-group-stories--custom-styles" />
+</Preview>

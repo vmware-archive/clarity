@@ -74,3 +74,12 @@ export function removeAttributeValue(element: HTMLElement, attr: string, value: 
     }
   }
 }
+
+export function assignSlotNames(...slotTuples: [HTMLElement, string | boolean][]): void {
+  slotTuples.forEach(slotTuple => {
+    const [el, slotName] = slotTuple;
+    if (el) {
+      setAttributes(el, ['slot', slotName]);
+    }
+  });
+}

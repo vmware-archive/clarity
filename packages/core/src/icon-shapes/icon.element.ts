@@ -87,8 +87,6 @@ export class CdsIcon extends IconMixinClass {
     }
   }
 
-  // TODO: MAKE title A REQUIRED(warn) PROPERTY WHEN THAT IS READY
-
   /** If present, customizes the aria-label for the icon for accessibility. */
   @property({ type: String })
   title: string;
@@ -182,7 +180,9 @@ export class CdsIcon extends IconMixinClass {
   protected render() {
     return html`
       ${unsafeHTML(ClarityIcons.registry[this.shape])}
-      ${this.title ? html`<span id="${this.idForAriaLabel}" class="clr-sr-only">${this.title}</span>` : ''}
+      ${this.title
+        ? html`<span id="${this.idForAriaLabel}" cds-layout="display:screen-reader-only">${this.title}</span>`
+        : ''}
     `;
   }
 

@@ -1,0 +1,34 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --box-shadow-color: transparent;
+  --border-radius: 0;
+  --background: transparent;
+  --color: inherit;
+  --border-color: transparent;
+  --border-width: 0;
+  --opacity: 0.8;
+  --padding: #{$cds-token-space-size-2};
+
+  opacity: var(--opacity, 0.8);
+}
+
+.private-host {
+  min-width: 0;
+}
+
+:host(:hover) {
+  --background: transparent;
+  --opacity: 1;
+}
+
+:host(:active) cds-icon {
+  transform: translateY(#{$cds-token-space-size-1});
+}
+
+:host() cds-icon {
+  --color: var(--color);
+}

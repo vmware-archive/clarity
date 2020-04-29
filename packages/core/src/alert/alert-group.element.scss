@@ -1,0 +1,157 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
+
+:host {
+  --color: #{$cds-token-color-neutral-700};
+  --icon-color: #{$cds-token-color-neutral-700};
+  --icon-size: #{$cds-token-space-size-8};
+  --font-size: #{$cds-token-typography-body-font-size};
+  --font-weight: #{$cds-token-typography-body-font-weight};
+  --letter-spacing: #{$cds-token-typography-body-letter-spacing};
+  --padding: #{$cds-token-space-size-5} #{$cds-token-space-size-5} #{$cds-token-space-size-4} #{$cds-token-space-size-6};
+  --background: #{$cds-token-color-neutral-100};
+  --border-color: #{$cds-token-color-neutral-700};
+  --border-width: #{$cds-token-global-border-width};
+  --border-radius: #{$cds-token-global-border-radius};
+  --pager-background: #{$cds-token-color-action-800};
+
+  width: 100%;
+}
+
+.private-host {
+  background: var(--background);
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  border-style: solid;
+  border-radius: var(--border-radius);
+}
+
+.alert-group-wrapper {
+  padding: var(--padding);
+}
+
+:host([status='info']) {
+  --background: #{$cds-token-color-action-50};
+  --color: #{$cds-token-color-neutral-700};
+  --border-color: #{$cds-token-color-action-800};
+
+  ::slotted(cds-alert) {
+    --color: var(--color);
+    --icon-color: var(--border-color);
+  }
+}
+
+:host([status='success']) {
+  --background: #{$cds-token-color-success-50};
+  --color: #{$cds-token-color-neutral-700};
+  --border-color: #{$cds-token-color-success-800};
+
+  ::slotted(cds-alert) {
+    --color: var(--color);
+    --icon-color: var(--border-color);
+  }
+}
+
+:host([status='warning']) {
+  --background: #{$cds-token-color-warning-100};
+  --color: #{$cds-token-color-neutral-900};
+  --border-color: #{$cds-token-color-warning-800};
+
+  ::slotted(cds-alert) {
+    --color: var(--color);
+    --icon-color: var(--border-color);
+  }
+}
+
+:host([status='danger']) {
+  --background: #{$cds-token-color-danger-100};
+  --color: #{$cds-token-color-neutral-700};
+  --border-color: #{$cds-token-color-danger-900};
+
+  ::slotted(cds-alert) {
+    --color: var(--color);
+    --icon-color: var(--border-color);
+  }
+}
+
+:host([type='default'][size='sm']) .private-host {
+  --padding: #{$cds-token-space-size-3} #{$cds-token-space-size-3} #{$cds-token-space-size-2} #{$cds-token-space-size-4};
+}
+
+// lightweight alert group styles
+
+:host([type='light']) .private-host {
+  --background: transparent;
+  --border-radius: 0;
+  --padding: 0;
+  border: 0 none;
+}
+
+// banner alert group styles
+
+:host([type='banner']) {
+  --padding: #{$cds-token-space-size-1} #{$cds-token-space-size-6};
+  --border-width: 0;
+
+  ::slotted(cds-alert) {
+    --color: #{$cds-token-color-neutral-0};
+    --icon-color: #{$cds-token-color-neutral-0};
+  }
+}
+
+:host([type='banner']) .private-host {
+  --background: #{$cds-token-color-action-600};
+  --border-color: #{$cds-token-color-action-600};
+  --border-radius: 0;
+}
+
+:host([type='banner'][status='warning']) .private-host {
+  // color carried over from clr-angular
+  --background: hsl(26, 100%, 38%);
+  --border-color: hsl(26, 100%, 38%);
+  --pager-background: #{$cds-token-color-warning-1000};
+}
+
+:host([type='banner'][status='danger']) .private-host {
+  --background: #{$cds-token-color-danger-800};
+  --border-color: #{$cds-token-color-danger-800};
+  --pager-background: #{$cds-token-color-danger-1000};
+}
+
+:host([type='banner'][status='success']) .private-host {
+  --background: #{$cds-token-color-success-700};
+  --border-color: #{$cds-token-color-success-700};
+  --pager-background: #{$cds-token-color-success-900};
+}
+
+:host([type='banner'][status='unknown']) .private-host {
+  --background: #{$cds-token-color-secondary-action-700};
+  --border-color: #{$cds-token-color-secondary-action-700};
+  --pager-background: #{$cds-token-color-secondary-action-900};
+}
+
+.no-pager .pager-wrapper {
+  display: none;
+}
+
+.pager-wrapper {
+  background-color: var(--pager-background);
+  padding-top: $cds-token-space-size-2;
+  padding-bottom: $cds-token-space-size-2;
+}
+
+:host([type='banner']) .alert-group-wrapper {
+  padding-top: $cds-token-space-size-2;
+  padding-bottom: $cds-token-space-size-2;
+}
+
+// TODO: THESE STYLES ARE PLACEHOLDERS TO VERIFY THE ADDITION OF THE BANNER ALERT PAGER!
+::slotted(.pager) {
+  color: $cds-token-color-neutral-0;
+  width: calc(2 * #{$cds-token-space-size-12});
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

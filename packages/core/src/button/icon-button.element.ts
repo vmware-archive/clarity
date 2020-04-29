@@ -5,6 +5,7 @@
  */
 
 import {
+  assignSlotNames,
   baseStyles,
   iconSlot,
   iconSpinner,
@@ -21,7 +22,7 @@ import { CdsButton, ClrLoadingState } from './button.element.js';
  * Icon buttons give applications a compact alternative to communicate action and direct user intent.
  *
  * ```typescript
- * import '@clr/core/icon-button';
+ * import '@clr/core/button';
  * ```
  *
  * ```html
@@ -50,6 +51,21 @@ export class CdsIconButton extends CdsButton {
    */
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
+
+  connectedCallback(): void {
+    // have to override default behavior when an anchor is passed into the icon button
+    super.connectedCallback();
+    if (this.anchor) {
+      // removes slot designation from icon and adds it to the anchor tag
+      assignSlotNames([this.icon, false], [this.anchor, 'button-icon']);
+
+      // we need a class on the icon because that's how the icon element knows to style itself
+      // we can't style it from the icon-button anymore because it's a nested+slotted element
+      if (this.icon) {
+        this.icon.classList.add('anchored-icon');
+      }
+    }
+  }
 
   render() {
     return html`

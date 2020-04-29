@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -32,6 +32,11 @@
     &.spinner-inverse {
       // TODO: get ux input on direction here
       background: generateSpinnerIcon($clr-spinner-inverse-bg-color, #74c1e2);
+    }
+
+    &.spinner-neutral-0 {
+      // needed for loading banner alerts in core
+      background: generateSpinnerIcon(transparent, #ffffff, 1);
     }
 
     &.spinner-check {

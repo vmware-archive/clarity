@@ -17,6 +17,8 @@
 }
 
 .private-host {
+  @include vertical-center-content;
+
   line-height: 1em;
   border-radius: var(--border-radius);
   background: var(--background);
@@ -28,16 +30,13 @@
   padding: var(--padding);
   height: var(--size);
   white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
 
   .tag-icon,
   .tag-badge,
   .tag-content,
   .tag-close-icon {
+    @include vertical-center-content;
     height: calc(var(--size) - #{$cds-token-space-size-2});
-    display: inline-flex;
-    align-items: center;
   }
 
   .tag-badge {
@@ -51,6 +50,13 @@
 
   .tag-badge {
     transform: translateY(calc(-1 * #{$cds-token-space-size-1}));
+
+    // using empty containers here b/c firefox doesn't align text-only
+    // tags correctly alongside tags with containers in them
+    &.empty {
+      visibility: hidden;
+      width: #{$cds-token-space-size-1};
+    }
   }
 
   .tag-content {
@@ -60,6 +66,13 @@
   .tag-icon {
     overflow: hidden;
     width: calc(var(--size) - (2 * var(--border-width) + (2 * #{$cds-token-space-size-1})));
+
+    // using empty containers here b/c firefox doesn't align text-only
+    // tags correctly alongside tags with containers in them
+    &.empty {
+      visibility: hidden;
+      width: #{$cds-token-space-size-2};
+    }
   }
 
   .tag-close-icon {
@@ -251,5 +264,14 @@
   &:host([status='danger']:active) .private-host {
     --background: #{$cds-token-color-danger-200};
     --border-color: #{$cds-token-color-danger-400};
+  }
+}
+
+// Hack for Safari; It is having a problem with layouts across the shadowDom
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    ::slotted(cds-badge) {
+      transform: translateY(calc(0.04545 * var(--size)));
+    }
   }
 }

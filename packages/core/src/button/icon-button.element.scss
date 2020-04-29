@@ -2,6 +2,22 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@import './../styles/tokens/generated/index';
+
+:host {
+  --padding: calc(#{$cds-token-space-size-6} - var(--border-width, #{$cds-token-global-border-width-static}))
+    calc(
+      #{$cds-token-space-size-6} - #{$cds-token-space-size-2} -
+        var(--border-width, #{$cds-token-global-border-width-static})
+    );
+}
+
 .private-host {
   min-width: 0;
+}
+
+::slotted(a) {
+  --color: inherit;
+  display: inline-block;
+  height: auto;
 }

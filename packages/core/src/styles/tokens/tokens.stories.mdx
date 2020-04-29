@@ -5,11 +5,11 @@ import { html, LitElement } from 'lit-element';
 
 # Design Tokens
 
-<cds-alert status="warning" closable="false" cds-layout="m-b:lg">
-  <cds-alert-content>
-    This is an experimental API and likely will have breaking changes in the near future.
-  </cds-alert-content>
-</cds-alert>
+<cds-alert-group status="warning">
+  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+</cds-alert-group>
+
+<br />
 
 Design Tokens are global variables to configure the foundation of the
 design system. Changes to a design token will propagate throughout the entire system.

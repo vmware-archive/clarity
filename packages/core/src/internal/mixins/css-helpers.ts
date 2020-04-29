@@ -4,37 +4,40 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import {
+  addClassnames,
+  hasClassnames,
+  removeClassnames,
+  removeClassnamesUnless,
+  updateElementStyles,
+} from '../utils/css.js';
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface CssHelpers extends HTMLElement {}
 
 export class CssHelpers {
   hasClassname(text: string) {
-    return this.classList.contains(text);
+    return hasClassnames(this, text);
   }
 
   addClassname(text: string) {
-    this.classList.add(text);
+    addClassnames(this, text);
   }
 
   removeClassname(text: string) {
-    this.classList.remove(text);
+    removeClassnames(this, text);
   }
 
   removeClassnamesUnless(classnamesToRemove: string[], classnamesToKeep: string[]) {
-    classnamesToRemove.forEach(removeMe => {
-      if (classnamesToKeep.indexOf(removeMe) < 0) {
-        this.classList.remove(removeMe);
-      }
-    });
+    removeClassnamesUnless(this, classnamesToRemove, classnamesToKeep);
   }
 
   removeClassnames(classnamesToRemove: string[]) {
-    this.removeClassnamesUnless(classnamesToRemove, []);
+    removeClassnames(this, ...classnamesToRemove);
   }
 
-  updateEquilateralStyles(size?: string) {
-    this.style.width = size || '';
-    this.style.height = size || '';
+  updateEquilateralStyles(size = '') {
+    updateElementStyles(this, ['width', size], ['height', size]);
   }
 
   removeEquilateralStyles() {

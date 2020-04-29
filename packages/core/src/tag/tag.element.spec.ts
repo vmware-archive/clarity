@@ -76,6 +76,11 @@ describe('tag element', () => {
     await componentIsStable(component);
     expect(!!component.closable).toBe(true);
     expect(!!component.readonly).toBe(false);
+    component.closable = false;
+    await componentIsStable(component);
+    component.closable = true;
+    await componentIsStable(component);
+    expect(!!component.readonly).toBe(false);
   });
 
   it('should warn if closable but there is no aria-label', async () => {

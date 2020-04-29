@@ -304,6 +304,22 @@ export const horizontalGap = () => {
       </cds-demo>
 
       <cds-demo layout>
+        <div cds-layout="horizontal gap:xxxs">
+          <cds-placeholder>1</cds-placeholder>
+          <cds-placeholder>2</cds-placeholder>
+          <cds-placeholder>3</cds-placeholder>
+        </div>
+      </cds-demo>
+
+      <cds-demo layout>
+        <div cds-layout="horizontal gap:xxs">
+          <cds-placeholder>1</cds-placeholder>
+          <cds-placeholder>2</cds-placeholder>
+          <cds-placeholder>3</cds-placeholder>
+        </div>
+      </cds-demo>
+
+      <cds-demo layout>
         <div cds-layout="horizontal gap:xs">
           <cds-placeholder>1</cds-placeholder>
           <cds-placeholder>2</cds-placeholder>
@@ -618,6 +634,22 @@ export const verticalLayoutItemAlignLeft = () => {
 export const verticalGap = () => {
   return html`
     <div cds-layout="horizontal gap:lg">
+      <cds-demo layout>
+        <div cds-layout="vertical gap:xxs">
+          <cds-placeholder>1</cds-placeholder>
+          <cds-placeholder>2</cds-placeholder>
+          <cds-placeholder>3</cds-placeholder>
+        </div>
+      </cds-demo>
+
+      <cds-demo layout>
+        <div cds-layout="vertical gap:xxxs">
+          <cds-placeholder>1</cds-placeholder>
+          <cds-placeholder>2</cds-placeholder>
+          <cds-placeholder>3</cds-placeholder>
+        </div>
+      </cds-demo>
+
       <cds-demo layout>
         <div cds-layout="vertical gap:xxs">
           <cds-placeholder>1</cds-placeholder>

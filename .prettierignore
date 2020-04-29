@@ -14,3 +14,4 @@ src/clr-core/styles/tokens/generated/**
 src/clr-angular/utils/_mixins.clarity.scss
 docs/core
 apps/core-create-react-app
+.cache

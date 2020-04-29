@@ -1,0 +1,22 @@
+{
+  "name": "js-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "clean": "rm -rf dist/*",
+    "build": "npm run clean && parcel build src/index.html",
+    "deploy": "npm run build && firebase deploy",
+    "bundle": "source-map-explorer dist/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "1.12.4",
+    "source-map-explorer": "^2.1.2"
+  },
+  "dependencies": {
+    "@clr/city": "^1.1.0",
+    "@clr/core": "^3.1.0"
+  }
+}

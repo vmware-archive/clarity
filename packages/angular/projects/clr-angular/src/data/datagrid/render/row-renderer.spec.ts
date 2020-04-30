@@ -17,16 +17,16 @@ import { DatagridCellRenderer } from './cell-renderer';
 import { STRICT_WIDTH_CLASS } from './constants';
 import { DatagridRowRenderer } from './row-renderer';
 
-export default function(): void {
+export default function (): void {
   let columnsService: ColumnsService;
 
-  describe('DatagridRowRenderer directive', function() {
+  describe('DatagridRowRenderer directive', function () {
     let context: TestContext<DatagridRowRenderer, SimpleTest>;
     let cells: DebugElement[];
     let columnStateSpy: jasmine.Spy;
     let displayModeService: MockDisplayModeService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(DatagridRowRenderer, SimpleTest, DATAGRID_SPEC_PROVIDERS);
       columnsService = context.getClarityProvider(ColumnsService);
       displayModeService = context.getClarityProvider(DisplayModeService) as MockDisplayModeService;
@@ -44,11 +44,11 @@ export default function(): void {
       context.detectChanges();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       context.fixture.destroy();
     });
 
-    it('sets the columnState', function() {
+    it('sets the columnState', function () {
       cells = context.fixture.debugElement.queryAll(By.directive(DatagridCellRenderer));
       expect(cells.length).toEqual(2);
       expect(columnStateSpy.calls.count()).toEqual(2);
@@ -56,7 +56,7 @@ export default function(): void {
       expect(cells[1].nativeElement.style.width).toEqual('23px');
     });
 
-    it('sets the widths of the cells when created after the widths have been computed', function() {
+    it('sets the widths of the cells when created after the widths have been computed', function () {
       columnsService.columns[0].next({ width: 42, strictWidth: 0, changes: [DatagridColumnChanges.WIDTH] });
       columnsService.columns[1].next({ width: 24, strictWidth: 24, changes: [DatagridColumnChanges.WIDTH] });
       context.detectChanges();
@@ -72,11 +72,11 @@ export default function(): void {
 
 @Component({
   template: `
-        <clr-dg-row>
-            <clr-dg-cell>Hello</clr-dg-cell>
-            <clr-dg-cell *ngIf="showCell">World</clr-dg-cell>
-        </clr-dg-row>
-    `,
+    <clr-dg-row>
+      <clr-dg-cell>Hello</clr-dg-cell>
+      <clr-dg-cell *ngIf="showCell">World</clr-dg-cell>
+    </clr-dg-row>
+  `,
 })
 class SimpleTest {
   showCell = true;

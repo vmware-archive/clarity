@@ -8,7 +8,7 @@ import { ClrButton } from '../button-group/button';
 
 import { ButtonInGroupService } from './button-in-group.service';
 
-export default function(): void {
+export default function (): void {
   describe('Button In Group Service', () => {
     let buttonInGroupService: ButtonInGroupService;
 

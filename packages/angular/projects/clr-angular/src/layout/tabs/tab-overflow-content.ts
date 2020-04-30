@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-tab-overflow-content',
-  template: `
-        <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: {
     '[class.dropdown-menu]': 'true',
   },

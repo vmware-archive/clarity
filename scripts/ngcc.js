@@ -11,7 +11,7 @@ const path = require('path');
 
 const ignoreList = ['src/schematics'];
 
-const findPackagesSync = function(dir, list = []) {
+const findPackagesSync = function (dir, list = []) {
   if (dir.indexOf('src/schematics') > -1) {
     return list;
   }

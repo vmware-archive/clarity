@@ -22,9 +22,9 @@ const fakeOutPage = new MockPage(pageIndex);
 
 @Component({
   template: `
-        <div clr-wizard-stepnav-item [page]="page"></div>
-        <ng-template clrPageNavTitle>This is my {{ projector }}</ng-template>
-    `,
+    <div clr-wizard-stepnav-item [page]="page"></div>
+    <ng-template clrPageNavTitle>This is my {{ projector }}</ng-template>
+  `,
 })
 class TestComponent implements AfterContentInit {
   constructor() {
@@ -43,7 +43,7 @@ class TestComponent implements AfterContentInit {
   }
 }
 
-export default function(): void {
+export default function (): void {
   describe('New Wizard Stepnav Item', () => {
     let fixture: ComponentFixture<any>;
     let testItemComponent: ClrWizardStepnavItem;

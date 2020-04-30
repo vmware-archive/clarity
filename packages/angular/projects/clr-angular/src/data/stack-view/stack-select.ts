@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,13 +18,13 @@ import { ClrStackView } from './stack-view';
   inputs: ['model: clrModel'],
   outputs: ['modelChange: clrModelChange'],
   template: `
-        <span *ngIf="!stackView.editing">{{model}}</span>
-        <div class="select" *ngIf="stackView.editing" >
-            <select [(ngModel)]="model">
-                <ng-content></ng-content>
-            </select>
-        </div>
-    `,
+    <span *ngIf="!stackView.editing">{{ model }}</span>
+    <div class="select" *ngIf="stackView.editing">
+      <select [(ngModel)]="model">
+        <ng-content></ng-content>
+      </select>
+    </div>
+  `,
 })
 export class ClrStackSelect extends StackControl {
   constructor(public stackView: ClrStackView) {

@@ -32,9 +32,7 @@ import { html, LitElement } from 'lit-element';
  */
 export class CdsModalContent extends LitElement {
   render() {
-    return html`
-          <slot></slot>
-        `;
+    return html` <slot></slot> `;
   }
 
   static get styles() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,9 +21,7 @@ import { ClrRadioWrapper } from './radio-wrapper';
 import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
 
 @Component({
-  template: `
-    <clr-radio-container></clr-radio-container>
-  `,
+  template: ` <clr-radio-container></clr-radio-container> `,
 })
 class NoLabelTest {}
 
@@ -42,7 +40,7 @@ class NoLabelTest {}
       <clr-control-error>There was an error</clr-control-error>
       <clr-control-helper>Helper text</clr-control-helper>
     </clr-radio-container>
-    `,
+  `,
 })
 class TemplateDrivenTest {
   inline = false;
@@ -51,8 +49,7 @@ class TemplateDrivenTest {
 }
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-radio-container>
       <label>Hello World</label>
       <clr-radio-wrapper>
@@ -75,7 +72,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrRadioContainer', () => {
     ContainerNoLabelSpec(ClrRadioContainer, [ClrRadio, ClrRadioWrapper], NoLabelTest);
     TemplateDrivenSpec(

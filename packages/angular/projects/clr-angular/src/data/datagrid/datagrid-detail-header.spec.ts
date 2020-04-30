@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,12 +11,12 @@ import { ClrDatagridDetailHeader } from './datagrid-detail-header';
 
 const content = 'Detail Pane';
 
-export default function(): void {
-  describe('ClrDatagridDetailHeader component', function() {
-    describe('Typescript API', function() {
+export default function (): void {
+  describe('ClrDatagridDetailHeader component', function () {
+    describe('Typescript API', function () {
       let context: TestContext<ClrDatagridDetailHeader, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridDetailHeader, FullTest, [DetailService]);
         context.detectChanges();
       });
@@ -26,11 +26,11 @@ export default function(): void {
       });
     });
 
-    describe('View', function() {
+    describe('View', function () {
       let context: TestContext<ClrDatagridDetailHeader, FullTest>;
       let detailService: DetailService;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridDetailHeader, FullTest, [DetailService]);
         detailService = context.getClarityProvider(DetailService);
         context.detectChanges();

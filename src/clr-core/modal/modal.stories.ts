@@ -60,29 +60,25 @@ export const API = () => {
     <style>
       cds-modal {
         ${setStyles({
-          '--backdrop-opacity': backdropOpacity,
-          '--backdrop-color': backdropColor,
-          '--background-color': backgroundColor,
-          '--box-shadow-color': boxShadowColor,
-          '--border-radius': borderRadius,
-          '--border-color': borderColor,
-          '--close-icon-color': closeIconColor,
-          '--close-icon-color-hover': closeIconColorHover,
-          '--content-box-shadow-color': contentBoxShadowColor,
-          '--width': width,
-        })}
+        '--backdrop-opacity': backdropOpacity,
+        '--backdrop-color': backdropColor,
+        '--background-color': backgroundColor,
+        '--box-shadow-color': boxShadowColor,
+        '--border-radius': borderRadius,
+        '--border-color': borderColor,
+        '--close-icon-color': closeIconColor,
+        '--close-icon-color-hover': closeIconColorHover,
+        '--content-box-shadow-color': contentBoxShadowColor,
+        '--width': width,
+      })}
       .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
         height: 500px;
       }
     </style>
-    <cds-modal
-      __demo-mode
-      .closable=${closable}
-      .size=${size}
-      @closeChange=${action('closeChange')}>
+    <cds-modal __demo-mode .closable=${closable} .size=${size} @closeChange=${action('closeChange')}>
       <cds-modal-header>${unsafeHTML(htmlDecode(modalHeaderSlot))}</cds-modal-header>
       <cds-modal-content>
-          ${unsafeHTML(htmlDecode(modalContentSlot))}
+        ${unsafeHTML(htmlDecode(modalContentSlot))}
       </cds-modal-content>
       <cds-modal-actions>
         ${unsafeHTML(htmlDecode(modalFooterSlot))}
@@ -94,7 +90,8 @@ export const API = () => {
 export const defaultSize = () => {
   return html`
     <style>
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
+      .sbdocs-preview > div[class^='css-'],
+      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
         height: 500px;
       }
     </style>
@@ -109,7 +106,7 @@ export const defaultSize = () => {
       </cds-modal-content>
       <cds-modal-actions>
         <div cds-layout="horizontal gap:sm align:right">
-          <cds-button action='outline'>Cancel</cds-button>
+          <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
       </cds-modal-actions>
@@ -120,11 +117,12 @@ export const defaultSize = () => {
 export const small = () => {
   return html`
     <style>
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
+      .sbdocs-preview > div[class^='css-'],
+      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
         height: 500px;
       }
     </style>
-    <cds-modal size='sm' __demo-mode>
+    <cds-modal size="sm" __demo-mode>
       <cds-modal-header>
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
@@ -135,7 +133,7 @@ export const small = () => {
       </cds-modal-content>
       <cds-modal-actions>
         <div cds-layout="horizontal gap:sm align:right">
-          <cds-button action='outline'>Cancel</cds-button>
+          <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
       </cds-modal-actions>
@@ -146,11 +144,12 @@ export const small = () => {
 export const large = () => {
   return html`
     <style>
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
+      .sbdocs-preview > div[class^='css-'],
+      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
         height: 500px;
       }
     </style>
-    <cds-modal size='lg' __demo-mode>
+    <cds-modal size="lg" __demo-mode>
       <cds-modal-header>
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
@@ -161,7 +160,7 @@ export const large = () => {
       </cds-modal-content>
       <cds-modal-actions>
         <div cds-layout="horizontal gap:sm align:right">
-          <cds-button action='outline'>Cancel</cds-button>
+          <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
       </cds-modal-actions>
@@ -172,11 +171,12 @@ export const large = () => {
 export const extraLarge = () => {
   return html`
     <style>
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
+      .sbdocs-preview > div[class^='css-'],
+      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
         height: 500px;
       }
     </style>
-    <cds-modal size='xl' __demo-mode>
+    <cds-modal size="xl" __demo-mode>
       <cds-modal-header>
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
@@ -187,7 +187,7 @@ export const extraLarge = () => {
       </cds-modal-content>
       <cds-modal-actions>
         <div cds-layout="horizontal gap:sm align:right">
-          <cds-button action='outline'>Cancel</cds-button>
+          <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
       </cds-modal-actions>
@@ -199,14 +199,15 @@ export const customStyles = () => {
   return html`
     <style>
       .modal-branding {
-        --backdrop-color: #004B6B;
-        --background-color: #E3F5FC;
-        --border-color: #00567A;
-        --close-icon-color: #00567A;
-        --close-icon-color-hover: #004B6B;
+        --backdrop-color: #004b6b;
+        --background-color: #e3f5fc;
+        --border-color: #00567a;
+        --close-icon-color: #00567a;
+        --close-icon-color-hover: #004b6b;
         --content-box-shadow-color: rgba(0, 54, 77, 0.3);
       }
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
+      .sbdocs-preview > div[class^='css-'],
+      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
         height: 500px;
       }
     </style>
@@ -221,7 +222,7 @@ export const customStyles = () => {
       </cds-modal-content>
       <cds-modal-actions>
         <div cds-layout="horizontal gap:sm align:right">
-          <cds-button action='outline'>Cancel</cds-button>
+          <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
       </cds-modal-actions>

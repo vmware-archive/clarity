@@ -21,18 +21,18 @@ import { ClrPopoverModuleNext } from './popover.module';
 @Component({
   selector: 'test-host',
   template: `
-    <button #anchor
-            clrPopoverAnchor
-            clrPopoverOpenCloseButton>Popover Toggle</button>
-    <div *clrPopoverContent="openState at smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll"
-         (clrPopoverContentChange)="changeCounter()">Popover content</div>
+    <button #anchor clrPopoverAnchor clrPopoverOpenCloseButton>Popover Toggle</button>
+    <div
+      *clrPopoverContent="openState; at: smartPosition; outsideClickToClose: closeClick; scrollToClose: closeScroll"
+      (clrPopoverContentChange)="changeCounter()"
+    >
+      Popover content
+    </div>
   `,
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 @Component({
-  template: `
-
-  `,
+  template: ``,
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class SimpleContent {
@@ -53,8 +53,8 @@ class SimpleContent {
   }
 }
 
-export default function(): void {
-  describe('ClrPopoverContent', function() {
+export default function (): void {
+  describe('ClrPopoverContent', function () {
     type Context = TestContext<ClrPopoverContent, SimpleContent> & {
       testComponent: SimpleContent;
       clarityDirective: ClrPopoverModuleNext;
@@ -62,7 +62,7 @@ export default function(): void {
       positionService: ClrPopoverPositionService;
       toggleService: ClrPopoverToggleService;
     };
-    beforeEach(function(this: Context) {
+    beforeEach(function (this: Context) {
       /*
        * The ClrPopoverContent element is a template and not rendered in the DOM,
        * This test is reliant on the @ViewChild in the test component.
@@ -82,20 +82,20 @@ export default function(): void {
       this.toggleService = this.fixture.debugElement.injector.get(ClrPopoverToggleService);
     });
 
-    describe('Providers', function(this: Context) {
-      it('declares a Popover EventService', function(this: Context) {
+    describe('Providers', function (this: Context) {
+      it('declares a Popover EventService', function (this: Context) {
         expect(this.eventService).toBeDefined();
       });
-      it('declares a Popover PositionService', function(this: Context) {
+      it('declares a Popover PositionService', function (this: Context) {
         expect(this.positionService).toBeDefined();
       });
-      it('declares a Popover ToggleService', function(this: Context) {
+      it('declares a Popover ToggleService', function (this: Context) {
         expect(this.toggleService).toBeDefined();
       });
     });
 
-    describe('TypeScript API', function(this: Context) {
-      it('responds to openChange events from the toggleService', function(this: Context) {
+    describe('TypeScript API', function (this: Context) {
+      it('responds to openChange events from the toggleService', function (this: Context) {
         this.testComponent.openState = true; // Add content to the DOM
         this.fixture.detectChanges();
         const content = document.body.getElementsByClassName('clr-popover-content');
@@ -108,24 +108,21 @@ export default function(): void {
         expect(content.length).toBe(0);
       });
 
-      it(
-        'responds to shouldRealign events from the positionService',
-        fakeAsync(function(this: Context) {
-          const alignContentSpy = spyOn(this.clarityDirective as any, 'alignContent');
-          this.testComponent.openState = true; // Add content to the DOM
-          this.fixture.detectChanges();
-          expect(alignContentSpy).not.toHaveBeenCalled();
-          this.positionService.realign();
-          this.fixture.detectChanges();
-          tick();
-          // Make sure it has been called exactly one time
-          expect(alignContentSpy).toHaveBeenCalledTimes(1);
-        })
-      );
+      it('responds to shouldRealign events from the positionService', fakeAsync(function (this: Context) {
+        const alignContentSpy = spyOn(this.clarityDirective as any, 'alignContent');
+        this.testComponent.openState = true; // Add content to the DOM
+        this.fixture.detectChanges();
+        expect(alignContentSpy).not.toHaveBeenCalled();
+        this.positionService.realign();
+        this.fixture.detectChanges();
+        tick();
+        // Make sure it has been called exactly one time
+        expect(alignContentSpy).toHaveBeenCalledTimes(1);
+      }));
     });
 
     describe('Template API', () => {
-      it('binds to [clrPopoverContent] open state', function(this: Context) {
+      it('binds to [clrPopoverContent] open state', function (this: Context) {
         expect(this.testComponent.openState).toBe(this.toggleService.open);
         this.testComponent.openState = undefined;
         expect(this.toggleService.open).toBe(false);
@@ -133,7 +130,7 @@ export default function(): void {
         expect(this.toggleService.open).toBe(false);
       });
 
-      it('binds to [clrPopoverContentAt] position', function(this: Context) {
+      it('binds to [clrPopoverContentAt] position', function (this: Context) {
         expect(this.testComponent.smartPosition).toEqual(this.positionService.position);
         const newPosition: ClrPopoverPosition = {
           anchor: ClrAlignment.CENTER,
@@ -146,14 +143,14 @@ export default function(): void {
         expect(this.positionService.position).toEqual(newPosition);
       });
 
-      it('binds to [clrPopoverContentOutsideClickToClose]', function(this: Context) {
+      it('binds to [clrPopoverContentOutsideClickToClose]', function (this: Context) {
         expect(this.eventService.outsideClickClose).toBe(true);
         this.testComponent.closeClick = false;
         this.fixture.detectChanges();
         expect(this.eventService.outsideClickClose).toBe(false);
       });
 
-      it('binds to [clrPopoverContentScrollToClose]', function(this: Context) {
+      it('binds to [clrPopoverContentScrollToClose]', function (this: Context) {
         expect(this.testComponent.closeScroll).toBe(this.eventService.scrollToClose);
         this.testComponent.closeScroll = false;
         this.fixture.detectChanges();
@@ -161,8 +158,8 @@ export default function(): void {
       });
     });
 
-    describe('View Basics', function(this: Context) {
-      it('adds top and left style to the content container when content is open', function(this: Context) {
+    describe('View Basics', function (this: Context) {
+      it('adds top and left style to the content container when content is open', function (this: Context) {
         this.testComponent.openState = true; // Add content to the DOM
         this.fixture.detectChanges();
         const content: HTMLCollectionOf<Element> = document.body.getElementsByClassName('clr-popover-content');

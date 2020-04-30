@@ -19,7 +19,7 @@ import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { createKeyboardEvent } from './utils/test-utils';
 
-export default function() {
+export default function () {
   describe('Monthpicker Component', () => {
     let context: TestContext<ClrMonthpicker, TestComponent>;
     let localeHelperService: LocaleHelperService;
@@ -34,7 +34,7 @@ export default function() {
     }
 
     describe('View Basics', () => {
-      beforeEach(function() {
+      beforeEach(function () {
         initializeCalendar(new DayModel(2015, selectedMonth, 1));
 
         context = this.create(ClrMonthpicker, TestComponent, [
@@ -120,7 +120,7 @@ export default function() {
     });
 
     describe('Typescript API', () => {
-      beforeEach(function() {
+      beforeEach(function () {
         initializeCalendar(new DayModel(2015, selectedMonth, 1));
 
         context = this.create(ClrMonthpicker, TestComponent, [
@@ -201,7 +201,7 @@ export default function() {
         ]);
       }
 
-      it('handles the up arrow', function() {
+      it('handles the up arrow', function () {
         createMonthPicker(this, new DayModel(2015, 11, 1));
 
         expect(context.clarityDirective.getTabIndex(11)).toBe(0, "Month 11 doesn't have tabindex 0");
@@ -221,7 +221,7 @@ export default function() {
         expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 does't have tabindex 0");
       });
 
-      it('handles the down arrow', function() {
+      it('handles the down arrow', function () {
         createMonthPicker(this, new DayModel(2015, 0, 1));
 
         expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 doesn't have tabindex 0");
@@ -242,7 +242,7 @@ export default function() {
       });
 
       // IE doesn't handle KeyboardEvent constructor
-      it('handles the right arrow', function() {
+      it('handles the right arrow', function () {
         createMonthPicker(this, new DayModel(2015, 0, 1));
         expect(context.clarityDirective.getTabIndex(0)).toBe(0, "Month 0 doesn't have tabindex 0");
 
@@ -267,7 +267,7 @@ export default function() {
         expect(context.clarityDirective.getTabIndex(11)).toBe(0, "Month 11 doesn't have the tabindex -1");
       });
 
-      it('handles the left arrow', function() {
+      it('handles the left arrow', function () {
         createMonthPicker(this, new DayModel(2015, 6, 1));
         expect(context.clarityDirective.getTabIndex(6)).toBe(0, "Month 6 doesn't have tabindex 0");
 
@@ -299,8 +299,6 @@ export default function() {
 }
 
 @Component({
-  template: `
-        <clr-monthpicker></clr-monthpicker>
-    `,
+  template: ` <clr-monthpicker></clr-monthpicker> `,
 })
 class TestComponent {}

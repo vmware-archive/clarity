@@ -26,13 +26,13 @@ import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 import { DateIOService } from './providers/date-io.service';
 
-export default function() {
-  describe('Yearpicker Component AriaLiveSerivice', function() {
+export default function () {
+  describe('Yearpicker Component AriaLiveSerivice', function () {
     let announceSpyOn: (str: string) => void;
     let ariaLiveService: ClrAriaLiveService;
     let fixture, component;
 
-    beforeEach(function() {
+    beforeEach(function () {
       const selectedYear = 2003;
 
       const dateNavigationService = new DateNavigationService();
@@ -119,7 +119,7 @@ export default function() {
     }
 
     describe('View Basics', () => {
-      beforeEach(function() {
+      beforeEach(function () {
         initializeCalendar(selectedYear);
 
         context = this.create(ClrYearpicker, TestComponent, [
@@ -255,7 +255,7 @@ export default function() {
     });
 
     describe('Typescript API', () => {
-      beforeEach(function() {
+      beforeEach(function () {
         initializeCalendar(selectedYear);
 
         context = this.create(ClrYearpicker, TestComponent, [
@@ -374,7 +374,7 @@ export default function() {
         ]);
       }
 
-      it('handles up arrow', function() {
+      it('handles up arrow', function () {
         createYearPicker(this, 2010);
 
         // Boundary
@@ -389,7 +389,7 @@ export default function() {
         expect(context.clarityDirective.yearRangeModel.inRange(2010)).toBe(false);
       });
 
-      it('handles down arrow', function() {
+      it('handles down arrow', function () {
         createYearPicker(this, 2009);
 
         // Boundary
@@ -404,7 +404,7 @@ export default function() {
         expect(context.clarityDirective.yearRangeModel.inRange(2010)).toBe(true);
       });
 
-      it('handles right arrow', function() {
+      it('handles right arrow', function () {
         createYearPicker(this, 2001);
         expect(context.clarityDirective.getTabIndex(2001)).toBe(0);
         context.clarityDirective.onKeyDown(createKeyboardEvent(RIGHT_ARROW, 'keydown'));
@@ -417,7 +417,7 @@ export default function() {
         expect(context.clarityDirective.getTabIndex(2011)).toBe(0);
       });
 
-      it('handles left arrow', function() {
+      it('handles left arrow', function () {
         createYearPicker(this, 2005);
         expect(context.clarityDirective.getTabIndex(2005)).toBe(0);
         context.clarityDirective.onKeyDown(createKeyboardEvent(LEFT_ARROW, 'keydown'));
@@ -434,8 +434,6 @@ export default function() {
 }
 
 @Component({
-  template: `
-        <clr-yearpicker></clr-yearpicker>
-    `,
+  template: ` <clr-yearpicker></clr-yearpicker> `,
 })
 class TestComponent {}

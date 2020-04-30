@@ -10,27 +10,30 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
 @Component({
   selector: 'clr-stack-block',
   template: `
-    <div class="stack-block-label"
-        (click)="toggleExpand()"
-        (keyup.enter)="toggleExpand()"
-        (keyup.space)="toggleExpand()"
-        (focus)="focused = true"
-        (blur)="focused = false"
-        [id]="uniqueId"
-        [attr.role]="role"
-        [attr.tabindex]="tabIndex"
-        [attr.aria-expanded]="ariaExpanded"
-        [attr.aria-controls]="getStackChildrenId()"
-        [attr.aria-posinset]="ariaPosinset"
-        [attr.aria-level]="ariaLevel"
-        [attr.aria-setsize]="ariaSetsize"
-        >
-      <clr-icon shape="caret"
-                class="stack-block-caret"
-                *ngIf="expandable"
-                [attr.dir]="caretDirection"
-                [attr.title]="caretTitle"></clr-icon>
-      <span class="clr-sr-only" *ngIf="getChangedValue">{{commonStrings.keys.stackViewChanged}}</span>
+    <div
+      class="stack-block-label"
+      (click)="toggleExpand()"
+      (keyup.enter)="toggleExpand()"
+      (keyup.space)="toggleExpand()"
+      (focus)="focused = true"
+      (blur)="focused = false"
+      [id]="uniqueId"
+      [attr.role]="role"
+      [attr.tabindex]="tabIndex"
+      [attr.aria-expanded]="ariaExpanded"
+      [attr.aria-controls]="getStackChildrenId()"
+      [attr.aria-posinset]="ariaPosinset"
+      [attr.aria-level]="ariaLevel"
+      [attr.aria-setsize]="ariaSetsize"
+    >
+      <clr-icon
+        shape="caret"
+        class="stack-block-caret"
+        *ngIf="expandable"
+        [attr.dir]="caretDirection"
+        [attr.title]="caretTitle"
+      ></clr-icon>
+      <span class="clr-sr-only" *ngIf="getChangedValue">{{ commonStrings.keys.stackViewChanged }}</span>
       <div class="stack-view-key">
         <!-- This structure changed to fix #3567 and the a11y request was to move away from dl's -->
         <!-- I added the key class to update css targets for the original component style -->

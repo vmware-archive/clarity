@@ -37,7 +37,8 @@ class TestControl extends WrappedFormControl<TestWrapper> {
 
 @Component({
   selector: 'test-wrapper2',
-  template: `<div id="first"><ng-content></ng-content></div><div id="second"><ng-content></ng-content></div>`,
+  template: `<div id="first"><ng-content></ng-content></div>
+    <div id="second"><ng-content></ng-content></div>`,
   providers: [ControlIdService],
 })
 class TestWrapper2 implements DynamicWrapper {
@@ -118,7 +119,7 @@ interface TestContext {
   layoutService?: LayoutService;
 }
 
-export default function(): void {
+export default function (): void {
   describe('WrappedFormControl', () => {
     function setupTest<T>(testContext: TestContext, testComponent: Type<T>, testControl: any) {
       TestBed.configureTestingModule({
@@ -146,74 +147,74 @@ export default function(): void {
       }
     }
 
-    describe('getProviderFromContainer', function() {
-      it('gets a provider from the container', function(this: TestContext) {
+    describe('getProviderFromContainer', function () {
+      it('gets a provider from the container', function (this: TestContext) {
         setupTest(this, WithWrapperNoId, TestControl);
         expect(this.control.getProviderFromContainer(ControlIdService)).toEqual(this.controlIdService);
       });
 
-      it('returns not found if provider is missing', function(this: TestContext) {
+      it('returns not found if provider is missing', function (this: TestContext) {
         setupTest(this, WithWrapperNoId, TestControl);
         expect(this.control.getProviderFromContainer(MarkControlService, false)).toBeFalse();
       });
     });
 
-    describe('with an explicit wrapper', function() {
-      it('uses HostWrapper to inject the ControlIdService', function(this: TestContext) {
+    describe('with an explicit wrapper', function () {
+      it('uses HostWrapper to inject the ControlIdService', function (this: TestContext) {
         spyOn(HostWrapper.prototype, 'get').and.callThrough();
         setupTest(this, WithWrapperNoId, TestControl);
         expect(HostWrapper.prototype.get).toHaveBeenCalledWith(ControlIdService);
         expect(this.wrapper._dynamic).toBe(false);
       });
 
-      it('sets the id of the host to the id given by the service', function(this: TestContext) {
+      it('sets the id of the host to the id given by the service', function (this: TestContext) {
         setupTest(this, WithWrapperNoId, TestControl);
         expect(this.input.getAttribute('id')).toBe(this.controlIdService.id);
       });
 
-      it('updates the service to the correct id if it exists', function(this: TestContext) {
+      it('updates the service to the correct id if it exists', function (this: TestContext) {
         setupTest(this, WithWrapperWithId, TestControl);
         expect(this.input.getAttribute('id')).toBe('hello');
         expect(this.controlIdService.id).toBe('hello');
       });
     });
 
-    describe('without an explicit wrapper', function() {
-      it('uses HostWrapper to inject the ControlIdService', function(this: TestContext) {
+    describe('without an explicit wrapper', function () {
+      it('uses HostWrapper to inject the ControlIdService', function (this: TestContext) {
         spyOn(HostWrapper.prototype, 'get').and.callThrough();
         setupTest(this, NoWrapperNoId, TestControl);
         expect(HostWrapper.prototype.get).toHaveBeenCalledWith(ControlIdService);
         expect(this.wrapper._dynamic).toBe(true);
       });
 
-      it('sets the id of the host to the id given by the service', function(this: TestContext) {
+      it('sets the id of the host to the id given by the service', function (this: TestContext) {
         setupTest(this, NoWrapperNoId, TestControl);
         expect(this.input.getAttribute('id')).toBe(this.controlIdService.id);
       });
 
-      it('updates the service to the correct id if it exists', function(this: TestContext) {
+      it('updates the service to the correct id if it exists', function (this: TestContext) {
         setupTest(this, NoWrapperWithId, TestControl);
         expect(this.input.getAttribute('id')).toBe('hello');
         expect(this.controlIdService.id).toBe('hello');
       });
     });
 
-    describe('with multiple projection slots', function() {
-      it('projects into the second slot when configured', function(this: TestContext) {
+    describe('with multiple projection slots', function () {
+      it('projects into the second slot when configured', function (this: TestContext) {
         setupTest(this, WithMultipleNgContent, TestControl);
         expect(this.fixture.nativeElement.querySelector('#first').innerHTML).toBe('');
         expect(this.fixture.nativeElement.querySelector('#second').querySelector('input')).toBeTruthy();
       });
     });
 
-    describe('with a real NgControl', function() {
-      it('sets the control class', function(this: TestContext) {
+    describe('with a real NgControl', function () {
+      it('sets the control class', function (this: TestContext) {
         spyOn(ControlClassService.prototype, 'initControlClass').and.callThrough();
         setupTest(this, WithControl, TestControl3);
         expect(ControlClassService.prototype.initControlClass).toHaveBeenCalled();
       });
 
-      it('subscribes to requests to mark as touched', function(this: TestContext) {
+      it('subscribes to requests to mark as touched', function (this: TestContext) {
         setupTest(this, WithControl, TestControl3);
         expect(this.input.className).not.toContain('ng-touched');
         this.markControlService.markAsTouched();
@@ -221,13 +222,13 @@ export default function(): void {
         expect(this.input.className).toContain('ng-touched');
       });
 
-      it('sets the control on ngControlService', function(this: TestContext) {
+      it('sets the control on ngControlService', function (this: TestContext) {
         spyOn(NgControlService.prototype, 'setControl').and.callThrough();
         setupTest(this, WithControl, TestControl3);
         expect(NgControlService.prototype.setControl).toHaveBeenCalled();
       });
 
-      it('triggers status changes on blur', function(this: TestContext) {
+      it('triggers status changes on blur', function (this: TestContext) {
         spyOn(IfErrorService.prototype, 'triggerStatusChange').and.callThrough();
         setupTest(this, WithControl, TestControl3);
         this.input.focus();
@@ -236,30 +237,27 @@ export default function(): void {
         expect(IfErrorService.prototype.triggerStatusChange).toHaveBeenCalled();
       });
 
-      it('implements ngOnDestroy', function(this: TestContext) {
+      it('implements ngOnDestroy', function (this: TestContext) {
         setupTest(this, WithControl, TestControl3);
         expect(this.control.ngOnDestroy).toBeDefined();
       });
     });
 
-    describe('aria roles', function() {
-      it('adds the aria-describedby for helper', function() {
+    describe('aria roles', function () {
+      it('adds the aria-describedby for helper', function () {
         setupTest(this, WithControl, TestControl3);
         expect(this.input.getAttribute('aria-describedby')).toContain('-helper');
       });
 
-      it(
-        'adds the aria-describedby for error messages',
-        fakeAsync(function(this: TestContext) {
-          setupTest(this, WithControl, TestControl3);
-          this.input.focus();
-          this.input.blur();
-          this.fixture.detectChanges();
+      it('adds the aria-describedby for error messages', fakeAsync(function (this: TestContext) {
+        setupTest(this, WithControl, TestControl3);
+        this.input.focus();
+        this.input.blur();
+        this.fixture.detectChanges();
 
-          tick();
-          expect(this.input.getAttribute('aria-describedby')).toContain('-error');
-        })
-      );
+        tick();
+        expect(this.input.getAttribute('aria-describedby')).toContain('-error');
+      }));
     });
   });
 }

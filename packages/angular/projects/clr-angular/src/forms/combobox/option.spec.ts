@@ -16,10 +16,10 @@ import { OptionSelectionService } from './providers/option-selection.service';
 
 @Component({
   template: `
-        <clr-option [clrValue]="'Test'" #option>
-            Test
-        </clr-option>
-    `,
+    <clr-option [clrValue]="'Test'" #option>
+      Test
+    </clr-option>
+  `,
   providers: [
     ClrPopoverToggleService,
     { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef },
@@ -32,22 +32,22 @@ class TestComponent {
 
 @Component({
   template: `
-        <clr-option>
-            Test
-        </clr-option>
-    `,
+    <clr-option>
+      Test
+    </clr-option>
+  `,
   providers: [ClrPopoverToggleService, OptionSelectionService],
 })
 class TestComponentWithError {}
 
-export default function(): void {
-  describe('Combobox Option Component', function() {
+export default function (): void {
+  describe('Combobox Option Component', function () {
     let context: TestContext<ClrOption<string>, TestComponent>;
     let toggleService: ClrPopoverToggleService;
     let optionSelectionService: OptionSelectionService<string>;
 
-    describe('View Basics', function() {
-      beforeEach(function() {
+    describe('View Basics', function () {
+      beforeEach(function () {
         context = this.createOnly(ClrOption, TestComponent, []);
         toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
@@ -77,8 +77,8 @@ export default function(): void {
       });
     });
 
-    describe('Typescript API', function() {
-      beforeEach(function() {
+    describe('Typescript API', function () {
+      beforeEach(function () {
         context = this.createOnly(ClrOption, TestComponent, []);
         toggleService = context.getClarityProvider(ClrPopoverToggleService);
         optionSelectionService = context.getClarityProvider(OptionSelectionService) as OptionSelectionService<string>;
@@ -130,8 +130,8 @@ export default function(): void {
       });
     });
 
-    describe('Error Condition', function() {
-      it('throws an error when option is not used inside of clr-combobox', function() {
+    describe('Error Condition', function () {
+      it('throws an error when option is not used inside of clr-combobox', function () {
         TestBed.configureTestingModule({ declarations: [ClrOption, TestComponentWithError] });
         expect(() => {
           TestBed.createComponent(TestComponentWithError);

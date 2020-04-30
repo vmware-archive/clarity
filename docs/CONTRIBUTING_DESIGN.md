@@ -22,10 +22,10 @@ get you started.
 Try answering the following questions to get started on researching and
 documenting the findings for consideration:
 
-* What problems does this component solve?
-* How will users interact with it?
-* What is the primary or base use case for this component?
-* Are there features that would enable less common but more enhanced use cases?
+- What problems does this component solve?
+- How will users interact with it?
+- What is the primary or base use case for this component?
+- Are there features that would enable less common but more enhanced use cases?
 
 When you write up the proposal, start by describing what the component does as
 well as anything known that's used today to solve the issue. List the use cases
@@ -45,12 +45,12 @@ on top of the initial work.
 
 Again finding the answers to questions is usually the best way to get started.
 
-* What are the existing solutions used in other applications/component
+- What are the existing solutions used in other applications/component
   libraries/mediums (native mobile/video/television, etc.)?
-* How has this problem already been solved:
-  * In the past with older, less digital technologies?
-  * Today, with modern digital tools?
-* Are there variations or features that may not be a good fit for Clarity?
+- How has this problem already been solved:
+  - In the past with older, less digital technologies?
+  - Today, with modern digital tools?
+- Are there variations or features that may not be a good fit for Clarity?
 
 We are looking for a representational cross-section here and not a doctoral
 thesis. :) Answers to questions like these (please feel free to add your own)
@@ -80,8 +80,8 @@ already been built into the Figma files (typography, colors, padding, font-size,
 appropriate place to create the visual representation of the proposed component. This asset will be used to generate
 mockup images that will be useful when:
 
-* Documenting use cases and their respective features
-* Creating dynamic mockups (with a tool like InDesign) as needed to demonstrate aspects of a use case
+- Documenting use cases and their respective features
+- Creating dynamic mockups (with a tool like InDesign) as needed to demonstrate aspects of a use case
 
 Finally, the Figma file will become the design representation of the component and stay part of the Clarity Design
 Resources once the component is implemented in the code.
@@ -106,14 +106,14 @@ case and documented on the GitHub issue, so the information is public and availa
 When creating the visual design for each use case keep the following in mind and make sure the proposal can
 accommodate a generalized solution that factors the following in (as appropriate):
 
-* internationalization
-* long/short values
-* error/zero/empty states
-* accessibility
-* responsive
-* touch
-* edge cases
-* motion
+- internationalization
+- long/short values
+- error/zero/empty states
+- accessibility
+- responsive
+- touch
+- edge cases
+- motion
 
 ## Design Review
 
@@ -125,9 +125,9 @@ we can set up a private slack channel and or video conferences for regular, live
 Share solution progress with the Clarity team to make sure it aligns. We will engage on GitHub and set up more collaborative review sessions as needed for the length of the process. Usual feedback that can be expected will
 include things like:
 
-* When more information is needed on the design or use case
-* When the design needs more refinement feedback to specific elements of the design
-* When there are missing **considerations** that need to be accounted for
+- When more information is needed on the design or use case
+- When the design needs more refinement feedback to specific elements of the design
+- When there are missing **considerations** that need to be accounted for
 
 Clarity has very high standards and even more stringent accessibility requirements. During this phase **please,
 please, please** do not take the feedback personally. It can and should be directed at the design, the feature, or the

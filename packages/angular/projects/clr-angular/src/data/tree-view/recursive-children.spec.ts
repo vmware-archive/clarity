@@ -28,7 +28,7 @@ function getChildren(node: TestNode) {
 @Component({
   template: `
     <clr-recursive-children [parent]="parent" [children]="children"></clr-recursive-children>
-    <ng-template #template let-node>{{node.name}}</ng-template>
+    <ng-template #template let-node>{{ node.name }}</ng-template>
   `,
 })
 class TestComponent {
@@ -38,8 +38,8 @@ class TestComponent {
   children: RecursiveTreeNodeModel<TestNode>[];
 }
 
-export default function(): void {
-  describe('RecursiveChildren Component', function() {
+export default function (): void {
+  describe('RecursiveChildren Component', function () {
     let TEST_ROOT: RecursiveTreeNodeModel<TestNode>;
     type Context = TestContext<RecursiveChildren<TestNode>, TestComponent> & {
       featuresService: TreeFeaturesService<TestNode>;
@@ -47,7 +47,7 @@ export default function(): void {
     };
     spec(RecursiveChildren, TestComponent, undefined, { providers: [TreeFeaturesService, IfExpandService] });
 
-    beforeEach(function(this: Context) {
+    beforeEach(function (this: Context) {
       this.featuresService = this.getProvider<TreeFeaturesService<TestNode>>(TreeFeaturesService);
       this.expandService = this.getProvider(IfExpandService);
       TEST_ROOT = new RecursiveTreeNodeModel(
@@ -71,44 +71,44 @@ export default function(): void {
       this.detectChanges();
     });
 
-    it('can create a ClrRecursiveForOfContext for a node', function(this: Context) {
+    it('can create a ClrRecursiveForOfContext for a node', function (this: Context) {
       expect(this.clarityDirective.getContext(TEST_ROOT)).toEqual({
         $implicit: TEST_ROOT.model,
         clrModel: TEST_ROOT,
       });
     });
 
-    it('does not render anything if the tree is not recursive', function(this: Context) {
+    it('does not render anything if the tree is not recursive', function (this: Context) {
       delete this.featuresService.recursion;
       this.detectChanges();
       expect(this.clarityElement.textContent.trim()).toBe('');
     });
 
-    it('renders children if the tree is eager', function(this: Context) {
+    it('renders children if the tree is eager', function (this: Context) {
       expect(this.clarityElement.textContent).toMatch(/A\s*B\s*C/);
     });
 
-    it('does not render anything if the tree is lazy and the parent is collapsed', function(this: Context) {
+    it('does not render anything if the tree is lazy and the parent is collapsed', function (this: Context) {
       this.featuresService.eager = false;
       this.detectChanges();
       expect(this.clarityElement.textContent.trim()).toBe('');
     });
 
-    it('renders children if the tree is lazy and the parent is expanded', function(this: Context) {
+    it('renders children if the tree is lazy and the parent is expanded', function (this: Context) {
       this.featuresService.eager = false;
       this.expandService.expanded = true;
       this.detectChanges();
       expect(this.clarityElement.textContent).toMatch(/A\s*B\s*C/);
     });
 
-    it('renders children even if there is no parent', function(this: Context) {
+    it('renders children even if there is no parent', function (this: Context) {
       delete this.hostComponent.parent;
       this.hostComponent.children = TEST_ROOT.children;
       this.detectChanges();
       expect(this.clarityElement.textContent).toMatch(/A\s*B\s*C/);
     });
 
-    it('does not destroy the children when he parent becomes collapsed if the tree is eager', function(this: Context) {
+    it('does not destroy the children when he parent becomes collapsed if the tree is eager', function (this: Context) {
       const spy = spyOn(this.hostComponent.parent, 'clearChildren');
       this.expandService.expanded = true;
       expect(spy).not.toHaveBeenCalled();
@@ -116,7 +116,7 @@ export default function(): void {
       expect(spy).not.toHaveBeenCalled();
     });
 
-    it('destroys the children when he parent becomes collapsed if the tree is lazy', function(this: Context) {
+    it('destroys the children when he parent becomes collapsed if the tree is lazy', function (this: Context) {
       this.featuresService.eager = false;
       const spy = spyOn(this.hostComponent.parent, 'clearChildren');
       this.expandService.expanded = true;

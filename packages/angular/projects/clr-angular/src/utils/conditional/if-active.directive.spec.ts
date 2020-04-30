@@ -9,10 +9,10 @@ import { TestBed } from '@angular/core/testing';
 import { ClrIfActive } from './if-active.directive';
 import { IF_ACTIVE_ID_PROVIDER, IfActiveService } from './if-active.service';
 
-export default function(): void {
-  describe('IfActive Directive', function() {
-    describe('Typescript API', function() {
-      beforeEach(function() {
+export default function (): void {
+  describe('IfActive Directive', function () {
+    describe('Typescript API', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           declarations: [ClrIfActive, IfOpenTest],
           providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER],
@@ -25,23 +25,23 @@ export default function(): void {
         this.ifActiveService = TestBed.get(IfActiveService);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
-      it('sets the active state of the directive', function() {
+      it('sets the active state of the directive', function () {
         this.testComponent.activeState = true;
         this.fixture.detectChanges();
         expect(this.clarityDirective.active).toEqual(true);
       });
 
-      it('gets the current value of the active state', function() {
+      it('gets the current value of the active state', function () {
         this.ifActiveService.current = new Object();
         this.fixture.detectChanges();
         expect(this.testComponent.activeState).toEqual(false);
       });
 
-      it('provides a function to update the view', function() {
+      it('provides a function to update the view', function () {
         expect(this.clarityDirective.updateView).toBeDefined();
 
         // when activeState is false there should be no embedded views
@@ -52,7 +52,7 @@ export default function(): void {
         expect(this.clarityDirective.container.length).toEqual(1);
       });
 
-      it('emits an activeChange event only if the active state changes', function() {
+      it('emits an activeChange event only if the active state changes', function () {
         let nbChanges = 0;
         let currentChange: boolean;
         this.testComponent.directive.activeChange.subscribe((change: boolean) => {
@@ -88,8 +88,8 @@ export default function(): void {
       });
     });
 
-    describe('View', function() {
-      beforeEach(function() {
+    describe('View', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           declarations: [ClrIfActive, IfOpenTest],
           providers: [IfActiveService, IF_ACTIVE_ID_PROVIDER],
@@ -102,16 +102,16 @@ export default function(): void {
         this.ifActiveService = TestBed.get(IfActiveService);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
       // More for view tests.
-      it('should not display anything when false', function() {
+      it('should not display anything when false', function () {
         expect(this.testElement.textContent.trim()).toBe('');
       });
 
-      it('projects content when this directive is set to current', function() {
+      it('projects content when this directive is set to current', function () {
         this.ifActiveService.current = this.clarityDirective.id;
         this.fixture.detectChanges();
         expect(this.testElement.textContent.trim()).toBe('Hello Template!');
@@ -122,10 +122,10 @@ export default function(): void {
 
 @Component({
   template: `
-        <ng-template [(clrIfActive)]="activeState">
-            Hello Template!
-        </ng-template>
-    `,
+    <ng-template [(clrIfActive)]="activeState">
+      Hello Template!
+    </ng-template>
+  `,
 })
 class IfOpenTest {
   @ViewChild(ClrIfActive) directive: ClrIfActive;

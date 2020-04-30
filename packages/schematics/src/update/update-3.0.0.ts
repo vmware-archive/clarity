@@ -20,7 +20,7 @@ function updateJsonFile(path: string, callback: (a: any) => any) {
   fs.writeFileSync(path, JSON.stringify(json, null, 2));
 }
 
-export default function(options: any): Rule {
+export default function (options: any): Rule {
   return (host: Tree, context: SchematicContext) => {
     const configFile = 'angular.json';
 

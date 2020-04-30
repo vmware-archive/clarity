@@ -66,39 +66,35 @@ export class CdsModal extends ModalMixinClass {
   render() {
     return html`
       <div class="private-host" cds-layout="horizontal p:sm p@md:lg align:center">
-        <div class="modal-dialog" 
-              role="dialog" 
-              aria-modal="true" 
-              aria-labelledby="${this.idForAriaLabel}">
+        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
           <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentStart}</div>
           <div class="modal-content" cds-layout="p:md">
             <div cds-layout="horizontal gap:sm p-b:sm p-b@md:md">
-              <div cds-layout="align-stretch" id="${this.idForAriaLabel}"> 
+              <div cds-layout="align-stretch" id="${this.idForAriaLabel}">
                 <slot name="modal-header"></slot>
               </div>
               <div cds-layout="align:right">
-                <slot name="modal-header-actions"></slot>   
+                <slot name="modal-header-actions"></slot>
               </div>
-              ${
-                this.closable
-                  ? html`
-                <button
-                    @click="${() => this.closeModal()}"
-                    aria-label="${CommonStringsService.keys.modalCloseButtonAriaLabel}"
-                    class="close"
-                    action="outline"
-                    icon>
-                    <cds-icon shape="close"></cds-icon>
-                </button>
-                `
-                  : html``
-              }            
+              ${this.closable
+                ? html`
+                    <button
+                      @click="${() => this.closeModal()}"
+                      aria-label="${CommonStringsService.keys.modalCloseButtonAriaLabel}"
+                      class="close"
+                      action="outline"
+                      icon
+                    >
+                      <cds-icon shape="close"></cds-icon>
+                    </button>
+                  `
+                : html``}
             </div>
             <div class="modal-body">
               <slot></slot>
             </div>
             <div cds-layout="p-t:sm p-t@md:md">
-              <slot name="modal-actions" cds-layout="align-stretch"></slot>             
+              <slot name="modal-actions" cds-layout="align-stretch"></slot>
             </div>
           </div>
           <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentEnd}</div>

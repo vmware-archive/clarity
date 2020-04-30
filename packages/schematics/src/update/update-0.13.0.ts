@@ -6,7 +6,7 @@
 
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 
-export default function(): Rule {
+export default function (): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     _context.logger.info(`---------------------------
 Start changes for Clarity 0.13.0

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,8 +24,8 @@ export class StateDebouncer {
   }
 
   /*
-     * This is the lock, to only emit once all the changes have finished processing
-     */
+   * This is the lock, to only emit once all the changes have finished processing
+   */
   private nbChanges = 0;
 
   public changeStart() {

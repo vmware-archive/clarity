@@ -16,17 +16,14 @@ import { SignpostFocusManager } from './providers/signpost-focus-manager.service
 @Component({
   selector: 'clr-signpost',
   template: `
-        <ng-container *ngIf="!useCustomTrigger">
-            <button
-                type="button"
-                class="signpost-action btn btn-small btn-link"
-                clrSignpostTrigger>
-                <clr-icon shape="info" [attr.title]="commonStrings.keys.info"></clr-icon>
-            </button>
-        </ng-container>
+    <ng-container *ngIf="!useCustomTrigger">
+      <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+        <clr-icon shape="info" [attr.title]="commonStrings.keys.info"></clr-icon>
+      </button>
+    </ng-container>
 
-        <ng-content></ng-content>
-    `,
+    <ng-content></ng-content>
+  `,
   host: { '[class.signpost]': 'true' },
   providers: [
     ClrPopoverToggleService,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -23,10 +23,10 @@ interface TestContext {
   toggleService: ClrPopoverToggleService;
 }
 
-export default function(): void {
-  describe('Popover EventService', function() {
+export default function (): void {
+  describe('Popover EventService', function () {
     describe('API', () => {
-      beforeEach(function(this: TestContext) {
+      beforeEach(function (this: TestContext) {
         TestBed.configureTestingModule({
           declarations: [TestHost],
           providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
@@ -63,22 +63,22 @@ export default function(): void {
         context.eventService.closeButtonRef = closeBtnRef;
         return closeBtnRef;
       }
-      it('sets the anchor element', function(this: TestContext) {
+      it('sets the anchor element', function (this: TestContext) {
         expect(this.eventService.anchorButtonRef).not.toBeDefined();
         const testElementRef = setupAnchor(this);
         expect(this.eventService.anchorButtonRef).toEqual(testElementRef);
       });
-      it('sets the content element', function(this: TestContext) {
+      it('sets the content element', function (this: TestContext) {
         expect(this.eventService.contentRef).not.toBeDefined();
         const testElementRef = setupContent(this);
         expect(this.eventService.contentRef).toEqual(testElementRef);
       });
-      it('sets the close button reference', function(this: TestContext) {
+      it('sets the close button reference', function (this: TestContext) {
         expect(this.eventService.closeButtonRef).not.toBeDefined();
         const testElementRef = setupCloseButton(this);
         expect(this.eventService.closeButtonRef).toEqual(testElementRef);
       });
-      it('sets outside click to close property', function(this: TestContext) {
+      it('sets outside click to close property', function (this: TestContext) {
         expect(this.eventService.ignoredEvent).not.toBeDefined();
         const testClick = new MouseEvent('click', {
           view: window,
@@ -88,14 +88,14 @@ export default function(): void {
         this.toggleService.toggleWithEvent(testClick);
         expect(this.eventService.ignoredEvent).toEqual(testClick);
       });
-      it('set focus on the anchor button', function(this: TestContext) {
+      it('set focus on the anchor button', function (this: TestContext) {
         const testAnchor = setupAnchor(this);
         setupContent(this);
         spyOn(testAnchor.nativeElement, 'focus');
         this.eventService.setAnchorFocus();
         expect(testAnchor.nativeElement.focus).toHaveBeenCalled();
       });
-      it('sets focus on the close button', function(this: TestContext) {
+      it('sets focus on the close button', function (this: TestContext) {
         setupContent(this);
         const closeBtn = setupCloseButton(this);
         spyOn(closeBtn.nativeElement, 'focus');

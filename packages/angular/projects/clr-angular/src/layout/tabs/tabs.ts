@@ -32,47 +32,65 @@ import { ClrTabOverflowContent } from './tab-overflow-content';
 @Component({
   selector: 'clr-tabs',
   template: `
-        <ul class="nav" role="tablist" [attr.aria-owns]="tabIds" [clrKeyFocus]="tabLinkElements" clrDirection="both" (clrFocusChange)="toggleOverflowOnPosition($event)" (focusout)="resetKeyFocusCurrentToActive($event)">
-            <!--tab links-->
+    <ul
+      class="nav"
+      role="tablist"
+      [attr.aria-owns]="tabIds"
+      [clrKeyFocus]="tabLinkElements"
+      clrDirection="both"
+      (clrFocusChange)="toggleOverflowOnPosition($event)"
+      (focusout)="resetKeyFocusCurrentToActive($event)"
+    >
+      <!--tab links-->
+      <ng-container *ngFor="let link of tabLinkDirectives">
+        <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow">
+          <li role="presentation" class="nav-item">
+            <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
+          </li>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="tabsService.overflowTabs.length > 0">
+        <div class="tabs-overflow bottom-right" role="presentation" [class.open]="toggleService.open">
+          <li role="application" class="nav-item">
+            <button
+              #tabOverflowTrigger
+              class="btn btn-link nav-link dropdown-toggle"
+              type="button"
+              aria-hidden="true"
+              [attr.tabindex]="activeTabInOverflow && !toggleService.open ? 0 : -1"
+              [class.active]="activeTabInOverflow"
+              [class.open]="toggleService.open"
+              (mousedown)="_mousedown = true"
+              (focus)="openOverflowOnFocus()"
+              (click)="toggleOverflowOnClick()"
+            >
+              <clr-icon
+                shape="ellipsis-horizontal"
+                [class.is-info]="toggleService.open"
+                [attr.title]="commonStrings.keys.more"
+              ></clr-icon>
+            </button>
+          </li>
+          <!--tab links in overflow menu-->
+          <clr-tab-overflow-content
+            *ngIf="toggleService.open"
+            (document:keydown.esc)="closeOnEscapeKey()"
+            (document:click)="closeOnOutsideClick($event, tabOverflowTrigger)"
+            (focusout)="closeOnFocusOut($event)"
+          >
             <ng-container *ngFor="let link of tabLinkDirectives">
-                <ng-container *ngIf="link.tabsId === tabsId && !link.inOverflow">
-                    <li role="presentation" class="nav-item">
-                        <ng-container [ngTemplateOutlet]="link.templateRefContainer.template"></ng-container>
-                    </li>
-                </ng-container>
+              <ng-container
+                *ngIf="link.tabsId === tabsId && link.inOverflow"
+                [ngTemplateOutlet]="link.templateRefContainer.template"
+              >
+              </ng-container>
             </ng-container>
-            <ng-container *ngIf="tabsService.overflowTabs.length > 0">
-                <div class="tabs-overflow bottom-right" role="presentation"
-                  [class.open]="toggleService.open">
-                    <li role="application" class="nav-item">
-                        <button #tabOverflowTrigger class="btn btn-link nav-link dropdown-toggle" type="button" aria-hidden="true"
-                        [attr.tabindex]="activeTabInOverflow && !toggleService.open? 0: -1"
-                        [class.active]="activeTabInOverflow"
-                        [class.open]="toggleService.open"
-                        (mousedown)="_mousedown = true"
-                        (focus)="openOverflowOnFocus()"
-                        (click)="toggleOverflowOnClick()">
-                            <clr-icon shape="ellipsis-horizontal"
-                              [class.is-info]="toggleService.open"
-                              [attr.title]="commonStrings.keys.more"></clr-icon>
-                        </button>
-                    </li>
-                    <!--tab links in overflow menu-->
-                    <clr-tab-overflow-content *ngIf="toggleService.open"
-                      (document:keydown.esc)="closeOnEscapeKey()"
-                      (document:click)="closeOnOutsideClick($event, tabOverflowTrigger)"
-                      (focusout)="closeOnFocusOut($event)">
-                        <ng-container *ngFor="let link of tabLinkDirectives">
-                            <ng-container *ngIf="link.tabsId === tabsId && link.inOverflow"
-                                          [ngTemplateOutlet]="link.templateRefContainer.template">
-                            </ng-container>
-                        </ng-container>
-                    </clr-tab-overflow-content>
-                </div>
-            </ng-container>
-        </ul>
-        <ng-container #tabContentViewContainer></ng-container>
-    `,
+          </clr-tab-overflow-content>
+        </div>
+      </ng-container>
+    </ul>
+    <ng-container #tabContentViewContainer></ng-container>
+  `,
   providers: [IfActiveService, ClrPopoverToggleService, TabsService, TABS_ID_PROVIDER],
 })
 export class ClrTabs implements AfterContentInit, OnDestroy {

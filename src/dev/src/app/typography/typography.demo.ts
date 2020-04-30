@@ -9,21 +9,21 @@ import { Component } from '@angular/core';
   selector: 'clr-typography-demo',
   styleUrls: ['./typography.demo.scss'],
   template: `
-        <h2>Typography</h2>
-        <div class="clr-row">
-            <ul class="clr-col-4">
-                <li><a [routerLink]="['./typography-font-weight']">Font Weights</a></li>
-                <li><a [routerLink]="['./typography-headers']">Headers (H1..H6)</a></li>
-                <li><a [routerLink]="['./typography-text']">Body Text and Paragraphs</a></li>
-                <li><a [routerLink]="['./typography-links']">Link states</a></li>
-            </ul>
-            <ul class="clr-col-4">
-                <li><a [routerLink]="['./typography-font-char-test']">Character Test</a></li>
-                <li><a [routerLink]="['./typography-line-height']">Line Height Eraser</a></li>
-                <li><a [routerLink]="['./typography-font-autopsy']">Font Autopsy</a></li>
-            </ul>
-        </div>
-        <router-outlet></router-outlet>
-    `,
+    <h2>Typography</h2>
+    <div class="clr-row">
+      <ul class="clr-col-4">
+        <li><a [routerLink]="['./typography-font-weight']">Font Weights</a></li>
+        <li><a [routerLink]="['./typography-headers']">Headers (H1..H6)</a></li>
+        <li><a [routerLink]="['./typography-text']">Body Text and Paragraphs</a></li>
+        <li><a [routerLink]="['./typography-links']">Link states</a></li>
+      </ul>
+      <ul class="clr-col-4">
+        <li><a [routerLink]="['./typography-font-char-test']">Character Test</a></li>
+        <li><a [routerLink]="['./typography-line-height']">Line Height Eraser</a></li>
+        <li><a [routerLink]="['./typography-font-autopsy']">Font Autopsy</a></li>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  `,
 })
 export class TypographyDemo {}

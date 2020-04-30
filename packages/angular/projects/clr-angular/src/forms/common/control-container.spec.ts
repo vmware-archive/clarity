@@ -14,12 +14,12 @@ import { ContainerNoLabelSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests
 @Component({
   template: `
     <clr-control-container>
-        <input name="model" clrControl required [(ngModel)]="model" [disabled]="disabled" />
-        <label>Hello World</label>
-        <clr-control-helper>Helper text</clr-control-helper>
-        <clr-control-error>Must be at least 5 characters</clr-control-error>
+      <input name="model" clrControl required [(ngModel)]="model" [disabled]="disabled" />
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
     </clr-control-container>
-    `,
+  `,
 })
 class SimpleTest {
   disabled = false;
@@ -27,8 +27,7 @@ class SimpleTest {
 }
 
 @Component({
-  template: `
-  <clr-control-container>
+  template: ` <clr-control-container>
     <input clrControl name="model" [(ngModel)]="model" />
   </clr-control-container>`,
 })
@@ -37,8 +36,7 @@ class NoLabelTest {
 }
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-control-container>
       <input clrControl formControlName="model" />
       <label>Hello World</label>
@@ -54,7 +52,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrControlContainer', () => {
     ContainerNoLabelSpec(ClrControlContainer, ClrControl, NoLabelTest);
     TemplateDrivenSpec(ClrControlContainer, ClrControl, SimpleTest, '.clr-input-wrapper [clrControl]');

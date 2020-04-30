@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,23 +14,23 @@ import { ClrOption } from './option';
 
 @Component({
   template: `
-        <clr-combobox>
-            <clr-option [clrValue]="'Option 1'">
-                Option 1
-            </clr-option>
-            <clr-option [clrValue]="'Option 2'">
-                Option 2
-            </clr-option>
-        </clr-combobox>
-    `,
+    <clr-combobox>
+      <clr-option [clrValue]="'Option 1'">
+        Option 1
+      </clr-option>
+      <clr-option [clrValue]="'Option 2'">
+        Option 2
+      </clr-option>
+    </clr-combobox>
+  `,
 })
 class TestOptionSelection {}
 
-export default function(): void {
+export default function (): void {
   describe('Rendering Selected Option', () => {
     let context: TestContext<ClrCombobox<string>, TestOptionSelection>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrCombobox, TestOptionSelection, [], [ClrCombobox, ClrOptions, ClrOption]);
     });
 

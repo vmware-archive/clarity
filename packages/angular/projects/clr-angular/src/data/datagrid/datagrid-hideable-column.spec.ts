@@ -32,8 +32,8 @@ const PROVIDERS_NEEDED = [
   DetailService,
 ];
 
-export default function(): void {
-  describe('DatagridHideableColumn directive', function() {
+export default function (): void {
+  describe('DatagridHideableColumn directive', function () {
     let fixture: ComponentFixture<any>;
     let columnsService: ColumnsService;
     let testSugaredComponent: HideableSugaredTest;
@@ -47,9 +47,9 @@ export default function(): void {
     let column2HeaderRenderer: DatagridHeaderRenderer;
     let column3HeaderRenderer: DatagridHeaderRenderer;
 
-    describe('Without Column', function() {
-      it('should throw an error with a message', function() {
-        expect(function() {
+    describe('Without Column', function () {
+      it('should throw an error with a message', function () {
+        expect(function () {
           TestBed.configureTestingModule({
             imports: [ClrDatagridModule],
             declarations: [HideableNotInsideColumnTest],
@@ -60,8 +60,8 @@ export default function(): void {
       });
     });
 
-    describe('Sugered', function() {
-      beforeEach(function() {
+    describe('Sugered', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           imports: [ClrDatagridModule],
           declarations: [HideableSugaredTest],
@@ -84,7 +84,7 @@ export default function(): void {
         column3HeaderRenderer.setColumnState(2);
       });
 
-      it('sets its template and hidden state to column state', function() {
+      it('sets its template and hidden state to column state', function () {
         testSugaredComponent.hideFirst = true;
 
         fixture.detectChanges();
@@ -95,7 +95,7 @@ export default function(): void {
         expect(columnsService.columns[2].value.titleTemplateRef).toBeUndefined();
       });
 
-      it('set hidden state through clrDgHideableColumn input', function() {
+      it('set hidden state through clrDgHideableColumn input', function () {
         testSugaredComponent.hideFirst = true;
         fixture.detectChanges();
         expect(columnsService.columns[0].value.hidden).toBeTruthy();
@@ -105,8 +105,8 @@ export default function(): void {
       });
     });
 
-    describe('De-sugered', function() {
-      beforeEach(function() {
+    describe('De-sugered', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           imports: [ClrDatagridModule],
           declarations: [HideableDesugeredTest],
@@ -128,7 +128,7 @@ export default function(): void {
         column2HeaderRenderer.setColumnState(1);
       });
 
-      it('sets its template and hidden state to column state', function() {
+      it('sets its template and hidden state to column state', function () {
         testDesugaredComponent.hideSecond = true;
 
         fixture.detectChanges();
@@ -138,7 +138,7 @@ export default function(): void {
         expect(columnsService.columns[1].value.hidden).toBeTruthy();
       });
 
-      it('can emit its state from desuraged template', function() {
+      it('can emit its state from desuraged template', function () {
         testDesugaredComponent.hideSecond = true;
         fixture.detectChanges();
         expect(columnsService.columns[1].value.titleTemplateRef).not.toBeUndefined();
@@ -151,7 +151,7 @@ export default function(): void {
         expect(testDesugaredComponent.hideSecond).toBeTruthy();
       });
 
-      it('set hidden state through clrDgHidden input', function() {
+      it('set hidden state through clrDgHidden input', function () {
         testDesugaredComponent.hideSecond = true;
         fixture.detectChanges();
         expect(columnsService.columns[1].value.hidden).toBeTruthy();
@@ -175,7 +175,7 @@ class HideableNotInsideColumnTest {}
 @Component({
   template: `
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn="{hidden: hideFirst}">
+      <ng-container *clrDgHideableColumn="{ hidden: hideFirst }">
         Date
       </ng-container>
     </clr-dg-column>

@@ -76,9 +76,7 @@ describe('ClarityIcons', () => {
 
     for (const shapeSet of ALL_SETS) {
       // this has been randomly failing on the CI for a while, not sure why but still investigating
-      xit(`should return shapes from ${shapeSet.name} and Core shapes if ${
-        shapeSet.name
-      } set is individually added in.`, () => {
+      xit(`should return shapes from ${shapeSet.name} and Core shapes if ${shapeSet.name} set is individually added in.`, () => {
         ClarityIcons.add(shapeSet.shapes);
         const currentAllShapes = Object.assign({}, CoreShapes, shapeSet.shapes);
         testAllShapes(ClarityIcons, currentAllShapes);

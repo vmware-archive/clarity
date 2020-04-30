@@ -96,7 +96,7 @@ export const horizontalLayoutAlignLeft = () => {
         <cds-placeholder>2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
       </div>
-    </cds-demo>  
+    </cds-demo>
   `;
 };
 
@@ -310,7 +310,7 @@ export const horizontalGap = () => {
           <cds-placeholder>3</cds-placeholder>
         </div>
       </cds-demo>
-      
+
       <cds-demo layout>
         <div cds-layout="horizontal gap:md">
           <cds-placeholder>1</cds-placeholder>
@@ -471,12 +471,12 @@ export const verticalLayoutAlignVerticalStretch = () => {
 
 export const verticalLayoutAlignHorizontalStretch = () => {
   return html`
-  <cds-demo layout wide>
-    <div cds-layout="vertical gap:sm align:horizontal-stretch">
-      <cds-placeholder>1</cds-placeholder>
-      <cds-placeholder>2</cds-placeholder>
-    </div>
-  </cds-demo>
+    <cds-demo layout wide>
+      <div cds-layout="vertical gap:sm align:horizontal-stretch">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+      </div>
+    </cds-demo>
   `;
 };
 
@@ -617,7 +617,7 @@ export const verticalGap = () => {
           <cds-placeholder>3</cds-placeholder>
         </div>
       </cds-demo>
-      
+
       <cds-demo layout>
         <div cds-layout="vertical gap:md">
           <cds-placeholder>1</cds-placeholder>
@@ -853,7 +853,7 @@ export const gridLayoutAlignTop = () => {
         <cds-placeholder>3</cds-placeholder>
         <cds-placeholder>4</cds-placeholder>
       </div>
-    </cds-demo>  
+    </cds-demo>
   `;
 };
 
@@ -994,7 +994,7 @@ export const gridGap = () => {
           <cds-placeholder>4</cds-placeholder>
         </div>
       </cds-demo>
-      
+
       <cds-demo layout>
         <div cds-layout="grid gap:md cols:6">
           <cds-placeholder>1</cds-placeholder>
@@ -1057,7 +1057,7 @@ export const spacingPadding = () => {
 export const spacingPaddingSides = () => {
   return html`
     <cds-demo spacing-padding cds-layout="vertical gap:lg">
-      <div cds-layout="p-t:xs"><cds-placeholder>p-t:xs</cds-placeholder></div>  
+      <div cds-layout="p-t:xs"><cds-placeholder>p-t:xs</cds-placeholder></div>
       <div cds-layout="p-t:sm"><cds-placeholder>p-t:sm</cds-placeholder></div>
       <div cds-layout="p-r:md"><cds-placeholder>p-r:md</cds-placeholder></div>
       <div cds-layout="p-b:lg"><cds-placeholder>p-b:lg</cds-placeholder></div>
@@ -1095,7 +1095,7 @@ export const spacingMargin = () => {
 export const spacingMarginSides = () => {
   return html`
     <cds-demo spacing-margin cds-layout="vertical gap:lg">
-      <div><cds-placeholder cds-layout="m-t:xs">m-t:xs</cds-placeholder></div>  
+      <div><cds-placeholder cds-layout="m-t:xs">m-t:xs</cds-placeholder></div>
       <div><cds-placeholder cds-layout="m-t:sm">m-t:sm</cds-placeholder></div>
       <div><cds-placeholder cds-layout="m-r:md">m-r:md</cds-placeholder></div>
       <div><cds-placeholder cds-layout="m-b:lg">m-b:lg</cds-placeholder></div>
@@ -1122,7 +1122,10 @@ export const utilitiesDisplay = () => {
     <cds-demo layout wide>
       <div cds-layout="vertical gap:md align:stretch" cds-text="body">
         <cds-placeholder cds-layout="display:none display@sm:flex">display:none display@sm:flex</cds-placeholder>
-        <cds-placeholder>...<span cds-layout="display:none display@md:inline">display:none display@md:inline</span>...</cds-placeholder>
+        <cds-placeholder
+          >...<span cds-layout="display:none display@md:inline">display:none display@md:inline</span
+          >...</cds-placeholder
+        >
         <cds-placeholder cds-layout="display:none display@lg:block">display:none display@lg:block</cds-placeholder>
         <cds-placeholder cds-layout="display@lg:none">display@lg:none</cds-placeholder>
       </div>
@@ -1133,7 +1136,7 @@ export const utilitiesDisplay = () => {
 export const utilitiesDisplayScreenReaderOnly = () => {
   return html`
     <p>
-      There is text in this content that is only available via a screen reader. 
+      There is text in this content that is only available via a screen reader.
       <span cds-layout="display:screen-reader-only">Hello there!</span>
     </p>
   `;
@@ -1154,7 +1157,8 @@ export const utilitiesContainers = () => {
 
 function buildScrollableContent() {
   const text = html`<p cds-text="p1">scrollable content</p>`;
-  const filler = html`<p cds-text="p1">...</p><p cds-text="p1">...</p>`;
+  const filler = html`<p cds-text="p1">...</p>
+    <p cds-text="p1">...</p>`;
   const returnHtml = [];
 
   returnHtml.push(text);
@@ -1297,10 +1301,20 @@ export const patternsContentSiteSingleRail = () => {
       <div cds-layout="grid gap:md gap@md:lg p:md p@sm:lg p-y@lg:xl container:lg container:center">
         <div cds-layout="vertical gap:md gap@md:lg col@sm:7">
           <h3 cds-text="display">Title</h3>
-          <p cds-text="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-          <p cds-text="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+          <p cds-text="message">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          </p>
+          <p cds-text="message">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          </p>
         </div>
-        <img cds-layout="col@sm:5 container:fill" src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" />
+        <img
+          cds-layout="col@sm:5 container:fill"
+          src="https://dummyimage.com/600x400/000/fff"
+          alt="placeholder image"
+        />
       </div>
       <div class="demo-content">
         <div cds-layout="grid cols@sm:4 gap:md p:md p@md:xl container:lg container:center" cds-text="center">
@@ -1311,18 +1325,18 @@ export const patternsContentSiteSingleRail = () => {
       </div>
       <footer cds-layout="grid cols@sm:4 gap:sm gap@md:lg p:sm p@sm:lg container:md container:center" cds-text="center">
         <div>
-          footer links<br>
-          footer links<br>
+          footer links<br />
+          footer links<br />
           footer links
         </div>
         <div>
-          footer links<br>
-          footer links<br>
+          footer links<br />
+          footer links<br />
           footer links
         </div>
         <div>
-          footer links<br>
-          footer links<br>
+          footer links<br />
+          footer links<br />
           footer links
         </div>
       </footer>
@@ -1336,7 +1350,10 @@ export const patternsResponsiveImageGallery = () => {
       <header class="demo-header" cds-layout="p:sm p@md:md">
         header
       </header>
-      <div cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:md gap:sm align:horizontal-stretch" class="demo-content">
+      <div
+        cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:md gap:sm align:horizontal-stretch"
+        class="demo-content"
+      >
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
         <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />

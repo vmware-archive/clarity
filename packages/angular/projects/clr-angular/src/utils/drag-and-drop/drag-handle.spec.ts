@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,19 +10,19 @@ import { ClrDragHandle } from './drag-handle';
 import { DragHandleRegistrarService } from './providers/drag-handle-registrar.service';
 import { MOCK_DRAG_HANDLE_REGISTRAR_PROVIDER } from './providers/drag-handle-registrar.service.mock';
 
-export default function(): void {
-  describe('ClrDragHandle', function() {
-    describe('Without ClrDragHandleRegistrar', function() {
-      it('should throw an error with a message', function() {
+export default function (): void {
+  describe('ClrDragHandle', function () {
+    describe('Without ClrDragHandleRegistrar', function () {
+      it('should throw an error with a message', function () {
         TestBed.configureTestingModule({ declarations: [NoDragHandleRegistrar, ClrDragHandle] });
 
-        expect(function() {
+        expect(function () {
           this.fixture = TestBed.createComponent(NoDragHandleRegistrar);
         }).toThrowError('The clrDragHandle directive can only be used inside of a clrDraggable directive.');
       });
     });
-    describe('With ClrDragHandleRegistrar', function() {
-      beforeEach(function() {
+    describe('With ClrDragHandleRegistrar', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           declarations: [ClrDragHandle, DragHandleTest],
           providers: [MOCK_DRAG_HANDLE_REGISTRAR_PROVIDER],
@@ -36,16 +36,16 @@ export default function(): void {
         this.testElement = this.fixture.nativeElement;
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
-      it('should register its element as a custom drag handle', function() {
+      it('should register its element as a custom drag handle', function () {
         const dragHandleEl = this.fixture.debugElement.query(By.directive(ClrDragHandle)).nativeElement;
         expect(this.dragHandleRegistrar.customHandle).toBe(dragHandleEl);
       });
 
-      it('should unregister its element if it gets removed', function() {
+      it('should unregister its element if it gets removed', function () {
         this.testComponent.display = false;
         this.fixture.detectChanges();
         expect(this.dragHandleRegistrar.customHandle).toBeUndefined();

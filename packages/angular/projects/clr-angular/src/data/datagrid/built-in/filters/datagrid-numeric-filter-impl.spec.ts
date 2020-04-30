@@ -9,16 +9,16 @@ import { DatagridNumericFilterImpl } from './datagrid-numeric-filter-impl';
 import { DatagridPropertyNumericFilter } from './datagrid-property-numeric-filter';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 
-export default function(): void {
-  describe('DatagridNumericFilterImpl', function() {
+export default function (): void {
+  describe('DatagridNumericFilterImpl', function () {
     let fullFilter: DatagridNumericFilterImpl<number>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       const numericFilter = new TestFilter();
       fullFilter = new DatagridNumericFilterImpl(numericFilter);
     });
 
-    it('becomes active when either high or low limits are set', function() {
+    it('becomes active when either high or low limits are set', function () {
       expect(fullFilter.isActive()).toBe(false);
       fullFilter.high = 10;
       expect(fullFilter.isActive()).toBe(true);
@@ -30,7 +30,7 @@ export default function(): void {
       expect(fullFilter.isActive()).toBe(false);
     });
 
-    it('filters numbers that are above the high limit', function() {
+    it('filters numbers that are above the high limit', function () {
       expect(fullFilter.accepts(11)).toBe(true);
       fullFilter.high = 10;
       expect(fullFilter.accepts(11)).toBe(false);
@@ -39,7 +39,7 @@ export default function(): void {
       expect(fullFilter.accepts(11)).toBe(true);
     });
 
-    it('filters numbers that are below the low limit', function() {
+    it('filters numbers that are below the low limit', function () {
       expect(fullFilter.accepts(0)).toBe(true);
       fullFilter.low = 1;
       expect(fullFilter.accepts(0)).toBe(false);
@@ -48,7 +48,7 @@ export default function(): void {
       expect(fullFilter.accepts(0)).toBe(true);
     });
 
-    it('only allows values within the range when both filters are set', function() {
+    it('only allows values within the range when both filters are set', function () {
       fullFilter.low = 1;
       fullFilter.high = 10;
       expect(fullFilter.accepts(0)).toBe(false);
@@ -56,11 +56,11 @@ export default function(): void {
       expect(fullFilter.accepts(12)).toBe(false);
     });
 
-    it('exposes state', function() {
+    it('exposes state', function () {
       expect(fullFilter.state).toBe(fullFilter);
     });
 
-    it('compares filters', function() {
+    it('compares filters', function () {
       let otherFilter: ClrDatagridFilterInterface<any> = fullFilter;
       expect(fullFilter.equals(otherFilter)).toBe(true);
       // Reference only comparison should be enough for the common case
@@ -68,19 +68,19 @@ export default function(): void {
       expect(fullFilter.equals(otherFilter)).toBe(false);
     });
 
-    describe('with DatagridPropertyNumericFilter', function() {
-      beforeEach(function() {
+    describe('with DatagridPropertyNumericFilter', function () {
+      beforeEach(function () {
         const propFilter = new DatagridPropertyNumericFilter('a.b.c');
         fullFilter = new DatagridNumericFilterImpl(propFilter);
       });
 
-      it('exposes state', function() {
+      it('exposes state', function () {
         fullFilter.high = 10;
         fullFilter.low = null;
         expect(fullFilter.state).toEqual({ property: 'a.b.c', high: 10, low: null });
       });
 
-      it('compares filters', function() {
+      it('compares filters', function () {
         let otherFilter: ClrDatagridFilterInterface<any> = fullFilter;
         expect(fullFilter.equals(otherFilter)).toBe(true);
         // In the specific case we can compare different filter instances

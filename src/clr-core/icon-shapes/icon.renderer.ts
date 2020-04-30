@@ -1,8 +1,8 @@
 /*
-* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
-* This software is released under MIT license.
-* The full license information can be found in LICENSE in the root directory of this project.
-*/
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 import { isString, transformToUnspacedString } from '@clr/core/internal';
 import { IconShapeCollection, IconShapeSources } from './interfaces/icon.interfaces.js';
 import { decorateSvgWithClassnames, getIconSvgClosingTag, getIconSvgOpeningTag } from './utils/icon.svg-helpers.js';

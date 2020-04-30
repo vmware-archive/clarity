@@ -30,7 +30,7 @@ import { ClrAbstractContainer } from '../common/abstract-container';
       <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
       <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
     </div>
-    `,
+  `,
   host: {
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',

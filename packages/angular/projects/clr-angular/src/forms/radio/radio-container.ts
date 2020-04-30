@@ -25,7 +25,7 @@ import { LayoutService } from '../common/providers/layout.service';
         <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
       </div>
     </div>
-    `,
+  `,
   host: {
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',

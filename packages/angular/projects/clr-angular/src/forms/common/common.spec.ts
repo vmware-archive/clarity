@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,10 +20,10 @@ import { WrappedFormControl } from './wrapped-control';
 @Component({
   selector: 'generic-wrapper',
   template: `
-        <label id="container-view-label-before"></label>
-        <ng-content></ng-content>
-        <label id="container-view-label-after"></label>
-    `,
+    <label id="container-view-label-before"></label>
+    <ng-content></ng-content>
+    <label id="container-view-label-after"></label>
+  `,
   providers: [ControlIdService],
 })
 class GenericWrapper implements DynamicWrapper {
@@ -56,31 +56,30 @@ class NoWrapperWithId {}
 
 @Component({
   template: `
-        <generic-wrapper>
-            <label id="test-view-label-before"></label>
-            <input genericControl />
-            <label id="test-view-label-after"></label>
-        </generic-wrapper>
-    `,
+    <generic-wrapper>
+      <label id="test-view-label-before"></label>
+      <input genericControl />
+      <label id="test-view-label-after"></label>
+    </generic-wrapper>
+  `,
 })
 class WithWrapperNoId {}
 
 @Component({
   template: `
-        <generic-wrapper>
-            <label id="test-view-label-before"></label>
-            <input genericControl id="hello" />
-            <label id="test-view-label-after"></label>
-        </generic-wrapper>
-
-    `,
+    <generic-wrapper>
+      <label id="test-view-label-before"></label>
+      <input genericControl id="hello" />
+      <label id="test-view-label-after"></label>
+    </generic-wrapper>
+  `,
 })
 class WithWrapperWithId {}
 
-export default function(): void {
+export default function (): void {
   describe('Common forms integration', () => {
     function assertMatching<T>(testComponent: Type<T>, projectedLabels: boolean, expectedId?: string) {
-      return function() {
+      return function () {
         TestBed.configureTestingModule({ imports: [CommonFormsTestModule], declarations: [testComponent] });
         const fixture = TestBed.createComponent(testComponent);
         fixture.detectChanges();

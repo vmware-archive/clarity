@@ -193,8 +193,8 @@ export class VirtualForOf<T> implements AfterViewInit {
     this.removeSynchronously(() => this.trim());
     this.fill();
     /*
-             * Yes, we're using a dirty hack. It fixes an OSX bug with the inertia scrolling that breaks Chrome itself.
-             */
+     * Yes, we're using a dirty hack. It fixes an OSX bug with the inertia scrolling that breaks Chrome itself.
+     */
     // The scrollTop might have changed so we need to get it a second time here, we can't use the value from
     // above.
     const currentScrollTop = getScrollTop(this.containerEl);

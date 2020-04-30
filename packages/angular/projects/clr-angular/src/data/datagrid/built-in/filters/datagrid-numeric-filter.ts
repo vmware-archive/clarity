@@ -20,14 +20,28 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   selector: 'clr-dg-numeric-filter',
   providers: [{ provide: CustomFilter, useExisting: DatagridNumericFilter }],
   template: `
-        <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-            <input class="datagrid-numeric-filter-input" #input_low type="number" name="low" [(ngModel)]="low"
-                   [placeholder]="commonStrings.keys.minValue" [attr.aria-label]="commonStrings.keys.minValue" />
-                <span class="datagrid-filter-input-spacer"></span>
-            <input class="datagrid-numeric-filter-input" #input_high type="number" name="high" [(ngModel)]="high"
-                   [placeholder]="commonStrings.keys.maxValue" [attr.aria-label]="commonStrings.keys.maxValue" />
-        </clr-dg-filter>
-    `,
+    <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
+      <input
+        class="datagrid-numeric-filter-input"
+        #input_low
+        type="number"
+        name="low"
+        [(ngModel)]="low"
+        [placeholder]="commonStrings.keys.minValue"
+        [attr.aria-label]="commonStrings.keys.minValue"
+      />
+      <span class="datagrid-filter-input-spacer"></span>
+      <input
+        class="datagrid-numeric-filter-input"
+        #input_high
+        type="number"
+        name="high"
+        [(ngModel)]="high"
+        [placeholder]="commonStrings.keys.maxValue"
+        [attr.aria-label]="commonStrings.keys.maxValue"
+      />
+    </clr-dg-filter>
+  `,
 })
 export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>>
   implements CustomFilter, AfterViewInit {

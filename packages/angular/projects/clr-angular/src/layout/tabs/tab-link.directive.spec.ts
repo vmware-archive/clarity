@@ -17,13 +17,13 @@ import { TabsLayout } from './enums/tabs-layout.enum';
 
 @Component({
   template: `
-        <clr-tab>
-            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab1</button>
-        </clr-tab>
-        <clr-tab>
-            <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab2</button>
-        </clr-tab>
-    `,
+    <clr-tab>
+      <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab1</button>
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Tab2</button>
+    </clr-tab>
+  `,
 })
 class TestComponent {
   @ViewChildren(ClrTabLink) tabLinkChildren: QueryList<ClrTabLink>;

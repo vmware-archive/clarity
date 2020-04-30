@@ -1,8 +1,8 @@
 /*
-* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
-* This software is released under MIT license.
-* The full license information can be found in LICENSE in the root directory of this project.
-*/
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -12,7 +12,7 @@ import { ClrProgressBar } from './progress-bar';
 import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
-  template: `<clr-progress-bar  id="randomId" [clrValue]="progressValue"></clr-progress-bar>`,
+  template: `<clr-progress-bar id="randomId" [clrValue]="progressValue"></clr-progress-bar>`,
 })
 class TestComponent {}
 
@@ -21,7 +21,7 @@ class TestComponent {}
     [clrValue]="progressValue"
     [clrMax]="maxValue"
     [clrDisplayval]="displayValue"
-    ></clr-progress-bar>`,
+  ></clr-progress-bar>`,
 })
 class TestDisplayValueComponent {}
 
@@ -35,7 +35,7 @@ class TestDisplayValueComponent {}
     clrFlash
     clrFlashDanger
     class="random"
-    ></clr-progress-bar>`,
+  ></clr-progress-bar>`,
 })
 class TestStylesComponent {}
 
@@ -44,7 +44,7 @@ describe('ClrProgressBar component', () => {
     let fixture: ComponentFixture<any>;
     let clrProgressBar;
 
-    beforeEach(function() {
+    beforeEach(function () {
       TestBed.configureTestingModule({
         declarations: [TestComponent, TestDisplayValueComponent, TestStylesComponent],
         imports: [ClrProgressBarModule],

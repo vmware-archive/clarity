@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -56,75 +56,43 @@ let breakUpShapeTemplate = (shapeName, shapeTemplate) => {
   let childWrapper = $('<div class="svg-child-element"></div>');
 
   //each svg graphic elements inside will be wrapped with the markup above.
-  $('svg')
-    .children()
-    .wrap(childWrapper);
+  $('svg').children().wrap(childWrapper);
 
   //the elements with the same class name suffix goes into the same property
   $('svg')
     .children()
     .each((index, element) => {
-      if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-outline')
-      ) {
+      if ($(element).children().first().hasClass('clr-i-outline')) {
         if (expandedShape[shapeName + '-line']) {
           expandedShape[shapeName + '-line'] += $(element).html();
         } else {
           expandedShape[shapeName + '-line'] = $(element).html();
         }
-      } else if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-outline--badged')
-      ) {
+      } else if ($(element).children().first().hasClass('clr-i-outline--badged')) {
         if (expandedShape[shapeName + '-outline-badged']) {
           expandedShape[shapeName + '-outline-badged'] += $(element).html();
         } else {
           expandedShape[shapeName + '-outline-badged'] = $(element).html();
         }
-      } else if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-outline--alerted')
-      ) {
+      } else if ($(element).children().first().hasClass('clr-i-outline--alerted')) {
         if (expandedShape[shapeName + '-outline-alerted']) {
           expandedShape[shapeName + '-outline-alerted'] += $(element).html();
         } else {
           expandedShape[shapeName + '-outline-alerted'] = $(element).html();
         }
-      } else if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-solid')
-      ) {
+      } else if ($(element).children().first().hasClass('clr-i-solid')) {
         if (expandedShape[shapeName + '-solid']) {
           expandedShape[shapeName + '-solid'] += $(element).html();
         } else {
           expandedShape[shapeName + '-solid'] = $(element).html();
         }
-      } else if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-solid--badged')
-      ) {
+      } else if ($(element).children().first().hasClass('clr-i-solid--badged')) {
         if (expandedShape[shapeName + '-solid-badged']) {
           expandedShape[shapeName + '-solid-badged'] += $(element).html();
         } else {
           expandedShape[shapeName + '-solid-badged'] = $(element).html();
         }
-      } else if (
-        $(element)
-          .children()
-          .first()
-          .hasClass('clr-i-solid--alerted')
-      ) {
+      } else if ($(element).children().first().hasClass('clr-i-solid--alerted')) {
         if (expandedShape[shapeName + '-solid-alerted']) {
           expandedShape[shapeName + '-solid-alerted'] += $(element).html();
         } else {

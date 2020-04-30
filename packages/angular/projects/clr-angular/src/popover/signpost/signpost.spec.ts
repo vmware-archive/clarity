@@ -20,21 +20,21 @@ interface Context extends TestContext<ClrSignpost, TestDefaultSignpost | TestCus
   signpostIdService: SignpostIdService;
 }
 
-export default function(): void {
-  describe('Signpost', function() {
-    describe('default trigger', function() {
+export default function (): void {
+  describe('Signpost', function () {
+    describe('default trigger', function () {
       spec(ClrSignpost, TestDefaultSignpost, ClrSignpostModule);
 
-      beforeEach(function(this: Context) {
+      beforeEach(function (this: Context) {
         this.signpostIdService = this.getClarityProvider(SignpostIdService);
         this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
       });
 
-      it('adds the .signpost class to clr-signpost', function(this: Context) {
+      it('adds the .signpost class to clr-signpost', function (this: Context) {
         expect(this.clarityElement.classList).toContain('signpost');
       });
 
-      it('has a default trigger that can hide/show content', function(this: Context) {
+      it('has a default trigger that can hide/show content', function (this: Context) {
         const signpostToggle: HTMLElement = this.hostElement.querySelector('.signpost-action');
         let signpostContent: HTMLElement;
 
@@ -57,14 +57,14 @@ export default function(): void {
       });
     });
 
-    describe('focus management', function() {
+    describe('focus management', function () {
       spec(ClrSignpost, TestDefaultSignpost, ClrSignpostModule);
 
-      beforeEach(function(this: Context) {
+      beforeEach(function (this: Context) {
         this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
       });
 
-      it('should not get focus on trigger initially', function(this: Context) {
+      it('should not get focus on trigger initially', function (this: Context) {
         const signpostToggle: HTMLElement = this.hostElement.querySelector('.signpost-action');
         this.toggleService.open = false;
         this.detectChanges();
@@ -72,7 +72,7 @@ export default function(): void {
         expect(document.activeElement).not.toBe(signpostToggle);
       });
 
-      it('should not get focus back on trigger if signpost gets closed with outside click on another interactive element', function(this: Context) {
+      it('should not get focus back on trigger if signpost gets closed with outside click on another interactive element', function (this: Context) {
         this.toggleService.open = true;
         this.detectChanges();
         expect(this.hostElement.querySelector('.signpost-content')).not.toBeNull();
@@ -86,7 +86,7 @@ export default function(): void {
         expect(document.activeElement).toBe(this.hostComponent.outsideClickBtn.nativeElement);
       });
 
-      it('should get focus back on trigger if signpost gets closed with outside click on non-interactive element', function(this: Context) {
+      it('should get focus back on trigger if signpost gets closed with outside click on non-interactive element', function (this: Context) {
         this.toggleService.open = true;
         this.detectChanges();
         expect(this.hostElement.querySelector('.signpost-content')).not.toBeNull();
@@ -98,7 +98,7 @@ export default function(): void {
         expect(document.activeElement).toBe(this.hostElement.querySelector('.signpost-action'));
       });
 
-      it('should get focus back on trigger if signpost gets closed while focused element inside content', function(this: Context) {
+      it('should get focus back on trigger if signpost gets closed while focused element inside content', function (this: Context) {
         this.toggleService.open = true;
         this.detectChanges();
 
@@ -111,7 +111,7 @@ export default function(): void {
         expect(document.activeElement).toBe(this.hostElement.querySelector('.signpost-action'));
       });
 
-      it('should get focus back on trigger if signpost gets closed with ESC key', function(this: Context) {
+      it('should get focus back on trigger if signpost gets closed with ESC key', function (this: Context) {
         this.toggleService.open = true;
         this.detectChanges();
         expect(this.hostElement.querySelector('.signpost-content')).not.toBeNull();
@@ -126,17 +126,17 @@ export default function(): void {
       });
     });
 
-    describe('custom trigger', function() {
+    describe('custom trigger', function () {
       spec(ClrSignpost, TestCustomTriggerSignpost, ClrSignpostModule);
 
-      beforeEach(function(this: Context) {
+      beforeEach(function (this: Context) {
         this.toggleService = this.getClarityProvider(ClrPopoverToggleService);
       });
 
       /********
        * This test assumes that if
        */
-      it('does not display the default trigger', function(this: Context) {
+      it('does not display the default trigger', function (this: Context) {
         const triggerIcon: HTMLElement = this.hostElement.querySelector('clr-icon');
 
         /**********
@@ -148,7 +148,7 @@ export default function(): void {
         }
       });
 
-      it('projects a custom trigger element to hide/show content', function(this: Context) {
+      it('projects a custom trigger element to hide/show content', function (this: Context) {
         const signpostTrigger: HTMLElement = this.hostElement.querySelector('.signpost-action');
         let signpostContent: HTMLElement;
 
@@ -197,12 +197,12 @@ export default function(): void {
         );
       }
 
-      beforeEach(function(this: Context) {
+      beforeEach(function (this: Context) {
         this.signpostIdService = this.getClarityProvider(SignpostIdService);
         this.triggerButton = this.hostElement.querySelector('.signpost-action');
       });
 
-      it('are correct when content is opened', function(this: Context) {
+      it('are correct when content is opened', function (this: Context) {
         let currentId;
         this.signpostIdService.id.subscribe(idChange => {
           currentId = idChange;
@@ -230,21 +230,18 @@ export default function(): void {
 
 @Component({
   template: `
-        <button #outsideClick type="button">
-            Button to test clicks outside of the dropdown component
-        </button>
-        <clr-signpost>
-            <button
-                type="button"
-                class="signpost-action btn btn-small btn-link"
-                clrSignpostTrigger>
-                Custom trigger
-            </button>
-            <clr-signpost-content *clrIfOpen="openState">
-                Signpost content
-            </clr-signpost-content>
-        </clr-signpost>
-    `,
+    <button #outsideClick type="button">
+      Button to test clicks outside of the dropdown component
+    </button>
+    <clr-signpost>
+      <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+        Custom trigger
+      </button>
+      <clr-signpost-content *clrIfOpen="openState">
+        Signpost content
+      </clr-signpost-content>
+    </clr-signpost>
+  `,
 })
 class TestCustomTriggerSignpost {
   @ViewChild(ClrSignpost) signpost: ClrSignpost;
@@ -258,18 +255,18 @@ class TestCustomTriggerSignpost {
 
 @Component({
   template: `
-        <button #outsideClick type="button">
-            Button to test clicks outside of the dropdown component
+    <button #outsideClick type="button">
+      Button to test clicks outside of the dropdown component
+    </button>
+    <clr-signpost>
+      <clr-signpost-content *clrIfOpen="openState">
+        <button class="dummy-button" type="button">
+          dummy button
         </button>
-        <clr-signpost>
-            <clr-signpost-content *clrIfOpen="openState">
-                <button class="dummy-button" type="button">
-                  dummy button
-                </button>
-                Signpost content
-            </clr-signpost-content>
-        </clr-signpost>
-    `,
+        Signpost content
+      </clr-signpost-content>
+    </clr-signpost>
+  `,
 })
 class TestDefaultSignpost {
   @ViewChild(ClrSignpost) signpost: ClrSignpost;

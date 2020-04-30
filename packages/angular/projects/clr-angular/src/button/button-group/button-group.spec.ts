@@ -10,7 +10,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClrButtonGroup } from './button-group';
 import { ClrButtonGroupModule } from './button-group.module';
 
-export default function(): void {
+export default function (): void {
   describe('Button Group', () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -477,14 +477,14 @@ export default function(): void {
 
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button>Button 1</clr-button>
-            <clr-button>Button 2</clr-button>
-            <clr-button>Button 3</clr-button>
-            <clr-button>Button 4</clr-button>
-            <clr-button>Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button>Button 1</clr-button>
+      <clr-button>Button 2</clr-button>
+      <clr-button>Button 3</clr-button>
+      <clr-button>Button 4</clr-button>
+      <clr-button>Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupInlineViewContainer {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -492,14 +492,14 @@ class BtnGroupInlineViewContainer {
 
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button>Button 1</clr-button>
-            <clr-button>Button 2</clr-button>
-            <clr-button [clrInMenu]="true">Button 3</clr-button>
-            <clr-button [clrInMenu]="true">Button 4</clr-button>
-            <clr-button [clrInMenu]="true">Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button>Button 1</clr-button>
+      <clr-button>Button 2</clr-button>
+      <clr-button [clrInMenu]="true">Button 3</clr-button>
+      <clr-button [clrInMenu]="true">Button 4</clr-button>
+      <clr-button [clrInMenu]="true">Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupBothViewContainersTest {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -507,14 +507,14 @@ class BtnGroupBothViewContainersTest {
 
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button>Button 1</clr-button>
-            <clr-button>Button 2</clr-button>
-            <clr-button>Button 3</clr-button>
-            <clr-button>Button 4</clr-button>
-            <clr-button [clrInMenu]="flip">Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button>Button 1</clr-button>
+      <clr-button>Button 2</clr-button>
+      <clr-button>Button 3</clr-button>
+      <clr-button>Button 4</clr-button>
+      <clr-button [clrInMenu]="flip">Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupFlipTest1 {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -524,14 +524,14 @@ class BtnGroupFlipTest1 {
 
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button>Button 1</clr-button>
-            <clr-button>Button 2</clr-button>
-            <clr-button>Button 3</clr-button>
-            <clr-button [clrInMenu]="flip">Button 4</clr-button>
-            <clr-button [clrInMenu]="true">Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button>Button 1</clr-button>
+      <clr-button>Button 2</clr-button>
+      <clr-button>Button 3</clr-button>
+      <clr-button [clrInMenu]="flip">Button 4</clr-button>
+      <clr-button [clrInMenu]="true">Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupFlipTest2 {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -541,14 +541,14 @@ class BtnGroupFlipTest2 {
 
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button>Button 1</clr-button>
-            <clr-button *ngIf="show">Button 2</clr-button>
-            <clr-button>Button 3</clr-button>
-            <clr-button *ngIf="show" [clrInMenu]="true">Button 4</clr-button>
-            <clr-button *ngIf="show" [clrInMenu]="true">Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button>Button 1</clr-button>
+      <clr-button *ngIf="show">Button 2</clr-button>
+      <clr-button>Button 3</clr-button>
+      <clr-button *ngIf="show" [clrInMenu]="true">Button 4</clr-button>
+      <clr-button *ngIf="show" [clrInMenu]="true">Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupProjectionUpdateTest {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -559,14 +559,14 @@ class BtnGroupProjectionUpdateTest {
 /* This feature is not recommended but we are just testing the fallback */
 @Component({
   template: `
-        <clr-button-group>
-            <clr-button [clrInMenu]="true">Button 1</clr-button>
-            <clr-button [clrInMenu]="true">Button 2</clr-button>
-            <clr-button [clrInMenu]="true">Button 3</clr-button>
-            <clr-button [clrInMenu]="true">Button 4</clr-button>
-            <clr-button [clrInMenu]="true">Button 5</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group>
+      <clr-button [clrInMenu]="true">Button 1</clr-button>
+      <clr-button [clrInMenu]="true">Button 2</clr-button>
+      <clr-button [clrInMenu]="true">Button 3</clr-button>
+      <clr-button [clrInMenu]="true">Button 4</clr-button>
+      <clr-button [clrInMenu]="true">Button 5</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupMenuViewContainer {
   @ViewChild(ClrButtonGroup) btnGroup: ClrButtonGroup;
@@ -578,22 +578,22 @@ class BtnGroupMenuViewContainer {
  */
 @Component({
   template: `
-        <clr-button-group #btnGroup1 class="test-btn-group-1">
-            <clr-button>Button 1</clr-button>
-            <clr-button>Button 2</clr-button>
-            <clr-button>Button 3</clr-button>
-            <clr-button [clrInMenu]="true">Button 4</clr-button>
-            <clr-button [clrInMenu]="true">Button 5</clr-button>
-        </clr-button-group>
+    <clr-button-group #btnGroup1 class="test-btn-group-1">
+      <clr-button>Button 1</clr-button>
+      <clr-button>Button 2</clr-button>
+      <clr-button>Button 3</clr-button>
+      <clr-button [clrInMenu]="true">Button 4</clr-button>
+      <clr-button [clrInMenu]="true">Button 5</clr-button>
+    </clr-button-group>
 
-        <clr-button-group #btnGroup2 class="test-btn-group-2">
-            <clr-button>Button 6</clr-button>
-            <clr-button>Button 7</clr-button>
-            <clr-button>Button 8</clr-button>
-            <clr-button [clrInMenu]="true">Button 9</clr-button>
-            <clr-button [clrInMenu]="true">Button 10</clr-button>
-        </clr-button-group>
-    `,
+    <clr-button-group #btnGroup2 class="test-btn-group-2">
+      <clr-button>Button 6</clr-button>
+      <clr-button>Button 7</clr-button>
+      <clr-button>Button 8</clr-button>
+      <clr-button [clrInMenu]="true">Button 9</clr-button>
+      <clr-button [clrInMenu]="true">Button 10</clr-button>
+    </clr-button-group>
+  `,
 })
 class BtnGroupEHCAIWCTest {
   @ViewChild('btnGroup1') btnGroup1: ClrButtonGroup;

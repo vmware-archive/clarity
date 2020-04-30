@@ -15,10 +15,10 @@ import { ClrMainContainerModule } from './main-container.module';
 
 @Component({
   template: `
-        <clr-main-container>
-            Test
-        </clr-main-container>
-   `,
+    <clr-main-container>
+      Test
+    </clr-main-container>
+  `,
 })
 class TestComponent {
   @ViewChild(ClrMainContainer) mainContainerInstance: ClrMainContainer;

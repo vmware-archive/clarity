@@ -18,16 +18,16 @@ import { ClrDatagridColumn } from '../datagrid-column';
 import { ColumnsService } from '../providers/columns.service';
 import { DatagridRowRenderer } from './row-renderer';
 
-export default function(): void {
-  describe('DatagridMainRenderer directive', function() {
-    describe('static loading', function() {
+export default function (): void {
+  describe('DatagridMainRenderer directive', function () {
+    describe('static loading', function () {
       let context: TestContext<DatagridMainRenderer, StaticTest>;
       let organizer: MockDatagridRenderOrganizer;
       let resizeSpy: jasmine.Spy;
       let computeStateSpy: jasmine.Spy;
       let columnsService: ColumnsService;
 
-      beforeEach(function() {
+      beforeEach(function () {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
         context = this.createWithOverrideDirective(
           DatagridMainRenderer,
@@ -41,11 +41,11 @@ export default function(): void {
         columnsService = context.getClarityProvider(ColumnsService);
       });
 
-      it('triggers the render process on initialization', function() {
+      it('triggers the render process on initialization', function () {
         expect(resizeSpy.calls.count()).toBe(1);
       });
 
-      it('pushes its header states to the column service', function() {
+      it('pushes its header states to the column service', function () {
         expect(columnsService.columns.length).toBe(2);
         context.testComponent.secondColumn = false;
         context.detectChanges();
@@ -55,7 +55,7 @@ export default function(): void {
         expect(columnsService.columns.length).toBe(2);
       });
 
-      it('re-triggers the render process whenever the columns change', function() {
+      it('re-triggers the render process whenever the columns change', function () {
         resizeSpy.calls.reset();
         expect(resizeSpy.calls.count()).toBe(0);
         context.testComponent.secondColumn = false;
@@ -66,7 +66,7 @@ export default function(): void {
         expect(resizeSpy.calls.count()).toBe(2);
       });
 
-      it('does not re-triggers the render process when the rows change', function() {
+      it('does not re-triggers the render process when the rows change', function () {
         resizeSpy.calls.reset();
         expect(resizeSpy.calls.count()).toBe(0);
         context.testComponent.firstRow = false;
@@ -77,7 +77,7 @@ export default function(): void {
         expect(resizeSpy.calls.count()).toBe(0);
       });
 
-      it('computes the widths of the columns when notified', function() {
+      it('computes the widths of the columns when notified', function () {
         expect(computeStateSpy.calls.count()).toBe(0);
         // Too lazy to do something other than casting right now.
         organizer.updateRenderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
@@ -86,31 +86,31 @@ export default function(): void {
         );
       });
 
-      it('sets the widths of the columns for the other components', function() {
+      it('sets the widths of the columns for the other components', function () {
         const spy = spyOn(columnsService, 'emitStateChange');
         organizer.updateRenderStep.next(DatagridRenderStep.COMPUTE_COLUMN_WIDTHS);
         expect(spy).toHaveBeenCalled();
       });
     });
 
-    describe('dynamic loading', function() {
+    describe('dynamic loading', function () {
       let context: TestContext<DatagridMainRenderer, DynamicTest>;
       let resizeSpy, rowsSpy: jasmine.Spy;
 
-      beforeEach(function() {
+      beforeEach(function () {
         resizeSpy = spyOn(DatagridRenderOrganizer.prototype, 'resize');
         rowsSpy = spyOn(DatagridRowRenderer.prototype, 'setColumnState');
         context = this.create(DatagridMainRenderer, DynamicTest);
       });
 
-      it('does not trigger the render process until the rows are loaded', function() {
+      it('does not trigger the render process until the rows are loaded', function () {
         expect(resizeSpy.calls.count()).toBe(0);
         context.testComponent.projected = true;
         context.detectChanges();
         expect(resizeSpy.calls.count()).toBe(1);
       });
 
-      it('ignores columns changes until the rows are loaded', function() {
+      it('ignores columns changes until the rows are loaded', function () {
         context.testComponent.secondColumn = false;
         context.detectChanges();
         expect(resizeSpy.calls.count()).toBe(0);
@@ -122,14 +122,14 @@ export default function(): void {
         expect(resizeSpy.calls.count()).toBe(2);
       });
 
-      it('triggers the render process if the rows are given through *clrDgItems', function() {
+      it('triggers the render process if the rows are given through *clrDgItems', function () {
         expect(resizeSpy.calls.count()).toBe(0);
         context.testComponent.clrDgItems = [1];
         context.detectChanges();
         expect(resizeSpy.calls.count()).toBe(1);
       });
 
-      it('tracks changes of cells', function() {
+      it('tracks changes of cells', function () {
         context.testComponent.clrDgItems = [0, 1, 2];
         context.detectChanges();
         expect(rowsSpy.calls.count()).toBe(3); // Number of rows
@@ -192,10 +192,10 @@ export default function(): void {
       });
     });
 
-    describe('smart datagrid height', function() {
+    describe('smart datagrid height', function () {
       let context: ComponentFixture<DatagridHeightTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           imports: [BrowserAnimationsModule, ClrDatagridModule],
           declarations: [DatagridHeightTest],
@@ -204,11 +204,11 @@ export default function(): void {
         context.detectChanges();
       });
 
-      it('sets an initial datagrid height', function() {
+      it('sets an initial datagrid height', function () {
         expect(context.nativeElement.clientHeight).toBeGreaterThan(0);
       });
 
-      it('adjusts datagrid height when items are added or removed', function() {
+      it('adjusts datagrid height when items are added or removed', function () {
         // Tests fix for issue #1084
         const initHeight = context.nativeElement.clientHeight;
         const changeBtn = context.nativeElement.querySelector('.btn.btn-sm.btn-outline-primary');
@@ -223,22 +223,22 @@ export default function(): void {
       });
     });
 
-    describe('smart columns width', function() {
+    describe('smart columns width', function () {
       let context: TestContext<DatagridMainRenderer, ColumnsWidthTest>;
       let organizer: DatagridRenderOrganizer;
       let columnsService: ColumnsService;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(DatagridMainRenderer, ColumnsWidthTest);
         organizer = context.getClarityProvider(DatagridRenderOrganizer);
         columnsService = context.getClarityProvider(ColumnsService);
       });
 
-      it('gives identical columns the same width', function() {
+      it('gives identical columns the same width', function () {
         expect(columnsService.columns[0].value.width).toBe(columnsService.columns[1].value.width);
       });
 
-      it('uses headers content to compute columns width', function() {
+      it('uses headers content to compute columns width', function () {
         context.testComponent.firstHeader = 'ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ';
         context.detectChanges();
         organizer.resize();
@@ -250,7 +250,7 @@ export default function(): void {
         expect(columnsService.columns[0].value.width).toBeLessThan(columnsService.columns[1].value.width);
       });
 
-      it('uses cells content to compute columns width', function() {
+      it('uses cells content to compute columns width', function () {
         context.testComponent.firstCell = 'ZZZZZZ ZZZZZZ ZZZZZZ ZZZZZZ';
         context.detectChanges();
         organizer.resize();
@@ -262,7 +262,7 @@ export default function(): void {
         expect(columnsService.columns[0].value.width).toBeLessThan(columnsService.columns[1].value.width);
       });
 
-      it('correctly sets strict widths', function() {
+      it('correctly sets strict widths', function () {
         context.testComponent.fixedWidth = true;
         context.detectChanges();
         expect(columnsService.columns[0].value.strictWidth).toBe(42);
@@ -274,11 +274,11 @@ export default function(): void {
       });
     });
 
-    describe('detail pane', function() {
+    describe('detail pane', function () {
       let context: TestContext<DatagridMainRenderer, ColumnsWidthTest>;
       let columnsService: ColumnsService;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(DatagridMainRenderer, DatagridDetailPaneTest);
         columnsService = context.getClarityProvider(ColumnsService);
         columnsService.resetToLastCache();
@@ -287,20 +287,20 @@ export default function(): void {
         context.detectChanges();
       });
 
-      it('toggles the detail pane open and emits state changes for each column', function() {
+      it('toggles the detail pane open and emits state changes for each column', function () {
         context.clarityDirective.toggleDetailPane(true);
         context.detectChanges();
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
         expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
       });
 
-      it('toggles the detail pane closed and resets to cache', function() {
+      it('toggles the detail pane closed and resets to cache', function () {
         context.clarityDirective.toggleDetailPane(false);
         expect(columnsService.resetToLastCache).toHaveBeenCalledTimes(1);
         expect(columnsService.emitStateChangeAt).not.toHaveBeenCalled();
       });
 
-      it('toggles the currently active detail item without clearing cache or closing', function() {
+      it('toggles the currently active detail item without clearing cache or closing', function () {
         context.clarityDirective.toggleDetailPane(true);
         expect(columnsService.resetToLastCache).not.toHaveBeenCalled();
         expect(columnsService.emitStateChangeAt).toHaveBeenCalledTimes(1);
@@ -331,7 +331,7 @@ export default function(): void {
         <clr-dg-column>Column</clr-dg-column>
         <clr-dg-row>
           <clr-dg-action-overflow *ngIf="hasActions">
-            <button class="action-item" (click)="return;">
+            <button class="action-item" (click)="(return)">
               Edit
             </button>
           </clr-dg-action-overflow>
@@ -351,7 +351,7 @@ export default function(): void {
       </clr-datagrid>
     </ng-template>
     <ng-template #single>
-      <clr-datagrid #datagridSingleSelect [(clrDgSingleSelected)]='singleSelect'>
+      <clr-datagrid #datagridSingleSelect [(clrDgSingleSelected)]="singleSelect">
         <clr-dg-column>Column</clr-dg-column>
         <clr-dg-column>Column</clr-dg-column>
         <clr-dg-row>
@@ -370,7 +370,7 @@ export default function(): void {
         </clr-dg-row>
       </clr-datagrid>
     </ng-template>
-   `,
+  `,
 })
 class RenderWidthTest {
   currentTest;
@@ -390,19 +390,19 @@ class RenderWidthTest {
 
 @Component({
   template: `
-        <clr-datagrid>
-            <clr-dg-column>AAA</clr-dg-column>
-            <clr-dg-column *ngIf="secondColumn">AAA</clr-dg-column>
-            <clr-dg-row *ngIf="firstRow">
-                <clr-dg-cell>BBB</clr-dg-cell>
-                <clr-dg-cell *ngIf="secondColumn">BBB</clr-dg-cell>
-            </clr-dg-row>
-            <clr-dg-row *ngIf="!firstRow">
-                <clr-dg-cell>CCC</clr-dg-cell>
-                <clr-dg-cell *ngIf="secondColumn">CCC</clr-dg-cell>
-            </clr-dg-row>
-        </clr-datagrid>
-    `,
+    <clr-datagrid>
+      <clr-dg-column>AAA</clr-dg-column>
+      <clr-dg-column *ngIf="secondColumn">AAA</clr-dg-column>
+      <clr-dg-row *ngIf="firstRow">
+        <clr-dg-cell>BBB</clr-dg-cell>
+        <clr-dg-cell *ngIf="secondColumn">BBB</clr-dg-cell>
+      </clr-dg-row>
+      <clr-dg-row *ngIf="!firstRow">
+        <clr-dg-cell>CCC</clr-dg-cell>
+        <clr-dg-cell *ngIf="secondColumn">CCC</clr-dg-cell>
+      </clr-dg-row>
+    </clr-datagrid>
+  `,
 })
 class StaticTest {
   secondColumn = true;
@@ -411,21 +411,21 @@ class StaticTest {
 
 @Component({
   template: `
-        <clr-datagrid>
-            <clr-dg-column>AAA</clr-dg-column>
-            <clr-dg-column *ngIf="secondColumn">AAA</clr-dg-column>
-            <clr-dg-row *ngIf="projected">
-                <clr-dg-cell>BBB</clr-dg-cell>
-                <clr-dg-cell>BBB</clr-dg-cell>
-            </clr-dg-row>
-            <ng-template [ngIf]="clrDgItems.length > 0">
-                <clr-dg-row *clrDgItems="let n of clrDgItems">
-                    <clr-dg-cell>BBB</clr-dg-cell>
-                    <clr-dg-cell>BBB</clr-dg-cell>
-                </clr-dg-row>
-            </ng-template>
-        </clr-datagrid>
-    `,
+    <clr-datagrid>
+      <clr-dg-column>AAA</clr-dg-column>
+      <clr-dg-column *ngIf="secondColumn">AAA</clr-dg-column>
+      <clr-dg-row *ngIf="projected">
+        <clr-dg-cell>BBB</clr-dg-cell>
+        <clr-dg-cell>BBB</clr-dg-cell>
+      </clr-dg-row>
+      <ng-template [ngIf]="clrDgItems.length > 0">
+        <clr-dg-row *clrDgItems="let n of clrDgItems">
+          <clr-dg-cell>BBB</clr-dg-cell>
+          <clr-dg-cell>BBB</clr-dg-cell>
+        </clr-dg-row>
+      </ng-template>
+    </clr-datagrid>
+  `,
 })
 class DynamicTest {
   secondColumn = true;
@@ -435,17 +435,17 @@ class DynamicTest {
 
 @Component({
   template: `
-        <clr-datagrid>
-            <clr-dg-column *ngIf="fixedWidth" [style.width.px]="42">Fixed width</clr-dg-column>
-            <clr-dg-column >{{firstHeader}}</clr-dg-column>
-            <clr-dg-column>{{secondHeader}}</clr-dg-column>
-            <clr-dg-row>
-                <clr-dg-cell *ngIf="fixedWidth">Fixed width</clr-dg-cell>
-                <clr-dg-cell>{{firstCell}}</clr-dg-cell>
-                <clr-dg-cell>{{secondCell}}</clr-dg-cell>
-            </clr-dg-row>
-        </clr-datagrid>
-    `,
+    <clr-datagrid>
+      <clr-dg-column *ngIf="fixedWidth" [style.width.px]="42">Fixed width</clr-dg-column>
+      <clr-dg-column>{{ firstHeader }}</clr-dg-column>
+      <clr-dg-column>{{ secondHeader }}</clr-dg-column>
+      <clr-dg-row>
+        <clr-dg-cell *ngIf="fixedWidth">Fixed width</clr-dg-cell>
+        <clr-dg-cell>{{ firstCell }}</clr-dg-cell>
+        <clr-dg-cell>{{ secondCell }}</clr-dg-cell>
+      </clr-dg-row>
+    </clr-datagrid>
+  `,
 })
 class ColumnsWidthTest {
   firstHeader = 'AAA';
@@ -458,21 +458,18 @@ class ColumnsWidthTest {
 
 @Component({
   template: `
-        <clr-datagrid>
-            <clr-dg-column>Number</clr-dg-column>
-            <clr-dg-row *clrDgItems="let number of numbers">
-                <clr-dg-cell>{{number}}</clr-dg-cell>
-            </clr-dg-row>
+    <clr-datagrid>
+      <clr-dg-column>Number</clr-dg-column>
+      <clr-dg-row *clrDgItems="let number of numbers">
+        <clr-dg-cell>{{ number }}</clr-dg-cell>
+      </clr-dg-row>
 
-            <clr-dg-footer>
-                <button
-                    class="btn btn-sm btn-outline-primary"
-                    (click)="changeList()">Change
-                </button>
-                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-    `,
+      <clr-dg-footer>
+        <button class="btn btn-sm btn-outline-primary" (click)="changeList()">Change</button>
+        <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  `,
 })
 class DatagridHeightTest {
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -489,27 +486,24 @@ class DatagridHeightTest {
 
 @Component({
   template: `
-        <clr-datagrid>
-            <clr-dg-column>Number</clr-dg-column>
-            <clr-dg-column>Number</clr-dg-column>
-            <clr-dg-row *clrDgItems="let number of numbers">
-                <clr-dg-cell>{{number}}</clr-dg-cell>
-                <clr-dg-cell>{{number}}</clr-dg-cell>
-            </clr-dg-row>
+    <clr-datagrid>
+      <clr-dg-column>Number</clr-dg-column>
+      <clr-dg-column>Number</clr-dg-column>
+      <clr-dg-row *clrDgItems="let number of numbers">
+        <clr-dg-cell>{{ number }}</clr-dg-cell>
+        <clr-dg-cell>{{ number }}</clr-dg-cell>
+      </clr-dg-row>
 
-          <clr-dg-detail *clrIfDetail="let detail">
-            {{detail}}
-          </clr-dg-detail>
+      <clr-dg-detail *clrIfDetail="let detail">
+        {{ detail }}
+      </clr-dg-detail>
 
-            <clr-dg-footer>
-                <button
-                    class="btn btn-sm btn-outline-primary"
-                    (click)="changeList()">Change
-                </button>
-                <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-    `,
+      <clr-dg-footer>
+        <button class="btn btn-sm btn-outline-primary" (click)="changeList()">Change</button>
+        <clr-dg-pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  `,
 })
 class DatagridDetailPaneTest {
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];

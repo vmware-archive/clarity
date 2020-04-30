@@ -26,16 +26,16 @@ _A clear and concise description of what you expected to happen._
 
 **App**
 
-* Angular: [e.g. 6]
-* Node: [e.g. 8.10.0]
-* Clarity: [e.g. 0.12.5]
+- Angular: [e.g. 6]
+- Node: [e.g. 8.10.0]
+- Clarity: [e.g. 0.12.5]
 
 **Device:**
 
-* Type: [e.g. MacBook]
-* OS: [e.g. iOS]
-* Browser [e.g. chrome, safari]
-* Version [e.g. 22]
+- Type: [e.g. MacBook]
+- OS: [e.g. iOS]
+- Browser [e.g. chrome, safari]
+- Version [e.g. 22]
 
 ## Additional notes
 

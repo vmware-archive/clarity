@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,41 +14,41 @@ import { ClrOptions } from './options';
 
 @Component({
   template: `
-        <clr-options>
-            Test
-        </clr-options>
-    `,
+    <clr-options>
+      Test
+    </clr-options>
+  `,
   providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class TestComponent {}
 
 @Component({
   template: `
-        <clr-options>
-            Test
-        </clr-options>
-    `,
+    <clr-options>
+      Test
+    </clr-options>
+  `,
   providers: [ClrPopoverToggleService],
 })
 class TestComponentWithError {}
 
-export default function(): void {
-  describe('Select Options Menu Component', function() {
+export default function (): void {
+  describe('Select Options Menu Component', function () {
     let context: TestContext<ClrOptions, TestComponent>;
     let toggleService: ClrPopoverToggleService;
 
-    describe('View Basics', function() {
-      beforeEach(function() {
+    describe('View Basics', function () {
+      beforeEach(function () {
         context = this.createOnly(ClrOptions, TestComponent, []);
         toggleService = context.getClarityProvider(ClrPopoverToggleService);
       });
 
-      it('projects content', function() {
+      it('projects content', function () {
         const menu = context.testElement.querySelector('clr-options');
         expect(menu.textContent).toMatch(/Test/);
       });
 
-      it('has the correct class', function() {
+      it('has the correct class', function () {
         const menu = context.testElement.querySelector('clr-options');
         expect(menu.classList.contains('clr-options')).toBe(true);
       });
@@ -62,8 +62,8 @@ export default function(): void {
       });
     });
 
-    describe('Error Condition', function() {
-      it('throws an error when options menu is not used inside of clr-combobox', function() {
+    describe('Error Condition', function () {
+      it('throws an error when options menu is not used inside of clr-combobox', function () {
         TestBed.configureTestingModule({ declarations: [ClrOptions, TestComponentWithError] });
         expect(() => {
           TestBed.createComponent(TestComponentWithError);

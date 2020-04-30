@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,21 +8,21 @@ import { ClrDatagridComparatorInterface } from '../interfaces/comparator.interfa
 import { Sort } from './sort';
 import { StateDebouncer } from './state-debouncer.provider';
 
-export default function(): void {
-  describe('Sort provider', function() {
-    beforeEach(function() {
+export default function (): void {
+  describe('Sort provider', function () {
+    beforeEach(function () {
       this.sortInstance = new Sort(new StateDebouncer());
       this.comparator = new TestComparator();
     });
 
-    it('compares according to the current comparator', function() {
+    it('compares according to the current comparator', function () {
       this.sortInstance.comparator = this.comparator;
       expect(this.sortInstance.compare(1, 10)).toBeLessThan(0);
       expect(this.sortInstance.compare(4, 4)).toBe(0);
       expect(this.sortInstance.compare(42, 3)).toBeGreaterThan(0);
     });
 
-    it('can reverse the order of the current comparator', function() {
+    it('can reverse the order of the current comparator', function () {
       this.sortInstance.comparator = this.comparator;
       this.sortInstance.reverse = true;
       expect(this.sortInstance.compare(1, 10)).toBeGreaterThan(0);
@@ -30,14 +30,14 @@ export default function(): void {
       expect(this.sortInstance.compare(42, 3)).toBeLessThan(0);
     });
 
-    it('exposes a toggle method to set the comparator', function() {
+    it('exposes a toggle method to set the comparator', function () {
       this.sortInstance.toggle(this.comparator);
       expect(this.sortInstance.comparator).toBe(this.comparator);
       this.sortInstance.toggle(this.comparator, true);
       expect(this.sortInstance.comparator).toBe(this.comparator);
     });
 
-    it('reverses the order when toggle is called on the same comparator', function() {
+    it('reverses the order when toggle is called on the same comparator', function () {
       // Ascending
       this.sortInstance.toggle(this.comparator);
       expect(this.sortInstance.reverse).toBe(false);
@@ -49,7 +49,7 @@ export default function(): void {
       expect(this.sortInstance.reverse).toBe(false);
     });
 
-    it('always uses descending order if forceReverse is set', function() {
+    it('always uses descending order if forceReverse is set', function () {
       // Force descending
       this.sortInstance.toggle(this.comparator, true);
       expect(this.sortInstance.reverse).toBe(true);
@@ -64,7 +64,7 @@ export default function(): void {
       expect(this.sortInstance.reverse).toBe(true);
     });
 
-    it('always uses ascending order when toggling a new comparator ', function() {
+    it('always uses ascending order when toggling a new comparator ', function () {
       this.sortInstance.comparator = this.comparator;
       expect(this.sortInstance.reverse).toBe(false);
       this.sortInstance.toggle(new TestComparator());
@@ -76,7 +76,7 @@ export default function(): void {
       expect(this.sortInstance.reverse).toBe(false);
     });
 
-    it('always uses descending order if forceReverse is set even when toggling a new comparator ', function() {
+    it('always uses descending order if forceReverse is set even when toggling a new comparator ', function () {
       this.sortInstance.comparator = this.comparator;
       expect(this.sortInstance.reverse).toBe(false);
       this.sortInstance.toggle(new TestComparator(), true);
@@ -88,7 +88,7 @@ export default function(): void {
       expect(this.sortInstance.reverse).toBe(false);
     });
 
-    it('exposes an Observable to follow sort changes', function() {
+    it('exposes an Observable to follow sort changes', function () {
       let nbChanges = 0;
       let latestComparator: ClrDatagridComparatorInterface<number>;
       let latestReverse: boolean;

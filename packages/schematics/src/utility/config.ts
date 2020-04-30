@@ -44,7 +44,8 @@ export interface AppConfig {
          * The output path (relative to the outDir).
          */
         output?: string;
-      })[];
+      }
+  )[];
   /**
    * URL where files will be deployed.
    */
@@ -97,7 +98,8 @@ export interface AppConfig {
     | {
         input?: string;
         [name: string]: any;
-      })[];
+      }
+  )[];
   /**
    * Options to pass to style preprocessors
    */
@@ -115,7 +117,8 @@ export interface AppConfig {
     | {
         input: string;
         [name: string]: any;
-      })[];
+      }
+  )[];
   /**
    * Source file for environment config.
    */

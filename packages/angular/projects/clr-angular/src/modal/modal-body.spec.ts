@@ -12,7 +12,7 @@ describe('ClrModalBody Directive', () => {
   let fixture: ComponentFixture<TestComponent>;
   let modalBodyEl: HTMLElement;
 
-  beforeEach(function() {
+  beforeEach(function () {
     TestBed.configureTestingModule({
       declarations: [ClrModalBody, TestComponent],
     });

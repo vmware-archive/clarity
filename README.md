@@ -15,21 +15,21 @@ Clarity. For complete documentation, visit the [Clarity website](https://clarity
 
 Clarity is published as four npm packages:
 
-* **[@clr/icons](https://www.npmjs.com/package/@clr/icons)** Contains the custom
+- **[@clr/icons](https://www.npmjs.com/package/@clr/icons)** Contains the custom
   element icons.
-* **[@clr/ui](https://www.npmjs.com/package/@clr/ui)** Contains the static
+- **[@clr/ui](https://www.npmjs.com/package/@clr/ui)** Contains the static
   styles for building HTML components.
-* **[@clr/angular](https://www.npmjs.com/package/@clr/angular)** Contains the
+- **[@clr/angular](https://www.npmjs.com/package/@clr/angular)** Contains the
   Angular components. This package depends on @clr/ui for styles.
-* **[@clr/core](https://www.npmjs.com/package/@clr/core).** Contains the Web
+- **[@clr/core](https://www.npmjs.com/package/@clr/core).** Contains the Web
   Components that work in any JavaScript framework.
 
 ## Installing Clarity
 
-* **[Install CSS Only](/docs/INSTALLATION.md#installing-clarity-ui)**
-* **[Install Icons](/docs/INSTALLATION.md#installing-clarity-icons)**
-* **[Install Angular Components](/docs/INSTALLATION.md#installing-clarity-angular)**
-* **[Install Web Components](/docs/INSTALLATION.md#installing-clarity-web-components)**
+- **[Install CSS Only](/docs/INSTALLATION.md#installing-clarity-ui)**
+- **[Install Icons](/docs/INSTALLATION.md#installing-clarity-icons)**
+- **[Install Angular Components](/docs/INSTALLATION.md#installing-clarity-angular)**
+- **[Install Web Components](/docs/INSTALLATION.md#installing-clarity-web-components)**
 
 ## Documentation
 
@@ -43,8 +43,8 @@ detailed information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licenses
 
-* The Clarity Design System is licensed under the MIT license.
-* The font is licensed under the Open Font License (OFL).
+- The Clarity Design System is licensed under the MIT license.
+- The font is licensed under the Open Font License (OFL).
 
 ## Feedback
 

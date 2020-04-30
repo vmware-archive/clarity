@@ -4,9 +4,9 @@ These schematics provide built in integrations with the Angular CLI features in 
 
 ## TODO
 
-* Add proper unit tests
-* Add e2e tests on travis
-* Clean up unnecessary utils
+- Add proper unit tests
+- Add e2e tests on travis
+- Clean up unnecessary utils
 
 ### Development setup
 

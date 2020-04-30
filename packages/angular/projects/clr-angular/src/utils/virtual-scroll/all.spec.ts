@@ -15,7 +15,7 @@ import VirtualForOfSpecs from './virtual-for-of.spec';
 
 // Skipping IE for virtual scrolling, as a number of the calculations are not being made exactly as tests expect
 // @TODO Fix IE testing for virtual scrolling
-describe('Virtual Scroll', function() {
+describe('Virtual Scroll', function () {
   DomHelperSpecs();
   VirtualForOfSpecs();
 });

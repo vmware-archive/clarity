@@ -16,9 +16,7 @@ import { ClrTabsModule } from './tabs.module';
 
 @Component({
   selector: 'test-wrapper',
-  template: `
-        <ng-container #tabContentViewContainer></ng-container>
-   `,
+  template: ` <ng-container #tabContentViewContainer></ng-container> `,
 })
 class TestWrapper {
   @ViewChild('tabContentViewContainer', { static: true, read: ViewContainerRef })
@@ -30,12 +28,12 @@ class TestWrapper {
 
 @Component({
   template: `
-      <test-wrapper>
-        <clr-tab>
-          <button clrTabLink>Tab1</button>
-          <clr-tab-content>Content1</clr-tab-content>
-        </clr-tab>
-      </test-wrapper>
+    <test-wrapper>
+      <clr-tab>
+        <button clrTabLink>Tab1</button>
+        <clr-tab-content>Content1</clr-tab-content>
+      </clr-tab>
+    </test-wrapper>
   `,
 })
 class TestComponent {

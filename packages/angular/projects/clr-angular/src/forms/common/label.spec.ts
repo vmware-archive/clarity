@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -43,9 +43,9 @@ class WrapperTest {}
 })
 class ExistingGridTest {}
 
-export default function(): void {
+export default function (): void {
   describe('ClrLabel', () => {
-    it("doesn't crash if it is not used in an Angular form", function() {
+    it("doesn't crash if it is not used in an Angular form", function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest] });
       expect(() => {
         const fixture = TestBed.createComponent(NoForTest);
@@ -53,7 +53,7 @@ export default function(): void {
       }).not.toThrow();
     });
 
-    it("doesn't set the the class unless its inside of a container", function() {
+    it("doesn't set the the class unless its inside of a container", function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest] });
       const fixture = TestBed.createComponent(NoForTest);
       fixture.detectChanges();
@@ -62,7 +62,7 @@ export default function(): void {
       ).toBeFalse();
     });
 
-    it('does set the the class when its inside of a container', function() {
+    it('does set the the class when its inside of a container', function () {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, ContainerizedTest],
@@ -74,7 +74,7 @@ export default function(): void {
       ).toBeTrue();
     });
 
-    it('does set the class when its inside of a wrapper', function() {
+    it('does set the class when its inside of a wrapper', function () {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, WrapperTest],
@@ -86,7 +86,7 @@ export default function(): void {
       ).toBeTrue();
     });
 
-    it('sets the for attribute to the id given by the service', function() {
+    it('sets the for attribute to the id given by the service', function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, NoForTest], providers: [ControlIdService] });
       const fixture = TestBed.createComponent(NoForTest);
       fixture.detectChanges();
@@ -98,7 +98,7 @@ export default function(): void {
       expect(label.getAttribute('for')).toBe('test');
     });
 
-    it('adds the grid classes for non-vertical layouts', function() {
+    it('adds the grid classes for non-vertical layouts', function () {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
@@ -113,7 +113,7 @@ export default function(): void {
       expect(label.classList.contains('clr-col-12')).toBeTrue();
     });
 
-    it('adds the grid classes for non-vertical non-default layouts', function() {
+    it('adds the grid classes for non-vertical non-default layouts', function () {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
@@ -129,7 +129,7 @@ export default function(): void {
       expect(label.classList.contains('clr-col-12')).toBeTrue();
     });
 
-    it('disables adding the grid classes when manually disabled', function() {
+    it('disables adding the grid classes when manually disabled', function () {
       TestBed.configureTestingModule({
         imports: [ClrIconModule],
         declarations: [ClrLabel, ClrInputContainer, ContainerizedTest],
@@ -145,7 +145,7 @@ export default function(): void {
       expect(label.classList.contains('clr-col-12')).toBeFalse();
     });
 
-    it('leaves the grid classes untouched if they exist', function() {
+    it('leaves the grid classes untouched if they exist', function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, ExistingGridTest], providers: [ControlIdService] });
       const fixture = TestBed.createComponent(ExistingGridTest);
       fixture.detectChanges();
@@ -154,7 +154,7 @@ export default function(): void {
       expect(label.className).toContain('clr-col-md-3');
     });
 
-    it('leaves the for attribute untouched if it exists', function() {
+    it('leaves the for attribute untouched if it exists', function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, ExplicitForTest], providers: [ControlIdService] });
       const fixture = TestBed.createComponent(ExplicitForTest);
       fixture.detectChanges();
@@ -162,7 +162,7 @@ export default function(): void {
       expect(label.getAttribute('for')).toBe('hello');
     });
 
-    it('provides a host binding on the for attribute', function() {
+    it('provides a host binding on the for attribute', function () {
       TestBed.configureTestingModule({ declarations: [ClrLabel, ExplicitForTest], providers: [ControlIdService] });
       const fixture = TestBed.createComponent(ExplicitForTest);
       fixture.detectChanges();

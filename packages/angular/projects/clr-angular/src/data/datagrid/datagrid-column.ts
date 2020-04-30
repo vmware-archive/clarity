@@ -41,44 +41,43 @@ import { DetailService } from './providers/detail.service';
 @Component({
   selector: 'clr-dg-column',
   template: `
-      <div class="datagrid-column-flex">
-          <button
-            class="datagrid-column-title"
-            [attr.aria-label]="commonStrings.keys.sortColumn"
-            *ngIf="sortable"
-            (click)="sort()"
-            type="button">
-              <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
-              <clr-icon
-                      *ngIf="sortIcon"
-                      [attr.shape]="sortIcon"
-                      class="sort-icon"></clr-icon>
-          </button>
-          <!-- I'm really not happy with that select since it's not very scalable -->
-          <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
+    <div class="datagrid-column-flex">
+      <button
+        class="datagrid-column-title"
+        [attr.aria-label]="commonStrings.keys.sortColumn"
+        *ngIf="sortable"
+        (click)="sort()"
+        type="button"
+      >
+        <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+        <clr-icon *ngIf="sortIcon" [attr.shape]="sortIcon" class="sort-icon"></clr-icon>
+      </button>
+      <!-- I'm really not happy with that select since it's not very scalable -->
+      <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
 
-          <clr-dg-string-filter
-                  *ngIf="field && !customFilter && (colType=='string')"
-                  [clrDgStringFilter]="registered"
-                  [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
+      <clr-dg-string-filter
+        *ngIf="field && !customFilter && colType == 'string'"
+        [clrDgStringFilter]="registered"
+        [(clrFilterValue)]="filterValue"
+      ></clr-dg-string-filter>
 
-          <clr-dg-numeric-filter
-                  *ngIf="field && !customFilter && (colType=='number')"
-                  [clrDgNumericFilter]="registered"
-                  [(clrFilterValue)]="filterValue"></clr-dg-numeric-filter>
+      <clr-dg-numeric-filter
+        *ngIf="field && !customFilter && colType == 'number'"
+        [clrDgNumericFilter]="registered"
+        [(clrFilterValue)]="filterValue"
+      ></clr-dg-numeric-filter>
 
-          <ng-template #columnTitle>
-              <ng-content></ng-content>
-          </ng-template>
+      <ng-template #columnTitle>
+        <ng-content></ng-content>
+      </ng-template>
 
+      <span class="datagrid-column-title" *ngIf="!sortable">
+        <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
+      </span>
 
-          <span class="datagrid-column-title" *ngIf="!sortable">
-              <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-          </span>
-
-          <clr-dg-column-separator *ngIf="showSeparator"></clr-dg-column-separator>
-      </div>
-    `,
+      <clr-dg-column-separator *ngIf="showSeparator"></clr-dg-column-separator>
+    </div>
+  `,
   providers: [ClrPopoverPositionService, ClrPopoverEventsService, ClrPopoverToggleService],
   host: {
     '[class.datagrid-column]': 'true',
@@ -145,10 +144,10 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   }
 
   /*
-  * What type is this column?  This defaults to STRING, but can also be
-  * set to NUMBER.  Unsupported types default to STRING. Users can set it
-  * via the [clrDgColType] input by setting it to 'string' or 'number'.
-  */
+   * What type is this column?  This defaults to STRING, but can also be
+   * set to NUMBER.  Unsupported types default to STRING. Users can set it
+   * via the [clrDgColType] input by setting it to 'string' or 'number'.
+   */
 
   private _colType: 'string' | 'number' = 'string';
 

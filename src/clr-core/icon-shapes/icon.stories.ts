@@ -143,7 +143,7 @@ export const all = () => {
         background: #f4f4f4;
         display: grid;
         grid-gap: 16px;
-        grid-template-columns: repeat(12,1fr);
+        grid-template-columns: repeat(12, 1fr);
       }
 
       .dc-icon-boxes.inverse {
@@ -156,7 +156,7 @@ export const all = () => {
 
       .dc-icon-box {
         text-align: center;
-        grid-column: span 2/span 2;
+        grid-column: span 2 / span 2;
       }
 
       .dc-icon-box p {
@@ -166,12 +166,12 @@ export const all = () => {
     </style>
     ${iconSets.map(
       k => html`
-      <section class="dc-icon-set">
-        <h2>${k}</h2>
+        <section class="dc-icon-set">
+          <h2>${k}</h2>
 
-        <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
-          ${iconIndex[k].map(
-            i => html`
+          <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
+            ${iconIndex[k].map(
+              i => html`
             <div class="dc-icon-box" .hidden=${!i.includes(search)}>
             <cds-icon
               .badge=${badge}
@@ -187,10 +187,10 @@ export const all = () => {
               <p class="dc-icon-name">${i}</p>
             </div>
           `
-          )}
-        </div>
-      </section>
-    `
+            )}
+          </div>
+        </section>
+      `
     )}
   `;
 };
@@ -246,9 +246,9 @@ export const API = () => {
       <style>
         cds-icon {
           ${setStyles({
-            '--color': color,
-            '--badge-color': badgeColor,
-          })}
+          '--color': color,
+          '--badge-color': badgeColor,
+        })}
       </style>
       <cds-icon
         .badge=${badge}
@@ -259,7 +259,8 @@ export const API = () => {
         .direction=${dir}
         .inverse=${inverse}
         .flip=${fl}
-        @click=${action('click')}>
+        @click=${action('click')}
+      >
       </cds-icon>
     </cds-demo>
   `;
@@ -360,7 +361,7 @@ export const customStyles = () => {
         display: block;
         top: 0;
         left: 4px;
-        color: white
+        color: white;
       }
 
       .custom-icon-colors:first-child::before {
@@ -400,8 +401,8 @@ export const customStyles = () => {
       <cds-icon shape="user" badge class="icon-c"></cds-icon>
     </div>
     <p>
-      <i>A should be green with a pink badge</i><br>
-      <i>B should be all pink</i><br>
+      <i>A should be green with a pink badge</i><br />
+      <i>B should be all pink</i><br />
       <i>C should be default gray with a yellow badge</i>
     </p>
   `;
@@ -458,7 +459,8 @@ export const legacy = () => {
     <clr-icon shape="info-circle" class="is-info"></clr-icon>
     <clr-icon shape="info-circle" class="is-inverse"></clr-icon>
 
-    <h2>Badge</h2><clr-icon shape="user"></clr-icon>
+    <h2>Badge</h2>
+    <clr-icon shape="user"></clr-icon>
     <clr-icon shape="user" class="has-alert"></clr-icon>
     <clr-icon shape="user" class="has-badge"></clr-icon>
     <clr-icon shape="user" class="is-solid"></clr-icon>

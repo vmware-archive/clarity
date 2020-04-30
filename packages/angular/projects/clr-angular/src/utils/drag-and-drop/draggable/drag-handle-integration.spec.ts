@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,9 +14,9 @@ import { DragHandleRegistrarService } from '../providers/drag-handle-registrar.s
 
 import { ClrDraggable } from './draggable';
 
-export default function(): void {
-  describe('With ClrDragHandle', function() {
-    beforeEach(function() {
+export default function (): void {
+  describe('With ClrDragHandle', function () {
+    beforeEach(function () {
       TestBed.configureTestingModule({ imports: [ClrDragAndDropModule], declarations: [CustomHandleTest] });
 
       this.fixture = TestBed.createComponent(CustomHandleTest);
@@ -27,11 +27,11 @@ export default function(): void {
       this.fixture.detectChanges();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.fixture.destroy();
     });
 
-    it('should have its nested handle as drag handle if it is present', function() {
+    it('should have its nested handle as drag handle if it is present', function () {
       this.dragHandle = this.fixture.debugElement.query(By.directive(ClrDragHandle));
       expect(this.draggable.nativeElement.classList.contains('drag-handle')).toBeFalsy();
       expect(this.dragHandle.nativeElement.classList.contains('drag-handle')).toBeTruthy();

@@ -12,12 +12,12 @@ let clrIconId = 0;
 const offScreenSpan = document.createElement('span');
 offScreenSpan.className = 'is-off-screen';
 
-let parentConstructor = function(this: any) {
+let parentConstructor = function (this: any) {
   // eslint-disable-next-line prefer-rest-params
   return HTMLElement.apply(this, arguments);
 };
 if (typeof Reflect === 'object') {
-  parentConstructor = function() {
+  parentConstructor = function () {
     // eslint-disable-next-line prefer-rest-params
     return (Reflect as any).construct(HTMLElement, arguments, this.constructor);
   };
@@ -43,14 +43,14 @@ ClarityIconElement.prototype = Object.create(HTMLElement.prototype, {
 
 ClarityIconElement.prototype.constructor = ClarityIconElement;
 
-ClarityIconElement.prototype._appendCustomTitle = function() {
+ClarityIconElement.prototype._appendCustomTitle = function () {
   const cloneOffScreenSpan = offScreenSpan.cloneNode(false) as HTMLElement;
   cloneOffScreenSpan.id = this.clrIconUniqId;
   cloneOffScreenSpan.textContent = this.currentTitleAttrVal;
   this.appendChild(cloneOffScreenSpan);
 };
 
-ClarityIconElement.prototype._setIconSize = function(size: string) {
+ClarityIconElement.prototype._setIconSize = function (size: string) {
   if (!Number(size) || Number(size) < 0) {
     this.style.width = null; // fallback to the original stylesheet value
     this.style.height = null; // fallback to the original stylesheet value
@@ -60,11 +60,11 @@ ClarityIconElement.prototype._setIconSize = function(size: string) {
   }
 };
 
-ClarityIconElement.prototype._normalizeShape = function(value: string): string {
+ClarityIconElement.prototype._normalizeShape = function (value: string): string {
   return value.split(/\s/)[0].toLowerCase();
 };
 
-ClarityIconElement.prototype.connectedCallback = function() {
+ClarityIconElement.prototype.connectedCallback = function () {
   // One thing to note here is that the attributeChangedCallback method is called for every attribute first
   // before this connectedCallback method called only once when the custom element is inserted into the DOM.
   // So we could check whether the attribute values really changed or not.
@@ -130,7 +130,7 @@ ClarityIconElement.prototype.connectedCallback = function() {
   this._injectTemplate();
 };
 
-ClarityIconElement.prototype.attributeChangedCallback = function(
+ClarityIconElement.prototype.attributeChangedCallback = function (
   attributeName: string,
   _oldValue: string,
   newValue: string
@@ -177,7 +177,7 @@ ClarityIconElement.prototype.attributeChangedCallback = function(
   this._injectTemplate();
 };
 
-ClarityIconElement.prototype.disconnectedCallback = function() {
+ClarityIconElement.prototype.disconnectedCallback = function () {
   // as the icon element is removed from the DOM,
   // remove its listener callback function as well.
   if (this._shapeTemplateSubscription) {
@@ -185,7 +185,7 @@ ClarityIconElement.prototype.disconnectedCallback = function() {
   }
 };
 
-ClarityIconElement.prototype._setAriaLabelledBy = function() {
+ClarityIconElement.prototype._setAriaLabelledBy = function () {
   const existingAriaLabelledBy: string = this.getAttribute('aria-labelledby');
   const svgElement: SVGElement = this.querySelector('svg');
   const elementToSet = svgElement ? svgElement : this;
@@ -197,7 +197,7 @@ ClarityIconElement.prototype._setAriaLabelledBy = function() {
   }
 };
 
-ClarityIconElement.prototype._injectTemplate = function(shapeTemplate?: string) {
+ClarityIconElement.prototype._injectTemplate = function (shapeTemplate?: string) {
   // Accepting the argument, shapeTemplate, will help us to update the shape template
   // right before the injection.
   if (shapeTemplate && shapeTemplate !== this.currentShapeTemplate) {
@@ -212,7 +212,7 @@ ClarityIconElement.prototype._injectTemplate = function(shapeTemplate?: string) 
   }
 };
 
-ClarityIconElement.prototype._injectErrorTemplate = function() {
+ClarityIconElement.prototype._injectErrorTemplate = function () {
   this.currentShapeTemplate = ClarityIconsApi.instance.get('error');
   this._injectTemplate();
 };

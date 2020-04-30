@@ -19,9 +19,7 @@ import { ClrCommonFormsModule } from '../common/common.module';
 import { NgControlService } from '../common/providers/ng-control.service';
 
 @Component({
-  template: `
-    <input clrDatalistInput />
-  `,
+  template: ` <input clrDatalistInput /> `,
 })
 class InvalidUseTest {}
 
@@ -43,15 +41,15 @@ class TemplateDrivenTest {}
   template: `
     <div [formGroup]="example">
       <clr-datalist-container>
-       <input clrDatalistInput name="Option" class="test-class" formControlName="model" />
-       <datalist>
-         <option [value]="'item1'"></option>
-         <option [value]="'item2'"></option>
-         <option [value]="'item3'"></option>
-       </datalist>
+        <input clrDatalistInput name="Option" class="test-class" formControlName="model" />
+        <datalist>
+          <option [value]="'item1'"></option>
+          <option [value]="'item2'"></option>
+          <option [value]="'item3'"></option>
+        </datalist>
       </clr-datalist-container>
     </div>
-    `,
+  `,
 })
 class ReactiveTest {
   example = new FormGroup({
@@ -59,7 +57,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrDatalistInput', () => {
     describe('invalid use', () => {
       it('should throw an error when used without a datalist container', () => {

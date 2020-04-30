@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,12 +10,12 @@ import { ClrDatagridDetailBody } from './datagrid-detail-body';
 
 const content = 'Detail Pane';
 
-export default function(): void {
-  describe('ClrDatagridDetailBody component', function() {
-    describe('View', function() {
+export default function (): void {
+  describe('ClrDatagridDetailBody component', function () {
+    describe('View', function () {
       let context: TestContext<ClrDatagridDetailBody, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridDetailBody, FullTest);
         context.detectChanges();
       });

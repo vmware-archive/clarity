@@ -8,43 +8,43 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'clr-datepicker-en-us-demo',
   template: `
-        <h5 style="margin-top: 24px">Locale Identifier: en-US</h5>
-        <form clrForm clrLayout="vertical">
-            <clr-date-container>
-                <label>US locale</label>
-                <input type="date" clrDate>
-            </clr-date-container>
-        </form>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="left">Key</th>
-                    <th class="left">Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="left">Language</td>
-                    <td class="left">English</td>
-                </tr>
-                <tr>
-                    <td class="left">Territory</td>
-                    <td class="left">US</td>
-                </tr>
-                <tr>
-                    <td class="left">First Day of the Week (Retrieved from Angular)</td>
-                    <td class="left">Sunday (S)</td>
-                </tr>
-                <tr>
-                    <td class="left">Date Format (Retrieved from Angular)</td>
-                    <td class="left">M/d/yy</td>
-                </tr>
-                <tr>
-                    <td class="left">Placeholder Generated</td>
-                    <td class="left">MM/DD/YYYY</td>
-                </tr>
-            </tbody>
-        </table>
-    `,
+    <h5 style="margin-top: 24px">Locale Identifier: en-US</h5>
+    <form clrForm clrLayout="vertical">
+      <clr-date-container>
+        <label>US locale</label>
+        <input type="date" clrDate />
+      </clr-date-container>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="left">Key</th>
+          <th class="left">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="left">Language</td>
+          <td class="left">English</td>
+        </tr>
+        <tr>
+          <td class="left">Territory</td>
+          <td class="left">US</td>
+        </tr>
+        <tr>
+          <td class="left">First Day of the Week (Retrieved from Angular)</td>
+          <td class="left">Sunday (S)</td>
+        </tr>
+        <tr>
+          <td class="left">Date Format (Retrieved from Angular)</td>
+          <td class="left">M/d/yy</td>
+        </tr>
+        <tr>
+          <td class="left">Placeholder Generated</td>
+          <td class="left">MM/DD/YYYY</td>
+        </tr>
+      </tbody>
+    </table>
+  `,
 })
 export class DatepickerENUSDemo {}

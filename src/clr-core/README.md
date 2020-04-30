@@ -21,14 +21,14 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
     #### Angular
 
     ```html
-      <!--
+    <!--
         - size - attribute style hook
         - [open] - setting the 'open' property on the element
         - (openChange) - listen for the `openChange` custom event
       -->
-      <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
-        <p>slot content</p>
-      </cds-modal>
+    <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+      <p>slot content</p>
+    </cds-modal>
     ```
 
     #### Vue

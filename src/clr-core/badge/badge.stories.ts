@@ -56,20 +56,18 @@ export const API = () => {
     <style>
       cds-badge {
         ${setStyles({
-          '--color': textColor,
-          '--background': background,
-          '--border-color': borderColor,
-          '--border-width': borderWidth,
-          '--border-radius': borderRadius,
-          '--font-size': fontSize,
-          '--font-weight': fontWeight,
-          '--size': size,
-          '--padding': padding,
-        })}
+        '--color': textColor,
+        '--background': background,
+        '--border-color': borderColor,
+        '--border-width': borderWidth,
+        '--border-radius': borderRadius,
+        '--font-size': fontSize,
+        '--font-weight': fontWeight,
+        '--size': size,
+        '--padding': padding,
+      })}
     </style>
-    <cds-badge
-      .status=${badgeStatus}
-      .color=${badgeColor}>
+    <cds-badge .status=${badgeStatus} .color=${badgeColor}>
       ${slot}
     </cds-badge>
   `;
@@ -92,7 +90,6 @@ export const color = () => {
     <cds-badge color="blue">15</cds-badge>
     <cds-badge color="orange">2</cds-badge>
     <cds-badge color="light-blue">3</cds-badge>
-    
   `;
 };
 
@@ -126,8 +123,8 @@ export const colorCustom = () => {
         --padding: 0.1rem 0.3rem;
       }
     </style>
-    <p><cds-badge class='app-custom'>2300+</cds-badge></p>
-    <p><cds-badge class='app-custom-2'>3</cds-badge></p>
-    <p><cds-badge class='app-custom-3'>34,000+</cds-badge></p>
+    <p><cds-badge class="app-custom">2300+</cds-badge></p>
+    <p><cds-badge class="app-custom-2">3</cds-badge></p>
+    <p><cds-badge class="app-custom-3">34,000+</cds-badge></p>
   `;
 };

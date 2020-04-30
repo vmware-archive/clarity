@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,17 +26,17 @@ import LocaleHelperServiceSpecs from './providers/locale-helper.service.spec';
 import ViewManagerServiceSpecs from './providers/view-manager.service.spec';
 import YearpickerSpecs from './yearpicker.spec';
 
-describe('Datepicker', function() {
+describe('Datepicker', function () {
   addHelpers();
 
-  describe('Model', function() {
+  describe('Model', function () {
     DayModelSpecs();
     CalendarModelSpecs();
     YearRangeModelSpecs();
     CalendarViewModelSpecs();
   });
 
-  describe('Providers', function() {
+  describe('Providers', function () {
     ViewManagerServiceSpecs();
     LocaleHelperServiceSpecs();
     DatepickerFocusServiceSpecs();
@@ -46,7 +46,7 @@ describe('Datepicker', function() {
     DateFormControlServiceSpecs();
   });
 
-  describe('Components', function() {
+  describe('Components', function () {
     DayComponentSpecs();
     DatepickerViewManagerSpecs();
     DateContainerSpecs();

@@ -17,12 +17,12 @@ import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 
-export default function() {
+export default function () {
   describe('Datepicker View Manager Component', () => {
     let context: TestContext<ClrDatepickerViewManager, TestComponent>;
     let viewManagerService: ViewManagerService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrDatepickerViewManager, TestComponent, [
         ViewManagerService,
         DatepickerFocusService,
@@ -66,9 +66,7 @@ export default function() {
 }
 
 @Component({
-  template: `
-        <clr-datepicker-view-manager></clr-datepicker-view-manager>
-    `,
+  template: ` <clr-datepicker-view-manager></clr-datepicker-view-manager> `,
 })
 class TestComponent {
   constructor(private dateNavigationService: DateNavigationService) {

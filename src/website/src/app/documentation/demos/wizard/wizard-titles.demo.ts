@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-wizard-titles',
-  template: `
-        <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
-    `,
+  template: ` <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet> `,
 })
 export class WizardTitlesDemo {
   html = `<clr-wizard #wizard [(clrWizardOpen)]="open">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,16 +14,14 @@ import { ClrDropdown } from './dropdown';
 import { DROPDOWN_FOCUS_HANDLER_PROVIDER, DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
 
 @Component({
-  template: `
-    <button clrDropdownTrigger>Hello world</button>
-  `,
+  template: ` <button clrDropdownTrigger>Hello world</button> `,
   // These services are declared here because they need the renderer
   providers: [FocusService, DROPDOWN_FOCUS_HANDLER_PROVIDER],
 })
 class SimpleTest {}
 
-export default function(): void {
-  describe('DropdownTrigger directive', function() {
+export default function (): void {
+  describe('DropdownTrigger directive', function () {
     /*
      * Most tests for this directive are apparently jammed in the main dropdown.spec.ts,
      * but moving them isn't relevant to this commit.
@@ -34,11 +32,11 @@ export default function(): void {
       providers: [{ provide: ClrDropdown, useValue: {} }, ClrPopoverToggleService],
     });
 
-    it('adds the aria-haspopup attribute to the host', function(this: Context) {
+    it('adds the aria-haspopup attribute to the host', function (this: Context) {
       expect(this.clarityElement.getAttribute('aria-haspopup')).toBe('menu');
     });
 
-    it('adds the aria-expanded attribute to the host', function(this: Context) {
+    it('adds the aria-expanded attribute to the host', function (this: Context) {
       const toggleService = this.getProvider(ClrPopoverToggleService);
       toggleService.open = false;
       this.detectChanges();
@@ -48,7 +46,7 @@ export default function(): void {
       expect(this.clarityElement.getAttribute('aria-expanded')).toBe('true');
     });
 
-    it('declares itself to the DropdownFocusHandler', function(this: Context) {
+    it('declares itself to the DropdownFocusHandler', function (this: Context) {
       expect(this.getClarityProvider(DropdownFocusHandler).trigger).toBe(this.clarityElement);
     });
   });

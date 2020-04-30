@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,26 +18,26 @@ import ClrDragHandleRegistrarSpecs from './providers/drag-handle-registrar.servi
 import ClrDraggableSnapshotSpecs from './providers/draggable-snapshot.service.spec';
 import ClrGlobalDragModeSpecs from './providers/global-drag-mode.service.spec';
 
-describe('Drag And Drop', function() {
-  describe('Providers', function() {
+describe('Drag And Drop', function () {
+  describe('Providers', function () {
     ClrDragAndDropEventBusSpecs();
     ClrDragEventListenerSpecs();
     ClrDragHandleRegistrarSpecs();
     ClrDraggableSnapshotSpecs();
     ClrGlobalDragModeSpecs();
   });
-  describe('Components And Directives', function() {
+  describe('Components And Directives', function () {
     ClrIfDraggedSpecs();
     ClrDragHandleSpecs();
     ClrDraggableGhostSpecs();
     ClrDragAndDropIntegratedSpecs();
-    describe('ClrDraggable', function() {
+    describe('ClrDraggable', function () {
       ClrDraggableSpecs();
       ClrDraggableWithCustomGhostSpecs();
       ClrDraggableWithDragHandleSpecs();
       ClrDraggableWithGhostAndHandleSpecs();
     });
-    describe('ClrDroppable', function() {
+    describe('ClrDroppable', function () {
       ClrDroppableSpecs();
     });
   });

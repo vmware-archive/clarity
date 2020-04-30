@@ -24,54 +24,63 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 @Component({
   selector: 'clr-dg-column-toggle',
   template: `
-      <button
-              role="button"
-              type="button"
-              class="btn btn-sm btn-link column-toggle--action"
-              clrPopoverAnchor
-              clrPopoverOpenCloseButton
-              [attr.aria-controls]="popoverId"
-              [attr.aria-owns]="popoverId">
-          <clr-icon shape="view-columns" [attr.title]="commonStrings.keys.pickColumns"></clr-icon>
-      </button>
-      <div class="column-switch"
-           role="dialog"
-           [id]="popoverId"
-           clrFocusTrap
-           *clrPopoverContent="openState at smartPosition; outsideClickToClose: true; scrollToClose: true">
-          <div class="switch-header">
-              <div class="clr-sr-only" tabindex="-1" #menuDescription>{{commonStrings.keys.showColumnsMenuDescription}}</div>
-              <div class="clr-sr-only" tabindex="-1" #allSelected>{{commonStrings.keys.allColumnsSelected}}</div>
-              <ng-container *ngIf="!customToggleTitle">{{commonStrings.keys.showColumns}}</ng-container>
-              <ng-content select="clr-dg-column-toggle-title"></ng-content>
-              <button class="btn btn-sm btn-link toggle-switch-close-button"
-                      clrPopoverCloseButton
-                      type="button"
-                      [attr.aria-label]="commonStrings.keys.close">
-                  <clr-icon shape="close"
-                            [attr.title]="commonStrings.keys.close"></clr-icon>
-              </button>
-          </div>
-          <ul class="switch-content list-unstyled">
-              <li *ngFor="let columnState of hideableColumnStates;trackBy: trackByFn">
-                  <clr-checkbox-wrapper>
-                      <input clrCheckbox type="checkbox"
-                             [disabled]="hasOnlyOneVisibleColumn && !columnState.hidden"
-                             [ngModel]="!columnState.hidden"
-                             (ngModelChange)="toggleColumnState(columnState, !$event)">
-                      <label>
-                          <ng-template [ngTemplateOutlet]="columnState.titleTemplateRef"></ng-template>
-                      </label>
-                  </clr-checkbox-wrapper>
-              </li>
-          </ul>
-          <div class="switch-footer">
-              <ng-content select="clr-dg-column-toggle-button"></ng-content>
-              <clr-dg-column-toggle-button *ngIf="!customToggleButton" (clrAllSelected)="allColumnsSelected()">
-                  {{commonStrings.keys.selectAll}}
-              </clr-dg-column-toggle-button>
-          </div>
+    <button
+      role="button"
+      type="button"
+      class="btn btn-sm btn-link column-toggle--action"
+      clrPopoverAnchor
+      clrPopoverOpenCloseButton
+      [attr.aria-controls]="popoverId"
+      [attr.aria-owns]="popoverId"
+    >
+      <clr-icon shape="view-columns" [attr.title]="commonStrings.keys.pickColumns"></clr-icon>
+    </button>
+    <div
+      class="column-switch"
+      role="dialog"
+      [id]="popoverId"
+      clrFocusTrap
+      *clrPopoverContent="openState; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
+    >
+      <div class="switch-header">
+        <div class="clr-sr-only" tabindex="-1" #menuDescription>
+          {{ commonStrings.keys.showColumnsMenuDescription }}
+        </div>
+        <div class="clr-sr-only" tabindex="-1" #allSelected>{{ commonStrings.keys.allColumnsSelected }}</div>
+        <ng-container *ngIf="!customToggleTitle">{{ commonStrings.keys.showColumns }}</ng-container>
+        <ng-content select="clr-dg-column-toggle-title"></ng-content>
+        <button
+          class="btn btn-sm btn-link toggle-switch-close-button"
+          clrPopoverCloseButton
+          type="button"
+          [attr.aria-label]="commonStrings.keys.close"
+        >
+          <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+        </button>
       </div>
+      <ul class="switch-content list-unstyled">
+        <li *ngFor="let columnState of hideableColumnStates; trackBy: trackByFn">
+          <clr-checkbox-wrapper>
+            <input
+              clrCheckbox
+              type="checkbox"
+              [disabled]="hasOnlyOneVisibleColumn && !columnState.hidden"
+              [ngModel]="!columnState.hidden"
+              (ngModelChange)="toggleColumnState(columnState, !$event)"
+            />
+            <label>
+              <ng-template [ngTemplateOutlet]="columnState.titleTemplateRef"></ng-template>
+            </label>
+          </clr-checkbox-wrapper>
+        </li>
+      </ul>
+      <div class="switch-footer">
+        <ng-content select="clr-dg-column-toggle-button"></ng-content>
+        <clr-dg-column-toggle-button *ngIf="!customToggleButton" (clrAllSelected)="allColumnsSelected()">
+          {{ commonStrings.keys.selectAll }}
+        </clr-dg-column-toggle-button>
+      </div>
+    </div>
   `,
   host: { '[class.column-switch-wrapper]': 'true', '[class.active]': 'openState' },
   providers: [UNIQUE_ID_PROVIDER, ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],

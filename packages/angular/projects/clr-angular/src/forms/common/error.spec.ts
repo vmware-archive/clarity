@@ -17,11 +17,11 @@ class SimpleTest {}
 @Component({ template: `<clr-control-error aria-describedby="hello"></clr-control-error>` })
 class ExplicitAriaTest {}
 
-export default function(): void {
+export default function (): void {
   describe('ClrControlError', () => {
     let fixture, announceSpyOn;
 
-    beforeEach(function() {
+    beforeEach(function () {
       TestBed.configureTestingModule({
         declarations: [ClrControlError, SimpleTest, ExplicitAriaTest],
         providers: [ControlIdService],
@@ -30,7 +30,7 @@ export default function(): void {
       fixture.detectChanges();
     });
 
-    it('expect to call ClrAriaLiveService.announce', function() {
+    it('expect to call ClrAriaLiveService.announce', function () {
       fixture = TestBed.createComponent(SimpleTest);
       const ariaLiveService = fixture.debugElement
         .query(By.directive(ClrControlError))
@@ -40,17 +40,17 @@ export default function(): void {
       expect(announceSpyOn).toHaveBeenCalled();
     });
 
-    it('projects content', function() {
+    it('projects content', function () {
       expect(fixture.debugElement.query(By.directive(ClrControlError)).nativeElement.innerText).toContain('Test error');
     });
 
-    it('adds the .clr-subtext class to host', function() {
+    it('adds the .clr-subtext class to host', function () {
       expect(
         fixture.debugElement.query(By.directive(ClrControlError)).nativeElement.classList.contains('clr-subtext')
       ).toBeTrue();
     });
 
-    it('leaves the for aria-describedby untouched if it exists', function() {
+    it('leaves the for aria-describedby untouched if it exists', function () {
       const explicitFixture = TestBed.createComponent(ExplicitAriaTest);
       explicitFixture.detectChanges();
       const message = explicitFixture.nativeElement.querySelector('clr-control-error');

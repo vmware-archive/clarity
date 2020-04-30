@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -34,7 +34,7 @@ export class Page {
       } else {
         // Yeap. That's the formula to keep the first item from the old page still
         // displayed in the new one.
-        this._current = Math.floor(oldSize / size * (this._current - 1)) + 1;
+        this._current = Math.floor((oldSize / size) * (this._current - 1)) + 1;
       }
       // We always emit an event even if the current page index didn't change, because
       // the size changing means the items inside the page are different

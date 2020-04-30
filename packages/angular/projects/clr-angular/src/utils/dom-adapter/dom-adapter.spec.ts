@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,20 +14,20 @@ interface UserContext {
   element: HTMLElement;
 }
 
-export default function(): void {
-  describe('DomAdapter', function() {
-    beforeEach(function(this: UserContext) {
+export default function (): void {
+  describe('DomAdapter', function () {
+    beforeEach(function (this: UserContext) {
       this.domAdapter = new DomAdapter();
       this.element = document.createElement('div');
       this.element.appendChild(document.createTextNode('Hello'));
       document.body.appendChild(this.element);
     });
 
-    afterEach(function(this: UserContext) {
+    afterEach(function (this: UserContext) {
       document.body.removeChild(this.element);
     });
 
-    it('computes the scrollwidth of an element', function(this: UserContext) {
+    it('computes the scrollwidth of an element', function (this: UserContext) {
       const child = document.createElement('div');
       child.style.width = '123456px';
       child.style.height = '10px';
@@ -35,7 +35,7 @@ export default function(): void {
       expect(this.domAdapter.scrollWidth(this.element)).toBe(123456);
     });
 
-    it('computes the width of the scrollbar on an element', function(this: UserContext) {
+    it('computes the width of the scrollbar on an element', function (this: UserContext) {
       expect(this.domAdapter.scrollBarWidth(this.element)).toBe(0);
       this.element.style.overflow = 'scroll';
       // This will actually fail on "good" OSX browsers, even though the behavior is correct.
@@ -45,7 +45,7 @@ export default function(): void {
       }
     });
 
-    it('computes the height of an element', function(this: UserContext) {
+    it('computes the height of an element', function (this: UserContext) {
       const child = document.createElement('div');
       child.style.width = '10px';
       child.style.height = '1234px';
@@ -53,7 +53,7 @@ export default function(): void {
       expect(this.domAdapter.computedHeight(this.element)).toBe(1234);
     });
 
-    it('returns Element.getBoundingClientRect object through its clientRect method', function(this: UserContext) {
+    it('returns Element.getBoundingClientRect object through its clientRect method', function (this: UserContext) {
       const left = 20;
       const top = 10;
       const width = 300;
@@ -75,14 +75,14 @@ export default function(): void {
       expect(this.domAdapter.clientRect(this.element).bottom).toBe(top + height);
     });
 
-    describe('user-defined width', function() {
-      it('recognizes a width defined on the element', function(this: UserContext) {
+    describe('user-defined width', function () {
+      it('recognizes a width defined on the element', function (this: UserContext) {
         expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);
         this.element.style.width = '42px';
         expect(this.domAdapter.userDefinedWidth(this.element)).toBe(42);
       });
 
-      it('recognizes a width defined in a CSS stylesheet', function(this: UserContext) {
+      it('recognizes a width defined in a CSS stylesheet', function (this: UserContext) {
         expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);
         const style = document.createElement('style');
         style.appendChild(document.createTextNode('.my-test { width: 42px; }'));
@@ -92,7 +92,7 @@ export default function(): void {
         document.body.removeChild(style);
       });
 
-      it('ignores padding and border', function(this: UserContext) {
+      it('ignores padding and border', function (this: UserContext) {
         this.element.style.padding = '10px';
         this.element.style.border = '5px solid black';
         expect(this.domAdapter.userDefinedWidth(this.element)).toBe(0);

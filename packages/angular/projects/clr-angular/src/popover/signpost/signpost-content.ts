@@ -34,18 +34,23 @@ const POSITIONS: string[] = [
 @Component({
   selector: 'clr-signpost-content',
   template: `
-      <div class="signpost-wrap">
-          <div class="popover-pointer"></div>
-          <div class="signpost-content-body">
-              <ng-content></ng-content>
-          </div>
-          <div class="signpost-content-header">
-              <button type="button" [attr.aria-label]="commonStrings.keys.signpostClose" class="signpost-action close"
-                      (click)="close()" [attr.aria-controls]="signpostContentId">
-                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
-              </button>
-          </div>
+    <div class="signpost-wrap">
+      <div class="popover-pointer"></div>
+      <div class="signpost-content-body">
+        <ng-content></ng-content>
       </div>
+      <div class="signpost-content-header">
+        <button
+          type="button"
+          [attr.aria-label]="commonStrings.keys.signpostClose"
+          class="signpost-action close"
+          (click)="close()"
+          [attr.aria-controls]="signpostContentId"
+        >
+          <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+        </button>
+      </div>
+    </div>
   `,
   host: { '[class.signpost-content]': 'true', '[id]': 'signpostContentId' },
   providers: [UNIQUE_ID_PROVIDER],

@@ -9,98 +9,71 @@ import { TestBed } from '@angular/core/testing';
 import { ClrIconModule } from '../../icon/icon.module';
 
 @Component({
-  template: `
-<form class="clr-form clr-form-{{layout}}">
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="text">
-        <label for="{{layout}}-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Input
-        </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-input-wrapper">
-                <input type="text" id="{{layout}}-basic" placeholder="Enter value here" class="clr-input">
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
+  template: ` <form class="clr-form clr-form-{{ layout }}">
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="text">
+      <label
+        for="{{ layout }}-basic"
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Input
+      </label>
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-input-wrapper">
+          <input type="text" id="{{ layout }}-basic" placeholder="Enter value here" class="clr-input" />
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Checkbox</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox1" id="{{layout}}-checkbox1" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox1" class="clr-control-label">
-                    option 1
-                </label>
-            </div>
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox2" id="{{layout}}-checkbox2" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox2" class="clr-control-label">
-                    option 2
-                </label>
-            </div>
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox3" id="{{layout}}-checkbox3" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox3" class="clr-control-label">
-                    option 3
-                </label>
-            </div>
-            <div class="clr-subtext-wrapper">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-              <span class="clr-subtext">Helper Text</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="checkbox-inline">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Inline checkbox</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox7" id="{{layout}}-checkbox7" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox7" class="clr-control-label">
-                    option 1
-                </label>
-            </div>
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox8" id="{{layout}}-checkbox8" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox8" class="clr-control-label">
-                    option 2
-                </label>
-            </div>
-            <div class="clr-checkbox-wrapper">
-                <input type="checkbox" name="checkbox9" id="{{layout}}-checkbox9" placeholder="Enter value here" class="clr-checkbox">
-                <label for="{{layout}}-checkbox9" class="clr-control-label">
-                    option 3
-                </label>
-            </div>
-            <div class="clr-subtext-wrapper">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-              <span class="clr-subtext">Helper Text</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="toggle">
-      <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-        Checkbox</label>
-      <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox1" id="{{layout}}-toggle1" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle1" class="clr-control-label">
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="checkbox">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Checkbox</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox1"
+            id="{{ layout }}-checkbox1"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox1" class="clr-control-label">
             option 1
           </label>
         </div>
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox2" id="{{layout}}-toggle2" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle2" class="clr-control-label">
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox2"
+            id="{{ layout }}-checkbox2"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox2" class="clr-control-label">
             option 2
           </label>
         </div>
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox3" id="{{layout}}-toggle3" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle3" class="clr-control-label">
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox3"
+            id="{{ layout }}-checkbox3"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox3" class="clr-control-label">
             option 3
           </label>
         </div>
@@ -111,25 +84,50 @@ import { ClrIconModule } from '../../icon/icon.module';
       </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="toggle-inline">
-      <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-        Inline checkbox</label>
-      <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox7" id="{{layout}}-toggle7" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle7" class="clr-control-label">
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="checkbox-inline">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Inline checkbox</label
+      >
+      <div
+        class="clr-control-container clr-control-inline"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox7"
+            id="{{ layout }}-checkbox7"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox7" class="clr-control-label">
             option 1
           </label>
         </div>
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox8" id="{{layout}}-toggle8" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle8" class="clr-control-label">
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox8"
+            id="{{ layout }}-checkbox8"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox8" class="clr-control-label">
             option 2
           </label>
         </div>
-        <div class="clr-toggle-wrapper">
-          <input type="checkbox" name="checkbox9" id="{{layout}}-toggle9" placeholder="Enter value here" class="clr-checkbox">
-          <label for="{{layout}}-toggle9" class="clr-control-label">
+        <div class="clr-checkbox-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox9"
+            id="{{ layout }}-checkbox9"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-checkbox9" class="clr-control-label">
             option 3
           </label>
         </div>
@@ -140,124 +138,288 @@ import { ClrIconModule } from '../../icon/icon.module';
       </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Radio</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-radio-wrapper">
-                <input type="radio" name="radio1" id="{{layout}}-radio1" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio1" class="clr-control-label">option 1</label>
-              </div>
-              <div class="clr-radio-wrapper">
-                <input type="radio" name="radio1" id="{{layout}}-radio2" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio2" class="clr-control-label">option 2</label>
-              </div>
-              <div class="clr-radio-wrapper">
-                <input type="radio" name="radio1" id="{{layout}}-radio3" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio3" class="clr-control-label">option 3</label>
-            </div>
-            <div class="clr-subtext-wrapper">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-              <span class="clr-subtext">Helper Text</span>
-            </div>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="toggle">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Checkbox</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox1"
+            id="{{ layout }}-toggle1"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle1" class="clr-control-label">
+            option 1
+          </label>
         </div>
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox2"
+            id="{{ layout }}-toggle2"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle2" class="clr-control-label">
+            option 2
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox3"
+            id="{{ layout }}-toggle3"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle3" class="clr-control-label">
+            option 3
+          </label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="radio-inline">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Inline radio</label>
-        <div class="clr-control-container clr-control-inline" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-radio-wrapper">
-                <input type="radio" name="radio2" id="{{layout}}-radio4" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio4" class="clr-control-label">option 1</label>
-            </div>
-            <div class="clr-radio-wrapper">
-                <input type="radio" name="radio2" id="{{layout}}-radio5" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio5" class="clr-control-label">option 2</label>
-            </div>
-            <div class="clr-radio-wrapper">
-                <input type="radio" name="radio2" id="{{layout}}-radio6" placeholder="Enter value here" class="clr-radio">
-                <label for="{{layout}}-radio6" class="clr-control-label">option 3</label>
-            </div>
-            <div class="clr-subtext-wrapper">
-              <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-              <span class="clr-subtext">Helper Text</span>
-            </div>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="toggle-inline">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Inline checkbox</label
+      >
+      <div
+        class="clr-control-container clr-control-inline"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox7"
+            id="{{ layout }}-toggle7"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle7" class="clr-control-label">
+            option 1
+          </label>
         </div>
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox8"
+            id="{{ layout }}-toggle8"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle8" class="clr-control-label">
+            option 2
+          </label>
+        </div>
+        <div class="clr-toggle-wrapper">
+          <input
+            type="checkbox"
+            name="checkbox9"
+            id="{{ layout }}-toggle9"
+            placeholder="Enter value here"
+            class="clr-checkbox"
+          />
+          <label for="{{ layout }}-toggle9" class="clr-control-label">
+            option 3
+          </label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file">
-        <label for="{{layout}}-file" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            File</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-file-wrapper">
-                <label for="{{layout}}-file" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
-                <input #fileInput type="file" id="{{layout}}-file" placeholder="Enter value here" class="clr-file">
-            </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="radio">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Radio</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio1" id="{{ layout }}-radio1" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio1" class="clr-control-label">option 1</label>
         </div>
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio1" id="{{ layout }}-radio2" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio2" class="clr-control-label">option 2</label>
+        </div>
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio1" id="{{ layout }}-radio3" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio3" class="clr-control-label">option 3</label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="file-plain">
-        <label for="{{layout}}-file3" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Plain file</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-file-wrapper">
-                <input type="file" id="{{layout}}-file" placeholder="Enter value here">
-            </div>
-            <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            <span class="clr-subtext">Helper Text</span>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="radio-inline">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Inline radio</label
+      >
+      <div
+        class="clr-control-container clr-control-inline"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio2" id="{{ layout }}-radio4" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio4" class="clr-control-label">option 1</label>
         </div>
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio2" id="{{ layout }}-radio5" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio5" class="clr-control-label">option 2</label>
+        </div>
+        <div class="clr-radio-wrapper">
+          <input type="radio" name="radio2" id="{{ layout }}-radio6" placeholder="Enter value here" class="clr-radio" />
+          <label for="{{ layout }}-radio6" class="clr-control-label">option 3</label>
+        </div>
+        <div class="clr-subtext-wrapper">
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <span class="clr-subtext">Helper Text</span>
+        </div>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="textarea">
-        <label for="{{layout}}-textarea-basic" class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Textarea</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-textarea-wrapper">
-                <textarea id="{{layout}}-textarea-basic" rows="5" placeholder="Enter value here" class="clr-textarea"></textarea>
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="file">
+      <label
+        for="{{ layout }}-file"
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        File</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-file-wrapper">
+          <label for="{{ layout }}-file" class="clr-control-label"><span class="btn btn-sm">browse</span></label>
+          <input #fileInput type="file" id="{{ layout }}-file" placeholder="Enter value here" class="clr-file" />
         </div>
+        <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="select">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Select</label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-select-wrapper">
-                <select>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                </select>
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="file-plain">
+      <label
+        for="{{ layout }}-file3"
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Plain file</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-file-wrapper">
+          <input type="file" id="{{ layout }}-file" placeholder="Enter value here" />
         </div>
+        <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
+        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
     </div>
 
-    <div class="clr-form-control" [ngClass]="{'clr-row': grid}" id="multiselect">
-        <label class="clr-control-label" [ngClass]="{'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical'}">
-            Mmultiselect
-        </label>
-        <div class="clr-control-container" [ngClass]="{'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical'}">
-            <div class="clr-multiselect-wrapper">
-                <select multiple>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                </select>
-                <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
-            </div>
-            <span class="clr-subtext">Helper Text</span>
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="textarea">
+      <label
+        for="{{ layout }}-textarea-basic"
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Textarea</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-textarea-wrapper">
+          <textarea
+            id="{{ layout }}-textarea-basic"
+            rows="5"
+            placeholder="Enter value here"
+            class="clr-textarea"
+          ></textarea>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         </div>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
     </div>
-</form>`,
+
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="select">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Select</label
+      >
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-select-wrapper">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+
+    <div class="clr-form-control" [ngClass]="{ 'clr-row': grid }" id="multiselect">
+      <label
+        class="clr-control-label"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-2': grid && layout !== 'vertical' }"
+      >
+        Mmultiselect
+      </label>
+      <div
+        class="clr-control-container"
+        [ngClass]="{ 'clr-col-12': grid, 'clr-col-md-10': grid && layout !== 'vertical' }"
+      >
+        <div class="clr-multiselect-wrapper">
+          <select multiple>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </form>`,
 })
 class SimpleTest {
   layout = 'vertical';

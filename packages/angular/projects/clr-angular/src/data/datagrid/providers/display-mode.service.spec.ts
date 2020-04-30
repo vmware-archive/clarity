@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,26 +18,26 @@ interface UserContext {
   displayViewServiceSubscription: Subscription;
 }
 
-export default function(): void {
+export default function (): void {
   describe('DisplayMode Service', () => {
-    beforeEach(function(this: UserContext) {
+    beforeEach(function (this: UserContext) {
       this.organizer = new MockDatagridRenderOrganizer();
       this.displayService = new MockDisplayModeService(this.organizer);
     });
 
-    afterEach(function(this: UserContext) {
+    afterEach(function (this: UserContext) {
       if (this.displayViewServiceSubscription) {
         this.displayViewServiceSubscription.unsubscribe();
       }
     });
 
-    it('exposes an Observable for display mode view state', function() {
+    it('exposes an Observable for display mode view state', function () {
       const viewObservable = this.displayService.view;
       expect(viewObservable).toBeDefined();
       expect(viewObservable instanceof Observable).toBe(true);
     });
 
-    it('properly updates the view mode when organizer resizes', function(this: UserContext) {
+    it('properly updates the view mode when organizer resizes', function (this: UserContext) {
       let currentChange: DatagridDisplayMode;
       let displayChangeCount = 0;
       this.displayViewServiceSubscription = this.displayService.view.subscribe(viewChange => {
@@ -50,7 +50,7 @@ export default function(): void {
       expect(displayChangeCount).toBe(3); // +1 b/c of the behavior subject.
     });
 
-    it('it defaults to DatagridDisplayMode.DISPLAY', function() {
+    it('it defaults to DatagridDisplayMode.DISPLAY', function () {
       const viewObservable = this.displayService.view;
       let currentView = null;
       this.displayViewServiceSubscription = viewObservable.subscribe(viewChange => {
@@ -59,7 +59,7 @@ export default function(): void {
       expect(currentView).toBe(DatagridDisplayMode.DISPLAY);
     });
 
-    it('updates the view for DatagridDisplayMode.DISPLAY', function() {
+    it('updates the view for DatagridDisplayMode.DISPLAY', function () {
       const viewObservable = this.displayService.view;
       let currentView = null;
       this.displayViewServiceSubscription = viewObservable.subscribe(viewChange => {
@@ -69,7 +69,7 @@ export default function(): void {
       expect(currentView).toBe(DatagridDisplayMode.DISPLAY);
     });
 
-    it('updates the view for DatagridDisplayMode.CALCULATE', function() {
+    it('updates the view for DatagridDisplayMode.CALCULATE', function () {
       const viewObservable = this.displayService.view;
       let currentView = null;
       this.displayViewServiceSubscription = viewObservable.subscribe(viewChange => {

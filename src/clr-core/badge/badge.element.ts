@@ -48,7 +48,9 @@ export class CdsBadge extends LitElement {
   render() {
     return html`
       <div class="private-host">
-        <span><span><slot></slot></span></span>
+        <span
+          ><span><slot></slot></span
+        ></span>
       </div>
     `;
   }

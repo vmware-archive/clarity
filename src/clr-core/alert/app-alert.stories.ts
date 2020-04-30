@@ -47,22 +47,23 @@ export const API = () => {
     <style>
       cds-app-alert {
         ${setStyles({
-          '--color': alertColor,
-          '--background': background,
-          '--icon-color': iconColor,
-          '--close-icon-color': closeIconColor,
-          '--close-icon-color-hover': closeIconColorHover,
-        })}
+        '--color': alertColor,
+        '--background': background,
+        '--icon-color': iconColor,
+        '--close-icon-color': closeIconColor,
+        '--close-icon-color-hover': closeIconColorHover,
+      })}
     </style>
-    <cds-app-alert 
+    <cds-app-alert
       .closable=${closable}
       .iconShape=${iconShape}
       .iconTitle=${iconTitle}
       .status=${alertStatus}
-      @closeChange=${action('closeChanged')}>
-        <cds-alert-content>
-          ${slot}
-        </cds-alert-content>
+      @closeChange=${action('closeChange')}
+    >
+      <cds-alert-content>
+        ${slot}
+      </cds-alert-content>
     </cds-app-alert>
   `;
 };
@@ -74,24 +75,24 @@ export const status = () => {
         Foobar
       </cds-alert-content>
       <cds-app-alert-actions>
-       <cds-button>Fix</cds-button>
-    </cds-app-alert-actions>
+        <cds-button>Fix</cds-button>
+      </cds-app-alert-actions>
     </cds-app-alert>
     <cds-app-alert status="warning">
       <cds-alert-content>
         Bar
       </cds-alert-content>
       <cds-app-alert-actions>
-       <cds-button>Fix</cds-button>
-    </cds-app-alert-actions>
+        <cds-button>Fix</cds-button>
+      </cds-app-alert-actions>
     </cds-app-alert>
     <cds-app-alert status="danger">
       <cds-alert-content>
         Baz
       </cds-alert-content>
       <cds-app-alert-actions>
-       <cds-button>Fix</cds-button>
-    </cds-app-alert-actions>
+        <cds-button>Fix</cds-button>
+      </cds-app-alert-actions>
     </cds-app-alert>
   `;
 };
@@ -100,11 +101,11 @@ export const customStyles = () => {
   return html`
     <style>
       .alert-branding {
-        --color: #FFEBF5;
-        --background: #9B0D54;
-        --icon-color: #FFEBF5;
-        --close-icon-color: #FFEBF5;
-        --close-icon-color-hover: #FBC1DA;
+        --color: #ffebf5;
+        --background: #9b0d54;
+        --icon-color: #ffebf5;
+        --close-icon-color: #ffebf5;
+        --close-icon-color-hover: #fbc1da;
       }
     </style>
     <cds-app-alert class="alert-branding" icon-shape="user">

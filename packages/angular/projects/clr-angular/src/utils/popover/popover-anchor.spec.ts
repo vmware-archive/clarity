@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -21,26 +21,26 @@ class TestHost {
   anchor: ElementRef;
 }
 
-export default function(): void {
-  describe('ClrPopoverAnchor', function() {
+export default function (): void {
+  describe('ClrPopoverAnchor', function () {
     type Context = TestContext<ClrPopoverAnchor, TestHost> & {
       eventService: ClrPopoverEventsService;
     };
     describe('Template API', () => {
       spec(ClrPopoverAnchor, TestHost, undefined, { providers: [ClrPopoverEventsService] });
 
-      beforeEach(function(this: Context) {
+      beforeEach(function (this: Context) {
         this.eventService = this.getClarityProvider(ClrPopoverEventsService);
         this.detectChanges();
       });
 
-      it('registers the anchor element with the event service', function(this: Context) {
+      it('registers the anchor element with the event service', function (this: Context) {
         expect(this.eventService.anchorButtonRef).toEqual(this.hostComponent.anchor);
       });
     });
-    describe('View Basics', function(this: Context) {
+    describe('View Basics', function (this: Context) {
       spec(ClrPopoverAnchor, TestHost, undefined, { providers: [ClrPopoverEventsService] });
-      it('adds the clr-anchor classname', function(this: Context) {
+      it('adds the clr-anchor classname', function (this: Context) {
         expect(this.clarityElement.classList).toContain('clr-anchor');
       });
     });

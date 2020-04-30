@@ -24,8 +24,8 @@ import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
 import { ClrDatepickerModule } from './datepicker.module';
 
-export default function() {
-  describe('Daypicker Component ClrAriaLiveService', function() {
+export default function () {
+  describe('Daypicker Component ClrAriaLiveService', function () {
     let localeHelperService: LocaleHelperService;
     let dateNavigationService: DateNavigationService;
 
@@ -79,7 +79,7 @@ export default function() {
     let localeHelperService: LocaleHelperService;
     let dateNavigationService: DateNavigationService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       dateNavigationService = new DateNavigationService();
       // Initializing selected day just to make sure that previous and next month tests become easier
       dateNavigationService.selectedDay = new DayModel(2015, 1, 1);
@@ -262,8 +262,6 @@ export default function() {
 }
 
 @Component({
-  template: `
-        <clr-daypicker></clr-daypicker>
-    `,
+  template: ` <clr-daypicker></clr-daypicker> `,
 })
 class TestComponent {}

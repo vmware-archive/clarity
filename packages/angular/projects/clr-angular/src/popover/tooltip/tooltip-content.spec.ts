@@ -17,12 +17,12 @@ import { TooltipIdService } from './providers/tooltip-id.service';
 
 @Component({
   template: `
-        <clr-tooltip>
-            <clr-tooltip-content [clrPosition]="position" [clrSize]="size" >
-            Hello world
-          </clr-tooltip-content>
-        </clr-tooltip>
-    `,
+    <clr-tooltip>
+      <clr-tooltip-content [clrPosition]="position" [clrSize]="size">
+        Hello world
+      </clr-tooltip-content>
+    </clr-tooltip>
+  `,
 })
 class SimpleTest {
   position: string;
@@ -33,12 +33,12 @@ class SimpleTest {
 
 @Component({
   template: `
-        <clr-tooltip>
-          <clr-tooltip-content [id]="idValue">
-            Hello world
-          </clr-tooltip-content>
-        </clr-tooltip>
-    `,
+    <clr-tooltip>
+      <clr-tooltip-content [id]="idValue">
+        Hello world
+      </clr-tooltip-content>
+    </clr-tooltip>
+  `,
 })
 class IdTest {
   idValue;
@@ -49,60 +49,60 @@ interface TooltipContext extends TestContext<ClrTooltipContent, SimpleTest> {
   tooltipIdService: TooltipIdService;
 }
 
-export default function(): void {
-  describe('TooltipContent component', function() {
-    describe('Template API', function(this: TooltipContext) {
-      describe('handles values for custom id', function() {
+export default function (): void {
+  describe('TooltipContent component', function () {
+    describe('Template API', function (this: TooltipContext) {
+      describe('handles values for custom id', function () {
         spec(ClrTooltipContent, IdTest, ClrTooltipModule, {
           providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
         });
 
-        beforeEach(function(this: TooltipContext) {
+        beforeEach(function (this: TooltipContext) {
           this.getClarityProvider(ClrPopoverToggleService).open = true;
           this.tooltipIdService = this.getClarityProvider(TooltipIdService);
           this.detectChanges();
         });
 
-        it('accepts an [id] when an undefined id is provided', function() {
+        it('accepts an [id] when an undefined id is provided', function () {
           // IdTest component starts with idValue undefined
           expect(this.clarityElement.getAttribute('id')).toEqual('');
         });
 
-        it('accepts an [id] when a null id is provided', function() {
+        it('accepts an [id] when a null id is provided', function () {
           this.hostComponent.idValue = null;
           this.detectChanges();
           expect(this.clarityElement.getAttribute('id')).toEqual('');
         });
 
-        it('accepts an [id] when an empty string id is provided', function() {
+        it('accepts an [id] when an empty string id is provided', function () {
           this.hostComponent.idValue = '';
           this.detectChanges();
           expect(this.clarityElement.getAttribute('id')).toEqual('');
         });
 
-        it('accepts an [id] when an custom string id is provided', function() {
+        it('accepts an [id] when an custom string id is provided', function () {
           this.hostComponent.idValue = 'custom-id';
           this.detectChanges();
           expect(this.clarityElement.getAttribute('id')).toEqual('custom-id');
         });
       });
 
-      describe('handles inputs for position and size', function() {
+      describe('handles inputs for position and size', function () {
         spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, {
           providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
         });
 
-        beforeEach(function(this: TooltipContext) {
+        beforeEach(function (this: TooltipContext) {
           this.getClarityProvider(ClrPopoverToggleService).open = true;
           this.tooltipIdService = this.getClarityProvider(TooltipIdService);
           this.detectChanges();
         });
 
-        it('sets an id when no id is provided', function() {
+        it('sets an id when no id is provided', function () {
           expect(this.clarityDirective.id).toEqual(this.clarityElement.getAttribute('id'));
         });
 
-        it('accepts a [clrPosition] input', function(this: TooltipContext) {
+        it('accepts a [clrPosition] input', function (this: TooltipContext) {
           // Default is right
           expect((this.clarityDirective as any).anchorPoint).toEqual(Point.RIGHT_CENTER);
           expect((this.clarityDirective as any).popoverPoint).toEqual(Point.LEFT_TOP);
@@ -123,7 +123,7 @@ export default function(): void {
           expect(this.clarityElement.classList).toContain('tooltip-top-left');
         });
 
-        it('accepts a [clrSize] input', function(this: TooltipContext) {
+        it('accepts a [clrSize] input', function (this: TooltipContext) {
           // Default is small
           expect(this.clarityDirective.size).toEqual('sm');
           expect(this.clarityElement.classList).toContain('tooltip-sm');
@@ -137,30 +137,30 @@ export default function(): void {
       });
     });
 
-    describe('View basics', function() {
+    describe('View basics', function () {
       spec(ClrTooltipContent, SimpleTest, ClrTooltipModule, {
         providers: [ClrPopoverToggleService, UNIQUE_ID_PROVIDER, TooltipIdService],
       });
 
-      beforeEach(function(this: TooltipContext) {
+      beforeEach(function (this: TooltipContext) {
         this.getClarityProvider(ClrPopoverToggleService).open = true;
         this.tooltipIdService = this.getClarityProvider(TooltipIdService);
         this.detectChanges();
       });
 
-      it('projects content', function(this: TooltipContext) {
+      it('projects content', function (this: TooltipContext) {
         expect(this.clarityElement.textContent.trim()).toMatch('Hello world');
       });
 
-      it('adds the .tooltip-content class to the host', function(this: TooltipContext) {
+      it('adds the .tooltip-content class to the host', function (this: TooltipContext) {
         expect(this.clarityElement.classList).toContain('tooltip-content');
       });
 
-      it('has the correct role', function() {
+      it('has the correct role', function () {
         expect(this.clarityElement.getAttribute('role')).toBe('tooltip');
       });
 
-      it('has an id', function() {
+      it('has an id', function () {
         expect(this.clarityElement.getAttribute('id')).toBeTruthy();
       });
     });

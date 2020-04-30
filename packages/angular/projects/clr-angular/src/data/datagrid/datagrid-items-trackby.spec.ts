@@ -14,13 +14,13 @@ import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 
-export default function(): void {
-  describe('DatagridItemsTrackby directive', function() {
-    beforeEach(function() {
+export default function (): void {
+  describe('DatagridItemsTrackby directive', function () {
+    beforeEach(function () {
       /*
-             * Since the DatagridItems element is a template that isn't rendered in the DOM,
-             * we can't use our usual shortcut, we need to rely on @ViewChild
-             */
+       * Since the DatagridItems element is a template that isn't rendered in the DOM,
+       * we can't use our usual shortcut, we need to rely on @ViewChild
+       */
       TestBed.configureTestingModule({
         imports: [ClrDatagridModule],
         declarations: [FullTest],
@@ -32,11 +32,11 @@ export default function(): void {
       this.itemsProvider = TestBed.get(Items);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.fixture.destroy();
     });
 
-    it('receives an input for the trackBy option', function() {
+    it('receives an input for the trackBy option', function () {
       expect(this.itemsProvider.trackBy).toBeUndefined();
       this.testComponent.trackBy = (index: number, _item: number) => index;
       this.fixture.detectChanges();
@@ -45,7 +45,7 @@ export default function(): void {
   });
 }
 
-@Component({ template: `<div *ngFor="let n of numbers; trackBy: trackBy">{{n}}</div>` })
+@Component({ template: `<div *ngFor="let n of numbers; trackBy: trackBy">{{ n }}</div>` })
 class FullTest {
   @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems<number>;
 

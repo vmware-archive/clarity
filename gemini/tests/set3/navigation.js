@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,7 +18,7 @@ gemini.suite('navigation', child => {
       .setCaptureElements('.clr-example .main-container')
       .ignoreElements('pre')
       .capture('default')
-      .capture('header-dropdown', function(actions, find) {
+      .capture('header-dropdown', function (actions, find) {
         actions.click(find('#dropdown-with-icons'));
         actions.wait(WAIT_LOAD_TIME);
       });

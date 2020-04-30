@@ -7,10 +7,10 @@ about: Proposal for a new feature or enhancement
 
 _Summary the request and address the questions as appropriate._
 
-* What is the change?
-* Why should it go in Clarity?
-* Does this change impact existing behaviors? If so how?
-* If this change introduces a new behavior, is this behavior accessible?
+- What is the change?
+- Why should it go in Clarity?
+- Does this change impact existing behaviors? If so how?
+- If this change introduces a new behavior, is this behavior accessible?
 
 ## Use case
 

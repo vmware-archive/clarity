@@ -38,7 +38,9 @@ export enum ClrLoadingState {
 
 function buttonSlots(icon: boolean, badge: boolean) {
   // nested span tags allow for line-height erasers on the innermost span and flex-based centering on the outermost span
-  const textSlot = html`<span class="button-content"><span><slot></slot></span></span>`;
+  const textSlot = html`<span class="button-content"
+    ><span><slot></slot></span
+  ></span>`;
   const slotWithIcon = html`${iconSlot}${textSlot}`;
   const slotWithBadge = html`${textSlot}${badgeSlot}`;
   const slotWithContentAndBadge = html`${iconSlot}${textSlot}${badgeSlot}`;
@@ -153,13 +155,15 @@ export class CdsButton extends CdsBaseButton {
     const hasIcon = !!this.icon;
     const hasBadge = !!this.badge;
 
-    return html`<div class="private-host" cds-layout="horizontal">${
-      loadingState === ClrLoadingState.SUCCESS ? html`${iconSpinnerCheck}` : ''
-    }${loadingState === ClrLoadingState.ERROR ? html`${iconSpinnerError}` : ''}${
-      loadingState === ClrLoadingState.LOADING ? html`${iconSpinner}` : ''
-    }${loadingState === ClrLoadingState.DEFAULT ? html`${buttonSlots(hasIcon, hasBadge)}` : ''}${
-      this.hiddenButtonTemplate
-    }</div>`;
+    return html`<div class="private-host" cds-layout="horizontal">
+      ${loadingState === ClrLoadingState.SUCCESS ? html`${iconSpinnerCheck}` : ''}${loadingState ===
+      ClrLoadingState.ERROR
+        ? html`${iconSpinnerError}`
+        : ''}${loadingState === ClrLoadingState.LOADING ? html`${iconSpinner}` : ''}${loadingState ===
+      ClrLoadingState.DEFAULT
+        ? html`${buttonSlots(hasIcon, hasBadge)}`
+        : ''}${this.hiddenButtonTemplate}
+    </div>`;
   }
 
   static get styles() {

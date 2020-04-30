@@ -14,12 +14,12 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { TestBed } from '@angular/core/testing';
 
-export default function(): void {
-  describe('DatagridActionOverflow component', function() {
+export default function (): void {
+  describe('DatagridActionOverflow component', function () {
     let context: TestContext<ClrDatagridActionOverflow, SimpleTest>;
     let toggle: HTMLElement;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrDatagridActionOverflow, SimpleTest, [
         RowActionService,
         ClrPopoverEventsService,
@@ -29,13 +29,13 @@ export default function(): void {
       toggle = context.clarityElement.querySelector('.clr-smart-open-close');
     });
 
-    afterEach(function() {
+    afterEach(function () {
       context.fixture.destroy();
       const popoverContent = document.querySelectorAll('.clr-popover-content');
       popoverContent.forEach(content => document.body.removeChild(content));
     });
 
-    it('offers two-way binding on clrDgActionOverflowOpen', function() {
+    it('offers two-way binding on clrDgActionOverflowOpen', function () {
       context.clarityDirective.open = true;
       context.detectChanges();
       expect(context.testComponent.open).toBe(true);
@@ -44,7 +44,7 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('opens and closes the menu when the toggle is clicked', function() {
+    it('opens and closes the menu when the toggle is clicked', function () {
       expect(context.clarityDirective.open).toBe(false);
       toggle.click();
       context.detectChanges();
@@ -54,7 +54,7 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('closes the menu when clicked outside of the host', function() {
+    it('closes the menu when clicked outside of the host', function () {
       const outsideDiv: HTMLElement = context.testElement.querySelector('.outside-click-test');
 
       // should be closed initially
@@ -71,14 +71,14 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('projects menu content when open', function() {
+    it('projects menu content when open', function () {
       toggle.click();
       context.detectChanges();
       const popoverContent = document.querySelector('.clr-popover-content');
       expect(popoverContent.textContent.trim()).toMatch('Hello world');
     });
 
-    it('should call clrDgActionOverflowOpenChange output when open changed', function() {
+    it('should call clrDgActionOverflowOpenChange output when open changed', function () {
       spyOn(context.fixture.componentInstance, 'clrDgActionOverflowOpenChangeFn');
       toggle = context.clarityElement.querySelector('.datagrid-action-toggle');
       toggle.click();
@@ -87,7 +87,7 @@ export default function(): void {
       expect(context.fixture.componentInstance.clrDgActionOverflowOpenChangeFn).toHaveBeenCalledWith(false);
     });
 
-    it('closes the menu when an action menu item is clicked', function() {
+    it('closes the menu when an action menu item is clicked', function () {
       toggle.click();
       context.detectChanges();
 
@@ -97,11 +97,11 @@ export default function(): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('focuses on the first projected button', function() {
+    it('focuses on the first projected button', function () {
       const ngZone = TestBed.get(NgZone);
       spyOn(ngZone, 'runOutsideAngular').and.callFake(
         (_fn: Function) =>
-          function() {
+          function () {
             context.fixture.whenStable().then(() => {
               const firstButton: HTMLButtonElement = context.testComponent.actionItem.nativeElement;
               expect(document.activeElement).toEqual(firstButton);
@@ -115,15 +115,17 @@ export default function(): void {
 }
 
 @Component({
-  template: `
-        <div>
-            <div class="outside-click-test">
-                This is an area outside of the action overflow
-            </div>
-            <clr-dg-action-overflow [(clrDgActionOverflowOpen)]="open" (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)">
-                <button #actionItem class="action-item" clrPopoverCloseButton>Hello world</button>
-            </clr-dg-action-overflow>
-        </div>`,
+  template: ` <div>
+    <div class="outside-click-test">
+      This is an area outside of the action overflow
+    </div>
+    <clr-dg-action-overflow
+      [(clrDgActionOverflowOpen)]="open"
+      (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)"
+    >
+      <button #actionItem class="action-item" clrPopoverCloseButton>Hello world</button>
+    </clr-dg-action-overflow>
+  </div>`,
 })
 class SimpleTest {
   clrDgActionOverflowOpenChangeFn = (_$event: boolean) => {

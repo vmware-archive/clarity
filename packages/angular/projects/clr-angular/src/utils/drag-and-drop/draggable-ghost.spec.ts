@@ -14,23 +14,23 @@ import { DragEventListenerService } from './providers/drag-event-listener.servic
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';
 import { DraggableSnapshotService } from './providers/draggable-snapshot.service';
 
-export default function(): void {
-  describe('ClrDraggableGhost', function() {
-    describe('Without Wrapping ClrDraggable', function() {
-      it('should throw an error with a message', function() {
+export default function (): void {
+  describe('ClrDraggableGhost', function () {
+    describe('Without Wrapping ClrDraggable', function () {
+      it('should throw an error with a message', function () {
         TestBed.configureTestingModule({
           declarations: [WithNoWrappingDraggable, ClrDraggableGhost],
           providers: [DomAdapter],
         });
 
-        expect(function() {
+        expect(function () {
           TestBed.createComponent(WithNoWrappingDraggable);
         }).toThrowError('The clr-draggable-ghost component can only be used inside of a clrDraggable directive.');
       });
     });
 
-    describe('With Wrapping ClrDraggable', function() {
-      beforeEach(function() {
+    describe('With Wrapping ClrDraggable', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           imports: [ClrDragAndDropModule, NoopAnimationsModule],
           declarations: [WithWrappingDraggable],
@@ -46,15 +46,15 @@ export default function(): void {
         this.dragEventListener = TestBed.get(DragEventListenerService);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
-      it('should have draggable-ghost class', function() {
+      it('should have draggable-ghost class', function () {
         expect(this.ghostElement.classList.contains('draggable-ghost')).toBeTruthy();
       });
 
-      it('should appear on the first drag move event', function() {
+      it('should appear on the first drag move event', function () {
         this.dragEventListener.dragStartPosition = { pageX: 0, pageY: 0 };
         const mockDragMoveEvent = { dragPosition: { pageX: 33, pageY: 44 } };
 
@@ -65,7 +65,7 @@ export default function(): void {
         expect(this.ghostElement.style.visibility).toBe('visible');
       });
 
-      it('should be dragged from mouse position on page', function() {
+      it('should be dragged from mouse position on page', function () {
         this.dragEventListener.dragStartPosition = { pageX: 0, pageY: 0 };
         const mockDragMoveEvent1 = { dragPosition: { pageX: 120, pageY: 60 } };
         const mockDragMoveEvent2 = { dragPosition: { pageX: 180, pageY: 120 } };
@@ -80,7 +80,7 @@ export default function(): void {
       });
     });
 
-    describe('With Wrapping ClrDraggable And Draggable Snapshot', function() {
+    describe('With Wrapping ClrDraggable And Draggable Snapshot', function () {
       const mockDraggable = document.createElement('div');
       document.body.appendChild(mockDraggable);
 
@@ -92,7 +92,7 @@ export default function(): void {
 
       const mockDragStartEvent = { dragPosition: { pageX: 110, pageY: 55 } };
 
-      beforeEach(function() {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           imports: [ClrDragAndDropModule, NoopAnimationsModule],
           declarations: [WithWrappingDraggable],
@@ -110,11 +110,11 @@ export default function(): void {
         this.dragEventListener = TestBed.get(DragEventListenerService);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
-      it('should appear on the first drag move event', function() {
+      it('should appear on the first drag move event', function () {
         const mockDragMoveEvent = { dragPosition: { pageX: 33, pageY: 44 } };
         this.dragEventListener.dragMoved.next(mockDragMoveEvent);
 
@@ -126,7 +126,7 @@ export default function(): void {
         expect(this.ghostElement.style.visibility).toBe('visible');
       });
 
-      it('should be dragged from its first drag position on the draggable if draggable state is registered', function() {
+      it('should be dragged from its first drag position on the draggable if draggable state is registered', function () {
         const mockDragMoveEvent1 = { dragPosition: { pageX: 120, pageY: 60 } };
 
         const offsetLeft = mockDragStartEvent.dragPosition.pageX - this.draggableSnapshot.clientRect.left;

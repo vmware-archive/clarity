@@ -73,7 +73,7 @@ function runGemini(config) {
   let geminiStatus = 0;
   let screensDir = program.configuration ? `./${program.configuration}-screens` : './screens';
   if (status.code === 0) {
-    config.args.forEach(function(arg) {
+    config.args.forEach(function (arg) {
       let gemini = shell.exec(
         `node_modules/.bin/gemini ${
           config.action

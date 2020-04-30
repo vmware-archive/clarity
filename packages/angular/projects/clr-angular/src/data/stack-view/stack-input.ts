@@ -19,9 +19,9 @@ import { ClrStackView } from './stack-view';
   inputs: ['model: clrModel', 'type'],
   outputs: ['modelChange: clrModelChange'],
   template: `
-        <span *ngIf="!stackView.editing">{{model}}</span>
-        <input [type]="type" *ngIf="stackView.editing" [(ngModel)]="model"/>
-    `,
+    <span *ngIf="!stackView.editing">{{ model }}</span>
+    <input [type]="type" *ngIf="stackView.editing" [(ngModel)]="model" />
+  `,
 })
 export class ClrStackInput extends StackControl {
   type = 'text';

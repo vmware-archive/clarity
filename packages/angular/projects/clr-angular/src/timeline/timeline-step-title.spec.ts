@@ -11,7 +11,7 @@ import { ClrTimelineStepTitle } from './timeline-step-title';
 import { UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
 import { TimelineStepIdService } from './providers/timeline-step-id.service';
 
-export default function(): void {
+export default function (): void {
   describe('ClrTimelineStepTitle', () => {
     let fixture: ComponentFixture<TestTimelineStepTitle>;
     let nativeElement: HTMLElement;
@@ -47,8 +47,6 @@ export default function(): void {
 }
 
 @Component({
-  template: `
-    <clr-timeline-step-title>Title Content</clr-timeline-step-title>
-  `,
+  template: ` <clr-timeline-step-title>Title Content</clr-timeline-step-title> `,
 })
 class TestTimelineStepTitle {}

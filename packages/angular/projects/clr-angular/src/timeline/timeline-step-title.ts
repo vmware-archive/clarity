@@ -18,9 +18,7 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'clr-timeline-step-title',
-  template: `
-        <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: { '[class.clr-timeline-step-title]': 'true', '[attr.aria-hidden]': 'true' },
 })
 export class ClrTimelineStepTitle {}

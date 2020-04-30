@@ -3,10 +3,10 @@
 The Clarity documentation is located at [clarity.design](https://clarity.design).
 The documentation site documents all aspects of Clarity which includes the following:
 
-* Design Guidelines
-* Accessibility Guidelines
-* Angular Component Usage
-* Web Component Usage
+- Design Guidelines
+- Accessibility Guidelines
+- Angular Component Usage
+- Web Component Usage
 
 To add new documentation or fix existing documentation you will need to run
 our development environment on your computer. You will need to have

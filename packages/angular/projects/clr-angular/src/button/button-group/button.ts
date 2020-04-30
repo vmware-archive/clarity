@@ -14,19 +14,20 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 @Component({
   selector: 'clr-button',
   template: `
-        <ng-template #buttonProjectedRef>
-            <button
-                [class]="classNames"
-                (click)="emitClick($event)"
-                [attr.type]="type"
-                [attr.name]="name"
-                [attr.disabled]="disabled"
-                [attr.id]="id">
-                <span class="spinner spinner-inline" *ngIf="loading"></span>
-                <ng-content></ng-content>
-            </button>
-        </ng-template>
-    `,
+    <ng-template #buttonProjectedRef>
+      <button
+        [class]="classNames"
+        (click)="emitClick($event)"
+        [attr.type]="type"
+        [attr.name]="name"
+        [attr.disabled]="disabled"
+        [attr.id]="id"
+      >
+        <span class="spinner spinner-inline" *ngIf="loading"></span>
+        <ng-content></ng-content>
+      </button>
+    </ng-template>
+  `,
   providers: [{ provide: LoadingListener, useExisting: ClrButton }],
 })
 export class ClrButton implements LoadingListener {

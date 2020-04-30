@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,16 +13,25 @@ import { ClrWizardPage } from './wizard-page';
 @Component({
   selector: '[clr-wizard-stepnav-item]',
   template: `
-        <button type="button" class="btn btn-link clr-wizard-stepnav-link" (click)="click()" [attr.disabled]="isDisabled ? '' : null">
-            <span class="clr-wizard-stepnav-link-suffix">
-              <clr-icon shape="error-standard" class="is-error clr-wizard-stepnav-item-error-icon" *ngIf="hasError"></clr-icon>
-              <ng-content *ngIf="!hasError"></ng-content>              
-            </span>
-            <span class="clr-wizard-stepnav-link-title">
-              <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template> 
-            </span>
-        </button>
-    `,
+    <button
+      type="button"
+      class="btn btn-link clr-wizard-stepnav-link"
+      (click)="click()"
+      [attr.disabled]="isDisabled ? '' : null"
+    >
+      <span class="clr-wizard-stepnav-link-suffix">
+        <clr-icon
+          shape="error-standard"
+          class="is-error clr-wizard-stepnav-item-error-icon"
+          *ngIf="hasError"
+        ></clr-icon>
+        <ng-content *ngIf="!hasError"></ng-content>
+      </span>
+      <span class="clr-wizard-stepnav-link-title">
+        <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template>
+      </span>
+    </button>
+  `,
   host: {
     '[id]': 'id',
     '[attr.aria-selected]': 'isCurrent',

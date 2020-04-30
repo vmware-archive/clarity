@@ -14,24 +14,23 @@ import { DetailService } from './providers/detail.service';
 @Component({
   selector: 'clr-dg-footer',
   template: `
-        <ng-container
-            *ngIf="(selection.selectionType === SELECTION_TYPE.Multi) && (selection.current.length > 0)">
-          <div class="clr-form-control-disabled">
-              <clr-checkbox-wrapper class="datagrid-footer-select">
-                <input clrCheckbox type="checkbox" checked="checked" disabled>
-                <label>{{selection.current.length}}</label>
-            </clr-checkbox-wrapper>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="!detailService.isOpen">
-          <ng-content select="clr-dg-column-toggle"></ng-content>
-          <clr-dg-column-toggle *ngIf="hasHideableColumns && !toggle"></clr-dg-column-toggle>
-          <div class="datagrid-footer-description">
-              <ng-content></ng-content>
-          </div>
-        </ng-container>
-        <ng-content select="clr-dg-pagination"></ng-content>
-    `,
+    <ng-container *ngIf="selection.selectionType === SELECTION_TYPE.Multi && selection.current.length > 0">
+      <div class="clr-form-control-disabled">
+        <clr-checkbox-wrapper class="datagrid-footer-select">
+          <input clrCheckbox type="checkbox" checked="checked" disabled />
+          <label>{{ selection.current.length }}</label>
+        </clr-checkbox-wrapper>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!detailService.isOpen">
+      <ng-content select="clr-dg-column-toggle"></ng-content>
+      <clr-dg-column-toggle *ngIf="hasHideableColumns && !toggle"></clr-dg-column-toggle>
+      <div class="datagrid-footer-description">
+        <ng-content></ng-content>
+      </div>
+    </ng-container>
+    <ng-content select="clr-dg-pagination"></ng-content>
+  `,
   host: {
     '[class.datagrid-footer]': 'true',
   },

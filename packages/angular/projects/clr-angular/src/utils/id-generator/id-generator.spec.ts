@@ -12,8 +12,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from './id-generator.service';
 
 @Component({
   selector: 'id-test',
-  template: `
-        <div [id]="divId">My Div</div>`,
+  template: ` <div [id]="divId">My Div</div>`,
   providers: [UNIQUE_ID_PROVIDER],
 })
 class IdTest {
@@ -24,15 +23,14 @@ class IdTest {
 class IdTestingModule {}
 
 @Component({
-  template: `
-        <id-test></id-test>
-        <id-test></id-test>
-        <id-test></id-test>`,
+  template: ` <id-test></id-test>
+    <id-test></id-test>
+    <id-test></id-test>`,
 })
 class UniqueIdTest {}
 
-describe('ID Generator Service', function() {
-  it("generates uniq id's", function() {
+describe('ID Generator Service', function () {
+  it("generates uniq id's", function () {
     TestBed.configureTestingModule({
       imports: [IdTestingModule],
       providers: [UNIQUE_ID_PROVIDER],

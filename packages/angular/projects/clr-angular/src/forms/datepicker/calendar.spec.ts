@@ -20,12 +20,12 @@ import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { createKeyboardEvent } from './utils/test-utils';
 
-export default function() {
+export default function () {
   describe('Calendar Component', () => {
     let context: TestContext<ClrCalendar, TestComponent>;
     let dateNavigationService: DateNavigationService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       dateNavigationService = new DateNavigationService();
       // Initializing selected day just to make sure that previous and next month tests become easier
       dateNavigationService.selectedDay = new DayModel(2015, 0, 1);
@@ -166,8 +166,6 @@ export default function() {
 }
 
 @Component({
-  template: `
-        <clr-calendar></clr-calendar>
-    `,
+  template: ` <clr-calendar></clr-calendar> `,
 })
 class TestComponent {}

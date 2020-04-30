@@ -66,7 +66,8 @@ export const internationalization = () => {
     <h2>Internationalization (i18n)</h2>
     <pre>
       ${getValues()}
-    </pre>
+    </pre
+    >
   `;
 };
 
@@ -77,15 +78,13 @@ export const lazyLoading = () => {
 
     render() {
       return html`
-        ${
-          this.loaded
-            ? html`
-          <cds-test-dropdown>
-            Hello World
-          </cds-test-dropdown>
-        `
-            : html`<button @click=${() => this.load()}>load component</button>`
-        }
+        ${this.loaded
+          ? html`
+              <cds-test-dropdown>
+                Hello World
+              </cds-test-dropdown>
+            `
+          : html`<button @click=${() => this.load()}>load component</button>`}
       `;
     }
 

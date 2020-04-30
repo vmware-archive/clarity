@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,8 +12,7 @@ import { ClrSelectContainer } from './select-container';
 import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
 
 @Component({
-  template: `
-  <clr-select-container>
+  template: ` <clr-select-container>
     <select clrSelect [(ngModel)]="model">
       <option value="1">one</option>
       <option value="2">two</option>
@@ -24,16 +23,16 @@ class NoLabelTest {}
 
 @Component({
   template: `
-  <clr-select-container>
-    <select name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
-      <option value="1">one</option>
-      <option value="2">two</option>
-    </select>
-    <label>Hello World</label>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>Must be at least 5 characters</clr-control-error>
-  </clr-select-container>
-    `,
+    <clr-select-container>
+      <select name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
+        <option value="1">one</option>
+        <option value="2">two</option>
+      </select>
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-select-container>
+  `,
 })
 class TemplateDrivenTest {
   disabled = false;
@@ -42,16 +41,16 @@ class TemplateDrivenTest {
 
 @Component({
   template: `
-  <clr-select-container>
-    <select multiple name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
-      <option value="1">one</option>
-      <option value="2">two</option>
-    </select>
-    <label>Hello World</label>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>Must be at least 5 characters</clr-control-error>
-  </clr-select-container>
-    `,
+    <clr-select-container>
+      <select multiple name="test" clrSelect required [(ngModel)]="model" [disabled]="disabled">
+        <option value="1">one</option>
+        <option value="2">two</option>
+      </select>
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-select-container>
+  `,
 })
 class TemplateDrivenMultipleTest {
   disabled = false;
@@ -59,8 +58,7 @@ class TemplateDrivenMultipleTest {
 }
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-select-container>
       <select name="test" clrSelect formControlName="model">
         <option value="1">one</option>
@@ -80,8 +78,7 @@ class ReactiveTest {
 }
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-select-container>
       <select multiple name="test" clrSelect formControlName="model">
         <option value="1">one</option>
@@ -100,7 +97,7 @@ class ReactiveMultipleTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrSelectContainer', () => {
     ContainerNoLabelSpec(ClrSelectContainer, ClrSelect, NoLabelTest);
 

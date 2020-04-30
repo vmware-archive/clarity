@@ -16,22 +16,18 @@ import { ClrAbstractContainer } from '../common/abstract-container';
 @Component({
   selector: 'clr-range-container',
   template: `
-        <ng-content select="label"></ng-content>
-        <label *ngIf="!label && addGrid()"></label>
-        <div class="clr-control-container" [ngClass]="controlClass()">
-            <div class="clr-range-wrapper" [class.progress-fill]="hasProgress">
-                <ng-content select="[clrRange]"></ng-content>
-                <span
-                  *ngIf="hasProgress"
-                  class="fill-input"
-                  [style.width]="getRangeProgressFillWidth()"
-                ></span>
-                <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-            </div>
-            <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-            <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
-        </div>
-    `,
+    <ng-content select="label"></ng-content>
+    <label *ngIf="!label && addGrid()"></label>
+    <div class="clr-control-container" [ngClass]="controlClass()">
+      <div class="clr-range-wrapper" [class.progress-fill]="hasProgress">
+        <ng-content select="[clrRange]"></ng-content>
+        <span *ngIf="hasProgress" class="fill-input" [style.width]="getRangeProgressFillWidth()"></span>
+        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+      </div>
+      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+    </div>
+  `,
   host: {
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',
@@ -78,8 +74,8 @@ export class ClrRangeContainer extends ClrAbstractContainer {
 
     const inputMiddle = (inputMinValue + inputMaxValue) / 2;
     const inputValue = !!this.control && this.control.value !== undefined ? this.control.value : inputMiddle;
-    const valueAsPercent = (inputValue - inputMinValue) * 100 / (inputMaxValue - inputMinValue);
+    const valueAsPercent = ((inputValue - inputMinValue) * 100) / (inputMaxValue - inputMinValue);
 
-    return valueAsPercent * inputWidth / 100 + 'px';
+    return (valueAsPercent * inputWidth) / 100 + 'px';
   }
 }

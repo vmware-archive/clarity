@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,13 +7,13 @@
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 import { ClrLoadingState } from '../../utils/loading/loading';
 
-export default function(): void {
-  describe('Expand provider', function() {
-    beforeEach(function() {
+export default function (): void {
+  describe('Expand provider', function () {
+    beforeEach(function () {
       this.expand = new DatagridIfExpandService();
     });
 
-    it('starts with the correct default settings', function() {
+    it('starts with the correct default settings', function () {
       let doesReplace = null;
       this.expand.replace.subscribe(expandChange => {
         doesReplace = expandChange;
@@ -24,7 +24,7 @@ export default function(): void {
       expect(this.expand.expanded).toBe(false, 'collapsed');
     });
 
-    it('notifies when cells are replaced', function() {
+    it('notifies when cells are replaced', function () {
       let isReplaced = null;
       this.expand.replace.subscribe(replaceChange => {
         isReplaced = replaceChange;
@@ -34,14 +34,14 @@ export default function(): void {
       expect(isReplaced).toBe(true);
     });
 
-    it('implements LoadingListener', function() {
+    it('implements LoadingListener', function () {
       this.expand.loadingStateChange(ClrLoadingState.LOADING);
       expect(this.expand.loading).toBe(true);
       this.expand.loadingStateChange(ClrLoadingState.DEFAULT);
       expect(this.expand.loading).toBe(false);
     });
 
-    it('prepares the animation before requesting to expand', function() {
+    it('prepares the animation before requesting to expand', function () {
       const listeners: string[] = [];
       this.expand.animate.subscribe(() => listeners.push('animate'));
       this.expand.expandChange.subscribe(() => listeners.push('expand'));
@@ -49,7 +49,7 @@ export default function(): void {
       expect(listeners).toEqual(['animate', 'expand']);
     });
 
-    it('re-triggers animation when done loading', function() {
+    it('re-triggers animation when done loading', function () {
       let animates = 0;
       this.expand.animate.subscribe(() => animates++);
       this.expand.loadingStateChange(ClrLoadingState.LOADING);

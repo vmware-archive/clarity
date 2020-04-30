@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,16 +15,17 @@ import { ViewManagerService } from './providers/view-manager.service';
 @Component({
   selector: 'clr-monthpicker',
   template: `
-        <button
-            type="button"
-            class="calendar-btn month"
-            *ngFor="let month of monthNames; let monthIndex = index"
-            (click)="changeMonth(monthIndex)"
-            [class.is-selected]="monthIndex === calendarMonthIndex"
-            [attr.tabindex]="getTabIndex(monthIndex)">
-            {{month}}
-        </button>
-    `,
+    <button
+      type="button"
+      class="calendar-btn month"
+      *ngFor="let month of monthNames; let monthIndex = index"
+      (click)="changeMonth(monthIndex)"
+      [class.is-selected]="monthIndex === calendarMonthIndex"
+      [attr.tabindex]="getTabIndex(monthIndex)"
+    >
+      {{ month }}
+    </button>
+  `,
   host: {
     '[class.monthpicker]': 'true',
   },

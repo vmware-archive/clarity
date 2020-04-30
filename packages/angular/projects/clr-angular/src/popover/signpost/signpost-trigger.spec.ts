@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,8 +13,8 @@ import { ClrSignpostModule } from './signpost.module';
 import { SignpostIdService } from './providers/signpost-id.service';
 import { SignpostFocusManager } from './providers/signpost-focus-manager.service';
 
-export default function(): void {
-  describe('SignpostToggle component', function() {
+export default function (): void {
+  describe('SignpostToggle component', function () {
     let fixture: ComponentFixture<any>;
     let clarityElement: any;
     let toggleService: ClrPopoverToggleService;
@@ -38,7 +38,7 @@ export default function(): void {
       fixture.destroy();
     });
 
-    it('should toggle the IfOpenService.open property on click', function() {
+    it('should toggle the IfOpenService.open property on click', function () {
       expect(toggleService.open).toBeFalsy();
       trigger.click();
       expect(toggleService.open).toEqual(true);
@@ -46,7 +46,7 @@ export default function(): void {
       expect(toggleService.open).toEqual(false);
     });
 
-    it('should have active class when open', function() {
+    it('should have active class when open', function () {
       expect(trigger.classList.contains('active')).toBeFalsy();
       trigger.click();
       fixture.detectChanges();
@@ -80,14 +80,15 @@ export default function(): void {
 
 @Component({
   template: `
-        <button
-            #anchor
-            type="button"
-            class="signpost-action btn btn-small btn-link"
-            [ngClass]="{active: open}"
-            clrSignpostTrigger>
-            <clr-icon shape="info"></clr-icon>
-        </button>
-    `,
+    <button
+      #anchor
+      type="button"
+      class="signpost-action btn btn-small btn-link"
+      [ngClass]="{ active: open }"
+      clrSignpostTrigger
+    >
+      <clr-icon shape="info"></clr-icon>
+    </button>
+  `,
 })
 class TestTrigger {}

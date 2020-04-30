@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,8 +10,8 @@ import { DragEventListenerService } from './drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './drag-event-listener.service.mock';
 import { DragHandleRegistrarService } from './drag-handle-registrar.service';
 
-export default function(): void {
-  describe('Drag Handle Registrar', function() {
+export default function (): void {
+  describe('Drag Handle Registrar', function () {
     let fixture: ComponentFixture<any>;
 
     const draggableEl = document.createElement('div') as HTMLDivElement;
@@ -35,14 +35,14 @@ export default function(): void {
       fixture.destroy();
     });
 
-    it('registers element as default handle on assignment', function() {
+    it('registers element as default handle on assignment', function () {
       dragHandleRegistrar.defaultHandleEl = draggableEl;
       expect(dragEventListener.draggableEl).toBe(draggableEl);
       expect(draggableEl.getAttribute('hasListener')).toBeTruthy();
       expect(draggableEl.classList.contains('drag-handle')).toBeTruthy();
     });
 
-    it('registers custom element as handle', function() {
+    it('registers custom element as handle', function () {
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
 
       expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
@@ -52,7 +52,7 @@ export default function(): void {
       expect(customHandleEl.classList.contains('drag-handle')).toBeTruthy();
     });
 
-    it('registers custom element as drag handle after default handle is set', function() {
+    it('registers custom element as drag handle after default handle is set', function () {
       dragHandleRegistrar.defaultHandleEl = draggableEl;
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
       // Once custom handle gets registered, listeners and drag styles should be removed from default element.
@@ -66,7 +66,7 @@ export default function(): void {
       expect(customHandleEl.classList.contains('drag-handle')).toBeTruthy();
     });
 
-    it('unregisters custom handle', function() {
+    it('unregisters custom handle', function () {
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
       expect(dragHandleRegistrar.customHandleEl).toBe(customHandleEl);
       expect(customHandleEl.getAttribute('hasListener')).toBeTruthy();
@@ -78,7 +78,7 @@ export default function(): void {
       expect(customHandleEl.classList.contains('drag-handle')).toBeFalsy();
     });
 
-    it('unregisters custom handle and fall back to default handle if default handle is set before custom handle', function() {
+    it('unregisters custom handle and fall back to default handle if default handle is set before custom handle', function () {
       dragHandleRegistrar.defaultHandleEl = draggableEl;
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
       dragHandleRegistrar.unregisterCustomHandle();
@@ -88,7 +88,7 @@ export default function(): void {
       expect(draggableEl.classList.contains('drag-handle')).toBeTruthy();
     });
 
-    it('keeps custom element as drag handle even after default handle is set', function() {
+    it('keeps custom element as drag handle even after default handle is set', function () {
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
       dragHandleRegistrar.defaultHandleEl = draggableEl;
 
@@ -97,7 +97,7 @@ export default function(): void {
       expect(customHandleEl.classList.contains('drag-handle')).toBeTruthy();
     });
 
-    it('unregisters custom handle and fall back to default handle if default handle is set after custom handle', function() {
+    it('unregisters custom handle and fall back to default handle if default handle is set after custom handle', function () {
       dragHandleRegistrar.registerCustomHandle(customHandleEl);
       dragHandleRegistrar.defaultHandleEl = draggableEl;
       dragHandleRegistrar.unregisterCustomHandle();

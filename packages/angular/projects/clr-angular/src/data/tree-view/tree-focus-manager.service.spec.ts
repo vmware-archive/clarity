@@ -39,7 +39,7 @@ const createTree = (model: any, parent: TreeNodeModelMock): TreeNodeModelMock[] 
   });
 };
 
-export default function(): void {
+export default function (): void {
   describe('Tree Focus Manager', () => {
     const treeFocusManager = new TreeFocusManagerService<void>();
     treeFocusManager.rootNodeModels = createTree(treeScheme, null);

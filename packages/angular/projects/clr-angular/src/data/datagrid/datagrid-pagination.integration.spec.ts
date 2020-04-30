@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,16 +15,16 @@ import { Page } from './providers/page';
   template: `
     <clr-datagrid>
       <clr-dg-column>Column</clr-dg-column>
-      
+
       <clr-dg-row *clrDgItems="let item of items" instantiationCounter>
-        <clr-dg-cell>{{item}}</clr-dg-cell>
+        <clr-dg-cell>{{ item }}</clr-dg-cell>
       </clr-dg-row>
 
       <clr-dg-footer>
         <clr-dg-pagination [clrDgPageSize]="20"></clr-dg-pagination>
       </clr-dg-footer>
     </clr-datagrid>
-    `,
+  `,
 })
 class IntegrationTest {
   items = Array(100).fill(0);
@@ -45,8 +45,8 @@ class InstantiationCounter {
   }
 }
 
-export default function(): void {
-  describe('ClrDatagridPagination component integration', function() {
+export default function (): void {
+  describe('ClrDatagridPagination component integration', function () {
     type Context = TestContext<ClrDatagridPagination, IntegrationTest>;
 
     spec(
@@ -57,14 +57,14 @@ export default function(): void {
       false
     );
 
-    it('sets the page size a single time on initialization', function(this: Context) {
+    it('sets the page size a single time on initialization', function (this: Context) {
       const spy = spyOnProperty(Page.prototype, 'size', 'set').and.callThrough();
       this.init();
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toHaveBeenCalledWith(20);
     });
 
-    it('only instantiates rows that need to be displayed', function(this: Context) {
+    it('only instantiates rows that need to be displayed', function (this: Context) {
       InstantiationCounter.total = 0;
       this.init();
       expect(InstantiationCounter.total).toBe(20);

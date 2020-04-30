@@ -33,9 +33,9 @@ export class StateProvider<T> {
   change: Observable<ClrDatagridStateInterface<T>> = this.debouncer.change.pipe(map(() => this.state));
 
   /*
-     * By making this a getter, we open the possibility for a setter in the future.
-     * It's been requested a couple times.
-     */
+   * By making this a getter, we open the possibility for a setter in the future.
+   * It's been requested a couple times.
+   */
   get state(): ClrDatagridStateInterface<T> {
     const state: ClrDatagridStateInterface<T> = {};
     if (this.page.size > 0) {
@@ -49,9 +49,9 @@ export class StateProvider<T> {
     if (this.sort.comparator) {
       if (this.sort.comparator instanceof DatagridPropertyComparator) {
         /*
-                 * Special case for the default object property comparator,
-                 * we give the property name instead of the actual comparator.
-                 */
+         * Special case for the default object property comparator,
+         * we give the property name instead of the actual comparator.
+         */
         state.sort = { by: (this.sort.comparator as DatagridPropertyComparator<T>).prop, reverse: this.sort.reverse };
       } else {
         state.sort = { by: this.sort.comparator, reverse: this.sort.reverse };

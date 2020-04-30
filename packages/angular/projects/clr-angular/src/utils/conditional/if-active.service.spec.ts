@@ -6,16 +6,16 @@
 
 import { IfActiveService } from './if-active.service';
 
-export default function(): void {
-  describe('IfActiveService provider', function() {
+export default function (): void {
+  describe('IfActiveService provider', function () {
     let ifActiveService: IfActiveService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       ifActiveService = new IfActiveService();
     });
 
-    describe('Typescript API', function() {
-      it('provides an observable for changes', function() {
+    describe('Typescript API', function () {
+      it('provides an observable for changes', function () {
         let nbChanges = 0;
         let currentChange: number;
 
@@ -41,7 +41,7 @@ export default function(): void {
         expect(currentChange).toEqual(11);
       });
 
-      it('tracks the current active value in the service', function() {
+      it('tracks the current active value in the service', function () {
         expect(ifActiveService.current).not.toBeDefined();
         ifActiveService.current = 5;
         expect(ifActiveService.current).toEqual(5);

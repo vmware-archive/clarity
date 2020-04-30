@@ -33,9 +33,7 @@ const TEST_ROOT: TestNode = {
 };
 
 @Component({
-  template: `
-    <div *clrRecursiveFor="let node of root; getChildren: getChildren"></div>
-  `,
+  template: ` <div *clrRecursiveFor="let node of root; getChildren: getChildren"></div> `,
 })
 class TestComponent {
   @ViewChild(ClrRecursiveForOf) recursiveForOf: ClrRecursiveForOf<TestNode>;
@@ -52,10 +50,10 @@ interface Context {
   featuresService: TreeFeaturesService<TestNode>;
 }
 
-export default function(): void {
-  describe('RecursiveChildren Component', function() {
+export default function (): void {
+  describe('RecursiveChildren Component', function () {
     // Can't use our helpers in their current state because it's a structural directive
-    beforeEach(function(this: Context) {
+    beforeEach(function (this: Context) {
       TestBed.configureTestingModule({
         declarations: [ClrRecursiveForOf, TestComponent],
         providers: [TreeFeaturesService],
@@ -67,15 +65,15 @@ export default function(): void {
       this.featuresService = TestBed.get(TreeFeaturesService);
     });
 
-    it('accepts a [clrRecursiveForOf] input', function(this: Context) {
+    it('accepts a [clrRecursiveForOf] input', function (this: Context) {
       expect(this.clarityDirective.nodes).toBe(TEST_ROOT);
     });
 
-    it('accepts a [clrRecursiveForOfGetChildren] input', function(this: Context) {
+    it('accepts a [clrRecursiveForOfGetChildren] input', function (this: Context) {
       expect(this.clarityDirective.getChildren).toBe(getChildren);
     });
 
-    it('initializes the recursion service with the correct values', function(this: Context) {
+    it('initializes the recursion service with the correct values', function (this: Context) {
       expect(this.featuresService.recursion).toBeTruthy();
       expect(this.featuresService.recursion.template.elementRef.nativeElement).toBe(
         this.hostComponent.template.elementRef.nativeElement
@@ -85,7 +83,7 @@ export default function(): void {
       ]);
     });
 
-    it('updates the recursion service if the nodes change', function(this: Context) {
+    it('updates the recursion service if the nodes change', function (this: Context) {
       this.hostComponent.root = TEST_ROOT.children[0];
       this.fixture.detectChanges();
       expect(this.featuresService.recursion.root).toEqual([
@@ -93,7 +91,7 @@ export default function(): void {
       ]);
     });
 
-    it('accepts multiple roots', function(this: Context) {
+    it('accepts multiple roots', function (this: Context) {
       this.hostComponent.root = [TEST_ROOT, TEST_ROOT];
       this.fixture.detectChanges();
       const wrappedRoot = new RecursiveTreeNodeModel(TEST_ROOT, null, getChildren, this.featuresService);

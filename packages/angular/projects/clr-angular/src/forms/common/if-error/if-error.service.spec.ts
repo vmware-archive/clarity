@@ -9,8 +9,8 @@ import { NgControlService } from '../providers/ng-control.service';
 
 import { IfErrorService } from './if-error.service';
 
-export default function(): void {
-  describe('IfErrorService', function() {
+export default function (): void {
+  describe('IfErrorService', function () {
     let service, ngControlService, testControl;
 
     beforeEach(() => {

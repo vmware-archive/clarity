@@ -18,14 +18,14 @@ const ALL_ITEMS = [9, 3, 5, 8, 2, 6, 10, 7, 4, 1];
 
 type User = { name: string };
 
-export default function(): void {
-  describe('Items provider', function() {
+export default function (): void {
+  describe('Items provider', function () {
     function setSmartItems(itemsInstance: Items<number> | Items<User>) {
       itemsInstance.smartenUp();
       itemsInstance.all = ALL_ITEMS;
     }
 
-    beforeEach(function() {
+    beforeEach(function () {
       const stateDebouncer = new StateDebouncer();
       this.pageInstance = new Page(stateDebouncer);
       this.filtersInstance = new FiltersProvider(this.pageInstance, stateDebouncer);
@@ -36,11 +36,11 @@ export default function(): void {
       this.itemsInstance = new Items(this.filtersInstance, this.sortInstance, this.pageInstance);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.itemsInstance.destroy();
     });
 
-    it('starts uninitialized', function() {
+    it('starts uninitialized', function () {
       expect(this.itemsInstance.smart).toBe(false);
       expect(this.itemsInstance.displayed.length).toBe(0);
       expect(this.pageInstance.totalItems).toBe(0);
@@ -48,7 +48,7 @@ export default function(): void {
       expect(this.pageInstance.lastItem).toBe(-1);
     });
 
-    it("doesn't process the items at all if not smart", function() {
+    it("doesn't process the items at all if not smart", function () {
       this.itemsInstance.all = ALL_ITEMS;
       this.evenFilter.toggle();
       this.sortInstance.toggle(this.comparator);
@@ -58,13 +58,13 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toBe(ALL_ITEMS);
     });
 
-    it("doesn't process the items if no filter, sort or pagination has been set", function() {
+    it("doesn't process the items if no filter, sort or pagination has been set", function () {
       setSmartItems(this.itemsInstance);
       expect(this.itemsInstance.displayed).toEqual(ALL_ITEMS);
       expect(this.pageInstance.totalItems).toBe(10); // totalItems is explicitly set
     });
 
-    it('filters according to the Filter provider', function() {
+    it('filters according to the Filter provider', function () {
       setSmartItems(this.itemsInstance);
       this.evenFilter.toggle();
       expect(this.itemsInstance.displayed).toEqual([8, 2, 6, 10, 4]);
@@ -72,7 +72,7 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toEqual(ALL_ITEMS);
     });
 
-    it('sorts according to the Sort provider', function() {
+    it('sorts according to the Sort provider', function () {
       setSmartItems(this.itemsInstance);
       this.sortInstance.toggle(this.comparator);
       expect(this.itemsInstance.displayed).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -80,7 +80,7 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toEqual([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
     });
 
-    it('slices according to the Page provider', function() {
+    it('slices according to the Page provider', function () {
       setSmartItems(this.itemsInstance);
       this.pageInstance.size = 3;
       expect(this.itemsInstance.displayed).toEqual([9, 3, 5]);
@@ -90,7 +90,7 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toEqual([1]);
     });
 
-    it('combines filtering, sorting and pagination', function() {
+    it('combines filtering, sorting and pagination', function () {
       setSmartItems(this.itemsInstance);
       this.evenFilter.toggle();
       this.sortInstance.toggle(this.comparator);
@@ -98,7 +98,7 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toEqual([2, 4, 6]);
     });
 
-    it('processes items immediately when they are set', function() {
+    it('processes items immediately when they are set', function () {
       this.itemsInstance.smartenUp();
       this.evenFilter.toggle();
       this.sortInstance.toggle(this.comparator);
@@ -107,7 +107,7 @@ export default function(): void {
       expect(this.itemsInstance.displayed).toEqual([2, 4, 6]);
     });
 
-    it('does not modify the original array', function() {
+    it('does not modify the original array', function () {
       const copy = ALL_ITEMS.slice();
       setSmartItems(this.itemsInstance);
       this.evenFilter.toggle();
@@ -116,14 +116,14 @@ export default function(): void {
       expect(ALL_ITEMS).toEqual(copy);
     });
 
-    it('sets the total number of items after filters in the Page provider', function() {
+    it('sets the total number of items after filters in the Page provider', function () {
       setSmartItems(this.itemsInstance);
       expect(this.pageInstance.totalItems).toBe(10);
       this.evenFilter.toggle();
       expect(this.pageInstance.totalItems).toBe(5);
     });
 
-    it('gets -1 of firstItem and lastItem if gets 0 item after filtering', function() {
+    it('gets -1 of firstItem and lastItem if gets 0 item after filtering', function () {
       const filter = new NegativeFilter();
       this.filtersInstance.add(filter);
       setSmartItems(this.itemsInstance);
@@ -134,7 +134,7 @@ export default function(): void {
       expect(this.pageInstance.lastItem).toBe(-1);
     });
 
-    it('exposes an Observable to follow items changes', function() {
+    it('exposes an Observable to follow items changes', function () {
       let nbChanges = 0;
       let latestDisplayed: number[];
       this.itemsInstance.change.subscribe((items: number[]) => {
@@ -158,7 +158,7 @@ export default function(): void {
       expect(nbChanges).toBe(6);
     });
 
-    it('does not emit items changes until the page size is available', function() {
+    it('does not emit items changes until the page size is available', function () {
       let nbChanges = 0;
       this.itemsInstance.change.subscribe(() => {
         nbChanges++;
@@ -171,14 +171,14 @@ export default function(): void {
       expect(nbChanges).toEqual(1);
     });
 
-    describe('manual refresh', function() {
-      beforeEach(function() {
+    describe('manual refresh', function () {
+      beforeEach(function () {
         this.users = [{ name: 'hello' }, { name: 'world' }];
         this.itemsInstance.smartenUp();
         this.itemsInstance.all = this.users;
       });
 
-      it('forces refiltering', function() {
+      it('forces refiltering', function () {
         const filter = new NameFilter();
         this.filtersInstance.add(filter);
         filter.search('o');
@@ -188,7 +188,7 @@ export default function(): void {
         expect(this.itemsInstance.displayed).toEqual([{ name: 'world' }]);
       });
 
-      it('forces resorting', function() {
+      it('forces resorting', function () {
         const comparator = new NameComparator();
         this.sortInstance.toggle(comparator);
         this.users[0].name = 'zzz';
@@ -198,9 +198,9 @@ export default function(): void {
       });
 
       /*
-             * No need to test pagination, the only way it would change is due to data mutation
-             * is if the filters themselves changed, which we already tested
-             */
+       * No need to test pagination, the only way it would change is due to data mutation
+       * is if the filters themselves changed, which we already tested
+       */
     });
   });
 }

@@ -18,14 +18,15 @@ import { ClrWizardModule } from './wizard.module';
 
 @Component({
   template: `
-        <clr-wizard-button
-            [type]="btnType"
-            [clrWizardButtonDisabled]="disableBtn"
-            [clrWizardButtonHidden]="hideBtn"
-            (clrWizardButtonClicked)="doClick($event)"
-            *ngIf="show"
-        >hello {{ projector }}</clr-wizard-button>
-    `,
+    <clr-wizard-button
+      [type]="btnType"
+      [clrWizardButtonDisabled]="disableBtn"
+      [clrWizardButtonHidden]="hideBtn"
+      (clrWizardButtonClicked)="doClick($event)"
+      *ngIf="show"
+      >hello {{ projector }}</clr-wizard-button
+    >
+  `,
 })
 class ViewTestComponent {
   public show = true;
@@ -47,7 +48,7 @@ class ViewTestComponent {
   }
 }
 
-export default function(): void {
+export default function (): void {
   describe('New Wizard Button', () => {
     describe('Typescript API', () => {
       let fixture: ComponentFixture<any>;
@@ -57,9 +58,7 @@ export default function(): void {
       const buttonHub = new ButtonHubMock();
 
       @Component({
-        template: `
-                    <clr-wizard-button></clr-wizard-button>
-                `,
+        template: ` <clr-wizard-button></clr-wizard-button> `,
       })
       class TestComponent {}
 

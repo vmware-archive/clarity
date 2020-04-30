@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,9 +21,7 @@ import { ClrCheckboxWrapper } from './checkbox-wrapper';
 import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
 
 @Component({
-  template: `
-    <clr-checkbox-container></clr-checkbox-container>
-  `,
+  template: ` <clr-checkbox-container></clr-checkbox-container> `,
 })
 class NoLabelTest {}
 
@@ -37,12 +35,20 @@ class NoLabelTest {}
       </clr-checkbox-wrapper>
       <clr-checkbox-wrapper>
         <label>Two</label>
-        <input type="checkbox" clrCheckbox name="model" required [(ngModel)]="model" value="two" [disabled]="disabled" />
+        <input
+          type="checkbox"
+          clrCheckbox
+          name="model"
+          required
+          [(ngModel)]="model"
+          value="two"
+          [disabled]="disabled"
+        />
       </clr-checkbox-wrapper>
       <clr-control-error>There was an error</clr-control-error>
       <clr-control-helper>Helper text</clr-control-helper>
     </clr-checkbox-container>
-    `,
+  `,
 })
 class TemplateDrivenTest {
   inline = false;
@@ -51,8 +57,7 @@ class TemplateDrivenTest {
 }
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-checkbox-container>
       <label>Hello World</label>
       <clr-checkbox-wrapper>
@@ -75,7 +80,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrCheckboxContainer', () => {
     ContainerNoLabelSpec(ClrCheckboxContainer, [ClrCheckboxWrapper, ClrCheckbox], NoLabelTest);
     TemplateDrivenSpec(

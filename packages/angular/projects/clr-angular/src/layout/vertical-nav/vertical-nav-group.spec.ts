@@ -17,7 +17,7 @@ import { VerticalNavService } from './providers/vertical-nav.service';
 import { ClrVerticalNavGroup } from './vertical-nav-group';
 import { ClrVerticalNavModule } from './vertical-nav.module';
 
-export default function(): void {
+export default function (): void {
   describe('Vertical Nav Group', () => {
     let fixture: ComponentFixture<any>;
     let compiled: HTMLElement;
@@ -187,22 +187,19 @@ export default function(): void {
         });
       });
 
-      it(
-        'emits the expanded state when its changed',
-        fakeAsync(function() {
-          expect(fixture.componentInstance.expanded).toBe(false);
-          expect(navGroup.expanded).toBe(false);
-          expect(expandService.expanded).toBe(false);
-          expect(fixture.componentInstance.expandedChange).toBeUndefined();
+      it('emits the expanded state when its changed', fakeAsync(function () {
+        expect(fixture.componentInstance.expanded).toBe(false);
+        expect(navGroup.expanded).toBe(false);
+        expect(expandService.expanded).toBe(false);
+        expect(fixture.componentInstance.expandedChange).toBeUndefined();
 
-          navGroup.toggleExpand();
-          fixture.detectChanges();
+        navGroup.toggleExpand();
+        fixture.detectChanges();
 
-          tick();
+        tick();
 
-          expect(fixture.componentInstance.expandedChange).toBe(true);
-        })
-      );
+        expect(fixture.componentInstance.expandedChange).toBe(true);
+      }));
     });
 
     describe('View Basics', () => {
@@ -244,15 +241,15 @@ export default function(): void {
 
 @Component({
   template: `
-        <clr-vertical-nav-group #group>
-            Group
-            <clr-vertical-nav-group-children>
-                <a href="#" clrVerticalNavLink>
-                    Link
-                </a>
-            </clr-vertical-nav-group-children>
-        </clr-vertical-nav-group>
-    `,
+    <clr-vertical-nav-group #group>
+      Group
+      <clr-vertical-nav-group-children>
+        <a href="#" clrVerticalNavLink>
+          Link
+        </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+  `,
 })
 class GroupInternalsTestComponent {
   @ViewChild('group') navGroup: ClrVerticalNavGroup;
@@ -260,17 +257,17 @@ class GroupInternalsTestComponent {
 
 @Component({
   template: `
-        <clr-vertical-nav-group #group>
-            Group
-            <ng-template clrIfExpanded>
-                <clr-vertical-nav-group-children>
-                    <a href="#" clrVerticalNavLink>
-                        Link
-                    </a>
-                </clr-vertical-nav-group-children>
-            </ng-template>
-        </clr-vertical-nav-group>
-    `,
+    <clr-vertical-nav-group #group>
+      Group
+      <ng-template clrIfExpanded>
+        <clr-vertical-nav-group-children>
+          <a href="#" clrVerticalNavLink>
+            Link
+          </a>
+        </clr-vertical-nav-group-children>
+      </ng-template>
+    </clr-vertical-nav-group>
+  `,
 })
 class IfExpandedTestComponent {
   @ViewChild('group') navGroup: ClrVerticalNavGroup;
@@ -278,17 +275,19 @@ class IfExpandedTestComponent {
 
 @Component({
   template: `
-        <clr-vertical-nav-group #group
-                                [clrVerticalNavGroupExpanded]="expanded"
-                                (clrVerticalNavGroupExpandedChange)="updateExpanded($event)">
-            Group
-            <clr-vertical-nav-group-children>
-                <a href="#" clrVerticalNavLink>
-                    Link
-                </a>
-            </clr-vertical-nav-group-children>
-        </clr-vertical-nav-group>
-    `,
+    <clr-vertical-nav-group
+      #group
+      [clrVerticalNavGroupExpanded]="expanded"
+      (clrVerticalNavGroupExpandedChange)="updateExpanded($event)"
+    >
+      Group
+      <clr-vertical-nav-group-children>
+        <a href="#" clrVerticalNavLink>
+          Link
+        </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+  `,
 })
 class TemplateAPITestComponent {
   @ViewChild('group') navGroup: ClrVerticalNavGroup;

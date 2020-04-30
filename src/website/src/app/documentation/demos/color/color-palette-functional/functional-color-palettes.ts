@@ -96,7 +96,10 @@ export const DARK_THEME_COLOR_PALETTES = [
   },
   {
     legend: 'Row hover, selection',
-    colors: [{ value: '#29414E', text: 'light' }, { value: '#324F61', text: 'light' }],
+    colors: [
+      { value: '#29414E', text: 'light' },
+      { value: '#324F61', text: 'light' },
+    ],
   },
   {
     legend: 'Typography',

@@ -22,7 +22,7 @@ import { ClrViewportViolation } from './enums/viewport-violation.enum';
 export function ClrPositionTransformSpec(): void {
   describe('Transorm Function', () => {
     let position: ClrPopoverPosition;
-    beforeEach(function() {
+    beforeEach(function () {
       position = {
         anchor: ClrAlignment.START,
         axis: ClrAxis.HORIZONTAL,
@@ -94,7 +94,7 @@ export function ClrPositionTransformSpec(): void {
 export function ClrAlignmentSpec(): void {
   describe('align function', () => {
     positionTestCases.forEach(testCase => {
-      it(`should calculate offsets for ClrPopoverPosition: \n{\n${testCase.name}`, function() {
+      it(`should calculate offsets for ClrPopoverPosition: \n{\n${testCase.name}`, function () {
         const testOffsets = align(testCase.position, testAnchorRect, testContentRect);
         expect(testOffsets).toEqual(testCase.expectedOffsets);
       });

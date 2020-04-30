@@ -77,7 +77,7 @@ export function spec<C, H>(
   moduleMetadata: TestModuleMetadata = {},
   autoInit = true
 ) {
-  beforeEach(function() {
+  beforeEach(function () {
     /*
      * I feel slightly dirty writing this, but Jasmine creates plain objects
      * and modifying their prototype is definitely a bad idea
@@ -91,7 +91,7 @@ export function spec<C, H>(
     this.getProvider = TestContext.prototype.getProvider;
   });
 
-  beforeEach(function(this: TestContext<C, H>) {
+  beforeEach(function (this: TestContext<C, H>) {
     const imports = [];
     if (claritySubmodule) {
       imports.push(claritySubmodule);
@@ -114,7 +114,7 @@ export function spec<C, H>(
     }
   });
 
-  afterEach(function(this: TestContext<C, H>) {
+  afterEach(function (this: TestContext<C, H>) {
     if (this.fixture) {
       this.fixture.destroy();
       this.fixture.nativeElement.remove();
@@ -130,11 +130,11 @@ export function spec<C, H>(
  * @deprecated
  */
 export function addHelpersDeprecated(modulesToImport?: Array<Type<any> | ModuleWithProviders | any[]>): void {
-  beforeEach(function() {
+  beforeEach(function () {
     /*
-         * Ideally we would just make "this" a TestContext, but typing "this" in typescript
-         * is a bit too new for all IDEs to correctly process it.
-         */
+     * Ideally we would just make "this" a TestContext, but typing "this" in typescript
+     * is a bit too new for all IDEs to correctly process it.
+     */
     this.create = <D, C>(clarityDirective: Type<D>, testComponent: Type<C>, providers: any[] = []) => {
       TestBed.configureTestingModule({ imports: modulesToImport, declarations: [testComponent], providers: providers });
       this._context = new TestContext<D, C>();
@@ -144,7 +144,7 @@ export function addHelpersDeprecated(modulesToImport?: Array<Type<any> | ModuleW
       return this._context;
     };
   });
-  afterEach(function() {
+  afterEach(function () {
     if (this._context) {
       this._context.fixture.destroy();
     }

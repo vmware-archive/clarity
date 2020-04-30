@@ -9,5 +9,5 @@
 last 2 versions
 Firefox ESR
 not dead
-IE11
+IE 11
 not IE 9-10 # For IE 9-11 support, remove 'not'.

@@ -21,12 +21,12 @@ import { DraggableSnapshotService } from '../providers/draggable-snapshot.servic
 import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 import { ClrDraggable } from './draggable';
 
-export default function(): void {
-  describe('With Custom Draggable Ghost and Handle', function() {
+export default function (): void {
+  describe('With Custom Draggable Ghost and Handle', function () {
     let mockDragStartEventInt: DragEventInterface<any>;
     let mockDragEndEventInt: DragEventInterface<any>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [11, 22]) };
       mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
@@ -53,11 +53,11 @@ export default function(): void {
       this.fixture.detectChanges();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.fixture.destroy();
     });
 
-    it('should have its nested handle as drag handle if it is present', function() {
+    it('should have its nested handle as drag handle if it is present', function () {
       this.dragHandle = this.fixture.debugElement.query(By.directive(ClrDragHandle));
       expect(this.draggable.nativeElement.classList.contains('drag-handle')).toBeFalsy();
       expect(this.dragHandle.nativeElement.classList.contains('drag-handle')).toBeTruthy();
@@ -65,7 +65,7 @@ export default function(): void {
       expect(this.dragHandleRegistrar.customHandleEl).toBe(this.dragHandle.nativeElement);
     });
 
-    it('should project custom ghost on drag start', function() {
+    it('should project custom ghost on drag start', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
       const draggableGhost = this.fixture.nativeElement.querySelector('clr-draggable-ghost');
@@ -73,7 +73,7 @@ export default function(): void {
     });
 
     // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-    xit('should remove ghost on drag end', function() {
+    xit('should remove ghost on drag end', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
       this.dragEventListener.dragEnded.next(mockDragEndEventInt);
@@ -84,11 +84,11 @@ export default function(): void {
 
 @Component({
   template: `<div clrDraggable>
-                    Test
-                    <clr-draggable-ghost *clrIfDragged>
-                        <clr-icon shape="check"></clr-icon>
-                    </clr-draggable-ghost>
-                    <button clrDragHandle></button>
-                </div>`,
+    Test
+    <clr-draggable-ghost *clrIfDragged>
+      <clr-icon shape="check"></clr-icon>
+    </clr-draggable-ghost>
+    <button clrDragHandle></button>
+  </div>`,
 })
 class CustomGhostAndHandleTest {}

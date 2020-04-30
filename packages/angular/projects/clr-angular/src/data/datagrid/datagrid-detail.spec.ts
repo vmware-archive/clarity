@@ -13,17 +13,17 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 
 const content = 'Detail Pane';
 
-export default function(): void {
-  describe('ClrDatagridDetail component', function() {
-    describe('Typescript API', function() {
+export default function (): void {
+  describe('ClrDatagridDetail component', function () {
+    describe('Typescript API', function () {
       let context: TestContext<ClrDatagridDetail, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridDetail, FullTest, [DetailService]);
         context.detectChanges();
       });
 
-      afterEach(function() {
+      afterEach(function () {
         context.fixture.destroy();
       });
 
@@ -32,11 +32,11 @@ export default function(): void {
       });
     });
 
-    describe('View', function() {
+    describe('View', function () {
       let context: TestContext<ClrDatagridDetail, FullTest>;
       let detailService: DetailService;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridDetail, FullTest, [DetailService]);
         detailService = context.getClarityProvider(DetailService);
         context.detectChanges();

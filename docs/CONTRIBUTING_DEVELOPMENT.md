@@ -12,20 +12,20 @@ template in as much detail as you can. The more complete your details, the
 better, but not all questions will apply for every change. As you fill this out,
 please make sure to follow our coding guidelines for components.
 
-* [Angular Guidelines](/docs/CODING_GUIDELINES_ANGULAR.md)
-* [Core Web Component Guidelines](/docs/CODING_GUIDELINES_CORE.md)
+- [Angular Guidelines](/docs/CODING_GUIDELINES_ANGULAR.md)
+- [Core Web Component Guidelines](/docs/CODING_GUIDELINES_CORE.md)
 
 ```markdown
 ## Summary
 
 Describe the change or feature in detail. Try to answer the following questions.
 
-* What is the change?
-* What is a use case for this change?
-* Why should it go in Clarity?
-* Is this a change to an Angular Component or a Web Component?
-* Does this change impact existing behaviors? If so, how?
-* If this change introduces a new behavior, is this behavior accessible?
+- What is the change?
+- What is a use case for this change?
+- Why should it go in Clarity?
+- Is this a change to an Angular Component or a Web Component?
+- Does this change impact existing behaviors? If so, how?
+- If this change introduces a new behavior, is this behavior accessible?
 
 ## Examples
 
@@ -35,11 +35,11 @@ _If possible, show examples of the change. You may create one yourself, or link 
 
 _Describe the intended API for the feature you want to add. This would include:_
 
-* CSS classes and DOM structure for pure static UI contribution
-* If Angular: any inputs/outputs, components, directives, services, or anything that is exported publicly for Angular contributions.
-* If Web Component: any properties, events, slots, or attributes.
-* Examples of code snippets using this new feature.
-* Note very clearly if anything **might** be a breaking change.
+- CSS classes and DOM structure for pure static UI contribution
+- If Angular: any inputs/outputs, components, directives, services, or anything that is exported publicly for Angular contributions.
+- If Web Component: any properties, events, slots, or attributes.
+- Examples of code snippets using this new feature.
+- Note very clearly if anything **might** be a breaking change.
 
 _In the case of bug fixes or internal changes, there will most likely be no API changes._
 
@@ -47,13 +47,13 @@ _In the case of bug fixes or internal changes, there will most likely be no API 
 
 _Describe how you plan to implement the feature, answering questions among the following or anything else you deem relevant._
 
-* What parts of the code are affected?
-* Will you introduce new services, components, or directives?
-* Can you describe the basic flow of information between classes?
-* Does this introduce asynchronous behaviors?
-* Will you need to refactor existing Clarity code?
-* Will reasonable performance require optimizations?
-* Will it need to access native elements (and be incompatible with server-side rendering)?
+- What parts of the code are affected?
+- Will you introduce new services, components, or directives?
+- Can you describe the basic flow of information between classes?
+- Does this introduce asynchronous behaviors?
+- Will you need to refactor existing Clarity code?
+- Will reasonable performance require optimizations?
+- Will it need to access native elements (and be incompatible with server-side rendering)?
 
 ## Conclusion
 
@@ -76,11 +76,11 @@ requesting changes, and hopefully, accept it.
 
 First, make sure you:
 
-* Read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All
+- Read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All
   contributions to this repository must be signed as described on that page.
   Your signature certifies that you wrote the patch or have the right to pass it
   on as an open-source patch.
-* Read our [Angular coding guidelines](/CODING_GUIDELINES_ANGULAR.md) and [Web Component coding guidelines](/CODING_GUIDELINES_CORE.md).
+- Read our [Angular coding guidelines](/CODING_GUIDELINES_ANGULAR.md) and [Web Component coding guidelines](/CODING_GUIDELINES_CORE.md).
 
 ### Getting started
 
@@ -127,9 +127,9 @@ steps.
 2.  In the root project directory run, `npm install`
 3.  Run `npm run build:ci` to build entire project (this may take several minutes)
 4.  Startup the project
-    * If Angular change run `npm run start`
-    * If Web Component change run `npm run core:start`
-    * If Website Documentation change run `npm run website:start`
+    - If Angular change run `npm run start`
+    - If Web Component change run `npm run core:start`
+    - If Website Documentation change run `npm run website:start`
 5.  To run tests and other project-specific commands see our project [Build Guide](/docs/BUILD.md)
 
 ### Public API Changes
@@ -207,11 +207,11 @@ Signed-off-by: Your Name <your.email@example.com>
 
 These documents provide guidance creating a well-crafted commit message:
 
-* [Angular commit message format](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#commit-message-format)
-* [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/)
-* [Closing Issues Via Commit Messages](https://help.github.com/articles/closing-issues-via-commit-messages/)
-* [Conventional Commits ](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
-* [Github: Closing issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords)
+- [Angular commit message format](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#commit-message-format)
+- [How to Write a Git Commit Message](http://chris.beams.io/posts/git-commit/)
+- [Closing Issues Via Commit Messages](https://help.github.com/articles/closing-issues-via-commit-messages/)
+- [Conventional Commits ](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
+- [Github: Closing issues using keywords](https://help.github.com/en/articles/closing-issues-using-keywords)
 
 ### Submitting pull requests
 
@@ -231,16 +231,16 @@ requested some help.
 To make sure your pull request will pass our automated testing, before submitting
 you should:
 
-* Make sure `npm test` passes for each of them.
+- Make sure `npm test` passes for each of them.
   For individual lint failures, you will have to fix them manually.
 
 To test the same thing that the CI will test you could run `npm run build:ci`
 
 If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
 
-* Assign yourself to the Pull-Request
-* Assign proper labels for example if you are making documentation update only use `documentation`, `website`
-* Assign connected Issue that this PR will resolve
+- Assign yourself to the Pull-Request
+- Assign proper labels for example if you are making documentation update only use `documentation`, `website`
+- Assign connected Issue that this PR will resolve
 
 ### Taking reviews into account
 

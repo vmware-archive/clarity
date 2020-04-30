@@ -7,4 +7,7 @@
 import { testIcon } from '../shapes/test.js';
 import { userIcon } from '../shapes/user.js';
 
-export const testCollection = [['test', testIcon], ['user', userIcon]];
+export const testCollection = [
+  ['test', testIcon],
+  ['user', userIcon],
+];

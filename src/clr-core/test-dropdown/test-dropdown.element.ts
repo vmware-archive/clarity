@@ -68,15 +68,12 @@ export class CdsTestDropdown extends LitElement {
     return html`
       <div class="dropdown">
         <button @click="${() => this.toggle()}" class="btn">${this.title}</button>
-        ${
-          this.open
-            ? html`
-            <div>
+        ${this.open
+          ? html` <div>
               ${CommonStringsService.keys.open}
               <slot></slot>
             </div>`
-            : ''
-        }
+          : ''}
       </div>
     `;
   }

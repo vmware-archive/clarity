@@ -14,15 +14,19 @@ import { ClrPopoverToggleService } from '../../../../clr-angular/utils/popover/p
   selector: 'clr-dummy-anchor',
   styleUrls: ['./popovers.demo.scss'],
   template: `
-        <input #ignore type="text" *ngIf="openOnFocus"
-               placeholder="Open Menu on Focus"
-               (focus)="onFocus($event)"
-               (click)="onInputClick($event)"
-               (focusout)="onFocusOut($event)"
-               class="clr-input">
-        <button class="btn" *ngIf="!openOnFocus" (click)="onClick($event)">Click Trigger</button>
-        <ng-content></ng-content>
-    `,
+    <input
+      #ignore
+      type="text"
+      *ngIf="openOnFocus"
+      placeholder="Open Menu on Focus"
+      (focus)="onFocus($event)"
+      (click)="onInputClick($event)"
+      (focusout)="onFocusOut($event)"
+      class="clr-input"
+    />
+    <button class="btn" *ngIf="!openOnFocus" (click)="onClick($event)">Click Trigger</button>
+    <ng-content></ng-content>
+  `,
   providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 export class DummyAnchor {

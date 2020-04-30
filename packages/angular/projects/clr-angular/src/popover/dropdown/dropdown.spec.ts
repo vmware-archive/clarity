@@ -16,7 +16,7 @@ import { ClrDropdownModule } from './dropdown.module';
 import { DropdownFocusHandler } from './providers/dropdown-focus-handler.service';
 import { Subscription } from 'rxjs';
 
-export default function(): void {
+export default function (): void {
   describe('Dropdown', () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -185,7 +185,7 @@ export default function(): void {
       expect(compiled.querySelector('.dropdown-item')).toBeNull();
     });
 
-    it("doesn't close before custom click events have triggered", function() {
+    it("doesn't close before custom click events have triggered", function () {
       const toggleService = fixture.debugElement.query(By.directive(ClrDropdown)).injector.get(ClrPopoverToggleService);
 
       const dropdownToggle: HTMLElement = compiled.querySelector('.dropdown-toggle');
@@ -224,28 +224,27 @@ export default function(): void {
 
 @Component({
   template: `
-        <button class="outside-click-test" (click)="outsideButtonClickHandler()">
-            Button to test clicks outside of the dropdown component
-        </button>
-        <clr-dropdown [clrCloseMenuOnItemClick]="menuClosable">
-            <button class="btn btn-primary" type="button" clrDropdownTrigger>
-                Dropdown
-                <clr-icon shape="caret down"></clr-icon>
-            </button>
-            <clr-dropdown-menu *clrIfOpen>
-                <label class="dropdown-header">Header</label>
-                <a href="javascript://" clrDropdownItem>Item</a>
-                <a href="javascript://" clrDisabled="true" clrDropdownItem>Disabled Item</a>
-                <clr-dropdown>
-                    <button clrDropdownTrigger class="nested">Nested</button>
-                    <clr-dropdown-menu *clrIfOpen>
-                        <a href="javascript://" clrDropdownItem class="nested-item"
-                           (click)="customClickHandler()">Foo</a>
-                    </clr-dropdown-menu>
-                </clr-dropdown>
-            </clr-dropdown-menu>
+    <button class="outside-click-test" (click)="outsideButtonClickHandler()">
+      Button to test clicks outside of the dropdown component
+    </button>
+    <clr-dropdown [clrCloseMenuOnItemClick]="menuClosable">
+      <button class="btn btn-primary" type="button" clrDropdownTrigger>
+        Dropdown
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen>
+        <label class="dropdown-header">Header</label>
+        <a href="javascript://" clrDropdownItem>Item</a>
+        <a href="javascript://" clrDisabled="true" clrDropdownItem>Disabled Item</a>
+        <clr-dropdown>
+          <button clrDropdownTrigger class="nested">Nested</button>
+          <clr-dropdown-menu *clrIfOpen>
+            <a href="javascript://" clrDropdownItem class="nested-item" (click)="customClickHandler()">Foo</a>
+          </clr-dropdown-menu>
         </clr-dropdown>
-    `,
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  `,
 })
 class TestComponent {
   @ViewChild(ClrDropdown) dropdownInstance: ClrDropdown;

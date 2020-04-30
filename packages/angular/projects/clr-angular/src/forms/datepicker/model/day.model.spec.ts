@@ -8,8 +8,8 @@ import { assertEqualDates } from '../utils/test-utils';
 
 import { DayModel } from './day.model';
 
-export default function(): void {
-  describe('DayModel', function() {
+export default function (): void {
+  describe('DayModel', function () {
     const dayModel1: DayModel = new DayModel(2018, 0, 1);
     const dayModel2: DayModel = new DayModel(2018, 5, 21);
     const dayModel3: DayModel = new DayModel(2018, 0, 1);

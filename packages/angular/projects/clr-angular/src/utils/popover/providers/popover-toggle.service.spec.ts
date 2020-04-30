@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -24,10 +24,10 @@ interface TestContext {
   toggleService: ClrPopoverToggleService;
 }
 
-export default function(): void {
-  describe('ClrPopoverToggleService', function() {
+export default function (): void {
+  describe('ClrPopoverToggleService', function () {
     describe('API', () => {
-      beforeEach(function(this: TestContext) {
+      beforeEach(function (this: TestContext) {
         TestBed.configureTestingModule({
           declarations: [TestHost],
           providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
@@ -36,17 +36,17 @@ export default function(): void {
         this.toggleService = fixture.debugElement.injector.get(ClrPopoverToggleService, null);
       });
 
-      it('exposes an observable for the open change events', function(this: TestContext) {
+      it('exposes an observable for the open change events', function (this: TestContext) {
         const changeObservable: Observable<boolean> = this.toggleService.openChange;
         expect(changeObservable).toBeDefined();
         expect(changeObservable instanceof Observable).toBe(true);
       });
-      it('exposes an observable for the change events', function(this: TestContext) {
+      it('exposes an observable for the change events', function (this: TestContext) {
         const eventObservable: Observable<Event> = this.toggleService.getEventChange();
         expect(eventObservable).toBeDefined();
         expect(eventObservable instanceof Observable).toBe(true);
       });
-      it('updates and notifies when the openEvent changes', function(this: TestContext) {
+      it('updates and notifies when the openEvent changes', function (this: TestContext) {
         const clickEvent: Event = new MouseEvent('click');
         let testEvent: Event;
         const eventSubscription = this.toggleService.getEventChange().subscribe(event => {
@@ -58,7 +58,7 @@ export default function(): void {
         expect(this.toggleService.openEvent).toBe(testEvent);
         eventSubscription.unsubscribe();
       });
-      it('updates and notifies when the open value changes', function(this: TestContext) {
+      it('updates and notifies when the open value changes', function (this: TestContext) {
         let openValue: boolean;
         const openSubscription = this.toggleService.openChange.subscribe(change => {
           openValue = change;
@@ -70,7 +70,7 @@ export default function(): void {
         expect(this.toggleService.open).toEqual(openValue);
         openSubscription.unsubscribe();
       });
-      it('toggles open state with events', function(this: TestContext) {
+      it('toggles open state with events', function (this: TestContext) {
         const openClickEvent: Event = new MouseEvent('click');
         const closeClickEvent: Event = new MouseEvent('click');
         expect(this.toggleService.open).toBeFalse();

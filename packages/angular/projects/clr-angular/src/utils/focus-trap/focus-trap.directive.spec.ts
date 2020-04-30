@@ -259,31 +259,30 @@ describe('FocusTrap', () => {
 
 @Component({
   template: `
-        <form clrFocusTrap *ngIf="mainFocusTrap" id="main-focus-trap">
-            <button id="first">
-                Button to test first input
-            </button>
-            <input type="text"/>
-            <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-            <button id="last">
-                Last Input
-            </button>
+    <form clrFocusTrap *ngIf="mainFocusTrap" id="main-focus-trap">
+      <button id="first">
+        Button to test first input
+      </button>
+      <input type="text" />
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <button id="last">
+        Last Input
+      </button>
 
-            <div id="levelOneFocusTrap" clrFocusTrap *ngIf="level1 === true">
-                <button id="levelOneButton">Level 1</button>
-                <div id="levelTwoFocusTrap" clrFocusTrap *ngIf="level2 === true">
-                    <button id="levelTwoButton">Level 2</button>
-                    <div id="levelThreeFocusTrap" clrFocusTrap *ngIf="level3 === true">
-                        <button id="levelThreeButton">Level 3</button>
-                    </div>
-                </div>
-            </div>
-
-        </form>
-    `,
+      <div id="levelOneFocusTrap" clrFocusTrap *ngIf="level1 === true">
+        <button id="levelOneButton">Level 1</button>
+        <div id="levelTwoFocusTrap" clrFocusTrap *ngIf="level2 === true">
+          <button id="levelTwoButton">Level 2</button>
+          <div id="levelThreeFocusTrap" clrFocusTrap *ngIf="level3 === true">
+            <button id="levelThreeButton">Level 3</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  `,
 })
 class TestComponent {
   level1 = false;
@@ -293,27 +292,24 @@ class TestComponent {
 }
 
 @Component({
-  template: `
-        <p>
-            <button class="btn btn-primary" id="toggleButton" (click)="openState = true;">Show modal</button>
-        </p>
-        <clr-modal [(clrModalOpen)]="openState">
-            <h3 class="modal-title">I have a nice title</h3>
-            <div class="modal-body">
-                <p>But not much to say...</p>
-                <form class="form">
-                    <section class="form-block">
-                        <div class="form-group">
-                            <label for="contactInfo">Contact Info</label>
-                            <input type="text" id="contactInfo"
-                                   [(ngModel)]="model.contactInfo"
-                                   name="contactInfo">
-                            <label for="contactInfo">Model Info: {{diagnostic}}</label>
-                        </div>
-                    </section>
-                </form>
+  template: ` <p>
+      <button class="btn btn-primary" id="toggleButton" (click)="openState = true">Show modal</button>
+    </p>
+    <clr-modal [(clrModalOpen)]="openState">
+      <h3 class="modal-title">I have a nice title</h3>
+      <div class="modal-body">
+        <p>But not much to say...</p>
+        <form class="form">
+          <section class="form-block">
+            <div class="form-group">
+              <label for="contactInfo">Contact Info</label>
+              <input type="text" id="contactInfo" [(ngModel)]="model.contactInfo" name="contactInfo" />
+              <label for="contactInfo">Model Info: {{ diagnostic }}</label>
             </div>
-        </clr-modal>`,
+          </section>
+        </form>
+      </div>
+    </clr-modal>`,
 })
 class TestModalComponent {
   @ViewChild(ClrModal) modal: ClrModal;
@@ -324,13 +320,13 @@ class TestModalComponent {
 
 @Component({
   template: `
-  <input id="input" type="text" />
-  <div id="parent">
-    <div [clrFocusTrap]="{strict: false}" *ngIf="enableTrap" id="focus-trap">
-      <button id="button">Focusable Button</button>
+    <input id="input" type="text" />
+    <div id="parent">
+      <div [clrFocusTrap]="{ strict: false }" *ngIf="enableTrap" id="focus-trap">
+        <button id="button">Focusable Button</button>
+      </div>
     </div>
-  </div>
-`,
+  `,
 })
 class TestLocalModalComponent {
   enableTrap = false;

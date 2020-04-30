@@ -19,9 +19,7 @@ class TestElement extends LitElement {
   testErrorWithMessage: HTMLDivElement;
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 

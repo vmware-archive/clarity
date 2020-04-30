@@ -242,7 +242,7 @@ $grid-gutter-widths: (
   sm: $grid-gutter-width-base,
   md: $grid-gutter-width-base,
   lg: $grid-gutter-width-base,
-  xl: $grid-gutter-width-base
+  xl: $grid-gutter-width-base,
 );
 
 // Close button colors
@@ -256,6 +256,7 @@ $clr-close-color--hover-opacity: 0.5 !default;
 $clr-popover-box-shadow-color: rgba(140, 140, 140, 0.25) !default;
 
 // All z-indexes should come from here, to have a centralized file to reorganize them if needed
+// draggable-ghost is maximum possible value for z-index across all browsers
 $clr-layers: (
   content: 0,
   select-box: 2,
@@ -273,5 +274,5 @@ $clr-layers: (
   modal: 1050,
   tooltips: 1070,
   smart-popover: 5000,
-  draggable-ghost: 2147483647// maximum possible value for z-index across all browsers
+  draggable-ghost: 2147483647,
 ) !default;

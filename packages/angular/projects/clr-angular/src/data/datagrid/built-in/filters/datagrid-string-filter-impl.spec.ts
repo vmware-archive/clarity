@@ -9,16 +9,16 @@ import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
 import { DatagridPropertyStringFilter } from './datagrid-property-string-filter';
 import { ClrDatagridFilterInterface } from '../../interfaces/filter.interface';
 
-export default function(): void {
-  describe('DatagridStringFilterImpl', function() {
+export default function (): void {
+  describe('DatagridStringFilterImpl', function () {
     let fullFilter: DatagridStringFilterImpl<string>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       const stringFilter = new TestFilter();
       fullFilter = new DatagridStringFilterImpl(stringFilter);
     });
 
-    it('updates the lowercase value when the raw value changes', function() {
+    it('updates the lowercase value when the raw value changes', function () {
       expect(fullFilter.value).toBe('');
       expect(fullFilter.lowerCaseValue).toBe('');
       fullFilter.value = 'TEST';
@@ -26,7 +26,7 @@ export default function(): void {
       expect(fullFilter.lowerCaseValue).toBe('test');
     });
 
-    it("becomes active when the value isn't empty", function() {
+    it("becomes active when the value isn't empty", function () {
       expect(fullFilter.isActive()).toBe(false);
       fullFilter.value = 'test';
       expect(fullFilter.isActive()).toBe(true);
@@ -34,7 +34,7 @@ export default function(): void {
       expect(fullFilter.isActive()).toBe(false);
     });
 
-    it('filters according to the StringFilter provided', function() {
+    it('filters according to the StringFilter provided', function () {
       expect(fullFilter.accepts('test')).toBe(false);
       fullFilter.value = 'tes';
       expect(fullFilter.accepts('test')).toBe(false);
@@ -44,18 +44,18 @@ export default function(): void {
       expect(fullFilter.accepts('test')).toBe(false);
     });
 
-    it('ignores case when filtering', function() {
+    it('ignores case when filtering', function () {
       fullFilter.value = 'TEST';
       expect(fullFilter.accepts('test')).toBe(true);
       fullFilter.value = 'test';
       expect(fullFilter.accepts('TEST')).toBe(true);
     });
 
-    it('exposes state', function() {
+    it('exposes state', function () {
       expect(fullFilter.state).toBe(fullFilter);
     });
 
-    it('compares filters', function() {
+    it('compares filters', function () {
       let otherFilter = fullFilter;
       expect(fullFilter.equals(otherFilter)).toBe(true);
       // Reference only comparison should be enough for the common case
@@ -63,18 +63,18 @@ export default function(): void {
       expect(fullFilter.equals(otherFilter)).toBe(false);
     });
 
-    describe('with DatagridPropertyStringFilter', function() {
-      beforeEach(function() {
+    describe('with DatagridPropertyStringFilter', function () {
+      beforeEach(function () {
         const propFilter = new DatagridPropertyStringFilter('a.b.c');
         fullFilter = new DatagridStringFilterImpl(propFilter);
       });
 
-      it('exposes state', function() {
+      it('exposes state', function () {
         fullFilter.value = 'test';
         expect(fullFilter.state).toEqual({ property: 'a.b.c', value: 'test' });
       });
 
-      it('compares filters', function() {
+      it('compares filters', function () {
         let otherFilter: ClrDatagridFilterInterface<any> = fullFilter;
         expect(fullFilter.equals(otherFilter)).toBe(true);
         // In the specific case we can compare different filter instances

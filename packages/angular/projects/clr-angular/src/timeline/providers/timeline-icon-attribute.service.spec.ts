@@ -8,7 +8,7 @@ import { TimelineIconAttributeService } from './timeline-icon-attribute.service'
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ClrTimelineStepState } from './../enums/timeline-step-state.enum';
 
-export default function(): void {
+export default function (): void {
   describe('Timeline icon attribute service', () => {
     const timelineIconAttributeService = new TimelineIconAttributeService(new ClrCommonStringsService());
 

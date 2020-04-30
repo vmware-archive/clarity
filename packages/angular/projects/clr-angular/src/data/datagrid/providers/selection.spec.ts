@@ -21,16 +21,16 @@ const numberSort = (a: number, b: number) => a - b;
 
 type Item = { id: number; modified?: boolean };
 
-export default function(): void {
-  describe('Selection provider', function() {
-    describe('with smart items', function() {
+export default function (): void {
+  describe('Selection provider', function () {
+    describe('with smart items', function () {
       let selectionInstance: Selection<number>;
       let sortInstance: Sort<number>;
       let pageInstance: Page;
       let filtersInstance: FiltersProvider<number>;
       let itemsInstance: Items<number>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         const stateDebouncer = new StateDebouncer();
         pageInstance = new Page(stateDebouncer);
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
@@ -42,19 +42,19 @@ export default function(): void {
         selectionInstance = new Selection(itemsInstance, filtersInstance);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         selectionInstance.destroy();
         itemsInstance.destroy();
       });
 
-      it('starts inactive', function() {
+      it('starts inactive', function () {
         expect(selectionInstance.selectionType).toBe(SelectionType.None);
         expect(selectionInstance.current).toBeUndefined();
         selectionInstance.setSelected(4, true);
         expect(selectionInstance.current).toBeUndefined();
       });
 
-      it('can select/deselect items in multi selection type', function() {
+      it('can select/deselect items in multi selection type', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.setSelected(4, true);
         expect(selectionInstance.current).toEqual([4]);
@@ -62,7 +62,7 @@ export default function(): void {
         expect(selectionInstance.current).toEqual([4, 2]);
       });
 
-      it('can select/deselect all items at once in multi selection type', function() {
+      it('can select/deselect all items at once in multi selection type', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.toggleAll();
         expect(selectionInstance.current).toEqual(itemsInstance.displayed);
@@ -74,7 +74,7 @@ export default function(): void {
         expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
       });
 
-      it("can't select/deselect all items at once in other single selection type", function() {
+      it("can't select/deselect all items at once in other single selection type", function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.toggleAll();
         expect(selectionInstance.currentSingle).toBeUndefined();
@@ -83,7 +83,7 @@ export default function(): void {
         expect(selectionInstance.currentSingle).toEqual(4);
       });
 
-      it('can select/deselect all items at once in multi selection type if no pagination exist', function() {
+      it('can select/deselect all items at once in multi selection type if no pagination exist', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.toggleAll();
         expect(selectionInstance.current).toEqual(itemsInstance.displayed);
@@ -95,7 +95,7 @@ export default function(): void {
         expect(selectionInstance.current.sort(numberSort)).toEqual(itemsInstance.displayed);
       });
 
-      it('can select/deselect items only on the current page', function() {
+      it('can select/deselect items only on the current page', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         pageInstance.size = 3;
         selectionInstance.current = [4, 1, 2];
@@ -106,7 +106,7 @@ export default function(): void {
         expect(selectionInstance.current).toEqual([1, 2]);
       });
 
-      it("can't select/deselect all items at once in other single selection type", function() {
+      it("can't select/deselect all items at once in other single selection type", function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.toggleAll();
         expect(selectionInstance.currentSingle).toBeUndefined();
@@ -115,7 +115,7 @@ export default function(): void {
         expect(selectionInstance.currentSingle).toEqual(4);
       });
 
-      it('can detect if an item is selected', function() {
+      it('can detect if an item is selected', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         expect(selectionInstance.isSelected(4)).toBe(false);
         selectionInstance.setSelected(4, true);
@@ -124,7 +124,7 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(false);
       });
 
-      it('can detect if all items are selected in multi selection type', function() {
+      it('can detect if all items are selected in multi selection type', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         expect(selectionInstance.isAllSelected()).toBe(false);
         selectionInstance.setSelected(4, true);
@@ -133,7 +133,7 @@ export default function(): void {
         expect(selectionInstance.isAllSelected()).toBe(true);
       });
 
-      it('accepts pre-selected items in multi selection type', function() {
+      it('accepts pre-selected items in multi selection type', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [4, 2];
         expect(selectionInstance.isSelected(1)).toBe(false);
@@ -142,24 +142,21 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(true);
       });
 
-      it(
-        'accepts pre-selected items in multi selection type when `all` has not been defined',
-        fakeAsync(function() {
-          itemsInstance.all = null;
-          tick();
-          selectionInstance.selectionType = SelectionType.Multi;
-          selectionInstance.current = [4, 2];
-          tick();
-          itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-          tick();
-          expect(selectionInstance.isSelected(1)).toBe(false);
-          expect(selectionInstance.isSelected(2)).toBe(true);
-          expect(selectionInstance.isSelected(3)).toBe(false);
-          expect(selectionInstance.isSelected(4)).toBe(true);
-        })
-      );
+      it('accepts pre-selected items in multi selection type when `all` has not been defined', fakeAsync(function () {
+        itemsInstance.all = null;
+        tick();
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.current = [4, 2];
+        tick();
+        itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        tick();
+        expect(selectionInstance.isSelected(1)).toBe(false);
+        expect(selectionInstance.isSelected(2)).toBe(true);
+        expect(selectionInstance.isSelected(3)).toBe(false);
+        expect(selectionInstance.isSelected(4)).toBe(true);
+      }));
 
-      it('accepts pre-selected item in single selection type', function() {
+      it('accepts pre-selected item in single selection type', function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.currentSingle = 2;
         expect(selectionInstance.isSelected(1)).toBe(false);
@@ -168,24 +165,21 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(false);
       });
 
-      it(
-        'accepts pre-selected item in single selection type when `all` has not been defined',
-        fakeAsync(function() {
-          itemsInstance.all = null;
-          tick();
-          selectionInstance.selectionType = SelectionType.Single;
-          selectionInstance.currentSingle = 2;
-          tick();
-          itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-          tick();
-          expect(selectionInstance.isSelected(1)).toBe(false);
-          expect(selectionInstance.isSelected(2)).toBe(true);
-          expect(selectionInstance.isSelected(3)).toBe(false);
-          expect(selectionInstance.isSelected(4)).toBe(false);
-        })
-      );
+      it('accepts pre-selected item in single selection type when `all` has not been defined', fakeAsync(function () {
+        itemsInstance.all = null;
+        tick();
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.currentSingle = 2;
+        tick();
+        itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        tick();
+        expect(selectionInstance.isSelected(1)).toBe(false);
+        expect(selectionInstance.isSelected(2)).toBe(true);
+        expect(selectionInstance.isSelected(3)).toBe(false);
+        expect(selectionInstance.isSelected(4)).toBe(false);
+      }));
 
-      it('exposes an Observable to follow selection changes in multi selection type', function() {
+      it('exposes an Observable to follow selection changes in multi selection type', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         let nbChanges = 0;
         let currentSelection: number[];
@@ -202,7 +196,7 @@ export default function(): void {
         expect(nbChanges).toBe(3);
       });
 
-      it('exposes an Observable to follow selection changes in single selection type', function() {
+      it('exposes an Observable to follow selection changes in single selection type', function () {
         selectionInstance.selectionType = SelectionType.Single;
         let nbChanges = 0;
         let currentSelection: number;
@@ -217,7 +211,7 @@ export default function(): void {
         expect(nbChanges).toBe(2);
       });
 
-      it('does not emit selection change twice after a filter is applied', function() {
+      it('does not emit selection change twice after a filter is applied', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         let nbChanges = 0;
         selectionInstance.change.subscribe(() => {
@@ -238,7 +232,7 @@ export default function(): void {
         expect(nbChanges).toBe(2);
       });
 
-      it('clears selection when a filter is added (selectionType single)', function() {
+      it('clears selection when a filter is added (selectionType single)', function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.currentSingle = 2;
 
@@ -251,24 +245,21 @@ export default function(): void {
         expect(selectionInstance.currentSingle).toBe(null);
       });
 
-      it(
-        'keeps only the remaining selection when the items are updated (selectionType single)',
-        fakeAsync(function() {
-          selectionInstance.selectionType = SelectionType.Single;
-          selectionInstance.currentSingle = 3;
+      it('keeps only the remaining selection when the items are updated (selectionType single)', fakeAsync(function () {
+        selectionInstance.selectionType = SelectionType.Single;
+        selectionInstance.currentSingle = 3;
 
-          itemsInstance.all = [1, 2, 3, 5];
+        itemsInstance.all = [1, 2, 3, 5];
 
-          tick();
+        tick();
 
-          expect(selectionInstance.currentSingle).toBe(3);
-        })
-      );
+        expect(selectionInstance.currentSingle).toBe(3);
+      }));
 
       it(
         'clears the selections when the items are updated and ' +
           'they do not contain the previous selection (selectionType single)',
-        fakeAsync(function() {
+        fakeAsync(function () {
           selectionInstance.selectionType = SelectionType.Single;
           selectionInstance.currentSingle = 4;
 
@@ -280,7 +271,7 @@ export default function(): void {
         })
       );
 
-      it('maintains the selection when the page is changed (selectionType single)', function() {
+      it('maintains the selection when the page is changed (selectionType single)', function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.currentSingle = 4;
 
@@ -291,7 +282,7 @@ export default function(): void {
         expect(selectionInstance.currentSingle).toBe(4);
       });
 
-      it('clears selection when a filter is added', function() {
+      it('clears selection when a filter is added', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [4, 2];
 
@@ -304,24 +295,21 @@ export default function(): void {
         expect(selectionInstance.current.length).toBe(0);
       });
 
-      it(
-        'keeps only the remaining selection when the items are updated',
-        fakeAsync(function() {
-          selectionInstance.selectionType = SelectionType.Multi;
-          selectionInstance.current = [4, 2];
+      it('keeps only the remaining selection when the items are updated', fakeAsync(function () {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.current = [4, 2];
 
-          itemsInstance.all = [1, 2, 3, 5];
+        itemsInstance.all = [1, 2, 3, 5];
 
-          tick();
+        tick();
 
-          expect(selectionInstance.current.length).toBe(1);
-          expect(selectionInstance.current).toEqual([2]);
-        })
-      );
+        expect(selectionInstance.current.length).toBe(1);
+        expect(selectionInstance.current).toEqual([2]);
+      }));
 
       it(
         'keeps all the selections when the items are updated ' + 'and the contain all the previous selection',
-        fakeAsync(function() {
+        fakeAsync(function () {
           selectionInstance.selectionType = SelectionType.Multi;
           selectionInstance.current = [4, 2];
 
@@ -336,7 +324,7 @@ export default function(): void {
 
       it(
         'clears the selections when the items are updated and ' + 'they do not contain the previous selection',
-        fakeAsync(function() {
+        fakeAsync(function () {
           selectionInstance.selectionType = SelectionType.Multi;
           selectionInstance.current = [4, 2];
 
@@ -349,7 +337,7 @@ export default function(): void {
         })
       );
 
-      it('maintains the selection when the page is changed', function() {
+      it('maintains the selection when the page is changed', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [4, 2];
 
@@ -368,7 +356,7 @@ export default function(): void {
       let filtersInstance: FiltersProvider<number>;
       let itemsInstance: Items<number>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         const stateDebouncer = new StateDebouncer();
         pageInstance = new Page(stateDebouncer);
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
@@ -381,12 +369,12 @@ export default function(): void {
         selectionInstance.preserveSelection = true;
       });
 
-      afterEach(function() {
+      afterEach(function () {
         selectionInstance.destroy();
         itemsInstance.destroy();
       });
 
-      it('does not clear selection when a filter is added (even if selection is not visible)', function() {
+      it('does not clear selection when a filter is added (even if selection is not visible)', function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.currentSingle = 3;
 
@@ -399,7 +387,7 @@ export default function(): void {
         expect(selectionInstance.currentSingle).toBe(3);
       });
 
-      it('does not clear multi selection when a filter is added (even if selection is not visible)', function() {
+      it('does not clear multi selection when a filter is added (even if selection is not visible)', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.current = [2, 3];
 
@@ -412,27 +400,24 @@ export default function(): void {
         expect(selectionInstance.current).toEqual([2, 3]);
       });
 
-      it(
-        'keeps only the remaining selection when the items are updated',
-        fakeAsync(function() {
-          selectionInstance.selectionType = SelectionType.Multi;
-          selectionInstance.current = [4, 3, 2];
-          const evenFilter: EvenFilter = new EvenFilter();
+      it('keeps only the remaining selection when the items are updated', fakeAsync(function () {
+        selectionInstance.selectionType = SelectionType.Multi;
+        selectionInstance.current = [4, 3, 2];
+        const evenFilter: EvenFilter = new EvenFilter();
 
-          filtersInstance.add(evenFilter as ClrDatagridFilterInterface<number>);
-          evenFilter.toggle();
+        filtersInstance.add(evenFilter as ClrDatagridFilterInterface<number>);
+        evenFilter.toggle();
 
-          itemsInstance.all = [1, 2, 3, 5];
+        itemsInstance.all = [1, 2, 3, 5];
 
-          tick();
+        tick();
 
-          expect(selectionInstance.current.length).toBe(2);
-          expect(selectionInstance.current).toEqual([3, 2]);
-        })
-      );
+        expect(selectionInstance.current.length).toBe(2);
+        expect(selectionInstance.current).toEqual([3, 2]);
+      }));
     });
 
-    describe('client-side selection and pagination', function() {
+    describe('client-side selection and pagination', function () {
       let selectionInstance: Selection<Item>;
       let sortInstance: Sort<Item>;
       let pageInstance: Page;
@@ -465,7 +450,7 @@ export default function(): void {
         });
       }
 
-      beforeEach(function() {
+      beforeEach(function () {
         const stateDebouncer = new StateDebouncer();
         pageInstance = new Page(stateDebouncer);
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
@@ -478,17 +463,17 @@ export default function(): void {
         selectionInstance = new Selection(itemsInstance, filtersInstance);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         selectionInstance.destroy();
         itemsInstance.destroy();
       });
 
-      describe('multi-selection', function() {
-        beforeEach(function() {
+      describe('multi-selection', function () {
+        beforeEach(function () {
           selectionInstance.selectionType = SelectionType.Multi;
         });
 
-        it('should preserve selection on page change', function() {
+        it('should preserve selection on page change', function () {
           selectionInstance.setSelected(items[2], true);
           expect(selectionInstance.current).toEqual([items[2]]);
           pageInstance.current = 3;
@@ -496,7 +481,7 @@ export default function(): void {
         });
 
         function testTrackBy(trackBy: TrackByFunction<{ id: number }>) {
-          return fakeAsync(function() {
+          return fakeAsync(function () {
             itemsInstance.trackBy = trackBy;
             selectionInstance.setSelected(items[2], true);
             const clones = cloneItems();
@@ -507,16 +492,22 @@ export default function(): void {
           });
         }
 
-        it('should support trackBy item', testTrackBy((_index, item) => item.id));
-        it('should support trackBy index', testTrackBy((index, _item) => index));
+        it(
+          'should support trackBy item',
+          testTrackBy((_index, item) => item.id)
+        );
+        it(
+          'should support trackBy index',
+          testTrackBy((index, _item) => index)
+        );
       });
 
-      describe('single selection', function() {
-        beforeEach(function() {
+      describe('single selection', function () {
+        beforeEach(function () {
           selectionInstance.selectionType = SelectionType.Single;
         });
 
-        it('should preserve selection on page change', function() {
+        it('should preserve selection on page change', function () {
           selectionInstance.currentSingle = items[2];
           pageInstance.current = 2;
           expect(selectionInstance.isSelected(items[2])).toBe(true);
@@ -525,18 +516,15 @@ export default function(): void {
           expect(selectionInstance.isSelected(items[5])).toBe(true);
         });
 
-        it(
-          'should clear selection if it is no longer in dataset',
-          fakeAsync(() => {
-            selectionInstance.currentSingle = items[2];
-            pageInstance.current = 2;
-            expect(selectionInstance.isSelected(items[2])).toBe(true);
+        it('should clear selection if it is no longer in dataset', fakeAsync(() => {
+          selectionInstance.currentSingle = items[2];
+          pageInstance.current = 2;
+          expect(selectionInstance.isSelected(items[2])).toBe(true);
 
-            itemsInstance.all = cloneItems().splice(2, 1);
-            tick();
-            expect(selectionInstance.currentSingle).toBe(undefined);
-          })
-        );
+          itemsInstance.all = cloneItems().splice(2, 1);
+          tick();
+          expect(selectionInstance.currentSingle).toBe(undefined);
+        }));
 
         it('does not apply trackBy to single selection with no items', () => {
           const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);
@@ -551,7 +539,7 @@ export default function(): void {
         });
 
         function testTrackBy(trackBy: TrackByFunction<{ id: number }>) {
-          return fakeAsync(function() {
+          return fakeAsync(function () {
             itemsInstance.trackBy = trackBy;
             selectionInstance.currentSingle = items[2];
             const clones = cloneItems();
@@ -561,12 +549,18 @@ export default function(): void {
           });
         }
 
-        it('should support trackBy item', testTrackBy((_index, item) => item.id));
-        it('should support trackBy index', testTrackBy((index, _item) => index));
+        it(
+          'should support trackBy item',
+          testTrackBy((_index, item) => item.id)
+        );
+        it(
+          'should support trackBy index',
+          testTrackBy((index, _item) => index)
+        );
       });
     });
 
-    describe('server-driven selection and pagination', function() {
+    describe('server-driven selection and pagination', function () {
       let selectionInstance: Selection<Item>;
       let sortInstance: Sort<Item>;
       let pageInstance: Page;
@@ -595,7 +589,7 @@ export default function(): void {
         });
       }
 
-      beforeEach(function() {
+      beforeEach(function () {
         const stateDebouncer = new StateDebouncer();
         pageInstance = new Page(stateDebouncer);
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
@@ -605,139 +599,121 @@ export default function(): void {
         selectionInstance = new Selection(itemsInstance, filtersInstance);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         selectionInstance.destroy();
         itemsInstance.destroy();
       });
 
-      describe('multi-selection', function() {
-        beforeEach(function() {
+      describe('multi-selection', function () {
+        beforeEach(function () {
           selectionInstance.selectionType = SelectionType.Multi;
         });
         // We don't support server-driven, multi-selection without trackBy.
         // We don't support server-driven, multi-selection, trackBy index.
-        it(
-          'should support trackBy item',
-          fakeAsync(() => {
-            itemsInstance.trackBy = (_index, item) => item.id;
-            itemsInstance.all = itemsA;
-            tick();
-            selectionInstance.setSelected(itemsA[0], true);
-            testSelection(true, false, false);
-            itemsInstance.all = itemsB;
-            tick();
-            testSelection(true, false, false);
-            itemsInstance.all = itemsC;
-            tick();
-            testSelection(false, false, true);
-            expect(selectionInstance.current[0].modified).toEqual(true);
-          })
-        );
+        it('should support trackBy item', fakeAsync(() => {
+          itemsInstance.trackBy = (_index, item) => item.id;
+          itemsInstance.all = itemsA;
+          tick();
+          selectionInstance.setSelected(itemsA[0], true);
+          testSelection(true, false, false);
+          itemsInstance.all = itemsB;
+          tick();
+          testSelection(true, false, false);
+          itemsInstance.all = itemsC;
+          tick();
+          testSelection(false, false, true);
+          expect(selectionInstance.current[0].modified).toEqual(true);
+        }));
 
-        it(
-          'accepts pre-selected items with trackBy when `all` has not been defined',
-          fakeAsync(() => {
-            itemsInstance.trackBy = (_index, item) => item.id;
-            selectionInstance.current = [{ id: 1 }, { id: 2 }, { id: 3 }];
-            tick();
-            itemsInstance.all = itemsA;
-            tick();
-            itemsA.forEach(item => {
-              expect(selectionInstance.isSelected(item)).toBe(true);
-            });
-          })
-        );
+        it('accepts pre-selected items with trackBy when `all` has not been defined', fakeAsync(() => {
+          itemsInstance.trackBy = (_index, item) => item.id;
+          selectionInstance.current = [{ id: 1 }, { id: 2 }, { id: 3 }];
+          tick();
+          itemsInstance.all = itemsA;
+          tick();
+          itemsA.forEach(item => {
+            expect(selectionInstance.isSelected(item)).toBe(true);
+          });
+        }));
 
-        it(
-          'should support toggleAll selection on page change',
-          fakeAsync(() => {
-            itemsInstance.trackBy = (_index, item) => item.id;
-            itemsInstance.all = itemsA;
-            pageInstance.size = 3;
-            pageInstance.current = 1;
-            tick();
-            selectionInstance.toggleAll();
-            testToggleAllSelection(true, false, false);
-            itemsInstance.all = itemsB;
-            pageInstance.current = 2;
-            tick();
-            testToggleAllSelection(true, false, false);
-            itemsInstance.all = itemsC;
-            pageInstance.current = 1;
-            tick();
-            testToggleAllSelection(false, false, true);
-            expect(selectionInstance.current[0].modified).toEqual(true);
-          })
-        );
+        it('should support toggleAll selection on page change', fakeAsync(() => {
+          itemsInstance.trackBy = (_index, item) => item.id;
+          itemsInstance.all = itemsA;
+          pageInstance.size = 3;
+          pageInstance.current = 1;
+          tick();
+          selectionInstance.toggleAll();
+          testToggleAllSelection(true, false, false);
+          itemsInstance.all = itemsB;
+          pageInstance.current = 2;
+          tick();
+          testToggleAllSelection(true, false, false);
+          itemsInstance.all = itemsC;
+          pageInstance.current = 1;
+          tick();
+          testToggleAllSelection(false, false, true);
+          expect(selectionInstance.current[0].modified).toEqual(true);
+        }));
 
-        it(
-          'should not clear selection when filter applied and clrDgPreserveSelection is true',
-          fakeAsync(() => {
-            const evenFilter: ItemEvenFilter = new ItemEvenFilter();
-            itemsInstance.trackBy = (_index, item) => item.id;
-            itemsInstance.all = itemsA;
-            tick();
-            selectionInstance.setSelected(itemsA[0], true);
-            selectionInstance.preserveSelection = true;
+        it('should not clear selection when filter applied and clrDgPreserveSelection is true', fakeAsync(() => {
+          const evenFilter: ItemEvenFilter = new ItemEvenFilter();
+          itemsInstance.trackBy = (_index, item) => item.id;
+          itemsInstance.all = itemsA;
+          tick();
+          selectionInstance.setSelected(itemsA[0], true);
+          selectionInstance.preserveSelection = true;
 
-            filtersInstance.add(evenFilter as ClrDatagridFilterInterface<Item>);
-            evenFilter.toggle();
-            tick();
+          filtersInstance.add(evenFilter as ClrDatagridFilterInterface<Item>);
+          evenFilter.toggle();
+          tick();
 
-            expect(selectionInstance.current.length).toBe(1);
-            expect(selectionInstance.isSelected(itemsA[0])).toBeTruthy();
-          })
-        );
+          expect(selectionInstance.current.length).toBe(1);
+          expect(selectionInstance.isSelected(itemsA[0])).toBeTruthy();
+        }));
       });
 
-      describe('single selection', function() {
-        beforeEach(function() {
+      describe('single selection', function () {
+        beforeEach(function () {
           selectionInstance.selectionType = SelectionType.Single;
         });
         // We don't support server-driven, multi-selection without trackBy.
         // We don't support server-driven, multi-selection, trackBy index.
-        it(
-          'should support trackBy item',
-          fakeAsync(() => {
-            itemsInstance.trackBy = (_index, item) => item.id;
-            itemsInstance.all = itemsA;
-            tick();
-            selectionInstance.currentSingle = itemsA[0];
-            testSelection(true, false, false);
-            itemsInstance.all = itemsB;
-            tick();
-            testSelection(true, false, false);
-            // itemsInstance.all = itemsC;
-            // tick();
-            // testSelection(false, false, true);
-            // expect(selectionInstance.currentSingle.modified).toEqual(true);
-          })
-        );
+        it('should support trackBy item', fakeAsync(() => {
+          itemsInstance.trackBy = (_index, item) => item.id;
+          itemsInstance.all = itemsA;
+          tick();
+          selectionInstance.currentSingle = itemsA[0];
+          testSelection(true, false, false);
+          itemsInstance.all = itemsB;
+          tick();
+          testSelection(true, false, false);
+          // itemsInstance.all = itemsC;
+          // tick();
+          // testSelection(false, false, true);
+          // expect(selectionInstance.currentSingle.modified).toEqual(true);
+        }));
 
-        it(
-          'accepts pre-selected items with trackBy when `all` has not been defined',
-          fakeAsync(() => {
-            itemsInstance.trackBy = (_index, item) => item.id;
-            selectionInstance.currentSingle = { id: 1 };
-            tick();
-            itemsInstance.all = itemsA;
-            tick();
-            expect(selectionInstance.isSelected(itemsA[0])).toBe(true);
-            expect(selectionInstance.isSelected(itemsA[1])).toBe(false);
-            expect(selectionInstance.isSelected(itemsA[2])).toBe(false);
-          })
-        );
+        it('accepts pre-selected items with trackBy when `all` has not been defined', fakeAsync(() => {
+          itemsInstance.trackBy = (_index, item) => item.id;
+          selectionInstance.currentSingle = { id: 1 };
+          tick();
+          itemsInstance.all = itemsA;
+          tick();
+          expect(selectionInstance.isSelected(itemsA[0])).toBe(true);
+          expect(selectionInstance.isSelected(itemsA[1])).toBe(false);
+          expect(selectionInstance.isSelected(itemsA[2])).toBe(false);
+        }));
       });
     });
 
-    describe('conditional selection', function() {
+    describe('conditional selection', function () {
       let selectionInstance: Selection;
       let sortInstance: Sort;
       let pageInstance: Page;
       let filtersInstance: FiltersProvider;
       let itemsInstance: Items;
 
-      beforeEach(function() {
+      beforeEach(function () {
         const stateDebouncer = new StateDebouncer();
         pageInstance = new Page(stateDebouncer);
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
@@ -749,12 +725,12 @@ export default function(): void {
         selectionInstance = new Selection(itemsInstance, filtersInstance);
       });
 
-      afterEach(function() {
+      afterEach(function () {
         selectionInstance.destroy();
         itemsInstance.destroy();
       });
 
-      it("can't select item if it's locked when selection type is Multi", function() {
+      it("can't select item if it's locked when selection type is Multi", function () {
         selectionInstance.selectionType = SelectionType.Multi;
         // lock a row
         selectionInstance.lockItem(4, true);
@@ -776,7 +752,7 @@ export default function(): void {
        * single selection is done with radio button so there is no logic to prevent
        * it from the provider - this must be handle at the component level
        */
-      it("should not block selecting item if it's locked when selection type is Single", function() {
+      it("should not block selecting item if it's locked when selection type is Single", function () {
         selectionInstance.selectionType = SelectionType.Single;
         // lock a row
         selectionInstance.lockItem(4, true);
@@ -786,7 +762,7 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(true);
       });
 
-      it('should let you select locked item when using setSelected', function() {
+      it('should let you select locked item when using setSelected', function () {
         selectionInstance.selectionType = SelectionType.Multi;
 
         selectionInstance.lockItem(4, true);
@@ -794,7 +770,7 @@ export default function(): void {
         expect(selectionInstance.isSelected(4)).toBe(true);
       });
 
-      it('should return true when all posible items are selected excluding locked', function() {
+      it('should return true when all posible items are selected excluding locked', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.lockItem(4, true);
         selectionInstance.toggleAll();
@@ -804,28 +780,28 @@ export default function(): void {
       /**
        * Clearing selection must not change the lockedRef.
        */
-      it('should not reset lockedRefs when clearing selection', function() {
+      it('should not reset lockedRefs when clearing selection', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.lockItem(4, true);
         selectionInstance.clearSelection();
         expect(selectionInstance.isLocked(4)).toBe(true);
       });
 
-      it('should remove locked item when is no longer part from the items list and type is Single', function() {
+      it('should remove locked item when is no longer part from the items list and type is Single', function () {
         selectionInstance.selectionType = SelectionType.Single;
         selectionInstance.lockItem(4, true);
         itemsInstance.all = [5, 6, 7];
         expect(selectionInstance.isLocked(4)).toBe(false);
       });
 
-      it('should remove locked item when is no longer part from the items list and type is Multi', function() {
+      it('should remove locked item when is no longer part from the items list and type is Multi', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.lockItem(6, true);
         itemsInstance.all = [5, 7, 8];
         expect(selectionInstance.isLocked(6)).toBe(false);
       });
 
-      it('should use trackBy to find already locked items when the list is replaced (integer)', function() {
+      it('should use trackBy to find already locked items when the list is replaced (integer)', function () {
         selectionInstance.selectionType = SelectionType.Multi;
         selectionInstance.lockItem(2, true);
         // Create new list of items
@@ -833,7 +809,7 @@ export default function(): void {
         expect(selectionInstance.isLocked(2)).toBe(true);
       });
 
-      it('should use trackBy to find already locked items when the list is replaced (object)', function() {
+      it('should use trackBy to find already locked items when the list is replaced (object)', function () {
         itemsInstance.trackBy = (_index, { id }) => id;
         selectionInstance.selectionType = SelectionType.Multi;
         itemsInstance.all = [{ id: 1 }, { id: 2 }];

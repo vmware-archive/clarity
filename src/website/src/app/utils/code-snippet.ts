@@ -16,19 +16,19 @@ type ESModuleImport = { default: string };
 @Component({
   selector: 'clr-code-snippet',
   template: `
-        <ng-container *ngIf="!disablePrism">
-            <pre><code [clr-code-highlight]="'language-'+language">{{code}}</code></pre>
-        </ng-container>
-        <ng-container *ngIf="disablePrism">
-            <pre><code class="clr-code">{{code}}</code></pre>
-        </ng-container>
-    `,
+    <ng-container *ngIf="!disablePrism">
+      <pre><code [clr-code-highlight]="'language-'+language">{{code}}</code></pre>
+    </ng-container>
+    <ng-container *ngIf="disablePrism">
+      <pre><code class="clr-code">{{code}}</code></pre>
+    </ng-container>
+  `,
   styles: [
     `
-        pre {
-            background: transparent;
-            padding: 12px;
-        }
+      pre {
+        background: transparent;
+        padding: 12px;
+      }
     `,
   ],
 })

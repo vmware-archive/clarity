@@ -28,23 +28,24 @@ export const CUSTOM_BUTTON_TYPES: any = {
 @Component({
   selector: 'clr-wizard-button',
   template: `
-        <button
-            type="button"
-            class="btn clr-wizard-btn"
-            [class.btn-link]="isCancel"
-            [class.clr-wizard-btn--tertiary]="isCancel"
-            [class.btn-outline]="isPrevious"
-            [class.clr-wizard-btn--secondary]="isPrevious"
-            [class.btn-primary]="isPrimaryAction"
-            [class.clr-wizard-btn--primary]="isPrimaryAction"
-            [class.btn-success]="isFinish"
-            [class.btn-danger]="isDanger"
-            [class.disabled]="isDisabled"
-            [attr.disabled]="_disabledAttribute"
-            (click)="click()">
-            <ng-content></ng-content>
-        </button>
-    `,
+    <button
+      type="button"
+      class="btn clr-wizard-btn"
+      [class.btn-link]="isCancel"
+      [class.clr-wizard-btn--tertiary]="isCancel"
+      [class.btn-outline]="isPrevious"
+      [class.clr-wizard-btn--secondary]="isPrevious"
+      [class.btn-primary]="isPrimaryAction"
+      [class.clr-wizard-btn--primary]="isPrimaryAction"
+      [class.btn-success]="isFinish"
+      [class.btn-danger]="isDanger"
+      [class.disabled]="isDisabled"
+      [attr.disabled]="_disabledAttribute"
+      (click)="click()"
+    >
+      <ng-content></ng-content>
+    </button>
+  `,
   host: { class: 'clr-wizard-btn-wrapper', '[attr.aria-hidden]': 'isHidden' },
   styles: ['[aria-hidden="true"] { display: none; }'],
 })

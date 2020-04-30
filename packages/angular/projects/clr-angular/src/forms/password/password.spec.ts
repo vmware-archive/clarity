@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,9 +18,7 @@ import { ClrCommonFormsModule } from '../common/common.module';
 import { NgControlService } from '../common/providers/ng-control.service';
 
 @Component({
-  template: `
-    <input type="password" clrPassword />
-  `,
+  template: ` <input type="password" clrPassword /> `,
 })
 class InvalidUseTest {}
 
@@ -37,10 +35,10 @@ class TemplateDrivenTest {}
   template: `
     <div [formGroup]="example">
       <clr-password-container>
-       <input clrPassword class="test-class" formControlName="model" />
+        <input clrPassword class="test-class" formControlName="model" />
       </clr-password-container>
     </div>
-    `,
+  `,
 })
 class ReactiveTest {
   example = new FormGroup({
@@ -48,7 +46,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrPassword', () => {
     describe('invalid use', () => {
       it('should throw an error when used without a password container', () => {

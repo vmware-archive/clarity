@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,22 +12,17 @@ import { ClrTextareaContainer } from './textarea-container';
 import { TemplateDrivenSpec, ControlStandaloneSpec, ReactiveSpec } from '../tests/control.spec';
 
 @Component({
-  template: `
-    <textarea clrTextarea></textarea>
-    `,
+  template: ` <textarea clrTextarea></textarea> `,
 })
 class StandaloneUseTest {}
 
 @Component({
-  template: `
-    <textarea clrTextarea name="model" class="test-class" [(ngModel)]="model"></textarea>
-    `,
+  template: ` <textarea clrTextarea name="model" class="test-class" [(ngModel)]="model"></textarea> `,
 })
 class TemplateDrivenTest {}
 
 @Component({
-  template: `
-  <div [formGroup]="example">
+  template: ` <div [formGroup]="example">
     <textarea clrTextarea name="model" class="test-class" formControlName="model"></textarea>
   </div>`,
 })
@@ -37,7 +32,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('Textarea directive', () => {
     ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrTextareaContainer, ClrTextarea, TemplateDrivenTest, 'clr-textarea');

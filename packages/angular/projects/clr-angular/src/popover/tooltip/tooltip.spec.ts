@@ -12,13 +12,13 @@ import { ClrTooltipModule } from './tooltip.module';
 
 @Component({
   template: `
-        <clr-tooltip>
-            <span class="tooltip-anchor">Hello</span>
-            <clr-tooltip-content>
-                <span>World</span>
-            </clr-tooltip-content>
-        </clr-tooltip>
-    `,
+    <clr-tooltip>
+      <span class="tooltip-anchor">Hello</span>
+      <clr-tooltip-content>
+        <span>World</span>
+      </clr-tooltip-content>
+    </clr-tooltip>
+  `,
 })
 class SimpleTest {}
 
@@ -26,21 +26,21 @@ interface TooltipContext extends TestContext<ClrTooltip, SimpleTest> {
   tooltipIdService: TooltipIdService;
 }
 
-export default function(): void {
-  describe('Tooltip component', function() {
+export default function (): void {
+  describe('Tooltip component', function () {
     spec(ClrTooltip, SimpleTest, ClrTooltipModule, { providers: [TooltipIdService] });
-    beforeEach(function(this: TooltipContext) {
+    beforeEach(function (this: TooltipContext) {
       this.tooltipIdService = this.getClarityProvider(TooltipIdService);
     });
 
-    describe('TypeScript API', function(this: TooltipContext) {
-      it('provides a TooltipIdService', function(this: TooltipContext) {
+    describe('TypeScript API', function (this: TooltipContext) {
+      it('provides a TooltipIdService', function (this: TooltipContext) {
         expect(this.tooltipIdService).toBeDefined();
       });
     });
 
-    describe('Simple', function(this: TooltipContext) {
-      it('projects anchor content', function() {
+    describe('Simple', function (this: TooltipContext) {
+      it('projects anchor content', function () {
         expect(this.clarityElement.textContent).toMatch(/Hello/);
       });
     });

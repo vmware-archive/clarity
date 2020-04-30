@@ -143,5 +143,99 @@ export default function (): void {
       columnSeparatorComponent.moveTracker(mockExtDragEventWithinRange, resizeTrackerEl);
       expect(resizeTrackerEl.classList.contains('exceeded-max')).toBeFalse();
     });
+
+    describe('Datagrids column resizer', function() {
+      let showTrackerSpyCallCount = 0;
+      let moveTrackerSpyCallCount = 0;
+      let showTrackerSpy;
+      let moveTrackerSpy;
+
+      it('the column handle has aria-label and aria-describedby attributes', function() {
+        expect(draggableDebugElement.nativeElement.hasAttribute('aria-label')).toEqual(true);
+        expect(draggableDebugElement.nativeElement.hasAttribute('aria-describedby')).toEqual(true);
+      });
+
+      describe('when left arrow key is pressed', function() {
+        beforeEach(function() {
+          showTrackerSpy = spyOn(columnSeparatorComponent, 'showTracker');
+          moveTrackerSpy = spyOn(columnSeparatorComponent, 'moveTracker');
+          showTrackerSpyCallCount = showTrackerSpy.calls.count();
+          moveTrackerSpyCallCount = moveTrackerSpy.calls.count();
+
+          draggableDebugElement.triggerEventHandler('keydown', {
+            code: 'ArrowLeft',
+          });
+
+          fixture.detectChanges();
+        });
+
+        it('then tracker is shown is called', function() {
+          expect(showTrackerSpy.calls.count()).toEqual(showTrackerSpyCallCount + 1);
+        });
+
+        it('and handle is moved', function() {
+          expect(moveTrackerSpy.calls.count()).toEqual(moveTrackerSpyCallCount + 1);
+        });
+
+        describe('when the arrow key is released', function() {
+          let hideTrackerCallCount = 0;
+          let hideTrackerSpy;
+          beforeEach(function() {
+            hideTrackerSpy = spyOn(columnSeparatorComponent, 'hideTracker');
+            hideTrackerCallCount = hideTrackerSpy.calls.count();
+            draggableDebugElement.triggerEventHandler('keyup', {
+              code: 'ArrowLeft',
+            });
+
+            fixture.detectChanges();
+          });
+
+          it('the tracker is hidden', function() {
+            expect(hideTrackerSpy.calls.count()).toEqual(hideTrackerCallCount + 1);
+          });
+        });
+      });
+
+      describe('when right arrow key is pressed', function() {
+        beforeEach(function() {
+          showTrackerSpy = spyOn(columnSeparatorComponent, 'showTracker');
+          moveTrackerSpy = spyOn(columnSeparatorComponent, 'moveTracker');
+          showTrackerSpyCallCount = showTrackerSpy.calls.count();
+          moveTrackerSpyCallCount = moveTrackerSpy.calls.count();
+
+          draggableDebugElement.triggerEventHandler('keydown', {
+            code: 'ArrowRight',
+          });
+
+          fixture.detectChanges();
+        });
+
+        it('then tracker is shown is called', function() {
+          expect(showTrackerSpy.calls.count()).toEqual(showTrackerSpyCallCount + 1);
+        });
+
+        it('and handle is moved', function() {
+          expect(moveTrackerSpy.calls.count()).toEqual(moveTrackerSpyCallCount + 1);
+        });
+
+        describe('when the arrow key is released', function() {
+          let hideTrackerCallCount = 0;
+          let hideTrackerSpy;
+          beforeEach(function() {
+            hideTrackerSpy = spyOn(columnSeparatorComponent, 'hideTracker');
+            hideTrackerCallCount = hideTrackerSpy.calls.count();
+            draggableDebugElement.triggerEventHandler('keyup', {
+              code: 'ArrowRight',
+            });
+
+            fixture.detectChanges();
+          });
+
+          it('the tracker is hidden', function() {
+            expect(hideTrackerSpy.calls.count()).toEqual(hideTrackerCallCount + 1);
+          });
+        });
+      });
+    });
   });
 }

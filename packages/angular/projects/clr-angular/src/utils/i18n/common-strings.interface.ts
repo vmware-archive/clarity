@@ -120,7 +120,14 @@ export interface ClrCommonStrings {
    * Datagrid filter toggle button
    */
   datagridFilterAriaLabel?: string;
-
+  /**
+   * Datagrid column handler string
+   */
+  columnSeparatorAriaLabel?: string;
+  /**
+   * Datagrid column resize handler string
+   */
+  columnResizeHandlerAriaLabel?: string;
   /**
    * Modal start of content
    */

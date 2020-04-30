@@ -893,7 +893,9 @@
           cursor: col-resize;
           height: calc(100% + #{$clr_baselineRem_0_5} - #{$clr-global-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);
+          @include clr-no-styles-button();
         }
+
         .datagrid-column-resize-tracker {
           position: absolute;
           top: -1 * $clr_baselineRem_0_5;

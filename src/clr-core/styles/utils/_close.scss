@@ -1,0 +1,30 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// scss-lint:disable QualifyingElement
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+// scss-lint:enable QualifyingElement
+
+.close {
+  font-size: $cds-token-space-size-12;
+  transition: color linear 0.2s;
+  font-weight: $cds-token-typography-font-weight-light;
+  text-shadow: none;
+
+  &:focus,
+  &:hover,
+  &:active {
+    opacity: 1;
+  }
+
+  &:focus {
+    @include include-outline-style-form-fields();
+  }
+}

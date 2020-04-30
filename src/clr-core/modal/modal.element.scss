@@ -1,0 +1,99 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/utils';
+@import './../styles/utils/close';
+
+:host {
+  --backdrop-opacity: 0.85;
+  --backdrop-background: #{$cds-token-color-neutral-900};
+  --box-shadow-color: #{$cds-token-color-action-500};
+  --border-radius: #{$cds-token-global-border-radius};
+  --border: #{$cds-token-color-action-600};
+  --background: #{$cds-token-color-neutral-0};
+  --close-icon-color: #{$cds-token-color-neutral-600};
+  --close-icon-color-hover: #{$cds-token-color-neutral-700};
+  --content-box-shadow-color: rgba(0, 0, 0, 0.2);
+  --width: calc(8 * #{$cds-token-space-size-13});
+}
+
+:host([size='sm']) {
+  --width: calc(4 * #{$cds-token-space-size-13});
+}
+
+:host([size='lg']) {
+  --width: calc(12 * #{$cds-token-space-size-13});
+}
+
+:host([size='xl']) {
+  --width: calc(16 * #{$cds-token-space-size-13});
+}
+
+.private-host {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1050; // TODO: restore using map-get to get the z-index
+}
+
+button.close {
+  font-size: $cds-token-space-size-8;
+  line-height: $cds-token-space-size-8;
+
+  &:focus,
+  &:hover,
+  &:active {
+    --close-icon-color: var(--close-icon-color-hover);
+  }
+
+  cds-icon {
+    fill: var(--close-icon-color);
+    // per measurement, this results in an icon that is 16x16...
+    @include equilateral($cds-token-space-size-8);
+  }
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 1050; // TODO: restore using map-get to get the z-index
+  width: var(--width);
+  max-width: 100%;
+}
+
+.modal-content {
+  background: var(--background);
+  border: var(--border-radius);
+  border-radius: var(--border-radius);
+  box-shadow: 0 $cds-token-space-size-1 $cds-token-space-size-2 $cds-token-space-size-2 var(--content-box-shadow-color);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: var(--backdrop-background);
+  opacity: var(--backdrop-opacity);
+  z-index: 1040; // TODO: restore using map-get to get the z-index
+}
+
+.modal-body {
+  // This doesn't do much, but at least with several paragraphs in the content
+  // it doesn't mess up the modal's proportions.
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: $cds-token-layout-width-sm) and (orientation: landscape) {
+  .modal-body {
+    max-height: 55vh;
+  }
+}
+
+@media screen and (max-width: $cds-token-layout-width-xs) {
+  .modal-body {
+    max-height: 55vh;
+  }
+}

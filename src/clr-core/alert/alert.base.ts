@@ -49,7 +49,7 @@ const iconMap = {
  * Base class for alerts. Contains properties and functions common to all alerts.
  */
 export class CdsBaseAlert extends LitElement {
-  @event() private closedChange: EventEmitter<boolean>;
+  @event() private closeChange: EventEmitter<boolean>;
 
   /** If false, the alert will not render the close button.  */
   @property({ type: Boolean })
@@ -127,6 +127,6 @@ export class CdsBaseAlert extends LitElement {
   }
 
   closeAlert() {
-    this.closedChange.emit(true);
+    this.closeChange.emit(true);
   }
 }

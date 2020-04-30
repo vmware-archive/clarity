@@ -129,6 +129,7 @@ export interface ClrCommonStrings {
    * Modal end of content
    */
   modalContentEnd: string;
+
   /**
    * Datagrid Show columns menu description
    */

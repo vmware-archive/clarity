@@ -162,10 +162,10 @@ describe('alert element', () => {
       expect(button.getAttribute('aria-label')).toEqual(service.keys.alertCloseButtonAriaLabel);
     });
 
-    it('should emit a closedChanged event when close button is clicked', async done => {
+    it('should emit a closeChange event when close button is clicked', async done => {
       let value: any;
       await componentIsStable(component);
-      component.addEventListener<any>('closedChange', (e: CustomEvent) => {
+      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
         value = e.detail;
         expect(value).toBe(true);
         done();

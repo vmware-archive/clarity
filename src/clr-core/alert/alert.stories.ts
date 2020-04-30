@@ -65,7 +65,7 @@ export const API = () => {
       .iconTitle=${iconTitle}
       .size=${size} 
       .status=${alertStatus}
-      @closedChange=${action('closeChanged')}>
+      @closeChange=${action('closeChange')}>
         <cds-alert-content>
           ${slot}
         </cds-alert-content>

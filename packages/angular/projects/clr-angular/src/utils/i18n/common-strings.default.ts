@@ -49,6 +49,8 @@ export const commonStringsDefault: ClrCommonStrings = {
   singleActionableAriaLabel: 'Single actionable header',
   detailExpandableAriaLabel: 'Toggle more row content',
   datagridFilterAriaLabel: 'Toggle column filter',
+  columnSeparatorAriaLabel: 'Not necessary to use this button',
+  columnResizeHandlerAriaLabel: 'Column resize handle',
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
   // Date Picker

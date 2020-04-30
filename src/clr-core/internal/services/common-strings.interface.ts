@@ -117,10 +117,13 @@ export interface ClrCommonStrings {
    */
   maxValue: string;
   /**
+   * Modal: Close modal button
+   */
+  modalCloseButtonAriaLabel: string;
+  /**
    * Datagrid filter toggle button
    */
   datagridFilterAriaLabel?: string;
-
   /**
    * Modal start of content
    */

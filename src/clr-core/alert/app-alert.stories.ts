@@ -59,7 +59,7 @@ export const API = () => {
       .iconShape=${iconShape}
       .iconTitle=${iconTitle}
       .status=${alertStatus}
-      @closedChange=${action('closeChanged')}>
+      @closeChange=${action('closeChanged')}>
         <cds-alert-content>
           ${slot}
         </cds-alert-content>

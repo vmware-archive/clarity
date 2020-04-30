@@ -35,6 +35,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   totalPages: 'Total Pages',
   minValue: 'Min value',
   maxValue: 'Max value',
+  modalCloseButtonAriaLabel: 'Close modal',
   modalContentStart: 'Beginning of Modal Content',
   modalContentEnd: 'End of Modal Content',
   showColumnsMenuDescription: 'Show or hide columns menu',

@@ -37,7 +37,7 @@ module.exports = findPackagesSync(path.join(process.cwd(), 'src'));
 //   './src/clr-core/package.json',
 //   './src/clr-core/badge/package.json',
 //   './src/clr-core/button/package.json',
-//   './src/clr-core/common/package.json',
+//   './src/clr-core/internal/package.json',
 //   './src/clr-core/icon-shapes/package.json',
 //   './src/clr-core/icon/package.json',
 //   './src/clr-core/tag/package.json',

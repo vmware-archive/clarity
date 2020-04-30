@@ -17,3 +17,7 @@
 :host {
   box-sizing: border-box;
 }
+
+body[cds-layout='no-scrolling'] {
+  overflow: hidden;
+}

@@ -5,7 +5,16 @@
  */
 
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
-import { getElementWidth, getElementWidthUnless, HTMLAttributeTuple, removeAttributes, setAttributes } from './dom.js';
+import {
+  addAttributeValue,
+  getElementWidth,
+  getElementWidthUnless,
+  HTMLAttributeTuple,
+  isHTMLElement,
+  removeAttributes,
+  removeAttributeValue,
+  setAttributes,
+} from './dom.js';
 
 describe('Functional Helper: ', () => {
   describe('getElementWidth() ', () => {
@@ -49,6 +58,58 @@ describe('Functional Helper: ', () => {
 
     it('returns empty string when unless is true', () => {
       expect(getElementWidthUnless(testElement, true)).toEqual('');
+    });
+  });
+
+  describe('isHTMLElement() ', () => {
+    let testElement: any;
+
+    it('returns true if it is an HTMLElement', () => {
+      testElement = createTestElement();
+      expect(isHTMLElement(testElement)).toEqual(true);
+    });
+
+    it('returns false if undefined or null', () => {
+      testElement = undefined;
+      expect(isHTMLElement(testElement)).toEqual(false);
+
+      testElement = null;
+      expect(isHTMLElement(testElement)).toEqual(false);
+    });
+
+    it('returns false if it is not an HTMLElement', () => {
+      testElement = 2;
+      expect(isHTMLElement(testElement)).toEqual(false);
+    });
+  });
+
+  describe('addAttributeValue() ', () => {
+    let testElement: HTMLElement;
+    const attrName = 'myAttr';
+
+    beforeEach(() => {
+      testElement = createTestElement();
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('sets the attribute value', () => {
+      addAttributeValue(testElement, attrName, 'bar');
+      expect(testElement.getAttribute(attrName)).toEqual('bar');
+    });
+
+    it('adds to current attribute value', () => {
+      testElement.setAttribute(attrName, 'foo');
+      addAttributeValue(testElement, attrName, 'bar');
+      expect(testElement.getAttribute(attrName)).toEqual('foo bar');
+    });
+
+    it('does not add if the value is already present', () => {
+      testElement.setAttribute(attrName, 'foo');
+      addAttributeValue(testElement, attrName, 'foo');
+      expect(testElement.getAttribute(attrName)).toEqual('foo');
     });
   });
 
@@ -160,6 +221,43 @@ describe('Functional Helper: ', () => {
       attrsToRemove.forEach(attr => {
         expect(testElement.hasAttribute(attr)).toBe(false);
       });
+    });
+  });
+
+  describe('removeAttributeValues() ', () => {
+    let testElement: HTMLElement;
+    const attrName = 'myAttr';
+    const testAttrs: HTMLAttributeTuple[] = [
+      ['title', 'test element'],
+      ['aria-hidden', 'true'],
+      ['data-attr', 'stringified data goes here'],
+    ];
+
+    beforeEach(() => {
+      testElement = createTestElement();
+      setAttributes(testElement, ...testAttrs);
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('does not do anything if attribute value is not present', () => {
+      testElement.setAttribute(attrName, 'foo');
+      removeAttributeValue(testElement, attrName, 'bar');
+      expect(testElement.getAttribute(attrName)).toEqual('foo');
+    });
+
+    it('removes only the value specified', () => {
+      testElement.setAttribute(attrName, 'foo bar');
+      removeAttributeValue(testElement, attrName, 'bar');
+      expect(testElement.getAttribute(attrName)).toEqual('foo');
+    });
+
+    it('removes the attribute if the value was the only value for that attribute', () => {
+      testElement.setAttribute(attrName, 'foo');
+      removeAttributeValue(testElement, attrName, 'foo');
+      expect(testElement.getAttribute(attrName)).toBeNull();
     });
   });
 });

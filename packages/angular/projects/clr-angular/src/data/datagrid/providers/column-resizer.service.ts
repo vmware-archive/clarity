@@ -4,9 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { ElementRef, Injectable } from '@angular/core';
-
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
-import { ClrDragEvent } from '../../../utils/drag-and-drop/drag-event';
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 
 const MIN_COLUMN_WIDTH = 96;
@@ -51,14 +49,13 @@ export class ColumnResizerService {
     return this.widthBeforeResize + this._resizedBy;
   }
 
-  public calculateResize(event: ClrDragEvent<any>): void {
-    const moveX = event.dragPosition.moveX;
-    // returns the resize amount within the allowed range
-    if (moveX < -this.maxResizeRange) {
+  public calculateResize(resizedBy: number): void {
+    // calculates the resize amount within the allowed range
+    if (resizedBy < -this.maxResizeRange) {
       this._resizedBy = -this.maxResizeRange;
       this.isWithinMaxResizeRange = false;
     } else {
-      this._resizedBy = moveX;
+      this._resizedBy = resizedBy;
       this.isWithinMaxResizeRange = true;
     }
   }

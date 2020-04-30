@@ -5,11 +5,7 @@
  */
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DomAdapter } from '../../../utils/dom-adapter/dom-adapter';
-import { ClrDragEvent } from '../../../utils/drag-and-drop/drag-event';
-import { generateDragPosition } from '../../../utils/drag-and-drop/helpers.spec';
-import { DragEventType } from '../../../utils/drag-and-drop/interfaces/drag-event.interface';
 import { DatagridRenderOrganizer } from '../render/render-organizer';
 import { ColumnResizerService } from './column-resizer.service';
 
@@ -27,20 +23,6 @@ export default function (): void {
 
     let fixture: ComponentFixture<any>;
     let columnHostEl: HTMLElement;
-
-    // drag event within the maximum resize range:
-    const mockIntDragEventWithinRange = {
-      type: DragEventType.DRAG_MOVE,
-      dragPosition: generateDragPosition([10, 20], [50, 60]), // moveX will be (50 - 10);
-    };
-    const mockExtDragEventWithinRange = new ClrDragEvent(mockIntDragEventWithinRange);
-
-    // drag event that would exceed the maximum resize range:
-    const mockIntDragEventExceededRange = {
-      type: DragEventType.DRAG_MOVE,
-      dragPosition: generateDragPosition([10, 20], [-95, 60]), // moveX will be (-95 - 10);
-    };
-    const mockExtDragEventExceededRange = new ClrDragEvent(mockIntDragEventExceededRange);
 
     beforeEach(function () {
       TestBed.configureTestingModule({ declarations: [TestComponent] });
@@ -72,14 +54,14 @@ export default function (): void {
     it('provides correct resized width', function () {
       columnResizerService.startResize();
       expect(columnResizerService.resizedBy).toBe(0);
-      columnResizerService.calculateResize(mockExtDragEventWithinRange);
-      expect(columnResizerService.resizedBy).toBe(40);
+      columnResizerService.calculateResize(123);
+      expect(columnResizerService.resizedBy).toBe(123);
     });
 
     it('provides minimum column width if maximum resize range gets exceeded', function () {
       columnResizerService.startResize();
       expect(columnResizerService.resizedBy).toBe(0);
-      columnResizerService.calculateResize(mockExtDragEventExceededRange);
+      columnResizerService.calculateResize(-123);
       expect(columnResizerService.resizedBy).toBe(-columnResizerService.maxResizeRange);
       expect(columnResizerService.widthAfterResize).toBe(columnResizerService.minColumnWidth);
     });
@@ -87,9 +69,9 @@ export default function (): void {
     it('provides boolean value of whether resize is within maximum range or not', function () {
       columnResizerService.startResize();
       expect(columnResizerService.isWithinMaxResizeRange).toBeTrue();
-      columnResizerService.calculateResize(mockExtDragEventExceededRange);
+      columnResizerService.calculateResize(-123);
       expect(columnResizerService.isWithinMaxResizeRange).toBeFalse();
-      columnResizerService.calculateResize(mockExtDragEventWithinRange);
+      columnResizerService.calculateResize(123);
       expect(columnResizerService.isWithinMaxResizeRange).toBeTrue();
     });
 

@@ -127,7 +127,7 @@ export interface ClrCommonStrings {
   /**
    * Datagrid column resize handler string
    */
-  columnResizeHandlerAriaLabel?: string;
+  columnSeparatorDescription?: string;
   /**
    * Modal start of content
    */

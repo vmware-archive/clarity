@@ -17,7 +17,7 @@ import { ColumnResizerService } from './providers/column-resizer.service';
 import { TableSizeService } from './providers/table-size.service';
 import { MOCK_TABLE_SIZE_PROVIDER } from './providers/table-size.service.mock';
 import { DatagridRenderOrganizer } from './render/render-organizer';
-import { generateDragPosition } from '../../utils/drag-and-drop/helpers.spec';
+import { KeyCodes } from '../../utils/enums/key-codes.enum';
 
 @Component({
   template: `<clr-dg-column-separator></clr-dg-column-separator>`,
@@ -32,26 +32,13 @@ export default function (): void {
 
     let columnSeparatorDebugElement: DebugElement;
     let columnSeparatorComponent: ClrDatagridColumnSeparator;
-    let columnSeparatorElement: HTMLElement;
+    let resizeTrackerEl: HTMLElement;
+    let columnHandleEl: HTMLElement;
     let columnResizerService: ColumnResizerService;
     let tableSizeService: TableSizeService;
 
     let draggableDebugElement: DebugElement;
     let draggableDirective: ClrDraggable<any>;
-
-    // drag event within the max resize range:
-    const mockIntDragEventWithinRange = {
-      type: DragEventType.DRAG_MOVE,
-      dragPosition: generateDragPosition([10, 20], [50, 60]), // moveX will be (50 - 10);
-    };
-    const mockExtDragEventWithinRange = new ClrDragEvent(mockIntDragEventWithinRange);
-
-    // drag event that would exceed the max resize range:
-    const mockIntDragEventExceededRange = {
-      type: DragEventType.DRAG_MOVE,
-      dragPosition: generateDragPosition([10, 20], [-95, 60]), // moveX will be (-95 - 10);
-    };
-    const mockExtDragEventExceededRange = new ClrDragEvent(mockIntDragEventExceededRange);
 
     beforeEach(function () {
       TestBed.configureTestingModule({
@@ -67,7 +54,8 @@ export default function (): void {
       columnSeparatorDebugElement = fixture.debugElement.query(By.directive(ClrDatagridColumnSeparator));
 
       columnSeparatorComponent = columnSeparatorDebugElement.injector.get(ClrDatagridColumnSeparator);
-      columnSeparatorElement = columnSeparatorDebugElement.nativeElement;
+      resizeTrackerEl = fixture.nativeElement.querySelector('.datagrid-column-resize-tracker');
+      columnHandleEl = fixture.nativeElement.querySelector('.datagrid-column-handle');
       columnResizerService = columnSeparatorDebugElement.injector.get(ColumnResizerService);
       tableSizeService = columnSeparatorDebugElement.injector.get(TableSizeService);
 
@@ -81,161 +69,104 @@ export default function (): void {
       popoverContent.forEach(content => document.body.removeChild(content));
     });
 
-    it('calls showTracker() methods when resizing starts', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
+    it('has aria-label and aria-describedby attributes on its resize handle button', function () {
+      expect(draggableDebugElement.nativeElement.hasAttribute('aria-label')).toEqual(true);
+      expect(draggableDebugElement.nativeElement.hasAttribute('aria-describedby')).toEqual(true);
+    });
 
+    it('calls showTracker() methods when resizing starts', function () {
       spyOn(columnSeparatorComponent, 'showTracker');
       draggableDirective.dragStartEmitter.emit();
 
-      expect(columnSeparatorComponent.showTracker).toHaveBeenCalledWith(resizeTrackerEl);
+      expect(columnSeparatorComponent.showTracker).toHaveBeenCalled();
     });
 
-    it('shows trackerEl when resizing starts', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
-      columnSeparatorComponent.showTracker(resizeTrackerEl);
+    it('shows resize tracker when resizing starts', function () {
+      columnSeparatorComponent.showTracker();
       expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
     });
 
     it('calls moveTracker() methods when resizing starts', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       const moveEvent = new ClrDragEvent({
         type: DragEventType.DRAG_MOVE,
-        dragPosition: { pageX: 0, pageY: 0, moveX: 0, moveY: 0 },
+        dragPosition: { pageX: 0, pageY: 0, moveX: -123, moveY: 0 },
       });
 
       spyOn(columnSeparatorComponent, 'moveTracker');
 
       draggableDirective.dragMoveEmitter.emit(moveEvent);
-      expect(columnSeparatorComponent.moveTracker).toHaveBeenCalledWith(moveEvent, resizeTrackerEl);
+      expect(columnSeparatorComponent.moveTracker).toHaveBeenCalledWith(-123);
     });
 
-    it('moves trackerEl during resizing', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
-      columnSeparatorComponent.showTracker(resizeTrackerEl);
+    it('moves resize tracker during resizing', function () {
+      columnSeparatorComponent.showTracker();
       expect(resizeTrackerEl.style.transform).toBe('');
-      columnSeparatorComponent.moveTracker(mockExtDragEventWithinRange, resizeTrackerEl);
+      columnSeparatorComponent.moveTracker(-50);
       expect(resizeTrackerEl.style.transform).toBe(`translateX(${columnResizerService.resizedBy}px)`);
     });
 
     it('calls hideTracker() methods when resizing starts', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       spyOn(columnSeparatorComponent, 'hideTracker');
       draggableDirective.dragEndEmitter.emit();
-      expect(columnSeparatorComponent.hideTracker).toHaveBeenCalledWith(resizeTrackerEl);
+      expect(columnSeparatorComponent.hideTracker).toHaveBeenCalledWith();
     });
 
-    it('hides trackerEl when resizing ends', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
-      columnSeparatorComponent.showTracker(resizeTrackerEl);
-      columnSeparatorComponent.moveTracker(mockExtDragEventWithinRange, resizeTrackerEl);
-      columnSeparatorComponent.hideTracker(resizeTrackerEl);
+    it('hides resize tracker when resizing ends', function () {
+      columnSeparatorComponent.showTracker();
+      columnSeparatorComponent.moveTracker(-50);
+      columnSeparatorComponent.hideTracker();
       expect(resizeTrackerEl.style.display).toBe('none');
       expect(resizeTrackerEl.style.transform).toBe('translateX(0px)');
     });
 
-    it('redflags trackerEl if resizing exceeds max range', function () {
-      const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
-      columnSeparatorComponent.showTracker(resizeTrackerEl);
+    it('redflags resize tracker if resizing exceeds max range', function () {
+      columnSeparatorComponent.showTracker();
       columnResizerService.isWithinMaxResizeRange = false;
-      columnSeparatorComponent.moveTracker(mockExtDragEventExceededRange, resizeTrackerEl);
+      columnSeparatorComponent.moveTracker(-123);
       expect(resizeTrackerEl.classList.contains('exceeded-max')).toBeTrue();
       columnResizerService.isWithinMaxResizeRange = true;
-      columnSeparatorComponent.moveTracker(mockExtDragEventWithinRange, resizeTrackerEl);
+      columnSeparatorComponent.moveTracker(123);
       expect(resizeTrackerEl.classList.contains('exceeded-max')).toBeFalse();
     });
 
-    describe('Datagrids column resizer', function() {
-      let showTrackerSpyCallCount = 0;
-      let moveTrackerSpyCallCount = 0;
-      let showTrackerSpy;
-      let moveTrackerSpy;
+    it('shows resize tracker on first arrow right key down event', function () {
+      expect(resizeTrackerEl.style.height).toBe('');
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+      expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
+    });
 
-      it('the column handle has aria-label and aria-describedby attributes', function() {
-        expect(draggableDebugElement.nativeElement.hasAttribute('aria-label')).toEqual(true);
-        expect(draggableDebugElement.nativeElement.hasAttribute('aria-describedby')).toEqual(true);
-      });
+    it('shows resize tracker on first arrow left key down event', function () {
+      expect(resizeTrackerEl.style.height).toBe('');
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+      expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
+    });
 
-      describe('when left arrow key is pressed', function() {
-        beforeEach(function() {
-          showTrackerSpy = spyOn(columnSeparatorComponent, 'showTracker');
-          moveTrackerSpy = spyOn(columnSeparatorComponent, 'moveTracker');
-          showTrackerSpyCallCount = showTrackerSpy.calls.count();
-          moveTrackerSpyCallCount = moveTrackerSpy.calls.count();
+    it('moves resize tracker on horizontal arrow key down events', function () {
+      expect(resizeTrackerEl.style.transform).toBe('');
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+      expect(resizeTrackerEl.style.transform).toBe('translateX(-36px)');
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+      expect(resizeTrackerEl.style.transform).toBe('translateX(-12px)');
+    });
 
-          draggableDebugElement.triggerEventHandler('keydown', {
-            code: 'ArrowLeft',
-          });
+    it('hides resize tracker on horizontal arrow key up events', function () {
+      expect(resizeTrackerEl.style.height).toBe('');
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowRight }));
+      expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keyup', { key: KeyCodes.ArrowRight }));
+      expect(resizeTrackerEl.style.display).toBe('none');
+      expect(resizeTrackerEl.style.transform).toBe('translateX(0px)');
+    });
 
-          fixture.detectChanges();
-        });
-
-        it('then tracker is shown is called', function() {
-          expect(showTrackerSpy.calls.count()).toEqual(showTrackerSpyCallCount + 1);
-        });
-
-        it('and handle is moved', function() {
-          expect(moveTrackerSpy.calls.count()).toEqual(moveTrackerSpyCallCount + 1);
-        });
-
-        describe('when the arrow key is released', function() {
-          let hideTrackerCallCount = 0;
-          let hideTrackerSpy;
-          beforeEach(function() {
-            hideTrackerSpy = spyOn(columnSeparatorComponent, 'hideTracker');
-            hideTrackerCallCount = hideTrackerSpy.calls.count();
-            draggableDebugElement.triggerEventHandler('keyup', {
-              code: 'ArrowLeft',
-            });
-
-            fixture.detectChanges();
-          });
-
-          it('the tracker is hidden', function() {
-            expect(hideTrackerSpy.calls.count()).toEqual(hideTrackerCallCount + 1);
-          });
-        });
-      });
-
-      describe('when right arrow key is pressed', function() {
-        beforeEach(function() {
-          showTrackerSpy = spyOn(columnSeparatorComponent, 'showTracker');
-          moveTrackerSpy = spyOn(columnSeparatorComponent, 'moveTracker');
-          showTrackerSpyCallCount = showTrackerSpy.calls.count();
-          moveTrackerSpyCallCount = moveTrackerSpy.calls.count();
-
-          draggableDebugElement.triggerEventHandler('keydown', {
-            code: 'ArrowRight',
-          });
-
-          fixture.detectChanges();
-        });
-
-        it('then tracker is shown is called', function() {
-          expect(showTrackerSpy.calls.count()).toEqual(showTrackerSpyCallCount + 1);
-        });
-
-        it('and handle is moved', function() {
-          expect(moveTrackerSpy.calls.count()).toEqual(moveTrackerSpyCallCount + 1);
-        });
-
-        describe('when the arrow key is released', function() {
-          let hideTrackerCallCount = 0;
-          let hideTrackerSpy;
-          beforeEach(function() {
-            hideTrackerSpy = spyOn(columnSeparatorComponent, 'hideTracker');
-            hideTrackerCallCount = hideTrackerSpy.calls.count();
-            draggableDebugElement.triggerEventHandler('keyup', {
-              code: 'ArrowRight',
-            });
-
-            fixture.detectChanges();
-          });
-
-          it('the tracker is hidden', function() {
-            expect(hideTrackerSpy.calls.count()).toEqual(hideTrackerCallCount + 1);
-          });
-        });
-      });
+    it('focuses column handle after arrow key up events', function () {
+      expect(document.activeElement).not.toBe(columnHandleEl);
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keydown', { key: KeyCodes.ArrowLeft }));
+      expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
+      columnHandleEl.dispatchEvent(new KeyboardEvent('keyup', { key: KeyCodes.ArrowRight }));
+      expect(document.activeElement).toBe(columnHandleEl);
     });
   });
 }

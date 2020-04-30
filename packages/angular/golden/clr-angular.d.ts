@@ -293,6 +293,8 @@ export interface ClrCommonStrings {
     allColumnsSelected: string;
     close: string;
     collapse: string;
+    columnSeparatorAriaLabel?: string;
+    columnSeparatorDescription?: string;
     current: string;
     currentPage: string;
     danger: string;
@@ -482,12 +484,16 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sort(reverse?: boolean): void;
 }
 
-export declare class ClrDatagridColumnSeparator {
+export declare class ClrDatagridColumnSeparator implements AfterViewInit, OnDestroy {
     columnSeparatorId: string;
-    constructor(columnResizerService: ColumnResizerService, renderer: Renderer2, tableSizeService: TableSizeService, document: any, columnSeparatorId: string);
-    hideTracker(resizeTrackerEl: HTMLElement): void;
-    moveTracker(event: ClrDragEvent<any>, resizeTrackerEl: HTMLElement): void;
-    showTracker(resizeTrackerEl: HTMLElement): void;
+    commonString: ClrCommonStringsService;
+    get descriptionId(): string;
+    constructor(columnResizerService: ColumnResizerService, renderer: Renderer2, ngZone: NgZone, tableSizeService: TableSizeService, commonString: ClrCommonStringsService, document: any, columnSeparatorId: string);
+    hideTracker(): void;
+    moveTracker(movedBy: number): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    showTracker(): void;
 }
 
 export declare class ClrDatagridColumnToggle {

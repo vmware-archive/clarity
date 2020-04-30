@@ -886,6 +886,7 @@
         }
 
         .datagrid-column-handle {
+          @include clr-no-styles-button();
           position: absolute;
           width: $clr_baselineRem_0_5 + $clr_baselineRem_1px;
           right: -1 * $clr_baselineRem_0_25;
@@ -893,7 +894,6 @@
           cursor: col-resize;
           height: calc(100% + #{$clr_baselineRem_0_5} - #{$clr-global-borderwidth});
           z-index: map-get($clr-layers, datagrid-header);
-          @include clr-no-styles-button();
         }
 
         .datagrid-column-resize-tracker {
@@ -912,6 +912,9 @@
           );
           transform: translateX(0px);
           cursor: col-resize;
+          &.on-arrow-key-resize {
+            transition: transform 0.2s ease-out;
+          }
         }
 
         .exceeded-max {

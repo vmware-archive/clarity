@@ -10,19 +10,19 @@ import { ClrIfDragged } from './if-dragged';
 import { DragEventListenerService } from './providers/drag-event-listener.service';
 import { MOCK_DRAG_EVENT_LISTENER_PROVIDER } from './providers/drag-event-listener.service.mock';
 
-export default function(): void {
-  describe('ClrIfDragged', function() {
-    describe('Without ClrDragEventListener', function() {
-      it('should throw an error with a message', function() {
+export default function (): void {
+  describe('ClrIfDragged', function () {
+    describe('Without ClrDragEventListener', function () {
+      it('should throw an error with a message', function () {
         TestBed.configureTestingModule({ declarations: [NoDragEventListener, ClrIfDragged] });
 
-        expect(function() {
+        expect(function () {
           this.fixture = TestBed.createComponent(NoDragEventListener);
         }).toThrowError('The *clrIfDragged directive can only be used inside of a clrDraggable directive.');
       });
     });
-    describe('With ClrDragEventListener', function() {
-      beforeEach(function() {
+    describe('With ClrDragEventListener', function () {
+      beforeEach(function () {
         TestBed.configureTestingModule({
           declarations: [IfDraggedTest, ClrIfDragged, MockVCRProvider],
           providers: [MOCK_DRAG_EVENT_LISTENER_PROVIDER],
@@ -35,15 +35,15 @@ export default function(): void {
         this.testElement = this.fixture.nativeElement;
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
       });
 
-      it('should not display anything on normal state', function() {
+      it('should not display anything on normal state', function () {
         expect(this.testElement.textContent.trim()).toBe('');
       });
 
-      it('should instantiate its template only during dragging', function() {
+      it('should instantiate its template only during dragging', function () {
         // on dragstart event
         this.dragEventListener.dragStarted.next();
         expect(this.testElement.textContent.trim()).toBe('Test');
@@ -54,7 +54,7 @@ export default function(): void {
       });
 
       // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-      xit('should create its view as sibling to parent', function() {
+      xit('should create its view as sibling to parent', function () {
         // on dragstart event
         this.dragEventListener.dragStarted.next();
         expect(this.testElement.textContent.trim()).toBe('Test');

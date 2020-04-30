@@ -12,35 +12,20 @@ export function DatagridSpec() {
       cy.visit('/datagrid/kitchen-sink');
 
       cy.visit('/datagrid/test-cases');
-      cy
-        .get('button.btn-outline-primary')
-        .first()
-        .click();
+      cy.get('button.btn-outline-primary').first().click();
 
       cy.visit('/datagrid/pagination');
 
-      cy
-        .get('button.pagination-last')
-        .first()
-        .click();
+      cy.get('button.pagination-last').first().click();
 
       cy.visit('/datagrid/selection');
       cy.wait(1000);
 
       cy.visit('/datagrid/detail');
 
-      cy
-        .get('#simple .datagrid-detail-caret-button')
-        .first()
-        .click();
-      cy
-        .get('#change-event .datagrid-detail-caret-button')
-        .first()
-        .click();
-      cy
-        .get('#two-way .datagrid-detail-caret-button')
-        .first()
-        .click();
+      cy.get('#simple .datagrid-detail-caret-button').first().click();
+      cy.get('#change-event .datagrid-detail-caret-button').first().click();
+      cy.get('#two-way .datagrid-detail-caret-button').first().click();
 
       cy.visit('/datagrid/responsive-footer');
 

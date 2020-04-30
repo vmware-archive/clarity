@@ -351,7 +351,10 @@ export class Selection<T = any> {
    */
   public lockItem(item: T, lock: boolean) {
     if (this.canItBeLocked()) {
-      const ref = this._items.trackBy(this._items.all.findIndex(maybe => maybe === item), item);
+      const ref = this._items.trackBy(
+        this._items.all.findIndex(maybe => maybe === item),
+        item
+      );
       if (lock === true) {
         // Add to lockedRef
         this.lockedRefs.push(ref);
@@ -371,7 +374,10 @@ export class Selection<T = any> {
      * into the array when there is no need for that.
      */
     if (this.canItBeLocked()) {
-      const ref = this._items.trackBy(this._items.all.findIndex(maybe => maybe === item), item);
+      const ref = this._items.trackBy(
+        this._items.all.findIndex(maybe => maybe === item),
+        item
+      );
       return this.lockedRefs.indexOf(ref) > -1;
     }
 

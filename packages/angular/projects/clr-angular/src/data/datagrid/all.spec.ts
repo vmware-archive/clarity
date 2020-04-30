@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -56,10 +56,10 @@ import WrappedColumnSpec from './wrapped-column.spec';
 import WrappedRowSpec from './wrapped-row.spec';
 import ColumnResizerServiceSpecs from './providers/column-resizer.service.spec';
 
-describe('Datagrid', function() {
+describe('Datagrid', function () {
   addHelpers();
 
-  describe('Providers', function() {
+  describe('Providers', function () {
     SortProviderSpecs();
     FiltersProviderSpecs();
     PageProviderSpecs();
@@ -69,7 +69,7 @@ describe('Datagrid', function() {
     TableSizeServiceSpec();
     ColumnResizerServiceSpecs();
   });
-  describe('Components', function() {
+  describe('Components', function () {
     DatagridActionBarSpecs();
     DatagridActionOverflowSpecs();
     DatagridCellSpecs();
@@ -93,7 +93,7 @@ describe('Datagrid', function() {
     WrappedColumnSpec();
     WrappedRowSpec();
   });
-  describe('Render', function() {
+  describe('Render', function () {
     DomAdapterSpecs();
     NoopDomAdapterSpecs();
     DatagridRenderOrganizerSpecs();
@@ -102,7 +102,7 @@ describe('Datagrid', function() {
     DatagridHeaderRendererSpecs();
     DatagridMainRendererSpecs();
   });
-  describe('Built-in', function() {
+  describe('Built-in', function () {
     NestedPropertySpecs();
     DatagridPropertyComparatorSpecs();
     DatagridPropertyStringFilterSpecs();

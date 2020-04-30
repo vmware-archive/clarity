@@ -131,21 +131,18 @@ describe('ClrStep Reactive Forms', () => {
       expect(fixture.nativeElement.querySelector('.clr-accordion-header-button').getAttribute('disabled')).toBe(null);
     });
 
-    it(
-      'should auto focus the step heading button when previous step next button was clicked',
-      fakeAsync(() => {
-        const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
-        const input = fixture.nativeElement.querySelector('.clr-accordion-header-button');
+    it('should auto focus the step heading button when previous step next button was clicked', fakeAsync(() => {
+      const stepperService = fixture.debugElement.query(By.directive(ClrStepperPanel)).injector.get(StepperService);
+      const input = fixture.nativeElement.querySelector('.clr-accordion-header-button');
 
-        spyOn(input, 'focus');
-        expect(input.focus).not.toHaveBeenCalled();
+      spyOn(input, 'focus');
+      expect(input.focus).not.toHaveBeenCalled();
 
-        (stepperService as MockStepperService).activeStep.next('groupName');
-        tick();
+      (stepperService as MockStepperService).activeStep.next('groupName');
+      tick();
 
-        expect(input.focus).toHaveBeenCalled();
-      })
-    );
+      expect(input.focus).toHaveBeenCalled();
+    }));
   });
 });
 

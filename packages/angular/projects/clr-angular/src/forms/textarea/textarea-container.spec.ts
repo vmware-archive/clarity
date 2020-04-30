@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,13 +13,13 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
 
 @Component({
   template: `
-  <clr-textarea-container>
-    <textarea name="test" clrTextarea required [(ngModel)]="model" [disabled]="disabled"></textarea>
-    <label>Hello World</label>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error>Must be at least 5 characters</clr-control-error>
-  </clr-textarea-container>
-    `,
+    <clr-textarea-container>
+      <textarea name="test" clrTextarea required [(ngModel)]="model" [disabled]="disabled"></textarea>
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-textarea-container>
+  `,
 })
 class SimpleTest {
   disabled = false;
@@ -27,16 +27,14 @@ class SimpleTest {
 }
 
 @Component({
-  template: `
-  <clr-textarea-container>
+  template: ` <clr-textarea-container>
     <textarea clrTextarea [(ngModel)]="model"></textarea>
   </clr-textarea-container>`,
 })
 class NoLabelTest {}
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-textarea-container>
       <textarea name="test" clrTextarea formControlName="model"></textarea>
       <label>Hello World</label>
@@ -52,7 +50,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrTextareaContainer', () => {
     ContainerNoLabelSpec(ClrTextareaContainer, ClrTextarea, NoLabelTest);
     TemplateDrivenSpec(ClrTextareaContainer, ClrTextarea, SimpleTest, '.clr-textarea-wrapper [clrTextarea]');

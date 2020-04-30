@@ -17,9 +17,7 @@ import { DummyAnchor } from './dummy-anchor';
 @Component({
   selector: 'clr-dummy-menu',
   styleUrls: ['./popovers.demo.scss'],
-  template: `
-        <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: { '[class.dummy-menu]': 'true' },
 })
 export class DummyMenu extends AbstractPopover {

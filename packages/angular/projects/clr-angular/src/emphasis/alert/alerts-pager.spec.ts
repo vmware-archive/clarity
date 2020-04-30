@@ -13,9 +13,9 @@ import { ClrAlertsPager } from './alerts-pager';
 import { MultiAlertService } from './providers/multi-alert.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
-export default function() {
-  describe('ClrAlerts pager component', function() {
-    describe('Typescript API', function() {
+export default function () {
+  describe('ClrAlerts pager component', function () {
+    describe('Typescript API', function () {
       let component: ClrAlertsPager;
       let service: MultiAlertService;
 
@@ -29,7 +29,7 @@ export default function() {
         component = null;
       });
 
-      it('page up calls the multi alert service', function() {
+      it('page up calls the multi alert service', function () {
         spyOn(service, 'next').and.callFake(() => {
           // Do nothing
         });
@@ -37,7 +37,7 @@ export default function() {
         expect(service.next).toHaveBeenCalled();
       });
 
-      it('page down calls the multi alert service', function() {
+      it('page down calls the multi alert service', function () {
         spyOn(service, 'previous').and.callFake(() => {
           // Do nothingno
         });
@@ -46,8 +46,8 @@ export default function() {
       });
     });
 
-    describe('Template API', function() {
-      beforeEach(function() {
+    describe('Template API', function () {
+      beforeEach(function () {
         const service = new MultiAlertService();
         const queryList = new QueryList<ClrAlert>();
 
@@ -71,13 +71,13 @@ export default function() {
         };
       });
 
-      afterEach(function() {
+      afterEach(function () {
         this.fixture.destroy();
         this.alertFixture.destroy();
         this.secondAlertFixture.destroy();
       });
 
-      it('offers two way binding on the alert index', function() {
+      it('offers two way binding on the alert index', function () {
         this.create(TestIndex);
         this.fixture.componentInstance.index = 1;
         this.fixture.detectChanges();
@@ -88,7 +88,7 @@ export default function() {
         expect(this.fixture.componentInstance.index).toEqual(0);
       });
 
-      it('offers two way binding on the alert instance', function() {
+      it('offers two way binding on the alert instance', function () {
         this.create(TestInstance);
         this.fixture.componentInstance.currentAlert = this.secondAlert;
         this.fixture.detectChanges();

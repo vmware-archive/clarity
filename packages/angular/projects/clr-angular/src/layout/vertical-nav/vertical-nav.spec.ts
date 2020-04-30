@@ -16,7 +16,7 @@ import { ClrVerticalNav } from './vertical-nav';
 import { ClrVerticalNavModule } from './vertical-nav.module';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
-export default function(): void {
+export default function (): void {
   describe('Vertical Nav', () => {
     let fixture: ComponentFixture<any>;
     let compiled: HTMLElement;
@@ -502,30 +502,27 @@ export default function(): void {
         expect(vertNavService.collapsed).toBe(true);
       });
 
-      it(
-        'emits the collapsed state',
-        fakeAsync(function() {
-          expect(fixture.componentInstance.collapsedChange).toBeUndefined();
-          vertNavService.collapsible = true;
+      it('emits the collapsed state', fakeAsync(function () {
+        expect(fixture.componentInstance.collapsedChange).toBeUndefined();
+        vertNavService.collapsible = true;
 
-          fixture.detectChanges();
+        fixture.detectChanges();
 
-          const trigger: HTMLElement = compiled.querySelector('.nav-trigger');
-          trigger.click();
+        const trigger: HTMLElement = compiled.querySelector('.nav-trigger');
+        trigger.click();
 
-          fixture.detectChanges();
-          tick();
+        fixture.detectChanges();
+        tick();
 
-          expect(fixture.componentInstance.collapsedChange).toBe(true);
+        expect(fixture.componentInstance.collapsedChange).toBe(true);
 
-          trigger.click();
+        trigger.click();
 
-          fixture.detectChanges();
-          tick();
+        fixture.detectChanges();
+        tick();
 
-          expect(fixture.componentInstance.collapsedChange).toBe(false);
-        })
-      );
+        expect(fixture.componentInstance.collapsedChange).toBe(false);
+      }));
     });
 
     describe('Accessibility', () => {
@@ -565,14 +562,14 @@ export default function(): void {
 
 @Component({
   template: `
-        <div class="main-container">
-            <clr-vertical-nav>
-                <a href="#" clrVerticalNavLink>
-                    Link
-                </a>
-            </clr-vertical-nav>
-        </div>
-    `,
+    <div class="main-container">
+      <clr-vertical-nav>
+        <a href="#" clrVerticalNavLink>
+          Link
+        </a>
+      </clr-vertical-nav>
+    </div>
+  `,
 })
 class NoIconsNoNavGroupTestComponent {
   collapsible = false;
@@ -580,62 +577,62 @@ class NoIconsNoNavGroupTestComponent {
 
 @Component({
   template: `
-        <clr-vertical-nav>
-            <a href="#" clrVerticalNavLink>
-                <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
-                Link
-            </a>
-        </clr-vertical-nav>
-    `,
+    <clr-vertical-nav>
+      <a href="#" clrVerticalNavLink>
+        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
+        Link
+      </a>
+    </clr-vertical-nav>
+  `,
 })
 class IconsButNoNavGroupTestComponent {}
 
 @Component({
   template: `
-        <div class="main-container">
-            <clr-vertical-nav>
-                <clr-vertical-nav-group>
-                    <a href="#" clrVerticalNavLink>
-                        Link
-                    </a>
-                </clr-vertical-nav-group>
-            </clr-vertical-nav>
-        </div>
-    `,
+    <div class="main-container">
+      <clr-vertical-nav>
+        <clr-vertical-nav-group>
+          <a href="#" clrVerticalNavLink>
+            Link
+          </a>
+        </clr-vertical-nav-group>
+      </clr-vertical-nav>
+    </div>
+  `,
 })
 class OnlyNavGroupTestComponent {}
 
 @Component({
   template: `
-        <clr-vertical-nav>
-            <clr-vertical-nav-group>
-                <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
-                Group
-                <a href="#" clrVerticalNavLink>
-                    Link
-                </a>
-            </clr-vertical-nav-group>
-        </clr-vertical-nav>
-    `,
+    <clr-vertical-nav>
+      <clr-vertical-nav-group>
+        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
+        Group
+        <a href="#" clrVerticalNavLink>
+          Link
+        </a>
+      </clr-vertical-nav-group>
+    </clr-vertical-nav>
+  `,
 })
 class IconsAndNavGroupTestComponent {}
 
 @Component({
   template: `
-        <clr-vertical-nav #nav>
-            <clr-vertical-nav-group *ngIf="groupToggle">
-                <clr-icon clrVerticalNavIcon></clr-icon>
-                Group
-                <a href="#" clrVerticalNavLink>
-                    Text
-                </a>
-            </clr-vertical-nav-group>
-            <a href="#" clrVerticalNavLink *ngIf="iconToggle">
-                <clr-icon clrVerticalNavIcon></clr-icon>
-                Text
-            </a>
-        </clr-vertical-nav>
-    `,
+    <clr-vertical-nav #nav>
+      <clr-vertical-nav-group *ngIf="groupToggle">
+        <clr-icon clrVerticalNavIcon></clr-icon>
+        Group
+        <a href="#" clrVerticalNavLink>
+          Text
+        </a>
+      </clr-vertical-nav-group>
+      <a href="#" clrVerticalNavLink *ngIf="iconToggle">
+        <clr-icon clrVerticalNavIcon></clr-icon>
+        Text
+      </a>
+    </clr-vertical-nav>
+  `,
 })
 class ViewBasicsTestComponent {
   @ViewChild('nav') nav: ClrVerticalNav;
@@ -646,12 +643,14 @@ class ViewBasicsTestComponent {
 
 @Component({
   template: `
-        <clr-vertical-nav #nav
-                          [clrVerticalNavCollapsible]="collapsible"
-                          [clrVerticalNavCollapsed]="collapsed"
-                          (clrVerticalNavCollapsedChange)="updateCollapsed($event)">
-        </clr-vertical-nav>
-    `,
+    <clr-vertical-nav
+      #nav
+      [clrVerticalNavCollapsible]="collapsible"
+      [clrVerticalNavCollapsed]="collapsed"
+      (clrVerticalNavCollapsedChange)="updateCollapsed($event)"
+    >
+    </clr-vertical-nav>
+  `,
 })
 class APITestComponent {
   collapsible = false;
@@ -667,20 +666,17 @@ class APITestComponent {
 
 @Component({
   template: `
-        <div
-            class="main-container"
-            [class.open-overflow-menu]="overflowMenu"
-            [class.open-hamburger-menu]="hamburgerMenu">
-            <clr-vertical-nav>
-                <clr-vertical-nav-group>
-                    <a href="#" clrVerticalNavLink>
-                        Link
-                    </a>
-                </clr-vertical-nav-group>
-                <a href="#" clrVerticalNavLink></a>
-            </clr-vertical-nav>
-        </div>
-    `,
+    <div class="main-container" [class.open-overflow-menu]="overflowMenu" [class.open-hamburger-menu]="hamburgerMenu">
+      <clr-vertical-nav>
+        <clr-vertical-nav-group>
+          <a href="#" clrVerticalNavLink>
+            Link
+          </a>
+        </clr-vertical-nav-group>
+        <a href="#" clrVerticalNavLink></a>
+      </clr-vertical-nav>
+    </div>
+  `,
 })
 class ResponsiveVerticalNavTestComponent {
   overflowMenu = false;

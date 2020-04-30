@@ -18,9 +18,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'test-host',
-  template: `
-      <button #anchor class="btn">Anchor</button>
-  `,
+  template: ` <button #anchor class="btn">Anchor</button> `,
   providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 class TestHost {
@@ -34,9 +32,9 @@ interface TestContext {
   positionService: ClrPopoverPositionService;
 }
 
-export default function(): void {
-  describe('ClrPopoverPositionService', function() {
-    beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('ClrPopoverPositionService', function () {
+    beforeEach(function (this: TestContext) {
       TestBed.configureTestingModule({
         declarations: [TestHost],
         providers: [ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
@@ -47,7 +45,7 @@ export default function(): void {
     });
 
     describe('API', () => {
-      it('sets a position for the popover complex', function(this: TestContext) {
+      it('sets a position for the popover complex', function (this: TestContext) {
         const testPosition: ClrPopoverPosition = {
           anchor: null,
           content: null,
@@ -59,7 +57,7 @@ export default function(): void {
         expect(this.positionService.position).toBe(testPosition);
       });
 
-      describe('handles content alignment', function(this: TestContext) {
+      describe('handles content alignment', function (this: TestContext) {
         // let anchor: HTMLButtonElement;
         let handleVerticalAxisOneViolationSpy: jasmine.Spy;
         let handleHorizontalAxisOneViolationSpy: jasmine.Spy;
@@ -67,7 +65,7 @@ export default function(): void {
         let handleHorizontalAxisTwoViolationsSpy: jasmine.Spy;
         let popoverContent: HTMLDivElement;
 
-        beforeEach(function(this: TestContext) {
+        beforeEach(function (this: TestContext) {
           this.eventService.anchorButtonRef = this.fixture.componentInstance.anchor;
 
           handleVerticalAxisOneViolationSpy = spyOn(this.positionService as any, 'handleVerticalAxisOneViolation');
@@ -81,11 +79,11 @@ export default function(): void {
           popoverContent = document.createElement('div');
         });
 
-        afterEach(function(this: TestContext) {
+        afterEach(function (this: TestContext) {
           document.body.removeChild(popoverContent);
         });
 
-        it('and aligns content when visibility is 🆗', function(this: TestContext) {
+        it('and aligns content when visibility is 🆗', function (this: TestContext) {
           const goodPosition: ClrPopoverPosition = {
             anchor: ClrAlignment.END,
             axis: ClrAxis.HORIZONTAL,
@@ -104,7 +102,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when ClrAxis is HORIZONTAL and there is a BOTTOM ViewportViolation', function(this: TestContext) {
+        it('and aligns content when ClrAxis is HORIZONTAL and there is a BOTTOM ViewportViolation', function (this: TestContext) {
           // Test a BOTTOM ViewportViolation
           const bottomViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
@@ -124,7 +122,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when ClrAxis is HORIZONTAL and there is LEFT ViewportViolation', function(this: TestContext) {
+        it('and aligns content when ClrAxis is HORIZONTAL and there is LEFT ViewportViolation', function (this: TestContext) {
           const leftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
@@ -143,7 +141,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when ClrAxis is HORIZONTAL and there is a RIGHT ViewportViolation', function(this: TestContext) {
+        it('and aligns content when ClrAxis is HORIZONTAL and there is a RIGHT ViewportViolation', function (this: TestContext) {
           // // Test a right violation
           const rightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
@@ -162,7 +160,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when ClrAxis is HORIZONTAL and there is a TOP ViewportViolation', function(this: TestContext) {
+        it('and aligns content when ClrAxis is HORIZONTAL and there is a TOP ViewportViolation', function (this: TestContext) {
           // Test a TOP ViewportViolation
           const topViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
@@ -182,7 +180,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when ClrAxis is VERTICAL and there is a BOTTOM ViewportViolation', function(this: TestContext) {
+        it('and aligns content when ClrAxis is VERTICAL and there is a BOTTOM ViewportViolation', function (this: TestContext) {
           // Test a BOTTOM violataion
           const bottomViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
@@ -202,7 +200,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there is a LEFT ViewportViolation', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there is a LEFT ViewportViolation', function (this: TestContext) {
           const leftViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
@@ -220,7 +218,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there is a RIGHT ViewportViolation', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there is a RIGHT ViewportViolation', function (this: TestContext) {
           const rightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
@@ -238,7 +236,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there are TOP/LEFT ViewportViolation', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there are TOP/LEFT ViewportViolation', function (this: TestContext) {
           const topRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
@@ -258,7 +256,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there are TOP/RIGHT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there are TOP/RIGHT ViewportViolations', function (this: TestContext) {
           const topCenterViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.BEFORE,
@@ -278,7 +276,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there are BOTTOM/LEFT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there are BOTTOM/LEFT ViewportViolations', function (this: TestContext) {
           const bottomLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
@@ -298,7 +296,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is VERTICAL and there are BOTTOM/RIGHT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is VERTICAL and there are BOTTOM/RIGHT ViewportViolations', function (this: TestContext) {
           const bottomRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.VERTICAL,
             side: ClrSide.AFTER,
@@ -318,7 +316,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy).not.toHaveBeenCalled();
         });
 
-        it('and aligns content when Axis is HORIZONTAL and there are TOP/LEFT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is HORIZONTAL and there are TOP/LEFT ViewportViolations', function (this: TestContext) {
           const topLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
@@ -338,7 +336,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy.calls.count()).toEqual(1);
         });
 
-        it('and aligns content when Axis is HORIZONTAL and there are TOP/RIGHT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is HORIZONTAL and there are TOP/RIGHT ViewportViolations', function (this: TestContext) {
           const topRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
@@ -358,7 +356,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy.calls.count()).toEqual(1);
         });
 
-        it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/LEFT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/LEFT ViewportViolations', function (this: TestContext) {
           const bottomLeftViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.BEFORE,
@@ -378,7 +376,7 @@ export default function(): void {
           expect(handleHorizontalAxisTwoViolationsSpy.calls.count()).toEqual(1);
         });
 
-        it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/RIGHT ViewportViolations', function(this: TestContext) {
+        it('and aligns content when Axis is HORIZONTAL and there are BOTTOM/RIGHT ViewportViolations', function (this: TestContext) {
           const bottomRightViolation: ClrPopoverPosition = {
             axis: ClrAxis.HORIZONTAL,
             side: ClrSide.AFTER,
@@ -399,22 +397,22 @@ export default function(): void {
         });
       });
 
-      describe('handles content realignment', function(this: TestContext) {
+      describe('handles content realignment', function (this: TestContext) {
         let called: boolean;
         let subscription: Subscription;
         const realignHandler = () => (called = true);
 
-        beforeEach(function(this: TestContext) {
+        beforeEach(function (this: TestContext) {
           called = false;
           subscription = this.positionService.shouldRealign.subscribe(realignHandler);
           this.fixture.detectChanges();
         });
 
-        it('and does not force initial realignment', function(this: TestContext) {
+        it('and does not force initial realignment', function (this: TestContext) {
           expect(called).toBeFalse();
         });
 
-        it('and flags the popover for realignment after realign() is called', function(this: TestContext) {
+        it('and flags the popover for realignment after realign() is called', function (this: TestContext) {
           this.positionService.realign();
           this.fixture.detectChanges();
           expect(called).toBeTrue();

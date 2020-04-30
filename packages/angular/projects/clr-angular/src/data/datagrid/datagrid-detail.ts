@@ -16,13 +16,20 @@ import { ClrDatagridDetailHeader } from './datagrid-detail-header';
   // We put the *ngIf on the clrFocusTrap so it doesn't always exist on the page
   // have to test for presence of header for aria-describedby because it was causing unit tests to crash
   template: `
-    <div [clrFocusTrap]="{strict: false}" class="datagrid-detail-pane-content" *ngIf="detailService.isOpen" role="dialog"
-         [id]="detailService.id" aria-modal="true" [attr.aria-describedby]="header ? header.titleId : ''">
-    <div class="clr-sr-only">{{commonStrings.keys.detailPaneStart}}</div>
+    <div
+      [clrFocusTrap]="{ strict: false }"
+      class="datagrid-detail-pane-content"
+      *ngIf="detailService.isOpen"
+      role="dialog"
+      [id]="detailService.id"
+      aria-modal="true"
+      [attr.aria-describedby]="header ? header.titleId : ''"
+    >
+      <div class="clr-sr-only">{{ commonStrings.keys.detailPaneStart }}</div>
       <ng-content></ng-content>
-      <div class="clr-sr-only">{{commonStrings.keys.detailPaneEnd}}</div>
+      <div class="clr-sr-only">{{ commonStrings.keys.detailPaneEnd }}</div>
     </div>
-    `,
+  `,
 })
 export class ClrDatagridDetail {
   @ContentChild(ClrDatagridDetailHeader) public header: ClrDatagridDetailHeader;

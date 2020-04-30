@@ -24,16 +24,16 @@ class TestComponent {
   hasChild = false;
 }
 
-export default function(): void {
-  describe('ClrTree Component', function() {
+export default function (): void {
+  describe('ClrTree Component', function () {
     type Context = TestContext<ClrTree<void>, TestComponent>;
     spec(ClrTree, TestComponent, ClrTreeViewModule, { imports: [NoopAnimationsModule] });
 
-    it('declares a TreeFeaturesService provider', function(this: Context) {
+    it('declares a TreeFeaturesService provider', function (this: Context) {
       expect(this.getClarityProvider(TreeFeaturesService, null)).not.toBeNull();
     });
 
-    it('accepts a [clrLazy] input and forwards it to the TreeFeaturesService', function(this: Context) {
+    it('accepts a [clrLazy] input and forwards it to the TreeFeaturesService', function (this: Context) {
       const featuresService = this.getClarityProvider(TreeFeaturesService);
       expect(featuresService.eager).toBe(true);
       this.hostComponent.lazy = true;
@@ -41,11 +41,11 @@ export default function(): void {
       expect(featuresService.eager).toBe(false);
     });
 
-    it('projects content', function(this: Context) {
+    it('projects content', function (this: Context) {
       expect(this.clarityElement.textContent).toContain('Hello world');
     });
 
-    it('adds the aria-multiselectable if tree is selectable and has children', function(this: Context) {
+    it('adds the aria-multiselectable if tree is selectable and has children', function (this: Context) {
       expect(this.clarityElement.getAttribute('aria-multiselectable')).toBe('false');
       this.getClarityProvider(TreeFeaturesService).selectable = true;
       this.hostComponent.hasChild = true;
@@ -53,7 +53,7 @@ export default function(): void {
       expect(this.clarityElement.getAttribute('aria-multiselectable')).toBe('true');
     });
 
-    it('creates a clr-recursive-children component if the tree is recursive', function(this: Context) {
+    it('creates a clr-recursive-children component if the tree is recursive', function (this: Context) {
       expect(this.fixture.debugElement.query(By.directive(RecursiveChildren))).toBeFalsy();
       // Using an empty tree and checking reference equality because I don't want to create full models for this.
       const emptyTree = [];
@@ -67,18 +67,18 @@ export default function(): void {
       expect((recursiveChildrenDE.componentInstance as RecursiveChildren<void>).children).toBe(emptyTree);
     });
 
-    it('gets tree role by default', function(this: Context) {
+    it('gets tree role by default', function (this: Context) {
       expect(this.clarityElement.getAttribute('role')).toBe('tree');
     });
 
-    it('calls focusManager.focusFirstVisibleNode when focus is received', function(this: Context) {
+    it('calls focusManager.focusFirstVisibleNode when focus is received', function (this: Context) {
       const focusManager = this.getClarityProvider(TreeFocusManagerService);
       spyOn(focusManager, 'focusFirstVisibleNode');
       this.clarityElement.focus();
       expect(focusManager.focusFirstVisibleNode).toHaveBeenCalled();
     });
 
-    it('removes tabindex once focus is shifted to the first visiible child', function(this: Context) {
+    it('removes tabindex once focus is shifted to the first visiible child', function (this: Context) {
       expect(this.clarityDirective.tabindex).toBe(0);
       this.clarityElement.focus();
       expect(this.clarityDirective.tabindex).toBeUndefined();

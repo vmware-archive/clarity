@@ -11,8 +11,8 @@ import { DetailService } from './providers/detail.service';
 
 const content = 'Detail Pane';
 
-export default function(): void {
-  describe('ClrIfDetail Directive', function() {
+export default function (): void {
+  describe('ClrIfDetail Directive', function () {
     let fixture, testElement;
     let detailService: DetailService;
     let testComponent: IfDetailTest;

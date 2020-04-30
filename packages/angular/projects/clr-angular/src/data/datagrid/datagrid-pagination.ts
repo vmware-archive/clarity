@@ -23,32 +23,32 @@ import { DetailService } from './providers/detail.service';
 @Component({
   selector: 'clr-dg-pagination',
   template: `
-  <ng-container *ngIf="!detailService.isOpen">
-    <div class="pagination-size" *ngIf="_pageSizeComponent">
-      <ng-content select="clr-dg-page-size"></ng-content>
-    </div>
-    <div class="pagination-description">
-      <ng-content></ng-content>
-    </div>
-    <div class="pagination-list" *ngIf="page.last > 1">
-      <button
-        type="button"
-        class="pagination-first"
-        [disabled]="page.current <= 1"
-        (click)="page.current = 1"
-        [attr.aria-label]="commonStrings.keys.firstPage"
+    <ng-container *ngIf="!detailService.isOpen">
+      <div class="pagination-size" *ngIf="_pageSizeComponent">
+        <ng-content select="clr-dg-page-size"></ng-content>
+      </div>
+      <div class="pagination-description">
+        <ng-content></ng-content>
+      </div>
+      <div class="pagination-list" *ngIf="page.last > 1">
+        <button
+          type="button"
+          class="pagination-first"
+          [disabled]="page.current <= 1"
+          (click)="page.current = 1"
+          [attr.aria-label]="commonStrings.keys.firstPage"
         >
-        <clr-icon shape="step-forward-2 down"></clr-icon>
-      </button>
-      <button
-        type="button"
-        class="pagination-previous"
-        [disabled]="page.current <= 1"
-        (click)="page.current = page.current - 1"
-        [attr.aria-label]="commonStrings.keys.previousPage"
+          <clr-icon shape="step-forward-2 down"></clr-icon>
+        </button>
+        <button
+          type="button"
+          class="pagination-previous"
+          [disabled]="page.current <= 1"
+          (click)="page.current = page.current - 1"
+          [attr.aria-label]="commonStrings.keys.previousPage"
         >
-        <clr-icon shape="angle left"></clr-icon>
-      </button>
+          <clr-icon shape="angle left"></clr-icon>
+        </button>
         <input
           *ngIf="!disableCurrentPageInput; else readOnly"
           #currentPageInput
@@ -59,59 +59,58 @@ import { DetailService } from './providers/detail.service';
           (keydown.enter)="updateCurrentPage($event)"
           (blur)="updateCurrentPage($event)"
           [attr.aria-label]="commonStrings.keys.currentPage"
-          />
-          <ng-template #readOnly>
-            <span>{{ page.current }}</span>
-          </ng-template>
+        />
+        <ng-template #readOnly>
+          <span>{{ page.current }}</span>
+        </ng-template>
 
-          &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{page.last}}</span>
-      <button
-        type="button"
-        class="pagination-next"
-        [disabled]="page.current >= page.last"
-        (click)="page.current = page.current + 1"
-        [attr.aria-label]="commonStrings.keys.nextPage"
+        &nbsp;/&nbsp;<span [attr.aria-label]="commonStrings.keys.totalPages">{{ page.last }}</span>
+        <button
+          type="button"
+          class="pagination-next"
+          [disabled]="page.current >= page.last"
+          (click)="page.current = page.current + 1"
+          [attr.aria-label]="commonStrings.keys.nextPage"
         >
-        <clr-icon shape="angle right"></clr-icon>
-      </button>
-      <button
-        type="button"
-        class="pagination-last"
-        [disabled]="page.current >= page.last"
-        (click)="page.current = page.last"
-        [attr.aria-label]="commonStrings.keys.lastPage"
+          <clr-icon shape="angle right"></clr-icon>
+        </button>
+        <button
+          type="button"
+          class="pagination-last"
+          [disabled]="page.current >= page.last"
+          (click)="page.current = page.last"
+          [attr.aria-label]="commonStrings.keys.lastPage"
         >
-        <clr-icon shape="step-forward-2 up"></clr-icon>
-      </button>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="detailService.isOpen">
+          <clr-icon shape="step-forward-2 up"></clr-icon>
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="detailService.isOpen">
       <div class="pagination-description-compact">
-          {{page.firstItem + 1}}-{{page.lastItem + 1}} / {{page.totalItems}}
+        {{ page.firstItem + 1 }}-{{ page.lastItem + 1 }} / {{ page.totalItems }}
       </div>
       <div class="pagination-list">
-          <button
-                  type="button"
-                  class="pagination-previous"
-                  [disabled]="page.current <= 1"
-                  (click)="page.current = page.current - 1"
-                  [attr.aria-label]="commonStrings.keys.previousPage"
-          >
-              <clr-icon shape="angle left"></clr-icon>
-          </button>
-          <span>{{page.current}}</span>
-          <button
-                  type="button"
-                  class="pagination-next"
-                  [disabled]="page.current >= page.last"
-                  (click)="page.current = page.current + 1"
-                  [attr.aria-label]="commonStrings.keys.nextPage"
-          >
-              <clr-icon shape="angle right"></clr-icon>
-          </button>
+        <button
+          type="button"
+          class="pagination-previous"
+          [disabled]="page.current <= 1"
+          (click)="page.current = page.current - 1"
+          [attr.aria-label]="commonStrings.keys.previousPage"
+        >
+          <clr-icon shape="angle left"></clr-icon>
+        </button>
+        <span>{{ page.current }}</span>
+        <button
+          type="button"
+          class="pagination-next"
+          [disabled]="page.current >= page.last"
+          (click)="page.current = page.current + 1"
+          [attr.aria-label]="commonStrings.keys.nextPage"
+        >
+          <clr-icon shape="angle right"></clr-icon>
+        </button>
       </div>
-  </ng-container>
-
+    </ng-container>
   `,
   host: { '[class.pagination]': 'true' },
 })

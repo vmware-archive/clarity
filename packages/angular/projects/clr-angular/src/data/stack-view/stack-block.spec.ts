@@ -14,7 +14,11 @@ import { ClrStackViewModule } from './stack-view.module';
 
 @Component({
   template: `
-    <clr-stack-block [clrStackViewLevel]="ariaLevel" [clrStackViewSetsize]="ariaSetsize" [clrStackViewPosinset]="ariaPosinset">
+    <clr-stack-block
+      [clrStackViewLevel]="ariaLevel"
+      [clrStackViewSetsize]="ariaSetsize"
+      [clrStackViewPosinset]="ariaPosinset"
+    >
       <clr-stack-label>Label</clr-stack-label>
       <clr-stack-content>Content</clr-stack-content>
     </clr-stack-block>
@@ -29,19 +33,19 @@ class BasicBlock {
 
 @Component({
   template: `
-        <clr-stack-block #main>
-            <clr-stack-label>Label</clr-stack-label>
-            <clr-stack-content>Content</clr-stack-content>
-            <clr-stack-block>
-                <clr-stack-label>Sub-Label 1</clr-stack-label>
-                <clr-stack-content>Sub-Content 1</clr-stack-content>
-            </clr-stack-block>
-            <clr-stack-block>
-                <clr-stack-label>Sub-Label 2</clr-stack-label>
-                <clr-stack-content>Sub-Content 2</clr-stack-content>
-            </clr-stack-block>
-        </clr-stack-block>
-   `,
+    <clr-stack-block #main>
+      <clr-stack-label>Label</clr-stack-label>
+      <clr-stack-content>Content</clr-stack-content>
+      <clr-stack-block>
+        <clr-stack-label>Sub-Label 1</clr-stack-label>
+        <clr-stack-content>Sub-Content 1</clr-stack-content>
+      </clr-stack-block>
+      <clr-stack-block>
+        <clr-stack-label>Sub-Label 2</clr-stack-label>
+        <clr-stack-content>Sub-Content 2</clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-block>
+  `,
 })
 class NestedBlocks {
   @ViewChild('main') blockInstance: ClrStackBlock;
@@ -49,11 +53,11 @@ class NestedBlocks {
 
 @Component({
   template: `
-        <clr-stack-block [clrSbExpandable]="true" [(clrSbExpanded)]="expanded">
-            <clr-stack-label id="STACK_LABEL_ID">Label</clr-stack-label>
-            <clr-stack-content>Content</clr-stack-content>
-        </clr-stack-block>
-   `,
+    <clr-stack-block [clrSbExpandable]="true" [(clrSbExpanded)]="expanded">
+      <clr-stack-label id="STACK_LABEL_ID">Label</clr-stack-label>
+      <clr-stack-content>Content</clr-stack-content>
+    </clr-stack-block>
+  `,
 })
 class DynamicBlock {
   @ViewChild(ClrStackBlock) blockInstance: ClrStackBlock;
@@ -61,7 +65,7 @@ class DynamicBlock {
   expanded = false;
 }
 
-export default function(): void {
+export default function (): void {
   'use strict';
   describe('StackBlock', () => {
     let fixture: ComponentFixture<any>;

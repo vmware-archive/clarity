@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,17 +16,16 @@ import { ClrRadioContainer } from './radio-container';
       <label>Hello World</label>
       <input type="radio" clrRadio name="model" [(ngModel)]="model" />
     </clr-radio-wrapper>
-    `,
+  `,
 })
 class FullTest {
   model = '';
 }
 
 @Component({
-  template: `
-    <clr-radio-wrapper>
-      <input type="radio" clrRadio name="model" [(ngModel)]="model" />
-    </clr-radio-wrapper>`,
+  template: ` <clr-radio-wrapper>
+    <input type="radio" clrRadio name="model" [(ngModel)]="model" />
+  </clr-radio-wrapper>`,
 })
 class NoLabelTest {
   model = '';
@@ -43,7 +42,7 @@ class ContainerTest {
   model = '';
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrRadioWrapper', () => {
     WrapperNoLabelSpec(ClrRadioWrapper, ClrRadio, NoLabelTest);
     WrapperFullSpec(ClrRadioWrapper, ClrRadio, FullTest, 'clr-radio-wrapper');

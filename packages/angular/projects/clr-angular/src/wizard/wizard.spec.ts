@@ -16,7 +16,7 @@ import { DynamicWizardTestComponent } from './test-components/dynamic-wizard.moc
 import { UnopenedWizardTestComponent } from './test-components/unopened-wizard.mock';
 import { ClrWizard } from './wizard';
 
-export default function(): void {
+export default function (): void {
   describe('Wizard', () => {
     describe('Typescript API', () => {
       describe('Opening and closing', () => {
@@ -24,7 +24,7 @@ export default function(): void {
         let wizard: ClrWizard;
         let component: UnopenedWizardTestComponent;
 
-        beforeEach(function() {
+        beforeEach(function () {
           context = this.create(ClrWizard, UnopenedWizardTestComponent);
           wizard = context.clarityDirective;
           component = context.hostComponent;
@@ -106,7 +106,7 @@ export default function(): void {
         let pageCollectionService: PageCollectionService;
         let wizard: ClrWizard;
 
-        beforeEach(function() {
+        beforeEach(function () {
           context = this.create(ClrWizard, BasicWizardTestComponent);
           wizardNavigationService = context.getClarityProvider(WizardNavigationService);
           pageCollectionService = context.getClarityProvider(PageCollectionService);
@@ -235,7 +235,7 @@ export default function(): void {
       let context: TestContext<ClrWizard, TemplateApiWizardTestComponent>;
       let wizard: ClrWizard;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrWizard, TemplateApiWizardTestComponent);
         wizard = context.clarityDirective;
         context.detectChanges();
@@ -349,25 +349,22 @@ export default function(): void {
             expect(val).toBe('OHAI', 'updates as expected');
           });
 
-          it(
-            'content can lazy load if needed',
-            fakeAsync(() => {
-              let val: string;
+          it('content can lazy load if needed', fakeAsync(() => {
+            let val: string;
 
-              wizard.next();
-              context.detectChanges();
+            wizard.next();
+            context.detectChanges();
 
-              val = context.hostElement.querySelector('.clr-wizard-page.active').textContent.trim();
-              expect(val).toBe(context.hostComponent.lazyLoadContent, 'projects as expected');
+            val = context.hostElement.querySelector('.clr-wizard-page.active').textContent.trim();
+            expect(val).toBe(context.hostComponent.lazyLoadContent, 'projects as expected');
 
-              context.hostComponent.doLazyLoad();
-              tick();
-              context.detectChanges();
+            context.hostComponent.doLazyLoad();
+            tick();
+            context.detectChanges();
 
-              val = context.hostElement.querySelector('.clr-wizard-page.active').textContent.trim();
-              expect(val).toBe('Content loaded!', 'updates as expected');
-            })
-          );
+            val = context.hostElement.querySelector('.clr-wizard-page.active').textContent.trim();
+            expect(val).toBe('Content loaded!', 'updates as expected');
+          }));
         });
 
         describe('Buttons', () => {
@@ -652,7 +649,7 @@ export default function(): void {
       let context: TestContext<ClrWizard, DynamicWizardTestComponent>;
       let wizard: ClrWizard;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrWizard, DynamicWizardTestComponent);
         wizard = context.clarityDirective;
         context.detectChanges();
@@ -750,7 +747,7 @@ export default function(): void {
 
       it('should survive if there are no pages', () => {
         expect(wizard.pageCollection.pagesCount).toBe(3);
-        expect(function() {
+        expect(function () {
           context.hostComponent.pages = [];
           context.detectChanges();
         }).not.toThrowError();

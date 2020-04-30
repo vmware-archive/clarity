@@ -12,7 +12,7 @@ import { ClrOption } from '../option';
 
 import { OptionSelectionService } from './option-selection.service';
 
-export default function() {
+export default function () {
   describe('Option Selection Service', () => {
     let optionSelectionService: OptionSelectionService<string>;
     let fakeOption1: ClrOption<string>;

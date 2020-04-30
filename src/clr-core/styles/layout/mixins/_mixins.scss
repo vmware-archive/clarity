@@ -8,7 +8,7 @@ $cds-layout-sizes: (
   'sm': $cds-token-layout-space-sm,
   'md': $cds-token-layout-space-md,
   'lg': $cds-token-layout-space-lg,
-  'xl': $cds-token-layout-space-xl
+  'xl': $cds-token-layout-space-xl,
 );
 
 $cds-layout-breakpoints: (
@@ -16,7 +16,7 @@ $cds-layout-breakpoints: (
   '@sm': $cds-token-layout-width-sm-static,
   '@md': $cds-token-layout-width-md-static,
   '@lg': $cds-token-layout-width-lg-static,
-  '@xl': $cds-token-layout-width-xl-static
+  '@xl': $cds-token-layout-width-xl-static,
 );
 
 $cds-layout-widths: (
@@ -24,14 +24,14 @@ $cds-layout-widths: (
   'sm': $cds-token-layout-width-sm,
   'md': $cds-token-layout-width-md,
   'lg': $cds-token-layout-width-lg,
-  'xl': $cds-token-layout-width-xl
+  'xl': $cds-token-layout-width-xl,
 );
 
 $cds-layout-spacing-sides: (
   'top': 't',
   'right': 'r',
   'bottom': 'b',
-  'left': 'l'
+  'left': 'l',
 );
 
 @mixin spacers($breakpoint: null) {

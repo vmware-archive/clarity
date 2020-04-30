@@ -36,10 +36,12 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
             (click)="toggle()"
             [disabled]="control?.disabled"
             class="clr-input-group-icon-action"
-            type="button">
+            type="button"
+          >
             <clr-icon
-            [attr.shape]="show ? 'eye-hide' : 'eye'"
-            [attr.title]="show ? commonStrings.keys.hide : commonStrings.keys.show"></clr-icon>
+              [attr.shape]="show ? 'eye-hide' : 'eye'"
+              [attr.title]="show ? commonStrings.keys.hide : commonStrings.keys.show"
+            ></clr-icon>
           </button>
         </div>
         <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
@@ -47,7 +49,7 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
       <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
       <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
     </div>
-    `,
+  `,
   host: {
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',

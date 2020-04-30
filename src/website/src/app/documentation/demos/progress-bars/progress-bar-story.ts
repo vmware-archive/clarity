@@ -12,26 +12,36 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: 'clr-progress-bar-story-demo',
   template: `
-    <p style="margin-top: 0"><strong>{{storyProgressBar.title}}</strong></p>
+    <p style="margin-top: 0">
+      <strong>{{ storyProgressBar.title }}</strong>
+    </p>
     <div class="story-message" style="margin-bottom: 0.5rem">
       <p *ngIf="storyProgressBar.value <= 25">
-        <clr-icon shape="cog" size="24"></clr-icon> Configuring the system <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
+        <clr-icon shape="cog" size="24"></clr-icon> Configuring the system
+        <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
       </p>
       <p *ngIf="storyProgressBar.value > 25 && storyProgressBar.value <= 50">
-        <clr-icon shape="install" size="24"></clr-icon> Installing the system <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
+        <clr-icon shape="install" size="24"></clr-icon> Installing the system
+        <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
       </p>
       <p *ngIf="storyProgressBar.value > 50 && storyProgressBar.value <= 75">
-        <clr-icon shape="download-cloud" size="24"></clr-icon> Updating the system <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
+        <clr-icon shape="download-cloud" size="24"></clr-icon> Updating the system
+        <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
       </p>
       <p *ngIf="storyProgressBar.value > 75 && storyProgressBar.value < 100">
-        <clr-icon shape="step-forward-2" size="24"></clr-icon> Starting the system <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
+        <clr-icon shape="step-forward-2" size="24"></clr-icon> Starting the system
+        <clr-icon shape="ellipsis-horizontal" size="24"></clr-icon>
       </p>
       <p *ngIf="storyProgressBar.value == 100">
         <clr-icon shape="success-standard" size="24"></clr-icon> The process is done. The system is ready.
       </p>
     </div>
     <div [ngClass]="storyProgressBar.cssClassnames()">
-      <progress value="{{storyProgressBar.value}}" max="100" [attr.data-displayval]="storyProgressBar.value + '%'"></progress>
+      <progress
+        value="{{ storyProgressBar.value }}"
+        max="100"
+        [attr.data-displayval]="storyProgressBar.value + '%'"
+      ></progress>
     </div>
   `,
 })

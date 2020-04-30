@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -68,7 +68,7 @@ gemini.suite('buttons', child => {
 
     var classes = ['.btn-link', '.btn-link[disabled]'];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });
@@ -80,7 +80,7 @@ gemini.suite('buttons', child => {
 
     var classes = ['.btn-inverse', '.btn-inverse[disabled]'];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });
@@ -92,7 +92,7 @@ gemini.suite('buttons', child => {
 
     var classes = ['.btn-success-outline', '.btn-info-outline', '.btn-danger-outline', '.btn-success', '.btn-danger'];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });
@@ -121,7 +121,7 @@ gemini.suite('buttons', child => {
       '.btn-success.btn-block',
     ];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });
@@ -133,7 +133,7 @@ gemini.suite('buttons', child => {
 
     var classes = ['.btn'];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });
@@ -145,7 +145,7 @@ gemini.suite('buttons', child => {
 
     var classes = ['.clr-example'];
 
-    classes.forEach(function(btnClass) {
+    classes.forEach(function (btnClass) {
       captureButton(btnClass);
     });
   });

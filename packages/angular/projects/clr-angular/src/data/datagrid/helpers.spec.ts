@@ -96,11 +96,11 @@ export class TestContext<D, C> {
 }
 
 export function addHelpers(): void {
-  beforeEach(function() {
+  beforeEach(function () {
     /*
-         * Ideally we would just make "this" a TestContext, but typing "this" in typescript
-         * is a bit too new for all IDEs to correctly process it.
-         */
+     * Ideally we would just make "this" a TestContext, but typing "this" in typescript
+     * is a bit too new for all IDEs to correctly process it.
+     */
     this.create = <D, C>(
       clarityDirective: Type<D>,
       testComponent: Type<C>,
@@ -166,7 +166,7 @@ export function addHelpers(): void {
       return (this._context = new TestContext<D, C>(clarityDirective, testComponent));
     };
   });
-  afterEach(function() {
+  afterEach(function () {
     if (this._context) {
       this._context.fixture.destroy();
     }

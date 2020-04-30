@@ -42,15 +42,17 @@ export class StepperModel extends AccordionModel {
   }
 
   overrideInitialPanel(panelId: string) {
-    this.panels.filter(() => this._panels[panelId] !== undefined).forEach(panel => {
-      if (panel.index < this._panels[panelId].index) {
-        this.completePanel(panel.id);
-      } else if (panel.id === panelId) {
-        this._panels[panel.id].open = true;
-      } else {
-        this._panels[panel.id].open = false;
-      }
-    });
+    this.panels
+      .filter(() => this._panels[panelId] !== undefined)
+      .forEach(panel => {
+        if (panel.index < this._panels[panelId].index) {
+          this.completePanel(panel.id);
+        } else if (panel.id === panelId) {
+          this._panels[panel.id].open = true;
+        } else {
+          this._panels[panel.id].open = false;
+        }
+      });
   }
 
   setPanelsWithErrors(ids: string[]) {

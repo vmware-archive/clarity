@@ -10,7 +10,7 @@ import { DayModel } from '../model/day.model';
 
 import { DateNavigationService } from './date-navigation.service';
 
-export default function() {
+export default function () {
   describe('Date Navigation Service', () => {
     let dateNavigationService: DateNavigationService;
 

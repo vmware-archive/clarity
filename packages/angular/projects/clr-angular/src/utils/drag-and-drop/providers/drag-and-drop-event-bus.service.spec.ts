@@ -12,8 +12,8 @@ type DragTransfer = {
   data: any;
 };
 
-export default function(): void {
-  describe('Drag And Drop Event Bus Provider', function() {
+export default function (): void {
+  describe('Drag And Drop Event Bus Provider', function () {
     const dndEventBus = new DragAndDropEventBusService();
     const dragEventMockObj = (
       dragEventType: DragEventType,
@@ -27,11 +27,11 @@ export default function(): void {
     };
     let isEmitted: boolean;
 
-    beforeEach(function() {
+    beforeEach(function () {
       isEmitted = false;
     });
 
-    it('should broadcast from correct Observable on drag start event type', function() {
+    it('should broadcast from correct Observable on drag start event type', function () {
       (dndEventBus.dragStarted as Observable<DragEventInterface<DragTransfer>>).subscribe(
         (event: DragEventInterface<DragTransfer>) => {
           isEmitted = true;
@@ -42,7 +42,7 @@ export default function(): void {
       expect(isEmitted).toBeTruthy();
     });
 
-    it('should broadcast from correct Observable on drag move event type', function() {
+    it('should broadcast from correct Observable on drag move event type', function () {
       (dndEventBus.dragMoved as Observable<DragEventInterface<DragTransfer>>).subscribe(
         (event: DragEventInterface<DragTransfer>) => {
           isEmitted = true;
@@ -53,7 +53,7 @@ export default function(): void {
       expect(isEmitted).toBeTruthy();
     });
 
-    it('should broadcast from correct Observable on drag end event type', function() {
+    it('should broadcast from correct Observable on drag end event type', function () {
       (dndEventBus.dragEnded as Observable<DragEventInterface<DragTransfer>>).subscribe(
         (event: DragEventInterface<DragTransfer>) => {
           isEmitted = true;
@@ -64,7 +64,7 @@ export default function(): void {
       expect(isEmitted).toBeTruthy();
     });
 
-    it('should broadcast from correct Observable on drop event type', function() {
+    it('should broadcast from correct Observable on drop event type', function () {
       (dndEventBus.dropped as Observable<DragEventInterface<DragTransfer>>).subscribe(
         (event: DragEventInterface<DragTransfer>) => {
           isEmitted = true;

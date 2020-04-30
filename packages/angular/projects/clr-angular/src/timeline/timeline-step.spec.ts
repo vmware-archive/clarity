@@ -19,9 +19,7 @@ import { TimelineIconAttributeService } from './providers/timeline-icon-attribut
 import { TimelineStepIdService } from './providers/timeline-step-id.service';
 
 @Component({
-  template: `
-    <clr-timeline-step [clrState]="state"><clr-timeline-step>
-  `,
+  template: ` <clr-timeline-step [clrState]="state"><clr-timeline-step> </clr-timeline-step></clr-timeline-step> `,
 })
 class TestTimelineStep {
   state: ClrTimelineStepState = ClrTimelineStepState.NOT_STARTED;
@@ -40,7 +38,7 @@ class TestTimelineStep {
 })
 class TestTimelineStepContent {}
 
-export default function(): void {
+export default function (): void {
   describe('ClrTimelineStep component', () => {
     describe('Typescript API', () => {
       let step: ClrTimelineStep;

@@ -15,22 +15,22 @@ const CLOSE_ARIA_LABEL = 'Close Test Alert';
 
 @Component({
   template: `
-        <clr-alert
-            [clrAlertType]="type"
-            [clrAlertSizeSmall]="isSmall"
-            [clrAlertClosable]="isClosable"
-            [(clrAlertClosed)]="closed"
-            [clrAlertAppLevel]="isAppLevel"
-            [clrCloseButtonAriaLabel]="closeAriaLabel"
-            [clrOff]="clrOff"
-            [clrAssertive]="clrAssertive"
-            [clrPolite]="clrPolite"
-            >
-            <div class="alert-item">
-                <span class="alert-text">{{alertMsg}}</span>
-            </div>
-        </clr-alert>
-   `,
+    <clr-alert
+      [clrAlertType]="type"
+      [clrAlertSizeSmall]="isSmall"
+      [clrAlertClosable]="isClosable"
+      [(clrAlertClosed)]="closed"
+      [clrAlertAppLevel]="isAppLevel"
+      [clrCloseButtonAriaLabel]="closeAriaLabel"
+      [clrOff]="clrOff"
+      [clrAssertive]="clrAssertive"
+      [clrPolite]="clrPolite"
+    >
+      <div class="alert-item">
+        <span class="alert-text">{{ alertMsg }}</span>
+      </div>
+    </clr-alert>
+  `,
 })
 class TestComponent {
   @ViewChild(ClrAlert) alertInstance: ClrAlert;
@@ -50,7 +50,7 @@ class TestComponent {
   alertMsg = 'This is an alert!';
 }
 
-export default function(): void {
+export default function (): void {
   describe('Alert', () => {
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -135,11 +135,11 @@ export default function(): void {
       expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(CLOSE_ARIA_LABEL);
     });
 
-    describe('AriaLive', function() {
+    describe('AriaLive', function () {
       let ariaLiveService: ClrAriaLiveService;
       let announceSpyOn, component;
 
-      beforeEach(function() {
+      beforeEach(function () {
         fixture = TestBed.createComponent(TestComponent);
 
         component = fixture.debugElement.query(By.directive(ClrAlert)).injector.get(ClrAlert);

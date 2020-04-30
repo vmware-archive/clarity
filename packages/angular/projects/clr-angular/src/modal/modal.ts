@@ -28,8 +28,12 @@ import { ScrollingService } from '../utils/scrolling/scrolling-service';
   templateUrl: './modal.html',
   styles: [
     `
-        :host { display: none; }
-        :host.open { display: inline; }
+      :host {
+        display: none;
+      }
+      :host.open {
+        display: inline;
+      }
     `,
   ],
   animations: [

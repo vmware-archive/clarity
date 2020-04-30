@@ -36,22 +36,22 @@ class MyPageCollectionMock extends PageCollectionMock {
 
 @Component({
   template: `
-        <clr-wizard-page>
-            <ng-template clrPageTitle>Mandatory Title</ng-template>
-            Hello moto
-        </clr-wizard-page>
-        <clr-wizard-page>
-            <ng-template clrPageTitle>Mandatory Title</ng-template>
-            <ng-template clrPageNavTitle>Optional nav title</ng-template>
-            <ng-template clrPageHeaderActions>
-                <clr-wizard-header-action id="fhtagn">hi</clr-wizard-header-action>
-            </ng-template>
-            Other wizard page needed as competition in tests
-            <ng-template clrPageButtons>
-                <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-            </ng-template>
-        </clr-wizard-page>
-    `,
+    <clr-wizard-page>
+      <ng-template clrPageTitle>Mandatory Title</ng-template>
+      Hello moto
+    </clr-wizard-page>
+    <clr-wizard-page>
+      <ng-template clrPageTitle>Mandatory Title</ng-template>
+      <ng-template clrPageNavTitle>Optional nav title</ng-template>
+      <ng-template clrPageHeaderActions>
+        <clr-wizard-header-action id="fhtagn">hi</clr-wizard-header-action>
+      </ng-template>
+      Other wizard page needed as competition in tests
+      <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+      </ng-template>
+    </clr-wizard-page>
+  `,
 })
 class TypescriptTestComponent {
   @ViewChildren(ClrWizardPage) wizardPageChildren: QueryList<ClrWizardPage>;
@@ -59,23 +59,21 @@ class TypescriptTestComponent {
 
 @Component({
   template: `
-        <clr-wizard-page #nav
-            [(clrWizardPageNextDisabled)]="navTestNextDisabled"
-            [(clrWizardPagePreviousDisabled)]="navTestPreviousDisabled"
-            [(clrWizardPagePreventDefaultCancel)]="navStopCancel"
-        >
-            <ng-template clrPageTitle>Tests of page nav inputs and outputs</ng-template>
-        </clr-wizard-page>
-        <clr-wizard-page #lifecycle>
-            <ng-template clrPageTitle>Tests for lifecycle outputs and event handlers</ng-template>
-        </clr-wizard-page>
-        <clr-wizard-page #other
-            [id]="testId"
-            (clrWizardPageOnLoad)="onLoadCheck($event)"
-        >
-            <ng-template clrPageTitle>Other template API tests</ng-template>
-        </clr-wizard-page>
-    `,
+    <clr-wizard-page
+      #nav
+      [(clrWizardPageNextDisabled)]="navTestNextDisabled"
+      [(clrWizardPagePreviousDisabled)]="navTestPreviousDisabled"
+      [(clrWizardPagePreventDefaultCancel)]="navStopCancel"
+    >
+      <ng-template clrPageTitle>Tests of page nav inputs and outputs</ng-template>
+    </clr-wizard-page>
+    <clr-wizard-page #lifecycle>
+      <ng-template clrPageTitle>Tests for lifecycle outputs and event handlers</ng-template>
+    </clr-wizard-page>
+    <clr-wizard-page #other [id]="testId" (clrWizardPageOnLoad)="onLoadCheck($event)">
+      <ng-template clrPageTitle>Other template API tests</ng-template>
+    </clr-wizard-page>
+  `,
 })
 class TemplateTestComponent {
   @ViewChild('nav') navigationTemplateTester: ClrWizardPage;
@@ -125,84 +123,72 @@ class TemplateTestComponent {
 @Component({
   template: `
     <clr-wizard #viewTestWizard [(clrWizardOpen)]="open">
-        <clr-wizard-title>Wizard for Wizard Page View Tests</clr-wizard-title>
+      <clr-wizard-title>Wizard for Wizard Page View Tests</clr-wizard-title>
 
-        <clr-wizard-button [type]="'cancel'" #wizardCancelBtn
-            class="clr-test-wizard-cancel">Cancel</clr-wizard-button>
-        <clr-wizard-button [type]="'previous'" class="clrtest-wizard-previous"
-            #wizardPreviousBtn>Back</clr-wizard-button>
-        <clr-wizard-button [type]="'custom-custom'"
-            class="clrtest-wizard-custom">Custom</clr-wizard-button>
-        <clr-wizard-button [type]="'next'"
-            class="clrtest-wizard-next">Next</clr-wizard-button>
-        <clr-wizard-button [type]="'danger'"
-            class="clrtest-wizard-danger">Danger</clr-wizard-button>
-        <clr-wizard-button [type]="'finish'"
-            class="clrtest-wizard-finish">Finish</clr-wizard-button>
+      <clr-wizard-button [type]="'cancel'" #wizardCancelBtn class="clr-test-wizard-cancel">Cancel</clr-wizard-button>
+      <clr-wizard-button [type]="'previous'" class="clrtest-wizard-previous" #wizardPreviousBtn>Back</clr-wizard-button>
+      <clr-wizard-button [type]="'custom-custom'" class="clrtest-wizard-custom">Custom</clr-wizard-button>
+      <clr-wizard-button [type]="'next'" class="clrtest-wizard-next">Next</clr-wizard-button>
+      <clr-wizard-button [type]="'danger'" class="clrtest-wizard-danger">Danger</clr-wizard-button>
+      <clr-wizard-button [type]="'finish'" class="clrtest-wizard-finish">Finish</clr-wizard-button>
 
-        <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
-            <clr-icon shape="cloud" class="is-solid"></clr-icon>
-        </clr-wizard-header-action>
+      <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
+        <clr-icon shape="cloud" class="is-solid"></clr-icon>
+      </clr-wizard-header-action>
 
-        <clr-wizard-page #viewTestWizardPageOne [id]="testId"
-            [clrWizardPagePreventDefaultCancel]="preventCancel"
-        >
-            <ng-template clrPageTitle>View Page 1</ng-template>
+      <clr-wizard-page #viewTestWizardPageOne [id]="testId" [clrWizardPagePreventDefaultCancel]="preventCancel">
+        <ng-template clrPageTitle>View Page 1</ng-template>
 
-            <ng-template clrPageHeaderActions>
-                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
-                    <clr-icon shape="bell" class="has-badge"></clr-icon>
-                </clr-wizard-header-action>
-                <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
-                    <clr-icon shape="warning"></clr-icon>
-                </clr-wizard-header-action>
-            </ng-template>
+        <ng-template clrPageHeaderActions>
+          <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
+            <clr-icon shape="bell" class="has-badge"></clr-icon>
+          </clr-wizard-header-action>
+          <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
+            <clr-icon shape="warning"></clr-icon>
+          </clr-wizard-header-action>
+        </ng-template>
 
-            <ng-template clrPageButtons>
-                <clr-wizard-button [type]="'cancel'" class="clrtest-page-cancel"
-                    #pageCancelBtn>Cancel</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'"
-                    class="clrtest-page-previous-1">Previous</clr-wizard-button>
-                <clr-wizard-button [type]="'danger'">Caution</clr-wizard-button>
-            </ng-template>
-        </clr-wizard-page>
+        <ng-template clrPageButtons>
+          <clr-wizard-button [type]="'cancel'" class="clrtest-page-cancel" #pageCancelBtn>Cancel</clr-wizard-button>
+          <clr-wizard-button [type]="'previous'" class="clrtest-page-previous-1">Previous</clr-wizard-button>
+          <clr-wizard-button [type]="'danger'">Caution</clr-wizard-button>
+        </ng-template>
+      </clr-wizard-page>
 
-        <clr-wizard-page #viewTestWizardPageTwo
-            [(clrWizardPagePreviousDisabled)]="disablePrevious">
-            <ng-template clrPageTitle>View Page 2</ng-template>
-            <p>{{projector}}</p>
-        </clr-wizard-page>
+      <clr-wizard-page #viewTestWizardPageTwo [(clrWizardPagePreviousDisabled)]="disablePrevious">
+        <ng-template clrPageTitle>View Page 2</ng-template>
+        <p>{{ projector }}</p>
+      </clr-wizard-page>
 
-        <clr-wizard-page #viewTestWizardPageThree
-            [(clrWizardPagePreviousDisabled)]="disablePrevious">
-            <ng-template clrPageTitle>View Page 3</ng-template>
-            <ng-template clrPageNavTitle>short title</ng-template>
-            <p *ngIf="!asyncLoaded">Loading...</p>
-            <p *ngIf="asyncLoaded">{{asyncContent}}</p>
+      <clr-wizard-page #viewTestWizardPageThree [(clrWizardPagePreviousDisabled)]="disablePrevious">
+        <ng-template clrPageTitle>View Page 3</ng-template>
+        <ng-template clrPageNavTitle>short title</ng-template>
+        <p *ngIf="!asyncLoaded">Loading...</p>
+        <p *ngIf="asyncLoaded">{{ asyncContent }}</p>
 
-            <ng-template clrPageButtons>
-                <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'" #pagePreviousBtn
-                    class="clrtest-page-previous-2">Previous</clr-wizard-button>
-                <clr-wizard-button [type]="'danger'">Danger</clr-wizard-button>
-            </ng-template>
-        </clr-wizard-page>
+        <ng-template clrPageButtons>
+          <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+          <clr-wizard-button [type]="'previous'" #pagePreviousBtn class="clrtest-page-previous-2"
+            >Previous</clr-wizard-button
+          >
+          <clr-wizard-button [type]="'danger'">Danger</clr-wizard-button>
+        </ng-template>
+      </clr-wizard-page>
 
-        <clr-wizard-page #viewTestWizardPageFour
-            [clrWizardPagePreventDefaultCancel]="preventCancel"
-            (clrWizardPageOnCancel)="altCancel()"
-        >
-            <ng-template clrPageTitle>View Page 4</ng-template>
-            <clr-alert [clrAlertClosable]="false">
-                <div class="alert-item">
-                    <span class="alert-text">
-                        i believe the answer is {{innerProjector/2}}
-                    </span>
-                </div>
-            </clr-alert>
-        </clr-wizard-page>
+      <clr-wizard-page
+        #viewTestWizardPageFour
+        [clrWizardPagePreventDefaultCancel]="preventCancel"
+        (clrWizardPageOnCancel)="altCancel()"
+      >
+        <ng-template clrPageTitle>View Page 4</ng-template>
+        <clr-alert [clrAlertClosable]="false">
+          <div class="alert-item">
+            <span class="alert-text"> i believe the answer is {{ innerProjector / 2 }} </span>
+          </div>
+        </clr-alert>
+      </clr-wizard-page>
     </clr-wizard>
-    `,
+  `,
 })
 class ViewTestComponent {
   @ViewChild('viewTestWizard') testWizard: ClrWizard;
@@ -238,18 +224,16 @@ class ViewTestComponent {
 
 @Component({
   template: `
-        <ng-container *ngFor="let page of [0, 1, 2, 3]">
-            <clr-wizard-page [id]="3 === page ? 'lastpage' : page">
-                Content for page {{ page }}
-            </clr-wizard-page>
-        </ng-container>
-    `,
+    <ng-container *ngFor="let page of [0, 1, 2, 3]">
+      <clr-wizard-page [id]="3 === page ? 'lastpage' : page"> Content for page {{ page }} </clr-wizard-page>
+    </ng-container>
+  `,
 })
 class IdTestComponent {
   @ViewChildren(ClrWizardPage) pages: QueryList<ClrWizardPage>;
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrWizardPage', () => {
     let fixture: ComponentFixture<any>;
     let testComponent: TypescriptTestComponent;
@@ -1008,19 +992,16 @@ export default function(): void {
           );
         });
 
-        it(
-          'should allow for asynchronous content',
-          fakeAsync(() => {
-            expect(pageThree.nativeElement.textContent.trim()).toBe('Loading...');
-            viewTestComponent.loadAsync();
+        it('should allow for asynchronous content', fakeAsync(() => {
+          expect(pageThree.nativeElement.textContent.trim()).toBe('Loading...');
+          viewTestComponent.loadAsync();
 
-            tick(120);
+          tick(120);
 
-            fixture.detectChanges();
-            expect(viewTestComponent.asyncLoaded).toBe(true, 'make sure async routine ran');
-            expect(pageThree.nativeElement.textContent.trim()).toBe('better late than never');
-          })
-        );
+          fixture.detectChanges();
+          expect(viewTestComponent.asyncLoaded).toBe(true, 'make sure async routine ran');
+          expect(pageThree.nativeElement.textContent.trim()).toBe('better late than never');
+        }));
       });
 
       describe('id', () => {

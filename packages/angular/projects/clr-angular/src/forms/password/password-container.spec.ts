@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,12 +21,12 @@ import { ContainerNoLabelSpec, ReactiveSpec, TemplateDrivenSpec } from '../tests
 @Component({
   template: `
     <clr-password-container [clrToggle]="toggler">
-        <input type="password" name="test" clrPassword required [(ngModel)]="model" [disabled]="disabled" />
-        <label>Hello World</label>
-        <clr-control-helper>Helper text</clr-control-helper>
-        <clr-control-error>Must be at least 5 characters</clr-control-error>
+      <input type="password" name="test" clrPassword required [(ngModel)]="model" [disabled]="disabled" />
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
     </clr-password-container>
-    `,
+  `,
 })
 class TemplateDrivenTest {
   disabled = false;
@@ -35,16 +35,14 @@ class TemplateDrivenTest {
 }
 
 @Component({
-  template: `
-    <clr-password-container>
-      <input clrPassword [(ngModel)]="model" />
-    </clr-password-container>`,
+  template: ` <clr-password-container>
+    <input clrPassword [(ngModel)]="model" />
+  </clr-password-container>`,
 })
 class NoLabelTest {}
 
 @Component({
-  template: `
-  <form [formGroup]="form">
+  template: ` <form [formGroup]="form">
     <clr-password-container>
       <input clrPassword formControlName="model" />
       <label>Hello World</label>
@@ -60,7 +58,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrPasswordContainer', () => {
     ContainerNoLabelSpec(ClrPasswordContainer, ClrPassword, NoLabelTest);
     TemplateDrivenSpec(ClrPasswordContainer, ClrPassword, TemplateDrivenTest, '.clr-input-wrapper [clrPassword]');

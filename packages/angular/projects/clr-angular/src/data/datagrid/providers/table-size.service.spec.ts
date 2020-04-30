@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,13 +21,13 @@ import { DetailService } from './detail.service';
 
 @Component({
   template: `
-        <div [style.height.px]="height">
-            <clr-dg-column [style.width.px]="202">Col 1</clr-dg-column>
-            <clr-dg-column [style.width.px]="122">Col 2</clr-dg-column>
-            <clr-dg-column [style.width.px]="302">Col 3</clr-dg-column>
-            <clr-dg-column [style.width.px]="42">Col 4</clr-dg-column>
-        </div>
-    `,
+    <div [style.height.px]="height">
+      <clr-dg-column [style.width.px]="202">Col 1</clr-dg-column>
+      <clr-dg-column [style.width.px]="122">Col 2</clr-dg-column>
+      <clr-dg-column [style.width.px]="302">Col 3</clr-dg-column>
+      <clr-dg-column [style.width.px]="42">Col 4</clr-dg-column>
+    </div>
+  `,
   providers: [TableSizeService],
 })
 class TestComponent {
@@ -53,9 +53,9 @@ const PROVIDERS_NEEDED = [
   ColumnsService,
 ];
 
-export default function(): void {
-  describe('TableSizeService', function() {
-    beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('TableSizeService', function () {
+    beforeEach(function (this: TestContext) {
       TestBed.configureTestingModule({
         imports: [ClrDatagridModule],
         declarations: [TestComponent],
@@ -68,12 +68,12 @@ export default function(): void {
       this.sizeService.tableRef = this.table; // setting service up with the component table for testing
     });
 
-    it('sets a tableRef property with an elementReference', function() {
+    it('sets a tableRef property with an elementReference', function () {
       // sizeService.tableRef is set in beforeEach
       expect(this.sizeService.tableRef).toBeDefined();
     });
 
-    it('calculates the correct column drag height', function(this: TestContext) {
+    it('calculates the correct column drag height', function (this: TestContext) {
       expect(this.sizeService.getColumnDragHeight()).toEqual('300px');
       this.fixture.componentInstance.height = 422;
       this.fixture.detectChanges();

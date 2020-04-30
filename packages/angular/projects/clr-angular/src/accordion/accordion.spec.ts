@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -108,25 +108,22 @@ describe('ClrAccordion', () => {
       expect(accordionPanels.length).toBe(3);
     });
 
-    it(
-      'should open one panel at a time',
-      fakeAsync(() => {
-        const panels = fixture.debugElement.queryAll(By.directive(ClrAccordionPanel));
+    it('should open one panel at a time', fakeAsync(() => {
+      const panels = fixture.debugElement.queryAll(By.directive(ClrAccordionPanel));
 
-        expect(accordionInstance.multiPanel).toBe(false);
+      expect(accordionInstance.multiPanel).toBe(false);
 
-        panels[0].nativeElement.querySelector('button').click();
-        fixture.detectChanges();
-        expect(fixture.nativeElement.textContent.trim()).toContain('panel 1');
+      panels[0].nativeElement.querySelector('button').click();
+      fixture.detectChanges();
+      expect(fixture.nativeElement.textContent.trim()).toContain('panel 1');
 
-        panels[1].nativeElement.querySelector('button').click();
-        fixture.detectChanges();
-        tick(200); // delay for animation
+      panels[1].nativeElement.querySelector('button').click();
+      fixture.detectChanges();
+      tick(200); // delay for animation
 
-        expect(fixture.nativeElement.textContent.trim()).toContain('panel 2');
-        expect(fixture.nativeElement.textContent.trim()).not.toContain('panel 1');
-      })
-    );
+      expect(fixture.nativeElement.textContent.trim()).toContain('panel 2');
+      expect(fixture.nativeElement.textContent.trim()).not.toContain('panel 1');
+    }));
 
     it('should allow multiple open panels when in multi panel mode', () => {
       testComponent.multi = true;
@@ -141,16 +138,13 @@ describe('ClrAccordion', () => {
       expect(fixture.nativeElement.textContent.trim()).not.toContain('panel 3');
     });
 
-    it(
-      'should reorder panels when panel content children has changed',
-      fakeAsync(() => {
-        spyOn(accordionService, 'updatePanelOrder');
-        testComponent.showSecondStep = false;
-        fixture.detectChanges();
-        tick();
-        expect(accordionService.updatePanelOrder).toHaveBeenCalled();
-        expect(fixture.debugElement.queryAll(By.directive(ClrAccordionPanel)).length).toBe(2);
-      })
-    );
+    it('should reorder panels when panel content children has changed', fakeAsync(() => {
+      spyOn(accordionService, 'updatePanelOrder');
+      testComponent.showSecondStep = false;
+      fixture.detectChanges();
+      tick();
+      expect(accordionService.updatePanelOrder).toHaveBeenCalled();
+      expect(fixture.debugElement.queryAll(By.directive(ClrAccordionPanel)).length).toBe(2);
+    }));
   });
 });

@@ -70,16 +70,16 @@ export const API = () => {
       <style>
         cds-icon-button {
           ${setStyles({
-            '--color': buttonColor,
-            '--background': background,
-            '--box-shadow-color': boxShadowColor,
-            '--border-color': borderColor,
-            '--border-width': borderWidth,
-            '--border-radius': borderRadius,
-            '--font-size': fontSize,
-            '--padding': padding,
-            '--height': height,
-          })}
+          '--color': buttonColor,
+          '--background': background,
+          '--box-shadow-color': boxShadowColor,
+          '--border-color': borderColor,
+          '--border-width': borderWidth,
+          '--border-radius': borderRadius,
+          '--font-size': fontSize,
+          '--padding': padding,
+          '--height': height,
+        })}
       </style>
       <cds-icon-button
         .action=${actionType}
@@ -87,7 +87,8 @@ export const API = () => {
         .size=${size}
         .loadingState=${loadingState}
         .disabled=${disabled}
-        @click=${action('click')}>
+        @click=${action('click')}
+      >
         <cds-icon shape="user"></cds-icon>
       </cds-icon-button>
     </cds-demo>
@@ -111,7 +112,7 @@ export const status = () => {
       <cds-icon-button status="danger"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="danger" disabled><cds-icon shape="user"></cds-icon></cds-icon-button>
     </div>
-`;
+  `;
 };
 
 export const statusOutline = () => {
@@ -122,7 +123,7 @@ export const statusOutline = () => {
       <cds-icon-button action="outline" status="danger"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline" disabled><cds-icon shape="user"></cds-icon></cds-icon-button>
     </div>
-`;
+  `;
 };
 
 export const sizes = () => {

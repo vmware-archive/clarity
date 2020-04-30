@@ -9,8 +9,8 @@ import { ClrStackBlock } from '@clr/angular';
 @Directive()
 export class StackViewNgDemo {
   /*
-     * Modal edit demo
-     */
+   * Modal edit demo
+   */
   blocks: any[] = [
     { title: 'Label 1', content: 'Content 1' },
     {
@@ -28,8 +28,8 @@ export class StackViewNgDemo {
   editModal = false;
 
   /*
-     * Lazy loading demo
-     */
+   * Lazy loading demo
+   */
   @ViewChild('lazyBlock') lazyBlock: ClrStackBlock;
   children: any[] = [];
 

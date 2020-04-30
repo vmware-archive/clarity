@@ -20,8 +20,8 @@ import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 import { ClrDraggable } from './draggable';
 import { generateDragPosition } from '../helpers.spec';
 
-export default function(): void {
-  describe('Basic Draggable', function() {
+export default function (): void {
+  describe('Basic Draggable', function () {
     let mockDragStartEventInt: DragEventInterface<any>;
     let mockDragMoveEventInt: DragEventInterface<any>;
     let mockDragEndEventInt: DragEventInterface<any>;
@@ -30,7 +30,7 @@ export default function(): void {
     let mockDragMoveEventExt: ClrDragEvent<any>;
     let mockDragEndEventExt: ClrDragEvent<any>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [11, 22]) };
       mockDragMoveEventInt = { type: DragEventType.DRAG_MOVE, dragPosition: generateDragPosition([5, 10], [33, 44]) };
       mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
@@ -63,74 +63,74 @@ export default function(): void {
       this.fixture.detectChanges();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.fixture.destroy();
     });
 
-    it('should have draggable class', function() {
+    it('should have draggable class', function () {
       expect(this.draggable.nativeElement.classList.contains('draggable')).toBeTruthy();
     });
 
-    it('should pass drag start delay to dragListener', function() {
+    it('should pass drag start delay to dragListener', function () {
       this.testComponent.dragStartDelay = 123;
       this.fixture.detectChanges();
       expect(this.dragEventListener.dragStartDelay).toBe(123);
     });
 
-    it('should emit event on drag start', function() {
+    it('should emit event on drag start', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
       expect(this.testComponent.dragMoveEvent).toBeUndefined();
       expect(this.testComponent.dragEndEvent).toBeUndefined();
     });
 
-    it('should add being-dragged class on drag start', function() {
+    it('should add being-dragged class on drag start', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       this.fixture.detectChanges();
       expect(this.draggable.nativeElement.classList.contains('being-dragged')).toBeTruthy();
     });
 
-    it('should call GlobalDragMode.enter() on drag start', function() {
+    it('should call GlobalDragMode.enter() on drag start', function () {
       spyOn(this.globalDragMode, 'enter');
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.testComponent.dragStartEvent).toEqual(mockDragStartEventExt);
       expect(this.globalDragMode.enter).toHaveBeenCalled();
     });
 
-    it('should emit event on drag move', function() {
+    it('should emit event on drag move', function () {
       this.dragEventListener.dragMoved.next(mockDragMoveEventInt);
       expect(this.testComponent.dragStartEvent).toBeUndefined();
       expect(this.testComponent.dragMoveEvent).toEqual(mockDragMoveEventExt);
       expect(this.testComponent.dragEndEvent).toBeUndefined();
     });
 
-    it('should emit event on drag end', function() {
+    it('should emit event on drag end', function () {
       this.dragEventListener.dragEnded.next(mockDragEndEventExt);
       expect(this.testComponent.dragStartEvent).toBeUndefined();
       expect(this.testComponent.dragMoveEvent).toBeUndefined();
       expect(this.testComponent.dragEndEvent).toEqual(mockDragEndEventExt);
     });
 
-    it('should remove being-dragged class on drag end', function() {
+    it('should remove being-dragged class on drag end', function () {
       this.dragEventListener.dragEnded.next(mockDragEndEventExt);
       this.fixture.detectChanges();
       expect(this.draggable.nativeElement.classList.contains('being-dragged')).toBeFalsy();
     });
 
-    it('should call GlobalDragMode.exit() on drag end', function() {
+    it('should call GlobalDragMode.exit() on drag end', function () {
       spyOn(this.globalDragMode, 'exit');
       this.dragEventListener.dragEnded.next(mockDragEndEventExt);
       expect(this.globalDragMode.exit).toHaveBeenCalled();
     });
 
-    it('should have its own element as default drag handle when there is no nested drag handle', function() {
+    it('should have its own element as default drag handle when there is no nested drag handle', function () {
       expect(this.draggable.nativeElement.classList.contains('drag-handle')).toBeTruthy();
       expect(this.dragEventListener.draggableEl).toBe(this.draggable.nativeElement);
       expect(this.dragHandleRegistrar.defaultHandleEl).toBe(this.draggable.nativeElement);
       expect(this.dragHandleRegistrar.customHandleEl).toBeUndefined();
     });
 
-    it('should instantiate cloned version of draggable as ghost on drag start', function() {
+    it('should instantiate cloned version of draggable as ghost on drag start', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       const draggableGhost = this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost');
       expect(draggableGhost.length).toBe(1);
@@ -139,10 +139,10 @@ export default function(): void {
         `The default ghost appears next to the draggable element.`
       );
       expect(draggableGhost[0].querySelectorAll('.draggable').length).toBe(1);
-      expect(draggableGhost[0].querySelector('.draggable').textContent).toBe('Test');
+      expect(draggableGhost[0].querySelector('.draggable').textContent.trim()).toBe('Test');
     });
 
-    it('should create ghost as sibling', function() {
+    it('should create ghost as sibling', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       const draggable = this.fixture.nativeElement.querySelector('.draggable');
       const draggableGhost = this.fixture.nativeElement.querySelector('clr-draggable-ghost');
@@ -150,7 +150,7 @@ export default function(): void {
     });
 
     // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-    xit('should remove ghost on drag end', async(function() {
+    xit('should remove ghost on drag end', async(function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
       this.dragEventListener.dragEnded.next(mockDragEndEventExt);
@@ -160,7 +160,15 @@ export default function(): void {
 }
 
 @Component({
-  template: `<div clrDraggable [clrDragStartDelay]="dragStartDelay" (clrDragStart)="dragStartEvent=$event;" (clrDragMove)="dragMoveEvent=$event;" (clrDragEnd)="dragEndEvent=$event;">Test</div>`,
+  template: `<div
+    clrDraggable
+    [clrDragStartDelay]="dragStartDelay"
+    (clrDragStart)="dragStartEvent = $event"
+    (clrDragMove)="dragMoveEvent = $event"
+    (clrDragEnd)="dragEndEvent = $event"
+  >
+    Test
+  </div>`,
 })
 class BasicDraggableTest {
   dragStartEvent: ClrDragEvent<any>;

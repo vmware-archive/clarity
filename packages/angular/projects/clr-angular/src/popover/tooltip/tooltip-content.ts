@@ -16,9 +16,7 @@ const SIZES: string[] = ['xs', 'sm', 'md', 'lg'];
 
 @Component({
   selector: 'clr-tooltip-content',
-  template: `
-        <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: {
     '[class.tooltip-content]': 'true',
     '[style.opacity]': '1',

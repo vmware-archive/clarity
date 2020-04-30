@@ -5,8 +5,8 @@
  */
 
 /*
-  * @deprecated since 3.0, remove in 🤔?
-  */
+ * @deprecated since 3.0, remove in 🤔?
+ */
 export const DEPRECATED_COLOR_PALETTES = [
   {
     type: 'Red',
@@ -235,7 +235,10 @@ export const DEPRECATED_COLOR_PALETTES = [
   },
   {
     type: 'Black-white',
-    colors: [{ value: '#000000', text: 'light' }, { value: '#FFFFFF', text: 'dark' }],
+    colors: [
+      { value: '#000000', text: 'light' },
+      { value: '#FFFFFF', text: 'dark' },
+    ],
   },
 ];
 

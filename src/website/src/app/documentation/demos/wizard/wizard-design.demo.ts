@@ -18,78 +18,78 @@ import { DisableFocusTrap } from '../../utils/disable-focus-trap';
   providers: [{ provide: ÇlrFocusTrapTracker, useClass: DisableFocusTrap }],
   styles: [
     `
-            .wizdemo-color-block-row {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-        `,
+      .wizdemo-color-block-row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    `,
     `
-            .wizdemo-color-block {
-                float: left;
-                width: 80px;
-                height: 80px;
-                background-color: black;
-                border: 3px solid white;
-                box-shadow: inset 5px -5px 0px 0px white, inset -5px 5px 0px 0px white;
-                cursor: pointer;
-            }
-        `,
+      .wizdemo-color-block {
+        float: left;
+        width: 80px;
+        height: 80px;
+        background-color: black;
+        border: 3px solid white;
+        box-shadow: inset 5px -5px 0px 0px white, inset -5px 5px 0px 0px white;
+        cursor: pointer;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon {
-                background: none;
-                text-align: center;
-                padding-top: 12px;
-            }
-        `,
+      .wizdemo-color-block.is-icon {
+        background: none;
+        text-align: center;
+        padding-top: 12px;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon clr-icon {
-                height: 48px;
-                width: 48px;
-            }
-        `,
+      .wizdemo-color-block.is-icon clr-icon {
+        height: 48px;
+        width: 48px;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon.active {
-                border-color: #fff;
-                color: #fff;
-                background: #0079B8;
-            }
-        `,
+      .wizdemo-color-block.is-icon.active {
+        border-color: #fff;
+        color: #fff;
+        background: #0079b8;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon.active:hover {
-                border-color: #0079B8;
-            }
-        `,
+      .wizdemo-color-block.is-icon.active:hover {
+        border-color: #0079b8;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon.disabled {
-                opacity: 0.4;
-                cursor: not-allowed;
-            }
-        `,
+      .wizdemo-color-block.is-icon.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    `,
     `
-            .wizdemo-color-block.is-icon.disabled:hover {
-                border-color: #fff;
-            }
-        `,
+      .wizdemo-color-block.is-icon.disabled:hover {
+        border-color: #fff;
+      }
+    `,
     `
-            .wizdemo-color-block:hover {
-                border-color: #D9E4EA;
-            }
-        `,
+      .wizdemo-color-block:hover {
+        border-color: #d9e4ea;
+      }
+    `,
     `
-            .wizdemo-color-block-wrapper {
-                padding: 5px 0;
-            }
-        `,
+      .wizdemo-color-block-wrapper {
+        padding: 5px 0;
+      }
+    `,
     `
-            .wizdemo-color-block.active {
-                border-color: #565656;
-            }
-        `,
+      .wizdemo-color-block.active {
+        border-color: #565656;
+      }
+    `,
     `
-            :host ::ng-deep .clr-wizard.wizard-xl .modal-dialog {
-                max-height: 100%;
-            }
-        `,
+      :host ::ng-deep .clr-wizard.wizard-xl .modal-dialog {
+        max-height: 100%;
+      }
+    `,
   ],
 })
 export class WizardDesignDemo {

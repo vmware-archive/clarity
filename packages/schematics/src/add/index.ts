@@ -31,9 +31,7 @@ if (fs.existsSync(join(__dirname, '../../package.json'))) {
 // Looks up and finds the path to the app module (or other module if specified)
 function findModuleFromOptions(host: Tree, options: ComponentOptions, config: any): Path {
   const modulePath = normalize('/' + config.projects[options.project].sourceRoot + '/' + options.module);
-  const moduleBaseName = normalize(options.module)
-    .split('/')
-    .pop();
+  const moduleBaseName = normalize(options.module).split('/').pop();
 
   // Try to handle any number of semi-valid paths
   if (host.exists(modulePath)) {
@@ -117,7 +115,7 @@ function addDeclarationToNgModule(
   };
 }
 
-export default function(options: ComponentOptions): Rule {
+export default function (options: ComponentOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
     const configFile = 'angular.json';
 

@@ -9,34 +9,34 @@ import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
 
-export default function(): void {
-  describe('ClrDatagridRowDetail component', function() {
+export default function (): void {
+  describe('ClrDatagridRowDetail component', function () {
     let context: TestContext<ClrDatagridRowDetail, FullTest>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrDatagridRowDetail, FullTest, DATAGRID_SPEC_PROVIDERS);
     });
 
-    it('projects content', function() {
+    it('projects content', function () {
       expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
     });
 
-    it('adds the .datagrid-row-flex class to the host', function() {
+    it('adds the .datagrid-row-flex class to the host', function () {
       expect(context.clarityElement.classList.contains('datagrid-row-flex')).toBe(true);
     });
 
-    it('adds the .datagrid-row-detail class to the host', function() {
+    it('adds the .datagrid-row-detail class to the host', function () {
       expect(context.clarityElement.classList.contains('datagrid-row-detail')).toBe(true);
     });
 
-    it("adds the .datagrid-container class to the host if it doesn't contain cells", function() {
+    it("adds the .datagrid-container class to the host if it doesn't contain cells", function () {
       expect(context.clarityElement.classList.contains('datagrid-container')).toBe(true);
       context.testComponent.cell = true;
       context.detectChanges();
       expect(context.clarityElement.classList.contains('datagrid-container')).toBe(false);
     });
 
-    it('updates the Expand provider with the [clrDgReplace] input', function() {
+    it('updates the Expand provider with the [clrDgReplace] input', function () {
       const expand: DatagridIfExpandService = context.getClarityProvider(DatagridIfExpandService);
       let expandState = false;
       expand.replace.subscribe(state => {
@@ -52,11 +52,11 @@ export default function(): void {
 
 @Component({
   template: `
-        <clr-dg-row-detail [clrDgReplace]="replace">
-            <ng-container *ngIf="!cell">Hello world</ng-container>
-            <clr-dg-cell *ngIf="cell">This is a cell</clr-dg-cell>
-        </clr-dg-row-detail>
-    `,
+    <clr-dg-row-detail [clrDgReplace]="replace">
+      <ng-container *ngIf="!cell">Hello world</ng-container>
+      <clr-dg-cell *ngIf="cell">This is a cell</clr-dg-cell>
+    </clr-dg-row-detail>
+  `,
 })
 class FullTest {
   public replace = false;

@@ -19,9 +19,9 @@ function customTestComponentFactory(layout: Layouts = Layouts.VERTICAL, hasLabel
   return TestComponent;
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrLayout', () => {
-    it('sets the layout selection in LayoutService on init if provided', function() {
+    it('sets the layout selection in LayoutService on init if provided', function () {
       const testClass = customTestComponentFactory();
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
@@ -31,7 +31,7 @@ export default function(): void {
       expect(service.layout).toEqual(Layouts.VERTICAL);
     });
 
-    it('accepts layout option through layout input binding', function() {
+    it('accepts layout option through layout input binding', function () {
       const testClass = customTestComponentFactory();
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
@@ -44,7 +44,7 @@ export default function(): void {
       expect(service.layout).toEqual(Layouts.VERTICAL);
     });
 
-    it('ignores invalid layout types', function() {
+    it('ignores invalid layout types', function () {
       const testClass = customTestComponentFactory('invalid' as Layouts);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);

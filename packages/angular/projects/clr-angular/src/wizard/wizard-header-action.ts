@@ -11,16 +11,17 @@ let wizardHeaderActionIndex = 0;
 @Component({
   selector: 'clr-wizard-header-action',
   template: `
-        <button 
-            type="button"
-            class="btn clr-wizard-header-action btn-link"
-            [id]="id"
-            [class.disabled]="disabled"
-            (click)="click()"
-            [title]="title">
-            <ng-content></ng-content>
-        </button>
-    `,
+    <button
+      type="button"
+      class="btn clr-wizard-header-action btn-link"
+      [id]="id"
+      [class.disabled]="disabled"
+      (click)="click()"
+      [title]="title"
+    >
+      <ng-content></ng-content>
+    </button>
+  `,
   host: { class: 'clr-wizard-header-action-wrapper' },
 })
 export class ClrWizardHeaderAction {

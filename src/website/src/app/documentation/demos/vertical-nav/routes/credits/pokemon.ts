@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,14 +12,14 @@ const HTML_EXAMPLE = `
 @Component({
   selector: 'clr-pokemon-credit-demo',
   template: `
-        <b clrFocusOnViewInit>Credit: </b>
-        <a target="_blank" href="https://www.pokemon.com/us/">Pokémon</a>
+    <b clrFocusOnViewInit>Credit: </b>
+    <a target="_blank" href="https://www.pokemon.com/us/">Pokémon</a>
 
-        <p>
-          <em>The template preview of the router component:</em>
-        </p>
-        <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
-    `,
+    <p>
+      <em>The template preview of the router component:</em>
+    </p>
+    <clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+  `,
 })
 export class PokemonDemo {
   htmlExample = HTML_EXAMPLE;

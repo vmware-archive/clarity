@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,11 +13,11 @@ import { Page } from './providers/page';
 import { Selection } from './providers/selection';
 import { Sort } from './providers/sort';
 
-export default function(): void {
-  describe('DatagridActionBar component', function() {
+export default function (): void {
+  describe('DatagridActionBar component', function () {
     let context: TestContext<ClrDatagridActionBar, SimpleTest>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrDatagridActionBar, SimpleTest, [Selection, Items, FiltersProvider, Sort, Page]);
     });
 
@@ -27,7 +27,7 @@ export default function(): void {
       popoverContent.forEach(content => document.body.removeChild(content));
     });
 
-    it('projects content', function() {
+    it('projects content', function () {
       expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
     });
   });

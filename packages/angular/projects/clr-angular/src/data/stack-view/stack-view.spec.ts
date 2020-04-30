@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,18 +11,18 @@ import { ClrStackViewModule } from './stack-view.module';
 
 @Component({
   template: `
-        <clr-stack-view #stackView>
-            <clr-stack-header>Title</clr-stack-header>
-            <clr-stack-block>
-                <clr-stack-label>Label</clr-stack-label>
-                <clr-stack-content>Content</clr-stack-content>
-            </clr-stack-block>
-        </clr-stack-view>
-   `,
+    <clr-stack-view #stackView>
+      <clr-stack-header>Title</clr-stack-header>
+      <clr-stack-block>
+        <clr-stack-label>Label</clr-stack-label>
+        <clr-stack-content>Content</clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-view>
+  `,
 })
 class TestComponent {}
 
-export default function(): void {
+export default function (): void {
   'use strict';
   describe('StackView', () => {
     let fixture: ComponentFixture<any>;

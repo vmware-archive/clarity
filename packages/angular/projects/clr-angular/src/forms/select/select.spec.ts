@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,22 +12,17 @@ import { ClrSelectContainer } from './select-container';
 import { TemplateDrivenSpec, ControlStandaloneSpec, ReactiveSpec } from '../tests/control.spec';
 
 @Component({
-  template: `
-    <select clrSelect></select>
-    `,
+  template: ` <select clrSelect></select> `,
 })
 class StandaloneUseTest {}
 
 @Component({
-  template: `
-    <select clrSelect name="model" class="test-class" [(ngModel)]="model"></select>
-    `,
+  template: ` <select clrSelect name="model" class="test-class" [(ngModel)]="model"></select> `,
 })
 class TemplateDrivenTest {}
 
 @Component({
-  template: `
-  <div [formGroup]="example">
+  template: ` <div [formGroup]="example">
     <select clrSelect name="model" class="test-class" formControlName="model"></select>
   </div>`,
 })
@@ -37,7 +32,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('Select directive', () => {
     ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrSelectContainer, ClrSelect, TemplateDrivenTest, 'clr-select');

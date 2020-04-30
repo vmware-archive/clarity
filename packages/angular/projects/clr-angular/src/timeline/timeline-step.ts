@@ -14,24 +14,21 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'clr-timeline-step',
   template: `
-        <ng-content select="clr-timeline-step-header"></ng-content>
-        <span class="clr-sr-only">{{stepTitleText}}</span>
-        <ng-container *ngIf="!isProcessing; else processing">
-            <clr-icon
-                    [attr.shape]="iconShape"
-                    [attr.aria-label]="iconAriaLabel"
-                    [attr.aria-current]="iconAriaCurrent">
-            </clr-icon>
-        </ng-container>
-        <div class="clr-timeline-step-body">
-            <ng-content select="clr-timeline-step-title"></ng-content>
-            <ng-content select="clr-timeline-step-description"></ng-content>
-        </div>
+    <ng-content select="clr-timeline-step-header"></ng-content>
+    <span class="clr-sr-only">{{ stepTitleText }}</span>
+    <ng-container *ngIf="!isProcessing; else processing">
+      <clr-icon [attr.shape]="iconShape" [attr.aria-label]="iconAriaLabel" [attr.aria-current]="iconAriaCurrent">
+      </clr-icon>
+    </ng-container>
+    <div class="clr-timeline-step-body">
+      <ng-content select="clr-timeline-step-title"></ng-content>
+      <ng-content select="clr-timeline-step-description"></ng-content>
+    </div>
 
-        <ng-template #processing>
-            <clr-spinner clrMedium [attr.aria-label]="iconAriaLabel"></clr-spinner>
-        </ng-template>
-    `,
+    <ng-template #processing>
+      <clr-spinner clrMedium [attr.aria-label]="iconAriaLabel"></clr-spinner>
+    </ng-template>
+  `,
   host: { '[class.clr-timeline-step]': 'true' },
 })
 export class ClrTimelineStep {

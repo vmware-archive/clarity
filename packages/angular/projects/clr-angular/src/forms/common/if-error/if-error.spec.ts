@@ -24,26 +24,24 @@ const maxLengthMessage = 'MAX_LENGTH_MESSAGE';
 class InvalidUseTest {}
 
 @Component({
-  template: `
-        <clr-control-error *clrIfError>${errorMessage}</clr-control-error>
-    `,
+  template: ` <clr-control-error *clrIfError>${errorMessage}</clr-control-error> `,
   providers: [IfErrorService, NgControlService],
 })
 class GeneralErrorTest {}
 
 @Component({
   template: `
-        <clr-control-error *clrIfError="'required'">${errorMessage}</clr-control-error>
-        <clr-control-error *clrIfError="'minlength'">${minLengthMessage}</clr-control-error>
-        <clr-control-error *clrIfError="'maxlength'; error as err">
-          ${maxLengthMessage}-{{err.requiredLength}}-{{err.actualLength}}
-        </clr-control-error>
-    `,
+    <clr-control-error *clrIfError="'required'">${errorMessage}</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">${minLengthMessage}</clr-control-error>
+    <clr-control-error *clrIfError="'maxlength'; error as err">
+      ${maxLengthMessage}-{{ err.requiredLength }}-{{ err.actualLength }}
+    </clr-control-error>
+  `,
   providers: [IfErrorService, NgControlService],
 })
 class SpecificErrorTest {}
 
-export default function(): void {
+export default function (): void {
   describe('ClrIfError', () => {
     describe('invalid use', () => {
       it('throws error when used outside of a control container', () => {

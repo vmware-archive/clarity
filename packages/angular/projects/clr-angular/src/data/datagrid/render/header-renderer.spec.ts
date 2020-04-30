@@ -36,24 +36,24 @@ class SimpleTest {}
 @Component({
   template: `
     <div class="container" style="width: 1100px;">
-        <clr-datagrid>
+      <clr-datagrid>
+        <clr-dg-column>First</clr-dg-column>
+        <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
+        <clr-dg-column [style.width.px]="column3WidthStrict" (clrDgColumnResize)="newWidth = $event"
+          >Three</clr-dg-column
+        >
+        <clr-dg-column>Four</clr-dg-column>
 
-            <clr-dg-column>First</clr-dg-column>
-            <clr-dg-column [style.min-width.px]="120">Second</clr-dg-column>
-            <clr-dg-column [style.width.px]="column3WidthStrict"
-            (clrDgColumnResize)="newWidth = $event">Three</clr-dg-column>
-            <clr-dg-column>Four</clr-dg-column>
-
-            <clr-dg-row *clrDgItems="let item of items">
-                <clr-dg-cell>{{item}}</clr-dg-cell>
-                <clr-dg-cell [style.min-width.px]="120">{{item * 2}}</clr-dg-cell>
-                <clr-dg-cell>{{item * 3}}</clr-dg-cell>
-                <clr-dg-cell>{{item * 4}}</clr-dg-cell>
-            </clr-dg-row>
-            <clr-dg-footer>{{items.length}} items</clr-dg-footer>
-        </clr-datagrid>
+        <clr-dg-row *clrDgItems="let item of items">
+          <clr-dg-cell>{{ item }}</clr-dg-cell>
+          <clr-dg-cell [style.min-width.px]="120">{{ item * 2 }}</clr-dg-cell>
+          <clr-dg-cell>{{ item * 3 }}</clr-dg-cell>
+          <clr-dg-cell>{{ item * 4 }}</clr-dg-cell>
+        </clr-dg-row>
+        <clr-dg-footer>{{ items.length }} items</clr-dg-footer>
+      </clr-datagrid>
     </div>
-`,
+  `,
 })
 class HeaderResizeTestComponent {
   items = [1, 2, 3];
@@ -61,15 +61,15 @@ class HeaderResizeTestComponent {
   newWidth: number;
 }
 
-export default function(): void {
-  describe('DatagridHeaderRenderer directive', function() {
+export default function (): void {
+  describe('DatagridHeaderRenderer directive', function () {
     let context: TestContext<DatagridHeaderRenderer, SimpleTest>;
     let domAdapter: MockDomAdapter;
     let organizer: MockDatagridRenderOrganizer;
     let columnsService: ColumnsService;
     let stateSub: BehaviorSubject<ColumnState>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(DatagridHeaderRenderer, SimpleTest, [
         MOCK_ORGANIZER_PROVIDER,
         MOCK_DOM_ADAPTER_PROVIDER,
@@ -89,44 +89,44 @@ export default function(): void {
       stateSub = columnsService.columns[0];
     });
 
-    it('sets its state in columns service at given index', function() {
+    it('sets its state in columns service at given index', function () {
       expect(columnsService.columns.length).toBe(1);
       expect(stateSub).not.toBeUndefined();
     });
 
-    it('computes the width of header based on its scrollWidth', function() {
+    it('computes the width of header based on its scrollWidth', function () {
       domAdapter._scrollWidth = 123;
       expect(context.clarityDirective.getColumnWidthState().width).toBe(123);
       expect(context.clarityDirective.getColumnWidthState().strictWidth).toBe(0);
     });
 
-    it('can set the width of a column', function() {
+    it('can set the width of a column', function () {
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 123 });
       expect(context.clarityElement.style.width).toBe('123px');
     });
 
-    it('resets the header to default width when notified', function() {
+    it('resets the header to default width when notified', function () {
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 123 });
       expect(context.clarityElement.style.width).toBe('123px');
       organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
       expect(context.clarityElement.style.width).toBeFalsy();
     });
 
-    it('uses the width declared by the user if there is one', function() {
+    it('uses the width declared by the user if there is one', function () {
       domAdapter._userDefinedWidth = 123;
       expect(context.clarityDirective.getColumnWidthState().strictWidth).toEqual(123);
       domAdapter._userDefinedWidth = 0;
       expect(context.clarityDirective.getColumnWidthState().strictWidth).toEqual(0);
     });
 
-    it('does not remove the width defined by the user', function() {
+    it('does not remove the width defined by the user', function () {
       context.clarityElement.style.width = '123px';
       domAdapter._userDefinedWidth = 123;
       organizer.updateRenderStep.next(DatagridRenderStep.CLEAR_WIDTHS);
       expect(context.clarityElement.style.width).toBe('123px');
     });
 
-    it('does not set the width when the user declared a strict one', function() {
+    it('does not set the width when the user declared a strict one', function () {
       domAdapter._scrollWidth = 123;
       stateSub.next({ changes: [DatagridColumnChanges.WIDTH], width: 123, strictWidth: 24 });
       expect(context.clarityElement.classList).toContain(STRICT_WIDTH_CLASS);
@@ -137,7 +137,7 @@ export default function(): void {
       expect(context.clarityElement.classList).not.toContain(STRICT_WIDTH_CLASS);
     });
 
-    it('sets proper hidden class for hidden cell', function() {
+    it('sets proper hidden class for hidden cell', function () {
       stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: true });
       expect(context.clarityElement.classList).toContain(HIDDEN_COLUMN_CLASS);
       stateSub.next({ changes: [DatagridColumnChanges.HIDDEN], hidden: false });
@@ -145,7 +145,7 @@ export default function(): void {
     });
   });
 
-  describe('Datagrid Header Resize Rendering', function() {
+  describe('Datagrid Header Resize Rendering', function () {
     let context: TestContext<ClrDatagrid, HeaderResizeTestComponent>;
     let columnHeader1DebugElement: DebugElement;
     let columnHeader2DebugElement: DebugElement;
@@ -180,7 +180,7 @@ export default function(): void {
       columnDraggable.dragEndEmitter.emit();
     };
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrDatagrid, HeaderResizeTestComponent);
       columnHeader1DebugElement = context.fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[0];
       columnHeader2DebugElement = context.fixture.debugElement.queryAll(By.directive(DatagridHeaderRenderer))[1];
@@ -204,28 +204,28 @@ export default function(): void {
       columnHeader3DraggableDirective = columnHeader3DraggableDebugElement.injector.get(ClrDraggable);
     });
 
-    it('each header should have min-width', function() {
+    it('each header should have min-width', function () {
       expect(columnHeader1ResizerService.minColumnWidth).toBe(96);
       expect(columnHeader2ResizerService.minColumnWidth).toBe(120);
       expect(columnHeader3ResizerService.minColumnWidth).toBe(96);
       expect(columnHeader4ResizerService.minColumnWidth).toBe(96);
     });
 
-    it('columns initialized with strict width should have fixed width class', function() {
+    it('columns initialized with strict width should have fixed width class', function () {
       expect(columnHeader1Element.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
       expect(columnHeader2Element.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
       expect(columnHeader3Element.classList.contains(STRICT_WIDTH_CLASS)).toBeTrue();
       expect(columnHeader4Element.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
     });
 
-    it("each header's initial width should be equal to or greater than its min-width", function() {
+    it("each header's initial width should be equal to or greater than its min-width", function () {
       expect(column1InitialWidth).toBeGreaterThan(columnHeader1ResizerService.minColumnWidth);
       expect(column2InitialWidth).toBeGreaterThan(columnHeader2ResizerService.minColumnWidth);
       expect(column3InitialWidth).toBeGreaterThan(columnHeader3ResizerService.minColumnWidth);
       expect(column4InitialWidth).toBeGreaterThan(columnHeader4ResizerService.minColumnWidth);
     });
 
-    it('expands other flexible headers if header width shrinks', function() {
+    it('expands other flexible headers if header width shrinks', function () {
       const resizeBy = -20;
       emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
@@ -237,14 +237,14 @@ export default function(): void {
       expect(widthOf(columnHeader4Element)).toBeGreaterThan(column4InitialWidth);
     });
 
-    it('resized header should have fixed width class', function() {
+    it('resized header should have fixed width class', function () {
       expect(columnHeader1Element.classList.contains(STRICT_WIDTH_CLASS)).toBeFalse();
       const resizeBy = -20;
       emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
       expect(columnHeader1Element.classList.contains(STRICT_WIDTH_CLASS)).toBeTrue();
     });
 
-    it('shrinks other flexible headers if header width expands', function() {
+    it('shrinks other flexible headers if header width expands', function () {
       const resizeBy = 20;
       emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
@@ -256,7 +256,7 @@ export default function(): void {
       expect(widthOf(columnHeader4Element)).toBeLessThan(column4InitialWidth);
     });
 
-    it("shouldn't shrink flexible headers below their min-width if header width expands by large amount", function() {
+    it("shouldn't shrink flexible headers below their min-width if header width expands by large amount", function () {
       const resizeBy = 1000;
       emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
       expect(widthOf(columnHeader1Element)).toBe(column1InitialWidth + resizeBy);
@@ -268,13 +268,13 @@ export default function(): void {
       expect(widthOf(columnHeader4Element)).toBe(96);
     });
 
-    it('gives header its min-width if a user tried to drag too much to left', function() {
+    it('gives header its min-width if a user tried to drag too much to left', function () {
       const resizeBy = -1000;
       emulateResizeOnColumn(resizeBy, columnHeader1DraggableDirective);
       expect(widthOf(columnHeader1Element)).toBe(96);
     });
 
-    it('emits new header width once resizing ends', function() {
+    it('emits new header width once resizing ends', function () {
       expect(context.testComponent.newWidth).toBeUndefined();
       const resizeBy = 20;
       emulateResizeOnColumn(resizeBy, columnHeader3DraggableDirective);

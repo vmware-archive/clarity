@@ -17,11 +17,11 @@ import { SIGNPOST_POSITIONS } from './signpost-positions';
 import { SignpostIdService } from './providers/signpost-id.service';
 import { SignpostFocusManager } from './providers/signpost-focus-manager.service';
 
-export default function(): void {
-  describe('ClrSignpostContent', function() {
+export default function (): void {
+  describe('ClrSignpostContent', function () {
     let context: TestContext<ClrSignpostContent, SimpleTest>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.createOnly(
         ClrSignpostContent,
         SimpleTest,
@@ -38,11 +38,11 @@ export default function(): void {
       expect(context.clarityElement.getAttribute('id')).toBeDefined();
     });
 
-    it('projects content when open', function() {
+    it('projects content when open', function () {
       expect(context.clarityElement.textContent).toContain('Signpost content');
     });
 
-    it('has a close button that updates the ClrPopoverToggleService.open value', function() {
+    it('has a close button that updates the ClrPopoverToggleService.open value', function () {
       const closer: HTMLElement = context.clarityElement.querySelector('.signpost-action');
       expect(closer).toBeDefined();
       const service: ClrPopoverToggleService = TestBed.get(ClrPopoverToggleService);
@@ -52,17 +52,17 @@ export default function(): void {
       expect(service.open).toBeFalse();
     });
 
-    it('does not allow multiple open popovers', function() {
+    it('does not allow multiple open popovers', function () {
       expect((context.clarityDirective as any).popoverOptions.allowMultipleOpen).toBeFalsy();
     });
 
-    it('takes an input for position', function() {
+    it('takes an input for position', function () {
       context.testComponent.position = 'top-middle';
       context.detectChanges();
       expect(context.clarityDirective.position).toBe('top-middle');
     });
 
-    it('has a default signpost content position', function() {
+    it('has a default signpost content position', function () {
       expect(context.clarityDirective.position).toBe('right-middle');
       expect(context.clarityElement.classList).toContain('right-middle');
     });
@@ -82,7 +82,7 @@ export default function(): void {
     testPosition('left-top');
 
     function testPosition(name: string): void {
-      it('has a ' + name + ' signpost content position', function() {
+      it('has a ' + name + ' signpost content position', function () {
         context.clarityDirective.position = name;
         context.detectChanges();
         const position = SIGNPOST_POSITIONS[name];
@@ -108,13 +108,13 @@ export default function(): void {
 
 @Component({
   template: `
-        <button class="outside-click-test" (click)="bodyClickHandler()">
-            Button to test clicks outside of the dropdown component
-        </button>
-        <clr-signpost-content [clrPosition]="position">
-            Signpost content
-        </clr-signpost-content>
-    `,
+    <button class="outside-click-test" (click)="bodyClickHandler()">
+      Button to test clicks outside of the dropdown component
+    </button>
+    <clr-signpost-content [clrPosition]="position">
+      Signpost content
+    </clr-signpost-content>
+  `,
   providers: [{ provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class SimpleTest {

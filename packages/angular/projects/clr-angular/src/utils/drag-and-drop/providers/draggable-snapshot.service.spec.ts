@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,8 +8,8 @@ import { DragEventType } from '../interfaces/drag-event.interface';
 
 import { DraggableSnapshotService } from './draggable-snapshot.service';
 
-export default function(): void {
-  describe('Draggable Snapshot', function() {
+export default function (): void {
+  describe('Draggable Snapshot', function () {
     const mockDraggable = document.createElement('div');
     const mockDragMoveEvent = {
       dragPosition: { pageX: 11, pageY: 22 },
@@ -27,11 +27,11 @@ export default function(): void {
     const domAdapter = new DomAdapter();
     let draggableSnapshot;
 
-    beforeEach(function() {
+    beforeEach(function () {
       draggableSnapshot = new DraggableSnapshotService(domAdapter);
     });
 
-    it('registers element and sets clientRect and computedStyle', function() {
+    it('registers element and sets clientRect and computedStyle', function () {
       expect(draggableSnapshot.clientRect).toBeUndefined();
       expect(draggableSnapshot.dragEvent).toBeUndefined();
       expect(draggableSnapshot.hasDraggableState).toBeFalsy();
@@ -42,7 +42,7 @@ export default function(): void {
       expect(draggableSnapshot.dragEvent).toEqual(mockDragMoveEvent);
     });
 
-    it('unregisters element and deletes clientRect and computedStyle', function() {
+    it('unregisters element and deletes clientRect and computedStyle', function () {
       draggableSnapshot.capture(mockDraggable, mockDragMoveEvent);
       draggableSnapshot.discard();
       expect(draggableSnapshot.hasDraggableState).toBeFalsy();

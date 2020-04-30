@@ -26,8 +26,8 @@ import { generateDragPosition } from '../../utils/drag-and-drop/helpers.spec';
 })
 class TestComponent {}
 
-export default function(): void {
-  describe('ClrDatagridColumnSeparator component', function() {
+export default function (): void {
+  describe('ClrDatagridColumnSeparator component', function () {
     let fixture: ComponentFixture<any>;
 
     let columnSeparatorDebugElement: DebugElement;
@@ -53,7 +53,7 @@ export default function(): void {
     };
     const mockExtDragEventExceededRange = new ClrDragEvent(mockIntDragEventExceededRange);
 
-    beforeEach(function() {
+    beforeEach(function () {
       TestBed.configureTestingModule({
         imports: [ClrDragAndDropModule],
         declarations: [TestComponent, ClrDatagridColumnSeparator],
@@ -75,13 +75,13 @@ export default function(): void {
       draggableDirective = draggableDebugElement.injector.get(ClrDraggable);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       fixture.destroy();
       const popoverContent = document.querySelectorAll('.clr-popover-content');
       popoverContent.forEach(content => document.body.removeChild(content));
     });
 
-    it('calls showTracker() methods when resizing starts', function() {
+    it('calls showTracker() methods when resizing starts', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
 
       spyOn(columnSeparatorComponent, 'showTracker');
@@ -90,13 +90,13 @@ export default function(): void {
       expect(columnSeparatorComponent.showTracker).toHaveBeenCalledWith(resizeTrackerEl);
     });
 
-    it('shows trackerEl when resizing starts', function() {
+    it('shows trackerEl when resizing starts', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       columnSeparatorComponent.showTracker(resizeTrackerEl);
       expect(resizeTrackerEl.style.height).toBe(tableSizeService.getColumnDragHeight());
     });
 
-    it('calls moveTracker() methods when resizing starts', function() {
+    it('calls moveTracker() methods when resizing starts', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       const moveEvent = new ClrDragEvent({
         type: DragEventType.DRAG_MOVE,
@@ -109,7 +109,7 @@ export default function(): void {
       expect(columnSeparatorComponent.moveTracker).toHaveBeenCalledWith(moveEvent, resizeTrackerEl);
     });
 
-    it('moves trackerEl during resizing', function() {
+    it('moves trackerEl during resizing', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       columnSeparatorComponent.showTracker(resizeTrackerEl);
       expect(resizeTrackerEl.style.transform).toBe('');
@@ -117,14 +117,14 @@ export default function(): void {
       expect(resizeTrackerEl.style.transform).toBe(`translateX(${columnResizerService.resizedBy}px)`);
     });
 
-    it('calls hideTracker() methods when resizing starts', function() {
+    it('calls hideTracker() methods when resizing starts', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       spyOn(columnSeparatorComponent, 'hideTracker');
       draggableDirective.dragEndEmitter.emit();
       expect(columnSeparatorComponent.hideTracker).toHaveBeenCalledWith(resizeTrackerEl);
     });
 
-    it('hides trackerEl when resizing ends', function() {
+    it('hides trackerEl when resizing ends', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       columnSeparatorComponent.showTracker(resizeTrackerEl);
       columnSeparatorComponent.moveTracker(mockExtDragEventWithinRange, resizeTrackerEl);
@@ -133,7 +133,7 @@ export default function(): void {
       expect(resizeTrackerEl.style.transform).toBe('translateX(0px)');
     });
 
-    it('redflags trackerEl if resizing exceeds max range', function() {
+    it('redflags trackerEl if resizing exceeds max range', function () {
       const resizeTrackerEl: HTMLElement = columnSeparatorElement.querySelector('.datagrid-column-resize-tracker');
       columnSeparatorComponent.showTracker(resizeTrackerEl);
       columnResizerService.isWithinMaxResizeRange = false;

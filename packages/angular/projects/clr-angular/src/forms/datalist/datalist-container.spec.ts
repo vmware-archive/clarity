@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests
 @Component({
   template: `
     <clr-datalist-container>
-      <input clrDatalistInput list="clr-datalist-1" required name="Option" [(ngModel)]="model" [disabled]="disabled"/>
+      <input clrDatalistInput list="clr-datalist-1" required name="Option" [(ngModel)]="model" [disabled]="disabled" />
       <datalist id="clr-datalist-1">
         <option [value]="'item1'"></option>
         <option [value]="'item2'"></option>
@@ -25,7 +25,7 @@ import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests
       <clr-control-helper>Helper text</clr-control-helper>
       <clr-control-error>Must be at least 5 characters</clr-control-error>
     </clr-datalist-container>
-    `,
+  `,
 })
 class TemplateDrivenTest {
   disabled = false;
@@ -33,15 +33,14 @@ class TemplateDrivenTest {
 }
 
 @Component({
-  template: `
-    <clr-datalist-container>
-      <input clrDatalistInput list="clr-datalist-1" name="Option"/>
-      <datalist id="clr-datalist-1">
-        <option [value]="'item1'"></option>
-        <option [value]="'item2'"></option>
-        <option [value]="'item3'"></option>
-      </datalist>
-    </clr-datalist-container>`,
+  template: ` <clr-datalist-container>
+    <input clrDatalistInput list="clr-datalist-1" name="Option" />
+    <datalist id="clr-datalist-1">
+      <option [value]="'item1'"></option>
+      <option [value]="'item2'"></option>
+      <option [value]="'item3'"></option>
+    </datalist>
+  </clr-datalist-container>`,
 })
 class NoLabelTest {}
 
@@ -69,7 +68,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrDatalistContainer', () => {
     ContainerNoLabelSpec(ClrDatalistContainer, ClrDatalistInput, NoLabelTest);
     TemplateDrivenSpec(

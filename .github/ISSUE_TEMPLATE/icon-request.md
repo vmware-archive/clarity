@@ -9,9 +9,9 @@ _To help us better understand the purpose and role of icons, please provide us
 as much detail as possible. You may request an icon without specifying a specific
 shape, but please detail the purpose and use cases._
 
-* What is the icon?
-* What does the requested icon signify?
-* In which product(s) will this icon be used?
+- What is the icon?
+- What does the requested icon signify?
+- In which product(s) will this icon be used?
 
 ## Use case
 

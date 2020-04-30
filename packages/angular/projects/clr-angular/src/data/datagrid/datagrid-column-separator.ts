@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,14 +14,17 @@ import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-gener
 @Component({
   selector: 'clr-dg-column-separator',
   template: `
-    <div class="datagrid-column-handle" aria-hidden="true"
-      clrDraggable 
-      [clrGroup]="columnSeparatorId" 
-      (clrDragStart)="showTracker(resizeTrackerEl)" 
-      (clrDragMove)="moveTracker($event, resizeTrackerEl)" 
-      (clrDragEnd)="hideTracker(resizeTrackerEl)"></div>
+    <div
+      class="datagrid-column-handle"
+      aria-hidden="true"
+      clrDraggable
+      [clrGroup]="columnSeparatorId"
+      (clrDragStart)="showTracker(resizeTrackerEl)"
+      (clrDragMove)="moveTracker($event, resizeTrackerEl)"
+      (clrDragEnd)="hideTracker(resizeTrackerEl)"
+    ></div>
     <div class="datagrid-column-resize-tracker" #resizeTrackerEl></div>
-    `,
+  `,
   host: {
     '[class.datagrid-column-separator]': 'true',
   },

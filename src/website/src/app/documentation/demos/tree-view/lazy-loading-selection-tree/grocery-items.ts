@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,12 +11,12 @@ import { ITEMS_SERVICE, Group, Item } from './grocery-models';
 @Component({
   selector: 'my-grocery-items',
   template: `
-        <ng-container [clrLoading]="loading">
-            <clr-tree-node *ngFor="let item of items$ | async" [(clrSelected)]="item.selected">
-                {{item.name}}
-            </clr-tree-node>
-        </ng-container>
-    `,
+    <ng-container [clrLoading]="loading">
+      <clr-tree-node *ngFor="let item of items$ | async" [(clrSelected)]="item.selected">
+        {{ item.name }}
+      </clr-tree-node>
+    </ng-container>
+  `,
 })
 export class GroceryItemsComponent implements OnInit {
   @Input() group: Group;

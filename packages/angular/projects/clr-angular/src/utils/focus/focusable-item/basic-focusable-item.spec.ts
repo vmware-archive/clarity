@@ -22,9 +22,9 @@ interface TestContext {
   id: string;
 }
 
-export default function(): void {
-  describe('Basic focusable item', function() {
-    beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('Basic focusable item', function () {
+    beforeEach(function (this: TestContext) {
       // Because the "service" uses ElementRef and Renderer (it's not really a service),
       // we need to use Angular's testing tools to run this spec.
       TestBed.configureTestingModule({ declarations: [SimpleHost] });
@@ -34,29 +34,29 @@ export default function(): void {
       this.id = fixture.debugElement.injector.get(UNIQUE_ID, 'not_found');
     });
 
-    it('declares a UNIQUE_ID provider', function(this: TestContext) {
+    it('declares a UNIQUE_ID provider', function (this: TestContext) {
       expect(this.id).not.toBe('not_found');
     });
 
-    it('declares itself as a FocusableItem provider', function(this: TestContext) {
+    it('declares itself as a FocusableItem provider', function (this: TestContext) {
       expect(this.item).toBeTruthy();
     });
 
-    it('sets the id attribute of the host', function(this: TestContext) {
+    it('sets the id attribute of the host', function (this: TestContext) {
       expect(this.el.getAttribute('id')).toBe(this.id);
     });
 
-    it('removes the host from tab order', function(this: TestContext) {
+    it('removes the host from tab order', function (this: TestContext) {
       expect(this.el.getAttribute('tabindex')).toBe('-1');
     });
 
-    it('removes the .clr-focus class from the host when not focused', function(this: TestContext) {
+    it('removes the .clr-focus class from the host when not focused', function (this: TestContext) {
       this.item.focus();
       this.item.blur();
       expect(this.el.classList).not.toContain('clr-focus');
     });
 
-    it('triggers a click on the host when activated', function(this: TestContext) {
+    it('triggers a click on the host when activated', function (this: TestContext) {
       let clicks = 0;
       this.el.addEventListener('click', () => clicks++);
       expect(clicks).toBe(0);

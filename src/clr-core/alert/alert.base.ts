@@ -70,19 +70,22 @@ export class CdsBaseAlert extends LitElement {
   @querySlotAll('cds-button') private buttons: NodeListOf<CdsButton>;
 
   get alertIconShape() {
-    /* 
+    /*
      * if the component's icon-shape attribute is set, that value is used.
      * otherwise, we check for status attribute and set an icon shape that matches.
      * if neither is supplied we default to info-circle icon.
      */
     return returnOrFallthrough(
-      [[this.iconShape, () => this.iconShape], [this.status, () => iconMap[this.status].shape]],
+      [
+        [this.iconShape, () => this.iconShape],
+        [this.status, () => iconMap[this.status].shape],
+      ],
       () => infoCircleIcon[0]
     );
   }
 
   get alertIconTitle() {
-    /* 
+    /*
      * if the component's icon-title attribute is set, that value is used.
      * otherwise, we check for status attribute and set an icon shape that matches.
      * if neither is supplied we default to string for "Info".
@@ -115,14 +118,17 @@ export class CdsBaseAlert extends LitElement {
           <slot name="actions" @slotchange="${this.updateButtons()}"></slot>
         </div>
       </div>
-      ${
-        this.closable
-          ? html`<button @click="${() => this.closeAlert()}" aria-label="${
-              CommonStringsService.keys.alertCloseButtonAriaLabel
-            }"
-          class="close" action="outline" icon><cds-icon shape="times"></cds-icon></button>`
-          : html``
-      }
+      ${this.closable
+        ? html`<button
+            @click="${() => this.closeAlert()}"
+            aria-label="${CommonStringsService.keys.alertCloseButtonAriaLabel}"
+            class="close"
+            action="outline"
+            icon
+          >
+            <cds-icon shape="times"></cds-icon>
+          </button>`
+        : html``}
     `;
   }
 

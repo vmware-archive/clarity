@@ -59,9 +59,9 @@ export class Items<T = any> {
   public smartenUp() {
     this._smart = true;
     /*
-         * These observers trigger a chain of function: filter -> sort -> paginate
-         * An observer up the chain re-triggers all the operations that follow it.
-         */
+     * These observers trigger a chain of function: filter -> sort -> paginate
+     * An observer up the chain re-triggers all the operations that follow it.
+     */
     this._filtersSub = this._filters.change.subscribe(() => this._filterItems());
     this._sortSub = this._sort.change.subscribe(() => {
       // Special case, if the datagrid went from sorted to unsorted, we have to re-filter

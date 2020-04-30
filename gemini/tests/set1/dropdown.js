@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -50,12 +50,12 @@ gemini.suite('dropdown', child => {
       })
       .setCaptureElements('.clr-example')
       .capture('default')
-      .capture('no-if-open-clicked', function(actions, find) {
+      .capture('no-if-open-clicked', function (actions, find) {
         this.noIfOpen = find('#no-if-open');
         actions.click(this.noIfOpen);
         actions.wait(WAIT_TIME);
       })
-      .capture('if-open-clicked', function(actions, find) {
+      .capture('if-open-clicked', function (actions, find) {
         // Close the previous dropdown
         actions.click(this.noIfOpen);
         this.ifOpen = find('#if-open');
@@ -73,17 +73,17 @@ gemini.suite('dropdown', child => {
       })
       .setCaptureElements('.clr-example')
       .capture('default')
-      .capture('clicked', function(actions, find) {
+      .capture('clicked', function (actions, find) {
         this.toggleButton = find('.clr-example .dropdown-toggle');
         actions.click(this.toggleButton);
         actions.wait(WAIT_TIME);
       })
-      .capture('submenu-right', function(actions, find) {
+      .capture('submenu-right', function (actions, find) {
         this.itemWithSubMenu = find('#sub-menu-1');
         actions.click(this.itemWithSubMenu);
         actions.wait(WAIT_TIME);
       })
-      .capture('submenu-left', function(actions, find) {
+      .capture('submenu-left', function (actions, find) {
         this.itemWithSubMenu = find('#sub-menu-2');
         actions.click(this.itemWithSubMenu);
         actions.wait(WAIT_TIME);
@@ -110,7 +110,7 @@ gemini.suite('dropdown', child => {
       })
       .setCaptureElements('.content-area')
       .capture('default')
-      .capture('click the dropdown toggle', function(actions, find) {
+      .capture('click the dropdown toggle', function (actions, find) {
         this.toggleButton = find('.clr-example .dropdown-toggle');
         actions.click(this.toggleButton);
         actions.wait(WAIT_TIME);

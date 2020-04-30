@@ -93,13 +93,13 @@ export class CdsTag extends CdsBaseButton {
 
   render() {
     return html`
-    <div class="private-host" cds-layout="horizontal">
-      ${this.icon ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>` : html``}
-      <span class="tag-content"><slot></slot></span>
-      ${this.badge ? html`<span class="tag-badge"><slot name="tag-badge"></slot></span>` : html``}
-      ${this.closable ? html`<span class="tag-close-icon"><cds-icon shape="times"></cds-icon></span>` : html``}
-    </div>
-    ${this.hiddenButtonTemplate}
+      <div class="private-host" cds-layout="horizontal">
+        ${this.icon ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>` : html``}
+        <span class="tag-content"><slot></slot></span>
+        ${this.badge ? html`<span class="tag-badge"><slot name="tag-badge"></slot></span>` : html``}
+        ${this.closable ? html`<span class="tag-close-icon"><cds-icon shape="times"></cds-icon></span>` : html``}
+      </div>
+      ${this.hiddenButtonTemplate}
     `;
   }
 }

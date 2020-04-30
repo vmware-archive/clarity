@@ -10,9 +10,7 @@ import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria
 @Component({
   selector: 'clr-spinner',
   providers: [ClrAriaLiveService],
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   host: {
     '[attr.aria-busy]': 'true',
   },

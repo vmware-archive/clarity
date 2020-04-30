@@ -18,35 +18,35 @@ import { ClrTabs } from './tabs';
   template: `
     <button class="dummy-button">test</button>
     <clr-tabs [clrLayout]="layout">
-        <clr-tab #first>
-            <button clrTabLink>Tab1</button>
-            <clr-tab-content *clrIfActive>
-                <p>Content1</p>
-            </clr-tab-content>
-        </clr-tab>
+      <clr-tab #first>
+        <button clrTabLink>Tab1</button>
+        <clr-tab-content *clrIfActive>
+          <p>Content1</p>
+        </clr-tab-content>
+      </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink>Tab2</button>
-            <clr-tab-content *clrIfActive>
-                <p>Content2</p>
-            </clr-tab-content>
-        </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Tab2</button>
+        <clr-tab-content *clrIfActive>
+          <p>Content2</p>
+        </clr-tab-content>
+      </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink>Tab3</button>
-            <clr-tab-content *clrIfActive>
-                <p>Content3</p>
-            </clr-tab-content>
-        </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Tab3</button>
+        <clr-tab-content *clrIfActive>
+          <p>Content3</p>
+        </clr-tab-content>
+      </clr-tab>
 
-        <clr-tab>
-            <button clrTabLink [clrTabLinkInOverflow]="inOverflow" class="tab4">Tab4</button>
-            <clr-tab-content *clrIfActive>
-                <p class="content-overflow">Content4</p>
-            </clr-tab-content>
-        </clr-tab>
+      <clr-tab>
+        <button clrTabLink [clrTabLinkInOverflow]="inOverflow" class="tab4">Tab4</button>
+        <clr-tab-content *clrIfActive>
+          <p class="content-overflow">Content4</p>
+        </clr-tab-content>
+      </clr-tab>
     </clr-tabs>
-   `,
+  `,
 })
 class TestComponent {
   @ViewChild(ClrTabs) tabsInstance: ClrTabs;
@@ -58,16 +58,16 @@ class TestComponent {
 @Component({
   template: `
     <clr-tabs>
-        <clr-tab *ngIf="true" #first>
-            <button clrTabLink>Tab1</button>
-            <clr-tab-content *clrIfActive>Content1</clr-tab-content>
-        </clr-tab>
-        <clr-tab>
-            <button clrTabLink>Tab2</button>
-            <clr-tab-content *clrIfActive>Content2</clr-tab-content>
-        </clr-tab>
+      <clr-tab *ngIf="true" #first>
+        <button clrTabLink>Tab1</button>
+        <clr-tab-content *clrIfActive>Content1</clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Tab2</button>
+        <clr-tab-content *clrIfActive>Content2</clr-tab-content>
+      </clr-tab>
     </clr-tabs>
-   `,
+  `,
 })
 class NgIfFirstTest {
   @ViewChild('first') firstTab: ClrTab;
@@ -76,16 +76,16 @@ class NgIfFirstTest {
 @Component({
   template: `
     <clr-tabs>
-        <clr-tab #first>
-            <button clrTabLink>Tab1</button>
-            <clr-tab-content *clrIfActive>Content1</clr-tab-content>
-        </clr-tab>
-        <clr-tab *ngIf="true">
-            <button clrTabLink>Tab2</button>
-            <clr-tab-content *clrIfActive>Content2</clr-tab-content>
-        </clr-tab>
+      <clr-tab #first>
+        <button clrTabLink>Tab1</button>
+        <clr-tab-content *clrIfActive>Content1</clr-tab-content>
+      </clr-tab>
+      <clr-tab *ngIf="true">
+        <button clrTabLink>Tab2</button>
+        <clr-tab-content *clrIfActive>Content2</clr-tab-content>
+      </clr-tab>
     </clr-tabs>
-   `,
+  `,
 })
 class NgIfSecondTest {
   @ViewChild('first', { static: true })
@@ -95,27 +95,27 @@ class NgIfSecondTest {
 @Component({
   template: `
     <clr-tabs>
-        <clr-tab>
-            <button clrTabLink>ParentTab 1</button>
-            <clr-tab-content *clrIfActive>Parent Content 1</clr-tab-content>
-        </clr-tab>
-        <clr-tab>
-            <button clrTabLink>Parent Tab 2</button>
-                <clr-tab-content *clrIfActive="true">
-                    <clr-tabs>
-                        <clr-tab>
-                            <button clrTabLink>Child Tab1</button>
-                            <clr-tab-content *clrIfActive>Child Content1</clr-tab-content>
-                        </clr-tab>
-                        <clr-tab *ngIf="true">
-                            <button clrTabLink>Child Tab2</button>
-                            <clr-tab-content *clrIfActive>Child Content2</clr-tab-content>
-                        </clr-tab>
-                    </clr-tabs>
-                </clr-tab-content>
-        </clr-tab>
+      <clr-tab>
+        <button clrTabLink>ParentTab 1</button>
+        <clr-tab-content *clrIfActive>Parent Content 1</clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Parent Tab 2</button>
+        <clr-tab-content *clrIfActive="true">
+          <clr-tabs>
+            <clr-tab>
+              <button clrTabLink>Child Tab1</button>
+              <clr-tab-content *clrIfActive>Child Content1</clr-tab-content>
+            </clr-tab>
+            <clr-tab *ngIf="true">
+              <button clrTabLink>Child Tab2</button>
+              <clr-tab-content *clrIfActive>Child Content2</clr-tab-content>
+            </clr-tab>
+          </clr-tabs>
+        </clr-tab-content>
+      </clr-tab>
     </clr-tabs>
-    `,
+  `,
 })
 class NestedTabsTest {
   @ViewChild(ClrTabs, { static: true })
@@ -125,16 +125,16 @@ class NestedTabsTest {
 @Component({
   template: `
     <clr-tabs>
-        <clr-tab>
-            <button clrTabLink>Tab1</button>
-            <clr-tab-content>Content1</clr-tab-content>
-        </clr-tab>
-        <clr-tab>
-            <button clrTabLink>Tab2</button>
-            <clr-tab-content>Content2</clr-tab-content>
-        </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Tab1</button>
+        <clr-tab-content>Content1</clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink>Tab2</button>
+        <clr-tab-content>Content2</clr-tab-content>
+      </clr-tab>
     </clr-tabs>
-   `,
+  `,
 })
 class NoClrIfActiveTest {
   @ViewChild(ClrTabs, { static: true })
@@ -144,16 +144,16 @@ class NoClrIfActiveTest {
 @Component({
   template: `
     <div style="height: 456px">
-        <clr-tabs>
-            <clr-tab>
-                <button clrTabLink>Tab1</button>
-                <clr-tab-content *clrIfActive>
-                    <p #content style="height: 100%">Content1</p>
-                </clr-tab-content>
-            </clr-tab>
-        </clr-tabs>
+      <clr-tabs>
+        <clr-tab>
+          <button clrTabLink>Tab1</button>
+          <clr-tab-content *clrIfActive>
+            <p #content style="height: 100%">Content1</p>
+          </clr-tab-content>
+        </clr-tab>
+      </clr-tabs>
     </div>
-   `,
+  `,
 })
 class ScalingTestComponent {
   @ViewChild('content') content: ElementRef;
@@ -166,7 +166,7 @@ describe('Tabs', () => {
     let context: TestContext<ClrTabs, TestComponent>;
     let compiled: any;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrTabs, TestComponent);
       context.fixture.detectChanges();
       compiled = context.fixture.nativeElement;
@@ -245,7 +245,7 @@ describe('Tabs', () => {
     let keyFocus: ClrKeyFocus;
     let dummyButton: HTMLElement;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrTabs, TestComponent);
 
       tabLinkDEs = context.fixture.debugElement.queryAll(By.directive(ClrTabLink));
@@ -331,7 +331,7 @@ describe('Tabs', () => {
     let context: TestContext<ClrTabs, NestedTabsTest>;
     let compiled: any;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrTabs, NestedTabsTest);
       context.fixture.detectChanges();
       compiled = context.fixture.nativeElement;
@@ -350,27 +350,27 @@ describe('Tabs', () => {
     });
   });
 
-  describe('Default tab', function() {
+  describe('Default tab', function () {
     function expectFirstTabActive<T extends TestComponent | NgIfFirstTest | NgIfSecondTest>(testType: Type<T>) {
       const context: TestContext<ClrTabs, T> = this.create(ClrTabs, testType);
       const tabsService = context.getClarityProvider(TabsService);
       expect(tabsService.activeTab).toEqual(context.testComponent.firstTab);
     }
 
-    it('sets the first tab as active by default', function() {
+    it('sets the first tab as active by default', function () {
       expectFirstTabActive.call(this, TestComponent);
     });
 
-    it("doesn't ignore tabs with *ngIf", function() {
+    it("doesn't ignore tabs with *ngIf", function () {
       expectFirstTabActive.call(this, NgIfFirstTest);
     });
 
-    it("doesn't prioritize tabs with *ngIf", function() {
+    it("doesn't prioritize tabs with *ngIf", function () {
       expectFirstTabActive.call(this, NgIfSecondTest);
     });
   });
 
-  describe('Tabs layout', function() {
+  describe('Tabs layout', function () {
     let context: TestContext<ClrTabs, any>;
     let compiled: any;
     let tabsService: TabsService;
@@ -381,18 +381,18 @@ describe('Tabs', () => {
       compiled = context.fixture.nativeElement;
     }
 
-    it('service defaults to horizontal', function() {
+    it('service defaults to horizontal', function () {
       initialize.call(this, NoClrIfActiveTest);
       expect(context.fixture.componentInstance.tabsInstance.tabsService.layout).toEqual(TabsLayout.HORIZONTAL);
     });
 
-    it('does not contain class for vertical', function() {
+    it('does not contain class for vertical', function () {
       initialize.call(this, TestComponent);
       compiled = context.fixture.nativeElement;
       expect(compiled.querySelector('.tabs-vertical')).toBeNull();
     });
 
-    it('can be switched to vertical', function() {
+    it('can be switched to vertical', function () {
       initialize.call(this, TestComponent);
       context.fixture.componentInstance.layout = TabsLayout.VERTICAL;
       context.detectChanges();
@@ -406,7 +406,7 @@ describe('Tabs', () => {
     let compiled: any;
     let contents: HTMLElement;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrTabs, NoClrIfActiveTest);
       context.fixture.componentInstance.tabsInstance.ngAfterContentInit();
       context.fixture.detectChanges();
@@ -436,7 +436,7 @@ describe('Tabs', () => {
     let context: TestContext<ClrTabs, ScalingTestComponent>;
     let component: ScalingTestComponent;
 
-    beforeEach(function() {
+    beforeEach(function () {
       context = this.create(ClrTabs, ScalingTestComponent);
       component = context.testComponent;
       context.fixture.detectChanges();

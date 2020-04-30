@@ -12,9 +12,7 @@ import { ControlClassService } from './providers/control-class.service';
 @Component({
   providers: [ClrAriaLiveService],
   selector: 'clr-control-error',
-  template: `
-    <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: {
     '[class.clr-subtext]': 'true',
     '[id]': 'controlIdService?.id + "-error"',

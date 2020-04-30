@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,15 +8,15 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { ColumnState } from '../interfaces/column-state.interface';
 import { ALL_COLUMN_CHANGES, DatagridColumnChanges } from '../enums/column-changes.enum';
 
-export default function(): void {
-  describe('ColumnsService provider', function() {
+export default function (): void {
+  describe('ColumnsService provider', function () {
     let provider: ColumnsService;
     let subscription: Subscription;
     let state: ColumnState = null;
     const col1 = { width: 100 };
     const col2 = { hideable: true };
 
-    beforeEach(function() {
+    beforeEach(function () {
       provider = new ColumnsService();
       state = null;
       provider.columns = [new BehaviorSubject<ColumnState>({ ...col1 }), new BehaviorSubject<ColumnState>({ ...col2 })];

@@ -24,94 +24,94 @@ interface TestContext {
   child?: HTMLElement;
 }
 
-export default function(): void {
-  describe('DOM helpers', function() {
-    describe('ratioBottomReady()', function() {
-      beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('DOM helpers', function () {
+    describe('ratioBottomReady()', function () {
+      beforeEach(function (this: TestContext) {
         this.viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         this.child = createDiv(this.viewport, { height: '300px' }, 'Hello');
       });
-      afterEach(function(this: TestContext) {
+      afterEach(function (this: TestContext) {
         document.body.removeChild(this.viewport);
       });
 
-      it('computes the ratio of loaded elements under the viewport compared to viewport height', function(this: TestContext) {
+      it('computes the ratio of loaded elements under the viewport compared to viewport height', function (this: TestContext) {
         expect(ratioBottomReady(this.viewport)).toBe(2);
       });
 
-      it('accepts an offset argument', function(this: TestContext) {
+      it('accepts an offset argument', function (this: TestContext) {
         expect(ratioBottomReady(this.viewport, -100)).toBe(3);
         expect(ratioBottomReady(this.viewport, 100)).toBe(1);
       });
 
-      it('takes scroll position into account', function(this: TestContext) {
+      it('takes scroll position into account', function (this: TestContext) {
         this.viewport.scrollTop = 100;
         expect(ratioBottomReady(this.viewport)).toBe(1);
       });
 
-      it('ignores borders for the viewport', function(this: TestContext) {
+      it('ignores borders for the viewport', function (this: TestContext) {
         this.viewport.style.boxSizing = 'content-box';
         this.viewport.style.border = '50px solid black';
         expect(ratioBottomReady(this.viewport)).toBe(2);
       });
 
-      it('takes padding of the viewport into account', function(this: TestContext) {
+      it('takes padding of the viewport into account', function (this: TestContext) {
         this.viewport.style.padding = '50px';
         expect(ratioBottomReady(this.viewport)).toBe(3);
       });
 
-      it("doesn't care about the children's specific dimensions", function(this: TestContext) {
+      it("doesn't care about the children's specific dimensions", function (this: TestContext) {
         this.child.style.border = '5px solid black';
         this.child.style.padding = '20px';
         expect(ratioBottomReady(this.viewport)).toBe(2);
       });
     });
 
-    describe('ratioTopReady()', function() {
-      beforeEach(function(this: TestContext) {
+    describe('ratioTopReady()', function () {
+      beforeEach(function (this: TestContext) {
         this.viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         this.child = createDiv(this.viewport, { height: '300px' }, 'Hello');
         this.viewport.scrollTop = 200;
       });
-      afterEach(function(this: TestContext) {
+      afterEach(function (this: TestContext) {
         document.body.removeChild(this.viewport);
       });
 
-      it('computes the ratio of loaded elements over the viewport compared to viewport height', function(this: TestContext) {
+      it('computes the ratio of loaded elements over the viewport compared to viewport height', function (this: TestContext) {
         expect(ratioTopReady(this.viewport)).toBe(2);
       });
 
-      it('accepts an offset argument', function(this: TestContext) {
+      it('accepts an offset argument', function (this: TestContext) {
         expect(ratioTopReady(this.viewport, -100)).toBe(3);
         expect(ratioTopReady(this.viewport, 100)).toBe(1);
       });
 
-      it('takes scroll position into account', function(this: TestContext) {
+      it('takes scroll position into account', function (this: TestContext) {
         this.viewport.scrollTop = 100;
         expect(ratioTopReady(this.viewport)).toBe(1);
       });
 
-      it('ignores borders for the viewport', function(this: TestContext) {
+      it('ignores borders for the viewport', function (this: TestContext) {
         this.viewport.style.boxSizing = 'content-box';
         this.viewport.style.border = '50px solid black';
         expect(ratioTopReady(this.viewport)).toBe(2);
       });
 
-      it('takes padding of the viewport into account', function(this: TestContext) {
+      it('takes padding of the viewport into account', function (this: TestContext) {
         this.viewport.style.padding = '50px';
         this.viewport.scrollTop = 300;
         expect(ratioTopReady(this.viewport)).toBe(3);
       });
 
-      it("doesn't care about the children's specific dimensions", function(this: TestContext) {
+      it("doesn't care about the children's specific dimensions", function (this: TestContext) {
         this.child.style.border = '5px solid black';
         this.child.style.padding = '20px';
         expect(ratioTopReady(this.viewport)).toBe(2);
       });
     });
 
-    describe('offsetHeight()', function() {
-      it('computes the total height of a set of elements', function(this: TestContext) {
+    describe('offsetHeight()', function () {
+      it('computes the total height of a set of elements', function (this: TestContext) {
         const elements = [
           createDiv(document.body, { height: '100px' }, 'Hello'),
           createDiv(document.body, { height: '300px', padding: '10px' }, 'World'),
@@ -122,52 +122,52 @@ export default function(): void {
       });
     });
 
-    describe('preserveScrollAfterAppend()', function() {
-      beforeEach(function(this: TestContext) {
+    describe('preserveScrollAfterAppend()', function () {
+      beforeEach(function (this: TestContext) {
         this.viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         this.child = createDiv(this.viewport, { height: '300px' }, 'Hello');
       });
-      afterEach(function(this: TestContext) {
+      afterEach(function (this: TestContext) {
         document.body.removeChild(this.viewport);
       });
 
-      it("preserves what's displayed in a viewport after appending elements to it", function(this: TestContext) {
+      it("preserves what's displayed in a viewport after appending elements to it", function (this: TestContext) {
         this.viewport.scrollTop = 50;
         preserveScrollAfterAppend(this.viewport, () => createDiv(this.viewport, { height: '100px' }, 'World'));
         expect(this.viewport.scrollTop).toBe(50);
       });
 
-      it("preserves what's displayed even if it's the viewport is scrolled all the way to the bottom", function(this: TestContext) {
+      it("preserves what's displayed even if it's the viewport is scrolled all the way to the bottom", function (this: TestContext) {
         this.viewport.scrollTop = 200;
         preserveScrollAfterAppend(this.viewport, () => createDiv(this.viewport, { height: '100px' }, 'World'));
         expect(this.viewport.scrollTop).toBe(200);
       });
     });
 
-    describe('preserveScrollAfterPrepend()', function() {
-      beforeEach(function(this: TestContext) {
+    describe('preserveScrollAfterPrepend()', function () {
+      beforeEach(function (this: TestContext) {
         this.viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         this.child = createDiv(this.viewport, { height: '300px' }, 'Hello');
       });
-      afterEach(function(this: TestContext) {
+      afterEach(function (this: TestContext) {
         document.body.removeChild(this.viewport);
       });
 
-      it("preserves what's displayed in a viewport after appending elements to it", function(this: TestContext) {
+      it("preserves what's displayed in a viewport after appending elements to it", function (this: TestContext) {
         this.viewport.scrollTop = 50;
         preserveScrollAfterPrepend(this.viewport, () => createDiv(this.viewport, { height: '100px' }, 'World', true));
         expect(this.viewport.scrollTop).toBe(150);
       });
 
-      it("preserves what's displayed even if it's the viewport is scrolled all the way to the top", function(this: TestContext) {
+      it("preserves what's displayed even if it's the viewport is scrolled all the way to the top", function (this: TestContext) {
         this.viewport.scrollTop = 0;
         preserveScrollAfterPrepend(this.viewport, () => createDiv(this.viewport, { height: '100px' }, 'World', true));
         expect(this.viewport.scrollTop).toBe(100);
       });
     });
 
-    describe('getScrollTop()', function() {
-      it('return the current scrollTop value of an element', function(this: TestContext) {
+    describe('getScrollTop()', function () {
+      it('return the current scrollTop value of an element', function (this: TestContext) {
         const viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         createDiv(viewport, { height: '300px' }, 'Hello');
         expect(getScrollTop(viewport)).toBe(0);
@@ -177,8 +177,8 @@ export default function(): void {
       });
     });
 
-    describe('setScrollTop()', function() {
-      it('sets the scrollTop value of an element', function(this: TestContext) {
+    describe('setScrollTop()', function () {
+      it('sets the scrollTop value of an element', function (this: TestContext) {
         const viewport = createDiv(document.body, { height: '100px', overflow: 'auto' });
         createDiv(viewport, { height: '300px' }, 'Hello');
         setScrollTop(viewport, 150);
@@ -187,8 +187,8 @@ export default function(): void {
       });
     });
 
-    describe('startListening()', function() {
-      it('adds an event listener to an element', function(this: TestContext) {
+    describe('startListening()', function () {
+      it('adds an event listener to an element', function (this: TestContext) {
         const el = createDiv(document.body, {}, 'Hello');
         let nbClicks = 0;
         startListening(el, 'click', () => {
@@ -201,8 +201,8 @@ export default function(): void {
       });
     });
 
-    describe('stopListening()', function() {
-      it('removes an event listener from an element', function(this: TestContext) {
+    describe('stopListening()', function () {
+      it('removes an event listener from an element', function (this: TestContext) {
         const el = createDiv(document.body, {}, 'Hello');
         const listener = () => {
           nbClicks++;

@@ -19,10 +19,10 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   selector: 'clr-dg-string-filter',
   providers: [{ provide: CustomFilter, useExisting: DatagridStringFilter }],
   template: `
-        <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-            <input #input type="text" name="search" [(ngModel)]="value" class="clr-input" />
-        </clr-dg-filter>
-    `,
+    <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
+      <input #input type="text" name="search" [(ngModel)]="value" class="clr-input" />
+    </clr-dg-filter>
+  `,
 })
 export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
   implements CustomFilter, AfterViewInit, OnDestroy {

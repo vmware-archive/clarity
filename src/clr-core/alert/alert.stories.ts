@@ -50,25 +50,26 @@ export const API = () => {
     <style>
       cds-alert {
         ${setStyles({
-          '--color': alertColor,
-          '--background': background,
-          '--border-color': borderColor,
-          '--border-radius': borderRadius,
-          '--icon-color': iconColor,
-          '--close-icon-color': closeIconColor,
-          '--close-icon-color-hover': closeIconColorHover,
-        })}
+        '--color': alertColor,
+        '--background': background,
+        '--border-color': borderColor,
+        '--border-radius': borderRadius,
+        '--icon-color': iconColor,
+        '--close-icon-color': closeIconColor,
+        '--close-icon-color-hover': closeIconColorHover,
+      })}
     </style>
-    <cds-alert 
+    <cds-alert
       .closable=${closable}
       .iconShape=${iconShape}
       .iconTitle=${iconTitle}
-      .size=${size} 
+      .size=${size}
       .status=${alertStatus}
-      @closeChange=${action('closeChange')}>
-        <cds-alert-content>
-          ${slot}
-        </cds-alert-content>
+      @closeChange=${action('closeChange')}
+    >
+      <cds-alert-content>
+        ${slot}
+      </cds-alert-content>
     </cds-alert>
   `;
 };
@@ -105,7 +106,7 @@ export const sizes = () => {
         Foobar
       </cds-alert-content>
     </cds-alert>
-    <cds-alert size='sm'>
+    <cds-alert size="sm">
       <cds-alert-content>
         Bar
       </cds-alert-content>
@@ -117,11 +118,11 @@ export const customStyles = () => {
   return html`
     <style>
       .alert-branding {
-        --background: #F3E6FF;
-        --border-color: #4D007A;
-        --icon-color: #781DA0;
-        --close-icon-color: #781DA0;
-        --close-icon-color-hover: #4D007A;
+        --background: #f3e6ff;
+        --border-color: #4d007a;
+        --icon-color: #781da0;
+        --close-icon-color: #781da0;
+        --close-icon-color-hover: #4d007a;
       }
     </style>
     <cds-alert class="alert-branding" icon-shape="user">

@@ -57,10 +57,10 @@ export class ColorSchemeDonut {
   getPath(segmentAngle: number, radius: number) {
     const startAngle = -90;
     const endAngle = startAngle + segmentAngle;
-    const x1 = this.cx + radius * Math.cos(Math.PI * startAngle / 180);
-    const y1 = this.cy + radius * Math.sin(Math.PI * startAngle / 180);
-    const x2 = this.cx + radius * Math.cos(Math.PI * endAngle / 180);
-    const y2 = this.cy + radius * Math.sin(Math.PI * endAngle / 180);
+    const x1 = this.cx + radius * Math.cos((Math.PI * startAngle) / 180);
+    const y1 = this.cy + radius * Math.sin((Math.PI * startAngle) / 180);
+    const x2 = this.cx + radius * Math.cos((Math.PI * endAngle) / 180);
+    const y2 = this.cy + radius * Math.sin((Math.PI * endAngle) / 180);
     return (
       'M' +
       this.cx +

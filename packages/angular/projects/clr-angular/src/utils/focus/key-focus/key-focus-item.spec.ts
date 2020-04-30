@@ -11,9 +11,7 @@ import { ClrKeyFocusModule } from './key-focus.module';
 import { ClrKeyFocusItem } from './key-focus-item';
 
 @Component({
-  template: `
-    <button clrKeyFocusItem>Button 1</button>
-  `,
+  template: ` <button clrKeyFocusItem>Button 1</button> `,
 })
 class TestComponent {
   @ViewChild(ClrKeyFocusItem, { static: true })

@@ -7,42 +7,42 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 ## Philosophy
 
-* Web standards over frameworks.
-* Lightweight, only ship what you need.
-* Accessible by default.
-* Minimally Stateful Components
-* Automated/Build enforced code conventions and performance.
+- Web standards over frameworks.
+- Lightweight, only ship what you need.
+- Accessible by default.
+- Minimally Stateful Components
+- Automated/Build enforced code conventions and performance.
 
 ## Project Design
 
-* Components should be as stateless as possible – leaning on the host application
+- Components should be as stateless as possible – leaning on the host application
   framework to manage state.
 
-* Stateless utilities should default to being pure JavaScript functions instead
+- Stateless utilities should default to being pure JavaScript functions instead
   of Classes.
 
-* Stateful logic between components when necessary should be encapsulated in a
+- Stateful logic between components when necessary should be encapsulated in a
   Class following our Service conventions described in this document.
 
-* Only Components can have side effect modules to allow auto-registration of the
+- Only Components can have side effect modules to allow auto-registration of the
   element.
 
-* Core cannot take on any third-party dependencies other than the
+- Core cannot take on any third-party dependencies other than the
   dependencies defined in the project already. Core also cannot have any
   dependencies on Clarity Angular. This restriction is to ensure proper tree
   shaking and performance standards.
 
-* Core has the following dependencies:
+- Core has the following dependencies:
 
-  * [lit-element](https://lit-element.polymer-project.org/). Lit-element is a
+  - [lit-element](https://lit-element.polymer-project.org/). Lit-element is a
     lightweight base class that provides syntactic sugar to Web Components.
 
-  * [Ramda JS](https://ramdajs.com/) for common functional utilities. To use
+  - [Ramda JS](https://ramdajs.com/) for common functional utilities. To use
     Currying, use the `curryN` function for TypeScript support.
 
 ## New Components
 
-* New components should go through our standard [Development Contribution Guidelines](./../DEVELOPMENT_CONTRIBUTION.md).
+- New components should go through our standard [Development Contribution Guidelines](./../DEVELOPMENT_CONTRIBUTION.md).
   New components that have an accepted proposal and API design will need to
   follow the code conventions, as described in this outline. New components will
   need to have a new Storybook Story for the full API as well as any additional
@@ -50,39 +50,39 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 ## Code Conventions
 
-* In general, if possible, any code convention should be enforced by the build
+- In general, if possible, any code convention should be enforced by the build
   system and not require explicit documentation. The following are conventions
   not currently enforced by our build.
 
 ## Filenames
 
-* Components should end with a `element` suffix.
+- Components should end with a `element` suffix.
   `clr-core/my-toggle/my-toggle.element.ts`.
 
-* Stateless Utilities should be named appropriately in the `utils` directory.
+- Stateless Utilities should be named appropriately in the `utils` directory.
   `clr-core/internal/utils/register.ts`.
 
-* Stateful Utilities should be named with a `service` suffix in the `services`
+- Stateful Utilities should be named with a `service` suffix in the `services`
   directory. `clr-core/internal/services/common-strings.service.ts`.
 
-* Common Interfaces should be named with a `interface` suffix in the `interfaces`
+- Common Interfaces should be named with a `interface` suffix in the `interfaces`
   directory. `clr-core/internal/interfaces/types.interface.ts`.
 
-* Common Enums should be named with a `enum` suffix in the `enums`
+- Common Enums should be named with a `enum` suffix in the `enums`
   directory. `clr-core/internal/enums/key-events.enum.ts`.
 
-* Common Functions should have an appropriate file name with no prefix or suffix
+- Common Functions should have an appropriate file name with no prefix or suffix
   that describes the functionality.
 
 ## Naming and TypeScript Conventions
 
-* Function Utilities should be named by their single responsibility.
+- Function Utilities should be named by their single responsibility.
   `function myUtil() { }`
 
-* Stateful Class Services should be suffixed with `Service`.
+- Stateful Class Services should be suffixed with `Service`.
   `class MyUtilService { }`
 
-* Private properties should be **not** prefixed with a `_` but denoted with the `private` keyword.
+- Private properties should be **not** prefixed with a `_` but denoted with the `private` keyword.
   Long term when EcmaScript [private fields](https://github.com/tc39/proposal-class-fields)
   and [private methods](https://github.com/tc39/proposal-private-methods) land
   we will migrate to use the native syntax.
@@ -97,7 +97,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   set open(value: boolean);
   ```
 
-* Public properties and methods should not need `public` keyword as that is
+- Public properties and methods should not need `public` keyword as that is
   the default behavior.
 
   ```typescript
@@ -106,38 +106,38 @@ adhere to the following guidelines for our Core Web Component codebase.
   private name: string;
   ```
 
-* Constants internal to Clarity are named following the `SCREAMING_SNAKE_CASE`
+- Constants internal to Clarity are named following the `SCREAMING_SNAKE_CASE`
   convention.
 
-* Enum values are `SCREAMING_SNAKE_CASE` because they are constant. For
+- Enum values are `SCREAMING_SNAKE_CASE` because they are constant. For
   instance: `KeyboardKeys.ARROW_DOWN`.
 
 ## Web Component Conventions
 
-* Core Web Components are built using [lit-element](https://lit-element.polymer-project.org/)
+- Core Web Components are built using [lit-element](https://lit-element.polymer-project.org/)
 
-* One Component per file.
+- One Component per file.
 
-* Custom Elements (Web Components) should be prefixed with `cds-`.
+- Custom Elements (Web Components) should be prefixed with `cds-`.
 
-* There is no prefix on public custom element attributes or properties.
+- There is no prefix on public custom element attributes or properties.
 
-* Prefer properties over attributes.
+- Prefer properties over attributes.
 
-* Built-in component style options should be exposed via attributes and CSS
+- Built-in component style options should be exposed via attributes and CSS
   Custom Properties.
 
-* The Component class should be prefixed with `Cds`. Example `export class CdsModal { }`
+- The Component class should be prefixed with `Cds`. Example `export class CdsModal { }`
 
-* Style attributes related to sizes should use t-shirt style values. Example
+- Style attributes related to sizes should use t-shirt style values. Example
   `size="sm"` ... xs, sm, md, lg, xl xxl
 
-* Events/props should follow Angular naming conventions. Example property `open`
+- Events/props should follow Angular naming conventions. Example property `open`
   and event `openChange`.
 
-* Components should rarely if ever expose public methods as this encourages state.
+- Components should rarely if ever expose public methods as this encourages state.
 
-* Properties should only reflect into attributes if expecting primitive values
+- Properties should only reflect into attributes if expecting primitive values
   like `string`, `number`, or `boolean`. Use the provided `@property` decorator
   from `@clr/core/internal` as this provides the same lit-element decorator with
   our project defaults.
@@ -148,14 +148,14 @@ adhere to the following guidelines for our Core Web Component codebase.
   @property({ type: Boolean }) open = false;
   ```
 
-* Custom events by default should not bubble events to the global document.
+- Custom events by default should not bubble events to the global document.
 
-* Custom events should not re-emit events when an input property value changes.
+- Custom events should not re-emit events when an input property value changes.
 
-* Custom events should be used to communicate to the application when a user
+- Custom events should be used to communicate to the application when a user
   interacts with the component UI.
 
-* Custom events should use our built in `@event` decorator.
+- Custom events should use our built in `@event` decorator.
 
   ```typescript
   import { event } from '@clr/core/internal';
@@ -165,7 +165,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   this.closedChange.emit(true);
   ```
 
-* Input properties should use our built in `@property` decorator which extends
+- Input properties should use our built in `@property` decorator which extends
   the lit-element decorator by adding our preferred defaults.
 
   ```typescript
@@ -174,7 +174,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   @property({ type: Boolean }) loadingState;
   ```
 
-* If the component needs to render external text or HTML, use the [Slot API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots).
+- If the component needs to render external text or HTML, use the [Slot API](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots).
 
   ```html
   <cds-modal>
@@ -182,7 +182,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   </cds-modal>
   ```
 
-* We do not use named slots as a public API but rather provide wrapper components.
+- We do not use named slots as a public API but rather provide wrapper components.
 
   ```html
   <cds-modal>
@@ -222,7 +222,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   </cds-modal>
   ```
 
-* Components should follow the appropriate TSDoc summary convention as well as
+- Components should follow the appropriate TSDoc summary convention as well as
   appropriate TSDoc comments for properties and methods. See existing components
   for convention examples.
 
@@ -240,7 +240,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   export class CdsDropdown {}
   ```
 
-* These component conventions allow frameworks to consume the Web easily
+- These component conventions allow frameworks to consume the Web easily
   Components. Here are a few examples.
 
   ```html
@@ -283,31 +283,31 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 ## Component Templates
 
-* Any button in your template should have `type="button"`, in case the component
+- Any button in your template should have `type="button"`, in case the component
   is used inside of a form.
 
-* Never hard code strings in the template but use the `CommonStrings` service
+- Never hard code strings in the template but use the `CommonStrings` service
   for i18n support.
 
 ## Component Styles
 
-* Components should not have any external margins. Margins on a host element make
+- Components should not have any external margins. Margins on a host element make
   assumptions of the layout that is external to their responsibility. Using a design
   token system, designers and developers should be able to layout components
   consistently and with explicit intent and constraint.
 
-* Any style that causes layout reflow should **not** be exposed via CSS Custom Properties.
+- Any style that causes layout reflow should **not** be exposed via CSS Custom Properties.
   This includes padding, margins and border sizes.
 
-* Prefer exposing shorthand values unless the shorthand alters sizes like border
+- Prefer exposing shorthand values unless the shorthand alters sizes like border
   `border-color: var(--border-color)` not `border: var(--border)`
 
-* Core components cannot rely on global styles such as clr-ui grid and typography.
+- Core components cannot rely on global styles such as clr-ui grid and typography.
   Components should be completely independent. This allows teams who are migrating
   from large existing code bases to adopt Clarity Core components incrementally without
   disruption to their existing codebase.
 
-* Public API surface for component styling should **not** use the `clr-` global
+- Public API surface for component styling should **not** use the `clr-` global
   prefixing convention. If there is a naming collision with a local host var and
   global theming var it can break on the component ([see example](https://codepen.io/coryrylan/pen/vYEMxgo)).
   This is also necessary for micro front-ends where a component may need to be
@@ -335,7 +335,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   }
   ```
 
-* Components are themed using CSS Custom Properties defined on the `:host` element.
+- Components are themed using CSS Custom Properties defined on the `:host` element.
   This ensures the component is only styled explicitly by the API we define and
   cannot accidentally be changed at a global scope.
 
@@ -357,10 +357,10 @@ adhere to the following guidelines for our Core Web Component codebase.
   }
   ```
 
-* Alternate states of a component should leverage existing base properties to
+- Alternate states of a component should leverage existing base properties to
   keep the API small and flexible.
 
-* Only colors should use global vars and fall back to hard coded sass vars so
+- Only colors should use global vars and fall back to hard coded sass vars so
   components render independently without requiring global styles.
 
   ```scss
@@ -395,7 +395,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   <cds-badge class="product-badge">1</cds-badge>
   ```
 
-* Host defined properties allow teams to prefix their own core components to
+- Host defined properties allow teams to prefix their own core components to
   share and embed with other products without the risk of a host app breaking
   their product specific styles.
 
@@ -405,15 +405,17 @@ adhere to the following guidelines for our Core Web Component codebase.
       --color: green;
     }
   </style>
-  <cds-badge></cds-badge> <!-- only host application badges are changed -->
+  <cds-badge></cds-badge>
+  <!-- only host application badges are changed -->
 
-  <product-cds-badge></product-cds-badge> <!-- embedded product styles are preserved -->
+  <product-cds-badge></product-cds-badge>
+  <!-- embedded product styles are preserved -->
   ```
 
 ## Public Import API
 
-* Public Components are exported with a side effect file import.
-* Public Utilities are only exported through the top-level import path.
+- Public Components are exported with a side effect file import.
+- Public Utilities are only exported through the top-level import path.
   ```typescript
   import { CommonStrings } from '@clr/core'; // utilities
   import '@clr/core/button'; // component
@@ -421,39 +423,39 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 ## Usage Best Practices
 
-* We ship modern es2015 modules as the default.
-* Use a module bundler to dedupe and handle peer dependencies.
-* Share peer deps to prevent multiple versions running at one time.
-* `@clr/core/internal` is private internal API only for internal use of Core components.
+- We ship modern es2015 modules as the default.
+- Use a module bundler to dedupe and handle peer dependencies.
+- Share peer deps to prevent multiple versions running at one time.
+- `@clr/core/internal` is private internal API only for internal use of Core components.
 
 ## Unit Testing
 
-* We expect extensive unit test coverage of any code submitted. See existing
+- We expect extensive unit test coverage of any code submitted. See existing
   components for test examples. The build enforces code coverage. You can
   run code coverage checks using the `core:` npm scripts defined in the
   `package.json`.
 
-* Unit tests should not duplicate coverage. In particular, avoid multiple unit
+- Unit tests should not duplicate coverage. In particular, avoid multiple unit
   tests failing for the same error.
 
-* Do not test several components at the same time, unless you're explicitly
+- Do not test several components at the same time, unless you're explicitly
   writing an integration test.
 
 ## Screenshot Testing
 
-* Coming Soon...
+- Coming Soon...
 
 ## React/Preact Support
 
-* Preact supports Web Components.
+- Preact supports Web Components.
 
-* Due to React not being compatible with Web Standards such as [custom elements](https://custom-elements-everywhere.com/)
+- Due to React not being compatible with Web Standards such as [custom elements](https://custom-elements-everywhere.com/)
   a shim layer needs to be created for every new component. More details on
   this will be added soon.
 
 ## Library Authors
 
-* If you ship a library that contains Clarity Web Components, there are a few
+- If you ship a library that contains Clarity Web Components, there are a few
   things to consider. First, custom element tag names are global to the DOM.
   To prevent collisions of the possibility of multiple versions running at the
   same time, you will need to alias the tag name. The alias name/prefix should
@@ -467,7 +469,7 @@ adhere to the following guidelines for our Core Web Component codebase.
   <my-lib-cds-modal></my-lib-cds-modal>
   ```
 
-* When shipping a library using Clarity Web Components you must list
+- When shipping a library using Clarity Web Components you must list
   Clarity Core as a peer dependency in your libraries to prevent duplication
   of versions in the host application. Peer dependencies is currently the only
   way to manage dependencies with Web Components. This is due to Web Components

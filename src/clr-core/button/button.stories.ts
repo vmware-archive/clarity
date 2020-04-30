@@ -75,20 +75,20 @@ export const API = () => {
       <style>
         cds-button {
           ${setStyles({
-            '--color': buttonColor,
-            '--background': background,
-            '--box-shadow-color': boxShadowColor,
-            '--border-color': borderColor,
-            '--border-width': borderWidth,
-            '--border-radius': borderRadius,
-            '--font-size': fontSize,
-            '--font-weight': fontWeight,
-            '--font-family': fontFamily,
-            '--text-transform': textTransform,
-            '--letter-spacing': letterSpacing,
-            '--padding': padding,
-            '--height': height,
-          })}
+          '--color': buttonColor,
+          '--background': background,
+          '--box-shadow-color': boxShadowColor,
+          '--border-color': borderColor,
+          '--border-width': borderWidth,
+          '--border-radius': borderRadius,
+          '--font-size': fontSize,
+          '--font-weight': fontWeight,
+          '--font-family': fontFamily,
+          '--text-transform': textTransform,
+          '--letter-spacing': letterSpacing,
+          '--padding': padding,
+          '--height': height,
+        })}
       </style>
       <cds-button
         .action=${actionType}
@@ -96,7 +96,8 @@ export const API = () => {
         .size=${size}
         .loadingState=${loadingState}
         .disabled=${disabled}
-        @click=${action('click')}>
+        @click=${action('click')}
+      >
         ${slot}
       </cds-button>
     </cds-demo>
@@ -105,10 +106,13 @@ export const API = () => {
 
 export const form = () => {
   return html`
-    <form cds-layout="vertical gap:sm" @submit="${(e: Event) => {
-      e.preventDefault();
-      action('submit')(e);
-    }}">
+    <form
+      cds-layout="vertical gap:sm"
+      @submit="${(e: Event) => {
+        e.preventDefault();
+        action('submit')(e);
+      }}"
+    >
       <div cds-layout="vertical gap:xs">
         <label for="name" cds-text="caption">Name</label>
         <input id="name" />
@@ -136,7 +140,7 @@ export const status = () => {
       <cds-button status="danger">danger</cds-button>
       <cds-button status="danger" disabled>disabled</cds-button>
     </div>
-`;
+  `;
 };
 
 export const statusOutline = () => {
@@ -147,7 +151,7 @@ export const statusOutline = () => {
       <cds-button action="outline" status="danger">danger</cds-button>
       <cds-button action="outline" disabled>disabled</cds-button>
     </div>
-`;
+  `;
 };
 
 export const iconWithText = () => {
@@ -172,13 +176,23 @@ export const iconWithTextAndBadge = () => {
     <div cds-layout="vertical gap:sm">
       <div cds-layout="horizontal gap:xs">
         <cds-button><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
-        <cds-button action="outline"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
-        <cds-button action="flat"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button action="outline"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
+        <cds-button action="flat"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
       </div>
       <div cds-layout="horizontal gap:xs">
-        <cds-button size="sm"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
-        <cds-button size="sm" action="outline"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
-        <cds-button size="sm" action="flat"><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
+        <cds-button size="sm"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
+        <cds-button size="sm" action="outline"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
+        <cds-button size="sm" action="flat"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
       </div>
     </div>
   `;

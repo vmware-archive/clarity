@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,9 +9,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { WrappedCell } from './wrapped-cell';
 
 @Component({
-  template: `
-        <dg-wrapped-cell>Hello World!</dg-wrapped-cell>
-    `,
+  template: ` <dg-wrapped-cell>Hello World!</dg-wrapped-cell> `,
 })
 class WrappedCellTest {
   @ViewChild(WrappedCell, { static: true })
@@ -23,21 +21,21 @@ interface TestContext {
   wrapper: WrappedCell;
 }
 
-export default function(): void {
+export default function (): void {
   describe('WrappedCell', () => {
-    beforeEach(function(this: TestContext) {
+    beforeEach(function (this: TestContext) {
       TestBed.configureTestingModule({ declarations: [WrappedCell, WrappedCellTest] });
       this.fixture = TestBed.createComponent(WrappedCellTest);
       this.wrapper = this.fixture.componentInstance.wrapper;
       this.fixture.detectChanges();
     });
-    it('should have a cellView', function(this: TestContext) {
+    it('should have a cellView', function (this: TestContext) {
       expect(this.wrapper.cellView).toBeDefined();
     });
-    it('should have a templateRef to the portal', function(this: TestContext) {
+    it('should have a templateRef to the portal', function (this: TestContext) {
       expect(this.wrapper.templateRef).toBeDefined();
     });
-    it('projects content into the template', function(this: TestContext) {
+    it('projects content into the template', function (this: TestContext) {
       expect(this.wrapper.cellView.rootNodes[0].textContent.trim()).toBe('Hello World!');
     });
   });

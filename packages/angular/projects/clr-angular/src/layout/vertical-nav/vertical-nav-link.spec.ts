@@ -17,7 +17,7 @@ import { ClrVerticalNavGroup } from './vertical-nav-group';
 import { ClrVerticalNavLink } from './vertical-nav-link';
 import { ClrVerticalNavModule } from './vertical-nav.module';
 
-export default function(): void {
+export default function (): void {
   describe('Vertical Nav Links', () => {
     let fixture: ComponentFixture<any>;
     let compiled: HTMLElement;
@@ -95,33 +95,33 @@ export default function(): void {
 
 @Component({
   template: `
-        <a href="#" clrVerticalNavLink id="link1">
-            Text
-        </a>
-        <a href="#" clrVerticalNavLink id="link2">
-            <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
-            Icon Text
-        </a>
-    `,
+    <a href="#" clrVerticalNavLink id="link1">
+      Text
+    </a>
+    <a href="#" clrVerticalNavLink id="link2">
+      <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
+      Icon Text
+    </a>
+  `,
   providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService],
 })
 class TestComponent {}
 
 @Component({
   template: `
-        <clr-vertical-nav-group #group>
-            Group
-            <a href="#" clrVerticalNavLink id="link1" #link>
-                Link 1
-            </a>
-            <a href="#" clrVerticalNavLink id="link2">
-                Link 2
-            </a>
-        </clr-vertical-nav-group>
-        <a href="#" clrVerticalNavLink id="link3">
-            Link 3
-        </a>
-    `,
+    <clr-vertical-nav-group #group>
+      Group
+      <a href="#" clrVerticalNavLink id="link1" #link>
+        Link 1
+      </a>
+      <a href="#" clrVerticalNavLink id="link2">
+        Link 2
+      </a>
+    </clr-vertical-nav-group>
+    <a href="#" clrVerticalNavLink id="link3">
+      Link 3
+    </a>
+  `,
   providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService],
 })
 class TestComponentWithGroup {

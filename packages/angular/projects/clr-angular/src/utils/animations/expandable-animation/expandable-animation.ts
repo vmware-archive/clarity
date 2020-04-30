@@ -11,15 +11,13 @@ import { DomAdapter } from '../../dom-adapter/dom-adapter';
 
 @Component({
   selector: 'clr-expandable-animation',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
   styles: [
     `
-    :host {
-      display: block;
-    }
-  `,
+      :host {
+        display: block;
+      }
+    `,
   ],
   animations: [
     trigger('expandAnimation', [

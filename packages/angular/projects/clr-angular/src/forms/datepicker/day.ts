@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,20 +16,21 @@ import { DateNavigationService } from './providers/date-navigation.service';
 @Component({
   selector: 'clr-day',
   template: `
-        <button
-            class="day-btn"
-            type="button"
-            [class.is-today]="dayView.isTodaysDate"
-            [class.is-excluded]="dayView.isExcluded"
-            [class.is-disabled]="dayView.isDisabled"
-            [class.is-selected]="dayView.isSelected"
-            [attr.tabindex]="dayView.tabIndex"
-            (click)="selectDay()"
-            (focus)="onDayViewFocus()"
-            [attr.aria-label]="dayString">
-            {{dayView.dayModel.date}}
-        </button>
-    `,
+    <button
+      class="day-btn"
+      type="button"
+      [class.is-today]="dayView.isTodaysDate"
+      [class.is-excluded]="dayView.isExcluded"
+      [class.is-disabled]="dayView.isDisabled"
+      [class.is-selected]="dayView.isSelected"
+      [attr.tabindex]="dayView.tabIndex"
+      (click)="selectDay()"
+      (focus)="onDayViewFocus()"
+      [attr.aria-label]="dayString"
+    >
+      {{ dayView.dayModel.date }}
+    </button>
+  `,
   host: { '[class.day]': 'true' },
 })
 export class ClrDay {

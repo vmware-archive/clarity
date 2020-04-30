@@ -17,24 +17,10 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 
 @Component({
   template: `
-        <clr-button
-            #button1
-            type="button"
-            name="button1"
-            id="button1"
-            (click)="toggleClick()">Button 1
-        </clr-button>
-        <clr-button
-            #button2
-            [clrInMenu]="button2InMenu"
-            class="btn btn-primary">Button 2
-        </clr-button>
-        <clr-button
-            #button3
-            disabled
-            class="test">Button 3
-        </clr-button>
-    `,
+    <clr-button #button1 type="button" name="button1" id="button1" (click)="toggleClick()">Button 1 </clr-button>
+    <clr-button #button2 [clrInMenu]="button2InMenu" class="btn btn-primary">Button 2 </clr-button>
+    <clr-button #button3 disabled class="test">Button 3 </clr-button>
+  `,
 })
 class TestButtonComponent {
   @ViewChild('button1') button1: ClrButton;
@@ -51,31 +37,15 @@ class TestButtonComponent {
 
 @Component({
   template: `
-        <clr-button
-            #button1
-            [clrLoading]="load"
-        >Test Button 1
-        </clr-button>
-        <clr-button
-            disabled
-            class="btn btn-primary"
-            #button2
-        >Test Button 2
-        </clr-button>
-        <clr-button
-            class="test"
-            type="button"
-            name="button3"
-            id="button3"
-            #button3
-        >Test Button 3
-        </clr-button>
-        <div id="portal">
-            <ng-template [ngTemplateOutlet]="button1.templateRef"></ng-template>
-            <ng-template [ngTemplateOutlet]="button2.templateRef"></ng-template>
-            <ng-template [ngTemplateOutlet]="button3.templateRef"></ng-template>
-        </div>
-    `,
+    <clr-button #button1 [clrLoading]="load">Test Button 1 </clr-button>
+    <clr-button disabled class="btn btn-primary" #button2>Test Button 2 </clr-button>
+    <clr-button class="test" type="button" name="button3" id="button3" #button3>Test Button 3 </clr-button>
+    <div id="portal">
+      <ng-template [ngTemplateOutlet]="button1.templateRef"></ng-template>
+      <ng-template [ngTemplateOutlet]="button2.templateRef"></ng-template>
+      <ng-template [ngTemplateOutlet]="button3.templateRef"></ng-template>
+    </div>
+  `,
 })
 export class ButtonViewTestComponent {
   @ViewChild('button1') button1: ClrButton;
@@ -85,7 +55,7 @@ export class ButtonViewTestComponent {
   load = true;
 }
 
-export default function(): void {
+export default function (): void {
   describe('Buttons', () => {
     let fixture: ComponentFixture<any>;
     let debugEl: DebugElement;

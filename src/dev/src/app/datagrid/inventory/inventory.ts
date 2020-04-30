@@ -59,11 +59,7 @@ export class Inventory {
         const lowerCase = filters[key].map(value => value.toLowerCase());
         this._currentQuery = this._currentQuery.filter(user => {
           for (const value of lowerCase) {
-            if (
-              getFilterProperty(user)
-                .toLowerCase()
-                .indexOf(value) >= 0
-            ) {
+            if (getFilterProperty(user).toLowerCase().indexOf(value) >= 0) {
               return true;
             }
           }

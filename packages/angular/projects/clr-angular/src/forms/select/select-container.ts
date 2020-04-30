@@ -17,17 +17,17 @@ import { LayoutService } from '../common/providers/layout.service';
 @Component({
   selector: 'clr-select-container',
   template: `
-        <ng-content select="label"></ng-content>
-        <label *ngIf="!label && addGrid()"></label>
-        <div class="clr-control-container" [ngClass]="controlClass()">
-            <div [ngClass]="wrapperClass()">
-                <ng-content select="[clrSelect]"></ng-content>
-                <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-            </div>
-            <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-            <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
-        </div>
-    `,
+    <ng-content select="label"></ng-content>
+    <label *ngIf="!label && addGrid()"></label>
+    <div class="clr-control-container" [ngClass]="controlClass()">
+      <div [ngClass]="wrapperClass()">
+        <ng-content select="[clrSelect]"></ng-content>
+        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+      </div>
+      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+    </div>
+  `,
   host: {
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',

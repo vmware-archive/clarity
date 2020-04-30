@@ -19,7 +19,7 @@ import NgControlServiceSpecs from './providers/ng-control.service.spec';
 import WrappedControlSpecs from './wrapped-control.spec';
 import ControlContainerSpecs from './control-container.spec';
 
-describe('Forms common utilities', function() {
+describe('Forms common utilities', function () {
   ControlClassServiceSpecs();
   ControlIdServiceSpecs();
   ControlStatusServiceSpecs();

@@ -10,10 +10,10 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 @Component({
   selector: 'dg-wrapped-row',
   template: `
-        <ng-template #rowPortal>
-            <ng-content></ng-content>
-        </ng-template>
-    `,
+    <ng-template #rowPortal>
+      <ng-content></ng-content>
+    </ng-template>
+  `,
 })
 export class WrappedRow implements DynamicWrapper, AfterViewInit, OnDestroy {
   _dynamic = false;

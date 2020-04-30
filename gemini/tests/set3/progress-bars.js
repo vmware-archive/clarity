@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -127,12 +127,12 @@ gemini.suite('progress-bar', child => {
       })
       .setCaptureElements('.clr-example')
       .capture('default')
-      .capture('click the 1st show button', function(actions, find) {
+      .capture('click the 1st show button', function (actions, find) {
         this.showButton = find('.prog-example-toggle-0');
         actions.click(this.showButton);
         actions.wait(2000);
       })
-      .capture('click the 2nd show button', function(actions, find) {
+      .capture('click the 2nd show button', function (actions, find) {
         this.showButton = find('.prog-example-toggle-1');
         actions.click(this.showButton);
         actions.wait(2000);

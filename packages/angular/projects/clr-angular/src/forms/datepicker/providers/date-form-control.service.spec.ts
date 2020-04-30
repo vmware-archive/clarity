@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { DateFormControlService } from './date-form-control.service';
 
-export default function() {
+export default function () {
   describe('Date Form Control Service', () => {
     let dateFormControlService: DateFormControlService;
 

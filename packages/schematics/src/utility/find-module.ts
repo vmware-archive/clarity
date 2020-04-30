@@ -38,9 +38,7 @@ export function findModuleFromOptions(host: Tree, options: ModuleOptions): Path 
     const modulePath = normalize(
       '/' + options.sourceDir + '/' + (options.appRoot || options.path) + '/' + options.module
     );
-    const moduleBaseName = normalize(modulePath)
-      .split('/')
-      .pop();
+    const moduleBaseName = normalize(modulePath).split('/').pop();
 
     if (host.exists(modulePath)) {
       return normalize(modulePath);

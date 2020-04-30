@@ -10,10 +10,10 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 @Component({
   selector: 'dg-wrapped-cell',
   template: `
-        <ng-template #cellPortal>
-            <ng-content></ng-content>
-        </ng-template>
-    `,
+    <ng-template #cellPortal>
+      <ng-content></ng-content>
+    </ng-template>
+  `,
 })
 export class WrappedCell implements DynamicWrapper, AfterViewInit, OnDestroy {
   _dynamic = false;

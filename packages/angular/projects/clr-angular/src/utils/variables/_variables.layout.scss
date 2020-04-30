@@ -8,7 +8,7 @@ $clr-grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 ) !default;
 /* stylelint-enable */
 
@@ -16,4 +16,13 @@ $clr-grid-columns: 12 !default;
 $clr-grid-gutter-width: $clr_baselineRem_1 !default;
 
 $clr-sizes: () !default;
-$clr-sizes: map-merge((25: 25%, 50: 50%, 75: 75%, 100: 100%, auto: auto), $clr-sizes);
+$clr-sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto,
+  ),
+  $clr-sizes
+);

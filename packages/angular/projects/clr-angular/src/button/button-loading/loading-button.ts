@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,18 +12,22 @@ import { LoadingListener } from '../../utils/loading/loading-listener';
 @Component({
   selector: 'button[clrLoading]',
   template: `
-        <ng-container [ngSwitch]="state">
-            <span *ngSwitchCase="buttonState.LOADING">
-                <span @spinner class="spinner spinner-inline"></span>
-            </span>
-            <span *ngSwitchCase="buttonState.SUCCESS">
-                <span @validated (@validated.done)="this.loadingStateChange(this.buttonState.DEFAULT)" class="spinner spinner-inline spinner-check"></span>
-            </span>
-            <span *ngSwitchCase="buttonState.DEFAULT" @defaultButton>
-                <ng-content></ng-content>
-            </span>
-        </ng-container>
-    `,
+    <ng-container [ngSwitch]="state">
+      <span *ngSwitchCase="buttonState.LOADING">
+        <span @spinner class="spinner spinner-inline"></span>
+      </span>
+      <span *ngSwitchCase="buttonState.SUCCESS">
+        <span
+          @validated
+          (@validated.done)="this.loadingStateChange(this.buttonState.DEFAULT)"
+          class="spinner spinner-inline spinner-check"
+        ></span>
+      </span>
+      <span *ngSwitchCase="buttonState.DEFAULT" @defaultButton>
+        <ng-content></ng-content>
+      </span>
+    </ng-container>
+  `,
   providers: [{ provide: LoadingListener, useExisting: ClrLoadingButton }],
   animations: [
     trigger('defaultButton', [

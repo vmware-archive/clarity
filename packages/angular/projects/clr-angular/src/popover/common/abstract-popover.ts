@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -93,8 +93,8 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
   }
 
   /*
-     * Fallback to hide when *clrIfOpen is not being used
-     */
+   * Fallback to hide when *clrIfOpen is not being used
+   */
 
   @HostBinding('class.is-off-screen')
   get isOffScreen() {
@@ -102,9 +102,9 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
   }
 
   /*
-     * Until https://github.com/angular/angular/issues/8785 is supported, we don't have any way to instantiate
-     * a separate directive on the host. So let's do dirty but performant for now.
-     */
+   * Until https://github.com/angular/angular/issues/8785 is supported, we don't have any way to instantiate
+   * a separate directive on the host. So let's do dirty but performant for now.
+   */
   public closeOnOutsideClick = false;
   private hostClickListener: () => void;
   private documentClickListener: () => void;

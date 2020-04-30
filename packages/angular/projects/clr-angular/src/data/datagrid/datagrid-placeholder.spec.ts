@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,16 +14,16 @@ import { Page } from './providers/page';
 import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 
-export default function(): void {
-  describe('ClrDatagridPlaceholder component', function() {
-    describe('Typescript API', function() {
-      beforeEach(function() {
+export default function (): void {
+  describe('ClrDatagridPlaceholder component', function () {
+    describe('Typescript API', function () {
+      beforeEach(function () {
         this.pageProvider = new Page(new StateDebouncer());
         this.itemsProvider = new Items(null, null, this.pageProvider);
         this.component = new ClrDatagridPlaceholder(this.itemsProvider);
       });
 
-      it('detects if the Datagrid is empty', function() {
+      it('detects if the Datagrid is empty', function () {
         expect(this.component.emptyDatagrid).toBe(true);
         this.itemsProvider.all = new Array(1);
         expect(this.component.emptyDatagrid).toBe(false);
@@ -32,28 +32,28 @@ export default function(): void {
       });
     });
 
-    describe('View', function() {
+    describe('View', function () {
       let context: TestContext<ClrDatagridPlaceholder<void>, SimpleTest>;
       let itemsProvider: Items<void>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridPlaceholder, SimpleTest, [Items, Page, Sort, FiltersProvider, StateDebouncer]);
         itemsProvider = TestBed.get(Items);
       });
 
-      it('is empty when there are items', function() {
+      it('is empty when there are items', function () {
         itemsProvider.all = new Array(1);
         context.detectChanges();
         expect(context.clarityElement.textContent.trim()).toMatch('');
       });
 
-      it('is empty when the data is loading', function() {
+      it('is empty when the data is loading', function () {
         itemsProvider.loading = true;
         context.detectChanges();
         expect(context.clarityElement.textContent.trim()).toMatch('');
       });
 
-      it('projects content when there are no items', function() {
+      it('projects content when there are no items', function () {
         expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
       });
     });

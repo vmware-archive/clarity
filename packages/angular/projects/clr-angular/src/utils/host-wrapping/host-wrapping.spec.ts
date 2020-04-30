@@ -42,23 +42,17 @@ class WrappedDirective implements OnInit {
 class HostWrappingTestModule {}
 
 @Component({
-  template: `
-        <span wrappedDirective>World</span>
-    `,
+  template: ` <span wrappedDirective>World</span> `,
 })
 class WrappingTest {}
 
 @Component({
-  template: `
-        <wrapper-component><span wrappedDirective>World</span></wrapper-component>
-    `,
+  template: ` <wrapper-component><span wrappedDirective>World</span></wrapper-component> `,
 })
 class ExplicitTest {}
 
 @Component({
-  template: `
-        <span *ngIf="show" wrappedDirective>World</span>
-    `,
+  template: ` <span *ngIf="show" wrappedDirective>World</span> `,
 })
 class NgIfTest {
   show = true;
@@ -70,7 +64,7 @@ interface TestContext<T extends WrappingTest | ExplicitTest | NgIfTest> {
   wrapped: WrappedDirective;
 }
 
-describe('Host wrapping', function() {
+describe('Host wrapping', function () {
   function setupTest<T>(testContext: TestContext<T>, testComponent: Type<T>) {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, ClrHostWrappingModule, HostWrappingTestModule],
@@ -84,70 +78,70 @@ describe('Host wrapping', function() {
       .injector.get(WrappedDirective);
   }
 
-  describe('with an explicit wrapper', function() {
-    beforeEach(function(this: TestContext<ExplicitTest>) {
+  describe('with an explicit wrapper', function () {
+    beforeEach(function (this: TestContext<ExplicitTest>) {
       setupTest(this, ExplicitTest);
     });
 
-    afterEach(function(this: TestContext<ExplicitTest>) {
+    afterEach(function (this: TestContext<ExplicitTest>) {
       this.fixture.destroy();
     });
 
-    it('renders one wrapper and one child', function(this: TestContext<ExplicitTest>) {
+    it('renders one wrapper and one child', function (this: TestContext<ExplicitTest>) {
       expect(this.fixture.nativeElement.textContent.trim()).toBe('Hello World!');
     });
 
-    it("doesn't mark the wrapper as dynamically created", function(this: TestContext<ExplicitTest>) {
+    it("doesn't mark the wrapper as dynamically created", function (this: TestContext<ExplicitTest>) {
       expect(this.wrapper._dynamic).toBe(false);
     });
 
-    it('proxies to the default injector', function(this: TestContext<ExplicitTest>) {
+    it('proxies to the default injector', function (this: TestContext<ExplicitTest>) {
       expect(this.wrapped.injected).toBe(42);
     });
 
-    it("doesn't create extra elements", function(this: TestContext<WrappingTest>) {
+    it("doesn't create extra elements", function (this: TestContext<WrappingTest>) {
       expect(this.fixture.nativeElement.childElementCount).toBe(1);
       expect(this.fixture.nativeElement.firstElementChild.childElementCount).toBe(1);
     });
   });
 
-  describe('without an explicit wrapper', function() {
-    beforeEach(function(this: TestContext<WrappingTest>) {
+  describe('without an explicit wrapper', function () {
+    beforeEach(function (this: TestContext<WrappingTest>) {
       setupTest(this, WrappingTest);
     });
 
-    afterEach(function(this: TestContext<WrappingTest>) {
+    afterEach(function (this: TestContext<WrappingTest>) {
       this.fixture.destroy();
     });
 
-    it('creates a wrapper and projects the host into it', function(this: TestContext<WrappingTest>) {
+    it('creates a wrapper and projects the host into it', function (this: TestContext<WrappingTest>) {
       expect(this.fixture.nativeElement.textContent.trim()).toBe('Hello World!');
     });
 
-    it('marks the wrapper as dynamically created', function(this: TestContext<WrappingTest>) {
+    it('marks the wrapper as dynamically created', function (this: TestContext<WrappingTest>) {
       expect(this.wrapper._dynamic).toBe(true);
     });
 
-    it("proxies to the newly created wrapper's injector", function(this: TestContext<WrappingTest>) {
+    it("proxies to the newly created wrapper's injector", function (this: TestContext<WrappingTest>) {
       expect(this.wrapped.injected).toBe(42);
     });
 
-    it("doesn't leave useless elements", function(this: TestContext<WrappingTest>) {
+    it("doesn't leave useless elements", function (this: TestContext<WrappingTest>) {
       expect(this.fixture.nativeElement.childElementCount).toBe(1);
       expect(this.fixture.nativeElement.firstElementChild.childElementCount).toBe(1);
     });
   });
 
-  describe('with *ngIf', function() {
-    beforeEach(function(this: TestContext<NgIfTest>) {
+  describe('with *ngIf', function () {
+    beforeEach(function (this: TestContext<NgIfTest>) {
       setupTest(this, NgIfTest);
     });
 
-    afterEach(function(this: TestContext<NgIfTest>) {
+    afterEach(function (this: TestContext<NgIfTest>) {
       this.fixture.destroy();
     });
 
-    it('correctly destroys and recreates everything', function(this: TestContext<NgIfTest>) {
+    it('correctly destroys and recreates everything', function (this: TestContext<NgIfTest>) {
       expect(this.fixture.nativeElement.textContent.trim()).toBe('Hello World!');
 
       this.fixture.componentInstance.show = false;

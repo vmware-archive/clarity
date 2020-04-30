@@ -137,7 +137,11 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
     if (this.ifErrorService) {
       this.subscriptions.push(
         this.ifErrorService.statusChanges
-          .pipe(startWith(false), filter(() => this.renderer && !!this.el), distinctUntilChanged())
+          .pipe(
+            startWith(false),
+            filter(() => this.renderer && !!this.el),
+            distinctUntilChanged()
+          )
           .subscribe(error => this.setAriaDescribedBy(error))
       );
     }

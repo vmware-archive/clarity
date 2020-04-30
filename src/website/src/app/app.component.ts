@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
     // like "Clarity Design System - Releases - Releases"
     const dupes = new Set();
 
-    const filteredTitles = browserTitles.filter(function(ttl) {
+    const filteredTitles = browserTitles.filter(function (ttl) {
       if (!dupes.has(ttl)) {
         dupes.add(ttl);
         return true;

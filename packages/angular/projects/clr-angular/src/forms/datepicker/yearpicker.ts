@@ -18,41 +18,45 @@ import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
   selector: 'clr-yearpicker',
   providers: [ClrAriaLiveService],
   template: `
-        <div class="year-switchers">
-          <button
-              class="calendar-btn switcher"
-              type="button"
-              (click)="previousDecade()"
-              [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade">
-              <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
-          </button>
-          <button
-              class="calendar-btn switcher"
-              type="button"
-              (click)="currentDecade()"
-              [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade">
-              <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
-          </button>
-          <button
-              class="calendar-btn switcher"
-              type="button"
-              (click)="nextDecade()"
-              [attr.aria-label]="commonStrings.keys.datepickerNextDecade">
-              <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
-          </button>
-        </div>
-        <div class="years">
-            <button
-                *ngFor="let year of yearRangeModel.yearRange"
-                type="button"
-                class="calendar-btn year"
-                [attr.tabindex]="getTabIndex(year)"
-                [class.is-selected]="year === calendarYear"
-                (click)="changeYear(year)">
-                {{year}}
-            </button>
-        </div>
-    `,
+    <div class="year-switchers">
+      <button
+        class="calendar-btn switcher"
+        type="button"
+        (click)="previousDecade()"
+        [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade"
+      >
+        <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
+      </button>
+      <button
+        class="calendar-btn switcher"
+        type="button"
+        (click)="currentDecade()"
+        [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade"
+      >
+        <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
+      </button>
+      <button
+        class="calendar-btn switcher"
+        type="button"
+        (click)="nextDecade()"
+        [attr.aria-label]="commonStrings.keys.datepickerNextDecade"
+      >
+        <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
+      </button>
+    </div>
+    <div class="years">
+      <button
+        *ngFor="let year of yearRangeModel.yearRange"
+        type="button"
+        class="calendar-btn year"
+        [attr.tabindex]="getTabIndex(year)"
+        [class.is-selected]="year === calendarYear"
+        (click)="changeYear(year)"
+      >
+        {{ year }}
+      </button>
+    </div>
+  `,
   host: {
     '[class.yearpicker]': 'true',
   },

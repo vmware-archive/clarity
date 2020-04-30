@@ -10,7 +10,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VerticalNavIconService } from './providers/vertical-nav-icon.service';
 import { ClrVerticalNavIcon } from './vertical-nav-icon';
 
-export default function(): void {
+export default function (): void {
   describe('Vertical Nav Icons', () => {
     let fixture: ComponentFixture<any>;
     let verticalNavIconService: VerticalNavIconService;
@@ -48,9 +48,7 @@ export default function(): void {
 }
 
 @Component({
-  template: `
-        <div clrVerticalNavIcon #navIcon></div>
-    `,
+  template: ` <div clrVerticalNavIcon #navIcon></div> `,
 })
 class TestComponent {
   @ViewChild('navIcon') navIcon: any;

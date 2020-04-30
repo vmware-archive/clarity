@@ -19,9 +19,7 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
  */
 @Component({
   selector: 'clr-dg-row-detail',
-  template: `
-        <ng-content></ng-content>
-    `,
+  template: ` <ng-content></ng-content> `,
   host: {
     '[class.datagrid-row-flex]': 'true',
     '[class.datagrid-row-detail]': 'true',

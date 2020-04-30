@@ -10,8 +10,8 @@ import { DayViewModel } from './day-view.model';
 import { DayModel } from './day.model';
 import { DateRange } from '../interfaces/date-range.interface';
 
-export default function(): void {
-  describe('CalendarViewModel', function() {
+export default function (): void {
+  describe('CalendarViewModel', function () {
     const calJan2018: CalendarModel = new CalendarModel(2018, 0);
     const todaysDateInCal: DayModel = new DayModel(2018, 0, 1);
     const todaysDateNotInCal: DayModel = new DayModel(2018, 3, 25);

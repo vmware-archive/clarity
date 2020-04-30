@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,22 +12,22 @@ import { MainContainerWillyWonka } from './chocolate/main-container-willy-wonka'
 import { ClrNavigationModule } from './navigation.module';
 
 @Component({
-  template: `        
-        <clr-header class="header">
-            <div class="branding">
-                <a href="#" class="nav-link">
-                    <clr-icon shape="vm-bug"></clr-icon>
-                    <span class="title">Title</span>
-                </a>
-            </div>
-            <div class="header-nav" [clr-nav-level]="1">
-                <a class="active nav-link" href="javascript://"><span class="nav-text">Components</span></a>
-            </div>
-            <div class="header-nav" [clr-nav-level]="2">
-                <a class="active nav-link" href="javascript://"><span class="nav-text">About</span></a>
-            </div>
-        </clr-header>
-   `,
+  template: `
+    <clr-header class="header">
+      <div class="branding">
+        <a href="#" class="nav-link">
+          <clr-icon shape="vm-bug"></clr-icon>
+          <span class="title">Title</span>
+        </a>
+      </div>
+      <div class="header-nav" [clr-nav-level]="1">
+        <a class="active nav-link" href="javascript://"><span class="nav-text">Components</span></a>
+      </div>
+      <div class="header-nav" [clr-nav-level]="2">
+        <a class="active nav-link" href="javascript://"><span class="nav-text">About</span></a>
+      </div>
+    </clr-header>
+  `,
 })
 class TestComponent {}
 

@@ -10,14 +10,22 @@ describe('Conditional Helper: ', () => {
     let conditions: any[];
     let fallthrough: any;
     it('executes the first function where condition is true', () => {
-      conditions = [[false, () => 1], [true, () => 2], [true, () => 3]];
+      conditions = [
+        [false, () => 1],
+        [true, () => 2],
+        [true, () => 3],
+      ];
       fallthrough = () => 4;
 
       expect(returnOrFallthrough(conditions, fallthrough)).toEqual(2);
     });
 
     it('executes the fallthrough function if no conditions are true', () => {
-      conditions = [[false, () => 1], [false, () => 2], [false, () => 3]];
+      conditions = [
+        [false, () => 1],
+        [false, () => 2],
+        [false, () => 3],
+      ];
       fallthrough = () => 4;
 
       expect(returnOrFallthrough(conditions, fallthrough)).toEqual(4);

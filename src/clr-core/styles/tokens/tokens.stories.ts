@@ -68,11 +68,11 @@ export const space = () => {
     <div cds-layout="vertical gap:md">
       ${getTokensByCategory('space').map(
         token => html`
-        <div cds-text="message">
-          <span class="space-demo" style="width: ${token.value}"></span>
-          <span>${token.cssProp}: ${getTokenPxValueTemplate(token)}</span>
-        </div>
-      `
+          <div cds-text="message">
+            <span class="space-demo" style="width: ${token.value}"></span>
+            <span>${token.cssProp}: ${getTokenPxValueTemplate(token)}</span>
+          </div>
+        `
       )}
     </div>
   `;
@@ -83,11 +83,11 @@ export const layoutSpace = () => {
     <div cds-layout="vertical gap:md">
       ${getTokensByCategory('layout-space').map(
         token => html`
-        <div cds-text="message">
-          <span class="space-demo" style="width: ${token.value}"></span>
-          <span>${token.cssProp}: ${getTokenPxValueTemplate(token)}</span>
-        </div>
-      `
+          <div cds-text="message">
+            <span class="space-demo" style="width: ${token.value}"></span>
+            <span>${token.cssProp}: ${getTokenPxValueTemplate(token)}</span>
+          </div>
+        `
       )}
     </div>
   `;
@@ -116,15 +116,21 @@ export const typography = () => {
 function getColorGroup(group: string) {
   const colors = getTokensByCategory('color');
   return html`
-    <div cds-layout="container:fill">${colors.filter(token => token.cssProp.includes(group)).map(
-      token => html`
-          <div style="background: ${token.value}; color: ${
-        token['value-on']
-      }" cds-layout="p:sm display:flex" cds-text="body">
-            ${token.cssProp}<br />${token.value};
-          </div>
-        `
-    )}</div>
+    <div cds-layout="container:fill">
+      ${colors
+        .filter(token => token.cssProp.includes(group))
+        .map(
+          token => html`
+            <div
+              style="background: ${token.value}; color: ${token['value-on']}"
+              cds-layout="p:sm display:flex"
+              cds-text="body"
+            >
+              ${token.cssProp}<br />${token.value};
+            </div>
+          `
+        )}
+    </div>
   `;
 }
 

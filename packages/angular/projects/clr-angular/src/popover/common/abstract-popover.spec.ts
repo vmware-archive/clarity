@@ -16,9 +16,7 @@ import { POPOVER_HOST_ANCHOR } from './popover-host-anchor.token';
 
 @Component({
   selector: 'test-popover',
-  template: `
-        <div class="test-popover">Popover</div>
-    `,
+  template: ` <div class="test-popover">Popover</div> `,
 })
 class TestPopover extends AbstractPopover {
   constructor(injector: Injector, @Optional() parent: ElementRef) {
@@ -27,9 +25,7 @@ class TestPopover extends AbstractPopover {
 }
 
 @Component({
-  template: `
-        <test-popover *clrIfOpen></test-popover>
-    `,
+  template: ` <test-popover *clrIfOpen></test-popover> `,
 })
 class TestPopoverWithIfOpenDirective {
   @ViewChild(TestPopover) testPopover: TestPopover;
@@ -37,9 +33,9 @@ class TestPopoverWithIfOpenDirective {
 
 @Component({
   template: `
-        <input type="text" #ignoreInput (focus)="onFocus($event)">
-        <test-popover-ignore #ignoreElement *clrIfOpen></test-popover-ignore>
-    `,
+    <input type="text" #ignoreInput (focus)="onFocus($event)" />
+    <test-popover-ignore #ignoreElement *clrIfOpen></test-popover-ignore>
+  `,
   providers: [ClrPopoverToggleService, { provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })
 class InputFocusPopover {
@@ -55,9 +51,7 @@ class InputFocusPopover {
 
 @Component({
   selector: 'test-popover-ignore',
-  template: `
-        <div class="test-popover">Popover</div>
-    `,
+  template: ` <div class="test-popover">Popover</div> `,
 })
 class TestPopoverIgnoreElement extends AbstractPopover {
   constructor(injector: Injector, @Optional() parent: ElementRef, parentHost: InputFocusPopover) {
@@ -68,7 +62,7 @@ class TestPopoverIgnoreElement extends AbstractPopover {
   }
 }
 
-describe('Abstract Popover', function() {
+describe('Abstract Popover', function () {
   let fixture: ComponentFixture<any>;
   let toggleService: ClrPopoverToggleService;
 

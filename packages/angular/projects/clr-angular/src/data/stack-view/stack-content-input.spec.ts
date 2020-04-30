@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,14 +12,14 @@ import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.servic
 
 @Component({
   template: `
-      <clr-stack-content>
-          <input type="text" clrStackInput />
-      </clr-stack-content>
-   `,
+    <clr-stack-content>
+      <input type="text" clrStackInput />
+    </clr-stack-content>
+  `,
 })
 class TestComponent {}
 
-export default function(): void {
+export default function (): void {
   'use strict';
   describe('StackContentInput component', () => {
     let fixture: ComponentFixture<any>;

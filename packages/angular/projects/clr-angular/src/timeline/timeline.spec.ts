@@ -14,7 +14,7 @@ import { ClrTimelineModule } from './timeline.module';
 
 import { ClrTimelineLayout } from './enums/timeline-layout.enum';
 
-export default function(): void {
+export default function (): void {
   describe('ClrTimeline component', () => {
     describe('Template API', () => {
       let fixture: ComponentFixture<TestTimeline>;

@@ -12,14 +12,19 @@ import { ClrWizardModule } from './wizard.module';
 
 @Component({
   template: `
-        <clr-wizard-header-action #unset></clr-wizard-header-action>
-        <clr-wizard-header-action #disabled [clrWizardHeaderActionDisabled]="true"></clr-wizard-header-action>
-        <clr-wizard-header-action #identified [id]="myId" title="I have a title"></clr-wizard-header-action>
-        <clr-wizard-header-action #projected [id]="'projection'"
-            [clrWizardHeaderActionDisabled]="disableMe">{{ projector }}</clr-wizard-header-action>
-        <clr-wizard-header-action #clicker id="gotklikz" [title]="titleToUpdate"
-            (actionClicked)="click($event)"></clr-wizard-header-action>
-    `,
+    <clr-wizard-header-action #unset></clr-wizard-header-action>
+    <clr-wizard-header-action #disabled [clrWizardHeaderActionDisabled]="true"></clr-wizard-header-action>
+    <clr-wizard-header-action #identified [id]="myId" title="I have a title"></clr-wizard-header-action>
+    <clr-wizard-header-action #projected [id]="'projection'" [clrWizardHeaderActionDisabled]="disableMe">{{
+      projector
+    }}</clr-wizard-header-action>
+    <clr-wizard-header-action
+      #clicker
+      id="gotklikz"
+      [title]="titleToUpdate"
+      (actionClicked)="click($event)"
+    ></clr-wizard-header-action>
+  `,
 })
 class TestComponent {
   projector = 'montana';
@@ -49,7 +54,7 @@ class TestComponent {
   }
 }
 
-export default function(): void {
+export default function (): void {
   describe('New Wizard Header Action', () => {
     let fixture: ComponentFixture<any>;
     let testComponent: TestComponent;

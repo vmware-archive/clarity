@@ -24,29 +24,33 @@ let clrDgActionId = 0;
   selector: 'clr-dg-action-overflow',
   providers: [UNIQUE_ID_PROVIDER, ClrPopoverToggleService, ClrPopoverEventsService, ClrPopoverPositionService],
   template: `
-      <button class="datagrid-action-toggle"
-              type="button"
-              role="button"
-              aria-haspopup="true"
-              #anchor
-              [attr.aria-controls]="popoverId"
-              [attr.aria-expanded]="open"
-              [attr.aria-label]="commonStrings.keys.rowActions"
-              clrPopoverAnchor
-              clrPopoverOpenCloseButton>
-          <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
-      </button>
+    <button
+      class="datagrid-action-toggle"
+      type="button"
+      role="button"
+      aria-haspopup="true"
+      #anchor
+      [attr.aria-controls]="popoverId"
+      [attr.aria-expanded]="open"
+      [attr.aria-label]="commonStrings.keys.rowActions"
+      clrPopoverAnchor
+      clrPopoverOpenCloseButton
+    >
+      <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
+    </button>
 
-      <div class="datagrid-action-overflow"
-           role="menu"
-           [id]="popoverId"
-           [attr.aria-hidden]="!open"
-           [attr.id]="popoverId"
-           clrFocusTrap
-           (click)="closeOverflowContent($event)"
-           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
-          <ng-content></ng-content>
-      </div>
+    <div
+      class="datagrid-action-overflow"
+      role="menu"
+      [id]="popoverId"
+      [attr.aria-hidden]="!open"
+      [attr.id]="popoverId"
+      clrFocusTrap
+      (click)="closeOverflowContent($event)"
+      *clrPopoverContent="open; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
+    >
+      <ng-content></ng-content>
+    </div>
   `,
 })
 export class ClrDatagridActionOverflow implements OnDestroy {

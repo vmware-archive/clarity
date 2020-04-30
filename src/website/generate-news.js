@@ -41,8 +41,8 @@ function generateTemplates(callback) {
   var length = Object.keys(RELEASE_TEMPLATES).length;
   var error = [];
 
-  RELEASE_TEMPLATE_ARR.forEach(function(release) {
-    fs.readFile(release.path, 'utf8', function(err, data) {
+  RELEASE_TEMPLATE_ARR.forEach(function (release) {
+    fs.readFile(release.path, 'utf8', function (err, data) {
       length--;
       if (err) {
         error.push({
@@ -75,12 +75,12 @@ function initializeTemplateFile(templates, error) {
 }
 
 function writeToFile(templates) {
-  fs.readFile(NEWS_TEMPLATE_PATH, 'utf8', function(err, data) {
+  fs.readFile(NEWS_TEMPLATE_PATH, 'utf8', function (err, data) {
     if (err) {
       return console.log('Cannot read News template file', err);
     }
     fs.appendFileSync(FINAL_COMPONENT_TEMPLATE_PATH, data);
-    templates.forEach(function(template) {
+    templates.forEach(function (template) {
       fs.appendFileSync(FINAL_COMPONENT_TEMPLATE_PATH, template);
     });
   });
@@ -97,7 +97,7 @@ function generateRoutes() {
   var routeTemplate = '\n{\n\tpath: "${releaseNo}",\n\tdata: {\n\t\tbrowserTitle: "${releaseNo}"\n\t}\n}';
   var routes = '';
   var stopComma = RELEASE_TEMPLATE_ARR.length - 1;
-  RELEASE_TEMPLATE_ARR.forEach(function(release, k) {
+  RELEASE_TEMPLATE_ARR.forEach(function (release, k) {
     var temp = routeTemplate.replace('${releaseNo}', release.number);
     routes = routes + temp.replace('${releaseNo}', release.number);
     if (k < stopComma) {

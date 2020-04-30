@@ -33,9 +33,7 @@ import { styles } from './alert-content.element.css.js';
  */
 export class CdsAlertContent extends LitElement {
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   static get styles() {

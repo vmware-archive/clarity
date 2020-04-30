@@ -41,8 +41,8 @@ const PROVIDERS = [
   },
 ];
 
-export default function(): void {
-  describe('DatagridStringFilter component', function() {
+export default function (): void {
+  describe('DatagridStringFilter component', function () {
     let context: TestContext<DatagridStringFilter<string>, FullTest>;
     let filter: TestFilter;
     let filtersInstance: FiltersProvider<string>;
@@ -52,66 +52,63 @@ export default function(): void {
       context.detectChanges();
     }
 
-    beforeEach(function() {
+    beforeEach(function () {
       filter = new TestFilter();
       context = this.create(DatagridStringFilter, FullTest, PROVIDERS);
       filtersInstance = TestBed.get(FiltersProvider);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       const popoverContent = document.querySelectorAll('.clr-popover-content');
       popoverContent.forEach(content => document.body.removeChild(content));
       context.fixture.destroy();
     });
 
-    it('receives an input for the filter value', function() {
+    it('receives an input for the filter value', function () {
       context.testComponent.filterValue = 'M';
       context.detectChanges();
       expect(context.clarityDirective.filter.value).toBe('M');
     });
 
-    it('wires the RegisteredFilter correctly', function() {
+    it('wires the RegisteredFilter correctly', function () {
       const test = new DatagridStringFilterImpl(new TestFilter());
       context.testComponent.filter = filter;
       context.detectChanges();
       expect(context.clarityDirective.filter.filterFn).toEqual(test.filterFn);
     });
 
-    it('receives an input for the filter logic', function() {
+    it('receives an input for the filter logic', function () {
       context.testComponent.filter = filter;
       context.detectChanges();
       expect(context.clarityDirective.filter.filterFn).toBe(filter);
     });
 
-    it('registers a filter', function() {
+    it('registers a filter', function () {
       context.clarityDirective.value = 'test';
       expect(filtersInstance.getActiveFilters().length).toBe(1);
       expect(filtersInstance.getActiveFilters()[0]).toBe(context.clarityDirective.filter);
     });
 
-    it('registers itself as a CustomFilter provider', function() {
+    it('registers itself as a CustomFilter provider', function () {
       expect(context.testComponent.customFilter).toBe(context.clarityDirective);
     });
 
-    it('displays a text input when open', function() {
+    it('displays a text input when open', function () {
       expect(document.querySelector("input[type='text']")).toBeNull();
       openFilter();
       expect(document.querySelector("input[type='text']")).not.toBeNull();
     });
 
-    it(
-      'focuses on the input when the filter opens',
-      fakeAsync(function() {
-        openFilter();
-        const input: HTMLInputElement = document.querySelector("input[type='text']");
-        spyOn(input, 'focus');
-        expect(input.focus).not.toHaveBeenCalled();
-        tick();
-        expect(input.focus).toHaveBeenCalled();
-      })
-    );
+    it('focuses on the input when the filter opens', fakeAsync(function () {
+      openFilter();
+      const input: HTMLInputElement = document.querySelector("input[type='text']");
+      spyOn(input, 'focus');
+      expect(input.focus).not.toHaveBeenCalled();
+      tick();
+      expect(input.focus).toHaveBeenCalled();
+    }));
 
-    it('offers two way binding on the filtered state', function() {
+    it('offers two way binding on the filtered state', function () {
       context.testComponent.filterValue = 'M';
       context.detectChanges();
       expect(context.clarityDirective.value).toBe('M');
@@ -120,12 +117,12 @@ export default function(): void {
       expect(context.testComponent.filterValue).toBe('t');
     });
 
-    xit('closes when the user presses Enter in the input', function() {
+    xit('closes when the user presses Enter in the input', function () {
       // TODO
       openFilter();
     });
 
-    xit('closes when the user presses Escape in the input', function() {
+    xit('closes when the user presses Escape in the input', function () {
       // TODO
       openFilter();
     });
@@ -139,8 +136,10 @@ class TestFilter implements ClrDatagridStringFilterInterface<string> {
 }
 
 @Component({
-  template: `<clr-dg-string-filter [clrDgStringFilter]="filter"
-                                     [(clrFilterValue)]="filterValue"></clr-dg-string-filter>`,
+  template: `<clr-dg-string-filter
+    [clrDgStringFilter]="filter"
+    [(clrFilterValue)]="filterValue"
+  ></clr-dg-string-filter>`,
 })
 class FullTest {
   @ViewChild(CustomFilter) customFilter: CustomFilter;

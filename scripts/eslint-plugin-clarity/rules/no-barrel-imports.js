@@ -20,7 +20,7 @@ module.exports = {
 
   create: function noRelativePackages(context) {
     return {
-      ImportDeclaration: function(node) {
+      ImportDeclaration: function (node) {
         const importFile = context.getFilename();
         let path = node.source.value;
         const pathDir = importFile.substring(0, importFile.lastIndexOf('/'));

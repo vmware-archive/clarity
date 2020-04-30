@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,13 +11,13 @@ interface TestContext {
   idService: TooltipIdService;
 }
 
-export default function(): void {
-  describe('Tooltip Id Service', function() {
-    beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('Tooltip Id Service', function () {
+    beforeEach(function (this: TestContext) {
       this.idService = new TooltipIdService();
     });
 
-    it('should set an id', function(this: TestContext) {
+    it('should set an id', function (this: TestContext) {
       let currentId;
       this.idService.id.subscribe(newId => {
         currentId = newId;
@@ -26,7 +26,7 @@ export default function(): void {
       expect(currentId).toBe('clr-id-1');
     });
 
-    it('exposes and observable for latest id', function(this: TestContext) {
+    it('exposes and observable for latest id', function (this: TestContext) {
       const idObservable = this.idService.id;
       expect(idObservable).toBeDefined();
       expect(idObservable instanceof Observable).toBe(true);

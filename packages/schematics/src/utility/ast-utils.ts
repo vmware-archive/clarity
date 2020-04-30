@@ -114,9 +114,7 @@ export function insertAfterLastOccurrence(
     throw new Error();
   }
   if (syntaxKind) {
-    lastItem = findNodes(lastItem, syntaxKind)
-      .sort(nodesByPosition)
-      .pop();
+    lastItem = findNodes(lastItem, syntaxKind).sort(nodesByPosition).pop();
   }
   if (!lastItem && fallbackPos == undefined) {
     throw new Error(`tried to insert ${toInsert} as first occurence with no fallback position`);

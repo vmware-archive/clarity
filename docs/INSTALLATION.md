@@ -11,7 +11,7 @@
 2.  Include the clr-ui.min.css in your HTML file:
 
     ```html
-    <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css">
+    <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css" />
     ```
 
     If your site is built with [angular-cli](https://github.com/angular/angular-cli),
@@ -44,7 +44,7 @@
 3.  Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js:
 
     ```html
-    <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css">
+    <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css" />
 
     <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
     <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
@@ -136,14 +136,14 @@
     #### Angular
 
     ```html
-      <!--
+    <!--
         - size - a attribute style hook
         - [open] - setting a property on the element
         - (openChange) - listening for the `openChange` custom event
       -->
-      <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
-        <p>slot content</p>
-      </cds-modal>
+    <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+      <p>slot content</p>
+    </cds-modal>
     ```
 
     #### Vue

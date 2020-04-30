@@ -39,31 +39,35 @@ import { isPlatformBrowser } from '@angular/common';
   // We register this component as a CustomFilter, for the parent column to detect it.
   providers: [{ provide: CustomFilter, useExisting: ClrDatagridFilter }, UNIQUE_ID_PROVIDER],
   template: `
-      <button class="datagrid-filter-toggle"
-              type="button"
-              #anchor
-              [attr.aria-label]="commonStrings.keys.datagridFilterAriaLabel"
-              [attr.aria-expanded]="ariaExpanded"
-              [attr.aria-controls]="popoverId"
-              clrPopoverAnchor
-              clrPopoverOpenCloseButton
-              [class.datagrid-filter-open]="open"
-              [class.datagrid-filtered]="active">
-          <clr-icon [attr.shape]="active ? 'filter-grid-circle': 'filter-grid'" class="is-solid"></clr-icon>
-      </button>
+    <button
+      class="datagrid-filter-toggle"
+      type="button"
+      #anchor
+      [attr.aria-label]="commonStrings.keys.datagridFilterAriaLabel"
+      [attr.aria-expanded]="ariaExpanded"
+      [attr.aria-controls]="popoverId"
+      clrPopoverAnchor
+      clrPopoverOpenCloseButton
+      [class.datagrid-filter-open]="open"
+      [class.datagrid-filtered]="active"
+    >
+      <clr-icon [attr.shape]="active ? 'filter-grid-circle' : 'filter-grid'" class="is-solid"></clr-icon>
+    </button>
 
-      <div class="datagrid-filter"
-           [id]="popoverId"
-           clrFocusTrap
-           *clrPopoverContent="open at smartPosition; outsideClickToClose: true; scrollToClose: true">
-          <div class="datagrid-filter-close-wrapper">
-              <button type="button" class="close" clrPopoverCloseButton>
-                  <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
-              </button>
-          </div>
-
-          <ng-content></ng-content>
+    <div
+      class="datagrid-filter"
+      [id]="popoverId"
+      clrFocusTrap
+      *clrPopoverContent="open; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
+    >
+      <div class="datagrid-filter-close-wrapper">
+        <button type="button" class="close" clrPopoverCloseButton>
+          <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+        </button>
       </div>
+
+      <ng-content></ng-content>
+    </div>
   `,
 })
 export class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>

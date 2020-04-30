@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'clr-wizard-nested-directives',
-  template: `
-        <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet>
-    `,
+  template: ` <clr-code-snippet [clrLanguage]="'html'" [clrCode]="html"></clr-code-snippet> `,
 })
 export class WizardNestedDirectiveDemo {
   html = `<clr-wizard #wizard [(clrWizardOpen)]="open">

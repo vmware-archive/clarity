@@ -15,7 +15,13 @@ import { ClrKeyFocusItem } from './key-focus-item';
 
 @Component({
   template: `
-    <div *ngIf="open" clrKeyFocus [clrDirection]="direction" [clrFocusOnLoad]="focusOnLoad" (clrFocusChange)="changed = true">
+    <div
+      *ngIf="open"
+      clrKeyFocus
+      [clrDirection]="direction"
+      [clrFocusOnLoad]="focusOnLoad"
+      (clrFocusChange)="changed = true"
+    >
       <button clrKeyFocusItem>Button 1</button>
       <button clrKeyFocusItem>Button 2</button>
       <button *ngIf="showLast" clrKeyFocusItem>Button 3</button>

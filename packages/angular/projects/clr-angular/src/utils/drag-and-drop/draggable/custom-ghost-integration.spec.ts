@@ -21,13 +21,13 @@ import { GlobalDragModeService } from '../providers/global-drag-mode.service';
 import { ClrDraggable } from './draggable';
 import { generateDragPosition } from '../helpers.spec';
 
-export default function(): void {
+export default function (): void {
   // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-  xdescribe('With Custom Draggable Ghost', function() {
+  xdescribe('With Custom Draggable Ghost', function () {
     let mockDragStartEventInt: DragEventInterface<any>;
     let mockDragEndEventInt: DragEventInterface<any>;
 
-    beforeEach(function() {
+    beforeEach(function () {
       mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [6, 11]) };
       mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
@@ -53,18 +53,18 @@ export default function(): void {
       this.fixture.detectChanges();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       this.fixture.destroy();
     });
 
-    it('should project custom ghost on drag start', function() {
+    it('should project custom ghost on drag start', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       const draggableGhosts = this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost');
       expect(draggableGhosts.length).toBe(1);
       expect(draggableGhosts[0].querySelectorAll('clr-icon').length).toBe(1);
     });
 
-    it('should remove ghost on drag end', function() {
+    it('should remove ghost on drag end', function () {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
       this.dragEventListener.dragEnded.next(mockDragEndEventInt);
@@ -73,11 +73,11 @@ export default function(): void {
   });
 }
 @Component({
-  template: `<div clrDraggable>Test
-            <clr-draggable-ghost *clrIfDragged>
-                <clr-icon shape="check"></clr-icon>
-            </clr-draggable-ghost>
-        </div>
-    `,
+  template: `<div clrDraggable>
+    Test
+    <clr-draggable-ghost *clrIfDragged>
+      <clr-icon shape="check"></clr-icon>
+    </clr-draggable-ghost>
+  </div> `,
 })
 class CustomGhostTest {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,9 +13,9 @@ interface TestContext {
   log: string[];
 }
 
-export default function(): void {
-  describe('wrapObservable()', function() {
-    beforeEach(function(this: TestContext) {
+export default function (): void {
+  describe('wrapObservable()', function () {
+    beforeEach(function (this: TestContext) {
       this.log = [];
       this.original = new Subject<string>();
       this.wrapped = wrapObservable(
@@ -25,17 +25,17 @@ export default function(): void {
       );
     });
 
-    afterEach(function(this: TestContext) {
+    afterEach(function (this: TestContext) {
       this.original.complete();
     });
 
-    it('executes the onSubscribe function on subscription', function(this: TestContext) {
+    it('executes the onSubscribe function on subscription', function (this: TestContext) {
       expect(this.log).toEqual([]);
       this.wrapped.subscribe(value => this.log.push(value));
       expect(this.log).toEqual(['Subscribed']);
     });
 
-    it('executes the onUnsubscribe function on unsubscription', function(this: TestContext) {
+    it('executes the onUnsubscribe function on unsubscription', function (this: TestContext) {
       expect(this.log).toEqual([]);
       const subscription = this.wrapped.subscribe(value => this.log.push(value));
       this.log.length = 0;
@@ -43,7 +43,7 @@ export default function(): void {
       expect(this.log).toEqual(['Unsubscribed']);
     });
 
-    it('emits the same values as the original observable', function(this: TestContext) {
+    it('emits the same values as the original observable', function (this: TestContext) {
       this.wrapped.subscribe(value => this.log.push(value));
       this.log.length = 0;
       this.original.next('Hello');

@@ -23,15 +23,15 @@ import { DetailService } from './providers/detail.service';
 import { FiltersProvider } from './providers/filters';
 import { Sort } from './providers/sort';
 
-export default function(): void {
-  describe('DatagridColumn component', function() {
-    describe('Typescript API', function() {
+export default function (): void {
+  describe('DatagridColumn component', function () {
+    describe('Typescript API', function () {
       let context: TestContext<ClrDatagridColumn, SimpleTest>;
       let sortService: Sort<number>;
       let comparator: TestComparator;
       let component: ClrDatagridColumn<number>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         sortService = context.getClarityProvider(Sort);
         component = context.clarityDirective;
@@ -44,13 +44,13 @@ export default function(): void {
         popoverContent.forEach(content => document.body.removeChild(content));
       });
 
-      it('receives a comparator to sort the column', function() {
+      it('receives a comparator to sort the column', function () {
         expect(component.sortable).toBe(false);
         component.sortBy = comparator;
         expect(component.sortable).toBe(true);
       });
 
-      it('can sort according to the given comparator', function() {
+      it('can sort according to the given comparator', function () {
         component.sortBy = comparator;
         expect(sortService.comparator).toBeUndefined();
         component.sort();
@@ -61,13 +61,13 @@ export default function(): void {
         expect(sortService.reverse).toBe(true);
       });
 
-      it("doesn't sort without a comparator", function() {
+      it("doesn't sort without a comparator", function () {
         expect(sortService.comparator).toBeUndefined();
         component.sort();
         expect(sortService.comparator).toBeUndefined();
       });
 
-      it('knows if the column is currently sorted', function() {
+      it('knows if the column is currently sorted', function () {
         component.sortBy = comparator;
         expect(component.sorted).toBe(false);
         component.sort();
@@ -76,7 +76,7 @@ export default function(): void {
         expect(component.sorted).toBe(true);
       });
 
-      it('sorts according to the optional input parameter', function() {
+      it('sorts according to the optional input parameter', function () {
         component.sortBy = comparator;
         expect(component.sortOrder).toBe(ClrDatagridSortOrder.UNSORTED);
         component.sort(true);
@@ -87,7 +87,7 @@ export default function(): void {
         expect(component.sortOrder).toBe(ClrDatagridSortOrder.ASC);
       });
 
-      it('knows the column current sorting order', function() {
+      it('knows the column current sorting order', function () {
         component.sortBy = comparator;
         expect(component.sortOrder).toBe(ClrDatagridSortOrder.UNSORTED);
         component.sort();
@@ -96,14 +96,14 @@ export default function(): void {
         expect(component.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('knows when the column has an ascending sortIcon', function() {
+      it('knows when the column has an ascending sortIcon', function () {
         component.sortBy = comparator;
         expect(component.sortIcon).toBeUndefined();
         component.sort();
         expect(component.sortIcon).toBe('arrow');
       });
 
-      it('knows when the column has a descending sortIcon', function() {
+      it('knows when the column has a descending sortIcon', function () {
         component.sortBy = comparator;
         expect(component.sortIcon).toBeUndefined();
         component.sort();
@@ -111,7 +111,7 @@ export default function(): void {
         expect(component.sortIcon).toBe('arrow down');
       });
 
-      it('sets the column sortIcon to null when sort is cleared', function() {
+      it('sets the column sortIcon to null when sort is cleared', function () {
         component.sortBy = comparator;
         expect(component.sortIcon).toBe(undefined);
         component.sort();
@@ -119,14 +119,14 @@ export default function(): void {
         expect(component.sortIcon).toBeNull();
       });
 
-      it('offers a shortcut to sort based on a property name', function() {
+      it('offers a shortcut to sort based on a property name', function () {
         component.field = 'test';
         expect(sortService.comparator).toBeUndefined();
         component.sort();
         expect(sortService.comparator).toEqual(new DatagridPropertyComparator('test'));
       });
 
-      it('sorts based on a property name if sortyBy is undefined', function() {
+      it('sorts based on a property name if sortyBy is undefined', function () {
         component.field = 'test';
         component.sortBy = undefined;
         expect(sortService.comparator).toBeUndefined();
@@ -134,7 +134,7 @@ export default function(): void {
         expect(sortService.comparator).toEqual(new DatagridPropertyComparator('test'));
       });
 
-      it('sorts based on a property name if sortyBy becomes undefined', function() {
+      it('sorts based on a property name if sortyBy becomes undefined', function () {
         component.sortBy = comparator;
         component.field = 'test';
         component.sortBy = undefined;
@@ -143,7 +143,7 @@ export default function(): void {
         expect(sortService.comparator).toEqual(new DatagridPropertyComparator('test'));
       });
 
-      it('sorts based on a property shortcut for sortBy without a given comparator', function() {
+      it('sorts based on a property shortcut for sortBy without a given comparator', function () {
         component.sortBy = 'test';
         expect(sortService.comparator).toBeUndefined();
         component.sort();
@@ -151,13 +151,13 @@ export default function(): void {
       });
     });
 
-    describe('Template API', function() {
-      it('provides a wrapped view for the content', function() {
+    describe('Template API', function () {
+      it('provides a wrapped view for the content', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.directive = this.context.clarityDirective;
         expect(this.directive._view).toBeDefined();
       });
-      it('receives an input for the comparator', function() {
+      it('receives an input for the comparator', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
@@ -165,7 +165,7 @@ export default function(): void {
         expect(this.context.clarityDirective.sortBy).toBe(this.comparator);
       });
 
-      it('receives a string input for the property shortcut comparator', function() {
+      it('receives a string input for the property shortcut comparator', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new DatagridPropertyComparator('test');
         this.context.testComponent.comparator = 'test';
@@ -173,14 +173,14 @@ export default function(): void {
         expect(this.context.clarityDirective.sortBy).toEqual(this.comparator);
       });
 
-      it('receives an input for the property name', function() {
+      it('receives an input for the property name', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityDirective.field).toBe('test');
       });
 
-      it('receives an input for the property filter value', function() {
+      it('receives an input for the property filter value', function () {
         this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
@@ -188,7 +188,7 @@ export default function(): void {
         expect(this.context.clarityDirective.filterValue).toBe('M');
       });
 
-      it('offers two-way binding on the sorted state', function() {
+      it('offers two-way binding on the sorted state', function () {
         this.context = this.create(ClrDatagridColumn, SimpleDeprecatedTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
@@ -200,7 +200,7 @@ export default function(): void {
         expect(this.context.testComponent.sorted).toBe(false);
       });
 
-      it('offers two-way binding on the sortOrder state', function() {
+      it('offers two-way binding on the sortOrder state', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
@@ -215,7 +215,7 @@ export default function(): void {
         expect(this.context.testComponent.sortOrder).toBe(ClrDatagridSortOrder.ASC);
       });
 
-      it('offers two-way binding on the filtered state', function() {
+      it('offers two-way binding on the filtered state', function () {
         this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.testComponent.filterValue = 'M';
@@ -227,7 +227,7 @@ export default function(): void {
         expect(this.context.testComponent.filterValue).toBe('t');
       });
 
-      it('should emit on string filter value changes', function() {
+      it('should emit on string filter value changes', function () {
         this.context = this.create(ClrDatagridColumn, PreFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
 
@@ -246,12 +246,12 @@ export default function(): void {
         expect(this.context.testComponent.filterValue).toBe('m');
       });
 
-      it('accepts a custom filter in the projected content', function() {
+      it('accepts a custom filter in the projected content', function () {
         this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
       });
 
-      it('accepts a custom string filter in the projected content', function() {
+      it('accepts a custom string filter in the projected content', function () {
         this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.stringFilter = this.context.testComponent.stringFilter.filter;
         // We make the filter active to see if the FiltersProvider provider knows about it
@@ -260,7 +260,7 @@ export default function(): void {
         expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.stringFilter]);
       });
 
-      it('prioritizes custom comparators over the default property name one', function() {
+      it('prioritizes custom comparators over the default property name one', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.comparator = new TestComparator();
         this.context.testComponent.comparator = this.comparator;
@@ -270,7 +270,7 @@ export default function(): void {
         expect(this.context.clarityDirective.sortBy).toBe(this.comparator);
       });
 
-      it('prioritizes custom filters over the default property name one', function() {
+      it('prioritizes custom filters over the default property name one', function () {
         this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
@@ -278,7 +278,7 @@ export default function(): void {
         expect(TestBed.get(FiltersProvider).getActiveFilters()).toEqual([this.context.testComponent.filter]);
       });
 
-      it('prioritizes custom string filters over the default property name one', function() {
+      it('prioritizes custom string filters over the default property name one', function () {
         this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
@@ -291,22 +291,22 @@ export default function(): void {
       });
     });
 
-    describe('View basics', function() {
+    describe('View basics', function () {
       let context: TestContext<ClrDatagridColumn<number | string>, SimpleTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
       });
 
-      it('projects content', function() {
+      it('projects content', function () {
         expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
       });
 
-      it('adds the .datagrid-column class to the host', function() {
+      it('adds the .datagrid-column class to the host', function () {
         expect(context.clarityElement.classList.contains('datagrid-column')).toBeTruthy();
       });
 
-      it('displays a clickable column title to sort if the column is sortable', function() {
+      it('displays a clickable column title to sort if the column is sortable', function () {
         let title = context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.tagName).toBe('SPAN');
         title.click();
@@ -324,14 +324,14 @@ export default function(): void {
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('add aria-label to button', function() {
+      it('add aria-label to button', function () {
         context.testComponent.comparator = new TestComparator();
         context.detectChanges();
         const title = context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.attributes['aria-label'].value).toBe(commonStringsDefault.sortColumn);
       });
 
-      it('adds and removes the correct icon when sorting', function() {
+      it('adds and removes the correct icon when sorting', function () {
         context.clarityDirective.sortBy = new TestComparator();
         context.clarityDirective.sort();
         context.detectChanges();
@@ -349,7 +349,7 @@ export default function(): void {
         expect(context.clarityElement.querySelector('.sort-icon')).toBeNull();
       });
 
-      it('adds a11y roles to the column', function() {
+      it('adds a11y roles to the column', function () {
         expect(context.clarityElement.attributes.role.value).toEqual('columnheader');
         expect(context.clarityElement.attributes['aria-sort'].value).toBe('none');
 
@@ -364,34 +364,34 @@ export default function(): void {
       });
     });
 
-    describe('View filters', function() {
-      it("doesn't display any filter by default", function() {
+    describe('View filters', function () {
+      it("doesn't display any filter by default", function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('clr-dg-filter')).toBeNull();
       });
 
-      it('displays a string filter when using a property name', function() {
+      it('displays a string filter when using a property name', function () {
         this.context = this.create(ClrDatagridColumn, SimpleTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.field = 'test';
         this.context.detectChanges();
         expect(this.context.clarityElement.querySelector('clr-dg-string-filter')).not.toBeNull();
       });
 
-      it('projects custom filters outside of the title', function() {
+      it('projects custom filters outside of the title', function () {
         this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('.my-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-filter')).toBeNull();
       });
 
-      it('projects custom string filters outside of the title', function() {
+      it('projects custom string filters outside of the title', function () {
         this.context = this.create(ClrDatagridColumn, StringFilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('.my-string-filter')).not.toBeNull();
         const title = this.context.clarityElement.querySelector('.datagrid-column-title');
         expect(title.querySelector('.my-string-filter')).toBeNull();
       });
 
-      it('un-registers the correct filter', function() {
+      it('un-registers the correct filter', function () {
         this.context = this.create(ClrDatagridColumn, UnregisterTest, DATAGRID_SPEC_PROVIDERS);
         this.context.testComponent.show = true;
         this.context.clarityDirective.filters.add(new TestFilter());
@@ -406,25 +406,25 @@ export default function(): void {
       });
     });
 
-    describe('Build-in string and numeric filters', function() {
+    describe('Build-in string and numeric filters', function () {
       let context;
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridColumn, ColTypeTest, DATAGRID_SPEC_PROVIDERS);
       });
 
-      it('should let you set `number` as clrDgColType', function() {
+      it('should let you set `number` as clrDgColType', function () {
         context.testComponent.type = 'number';
         context.detectChanges();
         expect(context.clarityDirective.colType).toBe('number');
       });
 
-      it('should let you set `string` as clrDgColType', function() {
+      it('should let you set `string` as clrDgColType', function () {
         context.testComponent.type = 'string';
         context.detectChanges();
         expect(context.clarityDirective.colType).toBe('string');
       });
 
-      it('when setting clrDgColType to `number` it should use the numeric filter', function() {
+      it('when setting clrDgColType to `number` it should use the numeric filter', function () {
         context.testComponent.type = 'number';
         context.testComponent.field = 'id';
         context.detectChanges();
@@ -432,7 +432,7 @@ export default function(): void {
         expect(context.clarityElement.querySelector('clr-dg-numeric-filter')).toBeDefined();
       });
 
-      it('when clrDgColType is set to `string` it shoul use the string filter', function() {
+      it('when clrDgColType is set to `string` it shoul use the string filter', function () {
         context.testComponent.type = 'string';
         context.testComponent.field = 'id';
         context.detectChanges();
@@ -441,12 +441,12 @@ export default function(): void {
       });
     });
 
-    describe('Column View Changes On ChangeDetectionStrategy.OnPush', function() {
-      beforeEach(function() {
+    describe('Column View Changes On ChangeDetectionStrategy.OnPush', function () {
+      beforeEach(function () {
         this.context = this.create(ClrDatagridColumn, OnPushViewChangeTest, DATAGRID_SPEC_PROVIDERS);
       });
 
-      it('hides the separator when detail pane is open', function() {
+      it('hides the separator when detail pane is open', function () {
         const detailService = this.context.getClarityProvider(DetailService);
         expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeTruthy();
         detailService.open({});
@@ -454,7 +454,7 @@ export default function(): void {
         expect(this.context.clarityElement.querySelector('.datagrid-column-separator')).toBeFalsy();
       });
 
-      it('toggles sort icon if sort is activated or deactivated', function() {
+      it('toggles sort icon if sort is activated or deactivated', function () {
         // activates column's sorting
         this.context.clarityDirective.sort();
         this.context.detectChanges();
@@ -494,13 +494,10 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
 
 @Component({
   template: `
-        <clr-dg-column
-                [clrDgSortBy]="comparator"
-                [clrDgField]="field"
-                [(clrDgSorted)]="sorted">
-            Hello world
-        </clr-dg-column>
-    `,
+    <clr-dg-column [clrDgSortBy]="comparator" [clrDgField]="field" [(clrDgSorted)]="sorted">
+      Hello world
+    </clr-dg-column>
+  `,
 })
 class SimpleDeprecatedTest {
   comparator: ClrDatagridComparatorInterface<number>;
@@ -510,13 +507,10 @@ class SimpleDeprecatedTest {
 
 @Component({
   template: `
-        <clr-dg-column
-                [clrDgSortBy]="comparator"
-                [clrDgField]="field"
-                [(clrDgSortOrder)]="sortOrder">
-            Hello world
-        </clr-dg-column>
-    `,
+    <clr-dg-column [clrDgSortBy]="comparator" [clrDgField]="field" [(clrDgSortOrder)]="sortOrder">
+      Hello world
+    </clr-dg-column>
+  `,
 })
 class SimpleTest {
   comparator: ClrDatagridComparatorInterface<number> | string;
@@ -526,13 +520,13 @@ class SimpleTest {
 
 @Component({
   template: `
-        <clr-dg-column [clrDgField]="field">
-            Column title
-            <clr-dg-filter class="my-filter" [clrDgFilter]="filter">
-                Filter content
-            </clr-dg-filter>
-        </clr-dg-column>
-    `,
+    <clr-dg-column [clrDgField]="field">
+      Column title
+      <clr-dg-filter class="my-filter" [clrDgFilter]="filter">
+        Filter content
+      </clr-dg-filter>
+    </clr-dg-column>
+  `,
 })
 class FilterTest {
   filter = new TestFilter();
@@ -541,11 +535,11 @@ class FilterTest {
 
 @Component({
   template: `
-        <clr-dg-column [clrDgField]="field" [(clrFilterValue)]="filterValue">
-            Hello world
-            <clr-dg-string-filter class="my-string-filter" [clrDgStringFilter]="filter"></clr-dg-string-filter>
-        </clr-dg-column>
-    `,
+    <clr-dg-column [clrDgField]="field" [(clrFilterValue)]="filterValue">
+      Hello world
+      <clr-dg-string-filter class="my-string-filter" [clrDgStringFilter]="filter"></clr-dg-string-filter>
+    </clr-dg-column>
+  `,
 })
 class StringFilterTest {
   filter = new TestStringFilter();
@@ -557,10 +551,10 @@ class StringFilterTest {
 
 @Component({
   template: `
-        <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field" >
-            Column Title
-        </clr-dg-column>
-    `,
+    <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field">
+      Column Title
+    </clr-dg-column>
+  `,
 })
 class PreFilterTest {
   field: string;
@@ -569,12 +563,15 @@ class PreFilterTest {
 
 @Component({
   template: `
-        <clr-dg-column>
-            Column Title
-            <clr-dg-string-filter *ngIf="show" [(clrFilterValue)]="filterValue"
-                                  [clrDgStringFilter]="filter"></clr-dg-string-filter>
-        </clr-dg-column>
-    `,
+    <clr-dg-column>
+      Column Title
+      <clr-dg-string-filter
+        *ngIf="show"
+        [(clrFilterValue)]="filterValue"
+        [clrDgStringFilter]="filter"
+      ></clr-dg-string-filter>
+    </clr-dg-column>
+  `,
 })
 class UnregisterTest {
   show: boolean;
@@ -584,10 +581,10 @@ class UnregisterTest {
 
 @Component({
   template: `
-        <clr-dg-column [clrDgField]="field" [clrDgColType]="type">
-            Column Title
-        </clr-dg-column>
-    `,
+    <clr-dg-column [clrDgField]="field" [clrDgColType]="type">
+      Column Title
+    </clr-dg-column>
+  `,
 })
 class ColTypeTest {
   field: string;

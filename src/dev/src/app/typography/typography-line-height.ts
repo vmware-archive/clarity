@@ -42,24 +42,16 @@ function updateFontProperties(fontObj: FontPreset): void {
       font-family: "${fontObj.font}";
     }
     .line-height-eraser::before {
-      margin-bottom: ${calcPullUp(fontObj)
-        .toString()
-        .substr(0, 8)}em !important;
+      margin-bottom: ${calcPullUp(fontObj).toString().substr(0, 8)}em !important;
     }
     .line-height-eraser::after {
-      margin-top: ${calcPullDown(fontObj)
-        .toString()
-        .substr(0, 8)}em !important;
+      margin-top: ${calcPullDown(fontObj).toString().substr(0, 8)}em !important;
     }
     h1.line-height-eraser::before {
-      margin-bottom: ${calcPullUp(fontObj, 1.6)
-        .toString()
-        .substr(0, 8)}em !important;
+      margin-bottom: ${calcPullUp(fontObj, 1.6).toString().substr(0, 8)}em !important;
     }
     h1.line-height-eraser::after {
-      margin-top: ${calcPullDown(fontObj, 1.6)
-        .toString()
-        .substr(0, 8)}em !important;
+      margin-top: ${calcPullDown(fontObj, 1.6).toString().substr(0, 8)}em !important;
     }
 
   `;

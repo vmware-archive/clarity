@@ -49,14 +49,14 @@ const DATEPICKER_PROVIDERS: any[] = [
   Renderer2,
 ];
 
-export default function() {
+export default function () {
   describe('Date Container Component', () => {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
     let toggleService: ClrPopoverToggleService;
 
-    beforeEach(function() {
+    beforeEach(function () {
       TestBed.configureTestingModule({
         imports: [FormsModule, ClrCommonFormsModule],
       });
@@ -206,10 +206,10 @@ export default function() {
 
 @Component({
   template: `
-        <clr-date-container [clrPosition]="position">
-            <input type="date" clrDate [(ngModel)]="model" [disabled]="disabled">
-        </clr-date-container>
-    `,
+    <clr-date-container [clrPosition]="position">
+      <input type="date" clrDate [(ngModel)]="model" [disabled]="disabled" />
+    </clr-date-container>
+  `,
 })
 class TestComponent {
   model = '';

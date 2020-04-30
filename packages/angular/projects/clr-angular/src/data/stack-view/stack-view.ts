@@ -8,13 +8,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'clr-stack-view',
   template: `
-        <ng-content select="clr-stack-header"></ng-content>
-        <div class="stack-view"><ng-content></ng-content></div>
-    `,
+    <ng-content select="clr-stack-header"></ng-content>
+    <div class="stack-view"><ng-content></ng-content></div>
+  `,
   // Custom elements are inline by default.
   styles: [
     `
-        :host { display: block; }
+      :host {
+        display: block;
+      }
     `,
   ],
 })

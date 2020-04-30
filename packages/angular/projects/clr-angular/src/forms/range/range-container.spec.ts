@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,12 +13,12 @@ import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests
 
 @Component({
   template: `
-      <clr-range-container>
-          <input name="model" clrRange required [(ngModel)]="model" [disabled]="disabled" />
-          <label>Hello World</label>
-          <clr-control-helper>Helper text</clr-control-helper>
-          <clr-control-error>Must be at least 5 characters</clr-control-error>
-      </clr-range-container>
+    <clr-range-container>
+      <input name="model" clrRange required [(ngModel)]="model" [disabled]="disabled" />
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-range-container>
   `,
 })
 class SimpleTest {
@@ -27,23 +27,21 @@ class SimpleTest {
 }
 
 @Component({
-  template: `
-      <clr-range-container>
-          <input clrRange name="model" [(ngModel)]="model" />
-      </clr-range-container>`,
+  template: ` <clr-range-container>
+    <input clrRange name="model" [(ngModel)]="model" />
+  </clr-range-container>`,
 })
 class NoLabelTest {}
 
 @Component({
-  template: `
-      <form [formGroup]="form">
-          <clr-range-container>
-              <input clrRange formControlName="model" />
-              <label>Hello World</label>
-              <clr-control-helper>Helper text</clr-control-helper>
-              <clr-control-error>Must be at least 5 characters</clr-control-error>
-          </clr-range-container>
-      </form>`,
+  template: ` <form [formGroup]="form">
+    <clr-range-container>
+      <input clrRange formControlName="model" />
+      <label>Hello World</label>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>Must be at least 5 characters</clr-control-error>
+    </clr-range-container>
+  </form>`,
 })
 class ReactiveTest {
   disabled = false;
@@ -52,7 +50,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('ClrRangeContainer', () => {
     ContainerNoLabelSpec(ClrRangeContainer, ClrRange, NoLabelTest);
     TemplateDrivenSpec(ClrRangeContainer, ClrRange, SimpleTest, '.clr-range-wrapper [clrRange]');

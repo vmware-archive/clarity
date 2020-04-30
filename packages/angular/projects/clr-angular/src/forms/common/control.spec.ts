@@ -11,16 +11,12 @@ import { ClrControlContainer } from './control-container';
 import { ClrControl } from './control';
 
 @Component({
-  template: `
-       <input type="text" clrControl />
-    `,
+  template: ` <input type="text" clrControl /> `,
 })
 class StandaloneUseTest {}
 
 @Component({
-  template: `
-       <input clrControl name="model" class="test-class" [(ngModel)]="model" />
-    `,
+  template: ` <input clrControl name="model" class="test-class" [(ngModel)]="model" /> `,
 })
 class TemplateDrivenTest {
   model;
@@ -29,9 +25,9 @@ class TemplateDrivenTest {
 @Component({
   template: `
     <div [formGroup]="example">
-       <input clrControl name="model" class="test-class" formControlName="model" />
+      <input clrControl name="model" class="test-class" formControlName="model" />
     </div>
-    `,
+  `,
 })
 class ReactiveTest {
   example = new FormGroup({
@@ -39,7 +35,7 @@ class ReactiveTest {
   });
 }
 
-export default function(): void {
+export default function (): void {
   describe('Input directive', () => {
     ControlStandaloneSpec(StandaloneUseTest);
     TemplateDrivenSpec(ClrControlContainer, ClrControl, TemplateDrivenTest, 'clr-input');

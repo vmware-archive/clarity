@@ -37,7 +37,10 @@ export const travelCollectionIcons: IconShapeTuple[] = [
   truckIcon,
 ];
 
-export const travelCollectionAliases: IconAlias[] = [[airplaneIconName, ['plane']], [caravanIconName, ['auto']]];
+export const travelCollectionAliases: IconAlias[] = [
+  [airplaneIconName, ['plane']],
+  [caravanIconName, ['auto']],
+];
 
 /**
  * Function that can be called to load the core icon set.

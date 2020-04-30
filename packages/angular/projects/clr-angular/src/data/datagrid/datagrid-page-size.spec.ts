@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,31 +10,31 @@ import { TestContext } from './helpers.spec';
 import { Page } from './providers/page';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 
-export default function(): void {
-  describe('ClrDatagridPageSize component', function() {
-    describe('Template API', function() {
+export default function (): void {
+  describe('ClrDatagridPageSize component', function () {
+    describe('Template API', function () {
       let context: TestContext<ClrDatagridPageSize, FullTest>;
 
-      beforeEach(function() {
+      beforeEach(function () {
         context = this.create(ClrDatagridPageSize, FullTest, [Page, StateDebouncer]);
       });
 
-      it('receives an input for page size options', function() {
+      it('receives an input for page size options', function () {
         context.testComponent.pageSizeOptions = [10, 20, 50, 100];
         context.detectChanges();
         expect(context.clarityDirective.pageSizeOptions).toEqual([10, 20, 50, 100]);
       });
     });
 
-    describe('View', function() {
-      describe('Default View Without Input Test', function() {
+    describe('View', function () {
+      describe('Default View Without Input Test', function () {
         let context: TestContext<ClrDatagridPageSize, FullTest>;
 
-        beforeEach(function() {
+        beforeEach(function () {
           context = this.create(ClrDatagridPageSize, SimpleTest, [Page, StateDebouncer]);
         });
 
-        it('displays a select with a default pageSize if no input is given', function() {
+        it('displays a select with a default pageSize if no input is given', function () {
           const select = context.clarityElement.querySelector('select');
           expect(select).not.toBeNull();
           expect(select.options.length).toBe(1);
@@ -42,20 +42,20 @@ export default function(): void {
         });
       });
 
-      describe('Full Test', function() {
+      describe('Full Test', function () {
         let context: TestContext<ClrDatagridPageSize, FullTest>;
         let pageProvider: Page;
 
-        beforeEach(function() {
+        beforeEach(function () {
           context = this.create(ClrDatagridPageSize, FullTest, [Page, StateDebouncer]);
           pageProvider = context.getClarityProvider(Page);
         });
 
-        it('projects content before the select element', function() {
+        it('projects content before the select element', function () {
           expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
         });
 
-        it('displays a select with pageSizeOptions as choices', function() {
+        it('displays a select with pageSizeOptions as choices', function () {
           const pageSizeOptions = [10, 20, 50, 100];
           context.testComponent.pageSizeOptions = pageSizeOptions;
           context.detectChanges();
@@ -67,7 +67,7 @@ export default function(): void {
           }
         });
 
-        it('updates the page size upon pageSizeOption selection', function() {
+        it('updates the page size upon pageSizeOption selection', function () {
           pageProvider.size = 10;
           pageProvider.totalItems = 100;
           pageProvider.current = 1;

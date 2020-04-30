@@ -61,7 +61,7 @@ export class ClarityIconsApi {
     for (const aliasName of aliasNames) {
       if (this.validateName(aliasName)) {
         Object.defineProperty(templates, aliasName, {
-          get: function() {
+          get: function () {
             return templates[shapeName];
           },
           enumerable: true,

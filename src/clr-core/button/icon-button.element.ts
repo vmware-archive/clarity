@@ -53,12 +53,11 @@ export class CdsIconButton extends CdsButton {
 
   render() {
     return html`
-    <div class="private-host">
-      ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
-      ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
-      ${this.loadingState === ClrLoadingState.DEFAULT ? iconSlot : ''}
-      ${this.hiddenButtonTemplate}
-    </div>
+      <div class="private-host">
+        ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
+        ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
+        ${this.loadingState === ClrLoadingState.DEFAULT ? iconSlot : ''} ${this.hiddenButtonTemplate}
+      </div>
     `;
   }
 

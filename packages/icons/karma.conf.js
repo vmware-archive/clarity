@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],

@@ -14,7 +14,9 @@ import { KeyCodes } from './../enums/key-codes.js';
 import { stopEvent } from './../utils/events.js';
 
 // TODO: replace with circular progress bar when complete
-export const iconSpinnerCheck = html`<span class="button-status-icon"><span class="spinner spinner-inline spinner-check"></span></span>`;
+export const iconSpinnerCheck = html`<span class="button-status-icon"
+  ><span class="spinner spinner-inline spinner-check"></span
+></span>`;
 
 export const iconSpinner = html`<span class="button-status-icon"><span class="spinner spinner-inline"></span></span>`;
 
@@ -42,8 +44,7 @@ export class CdsBaseButton extends LitElement {
   protected get hiddenButtonTemplate() {
     return this.readonly
       ? html``
-      : html`
-      <button
+      : html` <button
           aria-hidden="true"
           ?disabled="${this.disabled}"
           tabindex="-1"

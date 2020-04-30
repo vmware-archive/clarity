@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -30,7 +30,7 @@ gemini.suite('tabs', child => {
       .setCaptureElements('.clr-example')
       .capture('default')
       .capture('overflowing', (actions, find) => {
-        actions.executeJS(function(window) {
+        actions.executeJS(function (window) {
           document.getElementById('toggleOverflow').click();
           document.querySelector('.tabs-overflow button').click();
         });

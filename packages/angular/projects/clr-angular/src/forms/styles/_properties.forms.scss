@@ -44,7 +44,7 @@
       --clr-forms-select-multiple-background-color: var(--clr-forms-textarea-background-color);
       --clr-forms-select-multiple-border-color: var(--clr-color-neutral-400);
       --clr-forms-select-multiple-option-color: var(--clr-forms-text-color);
-      --clr-forms-select-multiple-error-focus-color: lighten($clr-forms-invalid-color, 30%);
+      --clr-forms-select-multiple-error-focus-color: #{lighten($clr-forms-invalid-color, 30%)};
 
       // Checkbox
       --clr-forms-checkbox-label-color: var(--clr-forms-text-color);

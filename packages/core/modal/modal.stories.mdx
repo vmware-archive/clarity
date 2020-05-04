@@ -1,0 +1,69 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Modal/Getting Started" />
+
+# Modal
+
+Modals provide information or help a user complete a task. They require the user to take an action to dismiss them.
+
+## Installation
+
+To use the modal component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/modal';
+```
+
+```html
+<cds-modal>
+  <cds-modal-header>
+    <h3 cds-text="title">I have a nice title</h3>
+  </cds-modal-header>
+  <cds-modal-content>
+    <div cds-layout="vertical gap:md p-y:xs">
+      <p cds-text="body">But not much to say...</p>
+    </div>
+  </cds-modal-content>
+  <cds-modal-actions>
+    <div cds-layout="horizontal gap:sm align:right">
+      <cds-button action="outline">Cancel</cds-button>
+      <cds-button>Ok</cds-button>
+    </div>
+  </cds-modal-actions>
+</cds-modal>
+```
+
+## Size - Default
+
+<Preview>
+  <Story id="components-modal-stories--default-size" />
+</Preview>
+
+## Size - Small
+
+<Preview>
+  <Story id="components-modal-stories--small" />
+</Preview>
+
+## Size - Large
+
+<Preview>
+  <Story id="components-modal-stories--large" />
+</Preview>
+
+## Size - Extra Large
+
+<Preview>
+  <Story id="components-modal-stories--extra-large" />
+</Preview>
+
+## Custom Styles
+
+<Preview>
+  <Story id="components-modal-stories--custom-styles" />
+</Preview>
+
+## API
+
+<Props of={'cds-modal'} />

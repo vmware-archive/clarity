@@ -1,0 +1,66 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Tag/Getting Started" />
+
+# Tag
+
+Tags show concise metadata in a compact format. Tags are visually styled to differentiate them from buttons.
+
+## Installation
+
+To use the tag component import the component in your JavaScript.
+
+```typescript
+import '~@clr/core/tag';
+```
+
+```html
+<cds-tag status="info">Info</cds-tag>
+```
+
+## Status
+
+<Preview>
+  <Story id="components-tag-stories--status" />
+</Preview>
+
+## Color
+
+<Preview>
+  <Story id="components-tag-stories--color" />
+</Preview>
+
+## Badges Status
+
+<Preview>
+  <Story id="components-tag-stories--badges-status" />
+</Preview>
+
+## Badges Color
+
+<Preview>
+  <Story id="components-tag-stories--badges-color" />
+</Preview>
+
+## Tags With Icons
+
+<Preview>
+  <Story id="components-tag-stories--tags-and-icons" />
+</Preview>
+
+## Clickable Tags
+
+<Preview>
+  <Story id="components-tag-stories--clickable" />
+</Preview>
+
+## Closable Tags
+
+<Preview>
+  <Story id="components-tag-stories--closable" />
+</Preview>
+
+## API
+
+<Props of={'cds-tag'} />

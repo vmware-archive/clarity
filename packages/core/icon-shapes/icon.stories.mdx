@@ -1,0 +1,91 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Icon/Getting Started" />
+
+# Icon
+
+Icon component that renders svg shapes that can be customized.
+To load an icon, import the icon with the icon service.
+
+## Installation
+
+To use the icon component import the component in your JavaScript.
+To see all available icons check out the <a href="./?path=/story/components-icon-stories--all">Collections Demo</a>.
+
+```typescript
+import '@clr/core/icon';
+import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+
+ClarityIcons.addIcons(userIcon);
+```
+
+```html
+<cds-icon shape="user"></cds-icon>
+```
+
+## Icon
+
+<Preview>
+  <Story id="components-icon-stories--icon" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Story id="components-icon-stories--sizes" />
+</Preview>
+
+## Badges
+
+<Preview>
+  <Story id="components-icon-stories--badges" />
+</Preview>
+
+## Status
+
+<Preview>
+  <Story id="components-icon-stories--status" />
+</Preview>
+
+## Status Inverse
+
+<Preview>
+  <Story id="components-icon-stories--status-inverse" />
+</Preview>
+
+## Direction
+
+<Preview>
+  <Story id="components-icon-stories--direction" />
+</Preview>
+
+## Flip
+
+<Preview>
+  <Story id="components-icon-stories--flip" />
+</Preview>
+
+## Custom Styles
+
+<Preview>
+  <Story id="components-icon-stories--custom-styles" />
+</Preview>
+
+## API
+
+<Props of={'cds-icon'} />
+
+## Legacy API
+
+To create a backwards compatible `clr-icon` import and register the cds-icon
+under a tag alias.
+
+```typescript
+class LegacyIcon extends CdsIcon {}
+customElements.define('clr-icon', LegacyIcon);
+```
+
+<Preview>
+  <Story id="components-icon-stories--legacy" />
+</Preview>

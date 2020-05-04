@@ -1,5 +1,9 @@
 module.exports = {
   extends: '../../.eslintrc.js',
+  parserOptions: {
+    project: './tsconfig.eslint.json',
+    sourceType: 'module',
+  },
   // Only adding rules that override the defaults or enforce new standards
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off', // TOO MUCH WORK AT THE MOMENT

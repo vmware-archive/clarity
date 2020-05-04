@@ -57,19 +57,19 @@ adhere to the following guidelines for our Core Web Component codebase.
 ## Filenames
 
 - Components should end with a `element` suffix.
-  `clr-core/my-toggle/my-toggle.element.ts`.
+  `packages/core/my-toggle/my-toggle.element.ts`.
 
 - Stateless Utilities should be named appropriately in the `utils` directory.
-  `clr-core/internal/utils/register.ts`.
+  `packages/core/internal/utils/register.ts`.
 
 - Stateful Utilities should be named with a `service` suffix in the `services`
-  directory. `clr-core/internal/services/common-strings.service.ts`.
+  directory. `packages/core/internal/services/common-strings.service.ts`.
 
 - Common Interfaces should be named with a `interface` suffix in the `interfaces`
-  directory. `clr-core/internal/interfaces/types.interface.ts`.
+  directory. `packages/core/internal/interfaces/types.interface.ts`.
 
 - Common Enums should be named with a `enum` suffix in the `enums`
-  directory. `clr-core/internal/enums/key-events.enum.ts`.
+  directory. `packages/core/internal/enums/key-events.enum.ts`.
 
 - Common Functions should have an appropriate file name with no prefix or suffix
   that describes the functionality.

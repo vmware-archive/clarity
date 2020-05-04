@@ -1,34 +1,37 @@
 {
-    "name": "@clr/schematics",
-    "version": "1.0.0",
-    "description": "Schematics for Clarity",
-    "homepage": "https://clarity.design",
-    "bugs": {
-        "url": "https://github.com/vmware/clarity/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:vmware/clarity.git"
-    },
-    "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "test": "npm run build && jasmine **/*_spec.js"
-    },
-    "keywords": [
-        "angular",
-        "clarity",
-        "schematics"
-    ],
-    "author": "clarity",
-    "license": "MIT",
-    "schematics": "./src/collection.json",
-    "dependencies": {
-        "@angular-devkit/core": "^8.3.22",
-        "@angular-devkit/schematics": "^8.3.22",
-        "@schematics/angular": "^0.4.3",
-        "@types/jasmine": "^2.6.0",
-        "@types/node": "^8.0.31",
-        "jasmine": "^2.8.0",
-        "typescript": "~2.6.2"
-    }
+  "name": "@clr/schematics",
+  "version": "1.0.0",
+  "description": "Schematics for Clarity",
+  "homepage": "https://clarity.design",
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vmware/clarity.git"
+  },
+  "scripts": {
+    "build": "npm-run-all schematics:build:ts schematics:build:collection",
+    "schematics:build:ts": "tsc -p tsconfig.json",
+    "schematics:build:collection": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/clr-angular/schematics",
+    "test": "npm run build && jasmine **/*_spec.js"
+  },
+  "keywords": [
+    "angular",
+    "clarity",
+    "schematics"
+  ],
+  "author": "clarity",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.3.22",
+    "@angular-devkit/schematics": "^8.3.22",
+    "@schematics/angular": "^0.4.3",
+    "@types/jasmine": "3.5.10",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.5.0",
+    "npm-run-all": "4.1.5",
+    "typescript": "3.7.5"
+  }
 }

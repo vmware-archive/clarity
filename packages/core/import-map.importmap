@@ -18,15 +18,15 @@
     "ramda/es/without": "/base/node_modules/ramda/es/without.js",
     "css-vars-ponyfill": "/base/node_modules/css-vars-ponyfill/dist/css-vars-ponyfill.esm.js",
 
-    "@clr/core/alert": "/base/dist/clr-core/alert/index.js",
-    "@clr/core/badge": "/base/dist/clr-core/badge/index.js",
-    "@clr/core/button": "/base/dist/clr-core/button/index.js",
-    "@clr/core/icon": "/base/dist/clr-core/icon/index.js",
-    "@clr/core/icon-shapes": "/base/dist/clr-core/icon-shapes/index.js",
-    "@clr/core/internal": "/base/dist/clr-core/internal/index.js",
-    "@clr/core/modal": "/base/dist/clr-core/modal/index.js",
-    "@clr/core/tag": "/base/dist/clr-core/tag/index.js",
-    "@clr/core/test-dropdown": "/base/dist/clr-core/test-dropdown/index.js",
-    "@clr/core/test/utils": "/base/dist/clr-core/test/utils.js"
+    "@clr/core/alert": "/base/dist/core/alert/index.js",
+    "@clr/core/badge": "/base/dist/core/badge/index.js",
+    "@clr/core/button": "/base/dist/core/button/index.js",
+    "@clr/core/icon": "/base/dist/core/icon/index.js",
+    "@clr/core/icon-shapes": "/base/dist/core/icon-shapes/index.js",
+    "@clr/core/internal": "/base/dist/core/internal/index.js",
+    "@clr/core/modal": "/base/dist/core/modal/index.js",
+    "@clr/core/tag": "/base/dist/core/tag/index.js",
+    "@clr/core/test-dropdown": "/base/dist/core/test-dropdown/index.js",
+    "@clr/core/test/utils": "/base/dist/core/test/utils.js"
   }
 }

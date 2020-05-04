@@ -10,8 +10,8 @@
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../../packages/icons/src"],
       "@clr/icons/shapes/*": ["../../packages/icons/src/shapes", "../../packages/icons/src/shapes/*"],
-      "@clr/core": ["../../dist/clr-core"],
-      "@clr/core/*": ["../../dist/clr-core/*"]
+      "@clr/core": ["../../dist/core"],
+      "@clr/core/*": ["../../dist/core/*"]
     }
   },
   "exclude": ["test.ts", "**/*.spec.ts"]

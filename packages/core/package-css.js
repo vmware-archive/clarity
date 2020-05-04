@@ -15,7 +15,7 @@ const read = dir =>
       []
     );
 
-read('./dist/clr-core')
+read('./dist/core')
   .filter(f => f.endsWith('.css') && !f.endsWith('.min.css'))
   .forEach(file => {
     const css = fs.readFileSync(file, 'utf8');
@@ -25,12 +25,12 @@ read('./dist/clr-core')
 
 // This will remove unused utilities from cds-layout and typography from core components
 async function treeshakeCommonCSS() {
-  const sharedComponentStylesPath = 'dist/clr-core/internal/base/base.element.css.js';
+  const sharedComponentStylesPath = './dist/core/internal/base/base.element.css.js';
   const cssFile = fs.readFileSync(sharedComponentStylesPath, 'utf8');
   const css = cssFile.match(/`([^`]+)`/)[1];
 
   const purgeCSSResult = await new PurgeCSS().purge({
-    content: ['src/clr-core/**/*.element.ts'],
+    content: ['./**/*.element.ts'],
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
     css: [{ raw: css }],
   });

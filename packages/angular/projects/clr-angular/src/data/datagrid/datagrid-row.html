@@ -9,7 +9,10 @@
   <ng-template [ngTemplateOutlet]="rowContent" *ngIf="!expand.expandable"></ng-template>
 </label>
 
-<clr-expandable-animation *ngIf="!selection.rowSelectionMode && expand.expandable" [clrExpandTrigger]="expandAnimationTrigger">
+<clr-expandable-animation
+  *ngIf="!selection.rowSelectionMode && expand.expandable"
+  [clrExpandTrigger]="expandAnimationTrigger"
+>
   <ng-template [ngTemplateOutlet]="rowContent"></ng-template>
 </clr-expandable-animation>
 
@@ -24,40 +27,67 @@
 </ng-template>
 
 <ng-template #rowContent>
-  <div role="row" [id]="id" class="datagrid-row-master datagrid-row-flex" [class.datagrid-row-detail-open]="detailService.isRowOpen(item)">
-  <div class="datagrid-row-sticky">
+  <div
+    role="row"
+    [id]="id"
+    class="datagrid-row-master datagrid-row-flex"
+    [class.datagrid-row-detail-open]="detailService.isRowOpen(item)"
+  >
+    <div class="datagrid-row-sticky">
       <!-- Sticky elements here -->
       <ng-container #stickyCells>
-        <div *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
-             class="datagrid-select datagrid-fixed-column datagrid-cell"
-             [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
-             role="gridcell">
-
-          <input clrCheckbox type="checkbox" [ngModel]="selected" (ngModelChange)="toggle($event)" [id]="checkboxId"
-                 [attr.disabled]="clrDgSelectable ? null : true"
-                 [attr.aria-disabled]="clrDgSelectable ? null : true"
-                 [attr.aria-label]="commonStrings.keys.select">
+        <div
+          *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
+          class="datagrid-select datagrid-fixed-column datagrid-cell"
+          [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
+          role="gridcell"
+        >
+          <input
+            clrCheckbox
+            type="checkbox"
+            [ngModel]="selected"
+            (ngModelChange)="toggle($event)"
+            [id]="checkboxId"
+            [attr.disabled]="clrDgSelectable ? null : true"
+            [attr.aria-disabled]="clrDgSelectable ? null : true"
+            [attr.aria-label]="commonStrings.keys.select"
+          />
         </div>
-        <div *ngIf="selection.selectionType === SELECTION_TYPE.Single"
-             class="datagrid-select datagrid-fixed-column datagrid-cell" role="gridcell"
-             [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
+        <div
+          *ngIf="selection.selectionType === SELECTION_TYPE.Single"
+          class="datagrid-select datagrid-fixed-column datagrid-cell"
+          role="gridcell"
+          [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
         >
           <!-- TODO: it would be better if in addition to the generic "Select" label, we could add aria-labelledby
           to label the radio by the first cell in the row (typically an id or name).
           It's pretty easy to label it with the whole row since we already have an id for it, but in most
           cases the row is far too long to serve as a label, the screenreader reads every single cell content. -->
-          <input type="radio" clrRadio [id]="radioId" [name]="selection.id + '-radio'" [value]="item"
-                 [(ngModel)]="selection.currentSingle" [checked]="selection.currentSingle === item"
-                 [attr.disabled]="clrDgSelectable ? null : true"
-                 [attr.aria-disabled]="clrDgSelectable ? null : true"
-                 [attr.aria-label]="commonStrings.keys.select">
+          <input
+            type="radio"
+            clrRadio
+            [id]="radioId"
+            [name]="selection.id + '-radio'"
+            [value]="item"
+            [(ngModel)]="selection.currentSingle"
+            [checked]="selection.currentSingle === item"
+            [attr.disabled]="clrDgSelectable ? null : true"
+            [attr.aria-disabled]="clrDgSelectable ? null : true"
+            [attr.aria-label]="commonStrings.keys.select"
+          />
         </div>
-        <div *ngIf="rowActionService.hasActionableRow"
-             class="datagrid-row-actions datagrid-fixed-column datagrid-cell" role="gridcell">
+        <div
+          *ngIf="rowActionService.hasActionableRow"
+          class="datagrid-row-actions datagrid-fixed-column datagrid-cell"
+          role="gridcell"
+        >
           <ng-content select="clr-dg-action-overflow"></ng-content>
         </div>
-        <div *ngIf="globalExpandable.hasExpandableRow"
-             class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell" role="gridcell">
+        <div
+          *ngIf="globalExpandable.hasExpandableRow"
+          class="datagrid-expandable-caret datagrid-fixed-column datagrid-cell"
+          role="gridcell"
+        >
           <ng-container *ngIf="expand.expandable">
             <button
               *ngIf="!expand.loading"
@@ -66,27 +96,39 @@
               class="datagrid-expandable-caret-button"
               [attr.aria-expanded]="expand.expanded"
               [attr.aria-label]="expand.expanded ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
-              >
-              <clr-icon shape="caret"
-                        class="datagrid-expandable-caret-icon"
-                        [attr.dir]="expand.expanded ? 'down' : 'right'"
-                        [attr.title]="expand.expanded ? commonStrings.keys.collapse : commonStrings.keys.expand"></clr-icon>
+            >
+              <clr-icon
+                shape="caret"
+                class="datagrid-expandable-caret-icon"
+                [attr.dir]="expand.expanded ? 'down' : 'right'"
+                [attr.title]="expand.expanded ? commonStrings.keys.collapse : commonStrings.keys.expand"
+              ></clr-icon>
             </button>
             <clr-spinner *ngIf="expand.loading" clrSmall>{{ commonStrings.keys.loading }}</clr-spinner>
           </ng-container>
         </div>
-        <div *ngIf="detailService.enabled"
-             class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
-          <button (click)="detailService.toggle(item, detailButton)" type="button" #detailButton class="datagrid-detail-caret-button"
-                  [class.is-open]="detailService.isRowOpen(item)" [attr.aria-label]="detailService.isOpen ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
-                  [attr.aria-expanded]="detailService.isOpen" [attr.aria-controls]="detailService.id" aria-haspopup="dialog">
-            <clr-icon shape="angle-double"
-                      [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
-                      class="datagrid-detail-caret-icon"
-                      [attr.title]="detailService.isRowOpen(item) ? commonStrings.keys.close: commonStrings.keys.open"></clr-icon>
+        <div *ngIf="detailService.enabled" class="datagrid-detail-caret datagrid-fixed-column datagrid-cell">
+          <button
+            (click)="detailService.toggle(item, detailButton)"
+            type="button"
+            #detailButton
+            class="datagrid-detail-caret-button"
+            [class.is-open]="detailService.isRowOpen(item)"
+            [attr.aria-label]="detailService.isOpen ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
+            [attr.aria-expanded]="detailService.isOpen"
+            [attr.aria-controls]="detailService.id"
+            aria-haspopup="dialog"
+          >
+            <clr-icon
+              shape="angle-double"
+              [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
+              class="datagrid-detail-caret-icon"
+              [attr.title]="detailService.isRowOpen(item) ? commonStrings.keys.close: commonStrings.keys.open"
+            ></clr-icon>
           </button>
         </div>
-      </ng-container> <!-- placeholder for projecting other sticky cells as pinned-->
+      </ng-container>
+      <!-- placeholder for projecting other sticky cells as pinned-->
     </div>
     <div class="datagrid-row-scrollable" [ngClass]="{'is-replaced': replaced && expanded}">
       <div class="datagrid-scrolling-cells">
@@ -94,10 +136,8 @@
         <ng-content select="clr-dg-cell"></ng-content>
       </div>
       <!-- details here when replace, re-visit when sticky container is used for pinned cells -->
-      <ng-template *ngIf="replaced && !expand.loading"
-                   [ngTemplateOutlet]="detail"></ng-template>
-      <ng-template *ngIf="!replaced && !expand.loading"
-                   [ngTemplateOutlet]="detail"></ng-template>
+      <ng-template *ngIf="replaced && !expand.loading" [ngTemplateOutlet]="detail"></ng-template>
+      <ng-template *ngIf="!replaced && !expand.loading" [ngTemplateOutlet]="detail"></ng-template>
     </div>
   </div>
 </ng-template>

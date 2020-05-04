@@ -1,4 +1,3 @@
-
 <!--
   ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
@@ -6,39 +5,45 @@
   -->
 
 <div clrFocusTrap class="modal" *ngIf="_open">
-    <!--fixme: revisit when ngClass works with exit animation-->
-    <div [@fadeDown]="skipAnimation" (@fadeDown.done)="fadeDone($event)"
-         class="modal-dialog"
-         [class.modal-sm]="size == 'sm'"
-         [class.modal-lg]="size == 'lg'"
-         [class.modal-xl]="size == 'xl'"
-         role="dialog"
-         aria-modal="true"
-         [attr.aria-hidden]="!_open"
-         [attr.aria-labelledby]="modalId">
-      <div class="clr-sr-only">{{commonStrings.keys.modalContentStart}}</div>
-      <div class="modal-content-wrapper">
-        <!-- only used in wizards -->
-        <ng-content select=".modal-nav"></ng-content>
+  <!--fixme: revisit when ngClass works with exit animation-->
+  <div
+    [@fadeDown]="skipAnimation"
+    (@fadeDown.done)="fadeDone($event)"
+    class="modal-dialog"
+    [class.modal-sm]="size == 'sm'"
+    [class.modal-lg]="size == 'lg'"
+    [class.modal-xl]="size == 'xl'"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-hidden]="!_open"
+    [attr.aria-labelledby]="modalId"
+  >
+    <div class="clr-sr-only">{{commonStrings.keys.modalContentStart}}</div>
+    <div class="modal-content-wrapper">
+      <!-- only used in wizards -->
+      <ng-content select=".modal-nav"></ng-content>
 
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" [attr.aria-label]="commonStrings.keys.close" class="close" *ngIf="closable" (click)="close()">
-              <clr-icon shape="close"></clr-icon>
-            </button>
-            <div class="modal-title-wrapper" id="{{modalId}}" clrFocusOnViewInit>
-              <ng-content select=".modal-title"></ng-content>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button
+            type="button"
+            [attr.aria-label]="commonStrings.keys.close"
+            class="close"
+            *ngIf="closable"
+            (click)="close()"
+          >
+            <clr-icon shape="close"></clr-icon>
+          </button>
+          <div class="modal-title-wrapper" id="{{modalId}}" clrFocusOnViewInit>
+            <ng-content select=".modal-title"></ng-content>
           </div>
-          <ng-content select=".modal-body"></ng-content>
-          <ng-content select=".modal-footer"></ng-content>
         </div>
+        <ng-content select=".modal-body"></ng-content>
+        <ng-content select=".modal-footer"></ng-content>
       </div>
-      <div class="clr-sr-only">{{commonStrings.keys.modalContentEnd}}</div>
     </div>
+    <div class="clr-sr-only">{{commonStrings.keys.modalContentEnd}}</div>
+  </div>
 
-    <div [@fade] class="modal-backdrop"
-         aria-hidden="true"
-         (click)="staticBackdrop || close()"></div>
+  <div [@fade] class="modal-backdrop" aria-hidden="true" (click)="staticBackdrop || close()"></div>
 </div>
-

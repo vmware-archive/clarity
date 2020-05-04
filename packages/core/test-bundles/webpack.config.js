@@ -6,12 +6,12 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      '@clr/core': path.resolve(__dirname, '../../../dist/clr-core'),
+      '@clr/core': path.resolve(__dirname, '../dist/core'),
     },
   },
   output: {
     filename: 'webpack.bundle.js',
-    path: path.resolve(__dirname, '../../../dist/test-bundles'),
+    path: path.resolve(__dirname, '../dist/test-bundles'),
     sourceMapFilename: 'webpack.bundle.js.map',
   },
   devtool: 'source-map',

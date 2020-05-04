@@ -12,8 +12,8 @@
       "@clr/angular": ["../clr-angular"],
       "@clr/icons": ["../../packages/icons/src"],
       "@clr/icons/shapes/*": ["../../packages/icons/src/shapes", "../../packages/icons/src/shapes/*"],
-      "@clr/core": ["../clr-core"],
-      "@clr/core/*": ["../clr-core/*"]
+      "@clr/core": ["../core"],
+      "@clr/core/*": ["../core/*"]
     }
   },
   "files": ["src/main.ts", "src/polyfills.ts", "typings.d.ts"]

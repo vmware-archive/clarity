@@ -1,8 +1,8 @@
-@import './../../../../dist/clr-core/styles/module.reset.css';
-@import './../../../../dist/clr-core/styles/module.tokens.css';
-@import './../../../../dist/clr-core/styles/module.layout.css';
-@import './../../../../dist/clr-core/styles/module.typography.css';
-@import './../../../../dist/clr-core/list/list.css';
+@import './../../dist/core/styles/module.reset.css';
+@import './../../dist/core/styles/module.tokens.css';
+@import './../../dist/core/styles/module.layout.css';
+@import './../../dist/core/styles/module.typography.css';
+@import './../../dist/core/list/list.css';
 @import '~@clr/city/css/bundles/default.min.css';
 
 .docblock-propstable-body td {

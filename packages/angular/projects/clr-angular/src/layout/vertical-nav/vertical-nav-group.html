@@ -5,27 +5,28 @@
   -->
 
 <div class="nav-group-content">
-    <ng-content select="[clrVerticalNavLink]"></ng-content>
-    <button
-        class="nav-group-trigger"
-        type="button"
-        [attr.aria-expanded]="expanded"
-        [attr.aria-label]="commonStrings.keys.verticalNavGroupToggle"
-        (click)="toggleExpand()">
-        <ng-content select="[clrVerticalNavIcon]"></ng-content>
-        <div class="nav-group-text">
-            <ng-content></ng-content>
-        </div>
-        <clr-icon shape="caret"
-                  class="nav-group-trigger-icon"
-                  [attr.dir]="(this.expanded) ? 'down' : 'right'"
-                  [attr.title]="(this.expanded) ? commonStrings.keys.collapse : commonStrings.keys.expand">
-        </clr-icon>
-    </button>
+  <ng-content select="[clrVerticalNavLink]"></ng-content>
+  <button
+    class="nav-group-trigger"
+    type="button"
+    [attr.aria-expanded]="expanded"
+    [attr.aria-label]="commonStrings.keys.verticalNavGroupToggle"
+    (click)="toggleExpand()"
+  >
+    <ng-content select="[clrVerticalNavIcon]"></ng-content>
+    <div class="nav-group-text">
+      <ng-content></ng-content>
+    </div>
+    <clr-icon
+      shape="caret"
+      class="nav-group-trigger-icon"
+      [attr.dir]="(this.expanded) ? 'down' : 'right'"
+      [attr.title]="(this.expanded) ? commonStrings.keys.collapse : commonStrings.keys.expand"
+    >
+    </clr-icon>
+  </button>
 </div>
 <!--TODO: This animation needs to be added to the clr-vertical-nav-group-children component-->
-<div class="nav-group-children"
-     [@clrExpand]="expandAnimationState"
-     (@clrExpand.done)="expandAnimationDone($event)">
-    <ng-content select="[clrIfExpanded], clr-vertical-nav-group-children"></ng-content>
+<div class="nav-group-children" [@clrExpand]="expandAnimationState" (@clrExpand.done)="expandAnimationDone($event)">
+  <ng-content select="[clrIfExpanded], clr-vertical-nav-group-children"></ng-content>
 </div>

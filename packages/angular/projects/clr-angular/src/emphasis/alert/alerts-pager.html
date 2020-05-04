@@ -5,17 +5,17 @@
   -->
 
 <div class="alerts-pager-control">
-    <div class="alerts-page-down">
-        <button class="alerts-pager-button" (click)="pageDown()">
-            <clr-icon shape="caret left" [attr.title]="commonStrings.keys.previous"></clr-icon>
-        </button>
-    </div>
-    <div class="alerts-pager-text">
-        {{this.multiAlertService.current+1}} / {{this.multiAlertService.count}}
-    </div>
-    <div class="alerts-page-up">
-        <button class="alerts-pager-button" (click)="pageUp()">
-            <clr-icon shape="caret right" [attr.title]="commonStrings.keys.next"></clr-icon>
-        </button>
-    </div>
+  <div class="alerts-page-down">
+    <button class="alerts-pager-button" (click)="pageDown()">
+      <clr-icon shape="caret left" [attr.title]="commonStrings.keys.previous"></clr-icon>
+    </button>
+  </div>
+  <div class="alerts-pager-text">
+    {{this.multiAlertService.current+1}} / {{this.multiAlertService.count}}
+  </div>
+  <div class="alerts-page-up">
+    <button class="alerts-pager-button" (click)="pageUp()">
+      <clr-icon shape="caret right" [attr.title]="commonStrings.keys.next"></clr-icon>
+    </button>
+  </div>
 </div>

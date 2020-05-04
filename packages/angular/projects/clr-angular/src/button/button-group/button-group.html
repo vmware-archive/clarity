@@ -5,35 +5,34 @@
   -->
 
 <ng-container *ngFor="let inlineButton of inlineButtons">
-    <ng-template [ngTemplateOutlet]="inlineButton.templateRef"></ng-template>
+  <ng-template [ngTemplateOutlet]="inlineButton.templateRef"></ng-template>
 </ng-container>
 <ng-container *ngIf="menuButtons.length > 0">
+  <div class="btn-group-overflow open" [ngClass]="menuPosition" #anchor>
+    <button
+      class="btn dropdown-toggle"
+      clrPopoverAnchor
+      clrPopoverOpenCloseButton
+      [attr.aria-controls]="popoverId"
+      [attr.aria-expanded]="open"
+      [attr.aria-label]="commonStrings.keys.rowActions"
+    >
+      <clr-icon shape="ellipsis-horizontal" [attr.title]="commonStrings.keys.more"></clr-icon>
+    </button>
     <div
-        class="btn-group-overflow open"
-        [ngClass]="menuPosition"
-        #anchor>
-        <button
-            class="btn dropdown-toggle"
-            clrPopoverAnchor
-            clrPopoverOpenCloseButton
-            [attr.aria-controls]="popoverId"
-            [attr.aria-expanded]="open"
-            [attr.aria-label]="commonStrings.keys.rowActions">
-            <clr-icon shape="ellipsis-horizontal" [attr.title]="commonStrings.keys.more"></clr-icon>
-        </button>
-        <div
-            role="menu" 
-            class="dropdown-menu clr-button-group-menu"
-            [id]="popoverId"
-            [attr.id]="popoverId"
-            [attr.aria-hidden]="!open"
-            *clrPopoverContent="open at popoverPosition; outsideClickToClose: true; scrollToClose: true">
-            <ng-template [ngTemplateOutlet]="ref"></ng-template>
-        </div>
+      role="menu"
+      class="dropdown-menu clr-button-group-menu"
+      [id]="popoverId"
+      [attr.id]="popoverId"
+      [attr.aria-hidden]="!open"
+      *clrPopoverContent="open at popoverPosition; outsideClickToClose: true; scrollToClose: true"
+    >
+      <ng-template [ngTemplateOutlet]="ref"></ng-template>
     </div>
+  </div>
 </ng-container>
 <ng-template #ref>
-    <ng-container *ngFor="let menuButton of menuButtons">
-        <ng-template [ngTemplateOutlet]="menuButton.templateRef"></ng-template>
-    </ng-container>
+  <ng-container *ngFor="let menuButton of menuButtons">
+    <ng-template [ngTemplateOutlet]="menuButton.templateRef"></ng-template>
+  </ng-container>
 </ng-template>

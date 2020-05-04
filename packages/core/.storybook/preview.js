@@ -5,7 +5,7 @@ import { withCssResources } from '@storybook/addon-cssresources';
 import { withA11y } from '@storybook/addon-a11y';
 import { withDesign } from 'storybook-addon-designs';
 import { applyPolyfill } from 'custom-elements-hmr-polyfill';
-import * as customElements from '../../../dist/clr-core/custom-elements.json';
+import * as customElements from '../dist/core/custom-elements.json';
 
 applyPolyfill();
 addDecorator(withKnobs);

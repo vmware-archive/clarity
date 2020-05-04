@@ -8,7 +8,7 @@
     "stylelint-no-px"
   ],
   "ignoreFiles": [
-    "./styles/tokens/generated/*.scss"
+    "./src/styles/tokens/generated/*.scss"
   ],
   "rules": {
     "sh-waqar/declaration-use-variable": [["color", { ignoreValues: ["inherit", "red", "blue", "/^getSassButtonColor/"] }]],

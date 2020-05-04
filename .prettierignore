@@ -6,10 +6,10 @@ golden/
 .vscode
 .ng_build
 **/node_modules/**
-src/website/src/releases/final-template/auto-generated-routes.ts
-src/website/src/sitemap.xml
-src/clr-core/**/*.css.ts
-src/clr-core/custom-elements.json
-src/clr-core/styles/tokens/generated/**
-src/clr-angular/utils/_mixins.clarity.scss
+src/website
+src/dev
+packages/core/**/*.css.ts
+packages/core/custom-elements.json
+packages/core/src/styles/tokens/generated/**
+packages/core/dist/
 docs/core

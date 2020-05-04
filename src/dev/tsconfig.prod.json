@@ -5,8 +5,8 @@
       "@clr/angular": ["../../dist/clr-angular"],
       "@clr/icons": ["../../dist/clr-icons"],
       "@clr/icons/shapes/*": ["../../dist/clr-icons/shapes", "../../dist/clr-icons/shapes/*"],
-      "@clr/core": ["../../dist/clr-core"],
-      "@clr/core/*": ["../../dist/clr-core/*"]
+      "@clr/core": ["../../dist/core"],
+      "@clr/core/*": ["../../dist/core/*"]
     }
   }
 }

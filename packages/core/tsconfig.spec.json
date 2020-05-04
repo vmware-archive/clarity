@@ -1,7 +1,8 @@
 {
   "extends": "./tsconfig.project.json",
   "compilerOptions": {
-    "outDir": "../../dist/clr-core",
+    "outDir": "./dist/core",
+    "rootDir": "./src",
     "types": ["jasmine"],
     "strictNullChecks": false
   },

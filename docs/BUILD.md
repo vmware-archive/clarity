@@ -8,14 +8,14 @@ It also uses Docker for running visual diff tests, so if you plan to run those t
 The project structure is as follow:
 
 ```bash
-src
-├── clr-angular   # All Angular Clarity components and styles
-├── clr-core      # Web Components
-├── clr-icons     # Clarity Icons
-├── clr-ui        # Common CSS
-├── dev           # Development Application for Angular
-├── schematics    # Auto update scripts
-└── website       # Website and Documentation
+packages
+
+packages
+├── angular     # All Angular Clarity components and styles
+├── core        # Web Components
+├── icons       # Clarity Icons
+├── ui          # Common CSS
+├── schematics  # Auto update scripts
 ```
 
 ## Understanding the build

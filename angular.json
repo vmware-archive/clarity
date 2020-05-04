@@ -128,7 +128,7 @@
             "main": "src/clr-angular/test.ts",
             "tsConfig": "src/clr-angular/tsconfig.spec.json",
             "karmaConfig": "src/clr-angular/karma.conf.js",
-            "codeCoverageExclude": ["src/clr-core/**/*.ts"]
+            "codeCoverageExclude": ["packages/core/**/*.ts"]
           }
         }
       }

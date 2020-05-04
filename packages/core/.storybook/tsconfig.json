@@ -1,5 +1,5 @@
 {
-  "include": ["../**/*.stories.ts", "../../dist/clr-core"],
+  "include": ["../**/*.stories.ts", "../dist"],
   "exclude": ["node_modules", "../**/test/*.ts", "../**/*.spec.ts"],
   "compilerOptions": {
     "target": "es2017",
@@ -11,8 +11,8 @@
     "resolveJsonModule": true,
     "baseUrl": "./../",
     "paths": {
-      "@clr/core": ["../../dist/clr-core"],
-      "@clr/core/*": ["../../dist/clr-core/*"]
+      "@clr/core": ["./dist/core"],
+      "@clr/core/*": ["./dist/core/*"]
     }
   },
   "awesomeTypescriptLoaderOptions": {

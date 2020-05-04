@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -12,7 +11,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - run: npm install && npm --prefix packages/icons install && npm --prefix packages/angular install
+      - run: npm install && npm --prefix packages/icons install && npm --prefix packages/angular install && npm --prefix packages/ui install && npm --prefix packages/schematics install && npm --prefix packages/core install
       - run: npm run build:ci
 
     env:

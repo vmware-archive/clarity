@@ -21,12 +21,15 @@ const read = dir =>
       []
     );
 
-del.sync([
-  './dist/clr-core/**/*.{tsbuildinfo,ngsummary.json,spec.js,spec.js.map,spec.d.ts}',
-  './dist/clr-core/*.{tsbuildinfo,ngsummary.json,spec.js,spec.js.map,spec.d.ts}',
-]);
+del.sync(
+  [
+    './dist/core/**/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
+    './dist/core/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
+  ],
+  { force: true }
+);
 
-read('./dist/clr-core')
+read('./dist/core')
   .filter(f => f.includes('package.json'))
   .forEach(file => {
     const packageFile = fs.readJsonSync(file);

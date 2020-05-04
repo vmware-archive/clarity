@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "outDir": "../../dist/clr-core",
+    "outDir": "./dist/core",
     "declaration": true,
     "inlineSources": true,
     "types": ["jasmine"],
@@ -26,12 +26,12 @@
     "importHelpers": true,
     "composite": true,
     "baseUrl": "./",
-    "rootDir": "./",
+    "rootDir": "./src",
     "paths": {
-      "@clr/core/test/*": ["./test/*"],
-      "@clr/core/*": ["./*"]
+      "@clr/core/test/*": ["./src/test/*"],
+      "@clr/core/*": ["./src/*"]
     }
   },
   "exclude": ["dist", "node_modules"],
-  "references": [{ "path": "./internal/entrypoint.tsconfig.json" }]
+  "references": [{ "path": "./src/internal/entrypoint.tsconfig.json" }]
 }

@@ -2,6 +2,7 @@
   "name": "@clr/angular",
   "version": "3.1.0",
   "scripts": {
+    "postinstall": "ngcc --create-ivy-entry-points && node ../../scripts/ngcc-clean",
     "build": "npm-run-all build:ng build:package build:golden",
     "build:package": "cpy npm.json README.md ../../dist/clr-angular/; mv ../../dist/clr-angular/npm.json ../../dist/clr-angular/package.json; replace '@VERSION' $npm_package_version ../../dist/clr-angular/package.json",
     "build:ng": "ng build clr-angular --prod",

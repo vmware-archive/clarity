@@ -13,13 +13,13 @@ import '@clr/core/global.min.css';
 import '@clr/city/css/bundles/default.min.css';
 
 export default {
-  data: function() {
+  data: function () {
     return {
       show: false,
     };
   },
   methods: {
-    log: function(event) {
+    log: function (event) {
       this.show = event.detail;
     },
   },

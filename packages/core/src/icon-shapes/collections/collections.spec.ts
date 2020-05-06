@@ -9,6 +9,7 @@ import { loadCommerceIconSet } from '../collections/commerce.js';
 import { loadCoreIconSet } from '../collections/core.js';
 import { loadEssentialIconSet } from '../collections/essential.js';
 import { loadMediaIconSet } from '../collections/media.js';
+import { loadMiniIconSet } from '../collections/mini.js';
 import { loadSocialIconSet } from '../collections/social.js';
 import { loadTechnologyIconSet } from '../collections/technology.js';
 import { loadTextEditIconSet } from '../collections/text-edit.js';
@@ -18,6 +19,7 @@ import { ClarityIcons } from '../icon.service.js';
 
 import { airplaneIconName } from '../shapes/airplane.js';
 import { applicationIconName } from '../shapes/application.js';
+import { arrowMiniIconName } from '../shapes/arrow-mini.js';
 import { axisChartIconName } from '../shapes/axis-chart.js';
 import { angleIconName } from '../shapes/angle.js';
 import { bankIconName } from '../shapes/bank.js';
@@ -76,6 +78,14 @@ describe('icon collection tests', () => {
       expect(ClarityIcons.registry[musicNoteIconName]).toBeUndefined();
       loadMediaIconSet();
       expect(ClarityIcons.registry[musicNoteIconName]).toBeDefined();
+    });
+  });
+
+  describe('Mini icon collection (loadMiniIconSet)', () => {
+    it('should work', () => {
+      expect(ClarityIcons.registry[arrowMiniIconName]).toBeUndefined();
+      loadMiniIconSet();
+      expect(ClarityIcons.registry[arrowMiniIconName]).toBeDefined();
     });
   });
 

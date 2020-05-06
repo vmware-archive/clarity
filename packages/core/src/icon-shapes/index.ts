@@ -239,6 +239,19 @@ export { volumeDownIcon } from './shapes/volume-down.js';
 export { volumeMuteIcon } from './shapes/volume-mute.js';
 export { volumeUpIcon } from './shapes/volume-up.js';
 
+// SHAPES - MINI
+export { arrowMiniIcon } from './shapes/arrow-mini.js';
+export { calendarMiniIcon } from './shapes/calendar-mini.js';
+export { checkCircleMiniIcon } from './shapes/check-circle-mini.js';
+export { checkMiniIcon } from './shapes/check-mini.js';
+export { errorMiniIcon } from './shapes/error-mini.js';
+export { eventMiniIcon } from './shapes/event-mini.js';
+export { filterGridCircleMiniIcon } from './shapes/filter-grid-circle-mini.js';
+export { filterGridMiniIcon } from './shapes/filter-grid-mini.js';
+export { infoCircleMiniIcon } from './shapes/info-circle-mini.js';
+export { timesMiniIcon } from './shapes/times-mini.js';
+export { warningMiniIcon } from './shapes/warning-mini.js';
+
 // SHAPES - TECHNOLOGY
 export { administratorIcon } from './shapes/administrator.js';
 export { animationIcon } from './shapes/animation.js';
@@ -412,6 +425,7 @@ export * from './collections/commerce.js';
 export * from './collections/core.js';
 export * from './collections/essential.js';
 export * from './collections/media.js';
+export * from './collections/mini.js';
 export * from './collections/technology.js';
 export * from './collections/social.js';
 export * from './collections/text-edit.js';

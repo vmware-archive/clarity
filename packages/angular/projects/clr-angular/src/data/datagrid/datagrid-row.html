@@ -132,8 +132,8 @@
     </div>
     <div class="datagrid-row-scrollable" [ngClass]="{'is-replaced': replaced && expanded}">
       <div class="datagrid-scrolling-cells">
-        <ng-container #scrollableCells></ng-container>
         <ng-content select="clr-dg-cell"></ng-content>
+        <ng-container #scrollableCells></ng-container>
       </div>
       <!-- details here when replace, re-visit when sticky container is used for pinned cells -->
       <ng-template *ngIf="replaced && !expand.loading" [ngTemplateOutlet]="detail"></ng-template>

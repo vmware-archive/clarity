@@ -957,6 +957,16 @@ export default function (): void {
         const calculationRows = calculationTable.querySelectorAll('.datagrid-row');
         expect(calculationRows.length).toBe(3);
       });
+
+      it('projects async row cells in correct order', function () {
+        context.testComponent.items.push(7);
+        context.detectChanges();
+        const rows = context.clarityElement.querySelectorAll('.datagrid-row');
+        const lastAddedRow = rows[rows.length - 1];
+        const lastAddedRowCells = lastAddedRow.querySelectorAll('.datagrid-cell');
+        expect(lastAddedRowCells[0].textContent).toBe('7');
+        expect(lastAddedRowCells[1].textContent).toBe('49');
+      });
     });
 
     describe('Integration with TabsContent and *clrIfActive', function () {

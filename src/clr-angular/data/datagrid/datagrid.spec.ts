@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -965,6 +965,16 @@ export default function(): void {
         const calculationTable = context.clarityElement.querySelector('.datagrid-calculation-table');
         const calculationRows = calculationTable.querySelectorAll('.datagrid-row');
         expect(calculationRows.length).toBe(3);
+      });
+
+      it('projects async row cells in correct order', function() {
+        context.testComponent.items.push(7);
+        context.detectChanges();
+        const rows = context.clarityElement.querySelectorAll('.datagrid-row');
+        const lastAddedRow = rows[rows.length - 1];
+        const lastAddedRowCells = lastAddedRow.querySelectorAll('.datagrid-cell');
+        expect(lastAddedRowCells[0].textContent).toBe('7');
+        expect(lastAddedRowCells[1].textContent).toBe('49');
       });
     });
 

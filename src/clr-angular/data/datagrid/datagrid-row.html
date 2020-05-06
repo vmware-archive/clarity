@@ -63,7 +63,9 @@
           </ng-container>
         </div>
         <ng-container #scrollableCells></ng-container>
-        <ng-content select="clr-dg-cell"></ng-content>
+        <ng-container>
+          <ng-content select="clr-dg-cell"></ng-content>
+        </ng-container>
       </div>
       <!-- details here when replace, re-visit when sticky container is used for pinned cells -->
       <ng-template *ngIf="replaced && !expand.loading"

@@ -25,12 +25,15 @@ import {
   loadCoreIconSet,
   loadEssentialIconSet,
   loadMediaIconSet,
+  loadMiniIconSet,
   loadSocialIconSet,
   loadTechnologyIconSet,
   loadTextEditIconSet,
   loadTravelIconSet,
   mediaCollectionAliases,
   mediaCollectionIcons,
+  miniCollectionAliases,
+  miniCollectionIcons,
   socialCollectionAliases,
   socialCollectionIcons,
   technologyCollectionAliases,
@@ -47,6 +50,7 @@ loadCommerceIconSet();
 loadCoreIconSet();
 loadEssentialIconSet();
 loadMediaIconSet();
+loadMiniIconSet();
 loadSocialIconSet();
 loadTechnologyIconSet();
 loadTextEditIconSet();
@@ -124,6 +128,7 @@ export const all = () => {
     Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
     Essential: createIconIndices(essentialCollectionIcons, essentialCollectionAliases),
     Media: createIconIndices(mediaCollectionIcons, mediaCollectionAliases),
+    Mini: createIconIndices(miniCollectionIcons, miniCollectionAliases),
     Social: createIconIndices(socialCollectionIcons, socialCollectionAliases),
     Technology: createIconIndices(technologyCollectionIcons, technologyCollectionAliases),
     'Text-Edit': createIconIndices(textEditCollectionIcons, textEditCollectionAliases),

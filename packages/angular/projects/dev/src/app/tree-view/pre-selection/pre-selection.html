@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -151,11 +151,10 @@
 
 <h4>Lazy tree, inconsistent pre-selection</h4>
 <p>
-  If different nodes receive inconsistent selection states as their input,
-  for instance an unselected parent with selected children,
-  we cannot know which one is correct.
-  For this lazy case, it means we simply keep the inconsistent state for each node, and rely on the app to fix it
-  at one point. This can be seen in the following demo by expanding nodes to cpompare parent and children state.
+  If different nodes receive inconsistent selection states as their input, for instance an unselected parent with
+  selected children, we cannot know which one is correct. For this lazy case, it means we simply keep the inconsistent
+  state for each node, and rely on the app to fix it at one point. This can be seen in the following demo by expanding
+  nodes to cpompare parent and children state.
 </p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
@@ -200,9 +199,9 @@
   <clr-tree>
     <clr-tree-node *ngFor="let node of larger">
       {{node.name}}
-        <clr-tree-node *ngFor="let child of node.children" [(clrSelected)]="child.selected">
-          {{child.name}}
-        </clr-tree-node>
+      <clr-tree-node *ngFor="let child of node.children" [(clrSelected)]="child.selected">
+        {{child.name}}
+      </clr-tree-node>
     </clr-tree-node>
   </clr-tree>
 </div>

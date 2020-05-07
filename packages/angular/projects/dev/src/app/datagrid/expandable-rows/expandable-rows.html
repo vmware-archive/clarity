@@ -49,56 +49,54 @@
   </clr-checkbox-container>
 </form>
 
-
 <clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected">
-    <clr-dg-column>User ID</clr-dg-column>
-    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-    <clr-dg-column [clrDgField]="'creation'">
-        <ng-container *clrDgHideableColumn="{hidden: date}">
-            Creation date
-        </ng-container>
-    </clr-dg-column>
-    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
-    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn="{hidden: date}">
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
 
-    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-        <clr-dg-cell>{{user.id}}</clr-dg-cell>
-        <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
-        <clr-dg-cell>
-            <span class="color-square" [style.backgroundColor]="user.color"></span>
-        </clr-dg-cell>
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
 
-        <!-- Example using a wrapper component -->
-        <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
+    <!-- Example using a wrapper component -->
+    <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
 
-        <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
-          <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
-            <ng-template [clrFakeLoader]="slowLoad" clrLoading>
-                <ng-template [ngIf]="detail === 'default'">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed
-                    quam. Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget,
-                    pellentesque sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean
-                    sagittis nibh lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor.
-                    Vestibulum vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere
-                    ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis
-                    sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo,
-                    at suscipit diam.
-                </ng-template>
+    <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
+      <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+        <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+          <ng-template [ngIf]="detail === 'default'">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
+            Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque
+            sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean sagittis nibh
+            lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor. Vestibulum
+            vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere ipsum tincidunt
+            velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis sit amet metus
+            finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo, at suscipit diam.
+          </ng-template>
 
-                <ng-template [ngIf]="detail === 'columns'">
-                    <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
-                    <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
-                    <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
-                    <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
-                    <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
-                </ng-template>
-            </ng-template>
-        </clr-dg-row-detail>
-        </ng-container>
-    </clr-dg-row>
-    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+          <ng-template [ngIf]="detail === 'columns'">
+            <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+            <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+            <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+            <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
+            <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+          </ng-template>
+        </ng-template>
+      </clr-dg-row-detail>
+    </ng-container>
+  </clr-dg-row>
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
 </clr-datagrid>
 
 <h3>Mixed expandable and non expandable rows</h3>

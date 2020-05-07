@@ -9,15 +9,15 @@
   <p></p>
   <clr-date-container>
     <label>Date</label>
-    <input type="date" [(ngModel)]="model" clrDate [min]="minDate" [max]="maxDate">
+    <input type="date" [(ngModel)]="model" clrDate [min]="minDate" [max]="maxDate" />
   </clr-date-container>
   <clr-input-container>
     <label>Min Date</label>
-    <input type="text" [(ngModel)]="minDate" clrInput>
+    <input type="text" [(ngModel)]="minDate" clrInput />
   </clr-input-container>
   <clr-input-container>
     <label>Max Date</label>
-    <input type="text" [(ngModel)]="maxDate" clrInput>
+    <input type="text" [(ngModel)]="maxDate" clrInput />
   </clr-input-container>
 </div>
 
@@ -28,14 +28,14 @@
   <div class="clr-col-12 clr-col-md-10 clr-col-lg-5">
     <table class="table">
       <thead>
-      <tr>
-        <th>[(model)]</th>
-      </tr>
+        <tr>
+          <th>[(model)]</th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>{{model}}</td>
-      </tr>
+        <tr>
+          <td>{{model}}</td>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -19,7 +19,7 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
     "paths": {
-      "@clr/angular": ["../../dist/clr-angular"],
+      "@clr/angular": ["./dist/clr-angular"],
       "@clr/icons": ["../../dist/clr-icons"],
       "@clr/icons/shapes/*": ["../../dist/clr-icons/shapes/*"],
       "@clr/core": ["../../dist/core"],

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -17,11 +17,9 @@
 <h6>.card-block</h6>
 <div>
   This is a wrapper to group
-  <code class="clr-code">.card-title</code>,
-  <code class="clr-code">.card-text</code> and
-  <code class="clr-code">.card-link</code> elements.
-  <code class="clr-code">.card-block</code> can also contain Clarity Buttons if needed. You can extend the
-  <code class="clr-code">.card-block</code> with
+  <code class="clr-code">.card-title</code>, <code class="clr-code">.card-text</code> and
+  <code class="clr-code">.card-link</code> elements. <code class="clr-code">.card-block</code> can also contain Clarity
+  Buttons if needed. You can extend the <code class="clr-code">.card-block</code> with
   <code class="clr-code">.card</code> if your card does not have any content outside of the
   <code class="clr-code">.card-block</code>
 </div>
@@ -30,7 +28,6 @@
 Use the
 <code class="clr-code">.card-header</code> class to add an optional header to the card.
 <div>
-
   <h6>.card-title, .card-text, and .card-link</h6>
   <div>
     You can organize your content within cards using these helper classes. Extend the
@@ -39,23 +36,22 @@ Use the
 
   <h6>.card-divider:</h6>
   <div>
-    <code class="clr-code">.card-divider</code> assigned to any block element creates a simple divider to separate to sections inside the card
+    <code class="clr-code">.card-divider</code> assigned to any block element creates a simple divider to separate to
+    sections inside the card
   </div>
 
   <h6>.card-overflow-menu:</h6>
   <div>
     <code class="clr-code">.card-overflow-menu</code> is a wrapper for the overflow menu. It contains a
-    <code class="clr-code">.card-link</code> followed by the
-    <code class="clr-code">.menu</code>. The
-    <code class="clr-code">.card-link</code> acts as a toggle to open and close the menu. The menu can be activated by attaching the
-    <code class="clr-code">.active</code> class to the
+    <code class="clr-code">.card-link</code> followed by the <code class="clr-code">.menu</code>. The
+    <code class="clr-code">.card-link</code> acts as a toggle to open and close the menu. The menu can be activated by
+    attaching the <code class="clr-code">.active</code> class to the
     <code class="clr-code">.card-overflow-menu</code> class
   </div>
 
   <h6>.menu and .menu-item:</h6>
   <div>
-    <code class="clr-code">.menu</code> should be followed by a
-    <code class="clr-code">.card-link</code> inside a
+    <code class="clr-code">.menu</code> should be followed by a <code class="clr-code">.card-link</code> inside a
     <code class="clr-code">.card-overflow-menu</code>. All items in a menu should be assigned a
     <code class="clr-code">.menu-item</code> class
   </div>
@@ -63,16 +59,14 @@ Use the
   <h6>.clickable:</h6>
   <div>
     Extending the
-    <code class="clr-code">.clickable</code> class along with the
-    <code class="clr-code">.card</code> will change the cursor to a pointer and give a raised effect to the card making it appear clickable on hover.
+    <code class="clr-code">.clickable</code> class along with the <code class="clr-code">.card</code> will change the
+    cursor to a pointer and give a raised effect to the card making it appear clickable on hover.
   </div>
 
   <h6>.group, .icon, .title and .description:</h6>
   <div>
-    <code class="clr-code">.group</code> is a wrapper around an image icon, title and description. The icon, title and description should be assigned the
-    <code
-      class="clr-code">.icon</code>,
-    <code class="clr-code">.title</code> and
+    <code class="clr-code">.group</code> is a wrapper around an image icon, title and description. The icon, title and
+    description should be assigned the <code class="clr-code">.icon</code>, <code class="clr-code">.title</code> and
     <code class="clr-code">.description</code> respectively
   </div>
 
@@ -89,7 +83,6 @@ Use the
     <code class="clr-code">.list-group-item</code> class.
   </div>
 
-
   <h4>Examples</h4>
   <h6>1. Card with a horizontal group and a overflow menu</h6>
   <div ngNonBindable class="clr-example">
@@ -103,8 +96,9 @@ Use the
       </div>
       <div class="card-divider"></div>
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
       </p>
       <div class="dropdown top-left active">
         <a class="card-link dropdown-toggle">Actions</a>
@@ -136,8 +130,9 @@ Use the
       </div>
       <div class="card-divider"></div>
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
       </p>
       <a class="card-link">Link One</a>
       <a class="card-link">Link Two</a>
@@ -165,8 +160,9 @@ Use the
           <h3 class="card-title">Title</h3>
           <div class="card-divider"></div>
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </p>
           <a href="javascript://" class="btn btn-primary">Go!</a>
         </div>
@@ -175,8 +171,9 @@ Use the
         <div class="card card-block">
           <h3 class="card-title">Title</h3>
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </p>
           <a href="javascript://" class="btn btn-primary">Go!</a>
         </div>
@@ -186,8 +183,9 @@ Use the
           <h3 class="card-title">Title</h3>
           <div class="card-divider"></div>
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </p>
           <a href="javascript://" class="btn btn-primary">Go!</a>
         </div>
@@ -196,8 +194,9 @@ Use the
         <div class="card card-block">
           <h3 class="card-title">Title</h3>
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </p>
           <a href="javascript://" class="btn btn-primary">Go!</a>
         </div>
@@ -214,8 +213,9 @@ Use the
       <div class="card-block">
         <h4 class="card-title">Title</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
         </p>
       </div>
     </a>
@@ -230,8 +230,9 @@ Use the
       <div class="card-block">
         <h4 class="card-title">Special title treatment</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
         </p>
         <a href="javascript://" class="btn">Go somewhere</a>
       </div>
@@ -244,8 +245,9 @@ Use the
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
         </p>
         <a href="javascript://" class="btn btn-link">Button</a>
       </div>
@@ -258,8 +260,9 @@ Use the
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
         </p>
       </div>
       <ul class="list-group list-group-flush">
@@ -285,8 +288,9 @@ Use the
       </div>
       <div class="card-divider"></div>
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
       </p>
       <a href="javascript://" class="btn btn-sm btn-primary">Link One</a>
       <div class="dropdown open top-left">
@@ -316,8 +320,9 @@ Use the
       </div>
       <div class="card-divider"></div>
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
       </p>
       <div class="dropdown open top-left">
         <a class="btn btn-sm btn-primary dropdown-toggle">Actions</a>
@@ -338,12 +343,13 @@ Use the
 
   <div class="clr-example">
     <div class="card">
-      <img class="card-img-top" src="assets/placeholder_480x200.png" alt="Card image cap">
+      <img class="card-img-top" src="assets/placeholder_480x200.png" alt="Card image cap" />
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
         </p>
         <div class="card-divider"></div>
         <a href="javascript://" class="btn btn-sm btn-link">Button</a>
@@ -359,3 +365,4 @@ Use the
       </div>
     </div>
   </div>
+</div>

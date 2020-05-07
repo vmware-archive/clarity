@@ -6,11 +6,11 @@
 import { Component, ElementRef, Inject, Injector, Optional } from '@angular/core';
 
 // eslint-disable-next-line clarity/no-barrel-imports
-import { AbstractPopover } from '../../../../clr-angular/popover/common/abstract-popover';
+import { AbstractPopover } from '../../../../clr-angular/src/popover/common/abstract-popover';
 // eslint-disable-next-line clarity/no-barrel-imports
-import { Point } from '../../../../clr-angular/popover/common/popover';
+import { Point } from '../../../../clr-angular/src/popover/common/popover';
 // eslint-disable-next-line clarity/no-barrel-imports
-import { POPOVER_HOST_ANCHOR } from '../../../../clr-angular/popover/common/popover-host-anchor.token';
+import { POPOVER_HOST_ANCHOR } from '../../../../clr-angular/src/popover/common/popover-host-anchor.token';
 
 import { DummyAnchor } from './dummy-anchor';
 

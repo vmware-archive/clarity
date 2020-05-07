@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -22,11 +22,9 @@
   <label for="testing123">Test</label>
 </clr-toggle-wrapper>
 
-
 <h4>Vertical</h4>
 
 <form clrForm clrLayout="vertical">
-
   <clr-toggle-container>
     <label>Default</label>
     <clr-toggle-wrapper>
@@ -75,7 +73,13 @@
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="vertical.disabled.three" name="vertical.disabled.three" [disabled]="disabled" />
+      <input
+        clrToggle
+        type="checkbox"
+        [(ngModel)]="vertical.disabled.three"
+        name="vertical.disabled.three"
+        [disabled]="disabled"
+      />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
@@ -134,13 +138,11 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
-
 </form>
 
 <h4>Horizontal</h4>
 
 <form clrForm clrLayout="horizontal">
-  
   <clr-toggle-container>
     <label>Default</label>
     <clr-toggle-wrapper>
@@ -189,7 +191,13 @@
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="horizontal.disabled.three" name="horizontal.disabled.three" [disabled]="disabled" />
+      <input
+        clrToggle
+        type="checkbox"
+        [(ngModel)]="horizontal.disabled.three"
+        name="horizontal.disabled.three"
+        [disabled]="disabled"
+      />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
@@ -248,13 +256,11 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
-
 </form>
 
 <h4>Compact</h4>
 
 <form clrForm clrLayout="compact">
- 
   <clr-toggle-container>
     <label>Default</label>
     <clr-toggle-wrapper>
@@ -303,7 +309,13 @@
     </clr-toggle-wrapper>
     <clr-toggle-wrapper>
       <label>Three</label>
-      <input clrToggle type="checkbox" [(ngModel)]="compact.disabled.three" name="compact.disabled.three" [disabled]="disabled" />
+      <input
+        clrToggle
+        type="checkbox"
+        [(ngModel)]="compact.disabled.three"
+        name="compact.disabled.three"
+        [disabled]="disabled"
+      />
     </clr-toggle-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
@@ -362,9 +374,7 @@
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-toggle-container>
-
 </form>
-
 
 <h2>CSS Toggle</h2>
 
@@ -375,15 +385,15 @@
     <label class="clr-control-label">Default</label>
     <div class="clr-control-container">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="vertical-checkbox1" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="vertical-checkbox1" name="checkbox-basic" class="clr-toggle" />
         <label for="vertical-checkbox1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="vertical-checkbox2" name="checkbox-basic" class="clr-toggle" checked>
+        <input type="checkbox" id="vertical-checkbox2" name="checkbox-basic" class="clr-toggle" checked />
         <label for="vertical-checkbox2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="vertical-checkbox3" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="vertical-checkbox3" name="checkbox-basic" class="clr-toggle" />
         <label for="vertical-checkbox3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -394,19 +404,37 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Error</label>
+    <label class="clr-control-label"> Error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="vertical-checkbox4" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="vertical-checkbox4"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="vertical-checkbox4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="vertical-checkbox5" placeholder="Enter value here" class="clr-toggle" checked>
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="vertical-checkbox5"
+          placeholder="Enter value here"
+          class="clr-toggle"
+          checked
+        />
         <label for="vertical-checkbox5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="vertical-checkbox6" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="vertical-checkbox6"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="vertical-checkbox6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -417,19 +445,37 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Inline</label>
+    <label class="clr-control-label"> Inline</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="vertical-checkbox7" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="vertical-checkbox7"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="vertical-checkbox7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="vertical-checkbox8" placeholder="Enter value here" class="clr-toggle" checked>
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="vertical-checkbox8"
+          placeholder="Enter value here"
+          class="clr-toggle"
+          checked
+        />
         <label for="vertical-checkbox8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="vertical-checkbox9" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="vertical-checkbox9"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="vertical-checkbox9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -447,15 +493,15 @@
     <label class="clr-control-label">Basic checkbox</label>
     <div class="clr-control-container">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="horizontal-checkbox1" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="horizontal-checkbox1" name="checkbox-basic" class="clr-toggle" />
         <label for="horizontal-checkbox1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="horizontal-checkbox2" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="horizontal-checkbox2" name="checkbox-basic" class="clr-toggle" />
         <label for="horizontal-checkbox2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="horizontal-checkbox3" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="horizontal-checkbox3" name="checkbox-basic" class="clr-toggle" />
         <label for="horizontal-checkbox3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -466,19 +512,36 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Basic checkbox, error</label>
+    <label class="clr-control-label"> Basic checkbox, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="horizontal-checkbox4" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="horizontal-checkbox4"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="horizontal-checkbox5" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="horizontal-checkbox5"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="horizontal-checkbox6" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="horizontal-checkbox6"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -489,19 +552,36 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Inline checkbox</label>
+    <label class="clr-control-label"> Inline checkbox</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="horizontal-checkbox7" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="horizontal-checkbox7"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="horizontal-checkbox8" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="horizontal-checkbox8"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="horizontal-checkbox9" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="horizontal-checkbox9"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="horizontal-checkbox9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -519,15 +599,15 @@
     <label class="clr-control-label">Basic checkbox</label>
     <div class="clr-control-container">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="compact-checkbox1" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="compact-checkbox1" name="checkbox-basic" class="clr-toggle" />
         <label for="compact-checkbox1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="compact-checkbox2" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="compact-checkbox2" name="checkbox-basic" class="clr-toggle" />
         <label for="compact-checkbox2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" id="compact-checkbox3" name="checkbox-basic" class="clr-toggle">
+        <input type="checkbox" id="compact-checkbox3" name="checkbox-basic" class="clr-toggle" />
         <label for="compact-checkbox3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -541,15 +621,33 @@
     <label class="clr-control-label">Basic checkbox, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="compact-checkbox4" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="compact-checkbox4"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="compact-checkbox5" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="compact-checkbox5"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox2" id="compact-checkbox6" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox2"
+          id="compact-checkbox6"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -563,15 +661,33 @@
     <label class="clr-control-label">Inline checkbox</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="compact-checkbox7" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="compact-checkbox7"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="compact-checkbox8" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="compact-checkbox8"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-toggle-wrapper">
-        <input type="checkbox" name="checkbox3" id="compact-checkbox9" placeholder="Enter value here" class="clr-toggle">
+        <input
+          type="checkbox"
+          name="checkbox3"
+          id="compact-checkbox9"
+          placeholder="Enter value here"
+          class="clr-toggle"
+        />
         <label for="compact-checkbox9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">

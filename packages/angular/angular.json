@@ -126,6 +126,35 @@
         }
       }
     },
+    "clr-angular-dev": {
+      "projectType": "library",
+      "root": "projects/clr-angular",
+      "sourceRoot": "projects/clr-angular/src",
+      "prefix": "clr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/clr-angular/tsconfig.lib.json",
+            "project": "projects/clr-angular/ng-package.dev.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/clr-angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "styles": ["projects/clr-angular/src/main.scss"],
+            "main": "projects/clr-angular/src/test.ts",
+            "tsConfig": "projects/clr-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/clr-angular/karma.conf.js"
+          }
+        }
+      }
+    },
     "dev": {
       "projectType": "application",
       "schematics": {
@@ -170,12 +199,11 @@
             "polyfills": "projects/dev/src/polyfills.ts",
             "tsConfig": "projects/dev/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "projects/dev/src/favicon.ico",
-              "projects/dev/src/assets"
-            ],
+            "assets": ["projects/dev/src/favicon.ico", "projects/dev/src/assets"],
             "styles": [
-              "projects/dev/src/styles.scss"
+              "projects/dev/src/styles.scss",
+              "projects/clr-angular/src/main.scss",
+              "../icons/src/clr-icons.scss"
             ],
             "scripts": []
           },
@@ -207,6 +235,19 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dark": {
+              "styles": [
+                "projects/clr-angular/src/dark-theme.scss",
+                "../icons/src/clr-icons.scss",
+                "projects/dev/src/styles.scss"
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dev/src/environments/environment.ts",
+                  "with": "projects/dev/src/environments/environment.dark.ts"
+                }
+              ]
             }
           }
         },
@@ -218,6 +259,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dev:build:production"
+            },
+            "dark": {
+              "browserTarget": "dev:build:dark"
             }
           }
         }

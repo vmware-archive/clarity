@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -19,11 +19,18 @@
 
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
   <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user" [clrDgDetailOpenLabel]="'Open row details for ' + user.name" [clrDgDetailCloseLabel]="'Open row details for ' + user.name">
+  <clr-dg-row
+    *clrDgItems="let user of users"
+    [clrDgItem]="user"
+    [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -34,15 +41,18 @@
 
     <!-- This is here but it will not be enabled -->
     <clr-dg-row-detail *clrIfExpanded>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
-      Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
       Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
     </clr-dg-row-detail>
   </clr-dg-row>
 
   <!-- Simple API for most cases -->
   <clr-dg-detail *clrIfDetail="let detail">
-    <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+    <clr-dg-detail-header
+      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header
+    >
     <clr-dg-detail-body>
       <pre>{{detail | json}}</pre>
       <pre>{{detail | json}}</pre>
@@ -64,7 +74,9 @@
 <clr-datagrid id="change-event" [(clrDgSingleSelected)]="singleSelection">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
   <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
 
@@ -79,8 +91,8 @@
 
     <!-- This is here but it will not be enabled -->
     <clr-dg-row-detail *clrIfExpanded>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
-      Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
       Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
     </clr-dg-row-detail>
   </clr-dg-row>
@@ -88,7 +100,10 @@
   <!--  Desugared option for change event -->
   <ng-template clrIfDetail let-detail (clrIfDetailChange)="stateEvent = $event">
     <clr-dg-detail>
-      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+      <clr-dg-detail-header
+        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header
+      >
       <clr-dg-detail-body>
         <pre>{{detail | json}}</pre>
         <pre>{{detail | json}}</pre>
@@ -111,7 +126,9 @@
 <clr-datagrid id="two-way">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
   <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
 
@@ -137,8 +154,8 @@
 
     <!-- This is here but it will not be enabled -->
     <clr-dg-row-detail *clrIfExpanded>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
-      Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
       Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
     </clr-dg-row-detail>
   </clr-dg-row>
@@ -146,7 +163,10 @@
   <!--  Desugared option for two way binding -->
   <ng-template [(clrIfDetail)]="state" let-detail>
     <clr-dg-detail>
-      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+      <clr-dg-detail-header
+        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header
+      >
       <clr-dg-detail-body>
         <pre>{{detail | json}}</pre>
         <pre>{{detail | json}}</pre>
@@ -169,11 +189,18 @@
 <clr-datagrid id="overlay" class="datagrid-detail-overlay">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
   <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
   <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user" [clrDgDetailOpenLabel]="'Open row details for ' + user.name" [clrDgDetailCloseLabel]="'Open row details for ' + user.name">
+  <clr-dg-row
+    *clrDgItems="let user of users"
+    [clrDgItem]="user"
+    [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -185,7 +212,10 @@
 
   <!-- Simple API for most cases -->
   <clr-dg-detail *clrIfDetail="let detail">
-    <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}</clr-dg-detail-header>
+    <clr-dg-detail-header
+      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header
+    >
     <clr-dg-detail-body>
       <pre>{{detail | json}}</pre>
       <pre>{{detail | json}}</pre>

@@ -24,7 +24,7 @@
 
   --padding: #{$cds-token-layout-space-sm};
   --height: #{$cds-token-space-size-11};
-
+  height: var(--height); // height is set so button is not distorted when in flex container
   display: inline-block;
 
   // following is a fix for Firefox cutting off right edge of buttons. remove when no longer needed.
@@ -100,8 +100,11 @@
 ::slotted(a) {
   text-decoration: none !important;
   display: block;
-  height: 100%;
   color: inherit;
+  margin: calc(var(--padding) * -1);
+  padding: var(--padding);
+  height: var(--height);
+  min-width: #{$cds-token-space-size-13};
 }
 
 ::slotted(cds-icon) {
@@ -180,10 +183,16 @@
   --color: #{$cds-token-color-action-600};
 }
 
-:host([size='sm']) .private-host {
+:host([size='sm']) {
   --padding: #{$cds-token-layout-space-xs} #{$cds-token-layout-space-sm};
   --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
 
+  ::slotted(a) {
+    margin: calc(#{$cds-token-layout-space-xs} * -1) calc(#{$cds-token-layout-space-sm} * -1);
+  }
+}
+
+:host([size='sm']) .private-host {
   .spinner:not(.spinner-check) {
     @include min-equilateral(#{$cds-token-space-size-6});
   }

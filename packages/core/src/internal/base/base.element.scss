@@ -15,6 +15,13 @@
   -webkit-appearance: none !important;
 }
 
+:host([focused]) {
+  outline-width: $cds-token-space-size-2;
+  outline-offset: $cds-token-space-size-1;
+  outline-style: solid;
+  outline-color: Highlight;
+}
+
 slot {
   font-family: inherit;
 }

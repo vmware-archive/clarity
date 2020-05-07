@@ -183,12 +183,14 @@ describe('button element', () => {
   describe('Button link', () => {
     let testLinkElement: HTMLElement;
     let componentLink: CdsButton;
+    let anchor: HTMLAnchorElement;
 
     beforeEach(async () => {
       testLinkElement = createTestElement();
       testLinkElement.innerHTML = `<cds-button><a href="about">About</a></cds-button>`;
       await waitForComponent('cds-button');
       componentLink = testLinkElement.querySelector<CdsButton>('cds-button');
+      anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
     });
 
     afterEach(() => {
@@ -207,7 +209,7 @@ describe('button element', () => {
     });
 
     it('should not trigger button click if link', async () => {
-      await componentIsStable(component);
+      await componentIsStable(componentLink);
       const o = {
         f: () => {
           // Do nothing
@@ -220,6 +222,14 @@ describe('button element', () => {
       testLinkElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
       expect(o.f).not.toHaveBeenCalled();
+    });
+
+    it('should apply host focus styles when link is in focus', async () => {
+      await componentIsStable(componentLink);
+      testLinkElement.focus();
+      anchor.focus();
+      await componentIsStable(componentLink);
+      expect(componentLink.getAttribute('focused')).toBe('');
     });
   });
 });

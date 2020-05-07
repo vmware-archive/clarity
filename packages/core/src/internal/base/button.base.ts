@@ -68,6 +68,7 @@ export class CdsBaseButton extends LitElement {
   protected firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
     this.updateButtonAttributes();
+    this.setupAnchorFocus();
     this.setupNativeButtonBehavior();
   }
 
@@ -76,6 +77,13 @@ export class CdsBaseButton extends LitElement {
     // if readonly or disabled attribute was updated, button attributes might need updating
     if (props.has('readonly') || props.has('disabled')) {
       this.updateButtonAttributes();
+    }
+  }
+
+  private setupAnchorFocus() {
+    if (this.anchor) {
+      this.anchor.addEventListener('focus', () => this.setAttribute('focused', ''));
+      this.anchor.addEventListener('blur', () => this.removeAttribute('focused'));
     }
   }
 
@@ -118,7 +126,6 @@ export class CdsBaseButton extends LitElement {
 
     if (this.anchor) {
       this.readonly = true;
-      this.setAttribute('is-anchor', '');
     }
 
     if (this.readonly) {

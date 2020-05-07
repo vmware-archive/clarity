@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -10,14 +10,13 @@
   Depending on the use case, you might want to allow selection when clicking anywhere in the grid row.
 </p>
 <p>
-  Note that this is not recommeded when the rows are containing clickable cells. If your cells contain input, buttons, etc.
-  this option is not recommended
+  Note that this is not recommeded when the rows are containing clickable cells. If your cells contain input, buttons,
+  etc. this option is not recommended
 </p>
 <ul>
   <li>
     For row selection mode add
-    <code class="clr-code">[(clrDgRowSelection)]</code> and set it to
-    <code class="clr-code">true</code>.
+    <code class="clr-code">[(clrDgRowSelection)]</code> and set it to <code class="clr-code">true</code>.
   </li>
 </ul>
 
@@ -36,7 +35,6 @@
 <h3>Single selection</h3>
 
 <clr-datagrid [(clrDgSingleSelected)]="singleSelected" [clrDgRowSelection]="true">
-
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>

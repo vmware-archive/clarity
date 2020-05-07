@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,20 +8,28 @@
 <form clrForm #simpleForm="ngForm">
   <clr-date-container>
     <label for="date1">Enter Date1</label>
-  <input type="date" id="date1" name="date1" [(ngModel)]="date1" clrDate (clrDateChange)="date1Changed($event)">
+    <input type="date" id="date1" name="date1" [(ngModel)]="date1" clrDate (clrDateChange)="date1Changed($event)" />
   </clr-date-container>
   <clr-date-container>
     <label for="date2">Enter Date2</label>
-    <input type="date" id="date2" name="date2" [(ngModel)]="date2" required clrDate (clrDateChange)="date2Changed($event)">
+    <input
+      type="date"
+      id="date2"
+      name="date2"
+      [(ngModel)]="date2"
+      required
+      clrDate
+      (clrDateChange)="date2Changed($event)"
+    />
   </clr-date-container>
 </form>
 
 <p>
-    {{simpleForm.value | json}}
+  {{simpleForm.value | json}}
 </p>
 <div>
-    Touched: {{simpleForm.touched}}
+  Touched: {{simpleForm.touched}}
 </div>
 <div>
-    Dirty: {{simpleForm.dirty}}
+  Dirty: {{simpleForm.dirty}}
 </div>

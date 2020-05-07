@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -61,10 +61,7 @@
       <clr-dg-cell>
         {{user.pokemon.name}}
         <clr-signpost>
-          <button
-            type="button"
-            class="signpost-action btn btn-small btn-link"
-            clrSignpostTrigger>
+          <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
             <clr-icon shape="help-info"></clr-icon>
           </button>
           <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
@@ -81,8 +78,7 @@
       <ng-container *ngIf="static">A custom static footer</ng-container>
       <clr-dg-pagination *ngIf="!static" #pagination [clrDgPageSize]="1">
         <clr-dg-page-size [clrPageSizeOptions]="[1, 3,5]">Users per page</clr-dg-page-size>
-        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-        of {{pagination.totalItems}} users
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
       </clr-dg-pagination>
     </clr-dg-footer>
   </clr-datagrid>

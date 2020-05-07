@@ -1,10 +1,8 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-
-
 
 <h2>Angular Radio <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
 
@@ -28,12 +26,9 @@
   <label for="testing123">Test</label>
 </clr-radio-wrapper>
 
-
 <h4>Vertical</h4>
 
-
 <form clrForm clrLayout="vertical">
-
   <clr-radio-container>
     <label>First</label>
     <clr-radio-wrapper>
@@ -86,12 +81,19 @@
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="vertical.three" value="three" name="three" required [disabled]="disabled" />
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="vertical.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
     </clr-radio-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-radio-container>
-
 </form>
 
 <h4>Horizontal</h4>
@@ -149,12 +151,19 @@
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="horizontal.three" value="three" name="three" required [disabled]="disabled" />
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="horizontal.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
     </clr-radio-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-radio-container>
-
 </form>
 
 <h4>Compact</h4>
@@ -212,15 +221,20 @@
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <label>Three</label>
-      <input clrRadio type="radio" [(ngModel)]="compact.three" value="three" name="three" required [disabled]="disabled" />
+      <input
+        clrRadio
+        type="radio"
+        [(ngModel)]="compact.three"
+        value="three"
+        name="three"
+        required
+        [disabled]="disabled"
+      />
     </clr-radio-wrapper>
     <clr-control-helper>Helper text</clr-control-helper>
     <clr-control-error>There was an error</clr-control-error>
   </clr-radio-container>
-
-
 </form>
-
 
 <h2>CSS Radio</h2>
 
@@ -231,15 +245,15 @@
     <label class="clr-control-label">Basic radio</label>
     <div class="clr-control-container">
       <div class="clr-radio-wrapper">
-        <input type="radio" id="vertical-radio1" name="radio-basic" class="clr-radio">
+        <input type="radio" id="vertical-radio1" name="radio-basic" class="clr-radio" />
         <label for="vertical-radio1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="vertical-radio2" name="radio-basic" class="clr-radio">
+        <input type="radio" id="vertical-radio2" name="radio-basic" class="clr-radio" />
         <label for="vertical-radio2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="vertical-radio3" name="radio-basic" class="clr-radio">
+        <input type="radio" id="vertical-radio3" name="radio-basic" class="clr-radio" />
         <label for="vertical-radio3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -250,19 +264,18 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Basic radio, error</label>
+    <label class="clr-control-label"> Basic radio, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="vertical-radio4" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="vertical-radio4" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="vertical-radio5" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="vertical-radio5" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="vertical-radio6" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="vertical-radio6" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -273,19 +286,18 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Inline radio</label>
+    <label class="clr-control-label"> Inline radio</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="vertical-radio7" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="vertical-radio7" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="vertical-radio8" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="vertical-radio8" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="vertical-radio9" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="vertical-radio9" placeholder="Enter value here" class="clr-radio" />
         <label for="vertical-radio9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -303,15 +315,15 @@
     <label class="clr-control-label">Basic radio</label>
     <div class="clr-control-container">
       <div class="clr-radio-wrapper">
-        <input type="radio" id="horizontal-radio1" name="radio-basic" class="clr-radio">
+        <input type="radio" id="horizontal-radio1" name="radio-basic" class="clr-radio" />
         <label for="horizontal-radio1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="horizontal-radio2" name="radio-basic" class="clr-radio">
+        <input type="radio" id="horizontal-radio2" name="radio-basic" class="clr-radio" />
         <label for="horizontal-radio2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="horizontal-radio3" name="radio-basic" class="clr-radio">
+        <input type="radio" id="horizontal-radio3" name="radio-basic" class="clr-radio" />
         <label for="horizontal-radio3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -322,19 +334,18 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Basic radio, error</label>
+    <label class="clr-control-label"> Basic radio, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="horizontal-radio4" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="horizontal-radio4" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="horizontal-radio5" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="horizontal-radio5" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="horizontal-radio6" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="horizontal-radio6" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -345,19 +356,18 @@
   </div>
 
   <div class="clr-form-control">
-    <label class="clr-control-label">
-      Inline radio</label>
+    <label class="clr-control-label"> Inline radio</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="horizontal-radio7" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="horizontal-radio7" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="horizontal-radio8" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="horizontal-radio8" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="horizontal-radio9" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="horizontal-radio9" placeholder="Enter value here" class="clr-radio" />
         <label for="horizontal-radio9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -375,15 +385,15 @@
     <label class="clr-control-label">Basic radio</label>
     <div class="clr-control-container">
       <div class="clr-radio-wrapper">
-        <input type="radio" id="compact-radio1" name="radio-basic" class="clr-radio">
+        <input type="radio" id="compact-radio1" name="radio-basic" class="clr-radio" />
         <label for="compact-radio1" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="compact-radio2" name="radio-basic" class="clr-radio">
+        <input type="radio" id="compact-radio2" name="radio-basic" class="clr-radio" />
         <label for="compact-radio2" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" id="compact-radio3" name="radio-basic" class="clr-radio">
+        <input type="radio" id="compact-radio3" name="radio-basic" class="clr-radio" />
         <label for="compact-radio3" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -397,15 +407,15 @@
     <label class="clr-control-label">Basic radio, error</label>
     <div class="clr-control-container clr-error">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="compact-radio4" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="compact-radio4" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio4" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="compact-radio5" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="compact-radio5" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio5" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio2" id="compact-radio6" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio2" id="compact-radio6" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio6" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">
@@ -419,15 +429,15 @@
     <label class="clr-control-label">Inline radio</label>
     <div class="clr-control-container clr-control-inline">
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="compact-radio7" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="compact-radio7" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio7" class="clr-control-label">option 1</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="compact-radio8" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="compact-radio8" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio8" class="clr-control-label">option 2</label>
       </div>
       <div class="clr-radio-wrapper">
-        <input type="radio" name="radio3" id="compact-radio9" placeholder="Enter value here" class="clr-radio">
+        <input type="radio" name="radio3" id="compact-radio9" placeholder="Enter value here" class="clr-radio" />
         <label for="compact-radio9" class="clr-control-label">option 3</label>
       </div>
       <div class="clr-subtext-wrapper">

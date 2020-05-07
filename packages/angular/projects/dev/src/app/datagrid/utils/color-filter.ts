@@ -24,7 +24,7 @@ export class ColorFilter implements ClrDatagridFilterInterface<User> {
   selectedColors: { [color: string]: boolean } = {};
   nbColors = 0;
 
-  changes: EventEmitter<any> = new EventEmitter<any>(false);
+  changes: any = new EventEmitter<any>(false);
 
   listSelected(): string[] {
     const list: string[] = [];

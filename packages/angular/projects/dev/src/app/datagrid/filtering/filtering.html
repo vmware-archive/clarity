@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -7,11 +7,12 @@
 <h2>Custom filters</h2>
 
 <p>
-  Similarly to the advanced sorting features, sometimes the default filter on a string property is not what you need. When
-  this is the case you can write your own filter, with fully custom template and controller, and both wrap it in and pass
-  it to a
-  <code class="clr-code">&lt;clr-dg-filter&gt;</code> component in your column declaration. This can be done whether or not your column is declared as a
-  <code class="clr-code">clrDgField</code>, and will always take precedence over it if it is.
+  Similarly to the advanced sorting features, sometimes the default filter on a string property is not what you need.
+  When this is the case you can write your own filter, with fully custom template and controller, and both wrap it in
+  and pass it to a
+  <code class="clr-code">&lt;clr-dg-filter&gt;</code> component in your column declaration. This can be done whether or
+  not your column is declared as a <code class="clr-code">clrDgField</code>, and will always take precedence over it if
+  it is.
 </p>
 <p>
   The filter you provide to the
@@ -33,8 +34,8 @@
     <code class="clr-code">DatagridFilter</code> parent in its constructor so that it can register itself.
   </li>
   <li>
-    Finally, if you want to have a completely reusable filter independently of our Datagrid, you can write a component for it
-    and use a template reference variable to declare the filter to its container.
+    Finally, if you want to have a completely reusable filter independently of our Datagrid, you can write a component
+    for it and use a template reference variable to declare the filter to its container.
   </li>
 </ul>
 
@@ -50,8 +51,7 @@
   <clr-dg-column>
     Favorite color
     <clr-dg-filter (clrDgFilterOpenChange)="dgFilterChange($event)" [clrDgFilter]="colorFilter">
-      <clr-datagrid-color-filter-demo #colorFilter class="color-filter">
-      </clr-datagrid-color-filter-demo>
+      <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
     </clr-dg-filter>
   </clr-dg-column>
 

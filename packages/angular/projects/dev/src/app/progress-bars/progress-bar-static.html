@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,12 +8,20 @@
   <div class="progbar-examples">
     <h4>Static Progress Bar</h4>
     <div class="progress-static">
-      <div class="progress-meter" [attr.data-value]="staticProgbarValue" [attr.data-displayval]="staticProgbarValue + '%'"></div>
+      <div
+        class="progress-meter"
+        [attr.data-value]="staticProgbarValue"
+        [attr.data-displayval]="staticProgbarValue + '%'"
+      ></div>
     </div>
 
     <h4>Labeled, Static Progress Bar</h4>
     <div class="progress-static labeled">
-      <div class="progress-meter" [attr.data-value]="staticLabeledProgbarValue" [attr.data-displayval]="staticLabeledProgbarValue + '%'"></div>
+      <div
+        class="progress-meter"
+        [attr.data-value]="staticLabeledProgbarValue"
+        [attr.data-displayval]="staticLabeledProgbarValue + '%'"
+      ></div>
       <span>{{staticLabeledProgbarValue}}%</span>
     </div>
 

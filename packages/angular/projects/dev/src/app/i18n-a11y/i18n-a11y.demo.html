@@ -1,15 +1,15 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <clr-alert clrAlertType="warning">
   <div class="alert-item">
-      <span class="alert-text" lang="en">
-        In this demo, all screenreader-only titles and labels are in French. But VoiceOver is stupid, and it completely
-        ignores the page's language when reading buttons. Links and any other text are fine, it's just buttons.
-      </span>
+    <span class="alert-text" lang="en">
+      In this demo, all screenreader-only titles and labels are in French. But VoiceOver is stupid, and it completely
+      ignores the page's language when reading buttons. Links and any other text are fine, it's just buttons.
+    </span>
   </div>
 </clr-alert>
 
@@ -40,8 +40,7 @@
   </clr-dg-row>
 
   <clr-dg-footer>
-    Utilisateurs {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-    sur {{users.length}}
+    Utilisateurs {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} sur {{users.length}}
     <clr-dg-pagination #pagination [clrDgTotalItems]="users.length"></clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>

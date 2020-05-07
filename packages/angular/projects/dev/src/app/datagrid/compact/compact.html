@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -8,9 +8,9 @@
 
 <p>
   To increase the information density of your Datagrid, add the
-  <code class="clr-code">datagrid-compact</code> class to it. This class decreases the amount of whitespace in the default Datagrid style so that you can display more
-  rows in the fixed height. Or if your Datagrid doesn't have a fixed height, you could decrease the overall amount of space
-  that it takes.
+  <code class="clr-code">datagrid-compact</code> class to it. This class decreases the amount of whitespace in the
+  default Datagrid style so that you can display more rows in the fixed height. Or if your Datagrid doesn't have a fixed
+  height, you could decrease the overall amount of space that it takes.
 </p>
 
 <clr-datagrid class="datagrid-compact" [style.height.px]="288">
@@ -91,8 +91,7 @@
     <clr-dg-column>
       Favorite color
       <clr-dg-filter [clrDgFilter]="colorFilter">
-        <clr-datagrid-color-filter-demo #colorFilter class="color-filter">
-        </clr-datagrid-color-filter-demo>
+        <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
       </clr-dg-filter>
     </clr-dg-column>
 
@@ -179,7 +178,6 @@
 
     <clr-dg-footer>{{[].length}} users</clr-dg-footer>
   </clr-datagrid>
-
 </div>
 
 <h3>Vertical scrolling (Rows with badges)</h3>
@@ -195,7 +193,8 @@
       <clr-dg-cell>{{user.id}}</clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-      <clr-dg-cell>{{user.pokemon.name}}
+      <clr-dg-cell
+        >{{user.pokemon.name}}
         <span class="badge badge-5">#{{user.pokemon.number}}</span>
       </clr-dg-cell>
       <clr-dg-cell>
@@ -209,7 +208,7 @@
 
 <h3>Horizontal scrolling</h3>
 <div id="datagrid-compact-horizontal-scrolling">
-  <div class="card" style="width: 400px" id="horizontal-scrolling">
+  <div class="card" style="width: 400px;" id="horizontal-scrolling">
     <div class="card-header">
       For instance when in a narrow card.
     </div>
@@ -248,8 +247,8 @@
       <clr-dg-cell>{{user.id}}</clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
       <clr-dg-cell>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie, ullamcorper facilisis
-        lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie,
+        ullamcorper facilisis lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
       </clr-dg-cell>
     </clr-dg-row>
 
@@ -261,7 +260,7 @@
 <div id="datagrid-compact-expandable-rows">
   <form clrForm>
     <clr-radio-container>
-        <label>Type of detail</label>
+      <label>Type of detail</label>
       <clr-radio-wrapper>
         <input type="radio" clrRadio name="detail" value="default" [(ngModel)]="detail" />
         <label>Default</label>
@@ -313,21 +312,20 @@
       <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
         <ng-template [clrFakeLoader]="slowLoad" clrLoading>
           <ng-template [ngIf]="detail === 'default'">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin rhoncus
-            lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu. Vivamus
-            in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean sagittis nibh lacus, in eleifend urna
-            ultrices et. Mauris porttitor nisi nec velit pharetra porttitor. Vestibulum vulputate sollicitudin dolor ut tincidunt.
-            Phasellus vitae blandit felis. Nullam posuere ipsum tincidunt velit pellentesque rhoncus. Morbi faucibus ut ipsum
-            at malesuada. Nam vestibulum felis sit amet metus finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus.
-            Fusce nec aliquam leo, at suscipit diam.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
+            Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque
+            sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean sagittis nibh
+            lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor. Vestibulum
+            vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere ipsum tincidunt
+            velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis sit amet metus
+            finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo, at suscipit diam.
           </ng-template>
 
           <ng-template [ngIf]="detail === 'columns'">
             <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
             <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
             <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
-            <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
-            </clr-dg-cell>
+            <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu. </clr-dg-cell>
             <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
           </ng-template>
         </ng-template>

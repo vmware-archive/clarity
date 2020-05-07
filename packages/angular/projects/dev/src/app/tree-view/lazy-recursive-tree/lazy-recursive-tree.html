@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -10,13 +10,15 @@
 </p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
-    <clr-tree-node *clrRecursiveFor="let node of tree.root; getChildren: synchronousChildren"
-                   [clrSelected]="tree.isSelected(node)" (clrSelectedChange)="tree.select(node, $event)">
+    <clr-tree-node
+      *clrRecursiveFor="let node of tree.root; getChildren: synchronousChildren"
+      [clrSelected]="tree.isSelected(node)"
+      (clrSelectedChange)="tree.select(node, $event)"
+    >
       {{node}}
     </clr-tree-node>
   </clr-tree>
 </div>
-
 
 <h4>Asynchronous, pre-loading 1 level ahead</h4>
 <p>
@@ -24,8 +26,11 @@
 </p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
-    <clr-tree-node *clrRecursiveFor="let node of asyncTree.root; getChildren: asynchronousChildren"
-                   [clrSelected]="asyncTree.isSelected(node)" (clrSelectedChange)="asyncTree.select(node, $event)">
+    <clr-tree-node
+      *clrRecursiveFor="let node of asyncTree.root; getChildren: asynchronousChildren"
+      [clrSelected]="asyncTree.isSelected(node)"
+      (clrSelectedChange)="asyncTree.select(node, $event)"
+    >
       {{node}}
     </clr-tree-node>
   </clr-tree>
@@ -37,9 +42,12 @@
 </p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
-    <clr-tree-node *clrRecursiveFor="let node of lazierTree.root; getChildren: lazierChildren"
-                   [clrExpandable]="true"
-                   [clrSelected]="lazierTree.isSelected(node)" (clrSelectedChange)="lazierTree.select(node, $event)">
+    <clr-tree-node
+      *clrRecursiveFor="let node of lazierTree.root; getChildren: lazierChildren"
+      [clrExpandable]="true"
+      [clrSelected]="lazierTree.isSelected(node)"
+      (clrSelectedChange)="lazierTree.select(node, $event)"
+    >
       {{node}}
     </clr-tree-node>
   </clr-tree>

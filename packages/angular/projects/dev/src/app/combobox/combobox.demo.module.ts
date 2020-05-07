@@ -13,7 +13,7 @@ import { ComboboxDemo } from './combobox.demo';
 import { ROUTING } from './combobox.demo.routing';
 // Commenting out temporarily. AOT builds do not work when importing outside of scoped library.
 // Can reimport once combobox is added as a public export to @clr/angular
-// import { ClrComboboxModule } from '../../../../clr-angular/forms/combobox/combobox.module';
+// import { ClrComboboxModule } from '../../../../clr-angular/src/forms/combobox/combobox.module';
 
 @NgModule({
   imports: [CommonModule, ClarityModule, ROUTING],

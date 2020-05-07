@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -7,13 +7,13 @@
 <h2>Pagination</h2>
 
 <p>
-  So far, our examples' data only contained a few entries. The point of a datagrid is to display large amounts of data, and
-  we can't reasonably display it all at the same time on the page. To solve this, our datagrid supports pagination.
+  So far, our examples' data only contained a few entries. The point of a datagrid is to display large amounts of data,
+  and we can't reasonably display it all at the same time on the page. To solve this, our datagrid supports pagination.
 </p>
 <p>
   To activate pagination on your datagrid, you simply need to add a
-  <code class="clr-code">&lt;clr-dg-pagination&gt;</code> component in your datagrid's footer. This component exposes many of properties, most of them bindable, to help you interact
-  with it:
+  <code class="clr-code">&lt;clr-dg-pagination&gt;</code> component in your datagrid's footer. This component exposes
+  many of properties, most of them bindable, to help you interact with it:
 </p>
 <table class="table">
   <thead>
@@ -58,8 +58,8 @@
 </table>
 
 <p>
-  Here is an example of how to use pagination, and attach a template reference variable to it to display information on the
-  current page.
+  Here is an example of how to use pagination, and attach a template reference variable to it to display information on
+  the current page.
 </p>
 
 <clr-datagrid>
@@ -85,7 +85,8 @@
       #pagination
       [clrDgPageSize]="5"
       [clrDgPageInputDisabled]="clrDgPageInputDisabled"
-      (clrDgPageChange)="pageChange($event)">
+      (clrDgPageChange)="pageChange($event)"
+    >
       <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
     </clr-dg-pagination>

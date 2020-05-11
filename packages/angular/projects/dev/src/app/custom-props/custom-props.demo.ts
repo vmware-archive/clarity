@@ -5,8 +5,8 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { runCssVarsPolyfill } from '@clr/core';
-import '@clr/core/test-dropdown';
+// import { runCssVarsPolyfill } from '@clr/core';
+// import '@clr/core/test-dropdown';
 
 const themes = {
   default: {
@@ -56,7 +56,7 @@ function switchTheme(toTheme: string): string {
   myStyles.push('}');
   newStyle.innerHTML = myStyles.join('');
 
-  runCssVarsPolyfill();
+  // runCssVarsPolyfill();
 
   return toTheme;
 }
@@ -97,6 +97,6 @@ export class CustomPropsDemo implements OnInit {
   }
 
   ngOnInit() {
-    runCssVarsPolyfill();
+    // runCssVarsPolyfill();
   }
 }

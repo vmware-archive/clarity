@@ -6,6 +6,7 @@
 import { DebugElement, InjectionToken, ModuleWithProviders, Type } from '@angular/core';
 import { ComponentFixture, TestBed, TestBedStatic, TestModuleMetadata } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 // import { reportSlowSpecs } from "./slow-specs.spec";
 
@@ -129,7 +130,9 @@ export function spec<C, H>(
  * unify our test helpers across all of our code base.
  * @deprecated
  */
-export function addHelpersDeprecated(modulesToImport?: Array<Type<any> | ModuleWithProviders | any[]>): void {
+export function addHelpersDeprecated(
+  modulesToImport?: Array<Type<any> | ModuleWithProviders<RouterModule> | any[]>
+): void {
   beforeEach(function () {
     /*
      * Ideally we would just make "this" a TestContext, but typing "this" in typescript

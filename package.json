@@ -38,6 +38,7 @@
     "angular:dev:build:dark": "npm --prefix packages/angular run dev:dark",
     "angular:dev:serve": "npm --prefix packages/angular run serve",
     "angular:dev:serve:dark": "npm --prefix packages/angular run serve:dark",
+    "angular:dev:deploy": "./scripts/dev.sh",
     "schematics:build": "npm --prefix packages/schematics run build",
     "website:start": "npm run core:build && npm run website:news && ng serve website",
     "website:build": "npm run website:news && ng build website --prod --progress=false && npm run website:storybook",

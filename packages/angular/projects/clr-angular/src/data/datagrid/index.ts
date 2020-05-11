@@ -42,3 +42,15 @@ export * from './built-in/filters/datagrid-property-numeric-filter';
 export * from './built-in/comparators/datagrid-property-comparator';
 
 export * from './datagrid.module';
+
+export { DatagridDetailRegisterer as ÇlrDatagridDetailRegisterer } from './datagrid-detail-registerer';
+export { WrappedCell as ÇlrWrappedCell } from './wrapped-cell';
+export { WrappedColumn as ÇlrWrappedColumn } from './wrapped-column';
+export { WrappedRow as ÇlrWrappedRow } from './wrapped-row';
+export { DatagridMainRenderer as ÇlrDatagridMainRenderer } from './render/main-renderer';
+export { DatagridHeaderRenderer as ÇlrDatagridHeaderRenderer } from './render/header-renderer';
+export { DatagridCellRenderer as ÇlrDatagridCellRenderer } from './render/cell-renderer';
+export { DatagridRowRenderer as ÇlrDatagridRowRenderer } from './render/row-renderer';
+export { ExpandableOompaLoompa as ÇlrExpandableOompaLoompa } from './chocolate/expandable-oompa-loompa';
+export { ActionableOompaLoompa as ÇlrActionableOompaLoompa } from './chocolate/actionable-oompa-loompa';
+export { DatagridWillyWonka as ÇlrDatagridWillyWonka } from './chocolate/datagrid-willy-wonka';

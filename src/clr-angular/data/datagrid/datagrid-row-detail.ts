@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,6 +12,7 @@ import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -19,13 +20,18 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
  */
 @Component({
   selector: 'clr-dg-row-detail',
-  template: `  
-        <ng-content></ng-content>
-    `,
+  template: `
+    <div class="clr-sr-only">
+      {{ beginningOfExpandableContentAriaText }} {{ commonStrings.keys.dategridExpandableRowsHelperText }}
+    </div>
+    <ng-content></ng-content>
+    <div class="clr-sr-only">{{ endOfExpandableContentAriaText }}</div>
+  `,
   host: {
     '[class.datagrid-row-flex]': 'true',
     '[class.datagrid-row-detail]': 'true',
     '[class.datagrid-container]': 'cells.length === 0',
+    '[attr.id]': 'expand.expandableId',
   },
 })
 export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
@@ -36,7 +42,8 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
     public selection: Selection,
     public rowActionService: RowActionService,
     public expand: DatagridIfExpandService,
-    public expandableRows: ExpandableRowsCount
+    public expandableRows: ExpandableRowsCount,
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
@@ -58,5 +65,21 @@ export class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestro
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  @Input('clrRowDetailBeginningAriaText') private _beginningOfExpandableContentAriaText: string;
+  public get beginningOfExpandableContentAriaText() {
+    return (
+      this._beginningOfExpandableContentAriaText ||
+      `${this.commonStrings.keys.dategridExpandableBeginningOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+    );
+  }
+
+  @Input('clrRowDetailEndAriaText') private _endOfExpandableContentAriaText: string;
+  public get endOfExpandableContentAriaText() {
+    return (
+      this._endOfExpandableContentAriaText ||
+      `${this.commonStrings.keys.dategridExpandableEndOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+    );
   }
 }

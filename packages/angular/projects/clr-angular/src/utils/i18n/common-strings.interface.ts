@@ -211,4 +211,10 @@ export interface ClrCommonStrings {
   timelineStepSuccess: string;
   timelineStepError: string;
   timelineStepProcessing: string;
+
+  // Datagrid Helper text for expandable rows
+  dategridExpandableBeginningOf?: string;
+  dategridExpandableEndOf?: string;
+  dategridExpandableRowContent?: string;
+  dategridExpandableRowsHelperText?: string;
 }

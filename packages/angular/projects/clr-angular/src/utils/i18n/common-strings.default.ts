@@ -77,4 +77,10 @@ export const commonStringsDefault: ClrCommonStrings = {
   timelineStepSuccess: 'Completed',
   timelineStepError: 'Error',
   timelineStepProcessing: 'In progress',
+
+  // Datagrid expandable rows
+  dategridExpandableBeginningOf: 'Beginning of',
+  dategridExpandableEndOf: 'End of',
+  dategridExpandableRowContent: 'Expandable row content',
+  dategridExpandableRowsHelperText: `Screen reader table commands may not work for viewing expanded content, please use your screen reader's browse mode to read the content exposed by this button`,
 };

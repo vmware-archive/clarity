@@ -12,6 +12,7 @@ import { RowActionService } from './providers/row-action-service';
 import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 /**
  * Generic bland container serving various purposes for Datagrid.
@@ -19,11 +20,18 @@ import { DatagridIfExpandService } from './datagrid-if-expanded.service';
  */
 @Component({
   selector: 'clr-dg-row-detail',
-  template: ` <ng-content></ng-content> `,
+  template: `
+    <div class="clr-sr-only">
+      {{ beginningOfExpandableContentAriaText }} {{ commonStrings.keys.dategridExpandableRowsHelperText }}
+    </div>
+    <ng-content></ng-content>
+    <div class="clr-sr-only">{{ endOfExpandableContentAriaText }}</div>
+  `,
   host: {
     '[class.datagrid-row-flex]': 'true',
     '[class.datagrid-row-detail]': 'true',
     '[class.datagrid-container]': 'cells.length === 0',
+    '[attr.id]': 'expand.expandableId',
   },
 })
 export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
@@ -34,7 +42,8 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
     public selection: Selection,
     public rowActionService: RowActionService,
     public expand: DatagridIfExpandService,
-    public expandableRows: ExpandableRowsCount
+    public expandableRows: ExpandableRowsCount,
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   @ContentChildren(ClrDatagridCell) cells: QueryList<ClrDatagridCell>;
@@ -56,5 +65,21 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  @Input('clrRowDetailBeginningAriaText') _beginningOfExpandableContentAriaText: string;
+  public get beginningOfExpandableContentAriaText() {
+    return (
+      this._beginningOfExpandableContentAriaText ||
+      `${this.commonStrings.keys.dategridExpandableBeginningOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+    );
+  }
+
+  @Input('clrRowDetailEndAriaText') _endOfExpandableContentAriaText: string;
+  public get endOfExpandableContentAriaText() {
+    return (
+      this._endOfExpandableContentAriaText ||
+      `${this.commonStrings.keys.dategridExpandableEndOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+    );
   }
 }

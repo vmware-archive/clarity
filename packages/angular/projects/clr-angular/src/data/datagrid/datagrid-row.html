@@ -96,6 +96,7 @@
               class="datagrid-expandable-caret-button"
               [attr.aria-expanded]="expand.expanded"
               [attr.aria-label]="expand.expanded ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
+              [attr.aria-controls]="expandableId"
             >
               <clr-icon
                 shape="caret"

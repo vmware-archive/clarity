@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { ClrDatagridRowDetail } from './datagrid-row-detail';
 import { DATAGRID_SPEC_PROVIDERS, TestContext } from './helpers.spec';
 import { DatagridIfExpandService } from './datagrid-if-expanded.service';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 
 export default function (): void {
   describe('ClrDatagridRowDetail component', function () {
@@ -46,6 +47,25 @@ export default function (): void {
       context.testComponent.replace = true;
       context.detectChanges();
       expect(expandState).toBe(true);
+    });
+
+    it('should add helper text', function () {
+      const commonStrings = new ClrCommonStringsService();
+      const rows: HTMLElement[] = context.clarityElement.querySelectorAll('.clr-sr-only');
+
+      const first = [
+        commonStrings.keys.dategridExpandableBeginningOf,
+        commonStrings.keys.dategridExpandableRowContent,
+        commonStrings.keys.dategridExpandableRowsHelperText,
+      ];
+      const last = [commonStrings.keys.dategridExpandableEndOf, commonStrings.keys.dategridExpandableRowContent];
+
+      expect(rows[0].innerText).toBe(first.join(' '));
+      expect(rows[1].innerText).toBe(last.join(' '));
+    });
+
+    it('should add id to the root element', function () {
+      expect(context.clarityElement.getAttribute('id')).not.toBeNull();
     });
   });
 }

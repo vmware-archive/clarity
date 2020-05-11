@@ -58,5 +58,9 @@ export default function (): void {
       this.expand.loadingStateChange(ClrLoadingState.DEFAULT);
       expect(animates).toBe(2);
     });
+
+    it('expect to create expandableId property', function () {
+      expect(this.expand.expandableId).toContain('clr-dg-expandable-row-');
+    });
   });
 }

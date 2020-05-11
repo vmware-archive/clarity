@@ -5,3 +5,5 @@
  */
 
 export { FocusTrapTracker as ÇlrFocusTrapTracker } from './focus-trap-tracker.service';
+export { FocusTrapDirective as ÇlrFocusTrapDirective } from './focus-trap.directive';
+export { ClrFocusTrapModule as ÇlrClrFocusTrapModule } from './focus-trap.module';

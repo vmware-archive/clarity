@@ -1,0 +1,20 @@
+name: Dev
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install && npm --prefix packages/icons install && npm --prefix packages/angular install && npm --prefix packages/ui install && npm --prefix packages/core install && npm --prefix packages/schematics install
+      - run: npm run build:libs && npm run angular:dev:build
+      - run: npm run angular:dev:deploy
+
+    env:
+      CI: true
+      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db

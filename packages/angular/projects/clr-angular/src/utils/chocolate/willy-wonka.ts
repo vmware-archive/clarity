@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterViewChecked } from '@angular/core';
+import { AfterViewChecked, Directive } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 
@@ -15,6 +15,7 @@ import { Subject } from 'rxjs';
  * Do not modify or even use this class unless you know exactly what you're doing.
  * It has the potential to trigger change detection loops or kill app performances.
  */
+@Directive()
 export class WillyWonka implements AfterViewChecked {
   private _chocolate = new Subject<string>();
 

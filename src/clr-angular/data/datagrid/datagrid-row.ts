@@ -59,6 +59,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   public id: string;
   public radioId: string;
   public checkboxId: string;
+  public expandableId: string;
 
   /* reference to the enum so that template can access */
   public SELECTION_TYPE = SelectionType;
@@ -90,6 +91,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     this.id = 'clr-dg-row' + nbRow;
     this.radioId = 'clr-dg-row-rd' + nbRow;
     this.checkboxId = 'clr-dg-row-cb' + nbRow;
+    this.expandableId = expand.expandableId;
 
     this.subscriptions.push(
       combineLatest(this.expand.replace, this.expand.expandChange).subscribe(

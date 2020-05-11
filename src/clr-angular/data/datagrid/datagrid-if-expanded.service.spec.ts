@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -57,6 +57,10 @@ export default function(): void {
       expect(animates).toBe(1);
       this.expand.loadingStateChange(ClrLoadingState.DEFAULT);
       expect(animates).toBe(2);
+    });
+
+    it('expect to create expandableId property', function() {
+      expect(this.expand.expandableId).toContain('clr-dg-expandable-row-');
     });
   });
 }

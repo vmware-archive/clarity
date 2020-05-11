@@ -138,5 +138,21 @@ export class I18nDemo extends ClarityDocComponent {
     { key: 'timelineStepSuccess', role: 'Used in the aria-label for the success step icon' },
     { key: 'timelineStepError', role: 'Used in the aria-label for the error step icon' },
     { key: 'timelineStepProcessing', role: 'Used in the aria-label for the processing step icon' },
+    {
+      key: 'dategridExpandableBeginningOf',
+      role: 'Beginning of expandable row',
+    },
+    {
+      key: 'dategridExpandableEndOf',
+      role: 'End of expandable row',
+    },
+    {
+      key: 'dategridExpandableRowContent',
+      role: 'Describe expandable content region',
+    },
+    {
+      key: 'dategridExpandableRowsHelperText',
+      role: 'Provide helper text related to expandable rows Accessibility limitation inside the Datagrid',
+    },
   ];
 }

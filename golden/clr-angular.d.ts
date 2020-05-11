@@ -292,6 +292,10 @@ export interface ClrCommonStrings {
     currentPage: string;
     danger: string;
     datagridFilterAriaLabel?: string;
+    dategridExpandableBeginningOf?: string;
+    dategridExpandableEndOf?: string;
+    dategridExpandableRowContent?: string;
+    dategridExpandableRowsHelperText?: string;
     datepickerCurrentDecade: string;
     datepickerCurrentMonth: string;
     datepickerNextDecade: string;
@@ -656,6 +660,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     expand: DatagridIfExpandService;
     expandAnimation: ClrExpandableAnimation;
     expandAnimationTrigger: boolean;
+    expandableId: string;
     get expanded(): boolean;
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
@@ -680,14 +685,17 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
 
 export declare class ClrDatagridRowDetail<T = any> implements AfterContentInit, OnDestroy {
     SELECTION_TYPE: typeof SelectionType;
+    get beginningOfExpandableContentAriaText(): string;
     cells: QueryList<ClrDatagridCell>;
+    commonStrings: ClrCommonStringsService;
+    get endOfExpandableContentAriaText(): string;
     expand: DatagridIfExpandService;
     expandableRows: ExpandableRowsCount;
     set replace(value: boolean);
     replacedRow: boolean;
     rowActionService: RowActionService;
     selection: Selection;
-    constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount);
+    constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount, commonStrings: ClrCommonStringsService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
 }

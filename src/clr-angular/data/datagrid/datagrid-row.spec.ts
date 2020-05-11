@@ -316,6 +316,11 @@ export default function(): void {
         expect(context.clarityElement.querySelector('.spinner')).not.toBeNull();
       });
 
+      it('button must contain aria-controls', function() {
+        const button = context.clarityElement.querySelector('.datagrid-expandable-caret-button');
+        expect(button.getAttribute('aria-controls')).not.toBeNull();
+      });
+
       it('contains expandable element', function() {
         expect(context.clarityElement.querySelector('clr-expandable-animation')).not.toBeNull();
       });

@@ -21,6 +21,8 @@ import { ClrPopoverToggleService } from '../popover/providers/popover-toggle.ser
  *
  */
 export class ClrIfOpen implements OnDestroy {
+  public static ngAcceptInputType_open: boolean | '';
+
   private subscription: Subscription;
 
   /*********

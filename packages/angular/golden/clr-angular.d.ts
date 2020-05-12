@@ -1047,6 +1047,7 @@ export declare class ClrIfOpen implements OnDestroy {
     constructor(toggleService: ClrPopoverToggleService, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
     updateView(value: boolean): void;
+    static ngAcceptInputType_open: boolean | '';
 }
 
 export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -386,6 +386,12 @@ export default function(): void {
         expect(this.context.clarityElement.querySelector('clr-dg-string-filter')).not.toBeNull();
       });
 
+      it('should set number filter when clrDgColType is number', function() {
+        this.context = this.create(ClrDatagridColumn, SimpleNumberFilterTest, DATAGRID_SPEC_PROVIDERS);
+        this.context.detectChanges();
+        expect(this.context.clarityElement.querySelector('clr-dg-numeric-filter')).not.toBeNull();
+      });
+
       it('projects custom filters outside of the title', function() {
         this.context = this.create(ClrDatagridColumn, FilterTest, DATAGRID_SPEC_PROVIDERS);
         expect(this.context.clarityElement.querySelector('.my-filter')).not.toBeNull();
@@ -456,6 +462,17 @@ class SimpleDeprecatedTest {
   field: string;
   sorted = false;
 }
+
+@Component({
+  template: `
+        <clr-dg-column
+                clrDgField="field"
+                clrDgColType="number">
+            1
+        </clr-dg-column>
+    `,
+})
+class SimpleNumberFilterTest {}
 
 @Component({
   template: `

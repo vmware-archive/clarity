@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -48,7 +48,7 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
                   *ngIf="field && !customFilter && (colType=='string')"
                   [clrDgStringFilter]="registered"
                   [(clrFilterValue)]="filterValue"></clr-dg-string-filter>
-          
+
           <clr-dg-numeric-filter
                   *ngIf="field && !customFilter && (colType=='number')"
                   [clrDgNumericFilter]="registered"
@@ -58,11 +58,11 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
               <ng-content></ng-content>
           </ng-template>
 
-          <button 
-            class="datagrid-column-title" 
+          <button
+            class="datagrid-column-title"
             [attr.aria-label]="commonStrings.keys.sortColumn"
-            *ngIf="sortable" 
-            (click)="sort()" 
+            *ngIf="sortable"
+            (click)="sort()"
             type="button">
               <ng-container  *ngTemplateOutlet="columnTitle"></ng-container>
               <clr-icon
@@ -127,6 +127,15 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   }
 
   /*
+  * What type is this column?  This defaults to STRING, but can also be
+  * set to NUMBER.  Unsupported types default to STRING. Users can set it
+  * via the [clrDgColType] input by setting it to 'string' or 'number'.
+  */
+
+  // TODO: We might want to make this an enum in the future
+  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
+
+  /*
      * Simple object property shortcut, activates both sorting and filtering
      * based on native comparison of the specified property on the items.
      */
@@ -178,15 +187,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       }
     }
   }
-
-  /*
-    * What type is this column?  This defaults to STRING, but can also be
-    * set to NUMBER.  Unsupported types default to STRING. Users can set it
-    * via the [clrDgColType] input by setting it to 'string' or 'number'.
-    */
-
-  // TODO: We might want to make this an enum in the future
-  @Input('clrDgColType') colType: 'string' | 'number' = 'string';
 
   /**
    * Indicates if the column is sortable

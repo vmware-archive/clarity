@@ -799,6 +799,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     onValueChange(target: HTMLInputElement): void;
     setFocusStates(): void;
     triggerValidation(): void;
+    static ngAcceptInputType_date: Date | null;
 }
 
 export declare class ClrDatepickerModule {

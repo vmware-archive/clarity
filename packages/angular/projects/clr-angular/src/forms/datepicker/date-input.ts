@@ -54,6 +54,8 @@ import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribut
   providers: [DatepickerFocusService],
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
+  public static ngAcceptInputType_date: Date | null;
+
   @Input() placeholder: string;
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
   @Input('clrDate')

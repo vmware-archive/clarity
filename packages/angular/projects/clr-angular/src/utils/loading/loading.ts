@@ -16,6 +16,8 @@ export enum ClrLoadingState {
 
 @Directive({ selector: '[clrLoading]' })
 export class ClrLoading implements OnDestroy {
+  public static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null;
+
   // We find the first parent that handles something loading
   constructor(@Optional() private listener: LoadingListener) {}
 

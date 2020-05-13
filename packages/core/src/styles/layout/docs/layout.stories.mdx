@@ -2,15 +2,16 @@ import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 import '@clr/core/alert';
 
-<Meta title="Experimental/Layout/Get Started" />
+<Meta title="Foundation/Layout/Get Started" />
 
 # Layout
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 Clarity Core components do not provide surrounding white space. Spacing
 between components is managed entirely by the `cds-layout` attribute. This
@@ -30,10 +31,10 @@ To use the layout system import the global CSS.
 
 ```scss
 // import into sass or css
-@import '~@clr/core/styles/module.layout.min';
+@import '~@clr/core/global.min';
 
 // or import in html
-<link href="/node_modules/@clr/core/styles/module.layout.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
 ```
 
 ## Horizontal
@@ -42,7 +43,7 @@ The horizontal layout type enables horizontal rows of items that can wrap automa
 Spacing, alignments and gap between items can all be configured with the component.
 [Read More: Horizontal Layout](?path=/docs/experimental-layout-horizontal--page)
 
-<Story id="experimental-layout-stories--horizontal-layout" />
+<Story id="foundation-layout-stories--horizontal-layout" />
 
 ```html
 <div cds-layout="horizontal gap:md">
@@ -59,7 +60,7 @@ cards, content and other block level items. Spacing, alignments and gap between
 stacked items can all be configured with the component.
 [Read More: Vertical Layout](?path=/docs/experimental-layout-vertical--page)
 
-<Story id="experimental-layout-stories--vertical-layout" />
+<Story id="foundation-layout-stories--vertical-layout" />
 
 ```html
 <div cds-layout="vertical gap:md">
@@ -76,7 +77,7 @@ for controlling the spacing of items within a container as well as responsive
 layout. Spacing, alignments and gap between items can all be configured with
 the component. [Read More: Grid Layout](?path=/docs/experimental-layout-grid--page)
 
-<Story id="experimental-layout-stories--grid-layout-columns-responsive" />
+<Story id="foundation-layout-stories--grid-layout-columns-responsive" />
 
 ```html
 <div cds-layout="grid cols@sm:6 cols@md:3 gap:md">
@@ -92,7 +93,7 @@ the component. [Read More: Grid Layout](?path=/docs/experimental-layout-grid--pa
 The layout system provides many built-in responsive utilities to make it easy to
 manage layouts on many different screen sizes. All responsive utilities follow the same set of breakpoints.
 
-<Story id="experimental-design-tokens-stories--layout" />
+<Story id="foundation-design-tokens-stories--layout" />
 
 ```css
 @media (min-width: 576px) {

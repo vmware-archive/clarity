@@ -141,7 +141,7 @@ export class CdsAlertGroup extends LitElement {
   render() {
     return html`
       <div
-        cds-layout="${this.pager ? 'horizontal no-wrap' : 'horizontal'}"
+        cds-layout="${this.pager ? 'horizontal wrap:none' : 'horizontal'}"
         class="${this.pager ? 'private-host' : 'private-host no-pager'}"
       >
         <div class="pager-wrapper" cds-layout="p-x:lg">
@@ -149,9 +149,7 @@ export class CdsAlertGroup extends LitElement {
         </div>
         <div
           class="alert-group-wrapper"
-          cds-layout="${this.size === 'sm'
-            ? 'vertical no-wrap gap:none align:horizontal-stretch'
-            : 'vertical no-wrap gap:sm align:horizontal-stretch'}"
+          cds-layout="vertical wrap:none align:horizontal-stretch fill ${this.size === 'sm' ? 'gap:none' : 'gap:sm'}"
         >
           <slot></slot>
         </div>

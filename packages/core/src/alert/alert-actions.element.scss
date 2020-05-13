@@ -2,6 +2,9 @@
 @import './../styles/mixins/utils';
 
 :host {
+  --action-hover-text-color: #{$cds-token-color-neutral-1000};
+  --action-text-color: #{$cds-token-color-neutral-700};
+  --action-font-size: #{$cds-token-typography-font-size-3};
   white-space: nowrap;
 
   // TODO: add style override for dropdown component inside alert-actions after cds-dropdown is implemented
@@ -12,8 +15,8 @@
 }
 
 ::slotted(cds-button.alert-btn) {
-  --color: var(--action-text-color, #{$cds-token-color-neutral-700-static});
-  --border-color: var(--action-text-color, #{$cds-token-color-neutral-700-static});
+  --color: var(--action-text-color);
+  --border-color: var(--action-text-color);
   --background: none;
   --padding: none;
   --box-shadow-color: transparent;
@@ -27,8 +30,8 @@
 }
 
 ::slotted(cds-button.alert-btn:hover) {
-  --color: var(--action-hover-text-color, #{$cds-token-color-neutral-1000-static});
-  --border-color: var(--action-hover-text-color, #{$cds-token-color-neutral-1000-static});
+  --color: var(--action-hover-text-color);
+  --border-color: var(--action-hover-text-color);
 }
 
 :host([type='default']) {
@@ -57,7 +60,7 @@
 }
 
 :host([type='default']) ::slotted(cds-button.alert-btn) {
-  --font-size: var(--font-size, #{$cds-token-typography-font-size-3});
+  --font-size: var(--action-font-size);
   --letter-spacing: normal;
   --height: var(--action-size);
   line-height: 1em;

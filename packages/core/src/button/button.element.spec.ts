@@ -199,13 +199,18 @@ describe('button element', () => {
   describe('Button link', () => {
     let testLinkElement: HTMLElement;
     let componentLink: CdsButton;
+    let componentButton: CdsButton;
     let anchor: HTMLAnchorElement;
 
     beforeEach(async () => {
       testLinkElement = createTestElement();
-      testLinkElement.innerHTML = `<cds-button><a href="about">About</a></cds-button>`;
+      testLinkElement.innerHTML = `
+        <cds-button><a href="about">About</a></cds-button>
+        <cds-button>About</cds-button>
+      `;
       await waitForComponent('cds-button');
-      componentLink = testLinkElement.querySelector<CdsButton>('cds-button');
+      componentLink = testLinkElement.querySelectorAll<CdsButton>('cds-button')[0];
+      componentButton = testLinkElement.querySelectorAll<CdsButton>('cds-button')[1];
       anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
     });
 
@@ -224,6 +229,14 @@ describe('button element', () => {
       expect(componentLink.readonly).toBe(true);
     });
 
+    it('should apply host focus styles when link is in focus', async () => {
+      await componentIsStable(componentLink);
+      testLinkElement.focus();
+      anchor.focus();
+      await componentIsStable(componentLink);
+      expect(componentLink.getAttribute('focused')).toBe('');
+    });
+
     it('should not trigger button click if link', async () => {
       await componentIsStable(componentLink);
       const o = {
@@ -240,12 +253,13 @@ describe('button element', () => {
       expect(o.f).not.toHaveBeenCalled();
     });
 
-    it('should apply host focus styles when link is in focus', async () => {
+    it('should render link same size as regular button', async () => {
       await componentIsStable(componentLink);
-      testLinkElement.focus();
-      anchor.focus();
-      await componentIsStable(componentLink);
-      expect(componentLink.getAttribute('focused')).toBe('');
+      await componentIsStable(componentButton);
+      const borderWidth = 2; // 1px on each side
+      expect(componentLink.querySelector('a').getBoundingClientRect().width).toBe(
+        componentButton.getBoundingClientRect().width - borderWidth
+      );
     });
   });
 });

@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import * as tokenData from './generated/index.json';
 
 export default {
-  title: 'Experimental/Design Tokens/Stories',
+  title: 'Foundation/Design Tokens/Stories',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true },
@@ -55,7 +55,7 @@ function getTokenPxValueTemplate(token: Token) {
 
 export const global = () => {
   return html`
-    <div cds-layout="horizontal gap:xl">
+    <div cds-layout="vertical gap:xl">
       ${getTokensByCategory('global').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}
@@ -95,7 +95,7 @@ export const layoutSpace = () => {
 
 export const layout = () => {
   return html`
-    <div cds-layout="horizontal gap:xl">
+    <div cds-layout="vertical gap:xl">
       ${getTokensByCategory('layout').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}
@@ -105,7 +105,7 @@ export const layout = () => {
 
 export const typography = () => {
   return html`
-    <div cds-layout="horizontal gap:xl">
+    <div cds-layout="vertical gap:xl">
       ${getTokensByCategory('typography').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}

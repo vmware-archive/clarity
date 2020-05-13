@@ -1,24 +1,25 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 
-<Meta title="Experimental/Layout/Vertical" component={'cds-layout'} />
+<Meta title="Foundation/Layout/Vertical" />
 
 # Vertical
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 The vertical layout type enables stacks of items. This is useful for spacing
 cards, content and other block level items. Spacing, alignments and gap between
-stacked items can all be configured with the component. Gap values are t-shirt
-size `[xxs, xs, sm, md, lg, xl, xxl]` and align with the [Layout Spacing Tokens](./?path=/docs/experimental-spacing-getting-started--page).
+stacked items can all be configured with the component. Gap values are t-shirt size `[xxs, xs, sm, md, lg, xl, xxl]`
+and align with the [Layout Spacing Tokens](./?path=/docs/experimental-spacing-getting-started--page).
 
 ## Vertical Layout
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout" />
+  <Story id="foundation-layout-stories--vertical-layout" />
 </Preview>
 
 ## Vertical Wrap
@@ -26,7 +27,7 @@ size `[xxs, xs, sm, md, lg, xl, xxl]` and align with the [Layout Spacing Tokens]
 Vertical layouts like all other `cds-layout` types only apply gap between elements.
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-wrap" />
+  <Story id="foundation-layout-stories--vertical-layout-wrap" />
 </Preview>
 
 ## Align Top
@@ -35,61 +36,61 @@ Items within a vertical layout can be aligned in multiple directions.
 Alignments are relative to the size of the `cds-layout` container.
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-top" />
+  <Story id="foundation-layout-stories--vertical-layout-align-top" />
 </Preview>
 
 ## Align Bottom
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-bottom" />
+  <Story id="foundation-layout-stories--vertical-layout-align-bottom" />
 </Preview>
 
 ## Align Left
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-left" />
+  <Story id="foundation-layout-stories--vertical-layout-align-left" />
 </Preview>
 
 ## Align Right
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-right" />
+  <Story id="foundation-layout-stories--vertical-layout-align-right" />
 </Preview>
 
 ## Align Vertical Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-vertical-center" />
+  <Story id="foundation-layout-stories--vertical-layout-align-vertical-center" />
 </Preview>
 
 ## Align Horizontal Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-horizontal-center" />
+  <Story id="foundation-layout-stories--vertical-layout-align-horizontal-center" />
 </Preview>
 
 ## Align Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-center" />
+  <Story id="foundation-layout-stories--vertical-layout-align-center" />
 </Preview>
 
 ## Align Vertical Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-vertical-stretch" />
+  <Story id="foundation-layout-stories--vertical-layout-align-vertical-stretch" />
 </Preview>
 
 ## Align Horizontal Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-horizontal-stretch" />
+  <Story id="foundation-layout-stories--vertical-layout-align-horizontal-stretch" />
 </Preview>
 
 ## Align Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-align-stretch" />
+  <Story id="foundation-layout-stories--vertical-layout-align-stretch" />
 </Preview>
 
 ## Item Stretch
@@ -98,65 +99,71 @@ Alignments are relative to the size of the `cds-layout` container.
 within a horizontal layout.
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-stretch" />
+  <Story id="foundation-layout-stories--vertical-layout-item-stretch" />
 </Preview>
 
 ## Item Shrink
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-shrink" />
+  <Story id="foundation-layout-stories--vertical-layout-item-shrink" />
 </Preview>
 
 ## Item Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-center" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-center" />
 </Preview>
 
 ## Item Vertical Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-vertical-center" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-vertical-center" />
 </Preview>
 
 ## Item Horizontal Center
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-horizontal-center" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-horizontal-center" />
 </Preview>
 
 ## Item Top
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-top" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-top" />
 </Preview>
 
 ## Item Bottom
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-bottom" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-bottom" />
 </Preview>
 
 ## Item Left
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-left" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-left" />
 </Preview>
 
 ## Item Right
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-layout-item-align-right" />
+  <Story id="foundation-layout-stories--vertical-layout-item-align-right" />
 </Preview>
 
 ## Gap Spacing
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-gap" />
+  <Story id="foundation-layout-stories--vertical-gap" />
 </Preview>
 
 ## Gap Spacing Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--vertical-gap-responsive" />
+  <Story id="foundation-layout-stories--vertical-gap-responsive" />
+</Preview>
+
+## Nested Layouts
+
+<Preview>
+  <Story id="foundation-layout-stories--nested-layouts" />
 </Preview>

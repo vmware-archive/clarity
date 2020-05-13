@@ -1,15 +1,16 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Layout/Utilities" component={'cds-layout'} />
+<Meta title="Foundation/Layout/Utilities" />
 
 # Utilities
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 Outside of the horizontal, vertical, and grid layout types the `cds-layout`
 system provides additional utilities for managing visibility and centering.
@@ -20,7 +21,7 @@ The display option allows us to change the visibility of an element based on the
 Clarity Design size breakpoint tokens.
 
 <Preview>
-  <Story id="experimental-layout-stories--utilities-display" />
+  <Story id="foundation-layout-stories--utilities-display" />
 </Preview>
 
 ## Screen Reader Only
@@ -29,7 +30,7 @@ For Accessibility, sometimes you need to hide content and only make it discovera
 for screen readers. To do this you can use the `display:screen-reader-only` utility.
 
 <Preview>
-  <Story id="experimental-layout-stories--utilities-display-screen-reader-only" />
+  <Story id="foundation-layout-stories--utilities-display-screen-reader-only" />
 </Preview>
 
 ## Containers
@@ -38,5 +39,5 @@ The Container utility makes it easy to limit and center content within a layout.
 This is useful for linear content layouts.
 
 <Preview>
-  <Story id="experimental-layout-stories--utilities-containers" />
+  <Story id="foundation-layout-stories--utilities-containers" />
 </Preview>

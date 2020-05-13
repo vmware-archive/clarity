@@ -16,7 +16,7 @@ import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@c
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
 
 export default {
-  title: 'Experimental/Alert Group/Stories',
+  title: 'Components/Alert Group/Stories',
   component: 'cds-alert-group',
   parameters: {
     options: { showPanel: true },

@@ -15,7 +15,7 @@ import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
 
 export default {
-  title: 'Experimental/Utilities',
+  title: 'Utilities (Preview)/utils',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true }, // disabled for scroll jump

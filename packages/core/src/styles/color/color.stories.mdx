@@ -1,15 +1,16 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Color/Getting Started" />
+<Meta title="Foundation/Color/Getting Started" />
 
 # Color
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 ## Installation
 
@@ -17,10 +18,10 @@ To use the color tokens import the global CSS.
 
 ```scss
 // import into sass or css
-@import '~@clr/core/styles/module.tokens.min';
+@import '~@clr/core/global.min';
 
 // or import in html
-<link href="/node_modules/@clr/core/styles/module.tokens.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
 ```
 
 ## Usage
@@ -32,4 +33,4 @@ To use the color tokens import the global CSS.
 }
 ```
 
-<Story id="experimental-design-tokens-stories--color" />
+<Story id="foundation-design-tokens-stories--color" />

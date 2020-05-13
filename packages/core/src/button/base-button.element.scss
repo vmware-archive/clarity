@@ -13,30 +13,19 @@
 
 :host {
   --box-shadow-color: #{$cds-token-color-action-900};
-
   --border-radius: #{$cds-token-global-border-radius};
   --border-width: #{$cds-token-global-border-width};
   --border-color: #{$cds-token-color-action-600};
   --background: #{$cds-token-color-action-600};
-
   --color: #{$cds-token-color-neutral-0};
   --font-size: #{$cds-token-space-size-6};
-
   --padding: calc(#{$cds-token-space-size-6} - var(--border-width, #{$cds-token-global-border-width-static}))
     calc(#{$cds-token-space-size-7} - var(--border-width, #{$cds-token-global-border-width-static}));
-
   --height: #{$cds-token-space-size-11};
-
-  height: var(--height); // height is set so button is not distorted when in flex container
   --min-width: #{$cds-token-space-size-13};
-
   --text-decoration: none;
-
   display: inline-block;
-
-  // following is a fix for Firefox cutting off right edge of buttons. remove when no longer needed.
-  // it is okay to force this to 1px because we never want it to grow or be customized
-  padding-right: 1px;
+  height: var(--height); // height is set so button is not distorted when in flex container
 }
 
 .private-host {
@@ -51,7 +40,7 @@
   color: var(--color);
   cursor: pointer;
   font-size: var(--font-size);
-  height: auto;
+  height: 100%;
   justify-content: center;
   line-height: 1em;
   min-width: var(--min-width);
@@ -72,7 +61,7 @@
 
   & > span {
     @include center-content('block');
-    height: var(--font-size);
+    height: 100%;
   }
 
   .button-status-icon {
@@ -87,6 +76,10 @@
       --color: #{$cds-token-color-danger-700};
     }
   }
+}
+
+:host([is-anchor]) .private-host {
+  padding: 0;
 }
 
 :host(:active) .private-host {
@@ -105,8 +98,13 @@
 ::slotted(a) {
   text-decoration: none !important;
   display: block;
-  height: 100%;
   color: inherit;
+  margin: calc(var(--padding) * -1);
+  padding: var(--padding);
+  min-width: var(--min-width);
+  line-height: 1em;
+  box-sizing: border-box !important;
+  outline: 0;
 }
 
 ::slotted(cds-icon) {
@@ -185,19 +183,9 @@
   --color: #{$cds-token-color-action-600};
 }
 
-:host([size='sm']) .private-host {
-  --padding: #{$cds-token-layout-space-sm} #{$cds-token-layout-space-md};
+:host([size='sm']) {
+  --padding: #{$cds-token-space-size-4} #{$cds-token-space-size-6};
   --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
-
-  ::slotted(a) {
-    margin: 0 #{$cds-token-space-size-1};
-  }
-}
-
-:host(:not([size='sm'])) {
-  ::slotted(a) {
-    transform: translateY(#{$cds-token-space-size-1});
-  }
 }
 
 :host([size='sm']) .private-host {

@@ -2,15 +2,19 @@ const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.(ts|mdx)', '../docs/**/*.stories.(ts|mdx)'],
+  stories: ['../src/**/*.stories.@(ts|mdx)', '../docs/**/*.stories.@(ts|mdx)'],
   addons: [
-    '@storybook/addon-knobs',
-    '@storybook/addon-actions',
-    '@storybook/addon-docs',
     'storybook-addon-designs',
-    '@storybook/addon-a11y',
     '@storybook/addon-cssresources',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-a11y',
+    '@storybook/addon-actions',
+    '@storybook/addon-backgrounds',
+    '@storybook/addon-knobs',
+    '@storybook/addon-links',
     '@storybook/addon-storysource',
+    '@storybook/addon-viewport',
   ],
   webpackFinal: async config => {
     config.module.rules.push({
@@ -20,14 +24,14 @@ module.exports = {
         {
           loader: require.resolve('ts-loader'),
           options: {
-            configFile: '.storybook/tsconfig.json',
+            configFile: '.storybook/tsconfig.storybook.json',
           },
         },
       ],
     });
 
     config.resolve.extensions.push('.ts');
-    config.resolve.plugins = [new TsConfigPathsPlugin({ configFile: '.storybook/tsconfig.json' })];
+    config.resolve.plugins = [new TsConfigPathsPlugin({ configFile: '.storybook/tsconfig.storybook.json' })];
 
     // https://github.com/storybookjs/storybook/blob/next/app/web-components/README.md
     const webComponentsRule = config.module.rules.find(

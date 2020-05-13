@@ -7,6 +7,7 @@
 import {
   camelCaseToKebabCase,
   setStyles,
+  setPropStyles,
   transformToSpacedString,
   transformToString,
   transformToUnspacedString,
@@ -57,6 +58,13 @@ describe('Functional Helper: ', () => {
     it('should convert a object map of CSS styles to a single concatenated string', () => {
       const styles = { color: 'red', background: 'blue', display: 'block' };
       expect(setStyles(styles)).toBe('color:red;background:blue;display:block;');
+    });
+  });
+
+  describe('setPropStyles', () => {
+    it('should convert a object map of CSS custom property styles to a single concatenated string', () => {
+      const styles = { color: 'red', '--background': 'blue', '--display': 'block' };
+      expect(setPropStyles(styles)).toBe('--background:blue;--display:block;');
     });
   });
 

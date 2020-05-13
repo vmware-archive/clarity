@@ -78,7 +78,7 @@ describe('Alert groups – ', () => {
 
       layout = wrapper.getAttribute('cds-layout');
       expect(layout.includes('vertical')).toBe(true, 'Compact alert group should include vertical layout');
-      expect(layout.includes('no-wrap')).toBe(true, 'Compact alert group should include no-wrap layout');
+      expect(layout.includes('wrap:none')).toBe(true, 'Compact alert group should include wrap:none layout');
       expect(layout.includes('gap:none')).toBe(true, 'Compact alert group should include gap:none layout');
       expect(layout.includes('gap:sm')).toBe(false, 'Compact alert group should NOT include gap:sm layout');
       expect(layout.includes('align:horizontal-stretch')).toBe(
@@ -92,7 +92,7 @@ describe('Alert groups – ', () => {
 
       layout = wrapper.getAttribute('cds-layout');
       expect(layout.includes('vertical')).toBe(true, 'Default alert group should include vertical layout');
-      expect(layout.includes('no-wrap')).toBe(true, 'Default alert group should include no-wrap layout');
+      expect(layout.includes('wrap:none')).toBe(true, 'Default alert group should include wrap:none layout');
       expect(layout.includes('gap:none')).toBe(false, 'Default alert group should NOT include gap:none layout');
       expect(layout.includes('gap:sm')).toBe(true, 'Default alert group should include gap:sm layout');
       expect(layout.includes('align:horizontal-stretch')).toBe(
@@ -336,9 +336,9 @@ describe('Alert groups – ', () => {
       const hostWrapperLayouts = hostWrapper.getAttribute('cds-layout').split(' ');
       expect(hostWrapper.classList.contains('no-pager')).toBe(true, 'private-host element has no-pager classname');
       expect(hostWrapperLayouts.indexOf('horizontal') > -1).toBe(true, 'private-host element has horizontal layout');
-      expect(hostWrapperLayouts.indexOf('no-wrap') > -1).toBe(
+      expect(hostWrapperLayouts.indexOf('wrap:none') > -1).toBe(
         false,
-        'private-host element does NOT have no-wrap layout'
+        'private-host element does NOT have wrap:none layout'
       );
     });
 
@@ -352,7 +352,7 @@ describe('Alert groups – ', () => {
         'private-host element does NOT have no-pager classname'
       );
       expect(hostWrapperLayouts.indexOf('horizontal') > -1).toBe(true, 'private-host element has horizontal layout');
-      expect(hostWrapperLayouts.indexOf('no-wrap') > -1).toBe(true, 'private-host element has no-wrap layout');
+      expect(hostWrapperLayouts.indexOf('wrap:none') > -1).toBe(true, 'private-host element has wrap:none layout');
       expect(pager.hasAttribute('slot') && pager.getAttribute('slot') === 'pager').toBe(
         true,
         'sets slot for pager as expected'

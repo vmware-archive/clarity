@@ -14,9 +14,11 @@
   --padding: #{$cds-token-space-size-2};
 
   opacity: var(--opacity, 0.8);
+  cursor: pointer;
 }
 
 .private-host {
+  --icon-color: var(--color);
   min-width: 0;
 }
 
@@ -29,6 +31,7 @@
   transform: translateY(#{$cds-token-space-size-1});
 }
 
-:host() cds-icon {
-  --color: var(--color);
+cds-icon {
+  --color: var(--icon-color);
+  cursor: pointer;
 }

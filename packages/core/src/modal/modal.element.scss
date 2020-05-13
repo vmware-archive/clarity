@@ -27,6 +27,7 @@
   --width: calc(16 * #{$cds-token-space-size-13});
 }
 
+:host,
 .private-host {
   position: fixed;
   top: 0;
@@ -34,6 +35,10 @@
   right: 0;
   left: 0;
   z-index: 1050; // TODO: restore using map-get to get the z-index
+}
+
+:host([__demo-mode]) {
+  position: absolute;
 }
 
 button.close {

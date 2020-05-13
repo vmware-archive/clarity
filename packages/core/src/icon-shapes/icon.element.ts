@@ -17,7 +17,6 @@ import {
   UniqueId,
 } from '@clr/core/internal';
 import { html, LitElement, query } from 'lit-element';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames.js';
@@ -179,7 +178,7 @@ export class CdsIcon extends IconMixinClass {
 
   protected render() {
     return html`
-      ${unsafeHTML(ClarityIcons.registry[this.shape])}
+      <span .innerHTML="${ClarityIcons.registry[this.shape]}"></span>
       ${this.title
         ? html`<span id="${this.idForAriaLabel}" cds-layout="display:screen-reader-only">${this.title}</span>`
         : ''}

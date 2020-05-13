@@ -1,9 +1,15 @@
-@import './../../dist/core/styles/module.reset.css';
-@import './../../dist/core/styles/module.tokens.css';
-@import './../../dist/core/styles/module.layout.css';
-@import './../../dist/core/styles/module.typography.css';
-@import './../../dist/core/list/list.css';
+@import '~normalize.css/normalize.css';
 @import '~@clr/city/css/bundles/default.min.css';
+@import './../../dist/core/global.min.css';
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  padding: var(--cds-token-space-size-8) !important;
+  box-sizing: border-box !important; /* storybook v6 inline to initial */
+}
 
 .docblock-propstable-body td {
   min-width: 240px;
@@ -14,6 +20,10 @@
 }
 
 /* Demo Components */
+cds-demo {
+  display: block;
+}
+
 cds-demo[layout],
 .layout-demo {
   background: hsl(91, 56%, 78%);
@@ -24,6 +34,11 @@ cds-demo[layout],
 cds-demo[layout][tall] > [cds-layout],
 .layout-demo.tall-demo > cds-layout {
   min-height: 300px;
+}
+
+cds-demo[popover] {
+  min-height: 500px;
+  position: relative;
 }
 
 cds-demo[layout][wide],

@@ -151,7 +151,7 @@ export class CdsButton extends CdsBaseButton {
     const hasIcon = !!this.icon;
     const hasBadge = !!this.badge;
 
-    return html`<div class="private-host" cds-layout="horizontal">
+    return html`<div class="private-host" cds-layout="horizontal wrap:none">
       ${loadingState === ClrLoadingState.SUCCESS ? html`${iconSpinnerCheck}` : ''}${loadingState ===
       ClrLoadingState.ERROR
         ? html`${iconSpinnerError}`

@@ -2,11 +2,11 @@
   "files": [
     {
       "path": "./dist/core/global.min.css",
-      "maxSize": "2 kB"
+      "maxSize": "13.5 kB"
     },
     {
       "path": "./dist/core/styles/module.layout.min.css",
-      "maxSize": "9 kB"
+      "maxSize": "10.5 kB"
     },
     {
       "path": "./dist/core/styles/module.reset.min.css",

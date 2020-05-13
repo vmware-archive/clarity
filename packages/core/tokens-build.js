@@ -84,7 +84,8 @@ theo.registerFormat('core-tokens-scss', result => {
         !prop.private || (prop.private && isRelativePxValue(prop))
           ? `${sassVariable}: ${cssProp};\n`
           : `${sassVariable}: ${value};\n`;
-      const staticVariable = `${sassVariable}-static: ${value};`;
+
+      const staticVariable = prop.category !== 'color' ? `${sassVariable}-static: ${value};` : '';
 
       return `${dynamicVariable}${staticVariable}`;
     })

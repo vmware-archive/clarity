@@ -7,7 +7,13 @@
     [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
       & > *,
       &::slotted(*) {
-        margin-bottom: $sizeValue !important;
+        margin-top: $sizeValue;
+      }
+
+      & > *:first-child,
+      &::slotted(*:first-child),
+      &::slotted([slot]:first-of-type) {
+        margin-top: 0 !important;
       }
     }
   }
@@ -27,11 +33,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-
-  & > *:last-child,
-  &::slotted(*:last-child) {
-    margin-bottom: 0 !important;
-  }
 
   // Align Items
   &[cds-layout~='align:top'] {
@@ -84,39 +85,49 @@
   }
 
   // Align Single Item
-  [cds-layout~='align:stretch'] {
+  & > [cds-layout~='align:stretch'],
+  &::slotted([cds-layout~='align:stretch']) {
     flex-grow: 1 !important;
   }
 
-  [cds-layout~='align:shrink'] {
+  & > [cds-layout~='align:shrink'],
+  &::slotted([cds-layout~='align:shrink']) {
     flex-shrink: 1 !important;
     flex-grow: 0 !important;
   }
 
-  [cds-layout~='align:center'],
-  [cds-layout~='align:horizontal-center'] {
+  & > [cds-layout~='align:center'],
+  & > [cds-layout~='align:vertical-center'],
+  &::slotted([cds-layout~='align:center']),
+  &::slotted([cds-layout~='align:vertical-center']) {
     margin-top: auto;
     margin-bottom: auto;
   }
 
-  [cds-layout~='align:center'],
-  [cds-layout~='align:horizontal-center'] {
+  & > [cds-layout~='align:center'],
+  & > [cds-layout~='align:horizontal-center'],
+  &::slotted([cds-layout~='align:center']),
+  &::slotted([cds-layout~='align:horizontal-center']) {
     align-self: center;
   }
 
-  [cds-layout~='align:top'] {
+  & > [cds-layout~='align:top'],
+  &::slotted([cds-layout~='align:top']) {
     margin-bottom: auto !important;
   }
 
-  [cds-layout~='align:bottom'] {
+  & > [cds-layout~='align:bottom'],
+  &::slotted([cds-layout~='align:bottom']) {
     margin-top: auto !important;
   }
 
-  [cds-layout~='align:right'] {
+  & > [cds-layout~='align:right'],
+  &::slotted([cds-layout~='align:right']) {
     margin-left: auto;
   }
 
-  [cds-layout~='align:left'] {
+  & > [cds-layout~='align:left'],
+  &::slotted([cds-layout~='align:left']) {
     margin-right: auto;
   }
 }

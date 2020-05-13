@@ -10,6 +10,7 @@ export * from './form';
 export * from './helper';
 export * from './label';
 export * from './layout';
+export { Layouts } from './providers/layout.service';
 export * from './abstract-container';
 export * from './control';
 export * from './control-container';

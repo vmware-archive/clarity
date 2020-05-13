@@ -2050,6 +2050,12 @@ export declare const IS_TOGGLE_PROVIDER: {
 
 export declare function isToggleFactory(): BehaviorSubject<boolean>;
 
+export declare enum Layouts {
+    VERTICAL = "vertical",
+    HORIZONTAL = "horizontal",
+    COMPACT = "compact"
+}
+
 export declare abstract class LoadingListener {
     abstract loadingStateChange(state: ClrLoadingState): void;
 }

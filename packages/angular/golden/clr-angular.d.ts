@@ -1083,6 +1083,7 @@ export declare class ClrLoading implements OnDestroy {
     set loadingState(value: boolean | ClrLoadingState);
     constructor(listener: LoadingListener);
     ngOnDestroy(): void;
+    static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null;
 }
 
 export declare class ClrLoadingButton implements LoadingListener {

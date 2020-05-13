@@ -62,7 +62,7 @@ export const API = () => {
 
 export const status = () => {
   return html`
-    <div cds-layout="vertical gap:xs">
+    <div cds-layout="vertical gap:sm">
       <cds-tag readonly status="info">Info</cds-tag>
       <cds-tag readonly status="success">Success</cds-tag>
       <cds-tag readonly status="warning">Warning</cds-tag>
@@ -73,7 +73,7 @@ export const status = () => {
 
 export const color = () => {
   return html`
-    <div cds-layout="vertical gap:xs">
+    <div cds-layout="vertical gap:sm">
       <cds-tag readonly color="gray">Default</cds-tag>
       <cds-tag readonly color="purple">Purple</cds-tag>
       <cds-tag readonly color="blue">Blue</cds-tag>
@@ -85,7 +85,7 @@ export const color = () => {
 
 export const badgesStatus = () => {
   return html`
-    <div cds-layout="vertical gap:xs">
+    <div cds-layout="vertical gap:sm">
       <cds-tag readonly status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
       <cds-tag readonly status="success">Success <cds-badge status="success">2</cds-badge></cds-tag>
       <cds-tag readonly status="warning">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
@@ -107,15 +107,15 @@ export const badgesColor = () => {
 
 export const clickable = () => {
   return html`
-    <div cds-layout="vertical gap:xs">
-      <div cds-layout="horizontal gap:xs">
+    <div cds-layout="vertical gap:sm">
+      <div cds-layout="horizontal gap:sm">
         <cds-tag aria-label="Clickable example of a default tag" color="gray">Default</cds-tag>
         <cds-tag aria-label="Clickable example of a purple tag" color="purple">Purple</cds-tag>
         <cds-tag aria-label="Clickable example of a blue tag" color="blue">Blue</cds-tag>
         <cds-tag aria-label="Clickable example of an orange tag" color="orange">Orange</cds-tag>
         <cds-tag aria-label="Clickable example of a light blue tag" color="light-blue">Light Blue</cds-tag>
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-tag aria-label="Clickable example of a tag with the info status" status="info"
           >Info <cds-badge status="info">1</cds-badge></cds-tag
         >
@@ -129,7 +129,7 @@ export const clickable = () => {
           >Danger <cds-badge status="danger">12</cds-badge></cds-tag
         >
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-tag aria-label="Clickable example of a default tag with a badge" color="gray"
           >Default <cds-badge>A</cds-badge></cds-tag
         >
@@ -146,7 +146,7 @@ export const clickable = () => {
           >Light Blue <cds-badge>E</cds-badge></cds-tag
         >
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-tag aria-label="Clickable example of a gray tag with an icon and a badge" color="gray"
           ><cds-icon shape="user"></cds-icon>Default <cds-badge>A</cds-badge></cds-tag
         >

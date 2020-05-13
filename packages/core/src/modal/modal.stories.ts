@@ -33,7 +33,7 @@ export const API = () => {
   const modalHeaderSlot = text('cds-modal-header', '<h3 cds-text="title">My Modal</h3>', propertiesGroup);
   const modalContentSlot = text(
     'cds-modal-content',
-    '<div cds-layout="vertical gap:md p-y:xs"><p cds-text="body">This is a modal.</p></div>',
+    '<div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>',
     propertiesGroup
   );
   const modalFooterSlot = text(
@@ -100,12 +100,12 @@ export const defaultSize = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:md p-y:xs">
+        <div cds-layout="vertical gap:lg p-y:sm">
           <p cds-text="body">Lorem Ipsum</p>
         </div>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:sm align:right">
+        <div cds-layout="horizontal gap:md align:right">
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
@@ -127,12 +127,12 @@ export const small = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:md p-y:xs">
+        <div cds-layout="vertical gap:lg p-y:sm">
           <p cds-text="body">Lorem Ipsum</p>
         </div>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:sm align:right">
+        <div cds-layout="horizontal gap:md align:right">
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
@@ -154,12 +154,12 @@ export const large = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:md p-y:xs">
+        <div cds-layout="vertical gap:lg p-y:sm">
           <p cds-text="body">Lorem Ipsum</p>
         </div>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:sm align:right">
+        <div cds-layout="horizontal gap:md align:right">
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
@@ -181,12 +181,12 @@ export const extraLarge = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:md p-y:xs">
+        <div cds-layout="vertical gap:lg p-y:sm">
           <p cds-text="body">Lorem Ipsum</p>
         </div>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:sm align:right">
+        <div cds-layout="horizontal gap:md align:right">
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>
@@ -216,12 +216,12 @@ export const customStyles = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:md p-y:xs">
+        <div cds-layout="vertical gap:lg p-y:sm">
           <p cds-text="body">Lorem Ipsum</p>
         </div>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:sm align:right">
+        <div cds-layout="horizontal gap:md align:right">
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </div>

@@ -6,15 +6,19 @@
 // a "minified" value to reduce overall bundle size.
 
 :root {
+  --clxxs: var(--cds-token-layout-space-xxs, #{$cds-token-layout-space-xxs-static});
   --clxs: var(--cds-token-layout-space-xs, #{$cds-token-layout-space-xs-static});
   --clsm: var(--cds-token-layout-space-sm, #{$cds-token-layout-space-sm-static});
   --clmd: var(--cds-token-layout-space-md, #{$cds-token-layout-space-md-static});
   --cllg: var(--cds-token-layout-space-lg, #{$cds-token-layout-space-lg-static});
   --clxl: var(--cds-token-layout-space-xl, #{$cds-token-layout-space-xl-static});
+  --clxxl: var(--cds-token-layout-space-xxl, #{$cds-token-layout-space-xxl-static});
 }
 
+$cds-token-layout-space-xxs: var(--clxxs);
 $cds-token-layout-space-xs: var(--clxs);
 $cds-token-layout-space-sm: var(--clsm);
 $cds-token-layout-space-md: var(--clmd);
 $cds-token-layout-space-lg: var(--cllg);
 $cds-token-layout-space-xl: var(--clxl);
+$cds-token-layout-space-xxl: var(--clxxl);

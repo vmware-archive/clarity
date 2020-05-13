@@ -22,7 +22,7 @@
   --color: #{$cds-token-color-neutral-0};
   --font-size: #{$cds-token-space-size-6};
 
-  --padding: #{$cds-token-layout-space-sm};
+  --padding: #{$cds-token-layout-space-md};
   --height: #{$cds-token-space-size-11};
   height: var(--height); // height is set so button is not distorted when in flex container
   display: inline-block;
@@ -184,11 +184,11 @@
 }
 
 :host([size='sm']) {
-  --padding: #{$cds-token-layout-space-xs} #{$cds-token-layout-space-sm};
+  --padding: #{$cds-token-layout-space-sm} #{$cds-token-layout-space-md};
   --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
 
   ::slotted(a) {
-    margin: calc(#{$cds-token-layout-space-xs} * -1) calc(#{$cds-token-layout-space-sm} * -1);
+    margin: calc(#{$cds-token-layout-space-sm} * -1) calc(#{$cds-token-layout-space-md} * -1);
   }
 }
 

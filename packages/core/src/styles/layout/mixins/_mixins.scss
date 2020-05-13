@@ -4,11 +4,13 @@
 
 $cds-layout-sizes: (
   'none': 0,
+  'xxs': $cds-token-layout-space-xxs,
   'xs': $cds-token-layout-space-xs,
   'sm': $cds-token-layout-space-sm,
   'md': $cds-token-layout-space-md,
   'lg': $cds-token-layout-space-lg,
   'xl': $cds-token-layout-space-xl,
+  'xxl': $cds-token-layout-space-xxl,
 );
 
 $cds-layout-breakpoints: (

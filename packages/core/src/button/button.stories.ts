@@ -107,13 +107,13 @@ export const API = () => {
 export const form = () => {
   return html`
     <form
-      cds-layout="vertical gap:sm"
+      cds-layout="vertical gap:md"
       @submit="${(e: Event) => {
         e.preventDefault();
         action('submit')(e);
       }}"
     >
-      <div cds-layout="vertical gap:xs">
+      <div cds-layout="vertical gap:sm">
         <label for="name" cds-text="caption">Name</label>
         <input id="name" />
       </div>
@@ -124,7 +124,7 @@ export const form = () => {
 
 export const actions = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-button>solid</cds-button>
       <cds-button action="outline">outline</cds-button>
       <cds-button action="flat">link</cds-button>
@@ -134,7 +134,7 @@ export const actions = () => {
 
 export const status = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-button>primary</cds-button>
       <cds-button status="success">success</cds-button>
       <cds-button status="danger">danger</cds-button>
@@ -145,7 +145,7 @@ export const status = () => {
 
 export const statusOutline = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-button action="outline">primary</cds-button>
       <cds-button action="outline" status="success">success</cds-button>
       <cds-button action="outline" status="danger">danger</cds-button>
@@ -156,13 +156,13 @@ export const statusOutline = () => {
 
 export const iconWithText = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal gap:xs">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal gap:sm">
         <cds-button><cds-icon shape="user"></cds-icon> user account</cds-button>
         <cds-button action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
         <cds-button action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-button size="sm"><cds-icon shape="user"></cds-icon> user account</cds-button>
         <cds-button size="sm" action="outline"><cds-icon shape="user"></cds-icon> user account</cds-button>
         <cds-button size="sm" action="flat"><cds-icon shape="user"></cds-icon> user account</cds-button>
@@ -173,8 +173,8 @@ export const iconWithText = () => {
 
 export const iconWithTextAndBadge = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal gap:xs">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal gap:sm">
         <cds-button><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button>
         <cds-button action="outline"
           ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
@@ -183,7 +183,7 @@ export const iconWithTextAndBadge = () => {
           ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
         >
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-button size="sm"
           ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
         >
@@ -200,24 +200,24 @@ export const iconWithTextAndBadge = () => {
 
 export const textAndBadge = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal gap:xs">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal gap:sm">
         <cds-button>Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-button status="danger">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="danger" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-button status="success">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="success" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs p-b:xs" style="background: #313131">
+      <div cds-layout="horizontal gap:sm p-b:xs" style="background: #313131">
         <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs">
+      <div cds-layout="horizontal gap:sm">
         <cds-button size="sm">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button size="sm" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button size="sm" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
@@ -228,29 +228,29 @@ export const textAndBadge = () => {
 
 export const links = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-button>
-        <a href="#">link</a>
+        <a href="javascript:void(0)">link</a>
       </cds-button>
 
       <cds-button>
-        <a href="#">this is a long link</a>
+        <a href="javascript:void(0)">this is a long link</a>
       </cds-button>
 
       <cds-button size="sm">
-        <a href="#">small link</a>
+        <a href="javascript:void(0)">small link</a>
       </cds-button>
       <br />
       <cds-button action="outline">
-        <a href="#">link</a>
+        <a href="javascript:void(0)">link</a>
       </cds-button>
 
       <cds-button action="outline">
-        <a href="#">this is a long link</a>
+        <a href="javascript:void(0)">this is a long link</a>
       </cds-button>
 
       <cds-button action="outline" size="sm">
-        <a href="#">small link</a>
+        <a href="javascript:void(0)">small link</a>
       </cds-button>
     </div>
   `;
@@ -258,12 +258,12 @@ export const links = () => {
 
 export const sizes = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal align-items:left gap:xs">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal align-items:left gap:sm">
         <cds-button>Default ('md')</cds-button>
         <cds-button action="outline">Default ('md')</cds-button>
       </div>
-      <div cds-layout="horizontal align-items:left gap:xs">
+      <div cds-layout="horizontal align-items:left gap:sm">
         <cds-button size="sm">Compact ('sm')</cds-button>
         <cds-button action="outline" size="sm">Compact ('sm')</cds-button>
       </div>
@@ -273,7 +273,7 @@ export const sizes = () => {
 
 export const block = () => {
   return html`
-    <div cds-layout="vertical gap:xs align:horizontal-stretch">
+    <div cds-layout="vertical gap:sm align:horizontal-stretch">
       <cds-button block>Default ('md')</cds-button>
       <cds-button block action="outline">Default ('md')</cds-button>
       <cds-button block size="sm">Compact ('sm')</cds-button>
@@ -284,14 +284,14 @@ export const block = () => {
 
 export const loading = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal gap:xs align-items:bottom">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal gap:sm align-items:bottom">
         <cds-button loading-state="default">default</cds-button>
         <cds-button loading-state="loading">default</cds-button>
         <cds-button loading-state="success">default</cds-button>
         <cds-button loading-state="error">default</cds-button>
       </div>
-      <div cds-layout="horizontal gap:xs align-items:bottom">
+      <div cds-layout="horizontal gap:sm align-items:bottom">
         <cds-button size="sm" loading-state="default">default</cds-button>
         <cds-button size="sm" loading-state="loading">default</cds-button>
         <cds-button size="sm" loading-state="success">default</cds-button>

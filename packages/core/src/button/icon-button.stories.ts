@@ -97,7 +97,7 @@ export const API = () => {
 
 export const actions = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-icon-button><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
     </div>
@@ -106,7 +106,7 @@ export const actions = () => {
 
 export const status = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-icon-button><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="success"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="danger"><cds-icon shape="user"></cds-icon></cds-icon-button>
@@ -117,7 +117,7 @@ export const status = () => {
 
 export const statusOutline = () => {
   return html`
-    <div cds-layout="horizontal gap:xs">
+    <div cds-layout="horizontal gap:sm">
       <cds-icon-button action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline" status="success"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline" status="danger"><cds-icon shape="user"></cds-icon></cds-icon-button>
@@ -128,13 +128,13 @@ export const statusOutline = () => {
 
 export const sizes = () => {
   return html`
-    <div cds-layout="vertical gap:sm">
-      <div cds-layout="horizontal align-items:left gap:xs">
+    <div cds-layout="vertical gap:md">
+      <div cds-layout="horizontal align-items:left gap:sm">
         <div cds-layout="p-r:sm align:vertical-center"><span cds-text="subsection">Default ('md')</span></div>
         <cds-icon-button><cds-icon shape="user"></cds-icon></cds-icon-button>
         <cds-icon-button action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
       </div>
-      <div cds-layout="horizontal align-items:left gap:xs">
+      <div cds-layout="horizontal align-items:left gap:sm">
         <div cds-layout="p-r:sm align:vertical-center"><span cds-text="subsection">Compact ('sm')</span></div>
         <cds-icon-button size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
         <cds-icon-button action="outline" size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
@@ -145,7 +145,7 @@ export const sizes = () => {
 
 export const block = () => {
   return html`
-    <div cds-layout="vertical gap:xs align:horizontal-stretch">
+    <div cds-layout="vertical gap:sm align:horizontal-stretch">
       <cds-icon-button block><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button block action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button block size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
@@ -156,7 +156,7 @@ export const block = () => {
 
 export const loading = () => {
   return html`
-    <div cds-layout="horizontal gap:xs align-items:bottom">
+    <div cds-layout="horizontal gap:sm align-items:bottom">
       <cds-icon-button loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button size="sm" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>

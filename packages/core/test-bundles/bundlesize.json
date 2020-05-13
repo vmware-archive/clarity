@@ -6,7 +6,7 @@
     },
     {
       "path": "./dist/core/styles/module.layout.min.css",
-      "maxSize": "8 kB"
+      "maxSize": "9 kB"
     },
     {
       "path": "./dist/core/styles/module.reset.min.css",

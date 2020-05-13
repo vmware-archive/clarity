@@ -1,0 +1,12 @@
+<clr-alert
+  [clrAlertClosable]="closable"
+  [clrAlertType]="alertStatus"
+  [clrAlertSizeSmall]="alertSize"
+  [clrAlertAppLevel]="alertLevel"
+>
+  <clr-alert-item>
+    <span class="alert-text">
+      This alert {{ closable ? 'can' : 'cannot' }} be dismissed.
+    </span>
+  </clr-alert-item>
+</clr-alert>

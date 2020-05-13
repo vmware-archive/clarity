@@ -1,0 +1,28 @@
+<form clrForm>
+  <clr-checkbox-container [clrInline]="showInline">
+    <label>Checkbox Label</label>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="options" value="option1" [disabled]="disableInput" />
+      <label>Option 1</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input
+        type="checkbox"
+        clrCheckbox
+        name="options"
+        value="option2"
+        [disabled]="disableInput"
+        [indeterminate]="indeterminateState"
+      />
+      <label>Option 2</label>
+    </clr-checkbox-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <!--    <clr-control-error>This field is required!</clr-control-error> -->
+    <!-- TODO: figure out why .clr-sr-only doesn't work-->
+  </clr-checkbox-container>
+</form>
+
+<div>
+  <h1>TODO</h1>
+  <p>Disabled works but it looks like there is an issue with stylesheet not working. This code works in stackblitz.</p>
+</div>

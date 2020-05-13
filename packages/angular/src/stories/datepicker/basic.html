@@ -1,0 +1,7 @@
+<form clrForm>
+  <h6>Min/Max Dates</h6>
+  <clr-date-container>
+    <label>Date</label>
+    <input type="date" [disabled]="disableInput" [(ngModel)]="model" clrDate [min]="minDate" [max]="maxDate" />
+  </clr-date-container>
+</form>

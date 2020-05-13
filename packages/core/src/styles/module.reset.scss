@@ -2,10 +2,15 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// Core ships a minimal global styles to set CSS reset and base font size
-@import '../../node_modules/normalize.css/normalize';
 @import './tokens/generated/index';
 
 html {
   font-size: $cds-token-global-base-font-size;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }

@@ -7,17 +7,27 @@
 @import './../../../angular/projects/clr-angular/src/image/icons.clarity';
 @import './../../../angular/projects/clr-angular/src/progress/spinner/spinner.clarity';
 
-$lightweight-alert-line-height: $cds-token-typography-body-line-height-static;
+$lightweight-alert-line-height: $cds-token-typography-body-line-height;
 
 :host {
   --container-padding: #{$cds-token-space-size-2} 0;
   --min-height: #{$cds-token-space-size-9};
-
+  --color: #{$cds-token-color-neutral-1000};
+  --font-size: #{$cds-token-typography-body-font-size};
+  --font-weight: #{$cds-token-typography-body-font-weight};
+  --letter-spacing: #{$cds-token-typography-body-letter-spacing};
+  --icon-size: #{$cds-token-space-size-8};
+  --icon-color: #{$cds-token-color-neutral-700};
   width: 100%;
 }
 
 .private-host {
   min-height: var(--min-height);
+}
+
+slot[name='close-button'],
+slot[name='alert-icon'] {
+  line-height: 0;
 }
 
 :host([alert-group-type='default']) {
@@ -44,8 +54,12 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height-static;
 
 .alert-status-icon,
 ::slotted(cds-icon) {
-  @include equilateral(var(--icon-size, #{$cds-token-space-size-8-static}));
-  --color: var(--icon-color, #{$cds-token-color-neutral-700-static});
+  @include equilateral(var(--icon-size));
+  --color: var(--icon-color);
+}
+
+cds-internal-close-button {
+  --color: #{$cds-token-color-neutral-700};
 }
 
 .alert-close-wrapper,
@@ -64,10 +78,10 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height-static;
 }
 
 .alert-content-wrapper {
-  color: var(--color, #{$cds-token-color-neutral-1000-static});
-  font-size: var(--font-size, #{$cds-token-typography-body-font-size-static});
-  font-weight: var(--font-weight, #{$cds-token-typography-body-font-weight-static});
-  letter-spacing: var(--letter-spacing, #{$cds-token-typography-body-letter-spacing-static});
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
   line-height: $lightweight-alert-line-height;
 }
 
@@ -114,10 +128,13 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height-static;
   height: #{$cds-token-space-size-10};
 }
 
-:host([alert-group-type='banner']) .alert-content {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+:host([alert-group-type='banner']) {
+  .alert-content,
+  .alert-content slot {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 :host([alert-group-type='banner']) .alert-icon-wrapper {

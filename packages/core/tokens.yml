@@ -246,7 +246,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: body-color
-    value: hsl(198, 0%, 10%)
+    value: 'hsl(198, 0%, 10%)'
     type: 'color'
     category: 'typography'
   - name: body-line-height
@@ -268,7 +268,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: display-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: display-line-height
@@ -290,7 +290,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: heading-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: heading-line-height
@@ -312,7 +312,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: title-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: title-line-height
@@ -334,7 +334,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: section-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: section-line-height
@@ -356,7 +356,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: subsection-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: subsection-line-height
@@ -378,7 +378,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: message-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
   - name: message-line-height
@@ -400,7 +400,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: secondary-color
-    value: hsl(198, 0%, 10%)
+    value: 'hsl(198, 0%, 10%)'
     type: 'color'
     category: 'typography'
   - name: secondary-line-height
@@ -422,7 +422,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: caption-color
-    value: hsl(198, 0%, 0%) # $clr-color-neutral-1000
+    value: 'hsl(198, 0%, 0%)' # $clr-color-neutral-1000
     type: 'color'
     category: 'typography'
   - name: caption-line-height
@@ -444,7 +444,7 @@ props:
     type: 'px'
     category: 'typography'
   - name: smallcaption-color
-    value: hsl(198, 0%, 0%) # $clr-color-neutral-1000
+    value: 'hsl(198, 0%, 0%)' # $clr-color-neutral-1000
     type: 'color'
     category: 'typography'
   - name: smallcaption-line-height
@@ -470,7 +470,7 @@ props:
     legacy: true
     private: true
   - name: h0-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -498,7 +498,7 @@ props:
     legacy: true
     private: true
   - name: h1-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -526,7 +526,7 @@ props:
     legacy: true
     private: true
   - name: h2-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -554,7 +554,7 @@ props:
     legacy: true
     private: true
   - name: h3-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -582,7 +582,7 @@ props:
     legacy: true
     private: true
   - name: h4-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -610,7 +610,7 @@ props:
     legacy: true
     private: true
   - name: h5-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -638,7 +638,7 @@ props:
     legacy: true
     private: true
   - name: h6-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -667,7 +667,7 @@ props:
     legacy: true
     private: true
   - name: p0-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -695,7 +695,7 @@ props:
     legacy: true
     private: true
   - name: p1-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -723,7 +723,7 @@ props:
     legacy: true
     private: true
   - name: p2-color
-    value: hsl(198, 0%, 20%) # $clr-color-neutral-900
+    value: 'hsl(198, 0%, 20%)' # $clr-color-neutral-900
     type: 'color'
     category: 'typography'
     private: true
@@ -751,7 +751,7 @@ props:
     legacy: true
     private: true
   - name: p3-color
-    value: hsl(198, 0%, 10%)
+    value: 'hsl(198, 0%, 10%)'
     type: 'color'
     category: 'typography'
     private: true
@@ -779,7 +779,7 @@ props:
     legacy: true
     private: true
   - name: p4-color
-    value: hsl(198, 0%, 30%)
+    value: 'hsl(198, 0%, 30%)'
     type: 'color'
     category: 'typography'
     private: true
@@ -807,7 +807,7 @@ props:
     legacy: true
     private: true
   - name: p5-color
-    value: hsl(198, 0%, 10%)
+    value: 'hsl(198, 0%, 10%)'
     type: 'color'
     category: 'typography'
     private: true
@@ -835,7 +835,7 @@ props:
     legacy: true
     private: true
   - name: p6-color
-    value: hsl(198, 0%, 30%)
+    value: 'hsl(198, 0%, 30%)'
     type: 'color'
     category: 'typography'
     private: true
@@ -863,7 +863,7 @@ props:
     legacy: true
     private: true
   - name: p7-color
-    value: hsl(198, 0%, 10%)
+    value: 'hsl(198, 0%, 10%)'
     type: 'color'
     category: 'typography'
     private: true
@@ -891,7 +891,7 @@ props:
     legacy: true
     private: true
   - name: p8-color
-    value: hsl(198, 0%, 0%) # $clr-color-neutral-1000
+    value: 'hsl(198, 0%, 0%)' # $clr-color-neutral-1000
     type: 'color'
     category: 'typography'
     private: true

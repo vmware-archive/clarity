@@ -1,18 +1,19 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Layout/Spacing" />
+<Meta title="Foundation/Layout/Spacing" />
 
 # Spacing
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
 
-<br />
-
 Spacing can be controlled three ways: `Gap`, `Padding` and `Margin`.
-Spacing values are t-shirt sizes `[xxs, xs, sm, md, lg, xl, xxl]` and align with
+Provided spacing include t-shirt sizes `[xxs, xs, sm, md, lg, xl, xxl]` and align with
 the [Layout Spacing Tokens](./?path=/docs/experimental-spacing-getting-started--page).
 
 <br />
@@ -23,26 +24,26 @@ The Padding and Margin utilities have the following convention:
 
 ```html
 [type]-[side]@[breakpoint]:[size]
-<div cds-layout="pl@md:md"></div>
+<div cds-layout="p-l@md:sm"></div>
 
 Padding Left at the medium breakpoint with size small types: p, m sides: t, r, b, l breakpoints/sizes: xs, sm, md, lg,
 xl
 ```
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-padding" />
+  <Story id="foundation-layout-stories--spacing-padding" />
 </Preview>
 
 ## Padding Sides
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-padding-sides" />
+  <Story id="foundation-layout-stories--spacing-padding-sides" />
 </Preview>
 
 ## Padding Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-padding-responsive" />
+  <Story id="foundation-layout-stories--spacing-padding-responsive" />
 </Preview>
 
 ## Margin
@@ -51,23 +52,23 @@ The Padding and Margin utilities have the following convention:
 
 ```html
 [type]-[side]@[breakpoint]:[size]
-<div cds-layout="pl@md:md"></div>
+<div cds-layout="m-l@md:sm"></div>
 
 Margin Left at the medium breakpoint with size small types: p, m sides: t, r, b, l breakpoints/sizes: xs, sm, md, lg, xl
 ```
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-margin" />
+  <Story id="foundation-layout-stories--spacing-margin" />
 </Preview>
 
 ## Margin Sides
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-margin-sides" />
+  <Story id="foundation-layout-stories--spacing-margin-sides" />
 </Preview>
 
 ## Margin Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--spacing-margin-responsive" />
+  <Story id="foundation-layout-stories--spacing-margin-responsive" />
 </Preview>

@@ -33,7 +33,7 @@ read('./dist/core')
   .filter(f => f.includes('package.json'))
   .forEach(file => {
     const packageFile = fs.readJsonSync(file);
-    ['__processed_by_ivy_ngcc__', 'scripts'].forEach(p => delete packageFile[p]);
+    ['__processed_by_ivy_ngcc__', 'scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
 
     const metaData = {
       main: './index.js',

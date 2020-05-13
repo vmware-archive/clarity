@@ -1,21 +1,22 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Design Tokens/Getting Started" />
+<Meta title="Foundation/Design Tokens/Getting Started" />
 
 # Design Tokens
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 Design Tokens are global variables to configure the foundation of the
 design system. Changes to a design token will propagate throughout the entire system.
 Tokens are broken down into five categories:
 
-- [Spacing](./?path=/docs/experimental-spacing-getting-started--page)
+- [Spacing](./?path=/docs/foundation-spacing-getting-started--page)
 - [Layout](./?path=/docs/experimental-layout-get-started--page)
 - [Typography](./?path=/docs/experimental-typography-getting-started--page)
 - [Color](./?path=/docs/experimental-color-getting-started--page)
@@ -27,10 +28,10 @@ To use the design token system via CSS, import the global CSS file.
 
 ```scss
 // import into sass or css
-@import '~@clr/core/styles/module.tokens.min';
+@import '~@clr/core/global.min';
 
 // or import in html
-<link href="/node_modules/@clr/core/styles/module.tokens.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
 ```
 
 ## Usage
@@ -59,35 +60,35 @@ values in Clarity to be relative to a base 16px instead of base 20px.
 ## Spacing
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--space" />
+  <Story id="foundation-design-tokens-stories--space" />
 </Preview>
 
 ## Layout Spacing
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--layout-space" />
+  <Story id="foundation-design-tokens-stories--layout-space" />
 </Preview>
 
 ## Layout
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--layout" />
+  <Story id="foundation-design-tokens-stories--layout" />
 </Preview>
 
 ## Typography
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--typography" />
+  <Story id="foundation-design-tokens-stories--typography" />
 </Preview>
 
 ## Global
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--global" />
+  <Story id="foundation-design-tokens-stories--global" />
 </Preview>
 
 ## Color
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--color" />
+  <Story id="foundation-design-tokens-stories--color" />
 </Preview>

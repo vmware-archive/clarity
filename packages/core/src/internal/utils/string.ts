@@ -43,10 +43,18 @@ export function kebabCaseToPascalCase(string: string) {
  * Useful for dynamic style tags in lit-html templates
  */
 export function setStyles(styles: { [key: string]: string }) {
-  return Object.keys(styles).reduce(
-    (allStyles, prop) => `${allStyles}${styles[prop] ? `${prop}:${styles[prop]};` : ''}`,
-    ''
+  return createPropStyleSelectors(Object.keys(styles), styles);
+}
+
+export function setPropStyles(styles: { [key: string]: string }) {
+  return createPropStyleSelectors(
+    Object.keys(styles).filter(prop => prop.startsWith('--')),
+    styles
   );
+}
+
+function createPropStyleSelectors(props: string[], styles: { [key: string]: string }) {
+  return props.reduce((allStyles, prop) => `${allStyles}${styles[prop] ? `${prop}:${styles[prop]};` : ''}`, '');
 }
 
 export function capitalizeFirstLetter(string: string) {

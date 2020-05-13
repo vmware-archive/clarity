@@ -1,12 +1,15 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Layout/Grid" component={'cds-layout'} />
+<Meta title="Foundation/Layout/Grid" />
 
 # Grid
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
 
 <br />
@@ -14,13 +17,13 @@ import { html, LitElement } from 'lit-element';
 The grid layout type enables columns to be defined for layout. This is useful
 for controlling the spacing of items within a container as well as responsive
 layout. Spacing, alignments and gap between items can all be configured with
-the component. The grid layout by default is a **12** column grid. Gap values
-are t-shirt size `[xxs, xs, sm, md, lg, xl, xxl]` and align with the [Layout Spacing Tokens](./?path=/docs/experimental-spacing-getting-started--page).
+the component. The grid layout by default is a **12** column grid.
+Gap values are t-shirt size `[xxs, xs, sm, md, lg, xl, xxl]` and align with the [Layout Spacing Tokens](./?path=/docs/experimental-spacing-getting-started--page).
 
 ## Layout Grid
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout" />
+  <Story id="foundation-layout-stories--grid-layout" />
 </Preview>
 
 ## Columns
@@ -29,7 +32,7 @@ With the grid layout you can define the number of columns you would like each
 grid item to span.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns" />
+  <Story id="foundation-layout-stories--grid-layout-columns" />
 </Preview>
 
 ## Explicit Columns
@@ -38,7 +41,7 @@ If you need to set different column widths you can explicitly define the
 columns span width by using the `cds-col` attribute.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-explicit" />
+  <Story id="foundation-layout-stories--grid-layout-columns-explicit" />
 </Preview>
 
 ## Auto Columns
@@ -47,7 +50,7 @@ To have each column automatically span and fill its layout container set
 the `cols` attribute to `auto`.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-auto" />
+  <Story id="foundation-layout-stories--grid-layout-columns-auto" />
 </Preview>
 
 ## Responsive Columns
@@ -56,13 +59,13 @@ To make a grid layout responsive you can set breakpoints for the column span
 width using the `@` syntax.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-responsive" />
+  <Story id="foundation-layout-stories--grid-layout-columns-responsive" />
 </Preview>
 
 ## Explicit Responsive Columns
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-responsive-explicit" />
+  <Story id="foundation-layout-stories--grid-layout-columns-responsive-explicit" />
 </Preview>
 
 ## Column Wrap
@@ -71,7 +74,7 @@ By default columns will automatically wrap if they total larger than the
 12 columns defined.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-wrap" />
+  <Story id="foundation-layout-stories--grid-layout-columns-wrap" />
 </Preview>
 
 ## Start/End Columns
@@ -80,7 +83,7 @@ The start/end API allows you to control when a column starts or ends. This is
 similar to Bootstrap Grid offsets.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-start-end" />
+  <Story id="foundation-layout-stories--grid-layout-columns-start-end" />
 </Preview>
 
 ## Start/End Responsive
@@ -89,7 +92,7 @@ For responsive layouts you can define breakpoints on start/end values of
 columns. This can be helpfull for adjusting navigation layouts.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-columns-start-end-responsive" />
+  <Story id="foundation-layout-stories--grid-layout-columns-start-end-responsive" />
 </Preview>
 
 ## Align Top (Default)
@@ -98,61 +101,61 @@ Grid Columns and Grid Items within a grid layout can be aligned in multiple
 directions. Alignment utilities are applied to both the Grid Column and Grid Item.
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-top" />
+  <Story id="foundation-layout-stories--grid-layout-align-top" />
 </Preview>
 
 ## Align Bottom
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-bottom" />
+  <Story id="foundation-layout-stories--grid-layout-align-bottom" />
 </Preview>
 
 ## Align Left
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-left" />
+  <Story id="foundation-layout-stories--grid-layout-align-left" />
 </Preview>
 
 ## Align Right
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-right" />
+  <Story id="foundation-layout-stories--grid-layout-align-right" />
 </Preview>
 
 ## Align Vertical Center
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-vertical-center" />
+  <Story id="foundation-layout-stories--grid-layout-align-vertical-center" />
 </Preview>
 
 ## Align Horizontal Center
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-horizontal-center" />
+  <Story id="foundation-layout-stories--grid-layout-align-horizontal-center" />
 </Preview>
 
 ## Align Center
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-center" />
+  <Story id="foundation-layout-stories--grid-layout-align-center" />
 </Preview>
 
 ## Align Vertical Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-vertical-stretch" />
+  <Story id="foundation-layout-stories--grid-layout-align-vertical-stretch" />
 </Preview>
 
 ## Align Horizontal Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-horizontal-stretch" />
+  <Story id="foundation-layout-stories--grid-layout-align-horizontal-stretch" />
 </Preview>
 
 ## Align Stretch
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-align-stretch" />
+  <Story id="foundation-layout-stories--grid-layout-align-stretch" />
 </Preview>
 
 ## Rows
@@ -164,35 +167,35 @@ relative to the parent height. In this example, we can define that all rows
 should be 8 rows high (8/12) except the last item which is 4 columns high (4/12).
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-rows" />
+  <Story id="foundation-layout-stories--grid-layout-rows" />
 </Preview>
 
 ## Rows Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-rows-responsive" />
+  <Story id="foundation-layout-stories--grid-layout-rows-responsive" />
 </Preview>
 
 ## Start/End Rows
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-rows-start-end" />
+  <Story id="foundation-layout-stories--grid-layout-rows-start-end" />
 </Preview>
 
 ## Start/End Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-layout-rows-start-end-responsive" />
+  <Story id="foundation-layout-stories--grid-layout-rows-start-end-responsive" />
 </Preview>
 
 ## Gap Spacing
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-gap" />
+  <Story id="foundation-layout-stories--grid-gap" />
 </Preview>
 
 ## Gap Spacing Responsive
 
 <Preview>
-  <Story id="experimental-layout-stories--grid-gap-responsive" />
+  <Story id="foundation-layout-stories--grid-gap-responsive" />
 </Preview>

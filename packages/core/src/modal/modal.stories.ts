@@ -71,112 +71,116 @@ export const API = () => {
         '--content-box-shadow-color': contentBoxShadowColor,
         '--width': width,
       })}
-      .sbdocs-preview > div[class^="css-"], .sbdocs-preview > div[class^="css-"] > div[class^="css-"]:first-child {
-        height: 500px;
-      }
     </style>
-    <cds-modal __demo-mode .closable=${closable} .size=${size} @closeChange=${action('closeChange')}>
-      <cds-modal-header>${unsafeHTML(htmlDecode(modalHeaderSlot))}</cds-modal-header>
-      <cds-modal-content>
-        ${unsafeHTML(htmlDecode(modalContentSlot))}
-      </cds-modal-content>
-      <cds-modal-actions>
-        ${unsafeHTML(htmlDecode(modalFooterSlot))}
-      </cds-modal-actions>
-    </cds-modal>
+    <cds-demo popover>
+      <cds-modal __demo-mode .closable=${closable} .size=${size} @closeChange=${action('closeChange')}>
+        <cds-modal-header>${unsafeHTML(htmlDecode(modalHeaderSlot))}</cds-modal-header>
+        <cds-modal-content>
+          ${unsafeHTML(htmlDecode(modalContentSlot))}
+        </cds-modal-content>
+        <cds-modal-actions>
+          ${unsafeHTML(htmlDecode(modalFooterSlot))}
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };
 
 export const defaultSize = () => {
   return html`
-    <style>
-      .sbdocs-preview > div[class^='css-'],
-      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
-        height: 500px;
-      }
-    </style>
-    <cds-modal __demo-mode>
-      <cds-modal-header>
-        <h3 cds-text="title">My Modal</h3>
-      </cds-modal-header>
-      <cds-modal-content>
-        <div cds-layout="vertical gap:lg p-y:sm">
-          <p cds-text="body">Lorem Ipsum</p>
-        </div>
-      </cds-modal-content>
-      <cds-modal-actions>
-        <div cds-layout="horizontal gap:md align:right">
-          <cds-button action="outline">Cancel</cds-button>
-          <cds-button>Ok</cds-button>
-        </div>
-      </cds-modal-actions>
-    </cds-modal>
+    <cds-demo popover>
+      <cds-modal __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <div cds-layout="vertical gap:lg p-y:sm">
+            <p cds-text="body">Lorem Ipsum</p>
+          </div>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <div cds-layout="horizontal gap:md align:right">
+            <cds-button action="outline">Cancel</cds-button>
+            <cds-button>Ok</cds-button>
+          </div>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };
 
 export const small = () => {
   return html`
-    <style>
-      .sbdocs-preview > div[class^='css-'],
-      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
-        height: 500px;
-      }
-    </style>
-    <cds-modal size="sm" __demo-mode>
-      <cds-modal-header>
-        <h3 cds-text="title">My Modal</h3>
-      </cds-modal-header>
-      <cds-modal-content>
-        <div cds-layout="vertical gap:lg p-y:sm">
-          <p cds-text="body">Lorem Ipsum</p>
-        </div>
-      </cds-modal-content>
-      <cds-modal-actions>
-        <div cds-layout="horizontal gap:md align:right">
-          <cds-button action="outline">Cancel</cds-button>
-          <cds-button>Ok</cds-button>
-        </div>
-      </cds-modal-actions>
-    </cds-modal>
+    <cds-demo popover>
+      <cds-modal size="sm" __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <div cds-layout="vertical gap:lg p-y:sm">
+            <p cds-text="body">Lorem Ipsum</p>
+          </div>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <div cds-layout="horizontal gap:md align:right">
+            <cds-button action="outline">Cancel</cds-button>
+            <cds-button>Ok</cds-button>
+          </div>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };
 
 export const large = () => {
   return html`
-    <style>
-      .sbdocs-preview > div[class^='css-'],
-      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
-        height: 500px;
-      }
-    </style>
-    <cds-modal size="lg" __demo-mode>
-      <cds-modal-header>
-        <h3 cds-text="title">My Modal</h3>
-      </cds-modal-header>
-      <cds-modal-content>
-        <div cds-layout="vertical gap:lg p-y:sm">
-          <p cds-text="body">Lorem Ipsum</p>
-        </div>
-      </cds-modal-content>
-      <cds-modal-actions>
-        <div cds-layout="horizontal gap:md align:right">
-          <cds-button action="outline">Cancel</cds-button>
-          <cds-button>Ok</cds-button>
-        </div>
-      </cds-modal-actions>
-    </cds-modal>
+    <cds-demo popover>
+      <cds-modal size="lg" __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <div cds-layout="vertical gap:lg p-y:sm">
+            <p cds-text="body">Lorem Ipsum</p>
+          </div>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <div cds-layout="horizontal gap:md align:right">
+            <cds-button action="outline">Cancel</cds-button>
+            <cds-button>Ok</cds-button>
+          </div>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };
 
 export const extraLarge = () => {
   return html`
-    <style>
-      .sbdocs-preview > div[class^='css-'],
-      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
-        height: 500px;
-      }
-    </style>
-    <cds-modal size="xl" __demo-mode>
+    <cds-demo popover>
+      <cds-modal size="xl" __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <div cds-layout="vertical gap:lg p-y:sm">
+            <p cds-text="body">Lorem Ipsum</p>
+          </div>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <div cds-layout="horizontal gap:md align:right">
+            <cds-button action="outline">Cancel</cds-button>
+            <cds-button>Ok</cds-button>
+          </div>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
+  `;
+};
+
+export const focusTrap = () => {
+  return html`
+    <cds-modal>
       <cds-modal-header>
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
@@ -206,26 +210,24 @@ export const customStyles = () => {
         --close-icon-color-hover: #004b6b;
         --content-box-shadow-color: rgba(0, 54, 77, 0.3);
       }
-      .sbdocs-preview > div[class^='css-'],
-      .sbdocs-preview > div[class^='css-'] > div[class^='css-']:first-child {
-        height: 500px;
-      }
     </style>
-    <cds-modal class="modal-branding" __demo-mode>
-      <cds-modal-header>
-        <h3 cds-text="title">My Modal</h3>
-      </cds-modal-header>
-      <cds-modal-content>
-        <div cds-layout="vertical gap:lg p-y:sm">
-          <p cds-text="body">Lorem Ipsum</p>
-        </div>
-      </cds-modal-content>
-      <cds-modal-actions>
-        <div cds-layout="horizontal gap:md align:right">
-          <cds-button action="outline">Cancel</cds-button>
-          <cds-button>Ok</cds-button>
-        </div>
-      </cds-modal-actions>
-    </cds-modal>
+    <cds-demo popover>
+      <cds-modal class="modal-branding" __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <div cds-layout="vertical gap:lg p-y:sm">
+            <p cds-text="body">Lorem Ipsum</p>
+          </div>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <div cds-layout="horizontal gap:md align:right">
+            <cds-button action="outline">Cancel</cds-button>
+            <cds-button>Ok</cds-button>
+          </div>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };

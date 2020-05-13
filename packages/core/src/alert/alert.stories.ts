@@ -16,7 +16,7 @@ import { html } from 'lit-html';
 ClarityIcons.addIcons(angleIcon, userIcon, timesCircleIcon);
 
 export default {
-  title: 'Experimental/Alert/Stories',
+  title: 'Components/Alert/Stories',
   component: 'cds-alert',
   parameters: {
     options: { showPanel: true },

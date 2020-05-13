@@ -96,7 +96,7 @@ export function getAlertContentLayout(
         case 'wrapper':
           return alertGroupHasPager ? fillLayoutValue : '';
         case 'content':
-          return '';
+          return 'align:shrink';
         case 'actions':
           return alertGroupHasPager ? fillLayoutValue : '';
         default:
@@ -110,7 +110,7 @@ export function getAlertContentLayout(
         case 'content':
           return fillLayoutValue;
         case 'actions':
-          return '';
+          return 'align:shrink';
       }
   }
 }
@@ -255,8 +255,8 @@ export class CdsAlert extends AlertMixinClass {
       <div
         class="private-host"
         cds-layout="${this.alertGroupType === 'banner'
-          ? 'horizontal no-wrap gap:sm align:vertical-center align:horizontal-center'
-          : 'horizontal no-wrap gap:xs'}"
+          ? 'horizontal wrap:none gap:sm align:vertical-center align:horizontal-center'
+          : 'horizontal wrap:none gap:xs'}"
       >
         ${this.alertGroupType === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
@@ -280,7 +280,11 @@ export class CdsAlert extends AlertMixinClass {
         </span>
         <span
           class="alert-content-wrapper"
-          cds-layout="${getAlertContentLayout('wrapper', this.alertGroupType, this.parentGroupHasPager)}"
+          cds-layout="horizontal wrap:none ${getAlertContentLayout(
+            'wrapper',
+            this.alertGroupType,
+            this.parentGroupHasPager
+          )}"
         >
           <span
             id="${this.idForAriaDescriber}"

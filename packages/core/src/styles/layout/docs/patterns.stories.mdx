@@ -1,15 +1,16 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Layout/Patterns" component={'cds-layout'} />
+<Meta title="Foundation/Layout/Patterns" />
 
 # Patterns
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 Using the layout system, we can build many different kinds of complex page level layouts.
 
@@ -18,41 +19,41 @@ Using the layout system, we can build many different kinds of complex page level
 ## Application Vertical Layout
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-application-vertical-layout" />
+  <Story id="foundation-layout-stories--patterns-application-vertical-layout" />
 </Preview>
 
 ## Application Verical Layout with Subnav
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-application-vertical-layout-subnav" />
+  <Story id="foundation-layout-stories--patterns-application-vertical-layout-subnav" />
 </Preview>
 
 ## Application Layout with Vertical Icon Layout
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-application-vertical-icon-layout" />
+  <Story id="foundation-layout-stories--patterns-application-vertical-icon-layout" />
 </Preview>
 
 ## Application Layout with Vertical Icon Layout Hybrid
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-application-vertical-icon-layout-hybrid" />
+  <Story id="foundation-layout-stories--patterns-application-vertical-icon-layout-hybrid" />
 </Preview>
 
 ## Content Site Three Columns
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-content-site-three-column" />
+  <Story id="foundation-layout-stories--patterns-content-site-three-column" />
 </Preview>
 
 ## Content Site Single Rail
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-content-site-single-rail" />
+  <Story id="foundation-layout-stories--patterns-content-site-single-rail" />
 </Preview>
 
 ## Responsive Image Gallery
 
 <Preview>
-  <Story id="experimental-layout-stories--patterns-responsive-image-gallery" />
+  <Story id="foundation-layout-stories--patterns-responsive-image-gallery" />
 </Preview>

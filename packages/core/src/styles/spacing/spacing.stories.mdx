@@ -1,15 +1,16 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Spacing/Getting Started" />
+<Meta title="Foundation/Spacing/Getting Started" />
 
 # Spacing
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 Spacing is managed by two sets of spacing tokens. One set for managing space
 within components and another for managing page level layout space.
@@ -20,10 +21,10 @@ To use the spacing utils import the global CSS.
 
 ```scss
 // import into sass or css
-@import '~@clr/core/styles/module.tokens.min';
+@import '~@clr/core/global.min';
 
 // or import in html
-<link href="/node_modules/@clr/core/styles/module.tokens.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
 ```
 
 ## Layout Spacing
@@ -32,7 +33,7 @@ The layout space tokens are used with the [layout system](.?path=/docs/experimen
 and provide a larger value set for page level layouts. This allows content
 density to be controlled consistently.
 
-<Story id="experimental-design-tokens-stories--layout-space" />
+<Story id="foundation-design-tokens-stories--layout-space" />
 
 <br />
 <br />
@@ -50,4 +51,4 @@ within Clarity components.
 }
 ```
 
-<Story id="experimental-design-tokens-stories--space" />
+<Story id="foundation-design-tokens-stories--space" />

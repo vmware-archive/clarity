@@ -19,7 +19,7 @@ read('./dist/core')
   .filter(f => f.endsWith('.css') && !f.endsWith('.min.css'))
   .forEach(file => {
     const css = fs.readFileSync(file, 'utf8');
-    const result = csso.minify(css, { restructure: false });
+    const result = csso.minify(css);
     fs.writeFileSync(file.replace('.css', '.min.css'), result.css);
   });
 

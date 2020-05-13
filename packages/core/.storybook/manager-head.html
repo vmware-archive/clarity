@@ -4,7 +4,28 @@
   #storybook-panel-root select {
     min-width: 160px;
   }
+
+  .sidebar-item[id*='internal'],
+  .sidebar-item[id*='experimental'] {
+    display: none;
+  }
+
+  .docblock-propstable-body td {
+    min-width: 240px;
+  }
+
+  body[localhost] .sidebar-item[id*='internal'],
+  body[localhost] .sidebar-item[id*='experimental'] {
+    display: flex;
+  }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (location.hostname === 'localhost') {
+      document.body.setAttribute('localhost', '');
+    }
+  });
+</script>
 <script type="text/javascript">
   if (/clarity.design/.test(window.location.href)) {
     (function (i, s, o, g, r, a, m) {

@@ -20,31 +20,14 @@ export default {
 
 export const core = () => {
   return html`
-    <style>
-      .welcome-intro {
-        max-width: 550px;
-      }
-
-      .welcome-img {
-        width: 100%;
-        max-width: 7rem;
-      }
-    </style>
-    <section cds-layout="vertical gap:lg align:center m-t:xl" cds-text="center">
-      <img src="./assets/images/clarity-logo.svg" alt="Clarity Core" class="welcome-img" />
+    <section cds-layout="vertical gap:xl align:center m-t:xxl" cds-text="center">
+      <img src="./assets/images/clarity-logo.svg" alt="Clarity Core" cds-layout="fill" style="max-width: 8rem" />
       <h1 cds-text="display">
         Clarity Core
-        <clr-icon
-          shape="beta"
-          size="xl"
-          solid
-          status="info"
-          style="transform: translate3d(-0.3em, -0.4em, 0)"
-        ></clr-icon>
       </h1>
       <h2 cds-text="section">Web Component Implementation of the Clarity Design System</h2>
 
-      <div cds-layout="vertical gap:md" cds-text="body left" class="welcome-intro">
+      <div cds-layout="vertical gap:lg container:xs" cds-text="body left">
         <p cds-text="body">
           Clarity Core is a Web Component implementation of the
           <a href="https://clarity.design">Clarity Design System</a>. Clarity Core provides a set of reusable UI
@@ -52,15 +35,16 @@ export const core = () => {
         </p>
 
         <p cds-text="body">
-          Core is currently in a beta state but is ready to try out. We are actively looking for
-          <a href="https://github.com/vmware/clarity/issues/new/choose">feedback</a> from teams on their experiences.
-          You can read more about Core and its goals in our
+          Some of our components and utilities are currently offered as previews. This means that these components and
+          utilities are in active development but ready to try out! We are hoping you will share your
+          <a href="https://github.com/vmware/clarity/issues/new/choose">feedback</a> on these new components. You can
+          read more about Core and its goals in our
           <a href="https://medium.com/claritydesignsystem/clarity-core-72f6d3a029bc" target="_blank" rel="noopener"
             >Medium blog post</a
           >.
         </p>
       </div>
-      <div cds-layout="horizontal gap:xs align:center">
+      <div cds-layout="horizontal gap:xs align:horizontal-center">
         <cds-button status="primary">
           <a href="./?path=/docs/documentation-getting-started--page">Get Started</a>
         </cds-button>

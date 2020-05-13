@@ -1,7 +1,8 @@
 {
-  "include": ["../**/*.stories.ts", "../dist"],
+  "include": ["../**/*.stories.ts", "../docs/**/*", "../dist"],
   "exclude": ["node_modules", "../**/test/*.ts", "../**/*.spec.ts"],
   "compilerOptions": {
+    "rootDirs": ["src", "docs"],
     "target": "es2017",
     "module": "esnext",
     "moduleResolution": "node",
@@ -9,13 +10,10 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "baseUrl": "./../",
+    "baseUrl": "../",
     "paths": {
       "@clr/core": ["./dist/core"],
       "@clr/core/*": ["./dist/core/*"]
     }
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "ignoreDiagnostics": [2300]
   }
 }

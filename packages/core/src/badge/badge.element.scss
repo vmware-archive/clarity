@@ -9,7 +9,7 @@
   --color: #{$cds-token-color-neutral-0};
   --font-size: #{$cds-token-typography-p8-font-size};
   --font-weight: #{$cds-token-typography-font-weight-regular};
-  --size: #{$cds-token-space-size-7-static - $cds-token-space-size-1-static};
+  --size: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-1});
   --padding: calc(#{$cds-token-space-size-3} - var(--border-width));
   --border-radius: calc(var(--size) / 2);
   display: inline-block;

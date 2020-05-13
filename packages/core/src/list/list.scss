@@ -4,7 +4,7 @@
 
 @import './../styles/tokens/generated/index';
 
-$list-indent: $cds-token-layout-space-lg;
+$list-indent: $cds-token-space-size-9;
 $list-default-ordered-type: decimal;
 $list-default-unordered-type: disc;
 
@@ -52,7 +52,7 @@ ul[cds-list='unstyled'] {
   @extend %kill-list-styles;
 
   & > li {
-    & > ul:not[cds-list='unstyled'],
+    & > ul:not([cds-list='unstyled']),
     ol {
       margin-left: 0;
       padding-left: $list-indent;

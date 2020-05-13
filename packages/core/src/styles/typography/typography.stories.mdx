@@ -1,15 +1,16 @@
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Experimental/Typography/Getting Started" />
+<Meta title="Foundation/Typography/Getting Started" />
 
 # Typography
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
 </cds-alert-group>
-
-<br />
 
 The Clarity Core Typography System provides a flexible API to apply typography
 styles explicitly to elements. This gives full control of the visual styling of
@@ -21,10 +22,10 @@ To use the typography system import the global CSS.
 
 ```scss
 // import into sass or css
-@import '~@clr/core/styles/module.typography.min';
+@import '~@clr/core/global.min';
 
 // or import in html
-<link href="/node_modules/@clr/core/styles/module.typography.min.css" rel="stylesheet">
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
 ```
 
 ## Usage
@@ -40,53 +41,53 @@ create consistent and coherent experiences.
 ## Headings
 
 <Preview>
-  <Story id="experimental-typography-stories--headings" />
+  <Story id="foundation-typography-stories--headings" />
 </Preview>
 
 ## Content
 
 <Preview>
-  <Story id="experimental-typography-stories--content" />
+  <Story id="foundation-typography-stories--content" />
 </Preview>
 
 ## Links
 
 <Preview>
-  <Story id="experimental-typography-stories--links" />
+  <Story id="foundation-typography-stories--links" />
 </Preview>
 
 ## Code
 
 <Preview>
-  <Story id="experimental-typography-stories--code" />
+  <Story id="foundation-typography-stories--code" />
 </Preview>
 
 ## Position
 
 <Preview>
-  <Story id="experimental-typography-stories--position" />
+  <Story id="foundation-typography-stories--position" />
 </Preview>
 
 ## Transforms
 
 <Preview>
-  <Story id="experimental-typography-stories--transforms" />
+  <Story id="foundation-typography-stories--transforms" />
 </Preview>
 
 ## Weights
 
 <Preview>
-  <Story id="experimental-typography-stories--weights" />
+  <Story id="foundation-typography-stories--weights" />
 </Preview>
 
 ## Inline
 
 <Preview>
-  <Story id="experimental-typography-stories--inline" />
+  <Story id="foundation-typography-stories--inline" />
 </Preview>
 
 ## Tokens
 
 <Preview>
-  <Story id="experimental-design-tokens-stories--typography" />
+  <Story id="foundation-design-tokens-stories--typography" />
 </Preview>

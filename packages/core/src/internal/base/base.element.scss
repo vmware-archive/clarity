@@ -10,18 +10,36 @@
 
 // Every Web Component will need to import a minimal amount of core CSS
 :host {
+  all: initial;
+  display: block;
   font-family: inherit;
-  contain: content; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
+  contain: layout; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
+  box-sizing: border-box !important;
   -webkit-appearance: none !important;
 }
 
-:host([focused]) {
-  outline-width: $cds-token-space-size-2;
-  outline-offset: $cds-token-space-size-1;
-  outline-style: solid;
-  outline-color: Highlight;
+*,
+*:before,
+*:after {
+  box-sizing: inherit !important;
 }
 
 slot {
   font-family: inherit;
+  display: block;
+}
+
+// normalize focus styles
+:host([tabindex='0']:focus),
+:host([focused][is-anchor]),
+:host([focused]) .input {
+  outline: Highlight solid $cds-token-space-size-2;
+  outline-offset: $cds-token-space-size-1;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host([tabindex='0']:focus),
+  :host([focused]) .input {
+    outline-color: -webkit-focus-ring-color;
+  }
 }

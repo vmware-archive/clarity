@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": [],
-    "strictNullChecks": true
+    "types": ["@types/resize-observer-browser"],
+    "strictNullChecks": true,
+    "rootDir": "./src"
   },
   "allowSyntheticDefaultImports": false,
   "exclude": ["**/test/*.ts", "**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts"]

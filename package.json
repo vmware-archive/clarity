@@ -8,15 +8,15 @@
       "apps/*"
     ],
     "nohoist": [
+      "@clr/core/css-vars-ponyfill",
+      "@clr/core/tslib",
+      "@clr/core/lit-element",
+      "@clr/core/ramda",
+      "@clr/core/lit-html",
+      "@clr/core/@storybook/**",
+      "@clr/core/normalize.css",
       "angular/@angular/**",
       "angular/@angular-devkit/**",
-      "core/css-vars-ponyfill",
-      "core/tslib",
-      "core/lit-element",
-      "core/ramda",
-      "core/lit-html",
-      "core/@storybook/**",
-      "core/normalize.css",
       "angular/@storybook/**"
     ]
   },

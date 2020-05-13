@@ -156,12 +156,12 @@ describe('icon element', () => {
     it('should set aria label when a icon title is provided', async () => {
       await componentIsStable(component);
       expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(null);
-      expect(component.shadowRoot.querySelector('span')).toBe(null);
+      expect(component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"')).toBe(null);
 
       component.title = 'test';
       await componentIsStable(component);
 
-      const id = component.shadowRoot.querySelector('span').getAttribute('id');
+      const id = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"').getAttribute('id');
       expect(id.includes('aria-cds-icon')).toBe(true);
       expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
     });

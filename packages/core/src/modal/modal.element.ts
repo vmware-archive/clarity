@@ -65,11 +65,11 @@ export class CdsModal extends ModalMixinClass {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="horizontal p:sm p@md:lg align:center">
+      <div class="private-host" cds-layout="horizontal p:md p@md:xl align:center">
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
           <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentStart}</div>
-          <div class="modal-content" cds-layout="p:md">
-            <div cds-layout="horizontal gap:sm p-b:sm p-b@md:md">
+          <div class="modal-content" cds-layout="p:lg">
+            <div cds-layout="horizontal gap:md p-b:md p-b@md:lg">
               <div cds-layout="align-stretch" id="${this.idForAriaLabel}">
                 <slot name="modal-header"></slot>
               </div>
@@ -93,7 +93,7 @@ export class CdsModal extends ModalMixinClass {
             <div class="modal-body">
               <slot></slot>
             </div>
-            <div cds-layout="p-t:sm p-t@md:md">
+            <div cds-layout="p-t:md p-t@md:lg">
               <slot name="modal-actions" cds-layout="align-stretch"></slot>
             </div>
           </div>

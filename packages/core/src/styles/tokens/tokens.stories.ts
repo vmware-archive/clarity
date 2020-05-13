@@ -55,7 +55,7 @@ function getTokenPxValueTemplate(token: Token) {
 
 export const global = () => {
   return html`
-    <div cds-layout="horizontal gap:md">
+    <div cds-layout="horizontal gap:xl">
       ${getTokensByCategory('global').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}
@@ -65,7 +65,7 @@ export const global = () => {
 
 export const space = () => {
   return html`
-    <div cds-layout="vertical gap:md">
+    <div cds-layout="vertical gap:xl">
       ${getTokensByCategory('space').map(
         token => html`
           <div cds-text="message">
@@ -80,7 +80,7 @@ export const space = () => {
 
 export const layoutSpace = () => {
   return html`
-    <div cds-layout="vertical gap:md">
+    <div cds-layout="vertical gap:xl">
       ${getTokensByCategory('layout-space').map(
         token => html`
           <div cds-text="message">
@@ -95,7 +95,7 @@ export const layoutSpace = () => {
 
 export const layout = () => {
   return html`
-    <div cds-layout="horizontal gap:md">
+    <div cds-layout="horizontal gap:xl">
       ${getTokensByCategory('layout').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}
@@ -105,7 +105,7 @@ export const layout = () => {
 
 export const typography = () => {
   return html`
-    <div cds-layout="horizontal gap:md">
+    <div cds-layout="horizontal gap:xl">
       ${getTokensByCategory('typography').map(
         token => html`<p cds-text="subsection">${token.cssProp}: ${getTokenPxValueTemplate(token)}</p>`
       )}
@@ -123,7 +123,7 @@ function getColorGroup(group: string) {
           token => html`
             <div
               style="background: ${token.value}; color: ${token['value-on']}"
-              cds-layout="p:sm display:flex"
+              cds-layout="p:md display:flex"
               cds-text="body"
             >
               ${token.cssProp}<br />${token.value};
@@ -136,28 +136,28 @@ function getColorGroup(group: string) {
 
 export const color = () => {
   return html`
-    <div cds-layout="grid cols@sm:6 cols@md:4 gap:md">
-      <div cds-layout="vertical gap:md">
+    <div cds-layout="grid cols@sm:6 cols@md:4 gap:xl">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Neutral</h2>
         ${getColorGroup('neutral')}
       </div>
-      <div cds-layout="vertical gap:md">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Action</h2>
         ${getColorGroup('color-action')}
       </div>
-      <div cds-layout="vertical gap:md">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Secondary Action</h2>
         ${getColorGroup('secondary')}
       </div>
-      <div cds-layout="vertical gap:md">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Danger</h2>
         ${getColorGroup('danger')}
       </div>
-      <div cds-layout="vertical gap:md">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Warning</h2>
         ${getColorGroup('warning')}
       </div>
-      <div cds-layout="vertical gap:md">
+      <div cds-layout="vertical gap:xl">
         <h2 cds-text="section">Success</h2>
         ${getColorGroup('success')}
       </div>

@@ -75,23 +75,31 @@ props:
     value: '72px'
     type: 'px'
     category: 'space'
+  - name: xxs
+    value: '2px'
+    type: 'px'
+    category: 'layout-space'
   - name: xs
-    value: '6px'
+    value: '4px'
     type: 'px'
     category: 'layout-space'
   - name: sm
-    value: '12px'
+    value: '6px'
     type: 'px'
     category: 'layout-space'
   - name: md
-    value: '24px'
+    value: '12px'
     type: 'px'
     category: 'layout-space'
   - name: lg
-    value: '48px'
+    value: '24px'
     type: 'px'
     category: 'layout-space'
   - name: xl
+    value: '48px'
+    type: 'px'
+    category: 'layout-space'
+  - name: xxl
     value: '96px'
     type: 'px'
     category: 'layout-space'

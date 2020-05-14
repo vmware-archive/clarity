@@ -6,8 +6,6 @@ golden/
 .vscode
 .ng_build
 **/node_modules/**
-src/website
-src/dev
 packages/core/**/*.css.ts
 packages/core/custom-elements.json
 packages/core/src/styles/tokens/generated/**

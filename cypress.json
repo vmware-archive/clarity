@@ -1,6 +1,0 @@
-{
-  "projectId": "y2tdfg",
-  "baseUrl": "http://localhost:3000/",
-  "video": false,
-  "testFiles": "**/*spec*"
-}

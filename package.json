@@ -60,10 +60,6 @@
     "core:lint": "npm --prefix packages/core run lint",
     "core:dev:build": "npm --prefix packages/core run dev:build"
   },
-  "dependencies": {},
-  "optionalDependencies": {
-    "cypress": "3.4.1"
-  },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
     "@commitlint/config-conventional": "8.0.0",

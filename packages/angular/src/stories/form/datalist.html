@@ -1,0 +1,17 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc.
+  ~ All Rights ReserveThis software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<form clrForm>
+  <clr-datalist-container>
+    <label>Template Datalist</label>
+    <input minlength="4" name="Option" clrDatalistInput [disabled]="disableInput" />
+    <datalist>
+      <option *ngFor="let item of ['Item1', 'Item2', 'Item3']" [value]="item"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-datalist-container>
+</form>

@@ -748,6 +748,17 @@ export default function (): void {
         expect(selectionInstance.isSelected(4)).toBe(false);
       });
 
+      it('should not execute canItBeLocked block when there are no items to scan inside lockItem and isLocked method', function () {
+        itemsInstance.all = undefined;
+        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        selectionInstance.selectionType = SelectionType.Multi;
+
+        // lock a row
+        selectionInstance.lockItem(4, true);
+        // make sure it's locked
+        expect(selectionInstance.isLocked(4)).toBe(false);
+      });
+
       /*
        * single selection is done with radio button so there is no logic to prevent
        * it from the provider - this must be handle at the component level

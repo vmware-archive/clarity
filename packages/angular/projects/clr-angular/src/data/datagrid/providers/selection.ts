@@ -275,7 +275,7 @@ export class Selection<T = any> {
    */
   private selectItem(item: T): void {
     this.current.push(item);
-    if (this._items.trackBy) {
+    if (this._items.trackBy && this._items.all) {
       // Push selected ref onto array
       const lookup = this._items.all.findIndex(maybe => maybe === item);
       this.prevSelectionRefs.push(this._items.trackBy(lookup, item));
@@ -341,9 +341,16 @@ export class Selection<T = any> {
     return temp.length === displayedItems.length;
   }
 
-  private canItBeLocked() {
+  /**
+   * Make sure that it could be locked
+   *
+   * @remark
+   * Check also is items.all an array, if not there is no nothing to lock or compare to
+   *
+   */
+  private canItBeLocked(): boolean {
     // We depend on the trackBy and all so there are part of the requirment of is item could be locked
-    return this._selectionType !== SelectionType.None;
+    return this._selectionType !== SelectionType.None && Array.isArray(this._items.all);
   }
 
   /**

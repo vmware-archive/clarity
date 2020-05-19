@@ -7,7 +7,7 @@
     "clean": "del ./dist",
     "start": "npm run angular:dev:start",
     "build": "npm-run-all build:ci",
-    "build:ci": "npm-run-all clean format lint build:libs core:dev:build test",
+    "build:ci": "npm-run-all clean format lint build:libs core:dev:build",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build",
     "build:apps": "npm-run-all -p angular:dev:build core:dev:build",
     "test": "npm-run-all -p angular:test core:test icons:test",

@@ -1,13 +1,11 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { ClarityModule } from '@clr/angular';
 
 import { DatepickerCSSRegressionDemo } from './css-regression';
 import { DatepickerAKDemo } from './datepicker-AK';
@@ -28,9 +26,10 @@ import { NgModelExplicitWrapperDemo } from './ngmodel-wrapper-explicit-wrapper';
 import { DisabledDemo } from './disabled';
 import { DatepickerLayoutDemo } from './layout';
 import { DatepickerMinMaxDemo } from './datepicker-min-max';
+import { DatepickerExcludedDatesDemo } from './datepicker-excluded-dates';
 
 @NgModule({
-  imports: [CommonModule, ClarityModule, ROUTING, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, ROUTING, FormsModule, ReactiveFormsModule],
   declarations: [
     DatepickerDemo,
     DatepickerInTemplateDrivenFormsDemo,
@@ -50,6 +49,7 @@ import { DatepickerMinMaxDemo } from './datepicker-min-max';
     DisabledDemo,
     DatepickerLayoutDemo,
     DatepickerMinMaxDemo,
+    DatepickerExcludedDatesDemo,
   ],
   exports: [
     DatepickerDemo,
@@ -70,6 +70,7 @@ import { DatepickerMinMaxDemo } from './datepicker-min-max';
     DisabledDemo,
     DatepickerLayoutDemo,
     DatepickerMinMaxDemo,
+    DatepickerExcludedDatesDemo,
   ],
 })
 export class DatepickerDemoModule {}

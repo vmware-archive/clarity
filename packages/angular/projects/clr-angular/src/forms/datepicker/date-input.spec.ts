@@ -161,20 +161,20 @@ export default function () {
           expect(context.clarityElement.className).not.toContain('clr-col-12');
         });
 
-        it('should handle big endien date strings for min inputs', () => {
+        it('should handle big endian date strings for min inputs', () => {
           // NOTE: big endian date format is yyyy-mm-dd
           const testComponent = context.fixture.componentInstance;
           const [minYear, minMonth, minDay] = testComponent.minDate.split('-').map(n => parseInt(n, 10));
           const testMinDateModel = new DayModel(minYear, minMonth - 1, minDay);
-          expect(testMinDateModel).toEqual(dateIOService.disabledDates.minDate);
+          expect(testMinDateModel.incrementBy(-1)).toEqual(dateIOService.minRange.maxDate);
         });
 
-        it('should handle big endien date strings for max inputs', () => {
+        it('should handle big endian date strings for max inputs', () => {
           // NOTE: big endian date format is yyyy-mm-dd
           const testComponent = context.fixture.componentInstance;
           const [maxYear, maxMonth, maxDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
           const testMaxDateModel = new DayModel(maxYear, maxMonth - 1, maxDay);
-          expect(testMaxDateModel).toEqual(dateIOService.disabledDates.maxDate);
+          expect(testMaxDateModel.incrementBy(1)).toEqual(dateIOService.maxRange.minDate);
         });
       });
 
@@ -190,21 +190,21 @@ export default function () {
         });
 
         it('sets default values to min/max bounds if not provided by the user', () => {
-          // This is a choice to remove the min/max added to the template for other tests, rather thean creating a completely
+          // This is a choice to remove the min/max added to the template for other tests, rather than creating a completely
           // new test component
           delete context.fixture.componentInstance.minDate;
           delete context.fixture.componentInstance.maxDate;
           context.fixture.detectChanges();
-          expect(dateIOService.disabledDates.minDate).toEqual(new DayModel(0, 0, 1));
-          expect(dateIOService.disabledDates.maxDate).toEqual(new DayModel(9999, 11, 31));
+          expect(dateIOService.minRange.maxDate).toEqual(new DayModel(0, 0, 1));
+          expect(dateIOService.maxRange.minDate).toEqual(new DayModel(9999, 11, 31));
         });
 
         it('sets min/max bounds correctly', () => {
           context.clarityDirective.min = '2000-05-07';
-          expect(dateIOService.disabledDates.minDate).toEqual(new DayModel(2000, 4, 7));
+          expect(dateIOService.minRange.maxDate).toEqual(new DayModel(2000, 4, 6));
 
           context.clarityDirective.max = '2020-05-07';
-          expect(dateIOService.disabledDates.maxDate).toEqual(new DayModel(2020, 4, 7));
+          expect(dateIOService.maxRange.minDate).toEqual(new DayModel(2020, 4, 8));
         });
 
         it('gets whether the datepicker is enabled or not', () => {
@@ -320,44 +320,46 @@ export default function () {
           const testComponent = context.fixture.componentInstance;
           const [minYear, minMonth, minDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
           const testMinDateModel = new DayModel(minYear, minMonth - 1, minDay);
-          expect(testMinDateModel).toEqual(dateIOService.disabledDates.maxDate);
+          const upperBoundDateModel = testMinDateModel.incrementBy(-1);
+          expect(upperBoundDateModel).toEqual(dateIOService.minRange.maxDate);
 
           // should handle null input
           testComponent.maxDate = null;
           context.fixture.detectChanges();
-          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(upperBoundDateModel).not.toEqual(dateIOService.minRange.maxDate);
 
           // should handle undefined
           testComponent.maxDate = undefined;
           context.fixture.detectChanges();
-          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(upperBoundDateModel).not.toEqual(dateIOService.minRange.maxDate);
 
           // should handle empty string
           testComponent.maxDate = '';
           context.fixture.detectChanges();
-          expect(testMinDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(upperBoundDateModel).not.toEqual(dateIOService.minRange.maxDate);
         });
 
         it('binds to the max attribute', () => {
           const testComponent = context.fixture.componentInstance;
           const [maxYear, maxMonth, maxDay] = testComponent.maxDate.split('-').map(n => parseInt(n, 10));
           const testMaxDateModel = new DayModel(maxYear, maxMonth - 1, maxDay);
-          expect(testMaxDateModel).toEqual(dateIOService.disabledDates.maxDate);
+          const lowerBoundDateModel = testMaxDateModel.incrementBy(1);
+          expect(lowerBoundDateModel).toEqual(dateIOService.maxRange.minDate);
 
-          // should handle null axput
+          // should handle null input
           testComponent.maxDate = null;
           context.fixture.detectChanges();
-          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(lowerBoundDateModel).not.toEqual(dateIOService.maxRange.minDate);
 
-          // should handle undefaxed
+          // should handle undefined
           testComponent.maxDate = undefined;
           context.fixture.detectChanges();
-          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(lowerBoundDateModel).not.toEqual(dateIOService.maxRange.minDate);
 
           // should handle empty straxg
           testComponent.maxDate = '';
           context.fixture.detectChanges();
-          expect(testMaxDateModel).not.toEqual(dateIOService.disabledDates.maxDate);
+          expect(lowerBoundDateModel).not.toEqual(dateIOService.maxRange.minDate);
         });
       });
     });
@@ -836,3 +838,5 @@ class TestComponentWithTemplateDrivenForms {
     this.dateOutput = date;
   }
 }
+
+// TODO[martinbrom]: Create a component and tests for disabled ranges

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,12 +10,14 @@ import {
   BIG_ENDIAN,
   DEFAULT_LOCALE_FORMAT,
   DELIMITER_REGEX,
+  END_OF_TIME_DAY_MODEL,
   InputDateDisplayFormat,
   LITTLE_ENDIAN,
   LITTLE_ENDIAN_REGEX,
   MIDDLE_ENDIAN,
   MIDDLE_ENDIAN_REGEX,
   RTL_REGEX,
+  START_OF_TIME_DAY_MODEL,
   USER_INPUT_REGEX,
 } from '../utils/constants';
 import { getNumberOfDaysInTheMonth, parseToFourDigitYear } from '../utils/date-utils';
@@ -23,16 +25,16 @@ import { getNumberOfDaysInTheMonth, parseToFourDigitYear } from '../utils/date-u
 import { LocaleHelperService } from './locale-helper.service';
 import { DateRange } from '../interfaces/date-range.interface';
 import { DayModel } from '../model/day.model';
+import { DisabledDateArray } from '../interfaces/disabled-date-array.interface';
 
 @Injectable()
 export class DateIOService {
-  public disabledDates: DateRange = {
-    // This is the default range. It approximates the beginning of time to the end of time.
-    // Unless a minDate or maxDate is set with the native HTML5 api the range is all dates
-    // TODO: turn this into an Array of min/max ranges that allow configuration of multiple ranges.
-    minDate: new DayModel(0, 0, 1),
-    maxDate: new DayModel(9999, 11, 31),
-  };
+  // This is the default range. It approximates the beginning of time to the end of time.
+  // Unless a minDate or maxDate is set with the native HTML5 api the range is all dates
+  public minRange: DateRange = { minDate: START_OF_TIME_DAY_MODEL, maxDate: START_OF_TIME_DAY_MODEL };
+  public maxRange: DateRange = { minDate: END_OF_TIME_DAY_MODEL, maxDate: END_OF_TIME_DAY_MODEL };
+  private _excludedRanges: DateRange[] = [];
+
   public cldrLocaleDateFormat: string = DEFAULT_LOCALE_FORMAT;
   private localeDisplayFormat: InputDateDisplayFormat = LITTLE_ENDIAN;
   private delimiters: [string, string] = ['/', '/'];
@@ -42,28 +44,61 @@ export class DateIOService {
     this.initializeLocaleDisplayFormat();
   }
 
+  // NOTE: I'm expecting consumers to pass one of four things here:
+  //       A proper date string(2019-11-11), null, undefined or empty string ('')
   public setMinDate(date: string): void {
-    // NOTE: I'm expecting consumers to pass one of four things here:
-    //       A proper date string(2019-11-11), null, undefined or empty string ('')
-    if (!date) {
-      // attribute binding was removed, reset back to the beginning of time
-      this.disabledDates.minDate = new DayModel(0, 0, 1);
+    // to get an 'excluded' range, we need to invert the interval
+    this.minRange = {
+      minDate: START_OF_TIME_DAY_MODEL,
+      maxDate: date ? this.getDayModelFromDateString(date).incrementBy(-1) : START_OF_TIME_DAY_MODEL,
+    };
+  }
+
+  // NOTE: I'm expecting consumers to pass one of four things here:
+  //       A proper date string(2019-11-11), null, undefined or empty string ('')
+  public setMaxDate(date: string): void {
+    // to get an 'excluded' range, we need to invert the interval
+    this.maxRange = {
+      minDate: date ? this.getDayModelFromDateString(date).incrementBy(1) : END_OF_TIME_DAY_MODEL,
+      maxDate: END_OF_TIME_DAY_MODEL,
+    };
+  }
+
+  public setDisabledDates(ranges: DisabledDateArray): void {
+    if (ranges) {
+      this._excludedRanges = ranges
+        .map(range => {
+          let minDayModel: DayModel, maxDayModel: DayModel;
+          if (typeof range === 'string') {
+            const dayModel: DayModel = this.getDayModelFromDateString(range);
+            minDayModel = dayModel;
+            maxDayModel = dayModel;
+          } else {
+            minDayModel = this.getDayModelFromDateString(range[0]);
+            maxDayModel = this.getDayModelFromDateString(range[1]);
+          }
+
+          return {
+            minDate: minDayModel,
+            maxDate: maxDayModel,
+          };
+        })
+        .filter(range => range.minDate && range.maxDate);
     } else {
-      const [year, month, day] = date.split('-').map(n => parseInt(n, 10));
-      this.disabledDates.minDate = new DayModel(year, month - 1, day);
+      this._excludedRanges = [];
     }
   }
 
-  public setMaxDate(date: string): void {
-    // NOTE: I'm expecting consumers to pass one of four things here:
-    //       A proper date string(2019-11-11), null, undefined or empty string ('')
-    if (!date) {
-      // attribute binding was removed, reset forward to the end of time
-      this.disabledDates.maxDate = new DayModel(9999, 11, 31);
-    } else {
-      const [year, month, day] = date.split('-').map(n => parseInt(n, 10));
-      this.disabledDates.maxDate = new DayModel(year, month - 1, day);
+  get excludedRanges(): DateRange[] {
+    const ranges = [];
+    if (this.minRange) {
+      ranges.push(this.minRange);
     }
+    if (this.maxRange) {
+      ranges.push(this.maxRange);
+    }
+    ranges.push(...this._excludedRanges);
+    return ranges;
   }
 
   private initializeLocaleDisplayFormat(): void {
@@ -185,5 +220,19 @@ export class DateIOService {
       // secondPart is month && thirdPart is date
       return this.validateAndGetDate(firstPart, secondPart, thirdPart);
     }
+  }
+
+  private getDayModelFromDateString(dateString: string): DayModel {
+    if (!dateString) {
+      return null;
+    }
+
+    const [year, month, day] = dateString.split('-');
+    const date = this.validateAndGetDate(year, month, day);
+
+    if (date) {
+      return new DayModel(date.getFullYear(), date.getMonth(), date.getDate());
+    }
+    return null;
   }
 }

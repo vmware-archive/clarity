@@ -14,6 +14,7 @@ import { assertEqualDates } from '../utils/test-utils';
 import { DateIOService } from './date-io.service';
 import { LocaleHelperService } from './locale-helper.service';
 import { DayModel } from '../model/day.model';
+import { END_OF_TIME_DAY_MODEL, START_OF_TIME_DAY_MODEL } from '../utils/constants';
 
 registerLocaleData(localeAk);
 registerLocaleData(localeHr);
@@ -198,50 +199,54 @@ export default function () {
 
       it('handles adding minDate inputs', () => {
         const testDateModel = new DayModel(2019, 10, 11);
-        const thereIsNoDateModel = new DayModel(0, 0, 1);
+        const upperBoundDateModel = testDateModel.incrementBy(-1);
+        const thereIsNoDateModel = START_OF_TIME_DAY_MODEL;
         let minInput = '2019-11-11';
         dateIOService.setMinDate(minInput);
-        expect(testDateModel).toEqual(dateIOService.disabledDates.minDate);
+        expect(upperBoundDateModel).toEqual(dateIOService.minRange.maxDate);
 
         // handles undefined
         minInput = undefined;
         dateIOService.setMinDate(minInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.minRange.maxDate);
 
         // handles null
         minInput = null;
         dateIOService.setMinDate(minInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.minRange.maxDate);
 
         // handles empty string
         minInput = '';
         dateIOService.setMinDate(minInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.minDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.minRange.maxDate);
       });
 
       it('handles adding maxDate inputs', () => {
         const testDateModel = new DayModel(2019, 10, 11);
-        const thereIsNoDateModel = new DayModel(9999, 11, 31);
+        const thereIsNoDateModel = END_OF_TIME_DAY_MODEL;
+        const lowerBoundDateModel = testDateModel.incrementBy(1);
 
         let maxInput = '2019-11-11';
         dateIOService.setMaxDate(maxInput);
-        expect(testDateModel).toEqual(dateIOService.disabledDates.maxDate);
+        expect(lowerBoundDateModel).toEqual(dateIOService.maxRange.minDate);
 
         // handles undefined
         maxInput = undefined;
         dateIOService.setMaxDate(maxInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.maxRange.minDate);
 
         // handles null
         maxInput = null;
         dateIOService.setMaxDate(maxInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.maxRange.minDate);
 
         // handles empty string
         maxInput = '';
         dateIOService.setMaxDate(maxInput);
-        expect(thereIsNoDateModel).toEqual(dateIOService.disabledDates.maxDate);
+        expect(thereIsNoDateModel).toEqual(dateIOService.maxRange.minDate);
       });
     });
   });
 }
+
+// TODO[martinbrom]: Create tests for disabled ranges

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,7 @@ import { DayModel } from '../model/day.model';
 @Injectable()
 export class DateNavigationService {
   private _displayedCalendar: CalendarModel;
+  private _monthChange: Subject<number> = new Subject<number>();
 
   get displayedCalendar(): CalendarModel {
     return this._displayedCalendar;
@@ -29,6 +30,10 @@ export class DateNavigationService {
     if (!this._displayedCalendar.isEqual(value)) {
       this._displayedCalendar = value;
       this._displayedCalendarChange.next();
+    }
+
+    if (this._displayedCalendar.month !== value.month) {
+      this._monthChange.next(value.month);
     }
   }
 
@@ -150,5 +155,13 @@ export class DateNavigationService {
    */
   get focusedDayChange(): Observable<DayModel> {
     return this._focusedDayChange.asObservable();
+  }
+
+  /**
+   * This observable lets the subscriber know that the displayed month has changed
+   * and what is the new value.
+   */
+  get monthChange(): Observable<number> {
+    return this._monthChange.asObservable();
   }
 }

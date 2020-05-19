@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { DayModel } from '../model/day.model';
+
 /**
  * This is the en-001 short locale date format. Setting as default.
  */
@@ -52,3 +54,6 @@ export const BIG_ENDIAN: InputDateDisplayFormat = {
 export const NO_OF_DAYS_IN_A_WEEK = 7;
 export const NO_OF_ROWS_IN_CALENDAR_VIEW = 6;
 export const TOTAL_DAYS_IN_DAYS_VIEW: number = NO_OF_DAYS_IN_A_WEEK * NO_OF_ROWS_IN_CALENDAR_VIEW;
+
+export const START_OF_TIME_DAY_MODEL = new DayModel(0, 0, 1);
+export const END_OF_TIME_DAY_MODEL = new DayModel(9999, 11, 31);

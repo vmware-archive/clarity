@@ -96,7 +96,7 @@ export class ClrCalendar implements OnDestroy {
       this.focusedDay,
       this.today,
       this._localeHelperService.firstDayOfWeek,
-      this._dateIOService.disabledDates
+      this._dateIOService.excludedRanges
     );
   }
 

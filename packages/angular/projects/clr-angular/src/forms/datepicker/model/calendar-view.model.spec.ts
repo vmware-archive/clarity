@@ -9,16 +9,17 @@ import { CalendarModel } from './calendar.model';
 import { DayViewModel } from './day-view.model';
 import { DayModel } from './day.model';
 import { DateRange } from '../interfaces/date-range.interface';
+import { START_OF_TIME_DAY_MODEL, END_OF_TIME_DAY_MODEL } from '../utils/constants';
 
 export default function (): void {
   describe('CalendarViewModel', function () {
     const calJan2018: CalendarModel = new CalendarModel(2018, 0);
     const todaysDateInCal: DayModel = new DayModel(2018, 0, 1);
     const todaysDateNotInCal: DayModel = new DayModel(2018, 3, 25);
-    const dateRange: DateRange = {
-      minDate: new DayModel(2000, 1, 15),
-      maxDate: new DayModel(2020, 1, 15),
-    };
+    const excludedRanges: DateRange[] = [
+      { minDate: START_OF_TIME_DAY_MODEL, maxDate: new DayModel(2000, 1, 14) },
+      { minDate: new DayModel(2020, 1, 16), maxDate: END_OF_TIME_DAY_MODEL },
+    ];
 
     function testCalendarViewDates(
       prev: number[],
@@ -96,7 +97,7 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
       const calView: DayViewModel[][] = calViewModel.calendarView;
 
@@ -127,7 +128,14 @@ export default function (): void {
     function testCalendarDisabledDayViews(year: number, month: number) {
       // Uses the given year/month to create a new CalendarModel
       // Note that dateRange is defined above for use in multiple places
-      const calendar = new CalendarViewModel(new CalendarModel(year, month), null, null, todaysDateInCal, 0, dateRange);
+      const calendar = new CalendarViewModel(
+        new CalendarModel(year, month),
+        null,
+        null,
+        todaysDateInCal,
+        0,
+        excludedRanges
+      );
       // calView is an array of 'week' arrays that represents the six possible lines (including days for end of previous / beginning of next month)
       // for the days of the month.
       const calView: DayViewModel[][] = calendar.calendarView;
@@ -135,9 +143,9 @@ export default function (): void {
         // iterate all the week arrays
         for (const day of view) {
           // iterate all of the days
-          if (day.dayModel.toComparisonString() < dateRange.minDate.toComparisonString()) {
+          if (day.dayModel.toComparisonString() <= excludedRanges[0].maxDate.toComparisonString()) {
             expect(day.isDisabled).toBe(true, `Expected ${day.dayModel.toDateString()} to be disabled`); // if the date is less than the minDate should be  disabled
-          } else if (day.dayModel.toComparisonString() > dateRange.maxDate.toComparisonString()) {
+          } else if (day.dayModel.toComparisonString() >= excludedRanges[1].minDate.toComparisonString()) {
             expect(day.isDisabled).toBe(true, `Expected ${day.dayModel.toDateString()} to be disabled`); // if the date is above the max date it should be disabled
           } else {
             expect(day.isDisabled).toBe(false, `Expected ${day.dayModel.toDateString()} to be enabled`); // otherwise, the date should not be disabled
@@ -153,7 +161,7 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       expect(testJan2018).not.toBeNull();
@@ -183,7 +191,7 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       const calView: DayViewModel[][] = testJan2018.calendarView;
@@ -221,7 +229,7 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
       const prevUS: number[] = [31];
       const currUS: number[] = Array(31)
@@ -232,7 +240,7 @@ export default function (): void {
         .map((_e, i) => i + 1);
       testCalendarViewDates(prevUS, currUS, nextUS, testJan2018US);
 
-      const testJan2018Fr = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 1, dateRange);
+      const testJan2018Fr = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 1, excludedRanges);
       const prevFr: number[] = [];
       const currFr: number[] = Array(31)
         .fill(0)
@@ -242,7 +250,7 @@ export default function (): void {
         .map((_e, i) => i + 1);
       testCalendarViewDates(prevFr, currFr, nextFr, testJan2018Fr);
 
-      const testJan2018Random = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 5, dateRange);
+      const testJan2018Random = new CalendarViewModel(calJan2018, null, null, todaysDateInCal, 5, excludedRanges);
       const prevRandom: number[] = [29, 30, 31];
       const currRandom: number[] = Array(31)
         .fill(0)
@@ -261,14 +269,14 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       // Only 1/5/2018 should be true
       testCalendarViewSelectedDates(testJan2018US, 0, 5, false);
 
       dayModel = new DayModel(2017, 0, 5);
-      testJan2018US = new CalendarViewModel(calJan2018, dayModel, null, todaysDateInCal, 0, dateRange);
+      testJan2018US = new CalendarViewModel(calJan2018, dayModel, null, todaysDateInCal, 0, excludedRanges);
 
       // Everything should be false
       testCalendarViewSelectedDates(testJan2018US, 0, 5, true);
@@ -283,7 +291,7 @@ export default function (): void {
           null,
           todaysDateInCal,
           0,
-          dateRange
+          excludedRanges
         );
 
         // Only 1/1/2018 should be true
@@ -301,7 +309,7 @@ export default function (): void {
           null,
           todaysDateNotInCal,
           0,
-          dateRange
+          excludedRanges
         );
 
         // Only 1/15/2018 should be true
@@ -317,7 +325,7 @@ export default function (): void {
         null,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       // Only 1/5/2018 should be true
@@ -332,7 +340,7 @@ export default function (): void {
         dayModel,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       // Only 1/5/2018 should be true
@@ -347,7 +355,7 @@ export default function (): void {
         dayModel,
         todaysDateInCal,
         0,
-        dateRange
+        excludedRanges
       );
 
       // Only 1/15/2018 should be true

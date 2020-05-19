@@ -19,7 +19,7 @@ export class CalendarViewModel {
     private focusableDay: DayModel,
     private today: DayModel,
     public firstDayOfWeek: number,
-    private excludedDates: DateRange
+    private excludedRanges: DateRange[]
   ) {
     this.initializeCalendarView();
   }
@@ -83,12 +83,16 @@ export class CalendarViewModel {
   }
 
   private isDateExcluded(date: DayModel) {
-    const { minDate, maxDate }: DateRange = this.excludedDates;
-    const from = minDate.toComparisonString();
-    const to = maxDate.toComparisonString();
     const today = date.toComparisonString();
+    this.excludedRanges.forEach(({ minDate, maxDate }) => {
+      const from = minDate.toComparisonString();
+      const to = maxDate.toComparisonString();
+      if (today >= from || today <= to) {
+        return true;
+      }
+    });
 
-    return !(today >= from && today <= to);
+    return false;
   }
 
   /**

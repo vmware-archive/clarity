@@ -39,6 +39,7 @@ import { DatepickerEnabledService } from './providers/datepicker-enabled.service
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { datesAreEqual } from './utils/date-utils';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
+import { DisabledDateArray } from './interfaces/disabled-date-array.interface';
 
 // There are four ways the datepicker value is set
 // 1. Value set by user typing into text input as a string ex: '01/28/2015'
@@ -56,6 +57,7 @@ import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribut
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
   @Input() placeholder: string;
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
+  @Output('clrMonthChange') monthChange: EventEmitter<number> = new EventEmitter<number>(false);
   @Input('clrDate')
   set date(date: Date) {
     if (this.previousDateChange !== date) {
@@ -75,6 +77,11 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
   @Input()
   set max(dateString: string) {
     this.dateIOService.setMaxDate(dateString);
+  }
+
+  @Input('clrDisabledDates')
+  set disabledDates(dates: DisabledDateArray) {
+    this.dateIOService.setDisabledDates(dates);
   }
 
   protected index = 1;
@@ -110,7 +117,8 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
       this.listenForControlValueChanges(),
       this.listenForTouchChanges(),
       this.listenForDirtyChanges(),
-      this.listenForInputRefocus()
+      this.listenForInputRefocus(),
+      this.listenForMonthChanges()
     );
   }
 
@@ -293,5 +301,9 @@ export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implement
     return this.dateNavigationService.selectedDayChange
       .pipe(filter(date => !!date))
       .subscribe(() => this.datepickerFocusService.focusInput(this.el.nativeElement));
+  }
+
+  private listenForMonthChanges() {
+    return this.dateNavigationService.monthChange.subscribe(value => this.monthChange.emit(value));
   }
 }

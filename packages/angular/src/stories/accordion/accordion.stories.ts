@@ -13,6 +13,7 @@ import { ClrAccordionModule, ClrConditionalModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const basicTemplate = require('!!raw-loader!./basic.html');
+const bindingTemplate = require('!!raw-loader!./basic.html');
 
 export default {
   title: 'Accordion',
@@ -60,7 +61,7 @@ export const Bindings = () => {
 
   return {
     title: 'Binding',
-    template: basicTemplate.default,
+    template: bindingTemplate.default,
     props: {
       clrAccordionMultiPanel: multiPanel,
       clrAccordionPanelDisabled: p1Disabled,

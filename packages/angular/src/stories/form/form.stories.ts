@@ -29,7 +29,6 @@ export default {
     withDesign,
     moduleMetadata({
       imports: [ClrFormsModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   ],
   parameters: {

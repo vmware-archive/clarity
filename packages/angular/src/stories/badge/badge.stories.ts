@@ -11,12 +11,7 @@ const basicTemplate = require('!!raw-loader!./basic.html');
 
 export default {
   title: 'Badge',
-  decorators: [
-    withDesign,
-    moduleMetadata({
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }),
-  ],
+  decorators: [withDesign],
   parameters: {
     design: [
       {

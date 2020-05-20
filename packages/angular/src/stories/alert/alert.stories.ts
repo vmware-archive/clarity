@@ -19,7 +19,6 @@ export default {
     withDesign,
     moduleMetadata({
       imports: [ClrAlertModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   ],
   parameters: {

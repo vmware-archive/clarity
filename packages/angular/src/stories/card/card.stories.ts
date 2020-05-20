@@ -19,7 +19,6 @@ export default {
     withDesign,
     moduleMetadata({
       imports: [],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   ],
   parameters: {

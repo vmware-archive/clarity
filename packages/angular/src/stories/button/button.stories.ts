@@ -18,7 +18,6 @@ export default {
     withDesign,
     moduleMetadata({
       imports: [ClrButtonModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   ],
   parameters: {

@@ -18,7 +18,6 @@ export default {
     withDesign,
     moduleMetadata({
       imports: [ClrDropdownModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }),
   ],
   parameters: {

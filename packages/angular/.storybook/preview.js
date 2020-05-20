@@ -5,21 +5,22 @@
  */
 
 import '@clr/icons';
-import { addParameters } from '@storybook/angular';
-import darkTheme from '!style-loader!css-loader!sass-loader!../projects/clr-angular/src/dark-theme.scss';
+import { addDecorator, addParameters } from '@storybook/angular';
+import { withCssResources } from '@storybook/addon-cssresources';
+import darkTheme from '../dist/clr-ui/clr-ui-dark.min.css';
 
+addDecorator(withCssResources);
 addParameters({
   cssresources: [
     {
-      id: 'darktheme',
+      id: 'Dark Theme',
       code: `
-        <style>body { background-color: #232323; }</style>
         <style>
           ${darkTheme}
         </style>
       `,
       picked: false,
-      hideCode: false,
+      hideCode: true,
     },
   ],
 });

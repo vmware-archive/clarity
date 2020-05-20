@@ -11,7 +11,7 @@ module.exports = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-actions',
-    '@storybook/addon-cssresources',
+    '@storybook/addon-cssresources/register',
     // '@storybook/addon-docs', // needs an integration w/ compodoc generated json file to work.
     '@storybook/addon-knobs',
     '@storybook/addon-links',

@@ -16,9 +16,13 @@ import {
   registerElementSafely,
   UniqueId,
 } from '@clr/core/internal';
+import '@clr/core/icon';
+import { ClarityIcons, timesIcon } from '@clr/core/icon-shapes';
 import { html } from 'lit-element';
 import { CdsBaseFocusTrap } from '../internal/base/focus-trap.base.js';
 import { styles } from './modal.element.css.js';
+
+ClarityIcons.addIcons(timesIcon);
 
 class ModalMixinClass extends CdsBaseFocusTrap {}
 
@@ -85,7 +89,7 @@ export class CdsModal extends ModalMixinClass {
                       action="outline"
                       icon
                     >
-                      <cds-icon shape="close"></cds-icon>
+                      <cds-icon shape="times"></cds-icon>
                     </button>
                   `
                 : html``}

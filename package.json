@@ -1,6 +1,6 @@
 {
   "name": "@clr/clarity",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "private": true,
   "scripts": {
     "ng": "ng",

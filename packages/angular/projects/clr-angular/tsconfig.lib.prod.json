@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.lib.json",
   "angularCompilerOptions": {
-    "enableIvy": false
+    "enableIvy": false,
+    "importHelpers": true,
+    "inlineSources": true,
+    "inlineSourceMap": true
   }
 }

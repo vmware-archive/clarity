@@ -4,10 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { moduleMetadata } from '@storybook/angular';
+import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html');
 
 export default {
-  title: 'Badge',
+  title: 'Model',
+  decorators: [
+    moduleMetadata({
+      imports: [ClarityModule],
+    }),
+  ],
 };
 
 export const Basic = () => {

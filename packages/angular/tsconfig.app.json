@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "importHelpers": true,
+    "inlineSources": true,
+    "inlineSourceMap": true,
     "outDir": "./out-tsc/app",
     "types": []
   },

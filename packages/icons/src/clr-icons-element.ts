@@ -5,7 +5,6 @@
  */
 import { ClarityIconsApi } from './clr-icons-api';
 import { ShapeTemplateObserver } from './utils/shape-template-observer';
-import { ClrTransform } from '../../angular/projects/clr-angular/src/utils/popover/position-operators';
 
 /* CLR-ICON CUSTOM ELEMENT */
 

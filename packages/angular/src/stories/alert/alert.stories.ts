@@ -4,35 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrAlertModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { boolean, select } from '@storybook/addon-knobs';
-import { withDesign } from 'storybook-addon-designs';
 
 const basicTemplate = require('!!raw-loader!./basic.html');
 
 export default {
   title: 'Alert',
   decorators: [
-    withDesign,
     moduleMetadata({
-      imports: [ClrAlertModule],
+      imports: [ClarityModule],
     }),
   ],
-  parameters: {
-    design: [
-      {
-        name: 'Figma Light',
-        type: 'figma',
-        url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=1007%3A0',
-      },
-      {
-        name: 'Figma Dark',
-        type: 'figma',
-        url: '',
-      },
-    ],
-  },
 };
 
 export const Basic = () => {

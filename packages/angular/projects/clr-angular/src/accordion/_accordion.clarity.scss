@@ -15,10 +15,6 @@
     display: block;
   }
 
-  .test {
-    color: red;
-  }
-
   .clr-accordion-header {
     $box-shadow-default: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color;
     @include css-var(color, clr-accordion-text-color, $clr-accordion-text-color, $clr-use-custom-properties);

@@ -6,9 +6,8 @@
 
 import { action } from '@storybook/addon-actions';
 import { moduleMetadata } from '@storybook/angular';
-import { withDesign } from 'storybook-addon-designs';
 import { boolean } from '@storybook/addon-knobs';
-import { ClrDatagridModule, ClrDropdownModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EmployeeGenerator } from './data/employees';
@@ -18,25 +17,10 @@ const basicTemplate = require('!!raw-loader!./basic.html');
 export default {
   title: 'Datagrid',
   decorators: [
-    withDesign,
     moduleMetadata({
-      imports: [BrowserAnimationsModule, ClrDatagridModule, ClrDropdownModule],
+      imports: [BrowserAnimationsModule, ClarityModule],
     }),
   ],
-  parameters: {
-    design: [
-      {
-        name: 'Figma Light',
-        type: 'figma',
-        url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=0%3A666',
-      },
-      {
-        name: 'Figma Dark',
-        type: 'figma',
-        url: 'https://www.figma.com/file/wRYSrWSffZXcdQuiolwkym/Clarity-UI-Library---dark-2.2.0?node-id=68%3A2',
-      },
-    ],
-  },
   props: {},
 };
 

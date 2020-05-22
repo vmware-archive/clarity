@@ -5,11 +5,9 @@
  */
 
 import { action } from '@storybook/addon-actions';
-
 import { moduleMetadata } from '@storybook/angular';
-import { withDesign } from 'storybook-addon-designs';
 import { boolean } from '@storybook/addon-knobs';
-import { ClrAccordionModule, ClrConditionalModule } from '@clr/angular';
+import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const basicTemplate = require('!!raw-loader!./basic.html');
@@ -18,25 +16,10 @@ const bindingTemplate = require('!!raw-loader!./basic.html');
 export default {
   title: 'Accordion',
   decorators: [
-    withDesign,
     moduleMetadata({
-      imports: [BrowserAnimationsModule, ClrAccordionModule, ClrConditionalModule],
+      imports: [BrowserAnimationsModule, ClarityModule],
     }),
   ],
-  parameters: {
-    design: [
-      {
-        name: 'Figma Light',
-        type: 'figma',
-        url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=1007%3A0',
-      },
-      {
-        name: 'Figma Dark',
-        type: 'figma',
-        url: 'https://www.figma.com/file/wRYSrWSffZXcdQuiolwkym/Clarity-UI-Library---dark-2.2.0?node-id=379%3A1',
-      },
-    ],
-  },
   props: {
     clrAccordionMultiPanel: false,
   },

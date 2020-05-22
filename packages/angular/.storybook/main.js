@@ -9,13 +9,10 @@ const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 module.exports = {
   stories: ['../src/**/*.stories.ts'],
   addons: [
-    '@storybook/addon-a11y',
     '@storybook/addon-actions',
     '@storybook/addon-cssresources/register',
-    // '@storybook/addon-docs', // needs an integration w/ compodoc generated json file to work.
     '@storybook/addon-knobs',
     '@storybook/addon-links',
-    'storybook-addon-designs/register',
   ],
   webpackFinal: async config => {
     config.module.rules.push({

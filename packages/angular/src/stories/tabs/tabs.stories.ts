@@ -5,32 +5,16 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
-import { withDesign } from 'storybook-addon-designs';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html');
 
 export default {
   title: 'Tabs',
   decorators: [
-    withDesign,
     moduleMetadata({
-      imports: [],
+      imports: [ClarityModule],
     }),
   ],
-  parameters: {
-    design: [
-      {
-        name: 'Figma Light',
-        type: 'figma',
-        url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=51%3A664',
-      },
-      {
-        name: 'Figma Dark',
-        type: 'figma',
-        url: 'https://www.figma.com/file/wRYSrWSffZXcdQuiolwkym/Clarity-UI-Library---dark-2.2.0?node-id=16%3A6',
-      },
-    ],
-  },
 };
 
 export const Basic = () => {

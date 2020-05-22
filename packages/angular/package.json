@@ -38,14 +38,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.0-rc.0",
-    "@angular/common": "~10.0.0-rc.0",
-    "@angular/compiler": "~10.0.0-rc.0",
-    "@angular/core": "~10.0.0-rc.0",
-    "@angular/forms": "~10.0.0-rc.0",
-    "@angular/platform-browser": "~10.0.0-rc.0",
-    "@angular/platform-browser-dynamic": "~10.0.0-rc.0",
-    "@angular/router": "~10.0.0-rc.0",
+    "@angular/animations": "~10.0.0-next.6",
+    "@angular/common": "~10.0.0-next.6",
+    "@angular/compiler": "~10.0.0-next.6",
+    "@angular/core": "~10.0.0-next.6",
+    "@angular/forms": "~10.0.0-next.6",
+    "@angular/platform-browser": "~10.0.0-next.6",
+    "@angular/platform-browser-dynamic": "~10.0.0-next.6",
+    "@angular/router": "~10.0.0-next.6",
     "@ng-select/ng-select": "^4.0.0",
     "css-vars-ponyfill": "^2.3.1",
     "eslint-plugin-clarity": "../../scripts/eslint-plugin-clarity",
@@ -54,11 +54,11 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.0-rc.0",
-    "@angular-devkit/build-ng-packagr": "~0.1000.0-rc.0",
-    "@angular/cli": "~10.0.0-rc.0",
-    "@angular/compiler-cli": "~10.0.0-rc.0",
-    "@angular/language-service": "~10.0.0-rc.0",
+    "@angular-devkit/build-angular": "~0.1000.0-next.4",
+    "@angular-devkit/build-ng-packagr": "~0.1000.0-next.4",
+    "@angular/cli": "~10.0.0-next.4",
+    "@angular/compiler-cli": "~10.0.0-next.6",
+    "@angular/language-service": "~10.0.0-next.6",
     "@babel/core": "^7.9.6",
     "@storybook/addon-actions": "^6.0.0-beta.13",
     "@storybook/addon-cssresources": "6.0.0-beta.13",
@@ -106,7 +106,7 @@
     "ts-api-guardian": "0.5.0",
     "ts-node": "~8.3.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "typescript": "~3.9.2"
+    "typescript": "~3.9.3"
   },
   "browserslist": [
     "> 0.5%",

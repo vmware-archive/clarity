@@ -9,7 +9,7 @@ import { ClarityModule } from '@clr/angular';
 
 const basicTemplate = require('!!raw-loader!./basic.html');
 const fullTemplate = require('!!raw-loader!./full.html');
-const checkboxTemplate = require('!!raw-loader!./checklist.html');
+const checkboxTemplate = require('!!raw-loader!./checkbox.html');
 const datalistTemplate = require('!!raw-loader!./datalist.html');
 const inputTemplate = require('!!raw-loader!./input.html');
 const labelTemplate = require('!!raw-loader!./label.html');

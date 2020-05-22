@@ -24,8 +24,7 @@ if (typeof window !== 'undefined') {
   }
 
   // Defining clr-icon custom element
-  const clarityIconElementFn: unknown = ClarityIconElement;
-  customElements.define('clr-icon', clarityIconElementFn as CustomElementConstructor);
+  customElements.define('clr-icon', ClarityIconElement);
 }
 
 export { clarityIcons as ClarityIcons };

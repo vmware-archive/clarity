@@ -3,53 +3,71 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnDestroy, Optional } from '@angular/core';
-import { Subscription } from 'rxjs';
-
-import { POPOVER_HOST_ANCHOR } from '../../popover/common/popover-host-anchor.token';
-import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { Component, ElementRef, HostBinding, HostListener, Inject, Input, OnInit } from '@angular/core';
 
 import { OptionSelectionService } from './providers/option-selection.service';
-
+import { ComboboxFocusHandler, OptionData as OptionProxy } from './providers/combobox-focus-handler.service';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 @Component({
   selector: 'clr-option',
-  templateUrl: './option.html',
-  host: { '[class.clr-option]': 'true' },
+  template: `<ng-content></ng-content>
+    <span *ngIf="selected" class="clr-sr-only"> {{ commonStrings.keys.comboboxSelected }} </span> `,
+  providers: [UNIQUE_ID_PROVIDER],
+  host: {
+    '[class.clr-combobox-option]': 'true',
+    '[attr.role]': '"option"',
+    // Do not remove. Or click-selection will not work.
+    '[attr.tabindex]': '-1',
+    '[attr.id]': 'optionId',
+  },
 })
-export class ClrOption<T> implements OnDestroy {
-  private subscription: Subscription;
+export class ClrOption<T> implements OnInit {
+  // A proxy with only the necessary data to be used for a11y and the focus handler service.
+  public optionProxy: OptionProxy<T> = new OptionProxy(null, null);
 
-  @HostBinding('class.active') selected = false;
-
-  @Input('clrValue') value: T;
-
-  constructor(
-    private toggleService: ClrPopoverToggleService,
-    @Optional()
-    @Inject(POPOVER_HOST_ANCHOR)
-    parentHost: ElementRef,
-    public elRef: ElementRef,
-    private optionSelectionService: OptionSelectionService<T>
-  ) {
-    if (!parentHost) {
-      throw new Error('clr-option should only be used inside of a clr-combobox');
-    }
-    this.initializeSubscription();
+  private _id: string;
+  @Input('id')
+  set optionId(id: string) {
+    this._id = id;
+    this.optionProxy.id = this._id;
+  }
+  get optionId() {
+    return this._id;
   }
 
-  private initializeSubscription(): void {
-    this.subscription = this.optionSelectionService.valueChanged.subscribe((value: T) => {
-      // Check for null and undefined needed because if the user doesnt assign a value to the option,
-      // all options should not be selected as the value would be null or undefined
-      if (value === null || value === undefined) {
-        this.selected = false;
-      } else if (this.value === value) {
-        // TODO: Render option when current selection is set by the user
-        this.selected = true;
-      } else {
-        this.selected = false;
-      }
-    });
+  private _value: T;
+  @Input('clrValue')
+  set value(value: T) {
+    this._value = value;
+    this.optionProxy.value = value;
+  }
+  get value(): T {
+    return this._value;
+  }
+
+  @HostBinding('class.active')
+  get selected() {
+    return (
+      this.optionSelectionService.selectionModel && this.optionSelectionService.selectionModel.containsItem(this.value)
+    );
+  }
+
+  constructor(
+    public elRef: ElementRef,
+    public commonStrings: ClrCommonStringsService,
+    private focusHandler: ComboboxFocusHandler<T>,
+    private optionSelectionService: OptionSelectionService<T>,
+    @Inject(UNIQUE_ID) private autoId: string
+  ) {
+    this.optionProxy.el = this.elRef.nativeElement;
+  }
+
+  ngOnInit() {
+    if (!this._id) {
+      this._id = 'clr-option-' + this.autoId;
+      this.optionProxy.id = this._id;
+    }
   }
 
   /**
@@ -57,17 +75,15 @@ export class ClrOption<T> implements OnDestroy {
    * We will handle that later.
    */
   @HostListener('click')
-  updateSelectionAndCloseMenu() {
+  onClick() {
     // We call render here without checking the value because even if the user hasn't
-    // assigned a value to the option, we should atleast display the selection on the input.
+    // assigned a value to the option, we should at least display the selection on the input.
     // This is what the native select does.
-    this.optionSelectionService.renderSelection(this);
-    this.optionSelectionService.updateSelection(this.value);
-    this.toggleService.open = false;
+    this.optionSelectionService.select(this.value);
   }
 
-  // Lifecycle Methods
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  @HostBinding('class.clr-focus')
+  get focusClass() {
+    return this.focusHandler.pseudoFocus.containsItem(this.optionProxy);
   }
 }

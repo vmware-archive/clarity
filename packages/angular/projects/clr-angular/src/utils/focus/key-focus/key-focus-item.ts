@@ -4,15 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, ElementRef, Inject, PLATFORM_ID, HostBinding } from '@angular/core';
+import { Directive, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[clrKeyFocusItem]',
 })
 export class ClrKeyFocusItem {
-  @HostBinding('attr.tabindex') tabIndex: number;
-
   get nativeElement() {
     return this.elementRef.nativeElement;
   }

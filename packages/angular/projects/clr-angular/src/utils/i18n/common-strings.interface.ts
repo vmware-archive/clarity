@@ -21,6 +21,10 @@ export interface ClrCommonStrings {
    */
   hide: string;
   /**
+   * Delete button
+   */
+  delete?: string;
+  /**
    * Expandable components: expand caret
    */
   expand: string;
@@ -40,6 +44,10 @@ export interface ClrCommonStrings {
    * Selectable components: checkbox to select all
    */
   selectAll: string;
+  /**
+   * Selected item(s): combobox
+   */
+  selection?: string;
   /**
    * Pagination: previous button
    */
@@ -219,4 +227,14 @@ export interface ClrCommonStrings {
   dategridExpandableEndOf?: string;
   dategridExpandableRowContent?: string;
   dategridExpandableRowsHelperText?: string;
+
+  /**
+   * Combobox Searching Text
+   */
+  comboboxSearching: string;
+  comboboxDelete: string;
+  comboboxSelection: string;
+  comboboxSelected: string;
+  comboboxNoResults: string;
+  comboboxOpen: string;
 }

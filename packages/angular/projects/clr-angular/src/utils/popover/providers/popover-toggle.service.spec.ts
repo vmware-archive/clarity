@@ -46,6 +46,18 @@ export default function (): void {
         expect(eventObservable).toBeDefined();
         expect(eventObservable instanceof Observable).toBe(true);
       });
+      it('exposes an observable for the alignment events', function (this: TestContext) {
+        const alignedObservable: Observable<HTMLElement> = this.toggleService.popoverAligned;
+        expect(alignedObservable).toBeDefined();
+        expect(alignedObservable instanceof Observable).toBe(true);
+        let aligned = false;
+        const subscription = alignedObservable.subscribe(() => {
+          aligned = true;
+        });
+        this.toggleService.popoverAlignedEmit(null);
+        expect(aligned).toBeTrue();
+        subscription.unsubscribe();
+      });
       it('updates and notifies when the openEvent changes', function (this: TestContext) {
         const clickEvent: Event = new MouseEvent('click');
         let testEvent: Event;

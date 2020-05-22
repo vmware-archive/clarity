@@ -9,8 +9,7 @@ import { Component } from '@angular/core';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 
 import { ClrCombobox } from './combobox';
-import { ClrOptions } from './options';
-import { ClrOption } from './option';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 
 @Component({
   template: `
@@ -24,15 +23,24 @@ import { ClrOption } from './option';
 class TestSelectWithMenu {}
 
 export default function (): void {
-  describe('Select with Menu', () => {
+  describe('Select with Menu', function () {
     let context: TestContext<ClrCombobox<string>, TestSelectWithMenu>;
+    let toggleService: ClrPopoverToggleService;
 
     beforeEach(function () {
-      context = this.create(ClrCombobox, TestSelectWithMenu, [], [ClrCombobox, ClrOptions, ClrOption]);
+      context = this.create(ClrCombobox, TestSelectWithMenu, [], []);
+      toggleService = context.getClarityProvider(ClrPopoverToggleService);
+      toggleService.open = true;
+      context.detectChanges();
     });
 
-    it('renders the menu projected by the consumer', () => {
-      const menus = context.clarityElement.querySelectorAll('clr-options');
+    afterEach(function () {
+      toggleService.open = false;
+      context.detectChanges();
+    });
+
+    it('renders the menu projected by the consumer', function () {
+      const menus = document.body.querySelectorAll('clr-options');
       expect(menus.length).toBe(1);
       expect(menus[0].classList.contains('test')).toBe(true);
     });

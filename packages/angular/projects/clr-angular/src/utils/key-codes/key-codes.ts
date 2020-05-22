@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,5 +10,7 @@ export const RIGHT_ARROW = 39;
 export const LEFT_ARROW = 37;
 export const ENTER = 13;
 export const SPACE = 32;
+export const SHIFT = 16;
 export const TAB = 9;
 export const ESC = 27;
+export const BACKSPACE = 8;

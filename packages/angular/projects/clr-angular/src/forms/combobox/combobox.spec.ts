@@ -3,152 +3,167 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component } from '@angular/core';
 
-import { TestContext } from '../../data/datagrid/helpers.spec';
-import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { TAB, UP_ARROW } from '../../utils/key-codes/key-codes';
-import { createKeyboardEvent } from '../datepicker/utils/test-utils';
-
 import { ClrCombobox } from './combobox';
-import { ClrOption } from './option';
-import { ClrOptions } from './options';
+import { OptionSelectionService } from './providers/option-selection.service';
+import { SingleSelectComboboxModel } from './model/single-select-combobox.model';
+import { MultiSelectComboboxModel } from './model/multi-select-combobox.model';
+import { ClrPopoverContent } from '../../utils/popover/popover-content';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { ClrIconModule } from '../../icon/icon.module';
+import { ClrComboboxModule } from './combobox.module';
 
 @Component({
   template: `
-    <clr-combobox>
-      <div class="menu">
-        Test
-      </div>
+    <clr-combobox
+      [(ngModel)]="selection"
+      [clrMulti]="multi"
+      (clrInputChange)="inputChanged($event)"
+      (clrOpenChange)="openChanged($event)"
+    >
+      <clr-options>
+        <clr-option [clrValue]="1">1</clr-option>
+        <clr-option [clrValue]="2">2</clr-option>
+        <clr-option [clrValue]="3">3</clr-option>
+      </clr-options>
     </clr-combobox>
   `,
 })
-class TestComponent {}
+class TestComponent {
+  multi: boolean;
+  selection: any;
+  inputValue: string;
+  openState: boolean;
+  inputChanged(value: string) {
+    this.inputValue = value;
+  }
+  openChanged(open: boolean) {
+    this.openState = open;
+  }
+}
 
 export default function (): void {
   describe('Combobox Component', function () {
-    let context: TestContext<ClrCombobox<string>, TestComponent>;
+    let clarityElement: HTMLElement;
     let toggleService: ClrPopoverToggleService;
+    let selectionService: OptionSelectionService<string>;
+    let fixture: ComponentFixture<TestComponent>;
+    let clarityDirective: ClrCombobox<string>;
+
+    beforeEach(function () {
+      TestBed.configureTestingModule({
+        imports: [ClrComboboxModule, ClrIconModule, FormsModule, NoopAnimationsModule],
+        declarations: [TestComponent, ClrPopoverContent],
+        providers: [OptionSelectionService],
+      });
+
+      fixture = TestBed.createComponent(TestComponent);
+      const comboboxDebugElement = fixture.debugElement.query(By.directive(ClrCombobox));
+      clarityDirective = comboboxDebugElement.componentInstance;
+      clarityElement = comboboxDebugElement.nativeElement;
+      selectionService = comboboxDebugElement.injector.get(OptionSelectionService) as OptionSelectionService<string>;
+      toggleService = comboboxDebugElement.injector.get(ClrPopoverToggleService);
+
+      fixture.detectChanges();
+    });
+
+    afterEach(function () {
+      toggleService.open = false;
+      fixture.detectChanges();
+    });
 
     describe('Typescript API', function () {
-      beforeEach(function () {
-        context = this.create(ClrCombobox, TestComponent, [], [ClrCombobox, ClrOptions, ClrOption]);
-        toggleService = context.getClarityProvider(ClrPopoverToggleService);
+      it('implements method that updates the model', () => {
+        clarityDirective.writeValue('test');
+        expect(selectionService.selectionModel.containsItem('test')).toBeTrue();
       });
 
-      it('provides a method to toggle the popover on click', () => {
-        expect(toggleService.open).toBeUndefined();
-
-        context.clarityDirective.toggleOptionsMenu(new MouseEvent('click'));
-
-        expect(open).not.toBe(true);
-
-        context.clarityDirective.toggleOptionsMenu(new MouseEvent('click'));
-
-        expect(open).not.toBe(false);
+      it('has method to unselect value after deletion', () => {
+        selectionService.select('test');
+        expect(selectionService.selectionModel.containsItem('test')).toBeTrue();
+        clarityDirective.unselect('test');
+        expect(selectionService.selectionModel.containsItem('test')).toBeFalse();
       });
 
-      it('provides a method to close the popover on tab key press', () => {
+      it('has open state read-only property', () => {
+        expect(clarityDirective.openState).toBeFalsy();
         toggleService.open = true;
-
-        context.clarityDirective.closeMenuOnTabPress(createKeyboardEvent(UP_ARROW, 'up-arrow'));
-
-        expect(toggleService.open).toBe(true);
-
-        context.clarityDirective.closeMenuOnTabPress(createKeyboardEvent(TAB, 'tab'));
-
-        expect(toggleService.open).toBe(false);
+        expect(clarityDirective.openState).toBeTrue();
       });
 
-      it('provides a method to focus on the input', () => {
-        let focused = context.clarityElement.querySelector(':focus');
+      it('has associated form control', () => {
+        expect(clarityDirective.control).toBeTruthy();
+      });
+    });
 
-        expect(focused).toBeNull();
+    describe('Template API', function () {
+      it('defaults to single model', () => {
+        expect(selectionService.selectionModel instanceof SingleSelectComboboxModel).toBeTrue();
+      });
 
-        context.clarityDirective.focusInput();
+      it('can change to multi model', () => {
+        fixture.componentInstance.multi = true;
+        fixture.detectChanges();
+        expect(selectionService.selectionModel instanceof MultiSelectComboboxModel).toBeTrue();
+      });
 
-        focused = context.clarityElement.querySelector(':focus');
+      it('notifies on input changes', () => {
+        expect(fixture.componentInstance.inputValue).toBeFalsy();
+        clarityDirective.searchText = 'test';
+        fixture.detectChanges();
+        expect(fixture.componentInstance.inputValue).toBe('test');
+      });
 
-        expect(focused.classList.contains('clr-combobox-input')).toBe(true);
+      it('notifies on open changes', () => {
+        expect(fixture.componentInstance.openState).toBeFalsy();
+        toggleService.open = true;
+        expect(fixture.componentInstance.openState).toBeTrue();
       });
     });
 
     describe('View Basics', () => {
-      beforeEach(function () {
-        context = this.create(ClrCombobox, TestComponent, [], [ClrCombobox, ClrOptions, ClrOption]);
-        toggleService = context.getClarityProvider(ClrPopoverToggleService);
-      });
-
-      it('projects content', () => {
-        expect(context.clarityElement.textContent).toMatch(/Test/);
-      });
-
-      it("creates the clr-options menu when the consumer hasn't provided it", () => {
-        const menus = context.clarityElement.querySelectorAll('clr-options');
-        expect(menus.length).toBe(1);
-        expect(menus[0].innerHTML).toMatch(/Test/);
-      });
-
       it('adds the .clr-combobox class on the host', () => {
-        expect(context.clarityElement.classList.contains('clr-combobox')).toBe(true);
+        expect(clarityElement.classList.contains('clr-combobox')).toBe(true);
+      });
+
+      it('has a generated id', () => {
+        expect(clarityElement.hasAttribute('id')).toBeTrue();
       });
 
       it('contains an editable input', () => {
-        const input = context.clarityElement.querySelector('.clr-combobox-input');
+        const input = clarityElement.querySelector('.clr-combobox-input');
         expect(input).not.toBeNull();
-        expect(input.hasAttribute('contenteditable')).toBe(true);
-        expect(input.getAttribute('contenteditable')).toBe('true');
       });
 
       it('contains a options menu trigger', () => {
-        expect(context.clarityElement.querySelector('.clr-combobox-trigger')).not.toBeNull();
+        expect(clarityElement.querySelector('.clr-combobox-trigger')).not.toBeNull();
       });
 
       it('opens the menu on the trigger click', () => {
-        const trigger = context.clarityElement.querySelector('.clr-combobox-trigger');
-
-        expect(toggleService.open).toBeUndefined();
-
-        trigger.click();
-
-        expect(toggleService.open).toBe(true);
-      });
-
-      it('keeps the options menu open when the input is clicked', () => {
-        toggleService.open = true;
-
-        const input = context.clarityElement.querySelector('.clr-combobox-input');
-        input.click();
-
-        expect(toggleService.open).toBe(true);
-      });
-
-      it('closes the menu when the select trigger is clicked', () => {
-        toggleService.open = true;
-
-        const trigger = context.testElement.querySelector('.clr-combobox-trigger');
-        trigger.click();
-
+        const trigger: HTMLElement = clarityElement.querySelector('.clr-combobox-trigger');
         expect(toggleService.open).toBe(false);
+        trigger.click();
+        expect(toggleService.open).toBe(true);
       });
 
-      it('calls the focusInput method when the host is clicked', () => {
-        spyOn(context.clarityDirective, 'focusInput');
-
-        const select = context.clarityElement;
-
-        select.click();
-
-        expect(context.clarityDirective.focusInput).toHaveBeenCalled();
+      it('has aria-owns attribute', () => {
+        const trigger: HTMLElement = clarityElement.querySelector('.clr-combobox-input');
+        expect(trigger.hasAttribute('aria-owns')).toBeTrue();
+        expect(trigger.getAttribute('aria-owns')).toContain('clr-options-');
       });
 
-      it('calls the closeMenuOnTabPress method when a tab keyboard event is dispatched on the input', () => {
-        spyOn(context.clarityDirective, 'closeMenuOnTabPress');
-
-        const input = context.clarityElement.querySelector('.clr-combobox-input');
-        input.dispatchEvent(createKeyboardEvent(TAB, 'keydown'));
-
-        expect(context.clarityDirective.closeMenuOnTabPress).toHaveBeenCalled();
+      it('has aria-expanded attribute', () => {
+        const trigger: HTMLElement = clarityElement.querySelector('.clr-combobox-input');
+        expect(trigger.hasAttribute('aria-expanded')).toBeTrue();
+        expect(trigger.getAttribute('aria-expanded')).toEqual('false');
+        toggleService.open = true;
+        fixture.detectChanges();
+        expect(trigger.getAttribute('aria-expanded')).toEqual('true');
       });
     });
   });

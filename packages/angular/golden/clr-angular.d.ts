@@ -282,6 +282,63 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
     ngOnInit(): void;
 }
 
+export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer> implements ControlValueAccessor, LoadingListener, AfterContentInit {
+    get ariaControls(): string;
+    get ariaDescribedBySelection(): string;
+    get ariaOwns(): string;
+    clrInputChange: EventEmitter<string>;
+    clrOpenChange: Observable<boolean>;
+    clrSelectionChange: Observable<ComboboxModel<T>>;
+    commonStrings: ClrCommonStringsService;
+    control: NgControl;
+    get displayField(): string;
+    protected el: ElementRef;
+    focusedPill: any;
+    get id(): string;
+    protected index: number;
+    invalid: boolean;
+    set multiSelect(value: boolean);
+    get multiSelect(): boolean;
+    get openState(): boolean;
+    optionSelected: ClrOptionSelected<T>;
+    optionSelectionService: OptionSelectionService<T>;
+    protected renderer: Renderer2;
+    set searchText(text: string);
+    get searchText(): string;
+    smartPosition: ClrPopoverPosition;
+    textbox: ElementRef;
+    trigger: ElementRef;
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, optionSelectionService: OptionSelectionService<T>, commonStrings: ClrCommonStringsService, toggleService: ClrPopoverToggleService, positionService: ClrPopoverPositionService, controlStateService: IfControlStateService, containerService: ComboboxContainerService, platformId: any, ariaService: AriaService, focusHandler: ComboboxFocusHandler<T>);
+    focusFirstActive(): void;
+    focusInput(): void;
+    getActiveDescendant(): string;
+    getSelectionAriaLabel(): string;
+    inputId(): string;
+    loadingStateChange(state: ClrLoadingState): void;
+    ngAfterContentInit(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    onBlur(): void;
+    onKeyUp(event: KeyboardEvent): void;
+    registerOnChange(onChange: any): void;
+    registerOnTouched(onTouched: any): void;
+    setDisabledState(): void;
+    unselect(item: T): void;
+    writeValue(value: T | T[]): void;
+}
+
+export declare class ClrComboboxContainer extends ClrAbstractContainer implements AfterContentInit, AfterViewInit {
+    controlContainer: ElementRef;
+    controlSuccessComponent: ClrControlSuccess;
+    label: ClrLabel;
+    constructor(ifControlStateService: IfControlStateService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, containerService: ComboboxContainerService, el: ElementRef);
+    ngAfterContentInit(): void;
+    ngAfterViewInit(): void;
+}
+
+export declare class ClrComboboxModule {
+}
+
 export declare class ClrCommonFormsModule {
 }
 
@@ -292,6 +349,12 @@ export interface ClrCommonStrings {
     collapse: string;
     columnSeparatorAriaLabel?: string;
     columnSeparatorDescription?: string;
+    comboboxDelete: string;
+    comboboxNoResults: string;
+    comboboxOpen: string;
+    comboboxSearching: string;
+    comboboxSelected: string;
+    comboboxSelection: string;
     current: string;
     currentPage: string;
     danger: string;
@@ -309,6 +372,7 @@ export interface ClrCommonStrings {
     datepickerSelectMonthText: string;
     datepickerSelectYearText: string;
     datepickerToggle: string;
+    delete?: string;
     detailExpandableAriaLabel: string;
     detailPaneEnd: string;
     detailPaneStart: string;
@@ -332,6 +396,7 @@ export interface ClrCommonStrings {
     rowActions: string;
     select: string;
     selectAll: string;
+    selection?: string;
     show: string;
     showColumns: string;
     showColumnsMenuDescription: string;
@@ -1191,6 +1256,59 @@ export declare class ClrNavLevel implements OnInit {
     open(): void;
 }
 
+export declare class ClrOption<T> implements OnInit {
+    commonStrings: ClrCommonStringsService;
+    elRef: ElementRef;
+    get focusClass(): boolean;
+    set optionId(id: string);
+    get optionId(): string;
+    optionProxy: OptionProxy<T>;
+    get selected(): boolean;
+    set value(value: T);
+    get value(): T;
+    constructor(elRef: ElementRef, commonStrings: ClrCommonStringsService, focusHandler: ComboboxFocusHandler<T>, optionSelectionService: OptionSelectionService<T>, autoId: string);
+    ngOnInit(): void;
+    onClick(): void;
+}
+
+export declare class ClrOptionItems<T> implements DoCheck, OnDestroy {
+    set field(field: string);
+    set rawItems(items: T[]);
+    template: TemplateRef<NgForOfContext<T>>;
+    set trackBy(value: TrackByFunction<T>);
+    constructor(template: TemplateRef<NgForOfContext<T>>, differs: IterableDiffers, optionService: OptionSelectionService<T>, positionService: ClrPopoverPositionService, vcr: ViewContainerRef);
+    ngDoCheck(): void;
+    ngOnDestroy(): void;
+}
+
+export declare class ClrOptions<T> implements AfterViewInit, LoadingListener, OnDestroy {
+    _items: QueryList<ClrOption<T>>;
+    commonStrings: ClrCommonStringsService;
+    get emptyOptions(): boolean;
+    id: number;
+    set items(items: QueryList<ClrOption<T>>);
+    get items(): QueryList<ClrOption<T>>;
+    loading: boolean;
+    optionSelectionService: OptionSelectionService<T>;
+    set optionsId(id: string);
+    get optionsId(): string;
+    constructor(optionSelectionService: OptionSelectionService<T>, id: number, ariaService: AriaService, el: ElementRef, commonStrings: ClrCommonStringsService, focusHandler: ComboboxFocusHandler<T>, toggleService: ClrPopoverToggleService, parentHost: ElementRef, document: any);
+    loadingStateChange(state: ClrLoadingState): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    searchText(input: string): string;
+}
+
+export declare class ClrOptionSelected<T> {
+    selected: T;
+    template: TemplateRef<{
+        $implicit: T;
+    }>;
+    constructor(template: TemplateRef<{
+        $implicit: T;
+    }>);
+}
+
 export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, focusService: FocusService, toggleService: BehaviorSubject<boolean>);
@@ -1277,7 +1395,9 @@ export declare class ClrPopoverToggleService {
     set openEvent(event: Event);
     get openEvent(): Event;
     get originalEvent(): Event;
+    get popoverAligned(): Observable<HTMLElement>;
     getEventChange(): Observable<Event>;
+    popoverAlignedEmit(popoverNode: HTMLElement): void;
     toggleWithEvent(event: any): void;
 }
 
@@ -2083,7 +2203,7 @@ export declare const TOGGLE_SERVICE_PROVIDER: {
 
 export declare function ToggleServiceFactory(): BehaviorSubject<boolean>;
 
-export declare class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
+export declare class WrappedFormControl<W extends DynamicWrapper> implements OnInit, AfterViewInit, OnDestroy {
     _id: string;
     protected controlIdService: ControlIdService;
     protected el: ElementRef<any>;
@@ -2097,6 +2217,7 @@ export declare class WrappedFormControl<W extends DynamicWrapper> implements OnI
     protected wrapperType: Type<W>;
     constructor(vcr: ViewContainerRef, wrapperType: Type<W>, injector: Injector, ngControl: NgControl, renderer: Renderer2, el: ElementRef);
     protected getProviderFromContainer<T>(token: Type<T> | InjectionToken<T>, notFoundValue?: T): T;
+    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     triggerValidation(): void;

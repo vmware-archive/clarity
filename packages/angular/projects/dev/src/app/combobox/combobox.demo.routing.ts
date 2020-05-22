@@ -6,20 +6,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BasicNgComboboxDemo } from './basic-ng-combobox';
-import { OptionalMenuDemo } from './optional-menu';
 import { ComboboxDemo } from './combobox.demo';
 
-const ROUTES: Routes = [
-  {
-    path: '',
-    component: ComboboxDemo,
-    children: [
-      { path: '', redirectTo: 'basic', pathMatch: 'full' },
-      { path: 'basic', component: BasicNgComboboxDemo },
-      { path: 'optional-menu', component: OptionalMenuDemo },
-    ],
-  },
-];
+const ROUTES: Routes = [{ path: '', component: ComboboxDemo }];
 
 export const ROUTING: ModuleWithProviders<RouterModule> = RouterModule.forChild(ROUTES);

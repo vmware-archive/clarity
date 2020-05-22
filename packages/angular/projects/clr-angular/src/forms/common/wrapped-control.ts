@@ -16,6 +16,7 @@ import {
   ElementRef,
   OnDestroy,
   Directive,
+  AfterViewInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { filter, distinctUntilChanged, startWith } from 'rxjs/operators';
@@ -31,7 +32,7 @@ import { MarkControlService } from './providers/mark-control.service';
 import { IfControlStateService, CONTROL_STATE } from './if-control-state/if-control-state.service';
 
 @Directive()
-export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
+export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, AfterViewInit, OnDestroy {
   protected ngControlService: NgControlService;
   private ifControlStateService: IfControlStateService;
   private controlClassService: ControlClassService;
@@ -125,7 +126,9 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
     if (this.ngControlService) {
       this.ngControlService.setControl(this.ngControl);
     }
+  }
 
+  ngAfterViewInit() {
     this.listenForErrorStateChanges();
   }
 
@@ -152,6 +155,10 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
   }
 
   private getAriaDescribedById(state: CONTROL_STATE): string {
+    if (!this.controlIdService) {
+      return '';
+    }
+
     let suffix;
 
     switch (state) {

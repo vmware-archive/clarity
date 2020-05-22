@@ -1,6 +1,6 @@
 {
   "name": "@clr/angular",
-  "version": "3.1.0",
+  "version": "3.1.3",
   "scripts": {
     "start": "ng build clr-angular-dev --watch",
     "serve": "ng serve dev",
@@ -26,14 +26,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.0-next.6",
-    "@angular/common": "~10.0.0-next.6",
-    "@angular/compiler": "~10.0.0-next.6",
-    "@angular/core": "~10.0.0-next.6",
-    "@angular/forms": "~10.0.0-next.6",
-    "@angular/platform-browser": "~10.0.0-next.6",
-    "@angular/platform-browser-dynamic": "~10.0.0-next.6",
-    "@angular/router": "~10.0.0-next.6",
+    "@angular/animations": "10.0.0-rc.0",
+    "@angular/common": "10.0.0-rc.0",
+    "@angular/compiler": "10.0.0-rc.0",
+    "@angular/core": "10.0.0-rc.0",
+    "@angular/forms": "10.0.0-rc.0",
+    "@angular/platform-browser": "10.0.0-rc.0",
+    "@angular/platform-browser-dynamic": "10.0.0-rc.0",
+    "@angular/router": "10.0.0-rc.0",
     "@ng-select/ng-select": "^4.0.0",
     "css-vars-ponyfill": "^2.3.1",
     "eslint-plugin-clarity": "../../scripts/eslint-plugin-clarity",
@@ -42,11 +42,11 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.0-next.4",
-    "@angular-devkit/build-ng-packagr": "~0.1000.0-next.4",
-    "@angular/cli": "~10.0.0-next.4",
-    "@angular/compiler-cli": "~10.0.0-next.6",
-    "@angular/language-service": "~10.0.0-next.6",
+    "@angular-devkit/build-angular": "0.1000.0-rc.0",
+    "@angular-devkit/build-ng-packagr": "0.1000.0-rc.0",
+    "@angular/cli": "10.0.0-rc.0",
+    "@angular/compiler-cli": "10.0.0-rc.0",
+    "@angular/language-service": "10.0.0-rc.0",
     "@types/jasmine": "3.4.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
@@ -78,6 +78,6 @@
     "stylelint": "13.3.3",
     "ts-api-guardian": "0.5.0",
     "ts-node": "~8.3.0",
-    "typescript": "~3.8.3"
+    "typescript": "3.9.3"
   }
 }

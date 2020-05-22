@@ -1,6 +1,6 @@
 {
   "name": "@clr/ui",
-  "version": "3.1.0",
+  "version": "3.1.3",
   "private": true,
   "scripts": {
     "build": "npm-run-all build:css build:prefix build:src build:optimize build:package",

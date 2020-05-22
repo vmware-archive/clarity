@@ -1,6 +1,6 @@
 {
   "name": "@clr/icons",
-  "version": "3.1.0",
+  "version": "3.1.3",
   "private": true,
   "scripts": {
     "build": "npm-run-all build:css build:optimize build:web build:package",

@@ -39,10 +39,3 @@ export function preventArrowKeyScroll(event: KeyboardEvent) {
     event.preventDefault();
   }
 }
-
-export function getKeyCodes(event: KeyboardEvent) {
-  // IE does not properly follow the spec for `event.key` so we need to return a different enum for the key events
-  // We use `event.key` for optimal browser support, to detect IE/Edge check if `event.code` is undefined
-  const isIEKeyboardEvent = event.code === undefined;
-  return isIEKeyboardEvent ? IEKeyCodes : KeyCodes;
-}

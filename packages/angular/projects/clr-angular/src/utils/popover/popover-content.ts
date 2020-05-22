@@ -158,5 +158,6 @@ export class ClrPopoverContent implements AfterContentChecked, OnDestroy {
     const positionCoords = this.smartPositionService.alignContent(this.view.rootNodes[0]);
     this.renderer.setStyle(this.view.rootNodes[0], 'top', `${positionCoords.yOffset}px`);
     this.renderer.setStyle(this.view.rootNodes[0], 'left', `${positionCoords.xOffset}px`);
+    this.smartOpenService.popoverAlignedEmit(this.view.rootNodes[0]);
   }
 }

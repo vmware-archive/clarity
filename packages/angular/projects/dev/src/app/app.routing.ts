@@ -27,7 +27,10 @@ export const APP_ROUTES: Routes = [
     loadChildren: () => import('./checkboxes/checkboxes.demo.module').then(m => m.CheckboxesDemoModule),
   },
   { path: 'color', loadChildren: () => import('./color/color.demo.module').then(m => m.ColorDemoModule) },
-  { path: 'combobox', component: LandingComponent },
+  {
+    path: 'combobox',
+    loadChildren: () => import('./combobox/combobox.demo.module').then(m => m.ComboboxDemoModule),
+  },
   {
     path: 'custom-props',
     loadChildren: () => import('./custom-props/custom-props.demo.module').then(m => m.CustomPropsDemoModule),

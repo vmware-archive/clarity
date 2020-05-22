@@ -1,32 +1,93 @@
 <!--
-* Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 * This software is released under MIT license.
 * The full license information can be found in LICENSE in the root directory of this project.
 -->
 
-<!--
-The div below is contenteditable instead of the host to avoid the input being focused
-even if the user clicks outside of the clr-select-input.
-More info here: https://stackoverflow.com/a/34445203/3538394
--->
-<div class="clr-combobox-input-container">
-  <div class="clr-combobox-input" contenteditable="true" #input (keydown)="closeMenuOnTabPress($event)">
-    <!-- Highlighted options will be rendererd here later.-->
-  </div>
-  <button class="clr-combobox-trigger" tabindex="-1" (click)="toggleOptionsMenu($event)">
+<!-- The (click) handler is needed to auto-focus on input field which can not currently occupy the whole
+     width of the component, after being wrapped to a new line -->
+<div
+  class="clr-combobox-wrapper"
+  clrPopoverAnchor
+  (click)="focusInput()"
+  [class.multi]="multiSelect"
+  [class.invalid]="invalid"
+>
+  <span
+    *ngIf="multiSelect && optionSelectionService.selectionModel.model"
+    role="grid"
+    clrRovingTabindex
+    [clrRovingTabindexDisabled]="control?.disabled"
+    clrDirection="both"
+    [attr.aria-label]="getSelectionAriaLabel()"
+    [attr.aria-disabled]="control?.disabled? true: null"
+  >
+    <span
+      *ngFor="let item of optionSelectionService.selectionModel.model; let i = index"
+      class="label label-combobox-pill"
+      role="row"
+    >
+      <span role="gridcell">
+        <span class="clr-combobox-pill-content" clrKeyFocusItem>
+          <ng-container
+            *ngIf="optionSelected"
+            [ngTemplateOutlet]="optionSelected.template"
+            [ngTemplateOutletContext]="{$implicit: optionSelectionService.selectionModel.model[i]}"
+          >
+          </ng-container>
+        </span>
+      </span>
+      <span role="gridcell">
+        <button
+          clrKeyFocusItem
+          type="button"
+          class="clr-combobox-remove-btn"
+          [disabled]="control?.disabled? true: null"
+          [attr.aria-label]="commonStrings.keys.comboboxDelete + ' ' + optionSelectionService.selectionModel.toString(displayField, i)"
+          (click)="unselect(item)"
+        >
+          <clr-icon shape="close" size="12"></clr-icon>
+        </button>
+      </span>
+    </span>
+  </span>
+
+  <span class="clr-combobox-input-wrapper">
+    <input
+      #textboxInput
+      type="text"
+      [id]="inputId()"
+      role="combobox"
+      class="clr-input clr-combobox-input"
+      [(ngModel)]="searchText"
+      (blur)="onBlur()"
+      [attr.aria-expanded]="openState"
+      [attr.aria-owns]="ariaOwns"
+      aria-haspopup="listbox"
+      aria-autocomplete="list"
+      [attr.aria-invalid]="control?.invalid? true: null"
+      [disabled]="control?.disabled? true: null"
+      [attr.aria-activedescendant]="getActiveDescendant()"
+      aria-multiline="false"
+    />
+  </span>
+
+  <!-- No click handler, as it uses the handler on the .clr-combobox-wrapper -->
+  <button
+    clrPopoverOpenCloseButton
+    #trigger
+    type="button"
+    class="clr-combobox-trigger"
+    tabindex="-1"
+    [attr.aria-label]="commonStrings.keys.comboboxOpen"
+  >
     <clr-icon shape="caret down" size="12"></clr-icon>
   </button>
 </div>
 
-<!-- Content projected by the consumer in ng-template. -->
-<ng-template #projectedOptions>
+<!-- Both close handlers are handled manually due to issues in Edge browser.
+     Additionally 'outsideClickToClose' has complex handling that's necessary
+     to be manual due to the component architecture -->
+<div role="dialog" *clrPopoverContent="openState at smartPosition; outsideClickToClose: false; scrollToClose: false">
   <ng-content></ng-content>
-</ng-template>
-
-<!-- Create the options menu ourself if the consumer doesnt provide the menu. -->
-<clr-options *ngIf="!options">
-  <ng-container [ngTemplateOutlet]="projectedOptions"></ng-container>
-</clr-options>
-
-<!-- If consumer provides the menu, render it -->
-<ng-container *ngIf="options" [ngTemplateOutlet]="projectedOptions"></ng-container>
+</div>

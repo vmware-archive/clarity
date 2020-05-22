@@ -8,7 +8,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IF_ACTIVE_ID_PROVIDER, IfActiveService } from '../../utils/conditional/if-active.service';
 
-import { AriaService } from './providers/aria.service';
+import { AriaService } from '../../utils/aria/aria.service';
 import { ClrTabContent } from './tab-content';
 import { TabsService } from './providers/tabs.service';
 

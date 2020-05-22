@@ -20,7 +20,7 @@ import { FocusableItem } from './interfaces';
 
 import { KeyCodes } from './../../enums/key-codes.enum';
 import { ClrKeyFocusItem } from './key-focus-item';
-import { getKeyCodes, preventArrowKeyScroll } from './util';
+import { preventArrowKeyScroll, keyValidator } from './util';
 
 @Component({
   selector: '[clrKeyFocus]',
@@ -32,7 +32,7 @@ export class ClrKeyFocus {
   @Input('clrFocusOnLoad') focusOnLoad = false;
   @Output('clrFocusChange') private focusChange: EventEmitter<number> = new EventEmitter<number>();
   @ContentChildren(ClrKeyFocusItem, { descendants: true })
-  private clrKeyFocusItems: QueryList<ClrKeyFocusItem>;
+  protected clrKeyFocusItems: QueryList<ClrKeyFocusItem>;
 
   private _focusableItems: Array<FocusableItem>;
   @Input('clrKeyFocus')
@@ -48,9 +48,10 @@ export class ClrKeyFocus {
   get focusableItems() {
     if (this._focusableItems) {
       return this._focusableItems;
-    } else {
+    } else if (this.clrKeyFocusItems) {
       return this.clrKeyFocusItems.toArray();
     }
+    return [];
   }
 
   get nativeElement(): HTMLElement {
@@ -89,7 +90,7 @@ export class ClrKeyFocus {
     }
   }
 
-  private subscriptions: Subscription[] = [];
+  protected subscriptions: Subscription[] = [];
 
   ngAfterContentInit() {
     this.subscriptions.push(this.listenForItemUpdates());
@@ -140,19 +141,19 @@ export class ClrKeyFocus {
     }
   }
 
-  private positionInRange(position: number) {
+  protected positionInRange(position: number) {
     return position >= 0 && position < this.focusableItems.length;
   }
 
-  private currentFocusIsNotFirstItem() {
+  protected currentFocusIsNotFirstItem() {
     return this._current - 1 >= 0;
   }
 
-  private currentFocusIsNotLastItem() {
+  protected currentFocusIsNotLastItem() {
     return this._current + 1 < this.focusableItems.length;
   }
 
-  private initializeFocus() {
+  protected initializeFocus() {
     if (this.focusableItems && this.focusableItems.length) {
       // It is possible that the focus was on an element, whose index is no longer available.
       // This can happen when some of the focusable elements are being removed.
@@ -174,31 +175,31 @@ export class ClrKeyFocus {
     });
   }
 
-  private nextKeyPressed(event: KeyboardEvent) {
-    const keyCodes = getKeyCodes(event);
+  protected nextKeyPressed(event: KeyboardEvent) {
+    const key = keyValidator(event.key);
 
     switch (this.direction) {
       case ClrFocusDirection.VERTICAL:
-        return event.key === keyCodes.ArrowDown;
+        return key === KeyCodes.ArrowDown;
       case ClrFocusDirection.HORIZONTAL:
-        return event.key === keyCodes.ArrowRight;
+        return key === KeyCodes.ArrowRight;
       case ClrFocusDirection.BOTH:
-        return event.key === keyCodes.ArrowDown || event.key === keyCodes.ArrowRight;
+        return key === KeyCodes.ArrowDown || key === KeyCodes.ArrowRight;
       default:
         return false;
     }
   }
 
-  private prevKeyPressed(event: KeyboardEvent) {
-    const keyCodes = getKeyCodes(event);
+  protected prevKeyPressed(event: KeyboardEvent) {
+    const key = keyValidator(event.key);
 
     switch (this.direction) {
       case ClrFocusDirection.VERTICAL:
-        return event.key === keyCodes.ArrowUp;
+        return key === KeyCodes.ArrowUp;
       case ClrFocusDirection.HORIZONTAL:
-        return event.key === keyCodes.ArrowLeft;
+        return key === KeyCodes.ArrowLeft;
       case ClrFocusDirection.BOTH:
-        return event.key === keyCodes.ArrowUp || event.key === keyCodes.ArrowLeft;
+        return key === KeyCodes.ArrowUp || key === KeyCodes.ArrowLeft;
       default:
         return false;
     }

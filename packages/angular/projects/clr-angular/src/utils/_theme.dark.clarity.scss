@@ -459,6 +459,13 @@ $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
 $clr-forms-range-progress-fill-color: hsl(198, 65%, 57%);
 $clr-forms-range-track-color: hsl(200, 23%, 25%);
 
+// Combobox
+$clr-combobox-input-background-color: hsl(198, 31%, 23%);
+$clr-combobox-pill-background-color: hsl(198, 50%, 19%);
+$clr-combobox-pill-border-color: hsl(198, 20%, 36%);
+$clr-combobox-pill-font-color: hsl(0, 0%, 75%);
+$clr-combobox-filter-highlight: hsl(198, 16, 93%);
+
 /**********
   * Header
   * Headers provide branding, navigation, search, and access to global application actions such as settings and

@@ -47,6 +47,7 @@ export class ClrPopoverToggleService {
     return this._open;
   }
 
+  // For compatibility with legacy IfOpenService based implementations
   get originalEvent(): Event {
     return this._openEvent;
   }
@@ -58,5 +59,15 @@ export class ClrPopoverToggleService {
   public toggleWithEvent(event: any) {
     this.openEvent = event;
     this.open = !this.open;
+  }
+
+  private _popoverAligned: Subject<HTMLElement> = new Subject();
+
+  public get popoverAligned(): Observable<HTMLElement> {
+    return this._popoverAligned.asObservable();
+  }
+
+  public popoverAlignedEmit(popoverNode: HTMLElement) {
+    this._popoverAligned.next(popoverNode);
   }
 }

@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 
 import { ClrCombobox } from './combobox';
-import { ClrOptions } from './options';
-import { ClrOption } from './option';
+import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 @Component({
   template: `
@@ -27,47 +27,45 @@ import { ClrOption } from './option';
 class TestOptionSelection {}
 
 export default function (): void {
-  describe('Rendering Selected Option', () => {
+  describe('Rendering Selected Option', function () {
     let context: TestContext<ClrCombobox<string>, TestOptionSelection>;
+    let toggleService: ClrPopoverToggleService;
 
     beforeEach(function () {
-      context = this.create(ClrCombobox, TestOptionSelection, [], [ClrCombobox, ClrOptions, ClrOption]);
+      context = this.create(ClrCombobox, TestOptionSelection, [], []);
+      toggleService = context.getClarityProvider(ClrPopoverToggleService);
+      toggleService.open = true;
+      context.detectChanges();
     });
 
-    it('renders the selected option in the input when it is clicked', () => {
-      const options = context.clarityElement.querySelectorAll('.clr-option');
-      const input: HTMLElement = context.clarityElement.querySelector('.clr-combobox-input');
-
-      expect(input.children.length).toBe(0);
-
-      options[0].click();
-
-      expect(input.textContent).toMatch(/Option 1/);
+    afterEach(function () {
+      toggleService.open = false;
+      context.detectChanges();
     });
 
-    it('sets the contenteditable attribute to false on the rendered option', () => {
-      const options = context.clarityElement.querySelectorAll('.clr-option');
-      options[0].click();
+    it('renders the selected option in the input when it is clicked', fakeAsync(function () {
+      const options = document.body.querySelectorAll('.clr-combobox-option');
+      const selection: HTMLInputElement = context.clarityElement.querySelector('.clr-combobox-input');
 
-      const selectedOption: HTMLElement = context.clarityElement.querySelector('.clr-combobox-input .clr-option');
-      const contentEditableAttribute = selectedOption.getAttribute('contenteditable');
+      expect(selection.value).toMatch('');
+      (options[0] as HTMLElement).click();
+      context.detectChanges();
+      tick();
+      expect(selection.value).toMatch(/Option 1/);
+    }));
 
-      expect(contentEditableAttribute).toBe('false');
-    });
-
-    it('clears the previous selection and renders the new selection in the input', () => {
-      const options = context.clarityElement.querySelectorAll('.clr-option');
-      const input: HTMLElement = context.clarityElement.querySelector('.clr-combobox-input');
-
-      options[0].click();
-
-      expect(input.children.length).toBe(1);
-      expect(input.textContent).toMatch(/Option 1/);
-
-      options[1].click();
-
-      expect(input.children.length).toBe(1);
-      expect(input.textContent).toMatch(/Option 2/);
-    });
+    it('clears the previous selection and renders the new selection', fakeAsync(function () {
+      const options = document.body.querySelectorAll('.clr-combobox-option');
+      const selection: HTMLInputElement = context.clarityElement.querySelector('.clr-combobox-input');
+      (options[0] as HTMLElement).click();
+      context.detectChanges();
+      tick();
+      expect(selection.value).toMatch(/Option 1/);
+      toggleService.open = true;
+      (options[1] as HTMLElement).click();
+      context.detectChanges();
+      tick();
+      expect(selection.value).toMatch(/Option 2/);
+    }));
   });
 }

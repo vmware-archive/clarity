@@ -1,69 +1,188 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../popover/dropdown/menu-mixins.clarity';
 @import './properties.combobox';
 
 @include exports('combobox.clarity') {
-  .clr-combobox {
-    display: inline-block;
+  // needed for the proper calculation of popover offset that we do to keep label always visible
+  .clr-combobox-form-control {
+    align-items: stretch;
   }
 
-  .clr-combobox-input-container {
-    display: flex;
-    align-items: center;
-  }
+  .clr-combobox-wrapper {
+    position: relative;
 
-  .clr-combobox-input {
     //Dimensions
-    padding: 0 $clr-ng-select-trigger-right-padding 0 $clr-ng-select-trigger-left-padding;
-    min-height: $clr-ng-select-min-height;
-    width: $clr-ng-select-min-width;
-    @include css-var(font-size, clr-ng-select-font-size, $clr-ng-select-font-size, $clr-use-custom-properties);
+    padding: 0 $clr-combobox-trigger-right-padding 0 $clr-combobox-trigger-left-padding;
+    min-height: $clr-combobox-min-height;
+    min-width: $clr-combobox-min-width;
+    @include css-var(font-size, clr-combobox-font-size, $clr-combobox-font-size, $clr-use-custom-properties);
+
+    &.multi {
+      min-width: $clr-ng-multiselect-min-width;
+      padding-bottom: $clr_baselineRem_0_125;
+    }
 
     //Mixins
-    @include form-fields-appearance();
-    @include input-border-bottom-animation();
+    @include form-fields-appearance($clr-forms-border-color);
+
+    // override the above mixin for combobox-specific styles
+    @include css-var(
+      background-color,
+      clr-combobox-input-background-color,
+      $clr-combobox-input-background-color,
+      $clr-use-custom-properties
+    );
+
+    border-bottom: $clr-global-borderwidth solid $clr-forms-border-color;
+
+    // the border color is on the component; we don't want it on the input itself
+    .clr-input.clr-combobox-input:focus {
+      background: none;
+    }
+
+    // ideally I want to just use &:focus-within, but cross-browser support is limited
+    // for now, we programmatically add/remove .clr-focus class to achieve this
+    &:focus-within,
+    &.clr-focus {
+      border-bottom: $clr_baselineRem_2px solid $clr-forms-focused-color;
+    }
+
+    &.invalid,
+    &.invalid:focus,
+    &.clr-focus.invalid {
+      border-bottom-color: $clr-forms-invalid-color;
+    }
 
     //Others
-    outline: none;
+    .clr-combobox-input {
+      background: none;
+      border-bottom: none;
+    }
+
+    .clr-combobox-remove-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: $clr_baselineRem_4px $clr_baselineRem_4px;
+      color: $clr-combobox-pill-font-color;
+    }
+
+    .label-combobox-pill {
+      margin: $clr_baselineRem_0_125 $clr_baselineRem_0_125 0 0;
+      @include css-var(
+        background-color,
+        clr-combobox-pill-background-color,
+        $clr-combobox-pill-background-color,
+        $clr-use-custom-properties
+      );
+      border-width: $clr_baselineRem_1px;
+      border-style: solid;
+      @include css-var(
+        border-color,
+        clr-combobox-pill-border-color,
+        $clr-combobox-pill-border-color,
+        $clr-use-custom-properties
+      );
+
+      padding: 0 $clr_baselineRem_4px;
+
+      .clr-combobox-pill-content {
+        @include css-var(
+          color,
+          clr-combobox-pill-font-color,
+          $clr-combobox-pill-font-color,
+          $clr-use-custom-properties
+        );
+        font-size: $clr-typography-xxsmalltext;
+        font-weight: $clr-font-weight-regular;
+        padding: 0 $clr_baselineRem_8px 0 $clr_baselineRem_4px;
+      }
+    }
+
+    .clr-combobox-input-wrapper {
+      border: none;
+      background: none;
+    }
   }
 
   .clr-combobox-trigger {
     //Dimensions
-    @include equilateral($clr-ng-select-trigger-dimensions);
-    padding: 0;
-    margin: 0;
+    width: $clr-combobox-trigger-dimensions;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
 
     //Other
     background: none;
     border: none;
-    @include css-var(color, clr-ng-select-trigger-color, $clr-ng-select-trigger-color, $clr-use-custom-properties);
+    @include css-var(color, clr-combobox-trigger-color, $clr-combobox-trigger-color, $clr-use-custom-properties);
     cursor: pointer;
     outline: none;
-    transform: translateX(-1 * $clr-ng-select-trigger-dimensions);
   }
 
-  .clr-options {
+  .clr-combobox-options {
     @include generate-dropdown-menu();
+    position: static;
+
+    max-height: $clr_baselineRem_10;
+    overflow-y: scroll;
 
     visibility: visible;
+
+    .clr-combobox-options-loading {
+      padding: $clr_baselineRem_0_125 $clr_baselineRem_1;
+
+      .clr-combobox-options-loading-text {
+        padding-left: $clr_baselineRem_0_25;
+      }
+    }
+
+    .clr-combobox-options-empty-text {
+      padding-left: $clr_baselineRem_0_5;
+    }
   }
 
-  .clr-option {
+  .clr-combobox-option {
     @include generate-dropdown-item();
+    // Manual pseudo focus handling
+    &.clr-focus {
+      @include css-var(
+        background-color,
+        clr-dropdown-bg-hover-color,
+        $clr-dropdown-bg-hover-color,
+        $clr-use-custom-properties
+      );
+    }
   }
 
-  //NOTE: Adjust the height of the option only when its in the options menu
-  .clr-options .clr-option {
+  //NOTE: Adjust the height of the option only when it's in the options menu
+  .clr-combobox-options .clr-combobox-option {
     @include generate-dropdown-item-height();
   }
 
-  .clr-combobox-input .clr-option {
+  .clr-combobox-options .clr-combobox-option {
     &:hover,
     &.active {
-      background: none;
+      @include css-var(color, clr-dropdown-item-color, $clr-dropdown-item-color, $clr-use-custom-properties);
     }
+  }
+
+  .clr-combobox-disabled {
+    @include disabled-form-fields();
+
+    .clr-combobox-input,
+    .clr-combobox-remove-btn,
+    .clr-combobox-trigger {
+      cursor: not-allowed;
+    }
+  }
+
+  .clr-filter-highlight b {
+    font-weight: $clr-font-weight-semibold;
+    @include css-var(color, clr-combobox-filter-highlight, $clr-combobox-filter-highlight, $clr-use-custom-properties);
   }
 }

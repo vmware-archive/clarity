@@ -66,15 +66,21 @@ export const commonStringsDefault: ClrCommonStrings = {
   // Stack View
   stackViewChanged: 'Value changed.',
   //Vertical Nav
-  verticalNavToggle: 'Toggle vertical navigation',
   verticalNavGroupToggle: 'Toggle vertical navigation group',
+  verticalNavToggle: 'Toggle vertical navigation',
   // Timeline steps
   timelineStepNotStarted: 'Not started',
   timelineStepCurrent: 'Current',
   timelineStepSuccess: 'Completed',
   timelineStepError: 'Error',
   timelineStepProcessing: 'In progress',
-
+  // Combobox
+  comboboxDelete: 'Delete selected option',
+  comboboxSearching: 'Searching for matches for "{INPUT}"',
+  comboboxSelection: 'Selection',
+  comboboxSelected: 'Selected',
+  comboboxNoResults: 'No results',
+  comboboxOpen: 'Show options',
   // Datagrid expandable rows
   dategridExpandableBeginningOf: 'Beginning of',
   dategridExpandableEndOf: 'End of',

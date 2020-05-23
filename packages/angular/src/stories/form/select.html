@@ -4,4 +4,23 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h1>Select demo</h1>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <h1>Select demo</h1>
+      <form clrForm (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <clr-select-container>
+          <label>I've got some options</label>
+          <select clrSelect name="options" [(ngModel)]="options" [required]="required" [disabled]="disabled">
+            <option value="one">One</option>
+            <option value="two">Two</option>
+            <option value="three">Three</option>
+          </select>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="errors">This field is required!</clr-control-error>
+        </clr-select-container>
+        <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

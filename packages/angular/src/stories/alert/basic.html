@@ -4,15 +4,21 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<clr-alert
-  [clrAlertClosable]="closable"
-  [clrAlertType]="alertStatus"
-  [clrAlertSizeSmall]="alertSize"
-  [clrAlertAppLevel]="alertLevel"
->
-  <clr-alert-item>
-    <span class="alert-text">
-      This alert {{ closable ? 'can' : 'cannot' }} be dismissed.
-    </span>
-  </clr-alert-item>
-</clr-alert>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <clr-alert
+        [clrAlertClosable]="closable"
+        [clrAlertType]="alertStatus"
+        [clrAlertSizeSmall]="alertSize"
+        [clrAlertAppLevel]="alertLevel"
+      >
+        <clr-alert-item>
+          <span class="alert-text">
+            This alert {{ closable ? 'can' : 'cannot' }} be dismissed.
+          </span>
+        </clr-alert-item>
+      </clr-alert>
+    </div>
+  </div>
+</div>

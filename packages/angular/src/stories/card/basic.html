@@ -4,47 +4,53 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div class="clr-row">
-  <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
-    <div class="card" [class.clickable]="clickableCard">
-      <div class="card-header">
-        Header
-      </div>
-      <div class="card-block">
-        <div class="alert alert-warning alert-sm" *ngIf="showBlockAlert">
-          <button type="button" class="close" aria-label="Close">
-            <clr-icon aria-hidden="true" shape="close"></clr-icon>
-          </button>
-          <div class="alert-item static">
-            <span class="alert-text">
-              Use small alerts in a card.
-            </span>
-          </div>
-        </div>
-        <div class="card-title">
-          All About Cards
-        </div>
-        <div class="card-text">
-          A card presents high-level information and can guide the user toward related actions and details. Adding the
-          .clickable class makes the entire card clickable, initiating a single action. The footer can contain two
-          actions. For more actions, use a dropdown. Cards can also contain alerts and lists and groups and progress
-          indicators. See the additional stories for more examples.
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-sm btn-link">
-          Action 1
-        </button>
-        <div class="dropdown top-left" [class.open]="ddOpen">
-          <button class="dropdown-toggle btn btn-sm btn-link">
-            Dropdown Actions
-            <clr-icon shape="caret down"></clr-icon>
-          </button>
-          <div class="dropdown-menu">
-            <a href="..." class="dropdown-item">DD Action 1</a>
-            <a href="..." class="dropdown-item">DD Action 2</a>
-            <a href="..." class="dropdown-item">DD Action 3</a>
-            <a href="..." class="dropdown-item">DD Action 4</a>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <div class="clr-row">
+        <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+          <div class="card" [class.clickable]="clickableCard">
+            <div class="card-header">
+              Header
+            </div>
+            <div class="card-block">
+              <div class="alert alert-warning alert-sm" *ngIf="showBlockAlert">
+                <button type="button" class="close" aria-label="Close">
+                  <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                </button>
+                <div class="alert-item static">
+                  <span class="alert-text">
+                    Use small alerts in a card.
+                  </span>
+                </div>
+              </div>
+              <div class="card-title">
+                All About Cards
+              </div>
+              <div class="card-text">
+                A card presents high-level information and can guide the user toward related actions and details. Adding
+                the .clickable class makes the entire card clickable, initiating a single action. The footer can contain
+                two actions. For more actions, use a dropdown. Cards can also contain alerts and lists and groups and
+                progress indicators. See the additional stories for more examples.
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-link">
+                Action 1
+              </button>
+              <div class="dropdown top-left" [class.open]="ddOpen">
+                <button class="dropdown-toggle btn btn-sm btn-link">
+                  Dropdown Actions
+                  <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <div class="dropdown-menu">
+                  <a href="..." class="dropdown-item">DD Action 1</a>
+                  <a href="..." class="dropdown-item">DD Action 2</a>
+                  <a href="..." class="dropdown-item">DD Action 3</a>
+                  <a href="..." class="dropdown-item">DD Action 4</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -4,4 +4,30 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h1>Toggle demo</h1>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <h1>Toggle demo</h1>
+      <form clrForm (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <clr-toggle-container>
+          <label>Full toggle switch</label>
+          <clr-toggle-wrapper>
+            <input
+              type="checkbox"
+              clrToggle
+              name="model"
+              [required]="required"
+              [disabled]="disabled"
+              value="option1"
+              [(ngModel)]="option1"
+            />
+            <label>Agree to terms and conditions.</label>
+          </clr-toggle-wrapper>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="errors">This field is required!</clr-control-error>
+        </clr-toggle-container>
+        <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

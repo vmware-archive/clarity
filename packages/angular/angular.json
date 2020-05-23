@@ -142,6 +142,13 @@
             "production": {
               "tsConfig": "projects/clr-angular/tsconfig.lib.prod.json"
             }
+          },
+          "options": {
+            "sourceMap": {
+              "scripts": true,
+              "styles": true,
+              "vendor": true
+            }
           }
         },
         "test": {

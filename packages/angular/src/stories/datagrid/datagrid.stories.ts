@@ -6,7 +6,7 @@
 
 import { action } from '@storybook/addon-actions';
 import { moduleMetadata } from '@storybook/angular';
-import { boolean } from '@storybook/addon-knobs';
+import { boolean, number } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,9 +25,10 @@ export default {
 };
 
 export const Basic = () => {
-  const fixedHeight = boolean('Fixed Datagrid Height', true, 'Group 1');
-  const loading = boolean('Loading', false, 'Group 1');
-  const compactSize = boolean('Compact Size', false, 'Group 1');
+  // const fixedHeight = boolean('Fixed Datagrid Height', true, 'Group 1');
+  const fixedHeight = number('Fixed height value', 250, { min: 100, max: 500 }, 'Default Properties');
+  const loading = boolean('Loading', false, 'Default Properties');
+  const compactSize = boolean('Compact Size', false, 'Default Properties');
   const employeeList = EmployeeGenerator.generateSeedData(25);
   const selectedEmployees = [];
   return {

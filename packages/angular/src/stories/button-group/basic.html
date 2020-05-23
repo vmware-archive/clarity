@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc.
+  ~ All Rights ReserveThis software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Button Group</h1>
+<clr-button-group [ngClass]="groupType" [clrMenuPosition]="menuPosition">
+  <clr-button [disabled]="(disableAll || disableFirstButton) ? 'disabled' : null">Create</clr-button>
+  <clr-button [disabled]="disableAll ? 'disabled' : null" [clrInMenu]="btnInMenu">Assign</clr-button>
+  <clr-button [disabled]="(disableAll || disableThirdButton) ? 'disabled' : null" [clrInMenu]="btnInMenu"
+    >Download</clr-button
+  >
+  <clr-button [disabled]="disableAll ? 'disabled' : null" [clrInMenu]="btnInMenu">Delete</clr-button>
+</clr-button-group>
+
+<p>
+  Note: there is an issue when toggling overflow on and off with the popover calculations. It seems to be a conflict w/
+  storybook but I have not investigated very deep.
+  <a href="https://stackblitz.com/edit/clarity-button-group-menu-toggle-test" target="_blank">
+    Here
+  </a>
+  is a stackblitz that shows the ability to toggle the overflow menu and then open it w/o issues.
+</p>

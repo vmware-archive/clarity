@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc.
+  ~ All Rights ReserveThis software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<form clrForm>
+  <h6>Min/Max Dates</h6>
+  <clr-date-container>
+    <label>Date</label>
+    <input type="date" [disabled]="disableInput" [(ngModel)]="model" clrDate [min]="minDate" [max]="maxDate" />
+  </clr-date-container>
+</form>

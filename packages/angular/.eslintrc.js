@@ -12,4 +12,12 @@ module.exports = {
     'no-irregular-whitespace': ['error', { skipTemplates: true }], // Turn of whitespace checking inside of `` templates
     'no-prototype-builtins': 'off',
   },
+  overrides: [
+    {
+      files: ['*.stories.ts'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 1,
+      },
+    },
+  ],
 };

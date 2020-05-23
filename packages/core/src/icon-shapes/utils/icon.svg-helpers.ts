@@ -7,7 +7,7 @@
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 import { getIconSvgClasses, getShapeClassname, IconDecorationClassnames } from './icon.classnames.js';
 
-export function getBadgeSvg(shapeClassname: string) {
+export function getBadgeSvg(shapeClassname: string): string {
   return [
     '<circle cx="30" cy="6" r="5"  class="',
     [shapeClassname, IconDecorationClassnames.Badge].join(' '),
@@ -15,7 +15,7 @@ export function getBadgeSvg(shapeClassname: string) {
   ].join('');
 }
 
-export function getAlertSvg(shapeClassname: string) {
+export function getAlertSvg(shapeClassname: string): string {
   return [
     '<path d="M26.85,1.14,21.13,11A1.28,1.28,0,0,0,22.23,13H33.68A1.28,1.28,0,0,0,34.78,11L29.06,1.14A1.28,1.28,0,0,0,26.85,1.14Z" class="',
     [shapeClassname, IconDecorationClassnames.Alert].join(' '),
@@ -23,7 +23,7 @@ export function getAlertSvg(shapeClassname: string) {
   ].join('');
 }
 
-export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string) {
+export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string): string {
   const shapeClassname = getShapeClassname(shapeName);
   let transformedSvg = shapeSvg.split('/>').join(` class="${shapeClassname}"/>`);
 
@@ -42,7 +42,7 @@ export function decorateSvgWithClassnames(shapeName: string, shapeSvg: string) {
   return transformedSvg;
 }
 
-export function getIconSvgOpeningTag(icon: IconShapeCollection) {
+export function getIconSvgOpeningTag(icon: IconShapeCollection): string {
   const iconSvgViewboxSize = 36;
   const iconSvgClasses = getIconSvgClasses(icon);
 

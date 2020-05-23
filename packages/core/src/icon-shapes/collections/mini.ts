@@ -49,7 +49,7 @@ export const miniCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadMiniIconSet() {
+export function loadMiniIconSet(): void {
   ClarityIcons.addIcons(...miniCollectionIcons);
   ClarityIcons.addAliases(...miniCollectionAliases);
 }

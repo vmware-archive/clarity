@@ -7,7 +7,7 @@ import { isString, transformToUnspacedString } from '@clr/core/internal';
 import { IconShapeCollection, IconShapeSources } from './interfaces/icon.interfaces.js';
 import { decorateSvgWithClassnames, getIconSvgClosingTag, getIconSvgOpeningTag } from './utils/icon.svg-helpers.js';
 
-export function getInnerSvgFromShapes(iconShapes: IconShapeSources) {
+export function getInnerSvgFromShapes(iconShapes: IconShapeSources): (() => string)[] {
   const renderFns = [];
   for (const shape in iconShapes) {
     // eslint-disable-next-line no-prototype-builtins

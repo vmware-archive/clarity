@@ -7,7 +7,7 @@
 import { IconRegistrySources } from '@clr/core/internal';
 
 type IconSvgString = string;
-type IconNameString = string;
+export type IconNameString = string;
 type IconAliases = string[];
 
 export interface IconShapeCollection {

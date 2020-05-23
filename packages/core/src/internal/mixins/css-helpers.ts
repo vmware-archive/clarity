@@ -8,19 +8,19 @@
 export interface CssHelpers extends HTMLElement {}
 
 export class CssHelpers {
-  hasClassname(text: string) {
+  hasClassname(text: string): boolean {
     return this.classList.contains(text);
   }
 
-  addClassname(text: string) {
+  addClassname(text: string): void {
     this.classList.add(text);
   }
 
-  removeClassname(text: string) {
+  removeClassname(text: string): void {
     this.classList.remove(text);
   }
 
-  removeClassnamesUnless(classnamesToRemove: string[], classnamesToKeep: string[]) {
+  removeClassnamesUnless(classnamesToRemove: string[], classnamesToKeep: string[]): void {
     classnamesToRemove.forEach(removeMe => {
       if (classnamesToKeep.indexOf(removeMe) < 0) {
         this.classList.remove(removeMe);
@@ -28,20 +28,20 @@ export class CssHelpers {
     });
   }
 
-  removeClassnames(classnamesToRemove: string[]) {
+  removeClassnames(classnamesToRemove: string[]): void {
     this.removeClassnamesUnless(classnamesToRemove, []);
   }
 
-  updateEquilateralStyles(size?: string) {
+  updateEquilateralStyles(size?: string): void {
     this.style.width = size || '';
     this.style.height = size || '';
   }
 
-  removeEquilateralStyles() {
+  removeEquilateralStyles(): void {
     this.updateEquilateralStyles();
   }
 
-  addEquilateralStyles(size: string) {
+  addEquilateralStyles(size: string): void {
     this.updateEquilateralStyles(size);
   }
 }

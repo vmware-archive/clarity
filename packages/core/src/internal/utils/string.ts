@@ -22,18 +22,18 @@ export function transformToUnspacedString(fns: any[], ...args: any[]): string {
   return transformToString('', fns, ...args);
 }
 
-export function camelCaseToKebabCase(value: string) {
+export function camelCaseToKebabCase(value: string): string {
   return value.replace(/[A-Z]/g, l => `-${l.toLowerCase()}`);
 }
 
-export function kebabCaseToCamelCase(str: string) {
+export function kebabCaseToCamelCase(str: string): string {
   return str
     .split('-')
     .map((item, index) => (index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item))
     .join('');
 }
 
-export function kebabCaseToPascalCase(string: string) {
+export function kebabCaseToPascalCase(string: string): string {
   const camelCase = kebabCaseToCamelCase(string);
   return capitalizeFirstLetter(camelCase);
 }
@@ -42,14 +42,14 @@ export function kebabCaseToPascalCase(string: string) {
  * Take a object map of css properties and if value concatenate string of all computed values
  * Useful for dynamic style tags in lit-html templates
  */
-export function setStyles(styles: { [key: string]: string }) {
+export function setStyles(styles: { [key: string]: string }): string {
   return Object.keys(styles).reduce(
     (allStyles, prop) => `${allStyles}${styles[prop] ? `${prop}:${styles[prop]};` : ''}`,
     ''
   );
 }
 
-export function capitalizeFirstLetter(string: string) {
+export function capitalizeFirstLetter(string: string): string {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 

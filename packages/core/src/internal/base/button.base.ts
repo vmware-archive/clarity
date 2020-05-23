@@ -5,7 +5,7 @@
  */
 
 import { removeAttributes } from '@clr/core/internal';
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement, query, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import { property } from '../decorators/property.js';
@@ -41,7 +41,7 @@ export class CdsBaseButton extends LitElement {
 
   @querySlot('a') private anchor: HTMLAnchorElement;
 
-  protected get hiddenButtonTemplate() {
+  protected get hiddenButtonTemplate(): TemplateResult {
     return this.readonly
       ? html``
       : html` <button
@@ -58,21 +58,21 @@ export class CdsBaseButton extends LitElement {
   @query('button') private templateButton: HTMLButtonElement;
   private hiddenButton: HTMLButtonElement;
 
-  protected render() {
+  protected render(): TemplateResult {
     return html`
       <slot></slot>
       ${this.hiddenButtonTemplate}
     `;
   }
 
-  protected firstUpdated(props: Map<string, any>) {
+  protected firstUpdated(props: Map<string, any>): void {
     super.firstUpdated(props);
     this.updateButtonAttributes();
     this.setupAnchorFocus();
     this.setupNativeButtonBehavior();
   }
 
-  protected updated(props: Map<string, any>) {
+  protected updated(props: Map<string, any>): void {
     super.updated(props);
     // if readonly or disabled attribute was updated, button attributes might need updating
     if (props.has('readonly') || props.has('disabled')) {
@@ -80,7 +80,7 @@ export class CdsBaseButton extends LitElement {
     }
   }
 
-  private setupAnchorFocus() {
+  private setupAnchorFocus(): void {
     if (this.anchor) {
       this.anchor.addEventListener('focus', () => this.setAttribute('focused', ''));
       this.anchor.addEventListener('blur', () => this.removeAttribute('focused'));
@@ -91,13 +91,13 @@ export class CdsBaseButton extends LitElement {
    * We have to append a hidden button outside the web component in the light DOM
    * This allows us to trigger native submit events within a form element.
    */
-  private setupNativeButtonBehavior() {
+  private setupNativeButtonBehavior(): void {
     this.appendHiddenButton();
     this.addEventListener('click', this.triggerNativeButtonBehavior);
     this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
   }
 
-  private triggerNativeButtonBehavior(event: Event) {
+  private triggerNativeButtonBehavior(event: Event): void {
     if (!this.readonly) {
       if (this.disabled) {
         stopEvent(event);
@@ -107,20 +107,20 @@ export class CdsBaseButton extends LitElement {
     }
   }
 
-  private appendHiddenButton() {
+  private appendHiddenButton(): void {
     if (!this.hiddenButton && this.templateButton) {
       this.hiddenButton = this.appendChild(this.templateButton);
     }
   }
 
-  private emulateKeyBoardEventBehavior(e: KeyboardEvent) {
+  private emulateKeyBoardEventBehavior(e: KeyboardEvent): void {
     if (!this.anchor && (e.key === KeyCodes.Enter || e.code === KeyCodes.Space)) {
       this.click();
       stopEvent(e);
     }
   }
 
-  private updateButtonAttributes() {
+  private updateButtonAttributes(): void {
     const oldRole = this.role;
     const oldTabIndex = this.tabIndex;
 

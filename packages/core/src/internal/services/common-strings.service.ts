@@ -20,14 +20,14 @@ export class CommonStringsServiceInternal {
   /**
    * Allows you to pass in new overrides for localization
    */
-  localize(overrides: Partial<ClrCommonStrings>) {
+  localize(overrides: Partial<ClrCommonStrings>): void {
     this.strings = { ...this.strings, ...overrides };
   }
 
   /**
    * Parse a string with a set of tokens to replace
    */
-  parse(source: string, tokens: { [key: string]: string } = {}) {
+  parse(source: string, tokens: { [key: string]: string } = {}): string {
     const names = Object.keys(tokens);
     let output = source;
     if (names.length) {

@@ -70,7 +70,7 @@ export const commerceCollectionAliases: IconAlias[] = [[piggyBankIconName, ['sav
  * ```
  *
  */
-export function loadCommerceIconSet() {
+export function loadCommerceIconSet(): void {
   ClarityIcons.addIcons(...commerceCollectionIcons);
   ClarityIcons.addAliases(...commerceCollectionAliases);
 }

@@ -28,7 +28,7 @@ declare global {
   }
 }
 
-function getVersion() {
+function getVersion(): CDSLog {
   const log: CDSLog = {
     versions: window.CDS._version,
     loadedElements: window.CDS._loadedElements,
@@ -40,7 +40,7 @@ function getVersion() {
   return log;
 }
 
-function initializeCDSGlobal() {
+function initializeCDSGlobal(): void {
   window.CDS = window.CDS || {
     _version: [],
     _loadedElements: [],
@@ -48,7 +48,7 @@ function initializeCDSGlobal() {
   };
 }
 
-function setRunningVersion() {
+function setRunningVersion(): void {
   const loadedVersion = '@VERSION';
   if (window.CDS._version.indexOf(loadedVersion) < 0) {
     window.CDS._version.push(loadedVersion);
@@ -63,7 +63,7 @@ function setRunningVersion() {
   }
 }
 
-export function setupCDSGlobal() {
+export function setupCDSGlobal(): void {
   if (isBrowser()) {
     initializeCDSGlobal();
     setRunningVersion();

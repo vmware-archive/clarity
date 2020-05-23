@@ -25,7 +25,7 @@ const addElementToRegistry = curryN(
   }
 );
 
-export function registerElementSafely(tagName: string, elementClass: any) {
+export function registerElementSafely(tagName: string, elementClass: any): void {
   if (isBrowser() && existsInWindow(['customElements'])) {
     addElementToRegistry(tagName, elementClass, window.customElements);
   }

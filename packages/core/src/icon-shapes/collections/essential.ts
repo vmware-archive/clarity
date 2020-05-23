@@ -289,7 +289,7 @@ export const essentialCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadEssentialIconSet() {
+export function loadEssentialIconSet(): void {
   ClarityIcons.addIcons(...essentialCollectionIcons);
   ClarityIcons.addAliases(...essentialCollectionAliases);
 }

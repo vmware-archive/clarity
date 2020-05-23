@@ -230,7 +230,7 @@ export const technologyCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadTechnologyIconSet() {
+export function loadTechnologyIconSet(): void {
   ClarityIcons.addIcons(...technologyCollectionIcons);
   ClarityIcons.addAliases(...technologyCollectionAliases);
 }

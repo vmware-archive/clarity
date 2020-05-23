@@ -2,6 +2,18 @@ const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
 
+// some temporary relaxation for spec and story files
+const overrideRules = {
+  '@typescript-eslint/explicit-function-return-type': 0, // TOO MUCH WORK AT THE MOMENT ;)
+};
+
+const overrides = [
+  {
+    files: ['*.stories.ts', '*.spec.ts'],
+    rules: overrideRules,
+  },
+];
+
 const bannedTSTypes = {
   Array: 'Use [] instead.',
   Object: 'Use {} instead.',
@@ -12,7 +24,7 @@ const bannedTSTypes = {
 
 // only adding rules that override the defaults or enforce new standards
 const rules = {
-  '@typescript-eslint/explicit-function-return-type': OFF, // too much work at the moment
+  '@typescript-eslint/explicit-function-return-type': [ERROR, { allowExpressions: true }],
   '@typescript-eslint/no-explicit-any': OFF, // would LOVE to turn this on
   // cause slow analysis on TS files with Storybook, see
   // https://github.com/typescript-eslint/typescript-eslint/issues/1856
@@ -38,6 +50,7 @@ const config = {
   extends: '../../.eslintrc.js',
   parserOptions,
   rules,
+  overrides,
 };
 
 module.exports = config;

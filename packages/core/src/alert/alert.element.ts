@@ -7,6 +7,7 @@
 import { baseStyles, property, registerElementSafely } from '@clr/core/internal';
 import { CdsBaseAlert } from './alert.base.js';
 import { styles } from './alert.element.css.js';
+import { CSSResultArray } from 'lit-element';
 
 /**
  * Alerts are banners that communicate a message with a severity attached to it.
@@ -38,7 +39,7 @@ export class CdsAlert extends CdsBaseAlert {
   @property({ type: String })
   size: 'default' | 'sm';
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 }

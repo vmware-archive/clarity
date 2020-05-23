@@ -53,7 +53,7 @@ export const travelCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadTravelIconSet() {
+export function loadTravelIconSet(): void {
   ClarityIcons.addIcons(...travelCollectionIcons);
   ClarityIcons.addAliases(...travelCollectionAliases);
 }

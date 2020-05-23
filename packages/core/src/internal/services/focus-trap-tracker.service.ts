@@ -11,15 +11,15 @@
 export class FocusTrapTracker {
   private static focusTrapElements: Element[] = [];
 
-  static setCurrent(el: Element) {
+  static setCurrent(el: Element): void {
     this.focusTrapElements.unshift(el);
   }
 
-  static activatePreviousCurrent() {
+  static activatePreviousCurrent(): void {
     this.focusTrapElements.shift();
   }
 
-  static getCurrent() {
+  static getCurrent(): Element {
     return this.focusTrapElements[0];
   }
 }

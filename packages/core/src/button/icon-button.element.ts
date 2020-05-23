@@ -12,7 +12,7 @@ import {
   property,
   registerElementSafely,
 } from '@clr/core/internal';
-import { html } from 'lit-element';
+import { CSSResultArray, html, TemplateResult } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './icon-button.element.css.js';
 import { CdsButton, ClrLoadingState } from './button.element.js';
@@ -51,7 +51,7 @@ export class CdsIconButton extends CdsButton {
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="private-host">
         ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
@@ -61,7 +61,7 @@ export class CdsIconButton extends CdsButton {
     `;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, baseButtonStyles, styles];
   }
 }

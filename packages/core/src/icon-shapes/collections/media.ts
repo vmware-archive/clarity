@@ -68,7 +68,7 @@ export const mediaCollectionAliases: IconAlias[] = [];
  * ```
  *
  */
-export function loadMediaIconSet() {
+export function loadMediaIconSet(): void {
   ClarityIcons.addIcons(...mediaCollectionIcons);
   ClarityIcons.addAliases(...mediaCollectionAliases);
 }

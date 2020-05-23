@@ -72,7 +72,7 @@ export const socialCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadSocialIconSet() {
+export function loadSocialIconSet(): void {
   ClarityIcons.addIcons(...socialCollectionIcons);
   ClarityIcons.addAliases(...socialCollectionAliases);
 }

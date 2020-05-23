@@ -19,7 +19,7 @@ import {
 } from '@clr/core/internal';
 import '@clr/core/icon';
 import { ClarityIcons, errorStandardIcon } from '@clr/core/icon-shapes';
-import { html, query } from 'lit-element';
+import { CSSResultArray, html, query, TemplateResult } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
 
@@ -36,7 +36,7 @@ export enum ClrLoadingState {
   ERROR = 'error',
 }
 
-function buttonSlots(icon: boolean, badge: boolean) {
+function buttonSlots(icon: boolean, badge: boolean): TemplateResult {
   // nested span tags allow for line-height erasers on the innermost span and flex-based centering on the outermost span
   const textSlot = html`<span class="button-content"
     ><span><slot></slot></span
@@ -129,7 +129,7 @@ export class CdsButton extends CdsBaseButton {
   @property({ type: String })
   loadingState = ClrLoadingState.DEFAULT;
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: Map<string, any>): void {
     super.firstUpdated(props);
 
     if (this.loadingState !== ClrLoadingState.DEFAULT) {
@@ -137,20 +137,20 @@ export class CdsButton extends CdsBaseButton {
     }
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     setAttributes(this.icon, ['slot', 'button-icon']);
     setAttributes(this.badge, ['slot', 'button-badge']);
   }
 
-  update(props: Map<string, any>) {
+  update(props: Map<string, any>): void {
     if (this.privateHost && props.has('loadingState')) {
       this.updateLoadingState();
     }
     super.update(props);
   }
 
-  render() {
+  render(): TemplateResult {
     const loadingState = this.loadingState;
     const hasIcon = !!this.icon;
     const hasBadge = !!this.badge;
@@ -166,11 +166,11 @@ export class CdsButton extends CdsBaseButton {
     </div>`;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, baseButtonStyles, styles];
   }
 
-  private updateLoadingState() {
+  private updateLoadingState(): void {
     switch (this.loadingState) {
       case ClrLoadingState.LOADING:
         this.disableButton();
@@ -186,12 +186,12 @@ export class CdsButton extends CdsBaseButton {
     }
   }
 
-  private disableButton() {
+  private disableButton(): void {
     this.style.width = getElementWidth(this);
     this.disabled = true;
   }
 
-  private enableButton() {
+  private enableButton(): void {
     this.loadingState = ClrLoadingState.DEFAULT;
     this.style.removeProperty('width');
     this.disabled = false;

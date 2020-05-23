@@ -22,7 +22,7 @@ import {
   querySlotAll,
   returnOrFallthrough,
 } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 
 ClarityIcons.addIcons(checkCircleIcon, infoCircleIcon, exclamationCircleIcon, exclamationTriangleIcon, timesIcon);
 
@@ -69,7 +69,7 @@ export class CdsBaseAlert extends LitElement {
 
   @querySlotAll('cds-button') private buttons: NodeListOf<CdsButton>;
 
-  get alertIconShape() {
+  get alertIconShape(): string {
     /*
      * if the component's icon-shape attribute is set, that value is used.
      * otherwise, we check for status attribute and set an icon shape that matches.
@@ -84,7 +84,7 @@ export class CdsBaseAlert extends LitElement {
     );
   }
 
-  get alertIconTitle() {
+  get alertIconTitle(): string {
     /*
      * if the component's icon-title attribute is set, that value is used.
      * otherwise, we check for status attribute and set an icon shape that matches.
@@ -99,7 +99,7 @@ export class CdsBaseAlert extends LitElement {
     );
   }
 
-  updateButtons() {
+  updateButtons(): void {
     // buttons inside alert (usually app-level) have the style of small inverse buttons
     this.buttons.forEach(button => {
       button.status = 'inverse';
@@ -107,7 +107,7 @@ export class CdsBaseAlert extends LitElement {
     });
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="alert-wrapper">
         <div class="alert-item">
@@ -132,7 +132,7 @@ export class CdsBaseAlert extends LitElement {
     `;
   }
 
-  closeAlert() {
+  closeAlert(): void {
     this.closeChange.emit(true);
   }
 }

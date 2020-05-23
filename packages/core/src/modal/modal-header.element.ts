@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, registerElementSafely } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResult, html, LitElement, TemplateResult } from 'lit-element';
 
 /**
  * Web component modal header to be used inside modal.
@@ -31,16 +31,16 @@ import { html, LitElement } from 'lit-element';
  * @element cds-modal-header
  */
 export class CdsModalHeader extends LitElement {
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('slot', 'modal-header');
   }
 
-  render() {
+  render(): TemplateResult {
     return html`<slot></slot>`;
   }
 
-  static get styles() {
+  static get styles(): CSSResult[] {
     return [baseStyles];
   }
 }

@@ -65,7 +65,7 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
   }
 }
 
-export function requirePropertyCheck(protoOrDescriptor: any, name: string, options?: PropertyConfig) {
+export function requirePropertyCheck(protoOrDescriptor: any, name: string, options?: PropertyConfig): void {
   const targetConnectedCallback: () => void = protoOrDescriptor.connectedCallback;
 
   function connectedCallback(this: any): void {
@@ -86,7 +86,7 @@ export function requirePropertyCheck(protoOrDescriptor: any, name: string, optio
   protoOrDescriptor.connectedCallback = connectedCallback;
 }
 
-function getRequiredMessage(level = 'warning', propertyName: string, tagName: string) {
+function getRequiredMessage(level = 'warning', propertyName: string, tagName: string): string {
   const tag = tagName.toLocaleLowerCase();
   return (
     `${capitalizeFirstLetter(

@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, registerElementSafely } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResultArray, html, LitElement, TemplateResult } from 'lit-element';
 
 /**
  * Web component modal actions to be used inside modal.
@@ -32,16 +32,16 @@ import { html, LitElement } from 'lit-element';
  * @element cds-modal-actions
  */
 export class CdsModalActions extends LitElement {
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('slot', 'modal-actions');
   }
 
-  render() {
+  render(): TemplateResult {
     return html`<slot></slot>`;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles];
   }
 }

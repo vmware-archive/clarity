@@ -22,7 +22,7 @@ import { registerElementSafely } from './../utils/register.js';
  */
 
 // TC39 Decorators proposal
-const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => {
+const standardCustomElement = (tagName: string, descriptor: ClassDescriptor): any => {
   const { kind, elements } = descriptor;
   return {
     kind,
@@ -34,7 +34,7 @@ const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => 
 };
 
 // Legacy TS Decorator
-const legacyCustomElement = (tagName: string, classDef: Constructor<HTMLElement>) => {
+const legacyCustomElement = (tagName: string, classDef: Constructor<HTMLElement>): any => {
   registerElementSafely(tagName, classDef);
   return classDef as any;
 };

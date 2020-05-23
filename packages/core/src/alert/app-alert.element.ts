@@ -7,6 +7,7 @@
 import { baseStyles, property, registerElementSafely } from '@clr/core/internal';
 import { CdsBaseAlert } from './alert.base.js';
 import { styles } from './app-alert.element.css.js';
+import { CSSResultArray } from 'lit-element';
 /**
  * App-level alerts are placed at the very top of the global context. They should
  * not be placed in any other configuration. Their purpose is to provide global
@@ -36,7 +37,7 @@ export class CdsAppAlert extends CdsBaseAlert {
   @property({ type: String })
   status: 'info' | 'warning' | 'danger';
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 }

@@ -10,11 +10,11 @@ import { LogService } from '../services/log.service.js';
 // Slot Query decorators are similar to the query decorator in lit-element.
 // Instead of querying the component template they query the content slot of the component.
 
-const legacyQuery = (descriptor: PropertyDescriptor, proto: {}, name: PropertyKey) => {
+const legacyQuery = (descriptor: PropertyDescriptor, proto: {}, name: PropertyKey): void => {
   Object.defineProperty(proto, name, descriptor);
 };
 
-const standardQuery = (descriptor: PropertyDescriptor, element: any) => ({
+const standardQuery = (descriptor: PropertyDescriptor, element: any): any => ({
   kind: 'method',
   placement: 'prototype',
   key: element.key,

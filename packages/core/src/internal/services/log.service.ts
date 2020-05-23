@@ -7,25 +7,25 @@
 import { existsInWindow } from '../utils/exists.js';
 
 export class LogService {
-  static log(...args: any) {
+  static log(...args: any): void {
     if (notTestingEnvironment()) {
       console.log(...args);
     }
   }
 
-  static warn(...args: any) {
+  static warn(...args: any): void {
     if (notTestingEnvironment()) {
       console.warn(...args);
     }
   }
 
-  static error(...args: any) {
+  static error(...args: any): void {
     if (notTestingEnvironment()) {
       console.error(...args);
     }
   }
 }
 
-function notTestingEnvironment() {
+function notTestingEnvironment(): boolean {
   return !existsInWindow(['jasmine']);
 }

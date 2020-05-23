@@ -20,11 +20,11 @@ export function isStringOrNil(val: any): boolean {
   return is(String, val) || isNil(val);
 }
 
-export function isObject(val: any) {
+export function isObject(val: any): boolean {
   return is(Object, val);
 }
 
-export function isObjectAndNotNilOrEmpty(val: any) {
+export function isObjectAndNotNilOrEmpty(val: any): boolean {
   return !isNilOrEmpty(val) && isObject(val);
 }
 
@@ -42,6 +42,6 @@ export function hasStringPropertyChangedAndNotNil(val: string | null | undefined
   return !isNilOrEmpty(val) && hasPropertyChanged(val, oldVal);
 }
 
-export function getEnumValues(enumeration: any) {
+export function getEnumValues(enumeration: any): any {
   return Object.values(enumeration);
 }

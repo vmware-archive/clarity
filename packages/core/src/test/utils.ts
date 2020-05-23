@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const spyOnFunction = <T>(obj: T, func: keyof T) => {
+export const spyOnFunction = <T>(obj: T, func: keyof T): jasmine.Spy => {
   // eslint-disable-next-line jasmine/no-unsafe-spy
   const spy = jasmine.createSpy(func as string);
   spyOnProperty(obj, func, 'get').and.returnValue(spy);
@@ -18,7 +18,7 @@ export function createTestElement(): HTMLElement {
   return element;
 }
 
-export function removeTestElement(element: HTMLElement) {
+export function removeTestElement(element: HTMLElement): void {
   element.remove();
 }
 
@@ -40,7 +40,12 @@ export function getComponentSlotContent(component: HTMLElement): { [name: string
   );
 }
 
-function retry(fn: any, maxTries = 10, promise?: Promise<any>, promiseObject?: { resolve: any; reject: any }) {
+function retry(
+  fn: any,
+  maxTries = 10,
+  promise?: Promise<any>,
+  promiseObject?: { resolve: any; reject: any }
+): Promise<any> {
   maxTries--;
   promiseObject = promiseObject || {
     resolve: null,
@@ -69,7 +74,7 @@ function retry(fn: any, maxTries = 10, promise?: Promise<any>, promiseObject?: {
   return promise;
 }
 
-export function componentIsStable(component: any) {
+export function componentIsStable(component: any): Promise<string> {
   return retry(
     () =>
       // eslint-disable-next-line no-async-promise-executor

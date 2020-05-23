@@ -26,6 +26,6 @@ export function elementExists(tagName: string, registry?: { get: (name: string) 
 
 export const existsInWindow = existsIn(__, window);
 
-export function isBrowser(win = window) {
+export function isBrowser(win = window): boolean {
   return !isNil(win);
 }

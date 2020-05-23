@@ -13,7 +13,7 @@ let angularVersion: string | undefined;
 let reactVersion: string | undefined;
 let vueVersion: string | undefined;
 
-export function getAngularVersion(useCache = true) {
+export function getAngularVersion(useCache = true): typeof angularVersion {
   if (!useCache || !angularVersion) {
     const appRoot = document && document.querySelector('[ng-version]');
     angularVersion = appRoot ? `${appRoot.getAttribute('ng-version')}` : undefined;
@@ -21,7 +21,7 @@ export function getAngularVersion(useCache = true) {
   return angularVersion;
 }
 
-export function getReactVersion(useCache = true) {
+export function getReactVersion(useCache = true): typeof reactVersion {
   if (!useCache || !reactVersion) {
     reactVersion = document.querySelector('[data-reactroot], [data-reactid]') ? 'unknown version' : undefined;
   }
@@ -29,7 +29,7 @@ export function getReactVersion(useCache = true) {
   return reactVersion;
 }
 
-export function getVueVersion(useCache = true) {
+export function getVueVersion(useCache = true): typeof vueVersion {
   if (!useCache || !vueVersion) {
     const all = document.querySelectorAll('*');
     let el;
@@ -45,6 +45,6 @@ export function getVueVersion(useCache = true) {
   return vueVersion;
 }
 
-export function isStorybook() {
+export function isStorybook(): boolean {
   return window.location.href.includes('localhost:6006');
 }

@@ -30,7 +30,7 @@ export enum IconShapeClassnames {
   SolidAlerted = 'solid--alerted',
 }
 
-export function getShapeClassname(shapeType: string) {
+export function getShapeClassname(shapeType: string): string {
   const classNamePrefix = 'clr-i-';
   let className: string;
 
@@ -82,18 +82,24 @@ export function getIconTshirtSizeClassname(
   return '';
 }
 
-export function getAllIconTshirtSizeClassnames(prefix = iconTshirtSizeClassnamePrefix, sizes = IconTshirtSizes) {
-  return getEnumValues(sizes).map(sz => prefix + sz);
+export function getAllIconTshirtSizeClassnames(
+  prefix = iconTshirtSizeClassnamePrefix,
+  sizes = IconTshirtSizes
+): string[] {
+  return getEnumValues(sizes).map((sz: IconTshirtSizes) => prefix + sz);
 }
 
-export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes) {
+export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes): boolean {
   return getEnumValues(sizes).indexOf(classname) > -1;
 }
 
 export function getIconSvgClasses(icon: IconShapeCollection): string {
-  const testSolid = (i: IconShapeCollection) => (iconHasSolidShapes(i) ? IconSvgClassnames.Solid : '');
-  const testBadged = (i: IconShapeCollection) => (iconHasBadgedShapes(i) ? IconSvgClassnames.Badged : '');
-  const testAlerted = (i: IconShapeCollection) => (iconHasAlertedShapes(i) ? IconSvgClassnames.Alerted : '');
+  const testSolid = (i: IconShapeCollection): IconSvgClassnames | string =>
+    iconHasSolidShapes(i) ? IconSvgClassnames.Solid : '';
+  const testBadged = (i: IconShapeCollection): IconSvgClassnames | string =>
+    iconHasBadgedShapes(i) ? IconSvgClassnames.Badged : '';
+  const testAlerted = (i: IconShapeCollection): IconSvgClassnames | string =>
+    iconHasAlertedShapes(i) ? IconSvgClassnames.Alerted : '';
   const tests = [testSolid, testBadged, testAlerted];
   return transformToSpacedString(tests, icon);
 }
@@ -105,7 +111,7 @@ export enum SizeUpdateStrategies {
   NilSizeValue = 'value-is-nil',
 }
 
-export function getUpdateSizeStrategy(size: string) {
+export function getUpdateSizeStrategy(size: string): SizeUpdateStrategies {
   if (isNil(size) || size === '') {
     return SizeUpdateStrategies.NilSizeValue;
   }
@@ -121,7 +127,7 @@ export function getUpdateSizeStrategy(size: string) {
   return SizeUpdateStrategies.BadSizeValue;
 }
 
-export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
+export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string): void {
   const updateStrategy = getUpdateSizeStrategy(size);
   const newTshirtSize = getIconTshirtSizeClassname(size);
 

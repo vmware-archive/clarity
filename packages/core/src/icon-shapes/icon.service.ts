@@ -7,6 +7,7 @@
 import {
   IconAlias,
   IconAliasLegacyObject,
+  IconNameString,
   IconRegistry,
   IconShapeSources,
   IconShapeTuple,
@@ -41,15 +42,15 @@ export class ClarityIcons {
     return { ...iconRegistry };
   }
 
-  static addIcons(...shapes: IconShapeTuple[]) {
+  static addIcons(...shapes: IconShapeTuple[]): void {
     addIcons(shapes, iconRegistry);
   }
 
-  static addAliases(...aliases: IconAlias[]) {
+  static addAliases(...aliases: IconAlias[]): void {
     aliases.forEach(alias => setIconAliases(alias, iconRegistry));
   }
 
-  static getIconNameFromShape(iconShape: IconShapeTuple) {
+  static getIconNameFromShape(iconShape: IconShapeTuple): IconNameString {
     return iconShape[0];
   }
 
@@ -59,7 +60,7 @@ export class ClarityIcons {
   }
 
   /** @deprecated legacy API */
-  static add(shapes: IconShapeSources) {
+  static add(shapes: IconShapeSources): void {
     for (const shapeName in shapes) {
       // eslint-disable-next-line no-prototype-builtins
       if (shapes.hasOwnProperty(shapeName)) {
@@ -69,7 +70,7 @@ export class ClarityIcons {
   }
 
   /** @deprecated legacy API */
-  static alias(alias: IconAliasLegacyObject) {
+  static alias(alias: IconAliasLegacyObject): void {
     legacyAlias(alias, iconRegistry);
   }
 }

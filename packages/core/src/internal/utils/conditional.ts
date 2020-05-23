@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export function returnOrFallthrough(conditions: any[], fallthrough: any) {
+export function returnOrFallthrough(conditions: any[], fallthrough: any): any {
   const truthyCondition = conditions.find(cond => !!cond[0]);
   if (truthyCondition) {
     return truthyCondition[1]();

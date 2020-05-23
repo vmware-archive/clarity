@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, registerElementSafely } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResultArray, html, LitElement, TemplateResult } from 'lit-element';
 import { styles } from './alert-content.element.css.js';
 
 /**
@@ -32,11 +32,11 @@ import { styles } from './alert-content.element.css.js';
  * @element cds-alert-content
  */
 export class CdsAlertContent extends LitElement {
-  render() {
+  render(): TemplateResult {
     return html` <slot></slot> `;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 }

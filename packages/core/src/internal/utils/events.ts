@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export function stopEvent(event: Event) {
+export function stopEvent(event: Event): void {
   event.preventDefault();
   event.stopPropagation();
 }

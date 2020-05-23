@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, registerElementSafely } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResultArray, html, LitElement, TemplateResult } from 'lit-element';
 import { styles } from './alert-actions.element.css.js';
 
 /**
@@ -28,16 +28,16 @@ import { styles } from './alert-actions.element.css.js';
  * @element cds-alert-actions
  */
 export class CdsAlertActions extends LitElement {
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('slot', 'actions');
   }
 
-  render() {
+  render(): TemplateResult {
     return html`<slot></slot>`;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 }

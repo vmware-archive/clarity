@@ -14,7 +14,7 @@ import {
   setAttributes,
   StatusTypes,
 } from '@clr/core/internal';
-import { html } from 'lit-element';
+import { CSSResult, html, TemplateResult } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
 ClarityIcons.addIcons(timesIcon);
@@ -53,7 +53,7 @@ export class CdsTag extends CdsBaseButton {
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })
   color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
-  static get styles() {
+  static get styles(): CSSResult[] {
     return [baseStyles, styles];
   }
 
@@ -71,7 +71,7 @@ export class CdsTag extends CdsBaseButton {
 
   @querySlot('cds-badge') private badge: HTMLElement;
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     // TODO: this routine is repeated in button.element.ts. it may make sense to find a way to
     // abstract it for dry-ing and reuse
@@ -79,7 +79,7 @@ export class CdsTag extends CdsBaseButton {
     setAttributes(this.badge, ['slot', 'tag-badge']);
   }
 
-  updated(props: Map<string, string | boolean | null | undefined>) {
+  updated(props: Map<string, string | boolean | null | undefined>): void {
     super.updated(props);
 
     if (props.has('closable') && props.get('closable') === true) {
@@ -91,7 +91,7 @@ export class CdsTag extends CdsBaseButton {
     }
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="private-host" cds-layout="horizontal">
         ${this.icon ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>` : html``}

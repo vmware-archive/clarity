@@ -80,7 +80,7 @@ export const textEditCollectionAliases: IconAlias[] = [];
  * ```
  *
  */
-export function loadTextEditIconSet() {
+export function loadTextEditIconSet(): void {
   ClarityIcons.addIcons(...textEditCollectionIcons);
   ClarityIcons.addAliases(...textEditCollectionAliases);
 }

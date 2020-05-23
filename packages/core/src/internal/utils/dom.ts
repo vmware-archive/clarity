@@ -6,27 +6,27 @@
 import includes from 'ramda/es/includes';
 import without from 'ramda/es/without';
 
-export function getElementWidth(element: HTMLElement, unit = 'px') {
+export function getElementWidth(element: HTMLElement, unit = 'px'): string {
   if (element) {
     return element.getBoundingClientRect ? element.getBoundingClientRect().width + unit : '';
   }
   return '';
 }
 
-export function getElementWidthUnless(element: HTMLElement, unless: boolean) {
+export function getElementWidthUnless(element: HTMLElement, unless: boolean): string {
   if (!unless) {
     return getElementWidth(element);
   }
   return '';
 }
 
-export function isHTMLElement(el: any) {
+export function isHTMLElement(el: any): boolean {
   return !!el && el instanceof HTMLElement;
 }
 
 export type HTMLAttributeTuple = [string, string | boolean];
 
-export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttributeTuple[]) {
+export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttributeTuple[]): void {
   if (element) {
     attributeTuples.forEach(([attr, val]) => {
       if (val === false || val === null) {
@@ -38,7 +38,7 @@ export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttr
   }
 }
 
-export function removeAttributes(element: HTMLElement, ...attrs: string[]) {
+export function removeAttributes(element: HTMLElement, ...attrs: string[]): void {
   if (element) {
     attrs.forEach(attr => {
       element.removeAttribute(attr);
@@ -46,7 +46,7 @@ export function removeAttributes(element: HTMLElement, ...attrs: string[]) {
   }
 }
 
-export function addAttributeValue(element: HTMLElement, attr: string, value: string) {
+export function addAttributeValue(element: HTMLElement, attr: string, value: string): void {
   if (element) {
     const currentAttrVal = element.getAttribute(attr);
     if (!currentAttrVal) {
@@ -58,7 +58,7 @@ export function addAttributeValue(element: HTMLElement, attr: string, value: str
   }
 }
 
-export function removeAttributeValue(element: HTMLElement, attr: string, value: string) {
+export function removeAttributeValue(element: HTMLElement, attr: string, value: string): void {
   if (element) {
     const currentAttrVal = element.getAttribute(attr);
     if (currentAttrVal) {

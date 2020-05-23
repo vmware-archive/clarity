@@ -113,7 +113,7 @@ export const coreCollectionAliases: IconAlias[] = [
  * ```
  *
  */
-export function loadCoreIconSet() {
+export function loadCoreIconSet(): void {
   ClarityIcons.addIcons(...coreCollectionIcons);
   ClarityIcons.addAliases(...coreCollectionAliases);
 }

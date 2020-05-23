@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 import { FocusTrap } from '../utils/focus-trap.js';
 import { property } from '../decorators/property.js';
 export class CdsBaseFocusTrap extends LitElement {
@@ -13,7 +13,7 @@ export class CdsBaseFocusTrap extends LitElement {
   @property({ type: Boolean })
   private __demoMode = false;
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
 
     if (!this.__demoMode) {
@@ -21,7 +21,8 @@ export class CdsBaseFocusTrap extends LitElement {
       this.focusTrap.enableFocusTrap();
     }
   }
-  disconnectedCallback() {
+
+  disconnectedCallback(): void {
     super.disconnectedCallback();
 
     if (!this.__demoMode) {
@@ -29,7 +30,7 @@ export class CdsBaseFocusTrap extends LitElement {
     }
   }
 
-  protected render() {
+  protected render(): TemplateResult {
     return html`<slot></slot>`;
   }
 }

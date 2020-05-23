@@ -50,7 +50,7 @@ export const chartCollectionAliases: IconAlias[] = [[lineChartIconName, ['analyt
  * ```
  *
  */
-export function loadChartIconSet() {
+export function loadChartIconSet(): void {
   ClarityIcons.addIcons(...chartCollectionIcons);
   ClarityIcons.addAliases(...chartCollectionAliases);
 }

@@ -16,7 +16,7 @@ export interface EventOptions {
 export class EventEmitter<T> {
   constructor(private target: HTMLElement, private eventName: string) {}
 
-  emit(value: T, options?: EventOptions) {
+  emit(value: T, options?: EventOptions): void {
     this.target.dispatchEvent(
       new CustomEvent<T>(this.eventName, { detail: value, ...options })
     );
@@ -24,12 +24,12 @@ export class EventEmitter<T> {
 }
 
 // Legacy TS Decorator
-function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
+function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey): void {
   Object.defineProperty(protoOrDescriptor, name, descriptor);
 }
 
 // TC39 Decorators proposal
-function standardEvent(descriptor: PropertyDescriptor, element: { key: string }) {
+function standardEvent(descriptor: PropertyDescriptor, element: { key: string }): any {
   return {
     kind: 'method',
     placement: 'prototype',

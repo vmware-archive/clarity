@@ -15,7 +15,7 @@ export interface FocusTrapElement extends HTMLElement {
 export function focusElementIfInCurrentFocusTrapElement(
   focusedElement: HTMLElement,
   focusTrapElement: FocusTrapElement
-) {
+): void {
   if (
     FocusTrapTracker.getCurrent() === focusTrapElement &&
     elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)
@@ -24,7 +24,10 @@ export function focusElementIfInCurrentFocusTrapElement(
   }
 }
 
-export function elementIsOutsideFocusTrapElement(focusedElement: HTMLElement, focusTrapElement: FocusTrapElement) {
+export function elementIsOutsideFocusTrapElement(
+  focusedElement: HTMLElement,
+  focusTrapElement: FocusTrapElement
+): boolean {
   return (
     !focusTrapElement.contains(focusedElement) ||
     focusedElement === focusTrapElement.topReboundElement ||
@@ -32,14 +35,14 @@ export function elementIsOutsideFocusTrapElement(focusedElement: HTMLElement, fo
   );
 }
 
-export function createFocusTrapReboundElement() {
+export function createFocusTrapReboundElement(): HTMLElement {
   const offScreenSpan = document.createElement('span');
   offScreenSpan.setAttribute('tabindex', '0');
   offScreenSpan.classList.add('offscreen-focus-rebounder');
   return offScreenSpan;
 }
 
-export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrapElement) {
+export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrapElement): void {
   if (focusTrapElement) {
     focusTrapElement.topReboundElement = createFocusTrapReboundElement();
     focusTrapElement.bottomReboundElement = createFocusTrapReboundElement();
@@ -58,7 +61,7 @@ export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrap
   }
 }
 
-export function removeReboundElementsFromFocusTrapElement(focusTrapElement: FocusTrapElement) {
+export function removeReboundElementsFromFocusTrapElement(focusTrapElement: FocusTrapElement): void {
   if (focusTrapElement) {
     if (focusTrapElement.topReboundElement && focusTrapElement.parentElement) {
       focusTrapElement.parentElement.removeChild(focusTrapElement.topReboundElement);
@@ -80,7 +83,7 @@ export class FocusTrap {
     this.focusTrapElement = hostElement as FocusTrapElement;
   }
 
-  enableFocusTrap() {
+  enableFocusTrap(): void {
     if (FocusTrapTracker.getCurrent() === this.focusTrapElement) {
       throw new Error('Focus trap is already enabled for this instance.');
     }
@@ -97,7 +100,7 @@ export class FocusTrap {
     document.addEventListener('focusin', this.onFocusInEvent);
   }
 
-  removeFocusTrap() {
+  removeFocusTrap(): void {
     document.removeEventListener('focusin', this.onFocusInEvent);
     removeAttributeValue(document.body, 'cds-layout', 'no-scrolling');
     removeReboundElementsFromFocusTrapElement(this.focusTrapElement);
@@ -107,7 +110,7 @@ export class FocusTrap {
     }
   }
 
-  private onFocusIn(event: FocusEvent) {
+  private onFocusIn(event: FocusEvent): void {
     focusElementIfInCurrentFocusTrapElement(event.target as HTMLElement, this.focusTrapElement);
   }
 }

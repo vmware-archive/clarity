@@ -16,7 +16,7 @@ import {
   StatusTypes,
   UniqueId,
 } from '@clr/core/internal';
-import { html, LitElement, query } from 'lit-element';
+import { CSSResultArray, html, LitElement, query, TemplateResult } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
@@ -48,7 +48,7 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --badge-color
  */
 export class CdsIcon extends IconMixinClass {
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 
@@ -56,7 +56,7 @@ export class CdsIcon extends IconMixinClass {
   private _size: string;
 
   @property({ type: String })
-  get shape() {
+  get shape(): string {
     return hasIcon(this._shape, ClarityIcons.registry) ? this._shape : 'unknown';
   }
 
@@ -72,7 +72,7 @@ export class CdsIcon extends IconMixinClass {
     }
   }
 
-  get size() {
+  get size(): string {
     return this._size;
   }
 
@@ -164,29 +164,29 @@ export class CdsIcon extends IconMixinClass {
 
   private idForAriaLabel = 'aria-' + this._idPrefix + this._uniqueId;
 
-  firstUpdated() {
+  firstUpdated(): void {
     this.updateSVGAriaLabel();
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: Map<string, any>): void {
     if (props.has('title')) {
       this.updateSVGAriaLabel();
     }
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('role', 'none');
   }
 
-  protected render() {
+  protected render(): TemplateResult {
     return html`
       ${unsafeHTML(ClarityIcons.registry[this.shape])}
       ${this.title ? html`<span id="${this.idForAriaLabel}" class="clr-sr-only">${this.title}</span>` : ''}
     `;
   }
 
-  private updateSVGAriaLabel() {
+  private updateSVGAriaLabel(): void {
     if (this.title) {
       this.svg.removeAttribute('aria-label'); // remove empty label that makes icon decorative by default
       this.svg.setAttribute('aria-labelledby', this.idForAriaLabel); // use labelledby for better SR support

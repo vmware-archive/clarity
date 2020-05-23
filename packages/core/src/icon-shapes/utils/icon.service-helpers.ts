@@ -9,7 +9,7 @@ import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer.js';
 import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces.js';
 
-export function addIcons(shapes: IconShapeTuple[], registry: IconRegistry) {
+export function addIcons(shapes: IconShapeTuple[], registry: IconRegistry): void {
   shapes.forEach(s => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     addIcon(s, registry);
@@ -24,19 +24,19 @@ export function getIcon(shapeName: string, registry: IconRegistry): string {
   return registry[shapeName] ? (registry[shapeName] as string) : (registry.unknown as string);
 }
 
-function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistry) {
+function addIconToRegistry(shape: IconShapeTuple, registry: IconRegistry): void {
   const [shapeName, template] = shape;
   registry[shapeName] = renderIcon(template);
 }
 
-export function addIcon(shape: IconShapeTuple, registry: IconRegistry) {
+export function addIcon(shape: IconShapeTuple, registry: IconRegistry): void {
   const [shapeName] = shape;
   if (!hasIcon(shapeName, registry)) {
     addIconToRegistry(shape, registry);
   }
 }
 
-export function setIconAlias(shapeName: string, aliasName: string, registry: IconRegistry) {
+export function setIconAlias(shapeName: string, aliasName: string, registry: IconRegistry): void {
   if (existsIn([shapeName], registry)) {
     Object.defineProperty(registry, aliasName, {
       get: () => {
@@ -48,7 +48,7 @@ export function setIconAlias(shapeName: string, aliasName: string, registry: Ico
   }
 }
 
-export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry) {
+export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry): void {
   if (registry[iconAlias[0]]) {
     iconAlias[1].forEach(a => {
       setIconAlias(iconAlias[0], a, registry);
@@ -56,7 +56,7 @@ export function setIconAliases(iconAlias: IconAlias, registry: IconRegistry) {
   }
 }
 
-export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistry) {
+export function legacyAlias(aliases: IconAliasLegacyObject, registry: IconRegistry): void {
   for (const shapeNameKey in aliases) {
     // eslint-disable-next-line no-prototype-builtins
     if (aliases.hasOwnProperty(shapeNameKey)) {

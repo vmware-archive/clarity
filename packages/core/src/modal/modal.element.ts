@@ -16,7 +16,7 @@ import {
   registerElementSafely,
   UniqueId,
 } from '@clr/core/internal';
-import { html } from 'lit-element';
+import { CSSResult, html, TemplateResult } from 'lit-element';
 import { CdsBaseFocusTrap } from '../internal/base/focus-trap.base.js';
 import { styles } from './modal.element.css.js';
 
@@ -48,7 +48,7 @@ applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
  * @element cds-modal
  */
 export class CdsModal extends ModalMixinClass {
-  static get styles() {
+  static get styles(): CSSResult[] {
     return [baseStyles, styles];
   }
   @event() private closeChange: EventEmitter<boolean>;
@@ -63,7 +63,7 @@ export class CdsModal extends ModalMixinClass {
 
   private idForAriaLabel = `${this._idPrefix}${this._uniqueId}`;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="private-host" cds-layout="horizontal p:md p@md:xl align:center">
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
@@ -104,21 +104,21 @@ export class CdsModal extends ModalMixinClass {
     `;
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     window.addEventListener('keydown', this.fireEventOnEscape);
   }
 
-  disconnectedCallback() {
+  disconnectedCallback(): void {
     super.disconnectedCallback();
     window.removeEventListener('keydown', this.fireEventOnEscape);
   }
 
-  closeModal() {
+  closeModal(): void {
     this.closeChange.emit(true);
   }
 
-  private fireEventOnEscape = (e: KeyboardEvent) => {
+  private fireEventOnEscape = (e: KeyboardEvent): void => {
     if (e.keyCode === ESC || e.key === 'Esc') {
       this.closeModal();
     }

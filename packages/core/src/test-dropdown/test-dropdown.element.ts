@@ -12,7 +12,7 @@ import {
   property,
   registerElementSafely,
 } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResult, html, LitElement, TemplateResult } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css.js';
 
@@ -31,7 +31,7 @@ import { styles } from './test-dropdown.element.css.js';
  *
  * @beta
  * @slot default - Content slot for dropdown content
- * @event {boolean} openChange - notify open state change of dropdown
+ * @event boolean openChange - notify open state change of dropdown
  * @cssprop --border-color
  * @cssprop --background-color
  * @cssprop --text-color
@@ -41,7 +41,7 @@ export class CdsTestDropdown extends LitElement {
 
   private _open = false;
 
-  get open() {
+  get open(): boolean {
     return this._open;
   }
 
@@ -60,11 +60,11 @@ export class CdsTestDropdown extends LitElement {
   @property({ type: String })
   title = 'dropdown';
 
-  static get styles() {
+  static get styles(): CSSResult[] {
     return [baseStyles, styles];
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="dropdown">
         <button @click="${() => this.toggle()}" class="btn">${this.title}</button>
@@ -79,7 +79,7 @@ export class CdsTestDropdown extends LitElement {
   }
 
   /** Toggle the current open state of the dropdown */
-  toggle() {
+  toggle(): void {
     this.open = !this.open;
   }
 }

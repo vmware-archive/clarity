@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { CSSResultArray, html, LitElement, TemplateResult } from 'lit-element';
 import { styles } from './badge.element.css.js';
 
 /**
@@ -45,7 +45,7 @@ export class CdsBadge extends LitElement {
   @property({ type: String })
   status: StatusTypes;
 
-  render() {
+  render(): TemplateResult {
     return html`
       <div class="private-host">
         <span
@@ -55,7 +55,7 @@ export class CdsBadge extends LitElement {
     `;
   }
 
-  static get styles() {
+  static get styles(): CSSResultArray {
     return [baseStyles, styles];
   }
 }

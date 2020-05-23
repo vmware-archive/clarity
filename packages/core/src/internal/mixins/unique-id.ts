@@ -12,14 +12,14 @@ export interface UniqueId extends HTMLElement {}
 export class UniqueId {
   private _id: number;
 
-  get _uniqueId() {
+  get _uniqueId(): number {
     if (typeof this._id === 'undefined') {
       this._id = idGenerator++;
     }
     return this._id;
   }
 
-  get _idPrefix() {
+  get _idPrefix(): string {
     return this.tagName.toLowerCase() + '-';
   }
 }

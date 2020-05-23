@@ -3,6 +3,8 @@
   "version": "3.1.0",
   "scripts": {
     "start": "ng build clr-angular-dev --watch",
+    "start:dev": "ng build clr-angular-dev --watch --prod",
+    "start:storybook": "stmux -w always -e ERROR -m beep,system [ \"npm run start:dev\" : \"sleep 25 && npm run storybook\" : \"npm run watch:scss\" ]",
     "serve": "ng serve dev",
     "serve:dark": "ng serve dev -c dark",
     "postinstall": "ngcc --create-ivy-entry-points && node ../../scripts/ngcc-clean",
@@ -10,6 +12,7 @@
     "build:package": "cpy npm.json README.md ../../dist/clr-angular/; mv ../../dist/clr-angular/npm.json ../../dist/clr-angular/package.json; replace '@VERSION' $npm_package_version ../../dist/clr-angular/package.json",
     "build:ng": "ng build clr-angular --prod",
     "build:golden": "ts-api-guardian --out ../../dist/golden/clr-angular.d.ts --stripExportPattern '^Çlr' ../../dist/clr-angular/index.d.ts",
+    "clean:deps": "shx rm -rf ./dist/clr-icons ./dist/core",
     "predev": "ng build clr-angular-dev --prod",
     "dev": "ng build dev --prod --progress=false",
     "dev:dark": "ng build dev -c dark --prod --progress=false",
@@ -22,7 +25,16 @@
     "lint:styles": "stylelint \"src/**/*.scss\" \"projects/**/*.scss\"",
     "lint:fix": "eslint --fix -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\" && stylelint --fix \"src/**/*.scss\" \"projects/**/*.scss\"",
     "pregolden:fix": "npm run build",
-    "golden:fix": "ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ../../dist/clr-angular/index.d.ts"
+    "golden:fix": "ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ../../dist/clr-angular/index.d.ts",
+    "prestorybook": "npm run scss && npm run clean:deps && shx cp -r ../../dist/core ../../dist/clr-icons ./dist",
+    "storybook": "start-storybook -s .storybook/public -p 6006",
+    "prebuild-storybook": "npm run scss && npm run clean:deps && shx cp -r ../../dist/core ../../dist/clr-icons ./dist",
+    "build-storybook": "build-storybook -s .storybook/public .storybook -o dist/storybook/angular",
+    "watch:scss": "chokidar \"projects/clr-angular/src/**/*.scss\" -c \"npm run scss\"",
+    "scss": "run-s scss:compile scss:prefix scss:optimize",
+    "scss:compile": "sass --source-map --precision=8 ./projects/clr-angular/src/main.scss dist/clr-ui/clr-ui.css; sass --source-map --precision=8 projects/clr-angular/src/dark-theme.scss dist/clr-ui/clr-ui-dark.css",
+    "scss:prefix": "postcss ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.css; postcss ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.css",
+    "scss:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure"
   },
   "private": true,
   "dependencies": {
@@ -47,13 +59,25 @@
     "@angular/cli": "~10.0.0-next.4",
     "@angular/compiler-cli": "~10.0.0-next.6",
     "@angular/language-service": "~10.0.0-next.6",
+    "@babel/core": "^7.9.6",
+    "@storybook/addon-actions": "^6.0.0-beta.13",
+    "@storybook/addon-cssresources": "6.0.0-beta.13",
+    "@storybook/addon-knobs": "6.0.0-beta.13",
+    "@storybook/addon-links": "^6.0.0-beta.13",
+    "@storybook/addons": "^6.0.0-beta.13",
+    "@storybook/angular": "^6.0.0-beta.13",
+    "@storybook/cli": "6.0.0-beta.13",
+    "@storybook/theming": "6.0.0-beta.13",
     "@types/jasmine": "3.4.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "2.30.0",
     "@typescript-eslint/parser": "2.30.0",
+    "babel-loader": "^8.1.0",
+    "chokidar-cli": "^2.1.0",
     "codelyzer": "^5.1.2",
     "cpy-cli": "3.1.0",
+    "csso-cli": "^3.0.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-jasmine": "4.1.1",
@@ -73,11 +97,28 @@
     "lit-html": "^1.2.1",
     "ng-packagr": "^10.0.0-next.0",
     "npm-run-all": "4.1.5",
+    "postcss-cli": "^7.1.0",
     "prettier": "2.0.5",
     "replace": "1.2.0",
+    "shx": "^0.3.2",
+    "stmux": "^1.8.0",
     "stylelint": "13.3.3",
     "ts-api-guardian": "0.5.0",
     "ts-node": "~8.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "~3.8.3"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "IE 11",
+    "not IE 9-10"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   }
 }

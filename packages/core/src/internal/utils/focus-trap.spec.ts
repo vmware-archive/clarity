@@ -208,7 +208,7 @@ describe('Focus Trap Utilities: ', () => {
       });
 
       it('should throw an error if enabledFocusTrap is called again', () => {
-        const secondCall = () => focusTrap.enableFocusTrap();
+        const secondCall = (): void => focusTrap.enableFocusTrap();
         expect(secondCall).toThrow();
       });
     });

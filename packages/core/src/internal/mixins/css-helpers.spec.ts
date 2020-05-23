@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 import { registerElementSafely } from '../utils/register.js';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
 import { applyMixins } from './apply-mixins.js';
@@ -15,7 +15,7 @@ class CssHelpersTestBaseElement extends LitElement {}
 applyMixins(CssHelpersTestBaseElement, [CssHelpers]);
 
 class CssHelpersTestElement extends CssHelpersTestBaseElement {
-  render() {
+  render(): TemplateResult {
     return html`ohai`;
   }
 }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, PropertyDeclarations, TemplateResult } from 'lit-element';
 import { registerElementSafely } from '../utils/register.js';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
 import { applyMixins } from './apply-mixins.js';
@@ -17,16 +17,16 @@ class UniqueIdTestBaseElement extends LitElement {}
 applyMixins(UniqueIdTestBaseElement, [UniqueId]);
 
 class UniqueIdTestElement extends UniqueIdTestBaseElement {
-  static get properties() {
+  static get properties(): PropertyDeclarations {
     return {
       id: { type: String, reflect: true },
     };
   }
-  firstUpdated() {
+  firstUpdated(): void {
     this.id = this._idPrefix + this._uniqueId;
     this.setAttribute('id', this.id);
   }
-  render() {
+  render(): TemplateResult {
     return html`ohai`;
   }
 }

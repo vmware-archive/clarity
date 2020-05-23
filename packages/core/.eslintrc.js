@@ -2,14 +2,14 @@ const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
 
-// some temporary relaxation for spec and story files
+// temporary relaxations for story files
 const overrideRules = {
-  '@typescript-eslint/explicit-function-return-type': 0, // TOO MUCH WORK AT THE MOMENT ;)
+  '@typescript-eslint/explicit-function-return-type': 0,
 };
 
 const overrides = [
   {
-    files: ['*.stories.ts', '*.spec.ts'],
+    files: ['*.stories.ts'],
     rules: overrideRules,
   },
 ];

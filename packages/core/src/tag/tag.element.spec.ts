@@ -16,7 +16,10 @@ describe('tag element', () => {
 
   const closeIconString = '<cds-icon shape="times"';
 
-  function getTagComponentFromElement(el: HTMLElement, type: 'readonly' | 'closable' | 'clickable' = 'clickable') {
+  function getTagComponentFromElement(
+    el: HTMLElement,
+    type: 'readonly' | 'closable' | 'clickable' = 'clickable'
+  ): CdsTag {
     return el.querySelector<CdsTag>(`cds-tag.${type}-tag`);
   }
 

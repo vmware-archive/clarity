@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 import { registerElementSafely } from '../utils/register.js';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
 import { applyMixins } from './apply-mixins.js';
 import { UniqueId } from './unique-id.js';
 
 class PristineElement extends LitElement {
-  render() {
+  render(): TemplateResult {
     return html`ohai`;
   }
 }
@@ -27,7 +27,7 @@ interface MixinBaseElement extends LitElement, UniqueId {}
 
 // Create mixin element
 class MixinElement extends MixinBaseElement {
-  render() {
+  render(): TemplateResult {
     return html`aloha`;
   }
 }

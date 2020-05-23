@@ -56,7 +56,7 @@ describe('@property decorator defaults', () => {
     class Proto {
       testProp: undefined;
       tagName = 'cds-test-error';
-      connectedCallback() {
+      connectedCallback(): void {
         // do nothing
       }
     }
@@ -83,7 +83,7 @@ describe('@property decorator defaults', () => {
     class Proto {
       test: undefined;
       tagName = 'cds-test-warning';
-      connectedCallback() {
+      connectedCallback(): void {
         // do nothing
       }
     }

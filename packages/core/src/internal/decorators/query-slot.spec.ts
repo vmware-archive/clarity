@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from './../../test/utils.js';
 import { querySlot, querySlotAll } from './query-slot.js';
@@ -18,7 +18,7 @@ class TestElement extends LitElement {
   @querySlot('#errorMessage', { required: 'error', requiredMessage: 'test message' })
   testErrorWithMessage: HTMLDivElement;
 
-  render() {
+  render(): TemplateResult {
     return html` <slot></slot> `;
   }
 }
@@ -62,12 +62,12 @@ describe('query slot decorator', () => {
   });
 
   it('should throw if element is required', () => {
-    const el = () => component.testError;
+    const el = (): any => component.testError;
     expect(el).toThrow();
   });
 
   it('should throw custom message if element is required ', () => {
-    const el = () => component.testErrorWithMessage;
+    const el = (): any => component.testErrorWithMessage;
     expect(el).toThrow(new Error('test message'));
   });
 

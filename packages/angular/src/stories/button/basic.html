@@ -4,28 +4,24 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<div>
-  <!--  <h1>{{ buttonSize ? 'Small' : buttonInverse ? 'Inverse' : 'Regular' }} Buttons</h1>-->
-  <h1>{{ (!buttonSize && !buttonInverse) ? 'Regular' : (buttonSize ? 'Small' : 'Inverse') }} Buttons</h1>
-  <section [class.inverse]="buttonInverse">
-    <button
-      class="btn"
-      [class.btn-icon]="buttonIcon"
-      [class.btn-inverse]="buttonInverse"
-      [class.btn-block]="buttonBlock"
-      [class.btn-sm]="buttonSize"
-      [ngClass]="buttonType"
-      [attr.disabled]="disabled ? 'disabled' : null"
-    >
-      <span *ngIf="!buttonIcon">Primary</span>
-      <clr-icon *ngIf="buttonIcon" shape="home"></clr-icon>
-    </button>
-  </section>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <h1>{{ (!buttonSize && !buttonInverse) ? 'Regular' : (buttonSize ? 'Small' : 'Inverse') }} Buttons</h1>
+      <section [class.inverse]="buttonInverse">
+        <button
+          class="btn"
+          [class.btn-icon]="buttonIcon"
+          [class.btn-inverse]="buttonInverse"
+          [class.btn-block]="buttonBlock"
+          [class.btn-sm]="buttonSize"
+          [ngClass]="buttonType"
+          [attr.disabled]="disabled ? 'disabled' : null"
+        >
+          <span *ngIf="!buttonIcon">Primary</span>
+          <clr-icon *ngIf="buttonIcon" shape="home"></clr-icon>
+        </button>
+      </section>
+    </div>
+  </div>
 </div>
-
-<!-- TODO: maybe a separate story would be better -->
-<!--<div>-->
-<!--  <h1>Loading Buttons</h1>-->
-<!--  <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="validateDemo()">Validate</button>-->
-<!--  <button [clrLoading]="submitBtnState" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>-->
-<!--</div>-->

@@ -3,57 +3,32 @@
   ~ All Rights ReserveThis software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <clr-datagrid
+        class="data-overflow"
+        [clrDgLoading]="loading"
+        [style.height.px]="fixedHeight"
+        [class.datagrid-compact]="compactSize"
+        [(clrDgSelected)]="selectedEmployees"
+      >
+        <clr-dg-column [style.width.px]="96">ID</clr-dg-column>
+        <clr-dg-column [style.width.px]="96" [clrDgField]="'name'">
+          Name
+        </clr-dg-column>
+        <clr-dg-column>Role</clr-dg-column>
 
-<clr-datagrid
-  class="data-overflow"
-  [clrDgLoading]="loading"
-  [class.dg-fixed-height]="fixedHeight"
-  [class.datagrid-compact]="compactSize"
-  [(clrDgSelected)]="selectedEmployees"
->
-  <!--  <clr-dg-action-bar>-->
-  <!--    <div class="btn-group">-->
-  <!--      <button type="button" class="btn btn-sm btn-secondary" (click)="batchAction('add')">Add-->
-  <!--        to group</button>-->
-  <!--      <button type="button" class="btn btn-sm btn-secondary" (click)="batchAction('delete')" >Delete</button>-->
-  <!--      <button type="button" class="btn btn-sm btn-secondary" (click)="batchAction('update')" *ngIf="selectedEmployees.length == 1">Edit</button>-->
-  <!--    </div>-->
-  <!--    <div class="btn-group">-->
-  <!--      <clr-dropdown>-->
-  <!--        <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>-->
-  <!--          Export-->
-  <!--        </button>-->
-  <!--        <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>-->
-  <!--          <button type="button" (click)="batchAction('export-all')" clrDropdownItem>Export All</button>-->
-  <!--          <button type="button" (click)="batchAction('export-selected')" [disabled]="selected.length === 0" clrDropdownItem>Export Selected Items</button>-->
-  <!--        </clr-dropdown-menu>-->
-  <!--      </clr-dropdown>-->
-  <!--    </div>-->
-  <!--  </clr-dg-action-bar>-->
-  <clr-dg-column></clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'">
-    Name
-  </clr-dg-column>
-  <clr-dg-column>Role</clr-dg-column>
+        <clr-dg-row *clrDgItems="let employee of employeeList">
+          <clr-dg-cell>{{ employee.id }}</clr-dg-cell>
+          <clr-dg-cell>{{ employee.name | titlecase }}</clr-dg-cell>
+          <clr-dg-cell>{{ employee.role}}</clr-dg-cell>
+        </clr-dg-row>
 
-  <clr-dg-row *clrDgItems="let employee of employeeList">
-    <!-- Story book issue: clicking on a button doesn't log the action -->
-    <!--    <clr-dg-action-overflow>-->
-    <!--      <button class="action-item" (click)="onEdit(user)">Edit</button>-->
-    <!--      <button class="action-item" (click)="onDelete(user)">Delete</button>-->
-    <!--    </clr-dg-action-overflow>-->
-    <clr-dg-cell>{{ employee.id }}</clr-dg-cell>
-    <clr-dg-cell>{{ employee.name | titlecase }}</clr-dg-cell>
-    <clr-dg-cell>{{ employee.role}}</clr-dg-cell>
-  </clr-dg-row>
-
-  <clr-dg-footer>
-    <!-- Storybook doesn't update when the page changes -->
-    <!--    <clr-dg-pagination #pagination [clrDgPageSize]="5">-->
-    <!--      <clr-dg-page-size [clrPageSizeOptions]="[5, 10]">Employees per page</clr-dg-page-size>-->
-    <!--      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}-->
-    <!--      of {{pagination.totalItems}} users-->
-    <!--    </clr-dg-pagination>-->
-    {{ employeeList.length }} employees
-  </clr-dg-footer>
-</clr-datagrid>
+        <clr-dg-footer>
+          {{ employeeList.length }} employees
+        </clr-dg-footer>
+      </clr-datagrid>
+    </div>
+  </div>
+</div>

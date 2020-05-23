@@ -4,4 +4,25 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h1>TextArea demo</h1>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <h1>TextArea demo</h1>
+      <form clrForm (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <clr-textarea-container>
+          <label>Label</label>
+          <textarea
+            clrTextarea
+            [(ngModel)]="description"
+            name="description"
+            [required]="required"
+            [disabled]="disabled"
+          ></textarea>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="errors">You must provide a description!</clr-control-error>
+        </clr-textarea-container>
+        <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

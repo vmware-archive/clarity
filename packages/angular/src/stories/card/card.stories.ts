@@ -5,6 +5,8 @@
  */
 
 import { boolean } from '@storybook/addon-knobs';
+import { moduleMetadata } from '@storybook/angular';
+import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html');
 const imagesTemplate = require('!!raw-loader!./images.html');
 const mediaBlockTemplate = require('!!raw-loader!./media-block.html');
@@ -12,6 +14,11 @@ const layoutTemplate = require('!!raw-loader!./layout.html');
 
 export default {
   title: 'Card',
+  decorators: [
+    moduleMetadata({
+      imports: [ClarityModule],
+    }),
+  ],
 };
 
 export const Basic = () => {

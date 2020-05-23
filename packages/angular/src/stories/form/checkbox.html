@@ -4,4 +4,35 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h1>Checkbox demo</h1>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <h1>Checkbox demo</h1>
+      <form clrForm (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <clr-checkbox-container [clrInline]="inline">
+          <label>Basic Checkbox</label>
+          <clr-checkbox-wrapper>
+            <input
+              type="checkbox"
+              clrCheckbox
+              name="model"
+              [(ngModel)]="option1"
+              [required]="required"
+              [disabled]="disabled"
+            />
+            <label>Option 1</label>
+          </clr-checkbox-wrapper>
+          <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="model" [(ngModel)]="option2" [disabled]="disabled" />
+            <label>Option 2</label>
+          </clr-checkbox-wrapper>
+          <clr-control-helper *ngIf="helper">Helper text.</clr-control-helper>
+          <clr-control-error *ngIf="error">There is an error.</clr-control-error>
+        </clr-checkbox-container>
+        <section>
+          <button class="btn btn-success">Submit</button>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>

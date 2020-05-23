@@ -4,25 +4,31 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<clr-accordion [clrAccordionMultiPanel]="clrAccordionMultiPanel">
-  <clr-accordion-panel [clrAccordionPanelDisabled]="clrAccordionPanelDisabled">
-    <clr-accordion-title>Item 1</clr-accordion-title>
-    <clr-accordion-content>
-      <h1>Content 1</h1>
-      <p>Paragraph</p>
-    </clr-accordion-content>
-  </clr-accordion-panel>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <clr-accordion [clrAccordionMultiPanel]="clrAccordionMultiPanel">
+        <clr-accordion-panel [clrAccordionPanelDisabled]="clrAccordionPanelDisabled">
+          <clr-accordion-title>Item 1</clr-accordion-title>
+          <clr-accordion-content>
+            <h1>Content 1</h1>
+            <p>Paragraph</p>
+          </clr-accordion-content>
+        </clr-accordion-panel>
 
-  <clr-accordion-panel
-    [clrAccordionPanelOpen]="clrAccordionPanelOpen"
-    (clrAccordionPanelOpenChange)="panelChange($event)"
-  >
-    <clr-accordion-title>Item 2</clr-accordion-title>
-    <clr-accordion-content>Content 2</clr-accordion-content>
-  </clr-accordion-panel>
+        <clr-accordion-panel
+          [clrAccordionPanelOpen]="clrAccordionPanelOpen"
+          (clrAccordionPanelOpenChange)="panelChange($event)"
+        >
+          <clr-accordion-title>Item 2</clr-accordion-title>
+          <clr-accordion-content>Content 2</clr-accordion-content>
+        </clr-accordion-panel>
 
-  <clr-accordion-panel>
-    <clr-accordion-title>Item 3</clr-accordion-title>
-    <clr-accordion-content>Content 3</clr-accordion-content>
-  </clr-accordion-panel>
-</clr-accordion>
+        <clr-accordion-panel>
+          <clr-accordion-title>Item 3</clr-accordion-title>
+          <clr-accordion-content>Content 3</clr-accordion-content>
+        </clr-accordion-panel>
+      </clr-accordion>
+    </div>
+  </div>
+</div>

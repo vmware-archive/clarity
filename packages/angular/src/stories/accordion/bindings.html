@@ -4,22 +4,27 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<!-- Allows the accordion to have more than one panel open -->
-<clr-accordion [clrAccordionMultiPanel]="multiPanel">
-  <clr-accordion-panel [clrAccordionPanelOpen]="p1Open" [clrAccordionPanelDisabled]="p1Disabled">
-    <clr-accordion-title>Panel 1</clr-accordion-title>
-    <clr-accordion-content>Panel 1 Content</clr-accordion-content>
-  </clr-accordion-panel>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <clr-accordion [clrAccordionMultiPanel]="multiPanel">
+        <clr-accordion-panel [clrAccordionPanelOpen]="p1Open" [clrAccordionPanelDisabled]="p1Disabled">
+          <clr-accordion-title>Panel 1</clr-accordion-title>
+          <clr-accordion-content>Panel 1 Content</clr-accordion-content>
+        </clr-accordion-panel>
 
-  <!-- Programmatically set the open state and listen to the change event -->
-  <clr-accordion-panel>
-    <clr-accordion-title>Panel 2</clr-accordion-title>
-    <clr-accordion-content>Panel 2 Content</clr-accordion-content>
-  </clr-accordion-panel>
+        <!-- Programmatically set the open state and listen to the change event -->
+        <clr-accordion-panel>
+          <clr-accordion-title>Panel 2</clr-accordion-title>
+          <clr-accordion-content>Panel 2 Content</clr-accordion-content>
+        </clr-accordion-panel>
 
-  <!-- Two way binding version to track state of a panel -->
-  <clr-accordion-panel>
-    <clr-accordion-title>Panel 3</clr-accordion-title>
-    <clr-accordion-content>Panel 3 Content</clr-accordion-content>
-  </clr-accordion-panel>
-</clr-accordion>
+        <!-- Two way binding version to track state of a panel -->
+        <clr-accordion-panel>
+          <clr-accordion-title>Panel 3</clr-accordion-title>
+          <clr-accordion-content>Panel 3 Content</clr-accordion-content>
+        </clr-accordion-panel>
+      </clr-accordion>
+    </div>
+  </div>
+</div>

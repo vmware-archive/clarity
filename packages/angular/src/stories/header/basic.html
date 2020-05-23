@@ -4,4 +4,26 @@
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
-<h1>Header story works</h1>
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <header [ngClass]="headerType">
+        <div class="branding">
+          <a href="javascript://" class="nav-link nav-icon" aria-label="home icon">
+            <clr-icon shape="home" size="36"></clr-icon>
+            Clarity Header Demo
+          </a>
+        </div>
+        <div class="header-nav">
+          <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
+          <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
+        </div>
+        <div class="header-actions">
+          <a href="javascript://" class="nav-link" aria-label="settings icon">
+            <clr-icon shape="cog" size="36"></clr-icon>
+          </a>
+        </div>
+      </header>
+    </div>
+  </div>
+</div>

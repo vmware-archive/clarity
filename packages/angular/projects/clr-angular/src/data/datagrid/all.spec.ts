@@ -43,6 +43,7 @@ import ItemsProviderSpecs from './providers/items.spec';
 import PageProviderSpecs from './providers/page.spec';
 import SelectionProviderSpecs from './providers/selection.spec';
 import SortProviderSpecs from './providers/sort.spec';
+import StateProviderSpecs from './providers/state.provider.spec';
 import TableSizeServiceSpec from './providers/table-size.service.spec';
 import DatagridCellRendererSpecs from './render/cell-renderer.spec';
 import DomAdapterSpecs from '../../utils/dom-adapter/dom-adapter.spec';
@@ -61,6 +62,7 @@ describe('Datagrid', function () {
 
   describe('Providers', function () {
     SortProviderSpecs();
+    StateProviderSpecs();
     FiltersProviderSpecs();
     PageProviderSpecs();
     ItemsProviderSpecs();

@@ -59,7 +59,7 @@ export class DatagridPreserveSelectionDemo {
     this.inventory
       .filter(filters)
       .sort(state.sort as { by: string; reverse: boolean })
-      .fetch(state.page.from, state.page.size)
+      .fetch(state.page.size * (state.page.current - 1), state.page.size)
       .then((result: FetchResult) => {
         this.serverTrackByIdUsers = result.users;
         this.loading = false;

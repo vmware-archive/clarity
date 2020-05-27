@@ -9,7 +9,6 @@ import { By } from '@angular/platform-browser';
 
 import { ClrControlError } from './error';
 import { ControlIdService } from './providers/control-id.service';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({ template: `<clr-control-error>Test error</clr-control-error>` })
 class SimpleTest {}
@@ -19,7 +18,7 @@ class ExplicitAriaTest {}
 
 export default function (): void {
   describe('ClrControlError', () => {
-    let fixture, announceSpyOn;
+    let fixture;
 
     beforeEach(function () {
       TestBed.configureTestingModule({
@@ -28,16 +27,6 @@ export default function (): void {
       });
       fixture = TestBed.createComponent(SimpleTest);
       fixture.detectChanges();
-    });
-
-    it('expect to call ClrAriaLiveService.announce', function () {
-      fixture = TestBed.createComponent(SimpleTest);
-      const ariaLiveService = fixture.debugElement
-        .query(By.directive(ClrControlError))
-        .injector.get(ClrAriaLiveService);
-      announceSpyOn = spyOn(ariaLiveService, 'announce');
-      fixture.detectChanges();
-      expect(announceSpyOn).toHaveBeenCalled();
     });
 
     it('projects content', function () {

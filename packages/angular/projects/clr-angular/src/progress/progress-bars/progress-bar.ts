@@ -5,19 +5,15 @@
  */
 import { Component, Input, HostBinding } from '@angular/core';
 import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribute-set';
-import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
-  providers: [ClrAriaLiveService],
   selector: 'clr-progress-bar',
   template: `
     <progress [id]="id" [attr.max]="max" [attr.value]="value" [attr.data-displayval]="displayValue"></progress>
-    <span *ngIf="displayAriaLive()">{{ displayValue }}</span>
+    <span *ngIf="displayStringValue()">{{ displayValue }}</span>
   `,
 })
 export class ClrProgressBar {
-  constructor(private ariaLiveService: ClrAriaLiveService) {}
-
   /**
    * Handle component ID
    */
@@ -44,9 +40,6 @@ export class ClrProgressBar {
 
   set value(value) {
     this._value = value;
-    if (this.displayAriaLive()) {
-      this.ariaLiveService.announce(this.displayValue, this.ariaLive);
-    }
   }
 
   // Styles
@@ -135,11 +128,12 @@ export class ClrProgressBar {
     this._flashDanger = isBooleanAttributeSet(value);
   }
 
-  // Aria Live
-  /** @deprecated since 3.0, remove in 4.0 */
-  @Input('clrAssertive') assertive: boolean;
-  /** @deprecated since 3.0, remove in 4.0 */
-  @Input('clrOff') off: boolean;
+  /**
+   * Display optional text only when labeled is eneabled
+   */
+  displayStringValue() {
+    return this._labeled;
+  }
 
   /**
    * Make sure that we always will have something that is readable
@@ -149,23 +143,6 @@ export class ClrProgressBar {
     if (this.displayval) {
       return this.displayval;
     }
-    return `${this.value}%`;
-  }
-
-  /**
-   * Display aria-live only when there is value and it's not 0 or equal to the max value
-   */
-  displayAriaLive() {
-    return (this.value !== undefined || this.value !== 0) && this.value !== this.max;
-  }
-
-  get ariaLive(): ClrAriaLivePoliteness {
-    if (isBooleanAttributeSet(this.assertive)) {
-      return ClrAriaLivePoliteness.assertive;
-    }
-    if (isBooleanAttributeSet(this.off)) {
-      return ClrAriaLivePoliteness.off;
-    }
-    return ClrAriaLivePoliteness.polite;
+    return `${this.value || 0}%`;
   }
 }

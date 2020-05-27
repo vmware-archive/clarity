@@ -3,33 +3,25 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { DateNavigationService } from './providers/date-navigation.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-daypicker',
-  providers: [ClrAriaLiveService],
   templateUrl: './daypicker.html',
   host: { '[class.daypicker]': 'true' },
 })
-export class ClrDaypicker implements AfterViewInit {
+export class ClrDaypicker {
   constructor(
     private _viewManagerService: ViewManagerService,
     private _dateNavigationService: DateNavigationService,
     private _localeHelperService: LocaleHelperService,
-    public commonStrings: ClrCommonStringsService,
-    private ariaLiveService: ClrAriaLiveService
+    public commonStrings: ClrCommonStringsService
   ) {}
-
-  ngAfterViewInit() {
-    /** @deprecated since 3.0, remove in 4.0 */
-    this.ariaLiveService.announce(`${this.ariaLiveMonth} ${this.updateAriaLiveYear}`);
-  }
 
   get monthAttrString(): string {
     return this.commonStrings.parse(this.commonStrings.keys.datepickerSelectMonthText, {
@@ -40,18 +32,6 @@ export class ClrDaypicker implements AfterViewInit {
   get yearAttrString(): string {
     return this.commonStrings.parse(this.commonStrings.keys.datepickerSelectYearText, {
       CALENDAR_YEAR: this.calendarYear.toString(),
-    });
-  }
-
-  get ariaLiveMonth(): string {
-    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentMonthPhrase, {
-      CURRENT_MONTH: this.calendarMonth,
-    });
-  }
-
-  get updateAriaLiveYear(): string {
-    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentYearPhrase, {
-      CURRENT_YEAR: this.calendarYear.toString(),
     });
   }
 

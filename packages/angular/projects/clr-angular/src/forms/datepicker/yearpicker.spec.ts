@@ -6,107 +6,20 @@
 
 import { Component } from '@angular/core';
 import { async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '../../utils/key-codes/key-codes';
 
-import { ClrDatepickerModule } from './datepicker.module';
 import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { createKeyboardEvent } from './utils/test-utils';
 import { ClrYearpicker } from './yearpicker';
-import { YearRangeModel } from './model/year-range.model';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { TestBed } from '@angular/core/testing';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
-import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
-import { DateIOService } from './providers/date-io.service';
 
 export default function () {
-  describe('Yearpicker Component AriaLiveSerivice', function () {
-    let announceSpyOn: (str: string) => void;
-    let ariaLiveService: ClrAriaLiveService;
-    let fixture, component;
-
-    beforeEach(function () {
-      const selectedYear = 2003;
-
-      const dateNavigationService = new DateNavigationService();
-      dateNavigationService.initializeCalendar();
-      dateNavigationService.changeYear(selectedYear);
-
-      TestBed.configureTestingModule({
-        imports: [ClrDatepickerModule],
-        declarations: [TestComponent],
-        providers: [
-          ViewManagerService,
-          DatepickerFocusService,
-          ClrPopoverToggleService,
-          { provide: DateNavigationService, useValue: dateNavigationService },
-          LocaleHelperService,
-          DateIOService,
-          ClrCommonStringsService,
-        ],
-      }).overrideComponent(ClrYearpicker, {
-        set: {
-          providers: [{ provide: ClrAriaLiveService, useClass: MockAriaLiveService }],
-        },
-      });
-
-      fixture = TestBed.createComponent(TestComponent);
-      ariaLiveService = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(ClrAriaLiveService);
-      component = fixture.debugElement.query(By.directive(ClrYearpicker)).injector.get(ClrYearpicker);
-      announceSpyOn = spyOn(ariaLiveService, 'announce');
-      fixture.detectChanges();
-    });
-
-    function checkLiveElementYearRangeModel(yrm: YearRangeModel) {
-      const yearFloor = yrm.yearRange[0];
-      const yearCeil = yrm.yearRange[yrm.yearRange.length - 1];
-      expect(announceSpyOn).toHaveBeenCalledWith(`The current decade is ${yearFloor} to ${yearCeil}`);
-    }
-
-    it('updates the aria-live element when the next decade button is clicked', () => {
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const button = switchers.children[2] as HTMLButtonElement;
-      button.click();
-      fixture.detectChanges();
-
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-    });
-
-    it('updates the aria-live element when the previous button is clicked', () => {
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-
-      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const button = switchers.children[0] as HTMLButtonElement;
-      button.click();
-      fixture.detectChanges();
-
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-    });
-
-    it('updates the aria-live element when the current button is clicked', () => {
-      // Go back first
-      const switchers: HTMLElement = fixture.debugElement.nativeElement.querySelector('.year-switchers');
-      const previousButton = switchers.children[0] as HTMLButtonElement;
-      previousButton.click();
-      fixture.detectChanges();
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-
-      const currentButton = switchers.children[1] as HTMLButtonElement;
-      currentButton.click();
-      fixture.detectChanges();
-
-      checkLiveElementYearRangeModel(component.yearRangeModel);
-    });
-  });
-
   describe('Yearpicker Component', () => {
     let context: TestContext<ClrYearpicker, TestComponent>;
     let dateNavigationService: DateNavigationService;

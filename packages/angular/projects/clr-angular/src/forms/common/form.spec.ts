@@ -12,7 +12,6 @@ import { LayoutService } from './providers/layout.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { ReactiveFormsModule, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ClrInputModule } from '../input/input.module';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: ` <form clrForm [formGroup]="model">
@@ -96,21 +95,6 @@ export default function (): void {
 
     it('provides the ClrCommonStringsService', function () {
       expect(directive.injector.get(ClrCommonStringsService)).toBeTruthy();
-    });
-
-    it('updates aria-live with invalid controls', function () {
-      const ariaLiveService = fixture.debugElement.query(By.directive(ClrForm)).injector.get(ClrAriaLiveService);
-      const announceSpyOn = spyOn(ariaLiveService, 'announce');
-
-      spyOn(fixture.componentInstance.testLabel.nativeElement, 'focus');
-      fixture.detectChanges(); // adds the correct form classes for display
-      fixture.componentInstance.submitBtn.nativeElement.click();
-      fixture.detectChanges(); // submit the form
-
-      const ariaLiveText = commonStrings.parse(commonStrings.keys.formErrorSummary, {
-        ERROR_NUMBER: '1',
-      });
-      expect(announceSpyOn).toHaveBeenCalledWith(ariaLiveText);
     });
 
     it('responds when the form is submitted', function () {

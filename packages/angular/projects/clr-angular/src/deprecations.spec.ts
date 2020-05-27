@@ -25,11 +25,6 @@ describe('Deprecations', () => {
       const propTest = Object.getOwnPropertyDescriptor(ClrDatagrid.prototype, 'rowSelectionMode');
       expect(propTest.set).toBeDefined();
     });
-    it('should handle ClrForm.markAsDirty as ClrForm.markAsTouched', () => {
-      spyOn(ClrForm.prototype, 'markAsTouched');
-      ClrForm.prototype.markAsDirty(true);
-      expect(ClrForm.prototype.markAsTouched).toHaveBeenCalled();
-    });
     it('should replace $clr-default prefixed SASS variables with $clr-global prefixed variables');
     it('should no longer have the $clr-font-weights typography SASS map');
     it('should replace $clr-app-font-color-primary SASS variable with $clr-global-font-color');
@@ -50,7 +45,6 @@ describe('Deprecations', () => {
       const propTest = Object.getOwnPropertyDescriptor(ClrWizard.prototype, 'stopModalAnimations');
       expect(propTest.get).toBeDefined();
     });
-    it('should not do aria-live by default');
     it('should replace dummy clr-tab-overflow-content with simple div');
   });
 });

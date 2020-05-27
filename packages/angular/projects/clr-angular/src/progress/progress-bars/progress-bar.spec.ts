@@ -9,7 +9,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ClrProgressBarModule } from './progress-bar.module';
 import { ClrProgressBar } from './progress-bar';
-import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
 
 @Component({
   template: `<clr-progress-bar id="randomId" [clrValue]="progressValue"></clr-progress-bar>`,
@@ -18,6 +17,7 @@ class TestComponent {}
 
 @Component({
   template: `<clr-progress-bar
+    clrLabeled
     [clrValue]="progressValue"
     [clrMax]="maxValue"
     [clrDisplayval]="displayValue"
@@ -64,30 +64,6 @@ describe('ClrProgressBar component', () => {
         expect(clrProgressBar.querySelector('progress').getAttribute('id')).toBe('randomId');
         expect(clrProgressBar.getAttribute('class')).toBe('progress');
       });
-
-      it('expect to add class and aria-live', () => {
-        fixture = TestBed.createComponent(TestDisplayValueComponent);
-        fixture.componentInstance.progressValue = 20;
-        const ariaLiveService = fixture.debugElement
-          .query(By.directive(ClrProgressBar))
-          .injector.get(ClrAriaLiveService);
-        const announceSpyOn = spyOn(ariaLiveService, 'announce');
-
-        fixture.detectChanges();
-
-        clrProgressBar = fixture.debugElement.query(By.directive(ClrProgressBar)).nativeElement;
-
-        expect(clrProgressBar.querySelector('span').innerText).toBe('20%');
-        expect(announceSpyOn).toHaveBeenCalledWith('20%', ClrAriaLivePoliteness.polite);
-      });
-
-      it('expect to remove aria-live when progress finish, test also auto max value', () => {
-        fixture.componentInstance.progressValue = 100;
-        fixture.detectChanges();
-        clrProgressBar = fixture.debugElement.query(By.directive(ClrProgressBar)).nativeElement;
-
-        expect(clrProgressBar.querySelector('span')).toBe(null);
-      });
     });
 
     it('expect to pass custom displayValue', () => {
@@ -110,11 +86,6 @@ describe('ClrProgressBar component', () => {
 
       fixture.detectChanges();
       expect(clrProgressBar.querySelector('span').innerText).toBe('100%');
-
-      fixture.componentInstance.progressValue = 105;
-      fixture.detectChanges();
-
-      expect(clrProgressBar.querySelector('span')).toBe(null);
     });
 
     describe('Style & Animations', () => {

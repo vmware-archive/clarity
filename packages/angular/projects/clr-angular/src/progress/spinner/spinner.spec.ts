@@ -10,8 +10,6 @@ import { By } from '@angular/platform-browser';
 import { ClrSpinnerModule } from './spinner.module';
 import { ClrSpinner } from './spinner';
 
-import { ClrAriaLiveService, ClrAriaLivePoliteness } from '../../utils/a11y/aria-live.service';
-
 const SPINNER_BASE_CLASS = 'spinner';
 
 const SPINNER_INVERSE = 'spinner-inverse';
@@ -27,12 +25,12 @@ const SPINNER_LARGE_SIZE = 'spinner-lg';
 class TestComponent {}
 
 @Component({
-  template: `<clr-spinner clrSmall clrInverse clrOff>Loading ...</clr-spinner>`,
+  template: `<clr-spinner clrSmall clrInverse>Loading ...</clr-spinner>`,
 })
 class TestSmallComponent {}
 
 @Component({
-  template: `<clr-spinner clrMedium clrAssertive>Loading ...</clr-spinner>`,
+  template: `<clr-spinner clrMedium>Loading ...</clr-spinner>`,
 })
 class TestMediumComponent {}
 
@@ -58,44 +56,6 @@ describe('ClrSpinner component', () => {
       fixture.detectChanges();
       clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
       expect(fixture.nativeElement.textContent.trim()).toBe('Loading ...');
-    });
-
-    describe('AriaLive', () => {
-      it('should call ClrAriaLiveService.announce', () => {
-        fixture = TestBed.createComponent(TestMediumComponent);
-        const ariaLiveService = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrAriaLiveService);
-        const announceSpyOn = spyOn(ariaLiveService, 'announce');
-        fixture.detectChanges();
-        expect(announceSpyOn).toHaveBeenCalledWith(
-          fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement,
-          ClrAriaLivePoliteness.assertive
-        );
-      });
-
-      it('should add aria-live="polite", aria-busy="true"', () => {
-        fixture = TestBed.createComponent(TestComponent);
-        fixture.detectChanges();
-        clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
-        const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.polite);
-        expect(clrSpinner.getAttribute('aria-busy')).toBe('true');
-      });
-
-      it('should be able to set aria-live to "off"', () => {
-        fixture = TestBed.createComponent(TestSmallComponent);
-        clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
-        fixture.detectChanges();
-        const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.off);
-      });
-
-      it('should set aria-live to "assertive"', () => {
-        fixture = TestBed.createComponent(TestMediumComponent);
-        clrSpinner = fixture.debugElement.query(By.directive(ClrSpinner)).nativeElement;
-        fixture.detectChanges();
-        const component = fixture.debugElement.query(By.directive(ClrSpinner)).injector.get(ClrSpinner);
-        expect(component.ariaLive).toBe(ClrAriaLivePoliteness.assertive);
-      });
     });
 
     describe('Modifiers', () => {

@@ -12,11 +12,9 @@ import { DateNavigationService } from './providers/date-navigation.service';
 import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
 
 @Component({
   selector: 'clr-yearpicker',
-  providers: [ClrAriaLiveService],
   template: `
     <div class="year-switchers">
       <button
@@ -67,19 +65,11 @@ export class ClrYearpicker implements AfterViewInit {
     private _viewManagerService: ViewManagerService,
     private _datepickerFocusService: DatepickerFocusService,
     private _elRef: ElementRef,
-    public commonStrings: ClrCommonStringsService,
-    private ariaLiveService: ClrAriaLiveService
+    public commonStrings: ClrCommonStringsService
   ) {
     this.yearRangeModel = new YearRangeModel(this.calendarYear);
     this._focusedYear = this.calendarYear;
     this.updateRange(this.yearRangeModel);
-  }
-
-  /** @deprecated since 3.0, remove in 4.0 */
-  get ariaLiveDecadeText(): string {
-    return this.commonStrings.parse(this.commonStrings.keys.daypickerSRCurrentDecadePhrase, {
-      DECADE_RANGE: this.decadeRange,
-    });
   }
 
   private decadeRange: string;
@@ -201,8 +191,6 @@ export class ClrYearpicker implements AfterViewInit {
     const floor = yrm.yearRange[0];
     const ceil = yrm.yearRange[yrm.yearRange.length - 1];
     this.decadeRange = `${floor} to ${ceil}`;
-    /** @deprecated since 3.0, remove in 4.0 */
-    this.ariaLiveService.announce(this.ariaLiveDecadeText);
   }
 
   /**
@@ -210,7 +198,5 @@ export class ClrYearpicker implements AfterViewInit {
    */
   ngAfterViewInit() {
     this._datepickerFocusService.focusCell(this._elRef);
-    /** @deprecated since 3.0, remove in 4.0 */
-    this.ariaLiveService.announce(this.ariaLiveDecadeText);
   }
 }

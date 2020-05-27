@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { By } from '@angular/platform-browser';
 
 import { ClrDaypicker } from './daypicker';
 import { DayModel } from './model/day.model';
@@ -19,60 +18,8 @@ import { DatepickerFocusService } from './providers/datepicker-focus.service';
 import { LocaleHelperService } from './providers/locale-helper.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
-import { TestBed } from '@angular/core/testing';
-import { ClrAriaLiveService } from '../../utils/a11y/aria-live.service';
-import { MockAriaLiveService } from '../../utils/a11y/aria-live.service.mock';
-import { ClrDatepickerModule } from './datepicker.module';
 
 export default function () {
-  describe('Daypicker Component ClrAriaLiveService', function () {
-    let localeHelperService: LocaleHelperService;
-    let dateNavigationService: DateNavigationService;
-
-    it('updates the aria-live view element when the month and year are changed', () => {
-      dateNavigationService = new DateNavigationService();
-      // Initializing selected day just to make sure that previous and next month tests become easier
-      dateNavigationService.selectedDay = new DayModel(2015, 1, 1);
-      dateNavigationService.initializeCalendar();
-
-      TestBed.configureTestingModule({
-        imports: [ClrDatepickerModule],
-        declarations: [TestComponent],
-        providers: [
-          { provide: DateNavigationService, useValue: dateNavigationService },
-          DateIOService,
-          ClrPopoverToggleService,
-          ViewManagerService,
-          LocaleHelperService,
-          DatepickerFocusService,
-          DateFormControlService,
-          ClrCommonStringsService,
-        ],
-      }).overrideComponent(ClrDaypicker, {
-        set: {
-          providers: [{ provide: ClrAriaLiveService, useClass: MockAriaLiveService }],
-        },
-      });
-
-      const fixture = TestBed.createComponent(TestComponent);
-      const ariaLiveService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(ClrAriaLiveService);
-      const announceSpyOn = spyOn(ariaLiveService, 'announce');
-
-      localeHelperService = fixture.debugElement.query(By.directive(ClrDaypicker)).injector.get(LocaleHelperService);
-      let testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
-      let testYear = dateNavigationService.displayedCalendar.year;
-      fixture.detectChanges();
-
-      expect(announceSpyOn).toHaveBeenCalledWith(`The current month is ${testMonth} The current year is ${testYear}`);
-
-      dateNavigationService.selectedDay = new DayModel(2025, 9, 1);
-      fixture.detectChanges();
-      testMonth = localeHelperService.localeMonthsAbbreviated[dateNavigationService.displayedCalendar.month];
-      testYear = dateNavigationService.displayedCalendar.year;
-      expect(announceSpyOn).toHaveBeenCalledWith(`The current month is ${testMonth} The current year is ${testYear}`);
-    });
-  });
-
   describe('Daypicker Component', () => {
     let context: TestContext<ClrDaypicker, TestComponent>;
     let viewManagerService: ViewManagerService;

@@ -104,27 +104,21 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
 export declare class ClrAccordionTitle {
 }
 
-export declare class ClrAlert implements OnInit, OnDestroy, AfterViewInit {
+export declare class ClrAlert implements OnInit, OnDestroy {
     _closed: boolean;
     _closedChanged: EventEmitter<boolean>;
     get alertClass(): string;
     set alertIconShape(value: string);
-    alertTexts: QueryList<ElementRef>;
     set alertType(val: string);
     get alertType(): string;
-    get ariaLive(): ClrAriaLivePoliteness;
-    assertive: boolean;
     closable: boolean;
     clrCloseButtonAriaLabel: string;
     set hidden(value: boolean);
     get hidden(): boolean;
     isAppLevel: boolean;
     isSmall: boolean;
-    off: boolean;
-    polite: boolean;
-    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
+    constructor(iconService: AlertIconAndTypesService, cdr: ChangeDetectorRef, multiAlertService: MultiAlertService, commonStrings: ClrCommonStringsService);
     close(): void;
-    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     open(): void;
@@ -312,15 +306,11 @@ export interface ClrCommonStrings {
     datepickerSelectMonthText: string;
     datepickerSelectYearText: string;
     datepickerToggle: string;
-    daypickerSRCurrentDecadePhrase: string;
-    daypickerSRCurrentMonthPhrase: string;
-    daypickerSRCurrentYearPhrase: string;
     detailExpandableAriaLabel: string;
     detailPaneEnd: string;
     detailPaneStart: string;
     expand: string;
     firstPage: string;
-    formErrorSummary: string;
     hide: string;
     info: string;
     lastPage: string;
@@ -379,11 +369,9 @@ export declare class ClrControl extends WrappedFormControl<ClrControlContainer> 
 export declare class ClrControlContainer extends ClrAbstractContainer {
 }
 
-export declare class ClrControlError implements AfterViewInit {
-    controlClassService: ControlClassService;
+export declare class ClrControlError {
     controlIdService: ControlIdService;
-    constructor(controlIdService: ControlIdService, controlClassService: ControlClassService, ariaLiveService: ClrAriaLiveService, el: ElementRef);
-    ngAfterViewInit(): void;
+    constructor(controlIdService: ControlIdService);
 }
 
 export declare class ClrControlHelper {
@@ -827,20 +815,17 @@ export declare class ClrDay {
     selectDay(): void;
 }
 
-export declare class ClrDaypicker implements AfterViewInit {
-    get ariaLiveMonth(): string;
+export declare class ClrDaypicker {
     get calendarMonth(): string;
     get calendarYear(): number;
     commonStrings: ClrCommonStringsService;
     get monthAttrString(): string;
-    get updateAriaLiveYear(): string;
     get yearAttrString(): string;
-    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
+    constructor(_viewManagerService: ViewManagerService, _dateNavigationService: DateNavigationService, _localeHelperService: LocaleHelperService, commonStrings: ClrCommonStringsService);
     changeToMonthView(): void;
     changeToYearView(): void;
     currentMonth(): void;
     nextMonth(): void;
-    ngAfterViewInit(): void;
     previousMonth(): void;
 }
 
@@ -980,9 +965,8 @@ export declare class ClrForm {
     set labelSize(size: number);
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
-    constructor(layoutService: LayoutService, markControlService: MarkControlService, platformId: any, el: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
-    markAsDirty(updateAriaLiveText?: boolean): void;
-    markAsTouched(updateAriaLiveText?: boolean): void;
+    constructor(layoutService: LayoutService, markControlService: MarkControlService);
+    markAsTouched(): void;
     onFormSubmit(): void;
 }
 
@@ -1276,8 +1260,6 @@ export declare class ClrPopoverToggleService {
 }
 
 export declare class ClrProgressBar {
-    get ariaLive(): ClrAriaLivePoliteness;
-    assertive: boolean;
     set clrDanger(value: boolean | string);
     set clrFade(value: boolean | string);
     set clrFlash(value: boolean | string);
@@ -1297,13 +1279,11 @@ export declare class ClrProgressBar {
     get labeledClass(): boolean;
     get loopClass(): boolean;
     max: number;
-    off: boolean;
     get progressClass(): boolean;
     get successClass(): boolean;
     get value(): number;
     set value(value: number);
-    constructor(ariaLiveService: ClrAriaLiveService);
-    displayAriaLive(): boolean;
+    displayStringValue(): boolean;
 }
 
 export declare class ClrProgressBarModule {
@@ -1420,9 +1400,7 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     onSignpostTriggerClick(event: Event): void;
 }
 
-export declare class ClrSpinner implements AfterViewInit {
-    get ariaLive(): ClrAriaLivePoliteness;
-    assertive: boolean;
+export declare class ClrSpinner {
     set clrInline(value: boolean | string);
     set clrInverse(value: boolean | string);
     set clrMedium(value: boolean | string);
@@ -1430,11 +1408,8 @@ export declare class ClrSpinner implements AfterViewInit {
     get inlineClass(): boolean;
     get inverseClass(): boolean;
     get mediumClass(): boolean;
-    off: boolean;
     get smallClass(): boolean;
     get spinnerClass(): boolean;
-    constructor(el: ElementRef, ariaLiveService: ClrAriaLiveService);
-    ngAfterViewInit(): void;
 }
 
 export declare class ClrSpinnerModule {
@@ -1965,11 +1940,10 @@ export declare class ClrWizardStepnavItem {
 }
 
 export declare class ClrYearpicker implements AfterViewInit {
-    get ariaLiveDecadeText(): string;
     get calendarYear(): number;
     commonStrings: ClrCommonStringsService;
     yearRangeModel: YearRangeModel;
-    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService, ariaLiveService: ClrAriaLiveService);
+    constructor(_dateNavigationService: DateNavigationService, _viewManagerService: ViewManagerService, _datepickerFocusService: DatepickerFocusService, _elRef: ElementRef, commonStrings: ClrCommonStringsService);
     changeYear(year: number): void;
     currentDecade(): void;
     getTabIndex(year: number): number;

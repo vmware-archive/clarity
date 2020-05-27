@@ -198,15 +198,10 @@ export interface ClrCommonStrings {
   datepickerCurrentDecade: string;
   datepickerSelectMonthText: string;
   datepickerSelectYearText: string;
-  daypickerSRCurrentMonthPhrase: string;
-  daypickerSRCurrentYearPhrase: string;
-  daypickerSRCurrentDecadePhrase: string;
   /**
    * Stack View: Record has changed
    */
   stackViewChanged: string;
-  // Forms
-  formErrorSummary: string;
   // Vertical Nav
   verticalNavToggle: string;
   verticalNavGroupToggle: string;

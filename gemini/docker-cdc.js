@@ -64,7 +64,7 @@ function runGemini(config) {
   // Kill docker if already running in past failure
   shell.exec('docker stop clarity_chrome', { silent: true });
   const ngConfig = program.configuration ? '-c ' + program.configuration : '';
-  shell.exec(`cd ../ && npm run build:libs`);
+  shell.exec(`cd ../ && yarn build:libs`);
   shell.exec(`cd ../ && node_modules/.bin/ng build dev ${ngConfig}`);
   let server = shell.exec('node_modules/.bin/lite-server --baseDir=../dist/dev', { async: true });
   let status = shell.exec(

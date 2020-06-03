@@ -9,14 +9,15 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],
     plugins: [require('karma-jasmine'), require('karma-typescript'), require('karma-chrome-launcher')],
-    files: ['src/**/*.ts', 'typings.d.ts'],
+    files: ['src/**/*.ts'],
     preprocessors: {
-      'src/**/*.ts': ['karma-typescript'],
+      '**/*.ts': ['karma-typescript'],
     },
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
     karmaTypescriptConfig: {
+      tsconfig: './tsconfig.spec.json',
       coverageOptions: {
         fixWebpackSourcePaths: true,
         thresholds: {

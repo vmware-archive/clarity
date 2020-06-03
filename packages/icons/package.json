@@ -1,7 +1,7 @@
 {
-  "name": "@clr/icons",
-  "version": "3.1.0",
+  "name": "icons",
   "private": true,
+  "version": "4.0.0-test.1",
   "scripts": {
     "build": "npm-run-all build:css build:optimize build:web build:package",
     "build:web": "webpack --config webpack.config.js",
@@ -17,20 +17,22 @@
   },
   "devDependencies": {
     "@types/jasmine": "3.4.6",
+    "@types/jasminewd2": "2.0.8",
     "awesome-typescript-loader": "5.2.1",
-    "cpy-cli": "^3.1.0",
-    "csso-cli": "^3.0.0",
+    "cpy-cli": "3.1.0",
+    "csso-cli": "3.0.0",
     "jasmine": "3.5.0",
-    "karma": "^5.0.2",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-jasmine": "^3.1.1",
-    "karma-typescript": "^5.0.2",
-    "npm-run-all": "^4.1.5",
-    "replace": "^1.1.5",
-    "sass": "^1.26.3",
+    "karma": "5.0.2",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-jasmine": "3.1.1",
+    "karma-typescript": "^5.0.3",
+    "npm-run-all": "4.1.5",
+    "replace": "1.1.5",
+    "sass": "1.26.3",
+    "typescript": "3.9.3",
     "uglifyjs": "2.4.11",
     "uglifyjs-webpack-plugin": "2.1.2",
-    "webpack": "^4.42.1",
+    "webpack": "4.42.1",
     "webpack-cli": "3.3.1"
   }
 }

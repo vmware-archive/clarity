@@ -1,4 +1,4 @@
-name: Build
+name: Dev
 
 on: [push, pull_request]
 
@@ -12,7 +12,9 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn
-      - run: yarn build:ci
+      - run: yarn build:libs && yarn angular:dev:build
+      - run: yarn angular:dev:deploy
 
     env:
       CI: true
+      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db

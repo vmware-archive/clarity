@@ -14,7 +14,7 @@
     "build": "npm-run-all schematics:build:ts schematics:build:collection",
     "schematics:build:ts": "tsc -p tsconfig.json",
     "schematics:build:collection": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/clr-angular/schematics",
-    "test": "npm run build && jasmine **/*_spec.js"
+    "test": "yarn build && jasmine **/*_spec.js"
   },
   "keywords": [
     "angular",

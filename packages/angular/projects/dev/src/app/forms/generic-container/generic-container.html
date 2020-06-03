@@ -32,16 +32,6 @@
     <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
   </clr-control-container>
 
-  <clr-control-container>
-    <label>Ng Select 2</label>
-    <ng-select clrControl [multiple]="true" name="cars" [(ngModel)]="model.cars" required>
-      <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-      <ng-option [value]="'custom'">Custom</ng-option>
-    </ng-select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
-  </clr-control-container>
-
   <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
 </form>
 
@@ -61,16 +51,6 @@
     <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
     <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
     <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
-  </clr-control-container>
-
-  <clr-control-container>
-    <label>Ng Select 2</label>
-    <ng-select clrControl [multiple]="true" formControlName="cars">
-      <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-      <ng-option [value]="'custom'">Custom</ng-option>
-    </ng-select>
-    <clr-control-helper>Helper text</clr-control-helper>
-    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
   </clr-control-container>
 
   <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>

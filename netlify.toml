@@ -1,13 +1,13 @@
 # Default build settings
 [build]
-  command = "npm run website:render"
+  command = "yarn website:render"
   functions = "dist/netlify"
   publish = "dist/website"
   environment = { CI = "true", NPM_FLAGS = '--no-optional', CYPRESS_INSTALL_BINARY = "false" }
 
 # Override for PRs to deploy the dev app
 [context.deploy-preview]
-  command = "npm run build:libs && npm run angular:dev:preview && npm run website:build && cp -R dist/dev dist/website/dev"
+  command = "yarn build:libs && yarn angular:dev:preview && yarn website:build && cp -R dist/dev dist/website/dev"
 
 # Redirect support for storybook demo
 [[redirects]]

@@ -26,6 +26,6 @@ the many icons available in the final application bundle.
 To run these tests run the following commands
 
 ```bash
-npm run core:build
-npm run core:test:bundle
+yarn core:build
+yarn core:test:bundle
 ```

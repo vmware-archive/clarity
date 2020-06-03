@@ -5,8 +5,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "clean": "rm -rf dist/*",
-    "build": "npm run clean && parcel build src/index.html",
-    "deploy": "npm run build && firebase deploy",
+    "build": "yarn run clean && parcel build src/index.html",
+    "deploy": "yarn run build && firebase deploy",
     "bundle": "source-map-explorer dist/*.js"
   },
   "author": "",

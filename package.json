@@ -1,11 +1,16 @@
 {
-  "name": "@clr/clarity",
+  "name": "clarity",
   "version": "3.1.0",
   "private": true,
+  "workspaces": {
+    "packages": ["packages/*", "apps/*"],
+    "nohoist": ["core/css-vars-ponyfill", "core/tslib", "core/lit-element", "core/ramda", "core/lit-html", "core/@storybook/**", "core/normalize.css"]
+  },
   "scripts": {
     "ng": "ng",
+    "clean:modules": "del ./**/node_modules",
     "clean": "del ./dist",
-    "start": "npm run angular:dev:start",
+    "start": "yarn angular:dev:start",
     "build": "npm-run-all build:ci",
     "build:ci": "npm-run-all clean format lint build:libs core:dev:build test",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build",
@@ -13,7 +18,6 @@
     "test": "npm-run-all -p angular:test core:test icons:test",
     "test:a11y": "node scripts/axe",
     "lint": "npm-run-all core:lint angular:lint",
-    "prelint": "npm link ./scripts/eslint-plugin-clarity",
     "lint:fix": "npm-run-all core:lint:fix angular:lint:fix",
     "license:fix": "node scripts/update-license",
     "ngcc:check": "node scripts/ngcc-check",
@@ -25,31 +29,31 @@
     "format:file": "prettier --write .",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "publish:prepare": "npm-run-all clean ngcc:fix build:libs",
-    "publish:latest": "npm run publish:prepare; npm run ngcc:fix; npm run angular:build:package; npm run core:build:package; npm publish dist/core; npm publish dist/clr-ui; npm publish dist/clr-angular; npm publish dist/clr-icons",
-    "publish:next": "npm run publish:prepare; npm publish dist/core --tag next; npm publish dist/clr-ui --tag next; npm publish dist/clr-angular --tag next; npm publish dist/clr-icons --tag next",
-    "publish:rc": "npm run publish:prepare; npm publish dist/core --tag rc; npm publish dist/clr-ui --tag rc; npm publish dist/clr-angular --tag rc; npm publish dist/clr-icons --tag rc",
-    "publish:local": "npm run publish:prepare; npm publish dist/core --registry http://localhost:4873; npm publish dist/clr-ui --registry http://localhost:4873; npm publish dist/clr-angular --registry http://localhost:4873; npm publish dist/clr-icons --registry http://localhost:4873",
-    "angular:build": "npm --prefix packages/angular run build",
-    "angular:test": "npm --prefix packages/angular run test",
-    "angular:test:watch": "npm --prefix packages/angular run test:watch",
-    "angular:lint": "npm --prefix packages/angular run lint",
-    "angular:dev:start": "npm --prefix packages/angular run start",
-    "angular:dev:build": "npm --prefix packages/angular run dev",
-    "angular:dev:build:dark": "npm --prefix packages/angular run dev:dark",
-    "angular:dev:serve": "npm --prefix packages/angular run serve",
-    "angular:dev:serve:dark": "npm --prefix packages/angular run serve:dark",
+    "publish:latest": "yarn publish:prepare; yarn ngcc:fix; yarn angular:build:package; yarn core:build:package; yarn publish dist/core; yarn publish dist/clr-ui; yarn publish dist/clr-angular; yarn publish dist/clr-icons",
+    "publish:next": "yarn publish:prepare; yarn publish dist/core --tag next; yarn publish dist/clr-ui --tag next; yarn publish dist/clr-angular --tag next; yarn publish dist/clr-icons --tag next",
+    "publish:rc": "yarn publish:prepare; yarn publish dist/core --tag rc; yarn publish dist/clr-ui --tag rc; yarn publish dist/clr-angular --tag rc; yarn publish dist/clr-icons --tag rc",
+    "publish:local": "yarn publish:prepare; yarn publish dist/core --registry http://localhost:4873; yarn publish dist/clr-ui --registry http://localhost:4873; yarn publish dist/clr-angular --registry http://localhost:4873; yarn publish dist/clr-icons --registry http://localhost:4873",
+    "angular:build": "yarn --cwd packages/angular run build",
+    "angular:test": "yarn --cwd packages/angular run test",
+    "angular:test:watch": "yarn --cwd packages/angular run test:watch",
+    "angular:lint": "yarn --cwd packages/angular run lint",
+    "angular:dev:start": "yarn --cwd packages/angular run start",
+    "angular:dev:build": "yarn --cwd packages/angular run dev",
+    "angular:dev:build:dark": "yarn --cwd packages/angular run dev:dark",
+    "angular:dev:serve": "yarn --cwd packages/angular run serve",
+    "angular:dev:serve:dark": "yarn --cwd packages/angular run serve:dark",
     "angular:dev:deploy": "./scripts/dev.sh",
-    "schematics:build": "npm --prefix packages/schematics run build",
-    "icons:build": "npm --prefix packages/icons run build",
-    "icons:test": "npm --prefix packages/icons run test",
-    "icons:test:watch": "npm --prefix packages/icons run test:watch",
-    "ui:build": "npm --prefix packages/ui run build",
-    "core:start": "npm --prefix packages/core run start",
-    "core:build": "npm --prefix packages/core run build",
-    "core:test": "npm --prefix packages/core run test",
-    "core:test:watch": "npm --prefix packages/core run test:watch",
-    "core:lint": "npm --prefix packages/core run lint",
-    "core:dev:build": "npm --prefix packages/core run dev:build"
+    "schematics:build": "yarn --cwd packages/schematics run build",
+    "icons:build": "yarn --cwd packages/icons run build",
+    "icons:test": "yarn --cwd packages/icons run test",
+    "icons:test:watch": "yarn --cwd packages/icons run test:watch",
+    "ui:build": "yarn --cwd packages/ui run build",
+    "core:start": "yarn --cwd packages/core run start",
+    "core:build": "yarn --cwd packages/core run build",
+    "core:test": "yarn --cwd packages/core run test",
+    "core:test:watch": "yarn --cwd packages/core run test:watch",
+    "core:lint": "yarn --cwd packages/core run lint",
+    "core:dev:build": "yarn --cwd packages/core run dev:build"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
@@ -88,12 +92,13 @@
     "typescript": "3.7.5"
   },
   "engines": {
-    "node": ">=10.9.0 <11.0.0",
-    "npm": ">=5.0.0"
+    "node": ">=12 <13",
+    "yarn": ">=1.22.4 <2",
+    "npm": "     PLEASE USE YARN     "
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run license:fix",
+      "pre-commit": "yarn format:fix && yarn license:fix",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

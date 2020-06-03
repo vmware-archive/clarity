@@ -40,13 +40,13 @@ our development environment on your computer. You will need to have
 3.  Install Clarity Dependencies
 
     ```bash
-    npm install
+    yarn install
     ```
 
 4.  Start the Website
 
     ```bash
-    npm run website:start
+    yarn website:start
     ```
 
 5.  See changes in your browser at `localhost:4200`

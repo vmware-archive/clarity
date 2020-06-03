@@ -36,10 +36,9 @@ import { FormsA11yDemo } from './a11y/a11y';
 import { FormsLayoutHorizontalAngularGridDemo } from './layout-angular/layout-horizontal-angular-grid';
 import { FormsLayoutCompactAngularGridDemo } from './layout-angular/layout-compact-angular-grid';
 import { FormsGenericContainerDemo } from './generic-container/generic-container';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, NgSelectModule, ROUTING],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
   declarations: [
     FormsDemo,
     FormsInputGroupDemo,

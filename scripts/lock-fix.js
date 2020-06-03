@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const file = path.join(process.cwd(), 'package-lock.json');
+const file = path.join(process.cwd(), 'yarn.lock');
 
 let lock = fs.readFileSync(file, { encoding: 'utf8' });
 

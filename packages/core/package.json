@@ -1,11 +1,11 @@
 {
-  "name": "@clr/core",
-  "version": "3.1.0",
+  "name": "core",
+  "private": true,
+  "version": "4.0.0-test.1",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook",
     "storybook": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",
     "dev:build": "build-storybook -s .storybook/public -c .storybook -o dist/storybook/core",
-    "prelint": "npm link ../../scripts/eslint-plugin-clarity",
     "lint": "eslint \"**/*.ts\" --ignore-pattern \"dist\" && stylelint \"./**/*.scss\"",
     "lint:fix": "eslint --fix \"./**/*.ts\" && stylelint --fix \"./**/*.scss\"",
     "golden": "npm run build:api",

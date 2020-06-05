@@ -22,8 +22,11 @@
   --color: #{$cds-token-color-neutral-0};
   --font-size: #{$cds-token-space-size-6};
 
-  --padding: #{$cds-token-layout-space-md};
+  --padding: calc(#{$cds-token-space-size-6} - var(--border-width, #{$cds-token-global-border-width-static}))
+    calc(#{$cds-token-space-size-7} - var(--border-width, #{$cds-token-global-border-width-static}));
+
   --height: #{$cds-token-space-size-11};
+
   height: var(--height); // height is set so button is not distorted when in flex container
   display: inline-block;
 
@@ -189,6 +192,12 @@
 
   ::slotted(a) {
     margin: calc(#{$cds-token-layout-space-sm} * -1) calc(#{$cds-token-layout-space-md} * -1);
+  }
+}
+
+:host(:not([size='sm'])) {
+  ::slotted(a) {
+    transform: translateY(#{$cds-token-space-size-1});
   }
 }
 

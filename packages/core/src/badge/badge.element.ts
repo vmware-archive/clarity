@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely, StatusTypes } from '@clr/core/internal';
+import { baseStyles, property, StatusTypes } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './badge.element.css.js';
 
@@ -13,7 +13,7 @@ import { styles } from './badge.element.css.js';
  * or inside the element itself.
  *
  * ```typescript
- * import '@clr/core/badge';
+ * import '@clr/core/badge/register.js';
  * ```
  *
  * ```html
@@ -57,13 +57,5 @@ export class CdsBadge extends LitElement {
 
   static get styles() {
     return [baseStyles, styles];
-  }
-}
-
-registerElementSafely('cds-badge', CdsBadge);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-badge': CdsBadge;
   }
 }

@@ -65,8 +65,6 @@
   }
 
   .button-status-icon {
-    transform: translateY(calc(-1 * #{$cds-token-space-size-1}));
-
     cds-icon {
       @include min-equilateral(#{$cds-token-space-size-8});
       fill: var(--color);
@@ -191,13 +189,6 @@
 :host([size='sm']) .private-host {
   .spinner:not(.spinner-check) {
     @include min-equilateral(#{$cds-token-space-size-6});
-  }
-
-  .button-status-icon {
-    cds-icon,
-    .spinner-check {
-      transform: translateY(#{$cds-token-space-size-1});
-    }
   }
 }
 

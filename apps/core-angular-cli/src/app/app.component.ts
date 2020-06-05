@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import '@clr/core/alert';
-import '@clr/core/button';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
 
 @Component({
   selector: 'app-root',

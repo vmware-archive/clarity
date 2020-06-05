@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/button"
+  "name": "@clr/core/button",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

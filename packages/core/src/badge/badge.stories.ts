@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/badge';
+import '@clr/core/badge/register.js';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { color as colorKnob, number, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

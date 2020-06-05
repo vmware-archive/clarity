@@ -12,7 +12,6 @@ import {
   baseStyles,
   property,
   querySlotAll,
-  registerElementSafely,
   removeAttributes,
   removeClassnames,
   setAttributes,
@@ -67,7 +66,7 @@ function updateLayoutsAndActionButtonStyles(alertActionsComponent: CdsAlertActio
  * Web component alert actions to be used inside default and banner alerts.
  *
  * ```typescript
- * import '@clr/core/alert';
+ * import '@clr/core/alert/register.js';
  * ```
  *
  * ```html
@@ -107,13 +106,5 @@ export class CdsAlertActions extends LitElement {
 
   static get styles() {
     return [baseStyles, styles];
-  }
-}
-
-registerElementSafely('cds-alert-actions', CdsAlertActions);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-alert-actions': CdsAlertActions;
   }
 }

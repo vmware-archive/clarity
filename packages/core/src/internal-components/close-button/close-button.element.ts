@@ -4,13 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, registerElementSafely } from '@clr/core/internal';
-import '@clr/core/icon';
+import { baseStyles, property } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
 import { styles as baseButtonStyles } from '../../button/base-button.element.css.js';
 import { CdsIconButton } from '@clr/core/button';
-import { ClarityIcons, timesIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, timesIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(timesIcon);
 
@@ -54,13 +53,5 @@ export class CdsCloseButton extends CdsIconButton {
 
   static get styles() {
     return [baseStyles, baseButtonStyles, styles];
-  }
-}
-
-registerElementSafely('cds-internal-close-button', CdsCloseButton);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-internal-close-button': CdsCloseButton;
   }
 }

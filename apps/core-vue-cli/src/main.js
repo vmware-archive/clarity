@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
-import '@clr/core/alert';
-import '@clr/core/button';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
 
 Vue.config.productionTip = false;
 

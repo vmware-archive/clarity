@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/alert"
+  "name": "@clr/core/alert",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

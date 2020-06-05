@@ -4,16 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon';
-import '@clr/core/internal-components';
-import {
-  assignSlotNames,
-  baseStyles,
-  property,
-  querySlot,
-  querySlotAll,
-  registerElementSafely,
-} from '@clr/core/internal';
+import { assignSlotNames, baseStyles, property, querySlot, querySlotAll } from '@clr/core/internal';
 import { AlertGroupTypes, AlertStatusTypes, CdsAlert } from '@clr/core/alert';
 import { styles } from './alert-group.element.css.js';
 import { html, LitElement } from 'lit-element';
@@ -27,7 +18,7 @@ type AlertSizes = 'default' | 'sm';
  * of alert group containing it.
  *
  * ```typescript
- * import '@clr/core/alert';
+ * import '@clr/core/alert/register.js';
  * ```
  *
  * ```html
@@ -159,13 +150,5 @@ export class CdsAlertGroup extends LitElement {
 
   static get styles() {
     return [baseStyles, styles];
-  }
-}
-
-registerElementSafely('cds-alert-group', CdsAlertGroup);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-alert-group': CdsAlertGroup;
   }
 }

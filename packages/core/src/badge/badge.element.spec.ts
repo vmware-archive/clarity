@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/badge/register.js';
 import { CdsBadge } from '@clr/core/badge';
-import '@clr/core/badge';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('badge element', () => {

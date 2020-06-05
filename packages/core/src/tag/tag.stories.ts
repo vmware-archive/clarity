@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon';
-import { ClarityIcons, infoStandardIcon, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/icon/register.js';
+import '@clr/core/tag/register.js';
+import { ClarityIcons, infoStandardIcon, userIcon } from '@clr/core/icon';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
-import '@clr/core/tag';
 import { action } from '@storybook/addon-actions';
 import { boolean, color as colorKnob, number, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

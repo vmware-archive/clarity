@@ -223,8 +223,8 @@ export const technologyCollectionAliases: IconAlias[] = [
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon';
- * import { loadTechnologyIconSet } from '@clr/core/icon-shapes';
+ * import '@clr/core/icon/register.js';
+ * import { loadTechnologyIconSet } from '@clr/core/icon';
  *
  * loadTechnologyIconSet();
  * ```

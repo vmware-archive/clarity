@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/badge';
-import '@clr/core/button';
+import '@clr/core/badge/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
 import { ClrLoadingState } from '@clr/core/button';
-import '@clr/core/icon';
-import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { boolean, color, select, text } from '@storybook/addon-knobs';

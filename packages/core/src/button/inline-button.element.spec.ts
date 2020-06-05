@@ -3,10 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
 import { CdsInlineButton } from '@clr/core/button';
-import { CdsIcon } from '@clr/core/icon-shapes';
-import '@clr/core/button';
-import '@clr/core/icon';
+import { CdsIcon } from '@clr/core/icon';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('Inline button element', () => {

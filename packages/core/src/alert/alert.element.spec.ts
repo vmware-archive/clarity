@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/alert/register.js';
+import '@clr/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType, iconTitleIsAlertStatusLabel } from '@clr/core/alert';
-import '@clr/core/alert';
-import { CdsIcon, infoStandardIcon } from '@clr/core/icon-shapes';
+import { CdsIcon, infoStandardIcon } from '@clr/core/icon';
 import { CommonStringsService } from '@clr/core/internal';
 import {
   componentIsStable,
@@ -14,7 +15,7 @@ import {
   removeTestElement,
   waitForComponent,
 } from '@clr/core/test/utils';
-import { CdsCloseButton } from '../internal-components';
+import { CdsCloseButton } from '@clr/core/internal-components/close-button';
 
 describe('Alert element – ', () => {
   let testElement: HTMLElement;

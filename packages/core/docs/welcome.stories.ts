@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from '@clr/core/icon-shapes';
-import { betaIcon } from '@clr/core/icon-shapes/';
+import { ClarityIcons, betaIcon } from '@clr/core/icon';
 import { html } from 'lit-html';
 
 ClarityIcons.addIcons(betaIcon);

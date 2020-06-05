@@ -4,8 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon';
-import '@clr/core/internal-components';
 import {
   applyMixins,
   assignSlotNames,
@@ -16,7 +14,6 @@ import {
   property,
   querySlot,
   querySlotAll,
-  registerElementSafely,
   UniqueId,
   setAttributes,
 } from '@clr/core/internal';
@@ -29,7 +26,7 @@ import {
   warningStandardIcon,
   errorStandardIcon,
   helpIcon,
-} from '@clr/core/icon-shapes';
+} from '@clr/core/icon';
 import { AlertGroupTypes, AlertStatusTypes, CdsAlertActions } from '@clr/core/alert';
 import { styles } from './alert.element.css.js';
 import { html, LitElement } from 'lit-element';
@@ -134,7 +131,7 @@ applyMixins(AlertMixinClass, [UniqueId]);
  * the containing app-alert group, although it can be overridden on individual alerts.
  *
  * ```typescript
- * import '@clr/core/alert';
+ * import '@clr/core/alert/register.js';
  * ```
  *
  * ```html
@@ -261,13 +258,14 @@ export class CdsAlert extends AlertMixinClass {
         ${this.alertGroupType === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
           : html``}
-        <span class="alert-icon-wrapper" aria-hidden="true">
+        <span class="alert-icon-wrapper" aria-hidden="true" cds-layout="horizontal">
           ${this.status === 'loading'
             ? html`<span
                 class="${this.alertGroupType === 'banner'
                   ? 'spinner spinner-inline spinner-neutral-0'
                   : 'spinner spinner-inline'}"
                 aria-hidden="true"
+                cds-layout="align:horizontal-center"
               ></span>`
             : html`<slot name="alert-icon"
                 ><cds-icon
@@ -275,6 +273,7 @@ export class CdsAlert extends AlertMixinClass {
                   shape="${getIconStatusShape(this.status)}"
                   title="${getIconStatusLabel(this.status)}"
                   aria-hidden="true"
+                  cds-layout="align:horizontal-center"
                 ></cds-icon
               ></slot>`}
         </span>
@@ -331,11 +330,3 @@ export class CdsAlert extends AlertMixinClass {
 }
 
 export interface CdsAlert extends AlertMixinClass, UniqueId {}
-
-registerElementSafely('cds-alert', CdsAlert);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-alert': CdsAlert;
-  }
-}

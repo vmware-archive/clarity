@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/modal/register.js';
 import { CommonStringsServiceInternal } from '@clr/core/internal';
 import { CdsModal } from '@clr/core/modal';
-import '@clr/core/modal';
 import {
   componentIsStable,
   createTestElement,

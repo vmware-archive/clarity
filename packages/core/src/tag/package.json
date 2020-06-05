@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/tag"
+  "name": "@clr/core/tag",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

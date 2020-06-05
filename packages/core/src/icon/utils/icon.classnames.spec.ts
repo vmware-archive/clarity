@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon';
-import { CdsIcon } from '@clr/core/icon-shapes';
+import '@clr/core/icon/register.js';
+import { CdsIcon } from '@clr/core/icon';
 import { getEnumValues } from '@clr/core/internal';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { renderIcon } from '../icon.renderer.js';

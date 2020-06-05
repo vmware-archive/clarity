@@ -11,8 +11,7 @@
     { "path": "./src/badge/entrypoint.tsconfig.json" },
     { "path": "./src/button/entrypoint.tsconfig.json" },
     { "path": "./src/icon/entrypoint.tsconfig.json" },
-    { "path": "./src/icon-shapes/entrypoint.tsconfig.json" },
-    { "path": "./src/internal-components/entrypoint.tsconfig.json" },
+    { "path": "./src/internal-components/close-button/entrypoint.tsconfig.json" },
     { "path": "./src/tag/entrypoint.tsconfig.json" },
     { "path": "./src/test-dropdown/entrypoint.tsconfig.json" }
   ]

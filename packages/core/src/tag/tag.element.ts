@@ -4,15 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons, timesIcon } from '@clr/core/icon-shapes';
-import {
-  assignSlotNames,
-  baseStyles,
-  CdsBaseButton,
-  property,
-  registerElementSafely,
-  StatusTypes,
-} from '@clr/core/internal';
+import { ClarityIcons, timesIcon } from '@clr/core/icon';
+import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -23,7 +16,7 @@ ClarityIcons.addIcons(timesIcon);
  * Tags are visually styled to differentiate them from buttons.
  *
  * ```typescript
- * import '@clr/core/tag';
+ * import '@clr/core/tag/register.js';
  * ```
  *
  * ```html
@@ -97,13 +90,5 @@ export class CdsTag extends CdsBaseButton {
       </div>
       ${this.hiddenButtonTemplate}
     `;
-  }
-}
-
-registerElementSafely('cds-tag', CdsTag);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-tag': CdsTag;
   }
 }

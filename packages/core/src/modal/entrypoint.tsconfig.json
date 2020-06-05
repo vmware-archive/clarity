@@ -3,5 +3,5 @@
   "compilerOptions": {
     "composite": true
   },
-  "references": [{ "path": "../internal/entrypoint.tsconfig.json" }]
+  "references": [{ "path": "../icon/entrypoint.tsconfig.json" }, { "path": "../internal/entrypoint.tsconfig.json" }]
 }

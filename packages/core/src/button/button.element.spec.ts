@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { CdsButton, ClrLoadingState } from '@clr/core/button';
-import '@clr/core/button';
+import '@clr/core/button/register.js';
 import {
   componentIsStable,
   createTestElement,

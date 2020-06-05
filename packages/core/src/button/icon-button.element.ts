@@ -4,15 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  assignSlotNames,
-  baseStyles,
-  iconSlot,
-  iconSpinner,
-  iconSpinnerCheck,
-  property,
-  registerElementSafely,
-} from '@clr/core/internal';
+import { assignSlotNames, baseStyles, iconSlot, iconSpinner, iconSpinnerCheck, property } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './icon-button.element.css.js';
@@ -22,7 +14,7 @@ import { CdsButton, ClrLoadingState } from './button.element.js';
  * Icon buttons give applications a compact alternative to communicate action and direct user intent.
  *
  * ```typescript
- * import '@clr/core/button';
+ * import '@clr/core/button/register.js';
  * ```
  *
  * ```html
@@ -79,13 +71,5 @@ export class CdsIconButton extends CdsButton {
 
   static get styles() {
     return [baseStyles, baseButtonStyles, styles];
-  }
-}
-
-registerElementSafely('cds-icon-button', CdsIconButton);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-icon-button': CdsIconButton;
   }
 }

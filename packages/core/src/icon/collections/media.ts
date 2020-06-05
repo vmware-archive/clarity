@@ -61,8 +61,8 @@ export const mediaCollectionAliases: IconAlias[] = [];
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon';
- * import { loadMediaIconSet } from '@clr/core/icon-shapes';
+ * import '@clr/core/icon/register.js';
+ * import { loadMediaIconSet } from '@clr/core/icon';
  *
  * loadMediaIconSet();
  * ```

@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/modal/register.js';
 import { CdsModalHeaderActions } from '@clr/core/modal';
-import '@clr/core/modal';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('modal-header-actions element', () => {

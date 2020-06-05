@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/test-dropdown"
+  "name": "@clr/core/test-dropdown",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

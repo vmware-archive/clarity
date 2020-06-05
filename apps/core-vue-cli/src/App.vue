@@ -1,8 +1,10 @@
 <template>
   <div>
-    <cds-alert status="warning" :closable="true" v-if="show" @closedChange="show = false">
-      Hello World
-    </cds-alert>
+    <cds-alert-group status="warning" v-if="show">
+      <cds-alert :closable="true" @closeChange="show = false">
+        Hello World
+      </cds-alert>
+    </cds-alert-group>
 
     <cds-button status="success" @click="show = true">Open Alert</cds-button>
   </div>

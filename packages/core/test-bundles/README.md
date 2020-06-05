@@ -4,7 +4,7 @@ These tests check to ensure that Clarity Core properly can be consumed and
 tree shaken by the most commonly used module bundlers.
 
 ```javascript
-import '@clr/core/badge';
+import '@clr/core/badge/register.js';
 ```
 
 We should expect only the badge component code to included in the final application
@@ -15,7 +15,7 @@ importing icons.
 
 ```javascript
 import '@clr/core/icon';
-import { ClarityIcons, userIcon, menuIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, userIcon, menuIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(userIcon, menuIcon);
 ```
@@ -23,9 +23,10 @@ ClarityIcons.addIcons(userIcon, menuIcon);
 This example should only include the icon Web Component as well as only two of
 the many icons available in the final application bundle.
 
-To run these tests run the following commands
+To run these tests run the following commands in order from the core directory:
 
 ```bash
-yarn core:build
-yarn core:test:bundle
+yarn run build
+yarn run test:treeshaking
+yarn run test:bundles
 ```

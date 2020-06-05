@@ -8,7 +8,7 @@ import { ClarityModule } from '@clr/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { boolean, select } from '@storybook/addon-knobs';
 
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Alert',

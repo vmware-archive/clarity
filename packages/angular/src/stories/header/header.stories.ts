@@ -7,7 +7,7 @@ import { select } from '@storybook/addon-knobs';
 import { moduleMetadata } from '@storybook/angular';
 import { ClarityModule } from '@clr/angular';
 
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Header',

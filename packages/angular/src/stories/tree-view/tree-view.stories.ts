@@ -5,21 +5,96 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { action } from '@storybook/addon-actions';
+import { boolean, radios } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
-const basicTemplate = require('!!raw-loader!./basic.html');
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
+
+const demoTree: any[] = [
+  {
+    name: 'Users',
+    icon: 'folder',
+    expanded: true,
+    files: [
+      {
+        icon: 'calendar',
+        name: 'Calendar',
+        active: true,
+      },
+      {
+        icon: 'user',
+        name: 'Accounts',
+        active: false,
+      },
+    ],
+  },
+  {
+    name: 'Services',
+    icon: 'cog',
+    expanded: false,
+    files: [
+      {
+        icon: 'bell',
+        name: 'Alerts',
+        active: false,
+      },
+      {
+        icon: 'cloud',
+        name: 'Clouds',
+        active: false,
+      },
+    ],
+  },
+  {
+    name: 'Images',
+    icon: 'image',
+    expanded: false,
+    files: [
+      {
+        icon: 'image',
+        name: 'Screenshot.png',
+        active: false,
+      },
+      {
+        icon: 'image',
+        name: 'Pic.png',
+        active: false,
+      },
+      {
+        icon: 'image',
+        name: 'Portfolio.jpg',
+        active: false,
+      },
+    ],
+  },
+];
 
 export default {
   title: 'Tree View',
   decorators: [
     moduleMetadata({
-      imports: [ClarityModule],
+      imports: [BrowserAnimationsModule, ClarityModule],
     }),
   ],
 };
 
 export const Basic = () => {
+  const expanded = false;
+  const selectable = boolean('Checkbox', false);
+  const icon = boolean('Icon', false);
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      icon,
+      demoTree,
+      expanded,
+      selectable,
+      openFile: event => {
+        action('File to open: ')(event);
+      },
+    },
   };
 };

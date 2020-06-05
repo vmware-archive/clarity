@@ -5,8 +5,9 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { boolean, radios } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Tabs',
@@ -18,8 +19,14 @@ export default {
 };
 
 export const Basic = () => {
+  const layout = radios('Layout', { Vertical: 'vertical', Horizontal: 'horizontal' }, 'vertical');
+  const overflow = boolean('Overflow', false);
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      layout,
+      overflow,
+    },
   };
 };

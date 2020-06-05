@@ -10,8 +10,8 @@ import { boolean } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const basicTemplate = require('!!raw-loader!./basic.html');
-const bindingTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
+const bindingTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Accordion',

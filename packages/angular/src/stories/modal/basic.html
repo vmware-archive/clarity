@@ -8,6 +8,25 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Modal demo</h1>
+      <p>
+        Try it live:
+        <button class="btn btn-primary" (click)="modalState = true">Show modal</button>
+      </p>
+      <clr-modal
+        [(clrModalOpen)]="modalState"
+        [clrModalClosable]="closable"
+        [clrModalSize]="size"
+        [clrModalStaticBackdrop]="staticBackdrop"
+      >
+        <h3 class="modal-title">I have a nice title</h3>
+        <div class="modal-body">
+          <p>But not much to say...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" (click)="modalState = false">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="modalState = false">Ok</button>
+        </div>
+      </clr-modal>
     </div>
   </div>
 </div>

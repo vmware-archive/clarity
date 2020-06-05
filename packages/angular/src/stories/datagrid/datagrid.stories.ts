@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EmployeeGenerator } from './data/employees';
 
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Datagrid',

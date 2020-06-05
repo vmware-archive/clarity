@@ -8,6 +8,44 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Timeline demo</h1>
+      <section class="clr-row">
+        <clr-timeline [clrLayout]="layout" [ngClass]="{'clr-col-3': layout == 'vertical'}">
+          <clr-timeline-step clrState="not-started">
+            <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+            <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+            <clr-timeline-step-description>Root CA certificate requested.</clr-timeline-step-description>
+          </clr-timeline-step>
+          <clr-timeline-step clrState="current">
+            <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+            <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+            <clr-timeline-step-description>
+              Root CA certificate requested. Upload it to the KMS to complete the connection.
+              <img src="assets/placeholder_350x150.png" alt="Example of an Image in a Card" />
+            </clr-timeline-step-description>
+          </clr-timeline-step>
+          <clr-timeline-step class="gemini-ignore" clrState="processing">
+            <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+            <clr-timeline-step-title>Make vCenter trust KMS</clr-timeline-step-title>
+            <clr-timeline-step-description>
+              Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very
+              long and very long.
+            </clr-timeline-step-description>
+          </clr-timeline-step>
+          <clr-timeline-step clrState="success">
+            <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+            <clr-timeline-step-title>Make KMS trust vCenter</clr-timeline-step-title>
+            <clr-timeline-step-description
+              >Upload it to the KMS to complete the connection. Third sentence.
+              <button class="btn btn-sm">Refresh</button>
+            </clr-timeline-step-description>
+          </clr-timeline-step>
+          <clr-timeline-step clrState="error">
+            <clr-timeline-step-header></clr-timeline-step-header>
+            <clr-timeline-step-title>Connected</clr-timeline-step-title>
+            <clr-timeline-step-description>No. It's not connected.</clr-timeline-step-description>
+          </clr-timeline-step>
+        </clr-timeline>
+      </section>
     </div>
   </div>
 </div>

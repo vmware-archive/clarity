@@ -9,16 +9,16 @@ import { ClarityModule } from '@clr/angular';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-// const fullTemplate = require('!!raw-loader!./full.html');
-const checkboxTemplate = require('!!raw-loader!./checkbox.html');
-const datalistTemplate = require('!!raw-loader!./datalist.html');
-const inputTemplate = require('!!raw-loader!./input.html');
-const passwordTemplate = require('!!raw-loader!./password.html');
-const radioTemplate = require('!!raw-loader!./radio.html');
-const rangeTemplate = require('!!raw-loader!./range.html');
-const selectTemplate = require('!!raw-loader!./select.html');
-const textareaTemplate = require('!!raw-loader!./textarea.html');
-const toggleTemplate = require('!!raw-loader!./toggle.html');
+// const fullTemplate = require('!!raw-loader!./full.html'); // eslint-disable-line
+const checkboxTemplate = require('!!raw-loader!./checkbox.html'); // eslint-disable-line
+const datalistTemplate = require('!!raw-loader!./datalist.html'); // eslint-disable-line
+const inputTemplate = require('!!raw-loader!./input.html'); // eslint-disable-line
+const passwordTemplate = require('!!raw-loader!./password.html'); // eslint-disable-line
+const radioTemplate = require('!!raw-loader!./radio.html'); // eslint-disable-line
+const rangeTemplate = require('!!raw-loader!./range.html'); // eslint-disable-line
+const selectTemplate = require('!!raw-loader!./select.html'); // eslint-disable-line
+const textareaTemplate = require('!!raw-loader!./textarea.html'); // eslint-disable-line
+const toggleTemplate = require('!!raw-loader!./toggle.html'); // eslint-disable-line
 
 const formSubmit = event => {
   action('Form values submitted')(event);

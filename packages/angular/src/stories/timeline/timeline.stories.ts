@@ -5,8 +5,9 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Timeline',
@@ -18,8 +19,12 @@ export default {
 };
 
 export const Basic = () => {
+  const layout = select('Select', { Vertical: 'vertical', Horizontal: 'horizontal' }, 'horizontal');
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      layout,
+    },
   };
 };

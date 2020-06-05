@@ -5,21 +5,41 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
-const basicTemplate = require('!!raw-loader!./basic.html');
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Wizard',
   decorators: [
     moduleMetadata({
-      imports: [ClarityModule],
+      imports: [BrowserAnimationsModule, ClarityModule],
     }),
   ],
 };
 
 export const Basic = () => {
+  const size = select(
+    'Size',
+    {
+      Small: 'sm',
+      Medium: 'md',
+      Large: 'lg',
+    },
+    'sm'
+  );
+  let open = false; // eslint-disable-line prefer-const
+  function toggle() {
+    this.open = !this.open;
+  }
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      open,
+      size,
+      toggleWizard: toggle,
+    },
   };
 };

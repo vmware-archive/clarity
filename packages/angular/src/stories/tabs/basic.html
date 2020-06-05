@@ -8,6 +8,74 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Tabs demo</h1>
+      <clr-tabs [clrLayout]="layout">
+        <clr-tab>
+          <button clrTabLink>Dashboard</button>
+          <clr-tab-content clrTabContentId="content1" *clrIfActive>
+            Content for Dashboard tab. Here is a
+            <a href="javascript://">link</a> that can be accessed via clicking or through keyboard via tabbing.
+          </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+          <button clrTabLink>Management</button>
+          <clr-tab-content *clrIfActive="true">
+            <clr-tabs>
+              <clr-tab>
+                <button clrTabLink>Nested</button>
+                <clr-tab-content clrTabContentId="content1" *clrIfActive>
+                  <p>
+                    Content for Nested tab. Here is a <a href="javascript://">link</a> that can be accessed via clicking
+                    or through keyboard via tabbing.
+                  </p>
+                </clr-tab-content>
+              </clr-tab>
+
+              <clr-tab>
+                <button clrTabLink>Tabs</button>
+                <clr-tab-content *clrIfActive>
+                  <p>Content for Tabs tab.</p>
+                </clr-tab-content>
+              </clr-tab>
+
+              <clr-tab>
+                <button clrTabLink>Example</button>
+                <clr-tab-content *clrIfActive>
+                  <p>Content for Example tab.</p>
+                </clr-tab-content>
+              </clr-tab>
+            </clr-tabs>
+          </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+          <button clrTabLink [clrTabLinkInOverflow]="overflow">Cloud 1</button>
+          <clr-tab-content *clrIfActive>
+            Content for Cloud 1 tab.
+          </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+          <button clrTabLink [clrTabLinkInOverflow]="overflow">Cloud 2</button>
+          <clr-tab-content *clrIfActive>
+            Content for Cloud 2 tab.
+          </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+          <button clrTabLink [clrTabLinkInOverflow]="overflow">Cloud 3</button>
+          <clr-tab-content *clrIfActive>
+            Content for Cloud 3 tab.
+          </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+          <button clrTabLink [clrTabLinkInOverflow]="inOverflow">Infrastructure</button>
+          <clr-tab-content *clrIfActive>
+            Content for Infrastructure tab.
+          </clr-tab-content>
+        </clr-tab>
+      </clr-tabs>
     </div>
   </div>
 </div>

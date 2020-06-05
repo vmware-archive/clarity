@@ -5,8 +5,9 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
-const basicTemplate = require('!!raw-loader!./basic.html');
+const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
   title: 'Tooltip',
@@ -18,8 +19,35 @@ export default {
 };
 
 export const Basic = () => {
+  // sizes is  select
+  // positions is select
+  const position = select(
+    'Position',
+    {
+      right: 'right',
+      topRight: 'top-right',
+      bottomRight: 'bottom-right',
+      bottomLeft: 'bottom-left',
+      left: 'left',
+    },
+    undefined
+  );
+  const size = select(
+    'Size',
+    {
+      xs: 'xs',
+      sm: 'sm',
+      md: 'md',
+      lg: 'lg',
+    },
+    'md'
+  );
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      position,
+      size,
+    },
   };
 };

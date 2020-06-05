@@ -5,3 +5,12 @@
  */
 
 /* You can add global styles to this file, and also import other style files */
+.story-align-center {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+}

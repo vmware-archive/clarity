@@ -7,7 +7,18 @@
 <div class="main-container">
   <div class="content-container">
     <div class="content-area">
-      <h1>Signpost demo</h1>
+      <h1>Basic Signpost</h1>
+      <section class="story-align-center">
+        <clr-signpost>
+          <button class="btn btn-primary btn-link" clrSignpostTrigger>
+            {{(position) ? position : 'right-middle'}} popup
+          </button>
+          <clr-signpost-content [clrPosition]="position" *clrIfOpen>
+            <h3 style="margin-top: 0;">Position</h3>
+            <p><code class="clr-code">{{ position }}</code></p>
+          </clr-signpost-content>
+        </clr-signpost>
+      </section>
     </div>
   </div>
 </div>

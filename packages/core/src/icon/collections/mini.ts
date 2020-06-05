@@ -42,8 +42,8 @@ export const miniCollectionAliases: IconAlias[] = [
  * Function that can be called to load the mini icon set.
  *
  * ```typescript
- * import '@clr/core/icon';
- * import { loadMiniIconSet } from '@clr/core/icon-shapes';
+ * import '@clr/core/icon/register.js';
+ * import { loadMiniIconSet } from '@clr/core/icon';
  *
  * loadMiniIconSet();
  * ```

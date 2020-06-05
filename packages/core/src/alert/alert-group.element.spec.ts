@@ -3,8 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/alert/register.js';
+import '@clr/core/icon/register.js';
 import { CdsAlert, CdsAlertGroup } from '@clr/core/alert';
-import '@clr/core/alert';
 import {
   componentIsStable,
   createTestElement,

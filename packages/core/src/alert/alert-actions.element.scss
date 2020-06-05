@@ -36,7 +36,6 @@
 
 :host([type='default']) {
   --action-size: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-3});
-  padding-top: #{$cds-token-space-size-2};
 
   ::slotted(cds-button) {
     // slight nudges in alert-actions adjusting for styling across slots.

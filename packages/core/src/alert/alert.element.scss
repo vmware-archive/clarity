@@ -58,6 +58,10 @@ slot[name='alert-icon'] {
   --color: var(--icon-color);
 }
 
+.spinner.spinner-inline {
+  @include equilateral(calc(var(--icon-size) - #{$cds-token-space-size-2}));
+}
+
 cds-internal-close-button {
   --color: #{$cds-token-color-neutral-700};
 }
@@ -69,6 +73,10 @@ cds-internal-close-button {
   display: flex;
   min-height: #{$cds-token-space-size-6};
   padding: var(--container-padding);
+}
+
+.alert-icon-wrapper {
+  min-width: var(--icon-size);
 }
 
 // default is for lightweight alerts

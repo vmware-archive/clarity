@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/button';
-import '@clr/core/icon';
-import { angleIcon, ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
+import { angleIcon, ClarityIcons, userIcon } from '@clr/core/icon';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { boolean, color, text } from '@storybook/addon-knobs';
@@ -95,8 +95,8 @@ export const withIcons = () => {
     <div cds-layout="vertical gap:md">
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
-        <cds-inline-button><cds-icon shape="user"></cds-icon> Ohai</cds-inline-button>
-        <cds-inline-button><cds-icon shape="user"></cds-icon> Kthxbye</cds-inline-button>
+        <cds-inline-button><cds-icon shape="user"></cds-icon>Ohai</cds-inline-button>
+        <cds-inline-button><cds-icon shape="user"></cds-icon>Kthxbye</cds-inline-button>
       </p>
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
@@ -106,10 +106,10 @@ export const withIcons = () => {
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
         <cds-inline-button
-          ><cds-icon shape="user"></cds-icon> Ohai<cds-icon shape="angle" direction="right"></cds-icon
+          ><cds-icon shape="user"></cds-icon>Ohai<cds-icon shape="angle" direction="right"></cds-icon
         ></cds-inline-button>
         <cds-inline-button
-          ><cds-icon shape="user"></cds-icon> Kthxbye<cds-icon shape="angle" direction="right"></cds-icon
+          ><cds-icon shape="user"></cds-icon>Kthxbye<cds-icon shape="angle" direction="right"></cds-icon
         ></cds-inline-button>
       </p>
     </div>

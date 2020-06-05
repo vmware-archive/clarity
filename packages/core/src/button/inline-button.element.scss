@@ -39,7 +39,6 @@
 ::slotted(cds-icon) {
   --color: inherit;
   @include equilateral(1em);
-  transform: translateY(0.125em);
 }
 
 ::slotted(cds-icon:first-child) {
@@ -48,6 +47,16 @@
 
 ::slotted(cds-icon:last-child) {
   margin-left: #{$cds-token-space-size-2};
+}
+
+::slotted(a) {
+  box-sizing: content-box !important;
+  color: inherit;
+  display: inline-block;
+  line-height: var(--line-height);
+  min-width: 0;
+  padding: 0;
+  text-decoration: none !important;
 }
 
 :host(:active) .private-host {

@@ -282,8 +282,8 @@ export const essentialCollectionAliases: IconAlias[] = [
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon';
- * import { loadEssentialIconSet } from '@clr/core/icon-shapes';
+ * import '@clr/core/icon/register.js';
+ * import { loadEssentialIconSet } from '@clr/core/icon';
  *
  * loadEssentialIconSet();
  * ```

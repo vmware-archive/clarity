@@ -14,11 +14,13 @@ import { KeyCodes } from './../enums/key-codes.js';
 import { stopEvent } from './../utils/events.js';
 
 // TODO: replace with circular progress bar when complete
-export const iconSpinnerCheck = html`<span class="button-status-icon"
-  ><span class="spinner spinner-inline spinner-check"></span
+export const iconSpinnerCheck = html`<span class="button-status-icon" cds-layout="horizontal align:center"
+  ><span class="spinner spinner-inline spinner-check" cds-layout="align:center"></span
 ></span>`;
 
-export const iconSpinner = html`<span class="button-status-icon"><span class="spinner spinner-inline"></span></span>`;
+export const iconSpinner = html`<span class="button-status-icon" cds-layout="horizontal align:center"
+  ><span class="spinner spinner-inline" cds-layout="align:center"></span
+></span>`;
 
 export const iconSlot = html`<span class="button-icon"><slot name="button-icon"></slot></span>`;
 

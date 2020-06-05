@@ -4,14 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  baseStyles,
-  CommonStringsService,
-  event,
-  EventEmitter,
-  property,
-  registerElementSafely,
-} from '@clr/core/internal';
+import { baseStyles, CommonStringsService, event, EventEmitter, property } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css.js';
@@ -81,13 +74,5 @@ export class CdsTestDropdown extends LitElement {
   /** Toggle the current open state of the dropdown */
   toggle() {
     this.open = !this.open;
-  }
-}
-
-registerElementSafely('cds-test-dropdown', CdsTestDropdown);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-test-dropdown': CdsTestDropdown;
   }
 }

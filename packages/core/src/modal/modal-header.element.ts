@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, registerElementSafely } from '@clr/core/internal';
+import { baseStyles } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 
 /**
  * Web component modal header to be used inside modal.
  *
  * ```typescript
- * import '@clr/core/modal';
+ * import '@clr/core/modal/register.js';
  * ```
  *
  * ```html
@@ -42,13 +42,5 @@ export class CdsModalHeader extends LitElement {
 
   static get styles() {
     return [baseStyles];
-  }
-}
-
-registerElementSafely('cds-modal-header', CdsModalHeader);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-modal-header': CdsModalHeader;
   }
 }

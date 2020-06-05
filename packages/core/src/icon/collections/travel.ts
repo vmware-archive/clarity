@@ -46,8 +46,8 @@ export const travelCollectionAliases: IconAlias[] = [
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon';
- * import { loadTravelIconSet } from '@clr/core/icon-shapes';
+ * import '@clr/core/icon/register.js';
+ * import { loadTravelIconSet } from '@clr/core/icon';
  *
  * loadTravelIconSet();
  * ```

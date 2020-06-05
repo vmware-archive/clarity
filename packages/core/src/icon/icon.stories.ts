@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon';
-import { CdsIcon, ClarityIcons, imageIcon, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/icon/register.js';
+import { CdsIcon, ClarityIcons, imageIcon, userIcon } from '@clr/core/icon';
 import { action } from '@storybook/addon-actions';
 import { boolean, color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
@@ -42,7 +42,7 @@ import {
   textEditCollectionIcons,
   travelCollectionAliases,
   travelCollectionIcons,
-} from '@clr/core/icon-shapes';
+} from '@clr/core/icon';
 import { cssGroup, propertiesGroup, registerElementSafely, setStyles } from '@clr/core/internal';
 
 loadChartIconSet();

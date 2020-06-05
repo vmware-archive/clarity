@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/modal"
+  "name": "@clr/core/modal",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

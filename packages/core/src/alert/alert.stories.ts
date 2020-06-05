@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/alert';
-import '@clr/core/button';
-import '@clr/core/internal-components';
-import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/internal-components/close-button/register.js';
+import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@clr/core/icon';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { color as colorKnob, select, text } from '@storybook/addon-knobs';

@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, registerElementSafely } from '@clr/core/internal';
+import { baseStyles } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 
 /**
  * Web component modal actions to be used inside modal.
  *
  * ```typescript
- * import '@clr/core/modal';
+ * import '@clr/core/modal/register.js';
  * ```
  *
  * ```html
@@ -43,13 +43,5 @@ export class CdsModalActions extends LitElement {
 
   static get styles() {
     return [baseStyles];
-  }
-}
-
-registerElementSafely('cds-modal-actions', CdsModalActions);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-modal-actions': CdsModalActions;
   }
 }

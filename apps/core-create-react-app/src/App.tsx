@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
-import '@clr/core/alert';
-import '@clr/core/button';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
+import '@clr/core/tag/register.js';
+import '@clr/core/badge/register.js';
 import '@clr/core/global.min.css';
 import '@clr/city/css/bundles/default.min.css';
 
 import './App.css';
-import { CdsButton, CdsTag, CdsBadge, CdsAlert, CdsAlertContent } from './clarity'; // CdsIcon
+import { CdsButton, CdsIcon, CdsTag, CdsBadge, CdsAlertGroup, CdsAlert } from './clarity'; // CdsIcon
 
 interface AppProps {}
 interface AppState {
@@ -27,9 +30,9 @@ export default class App extends Component<AppProps, AppState> {
         <h1>Clarity in React</h1>
 
         {this.state.show ? (
-          <CdsAlert status="warning" onClosedChange={() => this.setState({ show: false })}>
-            <CdsAlertContent>Hello World</CdsAlertContent>
-          </CdsAlert>
+          <CdsAlertGroup status="warning">
+            <CdsAlert onCloseChange={() => this.setState({ show: false })} closable>Hello World</CdsAlert>
+          </CdsAlertGroup>
         ) : (
           ''
         )}
@@ -112,8 +115,6 @@ export default class App extends Component<AppProps, AppState> {
           <CdsBadge color="light-blue">3</CdsBadge>
         </section>
 
-        {/*
-        Icons currently broken in 3.1.1
         <section>
           <h2>Icons</h2>
           <CdsIcon size="lg" shape="user"></CdsIcon>
@@ -127,7 +128,7 @@ export default class App extends Component<AppProps, AppState> {
           <CdsIcon size="lg" shape="user" solid badge="success"></CdsIcon>
           <CdsIcon size="lg" shape="user" solid badge="danger"></CdsIcon>
           <CdsIcon size="lg" shape="user" solid badge="warning-triangle"></CdsIcon>
-        </section> */}
+        </section>
       </main>
     );
   }

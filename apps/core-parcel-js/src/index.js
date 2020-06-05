@@ -1,8 +1,8 @@
-import '@clr/core/button';
-import '@clr/core/badge';
-import '@clr/core/tag';
-import '@clr/core/alert';
-import '@clr/core/icon';
-import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/button/register.js';
+import '@clr/core/badge/register.js';
+import '@clr/core/tag/register.js';
+import '@clr/core/alert/register.js';
+import '@clr/core/icon/register.js';
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(userIcon);

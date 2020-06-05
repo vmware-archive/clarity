@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CdsCloseButton } from '@clr/core/internal-components';
-import '@clr/core/internal-components';
+import '@clr/core/internal-components/close-button/register.js';
+import { CdsCloseButton } from '@clr/core/internal-components/close-button';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('internal close button element', () => {

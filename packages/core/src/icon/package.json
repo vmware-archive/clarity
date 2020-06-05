@@ -1,4 +1,6 @@
 {
-  "sideEffects": true,
-  "name": "@clr/core/icon"
+  "name": "@clr/core/icon",
+  "sideEffects": [
+    "./register.js"
+  ]
 }

@@ -4,22 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@clr/core/icon/register.js';
 import {
   applyMixins,
   baseStyles,
+  CdsBaseFocusTrap,
   CommonStringsService,
   CssHelpers,
   ESC,
   event,
   EventEmitter,
   property,
-  registerElementSafely,
   UniqueId,
 } from '@clr/core/internal';
-import '@clr/core/icon';
-import { ClarityIcons, timesIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, timesIcon } from '@clr/core/icon';
 import { html } from 'lit-element';
-import { CdsBaseFocusTrap } from '../internal/base/focus-trap.base.js';
 import { styles } from './modal.element.css.js';
 
 ClarityIcons.addIcons(timesIcon);
@@ -32,7 +31,7 @@ applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
  * Web component modal.
  *
  * ```typescript
- * import '@clr/core/modal';
+ * import '@clr/core/modal/register.js';
  * ```
  *
  * ```html
@@ -130,11 +129,3 @@ export class CdsModal extends ModalMixinClass {
 }
 
 export interface CdsModal extends ModalMixinClass, UniqueId, CssHelpers {}
-
-registerElementSafely('cds-modal', CdsModal);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-modal': CdsModal;
-  }
-}

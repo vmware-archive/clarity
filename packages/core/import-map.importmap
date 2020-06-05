@@ -20,15 +20,22 @@
     "css-vars-ponyfill": "/base/node_modules/css-vars-ponyfill/dist/css-vars-ponyfill.esm.js",
 
     "@clr/core/alert": "/base/dist/core/alert/index.js",
+    "@clr/core/alert/register.js": "/base/dist/core/alert/register.js",
     "@clr/core/badge": "/base/dist/core/badge/index.js",
+    "@clr/core/badge/register.js": "/base/dist/core/badge/register.js",
     "@clr/core/button": "/base/dist/core/button/index.js",
+    "@clr/core/button/register.js": "/base/dist/core/button/register.js",
     "@clr/core/icon": "/base/dist/core/icon/index.js",
-    "@clr/core/icon-shapes": "/base/dist/core/icon-shapes/index.js",
+    "@clr/core/icon/register.js": "/base/dist/core/icon/register.js",
     "@clr/core/internal": "/base/dist/core/internal/index.js",
-    "@clr/core/internal-components": "/base/dist/core/internal-components/index.js",
+    "@clr/core/internal-components/close-button": "/base/dist/core/internal-components/close-button/index.js",
+    "@clr/core/internal-components/close-button/register.js": "/base/dist/core/internal-components/close-button/register.js",
     "@clr/core/modal": "/base/dist/core/modal/index.js",
+    "@clr/core/modal/register.js": "/base/dist/core/modal/register.js",
     "@clr/core/tag": "/base/dist/core/tag/index.js",
+    "@clr/core/tag/register.js": "/base/dist/core/tag/register.js",
     "@clr/core/test-dropdown": "/base/dist/core/test-dropdown/index.js",
+    "@clr/core/test-dropdown/register.js": "/base/dist/core/test-dropdown/register.js",
     "@clr/core/test/utils": "/base/dist/core/test/utils.js"
   }
 }

@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/alert';
-import '@clr/core/button';
-import '@clr/core/internal-components';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/internal-components/close-button/register.js';
 import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
-import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
 

@@ -14,10 +14,8 @@ import {
   iconSpinnerCheck,
   iconSlot,
   property,
-  registerElementSafely,
 } from '@clr/core/internal';
-import '@clr/core/icon';
-import { ClarityIcons, errorStandardIcon } from '@clr/core/icon-shapes';
+import { ClarityIcons, errorStandardIcon } from '@clr/core/icon';
 import { html, query } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
@@ -26,7 +24,9 @@ ClarityIcons.addIcons(errorStandardIcon);
 
 // TODO: when we migrate away from the base64 icons in other states, we will need to either move the consts
 // into this file or move the base button here. pulling cds-icons into core/internal creates a circular dependency
-const iconSpinnerError = html`<span class="button-status-icon"><cds-icon shape="error-standard"></cds-icon></span>`;
+const iconSpinnerError = html`<span class="button-status-icon" cds-layout="horizontal align:center"
+  ><cds-icon shape="error-standard" cds-layout="align:center"></cds-icon
+></span>`;
 
 export enum ClrLoadingState {
   DEFAULT = 'default',
@@ -60,7 +60,7 @@ function buttonSlots(icon: boolean, badge: boolean) {
  * Buttons allow an application to communicate action and direct user intent.
  *
  * ```typescript
- * import '@clr/core/button';
+ * import '@clr/core/button/register.js';
  * ```
  *
  * ```html
@@ -191,13 +191,5 @@ export class CdsButton extends CdsBaseButton {
     this.loadingState = ClrLoadingState.DEFAULT;
     this.style.removeProperty('width');
     this.disabled = false;
-  }
-}
-
-registerElementSafely('cds-button', CdsButton);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-button': CdsButton;
   }
 }

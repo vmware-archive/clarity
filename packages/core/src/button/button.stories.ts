@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/badge';
-import '@clr/core/button';
-import '@clr/core/icon';
-import { ClarityIcons, userIcon } from '@clr/core/icon-shapes';
+import '@clr/core/badge/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
@@ -150,7 +150,7 @@ export const textAndBadge = () => {
         <cds-button status="success">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="success" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:sm p-b:xs" style="background: #313131">
+      <div cds-layout="horizontal gap:sm p:xs p-b:none" style="background: #313131">
         <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">

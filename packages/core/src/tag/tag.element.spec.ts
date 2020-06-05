@@ -3,8 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import '@clr/core/tag/register.js';
+import '@clr/core/icon/register.js';
 import { CdsTag } from '@clr/core/tag';
-import '@clr/core/tag';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('tag element', () => {

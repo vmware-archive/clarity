@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
 import { CdsAlertActions } from '@clr/core/alert';
 import { CdsButton } from '@clr/core/button';
-import '@clr/core/alert';
-import '@clr/core/button';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 import { getAlertActionsLayout, setActionButtonStyles } from './alert-actions.element.js';
 

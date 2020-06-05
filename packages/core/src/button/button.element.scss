@@ -23,7 +23,7 @@
   }
 
   .button-icon + .button-content {
-    margin-left: #{$cds-token-space-size-3};
+    margin-left: #{$cds-token-space-size-4};
   }
 
   .button-content + .button-badge {
@@ -70,4 +70,15 @@
   --background: #{$cds-token-color-neutral-0} !important;
   --color: #{$cds-token-color-neutral-900} !important;
   --font-weight: #{$cds-token-typography-font-weight-semibold} !important;
+}
+
+:host(:not[block]) .private-host .button-content {
+  transform: translateX(#{$cds-token-space-size-1});
+}
+
+:host(:not([action='flat'])) {
+  // TODO: nesting inflation is starting to creep in...
+  .private-host .button-icon + .button-content + .button-badge {
+    margin-left: calc(#{$cds-token-space-size-6} - #{$cds-token-space-size-2});
+  }
 }

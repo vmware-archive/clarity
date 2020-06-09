@@ -8,6 +8,15 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Progress demo</h1>
+      <section class="story-align-center">
+        <clr-progress-bar
+          [clrLoop]="loop"
+          [clrValue]="value"
+          [clrLabeled]="labeled"
+          [clrDisplayval]="(customLabel && labeled) ? '$'+value : ''"
+          [clrFade]="fadeOut"
+        ></clr-progress-bar>
+      </section>
     </div>
   </div>
 </div>

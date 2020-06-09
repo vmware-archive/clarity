@@ -4,7 +4,16 @@
   "private": true,
   "workspaces": {
     "packages": ["packages/*", "apps/*"],
-    "nohoist": ["core/css-vars-ponyfill", "core/tslib", "core/lit-element", "core/ramda", "core/lit-html", "core/@storybook/**", "core/normalize.css"]
+    "nohoist": [
+      "core/css-vars-ponyfill",
+      "core/tslib",
+      "core/lit-element",
+      "core/ramda",
+      "core/lit-html",
+      "core/@storybook/**",
+      "core/normalize.css",
+      "angular/@storybook/**"
+    ]
   },
   "scripts": {
     "ng": "ng",

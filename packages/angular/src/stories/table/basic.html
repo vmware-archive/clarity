@@ -8,6 +8,69 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Table demo</h1>
+      <table class="table" [class.table-noborder]="noBorder" [class.table-compact]="compact">
+        <thead>
+          <tr>
+            <th [class.left]="left">Decimal</th>
+            <th [class.left]="left">Hexadecimal</th>
+            <th [class.left]="left">Binary</th>
+            <th [class.left]="left">Roman Numeral</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td [class.left]="left">1</td>
+            <td [class.left]="left">1</td>
+            <td [class.left]="left">
+              <span *ngIf="!multiline">1</span>
+              <span *ngIf="multiline"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</span
+              >
+            </td>
+            <td [class.left]="left">I</td>
+          </tr>
+          <tr>
+            <td [class.left]="left">5</td>
+            <td [class.left]="left">
+              <span *ngIf="!multiline">5</span>
+              <span *ngIf="multiline"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</span
+              >
+            </td>
+            <td [class.left]="left">101</td>
+            <td [class.left]="left">V</td>
+          </tr>
+          <tr>
+            <td [class.left]="left">10</td>
+            <td [class.left]="left">A</td>
+            <td [class.left]="left">1010</td>
+            <td [class.left]="left">X</td>
+          </tr>
+          <tr>
+            <td [class.left]="left">15</td>
+            <td [class.left]="left">
+              <span *ngIf="!multiline">F</span>
+              <span *ngIf="multiline"
+                >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</span
+              >
+            </td>
+            <td [class.left]="left">1111</td>
+            <td [class.left]="left">XV</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

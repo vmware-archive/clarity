@@ -8,6 +8,20 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Spinner demo</h1>
+      <section class="story-align-center" [class.inverse]="inverse">
+        <p>
+          This is a paragraph with entertaining text. It also happens to have a
+          <clr-spinner
+            [clrInline]="inline"
+            [clrInverse]="inverse"
+            [clrMedium]="(size == 'medium')"
+            [clrSmall]="(size == 'small')"
+          >
+            Downloading
+          </clr-spinner>
+          so that you can see inline vs block behavior.
+        </p>
+      </section>
     </div>
   </div>
 </div>

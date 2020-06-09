@@ -5,6 +5,7 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { boolean, text } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
@@ -18,8 +19,28 @@ export default {
 };
 
 export const Basic = () => {
+  /**
+   * clrValue (0-100)
+   * clrLabeled
+   * clrDisplayval
+   * clrLoop
+   * clrFade
+   */
+
+  const loop = boolean('Loop', false);
+  const value = text('Value', '25');
+  const labeled = boolean('Labeled', false);
+  const customLabel = boolean('Custom label', false);
+  const fadeOut = boolean('Fade (value > 100)', false);
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      customLabel,
+      fadeOut,
+      labeled,
+      loop,
+      value,
+    },
   };
 };

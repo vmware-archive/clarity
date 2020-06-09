@@ -37,7 +37,7 @@ module.exports = config => {
     restartOnFileChange: true,
     autoWatch: false,
     concurrency: Infinity,
-    reporters: ['progress', 'coverage-istanbul'],
+    reporters: ['dots', 'coverage-istanbul'],
     coverageIstanbulReporter: {
       dir: '../../reports/coverage/core',
       reports: ['html', 'lcovonly'],

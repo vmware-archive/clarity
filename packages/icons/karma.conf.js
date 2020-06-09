@@ -31,7 +31,7 @@ module.exports = function (config) {
         html: '../../reports/clr-icons/html',
       },
     },
-    reporters: ['progress', 'karma-typescript'],
+    reporters: ['dots', 'karma-typescript'],
     colors: true,
     singleRun: true,
     browsers: ['ChromeHeadless'],

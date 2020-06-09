@@ -11,6 +11,11 @@
   align-content: center;
   justify-items: center;
   justify-content: center;
+  grid-auto-columns: minmax(250px, auto);
   width: 100%;
   height: 250px;
+}
+
+.inverse {
+  background-color: #131313;
 }

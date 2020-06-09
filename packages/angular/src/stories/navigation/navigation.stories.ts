@@ -5,12 +5,13 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { boolean } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
-  title: 'Sidenav',
+  title: 'Navigation',
   decorators: [
     moduleMetadata({
       imports: [ClarityModule],
@@ -19,8 +20,16 @@ export default {
 };
 
 export const Basic = () => {
+  const subnav = boolean('Subnav', true);
+  const sidenav = boolean('Sidenav', true);
+  const activeRoute = boolean('Active route', true);
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      activeRoute,
+      sidenav,
+      subnav,
+    },
   };
 };

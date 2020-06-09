@@ -5,6 +5,7 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
+import { boolean, select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
@@ -18,8 +19,34 @@ export default {
 };
 
 export const Basic = () => {
+  /**
+   * clrInline
+   * clrInverse
+   * clrSmall
+   * clrMedium
+   * clrLarge
+   */
+
+  const size = select(
+    'Size',
+    {
+      Small: 'small',
+      Medium: 'medium',
+      Large: 'large',
+    },
+    'medium'
+  );
+
+  const inline = boolean('Inline', false);
+  const inverse = boolean('Inverse', false);
+
   return {
     title: 'Basic',
     template: basicTemplate.default,
+    props: {
+      inline,
+      inverse,
+      size,
+    },
   };
 };

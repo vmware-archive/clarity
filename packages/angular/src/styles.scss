@@ -16,6 +16,24 @@
   height: 250px;
 }
 
+// Clarity overrides to make legacy demo work in storybook.
+.clr-row {
+  div[class*='clr-col-'] {
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 0.25rem;
+  }
+  span {
+    background-color: hsl(198, 0%, 87%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.8rem;
+    border: 1px solid hsl(198, 0%, 20%);
+    margin: 0 0.25rem;
+  }
+}
+
 .inverse {
   background-color: #131313;
 }

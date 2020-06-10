@@ -8,6 +8,37 @@
   <div class="content-container">
     <div class="content-area">
       <h1>List demo</h1>
+      <ol *ngIf="ordered" class="list" [class.list-unstyled]="unstyled" [class.compact]="compact">
+        <li>
+          Imperium est fallacia
+        </li>
+        <li>
+          Ullamco laboris nisi ut aliquip
+          <ol class="list" [class.list-unstyled]="unstyled">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+          </ol>
+        </li>
+        <li>Reprehenderit in voluptate</li>
+        <li>Mollit anim id</li>
+      </ol>
+
+      <ul *ngIf="!ordered" class="list" [class.list-unstyled]="unstyled" [class.compact]="compact">
+        <li>
+          Imperium est fallacia
+        </li>
+        <li>
+          Ullamco laboris nisi ut aliquip
+          <ul class="list" [class.list-unstyled]="unstyled">
+            <li>Consequat</li>
+            <li>Adipisicing</li>
+            <li>Exercitation</li>
+          </ul>
+        </li>
+        <li>Reprehenderit in voluptate</li>
+        <li>Mollit anim id</li>
+      </ul>
     </div>
   </div>
 </div>

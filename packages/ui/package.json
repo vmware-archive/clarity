@@ -1,7 +1,7 @@
 {
   "name": "ui",
   "private": true,
-  "version": "4.0.0-test.1",
+  "version": "4.0.0-next.0",
   "scripts": {
     "build": "npm-run-all build:css build:prefix build:src build:optimize build:package",
     "build:css": "sass --precision=8 src/main.scss ../../dist/clr-ui/clr-ui.css; sass --precision=8 src/dark-theme.scss ../../dist/clr-ui/clr-ui-dark.css",

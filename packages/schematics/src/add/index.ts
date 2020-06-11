@@ -75,12 +75,12 @@ function getVersion(ngVersion: string, clrVersion: string) {
   const version1 = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
   const version2 = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
 
-  if (version1 - version2 > diff) {
-    // If Angular is more than 6 versions ahead, use `next` tag
-    return 'next';
-  } else {
-    // Else, calculate correct Clarity version by subtracting 6 from Angular major
+  if (version1 - version2 < diff) {
+    // If Angular is less than 6 versions ahead, backtrack Clarity version
     return `^${version1 - diff}.0.0`;
+  } else {
+    // Otherwise, just link to installed version for latest or next releases
+    return clrVersion;
   }
 }
 
@@ -141,15 +141,10 @@ export default function (options: ComponentOptions): Rule {
       const version = getVersion(json.dependencies['@angular/core'], corePackage.version);
 
       const packages = Object.keys(json.dependencies);
-      if (!packages.includes('@clr/angular')) {
-        json.dependencies['@clr/angular'] = `${version}`;
-      }
-      if (!packages.includes('@clr/ui')) {
-        json.dependencies['@clr/ui'] = `${version}`;
-      }
-      if (!packages.includes('@clr/icons')) {
-        json.dependencies['@clr/icons'] = `${version}`;
-      }
+      json.dependencies['@clr/angular'] = `${version}`;
+      json.dependencies['@clr/ui'] = `${version}`;
+      json.dependencies['@clr/icons'] = `${version}`;
+
       if (!packages.includes('@webcomponents/webcomponentsjs')) {
         json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
       }

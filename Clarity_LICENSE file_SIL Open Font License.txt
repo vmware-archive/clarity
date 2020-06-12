@@ -1,6 +1,6 @@
 Clarity
 
-Copyright © 2016 VMware, Inc.  All rights reserved						
+Copyright © 2020 VMware, Inc.  All rights reserved
 The fonts in the Clarity project are licensed under the SIL Open Font License version 1.1 (the "License") set forth below. You may not use this file except in compliance with the License.
 
 SIL OPEN FONT LICENSE

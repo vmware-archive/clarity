@@ -25,15 +25,15 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
 import { ControlIdService } from './providers/control-id.service';
 import { NgControlService } from './providers/ng-control.service';
-import { IfErrorService } from './if-error/if-error.service';
 import { NgControl } from '@angular/forms';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
+import { IfControlStateService, CONTROL_STATE } from './if-control-state/if-control-state.service';
 
 @Directive()
 export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
   protected ngControlService: NgControlService;
-  private ifErrorService: IfErrorService;
+  private ifControlStateService: IfControlStateService;
   private controlClassService: ControlClassService;
   private markControlService: MarkControlService;
   protected renderer: Renderer2;
@@ -59,7 +59,7 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
     this.el = el;
     try {
       this.ngControlService = injector.get(NgControlService);
-      this.ifErrorService = injector.get(IfErrorService);
+      this.ifControlStateService = injector.get(IfControlStateService);
       this.controlClassService = injector.get(ControlClassService);
       this.markControlService = injector.get(MarkControlService);
     } catch (e) {
@@ -93,8 +93,8 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
 
   @HostListener('blur')
   triggerValidation() {
-    if (this.ifErrorService) {
-      this.ifErrorService.triggerStatusChange();
+    if (this.ifControlStateService) {
+      this.ifControlStateService.triggerStatusChange();
     }
   }
 
@@ -134,24 +134,36 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnD
   }
 
   private listenForErrorStateChanges() {
-    if (this.ifErrorService) {
+    if (this.ifControlStateService) {
       this.subscriptions.push(
-        this.ifErrorService.statusChanges
+        this.ifControlStateService.statusChanges
           .pipe(
-            startWith(false),
+            startWith(CONTROL_STATE.NONE),
             filter(() => this.renderer && !!this.el),
             distinctUntilChanged()
           )
-          .subscribe(error => this.setAriaDescribedBy(error))
+          .subscribe(state => this.setAriaDescribedBy(state))
       );
     }
   }
 
-  private setAriaDescribedBy(error: boolean) {
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.getAriaDescribedById(error));
+  private setAriaDescribedBy(state: CONTROL_STATE) {
+    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.getAriaDescribedById(state));
   }
 
-  private getAriaDescribedById(error: boolean): string {
-    return this.controlIdService.id.concat(error ? '-error' : '-helper');
+  private getAriaDescribedById(state: CONTROL_STATE): string {
+    let suffix;
+
+    switch (state) {
+      case CONTROL_STATE.INVALID:
+        suffix = '-error';
+        break;
+      case CONTROL_STATE.VALID:
+        suffix = '-success';
+        break;
+      default:
+        suffix = '-helper';
+    }
+    return this.controlIdService.id.concat(suffix);
   }
 }

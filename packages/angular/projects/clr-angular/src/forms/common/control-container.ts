@@ -4,13 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
+import { Component, ContentChild } from '@angular/core';
 
 import { ClrAbstractContainer } from '../common/abstract-container';
-import { IfErrorService } from './if-error/if-error.service';
 import { NgControlService } from './providers/ng-control.service';
 import { ControlIdService } from './providers/control-id.service';
 import { ControlClassService } from './providers/control-class.service';
+import { IfControlStateService } from './if-control-state/if-control-state.service';
+import { ClrControlSuccess } from '../common/success';
 
 @Component({
   selector: 'clr-control-container',
@@ -20,10 +21,22 @@ import { ControlClassService } from './providers/control-class.service';
     <div class="clr-control-container" [ngClass]="controlClass()">
       <div class="clr-input-wrapper">
         <ng-content></ng-content>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <clr-icon
+          *ngIf="showInvalid"
+          class="clr-validate-icon"
+          shape="exclamation-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <clr-icon
+          *ngIf="showValid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+      <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
     </div>
   `,
   host: {
@@ -31,6 +44,8 @@ import { ControlClassService } from './providers/control-class.service';
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
-  providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
+  providers: [IfControlStateService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrControlContainer extends ClrAbstractContainer {}
+export class ClrControlContainer extends ClrAbstractContainer {
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
+}

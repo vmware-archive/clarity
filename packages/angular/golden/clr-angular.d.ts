@@ -49,13 +49,15 @@ export declare abstract class ClrAbstractContainer implements DynamicWrapper, On
     _dynamic: boolean;
     control: NgControl;
     protected controlClassService: ControlClassService;
-    protected ifErrorService: IfErrorService;
-    invalid: boolean;
+    protected ifControlStateService: IfControlStateService;
     label: ClrLabel;
     protected layoutService: LayoutService;
     protected ngControlService: NgControlService;
+    get showHelper(): boolean;
+    get showInvalid(): boolean;
+    get showValid(): boolean;
     protected subscriptions: Subscription[];
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    constructor(ifControlStateService: IfControlStateService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
     addGrid(): boolean;
     controlClass(): string;
     ngOnDestroy(): void;
@@ -261,10 +263,11 @@ export declare class ClrCheckboxContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
     protected controlClassService: ControlClassService;
-    protected ifErrorService: IfErrorService;
+    controlSuccessComponent: ClrControlSuccess;
+    protected ifControlStateService: IfControlStateService;
     protected layoutService: LayoutService;
     protected ngControlService: NgControlService;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
 }
 
 export declare class ClrCheckboxModule {
@@ -367,6 +370,7 @@ export declare class ClrControl extends WrappedFormControl<ClrControlContainer> 
 }
 
 export declare class ClrControlContainer extends ClrAbstractContainer {
+    controlSuccessComponent: ClrControlSuccess;
 }
 
 export declare class ClrControlError {
@@ -375,6 +379,11 @@ export declare class ClrControlError {
 }
 
 export declare class ClrControlHelper {
+    controlIdService: ControlIdService;
+    constructor(controlIdService: ControlIdService);
+}
+
+export declare class ClrControlSuccess {
     controlIdService: ControlIdService;
     constructor(controlIdService: ControlIdService);
 }
@@ -734,8 +743,10 @@ export declare class ClrDatalist implements AfterContentInit {
 }
 
 export declare class ClrDatalistContainer extends ClrAbstractContainer {
+    controlSuccessComponent: ClrControlSuccess;
     focus: boolean;
-    constructor(controlClassService: ControlClassService, layoutService: LayoutService, ifErrorService: IfErrorService, ngControlService: NgControlService, focusService: FocusService);
+    protected ifControlStateService: IfControlStateService;
+    constructor(controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, focusService: FocusService, ifControlStateService: IfControlStateService);
 }
 
 export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistContainer> implements AfterContentInit {
@@ -758,6 +769,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     set clrPosition(position: string);
     commonStrings: ClrCommonStringsService;
     control: NgControl;
+    controlSuccessComponent: ClrControlSuccess;
     focus: boolean;
     invalid: boolean;
     get isEnabled(): boolean;
@@ -765,7 +777,10 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
     label: ClrLabel;
     get open(): boolean;
     get popoverPosition(): ClrPopoverPosition;
-    constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, ifErrorService: IfErrorService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService);
+    showHelper: boolean;
+    state: CONTROL_STATE;
+    valid: boolean;
+    constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     addGrid(): boolean;
     controlClass(): string;
     ngAfterViewInit(): void;
@@ -1015,10 +1030,10 @@ export declare class ClrIfDragged<T> implements OnDestroy {
     ngOnDestroy(): void;
 }
 
-export declare class ClrIfError {
+export declare class ClrIfError extends AbstractIfState {
     error: string;
-    constructor(ifErrorService: IfErrorService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
-    ngOnDestroy(): void;
+    constructor(ifControlStateService: IfControlStateService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
+    protected handleState(state: CONTROL_STATE): void;
 }
 
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
@@ -1040,12 +1055,18 @@ export declare class ClrIfOpen implements OnDestroy {
     static ngAcceptInputType_open: boolean | '';
 }
 
+export declare class ClrIfSuccess extends AbstractIfState {
+    constructor(ifControlStateService: IfControlStateService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
+    protected handleState(state: CONTROL_STATE): void;
+}
+
 export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
 }
 
 export declare class ClrInputContainer extends ClrAbstractContainer {
+    controlSuccessComponent: ClrControlSuccess;
 }
 
 export declare class ClrInputModule {
@@ -1181,10 +1202,11 @@ export declare class ClrPasswordContainer extends ClrAbstractContainer {
     set clrToggle(state: boolean);
     get clrToggle(): boolean;
     commonStrings: ClrCommonStringsService;
+    controlSuccessComponent: ClrControlSuccess;
     focus: boolean;
     focusService: FocusService;
     show: boolean;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, focusService: FocusService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
+    constructor(ifControlStateService: IfControlStateService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, focusService: FocusService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
     toggle(): void;
 }
 
@@ -1297,10 +1319,11 @@ export declare class ClrRadioContainer extends ClrAbstractContainer {
     set clrInline(value: boolean | string);
     get clrInline(): boolean | string;
     protected controlClassService: ControlClassService;
-    protected ifErrorService: IfErrorService;
+    controlSuccessComponent: ClrControlSuccess;
+    protected ifControlStateService: IfControlStateService;
     protected layoutService: LayoutService;
     protected ngControlService: NgControlService;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
 }
 
 export declare class ClrRadioModule {
@@ -1317,9 +1340,11 @@ export declare class ClrRange extends WrappedFormControl<ClrRangeContainer> {
 }
 
 export declare class ClrRangeContainer extends ClrAbstractContainer {
+    controlSuccessComponent: ClrControlSuccess;
     set hasProgress(val: boolean);
     get hasProgress(): boolean;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, renderer: Renderer2, idService: ControlIdService);
+    protected ifControlStateService: IfControlStateService;
+    constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, renderer: Renderer2, idService: ControlIdService, ifControlStateService: IfControlStateService);
     getRangeProgressFillWidth(): string;
 }
 
@@ -1346,11 +1371,12 @@ export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
 
 export declare class ClrSelectContainer extends ClrAbstractContainer {
     protected controlClassService: ControlClassService;
-    protected ifErrorService: IfErrorService;
+    controlSuccessComponent: ClrControlSuccess;
+    protected ifControlStateService: IfControlStateService;
     protected layoutService: LayoutService;
     multiple: SelectMultipleControlValueAccessor;
     protected ngControlService: NgControlService;
-    constructor(ifErrorService: IfErrorService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService);
+    constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngOnInit(): void;
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
 }
@@ -1595,6 +1621,7 @@ export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer
 }
 
 export declare class ClrTextareaContainer extends ClrAbstractContainer {
+    controlSuccessComponent: ClrControlSuccess;
 }
 
 export declare class ClrTextareaModule {

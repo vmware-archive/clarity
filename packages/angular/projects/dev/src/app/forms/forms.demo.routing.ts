@@ -31,6 +31,7 @@ import { FormsA11yDemo } from './a11y/a11y';
 import { FormsLayoutCompactAngularGridDemo } from './layout-angular/layout-compact-angular-grid';
 import { FormsLayoutHorizontalAngularGridDemo } from './layout-angular/layout-horizontal-angular-grid';
 import { FormsGenericContainerDemo } from './generic-container/generic-container';
+import { FormsValidationDemo } from './validation/validation';
 
 const ROUTES: Routes = [
   {
@@ -62,6 +63,7 @@ const ROUTES: Routes = [
       { path: 'reset', component: FormsResetDemo },
       { path: 'a11y', component: FormsA11yDemo },
       { path: 'generic-container', component: FormsGenericContainerDemo },
+      { path: 'validation', component: FormsValidationDemo },
     ],
   },
 ];

@@ -64,6 +64,20 @@
     margin-left: -1 * $clr_baselineRem_1;
   }
 
+  .clr-success {
+    .clr-input {
+      @include css-var(border-bottom-color, clr-forms-valid-color, $clr-forms-valid-color, $clr-use-custom-properties);
+    }
+    .clr-validate-icon {
+      display: inline-block;
+      @include css-var(color, clr-forms-valid-color, $clr-forms-valid-color, $clr-use-custom-properties);
+      margin-left: -0.2rem;
+    }
+    .clr-subtext {
+      @include css-var(color, clr-forms-valid-text-color, $clr-forms-valid-text-color, $clr-use-custom-properties);
+    }
+  }
+
   .clr-error {
     .clr-validate-icon {
       margin-left: -1 * $clr_baselineRem_4px; // @TODO Figure out why there is this 4px gap between elements
@@ -122,7 +136,8 @@
       margin-left: $clr-forms-icon-size;
     }
 
-    .clr-error {
+    .clr-error,
+    .clr-success {
       .clr-subtext {
         margin-left: 0rem;
       }

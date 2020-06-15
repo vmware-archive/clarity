@@ -10,7 +10,6 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
@@ -30,6 +29,7 @@ import { ClrPopoverPositions } from '../../utils/popover/enums/positions.enum';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ViewManagerService } from './providers/view-manager.service';
+import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
 
 const DATEPICKER_PROVIDERS: any[] = [
   ClrPopoverEventsService,
@@ -39,7 +39,7 @@ const DATEPICKER_PROVIDERS: any[] = [
   ViewManagerService,
   LocaleHelperService,
   ControlClassService,
-  IfErrorService,
+  IfControlStateService,
   FocusService,
   LayoutService,
   NgControlService,
@@ -189,12 +189,12 @@ export default function () {
         expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
         expect(context.clarityDirective.controlClass()).toContain('clr-col-12');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
-        context.clarityDirective.invalid = true;
+        context.clarityDirective.state = CONTROL_STATE.INVALID;
         expect(context.clarityDirective.controlClass()).toContain('clr-error');
         const controlClassService = context.getClarityProvider(ControlClassService);
         const layoutService = context.getClarityProvider(LayoutService);
         layoutService.layout = Layouts.VERTICAL;
-        context.clarityDirective.invalid = false;
+        context.clarityDirective.state = CONTROL_STATE.VALID;
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
         controlClassService.className = 'clr-col-2';

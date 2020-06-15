@@ -13,12 +13,10 @@ import {
   ElementRef,
   Input,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { NgControl } from '@angular/forms';
 
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
@@ -37,6 +35,9 @@ import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-posit
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ViewManagerService } from './providers/view-manager.service';
+import { ClrControlSuccess } from '../common/success';
+import { Subscription } from 'rxjs';
+import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   selector: 'clr-date-container',
@@ -65,9 +66,16 @@ import { ViewManagerService } from './providers/view-manager.service';
           ></clr-datepicker-view-manager>
         </div>
         <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <clr-icon
+          *ngIf="valid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
+      <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="valid"></ng-content>
     </div>
   `,
   providers: [
@@ -76,7 +84,6 @@ import { ViewManagerService } from './providers/view-manager.service';
     ClrPopoverEventsService,
     ClrPopoverPositionService,
     LocaleHelperService,
-    IfErrorService,
     ControlClassService,
     FocusService,
     NgControlService,
@@ -85,6 +92,7 @@ import { ViewManagerService } from './providers/view-manager.service';
     DatepickerEnabledService,
     DateFormControlService,
     ViewManagerService,
+    IfControlStateService,
   ],
   host: {
     '[class.clr-form-control-disabled]': 'isInputDateDisabled',
@@ -95,9 +103,14 @@ import { ViewManagerService } from './providers/view-manager.service';
 export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit {
   _dynamic = false;
   invalid = false;
+  showHelper = false;
   focus = false;
+  valid = false;
+  state: CONTROL_STATE;
   control: NgControl;
   @ContentChild(ClrLabel) label: ClrLabel;
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
+
   @Input('clrPosition')
   set clrPosition(position: string) {
     if (position && (ClrPopoverPositions as Record<string, any>)[position]) {
@@ -126,20 +139,26 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     private datepickerEnabledService: DatepickerEnabledService,
     private dateFormControlService: DateFormControlService,
     public commonStrings: ClrCommonStringsService,
-    private ifErrorService: IfErrorService,
     private focusService: FocusService,
     private viewManagerService: ViewManagerService,
     private controlClassService: ControlClassService,
     @Optional() private layoutService: LayoutService,
-    private ngControlService: NgControlService
+    private ngControlService: NgControlService,
+    private ifControlStateService: IfControlStateService
   ) {
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
-      }),
+      })
+    );
+
+    this.subscriptions.push(
       this.ngControlService.controlChanges.subscribe(control => {
         this.control = control;
-      }),
+      })
+    );
+
+    this.subscriptions.push(
       this.toggleService.openChange.subscribe(() => {
         this.dateFormControlService.markAsTouched();
       })
@@ -148,8 +167,11 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
 
   ngOnInit() {
     this.subscriptions.push(
-      this.ifErrorService.statusChanges.subscribe(invalid => {
-        this.invalid = invalid;
+      this.ifControlStateService.statusChanges.subscribe((state: CONTROL_STATE) => {
+        this.state = state;
+        this.valid = CONTROL_STATE.VALID === state;
+        this.invalid = CONTROL_STATE.INVALID === state;
+        this.showHelper = CONTROL_STATE.NONE === state;
       })
     );
   }
@@ -170,7 +192,7 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
    * Returns the classes to apply to the control
    */
   controlClass() {
-    return this.controlClassService.controlClass(this.invalid, this.addGrid());
+    return this.controlClassService.controlClass(this.state, this.addGrid());
   }
 
   /**
@@ -208,6 +230,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
    * Unsubscribe from subscriptions.
    */
   ngOnDestroy() {
-    this.subscriptions.map(sub => sub.unsubscribe());
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }

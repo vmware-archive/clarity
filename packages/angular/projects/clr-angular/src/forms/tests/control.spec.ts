@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 
 import { ClrCommonFormsModule } from '../common/common.module';
@@ -18,6 +17,7 @@ import { ControlClassService } from '../common/providers/control-class.service';
 import { MarkControlService } from '../common/providers/mark-control.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { DatalistIdService } from '../datalist/providers/datalist-id.service';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 export function ControlStandaloneSpec(testComponent): void {
   describe('standalone use', () => {
@@ -44,7 +44,13 @@ export function ReactiveSpec(testContainer, testControl, testComponent, controlC
 
 function fullTest(description, testContainer, testControl, testComponent, controlClass) {
   describe(description, () => {
-    let control, fixture, ifErrorService, controlClassService, markControlService, controlIdService, datalistIdService;
+    let control,
+      fixture,
+      ifControlStateService,
+      controlClassService,
+      markControlService,
+      controlIdService,
+      datalistIdService;
 
     beforeEach(() => {
       spyOn(WrappedFormControl.prototype, 'ngOnInit');
@@ -53,7 +59,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
         imports: [FormsModule, ClrIconModule, ClrCommonFormsModule, ReactiveFormsModule],
         declarations: [testContainer, testControl, testComponent],
         providers: [
-          IfErrorService,
+          IfControlStateService,
           NgControlService,
           ControlIdService,
           ControlClassService,
@@ -65,11 +71,11 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       fixture = TestBed.createComponent(testComponent);
       control = fixture.debugElement.query(By.directive(testControl));
       controlClassService = control.injector.get(ControlClassService);
-      ifErrorService = control.injector.get(IfErrorService);
+      ifControlStateService = control.injector.get(IfControlStateService);
       markControlService = control.injector.get(MarkControlService);
       controlIdService = control.injector.get(ControlIdService);
       datalistIdService = control.injector.get(DatalistIdService);
-      spyOn(ifErrorService, 'triggerStatusChange');
+      spyOn(ifControlStateService, 'triggerStatusChange');
       fixture.detectChanges();
     });
 
@@ -85,8 +91,8 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       expect(control.nativeElement.classList.contains(controlClass));
     });
 
-    it('should have the IfErrorService', () => {
-      expect(ifErrorService).toBeTruthy();
+    it('should have the IfControlStateService', () => {
+      expect(ifControlStateService).toBeTruthy();
     });
 
     it('should have the MarkControlService', () => {
@@ -110,7 +116,7 @@ function fullTest(description, testContainer, testControl, testComponent, contro
       control.nativeElement.dispatchEvent(new Event('input'));
       control.nativeElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
-      expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
+      expect(ifControlStateService.triggerStatusChange).toHaveBeenCalled();
     });
 
     it('should have the MarkControlService', () => {

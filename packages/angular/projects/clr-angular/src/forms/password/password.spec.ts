@@ -13,9 +13,9 @@ import { ReactiveSpec, TemplateDrivenSpec } from '../tests/control.spec';
 import { TestBed } from '@angular/core/testing';
 import { LayoutService } from '../common/providers/layout.service';
 import { ClrIconModule } from '../../icon/icon.module';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ClrCommonFormsModule } from '../common/common.module';
 import { NgControlService } from '../common/providers/ng-control.service';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   template: ` <input type="password" clrPassword /> `,
@@ -26,6 +26,7 @@ class InvalidUseTest {}
   template: `
     <clr-password-container>
       <input type="text" clrPassword class="test-class" name="model" [(ngModel)]="model" />
+      <clr-control-success>Valid</clr-control-success>
     </clr-password-container>
   `,
 })
@@ -36,6 +37,7 @@ class TemplateDrivenTest {}
     <div [formGroup]="example">
       <clr-password-container>
         <input clrPassword class="test-class" formControlName="model" />
+        <clr-control-success>Valid</clr-control-success>
       </clr-password-container>
     </div>
   `,
@@ -69,7 +71,7 @@ export default function (): void {
         TestBed.configureTestingModule({
           imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
           declarations: [ClrPasswordContainer, ClrPassword, TemplateDrivenTest],
-          providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+          providers: [IfControlStateService, NgControl, NgControlService, LayoutService],
         });
         fixture = TestBed.createComponent(TemplateDrivenTest);
         containerDE = fixture.debugElement.query(By.directive(ClrPasswordContainer));

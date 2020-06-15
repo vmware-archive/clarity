@@ -14,7 +14,7 @@ import { ClrControlError } from '../error';
 import { NgControlService } from '../providers/ng-control.service';
 
 import { ClrIfError } from './if-error';
-import { IfErrorService } from './if-error.service';
+import { IfControlStateService } from './if-control-state.service';
 
 const errorMessage = 'ERROR_MESSAGE';
 const minLengthMessage = 'MIN_LENGTH_MESSAGE';
@@ -25,7 +25,7 @@ class InvalidUseTest {}
 
 @Component({
   template: ` <clr-control-error *clrIfError>${errorMessage}</clr-control-error> `,
-  providers: [IfErrorService, NgControlService],
+  providers: [IfControlStateService, NgControlService],
 })
 class GeneralErrorTest {}
 
@@ -37,7 +37,7 @@ class GeneralErrorTest {}
       ${maxLengthMessage}-{{ err.requiredLength }}-{{ err.actualLength }}
     </clr-control-error>
   `,
-  providers: [IfErrorService, NgControlService],
+  providers: [IfControlStateService, NgControlService],
 })
 class SpecificErrorTest {}
 
@@ -54,7 +54,7 @@ export default function (): void {
     });
 
     describe('general error', () => {
-      let fixture, ifErrorService, ngControlService;
+      let fixture, ifControlStateService, ngControlService;
 
       beforeEach(() => {
         TestBed.configureTestingModule({
@@ -64,7 +64,7 @@ export default function (): void {
         fixture = TestBed.createComponent(GeneralErrorTest);
         fixture.detectChanges();
         ngControlService = fixture.debugElement.injector.get(NgControlService);
-        ifErrorService = fixture.debugElement.injector.get(IfErrorService);
+        ifControlStateService = fixture.debugElement.injector.get(IfControlStateService);
       });
 
       it('hides the error initially', () => {
@@ -76,14 +76,14 @@ export default function (): void {
         const control = new FormControl('', Validators.required);
         control.markAsTouched();
         ngControlService.setControl(control);
-        ifErrorService.triggerStatusChange();
+        ifControlStateService.triggerStatusChange();
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).toContain(errorMessage);
       });
     });
 
     describe('specific error', () => {
-      let fixture, ifErrorService, ngControlService;
+      let fixture, ifControlStateService, ngControlService;
 
       beforeEach(() => {
         TestBed.configureTestingModule({
@@ -93,7 +93,7 @@ export default function (): void {
         fixture = TestBed.createComponent(SpecificErrorTest);
         fixture.detectChanges();
         ngControlService = fixture.debugElement.injector.get(NgControlService);
-        ifErrorService = fixture.debugElement.injector.get(IfErrorService);
+        ifControlStateService = fixture.debugElement.injector.get(IfControlStateService);
       });
 
       it('hides the error initially', () => {
@@ -105,7 +105,7 @@ export default function (): void {
         const control = new FormControl('', [Validators.required, Validators.minLength(5)]);
         control.markAsTouched();
         ngControlService.setControl(control);
-        ifErrorService.triggerStatusChange();
+        ifControlStateService.triggerStatusChange();
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).toContain(errorMessage);
       });
@@ -114,7 +114,7 @@ export default function (): void {
         expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
         const control = new FormControl('abc', [Validators.required, Validators.minLength(5)]);
         ngControlService.setControl(control);
-        ifErrorService.triggerStatusChange();
+        ifControlStateService.triggerStatusChange();
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
         expect(fixture.nativeElement.innerHTML).toContain(minLengthMessage);
@@ -123,7 +123,7 @@ export default function (): void {
       it('displays the error message with values from error object in context', () => {
         const control = new FormControl('abcdef', [Validators.maxLength(5)]);
         ngControlService.setControl(control);
-        ifErrorService.triggerStatusChange();
+        ifControlStateService.triggerStatusChange();
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
       });

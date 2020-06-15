@@ -14,11 +14,11 @@ import { ClrHostWrappingModule } from '../../utils/host-wrapping/host-wrapping.m
 
 import { ControlIdService } from './providers/control-id.service';
 import { NgControlService } from './providers/ng-control.service';
-import { IfErrorService } from './if-error/if-error.service';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
 import { WrappedFormControl } from './wrapped-control';
 import { LayoutService } from './providers/layout.service';
+import { IfControlStateService } from './if-control-state/if-control-state.service';
 
 /*
  * Components using the WrappedFormControl we want to test.
@@ -59,7 +59,7 @@ class TestControl2 extends WrappedFormControl<TestWrapper2> {
     ControlIdService,
     MarkControlService,
     NgControlService,
-    IfErrorService,
+    IfControlStateService,
     ControlClassService,
     LayoutService,
   ],
@@ -115,7 +115,7 @@ interface TestContext {
   controlClassService?: ControlClassService;
   markControlService?: MarkControlService;
   ngControlService?: NgControlService;
-  ifErrorService?: IfErrorService;
+  ifControlStateService: IfControlStateService;
   layoutService?: LayoutService;
 }
 
@@ -140,7 +140,7 @@ export default function (): void {
         testContext.markControlService = wrapperDebugElement.injector.get(MarkControlService);
         testContext.controlClassService = wrapperDebugElement.injector.get(ControlClassService);
         testContext.ngControlService = wrapperDebugElement.injector.get(NgControlService);
-        testContext.ifErrorService = wrapperDebugElement.injector.get(IfErrorService);
+        testContext.ifControlStateService = wrapperDebugElement.injector.get(IfControlStateService);
         testContext.layoutService = wrapperDebugElement.injector.get(LayoutService);
       } catch (error) {
         // Swallow errors
@@ -229,12 +229,12 @@ export default function (): void {
       });
 
       it('triggers status changes on blur', function (this: TestContext) {
-        spyOn(IfErrorService.prototype, 'triggerStatusChange').and.callThrough();
+        spyOn(IfControlStateService.prototype, 'triggerStatusChange').and.callThrough();
         setupTest(this, WithControl, TestControl3);
         this.input.focus();
         this.input.blur();
         this.fixture.detectChanges();
-        expect(IfErrorService.prototype.triggerStatusChange).toHaveBeenCalled();
+        expect(IfControlStateService.prototype.triggerStatusChange).toHaveBeenCalled();
       });
 
       it('implements ngOnDestroy', function (this: TestContext) {

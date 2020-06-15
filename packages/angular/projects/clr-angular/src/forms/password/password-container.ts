@@ -4,10 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Inject, InjectionToken, Input, Optional } from '@angular/core';
+import { Component, Inject, InjectionToken, Input, Optional, ContentChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
@@ -15,6 +14,8 @@ import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
+import { ClrControlSuccess } from '../common/success';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 export const TOGGLE_SERVICE = new InjectionToken<BehaviorSubject<boolean>>(undefined);
 export function ToggleServiceFactory() {
@@ -44,10 +45,22 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
             ></clr-icon>
           </button>
         </div>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <clr-icon
+          *ngIf="showInvalid"
+          class="clr-validate-icon"
+          shape="exclamation-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <clr-icon
+          *ngIf="showValid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+      <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
     </div>
   `,
   host: {
@@ -56,18 +69,20 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
     '[class.clr-row]': 'addGrid()',
   },
   providers: [
-    IfErrorService,
     NgControlService,
     ControlIdService,
     ControlClassService,
     FocusService,
     TOGGLE_SERVICE_PROVIDER,
+    IfControlStateService,
   ],
 })
 export class ClrPasswordContainer extends ClrAbstractContainer {
   show = false;
   focus = false;
   private _toggle = true;
+
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   @Input('clrToggle')
   set clrToggle(state: boolean) {
@@ -81,7 +96,7 @@ export class ClrPasswordContainer extends ClrAbstractContainer {
   }
 
   constructor(
-    ifErrorService: IfErrorService,
+    ifControlStateService: IfControlStateService,
     @Optional() layoutService: LayoutService,
     controlClassService: ControlClassService,
     ngControlService: NgControlService,
@@ -89,7 +104,9 @@ export class ClrPasswordContainer extends ClrAbstractContainer {
     @Inject(TOGGLE_SERVICE) private toggleService: BehaviorSubject<boolean>,
     public commonStrings: ClrCommonStringsService
   ) {
-    super(ifErrorService, layoutService, controlClassService, ngControlService);
+    super(ifControlStateService, layoutService, controlClassService, ngControlService);
+
+    /* The unsubscribe is handle inside the ClrAbstractContainer */
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;

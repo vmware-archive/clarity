@@ -6,11 +6,11 @@
 
 import CommonSpecs from './common.spec';
 import ErrorSpecs from './error.spec';
+import SuccessSpec from './success.spec';
 import HelperSpecs from './helper.spec';
 import FormSpecs from './form.spec';
-import ControlStatusServiceSpecs from './if-error/if-error.service.spec';
 import LayoutSpecs from './layout.spec';
-import IfErrorSpecs from './if-error/if-error.spec';
+import IfControlStateSpecs from './if-control-state/if-control-state.service.spec';
 import LabelSpecs from './label.spec';
 import ControlClassServiceSpecs from './providers/control-class.service.spec';
 import ControlIdServiceSpecs from './providers/control-id.service.spec';
@@ -22,16 +22,16 @@ import ControlContainerSpecs from './control-container.spec';
 describe('Forms common utilities', function () {
   ControlClassServiceSpecs();
   ControlIdServiceSpecs();
-  ControlStatusServiceSpecs();
   ControlContainerSpecs();
   NgControlServiceSpecs();
   LayoutServiceSpecs();
   LayoutSpecs();
   FormSpecs();
   LabelSpecs();
-  IfErrorSpecs();
+  IfControlStateSpecs();
   WrappedControlSpecs();
   CommonSpecs();
   ErrorSpecs();
+  SuccessSpec();
   HelperSpecs();
 });

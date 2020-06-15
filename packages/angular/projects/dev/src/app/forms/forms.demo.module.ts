@@ -36,6 +36,7 @@ import { FormsA11yDemo } from './a11y/a11y';
 import { FormsLayoutHorizontalAngularGridDemo } from './layout-angular/layout-horizontal-angular-grid';
 import { FormsLayoutCompactAngularGridDemo } from './layout-angular/layout-compact-angular-grid';
 import { FormsGenericContainerDemo } from './generic-container/generic-container';
+import { FormsValidationDemo } from './validation/validation';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ClarityModule, ROUTING],
@@ -65,6 +66,7 @@ import { FormsGenericContainerDemo } from './generic-container/generic-container
     FormsResetDemo,
     FormsA11yDemo,
     FormsGenericContainerDemo,
+    FormsValidationDemo,
   ],
   exports: [
     FormsDemo,
@@ -90,6 +92,7 @@ import { FormsGenericContainerDemo } from './generic-container/generic-container
     FormsResetDemo,
     FormsA11yDemo,
     FormsGenericContainerDemo,
+    FormsValidationDemo,
   ],
 })
 export class FormsDemoModule {}

@@ -7,23 +7,26 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ClrIconModule } from '../../icon/icon.module';
-
-import { ClrControlError } from './error';
-import { ClrControlHelper } from './helper';
-import { ClrIfError } from './if-error/if-error';
-import { ClrLabel } from './label';
-import { ClrForm } from './form';
-import { ClrLayout } from './layout';
-import { ClrControlContainer } from './control-container';
 import { ClrControl } from './control';
+import { ClrControlContainer } from './control-container';
+import { ClrControlError } from './error';
+import { ClrForm } from './form';
+import { ClrControlHelper } from './helper';
+import { ClrIfError } from './if-control-state/if-error';
+import { ClrIfSuccess } from './if-control-state/if-success';
+import { ClrLabel } from './label';
+import { ClrLayout } from './layout';
+import { ClrControlSuccess } from './success';
 
 @NgModule({
   imports: [CommonModule, ClrIconModule],
   declarations: [
     ClrLabel,
     ClrControlError,
+    ClrControlSuccess,
     ClrControlHelper,
     ClrIfError,
+    ClrIfSuccess,
     ClrForm,
     ClrLayout,
     ClrControlContainer,
@@ -32,8 +35,10 @@ import { ClrControl } from './control';
   exports: [
     ClrLabel,
     ClrControlError,
+    ClrControlSuccess,
     ClrControlHelper,
     ClrIfError,
+    ClrIfSuccess,
     ClrForm,
     ClrLayout,
     ClrControlContainer,

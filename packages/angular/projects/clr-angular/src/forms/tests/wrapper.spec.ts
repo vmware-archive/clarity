@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,10 +9,10 @@ import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonFormsModule } from '../common/common.module';
-import { IfErrorService } from '../common/if-error/if-error.service';
 
 import { NgControlService } from '../common/providers/ng-control.service';
 import { LayoutService } from '../common/providers/layout.service';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 export function WrapperNoLabelSpec(testContainer, testControl, testComponent): void {
   describe('no label', () => {
@@ -21,7 +21,7 @@ export function WrapperNoLabelSpec(testContainer, testControl, testComponent): v
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+        providers: [IfControlStateService, NgControl, NgControlService, LayoutService],
       });
       fixture = TestBed.createComponent(testComponent);
 
@@ -44,7 +44,7 @@ export function WrapperFullSpec(testContainer, testControl, testComponent, wrapp
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+        providers: [IfControlStateService, NgControl, NgControlService, LayoutService],
       });
       fixture = TestBed.createComponent(testComponent);
 
@@ -82,7 +82,7 @@ export function WrapperContainerSpec(testContainer, testWrapper, testControl, te
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
         declarations: [testContainer, testWrapper, testControl, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+        providers: [IfControlStateService, NgControl, NgControlService, LayoutService],
       });
       fixture = TestBed.createComponent(testComponent);
 

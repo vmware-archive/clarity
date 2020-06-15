@@ -4,14 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input, Optional, Renderer2 } from '@angular/core';
+import { Component, Input, Optional, Renderer2, ContentChild } from '@angular/core';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
+import { ClrControlSuccess } from '../common/success';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   selector: 'clr-range-container',
@@ -22,10 +23,22 @@ import { ClrAbstractContainer } from '../common/abstract-container';
       <div class="clr-range-wrapper" [class.progress-fill]="hasProgress">
         <ng-content select="[clrRange]"></ng-content>
         <span *ngIf="hasProgress" class="fill-input" [style.width]="getRangeProgressFillWidth()"></span>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <clr-icon
+          *ngIf="showInvalid"
+          class="clr-validate-icon"
+          shape="exclamation-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <clr-icon
+          *ngIf="showValid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+      <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
     </div>
   `,
   host: {
@@ -33,10 +46,12 @@ import { ClrAbstractContainer } from '../common/abstract-container';
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
-  providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
+  providers: [IfControlStateService, NgControlService, ControlIdService, ControlClassService],
 })
 export class ClrRangeContainer extends ClrAbstractContainer {
   private _hasProgress = false;
+
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   @Input('clrRangeHasProgress')
   set hasProgress(val: boolean) {
@@ -51,14 +66,14 @@ export class ClrRangeContainer extends ClrAbstractContainer {
   }
 
   constructor(
-    ifErrorService: IfErrorService,
     @Optional() layoutService: LayoutService,
     controlClassService: ControlClassService,
     ngControlService: NgControlService,
     private renderer: Renderer2,
-    private idService: ControlIdService
+    private idService: ControlIdService,
+    protected ifControlStateService: IfControlStateService
   ) {
-    super(ifErrorService, layoutService, controlClassService, ngControlService);
+    super(ifControlStateService, layoutService, controlClassService, ngControlService);
   }
 
   getRangeProgressFillWidth(): string {

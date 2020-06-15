@@ -7,12 +7,13 @@
 import { Component, ContentChild, Optional } from '@angular/core';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { LayoutService } from '../common/providers/layout.service';
+import { ClrControlSuccess } from '../common/success';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   selector: 'clr-select-container',
@@ -22,10 +23,22 @@ import { LayoutService } from '../common/providers/layout.service';
     <div class="clr-control-container" [ngClass]="controlClass()">
       <div [ngClass]="wrapperClass()">
         <ng-content select="[clrSelect]"></ng-content>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
+        <clr-icon
+          *ngIf="showInvalid"
+          class="clr-validate-icon"
+          shape="exclamation-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <clr-icon
+          *ngIf="showValid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
       </div>
-      <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+      <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
     </div>
   `,
   host: {
@@ -33,23 +46,27 @@ import { LayoutService } from '../common/providers/layout.service';
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
-  providers: [IfErrorService, NgControlService, ControlIdService, ControlClassService],
+  providers: [IfControlStateService, NgControlService, ControlIdService, ControlClassService],
 })
 export class ClrSelectContainer extends ClrAbstractContainer {
+  @ContentChild(ClrControlSuccess)
+  controlSuccessComponent: ClrControlSuccess;
+
   @ContentChild(SelectMultipleControlValueAccessor, { static: false })
   multiple: SelectMultipleControlValueAccessor;
   private multi = false;
 
   constructor(
-    protected ifErrorService: IfErrorService,
     @Optional() protected layoutService: LayoutService,
     protected controlClassService: ControlClassService,
-    protected ngControlService: NgControlService
+    protected ngControlService: NgControlService,
+    protected ifControlStateService: IfControlStateService
   ) {
-    super(ifErrorService, layoutService, controlClassService, ngControlService);
+    super(ifControlStateService, layoutService, controlClassService, ngControlService);
   }
 
   ngOnInit() {
+    /* The unsubscribe is handle inside the ClrAbstractContainer */
     this.subscriptions.push(
       this.ngControlService.controlChanges.subscribe(control => {
         if (control) {

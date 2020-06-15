@@ -24,6 +24,7 @@ import { TemplateDrivenSpec, ReactiveSpec, ContainerNoLabelSpec } from '../tests
       <label>Hello World</label>
       <clr-control-helper>Helper text</clr-control-helper>
       <clr-control-error>Must be at least 5 characters</clr-control-error>
+      <clr-control-success>Valid</clr-control-success>
     </clr-datalist-container>
   `,
 })
@@ -57,6 +58,7 @@ class NoLabelTest {}
         <label>Hello World</label>
         <clr-control-helper>Helper text</clr-control-helper>
         <clr-control-error>Must be at least 5 characters</clr-control-error>
+        <clr-control-success>Valid</clr-control-success>
       </clr-datalist-container>
     </form>
   `,

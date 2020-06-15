@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,13 +9,13 @@ import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonFormsModule } from '../common/common.module';
-import { IfErrorService } from '../common/if-error/if-error.service';
 
 import { NgControlService } from '../common/providers/ng-control.service';
 import { Layouts, LayoutService } from '../common/providers/layout.service';
 import { MarkControlService } from '../common/providers/mark-control.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { DatalistIdService } from '../datalist/providers/datalist-id.service';
+import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
 
 export function ContainerNoLabelSpec(testContainer, testControl, testComponent): void {
   describe('no label', () => {
@@ -24,7 +24,7 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
         declarations: [testContainer, testControl, testComponent],
-        providers: [NgControl, NgControlService, IfErrorService, LayoutService, MarkControlService],
+        providers: [NgControl, NgControlService, IfControlStateService, LayoutService, MarkControlService],
       });
       fixture = TestBed.createComponent(testComponent);
 
@@ -58,7 +58,13 @@ export function ReactiveSpec(testContainer, testControl, testComponent, wrapperC
 
 function fullSpec(description, testContainer, directives: any | any[], testComponent, wrapperClass) {
   describe(description, () => {
-    let fixture, containerDE, container, containerEl, ifErrorService, layoutService, markControlService;
+    let fixture,
+      containerDE,
+      container,
+      containerEl,
+      ifControlStateService: IfControlStateService,
+      layoutService,
+      markControlService;
     if (!Array.isArray(directives)) {
       directives = [directives];
     }
@@ -69,11 +75,11 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
         providers: [
           NgControl,
           NgControlService,
-          IfErrorService,
           LayoutService,
           MarkControlService,
           ControlIdService,
           DatalistIdService,
+          IfControlStateService,
         ],
       });
       fixture = TestBed.createComponent(testComponent);
@@ -81,7 +87,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       containerDE = fixture.debugElement.query(By.directive(testContainer));
       container = containerDE.componentInstance;
       containerEl = containerDE.nativeElement;
-      ifErrorService = containerDE.injector.get(IfErrorService);
+      ifControlStateService = containerDE.injector.get(IfControlStateService);
       markControlService = containerDE.injector.get(MarkControlService);
       layoutService = containerDE.injector.get(LayoutService);
       fixture.detectChanges();
@@ -92,8 +98,8 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
       expect(layoutService.layout).toEqual(Layouts.HORIZONTAL);
     });
 
-    it('injects the ifErrorService and subscribes', () => {
-      expect(ifErrorService).toBeTruthy();
+    it('injects the IfControlStateService and subscribes', () => {
+      expect(ifControlStateService).toBeTruthy();
       expect(container.subscriptions[0]).toBeTruthy();
     });
 
@@ -113,7 +119,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it("doesn't display the helper text when invalid", () => {
       expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();
-      container.invalid = true;
+      container.state = CONTROL_STATE.INVALID;
       fixture.detectChanges();
       expect(containerEl.querySelector('clr-control-helper')).toBeFalsy();
     });
@@ -121,7 +127,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
     it('sets error classes and displays the icon when invalid', () => {
       expect(containerEl.querySelector('.clr-control-container').classList.contains('clr-error')).toBeFalse();
       expect(containerEl.querySelector('.clr-validate-icon')).toBeFalsy();
-      container.invalid = true;
+      container.state = CONTROL_STATE.INVALID;
       fixture.detectChanges();
       expect(containerEl.querySelector('.clr-control-container').classList.contains('clr-error')).toBeTrue();
       expect(containerEl.querySelector('.clr-validate-icon')).toBeTruthy();
@@ -129,9 +135,24 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it('projects the error helper when invalid', () => {
       expect(containerEl.querySelector('clr-control-error')).toBeFalsy();
-      container.invalid = true;
+      container.state = CONTROL_STATE.INVALID;
       fixture.detectChanges();
       expect(containerEl.querySelector('clr-control-error')).toBeTruthy();
+    });
+
+    it('projects the success content when valid', () => {
+      container.state = CONTROL_STATE.VALID;
+      fixture.detectChanges();
+      expect(containerEl.querySelector('clr-control-helper')).toBeFalsy();
+      expect(containerEl.querySelector('clr-control-error')).toBeFalsy();
+      expect(containerEl.querySelector('clr-control-success')).toBeTruthy();
+    });
+
+    it('should have the success icon when valid', () => {
+      container.state = CONTROL_STATE.VALID;
+      fixture.detectChanges();
+      const icon: HTMLElement = containerEl.querySelector('clr-icon[shape=check-circle]');
+      expect(icon).toBeTruthy();
     });
 
     it('adds the .clr-form-control class to the host', () => {
@@ -150,7 +171,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
 
     it('adds the error class for the control container', () => {
       expect(container.controlClass()).not.toContain('clr-error');
-      container.invalid = true;
+      container.state = CONTROL_STATE.INVALID;
       expect(container.controlClass()).toContain('clr-error');
     });
 
@@ -161,10 +182,10 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
     });
 
     it('tracks the validity of the form control', () => {
-      expect(container.invalid).toBeFalse();
+      expect(container.showInvalid).toBeFalse();
       markControlService.markAsTouched();
       fixture.detectChanges();
-      expect(container.invalid).toBeTrue();
+      expect(container.showInvalid).toBeTrue();
     });
 
     it('tracks the disabled state', async(() => {

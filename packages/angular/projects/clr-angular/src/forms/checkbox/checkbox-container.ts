@@ -4,13 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input, Optional } from '@angular/core';
+import { Component, Input, Optional, ContentChild } from '@angular/core';
 
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { LayoutService } from '../common/providers/layout.service';
+import { ClrControlSuccess } from '../common/success';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   selector: 'clr-checkbox-container,clr-toggle-container',
@@ -20,9 +21,21 @@ import { LayoutService } from '../common/providers/layout.service';
     <div class="clr-control-container" [class.clr-control-inline]="clrInline" [ngClass]="controlClass()">
       <ng-content select="clr-checkbox-wrapper,clr-toggle-wrapper"></ng-content>
       <div class="clr-subtext-wrapper">
-        <ng-content select="clr-control-helper" *ngIf="!invalid"></ng-content>
-        <clr-icon *ngIf="invalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-        <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
+        <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
+        <clr-icon
+          *ngIf="showInvalid"
+          class="clr-validate-icon"
+          shape="exclamation-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <clr-icon
+          *ngIf="showValid && controlSuccessComponent"
+          class="clr-validate-icon"
+          shape="check-circle"
+          aria-hidden="true"
+        ></clr-icon>
+        <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+        <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
       </div>
     </div>
   `,
@@ -31,18 +44,19 @@ import { LayoutService } from '../common/providers/layout.service';
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
   },
-  providers: [NgControlService, ControlClassService, IfErrorService],
+  providers: [IfControlStateService, NgControlService, ControlClassService],
 })
 export class ClrCheckboxContainer extends ClrAbstractContainer {
   private inline = false;
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   constructor(
-    protected ifErrorService: IfErrorService,
     @Optional() protected layoutService: LayoutService,
     protected controlClassService: ControlClassService,
-    protected ngControlService: NgControlService
+    protected ngControlService: NgControlService,
+    protected ifControlStateService: IfControlStateService
   ) {
-    super(ifErrorService, layoutService, controlClassService, ngControlService);
+    super(ifControlStateService, layoutService, controlClassService, ngControlService);
   }
 
   /*

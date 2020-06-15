@@ -42,6 +42,7 @@ import { Component } from '@angular/core';
       <li><a [routerLink]="['./reset']">Reset</a></li>
       <li><a [routerLink]="['./a11y']">a11y</a></li>
       <li><a [routerLink]="['./generic-container']">Generic Container</a></li>
+      <li><a [routerLink]="['./validation']">Validation</a></li>
     </ul>
     <router-outlet></router-outlet>
   `,

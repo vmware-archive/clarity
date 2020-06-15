@@ -10,7 +10,6 @@ import { By } from '@angular/platform-browser';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonFormsModule } from '../common/common.module';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { LayoutService } from '../common/providers/layout.service';
 
@@ -19,6 +18,7 @@ import { ClrRadioContainer } from './radio-container';
 import { ClrRadioWrapper } from './radio-wrapper';
 
 import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
   template: ` <clr-radio-container></clr-radio-container> `,
@@ -39,6 +39,7 @@ class NoLabelTest {}
       </clr-radio-wrapper>
       <clr-control-error>There was an error</clr-control-error>
       <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-success>Valid</clr-control-success>
     </clr-radio-container>
   `,
 })
@@ -62,6 +63,7 @@ class TemplateDrivenTest {
       </clr-radio-wrapper>
       <clr-control-error>There was an error</clr-control-error>
       <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-success>Valid</clr-control-success>
     </clr-radio-container>
   </form>`,
 })
@@ -89,7 +91,7 @@ export default function (): void {
         TestBed.configureTestingModule({
           imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
           declarations: [ClrRadioContainer, ClrRadioWrapper, ClrRadio, TemplateDrivenTest],
-          providers: [NgControl, NgControlService, IfErrorService, LayoutService],
+          providers: [IfControlStateService, NgControl, NgControlService, LayoutService],
         });
         fixture = TestBed.createComponent(TemplateDrivenTest);
 

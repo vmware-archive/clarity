@@ -6,6 +6,10 @@
 
 import { Injectable, Optional, Renderer2 } from '@angular/core';
 import { LayoutService } from './layout.service';
+import { CONTROL_STATE } from '../if-control-state/if-control-state.service';
+
+const CLASS_ERROR = 'clr-error';
+const CLASS_SUCCESS = 'clr-success';
 
 @Injectable()
 export class ControlClassService {
@@ -13,11 +17,16 @@ export class ControlClassService {
 
   constructor(@Optional() private layoutService: LayoutService) {}
 
-  controlClass(invalid = false, grid = false, additional = '') {
+  controlClass(state: CONTROL_STATE = CONTROL_STATE.NONE, grid = false, additional = '') {
     const controlClasses = [this.className, additional];
-    if (invalid) {
-      controlClasses.push('clr-error');
+    if (state === CONTROL_STATE.VALID) {
+      controlClasses.push(CLASS_SUCCESS);
     }
+
+    if (state === CONTROL_STATE.INVALID) {
+      controlClasses.push(CLASS_ERROR);
+    }
+
     if (grid && this.layoutService && this.className.indexOf('clr-col') === -1) {
       controlClasses.push(`clr-col-md-${this.layoutService.maxLabelSize - this.layoutService.labelSize} clr-col-12`);
     }

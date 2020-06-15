@@ -12,7 +12,6 @@ import { By } from '@angular/platform-browser';
 import { TestContext } from '../../data/datagrid/helpers.spec';
 import { ClrFormsModule } from '../../forms/forms.module';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { IfErrorService } from '../common/if-error/if-error.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
@@ -32,6 +31,7 @@ import { ViewManagerService } from './providers/view-manager.service';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { LayoutService } from '../common/providers/layout.service';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 export default function () {
   describe('Date Input Component', () => {
@@ -40,10 +40,10 @@ export default function () {
     let dateIOService: DateIOService;
     let dateNavigationService: DateNavigationService;
     let dateFormControlService: DateFormControlService;
-    let ifErrorService: IfErrorService;
     let focusService: FocusService;
     let controlClassService: ControlClassService;
     let datepickerFocusService: DatepickerFocusService;
+    let ifControlStateService: IfControlStateService;
     const setControlSpy = jasmine.createSpy();
 
     @Injectable()
@@ -57,7 +57,7 @@ export default function () {
       { provide: NgControlService, useClass: MockNgControlService },
       NgControl,
       LayoutService,
-      IfErrorService,
+      IfControlStateService,
       ClrPopoverToggleService,
       ClrPopoverEventsService,
       ClrPopoverPositionService,
@@ -88,12 +88,12 @@ export default function () {
         dateNavigationService = context.fixture.debugElement
           .query(By.directive(ClrDateContainer))
           .injector.get(DateNavigationService);
-        ifErrorService = context.fixture.debugElement.injector.get(IfErrorService);
+        ifControlStateService = context.fixture.debugElement.injector.get(IfControlStateService);
         focusService = context.fixture.debugElement.injector.get(FocusService);
         controlClassService = context.fixture.debugElement.injector.get(ControlClassService);
         datepickerFocusService = context.fixture.debugElement.injector.get(DatepickerFocusService);
 
-        spyOn(ifErrorService, 'triggerStatusChange');
+        spyOn(ifControlStateService, 'triggerStatusChange');
         spyOn(datepickerFocusService, 'focusInput');
       });
 
@@ -127,7 +127,7 @@ export default function () {
           context.clarityElement.dispatchEvent(new Event('input'));
           context.clarityElement.dispatchEvent(new Event('blur'));
           context.detectChanges();
-          expect(ifErrorService.triggerStatusChange).toHaveBeenCalled();
+          expect(ifControlStateService.triggerStatusChange).toHaveBeenCalled();
           expect(focusState).toEqual(false);
           sub.unsubscribe();
         });

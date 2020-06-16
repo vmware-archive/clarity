@@ -11,7 +11,52 @@
   }
 
   .clr-form-control-disabled {
-    @include css-var(opacity, clr-forms-disabled-opacity, $clr-forms-disabled-opacity, $clr-use-custom-properties);
+    @include css-var(color, clr-forms-text-disabled-color, $clr-forms-text-disabled-color, $clr-use-custom-properties);
+
+    label,
+    .clr-control-label {
+      @include css-var(
+        color,
+        clr-forms-label-disabled-color,
+        $clr-forms-label-disabled-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    .clr-input,
+    .clr-textarea,
+    .clr-select {
+      @include css-var(
+        color,
+        clr-forms-text-disabled-color,
+        $clr-forms-text-disabled-color,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-bottom-color,
+        clr-forms-border-disabled-color,
+        $clr-forms-border-disabled-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+      @include css-var(
+        background-color,
+        clr-forms-border-disabled-color,
+        $clr-forms-border-disabled-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    .clr-subtext {
+      @include css-var(
+        color,
+        cclr-forms-subtext-disabled-color,
+        $clr-forms-subtext-disabled-color,
+        $clr-use-custom-properties
+      );
+    }
   }
 
   .clr-form-control-multi {

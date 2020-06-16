@@ -184,3 +184,22 @@ $opp-directions: (
     @content;
   }
 }
+
+@mixin input-placeholder-wrapper() {
+  /* _normalize overwrite */
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  /* Internet Explorer 10-11 */
+  :-ms-input-placeholder {
+    @content;
+  }
+  /* Microsoft Edge */
+  ::-ms-input-placeholder {
+    @content;
+  }
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  ::placeholder {
+    @content;
+  }
+}

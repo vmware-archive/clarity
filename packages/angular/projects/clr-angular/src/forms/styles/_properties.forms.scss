@@ -15,9 +15,14 @@
       --clr-forms-valid-color: var(--clr-color-success-700);
       --clr-forms-valid-text-color: var(--clr-color-success-900);
       --clr-forms-subtext-color: var(--clr-color-neutral-600);
+      --clr-forms-placeholder-color: var(--clr-color-neutral-600);
       --clr-forms-border-color: var(--clr-color-neutral-500);
       --clr-forms-focused-color: var(--clr-color-action-600);
-      --clr-forms-disabled-opacity: #{$clr-forms-disabled-opacity};
+
+      --clr-forms-subtext-disabled-color: #{$clr-forms-subtext-disabled-color};
+      --clr-forms-border-disabled-color: #{$clr-forms-border-disabled-color};
+      --clr-forms-text-disabled-color: #{$clr-forms-text-disabled-color};
+      --clr-forms-label-disabled-color: #{$clr-forms-label-disabled-color};
 
       // Typographic
       --clr-forms-label-font-weight: var(--clr-font-weight-bold);

@@ -56,6 +56,7 @@
   }
 
   .clr-form-control-disabled .clr-input-group-icon-action {
+    @include css-var(color, clr-forms-text-disabled-color, $clr-forms-text-disabled-color, $clr-use-custom-properties);
     cursor: not-allowed;
   }
 

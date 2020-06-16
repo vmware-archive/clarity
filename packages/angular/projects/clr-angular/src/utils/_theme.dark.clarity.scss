@@ -418,8 +418,13 @@ $clr-forms-invalid-color: hsl(3, 90%, 62%);
 $clr-forms-valid-color: hsl(92, 79%, 40%);
 $clr-forms-valid-text-color: hsl(92, 79%, 49%);
 $clr-forms-subtext-color: hsl(203, 16%, 72%);
+$clr-forms-placeholder-color: hsl(203, 16%, 72%);
 $clr-forms-border-color: hsl(203, 16%, 72%);
 $clr-forms-focused-color: hsl(198, 65%, 57%); // Vertical no wrapper, no label
+$clr-forms-subtext-disabled-color: hsl(198, 10%, 46%) !default;
+$clr-forms-border-disabled-color: hsl(198, 10%, 46%) !default;
+$clr-forms-text-disabled-color: hsl(198, 10%, 46%) !default;
+$clr-forms-label-disabled-color: hsl(198, 10%, 46%) !default;
 
 // Textarea
 $clr-forms-textarea-background-color: hsl(201, 30%, 13%);

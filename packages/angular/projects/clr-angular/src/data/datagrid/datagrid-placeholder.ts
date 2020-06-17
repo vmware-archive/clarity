@@ -9,9 +9,9 @@ import { Items } from './providers/items';
 @Component({
   selector: 'clr-dg-placeholder',
   template: `
-    <div class="datagrid-placeholder" [class.datagrid-empty]="emptyDatagrid">
+    <div class="datagrid-placeholder" [class.datagrid-empty]="emptyDatagrid" role="row">
       <div class="datagrid-placeholder-image" *ngIf="emptyDatagrid"></div>
-      <ng-content *ngIf="emptyDatagrid"></ng-content>
+      <span role="gridcell"><ng-content *ngIf="emptyDatagrid"></ng-content></span>
     </div>
   `,
   host: { '[class.datagrid-placeholder-container]': 'true' },

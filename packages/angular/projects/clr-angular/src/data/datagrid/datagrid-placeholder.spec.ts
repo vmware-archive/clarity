@@ -56,6 +56,11 @@ export default function (): void {
       it('projects content when there are no items', function () {
         expect(context.clarityElement.textContent.trim()).toMatch('Hello world');
       });
+
+      it('should have role attribute for accessibility', function () {
+        expect(context.clarityElement.querySelector('.datagrid-placeholder[role=row]')).not.toBeNull();
+        expect(context.clarityElement.querySelector('span[role=gridcell]')).not.toBeNull();
+      });
     });
   });
 }

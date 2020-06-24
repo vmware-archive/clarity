@@ -16,9 +16,7 @@ export const spreadProps = directive(props => (part: any) => {
 
   previousProps.set(part, props);
 
-  Object.entries(props).forEach(([k, v]) => {
-    if (v !== part.committer.element[k]) {
-      part.committer.element[k] = v;
-    }
-  });
+  Object.entries(props)
+    .filter(([k, v]) => v !== part.committer.element[k])
+    .forEach(([k, v]) => (part.committer.element[k] = v));
 });

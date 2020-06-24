@@ -1,0 +1,28 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// make the native icon invisible and stretch it over the whole field so you can
+// click anywhere in the input field to trigger the native datepicker (chrome 80+)
+cds-time {
+  input[type='time']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+    z-index: 99;
+  }
+
+  input[type='time']::-webkit-clear-button {
+    display: none;
+  }
+
+  input[type='time']::-ms-clear {
+    display: none;
+  }
+}

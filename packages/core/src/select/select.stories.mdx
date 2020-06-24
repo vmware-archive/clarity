@@ -1,0 +1,67 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Select/Getting Started" />
+
+# Select
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+With a select box, users can select one item from a list of values. The selected
+item is visible when the select box is closed.
+
+## Installation
+
+To use the input component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/select/register.js';
+```
+
+```html
+<cds-select>
+  <label>search</label>
+  <select>
+    <option>Option One</option>
+    <option>Option Two</option>
+    <option>Option Three</option>
+  </select>
+  <cds-control-message>message text</cds-control-message>
+</cds-select>
+```
+
+<Preview>
+  <Story id="forms-preview-select-stories--select" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-select-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-select-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-select-stories--compact" />
+</Preview>
+
+## Multiple
+
+<Preview>
+  <Story id="forms-preview-select-stories--multiple" />
+</Preview>
+
+## Select API
+
+<Props of={'cds-select'} />

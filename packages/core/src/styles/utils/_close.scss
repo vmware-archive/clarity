@@ -23,8 +23,4 @@ button.close {
   &:active {
     opacity: 1;
   }
-
-  &:focus {
-    @include include-outline-style-form-fields();
-  }
 }

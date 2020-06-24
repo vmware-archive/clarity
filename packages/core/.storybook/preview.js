@@ -1,5 +1,5 @@
 import '!style-loader!css-loader!./public/demo.css';
-import { setCustomElements, addDecorator, addParameters } from '@storybook/web-components';
+import { setCustomElements, addDecorator } from '@storybook/web-components';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withCssResources } from '@storybook/addon-cssresources';
 // import { withA11y } from '@storybook/addon-a11y';
@@ -34,6 +34,26 @@ export const parameters = {
           ['Getting Started', 'Stories'],
         ],
         'Components',
+        'Forms (Preview)',
+        [
+          'Forms',
+          ['Getting Started', 'Responsive', 'Validation'],
+          'Control',
+          'Checkbox',
+          'Datalist',
+          'File',
+          'Input',
+          'Input Groups',
+          'Password',
+          'Radio',
+          'Range',
+          'Search',
+          'Select',
+          'Textarea',
+          'Time',
+          'Toggle',
+          'Date (Internal)',
+        ],
         'Utilities (Preview)',
       ],
     },

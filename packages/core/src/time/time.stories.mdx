@@ -1,0 +1,62 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Time/Getting Started" />
+
+# Time
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The time input uses the native <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time">HTML Time Input</a>.
+
+## Installation
+
+To use the time component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/time/register.js';
+```
+
+```html
+<cds-time>
+  <label>time</label>
+  <input type="time" />
+  <cds-control-message>message text</cds-control-message>
+</cds-time>
+```
+
+<Preview>
+  <Story id="forms-preview-time-stories--time" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-time-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-time-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-time-stories--compact" />
+</Preview>
+
+## Time Datalist
+
+<Preview>
+  <Story id="forms-preview-time-stories--time-datalist" />
+</Preview>
+
+## Time API
+
+<Props of={'cds-time'} />

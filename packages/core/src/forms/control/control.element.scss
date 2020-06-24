@@ -1,0 +1,55 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.input-container {
+  line-height: 0;
+}
+
+:host([disabled]) .input,
+:host([disabled]) ::slotted([slot='input']) {
+  cursor: not-allowed;
+}
+
+:host([control-width='shrink']) {
+  width: auto;
+}
+
+slot[name='input'],
+slot[name='label'],
+slot[name='message'] {
+  line-height: 0;
+}
+
+::slotted(input) {
+  margin: 0 !important;
+  width: 100%;
+}
+
+cds-control-action.status {
+  height: $cds-token-space-size-7;
+  padding-top: $cds-token-space-size-3;
+}
+
+:host([layout='horizontal']),
+:host([layout='horizontal-inline']),
+:host([layout='compact']) {
+  cds-internal-control-label[action='primary'] {
+    padding-top: $cds-token-space-size-5;
+  }
+}
+
+:host([layout='compact']),
+:host([layout='compact'][status='success']),
+:host([layout='compact'][status='error']) {
+  slot[name='message'] {
+    padding-top: $cds-token-space-size-5;
+  }
+}

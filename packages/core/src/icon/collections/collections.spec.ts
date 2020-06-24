@@ -21,12 +21,12 @@ import { airplaneIconName } from '../shapes/airplane.js';
 import { applicationIconName } from '../shapes/application.js';
 import { arrowMiniIconName } from '../shapes/arrow-mini.js';
 import { axisChartIconName } from '../shapes/axis-chart.js';
-import { angleIconName } from '../shapes/angle.js';
 import { bankIconName } from '../shapes/bank.js';
 import { betaIconName } from '../shapes/beta.js';
 import { boldIconName } from '../shapes/bold.js';
 import { musicNoteIconName } from '../shapes/music-note.js';
 import { starIconName } from '../shapes/star.js';
+import { vmBugIconName } from '../shapes/vm-bug.js';
 
 describe('icon collection tests', () => {
   describe('chart icon collection (loadChartIconSet)', () => {
@@ -54,10 +54,10 @@ describe('icon collection tests', () => {
   describe('core icon collection (loadCoreIconSet)', () => {
     it('should work', () => {
       const knownAlias = 'house';
-      expect(ClarityIcons.registry[angleIconName]).toBeUndefined();
+      expect(ClarityIcons.registry[vmBugIconName]).toBeUndefined();
       expect(ClarityIcons.registry[knownAlias]).toBeUndefined();
       loadCoreIconSet();
-      expect(ClarityIcons.registry[angleIconName]).toBeDefined();
+      expect(ClarityIcons.registry[vmBugIconName]).toBeDefined();
       expect(ClarityIcons.registry[knownAlias]).toBeDefined();
     });
   });

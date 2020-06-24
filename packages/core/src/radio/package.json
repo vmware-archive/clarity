@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/radio",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

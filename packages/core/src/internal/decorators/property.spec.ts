@@ -56,7 +56,7 @@ describe('@property decorator defaults', () => {
     class Proto {
       testProp: undefined;
       tagName = 'cds-test-error';
-      connectedCallback() {
+      firstUpdated() {
         // do nothing
       }
     }
@@ -66,7 +66,7 @@ describe('@property decorator defaults', () => {
     let err: string;
 
     try {
-      new Proto().connectedCallback();
+      new Proto().firstUpdated();
     } catch (error) {
       err = error.toString();
     }
@@ -83,14 +83,14 @@ describe('@property decorator defaults', () => {
     class Proto {
       test: undefined;
       tagName = 'cds-test-warning';
-      connectedCallback() {
+      firstUpdated() {
         // do nothing
       }
     }
 
     requirePropertyCheck(Proto.prototype, 'test', { type: String, required: 'warning' });
 
-    new Proto().connectedCallback();
+    new Proto().firstUpdated();
 
     expect(console.warn).toHaveBeenCalled();
     window.jasmine = jasmine;

@@ -1,0 +1,52 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --width: #{$cds-token-space-size-7};
+  --height: #{$cds-token-space-size-7};
+  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
+  --fill-box-shadow: none;
+}
+
+slot[name='input'] {
+  padding-left: $cds-token-space-size-2;
+}
+
+.input {
+  width: var(--width);
+  height: var(--height);
+  min-width: var(--width); // for compact forms with long text
+  border: var(--border);
+  box-shadow: var(--fill-box-shadow);
+  display: inline-block;
+  border-radius: 50%;
+  content: '';
+  cursor: pointer;
+}
+
+.input::after {
+  width: var(--width);
+  height: var(--height);
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+:host([status='error']) .input {
+  --border: 0.05rem solid #{$cds-token-color-danger-800};
+}
+
+:host([checked]) .input {
+  --fill-box-shadow: inset 0 0 0 #{$cds-token-space-size-4} #{$cds-token-color-action-600};
+  --border: 0 !important;
+}
+
+:host([checked][disabled]) .input {
+  --fill-box-shadow: inset 0 0 0 #{$cds-token-space-size-4} #{$cds-token-color-neutral-500};
+  --border: 0 !important;
+}

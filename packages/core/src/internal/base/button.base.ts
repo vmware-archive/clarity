@@ -41,6 +41,8 @@ export class CdsBaseButton extends LitElement {
   @property({ type: Boolean })
   disabled = false;
 
+  @property({ type: Boolean }) protected focused = false;
+
   @querySlot('cds-icon') protected icon: HTMLElement;
 
   @querySlot('a') protected anchor: HTMLAnchorElement;
@@ -88,8 +90,8 @@ export class CdsBaseButton extends LitElement {
 
   private setupAnchorFocus() {
     if (this.anchor) {
-      this.anchor.addEventListener('focus', () => this.setAttribute('focused', ''));
-      this.anchor.addEventListener('blur', () => this.removeAttribute('focused'));
+      this.anchor.addEventListener('focusin', () => (this.focused = true));
+      this.anchor.addEventListener('focusout', () => (this.focused = false));
     }
   }
 

@@ -4,7 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { assignSlotNames, baseStyles, iconSlot, iconSpinner, iconSpinnerCheck, property } from '@clr/core/internal';
+import {
+  assignSlotNames,
+  baseStyles,
+  iconSlot,
+  iconSpinner,
+  iconSpinnerCheck,
+  property,
+  setAttributes,
+} from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './icon-button.element.css.js';
@@ -44,7 +52,9 @@ export class CdsIconButton extends CdsButton {
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
 
-  connectedCallback(): void {
+  connectedCallback() {
+    setAttributes(this, ['aria-hidden', 'true']);
+
     // have to override default behavior when an anchor is passed into the icon button
     super.connectedCallback();
     if (this.anchor) {

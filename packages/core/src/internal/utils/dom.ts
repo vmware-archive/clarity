@@ -83,3 +83,22 @@ export function assignSlotNames(...slotTuples: [HTMLElement, string | boolean][]
     }
   });
 }
+
+export function listenForAttributeChange(
+  element: HTMLElement,
+  attrName: string,
+  fn: (attrValue: string | null) => void
+) {
+  const observer = new MutationObserver(mutations => {
+    if (mutations.find(m => m.attributeName === attrName)) {
+      fn(element.getAttribute(attrName));
+    }
+  });
+
+  observer.observe(element, { attributes: true });
+  return observer;
+}
+
+export function isVisible(element: HTMLElement) {
+  return element?.offsetHeight > 0 && element?.hasAttribute('hidden') === false;
+}

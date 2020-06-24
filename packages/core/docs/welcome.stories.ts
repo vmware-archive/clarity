@@ -4,10 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons, betaIcon } from '@clr/core/icon';
 import { html } from 'lit-html';
-
-ClarityIcons.addIcons(betaIcon);
 
 export default {
   title: 'Welcome/Clarity',

@@ -160,13 +160,25 @@ export const horizontalLayoutAlignVerticalStretch = () => {
   `;
 };
 
+export const horizontalLayoutAlignFill = () => {
+  return html`
+    <cds-demo layout wide tall>
+      <div cds-layout="horizontal gap:sm align:fill">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+        <cds-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
 export const horizontalLayoutAlignHorizontalStretch = () => {
   return html`
     <cds-demo layout wide tall>
       <div cds-layout="horizontal gap:md align:horizontal-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
-        <cds-placeholder>3</cds-placeholder>
+        <cds-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -498,12 +510,25 @@ export const verticalLayoutAlignCenter = () => {
   `;
 };
 
+export const verticalLayoutAlignFill = () => {
+  return html`
+    <cds-demo layout wide tall>
+      <div cds-layout="vertical gap:sm align:fill">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+        <cds-placeholder style="height: 150px">3</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
 export const verticalLayoutAlignVerticalStretch = () => {
   return html`
-    <cds-demo layout tall>
+    <cds-demo layout wide tall>
       <div cds-layout="vertical gap:md align:vertical-stretch">
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder>2</cds-placeholder>
+        <cds-placeholder style="height: 150px">3</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -1399,7 +1424,7 @@ export const spacingMarginSides = () => {
 export const spacingMarginResponsive = () => {
   return html`
     <cds-demo spacing-margin cds-layout="vertical gap:xl">
-      <div><cds-placeholder cds-layout="m@sm:md">m@sm:md</cds-placeholder></div>
+      <div><cds-placeholder cds-layout="m@sm:md">m@sm</cds-placeholder></div>
       <div><cds-placeholder cds-layout="m-l@sm:lg">m-l@sm:lg</cds-placeholder></div>
     </cds-demo>
   `;

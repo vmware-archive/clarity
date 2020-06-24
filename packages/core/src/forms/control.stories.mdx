@@ -1,0 +1,59 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+import '@clr/core/forms/register.js';
+import '@clr/core/button';
+
+<Meta title="Forms (Preview)/Control/Getting Started" />
+
+# Generic Control
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The Control provides a way to leverage the same Clarity Form layout but with a custom input control.
+
+## Installation
+
+To use the control component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/forms/register.js';
+```
+
+```html
+<cds-control>
+  <label>label text</label>
+  <input placeholder="some custom control" />
+  <cds-control-message>message text</cds-control-message>
+</cds-control>
+```
+
+## Control
+
+<Preview>
+  <Story id="forms-preview-control-stories--control" />
+</Preview>
+
+## Control Horizontal
+
+<Preview>
+  <Story id="forms-preview-control-stories--control-horizontal" />
+</Preview>
+
+## Control Compact
+
+<Preview>
+  <Story id="forms-preview-control-stories--control-compact" />
+</Preview>
+
+## Control API
+
+<Props of={'cds-control'} />
+
+## Control Message API
+
+<Props of={'cds-control-message'} />

@@ -13,7 +13,8 @@
     "baseUrl": "../",
     "paths": {
       "@clr/core": ["./dist/core"],
-      "@clr/core/*": ["./dist/core/*"]
+      "@clr/core/*": ["./dist/core/*"],
+      "@clr/core/*/register": ["./dist/core/*/register"]
     }
   }
 }

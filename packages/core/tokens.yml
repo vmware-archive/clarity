@@ -17,6 +17,10 @@ props:
     value: '1px'
     type: 'px'
     category: 'global'
+  - name: focus-color
+    value: 'hsl(197, 68%, 65%)'
+    type: 'hsl'
+    category: 'global'
 
   # Space
   - name: 'size-0'

@@ -1,0 +1,64 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Date (Internal)/Getting Started" />
+
+# Date
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This component is experimental, do not use in production! (This documentation is only available during local
+    development)
+  </cds-alert>
+</cds-alert-group>
+
+The date input is a text input with a provided default date icon. The date
+input also uses `type="date"` to improve user experience on specific devices
+and improve accessibility.
+
+## Installation
+
+To use the date component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/date/register.js';
+```
+
+```html
+<cds-date>
+  <label>date</label>
+  <input type="date" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+  <cds-control-message>message text</cds-control-message>
+</cds-date>
+```
+
+<Preview>
+  <Story id="forms-preview-date-internal-stories--date" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-date-internal-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-date-internal-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-date-internal-stories--compact" />
+</Preview>
+
+## Datalist
+
+<Preview>
+  <Story id="forms-preview-date-internal-stories--datalist" />
+</Preview>
+
+## Date API
+
+<Props of={'cds-date'} />

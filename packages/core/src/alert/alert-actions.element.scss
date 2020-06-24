@@ -1,5 +1,5 @@
 @import './../styles/tokens/generated/index';
-@import './../styles/mixins/utils';
+@import './../styles/mixins/mixins';
 
 :host {
   --action-hover-text-color: #{$cds-token-color-neutral-1000};

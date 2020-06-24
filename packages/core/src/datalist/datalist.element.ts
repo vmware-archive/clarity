@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+import { html } from 'lit-element';
+import { querySlot, globalStyle } from '@clr/core/internal';
+import { CdsControl } from '@clr/core/forms';
+import { inputStyles } from '@clr/core/input';
+import { ClarityIcons, angleIcon } from '@clr/core/icon';
+import '@clr/core/icon/register.js';
+import { styles as globalStyles } from './datalist-global.element.css.js';
+
+ClarityIcons.addIcons(angleIcon);
+
+/**
+ * Datalist
+ *
+ * ```typescript
+ * import '@clr/core/datalist/register.js';
+ * ```
+ *
+ * ```html
+ * <cds-datalist>
+ *   <label>datalist</label>
+ *   <input type="text" />
+ *   <datalist>
+ *     <option value="item 1"></option>
+ *     <option value="item 2"></option>
+ *     <option value="item 3"></option>
+ *   </datalist>
+ *   <cds-control-message>message text</cds-control-message>
+ * </cds-datalist>
+ * ```
+ *
+ * @element cds-datalist
+ * @slot default - For projecting input, datalist and label
+ */
+export class CdsDatalist extends CdsControl {
+  @globalStyle() protected globalStyles = globalStyles;
+
+  @querySlot('datalist', { required: 'error' }) protected datalistControl: HTMLDataListElement;
+
+  protected get suffixDefaultTemplate() {
+    return html`<cds-control-action readonly><cds-icon shape="angle" direction="down"></cds-icon></cds-control-action>`;
+  }
+
+  static get styles() {
+    return [...super.styles, inputStyles];
+  }
+}

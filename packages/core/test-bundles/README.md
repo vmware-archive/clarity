@@ -14,7 +14,7 @@ More complex scenarios we want to also tree shake at the symbol level such as wh
 importing icons.
 
 ```javascript
-import '@clr/core/icon';
+import '@clr/core/icon/register.js';
 import { ClarityIcons, userIcon, menuIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(userIcon, menuIcon);

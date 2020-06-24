@@ -1,0 +1,73 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Input Groups/Getting Started" />
+
+# Input Groups and Actions
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Text groups allow closely related input controls to be combined into a visually
+single control.
+
+## Installation
+
+To use the input group component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/input/register.js';
+```
+
+```html
+<cds-input-group>
+  <label>Host URL</label>
+  <cds-select cds-layout="align:shrink">
+    <label>URL Protocol</label>
+    <select>
+      <option>https://</option>
+      <option>http://</option>
+    </select>
+  </cds-select>
+  <cds-input>
+    <label>Host URL</label>
+    <input placeholder="example.com" type="url" />
+  </cds-input>
+  <cds-control-message>Host ID: 123456</cds-control-message>
+</cds-input-group>
+```
+
+## Complex Group
+
+<Preview>
+  <Story id="forms-preview-input-groups-stories--group" />
+</Preview>
+
+## Status
+
+<Preview>
+  <Story id="forms-preview-input-groups-stories--status" />
+</Preview>
+
+## Control Actions - Buttons/Icons
+
+<Preview>
+  <Story id="forms-preview-input-groups-stories--icons-buttons" />
+</Preview>
+
+## Prefix/Suffix Labels
+
+<Preview>
+  <Story id="forms-preview-input-groups-stories--prefix-suffix" />
+</Preview>
+
+## Input Group API
+
+<Props of={'cds-input-group'} />
+
+## Control Action API
+
+<Props of={'cds-control-action'} />

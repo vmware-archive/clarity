@@ -15,6 +15,8 @@ import {
   removeAttributes,
   removeAttributeValue,
   setAttributes,
+  listenForAttributeChange,
+  isVisible,
 } from './dom.js';
 
 describe('Functional Helper: ', () => {
@@ -309,6 +311,37 @@ describe('Functional Helper: ', () => {
       testElement.setAttribute(attrName, 'foo');
       removeAttributeValue(testElement, attrName, 'foo');
       expect(testElement.getAttribute(attrName)).toBeNull();
+    });
+  });
+
+  describe('listenForAttributeChange', () => {
+    it('executes callback when observed attribute changes', done => {
+      const element = createTestElement();
+      expect(element.getAttribute('name')).toBe(null);
+
+      listenForAttributeChange(element, 'name', id => {
+        expect(id).toBe('hello world');
+        done();
+      });
+
+      element.setAttribute('name', 'hello world');
+      removeTestElement(element);
+    });
+  });
+
+  describe('isVisible', () => {
+    it('determines if element is visible', () => {
+      const element = createTestElement();
+      element.style.width = '100px';
+      element.style.height = '100px';
+
+      expect(isVisible(element)).toBe(true);
+
+      element.setAttribute('hidden', '');
+      expect(isVisible(element)).toBe(false);
+
+      removeTestElement(element);
+      expect(isVisible(element)).toBe(false);
     });
   });
 });

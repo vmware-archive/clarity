@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/time",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

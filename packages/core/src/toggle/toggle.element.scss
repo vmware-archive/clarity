@@ -1,0 +1,60 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --background: #{$cds-token-color-neutral-600};
+  --border: #{$cds-token-space-size-2} solid #{$cds-token-color-neutral-600};
+  --border-radius: calc(#{$cds-token-space-size-5} + #{$cds-token-space-size-1});
+  --height: #{$cds-token-space-size-8};
+  --width: calc(#{$cds-token-space-size-10} + #{$cds-token-space-size-1});
+  --anchor-background: #{$cds-token-color-neutral-50};
+  --anchor-border-radius: 50%;
+  --anchor-width: calc(#{$cds-token-space-size-6} + #{$cds-token-space-size-2});
+  --anchor-height: calc(#{$cds-token-space-size-6} + #{$cds-token-space-size-2});
+}
+
+.input {
+  border-radius: var(--border-radius);
+  border: var(--border);
+  background: var(--background);
+  height: var(--height);
+  width: var(--width);
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in;
+  transition-property: border-color, background-color;
+}
+
+.input:after {
+  border-radius: var(--anchor-border-radius);
+  background: var(--anchor-background);
+  height: var(--anchor-height);
+  width: var(--anchor-width);
+  position: absolute;
+  display: inline-block;
+  content: '';
+  left: 0;
+  top: 0;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in;
+  transition-property: transform;
+}
+
+:host([checked]) .input {
+  border: $cds-token-space-size-2 solid $cds-token-color-success-500;
+  background: $cds-token-color-success-500;
+}
+
+:host([checked]) .input:after {
+  transform: translate(calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-1}), 0);
+}
+
+:host([disabled]) .input {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

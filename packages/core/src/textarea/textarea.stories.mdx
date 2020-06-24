@@ -1,0 +1,56 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Textarea/Getting Started" />
+
+# Textarea
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Use Textareas for long-form text input or text input that could be longer than a single sentence.
+
+## Installation
+
+To use the textarea component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/textarea/register.js';
+```
+
+```html
+<cds-textarea>
+  <label>textarea</label>
+  <textarea></textarea>
+  <cds-control-message>message text</cds-control-message>
+</cds-textarea>
+```
+
+<Preview>
+  <Story id="forms-preview-textarea-stories--textarea" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-textarea-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-textarea-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-textarea-stories--compact" />
+</Preview>
+
+## Textarea API
+
+<Props of={'cds-textarea'} />

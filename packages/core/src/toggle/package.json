@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/toggle",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

@@ -46,7 +46,8 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
         converter: {
           // Mimic standard HTML boolean attributes + support "false" attribute values
           // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes
-          fromAttribute: (value: string) => value !== 'false',
+          toAttribute: (value: string) => (value ? '' : null),
+          fromAttribute: (value: string) => value !== 'false' && value !== null,
         },
         ...options,
       };
@@ -66,9 +67,9 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
 }
 
 export function requirePropertyCheck(protoOrDescriptor: any, name: string, options?: PropertyConfig) {
-  const targetConnectedCallback: () => void = protoOrDescriptor.connectedCallback;
+  const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
-  function connectedCallback(this: any): void {
+  function firstUpdated(this: any, props: Map<string, any>): void {
     if (options && options.required) {
       const message = options.requiredMessage || getRequiredMessage(options.required, name, this.tagName);
       if (options.required === 'error') {
@@ -78,12 +79,12 @@ export function requirePropertyCheck(protoOrDescriptor: any, name: string, optio
       }
     }
 
-    if (targetConnectedCallback) {
-      targetConnectedCallback.apply(this);
+    if (targetFirstUpdated) {
+      targetFirstUpdated.apply(this, [props]);
     }
   }
 
-  protoOrDescriptor.connectedCallback = connectedCallback;
+  protoOrDescriptor.firstUpdated = firstUpdated;
 }
 
 function getRequiredMessage(level = 'warning', propertyName: string, tagName: string) {

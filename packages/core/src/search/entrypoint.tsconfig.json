@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.lib.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "../internal/entrypoint.tsconfig.json" },
+    { "path": "../forms/entrypoint.tsconfig.json" },
+    { "path": "../input/entrypoint.tsconfig.json" },
+    { "path": "../icon/entrypoint.tsconfig.json" }
+  ]
+}

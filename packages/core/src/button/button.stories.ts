@@ -63,7 +63,7 @@ export const actions = () => {
     <div cds-layout="horizontal gap:sm">
       <cds-button>solid</cds-button>
       <cds-button action="outline">outline</cds-button>
-      <cds-button action="flat">link</cds-button>
+      <cds-button action="flat">flat</cds-button>
     </div>
   `;
 };

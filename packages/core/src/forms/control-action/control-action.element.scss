@@ -1,0 +1,50 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/mixins';
+
+:host {
+  pointer-events: none;
+  display: inline-block;
+}
+
+:host([role='button']) {
+  cursor: pointer;
+  min-width: $cds-token-space-size-9;
+  pointer-events: initial;
+}
+
+.private-host {
+  height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
+  color: $cds-token-color-neutral-600;
+  font-size: $cds-token-typography-font-size-3;
+  display: flex;
+  justify-content: center;
+}
+
+slot {
+  line-height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
+}
+
+::slotted(cds-icon) {
+  width: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
+  height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
+  margin-bottom: $cds-token-space-size-1;
+  pointer-events: none;
+}
+
+::slotted(cds-icon[shape='exclamation-circle']),
+::slotted(cds-icon[shape='check-circle']),
+::slotted(cds-icon[shape='info-circle']) {
+  @include equilateral($cds-token-space-size-9);
+  margin: calc(-1 * #{$cds-token-space-size-3});
+  margin-bottom: 0;
+}
+
+::slotted(cds-icon[shape='angle']) {
+  @include equilateral($cds-token-space-size-8);
+  --color: #{$cds-token-color-neutral-500};
+  margin-right: $cds-token-space-size-3;
+}

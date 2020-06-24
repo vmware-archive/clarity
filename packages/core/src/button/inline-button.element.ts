@@ -4,9 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { addClassnames, baseStyles, CdsBaseButton, registerElementSafely } from '@clr/core/internal';
+import { addClassnames, baseStyles, CdsBaseButton } from '@clr/core/internal';
 import { html } from 'lit-element';
-import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './inline-button.element.css.js';
 
 /**
@@ -14,7 +13,7 @@ import { styles } from './inline-button.element.css.js';
  * They give action buttons a less prominent, yet familiar, visual presence.
  *
  * ```typescript
- * import '@clr/core/button';
+ * import '@clr/core/button/register.js';
  * ```
  *
  * ```html
@@ -50,14 +49,6 @@ export class CdsInlineButton extends CdsBaseButton {
   }
 
   static get styles() {
-    return [baseStyles, baseButtonStyles, styles];
-  }
-}
-
-registerElementSafely('cds-inline-button', CdsInlineButton);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-inline-button': CdsInlineButton;
+    return [baseStyles, styles];
   }
 }

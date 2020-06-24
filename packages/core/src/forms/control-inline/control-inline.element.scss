@@ -1,0 +1,21 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  width: initial;
+}
+
+::slotted(label) {
+  white-space: nowrap;
+}
+
+cds-internal-control-label {
+  padding-top: $cds-token-space-size-2;
+}
+
+cds-control-action.status {
+  padding-top: 0 !important;
+}

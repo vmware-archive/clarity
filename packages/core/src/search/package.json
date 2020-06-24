@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/search",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

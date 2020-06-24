@@ -1,0 +1,68 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --track-background: #{$cds-token-color-neutral-200};
+  --track-fill-background: #{$cds-token-color-action-600};
+  --track-height: #{$cds-token-space-size-3};
+  --track-width: 50%;
+  --thumb-background: #{$cds-token-color-action-600};
+  --thumb-width: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-2});
+  --thumb-height: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-2});
+  display: block;
+  width: 100%;
+}
+
+::slotted(input) {
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--track-height);
+  margin: $cds-token-space-size-5 0 $cds-token-space-size-4 0;
+  position: relative;
+  padding: 0 !important;
+  padding: $cds-token-space-size-4 0;
+  cursor: pointer;
+}
+
+slot[name='input'] {
+  padding: $cds-token-space-size-4 0;
+}
+
+slot[name='input']::after {
+  content: '';
+  position: absolute;
+  top: calc(#{$cds-token-space-size-5} + #{$cds-token-space-size-2});
+  left: 0;
+  width: var(--track-width);
+  height: var(--track-height);
+  background: var(--track-fill-background);
+  pointer-events: none;
+  z-index: 999;
+}
+
+:host([disabled]) {
+  --track-fill-background: #{$cds-token-color-neutral-500};
+  --thumb-background: #{$cds-token-color-neutral-500};
+
+  ::slotted(input),
+  slot[name='input'] {
+    cursor: not-allowed;
+  }
+}
+
+.rtl slot[name='input']::after {
+  left: initial;
+  right: 0;
+}
+
+// aligns control to 24px standard height
+:host {
+  padding: $cds-token-space-size-2 0;
+}
+
+.input-container {
+  padding-top: $cds-token-space-size-3;
+}

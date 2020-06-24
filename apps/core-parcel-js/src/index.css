@@ -1,6 +1,6 @@
-@import '../node_modules/@clr/core/global.min.css';
-@import '../node_modules/@clr/core/styles/module.layout.min.css';
+@import '../node_modules/normalize.css/normalize.css';
 @import '../node_modules/@clr/city/css/bundles/default.min.css';
+@import '../node_modules/@clr/core/global.min.css';
 
 body {
   font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;

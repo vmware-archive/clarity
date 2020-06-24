@@ -32,6 +32,7 @@ async function treeshakeCommonCSS() {
   const purgeCSSResult = await new PurgeCSS().purge({
     content: ['./**/*.element.ts'],
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+    whitelistPatterns: [/:host$/],
     css: [{ raw: css }],
   });
 

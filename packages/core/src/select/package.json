@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/select",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

@@ -4,17 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/badge/register.js';
 import '@clr/core/icon/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsButton, CdsIconButton } from '@clr/core/button';
+import { CdsButton, CdsIconButton, CdsInlineButton } from '@clr/core/button';
 
 registerElementSafely('cds-button', CdsButton);
 registerElementSafely('cds-icon-button', CdsIconButton);
+registerElementSafely('cds-inline-button', CdsInlineButton);
 
 declare global {
   interface HTMLElementTagNameMap {
     'cds-button': CdsButton;
     'cds-icon-button': CdsIconButton;
+    'cds-inline-button': CdsInlineButton;
   }
 }

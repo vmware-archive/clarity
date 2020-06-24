@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/textarea",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

@@ -1,0 +1,70 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Datalist/Getting Started" />
+
+# Datalist
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The datalist element offers a flexible input when users need to filter and select
+from a large list of pre-defined options. Or, they need to input a custom value
+(not provided in the pre-defined list) for the input.
+
+Do not confuse a datalist element with the select input. Datalist elements usually
+have more than 13 options that the user will need to filter or narrow down before
+making a choice. If there are 3-13 options, consider using the select input.
+
+The `<datalist>` element can be used with any Core Input that is a [text based input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist).
+The `<cds-datalist>` provides some additional specific styles for a dropdown look.
+
+## Installation
+
+To use the datalist component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/datalist/register.js';
+```
+
+```html
+<cds-datalist>
+  <label>datalist</label>
+  <input placeholder="placeholder text" />
+  <datalist>
+    <option value="Item 1"></option>
+    <option value="Item 2"></option>
+    <option value="Item 3"></option>
+  </datalist>
+  <cds-control-message>message text</cds-control-message>
+</cds-datalist>
+```
+
+<Preview>
+  <Story id="forms-preview-datalist-stories--datalist" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-datalist-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-datalist-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-datalist-stories--compact" />
+</Preview>
+
+## Datalist API
+
+<Props of={'cds-datalist'} />

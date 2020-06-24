@@ -26,7 +26,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "19.6 kB"
+      "maxSize": "20.5 kB"
     }
   ]
 }

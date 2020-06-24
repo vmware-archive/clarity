@@ -1,0 +1,82 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Toggle/Getting Started" />
+
+# Toggle
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Toggles are used for one to many selection options. Toggles are not for
+mutually exclusive lists. Each toggle can be selected independent of the
+state of another.
+
+## Installation
+
+To use the toggle component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/toggle/register.js';
+```
+
+```html
+<cds-toggle>
+  <label>toggle</label>
+  <input type="checkbox" />
+  <cds-control-message>message text</cds-control-message>
+</cds-toggle>
+```
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--toggle" />
+</Preview>
+
+## Status
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--status" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--vertical-group" />
+</Preview>
+
+## Vertical Inline
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--vertical-inline-group" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--horizontal-group" />
+</Preview>
+
+## Horizontal Inline
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--horizontal-inline-group" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--compact-group" />
+</Preview>
+
+## Align
+
+<Preview>
+  <Story id="forms-preview-toggle-stories--toggle-align" />
+</Preview>
+
+## Toggle API
+
+<Props of={'cds-toggle'} />

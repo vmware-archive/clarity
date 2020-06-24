@@ -219,4 +219,9 @@ export interface ClrCommonStrings {
   dategridExpandableEndOf?: string;
   dategridExpandableRowContent?: string;
   dategridExpandableRowsHelperText?: string;
+
+  /* file input */
+  browse?: string;
+  files?: string;
+  removeFile?: string;
 }

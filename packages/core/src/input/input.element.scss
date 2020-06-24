@@ -1,0 +1,106 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-action-600} 0) no-repeat;
+  --background-size: 0% 100%;
+  --border: 0;
+  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
+  --outline: none;
+  --padding: 0 #{$cds-token-space-size-4};
+  --font-size: #{$cds-token-typography-font-size-3};
+  --color: #{$cds-token-color-neutral-1000};
+  --line-height: #{$cds-token-space-size-9};
+  --transition: background-size 0.2s ease;
+  display: block;
+  width: 100%;
+}
+
+.private-host {
+  --private-border-color: var(--border-bottom);
+}
+
+::slotted([slot='input']:not([multiple])) {
+  text-transform: var(--text-transform) !important;
+  border: var(--border) !important;
+  outline: var(--outline) !important;
+  padding: var(--padding);
+  font-size: var(--font-size) !important;
+  color: var(--color) !important;
+  line-height: var(--line-height) !important;
+  height: var(--line-height) !important;
+  width: 100%;
+  -webkit-appearance: none !important;
+  border-radius: 0 !important;
+  background: transparent;
+
+  &::placeholder {
+    --color: $cds-token-color-neutral-600 !important;
+  }
+}
+
+.input-container {
+  transition: var(--transition) !important;
+  background: var(--background) !important;
+  background-size: var(--background-size) !important;
+  border-bottom: var(--border-bottom) !important;
+  position: relative;
+}
+
+.prefix,
+.suffix {
+  line-height: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.prefix {
+  left: 0;
+}
+
+.suffix {
+  right: 0;
+}
+
+.rtl {
+  .prefix {
+    left: initial;
+    right: 0;
+  }
+
+  .suffix {
+    right: initial;
+    left: 0;
+  }
+
+  ::slotted([slot='input']) {
+    text-align: right;
+  }
+}
+
+:host([focused]) .input-container {
+  --background-size: 100% 100%;
+  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-action-600};
+}
+
+::slotted([slot='input']:not([multiple])[readonly]) {
+  --border: 0;
+  --border-bottom: 0;
+  --background-size: 0% 100%;
+  --background: transparent;
+}
+
+:host([status='error']) .input-container,
+:host([status='error'][focused]) .input-container {
+  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-danger-800} 0) no-repeat;
+  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-danger-800};
+}
+
+:host([status='success']) .input-container,
+:host([status='success']) .input-container {
+  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-success-800} 0) no-repeat;
+  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-success-800};
+}

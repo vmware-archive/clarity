@@ -2,6 +2,7 @@
 
 # core related files
 *.element.css.ts
+*.global.css.ts
 packages/core/src/styles/tokens/generated
 packages/core/dist
 packages/react/.cache

@@ -1,0 +1,38 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --background: #{$cds-token-color-neutral-0};
+  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
+  --padding: #{$cds-token-space-size-5} #{$cds-token-space-size-6};
+  --font-size: #{$cds-token-typography-font-size-3};
+  --color: #{$cds-token-color-neutral-1000};
+  --border-radius: #{$cds-token-global-border-radius};
+  display: block;
+  width: 100%;
+}
+
+::slotted(textarea) {
+  background: var(--background) !important;
+  border: var(--border) !important;
+  color: var(--color) !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--padding) !important;
+  font-size: var(--font-size) !important;
+  resize: vertical !important;
+  width: 100% !important;
+  min-height: $cds-token-layout-space-xxl !important;
+}
+
+:host([status='error']),
+:host([status='error']) ::slotted(textarea:focus) {
+  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-danger-800};
+}
+
+:host([status='success']),
+:host([status='success']) ::slotted(textarea:focus) {
+  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-success-800};
+}

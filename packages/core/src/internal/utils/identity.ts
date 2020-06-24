@@ -45,3 +45,7 @@ export function hasStringPropertyChangedAndNotNil(val: string | null | undefined
 export function getEnumValues(enumeration: any) {
   return Object.values(enumeration);
 }
+
+export function createId() {
+  return `_${Math.random().toString(36).substr(2, 9)}`;
+}

@@ -3,13 +3,10 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './../styles/tokens/generated/index';
-@import './../styles/mixins/utils';
 @import './../styles/mixins/mixins';
 
 // TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
-@import './../../../angular/projects/clr-angular/src/progress/spinner/variables.spinner';
-@import './../../../angular/projects/clr-angular/src/image/icons.clarity';
-@import './../../../angular/projects/clr-angular/src/progress/spinner/spinner.clarity';
+@import './../styles/utils/legacy-spinner';
 
 :host {
   --box-shadow-color: #{$cds-token-color-action-900};

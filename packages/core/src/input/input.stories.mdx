@@ -1,0 +1,83 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Input/Getting Started" />
+
+# Input
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Text inputs are for relatively short content, such as a single line of text. For
+longer input content, such as paragraphs, consider using a textarea.
+
+## Installation
+
+To use the input component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/input/register.js';
+```
+
+```html
+<cds-input>
+  <label>text input</label>
+  <input type="text" />
+  <cds-control-message>message text</cds-control-message>
+</cds-input>
+```
+
+<Preview>
+  <Story id="forms-preview-input-stories--input" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-input-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-input-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-input-stories--compact" />
+</Preview>
+
+## Control Width
+
+By default `cds-input` will fill its parent container. Inputs can use the compact
+width `control-width="shrink"` which will set the width to the default browser width.
+You can apply custom widths by setting a max width on the component.
+
+<Preview>
+  <Story id="forms-preview-input-stories--input-width" />
+</Preview>
+
+## Supported Text Types
+
+The `cds-input` component supports a variety of native text based input types.
+
+<Preview>
+  <Story id="forms-preview-input-stories--supported-text-types" />
+</Preview>
+
+## Input API
+
+<Props of={'cds-input'} />
+
+## Control API
+
+<Props of={'cds-control'} />
+
+## Control Message API
+
+<Props of={'cds-control-message'} />

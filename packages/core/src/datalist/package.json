@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/datalist",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

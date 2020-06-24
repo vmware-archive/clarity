@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/input",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

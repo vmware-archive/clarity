@@ -1,0 +1,82 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Checkbox/Getting Started" />
+
+# Checkbox
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Checkboxes are used for one to many selection options. Checkboxes are not for
+mutually exclusive lists. Each checkbox can be selected independent of the
+state of another.
+
+## Installation
+
+To use the checkbox component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/checkbox/register.js';
+```
+
+```html
+<cds-checkbox>
+  <label>checkbox</label>
+  <input type="checkbox" />
+  <cds-control-message>message text</cds-control-message>
+</cds-checkbox>
+```
+
+## Checkbox
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--checkbox" />
+</Preview>
+
+## Status
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--status" />
+</Preview>
+
+## Vertical Group
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--vertical-group" />
+</Preview>
+
+## Vertical Inline Group
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--vertical-inline-group" />
+</Preview>
+
+## Horizontal Group
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--horizontal-group" />
+</Preview>
+
+## Horizontal Inline Group
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--horizontal-inline-group" />
+</Preview>
+
+## Compact Group
+
+<Preview>
+  <Story id="forms-preview-checkbox-stories--compact-group" />
+</Preview>
+
+## Checkbox API
+
+<Props of={'cds-checkbox'} />
+
+## Checkbox Group API
+
+<Props of={'cds-checkbox-group'} />

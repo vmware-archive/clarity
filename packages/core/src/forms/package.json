@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/forms",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

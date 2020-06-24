@@ -1,0 +1,66 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Search/Getting Started" />
+
+# Search
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The search input is a text input with a provided default search icon. The search
+input also uses `type="search"` to improve user experience on specific devices
+and improve accessibility.
+
+## Installation
+
+To use the search component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/search/register.js';
+```
+
+```html
+<cds-search>
+  <label>search</label>
+  <input type="search" />
+  <cds-control-message>message text</cds-control-message>
+</cds-search>
+```
+
+## Search
+
+<Preview>
+  <Story id="forms-preview-search-stories--search" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-search-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-search-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-search-stories--compact" />
+</Preview>
+
+## Datalist
+
+<Preview>
+  <Story id="forms-preview-search-stories--datalist" />
+</Preview>
+
+## Search API
+
+<Props of={'cds-search'} />

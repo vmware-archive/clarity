@@ -1,0 +1,79 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Radio/Getting Started" />
+
+# Radio
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Using radio buttons, users can select one option from a mutually exclusive group of options.
+
+## Installation
+
+To use the radio component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/radio/register.js';
+```
+
+```html
+<cds-radio-group name="region">
+  <label>Choose a Country</label>
+  <cds-radio>
+    <label>North America</label>
+    <input type="radio" value="north-america" checked />
+  </cds-radio>
+  <cds-radio>
+    <label>South America</label>
+    <input type="radio" value="south-america" />
+  </cds-radio>
+  <cds-radio>
+    <label>Europe</label>
+    <input type="radio" value="europe" />
+  </cds-radio>
+  <cds-control-message>message text</cds-control-message>
+</cds-radio-group>
+```
+
+<Preview>
+  <Story id="forms-preview-radio-stories--radio" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-radio-stories--vertical-group" />
+</Preview>
+
+## Vertical Inline
+
+<Preview>
+  <Story id="forms-preview-radio-stories--vertical-inline-group" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-radio-stories--horizontal-group" />
+</Preview>
+
+## Horizontal Inline
+
+<Preview>
+  <Story id="forms-preview-radio-stories--horizontal-inline-group" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-radio-stories--compact-group" />
+</Preview>
+
+## Radio API
+
+<Props of={'cds-radio'} />

@@ -1,0 +1,56 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/File/Getting Started" />
+
+# File
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The file input uses the native <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">HTML File Input</a>.
+
+## Installation
+
+To use the file component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/file/register.js';
+```
+
+```html
+<cds-file>
+  <label>file</label>
+  <input type="file" multiple />
+  <cds-control-message>message text</cds-control-message>
+</cds-file>
+```
+
+<Preview>
+  <Story id="forms-preview-file-stories--file" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-file-stories--vertical" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-file-stories--horizontal" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-file-stories--compact" />
+</Preview>
+
+## File API
+
+<Props of={'cds-file'} />

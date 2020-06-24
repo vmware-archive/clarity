@@ -3,7 +3,6 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './../styles/tokens/generated/index';
-@import './../styles/mixins/utils';
 @import './../styles/mixins/mixins';
 
 :host {
@@ -12,33 +11,31 @@
   --font-size: inherit;
   --line-height: inherit;
   --letter-spacing: inherit;
-
-  padding: 0;
   display: inline;
+  line-height: inherit;
+  font-size: inherit;
 }
 
+::slotted(a),
 .private-host {
-  min-width: 0;
-  background: none;
-  border-radius: 0;
-  border: 0 none;
-  height: auto;
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing);
-  text-decoration: var(--text-decoration);
-  padding: 0;
-  vertical-align: inherit;
-  align-items: baseline;
+  display: inline;
+  color: var(--color) !important;
+  line-height: var(--line-height) !important;
+  font-size: var(--font-size) !important;
+  letter-spacing: var(--letter-spacing) !important;
+  text-decoration: var(--text-decoration) !important;
+  cursor: pointer !important;
+}
 
-  &:active {
-    box-shadow: none;
-  }
+slot {
+  display: inline;
 }
 
 ::slotted(cds-icon) {
   --color: inherit;
   @include equilateral(1em);
+  margin-top: calc(-1 * #{$cds-token-space-size-1});
+  font-size: var(--font-size);
 }
 
 ::slotted(cds-icon:first-child) {
@@ -49,25 +46,12 @@
   margin-left: #{$cds-token-space-size-2};
 }
 
-::slotted(a) {
-  box-sizing: content-box !important;
-  color: inherit;
-  display: inline-block;
-  line-height: var(--line-height);
-  min-width: 0;
-  padding: 0;
-  text-decoration: none !important;
+:host([disabled]) ::slotted(a),
+:host([disabled]) .private-host {
+  cursor: not-allowed !important;
 }
 
-:host(:active) .private-host {
-  box-shadow: none;
-}
-
-:host(:active) {
-  --color: #{$cds-token-color-action-900};
-  --text-decoration: underline;
-}
-
+:host(:active),
 :host(:hover) {
   --color: #{$cds-token-color-action-900};
   --text-decoration: underline;

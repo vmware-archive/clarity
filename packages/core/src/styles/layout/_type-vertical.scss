@@ -72,6 +72,12 @@
     justify-content: center;
   }
 
+  &[cds-layout~='align:fill'] > *,
+  &[cds-layout~='align:fill']::slotted(*) {
+    flex-grow: 1 !important;
+    flex-basis: 0 !important;
+  }
+
   &[cds-layout~='align:stretch'] {
     align-items: stretch;
     justify-content: stretch;

@@ -37,4 +37,14 @@ describe('spread props directive', () => {
     expect(getTestElement().test2).toBe('hello world');
     removeTestElement(element);
   });
+
+  it('should only set prop if prop has changed in value', () => {
+    const mockPart: any = {
+      committer: { element: {} },
+    };
+
+    mockPart.committer.element['item'] = 'change';
+    spreadProps({ item: 'test2' })(mockPart);
+    expect(mockPart.committer.element['item']).toBe('test2');
+  });
 });

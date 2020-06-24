@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/checkbox",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

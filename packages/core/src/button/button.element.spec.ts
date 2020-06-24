@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { CdsButton, ClrLoadingState } from '@clr/core/button';
+import '@clr/core/badge/register.js';
 import '@clr/core/button/register.js';
 import {
   componentIsStable,
@@ -211,7 +212,7 @@ describe('button element', () => {
       await waitForComponent('cds-button');
       componentLink = testLinkElement.querySelectorAll<CdsButton>('cds-button')[0];
       componentButton = testLinkElement.querySelectorAll<CdsButton>('cds-button')[1];
-      anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
+      anchor = componentLink.querySelector<HTMLAnchorElement>('a');
     });
 
     afterEach(() => {
@@ -230,11 +231,13 @@ describe('button element', () => {
     });
 
     it('should apply host focus styles when link is in focus', async () => {
-      await componentIsStable(componentLink);
-      testLinkElement.focus();
-      anchor.focus();
-      await componentIsStable(componentLink);
+      anchor.dispatchEvent(new Event('focusin'));
+      await waitForComponent('cds-button');
       expect(componentLink.getAttribute('focused')).toBe('');
+
+      anchor.dispatchEvent(new Event('focusout'));
+      await waitForComponent('cds-button');
+      expect(componentLink.getAttribute('focused')).toBe(null);
     });
 
     it('should not trigger button click if link', async () => {

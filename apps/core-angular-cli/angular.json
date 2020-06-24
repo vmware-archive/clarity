@@ -25,9 +25,10 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.scss",
+              "node_modules/normalize.css/normalize.css",
               "node_modules/@clr/core/global.min.css",
-              "node_modules/@clr/city/css/bundles/default.min.css"
+              "node_modules/@clr/city/css/bundles/default.min.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },

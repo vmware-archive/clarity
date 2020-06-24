@@ -1,0 +1,44 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/mixins';
+
+:host([action='primary']) {
+  min-width: var(--internal-label-min-width, initial);
+}
+
+::slotted([slot='label']) {
+  max-width: var(--internal-label-max-width, initial);
+  display: inline-block;
+  text-transform: capitalize;
+  cursor: pointer;
+
+  @include line-height-eraser(
+    getLineHeightGap($cds-token-typography-secondary-line-height-static, $cds-token-typography-secondary-line-height),
+    $cds-token-global-font-top-gap-height,
+    $cds-token-global-font-ascender-height,
+    $cds-token-global-font-x-height
+  );
+
+  font-size: $cds-token-typography-secondary-font-size;
+  font-weight: $cds-token-typography-secondary-font-weight;
+  color: $cds-token-typography-secondary-color;
+  line-height: $cds-token-typography-secondary-line-height;
+  letter-spacing: $cds-token-typography-secondary-letter-spacing;
+}
+
+:host([disabled]) ::slotted(label) {
+  color: $cds-token-color-neutral-600;
+  cursor: not-allowed;
+}
+
+:host([action='primary']) ::slotted(label) {
+  font-weight: bold;
+}
+
+::slotted(cds-control-action) {
+  padding: $cds-token-space-size-4 0 $cds-token-space-size-3 0;
+  margin-bottom: calc(-1 * #{$cds-token-space-size-5});
+}

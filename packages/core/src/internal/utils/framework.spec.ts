@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getAngularVersion, getReactVersion, getVueVersion } from './framework.js';
+import { getAngularVersion, getReactVersion, getVueVersion, isStorybook } from './framework.js';
 
 describe('framework utils for logging and debugging', () => {
   it('should getAngularVersion', () => {
@@ -24,5 +24,9 @@ describe('framework utils for logging and debugging', () => {
     (document.body as any).__vue__ = {};
     expect(getVueVersion(false)).toBe('unknown version');
     (document.body as any).__vue__ = undefined;
+  });
+
+  it('should determine if running localhost for storybook', () => {
+    expect(isStorybook()).toBe(false);
   });
 });

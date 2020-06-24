@@ -1,0 +1,106 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Forms (Preview)/Forms/Getting Started" />
+
+# Form
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Forms are comprised of text and input components such as checkboxes, dropdowns,
+input fields, radio buttons, and toggle switches. The easier users can complete
+forms, the better your response rates will typically be. Forms should be clear,
+concise, and relevant to its context. Forms by default are horizontal but offer
+additional layouts.
+
+## Installation
+
+To use the form component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/forms/register.js';
+```
+
+```html
+<form>
+  <cds-form-group>
+    <cds-input>
+      <label>input</label>
+      <input type="text" />
+    </cds-input>
+
+    <cds-textarea>
+      <label>textarea</label>
+      <textarea></textarea>
+    </cds-textarea>
+
+    <cds-button type="submit">save</cds-button>
+  </cds-form-group>
+</form>
+```
+
+<Preview>
+  <Story id="forms-preview-forms-stories--form" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="forms-preview-forms-stories--vertical" />
+</Preview>
+
+## Vertical Inline
+
+<Preview>
+  <Story id="forms-preview-forms-stories--vertical-inline" />
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Story id="forms-preview-forms-stories--horizontal" />
+</Preview>
+
+## Horizontal Inline
+
+<Preview>
+  <Story id="forms-preview-forms-stories--horizontal-inline" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="forms-preview-forms-stories--compact" />
+</Preview>
+
+## Compact Shrink
+
+<Preview>
+  <Story id="forms-preview-forms-stories--compact-shrink" />
+</Preview>
+
+## Control Width
+
+<Preview>
+  <Story id="forms-preview-forms-stories--control-width" />
+</Preview>
+
+## Internationalization
+
+<cds-alert status="warning">RTL support is currently an experimental API</cds-alert>
+
+RTL languages such as Arabic, Hebrew, Persian and Urdu are read and written from right-to-left.
+To use RTL add the `<html dir="rtl">` to the HTML root element. Learn more at
+[MDN RTL Guidelines](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/RTL_Guidelines).
+
+<Preview>
+  <Story id="forms-preview-forms-stories--internationalization" />
+</Preview>
+
+## Form API
+
+<Props of={'cds-form'} />

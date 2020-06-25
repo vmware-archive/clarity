@@ -11,7 +11,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ClrModal } from '../../modal/modal';
 import { ClrModalModule } from '../../modal/modal.module';
-import { FocusTrapDirective } from './focus-trap.directive';
+import { FocusTrapDirective, FOCUSABLES } from './focus-trap.directive';
+import { FocusTrapConfig } from './focus-trap-config.interface';
 import { ClrFocusTrapModule } from './focus-trap.module';
 
 describe('FocusTrap', () => {
@@ -49,8 +50,8 @@ describe('FocusTrap', () => {
       expect(directiveInstance).toBeTruthy();
     });
 
-    it('should add tabindex attribute with value zero', () => {
-      expect(directiveElement.getAttribute('tabindex')).toEqual('0');
+    it('should add tabindex attribute with value of -1', () => {
+      expect(directiveElement.getAttribute('tabindex')).toEqual('-1');
     });
 
     it('should add its off-screen focus rebounder elements on instantiation', () => {
@@ -67,16 +68,28 @@ describe('FocusTrap', () => {
       expect(trap.nextElementSibling).toEqual(offScreenEls[1]);
     });
 
-    it('should rebound focus back to the directive if one of rebounding elements gets focused', () => {
+    it('should rebound focus to last focusable if focus gets out to top rebounder', () => {
       const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      const focusables = directiveElement.querySelectorAll(FOCUSABLES);
 
-      const beforeRebound = offScreenEls[0] as HTMLElement;
-      const afterRebound = offScreenEls[1] as HTMLElement;
+      const topRebound = offScreenEls[0] as HTMLElement;
+      const lastFocusable = focusables[focusables.length - 1] as HTMLElement;
 
-      beforeRebound.focus();
-      expect(document.activeElement).toBe(directiveElement);
-      afterRebound.focus();
-      expect(document.activeElement).toBe(directiveElement);
+      lastFocusable.focus();
+      topRebound.focus();
+      expect(document.activeElement).toBe(lastFocusable);
+    });
+
+    it('should rebound focus to first focusable if focus gets out to bottom rebounder', () => {
+      const offScreenEls = document.body.querySelectorAll('span.offscreen-focus-rebounder');
+      const focusables = directiveElement.querySelectorAll(FOCUSABLES);
+
+      const bottomRebound = offScreenEls[1] as HTMLElement;
+      const firstFocusable = focusables[0] as HTMLElement;
+
+      firstFocusable.focus();
+      bottomRebound.focus();
+      expect(document.activeElement).toBe(firstFocusable);
     });
 
     it('should remove its off-screen focus rebounder elements from parent element on removal', () => {
@@ -208,7 +221,7 @@ describe('FocusTrap', () => {
   describe('local behavior', () => {
     let component: TestLocalModalComponent;
     let rebounders: NodeList;
-    let last: HTMLElement;
+    let bottomRebounder: HTMLElement;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -226,7 +239,7 @@ describe('FocusTrap', () => {
       document.getElementById('focus-trap').focus();
 
       rebounders = document.querySelectorAll('.offscreen-focus-rebounder');
-      last = rebounders.item(1) as HTMLElement;
+      bottomRebounder = rebounders.item(1) as HTMLElement;
     });
 
     afterEach(() => {
@@ -239,8 +252,9 @@ describe('FocusTrap', () => {
       document.getElementById('button').focus();
       expect(document.activeElement).toBe(document.getElementById('button'));
       // Second tab press would go to bottom rebounder, then should move to host (focus trap)
-      last.focus();
-      expect(document.activeElement).toBe(document.getElementById('focus-trap'));
+      bottomRebounder.focus();
+      const focusables = document.querySelector('#focus-trap').querySelectorAll(FOCUSABLES);
+      expect(document.activeElement).toBe(focusables[focusables.length - 1]);
     });
 
     it('should allow focus to move outside with mouse and not steal focus back', () => {
@@ -251,8 +265,73 @@ describe('FocusTrap', () => {
       const button = document.getElementById('button'); // Move back inside of trap
       button.focus();
       expect(document.activeElement).toBe(button);
-      last.focus();
-      expect(document.activeElement).toBe(last); // Focus trap no longer moves focus since we broke outside
+      bottomRebounder.focus();
+      expect(document.activeElement).toBe(bottomRebounder); // Focus trap no longer moves focus since we broke outside
+    });
+  });
+
+  describe('focusing first and last focusables', () => {
+    let component: TestTrapFocusables;
+    let rebounders: HTMLElement[];
+    let outsideFocusEl: HTMLElement;
+    let focusTrapEl: HTMLElement;
+    let onlyFocusable: HTMLElement;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [ClrFocusTrapModule],
+        declarations: [TestTrapFocusables],
+      });
+
+      fixture = TestBed.createComponent(TestTrapFocusables);
+      fixture.detectChanges();
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+
+      rebounders = [...fixture.nativeElement.querySelectorAll('.offscreen-focus-rebounder')];
+      outsideFocusEl = fixture.nativeElement.querySelector('#input');
+      focusTrapEl = fixture.nativeElement.querySelector('#focus-trap');
+      onlyFocusable = fixture.nativeElement.querySelector('#only-focusable');
+    });
+
+    afterEach(() => {
+      fixture.destroy();
+    });
+
+    it('should find and focus right focusable element if focus goes to top rebound', () => {
+      expect(document.activeElement).toBe(focusTrapEl);
+      rebounders[0].focus();
+      expect(document.activeElement).toBe(onlyFocusable);
+    });
+
+    it('should find and focus right focusable element if focus goes to bottom rebound', () => {
+      expect(document.activeElement).toBe(focusTrapEl);
+      rebounders[1].focus();
+      expect(document.activeElement).toBe(onlyFocusable);
+    });
+
+    it('should focus trap el if there is no focusable elements', () => {
+      expect(document.activeElement).toBe(focusTrapEl);
+      component.hideOnlyFocusable = true;
+      fixture.detectChanges();
+      rebounders[1].focus();
+      expect(document.activeElement).toBe(focusTrapEl);
+    });
+
+    it('should focus trap el if trap config is on strict mode', () => {
+      expect(document.activeElement).toBe(focusTrapEl);
+      outsideFocusEl.focus();
+      expect(document.activeElement).toBe(focusTrapEl);
+      component.trapConfig = { strict: false };
+      fixture.detectChanges();
+      outsideFocusEl.focus();
+      expect(document.activeElement).toBe(outsideFocusEl);
+      onlyFocusable.focus();
+      outsideFocusEl.focus();
+      expect(document.activeElement).toBe(
+        outsideFocusEl,
+        `Focus shouldn't be trapped even if it goes in and then tries to go out if the strict mode is on false.`
+      );
     });
   });
 });
@@ -330,4 +409,35 @@ class TestModalComponent {
 })
 class TestLocalModalComponent {
   enableTrap = false;
+}
+
+@Component({
+  template: `
+    <input id="input" type="text" />
+    <div [clrFocusTrap]="trapConfig" id="focus-trap">
+      <button type="button" disabled>disabled</button>
+      <button type="button" style="display: 'none'">display-none button</button>
+      <button type="button" style="visibility: 'hidden'">hidden button</button>
+      <button type="button" class="display-none">display-none button</button>
+      <button type="button" tabindex="-1">not in tabbable</button>
+      <button type="button" class="hidden">display-none button</button>
+      <button type="button" hidden>focusable</button>
+
+      <button type="button" *ngIf="!hideOnlyFocusable" id="only-focusable">only focusable</button>
+
+      <button type="button" hidden>focusable</button>
+      <button type="button" tabindex="-1">not in tabbable</button>
+      <button type="button" disabled>disabled</button>
+      <button type="button" style="display: 'none'">display-none button</button>
+      <button type="button" class="display-none">display-none button</button>
+
+      <button type="button" style="visibility: 'hidden'">hidden button</button>
+      <button type="button" class="hidden">display-none button</button>
+    </div>
+  `,
+  styles: ['.display-none { display: none; }', '.hidden { visibility:hidden; }'],
+})
+class TestTrapFocusables {
+  hideOnlyFocusable = false;
+  trapConfig: FocusTrapConfig;
 }

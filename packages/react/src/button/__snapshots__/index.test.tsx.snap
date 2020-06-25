@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsButton snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    status="primary"
+  >
+    <cds-button>
+      primary
+    </cds-button>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="success"
+  >
+    <cds-button>
+      success
+    </cds-button>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="danger"
+  >
+    <cds-button>
+      danger
+    </cds-button>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    disabled={true}
+    status="danger"
+  >
+    <cds-button>
+      disabled
+    </cds-button>
+  </ReactWrapperComponent>
+</div>
+`;

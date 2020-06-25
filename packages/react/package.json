@@ -1,0 +1,78 @@
+{
+  "name": "@clr/react",
+  "version": "4.0.0-rc.0",
+  "scripts": {
+    "start": "npm-run-all core:build dev:start",
+    "dev:start": "parcel index.html",
+    "build": "npm-run-all -s build:ts build:package build:clean build:copy",
+    "build:clean": "node ./package.js",
+    "build:copy": "cpy './react' '../../../dist' --cwd=./dist --parents",
+    "build:package": "cpy '**/package.json' '../dist/react/' --cwd=./src --parents && cpy ./package.json ./dist/react/ && cpy ./README.md ./dist/react/",
+    "build:ts": "tsc --b ./tsconfig.project.json --force",
+    "core:build": "yarn --cwd packages/core run build",
+    "lint": "eslint \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
+    "lint:fix": "eslint --fix \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
+    "test": "jest --coverage",
+    "test:watch": "jest --watchAll",
+    "test:snap:update": "jest --updateSnapshot"
+  },
+  "dependencies": {
+    "@clr/core": "^3.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.10.2",
+    "@babel/preset-env": "7.10.2",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "2.27.0",
+    "@typescript-eslint/parser": "2.27.0",
+    "babel-jest": "26.0.1",
+    "cpy-cli": "3.1.0",
+    "del-cli": "1.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.1",
+    "jest": "^26.0.1",
+    "npm-run-all": "4.1.5",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "2.0.5",
+    "pretty-quick": "1.11.0",
+    "replace": "1.1.0",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  },
+  "optionalDependencies": {
+        "@clr/city": "^1.1.0",
+    "normalize.css": "^8.0.1"
+  },
+  "alias": {
+    "@clr/core": "../../dist/core"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "clarity",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  }
+}

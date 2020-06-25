@@ -27,6 +27,7 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@clr/angular": ["packages/angular/projects/clr-angular/src"],
+      "@clr/core/*": ["packages/core/src", "packages/core/src/*"],
       "@clr/icons": ["packages/icons/src"],
       "@clr/icons/shapes/*": ["packages/icons/src/shapes", "packages/icons/src/shapes/*"]
     },

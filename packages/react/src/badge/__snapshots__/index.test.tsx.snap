@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsBadge snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    status="info"
+  >
+    <cds-badge>
+      2
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="success"
+  >
+    <cds-badge>
+      3
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="warning"
+  >
+    <cds-badge>
+      12
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="danger"
+  >
+    <cds-badge>
+      15
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    color="gray"
+  >
+    <cds-badge>
+      1
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    color="purple"
+  >
+    <cds-badge>
+      6
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    color="blue"
+  >
+    <cds-badge>
+      15
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    color="orange"
+  >
+    <cds-badge>
+      2
+    </cds-badge>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    color="light-blue"
+  >
+    <cds-badge>
+      3
+    </cds-badge>
+  </ReactWrapperComponent>
+</div>
+`;

@@ -14,7 +14,7 @@ import '@clr/core/alert/register.js';
 
 ```jsx
 /*
-Example of a alert web component in Preact
+Example of an alert web component in Preact
 - status - attribute style hook
 - closable - setting the 'closable' property on the element
 - onCloseChange - listen for the 'closeChange' custom event
@@ -30,5 +30,31 @@ Example of a alert web component in Preact
 A shim layer <em>(a.k.a wrapper)</em> must be used for web components to work in
 React applications. This is due to React not being compatible with Web Standards
 such as <a href="https://custom-elements-everywhere.com">custom elements</a>.
+
+We have a react wrapper package that you must install and use in your react application.
+
+Generally our kebab cased tag names will be in Pascal case. For example, `<cds-alert>`
+element will be `<CdsAlert>` in react.
+
+In addition our event props will follow the react naming convention of camel case for props
+and start with `on`. So 'closeChange' will be `onCloseChange` and so forth.
+
+```typescript
+import { CdsAlert } from '@clr/react/alert';
+```
+
+```jsx
+/*
+Example of an alert web component in react
+- status - attribute style hook
+- closable - setting the 'closable' property on the element
+- onCloseChange - listen for the 'closeChange' custom event
+*/
+
+<CdsAlert status="info" closable={this.state.closable} onCloseChange={this.log}>
+  Hello World
+</CdsAlert>
+```
+
 You can try out an <a href="https://stackblitz.com/edit/react-ts-drskpx">early
 work in progress prototype here</a>.

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "lib": ["es2017", "dom"],
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "inlineSources": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictFunctionTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "importHelpers": true,
+    "composite": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "paths": {
+      "@clr/core/*": ["../../dist/core/*"] // This mapping is relative to "baseUrl"
+    }
+  }
+}

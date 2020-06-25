@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsTag snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    readonly={true}
+    status="info"
+  >
+    <cds-tag>
+      Info
+    </cds-tag>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    readonly={true}
+    status="success"
+  >
+    <cds-tag>
+      Success
+    </cds-tag>
+  </ReactWrapperComponent>
+</div>
+`;

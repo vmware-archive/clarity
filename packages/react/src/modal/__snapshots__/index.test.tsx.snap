@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsModal snapshot 1`] = `
+<div>
+  <ReactWrapperComponent>
+    <cds-modal>
+      <ReactWrapperComponent>
+        <cds-modal-header>
+          <h3
+            cds-text="title"
+          >
+            My Modal
+          </h3>
+        </cds-modal-header>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-modal-content>
+          <div
+            cds-layout="vertical gap:md p-y:xs"
+          >
+            <p
+              cds-text="body"
+            >
+              Lorem Ipsum
+            </p>
+          </div>
+        </cds-modal-content>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-modal-action>
+          <div
+            cds-layout="horizontal gap:sm align:right"
+          >
+            Foo
+          </div>
+        </cds-modal-action>
+      </ReactWrapperComponent>
+    </cds-modal>
+  </ReactWrapperComponent>
+</div>
+`;

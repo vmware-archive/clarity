@@ -10,6 +10,8 @@ packages/core/**/*.css.ts
 packages/core/custom-elements.json
 packages/core/src/styles/tokens/generated/**
 packages/core/dist/
+packages/react/coverage/
+packages/react/dist/
 docs/core
 apps/core-create-react-app
 .cache

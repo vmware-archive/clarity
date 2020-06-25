@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsBadge snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    status="success"
+  >
+    <cds-alert>
+      Foo
+    </cds-alert>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    status="info"
+  >
+    <cds-alert-group>
+      <ReactWrapperComponent
+        closable={true}
+      >
+        <cds-alert>
+          Bar
+          <ReactWrapperComponent>
+            <cds-alert-actions>
+              Baz
+            </cds-alert-actions>
+          </ReactWrapperComponent>
+        </cds-alert>
+      </ReactWrapperComponent>
+    </cds-alert-group>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    type="banner"
+  >
+    <cds-alert-group>
+      <ReactWrapperComponent
+        status="info"
+      >
+        <cds-alert>
+          Foobar
+          <ReactWrapperComponent>
+            <cds-alert-actions>
+              Test
+            </cds-alert-actions>
+          </ReactWrapperComponent>
+        </cds-alert>
+      </ReactWrapperComponent>
+    </cds-alert-group>
+  </ReactWrapperComponent>
+</div>
+`;

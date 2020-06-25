@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsBadge snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    shape="user"
+    size="lg"
+  >
+    <cds-icon />
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    badge="info"
+    shape="user"
+    size="lg"
+  >
+    <cds-icon />
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    badge="success"
+    shape="user"
+    size="lg"
+  >
+    <cds-icon />
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    badge="danger"
+    shape="user"
+    size="lg"
+  >
+    <cds-icon />
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    badge="warning-triangle"
+    shape="user"
+    size="lg"
+  >
+    <cds-icon />
+  </ReactWrapperComponent>
+</div>
+`;

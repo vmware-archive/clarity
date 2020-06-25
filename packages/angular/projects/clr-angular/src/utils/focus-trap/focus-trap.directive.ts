@@ -15,24 +15,26 @@ import {
   OnDestroy,
   PLATFORM_ID,
   Renderer2,
+  OnInit,
 } from '@angular/core';
-
 import { FocusTrapTracker } from './focus-trap-tracker.service';
+import { FocusTrapConfig } from './focus-trap-config.interface';
 
-interface FocusTrapConfig {
-  strict: boolean;
-}
+export const FOCUSABLES =
+  '[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]):not([tabindex="-1"]), textarea:not([disabled]):not([tabindex="-1"]), [contenteditable="true"]:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"]) ';
 
 @Directive({ selector: '[clrFocusTrap]' })
-export class FocusTrapDirective implements AfterViewInit, OnDestroy {
+export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
   private previousActiveElement: any;
-  private previousTrappedActiveElement: any;
   private localFocusEscaped = false;
   private document: Document;
   private parentElement: Element;
 
   private topReboundEl: any;
   private bottomReboundEl: any;
+
+  private firstFocusableEl: HTMLElement;
+  private lastFocusableEl: HTMLElement;
 
   constructor(
     private el: ElementRef,
@@ -43,8 +45,6 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
   ) {
     this.document = this.injector.get(DOCUMENT);
     this.focusTrapsTracker.current = this;
-
-    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0');
   }
 
   private _config: FocusTrapConfig = {
@@ -57,26 +57,26 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
 
   @HostListener('document:focusin', ['$event'])
   onFocusIn(event: any) {
-    if (this.focusTrapsTracker.current !== this || !isPlatformBrowser(this.platformId) || this.localFocusEscaped) {
+    const nativeElement: HTMLElement = this.el.nativeElement;
+    if (
+      this.focusTrapsTracker.current !== this ||
+      !isPlatformBrowser(this.platformId) ||
+      this.localFocusEscaped ||
+      nativeElement.contains(event.target)
+    ) {
       return;
     }
-    const nativeElement: HTMLElement = this.el.nativeElement;
-    if (this._config.strict && event.target && !nativeElement.contains(event.target)) {
-      // When the focus trap is global, always steal focus back if it goes outside
-      nativeElement.focus();
-    } else if (event.target === this.bottomReboundEl && nativeElement.contains(this.previousTrappedActiveElement)) {
-      // When the focus trap is local, if the user navigates via keyboard to the end element from within the trap, move to top
-      nativeElement.focus();
-    } else if (event.target === this.topReboundEl) {
-      // When the focus trap is local, if the user navigates via keyboard back to start element from within the trap, move to bottom
-      // @TODO implement an acceptable solution to SHIFT+TAB navigation
-    } else if (event.target !== nativeElement && !nativeElement.contains(event.target)) {
-      // If a user has escaped the trap using the mouse
-      // relax, don't do it, when you want to go to it, living those dreams, scheme those schemes, hit me with those laser beams
-      this.localFocusEscaped = true;
+    if (event.target === this.topReboundEl && nativeElement.contains(event.relatedTarget)) {
+      this.focusLastFocusable();
+      // if it fails to focus element inside the trap, focus the trap element.
+      this.focusTrapElIfOutside();
+    } else if (event.target === this.bottomReboundEl && nativeElement.contains(event.relatedTarget)) {
+      this.focusFirstFocusable();
+      // if it fails to focus element inside the trap, focus the trap element.
+      this.focusTrapElIfOutside();
+    } else {
+      this._config.strict ? this.el.nativeElement.focus() : (this.localFocusEscaped = true);
     }
-    // Track the last focused item, so we can check
-    this.previousTrappedActiveElement = event.target;
   }
 
   private createFocusableOffScreenEl(): any {
@@ -122,6 +122,13 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     }
   }
 
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '-1');
+      this.el.nativeElement.focus();
+    }
+  }
+
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.previousActiveElement = this.document.activeElement as HTMLElement;
@@ -129,6 +136,43 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     }
 
     this.addReboundEls();
+  }
+
+  private get potentiallyFocusableEls(): HTMLElement[] {
+    return [...this.el.nativeElement.querySelectorAll(FOCUSABLES)];
+  }
+
+  private focusFirstFocusable() {
+    for (let i = 0; i < this.potentiallyFocusableEls.length; i++) {
+      this.firstFocusableEl = this.focusElement(this.potentiallyFocusableEls[i]);
+      if (this.firstFocusableEl) {
+        break;
+      }
+    }
+  }
+
+  private focusLastFocusable() {
+    for (let i = this.potentiallyFocusableEls.length - 1; i >= 0; i--) {
+      this.lastFocusableEl = this.focusElement(this.potentiallyFocusableEls[i]);
+      if (this.lastFocusableEl) {
+        break;
+      }
+    }
+  }
+
+  private focusTrapElIfOutside() {
+    if (!this.el.nativeElement.contains(document.activeElement)) {
+      this.el.nativeElement.focus();
+    }
+  }
+
+  private focusElement(el: HTMLElement): HTMLElement {
+    if (el && el.focus) {
+      el.focus();
+      if (document.activeElement === el) {
+        return el;
+      }
+    }
   }
 
   ngOnDestroy() {

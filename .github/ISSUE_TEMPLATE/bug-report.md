@@ -7,6 +7,8 @@ about: Create a report to help us fix or improve an issue
 
 _A clear and concise description of what the bug is, and the conditions when it occurs._
 
+_If this is an accessibility related report, please use the correct template at https://github.com/vmware/clarity/issues/new?template=accessibility-report.md_
+
 ## How to reproduce
 
 _Please provide a link to a reproduction scenario using one of the [Clarity Stackblitz templates](https://stackblitz.com/@clr-team). Reports without a clear reproduction may not be prioritized until one is provided._

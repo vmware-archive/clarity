@@ -176,9 +176,15 @@ export const links = () => {
 export const loading = () => {
   return html`
     <div cds-layout="horizontal gap:sm align-items:bottom">
-      <cds-icon-button loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
-      <cds-icon-button action="outline" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
-      <cds-icon-button size="sm" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      <cds-icon-button class="chromatic-ignore" loading-state="loading"
+        ><cds-icon shape="user"></cds-icon
+      ></cds-icon-button>
+      <cds-icon-button class="chromatic-ignore" action="outline" loading-state="loading"
+        ><cds-icon shape="user"></cds-icon
+      ></cds-icon-button>
+      <cds-icon-button class="chromatic-ignore" size="sm" loading-state="loading"
+        ><cds-icon shape="user"></cds-icon
+      ></cds-icon-button>
     </div>
   `;
 };

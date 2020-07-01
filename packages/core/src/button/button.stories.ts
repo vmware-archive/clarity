@@ -226,13 +226,13 @@ export const loading = () => {
     <div cds-layout="vertical gap:md">
       <div cds-layout="horizontal gap:sm align-items:bottom">
         <cds-button loading-state="default">default</cds-button>
-        <cds-button loading-state="loading">default</cds-button>
+        <cds-button class="chromatic-ignore" loading-state="loading">default</cds-button>
         <cds-button loading-state="success">default</cds-button>
         <cds-button loading-state="error">default</cds-button>
       </div>
       <div cds-layout="horizontal gap:sm align-items:bottom">
         <cds-button size="sm" loading-state="default">default</cds-button>
-        <cds-button size="sm" loading-state="loading">default</cds-button>
+        <cds-button class="chromatic-ignore" size="sm" loading-state="loading">default</cds-button>
         <cds-button size="sm" loading-state="success">default</cds-button>
         <cds-button size="sm" loading-state="error">default</cds-button>
       </div>

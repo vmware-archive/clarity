@@ -149,7 +149,7 @@ export const status = () => {
       <cds-alert status="success">This is an alert with a status of "success"</cds-alert>
       <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>
       <cds-alert status="danger">This is an alert with a status of "danger"</cds-alert>
-      <cds-alert status="loading">This is an alert with a status of "loading"</cds-alert>
+      <cds-alert class="chromatic-ignore" status="loading">This is an alert with a status of "loading"</cds-alert>
       <cds-alert status="unknown">This is an alert with a status of "unknown"</cds-alert>
       <cds-alert status="danger"
         ><cds-icon shape="times-circle" solid></cds-icon>This is an alert with a status of "danger" and a custom
@@ -185,7 +185,9 @@ export const compact = () => {
       <cds-alert size="sm" status="success">This is a compact alert with a status of "success"</cds-alert>
       <cds-alert size="sm" status="warning">This is a compact alert with a status of "warning"</cds-alert>
       <cds-alert size="sm" status="danger">This is a compact alert with a status of "danger"</cds-alert>
-      <cds-alert size="sm" status="loading">This is a compact alert with a status of "loading"</cds-alert>
+      <cds-alert class="chromatic-ignore" size="sm" status="loading"
+        >This is a compact alert with a status of "loading"</cds-alert
+      >
     </div>
   `;
 };

@@ -106,6 +106,13 @@ class WithControl {
   model = '';
 }
 
+@Component({
+  template: `<test-wrapper3><input type="number" testControl3 [(ngModel)]="model" required /></test-wrapper3>`,
+})
+class WithNumberControl {
+  model = '';
+}
+
 interface TestContext {
   fixture: ComponentFixture<any>;
   wrapper: TestWrapper;
@@ -235,6 +242,14 @@ export default function (): void {
         this.input.blur();
         this.fixture.detectChanges();
         expect(IfControlStateService.prototype.triggerStatusChange).toHaveBeenCalled();
+      });
+
+      it('blur marks the control as touched', function (this: TestContext) {
+        setupTest(this, WithNumberControl, TestControl3);
+        this.input.focus();
+        this.input.blur();
+        this.fixture.detectChanges();
+        expect(this.input.className).toContain('ng-touched');
       });
 
       it('implements ngOnDestroy', function (this: TestContext) {

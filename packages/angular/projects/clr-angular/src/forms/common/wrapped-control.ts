@@ -95,6 +95,13 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
   @HostListener('blur')
   triggerValidation() {
     if (this.ifControlStateService) {
+      /**
+       * For some reason the <input type="number" /> on blur ngControl doesn't set the control to 'touched'
+       * This one is a workaround to provide the control to be 'touched' on blur and fix #4480.
+       */
+      if (this.ngControl && !this.ngControl.touched) {
+        this.markControlService.markAsTouched();
+      }
       this.ifControlStateService.triggerStatusChange();
     }
   }

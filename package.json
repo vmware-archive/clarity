@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "4.0.0-next.0",
+  "version": "4.0.0-rc.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -45,7 +45,6 @@
     "publish:copyversion": "node scripts/copy-version",
     "publish:latest": "yarn publish dist/core; yarn publish dist/clr-ui; yarn publish dist/clr-angular; yarn publish dist/clr-icons",
     "publish:next": "yarn publish dist/core --tag next; yarn publish dist/clr-ui --tag next; yarn publish dist/clr-angular --tag next; yarn publish dist/clr-icons --tag next",
-    "publish:rc": "yarn publish dist/core --tag rc; yarn publish dist/clr-ui --tag rc; yarn publish dist/clr-angular --tag rc; yarn publish dist/clr-icons --tag rc",
     "publish:local": "yarn publish dist/core --registry http://localhost:4873 --tag local; yarn publish dist/clr-ui --registry http://localhost:4873 --tag local; yarn publish dist/clr-angular --registry http://localhost:4873 --tag local; yarn publish dist/clr-icons --registry http://localhost:4873 --tag local",
     "publish:local:npm": "npm publish dist/core --registry http://localhost:4873 --tag local; npm publish dist/clr-ui --registry http://localhost:4873 --tag local; npm publish dist/clr-angular --registry http://localhost:4873 --tag local; npm publish dist/clr-icons --registry http://localhost:4873 --tag local",
     "angular:build": "yarn --cwd packages/angular run build",

@@ -1,6 +1,6 @@
 {
   "name": "@clr/core",
-  "version": "0.0.0",
+  "version": "4.0.0-rc.0",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook",
     "storybook": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",
@@ -18,7 +18,7 @@
     "test:bundles": "source-map-explorer dist/test-bundles/webpack.bundle.js",
     "build": "npm-run-all -s build:tokens build:sass build:ts build:sass:min build:package build:api build:copy",
     "build:watch": "npm-run-all -p build:sass:watch build:ts:watch",
-    "build:package": "cpy '**/package.json' '../dist/core/' --cwd=./src --parents && cpy ./package.json ./dist/core/ && cpy ./README.md ./dist/core/; replace '0.0.0' $npm_package_version ./dist/core/package.json; replace '@VERSION' $npm_package_version ./dist/core/internal/utils/global.js && node ./package.js",
+    "build:package": "cpy '**/package.json' '../dist/core/' --cwd=./src --parents && cpy ./package.json ./dist/core/ && cpy ./README.md ./dist/core/; replace '@VERSION' $npm_package_version ./dist/core/internal/utils/global.js && node ./package.js",
     "build:ts": "tsc --b ./tsconfig.project.json --force",
     "build:ts:watch": "del ./dist/*.tsbuildinfo && tsc --p ./tsconfig.spec.json -w",
     "build:ts:spec": "tsc --b ./tsconfig.spec.json --force",

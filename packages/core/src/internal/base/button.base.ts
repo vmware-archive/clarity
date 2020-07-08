@@ -10,7 +10,7 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 
 import { property } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
-import { KeyCodes } from './../enums/key-codes.js';
+import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
 
 // TODO: replace with circular progress bar when complete
@@ -121,11 +121,15 @@ export class CdsBaseButton extends LitElement {
     }
   }
 
-  private emulateKeyBoardEventBehavior(e: KeyboardEvent) {
-    if (!this.anchor && (e.key === KeyCodes.Enter || e.code === KeyCodes.Space)) {
-      this.click();
-      stopEvent(e);
+  private emulateKeyBoardEventBehavior(evt: KeyboardEvent) {
+    if (this.anchor) {
+      return;
     }
+
+    onAnyKey(['enter', 'space'], evt, () => {
+      this.click();
+      stopEvent(evt);
+    });
   }
 
   private updateButtonAttributes() {

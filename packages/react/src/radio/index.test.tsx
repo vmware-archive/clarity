@@ -10,7 +10,7 @@ describe('CdsRadio', () => {
           <label>radio group</label>
           <CdsRadio>
             <label>radio 1</label>
-            <input type="radio" checked />
+            <input type="radio" defaultChecked />
           </CdsRadio>
 
           <CdsRadio>
@@ -39,7 +39,7 @@ describe('CdsRadio', () => {
           <label>radio group</label>
           <CdsRadio>
             <label>radio 1</label>
-            <input type="radio" checked />
+            <input type="radio" defaultChecked />
           </CdsRadio>
 
           <CdsRadio>

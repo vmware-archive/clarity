@@ -5,15 +5,18 @@
  */
 
 import {
+  deepClone,
   getEnumValues,
   hasPropertyChanged,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
+  isMap,
   isNilOrEmpty,
   isObject,
   isObjectAndNotNilOrEmpty,
   isString,
   isStringOrNil,
+  isStringAndNotNilOrEmpty,
 } from './identity.js';
 
 enum TestEnum {
@@ -46,14 +49,15 @@ describe('Functional Helper: ', () => {
 
   describe('isString(): ', () => {
     it('identifies strings as expected', () => {
-      expect(isString(undefined)).toEqual(false);
-      expect(isString(null)).toEqual(false);
-      expect(isString([])).toEqual(false);
-      expect(isString({})).toEqual(false);
-      expect(isString(100)).toEqual(false);
-      expect(isString(true)).toEqual(false);
-      expect(isString(false)).toEqual(false);
-      expect(isString('ohai')).toEqual(true);
+      expect(isString(undefined)).toEqual(false, 'undefined is not a string');
+      expect(isString(null)).toEqual(false, 'null is not a string');
+      expect(isString([])).toEqual(false, 'array is not a string');
+      expect(isString({})).toEqual(false, 'object is not a string');
+      expect(isString(new Map([['a', 1]]))).toEqual(false, 'map is not a string');
+      expect(isString(100)).toEqual(false, 'number is not a string');
+      expect(isString(true)).toEqual(false, 'true is not a string');
+      expect(isString(false)).toEqual(false, 'false is not a string');
+      expect(isString('ohai')).toEqual(true, 'string is a string');
     });
 
     it('identifies non-empty items as expected', () => {
@@ -78,16 +82,34 @@ describe('Functional Helper: ', () => {
     });
   });
 
+  describe('isStringAndNotNilOrEmpty(): ', () => {
+    it('identifies strings as expected', () => {
+      expect(isStringAndNotNilOrEmpty([])).toEqual(false);
+      expect(isStringAndNotNilOrEmpty({})).toEqual(false);
+      expect(isStringAndNotNilOrEmpty(100)).toEqual(false);
+      expect(isStringAndNotNilOrEmpty(true)).toEqual(false);
+      expect(isStringAndNotNilOrEmpty(false)).toEqual(false);
+      expect(isStringAndNotNilOrEmpty('ohai')).toEqual(true);
+    });
+
+    it('identifies nil items and empty strings as expected', () => {
+      expect(isStringAndNotNilOrEmpty(void 0)).toEqual(false);
+      expect(isStringAndNotNilOrEmpty(null)).toEqual(false);
+      expect(isStringAndNotNilOrEmpty('')).toEqual(false);
+    });
+  });
+
   describe('isObject(): ', () => {
     it('identifies objects as expected', () => {
-      expect(isObject(undefined)).toEqual(false);
-      expect(isObject(null)).toEqual(false);
-      expect(isObject(100)).toEqual(false);
-      expect(isObject('100')).toEqual(false);
-      expect(isObject('')).toEqual(false);
-      expect(isObject(true)).toEqual(false);
-      expect(isObject(false)).toEqual(false);
-      expect(isObject({})).toEqual(true);
+      expect(isObject(undefined)).toEqual(false, 'undefined is not an object');
+      expect(isObject(null)).toEqual(false, 'null is not an object');
+      expect(isObject(100)).toEqual(false, 'number is not an object');
+      expect(isObject('100')).toEqual(false, 'string is not an object');
+      expect(isObject('')).toEqual(false, 'empty string is not an object');
+      expect(isObject(true)).toEqual(false, 'true is not an object');
+      expect(isObject(false)).toEqual(false, 'false is not an object');
+      expect(isString(new Map([['a', 1]]))).toEqual(false, 'map is not an object');
+      expect(isObject({})).toEqual(true, 'object is an object');
     });
   });
 
@@ -162,6 +184,55 @@ describe('Functional Helper: ', () => {
       const enumVals = getEnumValues(TestEnum);
       expect(enumVals).toEqual(expectedAry);
       expect(enumVals.length).toEqual(expectedAry.length);
+    });
+  });
+
+  describe('isMap(): ', () => {
+    it('identifies maps as expected', () => {
+      expect(isMap(undefined)).toEqual(false, 'undefined is not a map');
+      expect(isMap(null)).toEqual(false, 'null is not a map');
+      expect(isMap([])).toEqual(false, 'array is not a map');
+      expect(isMap({})).toEqual(false, 'object is not a map');
+      expect(isMap(100)).toEqual(false, 'number is not a map');
+      expect(isMap(true)).toEqual(false, 'true is not a map');
+      expect(isMap(false)).toEqual(false, 'false is not a map');
+      expect(isMap('ohai')).toEqual(false, 'string is not a map');
+      expect(isMap(new Map([['a', 1]]))).toBe(true, 'map is a map');
+    });
+  });
+
+  describe('deepClone(): ', () => {
+    it('performs deep clones of arrays', () => {
+      const deepArray = ['a', 'b', ['c', ['d', 'e', 'f']]];
+      const clonedArray = deepClone(deepArray);
+      clonedArray[2][1][3] = 'g';
+      expect(clonedArray[2][1][3]).toBe('g');
+      expect(deepArray[2][1][3]).not.toBeDefined('cloned array should not be a reference');
+    });
+
+    it('performs deep clones of objects', () => {
+      const deepObject = { a: 1, b: 2, c: { d: 3, e: 4, f: 5 } };
+      const clonedObject = deepClone(deepObject);
+      clonedObject.c.g = 6;
+      expect(clonedObject.c.g).toBe(6);
+      expect(Object.prototype.hasOwnProperty.call(deepObject.c, 'g')).toBe(
+        false,
+        'cloned object should not be a reference'
+      );
+    });
+
+    it('performs deep clones of maps', () => {
+      const deepMap = new Map([
+        ['a', new Map([['d', 3]])],
+        ['b', new Map([['e', 4]])],
+        ['c', new Map([['f', 5]])],
+      ]);
+      const clonedMap = deepClone(deepMap);
+      clonedMap.get('c').set('f', 12);
+      expect(clonedMap.get('b')).toBeDefined('expect cloned map to be a map');
+      expect(clonedMap.get('b').get('e')).toBe(4, 'expect cloned map to be a map (deeply)');
+      expect(clonedMap.get('c').get('f')).toBe(12);
+      expect(deepMap.get('c').get('f')).toBe(5);
     });
   });
 });

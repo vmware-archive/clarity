@@ -10,8 +10,8 @@ exports[`CdsPassword snapshot 1`] = `
         label
       </label>
       <input
+        defaultValue="123456"
         type="password"
-        value="123456"
       />
     </cds-password>
   </ReactWrapperComponent>

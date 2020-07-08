@@ -8,7 +8,7 @@ describe('CdsPassword', () => {
       <div>
         <CdsPassword layout="vertical">
           <label>label</label>
-          <input type="password" value="123456" />
+          <input type="password" defaultValue="123456" />
         </CdsPassword>
       </div>
     );
@@ -21,7 +21,7 @@ describe('CdsPassword', () => {
       <div>
         <CdsPassword layout="vertical">
           <label>label</label>
-          <input type="password" value="123456" />
+          <input type="password" defaultValue="123456" />
         </CdsPassword>
       </div>
     );

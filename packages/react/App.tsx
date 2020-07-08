@@ -309,7 +309,7 @@ export default class App extends React.Component<{}, AppState> {
         <CdsFormGroup layout="vertical">
           <CdsPassword layout="vertical">
             <label>label</label>
-            <input type="password" value="123456" />
+            <input type="password" defaultValue="123456" />
             <CdsControlMessage>message text</CdsControlMessage>
           </CdsPassword>
 
@@ -321,13 +321,13 @@ export default class App extends React.Component<{}, AppState> {
 
           <CdsPassword layout="vertical" status="error">
             <label>error</label>
-            <input type="password" value="123456" />
+            <input type="password" defaultValue="123456" />
             <CdsControlMessage status="error">error message</CdsControlMessage>
           </CdsPassword>
 
           <CdsPassword layout="vertical" status="success">
             <label>success</label>
-            <input type="password" value="123456" />
+            <input type="password" defaultValue="123456" />
             <CdsControlMessage status="success">success message</CdsControlMessage>
           </CdsPassword>
         </CdsFormGroup>
@@ -337,7 +337,7 @@ export default class App extends React.Component<{}, AppState> {
           <label>radio group</label>
           <CdsRadio>
             <label>radio 1</label>
-            <input type="radio" checked />
+            <input type="radio" defaultChecked />
           </CdsRadio>
 
           <CdsRadio>

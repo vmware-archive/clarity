@@ -11,9 +11,9 @@ import {
   CdsBaseFocusTrap,
   CommonStringsService,
   CssHelpers,
-  ESC,
   event,
   EventEmitter,
+  onKey,
   property,
   UniqueId,
 } from '@clr/core/internal';
@@ -138,9 +138,9 @@ export class CdsModal extends ModalMixinClass {
   }
 
   private fireEventOnEscape = (e: KeyboardEvent) => {
-    if (e.keyCode === ESC || e.key === 'Esc') {
+    onKey('escape', e, () => {
       this.closeModal();
-    }
+    });
   };
 }
 

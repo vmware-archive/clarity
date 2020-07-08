@@ -9,6 +9,7 @@
     "lit-html/directives/if-defined": "/base/node_modules/lit-html/directives/if-defined.js",
     "lit-html/directives/unsafe-html": "/base/node_modules/lit-html/directives/unsafe-html.js",
     "ramda/es/anyPass": "/base/node_modules/ramda/es/anyPass.js",
+    "ramda/es/equals": "/base/node_modules/ramda/es/equals.js",
     "ramda/es/isNil": "/base/node_modules/ramda/es/isNil.js",
     "ramda/es/includes": "/base/node_modules/ramda/es/includes.js",
     "ramda/es/curryN": "/base/node_modules/ramda/es/curryN.js",

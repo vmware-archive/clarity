@@ -13,7 +13,7 @@ exports[`CdsRadio snapshot 1`] = `
             radio 1
           </label>
           <input
-            checked={true}
+            defaultChecked={true}
             type="radio"
           />
         </cds-radio>

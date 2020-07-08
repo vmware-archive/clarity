@@ -20,8 +20,16 @@ export function isStringOrNil(val: any): boolean {
   return is(String, val) || isNil(val);
 }
 
+export function isStringAndNotNilOrEmpty(val: any) {
+  return isString(val) && !isNil(val) && !isEmpty(val);
+}
+
 export function isObject(val: any) {
   return is(Object, val);
+}
+
+export function isMap(val: any) {
+  return is(Map, val);
 }
 
 export function isObjectAndNotNilOrEmpty(val: any) {
@@ -48,4 +56,24 @@ export function getEnumValues(enumeration: any) {
 
 export function createId() {
   return `_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+// used by deepClone() tested through integration
+function cloneMap(mp: Map<any, any>): Map<any, any> {
+  const clonedMap = new Map();
+  for (const [key, val] of mp) {
+    if (isMap(val)) {
+      clonedMap.set(key, cloneMap(val));
+    } else {
+      clonedMap.set(key, val);
+    }
+  }
+  return clonedMap;
+}
+
+export function deepClone(obj: any) {
+  // this will clone almost anything (maps, arrays, objects, etc.) to the lowest of the low levels
+  // be careful using this carelessly b/c it CAN have performance implications!
+
+  return isMap(obj) ? cloneMap(obj) : JSON.parse(JSON.stringify(obj));
 }

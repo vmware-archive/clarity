@@ -6,6 +6,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { preventArrowKeyScroll } from '../../focus/key-focus/util';
 
 @Injectable()
 export class ClrPopoverToggleService {
@@ -57,6 +58,8 @@ export class ClrPopoverToggleService {
    * This is for instance the case of components that open on a click, but close on a click outside.
    */
   public toggleWithEvent(event: any) {
+    preventArrowKeyScroll(event);
+
     this.openEvent = event;
     this.open = !this.open;
   }

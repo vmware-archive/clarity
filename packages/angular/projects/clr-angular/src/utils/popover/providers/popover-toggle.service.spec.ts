@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { ClrPopoverEventsService } from './popover-events.service';
 import { ClrPopoverPositionService } from './popover-position.service';
 import { ClrPopoverToggleService } from './popover-toggle.service';
+import { KeyCodes } from '../../enums/key-codes.enum';
 
 @Component({
   selector: 'test-host',
@@ -93,6 +94,29 @@ export default function (): void {
         this.toggleService.toggleWithEvent(closeClickEvent);
         expect(this.toggleService.open).toBeFalse();
         expect(this.toggleService.openEvent).toBe(closeClickEvent);
+      });
+
+      /**
+       * Call `event.preventDefault` for arrow key events
+       * and
+       * skip `event.preventDefault` for non arrow key events
+       */
+      Object.keys(KeyCodes).forEach(key => {
+        const arrowKeyEvent = new KeyboardEvent(key, { key });
+        if (key.search('Arrow') > -1) {
+          // Arrow keys are ignored to prevent content from closing the popover content
+          it(`prevents the default toggle action for the ${key} key`, function (this: TestContext) {
+            spyOn(arrowKeyEvent, 'preventDefault');
+            this.toggleService.toggleWithEvent(arrowKeyEvent);
+            expect(arrowKeyEvent.preventDefault).toHaveBeenCalled();
+          });
+        } else {
+          it(`does not prevent the default toggle action for the ${key} key`, function (this: TestContext) {
+            spyOn(arrowKeyEvent, 'preventDefault');
+            this.toggleService.toggleWithEvent(arrowKeyEvent);
+            expect(arrowKeyEvent.preventDefault).not.toHaveBeenCalled();
+          });
+        }
       });
     });
   });

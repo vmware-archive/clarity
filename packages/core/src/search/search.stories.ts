@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Search/Stories',
   component: 'cds-search',
+  argTypes: getElementStorybookArgTypes('cds-search', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-search ...="${spreadProps(props)}">
+    <cds-search ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>search</label>
       <input type="search" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-search>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-search', customElements),
 };
 
 export const search = () => {

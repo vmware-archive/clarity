@@ -4,26 +4,22 @@
 @import './../../styles/tokens/generated/index';
 
 :host {
-  --box-shadow-color: transparent;
-  --border-radius: 0;
   --background: transparent;
   --color: inherit;
-  --border-color: transparent;
-  --border-width: 0;
   --opacity: 0.8;
   --padding: #{$cds-token-space-size-2};
-
-  opacity: var(--opacity, 0.8);
-  cursor: pointer;
+  display: inline-block;
 }
 
 .private-host {
   --icon-color: var(--color);
-  min-width: 0;
+  padding: var(--padding);
+  opacity: var(--opacity);
+  background: var(--background);
+  cursor: pointer;
 }
 
 :host(:hover) {
-  --background: transparent;
   --opacity: 1;
 }
 

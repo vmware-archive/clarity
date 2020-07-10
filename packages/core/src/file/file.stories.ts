@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/File/Stories',
   component: 'cds-file',
+  argTypes: getElementStorybookArgTypes('cds-file', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-file ...="${spreadProps(props)}">
+    <cds-file ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>select files</label>
       <input type="file" multiple />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-file>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-file', customElements),
 };
 
 export const file = () => {

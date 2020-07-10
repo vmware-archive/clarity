@@ -7,17 +7,18 @@
 import '@clr/core/alert/register.js';
 import '@clr/core/button/register.js';
 import '@clr/core/internal-components/close-button/register.js';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
-import { color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@clr/core/icon';
+import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
 
 export default {
   title: 'Components/Alert Group/Stories',
   component: 'cds-alert-group',
+  argTypes: getElementStorybookArgTypes('cds-alert-group', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -27,58 +28,11 @@ export default {
   },
 };
 
-export const API = () => {
-  const slot = text(
-    'slot',
-    "Gathered by gravity a mote of dust suspended in a sunbeam venture with pretty stories for which there's little good.",
-    propertiesGroup
-  );
-  const alertStatus = select(
-    'status',
-    {
-      'none (default info)': undefined,
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      danger: 'danger',
-      loading: 'loading',
-      unknown: 'unknown',
-    },
-    undefined,
-    propertiesGroup
-  );
-  const size = select('size', { '(default)': 'default', sm: 'sm' }, undefined, propertiesGroup);
-
-  const textColor = colorKnob('--color', undefined, cssGroup);
-  const iconColor = colorKnob('--icon-color', undefined, cssGroup);
-  const iconSize = text('--icon-size', undefined, cssGroup);
-  const fontWeight = text('--font-weight', undefined, cssGroup);
-  const letterSpacing = text('--letter-spacing', undefined, cssGroup);
-  const padding = text('--padding', undefined, cssGroup);
-  const background = colorKnob('--background', undefined, cssGroup);
-  const borderRadius = text('--border-radius', undefined, cssGroup);
-  const borderColor = colorKnob('--border-color', undefined, cssGroup);
-  const borderWidth = text('--border-width', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <style>
-      cds-alert-group {
-        ${setStyles({
-        '--color': textColor,
-        '--icon-color': iconColor,
-        '--icon-size': iconSize,
-        '--font-weight': fontWeight,
-        '--letter-spacing': letterSpacing,
-        '--padding': padding,
-        '--background': background,
-        '--border-radius': borderRadius,
-        '--border-color': borderColor,
-        '--border-width': borderWidth,
-      })}
-    </style>
-    <cds-alert-group .status="${alertStatus}" .size="${size}">
+    <cds-alert-group ...="${spreadProps(getElementStorybookArgs(args))}">
       <cds-alert .closable="${true}" @closeChange=${action('closeChange')}>
-        ${slot}
+        ${args.default}
         <cds-alert-actions>
           <cds-button>Button 1</cds-button>
           <cds-button>Button 2</cds-button>
@@ -513,20 +467,10 @@ export const customStyles = () => {
     <cds-alert-group class="alert-group-custom">
       <cds-alert class="alert-custom" closable>
         This example is an alert with a status of "info" inside a compact, lightweight alert group.
-        <cds-internal-close-button
-          icon-shape="times-circle"
-          icon-size="24"
-          aria-label="Example override of default close-button in an alert"
-        ></cds-internal-close-button>
       </cds-alert>
       <cds-alert class="alert-custom" closable>
         This example is an alert with a status of "danger" and an inline action inside a compact, lightweight alert
         group.<cds-inline-button class="alert-custom-link">Clickable Action</cds-inline-button>
-        <cds-internal-close-button
-          icon-shape="times-circle"
-          icon-size="24"
-          aria-label="Another example override of default close-button in an alert"
-        ></cds-internal-close-button>
       </cds-alert>
     </cds-alert-group>
   `;

@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Datalist/Stories',
   component: 'cds-datalist',
+  argTypes: getElementStorybookArgTypes('cds-datalist', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,9 +23,8 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-datalist ...="${spreadProps(props)}">
+    <cds-datalist ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>datalist</label>
       <input placeholder="placeholder text" />
       <datalist>
@@ -35,10 +35,6 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-datalist>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-datalist', customElements),
 };
 
 export const datalist = () => {

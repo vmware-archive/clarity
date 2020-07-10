@@ -7,10 +7,11 @@
 import '@clr/core/icon/register.js';
 import '@clr/core/tag/register.js';
 import { ClarityIcons, infoStandardIcon, userIcon } from '@clr/core/icon';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
+import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
-import { boolean, color as colorKnob, number, select, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(userIcon);
 ClarityIcons.addIcons(infoStandardIcon);
@@ -18,6 +19,10 @@ ClarityIcons.addIcons(infoStandardIcon);
 export default {
   title: 'Components/Tag/Stories',
   component: 'cds-tag',
+  argTypes: {
+    ...getElementStorybookArgTypes('cds-tag', customElements),
+    badgeValue: { control: { type: 'number' }, defaultValue: 0 },
+  },
   parameters: {
     options: { showPanel: true },
     design: {
@@ -27,35 +32,10 @@ export default {
   },
 };
 
-export const API = () => {
-  const slot = text('slot', 'Hello World', propertiesGroup);
-  const readonly = boolean('readonly', false, propertiesGroup);
-  const tagColor = select(
-    'color',
-    { 'none (default gray)': undefined, purple: 'purple', blue: 'blue', orange: 'orange', 'light-blue': 'light-blue' },
-    undefined,
-    propertiesGroup
-  );
-  const tagStatus = select(
-    'status',
-    { 'none (default)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    undefined,
-    propertiesGroup
-  );
-  const badge = number('badge value', 3, undefined, propertiesGroup);
-  const textColor = colorKnob('--color', undefined, cssGroup);
-  const background = colorKnob('--background', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <style>
-      cds-tag {
-        ${setStyles({
-        '--color': textColor,
-        '--background': background,
-      })}
-    </style>
-    <cds-tag .readonly=${readonly} .status=${tagStatus} .color=${tagColor} @click=${action('click')}>
-      ${slot} ${badge && badge !== 0 ? html`<cds-badge>${badge}</cds-badge>` : ''}
+    <cds-tag ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
+      ${args.default}${args.badgeValue !== 0 ? html`<cds-badge>${args.badgeValue}</cds-badge>` : ''}
     </cds-tag>
   `;
 };

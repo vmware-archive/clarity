@@ -6,10 +6,10 @@
 
 import '@clr/core/icon/register.js';
 import { CdsIcon, ClarityIcons, imageIcon, userIcon } from '@clr/core/icon';
-import { action } from '@storybook/addon-actions';
-import { boolean, color as colorKnob, select, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
+import customElements from '../../dist/core/custom-elements.json';
 
 import {
   chartCollectionAliases,
@@ -43,7 +43,13 @@ import {
   travelCollectionAliases,
   travelCollectionIcons,
 } from '@clr/core/icon';
-import { cssGroup, propertiesGroup, registerElementSafely, setStyles } from '@clr/core/internal';
+import {
+  propertiesGroup,
+  registerElementSafely,
+  getElementStorybookArgTypes,
+  spreadProps,
+  getElementStorybookArgs,
+} from '@clr/core/internal';
 
 loadChartIconSet();
 loadCommerceIconSet();
@@ -62,6 +68,7 @@ ClarityIcons.addIcons(userIcon, imageIcon);
 export default {
   title: 'Components/Icon/Stories',
   component: 'cds-icon',
+  argTypes: getElementStorybookArgTypes('cds-icon', customElements),
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true }, // disabled for performance
@@ -200,73 +207,10 @@ export const all = () => {
   `;
 };
 
-export const API = () => {
-  const shape = select('shape', { default: undefined, user: 'user', image: 'image' }, 'user', propertiesGroup);
-  const size = select(
-    'size',
-    { 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
-    'lg',
-    propertiesGroup
-  );
-  const dir = select(
-    'dir',
-    { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
-    undefined,
-    propertiesGroup
-  );
-  const fl = select(
-    'flip',
-    { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
-    undefined,
-    propertiesGroup
-  );
-  const badge = select(
-    'badge',
-    {
-      'none (default)': undefined,
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      danger: 'danger',
-      inherit: 'inherit',
-      'warning-triangle': 'warning-triangle',
-      'inherit-triangle': 'inherit-triangle',
-    },
-    undefined,
-    propertiesGroup
-  );
-  const iconStatus = select(
-    'status',
-    { 'none (default)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    undefined,
-    propertiesGroup
-  );
-  const inverse = boolean('inverse', false, propertiesGroup);
-  const solid = boolean('solid', false, propertiesGroup);
-  const color = colorKnob('--color', undefined, cssGroup);
-  const badgeColor = colorKnob('--badge-color', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <cds-demo ?inverse=${inverse} inline-block>
-      <style>
-        cds-icon {
-          ${setStyles({
-          '--color': color,
-          '--badge-color': badgeColor,
-        })}
-      </style>
-      <cds-icon
-        .badge=${badge}
-        .status=${iconStatus}
-        .solid=${solid}
-        .size=${size}
-        .shape=${shape}
-        .direction=${dir}
-        .inverse=${inverse}
-        .flip=${fl}
-        @click=${action('click')}
-      >
-      </cds-icon>
+    <cds-demo inline-block>
+      <cds-icon ...="${spreadProps(getElementStorybookArgs(args))}"></cds-icon>
     </cds-demo>
   `;
 };

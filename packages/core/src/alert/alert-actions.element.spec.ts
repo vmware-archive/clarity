@@ -65,8 +65,8 @@ describe('alert-actions element', () => {
       const buttons = component.querySelectorAll('cds-button');
       buttons.forEach(b => {
         expect(b.classList.contains('alert-btn')).toBe(true);
-        expect(b.hasAttribute('size')).toBe(false);
-        expect(b.hasAttribute('status')).toBe(false);
+        expect(b.size).toBe('md');
+        expect(b.status).toBe('primary');
       });
     });
   });

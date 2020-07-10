@@ -7,12 +7,12 @@
 import '@clr/core/icon/register.js';
 import '@clr/core/button/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsCloseButton } from '@clr/core/internal-components/close-button';
+import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
 
-registerElementSafely('cds-internal-close-button', CdsCloseButton);
+registerElementSafely('cds-internal-close-button', CdsInternalCloseButton);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cds-internal-close-button': CdsCloseButton;
+    'cds-internal-close-button': CdsInternalCloseButton;
   }
 }

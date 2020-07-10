@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Date (Internal)/Stories',
   component: 'cds-date',
+  argTypes: getElementStorybookArgTypes('cds-date', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-date ...="${spreadProps(props)}">
+    <cds-date ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>date</label>
       <input type="date" value="2018-07-22" min="2018-01-01" max="2019-12-31" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-date>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-date', customElements),
 };
 
 export const date = () => {

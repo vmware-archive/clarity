@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Password/Stories',
   component: 'cds-password',
+  argTypes: getElementStorybookArgTypes('cds-password', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-password ...="${spreadProps(props)}">
+    <cds-password ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>password</label>
       <input type="password" value="123456" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-password>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-password', customElements),
 };
 
 export const password = () => {

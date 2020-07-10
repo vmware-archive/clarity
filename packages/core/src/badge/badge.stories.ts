@@ -5,13 +5,14 @@
  */
 
 import '@clr/core/badge/register.js';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
-import { color as colorKnob, number, select, text } from '@storybook/addon-knobs';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { html } from 'lit-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 export default {
   title: 'Components/Badge/Stories',
   component: 'cds-badge',
+  argTypes: getElementStorybookArgTypes('cds-badge', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -21,54 +22,10 @@ export default {
   },
 };
 
-export const API = () => {
-  const slot = number('slot', 20, undefined, propertiesGroup);
-  const badgeStatus = select(
-    'status',
-    { 'none (default gray)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    undefined,
-    propertiesGroup
-  );
-  const badgeColor = select(
-    'color',
-    {
-      'gray (default)': undefined,
-      gray: 'gray',
-      purple: 'purple',
-      blue: 'blue',
-      orange: 'orange',
-      'light-blue': 'light-blue',
-    },
-    undefined,
-    propertiesGroup
-  );
-  const textColor = colorKnob('--color', undefined, cssGroup);
-  const background = colorKnob('--background', undefined, cssGroup);
-  const borderColor = colorKnob('--border-color', undefined, cssGroup);
-  const borderWidth = text('--border-width', undefined, cssGroup);
-  const fontSize = text('--font-size', undefined, cssGroup);
-  const fontWeight = text('--font-weight', undefined, cssGroup);
-  const size = text('--size', undefined, cssGroup);
-  const padding = text('--padding', undefined, cssGroup);
-  const borderRadius = text('--border-radius', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <style>
-      cds-badge {
-        ${setStyles({
-        '--color': textColor,
-        '--background': background,
-        '--border-color': borderColor,
-        '--border-width': borderWidth,
-        '--border-radius': borderRadius,
-        '--font-size': fontSize,
-        '--font-weight': fontWeight,
-        '--size': size,
-        '--padding': padding,
-      })}
-    </style>
-    <cds-badge .status=${badgeStatus} .color=${badgeColor}>
-      ${slot}
+    <cds-badge ...="${spreadProps(getElementStorybookArgs(args))}">
+      ${args.default}
     </cds-badge>
   `;
 };

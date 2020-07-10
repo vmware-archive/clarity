@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Time/Stories',
   component: 'cds-time',
+  argTypes: getElementStorybookArgTypes('cds-time', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-time ...="${spreadProps(props)}">
+    <cds-time ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>time</label>
       <input type="time" min="09:00" max="18:00" value="11:00" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-time>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-time', customElements),
 };
 
 export const time = () => {

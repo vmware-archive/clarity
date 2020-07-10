@@ -70,7 +70,7 @@ export class CdsInternalControlGroup extends LitElement {
   @property({ type: String }) layout: FormLayout = defaultFormLayout;
 
   /** Align the labels of controls within group left or right */
-  @property({ type: String }) controlAlign: 'left' | 'right';
+  @property({ type: String }) controlAlign: 'left' | 'right' = 'left';
 
   /**
    * @type {stretch | shrink}

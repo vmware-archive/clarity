@@ -1,0 +1,46 @@
+import '@clr/core/alert/register.js';
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Internal APIs/Close Button/Getting Started" />
+
+# Alert
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+## Installation
+
+To use the internal component add the register import to the `register.ts` of
+the consuming component.
+
+```typescript
+import '@clr/core/internal-components/close-button/register.js';
+```
+
+```html
+<cds-internal-close-button></cds-internal-close-button>
+```
+
+## Close Button
+
+<Preview>
+  <Story id="internal-apis-close-button-stories--close-button" />
+</Preview>
+
+## Custom
+
+<Preview>
+  <Story id="internal-apis-close-button-stories--custom" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Story id="internal-apis-close-button-stories--sizes" />
+</Preview>
+
+## API
+
+<Props of={'cds-internal-close-button'} />

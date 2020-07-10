@@ -33,14 +33,15 @@ import { styles } from './badge.element.css.js';
  * @cssprop --size
  */
 export class CdsBadge extends LitElement {
-  /** Sets the color of the badge from the following predefined list of choices:
-   *  'gray', 'purple', 'blue', 'orange', 'light-blue'
+  /**
+   * Sets the color of the badge
    */
   @property({ type: String })
-  color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
+  color: 'default' | 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
 
-  /** Sets the color of the badge from the following predefined list of statuses:
-   *  'info', 'success', 'warning', 'danger'
+  /**
+   * @type {default | info | success | warning | danger}
+   * Sets the color of the badge
    */
   @property({ type: String })
   status: StatusTypes;

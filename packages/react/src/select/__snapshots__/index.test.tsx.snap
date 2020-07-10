@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsSelect snapshot 1`] = `
+<div>
+  <h3>
+    Selects
+  </h3>
+  <ReactWrapperComponent
+    layout="horizontal"
+  >
+    <cds-form-group>
+      <ReactWrapperComponent>
+        <cds-select>
+          <label>
+            label
+          </label>
+          <select>
+            <option>
+              option one
+            </option>
+            <option>
+              option two
+            </option>
+            <option>
+              option three
+            </option>
+          </select>
+          <ReactWrapperComponent>
+            <cds-control-message>
+              message text
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-select>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        status="error"
+      >
+        <cds-select>
+          <label>
+            error
+          </label>
+          <select>
+            <option>
+              option one
+            </option>
+            <option>
+              option two
+            </option>
+            <option>
+              option three
+            </option>
+          </select>
+          <ReactWrapperComponent
+            status="error"
+          >
+            <cds-control-message>
+              error message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-select>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        status="success"
+      >
+        <cds-select>
+          <label>
+            success
+          </label>
+          <select>
+            <option>
+              option one
+            </option>
+            <option>
+              option two
+            </option>
+            <option>
+              option three
+            </option>
+          </select>
+          <ReactWrapperComponent
+            status="success"
+          >
+            <cds-control-message>
+              success message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-select>
+      </ReactWrapperComponent>
+    </cds-form-group>
+  </ReactWrapperComponent>
+  <h3>
+    Multi-selects
+  </h3>
+  <ReactWrapperComponent>
+    <cds-select>
+      <label>
+        label
+      </label>
+      <select
+        multiple={true}
+      >
+        <option>
+          Option One
+        </option>
+        <option>
+          Option Two
+        </option>
+        <option>
+          Option Three
+        </option>
+        <option>
+          Option Four
+        </option>
+        <option>
+          Option Five
+        </option>
+      </select>
+      <ReactWrapperComponent>
+        <cds-control-message>
+          message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-select>
+  </ReactWrapperComponent>
+</div>
+`;

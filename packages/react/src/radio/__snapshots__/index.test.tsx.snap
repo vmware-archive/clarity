@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsRadio snapshot 1`] = `
+<div>
+  <ReactWrapperComponent>
+    <cds-radio-group>
+      <label>
+        radio group
+      </label>
+      <ReactWrapperComponent>
+        <cds-radio>
+          <label>
+            radio 1
+          </label>
+          <input
+            checked={true}
+            type="radio"
+          />
+        </cds-radio>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-radio>
+          <label>
+            radio 2
+          </label>
+          <input
+            type="radio"
+          />
+        </cds-radio>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-radio>
+          <label>
+            radio 3
+          </label>
+          <input
+            type="radio"
+          />
+        </cds-radio>
+      </ReactWrapperComponent>
+    </cds-radio-group>
+  </ReactWrapperComponent>
+</div>
+`;

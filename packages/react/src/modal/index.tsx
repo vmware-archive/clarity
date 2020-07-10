@@ -13,7 +13,7 @@ type CdsModalHeaderType = ModalHeader;
 type CdsModalHeaderActionsType = ModalHeaderActions;
 
 export const CdsModal = createReactComponent<CdsModalType>('cds-modal');
-export const CdsModalActions = createReactComponent<CdsModalActionsType>('cds-modal-action');
+export const CdsModalActions = createReactComponent<CdsModalActionsType>('cds-modal-actions');
 export const CdsModalContent = createReactComponent<CdsModalContentType>('cds-modal-content');
 export const CdsModalHeader = createReactComponent<CdsModalHeaderType>('cds-modal-header');
 export const CdsModalHeaderActions = createReactComponent<CdsModalHeaderActionsType>('cds-modal-header-action');

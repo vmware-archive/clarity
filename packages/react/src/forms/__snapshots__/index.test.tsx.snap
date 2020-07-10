@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsControl snapshot 1`] = `
+<div
+  cds-layout="vertical gap:lg"
+>
+  <ReactWrapperComponent
+    layout="compact"
+  >
+    <cds-control>
+      <label>
+        label
+      </label>
+      <input
+        placeholder="some custom control"
+      />
+      <ReactWrapperComponent>
+        <cds-control-message>
+          message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-control>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    layout="compact"
+    status="error"
+  >
+    <cds-control>
+      <label>
+        label
+      </label>
+      <input
+        placeholder="some custom control"
+      />
+      <ReactWrapperComponent
+        status="error"
+      >
+        <cds-control-message>
+          error message
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-control>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent
+    layout="compact"
+    status="success"
+  >
+    <cds-control>
+      <label>
+        label
+      </label>
+      <input
+        placeholder="some custom control"
+      />
+      <ReactWrapperComponent
+        status="success"
+      >
+        <cds-control-message>
+          success message
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-control>
+  </ReactWrapperComponent>
+</div>
+`;

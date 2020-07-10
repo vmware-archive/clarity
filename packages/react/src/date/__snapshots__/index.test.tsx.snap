@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsDate snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    control-width="shrink"
+    layout="horizontal"
+  >
+    <cds-date>
+      <label>
+        Date input
+      </label>
+      <input
+        defaultValue="2018-07-22"
+        max="2019-12-31"
+        min="2018-01-01"
+        type="date"
+      />
+      <ReactWrapperComponent>
+        <cds-control-message>
+          message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-date>
+  </ReactWrapperComponent>
+</div>
+`;

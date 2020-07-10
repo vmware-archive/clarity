@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsTime snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    control-width="shrink"
+  >
+    <cds-time>
+      <label>
+        Time input
+      </label>
+      <input
+        defaultValue="11:00"
+        max="18:00"
+        min="09:00"
+        type="time"
+      />
+      <ReactWrapperComponent>
+        <cds-control-message>
+          message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-time>
+  </ReactWrapperComponent>
+</div>
+`;

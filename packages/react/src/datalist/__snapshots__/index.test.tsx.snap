@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsDatalist snapshot 1`] = `
+<div>
+  <ReactWrapperComponent>
+    <cds-datalist>
+      <label>
+        datalist
+      </label>
+      <input
+        placeholder="placeholder text"
+      />
+      <datalist>
+        <option
+          value="Item 1"
+        />
+        <option
+          value="Item 2"
+        />
+        <option
+          value="Item 3"
+        />
+      </datalist>
+    </cds-datalist>
+  </ReactWrapperComponent>
+</div>
+`;

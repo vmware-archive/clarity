@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsInput snapshot 1`] = `
+<div>
+  <ReactWrapperComponent>
+    <cds-input-group>
+      <ReactWrapperComponent
+        layout="vertical"
+      >
+        <cds-input>
+          <label>
+            label
+          </label>
+          <input
+            placeholder="name"
+          />
+        </cds-input>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="vertical"
+      >
+        <cds-input>
+          <label>
+            disabled
+          </label>
+          <input
+            disabled={true}
+            placeholder="name"
+          />
+        </cds-input>
+      </ReactWrapperComponent>
+    </cds-input-group>
+  </ReactWrapperComponent>
+</div>
+`;

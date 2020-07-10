@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsPassword snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    layout="vertical"
+  >
+    <cds-password>
+      <label>
+        label
+      </label>
+      <input
+        type="password"
+        value="123456"
+      />
+    </cds-password>
+  </ReactWrapperComponent>
+</div>
+`;

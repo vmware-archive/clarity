@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsFile snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    layout="vertical"
+  >
+    <cds-file>
+      <label>
+        label
+      </label>
+      <input
+        multiple={true}
+        type="file"
+      />
+    </cds-file>
+  </ReactWrapperComponent>
+</div>
+`;

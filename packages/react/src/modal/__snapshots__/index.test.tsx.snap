@@ -27,13 +27,13 @@ exports[`CdsModal snapshot 1`] = `
         </cds-modal-content>
       </ReactWrapperComponent>
       <ReactWrapperComponent>
-        <cds-modal-action>
+        <cds-modal-actions>
           <div
             cds-layout="horizontal gap:sm align:right"
           >
             Foo
           </div>
-        </cds-modal-action>
+        </cds-modal-actions>
       </ReactWrapperComponent>
     </cds-modal>
   </ReactWrapperComponent>

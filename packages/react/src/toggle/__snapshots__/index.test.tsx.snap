@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsToggle snapshot 1`] = `
+<div>
+  <ReactWrapperComponent>
+    <cds-toggle-group>
+      <label>
+        A toggle group
+      </label>
+      <ReactWrapperComponent>
+        <cds-toggle>
+          <label>
+            Toggle 1
+          </label>
+          <input
+            type="checkbox"
+          />
+        </cds-toggle>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-toggle>
+          <label>
+            Toggle 2
+          </label>
+          <input
+            type="checkbox"
+          />
+        </cds-toggle>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent>
+        <cds-control-message>
+          group message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-toggle-group>
+  </ReactWrapperComponent>
+  <ReactWrapperComponent>
+    <cds-toggle>
+      <label>
+        Toggle
+      </label>
+      <input
+        type="checkbox"
+      />
+      <ReactWrapperComponent>
+        <cds-control-message>
+          message text
+        </cds-control-message>
+      </ReactWrapperComponent>
+    </cds-toggle>
+  </ReactWrapperComponent>
+</div>
+`;

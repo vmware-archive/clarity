@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsTextarea snapshot 1`] = `
+<div>
+  <h3>
+    Vertical
+  </h3>
+  <ReactWrapperComponent
+    layout="vertical"
+  >
+    <cds-form-group>
+      <ReactWrapperComponent
+        layout="vertical"
+      >
+        <cds-textarea>
+          <label>
+            label
+          </label>
+          <textarea />
+          <ReactWrapperComponent>
+            <cds-control-message>
+              message text
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="vertical"
+        status="error"
+      >
+        <cds-textarea>
+          <label>
+            error status
+          </label>
+          <textarea />
+          <ReactWrapperComponent
+            status="error"
+          >
+            <cds-control-message>
+              error message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="vertical"
+        status="success"
+      >
+        <cds-textarea>
+          <label>
+            success status
+          </label>
+          <textarea />
+          <ReactWrapperComponent
+            status="success"
+          >
+            <cds-control-message>
+              success message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+    </cds-form-group>
+  </ReactWrapperComponent>
+  <h3>
+    Horizontal
+  </h3>
+  <ReactWrapperComponent
+    layout="horizontal"
+  >
+    <cds-form-group>
+      <ReactWrapperComponent
+        layout="horizontal"
+      >
+        <cds-textarea>
+          <label>
+            label
+          </label>
+          <textarea />
+          <ReactWrapperComponent>
+            <cds-control-message>
+              message text
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="horizontal"
+        status="error"
+      >
+        <cds-textarea>
+          <label>
+            error status
+          </label>
+          <textarea />
+          <ReactWrapperComponent
+            status="error"
+          >
+            <cds-control-message>
+              error message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="horizontal"
+        status="success"
+      >
+        <cds-textarea>
+          <label>
+            success status
+          </label>
+          <textarea />
+          <ReactWrapperComponent
+            status="success"
+          >
+            <cds-control-message>
+              success message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-textarea>
+      </ReactWrapperComponent>
+    </cds-form-group>
+  </ReactWrapperComponent>
+</div>
+`;

@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsRange snapshot 1`] = `
+<div>
+  <ReactWrapperComponent
+    layout="horizontal"
+  >
+    <cds-form-group>
+      <ReactWrapperComponent
+        layout="horizontal"
+      >
+        <cds-range>
+          <label>
+            label
+          </label>
+          <input
+            type="range"
+          />
+          <ReactWrapperComponent>
+            <cds-control-message>
+              message text
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-range>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="horizontal"
+      >
+        <cds-range>
+          <label>
+            disabled
+          </label>
+          <input
+            disabled={true}
+            type="range"
+          />
+          <ReactWrapperComponent>
+            <cds-control-message>
+              disabled message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-range>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="horizontal"
+        status="error"
+      >
+        <cds-range>
+          <label>
+            error
+          </label>
+          <input
+            type="range"
+          />
+          <ReactWrapperComponent
+            status="error"
+          >
+            <cds-control-message>
+              error message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-range>
+      </ReactWrapperComponent>
+      <ReactWrapperComponent
+        layout="horizontal"
+        status="success"
+      >
+        <cds-range>
+          <label>
+            success
+          </label>
+          <input
+            type="range"
+          />
+          <ReactWrapperComponent
+            status="success"
+          >
+            <cds-control-message>
+              success message
+            </cds-control-message>
+          </ReactWrapperComponent>
+        </cds-range>
+      </ReactWrapperComponent>
+    </cds-form-group>
+  </ReactWrapperComponent>
+</div>
+`;

@@ -22,7 +22,7 @@
 4.  Include the clr-icons.min.js in your HTML file:
 
     ```
-    <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
+    <script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
     ```
 
 5.  Write your HTML with the Clarity CSS class names and markup.

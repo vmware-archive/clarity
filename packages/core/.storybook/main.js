@@ -4,16 +4,16 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)', '../docs/**/*.stories.@(ts|mdx)'],
   addons: [
-    'storybook-addon-designs',
-    '@storybook/addon-cssresources',
-    '@storybook/addon-docs',
     '@storybook/addon-controls',
+    '@storybook/addon-storysource',
+    '@storybook/addon-cssresources',
+    'storybook-addon-designs',
     '@storybook/addon-a11y',
+    '@storybook/addon-docs',
     '@storybook/addon-actions',
     '@storybook/addon-backgrounds',
     '@storybook/addon-knobs',
     '@storybook/addon-links',
-    '@storybook/addon-storysource',
     '@storybook/addon-viewport',
   ],
   webpackFinal: async config => {

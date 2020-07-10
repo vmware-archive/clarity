@@ -6,12 +6,6 @@ import { html, LitElement } from 'lit-element';
 
 # Alert Groups
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
-</cds-alert-group>
-
-<br />
-
 Alert groups are containers for a set of alerts. Alert groups can hold one or many alerts
 inside of them with the expectation that all alerts will be of the same type. The exception
 to this rule is the `loading` alert type, which will be displayed regardless of the type
@@ -77,3 +71,11 @@ import '@clr/core/alert/register.js';
 <Preview>
   <Story id="components-alert-group-stories--custom-styles" />
 </Preview>
+
+## API Alert Group
+
+<Props of={'cds-alert-group'} />
+
+## API Alert
+
+<Props of={'cds-alert'} />

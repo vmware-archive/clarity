@@ -6,12 +6,6 @@ import { html, LitElement } from 'lit-element';
 
 # Alert
 
-<cds-alert-group status="warning">
-  <cds-alert>This is an experimental API and likely will have breaking changes in the near future.</cds-alert>
-</cds-alert-group>
-
-<br />
-
 Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to provide critical information needed in context.
 
 By default, alerts outside of an alert group have a lightweight look and functionality. This means that:
@@ -62,3 +56,7 @@ import '@clr/core/alert/register.js';
 <Preview>
   <Story id="components-alert-stories--custom-styles" />
 </Preview>
+
+## API
+
+<Props of={'cds-alert'} />

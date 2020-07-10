@@ -36,6 +36,16 @@ ClarityIcons.addIcons(angleIcon);
  *
  * @element cds-datalist
  * @slot default - For projecting input, datalist and label
+ * @cssprop --background
+ * @cssprop --background-size
+ * @cssprop --border
+ * @cssprop --border-bottom
+ * @cssprop --outline
+ * @cssprop --padding
+ * @cssprop --font-size
+ * @cssprop --color
+ * @cssprop --line-height
+ * @cssprop --transition
  */
 export class CdsDatalist extends CdsControl {
   @globalStyle() protected globalStyles = globalStyles;

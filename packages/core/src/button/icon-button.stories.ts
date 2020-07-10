@@ -7,18 +7,19 @@
 import '@clr/core/badge/register.js';
 import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
-import { ClrLoadingState } from '@clr/core/button';
 import { ClarityIcons, userIcon } from '@clr/core/icon';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
-import { boolean, color, select, text } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(userIcon);
 
 export default {
   title: 'Components/Icon Button/Stories',
   component: 'cds-icon-button',
+  argTypes: getElementStorybookArgTypes('cds-icon-button', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -28,67 +29,11 @@ export default {
   },
 };
 
-export const API = () => {
-  const actionType = select(
-    'action',
-    { 'solid (default)': 'solid', outline: 'outline', flat: 'flat' },
-    undefined,
-    propertiesGroup
-  );
-  const buttonStatus = select(
-    'status',
-    { 'primary (default)': 'primary', success: 'success', danger: 'danger', inverse: 'inverse' },
-    undefined,
-    propertiesGroup
-  );
-  const size = select('size', { 'medium (default)': 'md', sm: 'sm' }, undefined, propertiesGroup);
-  const disabled = boolean('disabled', false, propertiesGroup);
-  const loadingState = select(
-    'loadingState',
-    {
-      default: ClrLoadingState.DEFAULT,
-      error: ClrLoadingState.ERROR,
-      loading: ClrLoadingState.LOADING,
-      success: ClrLoadingState.SUCCESS,
-    },
-    ClrLoadingState.DEFAULT,
-    propertiesGroup
-  );
-
-  const buttonColor = color('--color', undefined, cssGroup);
-  const background = color('--background', undefined, cssGroup);
-  const boxShadowColor = color('--box-shadow-color', undefined, cssGroup);
-  const borderColor = color('--border-color', undefined, cssGroup);
-  const borderWidth = text('--border-width', undefined, cssGroup);
-  const borderRadius = text('--border-radius', undefined, cssGroup);
-  const fontSize = text('--font-size', undefined, cssGroup);
-  const padding = text('--padding', undefined, cssGroup);
-  const height = text('--height', undefined, cssGroup);
-
+export const API = (args: any) => {
+  const invertBackground = boolean('invertBackground', false);
   return html`
-    <cds-demo ?inverse=${buttonStatus === 'inverse'} inline-block>
-      <style>
-        cds-icon-button {
-          ${setStyles({
-          '--color': buttonColor,
-          '--background': background,
-          '--box-shadow-color': boxShadowColor,
-          '--border-color': borderColor,
-          '--border-width': borderWidth,
-          '--border-radius': borderRadius,
-          '--font-size': fontSize,
-          '--padding': padding,
-          '--height': height,
-        })}
-      </style>
-      <cds-icon-button
-        .action=${actionType}
-        .status=${buttonStatus}
-        .size=${size}
-        .loadingState=${loadingState}
-        .disabled=${disabled}
-        @click=${action('click')}
-      >
+    <cds-demo ?inverse=${invertBackground} inline-block>
+      <cds-icon-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
         <cds-icon shape="user"></cds-icon>
       </cds-icon-button>
     </cds-demo>

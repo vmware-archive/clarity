@@ -21,9 +21,8 @@ addons.register('storybook/ga-analytics', api => {
 });
 
 setTimeout(() => {
-  addons.elements.panel['storybookjs/knobs/panel'].title = 'Properties';
-  addons.elements.panel['storybook/actions/panel'].title = 'Events';
+  addons.elements.panel['addon-controls'].title = () => 'API Options';
   addons.elements.panel['storybook/cssresources/panel'].title = 'Theme';
   addons.elements.panel['storybook/source-loader/panel'].title = 'Code';
-  addons.elements.panel['storybook/a11y/panel'].title = 'A11y';
+  addons.elements.panel['storybook/actions/panel'].title = 'Events';
 }, 0);

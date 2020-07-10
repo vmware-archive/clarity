@@ -209,14 +209,14 @@ describe('Alert groups – ', () => {
     it('parent alert group does not set status if child alert status is not defined', async () => {
       await componentIsStable(bannerAlertGroupWithNoStatus);
       const childAlert = bannerAlertGroupWithNoStatus.querySelector<CdsAlert>('#statusless');
-      expect(childAlert.status).toBeUndefined();
-      expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBeNull();
+      expect(childAlert.status).toBe('default');
+      expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('default');
     });
 
     it('parent alert group is updated when child alert status is updated', async () => {
       await componentIsStable(bannerAlertGroupWithNoStatus);
       const childAlert = bannerAlertGroupWithNoStatus.querySelector<CdsAlert>('#statusless');
-      expect(childAlert.status).toBeUndefined();
+      expect(childAlert.status).toBe('default');
       childAlert.setAttribute('status', 'danger');
       await componentIsStable(bannerAlertGroupWithNoStatus);
       expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('danger');
@@ -253,7 +253,7 @@ describe('Alert groups – ', () => {
       await componentIsStable(alertGroup);
       const customAlertSlotContent = getComponentSlotContent(customAlert);
       const loadingAlertSlotContent = getComponentSlotContent(loadingAlert);
-      expect(alertGroup.status).toBeUndefined();
+      expect(alertGroup.status).toBe('default');
       expect(defaultAlert.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('shape')).toBe(
         'info-standard',
         'does not override child alert icon shapes if status is not defined'

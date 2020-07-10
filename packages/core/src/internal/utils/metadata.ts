@@ -27,10 +27,12 @@ function getPropOptionsStorybookArgs(customElementMetadata: any) {
   return customElementMetadata.properties
     ?.filter((prop: any) => prop?.type?.includes(' | '))
     .reduce((obj: any, prop: { name: string; type: string }) => {
+      const options = prop.type.split('|').map(p => p.replace(/"/g, '').replace(/\s/g, ''));
       return {
         ...obj,
         [prop.name]: {
-          control: { type: 'select', options: prop.type.split('|').map(p => p.replace(/"/g, '').replace(/\s/g, '')) },
+          control: { type: 'select', options },
+          defaultValue: options[0],
         },
       };
     }, {});

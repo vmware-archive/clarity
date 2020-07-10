@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Range/Stories',
   component: 'cds-range',
+  argTypes: getElementStorybookArgTypes('cds-range', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-range ...="${spreadProps(props)}">
+    <cds-range ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>range</label>
       <input type="range" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-range>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-range', customElements),
 };
 
 export const range = () => {

@@ -27,7 +27,8 @@ import {
   errorStandardIcon,
   helpIcon,
 } from '@clr/core/icon';
-import { AlertGroupTypes, AlertStatusTypes, CdsAlertActions } from '@clr/core/alert';
+import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
+import { CdsAlertActions } from './alert-actions.element.js';
 import { styles } from './alert.element.css.js';
 import { html, LitElement } from 'lit-element';
 import { CdsAlertGroup } from './alert-group.element.js';
@@ -146,6 +147,7 @@ applyMixins(AlertMixinClass, [UniqueId]);
  * @beta
  * @element cds-alert
  * @slot default - Content slot for inside the alert
+ * @event closeChange - notify when the user has clicked the dismiss button
  * @cssprop --color
  * @cssprop --background
  * @cssprop --border-radius
@@ -157,9 +159,12 @@ applyMixins(AlertMixinClass, [UniqueId]);
 export class CdsAlert extends AlertMixinClass {
   @event() private closeChange: EventEmitter<boolean>;
 
-  /** Sets the overall height and width of the alert and icon based on value */
+  /**
+   * @type {default | sm}
+   * Sets the overall height and width of the alert and icon based on value
+   */
   @property({ type: String })
-  size: 'default' | 'sm';
+  size: AlertSizes = 'default';
 
   /**
    * Prevents the alert group from setting types and statuses on the alert children
@@ -215,9 +220,12 @@ export class CdsAlert extends AlertMixinClass {
   @property({ type: Boolean })
   closable = false;
 
-  /** Sets the color of the alert from a predefined list of statuses */
+  /**
+   * @type {default | info | success | warning | danger | unknown | loading}
+   * Sets the color of the alert from a predefined list of statuses
+   */
   @property({ type: String })
-  status: AlertStatusTypes | '';
+  status: AlertStatusTypes = 'default';
 
   @property({ type: String })
   closeIconTitle = CommonStringsService.keys.alertCloseButtonAriaLabel;

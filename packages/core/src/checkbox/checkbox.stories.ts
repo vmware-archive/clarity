@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Checkbox/Stories',
   component: 'cds-checkbox',
+  argTypes: getElementStorybookArgTypes('cds-checkbox', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-checkbox ...="${spreadProps(props)}">
+    <cds-checkbox ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>checked</label>
       <input type="checkbox" checked />
       <cds-control-message .status=${args.status}>message message</cds-control-message>
     </cds-checkbox>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-checkbox', customElements),
 };
 
 export const checkbox = () => {

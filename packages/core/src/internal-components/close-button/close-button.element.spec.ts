@@ -5,12 +5,12 @@
  */
 
 import '@clr/core/internal-components/close-button/register.js';
-import { CdsCloseButton } from '@clr/core/internal-components/close-button';
+import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
 import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
 
 describe('internal close button element', () => {
   let testElement: HTMLElement;
-  let component: CdsCloseButton;
+  let component: CdsInternalCloseButton;
   const placeholderText = 'ohai';
 
   beforeEach(async () => {
@@ -22,7 +22,7 @@ describe('internal close button element', () => {
     `;
 
     await waitForComponent('cds-internal-close-button');
-    component = testElement.querySelector<CdsCloseButton>('cds-internal-close-button');
+    component = testElement.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
   });
 
   afterEach(() => {

@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Textarea/Stories',
   component: 'cds-textarea',
+  argTypes: getElementStorybookArgTypes('cds-textarea', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-textarea ...="${spreadProps(props)}">
+    <cds-textarea ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>textarea</label>
       <textarea></textarea>
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-textarea>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-textarea', customElements),
 };
 
 export const textarea = () => {

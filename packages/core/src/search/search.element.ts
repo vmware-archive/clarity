@@ -31,6 +31,16 @@ ClarityIcons.addIcons(searchIcon);
  *
  * @element cds-search
  * @slot default - For projecting search input and label
+ * @cssprop --background
+ * @cssprop --background-size
+ * @cssprop --border
+ * @cssprop --border-bottom
+ * @cssprop --outline
+ * @cssprop --padding
+ * @cssprop --font-size
+ * @cssprop --color
+ * @cssprop --line-height
+ * @cssprop --transition
  */
 export class CdsSearch extends CdsControl {
   @globalStyle() protected globalStyles = globalStyles;

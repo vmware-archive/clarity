@@ -7,41 +7,27 @@
 import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
 import { angleIcon, ClarityIcons, userIcon } from '@clr/core/icon';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
+import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
-import { boolean, color, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(angleIcon, userIcon);
 
 export default {
   title: 'Components/Inline Button/Stories',
   component: 'cds-inline-button',
+  argTypes: getElementStorybookArgTypes('cds-inline-button', customElements),
   parameters: {
     options: { showPanel: true },
   },
 };
 
-export const API = () => {
-  const disabled = boolean('disabled', false, propertiesGroup);
-  const textColor = color('--color', undefined, cssGroup);
-  const fontSize = text('--font-size', undefined, cssGroup);
-  const fontWeight = text('--font-weight', undefined, cssGroup);
-  const textDecoration = text('--text-decoration', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
     <cds-demo inline-block>
-      <style>
-        cds-inline-button {
-          ${setStyles({
-          '--color': textColor,
-          '--font-size': fontSize,
-          '--font-weight': fontWeight,
-          '--text-decoration': textDecoration,
-        })}
-      </style>
-      <cds-inline-button .disabled=${disabled} @click=${action('click')}>
-        Click Me
+      <cds-inline-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
+        ${args.default}
       </cds-inline-button>
     </cds-demo>
   `;

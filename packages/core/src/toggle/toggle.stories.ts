@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Toggle/Stories',
   component: 'cds-toggle',
+  argTypes: getElementStorybookArgTypes('cds-toggle', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-toggle ...="${spreadProps(props)}">
+    <cds-toggle ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>toggle</label>
       <input type="checkbox" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-toggle>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-toggle', customElements),
 };
 
 export const toggle = () => {

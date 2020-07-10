@@ -71,23 +71,28 @@ function updateLayoutsAndActionButtonStyles(alertActionsComponent: CdsAlertActio
  *
  * ```html
  * <cds-alert>
- *    Lorem ipsum dolor sit amet
- *    <cds-alert-actions>
- *       <cds-button>Fix</cds-button>
- *    </cds-alert-actions>
+ *   Lorem ipsum dolor sit amet
+ *   <cds-alert-actions>
+ *     <cds-button>Fix</cds-button>
+ *   </cds-alert-actions>
  * </cds-alert>
  * ```
  *
  * @beta
  * @element cds-alert-actions
  * @slot default
- * @cssprop --action-text-color: changes the color of the text and border of the action button
- * @cssprop --action-hover-text-color: changes the color of the text and border of the action button on hover
+ * @cssprop --action-text-color
+ * @cssprop --action-hover-text-color
+ * @cssprop --action-font-size
  */
 export class CdsAlertActions extends LitElement {
+  /**
+   * @type {default | banner | light}
+   */
   @property({ type: String })
-  type: AlertGroupTypes | string = 'light';
+  type: AlertGroupTypes = 'light';
 
+  /** @private */
   @querySlotAll('cds-button') buttons: NodeListOf<CdsButton>;
 
   connectedCallback() {

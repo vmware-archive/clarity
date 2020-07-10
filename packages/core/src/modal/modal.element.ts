@@ -49,11 +49,27 @@ applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
  * ```
  *
  * @element cds-modal
+ * @slot default
+ * @slot cds-modal-content
+ * @slot cds-modal-header
+ * @slot cds-modal-footer
+ * @event closeChange - notify when the user has clicked the close button
+ * @cssprop --backdrop-opacity
+ * @cssprop --backdrop-background
+ * @cssprop --box-shadow-color
+ * @cssprop --border-radius
+ * @cssprop --border
+ * @cssprop --background
+ * @cssprop --close-icon-color
+ * @cssprop --close-icon-color-hover
+ * @cssprop --content-box-shadow-color
+ * @cssprop --width
  */
 export class CdsModal extends ModalMixinClass {
   static get styles() {
     return [baseStyles, styles];
   }
+
   @event() private closeChange: EventEmitter<boolean>;
 
   /** If false, the modal will not render the close button.  */

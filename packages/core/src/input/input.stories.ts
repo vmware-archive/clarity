@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Input/Stories',
   component: 'cds-input',
+  argTypes: getElementStorybookArgTypes('cds-input', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-input ...="${spreadProps(props)}">
+    <cds-input ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>input</label>
       <input placeholder="placeholder text" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-input>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-input', customElements),
 };
 
 export const input = () => {

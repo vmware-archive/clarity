@@ -12,10 +12,6 @@ body {
   box-sizing: border-box !important; /* storybook v6 inline to initial */
 }
 
-.docblock-propstable-body td {
-  min-width: 240px;
-}
-
 .docblock-propstable-body li {
   list-style-position: outside;
 }

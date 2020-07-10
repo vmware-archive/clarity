@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Radio/Stories',
   component: 'cds-radio',
+  argTypes: getElementStorybookArgTypes('cds-radio', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,18 +23,13 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-radio ...="${spreadProps(props)}">
+    <cds-radio ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>radio</label>
       <input type="radio" />
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-radio>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-radio', customElements),
 };
 
 export const radio = () => {

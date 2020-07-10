@@ -1,12 +1,7 @@
 <style>
-  #storybook-panel-root input,
-  #storybook-panel-root textarea,
-  #storybook-panel-root select {
-    min-width: 160px;
-  }
-
   .sidebar-item[id*='internal'],
-  .sidebar-item[id*='experimental'] {
+  .sidebar-item[id*='experimental'],
+  [data-title='Internal APIs'] {
     display: none;
   }
 
@@ -17,6 +12,10 @@
   body[localhost] .sidebar-item[id*='internal'],
   body[localhost] .sidebar-item[id*='experimental'] {
     display: flex;
+  }
+
+  body[localhost] [data-title='Internal APIs'] {
+    display: block;
   }
 </style>
 <script>

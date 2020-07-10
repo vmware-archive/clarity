@@ -5,11 +5,10 @@
  */
 
 import { assignSlotNames, baseStyles, property, querySlot, querySlotAll } from '@clr/core/internal';
-import { AlertGroupTypes, AlertStatusTypes, CdsAlert } from '@clr/core/alert';
+import { CdsAlert } from './alert.element.js';
+import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { styles } from './alert-group.element.css.js';
 import { html, LitElement } from 'lit-element';
-
-type AlertSizes = 'default' | 'sm';
 
 /**
  * Alert groups are containers for a set of alerts. Alert groups can hold one or many alerts
@@ -52,24 +51,31 @@ type AlertSizes = 'default' | 'sm';
  * @cssprop --letter-spacing
  * @cssprop --padding
  * @cssprop --background
- * @cssprop --border-radius
  * @cssprop --border-color
  * @cssprop --border-width
+ * @cssprop --border-radius
  */
 export class CdsAlertGroup extends LitElement {
-  /** Sets the overall height and width of the alerts inside the alert group */
+  /**
+   * @type {default | sm}
+   * Sets the overall height and width of the alerts inside the alert group
+   */
   @property({ type: String })
   size: AlertSizes = 'default';
 
   /**
+   * @type {default | banner | light}
    * Passed down into the alerts inside the alert-group
    */
   @property({ type: String })
   type: AlertGroupTypes = 'default';
 
-  /** Sets the status of the alerts inside the alert group */
+  /**
+   * @type {default | info | success | warning | danger | unknown | loading}
+   * Sets the status of the alerts inside the alert group
+   */
   @property({ type: String })
-  status: AlertStatusTypes | '';
+  status: AlertStatusTypes = 'default';
 
   @querySlotAll('cds-alert') private alerts: NodeListOf<CdsAlert>;
 
@@ -82,7 +88,7 @@ export class CdsAlertGroup extends LitElement {
   }
 
   private updateAlertStatuses() {
-    if (this.type === 'light' && !this.status) {
+    if (this.type === 'light' && this.status === 'default') {
       return;
     }
     if (this.type === 'banner') {
@@ -97,7 +103,7 @@ export class CdsAlertGroup extends LitElement {
   }
 
   updateBannerAlertGroupStatus() {
-    this.status = this.alerts[0].status || '';
+    this.status = this.alerts[0].status || 'default';
   }
 
   private updateAlertTypes() {

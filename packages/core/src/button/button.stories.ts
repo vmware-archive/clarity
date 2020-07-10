@@ -18,9 +18,7 @@ ClarityIcons.addIcons(userIcon);
 export default {
   title: 'Components/Button/Stories',
   component: 'cds-button',
-  argTypes: {
-    ...getElementStorybookArgTypes('cds-button', customElements),
-  },
+  argTypes: getElementStorybookArgTypes('cds-button', customElements),
   parameters: {
     controls: { expanded: true },
     options: { showPanel: true },
@@ -32,9 +30,8 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-button ...="${spreadProps(props)}">
+    <cds-button ...="${spreadProps(getElementStorybookArgs(args))}">
       ${args.default}
     </cds-button>
   `;

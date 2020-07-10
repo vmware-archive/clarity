@@ -12,6 +12,7 @@ import customElements from '../../dist/core/custom-elements.json';
 export default {
   title: 'Forms (Preview)/Select/Stories',
   component: 'cds-select',
+  argTypes: getElementStorybookArgTypes('cds-select', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -22,9 +23,8 @@ export default {
 };
 
 export const API = (args: any) => {
-  const props = getElementStorybookArgs(args);
   return html`
-    <cds-select ...="${spreadProps(props)}">
+    <cds-select ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>textarea</label>
       <select>
         <option>Option One</option>
@@ -34,10 +34,6 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-select>
   `;
-};
-
-API.argTypes = {
-  ...getElementStorybookArgTypes('cds-select', customElements),
 };
 
 export const select = () => {

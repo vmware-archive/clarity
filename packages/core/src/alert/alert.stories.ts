@@ -6,18 +6,18 @@
 
 import '@clr/core/alert/register.js';
 import '@clr/core/button/register.js';
-import '@clr/core/internal-components/close-button/register.js';
 import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@clr/core/icon';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
-import { color as colorKnob, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(angleIcon, userIcon, timesCircleIcon);
 
 export default {
   title: 'Components/Alert/Stories',
   component: 'cds-alert',
+  argTypes: getElementStorybookArgTypes('cds-alert', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -27,45 +27,10 @@ export default {
   },
 };
 
-export const API = () => {
-  const slot = text('slot', 'This is an alert.', propertiesGroup);
-  const alertStatus = select(
-    'status',
-    {
-      'none (default info)': undefined,
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      danger: 'danger',
-      loading: 'loading',
-      unknown: 'unknown',
-    },
-    undefined,
-    propertiesGroup
-  );
-  const iconShape = text('iconShape', undefined, propertiesGroup);
-  const iconTitle = text('iconTitle', undefined, propertiesGroup);
-  const size = select('size', { '(default)': 'default', sm: 'sm' }, undefined, propertiesGroup);
-
-  const alertColor = colorKnob('--color', undefined, cssGroup);
-  const iconColor = colorKnob('--icon-color', undefined, cssGroup);
-  const fontSize = text('--font-size', undefined, cssGroup);
-  const fontWeight = text('--font-weight', undefined, cssGroup);
-  const letterSpacing = text('--letter-spacing', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <style>
-      cds-alert {
-        ${setStyles({
-        '--color': alertColor,
-        '--icon-color': iconColor,
-        '--font-size': fontSize,
-        '--font-weight': fontWeight,
-        '--letter-spacing': letterSpacing,
-      })}
-    </style>
-    <cds-alert .iconShape=${iconShape} .iconTitle=${iconTitle} .size=${size} .status=${alertStatus}>
-      ${slot}<cds-inline-button @click=${action('alertActionClicked')}>Dismiss</cds-inline-button>
+    <cds-alert ...="${spreadProps(getElementStorybookArgs(args))}">
+      ${args.default} <cds-inline-button @click=${action('alertActionClicked')}>Dismiss</cds-inline-button>
     </cds-alert>
   `;
 };
@@ -89,32 +54,6 @@ export const actions = () => {
           <cds-button>Button 1</cds-button>
           <cds-button>Button 2</cds-button>
         </cds-alert-actions>
-      </div>
-    </div>
-  `;
-};
-
-export const closeButton = () => {
-  return html`
-    <div cds-layout="vertical gap:sm">
-      <div>
-        <cds-internal-close-button></cds-internal-close-button> :: plain, check for aria warning (problem: it's throwing
-        a warning for every one and not just this one)
-      </div>
-      <div><cds-internal-close-button aria-label="ohai"></cds-internal-close-button> :: aria-labeled</div>
-      <div>
-        <cds-internal-close-button icon-size="48" aria-label="ohai"></cds-internal-close-button> :: numeric size
-      </div>
-      <div>
-        <cds-internal-close-button icon-size="lg" aria-label="ohai"></cds-internal-close-button> :: t-shirt size
-      </div>
-      <div>
-        <cds-internal-close-button
-          icon-size="sm"
-          aria-label="ohai"
-          icon-shape="times-circle"
-        ></cds-internal-close-button>
-        :: custom icon shape...
       </div>
     </div>
   `;
@@ -145,6 +84,7 @@ export const lightAlerts = () => {
 export const status = () => {
   return html`
     <div cds-layout="vertical gap:xxs">
+      <cds-alert>This is an alert with a default neutral status</cds-alert>
       <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
       <cds-alert status="success">This is an alert with a status of "success"</cds-alert>
       <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>

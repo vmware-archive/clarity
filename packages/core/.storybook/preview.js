@@ -1,17 +1,9 @@
 import '!style-loader!css-loader!./public/demo.css';
-import { setCustomElements, addDecorator } from '@storybook/web-components';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withCssResources } from '@storybook/addon-cssresources';
-// import { withA11y } from '@storybook/addon-a11y';
-import { withDesign } from 'storybook-addon-designs';
+import { setCustomElements } from '@storybook/web-components';
 import { applyPolyfill } from 'custom-elements-hmr-polyfill';
 import customElements from '../dist/core/custom-elements.json';
 
 applyPolyfill();
-addDecorator(withKnobs);
-addDecorator(withDesign);
-addDecorator(withCssResources);
-// addDecorator(withA11y); // disable temporary for 6.x beta
 
 export const parameters = {
   passArgsFirst: true,
@@ -55,6 +47,7 @@ export const parameters = {
           'Date (Internal)',
         ],
         'Utilities (Preview)',
+        'Internal APIs',
       ],
     },
   },

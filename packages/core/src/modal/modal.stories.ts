@@ -5,15 +5,14 @@
  */
 
 import '@clr/core/modal/register.js';
-import { cssGroup, propertiesGroup, setStyles } from '@clr/core/internal';
-import { action } from '@storybook/addon-actions';
-import { boolean, color as colorKnob, select, text } from '@storybook/addon-knobs';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import customElements from '../../dist/core/custom-elements.json';
 
 export default {
   title: 'Components/Modal/Stories',
   component: 'cds-modal',
+  argTypes: getElementStorybookArgTypes('cds-modal', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -23,63 +22,18 @@ export default {
   },
 };
 
-function htmlDecode(input: string) {
-  const e = document.createElement('div');
-  e.innerHTML = input;
-  return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
-}
-
-export const API = () => {
-  const modalHeaderSlot = text('cds-modal-header', '<h3 cds-text="title">My Modal</h3>', propertiesGroup);
-  const modalContentSlot = text(
-    'cds-modal-content',
-    '<div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>',
-    propertiesGroup
-  );
-  const modalFooterSlot = text(
-    'cds-modal-footer',
-    '<div cds-layout="horizontal align:right"><cds-button>Ok</cds-button></div>',
-    propertiesGroup
-  );
-
-  const closable = boolean('closable', true, propertiesGroup);
-  const size = select('size', { '(default)': 'default', sm: 'sm', lg: 'lg', xl: 'xl' }, undefined, propertiesGroup);
-
-  const backdropOpacity = text('--backdrop-opacity', undefined, cssGroup);
-  const backdropColor = colorKnob('--backdrop-color', undefined, cssGroup);
-  const backgroundColor = colorKnob('--background-color', undefined, cssGroup);
-  const boxShadowColor = colorKnob('--box-shadow-color', undefined, cssGroup);
-  const borderRadius = text('--border-radius', undefined, cssGroup);
-  const borderColor = colorKnob('--border-color', undefined, cssGroup);
-  const closeIconColor = colorKnob('--close-icon-color', undefined, cssGroup);
-  const closeIconColorHover = colorKnob('--close-icon-color-hover', undefined, cssGroup);
-  const contentBoxShadowColor = colorKnob('--content-box-shadow-color', undefined, cssGroup);
-  const width = text('--width', undefined, cssGroup);
-
+export const API = (args: any) => {
   return html`
-    <style>
-      cds-modal {
-        ${setStyles({
-        '--backdrop-opacity': backdropOpacity,
-        '--backdrop-color': backdropColor,
-        '--background-color': backgroundColor,
-        '--box-shadow-color': boxShadowColor,
-        '--border-radius': borderRadius,
-        '--border-color': borderColor,
-        '--close-icon-color': closeIconColor,
-        '--close-icon-color-hover': closeIconColorHover,
-        '--content-box-shadow-color': contentBoxShadowColor,
-        '--width': width,
-      })}
-    </style>
     <cds-demo popover>
-      <cds-modal __demo-mode .closable=${closable} .size=${size} @closeChange=${action('closeChange')}>
-        <cds-modal-header>${unsafeHTML(htmlDecode(modalHeaderSlot))}</cds-modal-header>
+      <cds-modal __demo-mode ...="${spreadProps(getElementStorybookArgs(args))}">
+        <cds-modal-header>
+          <div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>
+        </cds-modal-header>
         <cds-modal-content>
-          ${unsafeHTML(htmlDecode(modalContentSlot))}
+          <div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>
         </cds-modal-content>
         <cds-modal-actions>
-          ${unsafeHTML(htmlDecode(modalFooterSlot))}
+          <div cds-layout="horizontal align:right"><cds-button>Ok</cds-button></div>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>

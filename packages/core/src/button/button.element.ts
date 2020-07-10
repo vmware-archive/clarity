@@ -95,27 +95,28 @@ export class CdsButton extends CdsBaseButton {
    * - `flat`: buttons are used as tertiary buttons. Can also be used inline because they are different from content in style and recognizable as buttons alongside content.
    */
   @property({ type: String })
-  action: 'solid' | 'outline' | 'flat';
+  action: 'solid' | 'outline' | 'flat' = 'solid';
 
   /**
    * Sets the color of the button to match the following string statuses
    */
   @property({ type: String })
-  status: 'primary' | 'success' | 'danger' | 'inverse';
+  status: 'primary' | 'success' | 'danger' | 'inverse' = 'primary';
 
   /**
    * Sets the overall height and width of the button based on the following string values:
    */
   @property({ type: String })
-  size: 'sm' | 'md';
+  size: 'sm' | 'md' = 'md';
 
   /** Sets if the button should be full width with display block */
   @property({ type: Boolean })
-  block: boolean;
+  block = false;
 
   @query('.private-host') privateHost: HTMLElement;
 
   /**
+   * @type {default | loading | success | error}
    * Changes the button content based on the value passed.
    *
    * - `default`: shows the content of the button

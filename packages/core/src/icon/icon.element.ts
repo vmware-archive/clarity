@@ -75,7 +75,10 @@ export class CdsIcon extends IconMixinClass {
     return this._size;
   }
 
-  /** Apply numerical width-height or a t-shirt-sized CSS classname */
+  /**
+   * @type {string | sm | md | lg | xl | xxl}
+   * Apply numerical width-height or a t-shirt-sized CSS classname
+   */
   @property({ type: String })
   set size(val: string) {
     if (hasStringPropertyChanged(val, this._size)) {
@@ -101,15 +104,16 @@ export class CdsIcon extends IconMixinClass {
   dir: Directions;
 
   /**
-   * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
+   * @type {up | down | left | right}
+   * Takes a directional value that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
    */
   @property({ type: String })
   direction: Directions;
 
   /**
-   * Takes an orientation value (horizontal|vertical) that reverses the orientation of the
-   * icon vertically or horizontally using the strings: 'horizontal' or 'vertical'
+   * @type {horizontal | vertical}
+   * Takes an orientation value that reverses the orientation of the icon vertically or horizontally'
    */
   @property({ type: String })
   flip: Orientations;
@@ -121,8 +125,8 @@ export class CdsIcon extends IconMixinClass {
   solid = false;
 
   /**
-   * Changes color of icon fills and outlines to a color determined by the following
-   * list of statuses: 'info', 'success', 'warning', 'danger', 'highlight'
+   * @type {info | success | warning | danger | highlight}
+   * Changes color of icon fills and outlines
    */
   @property({ type: String })
   status: StatusTypes | 'highlight' | '' = '';
@@ -135,7 +139,7 @@ export class CdsIcon extends IconMixinClass {
   inverse = false;
 
   /**
-   * Attribute: `badge`
+   * @type {info | success | warning | danger | inherit | warning-triangle | inherit-triangle}
    * Sets the color of the icon decoration that appears in the top-right corner
    * of the glyph. The icon decoration is derived from the following predefined types.
    *

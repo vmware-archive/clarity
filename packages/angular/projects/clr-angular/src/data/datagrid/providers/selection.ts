@@ -19,6 +19,7 @@ export class Selection<T = any> {
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
   private lockedRefs: T[] = []; // Ref of locked items
+  private debounce = false;
 
   constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
     this.id = 'clr-dg-selection' + nbSelection++;
@@ -162,7 +163,7 @@ export class Selection<T = any> {
   }
 
   public clearSelection(): void {
-    this.current.length = 0;
+    this.current = [];
     this.prevSelectionRefs = [];
     this._currentSingle = null;
     this.prevSingleSelectionRef = null;
@@ -237,8 +238,10 @@ export class Selection<T = any> {
 
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    if (emit) {
+    if (emit && !this.debounce) {
       this.emitChange();
+      this.debounce = true;
+      setTimeout(() => (this.debounce = false));
     }
   }
 
@@ -274,7 +277,7 @@ export class Selection<T = any> {
    * Selects an item
    */
   private selectItem(item: T): void {
-    this.current.push(item);
+    this.current = this.current.concat(item);
     if (this._items.trackBy && this._items.all) {
       // Push selected ref onto array
       const lookup = this._items.all.findIndex(maybe => maybe === item);
@@ -286,7 +289,7 @@ export class Selection<T = any> {
    * Deselects an item
    */
   private deselectItem(indexOfItem: number): void {
-    this.current.splice(indexOfItem, 1);
+    this.current = this.current.slice(0, indexOfItem).concat(this.current.slice(indexOfItem + 1));
     if (this._items.trackBy && indexOfItem < this.prevSelectionRefs.length) {
       // Keep selected refs array in sync
       const removedItems = this.prevSelectionRefs.splice(indexOfItem, 1);

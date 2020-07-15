@@ -40,6 +40,8 @@
     overflow: auto;
     flex: 1 1 auto;
     margin-top: $clr_baselineRem_0_5;
+    // Force content stretch on Safari
+    display: flex;
   }
 
   .datagrid-container {
@@ -643,6 +645,7 @@
 
   .datagrid-table-wrapper {
     display: flex;
+    flex: 1 1 auto;
   }
 
   .datagrid-table {

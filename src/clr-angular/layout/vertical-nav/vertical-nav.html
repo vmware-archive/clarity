@@ -18,7 +18,7 @@
 <!-- Click handler on .nav-content is bad but required :-( -->
 <div class="nav-content">
     <ng-content></ng-content>
-    <button (click)="collapsed = false" class="nav-btn"
+    <button (click)="collapsed = false" class="nav-btn" aria-hidden="true" tabindex="-1"
       [attr.aria-label]="commonStrings.keys.verticalNavToggle"
       *ngIf="collapsible && collapsed"></button>
 </div>

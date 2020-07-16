@@ -16,6 +16,10 @@ export function isString(val: any): boolean {
   return is(String, val);
 }
 
+export function isNumericString(val: string): boolean {
+  return isString(val) && !isEmpty(val.trim()) && +val === +val;
+}
+
 export function isStringOrNil(val: any): boolean {
   return is(String, val) || isNil(val);
 }

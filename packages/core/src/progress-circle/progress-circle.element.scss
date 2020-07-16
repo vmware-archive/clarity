@@ -1,0 +1,109 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --ring-color: #{$cds-token-color-neutral-200};
+  --fill-color: #{$cds-token-color-action-800};
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  display: block;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.private-host {
+  @include center-content('block');
+  @include equilateral(100%);
+
+  .backstroke {
+    stroke: var(--ring-color);
+  }
+
+  .arcstroke {
+    stroke: var(--fill-color);
+    transition: stroke-dashoffset 300ms ease-in-out;
+  }
+}
+
+:host,
+:host([size='sm']) {
+  @include equilateral(#{$cds-token-space-size-7});
+}
+
+:host([size='md']) {
+  @include equilateral(#{$cds-token-space-size-9});
+}
+
+:host([size='lg']) {
+  @include equilateral(#{$cds-token-space-size-11});
+}
+
+:host([size='xl']) {
+  @include equilateral(#{$cds-token-space-size-12});
+}
+
+:host([size='xxl']) {
+  // 64px
+  @include equilateral(calc(#{$cds-token-space-size-13} - #{$cds-token-space-size-5}));
+}
+
+:host([value='0']) .fillstroke,
+:host([value='100']) .fillstroke {
+  display: none;
+}
+
+:host(:not([value])) .progress-wrapper {
+  animation: spin 0.8s cubic-bezier(0.17, 0.4, 0.8, 0.79) infinite;
+}
+
+:host([status='info']) {
+  --ring-color: #{$cds-token-color-action-50};
+  --fill-color: #{$cds-token-color-action-800};
+}
+
+:host([status='success']) {
+  --ring-color: #{$cds-token-color-success-50};
+  --fill-color: #{$cds-token-color-success-800};
+}
+
+:host([status='warning']) {
+  --ring-color: #{$cds-token-color-warning-100};
+  --fill-color: #{$cds-token-color-warning-900};
+}
+
+:host([status='danger']) {
+  --ring-color: #{$cds-token-color-danger-50};
+  --fill-color: #{$cds-token-color-danger-900};
+}
+
+:host([status='unknown']) {
+  --ring-color: #{$cds-token-color-secondary-action-50};
+  --fill-color: #{$cds-token-color-secondary-action-900};
+}
+
+:host([inverse]) {
+  --ring-color: #{$cds-token-color-neutral-700};
+  --fill-color: #{$cds-token-color-neutral-0};
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Hack for IE11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .private-host {
+    display: block;
+  }
+}

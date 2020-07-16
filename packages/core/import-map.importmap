@@ -65,6 +65,8 @@
     "@clr/core/modal/register.js": "/base/dist/core/modal/register.js",
     "@clr/core/password": "/base/dist/core/password/index.js",
     "@clr/core/password/register.js": "/base/dist/core/password/register.js",
+    "@clr/core/progress-circle": "/base/dist/core/progress-circle/index.js",
+    "@clr/core/progress-circle/register.js": "/base/dist/core/progress-circle/register.js",
     "@clr/core/radio": "/base/dist/core/radio/index.js",
     "@clr/core/radio/register.js": "/base/dist/core/radio/register.js",
     "@clr/core/range": "/base/dist/core/range/index.js",

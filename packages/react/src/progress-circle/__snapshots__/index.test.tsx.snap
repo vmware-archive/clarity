@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsProgressCircle snapshot 1`] = `
+<div>
+  <CdsProgressCircle
+    status="info"
+    value={49}
+  >
+    <cds-progress-circle />
+  </CdsProgressCircle>
+  <CdsProgressCircle
+    value={0}
+  >
+    <cds-progress-circle />
+  </CdsProgressCircle>
+  <CdsProgressCircle
+    status="success"
+    value={100}
+  >
+    <cds-progress-circle />
+  </CdsProgressCircle>
+</div>
+`;

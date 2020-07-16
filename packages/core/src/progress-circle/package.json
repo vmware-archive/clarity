@@ -1,0 +1,6 @@
+{
+  "name": "@clr/core/progress-circle",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

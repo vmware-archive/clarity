@@ -35,6 +35,7 @@ export * from './utils/keycodes.js';
 export * from './utils/lit-element.js';
 export * from './utils/metadata.js';
 export * from './utils/responsive.js';
+export * from './utils/size.js';
 export * from './utils/string.js';
 export * from './utils/supports.js';
 export * from './interfaces/index.js';

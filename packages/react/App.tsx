@@ -11,6 +11,7 @@ import { CdsIcon } from './src/icon';
 import { CdsInput } from './src/input';
 import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from './src/modal';
 import { CdsPassword } from './src/password';
+import { CdsProgressCircle } from './src/progress-circle';
 import { CdsRadio, CdsRadioGroup } from './src/radio';
 import { CdsRange } from './src/range';
 import { CdsSearch } from './src/search';
@@ -610,6 +611,15 @@ export default class App extends React.Component<{}, AppState> {
             <CdsControlMessage>message text</CdsControlMessage>
           </CdsSelect>
         </CdsFormGroup>
+
+        <h2>Progress</h2>
+        <h3>Circular</h3>
+        <div cds-layout="horizontal gap:sm">
+          <CdsProgressCircle size="xl" value={0}></CdsProgressCircle>
+          <CdsProgressCircle size="xl" value={49}></CdsProgressCircle>
+          <CdsProgressCircle size="xl" value={100}></CdsProgressCircle>
+          <CdsProgressCircle size="xl"></CdsProgressCircle>
+        </div>
       </div>
     );
   }

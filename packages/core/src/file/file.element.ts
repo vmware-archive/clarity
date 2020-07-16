@@ -8,8 +8,6 @@ import { html, internalProperty } from 'lit-element';
 import { CommonStringsService } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { folderIcon, ClarityIcons } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
-import '@clr/core/button/register.js';
 import { styles } from './file.element.css.js';
 
 ClarityIcons.addIcons(folderIcon);
@@ -29,7 +27,7 @@ ClarityIcons.addIcons(folderIcon);
  * ```
  *
  * @element cds-file
- * @slot default - For projecting file input and label
+ * @slot - For projecting file input and label
  */
 export class CdsFile extends CdsControl {
   @internalProperty() private buttonLabel = CommonStringsService.keys.browse;
@@ -45,7 +43,7 @@ export class CdsFile extends CdsControl {
   protected get inputTemplate() {
     return html`
       <div>
-        <cds-button size="sm" action="outline" @click="${() => this.label.click()}" .disabled=${this.disabled}>
+        <cds-button size="sm" action="outline" @click="${() => this.label.click()}" ?disabled=${this.disabled}>
           <cds-icon shape="folder" aria-hidden="true"></cds-icon>
           ${this.buttonLabel}
         </cds-button>

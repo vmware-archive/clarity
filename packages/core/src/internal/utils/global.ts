@@ -5,12 +5,14 @@
  */
 
 import { isBrowser } from './exists.js';
-import { getAngularVersion, getReactVersion, getVueVersion } from './framework.js';
+import { getAngularVersion, getReactVersion, getVueVersion, getAngularJSVersion } from './framework.js';
 
 export interface CDSGlobal {
   _version: string[];
   _loadedElements: string[];
+  _react: { version: string }; // set by @clr/react
   getVersion: () => CDSLog;
+  logVersion: () => void;
 }
 
 export interface CDSLog {
@@ -18,6 +20,7 @@ export interface CDSLog {
   loadedElements: string[];
   userAgent: string;
   angularVersion?: string | undefined;
+  angularJSVersion?: string | undefined;
   reactVersion?: string | undefined;
   vueVersion?: string | undefined;
 }
@@ -34,17 +37,24 @@ function getVersion() {
     loadedElements: window.CDS._loadedElements,
     userAgent: navigator.userAgent,
     angularVersion: getAngularVersion(false),
+    angularJSVersion: getAngularJSVersion(false),
     reactVersion: getReactVersion(false),
     vueVersion: getVueVersion(false),
   };
   return log;
 }
 
+function logVersion() {
+  console.log(JSON.stringify(getVersion(), null, 2));
+}
+
 function initializeCDSGlobal() {
   window.CDS = window.CDS || {
     _version: [],
     _loadedElements: [],
+    _react: { version: undefined },
     getVersion,
+    logVersion,
   };
 }
 

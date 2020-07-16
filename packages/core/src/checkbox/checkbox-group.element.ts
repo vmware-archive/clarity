@@ -31,7 +31,7 @@ import { CdsCheckbox } from './checkbox.element.js';
  * ```
  *
  * @element cds-checkbox-group
- * @slot default - For projecting checkbox controls
+ * @slot - For projecting checkbox controls
  */
 export class CdsCheckboxGroup extends CdsInternalControlGroup {
   @querySlotAll('cds-checkbox', { assign: 'controls' }) protected controls: NodeListOf<CdsCheckbox>;

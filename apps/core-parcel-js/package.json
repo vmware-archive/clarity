@@ -1,23 +1,31 @@
 {
-  "name": "js-app",
+  "name": "clarity-performance",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel src/index.html",
-    "clean": "rm -rf dist/*",
-    "build": "yarn run clean && parcel build src/index.html",
-    "deploy": "yarn run build && firebase deploy",
-    "bundle": "source-map-explorer dist/*.js"
+    "start": "parcel src/index.html --cache-dir=./.parcel-cache",
+    "build": "yarn run clean && parcel build src/index.html --cache-dir=./.parcel-cache",
+    "bundle": "source-map-explorer dist/*.js",
+    "clean": "del ./dist .parcel-cache"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "parcel": "1.12.4",
-    "source-map-explorer": "^2.1.2"
+  "browserModern": "dist/index.html",
+  "targets": {
+    "browserModern": {
+      "engines": {
+        "browsers": [
+          "last 1 Chrome version"
+        ]
+      }
+    }
   },
+  "license": "MIT",
   "dependencies": {
     "@clr/city": "^1.1.0",
-    "@clr/core": "^3.1.0",
+    "@clr/core": "./packages/core/dist/core",
     "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1",
+    "source-map-explorer": "^2.4.2"
   }
 }

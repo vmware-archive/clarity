@@ -50,6 +50,7 @@ import {
   spreadProps,
   getElementStorybookArgs,
 } from '@clr/core/internal';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 loadChartIconSet();
 loadCommerceIconSet();
@@ -102,7 +103,7 @@ export const all = () => {
   const badge = select(
     'badge',
     {
-      'none (default)': undefined,
+      'none (default)': '',
       info: 'info',
       success: 'success',
       warning: 'warning',
@@ -111,13 +112,13 @@ export const all = () => {
       'warning-triangle': 'warning-triangle',
       'inherit-triangle': 'inherit-triangle',
     },
-    undefined,
+    '',
     propertiesGroup
   );
   const iconStatus = select(
     'status',
-    { 'none (default)': undefined, info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    undefined,
+    { 'none (default)': '', info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
+    '',
     propertiesGroup
   );
   const inverse = boolean('inverse', false, propertiesGroup);
@@ -186,14 +187,14 @@ export const all = () => {
               i => html`
             <div class="dc-icon-box" .hidden=${!i.includes(search)}>
             <cds-icon
-              .badge=${badge}
-              .status=${iconStatus}
-              .solid=${solid}
-              .size=${size}
-              .shape=${i}
-              .direction=${dir}
-              .inverse=${inverse}
-              .flip=${fl}>
+              badge=${badge}
+              status=${iconStatus}
+              ?solid=${solid}
+              size=${size}
+              shape=${i}
+              direction=${ifDefined(dir)}
+              ?inverse=${inverse}
+              flip=${ifDefined(fl)}>
             </cds-icon>
             </cds-icon>
               <p class="dc-icon-name">${i}</p>
@@ -369,6 +370,7 @@ export const flip = () => {
   `;
 };
 
+/** @customElement clr-icon */
 class LegacyIcon extends CdsIcon {}
 registerElementSafely('clr-icon', LegacyIcon);
 
@@ -389,10 +391,13 @@ export const legacy = () => {
     <clr-icon shape="info-circle" style="width: 72px; height: 72px;"></clr-icon>
 
     <h2>Direction</h2>
-    <clr-icon shape="caret" dir="up"></clr-icon>
-    <clr-icon shape="caret" dir="right"></clr-icon>
-    <clr-icon shape="caret" dir="down"></clr-icon>
-    <clr-icon shape="caret" dir="left"></clr-icon>
+    <!-- @ts-ignore -->
+    <div>
+      <clr-icon shape="caret" dir="up"></clr-icon>
+      <clr-icon shape="caret" dir="right"></clr-icon>
+      <clr-icon shape="caret" dir="down"></clr-icon>
+      <clr-icon shape="caret" dir="left"></clr-icon>
+    </div>
     <clr-icon shape="caret" style="transform: rotate(0deg);"></clr-icon>
     <clr-icon shape="caret" style="transform: rotate(90deg);"></clr-icon>
     <clr-icon shape="caret" style="transform: rotate(180deg);"></clr-icon>

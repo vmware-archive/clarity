@@ -11,7 +11,7 @@
 :host {
   all: initial;
   display: block;
-  font-family: inherit;
+  font-family: $cds-token-typography-font-family;
   contain: layout; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
@@ -24,7 +24,7 @@
 }
 
 slot {
-  font-family: inherit;
+  font-family: $cds-token-typography-font-family;
   display: block;
 }
 

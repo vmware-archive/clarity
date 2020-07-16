@@ -20,3 +20,10 @@ export const spreadProps = directive(props => (part: any) => {
     .filter(([k, v]) => v !== part.committer.element[k])
     .forEach(([k, v]) => (part.committer.element[k] = v));
 });
+
+// for typing spread props directive '..' + '.' property accessor
+declare global {
+  interface HTMLElement {
+    '..': any;
+  }
+}

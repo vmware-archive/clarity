@@ -17,6 +17,10 @@ export function createReactComponent<BaseComponent extends HTMLElement>(elementN
     constructor(props: any) {
       super(props);
       this.ref = React.createRef(); // need to document minimum version of react needed
+
+      if ((window as any)?.CDS?._react?.version) {
+        (window as any).CDS._react.version = React.version;
+      }
     }
 
     componentDidMount() {

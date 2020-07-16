@@ -5,7 +5,7 @@
  */
 
 import { LitElement } from 'lit-element';
-import { childrenUpdateComplete, syncDefinedProps } from './lit-element.js';
+import { childrenUpdateComplete, syncDefinedProps, syncProps } from './lit-element.js';
 
 describe('lit-element utils', () => {
   it('childrenUpdateComplete', async () => {
@@ -35,5 +35,19 @@ describe('lit-element utils', () => {
 
     expect((one as any).id).toBe(undefined);
     expect((two as any).id).toBe(undefined);
+  });
+
+  it('syncProps', () => {
+    const source = { name: 'source-name', id: 'source-id', value: 'source-value' };
+    const target = { name: 'target-name', id: 'target-id', value: 'target-value' };
+
+    syncProps(target, source, {
+      name: true,
+      id: source.id !== 'source-id',
+    });
+
+    expect(target.name).toBe('source-name', 'sets properties defined true in object');
+    expect(target.id).toBe('target-id', 'ignores properties where condition is not met');
+    expect(target.value).toBe('target-value', 'ignores properties not defined on object conditions');
   });
 });

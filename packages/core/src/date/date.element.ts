@@ -9,7 +9,6 @@ import { globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, calendarIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 import { styles as globalStyles } from './date.global.css.js';
 
 ClarityIcons.addIcons(calendarIcon);
@@ -30,7 +29,7 @@ ClarityIcons.addIcons(calendarIcon);
  * ```
  *
  * @element cds-date
- * @slot default - For projecting date input and label
+ * @slot - For projecting date input and label
  */
 export class CdsDate extends CdsControl {
   @globalStyle() protected globalStyles = globalStyles;

@@ -4,6 +4,6 @@ import '@clr/core/tag/register.js';
 import '@clr/core/alert/register.js';
 import '@clr/core/icon/register.js';
 import '@clr/core/input/register.js';
-import { ClarityIcons, userIcon } from '@clr/core/icon';
+import { ClarityIcons, userIcon, nodeGroupIcon, headphonesIcon } from '@clr/core/icon';
 
-ClarityIcons.addIcons(userIcon);
+ClarityIcons.addIcons(userIcon, nodeGroupIcon, headphonesIcon);

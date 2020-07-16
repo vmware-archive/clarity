@@ -5,11 +5,10 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle, property, listenForAttributeChange } from '@clr/core/internal';
+import { globalStyle, internalProperty, listenForAttributeChange } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, angleIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 import { styles as globalStyles } from './select.global.css.js';
 import { styles } from './select.element.css.js';
 
@@ -34,7 +33,7 @@ ClarityIcons.addIcons(angleIcon);
  * ```
  *
  * @element cds-select
- * @slot default - For projecting select and label
+ * @slot - For projecting select and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border
@@ -57,7 +56,7 @@ export class CdsSelect extends CdsControl {
 
   @globalStyle() protected globalStyles = globalStyles;
 
-  @property({ type: Boolean }) protected multiple = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected multiple = false;
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);

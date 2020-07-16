@@ -6,3 +6,18 @@
 
 // we export any non component code such as utilities at the root '@clr/core'
 export { CommonStringsService, ClrCommonStrings, commonStringsDefault, runCssVarsPolyfill } from '@clr/core/internal';
+
+// type global attribute utilities
+declare global {
+  interface HTMLElement {
+    'cds-text': string;
+    'cds-layout': string;
+    'cds-list': string;
+  }
+
+  interface HTMLElementTagNameMap {
+    'cds-card': HTMLElement;
+    'cds-demo': HTMLElement;
+    'cds-placeholder': HTMLElement;
+  }
+}

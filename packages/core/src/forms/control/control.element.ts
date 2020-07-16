@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, query, internalProperty } from 'lit-element';
+import { html, LitElement, query } from 'lit-element';
 import {
   baseStyles,
   property,
@@ -19,6 +19,8 @@ import {
   describeElementByElements,
   updateComponentLayout,
   supportsResizeObserver,
+  internalProperty,
+  syncProps,
 } from '@clr/core/internal';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
 import { styles } from './control.element.css.js';
@@ -51,7 +53,7 @@ import { CdsControlAction } from '../control-action/control-action.element.js';
  * </cds-control>
  * ```
  *
- * @slot default - For projecting input and label
+ * @slot - For projecting input and label
  */
 export class CdsControl extends LitElement {
   /**
@@ -95,9 +97,9 @@ export class CdsControl extends LitElement {
 
   private _layout: ControlLayout = defaultFormLayout;
 
-  @property({ type: Boolean }) protected disabled = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
 
-  @property({ type: Boolean }) protected focused = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
 
   @internalProperty() protected fixedControlWidth = false;
 
@@ -109,10 +111,10 @@ export class CdsControl extends LitElement {
   }
 
   /** @private Used for hiding label for input groups */
-  @property({ type: Boolean }) hiddenLabel = false;
+  @internalProperty() hiddenLabel = false;
 
   /** @private Used for control/form groups */
-  @querySlot('input, select, textarea', {
+  @querySlot('input, select, textarea, [cds-control]', {
     required: 'error',
     requiredMessage: 'input element is missing',
     assign: 'input',
@@ -256,6 +258,11 @@ export class CdsControl extends LitElement {
     this.setupDescribedByUpdates();
   }
 
+  updated(props: Map<string, any>) {
+    super.updated(props);
+    syncProps(this.inputControl, this, { disabled: props.has('disabled') });
+  }
+
   disconnectedCallback() {
     super.disconnectedCallback();
     this.observers.forEach(o => o.disconnect());
@@ -288,13 +295,13 @@ export class CdsControl extends LitElement {
     if (this.supportsPrefixSuffixActions) {
       const start = `${this.prefixAction.getBoundingClientRect().width + 6}px`;
       const end = `${this.suffixAction.getBoundingClientRect().width + 6}px`;
-      this.inputControl.style.paddingLeft = this.isRTL ? end : start;
-      this.inputControl.style.paddingRight = this.isRTL ? start : end;
+      this.inputControl.style.setProperty('padding-left', this.isRTL ? end : start, 'important');
+      this.inputControl.style.setProperty('padding-right', this.isRTL ? start : end, 'important');
     }
   }
 
   get layoutStable() {
-    return !controlIsWrapped(this.inputControl, this.controlLabel, this.layout);
+    return this.hiddenLabel || !controlIsWrapped(this.inputControl, this.controlLabel, this.layout);
   }
 
   private setupResponsive() {

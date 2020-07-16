@@ -10,10 +10,11 @@
 }
 
 ::slotted([slot='label']) {
-  max-width: var(--internal-label-max-width, initial);
-  display: inline-block;
-  text-transform: capitalize;
-  cursor: pointer;
+  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !important;
+  max-width: var(--internal-label-max-width, initial) !important;
+  display: inline-block !important;
+  text-transform: capitalize !important;
+  cursor: pointer !important;
 
   @include line-height-eraser(
     getLineHeightGap($cds-token-typography-secondary-line-height-static, $cds-token-typography-secondary-line-height),
@@ -22,23 +23,23 @@
     $cds-token-global-font-x-height
   );
 
-  font-size: $cds-token-typography-secondary-font-size;
-  font-weight: $cds-token-typography-secondary-font-weight;
-  color: $cds-token-typography-secondary-color;
-  line-height: $cds-token-typography-secondary-line-height;
-  letter-spacing: $cds-token-typography-secondary-letter-spacing;
+  font-size: $cds-token-typography-secondary-font-size !important;
+  font-weight: $cds-token-typography-secondary-font-weight !important;
+  color: $cds-token-typography-secondary-color !important;
+  line-height: $cds-token-typography-secondary-line-height !important;
+  letter-spacing: $cds-token-typography-secondary-letter-spacing !important;
 }
 
-:host([disabled]) ::slotted(label) {
-  color: $cds-token-color-neutral-600;
-  cursor: not-allowed;
+:host([disabled]) ::slotted([slot='label']) {
+  color: $cds-token-color-neutral-600 !important;
+  cursor: not-allowed !important;
 }
 
-:host([action='primary']) ::slotted(label) {
-  font-weight: bold;
+:host([action='primary']) ::slotted([slot='label']) {
+  font-weight: bold !important;
 }
 
 ::slotted(cds-control-action) {
-  padding: $cds-token-space-size-4 0 $cds-token-space-size-3 0;
-  margin-bottom: calc(-1 * #{$cds-token-space-size-5});
+  padding: $cds-token-space-size-4 0 $cds-token-space-size-3 0 !important;
+  margin-bottom: calc(-1 * #{$cds-token-space-size-5}) !important;
 }

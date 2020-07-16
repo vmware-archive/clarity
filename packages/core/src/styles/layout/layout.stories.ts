@@ -1684,3 +1684,31 @@ export const patternsResponsiveImageGallery = () => {
     </div>
   `;
 };
+
+export const layoutTypes = () => {
+  return html`
+    <div cds-layout="grid cols@sm:4 gap:xl">
+      <div cds-layout="vertical gap:lg align:horizontal-center">
+        <h3 cds-text="section center">Horizontal (Inline)</h3>
+        ${horizontalLayout()}
+      </div>
+
+      <div cds-layout="vertical gap:lg align:horizontal-center">
+        <h3 cds-text="section center">Vertical (Stack)</h3>
+        ${verticalLayout()}
+      </div>
+
+      <div cds-layout="vertical gap:lg">
+        <h3 cds-text="section center">Grid (Columns/Responsive)</h3>
+        <cds-demo layout wide>
+          <div cds-layout="grid cols@sm:6 gap:md">
+            <cds-placeholder>1</cds-placeholder>
+            <cds-placeholder>2</cds-placeholder>
+            <cds-placeholder>3</cds-placeholder>
+            <cds-placeholder>4</cds-placeholder>
+          </div>
+        </cds-demo>
+      </div>
+    </div>
+  `;
+};

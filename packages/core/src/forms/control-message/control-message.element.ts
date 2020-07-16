@@ -26,7 +26,7 @@ import { ValidityStateKey } from '../utils/validate.js';
  * ```
  *
  * @element cds-control-message
- * @slot default - For projecting helper message text
+ * @slot - For projecting helper message text
  * @cssprop --color
  * @cssprop --font-size
  * @cssprop --font-weight

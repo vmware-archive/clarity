@@ -41,20 +41,11 @@
   position: absolute;
 }
 
-button.close {
-  font-size: $cds-token-space-size-8;
-  line-height: $cds-token-space-size-8;
+cds-internal-close-button {
+  --color: var(--close-icon-color-hover);
 
-  &:focus,
-  &:hover,
-  &:active {
-    --close-icon-color: var(--close-icon-color-hover);
-  }
-
-  cds-icon {
-    fill: var(--close-icon-color);
-    // per measurement, this results in an icon that is 16x16...
-    @include equilateral($cds-token-space-size-8);
+  &:hover {
+    --color: var(--close-icon-color-hover);
   }
 }
 

@@ -8,7 +8,6 @@ import { baseStyles, property, CdsBaseButton } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
 import { ClarityIcons, timesIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 
 ClarityIcons.addIcons(timesIcon);
 

@@ -35,7 +35,7 @@ import { CdsInput } from './input.element.js';
  * ```
  *
  * @element cds-input-group
- * @slot default - For projecting inputs
+ * @slot - For projecting inputs
  */
 export class CdsInputGroup extends CdsInternalControlGroup {
   @querySlotAll('cds-input, cds-select, cds-time, cds-date, cds-control, [cds-control]', { assign: 'controls' })

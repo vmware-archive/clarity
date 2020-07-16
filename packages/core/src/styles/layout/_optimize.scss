@@ -5,7 +5,8 @@
 // This is a performance optimization that aliases the token to
 // a "minified" value to reduce overall bundle size.
 
-:root {
+:root,
+:host {
   --clxxs: var(--cds-token-layout-space-xxs, #{$cds-token-layout-space-xxs-static});
   --clxs: var(--cds-token-layout-space-xs, #{$cds-token-layout-space-xs-static});
   --clsm: var(--cds-token-layout-space-sm, #{$cds-token-layout-space-sm-static});

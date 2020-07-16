@@ -38,7 +38,9 @@ export class CdsModalActions extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`<slot
+      cds-layout="${this.hasAttribute('cds-layout') ? 'display:contents' : 'horizontal gap:sm align:right'}"
+    ></slot>`;
   }
 
   static get styles() {

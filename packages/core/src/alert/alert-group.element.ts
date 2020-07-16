@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { assignSlotNames, baseStyles, property, querySlot, querySlotAll } from '@clr/core/internal';
+import { html, LitElement } from 'lit-element';
+import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@clr/core/internal';
 import { CdsAlert } from './alert.element.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { styles } from './alert-group.element.css.js';
-import { html, LitElement } from 'lit-element';
 
 /**
  * Alert groups are containers for a set of alerts. Alert groups can hold one or many alerts
@@ -40,9 +40,8 @@ import { html, LitElement } from 'lit-element';
  *   </cds-alert-group>
  * ```
  *
- * @beta
  * @element cds-alert-group
- * @slot default - Content slot for the alerts
+ * @slot - Content slot for the alerts
  * @cssprop --color
  * @cssprop --icon-color
  * @cssprop --icon-size
@@ -79,61 +78,8 @@ export class CdsAlertGroup extends LitElement {
 
   @querySlotAll('cds-alert') private alerts: NodeListOf<CdsAlert>;
 
-  @querySlot('.pager') pager: HTMLElement;
-
-  private updateAlertSizes() {
-    this.alerts.forEach(alrt => {
-      alrt.size = this.size;
-    });
-  }
-
-  private updateAlertStatuses() {
-    if (this.type === 'light' && this.status === 'default') {
-      return;
-    }
-    if (this.type === 'banner') {
-      this.updateBannerAlertGroupStatus();
-    } else {
-      this.alerts.forEach(alrt => {
-        if (alrt.isInitted && alrt.status !== 'loading') {
-          alrt.status = this.status;
-        }
-      });
-    }
-  }
-
-  updateBannerAlertGroupStatus() {
-    this.status = this.alerts[0].status || 'default';
-  }
-
-  private updateAlertTypes() {
-    this.alerts.forEach(alrt => {
-      alrt.alertGroupType = this.type;
-    });
-  }
-
-  private updateAlerts() {
-    this.updateAlertTypes();
-    this.updateAlertStatuses();
-    this.updateAlertSizes();
-  }
-
-  private alertTypesSet = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    if (!this.alertTypesSet) {
-      this.updateAlerts();
-      this.alertTypesSet = true;
-    }
-    if (this.pager) {
-      assignSlotNames([this.pager, 'pager']);
-    }
-  }
-
-  updated() {
-    this.updateAlerts();
-  }
+  /** @private */
+  @querySlot('.pager', { assign: 'pager' }) pager: HTMLElement;
 
   render() {
     return html`
@@ -152,6 +98,19 @@ export class CdsAlertGroup extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  async updated(props: Map<string, any>) {
+    super.updated(props);
+    await Promise.all(Array.from(this.alerts).map(a => a.updateComplete));
+
+    Array.from(this.alerts).forEach(alert =>
+      syncProps(alert, this, {
+        status: props.has('status') && this.type !== 'light' && alert.status !== 'loading',
+        type: props.has('type'),
+        size: props.has('size'),
+      })
+    );
   }
 
   static get styles() {

@@ -11,11 +11,11 @@
 
       & > *,
       &::slotted(*) {
-        margin-top: #{$sizeValue};
-        margin-left: #{$sizeValue};
-        top: calc(-1 * #{$sizeValue});
-        left: calc(-1 * #{$sizeValue});
-        position: relative;
+        margin-top: #{$sizeValue} !important;
+        margin-left: #{$sizeValue} !important;
+        top: calc(-1 * #{$sizeValue}) !important;
+        left: calc(-1 * #{$sizeValue}) !important;
+        position: relative !important;
       }
     }
   }

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html, LitElement } from 'lit-element';
 import {
   applyMixins,
-  assignSlotNames,
   baseStyles,
   CommonStringsService,
   event,
@@ -16,6 +16,8 @@ import {
   querySlotAll,
   UniqueId,
   setAttributes,
+  syncDefinedProps,
+  internalProperty,
 } from '@clr/core/internal';
 import {
   CdsIcon,
@@ -29,9 +31,8 @@ import {
 } from '@clr/core/icon';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { CdsAlertActions } from './alert-actions.element.js';
-import { styles } from './alert.element.css.js';
-import { html, LitElement } from 'lit-element';
 import { CdsAlertGroup } from './alert-group.element.js';
+import { styles } from './alert.element.css.js';
 
 ClarityIcons.addIcons(
   infoStandardIcon,
@@ -100,7 +101,6 @@ export function getAlertContentLayout(
         default:
           return '';
       }
-    case 'default':
     default:
       switch (containerType) {
         case 'wrapper':
@@ -109,6 +109,8 @@ export function getAlertContentLayout(
           return fillLayoutValue;
         case 'actions':
           return 'align:shrink';
+        default:
+          return '';
       }
   }
 }
@@ -144,9 +146,8 @@ applyMixins(AlertMixinClass, [UniqueId]);
  *   </cds-alert>
  * ```
  *
- * @beta
  * @element cds-alert
- * @slot default - Content slot for inside the alert
+ * @slot - Content slot for inside the alert
  * @event closeChange - notify when the user has clicked the dismiss button
  * @cssprop --color
  * @cssprop --background
@@ -167,48 +168,12 @@ export class CdsAlert extends AlertMixinClass {
   size: AlertSizes = 'default';
 
   /**
-   * Prevents the alert group from setting types and statuses on the alert children
-   * before they are done setting their own properties
-   * Internal Use Only
-   * @private
-   */
-  isInitted = false;
-
-  /**
    * Sets up the buttons, layouts, close-button and other properties based on the alert group container
    * Internal Use Only
    * @private
    */
-  @property({ type: String })
-  alertGroupType: AlertGroupTypes;
-
-  private get shouldShowCloseButton(): boolean {
-    return this.alertGroupType !== 'light' && this.closable;
-  }
-
-  private updateIcons() {
-    this.alertIcons.forEach(i => {
-      assignSlotNames([i, 'alert-icon']);
-    });
-  }
-
-  private updateActions(newAlertGroupType: AlertGroupTypes) {
-    this.alertActions.forEach(actns => {
-      actns.type = newAlertGroupType;
-    });
-  }
-
-  private updateCloseButton() {
-    if (this.shouldShowCloseButton) {
-      assignSlotNames([this.closeButton, 'close-button']);
-    }
-  }
-
-  private updateSlots(newAlertGroupType: AlertGroupTypes) {
-    this.updateIcons();
-    this.updateActions(newAlertGroupType);
-    this.updateCloseButton();
-  }
+  @internalProperty({ type: String, reflect: true })
+  type: AlertGroupTypes = 'light';
 
   private idForAriaDescriber = 'aria-' + this._idPrefix + this._uniqueId;
 
@@ -230,46 +195,41 @@ export class CdsAlert extends AlertMixinClass {
   @property({ type: String })
   closeIconTitle = CommonStringsService.keys.alertCloseButtonAriaLabel;
 
-  @querySlotAll('cds-alert-actions') private alertActions: NodeListOf<CdsAlertActions>;
+  @querySlot('cds-alert-actions') private alertActions: CdsAlertActions;
 
-  @querySlotAll('cds-icon') private alertIcons: NodeListOf<CdsIcon>;
+  @querySlotAll('cds-icon', { assign: 'alert-icon' }) protected alertIcons: NodeListOf<CdsIcon>;
 
-  @querySlot('cds-internal-close-button') private closeButton: HTMLElement;
+  @querySlot('cds-internal-close-button', { assign: 'close-button' }) protected closeButton: HTMLElement;
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateSlots(this.alertGroupType);
-    this.isInitted = true;
     setAttributes(this, ['aria-describedby', this.idForAriaDescriber], ['role', 'region']);
   }
 
-  updated() {
-    this.updateSlots(this.alertGroupType);
-
-    if (this.alertGroupType === 'banner') {
-      (this.parentElement as CdsAlertGroup).updateBannerAlertGroupStatus();
-    }
+  updated(props: Map<string, any>) {
+    super.updated(props);
+    syncDefinedProps(props, this, [this.alertActions]);
   }
 
   private get parentGroupHasPager(): boolean {
-    return this.alertGroupType === 'banner' && !!(this.parentElement as CdsAlertGroup).pager;
+    return this.type === 'banner' && !!(this.parentElement as CdsAlertGroup).pager;
   }
 
   render() {
     return html`
       <div
         class="private-host"
-        cds-layout="${this.alertGroupType === 'banner'
+        cds-layout="${this.type === 'banner'
           ? 'horizontal wrap:none gap:sm align:vertical-center align:horizontal-center'
           : 'horizontal wrap:none gap:xs'}"
       >
-        ${this.alertGroupType === 'banner' && !this.parentGroupHasPager
+        ${this.type === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
           : html``}
         <span class="alert-icon-wrapper" aria-hidden="true" cds-layout="horizontal">
           ${this.status === 'loading'
             ? html`<span
-                class="${this.alertGroupType === 'banner'
+                class="${this.type === 'banner'
                   ? 'spinner spinner-inline spinner-neutral-0'
                   : 'spinner spinner-inline'}"
                 aria-hidden="true"
@@ -287,38 +247,38 @@ export class CdsAlert extends AlertMixinClass {
         </span>
         <span
           class="alert-content-wrapper"
-          cds-layout="horizontal wrap:none ${getAlertContentLayout(
-            'wrapper',
-            this.alertGroupType,
-            this.parentGroupHasPager
-          )}"
+          cds-layout="horizontal wrap:none ${getAlertContentLayout('wrapper', this.type, this.parentGroupHasPager)}"
         >
           <span
             id="${this.idForAriaDescriber}"
             role="status"
             class="alert-content"
-            cds-layout="${getAlertContentLayout('content', this.alertGroupType, this.parentGroupHasPager)}"
+            cds-layout="${getAlertContentLayout('content', this.type, this.parentGroupHasPager)}"
           >
             <slot></slot>
-            ${this.alertGroupType === 'light' ? html`<slot name="actions"></slot>` : html``}
+            ${this.type === 'light' ? html`<slot name="actions"></slot>` : html``}
           </span>
-          ${this.alertGroupType === 'light'
+          ${this.type === 'light'
             ? html``
             : html`<span
                 class="alert-actions-wrapper"
-                cds-layout="${getAlertContentLayout('actions', this.alertGroupType, this.parentGroupHasPager)}"
+                cds-layout="${this.alertActions ? 'p-l:md' : ''} ${getAlertContentLayout(
+                  'actions',
+                  this.type,
+                  this.parentGroupHasPager
+                )}"
                 ><slot name="actions"></slot
               ></span>`}
         </span>
 
-        ${this.alertGroupType === 'banner' && !this.parentGroupHasPager
+        ${this.type === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
           : html``}
-        ${this.alertGroupType !== 'light' && this.closable
+        ${this.type !== 'light' && this.closable
           ? html`<span class="alert-close-wrapper"
               ><slot name="close-button"
                 ><cds-internal-close-button
-                  icon-size="${this.alertGroupType === 'banner' ? '20' : '16'}"
+                  icon-size="${this.type === 'banner' ? '20' : '16'}"
                   @click="${() => this.closeAlert()}"
                   aria-label="${this.closeIconTitle}"
                 ></cds-internal-close-button></slot

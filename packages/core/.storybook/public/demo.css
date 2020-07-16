@@ -114,7 +114,11 @@ cds-card {
 .sbdocs-h3 {
   font-weight: 300 !important;
   margin-bottom: 24px !important;
-  margin: 12px 0 24px 0 !important;
+  margin: 48px 0 12px 0 !important;
+}
+
+.sbdocs-h1 {
+  margin: 0 0 24px 0 !important;
 }
 
 .sbdocs-img,

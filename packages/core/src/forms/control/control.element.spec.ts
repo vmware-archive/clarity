@@ -105,6 +105,12 @@ describe('cds-control', () => {
     );
   });
 
+  it('should mark layout as stable when using a hidden label layout', async () => {
+    await componentIsStable(control);
+    control.hiddenLabel = true;
+    expect(await control.layoutStable).toBe(true);
+  });
+
   it('should apply focus style attribute when native element is focused', async () => {
     input.dispatchEvent(new Event('focusin'));
     await componentIsStable(control);

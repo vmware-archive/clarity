@@ -225,10 +225,11 @@ describe('Alert element – ', () => {
     });
 
     it('should show alert actions', async () => {
+      component.type = 'default';
       await componentIsStable(component);
       const slots = getComponentSlotContent(component);
       expect(slots.actions.trim()).toBe(
-        `<cds-alert-actions slot="actions" type="default" cds-layout="horizontal gap:xs p-l:md align:vertical-center p-r:sm">${placeholderActionsText}</cds-alert-actions>`
+        `<cds-alert-actions slot="actions" type="default">${placeholderActionsText}</cds-alert-actions>`
       );
     });
   });
@@ -288,6 +289,8 @@ describe('Alert element – ', () => {
     let component: CdsAlert;
     const placeholderText = 'I am a default alert with no attributes.';
     const placeholderActionsText = 'This is where action elements go.';
+    const getCloseButton = () =>
+      component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
 
     beforeEach(async () => {
       testElement = createTestElement();
@@ -308,29 +311,31 @@ describe('Alert element – ', () => {
 
     it('should show the close button', async () => {
       await componentIsStable(component);
-      component.setAttribute('closable', 'true');
+      expect(getCloseButton()).toBe(null);
+
+      component.closable = true;
+      component.type = 'banner';
       await componentIsStable(component);
-      expect(
-        component.shadowRoot.querySelectorAll<CdsInternalCloseButton>('cds-internal-close-button').length
-      ).not.toBe(0);
+      expect(getCloseButton()).not.toBe(null);
     });
 
     it('should set the close button title', async () => {
       const expectedLabel = 'ohai';
       await componentIsStable(component);
+      component.type = 'default';
       component.setAttribute('closable', 'true');
       component.setAttribute('close-icon-title', expectedLabel);
       await componentIsStable(component);
-      const closeBtn = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-      expect(closeBtn).not.toBe(null);
-      expect(closeBtn.getAttribute('aria-label')).toBe(expectedLabel);
+      expect(getCloseButton()).not.toBe(null);
+      expect(getCloseButton().getAttribute('aria-label')).toBe(expectedLabel);
     });
 
     it('should emit a closeChanged event when close button is clicked', async done => {
       let value: any;
       await componentIsStable(component);
 
-      component.setAttribute('closable', 'true');
+      component.type = 'default';
+      component.closable = true;
       await componentIsStable(component);
 
       component.addEventListener<any>('closeChange', (e: CustomEvent) => {
@@ -339,9 +344,7 @@ describe('Alert element – ', () => {
         done();
       });
 
-      const button = component.shadowRoot
-        .querySelector<CdsInternalCloseButton>('cds-internal-close-button')
-        .querySelector('button');
+      const button = getCloseButton().querySelector('button');
       expect(button).toBeDefined();
       button.click();
     });
@@ -349,12 +352,11 @@ describe('Alert element – ', () => {
     it('sets 16 as the default icon size', async () => {
       await componentIsStable(component);
 
-      component.setAttribute('closable', 'true');
+      component.closable = true;
+      component.type = 'default';
       await componentIsStable(component);
 
-      const icon = component.shadowRoot
-        .querySelector<CdsInternalCloseButton>('cds-internal-close-button')
-        .shadowRoot.querySelector<CdsIcon>('cds-icon');
+      const icon = getCloseButton().shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('size')).toBe(true);
       expect(icon.getAttribute('size')).toBe('16');

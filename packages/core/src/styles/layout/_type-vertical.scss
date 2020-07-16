@@ -7,7 +7,7 @@
     [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
       & > *,
       &::slotted(*) {
-        margin-top: $sizeValue;
+        margin-top: $sizeValue !important;
       }
 
       & > *:first-child,

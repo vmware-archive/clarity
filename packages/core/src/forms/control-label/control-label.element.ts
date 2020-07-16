@@ -22,13 +22,11 @@ import { styles } from './control-label.element.css.js';
  * ```
  * @internal
  * @element cds-internal-control-label
- * @slot default - For projecting label text
+ * @slot - For projecting label text
  */
 export class CdsInternalControlLabel extends LitElement {
-  /** @private */
   @property({ type: Boolean }) disabled = false;
 
-  /** @private */
   @property({ type: String }) action: 'primary' | 'secondary' = 'primary';
 
   static get styles() {

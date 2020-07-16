@@ -22,7 +22,7 @@ import { styles } from './textarea.element.css.js';
  * </cds-textarea>
  * ```
  * @element cds-textarea
- * @slot default - For projecting cds-inputs
+ * @slot - For projecting cds-inputs
  * @cssprop --background
  * @cssprop --border
  * @cssprop --padding

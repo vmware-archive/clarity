@@ -33,14 +33,18 @@ read('./dist/react')
   .filter(f => f.includes('package.json'))
   .forEach(file => {
     const packageFile = fs.readJsonSync(file);
-    ['alias', 'browserslist', 'scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
-
     const metaData = {
       main: './index.js',
       module: './index.js',
       typings: './index.d.ts',
       type: 'module',
     };
+
+    if (file === 'dist/react/package.json') {
+      ['alias', 'browserslist', 'scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
+      packageFile.peerDependencies = { '@clr/core': packageFile.dependencies['@clr/core'] };
+      delete packageFile.dependencies['@clr/core'];
+    }
 
     fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
   });

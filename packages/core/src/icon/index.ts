@@ -420,13 +420,17 @@ export { trailerIcon } from './shapes/trailer.js';
 export { truckIcon } from './shapes/truck.js';
 
 // COLLECTIONS
-export * from './collections/chart.js';
-export * from './collections/commerce.js';
-export * from './collections/core.js';
-export * from './collections/essential.js';
-export * from './collections/media.js';
-export * from './collections/mini.js';
-export * from './collections/technology.js';
-export * from './collections/social.js';
-export * from './collections/text-edit.js';
-export * from './collections/travel.js';
+export { loadChartIconSet, chartCollectionIcons, chartCollectionAliases } from './collections/chart.js';
+export { loadCommerceIconSet, commerceCollectionIcons, commerceCollectionAliases } from './collections/commerce.js';
+export { loadCoreIconSet, coreCollectionIcons, coreCollectionAliases } from './collections/core.js';
+export { loadEssentialIconSet, essentialCollectionIcons, essentialCollectionAliases } from './collections/essential.js';
+export { loadMediaIconSet, mediaCollectionIcons, mediaCollectionAliases } from './collections/media.js';
+export { loadMiniIconSet, miniCollectionIcons, miniCollectionAliases } from './collections/mini.js';
+export {
+  loadTechnologyIconSet,
+  technologyCollectionIcons,
+  technologyCollectionAliases,
+} from './collections/technology.js';
+export { loadSocialIconSet, socialCollectionIcons, socialCollectionAliases } from './collections/social.js';
+export { loadTextEditIconSet, textEditCollectionIcons, textEditCollectionAliases } from './collections/text-edit.js';
+export { loadTravelIconSet, travelCollectionIcons, travelCollectionAliases } from './collections/travel.js';

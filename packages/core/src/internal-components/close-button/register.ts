@@ -7,7 +7,7 @@
 import '@clr/core/icon/register.js';
 import '@clr/core/button/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
+import { CdsInternalCloseButton } from './close-button.element.js';
 
 registerElementSafely('cds-internal-close-button', CdsInternalCloseButton);
 

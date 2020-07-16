@@ -22,7 +22,7 @@ import { styles } from './input.element.css.js';
  * ```
  *
  * @element cds-input
- * @slot default - For projecting input and label
+ * @slot - For projecting input and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border

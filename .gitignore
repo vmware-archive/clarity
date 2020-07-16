@@ -8,6 +8,7 @@ packages/core/dist
 packages/react/.cache
 packages/react/coverage
 packages/react/dist
+.parcel-cache
 
 # compiled output
 /dist

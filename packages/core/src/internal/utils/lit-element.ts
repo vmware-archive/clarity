@@ -19,6 +19,25 @@ export function childrenUpdateComplete(elements: LitElement[] | NodeListOf<LitEl
  * of child slotted elements (cds-form-group, cds-control-group). Typically call
  * during the `firstUpdated` or `updated` lifecycle.
  */
-export function syncDefinedProps(props: Map<string, any>, parent: any, children: any[]) {
-  props.forEach((_value, key) => children.filter(c => c[key] !== undefined).forEach(c => (c[key] = parent[key])));
+export function syncDefinedProps(
+  props: Map<string, any>,
+  source: { [prop: string]: any },
+  targets: { [prop: string]: any }[]
+) {
+  props.forEach((_value, key) => targets.filter(t => t && t[key] !== undefined).forEach(t => (t[key] = source[key])));
+}
+
+/**
+ * Set all common properties between two instances with given conditions. This is
+ * helpful for setting child component properties from the parent given certain
+ * conditions.
+ */
+export function syncProps(
+  target: { [prop: string]: any },
+  source: { [prop: string]: any },
+  conditions: { [prop: string]: boolean }
+) {
+  Object.keys(conditions)
+    .filter(c => conditions[c])
+    .forEach(c => (target[c] = source[c]));
 }

@@ -9,7 +9,6 @@ import { querySlot, globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, angleIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 import { styles as globalStyles } from './datalist-global.element.css.js';
 
 ClarityIcons.addIcons(angleIcon);
@@ -35,7 +34,7 @@ ClarityIcons.addIcons(angleIcon);
  * ```
  *
  * @element cds-datalist
- * @slot default - For projecting input, datalist and label
+ * @slot - For projecting input, datalist and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border

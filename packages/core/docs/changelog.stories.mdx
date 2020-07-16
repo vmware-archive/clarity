@@ -4,6 +4,75 @@ import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 
 # Changelog
 
+## 4.0.0
+
+4.0 introduces many new components including enhanced alerts, modals and form controls.
+React is now officially supported with our new `@clr/react` package.
+Several bugfixes have been made to improve performance and treeshaking of components.
+
+### React Support
+
+React is now officially supported with our new `@clr/react` package. Follow our
+[React Documentation](./?path=/story/documentation-react--page) to get started.
+
+```bash
+npm install @clr/react
+```
+
+```jsx
+import { CdsAlert } from '@clr/react/alert';
+
+<CdsAlert status="info" closable={this.state.closable} onCloseChange={this.log}>
+  Hello World
+</CdsAlert>;
+```
+
+### New components
+
+4.0 brings many new components including lightweight alerts, modals and form controls.
+
+- [Lightweight Alerts](./?path=/story/components-alert-getting-started--page)
+- [Alert Groups + Actions](./?path=/story/components-alert-group-getting-started--page)
+- [Icon Button](./?path=/story/components-icon-button-getting-started--page)
+- [Inline Button](./?path=/story/components-inline-button-getting-started--page)
+- [Modal](./?path=/story/components-modal-getting-started--page)
+- [Forms](./?path=/story/forms-preview-forms-getting-started--page)
+- [Form Control](./?path=/story/forms-preview-control-getting-started--page)
+- [Checkbox](./?path=/story/forms-preview-checkbox-getting-started--page)
+- [Datalist](./?path=/story/forms-preview-datalist-getting-started--page)
+- [File](./?path=/story/forms-preview-file-getting-started--page)
+- [Input](./?path=/story/forms-preview-input-getting-started--page)
+- [Input Groups](./?path=/story/forms-preview-input-groups-getting-started--page)
+- [Password](./?path=/story/forms-preview-password-getting-started--page)
+- [Radio](./?path=/story/forms-preview-radio-getting-started--page)
+- [Range](./?path=/story/forms-preview-range-getting-started--page)
+- [Search](./?path=/story/forms-preview-search-getting-started--page)
+- [Select](./?path=/story/forms-preview-select-getting-started--page)
+- [Textarea](./?path=/story/forms-preview-textarea-getting-started--page)
+- [Time](./?path=/story/forms-preview-time-getting-started--page)
+- [Toggle](./?path=/story/forms-preview-toggle-getting-started--page)
+
+### Breaking Changes
+
+- ### Import Paths
+  To future proof performance and support more advanced use cases the import statement
+  for components has changed. Imports for components now end with `register` path.
+
+```javascript
+import '@clr/core/button'; // 3.0
+
+import '@clr/core/button/register'; // 4.0+
+```
+
+- ### Alerts / Alert Groups
+
+  The Alert APIs are revamped to support new features including alert groups/actions as
+  well as lightweight alerts which are now exclusively in Core. Alerts APIs will
+  remain stable in 4.0+
+
+  - [Lightweight Alerts](./?path=/story/components-alert-getting-started--page)
+  - [Alert Groups](./?path=/story/components-alert-group-getting-started--page)
+
 ## 3.1 (beta)
 
 3.1 introduces design tokens, layouts, disabled styles for buttons, and several fixes to help module loaders work with `@clr/core` more efficiently!

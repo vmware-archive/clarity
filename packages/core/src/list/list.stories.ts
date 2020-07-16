@@ -16,14 +16,14 @@ export default {
   },
 };
 
-const unorderedListOptions: object = {
+const unorderedListOptions = {
   'none (default disc)': '',
   disc: 'disc',
   circle: 'circle',
   square: 'square',
 };
 
-const orderedListOptions: object = {
+const orderedListOptions = {
   'none (default decimal)': '',
   decimal: 'decimal',
   'decimal-leading-zero': 'decimal-leading-zero',
@@ -36,18 +36,13 @@ const orderedListOptions: object = {
 };
 
 export const API = () => {
-  const orderedListStyle = select('Ordered List Style', orderedListOptions, undefined, propertiesGroup);
+  const orderedListStyle = select('Ordered List Style', orderedListOptions, '', propertiesGroup);
 
-  const orderedListChildStyle = select('Ordered List Style (Child)', orderedListOptions, undefined, propertiesGroup);
+  const orderedListChildStyle = select('Ordered List Style (Child)', orderedListOptions, '', propertiesGroup);
 
-  const unorderedListStyle = select('Unordered List Style', unorderedListOptions, undefined, propertiesGroup);
+  const unorderedListStyle = select('Unordered List Style', unorderedListOptions, '', propertiesGroup);
 
-  const unorderedListChildStyle = select(
-    'Unordered List Style (Child)',
-    unorderedListOptions,
-    undefined,
-    propertiesGroup
-  );
+  const unorderedListChildStyle = select('Unordered List Style (Child)', unorderedListOptions, '', propertiesGroup);
 
   return html`
     <div cds-layout="vertical gap:md">

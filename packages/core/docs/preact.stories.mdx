@@ -1,0 +1,28 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Documentation/Preact" />
+
+# Preact
+
+To use Clarity Core with Preact follow the package <a href="./?path=/docs/documentation-getting-started--page">installation instructions</a>.
+Once installed import the component into your JavaScript file.
+
+```typescript
+import '@clr/core/alert/register.js';
+```
+
+To listen to custom events in Preact the event must be prefixed with `on`.
+
+```jsx
+/*
+Example of an alert web component in Preact
+- status - attribute style hook
+- closable - setting the 'closable' property on the element
+- onCloseChange - listen for the 'closeChange' custom event
+*/
+
+<cds-alert status="info" closable={this.state.closable} onCloseChange={this.log}>
+  Hello World
+</cds-alert>
+```

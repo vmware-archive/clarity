@@ -24,13 +24,14 @@ import { getStatusIcon } from '../utils/index.js';
  * </ds-internal-control-inline>
  * ```
  *
- * @slot default - For projecting inline input and label
+ * @slot - For projecting inline input and label
  */
 export class CdsInternalControlInline extends CdsControl {
   /** Align the labels of controls within group left or right */
   @property({ type: String }) controlAlign: 'left' | 'right' = 'left';
 
-  @internalProperty() private isControlGroup = false;
+  /** @private */
+  @internalProperty() isControlGroup: boolean;
 
   protected supportsPrefixSuffixActions = false;
 
@@ -65,6 +66,5 @@ export class CdsInternalControlInline extends CdsControl {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('cds-control-inline', '');
-    this.isControlGroup = this.parentElement?.hasAttribute('cds-control-group') ?? false;
   }
 }

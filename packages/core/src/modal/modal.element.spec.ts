@@ -5,6 +5,7 @@
  */
 import '@clr/core/modal/register.js';
 import { CommonStringsServiceInternal } from '@clr/core/internal';
+import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
 import { CdsModal } from '@clr/core/modal';
 import {
   componentIsStable,
@@ -53,14 +54,13 @@ describe('modal element', () => {
     await componentIsStable(component);
     expect(component.closable).toBe(true);
     expect(component.hasAttribute('closable')).toBe(true);
-    let button = component.shadowRoot.querySelector('button.close');
+    let button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).not.toBeNull();
-    expect(button.classList.contains('close')).toBe(true);
 
     component.closable = false;
     await componentIsStable(component);
     expect(component.hasAttribute('closable')).toBe(false);
-    button = component.shadowRoot.querySelector<HTMLButtonElement>('button.close');
+    button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).toBeNull();
   });
 
@@ -68,7 +68,7 @@ describe('modal element', () => {
     const service = new CommonStringsServiceInternal();
 
     await componentIsStable(component);
-    const button = component.shadowRoot.querySelector<HTMLButtonElement>('button.close');
+    const button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).not.toBeNull();
     expect(button.hasAttribute('aria-label')).toBe(true);
     expect(button.getAttribute('aria-label')).toEqual(service.keys.modalCloseButtonAriaLabel);
@@ -106,7 +106,7 @@ describe('modal element', () => {
       done();
     });
 
-    const button = component.shadowRoot.querySelector<HTMLButtonElement>('button.close');
+    const button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).toBeDefined();
     button.click();
   });

@@ -57,7 +57,7 @@ import {
  * ```
  *
  * @element cds-internal-control-group
- * @slot default - For projecting control group
+ * @slot - For projecting control group
  */
 export class CdsInternalControlGroup extends LitElement {
   /**
@@ -71,6 +71,9 @@ export class CdsInternalControlGroup extends LitElement {
 
   /** Align the labels of controls within group left or right */
   @property({ type: String }) controlAlign: 'left' | 'right' = 'left';
+
+  /** Disable all controls within a control group or omit and disable controls individually */
+  @property({ type: Boolean }) disabled = false;
 
   /**
    * @type {stretch | shrink}
@@ -91,8 +94,6 @@ export class CdsInternalControlGroup extends LitElement {
   })
   protected label: HTMLLabelElement;
 
-  @property({ type: Boolean }) protected disabled = false;
-
   @querySlotAll('cds-control, [cds-control], [cds-inline-control]', { assign: 'controls' })
   protected controls: NodeListOf<CdsControl | CdsInternalControlInline>;
 
@@ -110,6 +111,8 @@ export class CdsInternalControlGroup extends LitElement {
   @event() protected layoutChange: EventEmitter<FormLayout>;
 
   protected isInlineControlGroup = false;
+
+  protected isControlGroup = true;
 
   protected observers: (MutationObserver | ResizeObserver)[] = [];
 
@@ -180,6 +183,8 @@ export class CdsInternalControlGroup extends LitElement {
 
   updated(props: Map<string, any>) {
     super.updated(props);
+    props.set('isControlGroup', true);
+    this.controls.forEach((c: any) => (c.isControlGroup = true));
     syncDefinedProps(props, this, Array.from(this.controls));
   }
 

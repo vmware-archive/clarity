@@ -47,7 +47,7 @@ import { styles } from './form-group.element.css.js';
  * ```
  *
  * @element cds-form
- * @slot default - For projecting input controls
+ * @slot - For projecting input controls
  */
 export class CdsFormGroup extends LitElement {
   /**

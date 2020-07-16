@@ -30,7 +30,7 @@ import { CdsButton, ClrLoadingState } from './button.element.js';
  * ```
  * @beta
  * @element cds-icon-button
- * @slot default - Content slot for inside the button
+ * @slot - Content slot for inside the button
  * @cssprop --background
  * @cssprop --border-color
  * @cssprop --border-radius

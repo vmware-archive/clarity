@@ -31,7 +31,7 @@ import { CdsRadio } from './radio.element.js';
  * ```
  *
  * @element cds-radio-group
- * @slot default - For projecting cds-radio controls
+ * @slot - For projecting cds-radio controls
  */
 export class CdsRadioGroup extends CdsInternalControlGroup {
   @querySlotAll('cds-radio', { assign: 'controls' }) protected controls: NodeListOf<CdsRadio>;

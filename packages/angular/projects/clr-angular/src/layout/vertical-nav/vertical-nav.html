@@ -26,6 +26,8 @@
   <button
     (click)="collapsed = false"
     class="nav-btn"
+    aria-hidden="true"
+    tabindex="-1"
     [attr.aria-label]="commonStrings.keys.verticalNavToggle"
     *ngIf="collapsible && collapsed"
   ></button>

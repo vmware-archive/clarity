@@ -78,21 +78,22 @@ export const verticalGroup = () => {
         <cds-control-message>message text</cds-control-message>
       </cds-radio-group>
 
+      <!-- disable all controls within group or set disabled on input individually -->
       <cds-radio-group layout="vertical" disabled>
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked disabled />
+          <input type="radio" checked />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -166,7 +167,7 @@ export const verticalInlineGroup = () => {
         <cds-control-message>message text</cds-control-message>
       </cds-radio-group>
 
-      <cds-radio-group layout="vertical-inline">
+      <cds-radio-group layout="vertical-inline" disabled>
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
@@ -256,17 +257,17 @@ export const horizontalGroup = () => {
         <label>Horizontal Disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked disabled />
+          <input type="radio" checked />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -342,17 +343,17 @@ export const horizontalInlineGroup = () => {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked disabled />
+          <input type="radio" checked />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -428,17 +429,17 @@ export const compactGroup = () => {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked disabled />
+          <input type="radio" checked />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" disabled />
+          <input type="radio" />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>

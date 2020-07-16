@@ -7,7 +7,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
-    '@clr/(.*)': '<rootDir>/../../dist/$1',
+    '@clr/(.*)': '<rootDir>/../core/dist/$1',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

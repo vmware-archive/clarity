@@ -69,7 +69,7 @@ function buttonSlots(icon: boolean, badge: boolean) {
  *
  * @beta
  * @element cds-button
- * @slot default - Content slot for inside the button
+ * @slot - Content slot for inside the button
  * @cssprop --background
  * @cssprop --border-color
  * @cssprop --border-radius

@@ -10,6 +10,7 @@
 
 // Get values once then cache
 let angularVersion: string | undefined;
+let angularJSVersion: string | undefined;
 let reactVersion: string | undefined;
 let vueVersion: string | undefined;
 
@@ -21,9 +22,22 @@ export function getAngularVersion(useCache = true) {
   return angularVersion;
 }
 
+export function getAngularJSVersion(useCache = true) {
+  if (!useCache || !angularVersion) {
+    angularJSVersion = (window as any)?.angular?.version?.full;
+  }
+  return angularJSVersion;
+}
+
 export function getReactVersion(useCache = true) {
   if (!useCache || !reactVersion) {
-    reactVersion = document.querySelector('[data-reactroot], [data-reactid]') ? 'unknown version' : undefined;
+    if ((window as any)?.CDS?._react?.version) {
+      reactVersion = window.CDS._react.version;
+    } else if (document.querySelector('[data-reactroot], [data-reactid]')) {
+      reactVersion = 'unknown version';
+    } else {
+      reactVersion = undefined;
+    }
   }
 
   return reactVersion;

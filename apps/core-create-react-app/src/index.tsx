@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import 'normalize.css/normalize.css';
+import '@clr/core/global.css'; // pre-minified version breaks
+import '@clr/city/css/bundles/default.min.css';
+import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

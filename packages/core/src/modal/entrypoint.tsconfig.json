@@ -3,5 +3,8 @@
   "compilerOptions": {
     "composite": true
   },
-  "references": [{ "path": "../icon/entrypoint.tsconfig.json" }, { "path": "../internal/entrypoint.tsconfig.json" }]
+  "references": [
+    { "path": "../internal-components/close-button/entrypoint.tsconfig.json" },
+    { "path": "../internal/entrypoint.tsconfig.json" }
+  ]
 }

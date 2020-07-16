@@ -32,14 +32,19 @@
   color: var(--color) !important;
   line-height: var(--line-height) !important;
   height: var(--line-height) !important;
-  width: 100%;
+  width: 100% !important;
   -webkit-appearance: none !important;
   border-radius: 0 !important;
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none !important;
 
   &::placeholder {
     --color: $cds-token-color-neutral-600 !important;
   }
+}
+
+::slotted([slot='input']) {
+  margin: 0 !important;
 }
 
 .input-container {

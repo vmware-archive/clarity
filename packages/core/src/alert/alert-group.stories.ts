@@ -4,9 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
-import '@clr/core/internal-components/close-button/register.js';
 import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
@@ -31,7 +28,7 @@ export default {
 export const API = (args: any) => {
   return html`
     <cds-alert-group ...="${spreadProps(getElementStorybookArgs(args))}">
-      <cds-alert .closable="${true}" @closeChange=${action('closeChange')}>
+      <cds-alert closable @closeChange=${action('closeChange')}>
         ${args.default}
         <cds-alert-actions>
           <cds-button>Button 1</cds-button>
@@ -58,7 +55,9 @@ export const alertGroup = () => {
           of "info".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -71,7 +70,9 @@ export const alertGroup = () => {
           This example is a closable alert with alert action buttons inside an alert group with a status of "success".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -84,7 +85,9 @@ export const alertGroup = () => {
           This example is a closable alert with alert action buttons inside an alert group with a status of "warning".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -97,7 +100,9 @@ export const alertGroup = () => {
           This example is a closable alert with alert action buttons inside an alert group with a status of "danger".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -114,7 +119,9 @@ export const alertGroup = () => {
           This example is an alert with alert action buttons and a custom icon shape inside an alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
         <cds-alert closable>
@@ -137,50 +144,56 @@ export const alertGroup = () => {
 export const bannerGroupStatus = () => {
   return html`
     <div cds-layout="vertical gap:sm">
-      <cds-alert-group type="banner">
-        <cds-alert closable status="info">
+      <cds-alert-group type="banner" status="info">
+        <cds-alert closable>
           This example is a closable banner alert inside a banner alert group with a status of "info".
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
-        <cds-alert status="success" closable>
+      <cds-alert-group type="banner" status="success">
+        <cds-alert closable>
           This example is a closable alert with a status of "success" inside a banner alert group.
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
-        <cds-alert status="warning" closable>
+      <cds-alert-group type="banner" status="warning">
+        <cds-alert closable>
           This example is a closable alert with alert action buttons and a status of "warning" inside a banner alert
           group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
-        <cds-alert status="danger" closable>
+      <cds-alert-group type="banner" status="danger">
+        <cds-alert closable>
           This example is a closable alert with a status of "danger" inside a banner alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
-        <cds-alert status="unknown">
+      <cds-alert-group type="banner" status="unknown">
+        <cds-alert>
           This example is a non-closable alert with alert actions and a status of "unknown" inside a banner alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
+      <cds-alert-group type="banner" status="info">
         <cds-alert status="loading">
           This example is an alert with alert actions and a status of "loading" inside a banner alert group.
           <cds-alert-actions>
@@ -223,7 +236,9 @@ export const bannerGroup = () => {
           This example shows that a banner alert group should ignore compact sizing.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -335,7 +350,9 @@ export const compactAlertGroup = () => {
           a status of "info".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -349,7 +366,9 @@ export const compactAlertGroup = () => {
           a status of "success".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -364,7 +383,9 @@ export const compactAlertGroup = () => {
           a status of "warning".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -378,7 +399,9 @@ export const compactAlertGroup = () => {
           This example is a closable alert with alert actions inside a compact alert group with a status of "warning".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
@@ -394,7 +417,9 @@ export const compactAlertGroup = () => {
           This example is an alert with alert actions inside a compact alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
-            <cds-button>Button 2</cds-button>
+            <cds-button>
+              <a href="#">Link 1</a>
+            </cds-button>
           </cds-alert-actions>
         </cds-alert>
         <cds-alert closable>

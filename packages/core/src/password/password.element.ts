@@ -9,7 +9,6 @@ import { CommonStringsService } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, eyeIcon, eyeHideIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 
 ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
 
@@ -29,7 +28,7 @@ ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
  * ```
  *
  * @element cds-password
- * @slot default - For projecting password input and label
+ * @slot - For projecting password input and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border

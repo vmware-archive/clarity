@@ -23,7 +23,7 @@ import { styles } from './test-dropdown.element.css.js';
  * ```
  *
  * @beta
- * @slot default - Content slot for dropdown content
+ * @slot - Content slot for dropdown content
  * @event {boolean} openChange - notify open state change of dropdown
  * @cssprop --border-color
  * @cssprop --background-color

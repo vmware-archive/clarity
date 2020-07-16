@@ -9,7 +9,6 @@ import { globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, clockIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 import { styles as globalStyles } from './time.global.css.js';
 
 ClarityIcons.addIcons(clockIcon);
@@ -30,7 +29,7 @@ ClarityIcons.addIcons(clockIcon);
  * ```
  *
  * @element cds-time
- * @slot default - For projecting time input and label
+ * @slot - For projecting time input and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border

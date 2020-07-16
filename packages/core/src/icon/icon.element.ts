@@ -41,7 +41,6 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * <cds-icon shape="user"></cds-icon>
  * ```
  *
- * @beta
  * @element cds-icon
  * @cssprop --color
  * @cssprop --badge-color
@@ -156,10 +155,10 @@ export class CdsIcon extends IconMixinClass {
    *
    * By default, the badge displays a 'danger' dot (a red-colored dot).
    *
-   * Setting the badge to 'null' removes the attribute from the DOM.
+   * Setting the badge to 'false' or removing the attribute will remove the default icon badge.
    */
   @property({ type: String })
-  badge: StatusTypes | 'inherit' | 'warning-triangle' | 'inherit-triangle' | true | null;
+  badge: StatusTypes | 'inherit' | 'warning-triangle' | 'inherit-triangle' | true | false;
 
   @query('svg') private svg: SVGElement;
 

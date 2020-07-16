@@ -1,0 +1,11 @@
+@import 'normalize.css/normalize.css';
+@import '@clr/city/css/bundles/default.min.css';
+@import '@clr/core/global.min.css';
+
+// optionally hide component until created
+cds-alert,
+cds-button {
+  &:not(:defined) {
+    display: none;
+  }
+}

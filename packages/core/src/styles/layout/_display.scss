@@ -28,6 +28,10 @@
   display: flex !important;
 }
 
+[cds-layout~='display:contents'] {
+  display: contents !important;
+}
+
 [cds-layout~='display:block'] {
   display: block !important;
 }
@@ -48,6 +52,7 @@
   white-space: nowrap;
   top: 0;
   left: 0;
+  display: block;
 }
 
 @media (min-width: $cds-token-layout-width-sm-static) {

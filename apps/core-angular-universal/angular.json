@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-universal": {
+    "core-angular-universal": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,18 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-universal/browser",
+            "outputPath": "dist/core-angular-universal/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "src/styles.css",
-              "node_modules/@clr/core/global.min.css",
-              "node_modules/@clr/city/css/bundles/default.min.css"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-universal:build"
+            "browserTarget": "core-angular-universal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-universal:build:production"
+              "browserTarget": "core-angular-universal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-universal:build"
+            "browserTarget": "core-angular-universal:build"
           }
         },
         "test": {
@@ -83,14 +83,14 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json", "tsconfig.server.json"],
             "exclude": ["**/node_modules/**"]
           }
         },
@@ -98,18 +98,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-universal:serve"
+            "devServerTarget": "core-angular-universal:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-universal:serve:production"
+              "devServerTarget": "core-angular-universal:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/angular-universal/server",
+            "outputPath": "dist/core-angular-universal/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -130,21 +130,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "angular-universal:build",
-            "serverTarget": "angular-universal:server"
+            "browserTarget": "core-angular-universal:build",
+            "serverTarget": "core-angular-universal:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-universal:build:production",
-              "serverTarget": "angular-universal:server:production"
+              "browserTarget": "core-angular-universal:build:production",
+              "serverTarget": "core-angular-universal:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "angular-universal:build:production",
-            "serverTarget": "angular-universal:server:production",
+            "browserTarget": "core-angular-universal:build:production",
+            "serverTarget": "core-angular-universal:server:production",
             "routes": ["/"]
           },
           "configurations": {
@@ -154,7 +154,7 @@
       }
     }
   },
-  "defaultProject": "angular-universal",
+  "defaultProject": "core-angular-universal",
   "cli": {
     "analytics": false
   }

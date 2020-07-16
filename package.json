@@ -15,9 +15,12 @@
       "@clr/core/lit-html",
       "@clr/core/@storybook/**",
       "@clr/core/normalize.css",
-      "angular/@angular/**",
-      "angular/@angular-devkit/**",
-      "angular/@storybook/**"
+      "**/@storybook/**",
+      "**/@angular/*",
+      "**/@angular/*/**",
+      "**/@angular-devkit/**",
+      "**/@nguniversal/**",
+      "core-create-react-app/jest"
     ]
   },
   "scripts": {
@@ -72,7 +75,8 @@
     "react:start": "yarn --cwd packages/react run start",
     "react:build": "yarn --cwd packages/react run build",
     "react:lint": "yarn --cwd packages/react run lint",
-    "react:test": "yarn --cwd packages/react run test"
+    "react:test": "yarn --cwd packages/react run test",
+    "preinstall": "mkdir -p ./packages/core/dist/core/ && mkdir -p ./packages/react/dist/react/"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",

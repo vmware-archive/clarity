@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
 import {
   applyMixins,
   baseStyles,
@@ -49,7 +48,7 @@ applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
  * ```
  *
  * @element cds-modal
- * @slot default
+ * @slot
  * @slot cds-modal-content
  * @slot cds-modal-header
  * @slot cds-modal-footer
@@ -97,15 +96,12 @@ export class CdsModal extends ModalMixinClass {
               </div>
               ${this.closable
                 ? html`
-                    <button
+                    <cds-internal-close-button
+                      cds-layout="align:top"
                       @click="${() => this.closeModal()}"
                       aria-label="${CommonStringsService.keys.modalCloseButtonAriaLabel}"
-                      class="close"
-                      action="outline"
-                      icon
-                    >
-                      <cds-icon shape="times"></cds-icon>
-                    </button>
+                      .iconSize="${'24'}"
+                    ></cds-internal-close-button>
                   `
                 : html``}
             </div>

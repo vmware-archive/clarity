@@ -1,0 +1,50 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Documentation/AngularJS" />
+
+# AngularJS (< 1.8.0)
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>To use Clarity Core with Angular JS you must be on AngularJS version 1.7.3 or later.</cds-alert>
+</cds-alert-group>
+
+To use a component import the register path in your JavaScript.
+
+```javascript
+import angular from 'angular';
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+
+angular.module('app', []);
+angular.element(document).ready(() => angular.bootstrap(document, ['app']));
+
+angular.module('app').component('appRoot', {
+  template: `
+    <cds-button status="primary" ng-click="$ctrl.showAlert = true">show alert</cds-button>
+
+    <cds-alert ng-if="$ctrl.showAlert" ng-prop-status="$ctrl.status" ng-on-close_change="$ctrl.showAlert = false" closable>
+      This is an alert message.
+    </cds-alert>
+  `,
+  controller: function () {
+    this.status = 'danger';
+    this.showAlert = false;
+  },
+});
+```
+
+To set properties on a Web Component use the [`ng-prop` directive](https://docs.angularjs.org/api/ng/directive/ngProp).
+To listen to custom events use the [`ng-on` directive](https://docs.angularjs.org/api/ng/directive/ngOn).
+
+```html
+<!--
+- status - attribute style hook
+- ng-prop-closable - setting the 'closable' property on the element
+- ng-on-close_change - listen for the 'closeChange' custom event
+-->
+
+<cds-alert status="info" ng-prop-closable="$ctrl.closable" ng-on-close_change="$ctrl.log($event.detail)">
+  Hello World
+</cds-alert>
+```

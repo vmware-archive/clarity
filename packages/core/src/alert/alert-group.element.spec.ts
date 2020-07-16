@@ -137,7 +137,7 @@ describe('Alert groups – ', () => {
       await componentIsStable(alertGroup);
       alerts = alertGroup.querySelectorAll<CdsAlert>('cds-alert');
       alerts.forEach(a => {
-        expect(a.alertGroupType).toBe('default');
+        expect(a.type).toBe('default');
       });
     });
 
@@ -145,7 +145,7 @@ describe('Alert groups – ', () => {
       await componentIsStable(lightAlertGroup);
       alerts = lightAlertGroup.querySelectorAll<CdsAlert>('cds-alert');
       alerts.forEach(a => {
-        expect(a.alertGroupType).toBe('light');
+        expect(a.type).toBe('light');
       });
     });
 
@@ -155,24 +155,18 @@ describe('Alert groups – ', () => {
       lightAlertGroup.type = 'default';
       await componentIsStable(lightAlertGroup);
       alerts.forEach(a => {
-        expect(a.alertGroupType).toBe('default', 'updates alert group type to default as expected');
-        expect(a.getAttribute('alert-group-type')).toBe(
-          'default',
-          'reflects alert group type attribute when changed to default as expected'
-        );
+        expect(a.type).toBe('default', 'updates alert group type to default as expected');
+        expect(a.type).toBe('default', 'reflects alert group type attribute when changed to default as expected');
       });
       lightAlertGroup.type = 'light';
       await componentIsStable(lightAlertGroup);
-      expect(lightAlertGroup.getAttribute('type')).toBe(
+      expect(lightAlertGroup.type).toBe(
         'light',
         'reflects alert group type attribute when changed to light as expected'
       );
       alerts.forEach(a => {
-        expect(a.alertGroupType).toBe('light', "updates child alert's alert group type property as expected");
-        expect(a.getAttribute('alert-group-type')).toBe(
-          'light',
-          "reflects child alert's alert group type attribute as expected"
-        );
+        expect(a.type).toBe('light', "updates child alert's alert group type property as expected");
+        expect(a.type).toBe('light', "reflects child alert's alert group type attribute as expected");
       });
     });
   });
@@ -184,8 +178,8 @@ describe('Alert groups – ', () => {
     beforeEach(async () => {
       testElement = createTestElement();
       testElement.innerHTML = `
-        <cds-alert-group type="banner" id="bannerAlertGroup">
-          <cds-alert status="warning">${placeholderText}</cds-alert>
+        <cds-alert-group type="banner" id="bannerAlertGroup" status="warning">
+          <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
         <cds-alert-group type="banner" id="bannerAlertGroupNoStatus">
           <cds-alert id="statusless">${placeholderText}</cds-alert>
@@ -200,10 +194,10 @@ describe('Alert groups – ', () => {
       removeTestElement(testElement);
     });
 
-    it('parent alert group adopts child alert status as expected', async () => {
+    it('parent alert group sets child alert status as expected', async () => {
       await componentIsStable(bannerAlertGroup);
-      expect(bannerAlertGroup.status).not.toBeUndefined();
-      expect(bannerAlertGroup.getAttribute('status')).toBe('warning');
+      expect(bannerAlertGroup.status).toBe('warning');
+      expect(bannerAlertGroup.querySelector<CdsAlert>('cds-alert').status).toBe('warning');
     });
 
     it('parent alert group does not set status if child alert status is not defined', async () => {
@@ -211,15 +205,6 @@ describe('Alert groups – ', () => {
       const childAlert = bannerAlertGroupWithNoStatus.querySelector<CdsAlert>('#statusless');
       expect(childAlert.status).toBe('default');
       expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('default');
-    });
-
-    it('parent alert group is updated when child alert status is updated', async () => {
-      await componentIsStable(bannerAlertGroupWithNoStatus);
-      const childAlert = bannerAlertGroupWithNoStatus.querySelector<CdsAlert>('#statusless');
-      expect(childAlert.status).toBe('default');
-      childAlert.setAttribute('status', 'danger');
-      await componentIsStable(bannerAlertGroupWithNoStatus);
-      expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('danger');
     });
   });
 

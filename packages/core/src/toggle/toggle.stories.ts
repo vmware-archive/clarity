@@ -102,22 +102,23 @@ export const verticalGroup = () => {
         <cds-control-message>message text</cds-control-message>
       </cds-toggle-group>
 
+      <!-- disable all controls within group or set disabled on input individually -->
       <cds-toggle-group disabled>
         <label>disabled</label>
 
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-control-message>message text</cds-control-message>
@@ -197,17 +198,17 @@ export const verticalInlineGroup = () => {
 
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -285,17 +286,17 @@ export const horizontalGroup = () => {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -371,17 +372,17 @@ export const horizontalInlineGroup = () => {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -457,17 +458,17 @@ export const compactGroup = () => {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>

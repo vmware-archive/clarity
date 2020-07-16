@@ -187,40 +187,40 @@ export const tagsAndIcons = () => {
         <cds-tag readonly>No Icon</cds-tag>
         <cds-tag readonly><cds-icon shape="user"></cds-icon>No Badge</cds-tag>
         <cds-tag readonly color="gray"
-          ><cds-icon shape="user" .solid=${solidIcon}></cds-icon>Default <cds-badge>1</cds-badge></cds-tag
+          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Default <cds-badge>1</cds-badge></cds-tag
         >
         <cds-tag readonly color="purple"
-          ><cds-icon shape="user" .solid=${solidIcon}></cds-icon>Purple <cds-badge>2</cds-badge></cds-tag
+          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Purple <cds-badge>2</cds-badge></cds-tag
         >
         <cds-tag readonly color="blue"
-          ><cds-icon shape="user" .solid=${solidIcon}></cds-icon>Blue <cds-badge>3</cds-badge></cds-tag
+          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Blue <cds-badge>3</cds-badge></cds-tag
         >
         <cds-tag readonly color="orange"
-          ><cds-icon shape="user" .solid=${solidIcon}></cds-icon>Orange <cds-badge>12</cds-badge></cds-tag
+          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Orange <cds-badge>12</cds-badge></cds-tag
         >
         <cds-tag readonly color="light-blue"
-          ><cds-icon shape="user" .solid=${solidIcon}></cds-icon>Light Blue <cds-badge>15</cds-badge></cds-tag
+          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Light Blue <cds-badge>15</cds-badge></cds-tag
         >
       </div>
       <div cds-layout="horizontal gap:xs">
         <cds-tag readonly status="info">No Icon</cds-tag>
         <cds-tag readonly status="info"
-          ><cds-icon shape="info-standard" .solid=${solidIcon}></cds-icon>No Badge</cds-tag
+          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>No Badge</cds-tag
         >
         <cds-tag readonly status="info"
-          ><cds-icon shape="info-standard" .solid=${solidIcon}></cds-icon>Info
+          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Info
           <cds-badge status="info">1</cds-badge></cds-tag
         >
         <cds-tag readonly status="success"
-          ><cds-icon shape="info-standard" .solid=${solidIcon}></cds-icon>Success
+          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Success
           <cds-badge status="success">2</cds-badge></cds-tag
         >
         <cds-tag readonly status="warning"
-          ><cds-icon shape="info-standard" .solid=${solidIcon}></cds-icon>Warning
+          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Warning
           <cds-badge status="warning">3</cds-badge>
         </cds-tag>
         <cds-tag readonly status="danger"
-          ><cds-icon shape="info-standard" .solid=${solidIcon}></cds-icon>Danger
+          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Danger
           <cds-badge status="danger">12</cds-badge></cds-tag
         >
       </div>

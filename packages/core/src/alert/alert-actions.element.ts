@@ -4,63 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { AlertGroupTypes, CdsAlert } from '@clr/core/alert';
+import { AlertGroupTypes } from '@clr/core/alert';
 import { CdsButton } from '@clr/core/button';
-import {
-  addClassnames,
-  assignSlotNames,
-  baseStyles,
-  property,
-  querySlotAll,
-  removeAttributes,
-  removeClassnames,
-  setAttributes,
-} from '@clr/core/internal';
+import { assignSlotNames, baseStyles, querySlotAll, internalProperty } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './alert-actions.element.css.js';
-
-export function getAlertActionsLayout(type: AlertGroupTypes | string, isParentClosable?: boolean): string | boolean {
-  const defaultLayoutValues = 'align:vertical-center';
-  const sharedLayoutValues = 'horizontal gap:xs p-l:md';
-  const bannerAlertLayoutValues = 'align-left align:horizontal-stretch';
-  const nonClosableAlertActionsPadding = isParentClosable ? '' : type === 'banner' ? 'p-r:xs' : 'p-r:sm';
-
-  switch (type) {
-    case 'default':
-      return [sharedLayoutValues, defaultLayoutValues, nonClosableAlertActionsPadding].join(' ');
-    case 'banner':
-      return [bannerAlertLayoutValues, sharedLayoutValues, nonClosableAlertActionsPadding].join(' ');
-    default:
-      return false;
-  }
-}
-
-export function setActionButtonStyles(type: AlertGroupTypes | string): (b: CdsButton) => void {
-  const alertBtnClassname = 'alert-btn';
-  switch (type) {
-    case 'banner':
-      return (b: CdsButton) => {
-        setAttributes(b, ['status', 'inverse'], ['size', 'sm']);
-        removeClassnames(b, alertBtnClassname);
-      };
-    default:
-      // 'default' or 'light' alerts
-      return (b: CdsButton) => {
-        removeAttributes(b, 'status', 'size');
-        addClassnames(b, alertBtnClassname);
-      };
-  }
-}
-
-// this fn is cordoning off the stateful smarts of action button layouts and buttons
-// the intent is to minimize the surface area of the component's brains
-// warning: side effects ahead!
-function updateLayoutsAndActionButtonStyles(alertActionsComponent: CdsAlertActions, parentAlert: CdsAlert) {
-  const actionsLayout = getAlertActionsLayout(alertActionsComponent.type, parentAlert.closable);
-  const buttonStyleSetter = setActionButtonStyles(alertActionsComponent.type);
-  setAttributes(alertActionsComponent, ['cds-layout', actionsLayout]);
-  alertActionsComponent.buttons.forEach(buttonStyleSetter);
-}
 
 /**
  * Web component alert actions to be used inside default and banner alerts.
@@ -78,9 +26,8 @@ function updateLayoutsAndActionButtonStyles(alertActionsComponent: CdsAlertActio
  * </cds-alert>
  * ```
  *
- * @beta
  * @element cds-alert-actions
- * @slot default
+ * @slot
  * @cssprop --action-text-color
  * @cssprop --action-hover-text-color
  * @cssprop --action-font-size
@@ -88,25 +35,31 @@ function updateLayoutsAndActionButtonStyles(alertActionsComponent: CdsAlertActio
 export class CdsAlertActions extends LitElement {
   /**
    * @type {default | banner | light}
+   * @private
    */
-  @property({ type: String })
+  @internalProperty({ type: String, reflect: true })
   type: AlertGroupTypes = 'light';
 
-  /** @private */
-  @querySlotAll('cds-button') buttons: NodeListOf<CdsButton>;
+  @querySlotAll('cds-button')
+  private buttons: NodeListOf<CdsButton>;
+
+  render() {
+    return html`<div class="private-host">
+      <slot cds-layout="horizontal wrap:none gap:sm align:vertical-center"></slot>
+    </div>`;
+  }
 
   connectedCallback() {
     super.connectedCallback();
     assignSlotNames([this, 'actions']);
-    updateLayoutsAndActionButtonStyles(this, this.parentElement as CdsAlert);
   }
 
-  updated() {
-    updateLayoutsAndActionButtonStyles(this, this.parentElement as CdsAlert);
-  }
-
-  render() {
-    return html`<div class="private-host"><slot></slot></div>`;
+  updated(props: Map<string, any>) {
+    super.updated(props);
+    this.buttons.forEach(b => {
+      b.status = this.type === 'banner' ? 'inverse' : 'primary';
+      b.size = this.type === 'banner' ? 'sm' : 'md';
+    });
   }
 
   static get styles() {

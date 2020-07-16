@@ -1,16 +1,18 @@
-<h1>Clarity Core in Angular Universal</h1>
+<main cds-text="body" cds-layout="vertical gap:lg p:lg">
+  <h1 cds-text="heading">Clarity Core in Angular Universal</h1>
 
-<style>
-  cds-alert {
-    --background: silver;
-    --color: #2d2d2d;
-  }
-</style>
+  <style>
+    cds-alert {
+      --background: silver;
+      --color: #2d2d2d;
+    }
+  </style>
 
-<cds-alert-group status="warning" *ngIf="show">
-  <cds-alert [closable]="true" (closeChange)="show = false">
-    Hello World
-  </cds-alert>
-</cds-alert-group>
+  <cds-alert-group status="warning" *ngIf="show">
+    <cds-alert [closable]="true" (closeChange)="show = false">
+      Hello World
+    </cds-alert>
+  </cds-alert-group>
 
-<cds-button status="success" (click)="show = true">Open Alert</cds-button>
+  <cds-button status="success" (click)="show = true">Open Alert</cds-button>
+</main>

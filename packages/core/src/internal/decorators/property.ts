@@ -131,3 +131,27 @@ export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
       };
   hasChanged?(value: Type, oldValue: Type): boolean;
 }
+
+/**
+ * lit-element @internalProperty decorator with custom defaults specific to Clarity.
+ *
+ * This is used for communication between internal component properties
+ * that are not exposed as part of the public component API.
+ *
+ * A internalProperty decorator which creates a LitElement property which will
+ * trigger a re-render when set but not allow the value to be updated through
+ * public attributes.
+ *
+ * @ExportDecoratedItems
+ */
+export function internalProperty(options?: PropertyConfig) {
+  return (protoOrDescriptor: any, name: string) => {
+    const defaultOptions: any = getDefaultOptions(name, options);
+
+    if (defaultOptions) {
+      defaultOptions.reflect = options?.reflect ? options.reflect : false; // prevent attr reflection by default
+    }
+
+    return prop(defaultOptions)(protoOrDescriptor, name);
+  };
+}

@@ -31,7 +31,7 @@ import { CdsToggle } from './toggle.element.js';
  * ```
  *
  * @element cds-toggle-group
- * @slot default - For projecting toggle controls
+ * @slot - For projecting toggle controls
  */
 export class CdsToggleGroup extends CdsInternalControlGroup {
   @querySlotAll('cds-toggle', { assign: 'controls' }) protected controls: NodeListOf<CdsToggle>;

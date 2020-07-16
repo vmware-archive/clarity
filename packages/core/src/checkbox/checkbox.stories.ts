@@ -119,17 +119,17 @@ export const verticalGroup = () => {
 
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -209,17 +209,17 @@ export const verticalInlineGroup = () => {
 
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -297,17 +297,17 @@ export const horizontalGroup = () => {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -383,17 +383,17 @@ export const horizontalInlineGroup = () => {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -469,17 +469,17 @@ export const compactGroup = () => {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked disabled />
+          <input type="checkbox" checked />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" disabled />
+          <input type="checkbox" />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>

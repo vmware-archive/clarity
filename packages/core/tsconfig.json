@@ -30,7 +30,18 @@
     "paths": {
       "@clr/core/test/*": ["./src/test/*"],
       "@clr/core/*": ["./src/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "strict": true,
+        "rules": {
+          "no-missing-import": "off",
+          "no-unknown-attribute": "off",
+          "globalAttributes": ["cds-layout", "cds-list", "cds-text"]
+        }
+      }
+    ]
   },
   "exclude": ["dist", "node_modules"]
 }

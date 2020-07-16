@@ -21,7 +21,7 @@ import { styles } from './badge.element.css.js';
  * ```
  * @beta
  * @element cds-badge
- * @slot default - Content slot for inside the badge
+ * @slot - Content slot for inside the badge
  * @cssprop --background
  * @cssprop --border-color
  * @cssprop --border-radius

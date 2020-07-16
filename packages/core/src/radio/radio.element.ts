@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property, listenForAttributeChange } from '@clr/core/internal';
+import { internalProperty, listenForAttributeChange } from '@clr/core/internal';
 import { CdsInternalControlInline } from '@clr/core/forms';
 import { styles } from './radio.element.css.js';
 
@@ -23,14 +23,14 @@ import { styles } from './radio.element.css.js';
  * ```
  *
  * @element cds-radio
- * @slot default - For projecting radio input
+ * @slot - For projecting radio input
  * @cssprop --width
  * @cssprop --height
  * @cssprop --border
  * @cssprop --fill-box-shadow
  */
 export class CdsRadio extends CdsInternalControlInline {
-  @property({ type: Boolean }) protected checked = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
 
   static get styles() {
     return [...super.styles, styles];

@@ -24,7 +24,7 @@ import { LogService } from '@clr/core/internal';
  * ```
  * @internal
  * @element cds-control-action
- * @slot default - For projecting text content or cds-icon
+ * @slot - For projecting text content or cds-icon
  */
 export class CdsControlAction extends CdsBaseButton {
   /** Set the action type placement within the supporting input control */

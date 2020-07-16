@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property } from '@clr/core/internal';
+import { internalProperty } from '@clr/core/internal';
 import { CdsInternalControlInline } from '@clr/core/forms';
 import { styles } from './toggle.element.css.js';
 
@@ -23,7 +23,7 @@ import { styles } from './toggle.element.css.js';
  * ```
  *
  * @element cds-toggle
- * @slot default - For projecting checkbox
+ * @slot - For projecting checkbox
  * @cssprop --background
  * @cssprop --border
  * @cssprop --border-radius
@@ -35,7 +35,7 @@ import { styles } from './toggle.element.css.js';
  * @cssprop --anchor-height
  */
 export class CdsToggle extends CdsInternalControlInline {
-  @property({ type: Boolean }) protected checked = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
 
   static get styles() {
     return [...super.styles, styles];

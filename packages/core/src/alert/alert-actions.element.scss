@@ -14,51 +14,41 @@
   display: none !important;
 }
 
-::slotted(cds-button.alert-btn) {
-  --color: var(--action-text-color);
-  --border-color: var(--action-text-color);
-  --background: none;
-  --padding: none;
-  --box-shadow-color: transparent;
-  --text-transform: none;
-  --text-decoration: underline;
-  --border-width: 0;
-  --height: var(--action-size, auto);
-  --min-width: initial;
+:host([type='light']),
+:host([type='default']) {
+  ::slotted(cds-button) {
+    --color: var(--action-text-color);
+    --border-color: var(--action-text-color);
+    --background: none;
+    --padding: none;
+    --box-shadow-color: transparent;
+    --text-transform: none;
+    --text-decoration: underline;
+    --border-width: 0;
+    --height: var(--action-size, auto);
+    --min-width: initial;
+    display: inline-block;
+  }
 
-  display: inline-block;
-}
-
-::slotted(cds-button.alert-btn:hover) {
-  --color: var(--action-hover-text-color);
-  --border-color: var(--action-hover-text-color);
+  ::slotted(cds-button:hover) {
+    --color: var(--action-hover-text-color);
+    --border-color: var(--action-hover-text-color);
+  }
 }
 
 :host([type='default']) {
   --action-size: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-3});
-
-  ::slotted(cds-button) {
-    // slight nudges in alert-actions adjusting for styling across slots.
-    // !important necessary to override specificity of layout styles.
-    margin-top: calc(0.14 * var(--action-size)) !important;
-  }
 }
 
 :host([type='banner']) {
   --action-size: #{$cds-token-space-size-9};
-
-  ::slotted(cds-button) {
-    // slight nudges in alert-actions adjusting for styling across slots.
-    // !important necessary to override specificity of layout styles.
-    margin-top: #{$cds-token-space-size-1} !important;
-  }
 }
 
 :host([type='default']) .private-host {
   height: calc(var(--action-size) + #{$cds-token-space-size-2});
 }
 
-:host([type='default']) ::slotted(cds-button.alert-btn) {
+:host([type='default']) ::slotted(cds-button) {
   --font-size: var(--action-font-size);
   --letter-spacing: normal;
   --height: var(--action-size);

@@ -14,7 +14,7 @@ export const parameters = {
       order: [
         'Welcome',
         'Documentation',
-        ['Getting Started', 'Angular', 'Vue', 'React', 'Browser Support', 'Changelog'],
+        ['Getting Started', 'Angular', 'Vue', 'React', 'Preact', 'AngularJS', 'Browser Support', 'Changelog'],
         'Foundation',
         [
           'Design Tokens',

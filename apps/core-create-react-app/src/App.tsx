@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
-import '@clr/core/icon/register.js';
-import '@clr/core/tag/register.js';
-import '@clr/core/badge/register.js';
-import '@clr/core/global.min.css';
-import '@clr/city/css/bundles/default.min.css';
-
+import { CdsButton } from '@clr/react/button';
+import { CdsTag } from '@clr/react/tag';
+import { CdsBadge } from '@clr/react/badge';
+import { CdsAlert, CdsAlertGroup } from '@clr/react/alert';
+import { CdsIcon } from '@clr/react/icon';
+import { ClarityIcons, userIcon } from '@clr/core/icon';
 import './App.css';
-import { CdsButton, CdsIcon, CdsTag, CdsBadge, CdsAlertGroup, CdsAlert } from './clarity'; // CdsIcon
+
+ClarityIcons.addIcons(userIcon);
 
 interface AppProps {}
 interface AppState {
@@ -26,8 +25,8 @@ export default class App extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <main>
-        <h1>Clarity in React</h1>
+      <main cds-layout="p:lg vertical gap:lg" cds-text="body">
+        <h1 cds-text="heading">Clarity in React</h1>
 
         {this.state.show ? (
           <CdsAlertGroup status="warning">
@@ -41,16 +40,16 @@ export default class App extends Component<AppProps, AppState> {
           Show Alert
         </CdsButton>
 
-        <section>
-          <h2>Buttons</h2>
+        <h2 cds-text="section">Buttons</h2>
+        <section cds-layout="horizontal gap:sm">
           <CdsButton status="primary">primary</CdsButton>
           <CdsButton status="success">success</CdsButton>
           <CdsButton status="danger">danger</CdsButton>
           <CdsButton status="danger" disabled>
             disabled
           </CdsButton>
-          <br />
-          <br />
+        </section>
+        <section cds-layout="horizontal gap:sm">
           <CdsButton action="outline">outline</CdsButton>
           <CdsButton action="outline" status="success">
             success
@@ -61,16 +60,16 @@ export default class App extends Component<AppProps, AppState> {
           <CdsButton action="outline" disabled>
             disabled
           </CdsButton>
-          <br />
-          <br />
+        </section>
+        <section cds-layout="horizontal gap:sm">
           <CdsButton action="flat">flat</CdsButton>
           <CdsButton action="flat" disabled>
             flat disabled
           </CdsButton>
         </section>
 
-        <section>
-          <h2>Tags</h2>
+        <h2 cds-text="section">Tags</h2>
+        <section cds-layout="horizontal gap:sm">
           <CdsTag readonly status="info">
             Info
           </CdsTag>
@@ -83,8 +82,8 @@ export default class App extends Component<AppProps, AppState> {
           <CdsTag readonly status="danger">
             Danger
           </CdsTag>
-          <br />
-          <br />
+        </section>
+        <section cds-layout="horizontal gap:sm">
           <CdsTag readonly color="gray">
             Austin <CdsBadge>1</CdsBadge>
           </CdsTag>
@@ -102,8 +101,8 @@ export default class App extends Component<AppProps, AppState> {
           </CdsTag>
         </section>
 
-        <section>
-          <h2>Badge</h2>
+        <h2 cds-text="section">Badge</h2>
+        <section cds-layout="horizontal gap:sm">
           <CdsBadge status="info">2</CdsBadge>
           <CdsBadge status="success">3</CdsBadge>
           <CdsBadge status="warning">12</CdsBadge>
@@ -115,14 +114,15 @@ export default class App extends Component<AppProps, AppState> {
           <CdsBadge color="light-blue">3</CdsBadge>
         </section>
 
-        <section>
-          <h2>Icons</h2>
+        <h2 cds-text="section">Icons</h2>
+        <section cds-layout="horizontal gap:sm">
           <CdsIcon size="lg" shape="user"></CdsIcon>
           <CdsIcon size="lg" shape="user" badge="info"></CdsIcon>
           <CdsIcon size="lg" shape="user" badge="success"></CdsIcon>
           <CdsIcon size="lg" shape="user" badge="danger"></CdsIcon>
           <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
-          <br /><br />
+        </section>
+        <section cds-layout="horizontal gap:sm">
           <CdsIcon size="lg" shape="user" solid></CdsIcon>
           <CdsIcon size="lg" shape="user" solid badge="info"></CdsIcon>
           <CdsIcon size="lg" shape="user" solid badge="success"></CdsIcon>

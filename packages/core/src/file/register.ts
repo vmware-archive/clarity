@@ -7,6 +7,8 @@
 import { registerElementSafely } from '@clr/core/internal';
 import { CdsFile } from './file.element.js';
 import '@clr/core/forms/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
 
 registerElementSafely('cds-file', CdsFile);
 

@@ -15,11 +15,6 @@ registerElementSafely('cds-toggle-group', CdsToggleGroup);
 declare global {
   interface HTMLElementTagNameMap {
     'cds-toggle-group': CdsToggleGroup;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
     'cds-toggle': CdsToggle;
   }
 }

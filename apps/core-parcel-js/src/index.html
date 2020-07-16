@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./index.css" rel="stylesheet" />
   </head>
-  <body>
+  <body cds-text="body" cds-layout="p:md">
     <main>
       <h1>Clarity Core Demo - JavaScript</h1>
 
@@ -259,20 +259,20 @@
 
         <h3>Banner Alerts (App-Level)</h3>
         <div cds-layout="vertical gap:sm">
-          <cds-alert-group type="banner">
-            <cds-alert closable status="info">
+          <cds-alert-group type="banner" status="info">
+            <cds-alert closable>
               This example is a closable banner alert inside a banner alert group with a status of "info".
             </cds-alert>
           </cds-alert-group>
 
-          <cds-alert-group type="banner">
-            <cds-alert status="success" closable>
+          <cds-alert-group type="banner" status="success">
+            <cds-alert closable>
               This example is a closable alert with a status of "success" inside a banner alert group.
             </cds-alert>
           </cds-alert-group>
 
-          <cds-alert-group type="banner">
-            <cds-alert status="warning" closable>
+          <cds-alert-group type="banner" status="warning">
+            <cds-alert closable>
               This example is a closable alert with alert action buttons and a status of "warning" inside a banner alert
               group.
               <cds-alert-actions>
@@ -282,8 +282,8 @@
             </cds-alert>
           </cds-alert-group>
 
-          <cds-alert-group type="banner">
-            <cds-alert status="danger" closable>
+          <cds-alert-group type="banner" status="danger">
+            <cds-alert closable>
               This example is a closable alert with a status of "danger" inside a banner alert group.
               <cds-alert-actions>
                 <cds-button>Button 1</cds-button>
@@ -292,8 +292,8 @@
             </cds-alert>
           </cds-alert-group>
 
-          <cds-alert-group type="banner">
-            <cds-alert status="unknown">
+          <cds-alert-group type="banner" status="unknown">
+            <cds-alert>
               This example is a non-closable alert with alert actions and a status of "unknown" inside a banner alert
               group.
               <cds-alert-actions>
@@ -303,7 +303,7 @@
             </cds-alert>
           </cds-alert-group>
 
-          <cds-alert-group type="banner">
+          <cds-alert-group type="banner" status="info">
             <cds-alert status="loading">
               This example is an alert with alert actions and a status of "loading" inside a banner alert group.
               <cds-alert-actions>

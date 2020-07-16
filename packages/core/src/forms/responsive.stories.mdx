@@ -38,3 +38,127 @@ The form control components can be used with the [`cds-layout` system](./?path=/
 to create complex multi column layouts. [Code Example](./?path=/docs/forms-preview-forms-stories--checkout-form#checkout-form)
 
 <Story id="forms-preview-forms-stories--responsive-checkout-form" />
+
+```html
+<cds-form-group layout="vertical" cds-layout="container:sm">
+  <p cds-text="section">Billing Address</p>
+
+  <div cds-layout="grid cols@xs:6 gap:lg">
+    <cds-input>
+      <label>first name</label>
+      <input type="text" />
+    </cds-input>
+
+    <cds-input>
+      <label>last name</label>
+      <input type="text" />
+    </cds-input>
+  </div>
+
+  <cds-input>
+    <label>email</label>
+    <input type="email" placeholder="you@example.com" />
+  </cds-input>
+
+  <div cds-layout="grid cols@xs:6 gap:lg">
+    <cds-input>
+      <label>address</label>
+      <input type="text" placeholder="1234 Main St." />
+    </cds-input>
+
+    <cds-input>
+      <label>address 2</label>
+      <input type="text" placeholder="Apartment or Suite" />
+      <cds-control-message>(optional)</cds-control-message>
+    </cds-input>
+  </div>
+
+  <div cds-layout="grid gap:lg">
+    <cds-select cds-layout="col@xs:6 col@sm:5">
+      <label>Country</label>
+      <select>
+        <option>choose...</option>
+        <option>United States</option>
+      </select>
+    </cds-select>
+
+    <cds-select cds-layout="col@xs:6 col@sm:4">
+      <label>State</label>
+      <select>
+        <option>choose...</option>
+        <option>California</option>
+      </select>
+    </cds-select>
+
+    <cds-input cds-layout="col@sm:3">
+      <label>Postal Code</label>
+      <input type="text" placeholder="" />
+    </cds-input>
+  </div>
+
+  <p cds-text="section" cds-layout="m-t:xl">Payment</p>
+
+  <cds-radio-group>
+    <label>payment type</label>
+    <cds-radio>
+      <label>credit card</label>
+      <input type="radio" value="1" checked />
+    </cds-radio>
+    <cds-radio>
+      <label>debt card</label>
+      <input type="radio" value="2" />
+    </cds-radio>
+    <cds-radio>
+      <label>paypal</label>
+      <input type="radio" value="3" />
+    </cds-radio>
+  </cds-radio-group>
+
+  <cds-checkbox-group>
+    <label>Shipping Details</label>
+    <cds-checkbox>
+      <label>Shipping address is the same as my billing address</label>
+      <input type="checkbox" />
+    </cds-checkbox>
+    <cds-checkbox>
+      <label>Save this information for next time</label>
+      <input type="checkbox" />
+    </cds-checkbox>
+  </cds-checkbox-group>
+
+  <div cds-layout="grid cols@xs:6 gap:lg">
+    <cds-input>
+      <label>name on card</label>
+      <input type="text" />
+      <cds-control-message>full name as displayed on card</cds-control-message>
+    </cds-input>
+
+    <cds-input>
+      <label>credit card number</label>
+      <input type="number" />
+    </cds-input>
+  </div>
+
+  <div cds-layout="grid gap:lg">
+    <cds-input cds-layout="cols@xs:6 col@sm:4">
+      <label>expiration</label>
+      <input type="text" />
+    </cds-input>
+
+    <cds-input cds-layout="cols@xs:6 col@sm:3">
+      <label>CVV</label>
+      <input type="number" />
+    </cds-input>
+
+    <cds-input cds-layout="col@sm:5">
+      <label>promo code</label>
+      <input type="text" />
+      <cds-control-action action="suffix" aria-label="add promo code">
+        <cds-icon shape="add"></cds-icon>
+      </cds-control-action>
+    </cds-input>
+  </div>
+
+  <cds-button>continue to checkout</cds-button>
+</cds-form-group>
+```

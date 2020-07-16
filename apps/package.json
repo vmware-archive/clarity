@@ -1,0 +1,17 @@
+{
+  "name": "clarity-demo-apps",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npx npm-run-all -p build:*",
+    "build:core-angular-cli": "yarn --cwd core-angular-cli run build",
+    "build:core-angular-js": "yarn --cwd core-angular-js run build",
+    "build:core-angular-universal": "yarn --cwd core-angular-universal run build",
+    "build:core-create-react-app": "yarn --cwd core-create-react-app run build",
+    "build:core-parcel-js": "yarn --cwd core-parcel-js run build",
+    "build:core-vue-cli": "yarn --cwd core-vue-cli run build"
+  },
+  "license": "MIT",
+  "dependencies": { },
+  "devDependencies": { }
+}

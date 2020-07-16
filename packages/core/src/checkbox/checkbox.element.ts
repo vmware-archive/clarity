@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property, listenForAttributeChange } from '@clr/core/internal';
+import { internalProperty, listenForAttributeChange } from '@clr/core/internal';
 import { CdsInternalControlInline } from '@clr/core/forms';
 import { styles } from './checkbox.element.css.js';
 
@@ -24,16 +24,16 @@ import { styles } from './checkbox.element.css.js';
  * ```
  *
  * @element cds-checkbox
- * @slot default - For projecting checkbox
+ * @slot - For projecting checkbox
  * @cssprop --color
  * @cssprop --check-color
  * @cssprop --background
  * @cssprop --border-radius
  */
 export class CdsCheckbox extends CdsInternalControlInline {
-  @property({ type: Boolean }) protected checked = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
 
-  @property({ type: Boolean }) protected indeterminate = false;
+  @internalProperty({ type: Boolean, reflect: true }) protected indeterminate = false;
 
   static get styles() {
     return [...super.styles, styles];

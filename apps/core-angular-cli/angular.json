@@ -24,12 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [
-              "node_modules/normalize.css/normalize.css",
-              "node_modules/@clr/core/global.min.css",
-              "node_modules/@clr/city/css/bundles/default.min.css",
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {

@@ -10,6 +10,12 @@ import { registerElementSafely, property } from '@clr/core/internal';
 import { spreadProps } from './spread-props.js';
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'test-spread-props-directive': HTMLElement;
+  }
+}
+
 export class TestElement extends LitElement {
   @property({ type: Boolean }) test = false;
   @property({ type: String }) test2 = 'hello';

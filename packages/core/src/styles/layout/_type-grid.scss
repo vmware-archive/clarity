@@ -13,11 +13,13 @@
 @mixin generateColumnsAndRows($breakpoint: null) {
   @for $i from 1 through $cds-token-layout-grid-cols-static {
     // implicit columns/rows
-    [cds-layout~='cols#{$breakpoint}:#{$i}'] > * {
+    [cds-layout~='cols#{$breakpoint}:#{$i}'] > *,
+    [cds-layout~='cols#{$breakpoint}:#{$i}']::slotted(*) {
       grid-column: span $i / span $i;
     }
 
-    [cds-layout~='rows#{$breakpoint}:#{$i}'] > * {
+    [cds-layout~='rows#{$breakpoint}:#{$i}'] > *,
+    [cds-layout~='rows#{$breakpoint}:#{$i}']::slotted(*) {
       grid-row: span $i / span $i;
     }
   }
@@ -133,7 +135,8 @@
   }
 }
 
-[cds-layout*='cols\@'] > * {
+[cds-layout*='cols\@'] > *,
+[cds-layout*='cols\@']::slotted(*) {
   grid-column: span $cds-token-layout-grid-cols;
 }
 

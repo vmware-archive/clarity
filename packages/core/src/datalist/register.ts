@@ -7,6 +7,7 @@
 import { registerElementSafely } from '@clr/core/internal';
 import { CdsDatalist } from './datalist.element.js';
 import '@clr/core/forms/register.js';
+import '@clr/core/icon/register.js';
 
 registerElementSafely('cds-datalist', CdsDatalist);
 

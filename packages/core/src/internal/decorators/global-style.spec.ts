@@ -10,6 +10,12 @@ import { registerElementSafely } from '@clr/core/internal';
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { globalStyle } from './global-style.js';
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'test-global-style-decorator': HTMLElement;
+  }
+}
+
 export class TestElement extends LitElement {
   static get styles() {
     return css`

@@ -48,15 +48,12 @@ export const defaultSize = () => {
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm">
-            <p cds-text="body">Lorem Ipsum</p>
-          </div>
+          <p cds-text="body">Lorem Ipsum</p>
+          <p cds-text="body">Lorem Ipsum</p>
         </cds-modal-content>
         <cds-modal-actions>
-          <div cds-layout="horizontal gap:md align:right">
-            <cds-button action="outline">Cancel</cds-button>
-            <cds-button>Ok</cds-button>
-          </div>
+          <cds-button action="outline">Cancel</cds-button>
+          <cds-button>Ok</cds-button>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>
@@ -71,15 +68,12 @@ export const small = () => {
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm">
-            <p cds-text="body">Lorem Ipsum</p>
-          </div>
+          <p cds-text="body">Lorem Ipsum</p>
+          <p cds-text="body">Lorem Ipsum</p>
         </cds-modal-content>
         <cds-modal-actions>
-          <div cds-layout="horizontal gap:md align:right">
-            <cds-button action="outline">Cancel</cds-button>
-            <cds-button>Ok</cds-button>
-          </div>
+          <cds-button action="outline">Cancel</cds-button>
+          <cds-button>Ok</cds-button>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>
@@ -94,15 +88,11 @@ export const large = () => {
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm">
-            <p cds-text="body">Lorem Ipsum</p>
-          </div>
+          <p cds-text="body">Lorem Ipsum</p>
         </cds-modal-content>
         <cds-modal-actions>
-          <div cds-layout="horizontal gap:md align:right">
-            <cds-button action="outline">Cancel</cds-button>
-            <cds-button>Ok</cds-button>
-          </div>
+          <cds-button action="outline">Cancel</cds-button>
+          <cds-button>Ok</cds-button>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>
@@ -117,15 +107,11 @@ export const extraLarge = () => {
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm">
-            <p cds-text="body">Lorem Ipsum</p>
-          </div>
+          <p cds-text="body">Lorem Ipsum</p>
         </cds-modal-content>
         <cds-modal-actions>
-          <div cds-layout="horizontal gap:md align:right">
-            <cds-button action="outline">Cancel</cds-button>
-            <cds-button>Ok</cds-button>
-          </div>
+          <cds-button action="outline">Cancel</cds-button>
+          <cds-button>Ok</cds-button>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>
@@ -139,15 +125,11 @@ export const focusTrap = () => {
         <h3 cds-text="title">My Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <div cds-layout="vertical gap:lg p-y:sm">
-          <p cds-text="body">Lorem Ipsum</p>
-        </div>
+        <p cds-text="body">Lorem Ipsum</p>
       </cds-modal-content>
       <cds-modal-actions>
-        <div cds-layout="horizontal gap:md align:right">
-          <cds-button action="outline">Cancel</cds-button>
-          <cds-button>Ok</cds-button>
-        </div>
+        <cds-button action="outline">Cancel</cds-button>
+        <cds-button>Ok</cds-button>
       </cds-modal-actions>
     </cds-modal>
   `;
@@ -170,16 +152,13 @@ export const customStyles = () => {
         <cds-modal-header>
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
-        <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm">
-            <p cds-text="body">Lorem Ipsum</p>
-          </div>
+        <cds-modal-content cds-layout="grid cols:6 p-y:sm">
+          <p cds-text="body">Lorem Ipsum</p>
+          <p cds-text="body">Lorem Ipsum</p>
         </cds-modal-content>
-        <cds-modal-actions>
-          <div cds-layout="horizontal gap:md align:right">
-            <cds-button action="outline">Cancel</cds-button>
-            <cds-button>Ok</cds-button>
-          </div>
+        <cds-modal-actions cds-layout="horizontal gap:md">
+          <cds-button action="outline">prev</cds-button>
+          <cds-button cds-layout="align:right">next</cds-button>
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>

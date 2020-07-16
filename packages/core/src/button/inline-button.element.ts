@@ -21,7 +21,7 @@ import { styles } from './inline-button.element.css.js';
  * ```
  * @beta
  * @element cds-inline-button
- * @slot default - Content slot for inside the button
+ * @slot - Content slot for inside the button
  * @cssprop --color
  * @cssprop --font-size
  * @cssprop --font-weight

@@ -6,12 +6,12 @@
 
 import { html, LitElement } from 'lit-element';
 import { FocusTrap } from '../utils/focus-trap.js';
-import { property } from '../decorators/property.js';
+import { internalProperty } from '../decorators/property.js';
 export class CdsBaseFocusTrap extends LitElement {
   protected focusTrap: FocusTrap;
 
-  @property({ type: Boolean })
-  private __demoMode = false;
+  @internalProperty({ type: Boolean, reflect: true })
+  protected __demoMode = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -21,6 +21,7 @@ export class CdsBaseFocusTrap extends LitElement {
       this.focusTrap.enableFocusTrap();
     }
   }
+
   disconnectedCallback() {
     super.disconnectedCallback();
 

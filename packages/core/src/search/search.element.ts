@@ -9,7 +9,6 @@ import { globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, searchIcon } from '@clr/core/icon';
-import '@clr/core/icon/register.js';
 import { styles as globalStyles } from './search.global.css.js';
 
 ClarityIcons.addIcons(searchIcon);
@@ -30,7 +29,7 @@ ClarityIcons.addIcons(searchIcon);
  * ```
  *
  * @element cds-search
- * @slot default - For projecting search input and label
+ * @slot - For projecting search input and label
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border

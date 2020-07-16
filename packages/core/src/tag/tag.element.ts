@@ -25,7 +25,7 @@ ClarityIcons.addIcons(timesIcon);
  *
  * @beta
  * @element cds-tag
- * @slot default - Content slot for inside the tag
+ * @slot - Content slot for inside the tag
  * @cssprop --background
  * @cssprop --border-color
  * @cssprop --border-radius
@@ -71,7 +71,7 @@ export class CdsTag extends CdsBaseButton {
       this.readonly = false;
     }
 
-    if (!this.readonly && !(this as HTMLElement).getAttribute('aria-label')) {
+    if (!this.readonly && !this.getAttribute('aria-label')) {
       console.warn('Clickable and closable tags need aria-labels.');
     }
   }

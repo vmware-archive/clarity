@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "./dist/core/global.min.css",
-      "maxSize": "13.5 kB"
+      "maxSize": "14 kB"
     },
     {
       "path": "./dist/core/styles/module.layout.min.css",
@@ -26,7 +26,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "20.5 kB"
+      "maxSize": "21 kB"
     }
   ]
 }

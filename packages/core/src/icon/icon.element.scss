@@ -37,6 +37,8 @@ svg {
 }
 
 // sizing
+// DEPRECATED IN 4.0: all legacy sizing classnames
+// will be replaced with [size="sm|md|lg|xl|xxl"] selectors!
 :host(.clr-i-size-sm) {
   // weirdly, the default... 16px
   @include equilateral(#{$cds-token-space-size-7});

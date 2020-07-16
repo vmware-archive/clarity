@@ -46,6 +46,8 @@ export const parameters = {
           'Toggle',
           'Date (Internal)',
         ],
+        'Components (Preview)',
+        ['Circular Progress'],
         'Utilities (Preview)',
         'Internal',
         [

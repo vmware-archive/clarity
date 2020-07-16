@@ -12,6 +12,7 @@ import {
   hasStringPropertyChangedAndNotNil,
   isMap,
   isNilOrEmpty,
+  isNumericString,
   isObject,
   isObjectAndNotNilOrEmpty,
   isString,
@@ -44,6 +45,21 @@ describe('Functional Helper: ', () => {
       expect(isNilOrEmpty('ohai')).toEqual(false);
       expect(isNilOrEmpty(true)).toEqual(false);
       expect(isNilOrEmpty(false)).toEqual(false);
+    });
+  });
+
+  describe('isNumericString(): ', () => {
+    it('identifies strings that are numbers as expected', () => {
+      expect(isNumericString(undefined)).toEqual(false, 'undefined is not a numeric string');
+      expect(isNumericString(null)).toEqual(false, 'null is not a numeric string');
+      expect(isNumericString('')).toEqual(false, 'empty string is not a numeric string');
+      expect(isNumericString('    ')).toEqual(false, 'string of spaces is not a numeric string');
+      expect(isNumericString('ohai')).toEqual(false, 'string is not a numeric string');
+      expect(isNumericString('100')).toEqual(true, 'integer string is a numeric string');
+      expect(isNumericString('14567.0897')).toEqual(true, 'float string is a numeric string');
+      expect(isNumericString('-1')).toEqual(true, 'negative integer is a numeric string');
+      expect(isNumericString('-3.14159265359')).toEqual(true, 'negative float is a numeric string');
+      expect(isNumericString('0')).toEqual(true, 'zero is a numeric string');
     });
   });
 

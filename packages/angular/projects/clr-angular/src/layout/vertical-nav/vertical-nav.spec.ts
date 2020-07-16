@@ -113,6 +113,15 @@ export default function (): void {
 
         expect(toggleVertNavBtn.getAttribute('aria-expanded')).toBe('true');
       });
+
+      it('should add tabindex=-1 and aria-hidden to helper button inside .nav-content to prevent focusing', () => {
+        vertNavService.collapsible = true;
+        vertNavService.collapsed = true;
+        fixture.detectChanges();
+        const toggleVertNavBtnHelper: HTMLElement = compiled.querySelector('.nav-btn');
+        expect(toggleVertNavBtnHelper.getAttribute('tabindex')).toBe('-1');
+        expect(toggleVertNavBtnHelper.getAttribute('aria-hidden')).toBe('true');
+      });
     });
 
     describe('Nav Internals - No Icons + No Nav Groups', () => {

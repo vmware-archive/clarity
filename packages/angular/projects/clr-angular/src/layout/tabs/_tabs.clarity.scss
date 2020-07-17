@@ -37,6 +37,7 @@ button.nav-link {
 @include fixForIE11AndUp {
   .tab-content {
     display: inline-block;
+    width: 100%;
   }
 }
 

@@ -3,4 +3,4 @@ import '@clr/core/tag/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsTagType = Tag;
-export const CdsTag = createReactComponent<CdsTagType>('cds-tag');
+export class CdsTag extends createReactComponent<CdsTagType>('cds-tag') {}

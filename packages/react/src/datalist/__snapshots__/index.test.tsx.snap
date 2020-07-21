@@ -2,7 +2,7 @@
 
 exports[`CdsDatalist snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsDatalist>
     <cds-datalist>
       <label>
         datalist
@@ -22,6 +22,6 @@ exports[`CdsDatalist snapshot 1`] = `
         />
       </datalist>
     </cds-datalist>
-  </ReactWrapperComponent>
+  </CdsDatalist>
 </div>
 `;

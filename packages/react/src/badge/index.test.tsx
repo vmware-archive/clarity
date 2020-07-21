@@ -10,7 +10,7 @@ describe('CdsBadge', () => {
         <CdsBadge color="gray">1</CdsBadge>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsBadge');
     expect(renderedComponent.at(0).html()).toMatch(/2/);
     expect(renderedComponent.at(1).html()).toMatch(/1/);
   });

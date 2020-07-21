@@ -15,9 +15,8 @@ describe('CdsDate', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsDate');
+    expect(renderedComponent.at(0).html()).toMatch(/Date input/);
   });
 
   it('snapshot', () => {

@@ -7,5 +7,5 @@ import { createReactComponent } from '../converter/react-wrapper';
 type CdsInputype = Input;
 type CdsInputGroupType = InputGroup;
 
-export const CdsInput = createReactComponent<CdsInputype>('cds-input');
-export const CdsInputGroup = createReactComponent<CdsInputGroupType>('cds-input-group');
+export class CdsInput extends createReactComponent<CdsInputype>('cds-input') {}
+export class CdsInputGroup extends createReactComponent<CdsInputGroupType>('cds-input-group') {}

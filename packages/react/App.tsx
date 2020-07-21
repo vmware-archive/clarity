@@ -1,6 +1,6 @@
 import React from 'react';
 import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './src/alert';
-import { CdsButton, CdsButtonType } from './src/button';
+import { CdsButton } from './src/button';
 import { CdsBadge } from './src/badge';
 import { CdsCheckbox } from './src/checkbox';
 import { CdsControl, CdsControlMessage, CdsFormGroup } from './src/forms';
@@ -28,16 +28,16 @@ interface AppState {
 }
 
 export default class App extends React.Component<{}, AppState> {
-  buttonRef: any;
+  buttonRef: React.RefObject<CdsButton>;
 
   constructor(props: any) {
     super(props);
     this.state = { modalOpen: false };
-    this.buttonRef = React.createRef<CdsButtonType>();
+    this.buttonRef = React.createRef<CdsButton>();
   }
 
   componentDidMount() {
-    this.buttonRef.current.nativeElement.then((element: any) => {
+    this.buttonRef.current.nativeElement.then(element => {
       element.focus();
     });
   }
@@ -198,7 +198,7 @@ export default class App extends React.Component<{}, AppState> {
         <CdsFormGroup>
           <CdsCheckbox>
             <label>checked</label>
-            <input type="checkbox" checked />
+            <input type="checkbox" defaultChecked />
             <CdsControlMessage>message text</CdsControlMessage>
           </CdsCheckbox>
 
@@ -222,7 +222,7 @@ export default class App extends React.Component<{}, AppState> {
 
           <CdsCheckbox>
             <label>indeterminate</label>
-            <input type="checkbox" indeterminate />
+            <input type="checkbox" indeterminate="true" />
             <CdsControlMessage>indeterminate message</CdsControlMessage>
           </CdsCheckbox>
 

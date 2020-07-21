@@ -17,10 +17,9 @@ describe('CdsTextarea', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toBeDefined();
-    expect(renderedComponent.at(2).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsTextarea');
+    expect(renderedComponent.at(0).html()).toMatch(/label/);
+    expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });
 
   it('snapshot', () => {

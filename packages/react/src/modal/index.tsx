@@ -12,8 +12,8 @@ type CdsModalContentType = ModalContent;
 type CdsModalHeaderType = ModalHeader;
 type CdsModalHeaderActionsType = ModalHeaderActions;
 
-export const CdsModal = createReactComponent<CdsModalType>('cds-modal');
-export const CdsModalActions = createReactComponent<CdsModalActionsType>('cds-modal-actions');
-export const CdsModalContent = createReactComponent<CdsModalContentType>('cds-modal-content');
-export const CdsModalHeader = createReactComponent<CdsModalHeaderType>('cds-modal-header');
-export const CdsModalHeaderActions = createReactComponent<CdsModalHeaderActionsType>('cds-modal-header-action');
+export class CdsModal extends createReactComponent<CdsModalType>('cds-modal') {}
+export class CdsModalActions extends createReactComponent<CdsModalActionsType>('cds-modal-actions') {}
+export class CdsModalContent extends createReactComponent<CdsModalContentType>('cds-modal-content') {}
+export class CdsModalHeader extends createReactComponent<CdsModalHeaderType>('cds-modal-header') {}
+export class CdsModalHeaderActions extends createReactComponent<CdsModalHeaderActionsType>('cds-modal-header-action') {}

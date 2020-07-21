@@ -5,7 +5,7 @@ import { ClarityIcons, userIcon, timesIcon } from '@clr/core/icon';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
-describe('CdsBadge', () => {
+describe('CdsIcon', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
@@ -16,7 +16,7 @@ describe('CdsBadge', () => {
         <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsIcon');
     expect(renderedComponent.at(0).html()).toBeDefined();
     expect(renderedComponent.at(1).html()).toBeDefined();
     expect(renderedComponent.at(2).html()).toBeDefined();

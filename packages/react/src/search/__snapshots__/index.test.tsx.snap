@@ -5,11 +5,11 @@ exports[`CdsSearch snapshot 1`] = `
   <h3>
     Vertical
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="vertical"
   >
     <cds-form-group>
-      <ReactWrapperComponent>
+      <CdsSearch>
         <cds-search>
           <label>
             label
@@ -17,14 +17,14 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         status="error"
       >
         <cds-search>
@@ -34,16 +34,16 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         status="success"
       >
         <cds-search>
@@ -53,25 +53,25 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
+      </CdsSearch>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
   <h3>
     Horizontal
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="horizontal"
   >
     <cds-form-group>
-      <ReactWrapperComponent
+      <CdsSearch
         layout="horizontal"
       >
         <cds-search>
@@ -81,14 +81,14 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         layout="horizontal"
         status="error"
       >
@@ -99,16 +99,16 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         layout="horizontal"
         status="success"
       >
@@ -119,25 +119,25 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
+      </CdsSearch>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
   <h3>
     Compact
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="compact"
   >
     <cds-form-group>
-      <ReactWrapperComponent
+      <CdsSearch
         layout="compact"
       >
         <cds-search>
@@ -147,14 +147,14 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         layout="compact"
         status="error"
       >
@@ -165,16 +165,16 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSearch>
+      <CdsSearch
         layout="compact"
         status="success"
       >
@@ -185,16 +185,16 @@ exports[`CdsSearch snapshot 1`] = `
           <input
             type="search"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-search>
-      </ReactWrapperComponent>
+      </CdsSearch>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
 </div>
 `;

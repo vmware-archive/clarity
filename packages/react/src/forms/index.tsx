@@ -13,8 +13,8 @@ type CdsControlGroupType = ControlGroup;
 type CdsControlType = Control;
 type CdsFormGroupType = FormGroup;
 
-export const CdsControlMessage = createReactComponent<CdsControlMessageType>('cds-control-message');
-export const CdsControlAction = createReactComponent<CdsControlActionType>('cds-control-action');
-export const CdsControlGroup = createReactComponent<CdsControlGroupType>('cds-control-group');
-export const CdsControl = createReactComponent<CdsControlType>('cds-control');
-export const CdsFormGroup = createReactComponent<CdsFormGroupType>('cds-form-group');
+export class CdsControlMessage extends createReactComponent<CdsControlMessageType>('cds-control-message') {}
+export class CdsControlAction extends createReactComponent<CdsControlActionType>('cds-control-action') {}
+export class CdsControlGroup extends createReactComponent<CdsControlGroupType>('cds-control-group') {}
+export class CdsControl extends createReactComponent<CdsControlType>('cds-control') {}
+export class CdsFormGroup extends createReactComponent<CdsFormGroupType>('cds-form-group') {}

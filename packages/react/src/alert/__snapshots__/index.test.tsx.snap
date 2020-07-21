@@ -1,49 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CdsBadge snapshot 1`] = `
+exports[`CdsAlert snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsAlert
     status="success"
   >
     <cds-alert>
       Foo
     </cds-alert>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsAlert>
+  <CdsAlertGroup
     status="info"
   >
     <cds-alert-group>
-      <ReactWrapperComponent
+      <CdsAlert
         closable={true}
       >
         <cds-alert>
           Bar
-          <ReactWrapperComponent>
+          <CdsAlertActions>
             <cds-alert-actions>
               Baz
             </cds-alert-actions>
-          </ReactWrapperComponent>
+          </CdsAlertActions>
         </cds-alert>
-      </ReactWrapperComponent>
+      </CdsAlert>
     </cds-alert-group>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsAlertGroup>
+  <CdsAlertGroup
     type="banner"
   >
     <cds-alert-group>
-      <ReactWrapperComponent
+      <CdsAlert
         status="info"
       >
         <cds-alert>
           Foobar
-          <ReactWrapperComponent>
+          <CdsAlertActions>
             <cds-alert-actions>
               Test
             </cds-alert-actions>
-          </ReactWrapperComponent>
+          </CdsAlertActions>
         </cds-alert>
-      </ReactWrapperComponent>
+      </CdsAlert>
     </cds-alert-group>
-  </ReactWrapperComponent>
+  </CdsAlertGroup>
 </div>
 `;

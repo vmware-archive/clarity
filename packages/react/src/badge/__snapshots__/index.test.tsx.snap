@@ -2,68 +2,68 @@
 
 exports[`CdsBadge snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsBadge
     status="info"
   >
     <cds-badge>
       2
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     status="success"
   >
     <cds-badge>
       3
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     status="warning"
   >
     <cds-badge>
       12
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     status="danger"
   >
     <cds-badge>
       15
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     color="gray"
   >
     <cds-badge>
       1
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     color="purple"
   >
     <cds-badge>
       6
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     color="blue"
   >
     <cds-badge>
       15
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     color="orange"
   >
     <cds-badge>
       2
     </cds-badge>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsBadge>
+  <CdsBadge
     color="light-blue"
   >
     <cds-badge>
       3
     </cds-badge>
-  </ReactWrapperComponent>
+  </CdsBadge>
 </div>
 `;

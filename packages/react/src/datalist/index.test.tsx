@@ -17,7 +17,7 @@ describe('CdsDatalist', () => {
         </CdsDatalist>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsDatalist');
     expect(renderedComponent.html()).toMatch(/datalist/);
   });
 

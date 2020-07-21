@@ -2,11 +2,11 @@
 
 exports[`CdsRange snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="horizontal"
   >
     <cds-form-group>
-      <ReactWrapperComponent
+      <CdsRange
         layout="horizontal"
       >
         <cds-range>
@@ -16,14 +16,14 @@ exports[`CdsRange snapshot 1`] = `
           <input
             type="range"
           />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-range>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsRange>
+      <CdsRange
         layout="horizontal"
       >
         <cds-range>
@@ -34,14 +34,14 @@ exports[`CdsRange snapshot 1`] = `
             disabled={true}
             type="range"
           />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               disabled message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-range>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsRange>
+      <CdsRange
         layout="horizontal"
         status="error"
       >
@@ -52,16 +52,16 @@ exports[`CdsRange snapshot 1`] = `
           <input
             type="range"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-range>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsRange>
+      <CdsRange
         layout="horizontal"
         status="success"
       >
@@ -72,16 +72,16 @@ exports[`CdsRange snapshot 1`] = `
           <input
             type="range"
           />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-range>
-      </ReactWrapperComponent>
+      </CdsRange>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
 </div>
 `;

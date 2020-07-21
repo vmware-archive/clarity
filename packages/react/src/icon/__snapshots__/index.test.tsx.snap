@@ -1,40 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CdsBadge snapshot 1`] = `
+exports[`CdsIcon snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsIcon
     shape="user"
     size="lg"
   >
     <cds-icon />
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsIcon>
+  <CdsIcon
     badge="info"
     shape="user"
     size="lg"
   >
     <cds-icon />
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsIcon>
+  <CdsIcon
     badge="success"
     shape="user"
     size="lg"
   >
     <cds-icon />
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsIcon>
+  <CdsIcon
     badge="danger"
     shape="user"
     size="lg"
   >
     <cds-icon />
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsIcon>
+  <CdsIcon
     badge="warning-triangle"
     shape="user"
     size="lg"
   >
     <cds-icon />
-  </ReactWrapperComponent>
+  </CdsIcon>
 </div>
 `;

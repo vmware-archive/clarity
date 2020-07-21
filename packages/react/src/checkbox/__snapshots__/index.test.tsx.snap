@@ -2,7 +2,7 @@
 
 exports[`CdsCheckbox snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsCheckbox>
     <cds-checkbox>
       <label>
         Hello
@@ -11,6 +11,6 @@ exports[`CdsCheckbox snapshot 1`] = `
         type="checkbox"
       />
     </cds-checkbox>
-  </ReactWrapperComponent>
+  </CdsCheckbox>
 </div>
 `;

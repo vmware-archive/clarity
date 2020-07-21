@@ -27,13 +27,10 @@ describe('CdsToggle', () => {
         </CdsToggle>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toBeDefined();
-    expect(renderedComponent.at(2).html()).toBeDefined();
-    expect(renderedComponent.at(3).html()).toMatch(/group message text/);
-    expect(renderedComponent.at(4).html()).toBeDefined();
-    expect(renderedComponent.at(5).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsToggle');
+    expect(renderedComponent.at(0).html()).toMatch(/Toggle 1/);
+    expect(renderedComponent.at(1).html()).toMatch(/Toggle 2/);
+    expect(renderedComponent.at(2).html()).toMatch(/Toggle/);
   });
 
   it('snapshot', () => {

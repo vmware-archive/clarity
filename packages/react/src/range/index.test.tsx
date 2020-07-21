@@ -7,17 +7,19 @@ describe('CdsRange', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
-        <CdsRange>
-          <label>label</label>
-          <input type="range" />
-          <CdsControlMessage>message text</CdsControlMessage>
-        </CdsRange>
+        <CdsFormGroup>
+          <CdsRange>
+            <label>label</label>
+            <input type="range" />
+            <CdsControlMessage>message text</CdsControlMessage>
+          </CdsRange>
+        </CdsFormGroup>
       </div>
     );
 
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsRange');
+    expect(renderedComponent.at(0).html()).toMatch(/label/);
+    expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });
 
   it('snapshot', () => {

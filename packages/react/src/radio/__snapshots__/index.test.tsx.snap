@@ -2,12 +2,12 @@
 
 exports[`CdsRadio snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsRadioGroup>
     <cds-radio-group>
       <label>
         radio group
       </label>
-      <ReactWrapperComponent>
+      <CdsRadio>
         <cds-radio>
           <label>
             radio 1
@@ -17,8 +17,8 @@ exports[`CdsRadio snapshot 1`] = `
             type="radio"
           />
         </cds-radio>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsRadio>
+      <CdsRadio>
         <cds-radio>
           <label>
             radio 2
@@ -27,8 +27,8 @@ exports[`CdsRadio snapshot 1`] = `
             type="radio"
           />
         </cds-radio>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsRadio>
+      <CdsRadio>
         <cds-radio>
           <label>
             radio 3
@@ -37,8 +37,8 @@ exports[`CdsRadio snapshot 1`] = `
             type="radio"
           />
         </cds-radio>
-      </ReactWrapperComponent>
+      </CdsRadio>
     </cds-radio-group>
-  </ReactWrapperComponent>
+  </CdsRadioGroup>
 </div>
 `;

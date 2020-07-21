@@ -7,21 +7,23 @@ describe('CdsSelect', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
-        <CdsSelect>
-          <label>label</label>
-          <select>
-            <option>option one</option>
-            <option>option two</option>
-            <option>option three</option>
-          </select>
-          <CdsControlMessage>message text</CdsControlMessage>
-        </CdsSelect>
+        <CdsFormGroup>
+          <CdsSelect>
+            <label>label</label>
+            <select>
+              <option>option one</option>
+              <option>option two</option>
+              <option>option three</option>
+            </select>
+            <CdsControlMessage>message text</CdsControlMessage>
+          </CdsSelect>
+        </CdsFormGroup>
       </div>
     );
 
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsSelect');
+    expect(renderedComponent.at(0).html()).toMatch(/label/);
+    expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });
 
   it('snapshot', () => {

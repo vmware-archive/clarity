@@ -3,5 +3,5 @@ import '@clr/core/icon/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsIconType = Icon;
-export const CdsIcon = createReactComponent<CdsIconType>('cds-icon');
+export class CdsIcon extends createReactComponent<CdsIconType>('cds-icon') {}
 export const ClarityIcons = ClrIcons;

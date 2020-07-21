@@ -2,9 +2,9 @@
 
 exports[`CdsInput snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsInputGroup>
     <cds-input-group>
-      <ReactWrapperComponent
+      <CdsInput
         layout="vertical"
       >
         <cds-input>
@@ -15,8 +15,8 @@ exports[`CdsInput snapshot 1`] = `
             placeholder="name"
           />
         </cds-input>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsInput>
+      <CdsInput
         layout="vertical"
       >
         <cds-input>
@@ -28,8 +28,8 @@ exports[`CdsInput snapshot 1`] = `
             placeholder="name"
           />
         </cds-input>
-      </ReactWrapperComponent>
+      </CdsInput>
     </cds-input-group>
-  </ReactWrapperComponent>
+  </CdsInputGroup>
 </div>
 `;

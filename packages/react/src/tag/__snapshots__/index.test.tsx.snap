@@ -2,21 +2,21 @@
 
 exports[`CdsTag snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsTag
     readonly={true}
     status="info"
   >
     <cds-tag>
       Info
     </cds-tag>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsTag>
+  <CdsTag
     readonly={true}
     status="success"
   >
     <cds-tag>
       Success
     </cds-tag>
-  </ReactWrapperComponent>
+  </CdsTag>
 </div>
 `;

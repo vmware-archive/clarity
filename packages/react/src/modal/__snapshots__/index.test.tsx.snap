@@ -2,9 +2,9 @@
 
 exports[`CdsModal snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsModal>
     <cds-modal>
-      <ReactWrapperComponent>
+      <CdsModalHeader>
         <cds-modal-header>
           <h3
             cds-text="title"
@@ -12,8 +12,8 @@ exports[`CdsModal snapshot 1`] = `
             My Modal
           </h3>
         </cds-modal-header>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsModalHeader>
+      <CdsModalContent>
         <cds-modal-content>
           <div
             cds-layout="vertical gap:md p-y:xs"
@@ -25,8 +25,8 @@ exports[`CdsModal snapshot 1`] = `
             </p>
           </div>
         </cds-modal-content>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsModalContent>
+      <CdsModalActions>
         <cds-modal-actions>
           <div
             cds-layout="horizontal gap:sm align:right"
@@ -34,8 +34,8 @@ exports[`CdsModal snapshot 1`] = `
             Foo
           </div>
         </cds-modal-actions>
-      </ReactWrapperComponent>
+      </CdsModalActions>
     </cds-modal>
-  </ReactWrapperComponent>
+  </CdsModal>
 </div>
 `;

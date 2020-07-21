@@ -7,13 +7,13 @@ describe('CdsFile', () => {
     const wrapper = shallow(
       <div>
         <CdsFile layout="vertical">
-          <label>label</label>
+          <label>File</label>
           <input type="file" multiple />
         </CdsFile>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.html()).toMatch(/label/);
+    const renderedComponent = wrapper.find('CdsFile');
+    expect(renderedComponent.html()).toMatch(/File/);
   });
 
   it('snapshot', () => {

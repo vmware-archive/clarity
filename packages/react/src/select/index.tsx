@@ -5,4 +5,4 @@ import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsSelectType = SelectInput;
 
-export const CdsSelect = createReactComponent<CdsSelectType>('cds-select');
+export class CdsSelect extends createReactComponent<CdsSelectType>('cds-select') {}

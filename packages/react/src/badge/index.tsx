@@ -3,4 +3,4 @@ import '@clr/core/badge/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsBadgeType = Badge;
-export const CdsBadge = createReactComponent<CdsBadgeType>('cds-badge');
+export class CdsBadge extends createReactComponent<CdsBadgeType>('cds-badge') {}

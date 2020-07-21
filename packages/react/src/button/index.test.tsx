@@ -14,7 +14,7 @@ describe('CdsButton', () => {
         </CdsButton>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsButton');
     expect(renderedComponent.at(0).html()).toMatch(/primary/);
     expect(renderedComponent.at(1).html()).toMatch(/success/);
     expect(renderedComponent.at(2).html()).toMatch(/danger/);

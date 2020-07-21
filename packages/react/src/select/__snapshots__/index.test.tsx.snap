@@ -5,11 +5,11 @@ exports[`CdsSelect snapshot 1`] = `
   <h3>
     Selects
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="horizontal"
   >
     <cds-form-group>
-      <ReactWrapperComponent>
+      <CdsSelect>
         <cds-select>
           <label>
             label
@@ -25,14 +25,14 @@ exports[`CdsSelect snapshot 1`] = `
               option three
             </option>
           </select>
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-select>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSelect>
+      <CdsSelect
         status="error"
       >
         <cds-select>
@@ -50,16 +50,16 @@ exports[`CdsSelect snapshot 1`] = `
               option three
             </option>
           </select>
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-select>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsSelect>
+      <CdsSelect
         status="success"
       >
         <cds-select>
@@ -77,21 +77,21 @@ exports[`CdsSelect snapshot 1`] = `
               option three
             </option>
           </select>
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-select>
-      </ReactWrapperComponent>
+      </CdsSelect>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
   <h3>
     Multi-selects
   </h3>
-  <ReactWrapperComponent>
+  <CdsSelect>
     <cds-select>
       <label>
         label
@@ -115,12 +115,12 @@ exports[`CdsSelect snapshot 1`] = `
           Option Five
         </option>
       </select>
-      <ReactWrapperComponent>
+      <CdsControlMessage>
         <cds-control-message>
           message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-select>
-  </ReactWrapperComponent>
+  </CdsSelect>
 </div>
 `;

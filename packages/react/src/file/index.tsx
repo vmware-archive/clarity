@@ -3,6 +3,6 @@ import { CdsFile as File } from '@clr/core/file';
 import '@clr/core/file/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
-type CdsFile = File;
+type CdsFileType = File;
 
-export const CdsFile = createReactComponent<CdsFile>('cds-file');
+export class CdsFile extends createReactComponent<CdsFileType>('cds-file') {}

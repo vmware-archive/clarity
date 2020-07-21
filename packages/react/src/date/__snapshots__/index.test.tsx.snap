@@ -2,7 +2,7 @@
 
 exports[`CdsDate snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsDate
     control-width="shrink"
     layout="horizontal"
   >
@@ -16,12 +16,12 @@ exports[`CdsDate snapshot 1`] = `
         min="2018-01-01"
         type="date"
       />
-      <ReactWrapperComponent>
+      <CdsControlMessage>
         <cds-control-message>
           message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-date>
-  </ReactWrapperComponent>
+  </CdsDate>
 </div>
 `;

@@ -4,7 +4,7 @@ exports[`CdsControl snapshot 1`] = `
 <div
   cds-layout="vertical gap:lg"
 >
-  <ReactWrapperComponent
+  <CdsControl
     layout="compact"
   >
     <cds-control>
@@ -14,14 +14,14 @@ exports[`CdsControl snapshot 1`] = `
       <input
         placeholder="some custom control"
       />
-      <ReactWrapperComponent>
+      <CdsControlMessage>
         <cds-control-message>
           message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-control>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsControl>
+  <CdsControl
     layout="compact"
     status="error"
   >
@@ -32,16 +32,16 @@ exports[`CdsControl snapshot 1`] = `
       <input
         placeholder="some custom control"
       />
-      <ReactWrapperComponent
+      <CdsControlMessage
         status="error"
       >
         <cds-control-message>
           error message
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-control>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsControl>
+  <CdsControl
     layout="compact"
     status="success"
   >
@@ -52,14 +52,14 @@ exports[`CdsControl snapshot 1`] = `
       <input
         placeholder="some custom control"
       />
-      <ReactWrapperComponent
+      <CdsControlMessage
         status="success"
       >
         <cds-control-message>
           success message
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-control>
-  </ReactWrapperComponent>
+  </CdsControl>
 </div>
 `;

@@ -4,10 +4,10 @@ import { CdsInlineButton as InlineButton } from '@clr/core/button';
 import '@clr/core/button/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
-type baseType = HTMLButtonElement & { nativeElement: Promise<typeof Button> };
-export type CdsButtonType = Button & baseType;
-export type CdsIconButtonType = IconButton & baseType;
-export type CdsInlineButtonType = InlineButton & baseType;
-export const CdsButton = createReactComponent<CdsButtonType>('cds-button');
-export const CdsIconButton = createReactComponent<CdsIconButtonType>('cds-button');
-export const CdsInlineButton = createReactComponent<CdsInlineButtonType>('cds-button');
+export type CdsButtonType = Button;
+export type CdsIconButtonType = IconButton;
+export type CdsInlineButtonType = InlineButton;
+
+export class CdsButton extends createReactComponent<CdsButtonType>('cds-button') {}
+export class CdsIconButton extends createReactComponent<CdsIconButtonType>('cds-button') {}
+export class CdsInlineButton extends createReactComponent<CdsInlineButtonType>('cds-button') {}

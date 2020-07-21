@@ -2,7 +2,7 @@
 
 exports[`CdsFile snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsFile
     layout="vertical"
   >
     <cds-file>
@@ -14,6 +14,6 @@ exports[`CdsFile snapshot 1`] = `
         type="file"
       />
     </cds-file>
-  </ReactWrapperComponent>
+  </CdsFile>
 </div>
 `;

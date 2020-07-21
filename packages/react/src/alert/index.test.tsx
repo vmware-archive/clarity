@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './index';
 
-describe('CdsBadge', () => {
+describe('CdsAlert', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
@@ -23,7 +23,7 @@ describe('CdsBadge', () => {
         </CdsAlertGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsAlert');
     expect(renderedComponent.at(0).html()).toMatch(/Foo/);
     expect(renderedComponent.at(1).html()).toMatch(/Bar/);
   });

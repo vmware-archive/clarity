@@ -2,7 +2,7 @@
 
 exports[`CdsTime snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsTime
     control-width="shrink"
   >
     <cds-time>
@@ -15,12 +15,12 @@ exports[`CdsTime snapshot 1`] = `
         min="09:00"
         type="time"
       />
-      <ReactWrapperComponent>
+      <CdsControlMessage>
         <cds-control-message>
           message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-time>
-  </ReactWrapperComponent>
+  </CdsTime>
 </div>
 `;

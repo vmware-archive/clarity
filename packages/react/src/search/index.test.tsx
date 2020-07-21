@@ -7,16 +7,18 @@ describe('CdsSearch', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
-        <CdsSearch>
-          <label>label</label>
-          <input type="search" />
-          <CdsControlMessage>message text</CdsControlMessage>
-        </CdsSearch>
+        <CdsFormGroup>
+          <CdsSearch>
+            <label>label</label>
+            <input type="search" />
+            <CdsControlMessage>message text</CdsControlMessage>
+          </CdsSearch>
+        </CdsFormGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
-    expect(renderedComponent.at(0).html()).toBeDefined();
-    expect(renderedComponent.at(1).html()).toMatch(/message text/);
+    const renderedComponent = wrapper.find('CdsSearch');
+    expect(renderedComponent.at(0).html()).toMatch(/label/);
+    expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });
 
   it('snapshot', () => {

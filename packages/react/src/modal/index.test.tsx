@@ -21,7 +21,7 @@ describe('CdsModal', () => {
         </CdsModal>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsModal');
     expect(renderedComponent.at(0).html()).toMatch(/My Modal/);
     expect(renderedComponent.at(0).html()).toMatch(/Lorem Ipsum/);
     expect(renderedComponent.at(0).html()).toMatch(/Foo/);

@@ -14,7 +14,7 @@ describe('CdsTag', () => {
         </CdsTag>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsTag');
     expect(renderedComponent.at(0).html()).toMatch(/Info/);
     expect(renderedComponent.at(1).html()).toMatch(/Success/);
   });

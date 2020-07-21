@@ -5,4 +5,4 @@ import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsDateInputType = DateInput;
 
-export const CdsDate = createReactComponent<CdsDateInputType>('cds-date');
+export class CdsDate extends createReactComponent<CdsDateInputType>('cds-date') {}

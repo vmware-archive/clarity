@@ -5,11 +5,11 @@ exports[`CdsTextarea snapshot 1`] = `
   <h3>
     Vertical
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="vertical"
   >
     <cds-form-group>
-      <ReactWrapperComponent
+      <CdsTextarea
         layout="vertical"
       >
         <cds-textarea>
@@ -17,14 +17,14 @@ exports[`CdsTextarea snapshot 1`] = `
             label
           </label>
           <textarea />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsTextarea>
+      <CdsTextarea
         layout="vertical"
         status="error"
       >
@@ -33,16 +33,16 @@ exports[`CdsTextarea snapshot 1`] = `
             error status
           </label>
           <textarea />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsTextarea>
+      <CdsTextarea
         layout="vertical"
         status="success"
       >
@@ -51,25 +51,25 @@ exports[`CdsTextarea snapshot 1`] = `
             success status
           </label>
           <textarea />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
+      </CdsTextarea>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
   <h3>
     Horizontal
   </h3>
-  <ReactWrapperComponent
+  <CdsFormGroup
     layout="horizontal"
   >
     <cds-form-group>
-      <ReactWrapperComponent
+      <CdsTextarea
         layout="horizontal"
       >
         <cds-textarea>
@@ -77,14 +77,14 @@ exports[`CdsTextarea snapshot 1`] = `
             label
           </label>
           <textarea />
-          <ReactWrapperComponent>
+          <CdsControlMessage>
             <cds-control-message>
               message text
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsTextarea>
+      <CdsTextarea
         layout="horizontal"
         status="error"
       >
@@ -93,16 +93,16 @@ exports[`CdsTextarea snapshot 1`] = `
             error status
           </label>
           <textarea />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="error"
           >
             <cds-control-message>
               error message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent
+      </CdsTextarea>
+      <CdsTextarea
         layout="horizontal"
         status="success"
       >
@@ -111,16 +111,16 @@ exports[`CdsTextarea snapshot 1`] = `
             success status
           </label>
           <textarea />
-          <ReactWrapperComponent
+          <CdsControlMessage
             status="success"
           >
             <cds-control-message>
               success message
             </cds-control-message>
-          </ReactWrapperComponent>
+          </CdsControlMessage>
         </cds-textarea>
-      </ReactWrapperComponent>
+      </CdsTextarea>
     </cds-form-group>
-  </ReactWrapperComponent>
+  </CdsFormGroup>
 </div>
 `;

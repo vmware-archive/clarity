@@ -8,6 +8,6 @@ type CdsAlertType = Alert & { onCloseChange: (e: any) => void };
 type CdsAlertActionsType = AlertActions;
 type CdsAlertGroupType = AlertGroup;
 
-export const CdsAlert = createReactComponent<CdsAlertType>('cds-alert');
-export const CdsAlertActions = createReactComponent<CdsAlertActionsType>('cds-alert-actions');
-export const CdsAlertGroup = createReactComponent<CdsAlertGroupType>('cds-alert-group');
+export class CdsAlert extends createReactComponent<CdsAlertType>('cds-alert') {}
+export class CdsAlertActions extends createReactComponent<CdsAlertActionsType>('cds-alert-actions') {}
+export class CdsAlertGroup extends createReactComponent<CdsAlertGroupType>('cds-alert-group') {}

@@ -13,9 +13,9 @@ describe('CdsControl', () => {
         </CdsControl>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsControl');
     expect(renderedComponent.at(0).html()).toMatch(/Foo/);
-    expect(renderedComponent.at(1).html()).toMatch(/message text/);
+    expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });
 
   it('snapshot', () => {

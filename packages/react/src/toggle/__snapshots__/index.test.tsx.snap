@@ -2,12 +2,12 @@
 
 exports[`CdsToggle snapshot 1`] = `
 <div>
-  <ReactWrapperComponent>
+  <CdsToggleGroup>
     <cds-toggle-group>
       <label>
         A toggle group
       </label>
-      <ReactWrapperComponent>
+      <CdsToggle>
         <cds-toggle>
           <label>
             Toggle 1
@@ -16,8 +16,8 @@ exports[`CdsToggle snapshot 1`] = `
             type="checkbox"
           />
         </cds-toggle>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsToggle>
+      <CdsToggle>
         <cds-toggle>
           <label>
             Toggle 2
@@ -26,15 +26,15 @@ exports[`CdsToggle snapshot 1`] = `
             type="checkbox"
           />
         </cds-toggle>
-      </ReactWrapperComponent>
-      <ReactWrapperComponent>
+      </CdsToggle>
+      <CdsControlMessage>
         <cds-control-message>
           group message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-toggle-group>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent>
+  </CdsToggleGroup>
+  <CdsToggle>
     <cds-toggle>
       <label>
         Toggle
@@ -42,12 +42,12 @@ exports[`CdsToggle snapshot 1`] = `
       <input
         type="checkbox"
       />
-      <ReactWrapperComponent>
+      <CdsControlMessage>
         <cds-control-message>
           message text
         </cds-control-message>
-      </ReactWrapperComponent>
+      </CdsControlMessage>
     </cds-toggle>
-  </ReactWrapperComponent>
+  </CdsToggle>
 </div>
 `;

@@ -7,5 +7,5 @@ import { createReactComponent } from '../converter/react-wrapper';
 type CdsToggleGroupType = ToggleGroup;
 type CdsToggleType = Toggle;
 
-export const CdsToggleGroup = createReactComponent<CdsToggleGroupType>('cds-toggle-group');
-export const CdsToggle = createReactComponent<CdsToggleType>('cds-toggle');
+export class CdsToggleGroup extends createReactComponent<CdsToggleGroupType>('cds-toggle-group') {}
+export class CdsToggle extends createReactComponent<CdsToggleType>('cds-toggle') {}

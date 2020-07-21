@@ -5,4 +5,4 @@ import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsTimeInputType = TimeInput;
 
-export const CdsTime = createReactComponent<CdsTimeInputType>('cds-time');
+export class CdsTime extends createReactComponent<CdsTimeInputType>('cds-time') {}

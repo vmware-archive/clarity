@@ -2,34 +2,34 @@
 
 exports[`CdsButton snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsButton
     status="primary"
   >
     <cds-button>
       primary
     </cds-button>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsButton>
+  <CdsButton
     status="success"
   >
     <cds-button>
       success
     </cds-button>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsButton>
+  <CdsButton
     status="danger"
   >
     <cds-button>
       danger
     </cds-button>
-  </ReactWrapperComponent>
-  <ReactWrapperComponent
+  </CdsButton>
+  <CdsButton
     disabled={true}
     status="danger"
   >
     <cds-button>
       disabled
     </cds-button>
-  </ReactWrapperComponent>
+  </CdsButton>
 </div>
 `;

@@ -5,4 +5,4 @@ import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsTextareaType = Textarea;
 
-export const CdsTextarea = createReactComponent<CdsTextareaType>('cds-textarea');
+export class CdsTextarea extends createReactComponent<CdsTextareaType>('cds-textarea') {}

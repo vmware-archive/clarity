@@ -7,5 +7,5 @@ import { createReactComponent } from '../converter/react-wrapper';
 type CdsCheckboxType = Checkbox;
 type CdsCheckboxGroupType = CheckboxGroup;
 
-export const CdsCheckbox = createReactComponent<CdsCheckboxType>('cds-checkbox');
-export const CdsCheckboxGroup = createReactComponent<CdsCheckboxGroupType>('cds-checkbox-group');
+export class CdsCheckbox extends createReactComponent<CdsCheckboxType>('cds-checkbox') {}
+export class CdsCheckboxGroup extends createReactComponent<CdsCheckboxGroupType>('cds-checkbox-group') {}

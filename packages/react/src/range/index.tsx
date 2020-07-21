@@ -5,4 +5,4 @@ import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsRangeInputType = RangeInput;
 
-export const CdsRange = createReactComponent<CdsRangeInputType>('cds-range');
+export class CdsRange extends createReactComponent<CdsRangeInputType>('cds-range') {}

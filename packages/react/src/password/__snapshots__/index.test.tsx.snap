@@ -2,7 +2,7 @@
 
 exports[`CdsPassword snapshot 1`] = `
 <div>
-  <ReactWrapperComponent
+  <CdsPassword
     layout="vertical"
   >
     <cds-password>
@@ -14,6 +14,6 @@ exports[`CdsPassword snapshot 1`] = `
         type="password"
       />
     </cds-password>
-  </ReactWrapperComponent>
+  </CdsPassword>
 </div>
 `;

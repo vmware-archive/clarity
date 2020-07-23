@@ -36,7 +36,7 @@ export class ClrIfError extends AbstractIfState {
         options = { error: this.control.getError(this.error) };
       }
       this.container.createEmbeddedView(this.template, options);
-    } else if (!isInvalid) {
+    } else if (!isInvalid && this.container) {
       this.container.clear();
     }
     this.displayedContent = isInvalid;

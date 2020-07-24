@@ -8,12 +8,7 @@ const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   stories: ['../src/**/*.stories.ts'],
-  addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-cssresources/register',
-    '@storybook/addon-knobs',
-    '@storybook/addon-links',
-  ],
+  addons: ['@storybook/addon-knobs', '@storybook/addon-actions', '@storybook/addon-cssresources/register'],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts)$/,

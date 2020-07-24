@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome",
+  "definitions": {
+    "Root": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "releases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Release"
+          }
+        }
+      },
+      "required": ["$schema", "releases"],
+      "title": "Root"
+    },
+    "Release": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deprecation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deprecation"
+          }
+        },
+        "fix": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deprecation"
+          }
+        },
+        "feat": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deprecation"
+          }
+        }
+      },
+      "required": ["date", "version"],
+      "title": "Release"
+    },
+    "Deprecation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "issue": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "breaking": {
+          "type": "boolean"
+        },
+        "project": {
+          "$ref": "#/definitions/Project"
+        },
+        "scope": {
+          "$ref": "#definitions/Scope"
+        }
+      },
+      "required": ["issue", "project", "scope", "title"],
+      "title": "Deprecation"
+    },
+    "Scope": {
+      "type": "string",
+      "enum": [
+        "Accessibility",
+        "Accordion",
+        "Alert",
+        "Badge",
+        "Button",
+        "Card",
+        "Checkbox",
+        "Color",
+        "Combobox",
+        "Datagrid",
+        "Datalist",
+        "Date Picker",
+        "Dropdown",
+        "Form",
+        "Grid",
+        "Header",
+        "Icon",
+        "Input",
+        "Label",
+        "List",
+        "Login",
+        "Modal",
+        "Password",
+        "Popover",
+        "Progress Bar",
+        "Radio",
+        "Range",
+        "Schematics",
+        "Select",
+        "Sidenav",
+        "Signpost",
+        "Spinner",
+        "Stack View",
+        "Stepper",
+        "Table",
+        "Tabs",
+        "Textarea",
+        "Timeline",
+        "Toggle",
+        "Tooltip",
+        "Tree View",
+        "Vertical Nav",
+        "Wizard"
+      ],
+      "title": "Scope"
+    },
+    "Project": {
+      "type": "string",
+      "enum": ["Angular", "Core"],
+      "title": "Project"
+    }
+  }
+}

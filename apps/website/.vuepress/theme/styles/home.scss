@@ -1,0 +1,13 @@
+// Overrides for homepage b/c these don't apply when in the component stylesheet.
+.home-hero {
+  padding-top: 2rem;
+  background-color: #002f44;
+  // we need dark theme colors for this hero section
+  * {
+    color: var(--cds-token-color-neutral-0);
+  }
+
+  h2 {
+    max-width: 50rem;
+  }
+}

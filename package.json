@@ -32,6 +32,9 @@
     "build:ci": "npm-run-all clean format lint build:libs core:dev:build react:build test",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build",
     "build:apps": "npm-run-all -p angular:dev:build core:dev:build",
+    "build:website": "yarn --cwd apps/website run build",
+    "build:storybook:angular": "yarn --cwd packages/angular run build-storybook",
+    "build:storybook:core": "yarn --cwd packages/core run dev:build",
     "test": "npm-run-all -p angular:test core:test icons:test react:test",
     "test:a11y": "node scripts/axe",
     "lint": "npm-run-all core:lint angular:lint react:lint",
@@ -76,7 +79,11 @@
     "react:build": "yarn --cwd packages/react run build",
     "react:lint": "yarn --cwd packages/react run lint",
     "react:test": "yarn --cwd packages/react run test",
-    "preinstall": "mkdir -p ./packages/core/dist/core/ && mkdir -p ./packages/react/dist/react/"
+    "preinstall": "mkdir -p ./packages/core/dist/core/ && mkdir -p ./packages/react/dist/react/",
+    "website:deploy": "scripts/website.sh",
+    "website:storybook": "yarn --cwd packages/angular run start:storybook",
+    "website:preview": "lite-server --baseDir=dist/website",
+    "website:start": "yarn --cwd apps/website start"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",

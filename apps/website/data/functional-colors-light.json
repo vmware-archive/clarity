@@ -1,0 +1,76 @@
+{
+  "backgrounds-and-borders": {
+    "name": "Backgrounds and borders",
+    "colors": [
+      { "weight": "0", "h": "198", "s": "0", "l": "100", "text": "dark" },
+      { "weight": "50", "h": "198", "s": "0", "l": "98", "text": "dark" },
+      { "weight": "200", "h": "198", "s": "0", "l": "91", "text": "dark" },
+      { "weight": "400", "h": "198", "s": "0", "l": "80", "text": "dark" },
+      { "weight": "500", "h": "198", "s": "0", "l": "70", "text": "dark" },
+      { "weight": "600", "h": "198", "s": "0", "l": "55", "text": "light" },
+      { "weight": "700", "h": "198", "s": "0", "l": "40", "text": "light" }
+    ]
+  },
+  "row-hover-selection": {
+    "name": "Row hover, selection",
+    "colors": [
+      { "weight": "200", "h": "198", "s": "0", "l": "91", "text": "dark" },
+      { "weight": "n/a", "h": "201", "s": "29", "l": "88", "text": "dark" }
+    ]
+  },
+  "typography": {
+    "name": "Typography",
+    "colors": [
+      { "weight": "700", "h": "198", "s": "0", "l": "40", "text": "light" },
+      { "weight": "900", "h": "198", "s": "0", "l": "20", "text": "light" },
+      { "weight": "1000", "h": "198", "s": "0", "l": "0", "text": "light" }
+    ]
+  },
+  "buttons-and-app-level-alerts": {
+    "name": "Buttons and app-level alerts",
+    "colors": [
+      { "weight": "600", "h": "198", "s": "100", "l": "32", "text": "light" },
+      { "weight": "700", "h": "9", "s": "100", "l": "43", "text": "light" },
+      { "weight": "500", "h": "93", "s": "67", "l": "38", "text": "dark" },
+      { "weight": "700", "h": "93", "s": "100", "l": "26", "text": "light" },
+      { "weight": "400", "h": "198", "s": "0", "l": "80", "text": "dark" }
+    ]
+  },
+  "standard-alerts": {
+    "name": "Standard alerts",
+    "colors": [
+      { "weight": "50", "h": "198", "s": "83", "l": "94", "text": "dark" },
+      { "weight": "50", "h": "93", "s": "52", "l": "88", "text": "dark" },
+      { "weight": "100", "h": "9", "s": "95", "l": "92", "text": "dark" },
+      { "weight": "100", "h": "48", "s": "100", "l": "89", "text": "dark" }
+    ]
+  },
+  "headers": {
+    "name": "Headers",
+    "colors": [
+      { "weight": "900", "h": "198", "s": "0", "l": "20", "text": "light" },
+      { "weight": "1000", "h": "282", "s": "100", "l": "14", "text": "light" },
+      { "weight": "700", "h": "198", "s": "100", "l": "28", "text": "light" },
+      { "weight": "800", "h": "198", "s": "100", "l": "24", "text": "light" },
+      { "weight": "1000", "h": "198", "s": "100", "l": "15", "text": "light" }
+    ]
+  },
+  "labels-badges": {
+    "name": "Labels & badges",
+    "colors": [
+      { "weight": "600", "h": "198", "s": "0", "l": "55", "text": "light" },
+      { "weight": "50", "h": "198", "s": "83", "l": "94", "text": "dark" },
+      { "weight": "300", "h": "198", "s": "69", "l": "69", "text": "dark" },
+      { "weight": "600", "h": "198", "s": "100", "l": "32", "text": "light" },
+      { "weight": "800", "h": "198", "s": "100", "l": "24", "text": "light" },
+      { "weight": "500", "h": "282", "s": "43", "l": "54", "text": "light" },
+      { "weight": "100", "h": "9", "s": "95", "l": "92", "text": "dark" },
+      { "weight": "700", "h": "9", "s": "100", "l": "43", "text": "light" },
+      { "weight": "100", "h": "48", "s": "100", "l": "89", "text": "dark" },
+      { "weight": "300", "h": "48", "s": "98", "l": "72", "text": "dark" },
+      { "weight": "500", "h": "48", "s": "95", "l": "48", "text": "dark" },
+      { "weight": "50", "h": "93", "s": "52", "l": "88", "text": "dark" },
+      { "weight": "700", "h": "93", "s": "100", "l": "26", "text": "light" }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+<clr-tree>
+  <clr-tree-node [clrExpanded]="true">
+    Permissions
+    <clr-tree-node *ngFor="let permission of permissions" [clrExpanded]="true">
+      {{permission.type}}
+      <clr-tree-node
+        *ngFor="let right of permission.rights"
+        [clrSelected]="right.enable"
+        (clrSelectedChange)="right.enable = !!$event"
+      >
+        {{right.name}}
+      </clr-tree-node>
+    </clr-tree-node>
+  </clr-tree-node>
+</clr-tree>

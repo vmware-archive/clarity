@@ -1,0 +1,12 @@
+<form clrForm>
+  <clr-input-container>
+    <label>First Name</label>
+    <input placeholder="Enter your first name" clrInput [(ngModel)]="firstName" name="firstname" required />
+    <clr-control-helper>Provide a useful message about the purpose of this input.</clr-control-helper>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Last Name</label>
+    <input placeholder="Enter your last name" clrInput [(ngModel)]="lastName" name="lastname" required />
+    <clr-control-error>You must provide your last name!</clr-control-error>
+  </clr-input-container>
+</form>

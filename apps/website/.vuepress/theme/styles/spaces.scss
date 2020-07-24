@@ -1,0 +1,29 @@
+.vertical-margin-6 {
+  margin-top: var(--cds-token-space-size-6);
+  margin-bottom: var(--cds-token-space-size-6);
+}
+
+.top-margin-wrapper {
+  margin-top: 1.2rem;
+}
+
+.bottom-margin-wrapper {
+  margin-bottom: 1.2rem;
+}
+
+.content__default > ul,
+ol {
+  margin-top: var(--cds-token-space-size-6);
+}
+
+cds-alert-group {
+  margin-top: var(--cds-token-space-size-9);
+}
+
+.clr-row {
+  margin-top: var(--cds-token-space-size-9);
+}
+
+.page-edit {
+  margin-top: var(--cds-token-space-size-9);
+}

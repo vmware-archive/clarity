@@ -1,0 +1,24 @@
+name: Website
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != 'vmware/clarity'
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: yarn
+      - run: yarn build:libs
+      - run: yarn build:website
+      - run: yarn build:storybook:angular
+      - run: yarn build:storybook:core
+      - run: npm run website:deploy # Use NPM as a workaround for npx executing
+
+    env:
+      CI: true
+      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db

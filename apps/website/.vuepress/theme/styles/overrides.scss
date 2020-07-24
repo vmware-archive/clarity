@@ -1,0 +1,165 @@
+.main-container {
+  min-height: 100vh;
+  height: auto;
+}
+.clr-vertical-nav {
+  padding-top: 0;
+
+  & > .nav-link:first-child {
+    margin-top: 1rem;
+  }
+}
+
+// HEADERS
+#header-types,
+#color-types {
+  header {
+    margin-bottom: 12px; // This spaces out some of the headers that are stacked in the demos
+  }
+}
+#subnav-types {
+  .main-container {
+    height: auto; // Allows a demo of the subnav not to be 100% height of page
+  }
+}
+
+// Fix APIs
+
+.main-container > .content-container {
+  min-height: fit-content;
+}
+
+/*
+  On the first draft of timeline overview there was example of the waiting step
+  It used to use the clr-spinner component, this is a modification of the `.spinner` css only element.
+ */
+.demo-spinner {
+  height: 1.8rem;
+  width: 1.8rem;
+  min-height: 1.8rem;
+  min-width: 1.8rem;
+}
+
+.clr-timeline.clr-timeline-vertical span + .clr-timeline-step-body::before {
+  //background: deeppink;
+  //transform: translate(-1.15rem,1.3rem) !important;
+}
+
+// Prism code snippet margin
+div[class^='language-'] pre {
+  margin: 1rem 0;
+}
+
+p code {
+  color: var(--clr-color-danger-800, #c21d00);
+}
+
+// From porting grid demos
+.clr-example .clr-example-col-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.8rem;
+  border-radius: 0.15rem;
+  background: #d8e3e9;
+  margin: 0.3rem 0;
+}
+
+.clr-example .clr-example-nesting-row,
+.clr-example .clr-example-row {
+  background: #304250;
+  margin: 0.3rem 0;
+}
+
+.clr-example .clr-example-row {
+  height: 5.4rem;
+}
+
+.clr-example .clr-example-nesting-row .clr-example-nesting-row {
+  background: #62727f;
+}
+
+// Workaround for cds-alert-actions issue
+cds-alert-actions {
+  display: block;
+}
+
+// This is added to be able to use core layout tokens
+//style="height: 100vh; max-height: 100vh;
+.main-container {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+// core has a token to turn off wrapping but it doesn't seem to work.
+// This is the override / workaround for now.
+// TODO: figure out if there is an issue with how I've tried to use the core nowrap property.
+.content-container {
+  flex-wrap: nowrap;
+}
+
+// Side efects from combining @clr/core layout tokens and legacy @clr/ui
+.content-area {
+  height: calc(100vh - 3rem); // Grow from the bottom of the header to the bottom of the viewport.
+}
+
+// No padding on the home page b/c of hero component
+.content-area.home-page {
+  padding: 0 !important;
+}
+
+// This override is needed b/c I want the legacy @clr/ui contaier to also fill the space from the header to bottom of
+// the viewport.
+.clr-vertical-nav {
+  height: calc(100vh - 3rem);
+}
+
+.nav-content {
+  width: 100%; // this container in @clr/ui is not fully expanding with the @clr/core layout
+}
+
+.min-height-demo {
+  min-height: 400px;
+  height: 400px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  .header-anchor {
+    opacity: 0;
+    cursor: pointer;
+    display: inline-block;
+    cds-icon {
+      margin-top: calc(-1 * var(--cds-token-space-size-3));
+      cursor: pointer;
+    }
+  }
+
+  &:hover .header-anchor {
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
+h1 .header-anchor cds-icon {
+  width: var(--cds-token-space-size-10);
+  height: var(--cds-token-space-size-10);
+}
+
+h2 .header-anchor cds-icon {
+  width: var(--cds-token-space-size-10);
+  height: var(--cds-token-space-size-10);
+}
+
+h3 .header-anchor cds-icon {
+  width: var(--cds-token-space-size-9);
+  height: var(--cds-token-space-size-9);
+}
+
+h4 .header-anchor cds-icon {
+  width: var(--cds-token-space-size-9);
+  height: var(--cds-token-space-size-9);
+}

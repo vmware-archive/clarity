@@ -1,0 +1,45 @@
+<div class="login-wrapper">
+  <form class="login">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Company Product Name
+      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+    </section>
+    <div class="login-group">
+      <div class="clr-select-wrapper">
+        <select id="select-basic" class="clr-select" style="width: 100%;">
+          <option value="local">Local Users</option>
+          <option value="admin">Administrator</option>
+        </select>
+      </div>
+      <div class="clr-form-control">
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="text" id="username" placeholder="Username" class="clr-input" />
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <div class="clr-control-container">
+          <div class="clr-input-wrapper">
+            <input type="password" id="basic" placeholder="Password please!" class="clr-input" />
+            <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+        </div>
+      </div>
+      <div class="clr-form-control">
+        <div class="clr-control-container">
+          <div class="clr-checkbox-wrapper">
+            <input name="memory" type="checkbox" value="option1" id="memory" />
+            <label for="memory">Remember me</label>
+          </div>
+        </div>
+      </div>
+      <div class="error active">
+        Invalid user name or password
+      </div>
+      <button type="submit" class="btn btn-primary">NEXT</button>
+      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+    </div>
+  </form>
+</div>

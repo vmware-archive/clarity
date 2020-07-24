@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Dairy",
+    "selected": "INDETERMINATE",
+    "items": [
+      { "name": "Milk", "selected": "UNSELECTED" },
+      { "name": "Cheese", "selected": "SELECTED" }
+    ]
+  },
+  {
+    "name": "Vegetables",
+    "selected": "UNSELECTED",
+    "items": [
+      { "name": "Carrots", "selected": "UNSELECTED" },
+      { "name": "Potatoes", "selected": "UNSELECTED" },
+      { "name": "Beans", "selected": "UNSELECTED" }
+    ]
+  }
+]

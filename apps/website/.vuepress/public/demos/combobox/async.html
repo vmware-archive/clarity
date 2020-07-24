@@ -1,0 +1,25 @@
+<clr-combobox-container>
+  <label>Favorite States (Async)</label>
+  <clr-combobox
+    [(ngModel)]="selection"
+    name="asyncCombobox"
+    clrMulti="true"
+    required
+    [disabled]="disabled"
+    [clrLoading]="loading"
+    (clrInputChange)="fetchStates($event)"
+    (clrOpenChange)="$event ? fetchStates() : null"
+  >
+    <ng-container *clrOptionSelected="let selected"
+      ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+    >
+    <clr-options>
+      <clr-option *clrOptionItems="let state of asyncStates$ | async; field:'name'" [clrValue]="state">
+        <clr-icon shape="world" role="img" aria-label="World is turning"></clr-icon> {{state.name}}
+        <clr-icon shape="sun" role="img" aria-label="Sun is shining"></clr-icon>
+      </clr-option>
+    </clr-options>
+  </clr-combobox>
+  <clr-control-helper>Helper text</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-combobox-container>

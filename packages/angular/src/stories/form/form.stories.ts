@@ -9,7 +9,7 @@ import { ClarityModule } from '@clr/angular';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-// const fullTemplate = require('!!raw-loader!./full.html'); // eslint-disable-line
+const fullTemplate = require('!!raw-loader!./full.html'); // eslint-disable-line
 const checkboxTemplate = require('!!raw-loader!./checkbox.html'); // eslint-disable-line
 const datalistTemplate = require('!!raw-loader!./datalist.html'); // eslint-disable-line
 const inputTemplate = require('!!raw-loader!./input.html'); // eslint-disable-line
@@ -33,7 +33,7 @@ export default {
   ],
 };
 
-export const CheckboxDemo = () => {
+export const Checkbox = () => {
   const model = {
     option1: false,
     option2: false,
@@ -44,7 +44,7 @@ export const CheckboxDemo = () => {
   const error = boolean('Error Text', true);
   const inline = boolean('Inline checkboxes', false);
   return {
-    name: 'Checkbox',
+    name: 'Basic Checkbox',
     template: checkboxTemplate.default,
     props: {
       model,
@@ -58,7 +58,7 @@ export const CheckboxDemo = () => {
   };
 };
 
-export const DatalistDemo = () => {
+export const Datalist = () => {
   const model = {
     datalistOption: null,
   };
@@ -67,7 +67,7 @@ export const DatalistDemo = () => {
   const controlHelper = boolean('Helper Text', true);
   const items = ['Item1', 'Item2', 'Item3'];
   return {
-    name: 'Datalist',
+    name: 'Basic Datalist',
     template: datalistTemplate.default,
     props: {
       controlHelper,
@@ -80,7 +80,7 @@ export const DatalistDemo = () => {
   };
 };
 
-export const InputDemo = () => {
+export const Input = () => {
   const model = {
     name: '',
     role: '',
@@ -90,7 +90,7 @@ export const InputDemo = () => {
   const disabled = boolean('Disable Input', false);
 
   return {
-    name: 'Input',
+    name: 'Basic Input',
     template: inputTemplate.default,
     props: {
       controlHelper,
@@ -102,7 +102,7 @@ export const InputDemo = () => {
   };
 };
 
-export const PasswordDemo = () => {
+export const Password = () => {
   const model = {
     radio: '',
   };
@@ -110,7 +110,7 @@ export const PasswordDemo = () => {
   const controlHelper = boolean('Helper Text', true);
   const disabled = boolean('Disable Password', false);
   return {
-    name: 'Password',
+    name: 'Basic Password',
     template: passwordTemplate.default,
     props: {
       model,
@@ -122,7 +122,7 @@ export const PasswordDemo = () => {
   };
 };
 
-export const RadioDemo = () => {
+export const Radio = () => {
   const model = {
     options: '',
   };
@@ -131,7 +131,7 @@ export const RadioDemo = () => {
   const disabled = boolean('Disable Radio', false);
   const inline = boolean('Inline layout', false);
   return {
-    name: 'Password',
+    name: 'Basic Password',
     template: radioTemplate.default,
     props: {
       model,
@@ -144,12 +144,12 @@ export const RadioDemo = () => {
   };
 };
 
-export const RangeDemo = () => {
+export const Range = () => {
   const rangeValue = 50;
   const controlHelper = boolean('Helper Text', true);
   const disabled = boolean('Disable Range', false);
   return {
-    name: 'Range',
+    name: 'Basic Range',
     template: rangeTemplate.default,
     props: {
       rangeValue,
@@ -163,13 +163,13 @@ export const RangeDemo = () => {
   };
 };
 
-export const SelectDemo = () => {
+export const Select = () => {
   const required = boolean('Required form controls', true);
   const disabled = boolean('Disable Select', false);
   const helpers = boolean('Helper Text', true);
   const errors = boolean('Error Text', true);
   return {
-    name: 'Select',
+    name: 'Basic Select',
     template: selectTemplate.default,
     props: {
       required,
@@ -181,13 +181,13 @@ export const SelectDemo = () => {
   };
 };
 
-export const TextareaDemo = () => {
+export const Textarea = () => {
   const required = boolean('Required form controls', true);
   const disabled = boolean('Disable Textarea', false);
   const helpers = boolean('Helper Text', true);
   const errors = boolean('Error Text', true);
   return {
-    name: 'Textarea',
+    name: 'Basic Textarea',
     template: textareaTemplate.default,
     props: {
       required,
@@ -199,7 +199,7 @@ export const TextareaDemo = () => {
   };
 };
 
-export const ToggleDemo = () => {
+export const Toggle = () => {
   const model = {
     option1: true,
   };
@@ -208,7 +208,7 @@ export const ToggleDemo = () => {
   const helpers = boolean('Helper Text', true);
   const errors = boolean('Error Text', true);
   return {
-    name: 'Toggle',
+    name: 'Basic Toggle',
     template: toggleTemplate.default,
     props: {
       required,
@@ -220,9 +220,37 @@ export const ToggleDemo = () => {
   };
 };
 
-// export const FullDemo = () => {
-//   return {
-//     name: 'Full Demo',
-//     template: fullTemplate.default,
-//   };
-// };
+export const Full = () => {
+  const model = {
+    option1: false,
+    option2: false,
+    datalistOption: null,
+    name: '',
+    options: '',
+    radio: '',
+    role: '',
+  };
+  const required = boolean('Require form controls', true);
+  const disabled = boolean('Disable form controls', false);
+  const helper = boolean('Display helper text', true);
+  const error = boolean('Display error text', true);
+  const inline = boolean('Use inline controls', false);
+  const items = ['Item1', 'Item2', 'Item3'];
+  const rangeValue = 50;
+
+  return {
+    name: 'Basic',
+    template: fullTemplate.default,
+    props: {
+      model,
+      required,
+      disabled,
+      helper,
+      error,
+      inline,
+      items,
+      rangeValue,
+      onSubmit: formSubmit,
+    },
+  };
+};

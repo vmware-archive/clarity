@@ -1,0 +1,9 @@
+<!-- Inside the full datagrid declaration -->
+<clr-dg-row *ngFor="let user of users">
+  <clr-dg-cell>{{user.id}}</clr-dg-cell>
+  <clr-dg-cell>{{user.name}}</clr-dg-cell>
+  <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+  <clr-dg-cell>
+    <span class="color-square" [style.backgroundColor]="user.color"></span>
+  </clr-dg-cell>
+</clr-dg-row>

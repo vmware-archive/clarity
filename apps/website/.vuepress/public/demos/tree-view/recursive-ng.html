@@ -1,0 +1,5 @@
+<clr-tree>
+  <clr-tree-node *clrRecursiveFor="let file of root; getChildren: getChildren" [(clrSelected)]="file.selected">
+    {{file.name}}
+  </clr-tree-node>
+</clr-tree>

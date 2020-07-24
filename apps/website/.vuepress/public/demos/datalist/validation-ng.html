@@ -1,0 +1,11 @@
+<form clrForm>
+  <clr-datalist-container>
+    <label>Template Datalist</label>
+    <input minlength="4" name="Option" required clrDatalistInput [disabled]="disabled" [(ngModel)]="vertical" />
+    <datalist>
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-datalist-container>
+</form>

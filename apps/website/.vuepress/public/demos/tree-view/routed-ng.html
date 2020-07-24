@@ -1,0 +1,15 @@
+<clr-tree>
+  <clr-tree-node [clrExpanded]="true">
+    The Beatles
+    <clr-tree-node>
+      <a [routerLink]="['./album1']" class="clr-treenode-link" routerLinkActive="active">Abbey Road</a>
+    </clr-tree-node>
+    <clr-tree-node>
+      <a [routerLink]="['./album2']" class="clr-treenode-link" routerLinkActive="active">Revolver</a>
+    </clr-tree-node>
+    <clr-tree-node>
+      <a [routerLink]="['./album3']" class="clr-treenode-link" routerLinkActive="active">Rubber Soul</a>
+    </clr-tree-node>
+  </clr-tree-node>
+</clr-tree>
+<router-outlet></router-outlet>

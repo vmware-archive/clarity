@@ -8,6 +8,161 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Full Forms demo</h1>
+      <form clrForm (ngSubmit)="onSubmit(form.value)" #form="ngForm">
+        <clr-checkbox-container [clrInline]="inline">
+          <label>Basic Checkbox</label>
+          <clr-checkbox-wrapper>
+            <input
+              type="checkbox"
+              clrCheckbox
+              name="model"
+              [(ngModel)]="option1"
+              [required]="required"
+              [disabled]="disabled"
+            />
+            <label>Option 1</label>
+          </clr-checkbox-wrapper>
+          <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="model" [(ngModel)]="option2" [disabled]="disabled" />
+            <label>Option 2</label>
+          </clr-checkbox-wrapper>
+          <clr-control-helper *ngIf="helper">Helper text.</clr-control-helper>
+          <clr-control-error *ngIf="error">There is an error.</clr-control-error>
+        </clr-checkbox-container>
+        <clr-datalist-container>
+          <label>Template Datalist</label>
+          <input
+            name="Datalist"
+            clrDatalistInput
+            [required]="required"
+            [disabled]="disabled"
+            [(ngModel)]="model.datalistOption"
+          />
+          <datalist>
+            <option *ngFor="let item of items" [value]="item"></option>
+          </datalist>
+          <clr-control-helper *ngIf="helper">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">There was an error</clr-control-error>
+        </clr-datalist-container>
+        <clr-input-container>
+          <label>Name</label>
+          <input
+            clrInput
+            type="text"
+            name="name"
+            [(ngModel)]="model.name"
+            [required]="required"
+            [disabled]="disabled"
+          />
+          <clr-control-helper *ngIf="controlHelper">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">Name is required!</clr-control-error>
+        </clr-input-container>
+        <clr-input-container>
+          <label>Role</label>
+          <input clrInput type="text" name="role" [(ngModel)]="model.role" [required]="required" />
+        </clr-input-container>
+        <clr-password-container>
+          <label>Password</label>
+          <input
+            placeholder="Password"
+            clrPassword
+            name="password"
+            [(ngModel)]="password"
+            [required]="required"
+            [disabled]="disabled"
+            minlength="10"
+          />
+          <clr-control-helper *ngIf="helper"
+            >Must contain at least 8 characters with at least one of them a special character like
+            !@#$%^&*)</clr-control-helper
+          >
+          <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters!</clr-control-error>
+        </clr-password-container>
+        <clr-radio-container [clrInline]="inline">
+          <label>Basic Radio</label>
+          <clr-radio-wrapper>
+            <input
+              type="radio"
+              clrRadio
+              name="options"
+              value="option1"
+              [(ngModel)]="options"
+              [required]="required"
+              [disabled]="disabled"
+            />
+            <label>Option 1</label>
+          </clr-radio-wrapper>
+          <clr-radio-wrapper>
+            <input
+              type="radio"
+              clrRadio
+              name="options"
+              value="option2"
+              [(ngModel)]="options"
+              [required]="required"
+              [disabled]="disabled"
+            />
+            <label>Option 2</label>
+          </clr-radio-wrapper>
+          <clr-control-helper *ngIf="controlHelper">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">This field is required!</clr-control-error>
+        </clr-radio-container>
+        <clr-range-container [clrRangeHasProgress]="true">
+          <label>Disabled</label>
+          <input
+            type="range"
+            clrRange
+            [(ngModel)]="rangeValue"
+            name="range"
+            [disabled]="disabled"
+            (change)="change($event)"
+          />
+          <clr-control-helper *ngIf="helper">Helper text</clr-control-helper>
+        </clr-range-container>
+        <clr-select-container>
+          <label>I've got some options</label>
+          <select clrSelect name="options" [(ngModel)]="options" [required]="required" [disabled]="disabled">
+            <option value="one">One</option>
+            <option value="two">Two</option>
+            <option value="three">Three</option>
+          </select>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">This field is required!</clr-control-error>
+        </clr-select-container>
+        <clr-textarea-container>
+          <label>Label</label>
+          <textarea
+            clrTextarea
+            [(ngModel)]="description"
+            name="description"
+            [required]="required"
+            [disabled]="disabled"
+          ></textarea>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">You must provide a description!</clr-control-error>
+        </clr-textarea-container>
+        <clr-toggle-container>
+          <label>Full toggle switch</label>
+          <clr-toggle-wrapper>
+            <input
+              type="checkbox"
+              clrToggle
+              name="model"
+              [required]="required"
+              [disabled]="disabled"
+              value="option1"
+              [(ngModel)]="option1"
+            />
+            <label>Agree to terms and conditions.</label>
+          </clr-toggle-wrapper>
+          <clr-control-helper *ngIf="helpers">Helper text</clr-control-helper>
+          <clr-control-error *ngIf="error">This field is required!</clr-control-error>
+        </clr-toggle-container>
+        <section>
+          <button class="btn btn-success">Submit</button>
+        </section>
+      </form>
     </div>
   </div>
 </div>

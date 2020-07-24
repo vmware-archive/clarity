@@ -1,0 +1,13 @@
+<clr-combobox-container>
+  <label>My State</label>
+  <clr-combobox [(ngModel)]="selection" name="myState" required [disabled]="disabled">
+    <clr-options>
+      <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
+        <clr-icon shape="world" role="img" aria-label="World is turning"></clr-icon> {{state.name}}
+        <clr-icon shape="sun" role="img" aria-label="Sun is shining"></clr-icon>
+      </clr-option>
+    </clr-options>
+  </clr-combobox>
+  <clr-control-helper>Helper text</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-combobox-container>

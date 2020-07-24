@@ -8,14 +8,16 @@ import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming/create';
 
 addons.setConfig({
-  // showRoots: true,
-  options: {
-    showPanel: true,
-  },
   theme: create({
     base: 'light',
     brandTitle: 'Clarity Design',
     brandUrl: 'https://clarity.design',
     brandImage: '/assets/images/clarity-logo.png',
   }),
+  isFullscreen: false, // when true, add on panel doesn't open.
+  showPanel: true,
+  panelPosition: 'bottom',
+  showNav: false,
+  selectedPanel: 'storybookjs/knobs/panel',
+  enableShortcuts: false,
 });

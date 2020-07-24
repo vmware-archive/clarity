@@ -15,3 +15,4 @@ packages/react/dist/
 docs/core
 apps/core-create-react-app
 .cache
+apps/website/.vuepress/config.js

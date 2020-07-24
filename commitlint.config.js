@@ -8,6 +8,7 @@ const scopes = [
   'card',
   'checkbox',
   'color',
+  'combobox',
   'datagrid',
   'datalist',
   'date-picker',
@@ -21,6 +22,7 @@ const scopes = [
   'list',
   'login',
   'modal',
+  'navigation',
   'password',
   'progress-bar',
   'radio',
@@ -42,6 +44,8 @@ const scopes = [
   'wizard',
   'icons',
   'range',
+  'website',
+  'docs',
 ];
 
 module.exports = {

@@ -11,7 +11,7 @@ import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
 export default {
-  title: 'Model',
+  title: 'Modal',
   decorators: [
     moduleMetadata({
       imports: [BrowserAnimationsModule, ClarityModule],

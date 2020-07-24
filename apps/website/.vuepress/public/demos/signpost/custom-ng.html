@@ -1,0 +1,29 @@
+<!-- TODO: turn this into a story and link to it -->
+<h6>Clarity Icon</h6>
+<clr-signpost>
+  <clr-icon shape="avatar" class="is-solid has-badge-info" clrSignpostTrigger> </clr-icon>
+  <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
+    Lorem ipsum...
+  </clr-signpost-content>
+</clr-signpost>
+
+<h6>Button Link</h6>
+<clr-signpost>
+  <button class="btn btn-link" clrSignpostTrigger>
+    Button Link Trigger
+  </button>
+  <clr-signpost-content [clrPosition]="'top-middle'" *clrIfOpen>
+    Lorem ipsum...
+  </clr-signpost-content>
+</clr-signpost>
+
+<h6>Button Link w/ Clarity Icon</h6>
+<clr-signpost>
+  <button class="btn btn-link" clrSignpostTrigger>
+    Button Link
+    <clr-icon shape="help-info"></clr-icon>
+  </button>
+  <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
+    Lorem ipsum...
+  </clr-signpost-content>
+</clr-signpost>

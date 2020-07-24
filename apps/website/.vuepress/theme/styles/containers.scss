@@ -1,0 +1,76 @@
+.custom-block {
+  margin-top: 1rem;
+}
+.custom-block p:first-of-type {
+  margin-top: 0;
+}
+.custom-block-title {
+  font-weight: bold;
+}
+
+/**
+ * Summary Custom Container
+ */
+.custom-block.summary {
+  background: #f5f5f5;
+  padding: 2rem;
+  border-left: 0.5rem solid var(--cds-token-color-action-100, green);
+}
+
+/**
+ * Danger Custom Container {
+ */
+.custom-block.danger {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-left: 0.5rem solid var(--cds-token-color-danger-100, red);
+}
+
+// TODO(matt): figure out the right place for this to be reused by all api tables
+.table {
+  &.left-cell {
+    td,
+    th {
+      text-align: left;
+    }
+  }
+}
+
+// TODO(Matt): move this and use the right custom prop here.
+.section-header {
+  border-bottom: 1px solid var(--clr-card-divider-color);
+}
+
+.inverse {
+  background-color: hsl(198, 0%, 27%);
+  padding: 0.5rem;
+}
+
+.modal-backdrop-container,
+.modal-backdrop {
+  position: relative;
+
+  .modal {
+    position: relative;
+  }
+}
+
+// Used this in badges for inline code. Need child elements to vertically stack
+.inline-code {
+  display: flex;
+  width: 100%;
+  // vertical stack is default
+  flex-direction: column;
+
+  &.horizontal {
+    flex-direction: unset;
+  }
+}
+
+.doc-demo-main-container {
+  min-height: unset;
+}
+
+.relative-contianer {
+  position: relative;
+}

@@ -1,0 +1,7 @@
+<form clrForm>
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange [(ngModel)]="input.three" name="four" [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>

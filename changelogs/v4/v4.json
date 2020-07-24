@@ -1,0 +1,151 @@
+{
+  "$schema": "../schema.json",
+  "releases": [
+    {
+      "version": "4.0.0-rc.1",
+      "date": "2020-07-15",
+      "description": "Stability was the goal for this release, where a number of bugs have been fixed and everything has been checked before we target a stable release soon!",
+      "feat": [
+        {
+          "issue": 4758,
+          "title": "Allow shift+tab in focus trap to rebound for accessibility",
+          "project": "Angular",
+          "scope": "Accessibility"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 4461,
+          "title": "Form control placeholder color and opacity updated for accessibility",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4767,
+          "title": "Fix some Angular form controls that don't get marked as touched",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4788,
+          "title": "Fix compatibility issue in Datagrid when Ivy was disabled",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4774,
+          "title": "Fix popover toggle behavior that broke arrow key events",
+          "project": "Angular",
+          "scope": "Popover"
+        },
+        {
+          "issue": 4791,
+          "title": "Fix missing border on Datagrid detail pane with limited rows",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
+      "version": "4.0.0-rc.0",
+      "date": "2020-07-07",
+      "description": "Introducing the new Combobox component! The Combobox is a significant form control that allows you to define searchable select lists with dynamic content and options. No more breaking changes will occur in v4 after this release, and works with Angular 10 stable.",
+      "feat": [
+        {
+          "issue": 4286,
+          "title": "New Combobox form component for creating dynamic and complex searchable inputs",
+          "project": "Angular",
+          "scope": "Combobox"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 4735,
+          "title": "Fix datagrid placeholder to work with a screen reader",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
+      "version": "4.0.0-next.0",
+      "date": "2020-06-17",
+      "description": "Clarity moves forward with a new prerelease for the upcoming Clarity v4 milestone. There are a number of breaking changes and improvements for this version, which will only work with Angular 10 and TypeScript 3.9. ",
+      "deprecation": [
+        {
+          "issue": 4687,
+          "title": "Remove internal use of ClrAriaLiveService",
+          "breaking": true,
+          "project": "Angular",
+          "scope": "Accessibility"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 4707,
+          "title": "Update several colors for accessibility",
+          "breaking": true,
+          "project": "Angular",
+          "scope": "Color"
+        },
+        {
+          "issue": 4693,
+          "title": "Fix z-index so column switcher is above modals",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4470,
+          "title": "Fix possible undefined error when opening a popover synchronously",
+          "project": "Angular",
+          "scope": "Popover"
+        },
+        {
+          "issue": 4645,
+          "title": "Fix selection for server-driven Datagrids in some uses",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4557,
+          "title": "Fix alert text width in IE11",
+          "project": "Angular",
+          "scope": "Alert"
+        }
+      ],
+      "feat": [
+        {
+          "issue": 4535,
+          "title": "Support Datagrid column resizing with keyboard for accessibility",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4163,
+          "title": "Support Datagrid expandable rows for accessibility",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4565,
+          "title": "Success helper text in forms",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4403,
+          "title": "Form input group support",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4556,
+          "title": "Update to Angular 10",
+          "project": "Angular",
+          "breaking": true,
+          "scope": "Build"
+        }
+      ]
+    }
+  ]
+}

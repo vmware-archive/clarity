@@ -1,0 +1,37 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Clarity Website",
+  "main": "index.js",
+  "author": "VMware Clarity Team",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "dependencies": {
+    "@sentry/browser": "5.15.5",
+    "@sentry/integrations": "5.15.5",
+    "markdown-it-attrs": "^3.0.2",
+    "vue-resource": "^1.5.1"
+  },
+  "devDependencies": {
+    "@vue/devtools": "^5.3.3",
+    "@vuepress/plugin-active-header-links": "1.5.2",
+    "@vuepress/plugin-last-updated": "1.5.2",
+    "@vuepress/plugin-google-analytics": "1.5.2",
+    "@vuepress/plugin-pwa": "1.5.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "stylus": "0.54.8",
+    "stylus-loader": "^3.0.2",
+    "vuepress": "^1.5.2",
+    "vuepress-plugin-clean-urls": "1.1.1",
+    "vuepress-plugin-container": "2.1.4",
+    "vuepress-plugin-smooth-scroll": "^0.0.9",
+    "vuepress-plugin-table-of-contents": "^1.1.6",
+    "vuepress-plugin-robots": "1.0.1",
+    "vuepress-plugin-sitemap": "^2.3.1"
+  }
+}

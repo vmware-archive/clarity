@@ -13,7 +13,7 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "module": "es2020",
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "es2017",
     "lib": ["es2018", "dom"],

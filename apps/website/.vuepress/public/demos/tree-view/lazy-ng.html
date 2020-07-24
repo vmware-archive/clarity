@@ -1,0 +1,11 @@
+<clr-tree [clrLazy]="true">
+  <clr-tree-node [clrLoading]="loading">
+    <clr-icon shape="building"></clr-icon>
+    Office Locations
+    <ng-template clrIfExpanded (clrIfExpandedChange)="$event ? fetchLocations() : null">
+      <clr-tree-node *ngFor="let location of locations$ | async">
+        {{location}}
+      </clr-tree-node>
+    </ng-template>
+  </clr-tree-node>
+</clr-tree>

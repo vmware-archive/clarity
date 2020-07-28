@@ -2,10 +2,11 @@
   "name": "@clr/angular",
   "version": "@VERSION",
   "description": "Angular components for Clarity",
-  "es2015": "esm2015/clr-angular.js",
   "homepage": "https://clarity.design",
+  "es2015": "fesm2015/clr-angular.js",
   "main": "bundles/clr-angular.umd.js",
-  "module": "esm5/clr-angular.js",
+  "module": "fesm5/clr-angular.js",
+  "typings": "clr-angular.d.ts",
   "keywords": ["ng-add", "clarity", "angular", "components"],
   "repository": {
     "type": "git",

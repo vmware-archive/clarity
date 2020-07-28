@@ -22,6 +22,14 @@
     "@angular-devkit/core" "10.0.0-rc.3"
     rxjs "6.5.5"
 
+"@angular-devkit/architect@0.1000.2":
+  version "0.1000.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1000.2.tgz#ca62e25f0e845ff63c6a1ba942a45caf1d085218"
+  integrity sha512-n1e/ZdE70C6hDauTWLAiofKDI6m88nhb91Ddqum0eeUh3HL3Ppv/sT9O+UYsab3gIdIOFJwHBpZ96SM/2Ja5NA==
+  dependencies:
+    "@angular-devkit/core" "10.0.2"
+    rxjs "6.5.5"
+
 "@angular-devkit/architect@0.1000.3", "@angular-devkit/architect@^0.1000.0":
   version "0.1000.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1000.3.tgz#f23ea9d370edac8b0dd979d2574b12aa9923c3d4"
@@ -229,6 +237,17 @@
     rxjs "6.5.5"
     source-map "0.7.3"
 
+"@angular-devkit/core@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-10.0.2.tgz#5f14afab52bbb6a21757e4f489f76e0defcb9aa8"
+  integrity sha512-gD8iUP28GscsHqGKKu+NtX97bt7aXDZmIYqWTv4SThrcsPYY2A4tBw+NBbNAwjHkNfn4jflpqTmcN9gBAoLoSg==
+  dependencies:
+    ajv "6.12.2"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.5.5"
+    source-map "0.7.3"
+
 "@angular-devkit/core@10.0.3", "@angular-devkit/core@^10.0.0":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-10.0.3.tgz#7654766c9f2d3c510beaad8bca3e2a71643c6b8e"
@@ -251,12 +270,12 @@
     rxjs "6.4.0"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@10.0.0-rc.3":
-  version "10.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-10.0.0-rc.3.tgz#b09a3f9b8be41d4de733615871ab85f69e5a160d"
-  integrity sha512-K1nZVI53aYRWMnXBNceFkfXfiwHMU8muPYoQE8as2OBt/ji6BPUB1NY/+WqZoZC9deUipV5QobhD/7KxSA3nGw==
+"@angular-devkit/schematics@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-10.0.2.tgz#a387437b2c46ffd7883425cf08ef0365ea1e8374"
+  integrity sha512-BUUWAreHoxk4Z91Xhr+wtFUhK6+7AOczsIxlZmJnQwSUhN2ZdiDjOXeO3NFkDdL8CtNOz5khGu2iNBqn08FpUw==
   dependencies:
-    "@angular-devkit/core" "10.0.0-rc.3"
+    "@angular-devkit/core" "10.0.2"
     ora "4.0.4"
     rxjs "6.5.5"
 
@@ -291,16 +310,16 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/cli@10.0.0-rc.3":
-  version "10.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-10.0.0-rc.3.tgz#ed1354f8d226ffc37a276b631f1d9bc720a194eb"
-  integrity sha512-6waivmisPA9j75urMcqNJioaG8uEmKswSIQuBwx+8auDpyd66JVwyj4kwE0nfceA0NnSYQJLgK0zi8DopOCnfw==
+"@angular/cli@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-10.0.2.tgz#c25323122f973f6eaad2fe6f7e308548690d0047"
+  integrity sha512-L/uLUrZNIwbYzIeU9R3SC2hblDgtxP57msmRjoOQBpSzwlOME+z0wlCXPv+h9NOzNPvVVbEtLtjBgZxUw0IHzg==
   dependencies:
-    "@angular-devkit/architect" "0.1000.0-rc.3"
-    "@angular-devkit/core" "10.0.0-rc.3"
-    "@angular-devkit/schematics" "10.0.0-rc.3"
-    "@schematics/angular" "10.0.0-rc.3"
-    "@schematics/update" "0.1000.0-rc.3"
+    "@angular-devkit/architect" "0.1000.2"
+    "@angular-devkit/core" "10.0.2"
+    "@angular-devkit/schematics" "10.0.2"
+    "@schematics/angular" "10.0.2"
+    "@schematics/update" "0.1000.2"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.1.1"
@@ -357,10 +376,10 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/compiler-cli@10.0.0-rc.4":
-  version "10.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-10.0.0-rc.4.tgz#9fa5856a3786bdc9fdd91fe8e8d2e9c4ed453d6b"
-  integrity sha512-BM6qlWXrE1g2iQUKPqhb1c4prl80GFTgi00AbXLRqqX3hNYY7Vv1LFP3ObayUzATmAPl0mC+tstO6VGirfPCKg==
+"@angular/compiler-cli@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-10.0.2.tgz#8f178a03989e0018890c52807df9e3e03faaf47a"
+  integrity sha512-LGX86k1hOyaw5aPCjFfoLuPhVLKMENOdCBeNBzZB+H2CUGHfv8OWFB1EzjZO1N07VGR7JoMx9ZWSP7ornhuS4Q==
   dependencies:
     canonical-path "1.0.0"
     chokidar "^3.0.0"
@@ -2625,7 +2644,6 @@
 "@clr/react@./packages/react/dist/react":
   version "4.0.0-rc.1"
   dependencies:
-    "@clr/core" "^4.0.0-rc.0"
     react "^16.13.1"
     react-dom "^16.13.1"
   optionalDependencies:
@@ -4743,13 +4761,13 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@schematics/angular@10.0.0-rc.3":
-  version "10.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-10.0.0-rc.3.tgz#2b6baa16a4df7d7b992ffb07caa01c105f27b2d3"
-  integrity sha512-5Xe8MHWE6NBKzDjLLYy1O72WljvjlD8xScKB1WlenncoLhXeGp5iMZAUEDkrBitSsl0fMz0KZBrhLE27xpwOHw==
+"@schematics/angular@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-10.0.2.tgz#e8ef09f9c1833aaa9c109164c16e2bd458ba814c"
+  integrity sha512-viSf1HQH2vxZAonkfdAjJ/0Z8VgKptsi4UYtJDwabKRbbyp2EQ/vhEPI/ddV4QgrQqR8mkOl7nu8JqL2M0+v6A==
   dependencies:
-    "@angular-devkit/core" "10.0.0-rc.3"
-    "@angular-devkit/schematics" "10.0.0-rc.3"
+    "@angular-devkit/core" "10.0.2"
+    "@angular-devkit/schematics" "10.0.2"
 
 "@schematics/angular@10.0.3":
   version "10.0.3"
@@ -4766,13 +4784,13 @@
   dependencies:
     typescript "~2.6.2"
 
-"@schematics/update@0.1000.0-rc.3":
-  version "0.1000.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@schematics/update/-/update-0.1000.0-rc.3.tgz#8ba9227306ae90c6d5a256dddadba5ca588f6606"
-  integrity sha512-T4lAhw2TCbnTcy4PiSHJ4eODnWIBLPY5k3mw1XVZuYBQyzDuZSjqAkj7Cvx5OWqQtnyOZ1hFKYbBx7yDAK8TwA==
+"@schematics/update@0.1000.2":
+  version "0.1000.2"
+  resolved "https://registry.yarnpkg.com/@schematics/update/-/update-0.1000.2.tgz#012441e3c1b91a78c7b3bccefc252c1dd6aa8b1e"
+  integrity sha512-6PSJ+WexBqY0ESo0Kp6fa9wPWAXKE9oyLNjISJ1S9QKCVowoHa8FV+7BalVOUYwUhnUzwPCF6n7PqcJiZR632g==
   dependencies:
-    "@angular-devkit/core" "10.0.0-rc.3"
-    "@angular-devkit/schematics" "10.0.0-rc.3"
+    "@angular-devkit/core" "10.0.2"
+    "@angular-devkit/schematics" "10.0.2"
     "@yarnpkg/lockfile" "1.1.0"
     ini "1.3.5"
     npm-package-arg "^8.0.0"

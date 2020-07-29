@@ -3,50 +3,43 @@ import { html, LitElement } from 'lit-element';
 
 <Meta title="Documentation/React" />
 
-# Preact
+# React
 
-To use Clarity Core with Preact follow the package <a href="./?path=/docs/documentation-getting-started--page">installation instructions</a>.
-Once installed import the component into your JavaScript file.
+Clarity Core is a suite of Web Components from the [Clarity Design System](https://clarity.design).
+Because React [doesn't fully interoperate with custom elements](https://custom-elements-everywhere.com/)
+we have developed this library of React components that wrap Clarity Web Components
+
+## Installation
+
+1.  Install the Clarity Core package from npm.
+
+```bash
+npm install @clr/core --save
+```
+
+2.  Install the Clarity React package from npm.
+
+```bash
+npm install @clr/react --save
+```
+
+3.  Import desired component into your JavaScript or TypeScript
 
 ```typescript
-import '@clr/core/alert/register.js';
+import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from '@clr/react/modal';
 ```
+
+4.  Use React wrapped Web Component in React
+
+Web Components are kebab cased tag name which in `@clr/react` will be converted to
+Pascal case. For example, `<cds-alert>` element will be `<CdsAlert>` in React.
+In addition our event props will follow the React naming convention of camel case for props
+and start with `on`. So the custom event `closeChange` will be `onCloseChange`.
 
 ```jsx
 /*
-Example of an alert web component in Preact
-- status - attribute style hook
-- closable - setting the 'closable' property on the element
-- onCloseChange - listen for the 'closeChange' custom event
-*/
-
-<cds-alert status="info" closable={this.state.closable} onCloseChange={this.log}>
-  Hello World
-</cds-alert>
-```
-
-## React
-
-A shim layer <em>(a.k.a wrapper)</em> must be used for web components to work in
-React applications. This is due to React not being compatible with Web Standards
-such as <a href="https://custom-elements-everywhere.com">custom elements</a>.
-
-We have a react wrapper package that you must install and use in your react application.
-
-Generally our kebab cased tag names will be in Pascal case. For example, `<cds-alert>`
-element will be `<CdsAlert>` in react.
-
-In addition our event props will follow the react naming convention of camel case for props
-and start with `on`. So 'closeChange' will be `onCloseChange` and so forth.
-
-```typescript
-import { CdsAlert } from '@clr/react/alert';
-```
-
-```jsx
-/*
-Example of an alert web component in react
-- status - attribute style hook
+Example of an alert component in React
+- status - attribute/property style hook
 - closable - setting the 'closable' property on the element
 - onCloseChange - listen for the 'closeChange' custom event
 */
@@ -56,5 +49,42 @@ Example of an alert web component in react
 </CdsAlert>
 ```
 
-You can try out an <a href="https://stackblitz.com/edit/react-ts-drskpx">early
-work in progress prototype here</a>.
+## Using refs
+
+In React [refs](https://reactjs.org/docs/refs-and-the-dom.html) provide a way to access DOM nodes or
+React elements created in the render method. Because web components' lifecycle lives outside of react's
+lifecycle our components provide a way to use refs when the underlying web component has finished rendering:
+
+```typescript
+import React from 'react';
+import { CdsButton } from '@clr/react/button';
+
+export default class App extends React.Component<{}, {}> {
+  buttonRef: React.RefObject<CdsButton>;
+
+  constructor(props: any) {
+    super(props);
+    this.buttonRef = React.createRef<CdsButton>();
+  }
+
+  componentDidMount() {
+    this.buttonRef.current.nativeElement.then(element => {
+      element.focus();
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <CdsButton ref={this.buttonRef}>My button</CdsButton>
+      </div>
+    );
+  }
+}
+```
+
+<cds-button>
+  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
+    Example Apps
+  </a>
+</cds-button>

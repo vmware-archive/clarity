@@ -1,9 +1,9 @@
 {
-  "name": "clarity-performance",
+  "name": "core-parcel-js",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel src/index.html --cache-dir=./.parcel-cache",
+    "start": "yarn run clean && parcel src/index.html --cache-dir=./.parcel-cache",
     "build": "yarn run clean && parcel build src/index.html --cache-dir=./.parcel-cache",
     "bundle": "source-map-explorer dist/*.js",
     "clean": "del ./dist .parcel-cache"

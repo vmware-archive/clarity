@@ -40,6 +40,7 @@
   max-width: 60rem;
   flex-direction: row;
 }
+
 .content-area {
   display: flex;
   flex-direction: column;
@@ -64,6 +65,8 @@ import Page from '@theme/components/Page';
 import Sidebar from '@theme/components/Sidebar';
 import Footer from '@theme/components/Footer';
 import { resolveSidebarItems } from '../util';
+import { scrollToGuard } from '../util/route-guards';
+import TimerUtils from '../util/timer-utils';
 
 export default {
   name: 'Layout',
@@ -108,8 +111,16 @@ export default {
   },
 
   mounted() {
-    this.$router.afterEach(() => {
+    this.$nextTick(() => {
+      if (this.$route.hash) {
+        scrollToGuard(this.$route, false);
+      }
+    });
+    this.$router.afterEach(to => {
       this.isSidebarOpen = false;
+      this.$nextTick(() => {
+        scrollToGuard(to);
+      });
     });
   },
 

@@ -1,6 +1,11 @@
+---
+title: Color
+toc: true
+---
+
 The Clarity color palette is a full spectrum of bold hues and neutrals to meet all your design needs.
 
-### The Clarity Color Palette
+## The Clarity Color Palette
 
 The Clarity color palette is aligned with color use in web applications and support for accessibility. The colors below constitute the expanded color palette for Clarity. Text colors displayed in light or dark tints represent Clarity's recommended accessible pairing with the color.
 
@@ -12,7 +17,7 @@ The large color swatches represent Clarity primary colors, recommended for use a
 
 <ClrColorsPalette></ClrColorsPalette>
 
-### Functional Colors
+## Functional Colors
 
 Clarity components use a set of colors to convey certain functions and meanings. These colors have been vetted and tested to meet the accessibility standard for low vision.
 
@@ -24,7 +29,7 @@ Clarity components use a set of colors to convey certain functions and meanings.
 
 <ClrColorsFunctional colorMode="dark"></ClrColorsFunctional>
 
-### Color Usage
+## Color Usage
 
 #### Base Colors
 

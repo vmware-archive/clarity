@@ -37,39 +37,39 @@ const arrAliasesToObjAliases = aliases => {
 
 export default {
   allSets: {
-    coreIconsSet: {
+    core: {
       setName: 'Core',
       icons: arrIconsToObjIcons(core),
     },
-    essentialIconsSet: {
+    essential: {
       setName: 'Essential',
       icons: arrIconsToObjIcons(essential),
     },
-    commerceIconsSet: {
+    commerce: {
       setName: 'Commerce',
       icons: arrIconsToObjIcons(commerce),
     },
-    mediaIconsSet: {
+    media: {
       setName: 'Media',
       icons: arrIconsToObjIcons(media),
     },
-    socialIconsSet: {
+    social: {
       setName: 'Social',
       icons: arrIconsToObjIcons(social),
     },
-    travelIconsSet: {
+    travel: {
       setName: 'Travel',
       icons: arrIconsToObjIcons(travel),
     },
-    textEditIconsSet: {
+    'text-edit': {
       setName: 'Text edit',
       icons: arrIconsToObjIcons(textEdit),
     },
-    technologyIconsSet: {
+    technology: {
       setName: 'Technology',
       icons: arrIconsToObjIcons(technology),
     },
-    chartIconsSet: {
+    chart: {
       setName: 'Chart',
       icons: arrIconsToObjIcons(chart),
     },

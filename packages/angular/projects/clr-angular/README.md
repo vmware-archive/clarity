@@ -1,25 +1,39 @@
-# ClrAngular
+## Installing Clarity Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+The easiest way is to use the Angular CLI to automatically install Angular into your project
 
-## Code scaffolding
+```
+ng add @clr/angular
+```
 
-Run `ng generate component component-name --project clr-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project clr-angular`.
+Then it should be setup automatically
 
-> Note: Don't forget to add `--project clr-angular` or else it will be added to the default project in your `angular.json` file.
+## Manual Installation
 
-## Build
+If you are unable to use the automatic method above, follow these steps.
 
-Run `ng build clr-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
+1.  Install Clarity packages through npm:
 
-## Publishing
+    ```
+    npm install @clr/icons @clr/ui @clr/angular
+    ```
 
-After building your library with `ng build clr-angular`, go to the dist folder `cd dist/clr-angular` and run `npm publish`.
+2.  Import the ClarityModule into your Angular application's module. Your application's main module might look like this:
 
-## Running unit tests
+    ```
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { ClarityModule } from '@clr/angular';
+    import { AppComponent } from './app.component';
 
-Run `ng test clr-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    @NgModule({
+        imports: [
+            BrowserModule,
+            ClarityModule,
+            ....
+         ],
+         declarations: [ AppComponent ],
+         bootstrap: [ AppComponent ]
+    })
+    export class AppModule {    }
+    ```

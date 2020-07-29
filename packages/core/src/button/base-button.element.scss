@@ -86,20 +86,22 @@
 }
 
 ::slotted {
-  line-height: 1em;
-  color: inherit;
+  line-height: 1em !important;
+  color: inherit !important;
 }
 
 ::slotted(a) {
   text-decoration: none !important;
-  display: block;
-  color: inherit;
-  margin: calc(var(--padding) * -1);
-  padding: var(--padding);
-  min-width: var(--min-width);
-  line-height: 1em;
+  display: block !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  margin: calc(var(--padding) * -1) !important;
+  padding: var(--padding) !important;
+  min-width: var(--min-width) !important;
+  line-height: 1em !important;
   box-sizing: border-box !important;
-  outline: 0;
+  outline: 0 !important;
 }
 
 ::slotted(cds-icon) {

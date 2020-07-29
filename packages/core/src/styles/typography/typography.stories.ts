@@ -117,7 +117,6 @@ export const transforms = () => {
 export const legacyHeaders = () => {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
-      <p cds-text="h0">The five boxing wizards jump quickly (h0)</p>
       <p cds-text="h1">The five boxing wizards jump quickly (h1)</p>
       <p cds-text="h2">The five boxing wizards jump quickly (h2)</p>
       <p cds-text="h3">The five boxing wizards jump quickly (h3)</p>
@@ -131,7 +130,6 @@ export const legacyHeaders = () => {
 export const legacyParagraphs = () => {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
-      <p cds-text="p0">The quick brown fox jumps over the lazy dog. (p0)</p>
       <p cds-text="p1">The quick brown fox jumps over the lazy dog. (p1)</p>
       <p cds-text="p2">The quick brown fox jumps over the lazy dog. (p2)</p>
       <p cds-text="p3">The quick brown fox jumps over the lazy dog. (p3)</p>

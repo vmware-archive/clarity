@@ -284,7 +284,7 @@ props:
     type: 'em'
     category: 'typography'
   - name: display-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
 
@@ -306,7 +306,7 @@ props:
     type: 'em'
     category: 'typography'
   - name: heading-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
 
@@ -328,7 +328,7 @@ props:
     type: 'em'
     category: 'typography'
   - name: title-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
 
@@ -350,7 +350,7 @@ props:
     type: 'em'
     category: 'typography'
   - name: section-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
 
@@ -372,7 +372,7 @@ props:
     type: 'em'
     category: 'typography'
   - name: subsection-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
 
@@ -489,7 +489,7 @@ props:
     category: 'typography'
     private: true
   - name: h0-font-weight
-    value: 500
+    value: 200
     type: 'number'
     category: 'typography'
     private: true
@@ -517,7 +517,7 @@ props:
     category: 'typography'
     private: true
   - name: h1-font-weight
-    value: 500
+    value: 200
     type: 'number'
     category: 'typography'
     private: true
@@ -545,7 +545,7 @@ props:
     category: 'typography'
     private: true
   - name: h2-font-weight
-    value: 500
+    value: 200
     type: 'number'
     category: 'typography'
     private: true
@@ -573,7 +573,7 @@ props:
     category: 'typography'
     private: true
   - name: h3-font-weight
-    value: 500
+    value: 200
     type: 'number'
     category: 'typography'
     private: true
@@ -601,7 +601,7 @@ props:
     category: 'typography'
     private: true
   - name: h4-font-weight
-    value: 500
+    value: 200
     type: 'number'
     category: 'typography'
     private: true
@@ -629,7 +629,7 @@ props:
     category: 'typography'
     private: true
   - name: h5-font-weight
-    value: 500
+    value: 400
     type: 'number'
     category: 'typography'
     private: true

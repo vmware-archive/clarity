@@ -78,7 +78,7 @@ Use Text for navigational items.
   </div>
   <div class="header-nav">
     <a href="javascript://" class="nav-link">
-      <clr-icon shape="pencil" style="position: static; transform: translate3d(0, 0, 0);"></clr-icon> Composer  
+      <clr-icon shape="pencil" style="position: static; transform: translate3d(0, 0, 0);"></clr-icon> Composer
     </a>
     <a href="javascript://" class="active nav-link">
       <clr-icon shape="folder"></clr-icon>
@@ -257,7 +257,7 @@ The header and subnav support app-level information and navigation links.
 
 Info
 
-<!-- For information about headers with responsive navigation, see [Responsive Navigation](/documentation/navigation#responsive_navigation). -->
+<!-- For information about headers with responsive navigation, see [Responsive Navigation](/foundation/navigation#responsive_navigation). -->
 
 #### Types
 
@@ -269,6 +269,6 @@ Info
 
 ### Subnav
 
-`.subnav` immediately follows the `.header`. It wraps a [tab](/documentation/tabs) and an `aside` section.
+`.subnav` immediately follows the `.header`. It wraps a [tab](/components/tab) and an `aside` section.
 
 <doc-demo file="/demos/header/subnav.html" id="subnav-types" />

@@ -7,12 +7,12 @@ With checkboxes, users can select one or more options from a list of options.
 
 ## Usage
 
-Use a checkbox for yes or no choices, for example "Remember me" on the [login page](./login).
+Use a checkbox for yes or no choices, for example "Remember me" on the [login page](/components/login).
 
 - Checkboxes are best for seven or fewer options
 - For readability, keep the checkbox label to a single line
 
-For on and off options, use a [toggle switch](./toggles).
+For on and off options, use a [toggle switch](/components/toggle).
 
 <!-- [//]: # Types -->
 

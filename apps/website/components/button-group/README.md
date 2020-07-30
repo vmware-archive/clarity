@@ -223,7 +223,7 @@ Mix differently styled classes together, like solid and outlined.
 
 ## Antomy
 
-There are sevel layout options for button groups, including icon button groups, and button groups with overflow.
+There are several layout options for button groups, including icon button groups, and button groups with overflow.
 
 ### Icon Button Groups
 

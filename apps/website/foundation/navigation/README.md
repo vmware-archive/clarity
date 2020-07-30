@@ -33,8 +33,6 @@ When establishing your navigation model, consider:
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
-{.custom-container}
-
 The <a href="/components/header">header</a> is for primary navigation. Benefits of this navigation pattern are:
 
 - Users often look for navigation in the header.

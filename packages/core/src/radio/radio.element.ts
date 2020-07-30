@@ -39,6 +39,7 @@ export class CdsRadio extends CdsInternalControlInline {
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
     this.checked = this.inputControl.hasAttribute('checked') || this.inputControl.checked;
+    this.checked ? this.inputControl.setAttribute('checked', '') : this.inputControl.removeAttribute('checked');
     this.observers.push(listenForAttributeChange(this.inputControl, 'checked', val => (this.checked = val !== null)));
   }
 }

@@ -362,8 +362,10 @@
 }
 
 [cds-text~='link'] {
-  color: $cds-token-color-action-600;
-  text-decoration: underline;
+  color: $cds-token-color-action-600 !important;
+  text-decoration: underline !important;
+  line-height: inherit !important;
+  font-size: inherit !important;
 }
 
 [cds-text~='code'] {
